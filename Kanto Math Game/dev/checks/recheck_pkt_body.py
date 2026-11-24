@@ -1,3 +1,4 @@
+# (Legacy menu clear, Step 5, 11-24: stays on the menus - every place here is in a menu region (Paldea and its DLC).)
 
 # The 10-27 Serebii PokéEarth recheck of Paldea, Kitakami and the Terarium / Blueberry Academy,
 # critical to low (kanto_handoff/SEREBII_RECHECK_PALDEA_KITAKAMI_TERARIUM_2026-10-27.md).

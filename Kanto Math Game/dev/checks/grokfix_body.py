@@ -1,3 +1,7 @@
+# Johto and Kanto are walked (legacy menu clear, Step 5, 11-24): state_for / run open the place's map and walk up to
+# whoever it is (walk_lib); Orange's Fire Island too.
+exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())
+state_for, run, travel = walk_state_for, walk_run, walk_travel
 
 import random
 from src.states.battle import WildBattleState, TrainerBattleState
@@ -48,8 +52,10 @@ st2.rounds_completed = 0
 check(not st2._check_route_condition("can_exit", False), "wild routes still ask for their rounds")
 
 print("1.4) Silver League Plateau has exits")
-check({o["target_area"] for o in prog["SILVER_LEAGUE_PLATEAU"]["travel_options"]} == {"MT_SILVER_CITY", "POKEMON_LEAGUE_GATE"},
-      "back to Mt. Silver City or the Gate")
+# (walked, 11-24: HGSS's Plateau is reached by Victory Road, its map's one way out and its one travel option now - the
+#  old ones to Mt. Silver City and the Gate are gone; Johto ccb0d791)
+_slp = walk_place("SILVER_LEAGUE_PLATEAU", "JOHTO_VICTORY_ROAD")
+check({t for t in walk_ways(_slp) if str(t).isupper()} == {"JOHTO_VICTORY_ROAD"}, "back down Victory Road: the Plateau's way out")
 
 print("1.5) no balls: no catch screen")
 st = state_for("JOHTO_ROUTE_29")
@@ -255,7 +261,9 @@ for _ in range(100):  # the starter screen loads its Pokemon (and text) in the b
 time.sleep(0.2)
 ss = nxt
 txt = " ".join(ss.dialogue_box.text_lines)
-check("safe at home" in txt and "Johto" in txt and txt.index("Choose wisely") < len(txt), f"{ss.dialogue_box.text_lines[:2]}")
+print("   starter text:", ss.dialogue_box.text_lines)
+# (Sinnoh's BDSP opening at Lake Verity, 11-2x: "pick one!" where it said "Choose wisely")
+check("safe at home" in txt and "Johto" in txt and ("Choose wisely" in txt or "pick one" in txt), f"{ss.dialogue_box.text_lines[:2]}")
 
 print("HANDOFF S-11) Bill's Eevee")
 story.current_area_key = "GOLDENROD_CITY"

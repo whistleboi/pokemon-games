@@ -360,6 +360,32 @@ _b = lambda p: os.path.basename(p) if p else None
 check(_b(_town) == "oi_314.ogg" and _b(_cen) == "oi_303.ogg" and all(_kinds.values()),
       f"...Valencia plays 5.7's town theme, its Center the Center theme, and every battle kind has its track ({_b(_town)}, {_b(_cen)}, {[_b(v) for v in _kinds.values()]})")
 
+print("8) Journeys (Jordan 11-24): Professor Oak's errand - Ivy hands over the GS Ball, and it goes with you to Johto")
+for _f in ("orange_ivy_met", "received_starter_orange", "orange_lab_done", "orange_park_done", "orange_ivy_thanks", "oak_gs_errand"):
+    story.story_flags[_f] = True
+story.story_flags.pop("got_gs_ball_ivy", None); story.inventory.pop("GS_BALL", None)
+_t = place("VALENCIA_ISLAND", "VALENCIA_PARK")
+story.story_flags.pop("got_gs_ball_ivy", None)
+said.clear(); _t._go("lab", ""); frames(2)
+play(n=4000, until=lambda: story.inventory.get("GS_BALL")); play()   # (she sees you, walks over: longer than play's quiet wait)
+_said = list(said)
+check(story.inventory.get("GS_BALL") == 1 and story.story_flags.get("got_gs_ball_ivy") and any("Kurt" in l for l in _said),
+      f"...walk into her lab: Ivy comes over, gives you the GS Ball and sends you to Kurt ({story.inventory.get('GS_BALL')}, {_said[:1]})")
+_t = place("VALENCIA_ISLAND", "VALENCIA_PARK"); said.clear(); _t._go("lab", ""); frames(2); play(n=2000)
+_bars = (_t.town_map.get("rooms") or {}).get("lab", {}).get("barred") or []
+check(_bars and all(_t._bar_met(b) for b in _bars), "...the GS Ball is gone from her table")
+check(story.inventory.get("GS_BALL") == 1 and not any("GS Ball" in l for l in said), f"...and she doesn't give a second one ({list(said)[:1]})")
+_said = meet(_t, "Prof. Ivy") or []
+check(bool(_said), f"...she still talks to you as before ({_said[:1]})")
+_links0, _stores0 = set(story.linked_regions), set(story.region_stores)   # (this save links its regions' Bags: check two apart)
+story.linked_regions = set()
+story.inventory["GS_BALL"] = 1   # (in Orange's own Bag now)
+story.prepare_travel("AZALEA_TOWN")
+check(story._store("JOHTO")["bag"].get("GS_BALL", 0) >= 1, "...and it goes with you from Orange's Bag into Johto's, for Kurt")
+story.linked_regions = _links0
+for _k in set(story.region_stores) - _stores0:
+    story.region_stores.pop(_k, None)
+
 story.story_flags.clear(); story.story_flags.update(_flags0)
 story.inventory.clear(); story.inventory.update(_inv0)
 story.player_team, story.money = _team0, _money0

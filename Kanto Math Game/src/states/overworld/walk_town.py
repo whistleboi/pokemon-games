@@ -431,9 +431,8 @@ class WalkTownState(TownWalkUps, CityState):
             _free = lambda t: (0 <= t[0] < self.w and 0 <= t[1] < self.h and self.rows[t[1]][t[0]] == "."
                                and grid[t[1]][t[0]] not in "_()" and t not in taken and t not in self.people)
             _me = getattr(self, "player", None)
-            spot = (partners.pick_spot(home, _free, _me) if _me else   # (never the owner's last side you can reach)
-                    next((t for t in ((home[0] + 1, home[1]), (home[0] - 1, home[1]), (home[0], home[1] + 1), (home[0], home[1] - 1))
-                          if _free(t)), None))
+            spot = partners.pick_spot(home, _free, _me)   # (always: never the owner's last open side - after a battle the room is
+                                                          #  rebuilt before you're placed, and Erika's Vileplume took her one side; Kanto 11-24)
             if spot is None:
                 continue
             taken.add(spot)
@@ -2454,12 +2453,12 @@ class WalkTownState(TownWalkUps, CityState):
     # Where a place has Black 2's models exported (assets/b2_3d/<zone>.npz: kanto_handoff/unova_map_tools/export3d.py) and the
     # card can draw them (src/dungeon/live3d.py), the map is drawn every frame from Black 2's own camera for it, following
     # you: perspective, buildings turning as you pass, the avenue's camera swinging round its centre. People are drawn into
-    # the same scene. Off ("live3d": False on the game), headless, or with no card: the baked picture.
+    # the same scene. The DS regions are 3D only (Jordan 11-24; their flat pictures are gone): headless (the checks), with no
+    # card and no bundled Mesa (live3d._mesa), or game.live3d False (a checks-only switch), the map's plain tile drawing.
     def _live(self):
         """(scene, the place's camera data from its map) here, or None."""
-        from src.core import settings as _settings
-        if getattr(self.game, "live3d", True) is False or not _settings.get(self.game.story_manager, "live3d"):
-            return None   # (Options, SCREEN & SOUND: 3D camera Flat)
+        if getattr(self.game, "live3d", True) is False:   # (a checks-only switch; Jordan 11-24: the DS regions are 3D only, no Options choice)
+            return None
         tm = getattr(self, "town_map", None)
         m = ((tm.get("rooms") or {}).get(self.room) if getattr(self, "room", None) else tm) if isinstance(tm, dict) else None
         roofs = (m or {}).get("roofs") or {}

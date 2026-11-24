@@ -151,13 +151,11 @@ check(d1 < d0 * 0.9, f"a scene's zoom moves the live camera in ({d0:.1f} -> {d1:
 t.npc_zoom(None); settle(120)
 check(getattr(t, "shadows", False), "an oval under everyone's feet, in the scene too")
 from src.core import settings
-settings.put(g, "live3d", False); settle(3)
-check(t._live() is None, "Options, 3D camera: Flat draws the baked pictures")
-settings.put(g, "live3d", True)
+check("live3d" not in settings.DEFAULTS and t._live(), "3D only (Jordan 11-24): no 3D camera setting, and the scene stays live")
 from src.states.systems.options import OptionsState
 o = OptionsState(g, t, lambda: None)
 o.tab = o.tabs.index("SCREEN & SOUND")
-check(any(r[0] == "3D camera" for r in o.rows()), "Options, SCREEN & SOUND: a 3D camera row")
+check(not any(r[0] == "3D camera" for r in o.rows()), "Options, SCREEN & SOUND: no 3D camera (Flat) row")
 _np, live3d.np = live3d.np, None   # (a Python without numpy: flat, never a crash)
 t = town("plaza", (21, 30))
 check(t.room == "plaza" and t._live() is None, "no numpy: the plaza loads and draws flat")
@@ -167,10 +165,10 @@ pygame.image.save(pygame.display.get_surface(), f"{S}/live3d_03_pier.png")
 t = town("plaza", (21, 30)); settle(5)
 pygame.image.save(pygame.display.get_surface(), f"{S}/live3d_04_plaza.png")
 
-print("5) off: the baked picture")
+print("5) the checks-only switch off: the plain tile drawing, no crash")
 g.live3d = False
 t = town("gym_street", (21, 50))
-check(t._live() is None, "with the live camera off, the baked picture is drawn")
+check(t._live() is None, "with the live camera switched off (checks only), the map still loads and draws")
 g.live3d = True
 print("5) the avenue's street mouths (Jordan 11-21: fell under the road there, couldn't get into the streets)")
 live3d.ALLOW_HOLES = False

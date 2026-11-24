@@ -593,6 +593,7 @@ PRIZES = {
                       ("ITEM", "KINGS_ROCK", 1500)],
     "HOENN_BATTLE_FRONTIER": [("ITEM", "RARE_CANDY", 500), ("ITEM", "PP_UP", 800), ("ITEM", "NUGGET", 1000),   # (the Battle Tower's
                               ("ITEM", "KINGS_ROCK", 1500), ("ITEM", "LEFTOVERS", 4000)],  #  secret floor, 11-15)
+    "TWO_ISLAND": [],   # FireRed's Joyful Game Corner has no prize counter: its games give Berries (src/world/joyful_games.py)
     "VEILSTONE_CITY": [("POKEMON", 133, 1000), ("ITEM", "RARE_CANDY", 500), ("ITEM", "HARD_STONE", 800),
                        ("ITEM", "AMULET_COIN", 2000)],
 }
@@ -773,7 +774,8 @@ class BPShopState(PrizeCounterState):
 # ------------------------------------------------------------------------------------------ Scratch-Off
 # HGSS / Platinum's Pokemon Scratch-Off Corner (Bulbapedia's Gen IV Battle Frontier, 11-22): 1 BP buys three cards; on each,
 # scratch three of its nine squares, three of the same Pokemon win that Pokemon's prize (a Ditto stands in for any one);
-# the prizes are a Nugget and three of the type-resist Berries (a new three each day).
+# the prizes are a Nugget and three Berries - type-resist and stat-lowering ones (a new three each day, by the real date, as the
+# DS's own clock). Leave before scratching a square and your 1 BP comes back; once you've started, unplayed cards are lost.
 SCRATCH_MONS = (25, 175, 446, 54)   # (Pikachu, Togepi, Munchlax, Psyduck: the cards' four, each with its prize; easy to tell apart)
 SCRATCH_DITTO = 132
 SCRATCH_BERRIES = ("QUALOT_BERRY", "TAMATO_BERRY", "WACAN_BERRY", "CHOPLE_BERRY", "COBA_BERRY", "POMEG_BERRY", "HONDEW_BERRY",
@@ -825,10 +827,12 @@ class ScratchOffState(GameState):
         self.btn_next = CommandButton((game.width - 236, game.height - 160, 220, 56), "NEXT CARD", f["button"], self.next_card,
                                       bg_color=theme.POKEMON, autosize=False, visible=False)
         self.cards_left, self.card, self.won = 0, None, []
+        self._paid, self._scratched = False, False
         if bpl.bp(self.story) < 1:
             self.message = "A Scratch-Off costs 1 BP. Win some at the facilities!"
         else:
             bpl.add_bp(self.story, -1)
+            self._paid = True
             self.cards_left = 3
             self.message = "Three cards for 1 BP! Scratch three squares on each."
             self.next_card()
@@ -849,6 +853,7 @@ class ScratchOffState(GameState):
         if not c or c["done"] or i in c["open"] or len(c["open"]) >= 3:
             return
         c["open"][i] = pygame.time.get_ticks()
+        self._scratched = True
         if len(c["open"]) == 3:
             c["done"] = True
             win = scratch_result([c["squares"][j] for j in c["open"]])
@@ -866,6 +871,10 @@ class ScratchOffState(GameState):
                 self.message += " That was your last card. Thanks for playing!"
 
     def leave(self):
+        if getattr(self, "_paid", False) and not getattr(self, "_scratched", False):   # (not one square scratched: the BP back)
+            from src.world import battle_points as bpl
+            bpl.add_bp(self.story, 1)
+            self._paid = False
         self.game.change_state(self.previous_state)
 
     def start(self):

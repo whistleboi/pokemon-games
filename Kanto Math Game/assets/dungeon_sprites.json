@@ -1707,6 +1707,10 @@
     "VIRBANK_COMPLEX_OUTSIDE:Poke Ball behind the Roughneck": {"sheet": "b2_item_ball.png"},
     "VIRBANK_COMPLEX_OUTSIDE:Poke Ball in the grass": {"sheet": "b2_item_ball.png"},
     "VIRBANK_COMPLEX_OUTSIDE:Roughneck by the crane": {"sheet": "b2_c61.png"},
+    "TEAM_GALACTIC_HQ:Galactic machine": {"pic": "dungeon/effects/pt_blank.png"},
+    "TEAM_GALACTIC_HQ:Cyrus": {"sheet": "pt_gingaboss.png"},
+    "TEAM_GALACTIC_HQ:Commander Saturn": {"sheet": "pt_gkanbu2.png"},
+    "AGATE_VILLAGE:Move Tutor": {"sheet": "orre_npc_06.png"},
     "ORRE_BATTLE_FRONTIER:Ace Trainer": {
       "sheet": "orre_trainer_ace_trainer.png"
     },

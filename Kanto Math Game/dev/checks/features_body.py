@@ -1,3 +1,4 @@
+# (Legacy menu clear, Step 5, 11-24: stays on the menus - every place here is in a menu region (Kalos, Galar and Paldea).)
 
 import random as _r
 from src.pokemon import affection

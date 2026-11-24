@@ -99,7 +99,7 @@ S.wild("MYSTRI_STAGE", "Mystri Stage", 70, "indoor", {},
        area_boss={"id": 489, "name": "Phione", "victory_flag": "sinjoh_phione_caught"})
 
 S.mission("sinjoh_m1", "SIDE", "The Sinjoh Ruins",
-          "With Arceus and every Unown, follow the Unown out of the Ruins of Alph. Cynthia is waiting.",
+          "Arceus stirs near the Ruins of Alph. The Unown there may take the two of you somewhere very far away.",
           {"flag_not": "visited_SINJOH_CABIN", "visited": "RUINS_OF_ALPH"}, "A new place")
 S.mission("sinjoh_m2", "SIDE", "The Frozen Spring",
           "Something is trapped in a frozen spring on the Ruined Pathways.",

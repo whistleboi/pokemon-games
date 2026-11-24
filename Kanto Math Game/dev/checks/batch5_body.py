@@ -103,6 +103,8 @@ g.change_state(b)
 msgs = b._award_battle_xp()
 check(msgs and not any("bonus" in m or "easy" in m for m in msgs), f"{msgs[:2]}")
 
+exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())   # (Kanto is walked: its places on their maps, 11-24)
+story.enter_region("KANTO")
 print("4) Mew")
 dex = g.data.data.setdefault("pokedex", {})
 dex.clear()
@@ -111,9 +113,7 @@ for pid in range(1, 150):
 for pid in (2001, 2002, 152, 153):  # other forms/regions don't count
     dex[f"{pid}-normal"] = {"id": pid}
 story.story_flags["mew_spotted_mt_moon"] = True
-story.current_area_key = "MT_MOON"
-ps = ow.PlayState(g)
-g.change_state(ps)
+ps = walk_route("MT_MOON", "KANTO_ROUTE_3")
 check(story.kanto_caught_count() == 149 and not ps._check_route_condition("mew_available", False), "149: no Mew")
 dex["150-normal"] = {"id": 150}
 check(ps._check_route_condition("mew_available", False), "all 150: Mew can be found")
@@ -142,8 +142,7 @@ except Exception as e:
     check(False, f"crash: {e!r}")
 
 print("7) Game Corner menu after Cash In")
-story.current_area_key = "CELADON_CITY"
-city = ow.CityState(g)
+city = walk_town("CELADON_CITY", "KANTO_ROUTE_7")
 g.states["city"] = city
 story.inventory["COIN_CASE"] = 1
 gc = GameCornerState(g, city)
@@ -155,7 +154,9 @@ texts = [getattr(e, "text", "") for e in g.ui_manager.elements]
 check(g.current_state is gc and "LEAVE" in texts, f"menu buttons back: {texts}")
 
 print("8) stray taps on fresh route buttons")
-story.current_area_key = "KANTO_ROUTE_1"
+# (the route menu's buttons: a menu region's route now - Kanto's Route 1 is walked, with no route buttons; 11-24)
+g.walk_towns = g.dungeon_routes = False
+story.current_area_key = "KALOS_ROUTE_2"
 ps = ow.PlayState(g)
 g.change_state(ps)
 ps.show_progression_menu()
@@ -171,13 +172,12 @@ exit_btn.handle_event(ev)
 check(pressed == [1], "a later tap works")
 
 print("9) safety net")
-story.current_area_key = "VIRIDIAN_CITY"
-city = ow.CityState(g)
-g.change_state(city)
+g.walk_towns = g.dungeon_routes = True
+city = walk_town("VIRIDIAN_CITY", "KANTO_ROUTE_1")
 g._error_times = []
 try:
     raise ValueError("test")
 except ValueError:
     g._recover_from_error()
-check(isinstance(g.current_state, ow.CityState), "an error returns to the town")
+check(isinstance(g.current_state, ow.CityState) and walked(g.current_state), "an error returns to the town (its map)")
 print("FAILURES:", fails)
