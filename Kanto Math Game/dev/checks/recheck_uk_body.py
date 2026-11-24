@@ -28,8 +28,8 @@ import json as _json
 _TM = _json.load(open("assets/town_maps.json", encoding="utf-8"))
 _TM = _TM.get("maps", _TM)
 # (Unova's walked rebuild left these out - Unova's inbox, 11-24: a KNOWN line each until Unova places or drops them)
-UNOVA_DROPPED = {("ASPERTIA_CITY", "Battle Leader Cheren"), ("VIRBANK_CITY", "Battle Leader Roxie"),
-                 ("LOSTLORN_FOREST", "SEEK ENTEI")}
+UNOVA_DROPPED = set()   # (11-24, Unova: dropped on purpose, so not checked below: Cheren's and Roxie's post-game battles (Black 2
+#  has no Gym Leader rematches; its Leaders fight in the PWT) and Lostlorn's Entei (not in Black 2))
 SEEK_IDS = {"SEEK ENTEI": 244, "SEEK HEATRAN": 485}   # (a legendary met as a BOSS standing on the walked map: Heatran inside
 _WBOSS = {}                                            #  Reversal Mountain, 11-24)
 
@@ -88,8 +88,7 @@ check(not enter_events("ACCUMULA_TOWN") and not any(e["trainer"].get("name") == 
 nv = next(e["trainer"] for e in enter_events("NUVEMA_TOWN") if e["trainer"].get("name") == "{rival_name}")
 check(nv["by_character"]["bianca"]["team_choice"]["495"] == [501], "Bianca's starter is the one weak to yours")
 check(any(e["trainer"]["name"] == "N" and e["trainer"]["team"] == [519, 535, 532] for e in enter_events("NACRENE_CITY")), "N at Nacrene")
-for area, text in (("ASPERTIA_CITY", "Battle Leader Cheren"), ("VIRBANK_CITY", "Battle Leader Roxie"),
-                   ("HUMILAU_CITY", "Battle Leader Marlon"), ("UNOVA_POKEMON_LEAGUE", "Challenge Iris")):
+for area, text in (("UNOVA_POKEMON_LEAGUE", "Challenge Iris"),):   # (Marlon's post-game battle dropped on purpose, as Cheren's and Roxie's, Unova 9a)
     check_offers(area, text, f"post-game: {text}")
 check(any(x["name"] == "Boss Trainer Janna" for x in prog["BLACK_TOWER_UPPER"]["trainer_pool"])
       and any(x["name"] == "Boss Trainer Jariel" for x in prog["WHITE_TREEHOLLOW"]["trainer_pool"]), "Janna and Jariel")
@@ -113,11 +112,11 @@ check(lys["team"] == [620, 668, 430, 130], "Lysandre: Mienshao, Pyroar, Honchkro
 check(any("Korrina" in o.get("text", "") for o in prog["GEOSENGE_TOWN"]["explore_options"]), "Korrina's Lucario battle")
 
 print("3) medium / low")
-for area, text in (("LOSTLORN_FOREST", "SEEK ENTEI"), ("DREAMYARD", "SEEK LATIOS"), ("REVERSAL_MOUNTAIN", "SEEK HEATRAN"),
+for area, text in (("DREAMYARD", "SEEK LATIOS"), ("REVERSAL_MOUNTAIN", "SEEK HEATRAN"),
                    ("TWIST_MOUNTAIN", "SEEK REGIGIGAS"), ("MARVELOUS_BRIDGE", "SEEK CRESSELIA"), ("CAVE_OF_BEING", "SEEK UXIE"),
                    ("UNDERGROUND_RUINS", "AWAKEN REGICE")):
     check_offers(area, text, f"{area}: {text}")
-for a, b in (("GIANT_CHASM", "UNOVA_ROUTE_13"), ("UNOVA_ROUTE_21", "UNDELLA_BAY"), ("CYLLAGE_CITY", "KALOS_ROUTE_8"),
+for a, b in (("GIANT_CHASM", "UNOVA_ROUTE_13"), ("CYLLAGE_CITY", "KALOS_ROUTE_8"),   # (Route 21 -> Undella Bay dropped: Black 2 joins them only through the walked Seaside Cave, checked by walk:unova; Unova 9a)
              ("KALOS_ROUTE_16", "LUMIOSE_CITY")):
     check(b in links(a), f"{a} -> {b}")
 for area in ("SKYARROW_BRIDGE", "DRIFTVEIL_DRAWBRIDGE", "UNDERGROUND_RUINS", "PWT", "PLEDGE_GROVE", "ABYSSAL_RUINS", "CAVE_OF_BEING",
@@ -133,7 +132,7 @@ for area in ("SKYARROW_BRIDGE", "DRIFTVEIL_DRAWBRIDGE", "UNDERGROUND_RUINS", "PW
         ok = False
         print("     ", type(e).__name__, e)
     if not linked and area == "ABYSSAL_RUINS":   # (nothing leads there since Unova's walked Undella: B2W2's Dive from Undella Bay;
-        print(f"   KNOWN {area}: nothing leads there now (Unova's inbox, 11-24)")   # Unova's inbox, 11-24)
+        print(f"   KNOWN {area}: nothing leads there now (Unova's batch 13: Dive from Undella Bay)")
         linked = True
     check(linked and ok, f"{area}: reachable and opens")
 k7 = data[prog["KALOS_ROUTE_7"]["wild_pool_percentages"]]

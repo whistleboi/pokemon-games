@@ -182,6 +182,7 @@ def build_region(region, title):
         text = open(os.path.join(pdir, fn), encoding="utf-8").read()
         ptitle = re.search(r"<!--title:\s*(.*?)-->", text).group(1).strip()
         body = B.link_places(B.fill(text))
+        body = re.sub(r'href="#mon-(\d+)"', lambda q: f'href="#pokemon-{F.base_id(int(q.group(1)))}"', body)   # (hand-written boxes)
         for k, anchor in B.PLACE_ID.items():   # (a place's name in the text opens its own page)
             body = body.replace(f'href="#{anchor}"', f'href="#{site_ids[k]}"')
         body, box = B.toc(body, f"p{n}")
@@ -251,6 +252,15 @@ def build_region(region, title):
             e = items.setdefault(slug(i["item"]), {"key": i["item"], "name": i["name"], "ic": B.icon("i", i.get("sprite")),
                                                    "desc": item_desc(i["item"]), "where": []})
             e["where"].append({"p": k, "w": where + (f" ({when})" if when else "") + (qty and f" {qty}")})
+    import trainer_classes as TC
+    for k, f in B.FACTS.items():
+        TC.collect(title, k, f)
+    import shops as SH   # (sold or exchanged: the Mart counter by badges, Game Corner prizes, BP counters)
+    for key, place, words, link in SH.entries(["KANTO", "SEVII"] if region == "kanto" else [region.upper()]):
+        key = {"POKE_BALLS": "POKE_BALL"}.get(key, key)
+        e = items.setdefault(slug(key), {"key": key, "name": F.item_name(key), "ic": B.icon("i", F.item_sprite(key)),
+                                         "desc": item_desc(key), "where": []})
+        e["where"].append({"p": place, "w": words, **({"l": link} if link else {})})
     for e in mons.values():
         e["wild"].sort(key=lambda r: first_part.get(r["p"], 99))
     return {"key": region, "title": title, "parts": parts, "places": places, "mons": mons, "items": items, "buildings": blds,
@@ -270,6 +280,23 @@ def map_pictures(out, key):
 ROOMDATA = {}   # (the building pages' room pictures: data/<region>-rooms-maps.json)
 
 
+# Johto's flat map pictures left the game 11-24 (main 21246abb: SoulSilver's maps draw from their 3D scenes); the
+# encyclopedia keeps showing them from a copy of the last version that had them (outside the repo).
+def _handoff():
+    d = os.path.abspath(F.ROOT)
+    while d != os.path.dirname(d) and not os.path.isdir(os.path.join(d, "kanto_handoff")):
+        d = os.path.dirname(d)   # (pokemon-games/, from the main folder or a worktree under .claude/worktrees)
+    return os.path.join(d, "kanto_handoff")
+
+
+TILE_CACHE = os.path.join(_handoff(), "encyclopedia_tiles", "Kanto Math Game", "assets", "tiles")
+
+
+def tile_path(f):
+    p = os.path.join(F.A, "tiles", f)
+    return p if os.path.exists(p) else os.path.join(TILE_CACHE, f)
+
+
 def pictures_of(m, prefix, store):
     from PIL import Image
     tiles = os.path.join(F.A, "tiles")
@@ -279,12 +306,12 @@ def pictures_of(m, prefix, store):
     pics = []
     for i, (lay, label) in enumerate(layers):
         pic = ((lay.get("roofs") or {}).get("_picture") or {})
-        if not pic.get("f") or not os.path.exists(os.path.join(tiles, pic["f"])):
+        if not pic.get("f") or not os.path.exists(tile_path(pic["f"])):
             continue
-        im = Image.open(os.path.join(tiles, pic["f"])).convert("RGBA")
+        im = Image.open(tile_path(pic["f"])).convert("RGBA")
         for o in lay.get("overheads") or []:
-            if isinstance(o, dict) and o.get("kind") == "picture" and os.path.exists(os.path.join(tiles, o.get("f", ""))):
-                top = Image.open(os.path.join(tiles, o["f"])).convert("RGBA")
+            if isinstance(o, dict) and o.get("kind") == "picture" and os.path.exists(tile_path(o.get("f", ""))):
+                top = Image.open(tile_path(o["f"])).convert("RGBA")
                 x, y = (int(v) * int(o.get("px") or pic.get("px") or 16) for v in (o.get("at") or [0, 0]))
                 im.alpha_composite(top, (x, y))
         px = int(pic.get("px") or 16)
@@ -337,15 +364,43 @@ def main(out):
             json.dump(ROOMDATA, fh, separators=(",", ":"))
         ROOMDATA.clear()
         data["src"] = src
+        import more_data as M   # (the region's own Pokedex, in its own order: src/states/systems/pokedex.py region_dex)
+        dexes = M.region_dexes()
+        data["dex"] = dexes.get(key.upper()) or []
         with open(os.path.join(out, "data", f"{key}.json"), "w", encoding="utf-8", newline="\n") as fh:
             json.dump(data, fh, ensure_ascii=False, separators=(",", ":"))
         regions.append({"key": key, "title": title, "src": src, "parts": len(data["parts"]), "places": len(data["places"])})
+    mech = mechanics()
+    import facilities   # (the battle facilities' lists, made from their data files; items linked only where they have a page)
+    known = set()
+    for key, _t, _s in REGIONS:
+        known |= set(json.load(open(os.path.join(out, "data", f"{key}.json"), encoding="utf-8")).get("items", {}))
+    mech.update(facilities.pages(B, F, known))
+    import shops as SH
+    mech["type-chart"] = SH.type_chart_page()   # (the game's own TYPE_CHART)
+    import trainer_classes as TC   # (a page per trainer class, from every region's trainers; collected region by region)
+    mech.update(TC.pages())
+    with open(os.path.join(out, "data", "trainers-maps.json"), "w", encoding="utf-8", newline="\n") as fh:
+        json.dump(TC.PICS, fh, separators=(",", ":"))
     with open(os.path.join(out, "data", "mechanics.json"), "w", encoding="utf-8", newline="\n") as fh:
-        json.dump(mechanics(), fh, ensure_ascii=False, separators=(",", ":"))
+        json.dump(mech, fh, ensure_ascii=False, separators=(",", ":"))
     import journal as J   # (the Journal pages, from quest_book.json / the missions / quest_feats.json every build)
     with open(os.path.join(out, "data", "journal.json"), "w", encoding="utf-8", newline="\n") as fh:
         json.dump(J.pages(HERE, slug), fh, ensure_ascii=False, separators=(",", ":"))
     sp = species_json()   # (after the regions: their icons are in, and every species with an icon gets one)
+    import more_data as M   # (more of each Pokemon and every move, loaded when their pages open; the town maps)
+    pd, _ab = M.pokedex()
+    md = M.movedex()
+    for name, obj in (("pokedex.json", pd), ("movedex.json", md)):
+        with open(os.path.join(out, "data", name), "w", encoding="utf-8", newline="\n") as fh:
+            json.dump(obj, fh, ensure_ascii=False, separators=(",", ":"))
+    keep = {"KANTO", "SEVII", "JOHTO", "ORANGE", "HOENN", "SINNOH", "UNOVA", "ORRE"} & {k.upper() for k, _t, _s in REGIONS} | {"SEVII"}
+    rmaps = {r: v for r, v in M.region_maps(slug).items() if r in keep and v["pts"]}
+    with open(os.path.join(out, "data", "regionmaps.json"), "w", encoding="utf-8", newline="\n") as fh:
+        json.dump(rmaps, fh, ensure_ascii=False, separators=(",", ":"))
+    sp["mv"] = {k: [v["n"], v["t"], v["c"]] for k, v in md.items()}   # (names for links, the move list and search)
+    sp["tms"] = {tm: [v.get("move"), v.get("price"), v.get("tier", 8)] for tm, v in F.TMS.items()}   # (tier: badges for the Mart, src/pokemon/tms.py)
+    sp["maps"] = sorted(rmaps)
     with open(os.path.join(out, "data", "species.json"), "w", encoding="utf-8", newline="\n") as fh:
         json.dump(sp, fh, ensure_ascii=False, separators=(",", ":"))
     css = "".join(f".{c}{{background-image:url(data:image/png;base64,{b})}}" for c, b in B.ICONS.items())

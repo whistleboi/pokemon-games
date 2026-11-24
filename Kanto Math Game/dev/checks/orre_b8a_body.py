@@ -244,8 +244,10 @@ t = town("POKEMON_HQ_LAB", "GATEON_PORT")
 meet(t, "Professor Krane (the stairs)")
 check(F.get("xd_master_ball") and story.inventory.get("MASTER_BALL") == 1, "after the title, Krane's secret staircase: the Master Ball")
 gate = next(o for o in SP["GATEON_PORT"]["travel_options"] if o.get("target_area") == CI)
-check(gate.get("condition") == "beat_orre_champion", "Citadark on the map after the title")
+check("xd_master_ball" in str(gate.get("condition")) and "has_key_lair_badge" in str(gate.get("condition")),
+      "Citadark on the map after the Master Ball and Norman's Key Lair Badge (S3/S4 11-24)")
 
+story.badges.setdefault("ORRE", []).append("CITADARK")   # (Greevil faces you after Drake's Citadark Badge: S3 11-24)
 print("2) The island")
 p = route(CI, "GATEON_PORT")
 meet(p, "NAVIGATOR AT THE DOCK")
@@ -255,7 +257,7 @@ for who in ("Navigator Abson", "Cipher Peon Kleef"):
 check(story.inventory.get("BATTLE_CD_31") and story.inventory.get("PP_MAX") and F.get("snagged_shadow_golduck") and F.get("snagged_shadow_sableye"),
       "the dock: Battle CD 31, a PP Max, Abson's Shadow Golduck and Sableye")
 pool = [t_["name"] for t_ in SP[CI]["trainer_pool"]]
-check(len(pool) == 26, f"26 trainers in the pool, 6 in the story's own battles: 32 in all ({len(pool)})")
+check(len(pool) == 28 and "Team Magma Grunt Sola" in pool, f"26 trainers in the pool plus the Terra Cave's two Magma grunts (S6a), 6 in the story's own battles ({len(pool)})")
 check(max(TR["xd:Story:168"]["levels"]) == 66 and max(TR["xd:Story:200"]["levels"]) == 75 and TR["xd:Story:199"]["levels"] == [78],
       "raised to fit: the dock's ace 66, Greevil's 75, XD001 Lv 78")
 

@@ -48,7 +48,7 @@ cfg = story.get_region_start("ORRE")
 check(cfg.get("starters") == [196, 197] and cfg.get("start_area") == "OUTSKIRT_STAND" and not cfg.get("travel_only"),
       "start at the Outskirt Stand with Espeon or Umbreon")
 check(all(p <= 386 for p in cfg["dex_list"]), "Gen 3 or earlier")
-check(25 <= len(ORRE) <= 35, f"{len(ORRE)} Orre areas")
+check(25 <= len(ORRE) <= 45, f"{len(ORRE)} Orre areas")   # (story rework S6, 11-24: Marine Cave, Fuji's legend spots, the Frontier)
 bad = [(k, o.get("target_area")) for k in ORRE for o in prog[k].get("travel_options", []) + prog[k].get("route_menu", [])
        if o.get("target_area") and o["target_area"] not in prog]
 check(not bad, f"every link leads somewhere {bad}")
@@ -59,8 +59,8 @@ no_traps(ORRE)
 check("Air Transit to Orre" not in travel("LILYCOVE_CITY"), "no plane from Hoenn: Orre is reached like any region")
 story.enter_region("ORRE")
 check("ORRE" in BadgeCaseState(g, ow.CityState(g)).unlocked_regions, "a badge page for Orre's tournaments")
-check(story.get_region_gym_badges("ORRE") == ["PYRITE", "UNDER", "PHENAC", "ORRE"] or
-      set(story.get_region_gym_badges("ORRE")) == {"PYRITE", "UNDER", "PHENAC", "ORRE"}, "four tournament badges")
+EIGHT = ["PHENAC", "PYRITE", "AGATE", "SNAGEM", "GATEON", "KEY_LAIR", "CITADARK", "REALGAM"]   # (story rework, 11-24: eight Gyms)
+check(set(story.get_region_gym_badges("ORRE")) == set(EIGHT), f"eight badges {story.get_region_gym_badges('ORRE')}")
 story.current_area_key = "PHENAC_CITY"
 story.level_cap_mode = "OBEDIENCE"
 check(levels.obey_level(story) == 20, "obedience follows Orre's badges")
@@ -105,6 +105,12 @@ story.story_flags["orre_beat_skrub"] = True
 said = relic_stone()
 pm = g.current_state
 check(type(pm).__name__ == "PokemonPartyMenuState", "Relic Stone: choose which Pokemon (purifying is optional)")
+sh.shadow = {"gauge": 5, "max": 100, "hidden": [], "seen": True}   # (11-24: a heart still shut - the gauge not empty)
+pm.on_select(1)
+check(story.player_team[1] is sh and any("still shut" in ln for ln in sum(said, [])), "a heart still shut: the Relic Stone waits (XD's Heart Gauge)")
+sh.shadow["gauge"] = 0
+said = relic_stone()
+pm = g.current_state
 pm.on_select(1)
 ty = story.player_team[1]
 check(ty.id == 248 and ty.level == 70 and ty.moves == ["CRUNCH", "EARTHQUAKE"] and set(ty.ivs.values()) == {31},
@@ -116,32 +122,30 @@ check(type(g.current_state).__name__ != "PokemonPartyMenuState" and "None of the
 
 print("4) Tournaments, story gates, the League and Jirachi")
 for town, gate in (("PYRITE_TOWN", "orre_power_on"), ("UNDER_COLOSSEUM", "orre_dakim_mt_battle"),   # (Pyrite: the windmill's power, batch 1)
-                   ("PHENAC_CITY", "orre_snattle_phenac"), ("ORRE_COLOSSEUM", "beat_gonzap")):
+                   ("PHENAC_CITY", "got_snag_machine"), ("ORRE_COLOSSEUM", "beat_gonzap")):   # (Phenac first: story rework 11-24)
     req = prog[town]["gym"]["requirements"]
     check(req.get("flag") == gate, f"{town}: its tournament opens after {gate}")
-story.badges["ORRE"] = ["PYRITE", "UNDER", "PHENAC"]
+story.badges["ORRE"] = ["PHENAC", "PYRITE", "AGATE"]
 story.current_area_key = "REALGAM_TOWER"
 c = ow.CityState(g)
 g.change_state(c)
 said = []
 c.show_message = lambda lines, callback=None: said.append(lines)
 c.start_gym_battle()
-check(said and "lift" in str(said[-1]), "Realgam's rooftop sealed until the way up through the tower (batch 7b: Gonzap, then the roof lift)")
-story.badges["ORRE"].append("ORRE")
-story.story_flags["xd_gorigan_beaten"] = True
-story.story_flags["col_gonzap_realgam"] = True
-story.story_flags["gym_progress_REALGAM_TOWER"] = len(prog["REALGAM_TOWER"]["gym"]["trainers"])
-lobby = ow.GymLobbyState(g, None)
-g.change_state(lobby)
-lobby.challenge_gym()
-check([p for p, _ in lineup(battle_of(g.current_state))] == [9399, 373, 68, 212, 289, 199], "Champion Evice (Colosseum's team, his Shadow Tyranitar first: batch 7b)")
-check(prog["REALGAM_TOWER"]["gym"]["leader"]["victory_flag"] == "beat_orre_champion", "Evice's defeat makes you Orre's Champion")
+check(said and "lift" in str(said[-1]), "Realgam's Colosseum sealed until the way up through the tower (Gonzap, then the lift)")
+gy = prog["REALGAM_TOWER"]["gym"]
+check(gy["leader"]["team"][0] == 9399 and gy["leader"]["victory_flag"] == "orre_evice_beaten",
+      "Part 1 ends on Evice (Colosseum's team, his Shadow Tyranitar first)")
+lg = prog["REALGAM_TOWER"]["gym_league"]
+check(lg["requirements"]["badges"] == 8 and [t["name"] for t in lg["trainers"]][:4] ==
+      ["Elite Four Justy", "Elite Four Eagun", "Elite Four Miror B.", "Elite Four Vander"] and lg["leader"]["name"] == "Champion Eldes",
+      "Part 2: the Orre League in Realgam - Justy, Eagun, Miror B., Vander, then Champion Eldes (S5)")
 f = figures("RELIC_FOREST")
 check("THE WISHING STAR" in f and "MEET JIRACHI" not in f, f"no Jirachi yet, on the walked forest ({f})")
-story.story_flags["beat_orre_champion"] = True
+story.story_flags["orre_part2"] = True   # (Jirachi wakes in Part 2, once Evice is beaten)
 run("RELIC_FOREST", "THE WISHING STAR")
 f = figures("RELIC_FOREST")
-check("MEET JIRACHI" in f, f"after the title: Jirachi stands in the forest ({f})")
+check("MEET JIRACHI" in f, f"in Part 2: Jirachi stands in the forest ({f})")
 
 print("5) Visiting every Orre area, as its walked map")
 for k in ORRE:

@@ -127,6 +127,7 @@ def battle_info(game, run):
     level = t["level"]
     info = {"name": e["name"], "class": e["class"], "sprite": e["sprite"], "team": [m["species"] for m in mons],
             "levels": [level] * len(mons), "team_moves": [m["moves"] for m in mons], "held": [m.get("item") for m in mons],
+            "forms": [m.get("form") or None for m in mons],   # (Rotom's appliance by name: applied once forms.py has Rotom's, Main)
             "rewards": {"balls": 3}, "is_boss_battle": e["class"] in ("GYM_LEADER", "CHAMPION")}
     music = CHAMP_THEMES.get(name) if e["class"] == "CHAMPION" else THEMES.get(_region_of(name)) if e["class"] == "GYM_LEADER" \
         else "unova/vs_wcs"

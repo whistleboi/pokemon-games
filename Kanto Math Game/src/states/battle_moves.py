@@ -761,6 +761,11 @@ class MoveMechanics:
             eff = chart.get_multiplier(t, [x for x in types if x != "GHOST"] or ["NORMAL"])
         if eff == 0 and self.vol(defender).get("miracle_eye") and "DARK" in types and t == "PSYCHIC":
             eff = chart.get_multiplier(t, [x for x in types if x != "DARK"] or ["NORMAL"])
+        if eff == 0 and t and self.held(defender) == "RING_TARGET":   # (a Ring Target: its holder's type immunities are gone -
+            eff = 1.0                                                   #  each of its types that would block the move counts as neutral)
+            for x in types:
+                m = chart.get_multiplier(t, [x])
+                eff *= m if m else 1.0
         if t == "FIRE" and self.vol(defender).get("tar_shot"):
             eff *= 2
         return eff

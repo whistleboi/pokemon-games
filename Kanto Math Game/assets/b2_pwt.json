@@ -1,5 +1,5 @@
 {
-"_about": "Black 2's Pokemon World Tournament: dev/builders/unova_pwt.py (a/2/5/5 + a/2/5/6 the Leaders and Champions, a/2/5/2 + a/2/5/0 the Driftveil Tournament; rosters and BP from Bulbapedia)",
+"_about": "Black 2's Pokemon World Tournament: dev/builders/unova_pwt.py (a/2/5/5 + a/2/5/6 the Leaders and Champions, a/2/5/2 + a/2/5/0 the Driftveil Tournament; rosters and BP from Bulbapedia) Sets' \"form\": Rotom's appliance by name (Black 2's 1 heat, 2 wash, 3 frost, 4 fan, 5 mow); an Ampharos set's form 5 was bad data, now 0 (11-24).",
 "trainers": {
 "Cheren": {
 "name": "Cheren",
@@ -2813,7 +2813,7 @@
 ],
 "item": "FLAME_ORB",
 "nature": 5,
-"form": 1
+"form": "heat"
 },
 "115": {
 "species": 464,
@@ -3725,7 +3725,7 @@
 ],
 "item": "WIDE_LENS",
 "nature": 10,
-"form": 2
+"form": "wash"
 },
 "191": {
 "species": 181,
@@ -3737,7 +3737,7 @@
 ],
 "item": "EXPERT_BELT",
 "nature": 3,
-"form": 5
+"form": 0
 },
 "192": {
 "species": 26,
@@ -4733,7 +4733,7 @@
 ],
 "item": "KINGS_ROCK",
 "nature": 5,
-"form": 4
+"form": "fan"
 },
 "275": {
 "species": 135,

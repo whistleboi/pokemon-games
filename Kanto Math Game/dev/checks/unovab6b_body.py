@@ -216,8 +216,8 @@ go(0, -1, 1, 80)
 check(story.current_area_key == "CELESTIAL_TOWER_3F", f"up the 2F ramp to 3F ({story.current_area_key})")
 roof = tmaps["CELESTIAL_TOWER_ROOF"]
 check("16,10" in (roof.get("sign_events") or {}), "the bell on the roof")
-fog = next((c for o in roof["people"] for c in _opts(o) if isinstance(c, dict) and c.get("action") == "BOSS"), None)
-check(fog and fog["boss"]["name"] == "Black Fog", "the menu era's Black Fog waits on the roof")
+fog = next((o for o in SP["CELESTIAL_TOWER"].get("route_menu") or [] if (o.get("boss") or {}).get("id") == 10501), None)
+check(fog and fog["boss"]["name"] == "Black Fog", "the Black Fog haunts the tower (its route_menu, as every haunt's: blackfog walks to it)")
 nurse = next(t for t in SP["CELESTIAL_TOWER_3F"]["trainer_pool"] if "Dixie" in t["name"])
 check(nurse, "Nurse Dixie on 3F")
 

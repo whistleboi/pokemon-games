@@ -208,13 +208,14 @@ check(not bad, f"every move one the game knows ({bad})")
 lab = [t["name"] for t in SP["XD_CIPHER_LAB"]["trainer_pool"]]
 check(len(lab) == 21 and "Cipher Peon Resix" in lab and "Cipher R&D Klots" in lab, f"the Cipher Lab's 21 ({len(lab)})")
 lov = next(o for o in SP["XD_CIPHER_LAB"]["route_menu"] if o["text"] == "BATTLE CIPHER ADMIN LOVRINA")["event"]["battle"]
-check(max(lov["levels"]) == 48 and lov["levels"][-1] == 48, f"Lovrina's ace (Shadow Delcatty) raised to 48 ({lov['levels']})")
+check(max(lov["levels"]) == 41 and lov["levels"][-1] == 41, f"Lovrina's ace (Shadow Delcatty) at Part 2's stage, 41 (L1 11-24) ({lov['levels']})")
 check(max(TR["xd:Story:17"]["levels"]) == 47, "Naps's Shadow Teddiursa at 47")
 
 print("2) The HQ Lab: Krane carried off")
 t = town("POKEMON_HQ_LAB", "GATEON_PORT")
 check(not F.get("xd_kidnap_seen"), "before Ein's Lab: nothing happening")
 F["orre_ein_lab"] = True
+F["orre_part2"] = True   # (Part 2 begins once Evice is beaten: story rework 11-24)
 t = town("POKEMON_HQ_LAB", "GATEON_PORT")
 check(F.get("xd_kidnap_seen"), "after Ein: Naps drags Krane out, Lily asks for help")
 meet(t, "Spy Naps")
@@ -254,9 +255,12 @@ check(story.inventory.get("BATTLE_CD_06"), "Battle CD 06 in the Krabby Club")
 t = town("POKEMON_HQ_LAB", "GATEON_PORT")
 meet(t, "Lily")
 check(F.get("xd_machine_part_given") and not story.inventory.get("MACHINE_PART"), "the part to Lily; Datan traced the car to the Cipher Lab")
+_cl = next(o for o in SP["GATEON_PORT"]["travel_options"] if o["target_area"] == "XD_CIPHER_LAB")["condition"]
 t = town("GATEON_PORT", "POKEMON_HQ_LAB")
-check(t._check_menu_condition(next(o for o in SP["GATEON_PORT"]["travel_options"] if o["target_area"] == "XD_CIPHER_LAB")["condition"]),
-      "now the Cipher Lab is on the map")
+check(not t._check_menu_condition(_cl), "...but the Cipher Lab waits for Jasmine's Gateon Badge (S3 11-24)")
+story.badges.setdefault("ORRE", []).append("GATEON")
+t = town("GATEON_PORT", "POKEMON_HQ_LAB")
+check(t._check_menu_condition(_cl), "now the Cipher Lab is on the map")
 
 print("4) The Cipher Lab")
 p = route("XD_CIPHER_LAB", "GATEON_PORT")
@@ -289,6 +293,7 @@ pk = g.current_state
 names = [c[0] for c in getattr(pk, "choices", [])]
 check(type(pk).__name__ == "PickListState" and any(n.startswith("CD 06") for n in names), f"it lists the CDs you own ({names})")
 if type(pk).__name__ == "PickListState":
+    _ice = story.inventory.get("ICE_HEAL", 0)
     pk.pick("06")
     for _ in range(60):
         st = g.current_state
@@ -306,6 +311,7 @@ if type(pk).__name__ == "PickListState":
         p.heal_full()
     play(4000)
 check(F.get("battle_cd_06_cleared"), "won: Battle CD 06 cleared")
+check(story.inventory.get("ICE_HEAL", 0) >= _ice + 1, "its prize, XD's: an Ice Heal (the first clear only)")
 check([p.id for p in story.player_team] == mine, "your own team is back afterwards")
 
 print("6) The Journal")

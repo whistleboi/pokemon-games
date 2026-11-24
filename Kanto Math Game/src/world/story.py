@@ -86,9 +86,9 @@ class StoryManager:
     # ---- Regional storage --------------------------------------------------------------
     # Each region has its own party, PC and bag, so a new region starts fresh (key items too).
     # Becoming Champion of a second region links those regions' storage into one; every later
-    # title joins it. Sub-regions use their region's storage; the Orange Islands and Orre use
-    # the region they're reached from ("storage_region" in REGION_START). Money and Poke Balls
-    # are shared everywhere.
+    # title joins it. Sub-regions use their region's storage; the Orange Islands and Orre are regions of
+    # their own with their own (a REGION_START "storage_region" would share another's). Money is shared
+    # everywhere; Poke Balls live in each region's own Bag.
     LINKED = "LINKED"
     CARRY_ITEMS = {"SS_TICKET", "MYSTIC_TICKET", "AURORA_TICKET", "GS_BALL"}  # travel tickets go with you between regions' Bags (the far islands' from Lilycove); the GS Ball too, from Ivy in Orange to Kurt in Johto (Journeys, Jordan 11-24)
 
@@ -1114,9 +1114,11 @@ class StoryManager:
         for area in self.game.loader.area_data.get("STORY_PROGRESSION", {}).values():
             if str(area.get("region") or "").upper() != region:
                 continue
-            leader = area.get("gym", {}).get("leader")
-            if isinstance(leader, dict) and leader.get("badge_reward"):
-                badges.append(leader["badge_reward"])
+            for key in ["gym"] + [k for k in area if k.startswith("gym_")]:   # (a second Gym in one area: Orre's Birch in Realgam, 11-24)
+                gym = area.get(key)
+                leader = gym.get("leader") if isinstance(gym, dict) else None
+                if isinstance(leader, dict) and leader.get("badge_reward") and leader["badge_reward"] not in badges:
+                    badges.append(leader["badge_reward"])
         return badges
 
     def area_region(self, area_key):
@@ -1941,6 +1943,19 @@ class StoryManager:
             self.current_area_key = "MT_SILVER"
         # Old areas nothing leads to any more (Jordan 11-16: deleted): Moomoo's drawn house and barn (the farm is Route 39's rooms),
         # and Hoenn's dropped Secret Islet / Meadow / Shore (back to the route their Soaring landing hangs off).
+        # Platinum's Galactic Warehouse and HQ story (11-24) came after saves that already cleared them: those count its steps
+        # as done (the Warehouse guards, Looker's Storage Key door, Cyrus and Saturn), and keep the Galactic Key the HQ's doors
+        # ask for (in Sinnoh's Bag). Found by sinnoh_played's old-save check.
+        if f.get("galactic_warehouse_cleared"):
+            for _k in ("sinnoh_warehouse_guards_beaten", "sinnoh_dawn_warehouse_call"):
+                f.setdefault(_k, True)
+        if f.get("galactic_hq_cleared"):
+            for _k in ("sinnoh_storage_door_open", "sinnoh_hq_cyrus_beaten", "sinnoh_hq_saturn_beaten"):
+                f.setdefault(_k, True)
+            _key = self.store_key("SINNOH")
+            for _bag in ((self.region_stores.get(_key) or {}).get("bag"), self.inventory if _key == getattr(self, "active_store", None) else None):
+                if isinstance(_bag, dict) and not _bag.get("GALACTIC_KEY"):
+                    _bag["GALACTIC_KEY"] = 1
         _gone = {"MOOMOO_HOUSE": "JOHTO_ROUTE_39", "MOOMOO_BARN": "JOHTO_ROUTE_39", "HOENN_SECRET_ISLET": "HOENN_ROUTE_126",
                  "HOENN_SECRET_MEADOW": "HOENN_ROUTE_130", "HOENN_SECRET_SHORE": "HOENN_ROUTE_129"}
         if self.current_area_key in _gone:

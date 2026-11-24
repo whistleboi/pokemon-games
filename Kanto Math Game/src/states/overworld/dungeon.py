@@ -2738,11 +2738,34 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         self.flash(f"You found a {name}!")
 
     def _cracked_floor(self, t):
-        """A cracked floor (a map's "cracked" {"to": floor below, "tiles": ["x,y"]}, Emerald's Sky Pillar): on the Bicycle
-        you're over it before it gives; on foot it crumbles and you fall to the floor below, onto the same spot."""
+        """A cracked floor (a map's "cracked" {"to": floor below, "tiles": ["x,y"]}, Emerald's Sky Pillar): on foot it crumbles
+        under you; on the Bicycle you're over it while you keep riding (Emerald's Mach Bike) - stop on it and it gives
+        (update(): _crack_stop). Either way you fall to the floor below, onto the same spot (11-24: riding over every crack
+        made Sky Pillar's falls - the way up past 4F - impossible with a Bicycle)."""
         cr = self._here_art().get("cracked") or {}
-        if f"{t[0]},{t[1]}" not in set(cr.get("tiles") or ()) or self._cycling(t):
+        if f"{t[0]},{t[1]}" not in set(cr.get("tiles") or ()):
+            self._on_crack = None
             return False
+        if self._cycling(t):
+            self._on_crack = (self.run.index, tuple(t))   # (riding over it: it holds while you keep going)
+            return False
+        return self._fall_through(t)
+
+    def _crack_stop(self):
+        """Riding, stopped on a cracked tile a moment (8 frames: a step on is still riding on): it gives way."""
+        oc = getattr(self, "_on_crack", None)
+        if not oc or getattr(self, "anim", 0) or self.walk_goal or self.dialogue_box.visible:
+            self._crack_wait = 0
+            return
+        self._crack_wait = getattr(self, "_crack_wait", 0) + 1
+        if self._crack_wait < 8:
+            return
+        self._on_crack, self._crack_wait = None, 0
+        if oc == (self.run.index, tuple(self.run.player)):
+            self._fall_through(oc[1])
+
+    def _fall_through(self, t):
+        cr = self._here_art().get("cracked") or {}
         to = int(cr["to"])
         below = self.run.made(to)
         x, y = min(t[0], below.w - 2), min(t[1], below.h - 2)   # (a smaller floor below: the nearest spot on it)
@@ -4515,6 +4538,8 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
                         self.walk_goal = None
                     else:
                         self.step(*step)
+            if getattr(self, "_on_crack", None):   # (after this frame's walking and held keys: stopped on a cracked floor
+                self._crack_stop()                  #  on the Bicycle, it gives way)
         elif self.mode == "MATH":
             self.math_timer -= 1
             if self.math_timer <= 0:
@@ -6041,6 +6066,8 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
                 return False
             if (i, x, y) in goals:
                 return True
+            if (x, y) in cracks[i][1] and not (bike and plan_of(i).get("cycling")):   # (on foot a crack gives way: only the fall below)
+                return False
             kind = hard(i, x, y, tog)
             if kind in (None, "boss"):
                 return True
@@ -6051,7 +6078,9 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
 
         stops = [{tuple(t) for t in (plan_of(i).get("stops") or [])} for i in range(len(floors))]
         thin = [(int((plan_of(i).get("thin_ice") or {}).get("to", -1)), {tuple(int(v) for v in k.split(",")) for k in (plan_of(i).get("thin_ice") or {}).get("tiles", [])})
-                for i in range(len(floors))]   # (FireRed's thin ice: crossed once; stepped on again, a drop to the floor below: 11-17)
+                for i in range(len(floors))]
+        cracks = [(int((plan_of(i).get("cracked") or {}).get("to", -1)), {tuple(int(v) for v in k.split(",")) for k in (plan_of(i).get("cracked") or {}).get("tiles", [])})
+                  for i in range(len(floors))]   # (Sky Pillar's cracked floors: stepped onto, a fall to the floor below, the same spot; 11-24)   # (FireRed's thin ice: crossed once; stepped on again, a drop to the floor below: 11-17)
 
         def _can(c):   # (a lift panel's "requires": items and flags, as the route's own conditions)
             c = str(c)
@@ -6196,6 +6225,14 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
                     t2 = (x + dx, y + dy)
                     if t2 in thin[i][1] and 0 <= to < len(floors) and floors[to].walkable(*t2):
                         nxt.append((to, t2[0], t2[1], tog))
+            if not through and cracks[i][1]:   # (onto a cracked tile beside you from a stop: down to the floor below, the same spot)
+                to = cracks[i][0]
+                for dx, dy in core.DIRS:
+                    t2 = (x + dx, y + dy)
+                    if t2 in cracks[i][1] and 0 <= to < len(floors):
+                        land = (min(t2[0], floors[to].w - 2), min(t2[1], floors[to].h - 2))
+                        if floors[to].walkable(*land):
+                            nxt.append((to, land[0], land[1], tog))
             if not through and _diver:   # (Dive down from deep sea, or up from the seabed's sunlit floor)
                 d2 = dive_to(i, x, y)
                 if d2 is not None:
@@ -6270,6 +6307,8 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
                     return None
                 self._lift_plan = b[0]
                 return (rides[b][0], "Lift to " + rides[b][1])
+            if b[0] != a[0] and a not in passed and (b[1], b[2]) in cracks[a[0]][1]:   # (a drop through a cracked floor: stop on it)
+                return ((b[1], b[2]), "Cracked floor: stop on it") if a[0] == self.run.index else None
             if b[0] != a[0] and a not in passed:   # (a drop through thin ice: the tile to step onto, again)
                 if a[0] != self.run.index:
                     return None

@@ -88,11 +88,16 @@ details.walk summary h2 { display: inline-block; } details.walk summary::after {
 .mapfull img { display: block; max-width: 100%; height: auto; image-rendering: pixelated; }
 .mechlist { padding-left: 1.2em; } .mechlist li { margin: .3em 0; }
 ol.chapters li, ul.sides li { margin: .6em 0; } details.howto summary { cursor: pointer; font-size: .9em; } details.howto { margin-top: .3em; }
+.regionmap { position: relative; max-width: 960px; } .regionmap img { width: 100%; height: auto; image-rendering: pixelated; display: block; border-radius: 6px; }
+.mapdot { position: absolute; width: 14px; height: 14px; margin: -7px 0 0 -7px; border-radius: 50%; background: var(--accent, #e33); border: 2px solid #fff; box-shadow: 0 0 0 1px #0006; }
+.mapdot span { display: none; position: absolute; left: 16px; top: -4px; white-space: nowrap; background: #000c; color: #fff; padding: 1px 6px; border-radius: 4px; font-size: 12px; }
+.mapdot:hover span, .mapdot:focus span { display: block; }
+.tcpics { display: flex; gap: 12px; flex-wrap: wrap; align-items: flex-end; margin: 8px 0 12px; } .tcpics img { image-rendering: pixelated; max-height: 96px; }
 </style>
 
 <header class="bar"><div class="in">
   <a class="home" href="#home">Pokémath Encyclopedia</a>
-  <nav aria-label="Lists"><a href="#list-walkthrough">Walkthrough</a><a href="#list-places">Places</a><a href="#list-pokemon">Pokémon</a><a href="#list-items">Items</a><a href="#list-trainers">Trainers</a><a href="#journal">Journal</a><a href="#list-buildings">Buildings</a><a href="#list-mechanics">Mechanics</a></nav>
+  <nav aria-label="Lists"><a href="#list-walkthrough">Walkthrough</a><a href="#list-places">Places</a><a href="#list-pokemon">Pokémon</a><a href="#list-moves">Moves</a><a href="#list-items">Items</a><a href="#list-trainers">Trainers</a><a href="#journal">Journal</a><a href="#list-buildings">Buildings</a><a href="#list-mechanics">Mechanics</a></nav>
   <div class="search"><input id="q" type="search" placeholder="Search a place, Pokémon, item…" aria-label="Search" autocomplete="off"><div class="hits" id="hits" hidden></div></div>
 </div></header>
 <main class="wrap" id="app"><p class="loading">Loading…</p></main>
@@ -127,7 +132,7 @@ function setTitle(t) { document.title = t ? `${t} · Pokémath Encyclopedia` : "
 function home() {
   setTitle("");
   const live = SITE.live.map(r => `<div class="card"><h3>${esc(r.title)}</h3><p>${esc(r.src)}. ${r.parts} parts, ${r.places} places.</p>
-    <div class="chips"><a href="#part-${r.key}-1">Start the walkthrough</a><a href="#places-${slug(r.title.split(" + ")[0])}">Its places</a></div></div>`).join("");
+    <div class="chips"><a href="#part-${r.key}-1">Start the walkthrough</a><a href="#places-${slug(r.title.split(" + ")[0])}">Its places</a><a href="#dex-${r.key}">Its Pokédex</a></div></div>`).join("");
   const later = SITE.later.map(n => `<div class="card later"><h3>${esc(n)}</h3><p>Not written yet.</p></div>`).join("");
   const walks = walksHTML();
   return `<div class="crumb">Kanto Math Game</div><h1>Pokémath Encyclopedia</h1>
@@ -201,14 +206,14 @@ function monView(id) {
   if (!where) where = `<p class="small">Not found in the wild in the regions written so far.</p>`;
   return `<div class="crumb"><a href="#list-pokemon">Pokémon</a> · #${String(id).padStart(3, "0")}</div>
     <div class="hero">${ic(id, "big")}<div><h1>${esc(s.n)}</h1><div class="types">${types}</div></div></div>
-    <div class="facts">${facts}</div>${evo}${stats}<h3>Where to find it</h3><div class="grid">${where}</div>${used ? `<h3>Used by</h3><div class="grid">${used}</div>` : ""}`;
+    <div class="facts">${facts}</div>${evo}${stats}<div id="more-mon" data-id="${id}"></div><h3>Where to find it</h3><div class="grid">${where}</div>${used ? `<h3>Used by</h3><div class="grid">${used}</div>` : ""}`;
 }
 
 function itemView(s) {
   let e = null; for (const r of Object.values(D.regions)) if (r.items[s]) { e = { ...r.items[s], all: [] }; break; }
   if (!e) return notFound();
   setTitle(e.name);
-  const rows = []; for (const r of Object.values(D.regions)) (r.items[s]?.where || []).forEach(w => rows.push(`<tr><td>${placeLink(w.p)}</td><td>${esc(w.w)}</td></tr>`));
+  const rows = []; for (const r of Object.values(D.regions)) (r.items[s]?.where || []).forEach(w => rows.push(`<tr><td>${w.p ? placeLink(w.p) : (w.l || "—")}${w.p ? "" : ` <span class="small">(${esc(r.title)})</span>`}</td><td>${esc(w.w)}</td></tr>`));
   return `<div class="crumb"><a href="#list-items">Items</a></div><div class="hero">${e.ic.replace('class="ic ', 'class="ic mid ')}<h1>${esc(e.name)}</h1></div>
     ${e.desc ? `<p>${esc(e.desc)}</p>` : ""}<div class="grid">${frame("Where to get it", ["Place", "How"], rows)}</div>`;
 }
@@ -219,6 +224,79 @@ function trainerView(s) {
   setTitle(t.name);
   return `<div class="crumb"><a href="#list-trainers">Trainers</a> · ${esc(t.cls)}</div><h1>${esc(t.name)}</h1>
     ${t.battles.map(b => `<h3>${placeLink(b.p)}</h3>${b.html}`).join("")}`;
+}
+
+let MORE = {};
+function loadData(name) { return (MORE[name] ||= fetch(`data/${name}.json`).then(x => x.json())); }
+function moveKey(s) { return Object.keys(D.sp.mv).find(k => slug(k) === s); }
+function moveLink(k) { const m = D.sp.mv[k]; return `<a class="x" href="#move-${slug(k)}">${esc(m ? m[0] : k)}</a>`; }
+function itemLinkIf(key, name) { const k = slug(key); return Object.values(D.regions).some(r => r.items[k]) ? `<a href="#item-${k}">${esc(name)}</a>` : esc(name); }
+
+function fillMore() {
+  const mon = document.getElementById("more-mon");
+  if (mon) loadData("pokedex").then(pd => {
+    const e = pd[mon.dataset.id]; if (!e) return;
+    const facts = [];
+    if (e.ab) facts.push(["Ability", esc(e.ab.join(" or "))]);
+    if (e.hab) facts.push(["Hidden Ability", esc(e.hab)]);
+    if (e.eg) facts.push(["Egg groups", esc(e.eg.join(", "))]);
+    if (e.gr) facts.push(["Growth", esc(e.gr)]);
+    if (e.ev) facts.push(["EV yield", esc(e.ev)]);
+    let h = facts.length ? `<div class="facts">${facts.map(([a, b]) => `<div><b>${a}</b>${b}</div>`).join("")}</div>` : "";
+    if (e.mega) h += `<h3>Mega Evolution</h3>` + e.mega.map(m => `<p><b>${esc(m.n)}</b> (${m.t.map(t => `<span class="type">${esc(t)}</span>`).join("")}) with the ${itemLinkIf(m.ik.replace(/-/g, "_"), m.item)}. Base stats: ${m.s.map((v, i) => `${STAT[i]} ${v}`).join(", ")}. See <a href="#mechanic-mega-evolution">Mega Evolution</a>.</p>`).join("");
+    if (e.ls) h += frame("Moves it learns by level", ["Level", "Move", "Type", "Category"], e.ls.map(([lv, k]) => `<tr><td>${lv <= 1 ? "Start" : lv}</td><td>${moveLink(k)}</td><td>${D.sp.mv[k] ? esc(D.sp.mv[k][1]) : ""}</td><td>${D.sp.mv[k] ? esc(D.sp.mv[k][2]) : ""}</td></tr>`));
+    if (e.tm) h += `<h3>TMs it can learn</h3><div class="chips">${e.tm.map(tm => { const mv = (D.sp.tms[tm] || [tm])[0]; return `<a href="#move-${slug(mv)}">${esc(tm)} ${esc(D.sp.mv[mv] ? D.sp.mv[mv][0] : mv)}</a>`; }).join("")}</div>`;
+    mon.innerHTML = h;
+  });
+  const mv = document.getElementById("more-move");
+  if (mv) loadData("movedex").then(md => {
+    const m = md[mv.dataset.key]; if (!m) return;
+    const facts = [["Type", esc(m.t)], ["Category", esc(m.c)], ["Power", m.p ?? "—"], ["Accuracy", m.a != null ? m.a + "%" : "—"], ["PP", m.pp ?? "—"]];
+    if (m.pr) facts.push(["Priority", (m.pr > 0 ? "+" : "") + m.pr]);
+    if (m.tm) facts.push(["TM", itemLinkIf(m.tm, m.tm)]);
+    let h = `<div class="facts">${facts.map(([a, b]) => `<div><b>${a}</b>${b}</div>`).join("")}</div>`;
+    if (m.e) h += `<p>${esc(m.e)}</p>`;
+    if (m.lv.length) h += frame(`Pokémon that learn it by level (${m.lv.length})`, ["Pokémon", "Level"], m.lv.map(([pid, lv]) => `<tr><td>${ic(pid)}${monLink(pid)}</td><td>${lv <= 1 ? "Start" : lv}</td></tr>`));
+    if (m.tml.length) h += `<h3>Pokémon that learn it from ${esc(m.tm || "its TM")} (${m.tml.length})</h3><ul class="grid3">${m.tml.map(pid => `<li><a href="#pokemon-${pid}">${ic(pid)}${esc(monName(pid))}</a></li>`).join("")}</ul>`;
+    mv.innerHTML = h;
+  });
+  const map = document.getElementById("region-map");
+  if (map) loadData("regionmaps").then(rm => {
+    const r = rm[map.dataset.r]; if (!r) { map.innerHTML = "<p>No town map for this region.</p>"; return; }
+    const dots = Object.entries(r.pts).map(([s, [x, y, n]]) => `<a class="mapdot" href="#place-${s}" style="left:${(100 * x / r.w).toFixed(2)}%;top:${(100 * y / r.h).toFixed(2)}%" title="${esc(n)}"><span>${esc(n)}</span></a>`).join("");
+    map.innerHTML = `<div class="regionmap"><img src="${r.img}" alt="Town map of ${esc(map.dataset.title)}" width="${r.w}" height="${r.h}">${dots}</div>
+      <h3>Places on the map</h3><div class="chips">${Object.entries(r.pts).map(([s, [, , n]]) => `<a href="#place-${s}">${esc(n)}</a>`).join("")}</div>`;
+  });
+}
+
+function moveView(s) {
+  const k = moveKey(s); if (!k) return notFound();
+  const [n, t] = D.sp.mv[k];
+  setTitle(n);
+  return `<div class="crumb"><a href="#list-moves">Moves</a> · ${esc(t)}</div><h1>${esc(n)}</h1><div id="more-move" data-key="${esc(k)}"><p class="loading">Loading…</p></div>`;
+}
+
+function dexView(key) {
+  const r = D.regions[key]; if (!r || !r.dex || !r.dex.length) return notFound();
+  setTitle(`${r.title} Pokédex`);
+  const rows = r.dex.map((id, i) => {
+    const m = r.mons[id];
+    const places = m ? [...new Set(m.wild.map(w => w.p))] : [];
+    const where = places.length ? places.slice(0, 4).map(placeLink).join(", ") + (places.length > 4 ? ` and ${places.length - 4} more` : "") : `<span class="small">not in the wild here</span>`;
+    return `<tr><td>${String(i + 1).padStart(3, "0")}</td><td>${ic(id)}${monLink(id)}</td><td>${where}</td></tr>`;
+  });
+  return `<div class="crumb"><a href="#list-pokemon">Pokémon</a> · Pokédex</div><h1>${esc(r.title)} Pokédex</h1>
+    <p class="lede">The ${rows.length} Pokémon of ${esc(r.title)}'s own Pokédex, in its order, with where to catch each one there. Pokémon "not in the wild here" come by evolving, from people, or from a story event: their pages say how.</p>` +
+    frame(`${r.title} Pokédex`, ["No.", "Pokémon", "Where to catch it here"], rows);
+}
+
+function mapView(rk) {
+  const R = rk.toUpperCase();
+  if (!(D.sp.maps || []).includes(R)) return notFound();
+  const title = R === "SEVII" ? "Sevii Islands" : R === "ORANGE" ? "Orange Islands" : R.charAt(0) + R.slice(1).toLowerCase();
+  setTitle(`${title} town map`);
+  return `<div class="crumb"><a href="#list-places">Places</a> · Town map</div><h1>${esc(title)} town map</h1>
+    <p class="lede">The game's own town map, as its Fly screen shows it. Tap a marked place to open its page.</p><div id="region-map" data-r="${R}" data-title="${esc(title)}"><p class="loading">Loading…</p></div>`;
 }
 
 function buildingView(id) {
@@ -263,6 +341,7 @@ function listView(kind) {
   if (kind === "places") {
     setTitle("Places");
     return `<div class="crumb">Lists</div><h1>Places</h1><p class="lede">Every place, region by region. Tap a region's name to fold it away.</p>` +
+      ((D.sp.maps || []).length ? `<p><b>Town maps:</b> ${D.sp.maps.map(R => `<a href="#map-${R.toLowerCase()}">${esc(R === "SEVII" ? "Sevii Islands" : R === "ORANGE" ? "Orange Islands" : R.charAt(0) + R.slice(1).toLowerCase())}</a>`).join(" · ")}</p>` : "") +
       allBoxes().map(b => navbox(b, null, true)).join("");
   }
   if (kind === "pokemon") {
@@ -270,13 +349,30 @@ function listView(kind) {
     const seen = new Set(); Object.values(D.regions).forEach(r => Object.keys(r.mons).forEach(k => seen.add(+k)));
     const ids = Object.keys(D.sp.species).map(Number).filter(i => seen.has(i)).sort((a, b) => a - b);
     return `<div class="crumb">Lists</div><h1>Pokémon</h1><p class="lede">${ids.length} Pokémon you can meet in the regions written so far. Every other Pokémon has a page too: search for it.</p>
+      <p><b>Each region's own Pokédex:</b> ${Object.values(D.regions).filter(r => (r.dex || []).length).map(r => `<a href="#dex-${r.key}">${esc(r.title)}</a>`).join(" · ")} · <a href="#list-tms">TM list</a></p>
       <ul class="grid3">${ids.map(i => `<li><a href="#pokemon-${i}"><span class="no">#${String(i).padStart(3, "0")}</span>${ic(i)}${esc(monName(i))}</a></li>`).join("")}</ul>`;
+  }
+  if (kind === "moves") {
+    setTitle("Moves");
+    const by = {}; Object.entries(D.sp.mv).forEach(([k, [n, t]]) => (by[t || "Other"] ||= []).push([k, n]));
+    return `<div class="crumb">Lists</div><h1>Moves</h1><p class="lede">Every move the game knows, by type. Each page says what the move does and which Pokémon learn it, by level or by TM. See also the <a href="#list-tms">TM list</a>.</p>` +
+      Object.keys(by).sort().map(t => `<h3>${esc(t)}</h3><div class="chips">${by[t].sort((a, b) => a[1].localeCompare(b[1])).map(([k, n]) => `<a href="#move-${slug(k)}">${esc(n)}</a>`).join("")}</div>`).join("");
+  }
+  if (kind === "tms") {
+    setTitle("TMs");
+    const rows = Object.entries(D.sp.tms).sort().map(([tm, [mv, price, tier]]) => {
+      const where = Object.values(D.regions).filter(r => r.items[slug(tm)]).map(r => `<a href="#item-${slug(tm)}">${esc(r.title)}</a>`);
+      const n = D.sp.mv[mv] ? D.sp.mv[mv][0] : mv;
+      return `<tr><td>${esc(tm)}</td><td><a href="#move-${slug(mv)}">${esc(n)}</a></td><td>${D.sp.mv[mv] ? esc(D.sp.mv[mv][1]) : ""}</td><td>${tier ? `${tier} badge${tier > 1 ? "s" : ""}` : "From the start"}${price ? ` · $${price.toLocaleString()}` : ""}</td><td>${where.join(", ") || "—"}</td></tr>`;
+    });
+    return `<div class="crumb">Lists</div><h1>TMs</h1><p class="lede">All ${rows.length} TMs, in this game's own numbering. A TM teaches its move for good: once you have it, every Pokémon that can learn it can use it. Every region's Poké Mart but the Orange Islands' sells each TM once you hold that many of the region's badges; "Found in" lists the regions where one also lies on the ground or is handed to you (the TM's page says where). See <a href="#mechanic-tms-and-tutors">TMs and tutors</a>.</p>` +
+      frame("Every TM", ["TM", "Move", "Type", "Poké Mart", "Found in"], rows);
   }
   if (kind === "items") {
     setTitle("Items");
     const all = {}; Object.values(D.regions).forEach(r => Object.entries(r.items).forEach(([k, e]) => all[k] ||= e));
     const ks = Object.keys(all).sort((a, b) => all[a].name.localeCompare(all[b].name));
-    return `<div class="crumb">Lists</div><h1>Items</h1><p class="lede">Every item lying on the ground, hidden, or handed to you.</p>
+    return `<div class="crumb">Lists</div><h1>Items</h1><p class="lede">Every item lying on the ground, hidden, handed to you, sold at the Poké Mart counter, or swapped at a Game Corner or Battle Points counter.</p>
       <ul class="grid3">${ks.map(k => `<li><a href="#item-${k}">${all[k].ic}${esc(all[k].name)}</a></li>`).join("")}</ul>`;
   }
   if (kind === "buildings") {
@@ -290,13 +386,14 @@ function listView(kind) {
   }
   if (kind === "mechanics") {
     setTitle("Mechanics");
-    const groups = {}; Object.entries(D.mech).forEach(([k, m]) => (groups[m.group] ||= []).push([k, m]));
+    const groups = {}; Object.entries(D.mech).filter(([, m]) => m.group !== "Trainer classes").forEach(([k, m]) => (groups[m.group] ||= []).push([k, m]));
     return `<div class="crumb">Lists</div><h1>Mechanics</h1><p class="lede">How the game's systems work: the ones every region shares, with what changes from region to region, and each region's own.</p>` +
       Object.entries(groups).map(([g, ms]) => `<h2>${esc(g)}</h2><ul class="mechlist">${ms.map(([k, m]) => `<li><a href="#mechanic-${k}">${esc(m.title)}</a>${m.blurb ? ` <span class="small">${esc(m.blurb)}</span>` : ""}</li>`).join("")}</ul>`).join("");
   }
   if (kind === "trainers") {
     setTitle("Trainers");
-    return `<div class="crumb">Lists</div><h1>Trainers</h1><p class="lede">Gym Leaders, the Elite Four, your rival, Team Rocket's bosses and the other trainers you meet in the story. Route trainers are on their places' pages.</p>` +
+    return `<div class="crumb">Lists</div><h1>Trainers</h1><p class="lede">Gym Leaders, the Elite Four, your rival, Team Rocket's bosses and the other trainers you meet in the story. Route trainers are on their places' pages, and every kind of trainer has a page of its own:</p>
+      <div class="chips">${Object.entries(D.mech).filter(([, m]) => m.group === "Trainer classes").map(([k, m]) => `<a href="#mechanic-${k}">${esc(m.title)}</a>`).join("")}</div>` +
       Object.values(D.regions).map(r => {
         const groups = {}; Object.entries(r.trainers).forEach(([k, t]) => (groups[t.cls] ||= []).push([k, t]));
         return `<h2>${esc(r.title)}</h2>` + Object.entries(groups).map(([c, ts]) => `<h4>${esc(c)}</h4><div class="chips">${ts.map(([k, t]) => `<a href="#trainer-${k}">${esc(t.name)}</a>`).join("")}</div>`).join("");
@@ -342,6 +439,9 @@ function route() {
   else if ((m = h.match(/^item-(.+)$/))) html = itemView(m[1]);
   else if ((m = h.match(/^trainer-(.+)$/))) html = trainerView(m[1]);
   else if ((m = h.match(/^building-(.+)$/))) html = buildingView(m[1]);
+  else if ((m = h.match(/^move-(.+)$/))) html = moveView(m[1]);
+  else if ((m = h.match(/^dex-([a-z]+)$/))) html = dexView(m[1]);
+  else if ((m = h.match(/^map-([a-z]+)$/))) html = mapView(m[1]);
   else if ((m = h.match(/^mechanic-(.+)$/))) html = mechanicView(m[1]);
   else if (h === "journal") html = journalHub();
   else if ((m = h.match(/^journal-([a-z]+)$/))) html = journalView(m[1]);
@@ -350,6 +450,7 @@ function route() {
   app.innerHTML = html;
   window.scrollTo(0, 0);
   fillMaps();
+  fillMore();
 }
 
 // a part's contents box scrolls within the part
@@ -373,6 +474,7 @@ function searchIndex() {
   }
   for (const [k, m] of Object.entries(D.mech)) out.push([m.title, `#mechanic-${k}`, "Mechanic", ""]);
   for (const [k, j] of Object.entries(D.jour)) out.push([j.title, `#journal-${k}`, "Journal", ""]);
+  for (const [k, [n]] of Object.entries(D.sp.mv)) out.push([n, `#move-${slug(k)}`, "Move", ""]);
   return out;
 }
 let IDX = null, sel = -1;

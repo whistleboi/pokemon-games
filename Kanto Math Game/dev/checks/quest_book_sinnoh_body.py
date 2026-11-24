@@ -49,6 +49,11 @@ for arc in sb:
             jn_ = JournalState(g, city); g.change_state(jn_); jn_.draw()
             pygame.image.save(g.screen, os.path.join(S, "quest_book_sinnoh_story.png"))
             g.change_state(city)
+        if ch.get("steps") is not None:   # (a chapter over some of a mission's way-points: the Elder's Surf, 11-24)
+            for i in ch["steps"]:
+                done_(m["steps"][i]["done"])
+            n_s += 1
+            continue
         for f in story.mission_flags(m):
             flags[f] = True
         if m["id"] in SBADGE:
@@ -67,14 +72,15 @@ ck = PoffinCookState(g, house)   # (a Poffin cooked at the Poffin House, as a pl
 ck.berries, ck.good, ck.quick, ck.mistakes = ["CHERI_BERRY", "PECHA_BERRY"], 4, 3, 0
 ck.finish()
 check(feats.value(story, next(f for f in ft["SINNOH"] if f["id"] == "poffins"), "SINNOH") == 1, "a Poffin cooked counts")
-from src.states.overworld import PlayState
-bk = next(k for k in sk if prog[k].get("berry_trees"))   # (a route's berry trees, picked from its menu, as a player would)
-at(bk); flags["has_berry_pouch"] = True; flags.pop("berries_picked_" + bk, None)
-for _ in range(5):   # (stays on the classic route screen: a walked route has no way to pick its berry_trees - the
-    rt = PlayState(g, classic=True); g.change_state(rt); rt.action_pick_berries()   # menu's button; LEGACY_MENU_AUDIT, journal's inbox 11-24)
-    flags.pop("berries_picked_" + bk, None)   # (the next day)
+from src.world import berries as _berries   # (Platinum's Berry patches on the walked routes: soft soil, berry_soil; Sinnoh 75fca7d8)
+bk = "FUEGO_IRONWORKS"
+_soil = [p for f in (tmaps[bk].get("floors") or [tmaps[bk]]) for p in (f.get("berry_soil") or [])]
+check(len(_soil) >= 4, f"Fuego Ironworks has its Berry patches on the walked map ({len(_soil)})")
+at(bk); flags["has_berry_pouch"] = True
+for _x, _y, _b in _soil[:4]:
+    _berries.touch(story, bk, (int(_x), int(_y)), _b)   # (walk up to a ripe patch: pick it)
 bp = feats.value(story, next(f for f in ft["SINNOH"] if f["id"] == "berry_picks"), "SINNOH")
-check(bp >= 10, f"Berries picked from trees count ({bp} from 5 days at {bk})")
+check(bp >= 4, f"Berries picked from the walked patches count ({bp} from 4 patches at {bk})")
 g.change_state(city)
 feats.note(story, "smash", 3)
 feats.pay(story)   # (the route screen pays too, on the way)

@@ -1192,6 +1192,75 @@ def press_water(st):
     return {"button": plan}
 
 
+def ride_lifts(st):
+    """Canalave Gym: the next moving platform on the way to Byron (Platinum's lifts and sliders, src/world/canalave_gym.py):
+    the four floors and the platforms' ends searched together, then a walk onto the first one to ride. -> what was done, or None."""
+    if not is_town(st) or st.area_key != "CANALAVE_CITY" or not str(getattr(st, "room", None) or "").startswith("gym"):
+        return None
+    from src.world import canalave_gym as CG
+    rooms = st.town_map["rooms"]
+    out_ = "MINE" in (story.badges.get("SINNOH") or [])   # (the badge won: back down to the way out)
+    goal = ("gym", 16, 26) if out_ else ("gym_4f", 16, 4)
+    if st.room == goal[0] and goal[1:] in flood(st):
+        return None   # (Byron, or the door, can be walked to)
+    L = loc()
+    key = (L, ("LIFT", CG.bits(story), out_))
+    if TRIED[key] >= 4:
+        return None
+    op = lambda r, x, y: 0 <= y < len(rooms[r]["art"]) and 0 <= x < len(rooms[r]["art"][y]) and rooms[r]["art"][y][x] in ".v"
+    ends = {}
+    for i, p_ in enumerate(CG.PLATFORMS):
+        for e, (x, h, z) in (("A", p_[1]), ("B", p_[2])):
+            ends[(CG.ROOMS[h // 10], x, z)] = (i, e)
+    x0, y0 = pos(st)
+    start = (st.room, x0, y0, CG.bits(story))
+    first = {start: None}
+    q = collections.deque([start])
+    plan = None
+    while q:
+        cur = q.popleft()
+        r, x, y, b = cur
+        if (r, x, y) == goal:
+            plan = first[cur]
+            break
+        for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            nx, ny = x + dx, y + dy
+            if not op(r, nx, ny):
+                continue
+            k = (r, nx, ny)
+            if k in ends and ("B" if b >> ends[k][0] & 1 else "A") == ends[k][1]:
+                i, e = ends[k]
+                x2, h2, z2 = CG.PLATFORMS[i][2 if e == "A" else 1]
+                nxt = (CG.ROOMS[h2 // 10], x2, z2, b ^ (1 << i))
+                if nxt not in first:
+                    first[nxt] = first[cur] or (nx, ny)
+                    q.append(nxt)
+                continue
+            nxt = (r, nx, ny, b)
+            if nxt not in first:
+                first[nxt] = first[cur]
+                q.append(nxt)
+    if plan is None:
+        return None
+    TRIED[key] += 1
+    STATE["puzzles"] += 1
+    if tuple(plan) == tuple(pos(st)):   # (ride back the platform you're standing on: step off it first, then on again)
+        off = next(((plan[0] + dx, plan[1] + dy) for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))
+                    if op(st.room, plan[0] + dx, plan[1] + dy) and (st.room, plan[0] + dx, plan[1] + dy) not in ends), None)
+        if off is None:
+            return None
+        go(off, "off the platform")
+        for _ in range(30):
+            st = settle()
+    how, n = go(plan, "a moving platform")
+    for _ in range(200):
+        st = settle()
+        if not getattr(st, "_cg_ride", None):
+            break
+    out(f"  .... [{STATE['mission']}] rode the platform at {plan}: now {here()}")
+    return {"lift": plan}
+
+
 def talk_companions(st):
     """Someone walking with you (Lance in the Rocket hideout) with a line on this floor not heard yet (an unset flag):
     turn to them and press the action key (the game's own _talk_companion, as the key does). -> True if talked."""
@@ -1783,6 +1852,8 @@ def play_through():
         if hit_bags(st) is not None:   # (Veilstone Gym's punching bags, Sinnoh S4)
             continue
         if press_water(st) is not None:   # (Pastoria Gym's water buttons, Sinnoh S4)
+            continue
+        if ride_lifts(st) is not None:   # (Canalave Gym's moving platforms, Sinnoh S5)
             continue
         if talk_companions(st):   # (Lance walking with you in the hideout: his Whirlpool line)
             continue

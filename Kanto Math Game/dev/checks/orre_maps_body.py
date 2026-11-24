@@ -590,6 +590,21 @@ check("GYM LEADER DRAKE" in _c1 and "GRAND MASTER GREEVIL" not in _c1 and "GRAND
 story.story_flags["xd_greevil_beaten"] = True
 t = town("REALGAM_TOWER", "PYRITE_TOWN")
 _birch = [p for p in _TMJ["REALGAM_TOWER"]["rooms"]["colosseum"]["people"] if p == "GYM LEADER BIRCH"]
+story.story_flags.pop(_mg.done_flag("REALGAM_TOWER"), None)
+_said_b = []
+_og.event(t, {"world": "orre_gym", "gym": "gym_birch"}, [], lambda l: _said_b.extend(l))
+for _ in range(40):
+    if type(g.current_state).__name__ not in ("WalkTownState", "CityState"):
+        break
+    t.dialogue_box.advance() if getattr(t, "dialogue_box", None) is not None and t.dialogue_box.visible else None
+    if getattr(t, "npc_active", False):
+        t.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=(640, 600))])
+    t.update()
+_bmg = type(g.current_state).__name__
+check(_bmg not in ("WalkTownState", "TrainerIntroState", "CityState"),
+      f"11-24: Birch's Gym has its math game first, from his own Realgam Badge (the encyclopedia: none before) ({_bmg})")
+g.change_state(t)
+t = town("REALGAM_TOWER", "PYRITE_TOWN")
 story.story_flags[_mg.done_flag("REALGAM_TOWER")] = True
 _og.event(t, {"world": "orre_gym", "gym": "gym_birch"}, [], lambda l: None)
 _bs = getattr(g.current_state, "battle_state", None) or getattr(g.current_state, "next_state", None)
@@ -827,6 +842,32 @@ check("Move Tutor" in _TMJ["AGATE_VILLAGE"]["rooms"]["house_centre"]["people"] a
       "R4: Agate's Move Tutor in Part 2 (12 moves, their TMs on sale); the post-game places have Orre's tracks (music.json)")
 
 
+
+# ---- R6 (11-24): the desert's sand across the track to the Snagem hideout opens as the desert's own way in does -
+# Ein's Data ROM (Pryce's ruins, Part 1) or Hordel (his hideout, Part 2); it opened on the old Phenac Badge + Hordel
+_sand = {}
+for _k, _fl in (("none", []), ("rom", ["orre_data_rom_given"]), ("hordel", ["xd_hordel"])):
+    for _f in ("orre_data_rom_given", "xd_hordel"):
+        story.story_flags.pop(_f, None)
+    story.story_flags.update({_f: True for _f in _fl})
+    _sand[_k] = len(_bars("ORRE_DESERT", "PHENAC_CITY", 0) & {(32, 25), (33, 25), (34, 25)})
+for _f in ("orre_data_rom_given", "xd_hordel"):
+    story.story_flags.pop(_f, None)
+check(_sand["none"] == 3 and _sand["rom"] == 0 and _sand["hordel"] == 0,
+      f"R6: the desert's track to the Snagem hideout - shut, then open after Ein's Data ROM (Part 1) or Hordel (Part 2) {_sand}")
+
+# ---- 11-24 (the encyclopedia): a Shadow Pokemon left at the Day Care opens its heart as you walk (XD; shadow.OPEN_DAYCARE)
+from src.pokemon import breeding as _br
+from src.pokemon.data import Pokemon as _PK
+from src.world import shadow as _shw
+_dcm = _PK(g.loader.fetch_specific(9406), g.assets, size_mult=2.5)
+_dcm.shadow = {"gauge": 100, "max": 100, "hidden": [], "seen": True}
+_dc = _br.daycare(story)
+_dc_was = list(_dc["mons"])
+_dc["mons"] = [_dcm]
+_shw.walked(g, 250)
+_dc["mons"] = _dc_was
+check(_dcm.shadow["gauge"] < 100, f"11-24: a Shadow Pokemon at the Day Care opens its heart as you walk (gauge {_dcm.shadow['gauge']})")
 
 g.walk_towns = False
 print(f"##### {fails} failures")

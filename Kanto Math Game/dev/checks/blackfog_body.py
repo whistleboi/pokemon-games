@@ -25,7 +25,7 @@ print("2) every haunted place")
 exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())
 WALKED = {"KANTO_POKEMON_TOWER", "BURNED_TOWER", "HOENN_MT_PYRE", "OLD_CHATEAU", "CELESTIAL_TOWER", "LOST_CAVE"}
 # (KANTO_POKEMON_TOWER's Black Fog is a 4F figure since 11-24 (was the menu's stairs ambush), seen with the Silph Scope.)
-KNOWN = {"CELESTIAL_TOWER": "Unova's rebuilt Celestial Tower lost its Black Fog (route_menu): sent to Unova's inbox 11-24"}
+KNOWN = {}   # (Celestial Tower's is back on its route_menu, 11-24, Unova)
 story.balls_left = 20
 story.inventory["SILPH_SCOPE"] = 1   # (the Pokemon Tower's Black Fog shows with it)
 story.player_team = [mk(150)]; story.player_team[0].level = 100
