@@ -444,6 +444,8 @@ class WalkTownState(TownWalkUps, CityState):
         return not any(o is not mover and not o.gone and t in (o.pos, o.frm) and (shown is None or h in shown) for h, o in self.motions.items())
 
     def _npc_tick(self):
+        for _fn in list((getattr(self, "_tickers", None) or {}).values()):   # (a region mechanic's frame step: src/world/<module>,
+            _fn(self)                                                        #  Veilstone Gym's sliding bags, 11-24)
         self._bar_tick = getattr(self, "_bar_tick", 0) + 1
         if self._bar_tick % 20 == 0 and not self._busy() and getattr(self, "_bar_list", None):   # (a gift or a battle moved the story on:
             self.barred = {tuple(t): bar for bar in self._bar_list if not self._bar_met(bar) and self._bar_here(bar) for t in bar.get("tiles", [])}   # the Amber gone from its case)
@@ -1120,6 +1122,9 @@ class WalkTownState(TownWalkUps, CityState):
                 if ob.get("need") and not self._check_menu_condition(ob["need"]):   # (only with the right thing: the Ruins of Alph's
                     from src.states.overworld.common import _fill_names              #  walls - an Escape Rope, Flash, a Water Stone, Ho-Oh)
                     return self.show_message([_fill_names(self.game, x) for x in ob.get("no") or bar.get("lines") or ["..."]])
+                if ob.get("event"):   # (an event of its own, told the tile you walked into: Veilstone Gym's punching bags, 11-24)
+                    from src.states.overworld.common import _run_story_event
+                    return _run_story_event(self, dict(ob["event"], at=list(to)), self._check_menu_condition, self.show_message)
                 if ob.get("flag"):
                     self.npc_flag(ob["flag"])
                 from src.states.overworld.common import _fill_names
@@ -2390,7 +2395,8 @@ class WalkTownState(TownWalkUps, CityState):
             return None
         if sc is None or sc.cam is None:
             return None
-        if not sc.covers([(x, int(round(sc.wz(x, y)))) for y in range(self.h) for x in range(self.w) if self._open((x, y))]):
+        if not sc.covers([(x, int(round(sc.wz(x, y)))) for y in range(self.h) for x in range(self.w) if self._open((x, y))
+                          and (x, y) not in self.exits]):   # (a way out you step into and leave: a lift's dark doorway, 11-24)
             return None   # (a scene exported with holes where you can walk: the avenue's middle, 11-21: the baked picture till it's whole)
         self._live_got = (sc, roofs.get("_cam") or {})
         self._live_yaw = None
@@ -2617,7 +2623,8 @@ class WalkTownState(TownWalkUps, CityState):
                 continue
             _img = self._stand_in_img(_look, _bar) if _look.startswith(("sheet:", "ow:", "mon:", "ribbon:")) else None
             if _img is not None:
-                put(_img, *_t)
+                _nx, _ny = _bar.get("nudge") or (0, 0)   # (off its tile, as on the flat map: a bag sliding)
+                put(_img, _t[0] + _nx, _t[1] + _ny)
             elif not _look.startswith("ribbon:"):
                 flat_bars.append((_t, _look))
         sc.props = []

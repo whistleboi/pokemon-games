@@ -105,7 +105,7 @@ check(flags.get("received_pokedex_sinnoh") and story.catch_unlocked("SINNOH"), "
 print("3) Barry's battles (Serebii)")
 r = route("SINNOH_ROUTE_203")
 check(battle_team(g.current_state) == [(396, 7), (390, 9)], f"Route 203: Starly 7, Chimchar 9 {battle_team(g.current_state)}")
-for area in ("ETERNA_CITY", "VEILSTONE_CITY"):  # (Veilstone has Dawn's battle instead)
+for area in ("ETERNA_CITY", "VEILSTONE_CITY"):
     ev = prog[area].get("on_enter_event") or {}
     check((ev.get("trainer") or {}).get("name") != "{rival_name}", f"{area}: no Barry battle (not in BDSP)")
 check(len(prog["TWINLEAF_TOWN"]["on_enter_event"]) == 1, "Twinleaf: only the starter battle")
@@ -113,16 +113,10 @@ story.badges["SINNOH"] = ["COAL", "FOREST"]
 c = city("HEARTHOME_CITY")
 check(battle_team(g.current_state) == [(396, 19), (418, 20), (315, 20), (391, 21)],
       f"Hearthome: Starly, Buizel, Roselia, Monferno {battle_team(g.current_state)}")
-c = city("VEILSTONE_CITY")
-check(battle_team(g.current_state) == [(35, 25), (64, 25), (394, 28)], f"Veilstone: Dawn with Prinplup {battle_team(g.current_state)}")
-flags["defeated_dawn_veilstone"] = True
-story.badges["SINNOH"] = ["COAL", "FOREST", "COBBLE"]
-vs = city("VEILSTONE_CITY")
-grunt = opt("VEILSTONE_CITY", "Talk to the Galactic Grunt")
-check(vs._check_menu_condition(grunt["condition"]), "a grunt outside the Galactic building")
-_run_story_event(vs, grunt["event"], vs._check_menu_condition, lambda lines: None)
+check(not prog["VEILSTONE_CITY"].get("on_enter_event"), "Veilstone: no arrival battle with Dawn (Jordan 11-24: Platinum's is her tag battle at the Warehouse)")
 wh = next(o for o in prog["VEILSTONE_CITY"]["travel_options"] if o.get("target_area") == "GALACTIC_WAREHOUSE")
-check(story.inventory.get("STORAGE_KEY") == 1 and wh.get("item_condition") == "STORAGE_KEY", "his Storage Key opens the warehouse")
+check(wh.get("condition") == "sinnoh_warehouse_guards_beaten" and not wh.get("item_condition"),
+      "the Warehouse opens once you and Dawn beat its two Grunts (the Storage Key is the Underpass door's)")
 lea = prog["SINNOH_POKEMON_LEAGUE"]["on_enter_event"]["trainer"]
 check(len(lea["team_choice"]["387"]) == 6 and lea["levels"][-1] == 55 and lea["class"] == "RIVAL",
       "the League: six Pokemon, Infernape Lv 55")

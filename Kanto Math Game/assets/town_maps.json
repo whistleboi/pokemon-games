@@ -184269,15 +184269,14 @@
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTcccccccccccccc......ccccccccccccTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTcccccccccccccc......ccccccccccccTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTcccccccccccccc......ccccccccccccTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTcccccccccccccc..nn..ccccccccccccTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTccccccccccccccccccccccccccccccccTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTcccccccccccccc..DD..ccccccccccccTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTccccccccccccccccΙΙccccccccccccccTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTccccccccccccccccccccccccccccccccTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
   ],
   "exits": {
    ">": "SINNOH_ROUTE_211",
    "<": "ETERNA_FOREST",
    "A": "ETERNA_GALACTIC_BUILDING",
-   "n": "SINNOH_ROUTE_206",
    "J": "GRAND_UNDERGROUND",
    "u": "ETERNA_FOREST_OUTSKIRTS"
   },
@@ -184300,7 +184299,8 @@
    "R": "rater",
    "S": "mart",
    "U": "gym",
-   "V": "house"
+   "V": "house",
+   "Ι": "gate206"
   },
   "roofs": {
    "A": {
@@ -185343,7 +185343,7 @@
      "c...............c",
      "c...............c",
      "ccc.............c",
-     "cc^.............c",
+     "cc^.......N.....c",
      "ccc..c.......c..c",
      "cc...z.......z.cc",
      "ccccccccccccccccc"
@@ -185612,6 +185612,15 @@
        "lines": [
         "Link battles are set up here, in the Colosseum.",
         "The machines are switched off. Please come back later!"
+       ]
+      }
+     },
+     {
+      "text": "Battle fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Multi Battles are the most exciting battles there are! You have to try one to know."
        ]
       }
      }
@@ -189807,6 +189816,337 @@
       ]
      }
     }
+   },
+   "gate_206": {
+    "theme": "room",
+    "art": [
+     "ccccc",
+     "ccccc",
+     "cvvvc",
+     "c...c",
+     "c...c",
+     "c...c",
+     "c...c",
+     "cN.Nc",
+     "c...c",
+     "c...c",
+     "c...c",
+     "c...c",
+     "cnnnc",
+     "ccccc"
+    ],
+    "exits": {
+     "v": "OUT:48,57",
+     "n": "SINNOH_ROUTE_206"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      222,
+      206,
+      160
+     ],
+     "_wall": [
+      210,
+      210,
+      220
+     ],
+     "_things": {},
+     "_picture": {
+      "f": "pt_ground/C04R0401.png",
+      "at": [
+       5,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Cyclist ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Cycling Road is all downhill from here. Hold on tight!"
+       ]
+      }
+     },
+     {
+      "text": "Cyclist",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Learn to shift gears on your Bike, and you can ride anywhere."
+       ]
+      }
+     }
+    ],
+    "title": "Cycling Road Gate"
+   },
+   "underground_man": {
+    "theme": "room",
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "cmmjj.jjmmc",
+     "cmm.......c",
+     "cm.N..N...c",
+     "cm.......Nc",
+     "c.......Nmc",
+     "c...v...mmc",
+     "ccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:54,18"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      180,
+      172,
+      148
+     ],
+     "_wall": [
+      106,
+      106,
+      114
+     ],
+     "_things": {
+      "1,1": [
+       64,
+       64,
+       64
+      ],
+      "2,1": [
+       64,
+       64,
+       64
+      ],
+      "3,1": [
+       64,
+       64,
+       64
+      ],
+      "4,1": [
+       64,
+       64,
+       64
+      ],
+      "5,1": [
+       64,
+       64,
+       64
+      ],
+      "6,1": [
+       64,
+       64,
+       64
+      ],
+      "7,1": [
+       64,
+       64,
+       64
+      ],
+      "8,1": [
+       64,
+       64,
+       64
+      ],
+      "9,1": [
+       64,
+       64,
+       64
+      ],
+      "1,2": [
+       160,
+       128,
+       64
+      ],
+      "2,2": [
+       160,
+       128,
+       64
+      ],
+      "8,2": [
+       96,
+       128,
+       160
+      ],
+      "9,2": [
+       96,
+       128,
+       160
+      ],
+      "1,3": [
+       224,
+       224,
+       160
+      ],
+      "2,3": [
+       192,
+       160,
+       96
+      ],
+      "1,4": [
+       64,
+       128,
+       192
+      ],
+      "1,5": [
+       64,
+       160,
+       128
+      ],
+      "9,6": [
+       192,
+       160,
+       96
+      ],
+      "8,7": [
+       192,
+       160,
+       96
+      ],
+      "9,7": [
+       192,
+       160,
+       96
+      ]
+     },
+     "_kinds": {
+      "1,3": "table",
+      "1,4": "table",
+      "1,2": "shelf",
+      "2,2": "shelf",
+      "2,3": "crate",
+      "9,7": "crate",
+      "8,7": "crate",
+      "9,6": "crate",
+      "1,5": "crate",
+      "8,2": "tv",
+      "9,2": "tv"
+     },
+     "_objects": [
+      {
+       "k": "table",
+       "r": [
+        1,
+        3,
+        1,
+        2
+       ]
+      },
+      {
+       "k": "shelf",
+       "r": [
+        1,
+        2,
+        2,
+        1
+       ]
+      },
+      {
+       "k": "crate",
+       "r": [
+        2,
+        3,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "crate",
+       "r": [
+        9,
+        7,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "crate",
+       "r": [
+        8,
+        7,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "crate",
+       "r": [
+        9,
+        6,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "crate",
+       "r": [
+        1,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "tv",
+       "r": [
+        8,
+        2,
+        2,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/C04R0801.png",
+      "at": [
+       0,
+       1
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Museum worker",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I work at the mining museum in Oreburgh. Digging up treasure is my hobby."
+       ]
+      }
+     },
+     {
+      "text": "Underground Man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm the Underground Man! I dug the very first tunnels under Sinnoh.",
+        "They're not ready for visitors yet. Come back someday!"
+       ]
+      }
+     },
+     {
+      "text": "Fossil boy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "All I ever dig up are Armor Fossils. My buddy only finds Skull Fossils!"
+       ]
+      }
+     },
+     {
+      "text": "Digging boy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The tunnels under Sinnoh go everywhere! Someday I'll dig with my friends."
+       ]
+      }
+     }
+    ],
+    "title": "Underground Man's House"
    }
   },
   "inside": {
@@ -189817,7 +190157,10 @@
    "59,36": "rater",
    "42,50": "house_0601",
    "71,25": "house_0701",
-   "60,9": "house_0501"
+   "60,9": "house_0501",
+   "48,57": "gate_206",
+   "49,57": "gate_206",
+   "54,18": "underground_man"
   },
   "hidden": {
    "71,9": "DRACO_PLATE",
@@ -190060,24 +190403,20 @@
    "TTTTTTTTTTTTTTTTTTeQQQQeeeeRRRReeUekeaaaaaekeVeSSSSeTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTeeeeeeeeeeeeeeeeeeeaaaaaeeeeeeeeeeTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTeeeeeeeeeeeNeee!eeeaaaaaeeeeeeeeeeTTTTTTTTTTTT",
-   "WWWWWW...............eaaaaaaaaaaaaaaaaaaaaee..............YYYYYY",
-   "WWWWWW..eeeeeeeeeeee.eaaaaaaaaaaaaaaaaaaaaee.eeeeeeeeNeeN.YYYYYY",
-   "WWWWWWn.eeeeeeeeeeee.eaaaaaaaaaaaaaaaaaaaaee.eeeeeeeeeeeN>YYYYYY",
-   "WWWWWWn.eeeeeeeeeeee.eaaaaaaaaaaaaaaaaaaaaee.eeeeeeeeeeee>YYYYYY",
-   "WWWWWW..eeeeeeeeeeee.eeleeeeeeeeeeeeeeeeelee.eeeeeeeeeeee.YYYYYY",
-   "TTTTTT....<<..............................................TTTTTT",
-   "TTTTTTTTTZZZZTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTZZZZTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTZZZZTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTZZZZTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTZZZZTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTZZZZTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+   "ΙΙΙΙΙΙ...............eaaaaaaaaaaaaaaaaaaaaee..............ΚΚΚΚΚΚ",
+   "ΙΙΙΙΙΙ..eeeeeeeeeeee.eaaaaaaaaaaaaaaaaaaaaee.eeeeeeeeNeeN.ΚΚΚΚΚΚ",
+   "ΙΙΙΙΙD..eeeeeeeeeeee.eaaaaaaaaaaaaaaaaaaaaee.eeeeeeeeeeeN.DΚΚΚΚΚ",
+   "ΙΙΙΙΙD..eeeeeeeeeeee.eaaaaaaaaaaaaaaaaaaaaee.eeeeeeeeeeee.DΚΚΚΚΚ",
+   "ΙΙΙΙΙΙ..eeeeeeeeeeee.eeleeeeeeeeeeeeeeeeelee.eeeeeeeeeeee.ΚΚΚΚΚΚ",
+   "TTTTTT....DD..............................................TTTTTT",
+   "TTTTTTTTTΛΛΛΛTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTΛΛΛΛTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTΛΛΛΛTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTΛΛΛΛTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTΛΛΛΛTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTTTTTΛΛΛΛTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
   ],
-  "exits": {
-   "n": "SINNOH_ROUTE_208",
-   "<": "SINNOH_ROUTE_212",
-   ">": "SINNOH_ROUTE_209"
-  },
+  "exits": {},
   "buildings": {
    "A": "amity",
    "B": "amity",
@@ -190108,7 +190447,10 @@
    "Ε": "house",
    "Ζ": "house",
    "Η": "house",
-   "Θ": "house"
+   "Θ": "house",
+   "Ι": "gate208",
+   "Κ": "gate209",
+   "Λ": "gate212"
   },
   "roofs": {
    "A": {
@@ -192875,18 +193217,18 @@
     "art": [
      "ccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc",
-     "c..ccccccccccccccccccc..c",
+     "ccccccccccccccccccccccccc",
      "c..cc.ccccccccccccc.cc..c",
      "c.....ccccccccccccc.cc..c",
-     "c.....ccccccccccccc.cc..c",
+     "c.....ccccccccccccc.cc.Nc",
      "c..cc.ccccccccccccc.cc..c",
-     "c..cc...............cc..c",
+     "cN.cc.........N.....cc..c",
      "c..cccccc.......cccccc..c",
      "c..cccccc..ccc..cccccc..c",
      "c......ccccccccccc......c",
      "c......ccccccccccc......c",
      "ccccc...............ccccc",
-     "ccccc.......^.......ccccc",
+     "ccccc..N....^.......ccccc",
      "ccccccccccccccccccccccccc"
     ],
     "exits": {
@@ -193745,8 +194087,53 @@
        128,
        160
       ]
+     },
+     "_picture": {
+      "f": "pt_ground/C05R1103.png",
+      "at": [
+       17,
+       1
+      ]
      }
-    }
+    },
+    "people": [
+     {
+      "text": "Visual coach",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "For the Visual round, dress your Pokemon up nicely with Accessories."
+       ]
+      }
+     },
+     {
+      "text": "Dance coach",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "In the Dance round, your Pokemon must copy the lead dancer's moves exactly."
+       ]
+      }
+     },
+     {
+      "text": "Acting coach",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "For the Acting round, the right moves at the right time win the Judges over."
+       ]
+      }
+     },
+     {
+      "text": "Cool fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "At a Cool Contest, you need a cool move to impress the Judges!"
+       ]
+      }
+     }
+    ]
    },
    "amity_3": {
     "theme": "room",
@@ -196035,7 +196422,7 @@
     "art": [
      "cccccccccccccccccccccc",
      "cccccccccccccccccccccc",
-     "cccccccccccccccccc.ccc",
+     "cccccccccccccccccc^ccc",
      "cz..................zc",
      "c....................c",
      "ccccccccccc..........c",
@@ -196049,7 +196436,8 @@
      "cccccccccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:46,38"
+     "v": "OUT:46,38",
+     "^": "ROOM:hotel_lift"
     },
     "buildings": {},
     "roofs": {
@@ -196449,7 +196837,8 @@
        ]
       }
      }
-    ]
+    ],
+    "title": "Pokemon Hotel 1F"
    },
    "house_1201": {
     "theme": "room",
@@ -197028,7 +197417,7 @@
     "art": [
      "cccccccccccccccccccccc",
      "cccccccccccccccccccccc",
-     "cccccccccccccccccc.ccc",
+     "cccccccccccccccccc^ccc",
      "czN.................zc",
      "c....................c",
      "ccccccccccc..........c",
@@ -197042,7 +197431,8 @@
      "cccccccccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:38,25"
+     "v": "OUT:38,25",
+     "^": "ROOM:flats_lift"
     },
     "buildings": {},
     "roofs": {
@@ -198763,6 +199153,1690 @@
       ]
      }
     ]
+   },
+   "gate_208": {
+    "theme": "room",
+    "art": [
+     "cccccccccccc",
+     "cccccccccccc",
+     "cz..cccc..zc",
+     "c...cccc...c",
+     "c..........c",
+     "c...NN.....c",
+     "c<........vc",
+     "c..........c",
+     "c......N...c",
+     "cc..cccc..cc",
+     "cz..cccc..zc",
+     "cccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:5,54",
+     "<": "SINNOH_ROUTE_208"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      115,
+      115,
+      148
+     ],
+     "_wall": [
+      106,
+      106,
+      114
+     ],
+     "_things": {
+      "1,1": [
+       64,
+       64,
+       64
+      ],
+      "2,1": [
+       64,
+       64,
+       64
+      ],
+      "3,1": [
+       64,
+       64,
+       64
+      ],
+      "8,1": [
+       64,
+       64,
+       64
+      ],
+      "9,1": [
+       64,
+       64,
+       64
+      ],
+      "10,1": [
+       64,
+       64,
+       64
+      ],
+      "4,3": [
+       64,
+       64,
+       64
+      ],
+      "5,3": [
+       64,
+       64,
+       64
+      ],
+      "6,3": [
+       64,
+       64,
+       64
+      ],
+      "7,3": [
+       64,
+       64,
+       64
+      ],
+      "0,5": [
+       128,
+       128,
+       128
+      ],
+      "11,5": [
+       128,
+       128,
+       128
+      ],
+      "0,6": [
+       160,
+       160,
+       160
+      ],
+      "11,6": [
+       128,
+       128,
+       128
+      ],
+      "0,7": [
+       128,
+       128,
+       128
+      ],
+      "11,7": [
+       128,
+       128,
+       128
+      ]
+     },
+     "_objects": [
+      {
+       "k": "plant",
+       "r": [
+        1,
+        2,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        10,
+        2,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        1,
+        10,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        10,
+        10,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/C05R0501.png",
+      "at": [
+       0,
+       1
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Clefairy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Clefairy: Pippii?!"
+       ]
+      }
+     },
+     {
+      "text": "Contest fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Hearthome means one thing to me: Pokemon Contests! My darling's entering today."
+       ]
+      }
+     },
+     {
+      "text": "Gate visitor",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Hearthome gets voted the nicest place to live in Sinnoh every year. I believe it!"
+       ]
+      }
+     }
+    ],
+    "title": "Route 208 Gate"
+   },
+   "gate_209": {
+    "theme": "room",
+    "art": [
+     "cccccccccccc",
+     "cccccccccccc",
+     "cz..cccc..zc",
+     "c...cccc.N.c",
+     "c..........c",
+     "c..........c",
+     "cv........>c",
+     "c..........c",
+     "c..........c",
+     "cc..cccc..cc",
+     "cz..cccc..zc",
+     "cccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:58,54",
+     ">": "SINNOH_ROUTE_209"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      115,
+      115,
+      148
+     ],
+     "_wall": [
+      106,
+      106,
+      114
+     ],
+     "_things": {
+      "1,1": [
+       64,
+       64,
+       64
+      ],
+      "2,1": [
+       64,
+       64,
+       64
+      ],
+      "3,1": [
+       64,
+       64,
+       64
+      ],
+      "8,1": [
+       64,
+       64,
+       64
+      ],
+      "9,1": [
+       64,
+       64,
+       64
+      ],
+      "10,1": [
+       64,
+       64,
+       64
+      ],
+      "4,3": [
+       64,
+       64,
+       64
+      ],
+      "5,3": [
+       64,
+       64,
+       64
+      ],
+      "6,3": [
+       64,
+       64,
+       64
+      ],
+      "7,3": [
+       64,
+       64,
+       64
+      ],
+      "0,5": [
+       128,
+       128,
+       128
+      ],
+      "11,5": [
+       128,
+       128,
+       128
+      ],
+      "0,6": [
+       160,
+       160,
+       160
+      ],
+      "11,6": [
+       128,
+       128,
+       128
+      ],
+      "0,7": [
+       128,
+       128,
+       128
+      ],
+      "11,7": [
+       128,
+       128,
+       128
+      ]
+     },
+     "_objects": [
+      {
+       "k": "plant",
+       "r": [
+        1,
+        2,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        10,
+        2,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        1,
+        10,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        10,
+        10,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/C05R0601.png",
+      "at": [
+       0,
+       1
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Curious girl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "There's an old broken pillar on the route ahead. I wonder what it was for?"
+       ]
+      }
+     }
+    ],
+    "title": "Route 209 Gate"
+   },
+   "gate_212": {
+    "theme": "room",
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "cccccvccccc",
+     "c.........c",
+     "c...N.....c",
+     "cccc...cccc",
+     "cccz...zccc",
+     "cccc..Ncccc",
+     "cccz...zccc",
+     "cccc...cccc",
+     "cccz...zccc",
+     "c.........c",
+     "c....n....c",
+     "ccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:10,57",
+     "n": "SINNOH_ROUTE_212"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      115,
+      115,
+      148
+     ],
+     "_wall": [
+      115,
+      115,
+      148
+     ],
+     "_things": {
+      "4,1": [
+       224,
+       128,
+       96
+      ],
+      "5,1": [
+       224,
+       128,
+       96
+      ],
+      "6,1": [
+       224,
+       128,
+       96
+      ],
+      "1,2": [
+       64,
+       64,
+       32
+      ],
+      "2,2": [
+       64,
+       64,
+       32
+      ],
+      "3,2": [
+       64,
+       64,
+       32
+      ],
+      "4,2": [
+       224,
+       128,
+       96
+      ],
+      "6,2": [
+       224,
+       128,
+       96
+      ],
+      "7,2": [
+       64,
+       64,
+       32
+      ],
+      "8,2": [
+       64,
+       64,
+       32
+      ],
+      "9,2": [
+       64,
+       64,
+       32
+      ],
+      "1,5": [
+       160,
+       128,
+       128
+      ],
+      "2,5": [
+       160,
+       128,
+       128
+      ],
+      "8,5": [
+       160,
+       128,
+       128
+      ],
+      "9,5": [
+       160,
+       128,
+       128
+      ]
+     },
+     "_objects": [
+      {
+       "k": "plant",
+       "r": [
+        3,
+        6,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        7,
+        6,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        3,
+        8,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        7,
+        8,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        7,
+        10,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        3,
+        10,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/C05R0701.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Traveler",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I came a long way to take part in Hearthome's Contests."
+       ]
+      }
+     },
+     {
+      "text": "Poffin fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My Pokemon have eaten so many Poffins. We're sure to win a Contest!"
+       ]
+      }
+     }
+    ],
+    "title": "Route 212 Gate",
+    "barred": [
+     {
+      "tiles": [
+       [
+        5,
+        12
+       ]
+      ],
+      "look": "sheet:pt_reporter.png",
+      "until": {
+       "flag_condition": "visited_PASTORIA_CITY"
+      },
+      "lines": [
+       "Reporter: Sorry, the gate's closed for a while. We're filming for TV!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        4,
+        12
+       ]
+      ],
+      "look": "sheet:pt_cameraman.png",
+      "until": {
+       "flag_condition": "visited_PASTORIA_CITY"
+      },
+      "lines": [
+       "Cameraman: Quiet on the set! Come back once we're done here."
+      ]
+     }
+    ]
+   },
+   "hotel_lift": {
+    "theme": "room",
+    "art": [
+     "ccccccc",
+     "ccccccc",
+     "c.....c",
+     "c.....c",
+     "c.....c",
+     "c..v..c",
+     "ccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:house_0101"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      156,
+      82,
+      16
+     ],
+     "_wall": [
+      213,
+      222,
+      230
+     ],
+     "_things": {
+      "0,1": [
+       96,
+       96,
+       96
+      ],
+      "1,1": [
+       160,
+       128,
+       96
+      ],
+      "2,1": [
+       160,
+       128,
+       96
+      ],
+      "3,1": [
+       160,
+       128,
+       96
+      ],
+      "4,1": [
+       160,
+       128,
+       96
+      ],
+      "5,1": [
+       160,
+       128,
+       96
+      ],
+      "6,1": [
+       96,
+       96,
+       96
+      ],
+      "0,2": [
+       96,
+       96,
+       96
+      ],
+      "6,2": [
+       96,
+       96,
+       96
+      ],
+      "0,3": [
+       96,
+       96,
+       96
+      ],
+      "6,3": [
+       96,
+       96,
+       96
+      ],
+      "0,4": [
+       96,
+       96,
+       96
+      ],
+      "6,4": [
+       96,
+       96,
+       96
+      ],
+      "0,5": [
+       96,
+       96,
+       96
+      ],
+      "6,5": [
+       96,
+       96,
+       96
+      ]
+     },
+     "_picture": {
+      "f": "pt_ground/C05R0103.png",
+      "at": [
+       0,
+       1
+      ]
+     }
+    },
+    "title": "Pokemon Hotel Lift",
+    "dynamic_exit": {
+     "flag": "hearthome_hotel_lift",
+     "rooms": [
+      "house_0101",
+      "house_0102"
+     ],
+     "default": "house_0101"
+    },
+    "scenes": [
+     {
+      "trigger": "enter",
+      "every": true,
+      "cast": [],
+      "event": {
+       "elevator": {
+        "area": "HEARTHOME_CITY",
+        "car_flag": "hearthome_hotel_lift",
+        "ride": [
+         "The lift hums..."
+        ],
+        "floors": [
+         [
+          "1F",
+          "house_0101"
+         ],
+         [
+          "2F",
+          "house_0102"
+         ]
+        ]
+       },
+       "cancel": [
+        "The lift stays where it is."
+       ]
+      }
+     }
+    ]
+   },
+   "house_0102": {
+    "theme": "room",
+    "art": [
+     "cccccccccccccccccccccc",
+     "cccccccccccccccccccccc",
+     "cccccccccccccccccc^ccc",
+     "c.....cmm..mmmccz...zc",
+     "c.....c.......cc.....c",
+     "c.....c.......cc.....c",
+     "c....................c",
+     "c.........N..........c",
+     "c.m......mmN..cc.....c",
+     "c........mm...cc.....c",
+     "c.m...........cc.....c",
+     "c.............cc.....c",
+     "c.............cc.....c",
+     "cccccccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:hotel_lift"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      246,
+      156,
+      115
+     ],
+     "_wall": [
+      106,
+      106,
+      114
+     ],
+     "_things": {
+      "1,2": [
+       96,
+       64,
+       64
+      ],
+      "2,2": [
+       96,
+       64,
+       64
+      ],
+      "3,2": [
+       96,
+       64,
+       64
+      ],
+      "4,2": [
+       96,
+       64,
+       64
+      ],
+      "5,2": [
+       96,
+       64,
+       64
+      ],
+      "6,2": [
+       64,
+       64,
+       64
+      ],
+      "7,2": [
+       96,
+       64,
+       64
+      ],
+      "8,2": [
+       96,
+       64,
+       64
+      ],
+      "9,2": [
+       96,
+       64,
+       64
+      ],
+      "10,2": [
+       96,
+       64,
+       64
+      ],
+      "11,2": [
+       96,
+       64,
+       64
+      ],
+      "12,2": [
+       96,
+       64,
+       64
+      ],
+      "13,2": [
+       96,
+       64,
+       64
+      ],
+      "14,2": [
+       64,
+       64,
+       64
+      ],
+      "15,2": [
+       64,
+       64,
+       64
+      ],
+      "16,2": [
+       64,
+       64,
+       64
+      ],
+      "17,2": [
+       64,
+       32,
+       32
+      ],
+      "19,2": [
+       64,
+       32,
+       32
+      ],
+      "20,2": [
+       64,
+       64,
+       64
+      ],
+      "6,3": [
+       192,
+       192,
+       192
+      ],
+      "7,3": [
+       96,
+       128,
+       160
+      ],
+      "8,3": [
+       96,
+       128,
+       160
+      ],
+      "11,3": [
+       192,
+       192,
+       224
+      ],
+      "12,3": [
+       192,
+       192,
+       224
+      ],
+      "13,3": [
+       128,
+       128,
+       160
+      ],
+      "14,3": [
+       192,
+       192,
+       192
+      ],
+      "15,3": [
+       192,
+       192,
+       192
+      ],
+      "6,4": [
+       192,
+       192,
+       192
+      ],
+      "14,4": [
+       192,
+       192,
+       192
+      ],
+      "15,4": [
+       192,
+       192,
+       192
+      ],
+      "6,5": [
+       224,
+       192,
+       160
+      ],
+      "14,5": [
+       224,
+       192,
+       160
+      ],
+      "15,5": [
+       160,
+       192,
+       192
+      ],
+      "2,8": [
+       192,
+       160,
+       192
+      ],
+      "9,8": [
+       255,
+       224,
+       96
+      ],
+      "10,8": [
+       255,
+       192,
+       96
+      ],
+      "15,8": [
+       128,
+       128,
+       160
+      ],
+      "9,9": [
+       255,
+       192,
+       96
+      ],
+      "10,9": [
+       224,
+       192,
+       96
+      ],
+      "14,9": [
+       224,
+       160,
+       128
+      ],
+      "15,9": [
+       160,
+       160,
+       160
+      ],
+      "2,10": [
+       224,
+       224,
+       224
+      ],
+      "14,10": [
+       192,
+       192,
+       192
+      ],
+      "15,10": [
+       192,
+       192,
+       192
+      ],
+      "14,11": [
+       192,
+       192,
+       192
+      ],
+      "15,11": [
+       192,
+       192,
+       192
+      ],
+      "14,12": [
+       192,
+       192,
+       192
+      ],
+      "15,12": [
+       192,
+       192,
+       192
+      ]
+     },
+     "_kinds": {
+      "2,8": "bed",
+      "2,10": "bed",
+      "7,3": "tv",
+      "8,3": "tv",
+      "11,3": "fridge",
+      "12,3": "sink",
+      "13,3": "sink",
+      "9,8": "table",
+      "10,8": "table",
+      "9,9": "table",
+      "10,9": "table"
+     },
+     "_objects": [
+      {
+       "k": "bed",
+       "r": [
+        2,
+        8,
+        1,
+        3
+       ]
+      },
+      {
+       "k": "tv",
+       "r": [
+        7,
+        3,
+        2,
+        1
+       ]
+      },
+      {
+       "k": "fridge",
+       "r": [
+        11,
+        3,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "sink",
+       "r": [
+        12,
+        3,
+        2,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        9,
+        8,
+        2,
+        2
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        16,
+        3,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        20,
+        3,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/C05R0102.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Clefairy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Clefairy: Pippi!"
+       ]
+      }
+     },
+     {
+      "text": "Hotel guest",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I got this Shell Bell on vacation, but I already had one. Would you take it?",
+        "You received a Shell Bell!"
+       ],
+       "gift_item": {
+        "SHELL_BELL": 1
+       },
+       "flag": "got_shell_bell_hearthome_hotel",
+       "done": [
+        "A Shell Bell's chime soothes a Pokemon. Mine likes it, anyway."
+       ]
+      }
+     }
+    ],
+    "title": "Pokemon Hotel 2F"
+   },
+   "flats_lift": {
+    "theme": "room",
+    "art": [
+     "ccccccc",
+     "ccccccc",
+     "c.....c",
+     "c.....c",
+     "c.....c",
+     "c..v..c",
+     "ccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:house_0801"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      156,
+      82,
+      16
+     ],
+     "_wall": [
+      213,
+      222,
+      230
+     ],
+     "_things": {
+      "0,1": [
+       96,
+       96,
+       96
+      ],
+      "1,1": [
+       160,
+       128,
+       96
+      ],
+      "2,1": [
+       160,
+       128,
+       96
+      ],
+      "3,1": [
+       160,
+       128,
+       96
+      ],
+      "4,1": [
+       160,
+       128,
+       96
+      ],
+      "5,1": [
+       160,
+       128,
+       96
+      ],
+      "6,1": [
+       96,
+       96,
+       96
+      ],
+      "0,2": [
+       96,
+       96,
+       96
+      ],
+      "6,2": [
+       96,
+       96,
+       96
+      ],
+      "0,3": [
+       96,
+       96,
+       96
+      ],
+      "6,3": [
+       96,
+       96,
+       96
+      ],
+      "0,4": [
+       96,
+       96,
+       96
+      ],
+      "6,4": [
+       96,
+       96,
+       96
+      ],
+      "0,5": [
+       96,
+       96,
+       96
+      ],
+      "6,5": [
+       96,
+       96,
+       96
+      ]
+     },
+     "_picture": {
+      "f": "pt_ground/C05R0803.png",
+      "at": [
+       0,
+       1
+      ]
+     }
+    },
+    "title": "Lift",
+    "dynamic_exit": {
+     "flag": "hearthome_flats_lift",
+     "rooms": [
+      "house_0801",
+      "house_0802"
+     ],
+     "default": "house_0801"
+    },
+    "scenes": [
+     {
+      "trigger": "enter",
+      "every": true,
+      "cast": [],
+      "event": {
+       "elevator": {
+        "area": "HEARTHOME_CITY",
+        "car_flag": "hearthome_flats_lift",
+        "ride": [
+         "The lift hums..."
+        ],
+        "floors": [
+         [
+          "1F",
+          "house_0801"
+         ],
+         [
+          "2F",
+          "house_0802"
+         ]
+        ]
+       },
+       "cancel": [
+        "The lift stays where it is."
+       ]
+      }
+     }
+    ]
+   },
+   "house_0802": {
+    "theme": "room",
+    "art": [
+     "cccccccccccccccccccccc",
+     "cccccccccccccccccccccc",
+     "cccccccccccccccccc^ccc",
+     "c.....cmm..mmmccz...zc",
+     "c.....c.....N.cc.....c",
+     "c..N..c.......cc.....c",
+     "c....................c",
+     "c....................c",
+     "c.m.....NmmN..cc.....c",
+     "c........mm...cc.....c",
+     "c.m...........cc.....c",
+     "c.............cc.....c",
+     "c.............cc.....c",
+     "cccccccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:flats_lift"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      246,
+      156,
+      115
+     ],
+     "_wall": [
+      106,
+      106,
+      114
+     ],
+     "_things": {
+      "1,2": [
+       96,
+       64,
+       64
+      ],
+      "2,2": [
+       96,
+       64,
+       64
+      ],
+      "3,2": [
+       96,
+       64,
+       64
+      ],
+      "4,2": [
+       96,
+       64,
+       64
+      ],
+      "5,2": [
+       96,
+       64,
+       64
+      ],
+      "6,2": [
+       64,
+       64,
+       64
+      ],
+      "7,2": [
+       96,
+       64,
+       64
+      ],
+      "8,2": [
+       96,
+       64,
+       64
+      ],
+      "9,2": [
+       96,
+       64,
+       64
+      ],
+      "10,2": [
+       96,
+       64,
+       64
+      ],
+      "11,2": [
+       96,
+       64,
+       64
+      ],
+      "12,2": [
+       96,
+       64,
+       64
+      ],
+      "13,2": [
+       96,
+       64,
+       64
+      ],
+      "14,2": [
+       64,
+       64,
+       64
+      ],
+      "15,2": [
+       64,
+       64,
+       64
+      ],
+      "16,2": [
+       64,
+       64,
+       64
+      ],
+      "17,2": [
+       64,
+       32,
+       32
+      ],
+      "19,2": [
+       64,
+       32,
+       32
+      ],
+      "20,2": [
+       64,
+       64,
+       64
+      ],
+      "6,3": [
+       192,
+       192,
+       192
+      ],
+      "7,3": [
+       96,
+       128,
+       160
+      ],
+      "8,3": [
+       96,
+       128,
+       160
+      ],
+      "11,3": [
+       192,
+       192,
+       224
+      ],
+      "12,3": [
+       192,
+       192,
+       224
+      ],
+      "13,3": [
+       128,
+       128,
+       160
+      ],
+      "14,3": [
+       192,
+       192,
+       192
+      ],
+      "15,3": [
+       192,
+       192,
+       192
+      ],
+      "6,4": [
+       192,
+       192,
+       192
+      ],
+      "14,4": [
+       192,
+       192,
+       192
+      ],
+      "15,4": [
+       192,
+       192,
+       192
+      ],
+      "6,5": [
+       224,
+       192,
+       160
+      ],
+      "14,5": [
+       224,
+       192,
+       160
+      ],
+      "15,5": [
+       160,
+       192,
+       192
+      ],
+      "2,8": [
+       192,
+       160,
+       192
+      ],
+      "9,8": [
+       255,
+       224,
+       96
+      ],
+      "10,8": [
+       255,
+       192,
+       96
+      ],
+      "15,8": [
+       128,
+       128,
+       160
+      ],
+      "9,9": [
+       255,
+       192,
+       96
+      ],
+      "10,9": [
+       224,
+       192,
+       96
+      ],
+      "14,9": [
+       224,
+       160,
+       128
+      ],
+      "15,9": [
+       160,
+       160,
+       160
+      ],
+      "2,10": [
+       224,
+       224,
+       224
+      ],
+      "14,10": [
+       192,
+       192,
+       192
+      ],
+      "15,10": [
+       192,
+       192,
+       192
+      ],
+      "14,11": [
+       192,
+       192,
+       192
+      ],
+      "15,11": [
+       192,
+       192,
+       192
+      ],
+      "14,12": [
+       192,
+       192,
+       192
+      ],
+      "15,12": [
+       192,
+       192,
+       192
+      ]
+     },
+     "_kinds": {
+      "2,8": "bed",
+      "2,10": "bed",
+      "7,3": "tv",
+      "8,3": "tv",
+      "11,3": "fridge",
+      "12,3": "sink",
+      "13,3": "sink",
+      "9,8": "table",
+      "10,8": "table",
+      "9,9": "table",
+      "10,9": "table"
+     },
+     "_objects": [
+      {
+       "k": "bed",
+       "r": [
+        2,
+        8,
+        1,
+        3
+       ]
+      },
+      {
+       "k": "tv",
+       "r": [
+        7,
+        3,
+        2,
+        1
+       ]
+      },
+      {
+       "k": "fridge",
+       "r": [
+        11,
+        3,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "sink",
+       "r": [
+        12,
+        3,
+        2,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        9,
+        8,
+        2,
+        2
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        16,
+        3,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        20,
+        3,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/C05R0802.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Grandma",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "They call Hearthome friendly to kids. I say it's friendly to everyone, Pokemon too."
+       ]
+      }
+     },
+     {
+      "text": "Old lady",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "No stairs in this house! A lift is easier, and the little Pokemon can get about too."
+       ]
+      }
+     },
+     {
+      "text": "Kind grandpa",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Some folks are kind hoping for kindness back. Where's the harm in that?"
+       ]
+      }
+     },
+     {
+      "text": "Grandpa",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My grandchildren all want Pokemon of their own. It'll be a handful, but a happy one."
+       ]
+      }
+     }
+    ]
    }
   },
   "inside": {
@@ -198779,7 +200853,13 @@
    "46,38": "house_0101",
    "12,37": "house_1201",
    "40,38": "house_0201",
-   "38,25": "house_0801"
+   "38,25": "house_0801",
+   "5,54": "gate_208",
+   "5,55": "gate_208",
+   "58,54": "gate_209",
+   "58,55": "gate_209",
+   "10,57": "gate_212",
+   "11,57": "gate_212"
   },
   "hidden": {
    "22,9": "BIG_MUSHROOM"
@@ -202034,9 +204114,9 @@
    "TTTTTTTTTTTTTTkeeeeeeeeeecceeeeekcckJJJJeeeeeeeeeeeKKKKkccccTTTT",
    "TTTTTTTTTTTTTTkeeeeeeeeeeccc===cccckJJJJeeeeeee!eeeKKKKkccccTTTT",
    "TTTTTTTTTTTTTTkkkkkkkeee!ccc===cccckJJJJeeeeeeeeeeeKKKKkccccTTTT",
-   "TTTTTTTTTTTTTTeeeeaaaaaaaaaaaaacccckeeeeeeeeeeeeeeeeeeekccccTTTT",
-   "LLLLLL....eeeeeeeeaaaaaaaaaaaaacccckkkkkkkkkkkkkkkeeekkkccccTTTT",
-   "LLLLLL....eeeeaaaaaaaaaaaaaaaaaccccccccccccccccccc===cccccccTTTT",
+   "TTTTTTTTTTTTTTeeeeaaaaaaaNaaaaacccckeeeeeeeeeeeeeeeeeeekccccTTTT",
+   "LLLLLL....eeeeeeeeaaaaaaNaaaaaacccckkkkkkkkkkkkkkkeeekkkccccTTTT",
+   "LLLLLL....eeeeaaaaaaaaaaaNaaaaaccccccccccccccccccc===cccccccTTTT",
    "LLLLLLn...eeeeaaaaaaaaaccccccccccccccccccccccccccc===cccccccTTTT",
    "LLLLLLn...eeeeaaaaaaaaacTTeMMMMMcccccccccccccccccc===cccccccTTTT",
    "LLLLLL....eeeeaaaaaaaaacTTeMMMMMeeeeeeOOOTTTTPPPcc===cccccccTTTT",
@@ -203863,20 +205943,23 @@
     "art": [
      "cccccccccccccccccccccc",
      "cccccccccccccccccccccc",
-     "ccccccccccccccc.cccccc",
+     "ccccccccccccccc<cccccc",
      "cmcccmm.............zc",
      "cmccc................c",
-     "cccNm................c",
-     "ccccc....cc....ccccc.c",
+     "ccNNm................c",
+     "ccmcc....cc....ccccc.c",
      "c......cccccc..ccccc.c",
-     "c.......cccc...mcccc.c",
-     "c......cccccc..ccccc.c",
+     "c......>cccc^..mNccc.c",
+     "c.N....cccccc..ccccc.c",
      "c....................c",
-     "cc..................cc",
+     "cc..N............N..cc",
      "cz........v.........zc",
      "cccccccccccccccccccccc"
     ],
     "exits": {
+     "^": "ROOM:dept_2f",
+     "<": "ROOM:dept_lift",
+     ">": "ROOM:dept_b1f",
      "v": "OUT:29,27"
     },
     "buildings": {},
@@ -203891,10 +205974,104 @@
       210,
       220
      ],
-     "_things": {}
+     "_things": {},
+     "_picture": {
+      "f": "pt_ground/C07R0201.png",
+      "at": [
+       0,
+       0
+      ]
+     }
     },
+    "title": "Veilstone Dept. Store 1F",
     "people": [
-     "Department Store"
+     {
+      "text": "Ball clerk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome! Poke Balls and travel goods here."
+       ],
+       "stock": [
+        "POKE_BALLS",
+        "GREAT_BALL",
+        "ULTRA_BALL",
+        "ESCAPE_ROPE",
+        "POKE_DOLL",
+        "REPEL",
+        "SUPER_REPEL",
+        "MAX_REPEL"
+       ]
+      }
+     },
+     {
+      "text": "Medicine clerk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome! Medicine for your Pokemon here."
+       ],
+       "stock": [
+        "POTION",
+        "SUPER_POTION",
+        "HYPER_POTION",
+        "MAX_POTION",
+        "REVIVE",
+        "ANTIDOTE",
+        "PARALYZE_HEAL",
+        "BURN_HEAL",
+        "ICE_HEAL",
+        "AWAKENING",
+        "FULL_HEAL"
+       ]
+      }
+     },
+     {
+      "text": "Receptionist",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to the Veilstone Department Store! A shop full of dreams!",
+        "Each floor has its own goods. The lift is just behind me."
+       ]
+      }
+     },
+     {
+      "text": "Lady shopper",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I love the grand feel of a big department store."
+       ]
+      }
+     },
+     {
+      "text": "Kind lady",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Do you know about Honey? Slather it on a sweet-smelling tree and wild Pokemon gather!",
+        "Here, have some.",
+        "You received some Honey!"
+       ],
+       "gift_item": {
+        "HONEY": 1
+       },
+       "flag": "got_honey_veilstone_dept",
+       "done": [
+        "Spread Honey on a tree, then come back later. Who knows what you'll find!"
+       ]
+      }
+     },
+     {
+      "text": "Shopper",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "This store really looks after its customers. I come here every week."
+       ]
+      }
+     }
     ]
    },
    "center": {
@@ -205934,6 +208111,730 @@
        ]
       }
      }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        8,
+        6
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:8:6"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        11,
+        6
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:11:6"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        21,
+        6
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:21:6"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        3,
+        9
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:3:9"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        9,
+        9
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:9:9"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        9
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:13:9"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        9
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:16:9"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        18,
+        9
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:18:9"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        23,
+        10
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:23:10"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        4,
+        11
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:4:11"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        7,
+        11
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:7:11"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        11
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:20:11"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        3,
+        13
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:3:13"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        7,
+        13
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:7:13"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        21,
+        15
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:21:15"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        3,
+        16
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:3:16"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        8,
+        16
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:8:16"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        16
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:20:16"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        3,
+        19
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:3:19"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        8,
+        19
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:8:19"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        21,
+        19
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:21:19"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        4,
+        21
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:4:21"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        21,
+        23
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:21:23"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        15,
+        25
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:15:25"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        19,
+        25
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:19:25"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        23,
+        26
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:23:26"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        3,
+        20
+       ]
+      ],
+      "look": "sheet:pt_tires.png",
+      "until": {
+       "condition": "world:veilstone_gym:nostack:0"
+      },
+      "lines": [
+       "A tall stack of tires. A punching bag could knock it over."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        8,
+        9
+       ]
+      ],
+      "look": "sheet:pt_tires.png",
+      "until": {
+       "condition": "world:veilstone_gym:nostack:1"
+      },
+      "lines": [
+       "A tall stack of tires. A punching bag could knock it over."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        8,
+        11
+       ]
+      ],
+      "look": "sheet:pt_tires.png",
+      "until": {
+       "condition": "world:veilstone_gym:nostack:2"
+      },
+      "lines": [
+       "A tall stack of tires. A punching bag could knock it over."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        8,
+        13
+       ]
+      ],
+      "look": "sheet:pt_tires.png",
+      "until": {
+       "condition": "world:veilstone_gym:nostack:3"
+      },
+      "lines": [
+       "A tall stack of tires. A punching bag could knock it over."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        12,
+        6
+       ]
+      ],
+      "look": "sheet:pt_tires.png",
+      "until": {
+       "condition": "world:veilstone_gym:nostack:4"
+      },
+      "lines": [
+       "A tall stack of tires. A punching bag could knock it over."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        12,
+        9
+       ]
+      ],
+      "look": "sheet:pt_tires.png",
+      "until": {
+       "condition": "world:veilstone_gym:nostack:5"
+      },
+      "lines": [
+       "A tall stack of tires. A punching bag could knock it over."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        19,
+        9
+       ]
+      ],
+      "look": "sheet:pt_tires.png",
+      "until": {
+       "condition": "world:veilstone_gym:nostack:6"
+      },
+      "lines": [
+       "A tall stack of tires. A punching bag could knock it over."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        10
+       ]
+      ],
+      "look": "sheet:pt_tires.png",
+      "until": {
+       "condition": "world:veilstone_gym:nostack:7"
+      },
+      "lines": [
+       "A tall stack of tires. A punching bag could knock it over."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        25
+       ]
+      ],
+      "look": "sheet:pt_tires.png",
+      "until": {
+       "condition": "world:veilstone_gym:nostack:8"
+      },
+      "lines": [
+       "A tall stack of tires. A punching bag could knock it over."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        22,
+        6
+       ]
+      ],
+      "look": "sheet:pt_tires.png",
+      "until": {
+       "condition": "world:veilstone_gym:nostack:9"
+      },
+      "lines": [
+       "A tall stack of tires. A punching bag could knock it over."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        23,
+        27
+       ]
+      ],
+      "look": "sheet:pt_tires.png",
+      "until": {
+       "condition": "world:veilstone_gym:nostack:10"
+      },
+      "lines": [
+       "A tall stack of tires. A punching bag could knock it over."
+      ]
+     }
+    ],
+    "scenes": [
+     {
+      "trigger": "enter",
+      "every": true,
+      "cast": [],
+      "event": {
+       "world": "veilstone_gym",
+       "reset": true
+      }
+     }
     ]
    },
    "house_0401": {
@@ -207047,6 +209948,3183 @@
       }
      }
     ]
+   },
+   "dept_2f": {
+    "theme": "room",
+    "art": [
+     "cccccccccccccccccccccc",
+     "cccccccccccccccccccccc",
+     "ccccccccccccccc>cccccc",
+     "czcm.mm.............zc",
+     "ccNm.....cc..........c",
+     "cccc.....cc......mcccc",
+     "ccNm.....cc......mNccc",
+     "cmcc...cccccc....cccmc",
+     "cmNc...^cccc<....cccmc",
+     "ccmc...cccccc....ccccc",
+     "c.....N..............c",
+     "cc...N.........N....cc",
+     "cz..................zc",
+     "cccccccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:mart",
+     "<": "ROOM:dept_3f",
+     ">": "ROOM:dept_lift"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      189,
+      255,
+      164
+     ],
+     "_wall": [
+      106,
+      106,
+      114
+     ],
+     "_things": {
+      "1,2": [
+       64,
+       96,
+       64
+      ],
+      "2,2": [
+       64,
+       96,
+       64
+      ],
+      "3,2": [
+       64,
+       96,
+       64
+      ],
+      "4,2": [
+       64,
+       96,
+       64
+      ],
+      "5,2": [
+       64,
+       96,
+       64
+      ],
+      "6,2": [
+       64,
+       96,
+       64
+      ],
+      "7,2": [
+       64,
+       96,
+       64
+      ],
+      "8,2": [
+       64,
+       96,
+       64
+      ],
+      "9,2": [
+       64,
+       96,
+       64
+      ],
+      "10,2": [
+       64,
+       96,
+       64
+      ],
+      "11,2": [
+       64,
+       96,
+       64
+      ],
+      "12,2": [
+       64,
+       96,
+       64
+      ],
+      "13,2": [
+       64,
+       96,
+       64
+      ],
+      "14,2": [
+       96,
+       64,
+       64
+      ],
+      "16,2": [
+       96,
+       64,
+       64
+      ],
+      "17,2": [
+       64,
+       96,
+       64
+      ],
+      "18,2": [
+       64,
+       96,
+       64
+      ],
+      "19,2": [
+       64,
+       96,
+       64
+      ],
+      "20,2": [
+       64,
+       96,
+       64
+      ],
+      "2,3": [
+       192,
+       255,
+       224
+      ],
+      "3,3": [
+       192,
+       192,
+       192
+      ],
+      "5,3": [
+       64,
+       160,
+       128
+      ],
+      "6,3": [
+       128,
+       192,
+       160
+      ],
+      "1,4": [
+       192,
+       255,
+       224
+      ],
+      "2,4": [
+       192,
+       255,
+       224
+      ],
+      "3,4": [
+       160,
+       192,
+       224
+      ],
+      "9,4": [
+       192,
+       255,
+       224
+      ],
+      "10,4": [
+       192,
+       255,
+       224
+      ],
+      "1,5": [
+       192,
+       255,
+       224
+      ],
+      "2,5": [
+       192,
+       255,
+       224
+      ],
+      "3,5": [
+       128,
+       160,
+       255
+      ],
+      "9,5": [
+       192,
+       255,
+       224
+      ],
+      "10,5": [
+       192,
+       255,
+       224
+      ],
+      "17,5": [
+       64,
+       96,
+       128
+      ],
+      "18,5": [
+       160,
+       255,
+       255
+      ],
+      "19,5": [
+       32,
+       255,
+       255
+      ],
+      "20,5": [
+       96,
+       255,
+       255
+      ],
+      "1,6": [
+       192,
+       255,
+       224
+      ],
+      "2,6": [
+       192,
+       255,
+       224
+      ],
+      "3,6": [
+       192,
+       255,
+       255
+      ],
+      "17,6": [
+       160,
+       192,
+       224
+      ],
+      "18,6": [
+       192,
+       255,
+       224
+      ],
+      "19,6": [
+       192,
+       255,
+       224
+      ],
+      "20,6": [
+       192,
+       255,
+       224
+      ],
+      "1,7": [
+       160,
+       160,
+       128
+      ],
+      "2,7": [
+       192,
+       255,
+       224
+      ],
+      "3,7": [
+       32,
+       255,
+       255
+      ],
+      "7,7": [
+       224,
+       96,
+       64
+      ],
+      "8,7": [
+       224,
+       96,
+       64
+      ],
+      "11,7": [
+       224,
+       96,
+       64
+      ],
+      "12,7": [
+       224,
+       96,
+       64
+      ],
+      "17,7": [
+       128,
+       160,
+       255
+      ],
+      "18,7": [
+       192,
+       255,
+       224
+      ],
+      "19,7": [
+       192,
+       255,
+       224
+      ],
+      "20,7": [
+       160,
+       160,
+       128
+      ],
+      "1,8": [
+       224,
+       224,
+       224
+      ],
+      "2,8": [
+       192,
+       255,
+       224
+      ],
+      "3,8": [
+       128,
+       160,
+       255
+      ],
+      "8,8": [
+       96,
+       96,
+       96
+      ],
+      "11,8": [
+       96,
+       96,
+       96
+      ],
+      "17,8": [
+       128,
+       160,
+       255
+      ],
+      "18,8": [
+       192,
+       255,
+       224
+      ],
+      "19,8": [
+       192,
+       255,
+       224
+      ],
+      "20,8": [
+       192,
+       224,
+       192
+      ],
+      "1,9": [
+       160,
+       255,
+       255
+      ],
+      "2,9": [
+       32,
+       255,
+       255
+      ],
+      "3,9": [
+       128,
+       160,
+       255
+      ],
+      "7,9": [
+       192,
+       160,
+       128
+      ],
+      "8,9": [
+       192,
+       160,
+       128
+      ],
+      "9,9": [
+       64,
+       96,
+       96
+      ],
+      "10,9": [
+       64,
+       96,
+       96
+      ],
+      "11,9": [
+       192,
+       160,
+       160
+      ],
+      "12,9": [
+       192,
+       160,
+       160
+      ],
+      "17,9": [
+       160,
+       255,
+       255
+      ],
+      "18,9": [
+       32,
+       255,
+       255
+      ],
+      "19,9": [
+       160,
+       255,
+       255
+      ],
+      "20,9": [
+       32,
+       255,
+       255
+      ],
+      "1,11": [
+       192,
+       255,
+       224
+      ],
+      "20,11": [
+       192,
+       255,
+       224
+      ]
+     },
+     "_kinds": {
+      "3,3": "table",
+      "17,5": "table",
+      "5,3": "shelf",
+      "6,3": "shelf",
+      "20,7": "shelf",
+      "20,8": "shelf",
+      "1,7": "shelf",
+      "1,8": "shelf"
+     },
+     "_objects": [
+      {
+       "k": "plant",
+       "r": [
+        20,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        20,
+        3,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        1,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        1,
+        3,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        3,
+        3,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        17,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "shelf",
+       "r": [
+        5,
+        3,
+        2,
+        1
+       ]
+      },
+      {
+       "k": "shelf",
+       "r": [
+        20,
+        7,
+        1,
+        2
+       ]
+      },
+      {
+       "k": "shelf",
+       "r": [
+        1,
+        7,
+        1,
+        2
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/C07R0202.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "title": "Veilstone Dept. Store 2F",
+    "people": [
+     {
+      "text": "Battle item clerk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Battle items, for that extra edge!"
+       ],
+       "stock": [
+        "X_SPEED",
+        "X_ATTACK",
+        "X_DEFENSE",
+        "GUARD_SPEC",
+        "DIRE_HIT",
+        "X_ACCURACY",
+        "X_SP_ATK",
+        "X_SP_DEF"
+       ]
+      }
+     },
+     {
+      "text": "Vitamin clerk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Vitamins! They make your Pokemon stronger from the inside."
+       ],
+       "stock": [
+        "PROTEIN",
+        "IRON",
+        "CALCIUM",
+        "ZINC",
+        "CARBOS",
+        "HP_UP"
+       ]
+      }
+     },
+     {
+      "text": "Floor guide",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to the Battle Collection. Everything a battler needs!"
+       ]
+      }
+     },
+     {
+      "text": "Promo clerk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Battle items and vitamins are on this floor. Shop around!"
+       ]
+      }
+     },
+     {
+      "text": "Boy ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm buying Carbos. Or should it be Protein? Decisions, decisions..."
+       ]
+      }
+     },
+     {
+      "text": "Boy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm giving an HP Up to my Kricketot. It'll get so much tougher!"
+       ]
+      }
+     },
+     {
+      "text": "Lady shopper",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Where can I find matching outfits for me and my Pokemon?"
+       ]
+      }
+     }
+    ]
+   },
+   "dept_3f": {
+    "theme": "room",
+    "art": [
+     "cccccccccccccccccccccc",
+     "cccccccccccccccccccccc",
+     "ccccccccccccccc>cccccc",
+     "cmmccmm.............zc",
+     "cccNc..N.cc..........c",
+     "cccmc....cc......mcccc",
+     "c........cc......mNccc",
+     "c......cccccc....cccmc",
+     "c......^cccc<....cccmc",
+     "c......cccccc....ccccc",
+     "cccmc....N........N..c",
+     "cccNcc..............cc",
+     "cccccz..............zc",
+     "cccccccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:dept_2f",
+     "<": "ROOM:dept_4f",
+     ">": "ROOM:dept_lift"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      189,
+      255,
+      164
+     ],
+     "_wall": [
+      106,
+      106,
+      114
+     ],
+     "_things": {
+      "1,2": [
+       64,
+       96,
+       64
+      ],
+      "2,2": [
+       64,
+       96,
+       64
+      ],
+      "3,2": [
+       64,
+       96,
+       64
+      ],
+      "4,2": [
+       64,
+       96,
+       64
+      ],
+      "5,2": [
+       64,
+       96,
+       64
+      ],
+      "6,2": [
+       64,
+       96,
+       64
+      ],
+      "7,2": [
+       64,
+       96,
+       64
+      ],
+      "8,2": [
+       64,
+       96,
+       64
+      ],
+      "9,2": [
+       64,
+       96,
+       64
+      ],
+      "10,2": [
+       64,
+       96,
+       64
+      ],
+      "11,2": [
+       64,
+       96,
+       64
+      ],
+      "12,2": [
+       64,
+       96,
+       64
+      ],
+      "13,2": [
+       64,
+       96,
+       64
+      ],
+      "14,2": [
+       96,
+       64,
+       64
+      ],
+      "16,2": [
+       96,
+       64,
+       64
+      ],
+      "17,2": [
+       64,
+       96,
+       64
+      ],
+      "18,2": [
+       64,
+       96,
+       64
+      ],
+      "19,2": [
+       64,
+       96,
+       64
+      ],
+      "20,2": [
+       64,
+       96,
+       64
+      ],
+      "1,3": [
+       192,
+       160,
+       128
+      ],
+      "2,3": [
+       192,
+       160,
+       160
+      ],
+      "3,3": [
+       192,
+       255,
+       224
+      ],
+      "4,3": [
+       160,
+       255,
+       255
+      ],
+      "5,3": [
+       64,
+       160,
+       128
+      ],
+      "6,3": [
+       128,
+       192,
+       160
+      ],
+      "1,4": [
+       192,
+       255,
+       224
+      ],
+      "2,4": [
+       192,
+       255,
+       224
+      ],
+      "3,4": [
+       192,
+       255,
+       224
+      ],
+      "4,4": [
+       32,
+       255,
+       255
+      ],
+      "9,4": [
+       192,
+       255,
+       224
+      ],
+      "10,4": [
+       192,
+       255,
+       224
+      ],
+      "1,5": [
+       128,
+       160,
+       255
+      ],
+      "2,5": [
+       128,
+       160,
+       255
+      ],
+      "3,5": [
+       224,
+       224,
+       224
+      ],
+      "4,5": [
+       128,
+       160,
+       255
+      ],
+      "9,5": [
+       192,
+       255,
+       224
+      ],
+      "10,5": [
+       192,
+       255,
+       224
+      ],
+      "17,5": [
+       64,
+       96,
+       128
+      ],
+      "18,5": [
+       160,
+       255,
+       255
+      ],
+      "19,5": [
+       32,
+       255,
+       255
+      ],
+      "20,5": [
+       96,
+       255,
+       255
+      ],
+      "17,6": [
+       160,
+       192,
+       224
+      ],
+      "18,6": [
+       192,
+       255,
+       224
+      ],
+      "19,6": [
+       192,
+       255,
+       224
+      ],
+      "20,6": [
+       192,
+       255,
+       224
+      ],
+      "7,7": [
+       224,
+       96,
+       64
+      ],
+      "8,7": [
+       224,
+       96,
+       64
+      ],
+      "11,7": [
+       224,
+       96,
+       64
+      ],
+      "12,7": [
+       224,
+       96,
+       64
+      ],
+      "17,7": [
+       128,
+       160,
+       255
+      ],
+      "18,7": [
+       192,
+       255,
+       224
+      ],
+      "19,7": [
+       192,
+       255,
+       224
+      ],
+      "20,7": [
+       160,
+       160,
+       128
+      ],
+      "8,8": [
+       96,
+       96,
+       96
+      ],
+      "11,8": [
+       96,
+       96,
+       96
+      ],
+      "17,8": [
+       128,
+       160,
+       255
+      ],
+      "18,8": [
+       192,
+       255,
+       224
+      ],
+      "19,8": [
+       192,
+       255,
+       224
+      ],
+      "20,8": [
+       192,
+       224,
+       192
+      ],
+      "7,9": [
+       192,
+       160,
+       160
+      ],
+      "8,9": [
+       192,
+       160,
+       160
+      ],
+      "9,9": [
+       64,
+       96,
+       96
+      ],
+      "10,9": [
+       64,
+       96,
+       96
+      ],
+      "11,9": [
+       192,
+       160,
+       160
+      ],
+      "12,9": [
+       192,
+       160,
+       160
+      ],
+      "17,9": [
+       160,
+       255,
+       255
+      ],
+      "18,9": [
+       32,
+       255,
+       255
+      ],
+      "19,9": [
+       160,
+       255,
+       255
+      ],
+      "20,9": [
+       32,
+       255,
+       255
+      ],
+      "1,10": [
+       128,
+       160,
+       255
+      ],
+      "2,10": [
+       128,
+       160,
+       255
+      ],
+      "3,10": [
+       224,
+       224,
+       224
+      ],
+      "4,10": [
+       128,
+       160,
+       255
+      ],
+      "1,11": [
+       192,
+       255,
+       224
+      ],
+      "2,11": [
+       192,
+       255,
+       224
+      ],
+      "3,11": [
+       192,
+       255,
+       224
+      ],
+      "4,11": [
+       160,
+       255,
+       255
+      ],
+      "5,11": [
+       192,
+       255,
+       224
+      ],
+      "20,11": [
+       192,
+       255,
+       224
+      ],
+      "1,12": [
+       192,
+       255,
+       224
+      ],
+      "2,12": [
+       192,
+       255,
+       224
+      ],
+      "3,12": [
+       192,
+       255,
+       224
+      ],
+      "4,12": [
+       32,
+       255,
+       255
+      ]
+     },
+     "_kinds": {
+      "5,3": "shelf",
+      "6,3": "shelf",
+      "1,3": "shelf",
+      "2,3": "shelf",
+      "20,7": "shelf",
+      "20,8": "shelf",
+      "17,5": "table"
+     },
+     "_objects": [
+      {
+       "k": "shelf",
+       "r": [
+        5,
+        3,
+        2,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        20,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        5,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        20,
+        3,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "shelf",
+       "r": [
+        1,
+        3,
+        2,
+        1
+       ]
+      },
+      {
+       "k": "shelf",
+       "r": [
+        20,
+        7,
+        1,
+        2
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        17,
+        5,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/C07R0203.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "title": "Veilstone Dept. Store 3F",
+    "people": [
+     {
+      "text": "TM clerk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "TMs for every Trainer!"
+       ],
+       "stock": [
+        "TM303",
+        "TM007",
+        "TM057",
+        "TM236",
+        "TM074",
+        "TM075",
+        "TM291"
+       ]
+      }
+     },
+     {
+      "text": "Man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I keep secrets in my Mail so I don't forget them. Don't tell anyone."
+       ]
+      }
+     },
+     {
+      "text": "Floor guide",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The TM Corner! Teach your Pokemon something new."
+       ]
+      }
+     },
+     {
+      "text": "Little girl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "A friend traded me a Machoke, and it evolved right away!"
+       ]
+      }
+     },
+     {
+      "text": "Woman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'd buy every TM here if I could. Just one more..."
+       ]
+      }
+     },
+     {
+      "text": "Big TM clerk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The big moves. Worth every coin!"
+       ],
+       "stock": [
+        "TM141",
+        "TM166",
+        "TM143",
+        "TM168",
+        "TM158",
+        "TM163"
+       ]
+      }
+     }
+    ]
+   },
+   "dept_4f": {
+    "theme": "room",
+    "art": [
+     "cccccccccccccccccccccc",
+     "cccccccccccccccccccccc",
+     "ccccccccccccccc>cccccc",
+     "cmccmz...........mccmc",
+     "cmccc....cc......cccmc",
+     "cccNm....cc......mNccc",
+     "cmccc....cc......cccmc",
+     "cmccc..cccccc....cccmc",
+     "ccNcc..^cccc<....ccccc",
+     "ccmcc..cccccc....ccccc",
+     "c........zz....N.....c",
+     "cc....N.........N...cc",
+     "cz..................zc",
+     "cccccccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:dept_3f",
+     "<": "ROOM:dept_5f",
+     ">": "ROOM:dept_lift"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      189,
+      255,
+      164
+     ],
+     "_wall": [
+      106,
+      106,
+      114
+     ],
+     "_things": {
+      "1,2": [
+       64,
+       96,
+       64
+      ],
+      "2,2": [
+       64,
+       96,
+       64
+      ],
+      "3,2": [
+       64,
+       96,
+       64
+      ],
+      "4,2": [
+       64,
+       96,
+       64
+      ],
+      "5,2": [
+       64,
+       96,
+       64
+      ],
+      "6,2": [
+       64,
+       96,
+       64
+      ],
+      "7,2": [
+       64,
+       96,
+       64
+      ],
+      "8,2": [
+       64,
+       96,
+       64
+      ],
+      "9,2": [
+       64,
+       96,
+       64
+      ],
+      "10,2": [
+       64,
+       96,
+       64
+      ],
+      "11,2": [
+       64,
+       96,
+       64
+      ],
+      "12,2": [
+       64,
+       96,
+       64
+      ],
+      "13,2": [
+       64,
+       96,
+       64
+      ],
+      "14,2": [
+       96,
+       64,
+       64
+      ],
+      "16,2": [
+       96,
+       64,
+       64
+      ],
+      "17,2": [
+       64,
+       96,
+       64
+      ],
+      "18,2": [
+       64,
+       96,
+       64
+      ],
+      "19,2": [
+       64,
+       96,
+       64
+      ],
+      "20,2": [
+       64,
+       96,
+       64
+      ],
+      "1,3": [
+       160,
+       160,
+       128
+      ],
+      "2,3": [
+       192,
+       255,
+       224
+      ],
+      "3,3": [
+       192,
+       255,
+       224
+      ],
+      "4,3": [
+       192,
+       192,
+       192
+      ],
+      "17,3": [
+       64,
+       96,
+       128
+      ],
+      "18,3": [
+       192,
+       255,
+       224
+      ],
+      "19,3": [
+       192,
+       255,
+       224
+      ],
+      "20,3": [
+       160,
+       160,
+       128
+      ],
+      "1,4": [
+       224,
+       224,
+       224
+      ],
+      "2,4": [
+       192,
+       255,
+       224
+      ],
+      "3,4": [
+       192,
+       255,
+       224
+      ],
+      "4,4": [
+       128,
+       160,
+       255
+      ],
+      "9,4": [
+       192,
+       255,
+       224
+      ],
+      "10,4": [
+       192,
+       255,
+       224
+      ],
+      "17,4": [
+       128,
+       160,
+       255
+      ],
+      "18,4": [
+       192,
+       255,
+       224
+      ],
+      "19,4": [
+       192,
+       255,
+       224
+      ],
+      "20,4": [
+       192,
+       224,
+       192
+      ],
+      "1,5": [
+       192,
+       255,
+       224
+      ],
+      "2,5": [
+       192,
+       255,
+       224
+      ],
+      "3,5": [
+       192,
+       255,
+       224
+      ],
+      "4,5": [
+       160,
+       192,
+       224
+      ],
+      "9,5": [
+       192,
+       255,
+       224
+      ],
+      "10,5": [
+       192,
+       255,
+       224
+      ],
+      "17,5": [
+       160,
+       192,
+       224
+      ],
+      "18,5": [
+       192,
+       255,
+       224
+      ],
+      "19,5": [
+       192,
+       255,
+       224
+      ],
+      "20,5": [
+       192,
+       255,
+       224
+      ],
+      "1,6": [
+       160,
+       160,
+       128
+      ],
+      "2,6": [
+       192,
+       255,
+       224
+      ],
+      "3,6": [
+       192,
+       255,
+       224
+      ],
+      "4,6": [
+       128,
+       160,
+       255
+      ],
+      "17,6": [
+       128,
+       160,
+       255
+      ],
+      "18,6": [
+       192,
+       255,
+       224
+      ],
+      "19,6": [
+       192,
+       255,
+       224
+      ],
+      "20,6": [
+       160,
+       160,
+       128
+      ],
+      "1,7": [
+       224,
+       224,
+       224
+      ],
+      "2,7": [
+       192,
+       255,
+       224
+      ],
+      "3,7": [
+       192,
+       255,
+       224
+      ],
+      "4,7": [
+       128,
+       160,
+       255
+      ],
+      "7,7": [
+       224,
+       96,
+       64
+      ],
+      "8,7": [
+       224,
+       96,
+       64
+      ],
+      "11,7": [
+       224,
+       96,
+       64
+      ],
+      "12,7": [
+       224,
+       96,
+       64
+      ],
+      "17,7": [
+       128,
+       160,
+       255
+      ],
+      "18,7": [
+       192,
+       255,
+       224
+      ],
+      "19,7": [
+       192,
+       255,
+       224
+      ],
+      "20,7": [
+       192,
+       224,
+       192
+      ],
+      "1,8": [
+       192,
+       255,
+       224
+      ],
+      "2,8": [
+       192,
+       255,
+       224
+      ],
+      "3,8": [
+       192,
+       255,
+       224
+      ],
+      "4,8": [
+       128,
+       160,
+       255
+      ],
+      "8,8": [
+       96,
+       96,
+       96
+      ],
+      "11,8": [
+       96,
+       96,
+       96
+      ],
+      "17,8": [
+       128,
+       160,
+       255
+      ],
+      "18,8": [
+       192,
+       255,
+       224
+      ],
+      "19,8": [
+       192,
+       255,
+       224
+      ],
+      "20,8": [
+       192,
+       255,
+       224
+      ],
+      "1,9": [
+       160,
+       255,
+       255
+      ],
+      "2,9": [
+       64,
+       255,
+       255
+      ],
+      "3,9": [
+       32,
+       255,
+       255
+      ],
+      "4,9": [
+       128,
+       160,
+       255
+      ],
+      "7,9": [
+       192,
+       160,
+       160
+      ],
+      "8,9": [
+       192,
+       160,
+       160
+      ],
+      "9,9": [
+       64,
+       96,
+       96
+      ],
+      "10,9": [
+       64,
+       96,
+       96
+      ],
+      "11,9": [
+       192,
+       160,
+       160
+      ],
+      "12,9": [
+       192,
+       160,
+       160
+      ],
+      "17,9": [
+       128,
+       160,
+       255
+      ],
+      "18,9": [
+       160,
+       255,
+       255
+      ],
+      "19,9": [
+       32,
+       255,
+       255
+      ],
+      "20,9": [
+       96,
+       255,
+       255
+      ],
+      "1,11": [
+       160,
+       255,
+       224
+      ],
+      "20,11": [
+       192,
+       255,
+       224
+      ]
+     },
+     "_kinds": {
+      "20,6": "shelf",
+      "20,7": "shelf",
+      "20,3": "shelf",
+      "20,4": "shelf",
+      "1,6": "shelf",
+      "1,7": "shelf",
+      "1,3": "shelf",
+      "1,4": "shelf",
+      "4,3": "table",
+      "17,3": "table"
+     },
+     "_objects": [
+      {
+       "k": "plant",
+       "r": [
+        20,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        1,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        5,
+        3,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "shelf",
+       "r": [
+        20,
+        6,
+        1,
+        2
+       ]
+      },
+      {
+       "k": "shelf",
+       "r": [
+        20,
+        3,
+        1,
+        2
+       ]
+      },
+      {
+       "k": "shelf",
+       "r": [
+        1,
+        6,
+        1,
+        2
+       ]
+      },
+      {
+       "k": "shelf",
+       "r": [
+        1,
+        3,
+        1,
+        2
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        9,
+        10,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        10,
+        10,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        4,
+        3,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        17,
+        3,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/C07R0204.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "title": "Veilstone Dept. Store 4F",
+    "people": [
+     {
+      "text": "Goods clerk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Our Secret Base goods are all sold out, I'm afraid. Do come back another time."
+       ]
+      }
+     },
+     {
+      "text": "Floor guide",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Dolls and goods for your Secret Base are sold on this floor."
+       ]
+      }
+     },
+     {
+      "text": "Doll clerk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Sorry, the Dolls are all gone today. They're very popular!"
+       ]
+      }
+     },
+     {
+      "text": "Little boy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "If you meet a wild Pokemon, throw a Quick Ball right away!"
+       ]
+      }
+     },
+     {
+      "text": "Gamer boy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "We need another copy of the game so I can battle my brother. Or just another Trainer!"
+       ]
+      }
+     },
+     {
+      "text": "Mother",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My son has no Pokemon yet, but he already knows all about Poke Balls."
+       ]
+      }
+     }
+    ]
+   },
+   "dept_5f": {
+    "theme": "room",
+    "art": [
+     "cccccccccccccccccccccc",
+     "cccccccccccccccccccccc",
+     "ccccccccccccccc<cccccc",
+     "cz...!m.............zc",
+     "c........cc..........c",
+     "c........cc.....mm...c",
+     "c..N.....cc..........c",
+     "c.mm...cccc..........c",
+     "c......^ccc...N......c",
+     "c......cccc..........c",
+     "c....................c",
+     "cc.......NN.....mm..cc",
+     "cz..................zc",
+     "cccccccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:dept_4f",
+     "<": "ROOM:dept_lift"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      189,
+      255,
+      164
+     ],
+     "_wall": [
+      106,
+      106,
+      114
+     ],
+     "_things": {
+      "1,2": [
+       64,
+       96,
+       64
+      ],
+      "2,2": [
+       64,
+       96,
+       64
+      ],
+      "3,2": [
+       64,
+       96,
+       64
+      ],
+      "4,2": [
+       64,
+       96,
+       64
+      ],
+      "5,2": [
+       64,
+       96,
+       64
+      ],
+      "6,2": [
+       64,
+       96,
+       64
+      ],
+      "7,2": [
+       64,
+       96,
+       64
+      ],
+      "8,2": [
+       64,
+       96,
+       64
+      ],
+      "9,2": [
+       64,
+       96,
+       64
+      ],
+      "10,2": [
+       64,
+       96,
+       64
+      ],
+      "11,2": [
+       64,
+       96,
+       64
+      ],
+      "12,2": [
+       64,
+       96,
+       64
+      ],
+      "13,2": [
+       64,
+       96,
+       64
+      ],
+      "14,2": [
+       96,
+       64,
+       64
+      ],
+      "16,2": [
+       96,
+       64,
+       64
+      ],
+      "17,2": [
+       64,
+       96,
+       64
+      ],
+      "18,2": [
+       64,
+       96,
+       64
+      ],
+      "19,2": [
+       64,
+       96,
+       64
+      ],
+      "20,2": [
+       64,
+       96,
+       64
+      ],
+      "5,3": [
+       128,
+       160,
+       160
+      ],
+      "6,3": [
+       128,
+       160,
+       160
+      ],
+      "9,4": [
+       192,
+       255,
+       224
+      ],
+      "10,4": [
+       192,
+       255,
+       224
+      ],
+      "9,5": [
+       192,
+       255,
+       224
+      ],
+      "10,5": [
+       192,
+       255,
+       224
+      ],
+      "16,5": [
+       255,
+       192,
+       96
+      ],
+      "17,5": [
+       224,
+       192,
+       96
+      ],
+      "2,7": [
+       255,
+       192,
+       96
+      ],
+      "3,7": [
+       224,
+       192,
+       96
+      ],
+      "7,7": [
+       224,
+       96,
+       64
+      ],
+      "8,7": [
+       224,
+       96,
+       64
+      ],
+      "8,8": [
+       96,
+       96,
+       96
+      ],
+      "7,9": [
+       192,
+       160,
+       160
+      ],
+      "8,9": [
+       192,
+       160,
+       160
+      ],
+      "9,9": [
+       64,
+       96,
+       96
+      ],
+      "10,9": [
+       64,
+       96,
+       96
+      ],
+      "1,11": [
+       192,
+       255,
+       224
+      ],
+      "16,11": [
+       255,
+       192,
+       96
+      ],
+      "17,11": [
+       224,
+       192,
+       96
+      ],
+      "20,11": [
+       192,
+       255,
+       224
+      ]
+     },
+     "_kinds": {
+      "16,11": "table",
+      "17,11": "table",
+      "16,5": "table",
+      "17,5": "table",
+      "2,7": "table",
+      "3,7": "table",
+      "5,3": "machine",
+      "6,3": "machine"
+     },
+     "_objects": [
+      {
+       "k": "table",
+       "r": [
+        16,
+        11,
+        2,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        16,
+        5,
+        2,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        2,
+        7,
+        2,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        20,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        1,
+        12,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        20,
+        3,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        1,
+        3,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "machine",
+       "r": [
+        5,
+        3,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "machine",
+       "r": [
+        6,
+        3,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/C07R0205.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "title": "Veilstone Dept. Store Rooftop",
+    "people": [
+     {
+      "text": "Thirsty boy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm done shopping for today. A cold drink from the machine, then home."
+       ]
+      }
+     },
+     {
+      "text": "Regular",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I've shopped here for years. The rooftop view never gets old."
+       ]
+      }
+     },
+     {
+      "text": "Strongman ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Two strong men, standing side by side. That's all. Nothing more to see."
+       ]
+      }
+     },
+     {
+      "text": "Strongman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Ah, young Trainer! As your elder, let me give you this. Train hard!",
+        "You received a Sticky Barb!"
+       ],
+       "gift_item": {
+        "STICKY_BARB": 1
+       },
+       "flag": "got_sticky_barb_veilstone_dept",
+       "done": [
+        "A Sticky Barb hurts whoever holds it. Hand it to the foe if you can!"
+       ]
+      }
+     }
+    ],
+    "signs": [
+     [
+      "A vending machine. Cold drinks, any time!"
+     ]
+    ],
+    "sign_events": {
+     "5,3": {
+      "text": "Vending machine",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "A vending machine. Cold drinks, any time!"
+       ],
+       "stock": [
+        "FRESH_WATER",
+        "SODA_POP",
+        "LEMONADE"
+       ]
+      }
+     }
+    }
+   },
+   "dept_b1f": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccc",
+     "cccccccccccccc<cccccccccc",
+     "cz.....................zc",
+     "c.......................c",
+     "c..cccm.......cccc.mccc.c",
+     "c..ccNm.cc....mNcc.mNcc.c",
+     "c..cccc.cccc..cccc.cccc.c",
+     "c..N....ccc^............c",
+     "c.......cccc....N.......c",
+     "c..cccm.......mccc.mccc.c",
+     "c..ccNm.......mNcc.mNcc.c",
+     "c..cccc.......cccc.cccc.c",
+     "cc...................N.cc",
+     "cz..........m..........zc",
+     "ccccccccccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:mart",
+     "<": "ROOM:dept_lift"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      156,
+      205,
+      189
+     ],
+     "_wall": [
+      106,
+      106,
+      114
+     ],
+     "_things": {
+      "1,2": [
+       64,
+       96,
+       96
+      ],
+      "2,2": [
+       64,
+       96,
+       96
+      ],
+      "3,2": [
+       64,
+       96,
+       96
+      ],
+      "4,2": [
+       64,
+       96,
+       96
+      ],
+      "5,2": [
+       64,
+       96,
+       96
+      ],
+      "6,2": [
+       64,
+       96,
+       96
+      ],
+      "7,2": [
+       64,
+       96,
+       96
+      ],
+      "8,2": [
+       64,
+       96,
+       96
+      ],
+      "9,2": [
+       64,
+       96,
+       96
+      ],
+      "10,2": [
+       64,
+       96,
+       96
+      ],
+      "11,2": [
+       64,
+       96,
+       96
+      ],
+      "12,2": [
+       64,
+       96,
+       96
+      ],
+      "13,2": [
+       96,
+       64,
+       64
+      ],
+      "15,2": [
+       96,
+       64,
+       64
+      ],
+      "16,2": [
+       64,
+       96,
+       96
+      ],
+      "17,2": [
+       64,
+       96,
+       96
+      ],
+      "18,2": [
+       64,
+       96,
+       96
+      ],
+      "19,2": [
+       64,
+       96,
+       96
+      ],
+      "20,2": [
+       64,
+       96,
+       96
+      ],
+      "21,2": [
+       64,
+       96,
+       96
+      ],
+      "22,2": [
+       64,
+       96,
+       96
+      ],
+      "23,2": [
+       64,
+       96,
+       96
+      ],
+      "3,5": [
+       128,
+       160,
+       255
+      ],
+      "4,5": [
+       128,
+       255,
+       255
+      ],
+      "5,5": [
+       32,
+       255,
+       255
+      ],
+      "6,5": [
+       192,
+       192,
+       192
+      ],
+      "14,5": [
+       128,
+       160,
+       255
+      ],
+      "15,5": [
+       128,
+       255,
+       255
+      ],
+      "16,5": [
+       32,
+       255,
+       255
+      ],
+      "17,5": [
+       128,
+       160,
+       255
+      ],
+      "19,5": [
+       64,
+       96,
+       128
+      ],
+      "20,5": [
+       128,
+       255,
+       255
+      ],
+      "21,5": [
+       32,
+       255,
+       255
+      ],
+      "22,5": [
+       128,
+       160,
+       255
+      ],
+      "3,6": [
+       128,
+       160,
+       255
+      ],
+      "6,6": [
+       160,
+       192,
+       224
+      ],
+      "14,6": [
+       160,
+       192,
+       224
+      ],
+      "17,6": [
+       128,
+       160,
+       255
+      ],
+      "19,6": [
+       160,
+       192,
+       224
+      ],
+      "22,6": [
+       128,
+       160,
+       255
+      ],
+      "3,7": [
+       128,
+       160,
+       255
+      ],
+      "4,7": [
+       128,
+       255,
+       255
+      ],
+      "5,7": [
+       32,
+       255,
+       255
+      ],
+      "6,7": [
+       128,
+       160,
+       255
+      ],
+      "10,7": [
+       224,
+       64,
+       64
+      ],
+      "11,7": [
+       224,
+       64,
+       64
+      ],
+      "14,7": [
+       128,
+       160,
+       255
+      ],
+      "15,7": [
+       128,
+       255,
+       255
+      ],
+      "16,7": [
+       32,
+       255,
+       255
+      ],
+      "17,7": [
+       128,
+       160,
+       255
+      ],
+      "19,7": [
+       128,
+       160,
+       255
+      ],
+      "20,7": [
+       128,
+       255,
+       255
+      ],
+      "21,7": [
+       32,
+       255,
+       255
+      ],
+      "22,7": [
+       128,
+       160,
+       255
+      ],
+      "10,8": [
+       96,
+       96,
+       96
+      ],
+      "8,9": [
+       64,
+       96,
+       96
+      ],
+      "9,9": [
+       64,
+       96,
+       96
+      ],
+      "10,9": [
+       192,
+       128,
+       128
+      ],
+      "11,9": [
+       192,
+       128,
+       128
+      ],
+      "3,10": [
+       128,
+       160,
+       255
+      ],
+      "4,10": [
+       128,
+       255,
+       255
+      ],
+      "5,10": [
+       32,
+       255,
+       255
+      ],
+      "6,10": [
+       192,
+       192,
+       192
+      ],
+      "14,10": [
+       64,
+       96,
+       128
+      ],
+      "15,10": [
+       128,
+       255,
+       255
+      ],
+      "16,10": [
+       32,
+       255,
+       255
+      ],
+      "17,10": [
+       128,
+       160,
+       255
+      ],
+      "19,10": [
+       64,
+       96,
+       128
+      ],
+      "20,10": [
+       128,
+       255,
+       255
+      ],
+      "21,10": [
+       32,
+       255,
+       255
+      ],
+      "22,10": [
+       128,
+       160,
+       255
+      ],
+      "3,11": [
+       128,
+       160,
+       255
+      ],
+      "6,11": [
+       160,
+       192,
+       224
+      ],
+      "14,11": [
+       160,
+       192,
+       224
+      ],
+      "17,11": [
+       128,
+       160,
+       255
+      ],
+      "19,11": [
+       160,
+       192,
+       224
+      ],
+      "22,11": [
+       128,
+       160,
+       255
+      ],
+      "3,12": [
+       128,
+       160,
+       255
+      ],
+      "4,12": [
+       128,
+       255,
+       255
+      ],
+      "5,12": [
+       32,
+       255,
+       255
+      ],
+      "6,12": [
+       128,
+       160,
+       255
+      ],
+      "14,12": [
+       128,
+       160,
+       255
+      ],
+      "15,12": [
+       128,
+       255,
+       255
+      ],
+      "16,12": [
+       32,
+       255,
+       255
+      ],
+      "17,12": [
+       128,
+       160,
+       255
+      ],
+      "19,12": [
+       128,
+       160,
+       255
+      ],
+      "20,12": [
+       128,
+       255,
+       255
+      ],
+      "21,12": [
+       32,
+       255,
+       255
+      ],
+      "22,12": [
+       128,
+       160,
+       255
+      ],
+      "12,14": [
+       64,
+       160,
+       128
+      ]
+     },
+     "_kinds": {
+      "12,14": "crate",
+      "6,5": "table",
+      "6,10": "table",
+      "19,5": "table",
+      "14,10": "table",
+      "19,10": "table"
+     },
+     "_objects": [
+      {
+       "k": "plant",
+       "r": [
+        1,
+        3,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        1,
+        14,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        23,
+        3,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        23,
+        14,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "crate",
+       "r": [
+        12,
+        14,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        6,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        6,
+        10,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        19,
+        5,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        14,
+        10,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        19,
+        10,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/C07R0207.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "title": "Veilstone Dept. Store B1F",
+    "people": [
+     {
+      "text": "Gardener",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Ever planted Berries and forgot all about them? Come back and they'll be waiting."
+       ]
+      }
+     },
+     {
+      "text": "Floor guide",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to the basement: food and produce!"
+       ]
+      }
+     },
+     {
+      "text": "Candy seller",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Rage Candy Bars? Sold out, sorry! Everyone wants them."
+       ]
+      }
+     },
+     {
+      "text": "Lady",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I can never cook Poffins right, so I buy them here."
+       ]
+      }
+     },
+     {
+      "text": "Lady ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Listen closely. A Poffin's flavors change how a Pokemon looks in a Contest."
+       ]
+      }
+     },
+     {
+      "text": "Berry seller",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Berries, picked this morning!"
+       ],
+       "stock": [
+        "FIGY_BERRY",
+        "WIKI_BERRY",
+        "MAGO_BERRY",
+        "AGUAV_BERRY",
+        "IAPAPA_BERRY"
+       ]
+      }
+     },
+     {
+      "text": "Poffin seller",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Poffins for Contests! Er, the Contest Hall's closed, so I'm not selling today."
+       ]
+      }
+     },
+     {
+      "text": "Cookie seller",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Lava Cookies, fresh from Lavaridge! They cure anything."
+       ],
+       "stock": [
+        "LAVA_COOKIE"
+       ]
+      }
+     },
+     {
+      "text": "Gentleman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I never expected to find paradise in a basement. These Berries!"
+       ]
+      }
+     }
+    ]
+   },
+   "dept_lift": {
+    "theme": "room",
+    "art": [
+     "ccccccc",
+     "ccccccc",
+     "c.....c",
+     "c.....c",
+     "c.....c",
+     "cN.v..c",
+     "ccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:mart"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      156,
+      82,
+      16
+     ],
+     "_wall": [
+      213,
+      222,
+      230
+     ],
+     "_things": {
+      "0,1": [
+       96,
+       96,
+       96
+      ],
+      "1,1": [
+       160,
+       128,
+       96
+      ],
+      "2,1": [
+       160,
+       128,
+       96
+      ],
+      "3,1": [
+       160,
+       128,
+       96
+      ],
+      "4,1": [
+       160,
+       128,
+       96
+      ],
+      "5,1": [
+       160,
+       128,
+       96
+      ],
+      "6,1": [
+       96,
+       96,
+       96
+      ],
+      "0,2": [
+       96,
+       96,
+       96
+      ],
+      "6,2": [
+       96,
+       96,
+       96
+      ],
+      "0,3": [
+       96,
+       96,
+       96
+      ],
+      "6,3": [
+       96,
+       96,
+       96
+      ],
+      "0,4": [
+       96,
+       96,
+       96
+      ],
+      "6,4": [
+       96,
+       96,
+       96
+      ],
+      "0,5": [
+       96,
+       96,
+       96
+      ],
+      "6,5": [
+       96,
+       96,
+       96
+      ]
+     },
+     "_picture": {
+      "f": "pt_ground/C07R0206.png",
+      "at": [
+       0,
+       1
+      ]
+     }
+    },
+    "title": "Veilstone Dept. Store Lift",
+    "people": [
+     {
+      "text": "Lift attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Thank you for shopping with us. To which floor?"
+       ],
+       "elevator": {
+        "area": "VEILSTONE_CITY",
+        "car_flag": "veilstone_dept_lift",
+        "ride": [
+         "The lift hums..."
+        ],
+        "floors": [
+         [
+          "B1F",
+          "dept_b1f"
+         ],
+         [
+          "1F",
+          "mart"
+         ],
+         [
+          "2F",
+          "dept_2f"
+         ],
+         [
+          "3F",
+          "dept_3f"
+         ],
+         [
+          "4F",
+          "dept_4f"
+         ],
+         [
+          "Rooftop",
+          "dept_5f"
+         ]
+        ]
+       },
+       "cancel": [
+        "Take your time."
+       ]
+      }
+     }
+    ],
+    "dynamic_exit": {
+     "flag": "veilstone_dept_lift",
+     "rooms": [
+      "mart",
+      "dept_2f",
+      "dept_3f",
+      "dept_4f",
+      "dept_5f",
+      "dept_b1f"
+     ],
+     "default": "mart"
+    }
    }
   },
   "inside": {
@@ -207067,6 +213145,165 @@
   "people": [
    "STAR PIECE",
    "RARE CANDY",
+   {
+    "any": [
+     {
+      "text": "Galactic Grunt",
+      "action": "EVENT",
+      "condition": [
+       "has_cobble_badge",
+       "not:sinnoh_warehouse_guards_beaten"
+      ],
+      "event": {
+       "lines": [
+        "Grunt: What? Now you've brought your buddy along so you can get your Pokedex back?",
+        "Grunt: We'll be just as happy to send both of you crying home to your mommies!"
+       ]
+      }
+     },
+     {
+      "text": "Galactic Grunt",
+      "action": "EVENT",
+      "condition": [
+       "not:sinnoh_warehouse_guards_beaten"
+      ],
+      "event": {
+       "lines": [
+        "Grunt: Hey, you! Yeah, you! This is Team Galactic's warehouse! It ain't no playground for kids!"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "text": "Dawn",
+    "action": "EVENT",
+    "condition": [
+     "sinnoh_dawn_warehouse_call",
+     "not:sinnoh_warehouse_guards_beaten"
+    ],
+    "event": {
+     "lines": [
+      "Dawn: Hi, {player_name}! Do you remember Team Galactic? They tried to steal Prof. Rowan's research in Jubilife.",
+      "Dawn: I ran into them, and they took away my Pokedex. Please, team up and battle with me!",
+      "Dawn: You and your Pokemon together with me and my Pokemon... our dream team has no chance of losing!"
+     ],
+     "battle": {
+      "class": "GALACTIC_GRUNT",
+      "sprite": "pt_galactic_grunt_m.png",
+      "name": "Galactic Grunt",
+      "team": [
+       41,
+       434
+      ],
+      "levels": [
+       24,
+       26
+      ],
+      "rewards": {
+       "balls": 3
+      },
+      "battle_options": {
+       "double": true,
+       "partner": {
+        "name": "Dawn",
+        "class": "PKMN_TRAINER",
+        "sprite": "dawn.png",
+        "team": [
+         35,
+         64,
+         394
+        ],
+        "levels": [
+         25,
+         25,
+         27
+        ],
+        "team_choice": {
+         "387": [
+          35,
+          64,
+          394
+         ],
+         "390": [
+          35,
+          64,
+          388
+         ],
+         "393": [
+          35,
+          64,
+          391
+         ]
+        }
+       },
+       "second_trainer": {
+        "class": "GALACTIC_GRUNT",
+        "sprite": "pt_galactic_grunt_m.png",
+        "name": "Galactic Grunt",
+        "team": [
+         41,
+         453
+        ],
+        "levels": [
+         24,
+         26
+        ],
+        "rewards": {
+         "balls": 3
+        }
+       }
+      },
+      "dialogue": {
+       "intro": [
+        "Grunt: What? Now you've brought your buddy along so you can get your Pokedex back?",
+        "Grunt: We'll be just as happy to send both of you crying home to your mommies!",
+        "Grunt: You're trying to get the Pokedex back from us? Not when Team Galactic can make so much better use of it!",
+        "Grunt: But, OK, guarding the warehouse does get boring! We'll take you on two-on-two!"
+       ],
+       "player_won": [
+        "Grunt: Aww, that stinks! Our Pokemon are chumps! We should get new ones from headquarters.",
+        "Grunt: Humph! Who cares about some Pokedex anyway? Team Galactic's going to own all the Pokemon in the universe!",
+        "Grunt: There! Take it! Take your Pokedex!",
+        "Grunt: Those things we had in the warehouse've already been moved to Pastoria City anyway...",
+        "Grunt: So, we'll say 'You'll get yours!' And run like the grunts we are."
+       ]
+      }
+     },
+     "flag": "sinnoh_warehouse_guards_beaten"
+    }
+   },
+   {
+    "any": [
+     {
+      "text": "Galactic Grunt ",
+      "action": "EVENT",
+      "condition": [
+       "has_cobble_badge",
+       "not:sinnoh_warehouse_guards_beaten"
+      ],
+      "event": {
+       "lines": [
+        "Grunt: You're trying to get the Pokedex back from us? Not when Team Galactic can make so much better use of it!",
+        "Grunt: But, OK, guarding the warehouse does get boring! We'll take you on two-on-two!"
+       ]
+      }
+     },
+     {
+      "text": "Galactic Grunt ",
+      "action": "EVENT",
+      "condition": [
+       "not:sinnoh_warehouse_guards_beaten"
+      ],
+      "event": {
+       "lines": [
+        "Grunt: This is the awesome Team Galactic's awesome warehouse!",
+        "Grunt: A little kid like you should be playing at the Pokemon Gym. The Gym Leader's a kid just like you!"
+       ]
+      }
+     }
+    ]
+   },
    {
     "text": "Girl ",
     "action": "EVENT",
@@ -207175,6 +213412,210 @@
       "They say touching a meteorite made one Pokemon faster."
      ]
     }
+   }
+  ],
+  "barred": [
+   {
+    "tiles": [
+     [
+      25,
+      20
+     ]
+    ],
+    "look": "unseen",
+    "until": {
+     "flag_condition": "sinnoh_warehouse_guards_beaten"
+    },
+    "on_bump": {
+     "lines": [
+      "Grunt: Hey, you! Yeah, you! This is Team Galactic's warehouse! It ain't no playground for kids!"
+     ]
+    },
+    "lines": [
+     "Grunt: Hey, you! Yeah, you! This is Team Galactic's warehouse! It ain't no playground for kids!"
+    ]
+   }
+  ],
+  "scenes": [
+   {
+    "trigger": {
+     "zone": [
+      9,
+      40,
+      12,
+      40
+     ]
+    },
+    "condition": [
+     "not:has_cobble_badge"
+    ],
+    "flag": "sinnoh_veilstone_wake_scene",
+    "cast": [
+     {
+      "sheet": "pt_heroine.png",
+      "from": [
+       10,
+       38
+      ],
+      "to": "player",
+      "stay": true,
+      "lines": [
+       "Dawn: {player_name}, are you going to take the Gym challenge? Gee, you keep getting tougher and tougher, don't you?",
+       "Dawn: Me? Well, I went shopping at the department store, and... I mean, well, of course I've been working on my Pokedex, but..."
+      ]
+     },
+     {
+      "sheet": "pt_leader3.png",
+      "from": [
+       12,
+       35
+      ],
+      "to": "player",
+      "stay": true,
+      "lines": [
+       "???: The ring is my roiling sea. The towering waves shaped me. Crash! Crash! Crasher Wake!",
+       "???: I'm the tidal wave of power to wash you away! Put out the fire, Crasher Wake! Run from electricity, Crasher Wake!",
+       "???: Ah, ah, aaaah! The ring is my sea.",
+       "???: Hello, dude and young lady! You're challenging the Gym Leader, are you?",
+       "???: Let me tell you now, she's young, but she's a born genius. I tried training with her, and I was stunned by how tough she was!",
+       "???: Whoops! I'd better tell you who I am!",
+       "Crasher Wake: I'm the triple-threat Gym Leader in Pokemon, wrestling, and song. I'm Crasher Wake of Pastoria Gym!",
+       "Crasher Wake: We'll meet again!"
+      ]
+     },
+     {
+      "as": 1,
+      "lines": [],
+      "leave": [
+       11,
+       42
+      ]
+     },
+     {
+      "as": 0,
+      "lines": [
+       "Dawn: ...",
+       "Dawn: So, uh, {player_name}. Good luck on your Gym challenge."
+      ],
+      "leave": [
+       11,
+       42
+      ]
+     }
+    ]
+   },
+   {
+    "trigger": {
+     "zone": [
+      9,
+      36,
+      16,
+      38
+     ]
+    },
+    "condition": [
+     "has_cobble_badge",
+     "not:sinnoh_dawn_warehouse_call"
+    ],
+    "flag": "sinnoh_dawn_warehouse_call",
+    "cast": [
+     {
+      "sheet": "pt_heroine.png",
+      "from": [
+       10,
+       38
+      ],
+      "to": "player",
+      "lines": [
+       "Dawn: Hi, {player_name}! Please, can you help me?",
+       "Dawn: Some Team Galactic goons took my Pokedex away from me. I need your help to get it back.",
+       "Dawn: I'll be waiting in front of the warehouses. Please come!"
+      ],
+      "leave": [
+       24,
+       20
+      ]
+     }
+    ]
+   },
+   {
+    "trigger": {
+     "zone": [
+      18,
+      17,
+      30,
+      23
+     ]
+    },
+    "condition": [
+     "sinnoh_warehouse_guards_beaten",
+     "not:sinnoh_warehouse_looker"
+    ],
+    "flag": "sinnoh_warehouse_looker",
+    "cast": [
+     {
+      "sheet": "pt_heroine.png",
+      "from": [
+       24,
+       20
+      ],
+      "to": "player",
+      "stay": true,
+      "lines": [
+       "Dawn: {player_name}, thank you, sincerely. I would've been lost without my Pokedex.",
+       "Dawn: It's indispensable for helping Prof. Rowan with his studies.",
+       "Dawn: I'm thinking of going to the Pokemon Mansion on Route 212. I hear they show rare Pokemon to visitors there."
+      ]
+     },
+     {
+      "sheet": "pt_icpo.png",
+      "from": [
+       20,
+       30
+      ],
+      "to": "player",
+      "stay": true,
+      "lines": [
+       "Looker: Have no fear, I have come running. I heard of children feuding with the Team Galactic.",
+       "Looker: It turns out, of course, to be you."
+      ]
+     },
+     {
+      "as": 0,
+      "lines": [
+       "Dawn: Oh... It's that funny man from Jubilife..."
+      ]
+     },
+     {
+      "as": 1,
+      "lines": [
+       "Looker: You insult me to my face? How very uncouth of you."
+      ]
+     },
+     {
+      "as": 0,
+      "lines": [
+       "Dawn: I'm terribly sorry. Team Galactic took my Pokedex, so I was very irritated...",
+       "Dawn: ...I should be going now. Be wary of Team Galactic."
+      ],
+      "leave": [
+       12,
+       38
+      ]
+     },
+     {
+      "as": 1,
+      "lines": [
+       "Looker: It is of no matter. Of more interest is the criminal behavior of the Team Galactic.",
+       "Looker: They attempt to steal the belongings of a child? The triviality of their action makes them more sinister, perhaps.",
+       "Looker: Their warehouse needs investigation. Come with me, and we'll take a look!"
+      ],
+      "leave": [
+       29,
+       16
+      ]
+     }
+    ]
    }
   ]
  },
@@ -242227,7 +248668,7 @@
    "ccccccccckC||||||||Ek\"\".TTcccccc",
    "ccccccccckC||||||||Ek\"\".2Ncccccc",
    "cccccccTTkC,,,,,,,,Ek\"..TTcccccc",
-   "cccccccTTkC........Ek\".\"TTcccccc",
+   "cccccccTTkC.DDDDDD.Ek\".\"TTcccccc",
    "cccccccTTkBBBBBBBBBBk...TTcccccc",
    "cccccccTTkBBBBBBBBBBk.\".TTcccccc",
    "cccccccTTkBBBBBBBBBBk\"..TTcccccc",
@@ -242547,8 +248988,127 @@
    "BURN HEAL",
    "PP UP"
   ],
-  "rooms": {},
-  "inside": {}
+  "rooms": {
+   "gate": {
+    "theme": "room",
+    "art": [
+     "ccccccc",
+     "ccccccc",
+     "ccvvvcc",
+     "c.....c",
+     "c.....c",
+     "c.....c",
+     "c.....c",
+     "cN...Nc",
+     "c.....c",
+     "c....Nc",
+     "c.....c",
+     "c.....c",
+     "c.nnn.c",
+     "ccccccc"
+    ],
+    "exits": {
+     "v": "OUT:14,105",
+     "n": "OUT:14,112"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      222,
+      206,
+      160
+     ],
+     "_wall": [
+      210,
+      210,
+      220
+     ],
+     "_things": {},
+     "_picture": {
+      "f": "pt_ground/R206R0101.png",
+      "at": [
+       4,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Cyclist",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Learn to shift gears on your Bike, and you can ride anywhere."
+       ]
+      }
+     },
+     {
+      "text": "Cyclist ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Cycling Road's a long way up from here. Keep pedaling!"
+       ]
+      }
+     },
+     {
+      "text": "Gardener girl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Through Mt. Coronet, you'll reach Hearthome City. You should dress your Pokemon up for Contests!",
+        "Oh, and take this. Berries love it.",
+        "You received a Damp Mulch!"
+       ],
+       "gift_item": {
+        "DAMP_MULCH": 1
+       },
+       "flag": "got_damp_mulch_r206_gate",
+       "done": [
+        "Damp Mulch keeps the soil wet, so your Berries stay moist longer."
+       ]
+      }
+     }
+    ],
+    "title": "Cycling Road Gate",
+    "land": {
+     "14,105": [
+      14,
+      103
+     ]
+    },
+    "enter": {
+     "13,112": [
+      2,
+      11
+     ],
+     "14,112": [
+      3,
+      11
+     ],
+     "15,112": [
+      4,
+      11
+     ],
+     "16,112": [
+      4,
+      11
+     ]
+    }
+   }
+  },
+  "inside": {
+   "12,105": "gate",
+   "13,105": "gate",
+   "14,105": "gate",
+   "15,105": "gate",
+   "16,105": "gate",
+   "17,105": "gate",
+   "13,112": "gate",
+   "14,112": "gate",
+   "15,112": "gate",
+   "16,112": "gate"
+  }
  },
  "SINNOH_ROUTE_207": {
   "art": [
@@ -285560,7 +292120,7 @@
      "cmmm.ccc..cccccccc",
      "c....ccc..cccccccc",
      "c....ccc..cccccccc",
-     "cmmm......mm.Nmmcc",
+     "cmmm......mmNNmmcc",
      "cmmm......mm..mmcc",
      "c...............cc",
      "c.......n.......cc",
@@ -285917,7 +292477,43 @@
     },
     "people": [
      "DUSK STONE",
+     {
+      "text": "Looker",
+      "action": "EVENT",
+      "flag_condition": "sinnoh_warehouse_looker",
+      "event": {
+       "lines": [
+        "Looker: Hmm... A key is necessary for us to go on. For the time being, we cannot give chase to those who run away.",
+        "Looker: Ah, this Hidden Machine... It is of the hidden move Fly.",
+        "Looker: {player_name}, this, you should be keeping. It will not do to leave it here to be used by the Team Galactic.",
+        "Looker: What concerns me is what I have overheard in the Game Corner.",
+        "Looker: The Team Galactic has transported something to Pastoria City.",
+        "Looker: What they are up to, I do not know, but I have bad feelings about it."
+       ],
+       "flag": "galactic_warehouse_cleared",
+       "done": [
+        "Looker: What concerns me is what I have overheard in the Game Corner.",
+        "Looker: The Team Galactic has transported something to Pastoria City.",
+        "Looker: What they are up to, I do not know, but I have bad feelings about it."
+       ]
+      }
+     },
      "HM FLY"
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        13,
+        2
+       ]
+      ],
+      "item": "STORAGE_KEY",
+      "look": "unseen",
+      "lines": [
+       "The rust-encrusted door is locked. It appears to take a special key."
+      ]
+     }
     ]
    },
    {
@@ -287687,7 +294283,8 @@
    "ZINC": 1,
    "Scientist": 1,
    "Galactic Grunt 1": 1,
-   "Galactic Grunt 2": 1
+   "Galactic Grunt 2": 1,
+   "Looker": 0
   },
   "theme": "tunnel"
  },
@@ -581398,24 +587995,24 @@
   "parts": true,
   "signs": [
    [
-    "Battle Frontier",
-    "Five facilities. Five Frontier Brains."
+    "Battle Tower",
+    "The Frontier's tallest challenge. How long can your team keep winning?"
    ],
    [
-    "Battle Frontier",
-    "Five facilities. Five Frontier Brains."
+    "Battle Hall",
+    "Round after round of tough Trainers. Win in a row to earn Battle Points."
    ],
    [
-    "Battle Frontier",
-    "Five facilities. Five Frontier Brains."
+    "Battle Factory",
+    "A streak of battles against Trainers from all over. Win in a row to earn Battle Points."
    ],
    [
-    "Battle Frontier",
-    "Five facilities. Five Frontier Brains."
+    "Battle Castle",
+    "A grand hall of battles, one Trainer after another. Win in a row to earn Battle Points."
    ],
    [
-    "Battle Frontier",
-    "Five facilities. Five Frontier Brains."
+    "Battle Arcade",
+    "Bright lights and big battles. Win in a row to earn Battle Points."
    ]
   ],
   "overheads": [
@@ -581436,6 +588033,7 @@
   "rooms": {
    "sfactory": {
     "theme": "room",
+    "title": "Battle Factory",
     "art": [
      "cmmmccmcccmcccmmccccccccccc",
      "cmmmmmmmccmcccmmccccccccccc",
@@ -581951,11 +588549,11 @@
       ],
       "px": 32
      }
-    ],
-    "title": "Battle Factory"
+    ]
    },
    "shall": {
     "theme": "room",
+    "title": "Battle Hall",
     "art": [
      "ccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccc",
@@ -582047,11 +588645,11 @@
       ],
       "px": 32
      }
-    ],
-    "title": "Battle Hall"
+    ]
    },
    "scastle": {
     "theme": "room",
+    "title": "Battle Castle",
     "art": [
      "ccccccccccccccccccccccc",
      "ccccccccccccccccccccccc",
@@ -582158,11 +588756,11 @@
       ],
       "px": 32
      }
-    ],
-    "title": "Battle Castle"
+    ]
    },
    "sarcade": {
     "theme": "room",
+    "title": "Battle Arcade",
     "art": [
      "ccccccccccccccccccccccc",
      "ccccccccccccccccccccccc",
@@ -582475,8 +589073,7 @@
       ],
       "px": 32
      }
-    ],
-    "title": "Battle Arcade"
+    ]
    },
    "sgate": {
     "theme": "room",
