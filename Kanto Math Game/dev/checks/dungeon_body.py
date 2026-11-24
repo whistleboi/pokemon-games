@@ -503,4 +503,22 @@ _core.CURRENT_FLOOR = 0
 check(_dsx._floor_tables() is None, "...outside it, from the area's")
 _core.CURRENT_FLOOR = _was
 
+print("in by a door inside a walked map, with no menu buttons and no stand-in landing spot (Unova 11-24)")
+_rf = _dg.recipe_for
+def _no_arrive(game, key):
+    r = _rf(game, key)
+    if isinstance(r.get("art"), dict) and r["art"].get("arrive"):
+        r = dict(r, art={k: v for k, v in r["art"].items() if k != "arrive"})
+    return r
+_dg.recipe_for = _no_arrive
+story.enter_region("UNOVA")
+for _from in ("UNOVA_ROUTE_6", "MISTRALTON_CAVE_2F"):
+    if "MISTRALTON_CAVE" not in g.loader.area_data["STORY_PROGRESSION"]:
+        break
+    _pm = kanto("MISTRALTON_CAVE", came=_from)
+    _f, (_x, _y) = _pm.run.floor, _pm.run.player
+    _near = [t for t, v in _f.exits.items() if v == _from and abs(t[0] - _x) + abs(t[1] - _y) <= 1]
+    check(bool(_near), f"Mistralton Cave from {_from}: you stand beside its way back ({(_x, _y)})")
+_dg.recipe_for = _rf
+
 print(f"##### {fails} failures")

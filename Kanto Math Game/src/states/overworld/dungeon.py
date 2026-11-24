@@ -939,6 +939,11 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         exits = list(self.exit_items)
         came = getattr(story, "last_area_key", None)
         nxt = self.area_data.get("next_area")
+        _art = self.recipe.get("art") or {}
+        _drawn = [t for f in ([_art] + list(_art.get("floors") or [])) for t in (f.get("exits") or {}).values()
+                  if isinstance(t, str) and not t.startswith(("OUT:", "ROOM:", "FLOOR:", "WARP:"))]
+        if came and came not in exits and came in _drawn:   # (a walked map with no menu buttons left: in by its own way from
+            exits.append(came)                               #  where you came, a door inside the map too - Unova 11-24)
         if came in exits:
             entrance = came
         else:  # (a new game, a load, Fly...): start at the end away from where the route leads
@@ -1034,6 +1039,11 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
                 inn = (t[0] + step[0], t[1] + step[1])
                 if f.walkable(*inn) and inn not in f.exits:
                     self.run.player = inn
+                else:   # (a door inside the map, rock straight in from it: beside it, any open side - Unova 11-24)
+                    near = next(((t[0] + dx, t[1] + dy) for dx, dy in core.DIRS if f.walkable(t[0] + dx, t[1] + dy)
+                                 and (t[0] + dx, t[1] + dy) not in f.exits), None)
+                    if near:
+                        self.run.player = near
         _arr = ((self.recipe.get("art") or {}).get("arrive") or {}).get(came) if not at_edge else None
         if _arr and self.run.index == 0 and self.run.floor.walkable(*_arr):   # (a map's "arrive" {area: [x, y]}: off a ferry with
             self.run.player = tuple(_arr)                                       #  no tile of its own, onto the dock: the Battle Frontier)
