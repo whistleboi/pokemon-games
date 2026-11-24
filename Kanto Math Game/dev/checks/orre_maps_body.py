@@ -590,6 +590,21 @@ check("GYM LEADER DRAKE" in _c1 and "GRAND MASTER GREEVIL" not in _c1 and "GRAND
 story.story_flags["xd_greevil_beaten"] = True
 t = town("REALGAM_TOWER", "PYRITE_TOWN")
 _birch = [p for p in _TMJ["REALGAM_TOWER"]["rooms"]["colosseum"]["people"] if p == "GYM LEADER BIRCH"]
+story.story_flags.pop(_mg.done_flag("REALGAM_TOWER"), None)
+_said_b = []
+_og.event(t, {"world": "orre_gym", "gym": "gym_birch"}, [], lambda l: _said_b.extend(l))
+for _ in range(40):
+    if type(g.current_state).__name__ not in ("WalkTownState", "CityState"):
+        break
+    t.dialogue_box.advance() if getattr(t, "dialogue_box", None) is not None and t.dialogue_box.visible else None
+    if getattr(t, "npc_active", False):
+        t.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=(640, 600))])
+    t.update()
+_bmg = type(g.current_state).__name__
+check(_bmg not in ("WalkTownState", "TrainerIntroState", "CityState"),
+      f"11-24: Birch's Gym has its math game first, from his own Realgam Badge (the encyclopedia: none before) ({_bmg})")
+g.change_state(t)
+t = town("REALGAM_TOWER", "PYRITE_TOWN")
 story.story_flags[_mg.done_flag("REALGAM_TOWER")] = True
 _og.event(t, {"world": "orre_gym", "gym": "gym_birch"}, [], lambda l: None)
 _bs = getattr(g.current_state, "battle_state", None) or getattr(g.current_state, "next_state", None)
@@ -840,6 +855,49 @@ for _f in ("orre_data_rom_given", "xd_hordel"):
     story.story_flags.pop(_f, None)
 check(_sand["none"] == 3 and _sand["rom"] == 0 and _sand["hordel"] == 0,
       f"R6: the desert's track to the Snagem hideout - shut, then open after Ein's Data ROM (Part 1) or Hordel (Part 2) {_sand}")
+
+# ---- 11-24 (the encyclopedia): a Shadow Pokemon left at the Day Care opens its heart as you walk (XD; shadow.OPEN_DAYCARE)
+from src.pokemon import breeding as _br
+from src.pokemon.data import Pokemon as _PK
+from src.world import shadow as _shw
+_dcm = _PK(g.loader.fetch_specific(9406), g.assets, size_mult=2.5)
+_dcm.shadow = {"gauge": 100, "max": 100, "hidden": [], "seen": True}
+_dc = _br.daycare(story)
+_dc_was = list(_dc["mons"])
+_dc["mons"] = [_dcm]
+_shw.walked(g, 250)
+_dc["mons"] = _dc_was
+check(_dcm.shadow["gauge"] < 100, f"11-24: a Shadow Pokemon at the Day Care opens its heart as you walk (gauge {_dcm.shadow['gauge']})")
+
+# ---- Shadow farming at the Poke Spots (Jordan 11-24, questions/ORRE.md 13a): a Cipher straggler from Part 2, with a Shadow of
+# that spot's pool you've snagged before - Rock = Colosseum's, Oasis = XD's early ones, Cave = XD's late ones
+from src.world import orre_farm as _farm
+_pools = {k: [e["name"] for e in _farm.pool(g, k)] for k in ("rock", "oasis", "cave")}
+_pf = {k: story.story_flags.get(k) for k in ("orre_part2", "snagged_shadow_makuhita", "snagged_shadow_zangoose")}
+for _k in _pf:
+    story.story_flags.pop(_k, None)
+story.current_area_key = "ORRE_POKE_SPOTS"
+_off = _farm.condition(story, "here")
+story.story_flags["orre_part2"] = True
+_none = _farm.condition(story, "here")
+story.story_flags["snagged_shadow_makuhita"] = True
+_on = _farm.condition(story, "here")
+r = route("ORRE_POKE_SPOTS", "ORRE_DESERT")
+_figs = [o.get("text") for o in r._figure_items()]
+_farm.event(r, {"world": "orre_farm"}, [], lambda l: None)
+_fb = getattr(g.current_state, "next_state", None) or getattr(g.current_state, "battle_state", None)
+_team = [getattr(p_, "id", None) for p_ in (getattr(_fb, "opponent_team", None) or [])]
+story.current_area_key = "CAVE_POKE_SPOT"
+_cave_off = _farm.condition(story, "here")
+for _k, _v in _pf.items():
+    story.story_flags.pop(_k, None)
+    if _v:
+        story.story_flags[_k] = _v
+check(not _off and not _none and _on and "CIPHER STRAGGLER" in _figs and type(g.current_state).__name__ == "TrainerIntroState"
+      and not _cave_off and _team == [9406] and "Shadow Makuhita" in _pools["rock"] and "Shadow Zangoose" in _pools["cave"] and _pools["oasis"]
+      and not set(_pools["rock"]) & set(_pools["oasis"]) and not set(_pools["oasis"]) & set(_pools["cave"]),
+      f"13a: Poke Spot farming - the straggler from Part 2 once a spot Shadow is snagged ({_off}, {_none}, {_on}, {_figs}); "
+      f"pools {[(k, len(v)) for k, v in _pools.items()]}, his team {_team}")
 
 g.walk_towns = False
 print(f"##### {fails} failures")

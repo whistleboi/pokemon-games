@@ -114,6 +114,7 @@ class Mover:
     def __init__(self, kind, x, y, payload=None, facing=(0, 1)):
         self.kind, self.x, self.y, self.payload, self.facing = kind, x, y, payload, facing
         self.alert = False  # a wild one that has noticed you (it chases)
+        self.temper = "chase"   # a wild one's way (11-24): "chase" comes for you, "wander" ignores you, "shy" keeps away
 
 
 # ---------------------------------------------------------------- making a floor
@@ -663,8 +664,23 @@ class Run:
         if payload is None:
             return None
         m = Mover("wild", spot[0], spot[1], payload)
+        m.temper = self._temper(payload)
         floor.movers.append(m)
         return m
+
+    lead_level = None   # (your lead's level, set by the map screen: wild ones above it chase more, ones well below are shyer)
+
+    def _temper(self, payload):
+        """Not every wild Pokemon comes for you (Jordan 11-24): about 4 in 10 chase, 4 wander, 2 keep away - one well above
+        your lead's level more likely to chase, one well below it shyer."""
+        chase, shy = 0.4, 0.2
+        lv, lead = getattr(payload, "level", None), self.lead_level
+        if isinstance(lv, (int, float)) and isinstance(lead, (int, float)):
+            d = lv - lead
+            chase = min(0.75, max(0.15, 0.4 + 0.05 * d))
+            shy = min(0.45, max(0.05, 0.2 - 0.04 * d))
+        r = self.rng.random()
+        return "chase" if r < chase else "shy" if r < chase + shy else "wander"
 
     # ---- what you can see
     explore = False    # (a first visit: the map clears as you walk it; set by the map screen)
@@ -907,6 +923,21 @@ class Run:
                     return events
                 continue
             d = abs(m.x - px) + abs(m.y - py)
+            temper = getattr(m, "temper", "chase")
+            if temper == "shy" and d <= self.SIGHT and self.visible(m.x, m.y):   # (keeps away: the step that puts it furthest off)
+                blocked = {(o.x, o.y) for o in f.movers if o is not m} | set(f.exits) | {(px, py)}
+                best = max(((m.x + dx, m.y + dy) for dx, dy in DIRS if f.walkable(m.x + dx, m.y + dy) and (m.x + dx, m.y + dy) not in blocked),
+                           key=lambda t: abs(t[0] - px) + abs(t[1] - py), default=None)
+                if best and abs(best[0] - px) + abs(best[1] - py) > d:
+                    m.x, m.y = best
+                continue
+            if temper != "chase":   # (wanders about, paying you no mind: walk into it to battle)
+                if self.rng.random() < 0.5:
+                    dx, dy = self.rng.choice(DIRS)
+                    nx, ny = m.x + dx, m.y + dy
+                    if f.walkable(nx, ny) and not f.occupied(nx, ny) and (nx, ny) != (px, py):
+                        m.x, m.y = nx, ny
+                continue
             if d == 1:  # beside you: it notices you and jumps in
                 m.alert = True
             elif d <= self.SIGHT and (self.visible(m.x, m.y) or m.alert):

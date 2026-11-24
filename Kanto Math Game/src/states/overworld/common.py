@@ -1218,6 +1218,11 @@ def _choose_purify(state, lines, show):
             back(["The Relic Stone glows... but the darkness around XD001's heart doesn't move.",
                   "Only a Purify Chamber could reach a heart shut this tight."])
             return
+        _s = getattr(team[i], "shadow", None)
+        if _s and _s.get("gauge", 0) > 0:   # (11-24: XD's rule, shadow.py - the heart opens first: battles, walking, the Day Care,
+            back(["The Relic Stone glows... but the Pokemon's heart is still shut tight.",   #  colognes, the Purify Chamber)
+                  "Open its Heart Gauge all the way - battle with it, walk with it - then bring it back."])
+            return
         name = story.purify_slot(i)
         back([f"{name}'s heart opened! It's no longer a Shadow Pokemon."] + _evolve_due(game, [name]))
 

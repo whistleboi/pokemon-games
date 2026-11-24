@@ -65,7 +65,10 @@ TEAMS = [207, 208, 209, 153,                     # Elesa's Beauties, Elesa
          381, 382, 383, 384, 385, 159,           # Drayden's Veterans (Lucius; Jerry / Rhona; Ron / Denae) and Drayden
          585, 586, 587, 584, 583,                # Opelucid frozen: three Grunts, Zinzolin, the Shadow Triad
          12, 11,                                 # (batch 8b) Shopping Mall Nine: Waitress Olwen, Waiter Lou
-         350, 351, 352, 353, 354, 355, 160, 580]  # (batch 9a) Marlon's Ace Trainers, Marlon; Black Belt Rocky (Seaside Cave)
+         350, 351, 352, 353, 354, 355, 160, 580,  # (batch 9a) Marlon's Ace Trainers, Marlon; Black Belt Rocky (Seaside Cave)
+         794, 795, 796, 500, 798, 799, 347, 724,  # (batch 9b-1) the frigate: Hugh (by starter), the deck's Grunt, the North
+         800, 801, 802, 812, 426, 427, 343, 436,  # Entrance's pair, Zinzolin and his Grunt; the hall's and rooms' Grunts
+         429, 428, 437]
 # Battle pictures where the class slug isn't the file's name (a/0/7/1 slots matched by eye, 11-23; a class without its own
 # Black 2 picture keeps the same class from Platinum, never another class's look)
 BY_CLASS = {0: "b2_nate.png", 1: "b2_rosa.png", 90: "pt_cyclist_m.png", 91: "pt_cyclist_f.png", 33: "pt_artist.png",

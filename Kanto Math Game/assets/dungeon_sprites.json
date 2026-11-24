@@ -76,6 +76,9 @@
     ]
   },
   "figures": {
+    "CAVE_POKE_SPOT:CIPHER STRAGGLER": {"sheet": "orre_trainer_cipher_grunt.png"},
+    "OASIS_POKE_SPOT:CIPHER STRAGGLER": {"sheet": "orre_trainer_cipher_grunt.png"},
+    "ORRE_POKE_SPOTS:CIPHER STRAGGLER": {"sheet": "orre_trainer_cipher_grunt.png"},
     "HOENN_ROUTE_101:Professor Birch": {"sheet": "em_64.png"},
     "LAVARIDGE_TOWN:Flannery": {"sheet": "em_128.png"},
     "LAVARIDGE_TOWN:Black Belt": {"sheet": "em_44.png"},
@@ -575,11 +578,13 @@
     "HUMILAU_CITY:Girl playing tag": {"sheet": "b2_c41.png"},
     "HUMILAU_CITY:Groom": {"sheet": "b2_c13.png"},
     "HUMILAU_CITY:Groom ": {"sheet": "b2_c13.png"},
+    "HUMILAU_CITY:Guard": {"sheet": "b2_c76.png"},
     "HUMILAU_CITY:Gym": {"sheet": "b2_c230.png"},
     "HUMILAU_CITY:Gym guide": {"sheet": "b2_c187.png"},
     "HUMILAU_CITY:Gym guide ": {"sheet": "b2_c187.png"},
     "HUMILAU_CITY:Innkeeper": {"sheet": "b2_c20.png"},
     "HUMILAU_CITY:Man by the counter": {"sheet": "b2_c22.png"},
+    "HUMILAU_CITY:Man by the window": {"sheet": "b2_c28.png"},
     "HUMILAU_CITY:Man on holiday": {"sheet": "b2_c25.png"},
     "HUMILAU_CITY:Man with a tip": {"sheet": "b2_c24.png"},
     "HUMILAU_CITY:Medal Box painter": {"sheet": "b2_c34.png"},
@@ -587,6 +592,7 @@
     "HUMILAU_CITY:Move Tutor": {"sheet": "b2_c28.png"},
     "HUMILAU_CITY:Mr. Medal": {"sheet": "b2_c70.png"},
     "HUMILAU_CITY:Nurse with a Stunfisk": {"sheet": "b2_c50.png"},
+    "HUMILAU_CITY:Parasol Lady with TMs": {"sheet": "b2_c84.png"},
     "HUMILAU_CITY:Poke Ball by the east house": {"sheet": "b2_item_ball.png"},
     "HUMILAU_CITY:Poke Ball by the north house": {"sheet": "b2_item_ball.png"},
     "HUMILAU_CITY:Poke Ball on the pier": {"sheet": "b2_item_ball.png"},
@@ -697,11 +703,8 @@
     "LOSTLORN_FOREST:Poke Ball in the stump": {"sheet": "b2_c210.png"},
     "LOSTLORN_FOREST:Something in the grass": {"sheet": "b2_none.png"},
     "MARINE_TUBE:Black Belt at the glass": {"sheet": "b2_c46.png"},
-    "MARINE_TUBE:Guard": {"sheet": "b2_c76.png"},
     "MARINE_TUBE:Man at the glass": {"sheet": "b2_c20.png"},
     "MARINE_TUBE:Man by the trench": {"sheet": "b2_c65.png"},
-    "MARINE_TUBE:Man by the window": {"sheet": "b2_c28.png"},
-    "MARINE_TUBE:Parasol Lady with TMs": {"sheet": "b2_c84.png"},
     "MARINE_TUBE:Roxie fan": {"sheet": "b2_c31.png"},
     "MARINE_TUBE:Roxie fan ": {"sheet": "b2_c31.png"},
     "MARINE_TUBE:Runner in the tube": {"sheet": "b2_c20.png"},
@@ -733,6 +736,7 @@
     "MISTRALTON_CITY:Pilot Flynn": {"sheet": "b2_c71.png"},
     "MISTRALTON_CITY:Pilot Winslow": {"sheet": "b2_c71.png"},
     "MISTRALTON_CITY:Pilot by the counter": {"sheet": "b2_c71.png"},
+    "MISTRALTON_CITY:Pilot by the crates": {"sheet": "b2_c67.png"},
     "MISTRALTON_CITY:Pilot on the runway": {"sheet": "b2_c71.png"},
     "MISTRALTON_CITY:Poke Ball by the greenhouse": {"sheet": "b2_item_ball.png"},
     "MISTRALTON_CITY:Poke Ball by the south gardens": {"sheet": "b2_item_ball.png"},
@@ -1836,6 +1840,9 @@
     "VIRBANK_COMPLEX_OUTSIDE:Poke Ball behind the Roughneck": {"sheet": "b2_item_ball.png"},
     "VIRBANK_COMPLEX_OUTSIDE:Poke Ball in the grass": {"sheet": "b2_item_ball.png"},
     "VIRBANK_COMPLEX_OUTSIDE:Roughneck by the crane": {"sheet": "b2_c61.png"},
+    "MARINE_TUBE:Guard": {"sheet": "b2_c76.png"},
+    "MARINE_TUBE:Man by the window": {"sheet": "b2_c28.png"},
+    "MARINE_TUBE:Parasol Lady with TMs": {"sheet": "b2_c84.png"},
     "HOENN_METEOR_FALLS:Steven": {"sheet": "em_134.png"},
     "HOENN_ROUTE_112:Cable Car attendant": {"sheet": "em_45.png"},
     "HOENN_MT_CHIMNEY:Cable Car attendant": {"sheet": "em_45.png"},
@@ -8092,6 +8099,15 @@
     },
     "CERULEAN_CITY:Police officer": {
       "sheet": "fr_60.png"
+    },
+    "CERULEAN_CITY:Melanie": {
+      "sheet": "fr_23.png"
+    },
+    "KANTO_ROUTE_24:Damian": {
+      "sheet": "fr_39.png"
+    },
+    "VERMILLION_CITY:Officer Jenny": {
+      "sheet": "yellow_officer_jenny.png"
     },
     "CERULEAN_CITY:Cave guard": {
       "sheet": "fr_41.png"

@@ -6237,9 +6237,7 @@ ROUTE_21 = route(
     title="Route 21")
 ROUTE_21["split"] = True   # (the cove past Seaside Cave's east exit: only through the cave)
 ROUTE_21["edge_to"] = {"%d,0" % x: [min(max(x, 9), 17), 62] for x in range(8, 19)}
-ROUTE_21["gated_exits"] = {"PLASMA_FRIGATE": ["b2_frigate2_open"]}
-ROUTE_21["barred"] = [{"tiles": [[32, 49]], "until": {"flag_condition": "b2_frigate2_open"}, "look": "unseen",
-                       "lines": ["The Plasma Frigate's hatch is shut tight. (Its second visit comes with batch 9b.)"]}]
+
 
 # ---------------------------------------------------------------------------------------------------------------- Seaside Cave
 SEA_CRUSTLE = [_say("Big boulder", "It's a big boulder, but it doesn't look like a Pokemon can move it...",
@@ -6282,6 +6280,218 @@ for _x, _y in ((26, 3), (24, 9), (27, 9), (16, 10), (24, 10), (14, 20), (10, 21)
     _put_char(SEASIDE_B1F, _x, _y, "b")
 SEASIDE_B1F["split"] = True   # (each stairway its own way in: the boulders join them)
 _put_char(SEASIDE_B1F, 24, 16, ".")   # (the Rare Candy's raised platform: our grid shuts it in; opened from below, as Route 13's Red Shard)
+
+
+# ======================================================================================================== batch 9b-1 (11-24)
+# The Plasma Frigate's second visit, moored off Route 21 (zone 552 again: PLASMA_FRIGATE's story map while b2_frigate2_open
+# and not b2_frigate2_done): the North Entrance (Black 2's 553: four switches; White 2's 563: the password, five clues and the
+# Plasma Card), the hall below (558) and its rooms (559, 560, 575-583) joined by warp panels (the file's own warps), the
+# Command Center (556: Zinzolin shows off Kyurem; you and Hugh against Zinzolin and a Grunt; the Shadow Triad throws you out).
+# Flags: b2_seaside_crustle -> b2_frigate2_open (Route 21's cove: Hugh, Marlon's gangplank) -> b2_frigate2_deck (the deck's
+# Grunt) -> b2_frigate2_north (the North Entrance's double battle) -> the switches b2_fs_1..4 / the password b2_fp_password ->
+# b2_frigate2_cc (the Command Center) -> b2_frigate2_done (back on Route 21's beach) -> b2_r21_cheren (Cheren: the Giant Chasm).
+_F2 = ["b2_frigate2_open", "not:b2_frigate2_done"]
+_HUGH_50 = {"name": "{rival_name}", "class": "PKMN_TRAINER", "sprite": "hugh.png", "team": _b2(794)["team"],
+            "levels": _b2(794)["levels"],
+            "team_choice": {s: _TEAMS[str(t)]["team"] for s, t in zip(("495", "498", "501"), (794, 795, 796))}}
+_F2_ROOMS = {553: "north", 563: "north", 556: "command", 558: "hall", 559: "room_nw", 560: "room_w", 575: "room_sw",
+             576: "room_ne", 577: "room_e", 578: "room_se", 579: "cabin_1", 580: "cabin_2", 581: "cabin_3", 582: "cabin_4",
+             583: "dining"}
+OUTSIDE.update({553: 552, 563: 552, 558: 552, 556: -1, 559: -1, 560: -1, 575: -1, 576: -1, 577: -1, 578: -1, 579: -1, 580: -1,
+                581: -1, 582: -1, 583: -1})
+
+
+def _f2_room(z, people, w2=False, **kw):
+    """A frigate room: its doors to the other rooms are the file's warp panels (stairs by zone)."""
+    stairs, letters = {}, iter("pqrsuyzkjghtwn")
+    for d in GEO[str(z)]["doors"]:
+        to = d["to"]
+        if to in _F2_ROOMS and to != z and to not in stairs and OUTSIDE.get(z) != to and (to != 563 or w2) and (to != 553 or not w2):
+            stairs[to] = (next(letters), "ROOM:" + _F2_ROOMS[to])   # (a letter each: one per room it leads to)
+    out_door = kw.pop("out_door", (0, 0))
+    r = room(z, people, {}, out_door, stairs=stairs, scenes=kw.pop("scenes", None))
+    r["title"] = "Plasma Frigate"
+    r.update(kw)
+    return r
+
+
+_GRUNT = lambda n, tid, flag, line, after: (n, _b2_battle("Plasma Grunt" + " " * (n % 7), tid, flag, [line],
+                                                          ["Team Plasma: Tch...!"], [after]))
+_CLUES = [("b2_fp_clue_%d" % k, line) for k, line in enumerate((
+    "Team Plasma: The password? Its first part is... no, I won't tell you! ...Fine. It's the first thing Ghetsis taught us.",
+    "Team Plasma: The second part? It's the name of the ship. Shhh!",
+    "Team Plasma: You'll never guess the third part... It's how many Sages there are. Oops.",
+    "Team Plasma: The fourth part is what Lord N wanted for Pokemon, two years ago. ...Don't tell anyone I said that.",
+    "Team Plasma: The last part? It's the colour of our new uniforms. Everyone knows that!"), 1)]
+
+
+def _f2_rooms(w2):
+    rooms = {
+        "north": _f2_room(553 if not w2 else 563, {
+            0: _say("{rival_name}", "{rival_name}: They didn't have Purrloin with them!", condition=["b2_frigate2_north"])},
+            w2=w2, out_door=(18, 14), scenes=[
+                {"trigger": "enter", "condition": ["not:b2_frigate2_north"], "flag": "b2_frigate2_north_met",
+                 "cast": [{"sheet": "b2_plasma_grunt_f.png", "from": [11, 10], "to": [11, 11], "stay": True,
+                           "lines": ["Team Plasma: Who are you?"]},
+                          {"sheet": "b2_hugh.png", "from": [11, 15], "to": "player", "stay": True,
+                           "lines": ["{rival_name}: Just to let you know... you're about to feel my rage!"]}],
+                 "event": {"flag": "b2_frigate2_north",
+                           "battle": _b2(798, battle_options={"double": True, "partner": _HUGH_50, "second_trainer": _b2(799)},
+                                         dialogue={"player_won": [
+                                             "Team Plasma: Ugh! We have to tell the others. We have to protect the "
+                                             + ("password!" if w2 else "switches!"),
+                                             "{rival_name}: Barriers, huh... " + (
+                                                 "And a device for a password. We have to get it out of Team Plasma! Let's "
+                                                 "split up and find it!" if w2 else
+                                                 "We should press the switches to switch them off! Let's split up and look "
+                                                 "for them!")]})}}])}
+    if not w2:   # (Black 2: a switch beside each warp panel's landing; all four and the barrier goes)
+        sw = [(6, 7), (6, 12), (16, 7), (16, 12)]
+        rooms["north"]["scenes"] = list(rooms["north"].get("scenes") or []) + [
+            {"trigger": {"zone": [x, y, x, y]}, "condition": ["b2_frigate2_north", "not:b2_fs_%d" % k], "flag": "b2_fs_%d" % k,
+             "cast": [], "call": ["Click! You pressed the switch.", "From behind the wall, you heard a barrier switch off!"]}
+            for k, (x, y) in enumerate(sw, 1)]
+        need = ["b2_fs_%d" % k for k in range(1, 5)]
+    else:        # (White 2: five clues from the Grunts and the Plasma Card, then the device takes the password)
+        need = ["b2_fp_password"]
+        rooms["north"]["scenes"] = list(rooms["north"].get("scenes") or []) + [
+            {"trigger": {"zone": [9, 9, 13, 9]}, "condition": ["b2_frigate2_north", "not:b2_fp_card"], "every": True,
+             "cast": [], "call": ["There is a device... It seems that a card key is needed to enter a password."], "push": [0, 1]},
+            {"trigger": {"zone": [9, 9, 13, 9]}, "condition": ["b2_fp_card", {"any": ["not:" + c for c, _l in _CLUES]}],
+             "every": True, "cast": [], "call": ["There is a device for entering a password... but you don't know it all yet.",
+                                                 "(The Grunts below know the parts: five of them.)"], "push": [0, 1]},
+            {"trigger": {"zone": [9, 9, 13, 9]}, "condition": ["b2_fp_card"] + [c for c, _l in _CLUES] + ["not:b2_fp_password"],
+             "flag": "b2_fp_password", "cast": [], "call": ["You entered the password with the Plasma Card...",
+                                                           "You succeeded in entering the password!",
+                                                           "All the barriers were deactivated, and now you can proceed!"]}]
+    rooms["north"]["barred"] = [{"tiles": [[x, 8] for x in range(9, 14)], "until": {"condition": need}, "look": "unseen",
+                                 "lines": ["Be careful! The barriers are electrified!"]}]
+    rooms["command"] = _f2_room(556, {}, w2=w2, scenes=[
+        {"trigger": {"zone": [11, 18, 13, 18]}, "condition": ["not:b2_frigate2_cc"], "flag": "b2_frigate2_cc_met",
+         "cast": [{"sheet": "b2_c302.png", "from": [12, 16], "to": [12, 17], "stay": True, "lines": [
+             "Zinzolin: You're an impressive Trainer to have made it this far. Since you went to such trouble, I'll show you "
+             "something. This is...",
+             "Zinzolin: The legendary Pokemon of ice! Its name is Kyurem!",
+             "Zinzolin: The ice we fired into Opelucid was made with Kyurem's power and Team Plasma's technology!",
+             "Zinzolin: You could become a threat to Team Plasma, so we will eliminate you here!"]},
+                  {"sheet": "b2_hugh.png", "from": [12, 20], "to": "player", "stay": True, "lines": [
+                      "{rival_name}: Not with me around, you won't! Thanks for removing the barrier!",
+                      "Zinzolin: Hmph! We'll simply eliminate both of you!"]}],
+         "event": {"flag": "b2_frigate2_cc",
+                   "battle": _b2(347, battle_options={"double": True, "partner": _HUGH_50, "second_trainer": _b2(724)},
+                                 dialogue={"player_won": [
+                                     "Zinzolin: It looks like Kyurem has fully recovered. We'll put the DNA Splicers to good use.",
+                                     "Zinzolin: I'll let you take care of them, Shadow Triad!"]})}},
+        {"trigger": {"zone": [8, 14, 16, 20]}, "condition": ["b2_frigate2_cc", "not:b2_frigate2_done"], "flag": "b2_frigate2_done",
+         "cast": [{"sheet": "b2_c182.png", "from": [10, 18], "to": "player", "stay": True,
+                   "lines": ["Shadow Triad: Move.", "The Shadow Triad seized you!",
+                             "...You were thrown off the ship, onto Route 21's beach!"]}],
+         "event": {"travel": "UNOVA_ROUTE_21"}}])
+    rooms["hall"] = _f2_room(558, dict([
+        _GRUNT(4, 801, "b2_f2_g801", "Team Plasma: Intruders!", "Team Plasma: For now, let them through!"),
+        _GRUNT(3, 800, "b2_f2_g800", "Team Plasma: Don't get in our way!", "Team Plasma: The others will stop you!"),
+        _GRUNT(5, 812, "b2_f2_g812", "Team Plasma: Look sharp! You're on the Plasma Frigate!",
+               "Team Plasma: I don't know anything about your Purrloin or whatever!"),
+        _GRUNT(6, 802, "b2_f2_g802", "Team Plasma: The heart of this ship is no place for kids!", "Team Plasma: The sky sure is vast."),
+        (0, _say("Spy in a uniform", "This uniform's a disguise. I'm ex-Team Plasma, a spy for Rood. On this ship you move by "
+                                     "warp panels. Look sharp!",
+                 "You need the Plasma Card to enter the password! A woman in the dining hall has one." if w2 else
+                 "Step on four switches to remove the barrier!")),
+        (7, _say("{rival_name}", "{rival_name}: Again?! These warp panels are everywhere..."))]),
+        w2=w2, out_door=(17, 18))
+    rooms["room_nw"] = _f2_room(559, dict([_GRUNT(0, 426, "b2_f2_g426", "Team Plasma: Plasmaaaa!", "Team Plasma: Oooh..."),
+                                           _GRUNT(1, 427, "b2_f2_g427", "Team Plasma: Trubbish time!", "Team Plasma: You're intense!")]), w2=w2)
+    rooms["room_w"] = _f2_room(560, {0: _say("Grunt resting", "Team Plasma: Zzz... Zzz... Looks like she's asleep.")}, w2=w2)
+    rooms["room_sw"] = _f2_room(575, dict([_GRUNT(0, 343, "b2_f2_g343", "Team Plasma: Look how many of us there are!",
+                                                  "Team Plasma: Strong for such a little brat!"),
+                                           _GRUNT(1, 436, "b2_f2_g436", "Team Plasma: Pawniard, go!", "Team Plasma: Tch!")]), w2=w2)
+    rooms["room_ne"] = _f2_room(576, {0: _ball("Poke Ball in the cabin", "MAGMARIZER", "b2_f2_magmarizer", name="a Magmarizer"),
+                                      1: _say("Grunt by the bunks", "Team Plasma: I knew Ghetsis was using me... but I had friends here."),
+                                      2: _say("Grunt at the desk", "Team Plasma: And did you find the swimsuit guy who lowered the "
+                                                                   "gangplank?")}, w2=w2)
+    rooms["room_e"] = _f2_room(577, dict([_GRUNT(0, 429, "b2_f2_g429", "Team Plasma: You won't reach the heart of the ship!",
+                                                 "Team Plasma: I didn't stand a chance..."),
+                                          _GRUNT(1, 428, "b2_f2_g428", "Team Plasma: Weezing, Explosion!", "Team Plasma: Sniff...")]), w2=w2)
+    rooms["room_se"] = _f2_room(578, dict([_GRUNT(0, 437, "b2_f2_g437", "Team Plasma: Deino, Sneasel, get them!",
+                                                  "Team Plasma: Our plans might fail again...")]), w2=w2)
+    clue_people = {579: [0], 580: [0], 581: [0], 582: [0, 1], 583: [0, 1]}
+    k = 0
+    for z, ns in clue_people.items():
+        ppl = {}
+        for n in ns:
+            if k < len(_CLUES) and w2:
+                flag, line = _CLUES[k]
+                ppl[n] = {"text": "Plasma Grunt" + " " * k, "action": "EVENT", "condition": ["b2_frigate2_north"],
+                          "event": {"lines": [line], "flag": flag, "done": [line]}}
+            else:
+                ppl[n] = _say("Plasma Grunt" + " " * (k + 3), "Team Plasma: What's with this Trainer?! It reminds me of the one "
+                                                              "who messed with us two years ago...")
+            k += 1
+        if z == 583:
+            ppl[2] = _ball("Poke Ball in the dining hall", "ELECTIRIZER", "b2_f2_electirizer", name="an Electirizer")
+            ppl[3] = _say("Cook", "Cook: Even Team Plasma needs feeding!")
+            ppl[4] = ({"text": "Grunt with the Plasma Card", "action": "EVENT", "condition": ["b2_frigate2_north"], "event": {
+                "lines": ["Team Plasma: You want my Plasma Card? ...I'm off duty. Take it, just leave me alone!",
+                          "{player_name} received the Plasma Card!"], "flag": "b2_fp_card",
+                "done": ["Team Plasma: I'm off duty, I said!"]}} if w2 else
+                _say("Grunt at the table", "Team Plasma: The food here is terrible."))
+        rooms[_F2_ROOMS[z]] = _f2_room(z, ppl, w2=w2)
+    for r in rooms.values():
+        r.setdefault("title", "Plasma Frigate")
+    return rooms
+
+
+def _frigate2(w2):
+    m = route(
+        552, {20: _say("Plasma Grunt by the gangway", "Team Plasma: You must be friends of Smiley Swimsuit, who lowered the "
+                                                      "gangplank!", condition=["not:b2_frigate2_deck"]),
+              0: _say("{rival_name}", "{rival_name}: Let's find a way inside!", condition=["b2_frigate2_deck"])},
+        {}, exits={"<": ("UNOVA_ROUTE_21", [(8, y) for y in range(29, 33)])},
+        rooms=_f2_rooms(w2),
+        inside={"18,14": "north", **{"%d,18" % x: "hall" for x in range(17, 20)}, **{"%d,43" % x: "hall" for x in range(17, 20)}},
+        scenes=[{"trigger": {"zone": list(FRIGATE_ZONE)}, "condition": ["not:b2_frigate2_deck"], "flag": "b2_frigate2_deck_met",
+                 "cast": [{"sheet": "b2_plasma_grunt_m.png", "from": [23, 25], "to": "player", "stay": True, "lines": [
+                     "Team Plasma: You! You even got the roadblock Crustle out of the way! Here I come! Plasmaaaa!"]}],
+                 "event": {"flag": "b2_frigate2_deck",
+                           "battle": _b2(500, dialogue={"player_won": ["Team Plasma: Oh no! The hatch is still open!"]})}}],
+        title="Plasma Frigate")
+    _doors(m, m["inside"])
+    m["barred"] = [{"tiles": [[x, 18] for x in range(17, 20)] + [[18, 14]], "until": {"flag_condition": "b2_frigate2_deck"},
+                    "look": "unseen", "lines": ["A Grunt by the gangway is watching the hatches..."]}]
+    return m
+
+
+FRIGATE["story_maps"] = list(FRIGATE.get("story_maps") or []) + [
+    {"when": ["unova_version:WHITE_2"] + _F2, "map": _frigate2(True)},
+    {"when": _F2, "map": _frigate2(False)}]
+ROUTE_21["scenes"] = list(ROUTE_21.get("scenes") or []) + [
+    {"trigger": {"zone": [28, 47, 28, 50]}, "condition": ["b2_seaside_crustle", "not:b2_frigate2_open"], "flag": "b2_frigate2_open",
+     "cast": [{"sheet": "b2_hugh.png", "from": [23, 50], "to": "player", "stay": True, "lines": [
+         "{rival_name}: You found them! I knew you could do it! But... how do we get in?"]},
+              {"sheet": "b2_c230.png", "from": [34, 49], "to": [31, 49], "stay": True, "lines": [
+                  "???: Hold up!", "A heavy gangplank fell with a solid thud...", "Marlon: Eh, this should do it!",
+                  "{rival_name}: I thought you weren't going to fight Team Plasma?",
+                  "Marlon: Team Plasma's not botherin' me. But you're havin' trouble, so I've got to help out! That's what I want to do!",
+                  "Marlon: Believe in somethin'! The strength of your beliefs is what gives you and your Pokemon power!",
+                  "Marlon: I made some noise, so some people came out! Hey, be careful, 'K!"], "leave": [34, 60]},
+              {"as": 0, "lines": ["{rival_name}: He sure doesn't follow through! ...Well, he was being kind in his own way. "
+                                  "All right, I'm going in!"], "leave": [32, 49]}]},
+    {"trigger": "enter", "condition": ["b2_frigate2_done", "not:b2_r21_cheren"], "flag": "b2_r21_cheren",
+     "cast": [{"sheet": "b2_hugh.png", "from": [26, 49], "to": "player", "stay": True, "lines": [
+         "The Plasma Frigate rose into the air and flew off!",
+         "{rival_name}: Team Plasma! No matter where you fly, I won't let you get away!"]},
+              {"sheet": "b2_cheren.png", "from": [20, 49], "to": "player", "stay": True, "lines": [
+                  "Cheren: Sorry I'm late... I suspect they're flying toward the Giant Chasm.",
+                  "{rival_name}: The Giant Chasm! That's deep in Route 22, right? OK, I'm going! {player_name}! You come too!",
+                  "Cheren: Kyurem! Team Plasma is using its power for evil? If Kyurem is a legendary Dragon-type, only {legend} or "
+                  "{other_legend} could stand up to it... but neither of them is here.",
+                  "Cheren: You can get to the Giant Chasm from Route 22."], "leave": [14, 50]},
+              {"as": 0, "lines": [], "leave": [14, 50]}]}]
+ROUTE_21["barred"] = [{"tiles": [[32, 49]], "until": {"flag_condition": "b2_frigate2_open"}, "look": "unseen",
+                       "lines": ["The Plasma Frigate's hatch is shut tight."]},
+                      {"tiles": [[32, 49]], "when": {"condition": ["b2_frigate2_done"]}, "look": "unseen",
+                       "lines": ["The ship has flown away."]}]
+ROUTE_21["gated_exits"] = {"PLASMA_FRIGATE": ["b2_frigate2_open"]}
 
 
 MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": FLOCCESY, "UNOVA_ROUTE_20": ROUTE_20,
