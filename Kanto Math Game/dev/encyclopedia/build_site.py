@@ -22,8 +22,9 @@ import facts as F   # noqa: E402
 
 REGIONS = [("kanto", "Kanto + Sevii Islands", "FireRed and LeafGreen, with HeartGold/SoulSilver and Yellow extras"),
            ("johto", "Johto", "HeartGold and SoulSilver, on SoulSilver's maps, with Crystal extras"),
-           ("orange", "Orange Islands", "the anime and the fan game Pokémon Orange Islands")]
-LATER = ["Hoenn", "Sinnoh", "Unova", "Orre"]
+           ("orange", "Orange Islands", "the anime and the fan game Pokémon Orange Islands"),
+           ("hoenn", "Hoenn", "Omega Ruby and Alpha Sapphire's story on Emerald's maps, with Ruby, Sapphire and Emerald extras")]
+LATER = ["Sinnoh", "Unova", "Orre"]
 IMPORTANT = ("GYM_LEADER", "ELITE_FOUR", "CHAMPION", "RIVAL", "ROCKET_LEADER")
 
 
@@ -133,7 +134,8 @@ def connections(k, f):
 NAV = {"kanto": [("Kanto", "KANTO", "kanto", "Settlements", ["Sevii Islands", "Johto", "Orange Islands"]),
                  ("Sevii Islands", "SEVII", None, "Islands", ["Kanto"])],
        "johto": [("Johto", "JOHTO", "johto", "Settlements", ["Kanto", "Orange Islands"])],
-       "orange": [("Orange Islands", "ORANGE", "orange", "Islands", ["Kanto", "Johto"])]}
+       "orange": [("Orange Islands", "ORANGE", "orange", "Islands", ["Kanto", "Johto"])],
+       "hoenn": [("Hoenn", "HOENN", "hoenn", "Settlements", [])]}
 
 
 def navboxes(region, places, first_part):
@@ -152,6 +154,9 @@ def navboxes(region, places, first_part):
                 towns.append(k)
             else:
                 marks.append(k)
+        seen = set()   # (one link per name: Fortree's treetop half, the Trick House's six puzzle rooms)
+        towns = [k for k in towns if not (places[k]["name"] in seen or seen.add(places[k]["name"]))]
+        marks = [k for k in marks if not (places[k]["name"] in seen or seen.add(places[k]["name"]))]
         groups = [[towns_word, [[places[k]["name"], k] for k in towns]],
                   ["Routes", [[str(n), k] for n, k in sorted(routes)]],
                   ["Landmarks", [[places[k]["name"], k] for k in marks]]]
