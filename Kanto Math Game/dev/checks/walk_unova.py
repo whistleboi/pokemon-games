@@ -54,12 +54,14 @@ for a, b in (("UNOVA_ROUTE_14", "WHITE_FOREST"), ("UNOVA_ROUTE_15", "WHITE_FORES
 # ---- areas expansion (areas_05_unova.patch): B2W2 side areas, BW1 Challenger's Cave
 story.story_flags.update(saved)
 story.story_flags["beat_unova_champion"] = False
+story.story_flags["b2_opelucid_cheren"] = True   # (the story's own gate before Humilau: the Marine Tube opens after Cheren's call, 9a)
 B2_EARLY = ["VIRBANK_CITY", "VIRBANK_COMPLEX", "UNOVA_ROUTE_20", "FLOCCESY_RANCH", "FLOCCESY_TOWN", "UNOVA_ROUTE_19", "ASPERTIA_CITY",
             "RELIC_PASSAGE", "TUBELINE_BRIDGE", "LENTIMAS_TOWN", "REVERSAL_MOUNTAIN", "STRANGE_HOUSE",
             "PWT", "PLASMA_FRIGATE", "RELIC_PASSAGE_MIDDLE", "RELIC_PASSAGE_NORTH", "RELIC_CASTLE_DEPTHS",   # (batch 5b, 11-24)
             "VILLAGE_BRIDGE",   # (11-24: on Black 2's story road, Route 12 to Route 11)
-            "UNDELLA_BAY"]   # (batch 7b: by Surf from Undella, Cheren's HM on Route 6)
-B2_POST = ["HUMILAU_CITY", "SEASIDE_CAVE", "NATURE_PRESERVE", "MARVELOUS_BRIDGE",
+            "UNDELLA_BAY",   # (batch 7b: by Surf from Undella, Cheren's HM on Route 6)
+            "HUMILAU_CITY", "SEASIDE_CAVE"]   # (batch 9a: by the Marine Tube; the cave from Route 21)
+B2_POST = ["NATURE_PRESERVE", "MARVELOUS_BRIDGE",
            "CHALLENGERS_CAVE", "CLAY_TUNNEL"]
 expansion_check("unova b2w2 side areas", B2_EARLY, S)
 gate_check("unova post-game side areas", B2_POST, S, "beat_unova_champion")

@@ -144,7 +144,7 @@ check(len(SP["UNOVA_ROUTE_9"]["trainer_pool"]) == 5 and SP["UNOVA_ROUTE_9"].get(
 r9 = tmaps["UNOVA_ROUTE_9"]
 check({"mall", "stockroom", "gate_w"} <= set(r9["rooms"]), "Route 9: Shopping Mall Nine, its stockroom, the Bridge Gate")
 check(r9.get("story_maps") and tmaps["UNOVA_ROUTE_11"].get("story_maps"), "Routes 9 and 11 freeze with Opelucid")
-check("tube" in tmaps["UNDELLA_TOWN"]["rooms"] and "gate_n" in tmaps["MARINE_TUBE"]["rooms"], "the Marine Tube's buildings at both ends")
+check("tube" in tmaps["UNDELLA_TOWN"]["rooms"] and "tube" in tmaps["HUMILAU_CITY"]["rooms"], "the Marine Tube's buildings at both ends (Undella, Humilau: 9a)")
 check(not SP["UNOVA_ROUTE_9"].get("route_menu") and not SP["MARINE_TUBE"].get("route_menu"), "old menu buttons gone")
 
 print("2) the road: Opelucid -> Route 9 -> the Mall")
