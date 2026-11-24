@@ -293,6 +293,7 @@ pk = g.current_state
 names = [c[0] for c in getattr(pk, "choices", [])]
 check(type(pk).__name__ == "PickListState" and any(n.startswith("CD 06") for n in names), f"it lists the CDs you own ({names})")
 if type(pk).__name__ == "PickListState":
+    _ice = story.inventory.get("ICE_HEAL", 0)
     pk.pick("06")
     for _ in range(60):
         st = g.current_state
@@ -310,6 +311,7 @@ if type(pk).__name__ == "PickListState":
         p.heal_full()
     play(4000)
 check(F.get("battle_cd_06_cleared"), "won: Battle CD 06 cleared")
+check(story.inventory.get("ICE_HEAL", 0) >= _ice + 1, "its prize, XD's: an Ice Heal (the first clear only)")
 check([p.id for p in story.player_team] == mine, "your own team is back afterwards")
 
 print("6) The Journal")
