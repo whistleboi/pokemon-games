@@ -1,0 +1,562 @@
+{
+ "_about": "Sinnoh's soundtrack: Platinum's own tracks, rendered from the game file by kanto_handoff/sinnoh_map_tools/s_music.py (src/core/music.py region_track reads this; DAY / NIGHT by the clock).",
+ "areas": {
+  "ACUITY_LAKEFRONT": {
+   "DAY": "road_snow_d",
+   "NIGHT": "road_snow_n"
+  },
+  "CANALAVE_CITY": {
+   "DAY": "city02_d",
+   "NIGHT": "city02_n"
+  },
+  "CELESTIC_TOWN": {
+   "DAY": "city04_d",
+   "NIGHT": "city04_n"
+  },
+  "ETERNA_CITY": {
+   "DAY": "city04_d",
+   "NIGHT": "city04_n"
+  },
+  "ETERNA_FOREST": "d_02",
+  "ETERNA_FOREST_OUTSKIRTS": {
+   "DAY": "road_c_d",
+   "NIGHT": "road_c_n"
+  },
+  "ETERNA_GALACTIC_BUILDING": "d_ginlobby",
+  "FIGHT_AREA": {
+   "DAY": "city11_d",
+   "NIGHT": "city11_n"
+  },
+  "FLOAROMA_TOWN": {
+   "DAY": "town03_d",
+   "NIGHT": "town03_n"
+  },
+  "FLOWER_PARADISE": {
+   "DAY": "town03_d",
+   "NIGHT": "town03_n"
+  },
+  "FUEGO_IRONWORKS": {
+   "DAY": "road_c_d",
+   "NIGHT": "road_c_n"
+  },
+  "FULLMOON_ISLAND": "d_02",
+  "GALACTIC_WAREHOUSE": {
+   "DAY": "city07_d",
+   "NIGHT": "city07_n"
+  },
+  "HALL_OF_ORIGIN": "aus",
+  "HEARTHOME_CITY": {
+   "DAY": "city05_d",
+   "NIGHT": "city05_n"
+  },
+  "IRON_ISLAND": {
+   "DAY": "road_b_d",
+   "NIGHT": "road_b_n"
+  },
+  "JUBILIFE_CITY": {
+   "DAY": "city01_d",
+   "NIGHT": "city01_n"
+  },
+  "LAKE_ACUITY": "d_lake",
+  "LAKE_VALOR": "d_ginlobby",
+  "LAKE_VERITY": "d_lake",
+  "LOST_TOWER": "d_02",
+  "MANIAC_TUNNEL": "d_04",
+  "MT_CORONET_BASE": "d_05",
+  "NEWMOON_ISLAND": "d_03",
+  "OLD_CHATEAU": "d_03",
+  "OREBURGH_CITY": {
+   "DAY": "city03_d",
+   "NIGHT": "city03_n"
+  },
+  "OREBURGH_GATE": "d_05",
+  "OREBURGH_MINE": "d_01",
+  "PASTORIA_CITY": {
+   "DAY": "city06_d",
+   "NIGHT": "city06_n"
+  },
+  "RAVAGED_PATH": "d_05",
+  "RESORT_AREA": {
+   "DAY": "town07_d",
+   "NIGHT": "town07_n"
+  },
+  "SANDGEM_TOWN": {
+   "DAY": "town02_d",
+   "NIGHT": "town02_n"
+  },
+  "SENDOFF_SPRING": {
+   "DAY": "road_f_d",
+   "NIGHT": "road_f_n"
+  },
+  "SINNOH_BATTLE_FRONTIER": {
+   "DAY": "city11_d",
+   "NIGHT": "city11_n"
+  },
+  "SINNOH_POKEMON_LEAGUE": {
+   "DAY": "city10_d",
+   "NIGHT": "city10_n"
+  },
+  "SINNOH_ROUTE_201": {
+   "DAY": "road_a_d",
+   "NIGHT": "road_a_n"
+  },
+  "SINNOH_ROUTE_202": {
+   "DAY": "road_a_d",
+   "NIGHT": "road_a_n"
+  },
+  "SINNOH_ROUTE_203": {
+   "DAY": "road_b_d",
+   "NIGHT": "road_b_n"
+  },
+  "SINNOH_ROUTE_204": {
+   "DAY": "road_b_d",
+   "NIGHT": "road_b_n"
+  },
+  "SINNOH_ROUTE_205": {
+   "DAY": "road_c_d",
+   "NIGHT": "road_c_n"
+  },
+  "SINNOH_ROUTE_206": {
+   "DAY": "road_d_d",
+   "NIGHT": "road_d_n"
+  },
+  "SINNOH_ROUTE_207": {
+   "DAY": "road_d_d",
+   "NIGHT": "road_d_n"
+  },
+  "SINNOH_ROUTE_208": {
+   "DAY": "road_d_d",
+   "NIGHT": "road_d_n"
+  },
+  "SINNOH_ROUTE_209": {
+   "DAY": "road_e_d",
+   "NIGHT": "road_e_n"
+  },
+  "SINNOH_ROUTE_210": {
+   "DAY": "road_f_d",
+   "NIGHT": "road_f_n"
+  },
+  "SINNOH_ROUTE_211": {
+   "DAY": "road_c_d",
+   "NIGHT": "road_c_n"
+  },
+  "SINNOH_ROUTE_212": {
+   "DAY": "road_e_d",
+   "NIGHT": "road_e_n"
+  },
+  "SINNOH_ROUTE_213": {
+   "DAY": "town07_d",
+   "NIGHT": "town07_n"
+  },
+  "SINNOH_ROUTE_214": {
+   "DAY": "road_f_d",
+   "NIGHT": "road_f_n"
+  },
+  "SINNOH_ROUTE_215": {
+   "DAY": "road_f_d",
+   "NIGHT": "road_f_n"
+  },
+  "SINNOH_ROUTE_216": {
+   "DAY": "road_snow_d",
+   "NIGHT": "road_snow_n"
+  },
+  "SINNOH_ROUTE_217": {
+   "DAY": "road_snow_d",
+   "NIGHT": "road_snow_n"
+  },
+  "SINNOH_ROUTE_218": {
+   "DAY": "road_b_d",
+   "NIGHT": "road_b_n"
+  },
+  "SINNOH_ROUTE_219": {
+   "DAY": "road_a_d",
+   "NIGHT": "road_a_n"
+  },
+  "SINNOH_ROUTE_220": {
+   "DAY": "road_d_d",
+   "NIGHT": "road_d_n"
+  },
+  "SINNOH_ROUTE_221": {
+   "DAY": "road_d_d",
+   "NIGHT": "road_d_n"
+  },
+  "SINNOH_ROUTE_222": {
+   "DAY": "road_e_d",
+   "NIGHT": "road_e_n"
+  },
+  "SINNOH_ROUTE_223": {
+   "DAY": "road_f_d",
+   "NIGHT": "road_f_n"
+  },
+  "SINNOH_ROUTE_224": {
+   "DAY": "road_f_d",
+   "NIGHT": "road_f_n"
+  },
+  "SINNOH_ROUTE_225": {
+   "DAY": "town06_d",
+   "NIGHT": "town06_n"
+  },
+  "SINNOH_ROUTE_226": {
+   "DAY": "town06_d",
+   "NIGHT": "town06_n"
+  },
+  "SINNOH_ROUTE_227": {
+   "DAY": "town06_d",
+   "NIGHT": "town06_n"
+  },
+  "SINNOH_ROUTE_228": {
+   "DAY": "road_bza_d",
+   "NIGHT": "road_bza_n"
+  },
+  "SINNOH_ROUTE_229": {
+   "DAY": "road_bza_d",
+   "NIGHT": "road_bza_n"
+  },
+  "SINNOH_ROUTE_230": {
+   "DAY": "road_bza_d",
+   "NIGHT": "road_bza_n"
+  },
+  "SNOWPOINT_CITY": {
+   "DAY": "city09_d",
+   "NIGHT": "city09_n"
+  },
+  "SNOWPOINT_TEMPLE": "d_02",
+  "SOLACEON_RUINS": "d_02",
+  "SOLACEON_TOWN": {
+   "DAY": "city06_d",
+   "NIGHT": "city06_n"
+  },
+  "SPEAR_PILLAR": "d_mount1",
+  "SPEAR_PILLAR_RIFT": "d_mount2",
+  "STARK_MOUNTAIN": {
+   "DAY": "town06_d",
+   "NIGHT": "town06_n"
+  },
+  "SUNYSHORE_CITY": {
+   "DAY": "city08_d",
+   "NIGHT": "city08_n"
+  },
+  "SURVIVAL_AREA": {
+   "DAY": "city11_d",
+   "NIGHT": "city11_n"
+  },
+  "TEAM_GALACTIC_HQ": "d_ginlobby",
+  "TROPHY_GARDEN": {
+   "DAY": "road_e_d",
+   "NIGHT": "road_e_n"
+  },
+  "TURNBACK_CAVE": {
+   "DAY": "road_f_d",
+   "NIGHT": "road_f_n"
+  },
+  "TWINLEAF_TOWN": {
+   "DAY": "town01_d",
+   "NIGHT": "town01_n"
+  },
+  "VALLEY_WINDWORKS": {
+   "DAY": "road_c_d",
+   "NIGHT": "road_c_n"
+  },
+  "VALOR_LAKEFRONT": {
+   "DAY": "town07_d",
+   "NIGHT": "town07_n"
+  },
+  "VEILSTONE_CITY": {
+   "DAY": "city07_d",
+   "NIGHT": "city07_n"
+  },
+  "VERITY_LAKEFRONT": {
+   "DAY": "road_a_d",
+   "NIGHT": "road_a_n"
+  },
+  "VICTORY_ROAD_SINNOH": "d_01",
+  "WAYWARD_CAVE": "d_05"
+ },
+ "kinds": {
+  "center": "pc_01",
+  "enc_female": "eye_girl",
+  "enc_male": "eye_boy",
+  "enc_rocket": "eye_ginga",
+  "evolution": "shinka",
+  "final": "ba_chanp",
+  "gym": "ba_gym",
+  "gym_lobby": "gym",
+  "hall_of_fame": "ev_dendo1",
+  "lab": "kenkyujo",
+  "trainer": "ba_train",
+  "victory": "wintrain",
+  "villain": "ba_ginga",
+  "wild": "ba_poke"
+ },
+ "rooms": {
+  "CANALAVE_CITY:center": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "CANALAVE_CITY:center_2": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "CANALAVE_CITY:center_b1": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "CANALAVE_CITY:gym": "gym",
+  "CANALAVE_CITY:gym_2f": "gym",
+  "CANALAVE_CITY:gym_3f": "gym",
+  "CANALAVE_CITY:gym_4f": "gym",
+  "CANALAVE_CITY:mart": "fs",
+  "CELESTIC_TOWN:center": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "CELESTIC_TOWN:center_2": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "CELESTIC_TOWN:center_b1": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "ETERNA_CITY:center": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "ETERNA_CITY:center_2": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "ETERNA_CITY:center_b1": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "ETERNA_CITY:gate_206": {
+   "DAY": "road_d_d",
+   "NIGHT": "road_d_n"
+  },
+  "ETERNA_CITY:mart": "fs",
+  "FIGHT_AREA:center": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "FIGHT_AREA:center_2": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "FIGHT_AREA:center_b1": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "FIGHT_AREA:mart": "fs",
+  "FLOAROMA_MEADOW:house_0102": {
+   "DAY": "town03_d",
+   "NIGHT": "town03_n"
+  },
+  "FLOAROMA_TOWN:center": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "FLOAROMA_TOWN:center_2": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "FLOAROMA_TOWN:center_b1": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "FLOAROMA_TOWN:mart": "fs",
+  "HEARTHOME_CITY:center": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "HEARTHOME_CITY:center_2": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "HEARTHOME_CITY:center_b1": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "HEARTHOME_CITY:contest": "bld_con",
+  "HEARTHOME_CITY:contest_2f": "bld_con",
+  "HEARTHOME_CITY:gate_208": {
+   "DAY": "road_d_d",
+   "NIGHT": "road_d_n"
+  },
+  "HEARTHOME_CITY:gate_209": {
+   "DAY": "road_e_d",
+   "NIGHT": "road_e_n"
+  },
+  "HEARTHOME_CITY:gate_212": {
+   "DAY": "road_e_d",
+   "NIGHT": "road_e_n"
+  },
+  "HEARTHOME_CITY:gym": "gym",
+  "HEARTHOME_CITY:gym_1": "gym",
+  "HEARTHOME_CITY:gym_2": "gym",
+  "HEARTHOME_CITY:gym_3": "gym",
+  "HEARTHOME_CITY:mart": "fs",
+  "HEARTHOME_CITY:poffin": "bld_con",
+  "JUBILIFE_CITY:center": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "JUBILIFE_CITY:center_2": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "JUBILIFE_CITY:center_b1": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "JUBILIFE_CITY:gts": "pl_wifitower",
+  "JUBILIFE_CITY:gts_2f": "pl_wifitower",
+  "JUBILIFE_CITY:gts_3f": "pl_wifitower",
+  "JUBILIFE_CITY:house_0201": "bld_tv",
+  "JUBILIFE_CITY:house_0201_2f": "bld_tv",
+  "JUBILIFE_CITY:house_0201_3f": "bld_tv",
+  "JUBILIFE_CITY:house_0201_4f": "bld_tv",
+  "JUBILIFE_CITY:house_0501_4f": "gym",
+  "JUBILIFE_CITY:mart": "fs",
+  "JUBILIFE_CITY:tv_4f": "bld_tv",
+  "JUBILIFE_CITY:tv_groups": "bld_tv",
+  "JUBILIFE_CITY:tv_records": "bld_tv",
+  "OREBURGH_CITY:center": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "OREBURGH_CITY:center_2": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "OREBURGH_CITY:center_b1": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "OREBURGH_CITY:gym": "gym",
+  "OREBURGH_CITY:mart": "fs",
+  "PASTORIA_CITY:center": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "PASTORIA_CITY:center_2": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "PASTORIA_CITY:center_b1": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "PASTORIA_CITY:gym": "gym",
+  "PASTORIA_CITY:mart": "fs",
+  "RESORT_AREA:center_0101": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "SANDGEM_TOWN:center": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "SANDGEM_TOWN:center_2": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "SANDGEM_TOWN:center_b1": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "SANDGEM_TOWN:lab": "kenkyujo",
+  "SANDGEM_TOWN:mart": "fs",
+  "SINNOH_POKEMON_LEAGUE:center": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "SINNOH_POKEMON_LEAGUE:center_2": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "SINNOH_POKEMON_LEAGUE:center_b1": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "SINNOH_POKEMON_LEAGUE:house_0101": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "SNOWPOINT_CITY:center": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "SNOWPOINT_CITY:center_2": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "SNOWPOINT_CITY:center_b1": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "SNOWPOINT_CITY:gym": "gym",
+  "SNOWPOINT_CITY:mart": "fs",
+  "SOLACEON_TOWN:center": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "SOLACEON_TOWN:center_2": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "SOLACEON_TOWN:center_b1": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "SOLACEON_TOWN:mart_0101": "fs",
+  "SUNYSHORE_CITY:center": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "SUNYSHORE_CITY:center_2": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "SUNYSHORE_CITY:center_b1": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "SUNYSHORE_CITY:gym": "gym",
+  "SUNYSHORE_CITY:mart": "fs",
+  "SURVIVAL_AREA:center": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "SURVIVAL_AREA:center_2": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "SURVIVAL_AREA:center_b1": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "SURVIVAL_AREA:mart": "fs",
+  "VEILSTONE_CITY:center": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "VEILSTONE_CITY:center_2": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "VEILSTONE_CITY:center_b1": {
+   "DAY": "pc_01",
+   "NIGHT": "pc_02"
+  },
+  "VEILSTONE_CITY:dept_2f": "fs",
+  "VEILSTONE_CITY:dept_3f": "fs",
+  "VEILSTONE_CITY:dept_4f": "fs",
+  "VEILSTONE_CITY:dept_5f": "fs",
+  "VEILSTONE_CITY:dept_b1f": "fs",
+  "VEILSTONE_CITY:dept_lift": "fs",
+  "VEILSTONE_CITY:game_corner": "bld_game",
+  "VEILSTONE_CITY:gym": "gym",
+  "VEILSTONE_CITY:mart": "fs"
+ }
+}
