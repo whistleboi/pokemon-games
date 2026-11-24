@@ -190,6 +190,7 @@
       "Mom: I joined a knitting club. We're making scarves for Snover!",
       "Mom: Don't stay out too late near Lake Verity. The legends say a spirit lives there."
     ],
+    "sinnoh_dawn_home": ["Dawn: The Professor needs me on Route 202. Meet me there: I'll show you something useful!"],
     "sinnoh_barry_house": [
       "{rival_name}'s Mom: Oh, {player_name}! {rival_name} ran off again in a hurry.",
       "{rival_name}'s Mom: That child never walks anywhere. I hope he remembered his shoes!"
@@ -220,7 +221,7 @@
   "ACUITY_LAKEFRONT_PERCENTAGES": {"459": 40, "220": 35, "215": 25},
   "VALOR_LAKEFRONT_PERCENTAGES": {"400": 30, "203": 25, "397": 25, "402": 10, "228": 10},
   "SENDOFF_SPRING_PERCENTAGES": {"75": 32, "400": 30, "397": 17, "433": 10, "356": 8, "42": 3},
-  "OREBURGH_GATE_PERCENTAGES": {"41": 50, "54": 35, "74": 15},
+  "OREBURGH_GATE_PERCENTAGES": {"41": 48, "54": 35, "74": 15, "42": 2},
   "GRAND_UNDERGROUND_PERCENTAGES": { "108": 18, "111": 18, "123": 15, "229": 11, "220": 10, "333": 7, "207": 7, "81": 5, "280": 5, "238": 4 },
   "ETERNA_CITY_DAY_PERCENTAGES": {"406": 38, "399": 30, "265": 10, "266": 10, "268": 10, "267": 1, "269": 1},
   "ETERNA_CITY_GOOD_ROD_PERCENTAGES": {"129": 55, "339": 45},
@@ -421,6 +422,10 @@
   "VALOR_LAKEFRONT_RADAR_PERCENTAGES": {"400": 23, "203": 20, "397": 20, "402": 8, "228": 8, "33": 11, "30": 11},
   "MT_CORONET_BASE_RADAR_PERCENTAGES": {"75": 11, "308": 14, "433": 16, "436": 6, "307": 10, "67": 12, "35": 5, "437": 5, "460": 5, "299": 4, "74": 3, "459": 3, "42": 7, "66": 4, "41": 3, "359": 1, "173": 1, "294": 8},
   "SINNOH_ROUTE_204_RADAR_PERCENTAGES": {"396": 21, "399": 21, "406": 17, "403": 17, "265": 8, "401": 8, "191": 12},
+  "OREBURGH_GATE_GOOD_ROD_PERCENTAGES": {"129": 55, "339": 45},
+  "OREBURGH_GATE_OLD_ROD_PERCENTAGES": {"129": 100},
+  "OREBURGH_GATE_SUPER_ROD_PERCENTAGES": {"130": 55, "340": 45},
+  "OREBURGH_GATE_SURF_PERCENTAGES": {"54": 60, "41": 30, "55": 5, "42": 5},
   "STORY_PROGRESSION": {
     "GRAND_UNDERGROUND": {
       "area_type": "dungeon",
@@ -490,10 +495,10 @@
             {"name": "Galactic Grunt", "class": "PKMN_TRAINER", "sprite": "pt_galactic_grunt_m.png", "team": [453], "rewards": {"balls": 3}, "levels": [19], "spot_name": "Galactic Grunt 4"},
             {"name": "Galactic Grunt", "class": "PKMN_TRAINER", "sprite": "pt_galactic_grunt_f.png", "team": [434, 453, 431], "rewards": {"balls": 5}, "levels": [16, 16, 16], "spot_name": "Galactic Grunt 5"},
             {"name": "Scientist Travon", "class": "SCIENTIST", "sprite": "pt_scientist.png", "team": [64], "levels": [20], "rewards": {"balls": 2}},
-            {"name": "Commander Jupiter", "class": "COMMANDER", "sprite": "galactic_grunt.png", "team": [41, 435], "rewards": {"balls": 10}, "is_boss_battle": true, "victory_flag": "eterna_galactic_building_cleared"}
+            {"name": "Commander Jupiter", "class": "COMMANDER", "sprite": "galactic_grunt.png", "team": [41, 435], "rewards": {"balls": 10}, "is_boss_battle": true, "victory_flag": "galactic_eterna_cleared"}
         ],
         "route_menu": [
-            {"text": "STORM THE BUILDING", "action": "GALACTIC_GAUNTLET", "flag_condition": "not eterna_galactic_building_cleared", "color": "GOLD"},
+            {"text": "STORM THE BUILDING", "action": "GALACTIC_GAUNTLET", "flag_condition": "not galactic_eterna_cleared", "color": "GOLD"},
             {"text": "Eterna City", "action": "EXIT", "target_area": "ETERNA_CITY", "condition": "can_exit", "color": "RED"},
             {"text": "X SPEED", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_x_speed_eterna_galactic_building_c04r0202_3_12", "event": {"lines": ["A X Speed, lying among the rocks."], "gift_item": {"X_SPEED": 1}, "flag": "got_x_speed_eterna_galactic_building_c04r0202_3_12"}},
             {"text": "X SP ATK", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_x_sp_atk_eterna_galactic_building_c04r0203_10_8", "event": {"lines": ["A X Sp Atk, in a dark corner."], "gift_item": {"X_SP_ATK": 1}, "flag": "got_x_sp_atk_eterna_galactic_building_c04r0203_10_8"}},
@@ -512,17 +517,24 @@
         "min_rounds": 1,
         "trainer_pool": [
             {"name": "Picnicker Diana", "class": "PICNICKER", "sprite": "pt_picnicker.png", "team": [399], "levels": [9], "rewards": {"balls": 2}},
-            {"name": "Camper Curtis", "class": "CAMPER", "sprite": "pt_camper.png", "team": [396, 403], "levels": [7, 7], "rewards": {"balls": 2}}
+            {"name": "Camper Curtis", "class": "CAMPER", "sprite": "pt_camper.png", "team": [396, 403], "levels": [7, 7], "rewards": {"balls": 2}},
+            {"name": "Veteran Grant", "class": "VETERAN", "sprite": "pt_veteran.png", "team": [447, 398, 75], "levels": [34, 34, 34], "rewards": {"balls": 2}}
         ],
         "route_menu": [
             {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
             {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
             {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
             {"text": "Route 203", "action": "EXIT", "target_area": "SINNOH_ROUTE_203", "condition": "can_exit", "color": "RED"},
-            {"text": "Oreburgh City", "action": "EXIT", "target_area": "OREBURGH_CITY", "condition": "can_exit", "color": "RED"}
+            {"text": "Oreburgh City", "action": "EXIT", "target_area": "OREBURGH_CITY", "condition": "can_exit", "color": "RED"},
+            {"text": "TM192", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm192_oreburgh_gate_d14r0102_8_9", "event": {"lines": ["A TM (Focus-Punch), lying among the rocks."], "gift_item": {"TM192": 1}, "flag": "got_tm192_oreburgh_gate_d14r0102_8_9"}},
+            {"text": "EARTH PLATE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_earth_plate_oreburgh_gate_d14r0102_7_21", "event": {"lines": ["An Earth Plate, in a dark corner."], "gift_item": {"EARTH_PLATE": 1}, "flag": "got_earth_plate_oreburgh_gate_d14r0102_7_21"}},
+            {"text": "TM058", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm058_oreburgh_gate_d14r0102_23_10", "event": {"lines": ["A TM (Brick-Break), beside the cave wall."], "gift_item": {"TM058": 1}, "flag": "got_tm058_oreburgh_gate_d14r0102_23_10"}},
+            {"text": "TM291", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm291_oreburgh_gate_d14r0102_57_12", "event": {"lines": ["A TM (Flash), left behind by a hiker."], "gift_item": {"TM291": 1}, "flag": "got_tm291_oreburgh_gate_d14r0102_57_12"}},
+            {"text": "BIG PEARL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_big_pearl_oreburgh_gate_d14r0102_41_11", "event": {"lines": ["A Big Pearl, lying among the rocks."], "gift_item": {"BIG_PEARL": 1}, "flag": "got_big_pearl_oreburgh_gate_d14r0102_41_11"}}
         ],
         "next_area": "SINNOH_ROUTE_203",
-        "wild_levels": {"land": [4, 10]}
+        "wild_levels": {"land": [4, 10]},
+        "surf_pool_percentages": "OREBURGH_GATE_SURF_PERCENTAGES"
     },
     "SENDOFF_SPRING": {
         "area_type": "wild_route",
@@ -709,7 +721,7 @@
         "min_rounds": 0,
         "trainer_pool": [
             {"name": "Galactic Grunt", "class": "PKMN_TRAINER", "sprite": "galactic_grunt.png", "team": [434], "rewards": {"balls": 3}},
-            {"name": "Galactic Grunt", "class": "PKMN_TRAINER", "sprite": "galactic_grunt.png", "team": [41, 41], "rewards": {"balls": 4}}
+            {"name": "Galactic Grunt", "class": "PKMN_TRAINER", "sprite": "galactic_grunt.png", "team": [41, 41], "rewards": {"balls": 4, "WORKS_KEY": 1}}
         ],
         "route_menu": [
             {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
@@ -1240,14 +1252,14 @@
         "area_type": "town",
         "route_name": "Twinleaf Town",
         "region": "SINNOH",
-        "backgrounds": {"main": "twinleaf_town.png", "mom": "twinleaf_mom.png"},
+        "backgrounds": {"mom": "twinleaf_mom.png"},
         "has_gym": false,
         "travel_options": [
             {"text": "Route 201", "target_area": "SINNOH_ROUTE_201"}
         ],
         "explore_options": [
             {"text": "Visit Mom", "action": "NPC", "target": "mom"},
-            {"text": "Visit {rival_name}'s House", "action": "NPC", "target": "sinnoh_barry_house", "door": "rival"}
+            {"text": "Visit {rival_name}'s House", "action": "EVENT", "door": "rival", "event": {"lines": ["{rival_name}'s Mom: Oh, {player_name}! {rival_name} was looking for you, then ran off again in a hurry.", "{rival_name}'s Mom: He said something about Lake Verity. Route 201 is just north of town!"], "flag": "sinnoh_visited_rival_home", "done": ["{rival_name}'s Mom: That child never walks anywhere. I hope he remembered his shoes!"]}}
         ],
         "next_area": "SINNOH_ROUTE_201",
         "on_enter_event": [
@@ -1259,7 +1271,7 @@
         "area_type": "town",
         "route_name": "Sandgem Town",
         "region": "SINNOH",
-        "backgrounds": {"main": "sandgem_town.png", "pokecenter": "sandgem_center.png", "lab": "rowan_lab.png"},
+        "backgrounds": {"pokecenter": "sandgem_center.png", "lab": "rowan_lab.png"},
         "has_gym": false,
         "travel_options": [
             {"text": "Route 201", "target_area": "SINNOH_ROUTE_201"},
@@ -1270,7 +1282,7 @@
             {"text": "Heal", "action": "HEAL"},
             {"text": "Shop", "action": "SHOP"},
             {"text": "Visit Professor Rowan", "action": "NPC", "target": "professor_rowan", "door": "lab"},
-            {"text": "Talk to Dawn/Lucas", "action": "NPC", "target": "rowan_assistant", "door": "assistant"}
+            {"text": "Talk to Dawn/Lucas", "action": "NPC", "target": "sinnoh_dawn_home", "door": "assistant"}
         ],
         "next_area": "SINNOH_ROUTE_202",
         "on_enter_event": null,
@@ -1280,7 +1292,7 @@
         "area_type": "town",
         "route_name": "Jubilife City",
         "region": "SINNOH",
-        "backgrounds": {"main": "jubilife_city.png", "pokecenter": "jubilife_center.png", "pokemart": "jubilife_mart.png"},
+        "backgrounds": {"pokecenter": "jubilife_center.png", "pokemart": "jubilife_mart.png"},
         "has_gym": false,
         "travel_options": [
             {"text": "Route 202", "target_area": "SINNOH_ROUTE_202"},
@@ -1292,7 +1304,7 @@
         "explore_options": [
             {"text": "Heal", "action": "HEAL"},
             {"text": "Shop", "action": "SHOP"},
-            {"text": "Pokétch Company", "action": "NPC", "target": "poketch_company", "door": "poketch"},
+            {"text": "Pokétch Company", "action": "EVENT", "door": "poketch", "event": {"requires": ["sinnoh_coupon_1", "sinnoh_coupon_2", "sinnoh_coupon_3"], "fail": ["President: Welcome, welcome! Have you found all three of my clowns?", "President: Each one has a Coupon for you. Bring me all three, and a Pokétch is yours!"], "lines": ["President: One, two, three Coupons! Bravo, bravo!", "President: Here you are: your very own Pokémon Watch, the Pokétch! Wear it with pride!"], "flag": "got_poketch", "done": ["President: How is that Pokétch? We'll have new apps for it soon!"]}},
             {"text": "Talk to Looker", "action": "NPC", "target": "looker", "flag_condition": "not met_looker"},
             {"text": "GTS Building", "action": "NPC", "target": "gts_building", "door": "gts"},
             {"text": "Repel Team Galactic", "action": "NPC", "target": "galactic_jubilife", "flag_condition": "not galactic_jubilife_cleared"},
@@ -1306,7 +1318,7 @@
         "area_type": "town",
         "route_name": "Oreburgh City",
         "region": "SINNOH",
-        "backgrounds": {"main": "oreburgh_city.png", "pokecenter": "oreburgh_center.png", "pokemart": "oreburgh_mart.png", "gym": "battle_gym_oreburgh.png"},
+        "backgrounds": {"pokecenter": "oreburgh_center.png", "pokemart": "oreburgh_mart.png", "gym": "battle_gym_oreburgh.png"},
         "has_gym": true,
         "gym": {"requirements": {"flag": "met_roark", "fail_text": "Roark is digging in the Oreburgh Mine. Go find him there first!"}, "trainers": [{"name": "Youngster Jonathon", "class": "YOUNGSTER", "sprite": "pt_youngster.png", "team": [74], "levels": [11], "rewards": {"balls": 2}, "dialogue": {"intro": ["Roark's rocks are tough, and so am I!"], "player_won": ["My Geodude needs more training..."]}}, {"name": "Youngster Darius", "class": "YOUNGSTER", "sprite": "pt_youngster.png", "team": [74, 95], "levels": [9, 9], "rewards": {"balls": 2}, "dialogue": {"intro": ["You want Roark? Get past me first!"], "player_won": ["You're ready for Roark, I guess."]}}], "leader": {"name": "Roark", "class": "GYM_LEADER", "is_boss_battle": true, "sprite": "roark.png", "team": [74, 95, 408], "levels": [12, 12, 14], "badge_reward": "COAL", "dialogue": {"intro": ["I'm Roark, the Oreburgh Gym Leader!", "My Rock-type Pokémon are as tough as the earth itself!"], "player_won": ["Your math cracked my defense. Take the Coal Badge.", "Take this Skull Fossil too. The fossil lab in Oreburgh City can revive it!"], "player_lost": ["Rock-solid — just like my Pokémon!"]}, "rewards": {"balls": 10, "RARE_CANDY": 1, "ADVENTURE_MAP": 1, "SKULL_FOSSIL": 1, "TM116": 1}, "movesets": {"74": ["ROCK-THROW", "STEALTH-ROCK"], "95": ["ROCK-THROW", "SCREECH", "STEALTH-ROCK"], "408": ["HEADBUTT", "PURSUIT", "LEER"]}}},
         "travel_options": [
@@ -1330,7 +1342,7 @@
         "area_type": "town",
         "route_name": "Floaroma Town",
         "region": "SINNOH",
-        "backgrounds": {"main": "floaroma_town.png", "pokecenter": "floaroma_center.png"},
+        "backgrounds": {"pokecenter": "floaroma_center.png"},
         "has_gym": false,
         "travel_options": [
             {"text": "Route 204", "target_area": "SINNOH_ROUTE_204"},
@@ -1353,13 +1365,13 @@
         "area_type": "town",
         "route_name": "Eterna City",
         "region": "SINNOH",
-        "backgrounds": {"main": "eterna_city.png", "pokecenter": "eterna_center.png", "pokemart": "eterna_mart.png", "gym": "battle_gym_eterna.png"},
+        "backgrounds": {"pokecenter": "eterna_center.png", "pokemart": "eterna_mart.png", "gym": "battle_gym_eterna.png"},
         "has_gym": true,
-        "gym": {"trainers": [{"name": "Lass Caroline", "class": "LASS", "sprite": "pt_lass.png", "team": [420, 315], "levels": [17, 17], "rewards": {"balls": 2}, "dialogue": {"intro": ["Welcome! No waiting, let's battle!"], "player_won": ["Ride the clock's hands to reach the next one."]}}, {"name": "Aroma Lady Jenna", "class": "AROMA_LADY", "sprite": "pt_aroma_lady.png", "team": [406, 406, 406], "levels": [15, 16, 17], "rewards": {"balls": 2}, "dialogue": {"intro": ["Breathe in the flowers... and lose!"], "player_won": ["The clock moves on, and so do you."]}}, {"name": "Aroma Lady Angela", "class": "AROMA_LADY", "sprite": "pt_aroma_lady.png", "team": [315], "levels": [19], "rewards": {"balls": 2}, "dialogue": {"intro": ["Lovely aromas won't help you here!"], "player_won": ["Only Gardenia is left. Go on!"]}}], "leader": {"name": "Gardenia", "class": "GYM_LEADER", "is_boss_battle": true, "sprite": "gardenia.png", "team": [420, 387, 407], "levels": [19, 19, 22], "badge_reward": "FOREST", "dialogue": {"intro": ["I'm Gardenia! Oh, you have an amazing aura around you!", "But that won't save you from my Grass-types!"], "player_won": ["Wow! You're something else! Take the Forest Badge!"], "player_lost": ["The power of nature was too much for you!"]}, "rewards": {"balls": 10, "RARE_CANDY": 1, "EXPLORER_KIT": 1, "TM081": 1}, "movesets": {"420": ["GRASS-KNOT", "LEECH-SEED", "SAFEGUARD", "GROWTH"], "387": ["GRASS-KNOT", "RAZOR-LEAF", "WITHDRAW", "REFLECT"], "407": ["GRASS-KNOT", "MAGICAL-LEAF", "POISON-STING", "STUN-SPORE"]}}, "requirements": {"badges": 1, "fail_text": "Gardenia wants to see the Coal Badge from Oreburgh first!"}},
+        "gym": {"trainers": [{"name": "Lass Caroline", "class": "LASS", "sprite": "pt_lass.png", "team": [420, 315], "levels": [17, 17], "rewards": {"balls": 2}, "dialogue": {"intro": ["Welcome! No waiting, let's battle!"], "player_won": ["Ride the clock's hands to reach the next one."]}}, {"name": "Aroma Lady Jenna", "class": "AROMA_LADY", "sprite": "pt_aroma_lady.png", "team": [406, 406, 406], "levels": [15, 16, 17], "rewards": {"balls": 2}, "dialogue": {"intro": ["Breathe in the flowers... and lose!"], "player_won": ["The clock moves on, and so do you."]}}, {"name": "Aroma Lady Angela", "class": "AROMA_LADY", "sprite": "pt_aroma_lady.png", "team": [315], "levels": [19], "rewards": {"balls": 2}, "dialogue": {"intro": ["Lovely aromas won't help you here!"], "player_won": ["Only Gardenia is left. Go on!"]}}], "leader": {"name": "Gardenia", "class": "GYM_LEADER", "is_boss_battle": true, "sprite": "gardenia.png", "team": [420, 387, 407], "levels": [19, 19, 22], "badge_reward": "FOREST", "victory_flag": "sinnoh_beat_gardenia", "dialogue": {"intro": ["I'm Gardenia! Oh, you have an amazing aura around you!", "But that won't save you from my Grass-types!"], "player_won": ["Wow! You're something else! Take the Forest Badge!"], "player_lost": ["The power of nature was too much for you!"]}, "rewards": {"balls": 10, "RARE_CANDY": 1, "EXPLORER_KIT": 1, "TM081": 1}, "movesets": {"420": ["GRASS-KNOT", "LEECH-SEED", "SAFEGUARD", "GROWTH"], "387": ["GRASS-KNOT", "RAZOR-LEAF", "WITHDRAW", "REFLECT"], "407": ["GRASS-KNOT", "MAGICAL-LEAF", "POISON-STING", "STUN-SPORE"]}}, "requirements": {"badges": 1, "fail_text": "Gardenia wants to see the Coal Badge from Oreburgh first!"}},
         "travel_options": [
             {"text": "Route 206", "target_area": "SINNOH_ROUTE_206", "condition": "galactic_eterna_cleared"},
             {"text": "Route 211", "target_area": "SINNOH_ROUTE_211"},
-            {"text": "Eterna Forest", "target_area": "ETERNA_FOREST"},
+            {"text": "Eterna Forest", "target_area": "ETERNA_FOREST"}, {"text": "Eterna Forest Outskirts", "target_area": "ETERNA_FOREST_OUTSKIRTS"},
             {"text": "Galactic Eterna Building", "target_area": "ETERNA_GALACTIC_BUILDING", "condition": "has_forest_badge"},
             {"text": "Grand Underground", "target_area": "GRAND_UNDERGROUND"}
         ],
@@ -1368,10 +1380,8 @@
             {"text": "Heal", "action": "HEAL"},
             {"text": "Shop", "action": "SHOP"},
             {"text": "Gym", "action": "GYM"},
-            {"text": "Galactic Eterna Building", "action": "NPC", "target": "galactic_eterna", "flag_condition": "not galactic_eterna_cleared"},
             {"text": "Bike Shop", "action": "NPC", "target": "rad_rickshaw", "door": "bike", "flag_condition": "galactic_eterna_cleared"},
             {"text": "Eterna Forest", "action": "TRAVEL", "target_area": "ETERNA_FOREST"},
-            {"text": "Talk to Cynthia", "action": "NPC", "target": "cynthia_hm", "flag_condition": "not received_hm_cut", "condition": "has_forest_badge"},
             {"text": "TM018", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm018_eterna_city_c04_39_4", "event": {"lines": ["A TM (Thief), lying by the path."], "gift_item": {"TM018": 1}, "flag": "got_tm018_eterna_city_c04_39_4"}},
             {"text": "SUPER POTION", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_super_potion_eterna_city_c04_29_46", "event": {"lines": ["A Super Potion, left on the ground."], "gift_item": {"SUPER_POTION": 1}, "flag": "got_super_potion_eterna_city_c04_29_46"}},
             {"text": "GUARD SPEC", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_guard_spec_eterna_city_r205b_18_29", "event": {"lines": ["A Guard Spec, half hidden by a fence."], "gift_item": {"GUARD_SPEC": 1}, "flag": "got_guard_spec_eterna_city_r205b_18_29"}}
@@ -1392,9 +1402,9 @@
         "area_type": "town",
         "route_name": "Hearthome City",
         "region": "SINNOH",
-        "backgrounds": {"main": "hearthome_city.png", "pokecenter": "hearthome_center.png", "pokemart": "hearthome_mart.png", "gym": "battle_gym_hearthome.png"},
+        "backgrounds": {"pokecenter": "hearthome_center.png", "pokemart": "hearthome_mart.png", "gym": "battle_gym_hearthome.png"},
         "has_gym": true,
-        "gym": {"requirements": {"badges": 4, "fail_text": "Fantina is at the Contest Hall, admiring performances. She'll return to the gym once you've proven yourself with four badges."}, "trainers": [{"name": "Youngster Donny", "class": "YOUNGSTER", "sprite": "pt_youngster.png", "team": [92, 425], "levels": [20, 22], "rewards": {"balls": 2}}, {"name": "Lass Molly", "class": "LASS", "sprite": "pt_lass.png", "team": [200], "levels": [23], "rewards": {"balls": 2}}, {"name": "School Kid Mackenzie", "class": "SCHOOL_KID", "sprite": "pt_school_kid_f.png", "team": [425, 425], "levels": [21, 21], "rewards": {"balls": 2}}, {"name": "Ace Trainer Allen", "class": "ACE_TRAINER", "sprite": "pt_ace_trainer_m.png", "team": [92, 92, 93], "levels": [21, 22, 24], "rewards": {"balls": 2}}, {"name": "School Kid Chance", "class": "SCHOOL_KID", "sprite": "pt_school_kid_m.png", "team": [92], "levels": [23], "rewards": {"balls": 2}}, {"name": "Ace Trainer Catherine", "class": "ACE_TRAINER", "sprite": "pt_ace_trainer_f.png", "team": [93, 200], "levels": [23, 24], "rewards": {"balls": 2}}, {"name": "Camper Drew", "class": "CAMPER", "sprite": "pt_camper.png", "team": [92, 92, 92], "levels": [27, 27, 27], "rewards": {"balls": 2}}, {"name": "Picnicker Cheyenne", "class": "PICNICKER", "sprite": "pt_picnicker.png", "team": [425, 200], "levels": [28, 28], "rewards": {"balls": 2}}], "leader": {"name": "Fantina", "class": "GYM_LEADER", "is_boss_battle": true, "sprite": "fantina.png", "team": [426, 94, 429], "levels": [32, 34, 36], "badge_reward": "RELIC", "dialogue": {"intro": ["Ohohoho! I am Fantina, ze Gym Leader!", "I shall defeat you! Oui, certainement!"], "player_won": ["Mon Dieu! You are fantastique! Take ze Relic Badge!"], "player_lost": ["Ohohoho! Magnifique! You could not beat me!"]}, "rewards": {"balls": 10, "RARE_CANDY": 2, "TM061": 1}, "movesets": {"426": ["PSYCHIC", "SILVER-WIND", "OMINOUS-WIND", "BATON-PASS"], "94": ["FOCUS-BLAST", "THUNDER", "SHADOW-BALL", "PSYCHIC"], "429": ["SHADOW-BALL", "THUNDERBOLT", "PSYCHIC", "MAGICAL-LEAF"]}}},
+        "gym": {"requirements": {"badges": 4, "fail_text": "Fantina is at the Contest Hall, admiring performances. She'll return to the gym once you've proven yourself with four badges."}, "trainers": [{"name": "Youngster Donny", "class": "YOUNGSTER", "sprite": "pt_youngster.png", "team": [92, 425], "levels": [20, 22], "rewards": {"balls": 2}}, {"name": "Lass Molly", "class": "LASS", "sprite": "pt_lass.png", "team": [200], "levels": [23], "rewards": {"balls": 2}}, {"name": "School Kid Mackenzie", "class": "SCHOOL_KID", "sprite": "pt_school_kid_f.png", "team": [425, 425], "levels": [21, 21], "rewards": {"balls": 2}}, {"name": "Ace Trainer Allen", "class": "ACE_TRAINER", "sprite": "pt_ace_trainer_m.png", "team": [92, 92, 93], "levels": [21, 22, 24], "rewards": {"balls": 2}}, {"name": "School Kid Chance", "class": "SCHOOL_KID", "sprite": "pt_school_kid_m.png", "team": [92], "levels": [23], "rewards": {"balls": 2}}, {"name": "Ace Trainer Catherine", "class": "ACE_TRAINER", "sprite": "pt_ace_trainer_f.png", "team": [93, 200], "levels": [23, 24], "rewards": {"balls": 2}}, {"name": "Camper Drew", "class": "CAMPER", "sprite": "pt_camper.png", "team": [92, 92, 92], "levels": [27, 27, 27], "rewards": {"balls": 2}}, {"name": "Picnicker Cheyenne", "class": "PICNICKER", "sprite": "pt_picnicker.png", "team": [425, 200], "levels": [28, 28], "rewards": {"balls": 2}}], "leader": {"name": "Fantina", "class": "GYM_LEADER", "is_boss_battle": true, "sprite": "fantina.png", "team": [426, 94, 429], "levels": [32, 34, 36], "badge_reward": "RELIC", "victory_flag": "sinnoh_beat_fantina", "dialogue": {"intro": ["Ohohoho! I am Fantina, ze Gym Leader!", "I shall defeat you! Oui, certainement!"], "player_won": ["Mon Dieu! You are fantastique! Take ze Relic Badge!"], "player_lost": ["Ohohoho! Magnifique! You could not beat me!"]}, "rewards": {"balls": 10, "RARE_CANDY": 2, "TM061": 1}, "movesets": {"426": ["PSYCHIC", "SILVER-WIND", "OMINOUS-WIND", "BATON-PASS"], "94": ["FOCUS-BLAST", "THUNDER", "SHADOW-BALL", "PSYCHIC"], "429": ["SHADOW-BALL", "THUNDERBOLT", "PSYCHIC", "MAGICAL-LEAF"]}}},
         "travel_options": [
             {"text": "Route 208", "target_area": "SINNOH_ROUTE_208"},
             {"text": "Route 209", "target_area": "SINNOH_ROUTE_209"},
@@ -1415,7 +1425,7 @@
         "area_type": "town",
         "route_name": "Solaceon Town",
         "region": "SINNOH",
-        "backgrounds": {"main": "solaceon_town.png", "pokecenter": "solaceon_center.png"},
+        "backgrounds": {"pokecenter": "solaceon_center.png"},
         "has_gym": false,
         "travel_options": [
             {"text": "Route 209", "target_area": "SINNOH_ROUTE_209"},
@@ -1427,7 +1437,6 @@
             {"text": "Heal", "action": "HEAL"},
             {"text": "Day Care Center", "action": "NPC", "target": "day_care", "door": "daycare"},
             {"text": "Solaceon Ruins", "action": "TRAVEL", "target_area": "SOLACEON_RUINS"},
-            {"text": "Talk to Reporter", "action": "NPC", "target": "solaceon_reporter"},
             {"text": "PP UP", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_pp_up_solaceon_town_t04_40_22", "event": {"lines": ["A Pp Up, lying by the path."], "gift_item": {"PP_UP": 1}, "flag": "got_pp_up_solaceon_town_t04_40_22"}},
             {"text": "RARE CANDY", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_rare_candy_solaceon_town_t04_50_13", "event": {"lines": ["A Rare Candy, left on the ground."], "gift_item": {"RARE_CANDY": 1}, "flag": "got_rare_candy_solaceon_town_t04_50_13"}}
         ],
@@ -1439,7 +1448,7 @@
         "area_type": "town",
         "route_name": "Veilstone City",
         "region": "SINNOH",
-        "backgrounds": {"main": "veilstone_city.png", "pokecenter": "veilstone_center.png", "pokemart": "veilstone_mart.png", "gym": "battle_gym_veilstone.png"},
+        "backgrounds": {"pokecenter": "veilstone_center.png", "pokemart": "veilstone_mart.png", "gym": "battle_gym_veilstone.png"},
         "has_gym": true,
         "gym": {"trainers": [{"name": "Black Belt Colby", "class": "BLACK_BELT", "sprite": "pt_black_belt.png", "team": [67, 67, 67], "levels": [23, 25, 27], "rewards": {"balls": 2}, "dialogue": {"intro": ["Maylene trains us hard. Feel it!"], "player_won": ["Ow. You hit hard too."]}}, {"name": "Black Belt Darren", "class": "BLACK_BELT", "sprite": "pt_black_belt.png", "team": [66, 307, 67], "levels": [25, 25, 25], "rewards": {"balls": 2}, "dialogue": {"intro": ["Fists ready! Let's go!"], "player_won": ["My fists need more practice."]}}, {"name": "Black Belt Jeffery", "class": "BLACK_BELT", "sprite": "pt_black_belt.png", "team": [214], "levels": [28], "rewards": {"balls": 2}, "dialogue": {"intro": ["Heracross is the strongest bug. Fact!"], "player_won": ["Okay, maybe not the strongest."]}}, {"name": "Black Belt Rafael", "class": "BLACK_BELT", "sprite": "pt_black_belt.png", "team": [453, 67], "levels": [26, 26], "rewards": {"balls": 2}, "dialogue": {"intro": ["Every punch counts in this Gym!"], "player_won": ["Your punches counted more."]}}], "leader": {"name": "Maylene", "class": "GYM_LEADER", "is_boss_battle": true, "sprite": "maylene.png", "team": [307, 67, 448], "levels": [27, 27, 30], "badge_reward": "COBBLE", "dialogue": {"intro": ["I'm Maylene. I may not look it, but I'm the Gym Leader here.", "I'll give you everything I have!"], "player_won": ["You've proven your strength. Take the Cobble Badge."], "player_lost": ["My Fighting spirit was stronger!"]}, "rewards": {"balls": 10, "RARE_CANDY": 2, "TM073": 1}, "movesets": {"307": ["DRAIN-PUNCH", "CONFUSION", "FAKE-OUT", "ROCK-TOMB"], "67": ["KARATE-CHOP", "STRENGTH", "FOCUS-ENERGY", "ROCK-TOMB"], "448": ["DRAIN-PUNCH", "METAL-CLAW", "BONE-RUSH", "FORCE-PALM"]}}, "requirements": {"badges": 2, "fail_text": "Maylene is only accepting challengers with 2 Sinnoh Badges."}},
         "travel_options": [
@@ -1473,7 +1482,7 @@
         "area_type": "town",
         "route_name": "Pastoria City",
         "region": "SINNOH",
-        "backgrounds": {"main": "pastoria_city.png", "pokecenter": "pastoria_center.png", "pokemart": "pastoria_mart.png", "gym": "battle_gym_pastoria.png"},
+        "backgrounds": {"pokecenter": "pastoria_center.png", "pokemart": "pastoria_mart.png", "gym": "battle_gym_pastoria.png"},
         "has_gym": true,
         "gym": {"trainers": [{"name": "Tuber Jacky", "class": "TUBER", "sprite": "pt_tuber_m.png", "team": [400], "levels": [32], "rewards": {"balls": 2}, "dialogue": {"intro": ["Splash! Water battles are the best!"], "player_won": ["I'm soaked from losing."]}}, {"name": "Sailor Damian", "class": "SAILOR", "sprite": "pt_sailor.png", "team": [278, 279], "levels": [31, 31], "rewards": {"balls": 2}, "dialogue": {"intro": ["A sailor fears no wave!"], "player_won": ["That wave got me."]}}, {"name": "Tuber Caitlyn", "class": "TUBER", "sprite": "pt_tuber_f.png", "team": [298, 183, 184], "levels": [27, 29, 31], "rewards": {"balls": 2}, "dialogue": {"intro": ["My Marill family will float you away!"], "player_won": ["We sank..."]}}, {"name": "Sailor Samson", "class": "SAILOR", "sprite": "pt_sailor.png", "team": [278, 422, 55], "levels": [29, 30, 31], "rewards": {"balls": 2}, "dialogue": {"intro": ["Crasher Wake taught me everything!"], "player_won": ["He'll have to teach me more."]}}, {"name": "Fisherman Erick", "class": "FISHERMAN", "sprite": "pt_fisherman.png", "team": [118, 119, 130], "levels": [28, 31, 31], "rewards": {"balls": 2}, "dialogue": {"intro": ["My Gyarados is my best catch ever!"], "player_won": ["The one that got away... was the win."]}}, {"name": "Fisherman Walter", "class": "FISHERMAN", "sprite": "pt_fisherman.png", "team": [340], "levels": [33], "rewards": {"balls": 2}, "dialogue": {"intro": ["Whiscash and I fish in the Great Marsh."], "player_won": ["Back to fishing, I guess."]}}], "leader": {"name": "Crasher Wake", "class": "GYM_LEADER", "is_boss_battle": true, "sprite": "crasher_wake.png", "team": [130, 195, 419], "levels": [27, 27, 30], "badge_reward": "FEN", "dialogue": {"intro": ["I'm Crasher Wake! The Torrential Masked Master!", "Feel the power of the waves!"], "player_won": ["You're strong — as strong as a raging current! Fen Badge is yours!"], "player_lost": ["The wave has crashed! You're swept away!"]}, "rewards": {"balls": 10, "RARE_CANDY": 2, "TM246": 1}, "movesets": {"130": ["BRINE", "WATERFALL", "BITE", "TWISTER"], "195": ["WATER-PULSE", "MUD-SHOT", "ROCK-TOMB", "YAWN"], "419": ["BRINE", "CRUNCH", "ICE-FANG", "AQUA-JET"]}}, "requirements": {"badges": 3, "fail_text": "Crasher Wake is only accepting challengers with 3 Sinnoh Badges."}},
         "travel_options": [
@@ -1498,7 +1507,7 @@
         "area_type": "town",
         "route_name": "Celestic Town",
         "region": "SINNOH",
-        "backgrounds": {"main": "celestic_town.png", "pokecenter": "celestic_center.png"},
+        "backgrounds": {"pokecenter": "celestic_center.png"},
         "has_gym": false,
         "travel_options": [
             {"text": "Route 210", "target_area": "SINNOH_ROUTE_210"},
@@ -1519,7 +1528,7 @@
         "area_type": "town",
         "route_name": "Canalave City",
         "region": "SINNOH",
-        "backgrounds": {"main": "canalave_city.png", "pokecenter": "canalave_center.png", "pokemart": "canalave_mart.png", "gym": "battle_gym_canalave.png"},
+        "backgrounds": {"pokecenter": "canalave_center.png", "pokemart": "canalave_mart.png", "gym": "battle_gym_canalave.png"},
         "has_gym": true,
         "gym": {"requirements": {"badges": 5, "fail_text": "Byron only accepts challengers with 5 Sinnoh Badges."}, "trainers": [{"name": "Black Belt David", "class": "BLACK_BELT", "sprite": "pt_black_belt.png", "team": [208, 208], "levels": [35, 37], "rewards": {"balls": 2}, "dialogue": {"intro": ["My Steelix will crush you!"], "player_won": ["Steel is strong, but you're stronger."]}}, {"name": "Worker Jackson", "class": "WORKER", "sprite": "pt_worker.png", "team": [81, 81, 81], "levels": [34, 34, 34], "rewards": {"balls": 2}, "dialogue": {"intro": ["Byron's Gym runs on hard work!"], "player_won": ["Back to work for me..."]}}, {"name": "Worker Gary", "class": "WORKER", "sprite": "pt_worker.png", "team": [81], "levels": [37], "rewards": {"balls": 2}, "dialogue": {"intro": ["Watch out for the lifts. And for my Magnemite!"], "player_won": ["You've got a spark, kid."]}}, {"name": "Black Belt Ricky", "class": "BLACK_BELT", "sprite": "pt_black_belt.png", "team": [208], "levels": [38], "rewards": {"balls": 2}, "dialogue": {"intro": ["My Steelix and I train on Iron Island!"], "player_won": ["More training on the island, I think."]}}, {"name": "Ace Trainer Cesar", "class": "ACE_TRAINER", "sprite": "pt_ace_trainer_m.png", "team": [212], "levels": [40], "rewards": {"balls": 2}, "dialogue": {"intro": ["Byron's the strongest. I'm close behind!"], "player_won": ["Not close enough, it seems."]}}, {"name": "Worker Gerardo", "class": "WORKER", "sprite": "pt_worker.png", "team": [81, 81], "levels": [35, 35], "rewards": {"balls": 2}, "dialogue": {"intro": ["Two Magnemite, double the trouble!"], "player_won": ["Double the trouble for me, then."]}}, {"name": "Ace Trainer Breanna", "class": "ACE_TRAINER", "sprite": "pt_ace_trainer_f.png", "team": [436, 436, 436], "levels": [35, 36, 38], "rewards": {"balls": 2}, "dialogue": {"intro": ["Bronzor can take any hit. Try us!"], "player_won": ["They took every hit... except yours."]}}], "leader": {"name": "Byron", "class": "GYM_LEADER", "is_boss_battle": true, "sprite": "byron.png", "team": [436, 208, 411], "levels": [36, 36, 39], "badge_reward": "MINE", "dialogue": {"intro": ["I'm Byron! The Man with the Steel Body!", "My Steel-types are impervious to attack!"], "player_won": ["Hmm! You broke through my steel! The Mine Badge is yours!", "Roark! Your kid is amazing!", "Take this Armor Fossil too. The fossil lab in Oreburgh City can revive it!"], "player_lost": ["Solid as steel! You can't crack my defense!"]}, "rewards": {"balls": 10, "RARE_CANDY": 2, "HM_STRENGTH": 1, "ARMOR_FOSSIL": 1, "TM093": 1}, "movesets": {"436": ["FLASH-CANNON", "EXTRASENSORY", "CONFUSE-RAY", "HYPNOSIS"], "208": ["GYRO-BALL", "DRAGONBREATH", "ICE-FANG", "SANDSTORM"], "411": ["FLASH-CANNON", "ANCIENT-POWER", "IRON-DEFENSE", "REST"]}}},
         "travel_options": [
@@ -1544,7 +1553,7 @@
         "area_type": "town",
         "route_name": "Snowpoint City",
         "region": "SINNOH",
-        "backgrounds": {"main": "snowpoint_city.png", "pokecenter": "snowpoint_center.png", "pokemart": "snowpoint_mart.png", "gym": "battle_gym_snowpoint.png"},
+        "backgrounds": {"pokecenter": "snowpoint_center.png", "pokemart": "snowpoint_mart.png", "gym": "battle_gym_snowpoint.png"},
         "has_gym": true,
         "gym": {"trainers": [{"name": "Ace Trainer Anton", "class": "ACE_TRAINER", "sprite": "pt_ace_trainer_snow_m.png", "team": [362], "levels": [44], "rewards": {"balls": 2}, "dialogue": {"intro": ["Slide on the ice, then slide into a loss!"], "player_won": ["I slipped up there."]}}, {"name": "Ace Trainer Savannah", "class": "ACE_TRAINER", "sprite": "pt_ace_trainer_snow_f.png", "team": [361, 361, 362], "levels": [39, 40, 42], "rewards": {"balls": 2}, "dialogue": {"intro": ["Candice says focus! I'm focused!"], "player_won": ["I lost focus. Ugh!"]}}, {"name": "Ace Trainer Alicia", "class": "ACE_TRAINER", "sprite": "pt_ace_trainer_snow_f.png", "team": [215, 215], "levels": [40, 43], "rewards": {"balls": 2}, "dialogue": {"intro": ["Sneasel are quick on the ice!"], "player_won": ["You were quicker."]}}, {"name": "Ace Trainer Isaiah", "class": "ACE_TRAINER", "sprite": "pt_ace_trainer_snow_m.png", "team": [221], "levels": [44], "rewards": {"balls": 2}, "dialogue": {"intro": ["My Piloswine loves the cold. Do you?"], "player_won": ["You warmed up fast."]}}, {"name": "Ace Trainer Brenna", "class": "ACE_TRAINER", "sprite": "pt_ace_trainer_snow_f.png", "team": [215, 361, 459], "levels": [40, 40, 41], "rewards": {"balls": 2}, "dialogue": {"intro": ["Ice types don't melt easily!"], "player_won": ["Melted... completely."]}}, {"name": "Ace Trainer Sergio", "class": "ACE_TRAINER", "sprite": "pt_ace_trainer_snow_m.png", "team": [459, 215], "levels": [41, 42], "rewards": {"balls": 2}, "dialogue": {"intro": ["Snover and Sneasel, my snow team!"], "player_won": ["Snowed under. Nice battle."]}}], "leader": {"name": "Candice", "class": "GYM_LEADER", "is_boss_battle": true, "sprite": "candice.png", "team": [459, 215, 308, 460], "levels": [38, 38, 40, 42], "badge_reward": "ICICLE", "dialogue": {"intro": ["I'm Candice! I can tell you've come a long way!", "My Ice Pokémon have been waiting for a trainer like you!"], "player_won": ["Wow! You're red-hot! The Icicle Badge is all yours!"], "player_lost": ["Cool! You've been frozen out!"]}, "rewards": {"balls": 10, "RARE_CANDY": 3, "TM046": 1}, "movesets": {"459": ["RAZOR-LEAF", "AVALANCHE", "INGRAIN", "LEER"], "215": ["FEINT-ATTACK", "SLASH", "TAUNT", "AVALANCHE"], "308": ["FORCE-PALM", "BULK-UP", "DETECT", "ICE-PUNCH"], "460": ["WOOD-HAMMER", "SWAGGER", "GRASSWHISTLE", "AVALANCHE"]}}},
         "travel_options": [
@@ -1567,7 +1576,7 @@
         "area_type": "town",
         "route_name": "Sunyshore City",
         "region": "SINNOH",
-        "backgrounds": {"main": "sunyshore_city.png", "pokecenter": "sunyshore_center.png", "pokemart": "sunyshore_mart.png", "gym": "battle_gym_sunyshore.png"},
+        "backgrounds": {"pokecenter": "sunyshore_center.png", "pokemart": "sunyshore_mart.png", "gym": "battle_gym_sunyshore.png"},
         "has_gym": true,
         "gym": {"requirements": {"flag": "spear_pillar_resolved", "fail_text": "Volkner left the Gym. He heard about a trainer defeating Cyrus at the Spear Pillar — he went to find you. Defeat Team Galactic at Spear Pillar first!"}, "trainers": [{"name": "School Kid Tiera", "class": "SCHOOL_KID", "sprite": "pt_school_kid_f.png", "team": [417], "levels": [47], "rewards": {"balls": 2}, "dialogue": {"intro": ["Volkner's Gym is full of bright ideas!"], "player_won": ["You figured me out."]}}, {"name": "School Kid Forrest", "class": "SCHOOL_KID", "sprite": "pt_school_kid_m.png", "team": [82], "levels": [47], "rewards": {"balls": 2}}, {"name": "Guitarist Jerry", "class": "GUITARIST", "sprite": "pt_guitarist.png", "team": [81, 404, 404], "levels": [44, 44, 44], "rewards": {"balls": 2}}, {"name": "Poké Kid Meghan", "class": "POKE_KID", "sprite": "pt_poke_kid.png", "team": [25, 25, 25, 25], "levels": [42, 42, 42, 42], "rewards": {"balls": 2}}, {"name": "Ace Trainer Destiny", "class": "ACE_TRAINER", "sprite": "pt_ace_trainer_f.png", "team": [125, 26], "levels": [47, 48], "rewards": {"balls": 2}}, {"name": "Guitarist Preston", "class": "GUITARIST", "sprite": "pt_guitarist.png", "team": [404, 404], "levels": [45, 45], "rewards": {"balls": 2}}, {"name": "Guitarist Lonnie", "class": "GUITARIST", "sprite": "pt_guitarist.png", "team": [26], "levels": [47], "rewards": {"balls": 2}}, {"name": "Ace Trainer Zachery", "class": "ACE_TRAINER", "sprite": "pt_ace_trainer_m.png", "team": [125, 82], "levels": [47, 48], "rewards": {"balls": 2}}], "leader": {"name": "Volkner", "class": "GYM_LEADER", "is_boss_battle": true, "sprite": "volkner.png", "team": [26, 424, 224, 405], "levels": [46, 47, 48, 49], "badge_reward": "BEACON", "dialogue": {"intro": ["I'm Volkner. I've been waiting for a trainer who could excite me.", "Let's find out if you're the one."], "player_won": ["Ha! I haven't felt this in years! Take the Beacon Badge!", "Head through Route 223 — the Pokémon League awaits!"], "player_lost": ["Just as I thought. Nothing to be excited about."]}, "rewards": {"balls": 10, "RARE_CANDY": 3, "TM023": 1}, "movesets": {"26": ["CHARGE-BEAM", "BRICK-BREAK", "LIGHT-SCREEN", "THUNDER-WAVE"], "424": ["SHOCK-WAVE", "NASTY-PLOT", "AGILITY", "BATON-PASS"], "224": ["CHARGE-BEAM", "OCTAZOOKA", "AURORA-BEAM", "BULLET-SEED"], "405": ["CHARGE-BEAM", "THUNDER-WAVE", "THUNDER-FANG", "CRUNCH"]}}},
         "travel_options": [
@@ -1589,7 +1598,7 @@
         "area_type": "town",
         "route_name": "Sinnoh Pokémon League",
         "region": "SINNOH",
-        "backgrounds": {"main": "sinnoh_league_entrance.png", "pokecenter": "sinnoh_league_center.png", "gym": ["battle_elite_aaron.png", "battle_elite_bertha.png", "battle_elite_flint.png", "battle_elite_lucian.png", "battle_champion_cynthia.png"]},
+        "backgrounds": {"pokecenter": "sinnoh_league_center.png", "gym": ["battle_elite_aaron.png", "battle_elite_bertha.png", "battle_elite_flint.png", "battle_elite_lucian.png", "battle_champion_cynthia.png"]},
         "has_gym": true,
         "gym": {"trainers": [{"name": "Aaron", "class": "ELITE_FOUR", "sprite": "aaron.png", "is_boss_battle": true, "team": [469, 212, 416, 214, 452], "levels": [53, 53, 54, 54, 57], "rematch": {"team": [469, 212, 416, 214, 452], "levels": [65, 65, 66, 67, 69], "movesets": {"469": ["BUG-BUZZ", "AIR-SLASH", "U-TURN", "DOUBLE-TEAM"], "212": ["X-SCISSOR", "IRON-HEAD", "NIGHT-SLASH", "QUICK-ATTACK"], "416": ["ATTACK-ORDER", "DEFEND-ORDER", "HEAL-ORDER", "POWER-GEM"], "214": ["MEGAHORN", "CLOSE-COMBAT", "NIGHT-SLASH", "STONE-EDGE"], "452": ["X-SCISSOR", "CROSS-POISON", "ICE-FANG", "AERIAL-ACE"]}}, "rewards": {"balls": 15}, "dialogue": {"intro": ["I'm Aaron of the Elite Four!", "I've worked hard to build my Bug-type team!"], "player_won": ["You're tough! My bugs were no match!"], "player_lost": ["Bug-types are underestimated no more!"]}, "movesets": {"469": ["BUG-BUZZ", "AIR-SLASH", "U-TURN", "DOUBLE-TEAM"], "212": ["X-SCISSOR", "IRON-HEAD", "NIGHT-SLASH", "QUICK-ATTACK"], "416": ["ATTACK-ORDER", "DEFEND-ORDER", "HEAL-ORDER", "POWER-GEM"], "214": ["MEGAHORN", "CLOSE-COMBAT", "NIGHT-SLASH", "STONE-EDGE"], "452": ["X-SCISSOR", "CROSS-POISON", "ICE-FANG", "AERIAL-ACE"]}}, {"name": "Bertha", "class": "ELITE_FOUR", "sprite": "bertha.png", "is_boss_battle": true, "team": [340, 472, 76, 464, 450], "levels": [55, 56, 56, 55, 59], "rematch": {"team": [340, 472, 76, 464, 450], "levels": [66, 69, 68, 71, 68], "movesets": {"340": ["EARTH-POWER", "AQUA-TAIL", "ZEN-HEADBUTT", "SANDSTORM"], "472": ["EARTHQUAKE", "ICE-FANG", "FIRE-FANG", "THUNDER-FANG"], "76": ["EARTHQUAKE", "FIRE-PUNCH", "THUNDER-PUNCH", "SANDSTORM"], "464": ["EARTHQUAKE", "ROCK-WRECKER", "MEGAHORN", "AVALANCHE"], "450": ["EARTHQUAKE", "STONE-EDGE", "CRUNCH", "YAWN"]}}, "rewards": {"balls": 15}, "dialogue": {"intro": ["Hohoho! I'm Bertha!", "Youngsters like you bring a smile to my face — now defend yourself!"], "player_won": ["Marvelous! You truly are something!"], "player_lost": ["The earth has swallowed you up!"]}, "movesets": {"340": ["EARTH-POWER", "AQUA-TAIL", "ZEN-HEADBUTT", "SANDSTORM"], "472": ["EARTHQUAKE", "ICE-FANG", "FIRE-FANG", "THUNDER-FANG"], "76": ["EARTHQUAKE", "FIRE-PUNCH", "THUNDER-PUNCH", "SANDSTORM"], "464": ["EARTHQUAKE", "ROCK-WRECKER", "MEGAHORN", "AVALANCHE"], "450": ["EARTHQUAKE", "STONE-EDGE", "CRUNCH", "YAWN"]}}, {"name": "Flint", "class": "ELITE_FOUR", "sprite": "flint.png", "is_boss_battle": true, "team": [229, 136, 78, 392, 467], "levels": [58, 57, 58, 57, 61], "rematch": {"team": [229, 136, 78, 392, 467], "levels": [68, 71, 69, 71, 73], "movesets": {"229": ["FLAMETHROWER", "SLUDGE-BOMB", "DARK-PULSE", "SUNNY-DAY"], "136": ["OVERHEAT", "GIGA-IMPACT", "QUICK-ATTACK", "WILL-O-WISP"], "78": ["FLARE-BLITZ", "SOLAR-BEAM", "BOUNCE", "SUNNY-DAY"], "392": ["FLARE-BLITZ", "THUNDER-PUNCH", "MACH-PUNCH", "EARTHQUAKE"], "467": ["FLAMETHROWER", "THUNDERBOLT", "SOLAR-BEAM", "HYPER-BEAM"]}}, "rewards": {"balls": 15}, "dialogue": {"intro": ["I'm Flint! Things are about to heat up!"], "player_won": ["Whoa! You're on fire — literally!"], "player_lost": ["Blazing victory!"]}, "movesets": {"229": ["FLAMETHROWER", "SLUDGE-BOMB", "DARK-PULSE", "SUNNY-DAY"], "136": ["OVERHEAT", "GIGA-IMPACT", "QUICK-ATTACK", "WILL-O-WISP"], "78": ["FLARE-BLITZ", "SOLAR-BEAM", "BOUNCE", "SUNNY-DAY"], "392": ["FLARE-BLITZ", "THUNDER-PUNCH", "MACH-PUNCH", "EARTHQUAKE"], "467": ["FLAMETHROWER", "THUNDERBOLT", "SOLAR-BEAM", "HYPER-BEAM"]}}, {"name": "Lucian", "class": "ELITE_FOUR", "sprite": "lucian.png", "is_boss_battle": true, "team": [122, 196, 437, 65, 475], "levels": [59, 59, 60, 60, 63], "rematch": {"team": [122, 196, 437, 65, 475], "levels": [69, 71, 70, 72, 75], "movesets": {"122": ["PSYCHIC", "THUNDERBOLT", "REFLECT", "LIGHT-SCREEN"], "196": ["PSYCHIC", "SHADOW-BALL", "QUICK-ATTACK", "SIGNAL-BEAM"], "437": ["PSYCHIC", "GYRO-BALL", "EARTHQUAKE", "CALM-MIND"], "65": ["PSYCHIC", "ENERGY-BALL", "FOCUS-BLAST", "RECOVER"], "475": ["DRAIN-PUNCH", "PSYCHO-CUT", "LEAF-BLADE", "STONE-EDGE"]}}, "rewards": {"balls": 15}, "victory_flag": "beat_sinnoh_elite_four", "dialogue": {"intro": ["I'm Lucian. I've read every book in Canalave Library.", "Math, psychology, strategy — I've mastered them all."], "player_won": ["Astonishing. You've rendered me speechless."], "player_lost": ["My mind is an unbreakable fortress."]}, "movesets": {"122": ["PSYCHIC", "THUNDERBOLT", "REFLECT", "LIGHT-SCREEN"], "196": ["PSYCHIC", "SHADOW-BALL", "QUICK-ATTACK", "SIGNAL-BEAM"], "437": ["PSYCHIC", "GYRO-BALL", "EARTHQUAKE", "CALM-MIND"], "65": ["PSYCHIC", "ENERGY-BALL", "FOCUS-BLAST", "RECOVER"], "475": ["DRAIN-PUNCH", "PSYCHO-CUT", "LEAF-BLADE", "STONE-EDGE"]}}], "leader": {"name": "Cynthia", "class": "CHAMPION", "is_boss_battle": true, "sprite": "cynthia.png", "team": [442, 407, 468, 448, 350, 445], "levels": [61, 60, 60, 63, 63, 66], "rematch": {"team": [442, 407, 468, 448, 350, 445], "levels": [74, 74, 76, 76, 74, 78], "movesets": {"442": ["DARK-PULSE", "PSYCHIC", "SILVER-WIND", "SHADOW-BALL"], "407": ["ENERGY-BALL", "SLUDGE-BOMB", "TOXIC", "EXTRASENSORY"], "468": ["AIR-SLASH", "AURA-SPHERE", "WATER-PULSE", "SHOCK-WAVE"], "448": ["AURA-SPHERE", "EXTREME-SPEED", "SHADOW-BALL", "STONE-EDGE"], "350": ["SURF", "ICE-BEAM", "MIRROR-COAT", "DRAGON-PULSE"], "445": ["DRAGON-RUSH", "EARTHQUAKE", "FLAMETHROWER", "GIGA-IMPACT"]}}, "victory_flag": "beat_sinnoh_champion", "rewards": {"balls": 25, "MASTER_BALL": 1}, "dialogue": {"intro": ["I'm Cynthia, the Pokémon League Champion.", "I've been watching you since Eterna City.", "Now — show me everything you have."], "player_won": ["You've won! That was wonderful!", "Your Pokémon felt the power of your math and trust.", "You are the new Sinnoh Champion!"], "player_lost": ["You put up a wonderful fight.", "Come back when you're ready. I'll be here."]}, "movesets": {"442": ["DARK-PULSE", "PSYCHIC", "SILVER-WIND", "SHADOW-BALL"], "407": ["ENERGY-BALL", "SLUDGE-BOMB", "TOXIC", "EXTRASENSORY"], "468": ["AIR-SLASH", "AURA-SPHERE", "WATER-PULSE", "SHOCK-WAVE"], "448": ["AURA-SPHERE", "EXTREME-SPEED", "SHADOW-BALL", "STONE-EDGE"], "350": ["SURF", "ICE-BEAM", "MIRROR-COAT", "DRAGON-PULSE"], "445": ["DRAGON-RUSH", "EARTHQUAKE", "FLAMETHROWER", "GIGA-IMPACT"]}}, "requirements": {"badges": 8, "fail_text": ["The guards at the Pokemon League stop you.", "Only Trainers with all 8 Sinnoh Badges may enter!"]}},
         "travel_options": [
@@ -1612,7 +1621,6 @@
         "battle_type": "grass",
         "wild_pool_percentages": "SINNOH_LAKE_VERITY_PERCENTAGES",
         "min_rounds": 1,
-        "backgrounds": {"main": "lake_verity.png", "battle": "battle_lake_verity.png"},
         "route_menu": [
             {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
             {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
@@ -1640,7 +1648,6 @@
         "battle_type": "grass",
         "wild_pool_percentages": "SINNOH_LAKE_VALOR_PERCENTAGES",
         "min_rounds": 1,
-        "backgrounds": {"main": "lake_valor.png", "battle": "battle_lake_valor.png"},
         "route_menu": [
             {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
             {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
@@ -1662,7 +1669,6 @@
         "battle_type": "grass",
         "wild_pool_percentages": "SINNOH_LAKE_ACUITY_PERCENTAGES",
         "min_rounds": 1,
-        "backgrounds": {"main": "lake_acuity.png", "battle": "battle_lake_acuity.png"},
         "route_menu": [
             {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
             {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
@@ -1684,7 +1690,6 @@
         "battle_type": "cave",
         "wild_pool_percentages": "SINNOH_OREBURGH_MINE_PERCENTAGES",
         "min_rounds": 2,
-        "backgrounds": {"main": "oreburgh_mine.png", "battle": "battle_oreburgh_mine.png"},
         "route_menu": [
             {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
             {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
@@ -1707,7 +1712,6 @@
         "battle_type": "grass",
         "wild_pool_percentages": "SINNOH_ETERNA_FOREST_PERCENTAGES",
         "min_rounds": 2,
-        "backgrounds": {"main": "eterna_forest.png", "battle": "battle_eterna_forest.png"},
         "route_menu": [
             {"text": "Cheryl", "action": "NPC", "target": "walk_cheryl", "flag_condition": "not walk_cheryl_done", "color": "GOLD"},
             {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
@@ -1738,6 +1742,22 @@
         "berry_trees": ["BLUK_BERRY", "CHERI_BERRY", "ORAN_BERRY", "RAZZ_BERRY"],
         "radar_pool_percentages": "ETERNA_FOREST_RADAR_PERCENTAGES"
     },
+    "ETERNA_FOREST_OUTSKIRTS": {
+        "area_type": "wild_route",
+        "route_name": "Eterna Forest Outskirts",
+        "region": "SINNOH",
+        "battle_type": "grass",
+        "wild_pool_percentages": null,
+        "min_rounds": 0,
+        "trainer_pool": [],
+        "route_menu": [
+            {"text": "Route 205", "action": "EXIT", "target_area": "SINNOH_ROUTE_205", "condition": "can_exit", "color": "RED"},
+            {"text": "Eterna City", "action": "EXIT", "target_area": "ETERNA_CITY", "condition": "can_exit", "color": "RED"},
+            {"text": "TM070", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm070_eterna_forest_outskirts_d03_51_57", "event": {"lines": ["A TM (Sleep-Talk), among the roots."], "gift_item": {"TM070": 1}, "flag": "got_tm070_eterna_forest_outskirts_d03_51_57"}},
+            {"text": "SILVER POWDER", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_silver_powder_eterna_forest_outskirts_d03_36_59", "event": {"lines": ["A Silver Powder, under a bush."], "gift_item": {"SILVER_POWDER": 1}, "flag": "got_silver_powder_eterna_forest_outskirts_d03_36_59"}}
+        ],
+        "next_area": "ETERNA_CITY"
+    },
     "OLD_CHATEAU": {
         "area_type": "dungeon",
         "route_name": "Old Chateau",
@@ -1745,18 +1765,16 @@
         "battle_type": "indoor",
         "wild_pool_percentages": "SINNOH_OLD_CHATEAU_PERCENTAGES",
         "min_rounds": 2,
-        "backgrounds": {"main": "old_chateau.png", "battle": "battle_old_chateau.png"},
         "route_menu": [
             {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
             {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
-            {"text": "Encounter Rotom", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD"},
+            {"text": "Encounter Rotom", "action": "BOSS", "condition": ["boss_not_defeated", "time:night"], "color": "GOLD"},
             {"text": "THE BLACK FOG", "action": "BOSS", "color": "PURPLE", "flag_condition": "not black_fog_banished_old_chateau", "boss": {"id": 10501, "name": "Black Fog", "level": 24, "no_catch": true, "victory_flag": "black_fog_banished_old_chateau", "lines": ["The air turns ice-cold. A black fog pours across the floor...", "Two huge eyes open in the dark. A giant Haunter rises: the Black Fog!", "Long ago people worshipped it as a god. It feeds on dreams. Don't let it get yours!"], "won": ["The Black Fog is too proud to ever be caught.", "It Self-Destructs in a burst of black mist... and is gone.", "But a cold whisper lingers: it will rise again in another haunted place."], "rewards": {"balls": 10, "RARE_CANDY": 3}}},
             {"text": "Eterna Forest", "action": "EXIT", "target_area": "ETERNA_FOREST", "condition": "can_exit", "color": "RED"},
             {"text": "RARE CANDY", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_rare_candy_old_chateau_d25r0102_5_3", "event": {"lines": ["A Rare Candy, lying among the rocks."], "gift_item": {"RARE_CANDY": 1}, "flag": "got_rare_candy_old_chateau_d25r0102_5_3"}},
             {"text": "BIG PEARL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_big_pearl_old_chateau_d25r0102_37_6", "event": {"lines": ["A Big Pearl, in a dark corner."], "gift_item": {"BIG_PEARL": 1}, "flag": "got_big_pearl_old_chateau_d25r0102_37_6"}},
             {"text": "OLD GATEAU", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_old_gateau_old_chateau_d25r0103_4_6", "event": {"lines": ["An Old Gateau, beside the cave wall."], "gift_item": {"OLD_GATEAU": 1}, "flag": "got_old_gateau_old_chateau_d25r0103_4_6"}},
-            {"text": "DREAD PLATE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_dread_plate_old_chateau_d25r0105_3_4", "event": {"lines": ["A Dread Plate, left behind by a hiker."], "gift_item": {"DREAD_PLATE": 1}, "flag": "got_dread_plate_old_chateau_d25r0105_3_4"}},
-            {"text": "DREAD PLATE ", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_dread_plate_old_chateau_d25r0106_3_4", "event": {"lines": ["A Dread Plate, lying among the rocks."], "gift_item": {"DREAD_PLATE": 1}, "flag": "got_dread_plate_old_chateau_d25r0106_3_4"}},
+            {"text": "DREAD PLATE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_dread_plate_old_chateau_d25r0105_3_4", "event": {"lines": ["A Dread Plate, cold to the touch, under the bed."], "gift_item": {"DREAD_PLATE": 1}, "flag": "got_dread_plate_old_chateau_d25r0105_3_4"}},
             {"text": "TM103", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm103_old_chateau_d25r0109_10_4", "event": {"lines": ["A TM (Substitute), in a dark corner."], "gift_item": {"TM103": 1}, "flag": "got_tm103_old_chateau_d25r0109_10_4"}}
         ],
         "area_boss": {"id": 479, "name": "Rotom", "victory_flag": "OLD_CHATEAU_boss_defeated"},
@@ -1771,7 +1789,6 @@
         "battle_type": "cave",
         "wild_pool_percentages": "SINNOH_MT_CORONET_PERCENTAGES",
         "min_rounds": 3,
-        "backgrounds": {"main": "mt_coronet_base.png", "battle": "battle_mt_coronet.png"},
         "route_menu": [
             {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
             {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
@@ -1821,7 +1838,6 @@
         "battle_type": "outdoor",
         "wild_pool_percentages": "SPEAR_PILLAR_PERCENTAGES",
         "min_rounds": 0,
-        "backgrounds": {"main": "spear_pillar.png", "battle": "battle_spear_pillar.png"},
         "route_menu": [
             {"text": "Battle Mars and Jupiter", "action": "NPC", "target": "spear_pillar_commanders", "flag_condition": "not spear_pillar_commanders", "color": "GOLD"},
             {"text": "Confront Cyrus", "action": "NPC", "target": "cyrus_spear_pillar", "flag_condition": "not spear_pillar_resolved", "color": "GOLD"},
@@ -1848,7 +1864,6 @@
         "battle_type": "indoor",
         "wild_pool_percentages": null,
         "min_rounds": 0,
-        "backgrounds": {"main": "galactic_hq.png", "battle": "battle_galactic_hq.png"},
         "trainer_pool": [
             {"name": "Galactic Grunt", "class": "GALACTIC", "team": [431], "rewards": {"balls": 3}, "dialogue": {"intro": ["Team Galactic will make a new world!"], "player_won": ["Our boss will still win in the end!"]}, "levels": [41], "sprite": "pt_galactic_grunt_f.png", "spot_name": "Galactic Grunt 1"},
             {"name": "Galactic Grunt", "class": "GALACTIC", "team": [431, 198, 453], "rewards": {"balls": 3}, "dialogue": {"intro": ["You broke in here? Bold!"], "player_won": ["How did a kid get this far?"]}, "levels": [37, 38, 39], "sprite": "pt_galactic_grunt_m.png", "spot_name": "Galactic Grunt 2"},
@@ -1885,7 +1900,6 @@
         "battle_type": "cave",
         "wild_pool_percentages": "SINNOH_IRON_ISLAND_PERCENTAGES",
         "min_rounds": 3,
-        "backgrounds": {"main": "iron_island.png", "battle": "battle_iron_island.png"},
         "route_menu": [
             {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
             {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
@@ -1930,7 +1944,6 @@
         "battle_type": "cave",
         "wild_pool_percentages": "SINNOH_SNOWPOINT_TEMPLE_PERCENTAGES",
         "min_rounds": 2,
-        "backgrounds": {"main": "snowpoint_temple.png", "battle": "battle_snowpoint_temple.png"},
         "route_menu": [
             {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
             {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
@@ -1950,7 +1963,6 @@
         "battle_type": "cave",
         "wild_pool_percentages": "SINNOH_SOLACEON_RUINS_PERCENTAGES",
         "min_rounds": 2,
-        "backgrounds": {"main": "solaceon_ruins.png"},
         "route_menu": [
             {"text": "CATCH WILD PKMN (UNOWN)", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
             {"text": "Solaceon Town", "action": "EXIT", "target_area": "SOLACEON_TOWN", "condition": "can_exit", "color": "RED"},
@@ -1983,7 +1995,6 @@
         "battle_type": "grass",
         "wild_pool_percentages": "SINNOH_GREAT_MARSH_PERCENTAGES",
         "min_rounds": 2,
-        "backgrounds": {"main": "great_marsh.png"},
         "route_menu": [
             {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
             {"text": "ZONE", "action": "ZONE", "color": "CYAN"},
@@ -2009,7 +2020,6 @@
         "battle_type": "indoor",
         "wild_pool_percentages": "SINNOH_VALLEY_WINDWORKS_PERCENTAGES",
         "min_rounds": 0,
-        "backgrounds": {"main": "valley_windworks.png"},
         "trainer_pool": [
             {"name": "Galactic Grunt", "class": "GALACTIC", "team": [41], "rewards": {"balls": 3}, "dialogue": {"intro": ["This windworks belongs to Team Galactic now!"], "player_won": ["The Commander won't like this..."]}, "levels": [13], "sprite": "pt_galactic_grunt_m.png", "spot_name": "Galactic Grunt 1", "gone_flags": ["windworks_cleared"]},
             {"name": "Galactic Grunt", "class": "GALACTIC", "team": [431, 434], "rewards": {"balls": 3}, "dialogue": {"intro": ["This windworks belongs to Team Galactic now!"], "player_won": ["The Commander won't like this..."]}, "levels": [11, 11], "sprite": "pt_galactic_grunt_m.png", "spot_name": "Galactic Grunt 2", "gone_flags": ["windworks_cleared"]},
@@ -2035,7 +2045,6 @@
         "battle_type": "cave",
         "wild_pool_percentages": "SINNOH_VICTORY_ROAD_PERCENTAGES",
         "min_rounds": 3,
-        "backgrounds": {"main": "victory_road_sinnoh.png", "battle": "battle_victory_road_sinnoh.png"},
         "trainer_pool": [
             {"name": "Psychic Bryce", "class": "PSYCHIC", "sprite": "pt_psychic_m.png", "team": [93, 282, 94], "levels": [43, 46, 46], "rewards": {"balls": 2}},
             {"name": "Black Belt Miles", "class": "BLACK_BELT", "sprite": "pt_black_belt.png", "team": [68], "levels": [48], "rewards": {"balls": 2}},
@@ -2064,9 +2073,7 @@
             {"name": "Bird Keeper Autumn", "class": "BIRD_KEEPER", "sprite": "pt_bird_keeper.png", "team": [198, 178], "levels": [54, 54], "rewards": {"balls": 2}},
             {"name": "Dragon Tamer Joe", "class": "DRAGON_TAMER", "sprite": "pt_dragon_tamer.png", "team": [147, 444], "levels": [52, 56], "rewards": {"balls": 2}},
             {"name": "Black Belt Willie", "class": "BLACK_BELT", "sprite": "pt_black_belt.png", "team": [214, 68], "levels": [54, 54], "rewards": {"balls": 2}},
-            {"name": "Veteran Brenden", "class": "VETERAN", "sprite": "pt_veteran.png", "team": [205, 130, 450], "levels": [54, 54, 54], "rewards": {"balls": 2}},
-            {"name": "Ace Trainer Pierce", "class": "ACE_TRAINER", "sprite": "acetrainer_m.png", "is_boss_battle": true, "team": [445, 398], "rewards": {"balls": 5}, "dialogue": {"intro": ["Only the elite reach this road!"], "player_won": ["Incredible."], "player_lost": ["This is my road!"]}},
-            {"name": "Ace Trainer Alicia", "class": "ACE_TRAINER", "sprite": "pt_ace_trainer_snow_f.png", "is_boss_battle": true, "team": [448, 468], "rewards": {"balls": 5}, "dialogue": {"intro": ["You'll never make it past me!"], "player_won": ["...Go. You've earned it."], "player_lost": ["Victory Road lives up to its name!"]}}
+            {"name": "Veteran Brenden", "class": "VETERAN", "sprite": "pt_veteran.png", "team": [205, 130, 450], "levels": [54, 54, 54], "rewards": {"balls": 2}}
         ],
         "route_menu": [
             {"text": "Marley", "action": "NPC", "target": "walk_marley", "flag_condition": "not walk_marley_done", "color": "GOLD"},
@@ -2245,6 +2252,7 @@
             {"text": "PICK BERRIES", "action": "BERRY", "condition": "has_berry_pouch", "color": "GREEN"},
             {"text": "Floaroma Town", "action": "EXIT", "target_area": "FLOAROMA_TOWN", "condition": "can_exit", "color": "RED"},
             {"text": "Eterna Forest", "action": "EXIT", "target_area": "ETERNA_FOREST", "condition": "can_exit", "color": "RED"},
+            {"text": "Eterna Forest Outskirts", "action": "EXIT", "target_area": "ETERNA_FOREST_OUTSKIRTS", "condition": "can_exit", "color": "RED"},
             {"text": "Fuego Ironworks", "action": "EXIT", "target_area": "FUEGO_IRONWORKS", "condition": ["can_exit", "has_item:HM_SURF"], "color": "RED"},
             {"text": "HEAL BALL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_heal_ball_sinnoh_route_205_r205a_12_42", "event": {"lines": ["A Heal Ball, lying in the grass."], "gift_item": {"HEAL_BALL": 1}, "flag": "got_heal_ball_sinnoh_route_205_r205a_12_42"}},
             {"text": "X SP DEF", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_x_sp_def_sinnoh_route_205_r205a_21_64", "event": {"lines": ["A X Sp Def, dropped by the path."], "gift_item": {"X_SP_DEF": 1}, "flag": "got_x_sp_def_sinnoh_route_205_r205a_21_64"}},
@@ -2863,7 +2871,6 @@
         "route_name": "Spear Pillar (Spatial Rift)",
         "region": "SINNOH",
         "battle_type": "mountain",
-        "backgrounds": {"main": "spear_pillar_rift.png"},
         "min_rounds": 0,
         "trainer_pool": [],
         "route_menu": [
@@ -2878,7 +2885,6 @@
         "route_name": "Hall of Origin",
         "region": "SINNOH",
         "battle_type": "mountain",
-        "backgrounds": {"main": "hall_of_origin.png"},
         "min_rounds": 0,
         "trainer_pool": [],
         "route_menu": [
@@ -2893,7 +2899,6 @@
         "route_name": "Turnback Cave",
         "region": "SINNOH",
         "battle_type": "cave",
-        "backgrounds": {"main": "turnback_cave.png"},
         "wild_pool_percentages": "SINNOH_TURNBACK_CAVE_PERCENTAGES",
         "min_rounds": 1,
         "trainer_pool": [],
@@ -2914,7 +2919,6 @@
         "route_name": "Stark Mountain",
         "region": "SINNOH",
         "battle_type": "cave",
-        "backgrounds": {"main": "stark_mountain.png"},
         "wild_pool_percentages": "SINNOH_STARK_MOUNTAIN_PERCENTAGES",
         "min_rounds": 1,
         "trainer_pool": [
@@ -2968,7 +2972,6 @@
         "route_name": "Fullmoon Island",
         "region": "SINNOH",
         "battle_type": "grass",
-        "backgrounds": {"main": "fullmoon_island.png"},
         "wild_pool_percentages": "SINNOH_FULLMOON_ISLAND_PERCENTAGES",
         "min_rounds": 1,
         "trainer_pool": [],
@@ -2987,7 +2990,6 @@
         "route_name": "Newmoon Island",
         "region": "SINNOH",
         "battle_type": "grass",
-        "backgrounds": {"main": "newmoon_island.png"},
         "wild_pool_percentages": "SINNOH_TURNBACK_CAVE_PERCENTAGES",
         "min_rounds": 1,
         "trainer_pool": [],
@@ -3007,7 +3009,6 @@
         "route_name": "Flower Paradise",
         "region": "SINNOH",
         "battle_type": "grass",
-        "backgrounds": {"main": "flower_paradise.png"},
         "wild_pool_percentages": "SINNOH_FLOWER_PARADISE_PERCENTAGES",
         "min_rounds": 1,
         "trainer_pool": [],
@@ -3219,13 +3220,25 @@
       "id": "sinnoh_m1",
       "type": "MAIN",
       "title": "A Fateful Encounter",
-      "description": "Follow {rival_name} to Lake Verity: west along Route 201, past the Lakefront. Professor Rowan is there.",
+      "description": "{rival_name} was looking for you. Go and see him at his house first, then follow him to Lake Verity: west along Route 201, past the Lakefront.",
       "condition": {
         "required_region": "SINNOH",
         "flag_not": "received_starter_sinnoh"
       },
       "target": "LAKE_VERITY",
-      "reward": "Your first Pokémon"
+      "reward": "Your first Pokémon",
+      "steps": [
+        {
+          "area": "TWINLEAF_TOWN",
+          "room": "rival",
+          "at": [
+            4,
+            5
+          ],
+          "label": "Your friend's mom",
+          "done": "sinnoh_visited_rival_home"
+        }
+      ]
     },
     {
       "id": "sinnoh_m1b",
@@ -3258,7 +3271,7 @@
       "id": "sinnoh_m1d",
       "type": "MAIN",
       "title": "North to Jubilife",
-      "description": "The Professor's assistant, next door in Sandgem, has Poké Balls for you. Then follow Route 202 north to Jubilife City.",
+      "description": "Head north on Route 202 to Jubilife City. The Professor's assistant is waiting on the route to show you how to catch Pokemon.",
       "condition": {
         "required_region": "SINNOH",
         "flag": "received_pokedex_sinnoh",
@@ -3271,14 +3284,53 @@
       "id": "sinnoh_m1e",
       "type": "MAIN",
       "title": "East to Oreburgh",
-      "description": "Pick up a Pokétch in Jubilife, then go east on Route 203 and through Oreburgh Gate. {rival_name} is waiting on the way.",
+      "description": "Three clowns in Jubilife each hand out a Pokétch Coupon. Collect all three and trade them at the Pokétch Company, then go east on Route 203 and through Oreburgh Gate.",
       "condition": {
         "required_region": "SINNOH",
         "visited": "JUBILIFE_CITY",
         "visited_not": "OREBURGH_CITY",
         "badges_less": 1
       },
-      "target": "OREBURGH_CITY"
+      "target": "OREBURGH_CITY",
+      "steps": [
+        {
+          "area": "JUBILIFE_CITY",
+          "at": [
+            55,
+            33
+          ],
+          "label": "A clown",
+          "done": "sinnoh_coupon_1"
+        },
+        {
+          "area": "JUBILIFE_CITY",
+          "at": [
+            15,
+            18
+          ],
+          "label": "A clown",
+          "done": "sinnoh_coupon_2"
+        },
+        {
+          "area": "JUBILIFE_CITY",
+          "at": [
+            36,
+            16
+          ],
+          "label": "A clown",
+          "done": "sinnoh_coupon_3"
+        },
+        {
+          "area": "JUBILIFE_CITY",
+          "room": "poketch",
+          "at": [
+            18,
+            4
+          ],
+          "label": "Pokétch Company",
+          "done": "got_poketch"
+        }
+      ]
     },
     {
       "id": "sinnoh_m2",
@@ -3338,7 +3390,7 @@
       "id": "sinnoh_m3c",
       "type": "MAIN",
       "title": "The Valley Windworks",
-      "description": "Team Galactic has taken the Valley Windworks, east of Floaroma. Chase the grunts out of Floaroma Meadow for the Works Key first.",
+      "description": "Team Galactic has taken the Valley Windworks, east of Floaroma. A girl on Route 205 needs help, and the grunts in Floaroma Meadow have the Works Key.",
       "condition": {
         "required_region": "SINNOH",
         "badges_min": 1,
@@ -3347,7 +3399,23 @@
         "flag_not": "windworks_cleared"
       },
       "target": "VALLEY_WINDWORKS",
-      "completed_flag": "windworks_cleared"
+      "completed_flag": "windworks_cleared",
+      "steps": [
+        {
+          "area": "SINNOH_ROUTE_205",
+          "at": [
+            19,
+            85
+          ],
+          "label": "A little girl",
+          "done": "sinnoh_r205_girl"
+        },
+        {
+          "area": "FLOAROMA_MEADOW",
+          "label": "Galactic grunts",
+          "done": "has_item:WORKS_KEY"
+        }
+      ]
     },
     {
       "id": "sinnoh_m4",
@@ -3389,13 +3457,17 @@
         "flag_not": "galactic_eterna_cleared"
       },
       "target": "ETERNA_GALACTIC_BUILDING",
-      "completed_flag": "galactic_eterna_cleared"
+      "completed_flag": "galactic_eterna_cleared",
+      "steps": [
+        {"area": "ETERNA_CITY", "at": [51, 8], "label": "Cynthia", "done": "received_hm_cut"},
+        {"area": "ETERNA_GALACTIC_BUILDING", "label": "Galactic building", "done": "galactic_eterna_cleared"}
+      ]
     },
     {
       "id": "sinnoh_m5",
       "type": "MAIN",
       "title": "Cycling Road",
-      "description": "Collect your Bicycle at the Bike Shop, ride Cycling Road (Route 206) south, then east through Mt. Coronet to Hearthome City.",
+      "description": "Cynthia has something for you before you leave Eterna. Then collect your Bicycle at the Bike Shop, ride Cycling Road (Route 206) south, and go east through Mt. Coronet to Hearthome City.",
       "condition": {
         "required_region": "SINNOH",
         "badges_min": 2,
@@ -3403,7 +3475,33 @@
         "flag": "galactic_eterna_cleared",
         "visited_not": "HEARTHOME_CITY"
       },
-      "target": "HEARTHOME_CITY"
+      "target": "HEARTHOME_CITY",
+      "steps": [
+        {
+          "area": "ETERNA_CITY",
+          "at": [
+            52,
+            30
+          ],
+          "label": "Cynthia",
+          "done": "sinnoh_cynthia_egg"
+        },
+        {
+          "area": "ETERNA_CITY",
+          "room": "bike",
+          "at": [
+            3,
+            4
+          ],
+          "label": "Bike Shop",
+          "done": "got_bicycle_sinnoh"
+        },
+        {
+          "area": "SINNOH_ROUTE_206",
+          "label": "Cycling Road",
+          "done": "visited_SINNOH_ROUTE_207"
+        }
+      ]
     },
     {
       "id": "sinnoh_m5b",
@@ -3520,14 +3618,26 @@
       "id": "sinnoh_m7",
       "type": "MAIN",
       "title": "The Old Charm",
-      "description": "Cynthia has an Old Charm for her grandmother. Carry it north, through Solaceon and the fog of Route 210, to Celestic Town.",
+      "description": "Cynthia is at Valor Lakefront, east of Pastoria, with something for the Psyduck on Route 210. Then carry her Old Charm north, through Solaceon and the fog of Route 210, to Celestic Town.",
       "condition": {
         "required_region": "SINNOH",
         "badges_min": 4,
         "flag_not": "delivered_old_charm"
       },
       "target": "CELESTIC_TOWN",
-      "completed_flag": "delivered_old_charm"
+      "completed_flag": "delivered_old_charm",
+      "steps": [
+        {
+          "area": "VALOR_LAKEFRONT",
+          "at": [
+            36,
+            54
+          ],
+          "label": "Cynthia",
+          "done": "sinnoh_secretpotion"
+        },
+        {"area": "SINNOH_ROUTE_210", "at": [81, 71], "label": "Cynthia", "done": "got_old_charm_r210"}
+      ]
     },
     {
       "id": "sinnoh_m10",
