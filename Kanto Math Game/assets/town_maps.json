@@ -286892,7 +286892,8 @@
      "lines": [
       "The lake's Pokemon hides if it senses people. We're waiting very quietly."
      ]
-    }
+    },
+    "flag_condition": "not canalave_library_meeting"
    },
    {
     "text": "Cameraman ",
@@ -286901,7 +286902,8 @@
      "lines": [
       "A legend lives in this lake. I filmed the red Gyarados at Lake of Rage, and I'll film this too!"
      ]
-    }
+    },
+    "flag_condition": "not canalave_library_meeting"
    },
    "IRON",
    {
