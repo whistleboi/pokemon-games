@@ -116,7 +116,7 @@ STATE = {"steps": 0, "battles": 0, "frames": 0, "shots": 0, "last_map": None, "f
 #  - PT_FULL=1: the whole story from the start with no stop (the long run, for closing a batch or merging to main).
 #  Each region sets its two ends here (its generator: make_jplaythrough / make_oplaythrough / make_splaythrough) and moves
 #  them when a batch closes. Empty: from the start, to the end, as before.
-FROM = ""                # (no save yet: the first clean run makes them)
+FROM = "b2_m17"          # (the last clean save, 11-24: Burgh's Gym - the cocoons wait on main, clean-main-unova-guide-cocoons)
 STOP_AT = "b2_m25"       # (batch 5 starts here: Over the Drawbridge to Driftveil)
 SAVES = OUT + "_saves"
 PT_FULL = os.environ.get("PT_FULL") == "1"
@@ -376,6 +376,18 @@ def settle(limit=9000):
         st = g.current_state
         STATE["frames"] += 1
         try:
+            if isinstance(st, _UVS):   # (Black 2 or White 2, whenever the pick comes up, before anything else reads the screen: Black 2)
+                if not STATE.get("version_said"):
+                    STATE["version_said"] = True
+                    _say("[version: Black 2]")
+                st.choose("BLACK_2")
+                for _k in range(400):
+                    if g.current_state is not st:
+                        break
+                    if getattr(st, "dialogue_box", None) is not None and getattr(st.dialogue_box, "visible", False):
+                        st.dialogue_box.advance()
+                    st.update(); st.draw()
+                continue
             if isinstance(st, TrainerIntroState) and isinstance(getattr(st, "next_state", None), TrainerBattleState):
                 b = st.next_state
                 g.change_state(b)
@@ -449,10 +461,6 @@ def settle(limit=9000):
                 _say(f"[typed: Hello! for {st.title}]")
                 st.text = "Hello!" if hasattr(st, "text") else None
                 st.confirm()
-                continue
-            if isinstance(st, _UVS):   # (Black 2 or White 2, whenever the pick comes up: Black 2)
-                _say("[version: Black 2]")
-                st.choose("BLACK_2")
                 continue
             if isinstance(st, _SSS):
                 st.load_starters()

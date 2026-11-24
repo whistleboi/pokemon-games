@@ -3388,7 +3388,7 @@ NIMBASA = town(
     },
     hidden={"18,49": "THUNDER_STONE"},
     extra_people=[(50, 19, NIMBASA_PANSAGE)],
-    edges={"v": ("JOIN_AVENUE", [(x, 63) for x in range(45, 48)]), "}": ("ROOM:park", [(52, y) for y in range(44, 49)])},
+    edges={"v": ("JOIN_AVENUE", [(x, 63) for x in range(45, 48)]), "q": ("ROOM:park", [(52, y) for y in range(44, 49)])},
     scenes=NIMBASA_SCENES,
 )
 NIMBASA["edge_to"] = {"45,63": [12, 5], "46,63": [13, 5], "47,63": [14, 5]}   # (Join Avenue's north end: its own 7-tile road)
