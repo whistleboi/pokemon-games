@@ -76,6 +76,336 @@
     ]
   },
   "figures": {
+    "DRAGONS_DEN:BATTLE CLAIR": {
+      "sheet": "hg_gsleader8.png"
+    },
+    "DRAGONS_DEN:BATTLE LANCE": {
+      "sheet": "hg_wataru.png"
+    },
+    "BELLCHIME_TRAIL:LISTEN TO THE BELL": {
+      "draw": "none"
+    },
+    "LAKE_OF_RAGE:PICK UP THE RED SCALE": {
+      "item": "RED_SCALE"
+    },
+    "OLIVINE_CITY:TM073": {
+      "item": "POKE_BALL"
+    },
+    "OLIVINE_CITY:S.S. Aqua to Vermilion": {
+      "sheet": "hg_seaman.png"
+    },
+    "OLIVINE_CITY:Ship to the Orange Islands": {
+      "sheet": "hg_seaman.png"
+    },
+    "RADIO_TOWER:TALK TO DIRECTOR": {
+      "sheet": "hg_gsgentleman.png"
+    },
+    "RUINS_OF_ALPH:Follow the Unown (Sinjoh Ruins)": {
+      "sheet": "hg_gsmiddleman1.png"
+    },
+    "AZALEA_TOWN:Wi-Fi Club": {
+      "sheet": "hg_wifisf.png"
+    },
+    "AZALEA_TOWN:Union Room": {
+      "sheet": "hg_pcwoman2.png"
+    },
+    "AZALEA_TOWN:Link desk": {
+      "sheet": "hg_pcwoman2.png"
+    },
+    "BELL_TOWER:TALK TO SAGE LI": {
+      "sheet": "hg_bozu.png"
+    },
+    "BLACKTHORN_CITY:Wi-Fi Club": {
+      "sheet": "hg_wifisf.png"
+    },
+    "BLACKTHORN_CITY:Union Room": {
+      "sheet": "hg_pcwoman2.png"
+    },
+    "BLACKTHORN_CITY:Link desk": {
+      "sheet": "hg_pcwoman2.png"
+    },
+    "CHERRYGROVE_CITY:Wake Sleeping Man": {
+      "sheet": "hg_gsoldman1.png"
+    },
+    "CHERRYGROVE_CITY:Wi-Fi Club": {
+      "sheet": "hg_wifisf.png"
+    },
+    "CHERRYGROVE_CITY:Union Room": {
+      "sheet": "hg_pcwoman2.png"
+    },
+    "CHERRYGROVE_CITY:Link desk": {
+      "sheet": "hg_pcwoman2.png"
+    },
+    "CIANWOOD_CITY:Talk to Euskine": {
+      "sheet": "hg_minaki.png"
+    },
+    "CIANWOOD_CITY:Battle Eusine": {
+      "sheet": "hg_minaki.png"
+    },
+    "CIANWOOD_CITY:Wi-Fi Club": {
+      "sheet": "hg_wifisf.png"
+    },
+    "CIANWOOD_CITY:Union Room": {
+      "sheet": "hg_pcwoman2.png"
+    },
+    "CIANWOOD_CITY:Link desk": {
+      "sheet": "hg_pcwoman2.png"
+    },
+    "CIANWOOD_CITY:Pharmacy": {
+      "sheet": "hg_sunglasses.png"
+    },
+    "DRAGON_SHRINE:Elder": {
+      "sheet": "hg_chourou.png"
+    },
+    "ECRUTEAK_CITY:Talk to Bill": {
+      "sheet": "hg_masaki.png"
+    },
+    "ECRUTEAK_CITY:Bookshelf": {
+      "draw": "none"
+    },
+    "ECRUTEAK_CITY:Wi-Fi Club": {
+      "sheet": "hg_wifisf.png"
+    },
+    "ECRUTEAK_CITY:Union Room": {
+      "sheet": "hg_pcwoman2.png"
+    },
+    "ECRUTEAK_CITY:Link desk": {
+      "sheet": "hg_pcwoman2.png"
+    },
+    "FRONTIER_ACCESS:Wi-Fi Club": {
+      "sheet": "hg_wifisf.png"
+    },
+    "FRONTIER_ACCESS:Union Room": {
+      "sheet": "hg_pcwoman2.png"
+    },
+    "FRONTIER_ACCESS:Link desk": {
+      "sheet": "hg_pcwoman2.png"
+    },
+    "FRONTIER_ACCESS:Tutor (left)": {
+      "sheet": "hg_gsmiddleman1.png"
+    },
+    "FRONTIER_ACCESS:Tutor (middle)": {
+      "sheet": "hg_gsmiddleman1.png"
+    },
+    "FRONTIER_ACCESS:Tutor (right)": {
+      "sheet": "hg_gsmiddleman1.png"
+    },
+    "GOLDENROD_CITY:Coin Case Man": {
+      "sheet": "hg_gsmiddleman1.png"
+    },
+    "GOLDENROD_CITY:Tinkerer": {
+      "sheet": "hg_gsmiddleman1.png"
+    },
+    "GOLDENROD_CITY:Wi-Fi Club": {
+      "sheet": "hg_wifisf.png"
+    },
+    "GOLDENROD_CITY:Union Room": {
+      "sheet": "hg_pcwoman2.png"
+    },
+    "GOLDENROD_CITY:Link desk": {
+      "sheet": "hg_pcwoman2.png"
+    },
+    "GOLDENROD_CITY:Gambler": {
+      "sheet": "hg_gsgentleman.png"
+    },
+    "GOLDENROD_CITY:Prize Corner": {
+      "sheet": "hg_gswoman6.png"
+    },
+    "GOLDENROD_CITY:Prize Corner ": {
+      "sheet": "hg_gswoman6.png"
+    },
+    "GOLDENROD_CITY:Lady": {
+      "sheet": "hg_middlewoman1.png"
+    },
+    "GOLDENROD_CITY:Fisherman": {
+      "sheet": "hg_gsman2.png"
+    },
+    "GOLDENROD_CITY:Clown": {
+      "sheet": "hg_clown.png"
+    },
+    "GOLDENROD_CITY:Youngster ": {
+      "sheet": "hg_gsboy1.png"
+    },
+    "GOLDENROD_CITY:Daily Drawing": {
+      "sheet": "hg_gswoman6.png"
+    },
+    "JOHTO_BATTLE_FRONTIER:Scratch-Off clerk": {
+      "sheet": "hg_bfsw2.png"
+    },
+    "JOHTO_BATTLE_FRONTIER:Training stall": {
+      "sheet": "hg_bfsw2.png"
+    },
+    "JOHTO_BATTLE_FRONTIER:Move stall": {
+      "sheet": "hg_bfsw2.png"
+    },
+    "JOHTO_BATTLE_FRONTIER:Factory attendant": {
+      "sheet": "hg_bfsm.png"
+    },
+    "JOHTO_BATTLE_FRONTIER:Hall attendant": {
+      "sheet": "hg_bfsm.png"
+    },
+    "JOHTO_BATTLE_FRONTIER:Castle attendant": {
+      "sheet": "hg_bfsm.png"
+    },
+    "JOHTO_BATTLE_FRONTIER:Arcade attendant": {
+      "sheet": "hg_bfsm.png"
+    },
+    "JOHTO_BATTLE_FRONTIER:Tower attendant": {
+      "sheet": "hg_bfsm.png"
+    },
+    "JOHTO_BATTLE_FRONTIER:Frontier fan": {
+      "sheet": "hg_gsassistantm.png"
+    },
+    "JOHTO_BATTLE_FRONTIER:Pikachu fan": {
+      "sheet": "hg_gorggeousm.png"
+    },
+    "JOHTO_BATTLE_FRONTIER:Lift fan": {
+      "sheet": "hg_gsmiddleman1.png"
+    },
+    "JOHTO_BATTLE_FRONTIER:Off-duty nurse": {
+      "sheet": "hg_pcwoman1.png"
+    },
+    "JOHTO_BATTLE_FRONTIER:Proud girl": {
+      "sheet": "hg_gsgirl1.png"
+    },
+    "JOHTO_BATTLE_FRONTIER:Gate attendant": {
+      "sheet": "hg_bfsw2.png"
+    },
+    "JOHTO_ROUTE_32:Wi-Fi Club": {
+      "sheet": "hg_wifisf.png"
+    },
+    "JOHTO_ROUTE_32:Union Room": {
+      "sheet": "hg_pcwoman2.png"
+    },
+    "JOHTO_ROUTE_32:Link desk": {
+      "sheet": "hg_pcwoman2.png"
+    },
+    "JOHTO_ROUTE_34:Day-Care Man": {
+      "sheet": "hg_gsoldman1.png"
+    },
+    "JOHTO_ROUTE_34:POKéMON DAY CARE": {
+      "sheet": "hg_gsoldwoman1.png"
+    },
+    "JOHTO_ROUTE_36:WATER STRANGE TREE": {
+      "sheet": "hg_usokky.png"
+    },
+    "JOHTO_ROUTE_39:Moomoo": {
+      "pokemon": 241
+    },
+    "KANTO_ROUTE_26:Resting woman": {
+      "sheet": "hg_gswoman1.png"
+    },
+    "KANTO_ROUTE_27:Thoughtful man": {
+      "sheet": "hg_gsoldman1.png"
+    },
+    "KANTO_ROUTE_28:Celebrity": {
+      "sheet": "hg_gsgirl1.png"
+    },
+    "LAKE_OF_RAGE:BATTLE GYARADOS": {
+      "sheet": "hg_rgyaradosu.png"
+    },
+    "MAHOGANY_TOWN:Talk to Lance": {
+      "sheet": "hg_wataru.png"
+    },
+    "MAHOGANY_TOWN:Wi-Fi Club": {
+      "sheet": "hg_wifisf.png"
+    },
+    "MAHOGANY_TOWN:Union Room": {
+      "sheet": "hg_pcwoman2.png"
+    },
+    "MAHOGANY_TOWN:Link desk": {
+      "sheet": "hg_pcwoman2.png"
+    },
+    "MAHOGANY_TOWN:Lance": {
+      "sheet": "hg_wataru.png"
+    },
+    "MR_POKEMONS_HOUSE:Talk to Mr. Pokemon": {
+      "sheet": "hg_gsgentleman.png"
+    },
+    "MR_POKEMONS_HOUSE:Show the Red Scale": {
+      "sheet": "hg_gsgentleman.png"
+    },
+    "MT_SILVER:CHALLENGE RED": {
+      "sheet": "hg_red.png"
+    },
+    "MT_SILVER_CITY:Wi-Fi Club": {
+      "sheet": "hg_wifisf.png"
+    },
+    "MT_SILVER_CITY:Union Room": {
+      "sheet": "hg_pcwoman2.png"
+    },
+    "MT_SILVER_CITY:Link desk": {
+      "sheet": "hg_pcwoman2.png"
+    },
+    "OLIVINE_CITY:Wi-Fi Club": {
+      "sheet": "hg_wifisf.png"
+    },
+    "OLIVINE_CITY:Union Room": {
+      "sheet": "hg_pcwoman2.png"
+    },
+    "OLIVINE_CITY:Link desk": {
+      "sheet": "hg_pcwoman2.png"
+    },
+    "OLIVINE_CITY:Fishing Guru": {
+      "sheet": "hg_fishing.png"
+    },
+    "OLIVINE_CITY:Fisherman": {
+      "sheet": "hg_seaman.png"
+    },
+    "OLIVINE_CITY:Sailor  ": {
+      "sheet": "hg_seaman.png"
+    },
+    "OLIVINE_CITY:Trader": {
+      "sheet": "hg_fishing.png"
+    },
+    "OLIVINE_CITY:Little girl": {
+      "sheet": "hg_gsgirl1.png"
+    },
+    "OLIVINE_CITY:Man": {
+      "sheet": "hg_gsmiddleman1.png"
+    },
+    "OLIVINE_CITY:Orange Islands Ferry": {
+      "sheet": "hg_seaman.png"
+    },
+    "OLIVINE_LIGHTHOUSE:Talk to Jasmine": {
+      "sheet": "hg_gsleader6.png"
+    },
+    "OLIVINE_LIGHTHOUSE:Check Amphy": {
+      "pokemon": 181
+    },
+    "POKEMON_LEAGUE_GATE:GATE GUARD": {
+      "sheet": "hg_policeman.png"
+    },
+    "RUINS_OF_ALPH:Enter Lab": {
+      "sheet": "hg_gsassistantm.png"
+    },
+    "SAFARI_ZONE_GATE:Safari receptionist": {
+      "sheet": "hg_counterm.png"
+    },
+    "SAFARI_ZONE_GATE:Wi-Fi Club": {
+      "sheet": "hg_wifisf.png"
+    },
+    "SAFARI_ZONE_GATE:Union Room": {
+      "sheet": "hg_pcwoman2.png"
+    },
+    "SAFARI_ZONE_GATE:Link desk": {
+      "sheet": "hg_pcwoman2.png"
+    },
+    "TOHJO_FALLS:Waterfall Cave": {
+      "sheet": "hg_sakaki.png"
+    },
+    "VIOLET_CITY:Wi-Fi Club": {
+      "sheet": "hg_wifisf.png"
+    },
+    "VIOLET_CITY:Union Room": {
+      "sheet": "hg_pcwoman2.png"
+    },
+    "VIOLET_CITY:Link desk": {
+      "sheet": "hg_pcwoman2.png"
+    },
+    "VIOLET_CITY:Strawberry": {
+      "pokemon": 16
+    },
     "VIRIDIAN_CITY:Jessie and James": {"sheet": "oi_74.png"},
     "VIRIDIAN_CITY:Jessie": {"sheet": "oi_75.png"},
     "NATIONAL_PARK:TM055": {
@@ -16038,6 +16368,15 @@
     "fr_leader_giovanni.png": "fr_87.png"
   },
   "trainers_JOHTO": {
+    "kimono_girl.png": "hg_dancer.png",
+    "guitarist.png": "hg_gsman2.png",
+    "black_belt.png": "hg_gsfighter.png",
+    "school_kid.png": "hg_gsboy1.png",
+    "teacher.png": "hg_middlewoman1.png",
+    "petrel.png": "hg_rkanbum.png",
+    "elder.png": "hg_chourou.png",
+    "eusine.png": "hg_minaki.png",
+    "red.png": "hg_red.png",
     "silver.png": "hg_gsrivel.png",
     "ace_trainer.png": "hg_gsman3.png",
     "acetrainer_f.png": "hg_gswoman3.png",
