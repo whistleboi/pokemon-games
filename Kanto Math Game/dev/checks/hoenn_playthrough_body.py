@@ -1361,6 +1361,28 @@ def push_gates(st):
     return {"gates": len(steps)}
 
 
+def stop_on_crack(st):
+    """On the marker's cracked tile: stand still till it gives way. -> what was done, or None."""
+    if not is_dun(st) or not hasattr(st, "_guide_spot"):
+        return None
+    try:
+        hit = st._guide_spot()
+    except Exception:
+        return None
+    if not hit or not str(hit[1]).startswith("Cracked floor") or tuple(hit[0]) != tuple(pos(st)):
+        return None
+    L = loc()
+    if TRIED[(L, ("CRACK",))] >= 3:
+        return None
+    TRIED[(L, ("CRACK",))] += 1
+    f0 = st.run.index
+    for _ in range(20):   # (a moment standing still: the game's own frames)
+        st.update(); st.draw()
+    st = settle()
+    out(f"  .... [{STATE['mission']}] stood on the crack at {tuple(hit[0])}: floor {f0} -> {getattr(getattr(st, 'run', None), 'index', '?')}")
+    return {"crack": tuple(hit[0])}
+
+
 def talk_companions(st):
     """Someone walking with you (Lance in the Rocket hideout) with a line on this floor not heard yet (an unset flag):
     turn to them and press the action key (the game's own _talk_companion, as the key does). -> True if talked."""
@@ -1961,6 +1983,8 @@ def play_through():
         if push_drops(st) is not None:   # (the Ice Path's boulders before the marker: on B1F it points back up to 1F)
             continue
         if dive_now(st) is not None:   # (Hoenn: Dive / come up on the marker's tile)
+            continue
+        if stop_on_crack(st) is not None:   # (Sky Pillar: stop on the crack to fall through)
             continue
         if turn_blocks(st) is not None:   # (Mossdeep Gym's coloured switches)
             continue
