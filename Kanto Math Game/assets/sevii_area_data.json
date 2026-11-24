@@ -1460,7 +1460,7 @@
         {"text": "Five Island", "action": "EXIT", "target_area": "FIVE_ISLAND", "condition": "can_exit", "color": "RED"},
         {"text": "FIVE ISLE MEADOW", "action": "EXIT", "target": "FIVE_ISLE_MEADOW", "condition": "can_exit", "color": "RED"},
         {"text": "BIG PEARL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_bigpearl_warehouse", "event": {"lines": ["A Big Pearl, among the crates."], "gift_item": {"BIG_PEARL": 1}, "flag": "got_bigpearl_warehouse"}},
-        {"text": "TM208", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm_sludgebomb_warehouse", "event": {"lines": ["TM148 Sludge Bomb! Left behind by Team Rocket."], "gift_item": {"TM148": 1}, "flag": "got_tm_sludgebomb_warehouse"}},
+        {"text": "TM148", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm_sludgebomb_warehouse", "event": {"lines": ["TM148 Sludge Bomb! Left behind by Team Rocket."], "gift_item": {"TM148": 1}, "flag": "got_tm_sludgebomb_warehouse"}},
         {"text": "PEARL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_pearl_warehouse", "event": {"lines": ["A Pearl, in a corner of the warehouse."], "gift_item": {"PEARL": 1}, "flag": "got_pearl_warehouse"}}
       ],
       "next_area": "FIVE_ISLAND"
@@ -1964,11 +1964,8 @@
       "id": "sevii_m9",
       "type": "SIDE",
       "title": "Lugia of Navel Rock",
-      "description": "The Seagallop sails to Navel Rock now. Deep below the rock, a guardian of the sea is waiting.",
-      "condition": {
-        "flag": ["met_celio", "beat_champion"],
-        "required_region": "KANTO"
-      },
+      "description": "With the Mystic Ticket, the Seagallop sails to Navel Rock. Deep below the rock, a guardian of the sea is waiting.",
+      "condition": {"flag": ["met_celio", "beat_champion"], "required_region": "KANTO", "item": "MYSTIC_TICKET"},
       "reward": "Lugia",
       "region": "KANTO",
       "completed_flag": "navel_rock_lugia",
@@ -1979,10 +1976,7 @@
       "type": "SIDE",
       "title": "Ho-Oh of Navel Rock",
       "description": "At the very top of Navel Rock, a bird with rainbow wings is waiting.",
-      "condition": {
-        "flag": ["met_celio", "beat_champion"],
-        "required_region": "KANTO"
-      },
+      "condition": {"flag": ["met_celio", "beat_champion"], "required_region": "KANTO", "item": "MYSTIC_TICKET"},
       "reward": "Ho-Oh",
       "region": "KANTO",
       "completed_flag": "navel_rock_ho_oh",
@@ -1993,10 +1987,7 @@
       "type": "SIDE",
       "title": "The Birth Island Mystery",
       "description": "A Pokemon from space was seen on Birth Island. Take the Seagallop there and find it!",
-      "condition": {
-        "flag": ["met_celio", "beat_champion"],
-        "required_region": "KANTO"
-      },
+      "condition": {"flag": ["met_celio", "beat_champion"], "required_region": "KANTO", "item": "AURORA_TICKET"},
       "reward": "Deoxys",
       "region": "KANTO",
       "completed_flag": "birth_island_deoxys",
