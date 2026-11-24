@@ -69,6 +69,14 @@ for r in regions:
     check(not stale, f"{r}: the left-out list names only real MAIN missions ({stale})")
     why = [c["title"] for c in chs if re.search(r"\b(because|so that|in order to)\b", str(c.get("say", "")), re.I)]
     check(not why, f"{r}: no page spells out why ({why})")
+    # (J2, 11-24: the Journal's own voice - no orders shouted at the player, no "you need to", no manual-style openers)
+    loud = [c["title"] for c in chs if "!" in str(c.get("say", "")) + str(c.get("title", ""))]
+    check(not loud, f"{r}: no page or chapter title shouts with '!' ({loud})")
+    need = [c["title"] for c in chs if re.search(r"\b(you need|you must|need to|make sure|don't forget)\b", str(c.get("say", "")), re.I)]
+    check(not need, f"{r}: no page tells the player what they must do ({need})")
+    order = [c["title"] for c in chs if re.match(r"(Defeat|Beat|Go to|Head to|Talk to|Visit|Travel to|Catch|Win|Return to|Bring|Challenge)\b",
+                                                   str(c.get("say", "")))]
+    check(not order, f"{r}: no page opens with an order ({order})")
     names = RIVALS.get(r, [])
     if names:
         pat = re.compile(r"(?<!Mt\. )\b(" + "|".join(names) + r")\b(?! (League|Wing|Cave|Trophy))")   # (not Mt. Silver)
