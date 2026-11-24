@@ -400,5 +400,50 @@ check(not _re.search(r"Wes", _txt) and "beat_orre_champion" not in open("asset
 for _f in _P1:
     story.story_flags.pop(_f, None)
 
+# ---- the story rework S2 (11-24): the four Part 1 Gyms - Misty (Phenac Stadium's final), Duking (Pyrite Colosseum's final),
+# Blaine + Erika (the Agate Gym), Pryce (the Snagem Hideout's ruins); the Under and Orre Colosseums story tournaments
+_SP = _json.load(open("assets/orre_area_data.json", encoding="utf-8"))["STORY_PROGRESSION"]
+_chain = [(k, _SP[k]["gym"]["leader"].get("badge_reward"), _SP[k]["gym"]["requirements"]["badges"], _SP[k]["gym"]["leader"]["name"])
+          for k in ("PHENAC_CITY", "PYRITE_TOWN", "AGATE_VILLAGE", "SNAGEM_HIDEOUT")]
+check([b for _k, b, _n, _l in _chain] == ["PHENAC", "PYRITE", "AGATE", "SNAGEM"] and [n for _k, _b, n, _l in _chain] == [0, 1, 2, 3]
+      and not _SP["UNDER_COLOSSEUM"]["gym"]["leader"].get("badge_reward") and not _SP["ORRE_COLOSSEUM"]["gym"]["leader"].get("badge_reward")
+      and _SP["REALGAM_TOWER"]["gym"]["requirements"]["badges"] == 4,
+      f"S2: the badges in order {[(b, l) for _k, b, _n, l in _chain]}; Under / Orre Colosseum crowns only; Realgam needs 4")
+_mv = _json.load(open("assets/moves.json", encoding="utf-8"))
+_bad = [(l, m) for _k, _b, _n, l in _chain for mm in _SP[_k]["gym"]["leader"]["team_moves"] for m in mm if m not in _mv]
+_gen = [(l, i) for _k, _b, _n, l in _chain for i in _SP[_k]["gym"]["leader"]["team"] if i > 386]
+check(not _bad and not _gen, f"S2: the Leaders' moves are real and their Pokemon Gen 3 or earlier {_bad[:3]} {_gen[:3]}")
+t = town("AGATE_VILLAGE", "PYRITE_TOWN")
+_gd = next(tuple(int(v) for v in d.split(",")) for d, n in _tm["AGATE_VILLAGE"]["inside"].items() if n == "gym")
+_in = walk_to(t, _gd) and t.room == "gym"
+_deep = _in and (lambda st: (lambda e: e is not None and walk_to(st, e) and st.room == "gym_2")(next((k for k, v in st.exits.items() if v == "ROOM:gym_2"), None)))(t)
+_lead = _deep and any(isinstance(o, dict) and o.get("action") == "GYM" for o in t.people.values())
+check(_in and _deep and _lead, f"S2: the Agate Gym walked - through the hall of light to Blaine and Erika, the Gym's Leader there ({_in}, {_deep}, {_lead})")
+for _f in ("orre_part2", "xd_hordel", "orre_data_rom_given"):
+    story.story_flags.pop(_f, None)
+story.story_flags["orre_data_rom_given"] = True
+r = route("SNAGEM_HIDEOUT", "ORRE_DESERT")
+_p1 = [o.get("text") for o in r._figure_items()]
+_tr1 = [i for i, tr in enumerate(_SP["SNAGEM_HIDEOUT"]["trainer_pool"]) if story.trainer_on_map("SNAGEM_HIDEOUT", i, tr)]
+story.story_flags.update(orre_part2=True, xd_hordel=True)
+r = route("SNAGEM_HIDEOUT", "ORRE_DESERT")
+_p2 = [o.get("text") for o in r._figure_items()]
+_tr2 = [i for i, tr in enumerate(_SP["SNAGEM_HIDEOUT"]["trainer_pool"]) if story.trainer_on_map("SNAGEM_HIDEOUT", i, tr)]
+check("GYM LEADER PRYCE" in _p1 and "SNAGEM HIDEOUT: GONZAP" not in _p1 and not _tr1
+      and "GYM LEADER PRYCE" not in _p2 and "SNAGEM HIDEOUT: GONZAP" in _p2 and len(_tr2) == len(_SP["SNAGEM_HIDEOUT"]["trainer_pool"]),
+      f"S2: the Snagem ruins - Pryce and no Snagem in Part 1; Gonzap and his gang in Part 2 after Hordel ({len(_tr2)} trainers)")
+from src.world import orre_gym as _og
+from src import minigames as _mg
+for _f in ("orre_part2", "xd_hordel"):
+    story.story_flags.pop(_f, None)
+r = route("SNAGEM_HIDEOUT", "ORRE_DESERT")
+story.story_flags[_mg.done_flag("SNAGEM_HIDEOUT")] = True
+_og.event(r, {"world": "orre_gym"}, [], lambda l: None)
+_bs = getattr(g.current_state, "battle_state", None) or getattr(g.current_state, "next_state", None)
+check(type(g.current_state).__name__ == "TrainerIntroState" and getattr(_bs, "badge_reward", None) == "SNAGEM",
+      f"S2: Pryce's battle starts from his room (after his game) and gives the Snagem Badge ({type(g.current_state).__name__})")
+story.story_flags.pop(_mg.done_flag("SNAGEM_HIDEOUT"), None)
+story.story_flags.pop("orre_data_rom_given", None)
+
 g.walk_towns = False
 print(f"##### {fails} failures")

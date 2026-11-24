@@ -388,10 +388,11 @@ def _game_levels(game, area_key):
     a wild Pokemon met on land (not while surfing): else None."""
     try:
         area = game.loader.area_data.get("STORY_PROGRESSION", {}).get(area_key) or {}
-        band = (area.get("wild_levels") or {}).get("land")
+        from src.dungeon import core
+        band = ((area.get("floor_levels") or {}).get(str(core.CURRENT_FLOOR))   # (a floor's own: Dark Cave's Blackthorn side)
+                or (area.get("wild_levels") or {}).get("land"))
         if not band:
             return None
-        from src.dungeon import core
         if core.CURRENT_TILE in (core.SURF, getattr(core, "WATER", None)):
             return None
         return int(band[0]), int(band[1])

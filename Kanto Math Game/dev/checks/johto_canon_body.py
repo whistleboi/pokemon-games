@@ -959,9 +959,9 @@ story.story_flags.clear(); story.story_flags.update(_flF)
 print("N19: the Safari Zone's Area Setup (Jordan 11-16: all ten default layouts)")
 _rc = next(o for o in _area["SAFARI_ZONE_GATE"]["explore_options"] if o.get("text") == "Safari receptionist")
 _ch = _rc["event"]["choose"]
-check(_ch["flag"] == "safari_layout" and len(_ch["choices"]) == 10 and _ch["choices"][0]["text"].startswith("1: Plains, Swamp, Meadow")
+check(_ch["flag"] == "safari_layout" and len(_ch["choices"]) == 12 and _ch["choices"][0]["text"].startswith("1: Plains, Swamp, Meadow")
       and "gate" in (_tm["SAFARI_ZONE_GATE"].get("rooms") or {}) and "Safari receptionist" in _tm["SAFARI_ZONE_GATE"]["rooms"]["gate"].get("people", []),
-      "the gatehouse receptionist offers HGSS's ten default layouts")
+      "the gatehouse receptionist offers HGSS's ten default layouts + Rocky Beach's and Desert's (11-24)")
 _aS2 = _area["JOHTO_SAFARI_ZONE"]
 check(_ad[_aS2["zone_pools"]["desert"]].get("27") and _ad[_aS2["zone_pools"]["peak"]].get("74") and _aS2["safari_game"] == {"balls": 30, "steps": 500},
       "...each area's Pokemon are SoulSilver's own (Desert: Sandshrew; Peak: Geodude)")
