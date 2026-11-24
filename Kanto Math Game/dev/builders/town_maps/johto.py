@@ -2799,6 +2799,7 @@ MAPS = {
     },
     # Cianwood City. From SoulSilver's own map data (zone T24, its whole 32 x 64): the beach town under the west cliff: Gym, Photo Studio, Pharmacy, Center, three houses, the drying racks, the cracked rocks up north, the Cliff Edge Gate's mouth in the rock; the sea east is Route 41.
     "CIANWOOD_CITY": {
+        "smash_wild": True,   # (HGSS: a broken rock may hide Krabby or Shuckle - the area's rock_smash pool; walk_town, 11-24)
         "art": [
             "ccccccccccccccccccccccoooooooooo",
             "ccccccccccccccccccccccoooooooooo",
