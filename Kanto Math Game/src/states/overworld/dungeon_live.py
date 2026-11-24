@@ -37,8 +37,7 @@ class RouteLive:
         if getattr(self, "_dl_key", None) == key:
             return self._dl_got
         self._dl_key, self._dl_got = key, None
-        from src.core import settings as _settings
-        if getattr(self.game, "live3d", True) is False or not _settings.get(self.game.story_manager, "live3d"):
+        if getattr(self.game, "live3d", True) is False:   # (a checks-only switch; Jordan 11-24: the DS regions are 3D only, no Options choice)
             return None
         if not pic.startswith(("b2_ground/", "ss_ground/", "pt_ground/")):   # (pt: Platinum, 11-23)
             return None
