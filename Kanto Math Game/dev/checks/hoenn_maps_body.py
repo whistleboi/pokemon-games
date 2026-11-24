@@ -10,6 +10,17 @@ from src.states.overworld.dungeon import DungeonState
 from src.states.menus import StarterSelectionState as _SSS
 
 fails = []
+import os as _os
+# (11-23, speed: half the suite's time went into drawing every frame - nothing here reads the screen but the pictures.
+#  Draw one frame in DRAW_EVERY, and always while someone talks; HM_DRAW_EVERY=1 draws them all, as before.)
+DRAW_EVERY = max(1, int(_os.environ.get("HM_DRAW_EVERY", "4")))
+_drawn = [0]
+
+
+def _draw(st, talking=False):
+    _drawn[0] += 1
+    if talking or _drawn[0] % DRAW_EVERY == 0:
+        st.draw()
 
 
 def check(c, m):
@@ -45,8 +56,12 @@ def tap(st, n=600):
 
 
 def frames(n):
-    for _ in range(n):
-        g.current_state.update(); g.current_state.draw()
+    for i in range(n):
+        g.current_state.update()
+        if i == n - 1:
+            g.current_state.draw()
+        else:
+            _draw(g.current_state)
 
 
 def open_map(key, came):
@@ -158,6 +173,9 @@ for key in BUILT:
             _pairs.append((key, came))
 check(not _far, f"every rebuilt map: in from each way, you stand beside that way {_far[:4]}")
 _bad, _multi = [], 0
+_had_surf = story.inventory.get("HM_SURF", 0)
+story.inventory["HM_SURF"] = 1   # (sea mouths are crossed surfing: without Surf you're set down at the land mouth; Route 125 -> Mossdeep, 11-23)
+story.badges["HOENN"] = list(dict.fromkeys(list(story.badges.get("HOENN", [])) + ["BALANCE"]))   # (H5: ORAS needs the HM's badge on the map, hms.USE_BADGE)
 _twins = {(v.get("mirage") or {}).get("area") for v in _area.values() if (v.get("mirage") or {}).get("area")}
 for a, b in _pairs:
     for x, y in ((a, b), (b, a)):
@@ -179,18 +197,19 @@ for a, b in _pairs:
             back = arrive(x, y, j, len(tb), tile=tb[j] if tb else None)
             if not _near(_pos(back), m):
                 _bad.append((x, y, m[0], _pos(sb), _pos(back)))
+story.inventory["HM_SURF"] = _had_surf
 check(_multi >= 4 and not _bad, f"places joined several ways ({_multi} sides): out by each mouth and straight back, you're at that mouth again {_bad[:3]}")
 
 # every door in a rebuilt town opens something (a house is just a house; the Center and Mart: the shared rooms), but the
 # places not built yet (HANDOFF_HOENN_MAPS.md's gaps: Rustboro's Trainer's School, Slateport's Fan Club and its harbor's ferry)
-NOT_YET = {("RUSTBORO_CITY", "school"), ("SLATEPORT_CITY", "fanclub"), ("SLATEPORT_CITY", "harbor")}   # (Slateport's ferry: once the sub is taken)
+NOT_YET = set()   # (11-23, Hoenn H1: Rustboro's school, Slateport's Fan Club and harbour walked inside from Emerald's rooms)
 _shut = []
 for key in BUILT:
     if _area[key].get("area_type") != "town":
         continue
     st = arrive(key, sorted(_tm[key]["exits"].values())[0])
     for t, kind in st.doors.items():
-        if kind not in ("house", "center", "mart") and not st._door_options(kind) and (key, kind) not in NOT_YET:
+        if kind not in ("house", "center", "mart") and not st._door_options(kind) and not st._room_for(t) and (key, kind) not in NOT_YET:   # (a door into a room opens it)
             _shut.append((key, kind))
 check(not _shut, f"every door in a rebuilt town opens something {sorted(set(_shut))[:6]}")
 import os as _os
@@ -230,6 +249,7 @@ _rs = story.inventory.pop("HM_ROCK_SMASH", None)
 st = arrive("HOENN_RUSTURF_TUNNEL", "HOENN_ROUTE_116")
 _g1 = st._gate("VERDANTURF_TOWN")
 story.inventory["HM_ROCK_SMASH"] = 1
+story.badges["HOENN"] = list(dict.fromkeys(list(story.badges.get("HOENN", [])) + ["DYNAMO"]))   # (H5: ORAS needs the Dynamo Badge for Rock Smash on the map)
 _g2 = st._gate("VERDANTURF_TOWN")
 check(_g1 and tuple(_g1[:3]) == ("rock", "ROCK SMASH", False) and _g2[2], f"Rusturf Tunnel: a cracked rock before Verdanturf until Rock Smash ({_g1})")
 if _rs is None:
@@ -334,7 +354,8 @@ _want_doors = {"LITTLEROOT_TOWN": {"home", "rival", "lab"}, "RUSTBORO_CITY": {"d
 for key, want in _want_doors.items():
     st = arrive(key, sorted(_tm[key]["exits"].values())[0])
     have = set(st.doors.values())
-    check(want <= have and all(st._door_options(k) for k in want), f"{key}: its own doors {sorted(want)}, each opening something (has {sorted(have)})")
+    _opens = lambda k: st._door_options(k) or any(st._room_for(t) for t, kk in st.doors.items() if kk == k)   # (a door into a room opens it; H2/H4)
+    check(want <= have and all(_opens(k) for k in want), f"{key}: its own doors {sorted(want)}, each opening something (has {sorted(have)})")
 
 # ---- story scenes, played as a player meets them
 def walk_into(st, way, n=1):
@@ -449,7 +470,7 @@ check(_br is not None and "Boat" in str(_br.get("text")) and (12, 8) in t.barred
 
 # Granite Cave: Steven in the deepest room where Emerald stands him; down the ladders floor by floor
 _gc = _tm["HOENN_GRANITE_CAVE"]["floors"]
-check(_gc[0]["art"][8][7] == "N" and "TALK TO STEVEN" in _gc[0]["people"], "Granite Cave: Steven stands in the deepest room at Emerald's spot")
+check(_gc[0]["art"][8][7] == "N" and "TALK TO STEVEN" in [q for e in _gc[0]["people"] for q in (e if isinstance(e, list) else [e])], "Granite Cave: Steven stands in the deepest room at Emerald's spot")
 story.current_area_key, story.last_area_key = "HOENN_GRANITE_CAVE", "HOENN_ROUTE_106"
 p = PlayState(g); g.states["play"] = p; g.change_state(p); frames(2)
 _lad = (35, 3)   # 1F's ladder down (Emerald) -> B1F
@@ -485,7 +506,7 @@ def _play(st, frames=1500):
                 st.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=(640, 600))])
             else:
                 st.dialogue_box.advance()
-        st.update(); st.draw()
+        st.update(); _draw(st, talking)
         if i > 60 and not sc.busy() and not talking and len(said) > 1:
             break
     return said
@@ -495,6 +516,23 @@ def _calm(st):
     """No wild Pokemon on the floor (they stand anywhere at random, sometimes on the very tile a check steps into)."""
     if hasattr(st, "run"):
         st.run.floor.movers = [m for m in st.run.floor.movers if m.kind != "wild"]
+
+
+def _house(st, door, at, back=None):
+    """A route house (H4, 11-23: walked inside, h_h4_houses.py): step in at its door from the tile below, talk to the one
+    standing at at; back: then out again to that spot on the route's own floor."""
+    st.run.player, st.anim = (door[0], door[1] + 1), 0
+    st.dialogue_box.visible = False
+    _calm(st); st.step(0, -1); frames(5); tap(st)
+    who = next((m for m in st.run.floor.movers if (m.x, m.y) == tuple(at) and m.kind == "figure"), None)
+    if who is not None:
+        st._use_figure(who)
+    lines = list(st.dialogue_box.text_lines or []) if st.dialogue_box.visible else []
+    tap(st)
+    if back is not None:
+        st.dialogue_box.visible = False
+        st.run.jump_floor(0, back); _calm(st); st.anim = 0
+    return who is not None, lines
 
 
 def _scene(key, came, flags_on=(), flags_off=(), at=None, step=None):
@@ -545,7 +583,7 @@ _hik = next(p for p in _tm2["HOENN_GRANITE_CAVE"]["floors"][1]["people"] if isin
 check((_dew["event"].get("gift_item") or {}).get("OLD_ROD") and (_hik["event"].get("gift_item") or {}).get("HM_FLASH"),
       "Dewford's fisherman gives the Old Rod; Granite Cave's hiker gives Flash")
 _q = [b for b in _tm2["SLATEPORT_CITY"].get("barred", []) if b.get("look") == "sheet:@grunt"]
-check(len(_q) == 9, f"Slateport: the villain team's Grunts queue outside the Museum ({len(_q)})")
+check(len(_q) == 11 and [30, 27] in [b["tiles"][0] for b in _q] and [31, 27] in [b["tiles"][0] for b in _q], f"Slateport: the villain team's Grunts queue outside the Museum, up to its door ({len(_q)})")
 _inv = {k: story.inventory.pop(k, None) for k in ("CONTEST_PASS", "POKEBLOCK_CASE")}
 st, said = _scene("SLATEPORT_CITY", "HOENN_ROUTE_109", ["oceanic_museum_cleared", "slateport_saw_dock"], ["contest_pass_received", "slateport_lisia_met"], at=(17, 6))
 check(story.inventory.get("CONTEST_PASS", 0) > 0 and any("Lisia" in x for x in said), f"Slateport: after the Museum, Lisia walks out of the Contest Hall with a Contest Pass ({said[:1]})")
@@ -649,13 +687,10 @@ for _k in ("meteor_falls_cleared", "route114_rival_race", "got_tm_dig_114", "rou
 story.story_flags["heard_cozmo"] = True
 _tm15 = story.inventory.pop(_htm("TM055"), None)
 st = open_map("HOENN_ROUTE_114", "FALLARBOR_TOWN")
-st.run.player, st.facing = (29, 6), (0, -1)
-st._read_sign(); tap(st)
-check(story.inventory.get(_htm("TM055"), 0) > 0, "Route 114: the Fossil Maniac's little brother gives you TM15 (Dig)")
-st.run.player, st.facing = (27, 37), (0, -1)
-st._read_sign()
-check(st.dialogue_box.visible and "Lanette" in " ".join(st.dialogue_box.text_lines), f"Route 114: Lanette at home ({st.dialogue_box.text_lines[:1]})")
-tap(st)
+_in, _ = _house(st, (29, 5), (3, 2), back=(29, 6))
+check(_in and story.inventory.get(_htm("TM055"), 0) > 0, "Route 114: inside his house, the Fossil Maniac's little brother gives you TM15 (Dig)")
+_in, _said = _house(st, (27, 36), (5, 4), back=(27, 37))
+check(_in and "Lanette" in " ".join(_said), f"Route 114: Lanette at home, walked inside ({_said[:1]})")
 _bb = next(m for m in st.run.floor.movers if m.kind == "figure" and isinstance(m.payload, dict) and m.payload.get("text") == "Berry boy")
 st._use_figure(_bb)
 check(story.story_flags.get("route114_berry_day") and "Berry" in " ".join(st.dialogue_box.text_lines), "Route 114: the rich boy gives a Berry a day")
@@ -891,10 +926,8 @@ for _d in ((0, 1), (0, -1)):
     _seen9.append((_tk.x, _tk.y))
 check(_seen9 == [(18, 128), (17, 128)], f"Route 119: the Ninja Boy in the grass copies your steps, turned a quarter (Emerald's copy movement) ({_seen9})")
 _hp = story.player_team[0].current_hp = 1
-st.run.player, st.anim = (33, 110), 0
-st.dialogue_box.visible = False
-_calm(st); st.step(0, -1); tap(st)
-check(story.player_team[0].current_hp == story.player_team[0].max_hp, "Route 119: the rest stop's cabin heals your team")
+_in, _ = _house(st, (33, 109), (7, 2), back=(33, 110))
+check(_in and story.player_team[0].current_hp == story.player_team[0].max_hp, "Route 119: in the rest stop's cabin, its keeper lets your team rest")
 # Fortree: two storeys from one Emerald map, joined by ladders; Emerald's invisible Kecleon by the Gym
 st = open_map("FORTREE_CITY", "HOENN_ROUTE_119")
 _lads = sorted(t for t, k in st.exits.items() if k == "FORTREE_CITY_UPPER")
@@ -1016,10 +1049,11 @@ st.dialogue_box.visible = False
 st._use_figure(_gl); tap(st)
 check(not _no and story.inventory.get(_htm("TM111")) == 1, "Route 123: the Grass lover gives TM28 Giga Drain only to a Trainer with a Grass type")
 _b0 = sum(v for k, v in story.inventory.items() if k.endswith("_BERRY"))
-st.run.player, st.anim = (22, 7), 0
-st.dialogue_box.visible = False
-_calm(st); st.step(0, -1); tap(st)
-check(sum(v for k, v in story.inventory.items() if k.endswith("_BERRY")) - _b0 == 2, "Route 123: the Berry Master gives two Berries a day")
+_in, _ = _house(st, (22, 6), (4, 4), back=(22, 7))
+_b1 = sum(v for k, v in story.inventory.items() if k.endswith("_BERRY"))
+_in2, _ = _house(st, (22, 6), (7, 4), back=(22, 7))
+check(_in and _in2 and _b1 - _b0 == 2 and sum(v for k, v in story.inventory.items() if k.endswith("_BERRY")) - _b1 == 1,
+      "Route 123: in their house, the Berry Master gives two Berries a day, his wife one")
 g.change_state(st)
 story.repel_routes = _rep10
 story.badges.clear(); story.badges.update(_badges10)
@@ -1414,12 +1448,16 @@ story.player_team = _team13
 # the Space Center: quiet before the Mind Badge, stormed after it
 story.story_flags.pop("badge_mind_earned", None)
 st = open_map("HOENN_SPACE_CENTER", "MOSSDEEP_CITY")
-_quiet = not any(m.kind == "trainer" for f in st.run.floors for m in f.movers)
+_quiet = not any(m.kind == "trainer" and "beat_hoenn_champion" not in ((m.payload[1] if isinstance(m.payload, tuple) else m.payload).get("when_flags") or []) for f in st.run.floors for m in f.movers)
 story.story_flags["badge_mind_earned"] = True
 st = open_map("HOENN_SPACE_CENTER", "MOSSDEEP_CITY")
 st.run.enter_floor(1); frames(2)
-_all13 = [(m.payload[1] if isinstance(m.payload, tuple) else m.payload).get("name") for f in st.run.floors for m in f.movers if m.kind == "trainer"]
-check(_quiet and len(_all13) == 3, f"Space Center: Emerald's two floors; the team storms it only after the Mind Badge ({_all13})")
+_pay13 = [(m.payload[1] if isinstance(m.payload, tuple) else m.payload) for f in st.run.floors for m in f.movers if m.kind == "trainer"]
+_all13 = [t.get("name") for t in _pay13 if "beat_hoenn_champion" not in (t.get("when_flags") or [])]   # (H4: ORAS's two Delta Episode battles come after the Champion)
+_delta13 = [t.get("spot_name") for t in _pay13 if "beat_hoenn_champion" in (t.get("when_flags") or [])]
+_dneed13 = next((t.get("when_flags") for t in _pay13 if "beat_hoenn_champion" in (t.get("when_flags") or [])), None) or next((t.get("when_flags") for t in _area["HOENN_SPACE_CENTER"].get("trainer_pool", []) if "beat_hoenn_champion" in (t.get("when_flags") or [])), [])
+check(_quiet and len(_all13) == 3 and len(_delta13) == (2 if all(story.story_flags.get(f) for f in _dneed13) else 0),   # (H5: the Delta chain's own step)
+      f"Space Center: Emerald's two floors; the team storms it only after the Mind Badge; ORAS's Delta Episode grunts after the Champion ({_all13}, {_delta13})")
 _r125 = _tm13["HOENN_ROUTE_125"]
 check(not _r125.get("floors") and "HOENN_SHOAL_CAVE" in _r125["exits"].values() and len(_r125.get("trainer_spots", [])) >= 3,
       "Route 125: Emerald's map, its Trainers (Emerald's three and ORAS's), and Shoal Cave's mouth")
@@ -2431,9 +2469,9 @@ st = open_map("HOENN_MAGMA_HIDEOUT", "HOENN_JAGGED_PASS")
 _hf = _tm24["HOENN_MAGMA_HIDEOUT"]["floors"]
 _tr24 = sorted(n.strip() for f in _hf for n in f.get("trainer_spots", []))
 _it24 = sorted(p for f in _hf for p in f.get("people", []) if isinstance(p, str))
-check(st.run.index == 0 and _tr24 == ["Magma Admin Courtney", "Team Magma Grunt", "Team Magma Grunt", "Team Magma Grunt"]
+check(st.run.index == 0 and _tr24 == sorted(["Magma Admin Courtney", "Magma Admin Tabitha"] + ["Team Magma Grunt"] * 3 + [f"Team Magma Grunt ({n})" for n in ("1-2", "2-2", "2-3", "2-4", "3-2", "3-3", "3-4", "4-1", "4-2", "5-1", "6-1", "6-2", "6-3")])
       and _it24 == ["CAMERUPTITE", "ESCAPE ROPE", "FULL RESTORE", "MAX REVIVE", "NUGGET", "RARE CANDY"],
-      f"Magma Hideout: in from the Jagged Pass; the Grunts and Courtney on Emerald's spots; Emerald's items and the Cameruptite ({_tr24})")
+      f"Magma Hideout: in from the Jagged Pass; Emerald's 16 Grunts, Tabitha and Courtney on Emerald's spots (H4); Emerald's items and the Cameruptite ({_tr24})")
 _cr = _tm24["HOENN_SKY_PILLAR"]["floors"][3]["cracked"]
 _a24 = _tm24["HOENN_SKY_PILLAR"]["floors"][3]["art"]
 _crt = {tuple(int(v) for v in s.split(",")) for s in _cr["tiles"]}
@@ -2800,6 +2838,317 @@ from src.states import game_corner as _gcs
 _ak = story.current_area_key; story.current_area_key = "HOENN_BATTLE_FRONTIER"
 check(any(p[1] == "LEFTOVERS" for p in _gcs.prizes_here(story)), "...with prizes of its own")
 story.current_area_key = _ak
+
+# Littleroot walked inside (H2, 11-23): your house (west, whoever you play), the rival's house, Birch's lab, from Emerald's rooms
+for _k in ("hoenn_birch_rescued", "hoenn_rival_home_met", "hoenn_met_neighbor", "oras_littleroot_town_2"):
+    story.story_flags.pop(_k, None)
+story.story_flags["hoenn_mom_sendoff"] = True   # (Mom's send-off on the square has played)
+_badges = {r: list(b) for r, b in story.badges.items()}
+story.badges["HOENN"] = [b for b in story.badges.get("HOENN", []) if "BALANCE" not in str(b).upper()]
+st = open_map("LITTLEROOT_TOWN", "HOENN_ROUTE_101")
+st.scenes.entered = True
+st.player, st.anim = (5, 9), 0
+st.step(0, -1); frames(2)
+check(st.room == "home", f"Littleroot: the west door is your house, walked inside ({st.room})")
+_coin = story.inventory.get("AMULET_COIN", 0)
+said = _press(st, (2, 5), (0, 1))
+check(story.inventory.get("AMULET_COIN", 0) == _coin and said, f"Littleroot: Mom is home (no Amulet Coin before Norman) ({said[:1]})")
+story.badges["HOENN"] = story.badges.get("HOENN", []) + ["BALANCE"]
+st._go("home", "OUT:5,8"); frames(2)
+said = _press(st, (2, 5), (0, 1))
+if st.hover_menu_active:   # (two things to say now: you pick "Mom" (the coin) from her menu, as with Kanto's Oak)
+    _mo = next(o for o in st.people[(2, 6)]["any"] if o.get("text") == "Mom ")
+    st.clear_hover_menu(); st._get_callback_for_option(_mo)(); said = _play(st)
+check(story.inventory.get("AMULET_COIN", 0) == _coin + 1 and any("father" in x for x in said), f"Littleroot: after the Balance Badge, Mom gives the Amulet Coin (ORAS) ({said[:1]})")
+check(_stairs(st, "ROOM:home_2") == "home_2", "Littleroot: up the stairs to your room")
+st._go(None, "ROOM:home"); frames(2)
+st.player, st.anim = (14, 9), 0
+st.step(0, -1); frames(2)
+check(st.room == "rival", f"Littleroot: the east door is the rival's house ({st.room})")
+said = _press(st, (8, 6), (0, 1))
+check(story.story_flags.get("hoenn_met_neighbor") and any("upstairs" in x for x in said), f"Littleroot: Mrs. Birch sends you upstairs ({said[:2]})")
+check(_stairs(st, "ROOM:rival_2") == "rival_2" and (3, 4) in st._people(), "Littleroot: the rival is in their room upstairs")
+said = _press(st, (3, 5), (0, -1))
+check(story.story_flags.get("hoenn_rival_home_met") and (3, 4) not in st._people(), f"Littleroot: the rival dashes off to help their dad ({said[-1:]})")
+st._go(None, "ROOM:rival"); frames(2)
+st.player, st.anim = (7, 17), 0
+st.step(0, -1); frames(2)
+check(st.room == "lab" and (6, 4) not in st._people(), f"Littleroot: Birch's lab, the Professor out on fieldwork ({st.room})")
+story.story_flags["hoenn_birch_rescued"] = True
+st._go("lab", "OUT:7,16"); frames(2)
+check((6, 4) in st._people(), "Littleroot: once he's been saved on Route 101, Birch is at his desk")
+story.badges.clear(); story.badges.update(_badges)
+
+# H4 (11-23): every ORAS Mega Stone can be got; the Museum grunt's TM Thief; Route 129's divers (town_maps/hoenn_canon.py)
+_f4 = dict(story.story_flags)
+_inv4 = dict(story.inventory)
+
+
+def _route_step(key, came, floor, at, way):
+    st = open_map(key, came)
+    st.run.jump_floor(floor, at); _calm(st); st.anim = 0
+    st.run.player = at
+    st.step(*way)
+    return st, _play(st, 300)
+
+
+for _k in ("got_manectite", "got_steelixite", "got_aggronite", "oras_slateport_city_6", "got_houndoominite",
+           "got_latiasite", "got_latiosite", "cave_of_origin_cleared"):
+    story.story_flags.pop(_k, None)
+for _k in ("MANECTITE", "STEELIXITE", "AGGRONITE", "TM018", "HOUNDOOMINITE", "LATIASITE", "LATIOSITE"):
+    story.inventory.pop(_k, None)
+st, said = _route_step("HOENN_ROUTE_110", "SLATEPORT_CITY", 0, (28, 15), (1, 0))
+check(story.inventory.get("MANECTITE", 0) == 1, f"Route 110: the Manectite glints east of the Cycling Road's north gate ({said[-1:]})")
+st, said = _route_step("HOENN_GRANITE_CAVE", "DEWFORD_TOWN", 1, (35, 11), (1, 0))
+check(story.inventory.get("STEELIXITE", 0) == 1, f"Granite Cave 1F: the Steelixite is hidden on the south side ({said[-1:]})")
+story.story_flags.update({"rusturf_rescued": True, "rusturf_briney_thanks": True})   # (Briney's thanks already seen)
+st, said = _route_step("HOENN_RUSTURF_TUNNEL", "RUSTBORO_CITY", 0, (22, 5), (1, 0))
+check(story.inventory.get("AGGRONITE", 0) == 1 and any("boyfriend" in x for x in said),
+      f"Rusturf Tunnel: Wanda's boyfriend hands over the Aggronite once the tunnel is clear ({said[:1]})")
+st, said = _route_step("HOENN_OCEANIC_MUSEUM", "SLATEPORT_CITY", 0, (15, 3), (1, 0))
+check(story.inventory.get("TM018", 0) == 1, f"Oceanic Museum: a bored grunt gives TM Thief (ORAS), no longer on Slateport's street ({said[-1:]})")
+_slate = [o.get("text") for o in _area["SLATEPORT_CITY"].get("explore_options", [])]
+check(not any("MagmaOR" in str(t) for t in _slate), "Slateport: no 'Team MagmaOR/AquaAS Grunt'")
+_leaders = {"RUSTBORO_CITY": "Roxanne", "MAUVILLE_CITY": "Wattson", "LAVARIDGE_TOWN": "Flannery", "FORTREE_CITY": "Winona",
+            "MOSSDEEP_CITY": "Liza and Tate"}
+_twice = [k for k, n in _leaders.items() if n in [o.get("text") for o in _area[k].get("explore_options", [])]]
+check(not _twice, f"no Gym Leader stands in town handing out their Gym TM a second time {_twice}")
+_r129 = _tm2["HOENN_ROUTE_129"]
+_r129 = _r129["floors"][0] if _r129.get("floors") else _r129
+check({"Scuba Diver Colten", "Free Diver Coral"} <= set(_r129.get("trainer_spots") or []), "Route 129: Colten and Coral have spots on the water")
+st = open_map("LAVARIDGE_TOWN", "HOENN_ROUTE_112")
+st.scenes.entered = True
+_press(st, (6, 9), (0, 1))
+_before = story.inventory.get("HOUNDOOMINITE", 0)
+story.story_flags["cave_of_origin_cleared"] = True
+st = open_map("LAVARIDGE_TOWN", "HOENN_ROUTE_112")
+st.scenes.entered = True
+_press(st, (6, 9), (0, 1))
+check(_before == 0 and story.inventory.get("HOUNDOOMINITE", 0) == 1,
+      "Lavaridge: the Houndoominite glints by the sand baths only after Groudon / Kyogre (ORAS)")
+story.story_flags.update({"delta_episode_cleared": True, "hoenn_mom_sendoff": True, "hoenn_version": "ALPHA_SAPPHIRE",
+                          "oras_littleroot_town_2": True})
+st = open_map("LITTLEROOT_TOWN", "HOENN_ROUTE_101")
+st.scenes.entered = True
+st._go("home", "OUT:5,8"); frames(2)
+said = _press(st, (2, 5), (0, 1))
+if st.hover_menu_active:
+    _mo = next((o for o in st.people[(2, 6)]["any"] if o.get("text") in ("Mom", "Mom's Second Stone") and st._shown(o)), None)
+    st.clear_hover_menu()
+    if _mo:
+        st._get_callback_for_option(_mo)(); said = _play(st)
+check(story.inventory.get("LATIOSITE", 0) == 1 and not story.inventory.get("LATIASITE"),
+      f"Littleroot: after the Delta Episode Mom has your version's Lati stone (Alpha Sapphire: the Latiosite) ({said[:1]})")
+story.story_flags.pop("got_lucky_egg_hoenn", None); story.story_flags.pop("woods_researcher_left", None)
+_egg = story.inventory.get("LUCKY_EGG", 0)
+st, said = _route_step("HOENN_PETALBURG_WOODS", "HOENN_ROUTE_104", 0, (25, 20), (1, 0))
+check(story.inventory.get("LUCKY_EGG", 0) == _egg + 1, f"Petalburg Woods: the Devon researcher's thanks is a Lucky Egg (ORAS's Exp. Share; #22) ({said[-1:]})")
+from src.pokemon import tutors as _tut4
+g.__dict__.pop("_tutor_cache", None)
+_tt = _tut4.tutor_tms(g, "HOENN")
+check({"TM153", "TM154", "TM155", "TM144", "TM145", "TM146"} <= set(_tt),
+      f"Mauville Hills: ORAS's Ultimate Move and Pledge tutors teach (and sell) their moves ({sorted(_tt)[:8]})")
+_pools = [k for k, v in g.loader.area_data.items() if k.endswith("_PERCENTAGES") and k.startswith(("HOENN", "PETALBURG", "SLATEPORT")) and isinstance(v, dict) and ("2032" in v or "2033" in v)]
+check(not _pools, f"no Galarian Zigzagoon / Linoone in Hoenn's wild lists (#17) {_pools[:3]}")
+from src.world import hordes as _hd4
+_a110 = _area["HOENN_ROUTE_110"]
+_five = _hd4.pick(g, _a110)
+check(_hd4.rate(g, _a110) > 0 and len(_five) == 5 and set(int(x) for x in _five) <= {81, 311, 312},
+      f"Route 110: ORAS's hordes (Magnemite, Plusle, Minun), five at once (#16) ({_five})")
+check(all(_area[k].get("horde_pool_percentages") for k in ("HOENN_ROUTE_101", "HOENN_GRANITE_CAVE", "HOENN_VICTORY_ROAD", "HOENN_SKY_PILLAR")),
+      "hordes where ORAS has them: Route 101, Granite Cave, Victory Road, Sky Pillar...")
+story.story_flags.clear(); story.story_flags.update(_f4)
+story.inventory.clear(); story.inventory.update(_inv4)
+
+# H4 houses (11-23, DECISIONS #19): the town and route houses walked inside from Emerald's rooms (h_h4_houses.py), ORAS's
+# gifts in the rooms ORAS has them in, played as a player meets them
+_f5, _inv5, _team5, _badges5 = dict(story.story_flags), dict(story.inventory), list(story.player_team), {r: list(b) for r, b in story.badges.items()}
+for _k in ("dewford_silk_scarf", "dewford_hall_sludge_bomb", "rustboro_makuhita_trade", "sootopolis_barboach_shown",
+           "sootopolis_shroomish_shown", "pacifidlog_psyshock"):
+    story.story_flags.pop(_k, None)
+
+
+def _walk_in(key, came, door):
+    st = open_map(key, came)
+    st.scenes.entered = True
+    st.scenes.playing, st._scene_lock = None, False   # (no town scene of the story's in the way: only the house is checked here)
+    st.player, st.anim = (door[0], door[1] + 1), 0
+    st.step(0, -1); frames(2)
+    return st
+
+
+def _talk_to(st, at):
+    """Walk up beside a person (an open tile next to them) and press A, facing them."""
+    getattr(st, "motions", {}).pop(tuple(at), None)   # (stood still for the check: someone who wanders may be mid-step)
+    for dx, dy in ((0, 1), (1, 0), (-1, 0), (0, -1)):
+        b = (at[0] + dx, at[1] + dy)
+        if st._open(b) and b not in st._people() and b not in st.exits:
+            return _press(st, b, (-dx, -dy))
+    return ["(nowhere to stand)"]
+
+
+_rooms5 = {k: list((_tm2[k].get("rooms") or {})) for k in ("PETALBURG_CITY", "RUSTBORO_CITY", "DEWFORD_TOWN", "SLATEPORT_CITY", "MAUVILLE_CITY",
+                                                              "VERDANTURF_TOWN", "LAVARIDGE_TOWN", "FALLARBOR_TOWN", "FORTREE_CITY_UPPER")}
+check({"wally_home", "dreamer_house", "norman_fans"} <= set(_rooms5["PETALBURG_CITY"]) and {"devon", "devon_2", "devon_3", "trade_house", "flats_3"} <= set(_rooms5["RUSTBORO_CITY"])
+      and {"hall", "pier_house", "island_house"} <= set(_rooms5["DEWFORD_TOWN"]) and {"shipyard", "shipyard_2"} <= set(_rooms5["SLATEPORT_CITY"])
+      and {"bike_shop", "game_corner"} <= set(_rooms5["MAUVILLE_CITY"]) and "wally_house" in _rooms5["VERDANTURF_TOWN"]
+      and "herb_shop" in _rooms5["LAVARIDGE_TOWN"] and "cozmo_house" in _rooms5["FALLARBOR_TOWN"] and "guild" in _rooms5["FORTREE_CITY_UPPER"],
+      "H4: the towns' houses are rooms you walk into (Petalburg to Fortree, from Emerald's maps)")
+_routes5 = {k: sorted(_tm2[k].get("room_floors") or (_tm2[k].get("rooms") or {})) for k in ("HOENN_ROUTE_104", "HOENN_ROUTE_111", "HOENN_ROUTE_113", "HOENN_ROUTE_114",
+                                                                                           "HOENN_ROUTE_116", "HOENN_ROUTE_117", "HOENN_ROUTE_119", "HOENN_ROUTE_123")}
+check(all(_routes5.values()), f"H4: the route houses are rooms too (the Flower Shop, the Glass Workshop, the Fossil Maniac, Lanette, the Day Care...) {_routes5}")
+# a building whose door had options keeps every one of them inside, on a person
+_lost5 = []
+for _k5, _kinds5 in (("RUSTBORO_CITY", ["devon"]), ("SLATEPORT_CITY", ["shipyard"]), ("MAUVILLE_CITY", ["bike"]), ("VERDANTURF_TOWN", ["wally"]),
+                     ("LAVARIDGE_TOWN", ["herb"]), ("FALLARBOR_TOWN", ["cozmo", "reminder"]), ("FORTREE_CITY_UPPER", ["hiddenpower", "spinda", "wingull", "guild"])):
+    _inroom5 = json.dumps([r.get("people") for r in _tm2[_k5]["rooms"].values()], ensure_ascii=False)
+    for _o5 in _area[_k5].get("explore_options", []):
+        if _o5.get("door") in _kinds5 and json.dumps(_o5["text"], ensure_ascii=False) not in _inroom5:
+            _lost5.append(f"{_k5}:{_o5['text']}")
+check(not _lost5, f"H4: every option those doors opened stands inside as a person (Mr. Stone, Stern, Rydel, Wally, Cozmo...) {_lost5}")
+
+st = _walk_in("DEWFORD_TOWN", "HOENN_ROUTE_106", (8, 8))
+check(st.room == "pier_house", f"Dewford: the house by the pier, walked inside ({st.room})")
+_n5 = story.inventory.get("SILK_SCARF", 0)
+said = _talk_to(st, (6, 5))
+check(story.inventory.get("SILK_SCARF", 0) == _n5 + 1, f"Dewford: the Ace Trainer in the pier house gives you the Silk Scarf (ORAS) ({said[:1]})")
+story.badges["HOENN"] = [b for b in story.badges.get("HOENN", []) if "BALANCE" not in str(b).upper()]
+st = _walk_in("DEWFORD_TOWN", "HOENN_ROUTE_106", (3, 3))
+_n5 = story.inventory.get("TM148", 0)
+said = _talk_to(st, (8, 6))
+check(st.room == "hall" and story.inventory.get("TM148", 0) == _n5 and any("five Badges" in x for x in said),
+      f"Dewford Hall: the Collector keeps his TM Sludge Bomb until you have five Badges ({st.room}, {said[:1]})")
+story.badges["HOENN"] = story.badges.get("HOENN", []) + ["BALANCE"]
+said = _talk_to(st, (8, 6))
+check(story.inventory.get("TM148", 0) == _n5 + 1, f"Dewford Hall: with five Badges he gives TM Sludge Bomb (ORAS) ({said[:1]})")
+story.badges.clear(); story.badges.update(_badges5)
+st = _walk_in("RUSTBORO_CITY", "HOENN_ROUTE_104", (11, 15))
+check(st.room == "devon" and _stairs(st, "ROOM:devon_2") == "devon_2" and _stairs(st, "ROOM:devon_3") == "devon_3" and (17, 5) in st._people(),
+      f"Rustboro: Devon walked inside, up to Mr. Stone's office on 3F ({st.room})")
+story.player_team = [mk(287)]
+st = _walk_in("RUSTBORO_CITY", "HOENN_ROUTE_104", (33, 19))
+said = _talk_to(st, (6, 4))
+_mk5 = story.player_team[0]
+check(st.room == "trade_house" and _mk5.id == 296 and getattr(_mk5, "nickname", None) == "Makit" and getattr(_mk5, "held_item", None) == "X_ATTACK",
+      f"Rustboro: the trader swaps his Makuhita, Makit (holding an X Attack), for your Slakoth (ORAS) ({said[-1:]})")
+story.player_team = [mk(339)]
+st = open_map("SOOTOPOLIS_CITY", "HOENN_ROUTE_126")
+st.scenes.entered = True
+st._go("size_house", "OUT:48,25"); frames(2)
+_n5 = story.inventory.get("MAX_ELIXIR", 0)
+said = _talk_to(st, (2, 4))
+check(story.inventory.get("MAX_ELIXIR", 0) == _n5 + 1, f"Sootopolis: shown a Barboach, the fisherman north-east of the Center gives a Max Elixir (ORAS) ({said[:1]})")
+said = _talk_to(st, (5, 4))
+check(story.inventory.get("MAX_ELIXIR", 0) == _n5 + 1 and any("Shroomish" in x for x in said), f"...his sister wants to see a Shroomish first ({said[:1]})")
+st = open_map("PACIFIDLOG_TOWN", "HOENN_ROUTE_131")
+st.scenes.entered = True
+st._go("mirage_house", "OUT:17,21"); frames(2)
+_n5 = story.inventory.get("TM054", 0)
+said = _talk_to(st, (3, 4))
+check(story.inventory.get("TM054", 0) == _n5 + 1, f"Pacifidlog: the man in the south-east house gives TM Psyshock (ORAS) ({said[-1:]})")
+story.story_flags.clear(); story.story_flags.update(_f5)
+story.inventory.clear(); story.inventory.update(_inv5)
+story.player_team = _team5
+story.badges.clear(); story.badges.update(_badges5)
+
+# H5 (11-23, Jordan #3-4): every HM from ORAS's giver; each needs its ORAS badge on the map
+from src.world import hms as _hms5
+_f5, _b5, _i5 = dict(story.story_flags), {k: list(v) for k, v in story.badges.items()}, dict(story.inventory)
+check(not _hms5.HM_BY_BADGE.get("HOENN") and _hms5.USE_BADGE["HOENN"]["HM_ROCK_SMASH"] == "DYNAMO" and "HOENN" in _hms5.FIELD_STRICT,
+      "Hoenn: no HM comes with a badge; each needs ORAS's badge on the map (Rock Smash: Dynamo)")
+for _k in ("HM_CUT", "HM_SURF", "HM_DIVE"):
+    story.inventory.pop(_k, None)
+for _k in ("got_cut_hoenn", "got_surf_hoenn", "got_dive_hoenn"):
+    story.story_flags.pop(_k, None)
+story.badges["HOENN"] = ["STONE", "KNUCKLE", "DYNAMO", "HEAT"]
+story.inventory["HM_ROCK_SMASH"] = 1
+check(_hms5.usable(story, "HM_ROCK_SMASH") and not _hms5.usable(story, "HM_FLY"), "Rock Smash works with the Dynamo Badge; Fly not before the Feather Badge")
+st = open_map("RUSTBORO_CITY", "HOENN_ROUTE_104")
+st.scenes.entered = True
+st._go("cut_house", next(v for v in _tm2["RUSTBORO_CITY"]["rooms"]["cut_house"]["exits"].values() if str(v).startswith("OUT:"))); frames(2)
+_ct = next(t for t, o in st.people.items() if (o.get("text") if isinstance(o, dict) else None) == "Cutter")
+said = _press(st, (_ct[0], _ct[1] + 1), (0, -1))
+check(story.inventory.get("HM_CUT", 0) == 1, f"Rustboro: the Cutter gives HM Cut (ORAS) ({said[-1:]})")
+st = open_map("PETALBURG_CITY", "HOENN_ROUTE_102")
+st.scenes.entered = True
+st._go("wally_home", next(v for v in _tm2["PETALBURG_CITY"]["rooms"]["wally_home"]["exits"].values() if str(v).startswith("OUT:"))); frames(2)
+said = _press(st, (3, 5), (0, -1))
+_no_surf = story.inventory.get("HM_SURF", 0) == 0
+story.badges["HOENN"].append("BALANCE")
+st._go("wally_home", next(v for v in _tm2["PETALBURG_CITY"]["rooms"]["wally_home"]["exits"].values() if str(v).startswith("OUT:"))); frames(2)
+said = _press(st, (3, 5), (0, -1))
+check(_no_surf and story.inventory.get("HM_SURF", 0) == 1, f"Petalburg: Wally's father gives HM Surf only after Norman (ORAS) ({said[-1:]})")
+story.badges["HOENN"] += ["FEATHER", "MIND"]
+st = open_map("MOSSDEEP_CITY", "HOENN_ROUTE_124")
+st.scenes.entered = True
+st._go("steven", next(v for v in _tm2["MOSSDEEP_CITY"]["rooms"]["steven"]["exits"].values() if str(v).startswith("OUT:"))); frames(2)
+said = _press(st, (9, 7), (0, -1))
+check(story.inventory.get("HM_DIVE", 0) == 1, f"Mossdeep: Steven gives HM Dive after the Mind Badge (ORAS) ({said[-1:]})")
+_wl = (_area["SOOTOPOLIS_CITY"].get("gym") or {}).get("leader") or {}
+check((_wl.get("rewards") or {}).get("HM_WATERFALL") == 1, "Sootopolis: HM Waterfall is Wallace's prize (ORAS)")
+story.story_flags.clear(); story.story_flags.update(_f5)
+story.badges.clear(); story.badges.update(_b5)
+story.inventory.clear(); story.inventory.update(_i5)
+
+# (H5 gates - the S.S. Tidal, New Mauville, the Devon Scope, Briney, the Fiery Path, Route 126, the hideout, the Eon Flute -
+#  are played in hoenn_gates, 11-23: not repeated here)
+_f5b, _i5b = dict(story.story_flags), dict(story.inventory)
+_wv = next((t for t in _area["HOENN_VICTORY_ROAD"].get("trainer_pool", []) if t.get("victory_flag") == "defeated_wally_victory"), {})
+check((_wv.get("rewards") or {}).get("DAWN_STONE") == 1, "Victory Road: Wally gives a Dawn Stone after the battle (ORAS)")
+_sw5 = next((o for o in _area["HOENN_GRANITE_CAVE"].get("route_menu", []) if o.get("text") == "Steven's Steel Wing"), {})
+check(_sw5.get("condition") == "met_steven" and (_sw5.get("event") or {}).get("gift_item") == {"TM239": 1}, "Granite Cave: Steven gives TM Steel Wing for the Letter (ORAS)")
+from src.world.story import StoryManager as _SM5
+import inspect as _insp5
+check('("BALANCE_BADGE", "AMULET_COIN")' not in _insp5.getsource(_SM5), "no Amulet Coin with the Balance Badge: only Mom's, after Norman (ORAS)")
+_sc5 = next((sc for sc in _tm2["SLATEPORT_CITY"].get("scenes", []) if sc.get("flag") == "slateport_sub_stolen"), {})
+_gb5 = [((c.get("event") or {}).get("battle") or {}) for c in _sc5.get("cast", []) if (c.get("event") or {}).get("battle")]
+check([b.get("team_by_version", {}).get("OMEGA_RUBY") for b in _gb5] == [[262], [322, 42]] and [b.get("levels") for b in _gb5] == [[36], [34, 34]],
+      f"Slateport: two grunts hold you up while the sub is stolen, ORAS's teams by version ({[b.get('name') for b in _gb5]})")
+# (the Delta chain's order: hoenn_gates delta_start / delta_chain / sky_pillar_wallace play it)
+for _k in ("delta_started",):
+    story.story_flags.pop(_k, None)
+story.story_flags["hoenn_mom_sendoff"] = True
+st = open_map("LITTLEROOT_TOWN", "HOENN_ROUTE_101")
+st.scenes.entered = True
+story.story_flags["beat_hoenn_champion"] = True   # (set after arriving: arriving as Champion offers the next region)
+st._go("home", "OUT:5,8"); frames(2)
+said = _press(st, (2, 5), (0, 1))
+if st.hover_menu_active:
+    _mn = next((o for o in st.people[(2, 6)]["any"] if o.get("text") == "Mom's news"), None)
+    st.clear_hover_menu()
+    if _mn:
+        st._get_callback_for_option(_mn)(); said = _play(st)
+check(story.story_flags.get("delta_started") and any("meteor" in x for x in said), f"Littleroot: after the Champion, Mom's news of the meteor starts the Delta Episode ({said[:1]})")
+story.story_flags.clear(); story.story_flags.update(_f5b)
+story.inventory.clear(); story.inventory.update(_i5b)
+
+# Legacy menu clear, pass 2 (11-23): the route doors find their buttons by kind (the Cable Car stations, the Safari Zone gate);
+# the menu's CATCH / BATTLE buttons, colours and dead EXIT shortcuts are gone
+for _dk, _came, _kind in (("HOENN_ROUTE_112", "HOENN_ROUTE_111", "cablecar"), ("HOENN_MT_CHIMNEY", "HOENN_JAGGED_PASS", "cablecar"),
+                          ("HOENN_ROUTE_121", "HOENN_ROUTE_120", "safari")):
+    _mf = story.story_flags.get("meteor_falls_cleared")
+    story.story_flags["meteor_falls_cleared"] = True   # (the Cable Car runs once Magma's left Meteor Falls)
+    st = arrive(_dk, _came)
+    _dt = next((t for t, v in st.run.floor.decor.items() if v == "door:" + _kind), None)
+    _went, _said = [], []
+    _cb0, _say0 = st._get_route_callback, st.say
+    st._get_route_callback = lambda o, _w=_went: (_w.append(o), (lambda: None))[1]
+    st.say = lambda lines, *a, **k: _said.extend(lines)
+    if _dt is not None:
+        st.run.player, st.facing = (_dt[0], _dt[1] + 1), (0, -1)
+        st._read_sign()
+    st._get_route_callback, st.say = _cb0, _say0
+    if _mf is None:
+        story.story_flags.pop("meteor_falls_cleared", None)
+    check(_dt is not None and _went and _went[0].get("door") == _kind and "The door is locked." not in _said,
+          f"{_dk}: its {_kind} door opens ({[o.get('text') for o in _went]}, {_said[:1]})")
+_sp = g.loader.area_data["STORY_PROGRESSION"]
+_walked = [k for k in _sp if k in _tm2 and isinstance(_sp[k], dict) and _sp[k].get("region") == "HOENN"]
+_left = [(k, o.get("text")) for k in _walked for o in (_sp[k].get("route_menu") or []) if o.get("action") in ("CATCH", "BATTLE") or "color" in o]
+check(not _left, f"Hoenn's walked places carry no menu-only route buttons or colours ({_left[:3]})")
+_dead = [(k, o.get("text")) for k in ("HOENN_SS_TIDAL", "HOENN_SOUTHERN_ISLAND", "HOENN_ROUTE_122", "HOENN_ROUTE_129") for o in (_sp[k].get("route_menu") or [])
+         if o.get("action") == "EXIT" and o.get("text") in ("Slateport City", "Lilycove City", "Battle Frontier", "BOAT TO SLATEPORT", "LILYCOVE CITY", "EVER GRANDE CITY")]
+check(not _dead, f"the menu's EXIT shortcuts are gone: the Sailors sail you, the map's edges lead on ({_dead})")
 
 story.story_flags.clear(); story.story_flags.update(_saved)
 print(f"##### {len(fails)} failures")

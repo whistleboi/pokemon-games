@@ -8,6 +8,8 @@ pokemon remembered all of their moves").
   Fisherman by the pond who loves Magikarp gives the Eviolite (already the route's).
 - Fallarbor: the Move Reminder's house (Emerald's, under its sign) is a door now: he's out of business.
 The options are hoenn_area_data.json's (door "gofish", "reminder"; "Chomper").
+- Shoal Cave's Ice room: its own wild list with a rare Sneasel (Jordan, 11-23: Weavile in the Hoenn dex needs a Sneasel;
+  ORAS has none wild; with the Frontier's Razor Claw it evolves at night). Pool HOENN_SHOAL_CAVE_ICE_ROOM_PERCENTAGES.
 """
 import os
 
@@ -89,6 +91,15 @@ def _fallarbor(maps):
     m["buildings"] = dict(m.get("buildings") or {}, F="reminder")
 
 
+def _shoal_ice_room(maps):
+    m = maps.get("HOENN_SHOAL_CAVE")
+    if not m:
+        return
+    i = m["floor_names"].index("Ice room")
+    m["floors"][i]["pool"] = "HOENN_SHOAL_CAVE_ICE_ROOM_PERCENTAGES"
+
+
 def apply(maps):
     _route123(maps)
     _fallarbor(maps)
+    _shoal_ice_room(maps)
