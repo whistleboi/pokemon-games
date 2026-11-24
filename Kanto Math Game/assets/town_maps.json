@@ -136146,7 +136146,7 @@
     "art": [
      "ccccccccccccc",
      "ccccccccccccc",
-     "ccccccccccccc",
+     "ccccccncccccc",
      "ccccc...ccccc",
      "cccc.....cccc",
      "ccc...N...ccc",
@@ -136156,10 +136156,11 @@
      "cccc.....cccc",
      "ccccc...ccccc",
      "ccccc...ccccc",
-     "ccccc.n.ccccc"
+     "ccccc.v.ccccc"
     ],
     "exits": {
-     "n": "ROOM:league_hall_4"
+     "v": "ROOM:league_hall_4",
+     "n": "ROOM:hall_of_fame"
     },
     "buildings": {},
     "roofs": {
@@ -136191,7 +136192,168 @@
      }
     },
     "theme": "room",
-    "title": "Champion's room"
+    "title": "Champion's room",
+    "barred": [
+     {
+      "tiles": [
+       [
+        6,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "hall_of_fame_due_EVER_GRANDE_CITY"
+      },
+      "lines": [
+       "The door won't open.",
+       "Only the League's Champion may go through."
+      ]
+     }
+    ],
+    "scenes": [
+     {
+      "trigger": "enter",
+      "condition": "hall_of_fame_due_EVER_GRANDE_CITY",
+      "every": true,
+      "cast": [
+       {
+        "sheet": "em_64.png",
+        "from": [
+         6,
+         12
+        ],
+        "to": "player",
+        "lines": [
+         "Professor Birch: {player_name}! You did it! You're the new Champion of the Hoenn League!",
+         "Professor Birch: To think the kid who just moved to Littleroot would get this far. Amazing!"
+        ],
+        "leave": "back"
+       },
+       {
+        "person": "Steven",
+        "path": [
+         [
+          6,
+          4
+         ],
+         [
+          6,
+          3
+         ]
+        ],
+        "gone": true,
+        "lines": [
+         "Steven: {player_name}. You and your Pokémon have earned this. Come, follow me."
+        ]
+       }
+      ],
+      "room": [
+       "hall_of_fame",
+       7,
+       14
+      ]
+     }
+    ]
+   },
+   "hall_of_fame": {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "cc%%%ccccc%%%cc",
+     "c%%%%ccccc%%%%c",
+     "c%%%%%c!c%%%%%c",
+     "c%%%%%%%%%%%%%c",
+     "c%%%%%%N%%%%%%c",
+     "c%%%%%%%%%%%%%c",
+     "c%%%%%%%%%%%%%c",
+     "c%%%%%%%%%%%%%c",
+     "c%%%%%%%%%%%%%c",
+     "c%%%%%%%%%%%%%c",
+     "c%%%%%%%%%%%%%c",
+     "c%%%%%%%%%%%%%c",
+     "c%%%%%%%%%%%%%c",
+     "c%%%%%%%%%%%%%c",
+     "cccccc%v%cccccc"
+    ],
+    "exits": {
+     "v": "ROOM:league_champion"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/16_11.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/16_11.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       15,
+       17
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Hall of Fame",
+    "people": [
+     {
+      "text": "Steven",
+      "action": "EVENT",
+      "_look": "em_134.png",
+      "event": {
+       "lines": [
+        "Steven: Every Champion's team is recorded here. Yours is among them now."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "7,6": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "signs": [
+     [
+      "The Hall of Fame's record machine. Every team that won the Hoenn League is kept here."
+     ]
+    ],
+    "scenes": [
+     {
+      "who": "Steven",
+      "trigger": "enter",
+      "condition": "hall_of_fame_due_EVER_GRANDE_CITY",
+      "every": true,
+      "lines": [
+       "Steven: Welcome to the Hall of Fame. Every Champion of the Hoenn League is honored here.",
+       "Steven: Now your Pokémon will be recorded too: the team that made you Champion!",
+       "{player_name}'s team was entered in the Hall of Fame!"
+      ],
+      "event": {
+       "scene": "hall_of_fame",
+       "lines": [
+        "You returned home to share your victory!"
+       ],
+       "clear": [
+        "hall_of_fame_due_EVER_GRANDE_CITY"
+       ],
+       "travel": "LITTLEROOT_TOWN"
+      },
+      "after": "stay"
+     }
+    ]
    }
   },
   "hidden": {
