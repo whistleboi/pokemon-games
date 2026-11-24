@@ -148,6 +148,8 @@ for _i, (_town, _came, _tm) in enumerate(GYMS):
     at(BADGES[_i].lower())   # (the story just before this badge: what opens the Gym - Bill for Misty, the Secret Key...)
     for _k in [k for k in story.story_flags if _town in k and ("gym" in k or "leader" in k)]:
         story.story_flags.pop(_k)
+    from src import minigames as _mg   # (the Gym's challenge minigame - a random pick - counts as won: this part plays the trainers and
+    story.story_flags[_mg.done_flag(_town)] = True   #  the Leader; 11-24, Fish Escape stalled Erika's Gym)
     story.player_team = [ace()]
     v = walk_town(_town, _came)
     if not isinstance(v, _WTS):
@@ -436,6 +438,30 @@ check({"KANTO_ROUTE_28", "MT_SILVER_CITY", "MT_SILVER"} <= set(_seen), f"Red's w
 _at, _why = fight_figure("MT_SILVER", "MT_SILVER_CITY", "CHALLENGE RED")
 check(_at and FOUGHT and not FOUGHT[0][0].endswith("(UNFINISHED)") and story.story_flags.get("defeated_red"),
       f"Mt. Silver's summit: Red, walked up to and fought turn by turn ({_why or _at}; {FOUGHT[:1]}; defeated_red: {story.story_flags.get('defeated_red')})")
+
+# ================================================================================ 8. the Leaders' rematches
+print("\n8) after the title: each Leader's rematch (HGSS's teams, Koga Janine's and Giovanni Blue's, Gen 1 swaps; Jordan 11-24)")
+post_title()
+story.story_flags.pop(story.champion_flag("JOHTO"), None)   # (Kanto's title only: a second title opens the League Redo instead)
+for _town, _came, _tm in GYMS:
+    _ld = g.loader.area_data["STORY_PROGRESSION"][_town]["gym"]["leader"]
+    _w = _ld.get("rematch") or {}
+    story.player_team = [ace(), ace(), ace()]
+    for _p in story.player_team:
+        _p.heal_full()
+    _b0 = list(story.badges.get("KANTO", []))
+    v = walk_town(_town, _came)
+    if not isinstance(v, _WTS):
+        check(False, f"{_town}: no walked town ({type(v).__name__})"); continue
+    v._go("gym", ""); settle(); v = g.current_state
+    FOUGHT.clear()
+    _gp = people(v).get("Gym")
+    if _gp is not None:
+        talk_to(v, _gp)
+    _f = FOUGHT[0] if FOUGHT else (None, None)
+    check(len(FOUGHT) == 1 and str(_f[0]).startswith(_ld["name"]) and _f[1] == _w.get("levels") and all(t <= 151 for t in _w.get("team", [0]))
+          and story.badges.get("KANTO", []) == _b0,
+          f"{_town}: {_ld['name']} alone with the rematch team (Lv {_f[1]}), all Gen 1, no badge again ({FOUGHT})")
 
 print(f"##### {len(fails)} failures")
 for m in fails:
