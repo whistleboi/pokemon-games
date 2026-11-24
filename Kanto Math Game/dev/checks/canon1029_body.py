@@ -1018,7 +1018,7 @@ for _f in range(200):
 _bj.draw()
 check(_bj.phase == "DONE" and _gc25.coins(story) in (90, 100, 110, 115), f"a hand plays out and pays ({_bj.message}, {_gc25.coins(story)} coins)")
 story.story_flags, story.current_area_key = _saved25
-print("26) The Pokemon Tower in four floors; the Black Fog ambushes on the stairs (Jordan, 11-02)")
+print("26) The Pokemon Tower: FireRed's seven floors; the Black Fog on 4F (Jordan, 11-02; walked 11-24)")
 from src.states.overworld import PlayState as _PS26
 _saved26 = (dict(story.story_flags), story.current_area_key, {k: set(v) for k, v in story.defeated_trainers.items()},
             dict(story.inventory))
@@ -1030,48 +1030,27 @@ story.story_flags["defeated_rival_tower"] = True  # (the rival met at the door: 
 story.defeated_trainers.pop("KANTO_POKEMON_TOWER", None)
 
 
-def _floor(n):
-    story.story_flags["zone_KANTO_POKEMON_TOWER"] = f"floor_{n}"
-    p = _PS26(g); g.change_state(p); p.show_progression_menu()
-    return p, [b.text.replace("> ", "") for b in p.route_buttons]
-
-
-_p, _f1 = _floor(1)
-_p4, _f4 = _floor(4)
-check("UP TO 2F" in _f1 and "Lavender Town" in _f1 and not any("DOWN" in t for t in _f1), f"1F: up the stairs or out {_f1}")
-# (11-14 on, the Tower is FireRed's seven walked floors, not four menu floors: kanto_maps walks it)
+# (11-24, legacy menu clear Step 5: the Tower is FireRed's seven walked floors (kanto_maps walks them); the menu's floor
+#  buttons and its stairs ambush are gone - the Black Fog stands on 4F now, seen with the Silph Scope (Kanto c4a5b28e))
 _twr = json.load(open("assets/town_maps.json", encoding="utf-8"))["KANTO_POKEMON_TOWER"]
 check(len(_twr["floors"]) == 7 and _twr["floor_names"][-1] == "7F" and not _twr["floors"][-1].get("exits"),
       f"7F is the top: FireRed's seven floors {_twr['floor_names']}")
-check(not any("BLACK FOG" in t for n in (1, 2, 3, 4) for t in _floor(n)[1]), "no Black Fog option on any floor")
-# (dropped 11-24, legacy menu clear Step 5: the menu's per-floor pictures - Kanto deleted its menu pictures; the walked
-#  tower draws its own floors. The menu floor buttons above stay only for the Black Fog's stairs ambush below, which the
-#  walked tower can't meet yet: LEGACY_MENU_AUDIT.md, Kanto's inbox)
-_pool = g.loader.area_data["STORY_PROGRESSION"]["KANTO_POKEMON_TOWER"]["trainer_pool"]
-for _i, _t in enumerate(_pool):
-    if _t.get("zone") == "floor_4":
-        story.defeated_trainers.setdefault("KANTO_POKEMON_TOWER", set()).add(_i)
 _6f = _twr["floors"][5]
 check(any((b.get("until") or {}).get("flag_condition") == "tower_ghost_defeated" for b in _6f.get("barred", [])) and _6f.get("boss_spot")
       and "MR. FUJI" in _twr["floors"][6].get("people", []),
       "the ghost bars 6F's stairs up to Team Rocket's 7F, where Mr. Fuji is held (FireRed; Jordan 11-07: as in the games)")
-_tower = g.loader.area_data["STORY_PROGRESSION"]["KANTO_POKEMON_TOWER"]
-_chance = _tower["zone_ambush"]["chance"]
-_tower["zone_ambush"]["chance"] = 1.0
-_p, _ = _floor(1)
-_p.dialogue_box.visible = False  # (the arrival message, read)
-said.clear()
-_p.action_switch_zone("floor_2")
-_said = " ".join(map(str, said[-1][0])) if said else ""
-check("lights go out" in _said and said and said[-1][1] is not None, f"changing floors can bring the Black Fog ({_said[:60]})")
+exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())
+story.enter_region("KANTO")
+import datetime as _dt26
+story.story_flags["black_fog_back_KANTO_POKEMON_TOWER"] = _dt26.date.today().isoformat()   # (no 10% return today)
+_fog = lambda o: "BLACK FOG" in str(o.get("text") or "").upper()
+_p26 = walk_route("KANTO_POKEMON_TOWER", "LAVENDER_TOWN")
+_at = [(i, m.x, m.y) for i in range(_p26.run.n_floors) for m in _p26.run.made(i).movers if isinstance(m.payload, dict) and _fog(m.payload)]
+check(_at and _at[0][0] == 3, f"the Black Fog stands on 4F ({_at})")
 story.story_flags["black_fog_banished_kanto_pokemon_tower"] = True
-_p, _ = _floor(1)
-_p.dialogue_box.visible = False  # (the arrival message, read)
-said.clear()
-_p.action_switch_zone("floor_2")
-_said = " ".join(map(str, said[-1][0])) if said else ""
-check("lights go out" not in _said and "2F" in _said, f"not once it's banished ({_said[:70]})")
-_tower["zone_ambush"]["chance"] = _chance
+_p26 = walk_route("KANTO_POKEMON_TOWER", "LAVENDER_TOWN")
+check(walk_who(_p26, _fog) is None, "not once it's banished")
+g.walk_towns = g.dungeon_routes = False
 story.story_flags, story.current_area_key, story.defeated_trainers, story.inventory = _saved26
 print("27) Regional forms: plain names; only the region's own forms count for Area Complete (Jordan, 11-02)")
 from src.world import regional_forms as _rf27
