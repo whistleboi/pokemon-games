@@ -31,7 +31,8 @@ class RouteActions:
         repeat (SNAG AGAIN, once an area is cleared; Jordan, 10-27, not in the games), a straggler
         brings back one of the area's Shadow Pokemon, so you can keep one Shadow and purify another."""
         if repeat:
-            pool = [s for s in self.area_data.get("shadow_pool", []) if not s.get("event_only")]
+            _fl = self.game.story_manager.story_flags   # (farming, Jordan 11-24: any Shadow of this place's list - an event_only one too,
+            pool = [s for s in self.area_data.get("shadow_pool", []) if not s.get("event_only") or _fl.get(s["flag"])]   # once you've snagged it)
             if pool:
                 s = random.choice(pool)
                 self.action_challenge_boss({
