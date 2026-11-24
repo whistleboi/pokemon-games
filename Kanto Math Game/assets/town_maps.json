@@ -99738,7 +99738,8 @@
     "after_lines": [
      "Devon researcher: Wait... did he say Rustboro? Oh no, I have to get back!"
     ],
-    "after": "leave"
+    "after": "leave",
+    "then": "talk"
    }
   ],
   "theme": null,
@@ -100838,7 +100839,10 @@
        "Devon researcher: Stop! Give those back! Those parts belong to Devon!"
       ]
      }
-    ]
+    ],
+    "event": {
+     "flag": "heard_devon_parts_stolen"
+    }
    },
    {
     "trigger": "enter",
@@ -104654,7 +104658,7 @@
     "action": "EVENT",
     "event": {
      "lines": [
-      "Want this? You can have it!"
+      "We're building the biggest sandcastle on the whole beach!"
      ]
     }
    },
@@ -107168,7 +107172,7 @@
      ],
      [
       "TRICK HOUSE",
-      "Under construction."
+      "Puzzles inside! Can you reach the end?"
      ],
      [
       "SEASIDE CYCLING ROAD"
@@ -107781,8 +107785,8 @@
    "ccccccccAcccc.......ccBcccccc.cccccCcccc",
    "c......cDc...........cDccc.......ccDcccc",
    "c..........!......N..............!.....c",
-   "<.N......N...N.....!.N................N>",
-   "<........................N.............>",
+   "<........N...N.....!.N................N>",
+   "<......................................>",
    "<..............................N.......>",
    "<.......................N..............>",
    "c....ccccccc..N........................>",
@@ -107833,7 +107837,6 @@
      ]
     }
    },
-   "TM126 THUNDERBOLT",
    "Old man",
    {
     "text": "Straight-road man",
@@ -107846,7 +107849,6 @@
    },
    "Girl",
    "Delinquent",
-   "TM060 U-TURN",
    "METRONOME",
    "Man in a Suit",
    {
@@ -110578,7 +110580,7 @@
    "cccccccccccccccccc0N...ccccccc===ccccccc",
    "cccccccccccccccc.....c..cccccc.===cccccc",
    "ccccccccccccccc..cc....ccccccccc==cccccc",
-   "cccccccccccc.....cc.....cccccccccNcccccc",
+   "cccccccccccc.....cc.....ccccccccc.cccccc",
    "ccccccccoooo............cccccccccccccccc",
    "cccccccooooooo...........ccccccccccccccc",
    "cccccooooooooocc.........ccccccccccccccc",
@@ -110790,7 +110792,6 @@
      ]
     }
    },
-   "MACHO BRACE",
    "HP UP",
    {
     "text": "Tired Trainer",
@@ -123957,7 +123958,7 @@
         "lines": [
          "{leader}: You again? You're too late. The {orb} is ours.",
          "{leader}: With it, we don't need the Meteorite. We only need to reach where the ancient Pokémon sleeps.",
-         "{leader}: {admin}, deal with this child. Everyone else, to Slateport!"
+         "{leader}: {admin_b}, deal with this child. Everyone else, to Slateport!"
         ]
        }
       ]
@@ -140536,28 +140537,28 @@
      "cccccccccccccccccccccc1ccccc",
      "cccccccc.....cc..........ccc",
      "cccccc....N......X.......ccc",
-     "ccccc..N............X.N.N.cc",
+     "ccccc...............X.N.N.cc",
      "ccccc...cccccccccccc.N....cc",
-     "ccccc.N.cccccccccccc...N..cc",
+     "ccccc.N.cccccccccccc......cc",
      "cccc....cccccccccccc.N....cc",
-     "ccc...N.cccccccccccc...N.ccc",
-     "cc...............X..N....ccc",
-     "cc...........N.........X.ccc",
+     "ccc...N.cccccccccccc.....ccc",
+     "cc...............X.......ccc",
+     "cc.....................X.ccc",
      "cc...cccccccc.Xcccccccc..ccc",
      "cc.X.cccccccc..cccccccc..ccc",
      "cc...ccoooooooooooooocc...cc",
-     "cc.N.ccoooooooooooooocc...cc",
-     "cc...ccoooooooooooooocc.N.cc",
+     "cc...ccoooooooooooooocc...cc",
+     "cc...ccoooooooooooooocc...cc",
      "cccc.ccoooooooooooooocc...cc",
-     "cccc...X..~ooooo~......N..cc",
+     "cccc...X..~ooooo~.........cc",
      "cc........coooooc.........cc",
      "cc...ccccccoooooccccccc.cccc",
      "cc...ccoooooooooooooocc.cccc",
      "cc.N.ccoooooooooooooocc...cc",
-     "cc...ccoooooooooooooocc.N.cc",
+     "cc...ccoooooooooooooocc...cc",
      "cccc.ccoooooooooooooocc...cc",
      "cccc.ccoooooooooooooocc.cccc",
-     "cc.....N...~ooo~........cccc",
+     "cc.........~ooo~........cccc",
      "cc.........coooc..........cc",
      "cccccccccccconnccccccccccccc",
      "cccccccccccccccccccccccccccc",
@@ -140618,23 +140619,13 @@
     },
     "people": [
      "ESCAPE ROPE",
-     "TM094 DARK PULSE ",
      "MAX ELIXIR",
      "NEST BALL",
      "TM094 DARK PULSE",
      "MAX REVIVE",
-     "MASTER BALL ",
      "PP MAX",
      "NUGGET ",
-     "NEST BALL ",
-     "ESCAPE ROPE ",
-     "MAX ELIXIR ",
-     "PP MAX ",
-     "NUGGET  ",
-     "NUGGET   ",
-     "FULL RESTORE",
-     "FULL RESTORE ",
-     "MAX REVIVE "
+     "FULL RESTORE"
     ]
    },
    {

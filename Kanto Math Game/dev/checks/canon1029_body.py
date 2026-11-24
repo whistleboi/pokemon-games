@@ -551,7 +551,8 @@ for _flag, _want, _goal in ((None, "hoenn_m7b", "FALLARBOR_TOWN"), ("heard_cozmo
         story.story_flags[_flag] = True
     _m = _main()
     _steps.append((_m.get("id"), _g18.goal_area(g)))
-    check(_m.get("id") == _want and (_goal is None or _g18.goal_area(g) == _goal),
+    _via = {"hoenn_m7b": "HOENN_ROUTE_112", "hoenn_m8": "HOENN_FIERY_PATH"}   # (11-24, H8: the Journal's way-point first - Fiery Path, then the Cable Car)
+    check(_m.get("id") == _want and (_goal is None or _g18.goal_area(g) in (_goal, _via.get(_want))),
           f"after {_flag or 'the Dynamo Badge'}: {_m.get('id')} -> {_g18.goal_area(g)}")
 story.story_flags.pop("heard_cozmo"); story.story_flags.pop("meteor_falls_cleared"); story.story_flags.pop("mt_chimney_boss_defeated")
 check(_g18.next_hop(g, "HOENN_FIERY_PATH") == "HOENN_ROUTE_112", f"from the Fiery Path the marker points back to Route 112 ({_g18.next_hop(g, 'HOENN_FIERY_PATH')})")
@@ -1730,9 +1731,15 @@ check([e["form"] for e in _pd48.full_dex][:2] == ["normal", "b"] and [e["form"] 
       and len(_pd48.full_dex) == 28, "Unown's letters (its FORMS page now): A to Z, then ! and ?")
 _one = _C48(g.loader._resolve_form_context(201, "normal", "UNOWN", {"alt_forms": {"enabled": True, "weights": {"201_b": 0.5}}})[0] for _ in range(2000))
 check(800 < _one["b"] < 1200, f"a single listed form keeps its chance ({_one['b']}/2000 at 50%)")
-for _f48, _a48, _n48 in (("HOENN", "HOENN_ROUTE_127", "Cooltrainer Camden"), ("ALOLA", "ALOLA_ROUTE_16", "Veteran Sina")):
-    _t48 = next(t for t in g.loader.area_data["STORY_PROGRESSION"][_a48]["trainer_pool"] if t["name"] == _n48)
-    check(not any(_leg48(p) for p in _t48["team"]), f"{_n48} has no legendary ({_t48['team']})")
+_t48 = next(t for t in g.loader.area_data["STORY_PROGRESSION"]["ALOLA_ROUTE_16"]["trainer_pool"] if t["name"] == "Veteran Sina")
+check(not any(_leg48(p) for p in _t48["team"]), f"Veteran Sina has no legendary ({_t48['team']})")
+# (Hoenn's Route 127, 11-24: Emerald's Cooltrainer Camden is gone - the route's trainers are ORAS's now, its pool plus the
+#  overlay's add_trainers in assets/hoenn_oras.json; none of them has a legendary)
+import json as _j48
+_r127 = list(g.loader.area_data["STORY_PROGRESSION"]["HOENN_ROUTE_127"].get("trainer_pool") or []) + \
+    list((_j48.load(open("assets/hoenn_oras.json", encoding="utf-8"))["AREAS"].get("HOENN_ROUTE_127") or {}).get("add_trainers") or [])
+check(_r127 and not any(_leg48(p) for t in _r127 for p in t.get("team") or []),
+      f"Route 127's trainers have no legendary ({len(_r127)} trainers)")
 
 print("49) Six Island: an Unown Report lies next to the Ruin Maniac's notes (Jordan, 11-04)")
 from src.states import overworld as _ow49
@@ -1976,6 +1983,7 @@ from src.minigames import done_flag as _df57
 _area57 = story.current_area_key
 story.current_area_key = "PETALBURG_CITY"
 _rooms57 = story.get_current_area_data()["backgrounds"]["gym"]
+_rooms57 = _rooms57 if isinstance(_rooms57, list) else [_rooms57]   # (Hoenn's Gyms have one Emerald picture each since c8778dc1)
 _asked57 = []
 _gb57 = g.assets.get_background
 g.assets.get_background = lambda n, *a, **k: (_asked57.append(n), _gb57(n, *a, **k))[1]

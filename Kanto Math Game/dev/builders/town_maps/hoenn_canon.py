@@ -539,6 +539,94 @@ def _seafloor_lookout(maps):
                                      "dialogue": {"player_won": ["Grunt: Gah! Fine, go on in... The Boss will finish you!"]}}}
 
 
+def _devon_chase(maps):
+    """H8 (11-24): the grunt running off with the Devon Parts as you leave Roxanne's Gym (ORAS) is how you hear they
+    were stolen: it sets the Devon Parts mission's flag too (else it waits till you talk to Devon Corp, Jordan 11-05)."""
+    for sc in (maps.get("RUSTBORO_CITY") or {}).get("scenes") or []:
+        if sc.get("flag") == "rustboro_devon_chase":
+            sc["event"] = dict(sc.get("event") or {}, flag="heard_devon_parts_stolen")
+
+
+_HIDEOUT_DUPES = {"TM094 DARK PULSE ", "MASTER BALL ", "NUGGET  ", "NUGGET   ", "FULL RESTORE ", "MAX ELIXIR ", "ESCAPE ROPE ",
+                  "NEST BALL ", "PP MAX ", "MAX REVIVE "}
+
+
+def _hideout_dupes(maps):
+    """Clean-up (11-24, the encyclopedia's oddities): the Team Hideout's 1F held the ORAS overlay's second set of item
+    balls (both games' hideouts' items: a second Master Ball, Dark Pulse, Nuggets...). Their options are gone from
+    hoenn_oras.json (h_oddities.py); their spots go too (people go to the N tiles in reading order)."""
+    m = maps.get("HOENN_TEAM_HIDEOUT")
+    if not m or not m.get("floors"):
+        return
+    f = m["floors"][0]
+    spots = [(x, y) for y, r in enumerate(f["art"]) for x, c in enumerate(r) if c == "N"]
+    people = f.get("people") or []
+    art = [list(r) for r in f["art"]]
+    keep = []
+    for (x, y), p in zip(spots, people):
+        if isinstance(p, str) and p in _HIDEOUT_DUPES:
+            art[y][x] = "."
+            (f.get("moves") or {}).pop(f"{x},{y}", None)
+        else:
+            keep.append(p)
+    f["people"] = keep + people[len(spots):]
+    f["art"] = ["".join(r) for r in art]
+
+
+def _pyre_admin(maps):
+    """Clean-up (11-24): at Mt. Pyre's summit the leader leaves the second admin (Courtney / Matt, the one you battle
+    there) to deal with you - {admin_b}, not {admin} (Tabitha / Shelly)."""
+    for f in (maps.get("HOENN_MT_PYRE") or {}).get("floors") or []:
+        for sc in f.get("scenes") or []:
+            for c in sc.get("cast") or []:
+                c["lines"] = [l.replace("{admin}, deal with this child", "{admin_b}, deal with this child") for l in c.get("lines") or []]
+
+
+def _woods_researcher(maps):
+    """Clean-up (11-24): after the grunt, the Devon researcher walks up, thanks you and leaves - and his Lucky Egg (his own
+    option, gone once he has left) could be missed. His scene now runs his option before he goes: the egg, every time."""
+    m = maps.get("HOENN_PETALBURG_WOODS")
+    for f in (m or {}).get("floors") or ([m] if m else []):
+        for sc in f.get("scenes") or []:
+            if sc.get("who") == "Devon researcher" and sc.get("flag") == "woods_researcher_left":
+                sc["then"] = "talk"
+
+
+_DUPES = [("MAUVILLE_CITY", None, {"TM060 U-TURN", "TM126 THUNDERBOLT"}), ("HOENN_ROUTE_111", 0, {"MACHO BRACE"})]
+
+
+def _drop_dupes(maps):
+    """Clean-up (11-24): ground items the overlay added beside a person's gift of the same (Mauville's U-turn and
+    Thunderbolt TMs, Route 111's Macho Brace): their options are gone from hoenn_oras.json (h_oddities.py), their spots
+    too. Plus two stray lines: the sandcastle girl offers nothing; the Trick House is open."""
+    for key, floor, names in _DUPES:
+        m = maps.get(key)
+        if not m:
+            continue
+        f = m["floors"][floor] if floor is not None and m.get("floors") else m
+        spots = [(x, y) for y, r in enumerate(f["art"]) for x, c in enumerate(r) if c == "N"]
+        people = f.get("people") or []
+        art = [list(r) for r in f["art"]]
+        keep = []
+        for (x, y), p in zip(spots, people):
+            if isinstance(p, str) and p in names:
+                art[y][x] = "."
+                (f.get("moves") or {}).pop(f"{x},{y}", None)
+            else:
+                keep.append(p)
+        f["people"] = keep + people[len(spots):]
+        f["art"] = ["".join(r) for r in art]
+    r109 = maps.get("HOENN_ROUTE_109")
+    for f in (r109 or {}).get("floors") or ([r109] if r109 else []):
+        for p in f.get("people") or []:
+            if isinstance(p, dict) and p.get("text") == "Sandcastle girl":
+                p["event"] = {"lines": ["We're building the biggest sandcastle on the whole beach!"]}
+    r110 = maps.get("HOENN_ROUTE_110")
+    for f in (r110 or {}).get("floors") or ([r110] if r110 else []):
+        f["signs"] = [["TRICK HOUSE", "Puzzles inside! Can you reach the end?"] if s == ["TRICK HOUSE", "Under construction."] else s
+                      for s in f.get("signs") or []]
+
+
 def _part(m, floor, room):
     if room:
         return m["rooms"][room]
@@ -615,6 +703,11 @@ def apply(maps):
     _fortree_gym_side(maps)
     _sootopolis_wallace(maps)
     _seafloor_lookout(maps)
+    _devon_chase(maps)
+    _hideout_dupes(maps)
+    _pyre_admin(maps)
+    _woods_researcher(maps)
+    _drop_dupes(maps)
     _h7(maps)
     for key, floor, room, x, y, who in PEOPLE:
         m = maps.get(key)

@@ -77,12 +77,7 @@
      "action": "EVENT",
      "oras": true,
      "event": {
-      "lines": [
-       "Boy: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "MENTAL_HERB": 1
-      },
+      "lines": ["Boy: Up in the trees, the breeze clears your head!"],
       "flag": "oras_fortree_city_5"
      },
      "flag_condition": "not oras_fortree_city_5"
@@ -164,12 +159,7 @@
      "action": "EVENT",
      "oras": true,
      "event": {
-      "lines": [
-       "Hiker: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "TM291": 1
-      },
+      "lines": ["Hiker: It gets awfully dark deeper in. Flash would light the way."],
       "flag": "oras_hoenn_granite_cave_1"
      },
      "flag_condition": "not oras_hoenn_granite_cave_1"
@@ -2365,22 +2355,6 @@
     }
    },
    "route_menu": [
-    {
-     "text": "MACHO BRACE",
-     "action": "EVENT",
-     "found": true,
-     "oras": true,
-     "flag_condition": "not oras_hoenn_route_111_1",
-     "event": {
-      "lines": [
-       "You found a Macho Brace!"
-      ],
-      "gift_item": {
-       "MACHO_BRACE": 1
-      },
-      "flag": "oras_hoenn_route_111_1"
-     }
-    },
     {
      "text": "HP UP",
      "action": "EVENT",
@@ -7387,166 +7361,6 @@
       },
       "flag": "oras_hoenn_team_hideout_8"
      }
-    },
-    {
-     "text": "NUGGET  ",
-     "action": "EVENT",
-     "found": true,
-     "oras": true,
-     "flag_condition": "not oras_hoenn_team_hideout_9",
-     "event": {
-      "lines": [
-       "You found a Nugget!"
-      ],
-      "gift_item": {
-       "NUGGET": 1
-      },
-      "flag": "oras_hoenn_team_hideout_9"
-     }
-    },
-    {
-     "text": "FULL RESTORE ",
-     "action": "EVENT",
-     "found": true,
-     "oras": true,
-     "flag_condition": "not oras_hoenn_team_hideout_10",
-     "event": {
-      "lines": [
-       "You found a Full Restore!"
-      ],
-      "gift_item": {
-       "FULL_RESTORE": 1
-      },
-      "flag": "oras_hoenn_team_hideout_10"
-     }
-    },
-    {
-     "text": "MAX ELIXIR ",
-     "action": "EVENT",
-     "found": true,
-     "oras": true,
-     "flag_condition": "not oras_hoenn_team_hideout_11",
-     "event": {
-      "lines": [
-       "You found a Max Elixir!"
-      ],
-      "gift_item": {
-       "MAX_ELIXIR": 1
-      },
-      "flag": "oras_hoenn_team_hideout_11"
-     }
-    },
-    {
-     "text": "ESCAPE ROPE ",
-     "action": "EVENT",
-     "found": true,
-     "oras": true,
-     "flag_condition": "not oras_hoenn_team_hideout_12",
-     "event": {
-      "lines": [
-       "You found a Escape Rope!"
-      ],
-      "gift_item": {
-       "ESCAPE_ROPE": 1
-      },
-      "flag": "oras_hoenn_team_hideout_12"
-     }
-    },
-    {
-     "text": "NEST BALL ",
-     "action": "EVENT",
-     "found": true,
-     "oras": true,
-     "flag_condition": "not oras_hoenn_team_hideout_13",
-     "event": {
-      "lines": [
-       "You found a Nest Ball!"
-      ],
-      "gift_item": {
-       "NEST_BALL": 1
-      },
-      "flag": "oras_hoenn_team_hideout_13"
-     }
-    },
-    {
-     "text": "TM094 DARK PULSE ",
-     "action": "EVENT",
-     "found": true,
-     "oras": true,
-     "flag_condition": "not oras_hoenn_team_hideout_14",
-     "event": {
-      "lines": [
-       "You found a TM094 DARK PULSE!"
-      ],
-      "gift_item": {
-       "TM094": 1
-      },
-      "flag": "oras_hoenn_team_hideout_14"
-     }
-    },
-    {
-     "text": "NUGGET   ",
-     "action": "EVENT",
-     "found": true,
-     "oras": true,
-     "flag_condition": "not oras_hoenn_team_hideout_15",
-     "event": {
-      "lines": [
-       "You found a Nugget!"
-      ],
-      "gift_item": {
-       "NUGGET": 1
-      },
-      "flag": "oras_hoenn_team_hideout_15"
-     }
-    },
-    {
-     "text": "MASTER BALL ",
-     "action": "EVENT",
-     "found": true,
-     "oras": true,
-     "flag_condition": "not oras_hoenn_team_hideout_16",
-     "event": {
-      "lines": [
-       "You found a Master Ball!"
-      ],
-      "gift_item": {
-       "MASTER_BALL": 1
-      },
-      "flag": "oras_hoenn_team_hideout_16"
-     }
-    },
-    {
-     "text": "PP MAX ",
-     "action": "EVENT",
-     "found": true,
-     "oras": true,
-     "flag_condition": "not oras_hoenn_team_hideout_17",
-     "event": {
-      "lines": [
-       "You found a Pp Max!"
-      ],
-      "gift_item": {
-       "PP_MAX": 1
-      },
-      "flag": "oras_hoenn_team_hideout_17"
-     }
-    },
-    {
-     "text": "MAX REVIVE ",
-     "action": "EVENT",
-     "found": true,
-     "oras": true,
-     "flag_condition": "not oras_hoenn_team_hideout_18",
-     "event": {
-      "lines": [
-       "You found a Max Revive!"
-      ],
-      "gift_item": {
-       "MAX_REVIVE": 1
-      },
-      "flag": "oras_hoenn_team_hideout_18"
-     }
     }
    ]
   },
@@ -7862,12 +7676,7 @@
      "action": "EVENT",
      "oras": true,
      "event": {
-      "lines": [
-       "Scientist: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "ROCKY_HELMET": 1
-      },
+      "lines": ["Scientist: The Institute is safe again, thanks to you!"],
       "flag": "oras_hoenn_weather_institute_1"
      },
      "flag_condition": "not oras_hoenn_weather_institute_1"
@@ -7877,12 +7686,7 @@
      "action": "EVENT",
      "oras": true,
      "event": {
-      "lines": [
-       "Receptionist: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "ICY_ROCK": 1
-      },
+      "lines": ["Receptionist: Welcome to the Weather Institute!"],
       "flag": "oras_hoenn_weather_institute_2"
      },
      "flag_condition": "not oras_hoenn_weather_institute_2"
@@ -7892,12 +7696,7 @@
      "action": "EVENT",
      "oras": true,
      "event": {
-      "lines": [
-       "Receptionist: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "SMOOTH_ROCK": 1
-      },
+      "lines": ["Receptionist: Our research follows the weather all over Hoenn."],
       "flag": "oras_hoenn_weather_institute_3"
      },
      "flag_condition": "not oras_hoenn_weather_institute_3"
@@ -7907,12 +7706,7 @@
      "action": "EVENT",
      "oras": true,
      "event": {
-      "lines": [
-       "Receptionist: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "HEAT_ROCK": 1
-      },
+      "lines": ["Receptionist: Rain or shine, we're always watching the skies."],
       "flag": "oras_hoenn_weather_institute_4"
      },
      "flag_condition": "not oras_hoenn_weather_institute_4"
@@ -7922,12 +7716,7 @@
      "action": "EVENT",
      "oras": true,
      "event": {
-      "lines": [
-       "Receptionist: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "DAMP_ROCK": 1
-      },
+      "lines": ["Receptionist: Some Pokemon change with the weather. Fascinating, isn't it?"],
       "flag": "oras_hoenn_weather_institute_5"
      },
      "flag_condition": "not oras_hoenn_weather_institute_5"
@@ -8137,40 +7926,6 @@
       },
       "flag": "oras_mauville_city_11"
      }
-    },
-    {
-     "text": "TM060 U-TURN",
-     "action": "EVENT",
-     "color": "GOLD",
-     "found": true,
-     "oras": true,
-     "flag_condition": "not oras_mauville_city_12",
-     "event": {
-      "lines": [
-       "You found a TM060 U-TURN!"
-      ],
-      "gift_item": {
-       "TM060": 1
-      },
-      "flag": "oras_mauville_city_12"
-     }
-    },
-    {
-     "text": "TM126 THUNDERBOLT",
-     "action": "EVENT",
-     "color": "GOLD",
-     "found": true,
-     "oras": true,
-     "flag_condition": "not oras_mauville_city_13",
-     "event": {
-      "lines": [
-       "You found a TM126 THUNDERBOLT!"
-      ],
-      "gift_item": {
-       "TM126": 1
-      },
-      "flag": "oras_mauville_city_13"
-     }
     }
    ]
   },
@@ -8208,12 +7963,7 @@
      "action": "EVENT",
      "oras": true,
      "event": {
-      "lines": [
-       "Boy: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "KINGS_ROCK": 1
-      },
+      "lines": ["Boy: My friend found a King's Rock too. Everyone here loves them!"],
       "flag": "oras_mossdeep_city_2"
      },
      "flag_condition": "not oras_mossdeep_city_2"
@@ -8272,12 +8022,7 @@
      "action": "EVENT",
      "oras": true,
      "event": {
-      "lines": [
-       "Sailor: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "SUN_STONE": 1
-      },
+      "lines": ["Sailor: The Space Center's people give away Sun Stones, you know."],
       "flag": "oras_mossdeep_city_7"
      },
      "flag_condition": "not oras_mossdeep_city_7"
@@ -8291,12 +8036,7 @@
      "action": "EVENT",
      "oras": true,
      "event": {
-      "lines": [
-       "Poké Mart attendant: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "POTION": 10
-      },
+      "lines": ["Poké Mart attendant: Welcome to Oldale! The Poké Mart has all you need."],
       "flag": "oras_oldale_town_1"
      },
      "flag_condition": "not oras_oldale_town_1"
