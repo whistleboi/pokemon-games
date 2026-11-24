@@ -621,4 +621,14 @@ if "UNOVA_ROUTE_20" in g.loader.area_data["STORY_PROGRESSION"]:
         _dg.DungeonState.DARK_DOUBLE = _was_r
         g.change_state(_pd)
 
+print("a landing spot with loot on it: you still land there, the item moves aside (Kanto 11-24)")
+_pw = kanto("KANTO_ROUTE_1")
+_fw = _pw.run.floor
+_spot = next((x, y) for y in range(_fw.h) for x in range(_fw.w) if _fw.walkable(x, y) and not _fw.occupied(x, y)
+             and any(_fw.walkable(x + dx, y + dy) and not _fw.occupied(x + dx, y + dy) for dx, dy in core.DIRS))
+_fw.items[_spot] = "POTION"
+_pw.run.warp(_pw.run.index, _spot[0], _spot[1], land=True)
+check(tuple(_pw.run.player) == _spot and _spot not in _fw.items and "POTION" in _fw.items.values(),
+      f"landed on the very spot, the Potion beside it ({_pw.run.player})")
+
 print(f"##### {fails} failures")

@@ -42,7 +42,6 @@ KNOWN = set()   # (Unova's b2_m23 / b2_m29 "Hugh" fixed on region/unova 4392cd97
 KNOWN_SIDE = {(r, i) for r, ids in {   # (SIDE lines sent to their regions 11-24; take each out when its region's fix is on main)
     "JOHTO": ["johto_c1", "johto_s_oddegg", "sinjoh_m1"],   # (done on region/johto b3c7c9b4)
     "HOENN": ["hoenn_s3", "hoenn_s4", "hoenn_s5", "hoenn_s7", "hoenn_s11", "hoenn_s14", "hoenn_s22", "hoenn_s25", "hoenn_s28"],
-    "SINNOH": ["sinnoh_s8"],
     "UNOVA": ["unova_s9", "unova_s12", "unova_s15", "unova_s16", "unova_s17", "unova_s19", "unova_s21"],
     "ORRE": ["orre_s1", "orre_s2", "orre_s2a"]}.items() for i in ids}
 NOT_YET = set()   # (walked regions with no book yet; Orre's came 11-24, J5)
@@ -131,5 +130,32 @@ for r in regions:
                     and a.get("safari_game"))
     if safari:
         check(any(f.get("count") == "safari" for f in fl), f"{r}: has a Safari Feat (Safari Game at {safari})")
+
+# (J7, 11-24: every SIDE mission can be found and finished - its target is a real place, and it ends: a done flag
+#  something in the game sets (data or code), a badge, an Unown goal, or a "_not" condition that stops it showing)
+print("Every SIDE mission can be found and finished")
+import glob as _glob
+_blob = json.dumps(g.loader.area_data) + open("assets/town_maps.json", encoding="utf-8").read() + "".join(
+    open(_f, encoding="utf-8", errors="ignore").read() for _f in _glob.glob("src/**/*.py", recursive=True))
+KNOWN_SIDE_END = {"johto_c1", "johto_s1",   # (card clean-johto-journal-unown-missions)
+                  "hoenn_s5", "hoenn_s29"}  # (card clean-hoenn-journal-side-finish)
+_bad_t, _bad_f = [], []
+for i, m in missions.items():
+    if str(m.get("type", "")).upper() == "MAIN" or region_of(m) not in regions or m.get("region_species") or m.get("kanto_species"):
+        continue
+    if i in KNOWN_SIDE_END:
+        print(f"   open  {i}: can't finish yet (its region's card)")
+        continue
+    if m.get("target") and m["target"] not in prog:
+        _bad_t.append(i)
+    fl = m.get("completed_flag")
+    fl = fl if isinstance(fl, list) else ([fl] if fl else [])
+    unset = [x for x in fl if not (x.startswith(("visited_", "beat_", "received_", "feat_", "forms_complete_")) or x.endswith("_boss_defeated"))
+             and _blob.count('"%s"' % x) + _blob.count("'%s'" % x) < 2]
+    ends = fl or m.get("completed_badge") or m.get("unown_forms") or any(k.endswith("_not") or k == "item" for k in (m.get("condition") or {}))   # (an item asked for is used up: fossils)
+    if unset or not ends:
+        _bad_f.append(i)
+check(not _bad_t, f"every SIDE mission's target is a real place ({_bad_t})")
+check(not _bad_f, f"every SIDE mission can finish: its done flag is set somewhere, or it stops showing ({_bad_f})")
 
 print(f"##### {fails} failures")

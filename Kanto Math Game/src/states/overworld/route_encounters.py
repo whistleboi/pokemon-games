@@ -566,6 +566,12 @@ class RouteEncounters:
             if story.story_flags.get("paldea_version") not in versions:
                 story.story_flags["paldea_version"] = random.choice(sorted(versions))
             boss_data = dict(boss_data, versions=None, **versions[story.story_flags["paldea_version"]])
+        _need = (boss_data or {}).get("requires")   # (a boss that only stirs for something: Regigigas, for the three Regis in your party - Platinum; 11-24)
+        if _need and not all(self.game.story_manager.special_condition(c) for c in _need):
+            self.is_progression_paused = True
+            self.hide_menu_buttons()
+            self.show_dialogue(_resolve_lines(self.game, boss_data.get("fail") or ["Nothing happens."]), callback=self.show_progression_menu)
+            return
         if boss_data and boss_data.get("lines"):
             self.is_progression_paused = True
             self.hide_menu_buttons()

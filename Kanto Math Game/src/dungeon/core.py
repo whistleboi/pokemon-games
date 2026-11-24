@@ -829,6 +829,13 @@ class Run:
                 floor.movers.remove(m)
             else:
                 m.x, m.y = aside
+        for spots in ((floor.items, floor.tm_spots) if land else ()):   # (and anything lying there - random loot, a TM - moves
+            if (x, y) in spots:                                          #  aside too: Icefall Cave's thin-ice landing; Kanto 11-24)
+                aside = next(((x + dx, y + dy) for dx, dy in DIRS if floor.walkable(x + dx, y + dy)
+                              and not floor.occupied(x + dx, y + dy)), None)
+                what = spots.pop((x, y))
+                if aside is not None:
+                    spots[aside] = what
         land = land and (x, y) not in floor.exits and floor.walkable(x, y) and not floor.occupied(x, y)   # (a plain spot, not a passage: a hole's landing)
         self.player = (x, y) if land else self._beside(floor, (x, y))
         self.reveal()

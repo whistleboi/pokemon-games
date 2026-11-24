@@ -1924,7 +1924,7 @@
             {"text": "CALCIUM", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_calcium_snowpoint_temple_d20r0102_12_13", "event": {"lines": ["A Calcium, lying among the rocks."], "gift_item": {"CALCIUM": 1}, "flag": "got_calcium_snowpoint_temple_d20r0102_12_13"}},
             {"text": "FULL HEAL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_full_heal_snowpoint_temple_d20r0105_11_18", "event": {"lines": ["A Full Heal, in a dark corner."], "gift_item": {"FULL_HEAL": 1}, "flag": "got_full_heal_snowpoint_temple_d20r0105_11_18"}}
         ],
-        "area_boss": {"id": 486, "level": 70, "name": "Regigigas", "victory_flag": "SNOWPOINT_TEMPLE_boss_defeated"},
+        "area_boss": {"id": 486, "level": 70, "name": "Regigigas", "victory_flag": "SNOWPOINT_TEMPLE_boss_defeated", "requires": ["party_has:377", "party_has:378", "party_has:379"], "fail": ["A colossal Pokemon sits motionless in the cold, as still as the temple itself.", "It seems to be waiting for something... perhaps the three giants of rock, ice and steel."]},
         "trainer_pool": [],
         "wild_levels": {"land": [50, 56]}
     },
@@ -3974,7 +3974,7 @@
       "id": "sinnoh_s8",
       "type": "SIDE",
       "title": "Distortion World Rift",
-      "description": "At the Spear Pillar a rift opened, and Giratina dragged Cyrus into the Distortion World. Follow them!",
+      "description": "A rift tore open at the Spear Pillar. Giratina pulled Cyrus through it, into a world where nothing points the right way.",
       "condition": {
         "required_region": "SINNOH",
         "flag": "spear_pillar_resolved",
@@ -3988,7 +3988,7 @@
       "id": "sinnoh_s6",
       "type": "SIDE",
       "title": "Regigigas Awakening",
-      "description": "As Champion you may enter Snowpoint Temple. Something huge sleeps at the bottom.",
+      "description": "As Champion you may enter Snowpoint Temple. Something huge sleeps at the bottom, and only the three giants of rock, ice and steel are said to stir it.",
       "condition": {
         "required_region": "SINNOH",
         "flag": "beat_sinnoh_champion",
