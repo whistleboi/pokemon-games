@@ -1201,6 +1201,8 @@
     "VIRBANK_COMPLEX_OUTSIDE:Poke Ball behind the Roughneck": {"sheet": "b2_item_ball.png"},
     "VIRBANK_COMPLEX_OUTSIDE:Poke Ball in the grass": {"sheet": "b2_item_ball.png"},
     "VIRBANK_COMPLEX_OUTSIDE:Roughneck by the crane": {"sheet": "b2_c61.png"},
+    "VIRIDIAN_CITY:Jessie and James": {"sheet": "oi_74.png"},
+    "VIRIDIAN_CITY:Jessie": {"sheet": "oi_75.png"},
     "NATIONAL_PARK:TM055": {
       "item": "POKE_BALL"
     },

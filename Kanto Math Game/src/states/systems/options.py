@@ -49,7 +49,10 @@ class OptionsState(GameState):
                      "How long you get to answer when a question is timed.")]
         if name == "GAMEPLAY":
             caps = [(k, v[0].title()) for k, v in levels.LEVEL_CAP_TEXT.items()]
-            return [("Battle style", [("TRADITIONAL", "Classic"), ("OVERWORLD", "Overworld")], *self._story("battle_style"), "Battles on their own screen, or right on the map."),
+            hard = settings.get(self.story, "difficulty")
+            return [("Difficulty", [("NORMAL", "Normal"), ("EXP", "EXP Mode")], *self._pref("difficulty"),
+                     "EXP Mode: 30% more Exp. from every battle, an easier journey." if hard == "EXP" else "Exp. as the games give it."),
+                    ("Battle style", [("TRADITIONAL", "Classic"), ("OVERWORLD", "Overworld")], *self._story("battle_style"), "Battles on their own screen, or right on the map."),
                     ("Game speed", [(1, "1x"), (2, "2x")], *self._story("game_speed"), "Everything moves twice as fast at 2x."),
                     ("Level cap", caps, *self._story("level_cap_mode"), levels.LEVEL_CAP_TEXT[levels.cap_mode(self.story)][1]),
                     ("Exp Share", [(True, "On"), (False, "Off")], *self._story("exp_share"), "The whole party earns XP from a win."),
@@ -73,7 +76,9 @@ class OptionsState(GameState):
         return H + 76
 
     def _row_rect(self, i):
-        return pygame.Rect(16, self._top() + i * (ROW_H + ROW_GAP), self.game.width - 32, ROW_H)
+        n = max(1, len(self.rows()))   # (more rows than fit above the bottom bar: each a little shorter)
+        h = max(48, min(ROW_H, (self.bar.top - 10 - self._top() + ROW_GAP) // n - ROW_GAP))
+        return pygame.Rect(16, self._top() + i * (h + ROW_GAP), self.game.width - 32, h)
 
     def _arrows(self, r):
         size = r.h - 20
