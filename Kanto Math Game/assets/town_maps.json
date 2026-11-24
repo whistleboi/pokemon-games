@@ -329128,7 +329128,7 @@
      "cccccccccccccc",
      "ccccccc...cccc",
      "c............c",
-     "c..N.........c",
+     "c..N...N.....c",
      "c.Ncc.....cc.c",
      "c......N.....c",
      "c............c",
@@ -329167,6 +329167,7 @@
        ]
       }
      },
+     "Move Tutor",
      {
       "text": "Senilor",
       "action": "EVENT",
