@@ -4984,6 +4984,269 @@ CT_ROOF["sign_events"] = {"16,10": {"text": "The bell", "action": "EVENT", "even
     "flag": "b2_celestial_bell"}}}
 
 
+# ======================================================================================================== batch 7a (11-24)
+# Lentimas Town (458: the Blue Shard tutor's house 459, the Center 460, the TM house 608), Reversal Mountain: the mountainside
+# (461), the entrance chamber (531 / White 2 537: REVERSAL_MOUNTAIN_ENTRY), the main chamber (533 / 539: _INSIDE, with the lake
+# room 532 / 538, Heatran's chamber 534 / 540 and the Undella room 536 / 542), the south passage (535 / 541: _SOUTH, out to the
+# cliffs), each version's own layout as a story map; the Strange House (462 and its rooms: the house as the ghost moves the
+# furniture). Story flags: b2_lentimas_flight -> b2_lentimas_juniper (Juniper's errand: Drayden) -> walk_bianca (she joins in
+# the main chamber) -> b2_reversal_bianca_bye (the Undella room) -> visited_UNDELLA_TOWN. Strange House: b2_sh_ghost_1,
+# b2_sh_ghost_2, b2_sh_lunar_wing.
+LENTIMAS_SCENES = [
+    {"trigger": "enter", "condition": ["b2_lentimas_flight", "not:b2_lentimas_juniper"], "flag": "b2_lentimas_juniper",
+     "cast": [{"sheet": "b2_juniper.png", "from": [7, 17], "to": "player", "stay": True, "lines": [
+         "Professor Juniper: Well, I suppose I should tell you why I brought you out here.",
+         "Professor Juniper: Cheren told me a group calling itself Team Plasma plans to use legendary Pokemon to take over Unova.",
+         "Professor Juniper: Unova has two legendary Dragon-type Pokemon, {legend} and {other_legend}. Two years ago each "
+         "recognised a Trainer as a hero, and follows them. So Team Plasma shouldn't be able to use them..."]},
+              {"sheet": "b2_bianca.png", "from": [9, 18], "to": "player", "stay": True, "lines": ["Bianca: That's true... What could they be planning?"]},
+              {"as": 0, "lines": ["Professor Juniper: There's so much we don't know about them. Opelucid City's Gym Leader, "
+                                  "Drayden, uses Dragon-types. He might know something.",
+                                  "Professor Juniper: So that's why I brought you here: please go to Opelucid and hear what "
+                                  "Drayden has to say. He's a Gym Leader, so he probably won't talk until you beat him!"],
+               "leave": [6, 4]},
+              {"as": 1, "lines": ["Bianca: I'll be in the volcano just beyond here! I'm investigating rumours of a rare "
+                                  "Fire-type Pokemon in Reversal Mountain."], "leave": [30, 18]}]},
+]
+LENTIMAS_TUTOR = {"text": "Move Tutor", "action": "EVENT", "event": {
+    "lines": ["I'm a Move Tutor, and Blue Shards are my passion! Bring me some and I'll teach your Pokemon a move."],
+    "tutor": {"choices": ["LAST-RESORT", "IRON-DEFENSE", "MAGNET-RISE", "MAGIC-COAT", "BLOCK", "HYPER-VOICE", "ELECTROWEB",
+                          "ICY-WIND", "IRON-TAIL", "ZEN-HEADBUTT", "AQUA-TAIL", "EARTH-POWER", "FOUL-PLAY", "SUPERPOWER",
+                          "GRAVITY", "DRAGON-PULSE", "DARK-PULSE"],
+              "costs": {m: {"BLUE_SHARD": n} for m, n in (
+                  ("LAST-RESORT", 2), ("IRON-DEFENSE", 2), ("MAGNET-RISE", 4), ("MAGIC-COAT", 4), ("BLOCK", 6),
+                  ("HYPER-VOICE", 6), ("ELECTROWEB", 6), ("ICY-WIND", 6), ("IRON-TAIL", 6), ("ZEN-HEADBUTT", 6),
+                  ("AQUA-TAIL", 8), ("EARTH-POWER", 8), ("FOUL-PLAY", 8), ("SUPERPOWER", 10), ("GRAVITY", 10),
+                  ("DRAGON-PULSE", 10), ("DARK-PULSE", 10))}},   # (Black 2's Lentimas tutor: Bulbapedia's walkthrough, Part 11)
+    "cancel": ["Come back with more Blue Shards!"]}}
+OUTSIDE.update({459: 458, 460: 458, 608: 458})
+LENTIMAS = town(
+    458, {6: _ball("Poke Ball by the runway", "FIRE_STONE", "b2_lentimas_fire_stone", name="a Fire Stone"),
+          0: {"text": "Pilot by the runway", "action": "EVENT", "event": {
+              "lines": ["Skyla's plane runs back to Mistralton whenever you need it. All aboard!"],
+              "travel": "MISTRALTON_CITY", "land": ["cargo", 24, 21]}},
+          1: _say("Man by the kilns", "Lentimas pottery is made from the volcano's clay. It's famous all over Unova!"),
+          3: _say("Backpacker in town", "If the season changes, the view from the plane changes too!"),
+          4: _say("Woman by the houses", "We only get what Skyla flies in. Still, there's nothing but beauty here."),
+          7: _say("Maid by the runway", "Reversal Mountain's just east. People say a rare Pokemon lives deep inside...")},
+    {7: ["LENTIMAS TOWN", "A town of pottery, at the foot of a volcano"]},
+    {459: ("house", "tutor_house"), 460: ("center", "center"), 608: ("house", "tm_house")},
+    {"tutor_house": room(459, {0: LENTIMAS_TUTOR,
+                               1: _say("Woman by the tutor", "Hey, Trainer! Today's move is Magic Coat: it bounces back status "
+                                                             "moves and stat drops!"),
+                               2: _say("Boy in the house", "He'll teach anything for Blue Shards. Find them in the dust clouds!")},
+                         {}, (18, 16)),
+     "center": room(460, {6: {"text": "Pokémon Center", "action": "HEAL"}, 3: {"text": "Shop", "action": "SHOP"},
+                          4: _say("Clerk ", "The counter on the left sells everyday items."),
+                          5: _say("Clerk  ", "Specialty Poke Balls are over here!"),
+                          10: {"text": "Mr. Medal", "action": "EVENT", "event": {"medal_rally": True}},
+                          0: _say("Hiker in the Center", "Going to check the volcano too? It's the same kind as Stark Mountain in Sinnoh."),
+                          2: _say("Battle Girl", "A cool mind feels no heat!")}, {}, (26, 16)),
+     "tm_house": room(608, {2: _gift("Old man by the table", ["Hmm! You spoke to me... You're quite a Trainer. I like you! Take this TM!",
+                                                              "{player_name} received TM57 Charge Beam!"],
+                                     "TM023", "b2_lentimas_charge_beam",
+                                     ["Charge Beam sometimes raises the user's Sp. Atk. Then its power goes up and up!"]),
+                            0: _say("Woman in the house", "I was born here and I'll grow old here. I don't mind: I don't know anywhere else."),
+                            1: _say("Man by the window", "There's nothing but beauty here, but Skyla brings what we don't have.")},
+                       {}, (18, 26))},
+    edges={">": ("REVERSAL_MOUNTAIN", [(31, y) for y in range(16, 21)])},
+    scenes=LENTIMAS_SCENES, title="Lentimas Town")
+LENTIMAS["edge_to"] = {"31,%d" % y: [1, y] for y in range(16, 21)}
+for _r, _t in (("tutor_house", "House"), ("center", "Pokémon Center"), ("tm_house", "House")):
+    LENTIMAS["rooms"][_r]["title"] = _t
+
+# --- Reversal Mountain: the mountainside (461)
+REVERSAL = route(
+    461, {0: _ball("Poke Ball by the cave mouth", "FULL_HEAL", "b2_rm_full_heal", name="a Full Heal"),
+          1: _ball("Poke Ball on the east cliff", "TM114", "b2_rm_tm30", name="TM114 Shadow Ball"),
+          2: _ball("Poke Ball on the south cliff", "SMOKE_BALL", "b2_rm_smoke_ball", name="a Smoke Ball"),
+          6: _ball("Poke Ball on the south cliff ", "ESCAPE_ROPE", "b2_rm_escape_rope", name="an Escape Rope")},
+    {3: ["REVERSAL MOUNTAIN", "Ahead"]},
+    exits={"<": ("LENTIMAS_TOWN", [(0, y) for y in range(15, 21)]), "^": ("REVERSAL_MOUNTAIN_ENTRY", [(14, 6), (15, 6)]),
+           "s": ("REVERSAL_MOUNTAIN_SOUTH", [(33, 11), (33, 12), (27, 18), (28, 18)]), "n": ("STRANGE_HOUSE", [(43, 16)])},
+    trainers={3: ("Cyclist Jeremiah", 1), 4: ("Cyclist Adelaide", 1)}, title="Reversal Mountain")
+REVERSAL["split"] = True   # (the cliffs and the Strange House's side: reached from the south passage, as Black 2)
+REVERSAL["edge_to"] = dict({"0,%d" % y: [30, min(max(y, 16), 20)] for y in range(15, 21)},
+                           **{"33,11": [9, 7], "33,12": [9, 7], "27,18": [4, 15], "28,18": [4, 15]})
+
+
+def _rm_entry(z, ball, out, up):
+    m = route(z, {0: ball}, {}, exits={"v": ("REVERSAL_MOUNTAIN", [out]), "^": ("REVERSAL_MOUNTAIN_INSIDE", [up])},
+              title="Reversal Mountain")
+    m["edge_to"] = {"%d,%d" % out: [14, 6]}
+    return m
+
+
+RM_ENTRY = _rm_entry(531, _ball("Poke Ball in the entrance chamber", "MAX_REPEL", "b2_rm_max_repel", name="a Max Repel"), (17, 27), (21, 4))
+RM_ENTRY["story_maps"] = [{"when": ["unova_version:WHITE_2"], "map": _rm_entry(
+    537, _ball("Poke Ball in the entrance chamber", "MAX_REPEL", "b2_rm_max_repel", name="a Max Repel"), (16, 27), (20, 4))}]
+
+
+def _rm_south(z, up, east, south):
+    m = route(z, {}, {}, exits={"^": ("REVERSAL_MOUNTAIN_INSIDE", [up]), "v": ("REVERSAL_MOUNTAIN", [east, south])},
+              title="Reversal Mountain")
+    m["edge_to"] = {"%d,%d" % east: [33, 11], "%d,%d" % south: [27, 18]}
+    return m
+
+
+RM_SOUTH = _rm_south(535, (4, 2), (9, 7), (4, 15))
+RM_SOUTH["story_maps"] = [{"when": ["unova_version:WHITE_2"], "map": _rm_south(541, (6, 2), (11, 7), (6, 15))}]
+
+RM_BIANCA_JOIN = {"trigger": {"zone": [5, 8, 10, 11]}, "condition": ["b2_lentimas_juniper", "not:walk_bianca_met"],
+                  "flag": "b2_reversal_bianca_met", "cast": [{"sheet": "b2_bianca.png", "from": [8, 9], "to": "player", "lines": [
+                      "Bianca: {player_name}! You came! This mountain's full of wild Pokemon. Let's go through together!"],
+                      "leave": [8, 9]}], "event": {"walk_partner": "bianca"}}
+HEATRAN = {"text": "Heatran", "action": "BOSS", "color": "RED", "_look": "mon:485",
+           "condition": ["beat_unova_champion", "not:reversal_heatran"],
+           "boss": {"id": 485, "name": "Heatran", "level": 68, "victory_flag": "reversal_heatran",   # (the menu era's boss, kept)
+                    "lines": ["The chamber's heat rises... Heatran crawls up out of the magma!", "Gwogobo gwobobobo!"]}}
+
+
+def _rm_inside(z, rooms, ppl, hidden, trainers):
+    lake_z, lake = rooms["lake"]
+    heat_z, east_z = rooms["heatran"], rooms["east"]
+    m = route(z, ppl, {}, exits={"<": ("REVERSAL_MOUNTAIN_ENTRY", [(4, 9)]), "v": ("REVERSAL_MOUNTAIN_SOUTH", [(8, 57)])},
+              trainers=trainers, hidden=hidden, scenes=[RM_BIANCA_JOIN],
+              rooms={"lake": room(lake_z, lake["people"], {}, lake["door"]),
+                     "heatran": room(heat_z, {0: HEATRAN}, {}, (40, 49)),
+                     "east": room(east_z, {}, {}, (91, 9), exits_extra={412: (">", "UNDELLA_TOWN")},
+                                  scenes=[{"trigger": "enter", "condition": ["walk_bianca", "not:b2_reversal_bianca_bye"],
+                                           "flag": "b2_reversal_bianca_bye",
+                                           "cast": [{"sheet": "b2_bianca.png", "from": [6, 14], "to": "player", "lines": [
+                                               "Bianca: Oh! Undella Town is right through here! I want to look around a bit more.",
+                                               "Bianca: I'll do a little more research about Heatran! Thank you for coming with me. "
+                                               "Be careful on the rest of your journey!"], "leave": [2, 4]}]}])},
+              inside={"%d,%d" % lake["door"]: "lake", "40,49": "heatran", "91,9": "east"}, title="Reversal Mountain")
+    _doors(m, m["inside"])
+    for k in ("lake", "heatran", "east"):
+        m["rooms"][k]["title"] = "Reversal Mountain"
+    return m
+
+
+OUTSIDE.update({531: -1, 537: -1, 535: -1, 541: -1, 532: 533, 534: 533, 536: 533, 538: 539, 540: 539, 542: 539})
+_RM_SCIENTIST = {"text": "Scientist in the mountain", "action": "EVENT", "condition": ["habitat:REVERSAL_MOUNTAIN_INSIDE"], "event": {
+    "lines": ["You've seen every Pokemon in Reversal Mountain? Amazing! Take this!", "{player_name} received TM54 False Swipe!"],
+    "gift_item": {"TM057": 1}, "flag": "b2_rm_false_swipe", "done": ["False Swipe always leaves the target with at least 1 HP!"]}}
+_RM_SCIENTIST_ASK = _say("Scientist in the mountain ", "Show me a completed Habitat List for Reversal Mountain and I'll reward you!",
+                         condition=["not:habitat:REVERSAL_MOUNTAIN_INSIDE"])
+RM_INSIDE = _rm_inside(
+    533, {"lake": (532, {"door": (78, 46), "people": {
+        0: _b2_battle("Pokemon Ranger Lewis", 515, "b2_rm_lewis", ["Pokemon Ranger Lewis: The volcano's a ranger's beat too! Battle!"],
+                      ["Lewis: You're the real deal!"], ["Lewis: Look after the mountain's Pokemon!"]),
+        1: _ball("Poke Ball by the lake", "TOXIC_ORB", "b2_rm_toxic_orb", name="a Toxic Orb")}}),
+          "heatran": 534, "east": 536},
+    {9: _ball("Poke Ball in the north tunnel", "PP_UP", "b2_rm_pp_up", name="a PP Up"),
+     11: _ball("Poke Ball in the west tunnel", "NUGGET", "b2_rm_nugget", name="a Nugget"),
+     8: _ball("Poke Ball in the east tunnel", "REVIVE", "b2_rm_revive", name="a Revive"),
+     12: _ball("Poke Ball by Kiyo", "HYPER_POTION", "b2_rm_hyper_potion", name="a Hyper Potion"),
+     10: _ball("Poke Ball in the dead end", "TM282", "b2_rm_tm69", name="TM282 Rock Polish"),
+     16: [_RM_SCIENTIST, _RM_SCIENTIST_ASK]},
+    {"8,38": "GREEN_SHARD", "84,36": "ELIXIR", "89,57": "STAR_PIECE", "51,19": "CALCIUM", "30,49": "BLUE_SHARD"},
+    {0: ("Pokemon Ranger Eliza", 2), 1: ("Hiker Jared", 5), 2: ("Black Belt Corey", 1), 3: ("Ace Trainer Cora", 5),
+     4: ("Backpacker Kumiko", 4), 5: ("Battle Girl Chan", 3), 6: ("Ace Trainer Ray", 5), 7: ("Doctor Derek", 1),
+     14: ("Backpacker Kiyo", 6), 15: ("Hiker Markus", 6)})
+RM_INSIDE["story_maps"] = [{"when": ["unova_version:WHITE_2"], "map": _rm_inside(
+    539, {"lake": (538, {"door": (62, 29), "people": {
+        0: _b2_battle("Pokemon Ranger Eliza", 518, "b2_rm_eliza", ["Pokemon Ranger Eliza: Magma or not, I patrol here! Battle!"],
+                      ["Eliza: You're the real deal!"], ["Eliza: Look after the mountain's Pokemon!"]),
+        1: _ball("Poke Ball by the magma", "FLAME_ORB", "b2_rm_flame_orb", name="a Flame Orb")}}),
+          "heatran": 540, "east": 542},
+    {10: _ball("Poke Ball in the north tunnel", "PP_UP", "b2_rm_pp_up", name="a PP Up"),
+     11: _ball("Poke Ball in the east tunnel", "NUGGET", "b2_rm_nugget", name="a Nugget"),
+     8: _ball("Poke Ball in the east chamber", "REVIVE", "b2_rm_revive", name="a Revive"),
+     12: _ball("Poke Ball in the west tunnel", "HYPER_POTION", "b2_rm_hyper_potion", name="a Hyper Potion"),
+     9: _ball("Poke Ball in the dead end", "TM282", "b2_rm_tm69", name="TM282 Rock Polish"),
+     16: [_RM_SCIENTIST, _RM_SCIENTIST_ASK]},
+    {"27,18": "ELIXIR", "39,16": "YELLOW_SHARD", "39,6": "CALCIUM", "57,32": "STAR_PIECE", "87,57": "RED_SHARD"},
+    {0: ("Battle Girl Chan", 2), 1: ("Backpacker Kiyo", 5), 2: ("Black Belt Corey", 2), 3: ("Hiker Markus", 5),
+     4: ("Pokemon Ranger Lewis", 2), 5: ("Ace Trainer Cora", 4), 6: ("Ace Trainer Ray", 5), 7: ("Doctor Derek", 1),
+     14: ("Backpacker Kumiko", 4), 15: ("Hiker Jared", 5)})}]
+RM_INSIDE["rooms"]["lake"]["hidden"] = {"26,12": "WATER_GEM"}
+RM_INSIDE["story_maps"][0]["map"]["rooms"]["lake"]["hidden"] = {"6,6": "FIRE_GEM"}
+
+# --- the Strange House: the ground floor as you find it (462), then as the furniture moves (511, 514), the library below (510,
+# 512), the side rooms (569-572) and the room with the Lunar Wing (513). One place; each state a room on its own stairs.
+OUTSIDE.update({510: 462, 511: -1, 512: -1, 513: -1, 514: -1, 569: -1, 570: -1, 571: -1, 572: -1})
+_SH_SIGNS = {1: ["It's impossible to tell when this portrait was painted...", "Look closely: it's covered in scratches."],
+             2: ["The portrait has fallen..."], 3: ["No one saw it change, but the picture now hangs upside down..."]}
+_SH_BOOKS = {7: ["Rows and rows of old books about sleep and dreams."],
+             1: ["There is a Pokemon called Cresselia in faraway Sinnoh. Its wings shine like the crescent moon and keep nightmares away."],
+             2: ["There is a Pokemon called Darkrai in faraway Sinnoh. It drives people away with terrible nightmares."],
+             3: ["Drowzee put others to sleep and eat their dreams. Eating nightmares can upset their stomachs."],
+             4: ["Each Hypno carries a pendulum it swings to make people drowsy. They say one once took a child away..."],
+             5: ["Dream Eater: the attacker eats a sleeping target's dream, and heals by half the damage."],
+             6: ["Pokemon with the Forewarn Ability sense one of their opponent's moves."]}
+_SH_GHOST = [{"trigger": "enter", "condition": ["not:b2_sh_ghost_1"], "flag": "b2_sh_ghost_1",
+              "cast": [{"sheet": "b2_c15.png", "from": [21, 15], "to": [21, 15], "lines": [
+                  "An everlasting dark dream... An endless dream of darkness...", "Dad, Mom, Abra... Where are you...?"],
+                  "leave": [21, 15]}], "call": ["(The girl faded away...)"]}]
+_SH_GHOST_2 = [{"trigger": "enter", "condition": ["not:b2_sh_ghost_2"], "flag": "b2_sh_ghost_2",
+                "cast": [{"sheet": "b2_c15.png", "from": [18, 15], "to": [18, 15], "lines": [
+                    "In the dark dream... I heard my dad's voice...", "Forget about the Lunar Wing... Please stay here with me..."],
+                    "leave": [18, 15]}], "call": ["(The girl faded away...)"]}]
+STRANGE_HOUSE = route(
+    462, {}, _SH_SIGNS, exits={"v": ("REVERSAL_MOUNTAIN", [(17, 30), (18, 30), (19, 30)])},
+    rooms={"library": room(510, {0: _ball("Poke Ball between the shelves", "SPELL_TAG", "b2_sh_spell_tag", name="a Spell Tag")},
+                           _SH_BOOKS, (6, 19), stairs={511: (">", "ROOM:hall_2")}),
+           "hall_2": room(511, {}, {1: ["The portrait has fallen..."], 2: _SH_SIGNS[2], 3: _SH_SIGNS[3]}, None,
+                          stairs={512: ("<", "ROOM:library_2"), 510: (">", "ROOM:library"), 569: ("w", "ROOM:room_w"),
+                                  570: ("e", "ROOM:room_e")},
+                          exits_extra={461: ("v", "REVERSAL_MOUNTAIN")}, scenes=_SH_GHOST),
+           "library_2": room(512, {0: _ball("Poke Ball by the east shelves", "DUSK_STONE", "b2_sh_dusk_stone", name="a Dusk Stone")},
+                             _SH_BOOKS, None, stairs={511: ("<", "ROOM:hall_2"), 514: (">", "ROOM:hall_3")}),
+           "hall_3": room(514, {}, {2: ["There are markings on the wall where the portrait hung..."],
+                                    3: ["Could there be another painting behind the scratches?"]}, None,
+                          stairs={512: (">", "ROOM:library_2"), 513: ("^", "ROOM:attic"), 571: ("w", "ROOM:room_w2"),
+                                  572: ("e", "ROOM:room_e2")},
+                          exits_extra={461: ("v", "REVERSAL_MOUNTAIN")}, scenes=_SH_GHOST_2),
+           "attic": room(513, {0: {"text": "Lunar Wing", "action": "EVENT", "condition": ["not:b2_sh_lunar_wing"],
+                                   "_look": "sheet:b2_item_ball.png", "event": {
+                                       "lines": ["{player_name} found the Lunar Wing!",
+                                                 "...Oh... The Lunar Wing... I can't take it now... But it'll be OK...",
+                                                 "Please return the wing to the Pokemon it belongs to... I was waiting on the "
+                                                 "bridge so I could return it myself..."],
+                                       "gift_item": {"LUNAR_WING": 1}, "flag": "b2_sh_lunar_wing"}}},
+                         {}, None, stairs={514: ("v", "ROOM:hall_3")}),
+           "room_w": room(569, {0: _ball("Poke Ball in the west room", "FULL_HEAL", "b2_sh_full_heal", name="a Full Heal")}, {}, None,
+                          stairs={511: ("v", "ROOM:hall_2")}),
+           "room_e": room(570, {0: _b2_battle("Backpacker Boone", 390, "b2_sh_boone",
+                                              ["Backpacker Boone: A haunted house? Perfect for a battle!"],
+                                              ["Boone: Spooky! You win!"], ["Boone: Did you see something move just now?"])},
+                          {}, None, stairs={511: ("v", "ROOM:hall_2")}),
+           "room_w2": room(571, {0: _b2_battle("Psychic Lynette", 391, "b2_sh_lynette",
+                                               ["Psychic Lynette: I sense a presence in this house... Let's battle!"],
+                                               ["Lynette: I didn't sense that coming!"], ["Lynette: The girl... she's still waiting."])},
+                           {}, None, stairs={514: ("v", "ROOM:hall_3")}),
+           "room_e2": room(572, {0: _ball("Poke Ball in the east room", "RARE_CANDY", "b2_sh_rare_candy", name="a Rare Candy")}, {}, None,
+                           stairs={514: ("v", "ROOM:hall_3")})},
+    inside={"6,19": "library"}, title="Strange House")
+_doors(STRANGE_HOUSE, STRANGE_HOUSE["inside"])
+STRANGE_HOUSE["rooms"]["library"]["split"] = True   # (the shelves bar the east side the first time: the Dusk Stone waits for the second visit)
+for _rn, _cut in (("library", ((6, 6), (22, 12), (23, 12))), ("library_2", ((12, 6), (19, 6)))):   # (shelves the furniture
+    _lib = STRANGE_HOUSE["rooms"][_rn]                                                              #  keeps you from: no sign)
+    _marks = [(x, y) for y, row in enumerate(_lib["art"]) for x, ch in enumerate(row) if ch == "!"]
+    _lib["signs"] = [s for (x, y), s in zip(_marks, _lib.get("signs") or []) if (x, y) not in _cut]
+    for _x, _y in _cut:
+        _put_char(_lib, _x, _y, "c")
+for _k in STRANGE_HOUSE["rooms"]:
+    STRANGE_HOUSE["rooms"][_k]["title"] = "Strange House"
+
+
+def _room_wild(m, area):   # (rooms on a route have no wild Pokemon unless given their own: the place's table, 11-24)
+    tbl = (_AREA_DATA.get(area) or {}).get("wild_tables")
+    if not tbl:
+        return
+    for _m in [m] + [sm["map"] for sm in m.get("story_maps") or []]:
+        for r in (_m.get("rooms") or {}).values():
+            r.setdefault("wild_tables", tbl)
+
+
+_AREA_DATA = json.load(open(os.path.join(os.path.dirname(__file__), "..", "..", "..", "assets", "unova_area_data.json"),
+                            encoding="utf-8"))["STORY_PROGRESSION"]
+_room_wild(RM_INSIDE, "REVERSAL_MOUNTAIN_INSIDE")
+_room_wild(STRANGE_HOUSE, "STRANGE_HOUSE")
+
+
 MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": FLOCCESY, "UNOVA_ROUTE_20": ROUTE_20,
         "FLOCCESY_RANCH_OUTSIDE": RANCH_OUTSIDE, "FLOCCESY_RANCH": RANCH, "PLEDGE_GROVE": PLEDGE_GROVE,
         "VIRBANK_CITY": VIRBANK, "VIRBANK_COMPLEX_OUTSIDE": COMPLEX_OUTSIDE, "VIRBANK_COMPLEX": COMPLEX, "POKESTAR_STUDIOS": POKESTAR,
@@ -5001,4 +5264,6 @@ MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": 
         "MISTRALTON_CAVE_2F": MISTRAL_2F, "GUIDANCE_CHAMBER": GUIDANCE,
         "MISTRALTON_CITY": MISTRALTON, "UNOVA_ROUTE_7": ROUTE_7, "TWIST_MOUNTAIN_ENTRANCE": TWIST_MOUTH,   # (batch 6b)
         "CELESTIAL_TOWER": CT_1F, "CELESTIAL_TOWER_2F": CT_2F, "CELESTIAL_TOWER_3F": CT_3F, "CELESTIAL_TOWER_4F": CT_4F,
-        "CELESTIAL_TOWER_ROOF": CT_ROOF}
+        "CELESTIAL_TOWER_ROOF": CT_ROOF,
+        "LENTIMAS_TOWN": LENTIMAS, "REVERSAL_MOUNTAIN": REVERSAL, "REVERSAL_MOUNTAIN_ENTRY": RM_ENTRY,   # (batch 7a)
+        "REVERSAL_MOUNTAIN_INSIDE": RM_INSIDE, "REVERSAL_MOUNTAIN_SOUTH": RM_SOUTH, "STRANGE_HOUSE": STRANGE_HOUSE}
