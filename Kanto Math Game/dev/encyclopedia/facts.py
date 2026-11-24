@@ -98,6 +98,16 @@ for k, v in HOENN.items():   # (Hoenn's own file, merged the same way)
         DATA[k] = dict(v, **DATA[k])
     elif k not in DATA:
         DATA[k] = v
+SINNOH = load("sinnoh_area_data.json")
+for k, v in SINNOH.items():   # (Sinnoh's own file, merged the same way)
+    if k == "STORY_PROGRESSION":
+        DATA[k] = dict(DATA[k], **v)
+    elif k == "JOURNAL_MISSIONS":
+        continue
+    elif isinstance(v, dict) and isinstance(DATA.get(k), dict):
+        DATA[k] = dict(v, **DATA[k])
+    elif k not in DATA:
+        DATA[k] = v
 # The game's overlays (src/core/game.py _apply_overlays: Hoenn's ORAS trainers, canon teams, items and gifts), applied the
 # same way the game does at load: the function and its file list are read from the game's own code.
 _G = open(os.path.join(ROOT, "src", "core", "game.py"), encoding="utf-8").read()
@@ -107,7 +117,7 @@ exec(re.search(r"^def _apply_overlays\(.*?(?=^\S)", _G, re.M | re.S).group(0), _
 _ns["_apply_overlays"](A, DATA)
 PLACES = DATA["STORY_PROGRESSION"]
 MISSIONS = (AREA["GAME_CONFIG"]["JOURNAL_MISSIONS"] + SEVII.get("JOURNAL_MISSIONS", []) + JOHTO.get("JOURNAL_MISSIONS", [])
-            + ORANGE.get("JOURNAL_MISSIONS", []) + HOENN.get("JOURNAL_MISSIONS", []))
+            + ORANGE.get("JOURNAL_MISSIONS", []) + HOENN.get("JOURNAL_MISSIONS", []) + SINNOH.get("JOURNAL_MISSIONS", []))
 
 
 def region_of(key):
@@ -119,6 +129,8 @@ def region_of(key):
         return "ORANGE"
     if key in HOENN["STORY_PROGRESSION"]:
         return "HOENN"
+    if key in SINNOH["STORY_PROGRESSION"]:
+        return "SINNOH"
     return "KANTO"
 MAPS = load("town_maps.json")
 LEVELS = load("area_levels.json")
@@ -277,14 +289,16 @@ def later(r, region):
     pid = str(r["id"])
     if pid in FORMS:
         home = FORM_HOME.get(FORMS[pid].get("form"))
-        if home and home != "KANTO":
-            return home
+        if home and home != (region if region not in ("SEVII", "KANTO") else "KANTO") and region != "PALDEA":
+            return home   # (form_allowed: another region's forms wait for that region; its own home and Paldea have them)
         pid = str(FORMS[pid]["id"])
     if r.get("form") in FORM_HOME:
         return FORM_HOME[r["form"]]
+    if region not in ("KANTO", "SEVII", "JOHTO", "ORANGE"):
+        return None   # (species_allowed: only Kanto, Johto and the Orange Islands keep later regions' Pokemon out)
     n = int(pid)
     native = next((reg for top, reg in REGION_OF_DEX if n <= top), None)
-    if native in (None, "KANTO") or (native == "JOHTO" and region in ("SEVII", "JOHTO", "ORANGE", "HOENN")) or (native == "HOENN" and region == "HOENN"):
+    if native in (None, "KANTO") or (native == "JOHTO" and region in ("SEVII", "JOHTO", "ORANGE", "HOENN")) or (native == "HOENN" and region in ("HOENN", "SINNOH")) or (native == "SINNOH" and region == "SINNOH"):
         return None
     return native
 
@@ -422,6 +436,12 @@ def wild(key):
         for k, v in sorted(pct(DATA[hp]).items(), key=lambda kv: -kv[1]):
             ids = [int(x) for x in str(k).split("+") if x]
             out["hordes"].append({"id": ids[0], "ids": ids, "how": "Horde", "lv": list(hlv), "rate": v, "share": hr})
+    rp = p.get("radar_pool_percentages")
+    if rp and DATA.get(rp):
+        # (src/world/poke_radar.py: the Poke Radar's own Pokemon, in tall grass, once you have the National Pokedex)
+        for r in rows_of(DATA[rp], "Poké Radar", band):
+            r["dex_when"] = "radar"
+            out["dexnav"].append(r)
     for kind, pkey in (("land", "dexnav_pool_percentages"), ("surf", "dexnav_surf_pool_percentages")):
         dp = p.get(pkey)
         if dp and DATA.get(dp):
@@ -761,8 +781,10 @@ def region_keys(region):
         return [k for k in MAPS if k in ORANGE["STORY_PROGRESSION"]]
     if region == "HOENN":
         return [k for k in MAPS if k in HOENN["STORY_PROGRESSION"]]
+    if region == "SINNOH":
+        return [k for k in MAPS if k in SINNOH["STORY_PROGRESSION"]]
     kanto = (set(AREA["STORY_PROGRESSION"]) - sevii - set(JOHTO["STORY_PROGRESSION"]) - set(ORANGE["STORY_PROGRESSION"])
-             - set(HOENN["STORY_PROGRESSION"]))
+             - set(HOENN["STORY_PROGRESSION"]) - set(SINNOH["STORY_PROGRESSION"]))
     return [k for k in MAPS if k in kanto and (AREA["STORY_PROGRESSION"][k].get("region") in (None, "KANTO"))]
 
 
