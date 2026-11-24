@@ -96,6 +96,9 @@ check(guide.goal_area(g) == "PALLET_TOWN", f"the marker points at Pallet Town ({
 flags["oak_gs_errand"] = True
 check("journey_gs_oak" not in side(), "Oak's part done once he asks")
 at("VALENCIA_ISLAND")
+flags.pop("orange_ivy_thanks", None)
+check("journey_gs_ivy" not in side(), "not before Orange's 'Get Well Soon' step (Ivy can't hand it over yet)")
+flags["orange_ivy_thanks"] = True
 check("journey_gs_ivy" in side(), "SIDE on Valencia: Professor Ivy's ball")
 flags["got_gs_ball_ivy"] = True; story.inventory["GS_BALL"] = 1
 check("journey_gs_ivy" not in side(), "Ivy's part done with the GS Ball in the Bag")
