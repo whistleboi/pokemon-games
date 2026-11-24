@@ -15,7 +15,6 @@ battle_points          main     battle
 catch                  main     items,quick
 doors                  main     world
 doubles                main     battle,quick
-ds3d                   main     world
 dungeon                main     world,quick
 events                 main     story
 exp_mode               main     battle
@@ -56,6 +55,7 @@ water_arrival          main     world
 ambush                 systems  world,wild
 area_changes           systems  world
 battle_bg              systems  battle,look
+ds3d                   systems  world,live3d
 battle_intros          systems  battle,look
 map_attacks            systems  world
 menu_screens           systems  ui
