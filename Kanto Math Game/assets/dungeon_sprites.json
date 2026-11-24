@@ -15667,6 +15667,93 @@
     },
     "ETERNA_FOREST_OUTSKIRTS:Woman": {
       "sheet": "pt_woman1.png"
+    },
+    "HOENN_TRICK_HOUSE:Trick Master": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_1:Trick Master": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_1:LAVA COOKIE": {
+      "item": "LAVA_COOKIE"
+    },
+    "HOENN_TRICK_HOUSE_1:LAVA COOKIE ": {
+      "item": "LAVA_COOKIE"
+    },
+    "HOENN_TRICK_HOUSE_2:Trick Master": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_2:RAGE CANDY BAR": {
+      "item": "RAGECANDYBAR"
+    },
+    "HOENN_TRICK_HOUSE_2:RAGE CANDY BAR ": {
+      "item": "RAGECANDYBAR"
+    },
+    "HOENN_TRICK_HOUSE_2:Mechadoll 3": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_3:Trick Master": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_3:FULL HEAL": {
+      "item": "FULL_HEAL"
+    },
+    "HOENN_TRICK_HOUSE_3:FULL HEAL ": {
+      "item": "FULL_HEAL"
+    },
+    "HOENN_TRICK_HOUSE_3:Mechadoll 3": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_4:Trick Master": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_4:CASTELIACONE": {
+      "item": "CASTELIACONE"
+    },
+    "HOENN_TRICK_HOUSE_4:CASTELIACONE ": {
+      "item": "CASTELIACONE"
+    },
+    "HOENN_TRICK_HOUSE_4:Mechadoll 3": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_5:Trick Master": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_5:OLD GATEAU": {
+      "item": "OLD_GATEAU"
+    },
+    "HOENN_TRICK_HOUSE_5:OLD GATEAU ": {
+      "item": "OLD_GATEAU"
+    },
+    "HOENN_TRICK_HOUSE_5:Mechadoll 3": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_5:Mechadoll 1": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_5:Mechadoll 2": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_5:Mechadoll 4": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_5:Mechadoll 5": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_6:Trick Master": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_6:FULL HEAL": {
+      "item": "FULL_HEAL"
+    },
+    "HOENN_TRICK_HOUSE_6:FULL HEAL ": {
+      "item": "FULL_HEAL"
+    },
+    "HOENN_TRICK_HOUSE_6:Mechadoll 3": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_1:EXPERT BELT": {
+      "item": "EXPERT_BELT"
     }
   },
   "townsperson": "NPC 17.png",

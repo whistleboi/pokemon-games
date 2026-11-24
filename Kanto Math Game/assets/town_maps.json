@@ -106770,8 +106770,8 @@
      "cccccccccccccc~~ccc~ccccooooooooc.\".cccc",
      "cccccccccccccc~~ccc~ccccooooooooc\".\"cccc",
      "cccccccccccccc~ccccccccoooooooooc\"\".cccc",
-     "cccccccccccAcc~ccccccccooooooocc\"\"\".\"ccc",
-     "cccccccc.ccDcc~~ccc~ccccooooooc\"\".\"\"\"\"cc",
+     "cccccccccccccc~ccccccccooooooocc\"\"\".\"ccc",
+     "cccccccc.ccncc~~ccc~ccccooooooc\"\".\"\"\"\"cc",
      "....ccc.!....c~~ccc~ccccooooooc\"\"\"\"\"\".cc",
      "<.............cccccccccccc..cc\"\"\"\"\"\"\"\"cc",
      "<......................\"\".\"\"\"\"N\".X.\"\"\"cc",
@@ -106809,11 +106809,10 @@
     "exits": {
      "^": "MAUVILLE_CITY",
      "v": "SLATEPORT_CITY",
-     "<": "HOENN_ROUTE_103"
+     "<": "HOENN_ROUTE_103",
+     "n": "HOENN_TRICK_HOUSE"
     },
-    "buildings": {
-     "A": "trick"
-    },
+    "buildings": {},
     "roofs": {
      "_picture": {
       "f": "em_ground/0_25.png",
@@ -646458,5 +646457,3063 @@
     52
    ]
   ]
+ },
+ "HOENN_TRICK_HOUSE": {
+  "art": [
+   "cccccccccccc",
+   "ccc!c!ccc!!!",
+   "......N.....",
+   ".....!!.....",
+   ".....!!.....",
+   "c..........!",
+   "............",
+   ".....nn....."
+  ],
+  "exits": {
+   "n": "HOENN_ROUTE_110"
+  },
+  "buildings": {},
+  "roofs": {
+   "_picture": {
+    "f": "em_ground/29_0.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
+  },
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "em_top/29_0.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     12,
+     8
+    ]
+   }
+  ],
+  "signs": [
+   [
+    "A round window. Sunlight streams in."
+   ],
+   [
+    "It's a scroll, hung on the wall."
+   ],
+   [
+    "A small dresser with two drawers."
+   ],
+   [
+    "A glass-fronted cupboard, full of odd gadgets."
+   ],
+   [
+    "A glass-fronted cupboard, full of odd gadgets."
+   ],
+   [
+    "A low wooden desk."
+   ],
+   [
+    "A low wooden desk."
+   ],
+   [
+    "A low wooden desk."
+   ],
+   [
+    "A low wooden desk."
+   ],
+   [
+    "A potted tree. Its leaves rustle a little."
+   ]
+  ],
+  "sign_events": {
+   "5,3": {
+    "text": "Trick Master's hiding spot",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "ready": [],
+       "flag": "trick_found_1",
+       "lines": [
+        "Under the desk... someone's there!",
+        "Trick Master: Aak! You found me! I am the Trick Master, master of tricks!",
+        "Trick Master: A sharp eye like yours deserves my challenge. Take this, should you get lost in there!",
+        "Trick Master: Now, go through the scroll on the wall. My first puzzle awaits! Mufufufu!"
+       ],
+       "gift_item": {
+        "ESCAPE_ROPE": 1
+       }
+      }
+     ],
+     "then": {
+      "lines": [
+       "A low wooden desk."
+      ]
+     }
+    }
+   },
+   "6,3": {
+    "text": "Trick Master's hiding spot",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "ready": [],
+       "flag": "trick_found_1",
+       "lines": [
+        "Under the desk... someone's there!",
+        "Trick Master: Aak! You found me! I am the Trick Master, master of tricks!",
+        "Trick Master: A sharp eye like yours deserves my challenge. Take this, should you get lost in there!",
+        "Trick Master: Now, go through the scroll on the wall. My first puzzle awaits! Mufufufu!"
+       ],
+       "gift_item": {
+        "ESCAPE_ROPE": 1
+       }
+      }
+     ],
+     "then": {
+      "lines": [
+       "A low wooden desk."
+      ]
+     }
+    }
+   },
+   "5,4": {
+    "text": "Trick Master's hiding spot",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "ready": [],
+       "flag": "trick_found_1",
+       "lines": [
+        "Under the desk... someone's there!",
+        "Trick Master: Aak! You found me! I am the Trick Master, master of tricks!",
+        "Trick Master: A sharp eye like yours deserves my challenge. Take this, should you get lost in there!",
+        "Trick Master: Now, go through the scroll on the wall. My first puzzle awaits! Mufufufu!"
+       ],
+       "gift_item": {
+        "ESCAPE_ROPE": 1
+       }
+      }
+     ],
+     "then": {
+      "lines": [
+       "A low wooden desk."
+      ]
+     }
+    }
+   },
+   "6,4": {
+    "text": "Trick Master's hiding spot",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "ready": [],
+       "flag": "trick_found_1",
+       "lines": [
+        "Under the desk... someone's there!",
+        "Trick Master: Aak! You found me! I am the Trick Master, master of tricks!",
+        "Trick Master: A sharp eye like yours deserves my challenge. Take this, should you get lost in there!",
+        "Trick Master: Now, go through the scroll on the wall. My first puzzle awaits! Mufufufu!"
+       ],
+       "gift_item": {
+        "ESCAPE_ROPE": 1
+       }
+      }
+     ],
+     "then": {
+      "lines": [
+       "A low wooden desk."
+      ]
+     }
+    }
+   },
+   "11,5": {
+    "text": "Trick Master's hiding spot",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "ready": [
+        "trick_puzzle_1_done"
+       ],
+       "flag": "trick_found_2",
+       "lines": [
+        "Something shifts inside the tree pot...",
+        "Trick Master: Aak! Found me already? I was sure the leaves hid me!",
+        "Trick Master: Puzzle two is ready. Go through the scroll!"
+       ]
+      }
+     ],
+     "then": {
+      "lines": [
+       "A potted tree. Its leaves rustle a little."
+      ]
+     }
+    }
+   },
+   "9,1": {
+    "text": "Trick Master's hiding spot",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "ready": [
+        "trick_puzzle_2_done"
+       ],
+       "flag": "trick_found_3",
+       "lines": [
+        "The dresser's drawer slides open...",
+        "Trick Master: Hah! You've a nose for tricks! Puzzle three is waiting behind the scroll!"
+       ]
+      }
+     ],
+     "then": {
+      "lines": [
+       "A small dresser with two drawers."
+      ]
+     }
+    }
+   },
+   "3,1": {
+    "text": "Trick Master's hiding spot",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "ready": [
+        "trick_puzzle_3_done"
+       ],
+       "flag": "trick_found_4",
+       "lines": [
+        "Behind the window, a face! It's the Trick Master!",
+        "Trick Master: Mufufu! You saw through it! On to puzzle four, behind the scroll!"
+       ]
+      }
+     ],
+     "then": {
+      "lines": [
+       "A round window. Sunlight streams in."
+      ]
+     }
+    }
+   },
+   "10,1": {
+    "text": "Trick Master's hiding spot",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "ready": [
+        "trick_puzzle_4_done"
+       ],
+       "flag": "trick_found_5",
+       "lines": [
+        "The cupboard door creaks open...",
+        "Trick Master: Aak! Even in here? Fine, fine! Puzzle five, behind the scroll!"
+       ]
+      }
+     ],
+     "then": {
+      "lines": [
+       "A glass-fronted cupboard, full of odd gadgets."
+      ]
+     }
+    }
+   },
+   "11,1": {
+    "text": "Trick Master's hiding spot",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "ready": [
+        "trick_puzzle_4_done"
+       ],
+       "flag": "trick_found_5",
+       "lines": [
+        "The cupboard door creaks open...",
+        "Trick Master: Aak! Even in here? Fine, fine! Puzzle five, behind the scroll!"
+       ]
+      }
+     ],
+     "then": {
+      "lines": [
+       "A glass-fronted cupboard, full of odd gadgets."
+      ]
+     }
+    }
+   },
+   "5,1": {
+    "text": "Scroll",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "ready": [
+        "trick_found_1",
+        "not:trick_puzzle_1_done"
+       ],
+       "lines": [
+        "It's a scroll... there's a big hole behind it!",
+        "You went through the hole behind the scroll."
+       ],
+       "travel": "HOENN_TRICK_HOUSE_1",
+       "land_floor": [
+        0,
+        0,
+        20
+       ]
+      },
+      {
+       "ready": [
+        "trick_found_2",
+        "not:trick_puzzle_2_done"
+       ],
+       "lines": [
+        "It's a scroll... there's a big hole behind it!",
+        "You went through the hole behind the scroll."
+       ],
+       "travel": "HOENN_TRICK_HOUSE_2",
+       "land_floor": [
+        0,
+        0,
+        20
+       ]
+      },
+      {
+       "ready": [
+        "trick_found_3",
+        "not:trick_puzzle_3_done"
+       ],
+       "lines": [
+        "It's a scroll... there's a big hole behind it!",
+        "You went through the hole behind the scroll."
+       ],
+       "travel": "HOENN_TRICK_HOUSE_3",
+       "land_floor": [
+        0,
+        0,
+        20
+       ]
+      },
+      {
+       "ready": [
+        "trick_found_4",
+        "not:trick_puzzle_4_done"
+       ],
+       "lines": [
+        "It's a scroll... there's a big hole behind it!",
+        "You went through the hole behind the scroll."
+       ],
+       "travel": "HOENN_TRICK_HOUSE_4",
+       "land_floor": [
+        0,
+        0,
+        20
+       ]
+      },
+      {
+       "ready": [
+        "trick_found_5",
+        "not:trick_puzzle_5_done"
+       ],
+       "lines": [
+        "It's a scroll... there's a big hole behind it!",
+        "You went through the hole behind the scroll."
+       ],
+       "travel": "HOENN_TRICK_HOUSE_5",
+       "land_floor": [
+        0,
+        0,
+        20
+       ]
+      },
+      {
+       "ready": [
+        "trick_found_6",
+        "not:trick_puzzle_6_done"
+       ],
+       "lines": [
+        "It's a scroll... there's a big hole behind it!",
+        "You went through the hole behind the scroll."
+       ],
+       "travel": "HOENN_TRICK_HOUSE_6",
+       "land_floor": [
+        0,
+        0,
+        20
+       ]
+      },
+      {
+       "ready": [
+        "trick_puzzle_6_done"
+       ],
+       "lines": [
+        "A note is pinned to the scroll:",
+        "\"I'm off on a journey to find new tricks. Don't look for me! - Trick Master\""
+       ]
+      }
+     ],
+     "then": {
+      "lines": [
+       "It's a scroll, hung on the wall."
+      ]
+     }
+    }
+   }
+  },
+  "people": [
+   [
+    {
+     "text": "Trick Master",
+     "action": "EVENT",
+     "condition": [
+      "trick_found_1",
+      "not:trick_puzzle_1_done"
+     ],
+     "event": {
+      "lines": [
+       "Trick Master: Go on, go on! The scroll on the wall hides the way in!"
+      ]
+     }
+    },
+    {
+     "text": "Trick Master",
+     "action": "EVENT",
+     "condition": [
+      "trick_found_2",
+      "not:trick_puzzle_2_done"
+     ],
+     "event": {
+      "lines": [
+       "Trick Master: Go on, go on! The scroll on the wall hides the way in!"
+      ]
+     }
+    },
+    {
+     "text": "Trick Master",
+     "action": "EVENT",
+     "condition": [
+      "trick_found_3",
+      "not:trick_puzzle_3_done"
+     ],
+     "event": {
+      "lines": [
+       "Trick Master: Go on, go on! The scroll on the wall hides the way in!"
+      ]
+     }
+    },
+    {
+     "text": "Trick Master",
+     "action": "EVENT",
+     "condition": [
+      "trick_found_4",
+      "not:trick_puzzle_4_done"
+     ],
+     "event": {
+      "lines": [
+       "Trick Master: Go on, go on! The scroll on the wall hides the way in!"
+      ]
+     }
+    },
+    {
+     "text": "Trick Master",
+     "action": "EVENT",
+     "condition": [
+      "trick_found_5",
+      "not:trick_puzzle_5_done"
+     ],
+     "event": {
+      "lines": [
+       "Trick Master: Go on, go on! The scroll on the wall hides the way in!"
+      ]
+     }
+    },
+    {
+     "text": "Trick Master",
+     "action": "EVENT",
+     "condition": [
+      "trick_found_6",
+      "not:trick_puzzle_6_done"
+     ],
+     "event": {
+      "lines": [
+       "Trick Master: Go on, go on! The scroll on the wall hides the way in!"
+      ]
+     }
+    }
+   ]
+  ],
+  "moves": {
+   "6,2": {
+    "m": "face",
+    "d": "d"
+   }
+  },
+  "barred": [
+   {
+    "tiles": [
+     [
+      7,
+      3
+     ]
+    ],
+    "look": "unseen",
+    "when": {
+     "condition": "trick_puzzle_5_done"
+    },
+    "until": {
+     "flag_condition": "trick_found_6"
+    },
+    "lines": [
+     "The cushion is oddly lumpy..."
+    ],
+    "open_with": {
+     "condition": [],
+     "flag": "trick_found_6",
+     "lines": [
+      "The cushion wobbles... the Trick Master pops out from under it!",
+      "Trick Master: You found me once again! My last and greatest puzzle awaits behind the scroll!"
+     ]
+    }
+   }
+  ],
+  "arrive": {
+   "HOENN_TRICK_HOUSE_1": [
+    5,
+    2
+   ],
+   "HOENN_TRICK_HOUSE_2": [
+    5,
+    2
+   ],
+   "HOENN_TRICK_HOUSE_3": [
+    5,
+    2
+   ],
+   "HOENN_TRICK_HOUSE_4": [
+    5,
+    2
+   ],
+   "HOENN_TRICK_HOUSE_5": [
+    5,
+    2
+   ],
+   "HOENN_TRICK_HOUSE_6": [
+    5,
+    2
+   ]
+  },
+  "theme": "room"
+ },
+ "HOENN_TRICK_HOUSE_1": {
+  "floors": [
+   {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccc1c",
+     "cccccccccccc...",
+     "..c...c.c..c...",
+     "..2......N.c...",
+     "..c...c.c..c...",
+     "2cccccccccccc2c",
+     "....c......c...",
+     ".c..2......2..X",
+     ".c..c..cc..c...",
+     "ccc.cc..2.ccccc",
+     "..c..c..c..c...",
+     "N.2..c..c..2...",
+     "..c..c..c..c...",
+     "..cccccccccccc2",
+     "..X.c.c....c...",
+     "...!c......2...",
+     "....c......c...",
+     "ccccccccccccc2c",
+     "....c....c.....",
+     "..............X",
+     "nn............."
+    ],
+    "exits": {
+     "n": "HOENN_TRICK_HOUSE"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/29_3.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "A secret code is written on the scroll."
+     ]
+    ],
+    "trainer_spots": [
+     "Youngster Eddie",
+     "Lass Sally",
+     "Battle Girl Cora"
+    ],
+    "links": {
+     "13,1": [
+      1,
+      10,
+      1
+     ]
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/29_3.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       15,
+       22
+      ]
+     }
+    ],
+    "people": [
+     "LAVA COOKIE",
+     "LAVA COOKIE "
+    ],
+    "moves": {
+     "2,15": {
+      "m": "face",
+      "d": "d",
+      "s": 2
+     },
+     "14,20": {
+      "m": "face",
+      "d": "l",
+      "s": 6
+     },
+     "14,8": {
+      "m": "face",
+      "d": "l",
+      "s": 2
+     }
+    },
+    "sign_events": {
+     "3,16": {
+      "text": "Scroll",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "A secret code is written on the scroll:",
+        "\"Trick Master is wonderful.\"",
+        "{player_name} memorized the secret code."
+       ],
+       "flag": "trick_password_1",
+       "done": [
+        "The secret code on the scroll:",
+        "\"Trick Master is wonderful.\""
+       ]
+      }
+     }
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        13,
+        1
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "trick_password_1"
+      },
+      "lines": [
+       "The door's locked.",
+       "Write the secret code on it to open it! You'll find it on a scroll in this room."
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccc",
+     "cc1ccccccc1c",
+     "......N.....",
+     "............",
+     ".....cc.....",
+     "....Ncc.....",
+     "............",
+     "............"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/29_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "EXPERT BELT",
+     "Trick Master"
+    ],
+    "links": {
+     "10,1": [
+      0,
+      13,
+      1
+     ],
+     "2,1": [
+      2,
+      13,
+      3
+     ]
+    },
+    "moves": {
+     "4,5": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/29_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       12,
+       8
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "ccc............",
+     "ccc..........11",
+     "ccc...ccccccccc",
+     "ccc...ccccccccc",
+     "ccc...ccccccccc",
+     "ccc...ccccccccc",
+     "......ccccccccc",
+     "......ccccccccc",
+     "......ccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "......ccccccccc",
+     "....nnccccccccc"
+    ],
+    "exits": {
+     "n": "HOENN_TRICK_HOUSE"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/29_2.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "links": {
+     "13,3": [
+      1,
+      2,
+      1
+     ],
+     "14,3": [
+      1,
+      2,
+      1
+     ]
+    },
+    "parts": true
+   }
+  ],
+  "floor_names": [
+   "Puzzle room",
+   "Trick Master's room",
+   "Way out"
+  ],
+  "figure_floors": {
+   "Youngster Eddie": 0,
+   "Lass Sally": 0,
+   "Battle Girl Cora": 0,
+   "LAVA COOKIE": 0,
+   "LAVA COOKIE ": 0,
+   "Trick Master": 1,
+   "EXPERT BELT": 1
+  }
+ },
+ "HOENN_TRICK_HOUSE_2": {
+  "floors": [
+   {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccc1c",
+     ".........c.....",
+     "...cccc..c.....",
+     "0..c.....c.cccc",
+     "cccc.ccc...c..0",
+     ".....0.ccccc...",
+     ".c...c.........",
+     ".c..ccccccccc..",
+     ".c..c......Xc..",
+     ".c..c.ccc...cX.",
+     ".cc.c.c0c.cccc.",
+     "..c.c.c.c.c0.c0",
+     "c0cNc...c.c..c.",
+     "..ccccccc.c..c!",
+     ".......0..c..cc",
+     ".c.ccccccccc...",
+     ".c....c.NcXcc..",
+     ".c....c..c.....",
+     ".cNcX....c..cc.",
+     "...ccccccc.....",
+     "nn............."
+    ],
+    "exits": {
+     "n": "HOENN_TRICK_HOUSE"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/29_4.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "A secret code is written on the scroll."
+     ]
+    ],
+    "trainer_spots": [
+     "Pokémon Ranger Sebastian",
+     "Schoolkid Georgie",
+     "Black Belt Yuji",
+     "Pokémon Ranger Sophia"
+    ],
+    "links": {
+     "13,1": [
+      1,
+      10,
+      1
+     ]
+    },
+    "parts": true,
+    "people": [
+     "RAGE CANDY BAR ",
+     "RAGE CANDY BAR",
+     "Mechadoll 3"
+    ],
+    "moves": {
+     "10,17": {
+      "m": "face",
+      "d": "d",
+      "s": 4
+     },
+     "13,10": {
+      "m": "face",
+      "d": "r",
+      "s": 1
+     },
+     "11,9": {
+      "m": "face",
+      "d": "l",
+      "s": 2
+     },
+     "2,19": {
+      "m": "face",
+      "d": "d"
+     },
+     "4,19": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
+     }
+    },
+    "sign_events": {
+     "14,14": {
+      "text": "Scroll",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "A secret code is written on the scroll:",
+        "\"I adore Trick Master.\"",
+        "{player_name} memorized the secret code."
+       ],
+       "flag": "trick_password_2",
+       "done": [
+        "The secret code on the scroll:",
+        "\"I adore Trick Master.\""
+       ]
+      }
+     }
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        13,
+        1
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "trick_password_2"
+      },
+      "lines": [
+       "The door's locked.",
+       "Write the secret code on it to open it! You'll find it on a scroll in this room."
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccc",
+     "cc1ccccccc1c",
+     "............",
+     "............",
+     ".....cc.....",
+     "....Ncc.....",
+     "............",
+     "............"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/29_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Trick Master"
+    ],
+    "links": {
+     "10,1": [
+      0,
+      13,
+      1
+     ],
+     "2,1": [
+      2,
+      13,
+      3
+     ]
+    },
+    "moves": {
+     "4,5": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/29_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       12,
+       8
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "ccc............",
+     "ccc..........11",
+     "ccc...ccccccccc",
+     "ccc...ccccccccc",
+     "ccc...ccccccccc",
+     "ccc...ccccccccc",
+     "......ccccccccc",
+     "......ccccccccc",
+     "......ccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "......ccccccccc",
+     "....nnccccccccc"
+    ],
+    "exits": {
+     "n": "HOENN_TRICK_HOUSE"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/29_2.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "links": {
+     "13,3": [
+      1,
+      2,
+      1
+     ],
+     "14,3": [
+      1,
+      2,
+      1
+     ]
+    },
+    "parts": true
+   }
+  ],
+  "floor_names": [
+   "Puzzle room",
+   "Trick Master's room",
+   "Way out"
+  ],
+  "figure_floors": {
+   "Pokémon Ranger Sebastian": 0,
+   "Schoolkid Georgie": 0,
+   "Black Belt Yuji": 0,
+   "RAGE CANDY BAR": 0,
+   "RAGE CANDY BAR ": 0,
+   "Mechadoll 3": 0,
+   "Pokémon Ranger Sophia": 0,
+   "Trick Master": 1
+  }
+ },
+ "HOENN_TRICK_HOUSE_3": {
+  "floors": [
+   {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccc1c",
+     "cc...c......c..",
+     "c....c..c...c..",
+     "c.......c.c.cc.",
+     "....Xc..c.c.c..",
+     "...ccc......c..",
+     "...c.....c..c.c",
+     ".....ccc.c..c..",
+     "N.....cX...cc..",
+     "!.c.c.c...cX...",
+     "ccc.c.c...c....",
+     "....c..cc.cc...",
+     "....cc..c..c...",
+     "ccc..c..c.ccc.c",
+     "c....c......c.c",
+     "c.c..c..c......",
+     "..c..cc........",
+     ".........cc.c..",
+     "............c..",
+     "..N.cc....ccc..",
+     "nn..c....ccN..."
+    ],
+    "exits": {
+     "n": "HOENN_TRICK_HOUSE"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/29_8.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "A secret code is written on the scroll."
+     ]
+    ],
+    "trainer_spots": [
+     "Lass Robin",
+     "Schoolkid Ted",
+     "Ace Duo Pike & Shiel"
+    ],
+    "links": {
+     "13,1": [
+      1,
+      10,
+      1
+     ]
+    },
+    "parts": true,
+    "people": [
+     "FULL HEAL ",
+     "Mechadoll 3",
+     "FULL HEAL"
+    ],
+    "moves": {
+     "4,5": {
+      "m": "face",
+      "d": "u",
+      "s": 1
+     },
+     "11,10": {
+      "m": "face",
+      "d": "r",
+      "s": 3
+     },
+     "7,9": {
+      "m": "face",
+      "d": "r",
+      "s": 1
+     },
+     "2,20": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "sign_events": {
+     "0,10": {
+      "text": "Scroll",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "A secret code is written on the scroll:",
+        "\"Trick Master is cool.\"",
+        "{player_name} memorized the secret code."
+       ],
+       "flag": "trick_password_3",
+       "done": [
+        "The secret code on the scroll:",
+        "\"Trick Master is cool.\""
+       ]
+      }
+     }
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        13,
+        1
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "trick_password_3"
+      },
+      "lines": [
+       "The door's locked.",
+       "Write the secret code on it to open it! You'll find it on a scroll in this room."
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccc",
+     "cc1ccccccc1c",
+     "............",
+     "............",
+     ".....cc.....",
+     "....Ncc.....",
+     "............",
+     "............"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/29_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Trick Master"
+    ],
+    "links": {
+     "10,1": [
+      0,
+      13,
+      1
+     ],
+     "2,1": [
+      2,
+      13,
+      3
+     ]
+    },
+    "moves": {
+     "4,5": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/29_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       12,
+       8
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "ccc............",
+     "ccc..........11",
+     "ccc...ccccccccc",
+     "ccc...ccccccccc",
+     "ccc...ccccccccc",
+     "ccc...ccccccccc",
+     "......ccccccccc",
+     "......ccccccccc",
+     "......ccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "......ccccccccc",
+     "....nnccccccccc"
+    ],
+    "exits": {
+     "n": "HOENN_TRICK_HOUSE"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/29_2.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "links": {
+     "13,3": [
+      1,
+      2,
+      1
+     ],
+     "14,3": [
+      1,
+      2,
+      1
+     ]
+    },
+    "parts": true
+   }
+  ],
+  "floor_names": [
+   "Puzzle room",
+   "Trick Master's room",
+   "Way out"
+  ],
+  "figure_floors": {
+   "Lass Robin": 0,
+   "Schoolkid Ted": 0,
+   "Ace Duo Pike & Shiel": 0,
+   "FULL HEAL": 0,
+   "FULL HEAL ": 0,
+   "Mechadoll 3": 0,
+   "Trick Master": 1
+  },
+  "dark": true,
+  "fog_floors": [
+   0
+  ]
+ },
+ "HOENN_TRICK_HOUSE_4": {
+  "floors": [
+   {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccc1c",
+     "....cc.....cb.b",
+     ".....c...bcc.b.",
+     "..cc.cc.c.c....",
+     "..Nc....c.c.bcc",
+     "...cb...c.cc.c.",
+     "ccc..b..c......",
+     ".....c..c......",
+     ".....c...cccccc",
+     ".....c.........",
+     "..cccccccc.....",
+     "..c....c..b.ccc",
+     ".cc..c...c..c.!",
+     ".c...ccccc.cc..",
+     ".c...c....b.c..",
+     "Nccc.b...c.....",
+     ".c...c.........",
+     ".c___c___c_____",
+     "...............",
+     "..N............",
+     "nn............."
+    ],
+    "exits": {
+     "n": "HOENN_TRICK_HOUSE"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/29_6.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "A secret code is written on the scroll."
+     ]
+    ],
+    "links": {
+     "13,1": [
+      1,
+      10,
+      1
+     ]
+    },
+    "parts": true,
+    "trainer_spots": [],
+    "people": [
+     "CASTELIACONE",
+     "CASTELIACONE ",
+     "Mechadoll 3"
+    ],
+    "moves": {
+     "2,20": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "sign_events": {
+     "14,13": {
+      "text": "Scroll",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "A secret code is written on the scroll:",
+        "\"Trick Master is a genius.\"",
+        "{player_name} memorized the secret code."
+       ],
+       "flag": "trick_password_4",
+       "done": [
+        "The secret code on the scroll:",
+        "\"Trick Master is a genius.\""
+       ]
+      }
+     }
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        13,
+        1
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "trick_password_4"
+      },
+      "lines": [
+       "The door's locked.",
+       "Write the secret code on it to open it! You'll find it on a scroll in this room."
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccc",
+     "cc1ccccccc1c",
+     "............",
+     "............",
+     ".....cc.....",
+     "....Ncc.....",
+     "............",
+     "............"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/29_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Trick Master"
+    ],
+    "links": {
+     "10,1": [
+      0,
+      13,
+      1
+     ],
+     "2,1": [
+      2,
+      13,
+      3
+     ]
+    },
+    "moves": {
+     "4,5": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/29_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       12,
+       8
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "ccc............",
+     "ccc..........11",
+     "ccc...ccccccccc",
+     "ccc...ccccccccc",
+     "ccc...ccccccccc",
+     "ccc...ccccccccc",
+     "......ccccccccc",
+     "......ccccccccc",
+     "......ccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "......ccccccccc",
+     "....nnccccccccc"
+    ],
+    "exits": {
+     "n": "HOENN_TRICK_HOUSE"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/29_2.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "links": {
+     "13,3": [
+      1,
+      2,
+      1
+     ],
+     "14,3": [
+      1,
+      2,
+      1
+     ]
+    },
+    "parts": true
+   }
+  ],
+  "floor_names": [
+   "Puzzle room",
+   "Trick Master's room",
+   "Way out"
+  ],
+  "figure_floors": {
+   "CASTELIACONE": 0,
+   "CASTELIACONE ": 0,
+   "Mechadoll 3": 0,
+   "Trick Master": 1
+  }
+ },
+ "HOENN_TRICK_HOUSE_5": {
+  "floors": [
+   {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccc1c",
+     "cc...cccccc...N",
+     "c.....ccccc.ccc",
+     ".......cccN..cc",
+     ".......cc.....c",
+     ".......c.......",
+     "N..........N...",
+     ".......c.......",
+     "c.....cc.......",
+     "c.....cc......N",
+     "c.....ccc.....c",
+     "cc...cccc.....c",
+     "cc...cccc.....c",
+     "ccc.cccccc...cc",
+     "cc...ccccc...cc",
+     "c.....ccccc.ccc",
+     "......Nccc...cc",
+     "c.....ccc.....c",
+     "cc...ccc......N",
+     "....ccccc.....c",
+     "nncccccccc.!.cc"
+    ],
+    "exits": {
+     "n": "HOENN_TRICK_HOUSE"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/29_7.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "A secret code is written on the scroll."
+     ]
+    ],
+    "links": {
+     "13,1": [
+      1,
+      10,
+      1
+     ]
+    },
+    "parts": true,
+    "trainer_spots": [],
+    "people": [
+     "OLD GATEAU ",
+     "Mechadoll 5",
+     "Mechadoll 2",
+     "OLD GATEAU",
+     "Mechadoll 3",
+     "Mechadoll 1",
+     "Mechadoll 4"
+    ],
+    "moves": {
+     "6,17": {
+      "m": "face",
+      "d": "l"
+     },
+     "0,7": {
+      "m": "face",
+      "d": "r"
+     },
+     "14,10": {
+      "m": "face",
+      "d": "l"
+     },
+     "14,19": {
+      "m": "face",
+      "d": "l"
+     },
+     "10,4": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "sign_events": {
+     "11,21": {
+      "text": "Scroll",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "A secret code is written on the scroll:",
+        "\"I want to hug Trick Master.\"",
+        "{player_name} memorized the secret code."
+       ],
+       "flag": "trick_password_5",
+       "done": [
+        "The secret code on the scroll:",
+        "\"I want to hug Trick Master.\""
+       ],
+       "requires": [
+        "trick_doll_1",
+        "trick_doll_2",
+        "trick_doll_3",
+        "trick_doll_4",
+        "trick_doll_5"
+       ],
+       "fail": [
+        "The scroll is blank... Answer every Mechadoll's quiz first!"
+       ]
+      }
+     }
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        13,
+        1
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "trick_password_5"
+      },
+      "lines": [
+       "The door's locked.",
+       "Write the secret code on it to open it! You'll find it on a scroll in this room."
+      ]
+     }
+    ],
+    "scenes": [
+     {
+      "who": "Mechadoll 1",
+      "trigger": {
+       "zone": [
+        1,
+        17,
+        5,
+        17
+       ]
+      },
+      "condition": "not:trick_doll_1",
+      "every": true,
+      "lines": [
+       "CLICKETY-CLACK! MECHADOLL 1 AM I! ANSWER MY QUIZ, THEN GO TO MECHADOLL 2."
+      ],
+      "event": {
+       "stages": [
+        {
+         "ready": [
+          "not:trick_doll_1"
+         ],
+         "lines": [
+          "MECHADOLL 1 QUIZ. One of these Pokémon is not found on Route 103. Which one is it?"
+         ],
+         "quiz": [
+          {
+           "q": "One of these Pokémon is not found on Route 103. Which one is it?",
+           "options": [
+            "Zigzagoon",
+            "Nincada",
+            "Poochyena"
+           ],
+           "right": 1
+          }
+         ],
+         "quiz_flag": "trick_doll_1",
+         "must_be_right": true,
+         "after": [
+          "CONGRATULATIONS. CORRECT YOU ARE. GO THROUGH. PLEASE."
+         ],
+         "wrong": [
+          "BZZZT. DISAPPOINTMENT. ERROR.",
+          "TRY AGAIN. PLEASE."
+         ]
+        }
+       ],
+       "then": {
+        "lines": [
+         "CORRECT YOU WERE. GO THROUGH. PLEASE."
+        ]
+       }
+      }
+     },
+     {
+      "who": "Mechadoll 2",
+      "trigger": {
+       "zone": [
+        1,
+        7,
+        6,
+        7
+       ]
+      },
+      "condition": "not:trick_doll_2",
+      "every": true,
+      "lines": [
+       "CLICKETY-CLACK! MECHADOLL 2 AM I! MECHADOLL 1'S QUIZ WAS TOO EASY."
+      ],
+      "event": {
+       "stages": [
+        {
+         "ready": [
+          "not:trick_doll_2"
+         ],
+         "lines": [
+          "MECHADOLL 2 QUIZ. In Professor Birch's Bag there were three Pokémon. Which one was on the right?"
+         ],
+         "quiz": [
+          {
+           "q": "In Professor Birch's Bag there were three Pokémon. Which one was on the right?",
+           "options": [
+            "Treecko",
+            "Torchic",
+            "Mudkip"
+           ],
+           "right": 2
+          }
+         ],
+         "quiz_flag": "trick_doll_2",
+         "must_be_right": true,
+         "after": [
+          "CONGRATULATIONS. CORRECT YOU ARE. GO THROUGH. PLEASE."
+         ],
+         "wrong": [
+          "BZZZT. DISAPPOINTMENT. ERROR.",
+          "TRY AGAIN. PLEASE."
+         ]
+        }
+       ],
+       "then": {
+        "lines": [
+         "CORRECT YOU WERE. GO THROUGH. PLEASE."
+        ]
+       }
+      }
+     },
+     {
+      "who": "Mechadoll 3",
+      "trigger": {
+       "zone": [
+        9,
+        10,
+        13,
+        10
+       ]
+      },
+      "condition": "not:trick_doll_3",
+      "every": true,
+      "lines": [
+       "CLICKETY-CLACK! MECHADOLL 3 AM I! MATTERS OF MONEY ARE MY SOLE FOCUS."
+      ],
+      "event": {
+       "stages": [
+        {
+         "ready": [
+          "not:trick_doll_3"
+         ],
+         "lines": [
+          "MECHADOLL 3 QUIZ. Which would cost more: a Full Heal plus a Great Ball, or one Revive?"
+         ],
+         "quiz": [
+          {
+           "q": "Which would cost more: a Full Heal plus a Great Ball, or one Revive?",
+           "options": [
+            "Full Heal plus Great Ball",
+            "Revive",
+            "They cost the same"
+           ],
+           "right": 1
+          }
+         ],
+         "quiz_flag": "trick_doll_3",
+         "must_be_right": true,
+         "after": [
+          "CONGRATULATIONS. CORRECT YOU ARE. GO THROUGH. PLEASE."
+         ],
+         "wrong": [
+          "BZZZT. DISAPPOINTMENT. ERROR.",
+          "TRY AGAIN. PLEASE."
+         ]
+        },
+        {
+         "ready": [
+          "trick_doll_3"
+         ],
+         "flag": "trick5_escape_rope",
+         "lines": [
+          "A REWARD FOR A CORRECT ANSWER. TAKE IT."
+         ],
+         "gift_item": {
+          "ESCAPE_ROPE": 1
+         }
+        }
+       ],
+       "then": {
+        "lines": [
+         "CORRECT YOU WERE. GO THROUGH. PLEASE."
+        ]
+       }
+      }
+     },
+     {
+      "who": "Mechadoll 4",
+      "trigger": {
+       "zone": [
+        9,
+        19,
+        13,
+        19
+       ]
+      },
+      "condition": "not:trick_doll_4",
+      "every": true,
+      "lines": [
+       "CLICKETY-CLACK! MECHADOLL 4 THAT IS ME! MY QUIZ IS AN OBJECT OF BEAUTY."
+      ],
+      "event": {
+       "stages": [
+        {
+         "ready": [
+          "not:trick_doll_4"
+         ],
+         "lines": [
+          "MECHADOLL 4 QUIZ. Rustboro Gym Leader Roxanne used a Geodude. Was it female or male?"
+         ],
+         "quiz": [
+          {
+           "q": "Rustboro Gym Leader Roxanne used a Geodude. Was it female or male?",
+           "options": [
+            "Female",
+            "Male",
+            "Neither"
+           ],
+           "right": 0
+          }
+         ],
+         "quiz_flag": "trick_doll_4",
+         "must_be_right": true,
+         "after": [
+          "CONGRATULATIONS. CORRECT YOU ARE. GO THROUGH. PLEASE."
+         ],
+         "wrong": [
+          "BZZZT. DISAPPOINTMENT. ERROR.",
+          "TRY AGAIN. PLEASE."
+         ]
+        }
+       ],
+       "then": {
+        "lines": [
+         "CORRECT YOU WERE. GO THROUGH. PLEASE."
+        ]
+       }
+      }
+     },
+     {
+      "who": "Mechadoll 5",
+      "trigger": {
+       "zone": [
+        11,
+        4,
+        11,
+        4
+       ]
+      },
+      "condition": "not:trick_doll_5",
+      "every": true,
+      "lines": [
+       "CLICKETY-CLACK! MECHADOLL 5 AM I! THE MASTER'S BEST AND PROUDEST ACHIEVEMENT AM I."
+      ],
+      "event": {
+       "stages": [
+        {
+         "ready": [
+          "not:trick_doll_5"
+         ],
+         "lines": [
+          "MECHADOLL 5 QUIZ. How many Bikes does Rydel have on display outside his cycle shop?"
+         ],
+         "quiz": [
+          {
+           "q": "How many Bikes does Rydel have on display outside his cycle shop?",
+           "options": [
+            "One",
+            "Two",
+            "Three"
+           ],
+           "right": 1
+          }
+         ],
+         "quiz_flag": "trick_doll_5",
+         "must_be_right": true,
+         "after": [
+          "CONGRATULATIONS. CORRECT YOU ARE. GO THROUGH. PLEASE."
+         ],
+         "wrong": [
+          "BZZZT. DISAPPOINTMENT. ERROR.",
+          "TRY AGAIN. PLEASE."
+         ]
+        }
+       ],
+       "then": {
+        "lines": [
+         "CORRECT YOU WERE. GO THROUGH. PLEASE."
+        ]
+       }
+      }
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccc",
+     "cc1ccccccc1c",
+     "............",
+     "............",
+     ".....cc.....",
+     "....Ncc.....",
+     "............",
+     "............"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/29_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Trick Master"
+    ],
+    "links": {
+     "10,1": [
+      0,
+      13,
+      1
+     ],
+     "2,1": [
+      2,
+      13,
+      3
+     ]
+    },
+    "moves": {
+     "4,5": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/29_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       12,
+       8
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "ccc............",
+     "ccc..........11",
+     "ccc...ccccccccc",
+     "ccc...ccccccccc",
+     "ccc...ccccccccc",
+     "ccc...ccccccccc",
+     "......ccccccccc",
+     "......ccccccccc",
+     "......ccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "......ccccccccc",
+     "....nnccccccccc"
+    ],
+    "exits": {
+     "n": "HOENN_TRICK_HOUSE"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/29_2.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "links": {
+     "13,3": [
+      1,
+      2,
+      1
+     ],
+     "14,3": [
+      1,
+      2,
+      1
+     ]
+    },
+    "parts": true
+   }
+  ],
+  "floor_names": [
+   "Puzzle room",
+   "Trick Master's room",
+   "Way out"
+  ],
+  "figure_floors": {
+   "OLD GATEAU": 0,
+   "OLD GATEAU ": 0,
+   "Mechadoll 1": 0,
+   "Mechadoll 2": 0,
+   "Mechadoll 3": 0,
+   "Mechadoll 4": 0,
+   "Mechadoll 5": 0,
+   "Trick Master": 1
+  }
+ },
+ "HOENN_TRICK_HOUSE_6": {
+  "floors": [
+   {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccc1c",
+     "cN.cN.c..c..c..",
+     "c..c..c..c..c..",
+     "c..c..c..c..c..",
+     "...............",
+     "c..c..c..c..c..",
+     "c..c..c..c..c..",
+     ".........c.....",
+     "c..cccc..c..c..",
+     "c..cccc..c..c..",
+     "...............",
+     "c..c..c..c..c..",
+     "c..c..c..c..c..",
+     "!...........c..",
+     "cccc..cccc..c..",
+     "cccc..cccc..c..",
+     "......c........",
+     "c..c..c..c..c..",
+     "c..c..c..c..c..",
+     ".0.N...........",
+     "nn0............"
+    ],
+    "exits": {
+     "n": "HOENN_TRICK_HOUSE"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/29_5.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "A secret code is written on the scroll."
+     ]
+    ],
+    "links": {
+     "13,1": [
+      1,
+      10,
+      1
+     ]
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/29_5.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       15,
+       22
+      ]
+     }
+    ],
+    "trainer_spots": [],
+    "people": [
+     "FULL HEAL",
+     "FULL HEAL ",
+     "Mechadoll 3"
+    ],
+    "moves": {
+     "3,20": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "sign_events": {
+     "0,14": {
+      "text": "Scroll",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "A secret code is written on the scroll:",
+        "\"I love Trick Master.\"",
+        "{player_name} memorized the secret code."
+       ],
+       "flag": "trick_password_6",
+       "done": [
+        "The secret code on the scroll:",
+        "\"I love Trick Master.\""
+       ]
+      }
+     }
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        13,
+        1
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "trick_password_6"
+      },
+      "lines": [
+       "The door's locked.",
+       "Write the secret code on it to open it! You'll find it on a scroll in this room."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        1,
+        4
+       ]
+      ],
+      "look": "ow:em_ground:trick6_1_4",
+      "until": {
+       "flag_condition": "trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        1,
+        13
+       ]
+      ],
+      "look": "ow:em_ground:trick6_1_13",
+      "until": {
+       "flag_condition": "trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        2,
+        4
+       ]
+      ],
+      "look": "ow:em_ground:trick6_2_4",
+      "until": {
+       "flag_condition": "trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        2,
+        13
+       ]
+      ],
+      "look": "ow:em_ground:trick6_2_13",
+      "until": {
+       "flag_condition": "trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        3,
+        17
+       ]
+      ],
+      "look": "ow:em_ground:trick6_3_17",
+      "until": {
+       "flag_condition": "trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        4,
+        7
+       ]
+      ],
+      "look": "ow:em_ground:trick6_4_7",
+      "until": {
+       "flag_condition": "trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        4,
+        13
+       ]
+      ],
+      "look": "ow:em_ground:trick6_4_13",
+      "until": {
+       "flag_condition": "trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        4,
+        19
+       ]
+      ],
+      "look": "ow:em_ground:trick6_4_19",
+      "until": {
+       "flag_condition": "trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        5,
+        7
+       ]
+      ],
+      "look": "ow:em_ground:trick6_5_7",
+      "until": {
+       "flag_condition": "trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        5,
+        13
+       ]
+      ],
+      "look": "ow:em_ground:trick6_5_13",
+      "until": {
+       "flag_condition": "trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        5,
+        19
+       ]
+      ],
+      "look": "ow:em_ground:trick6_5_19",
+      "until": {
+       "flag_condition": "trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        7,
+        10
+       ]
+      ],
+      "look": "ow:em_ground:trick6_7_10",
+      "until": {
+       "flag_condition": "trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        8,
+        10
+       ]
+      ],
+      "look": "ow:em_ground:trick6_8_10",
+      "until": {
+       "flag_condition": "trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        9,
+        5
+       ]
+      ],
+      "look": "ow:em_ground:trick6_9_5",
+      "until": {
+       "flag_condition": "trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        10,
+        7
+       ]
+      ],
+      "look": "ow:em_ground:trick6_10_7",
+      "until": {
+       "flag_condition": "trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        10,
+        13
+       ]
+      ],
+      "look": "ow:em_ground:trick6_10_13",
+      "until": {
+       "flag_condition": "trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        10,
+        19
+       ]
+      ],
+      "look": "ow:em_ground:trick6_10_19",
+      "until": {
+       "flag_condition": "trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        11,
+        7
+       ]
+      ],
+      "look": "ow:em_ground:trick6_11_7",
+      "until": {
+       "flag_condition": "trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        11,
+        13
+       ]
+      ],
+      "look": "ow:em_ground:trick6_11_13",
+      "until": {
+       "flag_condition": "trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        11,
+        19
+       ]
+      ],
+      "look": "ow:em_ground:trick6_11_19",
+      "until": {
+       "flag_condition": "trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        4
+       ]
+      ],
+      "look": "ow:em_ground:trick6_13_4",
+      "until": {
+       "flag_condition": "trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        4
+       ]
+      ],
+      "look": "ow:em_ground:trick6_14_4",
+      "until": {
+       "flag_condition": "trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        1,
+        7
+       ]
+      ],
+      "look": "ow:em_ground:trick6_1_7",
+      "until": {
+       "flag_condition": "not trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        1,
+        10
+       ]
+      ],
+      "look": "ow:em_ground:trick6_1_10",
+      "until": {
+       "flag_condition": "not trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        2,
+        7
+       ]
+      ],
+      "look": "ow:em_ground:trick6_2_7",
+      "until": {
+       "flag_condition": "not trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        2,
+        10
+       ]
+      ],
+      "look": "ow:em_ground:trick6_2_10",
+      "until": {
+       "flag_condition": "not trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        3,
+        8
+       ]
+      ],
+      "look": "ow:em_ground:trick6_3_8",
+      "until": {
+       "flag_condition": "not trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        3,
+        14
+       ]
+      ],
+      "look": "ow:em_ground:trick6_3_14",
+      "until": {
+       "flag_condition": "not trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        4,
+        16
+       ]
+      ],
+      "look": "ow:em_ground:trick6_4_16",
+      "until": {
+       "flag_condition": "not trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        5,
+        16
+       ]
+      ],
+      "look": "ow:em_ground:trick6_5_16",
+      "until": {
+       "flag_condition": "not trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        6,
+        5
+       ]
+      ],
+      "look": "ow:em_ground:trick6_6_5",
+      "until": {
+       "flag_condition": "not trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        9,
+        17
+       ]
+      ],
+      "look": "ow:em_ground:trick6_9_17",
+      "until": {
+       "flag_condition": "not trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        12,
+        8
+       ]
+      ],
+      "look": "ow:em_ground:trick6_12_8",
+      "until": {
+       "flag_condition": "not trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        10
+       ]
+      ],
+      "look": "ow:em_ground:trick6_13_10",
+      "until": {
+       "flag_condition": "not trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        16
+       ]
+      ],
+      "look": "ow:em_ground:trick6_13_16",
+      "until": {
+       "flag_condition": "not trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        10
+       ]
+      ],
+      "look": "ow:em_ground:trick6_14_10",
+      "until": {
+       "flag_condition": "not trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        16
+       ]
+      ],
+      "look": "ow:em_ground:trick6_14_16",
+      "until": {
+       "flag_condition": "not trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     }
+    ],
+    "scenes": [
+     {
+      "trigger": {
+       "zone": [
+        4,
+        14,
+        4,
+        14
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "event": {
+       "stages": [
+        {
+         "ready": [],
+         "flag": "trick6_flip",
+         "lines": [
+          "Click! The doors switched!"
+         ]
+        }
+       ],
+       "then": {
+        "unset_flags": [
+         "trick6_flip"
+        ],
+        "lines": [
+         "Click! The doors switched!"
+        ]
+       }
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        3,
+        11,
+        3,
+        11
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "event": {
+       "stages": [
+        {
+         "ready": [],
+         "flag": "trick6_flip",
+         "lines": [
+          "Click! The doors switched!"
+         ]
+        }
+       ],
+       "then": {
+        "unset_flags": [
+         "trick6_flip"
+        ],
+        "lines": [
+         "Click! The doors switched!"
+        ]
+       }
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        12,
+        5,
+        12,
+        5
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "event": {
+       "stages": [
+        {
+         "ready": [],
+         "flag": "trick6_flip",
+         "lines": [
+          "Click! The doors switched!"
+         ]
+        }
+       ],
+       "then": {
+        "unset_flags": [
+         "trick6_flip"
+        ],
+        "lines": [
+         "Click! The doors switched!"
+        ]
+       }
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        8,
+        2,
+        8,
+        2
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "event": {
+       "stages": [
+        {
+         "ready": [],
+         "flag": "trick6_flip",
+         "lines": [
+          "Click! The doors switched!"
+         ]
+        }
+       ],
+       "then": {
+        "unset_flags": [
+         "trick6_flip"
+        ],
+        "lines": [
+         "Click! The doors switched!"
+        ]
+       }
+      }
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccc",
+     "cc1ccccccc1c",
+     "............",
+     "............",
+     ".....cc.....",
+     "....Ncc.....",
+     "............",
+     "............"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/29_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Trick Master"
+    ],
+    "links": {
+     "10,1": [
+      0,
+      13,
+      1
+     ],
+     "2,1": [
+      2,
+      13,
+      3
+     ]
+    },
+    "moves": {
+     "4,5": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "hidden": {
+     "4,5": "BIG_NUGGET"
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/29_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       12,
+       8
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "ccc............",
+     "ccc..........11",
+     "ccc...ccccccccc",
+     "ccc...ccccccccc",
+     "ccc...ccccccccc",
+     "ccc...ccccccccc",
+     "......ccccccccc",
+     "......ccccccccc",
+     "......ccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "......ccccccccc",
+     "....nnccccccccc"
+    ],
+    "exits": {
+     "n": "HOENN_TRICK_HOUSE"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/29_2.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "links": {
+     "13,3": [
+      1,
+      2,
+      1
+     ],
+     "14,3": [
+      1,
+      2,
+      1
+     ]
+    },
+    "parts": true
+   }
+  ],
+  "floor_names": [
+   "Puzzle room",
+   "Trick Master's room",
+   "Way out"
+  ],
+  "figure_floors": {
+   "FULL HEAL": 0,
+   "FULL HEAL ": 0,
+   "Mechadoll 3": 0,
+   "Trick Master": 1
+  }
  }
 }

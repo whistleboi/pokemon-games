@@ -1358,7 +1358,8 @@
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle"},
         {"text": "SLATEPORT CITY", "action": "EXIT", "target_area": "SLATEPORT_CITY", "condition": "can_exit"},
         {"text": "MAUVILLE CITY", "action": "EXIT", "target_area": "MAUVILLE_CITY", "condition": "can_exit"},
-        {"text": "ROUTE 103", "action": "EXIT", "target": "HOENN_ROUTE_103", "condition": ["can_exit", "has_item:HM_SURF"]}
+        {"text": "ROUTE 103", "action": "EXIT", "target": "HOENN_ROUTE_103", "condition": ["can_exit", "has_item:HM_SURF"]},
+        {"text": "TRICK HOUSE", "action": "EXIT", "target_area": "HOENN_TRICK_HOUSE", "condition": "can_exit"}
       ],
       "next_area": "MAUVILLE_CITY",
       "region": "HOENN",
@@ -1366,6 +1367,137 @@
       "horde_rate": 0.1,
       "horde_levels": [6, 6],
       "surf_pool_percentages": "HOENN_ROUTE_110_SURF_PERCENTAGES"
+    },
+    "HOENN_TRICK_HOUSE": {
+      "area_type": "dungeon",
+      "route_name": "Trick House",
+      "battle_type": "indoor",
+      "wild_pool_percentages": "NO_WILD_INDOORS_PERCENTAGES",
+      "min_rounds": 2,
+      "route_menu": [
+        {"text": "ROUTE 110", "action": "EXIT", "target_area": "HOENN_ROUTE_110", "condition": "can_exit"}
+      ],
+      "next_area": "HOENN_ROUTE_110",
+      "region": "HOENN"
+    },
+    "HOENN_TRICK_HOUSE_1": {
+      "area_type": "dungeon",
+      "route_name": "Trick House",
+      "battle_type": "indoor",
+      "wild_pool_percentages": "NO_WILD_INDOORS_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {"name": "Lass Sally", "class": "LASS", "sprite": "lass.png", "team": [316], "levels": [16], "rewards": {"balls": 3}},
+        {"name": "Battle Girl Cora", "class": "COOLTRAINER", "sprite": "acetrainer_f.png", "team": [307], "levels": [17], "rewards": {"balls": 3}},
+        {"name": "Youngster Eddie", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [290, 74], "levels": [14, 14], "rewards": {"balls": 3}}
+      ],
+      "route_menu": [
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers"},
+        {"text": "LAVA COOKIE", "action": "EVENT", "found": true, "flag_condition": "not got_trick1_lava_cookie", "event": {"lines": ["A Lava Cookie, tucked behind the trees."], "gift_item": {"LAVA_COOKIE": 1}, "flag": "got_trick1_lava_cookie"}},
+        {"text": "LAVA COOKIE ", "action": "EVENT", "found": true, "flag_condition": "not got_trick1_lava_cookie_2", "event": {"lines": ["Another Lava Cookie, hidden in the maze."], "gift_item": {"LAVA_COOKIE": 1}, "flag": "got_trick1_lava_cookie_2"}},
+        {"text": "Trick Master", "action": "EVENT", "event": {"stages": [{"ready": [], "flag": "trick_puzzle_1_done", "lines": ["Trick Master: Aak! You've made it to me! Hmmm... you're sharp!", "Trick Master: It took me all night to plant all those trees! Fine, you've earned your reward!"], "gift_item": {"TM087": 1}}], "then": {"lines": ["Trick Master: Next time I'll use this trick, and that scheme... Come find me in the front room!"]}}},
+        {"text": "EXPERT BELT", "action": "EVENT", "condition": "trick_puzzle_1_done", "flag_condition": "not got_trick_expert_belt", "event": {"lines": ["An Expert Belt, left at the back of the room."], "gift_item": {"EXPERT_BELT": 1}, "flag": "got_trick_expert_belt"}},
+        {"text": "TRICK HOUSE", "action": "EXIT", "target_area": "HOENN_TRICK_HOUSE", "condition": "can_exit"}
+      ],
+      "next_area": "HOENN_TRICK_HOUSE",
+      "region": "HOENN"
+    },
+    "HOENN_TRICK_HOUSE_2": {
+      "area_type": "dungeon",
+      "route_name": "Trick House",
+      "battle_type": "indoor",
+      "wild_pool_percentages": "NO_WILD_INDOORS_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {"name": "Black Belt Yuji", "class": "BLACKBELT", "sprite": "blackbelt.png", "team": [296, 66], "levels": [16, 18], "rewards": {"balls": 3}},
+        {"name": "Schoolkid Georgie", "class": "SCHOOL_KID", "sprite": "school_kid_f.png", "team": [285, 267], "levels": [16, 16], "rewards": {"balls": 3}},
+        {"name": "Pokémon Ranger Sebastian", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "team": [331, 304], "levels": [16, 18], "rewards": {"balls": 3}},
+        {"name": "Pokémon Ranger Sophia", "class": "COOLTRAINER", "sprite": "acetrainer_f.png", "team": [333, 315], "levels": [17, 17], "rewards": {"balls": 3}}
+      ],
+      "route_menu": [
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers"},
+        {"text": "RAGE CANDY BAR", "action": "EVENT", "found": true, "flag_condition": "not got_trick2_rage_candy_bar", "event": {"lines": ["A Rage Candy Bar, left among the rocks."], "gift_item": {"RAGECANDYBAR": 1}, "flag": "got_trick2_rage_candy_bar"}},
+        {"text": "RAGE CANDY BAR ", "action": "EVENT", "found": true, "flag_condition": "not got_trick2_rage_candy_bar_2", "event": {"lines": ["Another Rage Candy Bar!"], "gift_item": {"RAGECANDYBAR": 1}, "flag": "got_trick2_rage_candy_bar_2"}},
+        {"text": "Trick Master", "action": "EVENT", "event": {"stages": [{"ready": [], "flag": "trick_puzzle_2_done", "lines": ["Trick Master: Aak! Through all those rocks? You're almost my equal in greatness!", "Trick Master: Here, your reward!"], "gift_item": {"HARD_STONE": 1}}], "then": {"lines": ["Trick Master: Scrub that smug smirk off your face! My next trick will stump you!"]}}},
+        {"text": "Mechadoll 3", "action": "EVENT", "condition": "not:trick_puzzle_6_done", "event": {"lines": ["CLICKETY-CLACK! MECHADOLL 3 AM I. ESCAPE ROPES I SELL, FOR THOSE WHO ARE STUCK."], "stock": ["ESCAPE_ROPE"]}},
+        {"text": "TRICK HOUSE", "action": "EXIT", "target_area": "HOENN_TRICK_HOUSE", "condition": "can_exit"}
+      ],
+      "next_area": "HOENN_TRICK_HOUSE",
+      "region": "HOENN"
+    },
+    "HOENN_TRICK_HOUSE_3": {
+      "area_type": "dungeon",
+      "route_name": "Trick House",
+      "battle_type": "indoor",
+      "wild_pool_percentages": "NO_WILD_INDOORS_PERCENTAGES",
+      "min_rounds": 2,
+      "trainer_pool": [
+        {"name": "Lass Robin", "class": "LASS", "sprite": "lass.png", "team": [43, 118], "levels": [16, 18], "rewards": {"balls": 3}},
+        {"name": "Ace Duo Pike & Shiel", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "team": [318, 322], "levels": [21, 21], "rewards": {"balls": 3}, "battle_options": {"double": true}},
+        {"name": "Schoolkid Ted", "class": "SCHOOL_KID", "sprite": "school_kid_m.png", "team": [280], "levels": [19], "rewards": {"balls": 3}}
+      ],
+      "route_menu": [
+        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers"},
+        {"text": "FULL HEAL", "action": "EVENT", "found": true, "flag_condition": "not got_trick3_full_heal", "event": {"lines": ["A Full Heal, dropped in the dark. (ORAS: a Lumiose Galette)"], "gift_item": {"FULL_HEAL": 1}, "flag": "got_trick3_full_heal"}},
+        {"text": "FULL HEAL ", "action": "EVENT", "found": true, "flag_condition": "not got_trick3_full_heal_2", "event": {"lines": ["A Full Heal, by the scroll. (ORAS: a Lumiose Galette)"], "gift_item": {"FULL_HEAL": 1}, "flag": "got_trick3_full_heal_2"}},
+        {"text": "Trick Master", "action": "EVENT", "event": {"stages": [{"ready": [], "flag": "trick_puzzle_3_done", "lines": ["Trick Master: Aak! You found your way in the pitch dark? Your eyes must be like a Noctowl's!", "Trick Master: Take this!"], "gift_item": {"TM161": 1}}], "then": {"lines": ["Trick Master: Hmph! The next one won't be so easy. Mufufufu!"]}}},
+        {"text": "Mechadoll 3", "action": "EVENT", "condition": "not:trick_puzzle_6_done", "event": {"lines": ["CLICKETY-CLACK! MECHADOLL 3 AM I. ESCAPE ROPES I SELL, FOR THOSE WHO ARE STUCK."], "stock": ["ESCAPE_ROPE"]}},
+        {"text": "TRICK HOUSE", "action": "EXIT", "target_area": "HOENN_TRICK_HOUSE", "condition": "can_exit"}
+      ],
+      "next_area": "HOENN_TRICK_HOUSE",
+      "region": "HOENN"
+    },
+    "HOENN_TRICK_HOUSE_4": {
+      "area_type": "dungeon",
+      "route_name": "Trick House",
+      "battle_type": "indoor",
+      "wild_pool_percentages": "NO_WILD_INDOORS_PERCENTAGES",
+      "min_rounds": 2,
+      "route_menu": [
+        {"text": "CASTELIACONE", "action": "EVENT", "found": true, "flag_condition": "not got_trick4_casteliacone", "event": {"lines": ["A Casteliacone, still cold somehow."], "gift_item": {"CASTELIACONE": 1}, "flag": "got_trick4_casteliacone"}},
+        {"text": "CASTELIACONE ", "action": "EVENT", "found": true, "flag_condition": "not got_trick4_casteliacone_2", "event": {"lines": ["Another Casteliacone, near the way in."], "gift_item": {"CASTELIACONE": 1}, "flag": "got_trick4_casteliacone_2"}},
+        {"text": "Trick Master", "action": "EVENT", "event": {"stages": [{"ready": [], "flag": "trick_puzzle_4_done", "lines": ["Trick Master: Aak! You moved every boulder just right? What strength of mind!", "Trick Master: Your reward!"], "gift_item": {"SMOKE_BALL": 1}}], "then": {"lines": ["Trick Master: My Mechadolls will put your brain to the test next. Mufufufu!"]}}},
+        {"text": "Mechadoll 3", "action": "EVENT", "condition": "not:trick_puzzle_6_done", "event": {"lines": ["CLICKETY-CLACK! MECHADOLL 3 AM I. ESCAPE ROPES I SELL, FOR THOSE WHO ARE STUCK."], "stock": ["ESCAPE_ROPE"]}},
+        {"text": "TRICK HOUSE", "action": "EXIT", "target_area": "HOENN_TRICK_HOUSE", "condition": "can_exit"}
+      ],
+      "next_area": "HOENN_TRICK_HOUSE",
+      "region": "HOENN"
+    },
+    "HOENN_TRICK_HOUSE_5": {
+      "area_type": "dungeon",
+      "route_name": "Trick House",
+      "battle_type": "indoor",
+      "wild_pool_percentages": "NO_WILD_INDOORS_PERCENTAGES",
+      "min_rounds": 2,
+      "route_menu": [
+        {"text": "OLD GATEAU", "action": "EVENT", "found": true, "flag_condition": "not got_trick5_old_gateau", "event": {"lines": ["An Old Gateau, between the Mechadolls."], "gift_item": {"OLD_GATEAU": 1}, "flag": "got_trick5_old_gateau"}},
+        {"text": "OLD GATEAU ", "action": "EVENT", "found": true, "flag_condition": "not got_trick5_old_gateau_2", "event": {"lines": ["An Old Gateau, by the door."], "gift_item": {"OLD_GATEAU": 1}, "flag": "got_trick5_old_gateau_2"}},
+        {"text": "Trick Master", "action": "EVENT", "event": {"stages": [{"ready": [], "flag": "trick_puzzle_5_done", "lines": ["Trick Master: Aak! You answered all my Mechadolls' quizzes? What a brain!", "Trick Master: You've earned this!"], "gift_item": {"MAGNET": 1}}], "then": {"lines": ["Trick Master: One more puzzle. My greatest! Find me one last time!"]}}},
+        {"text": "Mechadoll 1", "action": "EVENT", "event": {"stages": [{"ready": ["not:trick_doll_1"], "lines": ["CLICKETY-CLACK! MECHADOLL 1 AM I! ANSWER MY QUIZ, THEN GO TO MECHADOLL 2.", "MECHADOLL 1 QUIZ. One of these Pokémon is not found on Route 103. Which one is it?"], "quiz": [{"q": "One of these Pokémon is not found on Route 103. Which one is it?", "options": ["Zigzagoon", "Nincada", "Poochyena"], "right": 1}], "quiz_flag": "trick_doll_1", "must_be_right": true, "after": ["CONGRATULATIONS. CORRECT YOU ARE. GO THROUGH. PLEASE."], "wrong": ["BZZZT. DISAPPOINTMENT. ERROR.", "TRY AGAIN. PLEASE."]}], "then": {"lines": ["CORRECT YOU WERE. GO THROUGH. PLEASE."]}}},
+        {"text": "Mechadoll 2", "action": "EVENT", "event": {"stages": [{"ready": ["not:trick_doll_2"], "lines": ["CLICKETY-CLACK! MECHADOLL 2 AM I! MECHADOLL 1'S QUIZ WAS TOO EASY.", "MECHADOLL 2 QUIZ. In Professor Birch's Bag there were three Pokémon. Which one was on the right?"], "quiz": [{"q": "In Professor Birch's Bag there were three Pokémon. Which one was on the right?", "options": ["Treecko", "Torchic", "Mudkip"], "right": 2}], "quiz_flag": "trick_doll_2", "must_be_right": true, "after": ["CONGRATULATIONS. CORRECT YOU ARE. GO THROUGH. PLEASE."], "wrong": ["BZZZT. DISAPPOINTMENT. ERROR.", "TRY AGAIN. PLEASE."]}], "then": {"lines": ["CORRECT YOU WERE. GO THROUGH. PLEASE."]}}},
+        {"text": "Mechadoll 3", "action": "EVENT", "event": {"stages": [{"ready": ["not:trick_doll_3"], "lines": ["CLICKETY-CLACK! MECHADOLL 3 AM I! MATTERS OF MONEY ARE MY SOLE FOCUS.", "MECHADOLL 3 QUIZ. Which would cost more: a Full Heal plus a Great Ball, or one Revive?"], "quiz": [{"q": "Which would cost more: a Full Heal plus a Great Ball, or one Revive?", "options": ["Full Heal plus Great Ball", "Revive", "They cost the same"], "right": 1}], "quiz_flag": "trick_doll_3", "must_be_right": true, "after": ["CONGRATULATIONS. CORRECT YOU ARE. GO THROUGH. PLEASE."], "wrong": ["BZZZT. DISAPPOINTMENT. ERROR.", "TRY AGAIN. PLEASE."]}, {"ready": ["trick_doll_3"], "flag": "trick5_escape_rope", "lines": ["A REWARD FOR A CORRECT ANSWER. TAKE IT."], "gift_item": {"ESCAPE_ROPE": 1}}], "then": {"lines": ["CORRECT YOU WERE. GO THROUGH. PLEASE."]}}},
+        {"text": "Mechadoll 4", "action": "EVENT", "event": {"stages": [{"ready": ["not:trick_doll_4"], "lines": ["CLICKETY-CLACK! MECHADOLL 4 THAT IS ME! MY QUIZ IS AN OBJECT OF BEAUTY.", "MECHADOLL 4 QUIZ. Rustboro Gym Leader Roxanne used a Geodude. Was it female or male?"], "quiz": [{"q": "Rustboro Gym Leader Roxanne used a Geodude. Was it female or male?", "options": ["Female", "Male", "Neither"], "right": 0}], "quiz_flag": "trick_doll_4", "must_be_right": true, "after": ["CONGRATULATIONS. CORRECT YOU ARE. GO THROUGH. PLEASE."], "wrong": ["BZZZT. DISAPPOINTMENT. ERROR.", "TRY AGAIN. PLEASE."]}], "then": {"lines": ["CORRECT YOU WERE. GO THROUGH. PLEASE."]}}},
+        {"text": "Mechadoll 5", "action": "EVENT", "event": {"stages": [{"ready": ["not:trick_doll_5"], "lines": ["CLICKETY-CLACK! MECHADOLL 5 AM I! THE MASTER'S BEST AND PROUDEST ACHIEVEMENT AM I.", "MECHADOLL 5 QUIZ. How many Bikes does Rydel have on display outside his cycle shop?"], "quiz": [{"q": "How many Bikes does Rydel have on display outside his cycle shop?", "options": ["One", "Two", "Three"], "right": 1}], "quiz_flag": "trick_doll_5", "must_be_right": true, "after": ["CONGRATULATIONS. CORRECT YOU ARE. GO THROUGH. PLEASE."], "wrong": ["BZZZT. DISAPPOINTMENT. ERROR.", "TRY AGAIN. PLEASE."]}], "then": {"lines": ["CORRECT YOU WERE. GO THROUGH. PLEASE."]}}},
+        {"text": "TRICK HOUSE", "action": "EXIT", "target_area": "HOENN_TRICK_HOUSE", "condition": "can_exit"}
+      ],
+      "next_area": "HOENN_TRICK_HOUSE",
+      "region": "HOENN"
+    },
+    "HOENN_TRICK_HOUSE_6": {
+      "area_type": "dungeon",
+      "route_name": "Trick House",
+      "battle_type": "indoor",
+      "wild_pool_percentages": "NO_WILD_INDOORS_PERCENTAGES",
+      "min_rounds": 2,
+      "route_menu": [
+        {"text": "FULL HEAL", "action": "EVENT", "found": true, "flag_condition": "not got_trick6_full_heal", "event": {"lines": ["A Full Heal, in the corner. (ORAS: a Shalour Sable)"], "gift_item": {"FULL_HEAL": 1}, "flag": "got_trick6_full_heal"}},
+        {"text": "FULL HEAL ", "action": "EVENT", "found": true, "flag_condition": "not got_trick6_full_heal_2", "event": {"lines": ["A Full Heal, past the doors. (ORAS: a Shalour Sable)"], "gift_item": {"FULL_HEAL": 1}, "flag": "got_trick6_full_heal_2"}},
+        {"text": "Trick Master", "action": "EVENT", "event": {"stages": [{"ready": [], "flag": "trick_puzzle_6_done", "lines": ["Trick Master: Aak! You beat even my greatest puzzle...", "Trick Master: I have nothing left to trick you with! Take this, my very last reward!", "Trick Master: I must go on a journey and dream up new tricks. Farewell!"], "gift_item": {"RARE_CANDY": 1}}], "then": {"lines": ["Trick Master: I must go on a journey and dream up new tricks. Farewell!"]}}, "flag_condition": "not trick_puzzle_6_done", "stays": true},
+        {"text": "Mechadoll 3", "action": "EVENT", "condition": "not:trick_puzzle_6_done", "event": {"lines": ["CLICKETY-CLACK! MECHADOLL 3 AM I. ESCAPE ROPES I SELL, FOR THOSE WHO ARE STUCK."], "stock": ["ESCAPE_ROPE"]}},
+        {"text": "TRICK HOUSE", "action": "EXIT", "target_area": "HOENN_TRICK_HOUSE", "condition": "can_exit"}
+      ],
+      "next_area": "HOENN_TRICK_HOUSE",
+      "region": "HOENN"
     },
     "HOENN_ROUTE_111": { "dexnav_pool_percentages": "HOENN_ROUTE_111_DEXNAV_PERCENTAGES",
       "area_type": "wild_route",
