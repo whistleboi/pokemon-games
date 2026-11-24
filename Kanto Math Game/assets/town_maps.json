@@ -166417,7 +166417,33 @@
      }
     ],
     "theme": "room",
-    "title": "Battle Tower ??F"
+    "title": "Battle Tower ??F",
+    "decor": {
+     "2,6": "slot",
+     "2,7": "slot",
+     "2,8": "slot",
+     "3,6": "slot",
+     "3,7": "slot",
+     "3,8": "slot",
+     "7,6": "slot",
+     "7,7": "slot",
+     "7,8": "slot",
+     "8,6": "slot",
+     "8,7": "slot",
+     "8,8": "slot",
+     "14,6": "slot",
+     "14,7": "slot",
+     "14,8": "slot",
+     "15,6": "slot",
+     "15,7": "slot",
+     "15,8": "slot",
+     "18,6": "slot",
+     "18,7": "slot",
+     "18,8": "slot",
+     "19,6": "slot",
+     "19,7": "slot",
+     "19,8": "slot"
+    }
    },
    "maison": {
     "art": [

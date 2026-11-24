@@ -1274,13 +1274,14 @@ _near = lambda f, x, y: any((f, x + dx, y + dy) in _seen for dx, dy in ((1, 0), 
 check(_near(2, 23, 10) and _near(1, 15, 9), "The hideout: from the cave mouth, down the stairs and through the warp panels to the leader's room and the Admin")
 st.run.enter_floor(1); frames(2)
 _calm(st)
+_mb0 = story.inventory.get("MASTER_BALL", 0)   # (one may be in the Bag already: count the new one)
 _mb = next(m for m in st.run.floor.movers if isinstance(m.payload, dict) and m.payload.get("text") == "MASTER BALL")
 st._use_figure(_mb); tap(st)
 _el = next(m for m in st.run.floor.movers if isinstance(m.payload, dict) and m.payload.get("text") == "POKE BALL")
 st.dialogue_box.visible = False
 st._use_figure(_el)
 said = _play(st, 300)
-check(story.inventory.get("MASTER_BALL") == 1 and "<WildBattleState>" in said,
+check(story.inventory.get("MASTER_BALL", 0) == _mb0 + 1 and "<WildBattleState>" in said,
       f"The hideout: the leader's room's Poke Balls: the Master Ball, and an Electrode in disguise {story.inventory.get('MASTER_BALL')} {str(said)[-160:]}")
 g.change_state(st)
 # the sub room: five Grunts rush you (ORAS's horde battle), one battle with their five Poochyena
@@ -2836,6 +2837,12 @@ if _ti is not None and _si is not None:
     _clerk = next((m for m in st.run.floor.movers if isinstance(m.payload, dict) and m.payload.get("text") == "Game Corner clerk"), None)
 check(_ok and _clerk is not None and _clerk.payload.get("action") == "GAME_CORNER",
       f"Battle Frontier: the Battle Tower's lift goes down to a floor that isn't on any sign - a secret Game Corner ({_ti}, {_si}, {_ok}, {_rooms[:3]})")
+_slots = [t for t, v in st.run.floor.decor.items() if v == "slot"] if _ok else []
+if _slots:   # (11-24, clean-hoenn-encyclopedia-frontier-game-corner: its machines are walked up to)
+    _sx, _sy = min(_slots, key=lambda t: (t[1], t[0]))
+    st.run.player = (_sx, _sy - 1) if st.run.floor.walkable(_sx, _sy - 1) else (_sx, _sy + 3); st.anim = 0
+_act = st._act_here() if _slots else None
+check(len(_slots) >= 24 and _act and _act[0] == "PLAY SLOTS", f"...its slot machines are walked up to and played ({len(_slots)} machine tiles, {_act and _act[0]})")
 from src.states import game_corner as _gcs
 _ak = story.current_area_key; story.current_area_key = "HOENN_BATTLE_FRONTIER"
 check(any(p[1] == "LEFTOVERS" for p in _gcs.prizes_here(story)), "...with prizes of its own")
