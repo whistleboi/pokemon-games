@@ -1,21 +1,8 @@
 from src.world.story import StoryManager
 
 
-# (11-23, legacy menu clear: the S.S. Tidal's, the Frontier's and Southern Island's menu EXITs are gone - their Sailors and
-#  the Ferry attendant sail you, an EVENT with "travel"; reach_lib.links follows EXIT/TRAVEL buttons only, so follow them here)
-_links_menu = links
-def links(area):
-    out = _links_menu(area)
-    a = PROG.get(area) or {}
-    for o in a.get("route_menu") or []:
-        ev = o.get("event") if isinstance(o.get("event"), dict) else {}
-        to = ev.get("travel")
-        if o.get("action") != "EVENT" or not to or not _flag_ok(o.get("flag_condition")):
-            continue
-        if o.get("condition") and not _state(area)._check_route_condition(o["condition"], False, o):
-            continue
-        out += [t for t in ((a.get("ferry") or {}).values() if to == "@ferry" else [to]) if t not in out]
-    return out
+# (11-24: the Sailors' and Ferry attendant's sailing - EVENTs with "travel" - is followed by reach_lib.links itself since
+#  main 16d55bef; walk_hoenn's own links() wrapper for it is gone)
 
 story.badges = {"HOENN": []}
 story.inventory = {}

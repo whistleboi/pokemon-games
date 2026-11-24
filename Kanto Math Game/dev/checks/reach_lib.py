@@ -100,7 +100,8 @@ def _cond_ok(st, cond):
 def _rides(area, st):
     """The places a walked map's people take you (Unova's cleanup, 11-23): a person whose event has "travel" (ships, ferries,
     trains: Pop Roxie, the Liberty Garden sailor) or "travel_choices" (each with its own "requires"), shown now. Scenes
-    (one-off story rides) aren't counted; "@ferry" is each port of the area's own "ferry" map."""
+    (one-off story rides) aren't counted; "@ferry" is each port of the area's own "ferry" map. st None: every ride, whatever
+    its conditions (the raw list the way-back check reads, 11-24)."""
     _walk_exits(area)   # (loads the maps)
     m = _WALK["maps"].get(area) or {}
     out = []
@@ -112,7 +113,7 @@ def _rides(area, st):
             else:
                 people += (pp.get("any") or []) if isinstance(pp, dict) and "any" in pp else [pp]
         for pp in people:
-            if not isinstance(pp, dict) or "trigger" in pp or not _cond_ok(st, pp.get("condition")):
+            if not isinstance(pp, dict) or "trigger" in pp or (st is not None and not _cond_ok(st, pp.get("condition"))):
                 continue
             ev = pp.get("event") or {}
             if not isinstance(ev, dict):
@@ -121,7 +122,7 @@ def _rides(area, st):
             if isinstance(to, str):
                 out += _travel_to(area, to)
             for ch in ev.get("travel_choices") or []:
-                if ch.get("to") in PROG and _cond_ok(st, ch.get("requires")):
+                if ch.get("to") in PROG and (st is None or _cond_ok(st, ch.get("requires"))):
                     out.append(ch["to"])
     return out
 
@@ -225,7 +226,7 @@ def _raw_targets(area):
         t = o.get("target_area") or (o.get("target") if o.get("action") in ("TRAVEL", "EXIT") else None)
         if t:
             out.append(t)
-    return list(dict.fromkeys(out + _walk_exits(area)))
+    return list(dict.fromkeys(out + _walk_exits(area) + _rides(area, None)))   # (and its people's rides: the Cargo Service's flight; Unova 11-24)
 
 
 def expansion_check(tag, keys, start):
