@@ -319,7 +319,7 @@ DUKING_STAGES = {"text": "Duking", "action": "EVENT", "event": {"stages": [
                "You put the GEAR back in place. The windmill creaks, then turns. Pyrite Colosseum has power again!",
                "Duking: Go on up to the Colosseum. Show this town what a real trainer looks like."]},
     # (his Plusle, back from Miror B.: the gift that was already Duking's - CANON_SPECIES.md - kept as his next step)
-    {"requires": ["orre_miror_cave"], "flag": "orre_duking_plusle", "gift_pokemon": 311, "gift_level": 13,
+    {"requires": ["orre_miror_cave"], "flag": "orre_duking_plusle", "gift_pokemon": 311, "gift_level": 20,   # (11-24: Lv 20 fits after Miror B. - the disc's 13 predates the stage levels)
      "lines": ["Duking: You got my Plusle back from Miror B.! I owe you everything.",
                "Duking: It wants to go with you. Take good care of it, kid."]}],
     "done": ["Duking: Pyrite's been rough lately. Keep your eyes open, kid."]}}

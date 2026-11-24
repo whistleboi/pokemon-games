@@ -25,6 +25,9 @@ def event(state, ev, lines, show):
     if ev.get("gym"):   # (a second Gym in an area that has one already: Realgam's Birch beside its Colosseum, S3 11-24)
         gd = story.get_current_area_data().get(ev["gym"]) or {}
         lobby.gym_data, lobby.leader, lobby.trainers = gd, gd.get("leader"), []
+        _b = (lobby.leader or {}).get("badge_reward")   # (11-24: the math game from this Gym's own badge - the lobby chose it
+        lobby.challenge = (minigames.pick(game, area, lobby._leader_team())   #  from the area's main Gym, Realgam's League)
+                           if _b and not story.has_badge(_b) and not story.story_flags.get(minigames.done_flag(area)) else None)
     ld = dict(lobby.leader or {})
     name = _fill_names(game, ld.get("name", "The Leader"))
     badge = ld.get("badge_reward")

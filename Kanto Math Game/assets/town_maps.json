@@ -343908,7 +343908,7 @@
          ],
          "flag": "orre_duking_plusle",
          "gift_pokemon": 311,
-         "gift_level": 13,
+         "gift_level": 20,
          "lines": [
           "Duking: You got my Plusle back from Miror B.! I owe you everything.",
           "Duking: It wants to go with you. Take good care of it, kid."
@@ -365567,7 +365567,7 @@
      "cccc...................cccc",
      "c.ccc..cc.........cc..ccc.c",
      "c..ccc...............ccc..c",
-     "c...cccN...........Nccc...c",
+     "c...ccc.............ccc...c",
      "c....ccc...........ccc....c",
      "c.....cccccc...cccccc.....c",
      "c......ccccc...ccccc......c",
@@ -366906,9 +366906,7 @@
         "A cloaked figure: Welcome to the Deep Colosseum. Five rounds. The Deep King waits at the bottom of them."
        ]
       }
-     },
-     "SNAG SHADOW POKEMON",
-     "SNAG AGAIN"
+     }
     ],
     "trainer_spots": [],
     "roofs": {
@@ -366942,8 +366940,6 @@
    "Deep Colosseum"
   ],
   "figure_floors": {
-   "SNAG SHADOW POKEMON": 0,
-   "SNAG AGAIN": 0,
    "Hunter Dewig": 0,
    "Bodybuilder Palen": 0,
    "Worker Toway": 0,
