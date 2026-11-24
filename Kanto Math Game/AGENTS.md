@@ -9,7 +9,10 @@ A Pygame Pokémon game where battles are won by answering math problems. Nine re
 - Run the game: `python main.py`
 - Which checks to run: `pokemon-games/kanto_handoff/SWEEP_RULES.md` Part 3 (approved rulebook, 11-16). Usually just the
   suites a change touches: `bash dev/checks/run.sh <suite> ... walk:<region>`; each suite must end `##### 0 failures`.
-- Everything: `bash dev/checks/run_all.sh` (about 40 minutes; only when asked). The `ValueError: test` from batch5 is deliberate.
+  A region's set: `run.sh region:<lane>` (every suite that lane owns + its walk); `run.sh quick` (short suites that open
+  the whole game); `run_par.sh` takes the same words and runs them side by side. Every suite has a line in
+  `dev/checks/suites.txt` (name, owner lane, tags): add one for a new suite (`run.sh lint` checks).
+- Everything: `bash dev/checks/run_all.sh` (every listed suite side by side; only when asked).
 - Headless checks use `SDL_VIDEODRIVER=dummy` and `SDL_AUDIODRIVER=dummy`.
 
 ## Layout

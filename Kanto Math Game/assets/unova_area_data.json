@@ -2,6 +2,40 @@
   "UNOVA_OLD_ROD_POOL_PERCENTAGES": {"550": 40, "118": 30, "129": 30},
   "UNOVA_GOOD_ROD_POOL_PERCENTAGES": {"550": 35, "118": 25, "592": 25, "339": 15},
   "UNOVA_SUPER_ROD_POOL_PERCENTAGES": {"550": 25, "592": 25, "594": 15, "119": 15, "223": 10, "90": 10},
+  "GIANT_CHASM_CAVE_SUPER_ROD_PERCENTAGES": {
+    "60": 70,
+    "550": 30
+  },
+  "GIANT_CHASM_CAVE_SURF_PERCENTAGES": {
+    "550": 70,
+    "86": 30
+  },
+  "GIANT_CHASM_CAVE_PERCENTAGES": {
+    "221": 25,
+    "215": 20,
+    "583": 15,
+    "35": 15,
+    "337": 10,
+    "338": 10,
+    "225": 5
+  },
+  "GIANT_CHASM_FOREST_PERCENTAGES": {
+    "221": 30,
+    "35": 20,
+    "132": 15,
+    "337": 10,
+    "338": 10,
+    "375": 10,
+    "225": 5
+  },
+  "GIANT_CHASM_SUPER_ROD_PERCENTAGES": {
+    "60": 70,
+    "550": 30
+  },
+  "GIANT_CHASM_SURF_PERCENTAGES": {
+    "550": 70,
+    "86": 30
+  },
   "SEASIDE_CAVE_SUPER_ROD_PERCENTAGES": {
     "370": 70,
     "90": 30
@@ -14703,17 +14737,967 @@
       "battle_type": "cave",
       "wild_pool_percentages": "UNOVA_GIANT_CHASM_PERCENTAGES",
       "min_rounds": 3,
-      "backgrounds": { "main": "giant_chasm.png", "battle": "battle_giant_chasm.png" },
-      "route_menu": [
-        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
-        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
-        {"text": "Encounter Kyurem", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD"},
-        {"text": "Lacunosa Town", "action": "EXIT", "target_area": "LACUNOSA_TOWN", "condition": "can_exit", "color": "RED"},
-        {"text": "ROUTE 13", "action": "EXIT", "target": "UNOVA_ROUTE_13", "condition": ["can_exit", "beat_unova_champion"], "color": "RED"},
-        {"text": "ROUTE 22", "action": "EXIT", "target": "UNOVA_ROUTE_22", "condition": ["can_exit", "beat_unova_champion"], "color": "RED"},
-        {"text": "ROUTE 23", "action": "EXIT", "target": "UNOVA_ROUTE_23", "condition": ["can_exit", "beat_unova_champion"], "color": "RED"}
-      ],
-      "area_boss": { "id": 646, "level": 75, "name": "Kyurem", "victory_flag": "GIANT_CHASM_boss_defeated" }
+      "backgrounds": {
+        "main": "giant_chasm.png",
+        "battle": "battle_giant_chasm.png"
+      },
+      "route_menu": [],
+      "wild_tables": {
+        "ALL": {
+          "grass": [
+            [
+              215,
+              0,
+              20,
+              44,
+              44
+            ],
+            [
+              221,
+              0,
+              20,
+              44,
+              44
+            ],
+            [
+              583,
+              0,
+              10,
+              45,
+              45
+            ],
+            [
+              35,
+              0,
+              10,
+              44,
+              44
+            ],
+            [
+              337,
+              0,
+              10,
+              46,
+              46
+            ],
+            [
+              338,
+              0,
+              10,
+              46,
+              46
+            ],
+            [
+              35,
+              0,
+              5,
+              46,
+              46
+            ],
+            [
+              583,
+              0,
+              5,
+              47,
+              47
+            ],
+            [
+              221,
+              0,
+              4,
+              46,
+              46
+            ],
+            [
+              225,
+              0,
+              4,
+              47,
+              47
+            ],
+            [
+              221,
+              0,
+              1,
+              46,
+              46
+            ],
+            [
+              225,
+              0,
+              1,
+              47,
+              47
+            ]
+          ],
+          "rustle": [
+            [
+              530,
+              0,
+              20,
+              44,
+              44
+            ],
+            [
+              530,
+              0,
+              20,
+              44,
+              44
+            ],
+            [
+              530,
+              0,
+              10,
+              45,
+              45
+            ],
+            [
+              530,
+              0,
+              10,
+              45,
+              45
+            ],
+            [
+              530,
+              0,
+              10,
+              46,
+              46
+            ],
+            [
+              530,
+              0,
+              10,
+              46,
+              46
+            ],
+            [
+              530,
+              0,
+              5,
+              47,
+              47
+            ],
+            [
+              530,
+              0,
+              5,
+              47,
+              47
+            ],
+            [
+              530,
+              0,
+              4,
+              47,
+              47
+            ],
+            [
+              530,
+              0,
+              4,
+              47,
+              47
+            ],
+            [
+              530,
+              0,
+              1,
+              47,
+              47
+            ],
+            [
+              530,
+              0,
+              1,
+              47,
+              47
+            ]
+          ],
+          "surf": [
+            [
+              550,
+              0,
+              60,
+              35,
+              50
+            ],
+            [
+              86,
+              0,
+              30,
+              35,
+              50
+            ],
+            [
+              550,
+              0,
+              5,
+              40,
+              50
+            ],
+            [
+              550,
+              0,
+              4,
+              40,
+              50
+            ],
+            [
+              550,
+              0,
+              1,
+              40,
+              50
+            ]
+          ],
+          "ripple": [
+            [
+              86,
+              0,
+              60,
+              35,
+              50
+            ],
+            [
+              550,
+              1,
+              30,
+              35,
+              50
+            ],
+            [
+              87,
+              0,
+              5,
+              40,
+              50
+            ],
+            [
+              87,
+              0,
+              4,
+              40,
+              50
+            ],
+            [
+              87,
+              0,
+              1,
+              40,
+              50
+            ]
+          ],
+          "fish": [
+            [
+              60,
+              0,
+              60,
+              40,
+              60
+            ],
+            [
+              550,
+              0,
+              30,
+              40,
+              60
+            ],
+            [
+              60,
+              0,
+              5,
+              50,
+              70
+            ],
+            [
+              60,
+              0,
+              4,
+              50,
+              70
+            ],
+            [
+              60,
+              0,
+              1,
+              50,
+              70
+            ]
+          ],
+          "fish_ripple": [
+            [
+              61,
+              0,
+              60,
+              40,
+              60
+            ],
+            [
+              550,
+              1,
+              30,
+              40,
+              60
+            ],
+            [
+              61,
+              0,
+              5,
+              50,
+              70
+            ],
+            [
+              62,
+              0,
+              4,
+              50,
+              70
+            ],
+            [
+              62,
+              0,
+              1,
+              50,
+              70
+            ]
+          ]
+        }
+      },
+      "wild_levels": {
+        "land": [
+          44,
+          47
+        ]
+      },
+      "surf_pool_percentages": "GIANT_CHASM_SURF_PERCENTAGES"
+    },
+    "GIANT_CHASM_FOREST": {
+      "area_type": "dungeon",
+      "route_name": "Giant Chasm Forest",
+      "region": "UNOVA",
+      "battle_type": "grass",
+      "wild_pool_percentages": "GIANT_CHASM_FOREST_PERCENTAGES",
+      "min_rounds": 1,
+      "backgrounds": {
+        "main": "giant_chasm.png",
+        "battle": "battle_giant_chasm.png"
+      },
+      "route_menu": [],
+      "wild_tables": {
+        "ALL": {
+          "grass": [
+            [
+              221,
+              0,
+              20,
+              44,
+              44
+            ],
+            [
+              35,
+              0,
+              20,
+              45,
+              45
+            ],
+            [
+              221,
+              0,
+              10,
+              46,
+              46
+            ],
+            [
+              132,
+              0,
+              10,
+              45,
+              45
+            ],
+            [
+              337,
+              0,
+              10,
+              46,
+              46
+            ],
+            [
+              338,
+              0,
+              10,
+              46,
+              46
+            ],
+            [
+              132,
+              0,
+              5,
+              47,
+              47
+            ],
+            [
+              375,
+              0,
+              5,
+              45,
+              45
+            ],
+            [
+              225,
+              0,
+              4,
+              44,
+              44
+            ],
+            [
+              375,
+              0,
+              4,
+              47,
+              47
+            ],
+            [
+              225,
+              0,
+              1,
+              44,
+              44
+            ],
+            [
+              375,
+              0,
+              1,
+              47,
+              47
+            ]
+          ],
+          "dark": [
+            [
+              221,
+              0,
+              20,
+              49,
+              49
+            ],
+            [
+              35,
+              0,
+              20,
+              50,
+              50
+            ],
+            [
+              221,
+              0,
+              10,
+              51,
+              51
+            ],
+            [
+              132,
+              0,
+              10,
+              50,
+              50
+            ],
+            [
+              337,
+              0,
+              10,
+              51,
+              51
+            ],
+            [
+              338,
+              0,
+              10,
+              51,
+              51
+            ],
+            [
+              132,
+              0,
+              5,
+              52,
+              52
+            ],
+            [
+              375,
+              0,
+              5,
+              50,
+              50
+            ],
+            [
+              225,
+              0,
+              4,
+              49,
+              49
+            ],
+            [
+              375,
+              0,
+              4,
+              52,
+              52
+            ],
+            [
+              225,
+              0,
+              1,
+              49,
+              49
+            ],
+            [
+              375,
+              0,
+              1,
+              52,
+              52
+            ]
+          ],
+          "rustle": [
+            [
+              531,
+              0,
+              20,
+              44,
+              44
+            ],
+            [
+              531,
+              0,
+              20,
+              44,
+              44
+            ],
+            [
+              531,
+              0,
+              10,
+              45,
+              45
+            ],
+            [
+              531,
+              0,
+              10,
+              45,
+              45
+            ],
+            [
+              531,
+              0,
+              10,
+              46,
+              46
+            ],
+            [
+              531,
+              0,
+              10,
+              46,
+              46
+            ],
+            [
+              531,
+              0,
+              5,
+              47,
+              47
+            ],
+            [
+              473,
+              0,
+              5,
+              47,
+              47
+            ],
+            [
+              36,
+              0,
+              4,
+              47,
+              47
+            ],
+            [
+              376,
+              0,
+              4,
+              47,
+              47
+            ],
+            [
+              36,
+              0,
+              1,
+              47,
+              47
+            ],
+            [
+              376,
+              0,
+              1,
+              47,
+              47
+            ]
+          ]
+        }
+      },
+      "wild_levels": {
+        "land": [
+          44,
+          47
+        ]
+      }
+    },
+    "GIANT_CHASM_CAVE": {
+      "area_type": "dungeon",
+      "route_name": "Giant Chasm Cave",
+      "region": "UNOVA",
+      "battle_type": "cave",
+      "wild_pool_percentages": "GIANT_CHASM_CAVE_PERCENTAGES",
+      "min_rounds": 1,
+      "backgrounds": {
+        "main": "giant_chasm.png",
+        "battle": "battle_giant_chasm.png"
+      },
+      "route_menu": [],
+      "wild_tables": {
+        "ALL": {
+          "grass": [
+            [
+              215,
+              0,
+              20,
+              44,
+              44
+            ],
+            [
+              221,
+              0,
+              20,
+              44,
+              44
+            ],
+            [
+              583,
+              0,
+              10,
+              45,
+              45
+            ],
+            [
+              35,
+              0,
+              10,
+              44,
+              44
+            ],
+            [
+              337,
+              0,
+              10,
+              46,
+              46
+            ],
+            [
+              338,
+              0,
+              10,
+              46,
+              46
+            ],
+            [
+              35,
+              0,
+              5,
+              46,
+              46
+            ],
+            [
+              583,
+              0,
+              5,
+              47,
+              47
+            ],
+            [
+              221,
+              0,
+              4,
+              46,
+              46
+            ],
+            [
+              225,
+              0,
+              4,
+              47,
+              47
+            ],
+            [
+              221,
+              0,
+              1,
+              46,
+              46
+            ],
+            [
+              225,
+              0,
+              1,
+              47,
+              47
+            ]
+          ],
+          "rustle": [
+            [
+              530,
+              0,
+              20,
+              44,
+              44
+            ],
+            [
+              530,
+              0,
+              20,
+              44,
+              44
+            ],
+            [
+              530,
+              0,
+              10,
+              45,
+              45
+            ],
+            [
+              530,
+              0,
+              10,
+              45,
+              45
+            ],
+            [
+              530,
+              0,
+              10,
+              46,
+              46
+            ],
+            [
+              530,
+              0,
+              10,
+              46,
+              46
+            ],
+            [
+              530,
+              0,
+              5,
+              47,
+              47
+            ],
+            [
+              530,
+              0,
+              5,
+              47,
+              47
+            ],
+            [
+              530,
+              0,
+              4,
+              47,
+              47
+            ],
+            [
+              530,
+              0,
+              4,
+              47,
+              47
+            ],
+            [
+              530,
+              0,
+              1,
+              47,
+              47
+            ],
+            [
+              530,
+              0,
+              1,
+              47,
+              47
+            ]
+          ],
+          "surf": [
+            [
+              550,
+              0,
+              60,
+              35,
+              50
+            ],
+            [
+              86,
+              0,
+              30,
+              35,
+              50
+            ],
+            [
+              550,
+              0,
+              5,
+              40,
+              50
+            ],
+            [
+              550,
+              0,
+              4,
+              40,
+              50
+            ],
+            [
+              550,
+              0,
+              1,
+              40,
+              50
+            ]
+          ],
+          "ripple": [
+            [
+              86,
+              0,
+              60,
+              35,
+              50
+            ],
+            [
+              550,
+              1,
+              30,
+              35,
+              50
+            ],
+            [
+              87,
+              0,
+              5,
+              40,
+              50
+            ],
+            [
+              87,
+              0,
+              4,
+              40,
+              50
+            ],
+            [
+              87,
+              0,
+              1,
+              40,
+              50
+            ]
+          ],
+          "fish": [
+            [
+              60,
+              0,
+              60,
+              40,
+              60
+            ],
+            [
+              550,
+              0,
+              30,
+              40,
+              60
+            ],
+            [
+              60,
+              0,
+              5,
+              50,
+              70
+            ],
+            [
+              60,
+              0,
+              4,
+              50,
+              70
+            ],
+            [
+              60,
+              0,
+              1,
+              50,
+              70
+            ]
+          ],
+          "fish_ripple": [
+            [
+              61,
+              0,
+              60,
+              40,
+              60
+            ],
+            [
+              550,
+              1,
+              30,
+              40,
+              60
+            ],
+            [
+              61,
+              0,
+              5,
+              50,
+              70
+            ],
+            [
+              62,
+              0,
+              4,
+              50,
+              70
+            ],
+            [
+              62,
+              0,
+              1,
+              50,
+              70
+            ]
+          ]
+        }
+      },
+      "wild_levels": {
+        "land": [
+          44,
+          47
+        ]
+      },
+      "surf_pool_percentages": "GIANT_CHASM_CAVE_SURF_PERCENTAGES"
     },
     "NS_CASTLE": {
       "area_type": "dungeon",
@@ -24465,7 +25449,7 @@
     {"grotto": 6, "area": "UNOVA_ROUTE_13", "where": "Route 13 (top of the stairs)", "pokemon": {"BLACK_2": [{"id": 451, "name": "Skorupi", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 451, "name": "Skorupi", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 451, "name": "Skorupi", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 451, "name": "Skorupi", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 114, "name": "Tangela", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 114, "name": "Tangela", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 114, "name": "Tangela", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 114, "name": "Tangela", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 590, "name": "Foongus", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 590, "name": "Foongus", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 590, "name": "Foongus", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 590, "name": "Foongus", "min": 35, "max": 39, "female": 30, "rate": 3.75}], "WHITE_2": [{"id": 451, "name": "Skorupi", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 451, "name": "Skorupi", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 451, "name": "Skorupi", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 451, "name": "Skorupi", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 114, "name": "Tangela", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 114, "name": "Tangela", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 114, "name": "Tangela", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 114, "name": "Tangela", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 590, "name": "Foongus", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 590, "name": "Foongus", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 590, "name": "Foongus", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 590, "name": "Foongus", "min": 35, "max": 39, "female": 30, "rate": 3.75}]}, "stones": {"WATER_STONE": 0.25, "THUNDER_STONE": 0.25, "LEAF_STONE": 0.25, "MOON_STONE": 0.25}},
     {"grotto": 7, "area": "UNOVA_ROUTE_13", "where": "Route 13 (south-west of the cut trees)", "pokemon": {"BLACK_2": [{"id": 363, "name": "Spheal", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 363, "name": "Spheal", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 363, "name": "Spheal", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 363, "name": "Spheal", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 425, "name": "Drifloon", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 425, "name": "Drifloon", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 425, "name": "Drifloon", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 425, "name": "Drifloon", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 590, "name": "Foongus", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 590, "name": "Foongus", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 590, "name": "Foongus", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 590, "name": "Foongus", "min": 35, "max": 39, "female": 30, "rate": 3.75}], "WHITE_2": [{"id": 363, "name": "Spheal", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 363, "name": "Spheal", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 363, "name": "Spheal", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 363, "name": "Spheal", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 425, "name": "Drifloon", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 425, "name": "Drifloon", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 425, "name": "Drifloon", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 425, "name": "Drifloon", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 590, "name": "Foongus", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 590, "name": "Foongus", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 590, "name": "Foongus", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 590, "name": "Foongus", "min": 35, "max": 39, "female": 30, "rate": 3.75}]}, "stones": {"FIRE_STONE": 0.25}},
     {"grotto": 8, "area": "UNOVA_ROUTE_9", "where": "Route 9 (left of Shopping Mall Nine)", "pokemon": {"BLACK_2": [{"id": 626, "name": "Bouffalant", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 626, "name": "Bouffalant", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 626, "name": "Bouffalant", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 626, "name": "Bouffalant", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 89, "name": "Muk", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 89, "name": "Muk", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 569, "name": "Garbodor", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 569, "name": "Garbodor", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 510, "name": "Liepard", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 510, "name": "Liepard", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 510, "name": "Liepard", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 510, "name": "Liepard", "min": 35, "max": 39, "female": 30, "rate": 3.75}], "WHITE_2": [{"id": 626, "name": "Bouffalant", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 626, "name": "Bouffalant", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 626, "name": "Bouffalant", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 626, "name": "Bouffalant", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 89, "name": "Muk", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 89, "name": "Muk", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 569, "name": "Garbodor", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 569, "name": "Garbodor", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 510, "name": "Liepard", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 510, "name": "Liepard", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 510, "name": "Liepard", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 510, "name": "Liepard", "min": 35, "max": 39, "female": 30, "rate": 3.75}]}, "stones": {"FIRE_STONE": 0.25}},
-    {"grotto": 9, "area": "GIANT_CHASM", "where": "Giant Chasm (by the forest)", "pokemon": {"BLACK_2": [{"id": 132, "name": "Ditto", "min": 45, "max": 49, "female": 0, "rate": 0.25}, {"id": 132, "name": "Ditto", "min": 45, "max": 49, "female": 0, "rate": 0.25}, {"id": 132, "name": "Ditto", "min": 45, "max": 49, "female": 0, "rate": 0.25}, {"id": 132, "name": "Ditto", "min": 45, "max": 49, "female": 0, "rate": 0.25}, {"id": 375, "name": "Metang", "min": 45, "max": 49, "female": 0, "rate": 1.0}, {"id": 375, "name": "Metang", "min": 45, "max": 49, "female": 0, "rate": 1.0}, {"id": 215, "name": "Sneasel", "min": 45, "max": 49, "female": 30, "rate": 1.0}, {"id": 215, "name": "Sneasel", "min": 45, "max": 49, "female": 30, "rate": 1.0}, {"id": 35, "name": "Clefairy", "min": 45, "max": 49, "female": 60, "rate": 3.75}, {"id": 35, "name": "Clefairy", "min": 45, "max": 49, "female": 60, "rate": 3.75}, {"id": 35, "name": "Clefairy", "min": 45, "max": 49, "female": 60, "rate": 3.75}, {"id": 35, "name": "Clefairy", "min": 45, "max": 49, "female": 60, "rate": 3.75}], "WHITE_2": [{"id": 132, "name": "Ditto", "min": 45, "max": 49, "female": 0, "rate": 0.25}, {"id": 132, "name": "Ditto", "min": 45, "max": 49, "female": 0, "rate": 0.25}, {"id": 132, "name": "Ditto", "min": 45, "max": 49, "female": 0, "rate": 0.25}, {"id": 132, "name": "Ditto", "min": 45, "max": 49, "female": 0, "rate": 0.25}, {"id": 375, "name": "Metang", "min": 45, "max": 49, "female": 0, "rate": 1.0}, {"id": 375, "name": "Metang", "min": 45, "max": 49, "female": 0, "rate": 1.0}, {"id": 215, "name": "Sneasel", "min": 45, "max": 49, "female": 30, "rate": 1.0}, {"id": 215, "name": "Sneasel", "min": 45, "max": 49, "female": 30, "rate": 1.0}, {"id": 35, "name": "Clefairy", "min": 45, "max": 49, "female": 60, "rate": 3.75}, {"id": 35, "name": "Clefairy", "min": 45, "max": 49, "female": 60, "rate": 3.75}, {"id": 35, "name": "Clefairy", "min": 45, "max": 49, "female": 60, "rate": 3.75}, {"id": 35, "name": "Clefairy", "min": 45, "max": 49, "female": 60, "rate": 3.75}]}, "stones": {"FIRE_STONE": 0.25}},
+    {"grotto": 9, "area": "GIANT_CHASM_FOREST", "where": "Giant Chasm (by the forest)", "pokemon": {"BLACK_2": [{"id": 132, "name": "Ditto", "min": 45, "max": 49, "female": 0, "rate": 0.25}, {"id": 132, "name": "Ditto", "min": 45, "max": 49, "female": 0, "rate": 0.25}, {"id": 132, "name": "Ditto", "min": 45, "max": 49, "female": 0, "rate": 0.25}, {"id": 132, "name": "Ditto", "min": 45, "max": 49, "female": 0, "rate": 0.25}, {"id": 375, "name": "Metang", "min": 45, "max": 49, "female": 0, "rate": 1.0}, {"id": 375, "name": "Metang", "min": 45, "max": 49, "female": 0, "rate": 1.0}, {"id": 215, "name": "Sneasel", "min": 45, "max": 49, "female": 30, "rate": 1.0}, {"id": 215, "name": "Sneasel", "min": 45, "max": 49, "female": 30, "rate": 1.0}, {"id": 35, "name": "Clefairy", "min": 45, "max": 49, "female": 60, "rate": 3.75}, {"id": 35, "name": "Clefairy", "min": 45, "max": 49, "female": 60, "rate": 3.75}, {"id": 35, "name": "Clefairy", "min": 45, "max": 49, "female": 60, "rate": 3.75}, {"id": 35, "name": "Clefairy", "min": 45, "max": 49, "female": 60, "rate": 3.75}], "WHITE_2": [{"id": 132, "name": "Ditto", "min": 45, "max": 49, "female": 0, "rate": 0.25}, {"id": 132, "name": "Ditto", "min": 45, "max": 49, "female": 0, "rate": 0.25}, {"id": 132, "name": "Ditto", "min": 45, "max": 49, "female": 0, "rate": 0.25}, {"id": 132, "name": "Ditto", "min": 45, "max": 49, "female": 0, "rate": 0.25}, {"id": 375, "name": "Metang", "min": 45, "max": 49, "female": 0, "rate": 1.0}, {"id": 375, "name": "Metang", "min": 45, "max": 49, "female": 0, "rate": 1.0}, {"id": 215, "name": "Sneasel", "min": 45, "max": 49, "female": 30, "rate": 1.0}, {"id": 215, "name": "Sneasel", "min": 45, "max": 49, "female": 30, "rate": 1.0}, {"id": 35, "name": "Clefairy", "min": 45, "max": 49, "female": 60, "rate": 3.75}, {"id": 35, "name": "Clefairy", "min": 45, "max": 49, "female": 60, "rate": 3.75}, {"id": 35, "name": "Clefairy", "min": 45, "max": 49, "female": 60, "rate": 3.75}, {"id": 35, "name": "Clefairy", "min": 45, "max": 49, "female": 60, "rate": 3.75}]}, "stones": {"FIRE_STONE": 0.25}},
     {"grotto": 10, "area": "UNOVA_ROUTE_22", "where": "Route 22 (the walkways)", "pokemon": {"BLACK_2": [{"id": 619, "name": "Mienfoo", "min": 40, "max": 44, "female": 30, "rate": 0.25}, {"id": 619, "name": "Mienfoo", "min": 40, "max": 44, "female": 30, "rate": 0.25}, {"id": 619, "name": "Mienfoo", "min": 40, "max": 44, "female": 30, "rate": 0.25}, {"id": 619, "name": "Mienfoo", "min": 40, "max": 44, "female": 30, "rate": 0.25}, {"id": 279, "name": "Pelipper", "min": 40, "max": 44, "female": 30, "rate": 1.0}, {"id": 279, "name": "Pelipper", "min": 40, "max": 44, "female": 30, "rate": 1.0}, {"id": 279, "name": "Pelipper", "min": 40, "max": 44, "female": 30, "rate": 1.0}, {"id": 279, "name": "Pelipper", "min": 40, "max": 44, "female": 30, "rate": 1.0}, {"id": 591, "name": "Amoonguss", "min": 40, "max": 44, "female": 30, "rate": 3.75}, {"id": 591, "name": "Amoonguss", "min": 40, "max": 44, "female": 30, "rate": 3.75}, {"id": 591, "name": "Amoonguss", "min": 40, "max": 44, "female": 30, "rate": 3.75}, {"id": 591, "name": "Amoonguss", "min": 40, "max": 44, "female": 30, "rate": 3.75}], "WHITE_2": [{"id": 619, "name": "Mienfoo", "min": 40, "max": 44, "female": 30, "rate": 0.25}, {"id": 619, "name": "Mienfoo", "min": 40, "max": 44, "female": 30, "rate": 0.25}, {"id": 619, "name": "Mienfoo", "min": 40, "max": 44, "female": 30, "rate": 0.25}, {"id": 619, "name": "Mienfoo", "min": 40, "max": 44, "female": 30, "rate": 0.25}, {"id": 279, "name": "Pelipper", "min": 40, "max": 44, "female": 30, "rate": 1.0}, {"id": 279, "name": "Pelipper", "min": 40, "max": 44, "female": 30, "rate": 1.0}, {"id": 279, "name": "Pelipper", "min": 40, "max": 44, "female": 30, "rate": 1.0}, {"id": 279, "name": "Pelipper", "min": 40, "max": 44, "female": 30, "rate": 1.0}, {"id": 591, "name": "Amoonguss", "min": 40, "max": 44, "female": 30, "rate": 3.75}, {"id": 591, "name": "Amoonguss", "min": 40, "max": 44, "female": 30, "rate": 3.75}, {"id": 591, "name": "Amoonguss", "min": 40, "max": 44, "female": 30, "rate": 3.75}, {"id": 591, "name": "Amoonguss", "min": 40, "max": 44, "female": 30, "rate": 3.75}]}, "stones": {"FIRE_STONE": 0.25}},
     {"grotto": 11, "area": "UNOVA_ROUTE_23", "where": "Route 23 (upper level)", "pokemon": {"BLACK_2": [{"id": 207, "name": "Gligar", "min": 50, "max": 54, "female": 30, "rate": 0.25}, {"id": 207, "name": "Gligar", "min": 50, "max": 54, "female": 30, "rate": 0.25}, {"id": 207, "name": "Gligar", "min": 50, "max": 54, "female": 30, "rate": 0.25}, {"id": 207, "name": "Gligar", "min": 50, "max": 54, "female": 30, "rate": 0.25}, {"id": 55, "name": "Golduck", "min": 50, "max": 54, "female": 30, "rate": 1.0}, {"id": 55, "name": "Golduck", "min": 50, "max": 54, "female": 30, "rate": 1.0}, {"id": 359, "name": "Absol", "min": 50, "max": 54, "female": 30, "rate": 1.0}, {"id": 359, "name": "Absol", "min": 50, "max": 54, "female": 30, "rate": 1.0}, {"id": 335, "name": "Zangoose", "min": 50, "max": 54, "female": 30, "rate": 3.75}, {"id": 335, "name": "Zangoose", "min": 50, "max": 54, "female": 30, "rate": 3.75}, {"id": 336, "name": "Seviper", "min": 50, "max": 54, "female": 30, "rate": 3.75}, {"id": 336, "name": "Seviper", "min": 50, "max": 54, "female": 30, "rate": 3.75}], "WHITE_2": [{"id": 207, "name": "Gligar", "min": 50, "max": 54, "female": 30, "rate": 0.25}, {"id": 207, "name": "Gligar", "min": 50, "max": 54, "female": 30, "rate": 0.25}, {"id": 207, "name": "Gligar", "min": 50, "max": 54, "female": 30, "rate": 0.25}, {"id": 207, "name": "Gligar", "min": 50, "max": 54, "female": 30, "rate": 0.25}, {"id": 55, "name": "Golduck", "min": 50, "max": 54, "female": 30, "rate": 1.0}, {"id": 55, "name": "Golduck", "min": 50, "max": 54, "female": 30, "rate": 1.0}, {"id": 359, "name": "Absol", "min": 50, "max": 54, "female": 30, "rate": 1.0}, {"id": 359, "name": "Absol", "min": 50, "max": 54, "female": 30, "rate": 1.0}, {"id": 335, "name": "Zangoose", "min": 50, "max": 54, "female": 30, "rate": 3.75}, {"id": 335, "name": "Zangoose", "min": 50, "max": 54, "female": 30, "rate": 3.75}, {"id": 336, "name": "Seviper", "min": 50, "max": 54, "female": 30, "rate": 3.75}, {"id": 336, "name": "Seviper", "min": 50, "max": 54, "female": 30, "rate": 3.75}]}, "stones": {"FIRE_STONE": 0.25}},
     {"grotto": 12, "area": "ABUNDANT_SHRINE", "where": "Abundant Shrine (by Youngster Wes)", "pokemon": {"BLACK_2": [{"id": 37, "name": "Vulpix", "min": 35, "max": 39, "female": 10, "rate": 0.25}, {"id": 37, "name": "Vulpix", "min": 35, "max": 39, "female": 10, "rate": 0.25}, {"id": 37, "name": "Vulpix", "min": 35, "max": 39, "female": 10, "rate": 0.25}, {"id": 37, "name": "Vulpix", "min": 35, "max": 39, "female": 10, "rate": 0.25}, {"id": 436, "name": "Bronzor", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 436, "name": "Bronzor", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 436, "name": "Bronzor", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 436, "name": "Bronzor", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 591, "name": "Amoonguss", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 591, "name": "Amoonguss", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 591, "name": "Amoonguss", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 591, "name": "Amoonguss", "min": 35, "max": 39, "female": 30, "rate": 3.75}], "WHITE_2": [{"id": 37, "name": "Vulpix", "min": 35, "max": 39, "female": 10, "rate": 0.25}, {"id": 37, "name": "Vulpix", "min": 35, "max": 39, "female": 10, "rate": 0.25}, {"id": 37, "name": "Vulpix", "min": 35, "max": 39, "female": 10, "rate": 0.25}, {"id": 37, "name": "Vulpix", "min": 35, "max": 39, "female": 10, "rate": 0.25}, {"id": 436, "name": "Bronzor", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 436, "name": "Bronzor", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 436, "name": "Bronzor", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 436, "name": "Bronzor", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 591, "name": "Amoonguss", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 591, "name": "Amoonguss", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 591, "name": "Amoonguss", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 591, "name": "Amoonguss", "min": 35, "max": 39, "female": 30, "rate": 3.75}]}, "stones": {"FIRE_STONE": 0.25}},
@@ -24522,7 +25506,8 @@
     {"id": "b2_m41", "type": "MAIN", "title": "A Presence on Route 22", "description": "Team Plasma could be anywhere west of Humilau. {rival_name} wants Route 22 searched.", "condition": {"required_region": "UNOVA", "flag": "b2_wave_badge", "flag_not": "b2_colress_mchn"}, "completed_flag": "b2_colress_mchn", "target": "UNOVA_ROUTE_22"},
     {"id": "b2_m42", "type": "MAIN", "title": "The Sturdy Boulder", "description": "Colress saw something in Seaside Cave, south of Humilau on Route 21, that reminded him of Route 4. His machine might wake it.", "condition": {"required_region": "UNOVA", "flag": "b2_colress_mchn", "flag_not": "b2_seaside_crustle"}, "completed_flag": "b2_seaside_crustle", "target": "SEASIDE_CAVE"},
     {"id": "b2_m43", "type": "MAIN", "title": "The Ship off Route 21", "description": "Beyond the cave, the Plasma Frigate lies at anchor by the cliffs.", "condition": {"required_region": "UNOVA", "flag": "b2_seaside_crustle", "flag_not": "b2_frigate2_done"}, "completed_flag": "b2_frigate2_done", "target": "UNOVA_ROUTE_21"},
-    {"id": "b2_m44", "type": "MAIN", "title": "Into the Giant Chasm", "description": "The Plasma Frigate flew toward the Giant Chasm, where Lacunosa's monster sleeps. Cheren says the way in is from Route 22.", "condition": {"required_region": "UNOVA", "flag": "b2_frigate2_done", "flag_not": "b2_chasm_done"}, "completed_flag": "b2_chasm_done", "target": "UNOVA_ROUTE_22"},
+    {"id": "b2_m44", "type": "MAIN", "title": "Into the Giant Chasm", "description": "The Plasma Frigate flew toward the Giant Chasm, where Lacunosa's monster sleeps. Cheren says the way in is from Route 22.", "condition": {"required_region": "UNOVA", "flag": "b2_frigate2_done", "flag_not": "b2_chasm_done"}, "completed_flag": "b2_chasm_done", "target": "GIANT_CHASM"},
+    {"id": "b2_m45", "type": "MAIN", "title": "Victory Road", "description": "Team Plasma is finished and Opelucid has thawed. N asked you to go to the Pokemon League: Route 23 leaves the Giant Chasm to the west.", "condition": {"required_region": "UNOVA", "flag": "b2_chasm_done", "flag_not": "beat_unova_champion"}, "completed_flag": "beat_unova_champion", "target": "UNOVA_ROUTE_23"},
     {"id": "unova_m2", "type": "MAIN", "title": "Team Plasma's Speech", "description": "Follow Route 1 north to Accumula Town. A group called Team Plasma is giving a speech in the square. Go and listen.", "condition": {"required_region": "UNOVA", "flag": "defeated_rival_nuvema", "flag_not": ["heard_n_accumula", "b2_mom_talk"]}, "completed_flag": "heard_n_accumula", "target": "ACCUMULA_TOWN"},
     {"id": "unova_m3", "type": "MAIN", "title": "A Stranger Named N", "description": "On Route 2 you'll meet Alder, and a strange young man named N who says he can hear Pokémon talk. He wants to battle!", "condition": {"required_region": "UNOVA", "flag": "heard_n_accumula", "flag_not": ["defeated_n_route2", "b2_mom_talk"], "region_badges_less": 1}, "completed_flag": "defeated_n_route2", "target": "UNOVA_ROUTE_2"},
     {"id": "unova_m4", "type": "MAIN", "title": "A Gift in the Dreamyard", "description": "A researcher named Fennel is at the Dreamyard, next to Striaton City. She has a Pokémon that's strong against the Striaton Gym.", "condition": {"required_region": "UNOVA", "flag": "defeated_n_route2", "flag_not": ["got_elemental_monkey", "b2_mom_talk"], "region_badges_less": 1}, "completed_flag": "got_elemental_monkey", "target": "DREAMYARD", "reward": "Pansage, Pansear or Panpour"},
@@ -24721,7 +25706,15 @@
   "UNOVA_MOOR_PERCENTAGES": {"536": 30, "616": 30, "618": 15, "453": 11, "588": 15, "580": 2, "592": 2},
   "UNOVA_DRAGONSPIRAL_PERCENTAGES": {"622": 75, "621": 15, "619": 10},
   "UNOVA_ABUNDANT_SHRINE_PERCENTAGES": {"358": 30, "37": 20, "164": 15, "234": 10, "546": 5, "437": 10, "198": 2, "548": 5, "200": 2, "531": 5, "587": 3, "430": 1, "547": 1, "38": 1, "429": 1, "549": 1},
-  "UNOVA_GIANT_CHASM_PERCENTAGES": {"114": 6, "277": 5, "42": 14, "337": 10, "338": 10, "426": 2, "359": 2, "221": 19, "215": 5, "225": 5, "124": 5, "525": 2, "35": 8, "132": 4, "375": 2, "531": 5, "587": 2, "169": 1, "465": 1, "36": 1, "530": 5, "473": 1, "376": 1},
+  "UNOVA_GIANT_CHASM_PERCENTAGES": {
+    "221": 25,
+    "215": 20,
+    "583": 15,
+    "35": 15,
+    "337": 10,
+    "338": 10,
+    "225": 5
+  },
   "UNOVA_VICTORY_ROAD_PERCENTAGES": {"631": 5, "629": 2, "619": 10, "611": 1, "627": 2, "632": 36, "525": 24, "633": 4, "527": 16, "530": 5},
   "REGION_START": {
     "UNOVA": {

@@ -1,42 +1,44 @@
 #!/usr/bin/env bash
-# Like run.sh, but every suite you name runs at the same time, each with its own scratch folder (11-16: a region check).
+# Like run.sh, but the suites run side by side, each with its own scratch folder (11-16: a region check).
 #   bash dev/checks/run_par.sh kanto_maps frlg sevii_maps dungeon walk:kanto
-# Prints "== <name>: N fails" and the FAIL / Traceback lines as each finishes; the whole output stays in
+#   bash dev/checks/run_par.sh region:unova      the same words as run.sh (region:<lane>, quick, tag:<t>, all)
+#   JOBS=6 bash dev/checks/run_par.sh all        at most JOBS at once (default 8)
+# Prints "== <name>: N fails (S s)" and the FAIL / Traceback lines once all are done; the whole output stays in
 # dev/checks/out/par_<name>.log. Suites are separate processes that save nothing (the harness turns saving off).
 cd "$(dirname "$0")/../.." || exit 1
-C=dev/checks
-O=$C/out
+. dev/checks/suites_lib.sh
 mkdir -p "$O"
-export PYTHONIOENCODING=utf-8
-HELPED=" grokfix storage dlc sevii decolore sinjoh orre "   # (these need sub_helpers_body.py: keep in step with run.sh)
+JOBS=${JOBS:-8}
 names=()
-for t in "$@"; do
-  n=${t/:/_}
+for w in "$@"; do
+  while read -r t; do [ -n "$t" ] && names+=("$t"); done < <(expand "$w")
+done
+one() {   # one <name>: run it into its log, its time and exit code on the last two lines
+  local t=$1 n=${1/:/_} s=$SECONDS lim=2400
   mkdir -p "$O/par_$n"
-  if [ "${t#walk:}" != "$t" ]; then
-    r=${t#walk:}
-    cat $C/harness_head.py $C/reach_lib.py $C/walk_$r.py > $O/check_walk_$r.py
-    f=$O/check_walk_$r.py
-  else
-    [ -f $C/${t}_body.py ] || { echo "== $t: no such suite"; continue; }
-    if [ "${HELPED#* $t }" != "$HELPED" ]; then
-      cat $C/harness_head.py $C/sub_helpers_body.py $C/${t}_body.py > $O/check_$t.py
-    else
-      cat $C/harness_head.py $C/${t}_body.py > $O/check_$t.py
-    fi
-    f=$O/check_$t.py
-  fi
-  ( timeout 2400 python "$f" "$O/par_$n" > "$O/par_$n.log" 2>&1; echo "exit $?" >> "$O/par_$n.log" ) &
-  names+=("$n")
+  build "$t" "$O/check_$n.py"
+  timeout $lim python "$O/check_$n.py" "$O/par_$n" > "$O/par_$n.log" 2>&1
+  echo "exit $?" >> "$O/par_$n.log"; echo "secs $((SECONDS - s))" >> "$O/par_$n.log"
+}
+ran=()
+for t in "${names[@]}"; do
+  why=$(_gone "$t") && { echo "== $t: taken out ($why)"; continue; }
+  exists "$t" || { echo "== $t: no such suite"; continue; }
+  while [ "$(jobs -rp | wc -l)" -ge "$JOBS" ]; do wait -n; done
+  one "$t" &
+  ran+=("$t")
 done
 wait
 total=0
-for n in "${names[@]}"; do
-  c=$(grep -cE 'FAIL |Traceback|(Syntax|Indentation)Error' "$O/par_$n.log")
-  grep -q '^exit 124$' "$O/par_$n.log" && c=$((c + 1)) && echo "   (timed out)"
+for t in "${ran[@]}"; do
+  n=${t/:/_}; log=$O/par_$n.log
+  ex=$(grep '^exit ' "$log" | tail -1 | cut -d' ' -f2); secs=$(grep '^secs ' "$log" | tail -1 | cut -d' ' -f2)
+  c=$(count "$t" "$log" "$ex")
   total=$((total + c))
-  echo "== $n: $c fails"
-  grep -E 'FAIL|Traceback|(Syntax|Indentation)Error' -B2 -A6 "$O/par_$n.log" | grep -vE '^--$|##### 0 fail|^Sync: ' | head -40
+  k=$(checks "$log")
+  note_time "$t" "$secs" "$c" "$k"
+  echo "== $n: $c fails ($secs s, $k checks)"
+  grep -E 'FAIL |Traceback|(Syntax|Indentation)Error' -B2 -A6 "$log" | grep -vE '^--$|##### 0 fail|^Sync: |^(exit|secs) ' | head -40
 done
 echo "##### $total fails in all"
 [ $total = 0 ]
