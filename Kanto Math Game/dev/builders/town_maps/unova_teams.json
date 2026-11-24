@@ -544,6 +544,200 @@
    566
   ]
  },
+ "368": {
+  "b2_id": 368,
+  "class": "TRAINER",
+  "levels": [
+   33,
+   31,
+   31
+  ],
+  "name": "Pokemon Trainer Rival",
+  "rewards": {
+   "balls": 4
+  },
+  "sprite": "trainer.png",
+  "team": [
+   499,
+   516,
+   520
+  ]
+ },
+ "369": {
+  "b2_id": 369,
+  "class": "TRAINER",
+  "levels": [
+   33,
+   31,
+   31
+  ],
+  "name": "Pokemon Trainer Rival",
+  "rewards": {
+   "balls": 4
+  },
+  "sprite": "trainer.png",
+  "team": [
+   502,
+   512,
+   520
+  ]
+ },
+ "370": {
+  "b2_id": 370,
+  "class": "TRAINER",
+  "levels": [
+   33,
+   31,
+   31
+  ],
+  "name": "Pokemon Trainer Rival",
+  "rewards": {
+   "balls": 4
+  },
+  "sprite": "trainer.png",
+  "team": [
+   496,
+   514,
+   520
+  ]
+ },
+ "371": {
+  "b2_id": 371,
+  "class": "TRAINER",
+  "levels": [
+   33,
+   31,
+   31
+  ],
+  "movesets": {
+   "505": [
+    "HYPER-FANG",
+    "LOW-KICK",
+    "CRUNCH",
+    "HYPNOSIS"
+   ],
+   "508": [
+    "STRENGTH",
+    "CRUNCH",
+    "THUNDER-FANG",
+    "ODOR-SLEUTH"
+   ],
+   "573": [
+    "TAIL-SLAP",
+    "ROCK-BLAST",
+    "BULLET-SEED",
+    "WAKE-UP-SLAP"
+   ]
+  },
+  "name": "Pokemon Trainer Cheren",
+  "rewards": {
+   "balls": 4
+  },
+  "sprite": "trainer.png",
+  "team": [
+   508,
+   505,
+   573
+  ]
+ },
+ "372": {
+  "b2_id": 372,
+  "class": "TEAM_PLASMA",
+  "levels": [
+   30
+  ],
+  "name": "Team Plasma Grunt",
+  "rewards": {
+   "balls": 2
+  },
+  "sprite": "b2_plasma_grunt_m.png",
+  "team": [
+   109
+  ]
+ },
+ "373": {
+  "b2_id": 373,
+  "class": "TEAM_PLASMA",
+  "levels": [
+   30
+  ],
+  "name": "Team Plasma Grunt",
+  "rewards": {
+   "balls": 2
+  },
+  "sprite": "b2_plasma_grunt_m.png",
+  "team": [
+   568
+  ]
+ },
+ "374": {
+  "b2_id": 374,
+  "class": "TEAM_PLASMA",
+  "levels": [
+   29,
+   29
+  ],
+  "name": "Team Plasma Grunt",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "b2_plasma_grunt_m.png",
+  "team": [
+   88,
+   552
+  ]
+ },
+ "375": {
+  "b2_id": 375,
+  "class": "TEAM_PLASMA",
+  "levels": [
+   29,
+   29
+  ],
+  "name": "Team Plasma Grunt",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "b2_plasma_grunt_m.png",
+  "team": [
+   42,
+   510
+  ]
+ },
+ "376": {
+  "b2_id": 376,
+  "class": "TEAM_PLASMA",
+  "levels": [
+   29,
+   29
+  ],
+  "name": "Team Plasma Grunt",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "b2_plasma_grunt_m.png",
+  "team": [
+   88,
+   20
+  ]
+ },
+ "377": {
+  "b2_id": 377,
+  "class": "TEAM_PLASMA",
+  "levels": [
+   29,
+   29
+  ],
+  "name": "Team Plasma Grunt",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "b2_plasma_grunt_m.png",
+  "team": [
+   109,
+   505
+  ]
+ },
  "47": {
   "b2_id": 47,
   "class": "LASS",

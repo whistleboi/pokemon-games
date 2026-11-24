@@ -25,7 +25,9 @@ PLACES = {"ASPERTIA_CITY": 427, "UNOVA_ROUTE_19": 437, "UNOVA_ROUTE_20": 446, "F
           "CASTELIA_SEWERS": 495, "CASTELIA_EMPTY_LOT": 500,
           "UNOVA_ROUTE_4": 326, "DESERT_RESORT_ENTRANCE": 157, "DESERT_RESORT": 158, "RELIC_CASTLE": 160,   # (batch 3b, 11-21)
           "UNOVA_ROUTE_16": 383, "LOSTLORN_FOREST": 385, "UNOVA_ROUTE_5": 329,   # (batch 4a, 11-23)
-          "DRIFTVEIL_DRAWBRIDGE": 253}   # (batch 5a, 11-24: its "rustle" slots are the bridge's bird shadows)
+          "DRIFTVEIL_DRAWBRIDGE": 253,   # (batch 5a, 11-24: its "rustle" slots are the bridge's bird shadows)
+          "RELIC_PASSAGE": 503, "RELIC_PASSAGE_MIDDLE": 504, "RELIC_PASSAGE_NORTH": 505,   # (batch 5b: "rustle" = dust clouds)
+          "RELIC_CASTLE_DEPTHS": 175}
 P = os.path.join(GAME, "assets", "unova_area_data.json")
 NL = "\r\n"
 

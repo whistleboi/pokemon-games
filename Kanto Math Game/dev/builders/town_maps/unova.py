@@ -3437,7 +3437,7 @@ _FIELD_TALK[83] = {
 
 def _field_room(z):
     f = _SPORTS["fields"][str(z)]
-    arena, sport = f["arena"], f["sport"]
+    arena = f["arena"]
     people = {}
     for a in f["athletes"]:
         key = a["key"]
@@ -3937,14 +3937,17 @@ DRIFT_ROOMS = {
         0: [_say("Guard at the gate", "I'm very sorry. The Pokemon World Tournament isn't open yet. Have you challenged the Gym?",
                  condition=["not:b2_quake_badge"]),
             _say("Guard at the gate", "I'm very sorry. We're still getting the tournament ready. Please come back soon!",
-                 condition=["b2_quake_badge", "not:b2_pwt_open"])],
+                 condition=["b2_quake_badge", "not:b2_drift_clay_out"]),
+            _say("Guard at the gate", "The Pokemon World Tournament is just through here. Trainers from all over the world are "
+                                      "waiting!", condition=["b2_drift_clay_out"])],
         1: _say("Guide by the wall", "Keep winning at the PWT and you earn BP! Save them up and trade them for great items!"),
         2: _say("Man by the door", "The Pokemon World Tournament is just ahead!"),
-    }, {}, title="Pokémon World Tournament gate"),
+    }, {}, title="Pokémon World Tournament gate", stairs={191: "PWT"}),
 }
 DRIFT_ROOMS["market"]["split"] = True   # (its south-west corner, with TM63, is entered by the west door only: Black 2's)
-DRIFT_ROOMS["pwt_gate"]["art"][14] = DRIFT_ROOMS["pwt_gate"]["art"][14].replace("v", "c") if "v" in DRIFT_ROOMS["pwt_gate"]["art"][14] else \
-    DRIFT_ROOMS["pwt_gate"]["art"][14]   # (the PWT side stays shut till batch 5b)
+DRIFT_ROOMS["pwt_gate"]["barred"] = [   # (the PWT side: shut till Clay's invitation, batch 5b)
+    {"tiles": [[x, 14] for x in range(3, 8)], "until": {"condition": ["b2_drift_clay_out"]},
+     "lines": ["Guard: I'm very sorry. The Pokemon World Tournament isn't open yet."]}]
 
 # --- the Gym (Clay's: 97 the cavern, 98 its entrance). Black 2's conveyor belts carry you between the 36 platforms (a 6 x 6
 # grid); every platform you land on lights up in the dark (Bulbapedia's Driftveil Gym: "each time the player lands on a
@@ -4166,6 +4169,299 @@ DRAWBRIDGE["edge_to"] = dict({"43,%d" % y: [85, 47 + min(2, (y - 44) // 3)] for 
 ROUTE_5["edge_to"] = dict(ROUTE_5.get("edge_to") or {}, **{"9,%d" % y: [211, 45 + (y - 15) * 2] for y in range(15, 18)})
 
 
+# ================================================================================================ batch 5b (11-24)
+# The Pokemon World Tournament, the Plasma Frigate's first visit, the Relic Passage, Relic Castle's lowest floor.
+# Story flags in order: b2_drift_clay_out (Clay's invitation, 5a) -> b2_pwt_arrived (Clay and Hugh at the door, the game's
+# trigger x 31) -> b2_pwt_lobby (Cheren in the hall) -> b2_pwt_driftveil_won (Hugh, Cheren, Colress: src/world/pwt.py) ->
+# b2_pwt_after (Roxie, Clay's thanks) -> b2_pwt_plasma_seen (Grunts run for the pier, Colress, Hugh after them) ->
+# b2_frigate_1..4 (the deck: two Grunts alone, then with Cheren, then with Hugh) -> b2_frigate_done (Zinzolin, the Shadow
+# Triad: back on the pier) -> b2_frigate_after (Cheren heads for Route 6). Walkthrough Part 8 (sources/unova).
+
+# --- the PWT grounds (191): the move tutors' booths (Bulbapedia's walkthrough: Hidden Power in the north-west booth, the
+# Reminder, the Deleter, the ultimate-move tutor and the Pledge tutor along the south), the Worker's Rocky Helmet, the pier
+# (PP Up; the Frigate moors at its east side), the Relic Passage's north door (south-west).
+OUTSIDE.update({192: 191, 193: -1})
+PWT_HERE = ["b2_pwt_arrived", "not:b2_pwt_driftveil_won"]
+PWT_PEOPLE = {
+    1: _say("Hidden Power guy", "I can see the hidden power of a Pokemon! ...Hmm. Every Pokemon's is different, you know.",
+            "Teach it Hidden Power and you'll find out its type for yourself!"),
+    11: _say("Move Reminder", "I'm the Move Reminder! I remember every move your Pokemon ever forgot.",
+             "...That's the problem. I can't stop remembering them. All day long! Hydro Pump, Tackle, Splash..."),
+    3: _say("Move Deleter", "I'm the Move Deleter. I can make a Pokemon forget a move.",
+            "Er... what was I saying? Oh dear, it seems I've deleted it."),
+    2: {"text": "Ultimate move tutor", "action": "EVENT", "event": {
+        "lines": ["I teach the ultimate moves of the Pokemon you start your journey with.",
+                  "Only a fully evolved one that shares a strong bond with its Trainer can learn them!"],
+        "tutor": {"choices": ["FRENZY-PLANT", "BLAST-BURN", "HYDRO-CANNON"], "min_friend": 255},
+        "cancel": ["Come back when your bond is strong!"]}},
+    4: {"text": "Pledge tutor", "action": "EVENT", "event": {
+        "lines": ["I teach the Pledge moves to the Pokemon you start your journey with: Grass, Fire and Water.",
+                  "Use two on the same turn in a Double Battle and they combine into something amazing!"],
+        "tutor": {"choices": ["GRASS-PLEDGE", "FIRE-PLEDGE", "WATER-PLEDGE"]},
+        "cancel": ["Come back any time!"]}},
+    5: _gift("Worker by the fountain", ["We knocked down the old Cold Storage to build this place. Take this, from the old site!"],
+             "ROCKY_HELMET", "b2_pwt_rocky_helmet", ["A Rocky Helmet hurts any Pokemon that touches its holder."]),
+    18: _say("Worker by the west wall", "This whole place used to be the Cold Storage. Now look at it!",
+             "There's a cave behind here too. The Relic Passage, they call it. Nobody knew it was there till we dug!"),
+    15: _say("Man by the north wall", "Gym Leaders from every region come to the PWT. I've seen Brock and Misty here!"),
+    16: _say("Woman on the plaza", "The PWT is built where the Cold Storage used to be. Clay put it up, you know."),
+    13: _say("Girl on the plaza", "I came to watch the Champions Tournament. Maybe someday I'll enter!"),
+    14: _say("Girl by the hall", "Win tournaments and earn BP! Trade them in for great items."),
+    12: _say("Old woman on the plaza", "I come every day to cheer. Battles are better than any TV show!"),
+    0: _say("Lady on the plaza", "Oh, the Trainers here are so stylish. Especially the Gym Leaders!"),
+    17: _say("Backpacker on the pier", "Boats from all over come in at this pier. A big ship was moored here earlier... a strange one.",
+             condition=["not:b2_frigate_done"]),
+    10: _ball("Poke Ball on the pier", "PP_UP", "b2_pwt_pp_up", name="a PP Up"),
+}
+PWT_SIGNS = {18: ["POKEMON WORLD TOURNAMENT", "Where the world's best Trainers meet!"]}
+PWT_LOBBY = room(192, {
+    6: {"text": "Left desk", "action": "EVENT", "event": {"world": "pwt", "desk": "left"}},
+    7: {"text": "Right desk", "action": "EVENT", "event": {"world": "pwt", "desk": "right"}},
+    0: _say("Stadium attendant", "The stadium is through here. Please register at a desk first!"),
+    8: _say("Stadium attendant ", "Good luck in the tournament!"),
+    15: _say("Backpacker in the hall", "I've come all the way from Kanto to see the Leaders Tournament!"),
+    3: _say("Man by the west desk", "The left desk runs the Driftveil, Rental and Mix Tournaments. The right one, the special ones."),
+    4: _say("Girl by the west desk", "You can't use items during a tournament. Give your Pokemon something to hold first!"),
+    18: _say("Boy in the hall", "Three wins in a row and you take the tournament!"),
+    19: _say("Boy by the east desk", "The Leaders Tournaments open once you've beaten the Pokemon League. Then the World Leaders!"),
+    20: _say("Scientist in the hall", "Every battle here is at the tournament's own level. Fair for everyone!"),
+    2: _say("Woman in the hall", "The screens show who's battling. Look, it's about to start!"),
+    12: _say("Man in sunglasses", "I'm a scout. I watch for Trainers with real talent."),
+    1: _say("Man by the doors", "The stadium crowd goes wild for a close battle!"),
+    14: _say("Cheren", "Cheren: I was looking into something in Driftveil, and Clay talked me into entering. We'll see how it goes.",
+             condition=PWT_HERE),
+    13: _say("Clay", "Clay: The Driftveil Tournament's about to start! Go on, register at the left desk!", condition=PWT_HERE),
+    17: _say("Colress", "Colress: I'm curious how far Pokemon can draw out their strength. A tournament is a fine place to find out.",
+             condition=PWT_HERE),
+}, {10656: ["The tournament board.", "Today's brackets: Driftveil Tournament, Rental Tournament, Mix Tournament..."]}, (37, 17),
+    stairs={193: ("^", "ROOM:stadium")},
+    # (Hugh: the file stands him on the door mat, a scene's spot; here a step inside)
+    extra_people=[(14, 24, _say("{rival_name}", "{rival_name}: I'm going to win this whole thing! Then I'm going after Team Plasma!",
+                                condition=PWT_HERE))],
+    scenes=[
+        {"trigger": "enter", "condition": ["b2_pwt_arrived", "not:b2_pwt_lobby"], "flag": "b2_pwt_lobby",
+         "cast": [{"person": "Clay", "face": "d", "stay": True,
+                   "lines": ["Clay: Here she is: the Pokemon World Tournament! Ain't she somethin'?",
+                             "Clay: And look who I roped in. Cheren here's enterin' too!"]},
+                  {"person": "Cheren", "face": "d", "stay": True,
+                   "lines": ["Cheren: I was in Driftveil looking into something when Clay... insisted.",
+                             "Cheren: Well, it's a good chance to see how strong you've become, {player_name}."]},
+                  {"person": "Colress", "face": "r", "stay": True,
+                   "lines": ["Colress: A tournament of strong Trainers. I'm entering as well, to observe how Pokemon bring out their power."]},
+                  {"person": "{rival_name}", "face": "u",
+                   "lines": ["{rival_name}: Let's register, {player_name}! The Driftveil Tournament's at the left desk!"]}]},
+        {"trigger": "enter", "condition": ["b2_pwt_driftveil_won", "not:b2_pwt_after"], "flag": "b2_pwt_after",
+         "cast": [{"sheet": "b2_c224.png", "from": [17, 15], "to": "player", "stay": True,
+                   "lines": ["Roxie: Hey! That was awesome! You've got me all fired up! I'm entering the next one, for sure!"]},
+                  {"sheet": "b2_c227.png", "from": [15, 12], "to": "player",
+                   "lines": ["Clay: Hah! Ya won the whole thing! With battles like that, folks'll come from all over to Driftveil.",
+                             "Clay: The PWT's open to anyone now. Come back and enter any time ya like!"], "leave": [15, 25]},
+                  {"as": 0, "lines": ["Roxie: Next time, it's you and me!"], "leave": [17, 15]}]},
+    ])
+PWT_LOBBY["title"] = "PWT Hall"
+PWT_STADIUM = room(193, {}, {}, (0, 0), stairs={192: ("v", "ROOM:lobby")})
+PWT_STADIUM["title"] = "PWT Stadium"
+PWT_STADIUM["barred"] = [{"tiles": [[42, y] for y in range(14, 17)], "when": {"condition": ["b2_pwt_run"]},
+                          "lines": ["The match is on! You can't leave now."]}]
+# (the referee: talk to start the round's battle, should you stand here mid-tournament after a load; src/world/pwt.py
+#  starts each battle itself as you walk out)
+PWT_STADIUM["people"] = PWT_STADIUM["people"] + [{"text": "Referee", "action": "EVENT", "condition": ["b2_pwt_run"],
+                                                  "_look": "sheet:b2_c72.png", "event": {"world": "pwt", "fight": True}}]
+PWT_STADIUM["art"][13] = PWT_STADIUM["art"][13][:22] + "N" + PWT_STADIUM["art"][13][23:]
+PWT_GROUNDS = town(
+    191, PWT_PEOPLE, PWT_SIGNS, {192: ("house", "lobby")},
+    rooms={"lobby": PWT_LOBBY, "stadium": PWT_STADIUM},
+    edges={"^": ("DRIFTVEIL_CITY", [(x, 8) for x in range(16, 19)]), "<": ("RELIC_PASSAGE_NORTH", [(7, 25)]),
+           ">": ("PLASMA_FRIGATE", [(39, 46)])},
+    hidden={"48,5": "ZINC", "16,25": "ETHER"},
+    title="Pokémon World Tournament",
+    scenes=[
+        # Clay and Hugh at the hall's door (the game's trigger: x 31, rows 18-27)
+        {"trigger": {"zone": [31, 18, 31, 27]}, "condition": ["b2_drift_clay_out", "not:b2_pwt_arrived"], "flag": "b2_pwt_arrived",
+         "cast": [{"sheet": "b2_c227.png", "from": [38, 20], "to": "player", "stay": True,
+                   "lines": ["Clay: There ya are! Welcome to the Pokemon World Tournament, the PWT!",
+                             "Clay: This here used to be the Cold Storage. Now Trainers from all over the world battle here!"]},
+                  {"sheet": "b2_hugh.png", "from": [37, 18], "to": "player", "stay": True,
+                   "lines": ["{rival_name}: The strongest Trainers in the world, huh? I'm in!"]},
+                  {"as": 0, "lines": ["Clay: Then come on in! Follow me!"], "leave": [37, 17]},
+                  {"as": 1, "lines": ["{rival_name}: Come on, {player_name}!"], "leave": [37, 17]}]},
+        # out of the hall after the win: Team Plasma runs past for the pier; Colress; Hugh gives chase
+        {"trigger": "enter", "condition": ["b2_pwt_after", "not:b2_pwt_plasma_seen"], "flag": "b2_pwt_plasma_seen",
+         "cast": [{"sheet": "b2_c293.png", "from": [30, 21], "face": "r",
+                   "lines": ["Plasma Grunt: Hurry! Back to the ship!"], "leave": [37, 45]},
+                  {"sheet": "b2_hugh.png", "from": [36, 19], "face": "d", "stay": True,
+                   "lines": ["{rival_name}: Team Plasma! I'm not letting them get away!"]},
+                  {"sheet": "b2_c250.png", "from": [38, 19], "to": "player", "stay": True,
+                   "lines": ["Colress: Wait. Rushing in alone isn't wise... though I suppose you won't listen."]},
+                  {"as": 1, "lines": ["{rival_name}: {player_name}! They went south, to the pier! Come on!"], "leave": [37, 45]},
+                  {"as": 2, "lines": ["Colress: Strength drawn out by anger... how interesting. Well, I'll be watching."],
+                   "leave": [37, 17]}]},
+        # thrown off the Frigate: back on the pier
+        {"trigger": "enter", "condition": ["b2_frigate_done", "not:b2_frigate_after"], "flag": "b2_frigate_after",
+         "cast": [{"sheet": "b2_hugh.png", "from": [37, 44], "to": "player", "stay": True,
+                   "lines": ["{rival_name}: They threw us off... and sailed away! Team Plasma... I'll find that ship again!"],
+                   "leave": [37, 30]},
+                  {"sheet": "b2_cheren.png", "from": [36, 47], "to": "player",
+                   "lines": ["Cheren: Team Plasma's back, and with a ship like that. This is serious.",
+                             "Cheren: I'm heading to Route 6. {player_name}, Mistralton's Gym is past Chargestone Cave. Let's meet there."],
+                   "leave": [37, 30]}]},
+    ])
+for _x, _y in ((25, 17), (21, 24), (28, 24), (46, 24), (53, 24)):   # (the booths' counters: talked across from the plaza)
+    PWT_GROUNDS["art"][_y] = PWT_GROUNDS["art"][_y][:_x] + "m" + PWT_GROUNDS["art"][_y][_x + 1:]
+PWT_GROUNDS["barred"] = [
+    {"tiles": [[39, 46]], "until": {"condition": ["b2_pwt_plasma_seen"]}, "lines": ["The sea laps at the pier."]},
+    {"tiles": [[39, 46]], "when": {"condition": ["b2_frigate_done"]}, "lines": ["The ship has sailed away."]}]
+
+# --- the Plasma Frigate's deck (552), first visit: the Grunts surround you, two alone, then two with Cheren, two with
+# Hugh; Zinzolin, the Shadow Triad: thrown back onto the pier. Its cabins come with the Frigate's later visits.
+_FRIGATE_ON = ["b2_pwt_plasma_seen", "not:b2_frigate_done"]
+_CHEREN = _b2(371)
+_HUGH = _b2(368)
+FRIGATE_CHEREN = {"name": "Cheren", "class": "PKMN_TRAINER", "sprite": "cheren.png", "team": _CHEREN["team"],
+                  "levels": _CHEREN["levels"], "movesets": _CHEREN.get("movesets")}
+FRIGATE_HUGH = {"name": "{rival_name}", "class": "PKMN_TRAINER", "sprite": "hugh.png", "team": _HUGH["team"], "levels": _HUGH["levels"],
+                "team_choice": {s: _TEAMS[str(t)]["team"] for s, t in zip(("495", "498", "501"), (368, 369, 370))}}
+_GRUNT_WON = {"player_won": ["Plasma Grunt: Argh! Beaten by kids!"], "player_lost": ["Plasma Grunt: Off the ship with you!"]}
+FRIGATE_ZONE = [9, 26, 16, 34]
+
+
+def _frigate_scene(before, flag, cast, battle):
+    """One of the deck's battles: once the one before is won, standing near the gangway (the zone), its Grunts step up."""
+    return {"trigger": {"zone": list(FRIGATE_ZONE)}, "condition": (_FRIGATE_ON if before is None else [before]) + ["not:" + flag],
+            "flag": flag + "_met", "cast": cast, "event": {"flag": flag, "battle": battle}}
+
+
+FRIGATE_PEOPLE = {
+    1: _say("Cheren", "Cheren: Stay sharp. We're surrounded.", condition=_FRIGATE_ON),
+    0: _say("{rival_name}", "{rival_name}: Where's my sister's Purrloin?!", condition=_FRIGATE_ON),
+    15: _say("Plasma Grunt A", "Plasma Grunt: Intruders!", condition=_FRIGATE_ON),
+    14: _say("Plasma Grunt B", "Plasma Grunt: You won't leave this ship!", condition=_FRIGATE_ON),
+    12: _say("Plasma Grunt C", "Plasma Grunt: For Team Plasma!", condition=_FRIGATE_ON),
+    13: _say("Plasma Grunt D", "Plasma Grunt: Get them!", condition=_FRIGATE_ON),
+    8: _say("Plasma Grunt E", "Plasma Grunt: Nobody boards this ship!", condition=_FRIGATE_ON),
+    7: _say("Plasma Grunt F", "Plasma Grunt: Surround them!", condition=_FRIGATE_ON),
+    **{n: _say("Plasma Grunt " + "GHIJKLMN"[i], "Plasma Grunt: Hmph.", condition=_FRIGATE_ON)
+       for i, n in enumerate((2, 5, 6, 11, 3, 4, 9, 10))},
+    26: _ball("Poke Ball on the deck", "REVIVE", "b2_frigate_revive", name="a Revive"),
+    27: _ball("Poke Ball at the stern", "TM257", "b2_frigate_tm67", name="TM67 Retaliate"),
+}
+FRIGATE = route(
+    552, FRIGATE_PEOPLE, {},
+    exits={"<": ("PWT", [(8, y) for y in range(29, 33)])},
+    title="Plasma Frigate",
+    scenes=[
+        _frigate_scene(None, "b2_frigate_1",
+                       [{"person": "{rival_name}", "face": "r", "stay": True,
+                         "lines": ["{rival_name}: This ship... it's Team Plasma's! Give back my sister's Purrloin!"]},
+                        {"person": "Cheren", "face": "r", "stay": True,
+                         "lines": ["Cheren: {player_name}, careful. They're coming from both ends of the deck."]},
+                        {"person": "Plasma Grunt A", "face": "d",
+                         "lines": ["Plasma Grunt: Brats! You'll regret coming aboard!"]}],
+                       _b2(372, dialogue=_GRUNT_WON)),
+        _frigate_scene("b2_frigate_1", "b2_frigate_2",
+                       [{"person": "Plasma Grunt B", "face": "l", "lines": ["Plasma Grunt: My turn! Team Plasma won't be stopped!"]}],
+                       _b2(373, dialogue=_GRUNT_WON)),
+        _frigate_scene("b2_frigate_2", "b2_frigate_3",
+                       [{"person": "Plasma Grunt C", "face": "d", "stay": True, "lines": ["Plasma Grunt: Two of us this time!"]},
+                        {"person": "Cheren", "face": "r", "lines": ["Cheren: Then there'll be two of us as well. {player_name}, with me!"]}],
+                       _b2(374, battle_options={"double": True, "partner": FRIGATE_CHEREN, "second_trainer": _b2(375)},
+                           dialogue=_GRUNT_WON)),
+        _frigate_scene("b2_frigate_3", "b2_frigate_4",
+                       [{"person": "Plasma Grunt E", "face": "u", "stay": True, "lines": ["Plasma Grunt: Don't think you've won!"]},
+                        {"person": "{rival_name}", "face": "r", "lines": ["{rival_name}: {player_name}! Let's crush them together!"]}],
+                       _b2(376, battle_options={"double": True, "partner": FRIGATE_HUGH, "second_trainer": _b2(377)},
+                           dialogue=_GRUNT_WON)),
+        {"trigger": {"zone": list(FRIGATE_ZONE)}, "condition": ["b2_frigate_4", "not:b2_frigate_done"], "flag": "b2_frigate_zinzolin",
+         "cast": [{"sheet": "b2_c302.png", "from": [13, 23], "to": [13, 27], "stay": True,
+                   "lines": ["Zinzolin: Ohhh, how vexing. Children, meddling aboard our Plasma Frigate.",
+                             "Zinzolin: I am Zinzolin, one of the Seven Sages. Soon Team Plasma will rule Unova, and freeze it solid!"]},
+                  {"person": "{rival_name}", "face": "r", "stay": True,
+                   "lines": ["{rival_name}: Rule Unova? Not while I'm around! Where's the Purrloin you stole?!"]},
+                  {"as": 0, "lines": ["Zinzolin: Shadow Triad! Remove these pests."]},
+                  {"sheet": "b2_c182.png", "from": [13, 33], "face": "u", "stay": True,
+                   "lines": ["Shadow Triad: ...As you wish."]}],
+         "event": {"flag": "b2_frigate_done", "lines": ["The Shadow Triad seized you!", "...You were thrown back onto the pier!"],
+                   "travel": "PWT"}},
+    ])
+
+# --- the Relic Passage: three chambers, as Black 2 has them (each its own wild Pokemon and dust clouds). The north chamber
+# (505) from the PWT; the middle (504: the lake, Surf; the boulder on the way to Relic Castle; the Strength room on the
+# east side, reached from the south chamber's long tunnel); the south (503: from the Castelia Sewers; its boulder opens the
+# tunnel). Boulders: Black 2's people 8197 (the boulder model, script 10000). The pictures leave the zones' spare corners
+# empty: walled.
+
+
+def _wall(m, x0, y0, x1, y1):
+    for y in range(y0, y1 + 1):
+        m["art"][y] = m["art"][y][:x0] + "c" * (x1 - x0 + 1) + m["art"][y][x1 + 1:]
+
+
+def _put_char(m, x, y, ch):
+    m["art"][y] = m["art"][y][:x] + ch + m["art"][y][x + 1:]
+
+
+RP_NORTH = route(
+    505, {5: _say("Worker in the passage", "We found this passage digging under the old Cold Storage. It goes all the way to Castelia!",
+                  "Watch out for the dust clouds. Something's always hiding in them!"),
+          0: _ball("Poke Ball by the north wall", "PROTEIN", "b2_rp_protein", name="a Protein")},
+    {}, exits={"^": ("PWT", [(17, 2)]), "v": ("RELIC_PASSAGE_MIDDLE", [(57, 28)])},
+    trainers={2: "Backpacker Randall", 1: "Backpacker Eileen", 3: "Hiker Keith"}, title="Relic Passage")
+_put_char(RP_NORTH, 43, 24, "b")
+RP_MIDDLE = route(
+    504, {3: _ball("Poke Ball by the lake", "BIG_PEARL", "b2_rp_big_pearl", name="a Big Pearl"),
+          0: _ball("Poke Ball in the east room", "ROCKY_HELMET", "b2_rp_rocky_helmet", name="a Rocky Helmet"),
+          1: _ball("Poke Ball in the east room ", "RARE_CANDY", "b2_rp_rare_candy", name="a Rare Candy"),
+          2: _ball("Poke Ball by the east door", "ULTRA_BALL", "b2_rp_ultra", name="an Ultra Ball")},
+    {}, exits={"^": ("RELIC_PASSAGE_NORTH", [(25, 2)]), "<": ("RELIC_CASTLE_DEPTHS", [(89, 4)]),
+               "v": ("RELIC_PASSAGE", [(93, 42), (91, 53)])},
+    trainers={5: "Psychic Ena", 7: "Hiker Tobias", 6: "Psychic Tully", 4: "Backpacker Annie"},
+    hidden={"39,25": "MAX_REPEL", "23,25": "BLUE_SHARD", "58,24": "GREEN_SHARD", "82,12": "RED_SHARD", "70,47": "YELLOW_SHARD",
+            "90,40": "ROCK_GEM"},
+    title="Relic Passage")
+_wall(RP_MIDDLE, 0, 32, 63, 62)
+for _x, _y in ((88, 9), (66, 15)):
+    _put_char(RP_MIDDLE, _x, _y, "b")
+_put_char(RP_MIDDLE, 90, 8, ".")   # (past the boulder to Relic Castle's door: the walk data meets it only corner to corner)
+RP_MIDDLE["split"] = True   # (the east room, the Strength room, is reached only by the south chamber's long tunnel)
+RP_SOUTH = route(
+    503, {0: _ball("Poke Ball by Lumina", "HARD_STONE", "b2_rp_hard_stone", name="a Hard Stone"),
+          1: _ball("Poke Ball between the ledges", "MAX_REPEL", "b2_rp_max_repel", name="a Max Repel"),
+          6: _ball("Poke Ball by Terrance", "ESCAPE_ROPE", "b2_rp_escape_rope", name="an Escape Rope")},
+    {}, exits={"^": ("RELIC_PASSAGE_MIDDLE", [(4, 10), (2, 21)]), "v": ("CASTELIA_SEWERS", [(51, 61)])},
+    trainers={4: "Scientist Lumina", 2: "Scientist Terrance", 3: "Backpacker Kendall"},
+    hidden={"58,51": "ESCAPE_ROPE"}, title="Relic Passage")
+_wall(RP_SOUTH, 32, 0, 63, 31)
+_put_char(RP_SOUTH, 25, 46, "b")   # (Black 2: push the boulder (20, 47) into the hole at the long tunnel's foot; here it waits
+#                                     at the hole, and Strength's push opens the tunnel north to the middle chamber's east room)
+# (the two ways between the middle and south chambers, paired as the file pairs them: 504's (93, 42) <-> 503's (4, 10),
+#  the Strength room's tunnel; 504's (91, 53) <-> 503's (2, 21), the stairway)
+RP_MIDDLE["edge_to"] = {"93,42": [5, 10], "91,53": [3, 21]}
+RP_SOUTH["edge_to"] = {"4,10": [92, 42], "2,21": [91, 52]}
+
+# --- Relic Castle's lowest floor: five rooms in a row (180 from the Relic Passage, 175, 181 the middle, 176, 178) and 182
+# north of the middle room: Volcarona's (Lv 35, back after each Hall of Fame). Sun Stone hidden in the middle room,
+# Ultra Ball on the sand in the east room. (Black 2's Volcarona room has only Baltoy: here the floor's own table, one
+# table a place: Main inbox clean-main-unova-room-wild-tables.)
+OUTSIDE.update({175: 180, 181: -1, 176: -1, 178: -1, 182: -1})
+VOLCARONA = {"text": "Volcarona", "action": "BOSS", "color": "RED", "_look": "sheet:b2_c124.png",
+             "condition": [{"any": ["not:b2_volcarona", "legend_back:b2_volcarona"]}],
+             "boss": {"id": 637, "name": "Volcarona", "level": 35, "victory_flag": "b2_volcarona", "lines": ["Vuoooo!"]}}
+DEPTHS = route(
+    180, {}, {}, exits={"v": ("RELIC_PASSAGE_MIDDLE", [(x, 15) for x in range(5, 8)])},
+    rooms={"hall_w": room(175, {}, {}, (12, 7), stairs={181: (">", "ROOM:middle")}),
+           "middle": room(181, {}, {}, (0, 0), stairs={182: ("^", "ROOM:volcarona"), 175: ("<", "ROOM:hall_w"),
+                                                      176: (">", "ROOM:hall_e")}),
+           "hall_e": room(176, {}, {}, (0, 0), stairs={181: ("<", "ROOM:middle"), 178: (">", "ROOM:east")}),
+           "east": room(178, {0: _ball("Poke Ball on the sand", "ULTRA_BALL", "b2_rcd_ultra", name="an Ultra Ball")}, {}, (0, 0),
+                        stairs={176: ("<", "ROOM:hall_e")}),
+           "volcarona": room(182, {0: VOLCARONA}, {}, (0, 0), stairs={181: ("v", "ROOM:middle")})},
+    inside={"12,7": "hall_w"}, title="Relic Castle")
+_doors(DEPTHS, DEPTHS["inside"])
+DEPTHS["rooms"]["middle"]["hidden"] = {"6,7": "SUN_STONE"}
+for _k in ("hall_w", "middle", "hall_e", "east", "volcarona"):
+    DEPTHS["rooms"][_k]["title"] = "Relic Castle"
+
+
 MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": FLOCCESY, "UNOVA_ROUTE_20": ROUTE_20,
         "FLOCCESY_RANCH_OUTSIDE": RANCH_OUTSIDE, "FLOCCESY_RANCH": RANCH, "PLEDGE_GROVE": PLEDGE_GROVE,
         "VIRBANK_CITY": VIRBANK, "VIRBANK_COMPLEX_OUTSIDE": COMPLEX_OUTSIDE, "VIRBANK_COMPLEX": COMPLEX, "POKESTAR_STUDIOS": POKESTAR,
@@ -4175,4 +4471,6 @@ MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": 
         "UNOVA_ROUTE_4": ROUTE_4, "DESERT_RESORT_ENTRANCE": DESERT_ENTRANCE, "DESERT_RESORT": DESERT_RESORT,
         "RELIC_CASTLE": RELIC_CASTLE, "JOIN_AVENUE": JOIN_AVENUE,
         "NIMBASA_CITY": NIMBASA, "UNOVA_ROUTE_16": ROUTE_16, "LOSTLORN_FOREST": LOSTLORN, "UNOVA_ROUTE_5": ROUTE_5,
-        "ANVILLE_TOWN": ANVILLE, "DRIFTVEIL_CITY": DRIFTVEIL, "DRIFTVEIL_DRAWBRIDGE": DRAWBRIDGE}
+        "ANVILLE_TOWN": ANVILLE, "DRIFTVEIL_CITY": DRIFTVEIL, "DRIFTVEIL_DRAWBRIDGE": DRAWBRIDGE,
+        "PWT": PWT_GROUNDS, "PLASMA_FRIGATE": FRIGATE, "RELIC_PASSAGE_NORTH": RP_NORTH, "RELIC_PASSAGE_MIDDLE": RP_MIDDLE,
+        "RELIC_PASSAGE": RP_SOUTH, "RELIC_CASTLE_DEPTHS": DEPTHS}
