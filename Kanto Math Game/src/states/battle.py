@@ -2610,11 +2610,6 @@ class TrainerBattleState(ShadowBattle, GimmickEffects, AbilityEffects, MoveMecha
             said = frontier.after_battle(self.game, self.frontier, bool(self.player_won and not lost))
             if said and next_state is not None:
                 (next_state.say if hasattr(next_state, "say") else next_state.show_dialogue)(said)
-        elif area_key == "BATTLE_SUBWAY" and self.player_won and not lost:   # (Black 2 / White 2: Battle Points for a Subway win, 11-22)
-            from src.world import battle_points as _bp
-            got = _bp.add_bp(self.game.story_manager, _bp.WIN_BP)
-            if got and next_state is not None:
-                (next_state.say if hasattr(next_state, "say") else next_state.show_dialogue)([f"You earned {got} BP! You have {_bp.bp(self.game.story_manager)} BP."])
 
         if next_state and hasattr(next_state, "check_for_evolution"):
             if next_state.check_for_evolution():

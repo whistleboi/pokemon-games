@@ -369,6 +369,10 @@ class WalkTownState(TownWalkUps, CityState):
         if not pic or not (pic.get("until") or pic.get("when")) or art._version_file(pic) == getattr(self, "_pic_now", None):
             return
         self._pic_now = art._version_file(pic)
+        _w = next((w for w in (pic.get("when") if isinstance(pic.get("when"), list) else [pic.get("when") or {}])
+                   if w.get("f") == self._pic_now and w.get("play")), None)
+        if _w:   # (and the live scene plays the change through on its way there: Cianwood Gym's winch lifting the pipe as the
+            self._pic_play = (list(_w["play"]), pygame.time.get_ticks(), float(_w.get("secs") or 2.0) * 1000)   # waterfall stops, 11-23)
         self.map_img = art.surface(self.grid, m.get("buildings", {}), TILE, m.get("roofs"), m.get("theme"))
         self.overheads = [(o, *art.overhead(o, TILE)) for o in m.get("overheads", [])]
 
@@ -2296,6 +2300,13 @@ class WalkTownState(TownWalkUps, CityState):
         if _p.get("when") or _p.get("until"):   # (a picture that changes with a flag has its own scene too: Cianwood Gym's
             from src.dungeon import art          #  waterfall, stopped by the switch at the top, 11-22)
             pic = str(art._version_file(_p) or pic)
+        _play = getattr(self, "_pic_play", None)
+        if _play:   # (a change being played through: its in-between scenes in turn, then the one it ends on - _refresh_picture)
+            k = int((pygame.time.get_ticks() - _play[1]) * len(_play[0]) // max(1.0, _play[2]))
+            if 0 <= k < len(_play[0]):
+                pic = str(_play[0][k])
+            else:
+                self._pic_play = None
         key = (id(m), getattr(self, "room", None), pic)
         if getattr(self, "_live_key", None) == key:
             return self._live_got
@@ -2744,10 +2755,31 @@ class WalkTownState(TownWalkUps, CityState):
         cache[key] = part
         return part
 
+    _DLET = {(0, -1): "u", (0, 1): "d", (-1, 0): "l", (1, 0): "r"}
+
+    def _guide_cocoons(self, room):
+        """{(cocoon tile, the way you step into it): (room it carries you to, (x, y))} for a room's cocoons you can ride now
+        (Castelia Gym's, Black 2; Unova 11-24: the marker and the playthroughs never used them, so Burgh had no marker)."""
+        rooms = self.town_map.get("rooms") or {}
+        m = rooms.get(room) if room else self.town_map
+        out = {}
+        for k, c in ((m or {}).get("cocoons") or {}).items():
+            x, y, d = str(k).split(",")
+            if len(c) > 4 and c[4] and not self._check_menu_condition(c[4]):
+                continue
+            to = None if c[0] in (None, "", "MAIN") else c[0]
+            if to is None or to in rooms:
+                way = next(v for v, letter in self._DLET.items() if letter == d)
+                out[((int(x), int(y)), way)] = (to, (int(c[1]), int(c[2])))
+        return out
+
     def _guide_passages(self, room):
-        """[(tile, the room it leads to (None: outside), what kind)] for a room's doors, mats, stairs and pads."""
+        """[(tile, the room it leads to (None: outside), what kind)] for a room's doors, mats, stairs, pads and cocoons."""
         part, out = self._guide_part(room), []
         rooms = self.town_map.get("rooms") or {}
+        for (t, _way), (to, _xy) in self._guide_cocoons(room).items():
+            if to != room:
+                out.append((t, to, "cocoon"))
         for t, target in part["exits"].items():
             target = str(target)
             if target.startswith("OUT:"):
@@ -2901,6 +2933,8 @@ class WalkTownState(TownWalkUps, CityState):
                 return ((to, (x, y)), "pad") if to == room or to in rooms else None
             return None
 
+        _coc = {}
+        cocoons = lambda room: _coc[room] if room in _coc else _coc.setdefault(room, self._guide_cocoons(room))
         start = (here, tuple(self.player))
         prev, q = {start: None}, deque([start])
         found = None
@@ -2923,6 +2957,12 @@ class WalkTownState(TownWalkUps, CityState):
                         if found not in prev:
                             prev[found] = (cur, None)
                         break
+                coc = cocoons(room).get((n, (dx, dy)))   # (into a cocoon that way: its thread carries you on, Castelia Gym)
+                if coc is not None:
+                    if coc not in prev:
+                        prev[coc] = (cur, (n, "cocoon"))
+                        q.append(coc)
+                    continue
                 on = beyond(room, n)
                 if on is not None:
                     dest, kind = on
@@ -2974,7 +3014,7 @@ class WalkTownState(TownWalkUps, CityState):
         goals = {(r, live(tuple(t)) if r == here else tuple(t)) for r, t in goals}
         px, py = self.player
         near = lambda t: (abs(t[0] - px) + abs(t[1] - py), t)
-        names = {"out": "Way out", "stairs": "Stairs", "pad": "Warp", "door": "Here"}
+        names = {"out": "Way out", "stairs": "Stairs", "pad": "Warp", "door": "Here", "cocoon": "Cocoon"}
         if (here, tuple(self.player)) in goals:
             return (tuple(self.player), label)
         hit = self._guide_walk(goals)
@@ -2998,7 +3038,7 @@ class WalkTownState(TownWalkUps, CityState):
         first = rooms.get(room, (0, None))[1]
         if not first:
             return None
-        ways = {t for t, target in self.exits.items() if str(target).startswith(("OUT:", "ROOM:"))} | set(self.doors) | set(getattr(self, "room_links", {}))
+        ways = {t for t, target in self.exits.items() if str(target).startswith(("OUT:", "ROOM:"))} | set(self.doors) | set(getattr(self, "room_links", {}))             | {t for (t, _w) in self._guide_cocoons(here)}
         tiles = [(t, kind) for t, to, kind in self._guide_passages(here) if to == first[0] and t in ways]
         if not tiles:
             return None
