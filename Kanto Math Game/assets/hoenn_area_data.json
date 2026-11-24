@@ -1182,7 +1182,8 @@
           "name": "Fisherman Elliot",
           "class": "FISHERMAN",
           "sprite": "fisherman.png",
-          "team": [129, 129, 118],
+          "team": [129, 72],
+          "levels": [10, 12],
           "rewards": { "balls": 3 }
         },
         {
@@ -1315,21 +1316,24 @@
           "name": "Sailor Huey",
           "class": "SAILOR",
           "sprite": "sailor.png",
-          "team": [278, 66],
+          "team": [66],
+          "levels": [15],
           "rewards": { "balls": 3 }
         },
         { "rematch": {"source": "Emerald", "tiers": [{"team": [264], "levels": [27], "team_moves": [["SAND-ATTACK", "PIN-MISSILE", "TAIL-WHIP", "SURF"]]}, {"team": [264], "levels": [30], "team_moves": [["SAND-ATTACK", "PIN-MISSILE", "TAIL-WHIP", "SURF"]]}, {"team": [264], "levels": [33], "team_moves": [["SAND-ATTACK", "PIN-MISSILE", "TAIL-WHIP", "SURF"]]}, {"team": [264], "levels": [36], "team_moves": [["SAND-ATTACK", "PIN-MISSILE", "TAIL-WHIP", "SURF"]]}], "needs": {"badges": 5}},
           "name": "Tuber Ricky",
           "class": "YOUNGSTER",
           "sprite": "youngster.png",
-          "team": [118, 118, 129],
+          "team": [263],
+          "levels": [14],
           "rewards": { "balls": 2 }
         },
         { "rematch": {"source": "Emerald", "tiers": [{"team": [183, 183], "levels": [26, 26]}, {"team": [183, 183], "levels": [29, 29]}, {"team": [183, 183], "levels": [32, 32]}, {"team": [184, 184], "levels": [35, 35]}], "needs": {"badges": 5}},
           "name": "Tuber Lola",
           "class": "LASS",
           "sprite": "lass.png",
-          "team": [118, 183],
+          "team": [298],
+          "levels": [14],
           "rewards": { "balls": 2 }
         }
       ],
