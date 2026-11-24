@@ -289,6 +289,8 @@ def all_trainers(f):
     for t in f["battles"] + f["trainers"]:
         k = (trainer_name(t), tuple(m["id"] for m in t["team"]))
         if k in seen:
+            if t.get("spot"):
+                out[seen[k]]["spot"] = True   # (the same trainer stands on a map spot: fought on the map)
             if t.get("by_starter") and not out[seen[k]].get("by_starter"):   # (keep the copy with the teams by starter)
                 t = dict(t, where=out[seen[k]]["where"], who=out[seen[k]].get("who"))
                 out[seen[k]] = t
@@ -357,6 +359,18 @@ def reward_words(t):
     return ", ".join(out)
 
 
+STORY_CLASSES = ("RIVAL", "ROCKET_LEADER", "GYM_LEADER", "ELITE_FOUR", "CHAMPION")
+
+
+def on_map(f, t):
+    """In the Overworld style, fought on the map: a trainer standing on a walked map's spot (not a town's), unless it's an
+    important story battle (dungeon.py story_battle: a boss, or a rival / Rocket leader / Leader / Elite Four / Champion,
+    Jordan 11-24). Event and town battles use the battle screen."""
+    if not t.get("spot") or (F.PLACES.get(f["key"]) or {}).get("area_type") == "town":
+        return False
+    return not (t.get("boss") or str(t.get("class") or "").upper() in STORY_CLASSES)
+
+
 def battle_html(f, name, note=None, pick=None):
     t = find_trainer(f, name)
     if t is None:
@@ -370,8 +384,9 @@ def battle_html(f, name, note=None, pick=None):
     rw = reward_words(t)
     rw_html = f'<div class="small">Rewards: {esc(rw)}</div>' if rw else ""
     note_html = f'<div class="small">{note}</div>' if note else ""
+    style = "on the map" if on_map(f, t) else "battle screen"
     return (f'<div class="battle"><div><div class="who">{esc(who)}</div><div class="small">{esc(class_word(t.get("class")))}'
-            ' · battle screen</div>'
+            f' · {style}</div>'
             f'{rw_html}</div><div class="teams">{teams}{note_html}</div></div>')
 
 

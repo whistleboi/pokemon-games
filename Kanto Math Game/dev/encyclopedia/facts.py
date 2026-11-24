@@ -394,7 +394,7 @@ def trainers_of(key):
              or next((t for t in pool if t.get("name") == spot and id(t) not in used), None))
         if t:
             used.add(id(t))
-            out.append(team(t, where))
+            out.append(dict(team(t, where), spot=True))
     gym = p.get("gym") or {}
     for t in gym.get("trainers") or []:
         out.append(team(t, "Gym"))
