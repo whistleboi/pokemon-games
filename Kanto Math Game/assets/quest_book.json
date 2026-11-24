@@ -430,7 +430,7 @@
     {"title": "The Agate Badge", "chapters": [
       {"mission": "orre_m6", "title": "The Village in the Trees", "say": "Agate Village is green, quiet, and old. Rui's grandparents live there, and a fortune-teller saw trouble heading their way."},
       {"mission": "orre_m6b", "title": "Into the Relic Cave", "say": "Footprints lead into the Relic Cave, and an old man went in after them alone."},
-      {"mission": "orre_m6c", "title": "The Hall of Light", "say": "Agate has a Gym, and two Leaders who battle side by side. Its hall is a puzzle of light before it is a battle."}
+      {"mission": "orre_m6c", "title": "The Number Gardens", "say": "Agate has a Gym, and two Leaders who battle side by side. Its gardens are a puzzle of numbers before they are a battle."}
     ]},
     {"title": "Beneath Pyrite", "chapters": [
       {"mission": "orre_m7", "title": "Smoke on Mt. Battle", "say": "Something is wrong on the mountain next to Agate. Trainers are coming down beaten and shaking."},
