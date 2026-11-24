@@ -3347,3 +3347,21 @@ story.inventory.clear(); story.inventory.update(_inv7); story.story_flags.clear(
 
 story.story_flags.clear(); story.story_flags.update(_saved)
 print(f"##### {len(fails)} failures")
+
+# H8 (Jordan 11-24, questions/HOENN.md #3): Meteor Falls' hidden room off 1F's north-west corner; Steven waits there after
+# the Champion, to battle (Emerald's team), and is gone once beaten
+_c5 = story.story_flags.get("beat_hoenn_champion"); _s5 = story.story_flags.pop("meteor_falls_steven_beaten", None)
+story.story_flags["beat_hoenn_champion"] = True
+st = arrive("HOENN_METEOR_FALLS", "HOENN_ROUTE_115")
+_lk = ((st.run.recipe.get("art") or {}).get("floors") or [{}])[0].get("links", {}).get("4,2")
+if _lk:
+    st._warp(*_lk)
+_room = (_tm["HOENN_METEOR_FALLS"].get("rooms") or {}).get("steven_cave") or {}
+_stv = next((p for p in _room.get("people") or [] if isinstance(p, dict) and p.get("text") == "Steven"), {})
+check(_lk and "Steven" in st.run.floor.spots and (_stv.get("event") or {}).get("battle", {}).get("levels") == [77, 75, 76, 76, 76, 78]
+      and "not:meteor_falls_steven_beaten" in _stv.get("condition", []),
+      f"Meteor Falls: the hidden room at 1F's 4,2 ({_lk}): Steven waits after the Champion, Emerald's team Lv 75-78, gone once beaten")
+if _c5 is None:
+    story.story_flags.pop("beat_hoenn_champion", None)
+if _s5 is not None:
+    story.story_flags["meteor_falls_steven_beaten"] = _s5

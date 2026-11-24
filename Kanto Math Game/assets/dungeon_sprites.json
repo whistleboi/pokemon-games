@@ -76,6 +76,9 @@
     ]
   },
   "figures": {
+    "HOENN_METEOR_FALLS:Steven": {
+      "sheet": "em_134.png"
+    },
     "HOENN_ROUTE_112:Cable Car attendant": {
       "sheet": "em_45.png"
     },

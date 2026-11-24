@@ -113474,7 +113474,7 @@
     "art": [
      "cccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccc",
+     "cccc1ccccccccccccccccccccccccc",
      "c......ccc1ccccccccccccccccccc",
      "c.N.N1.c.....oooooccccccccc.cc",
      "c......c.....ooooocccccccccN.c",
@@ -113672,7 +113672,10 @@
        42
       ]
      }
-    ]
+    ],
+    "inside": {
+     "4,2": "steven_cave"
+    }
    },
    {
     "art": [
@@ -113947,6 +113950,115 @@
    "Team Aqua Grunt": 0,
    "Team Magma Grunt": 0,
    "Old Couple John & Jay": 1
+  },
+  "rooms": {
+   "steven_cave": {
+    "art": [
+     "cccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccNcccccccccc",
+     "ccccccccccccccccccc.cccccccccc",
+     "ccccccccccccccccccc.cccccccccc",
+     "ccccccccccccccccccc.cccccccccc",
+     "cccccccccc...c......cccccccccc",
+     "ccccccccccc..c..c.........cccc",
+     "cccccccccc....c...cccccccccccc",
+     "cccccccccc..c....ccccccccccccc",
+     "cccccccccc.......ccccccccccccc",
+     "ccccccccccccccc..ccccccccccccc",
+     "cccccccccccccccc.ccccccccccccc",
+     "cccccccccccccccc...ccccccccccc",
+     "ccccccccccccccccc..cccc.cccccc",
+     "ccccccccccccccccc..cccc.cccccc",
+     "ccc....cccccccccc..cccc.cccccc",
+     "ccc....cccccccccc..cccc.cccccc",
+     "ccc.cc.cccccccccc.c.....cccccc",
+     "ccc.c..ccccccccc...cc...cccccc",
+     "cccc...ccccccc.....c..cccccccc",
+     "cccccc.ccccccc....c..ccccccccc",
+     "cccccc.ccccccc......cccccccccc",
+     "cccccc.ccccccc...ccccccccccccc",
+     "cccccc.........c.ccccccccccccc",
+     "ccccccc....c..cc.ccccccccccccc",
+     "ccccccccc........ccccccccccccc",
+     "ccccccccc...c.cccccccccccccccc",
+     "ccccccccc.n...cccccccccccccccc",
+     "cccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccc"
+    ],
+    "exits": {
+     "n": "OUT:4,2"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_107.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Steven",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Steven: Oh, wow, {player_name}. I'm amazed you knew where to find me.",
+        "Steven: We battled side by side at the Mossdeep Space Center, and you became the Champion.",
+        "Steven: Now I want to see how strong you've grown. Shall we?"
+       ],
+       "flag": "meteor_falls_steven_beaten",
+       "battle": {
+        "name": "Steven",
+        "class": "CHAMPION",
+        "sprite": "steven.png",
+        "team": [
+         227,
+         344,
+         306,
+         346,
+         348,
+         376
+        ],
+        "levels": [
+         77,
+         75,
+         76,
+         76,
+         76,
+         78
+        ],
+        "rewards": {
+         "balls": 5
+        },
+        "dialogue": {
+         "player_won": [
+          "Steven: I see... You really are the Champion.",
+          "Steven: I'll keep travelling, looking for rare stones. Until we meet again!"
+         ]
+        }
+       }
+      },
+      "condition": [
+       "beat_hoenn_champion",
+       "not:meteor_falls_steven_beaten"
+      ]
+     }
+    ],
+    "moves": {
+     "19,3": {
+      "m": "face",
+      "d": "u"
+     }
+    },
+    "theme": "room",
+    "title": "Meteor Falls hidden room"
+   }
   }
  },
  "HOENN_ROUTE_115": {

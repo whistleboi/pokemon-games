@@ -667,6 +667,33 @@ def _wally_victory_road(maps):
                             "Wally: Go on. The Pokemon League is waiting for you!"]}}]])
 
 
+def _steven_meteor_falls(maps):
+    """Jordan 11-24 (questions/HOENN.md #3, Emerald): Meteor Falls' hidden room (24.107, built as a room by h_h7_rooms.py)
+    opens off 1F's north-west corner, and after the Champion Steven waits in it to battle you (Emerald's team and levels:
+    Skarmory 77, Claydol 75, Aggron 76, Cradily 76, Armaldo 76, Metagross 78); once beaten he has gone on his way."""
+    m = maps.get("HOENN_METEOR_FALLS")
+    if not m or not m.get("floors") or "steven_cave" not in (m.get("rooms") or {}):
+        return
+    f0 = m["floors"][0]
+    art = [list(r) for r in f0["art"]]
+    if art[2][4] == "c":
+        art[2][4] = "1"   # (the opening in the cave wall: Emerald's warp at 4,2)
+    f0["art"] = ["".join(r) for r in art]
+    room = m["rooms"]["steven_cave"]
+    for p in room.get("people") or []:
+        if isinstance(p, dict) and p.get("text") == "Steven":
+            p["condition"] = ["beat_hoenn_champion", "not:meteor_falls_steven_beaten"]
+            p["event"] = {"lines": ["Steven: Oh, wow, {player_name}. I'm amazed you knew where to find me.",
+                                    "Steven: We battled side by side at the Mossdeep Space Center, and you became the Champion.",
+                                    "Steven: Now I want to see how strong you've grown. Shall we?"],
+                          "flag": "meteor_falls_steven_beaten",
+                          "battle": {"name": "Steven", "class": "CHAMPION", "sprite": "steven.png",
+                                     "team": [227, 344, 306, 346, 348, 376], "levels": [77, 75, 76, 76, 76, 78],
+                                     "rewards": {"balls": 5},
+                                     "dialogue": {"player_won": ["Steven: I see... You really are the Champion.",
+                                                                 "Steven: I'll keep travelling, looking for rare stones. Until we meet again!"]}}}
+
+
 def _part(m, floor, room):
     if room:
         return m["rooms"][room]
@@ -751,6 +778,7 @@ def apply(maps):
     _mauville_slots(maps)
     _coin_case(maps)
     _wally_victory_road(maps)
+    _steven_meteor_falls(maps)
     _h7(maps)
     for key, floor, room, x, y, who in PEOPLE:
         m = maps.get(key)
