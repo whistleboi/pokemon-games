@@ -40,6 +40,8 @@ def event(state, ev, lines, show):
     if story.story_flags.get(PART2):
         return show(lines) if lines else None
     story.story_flags[PART2] = True
+    from src.world import gym_swaps   # (Realgam's Colosseum: the League from now on - S5)
+    gym_swaps.apply(game)
     from src.states.overworld.common import _say_then, _fill_names
     say = [_fill_names(game, x) for x in (list(lines or []) + LINES)]
     _say_then(state, say, lambda: _arrive(state))

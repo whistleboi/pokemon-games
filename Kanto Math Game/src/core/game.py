@@ -255,6 +255,8 @@ class Game:
 
         config = self.loader.area_data.get("GAME_CONFIG", {})
         self.story_manager.initialize_new_game(config)
+        from src.world import gym_swaps   # (a new game: every area's own Gym again)
+        gym_swaps.apply(self)
         from src.core import settings
         settings.apply(self)
         
@@ -294,6 +296,8 @@ class Game:
         self.story_manager = StoryManager()
         self.story_manager.game = self
         self.story_manager.deserialize(story_data, self.loader)
+        from src.world import gym_swaps   # (an area whose Gym changes with the story: Orre's Realgam, Evice's run -> the League)
+        gym_swaps.apply(self)
         from src.core import settings
         settings.apply(self)
         prog = self.loader.area_data.get("STORY_PROGRESSION", {})
