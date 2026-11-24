@@ -385,4 +385,4 @@ from src.pokemon import items as _itm
 check(all(_itm.known(k) for k in ("PP_UP", "PP_MAX", "ETHER", "MAX_ETHER", "ELIXIR", "MAX_ELIXIR")), "the PP items are known")
 check(_itm.known("POTION") and _itm.known("FIRE_GEM") and not _itm.known("NOT_AN_ITEM"), "and the rest as before; a made-up name isn't")
 check("PP_UP" in _itm.PP_ITEMS, "items.PP_ITEMS is the PP items' table")
-print("##### FAILURES:", fails)
+print(f"##### {fails} failures")

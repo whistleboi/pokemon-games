@@ -160,4 +160,4 @@ d._act(boom)
 hit = [f.current_hp < h for f, h in zip(d.o_slots, hp0)]
 check(all(hit), f"Explosion hits both foes ({hit})")
 check(boom.current_hp == 0, "...and then GEODUDE faints")
-print("FAILURES:", fails)
+print(f"##### {fails} failures")

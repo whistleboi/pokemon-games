@@ -64,4 +64,4 @@ if st is not None and hasattr(st, "input_name"):
     check(st.input_name == "AB", f"the trainer name takes A and B, not the emoji or € ({st.input_name!r})")
 else:
     print("   (no character pick state to try)")
-print("FAILURES:", fails)
+print(f"##### {fails} failures")

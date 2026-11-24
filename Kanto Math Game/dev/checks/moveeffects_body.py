@@ -296,4 +296,4 @@ check(not dmg, "without it, Tackle doesn't touch a Ghost")
 b.opponent_pokemon.held_item = "RING_TARGET"
 dmg, lines, _ = use(b, "TACKLE")
 check(dmg > 0, f"holding a Ring Target, the Ghost is hit ({lines})")
-print("FAILURES:", fails)
+print(f"##### {fails} failures")

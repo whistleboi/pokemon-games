@@ -325,4 +325,4 @@ check(isinstance(st, Soaring3DState) and not st.on_map and len(st.levels) == 4, 
 views(st, "oras_")
 S3.GROUND = "map"
 
-print(f"##### {len(fails)} fail(s)")
+print(f"##### {len(fails)} failures")

@@ -217,4 +217,4 @@ if type(menu).__name__ == "PokemonPartyMenuState":
         box.text = "Blaze"; box.confirm()
         check(story.player_team[0].nickname == "Blaze", f"renamed: {story.player_team[0].nickname}")
 
-print(f"\n##### {fails} fails")
+print(f"##### {fails} failures")

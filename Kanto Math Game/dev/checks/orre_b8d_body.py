@@ -378,6 +378,6 @@ J = {x["id"]: x for x in g.loader.area_data.get("JOURNAL_MISSIONS", [])}
 check("orre_s8" in J, "Poke Snacks")
 print("   shots:", shots)
 
-print("FAILURES:", len(fails))
+print(f"##### {len(fails)} failures")
 for f_ in fails:
     print("  ", f_)

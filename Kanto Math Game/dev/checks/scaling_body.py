@@ -91,4 +91,4 @@ for p_ in story.player_team:
 _pw = [levels.wild_level(g, "ROUTE_1") for _ in range(200)]
 check(max(_pw) <= levels.canon_area_level(g, "ROUTE_1") + 1, f"a Lv 90 team: Route 1's wild Pokemon stay Lv {min(_pw)}-{max(_pw)}")
 story.player_team = _saved_team
-print("FAILURES:", fails)
+print(f"##### {fails} failures")

@@ -146,4 +146,4 @@ btns = [i.get("text") for i in getattr(st, "placed", [])]
 check(type(st).__name__ == "DungeonState" and "SNAG AGAIN" in btns and "SNAG SHADOW POKEMON" not in btns,
       f"area cleared: SNAG AGAIN stands on the walked desert for another copy {btns}")
 
-print(f"\n{'ALL PASS' if not fails else str(fails) + ' FAIL(S)'}")
+print(f"##### {fails} failures")

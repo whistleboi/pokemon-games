@@ -319,6 +319,6 @@ jm = [m["id"] for m in g.loader.area_data["JOURNAL_MISSIONS"] if m["id"].startsw
 check(jm.index("orre_m10") < jm.index("orre_m10b") < jm.index("orre_m10c") < jm.index("orre_m11"),
       "Ein's Lab, then trouble at the HQ Lab, the Machine Part, the Cipher Lab")
 
-print("FAILURES:", len(fails))
+print(f"##### {len(fails)} failures")
 for f_ in fails:
     print("  ", f_)

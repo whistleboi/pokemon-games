@@ -441,4 +441,4 @@ for gid, fn in G:
     print(gid)
     guarded(gid, fn)
 print("")
-print(f"##### {len(fails)} fails")
+print(f"##### {len(fails)} failures")

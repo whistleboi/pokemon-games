@@ -140,4 +140,4 @@ check(all(k in SEVII for k in NEW7), "added areas are tagged SEVII")
 oneway = [(k, t) for k in NEW7 for t in _tg(k) if k not in _tg(t)]
 check(not oneway, f"added Sevii links go both ways {oneway}")
 no_traps(NEW7)
-print("FAILURES:", fails)
+print(f"##### {fails} failures")

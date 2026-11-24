@@ -76,4 +76,4 @@ seen = drive(b, 1500)
 chan = next(p for p in b.opponent_team if p.id == 107)
 check(next(p for p in b.opponent_team if p.id == 65).current_hp <= 0 and chan.current_hp == chan.get_max_hp(),
       f"a Pursuit that knocks it out: it never leaves, and the next one isn't hit ({chan.current_hp}/{chan.get_max_hp()}; {seen[:8]})")
-print("FAILURES:", fails)
+print(f"##### {fails} failures")

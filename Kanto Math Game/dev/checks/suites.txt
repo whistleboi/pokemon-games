@@ -89,7 +89,7 @@ kanto_played           kanto    story
 kanto_playthrough      kanto    long,playthrough
 kantostart             kanto    story,start
 rowdy_pikachu          kanto    story
-sevii                  kanto    story
+sevii                  kanto    story,helpers
 sevii_maps             kanto    maps
 yellow_kanto           kanto    story
 

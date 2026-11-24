@@ -191,4 +191,4 @@ _pool = {t.get("sprite") for _a in g.loader.area_data["STORY_PROGRESSION"].value
          for t in (_a.get("trainer_pool") or []) if isinstance(t, dict) and not str(t.get("sprite", "{")).startswith("{")}
 _walk = [s for s in _pool if not (_own.get(s) or (_ds.get("trainers") or {}).get(s))]
 check(not _walk, f"...and each route trainer ({len(_pool)} pictures) walks on the map as 5.7 draws it, not a shrunk battle picture ({_walk})")
-print("FAILURES:", fails)
+print(f"##### {fails} failures")

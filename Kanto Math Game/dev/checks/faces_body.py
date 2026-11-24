@@ -74,4 +74,4 @@ try:
 finally:
     _art.FURNITURE_OWN.pop(("ORRE", "crate"), None)
 _art.FURNITURE_STYLE = None
-print("FAILURES:", fails)
+print(f"##### {fails} failures")

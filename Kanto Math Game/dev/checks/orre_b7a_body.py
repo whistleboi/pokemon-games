@@ -508,6 +508,6 @@ check(str(_bb.pick(g, "PYRITE_TOWN", trainer=True, gym=True) or "").endswith("py
       and str(_bb.pick(g, "OUTSKIRT_STAND", trainer=True) or "").replace("_eve", "").replace("_night", "").endswith("sand.png"),
       "a tournament battle in Pyrite: the Colosseum's own background; out in the desert: the sand")
 
-print("FAILURES:", len(fails))
+print(f"##### {len(fails)} failures")
 for f_ in fails:
     print("  ", f_)

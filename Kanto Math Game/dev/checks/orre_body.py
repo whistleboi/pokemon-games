@@ -162,4 +162,4 @@ for k in ORRE:
         g.current_state.draw()
     except Exception as e:
         check(False, f"{k}: {type(e).__name__} {e}")
-print("FAILURES:", fails)
+print(f"##### {fails} failures")

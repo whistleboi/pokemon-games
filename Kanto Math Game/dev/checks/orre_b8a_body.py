@@ -420,6 +420,6 @@ print("10) The Journal")
 jm = [m_["id"] for m_ in g.loader.area_data["JOURNAL_MISSIONS"]]
 check(jm.index("orre_s5") + 1 == jm.index("orre_s5b"), "Krane's Master Ball, then Citadark Isle")
 
-print("FAILURES:", len(fails))
+print(f"##### {len(fails)} failures")
 for f_ in fails:
     print("  ", f_)

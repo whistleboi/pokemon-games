@@ -62,4 +62,4 @@ _d = next((tuple(int(v) for v in d.split(",")) for d, r in (_m.get("inside") or 
 _p = getattr(getattr(st, "run", None), "player", None)
 check(_d is not None and _p is not None and abs(_p[0] - _d[0]) + abs(_p[1] - _d[1]) <= 2,
       f"Route 10: by its Center's door ({type(st).__name__} {_p} vs door {_d})")
-print("FAILURES:", fails)
+print(f"##### {fails} failures")

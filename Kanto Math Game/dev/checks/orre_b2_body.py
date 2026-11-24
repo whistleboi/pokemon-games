@@ -308,6 +308,6 @@ story.story_flags = {"got_snag_machine": True, "has_pyrite_badge": True, "orre_m
 t = town("AGATE_VILLAGE", "PYRITE_TOWN")
 check(t._check_menu_condition(pur) and t._check_menu_condition(mtb) and t._check_menu_condition(rel), "purifying, Mt. Battle and the cave all open")
 
-print("##### orre_b2:", len(fails), "failures")
+print(f"##### {len(fails)} failures")
 for f in fails:
     print("  -", f)
