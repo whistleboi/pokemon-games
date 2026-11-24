@@ -32,7 +32,8 @@ story.badges["ORANGE"] = []
 for k in [k for k in story.story_flags if k.startswith(("visited_", "feat_"))]:
     story.story_flags.pop(k)
 at("VALENCIA_ISLAND")
-city = CityState(g); g.change_state(city)
+exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())   # (11-24: the Journal opened from the walked town's map)
+city = walk_town(story.current_area_key, None, play=False)
 
 
 def done_(cond):
