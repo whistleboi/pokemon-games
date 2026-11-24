@@ -3359,64 +3359,64 @@
       "sheet": "hg_fishing.png"
     },
     "SINNOH_BATTLE_FRONTIER:Frontier guide": {
-      "sheet": "hg_gswoman1.png"
+      "sheet": "pt_woman1.png"
     },
     "SINNOH_BATTLE_FRONTIER:Old lady": {
-      "sheet": "hg_gsoldwoman1.png"
+      "sheet": "pt_oldwoman1.png"
     },
     "SINNOH_BATTLE_FRONTIER:Old man": {
-      "sheet": "hg_gsoldman1.png"
+      "sheet": "pt_oldman1.png"
     },
     "SINNOH_BATTLE_FRONTIER:Little girl": {
-      "sheet": "hg_gsbabygirl1.png"
+      "sheet": "pt_babygirl1.png"
     },
     "SINNOH_BATTLE_FRONTIER:Boy": {
-      "sheet": "hg_gsboy1.png"
+      "sheet": "pt_boy1.png"
     },
     "SINNOH_BATTLE_FRONTIER:Little boy": {
-      "sheet": "hg_gsbabyboy1.png"
+      "sheet": "pt_babyboy1.png"
     },
     "SINNOH_BATTLE_FRONTIER:Idol": {
-      "sheet": "hg_idol.png"
+      "sheet": "pt_idol.png"
     },
     "SINNOH_BATTLE_FRONTIER:Tough guy": {
-      "sheet": "hg_badman.png"
+      "sheet": "pt_badman.png"
     },
     "SINNOH_BATTLE_FRONTIER:Gentleman": {
-      "sheet": "hg_gsmiddleman1.png"
+      "sheet": "pt_middleman1.png"
     },
     "SINNOH_BATTLE_FRONTIER:Big man": {
-      "sheet": "hg_gsbigman.png"
+      "sheet": "pt_bigman.png"
     },
     "SINNOH_BATTLE_FRONTIER:Old gentleman": {
-      "sheet": "hg_gsgentleman.png"
+      "sheet": "pt_gentleman.png"
     },
     "SINNOH_BATTLE_FRONTIER:Kid": {
-      "sheet": "hg_gsbabyboy1.png"
+      "sheet": "pt_babyboy1.png"
     },
     "SINNOH_BATTLE_FRONTIER:Man": {
-      "sheet": "hg_gsman2.png"
+      "sheet": "pt_man2.png"
     },
     "SINNOH_BATTLE_FRONTIER:Cowgirl": {
-      "sheet": "hg_cowgirl.png"
+      "sheet": "pt_cowgirl.png"
     },
     "SINNOH_BATTLE_FRONTIER:Fisherman": {
-      "sheet": "hg_fishing.png"
+      "sheet": "pt_fishing.png"
     },
     "SINNOH_BATTLE_FRONTIER:Picnicker": {
-      "sheet": "hg_picnicgirl.png"
+      "sheet": "pt_picnicgirl.png"
     },
     "SINNOH_BATTLE_FRONTIER:Lady": {
-      "sheet": "hg_gswoman1.png"
+      "sheet": "pt_woman1.png"
     },
     "SINNOH_BATTLE_FRONTIER:Job seeker": {
-      "sheet": "hg_gswoman1.png"
+      "sheet": "pt_woman1.png"
     },
     "SINNOH_BATTLE_FRONTIER:Coach": {
-      "sheet": "hg_gsman3.png"
+      "sheet": "pt_man3.png"
     },
     "SINNOH_BATTLE_FRONTIER:Angler": {
-      "sheet": "hg_fishing.png"
+      "sheet": "pt_fishing.png"
     },
     "ORRE_DESERT:SNAG SHADOW POKEMON": {
       "sheet": "orre_trainer_cipher_grunt.png"
