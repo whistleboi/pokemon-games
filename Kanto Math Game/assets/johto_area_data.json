@@ -4279,9 +4279,9 @@
         },
         {
             "id": "johto_c1", "type": "SIDE", "title": "Unown Researcher", "description": "The Ruins of Alph hold Unown in strange shapes. Five different ones would be a start.",
-            "condition": { "required_region": "JOHTO", "catch_id": "201", "catch_count": 5 },
-            "completed_flag": "unown_research_complete",
-            "reward": "Master Ball"
+            "condition": { "required_region": "JOHTO", "visited": "RUINS_OF_ALPH" },
+            "unown_forms": 5,
+            "reward": "None"
         },
         {"id": "johto_s_oddegg", "type": "SIDE", "title": "The Odd Egg", "description": "The Day-Care Man on Route 34 has turned up another odd Egg. Nobody knows what's inside.", "target": "JOHTO_ROUTE_34", "condition": {"required_region": "JOHTO", "flag": "odd_egg_ready"}, "completed_flag": "odd_egg_pending"},
         {
