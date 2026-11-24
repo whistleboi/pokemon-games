@@ -410,6 +410,10 @@ def settle(limit=9000):
                 st.back._lift_plan = None
                 st.pick(_lp)
                 continue
+            if type(st).__name__ == "PurifyChamberState":
+                _say("[Purify Chamber: BACK]")
+                st._back()
+                continue
             if isinstance(st, _PLS) and any(str(v).startswith("@") for _l, v in st.choices):
                 _v = [v for _l, v in st.choices if str(v).startswith("@")][-1]
                 _say(f"[list: {st.title}: {_v[1:]}]")

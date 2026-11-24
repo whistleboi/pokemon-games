@@ -229,19 +229,20 @@ check(not bad, f"every move one the game knows ({bad})")
 sn = next(o for o in SP["PHENAC_CITY"]["explore_options"] if o["text"] == "PHENAC STADIUM: SNATTLE")["event"]["battle"]
 gz = next(o for o in SP["SNAGEM_HIDEOUT"]["route_menu"] if o["text"] == "SNAGEM HIDEOUT: GONZAP")["event"]["battle"]
 gym = SP["PHENAC_CITY"]["gym"]
-check(max(sn["levels"]) == 56 and max(gz["levels"]) == 56 and max(gym["leader"]["levels"]) == 56,
-      f"Snattle, Gonzap and the Stadium's champion Glais at 56 ({max(sn['levels'])}, {max(gz['levels'])}, {max(gym['leader']['levels'])})")
-check([t["name"] for t in gym["trainers"]] == ["Cooltrainer Rewn", "Cooltrainer Buna", "Teacher Holen"] and gym["requirements"].get("flag") == "orre_snattle_phenac",
-      "the Stadium: Colosseum's own Rewn, Buna and Holen, open after Snattle")
+check(max(sn["levels"]) == 43 and max(gz["levels"]) == 44 and max(gym["leader"]["levels"]) == 14,
+      f"Snattle 43, Gonzap 44 (Part 2's stage, L1 11-24) and the Stadium's Leader Misty 14 (S2) ({max(sn['levels'])}, {max(gz['levels'])}, {max(gym['leader']['levels'])})")
+check([t["name"] for t in gym["trainers"]] == ["Cooltrainer Rewn", "Cooltrainer Buna", "Teacher Holen", "Teacher Glais"] and gym["requirements"].get("flag") == "got_snag_machine",
+      "the Stadium: Rewn, Buna, Holen and Glais, then Misty - open once you can snag (Phenac first, S2 11-24)")
 
 print("2) The Pre Gym, Colosseum's era")
 for who in ("COOLTRAINER BOTAN", "COOLTRAINER LIQUI", "RICH BOY DUGO", "LADY GWIN"):
     pg()
     meet(g.current_state, who)
 check(all(F.get(f"orre_pregym_{n}") for n in ("botan", "liqui", "dugo", "gwin")), "its four students")
+F["orre_under_colosseum_won"] = True   # (Justy's Colosseum battle waits for the Under Colosseum now: 11-24)
 pg()
 meet(g.current_state, "PRE GYM LEADER JUSTY")
-check(F.get("orre_justy_col"), "Justy, with the Under Badge (Colosseum's, Lv 41-42)")
+check(F.get("orre_justy_col"), "Justy, after the Under Colosseum (Colosseum's)")
 p = pg()
 on = {m.payload[1].get("name") for m in p.run.floor.movers if m.kind == "trainer"}
 check(not on, f"no Cipher in the Pre Gym yet ({on})")
@@ -301,6 +302,7 @@ said_t = meet(g.current_state, "PHENAC'S TOWNSFOLK") or []
 pg(1)
 meet(g.current_state, "BATTLE CD 35")
 check(F.get("xd_pregym_freed") and story.inventory.get("BATTLE_CD_35") and any("Es Cade" in ln for ln in said_t), "the townsfolk freed (Es Cade's back, unharmed); CD 35")
+F["orre_under_colosseum_won"] = True   # (Justy's Colosseum battle waits for the Under Colosseum now: 11-24)
 pg()
 meet(g.current_state, "PRE GYM LEADER JUSTY")
 check(F.get("xd_justy") and story.inventory.get("TM275") and story.inventory.get("LUM_BERRY"), "XD's Justy: TM275 Double Team and a Lum Berry")
@@ -318,18 +320,19 @@ for who in ("Wanderer Miror B.", "Researcher Hordel", "Rider Willie (again)"):
     meet(t, who)
 tog = next((p for p in list(story.player_team) + list(story.pc_pokemon or []) if p and p.id == 9357), None)
 check(F.get("xd_miror_outskirt") and F.get("snagged_shadow_nosepass"), "Miror B. again: Shadow Nosepass snagged")
-check(tog is not None and story.is_shadow(tog) and tog.shadow and tog.shadow["gauge"] > 0 and tog.level == 55,
+check(tog is not None and story.is_shadow(tog) and tog.shadow and tog.shadow["gauge"] > 0,
       "Hordel hands over his Shadow Togepi, its heart shut")
 check(F.get("xd_hordel") and F.get("xd_willie_again"), "Hordel marks the Snagem Hideout; Willie's rematch")
 
 print("5) The Snagem Hideout (XD's)")
 gate = next(o for o in SP["ORRE_DESERT"]["route_menu"] if o.get("target_area") == "SNAGEM_HIDEOUT")["condition"]
-check("xd_hordel" in gate, "the hideout's on the map once Hordel has pointed it out")
+check("xd_hordel" in str(gate), "the hideout's on the map once Hordel has pointed it out")
 names = [t_["name"] for t_ in SP["SNAGEM_HIDEOUT"]["trainer_pool"]]
 check(len(names) == 9 and "Team Snagem Wakin" in names, f"XD's nine Snagem members ({len(names)})")
 for who in names:
     route("SNAGEM_HIDEOUT", "ORRE_DESERT")
     meet(g.current_state, who)
+F["orre_part2"] = True   # (Part 2: Gonzap in the ruins' hall where Pryce stood in Part 1 - S2/S5 11-24)
 route("SNAGEM_HIDEOUT", "ORRE_DESERT")
 meet(g.current_state, "SNAGEM HIDEOUT: GONZAP")
 check(F.get("beat_gonzap") and story.inventory.get("GONZAPS_KEY"), "Gonzap beaten; his key")
