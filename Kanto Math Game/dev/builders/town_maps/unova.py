@@ -335,7 +335,7 @@ ASPERTIA = town(
                      {}, (15, 57), scenes=HOME_SCENES),
         "hugh": room(429, {0: _say("{rival_name}'s mom", "{rival_name}'s mom: Honestly, I'd rather my son stayed home.",
                                    "{rival_name}'s mom: But what parent doesn't want to see their child grow?"),
-                           1: _say("Man in Hugh's house", "Too bad you don't have a Pokemon yet. You could see who's the better Trainer!")},
+                           1: _say("Man in {rival_name}'s house", "Too bad you don't have a Pokemon yet. You could see who's the better Trainer!")},
                      {}, (11, 46), stairs={430: ("^", "ROOM:hugh_2f")}),
         "hugh_2f": room(430, {0: _say("{rival_name}'s sister", "{rival_name}'s sister: I hope you find that Bianca lady soon!"),
                               1: _say("Purrloin", "Purrloin: Mew?", _look="sheet:b2_c308.png")},
@@ -1843,7 +1843,7 @@ CASTELIA = town(
         "r4_north_47": castelia_room(59, {
             0: _ball("Poke Ball by the window", "CHARCOAL", "b2_castelia_charcoal", name="a Charcoal"),
             1: _say("Man scared of heights", "When I look down on the city from up here, I tremble. I-I'm scared of heights..."),
-            2: _say("Badge expert", "The Basic Badge makes Pokemon up to Lv. 20 obey. Each Badge raises it by ten!"),
+            2: _say("Badge expert", "Without a Badge, Pokemon up to Lv. 20 obey you. Each Badge raises it by ten!"),
             3: _say("Pokemon  ", "Hwoof hwoof!")},
             {}, lift=R4N_LIFT, title="Street to Route 4 north building 47F"),
         "r4_south": castelia_room(60, {
@@ -4830,7 +4830,7 @@ def _mistralton(z):
               10: _say("Woman by the Center", "Team Plasma stole Pokemon like Purrloin from people. That's unforgivable!"),
               16: _say("Gardener", "Vegetables grown in the wild are the best. Sometimes the Pokemon eat them first..."),
               17: _say("Woman by the greenhouse", "Vegetables grown in a greenhouse are the best! All the goodness goes into them."),
-              11: _say("Boy by the Cargo Service", "Hey! Since you're here, I'll tell you a secret. ...Please keep it from Elesa, OK?")},
+              11: _say("Boy by the Cargo Service", "Hey! Since you're here, I'll tell you a secret. ...Please keep it from Elesa, OK?", "Skyla says Elesa's Gym is way too bright for her! Shhh!")},
         {1: ["MISTRALTON CITY", "Strewn with Windblown Leaves"], 2: ["MISTRALTON CARGO SERVICE", "Our slogan is 'Quick and Safe!'"],
          3: ["MISTRALTON CITY POKEMON GYM", "Leader: Skyla", "The Highflying Girl"]},
         {108: ("gym", "gym"), 109: ("center", "center"), 110: ("house", "house_kids"), 111: ("house", "cargo"), 112: ("house", "house_tm")},
@@ -4928,17 +4928,6 @@ TWIST_MOUTH["gated_exits"] = {"TWIST_MOUNTAIN": ["beat_unova_champion"]}
 # ------------------------------------------------------------------------------------------------------ Celestial Tower
 # Five places: 1F (338) to 4F (341) and the roof (342). The file's stair warps sit off the walk grid (the floors are spiral
 # ramps), so each floor's way up and way down are the ends of its two ramps as the floor's picture shows them.
-BLACK_FOG = {"text": "The Black Fog", "action": "BOSS", "color": "PURPLE", "_look": "mon:93",
-             "condition": ["not:black_fog_banished_celestial_tower"],
-             "boss": {"id": 10501, "name": "Black Fog", "level": 36, "no_catch": True,
-                      "victory_flag": "black_fog_banished_celestial_tower",
-                      "lines": ["The air turns ice-cold. A black fog pours across the roof...",
-                                "Two huge eyes open in the dark. A giant Haunter rises: the Black Fog!",
-                                "Long ago people worshipped it as a god. It feeds on dreams. Don't let it get yours!"],
-                      "won": ["The Black Fog is too proud to ever be caught.",
-                              "It Self-Destructs in a burst of black mist... and is gone.",
-                              "But a cold whisper lingers: it will rise again in another haunted place."],
-                      "rewards": {"balls": 10, "RARE_CANDY": 3}}}   # (the menu era's own boss, kept: on the roof now)
 CT_1F = route(
     338, {0: [{"text": "Professor Juniper", "action": "EVENT", "condition": ["not:b2_jet_badge", "not:b2_lucky_egg"],
                "_look": "sheet:b2_juniper.png", "event": {
@@ -4985,10 +4974,9 @@ CT_4F = route(
     trainers={3: ("Socialite Grace", 2), 4: ("Gentleman Daniel", 2), 5: ("Psychic Sarah", 2)}, title="Celestial Tower")
 CT_ROOF = route(
     342, {}, {}, exits={"v": ("CELESTIAL_TOWER_4F", [(22, 14), (23, 14)])},
-    hidden={"10,13": "GHOST_GEM"}, extra_people=[(16, 12, BLACK_FOG)], title="Celestial Tower")
-for _m in (CT_1F, CT_2F, CT_3F, CT_4F):   # (Black 2's camera 33 looks along the inside walls; seen from it, or from our live camera,
-    _m["roofs"].pop("_cam", None)        #  the floor's lost: drawn top-down instead, the floor's own picture with its graves
-    _m.pop("cameras", None)              #  and ramps. Their live 3D files aren't kept, 11-24)
+    hidden={"10,13": "GHOST_GEM"}, title="Celestial Tower")   # (the Black Fog: CELESTIAL_TOWER's route_menu, as every haunt's, 11-24)
+# (Celestial Tower's floors: Black 2's camera 33 looks along the inside walls, and from it or our live camera the spiral floor
+#  is lost. Jordan 11-24, "3D now": live 3D anyway, the floor fix on ROADMAP_UNOVA; they were drawn top-down before.)
 CT_ROOF["sign_events"] = {"16,10": {"text": "The bell", "action": "EVENT", "event": {
     "lines": ["It's Celestial Tower's bell.", "{player_name} rang the bell...", "The sound of the bell reverberates through the area..."],
     "flag": "b2_celestial_bell"}}}
@@ -5053,7 +5041,7 @@ LENTIMAS = town(
                           0: _say("Hiker in the Center", "Going to check the volcano too? It's the same kind as Stark Mountain in Sinnoh."),
                           2: _say("Battle Girl", "A cool mind feels no heat!")}, {}, (26, 16)),
      "tm_house": room(608, {2: _gift("Old man by the table", ["Hmm! You spoke to me... You're quite a Trainer. I like you! Take this TM!",
-                                                              "{player_name} received TM57 Charge Beam!"],
+                                                              "{player_name} received TM023 Charge Beam!"],
                                      "TM023", "b2_lentimas_charge_beam",
                                      ["Charge Beam sometimes raises the user's Sp. Atk. Then its power goes up and up!"]),
                             0: _say("Woman in the house", "I was born here and I'll grow old here. I don't mind: I don't know anywhere else."),
@@ -5135,7 +5123,7 @@ def _rm_inside(z, rooms, ppl, hidden, trainers):
 
 OUTSIDE.update({531: -1, 537: -1, 535: -1, 541: -1, 532: 533, 534: 533, 536: 533, 538: 539, 540: 539, 542: 539})
 _RM_SCIENTIST = {"text": "Scientist in the mountain", "action": "EVENT", "condition": ["habitat:REVERSAL_MOUNTAIN_INSIDE"], "event": {
-    "lines": ["You've seen every Pokemon in Reversal Mountain? Amazing! Take this!", "{player_name} received TM54 False Swipe!"],
+    "lines": ["You've seen every Pokemon in Reversal Mountain? Amazing! Take this!", "{player_name} received TM057 False Swipe!"],
     "gift_item": {"TM057": 1}, "flag": "b2_rm_false_swipe", "done": ["False Swipe always leaves the target with at least 1 HP!"]}}
 _RM_SCIENTIST_ASK = _say("Scientist in the mountain ", "Show me a completed Habitat List for Reversal Mountain and I'll reward you!",
                          condition=["not:habitat:REVERSAL_MOUNTAIN_INSIDE"])
@@ -5424,7 +5412,7 @@ LACUNOSA = town(
                           10: _say("Psychic by the PC", "Every Gym Badge tells the story of a hard-won battle. Treasure them!")},
                     {}, (20, 24)),
      "house_sw": room(408, {0: _say("Ace Trainer", "My Pokemon is much stronger than me... Poke Balls are amazing."),
-                            3: _say("Girl in the house", "The monster from the big hole is really a Pokemon, right?")}, {}, (8, 24)),
+                            3: _say("Girl in the house", "Mom says if I stay out after dark, the monster from the big hole will come for me...")}, {}, (8, 24)),
      "elder": room(409, {0: _say("Old woman", "That old tale? Come in, dearies.")}, {}, (12, 9),
                    scenes=[{"trigger": "enter", "condition": ["b2_lacunosa_juniper", "not:b2_lacunosa_tale"], "flag": "b2_lacunosa_tale",
                             "cast": [], "call": [
@@ -5653,8 +5641,8 @@ OPE_GYM = room(121, {
 }, {}, (21, 16))
 GEO["121"] = _G121
 OPE_GYM["title"] = "Opelucid Gym"
-OPE_GYM["roofs"].pop("_cam", None)   # (top-down, as Celestial Tower's floors: the camera picture has no statues to stand on;
-OPE_GYM["roofs"]["_picture"]["f"] = "b2_ground/121_gym.png"   #  kanto_handoff/unova_map_tools/gym_platforms.py paints the levels)
+# (Jordan 11-24, "3D now": the Gym in live 3D (its own scene, 121.npz, found by the zone's picture), the statues missing till
+#  their models are found (ROADMAP_UNOVA). The painted top-down stand-in, gym_platforms.py -> 121_gym.png, is no longer used.)
 _PADS = {(15, 26): ((15, 21), ["gym_trainer_OPELUCID_CITY_1"]), (15, 22): ((15, 28), []),
          (11, 11): ((15, 6), ["gym_trainer_OPELUCID_CITY_4", "gym_trainer_OPELUCID_CITY_5"]), (11, 15): ((15, 19), []),
          (15, 18): ((11, 13), ["gym_trainer_OPELUCID_CITY_2", "gym_trainer_OPELUCID_CITY_3"]), (14, 7): ((22, 50), [])}

@@ -17817,6 +17817,44 @@
     "youngster.png": "hg_gsboy2.png"
   },
   "trainers_ORANGE": {
+    "fr_cooltrainer_f.png": "trchar011.png",
+    "fr_cooltrainer_m.png": "trchar010.png",
+    "fr_beauty.png": "trchar004.png",
+    "fr_pokemaniac.png": "trchar022.png",
+    "fr_scientist.png": "trchar033.png",
+    "fr_gamer.png": "oi_18.png",
+    "fr_youngster.png": "oi_18.png",
+    "fr_bug_catcher.png": "oi_20.png",
+    "fr_lass.png": "oi_22.png",
+    "fr_fisherman.png": "oi_57.png",
+    "fr_bird_keeper.png": "oi_104.png",
+    "fr_swimmer_m.png": "oi_43.png",
+    "fr_swimmer_f.png": "oi_44.png",
+    "fr_tuber.png": "oi_34.png",
+    "oi_kindler.png": "oi_90.png",
+    "fr_ruin_maniac.png": "oi_109.png",
+    "fr_psychic_m.png": "oi_186.png",
+    "fr_ranger_m.png": "oi_108.png",
+    "fr_ranger_f.png": "oi_107.png",
+    "fr_hiker.png": "oi_56.png",
+    "fr_camper.png": "oi_39.png",
+    "fr_picnicker.png": "oi_40.png",
+    "fr_rocker.png": "oi_190.png",
+    "fr_psychic_f.png": "oi_187.png",
+    "fr_tamer.png": "oi_189.png",
+    "fr_black_belt.png": "oi_54.png",
+    "fr_crush_girl.png": "oi_105.png",
+    "fr_juggler.png": "oi_188.png",
+    "fr_burglar.png": "oi_89.png",
+    "fr_gentleman.png": "oi_61.png",
+    "fr_sailor.png": "oi_62.png",
+    "fr_team_rocket.png": "oi_49.png",
+    "fr_team_rocket_f.png": "oi_49.png",
+    "oi_rocket_trio.png": "oi_74.png",
+    "oi_butch.png": "oi_79.png",
+    "oi_cassidy.png": "oi_78.png",
+    "oi_misty.png": "oi_81.png",
+    "oi_marina.png": "oi_44.png",
     "bug_catcher.png": "oi_20.png",
     "youngster.png": "oi_18.png",
     "lass.png": "oi_22.png",
@@ -17848,6 +17886,22 @@
     "jessie_james.png": "oi_49.png"
   },
   "escorts": {
+    "oi_rocket_trio.png": {
+      "names": [
+        "Jessie",
+        "James"
+      ],
+      "escorts": [
+        {
+          "sheet": "oi_75.png",
+          "name": "Jessie"
+        },
+        {
+          "sheet": "mon:52",
+          "name": "Meowth"
+        }
+      ]
+    },
     "jessie_james.png": {
       "names": [
         "Jessie",

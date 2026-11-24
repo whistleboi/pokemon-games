@@ -6,6 +6,7 @@ a TM, an item, money, or a mix, more for the harder tiers.
 What a feat counts ("count"):
 - worked out from what you own: "dex" (species of the region's own Pokedex), "types" (types among them), "lv50" (Pokemon at
   Lv. 50 or more in the region's party and PC), "math_streak" (the best run of right answers while in the region),
+  (dex and types: Pokemon caught in this region only - caught_in(); Jordan 11-24)
   "places" (the region's places you've set foot in whose key has the feat's "match": Orange's islands, "ISLAND";
   or the feat's own "places" list: Sevii's), "unown" (Unown forms caught, of 28),
   "forms" (the region's own forms you own: FORM_MAP entries of the feat's "forms", less its "not_yet", ones that
@@ -70,6 +71,35 @@ def _owned_ids(story):
     return {int(v.get("id", 0)) for v in dex.values() if isinstance(v, dict)}
 
 
+def caught_in(story, region):
+    """Species caught in this region (Jordan 11-24: a region's Pokedex and Type Feats count only Pokemon caught there).
+    Each Pokemon's caught_region says where (shown as "Met in" on its Summary); one without (a starter, an older save)
+    is tagged with the region whose storage it's in now. Kept in story_flags["region_caught"], so a Pokemon released or
+    traded away still counts where it was caught. Forms count as their species."""
+    log = story.story_flags.setdefault("region_caught", {})
+    fm = story.game.loader.area_data.get("FORM_MAP", {}) if getattr(story.game, "loader", None) else {}
+    linked = getattr(story, "LINKED", "LINKED")
+    active = getattr(story, "active_store", "KANTO")
+    stores = [(active, {"team": story.player_team, "pc": story.pc_pokemon})] + [   # (the storage in use first: an old region's
+        (k, st) for k, st in (getattr(story, "region_stores", {}) or {}).items() if k != active]   #  store can share its lists once linked)
+    seen = set()
+    for key, st in stores:
+        home = story.get_current_region() if key == linked else str(key).upper()
+        for p in list(st.get("team") or []) + list(st.get("pc") or []):
+            if not p or getattr(p, "is_egg", False) or id(p) in seen:
+                continue
+            seen.add(id(p))
+            if not getattr(p, "caught_region", None):
+                p.caught_region = home
+            pid = int(getattr(p, "id", 0) or 0)
+            base = int((fm.get(str(pid)) or {}).get("id", pid) or pid)
+            got = log.setdefault(str(p.caught_region).upper(), [])
+            for i in {pid, base}:
+                if i and i not in got:
+                    got.append(i)
+    return set(log.get(str(region).upper(), []))
+
+
 def _types_of(story, ids):
     sets = story.game.assets.movesets
     return {t for i in ids for t in (sets.get(str(i), {}) or {}).get("types", []) or []}
@@ -114,9 +144,9 @@ def value(story, feat, region):
     """How far along a feat is."""
     kind = feat.get("count")
     if kind == "dex":
-        return len(_dex_ids(story, region) & _owned_ids(story))
+        return len(_dex_ids(story, region) & caught_in(story, region))
     if kind == "types":
-        return len(_types_of(story, _dex_ids(story, region) & _owned_ids(story)))
+        return len(_types_of(story, _dex_ids(story, region) & caught_in(story, region)))
     if kind == "forms":
         return len(_form_ids(story, feat) & _owned_ids(story))
     if kind == "unown":

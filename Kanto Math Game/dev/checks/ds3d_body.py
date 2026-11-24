@@ -1,7 +1,7 @@
 # The DS regions are 3D only (Jordan 11-24: "3d only"): no Options "3D camera: Flat" choice, and every map drawn from a
 # DS game's picture (SoulSilver ss_ground, Platinum pt_ground, Black 2 b2_ground) has that game's 3D scene to draw it
 # (live3d.scene_of: assets/ss_3d, pt_3d, b2_3d). A region's flat pictures are deleted once all its places have one:
-# Johto done; Sinnoh and Unova list what they still miss (their branches export them).
+# Johto, Sinnoh and Unova all done 11-24: their flat pictures are gone.
 #   bash dev/checks/run.sh ds3d
 exec(open("dev/checks/dungeon_lib.py", encoding="utf-8").read())
 import glob as _glob
@@ -33,8 +33,8 @@ _missing = {k: sorted(p for p in _pics if p.startswith(k) and not _os.path.exist
 _count = {k: sum(1 for p in _pics if p.startswith(k)) for k in ("ss", "pt", "b2")}
 check(_count["ss"] > 200 and not _missing["ss"], f"Johto: all {_count['ss']} SoulSilver pictures have a scene {_missing['ss'][:8]}")
 check(not _missing["pt"], f"Sinnoh: all {_count['pt']} Platinum pictures have a scene {_missing['pt'][:8]}")
-for _k, _r in (("b2", "Unova"),):
-    print(f"    {_r}: {_count[_k] - len(_missing[_k])} of {_count[_k]} have a scene; not yet: {len(_missing[_k])} {_missing[_k][:10]}")
+check(not _missing["b2"], f"Unova: all {_count['b2']} Black 2 pictures have a scene {_missing['b2'][:8]}")
+check(not _glob.glob("assets/tiles/b2_ground/*.png"), "Unova's too: no assets/tiles/b2_ground pictures left (11-24)")
 
 print("3) Johto's flat pictures are gone (3D only)")
 check(not _glob.glob("assets/tiles/ss_ground/*.png") and not _glob.glob("assets/tiles/ss_top/*.png"),
@@ -85,6 +85,7 @@ def _ds(roofs, kind):
 if not _l3.available(g):
     print("   (no OpenGL 3.3 here: part 5 skipped)")
 else:
+    story.story_flags.setdefault("unova_version", "BLACK_2")   # (past Unova's version choice: Black 2's maps)
     for _kind, _reg in (("pt", "Sinnoh"), ("b2", "Unova")):
         _bad, _n = [], 0
         for _key, _m in _TMS.items():
@@ -126,8 +127,5 @@ else:
             except Exception as _e:
                 _bad.append(f"{_key} ({type(_e).__name__}: {str(_e)[:60]})")
         print(f"    {_reg}: {_n - len(_bad)} of {_n} maps live")
-        if _kind == "pt":
-            check(not _bad, f"{_reg}: every map live in 3D {_bad[:40]}")
-        else:   # (Unova's own calls, 11-24: Celestial Tower and Drayden's Gym drawn top-down on purpose; its card says when)
-            print(f"    (not a check yet) Unova maps not live: {_bad[:40]}")
+        check(not _bad, f"{_reg}: every map live in 3D {_bad[:40]}")
 print(f"##### {fails} failures")
