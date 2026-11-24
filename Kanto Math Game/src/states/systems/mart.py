@@ -51,8 +51,8 @@ class PokeMartState(GameState):
     WEATHER_ROCKS = {"RAIN": "DAMP_ROCK", "SUN": "HEAT_ROCK", "SAND": "SMOOTH_ROCK", "SNOW": "ICY_ROCK"}
 
     # Never on an ordinary shelf. The Up-Grade is sold at Veilstone (Sinnoh), given by Silph Co.'s scientist after the Sevii story
-    # (Jordan 11-19) and a Goldenrod Game Corner prize; the Crystal Stone
-    # only at Pummelo (Orange Islands), through those areas' "extra_stock".
+    # (Jordan 11-19) and a Goldenrod Game Corner prize. The Crystal Stone is gone from the game (Jordan 11-17:
+    # the Crystal Onix is caught in the Crystal Cave); kept here so one left in an old Bag is never sold back.
     NEVER_SOLD = {"UPGRADE", "UP_GRADE", "CRYSTAL_STONE"}
 
     def _shop_items(self):
@@ -64,8 +64,8 @@ class PokeMartState(GameState):
         return items
 
     def _extra_stock(self):
-        """An area's own extra shelf ("extra_stock": [{"item", "condition"}]): Pummelo Island sells the
-        Crystal Stone once you're the Orange League Champion."""
+        """An area's own extra shelf ("extra_stock": [{"item", "condition"}]): Paldea's Flame and Toxic Orbs;
+        a "condition" flag keeps an item back until it is set."""
         if self.stock is not None:
             return []
         flags = self.game.story_manager.story_flags

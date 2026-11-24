@@ -103,7 +103,7 @@ def _flags(gates):
 def group(area, gates, where=""):
     """Which band a battle belongs to: p1, p2, mtb, eagun, ag (Colosseum's after-game) or post (after the League)."""
     fl = _flags(gates)
-    if any(f in POST_FLAGS for f in fl) or ".gym_league" in where or area in POST_AREAS:   # (the League itself: Elite Four 54-60, Champion 63 - S5)
+    if any(f in POST_FLAGS for f in fl) or ".gym_league" in where or ".orre_rematch" in where or area in POST_AREAS:   # (the League itself: Elite Four 54-60, Champion 63 - S5)
         return "post"
     if area == "DEEP_COLOSSEUM" or any(f in AG_FLAGS for f in fl) or (area == "ORRE_COLOSSEUM" and "xd_colosseum" in where):
         return "ag"

@@ -4,7 +4,8 @@ Every battle is the same turn-based battle with a math question each turn; the s
 trainer battle looks. OVERWORLD: the trainer's lines come in the map's text box, then the battle is drawn
 right on the map (the trainer's Pokemon in front of it, yours beside it, small HP bars over them, a quick
 orb of the move's type's colour for each attack). The battle's buttons and math questions are the classic
-ones. Wild battles are always classic.
+ones. A wild Pokemon met on a walked map is fought there in OVERWORLD style too (dungeon._battle_wild); a wild double
+(dark grass, a partner) or a horde uses the classic screen.
 
 Also on the map (either style): MEGA, when the Pokemon following you can Mega Evolve (as in Legends: Z-A).
 It stays a Mega for a minute of walking (src/pokemon/mega_clock.py; the minute waits during battles) and

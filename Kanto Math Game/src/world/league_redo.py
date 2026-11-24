@@ -1,6 +1,6 @@
 """League Redo (Jordan, 11-01): once the player is Champion of a second region, the first region
 they won calls them back. Its professor says the League wants a rematch; every Gym Leader there
-battles again with a full team of six at level 100, in any order, and each win gives that badge
+battles again with a full team of six at level 80 or more (LEVEL), in any order, and each win gives that badge
 again with a star in the Badge Case. With all eight stars, the Elite Four and the Champion take
 them on the same way.
 

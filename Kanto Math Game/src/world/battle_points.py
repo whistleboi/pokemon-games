@@ -42,6 +42,12 @@ SHOPS = {
         ("BRIGHT_POWDER", 12), ("FOCUS_BAND", 12), ("ZOOM_LENS", 12), ("IRON_BALL", 12)] + POWERS + [
         ("TOXIC_ORB", 16), ("FLAME_ORB", 16), ("WHITE_HERB", 16), ("POWER_HERB", 16),
         ("CHOICE_BAND", 24), ("CHOICE_SPECS", 24), ("CHOICE_SCARF", 24), ("FOCUS_SASH", 24), ("LIFE_ORB", 24), ("RARE_CANDY", 24)]),
+    # Orre's Battle Tower (S6c, 11-24): the fan game's tutor teaches any move for BP; here he sells the TMs (rule: tutors
+    # sell TMs), Gen 3's strong ones; its item counter is Emerald's ("emerald")
+    "orre_tms": ("Move Tutor's TMs", [
+        ("TM:TOXIC", 32), ("TM:PROTECT", 32), ("TM:REST", 32), ("TM:RETURN", 32), ("TM:AERIAL-ACE", 40), ("TM:BRICK-BREAK", 40),
+        ("TM:CALM-MIND", 48), ("TM:BULK-UP", 48), ("TM:DRAGON-CLAW", 48), ("TM:SHADOW-BALL", 64), ("TM:ICE-BEAM", 64),
+        ("TM:THUNDERBOLT", 64), ("TM:FLAMETHROWER", 64), ("TM:PSYCHIC", 64), ("TM:EARTHQUAKE", 80)]),
     "b2w2_tms": ("Exchange Service Corner (TMs)", [
         ("TM:PROTECT", 6), ("TM:SAFEGUARD", 6), ("TM:DOUBLE-TEAM", 6), ("TM:INCINERATE", 6), ("TM:BRICK-BREAK", 12),
         ("TM:FROST-BREATH", 12), ("TM:U-TURN", 12), ("TM:HIDDEN-POWER", 18), ("TM:SMACK-DOWN", 18), ("TM:ROUND", 18),

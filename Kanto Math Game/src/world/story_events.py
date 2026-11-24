@@ -249,7 +249,8 @@ EVENTS = {
                   "{rival_name}: Sorry... Commander Jupiter took Uxie. I couldn't stop her.",
                   "{rival_name}: She said they're taking all three lake Pokémon to their HQ in Veilstone City!",
                   "Team Galactic has the lake trio. Head to Veilstone City."],
-        "requires": ["has_icicle_badge"], "flag": "galactic_lake_acuity_cleared"},
+        "requires": ["has_icicle_badge"], "flag": "galactic_lake_acuity_cleared",
+        "fail": ["Jupiter: Hm? Run along, kid. Grown-ups are working here."]},   # (the map plays Platinum's scene after the Icicle Badge: s_s5_lake_acuity.py)
     # Platinum's multi battle (11-18): you and Barry against Mars and Jupiter, their teams and levels from Platinum
     # (Bulbapedia's walkthrough, part 17); Barry's team by your starter. Afterwards he heals your team, as in the game.
     "spear_pillar_commanders": {

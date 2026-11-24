@@ -108902,10 +108902,10 @@
      ".......N.cmmmmmc......",
      "...................N.c",
      "................N.....",
-     "..ccN..cc.....cc..cc..",
-     ".Ncc...cc...N.cc..cc..",
-     "..cc..NccN....cc..ccN.",
-     "..cc...cc.............",
+     "..mmN..mm.....mm..mm..",
+     ".Nmm...mm...N.mm..mm..",
+     "..mm..NmmN....mm..mmN.",
+     "..mm...mm.............",
      "...........nn........."
     ],
     "exits": {
@@ -286961,7 +286961,79 @@
        6
       ]
      }
-    }
+    },
+    "scenes": [
+     {
+      "trigger": "enter",
+      "condition": [
+       "has_icicle_badge",
+       "not:galactic_lake_acuity_cleared"
+      ],
+      "flag": "galactic_lake_acuity_cleared",
+      "cast": [
+       {
+        "sheet": "pt_rivel.png",
+        "from": [
+         8,
+         39
+        ],
+        "face": "u",
+        "stay": true,
+        "lines": [
+         "{rival_name}: ...! You're not getting away with this, Team Galactic!"
+        ]
+       },
+       {
+        "person": "Confront Jupiter at the Lake",
+        "face": "d",
+        "lines": [
+         "Jupiter: Oh? Are you finished already? Your Pokemon aren't bad, but you're laughably weak.",
+         "Jupiter: You honestly thought you could save the Pokemon of the lake? Dream on, little kid.",
+         "Jupiter: Eww, it's so cold here. Let's go back to the Veilstone HQ."
+        ]
+       },
+       {
+        "person": "Confront Jupiter at the Lake",
+        "lines": [
+         "Jupiter: Oh? Don't I know you? We met in Eterna City.",
+         "Jupiter: Team Galactic is going to do something huge, for everyone's sake. So keep out of our way.",
+         "Jupiter: Don't waste your time coming to our HQ in Veilstone. Now, if you'll excuse me."
+        ],
+        "path": [
+         [
+          8,
+          40
+         ],
+         [
+          7,
+          41
+         ],
+         [
+          6,
+          42
+         ],
+         [
+          5,
+          43
+         ]
+        ],
+        "gone": true
+       },
+       {
+        "as": 0,
+        "lines": [
+         "{rival_name}: ... ...Yeah, that's right. I couldn't do anything against Team Galactic.",
+         "{rival_name}: That Pokemon called Uxie... It was suffering...",
+         "{rival_name}: I'm going to get tougher. It's not about winning or losing... It takes honest effort, and a determined heart."
+        ],
+        "leave": [
+         5,
+         43
+        ]
+       }
+      ]
+     }
+    ]
    },
    {
     "art": [
@@ -323713,7 +323785,7 @@
      "c...ccccccc...c",
      "c......N......c",
      "c.............c",
-     "c..c..........c",
+     "c..c......N...c",
      "cc...c...c...cc",
      "cc...c...c...cc",
      "cccccccvccccccc",
@@ -323748,7 +323820,8 @@
         ]
        }
       }
-     }
+     },
+     "GYM LEADER MISTY"
     ],
     "signs": [],
     "roofs": {
@@ -326573,7 +326646,7 @@
      "c...ccccccc...c",
      "c......N......c",
      "c.............c",
-     "c..^..........c",
+     "c..^......N...c",
      "cc...c...c...cc",
      "cc...c...c...cc",
      "cccccccvccccccc",
@@ -326606,7 +326679,8 @@
         ]
        }
       }
-     }
+     },
+     "GYM LEADER DUKING"
     ],
     "signs": [],
     "roofs": {
@@ -328823,7 +328897,7 @@
      "cccccc...c.....c...cccc",
      "cccc..c.....NN......ccc",
      "ccc.................ccc",
-     "c^..................ccc",
+     "c^.........N........ccc",
      "ccc...................c",
      "cc....c..c.....c..ccc.c",
      "cc.ccc........c.ccccccc",
@@ -328846,7 +328920,8 @@
         "Blaine: Erika talks; I battle. Well - we both battle. Ready when she is!"
        ]
       }
-     }
+     },
+     "GYM LEADERS BLAINE & ERIKA"
     ],
     "signs": [],
     "roofs": {
@@ -331088,7 +331163,7 @@
   "buildings": {
    "A": "realgam",
    "B": "house",
-   "C": "house",
+   "C": "fuji",
    "E": "lab",
    "F": "house",
    "G": "house",
@@ -332952,10 +333027,61 @@
       ]
      }
     ]
+   },
+   "fuji": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccc",
+     "ccccccccccccc",
+     "........c.N.c",
+     "........c..cc",
+     "c...NccN...cc",
+     "c....cc....cc",
+     "............c",
+     "c..........cc",
+     "ccccvcccccccc",
+     "ccccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:18,21"
+    },
+    "buildings": {},
+    "people": [
+     "POKE FLUTE",
+     "Mr. Fuji",
+     "door:fuji"
+    ],
+    "signs": [],
+    "roofs": {
+     "_picture": {
+      "f": "orre_ground/179.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "orre_top/179.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       10
+      ]
+     }
+    ]
    }
   },
   "inside": {
    "31,7": "realgam",
+   "18,21": "fuji",
    "38,21": "lab",
    "26,29": "house_small",
    "37,29": "mart",
@@ -340657,7 +340783,7 @@
      ".........c..c..c............c",
      ".........c..c..c..cc.....cc.c",
      ".........c...............c..c",
-     ".........cc...........N.....c",
+     ".........cc........N..N.....c",
      ".........1..................c",
      ".........c..................c",
      ".........c..................c",
@@ -340687,6 +340813,7 @@
     },
     "parts": true,
     "people": [
+     "GYM LEADER DRAKE (REMATCH)",
      [
       "GYM LEADER DRAKE",
       "GRAND MASTER GREEVIL"
@@ -340919,6 +341046,7 @@
    "Cipher R&D Loket": 5,
    "GYM LEADER DRAKE": 6,
    "GRAND MASTER GREEVIL": 6,
+   "GYM LEADER DRAKE (REMATCH)": 6,
    "FULL RESTORES (TERRA)": 7,
    "ELIXIRS (TERRA)": 7,
    "Team Magma Grunt": 7,
@@ -844808,6 +844936,613 @@
    "KYOGRE": 0,
    "Team Aqua Grunt": 0,
    "Team Aqua Grunt Mira": 0
+  },
+  "theme": "tunnel"
+ },
+ "ORRE_SKY_PILLAR": {
+  "floors": [
+   {
+    "art": [
+     "cccccccccccccccc",
+     "cccccccccccccccc",
+     "ccccccc.....cccc",
+     "ccccccc..N...ccc",
+     "cccccc........cc",
+     "cccc...........c",
+     "ccc............c",
+     "ccc............c",
+     "ccc...........cc",
+     "cccc..........cc",
+     "ccccc........ccc",
+     "ccccc.......cccc",
+     "cccccc..cccccccc",
+     "cccccc..cccc.ccc",
+     "cc..........N.cc",
+     "c...........vccc",
+     "cc...........ccc",
+     "cccccccccccccccc"
+    ],
+    "exits": {
+     "v": "REALGAM_TOWER"
+    },
+    "links": {},
+    "parts": true,
+    "people": [
+     "RAYQUAZA",
+     "door:fuji"
+    ],
+    "trainer_spots": [],
+    "roofs": {
+     "_picture": {
+      "f": "orre_ground/224.png",
+      "at": [
+       6,
+       6
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    }
+   }
+  ],
+  "floor_names": [
+   "Sky Pillar"
+  ],
+  "figure_floors": {
+   "door:fuji": 0,
+   "RAYQUAZA": 0
+  },
+  "theme": "tunnel"
+ },
+ "ORRE_BIRTH_ISLAND": {
+  "floors": [
+   {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "ccc.........ccc",
+     "c.............c",
+     "c.............c",
+     "c...c.....c...c",
+     "c.............c",
+     "c.............c",
+     "c......N......c",
+     "c.............c",
+     "c.............c",
+     "c...c.....c...c",
+     "c.............c",
+     "ccc.........ccc",
+     "ccc.........ccc",
+     "ccccccc.ccccccc",
+     "ccccccc.ccccccc",
+     "cccccccvccccccc",
+     "cccccc.N.cccccc",
+     "cccccc...cccccc",
+     "cccccc...cccccc",
+     "ccccccccccccccc"
+    ],
+    "exits": {
+     "v": "REALGAM_TOWER"
+    },
+    "links": {},
+    "parts": true,
+    "people": [
+     "DEOXYS",
+     "door:fuji"
+    ],
+    "trainer_spots": [],
+    "roofs": {
+     "_picture": {
+      "f": "orre_ground/225.png",
+      "at": [
+       7,
+       4
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "orre_top/225.png",
+      "at": [
+       7,
+       4
+      ],
+      "size": [
+       15,
+       22
+      ]
+     }
+    ]
+   }
+  ],
+  "floor_names": [
+   "Birth Island"
+  ],
+  "figure_floors": {
+   "door:fuji": 0,
+   "DEOXYS": 0
+  },
+  "theme": "tunnel"
+ },
+ "ORRE_NEW_ISLAND": {
+  "floors": [
+   {
+    "art": [
+     "ccccccccccccccccccc",
+     "ccccccccccccccccccc",
+     "ccccccccc1ccccccccc",
+     "ccccccccc.ccccccccc",
+     "ccccccc..N..ccccccc",
+     "ccccccc.....ccccccc",
+     "ccccccc.....ccccccc",
+     "ccccccc.....ccccccc",
+     "c.ccccc.....ccccc.c",
+     "c.ccccc.....ccccc.c",
+     "c.ccccc.....ccccc.c",
+     "c.ccccc.....ccccc.c",
+     "c.ccc.........ccc.c",
+     "c....cc.....cc....c",
+     "cc...............cc",
+     "cc.......v.......cc",
+     "cccc.....Ncc...cccc",
+     "ccccccccccccccccccc"
+    ],
+    "exits": {
+     "v": "REALGAM_TOWER"
+    },
+    "links": {
+     "9,4": [
+      0,
+      9,
+      9
+     ],
+     "9,2": [
+      1,
+      12,
+      18
+     ]
+    },
+    "parts": true,
+    "people": [
+     "MEWTWO",
+     "door:fuji"
+    ],
+    "trainer_spots": [],
+    "roofs": {
+     "_picture": {
+      "f": "orre_ground/190.png",
+      "at": [
+       10,
+       8
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "orre_top/190.png",
+      "at": [
+       10,
+       8
+      ],
+      "size": [
+       19,
+       18
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "ccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccc",
+     "c.......................c",
+     "c.cccccccccccccccccccc..c",
+     "cccc.............ccccc..c",
+     "c...ccc.ccc.ccc..c......c",
+     "c...cNc.cNc.cNc.........c",
+     "c.......................c",
+     "c.c...................c.c",
+     "c.......................c",
+     "c.......................c",
+     "c.......................c",
+     "c.c...................c.c",
+     "c.......................c",
+     "c.......................c",
+     "c.......................c",
+     "c.c.......c...c.......c.c",
+     "c.......................c",
+     "cccccccccccc1cccccccccccc",
+     "ccccccccccccccccccccccccc"
+    ],
+    "exits": {},
+    "links": {
+     "12,18": [
+      0,
+      9,
+      4
+     ]
+    },
+    "parts": true,
+    "people": [
+     "VENUSAUR CLONE",
+     "CHARIZARD CLONE",
+     "BLASTOISE CLONE"
+    ],
+    "trainer_spots": [],
+    "roofs": {
+     "_picture": {
+      "f": "orre_ground/191.png",
+      "at": [
+       2,
+       3
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "orre_top/191.png",
+      "at": [
+       2,
+       3
+      ],
+      "size": [
+       25,
+       20
+      ]
+     }
+    ]
+   }
+  ],
+  "floor_names": [
+   "New Island",
+   "Mewtwo's Castle"
+  ],
+  "figure_floors": {
+   "door:fuji": 0,
+   "MEWTWO": 0,
+   "VENUSAUR CLONE": 1,
+   "CHARIZARD CLONE": 1,
+   "BLASTOISE CLONE": 1
+  },
+  "theme": "tunnel"
+ },
+ "ORRE_LAKE_OF_RAGE": {
+  "floors": [
+   {
+    "art": [
+     "cccccccccccccccccccccccc",
+     "cccccccccccccccccccccccc",
+     "ccccccccccNcccccc...cccc",
+     "ccccccccc...ccccc...c.cc",
+     "ccccccccc...ccccc.....cc",
+     "ccccccccc...c..........c",
+     "cccccccc....c..........c",
+     "cc.....................c",
+     "c.............vN.......c",
+     "c......................c",
+     "cccccccccccccccccccccccc"
+    ],
+    "exits": {
+     "v": "REALGAM_TOWER"
+    },
+    "links": {},
+    "parts": true,
+    "people": [
+     "RED GYARADOS",
+     "door:fuji"
+    ],
+    "trainer_spots": [],
+    "roofs": {
+     "_picture": {
+      "f": "orre_ground/188.png",
+      "at": [
+       6,
+       11
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "orre_top/188.png",
+      "at": [
+       6,
+       11
+      ],
+      "size": [
+       24,
+       11
+      ]
+     }
+    ]
+   }
+  ],
+  "floor_names": [
+   "Lake of Rage"
+  ],
+  "figure_floors": {
+   "door:fuji": 0,
+   "RED GYARADOS": 0
+  },
+  "theme": "tunnel"
+ },
+ "ORRE_BATTLE_FRONTIER": {
+  "floors": [
+   {
+    "art": [
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "ccc..ccccccccccccccccccccccccccc",
+     "ccc..ccccccccccccccccccccccccccc",
+     "ccc..ccccccccccccccccccccccccccc",
+     "ccc..cccccccccccccc1cccccccccccc",
+     "ccc..cccccccccc..c.......c....cc",
+     "ccc..ccccccccc................cc",
+     "ccc..ccccccccc................cc",
+     "ccc..cc1cccc1c.........N......cc",
+     "<.............................cc",
+     "<.............................cc",
+     "<.............................cc",
+     "<..............................c",
+     "ccc......................ccccccc",
+     "cccc.....................ccccccc",
+     "ccccc..N...............ccccccccc",
+     "cccccc.................ccccccccc",
+     "ccccccc.....cccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc"
+    ],
+    "exits": {
+     "<": "REALGAM_TOWER"
+    },
+    "links": {
+     "7,9": [
+      1,
+      7,
+      9
+     ],
+     "12,9": [
+      2,
+      4,
+      8
+     ],
+     "19,5": [
+      3,
+      4,
+      13
+     ]
+    },
+    "parts": true,
+    "people": [
+     "Ace Trainer",
+     "Cooltrainer"
+    ],
+    "trainer_spots": [],
+    "roofs": {
+     "_picture": {
+      "f": "orre_ground/239.png",
+      "at": [
+       0,
+       4
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "orre_top/239.png",
+      "at": [
+       0,
+       4
+      ],
+      "size": [
+       32,
+       20
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccccccc",
+     "cccccccccccccccc",
+     "cc..cccNccc...cc",
+     "....cccmccc....c",
+     "...............c",
+     "...............c",
+     "..cc.......cc..c",
+     "..cc.......cc..c",
+     "...............c",
+     "ccccccc1cccccccc",
+     "cccccccccccccccc"
+    ],
+    "exits": {},
+    "links": {
+     "7,9": [
+      0,
+      7,
+      9
+     ]
+    },
+    "parts": true,
+    "people": [
+     "NURSE (FRONTIER)"
+    ],
+    "trainer_spots": [],
+    "roofs": {
+     "_picture": {
+      "f": "orre_ground/240.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "orre_top/240.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       16,
+       11
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccc",
+     "cccccccccccc",
+     "cccc......cc",
+     "ccNm.......c",
+     "ccmc...cmccc",
+     ".......mNccc",
+     ".cc....ccccc",
+     ".......ccccc",
+     "cccc1ccccccc",
+     "cccccccccccc"
+    ],
+    "exits": {},
+    "links": {
+     "4,8": [
+      0,
+      12,
+      9
+     ]
+    },
+    "parts": true,
+    "people": [
+     "BP EXCHANGE",
+     "BP EXCHANGE (TMS)"
+    ],
+    "trainer_spots": [],
+    "roofs": {
+     "_picture": {
+      "f": "orre_ground/241.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "orre_top/241.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       12,
+       10
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "ccccccccccccccccccccccccccccc",
+     "ccccccccccc.cccccc.cccccc.ccc",
+     "ccccccccc.....cc.....cc.....c",
+     "cccccccccccNccccccNccccccNccc",
+     "ccccccccc.....cc....NccN....c",
+     "ccccccccc.....cc.....cc.....c",
+     "ccccccccc.....cc.....cc.....c",
+     "cccccNccc......N............c",
+     "cccccmcc....................c",
+     "............................c",
+     "............................c",
+     "............................c",
+     "............................c",
+     "cccc1cccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccc"
+    ],
+    "exits": {},
+    "links": {
+     "4,13": [
+      0,
+      19,
+      5
+     ]
+    },
+    "parts": true,
+    "people": [
+     "2-ON-2 CHALLENGE",
+     "ENDLESS CHALLENGE",
+     "LITTLE CUP CHALLENGE",
+     "RECORD BOARD",
+     "LITTLE CUP SELLER",
+     "NURSE (TOWER)",
+     "MOVE TUTOR (TOWER)"
+    ],
+    "trainer_spots": [],
+    "roofs": {
+     "_picture": {
+      "f": "orre_ground/242.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "orre_top/242.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       29,
+       15
+      ]
+     }
+    ]
+   }
+  ],
+  "floor_names": [
+   "Battle Frontier",
+   "Pokemon Center",
+   "BP Exchange",
+   "Battle Tower"
+  ],
+  "figure_floors": {
+   "Ace Trainer": 0,
+   "Cooltrainer": 0,
+   "NURSE (FRONTIER)": 1,
+   "BP EXCHANGE": 2,
+   "BP EXCHANGE (TMS)": 2,
+   "NURSE (TOWER)": 3,
+   "ENDLESS CHALLENGE": 3,
+   "2-ON-2 CHALLENGE": 3,
+   "LITTLE CUP CHALLENGE": 3,
+   "LITTLE CUP SELLER": 3,
+   "MOVE TUTOR (TOWER)": 3,
+   "RECORD BOARD": 3
   },
   "theme": "tunnel"
  }
