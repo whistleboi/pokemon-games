@@ -2598,6 +2598,8 @@ class TrainerBattleState(ShadowBattle, GimmickEffects, AbilityEffects, MoveMecha
             self._cd_said = nxt   # (said back at the desk, the way a Battle CD's result is)
         if getattr(self, "battle_cd", None) is not None or getattr(self, "xd_colo", None) is not None:   # (a Battle CD's result, said back in the lab)
             said = getattr(self, "_cd_said", None)
+            if said and next_state is not None:   # (R6 11-24: Feats reached in this battle are said after the result, here - else the
+                said = list(said) + self.game.story_manager.catch_milestones()   #  town's return pop-up replaced the result's lines)
             if said and next_state is not None:   # (a walked town speaks with npc_say; a menu place with show_dialogue)
                 if hasattr(next_state, "say"):
                     next_state.say(said)
