@@ -2324,6 +2324,8 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
             return
         if str(self.run.floor.decor.get(to, "")).startswith("box:"):   # (a crate you push by walking into it: XD's Key Lair, 11-21)
             self._push_box(to, dx, dy)
+        if str(self.run.floor.decor.get(to, "")).startswith("stone:"):   # (a stone, 3 x 3: it slides till it stops - Chargestone, 11-24)
+            self._push_stone(int(str(self.run.floor.decor[to]).split(":")[1]), dx, dy)
         if self._board_platform(to):   # (a moving platform's track ahead of you: it carries you across: Citadark's volcano, 11-21)
             return
         hopped = False
@@ -3838,6 +3840,7 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
 
     def _place_boxes(self):
         """Put this floor's crates where they stand now (and free the tiles they've left)."""
+        self._place_stones()
         if not self._here_art().get("boxes"):
             return
         f = self.run.floor
@@ -3850,6 +3853,101 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
             if t not in f.decor:
                 f.decor[t] = f"box:{t[0]},{t[1]}"
                 f.tiles[t[1]][t[0]] = core.WALL
+
+    # ---------------------------------------------------------------- stones you push (Black 2's Chargestone Cave; Unova 11-24)
+    # A floor's "stones": [[x, y] or [x, y, model], ...] - each the middle of a 3 x 3 block of rock (its picture the map's
+    # "stone_model", e.g. "b2:195_110_0", drawn at the middle). Walk into a stone's edge and the whole block slides that way
+    # till the next row it would cover isn't open floor (or holds a person, an item, a way out). Where they stand is kept
+    # (story flag stones_<area>_<floor>), as the crates are.
+    def _stone_key(self):
+        return f"stones_{self.area_key}_{self.run.index}"
+
+    def _stone_start(self):
+        return [(int(s[0]), int(s[1])) for s in (self._here_art().get("stones") or [])]
+
+    def _stone_spots(self):
+        start = self._stone_start()
+        now = self.game.story_manager.story_flags.get(self._stone_key())
+        return [tuple(t) for t in now] if isinstance(now, list) and len(now) == len(start) else start
+
+    def _stone_model(self, i):
+        s = (self._here_art().get("stones") or [])[i]
+        return s[2] if len(s) > 2 else self._here_art().get("stone_model")
+
+    def _place_stones(self):
+        """Put this floor's stones where they stand now: their 3 x 3 rock, and open floor where they've left."""
+        if not self._here_art().get("stones"):
+            return
+        f = self.run.floor
+        cover = {}
+        for i, (cx, cy) in enumerate(self._stone_spots()):
+            for a in (-1, 0, 1):
+                for b in (-1, 0, 1):
+                    cover[(cx + a, cy + b)] = f"stone:{i}:{cx},{cy}"
+
+        def inside(t):
+            return 0 <= t[0] < f.w and 0 <= t[1] < f.h
+        for t, what in list(f.decor.items()):
+            if str(what).startswith("stone:") and t not in cover:
+                del f.decor[t]
+                f.tiles[t[1]][t[0]] = core.FLOOR
+        for cx, cy in self._stone_start():   # (where a stone stood in the game's grid, rock: open floor once it has moved)
+            for a in (-1, 0, 1):
+                for b in (-1, 0, 1):
+                    t = (cx + a, cy + b)
+                    if inside(t) and t not in cover and t not in f.decor and f.tile(*t) == core.WALL:
+                        f.tiles[t[1]][t[0]] = core.FLOOR
+        for t, what in cover.items():
+            if inside(t):
+                f.decor[t] = what
+                f.tiles[t[1]][t[0]] = core.WALL
+
+    def _push_stone(self, i, dx, dy):
+        """Walked into a stone: it slides that way till something stops it. False if it can't move at all."""
+        f = self.run.floor
+        story = self.game.story_manager
+        art = self._here_art()
+        links = {tuple(int(v) for v in k.split(",")) for k in (art.get("links") or {})}
+        spots = self._stone_spots()
+        cx, cy = spots[i]
+        mine = {(cx + a, cy + b) for a in (-1, 0, 1) for b in (-1, 0, 1)}
+        moved = 0
+        while moved < 200:
+            ahead = {(x + dx, y + dy) for x, y in mine} - mine
+            if any(not (0 <= x < f.w and 0 <= y < f.h) or f.tile(x, y) != core.FLOOR or (x, y) in f.decor or f.mover_at(x, y)
+                   or (x, y) == tuple(self.run.player) or (x, y) in f.exits or (x, y) in f.items or (x, y) in f.tm_spots
+                   or (x, y) in links for x, y in ahead):
+                break
+            mine = {(x + dx, y + dy) for x, y in mine}
+            cx, cy = cx + dx, cy + dy
+            moved += 1
+        if not moved:
+            self.flash("It won't budge.")
+            return False
+        spots[i] = (cx, cy)
+        story.story_flags[self._stone_key()] = [list(u) for u in spots]
+        self._place_stones()
+        self._floor_surf = None
+        self._over_key = None
+        return True
+
+    def _draw_stone(self, screen, i, r):
+        """A stone's picture at its middle tile r (the game's own model, else a drawn glowing rock)."""
+        key = self._stone_model(i)
+        from src.dungeon import art as _art
+        got = _art._model(key) if key else None
+        if got:
+            mp, ox, oy = got
+            cache = self.__dict__.setdefault("_stone_imgs", {})
+            ck = (key, TILE)
+            if ck not in cache:
+                cache[ck] = mp if TILE == 32 else pygame.transform.scale(mp, (max(1, mp.get_width() * TILE // 32), max(1, mp.get_height() * TILE // 32)))
+            screen.blit(cache[ck], (int(r.x + TILE / 2 - ox * TILE / 32), int(r.y + TILE / 2 - oy * TILE / 32)))
+        else:
+            box = r.inflate(TILE * 2 - 6, TILE * 2 - 6)
+            pygame.draw.ellipse(screen, (70, 90, 150), box)
+            pygame.draw.ellipse(screen, (150, 200, 255), box.inflate(-TILE, -TILE))
+            pygame.draw.ellipse(screen, (30, 40, 80), box, 3)
 
     def _push_box(self, t, dx, dy):
         """Walked into a crate: it slides one tile on, if that tile is open floor with nothing on it."""
@@ -4311,6 +4409,11 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
     def update(self):
         if getattr(self, "_ride", None) and getattr(self, "anim", 0) == 0 and getattr(self, "run", None) is not None:
             self._ride_step()
+        if getattr(self, "run", None) is not None and self._here_art().get("stones") and not self._here_art().get("boxes"):
+            _sk = (self.run.index, tuple(self._stone_spots()))
+            if getattr(self, "_stones_seen", None) != _sk:
+                self._stones_seen = _sk
+                self._place_stones()
         if getattr(self, "run", None) is not None and self._here_art().get("boxes"):
             _bk = (self.run.index, tuple(self._box_spots()))
             if getattr(self, "_boxes_seen", None) != _bk:
@@ -5266,6 +5369,11 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
                     k = r.w / _plant.get_width()
                     p2 = pygame.transform.scale(_plant, (r.w, int(_plant.get_height() * k)))
                     screen.blit(p2, p2.get_rect(midbottom=(r.centerx, r.bottom - 2)))
+                continue
+            if str(what).startswith("stone:"):   # (a stone: its picture once, at its middle tile)
+                _si, _sc = str(what).split(":")[1:3]
+                if _sc == f"{x},{y}" and (x, y) in f.seen:
+                    self._draw_stone(screen, int(_si), at(x, y))
                 continue
             if str(what).startswith(("crate:", "box:")) and (x, y) in f.seen and x0 <= x < x1 and y0 <= y < y1:  # (a crate: the map's own crate picture)
                 r = at(x, y)

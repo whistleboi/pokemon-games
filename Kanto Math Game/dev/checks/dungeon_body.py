@@ -540,4 +540,50 @@ if "MISTRALTON_CAVE" in g.loader.area_data["STORY_PROGRESSION"]:
     _pl = PlayState(g)
     check(not _pl.recipe.get("dark_radius") and not _pl.run.fog, "a Pokemon that knows Flash lights the whole cave")
 
+print("stones you push, 3 x 3, sliding till they stop (Black 2's Chargestone Cave; Unova 11-24)")
+if "CHARGESTONE_CAVE" in g.loader.area_data["STORY_PROGRESSION"]:
+    _objs = [o for o in ((_rf(g, "CHARGESTONE_CAVE").get("art") or {}).get("roofs") or {}).get("_objects", []) if str(o.get("k", "")).endswith("_110_0")]
+    _cs = [[int(o["at"][0]), int(o["at"][1])] for o in _objs]
+    def _with_stones(game, key):
+        r = _rf(game, key)
+        if key == "CHARGESTONE_CAVE" and isinstance(r.get("art"), dict):
+            r = dict(r, art=dict(r["art"], stones=_cs, stone_model=_objs[0]["k"] if _objs else None))
+            if r.get("layout"):
+                r["layout"] = [dict(r["layout"][0], **{})] + list(r["layout"][1:])
+        return r
+    _dg.recipe_for = _with_stones
+    story.story_flags.pop("stones_CHARGESTONE_CAVE_0", None)
+    _ps = kanto("CHARGESTONE_CAVE", came="CHARGESTONE_CAVE_ENTRANCE")
+    frames(_ps)   # (the stones are set down as the floor is shown)
+    _f = _ps.run.floor
+    check(len(_cs) == 10 and all(str(_f.decor.get(tuple(c), "")).startswith("stone:") for c in _cs),
+          f"its 10 stones stand on the map, each 3 x 3 ({len(_cs)})")
+    _done = None
+    for _i, (_cx, _cy) in enumerate(_ps._stone_spots()):
+        for _dx, _dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            _stand = (_cx - 2 * _dx, _cy - 2 * _dy)
+            if _f.walkable(*_stand) and not str(_f.decor.get(_stand, "")).startswith("stone:"):
+                _ps.run.player = _stand
+                _ps.anim = 0
+                _before = _ps._stone_spots()[_i]
+                _ps.step(_dx, _dy)
+                _after = _ps._stone_spots()[_i]
+                if _after != _before:
+                    _done = (_i, _before, _after, (_dx, _dy))
+                    break
+        if _done:
+            break
+    check(_done is not None and (_done[2][0] - _done[1][0]) * _done[3][0] + (_done[2][1] - _done[1][1]) * _done[3][1] >= 1,
+          f"walk into one: it slides that way till it stops ({_done})")
+    if _done:
+        _i, _b, _a, _d = _done
+        check(all(not str(_f.decor.get((_b[0] + a, _b[1] + b), "")).startswith(f"stone:{_i}:") for a in (-1, 0, 1) for b in (-1, 0, 1) if abs(_a[0] - _b[0] - a) > 1 or abs(_a[1] - _b[1] - b) > 1)
+              and _f.tile(*_a) == _dg.core.WALL, "...its old place is open floor, its new one rock")
+        check(story.story_flags.get("stones_CHARGESTONE_CAVE_0", [None] * 99)[_i] == list(_a), "...and where it stopped is kept")
+        _ps2 = kanto("CHARGESTONE_CAVE", came="CHARGESTONE_CAVE_ENTRANCE")
+        frames(_ps2)
+        check(_ps2._stone_spots()[_i] == tuple(_a) and str(_ps2.run.floor.decor.get(tuple(_a), "")).startswith("stone:"), "...still there on the next visit")
+    _dg.recipe_for = _rf
+    story.story_flags.pop("stones_CHARGESTONE_CAVE_0", None)
+
 print(f"##### {fails} failures")
