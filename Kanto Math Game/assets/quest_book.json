@@ -404,6 +404,16 @@
       {"mission": "b2_m35", "title": "A Story for Nightfall", "say": "The professor has gone on ahead. An old woman in town remembers why the walls were built, if anyone will listen.", "when": "b2_lacunosa_juniper", "done": "b2_lacunosa_tale"},
       {"mission": "b2_m35", "title": "Ambush at the West Gate", "say": "Something is waiting by the west gate, and it isn't the creature from the story. {rival_name} has seen it too.", "when": "b2_lacunosa_tale"},
       {"mission": "b2_m36", "title": "West to Opelucid", "say": "The road to Opelucid runs west over Route 12 and across a long wooden bridge. Its Gym Leader has the answers the professor is after."}
+    ]},
+    {"title": "The Legend Badge", "chapters": [
+      {"mission": "b2_m37", "title": "The Dragon Mayor", "say": "Opelucid City's Gym Leader is also its mayor, and he keeps dragons. Somewhere in the Gym, a stone dragon's head goes up and down."}
+    ]},
+    {"title": "The Frozen City", "chapters": [
+      {"mission": "b2_m38", "title": "An Old Man's Story", "say": "Drayden is waiting outside the Gym. He knows something about the dragons the professor asked after, and he would rather say it indoors.", "done": "b2_opelucid_frozen"},
+      {"mission": "b2_m38", "title": "Ice over Opelucid", "say": "In a single moment, the whole city froze. Grunts in grey are walking the icy streets as if they own them.", "when": "b2_opelucid_frozen", "done": "b2_opelucid_zinzolin"},
+      {"mission": "b2_m38", "title": "The Splicers", "say": "Drayden has kept something hidden for two years, and Team Plasma has come to take it.", "when": "b2_opelucid_zinzolin", "done": "b2_splicers_stolen"},
+      {"mission": "b2_m38", "title": "A Shadow at the Gate", "say": "The thieves are gone, but one of them is still watching from the east gate.", "when": "b2_splicers_stolen"},
+      {"mission": "b2_m39", "title": "The Coldest Place", "say": "Cheren is on the line. Something in the far east of Unova is colder than any winter, and the only way there runs under the sea from Undella."}
     ]}
   ],
   "ORRE": [
