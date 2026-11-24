@@ -503,10 +503,28 @@ def _barred_floor(gid, key, came, floor, tiles, before, after, what, passed=None
 
 def g_hideout():
     title("hideout_elevator_lift_key", "Rocket Hideout: the elevator runs only with the Lift Key (elevator panel checks flag 0x2A5, set on picking the key up on B4F)")
-    _barred_floor("hideout_elevator_lift_key", "ROCKET_HIDEOUT", "CELADON_GAME_CORNER", 0, [(24, 25), (23, 25), (25, 25)],
-                  lambda: at("liftkey"), lambda: at("liftkey", also=True), "the elevator door on B1F")
-    _barred_floor("hideout_elevator_lift_key", "ROCKET_HIDEOUT", "CELADON_GAME_CORNER", 1, [(28, 16), (29, 16)],
-                  lambda: at("liftkey"), lambda: at("liftkey", also=True), "the elevator door on B2F")
+    # (11-23, K2: FireRed's walk-in lift - you walk into the car any time; its panel is the gate, as FireRed's checkflag)
+    for which, also in (("before", False), ("after", True)):
+        for floor, door in ((0, (24, 25)), (1, (28, 16))):
+            at("liftkey", also=also)
+            r = dun("ROCKET_HIDEOUT", "CELADON_GAME_CORNER", (0, 0), floor)
+            r.run.player = (door[0], door[1] + 1); r.anim_from = r.partner = r.run.player
+            go("u"); settle()
+            car = where()
+            r = g.current_state
+            r.run.player = (0, 3); r.anim_from = r.partner = r.run.player
+            said.clear()
+            r.facing = (0, -1); r.step(0, -1)
+            for _ in range(200):
+                if type(g.current_state).__name__ == "PickListState" or (hasattr(g.current_state, "_ready") and g.current_state._ready() and _ > 5):
+                    break
+                g.current_state.update(); g.current_state.draw()
+            pk = g.current_state if type(g.current_state).__name__ == "PickListState" else None
+            rides = [c[0] for c in pk.choices] if pk else []
+            if pk:
+                pk.pick(None); settle()
+            ok = (pk is None and car[1] in (4, 5)) if which == "before" else ("B4F" in rides)
+            side("hideout_elevator_lift_key", which, ok, f"the lift on {'B1F' if floor == 0 else 'B2F'}: into its car {car}, its panel: {rides or said[:1]}")
 
 
 def g_hideout_door():
@@ -921,8 +939,107 @@ def g_open():
     side("open:diglett_cave_route2", "firered: open", any(x == "DIGGLETT_CAVE" for x in f.exits.values()), f"Diglett's Cave's Route 2 mouth is on the map (coming out of it needs no HM in FireRed; Cut is only for crossing to Route 2's west side)", "data")
 
 
+# ---- 11-23, Kanto K5: the four gates that weren't stepped (ROADMAP_KANTO "Gates not stepped by kanto_gates")
+def g_rock_tunnel():
+    title("rock_tunnel_flash", "Rock Tunnel: dark till Flash lights it (FireRed: Flash wants the Boulder Badge; not a hard gate - you can feel your way through)")
+    at("lavender", drop=["HM_FLASH"])
+    r = dun("ROCK_TUNNEL", "KANTO_ROUTE_10", (0, 0))
+    dark0 = bool(r.recipe.get("dark")) and bool(r.recipe.get("fog"))
+    side("rock_tunnel_flash", "before", dark0, f"no Flash: the cave is dark, only near you is seen (recipe dark {r.recipe.get('dark')}, fog {r.recipe.get('fog')})", "data")
+    at("lavender", items=["HM_FLASH"])
+    r = dun("ROCK_TUNNEL", "KANTO_ROUTE_10", (0, 0))
+    side("rock_tunnel_flash", "after", r.recipe.get("dark") and not r.recipe.get("fog"), f"with HM05 and the Boulder Badge: Flash lights it (fog {r.recipe.get('fog')})", "data")
+    at("lavender", items=["HM_FLASH"], badges=0)
+    r = dun("ROCK_TUNNEL", "KANTO_ROUTE_10", (0, 0))
+    side("rock_tunnel_flash", "before: no Boulder Badge", bool(r.recipe.get("fog")), f"HM05 but no Boulder Badge: still dark (fog {r.recipe.get('fog')})", "data")
+
+
+def g_route2_trees():
+    title("route2_cut_trees", "Route 2: FireRed's four Cut trees (to the west side, Diglett's Cave's mouth and the house by it) - HM01 and the Cascade Badge")
+    r = dun("KANTO_ROUTE_2", "VIRIDIAN_CITY", (0, 0))
+    f = r.run.floor
+    trees = sorted((x, y) for y in range(f.h) for x in range(f.w) if f.tile(x, y) == _core.CUT_TREE) if hasattr(_core, "CUT_TREE") else []
+    if not trees:
+        trees = [(11, 13), (18, 26), (16, 62), (15, 69)]
+    for tree in trees:
+        for which, also, badges in (("before", False, None), ("before: no Cascade Badge", True, 1), ("after", True, None)):
+            at("cut", also=also, badges=badges)
+            r = dun("KANTO_ROUTE_2", "VIRIDIAN_CITY", (0, 0))
+            f = r.run.floor
+            n, c = beside(lambda t: f.walkable(*t) and t not in f.exits and f.mover_at(*t) is None, tree)
+            if n is None:
+                side("route2_cut_trees", which, False, f"no open tile beside the tree at {tree}")
+                break
+            r.run.player = n; r.anim = 0; r.anim_from = r.partner = r.partner_from = n
+            go(c); settle()
+            w = where()
+            ok = (w[2] == tuple(tree)) if which == "after" else (w[2] == n)
+            side("route2_cut_trees", which, ok, f"the tree at {tree}, stepped into from {n}: now {w}")
+
+
+def g_mansion_switch():
+    title("mansion_switch_gates", "Pokemon Mansion: the statue switch swings the gates (FireRed's secret switches, one flag for every floor)")
+    at("volcano" if "volcano" in _NAMES else "scope", also=True, flags=["visited_POKEMON_MANSION"])
+    story.story_flags.pop("mansion_switch", None)
+    r = dun("POKEMON_MANSION", "CINNABAR_ISLAND", (0, 0))
+    f = r.run.floor
+    shut = next(b for b in r._here_art().get("barred", []) if (b.get("until") or {}).get("flag_condition") == "mansion_switch")
+    tiles = [tuple(t) for t in shut["tiles"]]
+    n = c = gate = None
+    for t in tiles:
+        n, c = beside(lambda u: f.walkable(*u) and u not in tiles and u not in f.exits and f.mover_at(*u) is None, t)
+        if n:
+            gate = t; break
+    statue = next((t for t, k in f.decor.items() if k == "statue"), None)
+    sn, _sc = beside(lambda u: f.walkable(*u) and u not in f.exits and f.mover_at(*u) is None, statue) if statue else (None, None)
+    r.run.player = n; r.anim = 0; r.anim_from = r.partner = r.partner_from = n
+    go(c); settle(); w0 = where()
+    side("mansion_switch_gates", "before", w0[2] == n, f"switch not pressed: the gate at {gate} holds (stepped from {n}: {w0})")
+    r.run.player = sn; r.anim = 0; r.anim_from = r.partner = r.partner_from = sn
+    r.facing = (statue[0] - sn[0], statue[1] - sn[1])
+    r.flip_statue(); tap(g.current_state); settle()
+    pressed = bool(story.story_flags.get("mansion_switch"))
+    r.run.player = n; r.anim = 0; r.anim_from = r.partner = r.partner_from = n
+    go(c); settle(); w1 = where()
+    side("mansion_switch_gates", "after", pressed and w1[2] == gate, f"the statue at {statue} pressed from {sn} (flag {pressed}): through the gate at {gate} ({w1})")
+    other = next(b for b in r._here_art().get("barred", []) if (b.get("until") or {}).get("flag_condition") == "not mansion_switch")
+    o_t = [tuple(t) for t in other["tiles"]]
+    on, oc, og = None, None, None
+    for t in o_t:
+        on, oc = beside(lambda u: f.walkable(*u) and u not in o_t and u not in tiles and u not in f.exits and f.mover_at(*u) is None, t)
+        if on:
+            og = t; break
+    if on:
+        r.run.player = on; r.anim = 0; r.anim_from = r.partner = r.partner_from = on
+        go(oc); settle(); w2 = where()
+        side("mansion_switch_gates", "after: the other gates shut", w2[2] == on, f"pressed: the gate at {og} swung shut (stepped from {on}: {w2})")
+    story.story_flags.pop("mansion_switch", None)
+
+
+def g_safari_fee():
+    title("safari_fee", "Safari Zone: $500 at the desk for the Safari Game, or you're turned back (FireRed map 11.0, triggers 3-5,3)")
+    for money, which in ((300, "before"), (5000, "after")):
+        at("tea", also=True, flags=["visited_FUCHSIA_CITY"])
+        story.story_flags.pop("kanto_safari_paid", None)
+        story.money = money
+        v = town("FUCHSIA_CITY", "KANTO_ROUTE_18", (4, 5), room="safari")
+        go("u"); go("u"); v = settle()
+        w = where()
+        paid = bool(story.story_flags.get("kanto_safari_paid"))
+        if which == "before":
+            side("safari_fee", which, not paid and story.money == 300 and w[2] in ((4, 4), (4, 5)), f"$300: turned back from the desk ({w}, ${story.money}) {said[-1:]}")
+        else:
+            go("uu"); ok = arrive("SAFARI_ZONE", 300)
+            side("safari_fee", which, paid and story.money == 4500 and ok, f"$5000: paid $500 (${story.money}) and on into the Safari Zone ({where()})")
+            story.last_area_key = "SAFARI_ZONE"
+            v = town("FUCHSIA_CITY", "SAFARI_ZONE", (4, 2), room="safari"); settle(); tap(g.current_state); settle()
+            side("safari_fee", "after: back out", not story.story_flags.get("kanto_safari_paid"), f"back from the Safari Zone: the fee is spent, the next game is paid again {said[-1:]}")
+    story.story_flags.pop("kanto_safari_paid", None)
+
+
 for _fn in (g_open, g_pallet, g_viridian, g_pewter, g_bridge, g_burgled, g_ssanne, g_cut, g_gamecorner, g_hideout, g_hideout_door, g_tower, g_tea, g_snorlax, g_cycling,
-            g_silph_door, g_cardkey, g_saffron_gym, g_surf, g_cinnabar, g_viridian_gym, g_league_gate, g_victory_road, g_league, g_cave):
+            g_silph_door, g_cardkey, g_saffron_gym, g_surf, g_cinnabar, g_viridian_gym, g_league_gate, g_victory_road, g_league, g_cave,
+            g_rock_tunnel, g_route2_trees, g_mansion_switch, g_safari_fee):
     guarded(_fn.__name__, _fn)
 
 # =================================================================================================== where key items are handed out (data)
@@ -1193,7 +1310,10 @@ guarded("followups", _run_followups)
 story.current_area_key = "PALLET_TOWN"
 
 # =================================================================================================== the list itself
-_gates_file = _os.path.normpath(_os.path.join(_os.getcwd(), "..", "..", "kanto_handoff", "kanto_rom_tools", "kanto_gates.json"))
+_up = _os.getcwd()   # (the handoff folder beside the repo, or further up from a worktree: 11-23)
+while _up and not _os.path.isdir(_os.path.join(_up, "kanto_handoff")) and _os.path.dirname(_up) != _up:
+    _up = _os.path.dirname(_up)
+_gates_file = _os.path.normpath(_os.path.join(_up, "kanto_handoff", "kanto_rom_tools", "kanto_gates.json"))
 if _os.path.exists(_gates_file):
     _gl = json.load(open(_gates_file, encoding="utf-8"))
     _ids = [x["id"] for x in _gl.get("gates", [])]

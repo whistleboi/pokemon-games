@@ -137,7 +137,7 @@ class BagState(GameState):
                     or (key in pplib.PP_ITEMS and "ups" not in pplib.PP_ITEMS[key]))
         from src.pokemon import tms, zpower
         return (key in itemlib.MEDICINE or key in itemlib.FIELD or key in self.USABLE_KEYS or key in pplib.PP_ITEMS
-                or key in itemlib.EV_BERRIES or itemlib.holdable(key) or key in itemlib.VITAMINS or key == "GRACIDEA"
+                or key in itemlib.EV_BERRIES or itemlib.holdable(key) or key in itemlib.VITAMINS or key in ("GRACIDEA", "REVEAL_GLASS")
                 or key == "EVERSTONE" or key in self.evo_keys or key in POKEBLOCKS or tms.is_tm(key)
                 or bool(zpower.shard_type(key)) or key in zpower.CRYSTAL_TYPE or key in itemlib.HELD)
 
@@ -305,6 +305,10 @@ class BagState(GameState):
         if item_key == "TIME_FLUTE" and self.context != "battle":  # (Orre: Vander's flute purifies one Shadow Pokemon at once, a single use)
             self.game.change_state(PokemonPartyMenuState(
                 self.game, previous_state=self, context="use_item", on_select=self.on_pokemon_select_time_flute))
+            return
+        if item_key == "REVEAL_GLASS":  # (ORAS / B2W2: the Forces of Nature, Incarnate <-> Therian)
+            self.game.change_state(PokemonPartyMenuState(
+                self.game, previous_state=self, context="use_item", on_select=self.on_pokemon_select_reveal_glass))
             return
         if item_key == "GRACIDEA":  # Shaymin's Sky Forme (in the daytime), and back
             self.game.change_state(PokemonPartyMenuState(
@@ -624,6 +628,24 @@ class BagState(GameState):
         party[slot_index] = story._load_pokemon(rec, self.game.loader)
         self._back_to_bag([f"{p.display_name} changed its form!", "It's in its Sky Forme now!" if sky else "It's back in its Land Forme."])
 
+    FORCES_OF_NATURE = (641, 642, 645)   # Tornadus, Thundurus, Landorus
+
+    def on_pokemon_select_reveal_glass(self, slot_index):
+        """The Reveal Glass: Tornadus, Thundurus or Landorus switches between Incarnate and Therian Forme (any time)."""
+        story = self.game.story_manager
+        party = story.player_team
+        if slot_index >= len(party) or party[slot_index] is None:
+            return
+        p = party[slot_index]
+        if int(getattr(p, "id", 0) or 0) not in self.FORCES_OF_NATURE:
+            self._back_to_bag(["It won't have any effect."])
+            return
+        therian = str(getattr(p, "form", "normal")) != "therian"
+        rec = story._pokemon_record(p)
+        rec["form"] = "therian" if therian else "normal"
+        party[slot_index] = story._load_pokemon(rec, self.game.loader)
+        self._back_to_bag([f"{p.display_name} changed its form!", "It's in its Therian Forme now!" if therian else "It's back in its Incarnate Forme."])
+
     def on_pokemon_select_time_flute(self, slot_index):
         """The Time Flute (Colosseum): a Shadow Pokemon is purified on the spot, however closed its heart; the flute is used up."""
         story = self.game.story_manager
@@ -719,6 +741,8 @@ class BagState(GameState):
             return itemlib.use_ev_berry(copy.deepcopy(p), item)[0]
         if item == "GRACIDEA":
             return int(getattr(p, "id", 0) or 0) == 492
+        if item == "REVEAL_GLASS":
+            return int(getattr(p, "id", 0) or 0) in self.FORCES_OF_NATURE
         if item in zpower.CRYSTAL_TYPE or (itemlib.holdable(item) and item not in itemlib.MEDICINE and item not in self.evo_keys):
             return True  # (give it, or take it back)
         if zpower.shard_type(item):

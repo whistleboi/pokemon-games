@@ -106,8 +106,8 @@ for key in BUILT:
     st = open_map(key, came)
     is_town = isinstance(st, _WTS)
     w, h = (st.w, st.h) if is_town else (st.run.floor.w, st.run.floor.h)
-    _here = _parts[st.run.index] if (not is_town and m.get("floors") and st.run.index < len(_parts)) else m
-    _sizes = {(len(f["art"][0]), len(f["art"])) for f in [_here] + ([] if is_town else [r for r in (m.get("rooms") or {}).values() if came in r.get("exits", {}).values()])}   # (you can land in a room: Birth Island's harbour)
+    _here = _parts[st.run.index] if (not is_town and m.get("floors") and st.run.index < len(_parts)) else None if (not is_town and m.get("floors")) else m   # (None: landed in a room of a map of floors - Navel Rock's harbour, 11-23)
+    _sizes = {(len(f["art"][0]), len(f["art"])) for f in ([_here] if _here else []) + ([] if is_town else [r for r in (m.get("rooms") or {}).values() if came in r.get("exits", {}).values()])}   # (you can land in a room: Birth Island's harbour)
     check((w, h) in _sizes and (is_town or isinstance(st, DungeonState)),
           f"{key}: opens on its FireRed map ({w} x {h}, {'town' if is_town else 'route'}), in from {came}")
     check(all("fr_ground/" in json.dumps(f.get("roofs", {})) for f in (_parts[:1] if key == "THREE_ISLE_PORT" else _parts)), f"{key}: drawn from FireRed's own picture (every floor)")   # (Three Isle Path, 11-19: the tunnel is FireRed's dug layout 319; its grass pocket stays the old build's - k_batch36)
@@ -116,7 +116,7 @@ for key in BUILT:
         check("2_134" in json.dumps(_t0.get("roofs", {})) and _t0["art"][2][23] == "N" and (_t0.get("hidden") or {}).get("21,3") == "NUGGET"
               and (_t0.get("links") or {}).get("25,5") == [1, 12, 2],
               "Three Isle Path: FireRed's dug tunnel (layout 319), the prospector at (23,2), the hidden Nugget at (21,3), the east mouth down to the grass pocket")
-    grid = _here["art"]
+    grid = (_here or {}).get("art") or []
     if m.get("floors"):   # (a place of floors: every ladder and passage lands on a real tile of a floor that exists)
         _bad = [(i, k, to) for i, f in enumerate(m["floors"]) for k, to in (f.get("links") or {}).items()
                 if not (0 <= to[0] < len(m["floors"]) and 0 <= to[2] < len(m["floors"][to[0]]["art"]) and 0 <= to[1] < len(m["floors"][to[0]]["art"][0]))]
@@ -1077,12 +1077,26 @@ hq.run.floor.movers = [m for m in hq.run.floor.movers if m.kind not in ("wild", 
 story.inventory.pop("LIFT_KEY", None)
 hq.run.player = (24, 26); hq.anim = 0
 said.clear()
-hq.step(0, -1); play(lambda: g.current_state._ready(), 300)
-check(hq.run.index == 0 and any("key" in s.lower() for s in said + [hq.toast]), f"...the elevator won't move without the Lift Key ({hq.run.index}, {said[:1]}, {hq.toast!r})")
+hq.step(0, -1); play(lambda: g.current_state._ready(), 300)   # (11-23, K2: FireRed's walk-in lift - into the car, any time)
+_car = (hq.run.index, tuple(hq.run.player))
+hq.run.player = (0, 3); hq.anim = 0
+hq.step(0, -1); play(lambda: g.current_state._ready(), 300)   # (its panel, no Lift Key)
+check(_car[0] == 4 and hq.run.index == 4 and type(g.current_state).__name__ != "PickListState" and any("key" in s.lower() for s in said + [hq.toast]),
+      f"...into B1F's lift; its panel won't work without the Lift Key ({_car}, {said[-1:]}, {hq.toast!r})")
 story.inventory["LIFT_KEY"] = 1
-hq.run.player = (24, 26); hq.anim = 0
-hq.step(0, -1); play(lambda: g.current_state._ready(), 300)
-check(hq.run.index == 3 and abs(hq.run.player[0] - 20) <= 1 and hq.run.player[1] == 24, f"...with it: down to B4F's far side, Giovanni's, out in front of the lift ({hq.run.index}, {hq.run.player})")
+hq.run.player = (0, 3); hq.anim = 0
+hq.step(0, -1); play(lambda: type(g.current_state).__name__ == "PickListState", 200)
+_pkH = g.current_state if type(g.current_state).__name__ == "PickListState" else None
+if _pkH:
+    _pkH.done(6)
+play(lambda: type(g.current_state).__name__ == "PlayState" and g.current_state._ready(), 600)
+hq = g.current_state
+_car4 = (hq.run.index, tuple(hq.run.player))
+hq.run.floor.movers = [m for m in hq.run.floor.movers if m.kind == "figure"]
+hq.anim = 0
+hq.step(0, 1); play(lambda: g.current_state._ready(), 300)
+check(_pkH is not None and [c[0] for c in _pkH.choices] == ["B1F", "B2F", "B4F"] and _car4 == (6, (2, 4)) and hq.run.index == 3 and tuple(hq.run.player) == (20, 24),
+      f"...with it, the panel: B1F, B2F, B4F; down to B4F's far side, Giovanni's, out in front of the lift ({_car4}, {hq.run.index}, {hq.run.player})")
 story.inventory.pop("LIFT_KEY", None)
 for _k, _v in _gcs.items():
     story.story_flags.pop(_k, None)
@@ -1232,7 +1246,7 @@ _sf = ("silph_co_cleared", "got_card_key")
 _sfs = {k: story.story_flags.pop(k, None) for k in _sf}
 _ck = story.inventory.pop("CARD_KEY", None)
 si = open_map("SILPH_CITY", "SAFFRON_CITY")
-check(si.run.n_floors == 11 and si.run.index == 0 and (si.run.floor.w, si.run.floor.h) == (36, 22), f"Silph Co.: FireRed's eleven floors, in at 1F ({si.run.n_floors}, {si.run.player})")
+check(si.run.n_floors == 22 and si.run.index == 0 and (si.run.floor.w, si.run.floor.h) == (36, 22), f"Silph Co.: FireRed's eleven floors (and a lift car for each, 11-23), in at 1F ({si.run.n_floors}, {si.run.player})")
 _n, _who = [], {}
 for _i in range(11):
     _floor(si, _i)
@@ -1257,6 +1271,27 @@ story.inventory["CARD_KEY"] = 1; story.story_flags["got_card_key"] = True
 si.run.player = (6, 9); si.anim = 0
 si.step(1, 0); play(lambda: g.current_state._ready(), 300)
 check(tuple(si.run.player) == (7, 9), f"...with the Card Key, through it ({si.run.player})")
+# (11-23, K2: FireRed's walk-in lift - in at 5F's lift door, press the panel, ride to 3F, step out by 3F's lift door)
+si.run.floor.movers = [m for m in si.run.floor.movers if m.kind not in ("wild", "trainer")]
+si.run.player = (22, 4); si.anim = 0; said.clear()
+si.step(0, -1); play(lambda: g.current_state._ready(), 300)
+_in5 = (si.run.index, tuple(si.run.player))
+si.run.floor.movers = [m for m in si.run.floor.movers if m.kind == "figure"]
+si.run.player = (0, 3); si.anim = 0
+si.step(0, -1); play(lambda: type(g.current_state).__name__ == "PickListState", 200)
+_pkL = g.current_state if type(g.current_state).__name__ == "PickListState" else None
+_rows = [r[0] for r in _pkL.choices] if _pkL else []
+if _pkL:
+    _pkL.done(13)
+play(lambda: type(g.current_state).__name__ == "PlayState" and g.current_state._ready(), 600)
+si = g.current_state
+_in3 = (getattr(getattr(si, "run", None), "index", None), tuple(getattr(getattr(si, "run", None), "player", ())))
+si.run.floor.movers = [m for m in si.run.floor.movers if m.kind == "figure"]
+si.anim = 0
+si.step(0, 1); play(lambda: g.current_state._ready(), 300)
+_nearL = sorted((m.kind, m.x, m.y) for m in si.run.floor.movers if abs(m.x - 22) + abs(m.y - 4) <= 2)
+check(_in5 == (15, (2, 4)) and _pkL is not None and _in3 == (13, (2, 4)) and (si.run.index, tuple(si.run.player)) == (2, (22, 4)),
+      f"...FireRed's lift: in at 5F's lift door, the panel asks which floor, the car stops at 3F and you step out by 3F's lift door ({_in5}, {_rows[:3]}, {_in3}, {si.run.index}, {si.run.player}, near {_nearL})")
 _floor(si, 6)
 check(_figure(si, "LAPRAS") == (0, 7), f"...7F: the worker who gives you a Lapras ({_figure(si, 'LAPRAS')})")
 _floor(si, 8)
@@ -1399,7 +1434,7 @@ def _vr_reach(i, frm):
         x, y = q.popleft()
         for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
             n = (x + dx, y + dy)
-            if n not in seen and f.inside(*n) and (f.walkable(*n) or n in f.exits):
+            if n not in seen and f.inside(*n) and (f.walkable(*n) or n in f.exits) and not vr._height_edge((x, y), n):   # (11-23: FireRed's heights - the plateau only by its stairs)
                 seen.add(n)
                 if n not in f.exits:
                     q.append(n)
@@ -1419,6 +1454,20 @@ def _vr_push(i, t):
 
 
 _pic = lambda i: _vart._version_file(vr.recipe["art"]["floors"][i]["roofs"]["_picture"])
+# (11-23, K3: Victory Road 2F's cliff tops are a walk level of their own, FireRed's heights: no stepping straight up the
+#  cliff, but up its stairs at (9,12) and along the top)
+_floor(vr, 1)
+vr.run.floor.movers = [m for m in vr.run.floor.movers if m.kind not in ("wild", "trainer")]
+vr.run.player, vr.anim = (8, 9), 0
+vr.step(0, 1); play(lambda: g.current_state is vr and vr._ready(), 200)
+_up_cliff = tuple(vr.run.player)
+vr.run.player, vr.anim = (9, 13), 0
+vr.step(0, -1); play(lambda: g.current_state is vr and vr._ready(), 200)
+vr.step(0, -1); play(lambda: g.current_state is vr and vr._ready(), 200)
+vr.step(1, 0); play(lambda: g.current_state is vr and vr._ready(), 200)
+_on_top = tuple(vr.run.player)
+check(_up_cliff == (8, 9) and _on_top == (10, 11) and vr.recipe["art"]["floors"][1].get("heights"),
+      f"Victory Road 2F: the cliff top is a level of its own - no stepping up the cliff from below ({_up_cliff}); up the stairs and along the top ({_on_top})")
 _ex, _seen = _vr_reach(0, (11, 20))
 check((3, 2) not in _ex and str(vr.run.floor.decor.get((12, 14))).startswith("barrier") and _pic(0).endswith("1_39_bar.png")
       and any((7 + dx, 18 + dy) in _seen for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))),
@@ -1585,7 +1634,7 @@ ti = open_map("TWO_ISLAND", "CAPE_BRINK")
 _pp = {o.get("text"): p for p, o in ti._people().items()}
 check((ti.w, ti.h) == (48, 20) and _pp.get("Shop") == (28, 4), f"Two Island: FireRed's picture; the data's shop at the market stall ({_pp.get('Shop')})")
 _pp = _room_of(ti, "gamecorner")
-check(_pp.get("Joyful Game Corner") == (4, 2) and (5, 5) in _pp.values(), f"...the Joyful Game Corner: its attendant and Lostelle's dad ({_pp})")
+check((_pp.get("Joyful Games") or _pp.get("Joyful Game Corner")) == (4, 2) and (5, 5) in _pp.values(), f"...the Joyful Game Corner: its attendant and Lostelle's dad ({_pp})")
 _bk = story.story_flags.pop("beat_three_island_bikers", None)
 th = open_map("THREE_ISLAND", "BOND_BRIDGE")
 _pp = {o.get("text"): p for p, o in th._people().items()}
@@ -1629,8 +1678,8 @@ for _i in range(5):
     if _i in _up:
         si.run.player = _up[_i]
     _way.append(si._guide_spot())
-check([w and w[1] for w in _way] == ["To 2F", "To 3F", "To 4F", "To 5F", "Card Key"] and _way[4][0] == (22, 21),
-      f"...the marker: up the stairs floor by floor, then the Card Key itself ({_way})")
+check([w and w[1] for w in _way] == ["To Lift", "To 3F", "To 4F", "To 5F", "Card Key"] and _way[0][0] == (22, 3) and _way[4][0] == (22, 21),   # (11-23: from 1F the lift is the short way up)
+      f"...the marker: into 1F's lift (or up the stairs floor by floor), then the Card Key itself ({_way})")
 story.inventory["CARD_KEY"] = 1; story.story_flags["got_card_key"] = True
 _act = {m["id"]: m for m in story.get_all_journal_entries() if m.get("status") == "ACTIVE"}
 check("s_silph2" in _act and "3F" in _act["s_silph2"]["desc"] and "7F" in _act["s_silph2"]["desc"], "...then the next: 3F's door, the pads to 7F and 11F, Giovanni")
@@ -1640,7 +1689,7 @@ for _i, _at in ((0, (8, 19)), (2, (28, 3)), (6, (5, 5)), (10, (2, 6))):   # (1F'
     _floor(si, _i); si._guide_key = None; si._step_key = None
     si.run.player = _at
     _way[_i] = si._guide_spot()
-check(_way[0] and _way[0][1] == "To 2F" and _way[2] == ((13, 14), "To 7F") and _way[6] == ((5, 8), "To 11F") and _way[10] == ((6, 11), "Giovanni"),
+check(_way[0] == ((22, 3), "To Lift") and _way[2] == ((13, 14), "To 7F") and _way[6] == ((5, 8), "To 11F") and _way[10] == ((6, 11), "Giovanni"),
       f"...the marker: 3F's warp pad to 7F, 7F's to 11F, then Giovanni ({_way})")
 story.story_flags["silph_co_cleared"] = True
 _act = {m["id"]: m for m in story.get_all_journal_entries() if m.get("status") == "ACTIVE"}
@@ -1763,7 +1812,9 @@ check(all(_way) and _way[3][1] == "Lift Key", f"...in the Rocket Hideout the mar
 story.inventory["LIFT_KEY"] = 1
 _floor(hq, 0); hq._guide_key = hq._step_key = None
 _gs = hq._guide_spot()
-check(_gs and _gs[1] == "To B4F", f"......with the Lift Key, to the elevator, down to Giovanni ({_gs})")
+hq.run.enter_floor(4); hq.run.player = (2, 4); frames(2); hq._guide_key = hq._step_key = None
+_gs2 = hq._guide_spot()
+check(_gs and _gs[1] == "To Lift" and _gs2 == ((0, 2), "Lift to B4F"), f"......with the Lift Key, into the lift, its panel: down to Giovanni ({_gs}, {_gs2})")
 story.inventory.pop("LIFT_KEY", None)
 if _lk is not None:
     story.inventory["LIFT_KEY"] = _lk
@@ -1795,7 +1846,7 @@ for _k, _v in _jinv.items():
         story.inventory[_k] = _v
 
 
-# ---- FireRed's move tutors (Jordan 11-16: "Put in all Kanto move tutors. Have them cost cannon amount"): free, once each,
+# ---- FireRed's move tutors (Jordan 11-16: "Put in all Kanto move tutors. Have them cost cannon amount"): free; since 11-22 the first lesson unlocks the move for good (TM-seller rule),
 # on FireRed's own spots; Copycat's Mimic for a Poke Doll (Celadon 4F sells it), Silph 2F's Thunder Wave, Mt. Ember's Explosion
 from src.states.overworld import _run_story_event as _rseT
 from src.pokemon import moves as _mvT
@@ -1858,27 +1909,72 @@ for key, part, name, xy, move, can in (("KANTO_ROUTE_4", None, "Punching fan", (
     burnt = story.story_flags.get(flag)
     yes = _teachT(who["event"], [can]) if who else []
     got = move in _mvT.move_pool(g, story.player_team[0])
-    # (taught once: again, to another Pokemon, for money - Jordan 11-16: "permanent ... at an appropriate relative cost")
-    from src.states.overworld.common import _tutor_price as _tpT
+    # (taught once: the move is unlocked for good - Jordan 11-22, tutors are TM sellers - so again, to another Pokemon, free)
     for _tryT in range(6):   # (a fresh Pokemon may know the move already - Clefairy and Metronome: nobody to teach; try another)
-        story.money = 10000; _saidT.clear(); _prevT = g.current_state
+        story.money = 10000; _saidT.clear()
         _teachT(who["event"], [can]) if who else []
-        _pk = g.current_state if type(g.current_state).__name__ == "PickListState" and g.current_state is not _prevT else None
-        if _pk:
+        if move in _mvT.move_pool(g, story.player_team[0]):
             break
-    if _pk and getattr(_pk, "title", "") == "MOVE TUTOR":   # (11-19: a tutor whose move is a TM asks first - LEARN IT NOW, then the price)
-        _pk.done("teach")
-        _pk = g.current_state if type(g.current_state).__name__ == "PickListState" and g.current_state is not _pk else None
-    if _pk:
-        _pk.done(True)
-    again = move in _mvT.move_pool(g, story.player_team[0]) and story.money == 10000 - _tpT(g, move)
-    check(at == xy and not burnt and got and story.story_flags.get(flag) and _pk is not None and again,
-          f"{key} {part or ''}: {name} at FireRed's spot {xy} teaches {move} free the first time, then again for ${_tpT(g, move)}; a Magikarp can't learn it and that doesn't use it up ({at}, {burnt}, {got}, {_pk is not None}, {story.money}, {_saidT[-1:]})")
+    again = (move in _mvT.move_pool(g, story.player_team[0]) and story.money == 10000
+             and any("for good" in s for s in _saidT))
+    check(at == xy and not burnt and got and story.story_flags.get(flag) and again,
+          f"{key} {part or ''}: {name} at FireRed's spot {xy} teaches {move} free, unlocked for good (again free); a Magikarp can't learn it and that doesn't use it up ({at}, {burnt}, {got}, {story.money}, {_saidT[-1:]})")
+# ---- K4 (11-23): FireRed's small extras
+from src.world import kanto_lab as _kl
+_keep = {k: story.story_flags.get(k) for k in ("received_starter_kanto", "starter_kanto")}
+_rr = dict(story.region_rivals.get("KANTO") or {})
+story.story_flags["received_starter_kanto"] = True; story.story_flags["starter_kanto"] = 1
+story.region_rivals.setdefault("KANTO", {})["starter_id"] = 4
+_left = _kl.left_on_table(story)
+_pt = open_map("PALLET_TOWN", "KANTO_ROUTE_1"); _pt._go("lab", ""); frames(2)
+_balls = sorted(o.get("text") for o in _pt._people().values() if "Ball" in str(o.get("text")))
+check(_left == 7 and _balls == ["Last Squirtle Ball"], f"Oak's Lab: Bulbasaur yours, Charmander the rival's - Squirtle's ball stays on the table, FireRed's way ({_left}, {_balls})")
+for _k, _v in _keep.items():
+    story.story_flags.pop(_k, None)
+    if _v is not None: story.story_flags[_k] = _v
+story.region_rivals["KANTO"] = _rr
+_tk = {k: story.story_flags.pop(k, None) for k in ("got_ss_ticket_bill", "visited_VERMILLION_CITY")}; _ti = story.inventory.pop("SS_TICKET", None)
+_ce = open_map("CERULEAN_CITY", "KANTO_ROUTE_4")
+_before = {o.get("text").strip(): s for s, o in _ce._people().items() if o.get("text", "").strip() in ("Slowbro", "Trainer")}
+story.story_flags["got_ss_ticket_bill"] = True
+_ce = open_map("CERULEAN_CITY", "KANTO_ROUTE_4")
+_after = {o.get("text").strip(): s for s, o in _ce._people().items() if o.get("text", "").strip() in ("Slowbro", "Trainer")}
+check(_before == {"Slowbro": (26, 31), "Trainer": (27, 31)} and _after == {"Slowbro": (32, 29), "Trainer": (33, 29)},
+      f"Cerulean: the Slowbro and its trainer stand in front of the Cut tree till the S.S. Ticket, then by the pond (FireRed) ({_before}, {_after})")
+for _k, _v in _tk.items():
+    story.story_flags.pop(_k, None)
+    if _v is not None: story.story_flags[_k] = _v
+if _ti: story.inventory["SS_TICKET"] = _ti
+_lo = _tm["FOUR_ISLAND"]["rooms"]["lorelei"]
+_dolls = [p for p in _lo["people"] if isinstance(p, dict) and str(p.get("text", "")).startswith("Doll ")]
+_wh = _tm["ROCKET_WAREHOUSE"]
+check(len(_dolls) == 14 and sorted(_lo.get("look_only", [])) == ["10,0", "9,0"] and any("Magnetic Waves" in " ".join(x) for x in _wh.get("signs", [])),
+      f"Sevii: Lorelei's Pokemon dolls (FireRed's 14; the two on the top shelf look-only, out of reach); the Rocket Warehouse's PC report ({len(_dolls)})")
 # Copycat: the Magnet Train Pass first (HGSS), then Mimic for a Poke Doll (FireRed), bought on Celadon 4F for $1000
 _, _clk = _atT("CELADON_CITY", "dept_4", "Clerk")
 story.money = 1500; story.inventory.pop("POKE_DOLL", None)
 _teachT(_clk["event"], [25])
 check(story.inventory.get("POKE_DOLL") == 1 and story.money == 500, f"Celadon Dept. Store 4F: a Poke Doll for $1000 ({story.inventory.get('POKE_DOLL')}, {story.money})")
+# (11-23, K2: FireRed's walk-in lift in the Dept. Store - in at 3F's lift door, the panel, ride to 5F, out on 5F by its lift door)
+_ce = open_map("CELADON_CITY", "KANTO_ROUTE_7")
+_ce._go("dept_3", ""); frames(2)
+_ce.player = (6, 2); _ce.anim = 0
+walk(_ce, "u")
+_ce = g.current_state
+_inC = (getattr(_ce, "room", None), tuple(_ce.player))
+_ce.player = (0, 3); _ce.anim = 0; _ce.facing = (0, -1)
+_ce.step(0, -1); play(lambda: type(g.current_state).__name__ == "PickListState", 200)
+_pkC = g.current_state if type(g.current_state).__name__ == "PickListState" else None
+_rowsC = [c[0] for c in _pkC.choices] if _pkC else []
+if _pkC:
+    _pkC.pick("dept_5")
+play(lambda: isinstance(g.current_state, _WTS) and not g.current_state._busy(), 300)
+_ce = g.current_state
+_ce.player = (2, 4); _ce.anim = 0
+walk(_ce, "d")
+_ce = g.current_state
+check(_inC[0] == "lift" and _rowsC == ["1F", "2F", "3F", "4F", "5F"] and _ce.room == "dept_5" and tuple(_ce.player) == (6, 2),
+      f"...its lift: in at 3F's lift door, the panel lists 1F-5F, the car stops at 5F and you step out by 5F's lift door ({_inC}, {_rowsC}, {_ce.room}, {_ce.player})")
 _cc = next(o for o in _area["SAFFRON_CITY"]["explore_options"] if o.get("text") == "Visit Copycat")
 story.story_flags.pop("frlg_tutor_mimic", None)
 _w = _teachT(_cc["event"], [129], flags=["got_magnet_pass"])
@@ -1886,13 +1982,10 @@ check(story.inventory.get("POKE_DOLL") == 1 and not story.story_flags.get("frlg_
 _w = _teachT(_cc["event"], [35])
 check("MIMIC" in _mvT.move_pool(g, story.player_team[0]) and not story.inventory.get("POKE_DOLL") and story.story_flags.get("frlg_tutor_mimic"),
       f"...and teaches a Clefairy Mimic for it ({_w[:2]})")
-story.money = 5000; _prevT = g.current_state
+story.money = 5000; _saidT.clear()
 _w = _teachT(_cc["event"], [35])
-_pk = g.current_state if type(g.current_state).__name__ == "PickListState" and g.current_state is not _prevT else None
-if _pk:
-    _pk.done(True)
-check(_pk is not None and "MIMIC" in _mvT.move_pool(g, story.player_team[0]) and story.money == 3500,
-      f"...and again later, no doll needed: $1,500 ({_pk is not None}, {story.money})")
+check("MIMIC" in _mvT.move_pool(g, story.player_team[0]) and story.money == 5000 and any("for good" in s for s in _saidT),
+      f"...and again later, no doll needed, free: Mimic is unlocked for good ({story.money}, {_saidT[-1:]})")
 # Silph Co. 2F: Thunder Wave (once she's given the Up-Grade hint, when there's one to give)
 _se = next(o for o in _area["SILPH_CITY"]["route_menu"] if o.get("text") == "TALK TO EMPLOYEE")
 story.story_flags.pop("frlg_tutor_thunder_wave", None)
