@@ -299,7 +299,9 @@ def item_rows(f, room=None):
             who = re.sub(r"^(Talk to |Show )", "", i.get("who") or "")
             if who.split(" ")[0] in ("A", "An", "The", "Return", "Give", "Visit", "Trade", "Bring", "Take", "Use", "Look"):
                 who = ""   # (a menu label, not a person: "Return the Gold Teeth")
-            how = f"From {' '.join(w.capitalize() for w in who.split()) if who.isupper() else who}" if who else "Given"
+            keep = {"HP", "PP", "CD", "TM", "HM", "X", "SS", "S.S."}   # (letters that stay capitals: "HP Up", "Battle CD 33")
+            how = (f"From {' '.join(w if w in keep else w.capitalize() for w in who.split()) if who.isupper() else who}"
+                   if who else "Given")
         where = f"{place}: {how}" if place else how
         when = WHEN.get(f"{f['key']}:{i['item']}:{i['where']}") or human_cond(i.get("needs")) or ""
         qty = f" ×{i['qty']}" if isinstance(i.get("qty"), int) and i["qty"] > 1 else ""
@@ -326,7 +328,7 @@ def team_html(team):
                     + (f' <span class="lv">Lv {m["lv"]}</span>' if m.get("lv") else "") + "</span>" for m in team)
 
 
-CLASS_WORDS = {"GYM_LEADER": "Gym Leader", "ROCKET": "Team Rocket", "TEAM_ROCKET": "Team Rocket", "TEAM_VILLAIN": "Team Magma/Aqua", "ROCKET_GRUNT": "Team Rocket Grunt", "ACE_TRAINER": "Ace Trainer",
+CLASS_WORDS = {"GYM_LEADER": "Gym Leader", "ROCKET": "Team Rocket", "TEAM_ROCKET": "Team Rocket", "TEAM_VILLAIN": "Team Magma/Aqua", "MIROR_BPEON": "Miror B. Peon", "ROCKET_GRUNT": "Team Rocket Grunt", "ACE_TRAINER": "Ace Trainer",
                "COOLTRAINER": "Cooltrainer", "BLACKBELT": "Black Belt", "BUG_CATCHER": "Bug Catcher", "POKEMANIAC": "PokéManiac",
                "SUPER_NERD": "Super Nerd", "BIRD_KEEPER": "Bird Keeper", "CUE_BALL": "Cue Ball", "PSYCHIC_M": "Psychic",
                "PSYCHIC_F": "Psychic", "ELITE_FOUR": "Elite Four", "RIVAL": "Rival", "CHAMPION": "Champion"}
@@ -480,6 +482,7 @@ def journal_html(mid):
     kind = {"MAIN": "Main", "SIDE": "Side"}.get(m.get("type"), (m.get("type") or "").title())
     desc = (m.get("desc") or m.get("description") or "")
     desc = re.sub(r"([Yy]our rival),? \{rival_name\}", lambda q: q.group(1), desc).replace("{rival_name}", "your rival").replace("{player_name}", "you")
+    desc = re.sub(r"(^|[.!?]\s+)your rival", lambda q: q.group(1) + "Your rival", desc)   # (a sentence's first word)
     title = (m.get("text") or m.get("title") or "").replace("{rival_name}", "Your rival")
     return (f'<div class="journal"><span class="tag">Journal · {esc(kind)}</span><br><b>{esc(title)}</b>: '
             f'<q>{esc(desc)}</q></div>')
