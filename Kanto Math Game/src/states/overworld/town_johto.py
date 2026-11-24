@@ -373,12 +373,13 @@ class JohtoTown:
 
         inv = self.game.story_manager.inventory
         flags = self.game.story_manager.story_flags
+        flags["jasmine_explained"] = True   # (she has told you about Amphy, and lends you the lift key: 11-23)
         if flags.get("ampharos_cured"):
             msg = ["Jasmine: I will return to the Gym now.", "Thank you for the Secret Potion!"]
         elif inv.get("SECRET_POTION", 0) > 0:
             msg = self.game.assets.get_text("jasmine_lighthouse_medicine")
         else:
-            msg = self.game.assets.get_text("jasmine_lighthouse_intro")
+            msg = self.game.assets.get_text("jasmine_lighthouse_intro")   # (the Cianwood pharmacist makes the potion only once you've seen Amphy: HGSS + Crystal, 11-23)
 
         self.npc_dialogue = ClassicDialogueBox(Utils.get_full_dialogue_rect(self.game), msg, self.game.assets.fonts["med"], callback=self.end_npc_interaction)
 
@@ -404,6 +405,9 @@ class JohtoTown:
         story = self.game.story_manager
         if story.story_flags.get("ampharos_cured") or story.inventory.get("SECRET_POTION", 0) > 0:   # (one potion, for Amphy: not one each visit; 11-22)
             return self.show_message(["Pharmacist: That Secret Potion works wonders. I hope the Lighthouse's Ampharos is well!"])
+        if not story.story_flags.get("jasmine_explained"):   # (HGSS + Crystal: he needs to know who it's for; Jordan 11-23, gate check)
+            return self.show_message(["Pharmacist: Medicine? I make it to order, for the one who's sick. Who is it for, and what's wrong?",
+                                      "Pharmacist: Come back when you know. Guessing with strong medicine does more harm than good."])
         self.show_message(self.game.assets.get_text("pharmacist_reward"))
         story.inventory["SECRET_POTION"] = 1
 
