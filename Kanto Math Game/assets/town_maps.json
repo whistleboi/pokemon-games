@@ -223959,34 +223959,34 @@
    "gym": {
     "theme": "room",
     "art": [
-     "................................",
-     "................................",
-     "................................",
-     "........N.....N.N.......N.......",
-     "................................",
-     "...........................N....",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "......................N.........",
-     ".........N......................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "...............N...........N....",
-     "................................",
-     "................v...............",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccc...c.................ccccc",
+     "cccccc...c.................ccccc",
+     "cccccc...c.................ccccc",
+     "cccccc...ccccccccccccccccccccccc",
+     "cccccc...........c.........ccccc",
+     "cccccc...........c.........ccccc",
+     "cccccc...........c.........ccccc",
+     "cccccc...........c.........ccccc",
+     "cccccc................N....ccccc",
+     "cccccc...N.................ccccc",
+     "cccccc...ccccccccccc.......ccccc",
+     "cccccc.............c.......ccccc",
+     "cccccc.............ccccc...ccccc",
+     "cccccc.............c...c...c...c",
+     "cccccc.............c...c...c...c",
+     "cccccc.............c...c...c...c",
+     "cccccc.............c...ccccc...c",
+     "cccccc........cN..cc.......N...c",
+     "cccccc.............c...........c",
+     "cccccc..........v..c...........c",
      "cccccccccccccccccccccccccccccccc"
     ],
     "exits": {
@@ -224023,7 +224023,7 @@
      ],
      "_models": true,
      "_picture": {
-      "f": "pt_ground/C02GYM0101.png",
+      "f": "pt_ground/C02GYM0101_f0.png",
       "at": [
        0,
        0
@@ -224031,147 +224031,6 @@
      }
     },
     "people": [
-     {
-      "text": "Worker Gerardo",
-      "action": "EVENT",
-      "event": {
-       "lines": [
-        "Worker Gerardo: Two Magnemite, double the trouble!"
-       ],
-       "battle": {
-        "name": "Worker Gerardo",
-        "class": "WORKER",
-        "sprite": "pt_worker.png",
-        "team": [
-         81,
-         81
-        ],
-        "levels": [
-         35,
-         35
-        ],
-        "rewards": {
-         "balls": 2
-        },
-        "dialogue": {
-         "player_won": [
-          "Worker Gerardo: Double the trouble for me, then."
-         ]
-        }
-       },
-       "flag": "gym_trainer_CANALAVE_CITY_6",
-       "done": [
-        "Worker Gerardo: Double the trouble for me, then."
-       ]
-      }
-     },
-     {
-      "text": "Worker Jackson",
-      "action": "EVENT",
-      "event": {
-       "lines": [
-        "Worker Jackson: Byron's Gym runs on hard work!"
-       ],
-       "battle": {
-        "name": "Worker Jackson",
-        "class": "WORKER",
-        "sprite": "pt_worker.png",
-        "team": [
-         81,
-         81,
-         81
-        ],
-        "levels": [
-         34,
-         34,
-         34
-        ],
-        "rewards": {
-         "balls": 2
-        },
-        "dialogue": {
-         "player_won": [
-          "Worker Jackson: Back to work for me..."
-         ]
-        }
-       },
-       "flag": "gym_trainer_CANALAVE_CITY_2",
-       "done": [
-        "Worker Jackson: Back to work for me..."
-       ]
-      }
-     },
-     "Gym",
-     {
-      "text": "Black Belt David",
-      "action": "EVENT",
-      "event": {
-       "lines": [
-        "Black Belt David: My Steelix will crush you!"
-       ],
-       "battle": {
-        "name": "Black Belt David",
-        "class": "BLACK_BELT",
-        "sprite": "pt_black_belt.png",
-        "team": [
-         208,
-         208
-        ],
-        "levels": [
-         35,
-         37
-        ],
-        "rewards": {
-         "balls": 2
-        },
-        "dialogue": {
-         "player_won": [
-          "Black Belt David: Steel is strong, but you're stronger."
-         ]
-        }
-       },
-       "flag": "gym_trainer_CANALAVE_CITY_1",
-       "done": [
-        "Black Belt David: Steel is strong, but you're stronger."
-       ]
-      }
-     },
-     {
-      "text": "Ace Trainer Breanna",
-      "action": "EVENT",
-      "event": {
-       "lines": [
-        "Ace Trainer Breanna: Bronzor can take any hit. Try us!"
-       ],
-       "battle": {
-        "name": "Ace Trainer Breanna",
-        "class": "ACE_TRAINER",
-        "sprite": "pt_ace_trainer_f.png",
-        "team": [
-         436,
-         436,
-         436
-        ],
-        "levels": [
-         35,
-         36,
-         38
-        ],
-        "rewards": {
-         "balls": 2
-        },
-        "dialogue": {
-         "player_won": [
-          "Ace Trainer Breanna: They took every hit... except yours."
-         ]
-        }
-       },
-       "flag": "gym_trainer_CANALAVE_CITY_7",
-       "done": [
-        "Ace Trainer Breanna: They took every hit... except yours."
-       ]
-      }
-     },
      {
       "text": "Worker Gary",
       "action": "EVENT",
@@ -224277,6 +224136,218 @@
        ]
       }
      }
+    ],
+    "title": "Canalave Gym 1F",
+    "scenes": [
+     {
+      "trigger": {
+       "zone": [
+        16,
+        9,
+        16,
+        9
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:0:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 0
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        11,
+        13,
+        11,
+        13
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:1:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 1
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        15,
+        13,
+        15,
+        13
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:2:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 2
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        19,
+        13,
+        19,
+        13
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:3:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 3
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        24,
+        13,
+        24,
+        13
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:4:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 4
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        21,
+        22,
+        21,
+        22
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:5:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 5
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        25,
+        9,
+        25,
+        9
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:6:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 6
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        25,
+        22,
+        25,
+        22
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:7:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 7
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        29,
+        22,
+        29,
+        22
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:8:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 8
+      }
+     }
+    ],
+    "landings": [
+     [
+      11,
+      13
+     ],
+     [
+      15,
+      13
+     ],
+     [
+      16,
+      9
+     ],
+     [
+      19,
+      13
+     ],
+     [
+      21,
+      22
+     ],
+     [
+      24,
+      13
+     ],
+     [
+      25,
+      9
+     ],
+     [
+      25,
+      22
+     ],
+     [
+      29,
+      22
+     ]
     ]
    },
    "center": {
@@ -227453,6 +227524,970 @@
       ]
      }
     }
+   },
+   "gym_2f": {
+    "theme": "room",
+    "buildings": {},
+    "art": [
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccc...c....N.......c........c",
+     "cccccc...c............c........c",
+     "cccccc...c............c....N...c",
+     "cccccc...c...ccccccc..c.cccc...c",
+     "cccccc...c...c.....c..c....c...c",
+     "cccccccccc...c.ccc.c..c....c...c",
+     "cccccccccc...c.ccc.c..c....c...c",
+     "cccccccccc...c.ccc.c..c....c...c",
+     "cccccc...c...ccccccccccccccccccc",
+     "cccccccccc...c...c....c........c",
+     "cccccccccc...c...c....c........c",
+     "cccccccccc...c...c....c........c",
+     "cccccccccccccccccccc..c........c",
+     "cccccccccccccccccccc..ccccccc..c",
+     "cccccccccccccccccccc.......c...c",
+     "cccccccccccccccccccc.......c...c",
+     "cccccccccccccccccccc.......c...c",
+     "c.........cccccccccccccc...c...c",
+     "c.........cccccccccc...c...c...c",
+     "c..ccccc....cccccc.....c...c...c",
+     "c......c..cccccccccc...c...c...c",
+     "c......c..cccccccccccccccccccccc",
+     "c......c..cccccccccccccccccccccc",
+     "c......c..cccccccccccccccccccccc",
+     "c......c..cccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc"
+    ],
+    "people": [
+     {
+      "text": "Worker Jackson",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Worker Jackson: Byron's Gym runs on hard work!"
+       ],
+       "battle": {
+        "name": "Worker Jackson",
+        "class": "WORKER",
+        "sprite": "pt_worker.png",
+        "team": [
+         81,
+         81,
+         81
+        ],
+        "levels": [
+         34,
+         34,
+         34
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Worker Jackson: Back to work for me..."
+         ]
+        }
+       },
+       "flag": "gym_trainer_CANALAVE_CITY_2",
+       "done": [
+        "Worker Jackson: Back to work for me..."
+       ]
+      }
+     },
+     {
+      "text": "Ace Trainer Breanna",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Ace Trainer Breanna: Bronzor can take any hit. Try us!"
+       ],
+       "battle": {
+        "name": "Ace Trainer Breanna",
+        "class": "ACE_TRAINER",
+        "sprite": "pt_ace_trainer_f.png",
+        "team": [
+         436,
+         436,
+         436
+        ],
+        "levels": [
+         35,
+         36,
+         38
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Ace Trainer Breanna: They took every hit... except yours."
+         ]
+        }
+       },
+       "flag": "gym_trainer_CANALAVE_CITY_7",
+       "done": [
+        "Ace Trainer Breanna: They took every hit... except yours."
+       ]
+      }
+     }
+    ],
+    "exits": {},
+    "title": "Canalave Gym 2F",
+    "roofs": {
+     "_picture": {
+      "f": "pt_ground/C02GYM0101_f1.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "scenes": [
+     {
+      "trigger": {
+       "zone": [
+        11,
+        13,
+        11,
+        13
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:1:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 1
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        15,
+        13,
+        15,
+        13
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:2:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 2
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        19,
+        13,
+        19,
+        13
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:3:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 3
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        24,
+        13,
+        24,
+        13
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:4:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 4
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        21,
+        22,
+        21,
+        22
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:5:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 5
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        25,
+        9,
+        25,
+        9
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:6:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 6
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        25,
+        22,
+        25,
+        22
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:7:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 7
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        29,
+        22,
+        29,
+        22
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:8:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 8
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        5,
+        26,
+        5,
+        26
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:9:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 9
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        11,
+        22,
+        11,
+        22
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:10:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 10
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        18,
+        22,
+        18,
+        22
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:10:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 10
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        29,
+        9,
+        29,
+        9
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:11:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 11
+      }
+     }
+    ],
+    "landings": [
+     [
+      5,
+      26
+     ],
+     [
+      11,
+      13
+     ],
+     [
+      11,
+      22
+     ],
+     [
+      15,
+      13
+     ],
+     [
+      18,
+      22
+     ],
+     [
+      19,
+      13
+     ],
+     [
+      21,
+      22
+     ],
+     [
+      24,
+      13
+     ],
+     [
+      25,
+      9
+     ],
+     [
+      25,
+      22
+     ],
+     [
+      29,
+      9
+     ],
+     [
+      29,
+      22
+     ]
+    ]
+   },
+   "gym_3f": {
+    "theme": "room",
+    "buildings": {},
+    "art": [
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "c..c....Nccccccc..ccccccN......c",
+     "c..c.......ccc......cc.........c",
+     "c..c.....ccccccc..cccccc.......c",
+     "c..c.....ccccc......cccc.......c",
+     "c..c..cccccccc......cccccc.ccccc",
+     "c..c..cccccccc.ccc..cccc.c.c...c",
+     "c..c..cccccccc.ccc..cccc.c.c...c",
+     "c..c..cccccccc.ccc..cccc.c.c...c",
+     "cccc..cccccccccccccccccc.c.c...c",
+     "c.......cccccccccccccc...c.c...c",
+     "c.....cccccccccccccccccc.c.c...c",
+     "c.....cccccccccccccccccc.c.c...c",
+     "c.....cccccccccccccccccccc.cc.cc",
+     "c.....cccccccccccccccccccc.cc.cc",
+     "c.....cccccccccccccccccccccccccc",
+     "cc.ccccccccccccccccccccccccccccc",
+     "cc.ccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cc.ccccccccccccccccccccccc.cc.cc",
+     "cc.ccccccccccccccccccccccc.cc.cc",
+     "c.......ccccccccccccccc.c......c",
+     "c.......ccccccccccccccc.c......c",
+     "c.........ccccccccccc...c......c",
+     "c.......ccccccccccccccc.c......c",
+     "cccccccccccccccccccccccccccccccc"
+    ],
+    "people": [
+     {
+      "text": "Worker Gerardo",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Worker Gerardo: Two Magnemite, double the trouble!"
+       ],
+       "battle": {
+        "name": "Worker Gerardo",
+        "class": "WORKER",
+        "sprite": "pt_worker.png",
+        "team": [
+         81,
+         81
+        ],
+        "levels": [
+         35,
+         35
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Worker Gerardo: Double the trouble for me, then."
+         ]
+        }
+       },
+       "flag": "gym_trainer_CANALAVE_CITY_6",
+       "done": [
+        "Worker Gerardo: Double the trouble for me, then."
+       ]
+      }
+     },
+     {
+      "text": "Black Belt David",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Black Belt David: My Steelix will crush you!"
+       ],
+       "battle": {
+        "name": "Black Belt David",
+        "class": "BLACK_BELT",
+        "sprite": "pt_black_belt.png",
+        "team": [
+         208,
+         208
+        ],
+        "levels": [
+         35,
+         37
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Black Belt David: Steel is strong, but you're stronger."
+         ]
+        }
+       },
+       "flag": "gym_trainer_CANALAVE_CITY_1",
+       "done": [
+        "Black Belt David: Steel is strong, but you're stronger."
+       ]
+      }
+     }
+    ],
+    "exits": {},
+    "title": "Canalave Gym 3F",
+    "roofs": {
+     "_picture": {
+      "f": "pt_ground/C02GYM0101_f2.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "scenes": [
+     {
+      "trigger": {
+       "zone": [
+        5,
+        26,
+        5,
+        26
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:9:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 9
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        29,
+        9,
+        29,
+        9
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:11:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 11
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        10,
+        4,
+        10,
+        4
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:12:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 12
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        14,
+        4,
+        14,
+        4
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:12:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 12
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        19,
+        4,
+        19,
+        4
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:13:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 13
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        22,
+        4,
+        22,
+        4
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:13:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 13
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        7,
+        12,
+        7,
+        12
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:14:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 14
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        22,
+        12,
+        22,
+        12
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:14:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 14
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        9,
+        26,
+        9,
+        26
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:15:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 15
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        21,
+        26,
+        21,
+        26
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:15:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 15
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        2,
+        19,
+        2,
+        19
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:16:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 16
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        2,
+        22,
+        2,
+        22
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:16:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 16
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        26,
+        16,
+        26,
+        16
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:17:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 17
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        26,
+        22,
+        26,
+        22
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:17:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 17
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        29,
+        16,
+        29,
+        16
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:18:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 18
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        29,
+        22,
+        29,
+        22
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:18:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 18
+      }
+     }
+    ],
+    "landings": [
+     [
+      2,
+      19
+     ],
+     [
+      2,
+      22
+     ],
+     [
+      5,
+      26
+     ],
+     [
+      7,
+      12
+     ],
+     [
+      9,
+      26
+     ],
+     [
+      10,
+      4
+     ],
+     [
+      14,
+      4
+     ],
+     [
+      19,
+      4
+     ],
+     [
+      21,
+      26
+     ],
+     [
+      22,
+      4
+     ],
+     [
+      22,
+      12
+     ],
+     [
+      26,
+      16
+     ],
+     [
+      26,
+      22
+     ],
+     [
+      29,
+      9
+     ],
+     [
+      29,
+      16
+     ],
+     [
+      29,
+      22
+     ]
+    ]
+   },
+   "gym_4f": {
+    "theme": "room",
+    "buildings": {},
+    "art": [
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccNccccccccccc...c",
+     "ccccccccccccccc.....cccccc.....c",
+     "ccccccccccccccc...cccccccccc...c",
+     "cccccccccccccc.....cccccccccc.cc",
+     "cccccccccccccc.....cccccccccc.cc",
+     "c........ccccc.....ccccccccccccc",
+     "c........ccccc.....ccccccccccccc",
+     "c........ccccc.....ccccccccccccc",
+     "cc.ccccccccccccccccccccccccccccc",
+     "cc.ccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cc.cccccccccccccccccccccccccc.cc",
+     "cc.cccccccccccccccccccccccccc.cc",
+     "c...cccccccccccccccccccccccc...c",
+     "c.....cccccccccccccccccccc.....c",
+     "c...cccccccccccccccccccccccc...c",
+     "cccccccccccccccccccccccccccccccc"
+    ],
+    "people": [
+     "Gym"
+    ],
+    "exits": {},
+    "title": "Canalave Gym 4F",
+    "roofs": {
+     "_picture": {
+      "f": "pt_ground/C02GYM0101_f3.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "scenes": [
+     {
+      "trigger": {
+       "zone": [
+        16,
+        9,
+        16,
+        9
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:0:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 0
+      }
+     }
+    ],
+    "landings": [
+     [
+      16,
+      9
+     ]
+    ]
    }
   },
   "inside": {
