@@ -36,6 +36,8 @@ MEDICINE = {
     "LAVA_COOKIE": {"cure": "all", "price": 200, "text": "Mt. Chimney's own treat, baked with volcanic ash. Cures any status condition."},
     "CASTELIACONE": {"cure": "all", "price": 100, "text": "Castelia City's famous soft-serve ice cream. Cures any status condition."},   # (B2W2, 11-20)
     "OLD_GATEAU": {"cure": "all", "price": 200, "text": "The Old Chateau's hidden specialty. Cures any status condition."},   # (the Royal Unova's Thursday prize, 11-21)
+    "LUMIOSE_GALETTE": {"cure": "all", "price": 200, "text": "A popular pastry sold in Lumiose City. Cures any status condition."},   # (ORAS's Trick House, Hoenn 11-24)
+    "SHALOUR_SABLE": {"cure": "all", "price": 200, "text": "Shalour City's famous shortbread. Cures any status condition."},   # (ORAS's Trick House, Hoenn 11-24)
     "RAGECANDYBAR": {"cure": "all", "price": 300, "text": "Mahogany Town's famous candy. Cures any status condition."},   # (its Saturday prize)
     "REVIVE": {"revive": 0.5, "price": 2000, "text": "Revives a fainted Pokemon with half its HP."},
     "MAX_REVIVE": {"revive": 1.0, "price": 4000, "text": "Revives a fainted Pokemon with all its HP."},
