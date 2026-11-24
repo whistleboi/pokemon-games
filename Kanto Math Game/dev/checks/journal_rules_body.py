@@ -41,7 +41,6 @@ LEFT_OUT = {
 KNOWN = set()   # (Unova's b2_m23 / b2_m29 "Hugh" fixed on region/unova 4392cd97, 11-24)
 KNOWN_SIDE = {(r, i) for r, ids in {   # (SIDE lines sent to their regions 11-24; take each out when its region's fix is on main)
     "HOENN": ["hoenn_s3", "hoenn_s4", "hoenn_s5", "hoenn_s7", "hoenn_s11", "hoenn_s14", "hoenn_s22", "hoenn_s25", "hoenn_s28"],
-    "UNOVA": ["unova_s9", "unova_s12", "unova_s15", "unova_s16", "unova_s17", "unova_s19", "unova_s21"],
     "ORRE": ["orre_s1", "orre_s2", "orre_s2a"]}.items() for i in ids}
 NOT_YET = set()   # (walked regions with no book yet; Orre's came 11-24, J5)
 OWN_FORMS = {"ORANGE", "SINNOH", "ALOLA", "GALAR", "PALDEA", "HISUI"}
