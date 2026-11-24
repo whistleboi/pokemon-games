@@ -88,7 +88,7 @@ check(not enter_events("ACCUMULA_TOWN") and not any(e["trainer"].get("name") == 
 nv = next(e["trainer"] for e in enter_events("NUVEMA_TOWN") if e["trainer"].get("name") == "{rival_name}")
 check(nv["by_character"]["bianca"]["team_choice"]["495"] == [501], "Bianca's starter is the one weak to yours")
 check(any(e["trainer"]["name"] == "N" and e["trainer"]["team"] == [519, 535, 532] for e in enter_events("NACRENE_CITY")), "N at Nacrene")
-for area, text in (("HUMILAU_CITY", "Battle Leader Marlon"), ("UNOVA_POKEMON_LEAGUE", "Challenge Iris")):
+for area, text in (("UNOVA_POKEMON_LEAGUE", "Challenge Iris"),):   # (Marlon's post-game battle dropped on purpose, as Cheren's and Roxie's, Unova 9a)
     check_offers(area, text, f"post-game: {text}")
 check(any(x["name"] == "Boss Trainer Janna" for x in prog["BLACK_TOWER_UPPER"]["trainer_pool"])
       and any(x["name"] == "Boss Trainer Jariel" for x in prog["WHITE_TREEHOLLOW"]["trainer_pool"]), "Janna and Jariel")
@@ -116,7 +116,7 @@ for area, text in (("DREAMYARD", "SEEK LATIOS"), ("REVERSAL_MOUNTAIN", "SEEK HEA
                    ("TWIST_MOUNTAIN", "SEEK REGIGIGAS"), ("MARVELOUS_BRIDGE", "SEEK CRESSELIA"), ("CAVE_OF_BEING", "SEEK UXIE"),
                    ("UNDERGROUND_RUINS", "AWAKEN REGICE")):
     check_offers(area, text, f"{area}: {text}")
-for a, b in (("GIANT_CHASM", "UNOVA_ROUTE_13"), ("UNOVA_ROUTE_21", "UNDELLA_BAY"), ("CYLLAGE_CITY", "KALOS_ROUTE_8"),
+for a, b in (("GIANT_CHASM", "UNOVA_ROUTE_13"), ("CYLLAGE_CITY", "KALOS_ROUTE_8"),   # (Route 21 -> Undella Bay dropped: Black 2 joins them only through the walked Seaside Cave, checked by walk:unova; Unova 9a)
              ("KALOS_ROUTE_16", "LUMIOSE_CITY")):
     check(b in links(a), f"{a} -> {b}")
 for area in ("SKYARROW_BRIDGE", "DRIFTVEIL_DRAWBRIDGE", "UNDERGROUND_RUINS", "PWT", "PLEDGE_GROVE", "ABYSSAL_RUINS", "CAVE_OF_BEING",

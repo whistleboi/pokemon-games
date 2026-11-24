@@ -4805,7 +4805,10 @@ MIST_CARGO = room(111, {
         "done": ["Thanks to you, the cargo's all loaded!"]},
         "lines": ["Hey! Is that a Flying-type? ...Or a Psychic-type? Could it help me lift these boxes?",
                   "Up they go! Thanks a lot! Here, take these!", "You received 5 Net Balls!"]}},
-    8: _say("Worker by the crates", "Mistralton's vegetables fly all over the world from here!"),
+    8: [_say("Worker by the crates", "Mistralton's vegetables fly all over the world from here!", condition=["not:beat_unova_champion"]),
+        {"text": "Pilot by the crates", "action": "EVENT", "condition": ["beat_unova_champion"], "event": {   # (9a: Black 2's Nature
+            "lines": ["The Champion! For you, a flight to the Nature Preserve. Hop aboard!"],                  #  Preserve, by plane)
+            "travel": "NATURE_PRESERVE"}}],
     10: _say("Worker at the back", "Skyla's grandfather was a legendary pilot. She's even better than he was!"),
 }, {}, (28, 39))
 MIST_CARGO["title"] = "Mistralton Cargo Service"
@@ -5323,9 +5326,9 @@ UNDELLA_BAY_MAP = route(
     trainers={0: ("Ace Trainer Summer", 4), 1: ("Swimmer F Arissa", 6), 2: ("Swimmer M Matt", 3), 3: ("Swimmer M Bart", 3),
               4: ("Swimmer F Mitzi", 3), 5: ("Swimmer M Tim", 5)},
     hidden={"4,40": "HEART_SCALE"}, title="Undella Bay")
-UNDELLA_BAY_MAP["gated_exits"] = {"SEASIDE_CAVE": ["beat_unova_champion"]}   # (the cave and Route 21 beyond: after the League, as before)
-UNDELLA_BAY_MAP["barred"] = [{"tiles": [[14, 6], [15, 6]], "until": {"flag_condition": "beat_unova_champion"}, "look": "unseen",
-                              "lines": ["The waves are crashing into the cave mouth. It's too rough to go in right now."]}]
+UNDELLA_BAY_MAP["gated_exits"] = {"SEASIDE_CAVE": ["b2_seaside_rocky"]}   # (Black Belt Rocky guards it from inside: batch 9a)
+UNDELLA_BAY_MAP["barred"] = [{"tiles": [[14, 6], [15, 6]], "until": {"flag_condition": "b2_seaside_rocky"}, "look": "unseen",
+                              "lines": ["Someone big is blocking the cave mouth from inside... with a lot of Roggenrola."]}]
 UNDELLA_BAY_MAP["split"] = True   # (the bay: crossed by Surf, each shore its own way in)
 UNDELLA_BAY_MAP["edge_to"] = dict({"0,%d" % y: [62, min(16 + y - 48, 24)] for y in range(48, 56)},
                                   **{"0,%d" % y: [126, 111 + y - 15] for y in range(15, 32)})
@@ -5939,7 +5942,7 @@ for _r, _t in (("gym", "Opelucid Gym"), ("center", "Pokémon Center")):
 # the Lady's Hyper Potion errand; the stockroom 351: the appliance boxes change Rotom's form, forms.rotom_change, main 11-24),
 # the Marine Tube (464: from Undella's tube building 414, open once Cheren has called (b2_opelucid_cheren), to Humilau:
 # HUMILAU_CITY is batch 9; its building 471 rides along as the tube's north room till then). Route 11's frozen look (619).
-OUTSIDE.update({349: 348, 350: 348, 351: 348, 471: 464})
+OUTSIDE.update({349: 348, 350: 348, 351: 348, 471: 465})
 R9_GATE = room(349, {0: [_say("Guard", "Halt! Tubeline Bridge is under a test of how many people it can hold. I can't let anyone "
                                        "else on right now!", condition=["not:beat_unova_champion"]),
                          _say("Guard ", "The test showed 4,934 people can stand on Tubeline Bridge at once.",
@@ -6028,8 +6031,8 @@ TUBE_N = room(471, {0: _say("Guard", "How was it? That's how the world looks to 
                                   "Facade! When the user's poisoned, paralysed or burned, its power doubles!"],
                         "gift_item": {"TM025": 1}, "flag": "b2_tube_facade",
                         "done": ["Facade! When the user's poisoned, paralysed or burned, its power doubles!"]}}},
-              {(9, 1): ["MARINE TUBE", "An undersea tunnel: Humilau City - Undella Town"]}, (15, 7),
-              exits_extra={465: ("<", "HUMILAU_CITY")})
+              {(9, 1): ["MARINE TUBE", "An undersea tunnel: Humilau City - Undella Town"]}, (23, 51),
+              exits_extra={464: ("^", "MARINE_TUBE")})
 TUBE_N["title"] = "Marine Tube Gate"
 MARINE_TUBE_MAP = route(
     464, {4: {"text": "Runner in the tube", "action": "EVENT", "event": {"world": "unova_story", "runner": "b2_tube_runner"}},
@@ -6046,13 +6049,239 @@ MARINE_TUBE_MAP = route(
                   "done": ["FYI, I'm Roxie's first fan!"]}},
               _say("Roxie fan ", "Does your Pokemon have a Poison Barb?", condition=["not:world:unova_story:holding:POISON_BARB"])]},
     {},
-    exits={"v": ("UNDELLA_TOWN", [(x, 190) for x in range(9, 22)])},
-    rooms={"gate_n": TUBE_N}, inside={"%d,7" % x: "gate_n" for x in range(11, 20)},
+    exits={"v": ("UNDELLA_TOWN", [(x, 190) for x in range(9, 22)]), "^": ("HUMILAU_CITY", [(x, 7) for x in range(11, 20)])},
     scenes=[{"trigger": {"zone": [9, 90, 22, 110]}, "condition": ["world:unova_story:hour:15", "not:b2_tube_wailord"], "flag": "b2_tube_wailord",
              "cast": [], "call": ["A huge shadow passes over the tunnel...", "A Wailord is swimming right over the Marine Tube!"]}],
     title="Marine Tube")
-_doors(MARINE_TUBE_MAP, MARINE_TUBE_MAP["inside"])
 MARINE_TUBE_MAP["edge_to"] = {"%d,190" % x: [32, 11] for x in range(9, 22)}
+
+
+# ======================================================================================================== batch 9a (11-24)
+# Humilau City (465: 466 the Yellow Shard tutor, 467 the Tangrowth trade, 468 the honeymooners, 469 the Luvdisc nurse, 470
+# Mienfoo's walk, 472 the Center, 473 Marlon's Gym: the lily pads, src/world/humilau_gym.py), Route 22 (474: Colress, the
+# Colress Machine, Terrakion; the Giant Chasm's door: batch 9b), Route 21 (463, by sea from Humilau; split: the cove past
+# Seaside Cave's east exit holds the Plasma Frigate, batch 9b), Seaside Cave (515; B1F 516: Strength boulders; Black Belt
+# Rocky guards the south exit to Undella Bay; the Crustle at the east exit wakes with the Colress Machine).
+# Story flags: visited_HUMILAU_CITY -> b2_humilau_hugh (by the Marine Tube) -> b2_humilau_marlon (he leaps onto the pier) ->
+# b2_wave_badge -> b2_humilau_after (Hugh and Marlon outside the Gym: Route 22) -> b2_colress_mchn -> b2_seaside_crustle.
+from src.world import humilau_gym as _HG   # noqa: E402
+
+OUTSIDE.update({466: 465, 467: 465, 468: 465, 469: 465, 470: 465, 472: 465, 473: 465, 516: -1})
+HUM_GYM = room(473, {
+    0: {"text": "Gym", "action": "GYM", "_look": "sheet:b2_c230.png", "condition": ["b2_humilau_marlon"]},
+    7: [_say("Gym guide", "If you're looking for the Gym Leader, he went swimming off into the ocean yelling about the sea! "
+                          "Please look for him!", condition=["not:b2_humilau_marlon"]),
+        _gift("Gym guide ", ["This Gym may feel like a resort, but the Gym Leader's no picnic! A present from me. Focus and prepare!"],
+              "FRESH_WATER", "b2_clyde_humilau",
+              ["You hop on the lily pads and float across the water. And Water types really don't like Electric or Grass moves!"],
+              condition=["b2_humilau_marlon"])],
+    **{n: _b2_battle(name, tid, "gym_trainer_HUMILAU_CITY_%d" % k, [line], ["%s: Washed away!" % name], [after])
+       for k, (n, tid, name, line, after) in enumerate((
+           (1, 350, "Ace Trainer Doyle", "Ace Trainer Doyle: The lily pads only stop when they bump something!",
+            "Ace Trainer Doyle: Read the water before you ride."),
+           (2, 351, "Ace Trainer Melina", "Ace Trainer Melina: Floating here is like being on holiday! A battle, though...",
+            "Ace Trainer Melina: Marlon's on the far side of the water."),
+           (3, 354, "Ace Trainer Santino", "Ace Trainer Santino: You found my little island!",
+            "Ace Trainer Santino: Ride round the east wall next."),
+           (4, 352, "Ace Trainer Enzio", "Ace Trainer Enzio: Splash!", "Ace Trainer Enzio: Marlon battles like the tide."),
+           (5, 355, "Ace Trainer Sable", "Ace Trainer Sable: Last stop before Marlon!", "Ace Trainer Sable: Go on, he's waiting!"),
+           (6, 353, "Ace Trainer Jeanne", "Ace Trainer Jeanne: The sea's calm today. My Pokemon aren't!",
+            "Ace Trainer Jeanne: Cross the water to the north-west.")), 1)},
+}, {}, (15, 44), scenes=_HG.scenes())
+HUM_GYM["title"] = "Humilau Gym"
+HUM_GYM["landings"] = [list(t) for t in sorted({tuple(t) for pad in _HG.PADS for t in pad})]   # (every pad end: reached by riding the lily pads)
+HUM_ROOMS = {
+    "gym": HUM_GYM, "tube": TUBE_N,
+    "center": room(472, {5: {"text": "Pokémon Center", "action": "HEAL"}, 0: {"text": "Shop", "action": "SHOP"},
+                         1: _say("Clerk ", "Specialty Poke Balls are over here!"),
+                         2: _say("Clerk  ", "The counter on the left sells everyday items."),
+                         9: {"text": "Mr. Medal", "action": "EVENT", "event": {"medal_rally": True}},
+                         6: _say("Man by the counter", "Humilau was a resort only a few people knew. More fun if lots of people come!"),
+                         7: _say("Surfer", "Can your Pokemon use Surf? You ride, it's ridden... that vibe's insanely awesome! Me? I "
+                                           "sink like a rock.")},
+                   {}, (7, 48)),
+    "tutor": room(466, {0: {"text": "Move Tutor", "action": "EVENT", "event": {
+                            "lines": ["Yellow Shards! Bring me Yellow Shards and I'll teach your Pokemon a move."],
+                            "tutor": {"choices": ["BIND", "SNORE", "HEAL-BELL", "KNOCK-OFF", "SYNTHESIS", "ROOST", "SKY-ATTACK",
+                                                  "ROLE-PLAY", "HEAT-WAVE", "GIGA-DRAIN", "DRAIN-PUNCH", "PAIN-SPLIT", "TAILWIND"],
+                                      "costs": {m: {"YELLOW_SHARD": n} for m, n in (
+                                          ("BIND", 2), ("SNORE", 2), ("HEAL-BELL", 4), ("KNOCK-OFF", 4), ("SYNTHESIS", 6),
+                                          ("ROOST", 6), ("SKY-ATTACK", 8), ("ROLE-PLAY", 8), ("HEAT-WAVE", 10), ("GIGA-DRAIN", 10),
+                                          ("DRAIN-PUNCH", 10), ("PAIN-SPLIT", 10), ("TAILWIND", 10))}},
+                            "cancel": ["Come back with Yellow Shards!"]}},
+                        1: _say("Man with a tip", "Hey, Trainer! The move I recommend is Tailwind: your team's Speed doubles for "
+                                                  "four turns!")}, {}, (27, 27)),
+    "trade": room(467, {0: {"text": "Roughneck who wants Mantine", "action": "EVENT", "event": {
+                            "lines": ["Hey, hey, hey! Know Mantine? Trade me one for my Tangrowth, OK?", "Pretty good! Let's trade!"],
+                            "trade": {"want": 226, "give": 465}, "flag": "b2_humilau_trade",
+                            "fail": ["No, no, no. What I want is a Mantine."],
+                            "done": ["The Tangrowth I gave you is awesome, isn't it? I feel awesome too!"]}},
+                        1: _say("Waitress", "I've come to give my boyfriend fashion tips...")}, {}, (9, 25)),
+    "honeymoon": room(468, {0: _say("Innkeeper", "Customers don't come... You're a Trainer? Become the Champion, then I can "
+                                                 "advertise this as a room the Champion visited!"),
+                            1: _say("Bride", "Choosing this place for our honeymoon... that's the man I chose!"),
+                            2: [_say("Groom", "If the bell of Celestial Tower on Route 7 reaches this room, we'll be happy, they "
+                                              "say. Would you ring it for my wife?", condition=["not:b2_celestial_bell"]),
+                                _say("Groom ", "Did you ring the bell? I'm sure we heard it! Thank you!",
+                                     condition=["b2_celestial_bell"])]}, {}, (11, 11)),
+    "luvdisc": room(469, {1: {"text": "Nurse with a Stunfisk", "action": "EVENT", "event": {"stages": [
+                              {"ready": ["not:party_has:370"],
+                               "lines": ["The flat part of Stunfisk is so charming! Know any slender Water-type Pokemon? It starts "
+                                         "with 'L' and looks like a heart, I think!"]},
+                              {"ready": ["party_has:370"], "flag": "b2_humilau_luvdisc", "gift_item": {"HEART_SCALE": 5},
+                               "lines": ["Oh! The heart-shaped Pokemon! It's Luvdisc! So slender!", "You received 5 Heart Scales!"]}],
+                              "then": {"lines": ["Stunfisk and Luvdisc are both slender... vertically or horizontally!"]}}},
+                          0: _say("Woman", "If you sleep on Stunfisk, its electricity relaxes the body!"),
+                          2: _say("Stunfisk", "Stunfisk: Stuun!")}, {}, (29, 5)),
+    "mienfoo": room(470, {1: {"text": "Socialite with a Mienfoo", "action": "EVENT", "event": {"world": "unova_story", "daily_gift": {
+                              "key": "b2_humilau_mienfoo", "items": ["PEARL"],
+                              "done": ["Please walk my cute Mienfoo again tomorrow!"]},
+                              "lines": ["Hey, you! Would you walk with my dear Mienfoo? Not outside: it's dangerous out there!",
+                                        "...", "Oh my! My cute Mienfoo looks very tough now. Thank you for walking it!"]}},
+                          0: _say("Mienfoo", "Mienfoo: Yeep!")}, {}, (4, 5)),
+}
+for _r, _t in (("center", "Pokémon Center"), ("tutor", "House"), ("trade", "House"), ("honeymoon", "Inn"), ("luvdisc", "House"),
+               ("mienfoo", "House")):
+    HUM_ROOMS[_r]["title"] = _t
+HUM_SCENES = [
+    {"trigger": {"zone": [21, 46, 21, 47]}, "condition": ["not:b2_humilau_hugh"], "flag": "b2_humilau_hugh",
+     "cast": [{"sheet": "b2_hugh.png", "from": [21, 45], "to": "player", "lines": [
+         "{rival_name}: We'll get the DNA Splicers back for sure! So focus on beating the Gym Leader first!",
+         "{rival_name}: After you get the Badge, we'll look for Team Plasma. I'm not letting Unova become an ice sculpture!"],
+               "leave": [21, 40]}]},
+    {"trigger": {"zone": [26, 27, 28, 29]}, "condition": ["not:b2_humilau_marlon"], "flag": "b2_humilau_marlon",
+     "cast": [{"sheet": "b2_c230.png", "from": [30, 28], "to": "player", "lines": [
+         "Uihaa!",
+         "Marlon: Sup, you must be here to challenge the Gym! I'm the Gym Leader, Marlon. Sorry to make you look for me, yo.",
+         "Marlon: I was swimmin' with the Pokemon and it felt real good, so I kept goin'. I'll be at the Gym!"],
+               "leave": [15, 44]}]},
+    {"trigger": {"zone": [13, 45, 17, 47]}, "condition": ["b2_wave_badge", "not:b2_humilau_after"], "flag": "b2_humilau_after",
+     "cast": [{"sheet": "b2_hugh.png", "from": [19, 46], "to": "player", "stay": True, "lines": [
+         "{rival_name}: You got all the Badges! Usually you'd go to the League now, but Team Plasma comes first!"]},
+              {"sheet": "b2_c230.png", "from": [12, 46], "to": [14, 46], "stay": True, "lines": [
+                  "Marlon: Sup yo! What's this Team Plasma do?",
+                  "{rival_name}: They steal people's Pokemon! They want to freeze Unova solid! Haven't you heard of them?",
+                  "Marlon: Nope! When the ocean's your home, you don't worry about that. The ocean accepts all rivers!",
+                  "Marlon: They're bad, so you fight 'em. But first, say that in your own words. Then you'll know what you're "
+                  "hopin' for.", "Marlon: Well then..."], "leave": [12, 60]},
+              {"as": 0, "lines": ["{rival_name}: Is that guy laid back or just irresponsible? Anyway! We need to find Team "
+                                  "Plasma. Let's check Route 22, west of here!"], "leave": [0, 13]}]},
+]
+HUMILAU = town(
+    465, {4: _ball("Poke Ball on the pier", "SHELL_BELL", "b2_humilau_shell_bell", name="a Shell Bell"),
+          7: _ball("Poke Ball by the north house", "PROTEIN", "b2_humilau_protein", name="a Protein"),
+          8: _ball("Poke Ball by the east house", "HEART_SCALE", "b2_humilau_heart_scale", name="a Heart Scale"),
+          12: _say("Swimmer by the north pier", "When I float on the waves like this, I'm a mermaid! There was a mermaid Gym Leader "
+                                                "in Kanto, too."),
+          11: _say("Girl playing tag", "Eek! Hee-hee-hee! Just try and catch me!"),
+          10: _say("Boy playing tag", "A ha ha! Hey, wait up! I'm gonna catch you!"),
+          13: _say("Black Belt", "Controlling the ocean, nature... It's not possible. People and Pokemon have to live with it!"),
+          14: _say("Artist", "Treasure every meeting with Pokemon and people. There may not be another."),
+          9: _say("Man on holiday", "Ahhh... The weather's great again. I've lost count of the days since my holiday started."),
+          15: _say("Woman at the face board", "I'm a superfan of face boards! Some people call them photo boards!")},
+    {16: ["HUMILAU CITY", "Calm and Sparkling Seas"], 17: ["MARINE TUBE AHEAD", "The Walk-Through Aquarium"],
+     18: ["HUMILAU CITY POKEMON GYM", "Leader: Marlon", "More Splash than the Sea"]},
+    {466: ("house", "tutor"), 467: ("house", "trade"), 468: ("house", "honeymoon"), 469: ("house", "luvdisc"),
+     470: ("house", "mienfoo"), 472: ("center", "center"), 473: ("gym", "gym"), 471: ("gate", "tube", "MARINE_TUBE")},
+    HUM_ROOMS,
+    edges={"<": ("UNOVA_ROUTE_22", [(0, y) for y in range(12, 15)]), "v": ("UNOVA_ROUTE_21", [(x, 63) for x in range(9, 18)])},
+    hidden={"15,14": "HEART_SCALE"}, scenes=HUM_SCENES, title="Humilau City")
+HUMILAU["edge_to"] = dict({"0,%d" % y: [62, y] for y in range(12, 15)}, **{"%d,63" % x: [x, 1] for x in range(9, 18)})
+
+# ---------------------------------------------------------------------------------------------------------------- Route 22
+TERRAKION = {"text": "Terrakion", "action": "BOSS", "color": "RED", "_look": "mon:639",
+             "condition": ["b2_colress_mchn", "not:b2_r22_terrakion"],
+             "boss": {"id": 639, "name": "Terrakion", "level": 45, "victory_flag": "b2_r22_terrakion",
+                      "lines": ["Gurooooohhh! Terrakion radiates a tremendous presence!"]}}
+ROUTE_22 = route(
+    474, {8: _ball("Poke Ball by the cliff", "MAX_POTION", "b2_r22_max_potion", name="a Max Potion"),
+          9: _ball("Poke Ball in the south", "CALCIUM", "b2_r22_calcium", name="a Calcium"),
+          10: _ball("Poke Ball on the walkway", "RARE_CANDY", "b2_r22_rare_candy", name="a Rare Candy"),
+          11: _ball("Poke Ball by the grass", "POISON_BARB", "b2_r22_poison_barb", name="a Poison Barb"),
+          13: _ball("Poke Ball up north", "PP_UP", "b2_r22_pp_up", name="a PP Up"),
+          14: _ball("Poke Ball by the west cliff", "RED_SHARD", "b2_r22_red_shard", name="a Red Shard"),
+          6: TERRAKION},
+    {3: ["ROUTE 22"]},
+    exits={">": ("HUMILAU_CITY", [(63, y) for y in range(12, 15)]), "<": ("GIANT_CHASM", [(5, 8)])},
+    trainers={0: ("Ace Trainer Shel", 4), 1: ("Backpacker Myra", 3), 2: ("Pokemon Breeder Addison", 4),
+              3: ("Ace Trainer Lucca", 4), 4: ("Backpacker Lowell", 2), 5: ("Hiker Justin", 2)},
+    hidden={"48,6": "CARBOS", "34,18": "GREEN_SHARD"},
+    scenes=[{"trigger": {"zone": [19, 9, 23, 12]}, "condition": ["b2_wave_badge", "not:b2_colress_mchn"], "flag": "b2_colress_mchn",
+             "cast": [{"sheet": "mon:639", "from": [21, 10], "to": [21, 10], "stay": True, "lines": [
+                 "Gurooooohhh!", "The one radiating such a tremendous presence is none other than Terrakion!"]},
+                      {"sheet": "b2_c250.png", "from": [34, 10], "to": "player", "stay": True, "lines": [
+                          "Colress: It's been a long time. Terrakion is one of the three who protected Pokemon from the flames "
+                          "of a human war!",
+                          "Colress: It must have caught the scent of danger from Team Plasma, and come seeking a Trainer strong "
+                          "enough to stand up to them.",
+                          "Colress: Being protected by Pokemon alone doesn't make you a Trainer. Care for them, to bring out "
+                          "their power to its fullest! Here. This is from me!",
+                          "{player_name} received the Colress Machine!",
+                          "Colress: A prototype that energises Pokemon. It doesn't work in battle, but you may find a use for it.",
+                          "Colress: Now that I think of it... in Seaside Cave on Route 21, I saw something that reminded me of "
+                          "when we met on Route 4."], "leave": [63, 13]}]}],
+    title="Route 22")
+_put_char(ROUTE_22, 43, 23, "b")   # (Black 2's boulder, person 12: Strength)
+ROUTE_22["edge_to"] = {"63,%d" % y: [1, y] for y in range(12, 15)}
+ROUTE_22["gated_exits"] = {"GIANT_CHASM": ["beat_unova_champion"]}   # (batch 9b walks the Chasm; till then its menu place)
+
+# ---------------------------------------------------------------------------------------------------------------- Route 21
+ROUTE_21 = route(
+    463, {7: _ball("Poke Ball on the rock", "BIG_PEARL", "b2_r21_big_pearl", name="a Big Pearl"),
+          8: _ball("Poke Ball in the cove", "PP_UP", "b2_r21_pp_up", name="a PP Up")},
+    {},
+    exits={"^": ("HUMILAU_CITY", [(x, 0) for x in range(8, 19)]), "s": ("SEASIDE_CAVE", [(23, 49), (23, 50), (14, 50), (15, 50)]),
+           "f": ("PLASMA_FRIGATE", [(32, 49)])},
+    trainers={0: ("Swimmer F Kaoru", 2), 1: ("Swimmer M Kyle", 2), 2: ("Swimmer M Harold", 6), 3: ("Swimmer F Desiree", 7),
+              4: ("Fisherman Kenzo", 1), 5: ("Doctor Braid", 1), 6: ("Black Belt Kenneth", 3)},
+    title="Route 21")
+ROUTE_21["split"] = True   # (the cove past Seaside Cave's east exit: only through the cave)
+ROUTE_21["edge_to"] = {"%d,0" % x: [min(max(x, 9), 17), 62] for x in range(8, 19)}
+ROUTE_21["gated_exits"] = {"PLASMA_FRIGATE": ["b2_frigate2_open"]}
+ROUTE_21["barred"] = [{"tiles": [[32, 49]], "until": {"flag_condition": "b2_frigate2_open"}, "look": "unseen",
+                       "lines": ["The Plasma Frigate's hatch is shut tight. (Its second visit comes with batch 9b.)"]}]
+
+# ---------------------------------------------------------------------------------------------------------------- Seaside Cave
+SEA_CRUSTLE = [_say("Big boulder", "It's a big boulder, but it doesn't look like a Pokemon can move it...",
+                    condition=["not:b2_colress_mchn"], _look="sheet:b2_c326.png"),
+               {"text": "Big boulder ", "action": "BOSS", "color": "RED", "_look": "sheet:b2_c326.png",
+                "condition": ["b2_colress_mchn", "not:b2_seaside_crustle"],
+                "boss": {"id": 558, "name": "Crustle", "level": 45, "victory_flag": "b2_seaside_crustle",
+                         "lines": ["You used the Colress Machine on the big boulder...", "Crus chul! It was a Crustle!"],
+                         "won": ["The Colress Machine broke..."]}}]
+SEA_ROCKY = {"text": "Black Belt Rocky", "action": "EVENT", "condition": ["not:b2_seaside_rocky"], "event": {
+    "lines": ["Mmm! My Roggenrola and I have been waiting for a strong Trainer like you! If you want to pass, you must beat us!",
+              "Can you defeat our rock-hard will?"],
+    "battle": _b2(580, dialogue={"player_won": ["Mmm! Your strength is the real thing! We must become even sturdier. Farewell!"]}),
+    "flag": "b2_seaside_rocky"}}
+SEASIDE = route(
+    515, {0: _ball("Poke Ball between the Rangers", "DIVE_BALL", "b2_sc_dive_ball", name="a Dive Ball"),
+          1: _ball("Poke Ball by Battle Girl Tia", "FULL_RESTORE", "b2_sc_full_restore", name="a Full Restore"),
+          2: _ball("Poke Ball on the dry land", "HEART_SCALE", "b2_sc_heart_scale", name="a Heart Scale"),
+          3: _ball("Poke Ball on the cliff", "TM175", "b2_sc_tm06", name="TM175 Toxic"),
+          9: SEA_CRUSTLE, 12: SEA_ROCKY,
+          **{n: _say("Roggenrola" + " " * k, "Roggenrola: Rorooog!", condition=["not:b2_seaside_rocky"]) for k, n in enumerate((8, 10, 11))}},
+    {},
+    exits={"<": ("UNOVA_ROUTE_21", [(30, 10), (6, 14)]), "v": ("SEASIDE_CAVE_B1F", [(23, 7), (16, 15)]),
+           "w": ("UNDELLA_BAY", [(6, 56)])},
+    trainers={4: ("Pokemon Ranger Johan", 3), 5: ("Battle Girl Tia", 3), 6: ("Pokemon Ranger Mikiko", 3), 7: ("Black Belt Drago", 2)},
+    hidden={"29,3": "CALCIUM", "6,30": "BLUE_SHARD"}, title="Seaside Cave")
+SEASIDE["barred"] = [{"tiles": [[30, 10]], "until": {"flag_condition": "b2_seaside_crustle"}, "look": "unseen",
+                      "lines": ["A big boulder blocks the way out."]}]
+SEASIDE["gated_exits"] = {"UNDELLA_BAY": ["b2_seaside_rocky"]}
+SEASIDE_B1F = route(
+    516, {0: _ball("Poke Ball on the platform", "MAX_REPEL", "b2_sc_max_repel", name="a Max Repel"),
+          1: _ball("Poke Ball by the boulders", "RARE_CANDY", "b2_sc_rare_candy", name="a Rare Candy")},
+    {}, exits={"^": ("SEASIDE_CAVE", [(18, 4), (9, 14)])},
+    trainers={3: ("Black Belt Rich", 3), 2: ("Battle Girl Maki", 3)}, title="Seaside Cave")
+# (Black 2's boulders drop into the floor's holes, walk code 0x8081, to make the way across. Our walk grid has the holes as
+#  rock, so, as Mistralton Cave's (6a), a boulder waits on each hole and Strength's push opens it; the seven loose boulders
+#  of the file's floor are where the walkthrough's pushes end.)
+for _x, _y in ((26, 3), (24, 9), (27, 9), (16, 10), (24, 10), (14, 20), (10, 21), (15, 21), (7, 22), (11, 22), (28, 22),
+               (10, 25), (10, 26), (16, 26)):
+    _put_char(SEASIDE_B1F, _x, _y, "b")
+SEASIDE_B1F["split"] = True   # (each stairway its own way in: the boulders join them)
+_put_char(SEASIDE_B1F, 24, 16, ".")   # (the Rare Candy's raised platform: our grid shuts it in; opened from below, as Route 13's Red Shard)
 
 
 MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": FLOCCESY, "UNOVA_ROUTE_20": ROUTE_20,
@@ -6078,4 +6307,6 @@ MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": 
         "UNDELLA_TOWN": UNDELLA, "UNDELLA_BAY": UNDELLA_BAY_MAP, "UNOVA_ROUTE_13": ROUTE_13, "LACUNOSA_TOWN": LACUNOSA,   # (batch 7b)
         "UNOVA_ROUTE_12": ROUTE_12, "VILLAGE_BRIDGE": VILLAGE_BRIDGE_MAP, "UNOVA_ROUTE_11": ROUTE_11,   # (batch 8a)
         "OPELUCID_CITY": OPELUCID,
-        "UNOVA_ROUTE_9": ROUTE_9, "MARINE_TUBE": MARINE_TUBE_MAP}   # (batch 8b)
+        "UNOVA_ROUTE_9": ROUTE_9, "MARINE_TUBE": MARINE_TUBE_MAP,   # (batch 8b)
+        "HUMILAU_CITY": HUMILAU, "UNOVA_ROUTE_22": ROUTE_22, "UNOVA_ROUTE_21": ROUTE_21, "SEASIDE_CAVE": SEASIDE,   # (batch 9a)
+        "SEASIDE_CAVE_B1F": SEASIDE_B1F}

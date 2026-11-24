@@ -275,6 +275,48 @@
    612
   ]
  },
+ "160": {
+  "b2_id": 160,
+  "class": "LEADER",
+  "held_items": {
+   "593": "SITRUS_BERRY"
+  },
+  "levels": [
+   49,
+   49,
+   51
+  ],
+  "movesets": {
+   "321": [
+    "SCALD",
+    "ROLLOUT",
+    "BOUNCE",
+    "AMNESIA"
+   ],
+   "565": [
+    "SCALD",
+    "SMACK-DOWN",
+    "CRUNCH",
+    "SHELL-SMASH"
+   ],
+   "593": [
+    "SCALD",
+    "OMINOUS-WIND",
+    "BRINE",
+    "RECOVER"
+   ]
+  },
+  "name": "Leader Marlon",
+  "rewards": {
+   "balls": 4
+  },
+  "sprite": "leader.png",
+  "team": [
+   565,
+   321,
+   593
+  ]
+ },
  "177": {
   "b2_id": 177,
   "class": "GENTLEMAN",
@@ -567,6 +609,106 @@
   "team": [
    507,
    528
+  ]
+ },
+ "350": {
+  "b2_id": 350,
+  "class": "ACE_TRAINER",
+  "levels": [
+   47,
+   47
+  ],
+  "name": "Ace Trainer Doyle",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "ace_trainer.png",
+  "team": [
+   419,
+   226
+  ]
+ },
+ "351": {
+  "b2_id": 351,
+  "class": "ACE_TRAINER",
+  "levels": [
+   48
+  ],
+  "name": "Ace Trainer Melina",
+  "rewards": {
+   "balls": 2
+  },
+  "sprite": "ace_trainer.png",
+  "team": [
+   594
+  ]
+ },
+ "352": {
+  "b2_id": 352,
+  "class": "ACE_TRAINER",
+  "levels": [
+   46,
+   46,
+   46
+  ],
+  "name": "Ace Trainer Enzio",
+  "rewards": {
+   "balls": 4
+  },
+  "sprite": "ace_trainer.png",
+  "team": [
+   550,
+   550,
+   184
+  ]
+ },
+ "353": {
+  "b2_id": 353,
+  "class": "ACE_TRAINER",
+  "levels": [
+   47,
+   47
+  ],
+  "name": "Ace Trainer Jeanne",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "ace_trainer.png",
+  "team": [
+   279,
+   321
+  ]
+ },
+ "354": {
+  "b2_id": 354,
+  "class": "ACE_TRAINER",
+  "levels": [
+   48
+  ],
+  "name": "Ace Trainer Santino",
+  "rewards": {
+   "balls": 2
+  },
+  "sprite": "ace_trainer.png",
+  "team": [
+   365
+  ]
+ },
+ "355": {
+  "b2_id": 355,
+  "class": "ACE_TRAINER",
+  "levels": [
+   47,
+   47
+  ],
+  "name": "Ace Trainer Sable",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "ace_trainer.png",
+  "team": [
+   55,
+   121
   ]
  },
  "359": {
@@ -1136,6 +1278,30 @@
   "team": [
    552,
    59
+  ]
+ },
+ "580": {
+  "b2_id": 580,
+  "class": "BLACK_BELT",
+  "held_items": {
+   "524": "HARD_STONE"
+  },
+  "levels": [
+   44,
+   44,
+   44,
+   44
+  ],
+  "name": "Black Belt Rocky",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "b2_black_belt.png",
+  "team": [
+   524,
+   524,
+   524,
+   524
   ]
  },
  "583": {
