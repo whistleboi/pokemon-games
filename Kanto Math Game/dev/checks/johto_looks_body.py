@@ -169,6 +169,24 @@ for k, v in sorted(stock.items()):
     print(f"   {k}: {len(v)}: {', '.join(map(str, v[:8]))}{' ...' if len(v) > 8 else ''}")
 check(not stock, f"every Johto person or thing on a map has its own look: SoulSilver's sprite, an item, a Pokemon, or none for a spot to look at ({sum(len(v) for v in stock.values())} drawn as the stock townsperson)")
 
+print("
+5) battle portraits: SoulSilver's own (assets/sprites/trainers/ss_*.png, johto_map_tools/j_trainer_pics.py); Gym Leaders and the rival keep theirs")
+_bp = collections.Counter()
+def _walk_tr(o):
+    if isinstance(o, dict):
+        if isinstance(o.get("sprite"), str) and ("team" in o or "class" in o):
+            _bp[o["sprite"]] += 1
+        for v in o.values():
+            _walk_tr(v)
+    elif isinstance(o, list):
+        for v in o:
+            _walk_tr(v)
+_walk_tr(json.load(open("assets/johto_area_data.json", encoding="utf-8")))
+_kept = {"silver.png", "falkner.png", "bugsy.png", "whitney.png", "morty.png", "jasmine.png", "chuck.png", "pryce.png", "clair.png"}
+_other = {k: v for k, v in _bp.items() if not k.startswith("ss_") and k not in _kept}
+_gone = [k for k in _bp if not os.path.isfile(os.path.join(g.assets.assets_dir, "sprites", "trainers", k))]
+check(not _other and not _gone, f"every Johto trainer battles with SoulSilver's picture ({sum(v for k, v in _bp.items() if k.startswith('ss_'))} do; others {_other}; missing files {_gone})")
+
 print(f"##### {len(fails)} failures")
 for m in fails:
     print("   FAIL " + m)

@@ -69614,7 +69614,7 @@
        "battle": {
         "name": "Black Belt Lung",
         "class": "BLACKBELT",
-        "sprite": "blackbelt.png",
+        "sprite": "ss_black_belt.png",
         "team": [
          56,
          56,
@@ -69650,7 +69650,7 @@
        "battle": {
         "name": "Black Belt Nob",
         "class": "BLACKBELT",
-        "sprite": "blackbelt.png",
+        "sprite": "ss_black_belt.png",
         "team": [
          66,
          67
@@ -69684,7 +69684,7 @@
        "battle": {
         "name": "Black Belt Lao",
         "class": "BLACKBELT",
-        "sprite": "blackbelt.png",
+        "sprite": "ss_black_belt.png",
         "team": [
          107
         ],
@@ -69716,7 +69716,7 @@
        "battle": {
         "name": "Black Belt Yoshi",
         "class": "BLACKBELT",
-        "sprite": "blackbelt.png",
+        "sprite": "ss_black_belt.png",
         "team": [
          106
         ],
@@ -90090,7 +90090,7 @@
        "battle": {
         "name": "Rocket Grunt",
         "class": "ROCKET",
-        "sprite": "rocket_grunt_m.png",
+        "sprite": "ss_rocket_grunt_m.png",
         "team": [
          109
         ],
@@ -91582,7 +91582,7 @@
          "battle": {
           "name": "Sailor Stanly",
           "class": "SAILOR",
-          "sprite": "sailor.png",
+          "sprite": "ss_sailor.png",
           "team": [
            66,
            67,
