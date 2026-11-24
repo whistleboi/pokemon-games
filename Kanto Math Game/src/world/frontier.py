@@ -168,7 +168,7 @@ def brain_next(game, fac):
 
 
 def _team(game, groups, n=3, fac=None):
-    src = data4(game) if fac in JOHTO_FIVE and data4(game).get("groups") else data(game)   # (Johto: HGSS's own Tower sets' Pokemon, 11-24)
+    src = data4(game) if fac in GEN4 and data4(game).get("groups") else data(game)   # (Johto and Sinnoh: Gen IV's own Tower sets' Pokemon - HGSS's are Platinum's, 11-24)
     pool = [i for g in groups for i in src["groups"].get(str(g), [])]
     team = []
     while len(team) < n and pool:
