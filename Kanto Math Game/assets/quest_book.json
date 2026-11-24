@@ -393,6 +393,10 @@
     {"title": "The Cold Snap", "chapters": [
       {"mission": "b2_m30", "title": "The Cold Snap", "say": "Somewhere near Lacunosa Town the air froze solid for a moment, colder than any winter. It happened at Castelia too, and Driftveil. Cheren is waiting at the Season Research Lab, and he doesn't like what the numbers say."},
       {"mission": "b2_m31", "title": "The Charged Stones", "say": "Stones hang in the air in Chargestone Cave, humming with power. Someone's voice echoes across the bridge and is gone. Mistralton's runway is on the far side."}
+    ]},
+    {"title": "Above the Clouds", "chapters": [
+      {"mission": "b2_m32", "title": "The Wind Tunnel", "say": "Skyla's Gym is a hangar full of roaring turbines. When the wind kicks up, anyone out in the open goes flying back to the door. Time your run, and hide behind the walls."},
+      {"mission": "b2_m33", "title": "Over the Mountain", "say": "Twist Mountain has caved in, and the road to Opelucid is gone. Skyla's plane is fuelled and waiting. All that's missing is a professor lost somewhere in Celestial Tower."}
     ]}
   ]
 }
