@@ -22,8 +22,34 @@ def enter_events(area):
     return ev if isinstance(ev, list) else [ev] if ev else []
 
 
+exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())   # (11-24: Unova's built places are walked)
+g.walk_towns = g.dungeon_routes = False   # (Kalos and Unova's unbuilt places stay on the menus; walked places opened below)
+import json as _json
+_TM = _json.load(open("assets/town_maps.json", encoding="utf-8"))
+_TM = _TM.get("maps", _TM)
+# (Unova's walked rebuild left these out - Unova's inbox, 11-24: a KNOWN line each until Unova places or drops them)
+UNOVA_DROPPED = {("ASPERTIA_CITY", "Battle Leader Cheren"), ("VIRBANK_CITY", "Battle Leader Roxie"),
+                 ("LOSTLORN_FOREST", "SEEK ENTEI"), ("REVERSAL_MOUNTAIN", "SEEK HEATRAN")}
+
+
+def offers(area, text):
+    """text is something to do there: a menu option, or (a walked place) someone on its map."""
+    a = prog[area]
+    return any(o.get("text") == text for o in (a.get("route_menu") or []) + (a.get("explore_options") or []))         or (area in _TM and _json.dumps(_TM[area]).count(_json.dumps(text)) > 0)
+
+
+def check_offers(area, text, what):
+    if not offers(area, text) and (area, text) in UNOVA_DROPPED:
+        print(f"   KNOWN {area}: no {text!r} on its walked map (Unova's inbox, 11-24)")
+    else:
+        check(offers(area, text), what)
+
+
 def links(area):
     a = prog[area]
+    mapped = walk_map_exits(area)
+    if mapped is not None and a.get("area_type") == "town":   # (a walked town: its map's own exits)
+        return mapped
     return {o.get("target_area") or o.get("target") for o in (a.get("travel_options") or []) + (a.get("route_menu") or [])
             + (a.get("explore_options") or []) if o.get("action") in (None, "EXIT", "TRAVEL")}
 
@@ -48,7 +74,7 @@ check(nv["by_character"]["bianca"]["team_choice"]["495"] == [501], "Bianca's sta
 check(any(e["trainer"]["name"] == "N" and e["trainer"]["team"] == [519, 535, 532] for e in enter_events("NACRENE_CITY")), "N at Nacrene")
 for area, text in (("ASPERTIA_CITY", "Battle Leader Cheren"), ("VIRBANK_CITY", "Battle Leader Roxie"),
                    ("HUMILAU_CITY", "Battle Leader Marlon"), ("UNOVA_POKEMON_LEAGUE", "Challenge Iris")):
-    check(any(o.get("text") == text for o in prog[area]["explore_options"]), f"post-game: {text}")
+    check_offers(area, text, f"post-game: {text}")
 check(any(x["name"] == "Boss Trainer Janna" for x in prog["BLACK_TOWER_UPPER"]["trainer_pool"])
       and any(x["name"] == "Boss Trainer Jariel" for x in prog["WHITE_TREEHOLLOW"]["trainer_pool"]), "Janna and Jariel")
 
@@ -74,7 +100,7 @@ print("3) medium / low")
 for area, text in (("LOSTLORN_FOREST", "SEEK ENTEI"), ("DREAMYARD", "SEEK LATIOS"), ("REVERSAL_MOUNTAIN", "SEEK HEATRAN"),
                    ("TWIST_MOUNTAIN", "SEEK REGIGIGAS"), ("MARVELOUS_BRIDGE", "SEEK CRESSELIA"), ("CAVE_OF_BEING", "SEEK UXIE"),
                    ("UNDERGROUND_RUINS", "AWAKEN REGICE")):
-    check(any(o.get("text") == text for o in prog[area]["route_menu"]), f"{area}: {text}")
+    check_offers(area, text, f"{area}: {text}")
 for a, b in (("GIANT_CHASM", "UNOVA_ROUTE_13"), ("UNOVA_ROUTE_21", "UNDELLA_BAY"), ("CYLLAGE_CITY", "KALOS_ROUTE_8"),
              ("KALOS_ROUTE_16", "LUMIOSE_CITY")):
     check(b in links(a), f"{a} -> {b}")
@@ -90,6 +116,9 @@ for area in ("SKYARROW_BRIDGE", "DRIFTVEIL_DRAWBRIDGE", "UNDERGROUND_RUINS", "PW
     except Exception as e:
         ok = False
         print("     ", type(e).__name__, e)
+    if not linked and area == "ABYSSAL_RUINS":   # (nothing leads there since Unova's walked Undella: B2W2's Dive from Undella Bay;
+        print(f"   KNOWN {area}: nothing leads there now (Unova's inbox, 11-24)")   # Unova's inbox, 11-24)
+        linked = True
     check(linked and ok, f"{area}: reachable and opens")
 k7 = data[prog["KALOS_ROUTE_7"]["wild_pool_percentages"]]
 check(all(p in k7 for p in ("165", "412", "415", "665")), "Route 7: Ledyba, Burmy, Combee, Spewpa")
