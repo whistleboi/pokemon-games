@@ -341574,6 +341574,370 @@
       "px": 32
      }
     ]
+   },
+   {
+    "art": [
+     "cccccccccccc........cccccccccccccccccccccccc........cccccccccccckkkkkkkkkkkk........kkkkkkkkkkkk",
+     "cccccccccccc........cccccccccccccooooooooooc........coooooooooock==========k........k==========k",
+     "ccccccccccccccc..ccccccccccccccccooooooooooc...=====coooooooooock==========k........k==========k",
+     "ccccccccccccccc..ccccccccccccccccooc~~~~~~~c...=====cc~~~~~~coock==kkkkkkkkk........kkkkkkkkk==k",
+     "cccccc......................~~cccoo~\"\"\"\"\"\"\"=========TTTT\"\"\"\"~oock==kooooo...........\"\"\"\"\"\"\"\"k==k",
+     "cccccc......................~~cccoo~\"\"\"\"\"\"\"========.TTTT\"\"\"\"~oock==koooooff.........\"\"TT\"\"\"\"k==k",
+     "cccc....~~~....~~~~~~~~~....~~cccoo~\"\"\"\"\"\"\"===......TTTT\"\"\"\"~oock==kooooo.f.........\"\"TT\"\"\"\"k==k",
+     "cccc....~~~....~\"\"\"\"\"\"\"~....~~cccoo~\"\"\"\"\"\"\"\"\"=..oooooooo\"\"\"\"~oock==k................\"\"TT\"\"\"\"k==k",
+     "cccc....~~~.....\"\"\"\"\"\"\"~....~~cccoo~====\"\"\"\"\"=..oooooooo\"\"\"\"~oock==k...........f...f\"\"\"\"\"\"\"\"k==k",
+     "cccc............\"\"\"\"\"\"\"~....~~cccoo~====\"\"\"\"\"=..oooooooo\"\"\"\"~oock==k.f.........f....\"\"\"\"TT\"\"k==k",
+     "cccc...........~\"\"\"\"\"\"\"~....~~cccoo~====\"\"\"\"\"=..oooooooo\"\"\"\"~oock==k................\"\"\"\"TT\"\"k==k",
+     "cccc...........~~~~~~~~~....~~cccccc====TTTT==..oooooooo\"\"\"\"cccckkkkf...............\"\"\"\"TT\"\"kkkk",
+     "..cc....ooooooooooooooo~~~..~~.......===TTTT.==.oooooooo=====....................oooooooff......",
+     "..cc....ooooooooooooooo~~~..~~.......===TTTT.===oooooooo=====..........ffffff....oooooooff......",
+     "..cc....ooooooooooooooo~~~..~~.............==================.........fffffff...f.........fff...",
+     "........ooooooooooooooo....................=====\"\"\"\"\"\"=======........ffffffff....ffff...........",
+     "........ooooooooooooooo...........===......=====\"\"\"\"\"\"=======.......ooooooooo....ffffff.........",
+     "..cc....ooooooooooooooo.....~~....==============\"\"\"\"\"\"====..........ooooooooo....ffffff.........",
+     "..cc....ooooooooooooooo.....~~.....===\"\"\"\"\"\"====\"\"\"\"\"\"=.............ooooooooo..............f....",
+     "..cc..~~~~~~~~~~~~~oooo~~...~~.......=\"\"\"\"\"\"====....oooooo.................................f....",
+     "cccc..cccccccc~~~~~oooo~~...~~cccccc..oooooo====....oooooo..cccckkkk\"\"\"\"\"\"\".................kkkk",
+     "cccc....cccccc~~~~~oooo.....~~cccooc..oooooo=====...oooooo..coock==k\"\"\"\"\"\"\"...\"\"\"\"..........k==k",
+     "cccc....cccccc~~~~~..oo.....~~cccooc..oooooo\"\"\"\"=.TToooooo..coock==k\"\"\"\"\"\"\"...\"\"\"\"...ff.....k==k",
+     "cccc....cccccc~~~~~..~~.....~~cccooc..oooooo\"\"\"\"=.TToooooo..coock==k.................ff.f...k==k",
+     "cccc....cccccc~~~~~..~~.....~~cccooc...=====\"\"\"\"=.TToooooo..coock==kf.ffff...f..............k==k",
+     "cccc.....................~~~~~cccooc...==========........===coock==k..ffff..............\"\"\"\"k==k",
+     "cccc.....................~~~~~cccooc...====....=====.....===coock==kf..............f....\"\"\"\"k==k",
+     "cccc.....................~~~~~cccooc...====....=====.....===coock==k...fff.f........f..f\"\"\"\"k==k",
+     "ccccccccccccccc..ccccccccccccccccooccccccccc...=====cccccccccoock==kkkkkkkkkff......kkkkkkkkk==k",
+     "ccccccccccccccc..ccccccccccccccccooooooooooc...=====coooooooooock==========kff.....fk==========k",
+     "cccccccccccc........cccccccccccccooooooooooc........coooooooooock==========k........k==========k",
+     "cccccccccccc........cccccccccccccccccccccccc........cccccccccccckkkkkkkkkkkk........kkkkkkkkkkkk",
+     "cccccccccccc........cccccccccccccccccccccccc........ccccccccccccTTTTTTTTTTTT........TTTTTTTTTTTT",
+     "c==========c........c==========ccccccccccccc........ccccccccccccTTTTTTTTTTTT........TTTTTTTTTTTT",
+     "c==========c........c==========cccccccccccccccc..cccccccccccccccTTTTTTTTTTTT........TTTTTTTTTTTT",
+     "c==ccccccccc........ccccccccc==cccccccccccccccc..cccccccccccccccTTTTTTTTTTTT........TTTTTTTTTTTT",
+     "c==c\"\"\"\"\"\"\".........\"\"\"\"\"\"\"\"c==ccccc\"\"\"\"====================ccccTTTT\"\"\"\"\"\"..........\"\"\"\"TTTTTTTT",
+     "c==c\"\"\"\"\"\"\".........\"\"\"\"\"\"\"\"c==ccccc\"\"\"\"====================ccccTTTT\"\"\"\"\"\"..........\"\"\"\"TTTTTTTT",
+     "c==c\"\"\"\"\"...........\"\"\"\"\"\"\"\"c==ccccc\"\"\"\"==cc======ccccc=====ccccTTTT\"\"\"\"\"\"..=.......\"\"\"\"\"\"TTTTTT",
+     "c==c.....f..........\"\"\"\"\"\"\"\"c==ccccc\"\"\"\"==cc======ccccc=====ccccTTTT\"\"\"\"TT..=.......\"\"\"\"\"\"TTTTTT",
+     "c==c.....fff........\"\"\"\"\"\"\"\"c==ccccc\"\"\"\"==========ccccc=====ccccTTTT\"\"\"\"TT..........\"\"\"\"\"\"TTTTTT",
+     "c==c..TTTT....TT........\"\"\"\"c==ccccc======c===cc==ccccc=====ccccTTTT\"\"\"\"TT....TTTTTTTT\"\"\"\"TTTTTT",
+     "c==c..TTTT....TT.....ff.\"\"\"\"c==ccccc==========cc============ccccTTTT\"\"\"\"TT....TTTTTTTT\"\"\"\"\"\"TTTT",
+     "cccc..TTTT....TTTT...ff.\"\"\"\"cccccccc=cc=====================ccccTTTT\"\"\"\"TT....TTTTTTTT\"\"\"\"\"\"TTTT",
+     ".....ffff.......TT...f............cc=cc==============c======cc................TTTTTTTT.===......",
+     ".....ff.........TT................cc========================cc............==..TTTTTTTT.===......",
+     "..................................cc==========cccccccccccc==cc............==..........====......",
+     "....................................====c=====c====\"\"\"\"\"\".==.............==........===..........",
+     "....................................==========c====\"\"\"\"\"\".==..............=........==...........",
+     "..................................cc==========c====\"\"\"\"\"\"c==cc............TTTTTT................",
+     "..................................cc==========c====\"\"\"\"\"\"c==cc............TTTTTT................",
+     "....................TTTT..TT......cc==========c\"\"\"\"ccccccc==cc..TTTT......TTTTTT....TTTTTT..TTTT",
+     "cccc\"\"\"\"\"\"..........TTTT..TTcccccccc==========c\"\"\"\"ccccccc==ccccTTTT\"\"\"\"\"\"TTTTTT....TTTTTT..TTTT",
+     "c==c\"\"\"\"\"\"TT........TTTT..TTc==ccccc==========c\"\"\"\"ccccccc==ccccTTTT\"\"\"\"\"\"TTTTTT....TTTTTT..TTTT",
+     "c==c\"\"\"\"\"\"TT.......fffff....c==ccccc=====cc===c\"\"\"\"ccccccc==ccccTTTT\"\"\"\"\"\"TTTTTT....TTTTTT..TTTT",
+     "c==c\"\"\"\"\"\"TT.......fffff....c==cccccccc==cc===c\"\"\"\"ccccccc==ccccTTTT\"\"\"\"\"\"TTTTTT....TTTTTT..TTTT",
+     "c==c\"\"\"\"\"\"TT.......fffff....c==cccccccc=======c\"\"\"\"ccccccc==ccccTTTT\"\"\"\"\"\"\"\"................TTTT",
+     "c==c\"\"\"\"\"\"TT........ff.....fc==cccccccccc=====c..ccccccccc==ccccTTTT\"\"\"\"\"\"\"\"......=.........TTTT",
+     "c==c\"\"\"\"\"\"...............fffc==cccccccccc===================ccccTTTT\"\"\"\"\"\"\"\"................TTTT",
+     "c==c\"\"\"\"\"\"..............ffffc==cccccccccc===================ccccTTTTTTTTTTTT........TTTTTTTTTTTT",
+     "c==ccccccccc........ccccccccc==cccccccccccccccc..cccccccccccccccTTTTTTTTTTTT........TTTTTTTTTTTT",
+     "c==========c........c==========cccccccccccccccc..cccccccccccccccTTTTTTTTTTTT........TTTTTTTTTTTT",
+     "c==========c........c==========ccccccccccccc........ccccccccccccTTTTTTTTTTTT........TTTTTTTTTTTT",
+     "cccccccccccc........cccccccccccccccccccccccc........ccccccccccccTTTTTTTTTTTT........TTTTTTTTTTTT",
+     "TTTTTTTTTTTTT######TTTTTTTTTTTTTTTTTTTTTTTTT........TTTTTTTTTTTTTTTTTTTTTTTTT######TTTTTTTTTTTTT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT........TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT........TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT........TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT...vv...TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTccccccTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTccccccTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTccccccTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTccccccTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTccccccTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTccccccTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTccccccTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+     "#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#TTTTTTTTTTTTTccccccTTTTTTTTTTTTT#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#",
+     "#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#TTTTTTTTTTTTTccccccTTTTTTTTTTTTT#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#",
+     "#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#TTTTTTTTTTTTTccccccTTTTTTTTTTTTT#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#",
+     "#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#",
+     "#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#",
+     "#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#",
+     "#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#",
+     "#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+     "TTTTTTTTTTTTTccccccTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTccccccTTTTTTTTTTTTT",
+     "TTTTTTTTTTTTT######TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT######TTTTTTTTTTTTT"
+    ],
+    "exits": {
+     "v": "SAFARI_ZONE_GATE"
+    },
+    "zone_at": [
+     [
+      0,
+      0,
+      32,
+      32,
+      "rocky_beach"
+     ],
+     [
+      32,
+      0,
+      32,
+      32,
+      "wetland"
+     ],
+     [
+      64,
+      0,
+      32,
+      32,
+      "meadow"
+     ],
+     [
+      0,
+      32,
+      32,
+      32,
+      "plains"
+     ],
+     [
+      32,
+      32,
+      32,
+      32,
+      "peak"
+     ],
+     [
+      64,
+      32,
+      32,
+      32,
+      "forest"
+     ],
+     [
+      32,
+      64,
+      32,
+      32,
+      "peak"
+     ]
+    ],
+    "parts": true,
+    "roofs": {
+     "_picture": {
+      "f": "ss_ground/JSZ11.png",
+      "at": [
+       0,
+       0
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/JSZ11.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       96,
+       96
+      ],
+      "px": 32
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccc........cccccccccccccccccccccccc........cccccccccccccccccccccccc........cccccccccccc",
+     "cccccccccccc........cccccccccccccccccccccccc........cccccccccccccTTTTTTTTTTc........cTTTTTTTTTTc",
+     "ccccccccccccsssssssscccccccccccccccccccccccc========cccccccccccccTTTTTTTTTTcccc..ccccTTTTTTTTTTc",
+     "ccccccccccccsssssssscccccccccccccccccccccccc========cccccccccccccTTcccccccccccc..ccccccccccccTTc",
+     "ccccssssssssssssssssrrrrsssscccccccc================c====\"\"\"cccccTTc====================cccccTTc",
+     "ccccsssssssssssss...rrrr.ssscccccccc==\"\"\"\"==cc===========\"\"\"cccccTTc====================cTTccTTc",
+     "ccccssssscsssssssss.\"\"\"\".ssscccccccc==\"\"\"\"==cc============\"\"cccccTTc==========\"\"\"\"======cTTccTTc",
+     "ccccsssssscssssssss.\"\"\"\".ssscccccccc=.\"\"=========c===cc=====cccccTTc==========\"\"\"\"======cTTccTTc",
+     "ccccscsssssrrssssss.\"\"\"\".ssscccccccc=.\"\"=cc==========cc=====cccccTTc========..\"\"\"\"======cTTccTTc",
+     "ccccsssssssrrssssssc\"\"\"\".ssscccccccc==\"\"=cc==============cc=cccccTTc=====.....\"\"\"\".=====cccccTTc",
+     "ccccssssssssssssssc......ssscccccccc==...=======ccc==\"\"\"=cc=cccccTTc=====.....\"\"\"\"..======rrcTTc",
+     "ccccssssssssssrrsssssssss.sscccccccc==....======ccc==\"\"\"====cccccccc\"\"\"\"cccccccccc...=====rrcccc",
+     "..ssssssssssssrrssssssssssssss....====ccc\"\"\"\"\"==ccc==\"\"\"======....cc\"\"\"\"cTTTTTTTTc...=======cc..",
+     "..ssssscssssssssssssssssssssss....====ccc\"\"\"\"\"======.\"\"\"======....cc\"\"\"\"cTTTTTTTTc....======cc..",
+     "..sssssssssssssssssrrsssssssss....====ccc\"\"\"\"\"======..========....cc===.cTTTTTTTTc....======cc..",
+     "..sssssssssssssssssrrsssssssss....=======..\"\"\"========ccccc===......====cTTTTTTTTc....======....",
+     "..ssssssssssssssssssssssssssss....=========\"\"\"===cc===ccccc===......====cccccccccc....======....",
+     "..ssss.TTTTTT.ssscssssrrssssss....=========\"\"\"===cc===ccc=====....cc======rr\"\"\"\"\"\"..========cc..",
+     "..sss..TTTTTT.ssssssscrrssssss....===cc====c==================....cc======rr\"\"\"\"\"\".=========cc..",
+     "..sss..TTTTTT...ssssssssssssss....===cc=======================....cc========\"\"\"\"\"\"==========cc..",
+     "ccccs..TT\"\"\"\"\"\".sssssssssssscccccccc=\"\"\"\"====cc=============cccccccc========\"\"\"\"\"\"====cccccccccc",
+     "ccccss.TT\"\"\"\"\"\".sssssssssssscccccccc=\"\"\"\"====cc=============cccccTTcTT======TTTT.=====cTTTTccTTc",
+     "ccccssss.\"\"\"\"\"\"..ssssssssssscccccccc===..\"\"=========cc\"\"====cccccTTcTT======TTTT.=====cTTTTccTTc",
+     "ccccssss.\"\"\"\"\"\"...sssssssssscccccccc===..\"\"=========cc\"\"===ccccccTTcTT=====.TTTT.===cccTTTTccTTc",
+     "ccccssss........ssssssssrrsscccccccc=====ccc.=====\"\"\"\"\"\"====cccccTTcTT..===..=======c==TTTTccTTc",
+     "ccccssssssssssssssssssssrrsscccccccc=====ccc..==\"\"\"\"\"\"\"\"..==cccccTTcTTTT============cTTTTTTccTTc",
+     "ccccsssssssssssssssssssssssscccccccc=====ccc..==\"\"\"\"\"\"\"\"..==cccccTTcTTTT============cTTTTTTccTTc",
+     "ccccsscssccssssssssssssssssscccccccc============...=========cccccTTcTTTT============cccccccccTTc",
+     "ccccccccccccsssssssscccccccccccccccccccccccc========cccccccccccccTTcccccccccccc..ccccccccccccTTc",
+     "ccccccccccccsssssssscccccccccccccccccccccccc========cccccccccccccTTTTTTTTTTcccc..ccccTTTTTTTTTTc",
+     "cccccccccccc........cccccccccccccccccccccccc........cccccccccccccTTTTTTTTTTc........cTTTTTTTTTTc",
+     "cccccccccccc........cccccccccccccccccccccccc........cccccccccccccccccccccccc........cccccccccccc",
+     "cccccccccccc........cccccccccccccccccccccccc........cccccccccccccccccccccccc........cccccccccccc",
+     "c==========c........c==========ccccccccccccc........cccccccccccccooooooooooc........cooooooooooc",
+     "c==========c========c==========cccccccccccccccc..ccccccccccccccccooooooooooc========cooooooooooc",
+     "c==ccccccccc========ccccccccc==cccccccccccccccc..ccccccccccccccccooccccccccc========cccccccccooc",
+     "c==c========================c==ccccc\"\"\"\"====================cccccoocTT=\"\"\"\"\"==========\"\"\"\"\"\"cooc",
+     "c==c========================c==ccccc\"\"\"\"====================cccccoocTT=\"\"\"\"\"==========\"\"\"\"\"\"cooc",
+     "c==c===TT===================c==ccccc\"\"\"\"==cc======ccccc=====cccccooc===\"\"\"\"\"==========rr\"\"\"\"cooc",
+     "c==c===TTTT============TT===c==ccccc\"\"\"\"==cc======ccccc=====cccccooc===\"\"\"\"\"==========rr=\"\"\"cooc",
+     "c==c===TTTT====c=======TT===c==ccccc\"\"\"\"==========ccccc=====cccccooc===\"\"\"oooooo======rrrr\"\"cooc",
+     "c==c=====TT=====c======TT===c==ccccc======c===cc==ccccc=====cccccooc===\"\"\"oooooo======rrrr\"\"cooc",
+     "c==c===============cccc=====c==ccccc==========cc============cccccooc======oooooo\"\"\"===\"\"\"\"\"\"cooc",
+     "cccc===============cccc=====cccccccc=cc=====================cccccccc======oooooo\"\"\"===\"\"\"\"\"\"cccc",
+     "..=================cccc=======....cc=cc==============c======cc....==============\"\"\"===========..",
+     "..============================....cc========================cc....========\"\"\"\"\"\"\"\"\"===========..",
+     "..============================....cc==========cccccccccccc==cc....========\"\"\"\"\"\"\"\"\"===========..",
+     "..============================......====c=====c====\"\"\"\"\"\".==......========\"\"\"\"\"\"\"\"\"===========..",
+     "..============================......==========c====\"\"\"\"\"\".==......============================..",
+     "..============================....cc==========c====\"\"\"\"\"\"c==cc....=================TTTT=======..",
+     "..===============..===========....cc==========c====\"\"\"\"\"\"c==cc....=================TTTT=======..",
+     "..=====c=========...==========....cc==========c\"\"\"\"ccccccc==cc....=================TTTT=======..",
+     "cccc=============.\"\"\"\"cccc..cccccccc==========c\"\"\"\"ccccccc==cccccccc\"\"\"\"oooo====ooooooooo===cccc",
+     "c==c==============\"\"\"\"cccc..c==ccccc==========c\"\"\"\"ccccccc==cccccooc\"\"\"\"oooo====ooooooooo===cooc",
+     "c==c===TT=========\"\"\"\"cccc..c==ccccc=====cc===c\"\"\"\"ccccccc==cccccooc\"\"\"\"oooo====ooooooooo===cooc",
+     "c==c\"\"\"TT=============cccc.=c==cccccccc==cc===c\"\"\"\"ccccccc==cccccooc\"\"\"\"========ooooooooo===cooc",
+     "c==c\"\"\"TT=====rr============c==cccccccc=======c\"\"\"\"ccccccc==cccccooc\"\"\"\"\"\"\"\"================cooc",
+     "c==c\"\"\"\"\"\"\"\"==rr============c==cccccccccc=====c..ccccccccc==cccccooc====\"\"\"\"================cooc",
+     "c==c\"\"\"\"\"\"\"\"================c==cccccccccc===================cccccoocrrrr\"\"\"\"================cooc",
+     "c==c\"\"\"\"\"\"\"\"================c==cccccccccc===================cccccoocrrrr\"\"\"\"================cooc",
+     "c==ccccccccc========ccccccccc==cccccccccccccccc..ccccccccccccccccooccccccccc========cccccccccooc",
+     "c==========c========c==========cccccccccccccccc..ccccccccccccccccooooooooooc========cooooooooooc",
+     "c==========c........c==========ccccccccccccc........cccccccccccccooooooooooc........cooooooooooc",
+     "cccccccccccc........cccccccccccccccccccccccc........cccccccccccccccccccccccc........cccccccccccc",
+     "TTTTTTTTTTTTT######TTTTTTTTTTTTTTTTTTTTTTTTT........TTTTTTTTTTTTTTTTTTTTTTTTT######TTTTTTTTTTTTT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT........TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT........TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT........TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT...vv...TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTccccccTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTccccccTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTccccccTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTccccccTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTccccccTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTccccccTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTccccccTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+     "#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#TTTTTTTTTTTTTccccccTTTTTTTTTTTTT#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#",
+     "#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#TTTTTTTTTTTTTccccccTTTTTTTTTTTTT#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#",
+     "#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#TTTTTTTTTTTTTccccccTTTTTTTTTTTTT#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#",
+     "#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#",
+     "#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#",
+     "#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#",
+     "#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#",
+     "#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+     "TTTTTTTTTTTTTccccccTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTccccccTTTTTTTTTTTTT",
+     "TTTTTTTTTTTTT######TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT######TTTTTTTTTTTTT"
+    ],
+    "exits": {
+     "v": "SAFARI_ZONE_GATE"
+    },
+    "zone_at": [
+     [
+      0,
+      0,
+      32,
+      32,
+      "desert"
+     ],
+     [
+      32,
+      0,
+      32,
+      32,
+      "wasteland"
+     ],
+     [
+      64,
+      0,
+      32,
+      32,
+      "mountain"
+     ],
+     [
+      0,
+      32,
+      32,
+      32,
+      "savannah"
+     ],
+     [
+      32,
+      32,
+      32,
+      32,
+      "peak"
+     ],
+     [
+      64,
+      32,
+      32,
+      32,
+      "marshland"
+     ],
+     [
+      32,
+      64,
+      32,
+      32,
+      "peak"
+     ]
+    ],
+    "parts": true,
+    "roofs": {
+     "_picture": {
+      "f": "ss_ground/JSZ12.png",
+      "at": [
+       0,
+       0
+      ],
+      "px": 32
+     },
+     "_buildings_in_picture": true,
+     "_signs_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "ss_top/JSZ12.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       96,
+       96
+      ],
+      "px": 32
+     }
+    ]
    }
   ],
   "floor_names": [
@@ -341586,7 +341950,9 @@
    "Layout 7",
    "Layout 8",
    "Layout 9",
-   "Layout 10"
+   "Layout 10",
+   "Layout 11",
+   "Layout 12"
   ],
   "start_floor_flag": "safari_layout",
   "buildings": {}
