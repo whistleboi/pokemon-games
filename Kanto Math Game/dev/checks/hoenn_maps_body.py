@@ -102,7 +102,8 @@ for key in BUILT:
         walk = set(".=\"NX!ow$[]{}%_()D<>^vnwu20b:|;,'")   # (' round stones: crossed on the Bicycle)
         starts = [(x, y) for y, r in enumerate(grid) for x, c in enumerate(r) if c in "<>^vnwu"]
         _back = [(x, y - 1) for x, y in map(tuple, m.get("back_doors", []))]   # (a yard reached by a back door: Lavaridge's hot springs)
-        seen, todo = set(starts[:1] + _back), deque(starts[:1] + _back)
+        _first = starts if m.get("split") else starts[:1]   # ("split": a map in parts, each from its own edge - Rustboro's fence path from Route 104, H7)
+        seen, todo = set(_first + _back), deque(_first + _back)
         while todo:
             x, y = todo.popleft()
             for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
