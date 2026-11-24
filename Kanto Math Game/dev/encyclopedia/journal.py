@@ -22,6 +22,7 @@ def words(t):
     t = F.fix(str(t or ""))
     t = re.sub(r"([Yy]our rival),? \{rival_name\}", lambda q: q.group(1), t)
     t = t.replace("{rival_name}", "your rival").replace("{player_name}", "you").replace("{rival_character}", "your rival")
+    t = re.sub(r"(^|[.!?]\s+)your rival", lambda q: q.group(1) + "Your rival", t)   # (a sentence's first word)
     return t
 
 
