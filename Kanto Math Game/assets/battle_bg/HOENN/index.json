@@ -1,0 +1,421 @@
+{
+ "source": "Pokemon Emerald (U), Jordan's game file: battle terrain table 0x31ABA8, specials from DrawMainBattleBackground's pool 0x3579C-0x35AA0; kanto_handoff/hoenn_rom_tools/em_battle_bg.py",
+ "terrain": {
+  "grass": "grass.png",
+  "cave": "cave.png",
+  "water": "water.png",
+  "sand": "sand.png",
+  "inside": "building.png"
+ },
+ "areas": {
+  "DEWFORD_TOWN": {
+   "gym": "gym.png",
+   "leader": "leader.png",
+   "water": "water.png",
+   "trainer": "plain.png",
+   "wild": "plain.png"
+  },
+  "EVER_GRANDE_CITY": {
+   "elite": [
+    "sidney.png",
+    "phoebe.png",
+    "glacia.png",
+    "drake.png"
+   ],
+   "gym": "champion.png",
+   "water": "water.png",
+   "trainer": "plain.png",
+   "wild": "plain.png"
+  },
+  "FALLARBOR_TOWN": {
+   "trainer": "plain.png",
+   "wild": "plain.png"
+  },
+  "FORTREE_CITY": {
+   "gym": "gym.png",
+   "leader": "leader.png",
+   "trainer": "plain.png",
+   "wild": "plain.png"
+  },
+  "FORTREE_CITY_UPPER": {
+   "trainer": "plain.png",
+   "wild": "plain.png"
+  },
+  "HOENN_ABANDONED_SHIP": {
+   "trainer": "building.png",
+   "water": "pond.png",
+   "wild": "building.png"
+  },
+  "HOENN_ALTERING_CAVE": {
+   "wild": "cave.png",
+   "trainer": "cave.png"
+  },
+  "HOENN_ANCIENT_TOMB": {
+   "trainer": "cave.png",
+   "wild": "cave.png"
+  },
+  "HOENN_ARTISAN_CAVE": {
+   "wild": "cave.png",
+   "trainer": "cave.png"
+  },
+  "HOENN_BATTLE_FRONTIER": {
+   "trainer": "building.png",
+   "wild": "building.png"
+  },
+  "HOENN_CAVE_OF_ORIGIN": {
+   "wild": "cave.png",
+   "trainer": "cave.png"
+  },
+  "HOENN_DESERT_RUINS": {
+   "trainer": "cave.png",
+   "wild": "cave.png"
+  },
+  "HOENN_DESERT_UNDERPASS": {
+   "wild": "cave.png",
+   "trainer": "cave.png"
+  },
+  "HOENN_FIERY_PATH": {
+   "wild": "cave.png",
+   "trainer": "cave.png"
+  },
+  "HOENN_GRANITE_CAVE": {
+   "wild": "cave.png",
+   "trainer": "cave.png"
+  },
+  "HOENN_ISLAND_CAVE": {
+   "trainer": "cave.png",
+   "wild": "cave.png"
+  },
+  "HOENN_JAGGED_PASS": {
+   "wild": "plain.png",
+   "trainer": "mountain.png"
+  },
+  "HOENN_MAGMA_HIDEOUT": {
+   "wild": "cave.png",
+   "trainer": "cave.png"
+  },
+  "HOENN_MARINE_CAVE": "kyogre.png",
+  "HOENN_METEOR_FALLS": {
+   "wild": "cave.png",
+   "trainer": "cave.png",
+   "water": "pond.png"
+  },
+  "HOENN_MIRAGE_TOWER": {
+   "wild": "cave.png",
+   "trainer": "cave.png"
+  },
+  "HOENN_MT_CHIMNEY": {
+   "trainer": "mountain.png",
+   "wild": "mountain.png"
+  },
+  "HOENN_MT_PYRE": {
+   "wild": "building.png",
+   "trainer": "building.png",
+   "water": "pond.png"
+  },
+  "HOENN_NEW_MAUVILLE": {
+   "wild": "building.png",
+   "trainer": "building.png"
+  },
+  "HOENN_OCEANIC_MUSEUM": {
+   "trainer": "building.png",
+   "wild": "building.png"
+  },
+  "HOENN_PETALBURG_WOODS": {
+   "wild": "grass.png",
+   "trainer": "grass.png"
+  },
+  "HOENN_ROUTE_101": {
+   "wild": "grass.png",
+   "trainer": "plain.png"
+  },
+  "HOENN_ROUTE_102": {
+   "wild": "grass.png",
+   "trainer": "plain.png",
+   "water": "pond.png"
+  },
+  "HOENN_ROUTE_103": {
+   "wild": "grass.png",
+   "trainer": "plain.png",
+   "water": "water.png"
+  },
+  "HOENN_ROUTE_104": {
+   "wild": "grass.png",
+   "trainer": "plain.png",
+   "water": "water.png"
+  },
+  "HOENN_ROUTE_105": {
+   "trainer": "water.png",
+   "water": "water.png",
+   "wild": "plain.png"
+  },
+  "HOENN_ROUTE_106": {
+   "trainer": "water.png",
+   "water": "water.png",
+   "wild": "plain.png"
+  },
+  "HOENN_ROUTE_107": {
+   "trainer": "water.png",
+   "water": "water.png",
+   "wild": "plain.png"
+  },
+  "HOENN_ROUTE_108": {
+   "trainer": "water.png",
+   "water": "water.png",
+   "wild": "plain.png"
+  },
+  "HOENN_ROUTE_109": {
+   "trainer": "sand.png",
+   "water": "water.png",
+   "wild": "sand.png"
+  },
+  "HOENN_ROUTE_110": {
+   "wild": "grass.png",
+   "trainer": "plain.png",
+   "water": "water.png"
+  },
+  "HOENN_ROUTE_111": {
+   "wild": "sand.png",
+   "trainer": "plain.png",
+   "water": "pond.png"
+  },
+  "HOENN_ROUTE_112": {
+   "wild": "grass.png",
+   "trainer": "plain.png"
+  },
+  "HOENN_ROUTE_113": {
+   "wild": "sand.png",
+   "trainer": "sand.png"
+  },
+  "HOENN_ROUTE_114": {
+   "wild": "grass.png",
+   "trainer": "plain.png",
+   "water": "water.png"
+  },
+  "HOENN_ROUTE_115": {
+   "wild": "grass.png",
+   "trainer": "plain.png",
+   "water": "water.png"
+  },
+  "HOENN_ROUTE_116": {
+   "wild": "grass.png",
+   "trainer": "plain.png"
+  },
+  "HOENN_ROUTE_117": {
+   "wild": "grass.png",
+   "trainer": "plain.png",
+   "water": "pond.png"
+  },
+  "HOENN_ROUTE_118": {
+   "wild": "grass.png",
+   "trainer": "sand.png",
+   "water": "water.png"
+  },
+  "HOENN_ROUTE_119": {
+   "wild": "long_grass.png",
+   "trainer": "long_grass.png",
+   "water": "water.png"
+  },
+  "HOENN_ROUTE_120": {
+   "wild": "long_grass.png",
+   "trainer": "plain.png",
+   "water": "pond.png"
+  },
+  "HOENN_ROUTE_121": {
+   "wild": "grass.png",
+   "trainer": "plain.png",
+   "water": "water.png"
+  },
+  "HOENN_ROUTE_122": {
+   "water": "water.png",
+   "trainer": "plain.png",
+   "wild": "plain.png"
+  },
+  "HOENN_ROUTE_123": {
+   "wild": "grass.png",
+   "trainer": "plain.png",
+   "water": "water.png"
+  },
+  "HOENN_ROUTE_124": {
+   "trainer": "water.png",
+   "water": "water.png",
+   "wild": "plain.png"
+  },
+  "HOENN_ROUTE_125": {
+   "trainer": "plain.png",
+   "water": "water.png",
+   "wild": "plain.png"
+  },
+  "HOENN_ROUTE_126": {
+   "trainer": "water.png",
+   "water": "water.png",
+   "wild": "plain.png"
+  },
+  "HOENN_ROUTE_127": {
+   "trainer": "plain.png",
+   "water": "water.png",
+   "wild": "plain.png"
+  },
+  "HOENN_ROUTE_128": {
+   "trainer": "water.png",
+   "water": "water.png",
+   "wild": "plain.png"
+  },
+  "HOENN_ROUTE_129": {
+   "trainer": "water.png",
+   "water": "water.png",
+   "wild": "plain.png"
+  },
+  "HOENN_ROUTE_130": {
+   "trainer": "water.png",
+   "water": "water.png",
+   "wild": "plain.png"
+  },
+  "HOENN_ROUTE_131": {
+   "trainer": "water.png",
+   "water": "water.png",
+   "wild": "plain.png"
+  },
+  "HOENN_ROUTE_132": {
+   "trainer": "plain.png",
+   "water": "water.png",
+   "wild": "plain.png"
+  },
+  "HOENN_ROUTE_133": {
+   "trainer": "water.png",
+   "water": "water.png",
+   "wild": "plain.png"
+  },
+  "HOENN_ROUTE_134": {
+   "trainer": "plain.png",
+   "water": "water.png",
+   "wild": "plain.png"
+  },
+  "HOENN_RUSTURF_TUNNEL": {
+   "wild": "cave.png",
+   "trainer": "cave.png"
+  },
+  "HOENN_SAFARI_ZONE": {
+   "wild": "grass.png",
+   "trainer": "plain.png",
+   "water": "pond.png"
+  },
+  "HOENN_SCORCHED_SLAB": {
+   "water": "pond.png",
+   "trainer": "cave.png",
+   "wild": "cave.png"
+  },
+  "HOENN_SEAFLOOR_CAVERN": {
+   "wild": "cave.png",
+   "trainer": "cave.png",
+   "water": "pond.png"
+  },
+  "HOENN_SEALED_CHAMBER": {
+   "water": "pond.png",
+   "trainer": "cave.png",
+   "wild": "cave.png"
+  },
+  "HOENN_SHOAL_CAVE": {
+   "wild": "cave.png",
+   "trainer": "cave.png",
+   "water": "pond.png"
+  },
+  "HOENN_SKY_PILLAR": {
+   "wild": "cave.png",
+   "trainer": "cave.png",
+   "water": "water.png"
+  },
+  "HOENN_SOUTHERN_ISLAND": {
+   "water": "water.png",
+   "trainer": "plain.png",
+   "wild": "plain.png"
+  },
+  "HOENN_SPACE_CENTER": {
+   "trainer": "building.png",
+   "wild": "building.png"
+  },
+  "HOENN_SS_TIDAL": {
+   "trainer": "building.png",
+   "wild": "building.png"
+  },
+  "HOENN_TEAM_HIDEOUT": "aqua.png",
+  "HOENN_TERRA_CAVE": "groudon.png",
+  "HOENN_VICTORY_ROAD": {
+   "wild": "cave.png",
+   "trainer": "cave.png",
+   "water": "pond.png"
+  },
+  "HOENN_WEATHER_INSTITUTE": {
+   "trainer": "building.png",
+   "wild": "building.png"
+  },
+  "LAVARIDGE_TOWN": {
+   "gym": "gym.png",
+   "leader": "leader.png",
+   "trainer": "plain.png",
+   "wild": "plain.png"
+  },
+  "LILYCOVE_CITY": {
+   "water": "water.png",
+   "trainer": "plain.png",
+   "wild": "plain.png"
+  },
+  "LITTLEROOT_TOWN": {
+   "trainer": "plain.png",
+   "wild": "plain.png"
+  },
+  "MAUVILLE_CITY": {
+   "gym": "gym.png",
+   "leader": "leader.png",
+   "water": "water.png",
+   "trainer": "plain.png",
+   "wild": "plain.png"
+  },
+  "MOSSDEEP_CITY": {
+   "gym": "gym.png",
+   "leader": "leader.png",
+   "water": "water.png",
+   "trainer": "plain.png",
+   "wild": "plain.png"
+  },
+  "OLDALE_TOWN": {
+   "trainer": "plain.png",
+   "wild": "plain.png"
+  },
+  "PACIFIDLOG_TOWN": {
+   "water": "water.png",
+   "trainer": "plain.png",
+   "wild": "plain.png"
+  },
+  "PETALBURG_CITY": {
+   "gym": "gym.png",
+   "leader": "leader.png",
+   "water": "pond.png",
+   "trainer": "plain.png",
+   "wild": "plain.png"
+  },
+  "RUSTBORO_CITY": {
+   "gym": "gym.png",
+   "leader": "leader.png",
+   "water": "water.png",
+   "trainer": "plain.png",
+   "wild": "plain.png"
+  },
+  "SLATEPORT_CITY": {
+   "water": "water.png",
+   "trainer": "plain.png",
+   "wild": "plain.png"
+  },
+  "SOOTOPOLIS_CITY": {
+   "gym": "gym.png",
+   "leader": "leader.png",
+   "water": "pond.png",
+   "trainer": "plain.png",
+   "wild": "plain.png"
+  },
+  "VERDANTURF_TOWN": {
+   "trainer": "plain.png",
+   "wild": "plain.png"
+  }
+ }
+}

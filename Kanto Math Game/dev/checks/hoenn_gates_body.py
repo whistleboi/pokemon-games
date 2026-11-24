@@ -59,6 +59,20 @@ def _toast(st):
     return ""
 
 
+import os as _os
+# (11-24, speed: drawing every frame was a third of the run and nothing reads the screen here. Draw one frame in
+#  DRAW_EVERY, and always while someone talks; HG_DRAW_EVERY=1 draws them all, as before.)
+DRAW_EVERY = max(1, int(_os.environ.get("HG_DRAW_EVERY", "4")))
+_drawn = [0]
+
+
+def _draw(st):
+    _drawn[0] += 1
+    talking = getattr(st, "npc_active", False) or getattr(getattr(st, "dialogue_box", None), "visible", False)
+    if talking or _drawn[0] % DRAW_EVERY == 0:
+        st.draw()
+
+
 def tap(st, n=600):
     for _ in range(n):
         if getattr(st, "npc_active", False):
@@ -73,8 +87,12 @@ def tap(st, n=600):
 
 
 def frames(n):
-    for _ in range(n):
-        g.current_state.update(); g.current_state.draw()
+    for i in range(n):
+        g.current_state.update()
+        if i == n - 1:
+            g.current_state.draw()
+        else:
+            _draw(g.current_state)
 
 
 def play(until, n=1500):
@@ -89,7 +107,7 @@ def play(until, n=1500):
         elif getattr(st, "dialogue_box", None) is not None and getattr(st.dialogue_box, "visible", False) and not _is_battle(st):
             _note(st)
             st.dialogue_box.advance()
-        st.update(); st.draw()
+        st.update(); _draw(st)
     return until()
 
 
@@ -619,7 +637,7 @@ def scene_flag(key, came, flag, at_=None, step=None, n=1500):
             _note(s); s.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=(640, 600))])
         elif getattr(s, "dialogue_box", None) is not None and getattr(s.dialogue_box, "visible", False):
             _note(s); s.dialogue_box.advance()
-        s.update(); s.draw()
+        s.update(); _draw(s)
     return bool(story.story_flags.get(flag))
 
 

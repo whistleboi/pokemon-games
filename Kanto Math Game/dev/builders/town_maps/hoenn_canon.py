@@ -233,6 +233,20 @@ def _museum_queue(maps):
             bar.append(b)
 
 
+def _home_tv(maps):
+    """Dev Map clean-hoenn-main-swarm-tv: the TV in your house (Emerald's, at 4,4 in the picture) tells today's mass outbreak
+    once there is one (swarms.SWARMS["HOENN"], after the Hall of Fame); otherwise it's just the TV."""
+    m = maps.get("LITTLEROOT_TOWN")
+    room = ((m or {}).get("rooms") or {}).get("home")
+    if not room or "!" in "".join(room["art"]):
+        return
+    row = room["art"][4]
+    room["art"][4] = row[:4] + "!" + row[5:]
+    room["signs"] = [["The TV's on. A cooking show... Mom's favourite."]]
+    room["sign_events"] = {"4,4": {"text": "TV", "action": "EVENT",
+                                   "event": {"swarm_news": "HOENN", "lines": ["The TV's on. A cooking show... Mom's favourite."]}}}
+
+
 def _part(m, floor, room):
     if room:
         return m["rooms"][room]
@@ -250,6 +264,7 @@ def _at(part, x, y):
 def apply(maps):
     _slateport_sub(maps)
     _museum_queue(maps)
+    _home_tv(maps)
     for key, floor, room, x, y, who in PEOPLE:
         m = maps.get(key)
         if m:
