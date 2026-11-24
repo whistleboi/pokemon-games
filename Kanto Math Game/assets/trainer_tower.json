@@ -1,5 +1,5 @@
 {
- "about": "FireRed's built-in Trainer Tower, from pokefirered src/trainer_tower_sets.c (tt_parse.py, 11-23)",
+ "about": "FireRed's built-in Trainer Tower, from pokefirered src/trainer_tower_sets.c (tt_parse.py, 11-23; 11-24: only the floors on a climb, the prize once per climb as FireRed pays it)",
  "climbs": {
   "SINGLE": [
    "Single_1",
@@ -45,7 +45,6 @@
  "floors": {
   "Single_4": {
    "type": "SINGLE",
-   "prize": "WHITE_HERB",
    "trainers": [
     {
      "name": "Cole",
@@ -231,7 +230,6 @@
   },
   "Single_7": {
    "type": "SINGLE",
-   "prize": "DRAGON_SCALE",
    "trainers": [
     {
      "name": "Jac",
@@ -415,195 +413,8 @@
     }
    ]
   },
-  "Single_Unused": {
-   "type": "SINGLE",
-   "prize": "IRON",
-   "trainers": [
-    {
-     "name": "Mily",
-     "class": "PSYCHIC",
-     "fr_class": "PSYCHIC_F",
-     "woman": true,
-     "before": "Look at my Pokemon superpower!",
-     "win": "Isn't it incredible? Pokemon power",
-     "lose": "This is an awful nightmare...!",
-     "after": "This is a dream nothing more",
-     "mons": [
-      {
-       "id": 113,
-       "item": "ORAN_BERRY",
-       "moves": [
-        "LIGHT-SCREEN",
-        "EGG-BOMB",
-        "MINIMIZE",
-        "SECRET-POWER"
-       ],
-       "evs": {
-        "hp": 255,
-        "attack": 0,
-        "defense": 255,
-        "speed": 0,
-        "spAttack": 0,
-        "spDefense": 0
-       },
-       "ivs": {
-        "hp": 10,
-        "attack": 10,
-        "defense": 10,
-        "speed": 10,
-        "spAttack": 10,
-        "spDefense": 10
-       },
-       "nature": "IMPISH",
-       "ability": 1
-      },
-      {
-       "id": 36,
-       "item": "ORAN_BERRY",
-       "moves": [
-        "METRONOME",
-        "REFLECT",
-        "SING",
-        "POUND"
-       ],
-       "evs": {
-        "hp": 110,
-        "attack": 0,
-        "defense": 200,
-        "speed": 0,
-        "spAttack": 0,
-        "spDefense": 200
-       },
-       "ivs": {
-        "hp": 10,
-        "attack": 10,
-        "defense": 10,
-        "speed": 10,
-        "spAttack": 10,
-        "spDefense": 10
-       },
-       "nature": "SASSY",
-       "ability": 0
-      },
-      {
-       "id": 176,
-       "item": "ORAN_BERRY",
-       "moves": [
-        "METRONOME",
-        "REFLECT",
-        "SWEET-KISS",
-        "PECK"
-       ],
-       "evs": {
-        "hp": 255,
-        "attack": 0,
-        "defense": 0,
-        "speed": 0,
-        "spAttack": 0,
-        "spDefense": 255
-       },
-       "ivs": {
-        "hp": 10,
-        "attack": 10,
-        "defense": 10,
-        "speed": 10,
-        "spAttack": 10,
-        "spDefense": 10
-       },
-       "nature": "SASSY",
-       "ability": 1
-      },
-      {
-       "id": 176,
-       "item": "ORAN_BERRY",
-       "moves": [
-        "METRONOME",
-        "HIDDEN-POWER",
-        "ATTRACT",
-        "LIGHT-SCREEN"
-       ],
-       "evs": {
-        "hp": 255,
-        "attack": 0,
-        "defense": 255,
-        "speed": 0,
-        "spAttack": 0,
-        "spDefense": 0
-       },
-       "ivs": {
-        "hp": 10,
-        "attack": 10,
-        "defense": 10,
-        "speed": 10,
-        "spAttack": 10,
-        "spDefense": 10
-       },
-       "nature": "RELAXED",
-       "ability": 1
-      },
-      {
-       "id": 113,
-       "item": "ORAN_BERRY",
-       "moves": [
-        "FLAMETHROWER",
-        "SOFT-BOILED",
-        "LIGHT-SCREEN",
-        "SECRET-POWER"
-       ],
-       "evs": {
-        "hp": 255,
-        "attack": 0,
-        "defense": 255,
-        "speed": 0,
-        "spAttack": 0,
-        "spDefense": 0
-       },
-       "ivs": {
-        "hp": 10,
-        "attack": 10,
-        "defense": 10,
-        "speed": 10,
-        "spAttack": 10,
-        "spDefense": 10
-       },
-       "nature": "BOLD",
-       "ability": 1
-      },
-      {
-       "id": 36,
-       "item": "ORAN_BERRY",
-       "moves": [
-        "REFLECT",
-        "FLAMETHROWER",
-        "SING",
-        "BODY-SLAM"
-       ],
-       "evs": {
-        "hp": 110,
-        "attack": 0,
-        "defense": 200,
-        "speed": 0,
-        "spAttack": 200,
-        "spDefense": 0
-       },
-       "ivs": {
-        "hp": 10,
-        "attack": 10,
-        "defense": 10,
-        "speed": 10,
-        "spAttack": 10,
-        "spDefense": 10
-       },
-       "nature": "QUIET",
-       "ability": 0
-      }
-     ]
-    }
-   ]
-  },
   "Double_5": {
    "type": "DOUBLE",
-   "prize": "CHOICE_BAND",
    "trainers": [
     {
      "name": "Jos & Anne",
@@ -969,7 +780,6 @@
   },
   "Double_6": {
    "type": "DOUBLE",
-   "prize": "CALCIUM",
    "trainers": [
     {
      "name": "Emy & Alek",
@@ -1335,7 +1145,6 @@
   },
   "Double_2": {
    "type": "DOUBLE",
-   "prize": "HP_UP",
    "trainers": [
     {
      "name": "Jo & Haley",
@@ -1701,7 +1510,6 @@
   },
   "Knockout_1": {
    "type": "KNOCKOUT",
-   "prize": "METAL_COAT",
    "trainers": [
     {
      "name": "Jordy",
@@ -2247,7 +2055,6 @@
   },
   "Knockout_2": {
    "type": "KNOCKOUT",
-   "prize": "UP_GRADE",
    "trainers": [
     {
      "name": "Mike",
@@ -2793,7 +2600,6 @@
   },
   "Single_5": {
    "type": "SINGLE",
-   "prize": "HP_UP",
    "trainers": [
     {
      "name": "Joey",
@@ -2979,7 +2785,6 @@
   },
   "Single_8": {
    "type": "SINGLE",
-   "prize": "METAL_COAT",
    "trainers": [
     {
      "name": "Lily",
@@ -3165,7 +2970,6 @@
   },
   "Single_2": {
    "type": "SINGLE",
-   "prize": "UP_GRADE",
    "trainers": [
     {
      "name": "Brandon",
@@ -3351,7 +3155,6 @@
   },
   "Double_3": {
    "type": "DOUBLE",
-   "prize": "IRON",
    "trainers": [
     {
      "name": "Ric & Rene",
@@ -3717,7 +3520,6 @@
   },
   "Double_1": {
    "type": "DOUBLE",
-   "prize": "DRAGON_SCALE",
    "trainers": [
     {
      "name": "Jen & Kira",
@@ -4083,7 +3885,6 @@
   },
   "Double_4": {
    "type": "DOUBLE",
-   "prize": "MENTAL_HERB",
    "trainers": [
     {
      "name": "Isac & Mag",
@@ -4449,7 +4250,6 @@
   },
   "Knockout_8": {
    "type": "KNOCKOUT",
-   "prize": "BRIGHT_POWDER",
    "trainers": [
     {
      "name": "Chelsea",
@@ -4995,7 +4795,6 @@
   },
   "Knockout_3": {
    "type": "KNOCKOUT",
-   "prize": "CALCIUM",
    "trainers": [
     {
      "name": "Camryn",
@@ -5541,7 +5340,6 @@
   },
   "Single_6": {
    "type": "SINGLE",
-   "prize": "CARBOS",
    "trainers": [
     {
      "name": "Braden",
@@ -5727,7 +5525,6 @@
   },
   "Mixed_1": {
    "type": "SINGLE",
-   "prize": "KINGS_ROCK",
    "trainers": [
     {
      "name": "Allyson",
@@ -5913,7 +5710,6 @@
   },
   "Single_1": {
    "type": "SINGLE",
-   "prize": "UP_GRADE",
    "trainers": [
     {
      "name": "Alberto",
@@ -6099,7 +5895,6 @@
   },
   "Mixed_5": {
    "type": "DOUBLE",
-   "prize": "METAL_COAT",
    "trainers": [
     {
      "name": "Kat & Kipp",
@@ -6465,7 +6260,6 @@
   },
   "Double_8": {
    "type": "DOUBLE",
-   "prize": "MENTAL_HERB",
    "trainers": [
     {
      "name": "Geb & Megan",
@@ -6829,375 +6623,8 @@
     }
    ]
   },
-  "Double_Unused1": {
-   "type": "DOUBLE",
-   "prize": "ZINC",
-   "trainers": [
-    {
-     "name": "Lisa & Leah",
-     "class": "TWINS",
-     "fr_class": "TWINS",
-     "woman": true,
-     "before": "Absolutely we re going to win!",
-     "win": "Yeah yeah!!",
-     "lose": "Aww! waaah!!",
-     "after": "Excuse me but you're all too strong",
-     "mons": [
-      {
-       "id": 60,
-       "item": "CHERI_BERRY",
-       "moves": [
-        "SURF",
-        "PROTECT",
-        "TOXIC",
-        "DOUBLE-TEAM"
-       ],
-       "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defense": 100,
-        "speed": 255,
-        "spAttack": 0,
-        "spDefense": 155
-       },
-       "ivs": {
-        "hp": 15,
-        "attack": 15,
-        "defense": 15,
-        "speed": 15,
-        "spAttack": 15,
-        "spDefense": 15
-       },
-       "nature": "TIMID",
-       "ability": 0
-      },
-      {
-       "id": 7,
-       "item": "MYSTIC_WATER",
-       "moves": [
-        "WATER-PULSE",
-        "PROTECT",
-        "TOXIC",
-        "MIRROR-COAT"
-       ],
-       "evs": {
-        "hp": 255,
-        "attack": 0,
-        "defense": 0,
-        "speed": 0,
-        "spAttack": 0,
-        "spDefense": 255
-       },
-       "ivs": {
-        "hp": 15,
-        "attack": 15,
-        "defense": 15,
-        "speed": 15,
-        "spAttack": 15,
-        "spDefense": 15
-       },
-       "nature": "CALM",
-       "ability": 0
-      },
-      {
-       "id": 170,
-       "item": "MAGNET",
-       "moves": [
-        "SURF",
-        "THUNDER-WAVE",
-        "CONFUSE-RAY",
-        "THUNDERBOLT"
-       ],
-       "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defense": 100,
-        "speed": 255,
-        "spAttack": 0,
-        "spDefense": 155
-       },
-       "ivs": {
-        "hp": 15,
-        "attack": 15,
-        "defense": 15,
-        "speed": 15,
-        "spAttack": 15,
-        "spDefense": 15
-       },
-       "nature": "MODEST",
-       "ability": 0
-      },
-      {
-       "id": 29,
-       "item": "POISON_BARB",
-       "moves": [
-        "WATER-PULSE",
-        "SLUDGE-BOMB",
-        "CRUNCH",
-        "DIG"
-       ],
-       "evs": {
-        "hp": 110,
-        "attack": 100,
-        "defense": 100,
-        "speed": 0,
-        "spAttack": 100,
-        "spDefense": 100
-       },
-       "ivs": {
-        "hp": 15,
-        "attack": 15,
-        "defense": 15,
-        "speed": 15,
-        "spAttack": 15,
-        "spDefense": 15
-       },
-       "nature": "HARDY",
-       "ability": 0
-      },
-      {
-       "id": 35,
-       "item": "WHITE_HERB",
-       "moves": [
-        "WATER-PULSE",
-        "DOUBLE-TEAM",
-        "SING",
-        "MINIMIZE"
-       ],
-       "evs": {
-        "hp": 110,
-        "attack": 0,
-        "defense": 100,
-        "speed": 100,
-        "spAttack": 100,
-        "spDefense": 100
-       },
-       "ivs": {
-        "hp": 15,
-        "attack": 15,
-        "defense": 15,
-        "speed": 15,
-        "spAttack": 15,
-        "spDefense": 15
-       },
-       "nature": "MODEST",
-       "ability": 0
-      },
-      {
-       "id": 116,
-       "item": "SITRUS_BERRY",
-       "moves": [
-        "SURF",
-        "SMOKESCREEN",
-        "ATTRACT",
-        "DRAGON-RAGE"
-       ],
-       "evs": {
-        "hp": 110,
-        "attack": 0,
-        "defense": 100,
-        "speed": 100,
-        "spAttack": 100,
-        "spDefense": 100
-       },
-       "ivs": {
-        "hp": 15,
-        "attack": 15,
-        "defense": 15,
-        "speed": 15,
-        "spAttack": 15,
-        "spDefense": 15
-       },
-       "nature": "CALM",
-       "ability": 0
-      }
-     ]
-    },
-    {
-     "name": "Lisa & Leah",
-     "class": "TWINS",
-     "fr_class": "TWINS",
-     "woman": true,
-     "before": "Can we win? it's exciting",
-     "win": "Yeah yeah!! you make me happy",
-     "lose": "Aww! waaah!!",
-     "after": "You should not beat up on children",
-     "mons": [
-      {
-       "id": 194,
-       "item": "LEFTOVERS",
-       "moves": [
-        "SURF",
-        "EARTHQUAKE",
-        "YAWN",
-        "FLASH"
-       ],
-       "evs": {
-        "hp": 110,
-        "attack": 100,
-        "defense": 100,
-        "speed": 0,
-        "spAttack": 100,
-        "spDefense": 100
-       },
-       "ivs": {
-        "hp": 15,
-        "attack": 15,
-        "defense": 15,
-        "speed": 15,
-        "spAttack": 15,
-        "spDefense": 15
-       },
-       "nature": "SASSY",
-       "ability": 0
-      },
-      {
-       "id": 54,
-       "item": "SCOPE_LENS",
-       "moves": [
-        "SURF",
-        "CROSS-CHOP",
-        "HYPNOSIS",
-        "DISABLE"
-       ],
-       "evs": {
-        "hp": 110,
-        "attack": 100,
-        "defense": 100,
-        "speed": 0,
-        "spAttack": 100,
-        "spDefense": 100
-       },
-       "ivs": {
-        "hp": 15,
-        "attack": 15,
-        "defense": 15,
-        "speed": 15,
-        "spAttack": 15,
-        "spDefense": 15
-       },
-       "nature": "HARDY",
-       "ability": 1
-      },
-      {
-       "id": 209,
-       "item": "PECHA_BERRY",
-       "moves": [
-        "WATER-PULSE",
-        "THUNDER-WAVE",
-        "CRUNCH",
-        "SHADOW-BALL"
-       ],
-       "evs": {
-        "hp": 110,
-        "attack": 100,
-        "defense": 100,
-        "speed": 100,
-        "spAttack": 0,
-        "spDefense": 100
-       },
-       "ivs": {
-        "hp": 15,
-        "attack": 15,
-        "defense": 15,
-        "speed": 15,
-        "spAttack": 15,
-        "spDefense": 15
-       },
-       "nature": "HARDY",
-       "ability": 0
-      },
-      {
-       "id": 39,
-       "item": "SITRUS_BERRY",
-       "moves": [
-        "WATER-PULSE",
-        "THUNDER-WAVE",
-        "SING",
-        "DISABLE"
-       ],
-       "evs": {
-        "hp": 110,
-        "attack": 100,
-        "defense": 100,
-        "speed": 0,
-        "spAttack": 100,
-        "spDefense": 100
-       },
-       "ivs": {
-        "hp": 15,
-        "attack": 15,
-        "defense": 15,
-        "speed": 15,
-        "spAttack": 15,
-        "spDefense": 15
-       },
-       "nature": "MODEST",
-       "ability": 0
-      },
-      {
-       "id": 32,
-       "item": "FOCUS_BAND",
-       "moves": [
-        "WATER-PULSE",
-        "SLUDGE-BOMB",
-        "HORN-DRILL",
-        "DIG"
-       ],
-       "evs": {
-        "hp": 110,
-        "attack": 100,
-        "defense": 100,
-        "speed": 0,
-        "spAttack": 100,
-        "spDefense": 100
-       },
-       "ivs": {
-        "hp": 15,
-        "attack": 15,
-        "defense": 15,
-        "speed": 15,
-        "spAttack": 15,
-        "spDefense": 15
-       },
-       "nature": "HARDY",
-       "ability": 0
-      },
-      {
-       "id": 158,
-       "item": "BRIGHT_POWDER",
-       "moves": [
-        "SURF",
-        "PROTECT",
-        "TOXIC",
-        "DOUBLE-TEAM"
-       ],
-       "evs": {
-        "hp": 110,
-        "attack": 0,
-        "defense": 100,
-        "speed": 100,
-        "spAttack": 100,
-        "spDefense": 100
-       },
-       "ivs": {
-        "hp": 15,
-        "attack": 15,
-        "defense": 15,
-        "speed": 15,
-        "spAttack": 15,
-        "spDefense": 15
-       },
-       "nature": "CALM",
-       "ability": 0
-      }
-     ]
-    }
-   ]
-  },
   "Knockout_7": {
    "type": "KNOCKOUT",
-   "prize": "PROTEIN",
    "trainers": [
     {
      "name": "Priscilla",
@@ -7739,7 +7166,6 @@
   },
   "Knockout_4": {
    "type": "KNOCKOUT",
-   "prize": "DRAGON_SCALE",
    "trainers": [
     {
      "name": "Brennan",
@@ -8284,7 +7710,6 @@
   },
   "Single_3": {
    "type": "SINGLE",
-   "prize": "METAL_COAT",
    "trainers": [
     {
      "name": "Jarrett",
@@ -8470,7 +7895,6 @@
   },
   "Mixed_3": {
    "type": "SINGLE",
-   "prize": "DRAGON_SCALE",
    "trainers": [
     {
      "name": "Owen",
@@ -8656,7 +8080,6 @@
   },
   "Mixed_2": {
    "type": "SINGLE",
-   "prize": "PROTEIN",
    "trainers": [
     {
      "name": "Lorenzo",
@@ -8840,375 +8263,8 @@
     }
    ]
   },
-  "Double_Unused2": {
-   "type": "DOUBLE",
-   "prize": "SCOPE_LENS",
-   "trainers": [
-    {
-     "name": "Nia & Carl",
-     "class": "COOL_COUPLE",
-     "fr_class": "COOL_COUPLE",
-     "woman": false,
-     "before": "Here goes my digital romantic hero strategy",
-     "win": "That's the digital hyper mode power",
-     "lose": "My perfect strategy was beat up?",
-     "after": "My invincible strategy was destroyed...",
-     "mons": [
-      {
-       "id": 89,
-       "item": "CHOICE_BAND",
-       "moves": [
-        "THUNDERBOLT",
-        "SLUDGE-BOMB",
-        "SHADOW-BALL",
-        "BODY-SLAM"
-       ],
-       "evs": {
-        "hp": 0,
-        "attack": 255,
-        "defense": 155,
-        "speed": 0,
-        "spAttack": 0,
-        "spDefense": 100
-       },
-       "ivs": {
-        "hp": 31,
-        "attack": 31,
-        "defense": 31,
-        "speed": 31,
-        "spAttack": 31,
-        "spDefense": 31
-       },
-       "nature": "RELAXED",
-       "ability": 1
-      },
-      {
-       "id": 94,
-       "item": "PETAYA_BERRY",
-       "moves": [
-        "THUNDERBOLT",
-        "CONFUSE-RAY",
-        "PSYCHIC",
-        "EXPLOSION"
-       ],
-       "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defense": 0,
-        "speed": 255,
-        "spAttack": 155,
-        "spDefense": 100
-       },
-       "ivs": {
-        "hp": 31,
-        "attack": 31,
-        "defense": 31,
-        "speed": 31,
-        "spAttack": 31,
-        "spDefense": 31
-       },
-       "nature": "GENTLE",
-       "ability": 0
-      },
-      {
-       "id": 65,
-       "item": "GANLON_BERRY",
-       "moves": [
-        "THUNDER-PUNCH",
-        "PSYCHIC",
-        "RECOVER",
-        "REFLECT"
-       ],
-       "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defense": 0,
-        "speed": 255,
-        "spAttack": 255,
-        "spDefense": 0
-       },
-       "ivs": {
-        "hp": 31,
-        "attack": 31,
-        "defense": 31,
-        "speed": 31,
-        "spAttack": 31,
-        "spDefense": 31
-       },
-       "nature": "TIMID",
-       "ability": 0
-      },
-      {
-       "id": 135,
-       "item": "BRIGHT_POWDER",
-       "moves": [
-        "THUNDERBOLT",
-        "FLAIL",
-        "THUNDER-WAVE",
-        "DOUBLE-TEAM"
-       ],
-       "evs": {
-        "hp": 0,
-        "attack": 50,
-        "defense": 100,
-        "speed": 160,
-        "spAttack": 100,
-        "spDefense": 100
-       },
-       "ivs": {
-        "hp": 31,
-        "attack": 31,
-        "defense": 31,
-        "speed": 31,
-        "spAttack": 31,
-        "spDefense": 31
-       },
-       "nature": "BOLD",
-       "ability": 0
-      },
-      {
-       "id": 101,
-       "item": "LIECHI_BERRY",
-       "moves": [
-        "THUNDERBOLT",
-        "EXPLOSION",
-        "MIRROR-COAT",
-        "LIGHT-SCREEN"
-       ],
-       "evs": {
-        "hp": 0,
-        "attack": 55,
-        "defense": 0,
-        "speed": 100,
-        "spAttack": 100,
-        "spDefense": 255
-       },
-       "ivs": {
-        "hp": 31,
-        "attack": 31,
-        "defense": 31,
-        "speed": 31,
-        "spAttack": 31,
-        "spDefense": 31
-       },
-       "nature": "GENDERLESS",
-       "ability": 0
-      },
-      {
-       "id": 26,
-       "item": "SALAC_BERRY",
-       "moves": [
-        "THUNDERBOLT",
-        "COUNTER",
-        "REVERSAL",
-        "LIGHT-SCREEN"
-       ],
-       "evs": {
-        "hp": 0,
-        "attack": 55,
-        "defense": 255,
-        "speed": 0,
-        "spAttack": 100,
-        "spDefense": 100
-       },
-       "ivs": {
-        "hp": 31,
-        "attack": 31,
-        "defense": 31,
-        "speed": 31,
-        "spAttack": 31,
-        "spDefense": 31
-       },
-       "nature": "BRAVE",
-       "ability": 0
-      }
-     ]
-    },
-    {
-     "name": "Nia & Carl",
-     "class": "COOL_COUPLE",
-     "fr_class": "COOL_COUPLE",
-     "woman": false,
-     "before": "Master complete fashion system start!",
-     "win": "That s it excl the power of our system",
-     "lose": "Okay! thunderbolt run away system start",
-     "after": "Go on please! tch...",
-     "mons": [
-      {
-       "id": 115,
-       "item": "SALAC_BERRY",
-       "moves": [
-        "SHADOW-BALL",
-        "REVERSAL",
-        "ENDURE",
-        "FAKE-OUT"
-       ],
-       "evs": {
-        "hp": 0,
-        "attack": 255,
-        "defense": 105,
-        "speed": 0,
-        "spAttack": 0,
-        "spDefense": 150
-       },
-       "ivs": {
-        "hp": 31,
-        "attack": 31,
-        "defense": 31,
-        "speed": 31,
-        "spAttack": 31,
-        "spDefense": 31
-       },
-       "nature": "ADAMANT",
-       "ability": 0
-      },
-      {
-       "id": 128,
-       "item": "LUM_BERRY",
-       "moves": [
-        "DOUBLE-EDGE",
-        "ROCK-TOMB",
-        "SURF",
-        "REST"
-       ],
-       "evs": {
-        "hp": 0,
-        "attack": 255,
-        "defense": 100,
-        "speed": 0,
-        "spAttack": 0,
-        "spDefense": 155
-       },
-       "ivs": {
-        "hp": 31,
-        "attack": 31,
-        "defense": 31,
-        "speed": 31,
-        "spAttack": 31,
-        "spDefense": 31
-       },
-       "nature": "ADAMANT",
-       "ability": 0
-      },
-      {
-       "id": 241,
-       "item": "SALAC_BERRY",
-       "moves": [
-        "BODY-SLAM",
-        "SHADOW-BALL",
-        "MILK-DRINK",
-        "ROCK-TOMB"
-       ],
-       "evs": {
-        "hp": 0,
-        "attack": 155,
-        "defense": 50,
-        "speed": 250,
-        "spAttack": 0,
-        "spDefense": 55
-       },
-       "ivs": {
-        "hp": 31,
-        "attack": 31,
-        "defense": 31,
-        "speed": 31,
-        "spAttack": 31,
-        "spDefense": 31
-       },
-       "nature": "ADAMANT",
-       "ability": 0
-      },
-      {
-       "id": 112,
-       "item": "CHOICE_BAND",
-       "moves": [
-        "THUNDERBOLT",
-        "MEGAHORN",
-        "HORN-DRILL",
-        "ROCK-TOMB"
-       ],
-       "evs": {
-        "hp": 0,
-        "attack": 255,
-        "defense": 0,
-        "speed": 0,
-        "spAttack": 0,
-        "spDefense": 255
-       },
-       "ivs": {
-        "hp": 31,
-        "attack": 31,
-        "defense": 31,
-        "speed": 31,
-        "spAttack": 31,
-        "spDefense": 31
-       },
-       "nature": "ADAMANT",
-       "ability": 1
-      },
-      {
-       "id": 149,
-       "item": "SCOPE_LENS",
-       "moves": [
-        "BLIZZARD",
-        "SURF",
-        "OUTRAGE",
-        "FLAMETHROWER"
-       ],
-       "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defense": 0,
-        "speed": 0,
-        "spAttack": 255,
-        "spDefense": 255
-       },
-       "ivs": {
-        "hp": 31,
-        "attack": 31,
-        "defense": 31,
-        "speed": 31,
-        "spAttack": 31,
-        "spDefense": 31
-       },
-       "nature": "CALM",
-       "ability": 0
-      },
-      {
-       "id": 131,
-       "item": "SHELL_BELL",
-       "moves": [
-        "THUNDERBOLT",
-        "BLIZZARD",
-        "SURF",
-        "HORN-DRILL"
-       ],
-       "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defense": 155,
-        "speed": 0,
-        "spAttack": 255,
-        "spDefense": 100
-       },
-       "ivs": {
-        "hp": 31,
-        "attack": 31,
-        "defense": 31,
-        "speed": 31,
-        "spAttack": 31,
-        "spDefense": 31
-       },
-       "nature": "CALM",
-       "ability": 1
-      }
-     ]
-    }
-   ]
-  },
   "Double_7": {
    "type": "DOUBLE",
-   "prize": "CARBOS",
    "trainers": [
     {
      "name": "Axe & Ren",
@@ -9572,375 +8628,8 @@
     }
    ]
   },
-  "Double_Unused3": {
-   "type": "DOUBLE",
-   "prize": "ZINC",
-   "trainers": [
-    {
-     "name": "Kati & Geb",
-     "class": "YOUNG_COUPLE",
-     "fr_class": "YOUNG_COUPLE",
-     "woman": false,
-     "before": "Welcome to our lovey dovey thunder wave sandstorm",
-     "win": "Lalala lalala our lovey dovey lalala life",
-     "lose": "I need to lose my frustration",
-     "after": "You're just a little kid ahaha!",
-     "mons": [
-      {
-       "id": 180,
-       "item": "LEFTOVERS",
-       "moves": [
-        "ATTRACT",
-        "PROTECT",
-        "THUNDERBOLT",
-        "REFLECT"
-       ],
-       "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defense": 255,
-        "speed": 0,
-        "spAttack": 0,
-        "spDefense": 255
-       },
-       "ivs": {
-        "hp": 10,
-        "attack": 10,
-        "defense": 10,
-        "speed": 10,
-        "spAttack": 10,
-        "spDefense": 10
-       },
-       "nature": "RELAXED",
-       "ability": 0
-      },
-      {
-       "id": 195,
-       "item": "QUICK_CLAW",
-       "moves": [
-        "ATTRACT",
-        "SURF",
-        "AMNESIA",
-        "BLIZZARD"
-       ],
-       "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defense": 255,
-        "speed": 0,
-        "spAttack": 100,
-        "spDefense": 155
-       },
-       "ivs": {
-        "hp": 10,
-        "attack": 10,
-        "defense": 10,
-        "speed": 10,
-        "spAttack": 10,
-        "spDefense": 10
-       },
-       "nature": "SASSY",
-       "ability": 1
-      },
-      {
-       "id": 25,
-       "item": "SALAC_BERRY",
-       "moves": [
-        "ATTRACT",
-        "REVERSAL",
-        "THUNDERBOLT",
-        "IRON-TAIL"
-       ],
-       "evs": {
-        "hp": 0,
-        "attack": 155,
-        "defense": 100,
-        "speed": 0,
-        "spAttack": 0,
-        "spDefense": 255
-       },
-       "ivs": {
-        "hp": 10,
-        "attack": 10,
-        "defense": 10,
-        "speed": 10,
-        "spAttack": 10,
-        "spDefense": 10
-       },
-       "nature": "JOLLY",
-       "ability": 0
-      },
-      {
-       "id": 125,
-       "item": "LIECHI_BERRY",
-       "moves": [
-        "ATTRACT",
-        "COUNTER",
-        "ICE-PUNCH",
-        "BODY-SLAM"
-       ],
-       "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defense": 150,
-        "speed": 255,
-        "spAttack": 0,
-        "spDefense": 105
-       },
-       "ivs": {
-        "hp": 10,
-        "attack": 10,
-        "defense": 10,
-        "speed": 10,
-        "spAttack": 10,
-        "spDefense": 10
-       },
-       "nature": "CALM",
-       "ability": 0
-      },
-      {
-       "id": 176,
-       "item": "KINGS_ROCK",
-       "moves": [
-        "ATTRACT",
-        "BLIZZARD",
-        "ANCIENT-POWER",
-        "WATER-PULSE"
-       ],
-       "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defense": 255,
-        "speed": 0,
-        "spAttack": 0,
-        "spDefense": 255
-       },
-       "ivs": {
-        "hp": 10,
-        "attack": 10,
-        "defense": 10,
-        "speed": 10,
-        "spAttack": 10,
-        "spDefense": 10
-       },
-       "nature": "CALM",
-       "ability": 1
-      },
-      {
-       "id": 55,
-       "item": "SCOPE_LENS",
-       "moves": [
-        "ATTRACT",
-        "SURF",
-        "DIG",
-        "CROSS-CHOP"
-       ],
-       "evs": {
-        "hp": 0,
-        "attack": 155,
-        "defense": 50,
-        "speed": 255,
-        "spAttack": 0,
-        "spDefense": 50
-       },
-       "ivs": {
-        "hp": 10,
-        "attack": 10,
-        "defense": 10,
-        "speed": 10,
-        "spAttack": 10,
-        "spDefense": 10
-       },
-       "nature": "ADAMANT",
-       "ability": 1
-      }
-     ]
-    },
-    {
-     "name": "Kati & Geb",
-     "class": "YOUNG_COUPLE",
-     "fr_class": "YOUNG_COUPLE",
-     "woman": false,
-     "before": "I am plus you're minus lovey dovey magnet pull",
-     "win": "Don't stop our lovey dovey locomotive!",
-     "lose": "His cry has cute charm too!",
-     "after": "You have time to talk?",
-     "mons": [
-      {
-       "id": 172,
-       "item": "FOCUS_BAND",
-       "moves": [
-        "ATTRACT",
-        "PROTECT",
-        "SWEET-KISS",
-        "REVERSAL"
-       ],
-       "evs": {
-        "hp": 0,
-        "attack": 255,
-        "defense": 0,
-        "speed": 255,
-        "spAttack": 0,
-        "spDefense": 0
-       },
-       "ivs": {
-        "hp": 10,
-        "attack": 10,
-        "defense": 10,
-        "speed": 10,
-        "spAttack": 10,
-        "spDefense": 10
-       },
-       "nature": "ADAMANT",
-       "ability": 0
-      },
-      {
-       "id": 239,
-       "item": "BRIGHT_POWDER",
-       "moves": [
-        "ATTRACT",
-        "PROTECT",
-        "DOUBLE-TEAM",
-        "FOCUS-PUNCH"
-       ],
-       "evs": {
-        "hp": 0,
-        "attack": 255,
-        "defense": 130,
-        "speed": 0,
-        "spAttack": 0,
-        "spDefense": 125
-       },
-       "ivs": {
-        "hp": 10,
-        "attack": 10,
-        "defense": 10,
-        "speed": 10,
-        "spAttack": 10,
-        "spDefense": 10
-       },
-       "nature": "BRAVE",
-       "ability": 0
-      },
-      {
-       "id": 175,
-       "item": "FOCUS_BAND",
-       "moves": [
-        "ATTRACT",
-        "PROTECT",
-        "YAWN",
-        "WATER-PULSE"
-       ],
-       "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defense": 255,
-        "speed": 0,
-        "spAttack": 0,
-        "spDefense": 255
-       },
-       "ivs": {
-        "hp": 10,
-        "attack": 10,
-        "defense": 10,
-        "speed": 10,
-        "spAttack": 10,
-        "spDefense": 10
-       },
-       "nature": "MODEST",
-       "ability": 1
-      },
-      {
-       "id": 54,
-       "item": "BRIGHT_POWDER",
-       "moves": [
-        "ATTRACT",
-        "PROTECT",
-        "DIG",
-        "DIVE"
-       ],
-       "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defense": 255,
-        "speed": 0,
-        "spAttack": 0,
-        "spDefense": 255
-       },
-       "ivs": {
-        "hp": 10,
-        "attack": 10,
-        "defense": 10,
-        "speed": 10,
-        "spAttack": 10,
-        "spDefense": 10
-       },
-       "nature": "SASSY",
-       "ability": 0
-      },
-      {
-       "id": 179,
-       "item": "BRIGHT_POWDER",
-       "moves": [
-        "ATTRACT",
-        "PROTECT",
-        "LIGHT-SCREEN",
-        "THUNDERBOLT"
-       ],
-       "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defense": 255,
-        "speed": 0,
-        "spAttack": 0,
-        "spDefense": 255
-       },
-       "ivs": {
-        "hp": 10,
-        "attack": 10,
-        "defense": 10,
-        "speed": 10,
-        "spAttack": 10,
-        "spDefense": 10
-       },
-       "nature": "RELAXED",
-       "ability": 0
-      },
-      {
-       "id": 194,
-       "item": "FOCUS_BAND",
-       "moves": [
-        "ATTRACT",
-        "PROTECT",
-        "SURF",
-        "YAWN"
-       ],
-       "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defense": 255,
-        "speed": 0,
-        "spAttack": 0,
-        "spDefense": 255
-       },
-       "ivs": {
-        "hp": 10,
-        "attack": 10,
-        "defense": 10,
-        "speed": 10,
-        "spAttack": 10,
-        "spDefense": 10
-       },
-       "nature": "RELAXED",
-       "ability": 1
-      }
-     ]
-    }
-   ]
-  },
   "Knockout_6": {
    "type": "KNOCKOUT",
-   "prize": "WHITE_HERB",
    "trainers": [
     {
      "name": "Ben",
@@ -10486,7 +9175,6 @@
   },
   "Knockout_5": {
    "type": "KNOCKOUT",
-   "prize": "UP_GRADE",
    "trainers": [
     {
      "name": "Maura",

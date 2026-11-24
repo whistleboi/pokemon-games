@@ -128,6 +128,66 @@ def _daily_prop(state, story, d, show):
     show(list(d.get("lines") or []) + ["You received the %s!" % musical.prop_name(left[0])] + list(d.get("come_back") or []))
 
 
+# (Black 2's text 145: the girl names a Pokemon; the friend of the same family mimicked her: Klang, Swoobat, Azumarill,
+#  Eelektross, and the names she calls out, lines 12-19)
+MIMIC_FRIENDS = ["Klang", "Swoobat", "Azumarill", "Eelektross"]
+MIMIC_CALLS = [["Klink", "Klinklang"], ["Woobat"], ["Azurill", "Marill"], ["Tynamo", "Eelektrik"]]
+
+
+def _mimic(story, who, show):
+    """who "girl": she calls out a Pokemon and one friend mimics it (story flag b2_mimic_pick: that friend's number);
+    who 0-3: you pick that friend: right if it's the one of the same family."""
+    import random
+    flags = story.story_flags
+    if who == "girl":
+        k = random.randrange(len(MIMIC_FRIENDS))
+        flags["b2_mimic_pick"] = k
+        show(["Mimicking somebody is fun, isn't it? Want to find which of my friends mimics me?", "OK! Here goes!",
+              "...%s!" % random.choice(MIMIC_CALLS[k]), "Who mimicked me? Go and talk to that friend!"])
+        return
+    pick = flags.get("b2_mimic_pick")
+    if pick is None:   # (no game on: each friend's own line, Black 2's 20-22)
+        show([["I'm not a mimicker. But mimicking is fun.", "I want to cherish my originality.",
+               "It's nicer to be mimicked than to mimic somebody!", "Mimic? Me? Never!"][int(who)]])
+        return
+    flags.pop("b2_mimic_pick", None)
+    if int(pick) == int(who):
+        flags["b2_mimic_wins"] = int(flags.get("b2_mimic_wins", 0) or 0) + 1
+        show(["%s!" % MIMIC_FRIENDS[int(who)], "Did that friend mimic me?", "Correct! Trainer, you're great! Talk to me to try again!"])
+    else:
+        show(["%s!" % MIMIC_FRIENDS[int(who)], "Did that friend mimic me?", "Hmmm... Too bad. Talk to me to try again!"])
+
+
+# (Black 2's painter, Opelucid's text 141 lines 13-20: the Medal Box's colour by your Medal rank; ours by the share of the
+#  Medal Rally's Medals you hold: a fifth, two fifths, three, four, and all of them for the version's legend)
+PAINTS = [(0.2, "sky-blue", "The sky-blue is as refreshing as a clear autumn day!"),
+          (0.4, "copper", "The copper coating sparkles so elegantly!"),
+          (0.6, "silver", "That silver coating is so chic and cool!"),
+          (0.8, "gold", "How luxurious! That gold coating is gorgeous!")]
+
+
+def _medal_paint(story, show):
+    from src.world import medals
+    if not medals.have_box(story):
+        show(["Oh! A Trainer without a Medal Box? Mr. Medal in Floccesy Town will give you one!"])
+        return
+    got, total = len(medals.received(story)), max(1, len(medals.MEDALS))
+    flags = story.story_flags
+    if got >= total:
+        legend = "Zekrom" if flags.get("unova_version") != "WHITE_2" else "Reshiram"
+        look = "black with blue highlights" if legend == "Zekrom" else "white with red highlights"
+        paint, line = legend, "A stylish %s design, with %s as its motif! It's for those with every Medal!" % (look, legend)
+    else:
+        best = [p for p in PAINTS if got >= p[0] * total]
+        if not best:
+            show(["Oh! Your Medal Box... It's still plain. Collect more Medals and I'll paint it for you!",
+                  "You have %d of %d Medals." % (got, total)])
+            return
+        _r, paint, line = best[-1]
+    flags["b2_medal_box_paint"] = paint
+    show(["Oh! Your Medal Box...", line, "Your Medal Box was painted %s!" % paint])
+
+
 def event(state, ev, lines, show):
     """{"toggle": flag}: flip a flag (the roller coaster's switches: each press changes a car's route).
     {"move_lady": true}: Driftveil Luxury Suites' lady: show her a Pokemon that knows today's move, a Heart Scale (once a day).
@@ -186,6 +246,10 @@ def event(state, ev, lines, show):
         return _daily_catch(state, story, ev["daily_catch"], show)
     if ev.get("daily_prop"):    # (batch 8a: Opelucid's Musical fan: one of his four Props a day, till you have them all)
         return _daily_prop(state, story, ev["daily_prop"], show)
+    if ev.get("medal_paint"):   # (batch 8a extras: every Center's Medal Box painter, by how many Medals you have)
+        return _medal_paint(story, show)
+    if ev.get("mimic") is not None:   # (batch 8a extras: Opelucid's Mimic game, upstairs in the old Battle House)
+        return _mimic(story, ev["mimic"], show)
     if ev.get("dex_register"):   # (batch 6b: Route 7's old man shows you Tornadus and Thundurus, then Landorus)
         for sp in ev["dex_register"]:
             state.game.data.mark_seen(int(sp))

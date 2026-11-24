@@ -140,9 +140,15 @@ def _no_drops(z, rows, exit_chars):
                 rows[y][x] = "c"
 
 
+MEDAL_PAINTER = {"text": "Medal Box painter", "action": "EVENT", "event": {"world": "unova_story", "medal_paint": True}}
+
+
 def room(z, people, signs, out_door, stairs=None, exits_extra=None, scenes=None, extra_people=()):
     """A building's room: its way out ("v", across its door mat) leads back below out_door; stairs: {zone: "ROOM:name"}.
     extra_people: [(x, y, option)] someone the file doesn't stand there (Hugh in Virbank's terminal, off the counter's spot)."""
+    for _p in GEO[str(z)]["people"]:   # (every Pokemon Center's Medal Box painter, Black 2's script 2109: one place for all, 11-24)
+        if _p.get("script") == 2109 and _p["n"] not in people:
+            people = {**people, _p["n"]: MEDAL_PAINTER}
     rows, ppl, sg, doors = _place(z, people, signs, extra_people)
     exits = {}
     for d in doors:
@@ -5710,10 +5716,11 @@ OPE_ROOMS = {
                                _say("Old man ", "Welcome to the Triple Battle House! ...is what we'd have said a few years ago. "
                                                 "Now it's all at the PWT in Driftveil.", condition=["unova_version:WHITE_2"])]},
                      {}, (40, 16), stairs={126: ("^", "ROOM:house_ne_2f")}),
-    "house_ne_2f": room(126, {5: _say("Mimic girl", "Mimicking is fun! My friends love to copy me. Can you tell who's mimicking?"),
-                              4: _say("Boy", "I want to cherish my originality."),
-                              0: _say("Klang", "Klang: Klang!"), 1: _say("Swoobat", "Swoobat: Swoobat!"),
-                              2: _say("Azumarill", "Azumarill: Azu!"), 3: _say("Eelektross", "Eelektross: Eelek!")},
+    "house_ne_2f": room(126, {4: {"text": "Mimic girl", "action": "EVENT", "event": {"world": "unova_story", "mimic": "girl"}},
+                              5: _say("Galvantula", "Galvantula: Bzzz... Zzz..."),
+                              **{n: {"text": label, "action": "EVENT", "event": {"world": "unova_story", "mimic": i}}
+                                 for i, (n, label) in enumerate(((0, "Boy by the stairs"), (3, "Girl at the west"),
+                                                                 (2, "Boy at the south"), (1, "Girl at the east")))}},
                         {}, (40, 16), stairs={125: ("v", "ROOM:house_ne")}),
     "house_w": room(127, {1: {"text": "Musical fan", "action": "EVENT", "event": {"world": "unova_story", "daily_prop": {
                               "key": "b2_ope_prop", "props": [96, 98, 99, 95],

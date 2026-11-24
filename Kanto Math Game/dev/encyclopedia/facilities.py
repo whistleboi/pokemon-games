@@ -388,9 +388,20 @@ def frontier(o):
         ["Before the Silver battle: win 4", "groups 3 and 4"],
         ["After the Silver: wins 0–4", "groups 3 and 4"],
         ["After the Silver: wins 5–9", "group 4"]]))
-    body.append("<p>Which trainer you meet goes by the main games' columns, seven battles each: battles 1 to 7 bring a "
-                "trainer from the first column, battles 8 to 14 from the second. Streaks here end at a Brain after 5 or "
-                "10 wins, so only those two columns' trainers turn up in the Frontiers. Orre's Battle Tower (single "
+    # (src/world/frontier.py trainer_column, main 515c0067: Emerald's eight columns spread over our two streaks)
+    first, again = 5, 10
+    before = {}
+    for w in range(first):
+        before.setdefault(min(3, w * 4 // first), []).append(w)
+    after = {}
+    for w in range(again):
+        after.setdefault(min(7, 4 + w * 4 // again), []).append(w)
+    span = lambda ws: f"win {ws[0]}" if len(ws) == 1 else f"wins {ws[0]}–{ws[-1]}"
+    COLS = [(c, f"Column {c + 1}: before the Silver battle, {span(ws)}") for c, ws in sorted(before.items())] + \
+           [(c, f"Column {c + 1}: after the Silver, {span(ws)}") for c, ws in sorted(after.items())]
+    body.append("<p>Which trainer you meet goes by the main games' eight trainer columns (in Emerald, seven battles "
+                "each). Streaks here are shorter, so the columns are spread over them: the first four on the way to the "
+                "Silver battle, the last four on the way to the Gold, and every column's trainers turn up. Orre's Battle Tower (single "
                 "battles and 2-on-2 doubles at Lv 50) picks any of Emerald's trainers, with Pokémon from groups 3 and 4 "
                 "for the first ten wins and then group 4 only; its Little Cup uses first-stage Pokémon at Lv 5 instead.</p>")
 
@@ -407,12 +418,11 @@ def frontier(o):
     def trainer_lists(data, head, note):
         body.append(f"<h2>{head}</h2>")
         body.append(f"<p>{note}</p>")
-        cols = [(0, "Battles 1–7 (first column)"), (1, "Battles 8–14 (second column)")]
-        for c, h in cols:
+        for c, h in COLS:
             ts = [t for t in data["trainers"] if c in t["cols"]]
             names = ", ".join(f'{o.esc(t["class"].rstrip("♂♀").strip())} {o.esc(t["name"])}' for t in ts)
             body.append(f"<h3>{h}</h3><p class=\"small\">{len(ts)} trainers: {names}.</p>")
-        rest = [t for t in data["trainers"] if not ({0, 1} & set(t["cols"]))]
+        rest = [t for t in data["trainers"] if not ({c for c, _h in COLS} & set(t["cols"]))]
         if rest:
             names = ", ".join(f'{o.esc(t["class"].rstrip("♂♀").strip())} {o.esc(t["name"])}' for t in rest)
             return rest, names
@@ -420,14 +430,13 @@ def frontier(o):
 
     rest, names = trainer_lists(g3, "Emerald's Frontier trainers", "Hoenn's Battle Frontier and Orre's Battle Tower.")
     if rest:
-        body.append(f"<h3>Later columns</h3><p>These trainers belong to the main games' later columns. In Hoenn they "
-                    f"don't reach you, but Orre's Battle Tower can send any of them.</p>"
+        body.append(f"<h3>Other trainers</h3><p>These trainers are on none of the eight columns; Orre's Battle Tower "
+                    f"can still send them.</p>"
                     f'<details><summary>{len(rest)} trainers</summary><p class="small">{names}.</p></details>')
     rest, names = trainer_lists(g4, "Platinum, HeartGold and SoulSilver's Frontier trainers",
                                 "Johto's and Sinnoh's Battle Frontiers.")
     if rest:
-        body.append(f"<h3>Later columns</h3><p>These trainers belong to the main games' later columns, which a streak "
-                    f"here never reaches.</p>"
+        body.append(f"<h3>Other trainers</h3><p>These trainers are on none of the eight columns.</p>"
                     f'<details><summary>{len(rest)} trainers</summary><p class="small">{names}.</p></details>')
 
     try:
