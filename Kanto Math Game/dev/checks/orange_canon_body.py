@@ -3,7 +3,9 @@
 # balls, hidden items, people, gifts, wild tables). Each gap is a FAIL line; agreed differences are in ocanon_decisions.json.
 #   bash dev/checks/run.sh orange_canon
 import importlib.util as _u, io as _io, contextlib as _cl
-_tools = os.path.normpath(os.path.join(os.getcwd(), "..", "..", "kanto_handoff", "orange_rom_tools"))
+_tools = os.environ.get("ORANGE_TOOLS") or next((os.path.join(_d, "kanto_handoff", "orange_rom_tools") for _d in
+          [os.path.abspath(os.path.join(os.getcwd(), *[".."] * _n)) for _n in range(1, 8)]
+          if os.path.isdir(os.path.join(_d, "kanto_handoff", "orange_rom_tools"))), "")   # (the first kanto_handoff above the game folder: main folder or a worktree, 11-23)
 _spec = _u.spec_from_file_location("ocanon", os.path.join(_tools, "ocanon.py"))
 _buf = _io.StringIO()
 _keep = sys.argv
