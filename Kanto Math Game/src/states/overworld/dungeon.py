@@ -1961,16 +1961,6 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         self.pending = None
         self._ow_foe = None
         home = self.__dict__.pop("_ow_home", None)
-        if home:   # (the battle moved to open ground to stand side by side: everyone back where they met; Jordan 11-24)
-            self.run.player = self.anim_from = self.partner = self.partner_from = home["player"]
-            self.anim, self.facing = 0, home["facing"]
-            m = home["mover"]
-            m.x, m.y = home["at"]
-            m.facing = home["mover_facing"]
-            mo = getattr(m, "motion", None)
-            if mo is not None:
-                mo.pos = mo.frm = home["at"]
-                mo.facing = m.facing
         if mover is not None:
             if kind == "wild":
                 if getattr(mover.payload, "snack_visitor", None):   # (the snack tray's visitor: gone - Orre batch 8d)
@@ -2003,6 +1993,16 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         self.mode = "MAP"
         self.walk_goal = None
         self._sync_figures()
+        if home:   # (the battle stood on open ground nearby: everyone walks back where they met; Jordan 11-24)
+            m = home["mover"]
+            goals = [("me", home["player"])] + ([(m, home["at"])] if m in self.run.floor.movers else [])
+            hf = home["mover_facing"]
+
+            def there():
+                self.facing = home["facing"]
+            self._ow_walk_start(goals, there)
+            if m in self.run.floor.movers:   # (a trainer you lost to: back on its spot, looking away, as before)
+                self._ow_walk["end_face"] = (m, (-hf[0], -hf[1]))
 
     def show_progression_menu(self):
         """The route's catch screen (or a battle) is done: back to the map."""
@@ -2776,7 +2776,13 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         battle.play_state_data = self._play_data()
         if self._ow_on():  # Options > BATTLE STYLE: OVERWORLD: fought here on the map
             from src.states.overworld.overworld_battle import OverworldView
-            battle.overworld = OverworldView(self, mover)
+
+            def go():
+                battle.overworld = OverworldView(self, mover)
+                pygame.event.clear()
+                self.game.change_state(battle)
+            self.ow_walk_to_battle(mover, False, go)   # (over to open ground first, if it stands there: walked)
+            return
         pygame.event.clear()
         self.game.change_state(battle)
 
@@ -3334,7 +3340,7 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
             return
         if getattr(self, "_vs_anim", None):   # (the VS Seeker is playing: wait for it)
             return
-        if self.mode not in ("WALKUP", "SWARM"):   # (not while wild ones walk up to you or battle you on the map)
+        if self.mode not in ("WALKUP", "SWARM", "OWWALK"):   # (not while wild ones walk up to you, battle you on the map, or you walk to a battle)
             events = [e for e in events if not self._qp_event(e)]  # (the POKEMON button and its list first)
         for e in events:
             if e.type == pygame.MOUSEBUTTONUP and e.button == 1:
@@ -4151,6 +4157,9 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
             return
         if hasattr(self, "run"):
             self._wu_leavers_tick()   # (wild ones running off: Honey's, a swarm's)
+            if self.mode == "OWWALK":   # (walking over to where a map battle stands, or back: overworld_battle.py)
+                self._ow_walk_tick()
+                return
             if self.mode in ("WALKUP", "SWARM"):   # (walking up to you; the swarm's battle on the map)
                 self._npc_tick()
                 self._wu_tick() if self.mode == "WALKUP" else self._sw_tick()

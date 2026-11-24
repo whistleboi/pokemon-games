@@ -79,7 +79,112 @@ class OverworldBattles:
         def start():
             battle.overworld = OverworldView(self, mover)
             self.game.change_state(battle)
-        self.say(lines or [f"{name} wants to battle!"], then=start)
+        self.say(lines or [f"{name} wants to battle!"], then=lambda: self.ow_walk_to_battle(mover, True, start))
+
+    # ---------------------------------------------------------------- walking over to where the battle stands (Jordan 11-24)
+    def ow_walk_to_battle(self, mover, trainer, then):
+        """When the battle stands somewhere else (OverworldView._plan: side by side on open ground nearby), you and the
+        foe walk there first, then(): the battle. Where you met is remembered: dungeon._back_from_battle walks you back."""
+        plan = OverworldView._plan(self, mover, trainer)
+        if not plan:
+            return then()
+        anchor, d, line = plan
+        me = line[-1]
+        if anchor == (mover.x, mover.y) and me == tuple(self.run.player):
+            return then()
+        self._ow_home = {"player": tuple(self.run.player), "facing": tuple(getattr(self, "facing", (0, 1))),
+                         "mover": mover, "at": (mover.x, mover.y), "mover_facing": tuple(mover.facing or (0, 1))}
+        self._ow_walk_start([(mover, anchor), ("me", me)], then, face=(mover, d))
+
+    def _ow_walk_start(self, goals, then, face=None):
+        """Walk everyone in goals [(mover or "me", tile)] there along the ground (anyone with no way, put there), then
+        face: (mover, its way) - you face it back - and then()."""
+        from src.dungeon import npc
+        f = self.run.floor
+        walkers = {id(w) for w, _ in goals if w != "me"}
+
+        def ok(t, who):
+            if not f.walkable(*t):
+                return False
+            m = f.mover_at(*t)
+            return m is None or id(m) in walkers or m is who
+
+        walk = {"movers": [], "me": [], "then": then, "face": face, "t": 0}
+        for who, goal in goals:
+            start = tuple(self.run.player) if who == "me" else (who.x, who.y)
+            mo = npc.Motion(start)
+            if goal != start and not mo.walk(goal, lambda t, who=who: ok(t, who) and t != tuple(self.run.player) or t == goal, beside=False):
+                mo.path = []
+            path = mo.path if mo.path and mo.path[-1] == goal else []
+            if who == "me":
+                walk["me"] = path or ([] if goal == start else None)
+                walk["me_goal"] = goal
+            else:
+                had = getattr(who, "motion", None)
+                if had is not None:
+                    mo.facing = had.facing
+                walk["movers"].append((who, mo, had, goal))
+                mo.path = list(path)
+                if not path and goal != start:   # (no way there: put there)
+                    who.x, who.y = goal
+                    mo.pos = mo.frm = goal
+                who.motion = mo
+        if walk["me"] is None:   # (no way for you: put there)
+            self.run.player = self.anim_from = walk["me_goal"]
+            walk["me"] = []
+        self._ow_walk = walk
+        self.walk_goal = None
+        self.mode = "OWWALK"
+
+    def _ow_walk_tick(self):
+        """One frame of the walk over (or back): you step along your way, the foe along its own; then the battle."""
+        w = getattr(self, "_ow_walk", None)
+        if not w:
+            self.mode = "MAP"
+            return
+        w["t"] += 1
+        if self.anim == 0 and w["me"]:
+            nxt = w["me"].pop(0)
+            px, py = self.run.player
+            self.facing = (max(-1, min(1, nxt[0] - px)), max(-1, min(1, nxt[1] - py)))
+            self.partner_from, self.partner = self.partner, (px, py)
+            self.anim_from, self.run.player = (px, py), nxt
+            from src.states.overworld.dungeon import STEP_FRAMES
+            self.anim = STEP_FRAMES
+        busy = bool(w["me"]) or self.anim > 0
+        for who, mo, had, goal in w["movers"]:
+            mo.tick(lambda t: True)
+            who.x, who.y = mo.pos
+            who.facing = mo.facing
+            busy = busy or not mo.idle()
+        if busy and w["t"] < 25 * 12:
+            return
+        for who, mo, had, goal in w["movers"]:   # (there: the trainer keeps its own steps, a wild one none)
+            who.x, who.y = goal
+            if had is not None:
+                had.pos = had.frm = goal
+                had.path, had.t = [], 1.0
+                had.facing = mo.facing
+            who.motion = had
+            if had is None and hasattr(who, "motion"):
+                del who.motion
+        if w.get("end_face"):   # (back on its spot: the way it looks now)
+            m, d = w["end_face"]
+            m.facing = d
+            if getattr(m, "motion", None) is not None:
+                m.motion.facing = d
+        face = w.get("face")
+        if face:
+            m, d = face
+            m.facing = d
+            if getattr(m, "motion", None) is not None:
+                m.motion.facing = d
+            self.facing = (-d[0], -d[1])
+        self.partner = self.partner_from = tuple(self.run.player)
+        self._ow_walk = None
+        self.mode = "MAP"
+        if w["then"]:
+            w["then"]()
 
     # ---------------------------------------------------------------- where everyone stands
     def _tile_rect(self, x, y):
@@ -355,11 +460,6 @@ class OverworldView:
         side = 1 if px >= tx else -1
         horiz = [(side, 0), (-side, 0)]
         vert = [(0, 1 if py >= ty else -1), (0, -1 if py >= ty else 1)]
-        for gap in (1, 0):   # (side by side, where you met)
-            for d in horiz:
-                line = fits((tx, ty), d, gap)
-                if line:
-                    return (tx, ty), d, line
         seen, todo, spots = {(px, py): 0}, [(px, py)], []
         while todo:   # (side by side, on open ground near you: the nearest)
             cur = todo.pop(0)
@@ -369,8 +469,9 @@ class OverworldView:
                     seen[t] = seen[cur] + 1
                     todo.append(t)
                     spots.append(t)
-        for gap in (1, 0):
-            for anchor in sorted(spots, key=lambda t: (seen[t], abs(t[1] - ty))):
+        spots.sort(key=lambda t: (seen[t], abs(t[1] - ty)))
+        for gap in (2, 1, 0):   # (side by side with two tiles between, where you met, else nearby; then closer)
+            for anchor in [(tx, ty)] + spots:
                 for d in horiz:
                     line = fits(anchor, d, gap)
                     if line:

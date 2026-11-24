@@ -4,7 +4,31 @@
 #   bash dev/checks/run.sh map_attacks
 exec(open("dev/checks/dungeon_lib.py", encoding="utf-8").read())
 from src.vfx import map_attacks as ma
+import os as _os
+_os.makedirs(_os.path.join(S, "map_attacks"), exist_ok=True)
 g.dungeon_routes = True
+
+
+def to_battle(p, shot_name=None, n=600):
+    """The walk over to where the battle stands (if it moves), then the battle; a picture mid-walk."""
+    walked = 0
+    for _ in range(n):
+        if g.current_state is not p:
+            return walked
+        if p.mode == "OWWALK":
+            walked += 1
+            if shot_name and walked == 8:
+                p.draw()
+                pygame.image.save(g.screen, _os.path.join(S, "map_attacks", shot_name))
+        p.update()
+    return walked
+
+
+def walk_back(p, n=600):
+    for _ in range(n):
+        if p.mode != "OWWALK":
+            break
+        p.update()
 
 print("1) every type has its sprites, from the game's own move-animation sheets")
 for typ in ma.SPRITES:
@@ -78,6 +102,7 @@ p._battle_trainer(tr)
 while p.dialogue_box.visible:
     p.dialogue_box.advance()
     p.update()
+to_battle(p)
 b = g.current_state
 check(isinstance(b, TrainerBattleState) and b.overworld is not None, "the trainer battle is on the map")
 seen, held, kinds = set(), 0, []
@@ -116,7 +141,6 @@ check(held > 10, f"...and the battle waited on it before the HP bar dropped ({he
 story.battle_style = "TRADITIONAL"
 
 print("4) a map battle at the bottom edge of a map is drawn clear of the battle's text box (Jordan 11-24)")
-import os as _os
 from src.utils import Utils as _U
 story.battle_style = "OVERWORLD"
 p = kanto("KANTO_ROUTE_1")
@@ -128,6 +152,7 @@ p.run.reveal()
 w, _ = beside(p, "wild")
 p._meet_wild(w)
 p._pick(1)
+to_battle(p)
 b = g.current_state
 for _ in range(400):
     if b.dialogue_box.visible:
@@ -142,7 +167,6 @@ b.overworld.attack(b, {"name": "ROCK-TOMB", "side": "player", "user": b.player_p
 for _ in range(9):
     b.overworld.attacking()
 b.draw()
-_os.makedirs(_os.path.join(S, "map_attacks"), exist_ok=True)
 pygame.image.save(g.screen, _os.path.join(S, "map_attacks", "edge_battle.png"))
 box_top = _U.get_full_dialogue_rect(g).top
 mine, foe = b.overworld.catch_points()
@@ -171,7 +195,7 @@ def rock(p, t):
     return m
 
 
-def battle_at(p, foe_at, me_at):
+def battle_at(p, foe_at, me_at, shot_name=None):
     f = p.run.floor
     f.movers[:] = [m for m in f.movers if m.kind != "wild"]
     w = core.Mover("wild", foe_at[0], foe_at[1], p._make_wild(_rnd.Random(1)))
@@ -180,6 +204,7 @@ def battle_at(p, foe_at, me_at):
     p.run.reveal()
     p._meet_wild(w)
     p._pick(1)
+    p.walked = to_battle(p, shot_name)
     return g.current_state, w
 
 
@@ -191,25 +216,37 @@ for _try in ("KANTO_ROUTE_1", "KANTO_ROUTE_22", "KANTO_ROUTE_2"):
 check(c is not None, f"an open stretch to test on ({_try} {c})")
 x, y = c
 rocks = [rock(p, (x + dx, y + dy)) for dx in (-2, -1, 1, 2) for dy in (0, 1)]   # (boxed in left and right where they meet)
-b, w = battle_at(p, (x, y), (x, y + 1))
+b, w = battle_at(p, (x, y), (x, y + 1), "walking_over.png")
 ov = b.overworld
-check(ov.spot[1] == ov.mine[1] and ov.spot != ov.mine, f"boxed in sideways where they met: the battle stands side by side nearby (foe {ov.spot}, yours {ov.mine})")
-check((w.x, w.y) != (x, y) and getattr(p, "_ow_home", None), "...moved to open ground for the battle")
+check(ov.spot[1] == ov.mine[1] and abs(ov.spot[0] - ov.mine[0]) == 3,
+      f"boxed in sideways where they met: the battle stands side by side nearby, two tiles between (foe {ov.spot}, yours {ov.mine})")
+check((w.x, w.y) != (x, y) and getattr(p, "_ow_home", None) and p.walked > 6, f"...everyone walked over to open ground ({p.walked} frames)")
 b.overworld.attack(b, {"name": "THUNDERBOLT", "side": "player", "user": b.player_pokemon, "target": b.opponent_pokemon})
 for _ in range(12):
     ov.attacking()
 b.draw()
 pygame.image.save(g.screen, _os.path.join(S, "map_attacks", "moved_side_by_side.png"))
 p._back_from_battle()
-check(tuple(p.run.player) == (x, y + 1) and not getattr(p, "_ow_home", None), f"after the battle you're back where you met ({p.run.player})")
+check(p.mode == "OWWALK", "after the battle: you walk back")
+walk_back(p)
+check(tuple(p.run.player) == (x, y + 1) and not getattr(p, "_ow_home", None) and p.mode == "MAP", f"...back where you met ({p.run.player}, {p.mode})")
 for m in rocks:
     p.run.floor.movers.remove(m)
+g.change_state(p)
+p = kanto(_try)
+b, w = battle_at(p, (x, y), (x + 1, y))
+ov = b.overworld
+check(ov.spot[1] == ov.mine[1] and abs(ov.spot[0] - ov.mine[0]) == 3 and (w.x, w.y) == (x, y),
+      f"room where they met: side by side right there, two tiles between (foe {ov.spot}, yours {ov.mine}, walked {p.walked})")
+p._back_from_battle()
+walk_back(p)
+check(p.mode == "MAP", "...and on with the walk after")
 g.change_state(p)
 
 p = kanto(_try)
 f = p.run.floor
 f.movers[:] = [m for m in f.movers if m.kind != "wild"]
-walls = [rock(p, (x + dx, y + dy)) for dy in range(-8, 9) for dx in (-1, 1)]   # (a corridor one tile wide) + [rock(p, (x, y - 9)), rock(p, (x, y + 9))]
+walls = [rock(p, (x + dx, y + dy)) for dy in range(-8, 9) for dx in (-1, 1)] + [rock(p, (x, y - 9)), rock(p, (x, y + 9))]   # (a closed corridor one tile wide)
 b, w = battle_at(p, (x, y), (x, y + 1))
 ov = b.overworld
 check(ov.spot[0] == ov.mine[0] and abs(ov.spot[1] - ov.mine[1]) == 3,
@@ -217,6 +254,7 @@ check(ov.spot[0] == ov.mine[0] and abs(ov.spot[1] - ov.mine[1]) == 3,
 b.draw()
 pygame.image.save(g.screen, _os.path.join(S, "map_attacks", "vertical_gap.png"))
 p._back_from_battle()
+walk_back(p)
 check(tuple(p.run.player) == (x, y + 1) and (w not in f.movers or (w.x, w.y) == (x, y)), "...and back where you met after")
 for m in walls:
     f.movers.remove(m)
