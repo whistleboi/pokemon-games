@@ -1295,11 +1295,11 @@ def _walk_sheet(sprite, cls):
     return t.get(sprite) or (d.get("trainers") or {}).get(sprite) or         {"GYM_LEADER": "orre_trainer_cooltrainer_m.png", "CHAMPION": "orre_trainer_ace_trainer.png"}.get(cls) or "orre_trainer_ace_trainer.png"
 
 
-def _gym_of(area):
+def _gym_of(area, key="gym"):
     import json as _j
     import os as _o
     try:
-        return (_j.load(open(_o.path.join("assets", "orre_area_data.json"), encoding="utf-8"))["STORY_PROGRESSION"].get(area) or {}).get("gym") or {}
+        return (_j.load(open(_o.path.join("assets", "orre_area_data.json"), encoding="utf-8"))["STORY_PROGRESSION"].get(area) or {}).get(key) or {}
     except (OSError, ValueError, KeyError):
         return {}
 
@@ -1335,15 +1335,22 @@ def _tournament(maps):
                            "lines": [f"Receptionist: Welcome to {name}! You're entered. Win every round to take the title.",
                                      "Receptionist: This way to the arena, please. Good luck!"],
                            "champion": [f"Receptionist: Our champion! {name} is yours. Come back any time."]}}}})
-        gym = _gym_of(area)
-        rounds = list(gym.get("trainers") or []) + ([gym["leader"]] if gym.get("leader") else [])
         back = [door[0], door[1]]
         scenes = list(ar.get("scenes") or [])
-        for k, t in enumerate(rounds):
+        # (S5, 11-24: Realgam's arena holds Evice's run in Part 1 and the Orre League in Part 2 - src/world/gym_swaps.py - each
+        #  with its own walk-ins)
+        variants = [(_gym_of(area), [])] if area != "REALGAM_TOWER" else             [(_gym_of(area), ["world:orre_skip:part1"]), (_gym_of(area, "gym_league"), ["world:orre_skip:part2"])]
+        for gym, part in variants:
+          rounds = list(gym.get("trainers") or []) + ([gym["leader"]] if gym.get("leader") else [])
+          league = part == ["world:orre_skip:part2"]
+          for k, t in enumerate(rounds):
             last = k == len(rounds) - 1
             who = t.get("name", "Your opponent")
-            call = [f"Referee: The final! {who} takes the field!"] if last else [f"Referee: Round {k + 1}! {who} takes the field!"]
-            scenes.append({"trigger": "enter", "condition": [f"world:orre_tournament:round:{k}"], "call": call,
+            if league:
+                call = [f"Host: The Champion of Orre! {who} takes the field!"] if last else [f"Host: Elite Four battle {k + 1}! {who} takes the field!"]
+            else:
+                call = [f"Referee: The final! {who} takes the field!"] if last else [f"Referee: Round {k + 1}! {who} takes the field!"]
+            scenes.append({"trigger": "enter", "condition": [f"world:orre_tournament:round:{k}"] + part, "call": call,
                            "cast": [{"sheet": _walk_sheet(t.get("sprite"), t.get("class")), "from": back, "to": list(foe),
                                      "face": "d", "stay": True,
                                      "lines": list((t.get("dialogue") or {}).get("intro") or [f"{who}: Let's battle!"])[:1],
@@ -1359,6 +1366,11 @@ def _tournament(maps):
             o = _is_gym_option(area, text)
             r = {"text": text, "action": "EVENT", "event": dict(referee)}
             r.update({k: o[k] for k in ("condition", "flag_condition", "color") if o and k in o})
+            if text.endswith("Orre League") and r["event"].get("signup"):   # (S5: the League's host, Part 2)
+                r["event"]["signup"] = dict(r["event"]["signup"], lines=[
+                    "Host: Welcome to the Orre League! Four of Orre's strongest, one after another - then the Champion.",
+                    "Host: No rest between battles, and no turning back. Take your place!"],
+                    champion=["Host: Our Champion! The Elite Four are always glad of a rematch."])
             return r
         for i, p in enumerate(ar.get("people") or []):
             if isinstance(p, str) and _is_gym_option(area, p):
@@ -1373,9 +1385,12 @@ def _tournament(maps):
             lost["room"] = [lobby, desk[0], desk[1] + 1]
         scenes.append(lost)
         if area == "REALGAM_TOWER":   # (story rework S1, 11-24: Evice ends Part 1 - the five-year time skip, src/world/orre_skip.py)
-            scenes.append({"trigger": "enter", "condition": ["world:orre_tournament:won"], "cast": [],
+            scenes.append({"trigger": "enter", "condition": ["world:orre_tournament:won", "world:orre_skip:part1"], "cast": [],
                            "call": ["The roof of Realgam Tower falls silent. Cipher's leader has fallen."],
                            "event": {"world": "orre_skip"}})
+            scenes.append({"trigger": "enter", "condition": ["world:orre_tournament:won", "world:orre_skip:part2"], "cast": [],   # (S5)
+                           "call": ["Host: Ladies and gentlemen... the new Champion of Orre, {player_name}!", "The whole tower roars!"],
+                           "event": {"world": "orre_tournament", "done": True}})
         else:
             scenes.append({"trigger": "enter", "condition": ["world:orre_tournament:won"], "cast": [],
                            "call": [f"Referee: The champion of {name}!", "The crowd roars!"],
