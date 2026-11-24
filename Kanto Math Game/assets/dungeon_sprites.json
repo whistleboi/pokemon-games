@@ -7959,6 +7959,15 @@
     "CERULEAN_CITY:Police officer": {
       "sheet": "fr_60.png"
     },
+    "CERULEAN_CITY:Melanie": {
+      "sheet": "fr_23.png"
+    },
+    "KANTO_ROUTE_24:Damian": {
+      "sheet": "fr_39.png"
+    },
+    "VERMILLION_CITY:Officer Jenny": {
+      "sheet": "fr_60.png"
+    },
     "CERULEAN_CITY:Cave guard": {
       "sheet": "fr_41.png"
     },
