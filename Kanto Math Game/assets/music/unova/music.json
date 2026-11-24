@@ -6,6 +6,15 @@
   "CASTELIA_CITY": "c_03",
   "CASTELIA_EMPTY_LOT": "c_03",
   "CASTELIA_SEWERS": "sw_d_gesui",
+  "CHARGESTONE_CAVE": "d_02",
+  "CHARGESTONE_CAVE_B1F": "d_02",
+  "CHARGESTONE_CAVE_B2F": "d_02",
+  "CHARGESTONE_CAVE_ENTRANCE": {
+   "AUTUMN": "r_d_au",
+   "SPRING": "r_d_sp",
+   "SUMMER": "r_d_su",
+   "WINTER": "r_d_wi"
+  },
   "DESERT_RESORT": "d_02",
   "DESERT_RESORT_ENTRANCE": {
    "AUTUMN": "r_c_au",
@@ -23,6 +32,7 @@
    "WINTER": "sw_r_19_wi"
   },
   "FLOCCESY_TOWN": "sw_t_06",
+  "GUIDANCE_CHAMBER": "d_02",
   "JOIN_AVENUE": "rezo_rizo",
   "LIBERTY_GARDEN": {
    "AUTUMN": "r_d_au",
@@ -31,6 +41,8 @@
    "WINTER": "r_d_wi"
   },
   "LOSTLORN_FOREST": "d_06",
+  "MISTRALTON_CAVE": "d_02",
+  "MISTRALTON_CAVE_2F": "d_02",
   "NIMBASA_CITY": "c_04",
   "PLASMA_FRIGATE": "sw_d_27_f_ajito",
   "PLEDGE_GROVE": "d_01",
@@ -71,6 +83,12 @@
    "SPRING": "r_c_sp",
    "SUMMER": "r_c_su",
    "WINTER": "r_c_wi"
+  },
+  "UNOVA_ROUTE_6": {
+   "AUTUMN": "r_d_au",
+   "SPRING": "r_d_sp",
+   "SUMMER": "r_d_su",
+   "WINTER": "r_d_wi"
   },
   "VIRBANK_CITY": "sw_c_13",
   "VIRBANK_COMPLEX": "sw_d_23",
@@ -129,6 +147,8 @@
   "PWT:stadium": "wbt_ground",
   "UNOVA_ROUTE_16:bridge_gate": "gate",
   "UNOVA_ROUTE_5:grotto": "kemonomichi",
+  "UNOVA_ROUTE_6:grotto": "kemonomichi",
+  "UNOVA_ROUTE_6:grotto2": "kemonomichi",
   "VIRBANK_CITY:center": "pokecen",
   "VIRBANK_CITY:gate_n": "gate",
   "VIRBANK_CITY:gate_w": "gate",
