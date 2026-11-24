@@ -96414,7 +96414,7 @@
      "ccccccccccc",
      "ccccc..c<cc",
      "...........",
-     "..ccc......",
+     "..cc!......",
      "...........",
      "..Ncc......",
      "...cc......",
@@ -96470,7 +96470,24 @@
      }
     ],
     "theme": "room",
-    "title": "Your house"
+    "title": "Your house",
+    "signs": [
+     [
+      "The TV's on. A cooking show... Mom's favourite."
+     ]
+    ],
+    "sign_events": {
+     "4,4": {
+      "text": "TV",
+      "action": "EVENT",
+      "event": {
+       "swarm_news": "HOENN",
+       "lines": [
+        "The TV's on. A cooking show... Mom's favourite."
+       ]
+      }
+     }
+    }
    },
    "home_2": {
     "art": [
