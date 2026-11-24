@@ -340342,9 +340342,24 @@
       "text": "Girl",
       "action": "EVENT",
       "event": {
-       "lines": [
-        "Girl: You want Poke Balls? You won't find any here. There are hardly any wild Pokemon in Orre, so nobody sells them.",
-        "Girl: Someone at the Outskirt Stand might still have a few."
+       "stages": [
+        {
+         "requires": [
+          "not:got_snag_machine"
+         ],
+         "lines": [
+          "Girl: You want Poke Balls? You won't find any here. There are hardly any wild Pokemon in Orre, so nobody sells them.",
+          "Girl: Someone at the Outskirt Stand might still have a few."
+         ]
+        },
+        {
+         "requires": [
+          "got_snag_machine"
+         ],
+         "lines": [
+          "Girl: Poke Balls are back on the shelves! Funny - nobody wanted them for years, and now everyone's asking."
+         ]
+        }
        ]
       }
      },
@@ -341024,7 +341039,7 @@
         "face": "d",
         "stay": true,
         "lines": [
-         "Welcome to the final round of the Phenac Stadium! The winner takes the Phenac Badge!"
+         "Round 4 of the Phenac Stadium! Beat me, and Gym Leader Misty takes the field!"
         ],
         "event": {
          "world": "orre_tournament",
@@ -341283,7 +341298,7 @@
          "lines": [
           "Secretary: A Music Disc? How lovely! ...La la la...",
           "While she dances, you slip upstairs. The mayor's office is empty. A note lies on the desk:",
-          "'Justy - Cipher means to take Phenac. They'll wear our faces. I must-' The note stops there. Es Cade is nowhere to be seen.",
+          "'Justy - Cipher means to take Phenac. They'll wear our faces. I must-' The note stops there. The mayor is nowhere to be seen.",
           "Secretary: Snooping, are we? Then you've seen too much!"
          ],
          "battle": {
@@ -343485,7 +343500,7 @@
         "face": "d",
         "stay": true,
         "lines": [
-         "The final round of the Pyrite Colosseum! The winner takes the Pyrite Badge!"
+         "Round 4 of the Pyrite Colosseum! Beat me, and Gym Leader Duking takes the field!"
         ],
         "event": {
          "world": "orre_tournament",
@@ -349030,7 +349045,7 @@
         ]
        },
        "lines": [
-        "Clerk: Welcome to the Realgam Colosseum! Four rounds, four battles each. Every team here is Lv 40."
+        "Clerk: Welcome to the Realgam Colosseum! Four rounds, four battles each. Every team here is Lv 47."
        ]
       }
      },
