@@ -25,9 +25,9 @@ REGIONS = [("kanto", "Kanto + Sevii Islands", "FireRed and LeafGreen, with Heart
            ("orange", "Orange Islands", "the anime and the fan game Pokémon Orange Islands"),
            ("hoenn", "Hoenn", "Omega Ruby and Alpha Sapphire's story on Emerald's maps, with Ruby, Sapphire and Emerald extras"),
            ("sinnoh", "Sinnoh", "Diamond, Pearl and Platinum on Platinum's maps, with Brilliant Diamond and Shining Pearl's story"),
-           ("unova", "Unova", "Black 2 and White 2 on their own maps, with Black and White's places")]
-# ("orre", "Orre", "Colosseum and XD: Gale of Darkness as one journey, on the Orre fan game's maps"): once its parts are written
-LATER = ["Orre"]
+           ("unova", "Unova", "Black 2 and White 2 on their own maps, with Black and White's places"),
+           ("orre", "Orre", "Colosseum and XD: Gale of Darkness as one journey, on the Orre fan game's maps")]
+LATER = []
 IMPORTANT = ("GYM_LEADER", "ELITE_FOUR", "CHAMPION", "RIVAL", "ROCKET_LEADER")
 
 
