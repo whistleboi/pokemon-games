@@ -13942,7 +13942,7 @@
      "cccccccccccccccccccccccc",
      "cccccccccccccccccccccccc",
      "ccccccccc.....cccccccccc",
-     "ccccccc.........cccccccc",
+     "ccccccc....N....cccccccc",
      "ccccc.....c...cccccccccc",
      "cccc..ccc.c.cc....cccccc",
      "ccc.......c.....cc..cccc",
@@ -13974,6 +13974,7 @@
      "_buildings_in_picture": true
     },
     "people": [
+     "THE BLACK FOG",
      "AWAKENING",
      "ELIXIR",
      "GREAT BALL"
@@ -14267,6 +14268,7 @@
    "Laurel": 3,
    "Paula": 3,
    "Jody": 3,
+   "THE BLACK FOG": 3,
    "AWAKENING": 3,
    "ELIXIR": 3,
    "GREAT BALL": 3,

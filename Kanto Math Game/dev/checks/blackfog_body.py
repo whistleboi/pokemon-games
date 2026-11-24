@@ -23,15 +23,15 @@ print("2) every haunted place")
 # (Walked regions' haunts are played on their maps: walk up to the Black Fog (legacy menu clear, Step 5, 11-24); the menu
 #  regions' (Kalos, Alola, Galar, Paldea, Decolore) keep their route menu's boss button.)
 exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())
-WALKED = {"BURNED_TOWER", "HOENN_MT_PYRE", "OLD_CHATEAU", "CELESTIAL_TOWER", "LOST_CAVE"}
-# (KANTO_POKEMON_TOWER stays on the menu: its Black Fog is the route menu's stairs ambush (zone_ambush), which the walked
-#  tower has no way to meet - recorded in LEGACY_MENU_AUDIT.md and sent to Kanto's inbox, 11-24.)
+WALKED = {"KANTO_POKEMON_TOWER", "BURNED_TOWER", "HOENN_MT_PYRE", "OLD_CHATEAU", "CELESTIAL_TOWER", "LOST_CAVE"}
+# (KANTO_POKEMON_TOWER's Black Fog is a 4F figure since 11-24 (was the menu's stairs ambush), seen with the Silph Scope.)
 KNOWN = {"CELESTIAL_TOWER": "Unova's rebuilt Celestial Tower lost its Black Fog (route_menu): sent to Unova's inbox 11-24"}
 story.balls_left = 20
+story.inventory["SILPH_SCOPE"] = 1   # (the Pokemon Tower's Black Fog shows with it)
 story.player_team = [mk(150)]; story.player_team[0].level = 100
 for key in HAUNTS:
     opt = next((o for o in prog[key].get("route_menu") or [] if o.get("text") == "THE BLACK FOG"), None)
-    # (the Pokemon Tower's comes as an ambush on its stairs: zone_ambush, 11-02)
+    # (a haunt may still use a stairs ambush, zone_ambush; the Pokemon Tower's is a 4F figure since 11-24)
     boss = opt["boss"] if opt else (prog[key].get("zone_ambush") or {}).get("boss")
     if not boss:
         if key in KNOWN:
