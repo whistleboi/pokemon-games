@@ -2091,6 +2091,7 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
                 if self.game.story_manager.beaten_today(self.area_key, idx):
                     self.run.remove(mover)
                     from src.world import vs_seeker as _vs
+                    _rematch_won = _vs.is_ready(self.game.story_manager, self.area_key, idx)
                     if _vs.is_ready(self.game.story_manager, self.area_key, idx):   # (a VS Seeker rematch won)
                         _pool0 = self.area_data.get("trainer_pool", [])
                         _vs.won(self.game.story_manager, self.area_key, idx,
@@ -2099,6 +2100,9 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
                     _pool = self.area_data.get("trainer_pool", [])
                     _info = _pool[idx] if 0 <= idx < len(_pool) and isinstance(_pool[idx], dict) else {}
                     _re = _phone.rematch_info(self.game, self.area_key, idx, _info)
+                    if _rematch_won or (_re.get("team") and _re.get("team") != _info.get("team")):   # (a Feat: rematches won, VS Seeker or phone; J6 11-24)
+                        from src.world import feats as _feats
+                        _feats.note(self.game.story_manager, "rematches")
                     if _re.get("_phone_gift"):
                         _pg = _re["_phone_gift"]
                         for _f in (_pg if isinstance(_pg, list) else [_pg]):

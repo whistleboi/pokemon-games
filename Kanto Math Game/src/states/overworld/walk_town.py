@@ -2454,12 +2454,12 @@ class WalkTownState(TownWalkUps, CityState):
     # Where a place has Black 2's models exported (assets/b2_3d/<zone>.npz: kanto_handoff/unova_map_tools/export3d.py) and the
     # card can draw them (src/dungeon/live3d.py), the map is drawn every frame from Black 2's own camera for it, following
     # you: perspective, buildings turning as you pass, the avenue's camera swinging round its centre. People are drawn into
-    # the same scene. Off ("live3d": False on the game), headless, or with no card: the baked picture.
+    # the same scene. The DS regions are 3D only (Jordan 11-24; their flat pictures are gone): headless (the checks), with no
+    # card and no bundled Mesa (live3d._mesa), or game.live3d False (a checks-only switch), the map's plain tile drawing.
     def _live(self):
         """(scene, the place's camera data from its map) here, or None."""
-        from src.core import settings as _settings
-        if getattr(self.game, "live3d", True) is False or not _settings.get(self.game.story_manager, "live3d"):
-            return None   # (Options, SCREEN & SOUND: 3D camera Flat)
+        if getattr(self.game, "live3d", True) is False:   # (a checks-only switch; Jordan 11-24: the DS regions are 3D only, no Options choice)
+            return None
         tm = getattr(self, "town_map", None)
         m = ((tm.get("rooms") or {}).get(self.room) if getattr(self, "room", None) else tm) if isinstance(tm, dict) else None
         roofs = (m or {}).get("roofs") or {}

@@ -1528,5 +1528,29 @@ check(_door and _locked and _cy and _trio == 3 and _sa and _free,
       f"Galactic HQ: Looker opens the Warehouse door, Galactic Key doors, Cyrus battles on 4F, the trio sealed, Saturn battles, the button frees them ({_door}, {_locked}, {_cy}, {_trio}, {_sa}, {_free})")
 story.story_flags.clear(); story.story_flags.update(_sv); story.inventory.clear(); story.inventory.update(_iv)
 
+# ---- 11-24 (cleanups): the Coin Case (Veilstone's clown), the Sprayduck (Floaroma's florist) that waters Berry soil, and
+#      Regigigas waking only for the three Regis in your party (Platinum)
+_sv, _iv, _team = dict(story.story_flags), dict(story.inventory), list(story.player_team)
+_rm = _tm["VEILSTONE_CITY"]["rooms"]["house_0501"]["people"]
+_clown = next(p for p in _rm if isinstance(p, dict) and p.get("text") == "Sad clown")
+_fl = next(p for p in _tm["FLOAROMA_TOWN"]["rooms"]["flower"]["people"] if isinstance(p, dict) and p.get("text") == "Florist")
+from src.world import berries as _bz
+story.inventory["SPRAYDUCK"] = 1; story.inventory.pop("WAILMER_PAIL", None)
+_bz._all(story)["SINNOH_ROUTE_211:19,12"] = {"berry": "ORAN_BERRY", "t": __import__("time").time(), "water": []}
+_wl, _ = _bz.touch(story, "SINNOH_ROUTE_211", (19, 12), "ORAN_BERRY")
+_wet = any("Sprayduck" in l for l in _wl)
+_boss = __import__("json").load(open("assets/sinnoh_area_data.json", encoding="utf-8"))["STORY_PROGRESSION"]["SNOWPOINT_TEMPLE"]["area_boss"]
+story.player_team = [mk(387)]
+r = route("SNOWPOINT_TEMPLE", "SNOWPOINT_CITY")
+r.action_challenge_boss(dict(_boss)); frames(r, 5)
+_asleep = "Battle" not in type(g.current_state).__name__
+story.player_team = [mk(377), mk(378), mk(379)]
+r = route("SNOWPOINT_TEMPLE", "SNOWPOINT_CITY"); story.player_team = [mk(377), mk(378), mk(379)]
+r.action_challenge_boss(dict(_boss)); _drive(r, 300, lambda: "Battle" in type(g.current_state).__name__)
+_wakes = "Battle" in type(g.current_state).__name__
+check(_clown["event"].get("gift_item") == {"COIN_CASE": 1} and _fl["event"].get("gift_item") == {"SPRAYDUCK": 1} and _wet and _asleep and _wakes,
+      f"Veilstone's clown gives the Coin Case, Floaroma's florist the Sprayduck that waters Berry soil, Regigigas wakes only for the three Regis ({_wet}, {_asleep}, {_wakes})")
+story.story_flags.clear(); story.story_flags.update(_sv); story.inventory.clear(); story.inventory.update(_iv); story.player_team = _team
+
 g.walk_towns = False
 print(f"##### {fails} failures")

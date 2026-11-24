@@ -29,7 +29,8 @@ for k in [k for k in flags if k.startswith(("visited_", "feat_", "badge_"))] + [
     flags.pop(k, None)
 at("LITTLEROOT_TOWN")
 flags["hoenn_version"] = "OMEGA_RUBY"   # (picked on arrival: Team Magma, Maxie, Groudon)
-city = CityState(g); g.change_state(city)
+exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())   # (11-24: the Journal opened from the walked town's map)
+city = walk_town(story.current_area_key, None, play=False)
 HBADGE = {"hoenn_m3": "STONE", "hoenn_m5": "KNUCKLE", "hoenn_m7": "DYNAMO", "hoenn_m9": "HEAT", "hoenn_m10": "BALANCE",
           "hoenn_m13": "FEATHER", "hoenn_m17": "MIND", "hoenn_m21": "RAIN"}
 HSCENE = {"hoenn_m3": ["heard_devon_parts_stolen"], "hoenn_m5": ["visited_SLATEPORT_CITY"]}   # (Rustboro's thief, the boat to Slateport)

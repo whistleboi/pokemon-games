@@ -119,4 +119,19 @@ story.tracked_mission = None
 flags["embedded_rayquaza_defeated"] = True
 check("journey_embedded_tower" not in side(), "done once Rayquaza has come")
 
+print("New Feat counts (J6): swarm catches, rematches")
+from src.world import swarms as _sw
+from src.pokemon import catching as _catching
+_real_today = _sw.today
+_sw.today = lambda st, region, day=None: ("JOHTO_ROUTE_35", 193) if region == "JOHTO" else None
+at("JOHTO_ROUTE_35")
+_before = story.feat_counts.get("JOHTO", {}).get("swarm", 0)
+_catching.after_catch(g, mk(193), "POKE_BALL")
+_catching.after_catch(g, mk(16), "POKE_BALL")
+check(story.feat_counts.get("JOHTO", {}).get("swarm", 0) == _before + 1, "a swarm Pokemon caught where it swarms counts; another doesn't")
+_sw.today = _real_today
+check(any(f["id"] == "swarm" for f in ft["JOHTO"]) and any(f["id"] == "rematches" for f in ft["ORRE"]),
+      "Swarm Chaser where a region has swarms; Old Rivals in every region")
+check(all(any(f["id"] == "rematches" for f in ft[r]) for r in ft if not r.startswith("_")), "every region has Old Rivals")
+
 print(f"##### {fails} failures")
