@@ -943,5 +943,19 @@ _dp = [o for o in __import__("json").load(open("assets/sinnoh_area_data.json", e
 check(all(w and d and i == fl for fl, w, d, i in _seen) and len(_dp) == 1,
       f"Old Chateau: the ghost girl drifts through Bedroom 4 and the butler through the dining hall, then are gone; one Dread Plate ({_seen}, {len(_dp)})")
 
+# ---- S3 (11-24): Cynthia gives the Old Charm on Route 210, past the Psyduck (s_s3_old_charm.py)
+_sv = dict(story.story_flags); _inv = dict(story.inventory)
+story.story_flags.pop("got_old_charm_r210", None); story.inventory.pop("OLD_CHARM", None)
+r = route("SINNOH_ROUTE_210", "SOLACEON_TOWN")
+_none = next((m for m in r.run.floor.movers if m.kind == "figure" and str((m.payload or {}).get("text")) == "Cynthia"), None)
+story.inventory["SECRET_POTION"] = 1
+r = route("SINNOH_ROUTE_210", "SOLACEON_TOWN")
+_cy = next((m for m in r.run.floor.movers if m.kind == "figure" and str((m.payload or {}).get("text")) == "Cynthia"), None)
+if _cy is not None:
+    r._use_figure(_cy); _drive(r, 300, lambda: not (getattr(r, "dialogue_box", None) and r.dialogue_box.visible))
+check(_none is None and _cy is not None and (_cy.x, _cy.y) == (81, 71) and story.inventory.get("OLD_CHARM") and story.story_flags.get("got_old_charm_r210"),
+      f"Route 210: past the Psyduck, Cynthia gives the Old Charm once you have the SecretPotion ({_none is None}, {(getattr(_cy, 'x', None), getattr(_cy, 'y', None))})")
+story.story_flags.clear(); story.story_flags.update(_sv); story.inventory.clear(); story.inventory.update(_inv)
+
 g.walk_towns = False
 print(f"##### {fails} failures")

@@ -238243,7 +238243,7 @@
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTcc\"TT\"\"\"\"\"\"\"\"\"\"\"\".......TTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTcc\"\"\"\"\"\"\"\"\"\"\"\"\"\"\".......TTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTcc\"\"\"\"\"\"\"\"\"\"\"\"\"\"\".TTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTcc\"\"\"\"\"\"\"\"\"\"\"\"\"\"..TTTTTTTTTTTTTT",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTcc\"\"\"\"\"\"\"\"\"\"\"\"\"\".NTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTcc................TTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTcc................TTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTccccTTTTTTTTTTTT..TTTTTTTTTTTTTT",
@@ -239628,6 +239628,29 @@
    "NEST BALL",
    "HYPER POTION",
    "MAX REPEL",
+   {
+    "text": "Cynthia",
+    "action": "EVENT",
+    "condition": [
+     "has_item:SECRET_POTION",
+     "not:got_old_charm_r210"
+    ],
+    "event": {
+     "lines": [
+      "Cynthia: Look, the Psyduck are feeling much better. Thank you!",
+      "Cynthia: Could I ask you a favor? My grandmother lives in Celestic Town, north of here.",
+      "Cynthia: Please take her this Old Charm. She's been wanting to study it.",
+      "You received the Old Charm!"
+     ],
+     "gift_item": {
+      "OLD_CHARM": 1
+     },
+     "flag": "got_old_charm_r210",
+     "done": [
+      "Cynthia: Celestic Town is north, past the fog. Please give the Old Charm to my grandmother."
+     ]
+    }
+   },
    "SUPER REPEL",
    {
     "text": "Girl",

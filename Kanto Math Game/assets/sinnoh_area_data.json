@@ -3635,7 +3635,8 @@
           ],
           "label": "Cynthia",
           "done": "sinnoh_secretpotion"
-        }
+        },
+        {"area": "SINNOH_ROUTE_210", "at": [81, 71], "label": "Cynthia", "done": "got_old_charm_r210"}
       ]
     },
     {
