@@ -8,7 +8,6 @@
       {"mission": "m0c", "title": "The Professor's Gift", "say": "The parcel is light, but Professor Oak will want it in his hands. He looked like he had plans for you."}
     ]},
     {"title": "The Boulder Badge", "chapters": [
-      {"mission": "m1", "title": "The Locked Gym", "say": "Viridian's Gym has stood empty for a long time. So why are there footsteps inside?"},
       {"mission": "m1b", "title": "Into the Forest", "say": "Past Route 2 the trees close in. Bug Catchers know every path of Viridian Forest... and every trap."},
       {"mission": "m2", "title": "Hard as Rock", "say": "Pewter City is a city of stone, and its Gym Leader is the hardest stone of all."}
     ]},

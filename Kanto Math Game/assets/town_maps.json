@@ -901,7 +901,7 @@
    "cccccccc.ccccccccccc.............cccccc...cccccc",
    "cccccccc.cccccccccc..............cccccc...cccccc",
    "cccccccc.ccccccccccc...cccccc....cccCcc...cccccc",
-   "cccccccc.cccccccccc.....cBccc...!..cDc....cccccc",
+   "cccccccc.cccccccccc.....cBccc...!..cDcNNN.cccccc",
    "cccccccc.ccccccccccc...ccDccc.....N.......cccccc",
    "cccccccc.cccccccccc.N......cc_____________cccccc",
    "cccccccc.ccccccccccc......................cccccc",
@@ -958,6 +958,9 @@
   "people": [
    "POTION",
    "Wake Sleeping Man",
+   "Jessie and James",
+   "Jessie",
+   "Meowth",
    {
     "text": "Youngster",
     "action": "EVENT",
@@ -1173,7 +1176,6 @@
       "has_volcano_badge"
      ]
     },
-    "ambush": true,
     "lines": [
      "The doors of the Viridian Gym are locked tight..."
     ]
@@ -1338,7 +1340,7 @@
        "battle": {
         "name": "Black Belt Takashi",
         "class": "BLACKBELT",
-        "sprite": "blackbelt.png",
+        "sprite": "fr_black_belt.png",
         "team": [
          67,
          66,
@@ -1375,7 +1377,7 @@
        "battle": {
         "name": "Cooltrainer Warren",
         "class": "COOLTRAINER",
-        "sprite": "acetrainer_m.png",
+        "sprite": "fr_cooltrainer_m.png",
         "team": [
          105,
          105,
@@ -1416,7 +1418,7 @@
        "battle": {
         "name": "Cooltrainer Samuel",
         "class": "COOLTRAINER",
-        "sprite": "acetrainer_m.png",
+        "sprite": "fr_cooltrainer_m.png",
         "team": [
          28,
          28,
@@ -1457,7 +1459,7 @@
        "battle": {
         "name": "Tamer Jason",
         "class": "TAMER",
-        "sprite": "tamer.png",
+        "sprite": "fr_tamer.png",
         "team": [
          111
         ],
@@ -1490,7 +1492,7 @@
        "battle": {
         "name": "Cooltrainer Yuji",
         "class": "COOLTRAINER",
-        "sprite": "acetrainer_m.png",
+        "sprite": "fr_cooltrainer_m.png",
         "team": [
          28,
          75,
@@ -1531,7 +1533,7 @@
        "battle": {
         "name": "Black Belt Kiyo",
         "class": "BLACKBELT",
-        "sprite": "blackbelt.png",
+        "sprite": "fr_black_belt.png",
         "team": [
          67
         ],
@@ -1564,7 +1566,7 @@
        "battle": {
         "name": "Black Belt Atsushi",
         "class": "BLACKBELT",
-        "sprite": "blackbelt.png",
+        "sprite": "fr_black_belt.png",
         "team": [
          66,
          67
@@ -1609,7 +1611,7 @@
        "battle": {
         "name": "Tamer Cole",
         "class": "TAMER",
-        "sprite": "tamer.png",
+        "sprite": "fr_tamer.png",
         "team": [
          24,
          128
@@ -1683,6 +1685,11 @@
       "s": 3
      }
     },
+    "hidden_when": {
+     "2,2": [
+      "has_badge:EARTH"
+     ]
+    },
     "stops": [
      [
       11,
@@ -1733,6 +1740,9 @@
       22
      ]
     ],
+    "hidden": {
+     "2,2": "MACHO_BRACE"
+    },
     "overheads": [
      {
       "kind": "picture",
@@ -1748,15 +1758,7 @@
      }
     ],
     "theme": "room",
-    "title": "Viridian Gym",
-    "hidden": {
-     "2,2": "MACHO_BRACE"
-    },
-    "hidden_when": {
-     "2,2": [
-      "has_badge:EARTH"
-     ]
-    }
+    "title": "Viridian Gym"
    },
    "school": {
     "art": [
@@ -1964,8 +1966,8 @@
      "ccccccccccccccc"
     ],
     "exits": {
-     "n": "OUT:26,26",
-     "<": "ROOM:center_2"
+     "<": "ROOM:center_2",
+     "n": "OUT:26,26"
     },
     "buildings": {},
     "roofs": {
