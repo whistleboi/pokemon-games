@@ -23,8 +23,9 @@ import facts as F   # noqa: E402
 REGIONS = [("kanto", "Kanto + Sevii Islands", "FireRed and LeafGreen, with HeartGold/SoulSilver and Yellow extras"),
            ("johto", "Johto", "HeartGold and SoulSilver, on SoulSilver's maps, with Crystal extras"),
            ("orange", "Orange Islands", "the anime and the fan game Pokémon Orange Islands"),
-           ("hoenn", "Hoenn", "Omega Ruby and Alpha Sapphire's story on Emerald's maps, with Ruby, Sapphire and Emerald extras")]
-LATER = ["Sinnoh", "Unova", "Orre"]
+           ("hoenn", "Hoenn", "Omega Ruby and Alpha Sapphire's story on Emerald's maps, with Ruby, Sapphire and Emerald extras"),
+           ("sinnoh", "Sinnoh", "Diamond, Pearl and Platinum on Platinum's maps, with Brilliant Diamond and Shining Pearl's story")]
+LATER = ["Unova", "Orre"]
 IMPORTANT = ("GYM_LEADER", "ELITE_FOUR", "CHAMPION", "RIVAL", "ROCKET_LEADER")
 
 
@@ -135,7 +136,8 @@ NAV = {"kanto": [("Kanto", "KANTO", "kanto", "Settlements", ["Sevii Islands", "J
                  ("Sevii Islands", "SEVII", None, "Islands", ["Kanto"])],
        "johto": [("Johto", "JOHTO", "johto", "Settlements", ["Kanto", "Orange Islands"])],
        "orange": [("Orange Islands", "ORANGE", "orange", "Islands", ["Kanto", "Johto"])],
-       "hoenn": [("Hoenn", "HOENN", "hoenn", "Settlements", [])]}
+       "hoenn": [("Hoenn", "HOENN", "hoenn", "Settlements", [])],
+       "sinnoh": [("Sinnoh", "SINNOH", list(range(25, 33)), "Settlements", [])]}   # (Sinnoh's badges: REGION_START badge_images
 
 
 def navboxes(region, places, first_part):
@@ -161,7 +163,8 @@ def navboxes(region, places, first_part):
                   ["Routes", [[str(n), k] for n, k in sorted(routes)]],
                   ["Landmarks", [[places[k]["name"], k] for k in marks]]]
         out.append({"title": title, "slug": slug(title), "keys": keys,
-                    "badges": [i for i in (B.icon("b", f"{badges}_{n}.png") for n in range(1, 9)) if i] if badges else [],
+                    "badges": [i for i in (B.icon("b", f"{n}.png" if isinstance(badges, list) else f"{badges}_{n}.png")
+                                           for n in (badges if isinstance(badges, list) else range(1, 9))) if i] if badges else [],
                     "groups": [g for g in groups if g[1]], "access": access})
     return out
 

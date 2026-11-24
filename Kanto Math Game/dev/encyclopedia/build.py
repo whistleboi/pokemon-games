@@ -203,7 +203,7 @@ def wild_html(f):
                               band=band, fixed_land=fixed))
     if w.get("hordes"):
         out.append(horde_table(w["hordes"]))
-    if w.get("dexnav"):
+    if w.get("dexnav"):   # (Hoenn's DexNav and Sinnoh's Poke Radar)
         out.append(dexnav_table(w["dexnav"], band))
     return "".join(out)
 
@@ -229,7 +229,8 @@ def horde_table(rows):
 def dexnav_table(rows, band):
     early = [r for r in rows if r["dex_when"] == "origin"]
     late = [r for r in rows if r["dex_when"] == "title"]
-    out = ""
+    radar = [r for r in rows if r["dex_when"] == "radar"]
+    out = wild_table(radar, "Poké Radar (after the National Pokédex)", band=band) if radar else ""
     if early:
         out += wild_table(early, "Hidden Pokémon (DexNav, after the Cave of Origin)", band=band)
     if late:
@@ -323,7 +324,8 @@ def trainer_name(t):
     who = t.get("who") or ""
     n = (t["name"] if who.isupper() and t.get("name") else who) or t["name"] or ""
     n = re.sub(r"\s+\d+$", "", n.replace("{rival_name}", "Your rival").strip())   # ("Grunt 373": the fan game's trainer number)
-    n = re.sub(r"^Battle\s+", "", n)   # (an event battle named by its menu label: "Battle Courtney")
+    if not str(t.get("class") or "").startswith("BATTLE") and not re.match(r"Battle (Girl|Boy)\b", n):
+        n = re.sub(r"^Battle\s+", "", n)   # (an event battle named by its menu label: "Battle Courtney")
     cw = class_word(t.get("class"))
     if re.search(r"(Magma|Aqua)", n) or (t.get("class") == "ROCKET_LEADER" and CAP["region"] == "HOENN"):
         return n   # (Hoenn's teams name themselves: "Magma Admin Tabitha"; Zinnia uses the boss class, not Team Rocket)

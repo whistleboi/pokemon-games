@@ -101530,7 +101530,7 @@
    },
    "devon": {
     "art": [
-     "cccccccccccccc.cccc",
+     "ccccccccccccccccccc",
      "cccccccccccccc<cccc",
      "ccc!....!cccc...ccc",
      "ccc..N...cccc...ccc",
@@ -102963,6 +102963,22 @@
        "Mr. Briney: Thank you, young one! I'm Mr. Briney. If you ever need to cross the sea, come to my cottage by Petalburg Woods!"
       ]
      }
+    ]
+   },
+   {
+    "trigger": {
+     "zone": [
+      3,
+      1,
+      23,
+      10
+     ]
+    },
+    "condition": "not:rusturf_rescued",
+    "flag": "rusturf_west_reached",
+    "cast": [],
+    "call": [
+     "Grunt: Hey! Don't come any closer! These Devon Parts are mine now!"
     ]
    }
   ],
@@ -106721,7 +106737,19 @@
      }
     ],
     "theme": "room",
-    "title": "Stern's Shipyard"
+    "title": "Stern's Shipyard",
+    "scenes": [
+     {
+      "who": "Dock",
+      "trigger": "enter",
+      "condition": "not:oceanic_museum_cleared",
+      "flag": "slateport_saw_dock",
+      "lines": [
+       "Dock: Captain Stern? He went over to the Oceanic Museum.",
+       "Dock: There's a long line of strange-looking people outside it, though. Take care!"
+      ]
+     }
+    ]
    },
    "shipyard_2": {
     "art": [
@@ -106962,11 +106990,11 @@
      "cccccccc...co.oooooooooooooooo.ooooooocc",
      "cccccccc...cocoooooooXoooooooocooooooocc",
      "ccccccc!...co~.............ooocooooooocc",
-     "ccccccc....co~ooo.oooo.ooooooo~ooooooccc",
-     "ccccccc....cooooocoooocooooooooooooooccc",
-     "ccccccc.N..cooooo~oooo~ooooooooooooooocc",
-     "cccccccNNNNcoooooooooooooo.ooo.ooooooocc",
-     "ccccccc....coooooooooooooooooooooooooocc",
+     "cccccccN...co~ooo.oooo.ooooooo~ooooooccc",
+     "cccccccN...cooooocoooocooooooooooooooccc",
+     "cccccccN...cooooo~oooo~ooooooooooooooocc",
+     "cccccccN...coooooooooooooo.ooo.ooooooocc",
+     "cccccccN...coooooooooooooooooooooooooocc",
      "ccccccc....ccccccccc~oooooooooooooooo.cc",
      "ccccccc........cccccccccccccccccccccccoo",
      "cccccccc.......c.cc.ccccccccccccccccccoo",
@@ -107276,18 +107304,6 @@
      ]
     },
     "moves": {
-     "7,83": {
-      "m": "face",
-      "d": "u"
-     },
-     "9,83": {
-      "m": "face",
-      "d": "u"
-     },
-     "10,83": {
-      "m": "face",
-      "d": "u"
-     },
      "19,31": {
       "m": "wander",
       "d": "udlr",
@@ -107344,6 +107360,26 @@
       "m": "face",
       "d": "r",
       "s": 2
+     },
+     "7,80": {
+      "m": "face",
+      "d": "r"
+     },
+     "7,81": {
+      "m": "face",
+      "d": "r"
+     },
+     "7,82": {
+      "m": "face",
+      "d": "r"
+     },
+     "7,83": {
+      "m": "face",
+      "d": "r"
+     },
+     "7,84": {
+      "m": "face",
+      "d": "r"
      }
     },
     "scenes": [
@@ -111456,7 +111492,7 @@
    "ccccccccccccccccccccccc......ccccccccccc",
    "cccccccccccccccccccc.c......cccccccccccc",
    "cccccccccccccccccccc....X...cccccccccccc",
-   "ccccccccccc.ccccc..........ccccccccccccc",
+   "ccccccccccccccccc..........ccccccccccccc",
    "cccccccccccvccc............ccccccccccccc",
    "ccccccccc.............!....ccccccccccccc",
    "ccccccccc.....N...........cccccccccccccc",
@@ -111687,6 +111723,19 @@
     "after_lines": [
      "{rival_name}: I'm off to Fallarbor Town to meet Professor Cozmo, a friend of my dad's. See you!"
     ]
+   },
+   {
+    "trigger": {
+     "zone": [
+      0,
+      20,
+      39,
+      59
+     ]
+    },
+    "condition": "meteor_falls_cleared",
+    "flag": "r112_cable_side",
+    "cast": []
    }
   ],
   "berry_soil": [
@@ -115077,7 +115126,7 @@
      "..1...c....c1...c",
      "......c....c....c",
      "......c....c....c",
-     "1..1.1c.1.1c..1.c",
+     "1....1c.1.1c..1.c",
      "ccccccccccccccccc",
      "ccccccccccccccccc",
      "....c1.c1.cc.N.cc",
@@ -115087,9 +115136,9 @@
      "....c..c..c_____c",
      ".1.Nc1.c..c.....c",
      "..N.c__c..c.....c",
-     "....1..c....N....",
-     "1......c.....1...",
-     "....1..c..1..nn.."
+     "....c..c....N....",
+     "1......c.........",
+     ".......c..1..nn.."
     ],
     "exits": {
      "n": "OUT:5,15"
@@ -115263,11 +115312,6 @@
       8,
       9
      ],
-     "4,18": [
-      "gym_2",
-      4,
-      18
-     ],
      "5,14": [
       "gym_2",
       5,
@@ -115313,11 +115357,6 @@
       0,
       6
      ],
-     "3,6": [
-      "gym_2",
-      3,
-      6
-     ],
      "5,6": [
       "gym_2",
       5,
@@ -115348,11 +115387,6 @@
       10,
       6
      ],
-     "4,16": [
-      "gym_2",
-      4,
-      16
-     ],
      "12,3": [
       "gym_2",
       12,
@@ -115362,11 +115396,6 @@
       "gym_2",
       14,
       6
-     ],
-     "13,17": [
-      "gym_2",
-      13,
-      17
      ],
      "12,12": [
       "gym_2",
@@ -115412,20 +115441,20 @@
     "art": [
      "ccccccccccccccccc",
      "ccccccccccccccccc",
-     "....c1.1..c......",
+     "....c..1..c......",
      "..1.........1....",
      "ccccccccccccccccc",
      "ccccccccccccccccc",
-     "1..Nc1.c1c1..c1..",
+     "1..Nc..c.c...c...",
      "....c..c.c...c...",
      "....c..c.c...c...",
-     "....c1.c1c...c...",
-     "1..1c..c.c___c___",
+     "....c..c1c...c...",
+     "1...c..c.c___c___",
      "....c__c.c...c...",
      "____c..c.c..1c...",
      "....c..c.c...c...",
-     ".1.1c1.c.c...c...",
-     "..1.c..c.c___c...",
+     ".1..c1.c.c...c...",
+     "....c..c.c___c...",
      "....1....c...c...",
      "1........c...N...",
      "....N....c1......"
@@ -115572,21 +115601,6 @@
       4,
       18
      ],
-     "5,9": [
-      "gym",
-      5,
-      9
-     ],
-     "2,15": [
-      "gym",
-      2,
-      15
-     ],
-     "3,14": [
-      "gym",
-      3,
-      14
-     ],
      "1,14": [
       "gym",
       1,
@@ -115595,11 +115609,6 @@
      "0,10": [
       "gym",
       0,
-      10
-     ],
-     "3,10": [
-      "gym",
-      3,
       10
      ],
      "0,6": [
@@ -115612,35 +115621,15 @@
       3,
       6
      ],
-     "5,6": [
-      "gym",
-      5,
-      6
-     ],
      "2,3": [
       "gym",
       2,
       3
      ],
-     "5,2": [
-      "gym",
-      5,
-      2
-     ],
      "7,2": [
       "gym",
       7,
       2
-     ],
-     "8,6": [
-      "gym",
-      8,
-      6
-     ],
-     "10,6": [
-      "gym",
-      10,
-      6
      ],
      "12,3": [
       "gym",
@@ -115651,11 +115640,6 @@
       "gym",
       4,
       16
-     ],
-     "14,6": [
-      "gym",
-      14,
-      6
      ],
      "13,17": [
       "gym",
@@ -116358,6 +116342,30 @@
       ]
      }
     ]
+   },
+   {
+    "trigger": {
+     "zone": [
+      17,
+      7,
+      26,
+      13
+     ]
+    },
+    "flag": "fortree_gym_side",
+    "cast": []
+   },
+   {
+    "trigger": {
+     "zone": [
+      32,
+      7,
+      39,
+      10
+     ]
+    },
+    "flag": "fortree_east_side",
+    "cast": []
    }
   ],
   "barred": [
@@ -134385,11 +134393,16 @@
     ],
     "look": "sheet:em_133.png",
     "face": "d",
-    "until": {
-     "flag_condition": "sootopolis_wallace_met"
-    },
     "lines": [
      "Wallace: The Cave of Origin. Nobody goes in without good reason."
+    ],
+    "until_any": [
+     {
+      "flag_condition": "sootopolis_wallace_met"
+     },
+     {
+      "flag_condition": "cave_of_origin_cleared"
+     }
     ]
    }
   ],
@@ -135731,7 +135744,7 @@
      "ccccccc...ccccccc",
      "ccccccc..Nccccccc",
      "cccccccc.cccccccc",
-     "cccccccc.cc.ccccc",
+     "cccccccc.cccccccc",
      "ccccc......nccccc",
      "ccccc.......ccccc",
      "ccccc.......ccccc",
@@ -137767,11 +137780,46 @@
       "action": "EVENT",
       "event": {
        "lines": [
-        "Hey! How did you get down here without a sub?!"
-       ]
+        "Hey! How did you get down here without a sub?!",
+        "Nobody gets past me!"
+       ],
+       "flag": "seafloor_lookout_beaten",
+       "battle": {
+        "name": "Team Grunt (lookout)",
+        "class": "ROCKET",
+        "villain": "grunt",
+        "sprite": "magma_grunt.png",
+        "team": [
+         262,
+         42
+        ],
+        "levels": [
+         36,
+         38
+        ],
+        "rewards": {
+         "balls": 3
+        },
+        "team_by_version": {
+         "OMEGA_RUBY": [
+          262,
+          324
+         ],
+         "ALPHA_SAPPHIRE": [
+          262,
+          319
+         ]
+        },
+        "dialogue": {
+         "player_won": [
+          "Grunt: Gah! Fine, go on in... The Boss will finish you!"
+         ]
+        }
+       }
       },
       "condition": [
-       "not:seafloor_cavern_cleared"
+       "not:seafloor_cavern_cleared",
+       "not:seafloor_lookout_beaten"
       ],
       "_look": "@grunt"
      }
@@ -386930,7 +386978,7 @@
    ],
    [
     "ROUTE 71",
-    "North: Route 70  West: Rind Island"
+    "North: Route 70  West: Rind Island, Route 72"
    ]
   ],
   "trainer_spots": [
@@ -388097,7 +388145,7 @@
    ],
    [
     "ROUTE 72",
-    "North: Rind Island  West: Salveyo Island"
+    "North: Salveyo Island, Pummelo Island  East: Route 71"
    ]
   ],
   "trainer_spots": [

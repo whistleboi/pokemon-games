@@ -379,6 +379,9 @@ def set_wild(game, pokemon, area_key):
         fixed = _game_levels(game, area_key)
         if fixed:   # (the area's own game's levels for its grass / cave Pokemon: FireRed's Memorial Pillar Hoppip, 6-16)
             pokemon.level = random.randint(*fixed)
+            own = _species_levels(game, area_key, pokemon.id)
+            if own:   # (one Pokemon's own band in that grass: Valencia Park's Valencia Gyarados, Jordan 11-24)
+                pokemon.level = random.randint(*own)
         pokemon.current_hp = pokemon.get_max_hp()
     return pokemon
 
@@ -396,6 +399,17 @@ def _game_levels(game, area_key):
         if core.CURRENT_TILE in (core.SURF, getattr(core, "WATER", None)):
             return None
         return int(band[0]), int(band[1])
+    except Exception:
+        return None
+
+
+def _species_levels(game, area_key, pid):
+    """An area's "wild_levels" {"species": {"<id>": [lo, hi]}}: a Pokemon met there at its own levels, for one
+    that would be too young at the area's (Valencia Park, Lv 6-15: Valencia Gyarados at 20-22; Jordan 11-24)."""
+    try:
+        area = game.loader.area_data.get("STORY_PROGRESSION", {}).get(area_key) or {}
+        band = ((area.get("wild_levels") or {}).get("species") or {}).get(str(pid))
+        return (int(band[0]), int(band[1])) if band else None
     except Exception:
         return None
 

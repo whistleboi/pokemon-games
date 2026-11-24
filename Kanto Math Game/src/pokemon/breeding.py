@@ -8,7 +8,8 @@
   EGG_TRAVELS trips (a "trip" = travelling to another area). Compatible: one male and one female that
   share an Egg Group, or any breedable Pokemon with Ditto; never two Ditto, a Pokemon from the
   Undiscovered group, or an Egg.
-- The Egg: the bottom of the mother's line (or the non-Ditto parent's), in her regional form; 3 IVs
+- The Egg: the bottom of the mother's line (or the non-Ditto parent's), in her regional form; a Pinkan
+  or Valencia colour comes from either parent (Jordan, 11-24), on the line's lowest stage that has it; 3 IVs
   passed down from the parents; her hidden ability 60% of the time if she has it. It hatches after
   HATCH_TRAVELS trips in the party; Flame Body, Magma Armor or Steam Engine in the party makes each trip
   count twice (as in the games, they halve the time). An Egg can't battle (it always has 0 HP).
@@ -24,6 +25,8 @@ DITTO = 132
 # Evolutions only a regional form has: their Eggs hatch in that form (Sirfetch'd: Galarian Farfetch'd).
 REGIONAL_ONLY = {862: "galarian", 863: "galarian", 864: "galarian", 865: "galarian", 866: "galarian",
                  867: "galarian", 903: "hisuian", 904: "hisuian", 980: "paldean"}
+# The Orange Islands' colour variants: an Egg keeps the colour if either parent has it (Jordan, 11-24).
+COLOUR_FORMS = ("pinkan", "valencia")
 
 
 # ---------------------------------------------------------------- gender
@@ -90,17 +93,33 @@ def mother_of(game, a, b):
 
 
 # ---------------------------------------------------------------- the Egg
-def egg_species(game, mother):
-    """Our id for what hatches: the bottom of the mother's line, in her regional form if it has one."""
+def _form(mon):
+    return str(getattr(mon, "form", "normal") or "normal").lower()
+
+
+def egg_species(game, mother, father=None):
+    """Our id for what hatches: the bottom of the mother's line, in her regional form if it has one.
+    A Pinkan or Valencia colour comes from either parent (the mother's first); when the line's bottom
+    has no such form (Valencia Gyarados: no Valencia Magikarp), the Egg is the lowest stage that has it."""
     base = species_id(game, mother)
     root = int(ablib.species(game, base).get("egg") or base)
-    form = str(getattr(mother, "form", "normal") or "normal").lower()
+    form = _form(mother)
+    if form not in COLOUR_FORMS and father is not None and _form(father) in COLOUR_FORMS:
+        form = _form(father)
     if base in REGIONAL_ONLY:
         form = REGIONAL_ONLY[base]
     if form not in ("normal", "") and getattr(game, "loader", None):
+        line = []
         for fid, m in game.loader.area_data.get("FORM_MAP", {}).items():
-            if int(m.get("id", 0)) == root and str(m.get("form")).lower() == form:
+            if str(m.get("form")).lower() != form:
+                continue
+            sid = int(m.get("id", 0))
+            if sid == root:
                 return int(fid)
+            if form in COLOUR_FORMS and int(ablib.species(game, sid).get("egg") or sid) == root:
+                line.append((sid, int(fid)))
+        if line:
+            return min(line)[1]   # (Gen 1 lines run in dex order: Caterpie < Metapod < Butterfree)
     return root
 
 
@@ -108,7 +127,7 @@ def make_egg(game, a, b, rng=random):
     """The Egg two Day Care Pokemon leave: a Pokemon that hasn't hatched yet."""
     from src.pokemon.data import Pokemon
     mother = mother_of(game, a, b)
-    pid = egg_species(game, mother)
+    pid = egg_species(game, mother, b if mother is a else a)
     egg = Pokemon(game.loader.fetch_specific(pid), game.assets, size_mult=2.5)
     egg.level = 1
     egg.xp = 0
