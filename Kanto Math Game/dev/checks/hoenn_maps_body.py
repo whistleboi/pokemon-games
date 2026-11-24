@@ -309,8 +309,8 @@ st = arrive("HOENN_ROUTE_112", "HOENN_ROUTE_111", len(_w111) - 1, len(_w111))   
 _s112 = _reach(st)
 _hill = [t for t, v in st.run.floor.exits.items() if v == "HOENN_ROUTE_111" and t[1] < 20]
 check(_pos(st)[1] > 40 and _by(_s112, st, "HOENN_FIERY_PATH") and not _by(_s112, st, "LAVARIDGE_TOWN") and not _by(_s112, st, "HOENN_JAGGED_PASS")
-      and not any(_near(n, _hill, 1) for n in _s112) and "door:cablecar" in st.run.floor.decor.values() and any(str(v).startswith("ledge:1,") for v in st.run.floor.decor.values()),
-      f"Route 112: in from Route 111 at {_pos(st)}: the Fiery Path and the cable car, not Lavaridge or the Jagged Pass past the east-hopping ledges, nor the north hill")
+      and not any(_near(n, _hill, 1) for n in _s112) and _by(_s112, st, "WARP:1:6:11") and any(str(v).startswith("ledge:1,") for v in st.run.floor.decor.values()),
+      f"Route 112: in from Route 111 at {_pos(st)}: the Fiery Path and the cable car's station, not Lavaridge or the Jagged Pass past the east-hopping ledges, nor the north hill")
 
 for _k, _v in _hm_had.items():
     if _v is None:
@@ -3132,6 +3132,9 @@ for _dk, _came, _kind in (("HOENN_ROUTE_112", "HOENN_ROUTE_111", "cablecar"), ("
     _mf = story.story_flags.get("meteor_falls_cleared")
     story.story_flags["meteor_falls_cleared"] = True   # (the Cable Car runs once Magma's left Meteor Falls)
     st = arrive(_dk, _came)
+    _sd = next((v for v in st.run.floor.exits.values() if str(v).startswith("WARP:")), None)   # (H8, 11-24: the car waits in its
+    if _sd:                                                                                      #  station, walked in: Jordan #1)
+        st._warp(*(int(n) for n in _sd.split(":")[1:4]))
     _dt = next((t for t, v in st.run.floor.decor.items() if v == "door:" + _kind), None)
     _went, _said = [], []
     _cb0, _say0 = st._get_route_callback, st.say

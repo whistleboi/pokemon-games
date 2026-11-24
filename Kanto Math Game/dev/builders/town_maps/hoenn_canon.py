@@ -655,6 +655,18 @@ def _coin_case(maps):
                           "done": ["Coin Case man: Keep your Coins safe in that Coin Case!"]}
 
 
+def _wally_victory_road(maps):
+    """Jordan 11-24 (questions/HOENN.md #4, Emerald): after his battle, Wally stays at Victory Road, beside where he
+    stopped you, with a word for you."""
+    m = maps.get("HOENN_VICTORY_ROAD")
+    if not m or not m.get("floors"):
+        return
+    _F._put(m["floors"][0], "N", "people", [[32, 8, {
+        "text": "Wally ", "action": "EVENT", "condition": "defeated_wally_victory",
+        "event": {"lines": ["Wally: {player_name}... I'm not giving up. I'll keep training until I can beat you!",
+                            "Wally: Go on. The Pokemon League is waiting for you!"]}}]])
+
+
 def _part(m, floor, room):
     if room:
         return m["rooms"][room]
@@ -738,6 +750,7 @@ def apply(maps):
     _drop_dupes(maps)
     _mauville_slots(maps)
     _coin_case(maps)
+    _wally_victory_road(maps)
     _h7(maps)
     for key, floor, room, x, y, who in PEOPLE:
         m = maps.get(key)

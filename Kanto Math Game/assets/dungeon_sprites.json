@@ -76,6 +76,12 @@
     ]
   },
   "figures": {
+    "HOENN_ROUTE_112:Cable Car attendant": {
+      "sheet": "em_45.png"
+    },
+    "HOENN_MT_CHIMNEY:Cable Car attendant": {
+      "sheet": "em_45.png"
+    },
     "ORRE_BATTLE_FRONTIER:Ace Trainer": {
       "sheet": "orre_trainer_ace_trainer.png"
     },
@@ -17172,7 +17178,15 @@
     },
     "HOENN_TRICK_HOUSE_1:EXPERT BELT": {
       "item": "EXPERT_BELT"
-    }
+    },
+    "HOENN_BATTLE_FRONTIER:Dome attendant": {"sheet": "em_85.png"},
+    "HOENN_BATTLE_FRONTIER:Palace attendant": {"sheet": "em_85.png"},
+    "HOENN_BATTLE_FRONTIER:Pyramid attendant": {"sheet": "em_85.png"},
+    "HOENN_BATTLE_FRONTIER:Arena attendant": {"sheet": "em_85.png"},
+    "HOENN_BATTLE_FRONTIER:Factory attendant": {"sheet": "em_85.png"},
+    "HOENN_BATTLE_FRONTIER:Exchange clerk": {"sheet": "em_85.png"},
+    "MAUVILLE_CITY:Mirror shop owner": {"sheet": "em_83.png"},
+    "HOENN_VICTORY_ROAD:Wally ": {"sheet": "em_135.png"}
   },
   "townsperson": "NPC 17.png",
   "players": {

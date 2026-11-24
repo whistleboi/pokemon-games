@@ -111789,7 +111789,80 @@
      60
     ]
    }
-  ]
+  ],
+  "rooms": {
+   "cable_car": {
+    "art": [
+     "ccccccccccccc",
+     "ccccccccccccc",
+     "ccccccccccccc",
+     "ccccccccccccc",
+     "cccccc.cccccc",
+     "cccccc.cccccc",
+     "cccccc.cccccc",
+     ".......N....c",
+     "............c",
+     "............c",
+     ".............",
+     "......nn....."
+    ],
+    "exits": {
+     "n": "OUT:28,27"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/19_0.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Cable Car attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome! The Cable Car takes you up to Mt. Chimney's peak. Step aboard at the end of the way!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "7,7": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/19_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       12
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Cable Car station",
+    "decor": {
+     "6,4": "door:cablecar"
+    }
+   }
+  },
+  "inside": {
+   "28,27": "cable_car",
+   "29,27": "cable_car"
+  }
  },
  "HOENN_FIERY_PATH": {
   "art": [
@@ -114413,6 +114486,79 @@
     ]
    }
   ],
+  "rooms": {
+   "cable_car": {
+    "art": [
+     "ccccccccccccc",
+     "ccccccccccccc",
+     "ccccccccccccc",
+     "ccccccccccccc",
+     "cccccc.cccccc",
+     "cccccc.cccccc",
+     "cccccc.cccccc",
+     ".......N....c",
+     "............c",
+     "............c",
+     ".............",
+     "......nn....."
+    ],
+    "exits": {
+     "n": "OUT:17,36"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/19_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Cable Car attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome! The Cable Car takes you down to Route 112. Step aboard at the end of the way!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "7,7": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/19_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       12
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Cable Car station",
+    "decor": {
+     "6,4": "door:cablecar"
+    }
+   }
+  },
+  "inside": {
+   "17,36": "cable_car",
+   "18,36": "cable_car"
+  },
   "hidden": {
    "23,15": "ZINC",
    "26,15": "PROTEIN"
@@ -137414,7 +137560,7 @@
      "cccccccccccccccccccccccccccccc.........n.ccccc",
      "cccccccccccccccccccccccccccccc...ccccccccccccc",
      "cccccccccccccccccccccccccccccc...ccccccccccccc",
-     "cccccccccccccccccccccccccccccc...ccccccccccccc",
+     "cccccccccccccccccccccccccccccc..Nccccccccccccc",
      "cccccccccccccccccccccccccccccc.X.ccccccccccccc",
      "cccccccccccccccccccccccccccccc...ccccccccccccc",
      "cccccccccccccccccccccccccccccc...ccccccccccccc",
@@ -137529,6 +137675,17 @@
      }
     },
     "people": [
+     {
+      "text": "Wally ",
+      "action": "EVENT",
+      "condition": "defeated_wally_victory",
+      "event": {
+       "lines": [
+        "Wally: {player_name}... I'm not giving up. I'll keep training until I can beat you!",
+        "Wally: Go on. The Pokemon League is waiting for you!"
+       ]
+      }
+     },
      "MAX ELIXIR",
      "TM105 X-SCISSOR",
      "FULL HEAL",
