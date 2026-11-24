@@ -321741,7 +321741,7 @@
    {
     "text": "Gate lady",
     "action": "EVENT",
-    "condition": "xd_bonsly_found",
+    "condition": "xd_exol_beaten",
     "event": {
      "stages": [
       {
@@ -323328,7 +323328,7 @@
        },
        "condition": {
         "any": [
-         "not:xd_bonsly_found",
+         "not:xd_exol_beaten",
          "orre_snattle_phenac"
         ]
        },
@@ -324094,7 +324094,7 @@
       "text": "Mayor's secretary",
       "action": "EVENT",
       "condition": [
-       "xd_bonsly_found",
+       "xd_exol_beaten",
        "not:orre_snattle_phenac"
       ],
       "flag_condition": "not xd_secretary",
@@ -324454,7 +324454,7 @@
        "stages": [
         {
          "requires": [
-          "xd_bonsly_found",
+          "xd_exol_beaten",
           "not:xd_music_disc"
          ],
          "flag": "xd_music_disc",
@@ -328219,12 +328219,13 @@
     "people": [],
     "signs": [
      [
-      "AGATE GYM",
-      "Leaders: Blaine and Erika. Enlighten the eyes and you may proceed."
+      "AGATE GYM - Leaders: Blaine and Erika",
+      "Walk over a garden's flower beds: each one you step on blooms and adds its number.",
+      "Make the garden's number exactly and it stays in bloom. Go over, and the vines grow back!"
      ],
      [
       "AGATE GYM",
-      "Leaders: Blaine and Erika. Enlighten the eyes and you may proceed."
+      "Three gardens in bloom, and the way to the Leaders opens."
      ]
     ],
     "roofs": {
@@ -328249,6 +328250,76 @@
       "size": [
        24,
        15
+      ]
+     }
+    ],
+    "gardens": {
+     "flag": "agate_garden_done",
+     "gardens": [
+      {
+       "target": 10,
+       "label": [
+        2,
+        5
+       ],
+       "beds": {
+        "2,6": 2,
+        "3,6": 7,
+        "4,6": 4,
+        "2,7": 6,
+        "3,7": 3,
+        "4,7": 5
+       }
+      },
+      {
+       "target": 18,
+       "label": [
+        9,
+        6
+       ],
+       "beds": {
+        "9,7": 8,
+        "10,7": 3,
+        "11,7": 6,
+        "9,8": 4,
+        "10,8": 9,
+        "11,8": 5
+       }
+      },
+      {
+       "target": 27,
+       "label": [
+        16,
+        2
+       ],
+       "beds": {
+        "16,3": 9,
+        "17,3": 5,
+        "18,3": 12,
+        "16,4": 7,
+        "17,4": 8,
+        "18,4": 6
+       }
+      }
+     ],
+     "done": [
+      "Every garden in the hall is in full bloom!",
+      "Blaine: Hah! Not bad at all. Erika's flowers like you - so I'll clear the way.",
+      "Blaine burns the vines off the door to the inner garden!"
+     ]
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        21,
+        7
+       ]
+      ],
+      "flag": "agate_garden_done",
+      "look": "img:orre_garden/vines.png",
+      "lines": [
+       "Thick vines cover the door. Erika's sign says the gardens must bloom first."
       ]
      }
     ]
@@ -329360,7 +329431,7 @@
       "boss": {
        "id": 125,
        "name": "Electabuzz",
-       "level": 65,
+       "level": 36,
        "victory_flag": "gateon_lh_electabuzz",
        "lines": [
         "Electabuzz crackles with stored power. It guards the stairs!"
@@ -329445,7 +329516,7 @@
       "boss": {
        "id": 101,
        "name": "Electrode",
-       "level": 65,
+       "level": 37,
        "victory_flag": "gateon_lh_electrode",
        "lines": [
         "Electrode crackles with stored power. It guards the stairs!"
@@ -329512,7 +329583,7 @@
       "boss": {
        "id": 181,
        "name": "Ampharos",
-       "level": 65,
+       "level": 38,
        "victory_flag": "gateon_lh_ampharos",
        "lines": [
         "Ampharos crackles with stored power. It guards the stairs!"
@@ -329586,96 +329657,11 @@
           "gateon_lh_electrode",
           "gateon_lh_ampharos"
          ],
-         "flag": "gateon_jasmine_beaten",
          "fail": [
           "Jasmine: The lighthouse's Pokemon guard the stairs for me. Get past all three, then we'll battle."
          ],
-         "lines": [
-          "Jasmine: ...You got past all three of the lighthouse's Pokemon? Then you've earned a battle.",
-          "Jasmine: I came to Orre to see its Colosseums. Steel types don't bend - let's see if you do."
-         ],
-         "battle": {
-          "name": "Gym Leader Jasmine",
-          "class": "LEADER",
-          "sprite": "jasmine.png",
-          "team": [
-           208,
-           227,
-           212,
-           376,
-           82,
-           101
-          ],
-          "levels": [
-           70,
-           70,
-           70,
-           70,
-           70,
-           70
-          ],
-          "team_moves": [
-           [
-            "ROCK-SLIDE",
-            "EXPLOSION",
-            "EARTHQUAKE",
-            "IRON-TAIL"
-           ],
-           [
-            "SPIKES",
-            "DRILL-PECK",
-            "TOXIC",
-            "PROTECT"
-           ],
-           [
-            "METAL-CLAW",
-            "SILVER-WIND",
-            "BRICK-BREAK",
-            "SWORDS-DANCE"
-           ],
-           [
-            "METEOR-MASH",
-            "EARTHQUAKE",
-            "EXPLOSION",
-            "ROCK-SLIDE"
-           ],
-           [
-            "THUNDERBOLT",
-            "THUNDER-WAVE",
-            "TOXIC",
-            "PROTECT"
-           ],
-           [
-            "THUNDERBOLT",
-            "EXPLOSION",
-            "THUNDER-WAVE",
-            "LIGHT-SCREEN"
-           ]
-          ],
-          "rewards": {
-           "balls": 0,
-           "TM265": 1
-          },
-          "double": true,
-          "team_items": [
-           "QUICK_CLAW",
-           "LEFTOVERS",
-           "SCOPE_LENS",
-           "FOCUS_BAND",
-           "LEFTOVERS",
-           "SCOPE_LENS"
-          ],
-          "dialogue": {
-           "player_won": [
-            "Jasmine: ...You're stronger than steel. Here - the Mineral Badge.",
-            "Jasmine: It means nothing to Orre's League, but it means something to me. And take this TM: Iron Tail."
-           ]
-          }
-         }
+         "world": "orre_gym"
         }
-       ],
-       "done": [
-        "Jasmine: The lighthouse light reaches past Citadark on a clear night. I'll keep it burning."
        ]
       }
      },
@@ -331056,7 +331042,7 @@
      "c...c.....c",
      "c.........c",
      "cc.......cc",
-     "ccc.....ccc",
+     "ccc..N..ccc",
      "ccccccccccc"
     ],
     "exits": {
@@ -331902,7 +331888,8 @@
        }
       },
       "color": "GOLD"
-     }
+     },
+     "GYM LEADER BIRCH"
     ],
     "signs": [],
     "roofs": {
@@ -338889,7 +338876,10 @@
     },
     "parts": true,
     "people": [
-     "BATTLE CIPHER ADMIN GORIGAN",
+     [
+      "BATTLE CIPHER ADMIN GORIGAN",
+      "GYM LEADER NORMAN"
+     ],
      "GREEVIL'S SCREEN",
      "GORIGAN'S DESK"
     ],
@@ -338965,6 +338955,7 @@
    "Cipher Peon Angic": 3,
    "Cipher R&D Acrod": 3,
    "BATTLE CIPHER ADMIN GORIGAN": 4,
+   "GYM LEADER NORMAN": 4,
    "GREEVIL'S SCREEN": 4,
    "GORIGAN'S DESK": 4
   },
@@ -339982,7 +339973,10 @@
     },
     "parts": true,
     "people": [
-     "GRAND MASTER GREEVIL"
+     [
+      "GYM LEADER DRAKE",
+      "GRAND MASTER GREEVIL"
+     ]
     ],
     "trainer_spots": [],
     "roofs": {
@@ -340079,6 +340073,7 @@
    "CIPHER ADMIN ELDES": 5,
    "Cipher R&D Kaller": 5,
    "Cipher R&D Loket": 5,
+   "GYM LEADER DRAKE": 6,
    "GRAND MASTER GREEVIL": 6
   },
   "theme": "tunnel"

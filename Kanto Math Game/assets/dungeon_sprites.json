@@ -76,8 +76,11 @@
     ]
   },
   "figures": {
-    "LAKE_VERITY:Confront Galactic at the Lake": {"sheet": "pt_gkanbu1.png"},
     "LAKE_VALOR:Confront Saturn at the Lake": {"sheet": "pt_gkanbu2.png"},
+    "LAKE_VERITY:Confront Galactic at the Lake": {"sheet": "pt_gkanbu1.png"},
+    "REALGAM_TOWER:GYM LEADER BIRCH": {"sheet": "orre_trainer_leader_birch.png"},
+    "XD_CIPHER_KEY_LAIR:GYM LEADER NORMAN": {"sheet": "orre_trainer_leader_norman.png"},
+    "XD_CITADARK_ISLE:GYM LEADER DRAKE": {"sheet": "orre_trainer_leader_drake.png"},
     "SINNOH_ROUTE_208:Berry Master": {"sheet": "pt_oldman2.png"},
     "ANVILLE_TOWN:Boy": {"sheet": "b2_c29.png"},
     "ANVILLE_TOWN:Boy by the fence": {"sheet": "b2_c28.png"},
@@ -17165,7 +17168,7 @@
     "orre_leader_duking.png": "orre_npc_duking.png",
     "orre_leader_blaine_erika.png": "orre_trainer_leader_erika.png",
     "orre_leader_pryce.png": "orre_trainer_leader_pryce.png",
-    "orre_leader_jasmine.png": "orre_trainer_leader_jasmine.png",
+    "orre_leader_jasmine.png": "orre_trainer_leader_jasmine.png", "orre_leader_norman.png": "orre_trainer_leader_norman.png", "orre_leader_drake.png": "orre_trainer_leader_drake.png", "orre_leader_birch.png": "orre_trainer_leader_birch.png",
     "acetrainer_m.png": "orre_trainer_ace_trainer.png",
     "beauty.png": "orre_trainer_beauty.png",
     "orre_bodybuilder.png": "orre_trainer_bodybuilder.png",
