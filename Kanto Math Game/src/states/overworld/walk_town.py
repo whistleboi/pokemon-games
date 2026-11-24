@@ -271,7 +271,7 @@ class WalkTownState(TownWalkUps, CityState):
                 self.doors[(x, y)] = kinds.get(letter, "house")
         deep = art.SEA_CHARS if m.get("surf", True) else ""  # (a town's water is crossed with Surf, as on the routes (11-18: every town and room, as in the games: Cerulean
         wade = {tuple(t) for t in m.get("wade", [])}   # and Mikan Gyms' pools too); "surf": false walks it. "wade": water tiles walked anyway, Tangelo's to Lapras)
-        self.rows = ["".join("D" if (x, y) in doors else "$" if c == "$" else "o" if c in deep and (x, y) not in wade else "2" if c == "2" else ("." if c in art.OPEN and (not m.get("walk_on") or c in m["walk_on"]) else "#") for x, c in enumerate(row))
+        self.rows = ["".join("D" if (x, y) in doors else "$" if c == "$" else "/" if c == "/" and m.get("rock_climb") else "o" if c in deep and (x, y) not in wade else "2" if c == "2" else ("." if c in art.OPEN and (not m.get("walk_on") or c in m["walk_on"]) else "#") for x, c in enumerate(row))
                      for y, row in enumerate(grid)]
         self.locked = dict(m.get("locked", {}))  # (a shut door's own words: the Radio Tower with no power)
         # a warp pad (tile 1 with the map's "links" {"x,y": [floor, x, y]}, as on the routes): step on it and you stand on its far pad
@@ -285,6 +285,8 @@ class WalkTownState(TownWalkUps, CityState):
         # someone standing in the way till the story moves on (the map's "barred", as on the routes: Snowpoint Temple's guard)
         self._bar_list = m.get("barred", [])
         self._edge_to = m.get("edge_to") or {}  # (out by this edge tile: in at its partner on the next map, Emerald's own connection)
+        self.slide_ice = m.get("slide_ice")  # (its "%" floor is ice you slide across till something stops you; a "smash" bar you slide into breaks: Snowpoint Gym's snowballs, Platinum)
+        self._slide = None
         self.thin_ice = m.get("thin_ice")  # (Sootopolis Gym's: crack every tile of a section and its stairs open; twice, and you fall)
         self.gardens = m.get("gardens")  # (a number garden: step on beds whose numbers make the target - Orre's Agate Gym, src/world/number_garden.py)
         self.gusts = m.get("gusts")  # (timed wind that blows you back: Mistralton Gym's wind tunnel, src/world/gusts.py)
@@ -850,7 +852,7 @@ class WalkTownState(TownWalkUps, CityState):
 
     def _open(self, t):
         x, y = t
-        return 0 <= x < self.w and 0 <= y < self.h and (self.rows[y][x] == "." or tuple(t) in self.exits or (self.rows[y][x] == "$" and self._has_waterfall())
+        return 0 <= x < self.w and 0 <= y < self.h and (self.rows[y][x] == "." or tuple(t) in self.exits or (self.rows[y][x] == "$" and self._has_waterfall()) or (self.rows[y][x] == "/" and self._has("HM_ROCK_CLIMB"))
                                                        or (self.rows[y][x] == "o" and self._has("HM_SURF")) or (self.rows[y][x] == "2" and self._has("HM_CUT")))             and tuple(t) not in self._people() and tuple(t) not in getattr(self, "barred", {})
 
     def _has(self, item):
@@ -1171,6 +1173,9 @@ class WalkTownState(TownWalkUps, CityState):
             self.walk_goal = None
             return self.flash({"2": "A small tree is in the way. CUT could cut it down!", "0": "A cracked rock is in the way. ROCK SMASH could break it!",
                                "7": "A steep, muddy slope. A BICYCLE could ride up it!"}[grid[to[1]][to[0]]], 110)
+        if 0 <= to[0] < self.w and 0 <= to[1] < self.h and self.rows[to[1]][to[0]] == "/" and not self._has("HM_ROCK_CLIMB"):
+            self.walk_goal = None  # (a rock wall in town, on a map with "rock_climb": Acuity Lakefront's lumpy rocks)
+            return self.flash("A steep, lumpy rock wall. ROCK CLIMB could scale it!", 110)
         if 0 <= to[0] < self.w and 0 <= to[1] < self.h and self.rows[to[1]][to[0]] == "$" and not self._has_waterfall():
             self.walk_goal = None  # (a waterfall in town: Ever Grande's, below the League)
             return self.flash("The water pours down too hard. WATERFALL could climb it!", 110)
@@ -1220,6 +1225,7 @@ class WalkTownState(TownWalkUps, CityState):
             self._itemfinder(to)
         if getattr(self, "thin_ice", None) and self._step_ice(to):
             return
+        self._slide = (dx, dy) if getattr(self, "slide_ice", None) and grid and grid[to[1]][to[0]] == "%" else None   # (on ice: carried on next frame)
         self._step_switch(to)
         if getattr(self, "gardens", None):
             from src.world import number_garden as _garden
@@ -1885,6 +1891,8 @@ class WalkTownState(TownWalkUps, CityState):
         if self.anim > 0:
             self.anim = max(0, self.anim - (2 if self._may_run() else 1))   # (Shift held: running, Jordan 11-14)
             return
+        if getattr(self, "_slide", None) and not self._busy():   # (on ice: on you slide, the keys can't stop you)
+            return self._slide_on()
         if not self._busy():  # held down: keep walking (a key), or keep heading for the finger
             way = held_way(KEYS)
             if way:
@@ -2056,6 +2064,21 @@ class WalkTownState(TownWalkUps, CityState):
                         spot = cyc[(cyc.index(spot) + turns) % 4]
             out[spot] = {"look": rot.get("look", "boulder"), "lines": rot.get("lines") or ["It won't budge."]}
         return out
+
+    def _slide_on(self):
+        """One more tile of a slide on ice (a room's "slide_ice"): on that way till a wall, a person or plain floor stops you. A bar
+        with "smash" (its flag) in the way is crushed by your slide and you carry on: Snowpoint Gym's snowballs, Platinum (11-24)."""
+        d, self._slide = self._slide, None
+        nxt = (self.player[0] + d[0], self.player[1] + d[1])
+        bar = (getattr(self, "barred", None) or {}).get(nxt)
+        if bar and bar.get("smash"):
+            self.game.story_manager.story_flags[bar["smash"]] = True
+            self.barred = {tuple(t): b for b in self._bar_list if not self._bar_met(b) and self._bar_here(b) for t in b.get("tiles", [])}
+            self.barred.update(self._rot_bars())
+            self.flash((bar.get("smashed") or ["The snowball was crushed!"])[0], 80)
+        if self._open(nxt) and nxt not in self.doors and nxt not in self.signs:
+            self.walk_goal = None
+            self._step_tile(*d)
 
     def _step_switch(self, t):
         rot = getattr(self, "rotators", None)
@@ -2805,7 +2828,7 @@ class WalkTownState(TownWalkUps, CityState):
         {tile: target}, doors {tile: kind}, people {tile: option} and pads {tile: room}."""
         from src.dungeon import art
         cache = self.__dict__.setdefault("_guide_parts", {})
-        key = (room, getattr(self, "_cleared", ""), self._has("HM_SURF"), self._has_waterfall(), id(self.town_map), self._car_floor(room))
+        key = (room, getattr(self, "_cleared", ""), self._has("HM_SURF"), self._has_waterfall(), id(self.town_map), self._car_floor(room), self._has("HM_ROCK_CLIMB"))
         if key in cache:
             return cache[key]
         m = self.town_map["rooms"][room] if room else self.town_map
@@ -2840,7 +2863,7 @@ class WalkTownState(TownWalkUps, CityState):
                         opt = {"any": [w if isinstance(w, dict) else options[w] for w in who if isinstance(w, dict) or w in options]}
                     if opt:
                         part["people"][(x, y)] = opt
-                if (key[3] if c == "$" else key[2] if c in deep and (x, y) not in wade else c in art.OPEN and (not m.get("walk_on") or c in m["walk_on"])) \
+                if ((key[3] if c == "$" else key[2] if c in deep and (x, y) not in wade else c in art.OPEN and (not m.get("walk_on") or c in m["walk_on"])) or (c == "/" and m.get("rock_climb") and key[6])) \
                         and (x, y) not in part["doors"]:
                     part["open"].add((x, y))
         part["open"] |= set(part["exits"])
@@ -3012,6 +3035,7 @@ class WalkTownState(TownWalkUps, CityState):
             if not self._bar_met(bar) and self._bar_here(bar):
                 busy.update(tuple(t) for t in bar.get("tiles", []))
         surf, cut, fall = self._has("HM_SURF"), self._has("HM_CUT"), self._has_waterfall()
+        climb = self._has("HM_ROCK_CLIMB")
         rows, ways = self.rows, self.exits
 
         def closed(room):
@@ -3031,7 +3055,7 @@ class WalkTownState(TownWalkUps, CityState):
                 if not (0 <= x < self.w and 0 <= y < self.h) or t in busy:
                     return False
                 c = rows[y][x]
-                return c == "." or t in ways or (c == "o" and surf) or (c == "2" and cut) or (c == "$" and fall)
+                return c == "." or t in ways or (c == "o" and surf) or (c == "2" and cut) or (c == "$" and fall) or (c == "/" and climb)
             part = P(room)
             return t in part["open"] and t not in closed(room)
 
@@ -3198,7 +3222,7 @@ class WalkTownState(TownWalkUps, CityState):
     # shows its name with the place's.
     def _parts(self):
         """{tile: part number} for the place's own map (not its rooms), worked out once per HM set."""
-        key = (self.area_key, self._has("HM_SURF"), self._has("HM_CUT"), self._has_waterfall())
+        key = (self.area_key, self._has("HM_SURF"), self._has("HM_CUT"), self._has_waterfall(), self._has("HM_ROCK_CLIMB"))
         if getattr(self, "_parts_key", None) == key:
             return self._parts_map
         if getattr(self, "room", None):   # (the place's own map only; inside a room you're in no part)
@@ -3207,7 +3231,7 @@ class WalkTownState(TownWalkUps, CityState):
         h, w = len(rows), len(rows[0]) if rows else 0
         surf, cut, fall = key[1], key[2], key[3]
         ok = lambda x, y: 0 <= x < w and 0 <= y < h and (rows[y][x] == "." or (x, y) in exits or (rows[y][x] == "$" and fall)
-                                                       or (rows[y][x] == "o" and surf) or (rows[y][x] == "2" and cut))
+                                                       or (rows[y][x] == "o" and surf) or (rows[y][x] == "2" and cut) or (rows[y][x] == "/" and key[4]))
         part, n = {}, 0
         for y in range(h):
             for x in range(w):

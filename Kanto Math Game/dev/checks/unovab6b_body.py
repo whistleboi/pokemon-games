@@ -251,7 +251,8 @@ check("b2_m33" in main, f"the Journal: Over the Mountain ({main})")
 st = town("MISTRALTON_CITY", (24, 21), "cargo", (0, -1))
 talk(st, "Skyla")
 settle(300)
-check(flags.get("b2_lentimas_flight") and story.current_area_key == "LENTIMAS_TOWN" and "Bianca" in heard(),
+_sk = next(c for o in tmaps["MISTRALTON_CITY"]["rooms"]["cargo"]["people"] for c in _opts(o) if isinstance(c, dict) and c.get("text") == "Skyla ")
+check(flags.get("b2_lentimas_flight") and story.current_area_key == "LENTIMAS_TOWN" and any("Bianca" in x for x in _sk["event"]["lines"]),
       f"Skyla flies you, Juniper and Bianca to Lentimas Town ({story.current_area_key})")
 
 print("\n##### %d failures" % len(fails))

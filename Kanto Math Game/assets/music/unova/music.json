@@ -39,6 +39,7 @@
   "FLOCCESY_TOWN": "sw_t_06",
   "GUIDANCE_CHAMBER": "d_02",
   "JOIN_AVENUE": "rezo_rizo",
+  "LENTIMAS_TOWN": "sw_t_07",
   "LIBERTY_GARDEN": {
    "AUTUMN": "r_d_au",
    "SPRING": "r_d_sp",
@@ -59,7 +60,12 @@
   "RELIC_PASSAGE": "d_02",
   "RELIC_PASSAGE_MIDDLE": "d_02",
   "RELIC_PASSAGE_NORTH": "d_02",
+  "REVERSAL_MOUNTAIN": "sw_kazan",
+  "REVERSAL_MOUNTAIN_ENTRY": "sw_d_24_b",
+  "REVERSAL_MOUNTAIN_INSIDE": "sw_d_24_b",
+  "REVERSAL_MOUNTAIN_SOUTH": "sw_d_24_b",
   "ROYAL_UNOVA": "pleasure_boat",
+  "STRANGE_HOUSE": "sw_d_25",
   "TWIST_MOUNTAIN_ENTRANCE": {
    "AUTUMN": "r_d_au",
    "SPRING": "r_d_sp",
@@ -142,6 +148,7 @@
   "DRIFTVEIL_CITY:gym_lobby": "ground_gym_01",
   "FLOCCESY_RANCH:grotto": "kemonomichi",
   "FLOCCESY_TOWN:center": "pokecen",
+  "LENTIMAS_TOWN:center": "pokecen",
   "LIBERTY_GARDEN:lighthouse": "d_03",
   "LIBERTY_GARDEN:victini_room": "d_03",
   "LOSTLORN_FOREST:grotto": "kemonomichi",

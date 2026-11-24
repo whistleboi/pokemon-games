@@ -86,11 +86,13 @@ details.walk summary h2 { display: inline-block; } details.walk summary::after {
 .compass a, .c-other a { color: var(--fg); }
 .mapfull { overflow-x: auto; border: 2px solid var(--head); border-radius: 10px; background: var(--panel); margin: 6px 0 14px; }
 .mapfull img { display: block; max-width: 100%; height: auto; image-rendering: pixelated; }
+.mechlist { padding-left: 1.2em; } .mechlist li { margin: .3em 0; }
+ol.chapters li, ul.sides li { margin: .6em 0; } details.howto summary { cursor: pointer; font-size: .9em; } details.howto { margin-top: .3em; }
 </style>
 
 <header class="bar"><div class="in">
   <a class="home" href="#home">Pokémath Encyclopedia</a>
-  <nav aria-label="Lists"><a href="#list-walkthrough">Walkthrough</a><a href="#list-places">Places</a><a href="#list-pokemon">Pokémon</a><a href="#list-items">Items</a><a href="#list-trainers">Trainers</a></nav>
+  <nav aria-label="Lists"><a href="#list-walkthrough">Walkthrough</a><a href="#list-places">Places</a><a href="#list-pokemon">Pokémon</a><a href="#list-items">Items</a><a href="#list-trainers">Trainers</a><a href="#journal">Journal</a><a href="#list-buildings">Buildings</a><a href="#list-mechanics">Mechanics</a></nav>
   <div class="search"><input id="q" type="search" placeholder="Search a place, Pokémon, item…" aria-label="Search" autocomplete="off"><div class="hits" id="hits" hidden></div></div>
 </div></header>
 <main class="wrap" id="app"><p class="loading">Loading…</p></main>
@@ -105,9 +107,9 @@ const ic = (id, cls = "") => `<i class="ic p${id} ${cls}" aria-hidden="true"></i
 const STAT = ["HP", "Attack", "Defense", "Sp. Atk", "Sp. Def", "Speed"];
 
 async function load() {
-  const [sp, ...regs] = await Promise.all([fetch("data/species.json").then(r => r.json()),
+  const [sp, mech, jour, ...regs] = await Promise.all([fetch("data/species.json").then(r => r.json()), fetch("data/mechanics.json").then(r => r.json()), fetch("data/journal.json").then(r => r.json()),
     ...SITE.live.map(r => fetch(`data/${r.key}.json`).then(x => x.json()))]);
-  D.sp = sp; regs.forEach(r => D.regions[r.key] = r);
+  D.sp = sp; D.mech = mech; D.jour = jour; regs.forEach(r => D.regions[r.key] = r);
   route();
 }
 
@@ -164,7 +166,7 @@ function placeView(s) {
     <div class="ib-h">Wild level</div><div class="ib-row">Lv ${Math.max(2, p.level - 2)}–${p.level + 1}</div></aside>`;
   const all = maps.length ? `<h2 id="maps">${maps.length > 1 ? "Maps" : "Map"}</h2>` + maps.map(m => `${m.label ? `<h4>${esc(m.label)}</h4>` : ""}<div class="mapfull"><img data-region="${r.key}" data-map="${m.src}" alt="Map of ${esc(p.name)}${m.label ? ", " + esc(m.label) : ""}" width="${m.w}" height="${m.h}" loading="lazy"></div>`).join("") : "";
   return `<div class="crumb"><a href="#home">${esc(r.title)}</a> · ${esc((allBoxes().find(b => b.keys.includes(k)) || {}).title || r.title)} · Place</div>
-    <div class="placegrid">${box}<div class="placemain">${p.html}${all}</div></div>${navbox(allBoxes().find(b => b.keys.includes(k)), k, true)}`;
+    <div class="placegrid">${box}<div class="placemain">${p.html}${(p.buildings || []).length ? `<h2 id="buildings">Buildings</h2><div class="chips">${p.buildings.map(([id, n]) => `<a href="#building-${id}">${esc(n)}</a>`).join("")}</div>` : ""}${all}</div></div>${navbox(allBoxes().find(b => b.keys.includes(k)), k, true)}`;
 }
 
 function monView(id) {
@@ -219,6 +221,40 @@ function trainerView(s) {
     ${t.battles.map(b => `<h3>${placeLink(b.p)}</h3>${b.html}`).join("")}`;
 }
 
+function buildingView(id) {
+  for (const r of Object.values(D.regions)) {
+    const b = (r.buildings || {})[id]; if (!b) continue;
+    setTitle(b.name);
+    const place = r.places[b.p];
+    const kind = b.kind && D.mech[b.kind] ? `<p class="small">More about ${esc(D.mech[b.kind].title.toLowerCase())} in every region: <a href="#mechanic-${b.kind}">${esc(D.mech[b.kind].title)}</a>.</p>` : "";
+    const others = (place.buildings || []).filter(([x]) => x !== id);
+    return `<div class="crumb"><a href="#home">${esc(r.title)}</a> · <a href="#place-${slug(b.p)}">${esc(place.name)}</a> · Building</div>
+      <h1>${esc(b.name)}</h1>${kind}<div class="placemain">${b.html}</div>
+      ${others.length ? `<h2>Other buildings in ${esc(place.name)}</h2><div class="chips">${others.map(([x, n]) => `<a href="#building-${x}">${esc(n)}</a>`).join("")}</div>` : ""}`;
+  }
+  return notFound();
+}
+
+function journalHub() {
+  setTitle("Journal");
+  const qb = D.mech["quest-book"];
+  return `<div class="crumb">Lists</div><h1>Journal</h1><p class="lede">Every region's Journal: its story arcs and chapters, its side missions and its feats, with how to complete each one. The chapters' own pages are the game's text; how to complete them is folded away, so nothing is spoiled until you open it.</p>
+    ${qb ? `<p>How the Journal works: <a href="#mechanic-quest-book">${esc(qb.title)}</a>.</p>` : ""}
+    <div class="cards">${Object.entries(D.jour).map(([k, j]) => `<div class="card"><h3><a href="#journal-${k}">${esc(j.title)}</a></h3></div>`).join("")}</div>`;
+}
+
+function journalView(k) {
+  const j = D.jour[k]; if (!j) return notFound();
+  setTitle(j.title);
+  return `<div class="crumb"><a href="#journal">Journal</a></div><h1>${esc(j.title)}</h1>${j.toc || ""}<div class="placemain">${j.html}</div>`;
+}
+
+function mechanicView(k) {
+  const m = D.mech[k]; if (!m) return notFound();
+  setTitle(m.title);
+  return `<div class="crumb"><a href="#list-mechanics">Mechanics</a> · ${esc(m.group)}</div><h1>${esc(m.title)}</h1>${m.toc || ""}<div class="placemain">${m.html}</div>`;
+}
+
 function listView(kind) {
   if (kind === "walkthrough") {
     setTitle("Walkthrough");
@@ -242,6 +278,21 @@ function listView(kind) {
     const ks = Object.keys(all).sort((a, b) => all[a].name.localeCompare(all[b].name));
     return `<div class="crumb">Lists</div><h1>Items</h1><p class="lede">Every item lying on the ground, hidden, or handed to you.</p>
       <ul class="grid3">${ks.map(k => `<li><a href="#item-${k}">${all[k].ic}${esc(all[k].name)}</a></li>`).join("")}</ul>`;
+  }
+  if (kind === "buildings") {
+    setTitle("Buildings");
+    return `<div class="crumb">Lists</div><h1>Buildings</h1><p class="lede">Every building in the places written so far, town by town: each floor's map, the people in it and what they do, its items and its trainers. Tap a region's name to fold it away.</p>` +
+      Object.values(D.regions).map(r => {
+        const by = {}; Object.entries(r.buildings || {}).forEach(([id, b]) => b.html && (by[b.p] ||= []).push([id, b]));
+        const rows = r.order.filter(k => by[k]).map(k => `<div class="nb-h"><a href="#place-${slug(k)}">${esc(r.places[k].name)}</a></div><div class="nb-row">${by[k].map(([id, b]) => `<a href="#building-${id}">${esc(b.name)}</a>`).join(" · ")}</div>`).join("");
+        return `<details class="navbox" open><summary><span class="nb-title">${esc(r.title)}</span></summary><div class="nb-body">${rows}</div></details>`;
+      }).join("");
+  }
+  if (kind === "mechanics") {
+    setTitle("Mechanics");
+    const groups = {}; Object.entries(D.mech).forEach(([k, m]) => (groups[m.group] ||= []).push([k, m]));
+    return `<div class="crumb">Lists</div><h1>Mechanics</h1><p class="lede">How the game's systems work: the ones every region shares, with what changes from region to region, and each region's own.</p>` +
+      Object.entries(groups).map(([g, ms]) => `<h2>${esc(g)}</h2><ul class="mechlist">${ms.map(([k, m]) => `<li><a href="#mechanic-${k}">${esc(m.title)}</a>${m.blurb ? ` <span class="small">${esc(m.blurb)}</span>` : ""}</li>`).join("")}</ul>`).join("");
   }
   if (kind === "trainers") {
     setTitle("Trainers");
@@ -290,6 +341,10 @@ function route() {
   else if ((m = h.match(/^pokemon-(\d+)$/))) html = monView(+m[1]);
   else if ((m = h.match(/^item-(.+)$/))) html = itemView(m[1]);
   else if ((m = h.match(/^trainer-(.+)$/))) html = trainerView(m[1]);
+  else if ((m = h.match(/^building-(.+)$/))) html = buildingView(m[1]);
+  else if ((m = h.match(/^mechanic-(.+)$/))) html = mechanicView(m[1]);
+  else if (h === "journal") html = journalHub();
+  else if ((m = h.match(/^journal-([a-z]+)$/))) html = journalView(m[1]);
   else if ((m = h.match(/^list-(\w+)$/))) html = listView(m[1]);
   else { const el = document.getElementById(h); if (el) { el.scrollIntoView(); return; } html = notFound(); }
   app.innerHTML = html;
@@ -313,8 +368,11 @@ function searchIndex() {
     for (const [k, p] of Object.entries(r.places)) out.push([p.name, `#place-${slug(k)}`, "Place", ""]);
     for (const [k, e] of Object.entries(r.items)) out.push([e.name, `#item-${k}`, "Item", e.ic]);
     for (const [k, t] of Object.entries(r.trainers)) out.push([t.name, `#trainer-${k}`, "Trainer", ""]);
+    for (const [k, b] of Object.entries(r.buildings || {})) if (b.html) out.push([`${b.name} (${r.places[b.p].name})`, `#building-${k}`, "Building", ""]);
     for (const p of r.parts) out.push([`Part ${p.n}: ${p.title}`, `#part-${r.key}-${p.n}`, "Walkthrough", ""]);
   }
+  for (const [k, m] of Object.entries(D.mech)) out.push([m.title, `#mechanic-${k}`, "Mechanic", ""]);
+  for (const [k, j] of Object.entries(D.jour)) out.push([j.title, `#journal-${k}`, "Journal", ""]);
   return out;
 }
 let IDX = null, sel = -1;
