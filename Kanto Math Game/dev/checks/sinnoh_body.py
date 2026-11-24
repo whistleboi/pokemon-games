@@ -818,6 +818,17 @@ story.story_flags.clear(); story.story_flags.update(_sv); story.inventory.clear(
 
 # ---- S3 (11-23): Cynthia's Egg in Eterna (s_s3_eterna.py; Platinum's C04 script 27)
 _sv = dict(story.story_flags); _team = list(story.player_team)
+# (11-24: first Platinum's Cynthia outside the Galactic building, on Cut: she finishes the side mission "Cynthia's Gift")
+story.story_flags.pop("received_hm_cut", None); story.story_flags.pop("galactic_eterna_cleared", None)
+_fb = list(story.badges.get("SINNOH", []))
+story.badges["SINNOH"] = sorted(set(_fb) | {"COAL", "FOREST"})
+t = town("ETERNA_CITY", "SINNOH_ROUTE_211")
+_cc = next((s for s, o in t._people().items() if str(o.get("text")) == "Cynthia "), None)
+if _cc:
+    t._talk(_cc); _drive(t, 300, lambda: not getattr(t, "npc_active", False))
+check(_cc == (51, 8) and story.story_flags.get("received_hm_cut"),
+      f"Eterna: with the Forest Badge, Cynthia outside the Galactic building talks about Cut (\"Cynthia's Gift\" done) ({_cc})")
+story.badges["SINNOH"] = _fb
 story.story_flags["galactic_eterna_cleared"] = True; story.story_flags.pop("sinnoh_cynthia_egg", None)
 t = town("ETERNA_CITY", "SINNOH_ROUTE_211")
 check((53, 29) in t.barred, "Eterna: after the Galactic building, a stop across the street east until Cynthia's Egg")

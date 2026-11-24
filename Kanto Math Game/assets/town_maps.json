@@ -177380,7 +177380,7 @@
    "TTTTTTTT\"\"\"\"\"\"\"\"\"ccccccccccccccccccccccckk..TT.AAAAA.TTTTkkkkkkkkkkkkkkkkkkkkkkkkkkkkooooo..cccc",
    "TTTTTTTT\"\"\"\"\"\"\"\"\"ccccccccccccccccccccccckk.....AAAAA.....k.BBBB..ccccccccccccc..CCCCkooooooocccc",
    "TTTTTTTT\"\"\"\"\"\"\"\"\"ccccTTTTccccccccccccccckk.....AADAA.TT..k.BBBB.ccccccccccccccc.CCCCkooooooocccc",
-   "TTTTTT\"\"\"\"\"\"\"\"\"\"\"\"\".......\"\"\".cccccccccckkTT.............k.BBBB.ccc.........ccc.CCCCkooooooocccc",
+   "TTTTTT\"\"\"\"\"\"\"\"\"\"\"\"\".......\"\"\".cccccccccckkTT.......N.....k.BBBB.ccc.........ccc.CCCCkooooooocccc",
    "TTTTTT\"\"\"\"\"\"\"\"\"\"\"..........\"\"\"cccccccccckkkkkkkk222kkkkkkk.BDBB.cc...........cc.CCCCkooooooocccc",
    "TTTTTT\"\"\"\"\"\"\"\"\"\"\"oooooooo...\"\"cccccccccck......!..............i.cc....FFF....cc.CCCCkooooooocccc",
    "TTTTTT.\"\"\"\"\"\"\"\"\"\"oooooooo.EE\"\"cccccccccckaaaaaaaaaaaaaaaaaaaaaaa==....FFF....==.....kooooooocccc",
@@ -182992,6 +182992,25 @@
   "people": [
    "TM018",
    {
+    "text": "Cynthia ",
+    "action": "EVENT",
+    "condition": [
+     "has_forest_badge",
+     "not:received_hm_cut"
+    ],
+    "event": {
+     "lines": [
+      "Cynthia: You look like a capable trainer.",
+      "Cynthia: Team Galactic has been cutting down trees and blocking roads around here.",
+      "Cynthia: Your Forest Badge lets your Pokemon use Cut outside of battle. Small trees won't stop you now."
+     ],
+     "flag": "received_hm_cut",
+     "done": [
+      "Cynthia: Good luck with Team Galactic."
+     ]
+    }
+   },
+   {
     "text": "Little boy",
     "action": "EVENT",
     "event": {
@@ -183033,6 +183052,7 @@
     "action": "EVENT",
     "condition": [
      "galactic_eterna_cleared",
+     "received_hm_cut",
      "not:sinnoh_cynthia_egg"
     ],
     "event": {
@@ -183130,6 +183150,9 @@
      },
      {
       "flag_condition": "not galactic_eterna_cleared"
+     },
+     {
+      "flag_condition": "not received_hm_cut"
      }
     ],
     "lines": [

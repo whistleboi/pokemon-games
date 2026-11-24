@@ -76,6 +76,7 @@
     ]
   },
   "figures": {
+    "ETERNA_CITY:Cynthia ": {"sheet": "pt_champion.png"},
     "ROCKET_WAREHOUSE:UNLOCK THE DOORS": {
       "pic": "dungeon/characters/fr_prop_pc.png"
     },
