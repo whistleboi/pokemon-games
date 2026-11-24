@@ -28,7 +28,29 @@ check(evolution.item_evolution(g, gloom, "LEAF_STONE") == ("VILEPLUME_PINKAN", 4
 valencia = [k for k, v in FM.items() if v.get("form") == "valencia"]
 check(len(valencia) == 17, f"17 Valencia variants: {len(valencia)}")
 beach = g.loader.area_data["ORANGE_VALENCIA_PARK_PERCENTAGES"]
-check(all(k in beach for k in valencia), "Valencia Park, on Valencia, has Ivy's variants (11-17: Route 49 is open sea in 5.7)")
+_evolved = {"9504", "9505", "9507", "9508", "9511", "9513", "9515"}   # (their earlier Valencia stage is in the park)
+check(all(k in beach for k in valencia if k not in _evolved) and not _evolved & set(beach) and sum(beach.values()) == 100,
+      "Valencia Park has each Valencia line's lowest stage only; Nidorina, Parasect... come by evolving (Jordan 11-24)")
+
+# Eggs keep a Pinkan or Valencia colour from either parent (Jordan 11-24).
+from src.pokemon import breeding
+
+
+def _parent(pid, sex):
+    m = mkf(pid); m.gender = sex
+    return m
+
+
+check(breeding.egg_species(g, _parent(9106, "F"), _parent(15, "M")) == 9104, "Pinkan Beedrill mother: a Pinkan Weedle Egg")
+check(breeding.egg_species(g, _parent(46, "F"), _parent(9510, "M")) == 9510, "Valencia Paras father: a Valencia Paras Egg")
+check(breeding.egg_species(g, _parent(9501, "F"), _parent(12, "M")) == 9501,
+      "Valencia Butterfree (no Valencia Caterpie): the Egg is a Valencia Butterfree")
+check(breeding.egg_species(g, _parent(9517, "F"), _parent(132, None)) == 9517, "Valencia Gyarados with Ditto keeps its colour")
+check(breeding.egg_species(g, _parent(9505, "F"), _parent(34, "M")) == 9503, "Valencia Nidoqueen: a Valencia Nidoran-F Egg")
+check(breeding.egg_species(g, _parent(13, "F"), _parent(15, "M")) == 13, "two plain parents: a plain Weedle")
+_egg = breeding.make_egg(g, _parent(15, "F"), _parent(9106, "M"))
+check(_egg.id == 9104 and getattr(_egg, "form", "") == "pinkan" and _egg.is_egg,
+      f"the Day Care's Egg from a Pinkan father is a Pinkan Weedle: {_egg.id} {getattr(_egg, 'form', '')}")
 
 # Crystal Onix: stats, types, its own learnset, and the Crystal Stone.
 co = mkf(9201)
