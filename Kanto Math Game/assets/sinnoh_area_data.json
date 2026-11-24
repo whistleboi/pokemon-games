@@ -1469,7 +1469,6 @@
             {"text": "RARE CANDY", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_rare_candy_veilstone_city_c07_38_8", "event": {"lines": ["A Rare Candy, left on the ground."], "gift_item": {"RARE_CANDY": 1}, "flag": "got_rare_candy_veilstone_city_c07_38_8"}},
             {"text": "STAR PIECE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_star_piece_veilstone_city_c07_21_8", "event": {"lines": ["A Star Piece, half hidden by a fence."], "gift_item": {"STAR_PIECE": 1}, "flag": "got_star_piece_veilstone_city_c07_21_8"}}
         ],
-        "on_enter_event": {"type": "trainer_battle", "trainer": {"name": "Dawn", "class": "PKMN_TRAINER", "sprite": "dawn.png", "is_boss_battle": true, "team": [35, 64, 394], "team_choice": {"387": [35, 64, 394], "390": [35, 64, 388], "393": [35, 64, 391]}, "levels": [25, 25, 28], "rewards": {"balls": 5}, "dialogue": {"intro": ["Dawn: {player_name}! The Professor wants to know how strong you've become.", "Let's battle, so I can tell him!"], "player_won": ["Dawn: Wow, you and your Pokémon really are in sync!"], "player_lost": ["Dawn: I won? Don't tell the Professor I was surprised!"]}}, "condition": "has_forest_badge", "flag_check": "defeated_dawn_veilstone"},
         "department_store": true,
         "extra_stock": [
             {"item": "UPGRADE"}

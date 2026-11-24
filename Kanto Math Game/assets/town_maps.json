@@ -212140,6 +212140,73 @@
     "trigger": {
      "zone": [
       9,
+      40,
+      12,
+      40
+     ]
+    },
+    "condition": [
+     "not:has_cobble_badge"
+    ],
+    "flag": "sinnoh_veilstone_wake_scene",
+    "cast": [
+     {
+      "sheet": "pt_heroine.png",
+      "from": [
+       10,
+       38
+      ],
+      "to": "player",
+      "stay": true,
+      "lines": [
+       "Dawn: {player_name}, are you going to take the Gym challenge? Gee, you keep getting tougher and tougher, don't you?",
+       "Dawn: Me? Well, I went shopping at the department store, and... I mean, well, of course I've been working on my Pokedex, but..."
+      ]
+     },
+     {
+      "sheet": "pt_leader3.png",
+      "from": [
+       12,
+       35
+      ],
+      "to": "player",
+      "stay": true,
+      "lines": [
+       "???: The ring is my roiling sea. The towering waves shaped me. Crash! Crash! Crasher Wake!",
+       "???: I'm the tidal wave of power to wash you away! Put out the fire, Crasher Wake! Run from electricity, Crasher Wake!",
+       "???: Ah, ah, aaaah! The ring is my sea.",
+       "???: Hello, dude and young lady! You're challenging the Gym Leader, are you?",
+       "???: Let me tell you now, she's young, but she's a born genius. I tried training with her, and I was stunned by how tough she was!",
+       "???: Whoops! I'd better tell you who I am!",
+       "Crasher Wake: I'm the triple-threat Gym Leader in Pokemon, wrestling, and song. I'm Crasher Wake of Pastoria Gym!",
+       "Crasher Wake: We'll meet again!"
+      ]
+     },
+     {
+      "as": 1,
+      "lines": [],
+      "leave": [
+       11,
+       42
+      ]
+     },
+     {
+      "as": 0,
+      "lines": [
+       "Dawn: ...",
+       "Dawn: So, uh, {player_name}. Good luck on your Gym challenge."
+      ],
+      "leave": [
+       11,
+       42
+      ]
+     }
+    ]
+   },
+   {
+    "trigger": {
+     "zone": [
+      9,
       36,
       16,
       38

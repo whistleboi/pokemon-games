@@ -1116,7 +1116,6 @@ for _k in ("sinnoh_dawn_warehouse_call", "sinnoh_warehouse_guards_beaten", "sinn
     story.story_flags.pop(_k, None)
 story.inventory.pop("STORAGE_KEY", None); story.inventory.pop("HM_FLY", None)
 story.badges["SINNOH"] = ["COAL", "FOREST", "COBBLE"]
-story.story_flags["defeated_dawn_veilstone"] = True   # (the older arrival battle with Dawn: out of the way)
 t = town("VEILSTONE_CITY", "SINNOH_ROUTE_215"); frames(t, 3)
 _shut = (25, 20) in t.barred
 t.player = t.anim_from = (12, 37); t.anim = 0; t.walk_goal = None   # (out of the Gym with the Cobble Badge)
@@ -1144,6 +1143,23 @@ check(_locked and _shut and _dawn == (24, 20) and _bs is not None and story.stor
       and _lk is not None and story.story_flags.get("galactic_warehouse_cleared"),
       f"Galactic Warehouse: the Grunts block the lane; with the Cobble Badge Dawn asks for help; a tag battle; Looker leads you in and the mission ends; the Underpass door stays locked ({_locked}, {_shut}, {_dawn}, {type(_bs).__name__}, {_open}, {_lk is not None})")
 story.story_flags.clear(); story.story_flags.update(_sv); story.inventory.clear(); story.inventory.update(_inv); story.badges["SINNOH"] = _badges
+
+# ---- S4 (11-24, Jordan "Add it"): Platinum's scene before the Veilstone Gym - Dawn, then Crasher Wake out of the Gym
+_sv = dict(story.story_flags); _badges = list(story.badges.get("SINNOH", []))
+story.story_flags.pop("sinnoh_veilstone_wake_scene", None); story.badges["SINNOH"] = ["COAL", "FOREST"]
+t = town("VEILSTONE_CITY", "SINNOH_ROUTE_215"); frames(t, 3)
+
+t.player = t.anim_from = (11, 40); t.anim = 0; t.walk_goal = None
+_heard = []
+_orig = t.show_message
+def _listen(lines, *a, **k):
+    _heard.extend(lines); return _orig(lines, *a, **k)
+t.show_message = _listen
+_drive(t, 1500, lambda: story.story_flags.get("sinnoh_veilstone_wake_scene") and not t._busy())
+t.show_message = _orig
+check(story.story_flags.get("sinnoh_veilstone_wake_scene") and not t._busy(),
+      f"Veilstone: walking up to the Gym, Dawn chats and Crasher Wake comes out of the Gym ({len(_heard)} lines heard)")
+story.story_flags.clear(); story.story_flags.update(_sv); story.badges["SINNOH"] = _badges
 
 g.walk_towns = False
 print(f"##### {fails} failures")
