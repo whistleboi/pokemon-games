@@ -120,6 +120,33 @@
       },
       "completed_flag": "ILEX_FOREST_boss_defeated",
       "target": "ILEX_FOREST"
+    },
+    {
+      "id": "journey_ancient_pair",
+      "region": "HOENN",
+      "type": "SIDE",
+      "title": "Echoes in Johto",
+      "description": "Sailors from Johto sing an old song about a tower in the cliffs, where the land and the sea are still remembered. The pair that once fought over Hoenn may have left an echo there.",
+      "condition": {
+        "required_region": "HOENN",
+        "flag": "beat_hoenn_champion",
+        "flag_not": "embedded_rayquaza_defeated"
+      },
+      "completed_flag": "embedded_rayquaza_defeated"
+    },
+    {
+      "id": "journey_embedded_tower",
+      "region": "JOHTO",
+      "type": "SIDE",
+      "title": "The Tower in the Cliffs",
+      "description": "Off Route 47 stands a tower older than Johto's oldest stories. Deep inside, something rumbles like the earth, and something answers like the sea.",
+      "condition": {
+        "required_region": "JOHTO",
+        "flag": "beat_johto_champion",
+        "flag_not": "embedded_rayquaza_defeated"
+      },
+      "completed_flag": "embedded_rayquaza_defeated",
+      "target": "JOHTO_EMBEDDED_TOWER"
     }
   ]
 }
