@@ -191,8 +191,8 @@ class RouteActions:
             self._give_item(v["eon_stone"], lines)
             lines.append("Steven: And you'll need this to bring out its true power.")
             self._give_item("MEGA_BRACELET", lines)
-            lines += ["Steven: With the Mega Bracelet, a Pokemon holding its Mega Stone can Mega Evolve!",
-                      "It happens when that Pokemon enters battle, once per battle."]
+            lines += ["Steven: With the Mega Bracelet, a Pokemon can Mega Evolve when its Mega Stone is in your Bag!",
+                      "Press MEGA in battle - once per battle."]   # (our Mega Evolution reads the Bag, not a held item: forms.player_form, 11-24)
             # (the Eon Flute comes later: Steven, in Sootopolis after the Cave of Origin - ORAS's timing, Jordan 11-23 Hoenn H5)
             flags["got_mega_bracelet"] = True
         elif event == "starter_stone":

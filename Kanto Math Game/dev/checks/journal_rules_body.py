@@ -21,6 +21,14 @@ prog = g.loader.area_data["STORY_PROGRESSION"]
 missions = {m["id"]: m for m in g.loader.area_data["JOURNAL_MISSIONS"]}
 tms = json.load(open("assets/tms.json", encoding="utf-8"))
 regions = [r for r in book if not r.startswith("_")]
+moves = json.load(open("assets/moves.json", encoding="utf-8"))
+
+
+def power(tm):
+    x = tms.get(tm)
+    name = str((x.get("move") if isinstance(x, dict) else x) or "").upper()
+    m = moves.get(name.replace("-", "_")) or moves.get(name) or {}   # (moves.json keys some moves with "_", some with "-")
+    return (m.get("power") or 0) * (3 if m.get("min_hits") else 1)
 
 # MAIN missions left out of a book on purpose (with why); anything else missing fails.
 LEFT_OUT = {
@@ -87,6 +95,12 @@ for r in regions:
     given = [t[1]["tm"] for f in fl for t in f["tiers"] if t[1].get("tm")]
     given = [x for t in given for x in (t if isinstance(t, list) else [t])]
     check(all(k in tms for k in given) and len(given) == len(set(given)), f"{r}: Feat TMs are real and none is given twice")
+    weaker = []   # (J8, Jordan 11-24: each tier pays a move at least as strong as the tier before; multi-hit moves x3)
+    for f in fl:
+        pw = [power(t[1]["tm"]) for t in f["tiers"] if isinstance(t[1].get("tm"), str)]
+        if any(b < a for a, b in zip(pw, pw[1:])):
+            weaker.append(f["id"])
+    check(not weaker, f"{r}: each Feat's TMs get stronger tier by tier ({weaker})")
     if r in OWN_FORMS:
         check("variants" in fid, f"{r}: has a '{r.title()} Variants' Feat (its own forms)")
     safari = sorted(k for k, a in prog.items() if isinstance(a, dict) and str(a.get("region", "KANTO")).upper() == r

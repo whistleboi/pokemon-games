@@ -1476,5 +1476,11 @@ _play = "Voltorb" in type(g.current_state).__name__
 check(len(_mach) == 20 and _play, f"Veilstone Game Corner: its 20 slot machine tiles are machines you walk up to and play ({len(_mach)}, {_play}, {type(g.current_state).__name__})")
 story.inventory.clear(); story.inventory.update(_iv)
 
+# ---- 11-24 (encyclopedia cleanup): Platinum's Berry patches are soft soil on the routes (src/world/berries.py)
+r = route("SINNOH_ROUTE_211", "ETERNA_CITY")
+_soil = sorted(t for t, d in r.run.floor.decor.items() if str(d).startswith("soil:"))
+_ns = sum(len(((_tm[k].get("floors") or [_tm[k]])[0]).get("berry_soil") or []) for k in _tm if k in _sin)
+check(len(_soil) == 4 and _ns >= 80, f"Route 211: Platinum's four Berry patches stand as soil you can pick and plant; {_ns} patches over Sinnoh's routes ({_soil})")
+
 g.walk_towns = False
 print(f"##### {fails} failures")

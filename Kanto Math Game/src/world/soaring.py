@@ -106,6 +106,17 @@ def caught_all(story, legends):
     return all(story.story_flags.get(f) for f in legends)
 
 
+def today_place(story, area, day=None):
+    """Which of its kind's places a Mirage spot is today (ORAS: they turn up somewhere new each day). The 3D Soaring map
+    has one landing per kind, so the day picks the place - every place's item nook comes round in turn (11-24)."""
+    kind = KIND_OF.get(area)
+    if kind not in DAILY:
+        return None
+    places = DAILY[kind][2]
+    seed = sum(ord(c) for c in str(getattr(story, "player_name", "") or ""))
+    return places[((day or datetime.date.today()).toordinal() + seed) % len(places)]
+
+
 def on_landing(story, area, place=None, rng=random):
     """You land on a Mirage spot (the flight's landing): today's hidden item, which place of its kind it is (place: its map
     point), which legend is out. Returns a line to add to the landing message, or ""."""
