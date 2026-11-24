@@ -342,7 +342,7 @@
   ],
   "UNOVA": [
     {"title": "A New Journey", "chapters": [
-      {"mission": "b2_m1", "title": "The Girl in the Green Hat", "say": "Professor Juniper's assistant is somewhere in Aspertia with a Pokemon meant for you. {rival_name} has a hunch she's up at the Outlook."},
+      {"mission": "b2_m1", "title": "The Girl in the Green Hat", "say": "Professor Juniper's assistant is somewhere in Aspertia with a Pokemon meant for you. {rival_name} has a hunch she's up at the Outlook."}, {"mission": "b2_m1b", "title": "Bianca's Tour", "say": "Your partner has fought its first battle. Bianca waves you toward the Pokemon Center, where someone else is waiting too."},
       {"mission": "b2_m2", "title": "A Catching Lesson", "say": "Bianca has gone on ahead through the north gate. On Route 19 she has something to show you, and the tall grass is rustling."}
     ]},
     {"title": "The Basic Badge", "chapters": [
@@ -379,7 +379,7 @@
     ]},
     {"title": "Plasma's Secret Weapon", "chapters": [
       {"mission": "b2_m23", "title": "Trouble at Big Stadium", "say": "Hugh's voice carries across the plaza. He's found Team Plasma, and he isn't going to let them walk away."},
-      {"mission": "b2_m24", "title": "West to Route 5", "say": "Route 5 is crowded with performers, and someone at the drawbridge is making a scene. Driftveil lies beyond it."}
+      {"mission": "b2_m24", "title": "West to Route 5", "say": "Route 5 is crowded with performers, and someone at the drawbridge is making a scene. Driftveil lies beyond it."}, {"mission": "b2_m25", "title": "Over the Drawbridge", "say": "The drawbridge is down at last. Across the river, Driftveil City waits, and so does whatever Team Plasma left behind."}
     ]}
   ]
 }

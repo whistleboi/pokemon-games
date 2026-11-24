@@ -325,7 +325,7 @@ CENTER_SCENES = [
 
 GATE_SCENES = [
     {"trigger": {"zone": [1, 2, 9, 3]}, "condition": "not:b2_send_off", "every": True,
-     "lines": ["Bianca said to meet her outside the Pokemon Center first."], "push": [0, 1]},
+     "cast": [], "call": ["(Bianca said to meet her outside the Pokemon Center first.)"], "push": [0, 1]},   # (nobody speaks: a thought)
 ]
 
 ASPERTIA = town(
@@ -378,7 +378,7 @@ ASPERTIA = town(
                                      "Some Trainers like their Pokemon just the way they are.")},
                        {}, (7, 34), exits_extra={489: ("^", "ROOM:gym")},
                        scenes=[{"trigger": {"zone": [8, 2, 10, 3]}, "condition": ["not:b2_gym_open"], "every": True,
-                                "lines": ["The back door to the Gym is locked. It isn't open yet."], "push": [0, 1]}]),
+                                "cast": [], "call": ["(The back door to the Gym is locked. It isn't open yet.)"], "push": [0, 1]}]),
         "gate": room(438, {0: {"text": "Gate guard", "action": "EVENT", "event": {
                                   "lines": ["Hey, {player_name}! Off on your journey? Here's a little something for the road."],
                                   "gift_item": {"POTION": 1}, "flag": "b2_gate_potion",

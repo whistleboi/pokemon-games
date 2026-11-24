@@ -719,7 +719,7 @@ flags["unova_version"] = "BLACK_2"
 at("ASPERTIA_CITY")
 city = CityState(g); g.change_state(city)
 UBADGE = {"b2_m7": "BASIC", "b2_m9": "TOXIC", "b2_m17": "INSECT"}
-USCENE = {"b2_m1": ["b2_mom_talk", "b2_send_off"], "b2_m13": ["b2_castelia_arrived"]}   # (the scenes between: Mom's talk, the send-off, the arrival)
+USCENE = {"b2_m1": ["b2_mom_talk"], "b2_m13": ["b2_castelia_arrived"]}   # (the scenes between: Mom's talk, the arrival; the send-off is b2_m1b's own, 11-23)
 n_u = 0
 for arc in ub:
     for ch in arc["chapters"]:

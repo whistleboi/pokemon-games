@@ -370050,8 +370050,9 @@
        "not:b2_gym_open"
       ],
       "every": true,
-      "lines": [
-       "The back door to the Gym is locked. It isn't open yet."
+      "cast": [],
+      "call": [
+       "(The back door to the Gym is locked. It isn't open yet.)"
       ],
       "push": [
        0,
@@ -370400,8 +370401,9 @@
       },
       "condition": "not:b2_send_off",
       "every": true,
-      "lines": [
-       "Bianca said to meet her outside the Pokemon Center first."
+      "cast": [],
+      "call": [
+       "(Bianca said to meet her outside the Pokemon Center first.)"
       ],
       "push": [
        0,

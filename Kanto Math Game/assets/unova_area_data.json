@@ -1564,44 +1564,6 @@
           "action": "SHOP"
         },
         {
-          "text": "Battle Leader Cheren",
-          "action": "EVENT",
-          "color": "GOLD",
-          "condition": "beat_alder",
-          "flag_condition": "not b2w2_cheren",
-          "event": {
-            "lines": [
-              "Cheren has opened a Gym in Aspertia City. 'A Champion visiting my Gym? Let's see how I measure up!'"
-            ],
-            "flag": "b2w2_cheren",
-            "battle": {
-              "name": "Leader Cheren",
-              "class": "GYM_LEADER",
-              "sprite": "cheren.png",
-              "team": [
-                504,
-                519,
-                506
-              ],
-              "levels": [
-                12,
-                12,
-                14
-              ],
-              "is_boss_battle": true,
-              "rewards": {
-                "balls": 15,
-                "RARE_CANDY": 1
-              },
-              "dialogue": {
-                "player_won": [
-                  "Cheren: Ha. I'm proud to have lost to you."
-                ]
-              }
-            }
-          }
-        },
-        {
           "text": "Challenge Gym",
           "action": "GYM"
         }
@@ -1877,30 +1839,16 @@
       "trainer_pool": [],
       "route_menu": [
         {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
           "text": "Floccesy Town",
           "action": "EXIT",
           "target_area": "FLOCCESY_TOWN",
-          "condition": "can_exit",
-          "color": "RED"
+          "condition": "can_exit"
         },
         {
           "text": "Aspertia City",
           "action": "EXIT",
           "target_area": "ASPERTIA_CITY",
-          "condition": "can_exit",
-          "color": "RED"
+          "condition": "can_exit"
         }
       ],
       "next_area": "FLOCCESY_TOWN",
@@ -2326,29 +2274,15 @@
       ],
       "route_menu": [
         {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
           "text": "BATTLE TRAINER",
           "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
+          "condition": "has_trainers"
         },
         {
           "text": "Ranch path",
           "action": "EXIT",
           "target_area": "FLOCCESY_RANCH_OUTSIDE",
-          "condition": "can_exit",
-          "color": "RED"
+          "condition": "can_exit"
         }
       ],
       "next_area": "FLOCCESY_RANCH_OUTSIDE",
@@ -2697,15 +2631,13 @@
           "text": "Floccesy Ranch",
           "action": "EXIT",
           "target_area": "FLOCCESY_RANCH",
-          "condition": "can_exit",
-          "color": "RED"
+          "condition": "can_exit"
         },
         {
           "text": "Route 20",
           "action": "EXIT",
           "target_area": "UNOVA_ROUTE_20",
-          "condition": "can_exit",
-          "color": "RED"
+          "condition": "can_exit"
         }
       ],
       "next_area": "FLOCCESY_RANCH",
@@ -2978,49 +2910,32 @@
       ],
       "route_menu": [
         {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
           "text": "FISH",
           "action": "FISH",
-          "condition": "can_fish",
-          "color": "ORANGE"
+          "condition": "can_fish"
         },
         {
           "text": "BATTLE TRAINER",
           "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
+          "condition": "has_trainers"
         },
         {
           "text": "Floccesy Town",
           "action": "EXIT",
           "target_area": "FLOCCESY_TOWN",
-          "condition": "can_exit",
-          "color": "RED"
+          "condition": "can_exit"
         },
         {
           "text": "Floccesy Ranch",
           "action": "EXIT",
           "target_area": "FLOCCESY_RANCH_OUTSIDE",
-          "condition": "can_exit",
-          "color": "RED"
+          "condition": "can_exit"
         },
         {
           "text": "Virbank City",
           "action": "EXIT",
           "target_area": "VIRBANK_CITY",
-          "condition": "can_exit",
-          "color": "RED"
+          "condition": "can_exit"
         },
         {
           "text": "CAVE OF BEING",
@@ -3029,8 +2944,7 @@
           "condition": [
             "can_exit",
             "beat_alder"
-          ],
-          "color": "RED"
+          ]
         }
       ],
       "next_area": "VIRBANK_CITY",
@@ -4729,29 +4643,15 @@
       ],
       "route_menu": [
         {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
           "text": "BATTLE TRAINER",
           "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
+          "condition": "has_trainers"
         },
         {
           "text": "Virbank Complex (outside)",
           "action": "EXIT",
           "target_area": "VIRBANK_COMPLEX_OUTSIDE",
-          "condition": "can_exit",
-          "color": "RED"
+          "condition": "can_exit"
         }
       ],
       "next_area": "VIRBANK_COMPLEX_OUTSIDE",
@@ -5062,30 +4962,16 @@
       "trainer_pool": [],
       "route_menu": [
         {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
           "text": "Virbank Complex",
           "action": "EXIT",
           "target_area": "VIRBANK_COMPLEX",
-          "condition": "can_exit",
-          "color": "RED"
+          "condition": "can_exit"
         },
         {
           "text": "Virbank City",
           "action": "EXIT",
           "target_area": "VIRBANK_CITY",
-          "condition": "can_exit",
-          "color": "RED"
+          "condition": "can_exit"
         }
       ],
       "next_area": "VIRBANK_COMPLEX",
@@ -5442,10 +5328,6 @@
       "has_gym": true,
       "travel_options": [
         {
-          "text": "Castelia City",
-          "target_area": "CASTELIA_CITY"
-        },
-        {
           "text": "Virbank Complex",
           "target_area": "VIRBANK_COMPLEX_OUTSIDE"
         },
@@ -5456,6 +5338,10 @@
         {
           "text": "PokéStar Studios",
           "target_area": "POKESTAR_STUDIOS"
+        },
+        {
+          "text": "Castelia City",
+          "target_area": "CASTELIA_CITY"
         }
       ],
       "explore_options": [
@@ -5466,44 +5352,6 @@
         {
           "text": "Shop",
           "action": "SHOP"
-        },
-        {
-          "text": "Battle Leader Roxie",
-          "action": "EVENT",
-          "color": "GOLD",
-          "condition": "beat_alder",
-          "flag_condition": "not b2w2_roxie",
-          "event": {
-            "lines": [
-              "Roxie: You're the Champion? Then let's make some noise!"
-            ],
-            "flag": "b2w2_roxie",
-            "battle": {
-              "name": "Leader Roxie",
-              "class": "GYM_LEADER",
-              "sprite": "roxie.png",
-              "team": [
-                109,
-                88,
-                544
-              ],
-              "levels": [
-                17,
-                17,
-                19
-              ],
-              "is_boss_battle": true,
-              "rewards": {
-                "balls": 15,
-                "RARE_CANDY": 1
-              },
-              "dialogue": {
-                "player_won": [
-                  "Roxie: Whoa, what a show! You rock!"
-                ]
-              }
-            }
-          }
         },
         {
           "text": "Challenge Gym",
@@ -6157,7 +6005,6 @@
       "route_name": "Castelia City",
       "region": "UNOVA",
       "backgrounds": {
-        "main": "castelia_city.png",
         "pokecenter": "castelia_center.png",
         "gym": "castelia_gym.png"
       },
@@ -6335,21 +6182,12 @@
           "condition": "has_insect_badge"
         },
         {
-          "text": "Pinwheel Forest",
-          "target_area": "PINWHEEL_FOREST"
-        },
-        {
           "text": "Unity Tower",
           "target_area": "UNITY_TOWER"
         },
         {
           "text": "Castelia Sewers",
           "target_area": "CASTELIA_SEWERS"
-        },
-        {
-          "text": "Liberty Garden (Ferry)",
-          "target_area": "LIBERTY_GARDEN",
-          "condition": "beat_unova_champion"
         },
         {
           "text": "Ferry to the Decolore Islands",
@@ -6359,22 +6197,18 @@
           "message": "The ferry leaves Castelia's pier for the colorful Decolore Islands."
         },
         {
-          "text": "Virbank City",
-          "target_area": "VIRBANK_CITY"
-        },
-        {
           "text": "Skyarrow Bridge",
           "target_area": "SKYARROW_BRIDGE"
+        },
+        {
+          "text": "Virbank City",
+          "target_area": "VIRBANK_CITY"
         }
       ],
       "explore_options": [
         {
           "text": "Pokémon Center",
           "action": "HEAL"
-        },
-        {
-          "text": "Department Store",
-          "action": "SHOP"
         },
         {
           "text": "Challenge Gym",
@@ -6390,7 +6224,6 @@
       "route_name": "Nimbasa City",
       "region": "UNOVA",
       "backgrounds": {
-        "main": "nimbasa_city.png",
         "pokecenter": "nimbasa_center.png",
         "gym": "nimbasa_gym.png"
       },
@@ -7411,7 +7244,6 @@
       "wild_pool_percentages": "UNOVA_CASTELIA_SEWERS_PERCENTAGES",
       "min_rounds": 2,
       "backgrounds": {
-        "main": "castelia_sewers.png",
         "battle": "battle_castelia_sewers.png"
       },
       "trainer_pool": [
@@ -7576,43 +7408,27 @@
       ],
       "route_menu": [
         {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
           "text": "BATTLE TRAINER",
           "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
+          "condition": "has_trainers"
         },
         {
           "text": "Castelia City",
           "action": "EXIT",
           "target_area": "CASTELIA_CITY",
-          "condition": "can_exit",
-          "color": "RED"
+          "condition": "can_exit"
         },
         {
           "text": "The Empty Lot",
           "action": "EXIT",
           "target_area": "CASTELIA_EMPTY_LOT",
-          "condition": "can_exit",
-          "color": "RED"
+          "condition": "can_exit"
         },
         {
           "text": "Relic Passage",
           "action": "EXIT",
           "target_area": "RELIC_PASSAGE",
-          "condition": "can_exit",
-          "color": "RED"
+          "condition": "can_exit"
         }
       ],
       "next_area": "CASTELIA_CITY",
@@ -7872,23 +7688,10 @@
       "trainer_pool": [],
       "route_menu": [
         {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
           "text": "Castelia Sewers",
           "action": "EXIT",
           "target_area": "CASTELIA_SEWERS",
-          "condition": "can_exit",
-          "color": "RED"
+          "condition": "can_exit"
         }
       ],
       "next_area": "CASTELIA_SEWERS",
@@ -8281,35 +8084,20 @@
       "wild_pool_percentages": "UNOVA_DESERT_RESORT_PERCENTAGES",
       "min_rounds": 2,
       "backgrounds": {
-        "main": "desert_resort.png",
         "battle": "battle_desert_resort.png"
       },
       "route_menu": [
         {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
           "text": "Relic Castle",
           "action": "EXIT",
           "target_area": "RELIC_CASTLE",
-          "condition": "can_exit",
-          "color": "GOLD"
+          "condition": "can_exit"
         },
         {
           "text": "Desert entrance",
           "action": "EXIT",
           "target_area": "DESERT_RESORT_ENTRANCE",
-          "condition": "can_exit",
-          "color": "RED"
+          "condition": "can_exit"
         }
       ],
       "weather": "SAND",
@@ -8537,30 +8325,16 @@
       "trainer_pool": [],
       "route_menu": [
         {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
           "text": "Desert Resort",
           "action": "EXIT",
           "target_area": "DESERT_RESORT",
-          "condition": "can_exit",
-          "color": "GOLD"
+          "condition": "can_exit"
         },
         {
           "text": "Route 4",
           "action": "EXIT",
           "target_area": "UNOVA_ROUTE_4",
-          "condition": "can_exit",
-          "color": "RED"
+          "condition": "can_exit"
         }
       ],
       "next_area": "DESERT_RESORT",
@@ -8669,7 +8443,6 @@
       "wild_pool_percentages": "UNOVA_RELIC_CASTLE_PERCENTAGES",
       "min_rounds": 3,
       "backgrounds": {
-        "main": "relic_castle.png",
         "battle": "battle_relic_castle.png"
       },
       "trainer_pool": [
@@ -8690,23 +8463,10 @@
       ],
       "route_menu": [
         {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
           "text": "Desert Resort",
           "action": "EXIT",
           "target_area": "DESERT_RESORT",
-          "condition": "can_exit",
-          "color": "RED"
+          "condition": "can_exit"
         },
         {
           "text": "DRIFTVEIL CITY",
@@ -8715,15 +8475,13 @@
           "condition": [
             "can_exit",
             "has_bolt_badge"
-          ],
-          "color": "RED"
+          ]
         },
         {
           "text": "Relic Passage",
           "action": "EXIT",
           "target_area": "RELIC_PASSAGE",
-          "condition": "can_exit",
-          "color": "RED"
+          "condition": "can_exit"
         }
       ],
       "area_boss": {
@@ -9608,44 +9366,22 @@
       ],
       "route_menu": [
         {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
           "text": "Castelia City",
           "action": "EXIT",
           "target_area": "CASTELIA_CITY",
-          "condition": "can_exit",
-          "color": "RED"
-        },
-        {
-          "text": "Nimbasa City",
-          "action": "EXIT",
-          "target_area": "NIMBASA_CITY",
-          "condition": "can_exit",
-          "color": "RED"
+          "condition": "can_exit"
         },
         {
           "text": "JOIN AVENUE",
           "action": "EXIT",
           "target": "JOIN_AVENUE",
-          "condition": "can_exit",
-          "color": "RED"
+          "condition": "can_exit"
         },
         {
           "text": "Desert Resort",
           "action": "EXIT",
           "target_area": "DESERT_RESORT_ENTRANCE",
-          "condition": "can_exit",
-          "color": "GOLD"
+          "condition": "can_exit"
         }
       ],
       "next_area": "NIMBASA_CITY",
@@ -12187,24 +11923,30 @@
       "route_name": "Liberty Garden",
       "region": "UNOVA",
       "battle_type": "grass",
-      "backgrounds": { "main": "liberty_garden.png" },
+      "backgrounds": {
+        "main": "liberty_garden.png"
+      },
       "min_rounds": 1,
       "trainer_pool": [],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         {
           "text": "Find Victini",
           "action": "BOSS",
-          "condition": ["boss_not_defeated", "beat_unova_champion"],
-          "color": "GOLD",
+          "condition": [
+            "boss_not_defeated",
+            "beat_unova_champion"
+          ],
           "not_on_map": true
-        },
-        { "text": "Castelia City", "action": "EXIT", "target_area": "CASTELIA_CITY", "condition": "can_exit", "color": "RED" }
+        }
       ],
       "next_area": "CASTELIA_CITY",
       "wild_pool_percentages": "UNOVA_LIBERTY_GARDEN_PERCENTAGES",
-      "area_boss": { "id": 494, "level": 15, "name": "Victini", "victory_flag": "LIBERTY_GARDEN_boss_defeated" }
+      "area_boss": {
+        "id": 494,
+        "level": 15,
+        "name": "Victini",
+        "victory_flag": "LIBERTY_GARDEN_boss_defeated"
+      }
     },
     "ROYAL_UNOVA": {
       "area_type": "dungeon",
@@ -12242,7 +11984,37 @@
         "DRIFTVEIL_DRAWBRIDGE": {"area_type": "dungeon", "route_name": "Driftveil Drawbridge", "region": "UNOVA", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "ROUTE 5", "action": "EXIT", "target": "UNOVA_ROUTE_5", "condition": "can_exit", "color": "RED"}, {"text": "DRIFTVEIL CITY", "action": "EXIT", "target": "DRIFTVEIL_CITY", "condition": "can_exit", "color": "RED"}], "next_area": "DRIFTVEIL_CITY", "wild_pool_percentages": "DRIFTVEIL_DRAWBRIDGE_PERCENTAGES"},
         "UNDERGROUND_RUINS": {"area_type": "dungeon", "route_name": "Underground Ruins", "region": "UNOVA", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "AWAKEN REGIROCK", "action": "BOSS", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not ruins_regirock", "boss": {"id": 377, "level": 65, "name": "Regirock", "victory_flag": "ruins_regirock", "lines": ["Regirock appears!"]}}, {"text": "AWAKEN REGICE", "action": "BOSS", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not ruins_regice", "boss": {"id": 378, "level": 65, "name": "Regice", "victory_flag": "ruins_regice", "lines": ["Regice appears!"]}}, {"text": "AWAKEN REGISTEEL", "action": "BOSS", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not ruins_registeel", "boss": {"id": 379, "level": 65, "name": "Registeel", "victory_flag": "ruins_registeel", "lines": ["Registeel appears!"]}}, {"text": "CLAY TUNNEL", "action": "EXIT", "target": "CLAY_TUNNEL", "condition": "can_exit", "color": "RED"}], "next_area": "CLAY_TUNNEL", "wild_pool_percentages": "UNDERGROUND_RUINS_PERCENTAGES"},
         "PWT": {"area_type": "dungeon", "route_name": "Pokémon World Tournament", "region": "UNOVA", "battle_type": "indoor", "min_rounds": 0, "trainer_pool": [{"name": "Leader Trio (Cilan / Chili / Cress)", "class": "GYM_LEADER", "sprite": "trio_cilan_chili_cress.png", "team": [506, 511], "is_boss_battle": true, "rewards": {"balls": 5}}, {"name": "Leader Lenora", "class": "GYM_LEADER", "sprite": "lenora.png", "team": [507, 505], "is_boss_battle": true, "rewards": {"balls": 5}}, {"name": "Leader Burgh", "class": "GYM_LEADER", "sprite": "burgh.png", "team": [544, 557, 542], "is_boss_battle": true, "rewards": {"balls": 5}}, {"name": "Leader Elesa", "class": "GYM_LEADER", "sprite": "elesa.png", "team": [587, 587, 523], "is_boss_battle": true, "rewards": {"balls": 5}}, {"name": "Leader Clay", "class": "GYM_LEADER", "sprite": "clay.png", "team": [552, 536, 530], "is_boss_battle": true, "rewards": {"balls": 5}}, {"name": "Leader Skyla", "class": "GYM_LEADER", "sprite": "skyla.png", "team": [528, 521, 581], "is_boss_battle": true, "rewards": {"balls": 5}}, {"name": "Leader Brycen", "class": "GYM_LEADER", "sprite": "brycen.png", "team": [583, 615, 614], "is_boss_battle": true, "rewards": {"balls": 5}}, {"name": "Leader Drayden", "class": "GYM_LEADER", "sprite": "brycenman.png", "team": [611, 621, 612], "is_boss_battle": true, "rewards": {"balls": 20, "RARE_CANDY": 3}, "victory_flag": "pwt_cleared"}], "route_menu": [{"text": "ENTER THE UNOVA LEADERS TOURNAMENT", "action": "GALACTIC_GAUNTLET", "color": "GOLD", "flag_condition": "not pwt_cleared"}, {"text": "DRIFTVEIL CITY", "action": "EXIT", "target": "DRIFTVEIL_CITY", "condition": "can_exit", "color": "RED"}], "next_area": "DRIFTVEIL_CITY"},
-        "PLEDGE_GROVE": {"area_type": "dungeon", "route_name": "Pledge Grove", "region": "UNOVA", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "SEEK KELDEO", "action": "BOSS", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not pledge_grove_keldeo", "boss": {"id": 647, "name": "Keldeo", "victory_flag": "pledge_grove_keldeo", "lines": ["A small Pokémon stands proudly in the grove: Keldeo, the Colt Pokémon!"]}}, {"text": "FLOCCESY TOWN", "action": "EXIT", "target": "FLOCCESY_TOWN", "condition": "can_exit", "color": "RED"}], "next_area": "FLOCCESY_TOWN"},
+        "PLEDGE_GROVE": {
+          "area_type": "dungeon",
+          "route_name": "Pledge Grove",
+          "region": "UNOVA",
+          "battle_type": "cave",
+          "min_rounds": 0,
+          "trainer_pool": [],
+          "route_menu": [
+            {
+              "text": "SEEK KELDEO",
+              "action": "BOSS",
+              "condition": "beat_alder",
+              "flag_condition": "not pledge_grove_keldeo",
+              "boss": {
+                "id": 647,
+                "name": "Keldeo",
+                "victory_flag": "pledge_grove_keldeo",
+                "lines": [
+                  "A small Pokémon stands proudly in the grove: Keldeo, the Colt Pokémon!"
+                ]
+              }
+            },
+            {
+              "text": "FLOCCESY TOWN",
+              "action": "EXIT",
+              "target": "FLOCCESY_TOWN",
+              "condition": "can_exit"
+            }
+          ],
+          "next_area": "FLOCCESY_TOWN"
+        },
         "ABYSSAL_RUINS": {"area_type": "dungeon", "route_name": "Abyssal Ruins", "region": "UNOVA", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "SEARCH THE RUINS", "action": "EVENT", "color": "GOLD", "flag_condition": "not abyssal_ruins_searched", "event": {"lines": ["You dive deep into the sunken ruins. Strange carvings cover the walls...", "Something glitters in the silt!"], "gift_item": {"RARE_CANDY": 2}, "flag": "abyssal_ruins_searched"}}, {"text": "SURFACE", "action": "EXIT", "target": "UNDELLA_BAY", "condition": "can_exit", "color": "RED"}], "next_area": "UNDELLA_BAY"},
         "CAVE_OF_BEING": {"area_type": "dungeon", "route_name": "Cave of Being", "region": "UNOVA", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "SEEK UXIE", "action": "BOSS", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not cave_of_being_uxie", "boss": {"id": 480, "name": "Uxie", "victory_flag": "cave_of_being_uxie", "lines": ["Uxie appears!"]}}, {"text": "SEEK MESPRIT", "action": "BOSS", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not cave_of_being_mesprit", "boss": {"id": 481, "name": "Mesprit", "victory_flag": "cave_of_being_mesprit", "lines": ["Mesprit appears!"]}}, {"text": "SEEK AZELF", "action": "BOSS", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not cave_of_being_azelf", "boss": {"id": 482, "name": "Azelf", "victory_flag": "cave_of_being_azelf", "lines": ["Azelf appears!"]}}, {"text": "ROUTE 20", "action": "EXIT", "target": "UNOVA_ROUTE_20", "condition": "can_exit", "color": "RED"}], "next_area": "UNOVA_ROUTE_20"},
         "MARINE_TUBE": {"area_type": "dungeon", "route_name": "Marine Tube", "region": "UNOVA", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [
@@ -12250,7 +12022,22 @@
           {"text": "HUMILAU CITY", "action": "EXIT", "target": "HUMILAU_CITY", "condition": ["can_exit", "beat_unova_champion"], "color": "RED"},
           {"text": "UNDELLA TOWN", "action": "EXIT", "target": "UNDELLA_TOWN", "condition": "can_exit", "color": "RED"}
         ], "next_area": "UNDELLA_TOWN"},
-        "POKESTAR_STUDIOS": {"area_type": "town", "route_name": "PokéStar Studios", "region": "UNOVA", "has_gym": false, "trainer_encounter_rate": 0, "travel_options": [{"text": "Virbank City", "target_area": "VIRBANK_CITY"}], "explore_options": [{"text": "Film 'Brycen-Man'", "action": "EVENT", "color": "GOLD", "flag_condition": "not pokestar_brycen_man", "event": {"lines": ["Director: Action! Brycen-Man has kidnapped the city! Only you can save it!"], "flag": "pokestar_brycen_man", "battle": {"name": "Brycen-Man", "class": "PKMN_TRAINER", "sprite": "brycenman.png", "team": [614, 615], "is_boss_battle": true, "rewards": {"balls": 5, "RARE_CANDY": 1}, "dialogue": {"player_won": ["Director: Cut! What a hit! The fans will love it!"]}}}}, {"text": "Watch a premiere", "action": "EVENT", "event": {"lines": ["The crowd cheers as the latest PokéStar film rolls."]}}], "trainer_pool": [], "on_enter_event": null},
+        "POKESTAR_STUDIOS": {
+          "area_type": "town",
+          "route_name": "PokéStar Studios",
+          "region": "UNOVA",
+          "has_gym": false,
+          "trainer_encounter_rate": 0,
+          "travel_options": [
+            {
+              "text": "Virbank City",
+              "target_area": "VIRBANK_CITY"
+            }
+          ],
+          "explore_options": [],
+          "trainer_pool": [],
+          "on_enter_event": null
+        },
         "JOIN_AVENUE": {
           "area_type": "town",
           "route_name": "Join Avenue",
@@ -12298,29 +12085,31 @@
   ],
   "JOURNAL_MISSIONS": [
     {"id": "b2_m1", "type": "MAIN", "title": "Find Bianca", "description": "Professor Juniper's assistant Bianca is somewhere in Aspertia City with a Pokémon for you. Look for a big green hat! {rival_name} thinks she's up at the Outlook.", "condition": {"required_region": "UNOVA", "flag_not": "received_starter_unova"}, "completed_flag": "received_starter_unova", "target": "ASPERTIA_CITY", "steps": [{"at": [4, 5], "label": "Bianca", "done": "received_starter_unova"}], "reward": "Your first partner + Pokédex"},
+    {"id": "b2_m1b", "type": "MAIN", "title": "Bianca's Tour", "description": "Your first Pokemon needs a rest after its first battle. Bianca is waiting at Aspertia's Pokemon Center, and so is Mom.", "condition": {"required_region": "UNOVA", "flag": "received_starter_unova", "flag_not": "b2_send_off"}, "completed_flag": "b2_send_off", "target": "ASPERTIA_CITY"},
     {"id": "b2_m2", "type": "MAIN", "title": "A Catching Lesson", "description": "Bianca is waiting on Route 19, just through the gate at the north end of Aspertia. She'll show you how to catch a Pokémon.", "condition": {"required_region": "UNOVA", "flag": "b2_send_off", "flag_not": "b2_route19_lesson"}, "completed_flag": "b2_route19_lesson", "target": "UNOVA_ROUTE_19"},
     {"id": "b2_m3", "type": "MAIN", "title": "Alder's Town", "description": "Alder went on ahead to Floccesy Town, east along Route 19. Catch up with him there!", "condition": {"required_region": "UNOVA", "flag": "b2_route19_lesson", "flag_not": "b2_floccesy_met"}, "completed_flag": "b2_floccesy_met", "target": "FLOCCESY_TOWN"},
     {"id": "b2_m4", "type": "MAIN", "title": "Two Town Maps", "description": "{rival_name} was seen training on Route 20, east of Floccesy. Find him and give him his Town Map. He may have gone up to Floccesy Ranch!", "condition": {"required_region": "UNOVA", "flag": "b2_floccesy_met", "flag_not": "b2_ranch_owners"}, "completed_flag": "b2_ranch_owners", "target": "FLOCCESY_RANCH"},
     {"id": "b2_m5", "type": "MAIN", "title": "The Missing Herdier", "description": "One of Floccesy Ranch's Herdier has wandered off. Search the woods at the north of the ranch with {rival_name}.", "condition": {"required_region": "UNOVA", "flag": "b2_ranch_owners", "flag_not": "b2_herdier_found"}, "completed_flag": "b2_herdier_found", "target": "FLOCCESY_RANCH"},
     {"id": "b2_m6", "type": "MAIN", "title": "Alder's Training", "description": "Herdier is home safe. Go back to Floccesy Town: Alder is waiting at his house to train you.", "condition": {"required_region": "UNOVA", "flag": "b2_herdier_found", "flag_not": "b2_alder_training"}, "completed_flag": "b2_alder_training", "target": "FLOCCESY_TOWN"},
-    {"id": "b2_m7", "type": "MAIN", "title": "Basic Badge", "description": "Aspertia's Gym is open! It's behind the Trainers' School. Beat Cheren's two Gym Trainers, then Cheren himself.", "condition": {"required_region": "UNOVA", "flag": "b2_alder_training", "flag_not": "b2_basic_badge"}, "completed_flag": "b2_basic_badge", "target": "ASPERTIA_CITY", "reward": "Basic Badge"},
+    {"id": "b2_m7", "type": "MAIN", "title": "Basic Badge", "description": "Aspertia's Gym is open! It's behind the Trainers' School. Beat Cheren's two Gym Trainers, then Cheren himself.", "condition": {"required_region": "UNOVA", "flag": "b2_alder_training", "flag_not": "b2_basic_badge"}, "completed_badge": "BASIC", "completed_flag": "b2_basic_badge", "target": "ASPERTIA_CITY", "reward": "Basic Badge"},
     {"id": "b2_m8", "type": "MAIN", "title": "East to Virbank", "description": "The next Gym is in Virbank City. Go through Floccesy and east along Route 20. Hiker Jerome will let you up the steps now.", "condition": {"required_region": "UNOVA", "flag": "b2_basic_badge", "flag_not": "b2_virbank_arrived"}, "completed_flag": "b2_virbank_arrived", "target": "VIRBANK_CITY"},
-    {"id": "b2_m9", "type": "MAIN", "title": "Virbank's Gym", "description": "Roxie leads Virbank City's Poison-type Gym, a rock club south of the Pokémon Center. Beat her two bandmates to stop the music, then challenge her.", "condition": {"required_region": "UNOVA", "flag": "b2_virbank_arrived", "flag_not": "b2_toxic_badge"}, "completed_flag": "b2_toxic_badge", "target": "VIRBANK_CITY", "reward": "Toxic Badge"},
-    {"id": "b2_m10", "type": "MAIN", "title": "Pokéstar Studios", "description": "A scout from Pokéstar Studios wants you in the movies! Go north through Virbank's gate to the studios.", "condition": {"required_region": "UNOVA", "flag": "b2_toxic_badge", "flag_not": "b2_first_film"}, "completed_flag": "b2_first_film", "target": "POKESTAR_STUDIOS"},
+    {"id": "b2_m9", "type": "MAIN", "title": "Virbank's Gym", "description": "Roxie leads Virbank City's Poison-type Gym, a rock club south of the Pokémon Center. Beat her two bandmates to stop the music, then challenge her.", "condition": {"required_region": "UNOVA", "flag": "b2_virbank_arrived", "flag_not": "b2_toxic_badge"}, "completed_badge": "TOXIC", "completed_flag": "b2_toxic_badge", "target": "VIRBANK_CITY", "reward": "Toxic Badge"},
+    {"id": "b2_m10", "type": "MAIN", "title": "Pokéstar Studios", "description": "A scout from Pokéstar Studios wants you in the movies! Go north through Virbank's gate to the studios.", "condition": {"required_region": "UNOVA", "flag": "b2_toxic_badge", "flag_not": "b2_first_film"}, "completed_flag": "b2_first_film", "target": "POKESTAR_STUDIOS", "steps": [{"area": "POKESTAR_STUDIOS", "room": "studio", "at": [14, 20], "label": "The set", "done": "b2_first_film"}]},
     {"id": "b2_m11", "type": "MAIN", "title": "Trouble at the Docks", "description": "Roxie and {rival_name} have Team Plasma cornered on Virbank's pier, east of the Gym. Help them out!", "condition": {"required_region": "UNOVA", "flag": "b2_first_film", "flag_not": "b2_virbank_dock"}, "completed_flag": "b2_virbank_dock", "target": "VIRBANK_CITY"},
     {"id": "b2_m12", "type": "MAIN", "title": "The Runaway Grunt", "description": "One Grunt fled west to Route 20. Climb the steps in the middle of the route, then look south in a small clearing.", "condition": {"required_region": "UNOVA", "flag": "b2_virbank_dock", "flag_not": "b2_r20_hugh"}, "completed_flag": "b2_r20_hugh", "target": "UNOVA_ROUTE_20"},
     {"id": "b2_m13", "type": "MAIN", "title": "The Ship to Castelia", "description": "Pop Roxie is back on Virbank's pier. Board his ship at the terminal for Castelia City.", "condition": {"required_region": "UNOVA", "flag": "b2_r20_hugh", "flag_not": "b2_sailed_castelia"}, "completed_flag": "b2_sailed_castelia", "target": "VIRBANK_CITY"},
     {"id": "b2_m14", "type": "MAIN", "title": "The Big City", "description": "Castelia City! Its Gym is on Gym Street, up from the waterfront. Go and see Gym Leader Burgh.", "condition": {"required_region": "UNOVA", "flag": "b2_castelia_arrived", "flag_not": "b2_burgh_away"}, "completed_flag": "b2_burgh_away", "target": "CASTELIA_CITY"},
     {"id": "b2_m15", "type": "MAIN", "title": "Iris's Hunch", "description": "Burgh is away. Iris thinks Team Plasma could be hiding by Thumb Pier, east along the waterfront.", "condition": {"required_region": "UNOVA", "flag": "b2_burgh_away", "flag_not": "b2_thumb_scene"}, "completed_flag": "b2_thumb_scene", "target": "CASTELIA_CITY"},
     {"id": "b2_m16", "type": "MAIN", "title": "Into the Sewers", "description": "{rival_name} ran into the Castelia Sewers from Thumb Pier. Follow him, then climb the north stairs after Team Plasma.", "condition": {"required_region": "UNOVA", "flag": "b2_thumb_scene", "flag_not": "b2_sewers_done"}, "completed_flag": "b2_sewers_done", "target": "CASTELIA_SEWERS"},
-    {"id": "b2_m17", "type": "MAIN", "title": "Burgh's Gym", "description": "Burgh is back at the Castelia Gym on Gym Street. Find your way through the cocoons to him.", "condition": {"required_region": "UNOVA", "flag": "b2_sewers_done", "flag_not": "b2_insect_badge"}, "completed_flag": "b2_insect_badge", "target": "CASTELIA_CITY", "reward": "Insect Badge"},
+    {"id": "b2_m17", "type": "MAIN", "title": "Burgh's Gym", "description": "Burgh is back at the Castelia Gym on Gym Street. Find your way through the cocoons to him.", "condition": {"required_region": "UNOVA", "flag": "b2_sewers_done", "flag_not": "b2_insect_badge"}, "completed_badge": "INSECT", "completed_flag": "b2_insect_badge", "target": "CASTELIA_CITY", "reward": "Insect Badge"},
     {"id": "b2_m18", "type": "MAIN", "title": "The Man in the White Coat", "description": "With Burgh's badge in hand, head for Central Plaza, the heart of Castelia, on the way to Route 4.", "condition": {"required_region": "UNOVA", "flag": "b2_insect_badge", "flag_not": "b2_colress_plaza"}, "completed_flag": "b2_colress_plaza", "target": "CASTELIA_CITY"},
     {"id": "b2_m19", "type": "MAIN", "title": "Colress Waits", "description": "Colress wants to test his theory in a battle. He's waiting on Route 4, north through Castelia's gate.", "condition": {"required_region": "UNOVA", "flag": "b2_colress_plaza", "flag_not": "b2_colress_route4"}, "completed_flag": "b2_colress_route4", "target": "UNOVA_ROUTE_4"},
     {"id": "b2_m20", "type": "MAIN", "title": "The City of Lights", "description": "Nimbasa City is north through Join Avenue. Its Gym Leader, Elesa, is a famous model. Find the Gym in the amusement park, east of the city.", "condition": {"required_region": "UNOVA", "flag": "b2_colress_route4", "flag_not": "b2_nimbasa_gym_out"}, "completed_flag": "b2_nimbasa_gym_out", "target": "NIMBASA_CITY"},
     {"id": "b2_m21", "type": "MAIN", "title": "The Leader Is Out", "description": "Elesa isn't at her Gym. The guide says she went to the roller coaster building by the park's entrance.", "condition": {"required_region": "UNOVA", "flag": "b2_nimbasa_gym_out", "flag_not": "b2_elesa_coaster"}, "completed_flag": "b2_elesa_coaster", "target": "NIMBASA_CITY"},
-    {"id": "b2_m22", "type": "MAIN", "title": "Elesa's Runway", "description": "Elesa is back at the Nimbasa Gym, east of the Ferris wheel. Beat the Trainers on the catwalk, then Elesa.", "condition": {"required_region": "UNOVA", "flag": "b2_elesa_coaster", "flag_not": "b2_bolt_badge"}, "completed_flag": "b2_bolt_badge", "target": "NIMBASA_CITY"},
+    {"id": "b2_m22", "type": "MAIN", "title": "Elesa's Runway", "description": "Elesa is back at the Nimbasa Gym, east of the Ferris wheel. Beat the Trainers on the catwalk, then Elesa.", "condition": {"required_region": "UNOVA", "flag": "b2_elesa_coaster", "flag_not": "b2_bolt_badge"}, "completed_badge": "BOLT", "completed_flag": "b2_bolt_badge", "target": "NIMBASA_CITY"},
     {"id": "b2_m23", "type": "MAIN", "title": "Trouble at Big Stadium", "description": "Hugh is shouting at Team Plasma outside Big Stadium, in the west of Nimbasa. He could use some help.", "condition": {"required_region": "UNOVA", "flag": "b2_bolt_badge", "flag_not": "b2_nimbasa_plasma"}, "completed_flag": "b2_nimbasa_plasma", "target": "NIMBASA_CITY"},
     {"id": "b2_m24", "type": "MAIN", "title": "West to Route 5", "description": "The road to Driftveil runs west through Nimbasa's gate, along Route 5 to the drawbridge.", "condition": {"required_region": "UNOVA", "flag": "b2_nimbasa_plasma", "flag_not": "b2_charles"}, "completed_flag": "b2_charles", "target": "UNOVA_ROUTE_5"},
+    {"id": "b2_m25", "type": "MAIN", "title": "Over the Drawbridge", "description": "With the drawbridge lowered, Driftveil City waits on the far side of the river, and its Gym Leader Clay with it.", "condition": {"required_region": "UNOVA", "flag": "b2_charles", "flag_not": "visited_DRIFTVEIL_CITY"}, "completed_flag": "visited_DRIFTVEIL_CITY", "target": "DRIFTVEIL_CITY"},
     {"id": "unova_m2", "type": "MAIN", "title": "Team Plasma's Speech", "description": "Follow Route 1 north to Accumula Town. A group called Team Plasma is giving a speech in the square. Go and listen.", "condition": {"required_region": "UNOVA", "flag": "defeated_rival_nuvema", "flag_not": ["heard_n_accumula", "b2_mom_talk"]}, "completed_flag": "heard_n_accumula", "target": "ACCUMULA_TOWN"},
     {"id": "unova_m3", "type": "MAIN", "title": "A Stranger Named N", "description": "On Route 2 you'll meet Alder, and a strange young man named N who says he can hear Pokémon talk. He wants to battle!", "condition": {"required_region": "UNOVA", "flag": "heard_n_accumula", "flag_not": ["defeated_n_route2", "b2_mom_talk"], "region_badges_less": 1}, "completed_flag": "defeated_n_route2", "target": "UNOVA_ROUTE_2"},
     {"id": "unova_m4", "type": "MAIN", "title": "A Gift in the Dreamyard", "description": "A researcher named Fennel is at the Dreamyard, next to Striaton City. She has a Pokémon that's strong against the Striaton Gym.", "condition": {"required_region": "UNOVA", "flag": "defeated_n_route2", "flag_not": ["got_elemental_monkey", "b2_mom_talk"], "region_badges_less": 1}, "completed_flag": "got_elemental_monkey", "target": "DREAMYARD", "reward": "Pansage, Pansear or Panpour"},
