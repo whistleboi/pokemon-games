@@ -68,7 +68,7 @@ print("6) every region: the cap is the next Leader's ace + 2, the Champion's ace
 _want = {"KANTO": [16, 23, 26, 31, 45, 45, 49, 52, 65], "JOHTO": [15, 19, 21, 27, 33, 37, 37, 43, 52],
          "HOENN": [16, 18, 23, 30, 32, 37, 47, 48, 61], "SINNOH": [16, 24, 32, 32, 38, 41, 44, 51, 68],
          "UNOVA": [15, 20, 26, 32, 35, 41, 50, 53, 61], "KALOS": [14, 27, 34, 36, 39, 44, 50, 61, 70],
-         "ALOLA": [12, 18, 30, 46, 56, 60], "ORANGE": [24, 37, 42, 48, 54], "ORRE": [18, 28, 38, 48, 62]}
+         "ALOLA": [12, 18, 30, 46, 56, 60], "ORANGE": [24, 37, 42, 48, 54], "ORRE": [16, 23, 26, 31, 43, 47, 50, 52, 65]}   # (Orre 11-24: the eight Gyms, then Eldes 63)
 _area0, _mode0 = story.current_area_key, story.level_cap_mode
 story.level_cap_mode = "STORY"
 for _r, _caps in _want.items():

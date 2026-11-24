@@ -422,7 +422,12 @@
     {"title": "The Frigate Returns", "chapters": [
       {"mission": "b2_m41", "title": "A Presence on Route 22", "say": "Something large moved through the trees on Route 22. A man in a lab coat is following it with a very strange machine."},
       {"mission": "b2_m42", "title": "The Sturdy Boulder", "say": "Seaside Cave is the only way through to the coast, and something with a very hard shell is sitting in the exit."},
-      {"mission": "b2_m43", "title": "The Ship off Route 21", "say": "Out past Route 21, the ship with no flag waits again. This time it isn't sailing off without a fight."}
+      {"mission": "b2_m43", "title": "The Ship off Route 21", "say": "Out past Route 21, the ship with no flag waits again. This time it isn't sailing off without a fight.", "done": "b2_frigate2_open"},
+      {"mission": "b2_m43", "title": "Aboard the Frigate", "say": "The gangplank is down. Somewhere below deck, a door only opens for the right password, and the crew aren't sharing it.", "when": "b2_frigate2_open", "done": "b2_frigate2_cc"},
+      {"mission": "b2_m43", "title": "Thrown Overboard", "say": "The Command Center held something enormous and frozen. Then the shadows moved, and the ship was gone.", "when": "b2_frigate2_cc"}
+    ]},
+    {"title": "The Giant Chasm", "chapters": [
+      {"mission": "b2_m44", "title": "Into the Giant Chasm", "say": "Cheren says the frigate was heading for the Giant Chasm, a crater in the forest past Route 22 where a meteor fell long ago. The cold seems to start there."}
     ]}
   ],
   "ORRE": [

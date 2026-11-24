@@ -589,13 +589,16 @@ class RouteEncounters:
 
         pid = boss_data.get("id")
         # A shiny boss (the Red Gyarados) loads its shiny front and back art straight from the loader.
-        raw = self.game.loader.fetch_specific(pid, is_shiny=bool(boss_data.get("is_shiny", False)))
+        raw = self.game.loader.fetch_specific(pid, boss_data.get("form") or "normal", is_shiny=bool(boss_data.get("is_shiny", False)))   # ("form": a boss in a form - Black / White Kyurem, Unova 11-24)
 
         if "name" in boss_data:
             raw["name"] = boss_data["name"]
             raw["display_name"] = boss_data["name"]
 
         pokemon = Pokemon(raw, self.game.assets, size_mult=2.0)
+        if boss_data.get("form"):
+            from src.pokemon import forms as _forms
+            _forms.form_extras(pokemon, boss_data["form"])
         # A Primal boss (Groudon/Kyogre in the Cave of Origin) reverts when the battle starts.
         pokemon.primal_ready = bool(boss_data.get("primal"))
         if pid == black_fog.BOSS_ID:  # the Black Fog: as strong as your strongest Pokemon

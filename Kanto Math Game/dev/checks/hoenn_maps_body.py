@@ -2480,10 +2480,20 @@ _a24 = _tm24["HOENN_SKY_PILLAR"]["floors"][3]["art"]
 _crt = {tuple(int(v) for v in s.split(",")) for s in _cr["tiles"]}
 _step24 = next(((x + dx, y + dy), (-dx, -dy)) for (x, y) in sorted(_crt) for dx, dy in ((0, 1), (1, 0), (0, -1), (-1, 0))
                if 0 <= y + dy < len(_a24) and 0 <= x + dx < len(_a24[0]) and _a24[y + dy][x + dx] == "." and (x + dx, y + dy) not in _crt)
-# (11-24, Emerald's Mach Bike: only speed carries you over - two steps in a row one way; from a stop, or on foot, you fall)
+# (11-24, Emerald's Mach Bike: riding on over a crack you're across; stop on it, or walk onto it, and you fall)
 _free = lambda x, y: 0 <= y < len(_a24) and 0 <= x < len(_a24[0]) and _a24[y][x] == "." and (x, y) not in _crt
-_run24 = next(((x + 2 * dx, y + 2 * dy), (-dx, -dy)) for (x, y) in sorted(_crt) for dx, dy in ((0, 1), (1, 0), (0, -1), (-1, 0))
-              if _free(x + dx, y + dy) and _free(x + 2 * dx, y + 2 * dy))
+def _over24():
+    """A straight ride from open floor over a run of cracks to open floor beyond: (start, way, the floor beyond)."""
+    for (x, y) in sorted(_crt):
+        for dx, dy in ((0, 1), (1, 0), (0, -1), (-1, 0)):
+            if not _free(x - dx, y - dy):
+                continue
+            k = 0
+            while (x + k * dx, y + k * dy) in _crt:
+                k += 1
+            if _free(x + k * dx, y + k * dy):
+                return (x - dx, y - dy), (dx, dy), (x + k * dx, y + k * dy)
+_run24 = _over24()
 _res24 = {}
 for _bike, _from, _n in ((False, _step24[0], 1), (True, _step24[0], 1), (True, _run24[0], 2)):
     if _bike:
@@ -2493,12 +2503,14 @@ for _bike, _from, _n in ((False, _step24[0], 1), (True, _step24[0], 1), (True, _
     st = open_map("HOENN_SKY_PILLAR", "HOENN_ROUTE_131")
     st.run.jump_floor(3, _from); _calm(st); st.anim = 0
     _said = []
-    for _k in range(_n):
-        st.step(*(_step24[1] if _n == 1 else _run24[1]))
-        _said += _play(st, 300)
+    if _n == 1:
+        st.step(*_step24[1])   # (onto the crack, and stop there)
+    else:
+        st.walk_goal = _run24[2]   # (ridden straight over the cracks to the floor beyond)
+    _said += _play(st, 300)
     _res24[(_bike, _n)] = (st.run.index, any("crumbled" in x for x in _said))
 check(_cr["to"] == 2 and _res24[(False, 1)] == (2, True) and _res24[(True, 1)] == (2, True) and _res24[(True, 2)] == (3, False),
-      f"Sky Pillar: a cracked floor drops you to the floor below on foot or from a stop; riding at speed you're over it ({_res24})")
+      f"Sky Pillar: a cracked floor drops you to the floor below on foot or when you stop on it; riding on, you're over it ({_res24})")
 story.story_flags["delta_wallace_131"] = True
 st = open_map("HOENN_SKY_PILLAR", "HOENN_ROUTE_131")
 _way24 = st._guide_route((st.run.index, *st.run.player), (7, 14, 10), "x")

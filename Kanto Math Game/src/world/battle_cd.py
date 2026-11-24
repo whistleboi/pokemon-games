@@ -97,6 +97,22 @@ def restore(game):
                 p.heal_full()
 
 
+def _give_prize(game, prize):
+    """A CD's prize: an item key, or "tm:<MOVE>" (XD's TM by its move, our TM number - src/pokemon/tms.py)."""
+    story = game.story_manager
+    who = getattr(game, "player_name", "You")
+    if str(prize).startswith("tm:"):
+        from src.pokemon import tms
+        tm = tms.key_for_move(game, prize[3:])
+        if not tm:
+            return []
+        story.add_item(tm, 1)
+        return [f"{who} received {tms.label(game, tm)}!"]
+    from src.pokemon import forms
+    story.add_item(prize, 1)
+    return [f"{who} received the {forms.item_label(prize).upper()}!"]
+
+
 def after_battle(game, battle, won):
     key = getattr(battle, "battle_cd", None)
     restore(game)
@@ -110,5 +126,9 @@ def after_battle(game, battle, won):
     if won:
         first = not cleared(game, key)
         game.story_manager.story_flags[f"battle_cd_{key}_cleared"] = True
-        return [f"Battle CD {key} cleared!" + (" Nicely done." if first else "")]
+        lines = [f"Battle CD {key} cleared!" + (" Nicely done." if first else "")]
+        prize = cd.get("prize") if first else None   # (XD's prize for each CD, the first clear only: Serebii's CD pages, 11-24)
+        if prize:
+            lines += _give_prize(game, prize)
+        return lines
     return [f"Battle CD {key} not cleared. Your own team is back. Try again any time!"]
