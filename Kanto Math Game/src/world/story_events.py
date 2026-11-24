@@ -104,7 +104,6 @@ EVENTS = {
                            "second_trainer": {"name": "Team Plasma Grunt", "class": "PLASMA", "sprite": "b2_plasma_grunt_m.png",
                                               "team": [559], "levels": [16], "rewards": {"balls": 3}}},
         "dialogue": {"player_won": ["Team Plasma: They're really tough!"], "player_lost": ["Team Plasma: Hand them over!"]}}},
-    "b2_strength": {"gift_item": {"HM_STRENGTH": 1}, "flag": "b2_got_strength"},
     # (batch 3b, 11-21: Colress at the Crustle on Route 4; Bianca's Dowsing MCHN in the Castelia Gate)
     "b2_colress_route4": {"flag": "b2_colress_r4", "battle": {
         "name": "Colress", "class": "PKMN_TRAINER", "sprite": "b2_colress.png", "team": [81, 599], "levels": [21, 23],
@@ -114,8 +113,6 @@ EVENTS = {
     # (batch 4a, 11-23: Nimbasa. Teams from Black 2's own trainer table: dev/builders/town_maps/unova_teams.json. Hugh's is
     #  our guess: the game lends him his current team; you and Rosa / Nate against Ingo and Emmet; Bianca's HM02 Fly on Route 5)
     "b2_nimbasa_plasma": {"flag": "b2_nimbasa_plasma_battled", "battle": {"class": "TEAM_PLASMA", "levels": [27], "name": "Team Plasma Grunt", "rewards": {"balls": 3}, "sprite": "b2_plasma_grunt_m.png", "team": [568], "battle_options": {"double": True, "partner": {"name": "{rival_name}", "class": "PKMN_TRAINER", "sprite": "hugh.png", "team": [499, 520], "levels": [27, 25], "team_choice": {"495": [499, 520], "498": [502, 520], "501": [496, 520]}}, "second_trainer": {"class": "TEAM_PLASMA", "levels": [27], "name": "Team Plasma Grunt", "rewards": {"balls": 3}, "sprite": "b2_plasma_grunt_f.png", "team": [505]}}, "dialogue": {"player_won": ["Team Plasma: We give up! Two kids beat us!"], "player_lost": ["Team Plasma: Is that it?"]}}},
-    "b2_subway_bosses_rosa": {"flag": "b2_subway_bosses", "battle": {"class": "SUBWAY_BOSS", "levels": [26], "name": "Subway Boss Ingo", "rewards": {"balls": 4}, "sprite": "subway_boss.png", "team": [525], "battle_options": {"double": True, "partner": {"name": "Rosa", "class": "PKMN_TRAINER", "sprite": "b2_rosa.png", "team": [502, 513], "levels": [25, 23], "team_choice": {"495": [502, 513], "498": [496, 515], "501": [499, 511]}}, "second_trainer": {"class": "SUBWAY_BOSS", "levels": [26], "name": "Subway Boss Emmet", "rewards": {"balls": 4}, "sprite": "b2_emmet.png", "team": [533]}}, "dialogue": {"player_won": ["Ingo: Bravo! You and your Pokemon make a fine combination!"], "player_lost": ["Emmet: All aboard... for next time!"]}}},
-    "b2_subway_bosses_nate": {"flag": "b2_subway_bosses", "battle": {"class": "SUBWAY_BOSS", "levels": [26], "name": "Subway Boss Ingo", "rewards": {"balls": 4}, "sprite": "subway_boss.png", "team": [525], "battle_options": {"double": True, "partner": {"name": "Nate", "class": "PKMN_TRAINER", "sprite": "b2_nate.png", "team": [502, 513], "levels": [25, 23], "team_choice": {"495": [502, 513], "498": [496, 515], "501": [499, 511]}}, "second_trainer": {"class": "SUBWAY_BOSS", "levels": [26], "name": "Subway Boss Emmet", "rewards": {"balls": 4}, "sprite": "b2_emmet.png", "team": [533]}}, "dialogue": {"player_won": ["Ingo: Bravo! You and your Pokemon make a fine combination!"], "player_lost": ["Emmet: All aboard... for next time!"]}}},
     "b2_fly": {"gift_item": {"HM_FLY": 1}, "flag": "b2_got_fly"},
     "b2_subway_fight": {"world": "battle_subway", "fight": True},
     "b2_coaster_switch_0": {"world": "unova_story", "toggle": "b2_coaster_sw0"},   # (the roller coaster's switches, 11-23)
@@ -301,7 +298,7 @@ EVENTS = {
                                                "Cyrus: Then I will find another way. Alone.",
                                                "The legendary Pokemon still stirs at the top of the Spear Pillar..."]}}},
     # Platinum's walking partners (11-18, src/world/walk_partners.py): talk to them and they walk with you.
-    **{f"walk_{_k}": {"walk_partner": _k} for _k in ("cheryl", "mira", "riley", "buck", "marley", "hugh")},
+    **{f"walk_{_k}": {"walk_partner": _k} for _k in ("cheryl", "mira", "riley", "buck", "marley")},
     # Iron Island B2F (Platinum): you and Riley against two Galactic Grunts, their teams from Platinum; then the Riolu Egg
     "riley_iron_island": {
         "lines": ["Two Galactic Grunts are blocking the passage!",
@@ -338,19 +335,6 @@ EVENTS = {
                   "Burgh: I'll cover the other path. Go!"],
         "flag": "plasma_pinwheel_cleared",
         "battle": _t(GRUNT_P, team=[504, 509], dialogue={"player_won": ["unova_plasma_grunt_lost"]})},
-    "burgh_sewers": {
-        "lines": ["unova_castelia_sewers"], "flag": "plasma_castelia_cleared",
-        "battle": _t(GRUNT_P, team=[509, 504], dialogue={"player_won": ["unova_plasma_grunt_lost"]})},
-    "n_nimbasa_ferris_wheel": {
-        "lines": ["unova_n_nimbasa_ferris_wheel", "N: I am the king of Team Plasma. Now, let us battle."],
-        "flag": "met_n_nimbasa",
-        "battle": {"name": "N", "class": "PKMN_TRAINER", "sprite": "n.png", "team": [551, 554, 559, 561],
-                   "dialogue": {"player_won": ["N: I'll become the hero, and find Reshiram... or Zekrom."]}}},
-    "plasma_relic_castle": {
-        "lines": ["Sand pours through Relic Castle. Team Plasma is digging for something!"],
-        "flag": "plasma_relic_castle_cleared",
-        "battle": _t(GRUNT_P, team=[510, 505], dialogue={"player_won": [
-            "Plasma Grunt: Too late! Lord N already has what he needs..."]})},
     "plasma_dragonspiral": {
         "lines": ["Team Plasma has stormed Dragonspiral Tower!",
                   "At the top, N calls out to the legendary dragon..."],
