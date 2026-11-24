@@ -329,6 +329,10 @@ check(_p.dialogue_box.visible and g.current_state is _p, "OVERWORLD: the trainer
 while _p.dialogue_box.visible:
     _p.dialogue_box.advance()
     _p.update()
+for _ in range(600):   # (a walk over first, when they need room to stand side by side: map_attacks suite; Jordan 11-24)
+    if g.current_state is not _p:
+        break
+    _p.update()
 _b = g.current_state
 check(isinstance(_b, TrainerBattleState) and getattr(_b, "overworld", None) is not None,
       "...then the turn-based battle, drawn on the map")
@@ -363,6 +367,10 @@ _ww, _ = beside(_p, "wild")
 _p._meet_wild(_ww)
 check(_p.mode == "CHOICE", "OVERWORLD: a wild one is still the catch-or-battle choice")
 _p._pick(1)
+for _ in range(600):   # (a walk over first, when they need room)
+    if g.current_state is not _p:
+        break
+    _p.update()
 check(isinstance(g.current_state, WildBattleState) and getattr(g.current_state, "overworld", None) is not None,
       "...and its battle is on the map too")
 story.battle_style = "TRADITIONAL"

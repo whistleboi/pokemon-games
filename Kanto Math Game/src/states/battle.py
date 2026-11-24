@@ -2689,9 +2689,23 @@ class TrainerBattleState(ShadowBattle, GimmickEffects, AbilityEffects, MoveMecha
     # A move that didn't go off shows no animation.
     MOVE_FAILED = ("attack missed!", "avoided the attack", "protected itself!", "But it failed!", "It doesn't affect")
 
+    def _ow_note_move(self, user, name, side, messages, target=None):
+        """On the map (OVERWORLD style): remember the move that went off, for the map's own attack (src/vfx/map_attacks.py:
+        a lunge, a beam or a ring in its type's look), played by _hold_for_move_anim in place of the animation and lunge."""
+        used = self.game.assets.get_text("used_move", name="", move="").strip(" !")
+        self._ow_move = None
+        if any(used and used in m for m in messages) and not any(f in m for m in messages for f in self.MOVE_FAILED) \
+                and self.__dict__.get("_charging", {}).get(id(user)) != name:
+            if target is None:
+                target = self.opponent_pokemon if side == "player" else self.player_pokemon
+            self._ow_move = {"name": name, "side": side, "user": user, "target": target}
+
     def _start_move_anim(self, user, name, side, messages):
         """Start the move's animation (Pokemon Orre's, src/vfx/move_anim.py) if it went off and has one; its
         text and the HP bars wait for it. False if there's none (the plain lunge is used then)."""
+        if getattr(self, "overworld", None) is not None:   # (on the map: its own attack, _ow_note_move)
+            self._ow_note_move(user, name, side, messages)
+            return False
         used = self.game.assets.get_text("used_move", name="", move="").strip(" !")
         if not any(used and used in m for m in messages) or any(f in m for m in messages for f in self.MOVE_FAILED)                 or self.__dict__.get("_charging", {}).get(id(user)) == name:
             return False
@@ -2745,9 +2759,16 @@ class TrainerBattleState(ShadowBattle, GimmickEffects, AbilityEffects, MoveMecha
             if not (self.dialogue_box.is_waiting_for_click or self.dialogue_box.is_finished):
                 return True
             seq["stage"] = "move"
-            if self.move_anim is None and seq["lunge"]:
+            _ow = getattr(self, "overworld", None)
+            if _ow is not None and getattr(self, "_ow_move", None):   # (on the map: the map's own attack)
+                _ow.attack(self, self._ow_move)
+                self._ow_move = None
+            elif self.move_anim is None and seq["lunge"]:
                 self.anim_ctrl.start_lunge(seq["lunge"])
         if seq["stage"] == "move":  # the animation, or the lunge
+            _ow = getattr(self, "overworld", None)
+            if _ow is not None and _ow.attacking():
+                return True
             if self.move_anim is not None:
                 self.move_anim.update()
                 if not self.move_anim.done:

@@ -1960,6 +1960,7 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         kind, mover = self.pending or (None, None)
         self.pending = None
         self._ow_foe = None
+        home = self.__dict__.pop("_ow_home", None)
         if mover is not None:
             if kind == "wild":
                 if getattr(mover.payload, "snack_visitor", None):   # (the snack tray's visitor: gone - Orre batch 8d)
@@ -1992,6 +1993,16 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         self.mode = "MAP"
         self.walk_goal = None
         self._sync_figures()
+        if home:   # (the battle stood on open ground nearby: everyone walks back where they met; Jordan 11-24)
+            m = home["mover"]
+            goals = [("me", home["player"])] + ([(m, home["at"])] if m in self.run.floor.movers else [])
+            hf = home["mover_facing"]
+
+            def there():
+                self.facing = home["facing"]
+            self._ow_walk_start(goals, there)
+            if m in self.run.floor.movers:   # (a trainer you lost to: back on its spot, looking away, as before)
+                self._ow_walk["end_face"] = (m, (-hf[0], -hf[1]))
 
     def show_progression_menu(self):
         """The route's catch screen (or a battle) is done: back to the map."""
@@ -2765,7 +2776,13 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         battle.play_state_data = self._play_data()
         if self._ow_on():  # Options > BATTLE STYLE: OVERWORLD: fought here on the map
             from src.states.overworld.overworld_battle import OverworldView
-            battle.overworld = OverworldView(self, mover)
+
+            def go():
+                battle.overworld = OverworldView(self, mover)
+                pygame.event.clear()
+                self.game.change_state(battle)
+            self.ow_walk_to_battle(mover, False, go)   # (over to open ground first, if it stands there: walked)
+            return
         pygame.event.clear()
         self.game.change_state(battle)
 
@@ -3239,7 +3256,13 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
                 cy -= c3.lift(px, py) * TILE
                 top, mh = c3.span()
             cx = mw / 2 if mw <= W else min(max(cx, W / 2), mw - W / 2)
-            cy = (top + mh) / 2 if mh - top <= H else min(max(cy, top + H / 2), mh - H / 2)
+            if focus:   # (a battle on the map: only the part above its text box shows, so the map's foot may come up to
+                #  the box's top - a fight at a map's bottom edge was drawn under the box; Jordan 11-24)
+                band = Utils.get_full_dialogue_rect(self.game).top - self._view().top
+                lo, hi = top + H / 2, mh - H / 2 + (H - band)
+                cy = (top + mh) / 2 + (H - band) / 2 if mh - top <= band else min(max(cy, lo), hi)
+            else:
+                cy = (top + mh) / 2 if mh - top <= H else min(max(cy, top + H / 2), mh - H / 2)
         ease = getattr(self, "_cam_ease", None)
         if ease is not None:   # (a scene's pan: the view glides there and back)
             return ease
@@ -3328,7 +3351,7 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
             return
         if getattr(self, "_vs_anim", None):   # (the VS Seeker is playing: wait for it)
             return
-        if self.mode not in ("WALKUP", "SWARM"):   # (not while wild ones walk up to you or battle you on the map)
+        if self.mode not in ("WALKUP", "SWARM", "OWWALK"):   # (not while wild ones walk up to you, battle you on the map, or you walk to a battle)
             events = [e for e in events if not self._qp_event(e)]  # (the POKEMON button and its list first)
         for e in events:
             if e.type == pygame.MOUSEBUTTONUP and e.button == 1:
@@ -4145,6 +4168,9 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
             return
         if hasattr(self, "run"):
             self._wu_leavers_tick()   # (wild ones running off: Honey's, a swarm's)
+            if self.mode == "OWWALK":   # (walking over to where a map battle stands, or back: overworld_battle.py)
+                self._ow_walk_tick()
+                return
             if self.mode in ("WALKUP", "SWARM"):   # (walking up to you; the swarm's battle on the map)
                 self._npc_tick()
                 self._wu_tick() if self.mode == "WALKUP" else self._sw_tick()
@@ -5115,6 +5141,11 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
             if m.kind in ("wild", "walkup"):   # (walkup: drawn in by Honey or a swarm - wild_walkup.py: it hops out, faints, fades)
                 img = self._icon(m.payload, TILE, flip=(m.x < self.run.player[0]), facing=getattr(m, "facing", None))
                 _lift, _alpha = (self._wu_lift(m), getattr(m, "_wu_alpha", 255)) if m.kind == "walkup" else (0, 255)
+                if m.kind == "walkup" and getattr(m, "_wu_off", None):   # (lunging or knocked back in the swarm's battle)
+                    r = r.move(*m._wu_off)
+                    if getattr(m, "_wu_flash", False):
+                        from src.vfx.map_attacks import white
+                        img = white(img)
                 if _alpha <= 0:
                     continue
                 if _alpha < 255:
@@ -5222,6 +5253,11 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
             way = (look[0] - tx, look[1] - ty)
             way = (max(-1, min(1, way[0])), 0) if way[0] else (0, max(-1, min(1, way[1])) or 1)
             img = self._icon(lead, TILE, flip=(self.run.player[0] > tx), facing=way)
+            if getattr(self, "_lead_off", None) and self.mode == "SWARM":   # (its lunge or recoil in the swarm's battle)
+                r = r.move(*self._lead_off)
+                if getattr(self, "_lead_flash", False) and img is not None:
+                    from src.vfx.map_attacks import white
+                    img = white(img)
             _trail[len(drawn)] = (self.partner_from, self.partner)
             drawn.append((r.bottom, img, img.get_rect(midbottom=(r.centerx, r.bottom - 2))))
         for _ci, _who in enumerate(self._companions() if me is not None and not self._backdrop and not surfing else ()):
