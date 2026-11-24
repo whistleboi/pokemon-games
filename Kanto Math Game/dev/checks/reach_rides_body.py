@@ -26,5 +26,15 @@ _jb = list(story.badges.get("JOHTO", []))
 story.badges["JOHTO"] = []
 check("SILVER_LEAGUE_PLATEAU" not in _rides("MT_SILVER_CITY", _state("MT_SILVER_CITY")), "Mt. Silver's guide: not without the eight Johto badges")
 story.badges["JOHTO"] = _jb
+print("a menu Sailor's sailing (Hoenn's, once its EXITs went; 11-23)")
+_ship = next((k for k, a in PROG.items() if isinstance(a, dict) and a.get("ferry")), None)
+check(_ship is not None and set(_travel_to(_ship, "@ferry")) == set(PROG[_ship]["ferry"].values()) - {_ship},
+      f"'@ferry' is each port of the ship's own ferry map ({_ship}: {_travel_to(_ship, '@ferry') if _ship else None})")
+_a = PROG.setdefault("ZZ_DOCK", {"area_type": "route"})
+_a["route_menu"] = [{"text": "SAILOR", "action": "EVENT", "event": {"travel": "SLATEPORT_CITY"}},
+                    {"text": "SAILOR", "action": "EVENT", "flag_condition": "zz_never", "event": {"travel": "LILYCOVE_CITY"}}]
+_l = links("ZZ_DOCK")
+check("SLATEPORT_CITY" in _l and "LILYCOVE_CITY" not in _l, f"a route's Sailor EVENT sails you; one whose flag isn't set doesn't ({_l})")
+PROG.pop("ZZ_DOCK", None)
 story.story_flags = _saved
 print(f"##### {fails} failures")
