@@ -209,7 +209,8 @@ for _a in ("THE_UNDER", "SNAGEM_HIDEOUT", "SHADOW_PKMN_LAB", "DEEP_COLOSSEUM", "
             if _sc.get("flag"):
                 F[_sc["flag"]] = True
 F["cleared_the_under"] = True
-story.badges = {"ORRE": ["PYRITE", "UNDER", "PHENAC", "ORRE"]}
+F["orre_part2"] = True   # (story rework 11-24, Q8: Colosseum's after-game opens in Part 2, not after the title)
+story.badges = {"ORRE": ["PHENAC", "PYRITE", "AGATE", "SNAGEM"]}
 story.inventory = {"SNAG_MACHINE": 1, "POKE_BALL": 99}
 SP = g.loader.area_data["STORY_PROGRESSION"]
 TR = _json.load(open("dev/builders/data/orre_trainers.json", encoding="utf-8"))
@@ -335,34 +336,12 @@ check(F.get("col_deep_all"), "all five Deep Colosseum rounds won")
 check(story.inventory.get("TM098") and story.inventory.get("TM078"), "rounds 2 and 4: TM Skill Swap, TM Dragon Claw")
 check(F.get("snagged_shadow_shuckle"), "the Deep King's Shadow Shuckle snagged")
 
-print("6) Realgam: the door down is shut; rematches raised and healed")
+print("6) Realgam: the door down is shut")
 room = g.town_maps["REALGAM_TOWER"]["rooms"]["realgam"] if hasattr(g, "town_maps") else _json.load(open("assets/town_maps.json", encoding="utf-8"))["REALGAM_TOWER"]["rooms"]["realgam"]
 check(any("no handle" in " ".join(b.get("lines", [])) for b in room.get("barred", [])), "Realgam's door to the Deep Colosseum is shut")
-team_reset()
-for p in story.player_team:   # (a Lv 75 team: above Lv 80 the League rematch rule lifts foes to your ace)
-    p.level = 75
-    p.heal_full()
-story.current_area_key = "REALGAM_TOWER"
-F["gym_progress_REALGAM_TOWER"] = 1
-story.player_team[0].current_hp = 1
-lobby = GymLobbyState(g, None)
-check(story.player_team[0].current_hp == story.player_team[0].get_max_hp(), "between rematch battles your team is healed")
-F["gym_progress_REALGAM_TOWER"] = 0
-lobby = GymLobbyState(g, None)
-seen_levels = []
-from src.states.battle import TrainerBattleState as _TBS
-_orig = _TBS.__init__
-
-
-def _spy(self, game, team, *a, **k):
-    seen_levels.append(max(p.level for p in team if p))
-    return _orig(self, game, team, *a, **k)
-
-
-_TBS.__init__ = _spy
-lobby.challenge_gym()
-_TBS.__init__ = _orig
-check(seen_levels and seen_levels[0] == 78, f"the first rematch raised to fit (ace {seen_levels[:1]})")
+# (the old lobby-screen rematch of Evice's run, healed and raised to fit after the title - retired 11-24: after the title
+#  Realgam's Colosseum is the Orre League (story rework S5, gym_swaps), and League rematches don't rise to your level
+#  (Jordan 11-21). The League's rematch is on ROADMAP_ORRE R6.)
 
 print("7) Fein")
 team_reset()
