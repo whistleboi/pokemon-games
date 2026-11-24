@@ -164,6 +164,7 @@ unovab8a               unova    story,batch
 unovab8b               unova    story,batch
 unovab9a               unova    story,batch
 unovab9b               unova    story,batch
+unovab9c               unova    story,batch
 unovacam               unova    live3d
 unovastart             unova    story,start
 
@@ -188,6 +189,7 @@ orre_pilot             orre     story,batch
 orre_playthrough       orre     long,playthrough
 recheck_orre           orre     oneoff
 shadows                orre     forms
+shadow_parity          orre     forms
 
 
 

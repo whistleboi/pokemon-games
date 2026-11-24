@@ -43,7 +43,7 @@ def forms_for(assets, species_id):
 
 # The Orange Islands' colour-only forms (Pinkan, Valencia) Mega Evolve like their species (Jordan 11-23), in their
 # own colours: sprites/pokemon/mega/<dex>_<variant>_mega.png (dev/builders/recolor_form_followers.py), else the Mega's.
-COLOUR_VARIANTS = ("pinkan", "valencia")
+COLOUR_VARIANTS = ("pinkan", "valencia", "shadow")   # (Orre's Shadow forms Mega Evolve too, Jordan 11-24 - their stats swapped)
 
 
 def _species(pokemon):
@@ -118,6 +118,10 @@ def apply_form(assets, pokemon, form):
     species = _species(pokemon)
     pokemon.types = list(form["types"])
     pokemon.base_stats = dict(form["stats"])
+    if variant == "shadow":   # (a Shadow keeps its reverse stats as a Mega: Attack <-> Defense, Sp. Atk <-> Sp. Def - Jordan 11-24)
+        st = pokemon.base_stats
+        st["ATTACK"], st["DEFENSE"] = st["DEFENSE"], st["ATTACK"]
+        st["SPECIAL-ATTACK"], st["SPECIAL-DEFENSE"] = st["SPECIAL-DEFENSE"], st["SPECIAL-ATTACK"]
     pokemon.display_name = form["name"]
     if variant and form["name"].upper().startswith("MEGA "):   # (MEGA PINKAN BEEDRILL)
         pokemon.display_name = f"MEGA {variant.upper()} {form['name'][5:]}"

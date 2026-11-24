@@ -2805,7 +2805,7 @@
           "text": "THE {orb}",
           "action": "HOENN_EVENT",
           "event": "awakening",
-          "condition": ["seafloor_cavern_cleared", "not:cave_of_origin_cleared"]
+          "condition": ["seafloor_cavern_cleared", "not:cave_of_origin_cleared", "not:seafloor_awakening_seen"]
         },
         { "text": "ROUTE 128", "action": "EXIT", "target_area": "HOENN_ROUTE_128", "condition": "can_exit" }
       ],

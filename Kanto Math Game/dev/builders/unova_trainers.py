@@ -68,7 +68,10 @@ TEAMS = [207, 208, 209, 153,                     # Elesa's Beauties, Elesa
          350, 351, 352, 353, 354, 355, 160, 580,  # (batch 9a) Marlon's Ace Trainers, Marlon; Black Belt Rocky (Seaside Cave)
          794, 795, 796, 500, 798, 799, 347, 724,  # (batch 9b-1) the frigate: Hugh (by starter), the deck's Grunt, the North
          800, 801, 802, 812, 426, 427, 343, 436,  # Entrance's pair, Zinzolin and his Grunt; the hall's and rooms' Grunts
-         429, 428, 437]
+         429, 428, 437,
+         797, 440, 807, 809, 497, 344, 348, 498, 499, 345,   # (batch 9b-2) the Chasm: the forest's pair (with Hugh), the stern,
+         430, 431, 432, 433, 434, 435, 438, 439, 808, 810, 811,   # Zinzolin, Colress, the Shadow Triad, Ghetsis; Kyurem's room:
+         445, 446, 447, 448, 449, 452, 453, 454]   # Black 2's Grunts and Doctor; White 2's password Grunts, the card's
 # Battle pictures where the class slug isn't the file's name (a/0/7/1 slots matched by eye, 11-23; a class without its own
 # Black 2 picture keeps the same class from Platinum, never another class's look)
 BY_CLASS = {0: "b2_nate.png", 1: "b2_rosa.png", 90: "pt_cyclist_m.png", 91: "pt_cyclist_f.png", 33: "pt_artist.png",

@@ -748,6 +748,17 @@ def _wallace_131(maps):
     _F._put(f, "N", "people", [[37, 6, "BATTLE WALLACE"]])
 
 
+def _jagged_lookout(maps):
+    """Clean-up (11-24): Jagged Pass's lookout grunt stood on the one tile in front of the Magma Hideout's hidden door
+    (16, 18) for good - after the title the hideout is the other team's (Jordan, HOENN.md #9) and the door opens, but
+    nobody could reach it. He's gone once you're Champion."""
+    m = maps.get("HOENN_JAGGED_PASS")
+    f = ((m or {}).get("floors") or [m])[0] if m else None
+    for p in (f or {}).get("people") or []:
+        if isinstance(p, dict) and p.get("text") == "Lookout grunt":
+            p["condition"] = "not:beat_hoenn_champion"
+
+
 def _part(m, floor, room):
     if room:
         return m["rooms"][room]
@@ -837,6 +848,7 @@ def apply(maps):
     _hideout_one_horde(maps)
     _frontier_slots(maps)
     _wallace_131(maps)
+    _jagged_lookout(maps)
     _h7(maps)
     for key, floor, room, x, y, who in PEOPLE:
         m = maps.get(key)
