@@ -52,6 +52,7 @@
   "MISTRALTON_CAVE_2F": "d_02",
   "MISTRALTON_CITY": "c_06",
   "NIMBASA_CITY": "c_04",
+  "OPELUCID_CITY": "c_08_b",
   "PLASMA_FRIGATE": "sw_d_27_f_ajito",
   "PLEDGE_GROVE": "d_01",
   "POKESTAR_STUDIOS": "pw_land",
@@ -84,6 +85,18 @@
    "SPRING": "t_05_sp",
    "SUMMER": "t_05_su",
    "WINTER": "t_05_wi"
+  },
+  "UNOVA_ROUTE_11": {
+   "AUTUMN": "r_e_au",
+   "SPRING": "r_e_sp",
+   "SUMMER": "r_e_su",
+   "WINTER": "r_e_wi"
+  },
+  "UNOVA_ROUTE_12": {
+   "AUTUMN": "r_e_au",
+   "SPRING": "r_e_sp",
+   "SUMMER": "r_e_su",
+   "WINTER": "r_e_wi"
   },
   "UNOVA_ROUTE_13": {
    "AUTUMN": "r_e_au",
@@ -133,6 +146,7 @@
    "SUMMER": "r_d_su",
    "WINTER": "r_d_wi"
   },
+  "VILLAGE_BRIDGE": "h_04",
   "VIRBANK_CITY": "sw_c_13",
   "VIRBANK_COMPLEX": "sw_d_23",
   "VIRBANK_COMPLEX_OUTSIDE": "sw_c_13"
@@ -190,6 +204,10 @@
   "NIMBASA_CITY:plat_super_single": "gear_station",
   "NIMBASA_CITY:plat_wifi": "gear_station",
   "NIMBASA_CITY:subway_stop": "gear_station",
+  "OPELUCID_CITY:center": "pokecen",
+  "OPELUCID_CITY:gate_e": "gate",
+  "OPELUCID_CITY:gate_w": "gate",
+  "OPELUCID_CITY:gym": "dragon_gym_01",
   "PWT:lobby": "wbt_lobby",
   "PWT:stadium": "wbt_ground",
   "UNDELLA_TOWN:center": "pokecen",
@@ -201,6 +219,8 @@
   "UNOVA_ROUTE_6:grotto": "kemonomichi",
   "UNOVA_ROUTE_6:grotto2": "kemonomichi",
   "UNOVA_ROUTE_7:grotto": "kemonomichi",
+  "VILLAGE_BRIDGE:gate_e": "gate",
+  "VILLAGE_BRIDGE:gate_w": "gate",
   "VIRBANK_CITY:center": "pokecen",
   "VIRBANK_CITY:gate_n": "gate",
   "VIRBANK_CITY:gate_w": "gate",

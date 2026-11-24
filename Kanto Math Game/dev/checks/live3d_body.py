@@ -283,7 +283,7 @@ for _area, _m in _all.items():
         continue
     for _rn, _r in [(None, _m)] + list((_m.get("rooms") or {}).items()):
         _f = str(((_r.get("roofs") or {}).get("_picture") or {}).get("f") or "") if isinstance(_r, dict) else ""
-        if not _f.startswith("b2_ground/") or int(_os.path.splitext(_os.path.basename(_f))[0]) < 427:
+        if not _f.startswith("b2_ground/") or not _os.path.splitext(_os.path.basename(_f))[0].isdigit() or int(_os.path.splitext(_os.path.basename(_f))[0]) < 427:   # (a painted stand-in, 121_gym: no live 3D)
             continue
         t = place(_area, _rn)
         _name = _area + ("/" + _rn if _rn else "")
