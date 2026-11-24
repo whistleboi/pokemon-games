@@ -369,6 +369,10 @@ class WalkTownState(TownWalkUps, CityState):
         if not pic or not (pic.get("until") or pic.get("when")) or art._version_file(pic) == getattr(self, "_pic_now", None):
             return
         self._pic_now = art._version_file(pic)
+        _w = next((w for w in (pic.get("when") if isinstance(pic.get("when"), list) else [pic.get("when") or {}])
+                   if w.get("f") == self._pic_now and w.get("play")), None)
+        if _w:   # (and the live scene plays the change through on its way there: Cianwood Gym's winch lifting the pipe as the
+            self._pic_play = (list(_w["play"]), pygame.time.get_ticks(), float(_w.get("secs") or 2.0) * 1000)   # waterfall stops, 11-23)
         self.map_img = art.surface(self.grid, m.get("buildings", {}), TILE, m.get("roofs"), m.get("theme"))
         self.overheads = [(o, *art.overhead(o, TILE)) for o in m.get("overheads", [])]
 
@@ -2296,6 +2300,13 @@ class WalkTownState(TownWalkUps, CityState):
         if _p.get("when") or _p.get("until"):   # (a picture that changes with a flag has its own scene too: Cianwood Gym's
             from src.dungeon import art          #  waterfall, stopped by the switch at the top, 11-22)
             pic = str(art._version_file(_p) or pic)
+        _play = getattr(self, "_pic_play", None)
+        if _play:   # (a change being played through: its in-between scenes in turn, then the one it ends on - _refresh_picture)
+            k = int((pygame.time.get_ticks() - _play[1]) * len(_play[0]) // max(1.0, _play[2]))
+            if 0 <= k < len(_play[0]):
+                pic = str(_play[0][k])
+            else:
+                self._pic_play = None
         key = (id(m), getattr(self, "room", None), pic)
         if getattr(self, "_live_key", None) == key:
             return self._live_got
