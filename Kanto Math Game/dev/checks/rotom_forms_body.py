@@ -44,4 +44,14 @@ team[0].level = 50
 forms.mark_trainer_team(team, {"forms": ["fan"]})
 check(team[0].types == ["ELECTRIC", "FLYING"] and team[0].level == 50 and "AIR-SLASH" in (getattr(team[0], "preset_moves", None) or []),
       f"a trainer's 'forms': the PWT's Fan Rotom ({team[0].types})")
+
+print("Black and White Kyurem (Black 2 / White 2; Unova 11-24)")
+from src.pokemon import abilities as _ab
+for f, ab, sig, hi in (("black", "TERAVOLT", "FUSION-BOLT", "ATTACK"), ("white", "TURBOBLAZE", "FUSION-FLARE", "SPECIAL-ATTACK")):
+    k = forms.form_extras(Pokemon(g.loader.fetch_specific(646, f), g.assets), f)
+    check(k.types == ["DRAGON", "ICE"] and _ab.ability(g, k) == ab and sig in (k.preset_moves or []),
+          f"{f.title()} Kyurem: {ab.title()}, {sig.title()} ({_ab.ability(g, k)}, {k.preset_moves})")
+team = [Pokemon(g.loader.fetch_specific(646), g.assets)]
+forms.mark_trainer_team(team, {"forms": ["white"]})
+check(_ab.ability(g, team[0]) == "TURBOBLAZE", "a team's 'forms' slot: White Kyurem")
 print(f"##### {fails} failures")

@@ -80,7 +80,12 @@ story.inventory["SNAG_MACHINE"] = 1
 story.story_flags["got_snag_machine"] = True
 check("Pyrite Town" in bike("PHENAC_CITY"), "the Snag Machine opens the bike ride to Pyrite")
 m = figures("ORRE_DESERT")
-check(m.count("SNAG SHADOW POKEMON") == 1, f"desert: one snag figure for its Shadow pool, on the walked map: {m}")
+check(not m.count("SNAG SHADOW POKEMON") and not m.count("SNAG AGAIN"),
+      f"desert: no snag figure - its Shadows are their own trainers' (Trudly, the Mystery Troop, Fein, Hordel's gift; 11-24): {m}")
+story.story_flags["snagged_shadow_makuhita"] = True
+m = figures("ORRE_DESERT")
+check("SNAG AGAIN" in m and "SNAG SHADOW POKEMON" not in m, f"desert: once Trudly's Makuhita is snagged, SNAG AGAIN farms it (Jordan 11-24): {m}")
+story.story_flags.pop("snagged_shadow_makuhita", None)
 raw = g.loader.fetch_specific(9406)
 check(raw["name"] == "SHADOW MAKUHITA" and raw["img"], f"Shadow form: {raw['name']}")
 

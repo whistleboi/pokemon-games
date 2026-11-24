@@ -2404,6 +2404,9 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
             from src.world import phenomena as _phen
             if _phen.on_step(self):   # (into rustling grass, onto rippling water: B2W2's phenomena, 11-20)
                 return
+            from src.world import ambush as _amb
+            if _amb.on_step(self):   # (into shaking grass, a dust puff, ripples: an ambush spot, 11-24)
+                return
         self._handle(events)
 
     def wait_turn(self):
@@ -4475,6 +4478,9 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         if hasattr(self, "run"):
             from src.world import poke_radar as _radar
             _radar.tick(self)   # (back from a radar meeting: the grass shakes again)
+            from src.world import ambush as _amb
+            _amb.tick(self)   # (shaking grass, dust, ripples now and then: src/world/ambush.py, 11-24)
+            self.run.lead_level = next((m.level for m in self.game.story_manager.player_team if getattr(m, "current_hp", 1) > 0), None)
             from src.world import escorts as _esc
             _esc.sync(self)   # (who goes everywhere with someone: Jessie & James's Meowth, 11-19)
             self._clear_boulders()
@@ -5380,6 +5386,8 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         _dexnav.draw(self, screen, at)   # (a hidden Pokemon's tail in the grass, ripples on the water)
         from src.world import phenomena as _phen
         _phen.draw(self, screen, at)   # (rustling grass, rippling water: B2W2's phenomena)
+        from src.world import ambush as _amb
+        _amb.draw(self, screen, at)   # (an ambush spot: shaking grass, dust, ripples)
         bob = int(3 * math.sin(pygame.time.get_ticks() / 180))
         for (x, y) in f.tm_spots:
             if (x, y) in f.seen:
