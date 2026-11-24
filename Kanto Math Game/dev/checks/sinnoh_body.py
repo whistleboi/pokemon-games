@@ -542,9 +542,11 @@ check(_slow == _dmod.STEP_FRAMES * 2 and r.anim == _dmod.STEP_FRAMES and sum(row
       f"Route 217: a step into deep snow takes twice as long ({_slow} frames against {r.anim}); {sum(row.count('8') for row in _g)} tiles of it")
 story.inventory["HM_DEFOG"] = 0
 r = route("LOST_TOWER", "SINNOH_ROUTE_209")
+r._warp(4, 1, 1); frames(r, 3)   # (5F: the fog is on 3F-5F only, Platinum's zone weather - checked floor by floor in S3's part)
 _fog1 = bool(r.run.fog)
 story.inventory["HM_DEFOG"] = 1
 r = route("LOST_TOWER", "SINNOH_ROUTE_209")
+r._warp(4, 1, 1); frames(r, 3)
 check(_fog1 and not r.run.fog and _tm["TURNBACK_CAVE"].get("fog") == "defog", "Lost Tower: thick fog until you have Defog (Turnback Cave the same)")
 story.inventory["BICYCLE"] = 0
 r = route("SINNOH_ROUTE_228", "SINNOH_ROUTE_226")
@@ -896,6 +898,22 @@ story.story_flags["sinnoh_beat_fantina"] = True
 t._go("gym_3", "ROOM:gym_2"); frames(t, 25)
 check((8, 9) not in t.barred, "Hearthome Gym: beaten, Fantina's warp panel takes you back to the lobby")
 story.story_flags.clear(); story.story_flags.update(_sv)
+
+# ---- S3 (11-23): the Lost Tower's fog on 3F-5F only, as Platinum's zone weather (s_s3_lost_tower.py)
+_inv = dict(story.inventory)
+story.inventory.pop("HM_DEFOG", None)
+r = route("LOST_TOWER", "SINNOH_ROUTE_209")
+_fog = []
+for _i in range(5):
+    if r.run.index != _i:
+        r._warp(_i, 1, 1); frames(r, 3)
+    _fog.append(bool(r.run.fog))
+story.inventory["HM_DEFOG"] = 1
+r = route("LOST_TOWER", "SINNOH_ROUTE_209")
+r._warp(4, 1, 1); frames(r, 3)
+check(_fog == [False, False, True, True, True] and not r.run.fog,
+      f"Lost Tower: fog on 3F-5F only, as Platinum; gone once you have Defog ({_fog}, with Defog 5F: {r.run.fog})")
+story.inventory.clear(); story.inventory.update(_inv)
 
 g.walk_towns = False
 print(f"##### {fails} failures")

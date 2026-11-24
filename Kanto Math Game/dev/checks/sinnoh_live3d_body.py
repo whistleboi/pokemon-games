@@ -35,7 +35,7 @@ for _k in ("JUBILIFE_CITY", "OREBURGH_CITY", "FLOAROMA_TOWN"):
 ROUTES += ("SINNOH_ROUTE_202", "SINNOH_ROUTE_203", "OREBURGH_GATE", "OREBURGH_MINE", "SINNOH_ROUTE_204", "RAVAGED_PATH",
            "FLOAROMA_MEADOW", "SINNOH_ROUTE_205", "VALLEY_WINDWORKS", "ETERNA_FOREST", "ETERNA_FOREST_OUTSKIRTS")
 # S3 (11-23): Eterna to Solaceon. Flat for now: Eterna's two houses with no Platinum room (house_0601/0701), the Contest Hall
-# 2F (no ground picture), the Lost Tower (fog per floor, S3). Hearthome's Gym: its four Platinum rooms, live (s_s3_hearthome_gym.py)
+# 2F (no ground picture). Hearthome's Gym: its four Platinum rooms, live (s_s3_hearthome_gym.py)
 FLAT |= {("ETERNA_CITY", "house_0601"), ("ETERNA_CITY", "house_0701"), ("HEARTHOME_CITY", "contest_2f")}
 for _k in ("ETERNA_CITY", "HEARTHOME_CITY", "SOLACEON_TOWN"):
     PILOT[_k] = tuple(n for n in (_TM[_k].get("rooms") or {}) if (_k, n) not in FLAT)
@@ -43,7 +43,7 @@ KNOWN_JUMPS = {}   # ((area, floor): (steps, why)): level jumps left open on the
 # bridge lettered as a bridge, the Old Chateau hall's landing above the dining door walled, Route 208's Surf strip
 # (pexport3d BDHC_FIX) - kanto_handoff/sinnoh_map_tools/s_s3_jumps.py
 ROUTES += ("SINNOH_ROUTE_206", "WAYWARD_CAVE", "SINNOH_ROUTE_207", "MT_CORONET_BASE", "SINNOH_ROUTE_208", "SINNOH_ROUTE_209",
-           "SOLACEON_RUINS", "SINNOH_ROUTE_210", "OLD_CHATEAU", "ETERNA_GALACTIC_BUILDING")
+           "SOLACEON_RUINS", "SINNOH_ROUTE_210", "OLD_CHATEAU", "ETERNA_GALACTIC_BUILDING", "LOST_TOWER")
 
 
 def settle(n=60):

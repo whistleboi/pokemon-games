@@ -275414,6 +275414,13 @@
        16,
        24
       ]
+     },
+     "_picture": {
+      "f": "pt_ground/R209R0102.png",
+      "at": [
+       0,
+       1
+      ]
      }
     },
     "hidden": {
@@ -275650,6 +275657,13 @@
        16,
        16,
        24
+      ]
+     },
+     "_picture": {
+      "f": "pt_ground/R209R0103.png",
+      "at": [
+       0,
+       1
       ]
      }
     },
@@ -275899,6 +275913,13 @@
        16,
        16,
        24
+      ]
+     },
+     "_picture": {
+      "f": "pt_ground/R209R0104.png",
+      "at": [
+       0,
+       1
       ]
      }
     },
@@ -276171,7 +276192,12 @@
    "Old woman ": 4
   },
   "fog": "defog",
-  "theme": "tower"
+  "theme": "tower",
+  "fog_floors": [
+   2,
+   3,
+   4
+  ]
  },
  "SOLACEON_RUINS": {
   "floors": [
