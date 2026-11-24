@@ -86,9 +86,9 @@ class StoryManager:
     # ---- Regional storage --------------------------------------------------------------
     # Each region has its own party, PC and bag, so a new region starts fresh (key items too).
     # Becoming Champion of a second region links those regions' storage into one; every later
-    # title joins it. Sub-regions use their region's storage; the Orange Islands and Orre use
-    # the region they're reached from ("storage_region" in REGION_START). Money and Poke Balls
-    # are shared everywhere.
+    # title joins it. Sub-regions use their region's storage; the Orange Islands and Orre are regions of
+    # their own with their own (a REGION_START "storage_region" would share another's). Money is shared
+    # everywhere; Poke Balls live in each region's own Bag.
     LINKED = "LINKED"
     CARRY_ITEMS = {"SS_TICKET", "MYSTIC_TICKET", "AURORA_TICKET", "GS_BALL"}  # travel tickets go with you between regions' Bags (the far islands' from Lilycove); the GS Ball too, from Ivy in Orange to Kurt in Johto (Journeys, Jordan 11-24)
 

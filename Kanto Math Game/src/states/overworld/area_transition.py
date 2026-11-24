@@ -11,7 +11,7 @@ from src.config import BLACK
 
 
 # Jordan: only LONG rides between two regions/sub-regions heal (ships, the Seagallop to and from
-# Kanto, the Magnet Train, the Hoenn-Orre plane, the Decolore ferry): "long_ride": true on the
+# Kanto, the Magnet Train, the Decolore ferry): "long_ride": true on the
 # travel option. Island hops inside a region or sub-region are plain, decorative trips.
 TRAVEL_HEAL_LINES = {
     "long_ride": ["Your Pokemon rested during the long trip.", "Your team is fully healed!"],

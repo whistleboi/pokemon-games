@@ -327,7 +327,7 @@ class RegionSelectionState(GameState):
 
     COLS = 3
     # The side areas each region opens up later (shown on its card).
-    SUB_REGIONS = {"KANTO": ("Sevii Islands",), "HOENN": ("Orre",),
+    SUB_REGIONS = {"KANTO": ("Sevii Islands",),   # (Orre is a region of its own now, with its own card)
                    "SINNOH": ("Hisui",), "UNOVA": ("Decolore Islands",),
                    "GALAR": ("Isle of Armor", "Crown Tundra"), "PALDEA": ("Kitakami", "Blueberry Academy")}
 
