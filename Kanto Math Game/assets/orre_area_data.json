@@ -309,6 +309,16 @@
             }
           },
           "condition": "xd_st_egrog"
+        },
+        {
+          "text": "GYM LEADER MISTY",
+          "action": "EVENT",
+          "color": "GOLD",
+          "condition": "beat_orre_champion",
+          "event": {
+            "world": "orre_gym",
+            "rematch": true
+          }
         }
       ],
       "travel_options": [
@@ -510,6 +520,61 @@
             "player_lost": [
               "Misty: Too wet behind the ears! Come back when you've dried off."
             ]
+          },
+          "orre_rematch": {
+            "team": [
+              351,
+              272,
+              260,
+              145,
+              245,
+              121
+            ],
+            "levels": [
+              60,
+              60,
+              61,
+              61,
+              62,
+              62
+            ],
+            "team_moves": [
+              [
+                "FIRE-BLAST",
+                "BLIZZARD",
+                "HYDRO-PUMP",
+                "WEATHER-BALL"
+              ],
+              [
+                "FAKE-OUT",
+                "RAIN-DANCE",
+                "BUBBLE-BEAM"
+              ],
+              [
+                "ENDEAVOR",
+                "SCREECH",
+                "MUDDY-WATER",
+                "AMNESIA"
+              ],
+              [
+                "DETECT",
+                "THUNDER",
+                "RAIN-DANCE",
+                "DRILL-PECK"
+              ],
+              [
+                "MIRROR-COAT",
+                "SURF",
+                "EXTRASENSORY",
+                "CRUNCH"
+              ],
+              [
+                "COSMIC-POWER",
+                "RAPID-SPIN",
+                "SWIFT",
+                "LIGHT-SCREEN"
+              ]
+            ]
           }
         },
         "requirements": {
@@ -618,6 +683,16 @@
               "Lately Cipher's been running things from The Under, the old city below us.",
               "Clear them out and Agate Village will want to meet you."
             ]
+          }
+        },
+        {
+          "text": "GYM LEADER DUKING",
+          "action": "EVENT",
+          "color": "GOLD",
+          "condition": "beat_orre_champion",
+          "event": {
+            "world": "orre_gym",
+            "rematch": true
           }
         }
       ],
@@ -852,6 +927,62 @@
             ],
             "player_lost": [
               "Duking: Not bad, kid. Train up and come see me again."
+            ]
+          },
+          "orre_rematch": {
+            "team": [
+              68,
+              286,
+              68,
+              214,
+              68,
+              308
+            ],
+            "levels": [
+              61,
+              61,
+              62,
+              62,
+              63,
+              63
+            ],
+            "team_moves": [
+              [
+                "CROSS-CHOP",
+                "DYNAMIC-PUNCH",
+                "SEISMIC-TOSS",
+                "BULK-UP"
+              ],
+              [
+                "FOCUS-PUNCH",
+                "DYNAMIC-PUNCH",
+                "BRICK-BREAK",
+                "COUNTER"
+              ],
+              [
+                "CROSS-CHOP",
+                "DYNAMIC-PUNCH",
+                "SEISMIC-TOSS",
+                "BULK-UP"
+              ],
+              [
+                "MEGAHORN",
+                "SWORDS-DANCE",
+                "THRASH",
+                "PIN-MISSILE"
+              ],
+              [
+                "CROSS-CHOP",
+                "DYNAMIC-PUNCH",
+                "SEISMIC-TOSS",
+                "BULK-UP"
+              ],
+              [
+                "COUNTER",
+                "RECOVER",
+                "PSYCH-UP",
+                "HIGH-JUMP-KICK"
+              ]
             ]
           }
         },
@@ -3127,6 +3258,62 @@
             "player_lost": [
               "Blaine: Burned out already? Come back with a hotter team!"
             ]
+          },
+          "orre_rematch": {
+            "team": [
+              103,
+              146,
+              3,
+              244,
+              351,
+              250
+            ],
+            "levels": [
+              62,
+              62,
+              63,
+              63,
+              64,
+              64
+            ],
+            "team_moves": [
+              [
+                "BULLET-SEED",
+                "EXTRASENSORY",
+                "UPROAR",
+                "SYNTHESIS"
+              ],
+              [
+                "ENDURE",
+                "SUNNY-DAY",
+                "HEAT-WAVE",
+                "ANCIENT-POWER"
+              ],
+              [
+                "SOLAR-BEAM",
+                "SYNTHESIS",
+                "SWEET-SCENT",
+                "TAKE-DOWN"
+              ],
+              [
+                "SWAGGER",
+                "EXTRASENSORY",
+                "CRUNCH",
+                "SCARY-FACE"
+              ],
+              [
+                "FIRE-BLAST",
+                "BLIZZARD",
+                "HYDRO-PUMP",
+                "WEATHER-BALL"
+              ],
+              [
+                "SUNNY-DAY",
+                "RECOVER",
+                "EXTRASENSORY",
+                "CALM-MIND"
+              ]
+            ]
           }
         },
         "requirements": {
@@ -3190,6 +3377,16 @@
               "orre_beat_skrub",
               "orre_dakim_mt_battle"
             ]
+          }
+        },
+        {
+          "text": "GYM LEADERS BLAINE & ERIKA",
+          "action": "EVENT",
+          "color": "GOLD",
+          "condition": "beat_orre_champion",
+          "event": {
+            "world": "orre_gym",
+            "rematch": true
           }
         }
       ],
@@ -11549,6 +11746,62 @@
             "player_lost": [
               "Jasmine: The light stays on for you. Come back when you're ready."
             ]
+          },
+          "orre_rematch": {
+            "team": [
+              208,
+              227,
+              385,
+              376,
+              82,
+              101
+            ],
+            "levels": [
+              64,
+              64,
+              65,
+              65,
+              66,
+              66
+            ],
+            "team_moves": [
+              [
+                "DOUBLE-EDGE",
+                "IRON-TAIL",
+                "DIG",
+                "SANDSTORM"
+              ],
+              [
+                "IRON-DEFENSE",
+                "SPIKES",
+                "METAL-SOUND",
+                "DRILL-PECK"
+              ],
+              [
+                "REST",
+                "METEOR-MASH",
+                "PSYCHIC",
+                "SWIFT"
+              ],
+              [
+                "IRON-DEFENSE",
+                "METEOR-MASH",
+                "SCARY-FACE",
+                "PSYCHIC"
+              ],
+              [
+                "ZAP-CANNON",
+                "LOCK-ON",
+                "LIGHT-SCREEN",
+                "METAL-SOUND"
+              ],
+              [
+                "MIRROR-COAT",
+                "EXPLOSION",
+                "LIGHT-SCREEN",
+                "SELF-DESTRUCT"
+              ]
+            ]
           }
         },
         "requirements": {
@@ -15253,6 +15506,61 @@
             "player_lost": [
               "Pryce: The cold is patient. Come back when you are ready."
             ]
+          },
+          "orre_rematch": {
+            "team": [
+              351,
+              144,
+              221,
+              362,
+              378,
+              38
+            ],
+            "levels": [
+              63,
+              63,
+              64,
+              64,
+              65,
+              65
+            ],
+            "team_moves": [
+              [
+                "FIRE-BLAST",
+                "BLIZZARD",
+                "HYDRO-PUMP",
+                "WEATHER-BALL"
+              ],
+              [
+                "HAZE",
+                "ICE-BEAM",
+                "ANCIENT-POWER",
+                "AGILITY"
+              ],
+              [
+                "BLIZZARD",
+                "EARTHQUAKE",
+                "TAKE-DOWN",
+                "AMNESIA"
+              ],
+              [
+                "CRUNCH",
+                "WEATHER-BALL",
+                "BITE",
+                "ICY-WIND"
+              ],
+              [
+                "LOCK-ON",
+                "SUPERPOWER",
+                "BLIZZARD",
+                "AMNESIA"
+              ],
+              [
+                "QUICK-ATTACK",
+                "FLAMETHROWER",
+                "TAIL-WHIP"
+              ]
+            ]
           }
         },
         "requirements": {
@@ -15829,7 +16137,12 @@
           "text": "GYM LEADER PRYCE",
           "action": "EVENT",
           "color": "GOLD",
-          "condition": "not:orre_part2",
+          "condition": {
+            "any": [
+              "not:orre_part2",
+              "beat_orre_champion"
+            ]
+          },
           "event": {
             "world": "orre_gym"
           }
@@ -16441,6 +16754,62 @@
             ],
             "player_lost": [
               "Norman: Strength is more than power. Think about that, and come back."
+            ]
+          },
+          "orre_rematch": {
+            "team": [
+              128,
+              115,
+              143,
+              242,
+              289,
+              113
+            ],
+            "levels": [
+              65,
+              65,
+              66,
+              66,
+              67,
+              67
+            ],
+            "team_moves": [
+              [
+                "DOUBLE-EDGE",
+                "THRASH",
+                "SWAGGER",
+                "REST"
+              ],
+              [
+                "OUTRAGE",
+                "REVERSAL",
+                "ENDURE",
+                "CRUNCH"
+              ],
+              [
+                "BELLY-DRUM",
+                "AMNESIA",
+                "BODY-SLAM",
+                "CRUNCH"
+              ],
+              [
+                "SOFT-BOILED",
+                "DOUBLE-EDGE",
+                "LIGHT-SCREEN",
+                "HELPING-HAND"
+              ],
+              [
+                "MEGA-KICK",
+                "FLAIL",
+                "COUNTER",
+                "COVET"
+              ],
+              [
+                "SOFT-BOILED",
+                "DOUBLE-EDGE",
+                "LIGHT-SCREEN",
+                "HELPING-HAND"
+              ]
             ]
           }
         },
@@ -18493,6 +18862,60 @@
             ],
             "player_lost": [
               "Birch: The weather turned against you. Study the sky and come back!"
+            ]
+          },
+          "orre_rematch": {
+            "team": [
+              351,
+              351,
+              225,
+              245,
+              80,
+              154
+            ],
+            "levels": [
+              68,
+              68,
+              69,
+              69,
+              70,
+              70
+            ],
+            "team_moves": [
+              [
+                "FIRE-BLAST",
+                "BLIZZARD",
+                "HYDRO-PUMP",
+                "WEATHER-BALL"
+              ],
+              [
+                "FIRE-BLAST",
+                "BLIZZARD",
+                "HYDRO-PUMP",
+                "WEATHER-BALL"
+              ],
+              [
+                "DRILL-PECK",
+                "PRESENT"
+              ],
+              [
+                "RAIN-DANCE",
+                "MIRROR-COAT",
+                "SURF",
+                "EXTRASENSORY"
+              ],
+              [
+                "RAIN-DANCE",
+                "PSYCH-UP",
+                "PSYCHIC",
+                "SURF"
+              ],
+              [
+                "SOLAR-BEAM",
+                "GIGA-DRAIN",
+                "SAFEGUARD",
+                "BODY-SLAM"
+              ]
             ]
           }
         },
@@ -20751,6 +21174,62 @@
             "player_lost": [
               "Drake: The dragons are not done with you. Come back."
             ]
+          },
+          "orre_rematch": {
+            "team": [
+              384,
+              373,
+              130,
+              330,
+              230,
+              149
+            ],
+            "levels": [
+              66,
+              66,
+              67,
+              67,
+              68,
+              68
+            ],
+            "team_moves": [
+              [
+                "FLY",
+                "REST",
+                "HYPER-VOICE",
+                "EXTREME-SPEED"
+              ],
+              [
+                "FLAMETHROWER",
+                "FOCUS-ENERGY",
+                "DRAGON-CLAW",
+                "CRUNCH"
+              ],
+              [
+                "HYPER-BEAM",
+                "THRASH",
+                "HYDRO-PUMP",
+                "DRAGON-DANCE"
+              ],
+              [
+                "UPROAR",
+                "EARTHQUAKE",
+                "SANDSTORM",
+                "SCREECH"
+              ],
+              [
+                "RAIN-DANCE",
+                "DRAGON-DANCE",
+                "HYDRO-PUMP",
+                "WATER-PULSE"
+              ],
+              [
+                "DRAGON-DANCE",
+                "RAIN-DANCE",
+                "SAFEGUARD",
+                "OUTRAGE"
+              ]
+            ]
           }
         },
         "requirements": {
@@ -22985,6 +23464,16 @@
           "condition": "not:has_citadark_badge",
           "event": {
             "world": "orre_gym"
+          }
+        },
+        {
+          "text": "GYM LEADER DRAKE (REMATCH)",
+          "action": "EVENT",
+          "color": "GOLD",
+          "condition": "beat_orre_champion",
+          "event": {
+            "world": "orre_gym",
+            "rematch": true
           }
         },
         {

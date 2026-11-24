@@ -76,6 +76,12 @@
     ]
   },
   "figures": {
+    "AGATE_VILLAGE:GYM LEADERS BLAINE & ERIKA": {"sheet": "orre_trainer_leader_erika.png"},
+    "PYRITE_TOWN:GYM LEADER DUKING": {"sheet": "orre_npc_duking.png"},
+    "PHENAC_CITY:GYM LEADER MISTY": {"sheet": "orre_trainer_leader_misty.png"},
+    "XD_CITADARK_ISLE:GYM LEADER DRAKE (REMATCH)": {
+      "sheet": "orre_trainer_leader_drake.png"
+    },
     "AGATE_VILLAGE:Marine Cave": {
       "sheet": "orre_pokemon_abra_line.png"
     },

@@ -323713,7 +323713,7 @@
      "c...ccccccc...c",
      "c......N......c",
      "c.............c",
-     "c..c..........c",
+     "c..c......N...c",
      "cc...c...c...cc",
      "cc...c...c...cc",
      "cccccccvccccccc",
@@ -323748,7 +323748,8 @@
         ]
        }
       }
-     }
+     },
+     "GYM LEADER MISTY"
     ],
     "signs": [],
     "roofs": {
@@ -326573,7 +326574,7 @@
      "c...ccccccc...c",
      "c......N......c",
      "c.............c",
-     "c..^..........c",
+     "c..^......N...c",
      "cc...c...c...cc",
      "cc...c...c...cc",
      "cccccccvccccccc",
@@ -326606,7 +326607,8 @@
         ]
        }
       }
-     }
+     },
+     "GYM LEADER DUKING"
     ],
     "signs": [],
     "roofs": {
@@ -328823,7 +328825,7 @@
      "cccccc...c.....c...cccc",
      "cccc..c.....NN......ccc",
      "ccc.................ccc",
-     "c^..................ccc",
+     "c^.........N........ccc",
      "ccc...................c",
      "cc....c..c.....c..ccc.c",
      "cc.ccc........c.ccccccc",
@@ -328846,7 +328848,8 @@
         "Blaine: Erika talks; I battle. Well - we both battle. Ready when she is!"
        ]
       }
-     }
+     },
+     "GYM LEADERS BLAINE & ERIKA"
     ],
     "signs": [],
     "roofs": {
@@ -340657,7 +340660,7 @@
      ".........c..c..c............c",
      ".........c..c..c..cc.....cc.c",
      ".........c...............c..c",
-     ".........cc...........N.....c",
+     ".........cc........N..N.....c",
      ".........1..................c",
      ".........c..................c",
      ".........c..................c",
@@ -340687,6 +340690,7 @@
     },
     "parts": true,
     "people": [
+     "GYM LEADER DRAKE (REMATCH)",
      [
       "GYM LEADER DRAKE",
       "GRAND MASTER GREEVIL"
@@ -340919,6 +340923,7 @@
    "Cipher R&D Loket": 5,
    "GYM LEADER DRAKE": 6,
    "GRAND MASTER GREEVIL": 6,
+   "GYM LEADER DRAKE (REMATCH)": 6,
    "FULL RESTORES (TERRA)": 7,
    "ELIXIRS (TERRA)": 7,
    "Team Magma Grunt": 7,
