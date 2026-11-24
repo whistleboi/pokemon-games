@@ -35,7 +35,8 @@ def icon(kind, fname):
     """A CSS class for one sprite (embedded once)."""
     if not fname:
         return ""
-    path = os.path.join(SPR, "icons" if kind == "p" else "items", fname)
+    path = (os.path.join(F.A, "badges", fname) if kind == "b"
+            else os.path.join(SPR, "icons" if kind == "p" else "items", fname))
     if not os.path.exists(path):
         return ""
     cls = kind + re.sub(r"[^a-z0-9]", "_", fname.lower().rsplit(".", 1)[0])
@@ -93,18 +94,23 @@ def mon_cell(r):
 
 # ---------------------------------------------------------------- the story level cap (src/world/levels.py)
 _LV = open(os.path.join(F.ROOT, "src", "world", "levels.py"), encoding="utf-8").read()
-GYM_ACE = eval(re.search(r'"KANTO": (\[[\d, ]+\])', _LV).group(1))
-CHAMP_ACE = int(re.search(r'CHAMPION_ACE = \{"KANTO": (\d+)', _LV).group(1))
 CAP_OVER = int(re.search(r"CAP_OVER_ACE = (\d+)", _LV).group(1))
 LIFT_BELOW = int(re.search(r"CAP_LIFT_BELOW = (\d+)", _LV).group(1))
 LIFT_ABOVE = int(re.search(r"CAP_LIFT_ABOVE = (\d+)", _LV).group(1))
-REMATCH_FLOOR = int(re.search(r'LEAGUE_REMATCH_FLOOR = \{"KANTO": (\d+)', _LV).group(1))
-CAP = {"badges": 0, "post": False}   # set as the parts go, by {{badges:N}} / {{badges:post}}
+CAP = {"badges": 0, "post": False, "region": "KANTO"}   # set as the parts go, by {{badges:N}} / {{badges:post}}
+
+
+def _table(name, region):
+    """levels.py's per-region table entry: GYM_ACE (a list), CHAMPION_ACE / LEAGUE_REMATCH_FLOOR (a number)."""
+    block = _LV[_LV.index(name + " = {"):]
+    m = re.search(rf'"{region}": (\[[\d, ]+\]|\d+)', block[:block.index("}") + 1])
+    return eval(m.group(1))
 
 
 def story_ace(badges):
     """levels.story_ace: the next Leader's ace (never lower than an earlier one), the Champion's with all eight."""
-    return max(GYM_ACE[:badges + 1]) if badges < len(GYM_ACE) else CHAMP_ACE
+    aces = _table("GYM_ACE", CAP["region"])
+    return max(aces[:badges + 1]) if badges < len(aces) else _table("CHAMPION_ACE", CAP["region"])
 
 
 def cap_band(f):
@@ -129,7 +135,7 @@ def at_cap(r, band, fixed_land):
 def cap_html():
     if CAP["post"]:
         return ('<div class="note cap"><b>Level cap: your team.</b> After the title the cap follows your own team: it\'s your '
-                f'highest level, and never below Lv {REMATCH_FLOOR}. Wild Pokémon stay at each place\'s own level, and '
+                f'highest level, and never below Lv {_table("LEAGUE_REMATCH_FLOOR", CAP["region"])}. Wild Pokémon stay at each place\'s own level, and '
                 'trainers keep their own levels.</div>')
     n = CAP["badges"]
     ace = story_ace(n)
@@ -141,7 +147,7 @@ def cap_html():
 
 def captable_html():
     """The cap for each badge count, with the Leader usually next (levels.GYM_ORDER) and his best Pokemon."""
-    order = re.findall(r'"([A-Z_]+)"', re.search(r'"KANTO": \[([^\]]+)\]', _LV[_LV.index("GYM_ORDER"):]).group(1))
+    order = re.findall(r'"([A-Z_]+)"', re.search(rf'"{CAP["region"]}": \[([^\]]+)\]', _LV[_LV.index("GYM_ORDER"):]).group(1))
     rows = []
     for n in range(9):
         ace = story_ace(n)
@@ -161,12 +167,19 @@ def wild_table(rows, caption, water=False, band=None, fixed_land=False):
     if not rows:
         return ""
     cap_col = band is not None
+    times = any(r.get("times") for r in rows)   # (HGSS's morning / day / night tables: a rate for each)
+    tt = ("Morning", "Day", "Night")
+
+    def rates(r):
+        if times:
+            return "".join(f'<td class="rate">{rate(r["times"][t]) if r.get("times", {}).get(t) else "—"}</td>' for t in tt)
+        return f'<td class="rate">{rate(r["rate"])}</td>'
     body = "".join(f'<tr><td>{mon_cell(r)}</td><td><span class="how">{esc(r["how"])}</span></td><td>{lv(r)}</td>'
                    + (f'<td>{at_cap(r, band, fixed_land)}</td>' if cap_col else "")
-                   + f'<td class="rate">{rate(r["rate"])}</td></tr>' for r in rows)
+                   + rates(r) + '</tr>' for r in rows)
     return (f'<div class="frame{" water" if water else ""}"><table><caption>{esc(caption)}</caption>'
             '<thead><tr><th>Pokémon</th><th>How</th><th>Levels</th>' + ("<th>At the cap</th>" if cap_col else "")
-            + '<th>Rate</th></tr></thead>'
+            + ("".join(f"<th>{t}</th>" for t in tt) if times else '<th>Rate</th>') + '</tr></thead>'
             f'<tbody>{body}</tbody></table></div>')
 
 
@@ -179,8 +192,10 @@ def wild_html(f):
         out.append(wild_table(w["land"], "Available Pokémon", band=band, fixed_land=fixed))
     for z in w["zones"]:
         out.append(wild_table(z["rows"], f"Available Pokémon: {z['zone']}", band=band, fixed_land=fixed))
-    if w["trees"]:
-        out.append(wild_table(w["trees"], "Headbutt trees", band=band, fixed_land=fixed))
+    for how, cap in (("Headbutt", "Headbutt trees"), ("Rock Smash", "Rock Smash")):
+        rows = [r for r in w["trees"] if r["how"] == how]
+        if rows:
+            out.append(wild_table(rows, cap, band=band, fixed_land=fixed))
     if w["water"]:
         out.append(wild_table(w["water"], "On the water" if (w["land"] or w["zones"]) else "Available Pokémon (water)", water=True,
                               band=band, fixed_land=fixed))
@@ -296,7 +311,7 @@ def trainers_html(f, room=None):
     room's / floor's ({{trainers:KEY:Title}}). Leaders, rivals and story battles get boxes instead."""
     picked = []
     for t in all_trainers(f):
-        if t["where"] in ("Gym Leader", "Gym") or t.get("class") in ("GYM_LEADER", "RIVAL", "CHAMPION", "ELITE_FOUR", "ROCKET_LEADER", "ROCKET_BOSS"):
+        if t["where"] == "Gym Leader" or t.get("class") in ("GYM_LEADER", "RIVAL", "CHAMPION", "ELITE_FOUR", "ROCKET_LEADER", "ROCKET_BOSS"):
             continue
         if id(t) in BOXED:
             continue   # (it has its own battle box somewhere in the walkthrough)
@@ -343,10 +358,12 @@ def reward_words(t):
     for k, v in (t.get("reward_keys") or {}).items():
         if k == "message":
             continue
-        nm = F.item_name(k)
+        mm = re.match(r"^(?:POKEMON_?)?(\d+)$", str(k))
+        nm = F.mon_name(mm.group(1)) if mm else F.item_name(k)
         out.append(f"{nm} ×{v}" if isinstance(v, int) and v > 1 else nm)
     if t.get("badge"):
-        out.insert(0, f"the {t['badge'].title()} Badge")
+        b = t["badge"].replace("_", " ").title()
+        out.insert(0, f"the {b}" if b.endswith("badge") or b.endswith("Badge") else f"the {b} Badge")
     return ", ".join(out)
 
 
@@ -611,6 +628,9 @@ CSS = open(os.path.join(HERE, "page.css"), encoding="utf-8").read()
 def prepare(region, only=None):
     """Facts, "when" lines, place anchors and boxed trainers for a region's parts; returns the part files to build."""
     global FACTS, WHEN
+    CAP.update(badges=0, post=False, region=region.upper())   # (each region from scratch: the site builds them in turn)
+    PLACE_ID.clear()
+    BOXED.clear()
     keys = [k for r in (["KANTO", "SEVII"] if region == "kanto" else [region.upper()]) for k in F.region_keys(r)]
     FACTS = {k: F.place(k) for k in keys}
     WHEN = {}

@@ -56,8 +56,26 @@ for k, v in SEVII.items():
         continue
     else:
         DATA[k] = v
+JOHTO = load("johto_area_data.json")
+for k, v in JOHTO.items():   # (Johto's own file: its places, pools and missions; shared tables merged, Kanto's kept)
+    if k == "STORY_PROGRESSION":
+        DATA[k] = dict(DATA[k], **v)
+    elif k == "JOURNAL_MISSIONS":
+        continue
+    elif isinstance(v, dict) and isinstance(DATA.get(k), dict):
+        DATA[k] = dict(v, **DATA[k])
+    elif k not in DATA:
+        DATA[k] = v
 PLACES = DATA["STORY_PROGRESSION"]
-MISSIONS = AREA["GAME_CONFIG"]["JOURNAL_MISSIONS"] + SEVII.get("JOURNAL_MISSIONS", [])
+MISSIONS = AREA["GAME_CONFIG"]["JOURNAL_MISSIONS"] + SEVII.get("JOURNAL_MISSIONS", []) + JOHTO.get("JOURNAL_MISSIONS", [])
+
+
+def region_of(key):
+    if key in SEVII["STORY_PROGRESSION"]:
+        return "SEVII"
+    if key in JOHTO["STORY_PROGRESSION"]:
+        return "JOHTO"
+    return "KANTO"
 MAPS = load("town_maps.json")
 LEVELS = load("area_levels.json")
 EVO = load("pokemon_levels.json")
@@ -216,7 +234,7 @@ def later(r, region):
         return FORM_HOME[r["form"]]
     n = int(pid)
     native = next((reg for top, reg in REGION_OF_DEX if n <= top), None)
-    if native in (None, "KANTO") or (native == "JOHTO" and region == "SEVII"):
+    if native in (None, "KANTO") or (native == "JOHTO" and region in ("SEVII", "JOHTO")):
         return None
     return native
 
@@ -287,14 +305,29 @@ def wild(key):
     same_as_sea = base and p.get("surf_pool_percentages") and DATA.get(base) == DATA.get(p["surf_pool_percentages"]) and not has_grass(key)
     if same_as_sea:
         out["notes"].append("land pool is the same as the Surf pool on a map with no grass: shown once, as Surfing")
-    if base and DATA.get(base) and not zp and not same_as_sea:
+    times = {t: DATA.get(p.get(f"{t.lower()}_pool_percentages")) for t in ("Morning", "Day", "Night")}
+    if any(times.values()) and not zp:
+        # HGSS's morning (4:00-9:59), day and night (20:00-5:59) tables (route_encounters._base_wild_pool): one row per
+        # Pokemon with its rate at each time; a missing time falls back to the area's usual table
+        fallback = DATA.get(base) or {}
+        times = {t: (pool or (times["Day"] if t == "Morning" else None) or fallback) for t, pool in times.items()}
+        rows = {}
+        for t, pool in times.items():
+            for r in with_forms(rows_of(pool, land_kind(p, key), band), p):
+                e = rows.setdefault((r["id"], r.get("form")), dict(r, times={}))
+                e["times"][t] = r["rate"]
+        out["land"] = sorted(rows.values(), key=lambda r: -sum(r["times"].values()))
+        for r in out["land"]:
+            r["rate"] = max(r["times"].values())
+        out["land_pool"] = base
+    elif base and DATA.get(base) and not zp and not same_as_sea:
         out["land"] = with_forms(rows_of(DATA[base], land_kind(p, key), band), p)
         out["land_pool"] = base
         if zones:
             out["notes"].append("zones (floors) share one pool: " + ", ".join(fix(z.get("name", "")) for z in zones))
-    for tk in ("day_pool_percentages", "night_pool_percentages", "morning_pool_percentages"):
-        if p.get(tk):
-            out["notes"].append(f"{tk}: {p[tk]} (not in the table)")
+    rs = DATA.get(p.get("rock_smash_pool_percentages"))
+    if rs:
+        out["trees"] += rows_of(rs, "Rock Smash", band)
     gp = p.get("grass_pool_percentages")
     if gp and DATA.get(gp):
         out["land"] += with_forms(rows_of(DATA[gp], "Grass", band), p)
@@ -320,17 +353,18 @@ def wild(key):
                     e["lv"] = [min(e["lv"][0], lv), max(e["lv"][1], lv)]
             for s, e in sorted(merged.items(), key=lambda kv: -kv[1]["rate"]):
                 out["water"].append({"id": s, "how": label, "lv": e["lv"], "rate": e["rate"], "pool": n})
-    if p.get("has_trees"):
+    if p.get("has_trees") and any(isinstance(e, dict) and e.get("action") == "HEADBUTT" for e in p.get("route_menu") or []):
+        # (dungeon.py: a tree gives HEADBUTT only when the area has that button; Route 29 has trees but no button)
         tp = p.get("tree_pool") or "KANTO_ROUTE_TREE_PERCENTAGES"
         for n in (tp if isinstance(tp, list) else [tp]):
             pool = DATA.get(n) or DATA.get("KANTO_ROUTE_TREE_PERCENTAGES")
             share = 1.0 / (len(tp) if isinstance(tp, list) else 1)
             for r in rows_of(pool, "Headbutt", band):
                 r["rate"] *= share
-                r["ours"] = True
+                r["ours"] = region_of(key) != "JOHTO"   # (HGSS has Headbutt trees; FireRed doesn't)
                 out["trees"].append(r)
         out["tree_pool"] = tp
-    region = "SEVII" if key in SEVII["STORY_PROGRESSION"] else "KANTO"
+    region = region_of(key)
     for r in out["land"] + out["water"] + out["trees"] + [r for z in out["zones"] for r in z["rows"]]:
         r["name"] = mon_name(r["id"]) if not r.get("form") else f"{FORM_WORD.get(r['form'], r['form'].title())} {mon_name(r['id'])}"
         r["icon"] = f"{base_id(r['id'])}.png"
@@ -462,6 +496,22 @@ def scan_map(m, by, where, facts):
     return people
 
 
+_LV = open(os.path.join(ROOT, "src", "world", "levels.py"), encoding="utf-8").read()
+
+
+def gym_levels(key, size):
+    """levels.gym_team_levels for a Gym trainer: the Gym's ace (GYM_ACE by its place in GYM_ORDER) - 4, then 2 lower for
+    each Pokemon before the last. None when the place isn't one of its region's Gyms."""
+    region = region_of(key)
+    m = re.search(rf'"{region}": \[([^\]]+)\]', _LV[_LV.index("GYM_ORDER"):])
+    order = re.findall(r'"([A-Z_]+)"', m.group(1)) if m else []
+    a = re.search(rf'"{region}": (\[[\d, ]+\])', _LV[_LV.index("GYM_ACE = {"):])
+    if key not in order or not a:
+        return None
+    ace = eval(a.group(1))[order.index(key)] - 4
+    return [max(2, ace - (size - 1 - i) * 2) for i in range(size)]
+
+
 def place(key):
     p = PLACES.get(key) or {}
     m = MAPS.get(key) or {}
@@ -483,12 +533,23 @@ def place(key):
                                             "signs": deep_fix(fl.get("signs") or []), "scenes": deep_fix(fl.get("scenes") or []),
                                             "barred": deep_fix(fl.get("barred") or [])}
     for rk, r in (m.get("rooms") or {}).items():
-        title = fix(r.get("title") or rk)
+        title = fix(r.get("title") or rk.replace("_", " ").title())
         rf = {"title": title, "people": scan_map(r, by, title, facts), "signs": deep_fix(r.get("signs") or []),
               "scenes": deep_fix(r.get("scenes") or []), "barred": deep_fix(r.get("barred") or [])}
         facts["rooms"][rk] = rf
     # every other team in the place's data (rivals in trainer_pool / on_enter_event, scene battles), once each
     seen = {(t["name"], tuple(m["id"] for m in t["team"])) for t in facts["trainers"] + facts["battles"]}
+    # a walked area's other trainer_pool trainers stand on free tiles of its map (dungeon.py: every pool trainer that
+    # story.trainer_on_map allows), so they're on the map too - rivals, villains and story battles aside
+    if p.get("area_type") != "town":
+        for t in p.get("trainer_pool") or []:
+            special = (t.get("is_boss_battle") or t.get("victory_flag") or t.get("villain")
+                       or any(w in str(t.get("class", "")).upper() for w in ("RIVAL", "LEADER", "ELITE", "CHAMPION")))
+            tt = team(t, "on the map")
+            k = (tt["name"], tuple(m["id"] for m in tt["team"]))
+            if not special and k not in seen and tt["team"]:
+                seen.add(k)
+                facts["trainers"].append(dict(tt, spot=True))
     extra = []
     scene_battles({k: v for k, v in p.items() if k != "gym"}, "story data", extra)
     scene_battles({k: v for k, v in (p.get("gym") or {}).items() if k not in ("trainers", "leader")}, "story data", extra)
@@ -498,6 +559,24 @@ def place(key):
             seen.add(k)
             t["where"] = "story / trainer pool (not on a map spot)"
             facts["battles"].append(t)
+    # a team with no levels in the data gets the game's own (levels.trainer_team_levels): the area's level, + 0-1 on the
+    # first routes (below Lv 8) or + 1-3, for its last Pokemon, one less for each before it; a boss the area's level + 4
+    base = area_level(key)
+    for t in facts["trainers"] + facts["battles"]:
+        n = len(t["team"])
+        if n and t["where"] == "Gym" and all(m.get("lv") is None for m in t["team"]):
+            gl = gym_levels(key, n)   # (a Gym's own trainers: gym_lobby -> levels.gym_team_levels, the Gym's ace - 4, 2 apart)
+            if gl:
+                for m, lv in zip(t["team"], gl):
+                    m["lv"] = lv
+                continue
+        if n and all(m.get("lv") is None for m in t["team"]) and not any(str(m["id"]) in PLACEHOLDER for m in t["team"]):
+            boss = (t.get("boss") and t["where"] != "Gym") or t["where"] == "Gym Leader"   # (gym_lobby: Gym trainers at the plain rule)
+            tops = [base + 4] if boss else ([base, base + 1] if base < 8 else [base + 1, base + 3])
+            for i, m in enumerate(t["team"]):
+                lo, hi = (max(2, tp - (n - 1 - i)) for tp in (tops[0], tops[-1]))
+                m["lv"] = f"{lo}" if lo == hi else f"{lo}–{hi}"
+            t["lv_rule"] = True
     facts["travel"] = deep_fix(p.get("travel_options"))
     facts["on_enter"] = deep_fix(p.get("on_enter_event"))
     facts["missions"] = [deep_fix(x) for x in MISSIONS if x.get("target") == key]
@@ -508,10 +587,11 @@ def sheet(f):
     """A readable fact sheet for one place."""
     L = [f"# {f['name']} ({f['key']})  type={f['type']}  area level={f['level']}", f"exits: {f['exits']}"]
     w = f["wild"]
-    for title, rows in (("LAND", w["land"]), ("WATER", w["water"]), ("HEADBUTT (ours, needs Rocky Helmet)", w["trees"])):
+    for title, rows in (("LAND", w["land"]), ("WATER", w["water"]), ("HEADBUTT / ROCK SMASH", w["trees"])):
         if rows:
             L.append(f"## {title}")
             L += [f"  {r['name']:<22} {r['how']:<10} Lv {r['lv'][0]}-{r['lv'][1]}  {r['rate']:.1f}%" + (" (ours)" if r.get('ours') else "")
+                  + (" [" + ", ".join(f"{t} {v:.0f}%" for t, v in r["times"].items()) + "]" if r.get("times") else "")
                   + (f" (only after you've played {r['after'].title()})" if r.get('after') else "") for r in rows]
     for z in w["zones"]:
         L.append(f"## ZONE {z['zone']}")
@@ -579,14 +659,16 @@ def region_keys(region):
     sevii = set(SEVII["STORY_PROGRESSION"])
     if region == "SEVII":
         return [k for k in MAPS if k in sevii]
-    kanto = set(AREA["STORY_PROGRESSION"]) - sevii
+    if region == "JOHTO":
+        return [k for k in MAPS if k in JOHTO["STORY_PROGRESSION"]]
+    kanto = set(AREA["STORY_PROGRESSION"]) - sevii - set(JOHTO["STORY_PROGRESSION"])
     return [k for k in MAPS if k in kanto and (AREA["STORY_PROGRESSION"][k].get("region") in (None, "KANTO"))]
 
 
 if __name__ == "__main__":
     region, out = sys.argv[1].upper(), sys.argv[2]
     os.makedirs(os.path.join(out, "sheets"), exist_ok=True)
-    keys = [k for r in (["KANTO", "SEVII"] if region == "ALL" else [region]) for k in region_keys(r)]
+    keys = [k for r in (["KANTO", "SEVII"] if region == "ALL" else ["KANTO", "SEVII", "JOHTO"] if region == "EVERY" else [region]) for k in region_keys(r)]
     allf = {}
     for k in keys:
         f = place(k)

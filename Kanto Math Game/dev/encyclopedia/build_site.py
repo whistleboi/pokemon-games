@@ -20,8 +20,9 @@ sys.path.insert(0, HERE)
 import build as B   # noqa: E402
 import facts as F   # noqa: E402
 
-REGIONS = [("kanto", "Kanto + Sevii Islands", "FireRed and LeafGreen, with HeartGold/SoulSilver and Yellow extras")]
-LATER = ["Johto", "Orange Islands", "Hoenn", "Sinnoh", "Unova", "Orre"]
+REGIONS = [("kanto", "Kanto + Sevii Islands", "FireRed and LeafGreen, with HeartGold/SoulSilver and Yellow extras"),
+           ("johto", "Johto", "HeartGold and SoulSilver, on SoulSilver's maps, with Crystal extras")]
+LATER = ["Orange Islands", "Hoenn", "Sinnoh", "Unova", "Orre"]
 IMPORTANT = ("GYM_LEADER", "ELITE_FOUR", "CHAMPION", "RIVAL", "ROCKET_LEADER")
 
 
@@ -127,6 +128,37 @@ def connections(k, f):
     return out
 
 
+# The region boxes (like Bulbapedia's): badges, then Settlements / Routes / Landmarks, then the regions you can reach.
+NAV = {"kanto": [("Kanto", "KANTO", "kanto", "Settlements", ["Sevii Islands", "Johto"]),
+                 ("Sevii Islands", "SEVII", None, "Islands", ["Kanto"])],
+       "johto": [("Johto", "JOHTO", "johto", "Settlements", ["Kanto"])]}
+
+
+def navboxes(region, places, first_part):
+    out = []
+    for title, reg, badges, towns_word, access in NAV.get(region, []):
+        keys = [k for k in F.region_keys(reg) if k in places]
+        keys.sort(key=lambda k: (first_part.get(k, 99), F.region_keys(reg).index(k)))
+        towns, routes, marks = [], [], []
+        for k in keys:
+            m = re.search(r"ROUTE_(\d+)(_\w+)?$", k)
+            if m and not m.group(2):
+                routes.append([int(m.group(1)), k])
+            elif m:
+                continue   # (Route 10's south half: Route 10's own page covers it in the list)
+            elif (F.PLACES.get(k) or {}).get("area_type") == "town" and re.search(r"(Town|City|Island|Plateau)$", places[k]["name"]):
+                towns.append(k)
+            else:
+                marks.append(k)
+        groups = [[towns_word, [[places[k]["name"], k] for k in towns]],
+                  ["Routes", [[str(n), k] for n, k in sorted(routes)]],
+                  ["Landmarks", [[places[k]["name"], k] for k in marks]]]
+        out.append({"title": title, "slug": slug(title), "keys": keys,
+                    "badges": [B.icon("b", f"{badges}_{i}.png") for i in range(1, 9)] if badges else [],
+                    "groups": [g for g in groups if g[1]], "access": access})
+    return out
+
+
 def build_region(region, title):
     pdir, files = B.prepare(region)
     site_ids = {k: place_route(k) for k in B.PLACE_ID}
@@ -165,7 +197,7 @@ def build_region(region, title):
             if not 0 < b <= 1025:
                 continue
             mons.setdefault(b, {"wild": [], "used": []})["wild"].append(
-                {"p": k, "how": r["how"] + (f" ({r['zone']})" if r.get("zone") else ""), "lv": B.lv(r), "rate": B.rate(r["rate"]),
+                {"p": k, "how": r["how"] + (f" ({r['zone']})" if r.get("zone") else ""), "lv": B.lv(r), "rate": (" / ".join(f"{t[0]} {B.rate(v)}" for t, v in r["times"].items()) if r.get("times") else B.rate(r["rate"])),
                  "form": r["name"] if r["name"] != F.mon_name(b) else "", "after": (r.get("after") or "").title(),
                  "ours": bool(r.get("ours") or r.get("after"))})
         for t in B.all_trainers(f):
@@ -188,6 +220,7 @@ def build_region(region, title):
     for e in mons.values():
         e["wild"].sort(key=lambda r: first_part.get(r["p"], 99))
     return {"key": region, "title": title, "parts": parts, "places": places, "mons": mons, "items": items,
+            "nav": navboxes(region, places, first_part),
             "trainers": trainers, "order": sorted(places, key=lambda k: (first_part.get(k, 99), list(B.FACTS).index(k)))}
 
 
@@ -212,14 +245,17 @@ def map_pictures(out, key):
         for o in lay.get("overheads") or []:
             if isinstance(o, dict) and o.get("kind") == "picture" and os.path.exists(os.path.join(tiles, o.get("f", ""))):
                 top = Image.open(os.path.join(tiles, o["f"])).convert("RGBA")
-                x, y = (int(v) * 16 for v in (o.get("at") or [0, 0]))
+                x, y = (int(v) * int(o.get("px") or pic.get("px") or 16) for v in (o.get("at") or [0, 0]))
                 im.alpha_composite(top, (x, y))
+        px = int(pic.get("px") or 16)
+        if px != 16:   # (SoulSilver's pictures are 32 pixels a tile: drawn at FireRed's 16, like the rest)
+            im = im.resize((im.width * 16 // px, im.height * 16 // px), Image.NEAREST)
         name = f"maps/{slug(key)}{'-' + str(i) if i else ''}.png"
         import base64
         from io import BytesIO
         buf = BytesIO()
-        im.convert("RGB").quantize(256).save(buf, "PNG", optimize=True)
-        MAPDATA[name] = "data:image/png;base64," + base64.b64encode(buf.getvalue()).decode()
+        im.convert("RGB").quantize(256).convert("RGB").save(buf, "WEBP", lossless=True, method=6)   # (lossless WebP of the 256-colour picture: smallest for pixel art)
+        MAPDATA[name] = "data:image/webp;base64," + base64.b64encode(buf.getvalue()).decode()
         pics.append({"src": name, "label": label, "w": im.width, "h": im.height})
     return pics
 
