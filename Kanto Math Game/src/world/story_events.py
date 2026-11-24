@@ -519,9 +519,26 @@ def gift_for_starter(gift, starter_id):
     return gift
 
 
-def gift_pokemon(game, pid, level=None, held=None):
+def gift_ability_slot(game, pid, ability):
+    """The ability slot for a gift's set Ability: "hidden" / 2, a slot number, or the ability by name."""
+    from src.pokemon import abilities as _ab
+    a = str(ability).strip().upper().replace(" ", "").replace("-", "").replace("_", "")
+    if a == "HIDDEN":
+        return _ab.HIDDEN_SLOT
+    if a.isdigit():
+        return int(a)
+    norm = lambda k: str(k or "").upper().replace(" ", "").replace("-", "").replace("_", "")
+    for slot in (0, 1, _ab.HIDDEN_SLOT):
+        if norm(_ab.key_for(game, pid, slot)) == a:
+            return slot
+    return _ab.roll_slot()
+
+
+def gift_pokemon(game, pid, level=None, held=None, ability=None, no_shiny=False):
     """Give a Pokemon to the player (party, or the PC when the party is full), at the area's wild
-    level or at `level` (the Sinjoh Ruins' Lv 1 dragons). Returns the message."""
+    level or at `level` (the Sinjoh Ruins' Lv 1 dragons). ability: its set Ability - "hidden", a slot
+    (0, 1, 2) or the ability's name (Route 6's Serene Grace Deerling, Black 2); no_shiny: never Shiny.
+    Returns the message."""
     from src.pokemon.data import Pokemon
     from src.world import levels
     story = game.story_manager
@@ -533,6 +550,10 @@ def gift_pokemon(game, pid, level=None, held=None):
         mon.current_hp = mon.get_max_hp()
     if held:
         mon.held_item = held
+    if ability is not None:
+        mon.ability_slot = gift_ability_slot(game, mon.id, ability)
+    if no_shiny:
+        mon.is_shiny = False
     if len(story.player_team) < 6:
         story.player_team.append(mon)
         where = "joined your team"
