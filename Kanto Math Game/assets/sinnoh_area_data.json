@@ -3431,7 +3431,7 @@
       "target": "ETERNA_GALACTIC_BUILDING",
       "completed_flag": "galactic_eterna_cleared",
       "steps": [
-        {"area": "ETERNA_CITY", "at": [51, 8], "label": "Cynthia", "done": "received_hm_cut"},
+        {"area": "ETERNA_CITY", "at": [51, 10], "label": "Cynthia", "done": "received_hm_cut"},
         {"area": "ETERNA_GALACTIC_BUILDING", "label": "Galactic building", "done": "galactic_eterna_cleared"}
       ]
     },
