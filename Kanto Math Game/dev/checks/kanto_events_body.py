@@ -479,6 +479,20 @@ check(any("giant Haunter rises" in str(l) for l in _w) and story.story_flags.get
       f"walking up to it starts the Black Fog's battle, and beating it banishes it ({[l for l in _w if 'Black Fog' in str(l)][:1]})")
 p = route("KANTO_POKEMON_TOWER", "LAVENDER_TOWN", floor=3)
 check(_bf(p.run.floor) is None, "...after which 4F is clear")
+print("\n== Professor Oak's GS Ball errand after the Kanto title (11-24, a Journal Journey)")
+for _f in ("oak_gs_errand", "got_gs_ball_ivy"):
+    story.story_flags.pop(_f, None)
+story.story_flags["beat_champion"] = True
+for _f in ("kanto_lab_intro", "received_starter_kanto", "kanto_rival_left_lab", "got_oak_potions", "received_pokedex_kanto",
+           "got_oaks_parcel", "kanto_rival_pokedex"):   # (the lab's early scenes, long done by the title)
+    story.story_flags[_f] = True
+said.clear()
+_t = town("PALLET_TOWN", "KANTO_ROUTE_1", room="lab"); play(n=1500, until=lambda: story.story_flags.get("oak_gs_errand")); play()
+check(story.story_flags.get("oak_gs_errand") and any("Professor Ivy" in str(l) for l in said),
+      f"walking into the lab, Oak asks you to fetch Professor Ivy's Poke Ball from the Orange Islands ({[l for l in said if 'Ivy' in str(l)][:1]})")
+said.clear()
+_t = town("PALLET_TOWN", "KANTO_ROUTE_1", room="lab"); play()
+check(not any("Professor Ivy" in str(l) for l in said), "...and only once")
 from src.states.game_corner import prizes_here as _ph
 story.current_area_key = "TWO_ISLAND"
 check(_ph(story) == [], "Two Island's Joyful Game Corner has no prize list of its own (FireRed: its games give Berries), not Celadon's")
