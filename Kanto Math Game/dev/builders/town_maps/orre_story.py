@@ -1403,7 +1403,8 @@ def _tournament(maps):
 # S6d (Jordan 11-24): Gym rematches after the League - Misty and Duking wait in their Colosseums' lobbies, Blaine and Erika in
 # their garden, for their second teams once a day (src/world/orre_gym.py; the teams are each Leader's "orre_rematch").
 REMATCH_SPOTS = [("PHENAC_CITY", "gym", "GYM LEADER MISTY", (10, 7)), ("PYRITE_TOWN", "gym", "GYM LEADER DUKING", (10, 7)),
-                 ("AGATE_VILLAGE", "gym_2", "GYM LEADERS BLAINE & ERIKA", None)]
+                 ("AGATE_VILLAGE", "gym_2", "GYM LEADERS BLAINE & ERIKA", None),
+                 ("AGATE_VILLAGE", "house_centre", "Move Tutor", None)]   # (R4, 11-24: XD's Agate Move Tutor, his 12 moves as TMs too)
 
 
 def _rematch_spots(maps):

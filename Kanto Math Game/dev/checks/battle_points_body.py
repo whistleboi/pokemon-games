@@ -208,6 +208,17 @@ for _c in range(3):
 check(len(so.won) == 3 and all(story.inventory.get(it, 0) >= n for it, n in so.won), f"three of a kind each time: its prize in the Bag {so.won}")
 so2 = ScratchOffState(g, g.current_state)
 check(so2.card is None and "1 BP" in so2.message, "no BP: no cards")
+story.story_flags[bpl.BP_FLAG] = 1
+_back = g.current_state
+so3 = ScratchOffState(g, _back)
+so3.leave()
+check(bpl.bp(story) == 1, "left before scratching a square: the 1 BP comes back (the encyclopedia, 11-24)")
+so4 = ScratchOffState(g, _back)
+so4.scratch(0)
+so4.leave()
+check(bpl.bp(story) == 0, "...once you've scratched, it's spent")
+g.change_state(_back)
+story.story_flags[bpl.BP_FLAG] = 0
 story.current_area_key = "JOHTO_BATTLE_FRONTIER"; story.last_area_key = "FRONTIER_ACCESS"; story.starting_region = "JOHTO"
 g.walk_town_pos = g.walk_town_room = None
 t = _PS(g); g.change_state(t)

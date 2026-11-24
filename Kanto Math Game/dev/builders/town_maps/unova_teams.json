@@ -977,6 +977,112 @@
    522
   ]
  },
+ "701": {
+  "b2_id": 701,
+  "class": "TRAINER",
+  "held_items": {
+   "500": "CHARCOAL",
+   "516": "MYSTIC_WATER",
+   "521": "SCOPE_LENS"
+  },
+  "levels": [
+   43,
+   41,
+   41
+  ],
+  "name": "Pokemon Trainer Rival",
+  "rewards": {
+   "balls": 4
+  },
+  "sprite": "trainer.png",
+  "team": [
+   500,
+   516,
+   521
+  ]
+ },
+ "702": {
+  "b2_id": 702,
+  "class": "TRAINER",
+  "held_items": {
+   "503": "MYSTIC_WATER",
+   "512": "MIRACLE_SEED",
+   "521": "SCOPE_LENS"
+  },
+  "levels": [
+   43,
+   41,
+   41
+  ],
+  "name": "Pokemon Trainer Rival",
+  "rewards": {
+   "balls": 4
+  },
+  "sprite": "trainer.png",
+  "team": [
+   503,
+   512,
+   521
+  ]
+ },
+ "703": {
+  "b2_id": 703,
+  "class": "TRAINER",
+  "held_items": {
+   "497": "MIRACLE_SEED",
+   "514": "CHARCOAL",
+   "521": "SCOPE_LENS"
+  },
+  "levels": [
+   43,
+   41,
+   41
+  ],
+  "name": "Pokemon Trainer Rival",
+  "rewards": {
+   "balls": 4
+  },
+  "sprite": "trainer.png",
+  "team": [
+   497,
+   514,
+   521
+  ]
+ },
+ "704": {
+  "b2_id": 704,
+  "class": "TEAM_PLASMA",
+  "levels": [
+   42,
+   44
+  ],
+  "name": "Team Plasma Zinzolin",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "team_plasma.png",
+  "team": [
+   615,
+   215
+  ]
+ },
+ "705": {
+  "b2_id": 705,
+  "class": "TEAM_PLASMA",
+  "levels": [
+   39,
+   39
+  ],
+  "name": "Team Plasma Grunt",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "b2_plasma_grunt_m.png",
+  "team": [
+   42,
+   569
+  ]
+ },
  "732": {
   "b2_id": 732,
   "class": "SUBWAY_BOSS",
