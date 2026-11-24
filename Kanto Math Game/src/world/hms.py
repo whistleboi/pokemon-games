@@ -15,8 +15,9 @@ HM_BY_BADGE = {
     # the rival on Route 112 and on Route 119; Jordan, 11-06: one source for each key item in a region)
     "HOENN": {},   # (11-23, Jordan H5: every HM from ORAS's own giver on the maps - Cut the Cutter in Rustboro, Flash Granite
     #              Cave's hiker, Surf Wally's father after Norman, Dive Steven in Mossdeep, Waterfall Wallace's prize)
-    "SINNOH": {"COAL": "HM_ROCK_SMASH", "FOREST": "HM_CUT", "FEN": "HM_DEFOG",
-               "ICICLE": "HM_ROCK_CLIMB", "BEACON": "HM_WATERFALL"},
+    "SINNOH": {"ICICLE": "HM_ROCK_CLIMB", "BEACON": "HM_WATERFALL"},
+    # (11-24 cleanup, Platinum's givers: Rock Smash from the Oreburgh Gate hiker after the Coal Badge, Cut from Cynthia in Eterna
+    #  after the Forest Badge, Defog lying in the Solaceon Ruins - not the badges, which gave each a second time)
     # (11-24, Sinnoh S5, Jordan: Strength is Platinum's - Riley on Iron Island - not Byron's Mine Badge; Barry waits at the
     #  Canalave Library till you have it)
     # (11-24, Sinnoh S4: Fly is Platinum's - the ball beside Looker in the Galactic Warehouse, after the raid - not Maylene's;
