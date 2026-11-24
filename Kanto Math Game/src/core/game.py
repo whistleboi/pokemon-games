@@ -125,6 +125,7 @@ class Game:
             "sinjoh": "sinjoh_area_data.json",
             "orre": "orre_area_data.json",
             "dlc": "dlc_area_data.json",
+            "journeys": "journeys_area_data.json",   # (the Journal's missions that cross regions; each names its own region, J9 11-24)
         }
 
         loaded_evolutions = {}

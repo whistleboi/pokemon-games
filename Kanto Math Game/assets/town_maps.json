@@ -685,6 +685,24 @@
         ]
        }
       ]
+     },
+     {
+      "who": "Professor Oak",
+      "trigger": "enter",
+      "condition": [
+       "beat_champion",
+       "not:got_gs_ball_ivy"
+      ],
+      "flag": "oak_gs_errand",
+      "approach": true,
+      "after": "home",
+      "lines": [
+       "Professor Oak: Ah, {player_name}! Champion of Kanto, eh? I always knew you had it in you.",
+       "Professor Oak: Now, I wonder if you'd do an old man a favour. Down in the Orange Islands there's a researcher, Professor Ivy.",
+       "Professor Oak: She's found something on Valencia Island she wants me to study. A Poké Ball, of all things... but not like any I've seen.",
+       "Professor Oak: The Rocket Blimps out of Vermilion City fly there now that you're Champion. Would you collect it for me?",
+       "Professor Oak: Splendid! Ivy will be expecting you."
+      ]
      }
     ],
     "barred": [
@@ -13942,7 +13960,7 @@
      "cccccccccccccccccccccccc",
      "cccccccccccccccccccccccc",
      "ccccccccc.....cccccccccc",
-     "ccccccc.........cccccccc",
+     "ccccccc....N....cccccccc",
      "ccccc.....c...cccccccccc",
      "cccc..ccc.c.cc....cccccc",
      "ccc.......c.....cc..cccc",
@@ -13974,6 +13992,7 @@
      "_buildings_in_picture": true
     },
     "people": [
+     "THE BLACK FOG",
      "AWAKENING",
      "ELIXIR",
      "GREAT BALL"
@@ -14267,6 +14286,7 @@
    "Laurel": 3,
    "Paula": 3,
    "Jody": 3,
+   "THE BLACK FOG": 3,
    "AWAKENING": 3,
    "ELIXIR": 3,
    "GREAT BALL": 3,

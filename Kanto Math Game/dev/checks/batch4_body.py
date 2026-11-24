@@ -72,15 +72,15 @@ check(isinstance(st, EvolutionState) and st.pokemon is b, "after NO, the next Po
 st.evolve_no()
 check(isinstance(g.current_state, ow.GymLobbyState), "after both NO, back to the lobby (no loop)")
 
+exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())   # (Kanto is walked: towns and routes on their maps, 11-24)
+story.enter_region("KANTO")
 print("2) hearts and summary")
 p = mk(25)
 p.level = 30
 p.affection = 160
 p.current_hp = p.get_max_hp()
 story.player_team = [p, mk(1)]
-story.current_area_key = "VIRIDIAN_CITY"
-city = ow.CityState(g)
-g.change_state(city)
+city = walk_town("VIRIDIAN_CITY", "KANTO_ROUTE_1")
 g.change_state(PokemonPartyMenuState(g, city))
 shot("party")
 d = PokemonDetailState(g, p, city)
@@ -98,23 +98,27 @@ check(all("wild" in t for t in m.tracks("wild", "JOHTO")) and m.tracks("wild", "
 check(m.tracks("victory") == ["music_victory.wav"], "victory jingle")
 played = []
 m.play = lambda kind, force=False: played.append(kind)
-m.for_state(ow.CityState(g))
+_vc = walk_town("VIRIDIAN_CITY", "KANTO_ROUTE_1"); played.clear()
+m.for_state(_vc)
 m.for_state(TrainerBattleState(g, [mk(74)], trainer_class="GYM_LEADER", trainer_name="Brock",
                                area_name="PEWTER_CITY", battle_type="gym"))
 m.for_state(TrainerBattleState(g, [mk(19)], trainer_class="YOUNGSTER", trainer_name="Joey", area_name="ROUTE_1"))
 m.for_state(WildBattleState(g, mk(16), "KANTO_ROUTE_1"))
-story.current_area_key = "KANTO_ROUTE_1"
-m.for_state(ow.PlayState(g))
+_n = len(played)
+_r1 = walk_route("KANTO_ROUTE_1", "PALLET_TOWN")
+del played[_n:]   # (opening the map plays its own music: only the five for_state calls count)
+m.for_state(_r1)
 check(played == ["town", "gym", "trainer", "wild", "route"], f"per screen: {played}")
 del m.play
 
 print("4) mart")
-story.current_area_key = "CELADON_CITY"
 story.money = 5000
 story.inventory.pop("POTION", None)
-city = ow.CityState(g)
-mart = PokeMartState(g, city)
-g.change_state(mart)
+city = walk_town("CELADON_CITY", "KANTO_ROUTE_7")
+walk_meet(city, "Dept. Store", play=False)   # (up to the Dept. Store's counter)
+walk_frames(2)
+mart = g.current_state
+check(isinstance(mart, PokeMartState), f"the counter opens the shop ({type(mart).__name__})")
 mart.on_welcome_dialogue_end() if mart.phase == "DIALOGUE" else None
 check("EVERSTONE" in mart._shop_items(), "Everstone on the shelf")
 mart.init_purchase("POTION")
@@ -161,9 +165,7 @@ g.change_state(MainMenuState(g))
 key(pygame.K_DOWN)
 check(g.keyboard.active and g.keyboard.focus, "arrow shows a highlight")
 shot("kb_title")
-story.current_area_key = "VIRIDIAN_CITY"
-city = ow.CityState(g)
-g.change_state(city)
+city = walk_town("VIRIDIAN_CITY", "KANTO_ROUTE_1")
 bag = BagState(g, city)
 g.change_state(bag)
 key(pygame.K_ESCAPE)

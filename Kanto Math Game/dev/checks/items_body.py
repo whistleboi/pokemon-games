@@ -13,25 +13,39 @@ def check(c, m):
 
 
 g.data.save = lambda *a, **k: None
-story.current_area_key = "VIRIDIAN_CITY"
+exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())   # (Kanto is walked: walk up to the Marts' counters, 11-24)
+story.enter_region("KANTO")
 story.badges["KANTO"] = []
 story.story_flags["visited_mart_VIRIDIAN_CITY"] = True
+_SHOP = lambda o: str(o.get("action") or "").upper() == "SHOP"
+
+
+def mart(area, came, who=_SHOP):
+    """Walk into the town's Mart (or up to the clerk called who) and open the shop."""
+    t = walk_town(area, came)
+    walk_meet(t, who, play=False)
+    walk_frames(2)
+    m = g.current_state
+    if isinstance(m, PokeMartState) and m.phase == "DIALOGUE":
+        m.on_welcome_dialogue_end()
+    return m
+
 
 print("1) Poke Mart stock follows the badges, like the games")
-m = PokeMartState(g, None)
+m = mart("VIRIDIAN_CITY", "KANTO_ROUTE_1")
+check(isinstance(m, PokeMartState), f"Viridian's Mart counter opens the shop ({type(m).__name__})")
 stock = m._shop_items()
 check({"POKE_BALLS", "POTION", "ANTIDOTE", "PARALYZE_HEAL"} <= set(stock) and "GREAT_BALL" not in stock,
       f"0 badges: {stock[:6]}")
 story.badges["KANTO"] = ["BOULDER", "CASCADE", "THUNDER", "RAINBOW", "SOUL"]
-stock = PokeMartState(g, None)._shop_items()
+stock = mart("VIRIDIAN_CITY", "KANTO_ROUTE_1")._shop_items()
 check({"ULTRA_BALL", "FULL_HEAL", "HYPER_POTION", "NET_BALL", "TIMER_BALL"} <= set(stock) and "MAX_POTION" not in stock,
       "5 badges: Ultra Balls, Full Heal, specialty balls (no Max Potion yet)")
-story.current_area_key = "CELADON_CITY"
-stock = PokeMartState(g, None)._shop_items()
-check("X_ATTACK" in stock and "DIRE_HIT" in stock, "the department store sells X items")
+stock = mart("CELADON_CITY", "KANTO_ROUTE_7", "Battle item clerk")._shop_items()
+check("X_ATTACK" in stock and "DIRE_HIT" in stock, "the department store sells X items (its battle item clerk)")
 story.money = 5000
 balls = story.balls_left
-m = PokeMartState(g, None)
+m = mart("VIRIDIAN_CITY", "KANTO_ROUTE_1")
 m.mode = "BUY"
 m.pending_item, m.qty = "POKE_BALLS", 2
 m.confirm_purchase()
@@ -102,11 +116,10 @@ check(story.balls_left == 2 and (b.catch_phase == "CAUGHT" or "broke free" in te
 
 print("6) Repel and Escape Rope")
 story.repel_routes = 2
-story.current_area_key = "KANTO_ROUTE_1"
-ps = PlayState(g)
-check(ps.min_rounds == 0 and story.repel_routes == 1, "a Repel lets you leave the route without battling")
+ps = walk_route("KANTO_ROUTE_1", "PALLET_TOWN")   # (walked: a route's ways out never wait on rounds; the Repel still counts down)
+check(walked(ps) and ps.min_rounds == 0 and story.repel_routes == 1, "a Repel lets you leave the route without battling")
 story.repel_routes = 0
-story.current_area_key = "MT_MOON"
+ps = walk_route("MT_MOON", "KANTO_ROUTE_3")
 story.inventory["ESCAPE_ROPE"] = 1
 bag = BagState(g, ps)
 g.change_state(bag)
@@ -170,7 +183,7 @@ _inv.update({"TM001": 1, "TM002": 1, "HM_CUT": 1, "FIRE_STONE": 2, "WATER_STONE"
 check(_cs.case_of("TM001") == "TM_CASE" and _cs.case_of("HM_CUT") == "TM_CASE" and _cs.case_of("POTION") is None
       and _cs.case_of("SILVER_WING") is None and _cs.case_of("CHARIZARDITE_X") == "MEGA_STONE_CASE",
       "each family has its case (the Silver Wing stays a key item)")
-_city = CityState(g); g.change_state(_city)
+_city = walk_town("VIRIDIAN_CITY", "KANTO_ROUTE_1")
 _told = []
 _sd = g.show_dialogue
 g.show_dialogue = lambda lines, callback=None: _told.append(list(lines))

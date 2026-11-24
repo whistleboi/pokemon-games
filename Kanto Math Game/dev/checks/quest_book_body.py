@@ -268,6 +268,10 @@ for arc in ub:
             jn_ = JournalState(g, city); g.change_state(jn_); jn_.draw()
             pygame.image.save(g.screen, os.path.join(S, "quest_book_unova_story.png"))
             g.change_state(city)
+        if ch.get("done"):   # (a chapter over part of a mission: Lacunosa's scenes, 11-24)
+            done_(ch["done"])
+            n_u += 1
+            continue
         for f in story.mission_flags(m):
             flags[f] = True
         if m["id"] in UBADGE:

@@ -218,6 +218,8 @@ def item_name(key):
     named = {"POKE_BALL": "Poké Ball", "POKE_BALLS": "Poké Ball", "POKE_DOLL": "Poké Doll", "PP_UP": "PP Up",
              "PP_MAX": "PP Max", "HP_UP": "HP Up", "X_SP_ATK": "X Sp. Atk", "OAKS_PARCEL": "Oak's Parcel",
              "KINGS_ROCK": "King's Rock", "UPGRADE": "Up-Grade", "GUARD_SPEC": "Guard Spec.", "TM_CASE": "TM Case"}
+    if re.match(r"^BATTLE_CD_\d+$", key):
+        return "Battle CD " + key.rsplit("_", 1)[1]   # (Orre's Battle CDs)
     return named.get(key, key.replace("_", " ").title())
 
 
@@ -650,11 +652,11 @@ def battles_in(person, where, out):
     ev = person.get("event") or {}
     if not isinstance(ev, dict):
         ev = {}
-    b = ev.get("battle")
-    if b:
-        t = team(b, where)
-        t["who"] = fix(person.get("text"))
-        out.append(t)
+    for b in [ev.get("battle")] + [st.get("battle") for st in ev.get("stages") or [] if isinstance(st, dict)]:
+        if b:   # (its own battle, and any in its "stages": a person fought again later, Orre's duel square)
+            t = team(b, where)
+            t["who"] = fix(person.get("text"))
+            out.append(t)
     for alt in person.get("alternatives") or []:
         battles_in(alt, where, out)
 

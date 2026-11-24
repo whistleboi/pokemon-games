@@ -43,6 +43,8 @@
       [1, {"money": 2000}],
       [4, {"tm": "TM101", "items": {"MOON_STONE": 1}}],
       [8, {"tm": "TM150", "money": 5000}]]},
+    {"id": "rematches", "name": "Old Rivals", "count": "rematches", "desc": "Win rematches against Trainers you've beaten before, by VS Seeker or phone.", "tiers": [[5, {"money": 3000}], [20, {"tm": "TM247", "money": 3000}], [50, {"tm": "TM243", "items": {"RARE_CANDY": 3}, "money": 5000}]]},
+    {"id": "swarm", "name": "Swarm Chaser", "count": "swarm", "desc": "Catch the swarm Pokemon on the day and in the place it swarms.", "tiers": [[3, {"items": {"QUICK_BALL": 5}}], [10, {"tm": "TM182", "items": {"ULTRA_BALL": 5}}], [25, {"tm": "TM105", "money": 5000}]]},
     {"id": "caught", "name": "Pokemon Catcher", "count": "caught", "desc": "Catch wild Pokemon, any kind, as many as you like.", "tiers": [
       [25, {"items": {"GREAT_BALL": 10}}],
       [100, {"tm": "TM108", "items": {"ULTRA_BALL": 10}}],
@@ -120,6 +122,8 @@
       [1, {"money": 2000}],
       [4, {"tm": "TM101", "items": {"SUN_STONE": 1}}],
       [8, {"tm": "TM150", "money": 5000}]]},
+    {"id": "rematches", "name": "Old Rivals", "count": "rematches", "desc": "Win rematches against Trainers you've beaten before, by VS Seeker or phone.", "tiers": [[5, {"money": 3000}], [20, {"tm": "TM243", "money": 3000}], [50, {"tm": "TM257", "items": {"RARE_CANDY": 3}, "money": 5000}]]},
+    {"id": "swarm", "name": "Swarm Chaser", "count": "swarm", "desc": "Catch the swarm Pokemon on the day and in the place it swarms.", "tiers": [[3, {"items": {"QUICK_BALL": 5}}], [10, {"tm": "TM015", "items": {"ULTRA_BALL": 5}}], [25, {"tm": "TM105", "money": 5000}]]},
     {"id": "caught", "name": "Pokemon Catcher", "count": "caught", "desc": "Catch wild Pokemon, any kind, as many as you like.", "tiers": [
       [25, {"items": {"GREAT_BALL": 10}}],
       [100, {"tm": "TM108", "items": {"ULTRA_BALL": 10}}],
@@ -172,6 +176,7 @@
       [1, {"money": 2000}],
       [4, {"tm": "TM101", "items": {"WATER_STONE": 1}}],
       [8, {"tm": "TM150", "money": 5000}]]},
+    {"id": "rematches", "name": "Old Rivals", "count": "rematches", "desc": "Win rematches against Trainers you've beaten before, by VS Seeker or phone.", "tiers": [[5, {"money": 3000}], [20, {"tm": "TM319", "money": 3000}], [50, {"tm": "TM134", "items": {"RARE_CANDY": 3}, "money": 5000}]]},
     {"id": "caught", "name": "Pokemon Catcher", "count": "caught", "desc": "Catch wild Pokemon, any kind, as many as you like.", "tiers": [
       [25, {"items": {"GREAT_BALL": 10}}],
       [100, {"tm": "TM030", "items": {"ULTRA_BALL": 10}}],
@@ -192,6 +197,8 @@
     {"id": "contest_wins", "name": "Ribbon Winner", "count": "contest_wins", "desc": "Win Pokemon Contests, at any Rank.", "tiers": [[1, {"items": {"GREAT_BALL": 5}}], [5, {"tm": "TM227", "money": 3000}], [20, {"tm": "TM127", "money": 10000}]]},
     {"id": "evolved", "name": "Evolution Fan", "count": "evolved", "desc": "Watch your Pokemon evolve.", "tiers": [[5, {"items": {"WATER_STONE": 1}}], [20, {"tm": "TM059", "items": {"FIRE_STONE": 1, "LEAF_STONE": 1}}], [50, {"tm": "TM165", "items": {"THUNDER_STONE": 1, "MOON_STONE": 1}}]]},
     {"id": "stones", "name": "Stone Collector", "count": "evo_items", "desc": "Evolve Pokemon with evolution stones and other items.", "tiers": [[1, {"money": 2000}], [4, {"tm": "TM101", "items": {"SUN_STONE": 1}}], [8, {"tm": "TM220", "money": 5000}]]},
+    {"id": "rematches", "name": "Old Rivals", "count": "rematches", "desc": "Win rematches against Trainers you've beaten before, by VS Seeker or phone.", "tiers": [[5, {"money": 3000}], [20, {"tm": "TM319", "money": 3000}], [50, {"tm": "TM134", "items": {"RARE_CANDY": 3}, "money": 5000}]]},
+    {"id": "swarm", "name": "Swarm Chaser", "count": "swarm", "desc": "Catch the swarm Pokemon on the day and in the place it swarms.", "tiers": [[3, {"items": {"QUICK_BALL": 5}}], [10, {"tm": "TM182", "items": {"ULTRA_BALL": 5}}], [25, {"tm": "TM162", "money": 5000}]]},
     {"id": "caught", "name": "Pokemon Catcher", "count": "caught", "desc": "Catch wild Pokemon, any kind, as many as you like.", "tiers": [[25, {"items": {"GREAT_BALL": 10}}], [100, {"tm": "TM108", "items": {"ULTRA_BALL": 10}}], [250, {"tm": "TM062", "money": 10000}]]}
   ],
   "SINNOH": [
@@ -209,6 +216,8 @@
     {"id": "safari", "name": "Safari Explorer", "count": "safari", "desc": "Catch Pokemon in Pastoria's Great Marsh with Safari Balls.", "tiers": [[5, {"money": 3000}], [15, {"tm": "TM186", "items": {"ULTRA_BALL": 5}}], [30, {"items": {"RARE_CANDY": 5}, "money": 5000}]]},
     {"id": "evolved", "name": "Evolution Fan", "count": "evolved", "desc": "Watch your Pokemon evolve.", "tiers": [[5, {"items": {"WATER_STONE": 1}}], [20, {"tm": "TM252", "items": {"DAWN_STONE": 1, "DUSK_STONE": 1}}], [50, {"tm": "TM147", "items": {"SHINY_STONE": 1, "MOON_STONE": 1}}]]},
     {"id": "stones", "name": "Stone Collector", "count": "evo_items", "desc": "Evolve Pokemon with evolution stones and other items.", "tiers": [[1, {"money": 2000}], [4, {"tm": "TM101", "items": {"SUN_STONE": 1}}], [8, {"tm": "TM062", "money": 5000}]]},
+    {"id": "rematches", "name": "Old Rivals", "count": "rematches", "desc": "Win rematches against Trainers you've beaten before, by VS Seeker or phone.", "tiers": [[5, {"money": 3000}], [20, {"tm": "TM243", "money": 3000}], [50, {"tm": "TM257", "items": {"RARE_CANDY": 3}, "money": 5000}]]},
+    {"id": "swarm", "name": "Swarm Chaser", "count": "swarm", "desc": "Catch the swarm Pokemon on the day and in the place it swarms.", "tiers": [[3, {"items": {"QUICK_BALL": 5}}], [10, {"tm": "TM182", "items": {"ULTRA_BALL": 5}}], [25, {"tm": "TM162", "money": 5000}]]},
     {"id": "caught", "name": "Pokemon Catcher", "count": "caught", "desc": "Catch wild Pokemon, any kind, as many as you like.", "tiers": [[25, {"items": {"GREAT_BALL": 10}}], [100, {"tm": "TM330", "items": {"ULTRA_BALL": 10}}], [250, {"tm": "TM108", "money": 10000}]]}
   ],
   "UNOVA": [
@@ -217,7 +226,7 @@
     {"id": "trainers", "name": "Battle Hardened", "count": "trainers", "desc": "Win battles against trainers anywhere in Unova. Rematches count too!", "tiers": [[25, {"money": 2000}], [100, {"tm": "TM340", "money": 3000}], [250, {"tm": "TM167", "money": 5000}]]},
     {"id": "steps", "name": "Walker", "count": "steps", "desc": "Walk Unova's towns, routes and caves step by step.", "tiers": [[5000, {"items": {"SUPER_POTION": 5}}], [20000, {"tm": "TM197", "items": {"HYPER_POTION": 3}}], [50000, {"tm": "TM328", "items": {"MAX_REVIVE": 2}}]]},
     {"id": "lv50", "name": "Strong Bonds", "count": "lv50", "level": 50, "desc": "Raise Pokemon to Lv. 50 or higher (party and PC).", "tiers": [[1, {"items": {"RARE_CANDY": 2}}], [5, {"tm": "TM222", "items": {"RARE_CANDY": 3}}], [10, {"tm": "TM156", "money": 10000}]]},
-    {"id": "math", "name": "Math Whiz", "count": "math_streak", "desc": "Answer math questions right in a row while in Unova.", "tiers": [[10, {"money": 2000}], [25, {"tm": "TM054", "money": 3000}], [50, {"tm": "TM120", "money": 5000}]]},
+    {"id": "math", "name": "Math Whiz", "count": "math_streak", "desc": "Answer math questions right in a row while in Unova.", "tiers": [[10, {"money": 2000}], [25, {"tm": "TM054", "money": 3000}], [50, {"tm": "TM217", "money": 5000}]]},
     {"id": "fish", "name": "Angler", "count": "fish", "desc": "Hook Pokemon with a fishing rod.", "tiers": [[10, {"items": {"NET_BALL": 5}}], [40, {"tm": "TM188", "items": {"DIVE_BALL": 5}}], [100, {"tm": "TM142", "items": {"NET_BALL": 10}}]]},
     {"id": "phenomena", "name": "Rustle and Ripple", "count": "phenomena", "desc": "Meet the Pokemon hiding in rustling grass, rippling water and swirling dust.", "tiers": [[5, {"items": {"QUICK_BALL": 5}}], [20, {"tm": "TM065", "money": 3000}], [50, {"tm": "TM164", "money": 5000}]]},
     {"id": "films", "name": "Silver Screen", "count": "films", "desc": "Shoot movies at Pokestar Studios, north of Virbank City.", "tiers": [[1, {"money": 2000}], [5, {"tm": "TM029", "money": 2000}], [15, {"tm": "TM198", "money": 5000}]]},
@@ -225,6 +234,7 @@
     {"id": "grottoes", "name": "Grotto Explorer", "count": "grottoes", "desc": "Find what waits in Unova's Hidden Grottoes: through gaps in the trees, now and then something new.", "tiers": [[1, {"items": {"QUICK_BALL": 3}}], [10, {"tm": "TM035", "money": 3000}], [30, {"tm": "TM149", "money": 5000}]]},
     {"id": "evolved", "name": "Evolution Fan", "count": "evolved", "desc": "Watch your Pokemon evolve.", "tiers": [[5, {"items": {"WATER_STONE": 1}}], [20, {"tm": "TM252", "items": {"DUSK_STONE": 1, "SHINY_STONE": 1}}], [50, {"tm": "TM135", "items": {"DAWN_STONE": 1, "MOON_STONE": 1}}]]},
     {"id": "stones", "name": "Stone Collector", "count": "evo_items", "desc": "Evolve Pokemon with evolution stones and other items.", "tiers": [[1, {"money": 2000}], [4, {"tm": "TM101", "items": {"SUN_STONE": 1}}], [8, {"tm": "TM150", "money": 5000}]]},
+    {"id": "rematches", "name": "Old Rivals", "count": "rematches", "desc": "Win rematches against Trainers you've beaten before, by VS Seeker or phone.", "tiers": [[5, {"money": 3000}], [20, {"tm": "TM319", "money": 3000}], [50, {"tm": "TM134", "items": {"RARE_CANDY": 3}, "money": 5000}]]},
     {"id": "caught", "name": "Pokemon Catcher", "count": "caught", "desc": "Catch wild Pokemon, any kind, as many as you like.", "tiers": [[25, {"items": {"GREAT_BALL": 10}}], [100, {"tm": "TM248", "items": {"ULTRA_BALL": 10}}], [250, {"tm": "TM181", "money": 10000}]]},
     {"id": "musicals", "name": "Musical Star", "count": "musicals", "desc": "Perform in the Pokemon Musical at Nimbasa City's Musical Theater.", "tiers": [[1, {"money": 2000}], [10, {"tm": "TM079", "money": 4000}], [25, {"tm": "TM127", "money": 8000, "items": {"RARE_CANDY": 2}}]]},
     {"id": "subway", "name": "Subway Regular", "count": "subway", "desc": "Win Battle Subway battles in a row on any line from Gear Station: your best streak counts.", "tiers": [[7, {"money": 3000}], [21, {"tm": "TM009", "items": {"RARE_CANDY": 2}}], [49, {"tm": "TM147", "money": 10000, "items": {"MAX_REVIVE": 2}}]]},
@@ -242,6 +252,7 @@
     {"id": "math", "name": "Quick Thinker", "count": "math_streak", "desc": "Answer math questions right in a row while in Orre.", "tiers": [[10, {"money": 2000}], [25, {"tm": "TM054", "money": 3000}], [50, {"tm": "TM217", "money": 5000}]]},
     {"id": "evolved", "name": "Growing Up", "count": "evolved", "desc": "Watch your Pokemon evolve in Orre.", "tiers": [[5, {"items": {"MOON_STONE": 1}}], [20, {"tm": "TM059", "items": {"THUNDER_STONE": 1, "LEAF_STONE": 1}}], [50, {"tm": "TM125", "items": {"FIRE_STONE": 1, "SUN_STONE": 1}}]]},
     {"id": "stones", "name": "Stone Reader", "count": "evo_items", "desc": "Use evolution items on your Pokemon in Orre.", "tiers": [[1, {"money": 2000}], [4, {"tm": "TM337", "items": {"MOON_STONE": 1}}], [8, {"tm": "TM150", "money": 5000}]]},
+    {"id": "rematches", "name": "Old Rivals", "count": "rematches", "desc": "Win rematches against Trainers you've beaten before, by VS Seeker or phone.", "tiers": [[5, {"money": 3000}], [20, {"tm": "TM247", "money": 3000}], [50, {"tm": "TM243", "items": {"RARE_CANDY": 3}, "money": 5000}]]},
     {"id": "caught", "name": "Catch Collector", "count": "caught", "desc": "Catch Pokemon in Orre, snagged Shadow Pokemon included.", "tiers": [[10, {"items": {"GREAT_BALL": 10}}], [40, {"tm": "TM030", "items": {"ULTRA_BALL": 10}}], [100, {"tm": "TM181", "money": 10000}]]}
   ]
 }
