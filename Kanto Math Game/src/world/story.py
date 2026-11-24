@@ -1552,6 +1552,8 @@ class StoryManager:
                 and self.inventory.get("UNOWN_REPORT", 0) == 0):
             print("Sync: Awarding missing UNOWN_REPORT!")
             self.inventory["UNOWN_REPORT"] = 1
+        if "JOHTO" in self.store_regions() and self.inventory.get("UNOWN_REPORT", 0) > 0:   # (the Journal's "Ruins of Alph" (johto_s1)
+            self.story_flags["got_unown_report"] = True                                    #  ends on it; 11-24)
 
         # The Poke Flute is Mr. Fuji's to give (talk to him in Lavender Town).
         if self.story_flags.get("tower_ghost_defeated") and "KANTO" in self.store_regions():
