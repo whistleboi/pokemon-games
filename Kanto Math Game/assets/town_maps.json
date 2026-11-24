@@ -202813,9 +202813,9 @@
    "TTTTTTTTTTTTTTkeeeeeeeeeecceeeeekcckJJJJeeeeeeeeeeeKKKKkccccTTTT",
    "TTTTTTTTTTTTTTkeeeeeeeeeeccc===cccckJJJJeeeeeee!eeeKKKKkccccTTTT",
    "TTTTTTTTTTTTTTkkkkkkkeee!ccc===cccckJJJJeeeeeeeeeeeKKKKkccccTTTT",
-   "TTTTTTTTTTTTTTeeeeaaaaaaaaaaaaacccckeeeeeeeeeeeeeeeeeeekccccTTTT",
-   "LLLLLL....eeeeeeeeaaaaaaaaaaaaacccckkkkkkkkkkkkkkkeeekkkccccTTTT",
-   "LLLLLL....eeeeaaaaaaaaaaaaaaaaaccccccccccccccccccc===cccccccTTTT",
+   "TTTTTTTTTTTTTTeeeeaaaaaaaNaaaaacccckeeeeeeeeeeeeeeeeeeekccccTTTT",
+   "LLLLLL....eeeeeeeeaaaaaaNaaaaaacccckkkkkkkkkkkkkkkeeekkkccccTTTT",
+   "LLLLLL....eeeeaaaaaaaaaaaNaaaaaccccccccccccccccccc===cccccccTTTT",
    "LLLLLLn...eeeeaaaaaaaaaccccccccccccccccccccccccccc===cccccccTTTT",
    "LLLLLLn...eeeeaaaaaaaaacTTeMMMMMcccccccccccccccccc===cccccccTTTT",
    "LLLLLL....eeeeaaaaaaaaacTTeMMMMMeeeeeeOOOTTTTPPPcc===cccccccTTTT",
@@ -211845,6 +211845,165 @@
    "STAR PIECE",
    "RARE CANDY",
    {
+    "any": [
+     {
+      "text": "Galactic Grunt",
+      "action": "EVENT",
+      "condition": [
+       "has_cobble_badge",
+       "not:sinnoh_warehouse_guards_beaten"
+      ],
+      "event": {
+       "lines": [
+        "Grunt: What? Now you've brought your buddy along so you can get your Pokedex back?",
+        "Grunt: We'll be just as happy to send both of you crying home to your mommies!"
+       ]
+      }
+     },
+     {
+      "text": "Galactic Grunt",
+      "action": "EVENT",
+      "condition": [
+       "not:sinnoh_warehouse_guards_beaten"
+      ],
+      "event": {
+       "lines": [
+        "Grunt: Hey, you! Yeah, you! This is Team Galactic's warehouse! It ain't no playground for kids!"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "text": "Dawn",
+    "action": "EVENT",
+    "condition": [
+     "sinnoh_dawn_warehouse_call",
+     "not:sinnoh_warehouse_guards_beaten"
+    ],
+    "event": {
+     "lines": [
+      "Dawn: Hi, {player_name}! Do you remember Team Galactic? They tried to steal Prof. Rowan's research in Jubilife.",
+      "Dawn: I ran into them, and they took away my Pokedex. Please, team up and battle with me!",
+      "Dawn: You and your Pokemon together with me and my Pokemon... our dream team has no chance of losing!"
+     ],
+     "battle": {
+      "class": "GALACTIC_GRUNT",
+      "sprite": "pt_galactic_grunt_m.png",
+      "name": "Galactic Grunt",
+      "team": [
+       41,
+       434
+      ],
+      "levels": [
+       24,
+       26
+      ],
+      "rewards": {
+       "balls": 3
+      },
+      "battle_options": {
+       "double": true,
+       "partner": {
+        "name": "Dawn",
+        "class": "PKMN_TRAINER",
+        "sprite": "dawn.png",
+        "team": [
+         35,
+         64,
+         394
+        ],
+        "levels": [
+         25,
+         25,
+         27
+        ],
+        "team_choice": {
+         "387": [
+          35,
+          64,
+          394
+         ],
+         "390": [
+          35,
+          64,
+          388
+         ],
+         "393": [
+          35,
+          64,
+          391
+         ]
+        }
+       },
+       "second_trainer": {
+        "class": "GALACTIC_GRUNT",
+        "sprite": "pt_galactic_grunt_m.png",
+        "name": "Galactic Grunt",
+        "team": [
+         41,
+         453
+        ],
+        "levels": [
+         24,
+         26
+        ],
+        "rewards": {
+         "balls": 3
+        }
+       }
+      },
+      "dialogue": {
+       "intro": [
+        "Grunt: What? Now you've brought your buddy along so you can get your Pokedex back?",
+        "Grunt: We'll be just as happy to send both of you crying home to your mommies!",
+        "Grunt: You're trying to get the Pokedex back from us? Not when Team Galactic can make so much better use of it!",
+        "Grunt: But, OK, guarding the warehouse does get boring! We'll take you on two-on-two!"
+       ],
+       "player_won": [
+        "Grunt: Aww, that stinks! Our Pokemon are chumps! We should get new ones from headquarters.",
+        "Grunt: Humph! Who cares about some Pokedex anyway? Team Galactic's going to own all the Pokemon in the universe!",
+        "Grunt: There! Take it! Take your Pokedex!",
+        "Grunt: Those things we had in the warehouse've already been moved to Pastoria City anyway...",
+        "Grunt: So, we'll say 'You'll get yours!' And run like the grunts we are."
+       ]
+      }
+     },
+     "flag": "sinnoh_warehouse_guards_beaten"
+    }
+   },
+   {
+    "any": [
+     {
+      "text": "Galactic Grunt ",
+      "action": "EVENT",
+      "condition": [
+       "has_cobble_badge",
+       "not:sinnoh_warehouse_guards_beaten"
+      ],
+      "event": {
+       "lines": [
+        "Grunt: You're trying to get the Pokedex back from us? Not when Team Galactic can make so much better use of it!",
+        "Grunt: But, OK, guarding the warehouse does get boring! We'll take you on two-on-two!"
+       ]
+      }
+     },
+     {
+      "text": "Galactic Grunt ",
+      "action": "EVENT",
+      "condition": [
+       "not:sinnoh_warehouse_guards_beaten"
+      ],
+      "event": {
+       "lines": [
+        "Grunt: This is the awesome Team Galactic's awesome warehouse!",
+        "Grunt: A little kid like you should be playing at the Pokemon Gym. The Gym Leader's a kid just like you!"
+       ]
+      }
+     }
+    ]
+   },
+   {
     "text": "Girl ",
     "action": "EVENT",
     "event": {
@@ -211952,6 +212111,143 @@
       "They say touching a meteorite made one Pokemon faster."
      ]
     }
+   }
+  ],
+  "barred": [
+   {
+    "tiles": [
+     [
+      25,
+      20
+     ]
+    ],
+    "look": "unseen",
+    "until": {
+     "flag_condition": "sinnoh_warehouse_guards_beaten"
+    },
+    "on_bump": {
+     "lines": [
+      "Grunt: Hey, you! Yeah, you! This is Team Galactic's warehouse! It ain't no playground for kids!"
+     ]
+    },
+    "lines": [
+     "Grunt: Hey, you! Yeah, you! This is Team Galactic's warehouse! It ain't no playground for kids!"
+    ]
+   }
+  ],
+  "scenes": [
+   {
+    "trigger": {
+     "zone": [
+      9,
+      36,
+      16,
+      38
+     ]
+    },
+    "condition": [
+     "has_cobble_badge",
+     "not:sinnoh_dawn_warehouse_call"
+    ],
+    "flag": "sinnoh_dawn_warehouse_call",
+    "cast": [
+     {
+      "sheet": "pt_heroine.png",
+      "from": [
+       10,
+       38
+      ],
+      "to": "player",
+      "lines": [
+       "Dawn: Hi, {player_name}! Please, can you help me?",
+       "Dawn: Some Team Galactic goons took my Pokedex away from me. I need your help to get it back.",
+       "Dawn: I'll be waiting in front of the warehouses. Please come!"
+      ],
+      "leave": [
+       24,
+       20
+      ]
+     }
+    ]
+   },
+   {
+    "trigger": {
+     "zone": [
+      18,
+      17,
+      30,
+      23
+     ]
+    },
+    "condition": [
+     "sinnoh_warehouse_guards_beaten",
+     "not:sinnoh_warehouse_looker"
+    ],
+    "flag": "sinnoh_warehouse_looker",
+    "cast": [
+     {
+      "sheet": "pt_heroine.png",
+      "from": [
+       24,
+       20
+      ],
+      "to": "player",
+      "stay": true,
+      "lines": [
+       "Dawn: {player_name}, thank you, sincerely. I would've been lost without my Pokedex.",
+       "Dawn: It's indispensable for helping Prof. Rowan with his studies.",
+       "Dawn: I'm thinking of going to the Pokemon Mansion on Route 212. I hear they show rare Pokemon to visitors there."
+      ]
+     },
+     {
+      "sheet": "pt_icpo.png",
+      "from": [
+       20,
+       30
+      ],
+      "to": "player",
+      "stay": true,
+      "lines": [
+       "Looker: Have no fear, I have come running. I heard of children feuding with the Team Galactic.",
+       "Looker: It turns out, of course, to be you."
+      ]
+     },
+     {
+      "as": 0,
+      "lines": [
+       "Dawn: Oh... It's that funny man from Jubilife..."
+      ]
+     },
+     {
+      "as": 1,
+      "lines": [
+       "Looker: You insult me to my face? How very uncouth of you."
+      ]
+     },
+     {
+      "as": 0,
+      "lines": [
+       "Dawn: I'm terribly sorry. Team Galactic took my Pokedex, so I was very irritated...",
+       "Dawn: ...I should be going now. Be wary of Team Galactic."
+      ],
+      "leave": [
+       12,
+       38
+      ]
+     },
+     {
+      "as": 1,
+      "lines": [
+       "Looker: It is of no matter. Of more interest is the criminal behavior of the Team Galactic.",
+       "Looker: They attempt to steal the belongings of a child? The triviality of their action makes them more sinister, perhaps.",
+       "Looker: Their warehouse needs investigation. Come with me, and we'll take a look!"
+      ],
+      "leave": [
+       29,
+       16
+      ]
+     }
+    ]
    }
   ]
  },
@@ -290456,7 +290752,7 @@
      "cmmm.ccc..cccccccc",
      "c....ccc..cccccccc",
      "c....ccc..cccccccc",
-     "cmmm......mm.Nmmcc",
+     "cmmm......mmNNmmcc",
      "cmmm......mm..mmcc",
      "c...............cc",
      "c.......n.......cc",
@@ -290813,7 +291109,43 @@
     },
     "people": [
      "DUSK STONE",
+     {
+      "text": "Looker",
+      "action": "EVENT",
+      "flag_condition": "sinnoh_warehouse_looker",
+      "event": {
+       "lines": [
+        "Looker: Hmm... A key is necessary for us to go on. For the time being, we cannot give chase to those who run away.",
+        "Looker: Ah, this Hidden Machine... It is of the hidden move Fly.",
+        "Looker: {player_name}, this, you should be keeping. It will not do to leave it here to be used by the Team Galactic.",
+        "Looker: What concerns me is what I have overheard in the Game Corner.",
+        "Looker: The Team Galactic has transported something to Pastoria City.",
+        "Looker: What they are up to, I do not know, but I have bad feelings about it."
+       ],
+       "flag": "galactic_warehouse_cleared",
+       "done": [
+        "Looker: What concerns me is what I have overheard in the Game Corner.",
+        "Looker: The Team Galactic has transported something to Pastoria City.",
+        "Looker: What they are up to, I do not know, but I have bad feelings about it."
+       ]
+      }
+     },
      "HM FLY"
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        13,
+        2
+       ]
+      ],
+      "item": "STORAGE_KEY",
+      "look": "unseen",
+      "lines": [
+       "The rust-encrusted door is locked. It appears to take a special key."
+      ]
+     }
     ]
    },
    {
@@ -292583,7 +292915,8 @@
    "ZINC": 1,
    "Scientist": 1,
    "Galactic Grunt 1": 1,
-   "Galactic Grunt 2": 1
+   "Galactic Grunt 2": 1,
+   "Looker": 0
   },
   "theme": "tunnel"
  },

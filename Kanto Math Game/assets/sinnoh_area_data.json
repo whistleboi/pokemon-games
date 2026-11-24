@@ -467,11 +467,11 @@
         "min_rounds": 0,
         "trainer_pool": [
             {"name": "Galactic Grunt", "class": "PKMN_TRAINER", "sprite": "pt_galactic_grunt_m.png", "team": [42], "rewards": {"balls": 3}, "levels": [41], "spot_name": "Galactic Grunt 1"},
-            {"name": "Galactic Grunt", "class": "PKMN_TRAINER", "sprite": "pt_galactic_grunt_m.png", "team": [228, 198], "rewards": {"balls": 10}, "is_boss_battle": true, "victory_flag": "galactic_warehouse_cleared", "levels": [38, 40], "spot_name": "Galactic Grunt 2"}
+            {"name": "Galactic Grunt", "class": "PKMN_TRAINER", "sprite": "pt_galactic_grunt_m.png", "team": [228, 198], "rewards": {"balls": 10}, "is_boss_battle": true, "victory_flag": "galactic_underpass_cleared", "levels": [38, 40], "spot_name": "Galactic Grunt 2"}
         ],
         "route_menu": [
             {"text": "Team Galactic HQ", "action": "EXIT", "target_area": "TEAM_GALACTIC_HQ", "condition": "can_exit", "color": "RED"},
-            {"text": "RAID THE WAREHOUSE", "action": "GALACTIC_GAUNTLET", "flag_condition": "not galactic_warehouse_cleared", "color": "GOLD"},
+            {"text": "RAID THE WAREHOUSE", "action": "GALACTIC_GAUNTLET", "flag_condition": "not galactic_underpass_cleared", "color": "GOLD"},
             {"text": "Veilstone City", "action": "EXIT", "target_area": "VEILSTONE_CITY", "condition": "can_exit", "color": "RED"},
             {"text": "DUSK STONE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_dusk_stone_galactic_warehouse_c07r0301_7_4", "event": {"lines": ["A Dusk Stone, lying among the rocks."], "gift_item": {"DUSK_STONE": 1}, "flag": "got_dusk_stone_galactic_warehouse_c07r0301_7_4"}},
             {"text": "HM FLY", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_hm_fly_galactic_warehouse_c07r0301_13_8", "event": {"lines": ["A Hm Fly, in a dark corner."], "gift_item": {"HM_FLY": 1}, "flag": "got_hm_fly_galactic_warehouse_c07r0301_13_8"}},
@@ -1455,7 +1455,7 @@
             {"text": "Route 214", "target_area": "SINNOH_ROUTE_214"},
             {"text": "Route 215", "target_area": "SINNOH_ROUTE_215"},
             {"text": "Team Galactic HQ", "target_area": "TEAM_GALACTIC_HQ", "item_condition": "GALACTIC_KEY"},
-            {"text": "Galactic Warehouse", "target_area": "GALACTIC_WAREHOUSE", "condition": "has_cobble_badge", "item_condition": "STORAGE_KEY"}
+            {"text": "Galactic Warehouse", "target_area": "GALACTIC_WAREHOUSE", "condition": "sinnoh_warehouse_guards_beaten"}
         ],
         "explore_options": [
             {"text": "Heal", "action": "HEAL"},
@@ -1464,7 +1464,6 @@
             {"text": "Game Corner", "action": "GAMECORNER"},
             {"text": "Galactic Veilstone HQ", "action": "TRAVEL", "target_area": "TEAM_GALACTIC_HQ", "item_condition": "GALACTIC_KEY"},
             {"text": "Talk to Looker", "action": "NPC", "target": "looker_veilstone", "condition": "has_cobble_badge"},
-            {"text": "Talk to the Galactic Grunt", "action": "EVENT", "condition": ["has_cobble_badge", "not:has_item:STORAGE_KEY", "not:galactic_warehouse_cleared"], "event": {"lines": ["A Galactic Grunt is loitering outside the Galactic building.", "Grunt: Wh-what do you want? I'm not guarding anything! ...Gotta go!", "The grunt ran off, dropping something."], "gift_item": {"STORAGE_KEY": 1}, "flag": "got_storage_key"}},
             {"text": "Warehouse Underpass", "action": "EVENT", "color": "GOLD", "condition": ["galactic_lake_acuity_cleared", "not:has_item:GALACTIC_KEY", "not:galactic_hq_cleared"], "event": {"lines": ["A Galactic Grunt is guarding the underpass beneath the Galactic Warehouse.", "Grunt: The boss has all three lake Pokémon now! Nobody gets into HQ!"], "flag": "got_galactic_key", "battle": {"name": "Galactic Grunt", "class": "GALACTIC_GRUNT", "sprite": "galactic_grunt.png", "team": [41, 434], "rewards": {"balls": 3, "GALACTIC_KEY": 1}, "dialogue": {"player_won": ["Grunt: No! The Galactic Key!", "You found the GALACTIC KEY! It opens Team Galactic HQ."]}}}},
             {"text": "FULL INCENSE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_full_incense_veilstone_city_c07_18_37", "event": {"lines": ["A Full Incense, lying by the path."], "gift_item": {"FULL_INCENSE": 1}, "flag": "got_full_incense_veilstone_city_c07_18_37"}},
             {"text": "RARE CANDY", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_rare_candy_veilstone_city_c07_38_8", "event": {"lines": ["A Rare Candy, left on the ground."], "gift_item": {"RARE_CANDY": 1}, "flag": "got_rare_candy_veilstone_city_c07_38_8"}},
@@ -3535,7 +3534,7 @@
       "id": "sinnoh_m6",
       "type": "MAIN",
       "title": "The Galactic Warehouse",
-      "description": "A Galactic Grunt in Veilstone is up to something. Talk to him, take the Storage Key and raid the Warehouse.",
+      "description": "Team Galactic grunts took Dawn's Pokedex! Team up with her in front of the warehouses, then look inside with Looker.",
       "condition": {
         "required_region": "SINNOH",
         "badges_min": 3,
@@ -3543,7 +3542,11 @@
         "flag_not": "galactic_warehouse_cleared"
       },
       "target": "VEILSTONE_CITY",
-      "completed_flag": "galactic_warehouse_cleared"
+      "completed_flag": "galactic_warehouse_cleared",
+      "steps": [
+        {"area": "VEILSTONE_CITY", "at": [24, 20], "label": "Dawn", "done": "sinnoh_warehouse_guards_beaten"},
+        {"area": "GALACTIC_WAREHOUSE", "at": [12, 7], "label": "Looker", "done": "galactic_warehouse_cleared"}
+      ]
     },
     {
       "id": "sinnoh_m6b",

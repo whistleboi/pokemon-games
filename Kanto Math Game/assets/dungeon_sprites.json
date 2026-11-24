@@ -76,6 +76,10 @@
     ]
   },
   "figures": {
+    "GALACTIC_WAREHOUSE:Looker": {"sheet": "pt_icpo.png"},
+    "VEILSTONE_CITY:Dawn": {"sheet": "pt_heroine.png"},
+    "VEILSTONE_CITY:Galactic Grunt ": {"sheet": "pt_gingam.png"},
+    "VEILSTONE_CITY:Galactic Grunt": {"sheet": "pt_gingam.png"},
     "VEILSTONE_CITY:Gentleman": {"sheet": "pt_gentleman.png"},
     "VEILSTONE_CITY:Lady ": {"sheet": "pt_lady.png"},
     "VEILSTONE_CITY:Candy seller": {"sheet": "pt_shopw1.png"},

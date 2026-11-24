@@ -1110,5 +1110,40 @@ check(_start and _one and _reach and _back,
       f"Veilstone Gym: a bag hit east slides to its stop and knocks the tires over; twelve hits open the way to Maylene; coming back in sets them up again ({_start}, {_one}, {_reach}, {_back})")
 story.story_flags.clear(); story.story_flags.update(_sv)
 
+# ---- S4 (11-24): the Galactic Warehouse raid as Platinum's (s_s4_warehouse.py): Dawn's Pokedex, a tag battle, Looker
+_sv = dict(story.story_flags); _inv = dict(story.inventory); _badges = list(story.badges.get("SINNOH", []))
+for _k in ("sinnoh_dawn_warehouse_call", "sinnoh_warehouse_guards_beaten", "sinnoh_warehouse_looker", "galactic_warehouse_cleared"):
+    story.story_flags.pop(_k, None)
+story.inventory.pop("STORAGE_KEY", None); story.inventory.pop("HM_FLY", None)
+story.badges["SINNOH"] = ["COAL", "FOREST", "COBBLE"]
+story.story_flags["defeated_dawn_veilstone"] = True   # (the older arrival battle with Dawn: out of the way)
+t = town("VEILSTONE_CITY", "SINNOH_ROUTE_215"); frames(t, 3)
+_shut = (25, 20) in t.barred
+t.player = t.anim_from = (12, 37); t.anim = 0; t.walk_goal = None   # (out of the Gym with the Cobble Badge)
+_drive(t, 600, lambda: story.story_flags.get("sinnoh_dawn_warehouse_call") and not t._busy())
+_dawn = next((s for s, o in t._people().items() if str(o.get("text")) == "Dawn"), None)
+_bs = None
+if _dawn:
+    t.player = t.anim_from = (_dawn[0] - 1, _dawn[1]); t.anim = 0
+    t._talk(_dawn); _drive(t, 400, lambda: "Battle" in type(g.current_state).__name__)
+    _bs = g.current_state
+story.story_flags["sinnoh_warehouse_guards_beaten"] = True   # (won)
+g.change_state(t); frames(t, 25)
+t.player = t.anim_from = (23, 20); t.anim = 0
+_drive(t, 900, lambda: story.story_flags.get("sinnoh_warehouse_looker") and not t._busy())
+_open = (25, 20) not in t.barred and not [s for s, o in t._people().items() if str(o.get("text")).startswith("Galactic Grunt")]
+t.player = t.anim_from = (29, 16); t.anim = 0; t.walk_goal = None; t.step(0, -1)
+_drive(t, 400, lambda: hasattr(g.current_state, "run"))
+frames(g.current_state, 5)
+r = g.current_state
+_lk = next((m for m in r.run.floor.movers if m.kind == "figure" and str((m.payload or {}).get("text")) == "Looker"), None) if hasattr(r, "run") else None
+if _lk is not None:
+    r._use_figure(_lk); _drive(r, 300, lambda: not (getattr(r, "dialogue_box", None) and r.dialogue_box.visible))
+_locked = hasattr(r, "run") and r.run.floor.tile(13, 2) == core.WALL   # (the rusty door to the Underpass: the Storage Key's)
+check(_locked and _shut and _dawn == (24, 20) and _bs is not None and story.story_flags.get("sinnoh_warehouse_looker") and _open
+      and _lk is not None and story.story_flags.get("galactic_warehouse_cleared"),
+      f"Galactic Warehouse: the Grunts block the lane; with the Cobble Badge Dawn asks for help; a tag battle; Looker leads you in and the mission ends; the Underpass door stays locked ({_locked}, {_shut}, {_dawn}, {type(_bs).__name__}, {_open}, {_lk is not None})")
+story.story_flags.clear(); story.story_flags.update(_sv); story.inventory.clear(); story.inventory.update(_inv); story.badges["SINNOH"] = _badges
+
 g.walk_towns = False
 print(f"##### {fails} failures")
