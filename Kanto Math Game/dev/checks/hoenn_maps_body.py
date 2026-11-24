@@ -3410,3 +3410,30 @@ check(all(_wt11.has(_sp11[k], "surf") and not (k != "HOENN_ROUTE_107" and _wt11.
       and _lv11 == [20, 25, 30] and _wt11.pool(_sp11["HOENN_ROUTE_107"], "grass").get("369") == 5
       and g.loader.area_data["HOENN_ROUTE_116_HORDE_PERCENTAGES"] == {"263": 60, "290": 35, "300": 5},
       f"Routes 105-109: ORAS's Surf slots and levels ({_lv11}), no land Pokemon, Route 107's seaweed; ORAS's hordes (Route 116)")
+
+# H8 (Jordan 11-24, questions/HOENN.md #10, as ORAS): the Team Hideout has one five-Poochyena group, your version's team,
+# first visit only; the story grunts leave once the Delta Episode's Lv 48-51 grunts take their places
+from src.world import hoenn as _hn10
+_v10 = story.story_flags.get("hoenn_version"); _f10 = dict(story.story_flags)
+_got10 = {}
+for _ver in ("OMEGA_RUBY", "ALPHA_SAPPHIRE"):
+    story.story_flags["hoenn_version"] = _ver
+    _hn10.apply_version(g)
+    _pool10 = g.loader.area_data["STORY_PROGRESSION"]["HOENN_TEAM_HIDEOUT"]["trainer_pool"]
+    _hordes = [t["name"] for t in _pool10 if list(t.get("team") or []) == [261] * 5]
+    _out = {}
+    for _when, _fl in (("story", {}), ("delta", {"beat_hoenn_champion": True, "delta_courtney_mossdeep": True, "delta_matt_mossdeep": True})):
+        for _k in ("beat_hoenn_champion", "delta_courtney_mossdeep", "delta_matt_mossdeep"):
+            story.story_flags.pop(_k, None)
+        story.story_flags.update(_fl)
+        _on = [t.get("spot_name") or t["name"] for i, t in enumerate(_pool10) if story.trainer_on_map("HOENN_TEAM_HIDEOUT", i, t)]
+        _out[_when] = (sum("Delta" in n for n in _on), sum("Delta" not in n and "Admin" not in n for n in _on))
+    _got10[_ver] = (_hordes, _out)
+story.story_flags.clear(); story.story_flags.update(_f10)
+if _v10 is None:
+    story.story_flags.pop("hoenn_version", None)
+_hn10.apply_version(g)
+check(_got10["OMEGA_RUBY"][0] == ["Team Magma Grunt"] and _got10["ALPHA_SAPPHIRE"][0] == ["Team Aqua Grunt"]
+      and all(o["story"][0] == 0 and o["story"][1] >= 6 and o["delta"] == (6, 0) for _h, o in _got10.values())
+      and "Team Aqua Grunts" not in _tm["HOENN_TEAM_HIDEOUT"]["floors"][0]["trainer_spots"],
+      f"Team Hideout: one Poochyena group, your version's; the story grunts give way to the Delta Episode's six ({_got10})")
