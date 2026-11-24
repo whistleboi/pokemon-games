@@ -15,19 +15,21 @@ def check(c, m):
 
 
 prog = g.loader.area_data["STORY_PROGRESSION"]
+exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())   # (Kanto is walked: its Center and routes on the map, 11-24)
+story.enter_region("KANTO")
+story.story_flags["received_starter_kanto"] = True   # (past Oak's lab: no "Don't go out there!" on the way home)
 
 print("1) whiteout -> last Pokemon Center")
 story.last_center = None
 story.current_area_key = "ROUTE_1"
 check(story.whiteout_destination() == ("PALLET_TOWN", False), f"no center yet -> home: {story.whiteout_destination()}")
-story.current_area_key = "VIRIDIAN_CITY"
-g.change_state(CityState(g))
-g.change_state(PokeCenterState(g, g.current_state))
-check(story.last_center == "VIRIDIAN_CITY", "using a center records it")
-story.current_area_key = "ROUTE_2"
+t = walk_town("VIRIDIAN_CITY", "KANTO_ROUTE_1")
+w = walk_meet(t, "Heal")   # (into the Center, up to the nurse's counter)
+check(story.last_center == "VIRIDIAN_CITY", f"using a center records it ({(w or [])[:1]})")
+story.current_area_key = "KANTO_ROUTE_2"
 story.player_team = [mk(25)]
 story.player_team[0].current_hp = 0
-b = TrainerBattleState(g, [mk(19)], "YOUNGSTER", "Joey", "ROUTE_2")
+b = TrainerBattleState(g, [mk(19)], "YOUNGSTER", "Joey", "KANTO_ROUTE_2")
 g.change_state(b)
 b.perform_battle_black_out()
 cs = g.current_state
@@ -36,7 +38,7 @@ check(isinstance(cs, PokeCenterState) and story.current_area_key == "VIRIDIAN_CI
 check(any("tough battle" in l for l in cs.dialogue_box.text_lines), f"nurse line: {cs.dialogue_box.text_lines}")
 check(story.player_team[0].current_hp == story.player_team[0].get_max_hp(), "team healed")
 cs.finish_heal()
-check(isinstance(g.current_state, CityState), "after the nurse you're in the town")
+check(isinstance(g.current_state, CityState) and walked(g.current_state), f"after the nurse you're in the town, on its map ({type(g.current_state).__name__})")
 
 # a center from another region doesn't count
 story.last_center = "VIRIDIAN_CITY"
@@ -47,9 +49,9 @@ check(story.area_region(dest[0]) == "JOHTO", f"in Johto, a Kanto center is skipp
 
 # overworld whiteout with no center -> home with Mom
 story.last_center = None
-story.current_area_key = "ROUTE_1"
-g.change_state(PlayState(g))
-g.current_state.perform_black_out()
+p = walk_route("KANTO_ROUTE_1", "PALLET_TOWN")
+check(walked(p), "Route 1 on its map")
+p.perform_black_out()
 boxes = [e for e in g.ui_manager.elements if isinstance(e, ClassicDialogueBox) and e.visible]
 check(story.current_area_key == "PALLET_TOWN" and boxes and any("Mom" in l for l in boxes[-1].text_lines),
       "no center used yet -> home, Mom heals")
@@ -75,8 +77,7 @@ check(len(story.badges["SINNOH"]) == 1 and story.check_requirements({"badges_les
 story.get_active_missions(); story.get_all_journal_entries()
 
 print("3) options")
-story.current_area_key = "VIRIDIAN_CITY"
-city = CityState(g); g.change_state(city)
+city = walk_town("VIRIDIAN_CITY", "KANTO_ROUTE_1")
 open_difficulty_options(g, city)
 op = g.current_state
 from src.states.systems.options import OptionsState

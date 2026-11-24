@@ -31,36 +31,41 @@ check(s["ATTACK"] == b["DEFENSE"] and s["DEFENSE"] == b["ATTACK"]
       and s["SPECIAL-ATTACK"] == b["SPECIAL-DEFENSE"] and s["SPECIAL-DEFENSE"] == b["SPECIAL-ATTACK"]
       and sum(s.values()) == sum(b.values()), f"Shadow Tyranitar stats swapped: {s}")
 
-# Snag: one button per area, next un-snagged Shadow each time, hidden when the area is done.
+# Snag: Orre is walked (legacy menu clear, Step 5, 11-24): the desert's SNAG figure; walk up and a Cipher trainer sends out
+# the next un-snagged Shadow each time; gone from the map when the area is done.
+exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())
+story.enter_region("ORRE")
 story.inventory["SNAG_MACHINE"] = 1
 story.story_flags["got_snag_machine"] = True   # (Snag menus open once Phenac's guards are beaten: the pilot, 11-20)
 story.story_flags["cipher_defeated"] = True
-story.current_area_key = "ORRE_DESERT"
-p = PlayState(g); g.change_state(p); p.show_progression_menu()
-btns = [b.text for b in p.route_buttons]
-check(btns.count("SNAG SHADOW POKEMON") == 1, f"one SNAG button: {btns}")
 pool = [e for e in SP["ORRE_DESERT"]["shadow_pool"] if not e.get("event_only")]   # (event_only: only its own battle has it, 11-21)
-check(p._next_shadow()["id"] == pool[0]["id"], "first snag is the area's first Shadow")
+p = walk_route("ORRE_DESERT", "PHENAC_CITY")
+walk_meet(p, "SNAG SHADOW POKEMON", fight=False)
+b_ = g.current_state
+check(getattr(getattr(b_, "opponent_pokemon", None), "id", None) == pool[0]["id"], f"walk up to the SNAG figure: the area's first Shadow ({type(b_).__name__})")
 story.story_flags[pool[0]["flag"]] = True
-check(p._next_shadow()["id"] == pool[1]["id"], "a snagged Shadow is skipped")
+p = walk_route("ORRE_DESERT", "PHENAC_CITY")
+walk_meet(p, "SNAG SHADOW POKEMON", fight=False)
+b_ = g.current_state
+check(getattr(getattr(b_, "opponent_pokemon", None), "id", None) == pool[1]["id"], "a snagged Shadow is skipped")
 for s_ in pool:
     story.story_flags[s_["flag"]] = True
-p.show_progression_menu()
-check("SNAG SHADOW POKEMON" not in [b.text for b in p.route_buttons], "SNAG hidden once the area is cleared")
+p = walk_route("ORRE_DESERT", "PHENAC_CITY")
+check(walk_who(p, "SNAG SHADOW POKEMON") is None, "SNAG figure gone once the area is cleared")
 for s_ in pool:
     story.story_flags.pop(s_["flag"], None)
 
-# XD: Gateon Port opens after Ein's lab (Orre as a region, 10-27), lairs open in order.
-story.story_flags["orre_ein_lab"] = True
-story.current_area_key = "PHENAC_CITY"
-c = CityState(g); g.change_state(c); c.open_travel_menu()
+# XD: Gateon Port opens on the bike's list after Ein's lab (Orre as a region, 10-27), lairs open in order.
+story.story_flags["orre_ein_lab"] = story.story_flags["orre_part2"] = True
+t = walk_town("PHENAC_CITY", "ORRE_DESERT")
 # (the button toward the Journal's next mission starts "> ": the way to Lovrina's lab, 11-01)
-check("Gateon Port" in [b.text.lstrip("> ") for b in c.hover_buttons], "Gateon Port opens after Ein's lab")
-story.current_area_key = "GATEON_PORT"
+check("Gateon Port" in [x.lstrip("> ") for x in walk_door(t, "cycle") or []], "Gateon Port opens after Ein's lab")
 story.story_flags["xd_machine_part_given"] = True   # (11-20, Orre batch 5a: the Cipher Lab joins the map once Datan has traced Cipher's car)
-c = CityState(g); g.change_state(c); c.open_travel_menu()
-t = [b.text.lstrip("> ") for b in c.hover_buttons]
-check("Cipher Lab" in t and "ONBS Building" not in t, f"XD lairs gated: {t}")
+story.badges.setdefault("ORRE", []).append("GATEON")   # (...and Gateon's badge is won: its condition since batch 5a)
+t = walk_town("GATEON_PORT", "PHENAC_CITY")
+tx = [x.lstrip("> ") for x in walk_door(t, "cycle") or []]
+check("Cipher Lab" in tx and "ONBS Building" not in tx, f"XD lairs gated: {tx}")
+story.badges["ORRE"].remove("GATEON")
 
 # Pokedex: a Shadow Pokemon is its own variant entry.
 g.data.data["pokedex"] = {}
@@ -71,8 +76,7 @@ check(set(g.data.data["pokedex"]) == {"9399-shadow"}, f"Shadow Tyranitar registe
 sh1 = Pokemon(g.loader.fetch_specific(9348), g.assets, size_mult=2.5); sh1.level = 40   # Bayleef
 sh2 = Pokemon(g.loader.fetch_specific(9406), g.assets, size_mult=2.5); sh2.level = 20   # Makuhita
 story.player_team = [sh1, sh2]
-story.current_area_key = "AGATE_VILLAGE"
-c = CityState(g); g.change_state(c)
+c = walk_town("AGATE_VILLAGE", "ORRE_DESERT")
 shown = []
 _run_story_event(c, {"purify": "choose", "lines": ["The Relic Stone glows."]}, lambda cond: True, shown.append)
 menu = g.current_state
