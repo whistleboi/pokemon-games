@@ -406,6 +406,8 @@
     "VIOLET_CITY:Strawberry": {
       "pokemon": 16
     },
+    "VIRIDIAN_CITY:Jessie and James": {"sheet": "oi_74.png"},
+    "VIRIDIAN_CITY:Jessie": {"sheet": "oi_75.png"},
     "NATIONAL_PARK:TM055": {
       "item": "POKE_BALL"
     },
