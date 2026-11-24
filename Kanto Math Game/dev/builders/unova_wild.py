@@ -35,7 +35,8 @@ PLACES = {"ASPERTIA_CITY": 427, "UNOVA_ROUTE_19": 437, "UNOVA_ROUTE_20": 446, "F
           "REVERSAL_MOUNTAIN": 461, "REVERSAL_MOUNTAIN_INSIDE": 533, "STRANGE_HOUSE": 462,
           "REVERSAL_MOUNTAIN_ENTRY": 531, "REVERSAL_MOUNTAIN_SOUTH": 535,
           "UNDELLA_TOWN": 412, "UNDELLA_BAY": 240, "UNOVA_ROUTE_13": 370,   # (batch 7b)
-          "UNOVA_ROUTE_12": 368, "VILLAGE_BRIDGE": 255, "UNOVA_ROUTE_11": 365}   # (batch 8a)   # (batch 7a: both versions' chambers share the tables)
+          "UNOVA_ROUTE_12": 368, "VILLAGE_BRIDGE": 255, "UNOVA_ROUTE_11": 365,   # (batch 8a)
+          "UNOVA_ROUTE_9": 348}   # (batch 8b)   # (batch 7a: both versions' chambers share the tables)
 P = os.path.join(GAME, "assets", "unova_area_data.json")
 NL = "\r\n"
 

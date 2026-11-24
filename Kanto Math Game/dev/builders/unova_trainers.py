@@ -41,7 +41,8 @@ PLACES = {"NIMBASA_CITY": [62, 64, 63, 585], "UNOVA_ROUTE_16": [383], "LOSTLORN_
           "REVERSAL_MOUNTAIN": [461],   # (batch 7a: the mountainside's Cyclists; inside, each version's own chamber)
           "REVERSAL_MOUNTAIN_INSIDE": [(533, "unova_version:BLACK_2"), (539, "unova_version:WHITE_2")],
           "UNOVA_ROUTE_13": [370], "UNDELLA_BAY": [240],   # (batch 7b)
-          "UNOVA_ROUTE_12": [368], "VILLAGE_BRIDGE": [255], "UNOVA_ROUTE_11": [365]}   # (batch 8a)
+          "UNOVA_ROUTE_12": [368], "VILLAGE_BRIDGE": [255], "UNOVA_ROUTE_11": [365],   # (batch 8a)
+          "UNOVA_ROUTE_9": [348]}   # (batch 8b)
 EXTRA = {"UNOVA_ROUTE_5": [(339, "unova_version:BLACK_2"), (340, "unova_version:WHITE_2")]}   # (Charles at the drawbridge)
 CLASS_FIX = {"⒆⒇": "Pokemon", "⑮": "F", "⑭": "M"}   # (the file's PKMN glyph, female / male signs)
 # Story and Gym battles that aren't standing trainers: written to town_maps/unova_teams.json {id: entry} for unova.py's _b2(id)
@@ -61,7 +62,8 @@ TEAMS = [207, 208, 209, 153,                     # Elesa's Beauties, Elesa
          701, 702, 703, 704, 705,                # (batch 7b) Lacunosa: Hugh as your partner (by your starter), Zinzolin, his Grunt
          177, 335,                               # (batch 8a) Village Bridge: Gentleman Stonewall's 1,000th battle; Baker Chris
          381, 382, 383, 384, 385, 159,           # Drayden's Veterans (Lucius; Jerry / Rhona; Ron / Denae) and Drayden
-         585, 586, 587, 584, 583]                # Opelucid frozen: three Grunts, Zinzolin, the Shadow Triad
+         585, 586, 587, 584, 583,                # Opelucid frozen: three Grunts, Zinzolin, the Shadow Triad
+         12, 11]                                 # (batch 8b) Shopping Mall Nine: Waitress Olwen, Waiter Lou
 # Battle pictures where the class slug isn't the file's name (a/0/7/1 slots matched by eye, 11-23; a class without its own
 # Black 2 picture keeps the same class from Platinum, never another class's look)
 BY_CLASS = {0: "b2_nate.png", 1: "b2_rosa.png", 90: "pt_cyclist_m.png", 91: "pt_cyclist_f.png", 33: "pt_artist.png",

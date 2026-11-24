@@ -48,6 +48,7 @@
    "WINTER": "r_d_wi"
   },
   "LOSTLORN_FOREST": "d_06",
+  "MARINE_TUBE": "sw_h_06",
   "MISTRALTON_CAVE": "d_02",
   "MISTRALTON_CAVE_2F": "d_02",
   "MISTRALTON_CITY": "c_06",
@@ -146,6 +147,12 @@
    "SUMMER": "r_d_su",
    "WINTER": "r_d_wi"
   },
+  "UNOVA_ROUTE_9": {
+   "AUTUMN": "r_d_au",
+   "SPRING": "r_d_sp",
+   "SUMMER": "r_d_su",
+   "WINTER": "r_d_wi"
+  },
   "VILLAGE_BRIDGE": "h_04",
   "VIRBANK_CITY": "sw_c_13",
   "VIRBANK_COMPLEX": "sw_d_23",
@@ -186,6 +193,7 @@
   "LIBERTY_GARDEN:lighthouse": "d_03",
   "LIBERTY_GARDEN:victini_room": "d_03",
   "LOSTLORN_FOREST:grotto": "kemonomichi",
+  "MARINE_TUBE:gate_n": "gate",
   "MISTRALTON_CITY:center": "pokecen",
   "MISTRALTON_CITY:gym": "flight_gym_01",
   "NIMBASA_CITY:car": "battle_subway",
@@ -212,6 +220,7 @@
   "PWT:stadium": "wbt_ground",
   "UNDELLA_TOWN:center": "pokecen",
   "UNDELLA_TOWN:gate": "gate",
+  "UNDELLA_TOWN:tube": "gate",
   "UNOVA_ROUTE_13:grotto": "kemonomichi",
   "UNOVA_ROUTE_13:grotto2": "kemonomichi",
   "UNOVA_ROUTE_16:bridge_gate": "gate",
@@ -219,6 +228,9 @@
   "UNOVA_ROUTE_6:grotto": "kemonomichi",
   "UNOVA_ROUTE_6:grotto2": "kemonomichi",
   "UNOVA_ROUTE_7:grotto": "kemonomichi",
+  "UNOVA_ROUTE_9:gate_w": "gate",
+  "UNOVA_ROUTE_9:mall": "fs",
+  "UNOVA_ROUTE_9:stockroom": "fs",
   "VILLAGE_BRIDGE:gate_e": "gate",
   "VILLAGE_BRIDGE:gate_w": "gate",
   "VIRBANK_CITY:center": "pokecen",

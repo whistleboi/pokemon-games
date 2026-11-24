@@ -26,6 +26,12 @@ def condition(story, arg):
     if arg.startswith("party_level:"):   # (a Pokemon with you at that level or more: Driftveil Market's Expert Belt man, 11-24)
         want = int(arg.split(":", 1)[1])
         return any(p and not getattr(p, "is_egg", False) and int(getattr(p, "level", 0) or 0) >= want for p in story.player_team)
+    if arg.startswith("hour:"):   # (the real clock's hour, 0-23: the Marine Tube's Wailord swims by from 3 to 4 pm; 8b)
+        import datetime
+        return datetime.datetime.now().hour == int(arg.split(":", 1)[1])
+    if arg.startswith("holding:"):   # (a Pokemon with you holds this item: the Marine Tube's Roxie fan, a Poison Barb; 8b)
+        want = arg.split(":", 1)[1]
+        return any(p and getattr(p, "held_item", None) == want for p in story.player_team)
     if arg.startswith("party_ability:"):   # (a Pokemon with you that has this Ability: Village Bridge's baker, Honey Gather; 8a)
         want = arg.split(":", 1)[1].upper().replace("_", "-")
         return any(p and not getattr(p, "is_egg", False) and str(getattr(p, "ability", "") or "").upper().replace("_", "-") == want
@@ -188,6 +194,32 @@ def _medal_paint(story, show):
     show(["Oh! Your Medal Box...", line, "Your Medal Box was painted %s!" % paint])
 
 
+def _potion_errand(story, show):
+    import datetime
+    flags = story.story_flags
+    today = datetime.date.today().isoformat()
+    if flags.get("b2_mall_lady_done"):
+        show(["Shopping is so much fun! I'm thrilled with all I've accomplished!"])
+        return
+    day = flags.get("b2_mall_lady_day")
+    if not day:
+        flags["b2_mall_lady_day"] = today
+        story.money = int(getattr(story, "money", 0) or 0) + 1200
+        show(["I'm a Lady... I'm having ever so much trouble finding out what is sold where.",
+              "Would you be so kind as to buy a Hyper Potion for me? Here is the money for it.", "You received $1,200!"])
+        return
+    if not story.inventory.get("HYPER_POTION"):
+        show(["Did I not ask you to buy a Hyper Potion for me? Please! I'm waiting."])
+        return
+    story.inventory["HYPER_POTION"] -= 1
+    gift = "ENERGY_ROOT" if day == today else "ENERGY_POWDER"
+    story.inventory[gift] = story.inventory.get(gift, 0) + 1
+    flags["b2_mall_lady_done"] = True
+    show(["It's a Hyper Potion!" + (" Thank you for buying it so quickly!" if gift == "ENERGY_ROOT"
+                                    else " It feels as though I've been waiting ever so long. But I'm happy to have it."),
+          "This isn't much, but please take it.", "You received %s!" % ("an Energy Root" if gift == "ENERGY_ROOT" else "an Energy Powder")])
+
+
 def event(state, ev, lines, show):
     """{"toggle": flag}: flip a flag (the roller coaster's switches: each press changes a car's route).
     {"move_lady": true}: Driftveil Luxury Suites' lady: show her a Pokemon that knows today's move, a Heart Scale (once a day).
@@ -246,6 +278,17 @@ def event(state, ev, lines, show):
         return _daily_catch(state, story, ev["daily_catch"], show)
     if ev.get("daily_prop"):    # (batch 8a: Opelucid's Musical fan: one of his four Props a day, till you have them all)
         return _daily_prop(state, story, ev["daily_prop"], show)
+    if ev.get("rotom_form"):   # (batch 8b: Shopping Mall Nine's stockroom: an appliance box changes your Rotom's form)
+        from src.pokemon import forms
+        slot = next((i for i, p in enumerate(story.player_team) if p and int(getattr(p, "id", 0) or 0) == forms.ROTOM), None)
+        if slot is None:
+            show(lines or ["A mountain of boxes full of appliances. They're going to waste..."])
+            return
+        said = forms.rotom_change(state.game, slot, ev["rotom_form"]) or []
+        show(list(lines or []) + list(said))
+        return
+    if ev.get("potion_errand"):   # (batch 8b: the Mall's Lady: $1,200 for a Hyper Potion; that day an Energy Root, later EnergyPowder)
+        return _potion_errand(story, show)
     if ev.get("medal_paint"):   # (batch 8a extras: every Center's Medal Box painter, by how many Medals you have)
         return _medal_paint(story, show)
     if ev.get("mimic") is not None:   # (batch 8a extras: Opelucid's Mimic game, upstairs in the old Battle House)
