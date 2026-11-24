@@ -31,6 +31,9 @@ VERSION_WORDS = {"team": "Team Magma/Aqua", "team_short": "Magma/Aqua", "leader"
                  "other_legend": "Kyogre/Groudon", "orb": "Red/Blue Orb", "other_orb": "Blue/Red Orb", "eon": "Latios/Latias",
                  "goal": "expand the land/sea", "admin": "Tabitha/Shelly", "other_team": "Team Aqua/Magma",
                  "other_team_short": "Aqua/Magma", "other_leader": "Archie/Maxie", "other_admin": "Shelly/Tabitha"}
+UNOVA_WORDS = {"other_legend": "Reshiram/Zekrom", "legend": "Zekrom/Reshiram", "kyurem": "Black/White Kyurem",
+               "version": "Black 2/White 2", "other_city": "White Forest/Black City", "city": "Black City/White Forest"}
+CUR = {"region": None}   # (the region of the place being read: place() sets it, fix() uses it)
 VILLAIN_NAMES = {"grunt": "Team Magma/Aqua Grunt", "admin_a": "Magma/Aqua Admin Tabitha/Shelly",
                  "admin_b": "Magma/Aqua Admin Courtney/Matt", "leader": "Magma/Aqua Leader Maxie/Archie"}
 VERSION_SWAP = {318: 322, 319: 323, 322: 318, 323: 319}   # (Carvanha / Sharpedo for Aqua, Numel / Camerupt for Magma)
@@ -41,6 +44,8 @@ def fix(s):
     if not isinstance(s, str):
         return s
     s = s.replace("Ã©", "é").replace("�", "é")
+    for t, w in (UNOVA_WORDS if CUR["region"] == "UNOVA" else {}).items():   # (Black 2 first, src/world/unova_version.py)
+        s = s.replace("{" + t + "}", w)
     for t, w in VERSION_WORDS.items():   # (Hoenn's text names both versions: src/world/hoenn.py fills one in when you choose)
         s = s.replace("{" + t + "}", w)
     s = re.sub(r"\bPoke(?=mon|\s?Ball|dex|\s?Mart|\s?Doll|\s?Flute|\s?Center|$|\b)", "Poké", s)
@@ -108,6 +113,16 @@ for k, v in SINNOH.items():   # (Sinnoh's own file, merged the same way)
         DATA[k] = dict(v, **DATA[k])
     elif k not in DATA:
         DATA[k] = v
+UNOVA = load("unova_area_data.json")
+for k, v in UNOVA.items():   # (Unova's own file, merged the same way)
+    if k == "STORY_PROGRESSION":
+        DATA[k] = dict(DATA[k], **v)
+    elif k == "JOURNAL_MISSIONS":
+        continue
+    elif isinstance(v, dict) and isinstance(DATA.get(k), dict):
+        DATA[k] = dict(v, **DATA[k])
+    elif k not in DATA:
+        DATA[k] = v
 # The game's overlays (src/core/game.py _apply_overlays: Hoenn's ORAS trainers, canon teams, items and gifts), applied the
 # same way the game does at load: the function and its file list are read from the game's own code.
 _G = open(os.path.join(ROOT, "src", "core", "game.py"), encoding="utf-8").read()
@@ -117,7 +132,8 @@ exec(re.search(r"^def _apply_overlays\(.*?(?=^\S)", _G, re.M | re.S).group(0), _
 _ns["_apply_overlays"](A, DATA)
 PLACES = DATA["STORY_PROGRESSION"]
 MISSIONS = (AREA["GAME_CONFIG"]["JOURNAL_MISSIONS"] + SEVII.get("JOURNAL_MISSIONS", []) + JOHTO.get("JOURNAL_MISSIONS", [])
-            + ORANGE.get("JOURNAL_MISSIONS", []) + HOENN.get("JOURNAL_MISSIONS", []) + SINNOH.get("JOURNAL_MISSIONS", []))
+            + ORANGE.get("JOURNAL_MISSIONS", []) + HOENN.get("JOURNAL_MISSIONS", []) + SINNOH.get("JOURNAL_MISSIONS", [])
+            + UNOVA.get("JOURNAL_MISSIONS", []))
 
 
 def region_of(key):
@@ -131,6 +147,8 @@ def region_of(key):
         return "HOENN"
     if key in SINNOH["STORY_PROGRESSION"]:
         return "SINNOH"
+    if key in UNOVA["STORY_PROGRESSION"]:
+        return "UNOVA"
     return "KANTO"
 MAPS = load("town_maps.json")
 LEVELS = load("area_levels.json")
@@ -348,12 +366,46 @@ def fishable(key):
     return bool(p.get("can_fish")) or any(f"{key}_{r}_PERCENTAGES" in DATA for r in ("OLD_ROD", "GOOD_ROD", "SUPER_ROD"))
 
 
+SLOT_KINDS = {"grass": None, "dark": "Dark grass", "rustle": "Rustling grass", "surf": "Surfing", "ripple": "Rippling water",
+              "fish": "Fishing", "fish_ripple": "Fishing (ripples)"}
+SEASON_WORDS = {"SPRING": "Spring", "SUMMER": "Summer", "AUTUMN": "Autumn", "WINTER": "Winter"}
+
+
+def slot_tables(p, key, out):
+    """B2W2-style slot tables (src/world/wild_tables.py): the walked map takes them first, on land, on the water and on a
+    rod (route_actions.py: their own levels whatever rod), each slot with its own levels; by season where they change."""
+    t = p["wild_tables"]
+    seasons = [s for s in ("SPRING", "SUMMER", "AUTUMN", "WINTER") if s in t] or ["ALL"]
+    land, water = {}, {}
+    phen = ("Dust clouds" if p.get("phenomena") == "dust" else
+            "Flying shadows" if not has_grass(key) and land_kind(p, key) != "Cave" else "Rustling grass")   # (phenomena.py)
+    for kind, label in SLOT_KINDS.items():
+        label = phen if kind == "rustle" else (label or land_kind(p, key))
+        rows = {}
+        for sn in seasons:
+            for sp, form, chance, lo, hi in (t.get(sn) or t.get("ALL") or {}).get(kind) or []:
+                e = rows.setdefault(int(sp), {"id": int(sp), "how": label, "lv": [lo, hi], "rate": 0.0, "times": {},
+                                              "kind": list(SLOT_KINDS).index(kind)})
+                e["lv"] = [min(e["lv"][0], lo), max(e["lv"][1], hi)]
+                w = SEASON_WORDS.get(sn, "Rate")
+                e["times"][w] = e["times"].get(w, 0.0) + chance
+        for e in rows.values():
+            e["rate"] = max(e["times"].values())
+            if seasons == ["ALL"] or len(set(e["times"].values())) == 1 and len(e["times"]) == len(seasons):
+                e.pop("times")   # (the same all year: one Rate column)
+        (water if kind in ("surf", "ripple", "fish", "fish_ripple") else land).update({(kind, k): v for k, v in rows.items()})
+    out["land"] = sorted(land.values(), key=lambda r: (r["kind"], -r["rate"]))
+    out["water"] = sorted(water.values(), key=lambda r: (list(SLOT_KINDS).index(next(k for k, v in SLOT_KINDS.items() if v == r["how"])), -r["rate"]))
+    out["zones"] = []
+    out["slot_seasons"] = seasons
+
+
 def wild(key):
     p = PLACES.get(key) or {}
     town = p.get("area_type") in ("town", "city") or key.endswith(("_TOWN", "_CITY", "_ISLAND"))
     out = {"land": [], "zones": [], "water": [], "trees": [], "notes": []}
     if p.get("wild_tables"):
-        out["notes"].append("has wild_tables (slot data) - not read by this tool yet")
+        out["notes"].append("wild Pokemon from the area's wild_tables (slot data, src/world/wild_tables.py)")
     band = land_band(key)
     if p.get("wild_levels"):
         out["notes"].append(f"land levels fixed by the area's wild_levels {band}")
@@ -428,6 +480,8 @@ def wild(key):
                 r["ours"] = region_of(key) == "SEVII"   # (Orange: unknown whether the fan game has them, so no tag)   # (HGSS has Headbutt trees, in Johto and Kanto; not on the Sevii Islands)
                 out["trees"].append(r)
         out["tree_pool"] = tp
+    if p.get("wild_tables"):
+        slot_tables(p, key, out)
     out["hordes"], out["dexnav"] = [], []
     hp, hr = p.get("horde_pool_percentages"), float(p.get("horde_rate") or 0)
     if hp and DATA.get(hp) and hr > 0:
@@ -629,6 +683,7 @@ def gym_levels(key, size):
 
 
 def place(key):
+    CUR["region"] = region_of(key)
     p = PLACES.get(key) or {}
     m = MAPS.get(key) or {}
     by = menu(key)
@@ -783,8 +838,10 @@ def region_keys(region):
         return [k for k in MAPS if k in HOENN["STORY_PROGRESSION"]]
     if region == "SINNOH":
         return [k for k in MAPS if k in SINNOH["STORY_PROGRESSION"]]
+    if region == "UNOVA":
+        return [k for k in MAPS if k in UNOVA["STORY_PROGRESSION"]]
     kanto = (set(AREA["STORY_PROGRESSION"]) - sevii - set(JOHTO["STORY_PROGRESSION"]) - set(ORANGE["STORY_PROGRESSION"])
-             - set(HOENN["STORY_PROGRESSION"]) - set(SINNOH["STORY_PROGRESSION"]))
+             - set(HOENN["STORY_PROGRESSION"]) - set(SINNOH["STORY_PROGRESSION"]) - set(UNOVA["STORY_PROGRESSION"]))
     return [k for k in MAPS if k in kanto and (AREA["STORY_PROGRESSION"][k].get("region") in (None, "KANTO"))]
 
 

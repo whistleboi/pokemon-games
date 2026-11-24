@@ -580,7 +580,8 @@ def _run_story_event(state, key, check, show):
             show(_resolve_lines(game, ev.get("full") or ["You have no room in your party for it."]))
             return
         before = len(story.player_team)
-        lines.append(story_events.gift_pokemon(game, gift, ev.get("gift_level"), ev.get("gift_held")))
+        lines.append(story_events.gift_pokemon(game, gift, ev.get("gift_level"), ev.get("gift_held"),
+                                               ev.get("gift_ability"), bool(ev.get("gift_no_shiny"))))   # (a set Ability: Route 6's Deerling)
         gm = ev.get("gift_moves")   # {"if": flag, "moves": [...], "else": [...]}: the Dragon Shrine's Dratini (Extreme Speed or Leer)
         if gm and len(story.player_team) > before:
             mon = story.player_team[-1]

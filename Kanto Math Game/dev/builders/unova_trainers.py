@@ -34,7 +34,9 @@ P = os.path.join(GAME, "assets", "unova_area_data.json")
 SPRITES = os.path.join(GAME, "assets", "sprites", "trainers")
 # area -> zones whose standing trainers it holds (batch 4a, 11-23)
 PLACES = {"NIMBASA_CITY": [62, 64, 63, 585], "UNOVA_ROUTE_16": [383], "LOSTLORN_FOREST": [385], "UNOVA_ROUTE_5": [329],
-          "RELIC_PASSAGE": [503], "RELIC_PASSAGE_MIDDLE": [504], "RELIC_PASSAGE_NORTH": [505]}   # (batch 5b, 11-24)
+          "RELIC_PASSAGE": [503], "RELIC_PASSAGE_MIDDLE": [504], "RELIC_PASSAGE_NORTH": [505],   # (batch 5b, 11-24)
+          "UNOVA_ROUTE_6": [331], "MISTRALTON_CAVE": [333], "MISTRALTON_CAVE_2F": [334],   # (batch 6a, 11-24)
+          "CHARGESTONE_CAVE": [195], "CHARGESTONE_CAVE_B1F": [196], "CHARGESTONE_CAVE_B2F": [197]}
 EXTRA = {"UNOVA_ROUTE_5": [(339, "unova_version:BLACK_2"), (340, "unova_version:WHITE_2")]}   # (Charles at the drawbridge)
 CLASS_FIX = {"⒆⒇": "Pokemon", "⑮": "F", "⑭": "M"}   # (the file's PKMN glyph, female / male signs)
 # Story and Gym battles that aren't standing trainers: written to town_maps/unova_teams.json {id: entry} for unova.py's _b2(id)

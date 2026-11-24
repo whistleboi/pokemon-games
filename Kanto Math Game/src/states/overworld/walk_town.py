@@ -286,6 +286,7 @@ class WalkTownState(TownWalkUps, CityState):
         self._bar_list = m.get("barred", [])
         self._edge_to = m.get("edge_to") or {}  # (out by this edge tile: in at its partner on the next map, Emerald's own connection)
         self.thin_ice = m.get("thin_ice")  # (Sootopolis Gym's: crack every tile of a section and its stairs open; twice, and you fall)
+        self.gardens = m.get("gardens")  # (a number garden: step on beds whose numbers make the target - Orre's Agate Gym, src/world/number_garden.py)
         self.pits = m.get("pits")  # (a pit round the path: step off it and you fall back to "to", HGSS's Ecruteak Gym: {"chars", "to", "lines"})
         self.turnstiles = m.get("turnstiles")  # (Emerald's rotating gates: Fortree Gym's, turned by walking into an arm)
         self.rotators = m.get("rotators")  # (Emerald's rotating tile puzzle: Mossdeep Gym's blocks, turned by its coloured switches)
@@ -1218,6 +1219,9 @@ class WalkTownState(TownWalkUps, CityState):
         if getattr(self, "thin_ice", None) and self._step_ice(to):
             return
         self._step_switch(to)
+        if getattr(self, "gardens", None):
+            from src.world import number_garden as _garden
+            _garden.step(self, to)
         if to not in self.exits and (self._surf_wild(to) or self._grass_wild(to) or self._room_wild(to)):
             return
         if to in self.exits:
@@ -2221,6 +2225,9 @@ class WalkTownState(TownWalkUps, CityState):
 
         if getattr(self, "thin_ice", None):
             self._draw_ice(screen, at)
+        if getattr(self, "gardens", None):
+            from src.world import number_garden as _garden
+            _garden.draw(self, screen, at, fonts)
         if self.walk_goal:
             theme.tap_marker(screen, at(self.walk_goal))
         if self.tap_mark and self.tap_mark[2] > 0 and self.tap_mark[0] != self.walk_goal:

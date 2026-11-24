@@ -2,6 +2,42 @@
   "UNOVA_OLD_ROD_POOL_PERCENTAGES": {"550": 40, "118": 30, "129": 30},
   "UNOVA_GOOD_ROD_POOL_PERCENTAGES": {"550": 35, "118": 25, "592": 25, "339": 15},
   "UNOVA_SUPER_ROD_POOL_PERCENTAGES": {"550": 25, "592": 25, "594": 15, "119": 15, "223": 10, "90": 10},
+  "CHARGESTONE_CAVE_B2F_PERCENTAGES": {
+    "595": 36,
+    "599": 21,
+    "597": 20,
+    "299": 10,
+    "602": 8,
+    "525": 5
+  },
+  "CHARGESTONE_CAVE_B1F_PERCENTAGES": {
+    "595": 39,
+    "599": 24,
+    "597": 20,
+    "299": 10,
+    "525": 5,
+    "602": 2
+  },
+  "GUIDANCE_CHAMBER_PERCENTAGES": {
+    "525": 30,
+    "527": 30,
+    "304": 20,
+    "610": 20
+  },
+  "MISTRALTON_CAVE_2F_PERCENTAGES": {
+    "525": 30,
+    "527": 30,
+    "304": 20,
+    "610": 20
+  },
+  "UNOVA_ROUTE_6_SUPER_ROD_PERCENTAGES": {
+    "60": 70,
+    "550": 30
+  },
+  "UNOVA_ROUTE_6_SURF_PERCENTAGES": {
+    "550": 70,
+    "183": 30
+  },
   "RELIC_CASTLE_DEPTHS_PERCENTAGES": {
     "562": 40,
     "551": 30,
@@ -9596,22 +9632,813 @@
       "region": "UNOVA",
       "battle_type": "cave",
       "wild_pool_percentages": "UNOVA_CHARGESTONE_CAVE_PERCENTAGES",
-      "min_rounds": 3,
-      "backgrounds": { "main": "chargestone_cave.png", "battle": "battle_chargestone_cave.png" },
-      "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
+      "min_rounds": 1,
+      "route_menu": [],
+      "trainer_pool": [
         {
-          "text": "Battle N in the Cave",
-          "action": "NPC",
-          "target": "n_chargestone",
-          "condition": "has_quake_badge",
-          "flag_condition": "not defeated_n_chargestone",
-          "color": "GOLD"
+          "name": "Scientist Ronald",
+          "class": "SCIENTIST",
+          "sprite": "b2_scientist_m.png",
+          "team": [
+            82
+          ],
+          "levels": [
+            30
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 541
         },
-        { "text": "Route 6", "action": "EXIT", "target_area": "UNOVA_ROUTE_6", "condition": "can_exit", "color": "RED" },
-        { "text": "Mistralton City", "action": "EXIT", "target_area": "MISTRALTON_CITY", "condition": "can_exit", "color": "RED" }
-      ]
+        {
+          "name": "Guitarist Anna",
+          "class": "GUITARIST",
+          "sprite": "b2_guitarist.png",
+          "team": [
+            587
+          ],
+          "levels": [
+            30
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 537
+        },
+        {
+          "name": "Ace Trainer Corky",
+          "class": "ACE_TRAINER",
+          "sprite": "ace_trainer.png",
+          "team": [
+            28,
+            521,
+            599
+          ],
+          "levels": [
+            33,
+            33,
+            33
+          ],
+          "rewards": {
+            "balls": 4
+          },
+          "b2_id": 546,
+          "battle_options": {
+            "double": true
+          }
+        },
+        {
+          "name": "Ace Trainer Mary",
+          "class": "ACE_TRAINER",
+          "sprite": "ace_trainer.png",
+          "team": [
+            564,
+            126
+          ],
+          "levels": [
+            34,
+            34
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 548
+        },
+        {
+          "name": "Pokemon Ranger Louis",
+          "class": "RANGER",
+          "sprite": "ranger.png",
+          "team": [
+            181
+          ],
+          "levels": [
+            34
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 544
+        },
+        {
+          "name": "Hiker Otto",
+          "class": "HIKER",
+          "sprite": "b2_hiker.png",
+          "team": [
+            304,
+            299
+          ],
+          "levels": [
+            32,
+            32
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 539
+        }
+      ],
+      "wild_tables": {
+        "ALL": {
+          "grass": [
+            [
+              595,
+              0,
+              20,
+              25,
+              25
+            ],
+            [
+              599,
+              0,
+              20,
+              26,
+              26
+            ],
+            [
+              595,
+              0,
+              10,
+              26,
+              26
+            ],
+            [
+              299,
+              0,
+              10,
+              27,
+              27
+            ],
+            [
+              597,
+              0,
+              10,
+              26,
+              26
+            ],
+            [
+              597,
+              0,
+              10,
+              27,
+              27
+            ],
+            [
+              595,
+              0,
+              5,
+              27,
+              27
+            ],
+            [
+              525,
+              0,
+              5,
+              25,
+              25
+            ],
+            [
+              595,
+              0,
+              4,
+              28,
+              28
+            ],
+            [
+              599,
+              0,
+              4,
+              28,
+              28
+            ],
+            [
+              602,
+              0,
+              1,
+              28,
+              28
+            ],
+            [
+              602,
+              0,
+              1,
+              28,
+              28
+            ]
+          ],
+          "rustle": [
+            [
+              529,
+              0,
+              20,
+              25,
+              25
+            ],
+            [
+              529,
+              0,
+              20,
+              25,
+              25
+            ],
+            [
+              529,
+              0,
+              10,
+              26,
+              26
+            ],
+            [
+              529,
+              0,
+              10,
+              26,
+              26
+            ],
+            [
+              529,
+              0,
+              10,
+              27,
+              27
+            ],
+            [
+              529,
+              0,
+              10,
+              27,
+              27
+            ],
+            [
+              529,
+              0,
+              5,
+              28,
+              28
+            ],
+            [
+              529,
+              0,
+              5,
+              28,
+              28
+            ],
+            [
+              529,
+              0,
+              4,
+              28,
+              28
+            ],
+            [
+              529,
+              0,
+              4,
+              28,
+              28
+            ],
+            [
+              529,
+              0,
+              1,
+              28,
+              28
+            ],
+            [
+              529,
+              0,
+              1,
+              28,
+              28
+            ]
+          ]
+        }
+      },
+      "wild_levels": {
+        "land": [
+          25,
+          28
+        ]
+      },
+      "phenomena": "dust"
+    },
+    "CHARGESTONE_CAVE_ENTRANCE": {
+      "area_type": "wild_route",
+      "route_name": "Chargestone Cave",
+      "region": "UNOVA",
+      "battle_type": "grass",
+      "min_rounds": 0,
+      "route_menu": [],
+      "trainer_pool": []
+    },
+    "CHARGESTONE_CAVE_B1F": {
+      "area_type": "dungeon",
+      "region": "UNOVA",
+      "battle_type": "cave",
+      "min_rounds": 1,
+      "route_menu": [],
+      "route_name": "Chargestone Cave",
+      "trainer_pool": [
+        {
+          "name": "Pokemon Ranger Briana",
+          "class": "RANGER",
+          "sprite": "ranger.png",
+          "team": [
+            572,
+            530
+          ],
+          "levels": [
+            33,
+            33
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 543
+        },
+        {
+          "name": "Scientist Lumi",
+          "class": "SCIENTIST",
+          "sprite": "b2_scientist_f.png",
+          "team": [
+            595,
+            42
+          ],
+          "levels": [
+            32,
+            32
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 542
+        },
+        {
+          "name": "Doctor Kit",
+          "class": "DOCTOR",
+          "sprite": "b2_doctor.png",
+          "team": [
+            577,
+            574
+          ],
+          "levels": [
+            32,
+            32
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 671
+        }
+      ],
+      "wild_pool_percentages": "CHARGESTONE_CAVE_B1F_PERCENTAGES",
+      "wild_tables": {
+        "ALL": {
+          "grass": [
+            [
+              595,
+              0,
+              20,
+              28,
+              28
+            ],
+            [
+              599,
+              0,
+              20,
+              29,
+              29
+            ],
+            [
+              595,
+              0,
+              10,
+              29,
+              29
+            ],
+            [
+              299,
+              0,
+              10,
+              30,
+              30
+            ],
+            [
+              597,
+              0,
+              10,
+              29,
+              29
+            ],
+            [
+              597,
+              0,
+              10,
+              30,
+              30
+            ],
+            [
+              595,
+              0,
+              5,
+              30,
+              30
+            ],
+            [
+              525,
+              0,
+              5,
+              28,
+              28
+            ],
+            [
+              595,
+              0,
+              4,
+              31,
+              31
+            ],
+            [
+              599,
+              0,
+              4,
+              31,
+              31
+            ],
+            [
+              602,
+              0,
+              1,
+              31,
+              31
+            ],
+            [
+              602,
+              0,
+              1,
+              31,
+              31
+            ]
+          ],
+          "rustle": [
+            [
+              529,
+              0,
+              20,
+              28,
+              28
+            ],
+            [
+              529,
+              0,
+              20,
+              28,
+              28
+            ],
+            [
+              529,
+              0,
+              10,
+              29,
+              29
+            ],
+            [
+              529,
+              0,
+              10,
+              29,
+              29
+            ],
+            [
+              529,
+              0,
+              10,
+              30,
+              30
+            ],
+            [
+              529,
+              0,
+              10,
+              30,
+              30
+            ],
+            [
+              529,
+              0,
+              5,
+              31,
+              31
+            ],
+            [
+              529,
+              0,
+              5,
+              31,
+              31
+            ],
+            [
+              529,
+              0,
+              4,
+              31,
+              31
+            ],
+            [
+              529,
+              0,
+              4,
+              31,
+              31
+            ],
+            [
+              529,
+              0,
+              1,
+              31,
+              31
+            ],
+            [
+              529,
+              0,
+              1,
+              31,
+              31
+            ]
+          ]
+        }
+      },
+      "wild_levels": {
+        "land": [
+          28,
+          31
+        ]
+      },
+      "phenomena": "dust"
+    },
+    "CHARGESTONE_CAVE_B2F": {
+      "area_type": "dungeon",
+      "region": "UNOVA",
+      "battle_type": "cave",
+      "min_rounds": 1,
+      "route_menu": [],
+      "route_name": "Chargestone Cave",
+      "trainer_pool": [
+        {
+          "name": "Hiker Jeremy",
+          "class": "HIKER",
+          "sprite": "b2_hiker.png",
+          "team": [
+            95,
+            525
+          ],
+          "levels": [
+            32,
+            32
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 540
+        },
+        {
+          "name": "Ace Trainer Vicki",
+          "class": "ACE_TRAINER",
+          "sprite": "ace_trainer.png",
+          "team": [
+            508,
+            552,
+            597
+          ],
+          "levels": [
+            33,
+            33,
+            33
+          ],
+          "rewards": {
+            "balls": 4
+          },
+          "b2_id": 545,
+          "battle_options": {
+            "double": true
+          }
+        },
+        {
+          "name": "Guitarist Beverly",
+          "class": "GUITARIST",
+          "sprite": "b2_guitarist.png",
+          "team": [
+            523
+          ],
+          "levels": [
+            33
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 538
+        },
+        {
+          "name": "Ace Trainer Shaye",
+          "class": "ACE_TRAINER",
+          "sprite": "ace_trainer.png",
+          "team": [
+            566,
+            125
+          ],
+          "levels": [
+            34,
+            34
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 547
+        }
+      ],
+      "wild_pool_percentages": "CHARGESTONE_CAVE_B2F_PERCENTAGES",
+      "wild_tables": {
+        "ALL": {
+          "grass": [
+            [
+              595,
+              0,
+              20,
+              28,
+              28
+            ],
+            [
+              599,
+              0,
+              20,
+              29,
+              29
+            ],
+            [
+              595,
+              0,
+              10,
+              29,
+              29
+            ],
+            [
+              299,
+              0,
+              10,
+              30,
+              30
+            ],
+            [
+              597,
+              0,
+              10,
+              30,
+              30
+            ],
+            [
+              597,
+              0,
+              10,
+              31,
+              31
+            ],
+            [
+              595,
+              0,
+              5,
+              30,
+              30
+            ],
+            [
+              525,
+              0,
+              5,
+              28,
+              28
+            ],
+            [
+              602,
+              0,
+              4,
+              31,
+              31
+            ],
+            [
+              602,
+              0,
+              4,
+              31,
+              31
+            ],
+            [
+              595,
+              0,
+              1,
+              31,
+              31
+            ],
+            [
+              599,
+              0,
+              1,
+              31,
+              31
+            ]
+          ],
+          "rustle": [
+            [
+              529,
+              0,
+              20,
+              28,
+              28
+            ],
+            [
+              529,
+              0,
+              20,
+              28,
+              28
+            ],
+            [
+              529,
+              0,
+              10,
+              29,
+              29
+            ],
+            [
+              529,
+              0,
+              10,
+              29,
+              29
+            ],
+            [
+              529,
+              0,
+              10,
+              30,
+              30
+            ],
+            [
+              529,
+              0,
+              10,
+              30,
+              30
+            ],
+            [
+              529,
+              0,
+              5,
+              31,
+              31
+            ],
+            [
+              529,
+              0,
+              5,
+              31,
+              31
+            ],
+            [
+              529,
+              0,
+              4,
+              31,
+              31
+            ],
+            [
+              529,
+              0,
+              4,
+              31,
+              31
+            ],
+            [
+              529,
+              0,
+              1,
+              31,
+              31
+            ],
+            [
+              529,
+              0,
+              1,
+              31,
+              31
+            ]
+          ]
+        }
+      },
+      "wild_levels": {
+        "land": [
+          28,
+          31
+        ]
+      },
+      "phenomena": "dust"
     },
     "MISTRALTON_CAVE": {
       "area_type": "dungeon",
@@ -9619,17 +10446,644 @@
       "region": "UNOVA",
       "battle_type": "cave",
       "wild_pool_percentages": "UNOVA_MISTRALTON_CAVE_PERCENTAGES",
-      "min_rounds": 2,
-      "backgrounds": { "main": "mistralton_cave.png" },
-      "route_menu": [
-        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
-        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
-        {"text": "Encounter Cobalion", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD"},
-        {"text": "Mistralton City", "action": "EXIT", "target_area": "MISTRALTON_CITY", "condition": "can_exit", "color": "RED"},
-        {"text": "Route 6", "action": "EXIT", "target_area": "UNOVA_ROUTE_6", "condition": "can_exit", "color": "RED"},
-        {"text": "CLAY TUNNEL", "action": "EXIT", "target": "CLAY_TUNNEL", "condition": ["can_exit", "beat_unova_champion"], "color": "RED"}
+      "min_rounds": 1,
+      "route_menu": [],
+      "trainer_pool": [
+        {
+          "name": "Hiker Jebediah",
+          "class": "HIKER",
+          "sprite": "b2_hiker.png",
+          "team": [
+            95
+          ],
+          "levels": [
+            32
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 680
+        },
+        {
+          "name": "Hiker Shelby",
+          "class": "HIKER",
+          "sprite": "b2_hiker.png",
+          "team": [
+            525
+          ],
+          "levels": [
+            32
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 681
+        }
       ],
-      "area_boss": { "id": 638, "level": 42, "name": "Cobalion", "victory_flag": "MISTRALTON_CAVE_boss_defeated" }
+      "wild_tables": {
+        "ALL": {
+          "grass": [
+            [
+              525,
+              0,
+              20,
+              27,
+              27
+            ],
+            [
+              527,
+              0,
+              20,
+              27,
+              27
+            ],
+            [
+              525,
+              0,
+              10,
+              28,
+              28
+            ],
+            [
+              527,
+              0,
+              10,
+              28,
+              28
+            ],
+            [
+              304,
+              0,
+              10,
+              29,
+              29
+            ],
+            [
+              610,
+              0,
+              10,
+              29,
+              29
+            ],
+            [
+              304,
+              0,
+              5,
+              30,
+              30
+            ],
+            [
+              610,
+              0,
+              5,
+              30,
+              30
+            ],
+            [
+              304,
+              0,
+              4,
+              30,
+              30
+            ],
+            [
+              610,
+              0,
+              4,
+              30,
+              30
+            ],
+            [
+              304,
+              0,
+              1,
+              30,
+              30
+            ],
+            [
+              610,
+              0,
+              1,
+              30,
+              30
+            ]
+          ],
+          "rustle": [
+            [
+              529,
+              0,
+              20,
+              27,
+              27
+            ],
+            [
+              529,
+              0,
+              20,
+              27,
+              27
+            ],
+            [
+              529,
+              0,
+              10,
+              28,
+              28
+            ],
+            [
+              529,
+              0,
+              10,
+              28,
+              28
+            ],
+            [
+              529,
+              0,
+              10,
+              29,
+              29
+            ],
+            [
+              529,
+              0,
+              10,
+              29,
+              29
+            ],
+            [
+              529,
+              0,
+              5,
+              30,
+              30
+            ],
+            [
+              529,
+              0,
+              5,
+              30,
+              30
+            ],
+            [
+              529,
+              0,
+              4,
+              30,
+              30
+            ],
+            [
+              529,
+              0,
+              4,
+              30,
+              30
+            ],
+            [
+              529,
+              0,
+              1,
+              30,
+              30
+            ],
+            [
+              529,
+              0,
+              1,
+              30,
+              30
+            ]
+          ]
+        }
+      },
+      "wild_levels": {
+        "land": [
+          27,
+          30
+        ]
+      },
+      "phenomena": "dust"
+    },
+    "MISTRALTON_CAVE_2F": {
+      "area_type": "dungeon",
+      "region": "UNOVA",
+      "battle_type": "cave",
+      "min_rounds": 1,
+      "route_menu": [],
+      "route_name": "Mistralton Cave",
+      "trainer_pool": [
+        {
+          "name": "Ace Trainer Geoff",
+          "class": "ACE_TRAINER",
+          "sprite": "ace_trainer.png",
+          "team": [
+            564,
+            610
+          ],
+          "levels": [
+            33,
+            33
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 682
+        },
+        {
+          "name": "Ace Trainer Belle",
+          "class": "ACE_TRAINER",
+          "sprite": "ace_trainer.png",
+          "team": [
+            566,
+            610
+          ],
+          "levels": [
+            33,
+            33
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 683
+        }
+      ],
+      "wild_pool_percentages": "MISTRALTON_CAVE_2F_PERCENTAGES",
+      "wild_tables": {
+        "ALL": {
+          "grass": [
+            [
+              525,
+              0,
+              20,
+              27,
+              27
+            ],
+            [
+              527,
+              0,
+              20,
+              27,
+              27
+            ],
+            [
+              525,
+              0,
+              10,
+              28,
+              28
+            ],
+            [
+              527,
+              0,
+              10,
+              28,
+              28
+            ],
+            [
+              304,
+              0,
+              10,
+              29,
+              29
+            ],
+            [
+              610,
+              0,
+              10,
+              29,
+              29
+            ],
+            [
+              304,
+              0,
+              5,
+              30,
+              30
+            ],
+            [
+              610,
+              0,
+              5,
+              30,
+              30
+            ],
+            [
+              304,
+              0,
+              4,
+              30,
+              30
+            ],
+            [
+              610,
+              0,
+              4,
+              30,
+              30
+            ],
+            [
+              304,
+              0,
+              1,
+              30,
+              30
+            ],
+            [
+              610,
+              0,
+              1,
+              30,
+              30
+            ]
+          ],
+          "rustle": [
+            [
+              529,
+              0,
+              20,
+              27,
+              27
+            ],
+            [
+              529,
+              0,
+              20,
+              27,
+              27
+            ],
+            [
+              529,
+              0,
+              10,
+              28,
+              28
+            ],
+            [
+              529,
+              0,
+              10,
+              28,
+              28
+            ],
+            [
+              529,
+              0,
+              10,
+              29,
+              29
+            ],
+            [
+              529,
+              0,
+              10,
+              29,
+              29
+            ],
+            [
+              529,
+              0,
+              5,
+              30,
+              30
+            ],
+            [
+              529,
+              0,
+              5,
+              30,
+              30
+            ],
+            [
+              529,
+              0,
+              4,
+              30,
+              30
+            ],
+            [
+              529,
+              0,
+              4,
+              30,
+              30
+            ],
+            [
+              529,
+              0,
+              1,
+              30,
+              30
+            ],
+            [
+              529,
+              0,
+              1,
+              30,
+              30
+            ]
+          ]
+        }
+      },
+      "wild_levels": {
+        "land": [
+          27,
+          30
+        ]
+      },
+      "phenomena": "dust"
+    },
+    "GUIDANCE_CHAMBER": {
+      "area_type": "dungeon",
+      "region": "UNOVA",
+      "battle_type": "cave",
+      "min_rounds": 1,
+      "route_menu": [],
+      "route_name": "Guidance Chamber",
+      "trainer_pool": [],
+      "wild_pool_percentages": "GUIDANCE_CHAMBER_PERCENTAGES",
+      "wild_tables": {
+        "ALL": {
+          "grass": [
+            [
+              525,
+              0,
+              20,
+              27,
+              27
+            ],
+            [
+              527,
+              0,
+              20,
+              27,
+              27
+            ],
+            [
+              525,
+              0,
+              10,
+              28,
+              28
+            ],
+            [
+              527,
+              0,
+              10,
+              28,
+              28
+            ],
+            [
+              304,
+              0,
+              10,
+              29,
+              29
+            ],
+            [
+              610,
+              0,
+              10,
+              29,
+              29
+            ],
+            [
+              304,
+              0,
+              5,
+              30,
+              30
+            ],
+            [
+              610,
+              0,
+              5,
+              30,
+              30
+            ],
+            [
+              304,
+              0,
+              4,
+              30,
+              30
+            ],
+            [
+              610,
+              0,
+              4,
+              30,
+              30
+            ],
+            [
+              304,
+              0,
+              1,
+              30,
+              30
+            ],
+            [
+              610,
+              0,
+              1,
+              30,
+              30
+            ]
+          ],
+          "rustle": [
+            [
+              529,
+              0,
+              20,
+              27,
+              27
+            ],
+            [
+              529,
+              0,
+              20,
+              27,
+              27
+            ],
+            [
+              529,
+              0,
+              10,
+              28,
+              28
+            ],
+            [
+              529,
+              0,
+              10,
+              28,
+              28
+            ],
+            [
+              529,
+              0,
+              10,
+              29,
+              29
+            ],
+            [
+              529,
+              0,
+              10,
+              29,
+              29
+            ],
+            [
+              529,
+              0,
+              5,
+              30,
+              30
+            ],
+            [
+              529,
+              0,
+              5,
+              30,
+              30
+            ],
+            [
+              529,
+              0,
+              4,
+              30,
+              30
+            ],
+            [
+              529,
+              0,
+              4,
+              30,
+              30
+            ],
+            [
+              529,
+              0,
+              1,
+              30,
+              30
+            ],
+            [
+              529,
+              0,
+              1,
+              30,
+              30
+            ]
+          ]
+        }
+      },
+      "wild_levels": {
+        "land": [
+          27,
+          30
+        ]
+      },
+      "phenomena": "dust"
     },
     "TWIST_MOUNTAIN": {
       "area_type": "dungeon",
@@ -11393,29 +12847,2018 @@
       "min_rounds": 2,
       "trainer_pool": [
         {
-          "name": "Doctor Wayne",
-          "class": "GENTLEMAN",
-          "sprite": "gentleman.png",
-          "team": [590, 531],
-          "rewards": { "balls": 2 }
+          "name": "Pokemon Breeder April",
+          "class": "BREEDER",
+          "sprite": "b2_breeder.png",
+          "team": [
+            572,
+            585
+          ],
+          "levels": [
+            27,
+            27
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 752
         },
         {
-          "name": "Pokémon Ranger Lois",
-          "class": "ACE_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "team": [585, 580],
-          "rewards": { "balls": 3 }
+          "name": "Parasol Lady Nicole",
+          "class": "PARASOL_LADY",
+          "sprite": "b2_parasol_lady.png",
+          "team": [
+            351
+          ],
+          "levels": [
+            28
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 267,
+          "movesets": {
+            "351": [
+              "RAIN-DANCE",
+              "POWDER-SNOW",
+              "EMBER",
+              "WATER-GUN"
+            ]
+          }
+        },
+        {
+          "name": "School Kid Mara",
+          "class": "SCHOOL_KID",
+          "sprite": "school_kid.png",
+          "team": [
+            585,
+            616
+          ],
+          "levels": [
+            27,
+            27
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 266
+        },
+        {
+          "name": "Scientist Jacques",
+          "class": "SCIENTIST",
+          "sprite": "b2_scientist_m.png",
+          "team": [
+            585
+          ],
+          "levels": [
+            28
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 263
+        },
+        {
+          "name": "Scientist Marissa",
+          "class": "SCIENTIST",
+          "sprite": "b2_scientist_f.png",
+          "team": [
+            616,
+            588
+          ],
+          "levels": [
+            27,
+            27
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 264
+        },
+        {
+          "name": "Parasol Lady Tihana",
+          "class": "PARASOL_LADY",
+          "sprite": "b2_parasol_lady.png",
+          "team": [
+            351
+          ],
+          "levels": [
+            28
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 268,
+          "movesets": {
+            "351": [
+              "HAIL",
+              "POWDER-SNOW",
+              "EMBER",
+              "WATER-GUN"
+            ]
+          }
+        },
+        {
+          "name": "School Kid Alvin",
+          "class": "SCHOOL_KID",
+          "sprite": "school_kid.png",
+          "team": [
+            590,
+            588
+          ],
+          "levels": [
+            27,
+            27
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 265
+        },
+        {
+          "name": "Pokemon Ranger Richard",
+          "class": "RANGER",
+          "sprite": "ranger.png",
+          "team": [
+            544,
+            590
+          ],
+          "levels": [
+            28,
+            28
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 292
         }
       ],
-      "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-        { "text": "Driftveil City", "action": "EXIT", "target_area": "DRIFTVEIL_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "Chargestone Cave", "action": "EXIT", "target_area": "CHARGESTONE_CAVE", "condition": "can_exit", "color": "RED" },
-        { "text": "Mistralton Cave", "action": "EXIT", "target_area": "MISTRALTON_CAVE", "condition": ["can_exit", "visited_MISTRALTON_CITY"], "color": "RED" }
-      ],
-      "next_area": "CHARGESTONE_CAVE"
+      "route_menu": [],
+      "wild_tables": {
+        "SPRING": {
+          "grass": [
+            [
+              585,
+              0,
+              20,
+              23,
+              23
+            ],
+            [
+              616,
+              0,
+              10.0,
+              23,
+              23
+            ],
+            [
+              588,
+              0,
+              10.0,
+              23,
+              23
+            ],
+            [
+              520,
+              0,
+              10,
+              26,
+              26
+            ],
+            [
+              590,
+              0,
+              10,
+              26,
+              26
+            ],
+            [
+              585,
+              0,
+              10,
+              25,
+              25
+            ],
+            [
+              541,
+              0,
+              10,
+              26,
+              26
+            ],
+            [
+              183,
+              0,
+              5,
+              25,
+              25
+            ],
+            [
+              588,
+              0,
+              2.5,
+              23,
+              23
+            ],
+            [
+              616,
+              0,
+              2.5,
+              23,
+              23
+            ],
+            [
+              520,
+              0,
+              4,
+              26,
+              26
+            ],
+            [
+              616,
+              0,
+              2.0,
+              26,
+              26
+            ],
+            [
+              588,
+              0,
+              2.0,
+              26,
+              26
+            ],
+            [
+              520,
+              0,
+              1,
+              26,
+              26
+            ],
+            [
+              616,
+              0,
+              0.5,
+              26,
+              26
+            ],
+            [
+              588,
+              0,
+              0.5,
+              26,
+              26
+            ]
+          ],
+          "dark": [
+            [
+              585,
+              0,
+              20,
+              26,
+              26
+            ],
+            [
+              616,
+              0,
+              10.0,
+              26,
+              26
+            ],
+            [
+              588,
+              0,
+              10.0,
+              26,
+              26
+            ],
+            [
+              520,
+              0,
+              10,
+              29,
+              29
+            ],
+            [
+              590,
+              0,
+              10,
+              29,
+              29
+            ],
+            [
+              585,
+              0,
+              10,
+              28,
+              28
+            ],
+            [
+              541,
+              0,
+              10,
+              29,
+              29
+            ],
+            [
+              183,
+              0,
+              5,
+              28,
+              28
+            ],
+            [
+              588,
+              0,
+              2.5,
+              26,
+              26
+            ],
+            [
+              616,
+              0,
+              2.5,
+              26,
+              26
+            ],
+            [
+              520,
+              0,
+              4,
+              29,
+              29
+            ],
+            [
+              616,
+              0,
+              2.0,
+              29,
+              29
+            ],
+            [
+              588,
+              0,
+              2.0,
+              29,
+              29
+            ],
+            [
+              520,
+              0,
+              1,
+              29,
+              29
+            ],
+            [
+              616,
+              0,
+              0.5,
+              29,
+              29
+            ],
+            [
+              588,
+              0,
+              0.5,
+              29,
+              29
+            ]
+          ],
+          "rustle": [
+            [
+              531,
+              0,
+              20,
+              23,
+              23
+            ],
+            [
+              531,
+              0,
+              20,
+              24,
+              24
+            ],
+            [
+              587,
+              0,
+              10,
+              24,
+              24
+            ],
+            [
+              587,
+              0,
+              10,
+              25,
+              25
+            ],
+            [
+              531,
+              0,
+              10,
+              25,
+              25
+            ],
+            [
+              206,
+              0,
+              10,
+              25,
+              25
+            ],
+            [
+              184,
+              0,
+              5,
+              26,
+              26
+            ],
+            [
+              351,
+              0,
+              5,
+              26,
+              26
+            ],
+            [
+              521,
+              0,
+              4,
+              26,
+              26
+            ],
+            [
+              542,
+              0,
+              4,
+              26,
+              26
+            ],
+            [
+              521,
+              0,
+              1,
+              26,
+              26
+            ],
+            [
+              542,
+              0,
+              1,
+              26,
+              26
+            ]
+          ],
+          "surf": [
+            [
+              550,
+              0,
+              60,
+              10,
+              25
+            ],
+            [
+              183,
+              0,
+              30,
+              10,
+              25
+            ],
+            [
+              550,
+              0,
+              5,
+              10,
+              25
+            ],
+            [
+              550,
+              0,
+              4,
+              10,
+              25
+            ],
+            [
+              550,
+              0,
+              1,
+              10,
+              25
+            ]
+          ],
+          "ripple": [
+            [
+              183,
+              0,
+              60,
+              10,
+              30
+            ],
+            [
+              550,
+              1,
+              30,
+              10,
+              30
+            ],
+            [
+              550,
+              1,
+              5,
+              10,
+              30
+            ],
+            [
+              184,
+              0,
+              4,
+              10,
+              30
+            ],
+            [
+              184,
+              0,
+              1,
+              10,
+              30
+            ]
+          ],
+          "fish": [
+            [
+              60,
+              0,
+              60,
+              40,
+              60
+            ],
+            [
+              550,
+              0,
+              30,
+              40,
+              60
+            ],
+            [
+              60,
+              0,
+              5,
+              50,
+              70
+            ],
+            [
+              60,
+              0,
+              4,
+              50,
+              70
+            ],
+            [
+              60,
+              0,
+              1,
+              50,
+              70
+            ]
+          ],
+          "fish_ripple": [
+            [
+              61,
+              0,
+              60,
+              40,
+              60
+            ],
+            [
+              550,
+              1,
+              30,
+              40,
+              60
+            ],
+            [
+              61,
+              0,
+              5,
+              50,
+              70
+            ],
+            [
+              186,
+              0,
+              4,
+              50,
+              70
+            ],
+            [
+              186,
+              0,
+              1,
+              50,
+              70
+            ]
+          ]
+        },
+        "SUMMER": {
+          "grass": [
+            [
+              585,
+              1,
+              20,
+              23,
+              23
+            ],
+            [
+              616,
+              0,
+              10.0,
+              23,
+              23
+            ],
+            [
+              588,
+              0,
+              10.0,
+              23,
+              23
+            ],
+            [
+              520,
+              0,
+              10,
+              26,
+              26
+            ],
+            [
+              590,
+              0,
+              10,
+              26,
+              26
+            ],
+            [
+              585,
+              1,
+              10,
+              25,
+              25
+            ],
+            [
+              541,
+              0,
+              10,
+              26,
+              26
+            ],
+            [
+              183,
+              0,
+              5,
+              25,
+              25
+            ],
+            [
+              588,
+              0,
+              2.5,
+              23,
+              23
+            ],
+            [
+              616,
+              0,
+              2.5,
+              23,
+              23
+            ],
+            [
+              520,
+              0,
+              4,
+              26,
+              26
+            ],
+            [
+              616,
+              0,
+              2.0,
+              26,
+              26
+            ],
+            [
+              588,
+              0,
+              2.0,
+              26,
+              26
+            ],
+            [
+              520,
+              0,
+              1,
+              26,
+              26
+            ],
+            [
+              616,
+              0,
+              0.5,
+              26,
+              26
+            ],
+            [
+              588,
+              0,
+              0.5,
+              26,
+              26
+            ]
+          ],
+          "dark": [
+            [
+              585,
+              1,
+              20,
+              26,
+              26
+            ],
+            [
+              616,
+              0,
+              10.0,
+              26,
+              26
+            ],
+            [
+              588,
+              0,
+              10.0,
+              26,
+              26
+            ],
+            [
+              520,
+              0,
+              10,
+              29,
+              29
+            ],
+            [
+              590,
+              0,
+              10,
+              29,
+              29
+            ],
+            [
+              585,
+              1,
+              10,
+              28,
+              28
+            ],
+            [
+              541,
+              0,
+              10,
+              29,
+              29
+            ],
+            [
+              183,
+              0,
+              5,
+              28,
+              28
+            ],
+            [
+              588,
+              0,
+              2.5,
+              26,
+              26
+            ],
+            [
+              616,
+              0,
+              2.5,
+              26,
+              26
+            ],
+            [
+              520,
+              0,
+              4,
+              29,
+              29
+            ],
+            [
+              616,
+              0,
+              2.0,
+              29,
+              29
+            ],
+            [
+              588,
+              0,
+              2.0,
+              29,
+              29
+            ],
+            [
+              520,
+              0,
+              1,
+              29,
+              29
+            ],
+            [
+              616,
+              0,
+              0.5,
+              29,
+              29
+            ],
+            [
+              588,
+              0,
+              0.5,
+              29,
+              29
+            ]
+          ],
+          "rustle": [
+            [
+              531,
+              0,
+              20,
+              23,
+              23
+            ],
+            [
+              531,
+              0,
+              20,
+              24,
+              24
+            ],
+            [
+              587,
+              0,
+              10,
+              24,
+              24
+            ],
+            [
+              587,
+              0,
+              10,
+              25,
+              25
+            ],
+            [
+              531,
+              0,
+              10,
+              25,
+              25
+            ],
+            [
+              206,
+              0,
+              10,
+              25,
+              25
+            ],
+            [
+              184,
+              0,
+              5,
+              26,
+              26
+            ],
+            [
+              351,
+              0,
+              5,
+              26,
+              26
+            ],
+            [
+              521,
+              0,
+              4,
+              26,
+              26
+            ],
+            [
+              542,
+              0,
+              4,
+              26,
+              26
+            ],
+            [
+              521,
+              0,
+              1,
+              26,
+              26
+            ],
+            [
+              542,
+              0,
+              1,
+              26,
+              26
+            ]
+          ],
+          "surf": [
+            [
+              550,
+              0,
+              60,
+              10,
+              25
+            ],
+            [
+              183,
+              0,
+              30,
+              10,
+              25
+            ],
+            [
+              550,
+              0,
+              5,
+              10,
+              25
+            ],
+            [
+              550,
+              0,
+              4,
+              10,
+              25
+            ],
+            [
+              550,
+              0,
+              1,
+              10,
+              25
+            ]
+          ],
+          "ripple": [
+            [
+              183,
+              0,
+              60,
+              10,
+              30
+            ],
+            [
+              550,
+              1,
+              30,
+              10,
+              30
+            ],
+            [
+              550,
+              1,
+              5,
+              10,
+              30
+            ],
+            [
+              184,
+              0,
+              4,
+              10,
+              30
+            ],
+            [
+              184,
+              0,
+              1,
+              10,
+              30
+            ]
+          ],
+          "fish": [
+            [
+              60,
+              0,
+              60,
+              40,
+              60
+            ],
+            [
+              550,
+              0,
+              30,
+              40,
+              60
+            ],
+            [
+              60,
+              0,
+              5,
+              50,
+              70
+            ],
+            [
+              60,
+              0,
+              4,
+              50,
+              70
+            ],
+            [
+              60,
+              0,
+              1,
+              50,
+              70
+            ]
+          ],
+          "fish_ripple": [
+            [
+              61,
+              0,
+              60,
+              40,
+              60
+            ],
+            [
+              550,
+              1,
+              30,
+              40,
+              60
+            ],
+            [
+              61,
+              0,
+              5,
+              50,
+              70
+            ],
+            [
+              186,
+              0,
+              4,
+              50,
+              70
+            ],
+            [
+              186,
+              0,
+              1,
+              50,
+              70
+            ]
+          ]
+        },
+        "AUTUMN": {
+          "grass": [
+            [
+              585,
+              2,
+              20,
+              23,
+              23
+            ],
+            [
+              616,
+              0,
+              10.0,
+              23,
+              23
+            ],
+            [
+              588,
+              0,
+              10.0,
+              23,
+              23
+            ],
+            [
+              520,
+              0,
+              10,
+              26,
+              26
+            ],
+            [
+              590,
+              0,
+              10,
+              26,
+              26
+            ],
+            [
+              585,
+              2,
+              10,
+              25,
+              25
+            ],
+            [
+              541,
+              0,
+              10,
+              26,
+              26
+            ],
+            [
+              183,
+              0,
+              5,
+              25,
+              25
+            ],
+            [
+              588,
+              0,
+              2.5,
+              23,
+              23
+            ],
+            [
+              616,
+              0,
+              2.5,
+              23,
+              23
+            ],
+            [
+              520,
+              0,
+              4,
+              26,
+              26
+            ],
+            [
+              616,
+              0,
+              2.0,
+              26,
+              26
+            ],
+            [
+              588,
+              0,
+              2.0,
+              26,
+              26
+            ],
+            [
+              520,
+              0,
+              1,
+              26,
+              26
+            ],
+            [
+              616,
+              0,
+              0.5,
+              26,
+              26
+            ],
+            [
+              588,
+              0,
+              0.5,
+              26,
+              26
+            ]
+          ],
+          "dark": [
+            [
+              585,
+              2,
+              20,
+              26,
+              26
+            ],
+            [
+              616,
+              0,
+              10.0,
+              26,
+              26
+            ],
+            [
+              588,
+              0,
+              10.0,
+              26,
+              26
+            ],
+            [
+              520,
+              0,
+              10,
+              29,
+              29
+            ],
+            [
+              590,
+              0,
+              10,
+              29,
+              29
+            ],
+            [
+              585,
+              2,
+              10,
+              28,
+              28
+            ],
+            [
+              541,
+              0,
+              10,
+              29,
+              29
+            ],
+            [
+              183,
+              0,
+              5,
+              28,
+              28
+            ],
+            [
+              588,
+              0,
+              2.5,
+              26,
+              26
+            ],
+            [
+              616,
+              0,
+              2.5,
+              26,
+              26
+            ],
+            [
+              520,
+              0,
+              4,
+              29,
+              29
+            ],
+            [
+              616,
+              0,
+              2.0,
+              29,
+              29
+            ],
+            [
+              588,
+              0,
+              2.0,
+              29,
+              29
+            ],
+            [
+              520,
+              0,
+              1,
+              29,
+              29
+            ],
+            [
+              616,
+              0,
+              0.5,
+              29,
+              29
+            ],
+            [
+              588,
+              0,
+              0.5,
+              29,
+              29
+            ]
+          ],
+          "rustle": [
+            [
+              531,
+              0,
+              20,
+              23,
+              23
+            ],
+            [
+              531,
+              0,
+              20,
+              24,
+              24
+            ],
+            [
+              587,
+              0,
+              10,
+              24,
+              24
+            ],
+            [
+              587,
+              0,
+              10,
+              25,
+              25
+            ],
+            [
+              531,
+              0,
+              10,
+              25,
+              25
+            ],
+            [
+              206,
+              0,
+              10,
+              25,
+              25
+            ],
+            [
+              184,
+              0,
+              5,
+              26,
+              26
+            ],
+            [
+              351,
+              0,
+              5,
+              26,
+              26
+            ],
+            [
+              521,
+              0,
+              4,
+              26,
+              26
+            ],
+            [
+              542,
+              0,
+              4,
+              26,
+              26
+            ],
+            [
+              521,
+              0,
+              1,
+              26,
+              26
+            ],
+            [
+              542,
+              0,
+              1,
+              26,
+              26
+            ]
+          ],
+          "surf": [
+            [
+              550,
+              0,
+              60,
+              10,
+              25
+            ],
+            [
+              183,
+              0,
+              30,
+              10,
+              25
+            ],
+            [
+              550,
+              0,
+              5,
+              10,
+              25
+            ],
+            [
+              550,
+              0,
+              4,
+              10,
+              25
+            ],
+            [
+              550,
+              0,
+              1,
+              10,
+              25
+            ]
+          ],
+          "ripple": [
+            [
+              183,
+              0,
+              60,
+              10,
+              30
+            ],
+            [
+              550,
+              1,
+              30,
+              10,
+              30
+            ],
+            [
+              550,
+              1,
+              5,
+              10,
+              30
+            ],
+            [
+              184,
+              0,
+              4,
+              10,
+              30
+            ],
+            [
+              184,
+              0,
+              1,
+              10,
+              30
+            ]
+          ],
+          "fish": [
+            [
+              60,
+              0,
+              60,
+              40,
+              60
+            ],
+            [
+              550,
+              0,
+              30,
+              40,
+              60
+            ],
+            [
+              60,
+              0,
+              5,
+              50,
+              70
+            ],
+            [
+              60,
+              0,
+              4,
+              50,
+              70
+            ],
+            [
+              60,
+              0,
+              1,
+              50,
+              70
+            ]
+          ],
+          "fish_ripple": [
+            [
+              61,
+              0,
+              60,
+              40,
+              60
+            ],
+            [
+              550,
+              1,
+              30,
+              40,
+              60
+            ],
+            [
+              61,
+              0,
+              5,
+              50,
+              70
+            ],
+            [
+              186,
+              0,
+              4,
+              50,
+              70
+            ],
+            [
+              186,
+              0,
+              1,
+              50,
+              70
+            ]
+          ]
+        },
+        "WINTER": {
+          "grass": [
+            [
+              585,
+              3,
+              20,
+              23,
+              23
+            ],
+            [
+              616,
+              0,
+              10.0,
+              23,
+              23
+            ],
+            [
+              588,
+              0,
+              10.0,
+              23,
+              23
+            ],
+            [
+              520,
+              0,
+              10,
+              26,
+              26
+            ],
+            [
+              590,
+              0,
+              10,
+              26,
+              26
+            ],
+            [
+              585,
+              3,
+              10,
+              25,
+              25
+            ],
+            [
+              541,
+              0,
+              10,
+              26,
+              26
+            ],
+            [
+              183,
+              0,
+              5,
+              25,
+              25
+            ],
+            [
+              588,
+              0,
+              2.5,
+              23,
+              23
+            ],
+            [
+              616,
+              0,
+              2.5,
+              23,
+              23
+            ],
+            [
+              520,
+              0,
+              4,
+              26,
+              26
+            ],
+            [
+              616,
+              0,
+              2.0,
+              26,
+              26
+            ],
+            [
+              588,
+              0,
+              2.0,
+              26,
+              26
+            ],
+            [
+              520,
+              0,
+              1,
+              26,
+              26
+            ],
+            [
+              616,
+              0,
+              0.5,
+              26,
+              26
+            ],
+            [
+              588,
+              0,
+              0.5,
+              26,
+              26
+            ]
+          ],
+          "dark": [
+            [
+              585,
+              3,
+              20,
+              26,
+              26
+            ],
+            [
+              616,
+              0,
+              10.0,
+              26,
+              26
+            ],
+            [
+              588,
+              0,
+              10.0,
+              26,
+              26
+            ],
+            [
+              520,
+              0,
+              10,
+              29,
+              29
+            ],
+            [
+              590,
+              0,
+              10,
+              29,
+              29
+            ],
+            [
+              585,
+              3,
+              10,
+              28,
+              28
+            ],
+            [
+              541,
+              0,
+              10,
+              29,
+              29
+            ],
+            [
+              183,
+              0,
+              5,
+              28,
+              28
+            ],
+            [
+              588,
+              0,
+              2.5,
+              26,
+              26
+            ],
+            [
+              616,
+              0,
+              2.5,
+              26,
+              26
+            ],
+            [
+              520,
+              0,
+              4,
+              29,
+              29
+            ],
+            [
+              616,
+              0,
+              2.0,
+              29,
+              29
+            ],
+            [
+              588,
+              0,
+              2.0,
+              29,
+              29
+            ],
+            [
+              520,
+              0,
+              1,
+              29,
+              29
+            ],
+            [
+              616,
+              0,
+              0.5,
+              29,
+              29
+            ],
+            [
+              588,
+              0,
+              0.5,
+              29,
+              29
+            ]
+          ],
+          "rustle": [
+            [
+              531,
+              0,
+              20,
+              23,
+              23
+            ],
+            [
+              531,
+              0,
+              20,
+              24,
+              24
+            ],
+            [
+              587,
+              0,
+              10,
+              24,
+              24
+            ],
+            [
+              587,
+              0,
+              10,
+              25,
+              25
+            ],
+            [
+              531,
+              0,
+              10,
+              25,
+              25
+            ],
+            [
+              206,
+              0,
+              10,
+              25,
+              25
+            ],
+            [
+              184,
+              0,
+              5,
+              26,
+              26
+            ],
+            [
+              351,
+              0,
+              5,
+              26,
+              26
+            ],
+            [
+              521,
+              0,
+              4,
+              26,
+              26
+            ],
+            [
+              542,
+              0,
+              4,
+              26,
+              26
+            ],
+            [
+              521,
+              0,
+              1,
+              26,
+              26
+            ],
+            [
+              542,
+              0,
+              1,
+              26,
+              26
+            ]
+          ],
+          "surf": [
+            [
+              550,
+              0,
+              60,
+              10,
+              25
+            ],
+            [
+              183,
+              0,
+              30,
+              10,
+              25
+            ],
+            [
+              550,
+              0,
+              5,
+              10,
+              25
+            ],
+            [
+              550,
+              0,
+              4,
+              10,
+              25
+            ],
+            [
+              550,
+              0,
+              1,
+              10,
+              25
+            ]
+          ],
+          "ripple": [
+            [
+              183,
+              0,
+              60,
+              10,
+              30
+            ],
+            [
+              550,
+              1,
+              30,
+              10,
+              30
+            ],
+            [
+              550,
+              1,
+              5,
+              10,
+              30
+            ],
+            [
+              184,
+              0,
+              4,
+              10,
+              30
+            ],
+            [
+              184,
+              0,
+              1,
+              10,
+              30
+            ]
+          ],
+          "fish": [
+            [
+              60,
+              0,
+              60,
+              40,
+              60
+            ],
+            [
+              550,
+              0,
+              30,
+              40,
+              60
+            ],
+            [
+              60,
+              0,
+              5,
+              50,
+              70
+            ],
+            [
+              60,
+              0,
+              4,
+              50,
+              70
+            ],
+            [
+              60,
+              0,
+              1,
+              50,
+              70
+            ]
+          ],
+          "fish_ripple": [
+            [
+              61,
+              0,
+              60,
+              40,
+              60
+            ],
+            [
+              550,
+              1,
+              30,
+              40,
+              60
+            ],
+            [
+              61,
+              0,
+              5,
+              50,
+              70
+            ],
+            [
+              186,
+              0,
+              4,
+              50,
+              70
+            ],
+            [
+              186,
+              0,
+              1,
+              50,
+              70
+            ]
+          ]
+        }
+      },
+      "wild_levels": {
+        "land": [
+          23,
+          26
+        ]
+      },
+      "surf_pool_percentages": "UNOVA_ROUTE_6_SURF_PERCENTAGES"
     },
     "UNOVA_ROUTE_7": {
       "area_type": "wild_route",
@@ -13182,6 +16625,8 @@
     {"id": "b2_m27", "type": "MAIN", "title": "Down the Mine", "description": "Clay's Gym is a dark mine. Ride the conveyor belts from platform to platform and find the Underground Boss.", "condition": {"required_region": "UNOVA", "flag": "b2_rood_talk", "flag_not": "b2_quake_badge"}, "completed_badge": "QUAKE", "completed_flag": "b2_quake_badge", "target": "DRIFTVEIL_CITY"},
     {"id": "b2_m28", "type": "MAIN", "title": "The World Tournament", "description": "Clay invited you to the Pokemon World Tournament, south of Driftveil. Trainers from all over the world compete there.", "condition": {"required_region": "UNOVA", "flag": "b2_quake_badge", "flag_not": "b2_pwt_driftveil_won"}, "completed_flag": "b2_pwt_driftveil_won", "target": "DRIFTVEIL_CITY"},
     {"id": "b2_m29", "type": "MAIN", "title": "Aboard the Plasma Frigate", "description": "Team Plasma Grunts ran past the World Tournament to a ship at the pier. Hugh's gone after them. Follow him!", "condition": {"required_region": "UNOVA", "flag": "b2_pwt_driftveil_won", "flag_not": "b2_frigate_done"}, "completed_flag": "b2_frigate_done", "target": "PWT", "steps": [{"area": "PWT", "at": [37, 45], "label": "The ship at the pier", "done": "b2_frigate_done"}]},
+    {"id": "b2_m30", "type": "MAIN", "title": "The Cold Snap", "description": "Cheren went ahead to Route 6. Something about the weather has him worried. Find him at the Season Research Lab.", "condition": {"required_region": "UNOVA", "flag": "b2_frigate_done", "flag_not": "b2_r6_surf"}, "completed_flag": "b2_r6_surf", "target": "UNOVA_ROUTE_6", "steps": [{"area": "UNOVA_ROUTE_6", "at": [39, 17], "label": "The Season Research Lab", "done": "b2_r6_surf"}]},
+    {"id": "b2_m31", "type": "MAIN", "title": "The Charged Stones", "description": "Chargestone Cave's floating stones crackle with power. Mistralton City and its Gym lie on the far side.", "condition": {"required_region": "UNOVA", "flag": "b2_r6_surf", "flag_not": "visited_MISTRALTON_CITY"}, "completed_flag": "visited_MISTRALTON_CITY", "target": "CHARGESTONE_CAVE"},
     {"id": "unova_m2", "type": "MAIN", "title": "Team Plasma's Speech", "description": "Follow Route 1 north to Accumula Town. A group called Team Plasma is giving a speech in the square. Go and listen.", "condition": {"required_region": "UNOVA", "flag": "defeated_rival_nuvema", "flag_not": ["heard_n_accumula", "b2_mom_talk"]}, "completed_flag": "heard_n_accumula", "target": "ACCUMULA_TOWN"},
     {"id": "unova_m3", "type": "MAIN", "title": "A Stranger Named N", "description": "On Route 2 you'll meet Alder, and a strange young man named N who says he can hear Pokémon talk. He wants to battle!", "condition": {"required_region": "UNOVA", "flag": "heard_n_accumula", "flag_not": ["defeated_n_route2", "b2_mom_talk"], "region_badges_less": 1}, "completed_flag": "defeated_n_route2", "target": "UNOVA_ROUTE_2"},
     {"id": "unova_m4", "type": "MAIN", "title": "A Gift in the Dreamyard", "description": "A researcher named Fennel is at the Dreamyard, next to Striaton City. She has a Pokémon that's strong against the Striaton Gym.", "condition": {"required_region": "UNOVA", "flag": "defeated_n_route2", "flag_not": ["got_elemental_monkey", "b2_mom_talk"], "region_badges_less": 1}, "completed_flag": "got_elemental_monkey", "target": "DREAMYARD", "reward": "Pansage, Pansear or Panpour"},
@@ -13249,7 +16694,15 @@
     "574": 15,
     "577": 15
   },
-  "UNOVA_ROUTE_6_PERCENTAGES": {"585": 14, "588": 10, "520": 6, "590": 6, "541": 4, "616": 10, "183": 2, "531": 29, "587": 8, "521": 2, "542": 2, "206": 4, "184": 2, "351": 2, "580": 2},
+  "UNOVA_ROUTE_6_PERCENTAGES": {
+    "585": 30,
+    "616": 15,
+    "588": 15,
+    "520": 15,
+    "590": 10,
+    "541": 10,
+    "183": 5
+  },
   "UNOVA_ROUTE_7_PERCENTAGES": {"520": 14, "585": 9, "505": 9, "523": 9, "590": 5, "335": 2, "336": 2, "531": 40, "587": 7, "521": 2},
   "UNOVA_ROUTE_8_PERCENTAGES": {"536": 30, "616": 30, "618": 15, "453": 11, "588": 15, "592": 2},
   "UNOVA_ROUTE_9_PERCENTAGES": {"575": 15, "572": 20, "569": 20, "624": 20, "510": 10, "578": 15, "531": 5, "587": 4, "573": 2, "576": 2, "579": 2},
@@ -13305,8 +16758,20 @@
     "27": 20
   },
   "UNOVA_COLD_STORAGE_PERCENTAGES": {"507": 35, "582": 30, "572": 20, "532": 15, "531": 5, "573": 2, "508": 2},
-  "UNOVA_CHARGESTONE_CAVE_PERCENTAGES": {"595": 38, "599": 28, "597": 20, "525": 10, "602": 4, "529": 5},
-  "UNOVA_MISTRALTON_CAVE_PERCENTAGES": {"525": 50, "527": 30, "610": 20, "529": 5},
+  "UNOVA_CHARGESTONE_CAVE_PERCENTAGES": {
+    "595": 39,
+    "599": 24,
+    "597": 20,
+    "299": 10,
+    "525": 5,
+    "602": 2
+  },
+  "UNOVA_MISTRALTON_CAVE_PERCENTAGES": {
+    "525": 30,
+    "527": 30,
+    "304": 20,
+    "610": 20
+  },
   "UNOVA_TWIST_MOUNTAIN_PERCENTAGES": {"525": 12, "533": 7, "527": 5, "613": 11, "615": 4, "632": 4, "614": 5, "631": 5, "95": 5, "529": 24, "530": 18, "208": 1},
   "UNOVA_MOOR_PERCENTAGES": {"536": 30, "616": 30, "618": 15, "453": 11, "588": 15, "580": 2, "592": 2},
   "UNOVA_DRAGONSPIRAL_PERCENTAGES": {"622": 75, "621": 15, "619": 10},
