@@ -1400,6 +1400,19 @@ def _tournament(maps):
             _set_people(ar, {_free_spot(ar, (2, 5)): XD_REALGAM_DESK})
 
 
+# S6d (Jordan 11-24): Gym rematches after the League - Misty and Duking wait in their Colosseums' lobbies, Blaine and Erika in
+# their garden, for their second teams once a day (src/world/orre_gym.py; the teams are each Leader's "orre_rematch").
+REMATCH_SPOTS = [("PHENAC_CITY", "gym", "GYM LEADER MISTY", (10, 7)), ("PYRITE_TOWN", "gym", "GYM LEADER DUKING", (10, 7)),
+                 ("AGATE_VILLAGE", "gym_2", "GYM LEADERS BLAINE & ERIKA", None)]
+
+
+def _rematch_spots(maps):
+    for area, room, text, near in REMATCH_SPOTS:
+        if area in maps and room in (maps[area].get("rooms") or {}):
+            r = maps[area]["rooms"][room]
+            _set_people(r, {_free_spot(r, near): text})
+
+
 def apply(maps):
     if "OUTSKIRT_STAND" in maps:
         _outskirt(maps)
@@ -1424,6 +1437,7 @@ def apply(maps):
         _phenac(maps)
         _past_guard(maps["PHENAC_CITY"])
     _tournament(maps)   # (last: after every place has its people)
+    _rematch_spots(maps)
     # Story rework L1 (Jordan 11-24): every town battle at Kanto's level caps for its stage (orre_levels.py; the disc
     # levels stay the source, so every build maps them the same way)
     from . import orre_levels as _L

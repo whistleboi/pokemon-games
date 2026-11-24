@@ -721,6 +721,56 @@ check(_ok_ala and isinstance(r, _DS) and "TEAM AQUA LEADER ARCHIE" in _m1 and "K
 for _f in ("beat_orre_champion", "orre_rocket_jj", "orre_rocket_alliance", "orre_rocket_done", "orre_maxie_terra", "orre_archie_marine"):
     story.story_flags.pop(_f, None)
 
+# ---- S6d (11-24): Gym rematches - after the League each Leader's second team (Lv 60-70), once a day
+_SP = _json.load(open("assets/orre_area_data.json", encoding="utf-8"))["STORY_PROGRESSION"]
+_TMJ = _json.load(open("assets/town_maps.json", encoding="utf-8"))
+_rms = [(a, k, _SP[a][k]["leader"].get("orre_rematch")) for a, k in (("PHENAC_CITY", "gym"), ("PYRITE_TOWN", "gym"), ("AGATE_VILLAGE", "gym"),
+        ("SNAGEM_HIDEOUT", "gym"), ("GATEON_PORT", "gym"), ("XD_CIPHER_KEY_LAIR", "gym"), ("XD_CITADARK_ISLE", "gym"), ("REALGAM_TOWER", "gym_birch"))]
+_rok = all(rm and 60 <= min(rm["levels"]) and max(rm["levels"]) <= 70 and all(_OL.stage(p, lv) == p and p <= 386 for p, lv in zip(rm["team"], rm["levels"]))
+           and all(m in _mv for mm in rm["team_moves"] for m in mm) for _a, _k, rm in _rms)
+_spots = all(any(p == t for p in _TMJ[a]["rooms"][r]["people"]) for a, r, t in
+             (("PHENAC_CITY", "gym", "GYM LEADER MISTY"), ("PYRITE_TOWN", "gym", "GYM LEADER DUKING"), ("AGATE_VILLAGE", "gym_2", "GYM LEADERS BLAINE & ERIKA")))
+_saved_b2 = list(story.badges.get("ORRE", []))
+story.badges["ORRE"] = ["PHENAC", "PYRITE", "AGATE", "SNAGEM", "GATEON", "KEY_LAIR", "CITADARK", "REALGAM"]
+story.story_flags.update(orre_part2=True, xd_gorigan_beaten=True, beat_orre_champion=True)
+for _f in [k for k in story.story_flags if k.startswith("orre_rematch_")]:
+    story.story_flags.pop(_f)
+r = route("XD_CIPHER_KEY_LAIR", "GATEON_PORT")
+_og.event(r, {"world": "orre_gym"}, [], lambda l: None)
+_bs = getattr(g.current_state, "battle_state", None) or getattr(g.current_state, "next_state", None)
+_first = type(g.current_state).__name__ == "TrainerIntroState" and getattr(_bs, "badge_reward", "x") is None
+r = route("XD_CIPHER_KEY_LAIR", "GATEON_PORT")
+_said = []
+_og.event(r, {"world": "orre_gym"}, [], lambda l: _said.extend(l))
+check(_rok and _spots and _first and any("tomorrow" in x for x in _said),
+      f"S6d: Gym rematches - every Leader's second team at Lv 60-70; Misty, Duking, Blaine & Erika have a spot; Norman's rematch runs once a day")
+for _f in ["orre_part2", "xd_gorigan_beaten", "beat_orre_champion"] + [k for k in story.story_flags if k.startswith("orre_rematch_")]:
+    story.story_flags.pop(_f, None)
+story.badges["ORRE"] = _saved_b2
+
+# ---- S6b (11-24): Mr. Fuji's house in Realgam; his Alakazam warps to the legends Orre can't get otherwise (Jordan's pick 9a)
+_SP = _json.load(open("assets/orre_area_data.json", encoding="utf-8"))["STORY_PROGRESSION"]
+_TMJ = _json.load(open("assets/town_maps.json", encoding="utf-8"))
+_fuji = _TMJ["REALGAM_TOWER"]["rooms"].get("fuji") or {}
+_warps = {o["text"]: o.get("condition") for o in _SP["REALGAM_TOWER"]["travel_options"] if o.get("door") == "fuji"}
+t = town("REALGAM_TOWER", "PHENAC_CITY")
+story.story_flags.pop("beat_orre_champion", None)
+_w0 = [k for k, c in _warps.items() if t._check_menu_condition(c)]
+story.story_flags["beat_orre_champion"] = True
+_w1 = [k for k, c in _warps.items() if t._check_menu_condition(c)]
+story.story_flags["orre_mewtwo_fled"] = True
+_w2 = [k for k, c in _warps.items() if t._check_menu_condition(c)]
+_legs = {}
+for _a, _who in (("ORRE_SKY_PILLAR", "RAYQUAZA"), ("ORRE_BIRTH_ISLAND", "DEOXYS"), ("ORRE_NEW_ISLAND", "MEWTWO"), ("ORRE_LAKE_OF_RAGE", "RED GYARADOS")):
+    r, _fs = _figs(_a, "REALGAM_TOWER")
+    _legs[_a] = isinstance(r, _DS) and _who in _fs
+_cl = [o.get("text") for o in _SP["ORRE_NEW_ISLAND"]["route_menu"] if "CLONE" in o.get("text", "")]
+check("door:fuji" in (_fuji.get("people") or []) and not _w0 and len(_w1) == 3 and len(_w2) == 4 and all(_legs.values()) and len(_cl) == 3,
+      f"S6b: Mr. Fuji's Alakazam after the League - Sky Pillar, Birth Island, the Lake of Rage, New Island once Mewtwo fled; "
+      f"Rayquaza, Deoxys, Mewtwo, the red Gyarados there; three clones {_legs}")
+for _f in ("beat_orre_champion", "orre_mewtwo_fled"):
+    story.story_flags.pop(_f, None)
+
 
 
 g.walk_towns = False
