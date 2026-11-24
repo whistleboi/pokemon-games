@@ -316919,7 +316919,7 @@
     "art": [
      "ccccccccccc",
      "ccccccccccc",
-     "cccccnccccc",
+     "ccccc+ccccc",
      "ccc.....ccc",
      "ccc.....ccc",
      "ccc.....ccc",
@@ -316944,9 +316944,6 @@
      "ccccccccccc"
     ],
     "parts": true,
-    "exits": {
-     "n": "MT_CORONET_BASE"
-    },
     "roofs": {
      "_look": {
       "floor": [
@@ -316985,20 +316982,20 @@
      "cccccc.........cccccc",
      "cccc.............cccc",
      "cccc.....^^^.....cccc",
-     "cc<...............>cc",
+     "cc<.......N.......>cc",
      "cc<...............>cc",
      "cccc.............cccc",
-     "cccc.............cccc",
+     "cccc......N......cccc",
      "cccc.............cccc",
      "cc.................cc",
      "cc.................cc",
      "cc.................cc",
      "cc..cc.........cc..cc",
-     "cc..cc....N....cc..cc",
+     "cc..cc.........cc..cc",
      "cc..cc.........cc..cc",
      "cc..c..............cc",
      "cc..............c..cc",
-     "cccc........N....jjcc",
+     "cccc.............jjcc",
      "ccjj...c.....c...jjcc",
      "ccjj..ccc...cc...jjcc",
      "cc...ccjj...jjcc...cc",
@@ -317015,7 +317012,7 @@
      "ccjj..cc.....ccc.jjcc",
      "ccjj..jj.....jj..jjcc",
      "cc....jj.....jj....cc",
-     "ccccccccc...ccccccccc",
+     "ccccccccc.N.ccccccccc",
      "ccccccccc...ccccccccc",
      "ccccc...........ccccc",
      "ccccc...........ccccc",
@@ -317030,6 +317027,7 @@
      ">": "DISTORTION_WORLD"
     },
     "people": [
+     "Encounter Dialga",
      "Confront Cyrus",
      "Battle Mars and Jupiter"
     ],
@@ -317168,7 +317166,99 @@
       }
      ],
      "_models": true
-    }
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        9,
+        41
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "spear_pillar_commanders"
+      },
+      "lines": [
+       "Mars and Jupiter block the way to the summit."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        11,
+        41
+       ]
+      ],
+      "look": "sheet:pt_gkanbu3.png",
+      "face": "d",
+      "until": {
+       "flag_condition": "spear_pillar_commanders"
+      },
+      "lines": [
+       "Jupiter: Cyrus is about to make his new world. You won't interrupt him!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        4,
+        14
+       ],
+       [
+        5,
+        14
+       ],
+       [
+        6,
+        14
+       ],
+       [
+        7,
+        14
+       ],
+       [
+        8,
+        14
+       ],
+       [
+        9,
+        14
+       ],
+       [
+        11,
+        14
+       ],
+       [
+        12,
+        14
+       ],
+       [
+        13,
+        14
+       ],
+       [
+        14,
+        14
+       ],
+       [
+        15,
+        14
+       ],
+       [
+        16,
+        14
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "spear_pillar_resolved"
+      },
+      "lines": [
+       "Cyrus stands before the altar. A strange pressure holds you back."
+      ]
+     }
+    ]
    }
   ],
   "floor_names": [
@@ -317182,7 +317272,8 @@
    "Battle Mars and Jupiter": 3,
    "Galactic Grunt 1": 1,
    "Galactic Grunt 2": 1,
-   "Galactic Grunt 3": 2
+   "Galactic Grunt 3": 2,
+   "Encounter Dialga": 3
   },
   "theme": "cave"
  },
@@ -331845,7 +331936,7 @@
      "cccccccccccccccccc",
      "cccccccccccccccccc",
      "cccccccccccccccccc",
-     "cccccccccNcccccccc",
+     "cccccccccXcccccccc",
      "ccccccccc.cccccccc",
      "ccccccccc.cccccccc",
      "ccccccccc.cccccccc",
@@ -331893,8 +331984,26 @@
      "cccccccccccccccccc"
     ],
     "parts": true,
-    "people": [
-     "CONFRONT CYRUS"
+    "people": [],
+    "trainer_spots": [
+     "Galactic Boss Cyrus"
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        6,
+        44
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "distortion_world_cleared"
+      },
+      "lines": [
+       "A strange force pushes you back. Cyrus is somewhere up the long passage."
+      ]
+     }
     ]
    },
    {
@@ -331904,7 +332013,7 @@
      "cccccccccc",
      "ccc-cccccc",
      "cccNcccccc",
-     "ccc.cccccc",
+     "cccNcccccc",
      "ccc.cccccc",
      "ccc.cccccc",
      "ccc.cccccc",
@@ -331923,7 +332032,8 @@
     ],
     "parts": true,
     "people": [
-     "FACE GIRATINA"
+     "FACE GIRATINA",
+     "PICK UP THE GLOWING ORB"
     ]
    }
   ],
@@ -331941,8 +332051,9 @@
   ],
   "theme": "distortion",
   "figure_floors": {
-   "CONFRONT CYRUS": 8,
-   "FACE GIRATINA": 9
+   "FACE GIRATINA": 9,
+   "PICK UP THE GLOWING ORB": 9,
+   "Galactic Boss Cyrus": 8
   }
  },
  "GREAT_MARSH": {

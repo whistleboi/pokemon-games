@@ -298,6 +298,7 @@ EVENTS = {
         "requires": ["galactic_hq_cleared"], "flag": "spear_pillar_commanders",
         "battle": {"name": "Commander Mars", "class": "COMMANDER", "sprite": "mars.png",
                    "team": [436, 42, 432], "levels": [44, 44, 46], "is_boss_battle": True,
+                   "movesets": {"436": ["GYRO-BALL", "EXTRASENSORY", "LIGHT-SCREEN", "CONFUSE-RAY"], "42": ["AIR-CUTTER", "BITE", "POISON-FANG", "CONFUSE-RAY"], "432": ["SLASH", "SHADOW-CLAW", "AERIAL-ACE", "HYPNOSIS"]},   # (Platinum's trainer 528)
                    "rewards": {"balls": 5},
                    "battle_options": {
                        "double": True, "heal_after": True,
@@ -308,15 +309,17 @@ EVENTS = {
                                                    "393": [446, 78, 214, 419, 398, 389]},
                                    "levels": [40, 40, 42, 40, 42, 44]},
                        "second_trainer": {"name": "Commander Jupiter", "class": "COMMANDER", "sprite": "galactic_grunt.png",
-                                          "team": [436, 42, 435], "levels": [44, 44, 46], "rewards": {"balls": 3}}},
+                                          "team": [436, 42, 435], "levels": [44, 44, 46], "rewards": {"balls": 3},
+                                          "movesets": {"436": ["GYRO-BALL", "EXTRASENSORY", "ROCK-SLIDE", "REFLECT"], "42": ["SLUDGE-BOMB", "AIR-CUTTER", "GIGA-DRAIN", "MEAN-LOOK"], "435": ["NIGHT-SLASH", "POISON-JAB", "FLAMETHROWER", "SMOKESCREEN"]}}},   # (Platinum's trainer 407)
                    "dialogue": {"player_won": ["Mars: Ugh... Go, then. Cyrus will finish you himself.",
                                                "Barry: Here, let me patch up your team. Now go stop Cyrus!"]}}},
     "cyrus_spear_pillar": {
         "lines": ["sinnoh_spear_pillar_event"], "requires": ["galactic_hq_cleared", "spear_pillar_commanders"],
         "fail": ["A strange force blocks the summit. Free the lake guardians at Team Galactic HQ first."],
         "flag": "spear_pillar_resolved",
-        "battle": {"name": "Cyrus", "class": "BOSS", "sprite": "cyrus.png", "team": [430, 169, 130, 461],
-                   "levels": [45, 46, 45, 48],
+        "battle": {"name": "Cyrus", "class": "BOSS", "sprite": "cyrus.png", "team": [229, 430, 169, 130, 461],
+                   "levels": [45, 47, 46, 46, 48],   # (Platinum's Cyrus, trainer 404, s_s5_spear_pillar.py)
+                   "movesets": {"229": ["FLAMETHROWER", "DARK-PULSE", "WILL-O-WISP", "THUNDER-FANG"], "430": ["DRILL-PECK", "NIGHT-SLASH", "HEAT-WAVE", "PSYCHIC"], "169": ["CROSS-POISON", "AIR-SLASH", "TOXIC", "CONFUSE-RAY"], "130": ["GIGA-IMPACT", "WATERFALL", "ICE-FANG", "EARTHQUAKE"], "461": ["NIGHT-SLASH", "ICE-PUNCH", "FAKE-OUT", "X-SCISSOR"]},
                    "is_boss_battle": True,
                    "dialogue": {"player_won": ["Cyrus: ...My new world... is gone.",
                                                "Cyrus: Then I will find another way. Alone.",
