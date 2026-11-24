@@ -35,8 +35,8 @@ for _k in ("JUBILIFE_CITY", "OREBURGH_CITY", "FLOAROMA_TOWN"):
 ROUTES += ("SINNOH_ROUTE_202", "SINNOH_ROUTE_203", "OREBURGH_GATE", "OREBURGH_MINE", "SINNOH_ROUTE_204", "RAVAGED_PATH",
            "FLOAROMA_MEADOW", "SINNOH_ROUTE_205", "VALLEY_WINDWORKS", "ETERNA_FOREST", "ETERNA_FOREST_OUTSKIRTS")
 # S3 (11-23): Eterna to Solaceon. Flat for now: Eterna's two houses with no Platinum room (house_0601/0701), the Contest Hall
-# 2F (no ground picture), Hearthome's Gym (rebuilt from Platinum's 13 rooms in S3), the Lost Tower (fog per floor, S3)
-FLAT |= {("ETERNA_CITY", "house_0601"), ("ETERNA_CITY", "house_0701"), ("HEARTHOME_CITY", "contest_2f"), ("HEARTHOME_CITY", "gym")}
+# 2F (no ground picture), the Lost Tower (fog per floor, S3). Hearthome's Gym: its four Platinum rooms, live (s_s3_hearthome_gym.py)
+FLAT |= {("ETERNA_CITY", "house_0601"), ("ETERNA_CITY", "house_0701"), ("HEARTHOME_CITY", "contest_2f")}
 for _k in ("ETERNA_CITY", "HEARTHOME_CITY", "SOLACEON_TOWN"):
     PILOT[_k] = tuple(n for n in (_TM[_k].get("rooms") or {}) if (_k, n) not in FLAT)
 # (S3's known level jumps, open on the roadmap: the steps listed, and no others)
@@ -54,6 +54,8 @@ def settle(n=60):
         st = g.current_state
         if type(st).__name__ == "DungeonState" and hasattr(st, "run"):   # (no wild Pokemon: they'd start a battle mid-check)
             st.run.floor.movers = [m for m in st.run.floor.movers if m.kind != "wild"]
+        if type(st).__name__ == "PickListState":   # (a question as you come in: Hearthome Gym's door sums - not answered here)
+            st.pick(None); continue
         if getattr(st, "npc_active", False):
             st.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=(640, 600))])
         elif getattr(st, "dialogue_box", None) is not None and getattr(st.dialogue_box, "visible", False):

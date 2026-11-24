@@ -3336,6 +3336,9 @@
     },
     "HEARTHOME_CITY:Contest Hall": {
       "sheet": "pt_pcwoman1.png"
+    },
+    "HEARTHOME_CITY:Gym guide": {
+      "sheet": "pt_sunglasses.png"
     },
     "HEARTHOME_CITY:Gym": {
       "sheet": "pt_leader5.png"

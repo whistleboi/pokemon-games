@@ -186736,41 +186736,21 @@
    "gym": {
     "theme": "room",
     "art": [
-     "ccccccccccccc...................",
-     "ccccccccccccc...................",
-     "cccc.cccccccc...................",
-     "c...........c...................",
-     "c...........c...................",
-     "c.......ccccc...................",
-     "c.j..Nj.ccccc...................",
-     "c.......ccc.....................",
-     "c...v...ccccc...................",
-     "ccccccccccccc...................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................"
+     "ccccccccccccc",
+     "ccccccccccccc",
+     "cccc<cccccccc",
+     "c..........>c",
+     "c...........c",
+     "c.......ccccc",
+     "c.j..Nj.ccccc",
+     "c.......ccccc",
+     "c...v...ccccc",
+     "ccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:51,25"
+     "v": "OUT:51,25",
+     "<": "ROOM:gym_1",
+     ">": "ROOM:gym_3"
     },
     "buildings": {},
     "roofs": {
@@ -186784,10 +186764,45 @@
       210,
       220
      ],
-     "_things": {}
+     "_things": {},
+     "_picture": {
+      "f": "pt_ground/C05GYM0101.png",
+      "at": [
+       0,
+       0
+      ]
+     }
     },
     "people": [
-     "Gym"
+     {
+      "text": "Gym guide",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Hey, Champ-to-be! Fantina's Gym is dark, and its doors are tricky.",
+        "In each room, a voice asks you a sum. Every door holds an answer: pick the right one and it opens the way on.",
+        "Pick wrong and you'll walk straight back here! Oh, and Fantina uses Ghost types. Ghost and Dark moves hit them hard."
+       ]
+      }
+     }
+    ],
+    "title": "Hearthome Gym",
+    "barred": [
+     {
+      "tiles": [
+       [
+        11,
+        3
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "sinnoh_beat_fantina"
+      },
+      "lines": [
+       "A warp panel. It doesn't seem to be working yet."
+      ]
+     }
     ]
    },
    "poffin": {
@@ -189211,6 +189226,1290 @@
         "PIKACHU: Pika pii?"
        ]
       }
+     }
+    ]
+   },
+   "gym_1": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cccc<ccc<ccc<cccc",
+     "c.c...c...c...c.c",
+     "c...............c",
+     "cccc.c.c.c.c.cccc",
+     "c.c....c.c......c",
+     "c.c.N.ccccc.Nc..c",
+     "c.....c......c..c",
+     "c.ccc.......ccc.c",
+     "c.......^.......c",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "<": "ROOM:gym_2",
+     "^": "ROOM:gym"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      222,
+      206,
+      160
+     ],
+     "_wall": [
+      210,
+      210,
+      220
+     ],
+     "_things": {},
+     "_picture": {
+      "f": "pt_ground/C05GYM0102.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Lass Molly",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Lass Molly: Did you get the sum right? Let's see if you can battle too!"
+       ],
+       "battle": {
+        "name": "Lass Molly",
+        "class": "LASS",
+        "sprite": "pt_lass.png",
+        "team": [
+         200
+        ],
+        "levels": [
+         23
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Lass Molly: Fantina's Pokemon are even spookier than mine."
+         ]
+        }
+       },
+       "flag": "gym_trainer_HEARTHOME_CITY_2",
+       "done": [
+        "Lass Molly: Fantina's Pokemon are even spookier than mine."
+       ]
+      }
+     },
+     {
+      "text": "Youngster Donny",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Youngster Donny: It's so dark... but I can still see you!"
+       ],
+       "battle": {
+        "name": "Youngster Donny",
+        "class": "YOUNGSTER",
+        "sprite": "pt_youngster.png",
+        "team": [
+         92,
+         425
+        ],
+        "levels": [
+         20,
+         22
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Youngster Donny: Ghosts like the dark. So do I!"
+         ]
+        }
+       },
+       "flag": "gym_trainer_HEARTHOME_CITY_1",
+       "done": [
+        "Youngster Donny: Ghosts like the dark. So do I!"
+       ]
+      }
+     }
+    ],
+    "title": "Hearthome Gym: Room 1",
+    "barred": [
+     {
+      "tiles": [
+       [
+        4,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "door": 0,
+      "until_any": [
+       {
+        "condition": "world:hearthome_gym:1:0"
+       }
+      ],
+      "lines": [
+       "The door is shut tight. Answer the voice's question to choose a door."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        8,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "door": 1,
+      "until_any": [
+       {
+        "condition": "world:hearthome_gym:1:1"
+       }
+      ],
+      "lines": [
+       "The door is shut tight. Answer the voice's question to choose a door."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        12,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "door": 2,
+      "until_any": [
+       {
+        "condition": "world:hearthome_gym:1:2"
+       }
+      ],
+      "lines": [
+       "The door is shut tight. Answer the voice's question to choose a door."
+      ]
+     }
+    ],
+    "scenes": [
+     {
+      "trigger": "enter",
+      "every": true,
+      "cast": [],
+      "event": {
+       "world": "hearthome_gym",
+       "room": 1
+      }
+     }
+    ]
+   },
+   "gym_2": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccc",
+     "cccc<cccc<cccc<cccc<cccc<cccc",
+     "c.c...c....c....c....c....c.c",
+     "c.cc..ccc..c...cccc..ccc.cc.c",
+     "c.c..cc...ccc...c...cc....c.c",
+     "c...........................c",
+     "c.ccccc.......c...N...ccccc.c",
+     "c...c.........c.........c...c",
+     "c...c..ccccNcccccccccc..c...c",
+     "c........c....c....c........c",
+     "cccc.ccc.c....c....c.ccc....c",
+     "c...........................c",
+     "c.....ccc..ccc.ccc..ccc.c...c",
+     "c.......................c...c",
+     "c...N...cccc.....cccc.ccccccc",
+     "c.........c...c...c.....c...c",
+     "c.........c...c...c..N..c...c",
+     "c...........cccccc..........c",
+     "cccccccc......c......cccccccc",
+     "cccccccc.ccc..c..ccc.cccccccc",
+     "cccccccc..c.......c..cccccccc",
+     "cccccccc......^......cccccccc",
+     "ccccccccccccccccccccccccccccc"
+    ],
+    "exits": {
+     "<": "ROOM:gym_3",
+     "^": "ROOM:gym"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      172,
+      139,
+      82
+     ],
+     "_wall": [
+      90,
+      90,
+      90
+     ],
+     "_things": {
+      "1,2": [
+       128,
+       96,
+       64
+      ],
+      "2,2": [
+       128,
+       96,
+       64
+      ],
+      "3,2": [
+       160,
+       128,
+       64
+      ],
+      "5,2": [
+       160,
+       128,
+       64
+      ],
+      "6,2": [
+       128,
+       96,
+       64
+      ],
+      "7,2": [
+       128,
+       96,
+       64
+      ],
+      "8,2": [
+       160,
+       128,
+       64
+      ],
+      "10,2": [
+       160,
+       128,
+       64
+      ],
+      "11,2": [
+       128,
+       96,
+       64
+      ],
+      "12,2": [
+       128,
+       96,
+       64
+      ],
+      "13,2": [
+       160,
+       128,
+       64
+      ],
+      "15,2": [
+       160,
+       128,
+       64
+      ],
+      "16,2": [
+       128,
+       96,
+       64
+      ],
+      "17,2": [
+       128,
+       96,
+       64
+      ],
+      "18,2": [
+       160,
+       128,
+       64
+      ],
+      "20,2": [
+       160,
+       128,
+       64
+      ],
+      "21,2": [
+       128,
+       96,
+       64
+      ],
+      "22,2": [
+       128,
+       96,
+       64
+      ],
+      "23,2": [
+       160,
+       128,
+       64
+      ],
+      "25,2": [
+       160,
+       128,
+       64
+      ],
+      "26,2": [
+       128,
+       96,
+       64
+      ],
+      "27,2": [
+       128,
+       96,
+       64
+      ],
+      "2,3": [
+       128,
+       128,
+       128
+      ],
+      "6,3": [
+       128,
+       128,
+       128
+      ],
+      "11,3": [
+       128,
+       128,
+       128
+      ],
+      "16,3": [
+       128,
+       128,
+       128
+      ],
+      "21,3": [
+       128,
+       128,
+       128
+      ],
+      "26,3": [
+       128,
+       128,
+       128
+      ],
+      "2,4": [
+       128,
+       128,
+       128
+      ],
+      "3,4": [
+       128,
+       128,
+       128
+      ],
+      "6,4": [
+       128,
+       128,
+       128
+      ],
+      "7,4": [
+       128,
+       128,
+       128
+      ],
+      "8,4": [
+       128,
+       128,
+       128
+      ],
+      "11,4": [
+       128,
+       128,
+       128
+      ],
+      "15,4": [
+       128,
+       96,
+       96
+      ],
+      "16,4": [
+       128,
+       96,
+       96
+      ],
+      "17,4": [
+       128,
+       128,
+       128
+      ],
+      "18,4": [
+       128,
+       128,
+       128
+      ],
+      "21,4": [
+       128,
+       128,
+       128
+      ],
+      "22,4": [
+       128,
+       128,
+       128
+      ],
+      "23,4": [
+       128,
+       128,
+       128
+      ],
+      "25,4": [
+       128,
+       128,
+       128
+      ],
+      "26,4": [
+       128,
+       128,
+       128
+      ],
+      "2,5": [
+       128,
+       128,
+       128
+      ],
+      "5,5": [
+       128,
+       128,
+       128
+      ],
+      "6,5": [
+       128,
+       128,
+       128
+      ],
+      "10,5": [
+       128,
+       128,
+       128
+      ],
+      "11,5": [
+       128,
+       128,
+       128
+      ],
+      "12,5": [
+       128,
+       128,
+       128
+      ],
+      "16,5": [
+       128,
+       128,
+       128
+      ],
+      "20,5": [
+       128,
+       128,
+       128
+      ],
+      "21,5": [
+       128,
+       128,
+       128
+      ],
+      "26,5": [
+       128,
+       128,
+       128
+      ],
+      "2,7": [
+       128,
+       96,
+       96
+      ],
+      "3,7": [
+       128,
+       96,
+       96
+      ],
+      "4,7": [
+       128,
+       128,
+       128
+      ],
+      "5,7": [
+       128,
+       128,
+       128
+      ],
+      "6,7": [
+       128,
+       128,
+       128
+      ],
+      "14,7": [
+       128,
+       128,
+       128
+      ],
+      "22,7": [
+       128,
+       128,
+       128
+      ],
+      "23,7": [
+       128,
+       128,
+       128
+      ],
+      "24,7": [
+       128,
+       128,
+       128
+      ],
+      "25,7": [
+       128,
+       128,
+       128
+      ],
+      "26,7": [
+       128,
+       128,
+       128
+      ],
+      "4,8": [
+       128,
+       128,
+       128
+      ],
+      "14,8": [
+       128,
+       128,
+       128
+      ],
+      "24,8": [
+       128,
+       128,
+       128
+      ],
+      "4,9": [
+       128,
+       128,
+       128
+      ],
+      "7,9": [
+       128,
+       96,
+       96
+      ],
+      "8,9": [
+       128,
+       96,
+       96
+      ],
+      "9,9": [
+       128,
+       128,
+       128
+      ],
+      "10,9": [
+       128,
+       128,
+       128
+      ],
+      "12,9": [
+       128,
+       96,
+       96
+      ],
+      "13,9": [
+       128,
+       96,
+       96
+      ],
+      "14,9": [
+       128,
+       96,
+       96
+      ],
+      "15,9": [
+       128,
+       96,
+       96
+      ],
+      "16,9": [
+       128,
+       128,
+       128
+      ],
+      "17,9": [
+       128,
+       128,
+       128
+      ],
+      "18,9": [
+       128,
+       128,
+       128
+      ],
+      "19,9": [
+       128,
+       128,
+       128
+      ],
+      "20,9": [
+       128,
+       128,
+       128
+      ],
+      "21,9": [
+       128,
+       128,
+       128
+      ],
+      "24,9": [
+       128,
+       128,
+       128
+      ],
+      "9,10": [
+       128,
+       128,
+       128
+      ],
+      "14,10": [
+       128,
+       128,
+       128
+      ],
+      "19,10": [
+       128,
+       128,
+       128
+      ],
+      "1,11": [
+       128,
+       128,
+       128
+      ],
+      "2,11": [
+       128,
+       128,
+       128
+      ],
+      "3,11": [
+       128,
+       128,
+       128
+      ],
+      "5,11": [
+       128,
+       128,
+       128
+      ],
+      "6,11": [
+       128,
+       128,
+       128
+      ],
+      "7,11": [
+       128,
+       128,
+       128
+      ],
+      "9,11": [
+       128,
+       128,
+       128
+      ],
+      "14,11": [
+       128,
+       128,
+       128
+      ],
+      "19,11": [
+       128,
+       128,
+       128
+      ],
+      "21,11": [
+       128,
+       128,
+       128
+      ],
+      "22,11": [
+       128,
+       128,
+       128
+      ],
+      "23,11": [
+       128,
+       128,
+       128
+      ],
+      "6,13": [
+       128,
+       128,
+       128
+      ],
+      "7,13": [
+       128,
+       128,
+       128
+      ],
+      "8,13": [
+       128,
+       128,
+       128
+      ],
+      "11,13": [
+       128,
+       128,
+       128
+      ],
+      "12,13": [
+       128,
+       128,
+       128
+      ],
+      "13,13": [
+       128,
+       128,
+       128
+      ],
+      "15,13": [
+       128,
+       128,
+       128
+      ],
+      "16,13": [
+       128,
+       128,
+       128
+      ],
+      "17,13": [
+       128,
+       128,
+       128
+      ],
+      "20,13": [
+       128,
+       128,
+       128
+      ],
+      "21,13": [
+       128,
+       128,
+       128
+      ],
+      "22,13": [
+       160,
+       128,
+       128
+      ],
+      "24,13": [
+       128,
+       128,
+       128
+      ],
+      "24,14": [
+       128,
+       128,
+       128
+      ],
+      "8,15": [
+       128,
+       128,
+       128
+      ],
+      "9,15": [
+       128,
+       128,
+       128
+      ],
+      "10,15": [
+       128,
+       128,
+       128
+      ],
+      "11,15": [
+       128,
+       128,
+       128
+      ],
+      "17,15": [
+       128,
+       128,
+       128
+      ],
+      "18,15": [
+       128,
+       128,
+       128
+      ],
+      "19,15": [
+       128,
+       128,
+       128
+      ],
+      "20,15": [
+       128,
+       128,
+       128
+      ],
+      "22,15": [
+       128,
+       128,
+       128
+      ],
+      "23,15": [
+       128,
+       128,
+       128
+      ],
+      "24,15": [
+       128,
+       128,
+       128
+      ],
+      "25,15": [
+       128,
+       128,
+       128
+      ],
+      "26,15": [
+       128,
+       128,
+       128
+      ],
+      "27,15": [
+       128,
+       128,
+       128
+      ],
+      "10,16": [
+       128,
+       128,
+       128
+      ],
+      "14,16": [
+       128,
+       128,
+       128
+      ],
+      "18,16": [
+       128,
+       128,
+       128
+      ],
+      "24,16": [
+       128,
+       128,
+       128
+      ],
+      "10,17": [
+       128,
+       128,
+       128
+      ],
+      "14,17": [
+       128,
+       128,
+       128
+      ],
+      "18,17": [
+       128,
+       128,
+       128
+      ],
+      "24,17": [
+       128,
+       128,
+       128
+      ],
+      "12,18": [
+       128,
+       128,
+       128
+      ],
+      "13,18": [
+       128,
+       128,
+       128
+      ],
+      "14,18": [
+       128,
+       128,
+       128
+      ],
+      "15,18": [
+       128,
+       128,
+       128
+      ],
+      "16,18": [
+       128,
+       128,
+       128
+      ],
+      "17,18": [
+       128,
+       128,
+       128
+      ],
+      "14,19": [
+       128,
+       128,
+       128
+      ],
+      "9,20": [
+       128,
+       128,
+       128
+      ],
+      "10,20": [
+       128,
+       128,
+       128
+      ],
+      "11,20": [
+       128,
+       128,
+       128
+      ],
+      "14,20": [
+       128,
+       128,
+       128
+      ],
+      "17,20": [
+       128,
+       128,
+       128
+      ],
+      "18,20": [
+       128,
+       128,
+       128
+      ],
+      "19,20": [
+       128,
+       128,
+       128
+      ],
+      "10,21": [
+       128,
+       128,
+       128
+      ],
+      "18,21": [
+       128,
+       128,
+       128
+      ]
+     },
+     "_picture": {
+      "f": "pt_ground/C05GYM0103.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Ace Trainer Allen",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Ace Trainer Allen: Only sharp minds reach Fantina. Show me yours!"
+       ],
+       "battle": {
+        "name": "Ace Trainer Allen",
+        "class": "ACE_TRAINER",
+        "sprite": "pt_ace_trainer_m.png",
+        "team": [
+         92,
+         92,
+         93
+        ],
+        "levels": [
+         21,
+         22,
+         24
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Ace Trainer Allen: Your head and your team are both sharp."
+         ]
+        }
+       },
+       "flag": "gym_trainer_HEARTHOME_CITY_4",
+       "done": [
+        "Ace Trainer Allen: Your head and your team are both sharp."
+       ]
+      }
+     },
+     {
+      "text": "Ace Trainer Catherine",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Ace Trainer Catherine: The last door is close. You'll have to get past me first!"
+       ],
+       "battle": {
+        "name": "Ace Trainer Catherine",
+        "class": "ACE_TRAINER",
+        "sprite": "pt_ace_trainer_f.png",
+        "team": [
+         93,
+         200
+        ],
+        "levels": [
+         23,
+         24
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Ace Trainer Catherine: Fantina is through the next door. Bonne chance!"
+         ]
+        }
+       },
+       "flag": "gym_trainer_HEARTHOME_CITY_6",
+       "done": [
+        "Ace Trainer Catherine: Fantina is through the next door. Bonne chance!"
+       ]
+      }
+     },
+     {
+      "text": "School Kid Mackenzie",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "School Kid Mackenzie: My Drifloon float in the dark. Can you find them?"
+       ],
+       "battle": {
+        "name": "School Kid Mackenzie",
+        "class": "SCHOOL_KID",
+        "sprite": "pt_school_kid_f.png",
+        "team": [
+         425,
+         425
+        ],
+        "levels": [
+         21,
+         21
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "School Kid Mackenzie: Keep doing your sums!"
+         ]
+        }
+       },
+       "flag": "gym_trainer_HEARTHOME_CITY_3",
+       "done": [
+        "School Kid Mackenzie: Keep doing your sums!"
+       ]
+      }
+     },
+     {
+      "text": "School Kid Chance",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "School Kid Chance: I counted every Duskull lamp in here. Can you beat that?"
+       ],
+       "battle": {
+        "name": "School Kid Chance",
+        "class": "SCHOOL_KID",
+        "sprite": "pt_school_kid_m.png",
+        "team": [
+         92
+        ],
+        "levels": [
+         23
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "School Kid Chance: There are 96 of them. I think."
+         ]
+        }
+       },
+       "flag": "gym_trainer_HEARTHOME_CITY_5",
+       "done": [
+        "School Kid Chance: There are 96 of them. I think."
+       ]
+      }
+     }
+    ],
+    "title": "Hearthome Gym: Room 2",
+    "barred": [
+     {
+      "tiles": [
+       [
+        4,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "door": 0,
+      "until_any": [
+       {
+        "condition": "world:hearthome_gym:2:0"
+       }
+      ],
+      "lines": [
+       "The door is shut tight. Answer the voice's question to choose a door."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        9,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "door": 1,
+      "until_any": [
+       {
+        "condition": "world:hearthome_gym:2:1"
+       }
+      ],
+      "lines": [
+       "The door is shut tight. Answer the voice's question to choose a door."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "door": 2,
+      "until_any": [
+       {
+        "condition": "world:hearthome_gym:2:2"
+       }
+      ],
+      "lines": [
+       "The door is shut tight. Answer the voice's question to choose a door."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        19,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "door": 3,
+      "until_any": [
+       {
+        "condition": "world:hearthome_gym:2:3"
+       }
+      ],
+      "lines": [
+       "The door is shut tight. Answer the voice's question to choose a door."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        24,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "door": 4,
+      "until_any": [
+       {
+        "condition": "world:hearthome_gym:2:4"
+       }
+      ],
+      "lines": [
+       "The door is shut tight. Answer the voice's question to choose a door."
+      ]
+     }
+    ],
+    "scenes": [
+     {
+      "trigger": "enter",
+      "every": true,
+      "cast": [],
+      "event": {
+       "world": "hearthome_gym",
+       "room": 2
+      }
+     }
+    ]
+   },
+   "gym_3": {
+    "theme": "room",
+    "art": [
+     "cccccccccccccccc",
+     "cccccccccccccccc",
+     "ccccccccccccc.>c",
+     "ccccccccccccc..c",
+     "ccccccccccccc..c",
+     "ccccccccccccc..c",
+     "ccccccccccccc..c",
+     "cc.....cccccc..c",
+     "cj.....jccccc..c",
+     "c..............c",
+     "c...N..........c",
+     "c.......cccccccc",
+     "c.......cccccccc",
+     "ccccvccccccccccc",
+     "cccccccccccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:gym_2",
+     ">": "ROOM:gym"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "pt_ground/C05GYM0104.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     "Gym"
+    ],
+    "title": "Hearthome Gym: Fantina",
+    "barred": [
+     {
+      "tiles": [
+       [
+        8,
+        9
+       ],
+       [
+        8,
+        10
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "sinnoh_beat_fantina"
+      },
+      "lines": [
+       "The way to the warp panel is blocked. Beat Fantina first!"
+      ]
      }
     ]
    }

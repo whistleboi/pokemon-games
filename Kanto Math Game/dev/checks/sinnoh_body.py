@@ -844,5 +844,58 @@ check(_open == [(True, True), (False, True), (True, False)],
       f"Eterna Gym: the clock's hands move with each trainer beaten - (11,15) shut, open, shut; the east fountain row shut, shut, open ({_open})")
 story.story_flags.clear(); story.story_flags.update(_sv)
 
+# ---- S3 (11-23): Hearthome Gym, Platinum's rooms; a question from our maths engine picks the door (s_s3_hearthome_gym.py)
+from src.world import hearthome_gym as _hg
+_sv = dict(story.story_flags)
+for _k in [k for k in story.story_flags if k.startswith("gym_trainer_HEARTHOME") or k.startswith("hearthome_gym_door")] + ["sinnoh_beat_fantina"]:
+    story.story_flags.pop(_k, None)
+
+
+def _hg_walk(t, at, d):
+    """Stand at, then walk one step that way (a door: into the next room). Waits for anything still playing first."""
+    _drive(t, 120, lambda: not (getattr(t, "scenes", None) and t.scenes.busy()) and not getattr(t, "npc_active", False))
+    was = t.room
+    t.player = t.anim_from = at; t.anim = 0; t.walk_goal = None
+    t.step(*d)
+    _drive(t, 120, lambda: t.room != was)
+
+
+def _hg_answer(t, right):
+    _drive(t, 300, lambda: isinstance(g.current_state, _PLS))
+    if not isinstance(g.current_state, _PLS):
+        return None
+    n = len(g.current_state.choices)
+    k = _hg.LAST["right"] if right else (_hg.LAST["right"] + 1) % n
+    g.current_state.pick(k)
+    _drive(t, 300, lambda: g.current_state is t and not getattr(t, "npc_active", False))
+    return k
+
+
+t = town("HEARTHOME_CITY", "SINNOH_ROUTE_208")
+t._go("gym", None); frames(t, 10)
+check(t.room == "gym" and (11, 3) in t.barred and "ROOM:gym_1" in t.exits.values(),
+      f"Hearthome Gym: the lobby, one door on, its warp panel shut till Fantina is beaten ({t.room}, {sorted(t.exits.values())})")
+_hg_walk(t, (4, 3), (0, -1))
+_in1 = t.room
+_k = _hg_answer(t, True)
+_door = sorted(xy for xy, v in t.exits.items() if v == "ROOM:gym_2")[_k] if _k is not None else None
+check(_in1 == "gym_1" and _k is not None and _door not in t.barred and all(d in t.barred for d in t.exits if t.exits[d] == "ROOM:gym_2" and d != _door),
+      f"Hearthome Gym room 1: a sum as you come in; the right answer opens its door, the others stay shut ({_in1}, door {_door}, {_hg.LAST.get('problem')})")
+_hg_walk(t, (_door[0], _door[1] + 1), (0, -1)) if _door else None
+_in2 = t.room
+_kw = _hg_answer(t, False)
+check(_in2 == "gym_2" and _kw is not None and t.room == "gym",
+      f"Hearthome Gym room 2: a wrong answer walks you through the wrong door, back to the lobby ({_in2} -> {t.room})")
+t._go("gym_2", "ROOM:gym_1"); frames(t, 5)
+_k2 = _hg_answer(t, True)
+_door2 = sorted(xy for xy, v in t.exits.items() if v == "ROOM:gym_3")[_k2] if _k2 is not None else None
+_hg_walk(t, (_door2[0], _door2[1] + 1), (0, -1)) if _door2 else None
+check(t.room == "gym_3" and "Gym" in t.town_map["rooms"]["gym_3"]["people"] and (8, 9) in t.barred,
+      f"Hearthome Gym: the right door in room 2 leads to Fantina; the way to the warp panel shut till she's beaten ({t.room})")
+story.story_flags["sinnoh_beat_fantina"] = True
+t._go("gym_3", "ROOM:gym_2"); frames(t, 25)
+check((8, 9) not in t.barred, "Hearthome Gym: beaten, Fantina's warp panel takes you back to the lobby")
+story.story_flags.clear(); story.story_flags.update(_sv)
+
 g.walk_towns = False
 print(f"##### {fails} failures")
