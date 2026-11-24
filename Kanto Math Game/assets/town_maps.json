@@ -203800,9 +203800,19 @@
       "action": "EVENT",
       "event": {
        "lines": [
-        "One Berry grows into a plant with lots of Berries. Plant them everywhere!"
+        "Trainer, please water Berries using this Sprayduck watering can.",
+        "You received the Sprayduck!",
+        "Use it to water the soil where you've planted Berries. Water the plants while they are growing, too."
+       ],
+       "gift_item": {
+        "SPRAYDUCK": 1
+       },
+       "flag": "got_sprayduck_floaroma",
+       "done": [
+        "A single Berry grows into a plant that makes several Berries. Help us spread more Berries everywhere!"
        ]
-      }
+      },
+      "color": "GOLD"
      }
     ]
    },
@@ -230647,9 +230657,20 @@
       "action": "EVENT",
       "event": {
        "lines": [
-        "Watch this Coin. Spin, spin, spin... I smile, but inside I cry."
+        "You there. Watch this Coin. Spin, spin, spin, spin, spin...",
+        "Now, which hand is that Coin in? My left or right?",
+        "...Bravo! A winner is you! For our winner, I have here... a Coin Case!",
+        "You received a Coin Case!"
+       ],
+       "gift_item": {
+        "COIN_CASE": 1
+       },
+       "flag": "got_coin_case_sinnoh",
+       "done": [
+        "Me, I am but a tearful clown. Though I smile, I cry inside."
        ]
-      }
+      },
+      "color": "GOLD"
      }
     ]
    },
