@@ -915,6 +915,9 @@ for _ak, _pool in (("DARK_CAVE", "JOHTO_DARK_CAVE_ROCK_SMASH_PERCENTAGES"), ("JO
     finally:
         _type.SMASH_WILD = _old_sw
     _sm[_ak] = (len(_cr), _got, _want, _cr[:1] and _p.run.floor.decor.get(_cr[0]) is None)
+_tm_all = g.loader.town_maps if hasattr(g.loader, "town_maps") else __import__("json").load(open("assets/town_maps.json", encoding="utf-8"))
+check(_tm_all["CIANWOOD_CITY"].get("smash_wild") is True,
+      "Cianwood's rocks hide Pokemon too (its map's smash_wild: walk_town breaks them one at a time; check town_smash)")
 check(all(n and got and got <= want and gone for n, got, want, gone in _sm.values()),
       f"Rock Smash finds Pokemon (HGSS): Dark Cave, Cliff Cave, Victory Road break one rock at a time and some hide the area's own "
       f"Rock Smash Pokemon: {_sm}")

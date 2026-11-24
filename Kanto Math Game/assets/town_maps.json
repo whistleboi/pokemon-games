@@ -82024,6 +82024,7 @@
   }
  },
  "CIANWOOD_CITY": {
+  "smash_wild": true,
   "art": [
    "ccccccccccccccccccccccoooooooooo",
    "ccccccccccccccccccccccoooooooooo",
