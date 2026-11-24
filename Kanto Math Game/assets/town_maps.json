@@ -346534,7 +346534,7 @@
      "c.c..............cc",
      "c.c..............cc",
      "c.cc.............cc",
-     "c................cc",
+     "c.......N........cc",
      "c................vc",
      "c................cc",
      "c................cc",
@@ -346547,7 +346547,48 @@
      "v": "OUT:13,52"
     },
     "buildings": {},
-    "people": [],
+    "people": [
+     {
+      "text": "Eevee expert",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I know all about Eevee! It can become so many things.",
+        "Here, take a stone to evolve yours. Which one? Come back tomorrow for another!"
+       ],
+       "flag": "xd_eevee_stone_day",
+       "choose": {
+        "flag": "xd_eevee_stone",
+        "ask": "WHICH STONE?",
+        "gift": true,
+        "choices": [
+         {
+          "text": "WATER STONE (Vaporeon)",
+          "value": "WATER_STONE"
+         },
+         {
+          "text": "THUNDER STONE (Jolteon)",
+          "value": "THUNDER_STONE"
+         },
+         {
+          "text": "FIRE STONE (Flareon)",
+          "value": "FIRE_STONE"
+         }
+        ],
+        "cancel": [
+         "Come back when you've made up your mind!"
+        ],
+        "done": [
+         "Eevee in the sun becomes Espeon, under the moon Umbreon - if it really loves you!"
+        ]
+       },
+       "done": [
+        "That's today's stone! Come back tomorrow and I'll have another for you."
+       ],
+       "daily": true
+      }
+     }
+    ],
     "signs": [],
     "roofs": {
      "_picture": {
