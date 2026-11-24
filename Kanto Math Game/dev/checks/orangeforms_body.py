@@ -66,4 +66,32 @@ check(type(g.current_state).__name__ == "DexEntryState" and g.current_state.pid 
 
 evolved = Pokemon(g.loader.fetch_specific(95, form="crystal"), g.assets, size_mult=2.5); evolved.level = 60
 check("HEAD-SMASH" in evolved.moves or "HEAD-SMASH" in evolution.known_moves(g, evolved), "an evolved Crystal Onix uses its own learnset")
+# Pinkan / Valencia Mega Evolve like their species, in their own colours (Jordan 11-23).
+from src.pokemon import forms as _forms
+from src.states.battle import TrainerBattleState
+from src.states.overworld.dungeon import follower_names
+story.level_cap_mode = "NONE"
+inv = story.inventory
+for k in ("MEGA_BRACELET", "BEEDRILLITE", "GYARADOSITE"):
+    inv[k] = 1
+for pid, dex, var in ((9106, 15, "pinkan"), (9517, 130, "valencia")):
+    me = mkf(pid); me.level = 50; me.current_hp = me.get_max_hp()
+    f = _forms.player_form(g.assets, me, inv, False)
+    check(bool(f) and f["form"] == "mega", f"{me.display_name} can Mega Evolve: {f and f['name']}")
+    story.player_team = [me]
+    b = TrainerBattleState(g, [mkf(19)], trainer_class="PKMN_TRAINER", trainer_name="Test")
+    g.change_state(b)
+    drive(b, 400)
+    before = pygame.image.tostring(me.image, "RGBA")
+    b.activate_player_form()
+    check(b.form_armed is not None, f"the MEGA button arms {var}'s Mega")
+    b._apply_transforms()
+    check(me.form == "mega" and me.display_name.startswith(f"MEGA {var.upper()} "), f"in battle: {me.display_name}")
+    plain = pygame.transform.scale(pygame.image.load(f"assets/sprites/pokemon/mega/{dex}_mega.png").convert_alpha(), me.image.get_size())
+    check(pygame.image.tostring(me.image, "RGBA") not in (before, pygame.image.tostring(plain, "RGBA")),
+          f"{var} Mega shows its own colours, not the plain Mega's")
+    check(follower_names(g, me)[0] == f"{dex}_{var}_mega", f"on the map: {follower_names(g, me)[:2]}")
+    b.draw(); pygame.image.save(g.screen, os.path.join(S, f"mega_{var}.png"))
+    _forms.revert_form(me)
+    check(me.form == var and _forms.player_form(g.assets, me, inv, False), f"after battle: {var} again")
 print(f"##### orangeforms: {fails} fails")
