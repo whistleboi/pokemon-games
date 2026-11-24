@@ -107,8 +107,25 @@ g.change_state(ps)
 got = lineup(battle_of(g.current_state))
 check(got == [(92, 20), (81, 18), (41, 20), (159, 22)], f"Burned Tower (HGSS order and levels): {got}")
 story.badges = {"JOHTO": ["ZEPHYR", "HIVE", "PLAIN", "FOG", "STORMBADGE", "MINERAL", "GLACIER", "RISING"]}
-story.current_area_key = "MT_SILVER_CITY"
-g.change_state(ow.CityState(g))
+story.current_area_key = "JOHTO_VICTORY_ROAD"   # (11-23: SoulSilver's own cave since 11-22 - the rival waits on 3F, a trainer on the map)
+_dr = getattr(g, "dungeon_routes", False); g.dungeon_routes = True   # (the cave is walked: the route menu has no rival)
+g.change_state(ow.PlayState(g))
+for _ in range(10):
+    if hasattr(g.current_state, "run"):
+        break
+    g.current_state.update()
+ps = g.current_state
+while len(ps.run.floors) <= 2:
+    ps.run.enter_floor(len(ps.run.floors))
+ps.run.enter_floor(2)
+_rv = next((m for m in ps.run.floor.movers if m.kind == "trainer" and (m.payload[1] or {}).get("name") == "{rival_name}"), None)
+check(_rv is not None, "Victory Road 3F: the rival stands there")
+ps._battle_trainer(_rv)
+g.dungeon_routes = _dr
+for _ in range(20):
+    if isinstance(g.current_state, TrainerIntroState) or hasattr(g.current_state, "opponent_team"):
+        break
+    g.current_state.update()
 got = lineup(battle_of(g.current_state))
 check(got[-1] == (160, 40) and len(got) == 6, f"Victory Road (HGSS levels): {got}")
 

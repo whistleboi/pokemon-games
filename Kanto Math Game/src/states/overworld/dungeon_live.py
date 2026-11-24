@@ -205,8 +205,8 @@ class RouteLive:
             fx, fy = mo.at() if mo is not None else (m.x, m.y)
             if mo is not None and mo.emote > 0:
                 emotes.append((fx, fy))
-            if m.kind == "wild":
-                img = self._icon(m.payload, TILE, flip=(m.x < self.run.player[0]), facing=getattr(m, "facing", None))
+            if m.kind in ("wild", "walkup"):   # (walkup: drawn in by Honey or a swarm, src/states/overworld/wild_walkup.py)
+                img = self._icon(m.payload, TILE, flip=(fx < self.run.player[0]), facing=getattr(m, "facing", None))
             elif m.kind == "escort":
                 from src.world import escorts as _esc
                 _lm = getattr(_esc.leader_of(m), "motion", None)

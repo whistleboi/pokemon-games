@@ -3150,5 +3150,23 @@ _dead = [(k, o.get("text")) for k in ("HOENN_SS_TIDAL", "HOENN_SOUTHERN_ISLAND",
          if o.get("action") == "EXIT" and o.get("text") in ("Slateport City", "Lilycove City", "Battle Frontier", "BOAT TO SLATEPORT", "LILYCOVE CITY", "EVER GRANDE CITY")]
 check(not _dead, f"the menu's EXIT shortcuts are gone: the Sailors sail you, the map's edges lead on ({_dead})")
 
+# H5 (ORAS): Mauville's mirror shop owner gives the Reveal Glass once you bring a force of nature (Dev Map reveal-glass-shop)
+_tr, _ir, _fr = list(story.player_team), dict(story.inventory), dict(story.story_flags)
+story.inventory.pop("REVEAL_GLASS", None); story.story_flags.pop("got_reveal_glass_hoenn", None)
+story.player_team = [Pokemon(g.loader.fetch_specific(258), g.assets)]
+st = open_map("MAUVILLE_CITY", "HOENN_ROUTE_110")
+st.scenes.entered = True
+st._go("shopper_house", next(v for v in _tm2["MAUVILLE_CITY"]["rooms"]["shopper_house"]["exits"].values() if str(v).startswith("OUT:"))); frames(2)
+said = _press(st, (6, 4), (0, -1))
+_none = story.inventory.get("REVEAL_GLASS", 0) == 0
+story.player_team = [Pokemon(g.loader.fetch_specific(642), g.assets)]
+st._go("shopper_house", next(v for v in _tm2["MAUVILLE_CITY"]["rooms"]["shopper_house"]["exits"].values() if str(v).startswith("OUT:"))); frames(2)   # (in again, Thundurus along)
+said2 = _press(st, (6, 4), (0, -1))
+_one = story.inventory.get("REVEAL_GLASS", 0) == 1
+said3 = _press(st, (6, 4), (0, -1))
+check(_none and _one and story.inventory.get("REVEAL_GLASS", 0) == 1,
+      f"Mauville: the mirror shop owner gives the Reveal Glass once, for a force of nature with you ({said[:1]}, {said2[-1:]})")
+story.player_team = _tr; story.inventory.clear(); story.inventory.update(_ir); story.story_flags.clear(); story.story_flags.update(_fr)
+
 story.story_flags.clear(); story.story_flags.update(_saved)
 print(f"##### {len(fails)} failures")

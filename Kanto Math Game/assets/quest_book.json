@@ -89,7 +89,8 @@
       {"mission": "johto_m4", "title": "Wings Over Violet", "say": "Violet's Gym stands high above the city. Its Leader says no one has ever clipped his Pokemon's wings."}
     ]},
     {"title": "The Hive Badge", "chapters": [
-      {"mission": "johto_m5", "title": "Under the Ground", "done": {"any": ["visited_AZALEA_TOWN", "slowpoke_well_cleared"]}, "say": "South of Violet, the road dives into Union Cave. Somewhere past the dark, a sleepy town is waiting."},
+      {"mission": "johto_m5", "title": "Something Warm", "done": {"any": ["got_togepi_egg", "visited_AZALEA_TOWN", "slowpoke_well_cleared"]}, "say": "Word from the Pokemon Center: Prof. Elm's aide came all the way to Violet, and she's carrying something round and warm. She won't let anyone else hold it."},
+      {"mission": "johto_m5", "title": "Under the Ground", "when": {"any": ["got_togepi_egg", "visited_AZALEA_TOWN", "slowpoke_well_cleared"]}, "done": {"any": ["visited_AZALEA_TOWN", "slowpoke_well_cleared"]}, "say": "South of Violet, the road dives into Union Cave. Somewhere past the dark, a sleepy town is waiting."},
       {"mission": "johto_m5", "title": "The Well of Tails", "when": {"any": ["visited_AZALEA_TOWN", "slowpoke_well_cleared"]}, "say": "Azalea's Slowpoke have gone missing, and men in black stand guard at the old well. An old ball-maker named Kurt is furious."},
       {"mission": "johto_m6", "title": "The Bug Master", "say": "With the well quiet again, Azalea's Gym opens its doors. Its young Leader knows everything about Bug Pokemon... and they swarm."}
     ]},
@@ -107,7 +108,8 @@
     ]},
     {"title": "The Storm Badge", "chapters": [
       {"mission": "johto_m11", "title": "The Dancers' Trouble", "done": {"any": ["has_item:HM_SURF", "visited_CIANWOOD_CITY", "ampharos_cured"]}, "say": "Olivine's lighthouse has gone dark, and its keeper won't leave her sick Ampharos. Meanwhile, back in Ecruteak, a stranger in black is bothering the Kimono Girls."},
-      {"mission": "johto_m11", "title": "Across the Whirling Sea", "when": {"any": ["has_item:HM_SURF", "visited_CIANWOOD_CITY", "ampharos_cured"]}, "done": {"any": ["visited_CIANWOOD_CITY", "ampharos_cured"]}, "say": "Cianwood City lies across the open sea, west of Olivine. Its pharmacy makes a medicine no one else can."},
+      {"mission": "johto_m11", "title": "The Dark Tower", "when": {"any": ["has_item:HM_SURF", "jasmine_explained", "ampharos_cured"]}, "done": {"any": ["jasmine_explained", "has_item:SECRET_POTION", "ampharos_cured"]}, "say": "Olivine's lighthouse stands dark against the sea. Someone is keeping watch at the very top, and she hasn't come down in days."},
+      {"mission": "johto_m11", "title": "Across the Whirling Sea", "when": {"any": ["jasmine_explained", "has_item:SECRET_POTION", "ampharos_cured"]}, "done": {"any": ["visited_CIANWOOD_CITY", "ampharos_cured"]}, "say": "Cianwood City lies across the open sea, west of Olivine. Its pharmacy makes a medicine no one else can."},
       {"mission": "johto_m11", "title": "The Secret Potion", "when": {"any": ["visited_CIANWOOD_CITY", "ampharos_cured"]}, "done": {"any": ["has_item:SECRET_POTION", "ampharos_cured"]}, "say": "The pharmacist knows exactly what Amphy needs. He's just been waiting for someone to ask."},
       {"mission": "johto_m12", "title": "The Waterfall Fighter", "say": "Cianwood's Gym Leader trains under a waterfall, all day, every day. His Pokemon hit like falling rocks."}
     ]},
