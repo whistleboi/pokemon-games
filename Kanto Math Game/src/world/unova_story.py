@@ -26,6 +26,10 @@ def condition(story, arg):
     if arg.startswith("party_level:"):   # (a Pokemon with you at that level or more: Driftveil Market's Expert Belt man, 11-24)
         want = int(arg.split(":", 1)[1])
         return any(p and not getattr(p, "is_egg", False) and int(getattr(p, "level", 0) or 0) >= want for p in story.player_team)
+    if arg.startswith("party_ability:"):   # (a Pokemon with you that has this Ability: Village Bridge's baker, Honey Gather; 8a)
+        want = arg.split(":", 1)[1].upper().replace("_", "-")
+        return any(p and not getattr(p, "is_egg", False) and str(getattr(p, "ability", "") or "").upper().replace("_", "-") == want
+                   for p in story.player_team)
     if arg == "female_player":
         return female(story)
     if arg == "male_player":
@@ -76,6 +80,52 @@ def _tm_lady(state, story, show):
           "You received %s!" % ("an HP Up" if due - given == 1 else "%d HP Ups" % (due - given)),
           "There must be a lot more TMs! Collect even more and I'll give you another gift!"
           if due < len(TM_STEPS) else "You are a TM Master! Thank you very much!"])
+
+
+def _daily_catch(state, story, d, show):
+    """Today's species (the same all day, from the place's water); one of it in your party earns the gift, once a day. (Black 2
+    also wants it caught that same day; our Pokemon keep no catch date, so any of that species counts.)"""
+    import datetime
+    import random
+    from src.minigames.base import species_name
+    today = datetime.date.today().isoformat()
+    flags = story.story_flags
+    sp = random.Random(d["key"] + "@" + today).choice(d["species"])
+    name = species_name(state.game, sp)
+    if flags.get(d["key"]) == today:
+        show(d.get("done") or ["Come back tomorrow!"])
+        return
+    if not any(p and not getattr(p, "is_egg", False) and getattr(p, "id", None) == sp for p in story.player_team):
+        show([line.replace("{species}", name) for line in d["ask"]])
+        return
+    flags[d["key"]] = today
+    for item, n in (d.get("gift") or {}).items():
+        story.inventory[item] = story.inventory.get(item, 0) + int(n)
+    got = " and ".join("%d %ss" % (int(n), item.replace("_", " ").title()) for item, n in (d.get("gift") or {}).items())
+    show([line.replace("{species}", name) for line in d["won"]] + ["You received %s!" % got])
+
+
+def _daily_prop(state, story, d, show):
+    """One Prop a day from a list, in order, till every one is given (Black 2: the Opelucid fan's Big Bag, Fluffy Beard, Gift Box
+    and Scarlet Hat); needs the Prop Case."""
+    import datetime
+    from src.world import musical
+    flags = story.story_flags
+    if not flags.get("b2_prop_case"):
+        show(d.get("no_case") or ["..."])
+        return
+    have = set(musical.props(state.game))
+    left = [p for p in d["props"] if p not in have]
+    if not left:
+        show(d.get("all") or ["..."])
+        return
+    today = datetime.date.today().isoformat()
+    if flags.get(d["key"]) == today:
+        show(d.get("come_back") or ["Come back tomorrow!"])
+        return
+    flags[d["key"]] = today
+    musical.give_prop(state.game, left[0])
+    show(list(d.get("lines") or []) + ["You received the %s!" % musical.prop_name(left[0])] + list(d.get("come_back") or []))
 
 
 def event(state, ev, lines, show):
@@ -132,6 +182,10 @@ def event(state, ev, lines, show):
         story.inventory[item] = story.inventory.get(item, 0) + 1
         show(list(lines or []) + ["You received a %s!" % item.replace("_", " ").title()])
         return
+    if ev.get("daily_catch"):   # (batch 8a: Village Bridge's Hip Waders: today's species; show one caught today, a gift once a day)
+        return _daily_catch(state, story, ev["daily_catch"], show)
+    if ev.get("daily_prop"):    # (batch 8a: Opelucid's Musical fan: one of his four Props a day, till you have them all)
+        return _daily_prop(state, story, ev["daily_prop"], show)
     if ev.get("dex_register"):   # (batch 6b: Route 7's old man shows you Tornadus and Thundurus, then Landorus)
         for sp in ev["dex_register"]:
             state.game.data.mark_seen(int(sp))

@@ -76,121 +76,17 @@
     ]
   },
   "figures": {
-    "TEAM_GALACTIC_HQ:Galactic machine": {"pic": "dungeon/effects/pt_blank.png"},
-    "TEAM_GALACTIC_HQ:Cyrus": {"sheet": "pt_gingaboss.png"},
-    "TEAM_GALACTIC_HQ:Commander Saturn": {"sheet": "pt_gkanbu2.png"},
-    "AGATE_VILLAGE:Move Tutor": {"sheet": "orre_npc_06.png"},
-    "ORRE_BATTLE_FRONTIER:Ace Trainer": {
-      "sheet": "orre_trainer_ace_trainer.png"
-    },
-    "ORRE_BATTLE_FRONTIER:Cooltrainer": {
-      "sheet": "orre_trainer_cooltrainer_f.png"
-    },
-    "ORRE_BATTLE_FRONTIER:NURSE (FRONTIER)": {
-      "sheet": "orre_npc_16.png"
-    },
-    "ORRE_BATTLE_FRONTIER:BP EXCHANGE": {
-      "sheet": "orre_npc_19.png"
-    },
-    "ORRE_BATTLE_FRONTIER:BP EXCHANGE (TMS)": {
-      "sheet": "orre_npc_19.png"
-    },
-    "ORRE_BATTLE_FRONTIER:NURSE (TOWER)": {
-      "sheet": "orre_npc_16.png"
-    },
-    "ORRE_BATTLE_FRONTIER:ENDLESS CHALLENGE": {
-      "sheet": "orre_npc_23.png"
-    },
-    "ORRE_BATTLE_FRONTIER:2-ON-2 CHALLENGE": {
-      "sheet": "orre_npc_23.png"
-    },
-    "ORRE_BATTLE_FRONTIER:LITTLE CUP CHALLENGE": {
-      "sheet": "orre_npc_23.png"
-    },
-    "ORRE_BATTLE_FRONTIER:LITTLE CUP SELLER": {
-      "sheet": "orre_npc_15.png"
-    },
-    "ORRE_BATTLE_FRONTIER:MOVE TUTOR (TOWER)": {
-      "sheet": "orre_npc_06.png"
-    },
-    "ORRE_BATTLE_FRONTIER:RECORD BOARD": {
-      "sheet": "orre_signs.png"
-    },
-    "LAKE_ACUITY:Confront Jupiter at the Lake": {"sheet": "pt_gkanbu3.png"},
-    "ORRE_NEW_ISLAND:BLASTOISE CLONE": {"pokemon": 9},
-    "ORRE_NEW_ISLAND:CHARIZARD CLONE": {"pokemon": 6},
-    "ORRE_NEW_ISLAND:VENUSAUR CLONE": {"pokemon": 3},
-    "REALGAM_TOWER:Mr. Fuji": {
-      "sheet": "orre_npc_18.png"
-    },
-    "REALGAM_TOWER:Sky Pillar": {
-      "sheet": "orre_pokemon_abra_line.png"
-    },
-    "REALGAM_TOWER:Birth Island": {
-      "sheet": "orre_pokemon_abra_line.png"
-    },
-    "REALGAM_TOWER:New Island": {
-      "sheet": "orre_pokemon_abra_line.png"
-    },
-    "REALGAM_TOWER:Lake of Rage": {
-      "sheet": "orre_pokemon_abra_line.png"
-    },
-    "REALGAM_TOWER:POKE FLUTE": {"item": "POKE_FLUTE"},
-    "ORRE_SKY_PILLAR:Back to Mr. Fuji's": {
-      "sheet": "orre_pokemon_abra_line.png"
-    },
-    "ORRE_SKY_PILLAR:RAYQUAZA": {"pokemon": 384},
-    "ORRE_BIRTH_ISLAND:Back to Mr. Fuji's": {
-      "sheet": "orre_pokemon_abra_line.png"
-    },
-    "ORRE_BIRTH_ISLAND:DEOXYS": {"pokemon": 386},
-    "ORRE_NEW_ISLAND:Back to Mr. Fuji's": {
-      "sheet": "orre_pokemon_abra_line.png"
-    },
-    "ORRE_NEW_ISLAND:MEWTWO": {
-      "sheet": "orre_pokemon_battle_armor_mewtwo.png"
-    },
-    "ORRE_LAKE_OF_RAGE:Back to Mr. Fuji's": {
-      "sheet": "orre_pokemon_abra_line.png"
-    },
-    "ORRE_LAKE_OF_RAGE:RED GYARADOS": {"pokemon": 130},
-    "AGATE_VILLAGE:GYM LEADERS BLAINE & ERIKA": {"sheet": "orre_trainer_leader_erika.png"},
-    "PYRITE_TOWN:GYM LEADER DUKING": {"sheet": "orre_npc_duking.png"},
-    "PHENAC_CITY:GYM LEADER MISTY": {"sheet": "orre_trainer_leader_misty.png"},
-    "XD_CITADARK_ISLE:GYM LEADER DRAKE (REMATCH)": {
-      "sheet": "orre_trainer_leader_drake.png"
-    },
-    "AGATE_VILLAGE:Marine Cave": {
-      "sheet": "orre_pokemon_abra_line.png"
-    },
-    "MARINE_CAVE:Back to Agate": {
-      "sheet": "orre_pokemon_abra_line.png"
-    },
-    "MARINE_CAVE:TEAM AQUA LEADER ARCHIE": {
-      "sheet": "orre_trainer_teamaqua_boss.png"
-    },
-    "MARINE_CAVE:KYOGRE": {"pokemon": 382},
-    "CONSTRUCTION_LOT:HEALING MACHINE (TOWER)": {
-      "sheet": "orre_healing_balls_3.png"
-    },
-    "CONSTRUCTION_LOT:TEAM ROCKET JESSIE & JAMES": {
-      "sheet": "orre_trainer_jessie.png"
-    },
-    "CONSTRUCTION_LOT:TEAM LEADERS ARCHIE & MAXIE": {
-      "sheet": "orre_trainer_teamaqua_boss.png"
-    },
-    "CONSTRUCTION_LOT:BOSS GIOVANNI": {
-      "sheet": "orre_trainer_rocketboss.png"
-    },
-    "CONSTRUCTION_LOT:ARMOURED MEWTWO": {
-      "sheet": "orre_pokemon_battle_armor_mewtwo.png"
-    },
-    "XD_CITADARK_ISLE:FULL RESTORES (TERRA)": {"item": "FULL_RESTORE"},
-    "XD_CITADARK_ISLE:ELIXIRS (TERRA)": {"item": "ELIXIR"},
-    "XD_CITADARK_ISLE:TEAM MAGMA LEADER MAXIE": {
-      "sheet": "orre_trainer_team_mahma_boss.png"
-    },
-    "XD_CITADARK_ISLE:GROUDON": {"pokemon": 383},
+    "HOENN_METEOR_FALLS:Steven": {"sheet": "em_134.png"},
+    "HOENN_ROUTE_112:Cable Car attendant": {"sheet": "em_45.png"},
+    "HOENN_MT_CHIMNEY:Cable Car attendant": {"sheet": "em_45.png"},
+    "HOENN_BATTLE_FRONTIER:Dome attendant": {"sheet": "em_85.png"},
+    "HOENN_BATTLE_FRONTIER:Palace attendant": {"sheet": "em_85.png"},
+    "HOENN_BATTLE_FRONTIER:Pyramid attendant": {"sheet": "em_85.png"},
+    "HOENN_BATTLE_FRONTIER:Arena attendant": {"sheet": "em_85.png"},
+    "HOENN_BATTLE_FRONTIER:Factory attendant": {"sheet": "em_85.png"},
+    "HOENN_BATTLE_FRONTIER:Exchange clerk": {"sheet": "em_85.png"},
+    "MAUVILLE_CITY:Mirror shop owner": {"sheet": "em_83.png"},
+    "HOENN_VICTORY_ROAD:Wally ": {"sheet": "em_135.png"},
     "ANVILLE_TOWN:Boy": {"sheet": "b2_c29.png"},
     "ANVILLE_TOWN:Boy by the fence": {"sheet": "b2_c28.png"},
     "ANVILLE_TOWN:Collector": {"sheet": "b2_c27.png"},
@@ -1285,6 +1181,66 @@
     "NIMBASA_CITY:Youngster Kevin    ": {"sheet": "b2_c11.png"},
     "NIMBASA_CITY:Youngster Kevin     ": {"sheet": "b2_c11.png"},
     "NIMBASA_CITY:{rival_name}": {"sheet": "b2_hugh.png"},
+    "OPELUCID_CITY:Ace Trainer": {"sheet": "b2_c32.png"},
+    "OPELUCID_CITY:Artist": {"sheet": "b2_c28.png"},
+    "OPELUCID_CITY:Axew": {"sheet": "b2_c318.png"},
+    "OPELUCID_CITY:Azumarill": {"sheet": "b2_c8.png"},
+    "OPELUCID_CITY:Black Belt": {"sheet": "b2_c46.png"},
+    "OPELUCID_CITY:Boy": {"sheet": "b2_c10.png"},
+    "OPELUCID_CITY:Boy with Smoke Balls": {"sheet": "b2_c20.png"},
+    "OPELUCID_CITY:Clerk ": {"sheet": "b2_c82.png"},
+    "OPELUCID_CITY:Clerk  ": {"sheet": "b2_c81.png"},
+    "OPELUCID_CITY:Draco Meteor tutor": {"sheet": "b2_c59.png"},
+    "OPELUCID_CITY:Drayden": {"sheet": "b2_c229.png"},
+    "OPELUCID_CITY:Druddigon": {"sheet": "b2_c131.png"},
+    "OPELUCID_CITY:Eelektross": {"sheet": "b2_c9.png"},
+    "OPELUCID_CITY:Girl": {"sheet": "b2_c30.png"},
+    "OPELUCID_CITY:Girl at the table": {"sheet": "b2_c45.png"},
+    "OPELUCID_CITY:Girl at the table ": {"sheet": "b2_c45.png"},
+    "OPELUCID_CITY:Guard": {"sheet": "b2_c76.png"},
+    "OPELUCID_CITY:Guard ": {"sheet": "b2_c76.png"},
+    "OPELUCID_CITY:Gym": {"sheet": "b2_c229.png"},
+    "OPELUCID_CITY:Gym guide": {"sheet": "b2_c187.png"},
+    "OPELUCID_CITY:Iris": {"sheet": "b2_c355.png"},
+    "OPELUCID_CITY:Iris's old coach": {"sheet": "b2_c59.png"},
+    "OPELUCID_CITY:Klang": {"sheet": "b2_c8.png"},
+    "OPELUCID_CITY:Man": {"sheet": "b2_c22.png"},
+    "OPELUCID_CITY:Man ": {"sheet": "b2_c22.png"},
+    "OPELUCID_CITY:Man by the Gym": {"sheet": "b2_c20.png"},
+    "OPELUCID_CITY:Man by the window": {"sheet": "b2_c44.png"},
+    "OPELUCID_CITY:Man by the window ": {"sheet": "b2_c44.png"},
+    "OPELUCID_CITY:Man eating": {"sheet": "b2_c20.png"},
+    "OPELUCID_CITY:Man upstairs": {"sheet": "b2_c19.png"},
+    "OPELUCID_CITY:Man upstairs ": {"sheet": "b2_c19.png"},
+    "OPELUCID_CITY:Man with an odd item": {"sheet": "b2_c22.png"},
+    "OPELUCID_CITY:Mimic girl": {"sheet": "b2_c317.png"},
+    "OPELUCID_CITY:Mr. Medal": {"sheet": "b2_c70.png"},
+    "OPELUCID_CITY:Musical fan": {"sheet": "b2_c17.png"},
+    "OPELUCID_CITY:Musician": {"sheet": "b2_c162.png"},
+    "OPELUCID_CITY:Old man": {"sheet": "b2_c32.png"},
+    "OPELUCID_CITY:Old man ": {"sheet": "b2_c32.png"},
+    "OPELUCID_CITY:Old woman": {"sheet": "b2_c11.png"},
+    "OPELUCID_CITY:Pok\u00e9mon Center": {"sheet": "b2_c78.png"},
+    "OPELUCID_CITY:Shop": {"sheet": "b2_c79.png"},
+    "OPELUCID_CITY:Swoobat": {"sheet": "b2_c9.png"},
+    "OPELUCID_CITY:Tympole": {"sheet": "b2_c313.png"},
+    "OPELUCID_CITY:Tympole ": {"sheet": "b2_c313.png"},
+    "OPELUCID_CITY:Tympole  ": {"sheet": "b2_c313.png"},
+    "OPELUCID_CITY:Tympole   ": {"sheet": "b2_c313.png"},
+    "OPELUCID_CITY:Tympole    ": {"sheet": "b2_c313.png"},
+    "OPELUCID_CITY:Tympole fan": {"sheet": "b2_c20.png"},
+    "OPELUCID_CITY:Veteran Denae": {"sheet": "b2_c33.png"},
+    "OPELUCID_CITY:Veteran Jerry": {"sheet": "b2_c32.png"},
+    "OPELUCID_CITY:Veteran Lucius": {"sheet": "b2_c32.png"},
+    "OPELUCID_CITY:Veteran Rhona": {"sheet": "b2_c33.png"},
+    "OPELUCID_CITY:Veteran Ron": {"sheet": "b2_c32.png"},
+    "OPELUCID_CITY:Woman": {"sheet": "b2_c44.png"},
+    "OPELUCID_CITY:Woman by the PC": {"sheet": "b2_c20.png"},
+    "OPELUCID_CITY:Woman by the PC ": {"sheet": "b2_c20.png"},
+    "OPELUCID_CITY:Woman by the houses": {"sheet": "b2_c21.png"},
+    "OPELUCID_CITY:Woman by the houses ": {"sheet": "b2_c21.png"},
+    "OPELUCID_CITY:Woman upstairs": {"sheet": "b2_c19.png"},
+    "OPELUCID_CITY:Woman with a stone": {"sheet": "b2_c33.png"},
     "PLASMA_FRIGATE:Cheren": {"sheet": "b2_cheren.png"},
     "PLASMA_FRIGATE:Plasma Grunt A": {"sheet": "b2_c293.png"},
     "PLASMA_FRIGATE:Plasma Grunt B": {"sheet": "b2_c293.png"},
@@ -1476,6 +1432,15 @@
     "UNDELLA_TOWN:Woman by the PC": {"sheet": "b2_c24.png"},
     "UNDELLA_TOWN:Woman in the house": {"sheet": "b2_c20.png"},
     "UNDELLA_TOWN:Worker by the Marine Tube": {"sheet": "b2_c155.png"},
+    "UNOVA_ROUTE_11:Poke Ball by the gate": {"sheet": "b2_c210.png"},
+    "UNOVA_ROUTE_11:Poke Ball by the river": {"sheet": "b2_item_ball.png"},
+    "UNOVA_ROUTE_11:Poke Ball on the cliff": {"sheet": "b2_c216.png"},
+    "UNOVA_ROUTE_11:Ranger by the trailer": {"sheet": "b2_c37.png"},
+    "UNOVA_ROUTE_12:Poke Ball by the gate": {"sheet": "b2_item_ball.png"},
+    "UNOVA_ROUTE_12:Poke Ball by the trees": {"sheet": "b2_item_ball.png"},
+    "UNOVA_ROUTE_12:Poke Ball in the grass": {"sheet": "b2_c210.png"},
+    "UNOVA_ROUTE_12:Poke Ball on the hill": {"sheet": "b2_c216.png"},
+    "UNOVA_ROUTE_12:Poke Ball up the slope": {"sheet": "b2_c216.png"},
     "UNOVA_ROUTE_13:Boy in the house": {"sheet": "b2_c14.png"},
     "UNOVA_ROUTE_13:Chatot": {"sheet": "b2_c311.png"},
     "UNOVA_ROUTE_13:Drifloon in the grotto": {"pokemon": 425},
@@ -1636,6 +1601,50 @@
     "UNOVA_ROUTE_7:Watchog in the grotto": {"pokemon": 505},
     "UNOVA_ROUTE_7:Woman by the window": {"sheet": "b2_c23.png"},
     "UNOVA_ROUTE_7:Zangoose in the grotto": {"pokemon": 335},
+    "VILLAGE_BRIDGE:Aickman": {"sheet": "b2_c152.png"},
+    "VILLAGE_BRIDGE:Baker Chris": {"sheet": "b2_c66.png"},
+    "VILLAGE_BRIDGE:Boy": {"sheet": "b2_c14.png"},
+    "VILLAGE_BRIDGE:Boy by the court": {"sheet": "b2_c10.png"},
+    "VILLAGE_BRIDGE:Boy eating": {"sheet": "b2_c21.png"},
+    "VILLAGE_BRIDGE:Boy in the gate": {"sheet": "b2_c28.png"},
+    "VILLAGE_BRIDGE:Boy with a Ducklett": {"sheet": "b2_c9.png"},
+    "VILLAGE_BRIDGE:Croagunk": {"sheet": "b2_c131.png"},
+    "VILLAGE_BRIDGE:Derleth": {"sheet": "b2_c150.png"},
+    "VILLAGE_BRIDGE:Ducklett": {"sheet": "b2_c316.png"},
+    "VILLAGE_BRIDGE:Emolga": {"sheet": "b2_c128.png"},
+    "VILLAGE_BRIDGE:Gentleman Stonewall": {"sheet": "b2_c44.png"},
+    "VILLAGE_BRIDGE:Girl in the gate": {"sheet": "b2_c21.png"},
+    "VILLAGE_BRIDGE:Girl on the bridge": {"sheet": "b2_c15.png"},
+    "VILLAGE_BRIDGE:Girl on the bridge ": {"sheet": "b2_c15.png"},
+    "VILLAGE_BRIDGE:Girl practising": {"sheet": "b2_c17.png"},
+    "VILLAGE_BRIDGE:Girl with a sandwich": {"sheet": "b2_c130.png"},
+    "VILLAGE_BRIDGE:Gothita": {"sheet": "b2_c23.png"},
+    "VILLAGE_BRIDGE:Guard": {"sheet": "b2_c76.png"},
+    "VILLAGE_BRIDGE:Hip Waders fisherman": {"sheet": "b2_c63.png"},
+    "VILLAGE_BRIDGE:Hoopster fan": {"sheet": "b2_c28.png"},
+    "VILLAGE_BRIDGE:Koontz": {"sheet": "b2_c49.png"},
+    "VILLAGE_BRIDGE:Man": {"sheet": "b2_c23.png"},
+    "VILLAGE_BRIDGE:Man by the table": {"sheet": "b2_c131.png"},
+    "VILLAGE_BRIDGE:Minccino": {"sheet": "b2_c130.png"},
+    "VILLAGE_BRIDGE:Old man": {"sheet": "b2_c28.png"},
+    "VILLAGE_BRIDGE:Poke Ball by the court": {"sheet": "b2_item_ball.png"},
+    "VILLAGE_BRIDGE:Poke Ball by the river": {"sheet": "b2_c210.png"},
+    "VILLAGE_BRIDGE:Poke Ball by the tennis court": {"sheet": "b2_item_ball.png"},
+    "VILLAGE_BRIDGE:Poke Ball by the trees": {"sheet": "b2_item_ball.png"},
+    "VILLAGE_BRIDGE:Poke Ball on the bank": {"sheet": "b2_item_ball.png"},
+    "VILLAGE_BRIDGE:Poke Ball on the island": {"sheet": "b2_item_ball.png"},
+    "VILLAGE_BRIDGE:Pokemon Breeder": {"sheet": "b2_c35.png"},
+    "VILLAGE_BRIDGE:Runner on the bridge": {"sheet": "b2_c25.png"},
+    "VILLAGE_BRIDGE:Russo": {"sheet": "b2_c24.png"},
+    "VILLAGE_BRIDGE:Snorlax doll": {"sheet": "b2_c34.png"},
+    "VILLAGE_BRIDGE:Swadloon": {"sheet": "b2_c15.png"},
+    "VILLAGE_BRIDGE:Traveller": {"sheet": "b2_c44.png"},
+    "VILLAGE_BRIDGE:Woman": {"sheet": "b2_c19.png"},
+    "VILLAGE_BRIDGE:Woman at the table": {"sheet": "b2_c20.png"},
+    "VILLAGE_BRIDGE:Woman by the stairs": {"sheet": "b2_c20.png"},
+    "VILLAGE_BRIDGE:Woman in the gate": {"sheet": "b2_c20.png"},
+    "VILLAGE_BRIDGE:Woman in the rest house": {"sheet": "b2_c315.png"},
+    "VILLAGE_BRIDGE:Worker in the gate": {"sheet": "b2_c15.png"},
     "VIRBANK_CITY:Audino": {"sheet": "b2_c312.png"},
     "VIRBANK_CITY:Boy by the door": {"sheet": "b2_c77.png"},
     "VIRBANK_CITY:Boy by the door ": {"sheet": "b2_c77.png"},
@@ -1709,6 +1718,121 @@
     "VIRBANK_COMPLEX_OUTSIDE:Poke Ball behind the Roughneck": {"sheet": "b2_item_ball.png"},
     "VIRBANK_COMPLEX_OUTSIDE:Poke Ball in the grass": {"sheet": "b2_item_ball.png"},
     "VIRBANK_COMPLEX_OUTSIDE:Roughneck by the crane": {"sheet": "b2_c61.png"},
+    "TEAM_GALACTIC_HQ:Galactic machine": {"pic": "dungeon/effects/pt_blank.png"},
+    "TEAM_GALACTIC_HQ:Cyrus": {"sheet": "pt_gingaboss.png"},
+    "TEAM_GALACTIC_HQ:Commander Saturn": {"sheet": "pt_gkanbu2.png"},
+    "AGATE_VILLAGE:Move Tutor": {"sheet": "orre_npc_06.png"},
+    "ORRE_BATTLE_FRONTIER:Ace Trainer": {
+      "sheet": "orre_trainer_ace_trainer.png"
+    },
+    "ORRE_BATTLE_FRONTIER:Cooltrainer": {
+      "sheet": "orre_trainer_cooltrainer_f.png"
+    },
+    "ORRE_BATTLE_FRONTIER:NURSE (FRONTIER)": {
+      "sheet": "orre_npc_16.png"
+    },
+    "ORRE_BATTLE_FRONTIER:BP EXCHANGE": {
+      "sheet": "orre_npc_19.png"
+    },
+    "ORRE_BATTLE_FRONTIER:BP EXCHANGE (TMS)": {
+      "sheet": "orre_npc_19.png"
+    },
+    "ORRE_BATTLE_FRONTIER:NURSE (TOWER)": {
+      "sheet": "orre_npc_16.png"
+    },
+    "ORRE_BATTLE_FRONTIER:ENDLESS CHALLENGE": {
+      "sheet": "orre_npc_23.png"
+    },
+    "ORRE_BATTLE_FRONTIER:2-ON-2 CHALLENGE": {
+      "sheet": "orre_npc_23.png"
+    },
+    "ORRE_BATTLE_FRONTIER:LITTLE CUP CHALLENGE": {
+      "sheet": "orre_npc_23.png"
+    },
+    "ORRE_BATTLE_FRONTIER:LITTLE CUP SELLER": {
+      "sheet": "orre_npc_15.png"
+    },
+    "ORRE_BATTLE_FRONTIER:MOVE TUTOR (TOWER)": {
+      "sheet": "orre_npc_06.png"
+    },
+    "ORRE_BATTLE_FRONTIER:RECORD BOARD": {
+      "sheet": "orre_signs.png"
+    },
+    "LAKE_ACUITY:Confront Jupiter at the Lake": {"sheet": "pt_gkanbu3.png"},
+    "ORRE_NEW_ISLAND:BLASTOISE CLONE": {"pokemon": 9},
+    "ORRE_NEW_ISLAND:CHARIZARD CLONE": {"pokemon": 6},
+    "ORRE_NEW_ISLAND:VENUSAUR CLONE": {"pokemon": 3},
+    "REALGAM_TOWER:Mr. Fuji": {
+      "sheet": "orre_npc_18.png"
+    },
+    "REALGAM_TOWER:Sky Pillar": {
+      "sheet": "orre_pokemon_abra_line.png"
+    },
+    "REALGAM_TOWER:Birth Island": {
+      "sheet": "orre_pokemon_abra_line.png"
+    },
+    "REALGAM_TOWER:New Island": {
+      "sheet": "orre_pokemon_abra_line.png"
+    },
+    "REALGAM_TOWER:Lake of Rage": {
+      "sheet": "orre_pokemon_abra_line.png"
+    },
+    "REALGAM_TOWER:POKE FLUTE": {"item": "POKE_FLUTE"},
+    "ORRE_SKY_PILLAR:Back to Mr. Fuji's": {
+      "sheet": "orre_pokemon_abra_line.png"
+    },
+    "ORRE_SKY_PILLAR:RAYQUAZA": {"pokemon": 384},
+    "ORRE_BIRTH_ISLAND:Back to Mr. Fuji's": {
+      "sheet": "orre_pokemon_abra_line.png"
+    },
+    "ORRE_BIRTH_ISLAND:DEOXYS": {"pokemon": 386},
+    "ORRE_NEW_ISLAND:Back to Mr. Fuji's": {
+      "sheet": "orre_pokemon_abra_line.png"
+    },
+    "ORRE_NEW_ISLAND:MEWTWO": {
+      "sheet": "orre_pokemon_battle_armor_mewtwo.png"
+    },
+    "ORRE_LAKE_OF_RAGE:Back to Mr. Fuji's": {
+      "sheet": "orre_pokemon_abra_line.png"
+    },
+    "ORRE_LAKE_OF_RAGE:RED GYARADOS": {"pokemon": 130},
+    "AGATE_VILLAGE:GYM LEADERS BLAINE & ERIKA": {"sheet": "orre_trainer_leader_erika.png"},
+    "PYRITE_TOWN:GYM LEADER DUKING": {"sheet": "orre_npc_duking.png"},
+    "PHENAC_CITY:GYM LEADER MISTY": {"sheet": "orre_trainer_leader_misty.png"},
+    "XD_CITADARK_ISLE:GYM LEADER DRAKE (REMATCH)": {
+      "sheet": "orre_trainer_leader_drake.png"
+    },
+    "AGATE_VILLAGE:Marine Cave": {
+      "sheet": "orre_pokemon_abra_line.png"
+    },
+    "MARINE_CAVE:Back to Agate": {
+      "sheet": "orre_pokemon_abra_line.png"
+    },
+    "MARINE_CAVE:TEAM AQUA LEADER ARCHIE": {
+      "sheet": "orre_trainer_teamaqua_boss.png"
+    },
+    "MARINE_CAVE:KYOGRE": {"pokemon": 382},
+    "CONSTRUCTION_LOT:HEALING MACHINE (TOWER)": {
+      "sheet": "orre_healing_balls_3.png"
+    },
+    "CONSTRUCTION_LOT:TEAM ROCKET JESSIE & JAMES": {
+      "sheet": "orre_trainer_jessie.png"
+    },
+    "CONSTRUCTION_LOT:TEAM LEADERS ARCHIE & MAXIE": {
+      "sheet": "orre_trainer_teamaqua_boss.png"
+    },
+    "CONSTRUCTION_LOT:BOSS GIOVANNI": {
+      "sheet": "orre_trainer_rocketboss.png"
+    },
+    "CONSTRUCTION_LOT:ARMOURED MEWTWO": {
+      "sheet": "orre_pokemon_battle_armor_mewtwo.png"
+    },
+    "XD_CITADARK_ISLE:FULL RESTORES (TERRA)": {"item": "FULL_RESTORE"},
+    "XD_CITADARK_ISLE:ELIXIRS (TERRA)": {"item": "ELIXIR"},
+    "XD_CITADARK_ISLE:TEAM MAGMA LEADER MAXIE": {
+      "sheet": "orre_trainer_team_mahma_boss.png"
+    },
+    "XD_CITADARK_ISLE:GROUDON": {"pokemon": 383},
     "SNOWPOINT_CITY:Maylene": {"sheet": "pt_leader4.png"},
     "REALGAM_TOWER:Realgam Tower: Orre League": {
       "sheet": "orre_npc_15.png"
@@ -17693,6 +17817,44 @@
     "youngster.png": "hg_gsboy2.png"
   },
   "trainers_ORANGE": {
+    "fr_cooltrainer_f.png": "trchar011.png",
+    "fr_cooltrainer_m.png": "trchar010.png",
+    "fr_beauty.png": "trchar004.png",
+    "fr_pokemaniac.png": "trchar022.png",
+    "fr_scientist.png": "trchar033.png",
+    "fr_gamer.png": "oi_18.png",
+    "fr_youngster.png": "oi_18.png",
+    "fr_bug_catcher.png": "oi_20.png",
+    "fr_lass.png": "oi_22.png",
+    "fr_fisherman.png": "oi_57.png",
+    "fr_bird_keeper.png": "oi_104.png",
+    "fr_swimmer_m.png": "oi_43.png",
+    "fr_swimmer_f.png": "oi_44.png",
+    "fr_tuber.png": "oi_34.png",
+    "oi_kindler.png": "oi_90.png",
+    "fr_ruin_maniac.png": "oi_109.png",
+    "fr_psychic_m.png": "oi_186.png",
+    "fr_ranger_m.png": "oi_108.png",
+    "fr_ranger_f.png": "oi_107.png",
+    "fr_hiker.png": "oi_56.png",
+    "fr_camper.png": "oi_39.png",
+    "fr_picnicker.png": "oi_40.png",
+    "fr_rocker.png": "oi_190.png",
+    "fr_psychic_f.png": "oi_187.png",
+    "fr_tamer.png": "oi_189.png",
+    "fr_black_belt.png": "oi_54.png",
+    "fr_crush_girl.png": "oi_105.png",
+    "fr_juggler.png": "oi_188.png",
+    "fr_burglar.png": "oi_89.png",
+    "fr_gentleman.png": "oi_61.png",
+    "fr_sailor.png": "oi_62.png",
+    "fr_team_rocket.png": "oi_49.png",
+    "fr_team_rocket_f.png": "oi_49.png",
+    "oi_rocket_trio.png": "oi_74.png",
+    "oi_butch.png": "oi_79.png",
+    "oi_cassidy.png": "oi_78.png",
+    "oi_misty.png": "oi_81.png",
+    "oi_marina.png": "oi_44.png",
     "bug_catcher.png": "oi_20.png",
     "youngster.png": "oi_18.png",
     "lass.png": "oi_22.png",
@@ -17724,6 +17886,22 @@
     "jessie_james.png": "oi_49.png"
   },
   "escorts": {
+    "oi_rocket_trio.png": {
+      "names": [
+        "Jessie",
+        "James"
+      ],
+      "escorts": [
+        {
+          "sheet": "oi_75.png",
+          "name": "Jessie"
+        },
+        {
+          "sheet": "mon:52",
+          "name": "Meowth"
+        }
+      ]
+    },
     "jessie_james.png": {
       "names": [
         "Jessie",

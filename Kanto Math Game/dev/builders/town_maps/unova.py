@@ -335,7 +335,7 @@ ASPERTIA = town(
                      {}, (15, 57), scenes=HOME_SCENES),
         "hugh": room(429, {0: _say("{rival_name}'s mom", "{rival_name}'s mom: Honestly, I'd rather my son stayed home.",
                                    "{rival_name}'s mom: But what parent doesn't want to see their child grow?"),
-                           1: _say("Man in Hugh's house", "Too bad you don't have a Pokemon yet. You could see who's the better Trainer!")},
+                           1: _say("Man in {rival_name}'s house", "Too bad you don't have a Pokemon yet. You could see who's the better Trainer!")},
                      {}, (11, 46), stairs={430: ("^", "ROOM:hugh_2f")}),
         "hugh_2f": room(430, {0: _say("{rival_name}'s sister", "{rival_name}'s sister: I hope you find that Bianca lady soon!"),
                               1: _say("Purrloin", "Purrloin: Mew?", _look="sheet:b2_c308.png")},
@@ -1843,7 +1843,7 @@ CASTELIA = town(
         "r4_north_47": castelia_room(59, {
             0: _ball("Poke Ball by the window", "CHARCOAL", "b2_castelia_charcoal", name="a Charcoal"),
             1: _say("Man scared of heights", "When I look down on the city from up here, I tremble. I-I'm scared of heights..."),
-            2: _say("Badge expert", "The Basic Badge makes Pokemon up to Lv. 20 obey. Each Badge raises it by ten!"),
+            2: _say("Badge expert", "Without a Badge, Pokemon up to Lv. 20 obey you. Each Badge raises it by ten!"),
             3: _say("Pokemon  ", "Hwoof hwoof!")},
             {}, lift=R4N_LIFT, title="Street to Route 4 north building 47F"),
         "r4_south": castelia_room(60, {
@@ -4810,35 +4810,45 @@ MIST_TM_HOUSE = room(112, {
 }, {}, (54, 51))
 MIST_TM_HOUSE["title"] = "House"
 MIST_TM_HOUSE["hidden"] = {"1,8": "IRON"}
-MISTRALTON = town(
-    107, {5: _ball("Poke Ball by the greenhouse", "TM278", "b2_mist_tm58", name="TM278 Sky Drop"),
-          6: _ball("Poke Ball by the south gardens", "MAX_REPEL", "b2_mist_max_repel", name="a Max Repel"),
-          0: {"text": "The runway kids' treasure", "action": "EVENT", "condition": ["b2_runway_secret", "not:b2_runway_tm40"],
-              "_look": "sheet:b2_item_ball.png", "event": {
-                  "lines": ["Oh! You found our treasure!", "Just kidding! Our Ducklett already knows Aerial Ace. So you can have "
-                            "this TM!", "{player_name} received TM027 Aerial Ace!",
-                            "Aerial Ace always hits its target! We hope it comes in handy!"],
-                  "gift_item": {"TM027": 1}, "flag": "b2_runway_tm40"}},
-          7: _say("Pokemon Breeder by the runway", "Mulch makes Berries grow! I'd pay well for it... if you ever have some to spare."),
-          12: _say("Pilot on the runway", "Mistralton's planes take passengers now. Not everyone's Pokemon can use Fly!"),
-          9: _say("Pokemon Ranger", "Fly is an amazing move! Even a teeny Pokemon can carry a person!"),
-          13: _say("Girl by the hangar", "That Skyla... She's even better than her grandpa, and he was a legendary pilot!"),
-          15: _say("Worker in the gardens", "Mistralton was a desolate patch of land. People and Pokemon built it together."),
-          14: _say("Worker by the runway", "Planes need a runway to fly, but Pokemon don't need a thing! Planes carry more, though."),
-          10: _say("Woman by the Center", "Team Plasma stole Pokemon like Purrloin from people. That's unforgivable!"),
-          16: _say("Gardener", "Vegetables grown in the wild are the best. Sometimes the Pokemon eat them first..."),
-          17: _say("Woman by the greenhouse", "Vegetables grown in a greenhouse are the best! All the goodness goes into them."),
-          11: _say("Boy by the Cargo Service", "Hey! Since you're here, I'll tell you a secret. ...Please keep it from Elesa, OK?")},
-    {1: ["MISTRALTON CITY", "Strewn with Windblown Leaves"], 2: ["MISTRALTON CARGO SERVICE", "Our slogan is 'Quick and Safe!'"],
-     3: ["MISTRALTON CITY POKEMON GYM", "Leader: Skyla", "The Highflying Girl"]},
-    {108: ("gym", "gym"), 109: ("center", "center"), 110: ("house", "house_kids"), 111: ("house", "cargo"), 112: ("house", "house_tm")},
-    {"gym": MIST_GYM, "center": MIST_CENTER, "house_kids": MIST_KIDS, "cargo": MIST_CARGO, "house_tm": MIST_TM_HOUSE},
-    edges={"^": ("UNOVA_ROUTE_7", [(x, 32) for x in range(51, 56)]), "v": ("CHARGESTONE_CAVE", [(39, 55)])},
-    hidden={"14,29": "FLYING_GEM"},
-    scenes=MIST_SCENES, title="Mistralton City")
+def _mistralton(z):
+    """(11-24, batch 8a: White 2's Mistralton, zone 616, is the same city with its own fields: g5map.VIRTUAL_TWINS)"""
+    return town(
+            z, {5: _ball("Poke Ball by the greenhouse", "TM278", "b2_mist_tm58", name="TM278 Sky Drop"),
+              6: _ball("Poke Ball by the south gardens", "MAX_REPEL", "b2_mist_max_repel", name="a Max Repel"),
+              0: {"text": "The runway kids' treasure", "action": "EVENT", "condition": ["b2_runway_secret", "not:b2_runway_tm40"],
+                  "_look": "sheet:b2_item_ball.png", "event": {
+                      "lines": ["Oh! You found our treasure!", "Just kidding! Our Ducklett already knows Aerial Ace. So you can have "
+                                "this TM!", "{player_name} received TM027 Aerial Ace!",
+                                "Aerial Ace always hits its target! We hope it comes in handy!"],
+                      "gift_item": {"TM027": 1}, "flag": "b2_runway_tm40"}},
+              7: _say("Pokemon Breeder by the runway", "Mulch makes Berries grow! I'd pay well for it... if you ever have some to spare."),
+              12: _say("Pilot on the runway", "Mistralton's planes take passengers now. Not everyone's Pokemon can use Fly!"),
+              9: _say("Pokemon Ranger", "Fly is an amazing move! Even a teeny Pokemon can carry a person!"),
+              13: _say("Girl by the hangar", "That Skyla... She's even better than her grandpa, and he was a legendary pilot!"),
+              15: _say("Worker in the gardens", "Mistralton was a desolate patch of land. People and Pokemon built it together."),
+              14: _say("Worker by the runway", "Planes need a runway to fly, but Pokemon don't need a thing! Planes carry more, though."),
+              10: _say("Woman by the Center", "Team Plasma stole Pokemon like Purrloin from people. That's unforgivable!"),
+              16: _say("Gardener", "Vegetables grown in the wild are the best. Sometimes the Pokemon eat them first..."),
+              17: _say("Woman by the greenhouse", "Vegetables grown in a greenhouse are the best! All the goodness goes into them."),
+              11: _say("Boy by the Cargo Service", "Hey! Since you're here, I'll tell you a secret. ...Please keep it from Elesa, OK?", "Skyla says Elesa's Gym is way too bright for her! Shhh!")},
+        {1: ["MISTRALTON CITY", "Strewn with Windblown Leaves"], 2: ["MISTRALTON CARGO SERVICE", "Our slogan is 'Quick and Safe!'"],
+         3: ["MISTRALTON CITY POKEMON GYM", "Leader: Skyla", "The Highflying Girl"]},
+        {108: ("gym", "gym"), 109: ("center", "center"), 110: ("house", "house_kids"), 111: ("house", "cargo"), 112: ("house", "house_tm")},
+        {"gym": MIST_GYM, "center": MIST_CENTER, "house_kids": MIST_KIDS, "cargo": MIST_CARGO, "house_tm": MIST_TM_HOUSE},
+        edges={"^": ("UNOVA_ROUTE_7", [(x, 32) for x in range(51, 56)]), "v": ("CHARGESTONE_CAVE", [(39, 55)])},
+        hidden={"14,29": "FLYING_GEM"},
+        scenes=MIST_SCENES, title="Mistralton City")
+
+
+MISTRALTON = _mistralton(107)
 _wall(MISTRALTON, 32, 0, 63, 31)    # (the block north-east of the city is Route 7's: the file's picture leaves it empty)
 _wall(MISTRALTON, 32, 64, 63, 95)   # (and the block south-east)
 MISTRALTON["edge_to"] = {"%d,32" % x: [x - 32, 62] for x in range(51, 56)}
+MIST_W2 = _mistralton(616)
+_wall(MIST_W2, 32, 0, 63, 31)
+_wall(MIST_W2, 32, 64, 63, 95)
+MIST_W2["edge_to"] = MISTRALTON["edge_to"]
+MISTRALTON["story_maps"] = [{"when": ["unova_version:WHITE_2"], "map": MIST_W2}]
 
 # ---------------------------------------------------------------------------------------------------------------- Route 7
 OUTSIDE.update({343: 337, 344: 337})
@@ -4918,17 +4928,6 @@ TWIST_MOUTH["gated_exits"] = {"TWIST_MOUNTAIN": ["beat_unova_champion"]}
 # ------------------------------------------------------------------------------------------------------ Celestial Tower
 # Five places: 1F (338) to 4F (341) and the roof (342). The file's stair warps sit off the walk grid (the floors are spiral
 # ramps), so each floor's way up and way down are the ends of its two ramps as the floor's picture shows them.
-BLACK_FOG = {"text": "The Black Fog", "action": "BOSS", "color": "PURPLE", "_look": "mon:93",
-             "condition": ["not:black_fog_banished_celestial_tower"],
-             "boss": {"id": 10501, "name": "Black Fog", "level": 36, "no_catch": True,
-                      "victory_flag": "black_fog_banished_celestial_tower",
-                      "lines": ["The air turns ice-cold. A black fog pours across the roof...",
-                                "Two huge eyes open in the dark. A giant Haunter rises: the Black Fog!",
-                                "Long ago people worshipped it as a god. It feeds on dreams. Don't let it get yours!"],
-                      "won": ["The Black Fog is too proud to ever be caught.",
-                              "It Self-Destructs in a burst of black mist... and is gone.",
-                              "But a cold whisper lingers: it will rise again in another haunted place."],
-                      "rewards": {"balls": 10, "RARE_CANDY": 3}}}   # (the menu era's own boss, kept: on the roof now)
 CT_1F = route(
     338, {0: [{"text": "Professor Juniper", "action": "EVENT", "condition": ["not:b2_jet_badge", "not:b2_lucky_egg"],
                "_look": "sheet:b2_juniper.png", "event": {
@@ -4975,10 +4974,9 @@ CT_4F = route(
     trainers={3: ("Socialite Grace", 2), 4: ("Gentleman Daniel", 2), 5: ("Psychic Sarah", 2)}, title="Celestial Tower")
 CT_ROOF = route(
     342, {}, {}, exits={"v": ("CELESTIAL_TOWER_4F", [(22, 14), (23, 14)])},
-    hidden={"10,13": "GHOST_GEM"}, extra_people=[(16, 12, BLACK_FOG)], title="Celestial Tower")
-for _m in (CT_1F, CT_2F, CT_3F, CT_4F):   # (Black 2's camera 33 looks along the inside walls; seen from it, or from our live camera,
-    _m["roofs"].pop("_cam", None)        #  the floor's lost: drawn top-down instead, the floor's own picture with its graves
-    _m.pop("cameras", None)              #  and ramps. Their live 3D files aren't kept, 11-24)
+    hidden={"10,13": "GHOST_GEM"}, title="Celestial Tower")   # (the Black Fog: CELESTIAL_TOWER's route_menu, as every haunt's, 11-24)
+# (Celestial Tower's floors: Black 2's camera 33 looks along the inside walls, and from it or our live camera the spiral floor
+#  is lost. Jordan 11-24, "3D now": live 3D anyway, the floor fix on ROADMAP_UNOVA; they were drawn top-down before.)
 CT_ROOF["sign_events"] = {"16,10": {"text": "The bell", "action": "EVENT", "event": {
     "lines": ["It's Celestial Tower's bell.", "{player_name} rang the bell...", "The sound of the bell reverberates through the area..."],
     "flag": "b2_celestial_bell"}}}
@@ -5043,7 +5041,7 @@ LENTIMAS = town(
                           0: _say("Hiker in the Center", "Going to check the volcano too? It's the same kind as Stark Mountain in Sinnoh."),
                           2: _say("Battle Girl", "A cool mind feels no heat!")}, {}, (26, 16)),
      "tm_house": room(608, {2: _gift("Old man by the table", ["Hmm! You spoke to me... You're quite a Trainer. I like you! Take this TM!",
-                                                              "{player_name} received TM57 Charge Beam!"],
+                                                              "{player_name} received TM023 Charge Beam!"],
                                      "TM023", "b2_lentimas_charge_beam",
                                      ["Charge Beam sometimes raises the user's Sp. Atk. Then its power goes up and up!"]),
                             0: _say("Woman in the house", "I was born here and I'll grow old here. I don't mind: I don't know anywhere else."),
@@ -5125,7 +5123,7 @@ def _rm_inside(z, rooms, ppl, hidden, trainers):
 
 OUTSIDE.update({531: -1, 537: -1, 535: -1, 541: -1, 532: 533, 534: 533, 536: 533, 538: 539, 540: 539, 542: 539})
 _RM_SCIENTIST = {"text": "Scientist in the mountain", "action": "EVENT", "condition": ["habitat:REVERSAL_MOUNTAIN_INSIDE"], "event": {
-    "lines": ["You've seen every Pokemon in Reversal Mountain? Amazing! Take this!", "{player_name} received TM54 False Swipe!"],
+    "lines": ["You've seen every Pokemon in Reversal Mountain? Amazing! Take this!", "{player_name} received TM057 False Swipe!"],
     "gift_item": {"TM057": 1}, "flag": "b2_rm_false_swipe", "done": ["False Swipe always leaves the target with at least 1 HP!"]}}
 _RM_SCIENTIST_ASK = _say("Scientist in the mountain ", "Show me a completed Habitat List for Reversal Mountain and I'll reward you!",
                          condition=["not:habitat:REVERSAL_MOUNTAIN_INSIDE"])
@@ -5414,7 +5412,7 @@ LACUNOSA = town(
                           10: _say("Psychic by the PC", "Every Gym Badge tells the story of a hard-won battle. Treasure them!")},
                     {}, (20, 24)),
      "house_sw": room(408, {0: _say("Ace Trainer", "My Pokemon is much stronger than me... Poke Balls are amazing."),
-                            3: _say("Girl in the house", "The monster from the big hole is really a Pokemon, right?")}, {}, (8, 24)),
+                            3: _say("Girl in the house", "Mom says if I stay out after dark, the monster from the big hole will come for me...")}, {}, (8, 24)),
      "elder": room(409, {0: _say("Old woman", "That old tale? Come in, dearies.")}, {}, (12, 9),
                    scenes=[{"trigger": "enter", "condition": ["b2_lacunosa_juniper", "not:b2_lacunosa_tale"], "flag": "b2_lacunosa_tale",
                             "cast": [], "call": [
@@ -5440,6 +5438,472 @@ for _r, _t in (("center", "Pokémon Center"), ("house_sw", "House"), ("elder", "
     LACUNOSA["rooms"][_r]["title"] = _t
 
 
+# ======================================================================================================== batch 8a (11-24)
+# Route 12 (368), the Bridge Gates (369 east, 366 west), Village Bridge (255: its houses 256-261, the singer's room under the
+# bridge 605), Route 11 (365: the trailer 367; Virizion), Opelucid City (120; White 2's look 615; frozen 617 / White 2 618:
+# rooms 121 Gym, 122 Center, 123 / 124 Drayden's house, 125 / 126, 127 / 128, 129 / 130, 134 / 135, the gates 131 west and
+# 133 east). Story flags: visited_OPELUCID_CITY -> b2_opelucid_iris (Iris at the east gate) -> b2_legend_badge -> b2_drayden_lead
+# (Drayden outside the Gym) -> b2_drayden_tale (his house: the dragons, Kyurem, the DNA Splicers; the Plasma Frigate's ice:
+# b2_opelucid_frozen) -> b2_opelucid_ice (Zinzolin's demand) -> b2_ope_grunt_1..3 -> b2_opelucid_zinzolin -> b2_splicers_stolen
+# -> b2_opelucid_shadow -> b2_opelucid_cheren (Cheren's call: Humilau). The ice melts with b2_opelucid_thawed (batch 9).
+# Side: Stonewall's 1,000th battle (b2_vb_stonewall), the singer (b2_vb_singer -> b2_vb_sitrus), the Hip Waders' daily catch,
+# the rest house, Virizion (Route 11, Lv 45: Jordan 11-24, as Black 2), the Musical fan's four Props, the Draco Meteor tutor.
+OUTSIDE.update({256: 255, 257: 255, 258: 255, 259: 255, 260: 255, 261: 255, 605: 255, 369: 255, 366: 255, 367: 365})
+R12_GATE = room(369, {3: _say("Girl in the gate", "My Minccino! Grandpa caught it for me. Tail Slap is its specialty!"),
+                      2: _say("Minccino", "Minccino: Chichino!"),
+                      1: _say("Boy in the gate", "I did my best to pick a Pokemon that's cute AND strong!"),
+                      0: _say("Worker in the gate", "...Sorry. I ended up losing my uniform.")},
+                 {1: ["BRIDGE GATE", "East: Route 12  West: Village Bridge"]}, (93, 31), exits_extra={368: (">", "UNOVA_ROUTE_12")})
+R12_GATE["title"] = "Bridge Gate"
+R11_GATE = room(366, {0: _say("Guard", "Village Bridge is a bridge with a whole village on it! That's what I think, anyway!"),
+                      1: _say("Woman in the gate", "Village Bridge's Dark musicians aren't half bad...")},
+                {1: ["BRIDGE GATE", "West: Route 11  East: Village Bridge"]}, (2, 31), exits_extra={365: ("<", "UNOVA_ROUTE_11")})
+R11_GATE["title"] = "Bridge Gate"
+
+ROUTE_12 = route(
+    368, {4: _ball("Poke Ball by the trees", "TIMER_BALL", "b2_r12_timer_ball", name="a Timer Ball"),
+          5: _ball("Poke Ball on the hill", "PP_UP", "b2_r12_pp_up", name="a PP Up"),
+          6: _ball("Poke Ball by the gate", "MAX_POTION", "b2_r12_max_potion", name="a Max Potion"),
+          7: _ball("Poke Ball in the grass", "GREEN_SHARD", "b2_r12_green_shard", name="a Green Shard"),
+          8: _ball("Poke Ball up the slope", "YELLOW_SHARD", "b2_r12_yellow_shard", name="a Yellow Shard")},
+    {1: ["ROUTE 12", "Lacunosa Town - Village Bridge"], 2: ["ROUTE 12"],
+     3: ["TRAINER TIPS", "Press SELECT while sorting your PC Boxes to move Pokemon around more easily!"]},
+    exits={">": ("LACUNOSA_TOWN", [(63, y) for y in range(25, 32)]), "<": ("VILLAGE_BRIDGE", [(7, y) for y in range(14, 17)])},
+    trainers={0: ("Backers Cleo & Rio", 6), 1: ("Backers Cleo & Rio", 6), 2: ("Black Belt Jeriel", 5), 3: ("Battle Girl Azra", 2)},
+    hidden={"47,14": "RARE_CANDY", "27,5": "MAX_REPEL", "54,3": "ULTRA_BALL"}, title="Route 12")
+ROUTE_12["edge_to"] = {"63,%d" % y: [1, y] for y in range(25, 32)}
+LACUNOSA["edge_to"].update({"0,%d" % y: [62, y] for y in range(25, 32)})
+
+VB_STONEWALL = {"text": "Gentleman Stonewall", "action": "EVENT", "condition": ["not:b2_vb_stonewall"], "event": {
+    "lines": ["Wait! Waaait! You're my 1,000th opponent! I've won 999 in a row. Battle me!",
+              "Gwa ha ha! Fledgling or not, you'll be my 1,000th win in a row!"],
+    "battle": _b2(177, dialogue={"player_won": ["Two years of winning... and now it's over...",
+                                                "But I declare it now: I'll start again, and win 1,000 in a row!"]}),
+    "flag": "b2_vb_stonewall", "done": ["I won't battle you next time, though. You'd only break my streak."]}}
+VB_HOUSES = {
+    "house_1": room(256, {0: _say("Old man", "My great-great-great-grandfather and his Gurdurr built this bridge together."),
+                          1: _say("Boy", "I'll be a stonecutter like Grandpa! Strong Pokemon will help me!"),
+                          2: _say("Woman", "If everyone had let their Pokemon go, nobody could have built a bridge like this.",
+                                  "People and Pokemon belong together. That's all there is to it.")}, {}, (14, 27)),
+    "bakery": room(257, {0: {"text": "Baker Chris", "action": "EVENT", "event": {"stages": [
+                             {"ready": ["not:b2_vb_baker"], "flag": "b2_vb_baker",
+                              "lines": ["Oh! You're new here, aren't you? Then let's battle without a word! Ready?"],
+                              "battle": _b2(335, dialogue={"player_won": ["Wow! You trust your Pokemon, and it shows!"]})},
+                             {"ready": ["b2_vb_baker", "beat_unova_champion", "world:unova_story:party_ability:HONEY-GATHER"],
+                              "flag": "b2_vb_baker_honey", "gift_item": {"MAGOST_BERRY": 1, "RABUTA_BERRY": 1, "NOMEL_BERRY": 1},
+                              "lines": ["That Pokemon gathers Honey! Thank you! This is a token of my thanks."]}],
+                             "then": {"lines": ["I want to bake bread with tons of Honey! Show me a Pokemon with Honey Gather!"]}}},
+                         1: _say("Woman at the table", "I'm hooked on Village Sandwiches! I come here every day!"),
+                         2: _say("Girl with a sandwich", "Pokemon make the cutest faces when they bite a sandwich!"),
+                         3: _say("Boy eating", "I'm so happy I can eat with my Pokemon."),
+                         4: _say("Emolga", "Emolga: Myu myuweee."), 5: _say("Swadloon", "Swadloon: Skwee weep..."),
+                         6: _say("Croagunk", "Croagunk: Kroooko!")},
+                   {}, (21, 27)),
+    "waders": room(258, {0: {"text": "Hip Waders fisherman", "action": "EVENT", "event": {"world": "unova_story", "daily_catch": {
+                             "key": "b2_hip_waders", "species": [550, 318, 183, 418, 118, 129, 339, 592],
+                             "gift": {"NET_BALL": 3, "DIVE_BALL": 2},
+                             "ask": ["Yo, Trainer! I'm in the Hip Waders, a fishing club. You're our Member No. 2 now!",
+                                     "Today's Official Catch of the Day is {species}! Catch one today and show it to me!"],
+                             "won": ["Oh! A great {species}! That's our Member No. 2! Take these!"],
+                             "done": ["Tomorrow's a new day, with a new Catch of the Day!"]}}}},
+                   {}, (68, 27)),
+    "house_4": room(259, {0: _say("Pokemon Breeder", "I wonder if veteran Pokemon raise the young ones."),
+                          1: _say("Man by the table", "I wish someone would raise me like this. Three meals and a nap every day."),
+                          2: _say("Boy with a Ducklett", "Follow me, Ducklett!"), 3: _say("Ducklett", "Ducklett: Quak!"),
+                          4: _say("Snorlax doll", "Buuuurp!")}, {}, (28, 27)),
+    "house_5": room(260, {0: _say("Woman", "A woman lived here with a group of Patrat. I wonder where they went."),
+                          1: _say("Man", "Shall we move in here? The musicians are always nearby. We've been indecisive for two years!")},
+                    {}, (76, 27)),
+    "rest": room(261, {0: {"text": "Woman in the rest house", "action": "EVENT", "event": {"heal": True, "lines": [
+                           "Oh, your Pokemon look tired. Don't be shy. Take a nice long rest!", "...",
+                           "Both you and your Pokemon look full of energy!"]}},
+                       1: _say("Gothita", "Gothita: Gothoo.")}, {}, (83, 27)),
+    "singer": room(605, {0: {"text": "Girl practising", "action": "EVENT", "event": {
+                             "lines": ["Behbehbeh... Bwooo! Eeek!", "I'm practising! Get out!!"], "flag": "b2_vb_singer",
+                             "done": ["I'm practising! Get out!!"]}}},
+                     {}, (30, 39)),
+}
+for _r, _t in (("house_1", "House"), ("bakery", "Village Bridge Restaurant"), ("waders", "House"), ("house_4", "House"),
+               ("house_5", "House"), ("rest", "Rest House"), ("singer", "Under the Bridge")):
+    VB_HOUSES[_r]["title"] = _t
+VILLAGE_BRIDGE_MAP = route(
+    255, {12: _ball("Poke Ball by the river", "ULTRA_BALL", "b2_vb_ultra_ball", name="an Ultra Ball"),
+          13: _ball("Poke Ball on the bank", "HEART_SCALE", "b2_vb_heart_scale", name="a Heart Scale"),
+          14: _ball("Poke Ball by the court", "BIG_PEARL", "b2_vb_big_pearl", name="a Big Pearl"),
+          15: _ball("Poke Ball on the island", "CARBOS", "b2_vb_carbos", name="a Carbos"),
+          16: _ball("Poke Ball by the tennis court", "RARE_CANDY", "b2_vb_rare_candy", name="a Rare Candy"),
+          17: _ball("Poke Ball by the trees", "BLUE_SHARD", "b2_vb_blue_shard", name="a Blue Shard"),
+          8: VB_STONEWALL,
+          3: {"text": "Runner on the bridge", "action": "EVENT", "event": {"world": "unova_story", "runner": "b2_vb_runner"}},
+          1: _say("Derleth", "Derleth: Fweet fweet... Fweeeeet...", "Derleth: Whistle tunes and complaints about life. That's all "
+                                                                    "that comes out of me. This bridge is where we complainers meet."),
+          2: _say("Aickman", "Aickman: This sound! Doesn't it get to your heart?",
+                  "Aickman: I know my sound doesn't fit this town. But I can't change my style."),
+          0: _say("Russo", "Russo: La la la... Ahem! This microphone's all screwy. I can sing real good, promise!"),
+          11: _say("Koontz", "Koontz: Singing gives life to my spirit. Will you listen to the voice of my spirit?"),
+          10: _say("Boy by the court", "My favourite thing these days is the PWT!"),
+          9: _say("Hoopster fan", "Practise as if it were a real game! Play the real game as if it were practice!"),
+          23: _say("Traveller", "I'll cross every bridge in Unova! Even the Marine Tube from Undella Town!"),
+          22: [{"text": "Girl on the bridge", "action": "EVENT", "condition": ["b2_vb_singer"], "event": {
+                    "lines": ["I hear a sound from somewhere... Sometimes sad, sometimes a little goofy. A ghost?",
+                              "What? A girl practising music in that room below? I see! Thank you! Take these!"],
+                    "gift_item": {"SITRUS_BERRY": 5}, "flag": "b2_vb_sitrus",
+                    "done": ["A girl practising music... So that was the voice!"]}},
+               _say("Girl on the bridge ", "I hear a sound from somewhere. Sometimes sad, sometimes goofy... Could it be a ghost?",
+                    condition=["not:b2_vb_singer"])],
+          18: _say("Woman by the stairs", "Keep somebody's secret. Otherwise, your secret will be out.")},
+    {1: ["VILLAGE BRIDGE", "A village on a bridge"], 2: ["VILLAGE BRIDGE RESTAURANT", "Village Sandwiches are our specialty!"],
+     3: ["VILLAGE BRIDGE"]},
+    exits={},
+    trainers={4: ("Smasher Lizzy", 1), 5: ("Youngster Karl", 1), 6: ("Fisherman Dean", 1), 7: ("Artist Gough", 4),
+              19: ("Hoopster Derrick", 1), 20: ("Hoopster Nicolas", 1), 21: ("Smasher Amy", 1)},
+    hidden={"4,11": "PP_UP", "6,47": "MAX_ETHER", "72,8": "BIG_MUSHROOM"},
+    rooms=dict(VB_HOUSES, gate_e=R12_GATE, gate_w=R11_GATE),
+    inside={"14,27": "house_1", "21,27": "bakery", "28,27": "house_4", "68,27": "waders", "76,27": "house_5", "83,27": "rest",
+            "30,39": "singer", **{"93,%d" % y: "gate_e" for y in range(31, 34)}, **{"2,%d" % y: "gate_w" for y in range(31, 34)}},
+    scenes=[{"trigger": {"zone": [56, 29, 64, 29]}, "condition": ["not:b2_vb_stonewall"], "who": "Gentleman Stonewall",
+             "every": True, "lines": ["Wait! You can't go any further unless you battle me! And no using Surf to get round me!"],
+             "push": [0, 1]}],
+    title="Village Bridge")
+_doors(VILLAGE_BRIDGE_MAP, VILLAGE_BRIDGE_MAP["inside"])
+
+VIRIZION = {"text": "Virizion", "action": "BOSS", "color": "RED", "_look": "mon:640", "condition": ["not:b2_r11_virizion"],
+            "boss": {"id": 640, "name": "Virizion", "level": 45, "victory_flag": "b2_r11_virizion",
+                     "lines": ["Kikwaaaa! Virizion leaps down from the cliff, as if it had been waiting for you!"]}}
+ROUTE_11 = route(
+    365, {1: _ball("Poke Ball on the cliff", "RAZOR_FANG", "b2_r11_razor_fang", name="a Razor Fang"),
+          2: _ball("Poke Ball by the gate", "ZINC", "b2_r11_zinc", name="a Zinc"),
+          3: _ball("Poke Ball by the river", "FULL_HEAL", "b2_r11_full_heal", name="a Full Heal")},
+    {1: ["ROUTE 11", "Opelucid City - Village Bridge"], 2: ["VILLAGE BRIDGE AHEAD"]},
+    exits={"<": ("OPELUCID_CITY", [(6, y) for y in range(14, 17)]), ">": ("VILLAGE_BRIDGE", [(55, y) for y in range(14, 17)])},
+    trainers={4: ("Pokemon Breeder Magnolia", 3), 5: ("Pokemon Ranger Crofton", 4), 6: ("Pokemon Ranger Thalia", 4)},
+    hidden={"36,6": "HP_UP", "8,8": "MAX_POTION"},
+    rooms={"trailer": room(367, {0: _say("Ranger by the trailer", "Yahoo! There's an awful lot of nothing round here, isn't there?",
+                                         "I like that there's nothing! But it's hard to share...")}, {}, (39, 12))},
+    inside={"39,12": "trailer"},
+    scenes=[{"trigger": {"zone": [22, 13, 22, 17]}, "condition": ["not:b2_r11_virizion_seen"], "flag": "b2_r11_virizion_seen",
+             "cast": [{"sheet": "mon:640", "from": [20, 10], "to": [20, 14], "stay": True,
+                       "lines": ["Kikwaaaa! A Pokemon leaps down from the cliff, as if it had been waiting for you!"]}]}],
+    extra_people=[(20, 14, dict(VIRIZION, condition=["b2_r11_virizion_seen", "not:b2_r11_virizion"]))],
+    title="Route 11")
+ROUTE_11["rooms"]["trailer"]["title"] = "Trailer"
+_doors(ROUTE_11, ROUTE_11["inside"])
+ROUTE_11["barred"] = [{"tiles": [[x, 12] for x in range(44, 49)], "until": {"item_condition": "WATERFALL"}, "look": "unseen",   # (the
+                       "lines": ["The bank's too steep to climb. In Black 2 this cliff is reached up the falls: Waterfall!"]}]   #  plateau: Ranger Thalia, the Razor Fang)
+
+# ------------------------------------------------------------------------------------------------- Opelucid City
+OUTSIDE.update({121: 120, 122: 120, 123: 120, 124: 120, 125: 120, 126: 120, 127: 120, 128: 120, 129: 120, 130: 120, 131: 120,
+                133: 120, 134: 120, 135: 120})
+# Drayden's Gym (121): Black 2's two dragon statues are moving models the file loads for the puzzle (not in the map: Jordan
+# 11-24, "puzzle now, statues later"). The levels are laid out on the Gym's own floor: the entrance hall and the first dragon's
+# neck as the file has them, the head (Lucius), then the head's lift (a glowing pad, open once that level's Veteran is beaten)
+# to the second level (Rhona, defence, left; Jerry, attack, right), the third (Denae's Rotation Battle left, Ron's Triple
+# Battle right: both doubles here, Jordan 11-19), and the far dragon's head where Drayden waits. Each pad down takes you back.
+_G121 = GEO["121"]
+_GYM_ROWS = [list(r) for r in _G121["rows"]]
+for _y in range(0, 31):
+    _GYM_ROWS[_y] = list("c" * 32)
+for _x0, _y0, _x1, _y1 in ((13, 26, 17, 30),            # the first dragon's head (Lucius)
+                           (8, 19, 22, 21), (14, 18, 16, 22),   # level 2: the head between two ledges
+                           (2, 12, 20, 14), (10, 11, 12, 15),   # level 3: the ledges either side of the head
+                           (12, 3, 18, 7)):              # the far dragon's head: Drayden
+    for _y in range(_y0, _y1 + 1):
+        for _x in range(_x0, _x1 + 1):
+            _GYM_ROWS[_y][_x] = "."
+_GYM_PEOPLE = {0: (25, 51), 1: (16, 27), 5: (9, 20), 4: (21, 20), 2: (3, 13), 3: (19, 13), 6: (15, 4)}
+GEO["121"] = dict(_G121, rows=["".join(r) for r in _GYM_ROWS],
+                  people=[dict(p, x=_GYM_PEOPLE[p["n"]][0], y=_GYM_PEOPLE[p["n"]][1]) for p in _G121["people"]])
+OPE_GYM = room(121, {
+    6: {"text": "Gym", "action": "GYM", "_look": "sheet:b2_c229.png"},
+    0: _gift("Gym guide", ["Welcome to the Opelucid Gym! Here's some Fresh Water. Stay hydrated!"], "FRESH_WATER",
+             "b2_clyde_opelucid", ["How do you like these dragon statues? Climb the dragon's head and aim for the top of the "
+                                   "other dragon. Drayden is waiting there!",
+                                   "Just between us: Dragon types are weak to Ice-type moves, and to Dragon-type moves too!"]),
+    1: _b2_battle("Veteran Lucius", 381, "gym_trainer_OPELUCID_CITY_1", ["Veteran Lucius: Always aim for the top, like a "
+                                                                          "dragon taking flight!"],
+                  ["Veteran Lucius: Trainers far stronger than me wait above!"],
+                  ["Veteran Lucius: The ones on the right fight on the attack. The ones on the left, on the defence.",
+                   "Step on the glowing triangle on the dragon's head, then choose right or left!"]),
+    4: _b2_battle("Veteran Jerry", 382, "gym_trainer_OPELUCID_CITY_2", ["Veteran Jerry: Offence is everything!"],
+                  ["Veteran Jerry: Your attack beat mine!"],
+                  ["Veteran Jerry: The one above on the right fights only Triple Battles. The left, only Rotation Battles."]),
+    5: _b2_battle("Veteran Rhona", 383, "gym_trainer_OPELUCID_CITY_3", ["Veteran Rhona: Defence is everything!"],
+                  ["Veteran Rhona: You broke through my guard!"],
+                  ["Veteran Rhona: The one above on the right fights only Triple Battles. The left, only Rotation Battles."]),
+    3: _b2_battle("Veteran Ron", 384, "gym_trainer_OPELUCID_CITY_4", ["Veteran Ron: Triple Battles! Three Pokemon's power, "
+                                                                       "all at once!"],
+                  ["Veteran Ron: You're strong enough to challenge Mayor Drayden!"],
+                  ["Veteran Ron: Show Mayor Drayden your desire to win!"]),
+    2: _b2_battle("Veteran Denae", 385, "gym_trainer_OPELUCID_CITY_5", ["Veteran Denae: In a Rotation Battle, the order your "
+                                                                         "Pokemon turn is everything!"],
+                  ["Veteran Denae: A battle between you and Mayor Drayden will be something to see!"],
+                  ["Veteran Denae: Go on. The mayor is waiting!"]),
+}, {}, (21, 16))
+GEO["121"] = _G121
+OPE_GYM["title"] = "Opelucid Gym"
+# (Jordan 11-24, "3D now": the Gym in live 3D (its own scene, 121.npz, found by the zone's picture), the statues missing till
+#  their models are found (ROADMAP_UNOVA). The painted top-down stand-in, gym_platforms.py -> 121_gym.png, is no longer used.)
+_PADS = {(15, 26): ((15, 21), ["gym_trainer_OPELUCID_CITY_1"]), (15, 22): ((15, 28), []),
+         (11, 11): ((15, 6), ["gym_trainer_OPELUCID_CITY_4", "gym_trainer_OPELUCID_CITY_5"]), (11, 15): ((15, 19), []),
+         (15, 18): ((11, 13), ["gym_trainer_OPELUCID_CITY_2", "gym_trainer_OPELUCID_CITY_3"]), (14, 7): ((22, 50), [])}
+OPE_GYM["links"] = {}
+OPE_GYM["barred"] = []
+for (_x, _y), ((_tx, _ty), _need) in _PADS.items():
+    OPE_GYM["art"][_y] = OPE_GYM["art"][_y][:_x] + "1" + OPE_GYM["art"][_y][_x + 1:]
+    OPE_GYM["links"]["%d,%d" % (_x, _y)] = [0, _tx, _ty]
+    if _need:
+        OPE_GYM["barred"].append({"tiles": [[_x, _y]], "until_any": [{"flag_condition": f} for f in _need], "look": "unseen",
+                                  "lines": ["The triangle on the dragon's head is dark. Beat a Trainer on this level first!"]})
+
+OPE_CENTER = room(122, {
+    3: {"text": "Pokémon Center", "action": "HEAL"}, 0: {"text": "Shop", "action": "SHOP"},
+    2: _say("Clerk ", "Specialty Poke Balls are over here!"), 1: _say("Clerk  ", "The counter on the left sells everyday items."),
+    6: {"text": "Mr. Medal", "action": "EVENT", "event": {"medal_rally": True}},
+    10: _say("Old woman", "The slow passage of time in Opelucid... It suits an old woman like me.",
+             condition=["not:b2_opelucid_frozen"]),
+    9: [_say("Woman by the PC", "Sometimes I think there's another world, where someone just like me lives a different life.",
+             condition=["not:b2_opelucid_frozen"]),
+        _say("Woman by the PC ", "Oh... I thought it was chilly...", condition=["b2_opelucid_frozen"])],
+    8: [_say("Man by the window", "No matter what the world is like, I want to live in it as myself. That's the truth!",
+             condition=["unova_version:BLACK_2"]),
+        _say("Man by the window ", "No matter what the world is like, I want to live in it as myself. That's my ideal!",
+             condition=["unova_version:WHITE_2"])],
+    11: [_say("Girl at the table", "I want to see the new Gym, but I'm not a Trainer yet...", condition=["not:b2_opelucid_frozen"]),
+         _say("Girl at the table ", "Know what I saw? A huuuge icicle fall from the sky!", condition=["b2_opelucid_frozen"])],
+}, {}, (41, 44))
+OPE_CENTER["title"] = "Pokémon Center"
+DRAYDEN_HOUSE_TALE = [
+    "Drayden: Let me tell you the story. It's a long one, so listen closely.",
+    "Drayden: Two years ago, the two dragons awoke. {legend} chose a hero, and {other_legend} chose another.",
+    "Drayden: They were once a single dragon. It helped twin heroes build a new region... until the brothers fought over "
+    "truth and ideals, and the dragon split in two.",
+    "Drayden: They say a third dragon came into being then too: Kyurem. And there may be proof of it in a treasure my family "
+    "has handed down: the DNA Splicers.",
+    "Drayden: I keep them very safe. But here's what bothers me... could Kyurem be the empty shell of that first dragon?",
+    "Boom!", "Drayden: Hm? What was that sound?", "Axew: Ax! Axew!"]
+OPE_ROOMS = {
+    "gym": OPE_GYM, "center": OPE_CENTER,
+    "drayden": room(123, {0: _say("Drayden", "Drayden: Come, sit. Professor Juniper asked me to tell you about the dragons.",
+                                  condition=["b2_legend_badge", "not:b2_drayden_tale"]),
+                          1: _say("Axew", "Axew: Ax! Axew!")}, {}, (34, 31), stairs={124: ("^", "ROOM:drayden_2f")},
+                    scenes=[{"trigger": "enter", "condition": ["b2_drayden_lead", "not:b2_drayden_tale"], "flag": "b2_drayden_tale",
+                             "cast": [], "call": DRAYDEN_HOUSE_TALE,
+                             "event": {"flag": "b2_opelucid_frozen"}}]),
+    "drayden_2f": room(124, {0: _say("Iris's old coach", "I was Iris's coach! From the day she came here she was stronger than me!",
+                                     condition=["not:b2_opelucid_frozen"]),
+                             2: {"text": "Woman with a stone", "action": "EVENT", "event": {
+                                 "lines": ["Worried about your Pokemon's weight? No diet needed. Just let it hold this!"],
+                                 "gift_item": {"FLOAT_STONE": 1}, "flag": "b2_ope_float_stone",
+                                 "done": ["A Pokemon holding a Float Stone weighs half as much. Low Kick and Grass Knot hurt less!"]}},
+                             3: {"text": "Draco Meteor tutor", "action": "EVENT", "condition": ["b2_legend_badge"], "event": {
+                                 "lines": ["Drayden teaches the move Draco Meteor: the strongest Dragon-type move.",
+                                           "Only a Dragon-type that loves its Trainer very much can learn it."],
+                                 "tutor": {"choices": ["DRACO-METEOR"], "min_friend": 255},
+                                 "cancel": ["Come back when your Dragon-type's bond is strong!"]}},
+                             1: {"text": "Man with an odd item", "action": "EVENT", "event": {
+                                 "lines": ["I have an item I don't know how to use. Would you see if you can make it work?"],
+                                 "gift_item": {"RING_TARGET": 1}, "flag": "b2_ope_ring_target",
+                                 "done": ["A Pokemon holding a Ring Target can be hit by moves it's normally immune to."]}}},
+                       {}, (34, 31), stairs={123: ("v", "ROOM:drayden")}),
+    "house_ne": room(125, {0: [_say("Old man", "Welcome to the Rotation Battle House! ...is what we'd have said a few years ago. "
+                                               "Now it's all at the PWT in Driftveil.", condition=["unova_version:BLACK_2"]),
+                               _say("Old man ", "Welcome to the Triple Battle House! ...is what we'd have said a few years ago. "
+                                                "Now it's all at the PWT in Driftveil.", condition=["unova_version:WHITE_2"])]},
+                     {}, (40, 16), stairs={126: ("^", "ROOM:house_ne_2f")}),
+    "house_ne_2f": room(126, {5: _say("Mimic girl", "Mimicking is fun! My friends love to copy me. Can you tell who's mimicking?"),
+                              4: _say("Boy", "I want to cherish my originality."),
+                              0: _say("Klang", "Klang: Klang!"), 1: _say("Swoobat", "Swoobat: Swoobat!"),
+                              2: _say("Azumarill", "Azumarill: Azu!"), 3: _say("Eelektross", "Eelektross: Eelek!")},
+                        {}, (40, 16), stairs={125: ("v", "ROOM:house_ne")}),
+    "house_w": room(127, {1: {"text": "Musical fan", "action": "EVENT", "event": {"world": "unova_story", "daily_prop": {
+                              "key": "b2_ope_prop", "props": [96, 98, 99, 95],
+                              "no_case": ["I'm a huge Musical fan! What's this? No Prop Case? Go and see the Musical in Nimbasa!"],
+                              "lines": ["I'm a huge Musical fan! Oh, you have a Prop Case! Would you like a new Prop?"],
+                              "come_back": ["Come and see me again tomorrow! I'll give you a different Prop!"],
+                              "all": ["I want people all over the world to enjoy Musicals!"]}}},
+                          0: _say("Woman", "With lots of Props you want to dress your Pokemon up. Then you want a Musical!"),
+                          2: _say("Boy", "I hear there's a Prop you can get on your birthday!")},
+                    {}, (14, 36), stairs={128: ("^", "ROOM:house_w_2f")}),
+    "house_w_2f": room(128, {0: [_say("Man upstairs", "Between you and me? I used to be in Team Plasma. Doing what you're told "
+                                                       "without thinking... it didn't have to be me. So I left.",
+                                      condition=["unova_version:BLACK_2"]),
+                                 _say("Man upstairs ", "Between you and me? I'm not a good Trainer. Maybe Team Plasma were "
+                                                       "right to take Pokemon from weak Trainers... I feel for the people "
+                                                       "they robbed, though.", condition=["unova_version:WHITE_2"])],
+                             1: _say("Woman upstairs", "Shh. Don't tell anyone his story, OK?")},
+                       {}, (14, 36), stairs={127: ("v", "ROOM:house_w")}),
+    "house_n": room(129, {0: _say("Girl", "We got to know each other by trading Pokemon! Different styles make it more fun!"),
+                          1: _say("Boy", "Some Pokemon evolve by trading. Maybe people evolve by trading ideas!")},
+                    {}, (41, 26), stairs={130: ("^", "ROOM:house_n_2f")}),
+    "house_n_2f": room(130, {0: {"text": "Tympole fan", "action": "EVENT", "event": {"stages": [
+                                 {"ready": ["not:party_has:535", "not:party_has:536", "not:party_has:537"],
+                                  "lines": ["I love Tympole more than anyone! If I just had one more, they'd sing together!",
+                                            "If you catch a Tympole, show it to me! I'll let you hear a great song!"]},
+                                 {"ready": ["party_has:535"], "flag": "b2_ope_tympole_song",
+                                  "lines": ["A Tympole! Finally, six Tympole in one place! OK, Tympole! Let's hear that harmony!",
+                                            "Riiiibbbit. Croooak!! ...What a wonderful choir! Thank you, seriously!"]}],
+                                 "then": {"lines": ["Aren't Tympole the cutest? No matter how often I hear that song..."]}}},
+                             1: _say("Tympole", "Tympole: Pi pi kiii!"), 2: _say("Tympole ", "Tympole: Pun purin?"),
+                             3: _say("Tympole  ", "Tympole: Waah weeeen!"), 4: _say("Tympole   ", "Tympole: Riiiibbbit."),
+                             5: _say("Tympole    ", "Tympole: Croooak!!")},
+                       {}, (41, 26), stairs={129: ("v", "ROOM:house_n")}),
+    "house_c": room(134, {0: [_say("Man", "Pursuing ideals... What does it mean? There was this guy N, who Zekrom chose as its hero...",
+                                   condition=["unova_version:BLACK_2"]),
+                              _say("Man ", "Pursuing truth... What does it mean? There was this guy N, who Reshiram chose as its hero...",
+                                   condition=["unova_version:WHITE_2"])],
+                          1: {"text": "Boy with Smoke Balls", "action": "EVENT", "event": {
+                              "lines": ["Instead of a Pokemon with Run Away, I got these! I have tons, so have one!"],
+                              "gift_item": {"SMOKE_BALL": 1}, "flag": "b2_ope_smoke_ball",
+                              "done": ["A Pokemon holding a Smoke Ball can always get away from wild Pokemon!"]}}},
+                    {}, (31, 16), stairs={135: ("^", "ROOM:house_c_2f")}),
+    "house_c_2f": room(135, {2: _say("Ace Trainer", "Do the Elite Four love Pokemon more than anyone? You can't battle well "
+                                                     "without loving them, right?"),
+                             0: _say("Boy", "You need eight Gym Badges to take on the Pokemon League!"),
+                             1: _say("Druddigon", "Druddigon: Raaah!")},
+                       {}, (31, 16), stairs={134: ("v", "ROOM:house_c")}),
+    "gate_w": room(131, {0: [_say("Guard", "Welcome to Opelucid City, where people like change! ...Heard that one before?",
+                                  condition=["unova_version:BLACK_2"]),
+                             _say("Guard ", "Welcome to Opelucid City, where people value history! ...Heard that one before?",
+                                  condition=["unova_version:WHITE_2"])],
+                         1: _say("Man eating", "Munch, munch... I'm happy when I'm eating. Hungry and angry... similar words, no?")},
+                   {1: ["OPELUCID GATE", "East: Opelucid City  West: Route 9"]}, (0, 46), exits_extra={348: ("<", "UNOVA_ROUTE_9")}),
+    "gate_e": room(133, {0: _say("Guard", "Trainer who came to Opelucid, hello! Trainer heading to Route 11, come again!")},
+                   {1: ["OPELUCID GATE", "West: Opelucid City  East: Route 11"]}, (63, 46), exits_extra={365: (">", "UNOVA_ROUTE_11")}),
+}
+for _r, _t in (("drayden", "Drayden's House"), ("drayden_2f", "Drayden's House 2F"), ("house_ne", "Former Battle House"),
+               ("house_ne_2f", "House 2F"), ("house_w", "House"), ("house_w_2f", "House 2F"), ("house_n", "House"),
+               ("house_n_2f", "House 2F"), ("house_c", "House"), ("house_c_2f", "House 2F"), ("gate_w", "Opelucid Gate"),
+               ("gate_e", "Opelucid Gate")):
+    OPE_ROOMS[_r]["title"] = _t
+
+OPE_IRIS = {"trigger": {"zone": [56, 45, 56, 49]}, "condition": ["not:b2_opelucid_iris"], "flag": "b2_opelucid_iris",
+            "cast": [{"sheet": "b2_c355.png", "from": [52, 47], "to": "player", "leave": [40, 44], "lines": [
+                "Iris: Yahoo! I haven't seen you since Castelia City!",
+                "Iris: Are you here to battle Grandpa? Yep! Opelucid's Gym Leader Drayden is my grandpa. Not really related, though!",
+                "Iris: The Gym's that way! But before you challenge it, you might want to train on Route 9!",
+                "Iris: Your Pokemon really respect you. I can feel how much fun they're having, even inside their Poke Balls!"]}]}
+OPE_LEAD = {"trigger": "enter", "condition": ["b2_legend_badge", "not:b2_drayden_lead"], "flag": "b2_drayden_lead",
+            "cast": [{"sheet": "b2_c229.png", "from": [21, 17], "to": "player", "lines": [
+                "Drayden: Professor Juniper asked me to tell you about the legendary dragon that made Unova.",
+                "Drayden: I'll show you the way. Follow me."], "lead": [[34, 32, ["Drayden: We're here. Come inside."]]],
+                      "leave": [34, 31]}],
+            "room": ["drayden", 5, 11]}
+OPE_FROZEN_SCENES = [
+    {"trigger": {"zone": [31, 30, 37, 36]}, "condition": ["b2_drayden_tale", "not:b2_opelucid_ice"], "flag": "b2_opelucid_ice",
+     "cast": [{"sheet": "b2_c229.png", "from": [33, 32], "to": "player", "stay": True, "lines": [
+         "Drayden: What was that?! ...A world of ice...",
+         "Drayden: Haxorus! Use Dragon Tail!", "Haxorus: Rarh raaaah!",
+         "Drayden: Not a scratch on it! What's going on?"]},
+              {"sheet": "b2_c302.png", "from": [34, 40], "to": [34, 35], "stay": True, "lines": [
+                  "???: I don't think that's going to work.",
+                  "Drayden: I remember you from N's Castle.",
+                  "Zinzolin: It's bitter cold. I'm shivering... but that's proof I'm alive!",
+                  "Zinzolin: This ice is Team Plasma's technology. While we have our secret weapon, you'll never melt it or break it!",
+                  "Zinzolin: Drayden, hand over the DNA Splicers! Where better for the splicers than a city where past and "
+                  "future are entwined?",
+                  "Drayden: You think someone who knows what you did two years ago will just hand them over?",
+                  "Zinzolin: Humph. Then we'll search for them, cold or not."], "leave": [34, 40]},
+              {"as": 0, "lines": ["Drayden: Those villains! {player_name}, help me drive Team Plasma out of Opelucid!"],
+               "leave": [22, 17]}]},
+    {"trigger": {"zone": [17, 16, 25, 21]}, "condition": ["b2_opelucid_zinzolin", "not:b2_splicers_stolen"], "flag": "b2_splicers_stolen",
+     "heal": True,
+     "cast": [{"sheet": "b2_c229.png", "from": [21, 17], "to": "player", "stay": True, "lines": [
+         "Drayden: You're even better than I'd hoped. Thanks to you, we drove them off. Let me heal your Pokemon.",
+         "Drayden: Wait here a moment. ...Harrumph. A new record there and back!",
+         "Drayden: Look, {player_name}. These are the DNA Splicers! This is what they were after."]},
+              {"sheet": "b2_c182.png", "from": [12, 11], "to": [20, 17], "stay": True, "lines": [
+                  "Shadow Triad: As we suspected... they were hidden in the Gym.",
+                  "Shadow Triad: If Drayden isn't there, nobody gets in. If he is, he's the strongest guard there is.",
+                  "Shadow Triad: Whatever. The DNA Splicers are in our hands now."], "leave": [62, 47]},
+              {"as": 0, "lines": ["Drayden: You used one of the Seven Sages to find where they were hidden!",
+                                  "Drayden: If they've been stolen, we'll take them back! They can hide well. Be on guard!"]}]},
+    {"trigger": {"zone": [54, 44, 62, 50]}, "condition": ["b2_opelucid_shadow", "not:b2_opelucid_cheren"], "flag": "b2_opelucid_cheren",
+     "cast": [{"sheet": "b2_c229.png", "from": [40, 46], "to": "player", "stay": True, "lines": [
+         "Drayden: Oh no! ...No, it's not your fault, {player_name}. You were impressive. I'm the one who let everyone down."]},
+              {"as": 0, "lines": ["The Xtransceiver is ringing.",
+                                  "Cheren: {player_name}. Drayden, glad you're safe too.",
+                                  "Drayden: Hello, Cheren. You've grown. I hear you're Aspertia's Gym Leader now.",
+                                  "Cheren: Let's catch up later. The coldest place in Unova right now is near Humilau City. "
+                                  "That's where Team Plasma must be.",
+                                  "Cheren: Drayden, please protect Opelucid. {player_name}, I could use your help!",
+                                  "Drayden: Humilau, huh... North of Undella Town. {player_name}, protect Pokemon from Team Plasma!"]}]},
+]
+_GRUNTS = ((2, 585, "b2_ope_grunt_1", ["Team Plasma: Pokemon are pawns! That's what I was taught!"],
+            ["Team Plasma: How can this be? Is that the power of Pokemon that aren't treated like objects?"],
+            ["Team Plasma: The only place we haven't searched is the Gym!"]),
+           (3, 586, "b2_ope_grunt_2", ["Team Plasma: This time, we'll take over Unova! Trembling? From fear or cold, either's good!"],
+            ["Team Plasma: It's not over! The others will find the DNA Splicers!"],
+            ["Team Plasma: I think I was supposed to search the Gym..."]),
+           (5, 587, "b2_ope_grunt_3", ["Team Plasma: Don't get in our way! Bother, bother, bother!"],
+            ["Team Plasma: How humiliating... bothered by a bother..."],
+            ["Team Plasma: Zinzolin said to stick to Drayden. That's where anything important would be!"]))
+OPE_FROZEN_PEOPLE = {n: _b2_battle("Plasma Grunt", tid, flag, lines, won, done, condition=["b2_opelucid_ice"],
+                                   _look="sheet:b2_plasma_grunt_m.png")
+                     for n, tid, flag, lines, won, done in _GRUNTS}
+OPE_FROZEN_PEOPLE[4] = _say("Plasma Grunt ", "Team Plasma: Oh, that Drayden! Where did he hide the DNA Splicers? Somewhere familiar?",
+                            condition=["b2_opelucid_ice", "not:b2_opelucid_zinzolin"])
+OPE_FROZEN_PEOPLE[1] = {"text": "Zinzolin", "action": "EVENT", "_look": "sheet:b2_c302.png",
+                        "condition": ["b2_ope_grunt_1", "b2_ope_grunt_2", "b2_ope_grunt_3", "not:b2_opelucid_zinzolin"], "event": {
+                            "lines": ["Zinzolin: For crying out loud... I didn't expect to fight in this cold. No matter! "
+                                      "Shivering means I'm truly alive!"],
+                            "battle": _b2(584, dialogue={"player_won": [
+                                "Zinzolin: You're a strong Trainer... I'll take my leave, simply because I can't stand this cold.",
+                                "Zinzolin: But imagine it... all of Unova... covered in ice. For that, we'll do whatever it "
+                                "takes to get the DNA Splicers."]}),
+                            "flag": "b2_opelucid_zinzolin"}}
+OPE_FROZEN_PEOPLE[0] = [_say("Drayden", "Drayden: They're getting tougher! {player_name}, take care of the others!",
+                             condition=["b2_opelucid_ice", "not:b2_opelucid_zinzolin"]),
+                        _say("Drayden ", "Drayden: Little by little, the ice is starting to melt. As a fellow Trainer, thank you!",
+                             condition=["b2_opelucid_cheren"])]
+OPE_SHADOW = {"text": "Shadow Triad", "action": "EVENT", "_look": "sheet:b2_c182.png",
+              "condition": ["b2_splicers_stolen", "not:b2_opelucid_shadow"], "event": {
+                  "lines": ["Shadow Triad: Heh heh... You don't really think you can take the DNA Splicers back, do you?"],
+                  "battle": _b2(583, dialogue={"player_won": [
+                      "Shadow Triad: Awww. How unlucky. I'm not the one holding the splicers.",
+                      "Shadow Triad: I was only buying time for the others to escape. Cheerio."]}),
+                  "flag": "b2_opelucid_shadow"}}
+OPE_PEOPLE = {
+    11: _say("Iris", "Iris: Good luck at the Gym! Grandpa's really strong!", condition=["b2_opelucid_iris", "not:b2_legend_badge"]),
+    16: [_say("Man by the Gym", "Gym Leader Drayden leads Opelucid as its mayor! He trains by wrestling his Pokemon.",
+              condition=["not:b2_opelucid_frozen"])],
+    15: _say("Boy", "My Pokemon show me affection, so I'm never lonely!", condition=["not:b2_opelucid_frozen"]),
+    17: [_say("Woman by the houses", "This city changes endlessly, and every change stays in people's memories.",
+              condition=["unova_version:BLACK_2", "not:b2_opelucid_frozen"]),
+         _say("Woman by the houses ", "The memories of everyone who's lived here have built up without changing much.",
+              condition=["unova_version:WHITE_2", "not:b2_opelucid_frozen"])],
+    14: [_say("Old man", "I think some things must change, no matter how much you love them!",
+              condition=["unova_version:BLACK_2", "not:b2_opelucid_frozen"]),
+         _say("Old man ", "I think some things shouldn't change, even if it's inconvenient.",
+              condition=["unova_version:WHITE_2", "not:b2_opelucid_frozen"])],
+    18: _say("Musician", "Our hopes are put into this melody... I'll send them to the future.", condition=["not:b2_opelucid_frozen"]),
+    12: _say("Black Belt", "I reached heights I never could have alone, with Pokemon by my side!", condition=["not:b2_opelucid_frozen"]),
+    13: _say("Artist", "Unova's symbols are Zekrom and Reshiram. Where are they now, I wonder?", condition=["not:b2_opelucid_frozen"]),
+}
+OPE_SIGNS = {9: ["OPELUCID CITY", "Time's Dividing Line"], 5: ["DRAYDEN'S HOUSE"], 3: ["FORMERLY THE BATTLE HOUSE"],
+             4: ["TRAINER TIPS", "Mayor Drayden teaches the strongest Dragon-type move to Trainers he respects. Visit his home!"],
+             2: ["OPELUCID CITY POKEMON GYM", "Leader: Drayden", "The Spartan Mayor"],
+             1: ["OPELUCID CITY", "Time's Dividing Line"]}
+OPE_DOORS = {121: ("gym", "gym"), 122: ("center", "center"), 123: ("house", "drayden"), 125: ("house", "house_ne"),
+             127: ("house", "house_w"), 129: ("house", "house_n"), 134: ("house", "house_c"),
+             131: ("gate", "gate_w", "UNOVA_ROUTE_9"), 133: ("gate", "gate_e", "UNOVA_ROUTE_11")}
+
+
+def _opelucid(z, frozen=False):
+    people = {**OPE_PEOPLE, **OPE_FROZEN_PEOPLE} if frozen else dict(OPE_PEOPLE)
+    m = town(z, people, OPE_SIGNS, OPE_DOORS, OPE_ROOMS,
+             extra_people=[(60, 47, OPE_SHADOW)] if frozen else [],
+             scenes=OPE_FROZEN_SCENES if frozen else [OPE_IRIS, OPE_LEAD], title="Opelucid City")
+    return m
+
+
+OPELUCID = _opelucid(120)
+OPELUCID["story_maps"] = [{"when": ["unova_version:WHITE_2", "b2_opelucid_frozen", "not:b2_opelucid_thawed"], "map": _opelucid(618, True)},
+                          {"when": ["b2_opelucid_frozen", "not:b2_opelucid_thawed"], "map": _opelucid(617, True)},
+                          {"when": ["unova_version:WHITE_2"], "map": _opelucid(615)}]
+for _r, _t in (("gym", "Opelucid Gym"), ("center", "Pokémon Center")):
+    OPE_ROOMS[_r]["title"] = _t
+
+
 MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": FLOCCESY, "UNOVA_ROUTE_20": ROUTE_20,
         "FLOCCESY_RANCH_OUTSIDE": RANCH_OUTSIDE, "FLOCCESY_RANCH": RANCH, "PLEDGE_GROVE": PLEDGE_GROVE,
         "VIRBANK_CITY": VIRBANK, "VIRBANK_COMPLEX_OUTSIDE": COMPLEX_OUTSIDE, "VIRBANK_COMPLEX": COMPLEX, "POKESTAR_STUDIOS": POKESTAR,
@@ -5460,4 +5924,6 @@ MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": 
         "CELESTIAL_TOWER_ROOF": CT_ROOF,
         "LENTIMAS_TOWN": LENTIMAS, "REVERSAL_MOUNTAIN": REVERSAL, "REVERSAL_MOUNTAIN_ENTRY": RM_ENTRY,   # (batch 7a)
         "REVERSAL_MOUNTAIN_INSIDE": RM_INSIDE, "REVERSAL_MOUNTAIN_SOUTH": RM_SOUTH, "STRANGE_HOUSE": STRANGE_HOUSE,
-        "UNDELLA_TOWN": UNDELLA, "UNDELLA_BAY": UNDELLA_BAY_MAP, "UNOVA_ROUTE_13": ROUTE_13, "LACUNOSA_TOWN": LACUNOSA}   # (batch 7b)
+        "UNDELLA_TOWN": UNDELLA, "UNDELLA_BAY": UNDELLA_BAY_MAP, "UNOVA_ROUTE_13": ROUTE_13, "LACUNOSA_TOWN": LACUNOSA,   # (batch 7b)
+        "UNOVA_ROUTE_12": ROUTE_12, "VILLAGE_BRIDGE": VILLAGE_BRIDGE_MAP, "UNOVA_ROUTE_11": ROUTE_11,   # (batch 8a)
+        "OPELUCID_CITY": OPELUCID}
