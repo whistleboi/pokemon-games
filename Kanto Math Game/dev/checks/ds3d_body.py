@@ -32,12 +32,14 @@ def _scene_file(pic):
 _missing = {k: sorted(p for p in _pics if p.startswith(k) and not _os.path.exists(_scene_file(p))) for k in ("ss", "pt", "b2")}
 _count = {k: sum(1 for p in _pics if p.startswith(k)) for k in ("ss", "pt", "b2")}
 check(_count["ss"] > 200 and not _missing["ss"], f"Johto: all {_count['ss']} SoulSilver pictures have a scene {_missing['ss'][:8]}")
-for _k, _r in (("pt", "Sinnoh"), ("b2", "Unova")):
+check(not _missing["pt"], f"Sinnoh: all {_count['pt']} Platinum pictures have a scene {_missing['pt'][:8]}")
+for _k, _r in (("b2", "Unova"),):
     print(f"    {_r}: {_count[_k] - len(_missing[_k])} of {_count[_k]} have a scene; not yet: {len(_missing[_k])} {_missing[_k][:10]}")
 
 print("3) Johto's flat pictures are gone (3D only)")
 check(not _glob.glob("assets/tiles/ss_ground/*.png") and not _glob.glob("assets/tiles/ss_top/*.png"),
       "no assets/tiles/ss_ground or ss_top pictures left")
+check(not _glob.glob("assets/tiles/pt_ground/*.png"), "Sinnoh's too: no assets/tiles/pt_ground pictures left (11-24)")
 
 print("4) a Johto town and room still open and draw without them (headless: no scene drawn, plain tiles)")
 from src.states.overworld import CityState as _CS
