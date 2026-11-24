@@ -169,10 +169,72 @@ def form_weather(pokemon):
     return FORM_WEATHER.get((pokemon.id, pokemon.form)) if pokemon else None
 
 
+# Rotom's appliance forms (Platinum, Black 2): Electric plus the appliance's type, each with its own move (assets/
+# pokemon_movesets.json "479_<form>"; sprites in altform/). Unova 11-24: the PWT's sets and the Shopping Mall's stockroom.
+ROTOM = 479
+ROTOM_FORMS = {"heat": "OVERHEAT", "wash": "HYDRO-PUMP", "frost": "BLIZZARD", "fan": "AIR-SLASH", "mow": "LEAF-STORM"}
+
+
+def rotom_change(game, slot_index, form):
+    """Change the Rotom in your party's slot to form ("heat", "wash", "frost", "fan", "mow", or "normal"): its types,
+    stats and picture change, the old form's own move goes and the new form's own move comes in (in its place, else the
+    last slot; back to normal, Thunder Shock if it would know nothing). Returns lines, or None if that's no Rotom."""
+    story = game.story_manager
+    party = story.player_team
+    p = party[slot_index] if 0 <= slot_index < len(party) else None
+    if p is None or int(getattr(p, "id", 0) or 0) != ROTOM:
+        return None
+    form = form if form in ROTOM_FORMS else "normal"
+    old = list(getattr(p, "moves", None) or [])
+    at = next((i for i, m in enumerate(old) if m in ROTOM_FORMS.values()), None)
+    moves = [m for m in old if m not in ROTOM_FORMS.values()]
+    new_move = ROTOM_FORMS.get(form)
+    if new_move:
+        if at is not None:
+            moves.insert(min(at, len(moves)), new_move)
+        elif len(moves) < 4:
+            moves.append(new_move)
+        else:
+            moves[-1] = new_move
+    if not moves:
+        moves = ["THUNDER-SHOCK"]
+    rec = story._pokemon_record(p)
+    rec["form"] = form
+    rec["moves"] = moves
+    party[slot_index] = story._load_pokemon(rec, game.loader)
+    party[slot_index].moves = list(moves)
+    lines = [f"{p.display_name} changed its form!"]
+    if new_move:
+        lines.append(f"It learned {new_move.replace('-', ' ').title()}!")
+    return lines
+
+
+def _apply_forms(team, forms_list):
+    """A trainer team's forms by slot ("forms": ["heat", None, ...]): each Pokemon rebuilt in that form (the PWT's Rotom)."""
+    from src.ui import theme
+    game = theme.GAME
+    if game is None:
+        return
+    from src.pokemon.data import Pokemon
+    for i, f in enumerate(forms_list or []):
+        if i < len(team) and team[i] is not None and f and f != "normal":
+            p = team[i]
+            raw = game.loader.fetch_specific(int(p.id), f)
+            if not raw:
+                continue
+            new = Pokemon(raw, game.assets, size_mult=getattr(p, "size_mult", 3.125))
+            new.level = p.level
+            new.current_hp = new.get_max_hp()
+            if int(p.id) == ROTOM and f in ROTOM_FORMS:   # (its form's own move, as in the games)
+                new.preset_moves = list(getattr(p, "preset_moves", None) or []) or [ROTOM_FORMS[f]]
+            team[i] = new
+
+
 def mark_trainer_team(team, trainer_info):
     """A trainer's `mega` (species id, or a list when the team depends on the player's starter)
     Mega Evolves when it comes out. `movesets` gives canon moves by species id ({"25": ["THUNDERBOLT",
     ...]}); moves.ensure_moves turns them into the real set."""
+    _apply_forms(team, (trainer_info or {}).get("forms"))   # (forms by slot, first: everything below marks the rebuilt ones)
     mega = (trainer_info or {}).get("mega")
     megas = {int(m) for m in (mega if isinstance(mega, list) else [mega] if mega else [])}
     for p in team:

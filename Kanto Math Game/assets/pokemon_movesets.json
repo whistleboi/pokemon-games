@@ -353429,5 +353429,1525 @@
     "evolution": [
       "STEELIX"
     ]
+  },
+  "479_heat": {
+    "name": "ROTOM-HEAT",
+    "types": [
+      "ELECTRIC",
+      "FIRE"
+    ],
+    "stats": {
+      "HP": 50,
+      "ATTACK": 65,
+      "DEFENSE": 107,
+      "SPECIAL-ATTACK": 105,
+      "SPECIAL-DEFENSE": 107,
+      "SPEED": 86
+    },
+    "base_xp": 182,
+    "capture_rate": 45,
+    "moves": [
+      {
+        "name": "THUNDER-SHOCK",
+        "power": 40,
+        "type": "ELECTRIC",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 10,
+        "is_inflicter": false,
+        "ailment": "paralysis",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "PARALYSIS",
+            "chance": 10
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "THUNDER-WAVE",
+        "power": 0,
+        "type": "ELECTRIC",
+        "accuracy": 90,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": true,
+        "ailment": "paralysis",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "PARALYSIS",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "DOUBLE-TEAM",
+        "power": 0,
+        "type": "NORMAL",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "CONFUSE-RAY",
+        "power": 0,
+        "type": "GHOST",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": true,
+        "ailment": "confusion",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "CONFUSION",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "SUBSTITUTE",
+        "power": 0,
+        "type": "NORMAL",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "UPROAR",
+        "power": 90,
+        "type": "NORMAL",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "CHARGE",
+        "power": 0,
+        "type": "ELECTRIC",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "TRICK",
+        "power": 0,
+        "type": "PSYCHIC",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "ASTONISH",
+        "power": 30,
+        "type": "GHOST",
+        "accuracy": 100,
+        "category": "PHYSICAL",
+        "effect_chance": 30,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          },
+          {
+            "type": "flinch",
+            "chance": 30
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "SHOCK-WAVE",
+        "power": 60,
+        "type": "ELECTRIC",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "DISCHARGE",
+        "power": 80,
+        "type": "ELECTRIC",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 30,
+        "is_inflicter": false,
+        "ailment": "paralysis",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "PARALYSIS",
+            "chance": 30
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "OMINOUS-WIND",
+        "power": 60,
+        "type": "GHOST",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 10,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 10
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "ELECTRO-BALL",
+        "power": 0,
+        "type": "ELECTRIC",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "HEX",
+        "power": 65,
+        "type": "GHOST",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      }
+    ],
+    "evolution": null
+  },
+  "479_wash": {
+    "name": "ROTOM-WASH",
+    "types": [
+      "ELECTRIC",
+      "WATER"
+    ],
+    "stats": {
+      "HP": 50,
+      "ATTACK": 65,
+      "DEFENSE": 107,
+      "SPECIAL-ATTACK": 105,
+      "SPECIAL-DEFENSE": 107,
+      "SPEED": 86
+    },
+    "base_xp": 182,
+    "capture_rate": 45,
+    "moves": [
+      {
+        "name": "THUNDER-SHOCK",
+        "power": 40,
+        "type": "ELECTRIC",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 10,
+        "is_inflicter": false,
+        "ailment": "paralysis",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "PARALYSIS",
+            "chance": 10
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "THUNDER-WAVE",
+        "power": 0,
+        "type": "ELECTRIC",
+        "accuracy": 90,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": true,
+        "ailment": "paralysis",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "PARALYSIS",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "DOUBLE-TEAM",
+        "power": 0,
+        "type": "NORMAL",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "CONFUSE-RAY",
+        "power": 0,
+        "type": "GHOST",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": true,
+        "ailment": "confusion",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "CONFUSION",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "SUBSTITUTE",
+        "power": 0,
+        "type": "NORMAL",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "UPROAR",
+        "power": 90,
+        "type": "NORMAL",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "CHARGE",
+        "power": 0,
+        "type": "ELECTRIC",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "TRICK",
+        "power": 0,
+        "type": "PSYCHIC",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "ASTONISH",
+        "power": 30,
+        "type": "GHOST",
+        "accuracy": 100,
+        "category": "PHYSICAL",
+        "effect_chance": 30,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          },
+          {
+            "type": "flinch",
+            "chance": 30
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "SHOCK-WAVE",
+        "power": 60,
+        "type": "ELECTRIC",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "DISCHARGE",
+        "power": 80,
+        "type": "ELECTRIC",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 30,
+        "is_inflicter": false,
+        "ailment": "paralysis",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "PARALYSIS",
+            "chance": 30
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "OMINOUS-WIND",
+        "power": 60,
+        "type": "GHOST",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 10,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 10
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "ELECTRO-BALL",
+        "power": 0,
+        "type": "ELECTRIC",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "HEX",
+        "power": 65,
+        "type": "GHOST",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      }
+    ],
+    "evolution": null
+  },
+  "479_frost": {
+    "name": "ROTOM-FROST",
+    "types": [
+      "ELECTRIC",
+      "ICE"
+    ],
+    "stats": {
+      "HP": 50,
+      "ATTACK": 65,
+      "DEFENSE": 107,
+      "SPECIAL-ATTACK": 105,
+      "SPECIAL-DEFENSE": 107,
+      "SPEED": 86
+    },
+    "base_xp": 182,
+    "capture_rate": 45,
+    "moves": [
+      {
+        "name": "THUNDER-SHOCK",
+        "power": 40,
+        "type": "ELECTRIC",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 10,
+        "is_inflicter": false,
+        "ailment": "paralysis",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "PARALYSIS",
+            "chance": 10
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "THUNDER-WAVE",
+        "power": 0,
+        "type": "ELECTRIC",
+        "accuracy": 90,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": true,
+        "ailment": "paralysis",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "PARALYSIS",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "DOUBLE-TEAM",
+        "power": 0,
+        "type": "NORMAL",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "CONFUSE-RAY",
+        "power": 0,
+        "type": "GHOST",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": true,
+        "ailment": "confusion",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "CONFUSION",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "SUBSTITUTE",
+        "power": 0,
+        "type": "NORMAL",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "UPROAR",
+        "power": 90,
+        "type": "NORMAL",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "CHARGE",
+        "power": 0,
+        "type": "ELECTRIC",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "TRICK",
+        "power": 0,
+        "type": "PSYCHIC",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "ASTONISH",
+        "power": 30,
+        "type": "GHOST",
+        "accuracy": 100,
+        "category": "PHYSICAL",
+        "effect_chance": 30,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          },
+          {
+            "type": "flinch",
+            "chance": 30
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "SHOCK-WAVE",
+        "power": 60,
+        "type": "ELECTRIC",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "DISCHARGE",
+        "power": 80,
+        "type": "ELECTRIC",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 30,
+        "is_inflicter": false,
+        "ailment": "paralysis",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "PARALYSIS",
+            "chance": 30
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "OMINOUS-WIND",
+        "power": 60,
+        "type": "GHOST",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 10,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 10
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "ELECTRO-BALL",
+        "power": 0,
+        "type": "ELECTRIC",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "HEX",
+        "power": 65,
+        "type": "GHOST",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      }
+    ],
+    "evolution": null
+  },
+  "479_fan": {
+    "name": "ROTOM-FAN",
+    "types": [
+      "ELECTRIC",
+      "FLYING"
+    ],
+    "stats": {
+      "HP": 50,
+      "ATTACK": 65,
+      "DEFENSE": 107,
+      "SPECIAL-ATTACK": 105,
+      "SPECIAL-DEFENSE": 107,
+      "SPEED": 86
+    },
+    "base_xp": 182,
+    "capture_rate": 45,
+    "moves": [
+      {
+        "name": "THUNDER-SHOCK",
+        "power": 40,
+        "type": "ELECTRIC",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 10,
+        "is_inflicter": false,
+        "ailment": "paralysis",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "PARALYSIS",
+            "chance": 10
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "THUNDER-WAVE",
+        "power": 0,
+        "type": "ELECTRIC",
+        "accuracy": 90,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": true,
+        "ailment": "paralysis",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "PARALYSIS",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "DOUBLE-TEAM",
+        "power": 0,
+        "type": "NORMAL",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "CONFUSE-RAY",
+        "power": 0,
+        "type": "GHOST",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": true,
+        "ailment": "confusion",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "CONFUSION",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "SUBSTITUTE",
+        "power": 0,
+        "type": "NORMAL",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "UPROAR",
+        "power": 90,
+        "type": "NORMAL",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "CHARGE",
+        "power": 0,
+        "type": "ELECTRIC",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "TRICK",
+        "power": 0,
+        "type": "PSYCHIC",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "ASTONISH",
+        "power": 30,
+        "type": "GHOST",
+        "accuracy": 100,
+        "category": "PHYSICAL",
+        "effect_chance": 30,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          },
+          {
+            "type": "flinch",
+            "chance": 30
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "SHOCK-WAVE",
+        "power": 60,
+        "type": "ELECTRIC",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "DISCHARGE",
+        "power": 80,
+        "type": "ELECTRIC",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 30,
+        "is_inflicter": false,
+        "ailment": "paralysis",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "PARALYSIS",
+            "chance": 30
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "OMINOUS-WIND",
+        "power": 60,
+        "type": "GHOST",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 10,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 10
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "ELECTRO-BALL",
+        "power": 0,
+        "type": "ELECTRIC",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "HEX",
+        "power": 65,
+        "type": "GHOST",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      }
+    ],
+    "evolution": null
+  },
+  "479_mow": {
+    "name": "ROTOM-MOW",
+    "types": [
+      "ELECTRIC",
+      "GRASS"
+    ],
+    "stats": {
+      "HP": 50,
+      "ATTACK": 65,
+      "DEFENSE": 107,
+      "SPECIAL-ATTACK": 105,
+      "SPECIAL-DEFENSE": 107,
+      "SPEED": 86
+    },
+    "base_xp": 182,
+    "capture_rate": 45,
+    "moves": [
+      {
+        "name": "THUNDER-SHOCK",
+        "power": 40,
+        "type": "ELECTRIC",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 10,
+        "is_inflicter": false,
+        "ailment": "paralysis",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "PARALYSIS",
+            "chance": 10
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "THUNDER-WAVE",
+        "power": 0,
+        "type": "ELECTRIC",
+        "accuracy": 90,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": true,
+        "ailment": "paralysis",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "PARALYSIS",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "DOUBLE-TEAM",
+        "power": 0,
+        "type": "NORMAL",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "CONFUSE-RAY",
+        "power": 0,
+        "type": "GHOST",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": true,
+        "ailment": "confusion",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "CONFUSION",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "SUBSTITUTE",
+        "power": 0,
+        "type": "NORMAL",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "UPROAR",
+        "power": 90,
+        "type": "NORMAL",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "CHARGE",
+        "power": 0,
+        "type": "ELECTRIC",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "TRICK",
+        "power": 0,
+        "type": "PSYCHIC",
+        "accuracy": 100,
+        "category": "STATUS",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "ASTONISH",
+        "power": 30,
+        "type": "GHOST",
+        "accuracy": 100,
+        "category": "PHYSICAL",
+        "effect_chance": 30,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          },
+          {
+            "type": "flinch",
+            "chance": 30
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "SHOCK-WAVE",
+        "power": 60,
+        "type": "ELECTRIC",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "DISCHARGE",
+        "power": 80,
+        "type": "ELECTRIC",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 30,
+        "is_inflicter": false,
+        "ailment": "paralysis",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "PARALYSIS",
+            "chance": 30
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "OMINOUS-WIND",
+        "power": 60,
+        "type": "GHOST",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 10,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 10
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "ELECTRO-BALL",
+        "power": 0,
+        "type": "ELECTRIC",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      },
+      {
+        "name": "HEX",
+        "power": 65,
+        "type": "GHOST",
+        "accuracy": 100,
+        "category": "SPECIAL",
+        "effect_chance": 0,
+        "is_inflicter": false,
+        "ailment": "none",
+        "secondary": [
+          {
+            "type": "ailment",
+            "ailment": "NONE",
+            "chance": 0
+          }
+        ],
+        "priority": 0,
+        "ohko": false,
+        "self_faint": false
+      }
+    ],
+    "evolution": null
   }
 }
