@@ -10,7 +10,7 @@ Each entry is keyed by the button's "target". Fields (all optional):
             dialogue {player_won, player_lost}, rewards {item: qty, "POKEMON_<id>": 1},
             level (the ace's level; otherwise from the area)
   gift_item {item: qty} given straight away ("balls" adds Poke Balls)
-  gift_pokemon  species id, or {starter id: species id}
+  gift_pokemon  species id, or {starter id: species id}; a list gives each (Birch's two unpicked starters)
   gift_level    the gift's level (default: the area's wild level)
   gift_egg  a species: its Egg joins your party (requires room: "party_room")
   trade     {"want": species, "give": species, "item": held}: your first Pokemon they want, for theirs (same level)
@@ -402,6 +402,12 @@ EVENTS = {
                        "done": ["Mrs. Birch: Make yourself at home in Littleroot! Drop by anytime."]},
     "hoenn_birch_lab": {
         "stages": [
+            # (Jordan 11-24: after the title, Birch gives you the two starters you didn't pick - his first stage once ready)
+            {"lines": ["Professor Birch: The Champion of Hoenn! I always knew you had it in you!",
+                       "Professor Birch: These two have been waiting here since the day you chose your partner.",
+                       "Professor Birch: I think they'd like to see the world with you, too. Take good care of them!"],
+             "gift_pokemon": {"252": [255, 258], "255": [252, 258], "258": [252, 255], "default": [252, 255, 258]},
+             "gift_level": 5, "requires": ["beat_hoenn_champion"], "flag": "got_hoenn_other_starters"},
             {"lines": ["hoenn_birch_lab"], "requires": ["not:hoenn_birch_rescued"]},
             {"lines": ["Professor Birch: Thanks again for saving me out there!",
                        "Professor Birch: You and that Pokemon worked so well together. Please, keep it!",
