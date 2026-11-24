@@ -2527,8 +2527,15 @@ ROUTE_4 = route(
     hidden={"22,64": "RED_SHARD", "25,80": "HYPER_POTION", "30,85": "STARDUST", "26,89": "YELLOW_SHARD", "11,95": "GREEN_SHARD"},
     scenes=_B2_COLRESS_SCENES, extra_people=[(31, 89, _B2_OTHER), (14, 52, R4_VENDING)],
     rooms={
-        "speed_house": room(327, _stat_room(327, 0, "b2_c31.png", "SPEED", "HEALTH_WING", "b2_r4_speed",
-                                            {1: _say("Ace Trainer's brother", "My sister's crazy about Speed. Me? I like Attack.")}),
+        "speed_house": room(327, {   # (Black 2: the sister checks Speed for Health Wings; White 2: Attack for Swift Wings)
+                                0: [dict(_stat_room(327, 0, "b2_c31.png", "SPEED", "HEALTH_WING", "b2_r4_speed")[0],
+                                         condition=["unova_version:BLACK_2"]),
+                                    dict(_stat_room(327, 0, "b2_c31.png", "ATTACK", "SWIFT_WING", "b2_r4_attack")[0],
+                                         condition=["unova_version:WHITE_2"])],
+                                1: [_say("Ace Trainer's brother", "My sister's crazy about Speed. Me? I like Attack.",
+                                         condition=["unova_version:BLACK_2"]),
+                                    _say("Ace Trainer's brother ", "My sister's crazy about Attack. Me? I like Speed.",
+                                         condition=["unova_version:WHITE_2"])]},
                             {}, (50, 87), stairs={519: ("^", "ROOM:speed_house_2")}),
         "speed_house_2": room(519, {0: _say("Woman upstairs", "We moved here because they said this place would grow..."),
                                     1: _say("Man upstairs", "With the building stopped, guys like those hooligans hang around."),
@@ -3607,7 +3614,7 @@ for _r in ("stadium_stands", "court_stands"):
 # Zone 383: Nimbasa's east gate to the Bridge Gate (Marvelous Bridge: shut till the Hall of Fame, a broken lift: Rotom's
 # prank) and north into Lostlorn Forest. A small tree (Cut) by the Heal Ball, a boulder (Strength) by Blossom and TM66.
 ROUTE_16 = route(
-    383, {9: _ball("Poke Ball past the boulder", "TM247", "b2_r16_tm66", name="TM66 Payback"),
+    383, {9: _ball("Poke Ball past the boulder", "TM247", "b2_r16_tm66", name="TM247 Payback"),
           10: _ball("Poke Ball in the grove", "HEAL_BALL", "b2_r16_heal_ball", name="a Heal Ball")},
     {1: ["ROUTE 16"], 2: ["MARVELOUS BRIDGE", "Truly marvelous! And also a bridge!"]},
     exits={"<": ("NIMBASA_CITY", [(6, y) for y in range(21, 24)]), "^": ("LOSTLORN_FOREST", [(35, 0), (36, 0)])},
@@ -3638,7 +3645,7 @@ ROUTE_16["art"][15] = ROUTE_16["art"][15][:55] + "D" + ROUTE_16["art"][15][56:] 
 
 # -------------------------------------------------------------------------------------------------------- Lostlorn Forest
 # Zone 385: the forest Zoroark hid with illusions two years ago. Breeder Galen battles again each visit; the Rangers give
-# Berries; the odd Backpacker gives TM95 Snarl and runs off as a Zoroark. Its Hidden Grotto (record 2) at the north-east.
+# Berries; the odd Backpacker gives TM030 Snarl and runs off as a Zoroark. Its Hidden Grotto (record 2) at the north-east.
 # Veteran Murphy, the Rare Candy and the Grass Gem are past the waterfall (Surf, Waterfall: the river's walk codes 0x3F / 0x40,
 # read since 11-23). The Grass Gem (hidden at 19, 33): on main since 7eab28af (cleanup clean-main-unova-gen5-gems), placed 11-23.
 LOSTLORN = route(
@@ -3649,7 +3656,7 @@ LOSTLORN = route(
               "event": {"lines": ["Hi, Trainer! I'm a traveller. Do you know a Pokemon called Zoroark?",
                                   "They say one settled here two years ago, and changed how the forest looked with its illusions.",
                                   "Every rumour has a kernel of truth. Here, a small present.",
-                                  "{player_name} received TM95 Snarl!", "...Growwwf!", "The Backpacker turned into a Zoroark and ran off!"],
+                                  "{player_name} received TM030 Snarl!", "...Growwwf!", "The Backpacker turned into a Zoroark and ran off!"],
                         "gift_item": {"TM030": 1}, "flag": "b2_lostlorn_snarl"}}},
     {},
     exits={"v": ("UNOVA_ROUTE_16", [(12, 52), (13, 52)])},
@@ -3909,7 +3916,7 @@ DRIFT_ROOMS = {
         0: _say("Girl by the vegetables", "Seasonal vegetables are fun. When the season changes, so do the vegetables!"),
         7: _say("Boy in the market", "At the market you can get vegetables from every season at once. Amazing!"),
         8: _say("Sailor in the market", "Goods leave Driftveil and arrive in some other town... The world's all connected."),
-        2: _ball("Poke Ball in the corner", "TM280", "b2_drift_tm63", name="TM63 Embargo"),
+        2: _ball("Poke Ball in the corner", "TM280", "b2_drift_tm63", name="TM280 Embargo"),
     }, {}, title="Driftveil Market"),
     "rood": drift_room(104, {
         0: [{"text": "Rood", "action": "EVENT", "condition": ["not:b2_drift_zorua"], "event": {
@@ -4341,7 +4348,7 @@ FRIGATE_PEOPLE = {
     **{n: _say("Plasma Grunt " + "GHIJKLMN"[i], "Plasma Grunt: Hmph.", condition=_FRIGATE_ON)
        for i, n in enumerate((2, 5, 6, 11, 3, 4, 9, 10))},
     26: _ball("Poke Ball on the deck", "REVIVE", "b2_frigate_revive", name="a Revive"),
-    27: _ball("Poke Ball at the stern", "TM257", "b2_frigate_tm67", name="TM67 Retaliate"),
+    27: _ball("Poke Ball at the stern", "TM257", "b2_frigate_tm67", name="TM257 Retaliate"),
 }
 FRIGATE = route(
     552, FRIGATE_PEOPLE, {},
@@ -4560,7 +4567,7 @@ ROUTE_6 = route(
     331, {11: _ball("Poke Ball by the lab's fence", "MOON_STONE", "b2_r6_moon_stone", name="a Moon Stone"),
           12: _ball("Poke Ball by the east river", "ELIXIR", "b2_r6_elixir", name="an Elixir"),
           13: _ball("Poke Ball on the west bank", "ULTRA_BALL", "b2_r6_ultra", name="an Ultra Ball"),
-          14: _ball("Poke Ball north of the lab", "TM043", "b2_r6_tm56", name="TM56 Fling"),
+          14: _ball("Poke Ball north of the lab", "TM043", "b2_r6_tm56", name="TM043 Fling"),
           15: _ball("Poke Ball by the south bridge", "HEART_SCALE", "b2_r6_heart_scale", name="a Heart Scale"),
           16: _ball("Poke Ball across the river", "PP_UP", "b2_r6_pp_up", name="a PP Up"),
           20: _say("Girl on the path", "Water Absorb and Dry Skin: Pokemon with those Abilities love Water-type moves and rain!",
@@ -4665,7 +4672,7 @@ MISTRAL_2F = route(
     trainers={3: ("Ace Trainer Geoff", 4), 4: ("Ace Trainer Belle", 4)},
     hidden={"19,27": "GREEN_SHARD", "5,9": "ULTRA_BALL"}, title="Mistralton Cave")
 GUIDANCE = route(
-    335, {3: _ball("Poke Ball in the north-east corner", "TM086", "b2_gc_tm80", name="TM80 Rock Slide"),
+    335, {3: _ball("Poke Ball in the north-east corner", "TM086", "b2_gc_tm80", name="TM086 Rock Slide"),
           4: _ball("Poke Ball on the rock platform", "ESCAPE_ROPE", "b2_gc_escape_rope", name="an Escape Rope"),
           2: [_say("Old man in the chamber", "I've been searching for the legendary Pokemon Cobalion for decades...",
                    "Long ago, Cobalion, Terrakion and Virizion saved Pokemon from a fire started by a war between people.",
@@ -4702,7 +4709,7 @@ MISTRAL_1F["barred"] = [{"tiles": [[26, 25]], "until": {"flag_condition": "beat_
 # 2F, 340 3F, 341 4F, 342 the roof: each its own place, the spiral ramps' ends its stairs), Twist Mountain's mouth (198:
 # Marshal; the inside after the Champion). Story flags: visited_MISTRALTON_CITY -> b2_mist_juniper (Juniper's Master
 # Ball; Skyla) -> b2_jet_badge -> b2_lucky_egg (Juniper in Celestial Tower) -> b2_lentimas_flight (the Cargo Service:
-# Skyla flies you, Juniper and Bianca to Lentimas Town). Side: b2_runway_secret (the kids' treasure, TM40 Aerial Ace),
+# Skyla flies you, Juniper and Bianca to Lentimas Town). Side: b2_runway_secret (the kids' treasure, TM027 Aerial Ace),
 # b2_celestial_bell, b2_r7_mom_call, b2_twist_marshal.
 MIST_SCENES = [
     {"trigger": {"zone": [36, 45, 40, 45]}, "condition": ["not:b2_mist_juniper"], "flag": "b2_mist_juniper",
@@ -4804,12 +4811,12 @@ MIST_TM_HOUSE = room(112, {
 MIST_TM_HOUSE["title"] = "House"
 MIST_TM_HOUSE["hidden"] = {"1,8": "IRON"}
 MISTRALTON = town(
-    107, {5: _ball("Poke Ball by the greenhouse", "TM278", "b2_mist_tm58", name="TM58 Sky Drop"),
+    107, {5: _ball("Poke Ball by the greenhouse", "TM278", "b2_mist_tm58", name="TM278 Sky Drop"),
           6: _ball("Poke Ball by the south gardens", "MAX_REPEL", "b2_mist_max_repel", name="a Max Repel"),
           0: {"text": "The runway kids' treasure", "action": "EVENT", "condition": ["b2_runway_secret", "not:b2_runway_tm40"],
               "_look": "sheet:b2_item_ball.png", "event": {
                   "lines": ["Oh! You found our treasure!", "Just kidding! Our Ducklett already knows Aerial Ace. So you can have "
-                            "this TM!", "{player_name} received TM40 Aerial Ace!",
+                            "this TM!", "{player_name} received TM027 Aerial Ace!",
                             "Aerial Ace always hits its target! We hope it comes in handy!"],
                   "gift_item": {"TM027": 1}, "flag": "b2_runway_tm40"}},
           7: _say("Pokemon Breeder by the runway", "Mulch makes Berries grow! I'd pay well for it... if you ever have some to spare."),
@@ -4866,7 +4873,7 @@ TORNADUS = {"text": "Tornadus", "action": "BOSS", "color": "RED", "_look": "mon:
                      "lines": ["A fierce wind tears across the route!", "Tornadus swoops down out of the storm!"]}}
 ROUTE_7 = route(
     337, {9: _ball("Poke Ball by the south walkway", "ZINC", "b2_r7_zinc", name="a Zinc"),
-          10: _ball("Poke Ball on the east walkway", "TM105", "b2_r7_tm81", name="TM81 X-Scissor"),
+          10: _ball("Poke Ball on the east walkway", "TM105", "b2_r7_tm81", name="TM105 X-Scissor"),
           11: _ball("Poke Ball in the west grass", "LEAF_STONE", "b2_r7_leaf_stone", name="a Leaf Stone"),
           12: _ball("Poke Ball by the walkway", "ELIXIR", "b2_r7_elixir", name="an Elixir"),
           16: _say("Hiker on the walkway", "If you stand still on the raised walkway, you'll fall off! ...Just kidding.")},
@@ -4948,7 +4955,7 @@ CT_1F = route(
     title="Celestial Tower")
 CT_2F = route(
     339, {0: _ball("Poke Ball by the west graves", "HYPER_POTION", "b2_ct_hyper_potion", name="a Hyper Potion"),
-          1: _ball("Poke Ball by the east graves", "TM107", "b2_ct_tm61", name="TM61 Will-O-Wisp"),
+          1: _ball("Poke Ball by the east graves", "TM107", "b2_ct_tm61", name="TM107 Will-O-Wisp"),
           2: _say("Woman by the graves", "Thanks to my Litwick's light, I can find my way!"),
           3: _say("Boy by the graves", "All I wanted was to raise the same Pokemon he did, and battle together...")},
     {}, exits={"v": ("CELESTIAL_TOWER", [(9, 19), (10, 19), (11, 19), (12, 19)]),
@@ -4962,7 +4969,7 @@ CT_3F = route(
     title="Celestial Tower")
 CT_4F = route(
     341, {0: _ball("Poke Ball by the west graves", "PP_UP", "b2_ct_pp_up", name="a PP Up"),
-          1: _ball("Poke Ball by the east graves", "TM061", "b2_ct_tm65", name="TM65 Shadow Claw"),
+          1: _ball("Poke Ball by the east graves", "TM061", "b2_ct_tm65", name="TM061 Shadow Claw"),
           2: _say("Man by the ramp", "We were only thinking of ourselves, weren't we? Not of the Pokemon at our sides.")},
     {}, exits={"v": ("CELESTIAL_TOWER_3F", [(7, 15), (8, 15), (9, 15), (10, 15)]), "^": ("CELESTIAL_TOWER_ROOF", [(9, 1), (10, 1), (11, 1), (12, 1)])},
     trainers={3: ("Socialite Grace", 2), 4: ("Gentleman Daniel", 2), 5: ("Psychic Sarah", 2)}, title="Celestial Tower")

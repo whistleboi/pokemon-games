@@ -560836,31 +560836,72 @@
      "_shadows": true
     },
     "people": [
-     {
-      "text": "Ace Trainer's brother",
-      "action": "EVENT",
-      "event": {
-       "lines": [
-        "My sister's crazy about Speed. Me? I like Attack."
+     [
+      {
+       "text": "Ace Trainer's brother",
+       "action": "EVENT",
+       "event": {
+        "lines": [
+         "My sister's crazy about Speed. Me? I like Attack."
+        ]
+       },
+       "condition": [
+        "unova_version:BLACK_2"
+       ],
+       "_look": "sheet:b2_c30.png"
+      },
+      {
+       "text": "Ace Trainer's brother ",
+       "action": "EVENT",
+       "event": {
+        "lines": [
+         "My sister's crazy about Attack. Me? I like Speed."
+        ]
+       },
+       "condition": [
+        "unova_version:WHITE_2"
+       ],
+       "_look": "sheet:b2_c30.png"
+      }
+     ],
+     [
+      {
+       "text": "Ace Trainer in the house",
+       "action": "EVENT",
+       "_look": "sheet:b2_c31.png",
+       "event": {
+        "lines": [
+         "..."
+        ],
+        "stat_check": {
+         "stat": "SPEED",
+         "item": "HEALTH_WING",
+         "key": "b2_r4_speed"
+        }
+       },
+       "condition": [
+        "unova_version:BLACK_2"
        ]
       },
-      "_look": "sheet:b2_c30.png"
-     },
-     {
-      "text": "Ace Trainer in the house",
-      "action": "EVENT",
-      "_look": "sheet:b2_c31.png",
-      "event": {
-       "lines": [
-        "..."
-       ],
-       "stat_check": {
-        "stat": "SPEED",
-        "item": "HEALTH_WING",
-        "key": "b2_r4_speed"
-       }
+      {
+       "text": "Ace Trainer in the house",
+       "action": "EVENT",
+       "_look": "sheet:b2_c31.png",
+       "event": {
+        "lines": [
+         "..."
+        ],
+        "stat_check": {
+         "stat": "ATTACK",
+         "item": "SWIFT_WING",
+         "key": "b2_r4_attack"
+        }
+       },
+       "condition": [
+        "unova_version:WHITE_2"
+       ]
       }
-     }
+     ]
     ]
    },
    "speed_house_2": {
@@ -662467,7 +662508,7 @@
     "flag_condition": "not b2_r16_tm66",
     "event": {
      "lines": [
-      "You found TM66 Payback!"
+      "You found TM247 Payback!"
      ],
      "gift_item": {
       "TM247": 1
@@ -665687,7 +665728,7 @@
       "Hi, Trainer! I'm a traveller. Do you know a Pokemon called Zoroark?",
       "They say one settled here two years ago, and changed how the forest looked with its illusions.",
       "Every rumour has a kernel of truth. Here, a small present.",
-      "{player_name} received TM95 Snarl!",
+      "{player_name} received TM030 Snarl!",
       "...Growwwf!",
       "The Backpacker turned into a Zoroark and ran off!"
      ],
@@ -694248,7 +694289,7 @@
       "flag_condition": "not b2_drift_tm63",
       "event": {
        "lines": [
-        "You found TM63 Embargo!"
+        "You found TM280 Embargo!"
        ],
        "gift_item": {
         "TM280": 1
@@ -742389,7 +742430,7 @@
     "flag_condition": "not b2_frigate_tm67",
     "event": {
      "lines": [
-      "You found TM67 Retaliate!"
+      "You found TM257 Retaliate!"
      ],
      "gift_item": {
       "TM257": 1
@@ -763904,7 +763945,7 @@
     "flag_condition": "not b2_r6_tm56",
     "event": {
      "lines": [
-      "You found TM56 Fling!"
+      "You found TM043 Fling!"
      ],
      "gift_item": {
       "TM043": 1
@@ -784175,7 +784216,7 @@
     "flag_condition": "not b2_gc_tm80",
     "event": {
      "lines": [
-      "You found TM80 Rock Slide!"
+      "You found TM086 Rock Slide!"
      ],
      "gift_item": {
       "TM086": 1
@@ -791012,7 +791053,7 @@
     "flag_condition": "not b2_mist_tm58",
     "event": {
      "lines": [
-      "You found TM58 Sky Drop!"
+      "You found TM278 Sky Drop!"
      ],
      "gift_item": {
       "TM278": 1
@@ -791043,7 +791084,7 @@
      "lines": [
       "Oh! You found our treasure!",
       "Just kidding! Our Ducklett already knows Aerial Ace. So you can have this TM!",
-      "{player_name} received TM40 Aerial Ace!",
+      "{player_name} received TM027 Aerial Ace!",
       "Aerial Ace always hits its target! We hope it comes in handy!"
      ],
      "gift_item": {
@@ -800456,7 +800497,7 @@
     "flag_condition": "not b2_r7_tm81",
     "event": {
      "lines": [
-      "You found TM81 X-Scissor!"
+      "You found TM105 X-Scissor!"
      ],
      "gift_item": {
       "TM105": 1
@@ -804196,7 +804237,7 @@
     "flag_condition": "not b2_ct_tm61",
     "event": {
      "lines": [
-      "You found TM61 Will-O-Wisp!"
+      "You found TM107 Will-O-Wisp!"
      ],
      "gift_item": {
       "TM107": 1
@@ -804389,7 +804430,7 @@
     "flag_condition": "not b2_ct_tm65",
     "event": {
      "lines": [
-      "You found TM65 Shadow Claw!"
+      "You found TM061 Shadow Claw!"
      ],
      "gift_item": {
       "TM061": 1

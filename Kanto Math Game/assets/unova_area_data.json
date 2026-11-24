@@ -443,7 +443,7 @@
     ],
     "unova_mom_newstart_3": ["Mom: Your father traveled Unova when he was young, too.", "Mom: He always said the best adventures start with a single step out the door."],
     "unova_mom_home_1": [
-      "Mom: {player_name}! Our Nuvema house has a view of the ocean!",
+      "Mom: {player_name}! Our Aspertia house looks out over the whole city!",
       "Mom: Your Sinnoh championship paid for every brick. I made sure of it.",
       "Mom: Five regions, five homes. My scrapbook is getting heavy!"
     ],
@@ -1782,7 +1782,8 @@
           16,
           18
         ]
-      }
+      },
+      "level": 17
     },
     "RELIC_PASSAGE_MIDDLE": {
       "area_type": "dungeon",
@@ -2189,7 +2190,8 @@
           30
         ]
       },
-      "surf_pool_percentages": "RELIC_PASSAGE_MIDDLE_SURF_PERCENTAGES"
+      "surf_pool_percentages": "RELIC_PASSAGE_MIDDLE_SURF_PERCENTAGES",
+      "level": 28
     },
     "RELIC_PASSAGE_NORTH": {
       "area_type": "dungeon",
@@ -2430,7 +2432,8 @@
           27,
           30
         ]
-      }
+      },
+      "level": 28
     },
     "ASPERTIA_CITY": {
       "area_type": "town",
@@ -3682,7 +3685,8 @@
           ]
         }
       },
-      "surf_pool_percentages": "FLOCCESY_RANCH_OUTSIDE_SURF_PERCENTAGES"
+      "surf_pool_percentages": "FLOCCESY_RANCH_OUTSIDE_SURF_PERCENTAGES",
+      "level": 5
     },
     "UNOVA_ROUTE_20": {
       "area_type": "wild_route",
@@ -6208,7 +6212,8 @@
           13
         ]
       },
-      "surf_pool_percentages": "VIRBANK_COMPLEX_OUTSIDE_SURF_PERCENTAGES"
+      "surf_pool_percentages": "VIRBANK_COMPLEX_OUTSIDE_SURF_PERCENTAGES",
+      "level": 11
     },
     "VIRBANK_CITY": {
       "area_type": "town",
@@ -7335,7 +7340,9 @@
             "player_lost": [
               "Better luck next time!"
             ]
-          }
+          },
+          "name": "Bianca",
+          "sprite": "bianca.png"
         },
         "condition": [
           "has_bolt_badge",
@@ -9183,7 +9190,8 @@
           15,
           18
         ]
-      }
+      },
+      "level": 16
     },
     "DESERT_RESORT": {
       "area_type": "dungeon",
@@ -9539,7 +9547,8 @@
           18,
           21
         ]
-      }
+      },
+      "level": 19
     },
     "RELIC_CASTLE": {
       "area_type": "dungeon",
@@ -9766,7 +9775,8 @@
           27,
           30
         ]
-      }
+      },
+      "level": 28
     },
     "COLD_STORAGE": {
       "area_type": "dungeon",
@@ -10111,7 +10121,8 @@
       "battle_type": "grass",
       "min_rounds": 0,
       "route_menu": [],
-      "trainer_pool": []
+      "trainer_pool": [],
+      "level": 25
     },
     "CHARGESTONE_CAVE_B1F": {
       "area_type": "dungeon",
@@ -10356,7 +10367,8 @@
           31
         ]
       },
-      "phenomena": "dust"
+      "phenomena": "dust",
+      "level": 29
     },
     "CHARGESTONE_CAVE_B2F": {
       "area_type": "dungeon",
@@ -10621,7 +10633,8 @@
           31
         ]
       },
-      "phenomena": "dust"
+      "phenomena": "dust",
+      "level": 29
     },
     "MISTRALTON_CAVE": {
       "area_type": "dungeon",
@@ -11073,7 +11086,8 @@
           30
         ]
       },
-      "phenomena": "dust"
+      "phenomena": "dust",
+      "level": 28
     },
     "GUIDANCE_CHAMBER": {
       "area_type": "dungeon",
@@ -11266,7 +11280,8 @@
           30
         ]
       },
-      "phenomena": "dust"
+      "phenomena": "dust",
+      "level": 28
     },
     "TWIST_MOUNTAIN": {
       "area_type": "dungeon",
@@ -11311,7 +11326,8 @@
       "battle_type": "grass",
       "min_rounds": 0,
       "route_menu": [],
-      "trainer_pool": []
+      "trainer_pool": [],
+      "level": 30
     },
     "MOOR_OF_ICIRRUS": {
       "area_type": "dungeon",
@@ -12579,7 +12595,9 @@
               "player_lost": [
                 "Better luck next time!"
               ]
-            }
+            },
+            "name": "Cheren",
+            "sprite": "cheren.png"
           },
           "condition": [
             "b2_nimbasa_plasma",
@@ -12639,7 +12657,9 @@
               "player_lost": [
                 "Bianca: Yay! We did it!"
               ]
-            }
+            },
+            "name": "Bianca",
+            "sprite": "bianca.png"
           },
           "condition": [
             "b2_nimbasa_plasma",
@@ -16270,7 +16290,8 @@
           30,
           33
         ]
-      }
+      },
+      "level": 31
     },
     "UNOVA_ROUTE_8": {
       "area_type": "wild_route",
@@ -17793,7 +17814,8 @@
           27,
           30
         ]
-      }
+      },
+      "level": 28
     },
     "CELESTIAL_TOWER_3F": {
       "area_type": "dungeon",
@@ -17962,7 +17984,8 @@
           28,
           31
         ]
-      }
+      },
+      "level": 29
     },
     "CELESTIAL_TOWER_4F": {
       "area_type": "dungeon",
@@ -18116,7 +18139,8 @@
           29,
           32
         ]
-      }
+      },
+      "level": 30
     },
     "CELESTIAL_TOWER_ROOF": {
       "area_type": "dungeon",
@@ -18222,7 +18246,8 @@
           30,
           33
         ]
-      }
+      },
+      "level": 31
     },
     "DRAGONSPIRAL_SUMMIT": {
       "area_type": "dungeon",
@@ -18280,7 +18305,8 @@
       "min_rounds": 0,
       "trainer_pool": [],
       "route_menu": [],
-      "next_area": "CASTELIA_CITY"
+      "next_area": "CASTELIA_CITY",
+      "level": 15
     },
     "P2_LABORATORY": {
       "area_type": "dungeon",
@@ -18303,7 +18329,32 @@
       "wild_pool_percentages": "UNOVA_P2_LAB_PERCENTAGES",
         "area_boss": {"id": 649, "name": "Genesect", "victory_flag": "P2_LABORATORY_boss_defeated", "lines": ["Deep in the lab, a capsule cracks open. An ancient Pokemon, rebuilt by Team Plasma, steps out...", "Genesect fires up its cannon!"], "rewards": {"BURN_DRIVE": 1, "DOUSE_DRIVE": 1, "CHILL_DRIVE": 1, "SHOCK_DRIVE": 1}}
     },
-        "SKYARROW_BRIDGE": {"area_type": "dungeon", "route_name": "Skyarrow Bridge", "region": "UNOVA", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "PINWHEEL FOREST", "action": "EXIT", "target": "PINWHEEL_FOREST", "condition": "can_exit", "color": "RED"}, {"text": "CASTELIA CITY", "action": "EXIT", "target": "CASTELIA_CITY", "condition": "can_exit", "color": "RED"}], "next_area": "CASTELIA_CITY"},
+        "SKYARROW_BRIDGE": {
+          "area_type": "dungeon",
+          "route_name": "Skyarrow Bridge",
+          "region": "UNOVA",
+          "battle_type": "cave",
+          "min_rounds": 0,
+          "trainer_pool": [],
+          "route_menu": [
+            {
+              "text": "PINWHEEL FOREST",
+              "action": "EXIT",
+              "target": "PINWHEEL_FOREST",
+              "condition": "can_exit",
+              "color": "RED"
+            },
+            {
+              "text": "CASTELIA CITY",
+              "action": "EXIT",
+              "target": "CASTELIA_CITY",
+              "condition": "can_exit",
+              "color": "RED"
+            }
+          ],
+          "next_area": "CASTELIA_CITY",
+          "level": 15
+        },
     "DRIFTVEIL_DRAWBRIDGE": {
       "area_type": "dungeon",
       "route_name": "Driftveil Drawbridge",
@@ -18428,7 +18479,8 @@
               "text": "Plasma Frigate",
               "target_area": "PLASMA_FRIGATE"
             }
-          ]
+          ],
+          "level": 25
         },
         "PLEDGE_GROVE": {
           "area_type": "dungeon",
@@ -18459,7 +18511,8 @@
               "condition": "can_exit"
             }
           ],
-          "next_area": "FLOCCESY_TOWN"
+          "next_area": "FLOCCESY_TOWN",
+          "level": 7
         },
         "ABYSSAL_RUINS": {"area_type": "dungeon", "route_name": "Abyssal Ruins", "region": "UNOVA", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "SEARCH THE RUINS", "action": "EVENT", "color": "GOLD", "flag_condition": "not abyssal_ruins_searched", "event": {"lines": ["You dive deep into the sunken ruins. Strange carvings cover the walls...", "Something glitters in the silt!"], "gift_item": {"RARE_CANDY": 2}, "flag": "abyssal_ruins_searched"}}, {"text": "SURFACE", "action": "EXIT", "target": "UNDELLA_BAY", "condition": "can_exit", "color": "RED"}], "next_area": "UNDELLA_BAY"},
         "CAVE_OF_BEING": {"area_type": "dungeon", "route_name": "Cave of Being", "region": "UNOVA", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "SEEK UXIE", "action": "BOSS", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not cave_of_being_uxie", "boss": {"id": 480, "name": "Uxie", "victory_flag": "cave_of_being_uxie", "lines": ["Uxie appears!"]}}, {"text": "SEEK MESPRIT", "action": "BOSS", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not cave_of_being_mesprit", "boss": {"id": 481, "name": "Mesprit", "victory_flag": "cave_of_being_mesprit", "lines": ["Mesprit appears!"]}}, {"text": "SEEK AZELF", "action": "BOSS", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not cave_of_being_azelf", "boss": {"id": 482, "name": "Azelf", "victory_flag": "cave_of_being_azelf", "lines": ["Azelf appears!"]}}, {"text": "ROUTE 20", "action": "EXIT", "target": "UNOVA_ROUTE_20", "condition": "can_exit", "color": "RED"}], "next_area": "UNOVA_ROUTE_20"},
@@ -18482,7 +18535,8 @@
           ],
           "explore_options": [],
           "trainer_pool": [],
-          "on_enter_event": null
+          "on_enter_event": null,
+          "level": 12
         },
         "JOIN_AVENUE": {
           "area_type": "town",
@@ -18502,9 +18556,19 @@
           ],
           "explore_options": [],
           "trainer_pool": [],
-          "on_enter_event": null
+          "on_enter_event": null,
+          "level": 18
         },
-        "ANVILLE_TOWN": {"area_type": "town", "route_name": "Anville Town", "region": "UNOVA", "has_gym": false, "trainer_encounter_rate": 0, "trainer_pool": [], "on_enter_event": null},
+        "ANVILLE_TOWN": {
+          "area_type": "town",
+          "route_name": "Anville Town",
+          "region": "UNOVA",
+          "has_gym": false,
+          "trainer_encounter_rate": 0,
+          "trainer_pool": [],
+          "on_enter_event": null,
+          "level": 20
+        },
         "ENTRALINK": {"area_type": "town", "route_name": "Entralink", "region": "UNOVA", "has_gym": false, "trainer_encounter_rate": 0, "travel_options": [{"text": "Back to Nuvema Town", "target_area": "NUVEMA_TOWN"}], "explore_options": [{"text": "Rest in the Dream Forest", "action": "HEAL"}, {"text": "Listen to the Entree Forest", "action": "EVENT", "event": {"lines": ["Pokémon from dreams drift between the trees... then fade, smiling."]}}], "trainer_pool": [], "on_enter_event": null}
     },
   "HIDDEN_GROTTOES": [
@@ -18553,13 +18617,13 @@
     {"id": "b2_m20", "type": "MAIN", "title": "The City of Lights", "description": "Nimbasa City is north through Join Avenue. Its Gym Leader, Elesa, is a famous model. Find the Gym in the amusement park, east of the city.", "condition": {"required_region": "UNOVA", "flag": "b2_colress_route4", "flag_not": "b2_nimbasa_gym_out"}, "completed_flag": "b2_nimbasa_gym_out", "target": "NIMBASA_CITY", "steps": [{"area": "NIMBASA_CITY", "room": "park", "at": [71, 12], "label": "The Gym", "done": "b2_nimbasa_gym_out"}]},
     {"id": "b2_m21", "type": "MAIN", "title": "The Leader Is Out", "description": "Elesa isn't at her Gym. The guide says she went to the roller coaster building by the park's entrance.", "condition": {"required_region": "UNOVA", "flag": "b2_nimbasa_gym_out", "flag_not": "b2_elesa_coaster"}, "completed_flag": "b2_elesa_coaster", "target": "NIMBASA_CITY"},
     {"id": "b2_m22", "type": "MAIN", "title": "Elesa's Runway", "description": "Elesa is back at the Nimbasa Gym, east of the Ferris wheel. Beat the Trainers on the catwalk, then Elesa.", "condition": {"required_region": "UNOVA", "flag": "b2_elesa_coaster", "flag_not": "b2_bolt_badge"}, "completed_badge": "BOLT", "completed_flag": "b2_bolt_badge", "target": "NIMBASA_CITY"},
-    {"id": "b2_m23", "type": "MAIN", "title": "Trouble at Big Stadium", "description": "Hugh is shouting at Team Plasma outside Big Stadium, in the west of Nimbasa. He could use some help.", "condition": {"required_region": "UNOVA", "flag": "b2_bolt_badge", "flag_not": "b2_nimbasa_plasma"}, "completed_flag": "b2_nimbasa_plasma", "target": "NIMBASA_CITY"},
+    {"id": "b2_m23", "type": "MAIN", "title": "Trouble at Big Stadium", "description": "{rival_name} is shouting at Team Plasma outside Big Stadium, in the west of Nimbasa. He could use some help.", "condition": {"required_region": "UNOVA", "flag": "b2_bolt_badge", "flag_not": "b2_nimbasa_plasma"}, "completed_flag": "b2_nimbasa_plasma", "target": "NIMBASA_CITY"},
     {"id": "b2_m24", "type": "MAIN", "title": "West to Route 5", "description": "The road to Driftveil runs west through Nimbasa's gate, along Route 5 to the drawbridge.", "condition": {"required_region": "UNOVA", "flag": "b2_nimbasa_plasma", "flag_not": "b2_charles"}, "completed_flag": "b2_charles", "target": "UNOVA_ROUTE_5"},
     {"id": "b2_m25", "type": "MAIN", "title": "Over the Drawbridge", "description": "With the drawbridge lowered, Driftveil City waits on the far side of the river, and its Gym Leader Clay with it.", "condition": {"required_region": "UNOVA", "flag": "b2_charles", "flag_not": "visited_DRIFTVEIL_CITY"}, "completed_flag": "visited_DRIFTVEIL_CITY", "target": "DRIFTVEIL_CITY"},
     {"id": "b2_m26", "type": "MAIN", "title": "Team Plasma, Old and New", "description": "A former member of Team Plasma said their old base is on the hill north of the Gym. What are they up to?", "condition": {"required_region": "UNOVA", "flag": "visited_DRIFTVEIL_CITY", "flag_not": "b2_rood_talk"}, "completed_flag": "b2_rood_talk", "target": "DRIFTVEIL_CITY", "steps": [{"area": "DRIFTVEIL_CITY", "at": [37, 13], "label": "The house on the hill", "done": "b2_rood_talk"}]},
     {"id": "b2_m27", "type": "MAIN", "title": "Down the Mine", "description": "Clay's Gym is a dark mine. Ride the conveyor belts from platform to platform and find the Underground Boss.", "condition": {"required_region": "UNOVA", "flag": "b2_rood_talk", "flag_not": "b2_quake_badge"}, "completed_badge": "QUAKE", "completed_flag": "b2_quake_badge", "target": "DRIFTVEIL_CITY"},
     {"id": "b2_m28", "type": "MAIN", "title": "The World Tournament", "description": "Clay invited you to the Pokemon World Tournament, south of Driftveil. Trainers from all over the world compete there.", "condition": {"required_region": "UNOVA", "flag": "b2_quake_badge", "flag_not": "b2_pwt_driftveil_won"}, "completed_flag": "b2_pwt_driftveil_won", "target": "DRIFTVEIL_CITY"},
-    {"id": "b2_m29", "type": "MAIN", "title": "Aboard the Plasma Frigate", "description": "Team Plasma Grunts ran past the World Tournament to a ship at the pier. Hugh's gone after them. Follow him!", "condition": {"required_region": "UNOVA", "flag": "b2_pwt_driftveil_won", "flag_not": "b2_frigate_done"}, "completed_flag": "b2_frigate_done", "target": "PWT", "steps": [{"area": "PWT", "at": [37, 45], "label": "The ship at the pier", "done": "b2_frigate_done"}]},
+    {"id": "b2_m29", "type": "MAIN", "title": "Aboard the Plasma Frigate", "description": "Team Plasma Grunts ran past the World Tournament to a ship at the pier. {rival_name}'s gone after them. Follow him!", "condition": {"required_region": "UNOVA", "flag": "b2_pwt_driftveil_won", "flag_not": "b2_frigate_done"}, "completed_flag": "b2_frigate_done", "target": "PWT", "steps": [{"area": "PWT", "at": [37, 45], "label": "The ship at the pier", "done": "b2_frigate_done"}]},
     {"id": "b2_m30", "type": "MAIN", "title": "The Cold Snap", "description": "Cheren went ahead to Route 6. Something about the weather has him worried. Find him at the Season Research Lab.", "condition": {"required_region": "UNOVA", "flag": "b2_frigate_done", "flag_not": "b2_r6_surf"}, "completed_flag": "b2_r6_surf", "target": "UNOVA_ROUTE_6", "steps": [{"area": "UNOVA_ROUTE_6", "at": [39, 17], "label": "The Season Research Lab", "done": "b2_r6_surf"}]},
     {"id": "b2_m31", "type": "MAIN", "title": "The Charged Stones", "description": "Chargestone Cave's floating stones crackle with power. Mistralton City and its Gym lie on the far side.", "condition": {"required_region": "UNOVA", "flag": "b2_r6_surf", "flag_not": "visited_MISTRALTON_CITY"}, "completed_flag": "visited_MISTRALTON_CITY", "target": "CHARGESTONE_CAVE"},
     {"id": "b2_m32", "type": "MAIN", "title": "The Wind Tunnel", "description": "Skyla, Mistralton's pilot and Gym Leader, runs her Gym in an aircraft hangar. Mind the turbines!", "condition": {"required_region": "UNOVA", "flag": "visited_MISTRALTON_CITY", "flag_not": "b2_jet_badge"}, "completed_flag": "b2_jet_badge", "target": "MISTRALTON_CITY"},
@@ -18590,7 +18654,7 @@
     {"id": "unova_s3", "type": "SIDE", "title": "The Cavern Pokémon", "description": "Terrakion, another of the Swords of Justice, guards a hidden cave on Victory Road.", "condition": {"required_region": "UNOVA", "region_badges_min": 8, "flag_not": "VICTORY_ROAD_UNOVA_boss_defeated"}, "completed_flag": "VICTORY_ROAD_UNOVA_boss_defeated", "target": "VICTORY_ROAD_UNOVA", "reward": "Terrakion"},
     {"id": "unova_s4", "type": "SIDE", "title": "The Grassland Pokémon", "description": "Virizion, the last of the Swords of Justice, hides on Route 22, west of Opelucid City.", "condition": {"required_region": "UNOVA", "region_badges_min": 8, "flag_not": "UNOVA_ROUTE_22_boss_defeated"}, "completed_flag": "UNOVA_ROUTE_22_boss_defeated", "target": "UNOVA_ROUTE_22", "reward": "Virizion"},
     {"id": "unova_s5", "type": "SIDE", "title": "The Colt Pokémon", "description": "With all three Swords of Justice met, young Keldeo appears in the Moor of Icirrus.", "condition": {"required_region": "UNOVA", "flag": ["MISTRALTON_CAVE_boss_defeated", "VICTORY_ROAD_UNOVA_boss_defeated", "UNOVA_ROUTE_22_boss_defeated"], "flag_not": "MOOR_OF_ICIRRUS_boss_defeated"}, "completed_flag": "MOOR_OF_ICIRRUS_boss_defeated", "target": "MOOR_OF_ICIRRUS", "reward": "Keldeo"},
-    {"id": "unova_s6", "type": "SIDE", "title": "The Ancient Sun", "description": "Deep inside Relic Castle, Volcarona sleeps. Long ago, people said it took the sun's place.", "condition": {"required_region": "UNOVA", "visited": "RELIC_CASTLE", "flag_not": ["RELIC_CASTLE_boss_defeated", "b2_mom_talk"]}, "completed_flag": "RELIC_CASTLE_boss_defeated", "target": "RELIC_CASTLE", "reward": "Volcarona"},
+    {"id": "unova_s6", "type": "SIDE", "title": "The Ancient Sun", "description": "Deep inside Relic Castle, Volcarona sleeps. Long ago, people said it took the sun's place.", "condition": {"required_region": "UNOVA", "visited": "RELIC_CASTLE", "flag_not": ["b2_volcarona", "b2_mom_talk"]}, "completed_flag": "b2_volcarona", "target": "RELIC_CASTLE", "reward": "Volcarona"},
     {"id": "unova_s7", "type": "SIDE", "title": "The Other Dragon", "description": "N's legendary dragon has left. Its partner still waits at Dragonspiral Tower.", "condition": {"required_region": "UNOVA", "flag": "beat_unova_champion", "flag_not": "DRAGONSPIRAL_TOWER_boss_defeated"}, "completed_flag": "DRAGONSPIRAL_TOWER_boss_defeated", "target": "DRAGONSPIRAL_TOWER", "reward": "A legendary dragon"},
     {"id": "unova_s8", "type": "SIDE", "title": "The Boundary Pokémon", "description": "Lacunosa Town's elder tells of a monster in the Giant Chasm. Find Kyurem in the cold.", "condition": {"required_region": "UNOVA", "flag": "beat_unova_champion", "flag_not": "GIANT_CHASM_boss_defeated"}, "completed_flag": "GIANT_CHASM_boss_defeated", "target": "GIANT_CHASM", "reward": "Kyurem"},
     {"id": "unova_s9", "type": "SIDE", "title": "Storm and Thunder", "description": "Strange storms are blowing on Routes 7 and 8. Tornadus and Thundurus are behind them!", "condition": {"required_region": "UNOVA", "flag": "beat_unova_champion", "flag_not": ["UNOVA_ROUTE_7_boss_defeated", "UNOVA_ROUTE_8_boss_defeated"]}, "completed_flag": "UNOVA_ROUTE_8_boss_defeated", "target": "UNOVA_ROUTE_7", "reward": "Tornadus + Thundurus"},
