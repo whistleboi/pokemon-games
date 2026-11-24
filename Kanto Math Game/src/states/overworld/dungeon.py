@@ -5525,6 +5525,7 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
         surf = self._can_surf()
         _hms = __import__("src.world.hms", fromlist=["field", "usable"])
         clears = {k for k, on in (("falls", _hms.field(story, "HM_WATERFALL")), ("cut", _hms.usable(story, "HM_CUT")),
+                                  ("whirl", _hms.field(story, "HM_WHIRLPOOL")),   # (a whirlpool you can clear: the way on, as a waterfall is; 11-23 Johto's Route 41 to the Whirl Islands)
                                   ("crack", _hms.field(story, "HM_ROCK_SMASH") and not art.get("smash_wild")),
                                   ("climb", story.inventory.get("HM_ROCK_CLIMB", 0) > 0 or story.inventory.get("CLIMB_KIT", 0) > 0),
                                   ("slope", story.inventory.get("BICYCLE", 0) > 0), ("stones", story.inventory.get("BICYCLE", 0) > 0)) if on}
