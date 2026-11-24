@@ -1,3 +1,9 @@
+# Sevii is walked (legacy menu clear, Step 5, 11-24): each place opens its map; run() walks up to whoever it is, travel()
+# reads the ways on the map opens now (its exits, the harbour's boats), state_for() is the map. sub_helpers' menu versions
+# stay for the menu regions' suites.
+exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())
+state_for, run, travel = walk_state_for, walk_run, walk_travel
+story.enter_region("KANTO")
 print("1) Getting there")
 story.badges = {"KANTO": ["BOULDER", "CASCADE", "THUNDER", "RAINBOW", "SOUL", "MARSH"]}
 story.story_flags, story.inventory = {"received_starter_kanto": True, "received_pokedex_kanto": True}, {}  # past Oak's Parcel
@@ -74,7 +80,7 @@ check(story.inventory.get("RAINBOW_PASS") == 1, "Celio gives the Rainbow Pass")
 check("Seagallop to Seven Island" in travel("ONE_ISLAND"), "Rainbow Pass: Islands 4-7")
 run("FOUR_ISLAND", "Lorelei's House")
 run("ICEFALL_CAVE", "STOP TEAM ROCKET")
-check(isinstance(g.current_state, TrainerIntroState) and lineup(battle_of(g.current_state)) == [(110, 38), (24, 38), (52, 38)], "Icefall Cave: Jessie & James (in place of FireRed's Grunt)")
+check(hasattr(battle_of(g.current_state), "opponent_team") and lineup(battle_of(g.current_state)) == [(110, 38), (24, 38), (52, 38)], "Icefall Cave: Jessie & James (in place of FireRed's Grunt)")
 def _wh_open():   # (11-23, K5: the walked way in, Five Isle Meadow's road north - the menu's Five Island shortcut is gone)
     o = opt("FIVE_ISLE_MEADOW", "ROCKET WAREHOUSE")
     return chk(state_for("FIVE_ISLE_MEADOW"))(o.get("condition"))

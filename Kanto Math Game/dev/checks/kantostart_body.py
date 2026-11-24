@@ -15,6 +15,7 @@ def check(c, m):
 
 
 g.data.save = lambda *a, **k: None
+exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())   # (walked region: city() / route() open the maps, 11-24)
 said = []
 
 
@@ -30,12 +31,21 @@ prog = g.loader.area_data["STORY_PROGRESSION"]
 flags = story.story_flags
 
 
+def _arrive():
+    """On the walked map: what arrival says and does, played out up to a battle or a screen (11-24)."""
+    walk_said.clear()
+    walk_play(fight=False, off_map=True)
+    said.extend(walk_said)
+
+
 def city(area):
     story.current_area_key = area
     said.clear()
+    g.walk_town_pos = g.walk_town_exit = g.walk_town_room = None
     s = CityState(g)
     g.states["city"] = s
     g.change_state(s)
+    _arrive()
     return s
 
 
@@ -114,9 +124,13 @@ def arrive(area):
     g.states["play"] = s
     g.change_state(s)
     s.update()
+    _arrive()
+    if walked(g.current_state):   # (on the walked map the rival waits for you: walk up, 11-24)
+        walk_meet(g.current_state, "{rival_name}", fight=False)
     intro = g.current_state  # (only the rival counts: a route's own trainers can also turn up)
-    rival = isinstance(intro, TrainerIntroState) and intro.next_state.trainer_class == "RIVAL"
-    return [p.id for p in intro.next_state.opponent_team] if rival else None
+    b = intro.next_state if isinstance(intro, TrainerIntroState) else intro
+    rival = getattr(b, "trainer_class", None) == "RIVAL"
+    return [p.id for p in b.opponent_team] if rival else None
 
 
 story.badges["KANTO"] = ["BOULDER"]

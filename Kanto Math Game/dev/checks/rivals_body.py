@@ -8,7 +8,7 @@ def check(c, m):
     print(("   ok  " if c else "   FAIL ") + m); fails += 0 if c else 1
 g.player_character = "brendan"
 for region, want in [("KANTO", ["BLUE"]), ("JOHTO", ["SILVER"]), ("HOENN", ["MAY", "BRENDAN"]), ("SINNOH", ["BARRY"]),
-                     ("UNOVA", ["CHEREN", "BIANCA"]), ("KALOS", ["SERENA", "CALEM"]), ("ALOLA", ["HAU"]),
+                     ("UNOVA", ["HUGH"]), ("KALOS", ["SERENA", "CALEM"]), ("ALOLA", ["HAU"]),
                      ("GALAR", ["HOP"]), ("PALDEA", ["NEMONA"])]:
     done = []
     st = RivalSelectionState(g, region=region, on_done=lambda: done.append(1))
@@ -20,7 +20,9 @@ for region, want in [("KANTO", ["BLUE"]), ("JOHTO", ["SILVER"]), ("HOENN", ["MAY
     r = story.region_rivals[region]
     print("     ", region, r["name"], r["character"], r.get("friend_name"), r.get("chosen"))
 check(story.region_rivals["KALOS"]["name"] == "ZED" and story.region_rivals["KALOS"]["friend_name"] == "SHAUNA", "Kalos: typed name, Shauna default")
-check(story.region_rivals["UNOVA"]["friend_name"] == "BIANCA", "Unova: Cheren picked -> Bianca is the friend")
+# (Unova 11-19/11-20: B2W2's Hugh is the rival; BW's Cheren or Bianca a second pick, the friend: the first by default)
+check(story.region_rivals["UNOVA"]["name"] == "HUGH" and story.region_rivals["UNOVA"]["friend_name"] in ("CHEREN", "BIANCA"),
+      f"Unova: Hugh, and Cheren or Bianca the friend ({story.region_rivals['UNOVA'].get('friend_name')})")
 # Arriving in a region with no pick yet asks first.
 story.region_rivals.pop("ALOLA", None)
 story.current_area_key = "IKI_TOWN"
