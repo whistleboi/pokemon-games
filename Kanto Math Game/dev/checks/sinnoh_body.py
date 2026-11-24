@@ -662,8 +662,9 @@ for _key in [k for k, v in _tm.items() if v.get("rooms") and _area.get(k, {}).ge
             continue  # (a door you reach from another side: not this check's business)
         _enter_door(t, _door)
         _want = len(_m["rooms"][_name].get("people", []))
-        if t.room != _name or len(t.people) != _want or not t._open(t.player) or not any(v == "OUT:" + _d or v.startswith("OUT:") for v in t.exits.values()):
-            _bad.append((_name, t.room, len(t.people), _want)); continue
+        _own = [o for o in t.people.values() if not (isinstance(o, dict) and o.get("_partner_of"))]   # (main 11-24: a leader's partner Pokemon beside them)
+        if t.room != _name or len(_own) != _want or not t._open(t.player) or not any(v == "OUT:" + _d or v.startswith("OUT:") for v in t.exits.values()):
+            _bad.append((_name, t.room, len(_own), _want)); continue
         _mat = next(k for k, v in t.exits.items() if v.startswith("OUT:"))
         _back = tuple(int(v) for v in t.exits[_mat][4:].split(","))  # (a building with two doors: out below its main one)
         t._go(None, t.exits[_mat])
