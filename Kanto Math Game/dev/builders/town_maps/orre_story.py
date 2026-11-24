@@ -220,9 +220,12 @@ def _phenac(maps):
 
 SUPER_POTIONS = {"text": "Super Potion ball", "action": "EVENT", "flag_condition": "not orre_phenac_superpotion",
                  "event": {"flag": "orre_phenac_superpotion", "lines": ["You found 3 SUPER POTIONS!"], "gift_item": {"SUPER_POTION": 3}}}
-MART_GIRL = {"text": "Girl", "action": "EVENT", "event": {"lines": [
-    "Girl: You want Poke Balls? You won't find any here. There are hardly any wild Pokemon in Orre, so nobody sells them.",
-    "Girl: Someone at the Outskirt Stand might still have a few."]}}
+MART_GIRL = {"text": "Girl", "action": "EVENT", "event": {"stages": [   # (11-24: the Mart stocks balls from the Snag Machine on)
+    {"requires": ["not:got_snag_machine"], "lines": [
+        "Girl: You want Poke Balls? You won't find any here. There are hardly any wild Pokemon in Orre, so nobody sells them.",
+        "Girl: Someone at the Outskirt Stand might still have a few."]},
+    {"requires": ["got_snag_machine"], "lines": [
+        "Girl: Poke Balls are back on the shelves! Funny - nobody wanted them for years, and now everyone's asking."]}]}}
 
 
 # ================================================================== batch 1: Pyrite (Colosseum parts 3-4; BATCH_1.md)
@@ -760,7 +763,7 @@ SECRETARY = {"text": "Mayor's secretary", "action": "EVENT", "condition": TAKEOV
                  {"requires": ["has_item:MUSIC_DISC"], "flag": "xd_secretary", "take_item": {"MUSIC_DISC": 1},
                   "lines": ["Secretary: A Music Disc? How lovely! ...La la la...",
                             "While she dances, you slip upstairs. The mayor's office is empty. A note lies on the desk:",
-                            "'Justy - Cipher means to take Phenac. They'll wear our faces. I must-' The note stops there. Es Cade is nowhere to be seen.",
+                            "'Justy - Cipher means to take Phenac. They'll wear our faces. I must-' The note stops there. The mayor is nowhere to be seen.",
                             "Secretary: Snooping, are we? Then you've seen too much!"],
                   "battle": T("xd:Story:91", dialogue={"player_won": ["Cipher Peon Pellim: My disguise... Fenton, get the kid!"]})}]}}
 FENTON = _fight("Cipher Peon Fenton", "xd:Story:92", "xd_fenton", "Cipher Peon Fenton: Nobody leaves the mayor's house!",
@@ -1273,13 +1276,13 @@ TOURNAMENTS = {
     "REALGAM_TOWER": (None, None, "colosseum", (5, 10), (5, 7), (5, 3), None, "Cipher's Colosseum"),
 }
 # XD's Realgam Colosseum (R2, Jordan 11-23: the same arena, under XD's name, its own flag): four rounds of four at the disc's
-# Lv 40, open once you reach XD's Snagem Hideout (Mayor Trest's message); rounds at a desk, as XD's Orre Colosseum's.
+# Lv 47 (Part 2's stage; the disc's Lv 40), open once you reach XD's Snagem Hideout (Mayor Trest's message); rounds at a desk, as XD's Orre Colosseum's.
 XD_REALGAM_DESK = {"text": "Realgam Colosseum desk", "action": "EVENT", "condition": "visited_SNAGEM_HIDEOUT", "event": {
     "xd_colosseum": {"rounds": [[T(f"xdrealgam:{r}:{m}", **({"is_boss_battle": True} if m == 4 else {})) for m in range(1, 5)]
                                 for r in range(1, 5)],
                      "cleared": "xd_realgam_cleared", "open": "visited_SNAGEM_HIDEOUT", "all_flag": "xd_realgam_all",
                      "name": "the Realgam Colosseum", "money": [3000, 4000, 5000, 6000]},
-    "lines": ["Clerk: Welcome to the Realgam Colosseum! Four rounds, four battles each. Every team here is Lv 40."]}}
+    "lines": ["Clerk: Welcome to the Realgam Colosseum! Four rounds, four battles each. Every team here is Lv 47."]}}
 RECEPTIONIST_SHEET = "orre_npc_15.png"
 
 
