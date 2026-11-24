@@ -816,6 +816,16 @@ for _f in ("beat_orre_champion", "frontier_otower_wins", "frontier_otower_best")
     story.story_flags.pop(_f, None)
 _bpm.add_bp(story, -(_bpm.bp(story) - _bp0))
 
+# ---- R4 leftovers (11-24): XD's Agate Move Tutor (his 12 moves, sold as TMs too) in Part 2; Orre's music.json for the post-game
+_TMJ = _json.load(open("assets/town_maps.json", encoding="utf-8"))
+_SP = _json.load(open("assets/orre_area_data.json", encoding="utf-8"))["STORY_PROGRESSION"]
+_tut = next((o for o in _SP["AGATE_VILLAGE"]["explore_options"] if o.get("text") == "Move Tutor"), {})
+_mj = _json.load(open("assets/music/orre/music.json", encoding="utf-8"))
+_mok = all(os.path.isfile(os.path.join("assets", "music", "orre", f"{n}.ogg")) for n in _mj["areas"].values())
+check("Move Tutor" in _TMJ["AGATE_VILLAGE"]["rooms"]["house_centre"]["people"] and len((_tut.get("event") or {}).get("tutor", {}).get("choices", [])) == 12
+      and _tut.get("condition") == "orre_part2" and _mok and set(_mj["areas"]) >= {"MARINE_CAVE", "ORRE_BATTLE_FRONTIER", "CONSTRUCTION_LOT"},
+      "R4: Agate's Move Tutor in Part 2 (12 moves, their TMs on sale); the post-game places have Orre's tracks (music.json)")
+
 
 
 g.walk_towns = False

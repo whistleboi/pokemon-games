@@ -76,6 +76,7 @@
     ]
   },
   "figures": {
+    "AGATE_VILLAGE:Move Tutor": {"sheet": "orre_npc_06.png"},
     "ORRE_BATTLE_FRONTIER:Ace Trainer": {
       "sheet": "orre_trainer_ace_trainer.png"
     },
