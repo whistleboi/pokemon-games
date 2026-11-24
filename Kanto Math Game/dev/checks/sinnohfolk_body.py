@@ -323,7 +323,9 @@ for area in [k for k in _SIN if (_tm.get(k) or {}).get("rooms") and _AD.get(k, {
         if inside and mat:
             p.run.player = (mat[0], mat[1] - 1); p.anim = 0
             p.step(0, 1); frames(3)
-            out = p.run.index == 0 and abs(p.run.player[0] - (x + dx)) <= 1 and abs(p.run.player[1] - (y + dy)) <= 1
+            _side = [tuple(int(v) for v in k.split(",")) for k, v in (_tm[area].get("inside") or {}).items() if v == room]
+            out = p.run.index == 0 and (abs(p.run.player[0] - (x + dx)) <= 1 and abs(p.run.player[1] - (y + dy)) <= 1
+                                        or any(abs(p.run.player[0] - a) <= 1 and abs(p.run.player[1] - b) <= 1 for a, b in _side))   # (a wide gate's doors, Route 206's: out by any of them)
         _n += 1
         if not (inside and out):
             _bad.append((area, d, room, inside, out, p.run.index, p.run.player))
