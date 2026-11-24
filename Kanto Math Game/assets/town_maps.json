@@ -247845,7 +247845,14 @@
         1
        ]
       }
-     ]
+     ],
+     "_picture": {
+      "f": "pt_ground/C02R0102.png",
+      "at": [
+       0,
+       2
+      ]
+     }
     }
    },
    "library_3f": {
@@ -248316,7 +248323,14 @@
         1
        ]
       }
-     ]
+     ],
+     "_picture": {
+      "f": "pt_ground/C02R0103.png",
+      "at": [
+       0,
+       1
+      ]
+     }
     }
    },
    "deleter": {
@@ -248347,7 +248361,14 @@
       210,
       220
      ],
-     "_things": {}
+     "_things": {},
+     "_picture": {
+      "f": "pt_ground/C02R0301.png",
+      "at": [
+       0,
+       1
+      ]
+     }
     },
     "people": [
      "Move Deleter"
@@ -322503,7 +322524,7 @@
      "c1.cccc-....+ccccm......-ccccm..mm..mcc.m...m.cccc+..cc",
      "c..cccc......cccc........cccc........cc.......cccc...cc",
      "c........X.....cc1.........cc........cc.m...m.cc.....cc",
-     "c.........X....cc..........cc...X....cc.............1cc",
+     "c..............cc..........cc........cc.............1cc",
      "ccccccccccccccccccccccccccccc........cc..............cc",
      "ccccccccccccccccccccccccccccc........cccccccccccccccccc",
      "ccccccccccccccccccccccccccccc........cccccccccccccccccc",
@@ -322526,8 +322547,6 @@
     "parts": true,
     "trainer_spots": [
      "Galactic Grunt 2",
-     "Commander Saturn",
-     "Cyrus",
      "Galactic Grunt 3",
      "Galactic Grunt 4"
     ],
@@ -327758,6 +327777,13 @@
        98,
        90,
        106
+      ]
+     },
+     "_picture": {
+      "f": "pt_ground/D24R0102.png",
+      "at": [
+       0,
+       0
       ]
      }
     },
