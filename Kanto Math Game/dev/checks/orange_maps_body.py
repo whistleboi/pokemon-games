@@ -58,6 +58,10 @@ def open_map(key, came):
     return g.current_state
 
 
+def _ev1(ev):   # (11-23: Danny's option is the after-title rematch hook now; his first event is its "first")
+    return ev.get("first", ev) if ev.get("world") == "orange_rematch" else ev
+
+
 print("1) every built Orange map")
 for key in BUILT:
     m = _tm[key]
@@ -235,7 +239,7 @@ if "BAY_CAVE" in BUILT:
         _play_event("FUKUHARA_ISLAND", "Nurse Joy")
         check(story.inventory.get("OLD_AMBER") == 1, f"...and Nurse Joy's Old Amber follows with the {fossil.replace('_', ' ').title()}")
 if "MT_NAVEL" in BUILT:
-    _d = next(o for o in _area["MT_NAVEL"]["route_menu"] if o["text"] == "Danny")["event"]["battle"]
+    _d = _ev1(next(o for o in _area["MT_NAVEL"]["route_menu"] if o["text"] == "Danny")["event"])["battle"]
     check(_d["team"] == [74, 101, 67, 123, 31] and _d["levels"] == [30, 30, 32, 32, 35] and _d["badge_reward"] == "SEA_RUBY"
           and _d["rewards"].get("TM135") == 1, f"Danny atop Navel Mountain: 5.7's five (to Nidoqueen 35), the Sea Ruby Badge and TM Ice Beam ({_d['team']})")
     _mt = _tm["MT_NAVEL"]
@@ -310,7 +314,7 @@ if "MT_NAVEL" in BUILT:
     check(_area["MT_NAVEL"].get("weather") == "SNOW", "Navel Mountain is snowy (the whole area)")
     from src.world import seasons as _sea
     check(_sea.area_weather(g, "MT_NAVEL") == "SNOW", "...and battles there start in the snow (Hail / Blizzard)")
-    _dn = next(o for o in _area["MT_NAVEL"]["route_menu"] if o["text"] == "Danny")["event"]["battle"]
+    _dn = _ev1(next(o for o in _area["MT_NAVEL"]["route_menu"] if o["text"] == "Danny")["event"])["battle"]
     check(_dn["sprite"] == "danny_oi.png" and _os.path.isfile("assets/sprites/trainers/danny_oi.png"), "Danny: 5.7's own battle picture (trainer pic 119)")
     check(not {"37", "27", "41", "42"} & set(g.loader.area_data["ORANGE_MT_NAVEL_PERCENTAGES"]), "Navel Mountain: the old menu extras (Vulpix, Sandshrew, Zubat, Golbat) dropped")
 if "SEVEN_GRAPEFRUITS" in BUILT:

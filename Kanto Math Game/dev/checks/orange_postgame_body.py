@@ -364,6 +364,29 @@ drake = next((tm for tm in TEAMS[n0:] if tm and tm[0][0] == 132), None)
 check(drake and drake[-1][1] == max(70, 52 + (boost or 0)),
       f"Pummelo Stadium: Drake again, his Dragonite at max(70, 52 + {boost}) ({drake}; all: {TEAMS[n0:]})")
 
+print("4) Rudy, Luana and Danny battle again after the title (Jordan 11-23; src/world/orange_rematch.py): 5.7's team at + the boost")
+story.story_flags.update({"orange_rudy_outside": True, "orange_rudy_flew": True, "orange_rudy_badge": True, "orange_rudy_down": True,
+                          "orange_luana_met": True, "orange_luana_hotel": True, "orange_luana_badge": True,
+                          "orange_danny_met": True, "orange_danny_badge": True})
+for area, came, room, who, first_id, first_lv in (("TROVITA_ISLAND", "ORANGE_ROUTE_65", "gym", "Rudy  ", 125, 40),
+                                                  ("KUMQUAT_ISLAND", "ORANGE_ROUTE_69", "arena", "Luana  ", 105, 46),
+                                                  ("MT_NAVEL", "NAVEL_ISLAND", None, "Danny", None, None)):
+    story.story_flags["beat_orange_champion"] = False
+    ace()
+    n0 = len(TEAMS)
+    st = place(area, came) if room is None else town(area, came, room)
+    w0 = meet(st, who)
+    no_fight = len(TEAMS) == n0
+    story.story_flags["beat_orange_champion"] = True
+    ace()
+    st = place(area, came) if room is None else town(area, came, room)
+    w = meet(st, who)
+    tm = TEAMS[-1] if len(TEAMS) > n0 else None
+    want = [lv + boost for lv in (next((o for o in (_P[area].get("explore_options") or []) + (_P[area].get("route_menu") or [])
+                                       if o.get("text") == who), {}).get("event", {}).get("rematch", {}).get("levels") or [])]
+    check(no_fight and tm is not None and [lv for _i, lv in tm] == want,
+          f"{area}: before the title {who.strip()} only talks ({(w0 or [])[:1]}); after it a rematch at + {boost} ({tm}, want {want}) ({(w or [])[:1]})")
+
 story.story_flags.clear(); story.story_flags.update(_flags0)
 story.inventory.clear(); story.inventory.update(_inv0)
 story.player_team, story.money = _team0, _money0
