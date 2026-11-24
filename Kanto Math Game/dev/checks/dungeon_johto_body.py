@@ -930,6 +930,25 @@ check(_kroom == "kurt" and story.story_flags.get("kurt_examined_gs_ball") and st
 story.story_flags = _fl1
 story.inventory.pop("GS_BALL", None)
 g.walk_town_pos = g.walk_town_room = None
+# the Journal's two Unown side missions end (Dev Map clean-johto-journal-unown-missions)
+_fl2, _inv2, _pc2, _tm2 = dict(story.story_flags), dict(story.inventory), list(story.pc_pokemon), list(story.player_team)
+story.current_area_key = "RUINS_OF_ALPH"
+story.story_flags["visited_RUINS_OF_ALPH"] = True
+story.story_flags.pop("got_unown_report", None); story.story_flags.pop("unown_merged", None)
+story.inventory.pop("UNOWN_REPORT", None)
+story.pc_pokemon = [p for p in story.pc_pokemon if p and p.id != 201]
+story.player_team = [p for p in story.player_team if p and p.id != 201] or [mk(4)]
+_ids = lambda: {m["id"] for m in story.get_active_missions()}
+_c1_open = "johto_c1" in _ids() and "johto_s1" in _ids()
+story.sync_key_items()   # (the Report on your first visit, as before - and now its flag)
+_s1_done = story.story_flags.get("got_unown_report") and "johto_s1" not in _ids()
+for _f in "abcde":
+    _u = mk(201); _u.form = _f; story.pc_pokemon.append(_u)
+_c1_done = "johto_c1" not in _ids()
+check(_c1_open and _s1_done and _c1_done,
+      f"the Journal's Unown missions end: 'Ruins of Alph' once the Unown Report is yours ({_s1_done}), "
+      f"'Unown Researcher' with five Unown forms ({_c1_open}, {_c1_done})")
+story.story_flags, story.inventory, story.pc_pokemon, story.player_team = _fl2, _inv2, _pc2, _tm2
 # the Silver League Plateau's one way out (Dev Map clean-johto-main-plateau-victory-road-exit): back down Victory Road
 story.current_area_key, story.last_area_key = "SILVER_LEAGUE_PLATEAU", "JOHTO_VICTORY_ROAD"
 _pl = _CS(g); g.change_state(_pl); _tap_through(_pl)
