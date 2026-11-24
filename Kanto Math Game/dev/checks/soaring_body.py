@@ -225,6 +225,7 @@ check(flags.get("mirage_daily_ready"), "the next day: a new one")
 
 print("== Rock Smash rocks")
 story.inventory["HM_ROCK_SMASH"] = 1
+story.badges["HOENN"] = list(dict.fromkeys(list(story.badges.get("HOENN", [])) + ["DYNAMO"]))   # (Hoenn H5: Rock Smash needs the Dynamo Badge on the map, ORAS)
 st = land("HOENN_MIRAGE_FOREST")
 rocks = [t for t, w in st.run.floor.decor.items() if str(w).startswith("crack:")]
 check(len(rocks) == 3, f"the Mirage Forest's three cracked rocks stand, even with Rock Smash ({len(rocks)})")
