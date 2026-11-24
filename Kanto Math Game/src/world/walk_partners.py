@@ -81,6 +81,18 @@ PARTNERS = {
                "end_exits": [], "end_flag": "b2_reversal_bianca_bye",
                "farewell": [], "gift": {},
                "wait": ["Bianca: Taking a break? I'll wait right here!"]},
+    # (Platinum's Distortion World, 11-24, s_s5_distortion.py: Cynthia walks with you from 1F; on B2F she tells Giratina's legend
+    # and goes on alone - she's met again on B6F and B7F, standing on the map. No wild Pokemon there, so she never battles.)
+    "cynthia": {"name": "Cynthia", "area": "DISTORTION_WORLD", "figure": "Cynthia", "sheet": "pt_champion.png", "sprite": "cynthia.png",
+                "team": [445], "levels": [61],   # Garchomp
+                "join": ["Cynthia: This place... Can you feel it? There are no Pokemon here at all. Time isn't flowing, and space isn't stable.",
+                         "Cynthia: A world where the rules are broken... the Distortion World. Let's find Giratina. We need it to stop the distortion at the Spear Pillar.",
+                         "Cynthia is walking with you."],
+                "chat": ["Cynthia: Stay close. Down is the only way on, I think."],
+                "end_exits": [], "end_floor": 2, "end_flag": None,
+                "farewell": ["Cynthia: The legend of Giratina is all but forgotten. It told of a world on the other side of ours... this world.",
+                             "Cynthia: Why is Giratina here, all alone? ...We don't need to stay together now. Let's each look for the way down."],
+                "gift": {}, "wait": ["Cynthia: I'll wait here for you."]},
 }
 BY_FIGURE = {(p["area"], p["figure"]): k for k, p in PARTNERS.items()}
 

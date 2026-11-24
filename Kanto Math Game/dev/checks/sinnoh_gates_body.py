@@ -392,9 +392,9 @@ guarded("SP2", lambda: (at(late=True, badges=7, flags=["spear_pillar_commanders"
 
 title("DW1", "Distortion World B7F: the way down to Giratina after Cyrus")
 guarded("DW1", lambda: (at(late=True, badges=8, flags=["spear_pillar_commanders", "spear_pillar_resolved", "beat_sinnoh_champion"]),
-                        cross("DW1", "BEFORE", "DISTORTION_WORLD", (6, 44), (6, 43), False, floor=8, what="Cyrus not beaten"),
+                        cross("DW1", "BEFORE", "DISTORTION_WORLD", (6, 44), (6, 43), False, floor=7, what="Cyrus not beaten"),
                         at(late=True, badges=8, flags=["spear_pillar_commanders", "spear_pillar_resolved", "beat_sinnoh_champion", "distortion_world_cleared"]),
-                        cross("DW1", "AFTER", "DISTORTION_WORLD", (6, 44), (6, 43), True, floor=8, what="Cyrus beaten")))
+                        cross("DW1", "AFTER", "DISTORTION_WORLD", (6, 44), (6, 43), True, floor=7, what="Cyrus beaten")))
 
 title("SP3", "Mt. Coronet to the summit: Spear Pillar's floors join up")
 guarded("SP3", lambda: (at(late=True, badges=7), reaches("SP3", "AFTER", "SPEAR_PILLAR", True, "HQ cleared"),
