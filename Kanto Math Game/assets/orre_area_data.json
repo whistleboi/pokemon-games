@@ -22414,6 +22414,7 @@
       "order": 3.5,
       "subtitle": "COLOSSEUM / XD / ORRE",
       "start_area": "OUTSKIRT_STAND",
+      "starting_balls": 0,
       "starter_levels": {"196": 25, "197": 26},
       "starter_moves": {"196": ["CONFUSION", "RETURN", "REFLECT", "HELPING-HAND"], "197": ["BITE", "SECRET-POWER", "TAUNT", "SNATCH"]},
       "dex_extra": [],
