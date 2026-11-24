@@ -836,8 +836,8 @@ t = town("ETERNA_CITY", "SINNOH_ROUTE_211")
 _cc = next((s for s, o in t._people().items() if str(o.get("text")) == "Cynthia "), None)
 if _cc:
     t._talk(_cc); _drive(t, 300, lambda: not getattr(t, "npc_active", False))
-check(_cc == (51, 8) and story.story_flags.get("received_hm_cut"),
-      f"Eterna: with the Forest Badge, Cynthia outside the Galactic building talks about Cut (\"Cynthia's Gift\" done) ({_cc})")
+check(_cc == (51, 10) and story.story_flags.get("received_hm_cut") and story.inventory.get("HM_CUT"),   # (outside the yard's trees: she gives Cut, 11-24)
+      f"Eterna: with the Forest Badge, Cynthia outside the Galactic building gives HM Cut (\"Cynthia's Gift\" done) ({_cc})")
 story.badges["SINNOH"] = _fb
 story.story_flags["galactic_eterna_cleared"] = True; story.story_flags.pop("sinnoh_cynthia_egg", None)
 t = town("ETERNA_CITY", "SINNOH_ROUTE_211")
