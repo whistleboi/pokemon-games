@@ -370,23 +370,9 @@
               331
             ],
             "levels": [
-              24,
-              23,
-              23
-            ],
-            "team_moves": [
-              [
-                "SURF",
-                "TACKLE"
-              ],
-              [
-                "ASTONISH",
-                "LEECH-LIFE"
-              ],
-              [
-                "PIN-MISSILE",
-                "ABSORB"
-              ]
+              10,
+              9,
+              9
             ],
             "double": true,
             "rewards": {
@@ -404,23 +390,9 @@
               252
             ],
             "levels": [
-              24,
-              24,
-              25
-            ],
-            "team_moves": [
-              [
-                "SURF",
-                "TACKLE"
-              ],
-              [
-                "TACKLE",
-                "PECK"
-              ],
-              [
-                "QUICK-ATTACK",
-                "MEGA-DRAIN"
-              ]
+              10,
+              10,
+              11
             ],
             "double": true,
             "rewards": {
@@ -438,23 +410,9 @@
               179
             ],
             "levels": [
-              24,
-              25,
-              24
-            ],
-            "team_moves": [
-              [
-                "SURF",
-                "CLAMP"
-              ],
-              [
-                "SCRATCH",
-                "EMBER"
-              ],
-              [
-                "TACKLE",
-                "SHOCK-WAVE"
-              ]
+              10,
+              11,
+              10
             ],
             "double": true,
             "rewards": {
@@ -473,9 +431,9 @@
               172
             ],
             "levels": [
-              25,
-              25,
-              26
+              11,
+              11,
+              12
             ],
             "rewards": {
               "balls": 10
@@ -490,21 +448,7 @@
               "player_lost": [
                 "So close! Train up and enter the next tournament."
               ]
-            },
-            "team_moves": [
-              [
-                "BUBBLE-BEAM",
-                "TACKLE"
-              ],
-              [
-                "COMET-PUNCH",
-                "SWIFT"
-              ],
-              [
-                "SHOCK-WAVE",
-                "DOUBLE-SLAP"
-              ]
-            ]
+            }
           }
         ],
         "leader": {
@@ -514,40 +458,40 @@
           "is_boss_battle": true,
           "team": [
             351,
-            171,
-            272,
-            121
+            170,
+            270,
+            120
           ],
           "levels": [
-            27,
-            27,
-            28,
-            28
+            12,
+            13,
+            13,
+            14
           ],
           "team_moves": [
             [
-              "WEATHER-BALL",
-              "THUNDERBOLT",
-              "ICE-BEAM",
-              "RAIN-DANCE"
+              "WATER-GUN",
+              "EMBER",
+              "POWDER-SNOW",
+              "TACKLE"
             ],
             [
-              "THUNDERBOLT",
-              "SURF",
-              "CONFUSE-RAY",
-              "PROTECT"
+              "WATER-GUN",
+              "THUNDER-WAVE",
+              "SUPERSONIC",
+              "BUBBLE-BEAM"
             ],
             [
-              "FAKE-OUT",
-              "SURF",
-              "LEECH-SEED",
-              "PROTECT"
+              "WATER-GUN",
+              "ABSORB",
+              "MIST",
+              "GROWL"
             ],
             [
-              "SURF",
-              "ICE-BEAM",
-              "THUNDERBOLT",
-              "PSYCHIC"
+              "WATER-PULSE",
+              "RAPID-SPIN",
+              "HARDEN",
+              "TACKLE"
             ]
           ],
           "team_items": [
@@ -758,18 +702,8 @@
               27
             ],
             "levels": [
-              30,
-              31
-            ],
-            "team_moves": [
-              [
-                "WATER-GUN",
-                "SECRET-POWER"
-              ],
-              [
-                "SCRATCH",
-                "POISON-STING"
-              ]
+              15,
+              16
             ],
             "double": true,
             "rewards": {
@@ -786,18 +720,8 @@
               307
             ],
             "levels": [
-              30,
-              30
-            ],
-            "team_moves": [
-              [
-                "PECK",
-                "LEER"
-              ],
-              [
-                "HIDDEN-POWER",
-                "CONFUSION"
-              ]
+              16,
+              16
             ],
             "double": true,
             "rewards": {
@@ -815,23 +739,9 @@
               37
             ],
             "levels": [
-              30,
-              31,
-              32
-            ],
-            "team_moves": [
-              [
-                "QUICK-ATTACK",
-                "HOWL"
-              ],
-              [
-                "ABSORB",
-                "POISON-STING"
-              ],
-              [
-                "EMBER",
-                "QUICK-ATTACK"
-              ]
+              15,
+              16,
+              17
             ],
             "double": true,
             "rewards": {
@@ -850,31 +760,10 @@
               225
             ],
             "levels": [
-              32,
-              32,
-              31,
-              34
-            ],
-            "team_moves": [
-              [
-                "HEADBUTT",
-                "RAGE",
-                "EMBER",
-                "BITE"
-              ],
-              [
-                "SURF",
-                "PECK",
-                "HORN-ATTACK"
-              ],
-              [
-                "THUNDER-SHOCK",
-                "METAL-SOUND",
-                "SONIC-BOOM"
-              ],
-              [
-                "PRESENT"
-              ]
+              16,
+              16,
+              15,
+              18
             ],
             "double": true,
             "rewards": {
@@ -901,49 +790,49 @@
           "sprite": "orre_leader_duking.png",
           "is_boss_battle": true,
           "team": [
-            68,
-            62,
+            66,
+            60,
             214,
-            308,
-            257
+            307,
+            256
           ],
           "levels": [
-            35,
-            35,
-            36,
-            36,
-            37
+            18,
+            19,
+            20,
+            20,
+            21
           ],
           "team_moves": [
             [
-              "CROSS-CHOP",
-              "ROCK-SLIDE",
-              "EARTHQUAKE",
-              "DYNAMIC-PUNCH"
+              "KARATE-CHOP",
+              "LOW-KICK",
+              "FOCUS-ENERGY",
+              "LEER"
             ],
             [
-              "WATERFALL",
+              "WATER-GUN",
               "HYPNOSIS",
-              "ROCK-SLIDE",
-              "BRICK-BREAK"
+              "DOUBLE-SLAP",
+              "RAIN-DANCE"
             ],
             [
-              "MEGAHORN",
-              "SWORDS-DANCE",
-              "ROCK-SLIDE",
-              "BRICK-BREAK"
+              "HORN-ATTACK",
+              "FURY-ATTACK",
+              "ENDURE",
+              "LEER"
             ],
             [
-              "BRICK-BREAK",
-              "HIGH-JUMP-KICK",
-              "ROCK-SLIDE",
-              "PSYCHIC"
+              "CONFUSION",
+              "DETECT",
+              "MEDITATE",
+              "BIDE"
             ],
             [
-              "BLAZE-KICK",
-              "SKY-UPPERCUT",
-              "SWORDS-DANCE",
-              "ROCK-SLIDE"
+              "DOUBLE-KICK",
+              "EMBER",
+              "PECK",
+              "BULK-UP"
             ]
           ],
           "team_items": [
@@ -2903,57 +2792,57 @@
           "sprite": "orre_leader_blaine_erika.png",
           "is_boss_battle": true,
           "team": [
+            351,
+            44,
+            2,
             103,
-            59,
-            45,
-            3,
             136,
-            351
+            59
           ],
           "levels": [
-            40,
-            40,
-            41,
-            41,
-            42,
-            42
+            21,
+            22,
+            22,
+            23,
+            23,
+            24
           ],
           "team_moves": [
             [
-              "SOLAR-BEAM",
-              "PSYCHIC",
+              "EMBER",
+              "WATER-GUN",
+              "SUNNY-DAY",
+              "HEADBUTT"
+            ],
+            [
+              "MEGA-DRAIN",
+              "ACID",
               "SLEEP-POWDER",
-              "SYNTHESIS"
+              "STUN-SPORE"
             ],
             [
-              "FLAMETHROWER",
-              "EXTREME-SPEED",
-              "CRUNCH",
-              "IRON-TAIL"
-            ],
-            [
+              "RAZOR-LEAF",
+              "LEECH-SEED",
               "SLEEP-POWDER",
-              "SOLAR-BEAM",
-              "SLUDGE-BOMB",
-              "GIGA-DRAIN"
+              "VINE-WHIP"
             ],
             [
-              "SLEEP-POWDER",
-              "SOLAR-BEAM",
-              "SLUDGE-BOMB",
-              "SYNTHESIS"
+              "GIGA-DRAIN",
+              "CONFUSION",
+              "STOMP",
+              "HYPNOSIS"
             ],
             [
-              "FLAMETHROWER",
-              "BITE",
-              "SHADOW-BALL",
+              "EMBER",
+              "QUICK-ATTACK",
+              "SAND-ATTACK",
               "SUNNY-DAY"
             ],
             [
-              "WEATHER-BALL",
-              "SOLAR-BEAM",
-              "SUNNY-DAY",
-              "FLAMETHROWER"
+              "FLAME-WHEEL",
+              "BITE",
+              "TAKE-DOWN",
+              "ROAR"
             ]
           ],
           "team_items": [
@@ -10018,16 +9907,16 @@
             "sprite": "orre_bodybuilder2.png",
             "is_boss_battle": true,
             "team": [
-              229,
+              228,
               215,
               301,
               262
             ],
             "levels": [
-              40,
-              41,
-              41,
-              42
+              22,
+              23,
+              23,
+              24
             ],
             "rewards": {
               "balls": 5
@@ -10040,15 +9929,15 @@
             "is_boss_battle": true,
             "team": [
               200,
-              295,
+              294,
               197,
               202
             ],
             "levels": [
-              41,
-              42,
-              42,
-              43
+              23,
+              24,
+              24,
+              25
             ],
             "rewards": {
               "balls": 5
@@ -10061,15 +9950,15 @@
             "is_boss_battle": true,
             "team": [
               358,
-              356,
-              73,
+              355,
+              72,
               313
             ],
             "levels": [
-              42,
-              43,
-              43,
-              44
+              23,
+              24,
+              24,
+              25
             ],
             "rewards": {
               "balls": 5
@@ -10083,17 +9972,17 @@
           "is_boss_battle": true,
           "team": [
             241,
-            326,
+            325,
             256,
             211,
             286
           ],
           "levels": [
-            44,
-            44,
-            45,
-            46,
-            46
+            25,
+            25,
+            26,
+            27,
+            27
           ],
           "rewards": {
             "balls": 10
@@ -14757,56 +14646,56 @@
           "is_boss_battle": true,
           "team": [
             351,
-            221,
+            220,
             215,
-            362,
-            87,
+            361,
+            86,
             131
           ],
           "levels": [
-            50,
-            50,
-            51,
-            51,
-            52,
-            53
+            26,
+            26,
+            27,
+            27,
+            28,
+            29
           ],
           "team_moves": [
             [
-              "WEATHER-BALL",
-              "BLIZZARD",
+              "POWDER-SNOW",
               "HAIL",
-              "THUNDERBOLT"
+              "HEADBUTT",
+              "WATER-GUN"
             ],
             [
-              "EARTHQUAKE",
-              "BLIZZARD",
-              "ROCK-SLIDE",
-              "PROTECT"
+              "POWDER-SNOW",
+              "MUD-SLAP",
+              "ENDURE",
+              "ROCK-TOMB"
             ],
             [
-              "FEINT-ATTACK",
-              "ICE-BEAM",
+              "ICY-WIND",
               "QUICK-ATTACK",
-              "BRICK-BREAK"
+              "FEINT-ATTACK",
+              "SCREECH"
             ],
             [
-              "BLIZZARD",
-              "CRUNCH",
-              "SHADOW-BALL",
+              "POWDER-SNOW",
+              "BITE",
+              "DOUBLE-TEAM",
               "ICY-WIND"
             ],
             [
-              "ICE-BEAM",
-              "SURF",
-              "REST",
-              "HAIL"
+              "AURORA-BEAM",
+              "HEADBUTT",
+              "ICY-WIND",
+              "GROWL"
             ],
             [
-              "BLIZZARD",
-              "HYDRO-PUMP",
-              "THUNDERBOLT",
-              "PROTECT"
+              "BODY-SLAM",
+              "CONFUSE-RAY",
+              "WATER-PULSE",
+              "ICY-WIND"
             ]
           ],
           "team_items": [
