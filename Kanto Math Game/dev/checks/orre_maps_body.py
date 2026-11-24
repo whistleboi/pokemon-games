@@ -793,6 +793,25 @@ check(_ride and _att and _shape == (3, 50, 2, True, 3, 5) and len(_lc) > 50 and 
       and _rules[0] is None and _rules[1] and _rules[2] and _won2 == (2, 2, 2) and _lost == (0, 2),
       f"S6c: the Battle Frontier by bike after the League - its tower's endless singles (Lv 50), 2-on-2 (doubles), Little Cup (Lv 5, "
       f"{len(_lc)} first forms), the seller, tutor and BP counter; a streak pays BP and keeps its best {_shape} {_won2} {_lost} {_ride} {_att} {_rules}")
+# (11-24, the Journal session's find: the Journal guides by the LAST active MAIN step - Norman and Drake must not be skipped)
+_svb, _svf = list(story.badges.get("ORRE", [])), dict(story.story_flags)
+story.current_area_key = "GATEON_PORT"
+story.badges["ORRE"] = ["PHENAC", "PYRITE", "AGATE", "SNAGEM", "GATEON"]
+for _k in list(story.story_flags):
+    if not _k.startswith("visited_"):
+        story.story_flags.pop(_k)
+story.story_flags.update(orre_part2=True, orre_colosseum_won=True, xd_lair_guards=True, xd_lair_voltage=True, xd_gorigan_beaten=True)
+_j = lambda: ([m["id"] for m in story.get_active_missions() if m["type"] == "MAIN"] or [None])[-1]
+_s1 = _j()
+story.badges["ORRE"].append("KEY_LAIR")
+_s2 = _j()
+story.story_flags.update(xd_master_ball=True, xd_eldes_beaten=True)
+_s3 = _j()
+story.badges["ORRE"].append("CITADARK")
+_s4 = _j()
+check((_s1, _s2, _s3, _s4) == ("orre_m17d", "orre_s5", "orre_m19", "orre_s5b"),
+      f"the Journal guides Norman, then Gale of Darkness, Drake once Eldes falls, then Greevil ({_s1}, {_s2}, {_s3}, {_s4})")
+story.story_flags.clear(); story.story_flags.update(_svf); story.badges["ORRE"] = _svb
 for _f in ("beat_orre_champion", "frontier_otower_wins", "frontier_otower_best"):
     story.story_flags.pop(_f, None)
 _bpm.add_bp(story, -(_bpm.bp(story) - _bp0))
