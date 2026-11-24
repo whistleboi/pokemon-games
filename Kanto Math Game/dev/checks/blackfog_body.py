@@ -26,7 +26,7 @@ for key in HAUNTS:
     st = ow.PlayState(g)
     g.change_state(st)
     opt = next((o for o in prog[key]["route_menu"] if o.get("text") == "THE BLACK FOG"), None)
-    # (the Pokemon Tower's comes as an ambush on its stairs: zone_ambush, 11-02)
+    # (a haunt may still use a stairs ambush, zone_ambush; the Pokemon Tower's is a 4F figure since 11-24, kanto_events checks it walked)
     boss = opt["boss"] if opt else (prog[key].get("zone_ambush") or {}).get("boss")
     if not boss:
         check(False, f"{key}: no Black Fog")

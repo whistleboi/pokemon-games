@@ -3863,6 +3863,7 @@
           "color": "GOLD",
           "zone": "floor_6"
         },
+        {"text": "THE BLACK FOG", "action": "BOSS", "color": "PURPLE", "condition": "has_item:SILPH_SCOPE", "flag_condition": "not black_fog_banished_kanto_pokemon_tower", "zone": "floor_4", "boss": {"id": 10501, "name": "Black Fog", "level": 25, "no_catch": true, "victory_flag": "black_fog_banished_kanto_pokemon_tower", "lines": ["The air turns ice-cold. A black fog pours across the floor...", "Two huge eyes open in the dark. A giant Haunter rises: the Black Fog!", "Long ago people worshipped it as a god. It feeds on dreams. Don't let it get yours!"], "won": ["The Black Fog is too proud to ever be caught.", "It Self-Destructs in a burst of black mist... and is gone.", "But a cold whisper lingers: it will rise again in another haunted place."], "rewards": {"balls": 10, "RARE_CANDY": 3}}},
         {
           "text": "EXIT TOWER",
           "action": "EXIT",
@@ -3963,34 +3964,7 @@
         "Faint crying echoes from above.",
         "You feel like you're being watched.",
         "A voice whispers: 'Go... away...'"
-      ],
-      "zone_ambush": {
-        "chance": 0.25,
-        "boss": {
-          "id": 10501,
-          "name": "Black Fog",
-          "level": 25,
-          "no_catch": true,
-          "victory_flag": "black_fog_banished_kanto_pokemon_tower",
-          "lines": [
-            "The air turns ice-cold. A black fog pours across the floor...",
-            "Two huge eyes open in the dark. A giant Haunter rises: the Black Fog!",
-            "Long ago people worshipped it as a god. It feeds on dreams. Don't let it get yours!"
-          ],
-          "won": [
-            "The Black Fog is too proud to ever be caught.",
-            "It Self-Destructs in a burst of black mist... and is gone.",
-            "But a cold whisper lingers: it will rise again in another haunted place."
-          ],
-          "rewards": {
-            "balls": 10,
-            "RARE_CANDY": 3
-          }
-        },
-        "lines": [
-          "Halfway up the stairs, the lights go out..."
-        ]
-      }
+      ]
     },
 
 
