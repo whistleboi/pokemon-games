@@ -53485,7 +53485,7 @@
    ],
    [
     "Bug-Catching Contest",
-    "Tuesdays, Thursdays and Saturdays."
+    "Every day - one entry a day."
    ]
   ],
   "trainer_spots": [
@@ -64481,7 +64481,7 @@
      "ccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc",
      "cc..cc.c...............cc",
-     "cc.....cccccccccc.X....cc",
+     "cc.....cccccccccc......cc",
      "ccc........ccccccccX..ccc",
      "cccX........N..cccc...ccc",
      "ccc....cccccc.........ccc",
@@ -64516,7 +64516,6 @@
      ]
     },
     "trainer_spots": [
-     "Firebreather Dick",
      "Firebreather Ned",
      "Firebreather Richard"
     ],
@@ -64712,7 +64711,6 @@
    "B1F"
   ],
   "figure_floors": {
-   "Firebreather Dick": 0,
    "Firebreather Ned": 0,
    "ENCOUNTER SUICUNE": 1,
    "ANTIDOTE": 0,
@@ -68614,7 +68612,7 @@
      ]
     }
    },
-   "Talk to Euskine",
+   "Talk to Eusine",
    "Battle Eusine",
    {
     "text": "Man",
@@ -71467,7 +71465,7 @@
    "TTTTTTTTTTTTTTf.!ccc^cccccooooooooooooccccccccccccccccccccccooooooocccccccccc^cccccccc=========>",
    "TTTTTTTTTT.==========N.f..ooooooooooooccccccccccccccccccccccooooooo...c====!===X========!======>",
    "TTTTTTTTTT============....oooooooooooocccccccccccccccccccoooooooooo....========================>",
-   "GGGGGG===============...f.oooooooooooocccccccccccccccccccooooooooooX...========================>",
+   "GGGGGG===============...f.oooooooooooocccccccccccccccccccoooooooooo....========================>",
    "GGGGGG<===========........ooooocccoooocccccccccc^ccccccccooqqooooooX..c========================>",
    "GGGGGG<===========........ooooccccooooccc....==========.Nooqqoooooo...c......============ccccccc",
    "GGGGGG=====!======TTTTTTTTooooccccoooccc.....==========..oooqqooooo...c.ff....=======X===ccccccc",
@@ -71539,7 +71537,6 @@
   ],
   "trainer_spots": [
    "Poke Maniac Shane",
-   "Fisherman Chris",
    "Fisherman Tully",
    "Hiker Benjamin"
   ],
@@ -74135,7 +74132,7 @@
    "TT\".TTTTTTTTTTTT.....TTTTTTTTccc",
    "TT\"\"TTTTTTTTTTTT....fTTTTTTTTccc",
    "TT.\"\"\"\"\"TTTTTTTT.....TTTTTTTTccc",
-   "TT\"\"\"\"\"\"TTTTTTTT.X...TTTTTTTTccc",
+   "TT\"\"\"\"\"\"TTTTTTTT.....TTTTTTTTccc",
    "TT\"\"\"\"\"\"TTTTTT\"\"\"\"X........TTccc",
    "TTTTTT\"\"TTTTTT\"\"\"\".........TTccc",
    "TTTTTT.\"TTTTTT\"\"\"\".........TTccc",
@@ -74274,7 +74271,6 @@
    ]
   ],
   "trainer_spots": [
-   "Pokemaniac Ron",
    "Poké Maniac Ron",
    "Pokemaniac Beckett",
    "Fisherman Marvin",
@@ -74402,7 +74398,7 @@
    "TTTTTToTTooooTToooooTTTToTToooTTTToTTTTTToTTTTTTTTTTTTTTTTTTTTooooooooTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTToTTooooTToooooTTTToTToooTTTToTTTTTToTTTTTTTTTTTTTTTTTTTToooooooo..TTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTToTToTToTTTTTTooooooTToTTTTTTooooooooTTTTTTTTTTTTTTTTTToooooooooo..TTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTToTToTToTTTTTTooooooTToTTTTTTooooooooTTTTTTTTTTTTTTTTTTooooooooooX...TTTTTTTTTTTTTTTTTTTTTT",
+   "TTTTTToTToTToTTTTTTooooooTToTTTTTTooooooooTTTTTTTTTTTTTTTTTToooooooooo....TTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTToTToTToTTTTTTTTTTTToooTTTTTTTToTTTTTTTTTTTTTTTTTTTToooooooooooooX...TTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTToTToTToTTTTTTTTTTTToooTTTTTTTToTTTTTTTTTTTTTTTTTTTToooooooooooooTT....TTTTTTTTTTTTTTTTTTTT",
    "TTTTTToTToTToTTTTTToooooooTTTTTToooooooTTTTTToooooooooooooooooooooooooTT....TTTTTTTTTTTTTTTTTTTT",
@@ -75404,7 +75400,6 @@
    ]
   ],
   "trainer_spots": [
-   "Cooltrainer Aaron",
    "Ace Trainer Lois",
    "Ace Trainer Alton",
    "Fisherman Raymond",
@@ -75701,8 +75696,8 @@
    "ccccc..........======......ooooooooooooTTTTTTTTTTTTTTTTTTTTTT.=====================.cccccccccccc",
    "cccccooooooooo.=======...f.ooooooooooooTTTTTTTTTTTTTTTTTTTTTT.====================..cccccccccccc",
    "cccccooooooooo..======.f.f.ooooooooooooTTTTTTTTTTTTTTTTTTTTTT.===...................cccccccccccc",
-   "cccccooooooooo.....===.....,,,,,X,,,,,,TTTTTTTTTTTTTTTTTTTTTTX===.cccccccccccccccccccccccccccccc",
-   "cccccooooooooooooo.=======.,,,,,,,,,,,,,=======X============X====.cccccccccccccccccccccccccccccc",
+   "cccccooooooooo.....===.....,,,,,X,,,,,,TTTTTTTTTTTTTTTTTTTTTT.===.cccccccccccccccccccccccccccccc",
+   "cccccooooooooooooo.=======.,,,,,,,,,,,,,=======.============X====.cccccccccccccccccccccccccccccc",
    "cccccccccooooooooo.========,,,,,,,,,,,,,========X================.cccccccccccccccccccccccccccccc",
    "cccccccccooooooooo..======.,,,,,,,,,,,,,========================..cccccccccccccccrrccccccccccccc",
    "cccccccccooooooooo.........oooooooooooo...........................cccccccccccccccrrccccccccccccc",
@@ -75743,8 +75738,6 @@
    "Bird Keeper Vance",
    "Psychic Phil",
    "Fisherman Edgar",
-   "Cooltrainer Cybil",
-   "Cooltrainer Allen",
    "Ace Trainer Allen",
    "Ace Trainer Cybil"
   ],
@@ -81898,7 +81891,7 @@
       "event": {
        "lines": [
         "Clair: I'm sorry about before. You beat me fair and square.",
-        "Clair: You have all eight Badges now. The Pokemon League is at Indigo Plateau: Surf east from New Bark Town.",
+        "Clair: You have all eight Badges now. The Silver League is past Route 27 and Victory Road: Surf east from New Bark Town.",
         "Clair: ...Though your face says you still have unfinished business. Don't give up, whatever happens. Or I'll feel even worse about losing!",
         "Clair: Here. Take this as an apology."
        ],
@@ -82205,7 +82198,7 @@
    "cccc\"\"\"\"ccoocc==.cccccccc==.cccc",
    "cccc\"\"\"\"ccoocc=..cccccccc==.cccc",
    "cccc\"\"\"\"ccoocc..Xcccccccc===cccc",
-   "cccc\"\"\"\"ccoocc___ccccccccX==cccc",
+   "cccc\"\"\"\"ccoocc___cccccccc.==cccc",
    "cccc\"\"\"\"ccoocc\"\"\"ccccccccX==cccc",
    "cccc....ccoocc\"\"\"ccccrrcc___cccc",
    "cccc.N..ccoocc\"\"\"ccccrrcc===cccc",
@@ -82234,7 +82227,7 @@
    "cccccc=====coooc\"\"\".\"\"\"ccccccccc",
    "cccccc=====coooc\"\"\".\"\"\"ccccccccc",
    "cccccc_____coooc\"\"\".\"\"\"ccccccccc",
-   "cccccc=====cccccX\"\"ccccccccccccc",
+   "cccccc=====ccccc.\"\"ccccccccccccc",
    "cccccc=====,...,\"X\"\"\"\"cccccccccc",
    "cccccc=====,...,\"\"\"\"\"\"cccccccccc",
    "cccccc=====,...,\"\"\"\"\"\"cccccccccc",
@@ -82366,10 +82359,8 @@
   ],
   "trainer_spots": [
    "Hiker Erik",
-   "Cooltrainer Kelly",
    "Ace Trainer Ryan",
    "Hiker Parry",
-   "Cooltrainer Ryan",
    "Ace Trainer Kelly",
    "Blackbelt Kenji",
    "Hiker Timothy",
@@ -88198,7 +88189,7 @@
      "cccc...ccc.........cccccc....ccccccccccccccccc..c..ccccccccc..ccccccc",
      "cccc...cccccc......cccccc....ccccccccccccccccc..c..ccc..Nccc..ccccccc",
      "cccc...ccccccc.....cccccc..ccccccccccccccccccc..c..ccc.c.ccc...cccccc",
-     "cccc...cccccccccccccccccc..ccccc..X........ccc..c...cc...ccc...cccccc",
+     "cccc...cccccccccccccccccc..ccccc...........ccc..c...cc...ccc...cccccc",
      "cccc...cccccc..........cc..ccccc...X.......ccc..c...cc..cccc...cccccc",
      "cccc...c...............cc...cccc...........ccc..c...cc...ccc...cccccc",
      "cccc...c............N..ccc...ccc...........ccc..c...cc...ccc...cccccc",
@@ -88291,7 +88282,6 @@
      ]
     },
     "trainer_spots": [
-     "Blackbelt Yoshi",
      "Super Nerd Markus",
      "Poké Maniac Harrison"
     ],
@@ -88381,7 +88371,7 @@
      "ccccccc....ccccccccccc...ccccccc.....)........qq....cc",
      "ccccccc....c.........c...ccccccc.....)........qooooocc",
      "ccccccc____c.........c___ccccccc_____c........qooooocc",
-     "ccccccc....c..X......c...ccccccc.............cqooooocc",
+     "ccccccc....c.........c...ccccccc.............cqooooocc",
      "ccccccc....c...X.....c...ccccccc.............cqooooocc",
      "cccccccq..qc....cc..cc...ccccccc.....c.ccc..cccooooocc",
      "ccccqqqqoooc....c........cccccoooooocccccc..cccooooocc",
@@ -88410,7 +88400,6 @@
      ]
     },
     "trainer_spots": [
-     "Hiker Erik",
      "Super Nerd Hugh"
     ],
     "hidden": {
@@ -88602,9 +88591,7 @@
    "B1F"
   ],
   "figure_floors": {
-   "Blackbelt Yoshi": 1,
    "Super Nerd Markus": 1,
-   "Hiker Erik": 2,
    "Karate King Kiyo": 3,
    "TM061": 0,
    "ETHER": 0,
@@ -88682,14 +88669,30 @@
     },
     "people": [
      {
-      "text": "Safari desk",
-      "action": "EVENT",
-      "event": {
-       "lines": [
-        "Welcome, welcome, to the Safari Zone desk! It's coming soon - so soon, so soon!",
-        "Wild Pokemon, wide-open spaces, the ride of a lifetime! Oh, I can hardly wait!"
-       ]
-      }
+      "any": [
+       {
+        "text": "Safari desk",
+        "action": "EVENT",
+        "flag_condition": "not ampharos_cured",
+        "event": {
+         "lines": [
+          "Welcome, welcome, to the Safari Zone desk! It's coming soon - so soon, so soon!",
+          "Wild Pokemon, wide-open spaces, the ride of a lifetime! Oh, I can hardly wait!"
+         ]
+        }
+       },
+       {
+        "text": "Safari desk",
+        "action": "EVENT",
+        "flag_condition": "ampharos_cured",
+        "event": {
+         "lines": [
+          "The Safari Zone is open at last! Down to Route 47, then up Route 48 to its gate.",
+          "Wild Pokemon, wide-open spaces - go, go, go!"
+         ]
+        }
+       }
+      ]
      },
      {
       "text": "Worker",
@@ -93411,7 +93414,7 @@
    ],
    [
     "Bug-Catching Contest",
-    "Tuesdays, Thursdays and Saturdays."
+    "Every day - one entry a day."
    ]
   ],
   "people": [
@@ -309484,7 +309487,7 @@
           "level": 55
          },
          "lines": [
-          "Hordel: You're Wes? I worked for Cipher... until I saw what they do. I ran, and took this one with me.",
+          "Hordel: You're {player_name}? I worked for Cipher... until I saw what they do. I ran, and took this one with me.",
           "Hordel: A Togepi from their factory. Its heart is shut. Please - open it.",
           "Hordel: And one more thing: Team Snagem is back in their old hideout, out in the desert. I'll mark it on your map."
          ]
@@ -314640,7 +314643,7 @@
      {
       "text": "Kid (behind the bookcase)",
       "action": "EVENT",
-      "condition": "beat_orre_champion",
+      "condition": "orre_part2",
       "event": {
        "stages": [
         {
@@ -314691,7 +314694,7 @@
         "It can be played on the Battle CD player at the Pokemon HQ Lab."
        ]
       },
-      "condition": "beat_orre_champion"
+      "condition": "xd_greevil_beaten"
      }
     ],
     "signs": [],
@@ -315864,7 +315867,7 @@
          ],
          "flag": "xd_le_asked",
          "lines": [
-          "Beluh: Wes, thank you for coming. Some of the village's Pokemon have stopped making any sound at all.",
+          "Beluh: {player_name}, thank you for coming. Some of the village's Pokemon have stopped making any sound at all.",
           "Beluh: Senilor's Wobbuffet was the first. His house is just down the hill, between ours and the Mart.",
           "Beluh: Would you look into it? Eagun says you have a knack for helping Pokemon."
          ]
@@ -315880,7 +315883,7 @@
          "lines": [
           "Beluh: Wobbuffet's chattering again, and the others too! And that Lotad was only shy? Ho ho!",
           "Beluh: You've done the whole village a kindness. Please, take this Lucky Egg.",
-          "Beluh: A Pokemon holding it learns more from every battle. Use it well, Wes."
+          "Beluh: A Pokemon holding it learns more from every battle. Use it well, {player_name}."
          ]
         }
        ],
@@ -316140,7 +316143,7 @@
           "You tell Senilor what Dr. Kaminko said: no machine can do it - Wobbuffet needs to hear its own trainer.",
           "Senilor: My voice? Well... I'll try. Wobbuffet! Hey! It's me, you big blue lump!",
           "Wobbuffet: ...Wob... WOBBUFFET!",
-          "Senilor: It spoke! Ha ha! Thank you, Wes. Go and tell Beluh the good news."
+          "Senilor: It spoke! Ha ha! Thank you, {player_name}. Go and tell Beluh the good news."
          ]
         }
        ],
@@ -317231,7 +317234,7 @@
       "text": "Lighthouse Electabuzz",
       "action": "BOSS",
       "color": "RED",
-      "condition": "beat_orre_champion",
+      "condition": "orre_part2",
       "flag_condition": "not gateon_lh_electabuzz",
       "boss": {
        "id": 125,
@@ -317316,7 +317319,7 @@
       "text": "Lighthouse Electrode",
       "action": "BOSS",
       "color": "RED",
-      "condition": "beat_orre_champion",
+      "condition": "orre_part2",
       "flag_condition": "not gateon_lh_electrode",
       "boss": {
        "id": 101,
@@ -317383,7 +317386,7 @@
       "text": "Lighthouse Ampharos",
       "action": "BOSS",
       "color": "RED",
-      "condition": "beat_orre_champion",
+      "condition": "orre_part2",
       "flag_condition": "not gateon_lh_ampharos",
       "boss": {
        "id": 181,
@@ -317453,7 +317456,7 @@
       "text": "Gym Leader Jasmine",
       "action": "EVENT",
       "color": "GOLD",
-      "condition": "beat_orre_champion",
+      "condition": "orre_part2",
       "event": {
        "stages": [
         {
@@ -320038,12 +320041,10 @@
       ],
       "cast": [],
       "call": [
-       "Referee: The champion of Cipher's Colosseum!",
-       "The crowd roars!"
+       "The roof of Realgam Tower falls silent. Cipher's leader has fallen."
       ],
       "event": {
-       "world": "orre_tournament",
-       "done": true
+       "world": "orre_skip"
       }
      }
     ]
@@ -320271,7 +320272,7 @@
      {
       "text": "Colosseum desk",
       "action": "EVENT",
-      "condition": "beat_orre_champion",
+      "condition": "xd_greevil_beaten",
       "event": {
        "xd_colosseum": {
         "rounds": [
@@ -320565,7 +320566,7 @@
            "music": "orre/admin_battle",
            "fit": "+15 (disc ace 60)",
            "intro": [
-            "Lovrina: Wes! I'm here to win, not to make friends. My new Pokemon are perfect!"
+            "Lovrina: {player_name}! I'm here to win, not to make friends. My new Pokemon are perfect!"
            ],
            "is_boss_battle": true
           }
@@ -322728,7 +322729,7 @@
       {
        "flag": "xd_eagun_lab",
        "lines": [
-        "Eagun: Wes! I heard you beat Greevil himself. Then you've earned this - one more battle, with me!",
+        "Eagun: {player_name}! I heard you beat Greevil himself. Then you've earned this - one more battle, with me!",
         "Eagun: My Pikachu and I haven't lost our spark. Show me everything!"
        ],
        "battle": {
@@ -322804,7 +322805,7 @@
       }
      ],
      "done": [
-      "Eagun: The Orre Colosseum's waiting for you, Wes. Beluh sends her love."
+      "Eagun: The Orre Colosseum's waiting for you, {player_name}. Beluh sends her love."
      ]
     }
    }
@@ -322850,7 +322851,7 @@
      {
       "text": "Professor Krane (the stairs)",
       "action": "EVENT",
-      "condition": "beat_orre_champion",
+      "condition": "xd_gorigan_beaten",
       "event": {
        "stages": [
         {
@@ -322862,10 +322863,10 @@
           "MASTER_BALL": 1
          },
          "lines": [
-          "Professor Krane: Wes, come with me. There's a staircase here even Lily rarely uses.",
+          "Professor Krane: {player_name}, come with me. There's a staircase here even Lily rarely uses.",
           "Professor Krane: Cipher has gathered on Citadark Isle. Greevil's 'XD001' - our readings say it's a Shadow Pokemon unlike any other.",
           "Professor Krane: This is a Master Ball. There's only one. It catches any Pokemon without fail. Save it for XD001.",
-          "Professor Krane: Makan and Perr have a robot at Gateon Port that can cross the sea. Good luck, Wes."
+          "Professor Krane: Makan and Perr have a robot at Gateon Port that can cross the sea. Good luck, {player_name}."
          ]
         }
        ],
@@ -322923,7 +322924,7 @@
          "lines": [
           "Lily: The Machine Part! Jovi, run it down to the Chamber.",
           "Datan: Lily! I traced Cipher's car. It went to the old Shadow Pokemon Lab, out in the desert.",
-          "Lily: The lab Cipher abandoned five years ago... They've opened it again. Wes, please - bring the Professor home."
+          "Lily: The lab Cipher abandoned five years ago... They've opened it again. {player_name}, please - bring the Professor home."
          ]
         },
         {
@@ -322936,8 +322937,8 @@
           "XD_DATA_ROM": 1
          },
          "lines": [
-          "Lily: You brought him back! Thank you, Wes. The Purify Chamber is nearly done - the Professor will finish it.",
-          "Professor Krane: Wes, one more favour. Take my research data to Nett at ONBS, in Pyrite. Keep it out of Cipher's hands."
+          "Lily: You brought him back! Thank you, {player_name}. The Purify Chamber is nearly done - the Professor will finish it.",
+          "Professor Krane: {player_name}, one more favour. Take my research data to Nett at ONBS, in Pyrite. Keep it out of Cipher's hands."
          ]
         }
        ],
@@ -323006,7 +323007,7 @@
         "It can be played on the Battle CD player at the Pokemon HQ Lab."
        ]
       },
-      "condition": "beat_orre_champion"
+      "condition": "xd_greevil_beaten"
      }
     ],
     "signs": [],
@@ -323110,7 +323111,7 @@
    {
     "trigger": "enter",
     "condition": [
-     "orre_ein_lab",
+     "orre_part2",
      "not:xd_kidnap_seen",
      "not:xd_lovrina_beaten"
     ],
