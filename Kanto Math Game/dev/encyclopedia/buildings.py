@@ -15,7 +15,7 @@ FLOOR_WORDS = r"\s*(?:\d+F|B\d+F|Roof|Rooftop|Lift|Upstairs|Downstairs|Basement|
 KINDS = [("pokemon-centers", r"^center|pokecenter|pokemon_center"), ("poke-marts", r"^mart|pokemart"),
          ("gyms", r"^gym(?:$|_?\d|_hall|_lobby)"), ("department-stores", r"^dept"), ("game-corners", r"game_corner|^casino|^prize"),
          ("day-care", r"daycare|day_care"), ("contests", r"contest"), ("safari-game", r"safari")]
-ROLE_ACTIONS = {"SHOP": "Runs the shop counter", "HEAL": "Heals your team", "BP_SHOP": "Trades items for Battle Points",
+ROLE_ACTIONS = {"SHOP": "Runs the shop counter", "HEAL": "Heals your team", "CENTER": "Heals your team", "BP_SHOP": "Trades items for Battle Points",
                 "LEAGUE": "Takes you on to the League", "GYM": "Takes you into the Gym"}
 
 
@@ -32,7 +32,7 @@ def kind_of(base, title, people=()):
     acts = {str(p.get("action") or "").upper() for p in people if isinstance(p, dict)}
     for kind, pat in KINDS:
         if re.search(pat, base) or (kind == "gyms" and re.search(r"\bGym$", title or "")):
-            if kind == "pokemon-centers" and "HEAL" not in acts:
+            if kind == "pokemon-centers" and not acts & {"HEAL", "CENTER"}:   # (a route's Center: "CENTER", Mt. Moon's)
                 continue
             if kind == "poke-marts" and "SHOP" not in acts:
                 continue
