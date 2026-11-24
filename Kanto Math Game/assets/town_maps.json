@@ -687691,41 +687691,23 @@
      "_shadows": true
     },
     "people": [
-     [
-      {
-       "text": "Gentleman on 25F",
-       "action": "EVENT",
-       "event": {
-        "lines": [
-         "I'll give this to you! An Air Balloon!"
-        ],
-        "gift_item": {
-         "AIR_BALLOON": 1
-        },
-        "flag": "b2_drift_air_balloon",
-        "done": [
-         "A Pokemon holding an Air Balloon floats! Ground-type moves miss it until it's hit. I'm a balloon man!"
-        ]
-       },
-       "condition": [
-        "world:anville:item:AIR_BALLOON"
+     {
+      "text": "Gentleman on 25F",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'll give this to you! An Air Balloon!"
        ],
-       "_look": "sheet:b2_c44.png"
+       "gift_item": {
+        "AIR_BALLOON": 1
+       },
+       "flag": "b2_drift_air_balloon",
+       "done": [
+        "A Pokemon holding an Air Balloon floats! Ground-type moves miss it until it's hit. I'm a balloon man!"
+       ]
       },
-      {
-       "text": "Gentleman on 25F",
-       "action": "EVENT",
-       "event": {
-        "lines": [
-         "Balloons! I'm a balloon man! ...My Air Balloons are still on their way. Come back later!"
-        ]
-       },
-       "condition": [
-        "not:world:anville:item:AIR_BALLOON"
-       ],
-       "_look": "sheet:b2_c44.png"
-      }
-     ],
+      "_look": "sheet:b2_c44.png"
+     },
      {
       "text": "Boy on 25F",
       "action": "EVENT",
@@ -754760,7 +754742,97 @@
      "_shadows": true
     },
     "people": [],
-    "title": "Relic Castle"
+    "title": "Relic Castle",
+    "wild_tables": {
+     "ALL": {
+      "grass": [
+       [
+        562,
+        0,
+        20,
+        27,
+        27
+       ],
+       [
+        551,
+        0,
+        20,
+        27,
+        27
+       ],
+       [
+        562,
+        0,
+        10,
+        28,
+        28
+       ],
+       [
+        551,
+        0,
+        10,
+        28,
+        28
+       ],
+       [
+        28,
+        0,
+        10,
+        28,
+        28
+       ],
+       [
+        28,
+        0,
+        10,
+        29,
+        29
+       ],
+       [
+        562,
+        0,
+        5,
+        29,
+        29
+       ],
+       [
+        552,
+        0,
+        5,
+        29,
+        29
+       ],
+       [
+        562,
+        0,
+        4,
+        30,
+        30
+       ],
+       [
+        552,
+        0,
+        4,
+        30,
+        30
+       ],
+       [
+        562,
+        0,
+        1,
+        30,
+        30
+       ],
+       [
+        552,
+        0,
+        1,
+        30,
+        30
+       ]
+      ]
+     }
+    }
    },
    "middle": {
     "theme": "room",
@@ -755267,7 +755339,97 @@
     "hidden": {
      "6,7": "SUN_STONE"
     },
-    "title": "Relic Castle"
+    "title": "Relic Castle",
+    "wild_tables": {
+     "ALL": {
+      "grass": [
+       [
+        343,
+        0,
+        20,
+        27,
+        27
+       ],
+       [
+        343,
+        0,
+        20,
+        27,
+        27
+       ],
+       [
+        343,
+        0,
+        10,
+        28,
+        28
+       ],
+       [
+        343,
+        0,
+        10,
+        28,
+        28
+       ],
+       [
+        343,
+        0,
+        10,
+        28,
+        28
+       ],
+       [
+        343,
+        0,
+        10,
+        28,
+        28
+       ],
+       [
+        343,
+        0,
+        5,
+        29,
+        29
+       ],
+       [
+        343,
+        0,
+        5,
+        29,
+        29
+       ],
+       [
+        343,
+        0,
+        4,
+        30,
+        30
+       ],
+       [
+        343,
+        0,
+        4,
+        30,
+        30
+       ],
+       [
+        343,
+        0,
+        1,
+        30,
+        30
+       ],
+       [
+        343,
+        0,
+        1,
+        30,
+        30
+       ]
+      ]
+     }
+    }
    },
    "hall_e": {
     "theme": "room",
@@ -755704,7 +755866,97 @@
      "_shadows": true
     },
     "people": [],
-    "title": "Relic Castle"
+    "title": "Relic Castle",
+    "wild_tables": {
+     "ALL": {
+      "grass": [
+       [
+        562,
+        0,
+        20,
+        27,
+        27
+       ],
+       [
+        551,
+        0,
+        20,
+        27,
+        27
+       ],
+       [
+        562,
+        0,
+        10,
+        28,
+        28
+       ],
+       [
+        551,
+        0,
+        10,
+        28,
+        28
+       ],
+       [
+        28,
+        0,
+        10,
+        28,
+        28
+       ],
+       [
+        28,
+        0,
+        10,
+        29,
+        29
+       ],
+       [
+        562,
+        0,
+        5,
+        29,
+        29
+       ],
+       [
+        552,
+        0,
+        5,
+        29,
+        29
+       ],
+       [
+        562,
+        0,
+        4,
+        30,
+        30
+       ],
+       [
+        552,
+        0,
+        4,
+        30,
+        30
+       ],
+       [
+        562,
+        0,
+        1,
+        30,
+        30
+       ],
+       [
+        552,
+        0,
+        1,
+        30,
+        30
+       ]
+      ]
+     }
+    }
    },
    "east": {
     "theme": "room",
@@ -756156,7 +756408,97 @@
       "_look": "sheet:b2_item_ball.png"
      }
     ],
-    "title": "Relic Castle"
+    "title": "Relic Castle",
+    "wild_tables": {
+     "ALL": {
+      "grass": [
+       [
+        562,
+        0,
+        20,
+        27,
+        27
+       ],
+       [
+        551,
+        0,
+        20,
+        27,
+        27
+       ],
+       [
+        562,
+        0,
+        10,
+        28,
+        28
+       ],
+       [
+        551,
+        0,
+        10,
+        28,
+        28
+       ],
+       [
+        28,
+        0,
+        10,
+        28,
+        28
+       ],
+       [
+        28,
+        0,
+        10,
+        29,
+        29
+       ],
+       [
+        562,
+        0,
+        5,
+        29,
+        29
+       ],
+       [
+        552,
+        0,
+        5,
+        29,
+        29
+       ],
+       [
+        562,
+        0,
+        4,
+        30,
+        30
+       ],
+       [
+        552,
+        0,
+        4,
+        30,
+        30
+       ],
+       [
+        562,
+        0,
+        1,
+        30,
+        30
+       ],
+       [
+        552,
+        0,
+        1,
+        30,
+        30
+       ]
+      ]
+     }
+    }
    },
    "volcarona": {
     "theme": "room",
@@ -757115,7 +757457,97 @@
       }
      }
     ],
-    "title": "Relic Castle"
+    "title": "Relic Castle",
+    "wild_tables": {
+     "ALL": {
+      "grass": [
+       [
+        343,
+        0,
+        20,
+        27,
+        27
+       ],
+       [
+        343,
+        0,
+        20,
+        27,
+        27
+       ],
+       [
+        343,
+        0,
+        10,
+        28,
+        28
+       ],
+       [
+        343,
+        0,
+        10,
+        28,
+        28
+       ],
+       [
+        343,
+        0,
+        10,
+        28,
+        28
+       ],
+       [
+        343,
+        0,
+        10,
+        28,
+        28
+       ],
+       [
+        343,
+        0,
+        5,
+        29,
+        29
+       ],
+       [
+        343,
+        0,
+        5,
+        29,
+        29
+       ],
+       [
+        343,
+        0,
+        4,
+        30,
+        30
+       ],
+       [
+        343,
+        0,
+        4,
+        30,
+        30
+       ],
+       [
+        343,
+        0,
+        1,
+        30,
+        30
+       ],
+       [
+        343,
+        0,
+        1,
+        30,
+        30
+       ]
+      ]
+     }
+    }
    }
   },
   "inside": {

@@ -3831,11 +3831,8 @@ DRIFT_ROOMS = {
         3: _say("Man by the window", "Watch stronger people battle and you might learn something."),
     }, {}, lift=CHATEAU_LIFT, title="Chateau Hotel 2F"),
     "chateau_25": drift_room(544, {
-        0: [dict(_gift("Gentleman on 25F", ["I'll give this to you! An Air Balloon!"], "AIR_BALLOON", "b2_drift_air_balloon",
-                       ["A Pokemon holding an Air Balloon floats! Ground-type moves miss it until it's hit. I'm a balloon man!"]),
-                 condition=["world:anville:item:AIR_BALLOON"]),
-            _say("Gentleman on 25F", "Balloons! I'm a balloon man! ...My Air Balloons are still on their way. Come back later!",
-                 condition=["not:world:anville:item:AIR_BALLOON"])],   # (till the item exists: Main's inbox clean-main-unova-air-balloon)
+        0: _gift("Gentleman on 25F", ["I'll give this to you! An Air Balloon!"], "AIR_BALLOON", "b2_drift_air_balloon",
+                 ["A Pokemon holding an Air Balloon floats! Ground-type moves miss it until it's hit. I'm a balloon man!"]),
         1: _say("Boy on 25F", "Balloon! Balloon! My hobby is the minigames on my Xtransceiver!"),
     }, {}, lift=CHATEAU_LIFT, title="Chateau Hotel 25F"),
     "grand": drift_room(101, {
@@ -4440,8 +4437,8 @@ RP_SOUTH["edge_to"] = {"4,10": [92, 42], "2,21": [91, 52]}
 
 # --- Relic Castle's lowest floor: five rooms in a row (180 from the Relic Passage, 175, 181 the middle, 176, 178) and 182
 # north of the middle room: Volcarona's (Lv 35, back after each Hall of Fame). Sun Stone hidden in the middle room,
-# Ultra Ball on the sand in the east room. (Black 2's Volcarona room has only Baltoy: here the floor's own table, one
-# table a place: Main inbox clean-main-unova-room-wild-tables.)
+# Ultra Ball on the sand in the east room. (Black 2's Volcarona room and the middle room have only Baltoy: their own
+# tables, below.)
 OUTSIDE.update({175: 180, 181: -1, 176: -1, 178: -1, 182: -1})
 VOLCARONA = {"text": "Volcarona", "action": "BOSS", "color": "RED", "_look": "sheet:b2_c124.png",
              "condition": [{"any": ["not:b2_volcarona", "legend_back:b2_volcarona"]}],
@@ -4460,6 +4457,15 @@ _doors(DEPTHS, DEPTHS["inside"])
 DEPTHS["rooms"]["middle"]["hidden"] = {"6,7": "SUN_STONE"}
 for _k in ("hall_w", "middle", "hall_e", "east", "volcarona"):
     DEPTHS["rooms"][_k]["title"] = "Relic Castle"
+# each room's own wild Pokemon (main a91de160: a room's "wild_tables"), from Black 2's zones (uwild.tables; White 2's the same):
+# 175 / 176 / 178 as the floor's own (Sandile, Yamask, Sandshrew, Krokorok, Cofagrigus), 181 / 182 only Baltoy
+_RC_CHANCE = (20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1)
+_RC_HALL = {"ALL": {"grass": [[s, 0, c, lv, lv] for s, c, lv in zip(
+    (562, 551, 562, 551, 28, 28, 562, 552, 562, 552, 562, 552), _RC_CHANCE, (27, 27, 28, 28, 28, 29, 29, 29, 30, 30, 30, 30))]}}
+_RC_BALTOY = {"ALL": {"grass": [[343, 0, c, lv, lv] for c, lv in zip(
+    _RC_CHANCE, (27, 27, 28, 28, 28, 28, 29, 29, 30, 30, 30, 30))]}}
+for _k, _t in (("hall_w", _RC_HALL), ("hall_e", _RC_HALL), ("east", _RC_HALL), ("middle", _RC_BALTOY), ("volcarona", _RC_BALTOY)):
+    DEPTHS["rooms"][_k]["wild_tables"] = _t
 
 
 MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": FLOCCESY, "UNOVA_ROUTE_20": ROUTE_20,
