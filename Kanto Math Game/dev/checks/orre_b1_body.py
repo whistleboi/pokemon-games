@@ -209,7 +209,8 @@ check(not bad, f"every move one the game knows ({bad})")
 check(TR["col:57"]["team"][0] == 9352 and TR["col:57"]["levels"] == [30, 27, 27], "Rider Nover: Shadow Noctowl Lv 30, Ledyba and Wingull Lv 27 (the disc)")
 gym = g.loader.area_data["STORY_PROGRESSION"]["PYRITE_TOWN"]["gym"]
 names = [t["name"] for t in gym["trainers"]] + [gym["leader"]["name"]]
-check(names == ["Hunter Hoks", "Chaser Tisler", "Bandana Guy Vilch", "Bodybuilder Mirez"], f"Pyrite Colosseum's four rounds ({names})")
+check(names == ["Hunter Hoks", "Chaser Tisler", "Bandana Guy Vilch", "Bodybuilder Mirez", "Gym Leader Duking"],
+      f"Pyrite Colosseum's four rounds, then Gym Leader Duking (S2 11-24) ({names})")
 check(all(t.get("double") for t in gym["trainers"] + [gym["leader"]]) and gym["requirements"]["flag"] == "orre_power_on",
       "all doubles, and the Colosseum needs its power back")
 bp = [t["name"] for t in g.loader.area_data["STORY_PROGRESSION"]["PYRITE_BUILDING"]["trainer_pool"]]
@@ -349,7 +350,7 @@ _team(100)
 F = story.story_flags   # (the suite swaps in fresh flags on the way: use today's)
 F["orre_power_on"] = True
 _had = list(story.badges.get("ORRE", []))
-story.badges["ORRE"] = [b_ for b_ in _had if b_ != "PYRITE"]
+story.badges["ORRE"] = [b_ for b_ in _had if b_ != "PYRITE"] + ([] if "PHENAC" in _had else ["PHENAC"])   # (Phenac first: S2 11-24)
 for k_ in [k_ for k_ in F if k_.startswith(("gym_progress_PYRITE", "gym_challenge_done_PYRITE", "orre_tourney"))]:
     F.pop(k_, None)
 t = _lobby("PYRITE_TOWN")

@@ -91,6 +91,8 @@ def touch(story, area, xy, first):
         n = harvest_size(rec)
         inv[rec["berry"]] = inv.get(rec["berry"], 0) + n
         _all(story)[key] = {"berry": None, "t": None, "water": []}
+        from src.world import feats as _feats   # (a Feat: Berries picked - Sinnoh's Berry Picker counts walked soil too, J6 11-24)
+        _feats.note(story, "berry_picks", n)
         return [f"It's {a(b)} tree!", f"You picked {n} {plural(b, n)}!",
                 "The soil is soft and empty again."], False
     lines = [STAGE_WORDS[st].format(b=b, a=a(b).capitalize())]

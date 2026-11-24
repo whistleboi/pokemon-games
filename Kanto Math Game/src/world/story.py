@@ -1114,9 +1114,11 @@ class StoryManager:
         for area in self.game.loader.area_data.get("STORY_PROGRESSION", {}).values():
             if str(area.get("region") or "").upper() != region:
                 continue
-            leader = area.get("gym", {}).get("leader")
-            if isinstance(leader, dict) and leader.get("badge_reward"):
-                badges.append(leader["badge_reward"])
+            for key in ["gym"] + [k for k in area if k.startswith("gym_")]:   # (a second Gym in one area: Orre's Birch in Realgam, 11-24)
+                gym = area.get(key)
+                leader = gym.get("leader") if isinstance(gym, dict) else None
+                if isinstance(leader, dict) and leader.get("badge_reward") and leader["badge_reward"] not in badges:
+                    badges.append(leader["badge_reward"])
         return badges
 
     def area_region(self, area_key):

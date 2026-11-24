@@ -3668,6 +3668,15 @@
               "The water swells... Kyogre rises from the deep!"
             ]
           }
+        },
+        {
+          "text": "Agate Village",
+          "action": "EXIT",
+          "target_area": "AGATE_VILLAGE",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
         }
       ],
       "travel_options": [
@@ -3703,6 +3712,15 @@
               "Rayquaza coils at the top of the pillar... It roars at the sky!"
             ]
           }
+        },
+        {
+          "text": "Realgam Tower",
+          "action": "EXIT",
+          "target_area": "REALGAM_TOWER",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
         }
       ],
       "travel_options": [
@@ -3738,6 +3756,15 @@
               "The triangle glows... Something from space takes shape!"
             ]
           }
+        },
+        {
+          "text": "Realgam Tower",
+          "action": "EXIT",
+          "target_area": "REALGAM_TOWER",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
         }
       ],
       "travel_options": [
@@ -3819,6 +3846,15 @@
               "Blastoise joined your team!"
             ]
           }
+        },
+        {
+          "text": "Realgam Tower",
+          "action": "EXIT",
+          "target_area": "REALGAM_TOWER",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
         }
       ],
       "travel_options": [
@@ -3855,6 +3891,15 @@
             ],
             "is_shiny": true
           }
+        },
+        {
+          "text": "Realgam Tower",
+          "action": "EXIT",
+          "target_area": "REALGAM_TOWER",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
         }
       ],
       "travel_options": [
@@ -3977,6 +4022,15 @@
             "world": "orre_frontier",
             "records": true
           }
+        },
+        {
+          "text": "Realgam Tower",
+          "action": "EXIT",
+          "target_area": "REALGAM_TOWER",
+          "condition": [
+            "can_exit"
+          ],
+          "color": "RED"
         }
       ]
     },
@@ -24674,11 +24728,14 @@
     {"id": "orre_m1", "type": "MAIN", "title": "Welcome to Orre", "description": "You rode into the Outskirt Stand at dawn. A rider is sitting at the far end of the diner. Talk to him!", "condition": {"required_region": "ORRE", "flag_not": "orre_beat_willie"}, "region": "ORRE", "completed_flag": "orre_beat_willie", "target": "OUTSKIRT_STAND"},
     {"id": "orre_m2", "type": "MAIN", "title": "Trouble in Phenac", "description": "Willie said to sharpen your skills in Phenac City. Ride there. Those men with the sack were headed the same way...", "condition": {"required_region": "ORRE", "flag": "orre_beat_willie", "flag_not": ["orre_rui_joined", "got_snag_machine"]}, "region": "ORRE", "completed_flag": "orre_rui_joined", "target": "PHENAC_CITY"},
     {"id": "orre_m2b", "type": "MAIN", "title": "The Mayor of Phenac", "description": "Rui saw Pokémon with a dark aura. Take her to Mayor Es Cade. His house is on the west side of town.", "condition": {"required_region": "ORRE", "flag": "orre_rui_joined", "flag_not": ["orre_met_mayor", "got_snag_machine"]}, "region": "ORRE", "completed_flag": "orre_met_mayor", "target": "PHENAC_CITY"},
+    {"id": "orre_m2b2", "type": "MAIN", "title": "Team Snagem in Phenac", "description": "Someone from Team Snagem is in Phenac - and he's looking for you and the Snag Machine. Find him in town.", "condition": {"required_region": "ORRE", "flag": "orre_met_mayor", "flag_not": ["orre_wakin", "got_snag_machine"]}, "region": "ORRE", "target": "PHENAC_CITY", "completed_flag": "orre_wakin"},
     {"id": "orre_m2c", "type": "MAIN", "title": "Poké Balls", "description": "Your Snag Machine can catch Shadow Pokémon, but you have no Poké Balls. Ask the bartender at the Outskirt Stand.", "condition": {"required_region": "ORRE", "flag": "orre_wakin", "flag_not": ["orre_got_balls", "got_snag_machine"]}, "region": "ORRE", "completed_flag": "orre_got_balls", "target": "OUTSKIRT_STAND"},
     {"id": "orre_m2d", "type": "MAIN", "title": "Trouble at the Mayor's", "description": "Something's wrong at the Mayor's house in Phenac City! Hurry back.", "condition": {"required_region": "ORRE", "flag": "orre_got_balls", "flag_not": ["orre_raid_trudly", "got_snag_machine"]}, "region": "ORRE", "completed_flag": "orre_raid_trudly", "target": "PHENAC_CITY"},
     {"id": "orre_m3", "type": "MAIN", "title": "Phenac's Guards", "description": "Three men in strange outfits are guarding Phenac's ways out, each with a Shadow Pokémon. Beat one and snag its Pokémon!", "condition": {"required_region": "ORRE", "flag": "orre_raid_trudly", "flag_not": "got_snag_machine"}, "region": "ORRE", "completed_flag": "got_snag_machine", "target": "PHENAC_CITY"},
     {"id": "orre_m4", "type": "MAIN", "title": "Pyrite Town", "description": "Pyrite is a rough town. Shadow Pokémon are being handed out in its duel square! Then find Rogue Cail: a thug by the Colosseum knows where he is.", "condition": {"required_region": "ORRE", "flag": "got_snag_machine", "flag_not": ["orre_beat_cail", "orre_power_out", "orre_miror_cave"], "region_badges_min": 1}, "region": "ORRE", "completed_flag": "orre_beat_cail", "target": "PYRITE_TOWN"},
-    {"id": "orre_m4b", "type": "MAIN", "title": "The Missing Gear", "description": "Silva took the Gear from Duking's windmill, and the Colosseum has no power. He may have hidden it at the Construction Lot. Ride there from Pyrite's bike.", "condition": {"required_region": "ORRE", "flag": "orre_power_out", "flag_not": ["orre_power_on", "orre_miror_cave"]}, "region": "ORRE", "completed_flag": "orre_power_on", "target": "CONSTRUCTION_LOT"},
+    {"id": "orre_m4a", "type": "MAIN", "title": "Duking's Windmill", "description": "Cail's handed over his prize. Duking, the Pyrite Colosseum's boss, lives by the windmill at the west of town - go and see him.", "condition": {"required_region": "ORRE", "flag": "orre_beat_cail", "flag_not": ["orre_power_out", "orre_miror_cave"]}, "region": "ORRE", "target": "PYRITE_TOWN", "completed_flag": "orre_power_out"},
+    {"id": "orre_m4b", "type": "MAIN", "title": "The Missing Gear", "description": "Silva took the Gear from Duking's windmill, and the Colosseum has no power. He may have hidden it at the Construction Lot. Ride there from Pyrite's bike.", "condition": {"required_region": "ORRE", "flag": "orre_power_out", "flag_not": ["orre_got_gear", "orre_power_on", "orre_miror_cave"]}, "region": "ORRE", "completed_flag": "orre_got_gear", "target": "CONSTRUCTION_LOT"},
+    {"id": "orre_m4b2", "type": "MAIN", "title": "The Gear for Duking", "description": "You found the windmill's Gear! Take it back to Duking's house in Pyrite so the Colosseum gets its power.", "condition": {"required_region": "ORRE", "flag": "orre_got_gear", "flag_not": ["orre_power_on", "orre_miror_cave"]}, "region": "ORRE", "target": "PYRITE_TOWN", "completed_flag": "orre_power_on"},
     {"id": "orre_m4c", "type": "MAIN", "title": "Pyrite Colosseum", "description": "The windmill turns again and the Colosseum has power. Win its four rounds, then face the Gym Leader, Duking, for the Pyrite Badge!", "condition": {"required_region": "ORRE", "flag": "orre_power_on", "region_badges_less": 2}, "region": "ORRE", "completed_badge": "PYRITE", "target": "PYRITE_TOWN", "reward": "Pyrite Badge"},
     {"id": "orre_m4d", "type": "MAIN", "title": "Cipher's Hideout", "description": "Miror B.'s gang took Duking's Plusle! Their hideout is the Pyrite Building, by the bridge. Get to the roof, then past the guard to Pyrite Cave.", "condition": {"required_region": "ORRE", "region_badges_min": 2, "flag_not": ["orre_beat_doken", "orre_miror_cave"]}, "region": "ORRE", "completed_flag": "orre_beat_doken", "target": "PYRITE_BUILDING"},
     {"id": "orre_m5", "type": "MAIN", "title": "Miror B. in Pyrite Cave", "description": "Cipher Admin Miror B. is hiding in Pyrite Cave with Shadow Pokémon. Dance your way past him!", "condition": {"required_region": "ORRE", "region_badges_min": 2, "flag": "orre_beat_doken", "flag_not": "orre_miror_cave"}, "region": "ORRE", "completed_flag": "orre_miror_cave", "target": "PYRITE_CAVE"},
@@ -24716,7 +24773,7 @@
     {"id": "orre_s5", "type": "MAIN", "title": "Gale of Darkness", "description": "Cipher is back under Grand Master Greevil, on Citadark Isle. Professor Krane has something for you first - visit the HQ Lab, then take the Robo Kyogre from Gateon Port.", "condition": {"required_region": "ORRE", "flag": "xd_gorigan_beaten", "flag_not": ["xd_greevil_beaten", "xd_master_ball"]}, "region": "ORRE", "completed_flag": "xd_master_ball", "target": "POKEMON_HQ_LAB", "reward": "Master Ball"},
     {"id": "orre_s5b", "type": "MAIN", "title": "Citadark Isle", "description": "Climb Greevil's island: the fortress, the volcano's platforms, the hook hall, the Dome. XD001 waits at the top.", "condition": {"required_region": "ORRE", "flag": "xd_master_ball", "flag_not": "xd_greevil_beaten"}, "region": "ORRE", "completed_flag": "xd_greevil_beaten", "target": "XD_CITADARK_ISLE", "reward": "Every Shadow Pokemon"},
     {"id": "orre_m17d", "type": "MAIN", "title": "Norman's Hall", "description": "With Gorigan beaten, his hall in the Key Lair has a new master: Gym Leader Norman. Win the Key Lair Badge!", "condition": {"required_region": "ORRE", "flag": "xd_gorigan_beaten", "region_badges_less": 6}, "region": "ORRE", "completed_badge": "KEY_LAIR", "target": "XD_CIPHER_KEY_LAIR", "reward": "Key Lair Badge"},
-    {"id": "orre_m18", "type": "MAIN", "title": "Realgam Tower", "description": "Cipher's leader is behind Realgam Tower. Go in by the lobby's left door, cross the tower yard, and take the four coloured keys from Cipher's Admins in the Dome Halls.", "condition": {"required_region": "ORRE", "flag": "orre_data_rom_given", "flag_not": ["col_venus_realgam", "col_ein_realgam", "col_miror_realgam", "col_dakim_realgam"], "region_badges_min": 4}, "region": "ORRE", "completed_flag": ["col_venus_realgam", "col_ein_realgam", "col_miror_realgam", "col_dakim_realgam"], "target": "CIPHER_COMMAND"},
+    {"id": "orre_m18", "type": "MAIN", "title": "Realgam Tower", "description": "Cipher's leader is behind Realgam Tower. Go in by the lobby's left door, cross the tower yard, and take the four coloured keys from Cipher's Admins in the Dome Halls.", "condition": {"required_region": "ORRE", "flag": "orre_data_rom_given", "region_badges_min": 4}, "region": "ORRE", "completed_flag": ["col_venus_realgam", "col_ein_realgam", "col_miror_realgam", "col_dakim_realgam"], "target": "CIPHER_COMMAND"},
     {"id": "orre_m18b", "type": "MAIN", "title": "Inside the Tower", "description": "The four keys open the giant door. Get through the Tower Halls to the lifts at the far end.", "condition": {"required_region": "ORRE", "flag": ["col_venus_realgam", "col_ein_realgam", "col_miror_realgam", "col_dakim_realgam"], "flag_not": "col_gonzap_realgam"}, "region": "ORRE", "completed_flag": "col_gonzap_realgam", "target": "CIPHER_COMMAND"},
     {"id": "orre_m18c", "type": "MAIN", "title": "Cipher's Colosseum", "description": "Ride the lift to the roof. Four matches, then Nascour, then Cipher's leader - and no healing in between. Stock up first!", "condition": {"required_region": "ORRE", "flag": "col_gonzap_realgam", "flag_not": "orre_evice_beaten"}, "region": "ORRE", "completed_flag": "orre_evice_beaten", "target": "REALGAM_TOWER", "reward": "Five years later..."},
     {"id": "orre_m19", "type": "MAIN", "title": "An Ancient Force", "description": "At the top of Citadark's Dome, Gym Leader Drake stands before Greevil's arena. Beat him for the Citadark Badge - only then will Greevil face you.", "condition": {"required_region": "ORRE", "flag": "xd_eldes_beaten", "region_badges_less": 7}, "region": "ORRE", "completed_badge": "CITADARK", "target": "XD_CITADARK_ISLE", "reward": "Citadark Badge"},

@@ -445,18 +445,17 @@
         "wild_pool_percentages": null,
         "min_rounds": 0,
         "trainer_pool": [
-            {"name": "Galactic Grunt", "class": "PKMN_TRAINER", "sprite": "pt_galactic_grunt_m.png", "team": [42], "rewards": {"balls": 3}, "levels": [41], "spot_name": "Galactic Grunt 1"},
-            {"name": "Galactic Grunt", "class": "PKMN_TRAINER", "sprite": "pt_galactic_grunt_m.png", "team": [228, 198], "rewards": {"balls": 10}, "is_boss_battle": true, "victory_flag": "galactic_underpass_cleared", "levels": [38, 40], "spot_name": "Galactic Grunt 2"}
+            {"name": "Galactic Grunt", "class": "GALACTIC", "sprite": "pt_galactic_grunt_m.png", "team": [42], "rewards": {"balls": 3}, "levels": [41], "spot_name": "Galactic Grunt 1"},
+            {"name": "Galactic Grunt", "class": "GALACTIC", "sprite": "pt_galactic_grunt_m.png", "team": [228, 198], "rewards": {"balls": 10}, "is_boss_battle": true, "victory_flag": "galactic_underpass_cleared", "levels": [38, 40], "spot_name": "Galactic Grunt 2"}
         ],
         "route_menu": [
             {"text": "Team Galactic HQ", "action": "EXIT", "target_area": "TEAM_GALACTIC_HQ", "condition": "can_exit", "color": "RED"},
-            {"text": "RAID THE WAREHOUSE", "action": "GALACTIC_GAUNTLET", "flag_condition": "not galactic_underpass_cleared", "color": "GOLD"},
             {"text": "Veilstone City", "action": "EXIT", "target_area": "VEILSTONE_CITY", "condition": "can_exit", "color": "RED"},
-            {"text": "DUSK STONE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_dusk_stone_galactic_warehouse_c07r0301_7_4", "event": {"lines": ["A Dusk Stone, lying among the rocks."], "gift_item": {"DUSK_STONE": 1}, "flag": "got_dusk_stone_galactic_warehouse_c07r0301_7_4"}},
-            {"text": "HM FLY", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_hm_fly_galactic_warehouse_c07r0301_13_8", "event": {"lines": ["A Hm Fly, in a dark corner."], "gift_item": {"HM_FLY": 1}, "flag": "got_hm_fly_galactic_warehouse_c07r0301_13_8"}},
-            {"text": "TM148", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm148_galactic_warehouse_d26r0106_29_11", "event": {"lines": ["A TM (Sludge-Bomb), beside the cave wall."], "gift_item": {"TM148": 1}, "flag": "got_tm148_galactic_warehouse_d26r0106_29_11"}},
-            {"text": "GALACTIC KEY", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_galactic_key_galactic_warehouse_d26r0106_20_5", "event": {"lines": ["A Galactic Key, left behind by a hiker."], "gift_item": {"GALACTIC_KEY": 1}, "flag": "got_galactic_key_galactic_warehouse_d26r0106_20_5"}},
-            {"text": "ZINC", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_zinc_galactic_warehouse_d26r0106_62_3", "event": {"lines": ["A Zinc, lying among the rocks."], "gift_item": {"ZINC": 1}, "flag": "got_zinc_galactic_warehouse_d26r0106_62_3"}}
+            {"text": "DUSK STONE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_dusk_stone_galactic_warehouse_c07r0301_7_4", "event": {"lines": ["A Dusk Stone, lying on the floor."], "gift_item": {"DUSK_STONE": 1}, "flag": "got_dusk_stone_galactic_warehouse_c07r0301_7_4"}},
+            {"text": "HM FLY", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_hm_fly_galactic_warehouse_c07r0301_13_8", "event": {"lines": ["HM02 Fly, tucked under a desk."], "gift_item": {"HM_FLY": 1}, "flag": "got_hm_fly_galactic_warehouse_c07r0301_13_8"}},
+            {"text": "TM148", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm148_galactic_warehouse_d26r0106_29_11", "event": {"lines": ["A TM (Sludge-Bomb), left on a shelf."], "gift_item": {"TM148": 1}, "flag": "got_tm148_galactic_warehouse_d26r0106_29_11"}},
+            {"text": "GALACTIC KEY", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_galactic_key_galactic_warehouse_d26r0106_20_5", "event": {"lines": ["A Galactic Key, in a corner of the room."], "gift_item": {"GALACTIC_KEY": 1}, "flag": "got_galactic_key_galactic_warehouse_d26r0106_20_5"}},
+            {"text": "ZINC", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_zinc_galactic_warehouse_d26r0106_62_3", "event": {"lines": ["A Zinc, lying on the floor."], "gift_item": {"ZINC": 1}, "flag": "got_zinc_galactic_warehouse_d26r0106_62_3"}}
         ],
         "next_area": "VEILSTONE_CITY"
     },
@@ -1854,14 +1853,14 @@
             {"text": "Galactic Warehouse", "action": "EXIT", "target_area": "GALACTIC_WAREHOUSE", "condition": "can_exit", "color": "RED"},
             {"text": "Cyrus", "action": "NPC", "target": "cyrus_hq", "flag_condition": "not sinnoh_hq_cyrus_beaten", "color": "GOLD"}, {"text": "Commander Saturn", "action": "NPC", "target": "saturn_hq", "color": "GOLD"}, {"text": "Galactic machine", "action": "NPC", "target": "hq_trio_machine", "color": "GOLD"},
             {"text": "Veilstone City", "action": "EXIT", "target_area": "VEILSTONE_CITY", "condition": "can_exit", "color": "RED"},
-            {"text": "TM299", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm299_team_galactic_hq_d26r0101_52_14", "event": {"lines": ["A TM (Snatch), lying among the rocks."], "gift_item": {"TM299": 1}, "flag": "got_tm299_team_galactic_hq_d26r0101_52_14"}},
-            {"text": "DUBIOUS DISC", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_dubious_disc_team_galactic_hq_d26r0101_16_6", "event": {"lines": ["A Dubious Disc, in a dark corner."], "gift_item": {"DUBIOUS_DISC": 1}, "flag": "got_dubious_disc_team_galactic_hq_d26r0101_16_6"}},
-            {"text": "MAX REVIVE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_max_revive_team_galactic_hq_d26r0102_48_21", "event": {"lines": ["A Max Revive, beside the cave wall."], "gift_item": {"MAX_REVIVE": 1}, "flag": "got_max_revive_team_galactic_hq_d26r0102_48_21"}},
-            {"text": "GREEN SHARD", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_green_shard_team_galactic_hq_d26r0102_3_11", "event": {"lines": ["A Green Shard, left behind by a hiker."], "gift_item": {"GREEN_SHARD": 1}, "flag": "got_green_shard_team_galactic_hq_d26r0102_3_11"}},
-            {"text": "TM273", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm273_team_galactic_hq_d26r0103_36_12", "event": {"lines": ["A TM (Frustration), lying among the rocks."], "gift_item": {"TM273": 1}, "flag": "got_tm273_team_galactic_hq_d26r0103_36_12"}},
-            {"text": "MAX ELIXIR", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_max_elixir_team_galactic_hq_d26r0103_50_21", "event": {"lines": ["A Max Elixir, in a dark corner."], "gift_item": {"MAX_ELIXIR": 1}, "flag": "got_max_elixir_team_galactic_hq_d26r0103_50_21"}},
-            {"text": "PROTEIN", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_protein_team_galactic_hq_d26r0103_38_20", "event": {"lines": ["A Protein, beside the cave wall."], "gift_item": {"PROTEIN": 1}, "flag": "got_protein_team_galactic_hq_d26r0103_38_20"}},
-            {"text": "FULL RESTORE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_full_restore_team_galactic_hq_d26r0108_6_8", "event": {"lines": ["A Full Restore, left behind by a hiker."], "gift_item": {"FULL_RESTORE": 1}, "flag": "got_full_restore_team_galactic_hq_d26r0108_6_8"}}
+            {"text": "TM299", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm299_team_galactic_hq_d26r0101_52_14", "event": {"lines": ["A TM (Snatch), lying on the floor."], "gift_item": {"TM299": 1}, "flag": "got_tm299_team_galactic_hq_d26r0101_52_14"}},
+            {"text": "DUBIOUS DISC", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_dubious_disc_team_galactic_hq_d26r0101_16_6", "event": {"lines": ["A Dubious Disc, tucked under a desk."], "gift_item": {"DUBIOUS_DISC": 1}, "flag": "got_dubious_disc_team_galactic_hq_d26r0101_16_6"}},
+            {"text": "MAX REVIVE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_max_revive_team_galactic_hq_d26r0102_48_21", "event": {"lines": ["A Max Revive, left on a shelf."], "gift_item": {"MAX_REVIVE": 1}, "flag": "got_max_revive_team_galactic_hq_d26r0102_48_21"}},
+            {"text": "GREEN SHARD", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_green_shard_team_galactic_hq_d26r0102_3_11", "event": {"lines": ["A Green Shard, in a corner of the room."], "gift_item": {"GREEN_SHARD": 1}, "flag": "got_green_shard_team_galactic_hq_d26r0102_3_11"}},
+            {"text": "TM273", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm273_team_galactic_hq_d26r0103_36_12", "event": {"lines": ["A TM (Frustration), lying on the floor."], "gift_item": {"TM273": 1}, "flag": "got_tm273_team_galactic_hq_d26r0103_36_12"}},
+            {"text": "MAX ELIXIR", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_max_elixir_team_galactic_hq_d26r0103_50_21", "event": {"lines": ["A Max Elixir, tucked under a desk."], "gift_item": {"MAX_ELIXIR": 1}, "flag": "got_max_elixir_team_galactic_hq_d26r0103_50_21"}},
+            {"text": "PROTEIN", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_protein_team_galactic_hq_d26r0103_38_20", "event": {"lines": ["A Protein, left on a shelf."], "gift_item": {"PROTEIN": 1}, "flag": "got_protein_team_galactic_hq_d26r0103_38_20"}},
+            {"text": "FULL RESTORE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_full_restore_team_galactic_hq_d26r0108_6_8", "event": {"lines": ["A Full Restore, in a corner of the room."], "gift_item": {"FULL_RESTORE": 1}, "flag": "got_full_restore_team_galactic_hq_d26r0108_6_8"}}
         ]
     },
     "IRON_ISLAND": {
@@ -1942,7 +1941,7 @@
             {"text": "MIND PLATE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_mind_plate_solaceon_ruins_d07r0116_4_9", "event": {"lines": ["A Mind Plate, lying among the rocks."], "gift_item": {"MIND_PLATE": 1}, "flag": "got_mind_plate_solaceon_ruins_d07r0116_4_9"}},
             {"text": "ODD INCENSE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_odd_incense_solaceon_ruins_d07r0116_6_9", "event": {"lines": ["An Odd Incense, in a dark corner."], "gift_item": {"ODD_INCENSE": 1}, "flag": "got_odd_incense_solaceon_ruins_d07r0116_6_9"}},
             {"text": "NUGGET", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_nugget_solaceon_ruins_d07r0116_4_7", "event": {"lines": ["A Nugget, beside the cave wall."], "gift_item": {"NUGGET": 1}, "flag": "got_nugget_solaceon_ruins_d07r0116_4_7"}},
-            {"text": "HM DEFOG", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_hm_defog_solaceon_ruins_d07r0116_6_7", "event": {"lines": ["A Hm Defog, left behind by a hiker."], "gift_item": {"HM_DEFOG": 1}, "flag": "got_hm_defog_solaceon_ruins_d07r0116_6_7"}}
+            {"text": "HM DEFOG", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_hm_defog_solaceon_ruins_d07r0116_6_7", "event": {"lines": ["HM05 Defog, left behind by a hiker."], "gift_item": {"HM_DEFOG": 1}, "flag": "got_hm_defog_solaceon_ruins_d07r0116_6_7"}}
         ],
         "trainer_pool": [
             {"name": "Ruin Maniac Karl", "class": "RUIN_MANIAC", "sprite": "pt_ruin_maniac.png", "team": [74, 74, 436], "levels": [19, 21, 23], "rewards": {"balls": 2}}
@@ -2714,7 +2713,7 @@
             {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
             {"text": "Route 216", "action": "EXIT", "target_area": "SINNOH_ROUTE_216", "condition": "can_exit", "color": "RED"},
             {"text": "Acuity Lakefront", "action": "EXIT", "target_area": "ACUITY_LAKEFRONT", "condition": "can_exit", "color": "RED"},
-            {"text": "HM ROCK CLIMB", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_hm_rock_climb_sinnoh_route_217_r217_8_49", "event": {"lines": ["A Hm Rock Climb, lying in the grass."], "gift_item": {"HM_ROCK_CLIMB": 1}, "flag": "got_hm_rock_climb_sinnoh_route_217_r217_8_49"}},
+            {"text": "HM ROCK CLIMB", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_hm_rock_climb_sinnoh_route_217_r217_8_49", "event": {"lines": ["HM08 Rock Climb, lying in the grass."], "gift_item": {"HM_ROCK_CLIMB": 1}, "flag": "got_hm_rock_climb_sinnoh_route_217_r217_8_49"}},
             {"text": "IRON", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_iron_sinnoh_route_217_r217_17_74", "event": {"lines": ["An Iron, dropped by the path."], "gift_item": {"IRON": 1}, "flag": "got_iron_sinnoh_route_217_r217_17_74"}},
             {"text": "TM241", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm241_sinnoh_route_217_r217_12_60", "event": {"lines": ["A TM (Hail), tucked behind a tree."], "gift_item": {"TM241": 1}, "flag": "got_tm241_sinnoh_route_217_r217_12_60"}},
             {"text": "BLUE SHARD", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_blue_shard_sinnoh_route_217_r217_9_102", "event": {"lines": ["A Blue Shard, left near a ledge."], "gift_item": {"BLUE_SHARD": 1}, "flag": "got_blue_shard_sinnoh_route_217_r217_9_102"}},
@@ -3432,7 +3431,7 @@
       "target": "ETERNA_GALACTIC_BUILDING",
       "completed_flag": "galactic_eterna_cleared",
       "steps": [
-        {"area": "ETERNA_CITY", "at": [51, 8], "label": "Cynthia", "done": "received_hm_cut"},
+        {"area": "ETERNA_CITY", "at": [51, 10], "label": "Cynthia", "done": "received_hm_cut"},
         {"area": "ETERNA_GALACTIC_BUILDING", "label": "Galactic building", "done": "galactic_eterna_cleared"}
       ]
     },

@@ -2,6 +2,22 @@
   "UNOVA_OLD_ROD_POOL_PERCENTAGES": {"550": 40, "118": 30, "129": 30},
   "UNOVA_GOOD_ROD_POOL_PERCENTAGES": {"550": 35, "118": 25, "592": 25, "339": 15},
   "UNOVA_SUPER_ROD_POOL_PERCENTAGES": {"550": 25, "592": 25, "594": 15, "119": 15, "223": 10, "90": 10},
+  "UNOVA_ROUTE_11_SUPER_ROD_PERCENTAGES": {
+    "118": 70,
+    "550": 30
+  },
+  "UNOVA_ROUTE_11_SURF_PERCENTAGES": {
+    "550": 70,
+    "418": 30
+  },
+  "VILLAGE_BRIDGE_SUPER_ROD_PERCENTAGES": {
+    "318": 70,
+    "550": 30
+  },
+  "VILLAGE_BRIDGE_SURF_PERCENTAGES": {
+    "550": 70,
+    "183": 30
+  },
   "UNOVA_ROUTE_13_SUPER_ROD_PERCENTAGES": {
     "370": 70,
     "90": 30
@@ -553,7 +569,12 @@
   "UNDELLA_BAY_PERCENTAGES": { "278": 12, "458": 8, "279": 8, "363": 8, "592": 8, "223": 8, "320": 8, "226": 8, "321": 8, "364": 8, "365": 8, "593": 8 },
   "SEASIDE_CAVE_PERCENTAGES": {"527": 35, "55": 28, "525": 25, "86": 5, "602": 2, "603": 2, "213": 2, "530": 5, "592": 2, "370": 2, "90": 2},
   "NATURE_PRESERVE_PERCENTAGES": {"274": 30, "334": 20, "55": 10, "164": 10, "203": 15, "611": 10, "352": 5, "531": 5, "206": 5, "275": 2, "550": 2, "418": 2, "129": 2, "130": 2},
-  "VILLAGE_BRIDGE_PERCENTAGES": {"55": 25, "400": 25, "629": 10, "335": 15, "336": 15, "627": 10, "630": 5, "628": 5, "531": 5, "587": 3, "550": 2, "318": 2, "319": 2},
+  "VILLAGE_BRIDGE_PERCENTAGES": {
+    "55": 35,
+    "183": 35,
+    "335": 15,
+    "336": 15
+  },
   "CHALLENGERS_CAVE_PERCENTAGES": {"525": 20, "527": 20, "75": 20, "108": 17, "302": 10, "303": 10, "447": 3, "530": 5, "550": 2, "60": 2, "61": 2},
   "STORY_PROGRESSION": {
     "CHALLENGERS_CAVE": {
@@ -653,139 +674,542 @@
       "trainer_pool": [
         {
           "name": "Smasher Lizzy",
-          "class": "BATTLE_GIRL",
-          "sprite": "battle_girl.png",
+          "class": "SMASHER",
+          "sprite": "b2_smasher.png",
           "team": [
             547
           ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Smasher Amy",
-          "class": "BATTLE_GIRL",
-          "sprite": "battle_girl.png",
-          "team": [
-            549
+          "levels": [
+            44
           ],
           "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Artist Gough",
-          "class": "GENTLEMAN",
-          "sprite": "gentleman.png",
-          "team": [
-            192
-          ],
-          "rewards": {
-            "balls": 3
-          }
-        },
-        {
-          "name": "Gentleman Stonewall",
-          "class": "GENTLEMAN",
-          "sprite": "gentleman.png",
-          "team": [
-            632,
-            448
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Baker Chris",
-          "class": "BEAUTY",
-          "sprite": "beauty.png",
-          "team": [
-            631
-          ],
-          "rewards": {
-            "balls": 3
-          }
+            "balls": 2
+          },
+          "b2_id": 727
         },
         {
           "name": "Youngster Karl",
           "class": "YOUNGSTER",
-          "sprite": "youngster.png",
+          "sprite": "b2_youngster.png",
           "team": [
             28
           ],
+          "levels": [
+            42
+          ],
           "rewards": {
-            "balls": 3
-          }
+            "balls": 2
+          },
+          "b2_id": 336
+        },
+        {
+          "name": "Fisherman Dean",
+          "class": "FISHERMAN",
+          "sprite": "b2_fisherman.png",
+          "team": [
+            550
+          ],
+          "levels": [
+            42
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 349
+        },
+        {
+          "name": "Artist Gough",
+          "class": "ARTIST",
+          "sprite": "pt_artist.png",
+          "team": [
+            192
+          ],
+          "levels": [
+            42
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 338
         },
         {
           "name": "Hoopster Derrick",
-          "class": "YOUNGSTER",
-          "sprite": "youngster.png",
+          "class": "HOOPSTER",
+          "sprite": "b2_hoopster.png",
           "team": [
             239,
             125,
             239
           ],
+          "levels": [
+            42,
+            42,
+            42
+          ],
           "rewards": {
-            "balls": 5
+            "balls": 4
+          },
+          "b2_id": 726,
+          "battle_options": {
+            "double": true
           }
         },
         {
           "name": "Hoopster Nicolas",
-          "class": "YOUNGSTER",
-          "sprite": "youngster.png",
+          "class": "HOOPSTER",
+          "sprite": "b2_hoopster.png",
           "team": [
             240,
             126,
             240
           ],
+          "levels": [
+            42,
+            42,
+            42
+          ],
           "rewards": {
-            "balls": 5
+            "balls": 4
+          },
+          "b2_id": 729,
+          "battle_options": {
+            "double": true
           }
+        },
+        {
+          "name": "Smasher Amy",
+          "class": "SMASHER",
+          "sprite": "b2_smasher.png",
+          "team": [
+            549
+          ],
+          "levels": [
+            44
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 728
         }
       ],
-      "route_menu": [
-        {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
-          "text": "FISH",
-          "action": "FISH",
-          "condition": "can_fish",
-          "color": "ORANGE"
-        },
-        {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
-        },
-        {
-          "text": "Route 11",
-          "action": "EXIT",
-          "target_area": "UNOVA_ROUTE_11",
-          "condition": "can_exit",
-          "color": "RED"
-        },
-        {
-          "text": "Route 12",
-          "action": "EXIT",
-          "target_area": "UNOVA_ROUTE_12",
-          "condition": "can_exit",
-          "color": "RED"
+      "route_menu": [],
+      "wild_tables": {
+        "ALL": {
+          "grass": [
+            [
+              55,
+              0,
+              20,
+              36,
+              36
+            ],
+            [
+              183,
+              0,
+              20,
+              36,
+              36
+            ],
+            [
+              335,
+              0,
+              10,
+              37,
+              37
+            ],
+            [
+              336,
+              0,
+              10,
+              37,
+              37
+            ],
+            [
+              55,
+              0,
+              10,
+              37,
+              37
+            ],
+            [
+              183,
+              0,
+              10,
+              37,
+              37
+            ],
+            [
+              55,
+              0,
+              5,
+              38,
+              38
+            ],
+            [
+              183,
+              0,
+              5,
+              38,
+              38
+            ],
+            [
+              335,
+              0,
+              4,
+              39,
+              39
+            ],
+            [
+              336,
+              0,
+              4,
+              39,
+              39
+            ],
+            [
+              335,
+              0,
+              1,
+              39,
+              39
+            ],
+            [
+              336,
+              0,
+              1,
+              39,
+              39
+            ]
+          ],
+          "dark": [
+            [
+              55,
+              0,
+              20,
+              40,
+              40
+            ],
+            [
+              183,
+              0,
+              20,
+              40,
+              40
+            ],
+            [
+              335,
+              0,
+              10,
+              41,
+              41
+            ],
+            [
+              336,
+              0,
+              10,
+              41,
+              41
+            ],
+            [
+              55,
+              0,
+              10,
+              41,
+              41
+            ],
+            [
+              183,
+              0,
+              10,
+              41,
+              41
+            ],
+            [
+              55,
+              0,
+              5,
+              42,
+              42
+            ],
+            [
+              183,
+              0,
+              5,
+              42,
+              42
+            ],
+            [
+              335,
+              0,
+              4,
+              43,
+              43
+            ],
+            [
+              336,
+              0,
+              4,
+              43,
+              43
+            ],
+            [
+              335,
+              0,
+              1,
+              43,
+              43
+            ],
+            [
+              336,
+              0,
+              1,
+              43,
+              43
+            ]
+          ],
+          "rustle": [
+            [
+              531,
+              0,
+              20,
+              36,
+              36
+            ],
+            [
+              531,
+              0,
+              20,
+              36,
+              36
+            ],
+            [
+              587,
+              0,
+              10,
+              37,
+              37
+            ],
+            [
+              206,
+              0,
+              10,
+              37,
+              37
+            ],
+            [
+              531,
+              0,
+              10,
+              38,
+              38
+            ],
+            [
+              531,
+              0,
+              10,
+              38,
+              38
+            ],
+            [
+              531,
+              0,
+              5,
+              39,
+              39
+            ],
+            [
+              531,
+              0,
+              5,
+              39,
+              39
+            ],
+            [
+              531,
+              0,
+              4,
+              39,
+              39
+            ],
+            [
+              184,
+              0,
+              4,
+              39,
+              39
+            ],
+            [
+              531,
+              0,
+              1,
+              39,
+              39
+            ],
+            [
+              184,
+              0,
+              1,
+              39,
+              39
+            ]
+          ],
+          "surf": [
+            [
+              550,
+              0,
+              60,
+              25,
+              40
+            ],
+            [
+              183,
+              0,
+              30,
+              25,
+              40
+            ],
+            [
+              550,
+              0,
+              5,
+              30,
+              40
+            ],
+            [
+              550,
+              0,
+              4,
+              30,
+              40
+            ],
+            [
+              550,
+              0,
+              1,
+              30,
+              40
+            ]
+          ],
+          "ripple": [
+            [
+              183,
+              0,
+              60,
+              25,
+              40
+            ],
+            [
+              550,
+              1,
+              30,
+              25,
+              40
+            ],
+            [
+              184,
+              0,
+              5,
+              30,
+              40
+            ],
+            [
+              131,
+              0,
+              4,
+              30,
+              40
+            ],
+            [
+              131,
+              0,
+              1,
+              30,
+              40
+            ]
+          ],
+          "fish": [
+            [
+              318,
+              0,
+              60,
+              40,
+              60
+            ],
+            [
+              550,
+              0,
+              30,
+              40,
+              60
+            ],
+            [
+              318,
+              0,
+              5,
+              50,
+              70
+            ],
+            [
+              318,
+              0,
+              4,
+              50,
+              70
+            ],
+            [
+              318,
+              0,
+              1,
+              50,
+              70
+            ]
+          ],
+          "fish_ripple": [
+            [
+              318,
+              0,
+              60,
+              40,
+              60
+            ],
+            [
+              550,
+              1,
+              30,
+              40,
+              60
+            ],
+            [
+              319,
+              0,
+              5,
+              50,
+              70
+            ],
+            [
+              319,
+              0,
+              4,
+              50,
+              70
+            ],
+            [
+              319,
+              0,
+              1,
+              50,
+              70
+            ]
+          ]
         }
-      ],
-      "next_area": "UNOVA_ROUTE_11"
+      },
+      "wild_levels": {
+        "land": [
+          36,
+          39
+        ]
+      },
+      "surf_pool_percentages": "VILLAGE_BRIDGE_SURF_PERCENTAGES"
     },
     "MARVELOUS_BRIDGE": {
       "area_type": "wild_route",
@@ -8297,7 +8721,7 @@
             "player_won": [
               "Roxie: Sigh! What are you doing losing, Roxie?! Well... I guess that means you're strong!",
               "Roxie: I gave it everything, and I feel refreshed! Here: the Toxic Badge!",
-              "Roxie: Two Badges! Pokemon up to Lv. 30 will listen to you now, even traded ones.",
+              "Roxie: Two Badges! Pokemon up to Lv. 40 will listen to you now, even traded ones.",
               "Roxie: And TM045 Venoshock! It does double damage if the target's already poisoned. Almost too much punch!"
             ],
             "player_lost": [
@@ -9005,7 +9429,7 @@
             ],
             "player_won": [
               "Burgh: Oh hoo... You're very strong indeed! Here, the Insect Badge. It suits you!",
-              "Burgh: With three Badges, Pokemon up to Lv. 40 will obey you, even traded ones.",
+              "Burgh: With three Badges, Pokemon up to Lv. 50 will obey you, even traded ones.",
               "Burgh: And take TM015 Struggle Bug, too. It lowers the Sp. Atk of whatever it hits. The little things count!"
             ],
             "player_lost": [
@@ -9362,7 +9786,7 @@
             "player_won": [
               "Skyla: You're an amazing Trainer. For the first time in about two years, my Pokemon and I fought with our full strength!",
               "{player_name} received the Jet Badge from Skyla!",
-              "Skyla: Wow, hot stuff! With that many Badges, Pokemon up to Lv 70 will obey you.",
+              "Skyla: Wow, hot stuff! With that many Badges, Pokemon up to Lv 80 will obey you.",
               "Skyla: And take this TM, Acrobatics, so you'll always remember this battle!"
             ],
             "player_lost": [
@@ -9552,14 +9976,6 @@
         {
           "text": "Route 13",
           "target_area": "UNOVA_ROUTE_13"
-        },
-        {
-          "text": "Giant Chasm",
-          "target_area": "GIANT_CHASM"
-        },
-        {
-          "text": "Route 11",
-          "target_area": "UNOVA_ROUTE_11"
         }
       ]
     },
@@ -9577,10 +9993,6 @@
           "text": "Route 14",
           "target_area": "UNOVA_ROUTE_14",
           "condition": "beat_unova_champion"
-        },
-        {
-          "text": "Route 21",
-          "target_area": "UNOVA_ROUTE_21"
         },
         {
           "text": "Reversal Mountain",
@@ -9762,23 +10174,99 @@
       "area_type": "town",
       "route_name": "Opelucid City",
       "region": "UNOVA",
-      "backgrounds": { "main": "opelucid_city.png", "pokecenter": "opelucid_center.png", "gym": "opelucid_gym.png" },
       "has_gym": true,
-      "gym": {"trainers": [], "leader": {"name": "Drayden", "class": "GYM_LEADER", "sprite": "drayden.png", "team": [611, 621, 612], "levels": [46, 46, 48], "dialogue": {"intro": ["Drayden: Welcome. I am Drayden, the Opelucid Gym Leader.", "I use Dragon-types — the most powerful type in existence.", "If you can stand before my dragons, you can stand before anything."], "player_won": ["Drayden: You've earned this — the Legend Badge.", "The road to the Pokémon League lies north.", "Go. Discover the truth of Unova."], "player_lost": ["Drayden: Dragon-types are unforgiving.", "Come back stronger. The legend is still yours to write."]}, "rewards": {"balls": 5, "TM044": 1}, "is_boss_battle": true, "badge_reward": "LEGEND", "movesets": {"611": ["DRAGON-DANCE", "DRAGON-RAGE", "ASSURANCE", "DRAGON-TAIL"], "621": ["REVENGE", "CHIP-AWAY", "NIGHT-SLASH", "DRAGON-TAIL"], "612": ["DRAGON-DANCE", "ASSURANCE", "SLASH", "DRAGON-TAIL"]}}, "requirements": {"badges": 7, "fail_text": "Drayden is waiting — earn seven badges before challenging the Opelucid Gym."}},
+      "gym": {
+        "requirements": {
+          "badges": 6,
+          "fail_text": "Drayden is waiting. Come back with six Unova badges."
+        },
+        "trainers": [],
+        "leader": {
+          "class": "GYM_LEADER",
+          "name": "Drayden",
+          "sprite": "drayden.png",
+          "team": [
+            621,
+            330,
+            612
+          ],
+          "levels": [
+            46,
+            46,
+            48
+          ],
+          "held_items": {
+            "612": "SITRUS_BERRY"
+          },
+          "movesets": {
+            "330": [
+              "DRAGON-TAIL",
+              "CRUNCH",
+              "EARTH-POWER",
+              "ROCK-SLIDE"
+            ],
+            "612": [
+              "DRAGON-TAIL",
+              "SLASH",
+              "ASSURANCE",
+              "DRAGON-DANCE"
+            ],
+            "621": [
+              "DRAGON-TAIL",
+              "REVENGE",
+              "SLASH",
+              "CRUNCH"
+            ]
+          },
+          "dialogue": {
+            "intro": [
+              "Drayden: Welcome. I am Drayden, the Opelucid Gym Leader, and the city's mayor.",
+              "Drayden: I'm searching for a young Trainer who can show me a bright future. Perhaps that's you?"
+            ],
+            "player_won": [
+              "Drayden: Wonderful. Battles are about meeting our challenges together, with others.",
+              "{player_name} received the Legend Badge from Drayden!",
+              "Drayden: With seven badges, Pokemon up to Lv 90 will obey you.",
+              "Drayden: And take this TM: Dragon Tail. It sends the foe's Pokemon back and drags out another.",
+              "Drayden: Professor Juniper asked me to tell you about the dragons. Please wait outside."
+            ],
+            "player_lost": [
+              "Drayden: Dragon types are unforgiving. Come back stronger."
+            ]
+          },
+          "rewards": {
+            "balls": 5,
+            "TM044": 1
+          },
+          "is_boss_battle": true,
+          "badge_reward": "LEGEND",
+          "victory_flag": "b2_legend_badge"
+        }
+      },
       "travel_options": [
-        { "text": "Route 9", "target_area": "UNOVA_ROUTE_9" },
-        { "text": "Route 10", "target_area": "UNOVA_ROUTE_10", "condition": "has_legend_badge" },
-        { "text": "Route 11", "target_area": "UNOVA_ROUTE_11", "condition": "beat_unova_champion" },
-        { "text": "Route 22", "target_area": "UNOVA_ROUTE_22" },
-        {"text": "Tubeline Bridge", "target_area": "TUBELINE_BRIDGE"}
-      ],
-      "explore_options": [
-        { "text": "Pokémon Center", "action": "HEAL" },
-        { "text": "Shop", "action": "SHOP" },
-        { "text": "Challenge Gym", "action": "GYM" },
-        { "text": "Learn About the Dragon Stones", "action": "NPC", "target": "drayden_dragon_stones", "flag_condition": "not heard_dragon_stones" }
-      ],
-      "next_area": "UNOVA_ROUTE_10"
+        {
+          "text": "Route 9",
+          "target_area": "UNOVA_ROUTE_9"
+        },
+        {
+          "text": "Route 10",
+          "target_area": "UNOVA_ROUTE_10",
+          "condition": "has_legend_badge"
+        },
+        {
+          "text": "Route 11",
+          "target_area": "UNOVA_ROUTE_11",
+          "condition": "beat_unova_champion"
+        },
+        {
+          "text": "Route 22",
+          "target_area": "UNOVA_ROUTE_22"
+        },
+        {
+          "text": "Tubeline Bridge",
+          "target_area": "TUBELINE_BRIDGE"
+        }
+      ]
     },
     "UNOVA_POKEMON_LEAGUE": {
       "area_type": "town",
@@ -18501,22 +18989,533 @@
       "min_rounds": 2,
       "trainer_pool": [
         {
-          "name": "Ace Trainer Beckett",
-          "class": "ACE_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "team": [507, 587],
-          "rewards": { "balls": 3 }
+          "name": "Pokemon Breeder Magnolia",
+          "class": "BREEDER",
+          "sprite": "b2_breeder.png",
+          "team": [
+            587,
+            334
+          ],
+          "levels": [
+            41,
+            41
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 303
+        },
+        {
+          "name": "Pokemon Ranger Crofton",
+          "class": "RANGER",
+          "sprite": "ranger.png",
+          "team": [
+            535,
+            536
+          ],
+          "levels": [
+            42,
+            42
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 305
+        },
+        {
+          "name": "Pokemon Ranger Thalia",
+          "class": "RANGER",
+          "sprite": "ranger.png",
+          "team": [
+            512,
+            514,
+            516
+          ],
+          "levels": [
+            52,
+            52,
+            52
+          ],
+          "rewards": {
+            "balls": 4
+          },
+          "b2_id": 304
         }
       ],
-      "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-        { "text": "Opelucid City", "action": "EXIT", "target_area": "OPELUCID_CITY", "condition": "can_exit", "color": "RED" },
-        { "text": "Lacunosa Town", "action": "EXIT", "target_area": "LACUNOSA_TOWN", "condition": "can_exit", "color": "RED" },
-        {"text": "Village Bridge", "action": "EXIT", "target_area": "VILLAGE_BRIDGE", "condition": "can_exit", "color": "RED"}
-      ],
-      "next_area": "LACUNOSA_TOWN"
+      "route_menu": [],
+      "wild_tables": {
+        "ALL": {
+          "grass": [
+            [
+              616,
+              0,
+              10.0,
+              36,
+              36
+            ],
+            [
+              588,
+              0,
+              10.0,
+              36,
+              36
+            ],
+            [
+              55,
+              0,
+              20,
+              36,
+              36
+            ],
+            [
+              207,
+              0,
+              10,
+              37,
+              37
+            ],
+            [
+              183,
+              0,
+              10,
+              36,
+              36
+            ],
+            [
+              335,
+              0,
+              10,
+              38,
+              38
+            ],
+            [
+              336,
+              0,
+              10,
+              38,
+              38
+            ],
+            [
+              591,
+              0,
+              5,
+              37,
+              37
+            ],
+            [
+              588,
+              0,
+              2.5,
+              36,
+              36
+            ],
+            [
+              616,
+              0,
+              2.5,
+              36,
+              36
+            ],
+            [
+              207,
+              0,
+              4,
+              39,
+              39
+            ],
+            [
+              616,
+              0,
+              2.0,
+              39,
+              39
+            ],
+            [
+              588,
+              0,
+              2.0,
+              39,
+              39
+            ],
+            [
+              207,
+              0,
+              1,
+              39,
+              39
+            ],
+            [
+              616,
+              0,
+              0.5,
+              39,
+              39
+            ],
+            [
+              588,
+              0,
+              0.5,
+              39,
+              39
+            ]
+          ],
+          "dark": [
+            [
+              616,
+              0,
+              10.0,
+              40,
+              40
+            ],
+            [
+              588,
+              0,
+              10.0,
+              40,
+              40
+            ],
+            [
+              55,
+              0,
+              20,
+              40,
+              40
+            ],
+            [
+              207,
+              0,
+              10,
+              41,
+              41
+            ],
+            [
+              183,
+              0,
+              10,
+              40,
+              40
+            ],
+            [
+              335,
+              0,
+              10,
+              42,
+              42
+            ],
+            [
+              336,
+              0,
+              10,
+              42,
+              42
+            ],
+            [
+              591,
+              0,
+              5,
+              41,
+              41
+            ],
+            [
+              588,
+              0,
+              2.5,
+              40,
+              40
+            ],
+            [
+              616,
+              0,
+              2.5,
+              40,
+              40
+            ],
+            [
+              207,
+              0,
+              4,
+              43,
+              43
+            ],
+            [
+              616,
+              0,
+              2.0,
+              43,
+              43
+            ],
+            [
+              588,
+              0,
+              2.0,
+              43,
+              43
+            ],
+            [
+              207,
+              0,
+              1,
+              43,
+              43
+            ],
+            [
+              616,
+              0,
+              0.5,
+              43,
+              43
+            ],
+            [
+              588,
+              0,
+              0.5,
+              43,
+              43
+            ]
+          ],
+          "rustle": [
+            [
+              531,
+              0,
+              20,
+              36,
+              36
+            ],
+            [
+              531,
+              0,
+              20,
+              36,
+              36
+            ],
+            [
+              587,
+              0,
+              10,
+              37,
+              37
+            ],
+            [
+              531,
+              0,
+              10,
+              37,
+              37
+            ],
+            [
+              531,
+              0,
+              10,
+              38,
+              38
+            ],
+            [
+              531,
+              0,
+              10,
+              38,
+              38
+            ],
+            [
+              531,
+              0,
+              5,
+              39,
+              39
+            ],
+            [
+              531,
+              0,
+              5,
+              39,
+              39
+            ],
+            [
+              472,
+              0,
+              4,
+              39,
+              39
+            ],
+            [
+              184,
+              0,
+              4,
+              39,
+              39
+            ],
+            [
+              472,
+              0,
+              1,
+              39,
+              39
+            ],
+            [
+              184,
+              0,
+              1,
+              39,
+              39
+            ]
+          ],
+          "surf": [
+            [
+              550,
+              0,
+              60,
+              25,
+              40
+            ],
+            [
+              418,
+              0,
+              30,
+              25,
+              40
+            ],
+            [
+              550,
+              0,
+              5,
+              30,
+              40
+            ],
+            [
+              550,
+              0,
+              4,
+              30,
+              40
+            ],
+            [
+              550,
+              0,
+              1,
+              30,
+              40
+            ]
+          ],
+          "ripple": [
+            [
+              418,
+              0,
+              60,
+              25,
+              40
+            ],
+            [
+              550,
+              1,
+              30,
+              25,
+              40
+            ],
+            [
+              419,
+              0,
+              5,
+              30,
+              40
+            ],
+            [
+              419,
+              0,
+              4,
+              30,
+              40
+            ],
+            [
+              419,
+              0,
+              1,
+              30,
+              40
+            ]
+          ],
+          "fish": [
+            [
+              118,
+              0,
+              60,
+              40,
+              50
+            ],
+            [
+              550,
+              0,
+              30,
+              40,
+              50
+            ],
+            [
+              118,
+              0,
+              5,
+              50,
+              60
+            ],
+            [
+              118,
+              0,
+              4,
+              50,
+              60
+            ],
+            [
+              118,
+              0,
+              1,
+              50,
+              60
+            ]
+          ],
+          "fish_ripple": [
+            [
+              118,
+              0,
+              60,
+              40,
+              60
+            ],
+            [
+              550,
+              1,
+              30,
+              40,
+              60
+            ],
+            [
+              119,
+              0,
+              5,
+              50,
+              70
+            ],
+            [
+              119,
+              0,
+              4,
+              50,
+              70
+            ],
+            [
+              119,
+              0,
+              1,
+              50,
+              70
+            ]
+          ]
+        }
+      },
+      "wild_levels": {
+        "land": [
+          36,
+          39
+        ]
+      },
+      "surf_pool_percentages": "UNOVA_ROUTE_11_SURF_PERCENTAGES"
     },
     "UNOVA_ROUTE_12": {
       "area_type": "wild_route",
@@ -18527,22 +19526,355 @@
       "min_rounds": 2,
       "trainer_pool": [
         {
-          "name": "Fisherman Bruce",
-          "class": "FISHERMAN",
-          "sprite": "fisherman.png",
-          "team": [550, 592],
-          "rewards": { "balls": 2 }
+          "name": "Backers Cleo & Rio",
+          "class": "BACKERS",
+          "sprite": "backers.png",
+          "team": [
+            315,
+            315
+          ],
+          "levels": [
+            40,
+            40
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 291,
+          "battle_options": {
+            "double": true
+          }
+        },
+        {
+          "name": "Black Belt Jeriel",
+          "class": "BLACK_BELT",
+          "sprite": "b2_black_belt.png",
+          "team": [
+            214
+          ],
+          "levels": [
+            42
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 300
+        },
+        {
+          "name": "Battle Girl Azra",
+          "class": "BATTLE_GIRL",
+          "sprite": "b2_battle_girl.png",
+          "team": [
+            533,
+            619
+          ],
+          "levels": [
+            41,
+            41
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 301
         }
       ],
-      "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-        { "text": "Lacunosa Town", "action": "EXIT", "target_area": "LACUNOSA_TOWN", "condition": "can_exit", "color": "RED" },
-        { "text": "Undella Town", "action": "EXIT", "target_area": "UNDELLA_TOWN", "condition": "can_exit", "color": "RED" },
-        {"text": "Village Bridge", "action": "EXIT", "target_area": "VILLAGE_BRIDGE", "condition": "can_exit", "color": "RED"}
-      ],
-      "next_area": "UNDELLA_TOWN"
+      "route_menu": [],
+      "wild_tables": {
+        "ALL": {
+          "grass": [
+            [
+              415,
+              0,
+              20,
+              35,
+              35
+            ],
+            [
+              315,
+              0,
+              20,
+              35,
+              35
+            ],
+            [
+              540,
+              0,
+              10,
+              36,
+              36
+            ],
+            [
+              520,
+              0,
+              10,
+              37,
+              37
+            ],
+            [
+              214,
+              0,
+              5.0,
+              36,
+              36
+            ],
+            [
+              127,
+              0,
+              5.0,
+              36,
+              36
+            ],
+            [
+              520,
+              0,
+              10,
+              36,
+              36
+            ],
+            [
+              214,
+              0,
+              2.5,
+              38,
+              38
+            ],
+            [
+              127,
+              0,
+              2.5,
+              38,
+              38
+            ],
+            [
+              540,
+              0,
+              5,
+              38,
+              38
+            ],
+            [
+              315,
+              0,
+              4,
+              37,
+              37
+            ],
+            [
+              520,
+              0,
+              4,
+              38,
+              38
+            ],
+            [
+              315,
+              0,
+              1,
+              37,
+              37
+            ],
+            [
+              520,
+              0,
+              1,
+              38,
+              38
+            ]
+          ],
+          "dark": [
+            [
+              415,
+              0,
+              20,
+              39,
+              39
+            ],
+            [
+              315,
+              0,
+              20,
+              39,
+              39
+            ],
+            [
+              540,
+              0,
+              10,
+              40,
+              40
+            ],
+            [
+              520,
+              0,
+              10,
+              41,
+              41
+            ],
+            [
+              214,
+              0,
+              5.0,
+              40,
+              40
+            ],
+            [
+              127,
+              0,
+              5.0,
+              40,
+              40
+            ],
+            [
+              520,
+              0,
+              10,
+              40,
+              40
+            ],
+            [
+              214,
+              0,
+              2.5,
+              42,
+              42
+            ],
+            [
+              127,
+              0,
+              2.5,
+              42,
+              42
+            ],
+            [
+              540,
+              0,
+              5,
+              42,
+              42
+            ],
+            [
+              315,
+              0,
+              4,
+              41,
+              41
+            ],
+            [
+              520,
+              0,
+              4,
+              42,
+              42
+            ],
+            [
+              315,
+              0,
+              1,
+              41,
+              41
+            ],
+            [
+              520,
+              0,
+              1,
+              42,
+              42
+            ]
+          ],
+          "rustle": [
+            [
+              531,
+              0,
+              20,
+              35,
+              35
+            ],
+            [
+              531,
+              0,
+              20,
+              35,
+              35
+            ],
+            [
+              587,
+              0,
+              10,
+              36,
+              36
+            ],
+            [
+              206,
+              0,
+              10,
+              36,
+              36
+            ],
+            [
+              531,
+              0,
+              10,
+              37,
+              37
+            ],
+            [
+              531,
+              0,
+              10,
+              37,
+              37
+            ],
+            [
+              521,
+              0,
+              5,
+              38,
+              38
+            ],
+            [
+              542,
+              0,
+              5,
+              38,
+              38
+            ],
+            [
+              416,
+              0,
+              4,
+              38,
+              38
+            ],
+            [
+              407,
+              0,
+              4,
+              38,
+              38
+            ],
+            [
+              416,
+              0,
+              1,
+              38,
+              38
+            ],
+            [
+              407,
+              0,
+              1,
+              38,
+              38
+            ]
+          ]
+        }
+      },
+      "wild_levels": {
+        "land": [
+          35,
+          38
+        ]
+      }
     },
     "UNOVA_ROUTE_13": {
       "area_type": "wild_route",
@@ -20353,7 +21685,35 @@
       "battle_type": "indoor",
       "min_rounds": 1,
       "trainer_pool": [],
-      "route_menu": [],
+      "route_menu": [
+        {
+          "text": "THE BLACK FOG",
+          "action": "BOSS",
+          "color": "PURPLE",
+          "flag_condition": "not black_fog_banished_celestial_tower",
+          "boss": {
+            "id": 10501,
+            "name": "Black Fog",
+            "level": 36,
+            "no_catch": true,
+            "victory_flag": "black_fog_banished_celestial_tower",
+            "lines": [
+              "The air turns ice-cold. A black fog pours between the graves...",
+              "Two huge eyes open in the dark. A giant Haunter rises: the Black Fog!",
+              "Long ago people worshipped it as a god. It feeds on dreams. Don't let it get yours!"
+            ],
+            "won": [
+              "The Black Fog is too proud to ever be caught.",
+              "It Self-Destructs in a burst of black mist... and is gone.",
+              "But a cold whisper lingers: it will rise again in another haunted place."
+            ],
+            "rewards": {
+              "balls": 10,
+              "RARE_CANDY": 3
+            }
+          }
+        }
+      ],
       "wild_pool_percentages": "UNOVA_CELESTIAL_TOWER_PERCENTAGES"
     },
     "CELESTIAL_TOWER_2F": {
@@ -21200,7 +22560,7 @@
         ], "next_area": "UNDELLA_TOWN"},
         "POKESTAR_STUDIOS": {
           "area_type": "town",
-          "route_name": "PokéStar Studios",
+          "route_name": "Pokéstar Studios",
           "region": "UNOVA",
           "has_gym": false,
           "trainer_encounter_rate": 0,
@@ -21308,6 +22668,9 @@
     {"id": "b2_m34", "type": "MAIN", "title": "The Smouldering Mountain", "description": "Professor Juniper wants you to ask Opelucid's Gym Leader, Drayden, about the legendary dragons. The way east is through Reversal Mountain, where Bianca is chasing rumours of a rare Pokemon.", "condition": {"required_region": "UNOVA", "flag": "b2_lentimas_juniper", "flag_not": "visited_UNDELLA_TOWN"}, "completed_flag": "visited_UNDELLA_TOWN", "target": "REVERSAL_MOUNTAIN"},
     {"id": "b2_m35", "type": "MAIN", "title": "The Town with Walls", "description": "Route 13 runs north along the coast to Lacunosa, a town walled in against something that comes at night. Professor Juniper and Bianca are waiting there.", "condition": {"required_region": "UNOVA", "flag": "visited_UNDELLA_TOWN", "flag_not": "b2_lacunosa_zinzolin"}, "completed_flag": "b2_lacunosa_zinzolin", "target": "LACUNOSA_TOWN"},
     {"id": "b2_m36", "type": "MAIN", "title": "West to Opelucid", "description": "Team Plasma is after the creature from Lacunosa's old tale. Opelucid City, and Drayden, are west along Route 12 and across Village Bridge.", "condition": {"required_region": "UNOVA", "flag": "b2_lacunosa_zinzolin", "flag_not": "visited_OPELUCID_CITY"}, "completed_flag": "visited_OPELUCID_CITY", "target": "UNOVA_ROUTE_12"},
+    {"id": "b2_m37", "type": "MAIN", "title": "The Dragon Mayor", "description": "Opelucid City's mayor is its Gym Leader too: Drayden, master of Dragon types. Iris says to train on Route 9 first. Ride the dragon statues to the top!", "condition": {"required_region": "UNOVA", "flag": "visited_OPELUCID_CITY", "flag_not": "b2_legend_badge"}, "completed_flag": "b2_legend_badge", "target": "OPELUCID_CITY"},
+    {"id": "b2_m38", "type": "MAIN", "title": "A World of Ice", "description": "Drayden has a story about the dragons, and a family treasure Team Plasma wants. Hear him out at his house, then help him drive Team Plasma out of Opelucid.", "condition": {"required_region": "UNOVA", "flag": "b2_legend_badge", "flag_not": "b2_opelucid_cheren"}, "completed_flag": "b2_opelucid_cheren", "target": "OPELUCID_CITY"},
+    {"id": "b2_m39", "type": "MAIN", "title": "The Coldest Place", "description": "The Shadow Triad got away with the DNA Splicers. Cheren says the coldest place in Unova is near Humilau City: take the Marine Tube from Undella Town.", "condition": {"required_region": "UNOVA", "flag": "b2_opelucid_cheren", "flag_not": "visited_HUMILAU_CITY"}, "completed_flag": "visited_HUMILAU_CITY", "target": "UNDELLA_TOWN"},
     {"id": "unova_m2", "type": "MAIN", "title": "Team Plasma's Speech", "description": "Follow Route 1 north to Accumula Town. A group called Team Plasma is giving a speech in the square. Go and listen.", "condition": {"required_region": "UNOVA", "flag": "defeated_rival_nuvema", "flag_not": ["heard_n_accumula", "b2_mom_talk"]}, "completed_flag": "heard_n_accumula", "target": "ACCUMULA_TOWN"},
     {"id": "unova_m3", "type": "MAIN", "title": "A Stranger Named N", "description": "On Route 2 you'll meet Alder, and a strange young man named N who says he can hear Pokémon talk. He wants to battle!", "condition": {"required_region": "UNOVA", "flag": "heard_n_accumula", "flag_not": ["defeated_n_route2", "b2_mom_talk"], "region_badges_less": 1}, "completed_flag": "defeated_n_route2", "target": "UNOVA_ROUTE_2"},
     {"id": "unova_m4", "type": "MAIN", "title": "A Gift in the Dreamyard", "description": "A researcher named Fennel is at the Dreamyard, next to Striaton City. She has a Pokémon that's strong against the Striaton Gym.", "condition": {"required_region": "UNOVA", "flag": "defeated_n_route2", "flag_not": ["got_elemental_monkey", "b2_mom_talk"], "region_badges_less": 1}, "completed_flag": "got_elemental_monkey", "target": "DREAMYARD", "reward": "Pansage, Pansear or Panpour"},
@@ -21337,19 +22700,19 @@
     {"id": "unova_s6", "type": "SIDE", "title": "The Ancient Sun", "description": "Deep inside Relic Castle, Volcarona sleeps. Long ago, people said it took the sun's place.", "condition": {"required_region": "UNOVA", "visited": "RELIC_CASTLE", "flag_not": ["b2_volcarona", "b2_mom_talk"]}, "completed_flag": "b2_volcarona", "target": "RELIC_CASTLE", "reward": "Volcarona"},
     {"id": "unova_s7", "type": "SIDE", "title": "The Other Dragon", "description": "N's legendary dragon has left. Its partner still waits at Dragonspiral Tower.", "condition": {"required_region": "UNOVA", "flag": "beat_unova_champion", "flag_not": "DRAGONSPIRAL_TOWER_boss_defeated"}, "completed_flag": "DRAGONSPIRAL_TOWER_boss_defeated", "target": "DRAGONSPIRAL_TOWER", "reward": "A legendary dragon"},
     {"id": "unova_s8", "type": "SIDE", "title": "The Boundary Pokémon", "description": "Lacunosa Town's elder tells of a monster in the Giant Chasm. Find Kyurem in the cold.", "condition": {"required_region": "UNOVA", "flag": "beat_unova_champion", "flag_not": "GIANT_CHASM_boss_defeated"}, "completed_flag": "GIANT_CHASM_boss_defeated", "target": "GIANT_CHASM", "reward": "Kyurem"},
-    {"id": "unova_s9", "type": "SIDE", "title": "Storm and Thunder", "description": "Strange storms are blowing on Routes 7 and 8. Tornadus and Thundurus are behind them!", "condition": {"required_region": "UNOVA", "flag": "beat_unova_champion", "flag_not": ["UNOVA_ROUTE_7_boss_defeated", "UNOVA_ROUTE_8_boss_defeated"]}, "completed_flag": "UNOVA_ROUTE_8_boss_defeated", "target": "UNOVA_ROUTE_7", "reward": "Tornadus + Thundurus"},
+    {"id": "unova_s9", "type": "SIDE", "title": "Storm and Thunder", "description": "Storms keep sweeping across Routes 7 and 8, and the thunder sounds almost like laughter.", "condition": {"required_region": "UNOVA", "flag": "beat_unova_champion", "flag_not": ["UNOVA_ROUTE_7_boss_defeated", "UNOVA_ROUTE_8_boss_defeated"]}, "completed_flag": "UNOVA_ROUTE_8_boss_defeated", "target": "UNOVA_ROUTE_7", "reward": "Tornadus + Thundurus"},
     {"id": "unova_s10", "type": "SIDE", "title": "The Abundant Shrine", "description": "With the storms calmed, Landorus appears at the Abundant Shrine, east of Undella Town.", "condition": {"required_region": "UNOVA", "flag": "beat_unova_champion", "flag_not": "ABUNDANT_SHRINE_boss_defeated"}, "completed_flag": "ABUNDANT_SHRINE_boss_defeated", "target": "ABUNDANT_SHRINE", "reward": "Landorus"},
     {"id": "unova_s11", "type": "SIDE", "title": "Larvesta's Egg", "description": "A Pokémon Ranger on Route 18 has an egg that needs a good home.", "condition": {"required_region": "UNOVA", "flag": "beat_unova_champion", "flag_not": "got_unova_larvesta"}, "completed_flag": "got_unova_larvesta", "target": "UNOVA_ROUTE_18", "reward": "Larvesta"},
-    {"id": "unova_s12", "type": "SIDE", "title": "Aspertia's Gym", "description": "Cheren is now a Gym Leader in Aspertia City, in the southwest. Battle him!", "condition": {"required_region": "UNOVA", "flag": "beat_alder", "flag_not": ["b2w2_cheren", "b2_mom_talk"]}, "completed_flag": "b2w2_cheren", "target": "ASPERTIA_CITY"},
+    {"id": "unova_s12", "type": "SIDE", "title": "Aspertia's Gym", "description": "Cheren runs Aspertia City's Gym now, in the southwest. He's been waiting for a real challenge.", "condition": {"required_region": "UNOVA", "flag": "beat_alder", "flag_not": ["b2w2_cheren", "b2_mom_talk"]}, "completed_flag": "b2w2_cheren", "target": "ASPERTIA_CITY"},
     {"id": "unova_s13", "type": "SIDE", "title": "Virbank's Gym", "description": "Roxie plays in a band and leads Virbank City's Poison-type Gym.", "condition": {"required_region": "UNOVA", "flag": "beat_alder", "flag_not": ["b2w2_roxie", "b2_mom_talk"]}, "completed_flag": "b2w2_roxie", "target": "VIRBANK_CITY"},
     {"id": "unova_s14", "type": "SIDE", "title": "Humilau's Gym", "description": "Marlon, a laid-back surfer, leads the Water-type Gym in Humilau City.", "condition": {"required_region": "UNOVA", "flag": "beat_alder", "flag_not": ["b2w2_marlon", "b2_mom_talk"]}, "completed_flag": "b2w2_marlon", "target": "HUMILAU_CITY"},
-    {"id": "unova_s15", "type": "SIDE", "title": "Champion Iris", "description": "Iris has become a Champion! Challenge her at the Pokémon League.", "condition": {"required_region": "UNOVA", "flag": "beat_alder", "flag_not": ["b2w2_iris", "b2_mom_talk"]}, "completed_flag": "b2w2_iris", "target": "UNOVA_POKEMON_LEAGUE"},
-    {"id": "unova_s16", "type": "SIDE", "title": "The Plasma Frigate", "description": "A new Team Plasma has a ship off Humilau City. Sneak aboard and stop it!", "condition": {"required_region": "UNOVA", "flag": "beat_alder", "flag_not": "plasma_frigate_cleared"}, "completed_flag": "plasma_frigate_cleared", "target": "PLASMA_FRIGATE"},
-    {"id": "unova_s17", "type": "SIDE", "title": "Pokémon World Tournament", "description": "Leaders and Champions from every region gather near Driftveil City. Win the tournament!", "condition": {"required_region": "UNOVA", "flag": "beat_alder", "flag_not": "pwt_cleared"}, "completed_flag": "pwt_cleared", "target": "PWT"},
+    {"id": "unova_s15", "type": "SIDE", "title": "Champion Iris", "description": "Iris sits in the Champion's chair at the Pokemon League now.", "condition": {"required_region": "UNOVA", "flag": "beat_alder", "flag_not": ["b2w2_iris", "b2_mom_talk"]}, "completed_flag": "b2w2_iris", "target": "UNOVA_POKEMON_LEAGUE"},
+    {"id": "unova_s16", "type": "SIDE", "title": "The Plasma Frigate", "description": "A ship with no flag lies off Humilau City, and a new Team Plasma crews it.", "condition": {"required_region": "UNOVA", "flag": "beat_alder", "flag_not": "plasma_frigate_cleared"}, "completed_flag": "plasma_frigate_cleared", "target": "PLASMA_FRIGATE"},
+    {"id": "unova_s17", "type": "SIDE", "title": "Pokémon World Tournament", "description": "Leaders and Champions from every region are gathering near Driftveil City for a tournament.", "condition": {"required_region": "UNOVA", "flag": "beat_alder", "flag_not": "pwt_cleared"}, "completed_flag": "pwt_cleared", "target": "PWT"},
     {"id": "unova_s18", "type": "SIDE", "title": "The Golems of Clay Tunnel", "description": "Regirock, Regice and Registeel sleep in the Underground Ruins past Clay Tunnel.", "condition": {"required_region": "UNOVA", "flag": "beat_alder", "flag_not": ["ruins_regirock", "ruins_regice", "ruins_registeel"]}, "completed_flag": "ruins_registeel", "target": "UNDERGROUND_RUINS", "reward": "The three Regis"},
-    {"id": "unova_s19", "type": "SIDE", "title": "The Colossal Pokémon", "description": "With all three Regis, go deep into Twist Mountain. Regigigas is waking up!", "condition": {"required_region": "UNOVA", "flag": ["ruins_regirock", "ruins_regice", "ruins_registeel"], "flag_not": "twist_regigigas"}, "completed_flag": "twist_regigigas", "target": "TWIST_MOUNTAIN", "reward": "Regigigas"},
+    {"id": "unova_s19", "type": "SIDE", "title": "The Colossal Pokémon", "description": "With all three Regis in your party, something deep in Twist Mountain begins to stir.", "condition": {"required_region": "UNOVA", "flag": ["ruins_regirock", "ruins_regice", "ruins_registeel"], "flag_not": "twist_regigigas"}, "completed_flag": "twist_regigigas", "target": "TWIST_MOUNTAIN", "reward": "Regigigas"},
     {"id": "unova_s20", "type": "SIDE", "title": "Reversal Mountain", "description": "Heatran lives in the lava deep inside Reversal Mountain, near Lentimas Town.", "condition": {"required_region": "UNOVA", "flag": "beat_alder", "flag_not": "reversal_heatran"}, "completed_flag": "reversal_heatran", "target": "REVERSAL_MOUNTAIN", "reward": "Heatran"},
-    {"id": "unova_s21", "type": "SIDE", "title": "Black Tower and White Treehollow", "description": "Climb Black Tower in Black City, or White Treehollow in the White Forest. How far can you go?", "condition": {"required_region": "UNOVA", "flag": "beat_alder", "flag_not": ["black_tower_cleared", "white_treehollow_cleared"]}, "completed_flag": "black_tower_cleared", "target": "BLACK_CITY"},
+    {"id": "unova_s21", "type": "SIDE", "title": "Black Tower and White Treehollow", "description": "Black Tower in Black City and White Treehollow in the White Forest go deeper every time. How far can you get?", "condition": {"required_region": "UNOVA", "flag": "beat_alder", "flag_not": ["black_tower_cleared", "white_treehollow_cleared"]}, "completed_flag": "black_tower_cleared", "target": "BLACK_CITY"},
     {"id": "b2_s_r4_trade", "type": "SIDE", "title": "A Swap on Route 4", "description": "Someone in a house on Route 4 has a Pokemon to swap. Bring them the one they're hoping for.", "condition": {"required_region": "UNOVA", "flag": "b2_colress_plaza", "flag_not": "b2_r4_trade"}, "completed_flag": "b2_r4_trade", "target": "UNOVA_ROUTE_4"},
     {"id": "b2_s_join", "type": "SIDE", "title": "The Avenue Needs a Manager", "description": "North of Route 4, a whole street of empty shops is waiting for someone to bring it to life.", "condition": {"required_region": "UNOVA", "flag": "b2_colress_route4", "flag_not": "b2_join_manager"}, "completed_flag": "b2_join_manager", "target": "JOIN_AVENUE"},
     {"id": "b2_s_royal", "type": "SIDE", "title": "The Royal Unova", "description": "Each evening a cruise ship leaves Castelia's Cruise Dock, full of Trainers. Beat every one aboard before it docks.", "condition": {"required_region": "UNOVA", "flag": "b2_castelia_arrived", "flag_not": "royal_unova_prize"}, "completed_flag": "royal_unova_prize", "target": "CASTELIA_CITY"},
@@ -21397,8 +22760,24 @@
   "UNOVA_ROUTE_8_PERCENTAGES": {"536": 30, "616": 30, "618": 15, "453": 11, "588": 15, "592": 2},
   "UNOVA_ROUTE_9_PERCENTAGES": {"575": 15, "572": 20, "569": 20, "624": 20, "510": 10, "578": 15, "531": 5, "587": 4, "573": 2, "576": 2, "579": 2},
   "UNOVA_ROUTE_10_PERCENTAGES": {"507": 30, "629": 15, "626": 20, "590": 10, "539": 5, "627": 15, "538": 5, "591": 4, "531": 5, "587": 4, "508": 2},
-  "UNOVA_ROUTE_11_PERCENTAGES": {"629": 12, "55": 20, "207": 15, "591": 10, "335": 10, "336": 10, "588": 5, "624": 5, "627": 12, "630": 5, "625": 1, "628": 5, "531": 5, "587": 3, "472": 1},
-  "UNOVA_ROUTE_12_PERCENTAGES": {"415": 20, "191": 20, "520": 15, "14": 5, "78": 10, "421": 10, "214": 5, "127": 5, "206": 5, "11": 5, "531": 5, "587": 3, "15": 2, "192": 2, "416": 2, "521": 2, "12": 2},
+  "UNOVA_ROUTE_11_PERCENTAGES": {
+    "55": 20,
+    "616": 15,
+    "588": 15,
+    "207": 15,
+    "183": 10,
+    "335": 10,
+    "336": 10,
+    "591": 5
+  },
+  "UNOVA_ROUTE_12_PERCENTAGES": {
+    "315": 25,
+    "520": 25,
+    "415": 20,
+    "540": 15,
+    "214": 8,
+    "127": 8
+  },
   "UNOVA_ROUTE_13_PERCENTAGES": {
     "114": 25,
     "279": 25,

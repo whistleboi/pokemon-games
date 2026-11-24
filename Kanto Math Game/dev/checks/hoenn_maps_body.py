@@ -309,8 +309,8 @@ st = arrive("HOENN_ROUTE_112", "HOENN_ROUTE_111", len(_w111) - 1, len(_w111))   
 _s112 = _reach(st)
 _hill = [t for t, v in st.run.floor.exits.items() if v == "HOENN_ROUTE_111" and t[1] < 20]
 check(_pos(st)[1] > 40 and _by(_s112, st, "HOENN_FIERY_PATH") and not _by(_s112, st, "LAVARIDGE_TOWN") and not _by(_s112, st, "HOENN_JAGGED_PASS")
-      and not any(_near(n, _hill, 1) for n in _s112) and "door:cablecar" in st.run.floor.decor.values() and any(str(v).startswith("ledge:1,") for v in st.run.floor.decor.values()),
-      f"Route 112: in from Route 111 at {_pos(st)}: the Fiery Path and the cable car, not Lavaridge or the Jagged Pass past the east-hopping ledges, nor the north hill")
+      and not any(_near(n, _hill, 1) for n in _s112) and _by(_s112, st, "WARP:1:6:11") and any(str(v).startswith("ledge:1,") for v in st.run.floor.decor.values()),
+      f"Route 112: in from Route 111 at {_pos(st)}: the Fiery Path and the cable car's station, not Lavaridge or the Jagged Pass past the east-hopping ledges, nor the north hill")
 
 for _k, _v in _hm_had.items():
     if _v is None:
@@ -3132,6 +3132,9 @@ for _dk, _came, _kind in (("HOENN_ROUTE_112", "HOENN_ROUTE_111", "cablecar"), ("
     _mf = story.story_flags.get("meteor_falls_cleared")
     story.story_flags["meteor_falls_cleared"] = True   # (the Cable Car runs once Magma's left Meteor Falls)
     st = arrive(_dk, _came)
+    _sd = next((v for v in st.run.floor.exits.values() if str(v).startswith("WARP:")), None)   # (H8, 11-24: the car waits in its
+    if _sd:                                                                                      #  station, walked in: Jordan #1)
+        st._warp(*(int(n) for n in _sd.split(":")[1:4]))
     _dt = next((t for t, v in st.run.floor.decor.items() if v == "door:" + _kind), None)
     _went, _said = [], []
     _cb0, _say0 = st._get_route_callback, st.say
@@ -3344,3 +3347,93 @@ story.inventory.clear(); story.inventory.update(_inv7); story.story_flags.clear(
 
 story.story_flags.clear(); story.story_flags.update(_saved)
 print(f"##### {len(fails)} failures")
+
+# H8 (Jordan 11-24, questions/HOENN.md #3): Meteor Falls' hidden room off 1F's north-west corner; Steven waits there after
+# the Champion, to battle (Emerald's team), and is gone once beaten
+_c5 = story.story_flags.get("beat_hoenn_champion"); _s5 = story.story_flags.pop("meteor_falls_steven_beaten", None)
+story.story_flags["beat_hoenn_champion"] = True
+st = arrive("HOENN_METEOR_FALLS", "HOENN_ROUTE_115")
+_lk = ((st.run.recipe.get("art") or {}).get("floors") or [{}])[0].get("links", {}).get("4,2")
+if _lk:
+    st._warp(*_lk)
+_room = (_tm["HOENN_METEOR_FALLS"].get("rooms") or {}).get("steven_cave") or {}
+_stv = next((p for p in _room.get("people") or [] if isinstance(p, dict) and p.get("text") == "Steven"), {})
+check(_lk and "Steven" in st.run.floor.spots and (_stv.get("event") or {}).get("battle", {}).get("levels") == [77, 75, 76, 76, 76, 78]
+      and "not:meteor_falls_steven_beaten" in _stv.get("condition", []),
+      f"Meteor Falls: the hidden room at 1F's 4,2 ({_lk}): Steven waits after the Champion, Emerald's team Lv 75-78, gone once beaten")
+if _c5 is None:
+    story.story_flags.pop("beat_hoenn_champion", None)
+if _s5 is not None:
+    story.story_flags["meteor_falls_steven_beaten"] = _s5
+
+# H8 (Jordan 11-24, questions/HOENN.md #9): the Magma Hideout is the OTHER version's team's (Aqua's in Omega Ruby, Magma's
+# in Alpha Sapphire), in only after the title, with ORAS's own volcano-cave Pokemon (Fiery Path's table: no water there)
+from src.world import hoenn as _hn9
+_v9 = story.story_flags.get("hoenn_version")
+_got9 = {}
+for _ver in ("OMEGA_RUBY", "ALPHA_SAPPHIRE"):
+    story.story_flags["hoenn_version"] = _ver
+    _hn9.apply_version(g)
+    _a9 = g.loader.area_data["STORY_PROGRESSION"]["HOENN_MAGMA_HIDEOUT"]
+    _got9[_ver] = sorted({t["name"] for t in _a9["trainer_pool"]})
+if _v9 is None:
+    story.story_flags.pop("hoenn_version", None)
+else:
+    story.story_flags["hoenn_version"] = _v9
+_hn9.apply_version(g)
+_ex9 = next(o for o in g.loader.area_data["STORY_PROGRESSION"]["HOENN_JAGGED_PASS"]["route_menu"] if o.get("target_area") == "HOENN_MAGMA_HIDEOUT")
+_wild9 = g.loader.area_data["HOENN_MAGMA_HIDEOUT_PERCENTAGES"]
+check(_got9["OMEGA_RUBY"] == ["Aqua Admin Matt", "Aqua Admin Shelly", "Team Aqua Grunt"]
+      and _got9["ALPHA_SAPPHIRE"] == ["Magma Admin Courtney", "Magma Admin Tabitha", "Team Magma Grunt"]
+      and "beat_hoenn_champion" in _ex9["condition"] and set(_wild9) == {"322", "109", "218", "324", "66", "88"},
+      f"Magma Hideout: the other version's team ({_got9}), after the title ({_ex9['condition']}), Fiery Path's ORAS Pokemon ({_wild9})")
+
+# H8 (Jordan 11-24, questions/HOENN.md #8): ORAS's Lugia and Ho-Oh wait in the Abandoned Ship's storeroom after the title;
+# the Sea Mauville mission points there
+_sm = next(m for m in g.loader.area_data["JOURNAL_MISSIONS"] if m.get("id") == "hoenn_s29")
+_shp = {o.get("text"): o for o in g.loader.area_data["STORY_PROGRESSION"]["HOENN_ABANDONED_SHIP"]["route_menu"]}
+_st8 = _tm["HOENN_ABANDONED_SHIP"]["floors"][8].get("people") or []
+check(_sm["target"] == "HOENN_ABANDONED_SHIP" and "sea_mauville_open" not in str(_sm["condition"])
+      and (_shp.get("LUGIA") or {}).get("boss", {}).get("victory_flag") == "sea_mauville_lugia"
+      and (_shp.get("HO-OH") or {}).get("boss", {}).get("victory_flag") == "sea_mauville_ho_oh"
+      and "beat_hoenn_champion" in _shp["LUGIA"]["condition"] and "LUGIA" in _st8 and "HO-OH" in _st8,
+      f"Abandoned Ship: Lugia and Ho-Oh in the storeroom after the title; the Sea Mauville mission points there ({_sm['condition']})")
+
+# H8 (Jordan 11-24, questions/HOENN.md #11, #12): Routes 105-109 have ORAS's own slots and levels, Surf apart from land
+# (no land Pokemon: the beaches are sand; Route 107's seabed its seaweed), and every horde ORAS's 60 / 35 / 5
+from src.world import wild_tables as _wt11
+import random as _r11
+_sp11 = g.loader.area_data["STORY_PROGRESSION"]
+_lv11 = sorted({_wt11.pick(_sp11["HOENN_ROUTE_105"], "surf", _r11.Random(i))[1] for i in range(300)})
+check(all(_wt11.has(_sp11[k], "surf") and not (k != "HOENN_ROUTE_107" and _wt11.has(_sp11[k], "grass"))
+          for k in ("HOENN_ROUTE_105", "HOENN_ROUTE_106", "HOENN_ROUTE_107", "HOENN_ROUTE_108", "HOENN_ROUTE_109"))
+      and _lv11 == [20, 25, 30] and _wt11.pool(_sp11["HOENN_ROUTE_107"], "grass").get("369") == 5
+      and g.loader.area_data["HOENN_ROUTE_116_HORDE_PERCENTAGES"] == {"263": 60, "290": 35, "300": 5},
+      f"Routes 105-109: ORAS's Surf slots and levels ({_lv11}), no land Pokemon, Route 107's seaweed; ORAS's hordes (Route 116)")
+
+# H8 (Jordan 11-24, questions/HOENN.md #10, as ORAS): the Team Hideout has one five-Poochyena group, your version's team,
+# first visit only; the story grunts leave once the Delta Episode's Lv 48-51 grunts take their places
+from src.world import hoenn as _hn10
+_v10 = story.story_flags.get("hoenn_version"); _f10 = dict(story.story_flags)
+_got10 = {}
+for _ver in ("OMEGA_RUBY", "ALPHA_SAPPHIRE"):
+    story.story_flags["hoenn_version"] = _ver
+    _hn10.apply_version(g)
+    _pool10 = g.loader.area_data["STORY_PROGRESSION"]["HOENN_TEAM_HIDEOUT"]["trainer_pool"]
+    _hordes = [t["name"] for t in _pool10 if list(t.get("team") or []) == [261] * 5]
+    _out = {}
+    for _when, _fl in (("story", {}), ("delta", {"beat_hoenn_champion": True, "delta_courtney_mossdeep": True, "delta_matt_mossdeep": True})):
+        for _k in ("beat_hoenn_champion", "delta_courtney_mossdeep", "delta_matt_mossdeep"):
+            story.story_flags.pop(_k, None)
+        story.story_flags.update(_fl)
+        _on = [t.get("spot_name") or t["name"] for i, t in enumerate(_pool10) if story.trainer_on_map("HOENN_TEAM_HIDEOUT", i, t)]
+        _out[_when] = (sum("Delta" in n for n in _on), sum("Delta" not in n and "Admin" not in n for n in _on))
+    _got10[_ver] = (_hordes, _out)
+story.story_flags.clear(); story.story_flags.update(_f10)
+if _v10 is None:
+    story.story_flags.pop("hoenn_version", None)
+_hn10.apply_version(g)
+check(_got10["OMEGA_RUBY"][0] == ["Team Magma Grunt"] and _got10["ALPHA_SAPPHIRE"][0] == ["Team Aqua Grunt"]
+      and all(o["story"][0] == 0 and o["story"][1] >= 6 and o["delta"] == (6, 0) for _h, o in _got10.values())
+      and "Team Aqua Grunts" not in _tm["HOENN_TEAM_HIDEOUT"]["floors"][0]["trainer_spots"],
+      f"Team Hideout: one Poochyena group, your version's; the story grunts give way to the Delta Episode's six ({_got10})")

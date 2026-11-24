@@ -149,7 +149,7 @@ def event(state, ev, lines, show):
     if kind in ("item", "hidden"):
         item = cur["id"]
         empty(story, gid)
-        story.add_item(item, 1)
+        story.add_item("POKE_BALLS" if item == "POKE_BALL" else item, 1)   # (the Bag keeps Poke Balls as the story's count)
         name = item.replace("_", " ").title()
         if hasattr(state, "_sync_figures"):
             state._sync_figures()

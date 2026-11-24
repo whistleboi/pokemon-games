@@ -194,6 +194,7 @@ HELD = {"MYSTIC_WATER": {"price": 1000, "text": "Give it to a Pokemon to hold: i
         "SAFETY_GOGGLES": {"price": 4000, "text": "Held: its holder takes no sandstorm damage, and powder moves don't affect it."},
         "ROCKY_HELMET": {"price": 4000, "text": "Held: a foe that touches its holder with a move gets hurt. (Lets your Pokemon Headbutt trees, too.)"},
         "AIR_BALLOON": {"price": 400, "text": "Held: its holder floats, so Ground moves miss it. It pops when its holder is hit."},   # (B2W2: Driftveil's Chateau 25F; 11-24)
+        "RING_TARGET": {"price": 200, "text": "Held: moves its holder's types would be immune to hit it anyway."},   # (B2W2's held item: battle_moves.mv_effectiveness, 11-24)
         "PRETTY_WING": {"price": 400, "text": "A pretty feather. It does nothing, but it sells for a little money."},   # (B2W2: the Driftveil Drawbridge's bird shadows)
         "STICKY_BARB": {"price": 200, "text": "Held: it hurts its holder every turn, and sticks to a foe that touches it."},   # (B2W2: Route 20, autumn; 11-20)
         "BLACK_SLUDGE": {"price": 200, "text": "Held: a Poison-type holder gets back a little HP every turn. Any other is hurt by it."},   # (B2W2: the Castelia Sewers; 11-20)
@@ -446,10 +447,18 @@ def info(item):
             or ({"text": STORY_TEXT[item]} if item in STORY_TEXT else None) or {})
 
 
+STONE_PRICE = 2100   # (an evolution stone in a shop: FireRed's Celadon and Black 2's Join Avenue Antique Shop, 2,100; sold for half)
+
+
 def price(item):
     if item in BALL_PRICES:
         return BALL_PRICES[item]
-    return info(item).get("price")
+    got = info(item).get("price")
+    if got is None:
+        from src.pokemon import cases as _cases   # (the evolution stones live in the Bag's stone case, with no entry here; Unova 11-24)
+        if item in _cases.STONES:
+            return STONE_PRICE
+    return got
 
 
 def describe(item):
@@ -646,6 +655,8 @@ STORY_TEXT = {
     "SECRET_KEY": "A key for the locked Gym door.",
     "STORAGE_KEY": "A key to the ship's storage room.",
     "SUITE_KEY": "The key to a lakeside suite at Valor Lakefront. Its owner must be looking for it.",   # (Sinnoh S4, 11-24)
+    "OLD_CHARM": "A charm from Cynthia's grandmother, carved from a Pokemon's fang. It must be taken to the Elder in Celestic Town.",   # (Sinnoh, 11-24)
+    "WORKS_KEY": "A key that opens the Valley Windworks. Team Galactic's grunts were carrying it.",   # (Sinnoh, 11-24)
     "SPRAYDUCK": "A watering can shaped like a Psyduck. It waters the soil where Berries are planted.",   # (Sinnoh, Platinum's Floaroma flower shop; 11-24)
     "RM_1_KEY": "A key to cabin 1.", "RM_2_KEY": "A key to cabin 2.", "RM_4_KEY": "A key to cabin 4.", "RM_6_KEY": "A key to cabin 6.",
     "MACHINE_PART": "A part stolen from the Power Plant.",
