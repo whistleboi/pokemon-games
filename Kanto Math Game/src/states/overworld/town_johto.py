@@ -38,6 +38,7 @@ class JohtoTown:
                     inv = self.game.story_manager.inventory
                     if not inv.get("UNOWN_REPORT"):   # (the first puzzle: a researcher hands you the Unown Report, HGSS)
                         inv["UNOWN_REPORT"] = 1
+                        self.game.story_manager.story_flags["got_unown_report"] = True   # (the Journal's johto_s1)
                         said += ["A researcher hurries over: You solved it! The Unown are coming out!",
                                  "Here, keep a record of every one you find in this Unown Report!", "You got the UNOWN REPORT!"]
                     self.show_message(said)
@@ -80,6 +81,7 @@ class JohtoTown:
         elif self.game.story_manager.inventory.get("UNOWN_REPORT", 0) == 0:
             msg = ["Researcher: You've started a collection! That's excellent!", "Here, take this UNOWN REPORT.", "It will help you track every form you find.", "Come back when you've documented more!"]
             self.game.story_manager.inventory["UNOWN_REPORT"] = 1
+            self.game.story_manager.story_flags["got_unown_report"] = True
         elif remaining == 0:
             if any(isinstance(v, dict) and v.get("id") == nown_id
                    for v in self.game.data.data.get("pokedex", {}).values()):  # keys are "id-form"

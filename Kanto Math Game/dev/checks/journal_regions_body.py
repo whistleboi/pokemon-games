@@ -96,6 +96,9 @@ check(guide.goal_area(g) == "PALLET_TOWN", f"the marker points at Pallet Town ({
 flags["oak_gs_errand"] = True
 check("journey_gs_oak" not in side(), "Oak's part done once he asks")
 at("VALENCIA_ISLAND")
+flags.pop("orange_ivy_thanks", None)
+check("journey_gs_ivy" not in side(), "not before Orange's 'Get Well Soon' step (Ivy can't hand it over yet)")
+flags["orange_ivy_thanks"] = True
 check("journey_gs_ivy" in side(), "SIDE on Valencia: Professor Ivy's ball")
 flags["got_gs_ball_ivy"] = True; story.inventory["GS_BALL"] = 1
 check("journey_gs_ivy" not in side(), "Ivy's part done with the GS Ball in the Bag")
@@ -133,5 +136,20 @@ _sw.today = _real_today
 check(any(f["id"] == "swarm" for f in ft["JOHTO"]) and any(f["id"] == "rematches" for f in ft["ORRE"]),
       "Swarm Chaser where a region has swarms; Old Rivals in every region")
 check(all(any(f["id"] == "rematches" for f in ft[r]) for r in ft if not r.startswith("_")), "every region has Old Rivals")
+
+print("Pokedex and Type Feats count only Pokemon caught in that region (Jordan 11-24)")
+at("NEW_BARK_TOWN")
+_dexf = next(f for f in ft["JOHTO"] if f["id"] == "dex")
+_jd = sorted(feats._dex_ids(story, "JOHTO"))
+_before = feats.value(story, _dexf, "JOHTO")
+_h = mk(_jd[0]); _h.caught_region = "HOENN"
+story.player_team.append(_h)
+check(feats.value(story, _dexf, "JOHTO") == _before, "a Johto-dex species caught in Hoenn doesn't count for Johto")
+_j = mk(_jd[1]); _j.caught_region = None
+story.player_team.append(_j)
+check(feats.value(story, _dexf, "JOHTO") == _before + (0 if _jd[1] in feats.caught_in(story, "JOHTO") - {_jd[1]} else 1)
+      and _j.caught_region == "JOHTO", "one with no 'Met in' (a starter, an old save) counts where it's kept now, and is tagged")
+story.player_team.remove(_j); story.player_team.remove(_h)
+check(_jd[1] in feats.caught_in(story, "JOHTO"), "released or traded away, it still counts where it was caught")
 
 print(f"##### {fails} failures")

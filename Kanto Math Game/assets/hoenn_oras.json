@@ -7150,7 +7150,8 @@
       "balls": 3
      },
      "oras": true,
-     "villain": "grunt"
+     "villain": "grunt",
+     "gone_flags": ["delta_matt_mossdeep"]
     },
     {
      "name": "Team Magma Grunts",
@@ -7173,7 +7174,9 @@
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "villain": "grunt",
+     "gone_flags": ["delta_matt_mossdeep"]
     },
     {
      "name": "Team Aqua Grunt",
@@ -7207,30 +7210,8 @@
        35
       ]
      },
-     "villain": "grunt"
-    },
-    {
-     "name": "Team Aqua Grunts",
-     "class": "TEAM_AQUA",
-     "sprite": "aqua_grunt.png",
-     "team": [
-      261,
-      261,
-      261,
-      261,
-      261
-     ],
-     "levels": [
-      18,
-      18,
-      18,
-      18,
-      18
-     ],
-     "rewards": {
-      "balls": 3
-     },
-     "oras": true
+     "villain": "grunt",
+     "gone_flags": ["delta_matt_mossdeep"]
     }
    ],
    "route_menu": [

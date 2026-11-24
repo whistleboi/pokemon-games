@@ -203,6 +203,65 @@
    530
   ]
  },
+ "159": {
+  "b2_id": 159,
+  "class": "LEADER",
+  "held_items": {
+   "612": "SITRUS_BERRY"
+  },
+  "levels": [
+   46,
+   46,
+   48
+  ],
+  "movesets": {
+   "330": [
+    "DRAGON-TAIL",
+    "CRUNCH",
+    "EARTH-POWER",
+    "ROCK-SLIDE"
+   ],
+   "612": [
+    "DRAGON-TAIL",
+    "SLASH",
+    "ASSURANCE",
+    "DRAGON-DANCE"
+   ],
+   "621": [
+    "DRAGON-TAIL",
+    "REVENGE",
+    "SLASH",
+    "CRUNCH"
+   ]
+  },
+  "name": "Leader Drayden",
+  "rewards": {
+   "balls": 4
+  },
+  "sprite": "leader.png",
+  "team": [
+   621,
+   330,
+   612
+  ]
+ },
+ "177": {
+  "b2_id": 177,
+  "class": "GENTLEMAN",
+  "levels": [
+   43,
+   43
+  ],
+  "name": "Gentleman Stonewall",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "b2_gentleman.png",
+  "team": [
+   632,
+   448
+  ]
+ },
  "207": {
   "b2_id": 207,
   "class": "BEAUTY",
@@ -399,6 +458,24 @@
   "team": [
    566,
    521
+  ]
+ },
+ "335": {
+  "b2_id": 335,
+  "class": "BAKER",
+  "held_items": {
+   "631": "SITRUS_BERRY"
+  },
+  "levels": [
+   42
+  ],
+  "name": "Baker Chris",
+  "rewards": {
+   "balls": 2
+  },
+  "sprite": "b2_baker.png",
+  "team": [
+   631
   ]
  },
  "339": {
@@ -817,6 +894,135 @@
    505
   ]
  },
+ "381": {
+  "b2_id": 381,
+  "class": "VETERAN",
+  "levels": [
+   46
+  ],
+  "name": "Veteran Lucius",
+  "rewards": {
+   "balls": 2
+  },
+  "sprite": "b2_veteran.png",
+  "team": [
+   611
+  ]
+ },
+ "382": {
+  "b2_id": 382,
+  "class": "VETERAN",
+  "held_items": {
+   "611": "DRAGON_FANG",
+   "621": "DRAGON_GEM"
+  },
+  "levels": [
+   45,
+   45
+  ],
+  "movesets": {
+   "611": [
+    "DUAL-CHOP",
+    "SHADOW-CLAW",
+    "X-SCISSOR",
+    "DRAGON-DANCE"
+   ],
+   "621": [
+    "DRAGON-CLAW",
+    "FLAMETHROWER",
+    "ROCK-SLIDE",
+    "CRUNCH"
+   ]
+  },
+  "name": "Veteran Jerry",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "b2_veteran.png",
+  "team": [
+   611,
+   621
+  ]
+ },
+ "383": {
+  "b2_id": 383,
+  "class": "VETERAN",
+  "held_items": {
+   "611": "HABAN_BERRY",
+   "621": "ROCKY_HELMET"
+  },
+  "levels": [
+   45,
+   45
+  ],
+  "movesets": {
+   "611": [
+    "DUAL-CHOP",
+    "SWAGGER",
+    "SUBSTITUTE",
+    "PROTECT"
+   ],
+   "621": [
+    "DRAGON-CLAW",
+    "SWAGGER",
+    "SUBSTITUTE",
+    "PROTECT"
+   ]
+  },
+  "name": "Veteran Rhona",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "b2_veteran.png",
+  "team": [
+   611,
+   621
+  ]
+ },
+ "384": {
+  "b2_id": 384,
+  "battle_options": {
+   "double": true
+  },
+  "class": "VETERAN",
+  "levels": [
+   44,
+   44,
+   44
+  ],
+  "name": "Veteran Ron",
+  "rewards": {
+   "balls": 4
+  },
+  "sprite": "b2_veteran.png",
+  "team": [
+   611,
+   621,
+   610
+  ]
+ },
+ "385": {
+  "b2_id": 385,
+  "battle_options": {
+   "double": true
+  },
+  "class": "VETERAN",
+  "levels": [
+   44,
+   44,
+   44
+  ],
+  "name": "Veteran Denae",
+  "rewards": {
+   "balls": 4
+  },
+  "sprite": "b2_veteran.png",
+  "team": [
+   621,
+   611,
+   610
+  ]
+ },
  "390": {
   "b2_id": 390,
   "class": "BACKPACKER",
@@ -900,6 +1106,123 @@
   "team": [
    552,
    59
+  ]
+ },
+ "583": {
+  "b2_id": 583,
+  "class": "TEAM_PLASMA",
+  "levels": [
+   46,
+   46,
+   48
+  ],
+  "movesets": {
+   "359": [
+    "NIGHT-SLASH",
+    "SLASH",
+    "FUTURE-SIGHT",
+    "SWORDS-DANCE"
+   ],
+   "624": [
+    "METAL-CLAW",
+    "FAINT-ATTACK",
+    "SLASH",
+    "HONE-CLAWS"
+   ]
+  },
+  "name": "Team Plasma Shadow",
+  "rewards": {
+   "balls": 4
+  },
+  "sprite": "team_plasma.png",
+  "team": [
+   624,
+   624,
+   359
+  ]
+ },
+ "584": {
+  "b2_id": 584,
+  "class": "TEAM_PLASMA",
+  "levels": [
+   46,
+   46,
+   48
+  ],
+  "movesets": {
+   "461": [
+    "NIGHT-SLASH",
+    "SLASH",
+    "ICE-SHARD",
+    "METAL-CLAW"
+   ],
+   "615": [
+    "ICE-BEAM",
+    "LIGHT-SCREEN",
+    "SLASH",
+    "CONFUSE-RAY"
+   ]
+  },
+  "name": "Team Plasma Zinzolin",
+  "rewards": {
+   "balls": 4
+  },
+  "sprite": "team_plasma.png",
+  "team": [
+   615,
+   615,
+   461
+  ]
+ },
+ "585": {
+  "b2_id": 585,
+  "class": "TEAM_PLASMA",
+  "levels": [
+   44,
+   44
+  ],
+  "name": "Team Plasma Grunt",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "b2_plasma_grunt_m.png",
+  "team": [
+   505,
+   89
+  ]
+ },
+ "586": {
+  "b2_id": 586,
+  "class": "TEAM_PLASMA",
+  "levels": [
+   44,
+   44
+  ],
+  "name": "Team Plasma Grunt",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "b2_plasma_grunt_m.png",
+  "team": [
+   336,
+   110
+  ]
+ },
+ "587": {
+  "b2_id": 587,
+  "class": "TEAM_PLASMA",
+  "levels": [
+   44,
+   44
+  ],
+  "name": "Team Plasma Grunt",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "b2_plasma_grunt_f.png",
+  "team": [
+   42,
+   569
   ]
  },
  "588": {
