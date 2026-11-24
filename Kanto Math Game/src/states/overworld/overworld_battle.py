@@ -448,7 +448,12 @@ class OverworldView:
         from src.coop import world
         busy = {(m.x, m.y) for m in f.movers if m is not mover} | world.people_tiles(play.game)
 
+        fixed = getattr(mover, "_ow_fixed", False)   # (one on your line: it stays in the water, you on the shore)
+        from src.dungeon import core as _core
+
         def free(t):
+            if fixed and t != (mover.x, mover.y) and f.tile(*t) in (_core.SURF, _core.WATER):
+                return False
             return t == (px, py) or (f.walkable(*t) and t not in busy and not f.occupied(*t)) or t == (mover.x, mover.y)
 
         def fits(anchor, d, gap):
@@ -461,7 +466,7 @@ class OverworldView:
         horiz = [(side, 0), (-side, 0)]
         vert = [(0, 1 if py >= ty else -1), (0, -1 if py >= ty else 1)]
         seen, todo, spots = {(px, py): 0}, [(px, py)], []
-        while todo:   # (side by side, on open ground near you: the nearest)
+        while todo and not fixed:   # (side by side, on open ground near you: the nearest)
             cur = todo.pop(0)
             for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
                 t = (cur[0] + dx, cur[1] + dy)
