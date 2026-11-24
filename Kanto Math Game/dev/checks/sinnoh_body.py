@@ -1290,5 +1290,20 @@ _low = story.story_flags.get("pastoria_gym_water") == "low" and (6, 8) not in t.
 check(_mid_open and _low, f"Pastoria Gym: the water starts in the middle; the orange button drains it, high ground opens, middle ground shuts ({_mid_open}, {_low})")
 story.story_flags.clear(); story.story_flags.update(_sv)
 
+# ---- S5 (11-24): Canalave Gym, Platinum's four floors and moving platforms (src/world/canalave_gym.py, s_s5_canalave_gym.py)
+_sv = dict(story.story_flags)
+for _k in ("canalave_gym_platforms", "canalave_gym_arrived"):
+    story.story_flags.pop(_k, None)
+t = town("CANALAVE_CITY", "SINNOH_ROUTE_218"); frames(t, 3)
+t._go("gym", "OUT:7,27"); frames(t, 5); _drive(t, 200, lambda: not t._busy())
+_f1 = t.room == "gym"
+t.player = t.anim_from = (11, 14); t.anim = 0; t.walk_goal = None; t.step(0, -1)   # (onto the lift at (11,13): up to 2F)
+_drive(t, 300, lambda: t.room == "gym_2f" and not t._busy())
+_up = t.room == "gym_2f" and tuple(t.player) == (11, 13)
+frames(t, 30)
+_stays = t.room == "gym_2f"   # (standing where it set you down: it doesn't carry you straight back)
+check(_f1 and _up and _stays, f"Canalave Gym: the lift at (11,13) carries you from 1F up to 2F, and stays put till you step off ({_f1}, {_up}, {_stays}, {t.room}, {t.player})")
+story.story_flags.clear(); story.story_flags.update(_sv)
+
 g.walk_towns = False
 print(f"##### {fails} failures")

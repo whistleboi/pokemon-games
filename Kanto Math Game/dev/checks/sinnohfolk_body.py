@@ -333,8 +333,9 @@ check(_n >= 20 and not _bad, f"{_n} route doors: in to the room and back out bel
 
 print("8) Gym trainers in the Gym rooms (sgym.py): Platinum's own, talk and you battle, once")
 from src.states.battle import TrainerIntroState, TrainerBattleState
-_gn = {k: [q for q in (e.get("rooms") or {}).get("gym", {}).get("people") or [] if isinstance(q, dict) and (q.get("event") or {}).get("battle")]
-       for k, e in _tm.items() if k in _SIN}
+_gn = {k: [q for rn, r in (e.get("rooms") or {}).items() if rn == "gym" or rn.startswith("gym_") for q in r.get("people") or []
+           if isinstance(q, dict) and (q.get("event") or {}).get("battle")]
+       for k, e in _tm.items() if k in _SIN}   # (a Gym of several rooms: all of them - Canalave's four floors, S5 11-24)
 check(sum(len(v) for v in _gn.values()) >= 29, f"{sum(len(v) for v in _gn.values())} Gym trainers standing in {sum(1 for v in _gn.values() if v)} Gyms")
 t = into("OREBURGH_CITY", "gym")
 fs = figures(t)
