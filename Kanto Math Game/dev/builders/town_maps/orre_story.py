@@ -770,7 +770,7 @@ def _xd6(maps):
             _set_people(r, {_free_spot(r, (3 + int(n) % 7, 4)): {
                 "text": f"Battle CD {n}", "action": "EVENT", "condition": "xd_secretary", "flag_condition": f"not got_battle_cd_{n}",
                 "event": {"flag": f"got_battle_cd_{n}", "gift_item": {f"BATTLE_CD_{n}": 1}, "lines": [f"{where} Battle CD {n}!"]}}})
-        gym = rooms["gym"]
+        gym = rooms["arena"]   # (R2: the stadium itself; "gym" is its new lobby)
         for i, (text, key, flag, intro) in enumerate(STADIUM):
             _set_people(gym, {_free_spot(gym, (6 + 3 * i, 12)): _fight(text, key, flag, intro, f"{text.split()[-1]}: Ugh...",
                                                                        condition=["xd_ertlig", "not:orre_snattle_phenac"])})
@@ -941,8 +941,8 @@ def _xd8b(maps):
         m = maps["POKEMON_HQ_LAB"]
         _set_people(m, {(9, 12): EAGUN_LAB})   # (the lab's front step: the strip is only three tiles wide)
     if "ORRE_COLOSSEUM" in maps:
-        g = maps["ORRE_COLOSSEUM"]["rooms"]["gym"]
-        _set_people(g, {_free_spot(g, (8, 18)): COLOSSEUM_DESK})
+        g = maps["ORRE_COLOSSEUM"]["rooms"]["gym"]   # (R2: in the new lobby, beside the tournament's receptionist)
+        _set_people(g, {_free_spot(g, (10, 6)): COLOSSEUM_DESK})
     if "GATEON_PORT" in maps:
         g = maps["GATEON_PORT"]   # (Jordan 11-21: a lighthouse at the north end of the east harbour wall - the slim white one from
         #  the Journeys Johto sheet, assets/tiles/orre_ride/lighthouse.png, 3 x 8 tiles; Miror B. waits at its door: XD's tower)
@@ -1183,6 +1183,130 @@ def _orre_fly(maps):
         _set_people(m, {_spot(m, (24, 23)): HM_FLY_PYRITE})
 
 
+# --------------------------------------------------------------------- R2 (11-23): the tournaments, walked
+# Jordan 11-23: sign up at the lobby desk, stand on your side of the arena; each round's opponent walks in, you battle, they
+# walk off, the next walks in; lose and you're back in the lobby, the tournament starts over; win the last: the award.
+# src/world/orre_tournament.py runs it; here are the desk, the referee and the scenes. The lobbies of the Orre Colosseum and
+# Phenac Stadium are Pyrite's (fan map 103), recoloured (assets/tiles/orre_ground/103_sand.png, 103_blue.png: made by
+# kanto_handoff/orre_map_tools/tint.py).
+#   area: (lobby room or None for the place's own map, desk spot, arena room, your spot, the opponent's spot, where they come
+#          in from, the lobby picture or None, the Colosseum's name)
+TOURNAMENTS = {
+    "PYRITE_TOWN": ("gym", (7, 5), "arena", (7, 9), (7, 5), (5, 3), None, "the Pyrite Colosseum"),
+    "UNDER_COLOSSEUM": (None, (10, 4), "gym", (7, 9), (7, 5), (5, 3), None, "the Under Colosseum"),
+    "PHENAC_CITY": ("gym", (7, 5), "arena", (12, 11), (12, 7), (3, 3), "103_blue", "Phenac Stadium"),
+    "ORRE_COLOSSEUM": ("gym", (7, 5), "arena", (13, 15), (13, 11), (13, 1), "103_sand", "the Orre Colosseum"),
+    # (Realgam: the tower top is reached by the tower's own way, so its host starts the run where you stand; no desk)
+    "REALGAM_TOWER": (None, None, "colosseum", (5, 10), (5, 7), (5, 3), None, "Cipher's Colosseum"),
+}
+# XD's Realgam Colosseum (R2, Jordan 11-23: the same arena, under XD's name, its own flag): four rounds of four at the disc's
+# Lv 40, open once you reach XD's Snagem Hideout (Mayor Trest's message); rounds at a desk, as XD's Orre Colosseum's.
+XD_REALGAM_DESK = {"text": "Realgam Colosseum desk", "action": "EVENT", "condition": "visited_SNAGEM_HIDEOUT", "event": {
+    "xd_colosseum": {"rounds": [[T(f"xdrealgam:{r}:{m}", **({"is_boss_battle": True} if m == 4 else {})) for m in range(1, 5)]
+                                for r in range(1, 5)],
+                     "cleared": "xd_realgam_cleared", "open": "visited_SNAGEM_HIDEOUT", "all_flag": "xd_realgam_all",
+                     "name": "the Realgam Colosseum", "money": [3000, 4000, 5000, 6000]},
+    "lines": ["Clerk: Welcome to the Realgam Colosseum! Four rounds, four battles each. Every team here is Lv 40."]}}
+RECEPTIONIST_SHEET = "orre_npc_15.png"
+
+
+def _walk_sheet(sprite, cls):
+    """A trainer's walking sheet: dungeon_sprites.json's Orre trainers by battle picture, else a look of their class."""
+    import json as _j
+    import os as _o
+    try:
+        d = _j.load(open(_o.path.join("assets", "dungeon_sprites.json"), encoding="utf-8-sig"))
+    except (OSError, ValueError):
+        d = {}
+    t = d.get("trainers_ORRE") or {}
+    return t.get(sprite) or (d.get("trainers") or {}).get(sprite) or         {"GYM_LEADER": "orre_trainer_cooltrainer_m.png", "CHAMPION": "orre_trainer_ace_trainer.png"}.get(cls) or "orre_trainer_ace_trainer.png"
+
+
+def _gym_of(area):
+    import json as _j
+    import os as _o
+    try:
+        return (_j.load(open(_o.path.join("assets", "orre_area_data.json"), encoding="utf-8"))["STORY_PROGRESSION"].get(area) or {}).get("gym") or {}
+    except (OSError, ValueError, KeyError):
+        return {}
+
+
+def _is_gym_option(area, text):
+    import json as _j
+    import os as _o
+    try:
+        opts = (_j.load(open(_o.path.join("assets", "orre_area_data.json"), encoding="utf-8"))["STORY_PROGRESSION"].get(area) or {}).get("explore_options") or []
+    except (OSError, ValueError, KeyError):
+        return False
+    return next((o for o in opts if o.get("text") == text and str(o.get("action")).upper() == "GYM"), None)
+
+
+def _tournament(maps):
+    for area, (lobby, desk, arena, me, foe, door, pic, name) in TOURNAMENTS.items():
+        if area not in maps:
+            continue
+        m = maps[area]
+        lob = m["rooms"][lobby] if lobby else m
+        ar = m["rooms"][arena]
+        if pic:   # (the lobby's own colour)
+            lob["roofs"]["_picture"]["f"] = f"orre_ground/{pic}.png"
+            for o in lob.get("overheads") or []:
+                if o.get("f", "").startswith("orre_top/103"):
+                    o["f"] = f"orre_top/{pic}.png"
+        if area == "PHENAC_CITY" and lobby:   # (the lobby's healing machine: Phenac's "Pokemon Center" person is its Center's nurse)
+            lob["people"] = [{"text": "Healing machine", "action": "HEAL"} if p == "Pokemon Center" else p for p in lob.get("people") or []]
+        if desk:
+            _set_people(lob, {desk: {"text": "Receptionist", "action": "EVENT", "event": {
+                "world": "orre_tournament",
+                "signup": {"arena": arena, "at": list(me),
+                           "lines": [f"Receptionist: Welcome to {name}! You're entered. Win every round to take the title.",
+                                     "Receptionist: This way to the arena, please. Good luck!"],
+                           "champion": [f"Receptionist: Our champion! {name} is yours. Come back any time."]}}}})
+        gym = _gym_of(area)
+        rounds = list(gym.get("trainers") or []) + ([gym["leader"]] if gym.get("leader") else [])
+        back = [door[0], door[1]]
+        scenes = list(ar.get("scenes") or [])
+        for k, t in enumerate(rounds):
+            last = k == len(rounds) - 1
+            who = t.get("name", "Your opponent")
+            call = [f"Referee: The final! {who} takes the field!"] if last else [f"Referee: Round {k + 1}! {who} takes the field!"]
+            scenes.append({"trigger": "enter", "condition": [f"world:orre_tournament:round:{k}"], "call": call,
+                           "cast": [{"sheet": _walk_sheet(t.get("sprite"), t.get("class")), "from": back, "to": list(foe),
+                                     "face": "d", "stay": True,
+                                     "lines": list((t.get("dialogue") or {}).get("intro") or [f"{who}: Let's battle!"])[:1],
+                                     "event": {"world": "orre_tournament", "fight": True}}]})
+        scenes.append({"trigger": "enter", "condition": ["world:orre_tournament:game"], "cast": [],   # (the Gym's math game before
+                       "call": ["Referee: Before the final, a challenge! Win it, and the champion takes the field."],  # the final, 11-23)
+                       "event": {"world": "orre_tournament", "fight": True}})
+        referee = {"world": "orre_tournament", "referee": True}   # (the Colosseum's host on the arena floor: no menu any more)
+        if not desk:   # (no desk: the host signs you up where you stand)
+            referee["signup"] = {"arena": arena, "at": list(me), "lines": [f"Host: Welcome to {name}! Take your place. Here they come!"],
+                                 "champion": [f"Host: The champion of {name}! Come back once the Gym battles start again."]}
+        def _ref(text):   # (the host, shown when the Colosseum's own option was: Phenac's waits for Snattle to go)
+            o = _is_gym_option(area, text)
+            r = {"text": text, "action": "EVENT", "event": dict(referee)}
+            r.update({k: o[k] for k in ("condition", "flag_condition", "color") if o and k in o})
+            return r
+        for i, p in enumerate(ar.get("people") or []):
+            if isinstance(p, str) and _is_gym_option(area, p):
+                ar["people"][i] = _ref(p)
+            elif isinstance(p, list):
+                ar["people"][i] = [_ref(q) if isinstance(q, str) and _is_gym_option(area, q) else q for q in p]
+        lost = {"trigger": "enter", "condition": ["world:orre_tournament:lost"], "cast": [
+            {"sheet": RECEPTIONIST_SHEET, "from": back, "to": "player", "leave": "back",
+             "lines": ["Receptionist: Bad luck! Your Pokemon have been healed. Sign up again whenever you're ready."]}],
+            "event": {"world": "orre_tournament", "reset": True}}
+        if lobby and desk:   # (back at the desk; the Under's lobby is its own map, Realgam's is the tower's: you walk out)
+            lost["room"] = [lobby, desk[0], desk[1] + 1]
+        scenes.append(lost)
+        scenes.append({"trigger": "enter", "condition": ["world:orre_tournament:won"], "cast": [],
+                       "call": [f"Referee: The champion of {name}!", "The crowd roars!"],
+                       "event": {"world": "orre_tournament", "done": True}})
+        ar["scenes"] = scenes
+        if area == "REALGAM_TOWER":
+            _set_people(ar, {_free_spot(ar, (2, 5)): XD_REALGAM_DESK})
+
+
 def apply(maps):
     if "OUTSKIRT_STAND" in maps:
         _outskirt(maps)
@@ -1205,3 +1329,4 @@ def apply(maps):
     if "PHENAC_CITY" in maps:
         _phenac(maps)
         _past_guard(maps["PHENAC_CITY"])
+    _tournament(maps)   # (last: after every place has its people)

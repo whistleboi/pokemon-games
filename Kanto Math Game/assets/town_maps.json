@@ -292311,6 +292311,80 @@
    "gym": {
     "theme": "room",
     "art": [
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "c.c.ccccccc.c.c",
+     "c.N.ccccccc.c.c",
+     "c...ccccccc...c",
+     "c......N......c",
+     "c.............c",
+     "c..c..........c",
+     "cc...c...c...cc",
+     "cc...c...c...cc",
+     "cccccccvccccccc",
+     "ccccccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:25,16"
+    },
+    "buildings": {},
+    "people": [
+     {
+      "text": "Healing machine",
+      "action": "HEAL"
+     },
+     {
+      "text": "Receptionist",
+      "action": "EVENT",
+      "event": {
+       "world": "orre_tournament",
+       "signup": {
+        "arena": "arena",
+        "at": [
+         12,
+         11
+        ],
+        "lines": [
+         "Receptionist: Welcome to Phenac Stadium! You're entered. Win every round to take the title.",
+         "Receptionist: This way to the arena, please. Good luck!"
+        ],
+        "champion": [
+         "Receptionist: Our champion! Phenac Stadium is yours. Come back any time."
+        ]
+       }
+      }
+     }
+    ],
+    "signs": [],
+    "roofs": {
+     "_picture": {
+      "f": "orre_ground/103_blue.png",
+      "at": [
+       2,
+       1
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "orre_top/103_blue.png",
+      "at": [
+       2,
+       1
+      ],
+      "size": [
+       15,
+       12
+      ]
+     }
+    ]
+   },
+   "arena": {
+    "theme": "room",
+    "art": [
      "ccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc",
      "c....ccccc..N..ccccc....c",
@@ -292332,13 +292406,27 @@
      "ccccccccccccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:25,16"
+     "v": "ROOM:gym"
     },
     "buildings": {},
     "people": [
      [
       "PHENAC STADIUM: SNATTLE",
-      "Phenac Stadium"
+      {
+       "text": "Phenac Stadium",
+       "action": "EVENT",
+       "event": {
+        "world": "orre_tournament",
+        "referee": true
+       },
+       "condition": {
+        "any": [
+         "not:xd_bonsly_found",
+         "orre_snattle_phenac"
+        ]
+       },
+       "color": "GOLD"
+      }
      ],
      {
       "text": "Battle CD 44",
@@ -292748,6 +292836,190 @@
        25,
        19
       ]
+     }
+    ],
+    "scenes": [
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:round:0"
+      ],
+      "call": [
+       "Referee: Round 1! Cooltrainer Rewn takes the field!"
+      ],
+      "cast": [
+       {
+        "sheet": "orre_trainer_cooltrainer_m.png",
+        "from": [
+         3,
+         3
+        ],
+        "to": [
+         12,
+         7
+        ],
+        "face": "d",
+        "stay": true,
+        "lines": [
+         "Cooltrainer Rewn: Let's battle!"
+        ],
+        "event": {
+         "world": "orre_tournament",
+         "fight": true
+        }
+       }
+      ]
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:round:1"
+      ],
+      "call": [
+       "Referee: Round 2! Cooltrainer Buna takes the field!"
+      ],
+      "cast": [
+       {
+        "sheet": "orre_trainer_cooltrainer_m.png",
+        "from": [
+         3,
+         3
+        ],
+        "to": [
+         12,
+         7
+        ],
+        "face": "d",
+        "stay": true,
+        "lines": [
+         "Cooltrainer Buna: Let's battle!"
+        ],
+        "event": {
+         "world": "orre_tournament",
+         "fight": true
+        }
+       }
+      ]
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:round:2"
+      ],
+      "call": [
+       "Referee: Round 3! Teacher Holen takes the field!"
+      ],
+      "cast": [
+       {
+        "sheet": "orre_trainer_chaser_m.png",
+        "from": [
+         3,
+         3
+        ],
+        "to": [
+         12,
+         7
+        ],
+        "face": "d",
+        "stay": true,
+        "lines": [
+         "Teacher Holen: Let's battle!"
+        ],
+        "event": {
+         "world": "orre_tournament",
+         "fight": true
+        }
+       }
+      ]
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:round:3"
+      ],
+      "call": [
+       "Referee: The final! Phenac Stadium Champion Glais takes the field!"
+      ],
+      "cast": [
+       {
+        "sheet": "orre_trainer_ace_trainer.png",
+        "from": [
+         3,
+         3
+        ],
+        "to": [
+         12,
+         7
+        ],
+        "face": "d",
+        "stay": true,
+        "lines": [
+         "Welcome to the final round of the Phenac Stadium! The winner takes the Phenac Badge!"
+        ],
+        "event": {
+         "world": "orre_tournament",
+         "fight": true
+        }
+       }
+      ]
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:game"
+      ],
+      "cast": [],
+      "call": [
+       "Referee: Before the final, a challenge! Win it, and the champion takes the field."
+      ],
+      "event": {
+       "world": "orre_tournament",
+       "fight": true
+      }
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:lost"
+      ],
+      "cast": [
+       {
+        "sheet": "orre_npc_15.png",
+        "from": [
+         3,
+         3
+        ],
+        "to": "player",
+        "leave": "back",
+        "lines": [
+         "Receptionist: Bad luck! Your Pokemon have been healed. Sign up again whenever you're ready."
+        ]
+       }
+      ],
+      "event": {
+       "world": "orre_tournament",
+       "reset": true
+      },
+      "room": [
+       "gym",
+       7,
+       6
+      ]
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:won"
+      ],
+      "cast": [],
+      "call": [
+       "Referee: The champion of Phenac Stadium!",
+       "The crowd roars!"
+      ],
+      "event": {
+       "world": "orre_tournament",
+       "done": true
+      }
      }
     ]
    },
@@ -294875,7 +295147,7 @@
      "c.c.ccccccc.c.c",
      "c.N.ccccccc.c.c",
      "c...ccccccc...c",
-     "c.............c",
+     "c......N......c",
      "c.............c",
      "c..^..........c",
      "cc...c...c...cc",
@@ -294889,7 +295161,28 @@
     },
     "buildings": {},
     "people": [
-     "Pokemon Center"
+     "Pokemon Center",
+     {
+      "text": "Receptionist",
+      "action": "EVENT",
+      "event": {
+       "world": "orre_tournament",
+       "signup": {
+        "arena": "arena",
+        "at": [
+         7,
+         9
+        ],
+        "lines": [
+         "Receptionist: Welcome to the Pyrite Colosseum! You're entered. Win every round to take the title.",
+         "Receptionist: This way to the arena, please. Good luck!"
+        ],
+        "champion": [
+         "Receptionist: Our champion! the Pyrite Colosseum is yours. Come back any time."
+        ]
+       }
+      }
+     }
     ],
     "signs": [],
     "roofs": {
@@ -294940,7 +295233,15 @@
     },
     "buildings": {},
     "people": [
-     "Pyrite Colosseum"
+     {
+      "text": "Pyrite Colosseum",
+      "action": "EVENT",
+      "event": {
+       "world": "orre_tournament",
+       "referee": true
+      },
+      "color": "GOLD"
+     }
     ],
     "signs": [],
     "roofs": {
@@ -294966,6 +295267,190 @@
        15,
        13
       ]
+     }
+    ],
+    "scenes": [
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:round:0"
+      ],
+      "call": [
+       "Referee: Round 1! Hunter Hoks takes the field!"
+      ],
+      "cast": [
+       {
+        "sheet": "orre_trainer_hunter_m.png",
+        "from": [
+         5,
+         3
+        ],
+        "to": [
+         7,
+         5
+        ],
+        "face": "d",
+        "stay": true,
+        "lines": [
+         "Hunter Hoks: Let's battle!"
+        ],
+        "event": {
+         "world": "orre_tournament",
+         "fight": true
+        }
+       }
+      ]
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:round:1"
+      ],
+      "call": [
+       "Referee: Round 2! Chaser Tisler takes the field!"
+      ],
+      "cast": [
+       {
+        "sheet": "orre_trainer_chaser_m.png",
+        "from": [
+         5,
+         3
+        ],
+        "to": [
+         7,
+         5
+        ],
+        "face": "d",
+        "stay": true,
+        "lines": [
+         "Chaser Tisler: Let's battle!"
+        ],
+        "event": {
+         "world": "orre_tournament",
+         "fight": true
+        }
+       }
+      ]
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:round:2"
+      ],
+      "call": [
+       "Referee: Round 3! Bandana Guy Vilch takes the field!"
+      ],
+      "cast": [
+       {
+        "sheet": "orre_trainer_chaser_m.png",
+        "from": [
+         5,
+         3
+        ],
+        "to": [
+         7,
+         5
+        ],
+        "face": "d",
+        "stay": true,
+        "lines": [
+         "Bandana Guy Vilch: Let's battle!"
+        ],
+        "event": {
+         "world": "orre_tournament",
+         "fight": true
+        }
+       }
+      ]
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:round:3"
+      ],
+      "call": [
+       "Referee: The final! Bodybuilder Mirez takes the field!"
+      ],
+      "cast": [
+       {
+        "sheet": "orre_trainer_bodybuilder.png",
+        "from": [
+         5,
+         3
+        ],
+        "to": [
+         7,
+         5
+        ],
+        "face": "d",
+        "stay": true,
+        "lines": [
+         "The final round of the Pyrite Colosseum! The winner takes the Pyrite Badge!"
+        ],
+        "event": {
+         "world": "orre_tournament",
+         "fight": true
+        }
+       }
+      ]
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:game"
+      ],
+      "cast": [],
+      "call": [
+       "Referee: Before the final, a challenge! Win it, and the champion takes the field."
+      ],
+      "event": {
+       "world": "orre_tournament",
+       "fight": true
+      }
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:lost"
+      ],
+      "cast": [
+       {
+        "sheet": "orre_npc_15.png",
+        "from": [
+         5,
+         3
+        ],
+        "to": "player",
+        "leave": "back",
+        "lines": [
+         "Receptionist: Bad luck! Your Pokemon have been healed. Sign up again whenever you're ready."
+        ]
+       }
+      ],
+      "event": {
+       "world": "orre_tournament",
+       "reset": true
+      },
+      "room": [
+       "gym",
+       7,
+       6
+      ]
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:won"
+      ],
+      "cast": [],
+      "call": [
+       "Referee: The champion of the Pyrite Colosseum!",
+       "The crowd roars!"
+      ],
+      "event": {
+       "world": "orre_tournament",
+       "done": true
+      }
      }
     ]
    },
@@ -298388,7 +298873,7 @@
      "cccc.v.cccc",
      "ccc.....ccc",
      "c.c.....c.c",
-     "c.........c",
+     "c.N.......c",
      "c.........c",
      "c.....N...c",
      "c...c.....c",
@@ -298402,7 +298887,845 @@
     },
     "buildings": {},
     "people": [
-     "Realgam Tower: Cipher's Colosseum"
+     {
+      "text": "Realgam Colosseum desk",
+      "action": "EVENT",
+      "condition": "visited_SNAGEM_HIDEOUT",
+      "event": {
+       "xd_colosseum": {
+        "rounds": [
+         [
+          {
+           "name": "Bodybuilder Aftin",
+           "class": "BODYBUILDER",
+           "sprite": "orre_bodybuilder.png",
+           "team": [
+            232,
+            364,
+            317,
+            338
+           ],
+           "levels": [
+            40,
+            40,
+            40,
+            40
+           ],
+           "team_moves": [
+            [
+             "DEFENSE-CURL",
+             "ROLLOUT",
+             "IRON-TAIL",
+             "STRENGTH"
+            ],
+            [
+             "DEFENSE-CURL",
+             "ICE-BALL",
+             "WATERFALL",
+             "ATTRACT"
+            ],
+            [
+             "DEFENSE-CURL",
+             "ROLLOUT",
+             "SLUDGE-BOMB",
+             "YAWN"
+            ],
+            [
+             "DEFENSE-CURL",
+             "ROLLOUT",
+             "FLAMETHROWER",
+             "PSYCHIC"
+            ]
+           ],
+           "double": true,
+           "rewards": {
+            "balls": 0
+           }
+          },
+          {
+           "name": "Casual Dude Feper",
+           "class": "CASUAL_DUDE",
+           "sprite": "orre_chaser_m.png",
+           "team": [
+            303,
+            288,
+            369,
+            111
+           ],
+           "levels": [
+            40,
+            40,
+            40,
+            40
+           ],
+           "team_moves": [
+            [
+             "ICY-WIND",
+             "ROCK-SLIDE",
+             "SWEET-SCENT",
+             "BITE"
+            ],
+            [
+             "ICY-WIND",
+             "ROCK-SLIDE",
+             "SLASH",
+             "FOCUS-PUNCH"
+            ],
+            [
+             "ICY-WIND",
+             "ROCK-SLIDE",
+             "BODY-SLAM",
+             "WATERFALL"
+            ],
+            [
+             "ICY-WIND",
+             "ROCK-SLIDE",
+             "BODY-SLAM",
+             "STOMP"
+            ]
+           ],
+           "double": true,
+           "rewards": {
+            "balls": 0
+           }
+          },
+          {
+           "name": "Cooltrainer Halsion",
+           "class": "COOLTRAINER",
+           "sprite": "orre_cool_trainer_f.png",
+           "team": [
+            351,
+            207,
+            332,
+            51
+           ],
+           "levels": [
+            40,
+            40,
+            40,
+            40
+           ],
+           "team_moves": [
+            [
+             "WEATHER-BALL",
+             "SANDSTORM",
+             "THUNDER-WAVE",
+             "SHADOW-BALL"
+            ],
+            [
+             "IRON-TAIL",
+             "SWORDS-DANCE",
+             "SANDSTORM",
+             "REST"
+            ],
+            [
+             "GIGA-DRAIN",
+             "FOCUS-PUNCH",
+             "SUBSTITUTE",
+             "DOUBLE-TEAM"
+            ],
+            [
+             "SUBSTITUTE",
+             "UPROAR",
+             "MAGNITUDE",
+             "SCREECH"
+            ]
+           ],
+           "double": true,
+           "rewards": {
+            "balls": 0
+           }
+          },
+          {
+           "name": "Cooltrainer Malex",
+           "class": "COOLTRAINER",
+           "sprite": "orre_cool_trainer_f.png",
+           "team": [
+            277,
+            164,
+            227,
+            198
+           ],
+           "levels": [
+            40,
+            40,
+            40,
+            40
+           ],
+           "team_moves": [
+            [
+             "SKY-ATTACK",
+             "AGILITY",
+             "ENDEAVOR",
+             "STEEL-WING"
+            ],
+            [
+             "SKY-ATTACK",
+             "SWAGGER",
+             "PSYCHIC",
+             "MUD-SLAP"
+            ],
+            [
+             "SKY-ATTACK",
+             "AGILITY",
+             "ROCK-SMASH",
+             "STEEL-WING"
+            ],
+            [
+             "SKY-ATTACK",
+             "THUNDER-WAVE",
+             "PSYCH-UP",
+             "SHADOW-BALL"
+            ]
+           ],
+           "double": true,
+           "rewards": {
+            "balls": 0
+           },
+           "is_boss_battle": true
+          }
+         ],
+         [
+          {
+           "name": "Matron Relza",
+           "class": "MATRON",
+           "sprite": "orre_matron.png",
+           "team": [
+            200,
+            297,
+            286,
+            237
+           ],
+           "levels": [
+            40,
+            40,
+            40,
+            40
+           ],
+           "team_moves": [
+            [
+             "IMPRISON",
+             "PSYCHIC",
+             "AERIAL-ACE",
+             "PROTECT"
+            ],
+            [
+             "FAKE-OUT",
+             "BULK-UP",
+             "BRICK-BREAK",
+             "ROCK-TOMB"
+            ],
+            [
+             "SKY-UPPERCUT",
+             "THUNDER-PUNCH",
+             "GIGA-DRAIN",
+             "SUBSTITUTE"
+            ],
+            [
+             "TRIPLE-KICK",
+             "MEGA-KICK",
+             "DOUBLE-TEAM",
+             "SWAGGER"
+            ]
+           ],
+           "double": true,
+           "rewards": {
+            "balls": 0
+           }
+          },
+          {
+           "name": "Fun Old Man Hebson",
+           "class": "FUN_OLD_MAN",
+           "sprite": "orre_fun_old_man.png",
+           "team": [
+            202,
+            259,
+            308,
+            292
+           ],
+           "levels": [
+            40,
+            40,
+            40,
+            40
+           ],
+           "team_moves": [
+            [
+             "DESTINY-BOND",
+             "ENCORE",
+             "MIRROR-COAT",
+             "COUNTER"
+            ],
+            [
+             "SURF",
+             "ICY-WIND",
+             "MIRROR-COAT",
+             "COUNTER"
+            ],
+            [
+             "BRICK-BREAK",
+             "PSYCHIC",
+             "FIRE-PUNCH",
+             "COUNTER"
+            ],
+            [
+             "SHADOW-BALL",
+             "SILVER-WIND",
+             "AERIAL-ACE",
+             "DIG"
+            ]
+           ],
+           "double": true,
+           "rewards": {
+            "balls": 0
+           }
+          },
+          {
+           "name": "Bodybuilder Toko",
+           "class": "BODYBUILDER",
+           "sprite": "orre_bodybuilder.png",
+           "team": [
+            226,
+            271,
+            370,
+            283
+           ],
+           "levels": [
+            40,
+            40,
+            40,
+            40
+           ],
+           "team_moves": [
+            [
+             "RAIN-DANCE",
+             "WATER-PULSE",
+             "BODY-SLAM",
+             "SUBSTITUTE"
+            ],
+            [
+             "SURF",
+             "THUNDER-PUNCH",
+             "GIGA-DRAIN",
+             "FAKE-OUT"
+            ],
+            [
+             "FLAIL",
+             "WATERFALL",
+             "ATTRACT",
+             "ENDURE"
+            ],
+            [
+             "HYDRO-PUMP",
+             "BLIZZARD",
+             "RAIN-DANCE",
+             "ATTRACT"
+            ]
+           ],
+           "double": true,
+           "rewards": {
+            "balls": 0
+           }
+          },
+          {
+           "name": "Newscaster Arule",
+           "class": "NEWSCASTER",
+           "sprite": "pt_reporter.png",
+           "team": [
+            274,
+            188,
+            324,
+            357
+           ],
+           "levels": [
+            40,
+            40,
+            40,
+            40
+           ],
+           "team_moves": [
+            [
+             "SHADOW-BALL",
+             "BRICK-BREAK",
+             "MEGA-KICK",
+             "FAKE-OUT"
+            ],
+            [
+             "SOLAR-BEAM",
+             "SUNNY-DAY",
+             "STUN-SPORE",
+             "REFLECT"
+            ],
+            [
+             "ERUPTION",
+             "IRON-TAIL",
+             "SUNNY-DAY",
+             "FIRE-SPIN"
+            ],
+            [
+             "MAGICAL-LEAF",
+             "AERIAL-ACE",
+             "SYNTHESIS",
+             "STOMP"
+            ]
+           ],
+           "double": true,
+           "rewards": {
+            "balls": 0
+           },
+           "is_boss_battle": true
+          }
+         ],
+         [
+          {
+           "name": "Super Trainer Agoll",
+           "class": "SUPERTRAINER",
+           "sprite": "orre_cool_trainer_m.png",
+           "team": [
+            234,
+            40,
+            213,
+            195,
+            241
+           ],
+           "levels": [
+            40,
+            40,
+            40,
+            40,
+            40
+           ],
+           "team_moves": [
+            [
+             "REST",
+             "SLEEP-TALK",
+             "SHADOW-BALL",
+             "DOUBLE-EDGE"
+            ],
+            [
+             "REST",
+             "SLEEP-TALK",
+             "COUNTER",
+             "BODY-SLAM"
+            ],
+            [
+             "REST",
+             "SLEEP-TALK",
+             "TOXIC",
+             "DOUBLE-TEAM"
+            ],
+            [
+             "REST",
+             "SLEEP-TALK",
+             "MUD-SHOT",
+             "CURSE"
+            ],
+            [
+             "REST",
+             "SLEEP-TALK",
+             "BODY-SLAM",
+             "CURSE"
+            ]
+           ],
+           "double": true,
+           "rewards": {
+            "balls": 0
+           }
+          },
+          {
+           "name": "Casual Guy Axon",
+           "class": "CASUAL_GUY",
+           "sprite": "orre_chaser_m.png",
+           "team": [
+            214,
+            127,
+            291,
+            303,
+            166
+           ],
+           "levels": [
+            40,
+            40,
+            40,
+            40,
+            40
+           ],
+           "team_moves": [
+            [
+             "SWORDS-DANCE",
+             "FALSE-SWIPE",
+             "FURY-CUTTER"
+            ],
+            [
+             "SWORDS-DANCE",
+             "FALSE-SWIPE",
+             "FURY-CUTTER"
+            ],
+            [
+             "SWORDS-DANCE",
+             "FALSE-SWIPE",
+             "FURY-CUTTER"
+            ],
+            [
+             "SWORDS-DANCE",
+             "FALSE-SWIPE",
+             "ASTONISH",
+             "IRON-DEFENSE"
+            ],
+            [
+             "SWORDS-DANCE",
+             "DOUBLE-TEAM",
+             "BATON-PASS",
+             "REFLECT"
+            ]
+           ],
+           "double": true,
+           "rewards": {
+            "balls": 0
+           }
+          },
+          {
+           "name": "Rider Polot",
+           "class": "RIDER",
+           "sprite": "orre_rider.png",
+           "team": [
+            357,
+            321,
+            264,
+            184
+           ],
+           "levels": [
+            40,
+            40,
+            40,
+            40
+           ],
+           "team_moves": [
+            [
+             "FLY",
+             "FLASH",
+             "STRENGTH",
+             "SWEET-SCENT"
+            ],
+            [
+             "WATERFALL",
+             "DIVE",
+             "SURF",
+             "WHIRLPOOL"
+            ],
+            [
+             "ROCK-SMASH",
+             "CUT",
+             "SURF",
+             "STRENGTH"
+            ],
+            [
+             "DIVE",
+             "ROCK-SMASH",
+             "WATERFALL",
+             "PRESENT"
+            ]
+           ],
+           "double": true,
+           "rewards": {
+            "balls": 0
+           }
+          },
+          {
+           "name": "Navigator Bestol",
+           "class": "NAVIGATOR",
+           "sprite": "orre_sailor.png",
+           "team": [
+            281,
+            368,
+            342,
+            319,
+            193
+           ],
+           "levels": [
+            40,
+            40,
+            40,
+            40,
+            40
+           ],
+           "team_moves": [
+            [
+             "TELEPORT",
+             "TAUNT",
+             "FLASH",
+             "THUNDERBOLT"
+            ],
+            [
+             "REFRESH",
+             "IRON-DEFENSE",
+             "MUD-SPORT",
+             "WATERFALL"
+            ],
+            [
+             "GUILLOTINE",
+             "BUBBLE-BEAM",
+             "SWORDS-DANCE",
+             "VICE-GRIP"
+            ],
+            [
+             "BITE",
+             "SUBSTITUTE",
+             "DOUBLE-TEAM",
+             "HIDDEN-POWER"
+            ],
+            [
+             "DETECT",
+             "THIEF",
+             "SIGNAL-BEAM",
+             "HIDDEN-POWER"
+            ]
+           ],
+           "double": true,
+           "rewards": {
+            "balls": 0
+           },
+           "is_boss_battle": true
+          }
+         ],
+         [
+          {
+           "name": "Bodybuilder Piliot",
+           "class": "BODYBUILDER",
+           "sprite": "orre_bodybuilder.png",
+           "team": [
+            229,
+            215,
+            301,
+            262
+           ],
+           "levels": [
+            40,
+            40,
+            40,
+            40
+           ],
+           "team_moves": [
+            [
+             "BITE",
+             "SMOG",
+             "HOWL",
+             "EMBER"
+            ],
+            [
+             "FAKE-OUT",
+             "AGILITY",
+             "QUICK-ATTACK",
+             "FEINT-ATTACK"
+            ],
+            [
+             "ASSIST",
+             "DOUBLE-SLAP",
+             "TAIL-WHIP",
+             "ATTRACT"
+            ],
+            [
+             "BITE",
+             "SAND-ATTACK",
+             "POISON-FANG",
+             "SNATCH"
+            ]
+           ],
+           "double": true,
+           "rewards": {
+            "balls": 0
+           }
+          },
+          {
+           "name": "Curmudgeon Nistil",
+           "class": "CURMUDGEON",
+           "sprite": "orre_fun_old_man.png",
+           "team": [
+            200,
+            295,
+            197,
+            202
+           ],
+           "levels": [
+            40,
+            40,
+            40,
+            40
+           ],
+           "team_moves": [
+            [
+             "PERISH-SONG",
+             "PAIN-SPLIT",
+             "CONFUSE-RAY",
+             "PROTECT"
+            ],
+            [
+             "REST",
+             "SCREECH",
+             "SNORE",
+             "PROTECT"
+            ],
+            [
+             "CONFUSE-RAY",
+             "MEAN-LOOK",
+             "SCREECH",
+             "PURSUIT"
+            ],
+            [
+             "DESTINY-BOND",
+             "ENCORE",
+             "MIRROR-COAT",
+             "COUNTER"
+            ]
+           ],
+           "double": true,
+           "rewards": {
+            "balls": 0
+           }
+          },
+          {
+           "name": "Cooltrainer Hileon",
+           "class": "COOLTRAINER",
+           "sprite": "orre_cool_trainer_m.png",
+           "team": [
+            358,
+            356,
+            73,
+            313
+           ],
+           "levels": [
+            40,
+            40,
+            40,
+            40
+           ],
+           "team_moves": [
+            [
+             "YAWN",
+             "PSYCHIC",
+             "ICY-WIND",
+             "SHOCK-WAVE"
+            ],
+            [
+             "CONFUSE-RAY",
+             "SHADOW-BALL",
+             "METRONOME",
+             "PAIN-SPLIT"
+            ],
+            [
+             "BARRIER",
+             "MIRROR-COAT",
+             "WATER-PULSE",
+             "TOXIC"
+            ],
+            [
+             "SIGNAL-BEAM",
+             "SEISMIC-TOSS",
+             "DYNAMIC-PUNCH",
+             "SHADOW-BALL"
+            ]
+           ],
+           "double": true,
+           "rewards": {
+            "balls": 0
+           }
+          },
+          {
+           "name": "Cooltrainer Carben",
+           "class": "COOLTRAINER",
+           "sprite": "orre_cool_trainer_f.png",
+           "team": [
+            241,
+            326,
+            256,
+            211,
+            286
+           ],
+           "levels": [
+            40,
+            40,
+            40,
+            40,
+            40
+           ],
+           "team_moves": [
+            [
+             "MILK-DRINK",
+             "ROLLOUT",
+             "STOMP",
+             "DEFENSE-CURL"
+            ],
+            [
+             "PSYBEAM",
+             "CONFUSE-RAY",
+             "FUTURE-SIGHT",
+             "REST"
+            ],
+            [
+             "DOUBLE-KICK",
+             "BULK-UP",
+             "SAND-ATTACK",
+             "FLAMETHROWER"
+            ],
+            [
+             "WATER-PULSE",
+             "PIN-MISSILE",
+             "SLUDGE-BOMB",
+             "HAZE"
+            ],
+            [
+             "LEECH-SEED",
+             "GIGA-DRAIN",
+             "STUN-SPORE",
+             "HEADBUTT"
+            ]
+           ],
+           "double": true,
+           "rewards": {
+            "balls": 0
+           },
+           "is_boss_battle": true
+          }
+         ]
+        ],
+        "cleared": "xd_realgam_cleared",
+        "open": "visited_SNAGEM_HIDEOUT",
+        "all_flag": "xd_realgam_all",
+        "name": "the Realgam Colosseum",
+        "money": [
+         3000,
+         4000,
+         5000,
+         6000
+        ]
+       },
+       "lines": [
+        "Clerk: Welcome to the Realgam Colosseum! Four rounds, four battles each. Every team here is Lv 40."
+       ]
+      }
+     },
+     {
+      "text": "Realgam Tower: Cipher's Colosseum",
+      "action": "EVENT",
+      "event": {
+       "world": "orre_tournament",
+       "referee": true,
+       "signup": {
+        "arena": "colosseum",
+        "at": [
+         5,
+         10
+        ],
+        "lines": [
+         "Host: Welcome to Cipher's Colosseum! Take your place. Here they come!"
+        ],
+        "champion": [
+         "Host: The champion of Cipher's Colosseum! Come back once the Gym battles start again."
+        ]
+       }
+      },
+      "color": "GOLD"
+     }
     ],
     "signs": [],
     "roofs": {
@@ -298428,6 +299751,247 @@
        11,
        13
       ]
+     }
+    ],
+    "scenes": [
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:round:0"
+      ],
+      "call": [
+       "Referee: Round 1! Bodybuilder Jomas takes the field!"
+      ],
+      "cast": [
+       {
+        "sheet": "orre_trainer_bodybuilder.png",
+        "from": [
+         5,
+         3
+        ],
+        "to": [
+         5,
+         7
+        ],
+        "face": "d",
+        "stay": true,
+        "lines": [
+         "Bodybuilder Jomas: Let's battle!"
+        ],
+        "event": {
+         "world": "orre_tournament",
+         "fight": true
+        }
+       }
+      ]
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:round:1"
+      ],
+      "call": [
+       "Referee: Round 2! Rider Delan takes the field!"
+      ],
+      "cast": [
+       {
+        "sheet": "orre_trainer_rider.png",
+        "from": [
+         5,
+         3
+        ],
+        "to": [
+         5,
+         7
+        ],
+        "face": "d",
+        "stay": true,
+        "lines": [
+         "Rider Delan: Let's battle!"
+        ],
+        "event": {
+         "world": "orre_tournament",
+         "fight": true
+        }
+       }
+      ]
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:round:2"
+      ],
+      "call": [
+       "Referee: Round 3! Cipher Peon Nella takes the field!"
+      ],
+      "cast": [
+       {
+        "sheet": "orre_trainer_cipher_grunt.png",
+        "from": [
+         5,
+         3
+        ],
+        "to": [
+         5,
+         7
+        ],
+        "face": "d",
+        "stay": true,
+        "lines": [
+         "Cipher Peon Nella: Let's battle!"
+        ],
+        "event": {
+         "world": "orre_tournament",
+         "fight": true
+        }
+       }
+      ]
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:round:3"
+      ],
+      "call": [
+       "Referee: Round 4! Cipher Peon Ston takes the field!"
+      ],
+      "cast": [
+       {
+        "sheet": "orre_trainer_cipher_grunt.png",
+        "from": [
+         5,
+         3
+        ],
+        "to": [
+         5,
+         7
+        ],
+        "face": "d",
+        "stay": true,
+        "lines": [
+         "Cipher Peon Ston: Let's battle!"
+        ],
+        "event": {
+         "world": "orre_tournament",
+         "fight": true
+        }
+       }
+      ]
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:round:4"
+      ],
+      "call": [
+       "Referee: Round 5! Cipher Nascour takes the field!"
+      ],
+      "cast": [
+       {
+        "sheet": "orre_trainer_chaser_m.png",
+        "from": [
+         5,
+         3
+        ],
+        "to": [
+         5,
+         7
+        ],
+        "face": "d",
+        "stay": true,
+        "lines": [
+         "Nascour: So you are the one who has undone every plan of ours. I am Nascour, Cipher's director."
+        ],
+        "event": {
+         "world": "orre_tournament",
+         "fight": true
+        }
+       }
+      ]
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:round:5"
+      ],
+      "call": [
+       "Referee: The final! Cipher Head Evice takes the field!"
+      ],
+      "cast": [
+       {
+        "sheet": "orre_trainer_ace_trainer.png",
+        "from": [
+         5,
+         3
+        ],
+        "to": [
+         5,
+         7
+        ],
+        "face": "d",
+        "stay": true,
+        "lines": [
+         "The floor of the arena splits open. Up rises... Phenac's mayor, Es Cade?!"
+        ],
+        "event": {
+         "world": "orre_tournament",
+         "fight": true
+        }
+       }
+      ]
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:game"
+      ],
+      "cast": [],
+      "call": [
+       "Referee: Before the final, a challenge! Win it, and the champion takes the field."
+      ],
+      "event": {
+       "world": "orre_tournament",
+       "fight": true
+      }
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:lost"
+      ],
+      "cast": [
+       {
+        "sheet": "orre_npc_15.png",
+        "from": [
+         5,
+         3
+        ],
+        "to": "player",
+        "leave": "back",
+        "lines": [
+         "Receptionist: Bad luck! Your Pokemon have been healed. Sign up again whenever you're ready."
+        ]
+       }
+      ],
+      "event": {
+       "world": "orre_tournament",
+       "reset": true
+      }
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:won"
+      ],
+      "cast": [],
+      "call": [
+       "Referee: The champion of Cipher's Colosseum!",
+       "The crowd roars!"
+      ],
+      "event": {
+       "world": "orre_tournament",
+       "done": true
+      }
      }
     ]
    },
@@ -298611,38 +300175,46 @@
    "gym": {
     "theme": "room",
     "art": [
-     "c.........................c",
-     "c.........................c",
-     "c.........................c",
-     "c.........................c",
-     "c.........................c",
-     "c..........cc.cc..........c",
-     "c..........cc.cc..........c",
-     "c.........................c",
-     "c.........................c",
-     "c......cc.........cc......c",
-     "c............N............c",
-     "c.........................c",
-     "c.........................c",
-     "c...cc...............cc...c",
-     "c.........................c",
-     "c.........................c",
-     "c......cc.........cc......c",
-     "c.........................c",
-     "c.......N.................c",
-     "c.........................c",
-     "c.........................c",
-     "c.........................c",
-     "c.........................c",
-     "cccccccccccccvccccccccccccc",
-     "ccccccccccccccccccccccccccc"
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "c.c.ccccccc.c.c",
+     "c.N.ccccccc.c.c",
+     "c...ccccccc...c",
+     "c......N......c",
+     "c.........N...c",
+     "c..c..........c",
+     "cc...c...c...cc",
+     "cc...c...c...cc",
+     "cccccccvccccccc",
+     "ccccccccccccccc"
     ],
     "exits": {
      "v": "OUT:16,7"
     },
     "buildings": {},
     "people": [
-     "Orre Colosseum",
+     "Pokemon Center",
+     {
+      "text": "Receptionist",
+      "action": "EVENT",
+      "event": {
+       "world": "orre_tournament",
+       "signup": {
+        "arena": "arena",
+        "at": [
+         13,
+         15
+        ],
+        "lines": [
+         "Receptionist: Welcome to the Orre Colosseum! You're entered. Win every round to take the title.",
+         "Receptionist: This way to the arena, please. Good luck!"
+        ],
+        "champion": [
+         "Receptionist: Our champion! the Orre Colosseum is yours. Come back any time."
+        ]
+       }
+      }
+     },
      {
       "text": "Colosseum desk",
       "action": "EVENT",
@@ -300720,6 +302292,77 @@
     "signs": [],
     "roofs": {
      "_picture": {
+      "f": "orre_ground/103_sand.png",
+      "at": [
+       2,
+       1
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "orre_top/103_sand.png",
+      "at": [
+       2,
+       1
+      ],
+      "size": [
+       15,
+       12
+      ]
+     }
+    ]
+   },
+   "arena": {
+    "theme": "room",
+    "art": [
+     "c.........................c",
+     "c.........................c",
+     "c.........................c",
+     "c.........................c",
+     "c.........................c",
+     "c..........cc.cc..........c",
+     "c..........cc.cc..........c",
+     "c.........................c",
+     "c.........................c",
+     "c......cc.........cc......c",
+     "c............N............c",
+     "c.........................c",
+     "c.........................c",
+     "c...cc...............cc...c",
+     "c.........................c",
+     "c.........................c",
+     "c......cc.........cc......c",
+     "c.........................c",
+     "c.........................c",
+     "c.........................c",
+     "c.........................c",
+     "c.........................c",
+     "c.........................c",
+     "cccccccccccccvccccccccccccc",
+     "ccccccccccccccccccccccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:gym"
+    },
+    "buildings": {},
+    "people": [
+     {
+      "text": "Orre Colosseum",
+      "action": "EVENT",
+      "event": {
+       "world": "orre_tournament",
+       "referee": true
+      },
+      "color": "GOLD"
+     }
+    ],
+    "signs": [],
+    "roofs": {
+     "_picture": {
       "f": "orre_ground/197.png",
       "at": [
        2,
@@ -300741,6 +302384,190 @@
        27,
        25
       ]
+     }
+    ],
+    "scenes": [
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:round:0"
+      ],
+      "call": [
+       "Referee: Round 1! Hunter Greel takes the field!"
+      ],
+      "cast": [
+       {
+        "sheet": "orre_trainer_pokemonranger_f.png",
+        "from": [
+         13,
+         1
+        ],
+        "to": [
+         13,
+         11
+        ],
+        "face": "d",
+        "stay": true,
+        "lines": [
+         "Hunter Greel: Let's battle!"
+        ],
+        "event": {
+         "world": "orre_tournament",
+         "fight": true
+        }
+       }
+      ]
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:round:1"
+      ],
+      "call": [
+       "Referee: Round 2! Rider Herlam takes the field!"
+      ],
+      "cast": [
+       {
+        "sheet": "orre_trainer_rider.png",
+        "from": [
+         13,
+         1
+        ],
+        "to": [
+         13,
+         11
+        ],
+        "face": "d",
+        "stay": true,
+        "lines": [
+         "Rider Herlam: Let's battle!"
+        ],
+        "event": {
+         "world": "orre_tournament",
+         "fight": true
+        }
+       }
+      ]
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:round:2"
+      ],
+      "call": [
+       "Referee: Round 3! Navigator Lestor takes the field!"
+      ],
+      "cast": [
+       {
+        "sheet": "orre_trainer_sailor.png",
+        "from": [
+         13,
+         1
+        ],
+        "to": [
+         13,
+         11
+        ],
+        "face": "d",
+        "stay": true,
+        "lines": [
+         "Navigator Lestor: Let's battle!"
+        ],
+        "event": {
+         "world": "orre_tournament",
+         "fight": true
+        }
+       }
+      ]
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:round:3"
+      ],
+      "call": [
+       "Referee: The final! Pre Gym Leader Justy takes the field!"
+      ],
+      "cast": [
+       {
+        "sheet": "orre_trainer_cooltrainer_m.png",
+        "from": [
+         13,
+         1
+        ],
+        "to": [
+         13,
+         11
+        ],
+        "face": "d",
+        "stay": true,
+        "lines": [
+         "Justy: The final of the Orre Colosseum! I trained at the Pre Gym for this. Give it everything!"
+        ],
+        "event": {
+         "world": "orre_tournament",
+         "fight": true
+        }
+       }
+      ]
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:game"
+      ],
+      "cast": [],
+      "call": [
+       "Referee: Before the final, a challenge! Win it, and the champion takes the field."
+      ],
+      "event": {
+       "world": "orre_tournament",
+       "fight": true
+      }
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:lost"
+      ],
+      "cast": [
+       {
+        "sheet": "orre_npc_15.png",
+        "from": [
+         13,
+         1
+        ],
+        "to": "player",
+        "leave": "back",
+        "lines": [
+         "Receptionist: Bad luck! Your Pokemon have been healed. Sign up again whenever you're ready."
+        ]
+       }
+      ],
+      "event": {
+       "world": "orre_tournament",
+       "reset": true
+      },
+      "room": [
+       "gym",
+       7,
+       6
+      ]
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:won"
+      ],
+      "cast": [],
+      "call": [
+       "Referee: The champion of the Orre Colosseum!",
+       "The crowd roars!"
+      ],
+      "event": {
+       "world": "orre_tournament",
+       "done": true
+      }
      }
     ]
    }
@@ -313127,7 +314954,7 @@
    "cccccccccccccccccccccc",
    "cccccccccccAcccccccccc",
    "cccc.......D......cccc",
-   "cccc..............cccc",
+   "cccc......N.......cccc",
    "cccc..N......N....cccc",
    "cccc..............cccc",
    "cccc..............cccc",
@@ -313140,6 +314967,27 @@
    "A": "gym"
   },
   "people": [
+   {
+    "text": "Receptionist",
+    "action": "EVENT",
+    "event": {
+     "world": "orre_tournament",
+     "signup": {
+      "arena": "gym",
+      "at": [
+       7,
+       9
+      ],
+      "lines": [
+       "Receptionist: Welcome to the Under Colosseum! You're entered. Win every round to take the title.",
+       "Receptionist: This way to the arena, please. Good luck!"
+      ],
+      "champion": [
+       "Receptionist: Our champion! the Under Colosseum is yours. Come back any time."
+      ]
+     }
+    }
+   },
    "Pokemon Center",
    "Poke Mart"
   ],
@@ -313178,7 +315026,15 @@
     },
     "buildings": {},
     "people": [
-     "Under Colosseum"
+     {
+      "text": "Under Colosseum",
+      "action": "EVENT",
+      "event": {
+       "world": "orre_tournament",
+       "referee": true
+      },
+      "color": "GOLD"
+     }
     ],
     "signs": [],
     "roofs": {
@@ -313204,6 +315060,185 @@
        15,
        13
       ]
+     }
+    ],
+    "scenes": [
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:round:0"
+      ],
+      "call": [
+       "Referee: Round 1! Bodybuilder Piliot takes the field!"
+      ],
+      "cast": [
+       {
+        "sheet": "orre_trainer_bodybuilder.png",
+        "from": [
+         5,
+         3
+        ],
+        "to": [
+         7,
+         5
+        ],
+        "face": "d",
+        "stay": true,
+        "lines": [
+         "Bodybuilder Piliot: Let's battle!"
+        ],
+        "event": {
+         "world": "orre_tournament",
+         "fight": true
+        }
+       }
+      ]
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:round:1"
+      ],
+      "call": [
+       "Referee: Round 2! Curmudgeon Nistil takes the field!"
+      ],
+      "cast": [
+       {
+        "sheet": "orre_trainer_fun_old_man.png",
+        "from": [
+         5,
+         3
+        ],
+        "to": [
+         7,
+         5
+        ],
+        "face": "d",
+        "stay": true,
+        "lines": [
+         "Curmudgeon Nistil: Let's battle!"
+        ],
+        "event": {
+         "world": "orre_tournament",
+         "fight": true
+        }
+       }
+      ]
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:round:2"
+      ],
+      "call": [
+       "Referee: Round 3! Cooltrainer Hileon takes the field!"
+      ],
+      "cast": [
+       {
+        "sheet": "orre_trainer_cooltrainer_m.png",
+        "from": [
+         5,
+         3
+        ],
+        "to": [
+         7,
+         5
+        ],
+        "face": "d",
+        "stay": true,
+        "lines": [
+         "Cooltrainer Hileon: Let's battle!"
+        ],
+        "event": {
+         "world": "orre_tournament",
+         "fight": true
+        }
+       }
+      ]
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:round:3"
+      ],
+      "call": [
+       "Referee: The final! Under Colosseum Champion Carben takes the field!"
+      ],
+      "cast": [
+       {
+        "sheet": "orre_trainer_ace_trainer.png",
+        "from": [
+         5,
+         3
+        ],
+        "to": [
+         7,
+         5
+        ],
+        "face": "d",
+        "stay": true,
+        "lines": [
+         "Welcome to the final round of the Under Colosseum! The winner takes the Under Badge!"
+        ],
+        "event": {
+         "world": "orre_tournament",
+         "fight": true
+        }
+       }
+      ]
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:game"
+      ],
+      "cast": [],
+      "call": [
+       "Referee: Before the final, a challenge! Win it, and the champion takes the field."
+      ],
+      "event": {
+       "world": "orre_tournament",
+       "fight": true
+      }
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:lost"
+      ],
+      "cast": [
+       {
+        "sheet": "orre_npc_15.png",
+        "from": [
+         5,
+         3
+        ],
+        "to": "player",
+        "leave": "back",
+        "lines": [
+         "Receptionist: Bad luck! Your Pokemon have been healed. Sign up again whenever you're ready."
+        ]
+       }
+      ],
+      "event": {
+       "world": "orre_tournament",
+       "reset": true
+      }
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:won"
+      ],
+      "cast": [],
+      "call": [
+       "Referee: The champion of the Under Colosseum!",
+       "The crowd roars!"
+      ],
+      "event": {
+       "world": "orre_tournament",
+       "done": true
+      }
      }
     ]
    }

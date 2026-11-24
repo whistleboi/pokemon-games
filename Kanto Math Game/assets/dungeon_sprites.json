@@ -2160,6 +2160,9 @@
     "PHENAC_CITY:Phenac Stadium": {
       "sheet": "orre_npc_hoenn_03.png"
     },
+    "PHENAC_CITY:Healing machine": {
+      "sheet": "orre_healing_balls_3.png"
+    },
     "PHENAC_CITY:Pokemon Center": {
       "sheet": "orre_npc_16.png"
     },

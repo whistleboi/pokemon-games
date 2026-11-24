@@ -89,7 +89,7 @@ check(len(_ov) == 1,
 
 # ---- every door, walked to from the gate, in and out
 _area = g.loader.area_data["PHENAC_CITY"] if "PHENAC_CITY" in g.loader.area_data else None
-for _name, _want in (("center", ["HEAL"]), ("mart", ["SHOP"]), ("gym", ["GYM"]), ("mayor", [])):
+for _name, _want in (("center", ["HEAL"]), ("mart", ["SHOP"]), ("gym", ["HEAL"]), ("mayor", [])):   # (R2: "gym" is the stadium's lobby now)
     t = town("PHENAC_CITY", "ORRE_DESERT")
     _door = next(tuple(int(v) for v in d.split(",")) for d, n in _m["inside"].items() if n == _name)
     _ok = walk_to(t, _door)
@@ -260,7 +260,8 @@ for _key in _dung:
     check(_ok and not _bad, f"{_key}: {run.n_floors} floors, in from {_came} on open floor, every passage lands on open floor {_bad[:3]}")
 t = town("UNDER_COLOSSEUM", "THE_UNDER")
 _d = next(tuple(int(v) for v in d.split(",")) for d in _tm["UNDER_COLOSSEUM"]["inside"])
-_in = walk_to(t, _d) and t.room == "gym" and [str(o.get("action")).upper() for o in t.people.values()] == ["GYM"]
+_host = lambda st_: any(isinstance(o, dict) and (o.get("event") or {}).get("referee") for o in st_.people.values())   # (R2: the arena's host is the tournament's referee)
+_in = walk_to(t, _d) and t.room == "gym" and _host(t)
 _mat = next((k for k, v in t.exits.items() if v.startswith("OUT:")), None)
 _out = _mat is not None and walk_to(t, _mat) and t.room is None
 check(isinstance(t, _WTS) and t.exits.get(tuple(t.player)) is None and _in and _out,
@@ -280,7 +281,7 @@ _d = next(tuple(int(v) for v in d.split(",")) for d, n in _tm["REALGAM_TOWER"]["
 _in = walk_to(t, _d) and t.room == "realgam"
 _ways = set(t.exits.values())
 _up = next((k for k, v in t.exits.items() if v == "ROOM:colosseum"), None)
-_col = _up is not None and walk_to(t, _up) and t.room == "colosseum" and [str(o.get("action")).upper() for o in t.people.values()] == ["GYM"]
+_col = _up is not None and walk_to(t, _up) and t.room == "colosseum" and _host(t)
 check(_in and {"CIPHER_COMMAND", "DEEP_COLOSSEUM", "ROOM:colosseum"} <= _ways and _col,
       f"Realgam: the dome door opens the lobby; out to the Tower Dome and the Deep Colosseum, up to Cipher's Colosseum and its host ({sorted(_ways)})")
 
