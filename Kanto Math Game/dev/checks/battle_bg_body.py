@@ -38,6 +38,10 @@ check(name(bbg.pick(g, "VIOLET_CITY", water=False, now=noon)) == "town_w.png", "
 check(name(bbg.pick(g, "VIOLET_CITY", trainer=True, water=False, now=noon)) == "town_t.png", "trainer")
 check(name(bbg.pick(g, "VIOLET_CITY", gym=True, trainer=True, water=False, now=noon)) == "gym.png", "Gym trainer")
 check(name(bbg.pick(g, "VIOLET_CITY", gym=True, leader=True, water=False, now=noon)) == "lead.png", "Gym Leader")
+check(bbg.pick(g, "JOHTO_ROUTE_29", gym=True, leader=True, water=False, now=noon) is None, "a Gym in an area naming only one picture: its own (None)")
+_ent = bbg.index(g, reg)["areas"]["VIOLET_CITY"]; _gl = (_ent.pop("gym"), _ent.pop("leader"))
+check(bbg.pick(g, "VIOLET_CITY", gym=True, leader=True, trainer=True, water=False, now=noon) is None, "a Gym town naming only trainer / wild: the Gym keeps its own (None)")
+_ent["gym"], _ent["leader"] = _gl
 check(name(bbg.pick(g, "VIOLET_CITY", gym=True, elite_index=1, water=False, now=noon)) == "e2.png", "Elite Four by place")
 check(name(bbg.pick(g, "VIOLET_CITY", gym=True, elite_index=9, water=False, now=noon)) == "e2.png", "a place past the list: the last")
 
