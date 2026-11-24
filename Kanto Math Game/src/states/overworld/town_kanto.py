@@ -346,6 +346,8 @@ class KantoTown:
             callback=callback
         )
 
+    EEVEELUTIONS = (134, 135, 136, 196, 197, 470, 471, 700)   # (Vaporeon, Jolteon, Flareon and Eevee's later ones)
+
     def visit_bill(self):
         self.clear_hover_menu()
         self.npc_active = True
@@ -363,14 +365,6 @@ class KantoTown:
 
         story = self.game.story_manager
         flags = story.story_flags
-        owned_ids = {p.id for p in story.player_team if p} | {p.id for p in story.pc_pokemon if p}  # PC has empty (None) slots
-
-        # Nugget Bridge is Route 24 (FRLG); older saves that cleared the old bridge on Route 25 count too.
-        def cleared(area):
-            pool = self.game.loader.area_data.get("STORY_PROGRESSION", {}).get(area, {}).get("trainer_pool", [])
-            return len(pool) > 0 and len(story.defeated_trainers.get(area, set())) >= len(pool)
-        bridge_clear = cleared("KANTO_ROUTE_24") or flags.get("nugget_bridge_cleared_old") or flags.get("nugget_bridge_cleared")
-
         msgs = ["Hi! I'm Bill!", "I'm the developer of the PC Storage System."]
         if not flags.get("got_ss_ticket_bill"):  # (as in the games: a ticket for the S.S. Anne, Jordan 11-07)
             flags["got_ss_ticket_bill"] = True
@@ -391,45 +385,20 @@ class KantoTown:
             self.game.data.add_pokemon(new_eevee)
             self.game.data.save()
 
-        if flags.get("received_bill_eevee_snorlax"):
-            if flags.get("received_bill_eevee_lickitung"):
-                msgs.append("Thanks for helping with my research!")
-                msgs.append("I hope those Eevees are finding good homes on your team.")
-            elif 108 in owned_ids:
-                msgs.append("Incredible! That's a Lickitung!")
-                msgs.append("I've heard they are rare and mostly found in the Safari Zone.")
-                msgs.append("Fascinating... those tongues are even longer than the reports said!")
-                msgs.append("Please, take this last Eevee as thanks for your help.")
-                grant_eevee("received_bill_eevee_lickitung")
-            else:
-                msgs.append("My next project involves Pokémon with extremely long tongues.")
-                msgs.append("I hear there's a specialized 'Safari Zone' out in Fuchsia City.")
-                msgs.append("If you find one, come show me for a reward!")
-
-        elif flags.get("received_bill_eevee"):
-            if 143 in owned_ids:
-                msgs.append("Wow! You actually caught a Snorlax!")
-                msgs.append("Those things are massive. You must be a very skilled trainer.")
-                msgs.append("I knew there was something worth investigating in Lavender Town.")
-                msgs.append("Here, take this Eevee as a special reward!")
-                grant_eevee("received_bill_eevee_snorlax")
-            else:
-                msgs.append("I've been hearing rumors about a giant Pokémon blocking paths.")
-                msgs.append("They say it's related to some spooky business in Lavender Town.")
-                msgs.append("If you can show me a Snorlax, I'll give you another Eevee!")
-
-        elif bridge_clear:
-            if not flags.get("received_bill_eevee"):
-                msgs.append("Wow! You cleared the Nugget Bridge challenge?")
-                msgs.append("That's impressive! Most trainers give up halfway.")
-                msgs.append("Here, take this special Pokémon as a reward!")
-                grant_eevee("received_bill_eevee")
-            else:
-                msgs.append("I hope Eevee is doing well!")
-
+        # (Jordan 11-24: Bill's one Eevee - show him two evolved Eevee in your party and he gives you a third, so with Celadon's two
+        #  every Eevee evolution is in one run. It replaces the old menu's three Eevees: Nugget Bridge, Snorlax, Lickitung)
+        evolved = [p for p in story.player_team if p and getattr(p, "id", None) in self.EEVEELUTIONS]
+        if flags.get("received_bill_eevee_evolved"):
+            msgs.append("How's that Eevee doing? I can't wait to see what it turns into!")
+        elif len(evolved) >= 2:
+            names = " and ".join(sorted({getattr(p, "display_name", None) or p.name for p in evolved}))
+            msgs += [f"Whoa! Is that {names}? Two evolved Eevee, right here!",
+                     "Eevee's genes are so unstable it can become all sorts of Pokemon. It's my favourite thing to study!",
+                     "You obviously know how to raise them. Here, take one of mine. See what you can make of it!"]
+            grant_eevee("received_bill_eevee_evolved")
         else:
-            msgs.append("I hear there's a challenge on Nugget Bridge nearby.")
-            msgs.append("If you can beat all the trainers there, come show me!")
+            msgs += ["Have you ever seen an Eevee evolve? It can become all sorts of Pokemon, depending on the stone!",
+                     "If you ever have two evolved Eevee with you, come and show me. I'll give you one of mine!"]
 
         self.npc_dialogue = ClassicDialogueBox(
             Utils.get_full_dialogue_rect(self.game),

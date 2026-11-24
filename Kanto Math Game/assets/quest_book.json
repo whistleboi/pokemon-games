@@ -427,7 +427,12 @@
       {"mission": "b2_m43", "title": "Thrown Overboard", "say": "The Command Center held something enormous and frozen. Then the shadows moved, and the ship was gone.", "when": "b2_frigate2_cc"}
     ]},
     {"title": "The Giant Chasm", "chapters": [
-      {"mission": "b2_m44", "title": "Into the Giant Chasm", "say": "Cheren says the frigate was heading for the Giant Chasm, a crater in the forest past Route 22 where a meteor fell long ago. The cold seems to start there."}
+      {"mission": "b2_m44", "title": "Into the Giant Chasm", "say": "Cheren says the frigate was heading for the Giant Chasm, a crater in the forest past Route 22 where a meteor fell long ago. The cold seems to start there.", "done": "b2_chasm_rood"},
+      {"mission": "b2_m44", "title": "The Frigate in the Forest", "say": "The ship has come to rest among the trees, gangway down. Somewhere aboard, the man who started all this is waiting.", "when": "b2_chasm_rood", "done": "b2_liepard_back"},
+      {"mission": "b2_m44", "title": "The Deepest Room", "say": "Past the forest, a cave runs down into the crater's heart. The air there is so cold it hurts to breathe.", "when": "b2_liepard_back"}
+    ]},
+    {"title": "The Road to the League", "chapters": [
+      {"mission": "b2_m45", "title": "The Last Road", "say": "The ice over Opelucid has melted. N says the League is waiting, and the only road there runs north past Route 23."}
     ]}
   ],
   "ORRE": [

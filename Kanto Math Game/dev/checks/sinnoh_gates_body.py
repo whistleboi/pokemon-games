@@ -379,6 +379,28 @@ guarded("M1", lambda: (at(late=True, badges=7, drop=["galactic_hq_cleared"]),
                        reaches("M1", "BEFORE", "SPEAR_PILLAR", False, "HQ not cleared"),
                        at(late=True, badges=7), reaches("M1", "AFTER", "SPEAR_PILLAR", True, "HQ cleared")))
 
+title("SP1", "Spear Pillar's summit: Mars and Jupiter hold the narrow way in till you and Barry beat them")
+guarded("SP1", lambda: (at(late=True, badges=7), cross("SP1", "BEFORE", "SPEAR_PILLAR", (11, 41), (11, 42), False, floor=3, what="not fought"),
+                        at(late=True, badges=7, flags=["spear_pillar_commanders"]),
+                        cross("SP1", "AFTER", "SPEAR_PILLAR", (11, 41), (11, 42), True, floor=3, what="Mars and Jupiter beaten")))
+
+title("SP2", "Spear Pillar's summit: Cyrus before the altar holds you back till he's beaten")
+guarded("SP2", lambda: (at(late=True, badges=7, flags=["spear_pillar_commanders"]),
+                        cross("SP2", "BEFORE", "SPEAR_PILLAR", (8, 14), (8, 15), False, floor=3, what="Cyrus not beaten"),
+                        at(late=True, badges=7, flags=["spear_pillar_commanders", "spear_pillar_resolved"]),
+                        cross("SP2", "AFTER", "SPEAR_PILLAR", (8, 14), (8, 15), True, floor=3, what="Cyrus beaten")))
+
+title("DW1", "Distortion World B7F: the way down to Giratina after Cyrus")
+guarded("DW1", lambda: (at(late=True, badges=8, flags=["spear_pillar_commanders", "spear_pillar_resolved", "beat_sinnoh_champion"]),
+                        cross("DW1", "BEFORE", "DISTORTION_WORLD", (6, 44), (6, 43), False, floor=8, what="Cyrus not beaten"),
+                        at(late=True, badges=8, flags=["spear_pillar_commanders", "spear_pillar_resolved", "beat_sinnoh_champion", "distortion_world_cleared"]),
+                        cross("DW1", "AFTER", "DISTORTION_WORLD", (6, 44), (6, 43), True, floor=8, what="Cyrus beaten")))
+
+title("SP3", "Mt. Coronet to the summit: Spear Pillar's floors join up")
+guarded("SP3", lambda: (at(late=True, badges=7), reaches("SP3", "AFTER", "SPEAR_PILLAR", True, "HQ cleared"),
+                        side("SP3", "data", "+" in "".join(_tm["SPEAR_PILLAR"]["floors"][2]["art"]) and not _tm["SPEAR_PILLAR"]["floors"][2].get("exits"),
+                             "the third floor's way up is stairs to the summit (Platinum's D05R0109 -> D05R0114), not a way back to Mt. Coronet", "data")))
+
 title("L2", "Valor Lakefront to Route 222: after Spear Pillar")
 guarded("L2", lambda: (at(late=True, badges=7), reaches("L2", "BEFORE", "SINNOH_ROUTE_222", False, "Spear Pillar not resolved"),
                        at(late=True, badges=7, flags=["spear_pillar_resolved"]),

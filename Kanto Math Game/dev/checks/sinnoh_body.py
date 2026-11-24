@@ -590,7 +590,7 @@ for _q in range(_n - 1):
 _dw = _tm["DISTORTION_WORLD"]
 _ok_each = all(any("+" in row for row in f["art"]) for f in _dw["floors"][:-1]) and all(any("-" in row for row in f["art"]) for f in _dw["floors"][1:])
 _last_reach = core.distances(r.run.floor, r.run.player)
-check(_n == 10 and _down == 9 and r.run.index == 9 and _ok_each and _dw["theme"] == "distortion" and _dw["figure_floors"] == {"CONFRONT CYRUS": 8, "FACE GIRATINA": 9},
+check(_n == 10 and _down == 9 and r.run.index == 9 and _ok_each and _dw["theme"] == "distortion" and _dw["figure_floors"] == {"FACE GIRATINA": 9, "PICK UP THE GLOWING ORB": 9, "Galactic Boss Cyrus": 8} and _dw["floors"][8].get("trainer_spots") == ["Galactic Boss Cyrus"],
       f"Distortion World: ten floors of slabs in the void, a way down on each ({_down} descents), Cyrus on B7F and Giratina below")
 _bad_dw = []
 for _i, _f in enumerate(_dw["floors"]):                              # on each floor the way in and the way on are joined
@@ -1566,6 +1566,37 @@ _free = bool(story.story_flags.get("galactic_hq_cleared"))
 check(_door and _locked and _cy and _trio == 3 and _sa and _free,
       f"Galactic HQ: Looker opens the Warehouse door, Galactic Key doors, Cyrus battles on 4F, the trio sealed, Saturn battles, the button frees them ({_door}, {_locked}, {_cy}, {_trio}, {_sa}, {_free})")
 story.story_flags.clear(); story.story_flags.update(_sv); story.inventory.clear(); story.inventory.update(_iv)
+
+# ---- S5 (11-24, s_s5_spear_pillar.py / s_s5_distortion.py): Spear Pillar's summit and the Distortion World's Cyrus, walked
+_sv = dict(story.story_flags)
+for _k in ("spear_pillar_commanders", "spear_pillar_resolved", "SPEAR_PILLAR_boss_defeated", "distortion_world_cleared"):
+    story.story_flags.pop(_k, None)
+story.story_flags["galactic_hq_cleared"] = True
+def _figs(r):
+    return {str((m.payload or {}).get("text")): m for m in r.run.floor.movers if m.kind == "figure"}
+r = route("SPEAR_PILLAR", "MT_CORONET_BASE")
+r.run.jump_floor(3, (10, 44)); frames(r, 3)
+_f0 = set(_figs(r))
+_mj = _hq_battle(r, "Battle Mars and Jupiter")
+_b = g.current_state
+_double = bool(getattr(_b, "partner", None) or getattr(_b, "is_double", False) or "Double" in type(_b).__name__ or getattr(_b, "double", False))
+story.story_flags["spear_pillar_commanders"] = True
+r = route("SPEAR_PILLAR", "MT_CORONET_BASE")
+r.run.jump_floor(3, (10, 40)); frames(r, 3)
+_cy = _hq_battle(r, "Confront Cyrus")
+_cyteam = [getattr(p_, "id", None) for p_ in (getattr(g.current_state, "opponent_team", None) or [])]
+story.story_flags["spear_pillar_resolved"] = True
+r = route("SPEAR_PILLAR", "MT_CORONET_BASE")
+r.run.jump_floor(3, (10, 13)); frames(r, 3)
+_f2 = set(_figs(r))
+check("Encounter Dialga" not in _f0 and {"Battle Mars and Jupiter", "Confront Cyrus"} <= _f0 and _mj and _cy and _cyteam[:1] == [229]
+      and "Encounter Dialga" in _f2 and "Confront Cyrus" not in _f2,
+      f"Spear Pillar: Mars and Jupiter battle at the narrow way in, Cyrus (Platinum's team, {_cyteam}) before the altar, then Dialga there ({_f0}, {_mj}, {_double}, {_cy}, {_f2})")
+r = route("DISTORTION_WORLD", "SPEAR_PILLAR")
+r.run.jump_floor(8, (5, 32)); frames(r, 3)
+_cyd = [m for m in r.run.floor.movers if m.kind == "trainer"]
+check(len(_cyd) == 1 and (_cyd[0].x, _cyd[0].y) == (9, 3), f"Distortion World: Cyrus stands at the head of B7F's long passage ({[(m.x, m.y) for m in _cyd]})")
+story.story_flags.clear(); story.story_flags.update(_sv)
 
 # ---- 11-24 (cleanups): the Coin Case (Veilstone's clown), the Sprayduck (Floaroma's florist) that waters Berry soil, and
 #      Regigigas waking only for the three Regis in your party (Platinum)

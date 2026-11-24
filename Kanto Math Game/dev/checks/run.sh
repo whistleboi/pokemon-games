@@ -2,37 +2,41 @@
 # Run just the suites you name (the targeted check, Jordan 11-12: test what a change touches, the way a player meets it).
 #   bash dev/checks/run.sh hoenn_maps dungeon            a suite: harness_head.py (+ sub_helpers_body.py) + <name>_body.py
 #   bash dev/checks/run.sh walk:hoenn walk:sinnoh       a region's reach walk: harness_head.py + reach_lib.py + walk_<r>.py
+#   bash dev/checks/run.sh region:unova                 a region's set: every suite its lane owns + its walk (no long ones)
+#   bash dev/checks/run.sh quick                        the quick set: short suites that open the whole game
+#   bash dev/checks/run.sh tag:battle                   every suite with a tag (dev/checks/suites.txt)
 #   bash dev/checks/run.sh -v hoenn_maps                -v: the whole output, not just the failures
-# Prints "== <name>: N fails" and every FAIL / Traceback line. bash dev/checks/run_all.sh runs everything (before a commit).
+#   bash dev/checks/run.sh list region:unova            print what a set holds, run nothing;  run.sh lint: suites.txt vs the files
+# Prints "== <name>: N fails (S s)" and every FAIL / Traceback line. A time-out counts as a fail.
+# Sets run one after another here; bash dev/checks/run_par.sh runs the same words side by side.
 cd "$(dirname "$0")/../.." || exit 1
-C=dev/checks
-O=$C/out
+. dev/checks/suites_lib.sh
 mkdir -p "$O"
-export PYTHONIOENCODING=utf-8
-HELPED=" grokfix storage dlc sevii decolore sinjoh orre "   # (these need sub_helpers_body.py: keep in step with run_all.sh)
 VERBOSE=0
 total=0
-for t in "$@"; do
-  if [ "$t" = "-v" ]; then VERBOSE=1; continue; fi
-  if [ "${t#walk:}" != "$t" ]; then
-    r=${t#walk:}
-    cat $C/harness_head.py $C/reach_lib.py $C/walk_$r.py > $O/check_walk_$r.py
-    out=$(timeout 900 python $O/check_walk_$r.py $O 2>&1)
-    n=$(echo "$out" | grep -ciE 'FAIL|Traceback')
-  else
-    [ -f $C/${t}_body.py ] || { echo "== $t: no such suite (dev/checks/${t}_body.py)"; total=$((total + 1)); continue; }
-    if [ "${HELPED#* $t }" != "$HELPED" ]; then
-      cat $C/harness_head.py $C/sub_helpers_body.py $C/${t}_body.py > $O/check_$t.py
-    else
-      cat $C/harness_head.py $C/${t}_body.py > $O/check_$t.py
-    fi
-    out=$(timeout 1500 python $O/check_$t.py $O 2>&1)
-    n=$(echo "$out" | grep -cE 'FAIL |Traceback|(Syntax|Indentation)Error')   # (a suite that can't even start: no Traceback line)
-    [ "$t" = batch5 ] && n=$((n - $(echo "$out" | grep -c '^ValueError: test$')))   # (its crash-handler test raises on purpose)
-  fi
+case "$1" in
+  list) shift; for w in "$@"; do expand "$w"; done; exit 0 ;;
+  lint) lint; r=$?; [ $r = 0 ] && echo "suites.txt matches the files"; exit $r ;;
+esac
+names=()
+for w in "$@"; do
+  if [ "$w" = "-v" ]; then VERBOSE=1; continue; fi
+  while read -r t; do [ -n "$t" ] && names+=("$t"); done < <(expand "$w")
+done
+for t in "${names[@]}"; do
+  why=$(_gone "$t") && { echo "== $t: taken out ($why)"; continue; }
+  exists "$t" || { echo "== $t: no such suite (dev/checks/${t}_body.py)"; total=$((total + 1)); continue; }
+  f=$O/check_${t/:/_}.py
+  build "$t" "$f"
+  s=$SECONDS
+  if [ "${t#walk:}" != "$t" ]; then timeout 900 python "$f" $O > "$O/run_${t/:/_}.log" 2>&1; else timeout 1500 python "$f" $O > "$O/run_${t/:/_}.log" 2>&1; fi
+  ex=$?
+  n=$(count "$t" "$O/run_${t/:/_}.log" $ex)
   total=$((total + n))
-  echo "== $t: $n fails"
-  if [ $VERBOSE = 1 ]; then echo "$out" | grep -v '^Sync: '; else echo "$out" | grep -E 'FAIL|Traceback|(Syntax|Indentation)Error' -B3 -A3 | grep -vE '^--$|##### 0 fail' | head -40; fi
+  k=$(checks "$O/run_${t/:/_}.log")
+  note_time "$t" $((SECONDS - s)) "$n" "$k"
+  echo "== $t: $n fails ($((SECONDS - s)) s, $k checks)"
+  if [ $VERBOSE = 1 ]; then grep -v '^Sync: ' "$O/run_${t/:/_}.log"; else grep -E 'FAIL |Traceback|(Syntax|Indentation)Error' -B3 -A3 "$O/run_${t/:/_}.log" | grep -vE '^--$|##### 0 fail' | head -40; fi
 done
 echo "##### $total fails in all"
 [ $total = 0 ]

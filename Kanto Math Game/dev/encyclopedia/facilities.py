@@ -122,11 +122,13 @@ BACK = '<p class="small">How the facilities work: <a href="#mechanic-battle-faci
 # ---------------------------------------------------------------------------------------------------- Orre's Battle CDs
 def battle_cds(o):
     cds = _load(o.F, "orre_battle_cds.json")
+    tms = _load(o.F, "tms.json")
     tiers = [(1, "One-star CDs"), (2, "Two-star CDs"), (3, "Three-star CDs"), (0, "CDs without stars")]
     body = ['<p>XD\'s fifty Battle CDs are puzzle battles. You find the CDs around Orre and play them on the Battle CD '
             'player at the Pokémon HQ Lab. Each CD lends you its own team (your own Pokémon sit it out) and sets you '
             'against a Sim Trainer\'s team. Some CDs give you only a few turns: win before they run out to clear the CD. '
-            'Win or lose, your own team comes straight back, and nothing is caught, earned or lost.</p>',
+            'Win or lose, your own team comes straight back, and nothing is caught or lost. The first time you clear a CD '
+            'it gives you a prize, as in XD; clearing it again gives nothing more.</p>',
             '<p>The stars are the CD\'s difficulty, from one to three. CDs 33 to 50 have no stars.</p>', BACK]
     for stars, head in tiers:
         rows = []
@@ -140,6 +142,11 @@ def battle_cds(o):
             kind = "Double" if cd.get("double") else "Single"
             lim = int(cd.get("turn_limit") or 0)
             rule = f"{kind} battle<br>" + (f"win within {lim} turn{'s' if lim != 1 else ''}" if lim else "no turn limit")
+            prize = str(cd.get("prize") or "")   # (the first clear's prize: an item, or "tm:<MOVE>" - src/world/battle_cd.py)
+            if prize.startswith("tm:"):
+                prize = next((t for t, d in tms.items() if isinstance(d, dict) and d.get("move") == prize[3:]), "")
+            if prize:
+                rule += f'<br><span class="small">First clear: {o.item(prize)}</span>'
             you = "".join(o.mon_set(m["id"], m.get("moves"), m.get("item"), m.get("level")) for m in cd["you"])
             foe = "".join(o.mon_set(m["id"], m.get("moves"), m.get("item"), m.get("level")) for m in cd["foe"])
             rows.append([f"{name}<br><b>{o.esc(title)}</b>", rule, you, f'<span class="small">{o.esc(cd.get("foe_name") or "")}</span>{foe}'])

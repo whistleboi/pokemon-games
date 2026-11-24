@@ -295,7 +295,8 @@ def mission():
     except Exception:
         crash("reading the Journal")
         return None
-    return ms[0] if ms else None
+    ms = [m for m in ms if str(m.get("id", "")).startswith("sinnoh_")]   # (Sinnoh's story only: after the title the Journal offers
+    return ms[0] if ms else None                                         #  Johto's next - the run would loop on Kanto Route 28)
 
 
 def crash(doing):
@@ -1840,6 +1841,9 @@ def play_through():
                 del TRIED[k]
             DONE_PLACES.clear(); MEM["wander"] = 0; MEM["stale"] = True; MEM["mk"] = 0
             SHUT.clear()
+        if m is None and story.story_flags.get("beat_sinnoh_champion"):
+            ended = "Sinnoh's story done (the Champion beaten)"   # (no Sinnoh MAIN mission left after the title: the end, not a stuck point)
+            break
         if m is None:
             if stuck("the Journal shows no MAIN mission", None, None).startswith("none"):
                 ended = "no MAIN mission"

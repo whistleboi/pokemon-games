@@ -19123,20 +19123,15 @@
      },
      {
       "text": "Clerk",
-      "action": "EVENT",
-      "color": "GOLD",
-      "event": {
-       "lines": [
-        "Welcome to the Wise Man Gifts floor! A Poke Doll is $1000. Here you go!"
-       ],
-       "pay": 1000,
-       "gift_item": {
-        "POKE_DOLL": 1
-       },
-       "fail": [
-        "A Poke Doll is $1000... You don't have enough money, I'm afraid."
-       ]
-      }
+      "action": "SHOP",
+      "stock": [
+       "POKE_DOLL",
+       "FIRE_STONE",
+       "THUNDER_STONE",
+       "WATER_STONE",
+       "LEAF_STONE",
+       "LINKING_CORD"
+      ]
      }
     ],
     "signs": [
@@ -19856,7 +19851,7 @@
      "ccccc..c.....c",
      "ccccc..c...ccc",
      "cc<!!..c.....c",
-     "c......c.....c",
+     "c......c..N..c",
      "c......c.....c",
      "cccccccc.....c",
      "c............c",
@@ -19883,6 +19878,30 @@
      "_signs_in_picture": true,
      "_buildings_in_picture": true
     },
+    "people": [
+     {
+      "text": "EEVEE",
+      "action": "EVENT",
+      "color": "GOLD",
+      "found": true,
+      "flag_condition": "not got_eevee_celadon_roof",
+      "event": {
+       "requires": [
+        "party_room"
+       ],
+       "fail": [
+        "A Poké Ball sits here... but your team is full. Make room and come back!"
+       ],
+       "lines": [
+        "A Poké Ball sits out on the roof, with a note: \"This Eevee loves the sunshine up here. Please take it somewhere fun!\"",
+        "You got an Eevee!"
+       ],
+       "gift_pokemon": 133,
+       "gift_level": 25,
+       "flag": "got_eevee_celadon_roof"
+      }
+     }
+    ],
     "signs": [
      [
       "I KNOW EVERYTHING!"
@@ -132888,7 +132907,8 @@
       "W-what are you doing here? This is none of your business! Go wherever you like!"
      ]
     },
-    "_look": "@grunt"
+    "_look": "@grunt",
+    "condition": "not:beat_hoenn_champion"
    },
    "TINY MUSHROOM",
    "X DEFENSE",
@@ -317005,7 +317025,7 @@
     "art": [
      "ccccccccccc",
      "ccccccccccc",
-     "cccccnccccc",
+     "ccccc+ccccc",
      "ccc.....ccc",
      "ccc.....ccc",
      "ccc.....ccc",
@@ -317030,9 +317050,6 @@
      "ccccccccccc"
     ],
     "parts": true,
-    "exits": {
-     "n": "MT_CORONET_BASE"
-    },
     "roofs": {
      "_look": {
       "floor": [
@@ -317071,20 +317088,20 @@
      "cccccc.........cccccc",
      "cccc.............cccc",
      "cccc.....^^^.....cccc",
-     "cc<...............>cc",
+     "cc<.......N.......>cc",
      "cc<...............>cc",
      "cccc.............cccc",
-     "cccc.............cccc",
+     "cccc......N......cccc",
      "cccc.............cccc",
      "cc.................cc",
      "cc.................cc",
      "cc.................cc",
      "cc..cc.........cc..cc",
-     "cc..cc....N....cc..cc",
+     "cc..cc.........cc..cc",
      "cc..cc.........cc..cc",
      "cc..c..............cc",
      "cc..............c..cc",
-     "cccc........N....jjcc",
+     "cccc.............jjcc",
      "ccjj...c.....c...jjcc",
      "ccjj..ccc...cc...jjcc",
      "cc...ccjj...jjcc...cc",
@@ -317101,7 +317118,7 @@
      "ccjj..cc.....ccc.jjcc",
      "ccjj..jj.....jj..jjcc",
      "cc....jj.....jj....cc",
-     "ccccccccc...ccccccccc",
+     "ccccccccc.N.ccccccccc",
      "ccccccccc...ccccccccc",
      "ccccc...........ccccc",
      "ccccc...........ccccc",
@@ -317116,6 +317133,7 @@
      ">": "DISTORTION_WORLD"
     },
     "people": [
+     "Encounter Dialga",
      "Confront Cyrus",
      "Battle Mars and Jupiter"
     ],
@@ -317254,7 +317272,99 @@
       }
      ],
      "_models": true
-    }
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        9,
+        41
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "spear_pillar_commanders"
+      },
+      "lines": [
+       "Mars and Jupiter block the way to the summit."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        11,
+        41
+       ]
+      ],
+      "look": "sheet:pt_gkanbu3.png",
+      "face": "d",
+      "until": {
+       "flag_condition": "spear_pillar_commanders"
+      },
+      "lines": [
+       "Jupiter: Cyrus is about to make his new world. You won't interrupt him!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        4,
+        14
+       ],
+       [
+        5,
+        14
+       ],
+       [
+        6,
+        14
+       ],
+       [
+        7,
+        14
+       ],
+       [
+        8,
+        14
+       ],
+       [
+        9,
+        14
+       ],
+       [
+        11,
+        14
+       ],
+       [
+        12,
+        14
+       ],
+       [
+        13,
+        14
+       ],
+       [
+        14,
+        14
+       ],
+       [
+        15,
+        14
+       ],
+       [
+        16,
+        14
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "spear_pillar_resolved"
+      },
+      "lines": [
+       "Cyrus stands before the altar. A strange pressure holds you back."
+      ]
+     }
+    ]
    }
   ],
   "floor_names": [
@@ -317268,7 +317378,8 @@
    "Battle Mars and Jupiter": 3,
    "Galactic Grunt 1": 1,
    "Galactic Grunt 2": 1,
-   "Galactic Grunt 3": 2
+   "Galactic Grunt 3": 2,
+   "Encounter Dialga": 3
   },
   "theme": "cave"
  },
@@ -331931,7 +332042,7 @@
      "cccccccccccccccccc",
      "cccccccccccccccccc",
      "cccccccccccccccccc",
-     "cccccccccNcccccccc",
+     "cccccccccXcccccccc",
      "ccccccccc.cccccccc",
      "ccccccccc.cccccccc",
      "ccccccccc.cccccccc",
@@ -331979,8 +332090,26 @@
      "cccccccccccccccccc"
     ],
     "parts": true,
-    "people": [
-     "CONFRONT CYRUS"
+    "people": [],
+    "trainer_spots": [
+     "Galactic Boss Cyrus"
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        6,
+        44
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "distortion_world_cleared"
+      },
+      "lines": [
+       "A strange force pushes you back. Cyrus is somewhere up the long passage."
+      ]
+     }
     ]
    },
    {
@@ -331990,7 +332119,7 @@
      "cccccccccc",
      "ccc-cccccc",
      "cccNcccccc",
-     "ccc.cccccc",
+     "cccNcccccc",
      "ccc.cccccc",
      "ccc.cccccc",
      "ccc.cccccc",
@@ -332009,7 +332138,8 @@
     ],
     "parts": true,
     "people": [
-     "FACE GIRATINA"
+     "FACE GIRATINA",
+     "PICK UP THE GLOWING ORB"
     ]
    }
   ],
@@ -332027,8 +332157,9 @@
   ],
   "theme": "distortion",
   "figure_floors": {
-   "CONFRONT CYRUS": 8,
-   "FACE GIRATINA": 9
+   "FACE GIRATINA": 9,
+   "PICK UP THE GLOWING ORB": 9,
+   "Galactic Boss Cyrus": 8
   }
  },
  "GREAT_MARSH": {
@@ -346403,7 +346534,7 @@
      "c.c..............cc",
      "c.c..............cc",
      "c.cc.............cc",
-     "c................cc",
+     "c.......N........cc",
      "c................vc",
      "c................cc",
      "c................cc",
@@ -346416,7 +346547,48 @@
      "v": "OUT:13,52"
     },
     "buildings": {},
-    "people": [],
+    "people": [
+     {
+      "text": "Eevee expert",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I know all about Eevee! It can become so many things.",
+        "Here, take a stone to evolve yours. Which one? Come back tomorrow for another!"
+       ],
+       "flag": "xd_eevee_stone_day",
+       "choose": {
+        "flag": "xd_eevee_stone",
+        "ask": "WHICH STONE?",
+        "gift": true,
+        "choices": [
+         {
+          "text": "WATER STONE (Vaporeon)",
+          "value": "WATER_STONE"
+         },
+         {
+          "text": "THUNDER STONE (Jolteon)",
+          "value": "THUNDER_STONE"
+         },
+         {
+          "text": "FIRE STONE (Flareon)",
+          "value": "FIRE_STONE"
+         }
+        ],
+        "cancel": [
+         "Come back when you've made up your mind!"
+        ],
+        "done": [
+         "Eevee in the sun becomes Espeon, under the moon Umbreon - if it really loves you!"
+        ]
+       },
+       "done": [
+        "That's today's stone! Come back tomorrow and I'll have another for you."
+       ],
+       "daily": true
+      }
+     }
+    ],
     "signs": [],
     "roofs": {
      "_picture": {
