@@ -9592,6 +9592,111 @@
   },
   "RUSTBORO_CITY:Team Aqua Grunt (Devon 3)": {
    "sheet": "em_117.png"
+  },
+  "HOENN_MIRAGE_MOUNTAIN:TM083 2": {
+   "item": "TM083"
+  },
+  "HOENN_MIRAGE_FOREST:TM180 3": {
+   "item": "TM180"
+  },
+  "HOENN_MIRAGE_ISLANDS:TM093 5": {
+   "item": "TM093"
+  },
+  "HOENN_MIRAGE_ISLANDS:TM103 6": {
+   "item": "TM103"
+  },
+  "HOENN_MIRAGE_ISLANDS:TM247 8": {
+   "item": "TM247"
+  },
+  "HOENN_MIRAGE_CAVE:TM030 2": {
+   "item": "TM030"
+  },
+  "HOENN_SS_TIDAL:TM280 EMBARGO": {
+   "item": "TM280"
+  },
+  "HOENN_SCORCHED_SLAB:TM049 SUNNY DAY": {
+   "item": "TM049"
+  },
+  "HOENN_ROUTE_111:TM051 SANDSTORM": {
+   "item": "TM051"
+  },
+  "HOENN_ROUTE_113:TM275 DOUBLE TEAM": {
+   "item": "TM275"
+  },
+  "HOENN_ROUTE_119:TM014 ACROBATICS": {
+   "item": "TM014"
+  },
+  "HOENN_ROUTE_132:TM214 SLUDGE WAVE": {
+   "item": "TM214"
+  },
+  "HOENN_ROUTE_134:TM086 ROCK SLIDE": {
+   "item": "TM086"
+  },
+  "HOENN_GRANITE_CAVE:Steven's Steel Wing": {
+   "sheet": "em_134.png"
+  },
+  "HOENN_METEOR_FALLS:TM078 DRAGON CLAW": {
+   "item": "TM078"
+  },
+  "HOENN_JAGGED_PASS:TM038 FLAME CHARGE": {
+   "item": "TM038"
+  },
+  "HOENN_JAGGED_PASS:TM282 ROCK POLISH": {
+   "item": "TM282"
+  },
+  "HOENN_FIERY_PATH:TM175 TOXIC": {
+   "item": "TM175"
+  },
+  "HOENN_MT_CHIMNEY:TM290 INCINERATE": {
+   "item": "TM290"
+  },
+  "HOENN_ABANDONED_SHIP:TM135 ICE BEAM": {
+   "item": "TM135"
+  },
+  "HOENN_ABANDONED_SHIP:TM050 RAIN DANCE": {
+   "item": "TM050"
+  },
+  "HOENN_SAFARI_ZONE:TM168 SOLAR BEAM": {
+   "item": "TM168"
+  },
+  "HOENN_SAFARI_ZONE:TM119 ENERGY BALL": {
+   "item": "TM119"
+  },
+  "HOENN_SAFARI_ZONE:TM147 WILD CHARGE": {
+   "item": "TM147"
+  },
+  "HOENN_SHOAL_CAVE:TM284 FROST BREATH": {
+   "item": "TM284"
+  },
+  "HOENN_SHOAL_CAVE:TM241 HAIL": {
+   "item": "TM241"
+  },
+  "HOENN_SEAFLOOR_CAVERN:TM149 EARTHQUAKE": {
+   "item": "TM149"
+  },
+  "HOENN_SEAFLOOR_CAVERN:TM188 SCALD": {
+   "item": "TM188"
+  },
+  "HOENN_SKY_PILLAR:TM281 EXPLOSION": {
+   "item": "TM281"
+  },
+  "HOENN_MT_PYRE:TM114 SHADOW BALL": {
+   "item": "TM114"
+  },
+  "HOENN_MT_PYRE:TM107 WILL-O-WISP": {
+   "item": "TM107"
+  },
+  "HOENN_VICTORY_ROAD:TM125 FLAMETHROWER": {
+   "item": "TM125"
+  },
+  "HOENN_VICTORY_ROAD:TM105 X-SCISSOR": {
+   "item": "TM105"
+  },
+  "HOENN_TEAM_HIDEOUT:TM094 DARK PULSE": {
+   "item": "TM094"
+  },
+  "HOENN_TEAM_HIDEOUT:TM094 DARK PULSE ": {
+   "item": "TM094"
   }
  }
 }

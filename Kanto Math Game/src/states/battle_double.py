@@ -939,6 +939,12 @@ class DoubleBattleState(TrainerBattleState):
         return rect.center
 
     def _start_move_anim(self, user, name, side, messages, targets=None):
+        target = next((t for t in (targets or []) if t is not user), None) or self._foe_of(user)
+        if getattr(self, "overworld", None) is not None:   # (on the map: its own attack, battle._ow_note_move)
+            self._ow_note_move(user, name, side, messages, target)
+            if getattr(self, "_ow_move", None):
+                self._d_hit = [target] + [t for t in self._d_hit if t is not target]
+            return False
         used = self.game.assets.get_text("used_move", name="", move="").strip(" !")
         if not any(used and used in m for m in messages) or any(f in m for m in messages for f in self.MOVE_FAILED) \
                 or self.__dict__.get("_charging", {}).get(id(user)) == name:

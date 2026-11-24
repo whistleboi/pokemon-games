@@ -88,7 +88,23 @@ _seen.clear(); _TBS(g, [mk(19)], trainer_class="GYM_LEADER", trainer_name="Falkn
 check(_seen and _seen[0].get("leader") and _seen[0].get("gym"), f"a Gym Leader in the Gym (battle_type gym) asks the index for the Leader's picture ({_seen[:1]})")
 bbg.pick = _pick; bbg.folder = _folder; bbg._INDEX.clear()
 
-print("5) a battle loads one by path")
+print("5) a Gym town listing several pictures isn't a League (Hoenn 11-24)")
+bbg.folder = lambda game, region: os.path.join(tmp, str(region).upper()); bbg._INDEX.clear()
+_vg = g.loader.area_data["STORY_PROGRESSION"].get("VIOLET_CITY") or {}
+_saved_bg = _vg.get("backgrounds")
+_vg["backgrounds"] = dict(_saved_bg or {}, gym=["a.png", "b.png"])
+_seen = []
+_pick = bbg.pick
+bbg.pick = lambda *a, **k: (_seen.append(k) or _pick(*a, **dict(k, water=False, now=noon)))
+story.get_gym_battle_background("VIOLET_CITY", 0, True)
+check(_seen and _seen[0].get("leader") and _seen[0].get("elite_index") is None, f"Violet's Leader with two Gym pictures: the Leader's, not an Elite Four place ({_seen[:1]})")
+bbg.pick = _pick; bbg.folder = _folder; bbg._INDEX.clear()
+if _saved_bg is None:
+    _vg.pop("backgrounds", None)
+else:
+    _vg["backgrounds"] = _saved_bg
+
+print("6) a battle loads one by path")
 from src.states.battle import TrainerBattleState
 p = os.path.join(d, "gym.png")
 b = TrainerBattleState(g, [mk(19)], trainer_class="YOUNGSTER", trainer_name="Joey", area_name=story.current_area_key, background_image=p)

@@ -69587,7 +69587,15 @@
       "when": [
        {
         "flag": "cianwood_gym_waterfall_off",
-        "f": "ss_ground/T24GYM0101_off.png"
+        "f": "ss_ground/T24GYM0101_off.png",
+        "play": [
+         "ss_ground/T24GYM0101_w1.png",
+         "ss_ground/T24GYM0101_w2.png",
+         "ss_ground/T24GYM0101_w3.png",
+         "ss_ground/T24GYM0101_w4.png",
+         "ss_ground/T24GYM0101_w5.png"
+        ],
+        "secs": 2.0
        }
       ]
      },
@@ -96416,7 +96424,7 @@
      "ccccccccccc",
      "ccccc..c<cc",
      "...........",
-     "..ccc......",
+     "..cc!......",
      "...........",
      "..Ncc......",
      "...cc......",
@@ -96472,7 +96480,24 @@
      }
     ],
     "theme": "room",
-    "title": "Your house"
+    "title": "Your house",
+    "signs": [
+     [
+      "The TV's on. A cooking show... Mom's favourite."
+     ]
+    ],
+    "sign_events": {
+     "4,4": {
+      "text": "TV",
+      "action": "EVENT",
+      "event": {
+       "swarm_news": "HOENN",
+       "lines": [
+        "The TV's on. A cooking show... Mom's favourite."
+       ]
+      }
+     }
+    }
    },
    "home_2": {
     "art": [
@@ -108659,7 +108684,7 @@
      "cccccccccc",
      "cccccccccc",
      "........cc",
-     "..........",
+     "......N...",
      "..cc......",
      "..ccN.....",
      "..........",
@@ -108682,6 +108707,50 @@
      "_buildings_in_picture": true
     },
     "people": [
+     [
+      {
+       "text": "Mirror shop owner",
+       "action": "EVENT",
+       "flag_condition": "not got_reveal_glass_hoenn",
+       "condition": {
+        "any": [
+         "party_has:641",
+         "party_has:642",
+         "party_has:645"
+        ]
+       },
+       "event": {
+        "lines": [
+         "Mirror shop owner: Oh my! That Pokemon with you... it's one of the forces of nature!",
+         "Mirror shop owner: This old mirror is said to show such Pokemon's true form. It should be yours."
+        ],
+        "gift_item": {
+         "REVEAL_GLASS": 1
+        },
+        "flag": "got_reveal_glass_hoenn"
+       }
+      },
+      {
+       "text": "Mirror shop owner",
+       "action": "EVENT",
+       "condition": {
+        "any": [
+         [
+          "not:party_has:641",
+          "not:party_has:642",
+          "not:party_has:645"
+         ],
+         "got_reveal_glass_hoenn"
+        ]
+       },
+       "event": {
+        "lines": [
+         "Mirror shop owner: Welcome! Mirrors of every shape. One of them is said to reveal the truth...",
+         "Mirror shop owner: ...but only to a Pokemon that commands the wind, the thunder or the land."
+        ]
+       }
+      }
+     ],
      {
       "text": "Shopping lady",
       "action": "EVENT",
@@ -586726,11 +586795,11 @@
    "ccccccccccc...................c.ccccccccccccc.c.....cccccccccccc",
    "ccccccccccc...................c.cccccHDHccccc.c....Nc.cccccccc..",
    "cccccccccccccccccc.N..........c.c...cc.cc...c.c...N.cccccccccccc",
-   "cccccccccccccccccc............ccc...c...c...ccc.....}c........cc",
-   "cccccccccccccccccc............ccc....N.N....ccc.....}c........cc",
-   "cccccccccccccccccc.ccccccc............N.............}c........cc",
-   "cccccccccccccccccc.ccccccc...............!..c!c.....}c........cc",
-   "cccccccccccccccccc.ccccccc..........................}c........cc",
+   "cccccccccccccccccc............ccc...c...c...ccc.....qc........cc",
+   "cccccccccccccccccc............ccc....N.N....ccc.....qc........cc",
+   "cccccccccccccccccc.ccccccc............N.............qc........cc",
+   "cccccccccccccccccc.ccccccc...............!..c!c.....qc........cc",
+   "cccccccccccccccccc.ccccccc..........................qc........cc",
    "cccccccccccccccccc.ccccccc..........................cccccccccccc",
    "cccccccccccccccccc.ccccccc..........................c.cccccccc..",
    "ccccccccccccccIDIc!.cJDJc...........................cccccccccccc",
@@ -586749,7 +586818,7 @@
   ],
   "exits": {
    "v": "JOIN_AVENUE",
-   "}": "ROOM:park"
+   "q": "ROOM:park"
   },
   "buildings": {
    "A": "house",

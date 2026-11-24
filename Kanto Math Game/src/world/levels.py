@@ -194,10 +194,9 @@ def follow_team(game, team_levels):
 
 
 def wild_level(game, area_key):
-    band = capped_band(game, area_key)
-    if band:
-        return random.randint(*band)
-    return max(2, area_level(game, area_key) + random.randint(-2, 1))
+    """A wild Pokemon's level: the area's own fixed level, as the mainline games have it (Jordan 11-24: no more raising
+    wild Pokemon toward your team or the next Gym's ace, before or after the title). Trainers keep their own rules."""
+    return max(2, canon_area_level(game, area_key) + random.randint(-2, 1))
 
 
 def trainer_level(game, area_key, boss=False):

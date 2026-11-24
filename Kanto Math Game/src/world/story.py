@@ -1947,7 +1947,9 @@ class StoryManager:
         # (11-23: the region's own game's Gym / League background first, if its index names one: src/world/battle_bg.py.
         #  A League's rooms are the ones listing a background per trainer; an Elite Four member goes by their place.)
         from src.world import battle_bg as _bbg
-        _league = any(isinstance(backgrounds.get(k), list) for k in ("gym", "battle"))
+        from src.states.overworld.area_transition import is_league as _is_league   # (a League by its trainers - Elite Four or a
+        _league = _is_league(area_data.get("gym"))                                  #  Champion - not by its pictures: a Gym town
+                                                                                    #  listing several isn't one; Hoenn 11-24)
         _own = _bbg.pick(self.game, area_id, trainer=True, gym=True, leader=is_leader and not _league,
                          elite_index=(trainer_index if _league and not is_leader else None) if _league else None)
         if _own:
