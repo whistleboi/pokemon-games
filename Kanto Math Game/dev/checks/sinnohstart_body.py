@@ -186,7 +186,7 @@ check(battle_team(g.current_state) == [(436, 44), (42, 44), (432, 46), (436, 44)
 flags["spear_pillar_commanders"] = True
 sp_ = route("SPEAR_PILLAR")
 sp_.story_event("cyrus_spear_pillar")
-check(battle_team(g.current_state) == [(430, 45), (169, 46), (130, 45), (461, 48)], f"Cyrus {battle_team(g.current_state)}")
+check(battle_team(g.current_state) == [(229, 45), (430, 47), (169, 46), (130, 46), (461, 48)], f"Cyrus at Spear Pillar: Platinum's trainer 404 (s_s5_spear_pillar.py) {battle_team(g.current_state)}")
 
 print("6) Platinum's Distortion World")
 dw = prog["DISTORTION_WORLD"]
