@@ -76,6 +76,11 @@
     ]
   },
   "figures": {
+    "ROCKET_WAREHOUSE:UNLOCK THE DOORS": {"pic": "dungeon/characters/fr_prop_pc.png"},
+    "SEVAULT_CANYON:OPEN THE CHAMBERS": {"pic": "dungeon/characters/fr_prop_pc.png"},
+    "POWER_PLANT:Trader": {"sheet": "fr_22.png"},
+    "CERULEAN_CITY:Search the Gym's Pool": {"item": "POKE_BALL"},
+    "UNDERGROUND_PATH:Talk to Fossil Maniac": {"sheet": "fr_56.png"},
     "KANTO_ROUTE_12:TM098": {"item": "POKE_BALL"},
     "KANTO_ROUTE_15:TM050": {"item": "POKE_BALL"},
     "KANTO_ROUTE_24:TM240": {"item": "POKE_BALL"},
