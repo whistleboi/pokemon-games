@@ -200,6 +200,26 @@ def build_region(region, title):
             places[k] = {"html": f"<h2>{B.esc(f['name'])}</h2>" + B.fill(f"{{{{tables:{k}}}}}{{{{trainers:{k}}}}}"), "part": None}
         places[k].update(name=f["name"], conn=connections(k, f), level=f["level"], sevii=k in F.SEVII["STORY_PROGRESSION"])
 
+    # the buildings of each place (buildings.py): a page each, with a written description where buildings.html has one
+    import buildings as BL
+    desc = BL.descriptions(region)
+    blds = {}
+    for k, f in B.FACTS.items():
+        lst = BL.buildings(k, f, slug, lambda room, name: pictures_of(room, name, ROOMDATA))
+        for b in lst:
+            d = desc.get(b["id"]) or {}
+            if d.get("title"):
+                b["name"] = d["title"]
+            body = (B.link_places(d["html"]) if d.get("html") else "") + b["html"]
+            for kk, anchor in B.PLACE_ID.items():
+                body = body.replace(f'href="#{anchor}"', f'href="#{site_ids[kk]}"')
+            body = body.replace('<img data-map="rooms/', f'<img data-region="{region}-rooms" data-map="rooms/')
+            blds[b["id"]] = {"name": b["name"], "p": k, "kind": b["kind"], "html": body, "written": bool(d.get("html"))}
+        places[k]["buildings"] = [[b["id"], blds[b["id"]]["name"]] for b in lst if blds[b["id"]]["html"]]
+    unknown = set(desc) - set(blds)
+    if unknown:
+        print("buildings.html: no such building:", sorted(unknown))
+
     # where each Pokemon and item turns up, and who uses each Pokemon
     mons, items, trainers = {}, {}, {}
     for k, f in B.FACTS.items():
@@ -231,7 +251,7 @@ def build_region(region, title):
             e["where"].append({"p": k, "w": where + (f" ({when})" if when else "") + (qty and f" {qty}")})
     for e in mons.values():
         e["wild"].sort(key=lambda r: first_part.get(r["p"], 99))
-    return {"key": region, "title": title, "parts": parts, "places": places, "mons": mons, "items": items,
+    return {"key": region, "title": title, "parts": parts, "places": places, "mons": mons, "items": items, "buildings": blds,
             "nav": navboxes(region, places, first_part),
             "trainers": trainers, "order": sorted(places, key=lambda k: (first_part.get(k, 99), list(B.FACTS).index(k)))}
 
@@ -242,8 +262,14 @@ MAPDATA = {}   # (the map pictures, as data: URIs in data/<region>-maps.json: lo
 def map_pictures(out, key):
     """The area's map as the game draws it: its ground picture with the top layer (trees, roofs) over it, one image per
     floor for caves and buildings (town_maps "_picture" + "overheads", 16-pixel tiles). Returns [{"src", "label"}]."""
+    return pictures_of(F.MAPS.get(key) or {}, f"maps/{slug(key)}", MAPDATA)
+
+
+ROOMDATA = {}   # (the building pages' room pictures: data/<region>-rooms-maps.json)
+
+
+def pictures_of(m, prefix, store):
     from PIL import Image
-    m = F.MAPS.get(key) or {}
     tiles = os.path.join(F.A, "tiles")
     names = m.get("floor_names") or []
     layers = [(m, "")] + [(fl, F.fix(names[i]) if i < len(names) and names[i] else f"Floor {i + 1}")
@@ -262,17 +288,37 @@ def map_pictures(out, key):
         px = int(pic.get("px") or 16)
         if px != 16:   # (SoulSilver's pictures are 32 pixels a tile: drawn at FireRed's 16, like the rest)
             im = im.resize((im.width * 16 // px, im.height * 16 // px), Image.NEAREST)
-        name = f"maps/{slug(key)}{'-' + str(i) if i else ''}.png"
+        name = f"{prefix}{'-' + str(i) if i else ''}.png"
         import base64
         from io import BytesIO
         buf = BytesIO()
         im.convert("RGB").quantize(256).convert("RGB").save(buf, "WEBP", lossless=True, method=6)   # (lossless WebP of the 256-colour picture: smallest for pixel art)
-        MAPDATA[name] = "data:image/webp;base64," + base64.b64encode(buf.getvalue()).decode()
+        store[name] = "data:image/webp;base64," + base64.b64encode(buf.getvalue()).decode()
         pics.append({"src": name, "label": label, "w": im.width, "h": im.height})
     return pics
 
 
 MOVES = json.load(open(os.path.join(F.A, "moves.json"), encoding="utf-8"))
+
+
+def mechanics():
+    """The mechanics pages: dev/encyclopedia/mechanics/<slug>.html, each with <!--title: -->, <!--group: --> and
+    <!--blurb: --> (a line for the list), then its HTML. A building's kind (buildings.KINDS) opens the page of that slug."""
+    out = {}
+    d = os.path.join(HERE, "mechanics")
+    if not os.path.isdir(d):
+        return out
+    for fn in sorted(os.listdir(d)):
+        if not fn.endswith(".html"):
+            continue
+        text = open(os.path.join(d, fn), encoding="utf-8").read()
+        meta = {k: (re.search(rf"<!--{k}:\s*(.*?)-->", text) or [None, ""])[1].strip() for k in ("title", "group", "blurb")}
+        body = re.sub(r"<!--\w+:.*?-->\s*", "", text)
+        body, box = B.toc(body, "m-" + fn[:-5])
+        box = re.sub(r'href="#([^"]+)"', r'href="#\1" data-scroll="\1"', box)
+        out[fn[:-5]] = {"title": meta["title"] or fn[:-5], "group": meta["group"] or "Other", "blurb": meta["blurb"],
+                        "html": body, "toc": box}
+    return dict(sorted(out.items(), key=lambda kv: (kv[1]["group"], kv[1]["title"])))
 
 
 def main(out):
@@ -285,10 +331,18 @@ def main(out):
         with open(os.path.join(out, "data", f"{key}-maps.json"), "w", encoding="utf-8", newline="\n") as fh:
             json.dump(MAPDATA, fh, separators=(",", ":"))
         MAPDATA.clear()
+        with open(os.path.join(out, "data", f"{key}-rooms-maps.json"), "w", encoding="utf-8", newline="\n") as fh:
+            json.dump(ROOMDATA, fh, separators=(",", ":"))
+        ROOMDATA.clear()
         data["src"] = src
         with open(os.path.join(out, "data", f"{key}.json"), "w", encoding="utf-8", newline="\n") as fh:
             json.dump(data, fh, ensure_ascii=False, separators=(",", ":"))
         regions.append({"key": key, "title": title, "src": src, "parts": len(data["parts"]), "places": len(data["places"])})
+    with open(os.path.join(out, "data", "mechanics.json"), "w", encoding="utf-8", newline="\n") as fh:
+        json.dump(mechanics(), fh, ensure_ascii=False, separators=(",", ":"))
+    import journal as J   # (the Journal pages, from quest_book.json / the missions / quest_feats.json every build)
+    with open(os.path.join(out, "data", "journal.json"), "w", encoding="utf-8", newline="\n") as fh:
+        json.dump(J.pages(HERE, slug), fh, ensure_ascii=False, separators=(",", ":"))
     sp = species_json()   # (after the regions: their icons are in, and every species with an icon gets one)
     with open(os.path.join(out, "data", "species.json"), "w", encoding="utf-8", newline="\n") as fh:
         json.dump(sp, fh, ensure_ascii=False, separators=(",", ":"))
