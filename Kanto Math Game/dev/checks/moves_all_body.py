@@ -157,6 +157,10 @@ _p._battle_trainer(_t)
 while _p.dialogue_box.visible:
     _p.dialogue_box.advance()
     _p.update()
+for _ in range(600):   # (the region's battle intro plays first: Systems 11-24, as tms_hazards)
+    if getattr(g.current_state, "overworld", None) is not None:
+        break
+    g.current_state.update()
 _ob = g.current_state
 VIEW = getattr(_ob, "overworld", None)
 check(VIEW is not None, "an OVERWORLD battle's map view to draw the sweep on")
