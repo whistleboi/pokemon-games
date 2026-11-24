@@ -449,6 +449,7 @@ class WildWalkUps:
         sw = self._sw
         if right:
             sw["phase"], sw["t"] = "HIT", 0
+            self._sw_attack(self.lead(), "lead", self._sw_target())
         else:
             standing = [m for m in sw["order"][sw["k"]:]]
             sw["attacker"] = random.choice(standing)
@@ -456,6 +457,62 @@ class WildWalkUps:
             lead = sw["victim"] = self.lead()   # (the one hit: kept, so a faint mid-hit doesn't pass the hit on)
             sw["dmg"] = self._sw_damage(sw["attacker"].payload, lead)
             sw["hp_from"] = lead.current_hp
+            self._sw_attack(sw["attacker"].payload, sw["attacker"], "lead")
+
+    def _sw_move(self, mon):
+        """The move a Pokemon hits with here: its strongest that does damage (a swarm Pokemon: one of its own at
+        random), else Tackle."""
+        from src.vfx import map_attacks
+        moves = [map_attacks.move_for(self.game, m) for m in (getattr(mon, "moves", None) or [])]
+        moves = [d for d in moves if int(d.get("power") or 0) > 0 and not d.get("_unknown")]
+        if not moves:
+            return map_attacks.move_for(self.game, "TACKLE")
+        if mon is self.lead():
+            return max(moves, key=lambda d: int(d.get("power") or 0))
+        return random.choice(moves)
+
+    def _sw_tile_rect(self, who):
+        """who: "lead" (your Pokemon, or you while it's at your heels) or a map mover: its tile rect on screen now."""
+        at = getattr(self, "_sw_at", None)
+        if at is None:
+            return pygame.Rect(0, 0, 56, 56)
+        if who == "lead":
+            run = self._wu_run()
+            p = tuple(getattr(self, "partner", run.player) or run.player)
+            return at(*(p if p != tuple(run.player) else run.player))
+        return at(who.x, who.y)
+
+    def _sw_attack(self, mon, user, target):
+        """The map's own attack (src/vfx/map_attacks.py): mon's move from user to target ("lead" or a mover)."""
+        from src.vfx import map_attacks
+        self._sw["atk"] = map_attacks.MapAttack(self.game, self._sw_move(mon), lambda: self._sw_tile_rect(user),
+                                                lambda: self._sw_tile_rect(target))
+        self._sw["atk_who"] = (user, target)
+
+    def _sw_atk_tick(self):
+        """The attack plays on: who it moves is drawn moved (_wu_off, _lead_off), the one hit flashes. Its length."""
+        sw = self._sw
+        atk = sw.get("atk")
+        if atk is None:
+            return ORB
+        atk.update()
+        for role, who in zip(("user", "target"), sw["atk_who"]):
+            off = atk.offset(role)
+            flash = role == "target" and atk.flashing()
+            if who == "lead":
+                self._lead_off, self._lead_flash = off, flash
+            else:
+                who._wu_off, who._wu_flash = off, flash
+        return atk.length
+
+    def _sw_atk_end(self):
+        sw = self._sw
+        for who in sw.pop("atk_who", ()) or ():
+            if who == "lead":
+                self._lead_off, self._lead_flash = (0, 0), False
+            else:
+                who._wu_off, who._wu_flash = (0, 0), False
+        sw["atk"] = None
 
     @staticmethod
     def _sw_damage(foe, lead):
@@ -479,8 +536,10 @@ class WildWalkUps:
                 self.game.story_manager.note_answer(self.problem_str, False)
                 self._sw_shot(False)
         elif ph == "HIT":
-            tgt._wu_hp = max(0.0, 1.0 - t / ORB) if sw["k"] < 2 else max(0.15, 1.0 - t / ORB)
-            if t >= ORB:
+            L = self._sw_atk_tick()
+            tgt._wu_hp = max(0.0, 1.0 - t / L) if sw["k"] < 2 else max(0.15, 1.0 - t / L)
+            if t >= L:
+                self._sw_atk_end()
                 if sw["k"] >= len(sw["order"]) - 1:   # (the last one: catch it, or knock it out)
                     sw["phase"], sw["t"], sw["pick"] = "PICK", 0, 0 if self._sw_can_catch() else 1
                 else:
@@ -500,9 +559,11 @@ class WildWalkUps:
                 self._wu_say(lines, then=self._sw_end if last else self._sw_ask)
         elif ph == "HURT":
             lead = sw["victim"]
-            k = min(1.0, t / ORB)
+            L = self._sw_atk_tick()
+            k = min(1.0, t / L)
             lead.current_hp = max(0, int(round(sw["hp_from"] - sw["dmg"] * k)))
-            if t >= ORB:
+            if t >= L:
+                self._sw_atk_end()
                 name = sw["attacker"].payload.display_name.upper()
                 lines = [f"The wild {name} attacked! {lead.display_name.upper()} took {sw['dmg']} damage!"]
                 sw["phase"] = "TALK"
@@ -698,6 +759,7 @@ class WildWalkUps:
         lead = sw.get("victim") if sw["phase"] == "HURT" else (self.lead() or (self.game.story_manager.player_team or [None])[0])
         me_tile = tuple(self.partner) if tuple(getattr(self, "partner", self._wu_run().player)) != tuple(self._wu_run().player) else tuple(self._wu_run().player)
         mr = at(*me_tile)
+        self._sw_at = at
         for m in sw["order"][sw["k"]:]:   # (just the level over each: they stand side by side, the species is in the heading)
             if m in self._wu_run().floor.movers and getattr(m, "_wu_alpha", 255) > 0:
                 r = at(m.x, m.y)
@@ -707,14 +769,10 @@ class WildWalkUps:
                          f"{lead.display_name.upper()} {max(0, lead.current_hp)}/{lead.get_max_hp()}", mine=True)
         tgt = self._sw_target()
         tr = at(tgt.x, tgt.y)
-        if sw["phase"] == "HIT" and lead is not None:
-            kind = str((getattr(lead, "types", None) or ["NORMAL"])[0]).upper()
-            self._sw_orb(screen, mr.center, tr.center, min(1.0, sw["t"] / ORB), TYPE_COLOR.get(kind, (255, 255, 255)))
-        elif sw["phase"] == "HURT":
-            foe = sw["attacker"]
-            kind = str((getattr(foe.payload, "types", None) or ["NORMAL"])[0]).upper()
-            self._sw_orb(screen, at(foe.x, foe.y).center, mr.center, min(1.0, sw["t"] / ORB), TYPE_COLOR.get(kind, (255, 255, 255)))
-            k = min(1.0, sw["t"] / ORB)
+        if sw.get("atk") is not None:   # (the move: its lunge or beam, its type's sprites - map_attacks.py)
+            sw["atk"].draw(screen)
+        if sw["phase"] == "HURT":
+            k = min(1.0, sw["t"] / max(1, sw["atk"].length if sw.get("atk") else ORB))
             if k > 0.5:
                 theme.shadow_text(screen, f"-{sw['dmg']}", fonts["label"], mr.right + 30, mr.top - int(k * 30),
                                   color=(255, 140, 130), shadow=(20, 20, 30), align="center")

@@ -49,7 +49,8 @@ weak.level = _cap   # (the lead is the team's first Pokemon)
 _wl = [levels.wild_level(g, "ROUTE_1") for _ in range(400)]
 _tl = [levels.trainer_level(g, "ROUTE_1") for _ in range(400)]
 _tt = [lv for _ in range(100) for lv in levels.trainer_team_levels(g, "ROUTE_1", 3)]
-check(min(_wl) == _cap - 3 and max(_wl) == _cap + 1, f"a lead at the cap ({_cap}): wild Lv {min(_wl)}-{max(_wl)}, anywhere from cap-3 to cap+1 (Jordan 11-15)")
+_r1 = levels.canon_area_level(g, "ROUTE_1")
+check(min(_wl) >= max(2, _r1 - 2) and max(_wl) <= _r1 + 1, f"a lead at the cap ({_cap}): wild Pokemon keep Route 1's own Lv {min(_wl)}-{max(_wl)} (Jordan 11-24: no wild lift)")
 check(min(_tl) == _cap - 3 and max(_tl) == _cap + 1, f"...route trainers Lv {min(_tl)}-{max(_tl)} the same")
 check(min(_tt) >= _cap - 3 and max(_tt) <= _cap + 1, f"...their whole teams too: Lv {min(_tt)}-{max(_tt)}")
 _vw = [levels.wild_level(g, "VICTORY_ROAD") for _ in range(200)]
@@ -82,4 +83,12 @@ for _r, _caps in _want.items():
           f"...Exp. stops at {levels.xp_cap(story)}; the wild lift, legends and rematches still follow the ace {levels.story_ace(story)}")
 story.badges = {}
 story.current_area_key, story.level_cap_mode = _area0, _mode0
+print("7) after the title, wild Pokemon still keep their area's own levels (Jordan 11-24)")
+_saved_team = list(story.player_team)
+for p_ in story.player_team:
+    if p_:
+        p_.level = 90
+_pw = [levels.wild_level(g, "ROUTE_1") for _ in range(200)]
+check(max(_pw) <= levels.canon_area_level(g, "ROUTE_1") + 1, f"a Lv 90 team: Route 1's wild Pokemon stay Lv {min(_pw)}-{max(_pw)}")
+story.player_team = _saved_team
 print("FAILURES:", fails)
