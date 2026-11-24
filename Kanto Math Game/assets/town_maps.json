@@ -331629,7 +331629,7 @@
      "ccccccccc.cccccccccccccccccccccccccccccccccccccc,c",
      "ccccccccc,cccccc..cccccccccccccccccccccccccccccc,c",
      "ccccccccc,cc......cccccccccccccccccccccccccccccc,c",
-     "ccccccccc.,,...........,,,,,,,,,,,,,,,,,,,,,,,,,,c",
+     "ccccccccc.,,........N..,,,,,,,,,,,,,,,,,,,,,,,,,,c",
      "ccccccccc,ccccccc......ccccccccccccccccccccccccccc",
      "ccccccccc,ccccccc......ccccccccccccccccccccccccccc",
      "ccccccccc.ccccccc.ccc..,,.cccccccccccccccccccccccc",
@@ -331653,7 +331653,17 @@
     "parts": true,
     "exits": {
      "n": "SPEAR_PILLAR"
-    }
+    },
+    "people": [
+     {
+      "text": "Cynthia",
+      "flag_condition": "not walk_cynthia_met",
+      "event": {
+       "walk_partner": "cynthia"
+      },
+      "action": "EVENT"
+     }
+    ]
    },
    {
     "art": [
@@ -331683,7 +331693,43 @@
      "ccccccccccccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccccccccccccccc"
     ],
-    "parts": true
+    "parts": true,
+    "scenes": [
+     {
+      "trigger": {
+       "zone": [
+        2,
+        15,
+        8,
+        21
+       ]
+      },
+      "flag": "dw_saw_mesprit",
+      "call": [
+       "Cynthia: Will we find Giratina if we keep going down? ...Are we even going down, in a place like this?"
+      ],
+      "cast": [
+       {
+        "sheet": "mon:481",
+        "from": [
+         5,
+         18
+        ],
+        "lines": [
+         "MESPRIT: Piih!",
+         "Mesprit flew off into the distortion..."
+        ],
+        "path": [
+         [
+          5,
+          14
+         ]
+        ],
+        "gone": true
+       }
+      ]
+     }
+    ]
    },
    {
     "art": [
@@ -331775,7 +331821,7 @@
      "oooooooooooooooooc.cooooc.cooc.coooooooc.coooc......cooooooooooo",
      "oooooooooooooooooc.cooooc.cooc,coooooooc,coooccccccccooooooooooo",
      "oooooooooccccccccc.cccccc.cccc,coocccccc,coooooooooooooooooooooo",
-     "oooooooo.,................,,...cooc.,,...coooooooooooooooooooooo",
+     "oooooooo.,........N.......,,...cooc.,,...coooooooooooooooooooooo",
      "oooooooo.cccccc.ccccccccccccccccooc.ccccccoooccccccccccooooooooo",
      "oooooooo.oooooc.coooooooooooooooooc.cooooooooccccccccccooooooooo",
      "oooooooo.oooooc.coooooooooooooooooc.cooooooooccccccccccooooooooo",
@@ -331812,7 +331858,23 @@
      "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
      "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
     ],
-    "parts": true
+    "parts": true,
+    "people": [
+     {
+      "text": "Cyrus",
+      "flag_condition": "not dw_talked_cyrus_b3f",
+      "event": {
+       "lines": [
+        "Cyrus: ...The shadowy Pokemon isn't here. It left me here, then vanished somewhere farther down.",
+        "Cyrus: It must have made this bizarre world. Trying to change ours disturbed it and made it show itself.",
+        "Cyrus: None of that matters. What matters is defeating it, and making this world mine.",
+        "Cyrus walked off into the distortion..."
+       ],
+       "flag": "dw_talked_cyrus_b3f"
+      },
+      "action": "EVENT"
+     }
+    ]
    },
    {
     "art": [
@@ -331841,7 +331903,7 @@
      "ccc...ccccccccc.....cccccccc.....cccccccccccccc",
      "ccc...ccccccccc.,.,.cccccc...cccccccccccccccccc",
      "ccc...ccccccccc.,.,.cccccc...cccccccccccccccccc",
-     "ccc.....ccccccc.....cccccc...cccccccccccccccccc",
+     "ccc.....ccccccc.....cccccc.N.cccccccccccccccccc",
      "ccc........cccc...cccccccc...cccccccccccccccccc",
      "ccc........cccc...cccccccc.,,cccccccccccccccccc",
      "cccccc.......,,...cccccccc.,,cccccccccccccccccc",
@@ -331864,76 +331926,23 @@
      "ccccccccccccccccccccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccccccccccccccccccccccc"
     ],
-    "parts": true
-   },
-   {
-    "art": [
-     "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-     "ooooooooooooooor.ooooooooooooooooooooooooooooooooooooooooooooooo",
-     "ooooooooooooorcc.ooooooooooooooooooooooooooooooooooooooooooooooo",
-     "ooooooooooooo....ooooooooooocccccccccccccccc$$$cccoooooooooooooo",
-     "ooooooooooooorccroooooooooooccc.............ooo..coooooooooooooo",
-     "ooooooooooooooooooooooooooooccc.-...........ooo..coooooooooooooo",
-     "ooooooooooooooooooooooooooooccc..................coooooooooooooo",
-     "ooooooooooooooooooooooooooooccc.ccccccccccccccccccoooooooooooooo",
-     "ooooooooooooooooooooooooooooc...cooooooooooooooooooooooooooooooo",
-     "ooooooooocccccccooooooooooooc.cccooooooooooooooooooooooooooooooo",
-     "oooooooooc.....cooooooooooooc.cccooooooooooooooooooooooooooooooo",
-     "oooooooooc.,.,.cccccccccccccc.cccooooooooooooooooooooooooooooooo",
-     "oooooooooc.,.,................cccooooooooooooooooooooooooooooooo",
-     "oooooooooc.....ccccccccccccccccccoooccccccccoooooooooooooooooooo",
-     "oooooooooc.....cooooooooooooooooooooc......coooooooooooooooooooo",
-     "ooooooooocccccccoooooooooooooooooooo,.ccccccoooooooooooooooooooo",
-     "ooooooooooooooooooooooooooooooooooooc.cooooooooooooooooooooooooo",
-     "ooooooooooooooooooooooooooooooooooooc.cooooooooooooooooooooooooo",
-     "ooooooooooooooooooooooooooooooooocccc.cccooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooc......cooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooc...,..cooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooc..,...cooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooc..,,..cooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooc..,.+.cooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooc......cooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooccccccccooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-     "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
-    ],
-    "parts": true
+    "parts": true,
+    "people": [
+     {
+      "text": "Cyrus",
+      "condition": [
+       "dw_talked_cyrus_b3f",
+       "not:dw_cyrus_b4f"
+      ],
+      "event": {
+       "lines": [
+        "Cyrus doesn't look back. He walks on, deeper into the distortion..."
+       ],
+       "flag": "dw_cyrus_b4f"
+      },
+      "action": "EVENT"
+     }
+    ]
    },
    {
     "art": [
@@ -331987,7 +331996,111 @@
      "cccccccccccccccccccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccccccccccccccccccc"
     ],
-    "parts": true
+    "parts": true,
+    "boxes": [
+     [
+      12,
+      30
+     ],
+     [
+      35,
+      29
+     ],
+     [
+      23,
+      18
+     ]
+    ],
+    "box_look": "boulder",
+    "box_strength": true,
+    "box_switches": [
+     {
+      "on": [
+       13,
+       30
+      ],
+      "into": true,
+      "gone": true,
+      "flag": "dw_mesprit_dropped",
+      "lines": [
+       "The boulder slid off the slab... and fell away to the floor below!"
+      ]
+     },
+     {
+      "on": [
+       34,
+       29
+      ],
+      "into": true,
+      "gone": true,
+      "flag": "dw_azelf_dropped",
+      "lines": [
+       "The boulder slid off the slab... and fell away to the floor below!"
+      ]
+     },
+     {
+      "on": [
+       23,
+       19
+      ],
+      "into": true,
+      "gone": true,
+      "flag": "dw_uxie_dropped",
+      "lines": [
+       "The boulder slid off the slab... and fell away to the floor below!"
+      ]
+     }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        14,
+        30
+       ]
+      ],
+      "look": "mon:481",
+      "until": {
+       "flag_condition": "dw_mesprit_dropped"
+      },
+      "lines": [
+       "MESPRIT: Piih!",
+       "Mesprit hovers beside the boulder, looking at it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        33,
+        29
+       ]
+      ],
+      "look": "mon:482",
+      "until": {
+       "flag_condition": "dw_azelf_dropped"
+      },
+      "lines": [
+       "AZELF: Piiuw!",
+       "Azelf hovers beside the boulder, looking at it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        23,
+        20
+       ]
+      ],
+      "look": "mon:480",
+      "until": {
+       "flag_condition": "dw_uxie_dropped"
+      },
+      "lines": [
+       "UXIE: Piih!",
+       "Uxie hovers beside the boulder, looking at it."
+      ]
+     }
+    ]
    },
    {
     "art": [
@@ -332022,11 +332135,11 @@
      "ccccc.cccccccccccccc.ccccccccccccccccccccccccc",
      "ccccc.cccccccccccccc.ccccccccccccccccccccccccc",
      "ccccc................ccccccccccccccccccccccccc",
+     "ccccccccccccccccccccNccccccccccccccccccccccccc",
      "cccccccccccccccccccc.ccccccccccccccccccccccccc",
      "cccccccccccccccccccc.ccccccccccccccccccccccccc",
      "cccccccccccccccccccc.ccccccccccccccccccccccccc",
-     "cccccccccccccccccccc.ccccccccccccccccccccccccc",
-     "cccccccccccccccccc....cccccccccccccccccccccccc",
+     "cccccccccccccccccc..N.cccccccccccccccccccccccc",
      "cccccccccccccccccc.....ccccccccccccccccccccccc",
      "cccccccccccccccccc.....ccccccccccccccccccccccc",
      "cccccccccccccccccccc.+.ccccccccccccccccccccccc",
@@ -332035,14 +332148,289 @@
      "cccccccccccccccccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccccccccccccccccc"
     ],
-    "parts": true
+    "parts": true,
+    "boxes": [
+     [
+      10,
+      19
+     ],
+     [
+      33,
+      18
+     ],
+     [
+      21,
+      7
+     ]
+    ],
+    "box_when": [
+     "dw_mesprit_dropped",
+     "dw_azelf_dropped",
+     "dw_uxie_dropped"
+    ],
+    "box_look": "boulder",
+    "box_strength": true,
+    "box_switches": [
+     {
+      "on": [
+       3,
+       18
+      ],
+      "into": true,
+      "flag": "dw_mesprit_pit",
+      "lines": [
+       "The boulder dropped into the pit. It fits perfectly!"
+      ]
+     },
+     {
+      "on": [
+       10,
+       18
+      ],
+      "into": true,
+      "flag": "dw_mesprit_wrong_10_18",
+      "reset": {
+       "clear": [
+        "dw_mesprit_dropped"
+       ],
+       "boxes": [
+        [
+         5,
+         0
+        ]
+       ]
+      },
+      "lines": [
+       "The boulder dropped into the pit... It didn't fit, and fell away!",
+       "It's back where it started, up on B5F."
+      ]
+     },
+     {
+      "on": [
+       14,
+       18
+      ],
+      "into": true,
+      "flag": "dw_mesprit_wrong_14_18",
+      "reset": {
+       "clear": [
+        "dw_mesprit_dropped"
+       ],
+       "boxes": [
+        [
+         5,
+         0
+        ]
+       ]
+      },
+      "lines": [
+       "The boulder dropped into the pit... It didn't fit, and fell away!",
+       "It's back where it started, up on B5F."
+      ]
+     },
+     {
+      "on": [
+       31,
+       19
+      ],
+      "into": true,
+      "flag": "dw_azelf_pit",
+      "lines": [
+       "The boulder dropped into the pit. It fits perfectly!"
+      ]
+     },
+     {
+      "on": [
+       35,
+       19
+      ],
+      "into": true,
+      "flag": "dw_azelf_wrong_35_19",
+      "reset": {
+       "clear": [
+        "dw_azelf_dropped"
+       ],
+       "boxes": [
+        [
+         5,
+         1
+        ]
+       ]
+      },
+      "lines": [
+       "The boulder dropped into the pit... It didn't fit, and fell away!",
+       "It's back where it started, up on B5F."
+      ]
+     },
+     {
+      "on": [
+       40,
+       19
+      ],
+      "into": true,
+      "flag": "dw_azelf_wrong_40_19",
+      "reset": {
+       "clear": [
+        "dw_azelf_dropped"
+       ],
+       "boxes": [
+        [
+         5,
+         1
+        ]
+       ]
+      },
+      "lines": [
+       "The boulder dropped into the pit... It didn't fit, and fell away!",
+       "It's back where it started, up on B5F."
+      ]
+     },
+     {
+      "on": [
+       20,
+       11
+      ],
+      "into": true,
+      "flag": "dw_uxie_pit",
+      "lines": [
+       "The boulder dropped into the pit. It fits perfectly!"
+      ]
+     },
+     {
+      "on": [
+       20,
+       3
+      ],
+      "into": true,
+      "flag": "dw_uxie_wrong_20_3",
+      "reset": {
+       "clear": [
+        "dw_uxie_dropped"
+       ],
+       "boxes": [
+        [
+         5,
+         2
+        ]
+       ]
+      },
+      "lines": [
+       "The boulder dropped into the pit... It didn't fit, and fell away!",
+       "It's back where it started, up on B5F."
+      ]
+     },
+     {
+      "on": [
+       20,
+       7
+      ],
+      "into": true,
+      "flag": "dw_uxie_wrong_20_7",
+      "reset": {
+       "clear": [
+        "dw_uxie_dropped"
+       ],
+       "boxes": [
+        [
+         5,
+         2
+        ]
+       ]
+      },
+      "lines": [
+       "The boulder dropped into the pit... It didn't fit, and fell away!",
+       "It's back where it started, up on B5F."
+      ]
+     }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        21,
+        38
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "dw_mesprit_pit"
+      },
+      "lines": [
+       "The way down won't open. The boulders aren't all where they belong..."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        21,
+        38
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "dw_azelf_pit"
+      },
+      "lines": [
+       "The way down won't open. The boulders aren't all where they belong..."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        21,
+        38
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "dw_uxie_pit"
+      },
+      "lines": [
+       "The way down won't open. The boulders aren't all where they belong..."
+      ]
+     }
+    ],
+    "people": [
+     {
+      "text": "Cynthia",
+      "condition": {
+       "any": [
+        "not:dw_mesprit_pit",
+        "not:dw_azelf_pit",
+        "not:dw_uxie_pit"
+       ]
+      },
+      "event": {
+       "lines": [
+        "Cynthia: This place seems to be a giant puzzle. Maybe Giratina wants to test those who come here.",
+        "Cynthia: We can't go on unless we solve it. There were some boulders that could be moved..."
+       ]
+      },
+      "action": "EVENT"
+     },
+     {
+      "text": "Cynthia",
+      "condition": [
+       "dw_mesprit_pit",
+       "dw_azelf_pit",
+       "dw_uxie_pit"
+      ],
+      "event": {
+       "lines": [
+        "Cynthia: I guess the Pokemon of the lakes have gone home.",
+        "Cynthia: Call it a Trainer's intuition, but we're getting close. Let's go on!"
+       ]
+      },
+      "action": "EVENT"
+     }
+    ]
    },
    {
     "art": [
      "cccccccccccccccccc",
      "cccccccccccccccccc",
      "cccccccccccccccccc",
-     "cccccccccXcccccccc",
+     "ccccccccc.cccccccc",
      "ccccccccc.cccccccc",
      "ccccccccc.cccccccc",
      "ccccccccc.cccccccc",
@@ -332065,12 +332453,12 @@
      "ccccccccc.cccccccc",
      "ccccccccc.cccccccc",
      "ccccc.....cccccccc",
-     "ccccc..,,.cccccccc",
-     "ccccc..,,.cccccccc",
+     "ccccc..,,Ncccccccc",
+     "cccccX.,,.cccccccc",
      "ccccc.cccccccccccc",
      "ccccc.cccccccccccc",
      "ccccc.cccccccccccc",
-     "cccc.-.,,.cccccccc",
+     "ccccN-.,,.cccccccc",
      "cccc...,,.cccccccc",
      "cccc...........ccc",
      "ccc....ccccccccccc",
@@ -332090,7 +332478,35 @@
      "cccccccccccccccccc"
     ],
     "parts": true,
-    "people": [],
+    "people": [
+     {
+      "text": "Cynthia",
+      "condition": [
+       "distortion_world_cleared",
+       "not:TURNBACK_CAVE_boss_defeated"
+      ],
+      "event": {
+       "lines": [
+        "Cynthia: Don't believe his lies. A Pokemon can't make the world disappear.",
+        "Cynthia fully healed your Pokemon.",
+        "Cynthia: Now let's go meet Giratina!"
+       ],
+       "heal": true
+      },
+      "action": "EVENT"
+     },
+     {
+      "text": "Cynthia",
+      "flag_condition": "not distortion_world_cleared",
+      "event": {
+       "lines": [
+        "Cynthia: This is it... Giratina is up ahead.",
+        "Cynthia: ...And so is Cyrus. If you hate our world, go off somewhere alone. But wanting to destroy it - that's no justice at all!"
+       ]
+      },
+      "action": "EVENT"
+     }
+    ],
     "trainer_spots": [
      "Galactic Boss Cyrus"
     ],
@@ -332107,7 +332523,7 @@
        "flag_condition": "distortion_world_cleared"
       },
       "lines": [
-       "A strange force pushes you back. Cyrus is somewhere up the long passage."
+       "Cynthia: Cyrus is here. We can't go on without facing him."
       ]
      }
     ]
@@ -332120,13 +332536,13 @@
      "ccc-cccccc",
      "cccNcccccc",
      "cccNcccccc",
+     "cccNcccccc",
      "ccc.cccccc",
      "ccc.cccccc",
      "ccc.cccccc",
      "ccc.cccccc",
      "ccc.cccccc",
-     "ccc.cccccc",
-     "ccc.cccccc",
+     "cccNcccccc",
      "ccc.cccccc",
      "ccc.cccccc",
      "ccc....ccc",
@@ -332139,7 +332555,32 @@
     "parts": true,
     "people": [
      "FACE GIRATINA",
-     "PICK UP THE GLOWING ORB"
+     "PICK UP THE GLOWING ORB",
+     {
+      "text": "Portal",
+      "condition": [
+       "TURNBACK_CAVE_boss_defeated"
+      ],
+      "event": {
+       "lines": [
+        "The portal back to the Spear Pillar shimmers here.",
+        "You leapt into the portal!"
+       ],
+       "travel": "SPEAR_PILLAR"
+      },
+      "action": "EVENT"
+     },
+     {
+      "text": "Cynthia",
+      "flag_condition": "not TURNBACK_CAVE_boss_defeated",
+      "event": {
+       "lines": [
+        "Cynthia: Giratina is enraged because both worlds are in danger. It merged its world and ours at the Spear Pillar.",
+        "Cynthia: But there's nothing to fear. I know the bond you share with your Pokemon is strong!"
+       ]
+      },
+      "action": "EVENT"
+     }
     ]
    }
   ],
@@ -332150,16 +332591,15 @@
    "B3F",
    "B4F",
    "B5F",
-   "B5F, the lower side",
    "B6F",
    "B7F",
    "Giratina's room"
   ],
   "theme": "distortion",
   "figure_floors": {
-   "FACE GIRATINA": 9,
-   "PICK UP THE GLOWING ORB": 9,
-   "Galactic Boss Cyrus": 8
+   "FACE GIRATINA": 8,
+   "Galactic Boss Cyrus": 7,
+   "PICK UP THE GLOWING ORB": 8
   }
  },
  "GREAT_MARSH": {
@@ -415378,44 +415818,33 @@
        "_look": "sheet:b2_juniper.png",
        "condition": [
         "beat_unova_champion",
-        "not:b2_juniper_starter_1"
+        "not:b2_juniper_starters"
        ],
        "event": {
         "lines": [
          "Professor Juniper: Congratulations, Champion! I came all the way to Aspertia to see you.",
-         "Professor Juniper: You and your partner have come so far. The other two who were waiting with it have been waiting for a Trainer, too. Would you take them?"
+         "Professor Juniper: You and your partner have come so far. The other two who were waiting with it have been waiting for a Trainer, too. Raise them both well!"
         ],
         "gift_pokemon": {
-         "495": 498,
-         "498": 495,
-         "501": 495,
-         "default": 498
+         "495": [
+          498,
+          501
+         ],
+         "498": [
+          495,
+          501
+         ],
+         "501": [
+          495,
+          498
+         ],
+         "default": [
+          498,
+          501
+         ]
         },
         "gift_level": 5,
-        "flag": "b2_juniper_starter_1"
-       }
-      },
-      {
-       "text": "Professor Juniper",
-       "action": "EVENT",
-       "_look": "sheet:b2_juniper.png",
-       "condition": [
-        "beat_unova_champion",
-        "not:b2_juniper_starter_2",
-        "b2_juniper_starter_1"
-       ],
-       "event": {
-        "lines": [
-         "Professor Juniper: And here's the other one. Raise them both well!"
-        ],
-        "gift_pokemon": {
-         "495": 501,
-         "498": 501,
-         "501": 498,
-         "default": 501
-        },
-        "gift_level": 5,
-        "flag": "b2_juniper_starter_2"
+        "flag": "b2_juniper_starters"
        }
       },
       {
@@ -415427,7 +415856,7 @@
         ]
        },
        "condition": [
-        "b2_juniper_starter_2"
+        "b2_juniper_starters"
        ],
        "_look": "sheet:b2_juniper.png"
       }

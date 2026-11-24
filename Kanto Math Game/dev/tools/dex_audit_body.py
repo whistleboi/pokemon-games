@@ -38,6 +38,9 @@ def ids_in(o, out, why, where):
             if k in ("boss", "area_boss") and isinstance(v, dict) and str(v.get("id", "")).isdigit():
                 out.setdefault(int(v["id"]), set()).add(f"{why}:{where}")
             elif k == "gift_pokemon":
+                if isinstance(v, dict) and any(isinstance(w, list) for w in v.values()):   # ({your starter: the ones you get}: Birch's
+                    v = [y for w in v.values() for y in (w if isinstance(w, list) else [w])]   # two you didn't pick, 11-24 - all count;
+                                                                                               # one per starter (Unova's monkey) stays as it was)
                 for x in (v if isinstance(v, list) else [v]):
                     x = x.get("id") if isinstance(x, dict) else x
                     if str(x).isdigit():

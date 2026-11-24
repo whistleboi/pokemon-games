@@ -590,8 +590,9 @@ for _q in range(_n - 1):
 _dw = _tm["DISTORTION_WORLD"]
 _ok_each = all(any("+" in row for row in f["art"]) for f in _dw["floors"][:-1]) and all(any("-" in row for row in f["art"]) for f in _dw["floors"][1:])
 _last_reach = core.distances(r.run.floor, r.run.player)
-check(_n == 10 and _down == 9 and r.run.index == 9 and _ok_each and _dw["theme"] == "distortion" and _dw["figure_floors"] == {"FACE GIRATINA": 9, "PICK UP THE GLOWING ORB": 9, "Galactic Boss Cyrus": 8} and _dw["floors"][8].get("trainer_spots") == ["Galactic Boss Cyrus"],
-      f"Distortion World: ten floors of slabs in the void, a way down on each ({_down} descents), Cyrus on B7F and Giratina below")
+check(_n == 9 and _down == 8 and r.run.index == 8 and _ok_each and _dw["theme"] == "distortion" and _dw["figure_floors"] == {"FACE GIRATINA": 8, "PICK UP THE GLOWING ORB": 8, "Galactic Boss Cyrus": 7} and _dw["floors"][7].get("trainer_spots") == ["Galactic Boss Cyrus"]
+      and _dw["floor_names"][5:] == ["B5F", "B6F", "B7F", "Giratina's room"],
+      f"Distortion World: Platinum's nine floors (its unused map 578 left out), a way down on each ({_down} descents), Cyrus on B7F and Giratina below")
 _bad_dw = []
 for _i, _f in enumerate(_dw["floors"]):                              # on each floor the way in and the way on are joined
     _a = [(x, y) for y, row in enumerate(_f["art"]) for x, c in enumerate(row) if c in "-n"]
@@ -1593,9 +1594,56 @@ check("Encounter Dialga" not in _f0 and {"Battle Mars and Jupiter", "Confront Cy
       and "Encounter Dialga" in _f2 and "Confront Cyrus" not in _f2,
       f"Spear Pillar: Mars and Jupiter battle at the narrow way in, Cyrus (Platinum's team, {_cyteam}) before the altar, then Dialga there ({_f0}, {_mj}, {_double}, {_cy}, {_f2})")
 r = route("DISTORTION_WORLD", "SPEAR_PILLAR")
-r.run.jump_floor(8, (5, 32)); frames(r, 3)
+r.run.jump_floor(7, (5, 32)); frames(r, 3)
 _cyd = [m for m in r.run.floor.movers if m.kind == "trainer"]
-check(len(_cyd) == 1 and (_cyd[0].x, _cyd[0].y) == (9, 3), f"Distortion World: Cyrus stands at the head of B7F's long passage ({[(m.x, m.y) for m in _cyd]})")
+check(len(_cyd) == 1 and (_cyd[0].x, _cyd[0].y) == (5, 27), f"Distortion World: Cyrus stands at Platinum's spot on B7F ({[(m.x, m.y) for m in _cyd]})")
+# (Platinum's Cynthia, s_s5_distortion.py: she walks with you from 1F and goes on alone on B2F)
+for _k in [k for k in story.story_flags if k.startswith("walk_cynthia")]:
+    story.story_flags.pop(_k)
+r = route("DISTORTION_WORLD", "SPEAR_PILLAR")
+r.run.jump_floor(0, (20, 31)); frames(r, 3); r._sync_figures()
+_cm = next((m for m in r.run.floor.movers if m.kind == "figure" and str((m.payload or {}).get("text")) == "Cynthia"), None)
+if _cm is not None:
+    r.run.player = [_cm.x, _cm.y + 1]
+    r._use_figure(_cm)
+    _drive(r, 600, lambda: not getattr(r.dialogue_box, "visible", False))
+_walks = bool(story.story_flags.get("walk_cynthia"))
+from src.world import walk_partners as _wp
+_bye = _wp.on_floor(story, "DISTORTION_WORLD", 1) == [] and bool(_wp.on_floor(story, "DISTORTION_WORLD", 2))
+check(_cm is not None and _walks and _bye and story.story_flags.get("walk_cynthia_done"),
+      f"Distortion World: Cynthia joins you on 1F and goes on alone on B2F, as in Platinum ({_cm is not None}, {_walks}, {_bye})")
+for _k in [k for k in story.story_flags if k.startswith("walk_cynthia")]:
+    story.story_flags.pop(_k)
+# (Platinum's lake trio boulders, s_s5_distortion.py: pushed off B5F they fall to B6F; a wrong pit sends one back, the right one holds it)
+for _k in [k for k in story.story_flags if k.startswith(("dw_", "boxes_DISTORTION_WORLD"))]:
+    story.story_flags.pop(_k)
+story.inventory["HM_STRENGTH"] = 1
+_bv5 = list(story.badges.get("SINNOH", []))
+story.badges["SINNOH"] = ["COAL", "FOREST", "COBBLE", "FEN", "RELIC", "MINE", "ICICLE"]
+r = route("DISTORTION_WORLD", "SPEAR_PILLAR")
+r.run.jump_floor(5, (11, 30)); frames(r, 3); r._place_boxes()
+_b5 = str(r.run.floor.decor.get((12, 30), "")).startswith("box:")
+r._push_box((12, 30), 1, 0); _drive(r, 200, lambda: not r.dialogue_box.visible) if hasattr(r, "dialogue_box") else None
+_drop = bool(story.story_flags.get("dw_mesprit_dropped")) and not str(r.run.floor.decor.get((12, 30), "")).startswith("box:")
+r.run.jump_floor(6, (10, 20)); frames(r, 3); r._place_boxes()
+_land = str(r.run.floor.decor.get((10, 19), "")).startswith("box:")
+r._push_box((10, 19), 0, -1)                                   # (north: into the wrong pit)
+_back = not story.story_flags.get("dw_mesprit_dropped") and not str(r.run.floor.decor.get((10, 19), "")).startswith("box:")
+r.run.jump_floor(5, (11, 30)); frames(r, 3); r._place_boxes()
+_again = str(r.run.floor.decor.get((12, 30), "")).startswith("box:")
+r._push_box((12, 30), 1, 0)
+r.run.jump_floor(6, (11, 19)); frames(r, 3); r._place_boxes()
+_t = (10, 19)
+for _q in range(7):                                             # (west along the passage to its own pit, then north into it)
+    r._push_box(_t, -1, 0); _t = (_t[0] - 1, _t[1])
+r._push_box(_t, 0, -1)
+_right = bool(story.story_flags.get("dw_mesprit_pit")) and story.story_flags.get("dw_mesprit_dropped")
+_shut = str(r.run.floor.decor.get((21, 38), "")).startswith("barrier:")
+check(_b5 and _drop and _land and _back and _again and _right and _shut,
+      f"Distortion World: Mesprit's boulder pushed off B5F falls to B6F; a wrong pit sends it back to B5F, its own pit holds it; the way down waits for all three ({_b5}, {_drop}, {_land}, {_back}, {_again}, {_right}, {_shut})")
+story.badges["SINNOH"] = _bv5
+for _k in [k for k in story.story_flags if k.startswith(("dw_", "boxes_DISTORTION_WORLD"))]:
+    story.story_flags.pop(_k)
 story.story_flags.clear(); story.story_flags.update(_sv)
 
 # ---- 11-24 (cleanups): the Coin Case (Veilstone's clown), the Sprayduck (Floaroma's florist) that waters Berry soil, and

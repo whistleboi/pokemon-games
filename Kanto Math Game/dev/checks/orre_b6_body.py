@@ -346,6 +346,6 @@ jm = [m["id"] for m in g.loader.area_data["JOURNAL_MISSIONS"] if m["id"].startsw
 check(jm.index("orre_m13") < jm.index("orre_m13b") < jm.index("orre_m14") < jm.index("orre_m14b") < jm.index("orre_m15"),
       "Cipher's Phenac, the townsfolk, the Stadium, Hordel, the Snagem Hideout")
 
-print("FAILURES:", len(fails))
+print(f"##### {len(fails)} failures")
 for f_ in fails:
     print("  ", f_)

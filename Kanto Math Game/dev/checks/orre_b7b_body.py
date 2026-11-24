@@ -384,6 +384,6 @@ story.player_team, _f, story.badges = _keep[0], _keep[1], _keep[2]
 F.clear(); F.update(_f)
 _gsw.apply(g)
 
-print("FAILURES:", len(fails))
+print(f"##### {len(fails)} failures")
 for f_ in fails:
     print("  ", f_)

@@ -79,4 +79,4 @@ ng = LoadState(g, home, mode="new"); g.change_state(ng); ng.pick(57)
 check(ng.phase == "CONFIRM", "new game on a used slot asks first")
 g.assets.save_dir = old_dir
 shutil.rmtree(tmp, ignore_errors=True)
-print(f"slots done, {fails} fails")
+print(f"##### {fails} failures")

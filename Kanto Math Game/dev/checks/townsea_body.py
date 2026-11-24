@@ -172,4 +172,4 @@ check(set(_sd["SINNOH_ROUTE_222_SURF_PERCENTAGES"]) <= {"72", "73", "278", "279"
 check(all(not any("~" in r for r in _tm[k]["art"]) and any("o" in r for r in _tm[k]["art"])
           for k in ("CANALAVE_CITY", "CELESTIC_TOWN", "ETERNA_CITY", "PASTORIA_CITY", "TWINLEAF_TOWN")),
       "Canalave, Celestic, Eterna, Pastoria and Twinleaf's water is Surf water (it was a pond you couldn't enter)")
-print("FAILURES:", fails)
+print(f"##### {fails} failures")

@@ -7,6 +7,7 @@
 #   bash dev/checks/run.sh tag:battle                   every suite with a tag (dev/checks/suites.txt)
 #   bash dev/checks/run.sh -v hoenn_maps                -v: the whole output, not just the failures
 #   bash dev/checks/run.sh list region:unova            print what a set holds, run nothing;  run.sh lint: suites.txt vs the files
+#   bash dev/checks/run.sh baseline region:unova        save each suite's checks made (its last 0-fail run) in baseline.tsv
 # Prints "== <name>: N fails (S s)" and every FAIL / Traceback line. A time-out counts as a fail.
 # Sets run one after another here; bash dev/checks/run_par.sh runs the same words side by side.
 cd "$(dirname "$0")/../.." || exit 1
@@ -17,6 +18,11 @@ total=0
 case "$1" in
   list) shift; for w in "$@"; do expand "$w"; done; exit 0 ;;
   lint) lint; r=$?; [ $r = 0 ] && echo "suites.txt matches the files"; exit $r ;;
+  baseline) shift
+    for w in "$@"; do while read -r t; do
+      k=$(sed 's/\r$//' "$O/timings.tsv" 2>/dev/null | awk -F'\t' -v n="$t" '$2 == n && $4 == 0 && $5 != "" { k = $5 } END { print k }')
+      if [ -n "$k" ]; then base_set "$t" "$k"; echo "$t: $k checks"; else echo "$t: no 0-fail run in out/timings.tsv yet"; fi
+    done < <(expand "$w"); done; exit 0 ;;
 esac
 names=()
 for w in "$@"; do
@@ -36,6 +42,7 @@ for t in "${names[@]}"; do
   k=$(checks "$O/run_${t/:/_}.log")
   note_time "$t" $((SECONDS - s)) "$n" "$k"
   echo "== $t: $n fails ($((SECONDS - s)) s, $k checks)"
+  base_warn "$t" "$k"
   if [ $VERBOSE = 1 ]; then grep -v '^Sync: ' "$O/run_${t/:/_}.log"; else grep -E 'FAIL |Traceback|(Syntax|Indentation)Error' -B3 -A3 "$O/run_${t/:/_}.log" | grep -vE '^--$|##### 0 fail' | head -40; fi
 done
 echo "##### $total fails in all"

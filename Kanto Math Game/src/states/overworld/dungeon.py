@@ -3882,17 +3882,30 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         now = self.game.story_manager.story_flags.get(self._box_key())
         return [tuple(t) for t in (now if isinstance(now, list) and len(now) == len(start) else start)]
 
+    def _box_shown(self, i):
+        """A crate standing on the floor now: not pushed off out of sight ("gone": [-1, -1]), and its floor's "box_when" /
+        "box_unless" (a flag per crate, or null) as the story stands - Platinum's Distortion World boulders: on B5F till you
+        push them off their slab, on B6F once they've fallen there (Sinnoh 11-24)."""
+        art, flags = self._here_art(), self.game.story_manager.story_flags
+        spots = self._box_spots()
+        if i >= len(spots) or tuple(spots[i]) == (-1, -1):
+            return False
+        w = (art.get("box_when") or [])[i:i + 1]
+        u = (art.get("box_unless") or [])[i:i + 1]
+        return (not w or not w[0] or bool(flags.get(w[0]))) and (not u or not u[0] or not flags.get(u[0]))
+
     def _place_boxes(self):
         """Put this floor's crates where they stand now (and free the tiles they've left)."""
         self._place_stones()
         if not self._here_art().get("boxes"):
             return
         f = self.run.floor
-        spots = set(self._box_spots())
+        spots = {t for i, t in enumerate(self._box_spots()) if self._box_shown(i)}
+        into = {tuple(sw["on"]) for sw in (self._here_art().get("box_switches") or []) if sw.get("into")}   # (a pit: void again once empty)
         for t, what in list(f.decor.items()):
             if str(what).startswith("box:") and t not in spots:
                 del f.decor[t]
-                f.tiles[t[1]][t[0]] = core.FLOOR
+                f.tiles[t[1]][t[0]] = core.WALL if t in into else core.FLOOR
         for t in spots:
             if t not in f.decor:
                 f.decor[t] = f"box:{t[0]},{t[1]}"
@@ -3994,21 +4007,55 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
             pygame.draw.ellipse(screen, (30, 40, 80), box, 3)
 
     def _push_box(self, t, dx, dy):
-        """Walked into a crate: it slides one tile on, if that tile is open floor with nothing on it."""
+        """Walked into a crate: it slides one tile on, if that tile is open floor with nothing on it. A floor's "box_look":
+        "boulder" draws them as Strength boulders and "box_strength" asks for Strength (Platinum's Distortion World). A
+        switch with "into": true is a pit or a drop the crate is pushed into although it isn't floor; "gone": true, it
+        drops out of sight there; "reset": {"clear": [flags], "boxes": [[floor, i], ...]}: a wrong pit - the flags cleared and
+        those crates (this one too) put back where they started, with its "lines" (Sinnoh 11-24)."""
         f = self.run.floor
         story = self.game.story_manager
         to = (t[0] + dx, t[1] + dy)
         art = self._here_art()
+        if art.get("box_strength") and not __import__("src.world.hms", fromlist=["field"]).field(story, "HM_STRENGTH"):
+            self.say(["A huge boulder. A Pokemon that knows Strength could push it!"])
+            return False
+        sws = [sw for sw in art.get("box_switches") or [] if tuple(sw["on"]) == to]
+        pit = any(sw.get("into") for sw in sws)
         links = {tuple(int(v) for v in k.split(",")) for k in (art.get("links") or {})}
-        if not (0 <= to[0] < f.w and 0 <= to[1] < f.h) or f.tile(*to) != core.FLOOR or to in f.decor or f.mover_at(*to)                 or to in f.exits or to in f.items or to in f.tm_spots or to in links:
+        blocked_here = to in f.decor and not (pit and not str(f.decor[to]).startswith("box:"))
+        if not (0 <= to[0] < f.w and 0 <= to[1] < f.h) or (f.tile(*to) != core.FLOOR and not pit) or blocked_here \
+                or f.mover_at(*to) or to in f.exits or to in f.items or to in f.tm_spots or to in links:
             self.flash("It won't budge any further that way.")
             return False
         spots = self._box_spots()
-        spots[spots.index(tuple(t))] = to
+        i = spots.index(tuple(t))
+        spots[i] = to
         story.story_flags[self._box_key()] = [list(u) for u in spots]
+        if pit:
+            f.decor.pop(to, None)
+        for sw in sws:
+            if sw.get("reset"):   # (a wrong pit: the boulder falls away, back where it started)
+                rs = sw["reset"]
+                for fl in rs.get("clear") or []:
+                    story.story_flags.pop(fl, None)
+                floors = (self.recipe.get("art") or {}).get("floors") or []
+                for fi, bi in [[self.run.index, i]] + [list(b) for b in rs.get("boxes") or []]:
+                    key = f"boxes_{self.area_key}_{fi}"
+                    start = [list(u) for u in ((floors[fi] if fi < len(floors) else {}).get("boxes") or [])]
+                    now = story.story_flags.get(key)
+                    now = [list(u) for u in now] if isinstance(now, list) and len(now) == len(start) else [list(u) for u in start]
+                    if bi < len(start):
+                        now[bi] = start[bi]
+                    story.story_flags[key] = now
+                self._place_boxes()
+                self.say(sw.get("lines") or ["The boulder dropped into the pit... and fell away below!"])
+                return True
+            if sw.get("gone"):   # (pushed off the edge: out of sight)
+                spots[i] = (-1, -1)
+                story.story_flags[self._box_key()] = [list(u) for u in spots]
         self._place_boxes()
-        for sw in art.get("box_switches") or []:
-            if tuple(sw["on"]) == to and not story.story_flags.get(sw["flag"]):
+        for sw in sws:
+            if not story.story_flags.get(sw["flag"]):
                 story.story_flags[sw["flag"]] = True
                 self._clear_boulders()
                 self._floor_surf = None
@@ -4459,7 +4506,7 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
                 self._stones_seen = _sk
                 self._place_stones()
         if getattr(self, "run", None) is not None and self._here_art().get("boxes"):
-            _bk = (self.run.index, tuple(self._box_spots()))
+            _bk = (self.run.index, tuple(self._box_spots()), tuple(self._box_shown(i) for i in range(len(self._box_spots()))))   # (and which stand now)
             if getattr(self, "_boxes_seen", None) != _bk:
                 self._boxes_seen = _bk
                 self._place_boxes()
@@ -5397,6 +5444,8 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
                 screen.blit(img, img.get_rect(center=(glow.centerx, glow.centery + bob)))
         self._draw_rides(screen, at)
         for sw in self._here_art().get("box_switches") or []:   # (a crate's floor switch: a steel plate, lit once pressed)
+            if sw.get("into"):
+                continue   # (a pit or a drop: the map's own picture)
             x, y = sw["on"]
             if (x, y) in f.seen and x0 <= x < x1 and y0 <= y < y1:
                 r = at(x, y).inflate(-6, -6)
@@ -5428,7 +5477,8 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
                 continue
             if str(what).startswith(("crate:", "box:")) and (x, y) in f.seen and x0 <= x < x1 and y0 <= y < y1:  # (a crate: the map's own crate picture)
                 r = at(x, y)
-                img = self._crate_img()
+                img = self._sheet_frame("Object boulder.png", col=0, height=TILE - 4) if self._here_art().get("box_look") == "boulder" \
+                    else self._crate_img()   # (a boulder you push: Platinum's Distortion World)
                 screen.blit(img, img.get_rect(midbottom=(r.centerx, r.bottom)))
                 continue
             if str(what).startswith(("boulder:", "fallen:", "rubble:", "pressed:")) and (x, y) in f.seen and x0 <= x < x1 and y0 <= y < y1:

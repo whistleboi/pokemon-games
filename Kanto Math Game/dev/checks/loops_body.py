@@ -110,4 +110,4 @@ for _ in range(400):
     t.update()
 check(saves == ["ROUTE_2"], "autosave off -> no save")
 
-print("FAILURES:", fails)
+print(f"##### {fails} failures")

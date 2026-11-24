@@ -400,6 +400,6 @@ p = route("THE_UNDER", "SHADOW_PKMN_LAB")
 check(p.run.index == 12, "and back down: the Far Station")
 F.update(_saved)
 
-print("FAILURES:", len(fails))
+print(f"##### {len(fails)} failures")
 for f_ in fails:
     print("  ", f_)

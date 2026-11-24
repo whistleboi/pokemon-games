@@ -54,6 +54,11 @@ count() {
     n=$(grep -ciE 'FAIL|Traceback' "$log")
   else
     n=$(grep -cE 'FAIL |Traceback|(Syntax|Indentation)Error' "$log")
+    # (C2, 11-24) every suite ends "##### N failures": no such line = it stopped early; more failures there than FAIL
+    # lines = some were counted without a FAIL line, so the bigger number counts
+    local end; end=$(grep -E '^##### [0-9]+ failures' "$log" | tail -1 | sed -E 's/^##### ([0-9]+).*/\1/')
+    if [ -z "$end" ]; then n=$((n + 1)); echo "   (no '##### N failures' end line: it stopped early)" >&2
+    elif [ "$end" -gt "$n" ]; then n=$end; fi
   fi
   if [ "$ex" = 124 ]; then n=$((n + 1)); echo "   (timed out)" >&2
   elif [ "$n" = 0 ] && [ "$ex" != 0 ]; then n=1; echo "   (stopped with exit $ex and no FAIL line)" >&2; fi
@@ -76,3 +81,14 @@ note_time() { printf "%s\t%s\t%s\t%s\t%s\n" "$(date +%F)" "$1" "$2" "$3" "$4" >>
 
 # checks <log>: how many checks a suite made (its "ok" / "FAIL" lines): compare before and after moving or merging tests.
 checks() { grep -cE '^ *(ok|OK|FAIL)( |$)' "$1"; }
+
+# baseline.tsv (C2, 11-24): name, checks made, date - how many checks each suite made when last counted. A run that
+# makes fewer says so (not a fail: a map's door count can change); moving or merging tests must not lower the total.
+# bash dev/checks/run.sh baseline <suite>...  writes the numbers from those suites' last run (out/timings.tsv).
+BASE=$C/baseline.tsv
+base_of() { [ -f "$BASE" ] && sed 's/\r$//' "$BASE" | awk -F'\t' -v n="$1" '$1 == n { print $2 }'; }
+base_warn() { local b; b=$(base_of "$1"); [ -n "$b" ] && [ -n "$2" ] && [ "$2" -lt "$b" ] && echo "   (made $2 checks, fewer than its baseline $b: dev/checks/baseline.tsv)"; return 0; }
+base_set() {   # base_set <name> <checks>
+  touch "$BASE"
+  { sed 's/\r$//' "$BASE" | awk -F'\t' -v n="$1" '$1 != n'; printf "%s\t%s\t%s\n" "$1" "$2" "$(date +%F)"; } | sort > "$BASE.new" && mv "$BASE.new" "$BASE"
+}
