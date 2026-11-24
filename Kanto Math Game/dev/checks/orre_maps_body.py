@@ -484,6 +484,8 @@ from src.world import orre_gym as _og
 from src import minigames as _mg
 for _f in ("orre_part2", "xd_hordel"):
     story.story_flags.pop(_f, None)
+_saved_badges = list(story.badges.get("ORRE", []))
+story.badges["ORRE"] = ["PHENAC", "PYRITE", "AGATE"]
 r = route("SNAGEM_HIDEOUT", "ORRE_DESERT")
 story.story_flags[_mg.done_flag("SNAGEM_HIDEOUT")] = True
 _og.event(r, {"world": "orre_gym"}, [], lambda l: None)
@@ -492,6 +494,62 @@ check(type(g.current_state).__name__ == "TrainerIntroState" and getattr(_bs, "ba
       f"S2: Pryce's battle starts from his room (after his game) and gives the Snagem Badge ({type(g.current_state).__name__})")
 story.story_flags.pop(_mg.done_flag("SNAGEM_HIDEOUT"), None)
 story.story_flags.pop("orre_data_rom_given", None)
+
+# ---- the story rework S3 (11-24): the four Part 2 Gyms - Jasmine (the Gateon lighthouse's roof), Norman (the Key Lair's hall,
+# after Gorigan), Drake (Citadark's Dome 2F, before Greevil), Birch (Realgam's Colosseum in the sky, after Greevil)
+_SP = _json.load(open("assets/orre_area_data.json", encoding="utf-8"))["STORY_PROGRESSION"]
+_TMJ = _json.load(open("assets/town_maps.json", encoding="utf-8"))
+_g2 = [(_SP[a][k]["leader"], _SP[a][k]["requirements"]) for a, k in
+       (("GATEON_PORT", "gym"), ("XD_CIPHER_KEY_LAIR", "gym"), ("XD_CITADARK_ISLE", "gym"), ("REALGAM_TOWER", "gym_birch"))]
+_ok_team = all(_OL.stage(p, lv) == p and p <= 386 for ld, _r in _g2 for p, lv in zip(ld["team"], ld["levels"]))
+_ok_mv = all(m in _mv for ld, _r in _g2 for mm in ld["team_moves"] for m in mm)
+check([ld["badge_reward"] for ld, _r in _g2] == ["GATEON", "KEY_LAIR", "CITADARK", "REALGAM"]
+      and [r["badges"] for _l, r in _g2] == [4, 5, 6, 7] and [max(ld["levels"]) for ld, _r in _g2] == [41, 45, 48, 50]
+      and all(len(ld["team"]) == 6 for ld, _r in _g2) and _ok_team and _ok_mv
+      and _SP["ORRE_COLOSSEUM"]["gym"]["requirements"]["badges"] == 5,
+      f"S3: Part 2's badges in order, six each at Kanto's caps (41/45/48/50), fit species and real moves")
+_tr = {o["text"]: o.get("condition") for o in _SP["GATEON_PORT"]["travel_options"]}
+check("has_gateon_badge" in (_tr.get("Cipher Lab") or []) and "has_key_lair_badge" in (_tr.get("Citadark Isle") or []),
+      f"S3: the Cipher Lab waits for the Gateon Badge, Citadark for the Key Lair Badge ({_tr.get('Cipher Lab')}, {_tr.get('Citadark Isle')})")
+_roof = _TMJ["GATEON_PORT"]["rooms"]["lighthouse_roof"]["people"]
+_jas = next((p for p in _roof if isinstance(p, dict) and p.get("text") == "Gym Leader Jasmine"), {})
+_gl = [p["boss"]["level"] for rn in ("lighthouse", "lighthouse_2f", "lighthouse_3f") for p in _TMJ["GATEON_PORT"]["rooms"][rn]["people"]
+       if isinstance(p, dict) and p.get("action") == "BOSS"]
+check((_jas.get("event") or {}).get("stages", [{}])[0].get("world") == "orre_gym" and _gl == [36, 37, 38],
+      f"S3: Jasmine's roof battle is the Gym's (math game, then badge 5); the guardians Lv {_gl}")
+story.story_flags.update(orre_part2=True)
+story.badges["ORRE"] = ["PHENAC", "PYRITE", "AGATE", "SNAGEM", "GATEON"]
+r = route("XD_CIPHER_KEY_LAIR", "GATEON_PORT")
+_k1 = [o.get("text") for o in r._figure_items()]
+story.story_flags["xd_gorigan_beaten"] = True
+r = route("XD_CIPHER_KEY_LAIR", "GATEON_PORT")
+_k2 = [o.get("text") for o in r._figure_items()]
+story.story_flags[_mg.done_flag("XD_CIPHER_KEY_LAIR")] = True
+_og.event(r, {"world": "orre_gym"}, [], lambda l: None)
+_bs = getattr(g.current_state, "battle_state", None) or getattr(g.current_state, "next_state", None)
+check("GYM LEADER NORMAN" not in _k1 and "GYM LEADER NORMAN" in _k2   # (Gorigan stands there once the floors' trainers are beaten)
+      and "BATTLE CIPHER ADMIN GORIGAN" not in _k2 and type(g.current_state).__name__ == "TrainerIntroState"
+      and getattr(_bs, "badge_reward", None) == "KEY_LAIR",
+      f"S3: the Key Lair's hall - Gorigan first, then Norman on his spot; Norman's battle gives the Key Lair Badge ({_k1}, {_k2}, {type(g.current_state).__name__}, {getattr(_bs, 'badge_reward', None)})")
+story.badges["ORRE"] += ["KEY_LAIR"]
+r = route("XD_CITADARK_ISLE", "GATEON_PORT")
+_c1 = [o.get("text") for o in r._figure_items()]
+story.badges["ORRE"] += ["CITADARK"]
+r = route("XD_CITADARK_ISLE", "GATEON_PORT")
+_c2 = [o.get("text") for o in r._figure_items()]
+check("GYM LEADER DRAKE" in _c1 and "GRAND MASTER GREEVIL" not in _c1 and "GRAND MASTER GREEVIL" in _c2 and "GYM LEADER DRAKE" not in _c2,
+      f"S3: Citadark's arena - Drake on the spot first, Greevil once his badge is won")
+story.story_flags["xd_greevil_beaten"] = True
+t = town("REALGAM_TOWER", "PYRITE_TOWN")
+_birch = [p for p in _TMJ["REALGAM_TOWER"]["rooms"]["colosseum"]["people"] if p == "GYM LEADER BIRCH"]
+story.story_flags[_mg.done_flag("REALGAM_TOWER")] = True
+_og.event(t, {"world": "orre_gym", "gym": "gym_birch"}, [], lambda l: None)
+_bs = getattr(g.current_state, "battle_state", None) or getattr(g.current_state, "next_state", None)
+check(len(_birch) == 1 and type(g.current_state).__name__ == "TrainerIntroState" and getattr(_bs, "badge_reward", None) == "REALGAM",
+      f"S3: Birch in Realgam's Colosseum in the sky after Greevil; his battle gives the Realgam Badge ({len(_birch)})")
+for _f in ("orre_part2", "xd_gorigan_beaten", "xd_greevil_beaten", _mg.done_flag("XD_CIPHER_KEY_LAIR"), _mg.done_flag("REALGAM_TOWER")):
+    story.story_flags.pop(_f, None)
+story.badges["ORRE"] = _saved_badges
 
 g.walk_towns = False
 print(f"##### {fails} failures")

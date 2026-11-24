@@ -185,6 +185,8 @@ def battles(o, area, gates=(), where="", out=None):
     out = [] if out is None else out
     if isinstance(o, dict):
         g = list(gates) + [o[k] for k in GATE_KEYS if k in o]
+        if isinstance(o.get("requirements"), dict) and o["requirements"].get("flag"):   # (a Gym's own gate: Birch's, after Greevil)
+            g.append(o["requirements"]["flag"])
         if isinstance(o.get("levels"), list) and o["levels"] and all(isinstance(x, int) for x in o["levels"]):
             if o.get("name") not in SKIP_NAMES:
                 out.append((o, g, where))
