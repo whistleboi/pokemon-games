@@ -31,9 +31,13 @@ _ok = lambda c: bool(story.story_flags.get(c))
 _run_story_event(st, _sci["event"], _ok, lambda ls: None)
 _before = story.inventory.get("UPGRADE", 0)
 story.story_flags["network_machine_fixed"] = True
+story.story_flags.pop("unlocked_national_dex", None)
 _run_story_event(st, _sci["event"], _ok, lambda ls: None)
-check(_before == 0 and story.inventory.get("UPGRADE") == 1 and _TM["SILPH_CITY"]["figure_floors"].get("Silph scientist") == 0,
-      "Silph Co. 1F: a scientist gives the Up-Grade once the Network Machine on One Island is fixed (not before)")
+_no_dex = story.inventory.get("UPGRADE", 0)
+story.story_flags["unlocked_national_dex"] = True   # (11-23, Jordan, Dev Map M2: and only with the National Pokedex)
+_run_story_event(st, _sci["event"], _ok, lambda ls: None)
+check(_before == 0 and _no_dex == 0 and story.inventory.get("UPGRADE") == 1 and _TM["SILPH_CITY"]["figure_floors"].get("Silph scientist") == 0,
+      "Silph Co. 1F: a scientist gives the Up-Grade once the Network Machine on One Island is fixed and you have the National Pokedex (not before)")
 
 print("10) Kanto's trades: FireRed's own (its trade table at 0x26CF8C: nicknames and held items, 11-19)")
 _kt = {}
@@ -44,7 +48,8 @@ for _k, _a in _P.items():
             if _t:
                 _kt[_t["give"]] = (_t.get("nickname"), _t.get("item"))
 check(_kt.get(122) == ("MIMIEN", None) and _kt.get(114) == ("TANGENY", "STARDUST") and _kt.get(29) == ("MS. NIDO", "TINY_MUSHROOM")
-      and len([v for v in _kt.values() if v[0]]) == 9, f"FireRed's nine trades with their nicknames (MIMIEN, ZYNX, MS. NIDO...) and Tangeny's Stardust ({len(_kt)})")
+      and len([v for v in _kt.values() if v[0]]) == 11 and _kt.get(82) == ("MAGGIE", "METAL_COAT") and _kt.get(25) == ("VOLTY", "YELLOW_SHARD"),
+      f"FireRed's nine trades with their nicknames (MIMIEN, ZYNX, MS. NIDO...) and Tangeny's Stardust, + SoulSilver's Maggie and Volty (11-23) ({len(_kt)})")
 
 print("11) Jessie & James on the map: James, with Jessie and their Meowth as characters of their own (src/world/escorts.py, 11-19)")
 from src.world import escorts as _esc
