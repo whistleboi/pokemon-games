@@ -3260,7 +3260,8 @@
       "title": "Delta Episode",
       "description": "A meteoroid is heading for Hoenn! Find Zinnia at the Sky Pillar.",
       "condition": { "required_region": "HOENN", "flag": "beat_hoenn_champion", "flag_not": "delta_zinnia_defeated" },
-      "completed_flag": "delta_zinnia_defeated"
+      "completed_flag": "delta_zinnia_defeated",
+      "steps": [{"area": "HOENN_ROUTE_127", "floor": 0, "at": [20, 79], "label": "To Route 128", "done": "delta_wallace_131", "when": "delta_matt_mossdeep"}, {"area": "HOENN_ROUTE_128", "floor": 0, "at": [32, 39], "label": "To Route 129", "done": "delta_wallace_131", "when": "delta_matt_mossdeep"}, {"area": "HOENN_ROUTE_129", "floor": 0, "at": [0, 5], "label": "To Route 130", "done": "delta_wallace_131", "when": "delta_matt_mossdeep"}, {"area": "HOENN_ROUTE_130", "floor": 0, "at": [0, 5], "label": "To Route 131", "done": "delta_wallace_131", "when": "delta_matt_mossdeep"}, {"area": "HOENN_ROUTE_131", "floor": 0, "at": [37, 6], "label": "Wallace", "done": "delta_wallace_131", "when": "delta_matt_mossdeep"}, {"area": "HOENN_ROUTE_127", "floor": 0, "at": [20, 79], "label": "To Route 128", "done": "delta_zinnia_defeated", "when": "delta_wallace_131"}, {"area": "HOENN_ROUTE_128", "floor": 0, "at": [32, 39], "label": "To Route 129", "done": "delta_zinnia_defeated", "when": "delta_wallace_131"}, {"area": "HOENN_ROUTE_129", "floor": 0, "at": [0, 5], "label": "To Route 130", "done": "delta_zinnia_defeated", "when": "delta_wallace_131"}, {"area": "HOENN_ROUTE_130", "floor": 0, "at": [0, 5], "label": "To Route 131", "done": "delta_zinnia_defeated", "when": "delta_wallace_131"}, {"area": "HOENN_ROUTE_131", "floor": 0, "at": [36, 6], "label": "Sky Pillar", "done": "delta_zinnia_defeated", "when": "delta_wallace_131"}, {"area": "HOENN_SKY_PILLAR", "floor": 7, "at": [14, 10], "label": "Zinnia", "done": "delta_zinnia_defeated", "when": "delta_wallace_131"}]
     },
     {
       "id": "hoenn_d2",
