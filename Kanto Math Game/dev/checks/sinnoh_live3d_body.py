@@ -46,6 +46,15 @@ ROUTES += ("SINNOH_ROUTE_206", "WAYWARD_CAVE", "SINNOH_ROUTE_207", "MT_CORONET_B
            "SOLACEON_RUINS", "SINNOH_ROUTE_210", "OLD_CHATEAU", "ETERNA_GALACTIC_BUILDING", "LOST_TOWER")
 # S4 (11-24): Veilstone, the town and every room (the Department Store's seven floors, the Gym with its punching bags)
 PILOT["VEILSTONE_CITY"] = tuple(_TM["VEILSTONE_CITY"].get("rooms") or {})
+# S4 (11-24, the rest): Pastoria and Celestic with every room (the Observatory Gate, the Combee house, the ruins), the routes
+# between them, Valor Lakefront, Maniac Tunnel and the Galactic Warehouse (the Great Marsh's six zones
+# don't join for export yet: flat for now, ROADMAP_SINNOH)
+FLAT |= {("PASTORIA_CITY", "gym")}   # (its walkways' heights follow the water: one scene per water level still to make, as Eterna's clock)
+for _k in ("PASTORIA_CITY", "CELESTIC_TOWN"):
+    PILOT[_k] = tuple(n for n in (_TM[_k].get("rooms") or {}) if (_k, n) not in FLAT)
+KNOWN_JUMPS[("VALOR_LAKEFRONT", 0)] = ({((20, 34), (21, 34))}, "the little pond's two water tiles read at two heights from Platinum's plates; surfing")
+ROUTES += tuple(k for k in ("SINNOH_ROUTE_211", "SINNOH_ROUTE_212", "SINNOH_ROUTE_213", "SINNOH_ROUTE_214", "SINNOH_ROUTE_215", "VALOR_LAKEFRONT",
+                            "MANIAC_TUNNEL", "GALACTIC_WAREHOUSE") if k not in ROUTES)
 
 
 def settle(n=60):

@@ -1489,14 +1489,13 @@
             {"text": "Great Marsh", "target_area": "GREAT_MARSH"}
         ],
         "explore_options": [
-            {"text": "Move Reminder", "action": "EVENT", "door": "reminder", "event": {"quips": "move_reminder", "lines": ["Move Reminder: I can help a Pokemon remember a move... wait, they already remember everything? Since when?"]}},
+            {"text": "Move Reminder", "action": "EVENT", "event": {"quips": "move_reminder", "lines": ["Move Reminder: I can help a Pokemon remember a move... wait, they already remember everything? Since when?"]}},
             {"text": "Heal", "action": "HEAL"},
             {"text": "Shop", "action": "SHOP"},
             {"text": "Gym", "action": "GYM"},
             {"text": "Great Marsh", "action": "TRAVEL", "target_area": "GREAT_MARSH"},
             {"text": "MYSTIC WATER", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_mystic_water_pastoria_city_c06_49_29", "event": {"lines": ["A Mystic Water, lying by the path."], "gift_item": {"MYSTIC_WATER": 1}, "flag": "got_mystic_water_pastoria_city_c06_49_29"}}
         ],
-        "on_enter_event": {"type": "trainer_battle", "trainer": {"name": "{rival_name}", "class": "PKMN_TRAINER", "sprite": "{rival_character}", "team": [396, 418, 315, 391], "team_choice": {"387": [396, 418, 315, 391], "390": [396, 315, 77, 394], "393": [396, 418, 77, 388]}, "rewards": {"balls": 5}, "victory_flag": "defeated_rival_pastoria", "dialogue": {"intro": ["Oh! {player_name}! I'm heading to Lake Valor after this — BATTLE FIRST!"], "player_won": ["Every time! I'll beat you at the lakes though!"], "player_lost": ["Lake Valor, here I come — AND I BEAT YOU!"]}, "levels": [26, 26, 27, 31]}, "condition": "has_cobble_badge", "flag_check": "defeated_rival_pastoria"},
         "trainer_pool": [],
         "berry_trees": ["NANAB_BERRY", "PERSIM_BERRY"]
     },
@@ -1518,7 +1517,6 @@
             {"text": "Deliver Old Charm", "action": "NPC", "target": "old_charm_delivery", "flag_condition": "not delivered_old_charm"},
             {"text": "DRAGON FANG", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_dragon_fang_celestic_town_t05_21_21", "event": {"lines": ["A Dragon Fang, lying by the path."], "gift_item": {"DRAGON_FANG": 1}, "flag": "got_dragon_fang_celestic_town_t05_21_21"}}
         ],
-        "on_enter_event": {"type": "trainer_battle", "trainer": {"name": "Galactic Commander Cyrus", "class": "GALACTIC", "sprite": "cyrus.png", "is_boss_battle": true, "team": [430, 130, 461], "rewards": {"balls": 5}, "victory_flag": "defeated_cyrus_celestic", "dialogue": {"intro": ["You again. You've been disrupting our plans at every turn.", "No matter. The ruins here won't tell you anything useful.", "Still — I'll enjoy defeating you."], "player_won": ["...Unexpected. You have my respect, if nothing else.", "The old woman can keep her ruins. For now."], "player_lost": ["As I predicted. Your interference ends here."]}}, "condition": "has_fen_badge", "flag_check": "defeated_cyrus_celestic"},
         "trainer_pool": []
     },
     "CANALAVE_CITY": {
@@ -1977,6 +1975,7 @@
     },
     "GREAT_MARSH": {
         "surf_pool_percentages": "GREAT_MARSH_SURF_PERCENTAGES",
+        "safari_game": {"balls": 30, "steps": 500},
         "zones": [
             {"key": "area_1", "name": "Area 1"},
             {"key": "area_2", "name": "Area 2"},
@@ -3573,7 +3572,37 @@
         "visited": "PASTORIA_CITY"
       },
       "target": "PASTORIA_CITY",
+      "steps": [{"area": "PASTORIA_CITY", "at": [13, 28], "label": "Barry", "done": "defeated_rival_pastoria"}],
       "reward": "Fen Badge"
+    },
+    {
+      "id": "sinnoh_m7",
+      "type": "MAIN",
+      "title": "The Old Charm",
+      "description": "Cynthia is at Valor Lakefront, east of Pastoria, with something for the Psyduck on Route 210. Then carry her Old Charm north, through Solaceon and the fog of Route 210, to Celestic Town.",
+      "condition": {
+        "required_region": "SINNOH",
+        "badges_min": 4,
+        "flag_not": "delivered_old_charm"
+      },
+      "target": "CELESTIC_TOWN",
+      "completed_flag": "delivered_old_charm",
+      "steps": [
+        {"area": "PASTORIA_CITY", "at": [13, 28], "label": "Gym", "done": "sinnoh_pastoria_bomb_warned"},
+        {"area": "PASTORIA_CITY", "at": [34, 10], "label": "Observatory Gate", "done": "sinnoh_pastoria_bomb"},
+        {"area": "VALOR_LAKEFRONT", "at": [36, 54], "label": "Galactic Grunt", "done": "sinnoh_valor_grunt_beaten"},
+        {
+          "area": "VALOR_LAKEFRONT",
+          "at": [
+            35,
+            54
+          ],
+          "label": "Cynthia",
+          "done": "sinnoh_secretpotion"
+        },
+        {"area": "SINNOH_ROUTE_210", "at": [81, 71], "label": "Cynthia", "done": "got_old_charm_r210"},
+        {"area": "CELESTIC_TOWN", "at": [15, 10], "label": "Galactic Grunt", "done": "delivered_old_charm"}
+      ]
     },
     {
       "id": "sinnoh_m8",
@@ -3615,31 +3644,6 @@
       },
       "target": "CANALAVE_CITY",
       "reward": "Mine Badge"
-    },
-    {
-      "id": "sinnoh_m7",
-      "type": "MAIN",
-      "title": "The Old Charm",
-      "description": "Cynthia is at Valor Lakefront, east of Pastoria, with something for the Psyduck on Route 210. Then carry her Old Charm north, through Solaceon and the fog of Route 210, to Celestic Town.",
-      "condition": {
-        "required_region": "SINNOH",
-        "badges_min": 4,
-        "flag_not": "delivered_old_charm"
-      },
-      "target": "CELESTIC_TOWN",
-      "completed_flag": "delivered_old_charm",
-      "steps": [
-        {
-          "area": "VALOR_LAKEFRONT",
-          "at": [
-            36,
-            54
-          ],
-          "label": "Cynthia",
-          "done": "sinnoh_secretpotion"
-        },
-        {"area": "SINNOH_ROUTE_210", "at": [81, 71], "label": "Cynthia", "done": "got_old_charm_r210"}
-      ]
     },
     {
       "id": "sinnoh_m10",
