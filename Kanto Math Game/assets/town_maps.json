@@ -106814,8 +106814,8 @@
      "cccccccccccccc~~ccc~ccccooooooooc.\".cccc",
      "cccccccccccccc~~ccc~ccccooooooooc\".\"cccc",
      "cccccccccccccc~ccccccccoooooooooc\"\".cccc",
-     "cccccccccccAcc~ccccccccooooooocc\"\"\".\"ccc",
-     "cccccccc.ccDcc~~ccc~ccccooooooc\"\".\"\"\"\"cc",
+     "cccccccccccccc~ccccccccooooooocc\"\"\".\"ccc",
+     "cccccccc.ccncc~~ccc~ccccooooooc\"\".\"\"\"\"cc",
      "....ccc.!....c~~ccc~ccccooooooc\"\"\"\"\"\".cc",
      "<.............cccccccccccc..cc\"\"\"\"\"\"\"\"cc",
      "<......................\"\".\"\"\"\"N\".X.\"\"\"cc",
@@ -106853,11 +106853,10 @@
     "exits": {
      "^": "MAUVILLE_CITY",
      "v": "SLATEPORT_CITY",
-     "<": "HOENN_ROUTE_103"
+     "<": "HOENN_ROUTE_103",
+     "n": "HOENN_TRICK_HOUSE"
     },
-    "buildings": {
-     "A": "trick"
-    },
+    "buildings": {},
     "roofs": {
      "_picture": {
       "f": "em_ground/0_25.png",
@@ -129665,767 +129664,1280 @@
   }
  },
  "HOENN_ROUTE_129": {
-  "art": [
-   ">>>>>>>>>>>>>>>>>>>>>>>>oooo>cco>>>>>>>>>>>>ccccccccccc~~cccc>>>>>>>>>>>>>>>>>>>",
-   "<ooooooooooooooooooooooooooooccooooooooooooocc~~~~~~~~~ccccccooooooooooooooooooo",
-   "<oooooooooooooooooooooooooooooccoooooccoooooooccccccccc~~~~~~~oooooooooooooooooo",
-   "<oooooooooooooooooooooooooooooccoooooccooooooooccccccccccccccc~ooooooooooooooooo",
-   "<ooooooooooooooooooooooooooooooccoooooooooooooocccccccccccccccc~cooooooooooooooo",
-   "<ooooooooooooooooooooooooooooooccccooooooooooooocccccccccccccccccooooooooooooooo",
-   "<oooooooooooooo~~ooooooooooooo~~occooooooooooooooocccccccccccccooooooooooooooooo",
-   "<ooooooooooooooccooooooccoooooccooooooooooooooooooccccccccccccoooooooooooooooooo",
-   "<ooooooooooo~~~~~~~~~~occccooocc~oooooooooooooooo~~oooocccccoooooooooooooooooooo",
-   "<ooooooooc~~cccccccccc~ccccoo~cccooXoooooooooooooccooooccccooooooooooooooooooooo",
-   "<oooooocccccccccccccccc~cooooccccoooooooooooooooooooo~~ccccooooooooooooooooooooo",
-   "ccccoooccccccccccccccccccooccccoooooooooooooooooooo~~ccocccooooooooooooooooooooo",
-   "ccccoccooocccccccccccccooccccoooooooooooooooooooooocc~oocccooooooooooooooooooooo",
-   "oooccccoooooccccccccccoooccoooooooooooooooooooooooocccooccoooooooooooooooooooooo",
-   "oooccoooooXoooooooooooooooooooooooooooooooooooooo~~cccoooooooooooooooooooooooooo",
-   "occoooccooooooooooooooooooooooooooooooooooooooooocccccoooooooooooXoooooooooooooo",
-   "occoooccooooooooooooooooooooXoooooooccoooooooooooccccooooooooooooooooooooooooooo",
-   "<oooooooc~~~~oooooooooooooooooooooccccoooooooooooccccooooooooooooooooooooooooooo",
-   "<oooooooccccc~ooccoooooooooooooccoccooooooooooooocccoooooooooooooooooooooooooooo",
-   "<oooooooocccccooccoooooooooooooccccoooooooooooo~~cccoooooooooooooooooooooooooooo",
-   "<ooooooooocccc~~~occXooooooooccooccooooooooooooccocc~ooooooooooooooooooooooooooo",
-   "<ooooooooooooocccoccoooooooooccooooooooooooooooooocccooooooooooooooooooooooooooo",
-   "<ooooooooooooXcccooooooooooooo~~oooooooooooooooo~~~ccooooooooooooooooooooooooooo",
-   "<oooooooooooooooooooooooooooooccooooooooooooooooccoooooooooooooooooooooooooooooo",
-   "<ooooooooooooooooooooooooo~~~~oooooooo~~oooooo~~oooooooooooooooooooooooooooooooo",
-   "<ooooooooooooooooooooooo~~cccc~ooooo~~ccccooccccoooooooXoooooooooooooooooooooooo",
-   "<ooooooooooooooooooooo~~ccccccc~~~~occooccccccoooooooooooooooooooooooooooooooooo",
-   "<ooooooooooooXooooo~~~ccccccccccccc~~oooooccoooooooooooooooooooooooooooooooooooo",
-   "ooooccooo~~~~~~~~ooccc~cccccccccccccc~oooooooooooooooooooooooooooooooooooooooooo",
-   "ooooccooccccccccc~~~cccccccccccccccccc~~oooooooooooooooooooooooooooooooooooooooo",
-   ".occoocccccccccccccc~oooocccccccccccccccoooooXoooooooooooooooooooooooooooooooooo",
-   "ccccoocccccccccccccccoooooo~~oocccccccoooooooooooooooooooooooooooooooooooooooooo",
-   "ccoooooooocccccccccccooooooccooooccccooooooooooooooooooooooooooooooooooooooooooo",
-   "cooooooooooooccccccccoooooooooooooooooooooooooooooooooooooooooooooooooXooooooooo",
-   "coooooooooooooocccccoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-   "<ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-   "<ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-   "<ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-   "<ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
-   "<ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
-  ],
-  "exits": {
-   ">": "HOENN_ROUTE_128",
-   "<": "HOENN_ROUTE_130"
-  },
-  "buildings": {},
-  "roofs": {
-   "_picture": {
-    "f": "em_ground/0_44.png",
-    "at": [
-     0,
-     0
-    ]
-   },
-   "_signs_in_picture": true,
-   "_buildings_in_picture": true
-  },
-  "trainer_spots": [
-   "Triathlete Chase",
-   "Fisherman Sheaffer",
-   "Swimmer Clarence",
-   "Fisherman Fisk",
-   "Swimmer Reed",
-   "Ace Trainer Honor",
-   "Scuba Diver Colten",
-   "Scuba Diver Jason",
-   "Swimmer Tisha",
-   "Free Diver Coral"
-  ],
-  "edge_to": {
-   "0,0": [
-    0,
-    39
-   ],
-   "1,0": [
-    1,
-    39
-   ],
-   "2,0": [
-    2,
-    39
-   ],
-   "3,0": [
-    3,
-    39
-   ],
-   "4,0": [
-    4,
-    39
-   ],
-   "5,0": [
-    5,
-    39
-   ],
-   "6,0": [
-    6,
-    39
-   ],
-   "7,0": [
-    7,
-    39
-   ],
-   "8,0": [
-    8,
-    39
-   ],
-   "9,0": [
-    9,
-    39
-   ],
-   "10,0": [
-    10,
-    39
-   ],
-   "11,0": [
-    11,
-    39
-   ],
-   "12,0": [
-    12,
-    39
-   ],
-   "13,0": [
-    13,
-    39
-   ],
-   "14,0": [
-    14,
-    39
-   ],
-   "15,0": [
-    15,
-    39
-   ],
-   "16,0": [
-    16,
-    39
-   ],
-   "17,0": [
-    17,
-    39
-   ],
-   "18,0": [
-    18,
-    39
-   ],
-   "19,0": [
-    19,
-    39
-   ],
-   "20,0": [
-    20,
-    39
-   ],
-   "21,0": [
-    21,
-    39
-   ],
-   "22,0": [
-    22,
-    39
-   ],
-   "23,0": [
-    23,
-    39
-   ],
-   "28,0": [
-    28,
-    39
-   ],
-   "32,0": [
-    32,
-    39
-   ],
-   "33,0": [
-    33,
-    39
-   ],
-   "34,0": [
-    34,
-    39
-   ],
-   "35,0": [
-    35,
-    39
-   ],
-   "36,0": [
-    36,
-    39
-   ],
-   "37,0": [
-    37,
-    39
-   ],
-   "38,0": [
-    38,
-    39
-   ],
-   "39,0": [
-    39,
-    39
-   ],
-   "40,0": [
-    40,
-    39
-   ],
-   "41,0": [
-    41,
-    39
-   ],
-   "42,0": [
-    42,
-    39
-   ],
-   "43,0": [
-    43,
-    39
-   ],
-   "61,0": [
-    61,
-    39
-   ],
-   "62,0": [
-    62,
-    39
-   ],
-   "63,0": [
-    63,
-    39
-   ],
-   "64,0": [
-    64,
-    39
-   ],
-   "65,0": [
-    65,
-    39
-   ],
-   "66,0": [
-    66,
-    39
-   ],
-   "67,0": [
-    67,
-    39
-   ],
-   "68,0": [
-    68,
-    39
-   ],
-   "69,0": [
-    69,
-    39
-   ],
-   "70,0": [
-    70,
-    39
-   ],
-   "71,0": [
-    71,
-    39
-   ],
-   "72,0": [
-    72,
-    39
-   ],
-   "73,0": [
-    73,
-    39
-   ],
-   "74,0": [
-    74,
-    39
-   ],
-   "75,0": [
-    75,
-    39
-   ],
-   "76,0": [
-    76,
-    39
-   ],
-   "77,0": [
-    77,
-    39
-   ],
-   "78,0": [
-    78,
-    39
-   ],
-   "79,0": [
-    79,
-    39
-   ],
-   "0,1": [
-    79,
-    1
-   ],
-   "0,2": [
-    79,
-    2
-   ],
-   "0,3": [
-    79,
-    3
-   ],
-   "0,4": [
-    79,
-    4
-   ],
-   "0,5": [
-    79,
-    5
-   ],
-   "0,6": [
-    79,
-    6
-   ],
-   "0,7": [
-    79,
-    7
-   ],
-   "0,8": [
-    79,
-    8
-   ],
-   "0,9": [
-    79,
-    9
-   ],
-   "0,10": [
-    79,
-    10
-   ],
-   "0,17": [
-    79,
-    17
-   ],
-   "0,18": [
-    79,
-    18
-   ],
-   "0,19": [
-    79,
-    19
-   ],
-   "0,20": [
-    79,
-    20
-   ],
-   "0,21": [
-    79,
-    21
-   ],
-   "0,22": [
-    79,
-    22
-   ],
-   "0,23": [
-    79,
-    23
-   ],
-   "0,24": [
-    79,
-    24
-   ],
-   "0,25": [
-    79,
-    25
-   ],
-   "0,26": [
-    79,
-    26
-   ],
-   "0,27": [
-    79,
-    27
-   ],
-   "0,35": [
-    79,
-    35
-   ],
-   "0,36": [
-    79,
-    36
-   ],
-   "0,37": [
-    79,
-    37
-   ],
-   "0,38": [
-    79,
-    38
-   ],
-   "0,39": [
-    79,
-    39
-   ]
-  },
-  "parts": true,
-  "overheads": [
+  "floors": [
    {
-    "kind": "picture",
-    "f": "em_top/0_44.png",
-    "at": [
-     0,
-     0
+    "art": [
+     ">>>>>>>>>>>>>>>>>>>>>>>>oooo>cco>>>>>>>>>>>>ccccccccccc~~cccc>>>>>>>>>>>>>>>>>>>",
+     "<ooooooooooooooooooooooooooooccooooooooooooocc~~~~~~~~~ccccccooooooooooooooooooo",
+     "<o:::::::::::::oooooooooooooooccoooooccoooooooccccccccc~~~~~~~oooooooooooooooooo",
+     "<o:::::::::::::oooooooooooooooccoooooccooooooooccccccccccccccc~ooooooooooooooooo",
+     "<o::::::::::o::ooooooooooooooooccoooooooooooooocccccccccccccccc~cooooooooooooooo",
+     "<o:::::::::::::ooooooooooooooooccccooooooooooooocccccccccccccccccooooooooooooooo",
+     "<o:::::::::::::~~ooooooooooooo~~occooooooooooooooocccccccccccccooooooooooooooooo",
+     "<o:::::::::::ooccooooooccoooooccooooooooooooooooooccccccccccccoooooooooooooooooo",
+     "<o::::::::::~~~~~~~~~~occccooocc~oooooooooooooooo~~oooocccccoooooooooooooooooooo",
+     "<::::::ooc~~cccccccccc~ccccoo~cccooXoooooooooooooccooooccccooooooooooooooooooooo",
+     "<::::::cccccccccccccccc~cooooccccoooooooooooooooooooo~~ccccooooooooooooooooooooo",
+     "cccc:::ccccccccccccccccccooccccoooooooooooooooooooo~~ccocccooooooooooooooooooooo",
+     "cccc:ccooocccccccccccccooccccooooooooooooo:::::::::cc~::ccc::::ooooooooooooooooo",
+     "o::ccccoooooccccccccccoooccooooooooooooooo:::::::::ccc::cc:::::ooooooooooo:::ooo",
+     "o::cc:::::X::::oooooooooooooooooooooooo::::::::::~~ccc:::::::::::ooooooooo:::ooo",
+     "occ:::cc:::::::oooooooooooooooooooooooo::::::::::ccccc:::::::::::Xoooooooo:::ooo",
+     "occ:::cc:::::::oooooooooooooXooooooocco::::::::::cccc::::::::::::oooooooo::::ooo",
+     "<:::::::c~~~~::oooooooooooooooooooccccoooo:::::::cccc::::::::::::oooooooo::::ooo",
+     "<:::::::ccccc~:occoooooooooooooccoccoooooo:::::::ccc:::::::::::::oooooooo:::::oo",
+     "<::::::::ccccc::cc:::::::::::::cccc::::ooo:::::~~ccc:::::::::::::oooooooo:::::oo",
+     "<:::::::::cccc~~~:ccX::::::::cc::cc::::ooooooooccocc~oooooooooooooooooooo:::::oo",
+     "<:::::::::::::ccc:cc:::::::::cc::::::::ooooooooooocccoooooooooooooooooooo:::::oo",
+     "<::::::::::::Xccc:::::::::::::~~:::::ooooooooooo~~~ccoooooooooooooooooooo:::::oo",
+     "<:::::::::::::::::::::::::::::cc:::::::oooooooooccooooooooooooooooooooooo:::::oo",
+     "<oooooooooooooooooooooo:::~~~~::::::::~~oooooo~~oooooooooooooooooooooooooo:::ooo",
+     "<oooooooooooooooooooooo:~~cccc~:::::~~ccccooccccoooooooooooooooooooooooooo:::ooo",
+     "<ooooooooooooooooooooo~~ccccccc~~~~occooccccccoooooooooooooooooooooooooooo:::ooo",
+     "<oooooooooooooooooo~~~ccccccccccccc~~oooooccoooooooooooooooooooooooooooooooooooo",
+     "ooooccooo~~~~~~~~ooccc~cccccccccccccc~oooooooooooooooooooooooooooooooooooooooooo",
+     "ooooccooccccccccc~~~cccccccccccccccccc~~oooooooooooooooooooooooooooooooooooooooo",
+     ".occoocccccccccccccc~oooocccccccccccccccoooooXoooooooooooooooooooooooooooooooooo",
+     "ccccoocccccccccccccccoooooo~~oocccccccoooooooooooooooooooooooooooooooooooooooooo",
+     "ccoooooooocccccccccccooooooccooooccccooooooooooooooooooooooooooooooooooooooooooo",
+     "cooooooooooooccccccccoooooooooooooooooooooooooooo:::oooooooooooooooooooooooooooo",
+     "coooooooooooooocccccooooooooooooooooooooooooooooo:::oooooooooooooooooooooooooooo",
+     "<oooooooooooooooooooooooooooooooooooooooooooooooo:::oooooooooooooooooooooooooooo",
+     "<ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
+     "<ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
+     "<ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
+     "<ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
     ],
-    "size": [
-     80,
-     40
-    ]
+    "exits": {
+     ">": "HOENN_ROUTE_128",
+     "<": "HOENN_ROUTE_130"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/h6_0_44.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "trainer_spots": [
+     "Triathlete Chase",
+     "Fisherman Sheaffer",
+     "Swimmer Clarence",
+     "Fisherman Fisk",
+     "Swimmer Reed",
+     "Ace Trainer Honor",
+     "Swimmer Tisha"
+    ],
+    "edge_to": {
+     "0,0": [
+      0,
+      39
+     ],
+     "1,0": [
+      1,
+      39
+     ],
+     "2,0": [
+      2,
+      39
+     ],
+     "3,0": [
+      3,
+      39
+     ],
+     "4,0": [
+      4,
+      39
+     ],
+     "5,0": [
+      5,
+      39
+     ],
+     "6,0": [
+      6,
+      39
+     ],
+     "7,0": [
+      7,
+      39
+     ],
+     "8,0": [
+      8,
+      39
+     ],
+     "9,0": [
+      9,
+      39
+     ],
+     "10,0": [
+      10,
+      39
+     ],
+     "11,0": [
+      11,
+      39
+     ],
+     "12,0": [
+      12,
+      39
+     ],
+     "13,0": [
+      13,
+      39
+     ],
+     "14,0": [
+      14,
+      39
+     ],
+     "15,0": [
+      15,
+      39
+     ],
+     "16,0": [
+      16,
+      39
+     ],
+     "17,0": [
+      17,
+      39
+     ],
+     "18,0": [
+      18,
+      39
+     ],
+     "19,0": [
+      19,
+      39
+     ],
+     "20,0": [
+      20,
+      39
+     ],
+     "21,0": [
+      21,
+      39
+     ],
+     "22,0": [
+      22,
+      39
+     ],
+     "23,0": [
+      23,
+      39
+     ],
+     "28,0": [
+      28,
+      39
+     ],
+     "32,0": [
+      32,
+      39
+     ],
+     "33,0": [
+      33,
+      39
+     ],
+     "34,0": [
+      34,
+      39
+     ],
+     "35,0": [
+      35,
+      39
+     ],
+     "36,0": [
+      36,
+      39
+     ],
+     "37,0": [
+      37,
+      39
+     ],
+     "38,0": [
+      38,
+      39
+     ],
+     "39,0": [
+      39,
+      39
+     ],
+     "40,0": [
+      40,
+      39
+     ],
+     "41,0": [
+      41,
+      39
+     ],
+     "42,0": [
+      42,
+      39
+     ],
+     "43,0": [
+      43,
+      39
+     ],
+     "61,0": [
+      61,
+      39
+     ],
+     "62,0": [
+      62,
+      39
+     ],
+     "63,0": [
+      63,
+      39
+     ],
+     "64,0": [
+      64,
+      39
+     ],
+     "65,0": [
+      65,
+      39
+     ],
+     "66,0": [
+      66,
+      39
+     ],
+     "67,0": [
+      67,
+      39
+     ],
+     "68,0": [
+      68,
+      39
+     ],
+     "69,0": [
+      69,
+      39
+     ],
+     "70,0": [
+      70,
+      39
+     ],
+     "71,0": [
+      71,
+      39
+     ],
+     "72,0": [
+      72,
+      39
+     ],
+     "73,0": [
+      73,
+      39
+     ],
+     "74,0": [
+      74,
+      39
+     ],
+     "75,0": [
+      75,
+      39
+     ],
+     "76,0": [
+      76,
+      39
+     ],
+     "77,0": [
+      77,
+      39
+     ],
+     "78,0": [
+      78,
+      39
+     ],
+     "79,0": [
+      79,
+      39
+     ],
+     "0,1": [
+      79,
+      1
+     ],
+     "0,2": [
+      79,
+      2
+     ],
+     "0,3": [
+      79,
+      3
+     ],
+     "0,4": [
+      79,
+      4
+     ],
+     "0,5": [
+      79,
+      5
+     ],
+     "0,6": [
+      79,
+      6
+     ],
+     "0,7": [
+      79,
+      7
+     ],
+     "0,8": [
+      79,
+      8
+     ],
+     "0,9": [
+      79,
+      9
+     ],
+     "0,10": [
+      79,
+      10
+     ],
+     "0,17": [
+      79,
+      17
+     ],
+     "0,18": [
+      79,
+      18
+     ],
+     "0,19": [
+      79,
+      19
+     ],
+     "0,20": [
+      79,
+      20
+     ],
+     "0,21": [
+      79,
+      21
+     ],
+     "0,22": [
+      79,
+      22
+     ],
+     "0,23": [
+      79,
+      23
+     ],
+     "0,24": [
+      79,
+      24
+     ],
+     "0,25": [
+      79,
+      25
+     ],
+     "0,26": [
+      79,
+      26
+     ],
+     "0,27": [
+      79,
+      27
+     ],
+     "0,35": [
+      79,
+      35
+     ],
+     "0,36": [
+      79,
+      36
+     ],
+     "0,37": [
+      79,
+      37
+     ],
+     "0,38": [
+      79,
+      38
+     ],
+     "0,39": [
+      79,
+      39
+     ]
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/0_44.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       80,
+       40
+      ]
+     }
+    ],
+    "moves": {
+     "28,16": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       3,
+       4
+      ],
+      "s": 3
+     },
+     "10,14": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       5,
+       2
+      ],
+      "s": 2
+     },
+     "13,22": {
+      "m": "still",
+      "s": 5
+     },
+     "35,9": {
+      "m": "look",
+      "d": "udlr",
+      "s": 2
+     }
+    },
+    "dive": 1,
+    "dive_links": [
+     {
+      "up": [
+       1,
+       2,
+       38,
+       25
+      ],
+      "down": [
+       0,
+       7,
+       55,
+       35
+      ]
+     },
+     {
+      "up": [
+       39,
+       12,
+       64,
+       19
+      ],
+      "down": [
+       57,
+       16,
+       93,
+       24
+      ]
+     },
+     {
+      "up": [
+       73,
+       13,
+       77,
+       26
+      ],
+      "down": [
+       106,
+       17,
+       112,
+       32
+      ]
+     },
+     {
+      "up": [
+       49,
+       33,
+       51,
+       35
+      ],
+      "down": [
+       72,
+       41,
+       74,
+       43
+      ]
+     }
+    ],
+    "hidden": {
+     "29,30": "BIG_PEARL",
+     "39,30": "HEART_SCALE"
+    }
+   },
+   {
+    "art": [
+     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "\"\"\"\"\"\"\"\"\"\"\"ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "\"\"\"\"\"\"\"\"\"\"\"ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "......\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     ".........\"\"\"\"\"\"\"\"\"\"\"\"\"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     ".........\"\".....\"\"\"\"...ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc.......\"\"\"\"\"..cccccccccc",
+     ".........\"\".....\"\"\"\"...cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc........\"\"\"\"\"..cccccccccc",
+     "..:::::::::::::::::::..cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc........\"\"\"\"\"..cccccccccc",
+     "..:::::::::::::::::::..cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc........\"\"\"\"\"\"\"cccccccccc",
+     "..::::::::::::::\"\":::...cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc.......\"\"\"\"\"\"\"cccccccccc",
+     "..::::::::::::::\"\":::...ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc\"\"\"\"\"\"\"cccccccccc",
+     "..:::::\":::::::::::::...ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc\"\"\"\"\"cccccccccc",
+     "..:::::::::::::::::::...ccccccccccccccccccc....\"\"\"\"\"\"\"\"\"\"\"\"\"\"cccccccccccccccccccccccccccccccccccccccccccc.....cccccccccc",
+     "<.::::::::::::::::.......cccccccccccccccccc....\"\"\"\"\"\"\"\"\"\"\"\"\"\"...............................ccccccccccccc.....cccccccccc",
+     "<.::::::::::::::.........ccccccccccccccc.......\"\"\"\"\"\"\"\"\"\"\"\"\"\"..................................cccccccccc........ccccccc",
+     "<:::::::\"\"\"\"\"\"\"..........cccccccccccccc..........\"\"\"\"\"\"\"\"\"\"\"\"..................................cccccccccc.........cccccc",
+     "<:::::::\"\"\"\"\"\"\".....\"\"\"\"\"cccccccccccccc..........\"\"\"\"\"\"\"\"\"\"\"\":::::::::::::....:::....::::::......cccccccc.........cccccc",
+     "<:::::::\"\"\"\"\"\"\".....\"\"\"\"\"...ccccccccccc\"\"\"\"\".......\"\"\"\"\"\"\"\"\"\":::::::::::::....:::...:::::::......cccccccc..:::::..cccccc",
+     "<...::::....\"X\"\"\"\"\"\"\"\"\"\"\"...ccccccccccc\"\"\"\"\".......\"\"\"\"..::::::::::::::.......::::::::::::::::...cccccc....:::::..cccccc",
+     "<...::......\"\"\"\"\"\"\"\"...\"\"\"\"\"ccccccccccc\"\"\"\"\".............::::::::::::::.......::::::::::::::::...cccccc....:::::..cccccc",
+     "<::.........\"\"\"\"\"\"\"\"...\"\"\"\"\".....\"\"\"\"\"\"\"\"\"\"\"ccccc........::::::::::::::......:::::::::::::::::...cccccc....:::::..cccccc",
+     "<::...::::..\"\"\"\"\"\"\"\".....\"\"\".....\"\"\"\"\"\"..\"\"\"ccccc.............:::::::::......:::::::::::::::::...cccccc...::::::....cccc",
+     "<::...:::::::..::::::....\"\"\".......\"\"\"\"..\"\"\"ccccc.............:::::::::......:::::::::::::::::...ccc......::::::....cccc",
+     "<..::::...:::::::::::..............\"\"\"\"\"\"\"\"\"ccccc.............:::::::::....:::::::::::::::::::...ccc......:::::::...cccc",
+     "<..::::...:::::::::::..............\"\"\"\"\"\"\"\"\"ccccc.............::::::.......:::::::::::::::::::...ccc......:::::::...cccc",
+     "<:::::::::........:::............................................................................ccc......:::::::...cccc",
+     "<:::::::::.........::............................................................................ccc......:::::::...cccc",
+     "<:::::::::.........::..........................................................................\"\"\"\"\"\".....:::::::...cccc",
+     "<:::::::::::.......:::...:::::::::::::::::::......:::::........................................\"\"..\"\".....:::::::...cccc",
+     "<::::::::::::...........:....::::::::::::...:::...:::::...........ccccccccccccccccccc..........\"\"..\"\".....:::::::..ccccc",
+     "<::::::::::::::::::.....:...:::::::::::::...:::::::::::...........ccccccccccccccccccc......cccc\"\"\"\"\"\"\"\"\"...:::::..cccccc",
+     "<:::::::::::::::::......:::::::::::::::::::...::::::..............ccccccccccccccccccc......cccc\"\"\"\"\"\"\"\"\"...:::::.....ccc",
+     "<::::::::::::::::::::::::::::::::::::::::::...::::::..........ccccccccccccccccccccccc......cccc\"\"\"\"\"\"\"\"\"...:::::.....ccc",
+     "<::::::::::::::::::::::::::::::::::::::::::...::::::::::\"\"\"\"\"\"ccccccccccccccccccccccc......cccccccc.\"\"\"\"..........cccccc",
+     "<\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\":::::......::::::::::::.\"\"\"\"\"\"ccccccccccccccccccccccc......cccccccc.\"\"\"\"..........cccccc",
+     "<\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"::..........::::::::....\"\"\"X\"\"cccccccccc........\"\"\"\"\"\".....cccccccc.\"\"\"\"..........cccccc",
+     "<\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"cccccccccc........\"\"\"\"\"\".....cccccccc.\"\"\"\"..........cccccc",
+     "<\"\"\"\"..\"\"\"\"\"\"\"\"\"\"\"\"\"\"...........\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"cccccc..............\"\"\"\"\"\"\"\"\"\"cccccccc...ccccc........ccccc",
+     "\"\"\"\"\"..\"\"\"\"\"\"\"\"\"\"\"\"\"\"...........\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"ccccc...............\"X\"\"\"\"\"\"\"\"\"\"\"...cc...ccccc.........cccc",
+     "cccc\"\"\"ccccccccccc\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"cccccccccccccccccccccccc...............\"\"\"\"\"\"\"\"\"\"\"\"\"....c...ccccc.........cccc",
+     "cccccccccccccccccc\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"..\"\"cccccccccccccccccccccccc...............\"\"\"\"\"\"\"\"\"\"\"\"\"........ccccc.........cccc",
+     "ccccccccccccccccccccccc\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"..\"\"cccccccccccccccccccccccc......:::......\"\"\"\"\"..\"\"\"\"\"\"........ccccc.........cccc",
+     "ccccccccccccccccccccccccccccccccccccc\"\"\"\"\"cccccccccccccccccccccccc......:::.........\"\"..\"\"\"\"\"\"\"\"\".....cccccc.........ccc",
+     "cccccccccccccccccccccccccccccccccccccc\"\"\"\"cccccccccccccccccccccccccc....:::.........\"\"\"\"\"\"\"\"\"\"\"\"\".....ccccccc........ccc",
+     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc................\"\"\"\"\"\"..\"\"\"\"\".....cccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc................\"\"\"\"\"\"..\"\"\"\"\"....ccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc.....................\"\"\"\"\"\"\"\"...cccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc....................\"\"\"\"\"\"\"\"..ccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+    ],
+    "exits": {
+     "<": "HOENN_ROUTE_130"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/h6_seabed_129.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "trainer_spots": [
+     "Free Diver Coral",
+     "Scuba Diver Colten",
+     "Scuba Diver Jason"
+    ],
+    "moves": {
+     "82,38": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
+     },
+     "59,35": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
+     },
+     "13,18": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
+     }
+    },
+    "hidden": {
+     "109,5": "LUSTROUS_ORB",
+     "97,28": "BLUE_SHARD",
+     "90,44": "SPLASH_PLATE",
+     "39,21": "ZAP_PLATE",
+     "5,37": "TOXIC_PLATE"
+    },
+    "edge_to": {
+     "0,13": [
+      72,
+      18
+     ],
+     "0,14": [
+      72,
+      19
+     ],
+     "0,15": [
+      72,
+      20
+     ],
+     "0,16": [
+      72,
+      21
+     ],
+     "0,17": [
+      72,
+      22
+     ],
+     "0,18": [
+      72,
+      23
+     ],
+     "0,19": [
+      72,
+      24
+     ],
+     "0,20": [
+      72,
+      25
+     ],
+     "0,21": [
+      72,
+      26
+     ],
+     "0,22": [
+      72,
+      27
+     ],
+     "0,23": [
+      72,
+      28
+     ],
+     "0,24": [
+      72,
+      29
+     ],
+     "0,25": [
+      72,
+      30
+     ],
+     "0,26": [
+      72,
+      31
+     ],
+     "0,27": [
+      72,
+      32
+     ],
+     "0,28": [
+      72,
+      33
+     ],
+     "0,29": [
+      72,
+      34
+     ],
+     "0,30": [
+      72,
+      35
+     ],
+     "0,31": [
+      72,
+      36
+     ],
+     "0,32": [
+      72,
+      37
+     ],
+     "0,33": [
+      72,
+      38
+     ],
+     "0,34": [
+      72,
+      39
+     ],
+     "0,35": [
+      72,
+      40
+     ],
+     "0,36": [
+      72,
+      41
+     ],
+     "0,37": [
+      72,
+      42
+     ]
+    },
+    "surface": 0,
+    "theme": "seabed",
+    "pool": "HOENN_SEABED_SEAWEED_PERCENTAGES"
    }
   ],
-  "moves": {
-   "28,16": {
-    "m": "wander",
-    "d": "udlr",
-    "r": [
-     3,
-     4
-    ],
-    "s": 3
-   },
-   "10,14": {
-    "m": "wander",
-    "d": "udlr",
-    "r": [
-     5,
-     2
-    ],
-    "s": 2
-   },
-   "13,22": {
-    "m": "still",
-    "s": 5
-   },
-   "35,9": {
-    "m": "look",
-    "d": "udlr",
-    "s": 2
-   },
-   "13,27": {
-    "m": "still",
-    "s": 5
-   }
+  "floor_names": [
+   "Route 129",
+   "The seabed"
+  ],
+  "figure_floors": {
+   "Triathlete Chase": 0,
+   "Fisherman Sheaffer": 0,
+   "Swimmer Clarence": 0,
+   "Fisherman Fisk": 0,
+   "Swimmer Reed": 0,
+   "Ace Trainer Honor": 0,
+   "Swimmer Tisha": 0,
+   "Free Diver Coral": 1,
+   "Scuba Diver Colten": 1,
+   "Scuba Diver Jason": 1
   }
  },
  "HOENN_ROUTE_130": {
-  "art": [
-   "<oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
-   "<oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
-   "<oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
-   "<oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
-   "<oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
-   "<oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
-   "<oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
-   "<oooo~cccccccoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
-   "<ooo~cccccccccooooccoooooooooooooooooooooooooXooooooooooooooooooooo~ccccccccooo>",
-   "<oocccccccccccccooccocccoooooooooooooooooooooooooooooooooooooooocccccccccccccoo>",
-   "occcccccccccccccooooocccooooccccoooooooooooooooooooooooooooooooocccccccccccccco>",
-   "occocccccccccooccccoocccooccccccooooooooooooooooooooooooooooooccccccccccccccccoo",
-   "ccoooocccccooooccccoccooccccooooccooooooooooooooooooooooooooccccccccccccccccccoo",
-   "ccoooccooooooccccccoccooccooooooccoooooooooooooooooooooccoooccoooccccccccccccocc",
-   "ccoooccooooooccoooccooooooooooooo~ccoooooooooooooooooooccccccoooccocccccccccoocc",
-   "ccooooooooooccooooccooccooooooocccccccoooooooooooooooccccccccoooccooooooooccooo.",
-   "ccooooooooooccooooooooccoooooccccccccccooooooooooooooccccccccoooooooooooooccooo>",
-   "<oooooooooooooooooooccoooooooccocccccccccooooooccccoccocccccccooooooccooooooooo>",
-   "ooccooooooooooooccccccoooooooooooooooooccoooccccccccccooooooccooooooccooooooooo>",
-   "oocccccoooooooccccccooooooooooooooooooooccooccccccccoccoooooooooooooooooooooooo>",
-   "ccoocccoooooooccooooooooooooooooooooooooccccccccccccoccoooooooooooooooooooooooo>",
-   "ccooccoXooooooooooooooooooooooooooooooooooccoooccccoooooooooooooooooooXoooooooo>",
-   "<oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
-   "<oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
-   "<oooooooooooooooooooXoooooooooooooooooooooooooooooooooooooooooXoooooooooooooooo>",
-   "<oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
-   "<ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooccooooooocco>",
-   "oooooooooooooooooooooooooooooooocccoooooooooooooooooooooooooooooccoccoo~cccccco>",
-   "ccccoooooooooooooooooooooooooooocccccoooooooooooooooooooooooooooccooo~cccccccccc",
-   "c..coooooooooooooooooooooooooocccccccooooooooooooooooooooooooooooocccccccccccccc",
-   "..ccoccXooooooooooooooooooooccccooooooooooooooooooooooooooccoccooocccccccccccccc",
-   "ccccccccccccoccoooooooccooooccooooooooooooooooooooooooooooccoccooooccccccccccccc",
-   "<ooccoocccccoccooooooocccccccoooccoooooooooooooooooooooocccccocccccooccccccccccc",
-   "<oooooooooooccoccooocccccccccccoccooooooccoooooooooooooocccccoccccccoooooooooccc",
-   "<oooooooooooccocccccccccccccccccoccoooccccoooooooccoooo~ccccooocccccoooooooooooc",
-   "<ooooccoooooooooocccooccooocccccoccccoccooccccoccccoo~cccccccoooccooooooooooooo>",
-   "oooooccoooooooooocccoooooooooooooooccccooocccccccocccccccccccoooooooooooooooooo>",
-   "oooooooooooooooooooooooooooooooooooooccooooccccooocccccccccccoooooooooooooooooo>",
-   "<ooooooooooccoooooooooooooooooooooooooooooooooooccocccccccccooooooooooooooooooo>",
-   "<ooooooooooccoooooooooooooooooooooooooooooooooooccooooooooooooooooooooooooooooo>"
-  ],
-  "exits": {
-   "<": "HOENN_ROUTE_131",
-   ">": "HOENN_ROUTE_129"
-  },
-  "buildings": {},
-  "roofs": {
-   "_picture": {
-    "f": "em_ground/0_45.png",
-    "at": [
-     0,
-     0
-    ]
-   },
-   "_signs_in_picture": true,
-   "_buildings_in_picture": true
-  },
-  "trainer_spots": [
-   "Swimmer Katie",
-   "Scuba Diver Silas",
-   "Triathlete Karsen",
-   "Swimmer Rodney",
-   "Swimmer Santiago",
-   "Free Diver Cordura"
-  ],
-  "edge_to": {
-   "0,0": [
-    59,
-    0
-   ],
-   "0,1": [
-    59,
-    1
-   ],
-   "0,2": [
-    59,
-    2
-   ],
-   "0,3": [
-    59,
-    3
-   ],
-   "0,4": [
-    59,
-    4
-   ],
-   "0,5": [
-    59,
-    5
-   ],
-   "0,6": [
-    59,
-    6
-   ],
-   "0,7": [
-    59,
-    7
-   ],
-   "0,8": [
-    59,
-    8
-   ],
-   "0,9": [
-    59,
-    9
-   ],
-   "0,17": [
-    59,
-    17
-   ],
-   "0,22": [
-    59,
-    22
-   ],
-   "0,23": [
-    59,
-    23
-   ],
-   "0,24": [
-    59,
-    24
-   ],
-   "0,25": [
-    59,
-    25
-   ],
-   "0,26": [
-    59,
-    26
-   ],
-   "0,32": [
-    59,
-    32
-   ],
-   "0,33": [
-    59,
-    33
-   ],
-   "0,34": [
-    59,
-    34
-   ],
-   "0,35": [
-    59,
-    35
-   ],
-   "0,38": [
-    59,
-    38
-   ],
-   "0,39": [
-    59,
-    39
-   ],
-   "79,0": [
-    0,
-    0
-   ],
-   "79,1": [
-    0,
-    1
-   ],
-   "79,2": [
-    0,
-    2
-   ],
-   "79,3": [
-    0,
-    3
-   ],
-   "79,4": [
-    0,
-    4
-   ],
-   "79,5": [
-    0,
-    5
-   ],
-   "79,6": [
-    0,
-    6
-   ],
-   "79,7": [
-    0,
-    7
-   ],
-   "79,8": [
-    0,
-    8
-   ],
-   "79,9": [
-    0,
-    9
-   ],
-   "79,10": [
-    0,
-    10
-   ],
-   "79,16": [
-    0,
-    16
-   ],
-   "79,17": [
-    0,
-    17
-   ],
-   "79,18": [
-    0,
-    18
-   ],
-   "79,19": [
-    0,
-    19
-   ],
-   "79,20": [
-    0,
-    20
-   ],
-   "79,21": [
-    0,
-    21
-   ],
-   "79,22": [
-    0,
-    22
-   ],
-   "79,23": [
-    0,
-    23
-   ],
-   "79,24": [
-    0,
-    24
-   ],
-   "79,25": [
-    0,
-    25
-   ],
-   "79,26": [
-    0,
-    26
-   ],
-   "79,27": [
-    0,
-    27
-   ],
-   "79,35": [
-    0,
-    35
-   ],
-   "79,36": [
-    0,
-    36
-   ],
-   "79,37": [
-    0,
-    37
-   ],
-   "79,38": [
-    0,
-    38
-   ],
-   "79,39": [
-    0,
-    39
-   ]
-  },
-  "parts": true,
-  "overheads": [
+  "floors": [
    {
-    "kind": "picture",
-    "f": "em_top/0_45.png",
-    "at": [
-     0,
-     0
+    "art": [
+     "<oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
+     "<oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
+     "<oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
+     "<ooooooooooo:::oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
+     "<ooooooooooo:::oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
+     "<ooooooooooo:::ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo:::oooo>",
+     "<ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo:::oooo>",
+     "<oooo~cccccccooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo:::oooo>",
+     "<ooo~cccccccccooooccoooooooooooooooooooooooooXooooooooooooooooooooo~ccccccccooo>",
+     "<oocccccccccccccooccocccoooooooooooooooooooooooooooooooooooooooocccccccccccccoo>",
+     "occcccccccccccccooooocccooooccccoooooooooooooooooooooooooooooooocccccccccccccco>",
+     "occocccccccccooccccoocccooccccccooooooooooooooooooooooooooooooccccccccccccccccoo",
+     "ccoooocccccooooccccoccooccccooooccooooooooooooooooooooooooooccccccccccccccccccoo",
+     "ccoooccooooooccccccoccooccooooooccoooooooooooooooooooooccoooccooocccccccccccc:cc",
+     "ccoooccooooooccoooccooooooooooooo~ccoooooooooooooooooooccccccoooccoccccccccc::cc",
+     "ccooooooooooccooooccooccooooooocccccccoooooooooooooooccccccccoooccooooo:::cc:::.",
+     "ccooooooooooccooooooooccoooooccccccccccooooooooooooooccccccccoooooooooo:::cc:::>",
+     "<oooooooooooooooooooccoooooooccocccccccccooooooccccoccocccccccoooooocco::::::::>",
+     "ooccooooooooooooccccccoooooooooooooooooccoooccccccccccooooooccoooooocco::::::::>",
+     "oocccccoooooooccccccooooooooooooooooooooccooccccccccoccoooooooooooooooo::::::::>",
+     "ccoocccoooooooccoooooooooooooooooooooooocccccccccccc:cc::::::::::::::::::::::::>",
+     "ccooccooooooooooooooooooooooooooooooooooooccooocccc:::::::::::::::::::X::::::::>",
+     "<ooooooooooooooooooooooooooooooooooo:::::::::::::::::::::::::::::::::::::::::::>",
+     "<ooooooooooooooooooooooo:::::::::::::::::::::::::::::::::::::::::::::::::::::::>",
+     "<oooooooooooooooooooXooo::::::::::::::::::::::::::::::::::::::X::::::::::::::::>",
+     "<ooooooooooooooooooooooo:::::::::::::::::::::::::::::::::::::::::::::::::::::::>",
+     "<ooooooooooooooooooooooo:::::::::::::::::::::::::::::::::::::::::::cc:::::::cc:>",
+     "oooooooooooooooooooooooooooooooocccoooooooooooooooooooooooooooooccoccoo~cccccc:>",
+     "ccccoooooooooooooooooooooooooooocccccoooooooooooooooooooooooooooccooo~cccccccccc",
+     "c..coooooooooooooooooooooooooocccccccooooooooooooooooooooooooooooocccccccccccccc",
+     "..ccoccoooooooooooooooooooooccccooooooooooooooooooooooooooccoccooocccccccccccccc",
+     "ccccccccccccoccoooooooccooooccooooooooooooooooooooooooooooccoccooooccccccccccccc",
+     "<ooccoocccccoccooooooocccccccoooccoooooooooooooooooooooocccccocccccooccccccccccc",
+     "<oooooooooooccoccooocccccccccccoccooooooccoooooooooooooocccccoccccccoooooooooccc",
+     "<oooooooooooccocccccccccccccccccoccoooccccoooooooccoooo~ccccooocccccoooooooooooc",
+     "<ooooccoooooooooocccooccooocccccoccccoccooccccoccccoo~cccccccoooccooooooooooooo>",
+     "oooooccoooooooooocccoooooooooooooooccccooocccccccocccccccccccoooooooooooooooooo>",
+     "oooooooooooooooooooooooooooooooooooooccooooccccooocccccccccccoooooooooooooooooo>",
+     "<ooooooooooccoooooooooooooooooooooooooooooooooooccocccccccccooooooooooooooooooo>",
+     "<ooooooooooccoooooooooooooooooooooooooooooooooooccooooooooooooooooooooooooooooo>"
     ],
-    "size": [
-     80,
-     40
+    "exits": {
+     "<": "HOENN_ROUTE_131",
+     ">": "HOENN_ROUTE_129"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/h6_0_45.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "trainer_spots": [
+     "Swimmer Katie",
+     "Triathlete Karsen",
+     "Swimmer Rodney",
+     "Swimmer Santiago"
+    ],
+    "edge_to": {
+     "0,0": [
+      59,
+      0
+     ],
+     "0,1": [
+      59,
+      1
+     ],
+     "0,2": [
+      59,
+      2
+     ],
+     "0,3": [
+      59,
+      3
+     ],
+     "0,4": [
+      59,
+      4
+     ],
+     "0,5": [
+      59,
+      5
+     ],
+     "0,6": [
+      59,
+      6
+     ],
+     "0,7": [
+      59,
+      7
+     ],
+     "0,8": [
+      59,
+      8
+     ],
+     "0,9": [
+      59,
+      9
+     ],
+     "0,17": [
+      59,
+      17
+     ],
+     "0,22": [
+      59,
+      22
+     ],
+     "0,23": [
+      59,
+      23
+     ],
+     "0,24": [
+      59,
+      24
+     ],
+     "0,25": [
+      59,
+      25
+     ],
+     "0,26": [
+      59,
+      26
+     ],
+     "0,32": [
+      59,
+      32
+     ],
+     "0,33": [
+      59,
+      33
+     ],
+     "0,34": [
+      59,
+      34
+     ],
+     "0,35": [
+      59,
+      35
+     ],
+     "0,38": [
+      59,
+      38
+     ],
+     "0,39": [
+      59,
+      39
+     ],
+     "79,0": [
+      0,
+      0
+     ],
+     "79,1": [
+      0,
+      1
+     ],
+     "79,2": [
+      0,
+      2
+     ],
+     "79,3": [
+      0,
+      3
+     ],
+     "79,4": [
+      0,
+      4
+     ],
+     "79,5": [
+      0,
+      5
+     ],
+     "79,6": [
+      0,
+      6
+     ],
+     "79,7": [
+      0,
+      7
+     ],
+     "79,8": [
+      0,
+      8
+     ],
+     "79,9": [
+      0,
+      9
+     ],
+     "79,10": [
+      0,
+      10
+     ],
+     "79,16": [
+      0,
+      16
+     ],
+     "79,17": [
+      0,
+      17
+     ],
+     "79,18": [
+      0,
+      18
+     ],
+     "79,19": [
+      0,
+      19
+     ],
+     "79,20": [
+      0,
+      20
+     ],
+     "79,21": [
+      0,
+      21
+     ],
+     "79,22": [
+      0,
+      22
+     ],
+     "79,23": [
+      0,
+      23
+     ],
+     "79,24": [
+      0,
+      24
+     ],
+     "79,25": [
+      0,
+      25
+     ],
+     "79,26": [
+      0,
+      26
+     ],
+     "79,27": [
+      0,
+      27
+     ],
+     "79,35": [
+      0,
+      35
+     ],
+     "79,36": [
+      0,
+      36
+     ],
+     "79,37": [
+      0,
+      37
+     ],
+     "79,38": [
+      0,
+      38
+     ],
+     "79,39": [
+      0,
+      39
+     ]
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/0_45.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       80,
+       40
+      ]
+     }
+    ],
+    "moves": {
+     "70,21": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       3,
+       6
+      ],
+      "s": 3
+     }
+    },
+    "dive": 1,
+    "dive_links": [
+     {
+      "up": [
+       12,
+       3,
+       14,
+       5
+      ],
+      "down": [
+       5,
+       5,
+       7,
+       7
+      ]
+     },
+     {
+      "up": [
+       72,
+       5,
+       74,
+       7
+      ],
+      "down": [
+       65,
+       9,
+       67,
+       11
+      ]
+     },
+     {
+      "up": [
+       24,
+       13,
+       78,
+       27
+      ],
+      "down": [
+       18,
+       20,
+       72,
+       38
+      ]
+     }
     ]
+   },
+   {
+    "art": [
+     "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "cccc.......cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "ccc.........cccccccccccccccccccccccccccccccccccccccccccccccccc....ccccccc",
+     "cc..........cccccccccccccccccccccccccccccccccccccccccccccccccc.....cccccc",
+     "c...........cccccccccccccccccccccccccccccccccccccccccccccccccc.....cccccc",
+     "c....:::....cccccccccccccccccccccccccccccccccccccccccccccccccc.......cccc",
+     "c....:::.......ccccccccccccccccccccccccccccccccccccccccccc............ccc",
+     "c....:::.......ccccccccccccccccccccccccccccccccccccccccccc............ccc",
+     "c..............ccccccccccccccccccccccccccccccccccccccccccc............ccc",
+     "c..............cccccccccccccccccccccccccccccccccccccccccccc......:::...cc",
+     "cc................\"\"\"\"\"\"\"X\"\"\"\"\"\"\"\"\"\"....ccccccccccccccccccc......:::...cc",
+     "ccc...............\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"....ccccccccccccccccccc......:::...cc",
+     "cccccccc..........\"\"..\"\"\"\"\"\"\"..\"\"\"\"\"..ccccccccccccccccccccc...........ccc",
+     "cccccccc..........\"\"..\"\"\"\"\"\"\"....\"\"\"\"\"cccccccccccccccccccccccc........ccc",
+     "cccccccc...........\"\"\"\"\"\"\"\"\"\"\"\"..\"\"\"\"\"cccccccccccccccccccccccccc......ccc",
+     "ccccccccc..........\"\"\"\"\"\"\"\"\"\"\"\"..\"\"\"\"\"cccccccccccccccccccccccccc....ccccc",
+     "cccccccccccccccccccccc.........cccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccc.........cccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccc.........ccccccccccccccccccccc\"\"\"\"\"\"\"..ccccccc....>",
+     "cccccccccccccccccccccc.........ccccccccccccccccccccc\"\"\"\"\"\"\"..ccccccc....>",
+     "cccccccccccccccccccccc.........ccccccccccccccccccccc..\"\"\"\"\"\"\"\"\"\"\"......:>",
+     "cccccccccccccccccccccc.........ccccccccccccccccccccc..\"\"\"\"\"\"\"\"\"\"\".....::>",
+     "cccccccccccccccccccccc.........ccccccccccccccccccccc\"\"\"\"\"\"\"..\"\"\"\".....::>",
+     "cccccccccccccccccccccc.........ccccccccccccccccccccc\"\"\"\"\"\"\"..\"\"\"\":::..::>",
+     "cccccccccccccccccccccc.........ccccccccc............\"\"\"\"\"\"\"\"\"\"\"\"\":::..::>",
+     "cccccccccccccccccccc\"\"\"\"\"......\"\"\"\"\"\"\"\"\"............\"\"\"\"\"\"\"\"\"\"\"\"\":::::::>",
+     "cccccccccccccccccccc\"\"\"\"\"......\"\"\"\"\"\"\"\"\"....................\"\"\"\"\":::::::>",
+     "cccccccccccccccccccc..\"\"\"\"\"......\"\"\"\".......................\"\"\"\"\":::::::>",
+     "cccccccccccccccccccc..\"\"\"\"\"......\"\"\"\".......................\"\"\"\"\":::::::>",
+     "cccccccccccccccccc....\"\"\"\"\"......\"\"\"\".........:..:::::::::::::::::::::::>",
+     "ccccccccccccccccc.....\"\"\"\"\"..................:::::::::::::::::::.:::::::>",
+     "cccccccccccccccc..........\"\"\"\"::::::::::::::::::::::::::::::::::::::::::>",
+     "ccccccccccccccc...........\"\"\"\"::::::::::::::::::::::::::::::::::::::::::>",
+     "cccccccccccccc....::::::::::::::::::::::::::::::::::::::::::::::::::::::>",
+     "cccccccccccccc....::::::::::::::::::::::::::::::::::::::.:::::::::::::::>",
+     "cccccccccccccc....::::::::::::::::::::::::::::::::::::::::::::::::::::::>",
+     "ccccccccccccccc.................\"\"\"\"\"\"\"\"\"\"\"...........\"\"\"\"\"\"\"\"\"\"\"\"\".::..>",
+     "cccccccccccccccc................\"\"\"\"\"\"\"\"\"\"\"...........\"\"\"\"\"\"\"\"\"\"\"\"\"\"....>",
+     "ccccccccccccccccc...............\"\"\"\"\"\"\"\"\"\"\"............\"\"X\"\"\"\"\"\"\"\"\"\"....>",
+     "cccccccccccccccccccc..............\"\"\"\"\"\"\"\"\"............\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\">",
+     "cccccccccccccccccccc..............\"\"\"\"\"\"\"\"\"cccccccc.......\"\"\"\"\"\"\"\"\"\"\"\"\"\">",
+     "cccccccccccccccccccc..............\"\"\"\"\"\"\"\"\"cccccccccc.....\"\"\"\"\"\"\"\"\"\"\"\"\"\">",
+     "ccccccccccccccccccccccc............\"\"\"..\"cccccccccccc.....\"\"\"\"\"\"\"\"\"\"\"\"\"\">",
+     "ccccccccccccccccccccccc............\"\"\"..cccccccccccccc......cc\"\"\"\"\"\"ccccc",
+     "ccccccccccccccccccccccccccccccccccc\"\"\"ccccccccccccccccc.....ccc\"\"\"ccccccc",
+     "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+    ],
+    "exits": {
+     ">": "HOENN_ROUTE_129"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/h6_seabed_130.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "trainer_spots": [
+     "Free Diver Cordura",
+     "Scuba Diver Silas"
+    ],
+    "moves": {
+     "57,38": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
+     },
+     "25,10": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
+     }
+    },
+    "hidden": {
+     "62,3": "GRISEOUS_ORB",
+     "52,20": "GREEN_SHARD",
+     "56,42": "FIST_PLATE",
+     "39,43": "ICICLE_PLATE",
+     "26,20": "EARTH_PLATE",
+     "36,10": "MEADOW_PLATE"
+    },
+    "edge_to": {
+     "72,18": [
+      0,
+      13
+     ],
+     "72,19": [
+      0,
+      14
+     ],
+     "72,20": [
+      0,
+      15
+     ],
+     "72,21": [
+      0,
+      16
+     ],
+     "72,22": [
+      0,
+      17
+     ],
+     "72,23": [
+      0,
+      18
+     ],
+     "72,24": [
+      0,
+      19
+     ],
+     "72,25": [
+      0,
+      20
+     ],
+     "72,26": [
+      0,
+      21
+     ],
+     "72,27": [
+      0,
+      22
+     ],
+     "72,28": [
+      0,
+      23
+     ],
+     "72,29": [
+      0,
+      24
+     ],
+     "72,30": [
+      0,
+      25
+     ],
+     "72,31": [
+      0,
+      26
+     ],
+     "72,32": [
+      0,
+      27
+     ],
+     "72,33": [
+      0,
+      28
+     ],
+     "72,34": [
+      0,
+      29
+     ],
+     "72,35": [
+      0,
+      30
+     ],
+     "72,36": [
+      0,
+      31
+     ],
+     "72,37": [
+      0,
+      32
+     ],
+     "72,38": [
+      0,
+      33
+     ],
+     "72,39": [
+      0,
+      34
+     ],
+     "72,40": [
+      0,
+      35
+     ],
+     "72,41": [
+      0,
+      36
+     ],
+     "72,42": [
+      0,
+      37
+     ]
+    },
+    "surface": 0,
+    "theme": "seabed",
+    "pool": "HOENN_SEABED_SEAWEED_PERCENTAGES"
    }
   ],
-  "moves": {
-   "70,21": {
-    "m": "wander",
-    "d": "udlr",
-    "r": [
-     3,
-     6
-    ],
-    "s": 3
-   },
-   "7,21": {
-    "m": "wander",
-    "d": "ud",
-    "r": [
-     0,
-     4
-    ],
-    "s": 5
-   },
-   "7,30": {
-    "m": "wander",
-    "d": "ud",
-    "r": [
-     0,
-     4
-    ],
-    "s": 5
-   }
+  "floor_names": [
+   "Route 130",
+   "The seabed"
+  ],
+  "figure_floors": {
+   "Swimmer Katie": 0,
+   "Triathlete Karsen": 0,
+   "Swimmer Rodney": 0,
+   "Swimmer Santiago": 0,
+   "Free Diver Cordura": 1,
+   "Scuba Diver Silas": 1
   }
  },
  "HOENN_ROUTE_131": {
@@ -136190,7 +136702,7 @@
     "art": [
      "ccccccccccccc",
      "ccccccccccccc",
-     "ccccccccccccc",
+     "ccccccncccccc",
      "ccccc...ccccc",
      "cccc.....cccc",
      "ccc...N...ccc",
@@ -136200,10 +136712,11 @@
      "cccc.....cccc",
      "ccccc...ccccc",
      "ccccc...ccccc",
-     "ccccc.n.ccccc"
+     "ccccc.v.ccccc"
     ],
     "exits": {
-     "n": "ROOM:league_hall_4"
+     "v": "ROOM:league_hall_4",
+     "n": "ROOM:hall_of_fame"
     },
     "buildings": {},
     "roofs": {
@@ -136235,7 +136748,168 @@
      }
     },
     "theme": "room",
-    "title": "Champion's room"
+    "title": "Champion's room",
+    "barred": [
+     {
+      "tiles": [
+       [
+        6,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "hall_of_fame_due_EVER_GRANDE_CITY"
+      },
+      "lines": [
+       "The door won't open.",
+       "Only the League's Champion may go through."
+      ]
+     }
+    ],
+    "scenes": [
+     {
+      "trigger": "enter",
+      "condition": "hall_of_fame_due_EVER_GRANDE_CITY",
+      "every": true,
+      "cast": [
+       {
+        "sheet": "em_64.png",
+        "from": [
+         6,
+         12
+        ],
+        "to": "player",
+        "lines": [
+         "Professor Birch: {player_name}! You did it! You're the new Champion of the Hoenn League!",
+         "Professor Birch: To think the kid who just moved to Littleroot would get this far. Amazing!"
+        ],
+        "leave": "back"
+       },
+       {
+        "person": "Steven",
+        "path": [
+         [
+          6,
+          4
+         ],
+         [
+          6,
+          3
+         ]
+        ],
+        "gone": true,
+        "lines": [
+         "Steven: {player_name}. You and your Pokémon have earned this. Come, follow me."
+        ]
+       }
+      ],
+      "room": [
+       "hall_of_fame",
+       7,
+       14
+      ]
+     }
+    ]
+   },
+   "hall_of_fame": {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "cc%%%ccccc%%%cc",
+     "c%%%%ccccc%%%%c",
+     "c%%%%%c!c%%%%%c",
+     "c%%%%%%%%%%%%%c",
+     "c%%%%%%N%%%%%%c",
+     "c%%%%%%%%%%%%%c",
+     "c%%%%%%%%%%%%%c",
+     "c%%%%%%%%%%%%%c",
+     "c%%%%%%%%%%%%%c",
+     "c%%%%%%%%%%%%%c",
+     "c%%%%%%%%%%%%%c",
+     "c%%%%%%%%%%%%%c",
+     "c%%%%%%%%%%%%%c",
+     "c%%%%%%%%%%%%%c",
+     "cccccc%v%cccccc"
+    ],
+    "exits": {
+     "v": "ROOM:league_champion"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/16_11.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/16_11.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       15,
+       17
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Hall of Fame",
+    "people": [
+     {
+      "text": "Steven",
+      "action": "EVENT",
+      "_look": "em_134.png",
+      "event": {
+       "lines": [
+        "Steven: Every Champion's team is recorded here. Yours is among them now."
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "7,6": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "signs": [
+     [
+      "The Hall of Fame's record machine. Every team that won the Hoenn League is kept here."
+     ]
+    ],
+    "scenes": [
+     {
+      "who": "Steven",
+      "trigger": "enter",
+      "condition": "hall_of_fame_due_EVER_GRANDE_CITY",
+      "every": true,
+      "lines": [
+       "Steven: Welcome to the Hall of Fame. Every Champion of the Hoenn League is honored here.",
+       "Steven: Now your Pokémon will be recorded too: the team that made you Champion!",
+       "{player_name}'s team was entered in the Hall of Fame!"
+      ],
+      "event": {
+       "scene": "hall_of_fame",
+       "lines": [
+        "You returned home to share your victory!"
+       ],
+       "clear": [
+        "hall_of_fame_due_EVER_GRANDE_CITY"
+       ],
+       "travel": "LITTLEROOT_TOWN"
+      },
+      "after": "stay"
+     }
+    ]
    }
   },
   "hidden": {
@@ -138784,178 +139458,280 @@
   ]
  },
  "HOENN_ROUTE_107": {
-  "art": [
-   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "cccccccccccccccccccccccccccccccccccccccccccccccccoocccccccoo",
-   "cccccccccccccccccccc~c~cccccccccccccccccoo~c~ccooooocccccco.",
-   "ccccccccccccccccccccccccccccooccoXccccooo~cccoooooooccoocco>",
-   "ccccccccccccccccoocccccccooooooooooooooooccccoooooXoooooooo>",
-   "ccccccccooooccoooooooooccoooooooooooooooooooooooooooooooooo>",
-   "ccccccooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
-   "<oooooooooooooooooooooooooooooXoooooooooooooooooooooooooooo>",
-   "<oooooooooooooXoooooooooooooooooooooooooooooooXoooooooooooo>",
-   "<====ooooooooooooooooooooooooooooooooooooXooooooooooooooooo>",
-   "<====oooooooooooooooooooooooooooooooooooooooooooooXoooooooo>",
-   "==N===ooooooooooooooooooooooooooooooccoooooooooooooccoooooo>",
-   "=======ooooooooccoooooooooooooooccooccooooooocc~cc~ccoooooo>",
-   "=ccc=c=cc~cc~ooccccoooooooocc~c~ccccoccoooocccccccccccccooo>",
-   "cccccccccccccccooccccccooooccccc~occoccooooccooccccccccccco>",
-   "cccccccooooccccooooccccccooooccccoooooccooccoooooooccooocccc",
-   "cccccc=ooooooooooooooooccccccocccoooooccccccoooooooccooooocc",
-   "ccccccc=oooooooooooooooooccccooccoooooooccoooooooooooooooooo",
-   "ccccccc=ooooooooooooooooooooooooooooooooooooooooooooooooooo>"
-  ],
-  "exits": {
-   "<": "DEWFORD_TOWN",
-   ">": "HOENN_ROUTE_108"
-  },
-  "buildings": {},
-  "roofs": {
-   "_picture": {
-    "f": "em_ground/0_22.png",
-    "at": [
-     0,
-     0
-    ]
-   },
-   "_signs_in_picture": true,
-   "_buildings_in_picture": true
-  },
-  "trainer_spots": [
-   "Sis & Bro Lisa & Ray",
-   "Scuba Diver Keaton",
-   "Swimmer Tony",
-   "Swimmer Denise",
-   "Swimmer Darrin",
-   "Free Diver Hollie",
-   "Swimmer Beth"
-  ],
-  "edge_to": {
-   "0,8": [
-    19,
-    8
-   ],
-   "0,9": [
-    19,
-    9
-   ],
-   "0,10": [
-    19,
-    10
-   ],
-   "0,11": [
-    19,
-    11
-   ],
-   "59,4": [
-    0,
-    4
-   ],
-   "59,5": [
-    0,
-    5
-   ],
-   "59,6": [
-    0,
-    6
-   ],
-   "59,7": [
-    0,
-    7
-   ],
-   "59,8": [
-    0,
-    8
-   ],
-   "59,9": [
-    0,
-    9
-   ],
-   "59,10": [
-    0,
-    10
-   ],
-   "59,11": [
-    0,
-    11
-   ],
-   "59,12": [
-    0,
-    12
-   ],
-   "59,13": [
-    0,
-    13
-   ],
-   "59,14": [
-    0,
-    14
-   ],
-   "59,15": [
-    0,
-    15
-   ],
-   "59,19": [
-    0,
-    19
-   ]
-  },
-  "parts": true,
-  "overheads": [
+  "floors": [
    {
-    "kind": "picture",
-    "f": "em_top/0_22.png",
-    "at": [
-     0,
-     0
+    "art": [
+     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccccccccccccccccccoocccccccoo",
+     "cccccccccccccccccccc~c~cccccccccccccccccoo~c~ccooooocccccco.",
+     "ccccccccccccccccccccccccccccooccoXccccooo~cccoooooooccoocco>",
+     "ccccccccccccccccoocccccccooooooooooooooooccccoooooooooooooo>",
+     "ccccccccooooccoooooooooccoooooooooooooooooooooooooooooooooo>",
+     "ccccccooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
+     "<oooooooooooooooooooooooooooooXoooooooooooooooooooooooooooo>",
+     "<oooooooooooooXoooooooooooooooooooooooooooooooXoooooooooooo>",
+     "<====oooooooooooooooooooooooooooooooooooooooooooooooooooooo>",
+     "<====oooooooooooooooooooooooooooooooooooooooooooooXoooooooo>",
+     "==N===ooooooooooooooooooooooooooooooccoooooooooooooccoooooo>",
+     "=======ooooooooccoooooooooooooooccooccooooooocc~cc~ccoooooo>",
+     "=ccc=c=cc~cc~ooccccoooooooocc~c~ccccoccoooocccccccccccccooo>",
+     "cccccccccccccccooccccccooooccccc~occoccooooccooccccccccccco>",
+     "cccccccooooccccooooccccccooooccccoooooccooccoo:::ooccooocccc",
+     "cccccc=ooooooooooooooooccccccocccoooooccccccoo:::ooccooooocc",
+     "ccccccc=oooooooooooooooooccccooccoooooooccoooo:::ooooooooooo",
+     "ccccccc=ooooooooooooooooooooooooooooooooooooooooooooooooooo>"
     ],
-    "size": [
-     60,
-     20
+    "exits": {
+     "<": "DEWFORD_TOWN",
+     ">": "HOENN_ROUTE_108"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/h6_0_22.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "trainer_spots": [
+     "Sis & Bro Lisa & Ray",
+     "Swimmer Tony",
+     "Swimmer Denise",
+     "Swimmer Darrin",
+     "Swimmer Beth"
+    ],
+    "edge_to": {
+     "0,8": [
+      19,
+      8
+     ],
+     "0,9": [
+      19,
+      9
+     ],
+     "0,10": [
+      19,
+      10
+     ],
+     "0,11": [
+      19,
+      11
+     ],
+     "59,4": [
+      0,
+      4
+     ],
+     "59,5": [
+      0,
+      5
+     ],
+     "59,6": [
+      0,
+      6
+     ],
+     "59,7": [
+      0,
+      7
+     ],
+     "59,8": [
+      0,
+      8
+     ],
+     "59,9": [
+      0,
+      9
+     ],
+     "59,10": [
+      0,
+      10
+     ],
+     "59,11": [
+      0,
+      11
+     ],
+     "59,12": [
+      0,
+      12
+     ],
+     "59,13": [
+      0,
+      13
+     ],
+     "59,14": [
+      0,
+      14
+     ],
+     "59,15": [
+      0,
+      15
+     ],
+     "59,19": [
+      0,
+      19
+     ]
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/0_22.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       60,
+       20
+      ]
+     }
+    ],
+    "moves": {
+     "50,11": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
+     },
+     "33,4": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
+     }
+    },
+    "people": [
+     {
+      "text": "SUPER REPEL beach",
+      "action": "EVENT",
+      "color": "GOLD",
+      "found": true,
+      "flag_condition": "not got_h4_r107_super_repel",
+      "event": {
+       "lines": [
+        "You found a Super Repel!"
+       ],
+       "gift_item": {
+        "SUPER_REPEL": 1
+       },
+       "flag": "got_h4_r107_super_repel"
+      }
+     }
+    ],
+    "dive": 1,
+    "dive_links": [
+     {
+      "up": [
+       46,
+       16,
+       48,
+       18
+      ],
+      "down": [
+       19,
+       30,
+       21,
+       32
+      ]
+     }
     ]
+   },
+   {
+    "art": [
+     "cccccccccccccccccccccccccccc",
+     "ccc.....cccccccccccccccccccc",
+     "ccc.....cccccccccccccccccccc",
+     "ccc.......cccccccccccccccccc",
+     "ccc.......cccccccccccccccccc",
+     "c............ccccccccccccccc",
+     "c............ccccccccccccccc",
+     "c.......\"\"\"\"\"ccccccccccccccc",
+     "c......\"\"\"\"\"\"ccccccccccccccc",
+     "c......\"\"\"\"\"\"\"\"......ccccccc",
+     "c......\"X\"\"\"\"\"\"......ccccccc",
+     "c.....\"\"\"\"\"\"\"\"\"..........ccc",
+     "c.....\"\"\"\"\"\".............ccc",
+     "c.....\"\"\"\"\"\".......\"\"\"\"....c",
+     "c..................\"\"\"\"....c",
+     "c..................\"\"\"\"\"\"..c",
+     "c..................\"\"\"\"\"\"..c",
+     "c..................\"\"\"\"\"\"..c",
+     "c..................\"\"\"\"\"\"..c",
+     "c..................\"X\"\"\"\"..c",
+     "cccc...............\"\"\"\"\"\"..c",
+     "cccc.......................c",
+     "cccccccc...................c",
+     "cccccccc...................c",
+     "cccccccc...................c",
+     "ccccccccccccc..............c",
+     "ccccccccccccc............ccc",
+     "cccccccccccccc...........ccc",
+     "cccccccccccccc...........ccc",
+     "cccccccccccccccc.........ccc",
+     "cccccccccccccccc...:::...ccc",
+     "cccccccccccccccc...:::...ccc",
+     "cccccccccccccccc...:::...ccc",
+     "cccccccccccccccc.........ccc",
+     "ccccccccccccccccc........ccc",
+     "ccccccccccccccccc.......cccc",
+     "ccccccccccccccccccc....ccccc",
+     "cccccccccccccccccccccccccccc"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/h6_seabed_107.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "trainer_spots": [
+     "Free Diver Hollie",
+     "Scuba Diver Keaton"
+    ],
+    "moves": {
+     "20,19": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
+     },
+     "8,10": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
+     }
+    },
+    "hidden": {
+     "4,2": "FLAME_PLATE",
+     "20,32": "YELLOW_SHARD"
+    },
+    "edge_to": {},
+    "surface": 0,
+    "theme": "seabed",
+    "pool": "HOENN_SEABED_SEAWEED_PERCENTAGES"
    }
   ],
-  "moves": {
-   "50,11": {
-    "m": "look",
-    "d": "udlr",
-    "s": 3
-   },
-   "33,4": {
-    "m": "look",
-    "d": "udlr",
-    "s": 3
-   },
-   "50,5": {
-    "m": "look",
-    "d": "udlr",
-    "s": 3
-   },
-   "41,10": {
-    "m": "look",
-    "d": "udlr",
-    "s": 3
-   }
-  },
-  "people": [
-   {
-    "text": "SUPER REPEL beach",
-    "action": "EVENT",
-    "color": "GOLD",
-    "found": true,
-    "flag_condition": "not got_h4_r107_super_repel",
-    "event": {
-     "lines": [
-      "You found a Super Repel!"
-     ],
-     "gift_item": {
-      "SUPER_REPEL": 1
-     },
-     "flag": "got_h4_r107_super_repel"
-    }
-   }
-  ]
+  "floor_names": [
+   "Route 107",
+   "The seabed"
+  ],
+  "figure_floors": {
+   "Sis & Bro Lisa & Ray": 0,
+   "Swimmer Tony": 0,
+   "Swimmer Denise": 0,
+   "Swimmer Darrin": 0,
+   "Swimmer Beth": 0,
+   "Free Diver Hollie": 1,
+   "Scuba Diver Keaton": 1,
+   "SUPER REPEL beach": 0
+  }
  },
  "HOENN_NEW_MAUVILLE": {
   "art": [
@@ -664125,5 +664901,3063 @@
     52
    ]
   ]
+ },
+ "HOENN_TRICK_HOUSE": {
+  "art": [
+   "cccccccccccc",
+   "ccc!c!ccc!!!",
+   "......N.....",
+   ".....!!.....",
+   ".....!!.....",
+   "c..........!",
+   "............",
+   ".....nn....."
+  ],
+  "exits": {
+   "n": "HOENN_ROUTE_110"
+  },
+  "buildings": {},
+  "roofs": {
+   "_picture": {
+    "f": "em_ground/29_0.png",
+    "at": [
+     0,
+     0
+    ]
+   },
+   "_signs_in_picture": true,
+   "_buildings_in_picture": true
+  },
+  "overheads": [
+   {
+    "kind": "picture",
+    "f": "em_top/29_0.png",
+    "at": [
+     0,
+     0
+    ],
+    "size": [
+     12,
+     8
+    ]
+   }
+  ],
+  "signs": [
+   [
+    "A round window. Sunlight streams in."
+   ],
+   [
+    "It's a scroll, hung on the wall."
+   ],
+   [
+    "A small dresser with two drawers."
+   ],
+   [
+    "A glass-fronted cupboard, full of odd gadgets."
+   ],
+   [
+    "A glass-fronted cupboard, full of odd gadgets."
+   ],
+   [
+    "A low wooden desk."
+   ],
+   [
+    "A low wooden desk."
+   ],
+   [
+    "A low wooden desk."
+   ],
+   [
+    "A low wooden desk."
+   ],
+   [
+    "A potted tree. Its leaves rustle a little."
+   ]
+  ],
+  "sign_events": {
+   "5,3": {
+    "text": "Trick Master's hiding spot",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "ready": [],
+       "flag": "trick_found_1",
+       "lines": [
+        "Under the desk... someone's there!",
+        "Trick Master: Aak! You found me! I am the Trick Master, master of tricks!",
+        "Trick Master: A sharp eye like yours deserves my challenge. Take this, should you get lost in there!",
+        "Trick Master: Now, go through the scroll on the wall. My first puzzle awaits! Mufufufu!"
+       ],
+       "gift_item": {
+        "ESCAPE_ROPE": 1
+       }
+      }
+     ],
+     "then": {
+      "lines": [
+       "A low wooden desk."
+      ]
+     }
+    }
+   },
+   "6,3": {
+    "text": "Trick Master's hiding spot",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "ready": [],
+       "flag": "trick_found_1",
+       "lines": [
+        "Under the desk... someone's there!",
+        "Trick Master: Aak! You found me! I am the Trick Master, master of tricks!",
+        "Trick Master: A sharp eye like yours deserves my challenge. Take this, should you get lost in there!",
+        "Trick Master: Now, go through the scroll on the wall. My first puzzle awaits! Mufufufu!"
+       ],
+       "gift_item": {
+        "ESCAPE_ROPE": 1
+       }
+      }
+     ],
+     "then": {
+      "lines": [
+       "A low wooden desk."
+      ]
+     }
+    }
+   },
+   "5,4": {
+    "text": "Trick Master's hiding spot",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "ready": [],
+       "flag": "trick_found_1",
+       "lines": [
+        "Under the desk... someone's there!",
+        "Trick Master: Aak! You found me! I am the Trick Master, master of tricks!",
+        "Trick Master: A sharp eye like yours deserves my challenge. Take this, should you get lost in there!",
+        "Trick Master: Now, go through the scroll on the wall. My first puzzle awaits! Mufufufu!"
+       ],
+       "gift_item": {
+        "ESCAPE_ROPE": 1
+       }
+      }
+     ],
+     "then": {
+      "lines": [
+       "A low wooden desk."
+      ]
+     }
+    }
+   },
+   "6,4": {
+    "text": "Trick Master's hiding spot",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "ready": [],
+       "flag": "trick_found_1",
+       "lines": [
+        "Under the desk... someone's there!",
+        "Trick Master: Aak! You found me! I am the Trick Master, master of tricks!",
+        "Trick Master: A sharp eye like yours deserves my challenge. Take this, should you get lost in there!",
+        "Trick Master: Now, go through the scroll on the wall. My first puzzle awaits! Mufufufu!"
+       ],
+       "gift_item": {
+        "ESCAPE_ROPE": 1
+       }
+      }
+     ],
+     "then": {
+      "lines": [
+       "A low wooden desk."
+      ]
+     }
+    }
+   },
+   "11,5": {
+    "text": "Trick Master's hiding spot",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "ready": [
+        "trick_puzzle_1_done"
+       ],
+       "flag": "trick_found_2",
+       "lines": [
+        "Something shifts inside the tree pot...",
+        "Trick Master: Aak! Found me already? I was sure the leaves hid me!",
+        "Trick Master: Puzzle two is ready. Go through the scroll!"
+       ]
+      }
+     ],
+     "then": {
+      "lines": [
+       "A potted tree. Its leaves rustle a little."
+      ]
+     }
+    }
+   },
+   "9,1": {
+    "text": "Trick Master's hiding spot",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "ready": [
+        "trick_puzzle_2_done"
+       ],
+       "flag": "trick_found_3",
+       "lines": [
+        "The dresser's drawer slides open...",
+        "Trick Master: Hah! You've a nose for tricks! Puzzle three is waiting behind the scroll!"
+       ]
+      }
+     ],
+     "then": {
+      "lines": [
+       "A small dresser with two drawers."
+      ]
+     }
+    }
+   },
+   "3,1": {
+    "text": "Trick Master's hiding spot",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "ready": [
+        "trick_puzzle_3_done"
+       ],
+       "flag": "trick_found_4",
+       "lines": [
+        "Behind the window, a face! It's the Trick Master!",
+        "Trick Master: Mufufu! You saw through it! On to puzzle four, behind the scroll!"
+       ]
+      }
+     ],
+     "then": {
+      "lines": [
+       "A round window. Sunlight streams in."
+      ]
+     }
+    }
+   },
+   "10,1": {
+    "text": "Trick Master's hiding spot",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "ready": [
+        "trick_puzzle_4_done"
+       ],
+       "flag": "trick_found_5",
+       "lines": [
+        "The cupboard door creaks open...",
+        "Trick Master: Aak! Even in here? Fine, fine! Puzzle five, behind the scroll!"
+       ]
+      }
+     ],
+     "then": {
+      "lines": [
+       "A glass-fronted cupboard, full of odd gadgets."
+      ]
+     }
+    }
+   },
+   "11,1": {
+    "text": "Trick Master's hiding spot",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "ready": [
+        "trick_puzzle_4_done"
+       ],
+       "flag": "trick_found_5",
+       "lines": [
+        "The cupboard door creaks open...",
+        "Trick Master: Aak! Even in here? Fine, fine! Puzzle five, behind the scroll!"
+       ]
+      }
+     ],
+     "then": {
+      "lines": [
+       "A glass-fronted cupboard, full of odd gadgets."
+      ]
+     }
+    }
+   },
+   "5,1": {
+    "text": "Scroll",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "ready": [
+        "trick_found_1",
+        "not:trick_puzzle_1_done"
+       ],
+       "lines": [
+        "It's a scroll... there's a big hole behind it!",
+        "You went through the hole behind the scroll."
+       ],
+       "travel": "HOENN_TRICK_HOUSE_1",
+       "land_floor": [
+        0,
+        0,
+        20
+       ]
+      },
+      {
+       "ready": [
+        "trick_found_2",
+        "not:trick_puzzle_2_done"
+       ],
+       "lines": [
+        "It's a scroll... there's a big hole behind it!",
+        "You went through the hole behind the scroll."
+       ],
+       "travel": "HOENN_TRICK_HOUSE_2",
+       "land_floor": [
+        0,
+        0,
+        20
+       ]
+      },
+      {
+       "ready": [
+        "trick_found_3",
+        "not:trick_puzzle_3_done"
+       ],
+       "lines": [
+        "It's a scroll... there's a big hole behind it!",
+        "You went through the hole behind the scroll."
+       ],
+       "travel": "HOENN_TRICK_HOUSE_3",
+       "land_floor": [
+        0,
+        0,
+        20
+       ]
+      },
+      {
+       "ready": [
+        "trick_found_4",
+        "not:trick_puzzle_4_done"
+       ],
+       "lines": [
+        "It's a scroll... there's a big hole behind it!",
+        "You went through the hole behind the scroll."
+       ],
+       "travel": "HOENN_TRICK_HOUSE_4",
+       "land_floor": [
+        0,
+        0,
+        20
+       ]
+      },
+      {
+       "ready": [
+        "trick_found_5",
+        "not:trick_puzzle_5_done"
+       ],
+       "lines": [
+        "It's a scroll... there's a big hole behind it!",
+        "You went through the hole behind the scroll."
+       ],
+       "travel": "HOENN_TRICK_HOUSE_5",
+       "land_floor": [
+        0,
+        0,
+        20
+       ]
+      },
+      {
+       "ready": [
+        "trick_found_6",
+        "not:trick_puzzle_6_done"
+       ],
+       "lines": [
+        "It's a scroll... there's a big hole behind it!",
+        "You went through the hole behind the scroll."
+       ],
+       "travel": "HOENN_TRICK_HOUSE_6",
+       "land_floor": [
+        0,
+        0,
+        20
+       ]
+      },
+      {
+       "ready": [
+        "trick_puzzle_6_done"
+       ],
+       "lines": [
+        "A note is pinned to the scroll:",
+        "\"I'm off on a journey to find new tricks. Don't look for me! - Trick Master\""
+       ]
+      }
+     ],
+     "then": {
+      "lines": [
+       "It's a scroll, hung on the wall."
+      ]
+     }
+    }
+   }
+  },
+  "people": [
+   [
+    {
+     "text": "Trick Master",
+     "action": "EVENT",
+     "condition": [
+      "trick_found_1",
+      "not:trick_puzzle_1_done"
+     ],
+     "event": {
+      "lines": [
+       "Trick Master: Go on, go on! The scroll on the wall hides the way in!"
+      ]
+     }
+    },
+    {
+     "text": "Trick Master",
+     "action": "EVENT",
+     "condition": [
+      "trick_found_2",
+      "not:trick_puzzle_2_done"
+     ],
+     "event": {
+      "lines": [
+       "Trick Master: Go on, go on! The scroll on the wall hides the way in!"
+      ]
+     }
+    },
+    {
+     "text": "Trick Master",
+     "action": "EVENT",
+     "condition": [
+      "trick_found_3",
+      "not:trick_puzzle_3_done"
+     ],
+     "event": {
+      "lines": [
+       "Trick Master: Go on, go on! The scroll on the wall hides the way in!"
+      ]
+     }
+    },
+    {
+     "text": "Trick Master",
+     "action": "EVENT",
+     "condition": [
+      "trick_found_4",
+      "not:trick_puzzle_4_done"
+     ],
+     "event": {
+      "lines": [
+       "Trick Master: Go on, go on! The scroll on the wall hides the way in!"
+      ]
+     }
+    },
+    {
+     "text": "Trick Master",
+     "action": "EVENT",
+     "condition": [
+      "trick_found_5",
+      "not:trick_puzzle_5_done"
+     ],
+     "event": {
+      "lines": [
+       "Trick Master: Go on, go on! The scroll on the wall hides the way in!"
+      ]
+     }
+    },
+    {
+     "text": "Trick Master",
+     "action": "EVENT",
+     "condition": [
+      "trick_found_6",
+      "not:trick_puzzle_6_done"
+     ],
+     "event": {
+      "lines": [
+       "Trick Master: Go on, go on! The scroll on the wall hides the way in!"
+      ]
+     }
+    }
+   ]
+  ],
+  "moves": {
+   "6,2": {
+    "m": "face",
+    "d": "d"
+   }
+  },
+  "barred": [
+   {
+    "tiles": [
+     [
+      7,
+      3
+     ]
+    ],
+    "look": "unseen",
+    "when": {
+     "condition": "trick_puzzle_5_done"
+    },
+    "until": {
+     "flag_condition": "trick_found_6"
+    },
+    "lines": [
+     "The cushion is oddly lumpy..."
+    ],
+    "open_with": {
+     "condition": [],
+     "flag": "trick_found_6",
+     "lines": [
+      "The cushion wobbles... the Trick Master pops out from under it!",
+      "Trick Master: You found me once again! My last and greatest puzzle awaits behind the scroll!"
+     ]
+    }
+   }
+  ],
+  "arrive": {
+   "HOENN_TRICK_HOUSE_1": [
+    5,
+    2
+   ],
+   "HOENN_TRICK_HOUSE_2": [
+    5,
+    2
+   ],
+   "HOENN_TRICK_HOUSE_3": [
+    5,
+    2
+   ],
+   "HOENN_TRICK_HOUSE_4": [
+    5,
+    2
+   ],
+   "HOENN_TRICK_HOUSE_5": [
+    5,
+    2
+   ],
+   "HOENN_TRICK_HOUSE_6": [
+    5,
+    2
+   ]
+  },
+  "theme": "room"
+ },
+ "HOENN_TRICK_HOUSE_1": {
+  "floors": [
+   {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccc1c",
+     "cccccccccccc...",
+     "..c...c.c..c...",
+     "..2......N.c...",
+     "..c...c.c..c...",
+     "2cccccccccccc2c",
+     "....c......c...",
+     ".c..2......2..X",
+     ".c..c..cc..c...",
+     "ccc.cc..2.ccccc",
+     "..c..c..c..c...",
+     "N.2..c..c..2...",
+     "..c..c..c..c...",
+     "..cccccccccccc2",
+     "..X.c.c....c...",
+     "...!c......2...",
+     "....c......c...",
+     "ccccccccccccc2c",
+     "....c....c.....",
+     "..............X",
+     "nn............."
+    ],
+    "exits": {
+     "n": "HOENN_TRICK_HOUSE"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/29_3.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "A secret code is written on the scroll."
+     ]
+    ],
+    "trainer_spots": [
+     "Youngster Eddie",
+     "Lass Sally",
+     "Battle Girl Cora"
+    ],
+    "links": {
+     "13,1": [
+      1,
+      10,
+      1
+     ]
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/29_3.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       15,
+       22
+      ]
+     }
+    ],
+    "people": [
+     "LAVA COOKIE",
+     "LAVA COOKIE "
+    ],
+    "moves": {
+     "2,15": {
+      "m": "face",
+      "d": "d",
+      "s": 2
+     },
+     "14,20": {
+      "m": "face",
+      "d": "l",
+      "s": 6
+     },
+     "14,8": {
+      "m": "face",
+      "d": "l",
+      "s": 2
+     }
+    },
+    "sign_events": {
+     "3,16": {
+      "text": "Scroll",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "A secret code is written on the scroll:",
+        "\"Trick Master is wonderful.\"",
+        "{player_name} memorized the secret code."
+       ],
+       "flag": "trick_password_1",
+       "done": [
+        "The secret code on the scroll:",
+        "\"Trick Master is wonderful.\""
+       ]
+      }
+     }
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        13,
+        1
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "trick_password_1"
+      },
+      "lines": [
+       "The door's locked.",
+       "Write the secret code on it to open it! You'll find it on a scroll in this room."
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccc",
+     "cc1ccccccc1c",
+     "......N.....",
+     "............",
+     ".....cc.....",
+     "....Ncc.....",
+     "............",
+     "............"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/29_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "EXPERT BELT",
+     "Trick Master"
+    ],
+    "links": {
+     "10,1": [
+      0,
+      13,
+      1
+     ],
+     "2,1": [
+      2,
+      13,
+      3
+     ]
+    },
+    "moves": {
+     "4,5": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/29_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       12,
+       8
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "ccc............",
+     "ccc..........11",
+     "ccc...ccccccccc",
+     "ccc...ccccccccc",
+     "ccc...ccccccccc",
+     "ccc...ccccccccc",
+     "......ccccccccc",
+     "......ccccccccc",
+     "......ccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "......ccccccccc",
+     "....nnccccccccc"
+    ],
+    "exits": {
+     "n": "HOENN_TRICK_HOUSE"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/29_2.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "links": {
+     "13,3": [
+      1,
+      2,
+      1
+     ],
+     "14,3": [
+      1,
+      2,
+      1
+     ]
+    },
+    "parts": true
+   }
+  ],
+  "floor_names": [
+   "Puzzle room",
+   "Trick Master's room",
+   "Way out"
+  ],
+  "figure_floors": {
+   "Youngster Eddie": 0,
+   "Lass Sally": 0,
+   "Battle Girl Cora": 0,
+   "LAVA COOKIE": 0,
+   "LAVA COOKIE ": 0,
+   "Trick Master": 1,
+   "EXPERT BELT": 1
+  }
+ },
+ "HOENN_TRICK_HOUSE_2": {
+  "floors": [
+   {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccc1c",
+     ".........c.....",
+     "...cccc..c.....",
+     "0..c.....c.cccc",
+     "cccc.ccc...c..0",
+     ".....0.ccccc...",
+     ".c...c.........",
+     ".c..ccccccccc..",
+     ".c..c......Xc..",
+     ".c..c.ccc...cX.",
+     ".cc.c.c0c.cccc.",
+     "..c.c.c.c.c0.c0",
+     "c0cNc...c.c..c.",
+     "..ccccccc.c..c!",
+     ".......0..c..cc",
+     ".c.ccccccccc...",
+     ".c....c.NcXcc..",
+     ".c....c..c.....",
+     ".cNcX....c..cc.",
+     "...ccccccc.....",
+     "nn............."
+    ],
+    "exits": {
+     "n": "HOENN_TRICK_HOUSE"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/29_4.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "A secret code is written on the scroll."
+     ]
+    ],
+    "trainer_spots": [
+     "Pokémon Ranger Sebastian",
+     "Schoolkid Georgie",
+     "Black Belt Yuji",
+     "Pokémon Ranger Sophia"
+    ],
+    "links": {
+     "13,1": [
+      1,
+      10,
+      1
+     ]
+    },
+    "parts": true,
+    "people": [
+     "RAGE CANDY BAR ",
+     "RAGE CANDY BAR",
+     "Mechadoll 3"
+    ],
+    "moves": {
+     "10,17": {
+      "m": "face",
+      "d": "d",
+      "s": 4
+     },
+     "13,10": {
+      "m": "face",
+      "d": "r",
+      "s": 1
+     },
+     "11,9": {
+      "m": "face",
+      "d": "l",
+      "s": 2
+     },
+     "2,19": {
+      "m": "face",
+      "d": "d"
+     },
+     "4,19": {
+      "m": "look",
+      "d": "udlr",
+      "s": 3
+     }
+    },
+    "sign_events": {
+     "14,14": {
+      "text": "Scroll",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "A secret code is written on the scroll:",
+        "\"I adore Trick Master.\"",
+        "{player_name} memorized the secret code."
+       ],
+       "flag": "trick_password_2",
+       "done": [
+        "The secret code on the scroll:",
+        "\"I adore Trick Master.\""
+       ]
+      }
+     }
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        13,
+        1
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "trick_password_2"
+      },
+      "lines": [
+       "The door's locked.",
+       "Write the secret code on it to open it! You'll find it on a scroll in this room."
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccc",
+     "cc1ccccccc1c",
+     "............",
+     "............",
+     ".....cc.....",
+     "....Ncc.....",
+     "............",
+     "............"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/29_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Trick Master"
+    ],
+    "links": {
+     "10,1": [
+      0,
+      13,
+      1
+     ],
+     "2,1": [
+      2,
+      13,
+      3
+     ]
+    },
+    "moves": {
+     "4,5": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/29_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       12,
+       8
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "ccc............",
+     "ccc..........11",
+     "ccc...ccccccccc",
+     "ccc...ccccccccc",
+     "ccc...ccccccccc",
+     "ccc...ccccccccc",
+     "......ccccccccc",
+     "......ccccccccc",
+     "......ccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "......ccccccccc",
+     "....nnccccccccc"
+    ],
+    "exits": {
+     "n": "HOENN_TRICK_HOUSE"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/29_2.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "links": {
+     "13,3": [
+      1,
+      2,
+      1
+     ],
+     "14,3": [
+      1,
+      2,
+      1
+     ]
+    },
+    "parts": true
+   }
+  ],
+  "floor_names": [
+   "Puzzle room",
+   "Trick Master's room",
+   "Way out"
+  ],
+  "figure_floors": {
+   "Pokémon Ranger Sebastian": 0,
+   "Schoolkid Georgie": 0,
+   "Black Belt Yuji": 0,
+   "RAGE CANDY BAR": 0,
+   "RAGE CANDY BAR ": 0,
+   "Mechadoll 3": 0,
+   "Pokémon Ranger Sophia": 0,
+   "Trick Master": 1
+  }
+ },
+ "HOENN_TRICK_HOUSE_3": {
+  "floors": [
+   {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccc1c",
+     "cc...c......c..",
+     "c....c..c...c..",
+     "c.......c.c.cc.",
+     "....Xc..c.c.c..",
+     "...ccc......c..",
+     "...c.....c..c.c",
+     ".....ccc.c..c..",
+     "N.....cX...cc..",
+     "!.c.c.c...cX...",
+     "ccc.c.c...c....",
+     "....c..cc.cc...",
+     "....cc..c..c...",
+     "ccc..c..c.ccc.c",
+     "c....c......c.c",
+     "c.c..c..c......",
+     "..c..cc........",
+     ".........cc.c..",
+     "............c..",
+     "..N.cc....ccc..",
+     "nn..c....ccN..."
+    ],
+    "exits": {
+     "n": "HOENN_TRICK_HOUSE"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/29_8.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "A secret code is written on the scroll."
+     ]
+    ],
+    "trainer_spots": [
+     "Lass Robin",
+     "Schoolkid Ted",
+     "Ace Duo Pike & Shiel"
+    ],
+    "links": {
+     "13,1": [
+      1,
+      10,
+      1
+     ]
+    },
+    "parts": true,
+    "people": [
+     "LUMIOSE GALETTE ",
+     "Mechadoll 3",
+     "LUMIOSE GALETTE"
+    ],
+    "moves": {
+     "4,5": {
+      "m": "face",
+      "d": "u",
+      "s": 1
+     },
+     "11,10": {
+      "m": "face",
+      "d": "r",
+      "s": 3
+     },
+     "7,9": {
+      "m": "face",
+      "d": "r",
+      "s": 1
+     },
+     "2,20": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "sign_events": {
+     "0,10": {
+      "text": "Scroll",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "A secret code is written on the scroll:",
+        "\"Trick Master is cool.\"",
+        "{player_name} memorized the secret code."
+       ],
+       "flag": "trick_password_3",
+       "done": [
+        "The secret code on the scroll:",
+        "\"Trick Master is cool.\""
+       ]
+      }
+     }
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        13,
+        1
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "trick_password_3"
+      },
+      "lines": [
+       "The door's locked.",
+       "Write the secret code on it to open it! You'll find it on a scroll in this room."
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccc",
+     "cc1ccccccc1c",
+     "............",
+     "............",
+     ".....cc.....",
+     "....Ncc.....",
+     "............",
+     "............"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/29_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Trick Master"
+    ],
+    "links": {
+     "10,1": [
+      0,
+      13,
+      1
+     ],
+     "2,1": [
+      2,
+      13,
+      3
+     ]
+    },
+    "moves": {
+     "4,5": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/29_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       12,
+       8
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "ccc............",
+     "ccc..........11",
+     "ccc...ccccccccc",
+     "ccc...ccccccccc",
+     "ccc...ccccccccc",
+     "ccc...ccccccccc",
+     "......ccccccccc",
+     "......ccccccccc",
+     "......ccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "......ccccccccc",
+     "....nnccccccccc"
+    ],
+    "exits": {
+     "n": "HOENN_TRICK_HOUSE"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/29_2.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "links": {
+     "13,3": [
+      1,
+      2,
+      1
+     ],
+     "14,3": [
+      1,
+      2,
+      1
+     ]
+    },
+    "parts": true
+   }
+  ],
+  "floor_names": [
+   "Puzzle room",
+   "Trick Master's room",
+   "Way out"
+  ],
+  "figure_floors": {
+   "Lass Robin": 0,
+   "Schoolkid Ted": 0,
+   "Ace Duo Pike & Shiel": 0,
+   "LUMIOSE GALETTE": 0,
+   "LUMIOSE GALETTE ": 0,
+   "Mechadoll 3": 0,
+   "Trick Master": 1
+  },
+  "dark": true,
+  "fog_floors": [
+   0
+  ]
+ },
+ "HOENN_TRICK_HOUSE_4": {
+  "floors": [
+   {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccc1c",
+     "....cc.....cb.b",
+     ".....c...bcc.b.",
+     "..cc.cc.c.c....",
+     "..Nc....c.c.bcc",
+     "...cb...c.cc.c.",
+     "ccc..b..c......",
+     ".....c..c......",
+     ".....c...cccccc",
+     ".....c.........",
+     "..cccccccc.....",
+     "..c....c..b.ccc",
+     ".cc..c...c..c.!",
+     ".c...ccccc.cc..",
+     ".c...c....b.c..",
+     "Nccc.b...c.....",
+     ".c...c.........",
+     ".c___c___c_____",
+     "...............",
+     "..N............",
+     "nn............."
+    ],
+    "exits": {
+     "n": "HOENN_TRICK_HOUSE"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/29_6.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "A secret code is written on the scroll."
+     ]
+    ],
+    "links": {
+     "13,1": [
+      1,
+      10,
+      1
+     ]
+    },
+    "parts": true,
+    "trainer_spots": [],
+    "people": [
+     "CASTELIACONE",
+     "CASTELIACONE ",
+     "Mechadoll 3"
+    ],
+    "moves": {
+     "2,20": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "sign_events": {
+     "14,13": {
+      "text": "Scroll",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "A secret code is written on the scroll:",
+        "\"Trick Master is a genius.\"",
+        "{player_name} memorized the secret code."
+       ],
+       "flag": "trick_password_4",
+       "done": [
+        "The secret code on the scroll:",
+        "\"Trick Master is a genius.\""
+       ]
+      }
+     }
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        13,
+        1
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "trick_password_4"
+      },
+      "lines": [
+       "The door's locked.",
+       "Write the secret code on it to open it! You'll find it on a scroll in this room."
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccc",
+     "cc1ccccccc1c",
+     "............",
+     "............",
+     ".....cc.....",
+     "....Ncc.....",
+     "............",
+     "............"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/29_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Trick Master"
+    ],
+    "links": {
+     "10,1": [
+      0,
+      13,
+      1
+     ],
+     "2,1": [
+      2,
+      13,
+      3
+     ]
+    },
+    "moves": {
+     "4,5": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/29_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       12,
+       8
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "ccc............",
+     "ccc..........11",
+     "ccc...ccccccccc",
+     "ccc...ccccccccc",
+     "ccc...ccccccccc",
+     "ccc...ccccccccc",
+     "......ccccccccc",
+     "......ccccccccc",
+     "......ccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "......ccccccccc",
+     "....nnccccccccc"
+    ],
+    "exits": {
+     "n": "HOENN_TRICK_HOUSE"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/29_2.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "links": {
+     "13,3": [
+      1,
+      2,
+      1
+     ],
+     "14,3": [
+      1,
+      2,
+      1
+     ]
+    },
+    "parts": true
+   }
+  ],
+  "floor_names": [
+   "Puzzle room",
+   "Trick Master's room",
+   "Way out"
+  ],
+  "figure_floors": {
+   "CASTELIACONE": 0,
+   "CASTELIACONE ": 0,
+   "Mechadoll 3": 0,
+   "Trick Master": 1
+  }
+ },
+ "HOENN_TRICK_HOUSE_5": {
+  "floors": [
+   {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccc1c",
+     "cc...cccccc...N",
+     "c.....ccccc.ccc",
+     ".......cccN..cc",
+     ".......cc.....c",
+     ".......c.......",
+     "N..........N...",
+     ".......c.......",
+     "c.....cc.......",
+     "c.....cc......N",
+     "c.....ccc.....c",
+     "cc...cccc.....c",
+     "cc...cccc.....c",
+     "ccc.cccccc...cc",
+     "cc...ccccc...cc",
+     "c.....ccccc.ccc",
+     "......Nccc...cc",
+     "c.....ccc.....c",
+     "cc...ccc......N",
+     "....ccccc.....c",
+     "nncccccccc.!.cc"
+    ],
+    "exits": {
+     "n": "HOENN_TRICK_HOUSE"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/29_7.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "A secret code is written on the scroll."
+     ]
+    ],
+    "links": {
+     "13,1": [
+      1,
+      10,
+      1
+     ]
+    },
+    "parts": true,
+    "trainer_spots": [],
+    "people": [
+     "OLD GATEAU ",
+     "Mechadoll 5",
+     "Mechadoll 2",
+     "OLD GATEAU",
+     "Mechadoll 3",
+     "Mechadoll 1",
+     "Mechadoll 4"
+    ],
+    "moves": {
+     "6,17": {
+      "m": "face",
+      "d": "l"
+     },
+     "0,7": {
+      "m": "face",
+      "d": "r"
+     },
+     "14,10": {
+      "m": "face",
+      "d": "l"
+     },
+     "14,19": {
+      "m": "face",
+      "d": "l"
+     },
+     "10,4": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "sign_events": {
+     "11,21": {
+      "text": "Scroll",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "A secret code is written on the scroll:",
+        "\"I want to hug Trick Master.\"",
+        "{player_name} memorized the secret code."
+       ],
+       "flag": "trick_password_5",
+       "done": [
+        "The secret code on the scroll:",
+        "\"I want to hug Trick Master.\""
+       ],
+       "requires": [
+        "trick_doll_1",
+        "trick_doll_2",
+        "trick_doll_3",
+        "trick_doll_4",
+        "trick_doll_5"
+       ],
+       "fail": [
+        "The scroll is blank... Answer every Mechadoll's quiz first!"
+       ]
+      }
+     }
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        13,
+        1
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "trick_password_5"
+      },
+      "lines": [
+       "The door's locked.",
+       "Write the secret code on it to open it! You'll find it on a scroll in this room."
+      ]
+     }
+    ],
+    "scenes": [
+     {
+      "who": "Mechadoll 1",
+      "trigger": {
+       "zone": [
+        1,
+        17,
+        5,
+        17
+       ]
+      },
+      "condition": "not:trick_doll_1",
+      "every": true,
+      "lines": [
+       "CLICKETY-CLACK! MECHADOLL 1 AM I! ANSWER MY QUIZ, THEN GO TO MECHADOLL 2."
+      ],
+      "event": {
+       "stages": [
+        {
+         "ready": [
+          "not:trick_doll_1"
+         ],
+         "lines": [
+          "MECHADOLL 1 QUIZ. One of these Pokémon is not found on Route 103. Which one is it?"
+         ],
+         "quiz": [
+          {
+           "q": "One of these Pokémon is not found on Route 103. Which one is it?",
+           "options": [
+            "Zigzagoon",
+            "Nincada",
+            "Poochyena"
+           ],
+           "right": 1
+          }
+         ],
+         "quiz_flag": "trick_doll_1",
+         "must_be_right": true,
+         "after": [
+          "CONGRATULATIONS. CORRECT YOU ARE. GO THROUGH. PLEASE."
+         ],
+         "wrong": [
+          "BZZZT. DISAPPOINTMENT. ERROR.",
+          "TRY AGAIN. PLEASE."
+         ]
+        }
+       ],
+       "then": {
+        "lines": [
+         "CORRECT YOU WERE. GO THROUGH. PLEASE."
+        ]
+       }
+      }
+     },
+     {
+      "who": "Mechadoll 2",
+      "trigger": {
+       "zone": [
+        1,
+        7,
+        6,
+        7
+       ]
+      },
+      "condition": "not:trick_doll_2",
+      "every": true,
+      "lines": [
+       "CLICKETY-CLACK! MECHADOLL 2 AM I! MECHADOLL 1'S QUIZ WAS TOO EASY."
+      ],
+      "event": {
+       "stages": [
+        {
+         "ready": [
+          "not:trick_doll_2"
+         ],
+         "lines": [
+          "MECHADOLL 2 QUIZ. In Professor Birch's Bag there were three Pokémon. Which one was on the right?"
+         ],
+         "quiz": [
+          {
+           "q": "In Professor Birch's Bag there were three Pokémon. Which one was on the right?",
+           "options": [
+            "Treecko",
+            "Torchic",
+            "Mudkip"
+           ],
+           "right": 2
+          }
+         ],
+         "quiz_flag": "trick_doll_2",
+         "must_be_right": true,
+         "after": [
+          "CONGRATULATIONS. CORRECT YOU ARE. GO THROUGH. PLEASE."
+         ],
+         "wrong": [
+          "BZZZT. DISAPPOINTMENT. ERROR.",
+          "TRY AGAIN. PLEASE."
+         ]
+        }
+       ],
+       "then": {
+        "lines": [
+         "CORRECT YOU WERE. GO THROUGH. PLEASE."
+        ]
+       }
+      }
+     },
+     {
+      "who": "Mechadoll 3",
+      "trigger": {
+       "zone": [
+        9,
+        10,
+        13,
+        10
+       ]
+      },
+      "condition": "not:trick_doll_3",
+      "every": true,
+      "lines": [
+       "CLICKETY-CLACK! MECHADOLL 3 AM I! MATTERS OF MONEY ARE MY SOLE FOCUS."
+      ],
+      "event": {
+       "stages": [
+        {
+         "ready": [
+          "not:trick_doll_3"
+         ],
+         "lines": [
+          "MECHADOLL 3 QUIZ. Which would cost more: a Full Heal plus a Great Ball, or one Revive?"
+         ],
+         "quiz": [
+          {
+           "q": "Which would cost more: a Full Heal plus a Great Ball, or one Revive?",
+           "options": [
+            "Full Heal plus Great Ball",
+            "Revive",
+            "They cost the same"
+           ],
+           "right": 1
+          }
+         ],
+         "quiz_flag": "trick_doll_3",
+         "must_be_right": true,
+         "after": [
+          "CONGRATULATIONS. CORRECT YOU ARE. GO THROUGH. PLEASE."
+         ],
+         "wrong": [
+          "BZZZT. DISAPPOINTMENT. ERROR.",
+          "TRY AGAIN. PLEASE."
+         ]
+        },
+        {
+         "ready": [
+          "trick_doll_3"
+         ],
+         "flag": "trick5_escape_rope",
+         "lines": [
+          "A REWARD FOR A CORRECT ANSWER. TAKE IT."
+         ],
+         "gift_item": {
+          "ESCAPE_ROPE": 1
+         }
+        }
+       ],
+       "then": {
+        "lines": [
+         "CORRECT YOU WERE. GO THROUGH. PLEASE."
+        ]
+       }
+      }
+     },
+     {
+      "who": "Mechadoll 4",
+      "trigger": {
+       "zone": [
+        9,
+        19,
+        13,
+        19
+       ]
+      },
+      "condition": "not:trick_doll_4",
+      "every": true,
+      "lines": [
+       "CLICKETY-CLACK! MECHADOLL 4 THAT IS ME! MY QUIZ IS AN OBJECT OF BEAUTY."
+      ],
+      "event": {
+       "stages": [
+        {
+         "ready": [
+          "not:trick_doll_4"
+         ],
+         "lines": [
+          "MECHADOLL 4 QUIZ. Rustboro Gym Leader Roxanne used a Geodude. Was it female or male?"
+         ],
+         "quiz": [
+          {
+           "q": "Rustboro Gym Leader Roxanne used a Geodude. Was it female or male?",
+           "options": [
+            "Female",
+            "Male",
+            "Neither"
+           ],
+           "right": 0
+          }
+         ],
+         "quiz_flag": "trick_doll_4",
+         "must_be_right": true,
+         "after": [
+          "CONGRATULATIONS. CORRECT YOU ARE. GO THROUGH. PLEASE."
+         ],
+         "wrong": [
+          "BZZZT. DISAPPOINTMENT. ERROR.",
+          "TRY AGAIN. PLEASE."
+         ]
+        }
+       ],
+       "then": {
+        "lines": [
+         "CORRECT YOU WERE. GO THROUGH. PLEASE."
+        ]
+       }
+      }
+     },
+     {
+      "who": "Mechadoll 5",
+      "trigger": {
+       "zone": [
+        11,
+        4,
+        11,
+        4
+       ]
+      },
+      "condition": "not:trick_doll_5",
+      "every": true,
+      "lines": [
+       "CLICKETY-CLACK! MECHADOLL 5 AM I! THE MASTER'S BEST AND PROUDEST ACHIEVEMENT AM I."
+      ],
+      "event": {
+       "stages": [
+        {
+         "ready": [
+          "not:trick_doll_5"
+         ],
+         "lines": [
+          "MECHADOLL 5 QUIZ. How many Bikes does Rydel have on display outside his cycle shop?"
+         ],
+         "quiz": [
+          {
+           "q": "How many Bikes does Rydel have on display outside his cycle shop?",
+           "options": [
+            "One",
+            "Two",
+            "Three"
+           ],
+           "right": 1
+          }
+         ],
+         "quiz_flag": "trick_doll_5",
+         "must_be_right": true,
+         "after": [
+          "CONGRATULATIONS. CORRECT YOU ARE. GO THROUGH. PLEASE."
+         ],
+         "wrong": [
+          "BZZZT. DISAPPOINTMENT. ERROR.",
+          "TRY AGAIN. PLEASE."
+         ]
+        }
+       ],
+       "then": {
+        "lines": [
+         "CORRECT YOU WERE. GO THROUGH. PLEASE."
+        ]
+       }
+      }
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccc",
+     "cc1ccccccc1c",
+     "............",
+     "............",
+     ".....cc.....",
+     "....Ncc.....",
+     "............",
+     "............"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/29_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Trick Master"
+    ],
+    "links": {
+     "10,1": [
+      0,
+      13,
+      1
+     ],
+     "2,1": [
+      2,
+      13,
+      3
+     ]
+    },
+    "moves": {
+     "4,5": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/29_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       12,
+       8
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "ccc............",
+     "ccc..........11",
+     "ccc...ccccccccc",
+     "ccc...ccccccccc",
+     "ccc...ccccccccc",
+     "ccc...ccccccccc",
+     "......ccccccccc",
+     "......ccccccccc",
+     "......ccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "......ccccccccc",
+     "....nnccccccccc"
+    ],
+    "exits": {
+     "n": "HOENN_TRICK_HOUSE"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/29_2.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "links": {
+     "13,3": [
+      1,
+      2,
+      1
+     ],
+     "14,3": [
+      1,
+      2,
+      1
+     ]
+    },
+    "parts": true
+   }
+  ],
+  "floor_names": [
+   "Puzzle room",
+   "Trick Master's room",
+   "Way out"
+  ],
+  "figure_floors": {
+   "OLD GATEAU": 0,
+   "OLD GATEAU ": 0,
+   "Mechadoll 1": 0,
+   "Mechadoll 2": 0,
+   "Mechadoll 3": 0,
+   "Mechadoll 4": 0,
+   "Mechadoll 5": 0,
+   "Trick Master": 1
+  }
+ },
+ "HOENN_TRICK_HOUSE_6": {
+  "floors": [
+   {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccc1c",
+     "cN.cN.c..c..c..",
+     "c..c..c..c..c..",
+     "c..c..c..c..c..",
+     "...............",
+     "c..c..c..c..c..",
+     "c..c..c..c..c..",
+     ".........c.....",
+     "c..cccc..c..c..",
+     "c..cccc..c..c..",
+     "...............",
+     "c..c..c..c..c..",
+     "c..c..c..c..c..",
+     "!...........c..",
+     "cccc..cccc..c..",
+     "cccc..cccc..c..",
+     "......c........",
+     "c..c..c..c..c..",
+     "c..c..c..c..c..",
+     ".0.N...........",
+     "nn0............"
+    ],
+    "exits": {
+     "n": "HOENN_TRICK_HOUSE"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/29_5.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "A secret code is written on the scroll."
+     ]
+    ],
+    "links": {
+     "13,1": [
+      1,
+      10,
+      1
+     ]
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/29_5.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       15,
+       22
+      ]
+     }
+    ],
+    "trainer_spots": [],
+    "people": [
+     "SHALOUR SABLE",
+     "SHALOUR SABLE ",
+     "Mechadoll 3"
+    ],
+    "moves": {
+     "3,20": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "sign_events": {
+     "0,14": {
+      "text": "Scroll",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "A secret code is written on the scroll:",
+        "\"I love Trick Master.\"",
+        "{player_name} memorized the secret code."
+       ],
+       "flag": "trick_password_6",
+       "done": [
+        "The secret code on the scroll:",
+        "\"I love Trick Master.\""
+       ]
+      }
+     }
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        13,
+        1
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "trick_password_6"
+      },
+      "lines": [
+       "The door's locked.",
+       "Write the secret code on it to open it! You'll find it on a scroll in this room."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        1,
+        4
+       ]
+      ],
+      "look": "ow:em_ground:trick6_1_4",
+      "until": {
+       "flag_condition": "trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        1,
+        13
+       ]
+      ],
+      "look": "ow:em_ground:trick6_1_13",
+      "until": {
+       "flag_condition": "trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        2,
+        4
+       ]
+      ],
+      "look": "ow:em_ground:trick6_2_4",
+      "until": {
+       "flag_condition": "trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        2,
+        13
+       ]
+      ],
+      "look": "ow:em_ground:trick6_2_13",
+      "until": {
+       "flag_condition": "trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        3,
+        17
+       ]
+      ],
+      "look": "ow:em_ground:trick6_3_17",
+      "until": {
+       "flag_condition": "trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        4,
+        7
+       ]
+      ],
+      "look": "ow:em_ground:trick6_4_7",
+      "until": {
+       "flag_condition": "trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        4,
+        13
+       ]
+      ],
+      "look": "ow:em_ground:trick6_4_13",
+      "until": {
+       "flag_condition": "trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        4,
+        19
+       ]
+      ],
+      "look": "ow:em_ground:trick6_4_19",
+      "until": {
+       "flag_condition": "trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        5,
+        7
+       ]
+      ],
+      "look": "ow:em_ground:trick6_5_7",
+      "until": {
+       "flag_condition": "trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        5,
+        13
+       ]
+      ],
+      "look": "ow:em_ground:trick6_5_13",
+      "until": {
+       "flag_condition": "trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        5,
+        19
+       ]
+      ],
+      "look": "ow:em_ground:trick6_5_19",
+      "until": {
+       "flag_condition": "trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        7,
+        10
+       ]
+      ],
+      "look": "ow:em_ground:trick6_7_10",
+      "until": {
+       "flag_condition": "trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        8,
+        10
+       ]
+      ],
+      "look": "ow:em_ground:trick6_8_10",
+      "until": {
+       "flag_condition": "trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        9,
+        5
+       ]
+      ],
+      "look": "ow:em_ground:trick6_9_5",
+      "until": {
+       "flag_condition": "trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        10,
+        7
+       ]
+      ],
+      "look": "ow:em_ground:trick6_10_7",
+      "until": {
+       "flag_condition": "trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        10,
+        13
+       ]
+      ],
+      "look": "ow:em_ground:trick6_10_13",
+      "until": {
+       "flag_condition": "trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        10,
+        19
+       ]
+      ],
+      "look": "ow:em_ground:trick6_10_19",
+      "until": {
+       "flag_condition": "trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        11,
+        7
+       ]
+      ],
+      "look": "ow:em_ground:trick6_11_7",
+      "until": {
+       "flag_condition": "trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        11,
+        13
+       ]
+      ],
+      "look": "ow:em_ground:trick6_11_13",
+      "until": {
+       "flag_condition": "trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        11,
+        19
+       ]
+      ],
+      "look": "ow:em_ground:trick6_11_19",
+      "until": {
+       "flag_condition": "trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        4
+       ]
+      ],
+      "look": "ow:em_ground:trick6_13_4",
+      "until": {
+       "flag_condition": "trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        4
+       ]
+      ],
+      "look": "ow:em_ground:trick6_14_4",
+      "until": {
+       "flag_condition": "trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        1,
+        7
+       ]
+      ],
+      "look": "ow:em_ground:trick6_1_7",
+      "until": {
+       "flag_condition": "not trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        1,
+        10
+       ]
+      ],
+      "look": "ow:em_ground:trick6_1_10",
+      "until": {
+       "flag_condition": "not trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        2,
+        7
+       ]
+      ],
+      "look": "ow:em_ground:trick6_2_7",
+      "until": {
+       "flag_condition": "not trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        2,
+        10
+       ]
+      ],
+      "look": "ow:em_ground:trick6_2_10",
+      "until": {
+       "flag_condition": "not trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        3,
+        8
+       ]
+      ],
+      "look": "ow:em_ground:trick6_3_8",
+      "until": {
+       "flag_condition": "not trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        3,
+        14
+       ]
+      ],
+      "look": "ow:em_ground:trick6_3_14",
+      "until": {
+       "flag_condition": "not trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        4,
+        16
+       ]
+      ],
+      "look": "ow:em_ground:trick6_4_16",
+      "until": {
+       "flag_condition": "not trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        5,
+        16
+       ]
+      ],
+      "look": "ow:em_ground:trick6_5_16",
+      "until": {
+       "flag_condition": "not trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        6,
+        5
+       ]
+      ],
+      "look": "ow:em_ground:trick6_6_5",
+      "until": {
+       "flag_condition": "not trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        9,
+        17
+       ]
+      ],
+      "look": "ow:em_ground:trick6_9_17",
+      "until": {
+       "flag_condition": "not trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        12,
+        8
+       ]
+      ],
+      "look": "ow:em_ground:trick6_12_8",
+      "until": {
+       "flag_condition": "not trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        10
+       ]
+      ],
+      "look": "ow:em_ground:trick6_13_10",
+      "until": {
+       "flag_condition": "not trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        16
+       ]
+      ],
+      "look": "ow:em_ground:trick6_13_16",
+      "until": {
+       "flag_condition": "not trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        10
+       ]
+      ],
+      "look": "ow:em_ground:trick6_14_10",
+      "until": {
+       "flag_condition": "not trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        16
+       ]
+      ],
+      "look": "ow:em_ground:trick6_14_16",
+      "until": {
+       "flag_condition": "not trick6_flip"
+      },
+      "lines": [
+       "A shut door. Step on a switch to open it."
+      ]
+     }
+    ],
+    "scenes": [
+     {
+      "trigger": {
+       "zone": [
+        4,
+        14,
+        4,
+        14
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "event": {
+       "stages": [
+        {
+         "ready": [],
+         "flag": "trick6_flip",
+         "lines": [
+          "Click! The doors switched!"
+         ]
+        }
+       ],
+       "then": {
+        "unset_flags": [
+         "trick6_flip"
+        ],
+        "lines": [
+         "Click! The doors switched!"
+        ]
+       }
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        3,
+        11,
+        3,
+        11
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "event": {
+       "stages": [
+        {
+         "ready": [],
+         "flag": "trick6_flip",
+         "lines": [
+          "Click! The doors switched!"
+         ]
+        }
+       ],
+       "then": {
+        "unset_flags": [
+         "trick6_flip"
+        ],
+        "lines": [
+         "Click! The doors switched!"
+        ]
+       }
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        12,
+        5,
+        12,
+        5
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "event": {
+       "stages": [
+        {
+         "ready": [],
+         "flag": "trick6_flip",
+         "lines": [
+          "Click! The doors switched!"
+         ]
+        }
+       ],
+       "then": {
+        "unset_flags": [
+         "trick6_flip"
+        ],
+        "lines": [
+         "Click! The doors switched!"
+        ]
+       }
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        8,
+        2,
+        8,
+        2
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "event": {
+       "stages": [
+        {
+         "ready": [],
+         "flag": "trick6_flip",
+         "lines": [
+          "Click! The doors switched!"
+         ]
+        }
+       ],
+       "then": {
+        "unset_flags": [
+         "trick6_flip"
+        ],
+        "lines": [
+         "Click! The doors switched!"
+        ]
+       }
+      }
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccc",
+     "cc1ccccccc1c",
+     "............",
+     "............",
+     ".....cc.....",
+     "....Ncc.....",
+     "............",
+     "............"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/29_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Trick Master"
+    ],
+    "links": {
+     "10,1": [
+      0,
+      13,
+      1
+     ],
+     "2,1": [
+      2,
+      13,
+      3
+     ]
+    },
+    "moves": {
+     "4,5": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "hidden": {
+     "4,5": "BIG_NUGGET"
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/29_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       12,
+       8
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "ccc............",
+     "ccc..........11",
+     "ccc...ccccccccc",
+     "ccc...ccccccccc",
+     "ccc...ccccccccc",
+     "ccc...ccccccccc",
+     "......ccccccccc",
+     "......ccccccccc",
+     "......ccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "...cccccccccccc",
+     "......ccccccccc",
+     "....nnccccccccc"
+    ],
+    "exits": {
+     "n": "HOENN_TRICK_HOUSE"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/29_2.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "links": {
+     "13,3": [
+      1,
+      2,
+      1
+     ],
+     "14,3": [
+      1,
+      2,
+      1
+     ]
+    },
+    "parts": true
+   }
+  ],
+  "floor_names": [
+   "Puzzle room",
+   "Trick Master's room",
+   "Way out"
+  ],
+  "figure_floors": {
+   "SHALOUR SABLE": 0,
+   "SHALOUR SABLE ": 0,
+   "Mechadoll 3": 0,
+   "Trick Master": 1
+  }
  }
 }
