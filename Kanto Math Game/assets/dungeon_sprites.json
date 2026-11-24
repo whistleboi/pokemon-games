@@ -76,6 +76,81 @@
     ]
   },
   "figures": {
+    "HOENN_MAGMA_HIDEOUT:MAX ELIXIR far side": {
+      "item": "MAX_ELIXIR"
+    },
+    "HOENN_MAGMA_HIDEOUT:PP MAX side room": {
+      "item": "PP_MAX"
+    },
+    "HOENN_ROUTE_107:SUPER REPEL beach": {
+      "item": "SUPER_REPEL"
+    },
+    "HOENN_ROUTE_111:STARDUST south": {
+      "item": "STARDUST"
+    },
+    "HOENN_ROUTE_123:PP UP east": {
+      "item": "PP_UP"
+    },
+    "HOENN_ROUTE_134:HEART SCALE islet": {
+      "item": "HEART_SCALE"
+    },
+    "HOENN_GRANITE_CAVE:REPEL north side": {
+      "item": "REPEL"
+    },
+    "HOENN_GRANITE_CAVE:RARE CANDY north side": {
+      "item": "RARE_CANDY"
+    },
+    "HOENN_GRANITE_CAVE:TM061 SHADOW CLAW": {
+      "item": "TM061"
+    },
+    "HOENN_GRANITE_CAVE:ESCAPE ROPE by the Hiker": {
+      "item": "ESCAPE_ROPE"
+    },
+    "HOENN_JAGGED_PASS:FULL HEAL slope": {
+      "item": "FULL_HEAL"
+    },
+    "HOENN_SHOAL_CAVE:SHOAL SALT": {
+      "item": "SHOAL_SALT"
+    },
+    "HOENN_SHOAL_CAVE:SHOAL SALT ": {
+      "item": "SHOAL_SALT"
+    },
+    "HOENN_SHOAL_CAVE:SHOAL SHELL": {
+      "item": "SHOAL_SHELL"
+    },
+    "HOENN_SHOAL_CAVE:SHOAL SHELL ": {
+      "item": "SHOAL_SHELL"
+    },
+    "HOENN_SHOAL_CAVE:SHOAL SHELL  ": {
+      "item": "SHOAL_SHELL"
+    },
+    "HOENN_SHOAL_CAVE:SHOAL SHELL   ": {
+      "item": "SHOAL_SHELL"
+    },
+    "HOENN_MT_PYRE:Keeper": {
+      "sheet": "em_20.png"
+    },
+    "HOENN_SS_TIDAL:Cleanup brother": {
+      "sheet": "em_49.png"
+    },
+    "HOENN_SS_TIDAL:Cleanup brother ": {
+      "sheet": "em_49.png"
+    },
+    "SLATEPORT_CITY:Name Rater": {
+      "sheet": "em_21.png"
+    },
+    "LILYCOVE_CITY:Berry gentleman": {
+      "sheet": "em_21.png"
+    },
+    "HOENN_ROUTE_123:Magikarp fan": {
+      "sheet": "em_9.png"
+    },
+    "LILYCOVE_CITY:The Collector": {
+      "sheet": "em_39.png"
+    },
+    "MAUVILLE_CITY:Collector": {
+      "sheet": "em_39.png"
+    },
     "GALACTIC_WAREHOUSE:Looker": {"sheet": "pt_icpo.png"},
     "VEILSTONE_CITY:Dawn": {"sheet": "pt_heroine.png"},
     "VEILSTONE_CITY:Galactic Grunt ": {"sheet": "pt_gingam.png"},
@@ -17047,6 +17122,9 @@
     "orre_matron.png": "orre_trainer_old_lady.png"
   },
   "trainers_HOENN": {
+    "ruinmaniac.png": "em_55.png",
+    "tabitha.png": "em_119.png",
+    "school_kid_f.png": "em_14.png",
     "youngster.png": "em_35.png",
     "bug_catcher.png": "em_36.png",
     "swimmer_m.png": "em_42.png",

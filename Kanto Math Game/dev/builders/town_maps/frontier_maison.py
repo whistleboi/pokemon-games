@@ -136,6 +136,7 @@ def apply(maps):
                             {"n": f"OUT:{DOOR[0]},{DOOR[1]}"}, {"6,1": ["maison_hall", 2, 6]},
                             {"3,3": {"m": "face", "d": "d"}, "3,7": {"m": "wander", "d": "lr", "r": [1, 0]},
                              "9,7": {"m": "look", "d": "udlr"}, "1,8": {"m": "face", "d": "r"}, "11,8": {"m": "face", "d": "l"}})
+    rooms["maison"]["overheads"] = [{"kind": "picture", "f": "em_top/9_2.png", "at": [0, 0], "size": [13, 10]}]   # (the lobby's own top layer: the counter and walls over you, as Emerald draws them; H7 look)
     rooms["maison_hall"] = _room(HALL, "9_3", "Battle Maison", [], {},
                                  {"2,1": ["maison_battle", 4, 7], "1,7": ["maison", 6, 2], "2,7": ["maison", 6, 2], "3,7": ["maison", 6, 2]})
     rooms["maison_battle"] = _room(BATTLE, "9_4", "Battle Maison: battle room", ["Chatelaine Nita"], {},

@@ -148130,7 +148130,21 @@
       "m": "face",
       "d": "l"
      }
-    }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/9_2.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       10
+      ]
+     }
+    ]
    },
    "maison_hall": {
     "art": [
