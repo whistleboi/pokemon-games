@@ -89,6 +89,8 @@ def hand_out(story):
         story.story_flags["medal_" + key] = True
         lines.append("You received the %s Medal! (%s)" % (name, how))
     lines.append("Mr. Medal: That makes %d of %d. Splendid!" % (len(received(story)), len(MEDALS)))
+    from src.world import feats as _feats
+    _feats.note(story, "medals", len(new))   # (a Feat: Medals received)
     return lines
 
 

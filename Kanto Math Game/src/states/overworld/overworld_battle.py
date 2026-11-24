@@ -79,7 +79,112 @@ class OverworldBattles:
         def start():
             battle.overworld = OverworldView(self, mover)
             self.game.change_state(battle)
-        self.say(lines or [f"{name} wants to battle!"], then=start)
+        self.say(lines or [f"{name} wants to battle!"], then=lambda: self.ow_walk_to_battle(mover, True, start))
+
+    # ---------------------------------------------------------------- walking over to where the battle stands (Jordan 11-24)
+    def ow_walk_to_battle(self, mover, trainer, then):
+        """When the battle stands somewhere else (OverworldView._plan: side by side on open ground nearby), you and the
+        foe walk there first, then(): the battle. Where you met is remembered: dungeon._back_from_battle walks you back."""
+        plan = OverworldView._plan(self, mover, trainer)
+        if not plan:
+            return then()
+        anchor, d, line = plan
+        me = line[-1]
+        if anchor == (mover.x, mover.y) and me == tuple(self.run.player):
+            return then()
+        self._ow_home = {"player": tuple(self.run.player), "facing": tuple(getattr(self, "facing", (0, 1))),
+                         "mover": mover, "at": (mover.x, mover.y), "mover_facing": tuple(mover.facing or (0, 1))}
+        self._ow_walk_start([(mover, anchor), ("me", me)], then, face=(mover, d))
+
+    def _ow_walk_start(self, goals, then, face=None):
+        """Walk everyone in goals [(mover or "me", tile)] there along the ground (anyone with no way, put there), then
+        face: (mover, its way) - you face it back - and then()."""
+        from src.dungeon import npc
+        f = self.run.floor
+        walkers = {id(w) for w, _ in goals if w != "me"}
+
+        def ok(t, who):
+            if not f.walkable(*t):
+                return False
+            m = f.mover_at(*t)
+            return m is None or id(m) in walkers or m is who
+
+        walk = {"movers": [], "me": [], "then": then, "face": face, "t": 0}
+        for who, goal in goals:
+            start = tuple(self.run.player) if who == "me" else (who.x, who.y)
+            mo = npc.Motion(start)
+            if goal != start and not mo.walk(goal, lambda t, who=who: ok(t, who) and t != tuple(self.run.player) or t == goal, beside=False):
+                mo.path = []
+            path = mo.path if mo.path and mo.path[-1] == goal else []
+            if who == "me":
+                walk["me"] = path or ([] if goal == start else None)
+                walk["me_goal"] = goal
+            else:
+                had = getattr(who, "motion", None)
+                if had is not None:
+                    mo.facing = had.facing
+                walk["movers"].append((who, mo, had, goal))
+                mo.path = list(path)
+                if not path and goal != start:   # (no way there: put there)
+                    who.x, who.y = goal
+                    mo.pos = mo.frm = goal
+                who.motion = mo
+        if walk["me"] is None:   # (no way for you: put there)
+            self.run.player = self.anim_from = walk["me_goal"]
+            walk["me"] = []
+        self._ow_walk = walk
+        self.walk_goal = None
+        self.mode = "OWWALK"
+
+    def _ow_walk_tick(self):
+        """One frame of the walk over (or back): you step along your way, the foe along its own; then the battle."""
+        w = getattr(self, "_ow_walk", None)
+        if not w:
+            self.mode = "MAP"
+            return
+        w["t"] += 1
+        if self.anim == 0 and w["me"]:
+            nxt = w["me"].pop(0)
+            px, py = self.run.player
+            self.facing = (max(-1, min(1, nxt[0] - px)), max(-1, min(1, nxt[1] - py)))
+            self.partner_from, self.partner = self.partner, (px, py)
+            self.anim_from, self.run.player = (px, py), nxt
+            from src.states.overworld.dungeon import STEP_FRAMES
+            self.anim = STEP_FRAMES
+        busy = bool(w["me"]) or self.anim > 0
+        for who, mo, had, goal in w["movers"]:
+            mo.tick(lambda t: True)
+            who.x, who.y = mo.pos
+            who.facing = mo.facing
+            busy = busy or not mo.idle()
+        if busy and w["t"] < 25 * 12:
+            return
+        for who, mo, had, goal in w["movers"]:   # (there: the trainer keeps its own steps, a wild one none)
+            who.x, who.y = goal
+            if had is not None:
+                had.pos = had.frm = goal
+                had.path, had.t = [], 1.0
+                had.facing = mo.facing
+            who.motion = had
+            if had is None and hasattr(who, "motion"):
+                del who.motion
+        if w.get("end_face"):   # (back on its spot: the way it looks now)
+            m, d = w["end_face"]
+            m.facing = d
+            if getattr(m, "motion", None) is not None:
+                m.motion.facing = d
+        face = w.get("face")
+        if face:
+            m, d = face
+            m.facing = d
+            if getattr(m, "motion", None) is not None:
+                m.motion.facing = d
+            self.facing = (-d[0], -d[1])
+        self.partner = self.partner_from = tuple(self.run.player)
+        self._ow_walk = None
+        self.mode = "MAP"
+        if w["then"]:
+            w["then"]()
 
     # ---------------------------------------------------------------- where everyone stands
     def _tile_rect(self, x, y):
@@ -326,51 +431,99 @@ class OverworldView:
         self.shots = []   # attacks flying: [from side, colour, frames gone]
         self.last = {}    # each side's HP last frame (a drop: a hit landed)
         self.anim_seen = None
+        self.atk = None   # the move playing: src/vfx/map_attacks.py (a lunge, a beam, a ring)
+
+    # ---------------------------------------------------------------- where the battle stands (Jordan 11-24)
+    # Side by side first: a battle up and down the screen is hard to see. If the two can't stand side by side where they
+    # met, the battle moves to open ground nearby (everyone is put back after it: dungeon._back_from_battle, _ow_home).
+    # Only when there's no room anywhere near is it up and down, and then with two tiles between the Pokemon.
+    NEAR = 8   # (how far, in steps from you, the battle may move to find room)
+
+    @staticmethod
+    def _plan(play, mover, trainer):
+        """(anchor, (dx, dy), line) - where the foe stands, the way along the line, and the line's tiles (the trainer's
+        Pokemon first, then the gap, yours, you) - or None. Side by side (where you met, then nearby), else up and down."""
+        f = play.run.floor
+        px, py = play.run.player
+        from src.coop import world
+        busy = {(m.x, m.y) for m in f.movers if m is not mover} | world.people_tiles(play.game)
+
+        def free(t):
+            return t == (px, py) or (f.walkable(*t) and t not in busy and not f.occupied(*t)) or t == (mover.x, mover.y)
+
+        def fits(anchor, d, gap):
+            n = (3 if trainer else 2) + gap
+            line = [(anchor[0] + d[0] * k, anchor[1] + d[1] * k) for k in range(1, n + 1)]
+            return line if all(free(t) for t in line) else None
+
+        tx, ty = mover.x, mover.y
+        side = 1 if px >= tx else -1
+        horiz = [(side, 0), (-side, 0)]
+        vert = [(0, 1 if py >= ty else -1), (0, -1 if py >= ty else 1)]
+        seen, todo, spots = {(px, py): 0}, [(px, py)], []
+        while todo:   # (side by side, on open ground near you: the nearest)
+            cur = todo.pop(0)
+            for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                t = (cur[0] + dx, cur[1] + dy)
+                if t not in seen and seen[cur] < OverworldView.NEAR and free(t):
+                    seen[t] = seen[cur] + 1
+                    todo.append(t)
+                    spots.append(t)
+        spots.sort(key=lambda t: (seen[t], abs(t[1] - ty)))
+        for gap in (2, 1, 0):   # (side by side with two tiles between, where you met, else nearby; then closer)
+            for anchor in [(tx, ty)] + spots:
+                for d in horiz:
+                    line = fits(anchor, d, gap)
+                    if line:
+                        return anchor, d, line
+        for gap in (2, 1, 0):   # (no room side by side: up and down, with more room between)
+            for d in vert:
+                line = fits((tx, ty), d, gap)
+                if line:
+                    return (tx, ty), d, line
+        return None
+
+    @staticmethod
+    def _stand(play, mover, anchor, d, line):
+        """Put the foe on anchor and you at the line's end, facing each other; moving them away from where they met is
+        remembered to put back after the battle."""
+        if anchor != (mover.x, mover.y) or line[-1] != tuple(play.run.player):
+            if not getattr(play, "_ow_home", None):
+                play._ow_home = {"player": tuple(play.run.player), "facing": tuple(getattr(play, "facing", (0, 1))),
+                                 "mover": mover, "at": (mover.x, mover.y), "mover_facing": tuple(mover.facing or (0, 1))}
+        mover.x, mover.y = anchor
+        mo = getattr(mover, "motion", None)
+        if mo is not None:   # (a trainer's own steps: stood there too)
+            mo.pos = mo.frm = anchor
+            mo.path, mo.t = [], 1.0
+        play.anim, play.anim_from = 0, line[-1]
+        play.run.player = line[-1]
+        mover.facing, play.facing = d, (-d[0], -d[1])
 
     @staticmethod
     def _line_up(play, mover):
-        """The trainer, its Pokemon, (a gap,) yours, then you, in a line (you step back if you need to), so no
-        one stands on anyone; else its Pokemon in front of it and yours beside that."""
-        f = play.run.floor
-        tx, ty = mover.x, mover.y
-        px, py = play.run.player
-        side = 1 if px >= tx else -1
-        ways = [(side, 0), (-side, 0), (0, 1 if py >= ty else -1), (0, -1 if py >= ty else 1)]  # (left to right if there's room: all in view)
-        from src.coop import world
-        busy = {(m.x, m.y) for m in f.movers if m is not mover} | world.people_tiles(play.game)
-        for dx, dy in ways:
-            for gap in (1, 0):  # (a tile between the two Pokemon, if there's room)
-                line = [(tx + dx * k, ty + dy * k) for k in range(1, 4 + gap)]
-                if all(f.walkable(*t) and (t not in busy or t == (px, py)) for t in line):
-                    play.anim, play.anim_from = 0, line[-1]
-                    play.run.player = line[-1]  # (you stand behind your Pokemon)
-                    mover.facing, play.facing = (dx, dy), (-dx, -dy)  # (face each other)
-                    return line[0], line[-2]
+        """The trainer, its Pokemon, (a gap,) yours, then you, in a line; else its Pokemon in front of it and yours
+        beside that."""
+        plan = OverworldView._plan(play, mover, trainer=True)
+        if plan:
+            anchor, d, line = plan
+            OverworldView._stand(play, mover, anchor, d, line)
+            return line[0], line[-2]
         spot = play._throw_spot(mover)
         play._partner_beside(spot)
         return spot, play.partner
 
     @staticmethod
     def _line_up_wild(play, mover):
-        """The wild Pokemon where it stands, (a gap,) yours, then you, in a line; else yours beside it."""
+        """The wild Pokemon, (a gap,) yours, then you, in a line; else yours beside it."""
         play._ow_foe = mover  # (the battle draws it now, with its HP)
-        f = play.run.floor
-        tx, ty = mover.x, mover.y
-        px, py = play.run.player
-        side = 1 if px >= tx else -1
-        ways = [(side, 0), (-side, 0), (0, 1 if py >= ty else -1), (0, -1 if py >= ty else 1)]  # (left to right if there's room: all in view)
-        from src.coop import world
-        busy = {(m.x, m.y) for m in f.movers if m is not mover} | world.people_tiles(play.game)
-        for dx, dy in ways:
-            for gap in (1, 0):
-                line = [(tx + dx * k, ty + dy * k) for k in range(1, 3 + gap)]
-                if all(f.walkable(*t) and (t not in busy or t == (px, py)) for t in line):
-                    play.anim, play.anim_from = 0, line[-1]
-                    play.run.player = line[-1]
-                    mover.facing, play.facing = (dx, dy), (-dx, -dy)
-                    return (tx, ty), line[-2]
-        play._partner_beside((tx, ty))
-        return (tx, ty), play.partner
+        plan = OverworldView._plan(play, mover, trainer=False)
+        if plan:
+            anchor, d, line = plan
+            OverworldView._stand(play, mover, anchor, d, line)
+            return anchor, line[-2]
+        play._partner_beside((mover.x, mover.y))
+        return (mover.x, mover.y), play.partner
 
     def catch_points(self):
         """Where a thrown ball starts and lands, on the screen: (your Pokemon's tile, the foe's tile)."""
@@ -428,6 +581,56 @@ class OverworldView:
             self.shots.append(["me" if side == "player" else "foe", TYPE_COLOR.get(kind, (255, 255, 255)), 0])
         self.anim_seen = now
 
+    # ---------------------------------------------------------------- a move, played on the map (src/vfx/map_attacks.py)
+    def attack(self, battle, mv):
+        """Start the move mv ({"name", "side", "user", "target"}) as the map's own attack."""
+        from src.vfx import map_attacks
+        info = map_attacks.move_for(self.play.game, mv.get("name"))
+        user, target = mv.get("user"), mv.get("target")
+        if getattr(battle, "is_doubles", False):
+            def rect(mon):
+                return lambda: (self._double_rects(battle).get(id(mon)) or (None,))[0] or self.catch_points()[0]
+        else:
+            def rect(mon):
+                mine = mv.get("side") == "player" if mon is user else mv.get("side") != "player"
+                return lambda: self.catch_points()[0 if mine else 1]
+        self_target = str(info.get("target") or "").startswith("user") or user is target
+        self.atk = map_attacks.MapAttack(self.play.game, info, rect(user), rect(target), self_target=self_target)
+        self.atk_ids = (id(user), id(target))
+        self.shots = []
+
+    def attacking(self):
+        """A move still playing (and moving on a frame: the battle waits on this)."""
+        if self.atk is None:
+            return False
+        self.atk.update()
+        if self.atk.done:
+            self.atk = None
+            return False
+        return True
+
+    def _role(self, mon):
+        """"user" / "target" in the move playing, or None."""
+        if self.atk is None or mon is None:
+            return None
+        u, t = self.atk_ids
+        return "user" if id(mon) == u else "target" if id(mon) == t else None
+
+    def _moved(self, rect, mon, img):
+        """Where a battler is drawn now (its lunge or recoil), and its picture (white as it's hit)."""
+        role = self._role(mon)
+        if role is None:
+            return rect, img
+        dx, dy = self.atk.offset(role)
+        s = self.atk.shake()
+        if s:
+            import random
+            dx, dy = dx + random.randint(-s, s), dy + random.randint(-s, s)
+        if role == "target" and self.atk.flashing() and img is not None:
+            from src.vfx.map_attacks import white
+            img = white(img)
+        return rect.move(dx, dy), img
+
     def _draw_map(self, screen):
         self.play._focus = self.focus
         self.play.draw_backdrop(screen)
@@ -449,13 +652,17 @@ class OverworldView:
                 and (kept or not (fainting == "opponent" or foe.current_hp <= 0 and battle.opponent_hp <= 0)):
             img = play._icon(foe, TILE + 8, facing=self._face(self.spot, self.mine))
             if img is not None:
-                screen.blit(img, img.get_rect(midbottom=(fr.centerx, fr.bottom + 4)))
+                at, img = self._moved(fr, foe, img)
+                screen.blit(img, img.get_rect(midbottom=(at.centerx, at.bottom + 4)))
             self._hp_bar(screen, foe.display_name.upper(), battle.opponent_hp, battle.opp_max_hp, foe.level, fr, False)
         if me is not None and battle.phase != "PLAYER_SUMMON" and not (fainting == "player" or me.current_hp <= 0 and battle.player_hp <= 0):
             img = play._icon(me, TILE + 8, flip=self.spot[0] > self.mine[0], facing=self._face(self.mine, self.spot))
             if img is not None:
-                screen.blit(img, img.get_rect(midbottom=(mr.centerx, mr.bottom + 4)))
+                at, img = self._moved(mr, me, img)
+                screen.blit(img, img.get_rect(midbottom=(at.centerx, at.bottom + 4)))
             self._hp_bar(screen, me.display_name.upper(), battle.player_hp, battle.player_max_hp, me.level, mr, True)
+        if self.atk is not None:   # (the move: its beam, its type's sprites)
+            self.atk.draw(screen)
         for s in self.shots:  # an attack: an orb of the attacker's type's colour, flying across
             a, b = (mr.center, fr.center) if s[0] == "me" else (fr.center, mr.center)
             k = min(1.0, s[2] / self.SHOT)
@@ -516,7 +723,8 @@ class OverworldView:
                 continue
             img = play._icon(mon, TILE + 8, flip=mine and self.spot[0] > self.mine[0], facing=my_face if mine else foe_face)
             if img is not None:
-                screen.blit(img, img.get_rect(midbottom=(r.centerx, r.bottom + 4)))
+                at, img = self._moved(r, mon, img)
+                screen.blit(img, img.get_rect(midbottom=(at.centerx, at.bottom + 4)))
             if mon.current_hp > 0:   # (a small bar on the map; the names and HP in the battle's own boxes, below)
                 bar = pygame.Rect(0, 0, TILE - 4, 8)
                 bar.midbottom = (r.centerx, r.top - 12)
@@ -528,6 +736,8 @@ class OverworldView:
                 pygame.draw.rect(screen, col, (bar.x, bar.y, int(bar.w * k), bar.h), border_radius=3)
                 if mine:
                     pygame.draw.rect(screen, (120, 200, 255), bar.inflate(4, 4), 2, border_radius=4)
+        if self.atk is not None:   # (the move: its beam, its type's sprites)
+            self.atk.draw(screen)
         for s in self.shots:
             if s[0] not in spots or s[3] not in spots:
                 s[2] = self.SHOT + 1

@@ -32,6 +32,18 @@ PEOPLE = [
      {"text": "Bored grunt", "action": "EVENT", "flag_condition": "not oras_slateport_city_6",
       "event": {"lines": ["Grunt: Ugh, guarding a museum. Here, take this TM off my hands. I never use it anyway."],
                 "gift_item": {"TM018": 1}, "flag": "oras_slateport_city_6"}}),
+    # ORAS (H5, Dev Map clean-hoenn-main-reveal-glass-shop): Mauville's mirror shop owner gives the Reveal Glass once you
+    # bring one of the forces of nature (Tornadus, Thundurus, Landorus: the Soaring storm cloud's); main's item and its form switch
+    ("MAUVILLE_CITY", None, "shopper_house", 6, 3, [
+        {"text": "Mirror shop owner", "action": "EVENT", "flag_condition": "not got_reveal_glass_hoenn",
+         "condition": {"any": ["party_has:641", "party_has:642", "party_has:645"]},
+         "event": {"lines": ["Mirror shop owner: Oh my! That Pokemon with you... it's one of the forces of nature!",
+                             "Mirror shop owner: This old mirror is said to show such Pokemon's true form. It should be yours."],
+                   "gift_item": {"REVEAL_GLASS": 1}, "flag": "got_reveal_glass_hoenn"}},
+        {"text": "Mirror shop owner", "action": "EVENT",   # (only when the gift can't be given: two shown would be a menu)
+         "condition": {"any": [["not:party_has:641", "not:party_has:642", "not:party_has:645"], "got_reveal_glass_hoenn"]},
+         "event": {"lines": ["Mirror shop owner: Welcome! Mirrors of every shape. One of them is said to reveal the truth...",
+                             "Mirror shop owner: ...but only to a Pokemon that commands the wind, the thunder or the land."]}}]),
 ]
 TRAINERS = [   # (trainers in the area data with no spot on the map: set on open water near the route's others)
     ("HOENN_ROUTE_129", 0, 55, 25, "Scuba Diver Colten"),
@@ -221,6 +233,20 @@ def _museum_queue(maps):
             bar.append(b)
 
 
+def _home_tv(maps):
+    """Dev Map clean-hoenn-main-swarm-tv: the TV in your house (Emerald's, at 4,4 in the picture) tells today's mass outbreak
+    once there is one (swarms.SWARMS["HOENN"], after the Hall of Fame); otherwise it's just the TV."""
+    m = maps.get("LITTLEROOT_TOWN")
+    room = ((m or {}).get("rooms") or {}).get("home")
+    if not room or "!" in "".join(room["art"]):
+        return
+    row = room["art"][4]
+    room["art"][4] = row[:4] + "!" + row[5:]
+    room["signs"] = [["The TV's on. A cooking show... Mom's favourite."]]
+    room["sign_events"] = {"4,4": {"text": "TV", "action": "EVENT",
+                                   "event": {"swarm_news": "HOENN", "lines": ["The TV's on. A cooking show... Mom's favourite."]}}}
+
+
 def _part(m, floor, room):
     if room:
         return m["rooms"][room]
@@ -238,6 +264,7 @@ def _at(part, x, y):
 def apply(maps):
     _slateport_sub(maps)
     _museum_queue(maps)
+    _home_tv(maps)
     for key, floor, room, x, y, who in PEOPLE:
         m = maps.get(key)
         if m:

@@ -626,7 +626,7 @@
       "area_type": "town",
       "route_name": "Petalburg City",
       "region": "HOENN",
-      "backgrounds": { "pokecenter": "petalburg_center.png", "pokemart": "petalburg_mart.png", "gym": ["petalburg_gym.png", "petalburg_gym_2.png", "petalburg_gym_leader.png"] },
+      "backgrounds": { "pokecenter": "petalburg_center.png", "pokemart": "petalburg_mart.png", "gym": "petalburg_gym.png" },
       "has_gym": true,
       "gym": {"requirements": {"badges": 4, "fail_text": ["Dad: So you want to battle me? Earn four badges first.", "Then we'll see how strong you've become!"]}, "trainers": [{"name": "Ace Trainer Randall", "class": "ACE_TRAINER", "sprite": "acetrainer_m.png", "team": [301], "levels": [28], "rewards": {"balls": 2}}, {"name": "Ace Trainer Mary", "class": "ACE_TRAINER", "sprite": "acetrainer_f.png", "team": [301], "levels": [28], "rewards": {"balls": 2}}], "leader": {"name": "Norman", "class": "GYM_LEADER", "sprite": "norman.png", "team": [289, 288, 289], "levels": [28, 28, 30], "badge_reward": "BALANCE", "rewards": {"balls": 5, "TM257": 1}, "dialogue": {"intro": ["Dad: So you really did earn four badges, {player_name}. I'm proud of you. But in this Gym I'm not your father, I'm its Leader, and I won't go easy on you!"], "player_won": ["Dad: ...I lost to my own child. You've grown so strong, {player_name}. I couldn't be prouder.", "Dad: Take the Balance Badge. You earned it!"], "player_lost": ["Dad: Don't hang your head, {player_name}. Train hard and come back. Your dad will be right here waiting."]}, "victory_flag": "badge_balance_earned", "team_moves": [["RETALIATE", "YAWN", "FEINT-ATTACK", "ENCORE"], ["ENCORE", "FEINT-ATTACK", "RETALIATE", "FURY-SWIPES"], ["RETALIATE", "FEINT-ATTACK", "SWAGGER", "CHIP-AWAY"]]}},
       "travel_options": [
@@ -796,7 +796,7 @@
       "area_type": "town",
       "route_name": "Lavaridge Town",
       "region": "HOENN",
-      "backgrounds": { "pokecenter": "lavaridge_center.png", "pokemart": "lavaridge_mart.png", "gym": ["lavaridge_gym.png", "lavaridge_gym_leader.png"] },
+      "backgrounds": { "pokecenter": "lavaridge_center.png", "pokemart": "lavaridge_mart.png", "gym": "lavaridge_gym.png" },
       "has_gym": true,
       "gym": {"trainers": [{"name": "Kindler Jeff", "class": "KINDLER", "sprite": "kindler.png", "team": [322], "rewards": {"balls": 2}}], "leader": {"name": "Flannery", "class": "GYM_LEADER", "sprite": "flannery.png", "team": [218, 322, 324], "levels": [26, 26, 28], "badge_reward": "HEAT", "rewards": {"balls": 5, "RARE_CANDY": 3, "ROOT_FOSSIL": 1, "TM157": 1}, "dialogue": {"intro": ["Flannery: Welcome to the Lavaridge Town Gym! I'm Flannery, the Fire-type Gym Leader."], "player_won": ["You're too hot to handle!", "Take this Root Fossil too. The fossil lab in Rustboro City can revive it!"], "player_lost": ["Don't worry, you'll get it next time."]}, "victory_flag": "badge_heat_earned", "movesets": {"218": ["OVERHEAT", "SMOG", "LIGHT-SCREEN", "SUNNY-DAY"], "324": ["OVERHEAT", "SUNNY-DAY", "BODY-SLAM", "ATTRACT"]}}, "requirements": {"badges": 3, "fail_text": ["Flannery is only accepting challengers with 3 Hoenn badges.", "Come back after you've beaten the earlier Gyms!"]}},
       "travel_options": [
@@ -874,7 +874,7 @@
       "area_type": "town",
       "route_name": "Mossdeep City",
       "region": "HOENN",
-      "backgrounds": { "pokecenter": "mossdeep_center.png", "pokemart": "mossdeep_mart.png", "gym": ["mossdeep_gym.png", "mossdeep_gym_leader.png"] },
+      "backgrounds": { "pokecenter": "mossdeep_center.png", "pokemart": "mossdeep_mart.png", "gym": "mossdeep_gym.png" },
       "has_gym": true,
       "gym": {"trainers": [{"name": "Psychic Preston", "class": "PSYCHIC", "sprite": "psychic.png", "team": [307, 308], "rewards": {"balls": 2}}], "leader": {"battle_options": {"double": true}, "name": "Tate & Liza", "class": "GYM_LEADER", "sprite": "tate_liza.png", "team": [337, 338], "levels": [45, 45], "badge_reward": "MIND", "rewards": {"balls": 5, "DIVE_GEAR": 1, "TM129": 1}, "dialogue": {"intro": ["Tate & Liza: Welcome to the Mossdeep City Gym! We're the Psychic-type Gym Leaders."], "player_won": ["Your mind is sharp!"], "player_lost": ["Don't worry, you'll get it next time."]}, "victory_flag": "badge_mind_earned", "movesets": {"337": ["LIGHT-SCREEN", "PSYCHIC", "HYPNOSIS", "CALM-MIND"], "338": ["SUNNY-DAY", "SOLAR-BEAM", "PSYCHIC", "FLAMETHROWER"]}}, "requirements": {"badges": 6, "fail_text": ["Tate & Liza is only accepting challengers with 6 Hoenn badges.", "Come back after you've beaten the earlier Gyms!"]}},
       "travel_options": [

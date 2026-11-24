@@ -111,6 +111,24 @@ EVENTS = {
         "rewards": {"balls": 3}, "dialogue": {"player_won": ["Colress: I see!"], "player_lost": ["Colress: Hmm. Not yet, then."]}}},
     "b2_colress_protein": {"gift_item": {"PROTEIN": 1}, "flag": "b2_colress_r4_protein"},
     "b2_dowsing": {"gift_item": {"DOWSING_MACHINE": 1}, "flag": "b2_got_dowsing"},
+    # (batch 4a, 11-23: Nimbasa. Teams from Black 2's own trainer table: dev/builders/town_maps/unova_teams.json. Hugh's is
+    #  our guess: the game lends him his current team; you and Rosa / Nate against Ingo and Emmet; Bianca's HM02 Fly on Route 5)
+    "b2_nimbasa_plasma": {"flag": "b2_nimbasa_plasma_battled", "battle": {"class": "TEAM_PLASMA", "levels": [27], "name": "Team Plasma Grunt", "rewards": {"balls": 3}, "sprite": "b2_plasma_grunt_m.png", "team": [568], "battle_options": {"double": True, "partner": {"name": "{rival_name}", "class": "PKMN_TRAINER", "sprite": "hugh.png", "team": [499, 520], "levels": [27, 25], "team_choice": {"495": [499, 520], "498": [502, 520], "501": [496, 520]}}, "second_trainer": {"class": "TEAM_PLASMA", "levels": [27], "name": "Team Plasma Grunt", "rewards": {"balls": 3}, "sprite": "b2_plasma_grunt_f.png", "team": [505]}}, "dialogue": {"player_won": ["Team Plasma: We give up! Two kids beat us!"], "player_lost": ["Team Plasma: Is that it?"]}}},
+    "b2_subway_bosses_rosa": {"flag": "b2_subway_bosses", "battle": {"class": "SUBWAY_BOSS", "levels": [26], "name": "Subway Boss Ingo", "rewards": {"balls": 4}, "sprite": "subway_boss.png", "team": [525], "battle_options": {"double": True, "partner": {"name": "Rosa", "class": "PKMN_TRAINER", "sprite": "b2_rosa.png", "team": [502, 513], "levels": [25, 23], "team_choice": {"495": [502, 513], "498": [496, 515], "501": [499, 511]}}, "second_trainer": {"class": "SUBWAY_BOSS", "levels": [26], "name": "Subway Boss Emmet", "rewards": {"balls": 4}, "sprite": "b2_emmet.png", "team": [533]}}, "dialogue": {"player_won": ["Ingo: Bravo! You and your Pokemon make a fine combination!"], "player_lost": ["Emmet: All aboard... for next time!"]}}},
+    "b2_subway_bosses_nate": {"flag": "b2_subway_bosses", "battle": {"class": "SUBWAY_BOSS", "levels": [26], "name": "Subway Boss Ingo", "rewards": {"balls": 4}, "sprite": "subway_boss.png", "team": [525], "battle_options": {"double": True, "partner": {"name": "Nate", "class": "PKMN_TRAINER", "sprite": "b2_nate.png", "team": [502, 513], "levels": [25, 23], "team_choice": {"495": [502, 513], "498": [496, 515], "501": [499, 511]}}, "second_trainer": {"class": "SUBWAY_BOSS", "levels": [26], "name": "Subway Boss Emmet", "rewards": {"balls": 4}, "sprite": "b2_emmet.png", "team": [533]}}, "dialogue": {"player_won": ["Ingo: Bravo! You and your Pokemon make a fine combination!"], "player_lost": ["Emmet: All aboard... for next time!"]}}},
+    "b2_fly": {"gift_item": {"HM_FLY": 1}, "flag": "b2_got_fly"},
+    "b2_subway_fight": {"world": "battle_subway", "fight": True},
+    "b2_coaster_switch_0": {"world": "unova_story", "toggle": "b2_coaster_sw0"},   # (the roller coaster's switches, 11-23)
+    "b2_coaster_switch_1": {"world": "unova_story", "toggle": "b2_coaster_sw1"},   # (the roller coaster's switches, 11-23)
+    "b2_coaster_switch_2": {"world": "unova_story", "toggle": "b2_coaster_sw2"},   # (the roller coaster's switches, 11-23)
+    "b2_coaster_switch_3": {"world": "unova_story", "toggle": "b2_coaster_sw3"},   # (the roller coaster's switches, 11-23)
+    # (Nimbasa's Big Stadium and Small Court: the lobbies' warp panels onto the day's field and back, 11-24)
+    "b2_field_stadium": {"world": "nimbasa_sports", "enter": "stadium"},
+    "b2_field_court": {"world": "nimbasa_sports", "enter": "court"},
+    "b2_field_leave_stadium": {"world": "nimbasa_sports", "leave": "stadium"},
+    "b2_field_leave_court": {"world": "nimbasa_sports", "leave": "court"},
+    "b2_prop_case": {"world": "musical", "case": True},   # (the Musical Theater's owner hands over the Prop Case, 11-24)
+    "b2_r5_grotto_minccino": {"world": "grottoes", "grotto": 1, "fill": {"kind": "pokemon", "id": 572, "level": 22, "female": True}},
     # (the Rocket Hideout's B1F Persian statues: walk in front of one and a grunt comes running, once each - HGSS, Jordan 11-15)
     "hq_alarm_1": {"lines": ["Rocket Grunt: Intruder alert! The Persian statue spotted you!"], "flag": "hq_alarm_1",
         "battle": {"name": "Rocket Grunt", "class": "ROCKET", "sprite": "rocket_grunt_m.png", "team": [19, 41], "levels": [18, 18],

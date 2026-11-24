@@ -70,6 +70,17 @@ print("3) the slab: the slide puzzle, then the floor gives way")
 slab = next(iter(rooms["kabuto"].get("sign_events") or {}), None)
 ev = (rooms["kabuto"].get("sign_events") or {}).get(slab) or {}
 check(ev.get("action") == "TILE_PUZZLE" and ev.get("panel") == "kabuto", f"the slab is the Kabuto puzzle ({ev.get('text')})")
+sx, sy = (int(v) for v in slab.split(","))   # (11-23: read the way a player does - from the notch under it, SoulSilver's own open tile)
+t.npc_active = False; t.player = t.anim_from = (sx, sy + 1); t.facing = (0, -1); t.anim = 0
+check(t._open((sx, sy + 1)), f"the notch under the slab ({sx}, {sy + 1}) is open ground")
+t._step_tile(0, -1)
+for _ in range(30):
+    if type(g.current_state).__name__ == "AlphPuzzle" or not getattr(t, "npc_active", False):
+        break
+    t.update(); t.draw()
+check(type(g.current_state).__name__ == "AlphPuzzle" or t.npc_active, f"walking up to the slab reads it ({type(g.current_state).__name__})")
+if type(g.current_state).__name__ == "AlphPuzzle":
+    g.change_state(t)
 t.npc_active = False
 t._get_callback_for_option(ev)()
 pz = g.current_state

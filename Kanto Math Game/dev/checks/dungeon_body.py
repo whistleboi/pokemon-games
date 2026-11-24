@@ -135,7 +135,10 @@ _bag = _Bag(g, p)
 _bag._use_field_item("HONEY")  # used from the Bag: back to the map, and it draws them in
 check(g.current_state is p, "HONEY from the Bag: back on the map")
 talk(p)
-frames(p, 3)
+for _ in range(600):   # (region/systems 11-23: the three walk up to you first, then the catch screen: walkup suite)
+    if p.mode == "CATCH":
+        break
+    frames(p)
 check(p.mode == "CATCH" and sum(x is not None for x in p.p_data) == 3,
       f"HONEY draws three wild Pokemon to catch ({[getattr(x, 'name', None) for x in p.p_data]})")
 check(story.inventory.get("HONEY") == 0 and not p.uses_keyboard, "the Honey is used up; the catch screen takes the keys")
@@ -326,6 +329,10 @@ check(_p.dialogue_box.visible and g.current_state is _p, "OVERWORLD: the trainer
 while _p.dialogue_box.visible:
     _p.dialogue_box.advance()
     _p.update()
+for _ in range(600):   # (a walk over first, when they need room to stand side by side: map_attacks suite; Jordan 11-24)
+    if g.current_state is not _p:
+        break
+    _p.update()
 _b = g.current_state
 check(isinstance(_b, TrainerBattleState) and getattr(_b, "overworld", None) is not None,
       "...then the turn-based battle, drawn on the map")
@@ -343,11 +350,27 @@ check(_it.route_rewards(1, {"balls": 3}) == {"POTION": 2, "balls": 0}
       and _it.route_rewards(8, {}) == {"HYPER_POTION": 2, "REVIVE": 1, "balls": 0}
       and not any("MAX_REVIVE" in _it.route_rewards(b, {}) for b in range(9)),
       "prizes grow with the badges: Potions, Super Potions and Revives, Hyper Potions (never a Max Revive)")
+# (Jordan 11-24: the important story battles stay on the battle screen - Leaders, bosses, the rival, the League)
+from src.states.overworld.dungeon import DungeonState as _DS
+check(all(_DS.story_battle(i) for i in ({"class": "RIVAL"}, {"class": "ROCKET_LEADER"}, {"class": "GYM_LEADER"}, {"class": "ELITE_FOUR"},
+                                       {"class": "CHAMPION"}, {"class": "GRUNT", "is_boss_battle": True}, {"class": "ADMIN", "villain": "leader"}))
+      and not _DS.story_battle({"class": "YOUNGSTER"}), "story battles: Leaders, bosses, the rival, the Elite Four and the Champion (not a Youngster)")
+_p = kanto("KANTO_ROUTE_3", came="PEWTER_CITY")
+_t = next((m for f in _p.run.floors for m in f.movers if m.kind == "trainer" and not story.is_trainer_defeated("KANTO_ROUTE_3", m.payload[0])), None)
+if _t is not None:
+    _t.payload = (_t.payload[0], dict(_t.payload[1] or {}, **{"class": "RIVAL"}))
+    _p._battle_trainer(_t)
+    check(isinstance(g.current_state, TrainerIntroState) and not _p.dialogue_box.visible,
+          f"OVERWORLD: a rival on a route map still battles on the battle screen ({type(g.current_state).__name__})")
 _p = kanto("KANTO_ROUTE_1")
 _ww, _ = beside(_p, "wild")
 _p._meet_wild(_ww)
 check(_p.mode == "CHOICE", "OVERWORLD: a wild one is still the catch-or-battle choice")
 _p._pick(1)
+for _ in range(600):   # (a walk over first, when they need room)
+    if g.current_state is not _p:
+        break
+    _p.update()
 check(isinstance(g.current_state, WildBattleState) and getattr(g.current_state, "overworld", None) is not None,
       "...and its battle is on the map too")
 story.battle_style = "TRADITIONAL"

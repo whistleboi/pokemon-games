@@ -85,7 +85,7 @@
         "lance_mahogany_intro": ["Lance: I've tracked the source of the high-frequency signal to this shop.", "Team Rocket is hiding a massive base beneath Mahogany Town.", "They are forcing Pokémon to evolve using artificial radio waves!", "I will go ahead and scout. Follow me when you are ready!"],
         "lance_mahogany_cleared": ["Lance: Excellent work. Team Rocket's radio signal has been cut off.", "The Dragon's Den in Blackthorn is your next destination."],
         "kimono_girls_intro": ["We are the Kimono Girls of Ecruteak.", "We dance to honor the legends of the towers.", "A master of math and heart may one day see the rainbow bird."],
-        "jasmine_lighthouse_intro": ["Jasmine: Amphy is sick and the lighthouse can't shine.", "There is a pharmacy in Cianwood City that has a special medicine.", "But I cannot leave Amphy alone... please, could you go for me?", "You will need to cross the sea. Please, take this SURF BOARD.", "You received the SURF BOARD!"],
+        "jasmine_lighthouse_intro": ["Jasmine: Amphy is sick and the lighthouse can't shine.", "There is a pharmacy in Cianwood City that has a special medicine.", "But I cannot leave Amphy alone... please, could you go for me?", "Cianwood is across the sea, to the west. Please, take the lift down - I'll unlock it for you."],
         "jasmine_lighthouse_medicine": ["Jasmine: You brought the medicine from Cianwood?", "Thank you so much! Please, give it to Amphy!", "I cannot thank you enough. Math truly connects all hearts."],
         "amphy_sick": ["Amphy looks very weak...", "Its light is barely flickering."],
         "amphy_cured": ["Amphy swallowed the SECRET POTION!", "The light in its tail begins to glow brightly!", "Amphy is cured!"],
@@ -483,7 +483,6 @@
             "area_type": "town",
             "route_name": "New Bark Town",
             "region": "JOHTO",
-            "backgrounds": {"main": "new_bark_town.png", "lab": "new_bark_lab.png", "mom": "new_bark_mom.png"},
             "has_gym": false,
             "travel_options": [
                 {"text": "Route 27", "target_area": "KANTO_ROUTE_27", "condition": "has_8_johto_badges"},
@@ -513,7 +512,6 @@
 
             "region": "JOHTO",
 
-            "backgrounds": {"main": "cherrygrove_city.png"},
 
             "travel_options": [
 
@@ -563,7 +561,7 @@
 
             "region": "JOHTO",
 
-            "backgrounds": {"main": "violet_city.png", "gym": "violet_city_gym.png", "battle": "battle_gym_violet.png"},
+            "backgrounds": {"gym": "violet_city_gym.png"},
 
             "next_area": "JOHTO_ROUTE_31",
 
@@ -577,9 +575,8 @@
 
                 {"text": "Route 32", "target_area": "JOHTO_ROUTE_32", "condition": "has_zephyr_badge"},
 
-                {"text": "Route 36", "target_area": "JOHTO_ROUTE_36"},
+                {"text": "Route 36", "target_area": "JOHTO_ROUTE_36"}
 
-                {"text": "Ruins of Alph", "target_area": "RUINS_OF_ALPH", "condition": "visited_RUINS_OF_ALPH"}
 
             ],
 
@@ -647,7 +644,6 @@
 
             "battle_type": "cave",
 
-            "backgrounds": {"main": "ruins_of_alph.png", "lab": "ruins_lab.png"},
 
             "route_menu": [
 
@@ -667,7 +663,6 @@
 
                 {"text": "Route 32", "target_area": "JOHTO_ROUTE_32", "condition": "has_zephyr_badge"},
 
-                {"text": "Violet City", "target_area": "VIOLET_CITY", "condition": "visited_RUINS_OF_ALPH"},
 
                 {"text": "Union Cave", "target_area": "UNION_CAVE", "condition": "has_zephyr_badge"},
 
@@ -719,7 +714,7 @@
 
             "region": "JOHTO",
 
-            "backgrounds": {"main": "azalea_town.png", "gym": "azalea_gym.png", "battle": "battle_gym_azalea.png"},
+            "backgrounds": {"gym": "azalea_gym.png"},
 
             "has_gym": true,
 
@@ -765,7 +760,7 @@
 
             "region": "JOHTO",
 
-            "backgrounds": {"main": "goldenrod_city.png", "gym": "battle_gym_goldenrod.png"},
+            "backgrounds": {"gym": "battle_gym_goldenrod.png"},
 
             "has_gym": true,
 
@@ -935,7 +930,6 @@
 
             "wild_pool_percentages": "JOHTO_BUG_CONTEST_PERCENTAGES",
 
-            "backgrounds": {"main": "national_park.png", "battle": "national_park.png"},
 
             "trainer_encounter_rate": 0,
 
@@ -980,7 +974,6 @@
             "wild_pool_percentages": "JOHTO_NATIONAL_PARK_DAY_PERCENTAGES",
             "day_pool_percentages": "JOHTO_NATIONAL_PARK_DAY_PERCENTAGES",
             "night_pool_percentages": "JOHTO_NATIONAL_PARK_NIGHT_PERCENTAGES",
-            "backgrounds": {"main": "national_park.png", "battle": "national_park.png"},
             "has_gym": false,
             "min_rounds": 0,
             "trainer_pool": [
@@ -1013,7 +1006,7 @@
 
             "region": "JOHTO",
 
-            "backgrounds": {"main": "ecruteak_city.png", "gym": "battle_gym_ecruteak.png"},
+            "backgrounds": {"gym": "battle_gym_ecruteak.png"},
 
             "has_gym": true,
 
@@ -1073,7 +1066,7 @@
 
             "region": "JOHTO",
 
-            "backgrounds": {"main": "olivine_city.png", "gym": "battle_gym_olivine.png"},
+            "backgrounds": {"gym": "battle_gym_olivine.png"},
 
             "has_gym": true,
 
@@ -1141,7 +1134,7 @@
 
             "region": "JOHTO",
 
-            "backgrounds": {"main": "cianwood_city.png", "gym": "battle_gym_cianwood.png"},
+            "backgrounds": {"gym": "battle_gym_cianwood.png"},
 
             "has_gym": true,
 
@@ -1201,7 +1194,7 @@
 
             "region": "JOHTO",
 
-            "backgrounds": {"main": "mahogany_town.png", "gym": "battle_gym_mahogany.png"},
+            "backgrounds": {"gym": "battle_gym_mahogany.png"},
 
             "has_gym": true,
 
@@ -1251,7 +1244,7 @@
 
             "region": "JOHTO",
 
-            "backgrounds": {"main": "blackthorn_city.png", "gym": "battle_gym_blackthorn.png"},
+            "backgrounds": {"gym": "battle_gym_blackthorn.png"},
 
             "has_gym": true,
 
@@ -1375,7 +1368,6 @@
 
             "fly_island": true,
 
-            "backgrounds": {"main": "silver_entrance.png"},
 
             "wild_pool_percentages": "JOHTO_MT_SILVER_CITY_DAY_PERCENTAGES",
 
@@ -1419,7 +1411,6 @@
 
             "route_name": "Mr. Pokemon's House",
 
-            "backgrounds": {"main": "mr_pokemon_house.png"},
 
             "travel_options": [
 
@@ -1500,9 +1491,8 @@
             "area_type": "town",
             "region": "JOHTO",
             "route_name": "Glitter Lighthouse",
-            "backgrounds": {"main": "lighthouse_top.png"},
             "travel_options": [
-                {"text": "Olivine City", "target_area": "OLIVINE_CITY", "flag_condition": "ampharos_cured"},
+                {"text": "Olivine City", "target_area": "OLIVINE_CITY", "condition": {"any": ["jasmine_explained", "ampharos_cured"]}},
                 {"text": "Stairs Down", "target_area": "OLIVINE_LIGHTHOUSE_FLOORS"}
             ],
             "explore_options": [
@@ -1518,12 +1508,11 @@
             "region": "JOHTO",
             "route_name": "Silver League",
             "backgrounds": {
-                "main": "silver_entrance.png", 
                 "gym": ["battle_elite_will.png", "battle_elite_koga_johto.png", "battle_elite_bruno_johto.png", "battle_elite_karen.png", "battle_champion_johto.png"]
             },
             "has_gym": true,
             "gym": {"trainers": [{"sprite": "will.png", "name": "Will", "class": "ELITE_FOUR", "team": [178, 124, 103, 80, 178], "levels": [40, 41, 41, 41, 42], "rematch": {"team": [437, 124, 326, 80, 282, 178], "levels": [58, 60, 59, 60, 61, 62], "movesets": {"437": ["GRAVITY", "REFLECT", "PAYBACK", "PSYCHIC"], "124": ["FAKE-TEARS", "LOVELY-KISS", "DREAM-EATER", "BLIZZARD"], "326": ["CONFUSE-RAY", "SIGNAL-BEAM", "POWER-GEM", "PSYCHIC"], "80": ["CURSE", "AMNESIA", "BODY-SLAM", "PSYCHIC"], "282": ["CALM-MIND", "CHARGE-BEAM", "FOCUS-BLAST", "PSYCHIC"], "178": ["CONFUSE-RAY", "QUICK-ATTACK", "SHADOW-BALL", "PSYCHIC"]}}, "rewards": {"balls": 15}, "is_boss_battle": true, "movesets": {"178": ["U-TURN", "ME-FIRST", "CONFUSE-RAY", "PSYCHIC"], "124": ["LOVELY-KISS", "DOUBLE-SLAP", "ICE-PUNCH", "PSYCHIC"], "103": ["REFLECT", "HYPNOSIS", "EGG-BOMB", "PSYCHIC"], "80": ["CURSE", "AMNESIA", "WATER-PULSE", "PSYCHIC"]}}, {"sprite": "koga_johto.png", "name": "Koga", "class": "ELITE_FOUR", "team": [168, 49, 89, 205, 169], "levels": [40, 41, 42, 43, 44], "rematch": {"team": [435, 454, 317, 49, 89, 169], "levels": [61, 60, 62, 63, 62, 64], "movesets": {"435": ["TOXIC", "DIG", "SUCKER-PUNCH", "EXPLOSION"], "454": ["SWAGGER", "X-SCISSOR", "CROSS-CHOP", "GUNK-SHOT"], "317": ["SLUDGE-BOMB", "AMNESIA", "PAIN-SPLIT", "YAWN"], "49": ["BATON-PASS", "DOUBLE-TEAM", "SILVER-WIND", "PSYCHIC"], "89": ["MINIMIZE", "SCREECH", "SWAGGER", "TOXIC"], "169": ["FLY", "CROSS-POISON", "MEAN-LOOK", "TOXIC"]}}, "rewards": {"balls": 15}, "is_boss_battle": true, "movesets": {"168": ["SPIDER-WEB", "BATON-PASS", "GIGA-DRAIN", "POISON-JAB"], "49": ["PSYCHIC", "GUST", "SUPERSONIC", "TOXIC"], "89": ["GUNK-SHOT", "MINIMIZE", "SCREECH", "TOXIC"], "205": ["SWIFT", "EXPLOSION", "PROTECT", "TOXIC-SPIKES"], "169": ["QUICK-ATTACK", "WING-ATTACK", "DOUBLE-TEAM", "POISON-FANG"]}}, {"sprite": "bruno.png", "name": "Bruno", "class": "ELITE_FOUR", "team": [237, 106, 107, 95, 68], "levels": [42, 42, 42, 43, 46], "rematch": {"team": [237, 106, 297, 68, 448, 107], "levels": [62, 61, 62, 64, 64, 61], "movesets": {"237": ["CLOSE-COMBAT", "EARTHQUAKE", "COUNTER", "QUICK-ATTACK"], "106": ["CLOSE-COMBAT", "BLAZE-KICK", "REVERSAL", "SWAGGER"], "297": ["BULK-UP", "LOW-KICK", "PAYBACK", "BULLET-PUNCH"], "68": ["DYNAMIC-PUNCH", "STONE-EDGE", "BULLET-PUNCH", "FORESIGHT"], "448": ["CLOSE-COMBAT", "IRON-TAIL", "COUNTER", "EXTREME-SPEED"], "107": ["CLOSE-COMBAT", "DRAIN-PUNCH", "BULLET-PUNCH", "SUBSTITUTE"]}}, "rewards": {"balls": 15}, "is_boss_battle": true, "movesets": {"237": ["DIG", "COUNTER", "TRIPLE-KICK", "QUICK-ATTACK"], "106": ["HIGH-JUMP-KICK", "BLAZE-KICK", "FOCUS-ENERGY", "SWAGGER"], "107": ["THUNDER-PUNCH", "ICE-PUNCH", "FIRE-PUNCH", "BULLET-PUNCH"], "95": ["SANDSTORM", "DRAGONBREATH", "ROCK-SLIDE", "EARTHQUAKE"], "68": ["REVENGE", "CROSS-CHOP", "ROCK-SLIDE", "FORESIGHT"]}}, {"sprite": "karen.png", "name": "Karen", "class": "ELITE_FOUR", "team": [197, 45, 198, 94, 229], "levels": [42, 42, 44, 45, 47], "rematch": {"team": [461, 442, 430, 197, 229, 359], "levels": [62, 62, 64, 64, 63, 63], "movesets": {"461": ["ICE-PUNCH", "NIGHT-SLASH", "LOW-KICK", "ICE-SHARD"], "442": ["CURSE", "CONFUSE-RAY", "PAIN-SPLIT", "SUCKER-PUNCH"], "430": ["THUNDER-WAVE", "WHIRLWIND", "DRILL-PECK", "SUCKER-PUNCH"], "197": ["CONFUSE-RAY", "CURSE", "PAYBACK", "SUCKER-PUNCH"], "229": ["NASTY-PLOT", "DARK-PULSE", "FLAMETHROWER", "SLUDGE-BOMB"], "359": ["DETECT", "PERISH-SONG", "NIGHT-SLASH", "PSYCHO-CUT"]}}, "rewards": {"balls": 15}, "victory_flag": "beat_johto_elite_four", "is_boss_battle": true, "movesets": {"197": ["DOUBLE-TEAM", "CONFUSE-RAY", "FEINT-ATTACK", "PAYBACK"], "45": ["STUN-SPORE", "PETAL-DANCE", "ACID", "MOONLIGHT"], "198": ["SUCKER-PUNCH", "FEINT-ATTACK", "PLUCK", "WHIRLWIND"], "94": ["FOCUS-BLAST", "DESTINY-BOND", "SPITE", "LICK"], "229": ["NASTY-PLOT", "DARK-PULSE", "FLAMETHROWER", "CRUNCH"]}}], "leader": {"sprite": "lance.png", "name": "Lance", "class": "CHAMPION", "team": [130, 149, 149, 142, 6, 149], "levels": [44, 49, 49, 48, 48, 50], "rematch": {"team": [373, 445, 149, 6, 334, 130], "levels": [72, 72, 75, 68, 73, 68], "movesets": {"373": ["DRAGON-CLAW", "FLAMETHROWER", "SHADOW-CLAW", "REST"], "445": ["OUTRAGE", "SWORDS-DANCE", "EARTHQUAKE", "ROAR"], "149": ["DRACO-METEOR", "SAFEGUARD", "FIRE-BLAST", "HYPER-BEAM"], "6": ["FLAMETHROWER", "HYPER-BEAM", "DRAGON-CLAW", "AIR-SLASH"], "334": ["DOUBLE-TEAM", "DRAGONBREATH", "PERISH-SONG", "HYPER-BEAM"], "130": ["DRAGON-DANCE", "WATERFALL", "ICE-FANG", "THUNDER-WAVE"]}}, "is_boss_battle": true, "rewards": {"balls": 25, "MASTER_BALL": 1}, "victory_flag": "beat_johto_champion", "movesets": {"130": ["WATERFALL", "DRAGON-PULSE", "ICE-FANG", "FLAIL"], "149": ["DRAGON-RUSH", "THUNDER-WAVE", "THUNDER", "HYPER-BEAM"], "142": ["ROCK-SLIDE", "AERIAL-ACE", "CRUNCH", "THUNDER-FANG"], "6": ["AIR-SLASH", "FIRE-FANG", "DRAGON-CLAW", "SHADOW-CLAW"]}}},
-            "travel_options": [{"text": "Mt. Silver City", "target_area": "MT_SILVER_CITY"}, {"text": "Reception Gate", "target_area": "POKEMON_LEAGUE_GATE"}],
+            "travel_options": [],
             "explore_options": [
                 { "text": "Heal", "action": "HEAL" },
                 { "text": "Shop", "action": "SHOP" },
@@ -2796,7 +2785,6 @@
         
             "wild_pool_percentages": "JOHTO_LAKE_OF_RAGE_PERCENTAGES",
         
-            "backgrounds": {"battle": "battle_lake_rage.png"},
         
             "area_boss": {"id": 130, "name": "Red Gyarados", "is_shiny": true, "victory_flag": "defeated_red_gyarados"},
         
@@ -2872,7 +2860,7 @@
 
                 {"name": "Psychic Phil", "class": "PSYCHIC", "sprite": "psychic.png", "team": [177, 64], "rewards": {"balls": 2}},
 
-                {"name": "Fisherman Wilton", "class": "FISHERMAN", "sprite": "fisherman.png", "team": [118, 118, 119], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [118, 118, 119], "levels": [32, 32, 36], "gift": {"POKE_BALL": 1}}, {"team": [118, 119, 119], "levels": [32, 36, 40], "gift": {"GREAT_BALL": 1}}, {"team": [119, 119, 119], "levels": [42, 46, 63], "gift": {"ULTRA_BALL": 1}}], "call": ["It's Wilton! I found a ball while fishing. Come battle me on Route 44 and it's yours!"]}},
+                {"name": "Fisherman Wilton", "class": "FISHERMAN", "sprite": "fisherman.png", "team": [118, 118, 119], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [118, 118, 119], "levels": [32, 32, 36], "gift": {"balls": 1}}, {"team": [118, 119, 119], "levels": [32, 36, 40], "gift": {"GREAT_BALL": 1}}, {"team": [119, 119, 119], "levels": [42, 46, 63], "gift": {"ULTRA_BALL": 1}}], "call": ["It's Wilton! I found a ball while fishing. Come battle me on Route 44 and it's yours!"]}},
 
                 {"name": "Cooltrainer Allen", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "team": [147, 148, 6], "rewards": {"balls": 2}},
 
@@ -3074,7 +3062,6 @@
 
             "wild_pool_percentages": "JOHTO_UNION_CAVE_DAY_PERCENTAGES",
 
-            "backgrounds": {"battle": "battle_union_cave.png"},
 
             "min_rounds": 2,
 
@@ -3168,7 +3155,6 @@
         
             "min_rounds": 2,
         
-            "backgrounds": {"battle": "battle_dark_cave.png"},
         
             "trainer_pool": [
         
@@ -3240,7 +3226,6 @@
         
             "min_rounds": 2,
         
-            "backgrounds": {"battle": "battle_slowpoke_well.png"},
         
             "trainer_pool": [
         
@@ -3306,7 +3291,6 @@
         
             "min_rounds": 2,
         
-            "backgrounds": {"battle": ["battle_forest1.png", "battle_forest2.png", "battle_forest3.png"]},
         
             "trainer_pool": [
         
@@ -3374,7 +3358,6 @@
         
             "min_rounds": 2,
         
-            "backgrounds": {"battle": "battle_sprout_tower.png"},
         
             "trainer_pool": [
         
@@ -3440,7 +3423,6 @@
         
             "min_rounds": 2,
         
-            "backgrounds": {"battle": "battle_burned_tower.png"},
         
             "area_boss": {"id": 245, "name": "Suicune"},
         
@@ -3502,7 +3484,6 @@
         
             "min_rounds": 2,
         
-            "backgrounds": {"battle": "battle_bell_tower.png"},
         
             "area_boss": {"id": 250, "level": 60, "name": "Ho-Oh", "victory_flag": "caught_ho_oh"},
         
@@ -3570,7 +3551,6 @@
         
             "min_rounds": 2,
         
-            "backgrounds": {"battle": "battle_mt_mortar.png"},
         
             "trainer_pool": [
         
@@ -3674,7 +3654,6 @@
         
             "min_rounds": 2,
         
-            "backgrounds": {"battle": "battle_ice_path.png"},
         
             "trainer_pool": [
         
@@ -3742,21 +3721,10 @@
         
             "min_rounds": 4,
         
-            "backgrounds": {"battle": "battle_whirl_islands.png"},
         
             "area_boss": {"id": 249, "level": 60, "name": "Lugia", "victory_flag": "caught_lugia"},
         
-            "trainer_pool": [
-        
-                {"name": "Swimmer Berke", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [72, 73], "rewards": {"balls": 2}},
-        
-                {"name": "Swimmer Dawn", "class": "SWIMMER", "sprite": "swimmer_f.png", "team": [116, 117], "rewards": {"balls": 2}},
-        
-                {"name": "Swimmer Simon", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [73], "rewards": {"balls": 2}},
-        
-                {"name": "Swimmer Paula", "class": "SWIMMER", "sprite": "swimmer_f.png", "team": [120], "rewards": {"balls": 2}}
-        
-            ],
+            "trainer_pool": [],
         
             "route_menu": [
         
@@ -4026,7 +3994,6 @@
 
             "min_rounds": 0,
 
-            "backgrounds": {"main": "ecruteak_dance_theater.png", "battle": "battle_ecruteak_dance.png"},
 
             "route_menu": [
 
@@ -4046,7 +4013,7 @@
 
                 {"name": "Kimono Girl Kuni", "class": "KIMONO_GIRL", "sprite": "kimono_girl.png", "team": [134], "rewards": {"balls": 2}, "levels": [38], "when_flags": ["badge:RISING"]},
 
-                {"name": "Kimono Girl Miki", "class": "KIMONO_GIRL", "sprite": "kimono_girl.png", "team": [136], "rewards": {"balls": 5, "TIDAL_BELL": 1}, "victory_flag": "kimono_girls_defeated", "is_boss_battle": true, "dialogue": {"intro": ["I am the last of the sisters.", "Let us dance!"], "player_won": ["Incredible. The bell resonates with you."]}, "levels": [38], "when_flags": ["badge:RISING"]}
+                {"name": "Kimono Girl Miki", "class": "KIMONO_GIRL", "sprite": "kimono_girl.png", "team": [136], "rewards": {"balls": 5}, "is_boss_battle": true, "dialogue": {"intro": ["I am the last of the sisters.", "Let us dance!"], "player_won": ["Incredible. You and your Pokemon move as one."]}, "levels": [38], "when_flags": ["badge:RISING"]}
 
             ]
 
@@ -4185,8 +4152,6 @@
             "min_rounds": 2,
 
             "trainer_pool": [
-
-                {"name": "Cooltrainer Darin", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "team": [148], "rewards": {"balls": 5, "DRATINI": 1}, "victory_flag": "received_den_dratini"},
 
                 {"name": "Ace Trainer Kobe", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "team": [148], "rewards": {"balls": 2}},
 
@@ -4388,8 +4353,8 @@
             "reward": "Zephyr Badge"
         },
         {
-            "id": "johto_m5", "type": "MAIN", "title": "Slowpoke Rescue", "description": "Team Rocket is cutting off Slowpoke tails in Azalea Town! Stop them at the Slowpoke Well.",
-            "target": "SLOWPOKE_WELL",
+            "id": "johto_m5", "type": "MAIN", "title": "Slowpoke Rescue", "description": "Elm's aide is waiting in Violet City with something for you. Then head south through Union Cave: Team Rocket is cutting off Slowpoke tails in Azalea Town! Stop them at the Slowpoke Well.",
+            "target": "SLOWPOKE_WELL", "targets": [["VIOLET_CITY", "got_togepi_egg"], ["SLOWPOKE_WELL", "slowpoke_well_cleared"]],
             "condition": { "start_region": "JOHTO", "badges_min": 1, "flag_not": "slowpoke_well_cleared" },
             "reward": "5 Lure Balls"
         },
@@ -4439,9 +4404,9 @@
             "reward": "Mineral Badge + 3 Rare Candies"
         },
         {
-            "id": "johto_m11", "type": "MAIN", "title": "Lighthouse Rescue", "description": "Jasmine's Ampharos is ill! First get Surf: chase off the Rocket Grunt bothering the Kimono Girls at Ecruteak's Dance Theater. Then cross the sea to Cianwood City and get the Secret Potion from its pharmacy.",
+            "id": "johto_m11", "type": "MAIN", "title": "Lighthouse Rescue", "description": "Jasmine's Ampharos is ill! First get Surf: chase off the Rocket Grunt bothering the Kimono Girls at Ecruteak's Dance Theater. Climb Olivine's Lighthouse to see what's wrong, then cross the sea to Cianwood City for the Secret Potion from its pharmacy.",
             "target": "CIANWOOD_CITY",
-            "targets": [["ECRUTEAK_DANCE_THEATER", "has_item:HM_SURF"], ["CIANWOOD_CITY", "has_item:SECRET_POTION"]],
+            "targets": [["ECRUTEAK_DANCE_THEATER", "has_item:HM_SURF"], ["OLIVINE_LIGHTHOUSE", "jasmine_explained"], ["CIANWOOD_CITY", "has_item:SECRET_POTION"]],
             "condition": { "start_region": "JOHTO", "badges_min": 4, "item_not": "SECRET_POTION", "flag_not": "ampharos_cured" }
         },
         {
@@ -4505,7 +4470,7 @@
         {
             "id": "johto_s6", "type": "SIDE", "title": "To Kanto by Sea", "description": "Prof. Elm's ticket is good for the S.S. Aqua. It sails from Olivine City's harbour to Vermilion City, in Kanto.",
             "target": "OLIVINE_CITY",
-            "condition": { "start_region": "JOHTO", "flag": "got_ss_ticket_elm", "visited_not": "VERMILION_CITY" }
+            "condition": { "start_region": "JOHTO", "flag": "got_ss_ticket_elm", "visited_not": "VERMILLION_CITY" }
         },
         {
             "id": "johto_s1", "type": "SIDE", "title": "Ruins of Alph", "description": "The stones here hum with a strange frequency. Catch different forms of Unown to unlock the ruins' secrets.",
@@ -4521,8 +4486,6 @@
             "id": "johto_s3", "type": "SIDE", "title": "The Karate King", "description": "Deep inside Mt. Mortar, the Karate King awaits a challenger. Defeat him to receive a rare Fighting-type Pokemon.",
             "condition": { "visited": "MT_MORTAR", "flag_not": "defeated_karate_king" }
         },
-        { "id": "johto_s_togepi", "type": "SIDE", "title": "Something Warm in Violet", "description": "Prof. Elm's aide is waiting in Violet City's Pokemon Center. She's holding something round, and it's warm to the touch.", "target": "VIOLET_CITY",
-          "condition": { "required_region": "JOHTO", "flag": "elm_received_egg", "badges_min": 1, "flag_not": "got_togepi_egg" }, "completed_flag": "got_togepi_egg" },
         { "id": "johto_s_kenya", "type": "SIDE", "title": "Special Delivery", "description": "A guard at Goldenrod's gate has a Spearow carrying a letter, and nobody to take it to his friend. The friend is somewhere on Route 31... asleep.", "target": "GOLDENROD_CITY",
           "targets": [["GOLDENROD_CITY", "got_kenya"], ["JOHTO_ROUTE_31", "kenya_delivered"], ["GOLDENROD_CITY", "got_hp_up_kenya_guard"]],
           "condition": { "required_region": "JOHTO", "visited": "GOLDENROD_CITY", "flag_not": "got_hp_up_kenya_guard" }, "completed_flag": "got_hp_up_kenya_guard" },

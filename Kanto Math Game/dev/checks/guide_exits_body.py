@@ -45,5 +45,33 @@ if hasattr(t, "exits"):
               f"...a named part: 'To Zz Corner' ({way and way[1]}); your own part has no name")
 else:
     print("   (Floccesy isn't walked on this branch yet)")
+print("Castelia Gym's cocoons (Unova 11-24): the marker rides them to Burgh")
+story.current_area_key, story.last_area_key = "CASTELIA_CITY", None
+g.walk_town_pos = g.walk_town_room = None
+t = CityState(g)
+if hasattr(t, "exits") and "gym_burgh" in (t.town_map.get("rooms") or {}):
+    story.story_flags.pop("b2_insect_badge", None)
+    t._go("gym", None)
+    check(getattr(t, "room", None) == "gym" and t._guide_cocoons("gym"), f"in the Gym: its cocoons ({len(t._guide_cocoons('gym'))} you can ride now)")
+    check("gym_burgh" in t._guide_rooms(), "the marker's rooms reach Burgh's, by the cocoons")
+    burgh = next(iter((t.town_map["rooms"]["gym_burgh"].get("people") and t._guide_part("gym_burgh")["people"]) or {}), (9, 10))
+    hit = t._guide_toward({("gym_burgh", tuple(burgh))}, "Burgh")
+    cocs = {c for (c, _w) in t._guide_cocoons("gym")}
+    check(hit is not None and hit[0] in cocs and hit[1] == "Cocoon", f"...and points at a cocoon to step into ({hit})")
+else:
+    print("   (Castelia Gym isn't walked on this branch yet)")
+print("a building's front door back to the town says 'Way out', not 'Stairs' (Unova 11-24)")
+story.current_area_key, story.last_area_key = "NIMBASA_CITY", None
+g.walk_town_pos = g.walk_town_room = None
+t = CityState(g)
+if hasattr(t, "exits") and "center" in (t.town_map.get("rooms") or {}):
+    t._go("center", None)
+    kinds = {kind for _t, to, kind in t._guide_passages("center") if to is None}
+    check(getattr(t, "room", None) == "center" and kinds == {"out"}, f"Nimbasa's Center: its way back to the town is 'out' ({kinds})")
+    far = next(iter(t._guide_part(None)["doors"]), None)
+    hit = t._guide_toward({(None, far)}, "Here") if far else None
+    check(hit is not None and hit[1] == "Way out", f"...and the marker inside says 'Way out' ({hit})")
+else:
+    print("   (Nimbasa's Center isn't walked on this branch yet)")
 g.walk_town_pos = g.walk_town_room = None
 print(f"##### {fails} failures")

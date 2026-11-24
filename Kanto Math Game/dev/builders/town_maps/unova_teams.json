@@ -1,0 +1,509 @@
+{
+ "10": {
+  "b2_id": 10,
+  "class": "CLERK_F",
+  "levels": [
+   24
+  ],
+  "name": "Clerk F Trisha",
+  "rewards": {
+   "balls": 2
+  },
+  "sprite": "b2_clerk_f.png",
+  "team": [
+   572
+  ]
+ },
+ "136": {
+  "b2_id": 136,
+  "class": "HIKER",
+  "levels": [
+   24
+  ],
+  "name": "Hiker Andy",
+  "rewards": {
+   "balls": 2
+  },
+  "sprite": "b2_hiker.png",
+  "team": [
+   525
+  ]
+ },
+ "138": {
+  "b2_id": 138,
+  "class": "DANCER",
+  "levels": [
+   24
+  ],
+  "name": "Dancer Dirk",
+  "rewards": {
+   "balls": 2
+  },
+  "sprite": "b2_dancer.png",
+  "team": [
+   554
+  ]
+ },
+ "148": {
+  "b2_id": 148,
+  "class": "LADY",
+  "levels": [
+   24
+  ],
+  "name": "Lady Colette",
+  "rewards": {
+   "balls": 2
+  },
+  "sprite": "b2_lady.png",
+  "team": [
+   180
+  ]
+ },
+ "153": {
+  "b2_id": 153,
+  "class": "LEADER",
+  "held_items": {
+   "523": "SITRUS_BERRY"
+  },
+  "levels": [
+   28,
+   28,
+   30
+  ],
+  "movesets": {
+   "180": [
+    "VOLT-SWITCH",
+    "TAKE-DOWN",
+    "THUNDER-WAVE"
+   ],
+   "523": [
+    "VOLT-SWITCH",
+    "FLAME-CHARGE",
+    "QUICK-ATTACK",
+    "PURSUIT"
+   ],
+   "587": [
+    "VOLT-SWITCH",
+    "QUICK-ATTACK",
+    "PURSUIT"
+   ]
+  },
+  "name": "Leader Elesa",
+  "rewards": {
+   "balls": 4
+  },
+  "sprite": "b2_elesa.png",
+  "team": [
+   587,
+   180,
+   523
+  ]
+ },
+ "207": {
+  "b2_id": 207,
+  "class": "BEAUTY",
+  "levels": [
+   27,
+   27
+  ],
+  "name": "Beauty Nikola",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "beauty.png",
+  "team": [
+   239,
+   180
+  ]
+ },
+ "208": {
+  "b2_id": 208,
+  "class": "BEAUTY",
+  "levels": [
+   27,
+   27
+  ],
+  "name": "Beauty Fleming",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "beauty.png",
+  "team": [
+   180,
+   522
+  ]
+ },
+ "209": {
+  "b2_id": 209,
+  "class": "BEAUTY",
+  "levels": [
+   27,
+   27
+  ],
+  "name": "Beauty Ampère",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "beauty.png",
+  "team": [
+   522,
+   239
+  ]
+ },
+ "339": {
+  "b2_id": 339,
+  "battle_options": {
+   "double": true
+  },
+  "class": "MOTORCYCLIST",
+  "levels": [
+   26,
+   26,
+   26
+  ],
+  "name": "Motorcyclist Charles",
+  "rewards": {
+   "balls": 4
+  },
+  "sprite": "b2_motorcyclist.png",
+  "team": [
+   561,
+   564,
+   566
+  ]
+ },
+ "340": {
+  "b2_id": 340,
+  "battle_options": {
+   "double": true
+  },
+  "class": "MOTORCYCLIST",
+  "levels": [
+   26,
+   26,
+   26
+  ],
+  "name": "Motorcyclist Charles",
+  "rewards": {
+   "balls": 4
+  },
+  "sprite": "b2_motorcyclist.png",
+  "team": [
+   564,
+   561,
+   566
+  ]
+ },
+ "359": {
+  "b2_id": 359,
+  "class": "TEAM_PLASMA",
+  "levels": [
+   27
+  ],
+  "name": "Team Plasma Grunt",
+  "rewards": {
+   "balls": 2
+  },
+  "sprite": "b2_plasma_grunt_m.png",
+  "team": [
+   568
+  ]
+ },
+ "360": {
+  "b2_id": 360,
+  "class": "TRAINER",
+  "levels": [
+   25,
+   23
+  ],
+  "name": "Pokemon Trainer Nate",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "b2_nate.png",
+  "team": [
+   502,
+   513
+  ]
+ },
+ "361": {
+  "b2_id": 361,
+  "class": "TRAINER",
+  "levels": [
+   25,
+   23
+  ],
+  "name": "Pokemon Trainer Nate",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "b2_nate.png",
+  "team": [
+   496,
+   515
+  ]
+ },
+ "362": {
+  "b2_id": 362,
+  "class": "TRAINER",
+  "levels": [
+   25,
+   23
+  ],
+  "name": "Pokemon Trainer Nate",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "b2_nate.png",
+  "team": [
+   499,
+   511
+  ]
+ },
+ "363": {
+  "b2_id": 363,
+  "class": "TRAINER",
+  "levels": [
+   25,
+   23
+  ],
+  "name": "Pokemon Trainer Rosa",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "b2_rosa.png",
+  "team": [
+   502,
+   513
+  ]
+ },
+ "364": {
+  "b2_id": 364,
+  "class": "TRAINER",
+  "levels": [
+   25,
+   23
+  ],
+  "name": "Pokemon Trainer Rosa",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "b2_rosa.png",
+  "team": [
+   496,
+   515
+  ]
+ },
+ "365": {
+  "b2_id": 365,
+  "class": "TRAINER",
+  "levels": [
+   25,
+   23
+  ],
+  "name": "Pokemon Trainer Rosa",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "b2_rosa.png",
+  "team": [
+   499,
+   511
+  ]
+ },
+ "47": {
+  "b2_id": 47,
+  "class": "LASS",
+  "levels": [
+   24
+  ],
+  "name": "Lass Persephone",
+  "rewards": {
+   "balls": 2
+  },
+  "sprite": "b2_lass.png",
+  "team": [
+   510
+  ]
+ },
+ "588": {
+  "b2_id": 588,
+  "class": "TRAINER",
+  "held_items": {
+   "499": "CHARCOAL"
+  },
+  "levels": [
+   20,
+   18
+  ],
+  "name": "Pokemon Trainer Rival",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "trainer.png",
+  "team": [
+   499,
+   519
+  ]
+ },
+ "589": {
+  "b2_id": 589,
+  "class": "TRAINER",
+  "held_items": {
+   "502": "MYSTIC_WATER"
+  },
+  "levels": [
+   20,
+   18
+  ],
+  "name": "Pokemon Trainer Rival",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "trainer.png",
+  "team": [
+   502,
+   519
+  ]
+ },
+ "590": {
+  "b2_id": 590,
+  "class": "TRAINER",
+  "held_items": {
+   "496": "MIRACLE_SEED"
+  },
+  "levels": [
+   20,
+   18
+  ],
+  "name": "Pokemon Trainer Rival",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "trainer.png",
+  "team": [
+   496,
+   519
+  ]
+ },
+ "621": {
+  "b2_id": 621,
+  "class": "RICH_BOY",
+  "levels": [
+   24
+  ],
+  "name": "Rich Boy Rolan",
+  "rewards": {
+   "balls": 2
+  },
+  "sprite": "b2_rich_boy.png",
+  "team": [
+   522
+  ]
+ },
+ "732": {
+  "b2_id": 732,
+  "class": "SUBWAY_BOSS",
+  "levels": [
+   26
+  ],
+  "name": "Subway Boss Ingo",
+  "rewards": {
+   "balls": 2
+  },
+  "sprite": "b2_ingo.png",
+  "team": [
+   525
+  ]
+ },
+ "733": {
+  "b2_id": 733,
+  "class": "SUBWAY_BOSS",
+  "levels": [
+   26
+  ],
+  "name": "Subway Boss Emmet",
+  "rewards": {
+   "balls": 2
+  },
+  "sprite": "b2_emmet.png",
+  "team": [
+   533
+  ]
+ },
+ "751": {
+  "b2_id": 751,
+  "class": "TEAM_PLASMA",
+  "levels": [
+   27
+  ],
+  "name": "Team Plasma Grunt",
+  "rewards": {
+   "balls": 2
+  },
+  "sprite": "b2_plasma_grunt_f.png",
+  "team": [
+   505
+  ]
+ },
+ "803": {
+  "b2_id": 803,
+  "class": "NURSERY_AIDE",
+  "levels": [
+   24
+  ],
+  "name": "Nursery Aide June",
+  "rewards": {
+   "balls": 2
+  },
+  "sprite": "b2_nursery_aide.png",
+  "team": [
+   541
+  ]
+ },
+ "804": {
+  "b2_id": 804,
+  "class": "BEAUTY",
+  "levels": [
+   24
+  ],
+  "name": "Beauty December",
+  "rewards": {
+   "balls": 2
+  },
+  "sprite": "beauty.png",
+  "team": [
+   180
+  ]
+ },
+ "805": {
+  "b2_id": 805,
+  "class": "CLERK_M",
+  "levels": [
+   24
+  ],
+  "name": "Clerk M Augustin",
+  "rewards": {
+   "balls": 2
+  },
+  "sprite": "b2_clerk_m.png",
+  "team": [
+   520
+  ]
+ },
+ "806": {
+  "b2_id": 806,
+  "class": "GUITARIST",
+  "levels": [
+   24
+  ],
+  "name": "Guitarist January",
+  "rewards": {
+   "balls": 2
+  },
+  "sprite": "b2_guitarist.png",
+  "team": [
+   544
+  ]
+ }
+}
