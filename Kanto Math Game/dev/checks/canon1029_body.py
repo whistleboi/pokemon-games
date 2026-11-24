@@ -1910,10 +1910,20 @@ _act54 = {m["id"] for m in story.get_active_missions()}
 check("sevii_m8" in _act54 and "sevii_m9" not in _act54, "after Celio: Moltres; Navel Rock and Birth Island wait for the title")
 story.story_flags["beat_champion"] = True
 _act54 = {m["id"] for m in story.get_active_missions()}
-check({"sevii_m8", "sevii_m9", "sevii_m10", "sevii_m11"} <= _act54, "after the Kanto title: Lugia, Ho-Oh and Deoxys too")
+_inv54 = {k: story.inventory.get(k) for k in ("MYSTIC_TICKET", "AURORA_TICKET")}
+for _t54 in _inv54:
+    story.inventory.pop(_t54, None)
+check(not ({"sevii_m9", "sevii_m10", "sevii_m11"} & _act54), "after the Kanto title: Navel Rock and Birth Island still wait for their tickets (like the ferries; 11-24)")
+story.inventory["MYSTIC_TICKET"] = 1; story.inventory["AURORA_TICKET"] = 1
+_act54 = {m["id"] for m in story.get_active_missions()}
+check({"sevii_m8", "sevii_m9", "sevii_m10", "sevii_m11"} <= _act54, "with the Mystic and Aurora Tickets: Lugia, Ho-Oh and Deoxys too")
 story.story_flags["navel_rock_lugia"] = True
 _e54 = {e["id"]: e["status"] for e in story.get_all_journal_entries()}
 check(_e54.get("sevii_m9") == "COMPLETED" and _e54.get("sevii_m10") == "ACTIVE", "beating Lugia completes its mission only")
+for _t54, _n54 in _inv54.items():
+    story.inventory.pop(_t54, None)
+    if _n54:
+        story.inventory[_t54] = _n54
 story.story_flags.clear(); story.story_flags.update(_fl54); story.current_area_key = _area54
 
 print("55) Nown: a Sp. Atk glass cannon whose one move is Found Power (Jordan, 11-04)")
