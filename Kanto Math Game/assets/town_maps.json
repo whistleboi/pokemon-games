@@ -152935,12 +152935,12 @@
      "TTTTTTooooooooooooooooooooooooooooooooooooTTTTTTTT",
      "TTTTTToooooooooooooooooooooooooooooooooooo....TTTT",
      "TTTTTToooooooooooooooooooooooooooooooooooo....TTTT",
-     "TTTTTToooooooooooooooooooooooooooooooooooo......TT",
+     "TTTTTToooooooooooooooooooooooooooooooooooo.....NTT",
      "TTTTTToooooooooooooooooooooooooooooooooooo......TT",
      "TTTTTToooooooooooooooooooooooooooooooooooo\".....TT",
      "TTTTTToooooooooooooooooooooooooooooooooooo\"\"....TT",
      "TTTTTTTToooooooooooooooooooooooooooooooo\"\"\"\"X...TT",
-     "TTTTTTTTooooooooooooooooooooooooooooooooX\"\"\".N..TT",
+     "TTTTTTTTooooooooooooooooooooooooooooooooX\"\"\"....TT",
      "TTTT....TToooooooooooooooooooooooooooo.\"\"\"\"\"..TTTT",
      "TTTT....TToooooooooooooooooooooooooooo.\"\"\"\"...TTTT",
      "TT\"\"\"\"\"\"....oooooooooooooooooooooooo...\"\"\"..TTTTTT",
@@ -153031,6 +153031,60 @@
       },
       "lines": [
        "A wild STARLY!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        45,
+        25
+       ]
+      ],
+      "look": "sheet:pt_doctor.png",
+      "when": {
+       "condition": "galactic_lake_valor_cleared"
+      },
+      "until": {
+       "flag_condition": "galactic_lake_verity_cleared"
+      },
+      "lines": [
+       "Rowan: How dare you! You misguided thugs! {player_name}! Dawn needs your help!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        46,
+        24
+       ]
+      ],
+      "look": "sheet:pt_heroine.png",
+      "when": {
+       "condition": "galactic_lake_valor_cleared"
+      },
+      "until": {
+       "flag_condition": "galactic_lake_verity_cleared"
+      },
+      "lines": [
+       "Dawn: {player_name}! It's T-Team Galactic! They're taking the Pokemon of the lake... I couldn't beat this person..."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        39,
+        37
+       ]
+      ],
+      "look": "sheet:pt_gingam.png",
+      "when": {
+       "condition": "galactic_lake_valor_cleared"
+      },
+      "until": {
+       "flag_condition": "galactic_lake_verity_cleared"
+      },
+      "lines": [
+       "Grunt: Ow! Ouch! What's with this old-timer?"
       ]
      }
     ],
@@ -280996,6 +281050,1608 @@
   "floors": [
    {
     "art": [
+     "....cccccc...ccccccccccccccccccccccc..TTTTTTTTTTTTTTTTTT",
+     "....cccccc...ccccccccccccccccccccccc..TTTTTTTTTTTTTTTTTT",
+     "......cccc...cccckcccccccccccccccccc..TTTTTTTTTTTTTTTTTT",
+     "......cccc...ccccccccccccccccccccccc..TTTTTTTTTTTTTTTTTT",
+     "cccc........ccckkccccccccccccccccccc....TTTTTTTTTTTTTTTT",
+     "cccc........ccckkccccccccckkccccc.cc....TTTTTTTTTTTTTTTT",
+     "ckccc....c..cccccccccckccckkcccccccc....TTTTTTTTTTTTTTTT",
+     "ccccccc..cccccccc.cccccccccccccccccc....TTTTTTTTTTTTTTTT",
+     "ccccccc...cccckccccccccccccccccckkccccccTTTTTTTTTTTTTTTT",
+     "ccccccc~...kkcccccccc.ccccccccckkkccccccTTTTTTTTTTTTTTTT",
+     "ccccccc~~kkk.cccccccccccccc.cccccccccccccc..........nTTT",
+     "cccccccck~.....cccccccccccccccccccccccc.==..........nTTT",
+     "ccccccccck.....c.ccccccccccccccccc.k....==..TTTTTTTTTTTT",
+     "cccccccccccc...cccccc.cccccccccccc....kk.c..TTTTTTTTTTTT",
+     "kccccccccccc........=.cccccccccc.c....kk.cTTTTTTTTTTTTTT",
+     "cccccccccccc........=.....cccccc.c.......cTTTTTTTTTTTTTT",
+     "ccccccccccccccccccccc.....cccccc.c==cc...cTTTTTTTTTTTTTT",
+     "ccccccccccccccccccccc.c==c.ccccc..==.cccccTTTTTTTTTTTTTT",
+     "ccccccccccccccccccccccc==c.c.Xcc==ccccccccccTTTTTTTTTTTT",
+     "cccccccccccccccccccccc...=.=..=.==.....cccccTTTTTTTTTTTT",
+     "ccccckkccccccccccccccc...=.=..=...kkk..cccccccTTTTTTTTTT",
+     "ccccckkccccccc.ccccccc==cc.ckkc...kk.....cccccTTTTTTTTTT",
+     "ccccccccccccccccc..ccc==cccckkccc....cccccccccccTTTTTTTT",
+     "..........cccckkck.c............c..kkckkc..cccccTTTTTTTT",
+     "..........cccckkc..cc==cccc.k...ckkkkckkc..cccccccTTTTTT",
+     "..........ccccccc......k..ccccc.ckk..cccc....cccccTTTTTT",
+     "TTTTTT....ccccccc......ccc....ccc...ccc......cccccTTTTTT",
+     "TTTTTT....ccccccc.k....c.c..........c.c........cccTTTTTT",
+     "TTTTTTTTTTTTTTccc...k..ccckk.cccccccccc........cccTTTTTT",
+     "TTTTTTTTTTTTTTccc..kk.kk..kk.ccccccc...........cccTTTTTT",
+     "TTTTTTTTTTTTTTccc..kk.kk.kk..ccccccc...........cccTTTTTT",
+     "TTTTTTTTTTTTTTccc.....k.kkkk.ccrrrcc...........cccTTTTTT",
+     "TTTTTTTTTTTTTTcccX...........ccr1ccc...........cccTTTTTT",
+     "TTTTTTTTTTTTTTccc.....ccc......................cccTTTTTT",
+     "TTTTTTTTTTTTTTccc.....c.c......................cccTTTTTT",
+     "TTTTTTTTTTTTTTccc.....ccc.........ccc..........cccTTTTTT",
+     "TTTTTTTTTTTTTTccc.................c.c..........cccTTTTTT",
+     "TTTTTTTTTTTTTTccc.................ccc..........cccTTTTTT",
+     "TTTTTTTTTTTTTTccc..............................cccTTTTTT",
+     "TTTTTTTTTTTTTTccccc..........................cccccTTTTTT",
+     "TTTTTTTTTTTTTTccccc..........................cccccTTTTTT",
+     "TTTTTTTTTTTTTTccccccc......................cccccccTTTTTT",
+     "TTTTTTTTTTTTTTTTccccc......................ccccc..TT\"\"TT",
+     "TTTTTTTTTTTTTTTTccccccc..................ccccccc.\"TT\"\"TT",
+     "TTTTTTTTTTTTTTTTTTccccc..................ccccc...\"\"\"\"\"TT",
+     "TTTTTTTTTTTTTTTTTTccccccc..............ccccccc.\"\"\"\"\"\"\"TT",
+     "TTTTTTTTTTTTTTTTTTTTccccc..............ccccc...\"\"\"\"\"\".TT",
+     "TTTTTTTTTTTTTTTTTTTTcccccccccccccccccccccccc.\"\"\"\"\"\"\"\"\"TT",
+     "TTTTTTTTTTTTTTTTTTTTTTcccccccccccccccccccc...\"\"\"\"\"\"\"\"\"TT",
+     "TTTTTTTTTTTTTTTTTTTTTTcccccccccccccccccccc.\"\"\"\"\"\"\"\"\"\"\"TT",
+     "TTTTTTTTTTTTTTTTTTTTTTTT..............TTTT.\"\"\"\"\"\"\"\"\"\"\"TT",
+     "TTTTTTTTTTTTTTTTTTTTTTTT..............TTTT\"\"\"\"\"\"\"\"\"\"\"\"TT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTT........\"\"TT\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"TT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTT........\"\"TT\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"TT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTT....\"\"TTTT\"\"TT\"\"\"\"\"\"\"\"\"\"\"\"TT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTT....\"\"TTTT\"\"TT\"\"\"\"\"\"\"\"\"\"\"\"TT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+    ],
+    "parts": true,
+    "barred": [
+     {
+      "tiles": [
+       [
+        34,
+        34
+       ]
+      ],
+      "look": "sheet:pt_gingam.png",
+      "until": {
+       "flag_condition": "galactic_lake_valor_cleared"
+      },
+      "lines": [
+       "Grunt: Investigating the explosion? Bah, it's too late to make any difference. All the legendary Pokemon are going to be ours!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        13
+       ]
+      ],
+      "look": "sheet:pt_gingaw.png",
+      "until": {
+       "flag_condition": "galactic_lake_valor_cleared"
+      },
+      "lines": [
+       "Grunt: Even Team Galactic has no use for Magikarp! Worthless, all of them!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        36,
+        13
+       ]
+      ],
+      "look": "sheet:pt_gingam.png",
+      "until": {
+       "flag_condition": "galactic_lake_valor_cleared"
+      },
+      "lines": [
+       "Grunt: Hahaha! Next stop, Lake Verity! The closest town is that hick place Twinleaf. We'll roll in there unopposed!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        36,
+        19
+       ]
+      ],
+      "look": "mon:129",
+      "until": {
+       "flag_condition": "galactic_lake_valor_cleared"
+      },
+      "lines": [
+       "A Magikarp is weakly flopping about..."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        17,
+        15
+       ]
+      ],
+      "look": "mon:129",
+      "until": {
+       "flag_condition": "galactic_lake_valor_cleared"
+      },
+      "lines": [
+       "A Magikarp is weakly flopping about..."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        27,
+        36
+       ]
+      ],
+      "look": "mon:129",
+      "until": {
+       "flag_condition": "galactic_lake_valor_cleared"
+      },
+      "lines": [
+       "A Magikarp is weakly flopping about..."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        12,
+        13
+       ]
+      ],
+      "look": "mon:129",
+      "until": {
+       "flag_condition": "galactic_lake_valor_cleared"
+      },
+      "lines": [
+       "A Magikarp is weakly flopping about..."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        10,
+        11
+       ]
+      ],
+      "look": "mon:129",
+      "until": {
+       "flag_condition": "galactic_lake_valor_cleared"
+      },
+      "lines": [
+       "A Magikarp is weakly flopping about..."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        11
+       ]
+      ],
+      "look": "mon:129",
+      "until": {
+       "flag_condition": "galactic_lake_valor_cleared"
+      },
+      "lines": [
+       "A Magikarp is weakly flopping about..."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        11,
+        12
+       ]
+      ],
+      "look": "mon:129",
+      "until": {
+       "flag_condition": "galactic_lake_valor_cleared"
+      },
+      "lines": [
+       "A Magikarp is weakly flopping about..."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        19,
+        34
+       ]
+      ],
+      "look": "mon:129",
+      "until": {
+       "flag_condition": "galactic_lake_valor_cleared"
+      },
+      "lines": [
+       "A Magikarp is weakly flopping about..."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        38,
+        44
+       ]
+      ],
+      "look": "mon:129",
+      "until": {
+       "flag_condition": "galactic_lake_valor_cleared"
+      },
+      "lines": [
+       "A Magikarp is weakly flopping about..."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        44,
+        33
+       ]
+      ],
+      "look": "mon:129",
+      "until": {
+       "flag_condition": "galactic_lake_valor_cleared"
+      },
+      "lines": [
+       "A Magikarp is weakly flopping about..."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        12,
+        10
+       ]
+      ],
+      "look": "mon:129",
+      "until": {
+       "flag_condition": "galactic_lake_valor_cleared"
+      },
+      "lines": [
+       "A Magikarp is weakly flopping about..."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        11
+       ]
+      ],
+      "look": "mon:129",
+      "until": {
+       "flag_condition": "galactic_lake_valor_cleared"
+      },
+      "lines": [
+       "A Magikarp is weakly flopping about..."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        12,
+        11
+       ]
+      ],
+      "look": "mon:129",
+      "until": {
+       "flag_condition": "galactic_lake_valor_cleared"
+      },
+      "lines": [
+       "A Magikarp is weakly flopping about..."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        10,
+        12
+       ]
+      ],
+      "look": "mon:129",
+      "until": {
+       "flag_condition": "galactic_lake_valor_cleared"
+      },
+      "lines": [
+       "A Magikarp is weakly flopping about..."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        12,
+        12
+       ]
+      ],
+      "look": "mon:129",
+      "until": {
+       "flag_condition": "galactic_lake_valor_cleared"
+      },
+      "lines": [
+       "A Magikarp is weakly flopping about..."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        23,
+        19
+       ]
+      ],
+      "look": "mon:129",
+      "until": {
+       "flag_condition": "galactic_lake_valor_cleared"
+      },
+      "lines": [
+       "A Magikarp is weakly flopping about..."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        21,
+        29
+       ]
+      ],
+      "look": "mon:129",
+      "until": {
+       "flag_condition": "galactic_lake_valor_cleared"
+      },
+      "lines": [
+       "A Magikarp is weakly flopping about..."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        28,
+        28
+       ]
+      ],
+      "look": "mon:129",
+      "until": {
+       "flag_condition": "galactic_lake_valor_cleared"
+      },
+      "lines": [
+       "A Magikarp is weakly flopping about..."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        31,
+        25
+       ]
+      ],
+      "look": "mon:129",
+      "until": {
+       "flag_condition": "galactic_lake_valor_cleared"
+      },
+      "lines": [
+       "A Magikarp is weakly flopping about..."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        30,
+        38
+       ]
+      ],
+      "look": "mon:129",
+      "until": {
+       "flag_condition": "galactic_lake_valor_cleared"
+      },
+      "lines": [
+       "A Magikarp is weakly flopping about..."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        29,
+        36
+       ]
+      ],
+      "look": "mon:129",
+      "until": {
+       "flag_condition": "galactic_lake_valor_cleared"
+      },
+      "lines": [
+       "A Magikarp is weakly flopping about..."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        11,
+        11
+       ]
+      ],
+      "look": "mon:129",
+      "until": {
+       "flag_condition": "galactic_lake_valor_cleared"
+      },
+      "lines": [
+       "A Magikarp is weakly flopping about..."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        40,
+        28
+       ]
+      ],
+      "look": "mon:129",
+      "until": {
+       "flag_condition": "galactic_lake_valor_cleared"
+      },
+      "lines": [
+       "A Magikarp is weakly flopping about..."
+      ]
+     }
+    ],
+    "exits": {
+     "n": "VALOR_LAKEFRONT"
+    },
+    "trainer_spots": [
+     "Galactic Grunt 1",
+     "Galactic Grunt 2"
+    ],
+    "links": {
+     "32,32": [
+      2,
+      14,
+      29
+     ]
+    },
+    "roofs": {
+     "A": [
+      150,
+      150,
+      160
+     ],
+     "B": [
+      150,
+      150,
+      160
+     ],
+     "C": [
+      150,
+      150,
+      160
+     ],
+     "_big_trees": [
+      [
+       38,
+       0
+      ],
+      [
+       40,
+       0
+      ],
+      [
+       42,
+       0
+      ],
+      [
+       44,
+       0
+      ],
+      [
+       46,
+       0
+      ],
+      [
+       48,
+       0
+      ],
+      [
+       50,
+       0
+      ],
+      [
+       52,
+       0
+      ],
+      [
+       54,
+       0
+      ],
+      [
+       38,
+       2
+      ],
+      [
+       40,
+       2
+      ],
+      [
+       42,
+       2
+      ],
+      [
+       44,
+       2
+      ],
+      [
+       46,
+       2
+      ],
+      [
+       48,
+       2
+      ],
+      [
+       50,
+       2
+      ],
+      [
+       52,
+       2
+      ],
+      [
+       54,
+       2
+      ],
+      [
+       40,
+       4
+      ],
+      [
+       42,
+       4
+      ],
+      [
+       44,
+       4
+      ],
+      [
+       46,
+       4
+      ],
+      [
+       48,
+       4
+      ],
+      [
+       50,
+       4
+      ],
+      [
+       52,
+       4
+      ],
+      [
+       54,
+       4
+      ],
+      [
+       40,
+       6
+      ],
+      [
+       42,
+       6
+      ],
+      [
+       44,
+       6
+      ],
+      [
+       46,
+       6
+      ],
+      [
+       48,
+       6
+      ],
+      [
+       50,
+       6
+      ],
+      [
+       52,
+       6
+      ],
+      [
+       54,
+       6
+      ],
+      [
+       40,
+       8
+      ],
+      [
+       42,
+       8
+      ],
+      [
+       44,
+       8
+      ],
+      [
+       46,
+       8
+      ],
+      [
+       48,
+       8
+      ],
+      [
+       50,
+       8
+      ],
+      [
+       52,
+       8
+      ],
+      [
+       54,
+       8
+      ],
+      [
+       54,
+       10
+      ],
+      [
+       44,
+       12
+      ],
+      [
+       46,
+       12
+      ],
+      [
+       48,
+       12
+      ],
+      [
+       50,
+       12
+      ],
+      [
+       52,
+       12
+      ],
+      [
+       54,
+       12
+      ],
+      [
+       42,
+       14
+      ],
+      [
+       44,
+       14
+      ],
+      [
+       46,
+       14
+      ],
+      [
+       48,
+       14
+      ],
+      [
+       50,
+       14
+      ],
+      [
+       52,
+       14
+      ],
+      [
+       54,
+       14
+      ],
+      [
+       42,
+       16
+      ],
+      [
+       44,
+       16
+      ],
+      [
+       46,
+       16
+      ],
+      [
+       48,
+       16
+      ],
+      [
+       50,
+       16
+      ],
+      [
+       52,
+       16
+      ],
+      [
+       54,
+       16
+      ],
+      [
+       44,
+       18
+      ],
+      [
+       46,
+       18
+      ],
+      [
+       48,
+       18
+      ],
+      [
+       50,
+       18
+      ],
+      [
+       52,
+       18
+      ],
+      [
+       54,
+       18
+      ],
+      [
+       46,
+       20
+      ],
+      [
+       48,
+       20
+      ],
+      [
+       50,
+       20
+      ],
+      [
+       52,
+       20
+      ],
+      [
+       54,
+       20
+      ],
+      [
+       48,
+       22
+      ],
+      [
+       50,
+       22
+      ],
+      [
+       52,
+       22
+      ],
+      [
+       54,
+       22
+      ],
+      [
+       50,
+       24
+      ],
+      [
+       52,
+       24
+      ],
+      [
+       54,
+       24
+      ],
+      [
+       0,
+       26
+      ],
+      [
+       2,
+       26
+      ],
+      [
+       4,
+       26
+      ],
+      [
+       50,
+       26
+      ],
+      [
+       52,
+       26
+      ],
+      [
+       54,
+       26
+      ],
+      [
+       0,
+       28
+      ],
+      [
+       2,
+       28
+      ],
+      [
+       4,
+       28
+      ],
+      [
+       6,
+       28
+      ],
+      [
+       8,
+       28
+      ],
+      [
+       10,
+       28
+      ],
+      [
+       12,
+       28
+      ],
+      [
+       50,
+       28
+      ],
+      [
+       52,
+       28
+      ],
+      [
+       54,
+       28
+      ],
+      [
+       0,
+       30
+      ],
+      [
+       2,
+       30
+      ],
+      [
+       4,
+       30
+      ],
+      [
+       6,
+       30
+      ],
+      [
+       8,
+       30
+      ],
+      [
+       10,
+       30
+      ],
+      [
+       12,
+       30
+      ],
+      [
+       50,
+       30
+      ],
+      [
+       52,
+       30
+      ],
+      [
+       54,
+       30
+      ],
+      [
+       0,
+       32
+      ],
+      [
+       2,
+       32
+      ],
+      [
+       4,
+       32
+      ],
+      [
+       6,
+       32
+      ],
+      [
+       8,
+       32
+      ],
+      [
+       10,
+       32
+      ],
+      [
+       12,
+       32
+      ],
+      [
+       50,
+       32
+      ],
+      [
+       52,
+       32
+      ],
+      [
+       54,
+       32
+      ],
+      [
+       0,
+       34
+      ],
+      [
+       2,
+       34
+      ],
+      [
+       4,
+       34
+      ],
+      [
+       6,
+       34
+      ],
+      [
+       8,
+       34
+      ],
+      [
+       10,
+       34
+      ],
+      [
+       12,
+       34
+      ],
+      [
+       50,
+       34
+      ],
+      [
+       52,
+       34
+      ],
+      [
+       54,
+       34
+      ],
+      [
+       0,
+       36
+      ],
+      [
+       2,
+       36
+      ],
+      [
+       4,
+       36
+      ],
+      [
+       6,
+       36
+      ],
+      [
+       8,
+       36
+      ],
+      [
+       10,
+       36
+      ],
+      [
+       12,
+       36
+      ],
+      [
+       50,
+       36
+      ],
+      [
+       52,
+       36
+      ],
+      [
+       54,
+       36
+      ],
+      [
+       0,
+       38
+      ],
+      [
+       2,
+       38
+      ],
+      [
+       4,
+       38
+      ],
+      [
+       6,
+       38
+      ],
+      [
+       8,
+       38
+      ],
+      [
+       10,
+       38
+      ],
+      [
+       12,
+       38
+      ],
+      [
+       50,
+       38
+      ],
+      [
+       52,
+       38
+      ],
+      [
+       54,
+       38
+      ],
+      [
+       0,
+       40
+      ],
+      [
+       2,
+       40
+      ],
+      [
+       4,
+       40
+      ],
+      [
+       6,
+       40
+      ],
+      [
+       8,
+       40
+      ],
+      [
+       10,
+       40
+      ],
+      [
+       12,
+       40
+      ],
+      [
+       50,
+       40
+      ],
+      [
+       52,
+       40
+      ],
+      [
+       54,
+       40
+      ],
+      [
+       0,
+       42
+      ],
+      [
+       2,
+       42
+      ],
+      [
+       4,
+       42
+      ],
+      [
+       6,
+       42
+      ],
+      [
+       8,
+       42
+      ],
+      [
+       10,
+       42
+      ],
+      [
+       12,
+       42
+      ],
+      [
+       14,
+       42
+      ],
+      [
+       50,
+       42
+      ],
+      [
+       54,
+       42
+      ],
+      [
+       0,
+       44
+      ],
+      [
+       2,
+       44
+      ],
+      [
+       4,
+       44
+      ],
+      [
+       6,
+       44
+      ],
+      [
+       8,
+       44
+      ],
+      [
+       10,
+       44
+      ],
+      [
+       12,
+       44
+      ],
+      [
+       14,
+       44
+      ],
+      [
+       16,
+       44
+      ],
+      [
+       54,
+       44
+      ],
+      [
+       0,
+       46
+      ],
+      [
+       2,
+       46
+      ],
+      [
+       4,
+       46
+      ],
+      [
+       6,
+       46
+      ],
+      [
+       8,
+       46
+      ],
+      [
+       10,
+       46
+      ],
+      [
+       12,
+       46
+      ],
+      [
+       14,
+       46
+      ],
+      [
+       16,
+       46
+      ],
+      [
+       18,
+       46
+      ],
+      [
+       54,
+       46
+      ],
+      [
+       0,
+       48
+      ],
+      [
+       2,
+       48
+      ],
+      [
+       4,
+       48
+      ],
+      [
+       6,
+       48
+      ],
+      [
+       8,
+       48
+      ],
+      [
+       10,
+       48
+      ],
+      [
+       12,
+       48
+      ],
+      [
+       14,
+       48
+      ],
+      [
+       16,
+       48
+      ],
+      [
+       18,
+       48
+      ],
+      [
+       20,
+       48
+      ],
+      [
+       54,
+       48
+      ],
+      [
+       0,
+       50
+      ],
+      [
+       2,
+       50
+      ],
+      [
+       4,
+       50
+      ],
+      [
+       6,
+       50
+      ],
+      [
+       8,
+       50
+      ],
+      [
+       10,
+       50
+      ],
+      [
+       12,
+       50
+      ],
+      [
+       14,
+       50
+      ],
+      [
+       16,
+       50
+      ],
+      [
+       18,
+       50
+      ],
+      [
+       20,
+       50
+      ],
+      [
+       22,
+       50
+      ],
+      [
+       38,
+       50
+      ],
+      [
+       40,
+       50
+      ],
+      [
+       54,
+       50
+      ],
+      [
+       0,
+       52
+      ],
+      [
+       2,
+       52
+      ],
+      [
+       4,
+       52
+      ],
+      [
+       6,
+       52
+      ],
+      [
+       8,
+       52
+      ],
+      [
+       10,
+       52
+      ],
+      [
+       12,
+       52
+      ],
+      [
+       14,
+       52
+      ],
+      [
+       16,
+       52
+      ],
+      [
+       18,
+       52
+      ],
+      [
+       20,
+       52
+      ],
+      [
+       22,
+       52
+      ],
+      [
+       24,
+       52
+      ],
+      [
+       36,
+       52
+      ],
+      [
+       54,
+       52
+      ],
+      [
+       0,
+       54
+      ],
+      [
+       2,
+       54
+      ],
+      [
+       4,
+       54
+      ],
+      [
+       6,
+       54
+      ],
+      [
+       8,
+       54
+      ],
+      [
+       10,
+       54
+      ],
+      [
+       12,
+       54
+      ],
+      [
+       14,
+       54
+      ],
+      [
+       16,
+       54
+      ],
+      [
+       18,
+       54
+      ],
+      [
+       20,
+       54
+      ],
+      [
+       22,
+       54
+      ],
+      [
+       24,
+       54
+      ],
+      [
+       26,
+       54
+      ],
+      [
+       34,
+       54
+      ],
+      [
+       36,
+       54
+      ],
+      [
+       40,
+       54
+      ],
+      [
+       54,
+       54
+      ],
+      [
+       0,
+       56
+      ],
+      [
+       2,
+       56
+      ],
+      [
+       4,
+       56
+      ],
+      [
+       6,
+       56
+      ],
+      [
+       8,
+       56
+      ],
+      [
+       10,
+       56
+      ],
+      [
+       12,
+       56
+      ],
+      [
+       14,
+       56
+      ],
+      [
+       16,
+       56
+      ],
+      [
+       18,
+       56
+      ],
+      [
+       20,
+       56
+      ],
+      [
+       22,
+       56
+      ],
+      [
+       24,
+       56
+      ],
+      [
+       26,
+       56
+      ],
+      [
+       28,
+       56
+      ],
+      [
+       30,
+       56
+      ],
+      [
+       32,
+       56
+      ],
+      [
+       34,
+       56
+      ],
+      [
+       36,
+       56
+      ],
+      [
+       38,
+       56
+      ],
+      [
+       40,
+       56
+      ],
+      [
+       42,
+       56
+      ],
+      [
+       44,
+       56
+      ],
+      [
+       46,
+       56
+      ],
+      [
+       48,
+       56
+      ],
+      [
+       50,
+       56
+      ],
+      [
+       52,
+       56
+      ],
+      [
+       54,
+       56
+      ]
+     ],
+     "_picture": {
+      "f": "pt_ground/D28R0101.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "hidden": {
+     "12,15": "HP_UP"
+    }
+   },
+   {
+    "art": [
      "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
      "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
      "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTnTTTT",
@@ -282767,13 +284423,16 @@
    }
   ],
   "floor_names": [
+   "The drained lake",
    "The lake",
    "Valor Cavern"
   ],
   "figure_floors": {
-   "Azelf's Lair": 1,
-   "Confront Saturn at the Lake": 1,
-   "TM166": 0
+   "Azelf's Lair": 2,
+   "Confront Saturn at the Lake": 2,
+   "TM166": 1,
+   "Galactic Grunt 1": 0,
+   "Galactic Grunt 2": 0
   },
   "buildings": {
    "A": "house",
@@ -282798,959 +284457,1112 @@
    ],
    "_big_trees": [
     [
+     38,
+     0
+    ],
+    [
+     40,
+     0
+    ],
+    [
+     42,
+     0
+    ],
+    [
+     44,
+     0
+    ],
+    [
+     46,
+     0
+    ],
+    [
+     48,
+     0
+    ],
+    [
+     50,
+     0
+    ],
+    [
+     52,
+     0
+    ],
+    [
+     54,
+     0
+    ],
+    [
+     38,
+     2
+    ],
+    [
+     40,
+     2
+    ],
+    [
+     42,
+     2
+    ],
+    [
+     44,
+     2
+    ],
+    [
+     46,
+     2
+    ],
+    [
+     48,
+     2
+    ],
+    [
+     50,
+     2
+    ],
+    [
+     52,
+     2
+    ],
+    [
+     54,
+     2
+    ],
+    [
+     40,
+     4
+    ],
+    [
+     42,
+     4
+    ],
+    [
+     44,
+     4
+    ],
+    [
+     46,
+     4
+    ],
+    [
+     48,
+     4
+    ],
+    [
+     50,
+     4
+    ],
+    [
+     52,
+     4
+    ],
+    [
+     54,
+     4
+    ],
+    [
+     40,
+     6
+    ],
+    [
+     42,
+     6
+    ],
+    [
+     44,
+     6
+    ],
+    [
+     46,
+     6
+    ],
+    [
+     48,
+     6
+    ],
+    [
+     50,
+     6
+    ],
+    [
+     52,
+     6
+    ],
+    [
+     54,
+     6
+    ],
+    [
+     40,
+     8
+    ],
+    [
+     42,
+     8
+    ],
+    [
+     44,
+     8
+    ],
+    [
+     46,
+     8
+    ],
+    [
+     48,
+     8
+    ],
+    [
+     50,
+     8
+    ],
+    [
+     52,
+     8
+    ],
+    [
+     54,
+     8
+    ],
+    [
+     54,
+     10
+    ],
+    [
+     44,
+     12
+    ],
+    [
+     46,
+     12
+    ],
+    [
+     48,
+     12
+    ],
+    [
+     50,
+     12
+    ],
+    [
+     52,
+     12
+    ],
+    [
+     54,
+     12
+    ],
+    [
+     42,
+     14
+    ],
+    [
+     44,
+     14
+    ],
+    [
+     46,
+     14
+    ],
+    [
+     48,
+     14
+    ],
+    [
+     50,
+     14
+    ],
+    [
+     52,
+     14
+    ],
+    [
+     54,
+     14
+    ],
+    [
+     42,
+     16
+    ],
+    [
+     44,
+     16
+    ],
+    [
+     46,
+     16
+    ],
+    [
+     48,
+     16
+    ],
+    [
+     50,
+     16
+    ],
+    [
+     52,
+     16
+    ],
+    [
+     54,
+     16
+    ],
+    [
+     44,
+     18
+    ],
+    [
+     46,
+     18
+    ],
+    [
+     48,
+     18
+    ],
+    [
+     50,
+     18
+    ],
+    [
+     52,
+     18
+    ],
+    [
+     54,
+     18
+    ],
+    [
+     46,
+     20
+    ],
+    [
+     48,
+     20
+    ],
+    [
+     50,
+     20
+    ],
+    [
+     52,
+     20
+    ],
+    [
+     54,
+     20
+    ],
+    [
+     48,
+     22
+    ],
+    [
+     50,
+     22
+    ],
+    [
+     52,
+     22
+    ],
+    [
+     54,
+     22
+    ],
+    [
+     50,
+     24
+    ],
+    [
+     52,
+     24
+    ],
+    [
+     54,
+     24
+    ],
+    [
      0,
-     1
+     26
     ],
     [
      2,
-     1
+     26
     ],
     [
      4,
-     1
+     26
+    ],
+    [
+     50,
+     26
+    ],
+    [
+     52,
+     26
+    ],
+    [
+     54,
+     26
+    ],
+    [
+     0,
+     28
+    ],
+    [
+     2,
+     28
+    ],
+    [
+     4,
+     28
     ],
     [
      6,
-     1
+     28
     ],
     [
      8,
-     1
+     28
     ],
     [
      10,
-     1
+     28
     ],
     [
      12,
-     1
+     28
+    ],
+    [
+     50,
+     28
+    ],
+    [
+     52,
+     28
+    ],
+    [
+     54,
+     28
+    ],
+    [
+     0,
+     30
+    ],
+    [
+     2,
+     30
+    ],
+    [
+     4,
+     30
+    ],
+    [
+     6,
+     30
+    ],
+    [
+     8,
+     30
+    ],
+    [
+     10,
+     30
+    ],
+    [
+     12,
+     30
+    ],
+    [
+     50,
+     30
+    ],
+    [
+     52,
+     30
+    ],
+    [
+     54,
+     30
+    ],
+    [
+     0,
+     32
+    ],
+    [
+     2,
+     32
+    ],
+    [
+     4,
+     32
+    ],
+    [
+     6,
+     32
+    ],
+    [
+     8,
+     32
+    ],
+    [
+     10,
+     32
+    ],
+    [
+     12,
+     32
+    ],
+    [
+     50,
+     32
+    ],
+    [
+     52,
+     32
+    ],
+    [
+     54,
+     32
+    ],
+    [
+     0,
+     34
+    ],
+    [
+     2,
+     34
+    ],
+    [
+     4,
+     34
+    ],
+    [
+     6,
+     34
+    ],
+    [
+     8,
+     34
+    ],
+    [
+     10,
+     34
+    ],
+    [
+     12,
+     34
+    ],
+    [
+     50,
+     34
+    ],
+    [
+     52,
+     34
+    ],
+    [
+     54,
+     34
+    ],
+    [
+     0,
+     36
+    ],
+    [
+     2,
+     36
+    ],
+    [
+     4,
+     36
+    ],
+    [
+     6,
+     36
+    ],
+    [
+     8,
+     36
+    ],
+    [
+     10,
+     36
+    ],
+    [
+     12,
+     36
+    ],
+    [
+     50,
+     36
+    ],
+    [
+     52,
+     36
+    ],
+    [
+     54,
+     36
+    ],
+    [
+     0,
+     38
+    ],
+    [
+     2,
+     38
+    ],
+    [
+     4,
+     38
+    ],
+    [
+     6,
+     38
+    ],
+    [
+     8,
+     38
+    ],
+    [
+     10,
+     38
+    ],
+    [
+     12,
+     38
+    ],
+    [
+     50,
+     38
+    ],
+    [
+     52,
+     38
+    ],
+    [
+     54,
+     38
+    ],
+    [
+     0,
+     40
+    ],
+    [
+     2,
+     40
+    ],
+    [
+     4,
+     40
+    ],
+    [
+     6,
+     40
+    ],
+    [
+     8,
+     40
+    ],
+    [
+     10,
+     40
+    ],
+    [
+     12,
+     40
+    ],
+    [
+     50,
+     40
+    ],
+    [
+     52,
+     40
+    ],
+    [
+     54,
+     40
+    ],
+    [
+     0,
+     42
+    ],
+    [
+     2,
+     42
+    ],
+    [
+     4,
+     42
+    ],
+    [
+     6,
+     42
+    ],
+    [
+     8,
+     42
+    ],
+    [
+     10,
+     42
+    ],
+    [
+     12,
+     42
     ],
     [
      14,
-     1
+     42
+    ],
+    [
+     50,
+     42
+    ],
+    [
+     54,
+     42
+    ],
+    [
+     0,
+     44
+    ],
+    [
+     2,
+     44
+    ],
+    [
+     4,
+     44
+    ],
+    [
+     6,
+     44
+    ],
+    [
+     8,
+     44
+    ],
+    [
+     10,
+     44
+    ],
+    [
+     12,
+     44
+    ],
+    [
+     14,
+     44
     ],
     [
      16,
-     1
+     44
+    ],
+    [
+     54,
+     44
+    ],
+    [
+     0,
+     46
+    ],
+    [
+     2,
+     46
+    ],
+    [
+     4,
+     46
+    ],
+    [
+     6,
+     46
+    ],
+    [
+     8,
+     46
+    ],
+    [
+     10,
+     46
+    ],
+    [
+     12,
+     46
+    ],
+    [
+     14,
+     46
+    ],
+    [
+     16,
+     46
     ],
     [
      18,
-     1
+     46
+    ],
+    [
+     54,
+     46
+    ],
+    [
+     0,
+     48
+    ],
+    [
+     2,
+     48
+    ],
+    [
+     4,
+     48
+    ],
+    [
+     6,
+     48
+    ],
+    [
+     8,
+     48
+    ],
+    [
+     10,
+     48
+    ],
+    [
+     12,
+     48
+    ],
+    [
+     14,
+     48
+    ],
+    [
+     16,
+     48
+    ],
+    [
+     18,
+     48
     ],
     [
      20,
-     1
+     48
+    ],
+    [
+     54,
+     48
+    ],
+    [
+     0,
+     50
+    ],
+    [
+     2,
+     50
+    ],
+    [
+     4,
+     50
+    ],
+    [
+     6,
+     50
+    ],
+    [
+     8,
+     50
+    ],
+    [
+     10,
+     50
+    ],
+    [
+     12,
+     50
+    ],
+    [
+     14,
+     50
+    ],
+    [
+     16,
+     50
+    ],
+    [
+     18,
+     50
+    ],
+    [
+     20,
+     50
     ],
     [
      22,
-     1
+     50
+    ],
+    [
+     38,
+     50
+    ],
+    [
+     40,
+     50
+    ],
+    [
+     54,
+     50
+    ],
+    [
+     0,
+     52
+    ],
+    [
+     2,
+     52
+    ],
+    [
+     4,
+     52
+    ],
+    [
+     6,
+     52
+    ],
+    [
+     8,
+     52
+    ],
+    [
+     10,
+     52
+    ],
+    [
+     12,
+     52
+    ],
+    [
+     14,
+     52
+    ],
+    [
+     16,
+     52
+    ],
+    [
+     18,
+     52
+    ],
+    [
+     20,
+     52
+    ],
+    [
+     22,
+     52
     ],
     [
      24,
-     1
+     52
+    ],
+    [
+     36,
+     52
+    ],
+    [
+     54,
+     52
+    ],
+    [
+     0,
+     54
+    ],
+    [
+     2,
+     54
+    ],
+    [
+     4,
+     54
+    ],
+    [
+     6,
+     54
+    ],
+    [
+     8,
+     54
+    ],
+    [
+     10,
+     54
+    ],
+    [
+     12,
+     54
+    ],
+    [
+     14,
+     54
+    ],
+    [
+     16,
+     54
+    ],
+    [
+     18,
+     54
+    ],
+    [
+     20,
+     54
+    ],
+    [
+     22,
+     54
+    ],
+    [
+     24,
+     54
     ],
     [
      26,
-     1
-    ],
-    [
-     28,
-     1
-    ],
-    [
-     30,
-     1
-    ],
-    [
-     32,
-     1
+     54
     ],
     [
      34,
-     1
+     54
     ],
     [
      36,
-     1
+     54
     ],
     [
      40,
-     1
+     54
     ],
     [
-     42,
-     1
+     54,
+     54
     ],
     [
      0,
-     3
+     56
     ],
     [
      2,
-     3
+     56
     ],
     [
      4,
-     3
+     56
     ],
     [
      6,
-     3
+     56
     ],
     [
      8,
-     3
+     56
     ],
     [
      10,
-     3
+     56
     ],
     [
      12,
-     3
+     56
     ],
     [
      14,
-     3
+     56
     ],
     [
      16,
-     3
+     56
     ],
     [
      18,
-     3
+     56
     ],
     [
      20,
-     3
+     56
     ],
     [
      22,
-     3
+     56
     ],
     [
      24,
-     3
+     56
     ],
     [
      26,
-     3
+     56
     ],
     [
      28,
-     3
+     56
     ],
     [
      30,
-     3
+     56
     ],
     [
      32,
-     3
+     56
     ],
     [
      34,
-     3
+     56
     ],
     [
      36,
-     3
-    ],
-    [
-     40,
-     3
-    ],
-    [
-     42,
-     3
-    ],
-    [
-     0,
-     5
-    ],
-    [
-     2,
-     5
-    ],
-    [
-     4,
-     5
-    ],
-    [
-     6,
-     5
-    ],
-    [
-     8,
-     5
-    ],
-    [
-     10,
-     5
-    ],
-    [
-     12,
-     5
-    ],
-    [
-     14,
-     5
-    ],
-    [
-     16,
-     5
-    ],
-    [
-     18,
-     5
-    ],
-    [
-     20,
-     5
-    ],
-    [
-     22,
-     5
-    ],
-    [
-     24,
-     5
-    ],
-    [
-     26,
-     5
-    ],
-    [
-     42,
-     5
-    ],
-    [
-     0,
-     7
-    ],
-    [
-     2,
-     7
-    ],
-    [
-     4,
-     7
-    ],
-    [
-     6,
-     7
-    ],
-    [
-     8,
-     7
-    ],
-    [
-     10,
-     7
-    ],
-    [
-     12,
-     7
-    ],
-    [
-     14,
-     7
-    ],
-    [
-     16,
-     7
-    ],
-    [
-     18,
-     7
-    ],
-    [
-     20,
-     7
-    ],
-    [
-     22,
-     7
-    ],
-    [
-     24,
-     7
-    ],
-    [
-     32,
-     7
-    ],
-    [
-     34,
-     7
-    ],
-    [
-     36,
-     7
+     56
     ],
     [
      38,
-     7
+     56
     ],
     [
      40,
-     7
+     56
     ],
     [
      42,
-     7
+     56
     ],
     [
-     0,
-     9
+     44,
+     56
     ],
     [
-     2,
-     9
+     46,
+     56
     ],
     [
-     4,
-     9
+     48,
+     56
     ],
     [
-     6,
-     9
+     50,
+     56
     ],
     [
-     8,
-     9
+     52,
+     56
     ],
     [
-     10,
-     9
-    ],
-    [
-     12,
-     9
-    ],
-    [
-     14,
-     9
-    ],
-    [
-     16,
-     9
-    ],
-    [
-     18,
-     9
-    ],
-    [
-     20,
-     9
-    ],
-    [
-     22,
-     9
-    ],
-    [
-     30,
-     9
-    ],
-    [
-     32,
-     9
-    ],
-    [
-     34,
-     9
-    ],
-    [
-     36,
-     9
-    ],
-    [
-     38,
-     9
-    ],
-    [
-     40,
-     9
-    ],
-    [
-     42,
-     9
-    ],
-    [
-     0,
-     11
-    ],
-    [
-     2,
-     11
-    ],
-    [
-     4,
-     11
-    ],
-    [
-     6,
-     11
-    ],
-    [
-     8,
-     11
-    ],
-    [
-     30,
-     11
-    ],
-    [
-     32,
-     11
-    ],
-    [
-     34,
-     11
-    ],
-    [
-     36,
-     11
-    ],
-    [
-     38,
-     11
-    ],
-    [
-     40,
-     11
-    ],
-    [
-     42,
-     11
-    ],
-    [
-     0,
-     13
-    ],
-    [
-     2,
-     13
-    ],
-    [
-     4,
-     13
-    ],
-    [
-     6,
-     13
-    ],
-    [
-     32,
-     13
-    ],
-    [
-     34,
-     13
-    ],
-    [
-     36,
-     13
-    ],
-    [
-     38,
-     13
-    ],
-    [
-     40,
-     13
-    ],
-    [
-     42,
-     13
-    ],
-    [
-     0,
-     15
-    ],
-    [
-     2,
-     15
-    ],
-    [
-     4,
-     15
-    ],
-    [
-     34,
-     15
-    ],
-    [
-     36,
-     15
-    ],
-    [
-     38,
-     15
-    ],
-    [
-     40,
-     15
-    ],
-    [
-     42,
-     15
-    ],
-    [
-     0,
-     17
-    ],
-    [
-     2,
-     17
-    ],
-    [
-     36,
-     17
-    ],
-    [
-     38,
-     17
-    ],
-    [
-     40,
-     17
-    ],
-    [
-     42,
-     17
-    ],
-    [
-     0,
-     19
-    ],
-    [
-     38,
-     19
-    ],
-    [
-     40,
-     19
-    ],
-    [
-     42,
-     19
-    ],
-    [
-     0,
-     21
-    ],
-    [
-     38,
-     21
-    ],
-    [
-     40,
-     21
-    ],
-    [
-     42,
-     21
-    ],
-    [
-     0,
-     23
-    ],
-    [
-     38,
-     23
-    ],
-    [
-     40,
-     23
-    ],
-    [
-     42,
-     23
-    ],
-    [
-     0,
-     25
-    ],
-    [
-     38,
-     25
-    ],
-    [
-     40,
-     25
-    ],
-    [
-     42,
-     25
-    ],
-    [
-     0,
-     27
-    ],
-    [
-     38,
-     27
-    ],
-    [
-     40,
-     27
-    ],
-    [
-     42,
-     27
-    ],
-    [
-     0,
-     29
-    ],
-    [
-     38,
-     29
-    ],
-    [
-     40,
-     29
-    ],
-    [
-     42,
-     29
-    ],
-    [
-     0,
-     31
-    ],
-    [
-     38,
-     31
-    ],
-    [
-     40,
-     31
-    ],
-    [
-     42,
-     31
-    ],
-    [
-     0,
-     33
-    ],
-    [
-     38,
-     33
-    ],
-    [
-     40,
-     33
-    ],
-    [
-     42,
-     33
-    ],
-    [
-     0,
-     35
-    ],
-    [
-     38,
-     35
-    ],
-    [
-     40,
-     35
-    ],
-    [
-     42,
-     35
-    ],
-    [
-     0,
-     37
-    ],
-    [
-     2,
-     37
-    ],
-    [
-     38,
-     37
-    ],
-    [
-     42,
-     37
-    ],
-    [
-     0,
-     39
-    ],
-    [
-     2,
-     39
-    ],
-    [
-     4,
-     39
-    ],
-    [
-     42,
-     39
-    ],
-    [
-     0,
-     41
-    ],
-    [
-     2,
-     41
-    ],
-    [
-     4,
-     41
-    ],
-    [
-     6,
-     41
-    ],
-    [
-     42,
-     41
-    ],
-    [
-     0,
-     43
-    ],
-    [
-     2,
-     43
-    ],
-    [
-     4,
-     43
-    ],
-    [
-     6,
-     43
-    ],
-    [
-     8,
-     43
-    ],
-    [
-     42,
-     43
-    ],
-    [
-     0,
-     45
-    ],
-    [
-     2,
-     45
-    ],
-    [
-     4,
-     45
-    ],
-    [
-     6,
-     45
-    ],
-    [
-     8,
-     45
-    ],
-    [
-     10,
-     45
-    ],
-    [
-     26,
-     45
-    ],
-    [
-     28,
-     45
-    ],
-    [
-     42,
-     45
-    ],
-    [
-     0,
-     47
-    ],
-    [
-     2,
-     47
-    ],
-    [
-     4,
-     47
-    ],
-    [
-     6,
-     47
-    ],
-    [
-     8,
-     47
-    ],
-    [
-     10,
-     47
-    ],
-    [
-     12,
-     47
-    ],
-    [
-     24,
-     47
-    ],
-    [
-     42,
-     47
-    ],
-    [
-     0,
-     49
-    ],
-    [
-     2,
-     49
-    ],
-    [
-     4,
-     49
-    ],
-    [
-     6,
-     49
-    ],
-    [
-     8,
-     49
-    ],
-    [
-     10,
-     49
-    ],
-    [
-     12,
-     49
-    ],
-    [
-     14,
-     49
-    ],
-    [
-     22,
-     49
-    ],
-    [
-     24,
-     49
-    ],
-    [
-     28,
-     49
-    ],
-    [
-     42,
-     49
-    ],
-    [
-     0,
-     51
-    ],
-    [
-     2,
-     51
-    ],
-    [
-     4,
-     51
-    ],
-    [
-     6,
-     51
-    ],
-    [
-     8,
-     51
-    ],
-    [
-     10,
-     51
-    ],
-    [
-     12,
-     51
-    ],
-    [
-     14,
-     51
-    ],
-    [
-     16,
-     51
-    ],
-    [
-     18,
-     51
-    ],
-    [
-     20,
-     51
-    ],
-    [
-     22,
-     51
-    ],
-    [
-     24,
-     51
-    ],
-    [
-     26,
-     51
-    ],
-    [
-     28,
-     51
-    ],
-    [
-     30,
-     51
-    ],
-    [
-     32,
-     51
-    ],
-    [
-     34,
-     51
-    ],
-    [
-     36,
-     51
-    ],
-    [
-     38,
-     51
-    ],
-    [
-     40,
-     51
-    ],
-    [
-     42,
-     51
+     54,
+     56
     ]
    ]
-  }
+  },
+  "start_floor_flag": "galactic_lake_valor_cleared"
  },
  "LAKE_ACUITY": {
   "floors": [
