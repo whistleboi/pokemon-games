@@ -83,7 +83,7 @@ def current_step(game, mission):
     return None
 
 
-WALKED_REGIONS = {"KANTO", "ORANGE", "JOHTO"}  # (Orange: 11-17, its walked maps from 5.7, batch by batch; Johto: 11-22, after its playthrough passed, Jordan: "Yes, add Johto") (regions whose Journal is led over the walked maps' own ways out, not the old menus' jumps: each joins after its own scripted playthrough)
+WALKED_REGIONS = {"KANTO", "ORANGE", "JOHTO", "HOENN"}  # (Orange: 11-17, its walked maps from 5.7, batch by batch; Johto: 11-22, after its playthrough passed, Jordan: "Yes, add Johto"; Hoenn: 11-24, its playthrough Littleroot to Steven passed with 0 stuck points - Dev Map M6) (regions whose Journal is led over the walked maps' own ways out, not the old menus' jumps: each joins after its own scripted playthrough)
 _WAYS = {}
 
 
@@ -237,6 +237,13 @@ def advances_goal(game, area_key, item, mission=None):
         i = int(item.get("index", 0))
         won = lambda n: bool(story.story_flags.get(f"league_won_{area_key}_{n}"))
         return mission_target(game, mission) == area_key and not won(i + 1) and all(won(n) for n in range(1, i + 1))
+    if action in ("NPC", "EVENT") and item.get("target"):   # (11-24, Hoenn: someone whose talk waits on a step not done yet is
+        from src.world import story_events               # not the next step, though the mission names them: Mr. Stone
+        _ev = story_events.get(item.get("target")) or {}   # before the Devon Parts are back; unless what the talk sets
+        req = _ev.get("requires") or []                    # when it can't go on is what the mission waits for)
+        if any(not story.story_flags.get(f) for f in (req if isinstance(req, list) else [req])) \
+                and not (need and _ev.get("fail_flag") and _needs(need, _ev["fail_flag"])):
+            return False
     if _named_in_mission(game, mission, area_key, item):
         return True  # the building or person the mission names, in its town (the Fighting Dojo)
     if not need:

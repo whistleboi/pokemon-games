@@ -507,6 +507,8 @@ class Run:
         self.recipe = recipe
         self.rng = rng or random.Random()
         self.n_floors = max(1, int(recipe.get("floors", 1)))
+        if recipe.get("layout"):   # (a drawn map has only the floors it draws: Mirage Island, Route 130's Mirage-day map, counted more; 11-24)
+            self.n_floors = min(self.n_floors, len(recipe["layout"])) or 1
         self.entrance, self.forwards = entrance, list(forwards)
         self.make_wild = make_wild or (lambda rng: None)
         try:  # make_wild(rng, spot): it's told where the Pokemon will stand (which area of a wide floor)
