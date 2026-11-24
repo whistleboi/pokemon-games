@@ -33,7 +33,8 @@ import utrainers  # noqa: E402
 P = os.path.join(GAME, "assets", "unova_area_data.json")
 SPRITES = os.path.join(GAME, "assets", "sprites", "trainers")
 # area -> zones whose standing trainers it holds (batch 4a, 11-23)
-PLACES = {"NIMBASA_CITY": [62, 64, 63, 585], "UNOVA_ROUTE_16": [383], "LOSTLORN_FOREST": [385], "UNOVA_ROUTE_5": [329]}
+PLACES = {"NIMBASA_CITY": [62, 64, 63, 585], "UNOVA_ROUTE_16": [383], "LOSTLORN_FOREST": [385], "UNOVA_ROUTE_5": [329],
+          "RELIC_PASSAGE": [503], "RELIC_PASSAGE_MIDDLE": [504], "RELIC_PASSAGE_NORTH": [505]}   # (batch 5b, 11-24)
 EXTRA = {"UNOVA_ROUTE_5": [(339, "unova_version:BLACK_2"), (340, "unova_version:WHITE_2")]}   # (Charles at the drawbridge)
 CLASS_FIX = {"⒆⒇": "Pokemon", "⑮": "F", "⑭": "M"}   # (the file's PKMN glyph, female / male signs)
 # Story and Gym battles that aren't standing trainers: written to town_maps/unova_teams.json {id: entry} for unova.py's _b2(id)
@@ -42,12 +43,20 @@ TEAMS = [207, 208, 209, 153,                     # Elesa's Beauties, Elesa
          47, 803, 10, 804, 138, 805, 136, 806,   # the Ferris wheel's trainers (Nate: spring-winter; Rosa: spring-winter)
          732, 733, 360, 361, 362, 363, 364, 365,  # Ingo, Emmet; Nate and Rosa as partners (by your starter)
          359, 751, 588, 589, 590,                # the Plasma Grunts at Big Stadium; Hugh (by your starter)
-         339, 340]                               # Charles at the drawbridge (Black 2: Rotation, White 2: Triple)
+         339, 340,                               # Charles at the drawbridge (Black 2: Rotation, White 2: Triple)
+         256,                                    # (batch 5a, 11-24) Musician Preston on Route 5 (missed in 4a)
+         346, 366, 367, 158,                     # Rood; Charles in Driftveil (Black 2: Triple, White 2: Rotation); Clay
+         319, 320, 321, 322, 323, 324, 325,      # Clay's Workers
+         368, 369, 370, 371,                     # (batch 5b) the Plasma Frigate: Hugh as your partner (by your starter), Cheren
+         372, 373, 374, 375, 376, 377]           # the Frigate's Grunts: two alone, then two pairs (with Cheren, with Hugh)
 # Battle pictures where the class slug isn't the file's name (a/0/7/1 slots matched by eye, 11-23; a class without its own
 # Black 2 picture keeps the same class from Platinum, never another class's look)
 BY_CLASS = {0: "b2_nate.png", 1: "b2_rosa.png", 90: "pt_cyclist_m.png", 91: "pt_cyclist_f.png", 33: "pt_artist.png",
+            # (11-24: classes the file names without a gender sign; the class number says which: Black 2's own pictures)
+            27: "b2_backpacker_m.png", 28: "b2_backpacker_f.png", 52: "b2_scientist_m.png", 46: "b2_scientist_f.png",
+            35: "b2_psychic_m.png", 36: "b2_psychic_f.png",
             187: "b2_plasma_grunt_m.png", 188: "b2_plasma_grunt_f.png"}
-BY_NAME = {"Elesa": "b2_elesa.png", "Emmet": "b2_emmet.png", "Ingo": "b2_ingo.png", "Hugh": "hugh.png"}
+BY_NAME = {"Elesa": "b2_elesa.png", "Clay": "b2_clay.png", "Emmet": "b2_emmet.png", "Ingo": "b2_ingo.png", "Hugh": "hugh.png"}
 TEAMS_OUT = os.path.join(HERE, "town_maps", "unova_teams.json")
 
 

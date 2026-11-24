@@ -265,6 +265,9 @@ def running():
 
 def held_way(keys_map):
     """The way a held arrow key (or WASD) points, or None (Jordan, 11-07: hold to keep walking)."""
+    from src.vfx import area_changes as _ac
+    if _ac.ACTIVE is not None and _ac.ACTIVE.t > 0:   # (a door's wipe playing on screen: no one walks on)
+        return None
     try:
         pressed = pygame.key.get_pressed()
     except pygame.error:
@@ -1045,6 +1048,7 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         self.toast, self.toast_timer = "", 0
         self.scent_floor = -1      # the floor Sweet Scent was used on (once a floor)
         self.banner = 150          # the area's name, when you arrive
+        self.sign, self._sign_due = None, True   # (a region with its game's profile: that game's sign instead, src/vfx/area_changes.py)
         # the Bug-Catching Contest: its Sport Balls, the turns left, your best catch (only one is kept)
         self.contest = ({"balls": CONTEST_BALLS, "turns": CONTEST_TURNS, "best": None, "score": 0}
                         if self.area_data.get("bug_contest") else None)
@@ -1292,6 +1296,43 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         self._sync_gate()
         self._hide_followed()
 
+    def _sync_partners(self):
+        """The important people here (src/world/partners.py) with their partner Pokemon beside them, following them; a
+        partner whose trainer has left (beaten, gone) leaves too. Checked when the floor's people change."""
+        f = self.run.floor
+        key = (id(f), len(f.movers))
+        if getattr(self, "_partners_key", None) == key:
+            return
+        from src.world import partners
+        from src.dungeon import npc
+        owners = {id(m) for m in f.movers}
+        f.movers[:] = [m for m in f.movers if getattr(m, "_partner_of", None) is None or id(m._partner_of) in owners]
+        have = {id(m._partner_of) for m in f.movers if getattr(m, "_partner_of", None) is not None}
+        for m in list(f.movers):
+            if m.kind not in ("figure", "trainer") or id(m) in have or getattr(m, "_partner_of", None) is not None:
+                continue
+            info = m.payload if m.kind == "figure" else (m.payload[1] if isinstance(m.payload, tuple) else None)
+            if not isinstance(info, dict):
+                continue
+            text = info.get("text") if m.kind == "figure" else info.get("name")
+            if any(getattr(o, "motion", None) is not None and getattr(o.motion, "leader", None) == text for o in f.movers):
+                continue   # (the map gives it one already)
+            got = partners.partner_for(self.game, self.area_data, info)
+            if not got:
+                continue
+            spot = next(((m.x + dx, m.y + dy) for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))
+                         if f.walkable(m.x + dx, m.y + dy) and not f.occupied(m.x + dx, m.y + dy)
+                         and f.tile(m.x + dx, m.y + dy) != core.SURF and (m.x + dx, m.y + dy) != tuple(self.run.player)), None)
+            if spot is None:
+                continue
+            species, owner = got
+            p = core.Mover("figure", spot[0], spot[1], {"text": species, "action": "EVENT",
+                                                         "event": {"lines": partners.line(owner, species)}})
+            p._partner_of = m
+            p.motion = npc.Motion(spot, {"m": "trail", "who": text}, seed=self.area_key)
+            f.movers.append(p)
+        self._partners_key = (id(f), len(f.movers))
+
     def _boss_spot(self):
         """The tile the area's boss sleeps on (the map's "boss_spot"), while it is still there."""
         art = self.recipe.get("art") or {}
@@ -1476,6 +1517,8 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
             if mo.kind == "trail":   # (a Pokemon at its trainer's heels: into the tile they just left)
                 if _leads is None:
                     _leads = {o.payload.get("text"): self._motion(o) for o in f.movers if o.kind == "figure" and isinstance(o.payload, dict)}
+                    _leads.update({(o.payload[1] or {}).get("name"): self._motion(o) for o in f.movers   # (a trainer's partner: partners.py)
+                                   if o.kind == "trainer" and isinstance(o.payload, tuple) and isinstance(o.payload[1], dict)})
                 from src.dungeon import npc as _npc
                 _npc.trail(mo, _leads.get(mo.leader), lambda t, m=m: self._npc_free(t, m))
                 m.x, m.y = mo.pos
@@ -2063,6 +2106,13 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
 
     def _leave_now(self, target):
         self.game.dungeon_state = None
+        if hasattr(self, "run"):   # (how you leave: over the map's edge, or by a door or a cave's mouth: the area change's wipe)
+            from src.vfx import area_changes
+            (_x, _y), _f = self.run.player, self.run.floor
+            _art = (self._here_art() or {}).get("art") or []
+            _ch = _art[_y][_x] if 0 <= _y < len(_art) and isinstance(_art[_y], str) and 0 <= _x < len(_art[_y]) else None
+            area_changes.note_leave(self.game, self.area_key, room=self._indoors(self.run.index),
+                                    edge=area_changes.edge_exit(_ch, (_x, _y), (_f.w, _f.h)))
         boat = self.area_data.get("boat_home") or {}   # (an island two regions share: the boat takes you back the way you came,
         if target == boat.get("dock"):                 #  Navel Rock and Birth Island: Lilycove from Hoenn, One Island from Sevii)
             target = boat.get(self.game.story_manager.get_current_region(), target)
@@ -2343,11 +2393,26 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
                 from src.coop import travel
                 if travel.held(self.game, self._floor_name(self.run.index + 1), lambda: self._handle([ev]), self._step_back):
                     return
+                if self._canon_changes():   # (as the games: no words, the floor's fade and its sign)
+                    __import__("src.vfx.area_changes", fromlist=["change"]).change(self, "stairs", self._descend)
+                    return
                 self.say([self._stairs_line(self.run.index + 1)], then=self._descend)
                 return
             elif kind == "warp":  # a passage to another floor (a map's "links")
                 self.walk_goal = None
                 _i, _x, _y = (int(v) for v in ev[1].split(":")[1:4])
+                if self._canon_changes():   # (as the games: the door's, panel's, hole's or stairs' fade, no words)
+                    _ac = __import__("src.vfx.area_changes", fromlist=["change"])
+                    _fall = ev[1].endswith(":fall")
+                    _kind = ("fall" if _fall else "door_in" if self._indoors(_i) and not self._indoors(self.run.index)
+                             else "door_out" if self._indoors(self.run.index) and not self._indoors(_i)
+                             else "warp" if _i == self.run.index else "stairs")
+                    if _fall:   # (a hole: said, as before, then the fall's fade)
+                        self.say(["Whoa! You fell through a hole in the floor!"],
+                                 then=lambda: _ac.change(self, "fall", lambda: self._warp(_i, _x, _y, land=True)))
+                    else:
+                        _ac.change(self, _kind, lambda: self._warp(_i, _x, _y, land=_fall))
+                    return
                 if ev[1].endswith(":fall"):  # (a hole in the floor: down you go, onto the spot below)
                     self.say(["Whoa! You fell through a hole in the floor!"], then=lambda: self._warp(_i, _x, _y, land=True))
                 elif _i == self.run.index or self._indoors(_i) or self._indoors(self.run.index):  # (a warp panel: across the same floor; a house's door or mat: straight in or out)
@@ -2359,6 +2424,9 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
                 self.walk_goal = None
                 from src.coop import travel
                 if travel.held(self.game, self._floor_name(self.run.index - 1), lambda: self._handle([ev]), self._step_back):
+                    return
+                if self._canon_changes():
+                    __import__("src.vfx.area_changes", fromlist=["change"]).change(self, "stairs", self._ascend)
                     return
                 self.say([self._stairs_line(self.run.index - 1)], then=self._ascend)
                 return
@@ -2428,17 +2496,20 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         self.anim_from = self.partner = self.partner_from = self.run.player
         self._reset_trail()
         self.banner = 120
+        self._floor_sign(True)
 
     def _warp(self, index, x, y, land=False):
         if self.zones and self._indoors(self.run.index) and not self._indoors(index):  # (out of a house: the area its door is in, said nothing)
             self.game.story_manager.story_flags[f"zone_{self.area_key}"] = self.zones[self._zone_index(index, x, y)]
         else:
             self._set_zone(index)
+        _was = self.run.index
         self.run.warp(index, x, y, land=land)
         self.anim = 0
         self.anim_from = self.partner = self.partner_from = self.run.player
         self._reset_trail()
         self.banner = 120
+        self._floor_sign(index != _was)
 
     def _ascend(self):
         self._set_zone(self.run.index - 1)
@@ -2447,6 +2518,35 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         self.anim_from = self.partner = self.partner_from = self.run.player
         self._reset_trail()
         self.banner = 120
+        self._floor_sign(True)
+
+    def _canon_changes(self):
+        """True in a region with its game's profile (src/vfx/area_changes.py): floors change as that game does."""
+        from src.vfx import area_changes
+        return bool(area_changes.here_key(self.game))
+
+    def _sign_word(self, floor_too=True):
+        """The name on the sign: the place's, and the floor (FireRed's B1F; a zone's own name: the Safari Zone's areas)."""
+        _fn = self._floor_name(self.run.index)
+        if " / " in _fn and self.zones:
+            _fn = self._zone_name(self._zone_index(self.run.index, *self.run.player))
+        base = theme.pokemon_word(self.area_data.get("route_name", "") or self.area_key.replace("_", " ").title())
+        if self.run.n_floors > 1 and not self.area_data.get("route_name", "").endswith(_fn) and (floor_too or self.zones):
+            return f"{base}  {_fn}" if floor_too else f"{base} - {_fn}"
+        return base
+
+    def _sign_text(self):
+        from src.vfx import area_changes
+        return self._sign_word(floor_too=area_changes.here_key(self.game) in ("frlg", "orre"))
+
+    def _floor_sign(self, changed):
+        """Up or down a floor, or out of a building: the sign again where this region's game shows it."""
+        from src.vfx import area_changes
+        got = area_changes.floor_sign(self, self._sign_text, inside=self._indoors(self.run.index), changed=changed)
+        if got is not False:
+            self.banner = 0
+            if got is not None or changed:
+                self.sign = got
 
     # ---------------------------------------------------------------- story gates on the map (Jordan, 11-06)
     # A way out that needs an HM (or the bike, or the route's boss beaten) has what's in the way standing on
@@ -2907,6 +3007,11 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         if getattr(self, "_phone_say", None):
             lines, self._phone_say = self._phone_say, None
             self.say(lines)
+            return
+        from src.vfx import area_changes as _ac   # (what the old in-between screen said: said here on arrival)
+        _said = _ac.take_arrival_lines(self.game, self.area_key)
+        if _said:
+            self.say(_said)
             return
         if getattr(self, "_phone_area", None) != self.area_key:
             self._phone_area = self.area_key
@@ -4193,6 +4298,14 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
             self.dialogue_box.update()
         if self.toast_timer > 0:
             self.toast_timer -= 1
+        if getattr(self, "_sign_due", False) and hasattr(self, "run"):   # (arrived: this region's game's sign, src/vfx/area_changes.py)
+            self._sign_due = False
+            from src.vfx import area_changes
+            _got = area_changes.arrival(self, self._sign_text, inside=self._indoors(self.run.index))
+            if _got is not False:
+                self.sign, self.banner = _got, 0
+        if getattr(self, "sign", None):
+            self.sign.tick(busy=self.dialogue_box.visible or self.mode != "MAP")
         if self.banner > 0:
             self.banner -= 1
         if self.anim > 0:
@@ -4210,6 +4323,7 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
                 self._wu_tick() if self.mode == "WALKUP" else self._sw_tick()
                 return
         if self.mode == "MAP" and hasattr(self, "run") and not self.dialogue_box.visible:
+            self._sync_partners()
             self._npc_tick()
         if self.mode == "MAP":
             self._contest_check()
@@ -6227,6 +6341,8 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
             pygame.draw.rect(screen, (30, 36, 58), r, border_radius=12)
             pygame.draw.rect(screen, theme.BAG, r, 2, border_radius=12)
             screen.blit(t, t.get_rect(center=r.center))
+        if getattr(self, "sign", None) and self.mode == "MAP":   # (this region's game's sign: src/vfx/area_changes.py)
+            self.sign.draw(screen, map_view(self.game))
         if self.banner > 0 and self.mode == "MAP":
             _fn = self._floor_name(self.run.index)
             if " / " in _fn and self.zones:   # (a floor of several areas: the one you're in, not all of them in a row running off

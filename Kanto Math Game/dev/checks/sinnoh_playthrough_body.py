@@ -108,7 +108,7 @@ STATE = {"steps": 0, "battles": 0, "frames": 0, "shots": 0, "last_map": None, "f
 #  Each region sets its two ends here (its generator: make_jplaythrough / make_oplaythrough / make_splaythrough) and moves
 #  them when a batch closes. Empty: from the start, to the end, as before.
 FROM = "sinnoh_m4"      # (S3's lead-in: Through Eterna Forest, the last S2 mission)
-STOP_AT = "sinnoh_m6"   # (S4 starts here: The Galactic Warehouse)
+STOP_AT = "sinnoh_m6b"  # (S4: past the Galactic Warehouse; next, South to Pastoria)
 SAVES = OUT + "_saves"
 PT_FULL = os.environ.get("PT_FULL") == "1"
 PT_FROM = "" if PT_FULL else os.environ.get("PT_FROM", FROM)
@@ -121,11 +121,45 @@ try:
     _COMMIT = _sp.run(["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True, timeout=20).stdout.strip()
 except Exception:
     _COMMIT = "?"
+
+
+def _fingerprint():
+    """What a save depends on, as one short hash (Jordan 11-23: a save made before the region's story, maps or the shared
+    story code changed is stale - trainers are kept by their place in an area's list, gates and flags move): this region's
+    areas (STORY_PROGRESSION), its walked maps (town_maps.json) and its MAIN/SIDE missions, plus src/world/story.py and
+    src/world/guide.py. Kanto's run takes Sevii in with it."""
+    import hashlib
+    reg = str(story.starting_region or "KANTO").upper()
+    mine = {reg, "SEVII"} if reg == "KANTO" else {reg}
+    keys = sorted(k for k, a in AREAS.items() if isinstance(a, dict) and str(a.get("region") or "KANTO").upper() in mine)
+    try:
+        _tmf = json.load(open(os.path.join("assets", "town_maps.json"), encoding="utf-8"))
+        _tmf = _tmf.get("maps", _tmf)
+    except (OSError, ValueError):
+        _tmf = {}
+    ms = [m for m in g.loader.area_data.get("JOURNAL_MISSIONS", [])
+          if str(m.get("region") or (m.get("condition") or {}).get("required_region") or (m.get("condition") or {}).get("start_region") or "KANTO").upper() in mine]
+    h = hashlib.sha1()
+    h.update(json.dumps([[k, AREAS[k], _tmf.get(k)] for k in keys], sort_keys=True, default=str).encode())
+    h.update(json.dumps(ms, sort_keys=True, default=str).encode())
+    for _src in ("src/world/story.py", "src/world/guide.py"):
+        try:
+            h.update(open(_src, "rb").read())
+        except OSError:
+            pass
+    return h.hexdigest()[:12]
+
+
+FINGERPRINT = _fingerprint()
 if PT_FROM:
     try:
         _sv = json.load(open(os.path.join(SAVES, PT_FROM + ".json"), encoding="utf-8"))
     except (OSError, ValueError):
         _sv = None
+    if _sv and _sv.get("clean") and _sv.get("fp") != FINGERPRINT:   # (made before this region's story, maps or the story code changed)
+        print(f"== STALE SAVE {PT_FROM} (saved {_sv.get('when')} at commit {_sv.get('commit')}): the region or the story code changed since"
+              " - the run starts at the beginning and makes fresh saves", flush=True)
+        _sv = dict(_sv, clean=False, stale=True)
     if _sv and _sv.get("clean"):
         g.data.data = _sv["data"]
         g.load_game_data()
@@ -133,7 +167,7 @@ if PT_FROM:
         story = g.story_manager
         FROM_SAVE = PT_FROM
         print(f"== FROM SAVE {PT_FROM} (saved {_sv.get('when')} at commit {_sv.get('commit')}): the run plays on from there", flush=True)
-    else:
+    elif not (_sv or {}).get("stale"):
         print(f"== no clean save at {PT_FROM} yet ({'not clean' if _sv else 'none'}): the run starts at the beginning and makes the saves", flush=True)
 print(f"== STOP: {'none (the whole story)' if STOP_FROM is None else MAIN_ORDER[STOP_FROM] + ' (not built yet) and every MAIN mission after it'}", flush=True)
 
@@ -148,7 +182,7 @@ def _save_point(mid):
         os.makedirs(SAVES, exist_ok=True)
         with open(os.path.join(SAVES, mid + ".json"), "w", encoding="utf-8") as fh:
             json.dump({"data": g.data.data, "player": [g.player_name, g.player_character], "clean": clean, "when": time.strftime("%Y-%m-%d %H:%M"),
-                       "commit": _COMMIT, "from": FROM_SAVE, "at": here()}, fh, default=str)
+                       "commit": _COMMIT, "fp": FINGERPRINT, "from": FROM_SAVE, "at": here()}, fh, default=str)
     except Exception as e:
         print(f"   (no save point at {mid}: {type(e).__name__}: {e})", flush=True)
 
@@ -372,6 +406,12 @@ def settle(limit=9000):
                     st.challenge_gym()
                     if g.current_state is st:
                         st.exit_gym()
+                continue
+            _lp = getattr(getattr(st, "back", None), "_lift_plan", None)
+            if isinstance(st, _PLS) and st.title == "WHICH FLOOR?" and _lp in [v for _l, v in st.choices]:   # (a lift's panel: the floor the marker
+                _say(f"[lift: {st.title}: {next(l for l, v in st.choices if v == _lp)}]")                    #  says, 'Lift to <floor>'; 11-23)
+                st.back._lift_plan = None
+                st.pick(_lp)
                 continue
             if isinstance(st, _PLS):   # (a list to pick from: a tutor's "who should learn it?": BACK, no thanks)
                 if str(st.title).endswith("?") and str(st.title) != str(st.title).upper() and st.choices:   # (Johto: the Elder's quiz)
@@ -612,6 +652,52 @@ def flood(st, through=False, blocked=()):
     return prev
 
 
+# ---------------------------------------------------------------- parts of a place, learned as the run walks (11-23)
+# A place can be split into parts that join only through other places (Orange: Route 56's south half reaches its north
+# half, and Route 67, only across Fairchild Island; Route 72's north bay opens only on Pummelo). The planner below works
+# area by area, so it can't tell those halves apart. A part = the tiles you can reach from where you stand (flood), named
+# by its first tile; every move that takes you from one part to another is written down (PART_EDGE), so later the run
+# can go round the way it already knows (part_way): used only where the area-by-area planner has no way on.
+PART_EDGE = collections.defaultdict(dict)   # part -> {tile you went to: the part it took you to}
+PART_TRIED = collections.Counter()           # (part, tile): times part_way sent the run that way (2 at most: a trainer or a
+                                             #  story bar can split a part differently from the time it was walked)
+
+
+def part_of(st):
+    """(area, room / floor, first tile) of the part of this map you stand in, or None off a map."""
+    if not is_map(st):
+        return None
+    try:
+        reach = flood(st)
+    except Exception:
+        return None
+    L = loc()
+    tiles = [t for t in reach if isinstance(t, tuple) and len(t) == 2 and all(isinstance(v, int) for v in t)]
+    return (L[0], L[1], min(tiles)) if tiles else None
+
+
+def part_way(st, area):
+    """The tile to head for, here, on a way the run has walked before from this part to `area` (None if none known)."""
+    p0 = part_of(st)
+    if p0 is None:
+        return None
+    prev, q = {p0: None}, deque([p0])
+    while q:
+        p = q.popleft()
+        if p[0] == area and p != p0:
+            while prev[p] is not None and prev[p][0] != p0:
+                p = prev[p][0]
+            if prev[p] is None:
+                return None
+            PART_TRIED[(p0, prev[p][1])] += 1
+            return prev[p][1]
+        for tile, nxt in PART_EDGE.get(p, {}).items():
+            if nxt not in prev and (p != p0 or PART_TRIED[(p0, tile)] < 2):
+                prev[nxt] = (p, tile)
+                q.append(nxt)
+    return None
+
+
 def _counter(st, t):
     if is_town(st):
         return bool(getattr(st, "room", None)) and 0 <= t[1] < st.h and 0 <= t[0] < st.w and st.grid[t[1]][t[0]] == "m"
@@ -759,7 +845,10 @@ def things(st):
                 continue
             spot = tuple(mos[home].pos) if home in mos else home
             now = next(o for o in opt["any"] if st._shown(o)) if "any" in opt else opt
-            if str(now.get("action") or "").upper() in BORING or (now.get("event") or {}).get("name_rater") or (now.get("event") or {}).get("tutor"):
+            if str(now.get("action") or "").upper() in BORING or (now.get("event") or {}).get("name_rater") or (now.get("event") or {}).get("tutor") or (now.get("event") or {}).get("stock"):
+                continue
+            _ride = (now.get("event") or {}).get("travel")   # (a ride - a ship, a ferry, a train - only toward the mission's place: else a
+            if _ride and _ride != (MISSIONS.get(STATE.get("mission")) or {}).get("target"):   # run sails off and is stranded; Unova 11-23)
                 continue
             out_.append((0, ("P", home), [spot], f"talk to {now.get('text')}", None))
         for t, kind in st.doors.items():
@@ -774,6 +863,8 @@ def things(st):
                 out_.append((1, ("S", t), [t], "a switch to press", None))
         for t in (getattr(st, "links", None) or {}):
             out_.append((1, ("W", t), [t], "a warp pad", None))
+        for (t, _way), (to, _xy) in (st._guide_cocoons(getattr(st, "room", None)) if hasattr(st, "_guide_cocoons") else {}).items():
+            out_.append((1, ("C", t, _way), [t], "a cocoon (its thread carries you on)", (area, "room:" + to if to else "outside")))   # (Castelia Gym; Unova 11-24)
         for tg, tiles in _stretches(st.exits):
             if tg.startswith("OUT:"):
                 out_.append((1, ("X", tg, tiles[0]), tiles, "the way out of the building", (area, "outside")))
@@ -976,6 +1067,69 @@ def push_drops(st):
     TRIED[(L, ("DROP", best[0]))] += 1
     STATE["puzzles"] += 1
     return do("puzzle", best[0], f"push the boulder at {best[0]} into its hole (it drops to the floor below)")
+
+
+def hit_bags(st):
+    """Veilstone Gym: the next punching bag to hit on the way to Maylene. -> what was done, or None."""
+    if not is_town(st) or st.area_key != "VEILSTONE_CITY" or getattr(st, "room", None) != "gym":
+        return None
+    from src.world import veilstone_gym as VG
+    prev = flood(st)
+    if any((12 + dx, 3 + dy) in prev for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))) and (12, 28) in prev:
+        return None   # (Maylene can be reached, and the way out: the tile inside the door)
+    L = loc()
+    if TRIED[(L, ("BAGS",))] >= 30:
+        return None
+    art = st.town_map["rooms"]["gym"]["art"]
+    ok = lambda x, y: 0 <= y - VG.OY < len(art) and 0 <= x < len(art[0]) and art[y - VG.OY][x] in ".vN"
+    me = (pos(st)[0], pos(st)[1] + VG.OY)
+    start = (tuple(VG.bags(story)), frozenset(VG.stacks(story)))
+    seen, q, first = {start}, collections.deque([start]), {start: None}
+    D4 = ((1, 0), (-1, 0), (0, 1), (0, -1))
+    plan = None
+    while q and plan is None:
+        bags, stacks = cur = q.popleft()
+        block = set(bags) | set(stacks)
+        reg, todo = {me}, [me]
+        while todo:
+            x, y = todo.pop()
+            for dx, dy in D4:
+                n = (x + dx, y + dy)
+                if n not in reg and ok(*n) and n not in block:
+                    reg.add(n); todo.append(n)
+        if cur != start and any((12 + dx, 3 + VG.OY + dy) in reg for dx, dy in D4) and (12, 29 + VG.OY) in reg:   # (and the door: a hit can shut you in)
+            plan = first[cur]
+            break
+        for i, b in enumerate(bags):
+            for d in D4:
+                if (b[0] - d[0], b[1] - d[1]) not in reg:
+                    continue
+                to, knock = VG.slide(b, d, stacks)
+                if to == b:
+                    continue
+                nxt = (bags[:i] + (to,) + bags[i + 1:], stacks - {knock} if knock else stacks)
+                if nxt not in seen:
+                    seen.add(nxt); q.append(nxt)
+                    first[nxt] = first[cur] or (b, d)
+    if plan is None:
+        return None
+    (bx, by), d = plan
+    side = (bx - d[0], by - VG.OY - d[1])
+    TRIED[(L, ("BAGS",))] += 1
+    STATE["puzzles"] += 1
+    if pos(st) != side:
+        how, n = go(side, "the side of a punching bag")
+        if how not in ("arrived",) or pos(settle()) != side:
+            return None
+    st = settle()
+    st.walk_goal = None
+    st.step(*d)
+    for _ in range(200):
+        st = settle()
+        if not getattr(st, "_vg_anim", None):
+            break
+    out(f"  .... [{STATE['mission']}] hit the punching bag at {(bx, by - VG.OY)} {'east' if d == (1, 0) else 'west' if d == (-1, 0) else 'south' if d == (0, 1) else 'north'}")
+    return {"hit": (bx, by - VG.OY)}
 
 
 def talk_companions(st):
@@ -1246,6 +1400,9 @@ def step_to_next(st, m, here_a, nxt, area, kind="words", label=None):
             out(f"  .... the way from {here_a} to {nxt} is shut: {why[:140]}")
         return row
     if other and not outs and not (last and not is_dun(st)):   # (no way to that way out from this part of the place: round by another area)
+        known = part_way(st, area) or part_way(st, nxt)   # (to the place itself, else on to the next place on the way)
+        if known is not None and (_nearest(st, [known], prev) or _nearest(st, [known], prev2)):   # (a way round walked before)
+            return do(kind, known, f"{tag} (no way to {nxt} from this side: round by the way walked before)", label)
         _, key, tile, words = min(other)
         row = do(kind, tile, f"{tag} (no way to {nxt} from this side: round by) {words}", label)
         TRIED[(L, key)] += 1
@@ -1286,7 +1443,8 @@ def head_for(st, m, area):
     for _ in range(6):
         path = map_path(here_a, area)
         if not path or len(path) < 2:
-            return None
+            known = part_way(st, area)   # (no way over the maps' areas: a way the run walked before, part to part)
+            return do("words", known, f"toward {area}: the way walked before") if known is not None else None
         row = step_to_next(st, m, here_a, path[1], area)
         if row is not None:
             return row
@@ -1301,8 +1459,18 @@ GATES = []   # ways out the game refused while the script was heading somewhere 
 def do(kind, tile, words, label=None):
     m = STATE["mission"]
     a, s0, at0 = snap(), len(said), here()
+    p0 = part_of(g.current_state)
     how, n = go(tile, words)
     b = snap()
+    p1 = part_of(g.current_state)
+    if p0 and p1 and p0[:2] != p1[:2]:   # (a move into another place or room: written down for part_way)
+        PART_EDGE[p0][tuple(tile)] = p1
+        st1 = g.current_state   # (and the way back: the way out beside where you arrived that leads back there)
+        ex = st1.exits if is_town(st1) else st1.run.floor.exits
+        at = pos(st1)
+        back = [t for t, tg in ex.items() if str(tg) == p0[0] and abs(t[0] - at[0]) + abs(t[1] - at[1]) <= 1]
+        if back and back[0] not in PART_EDGE[p1]:
+            PART_EDGE[p1][back[0]] = p0
     got = gained(a, b)
     heard = [x for x in said[s0:] if not x.startswith("(")][:3]
     row = {"n": len(ROWS) + 1, "mission": m, "kind": kind, "from": at0, "to": list(tile), "label": label, "what": words, "how": how,
@@ -1552,6 +1720,8 @@ def play_through():
         _came_in(st)
         if push_drops(st) is not None:   # (the Ice Path's boulders before the marker: on B1F it points back up to 1F)
             continue
+        if hit_bags(st) is not None:   # (Veilstone Gym's punching bags, Sinnoh S4)
+            continue
         if talk_companions(st):   # (Lance walking with you in the hideout: his Whirlpool line)
             continue
         spot = marker(st)
@@ -1633,6 +1803,88 @@ if last := PER.get(STATE["mission"]):
     last["done"] = ENDED == "CHAMPION"
     last["done"] = last["done"] or ENDED.startswith("built so far")
 shot("END_" + ENDED.replace(" ", "_"))
+
+# ---------------------------------------------------------------- after the title: every post-title event PLAYED (11-23, Jordan: "a post league content playthrough")
+# From where Red was beaten, one job at a time: the run gets a Journal entry for it (a stand-in MAIN mission with the game's
+# own way-points: area, floor / room, tile), is set down in the nearest town (Fly), and then plays it the way it plays the
+# story: the marker, real steps, every trainer and battle fought. A job that doesn't end with its flag is a finding (POST).
+POST_JOBS = [   # (id, what, where it starts (Fly), steps, the flag that says it's done)
+    ("post_moltres", "Moltres on Mt. Silver", "MT_SILVER_CITY",
+     [{"area": "MT_SILVER", "floor": 3, "at": [10, 9], "label": "Moltres", "done": "mt_silver_moltres_defeated"}], "mt_silver_moltres_defeated"),
+    ("post_gs_ball", "The GS Ball (Goldenrod's Center, for the Champion)", "GOLDENROD_CITY",
+     [{"area": "GOLDENROD_CITY", "room": "center", "at": [5, 18], "label": "Center attendant", "done": "got_gs_ball_johto"}], "got_gs_ball_johto"),
+    ("post_kurt", "Kurt looks at the GS Ball", "AZALEA_TOWN",
+     [{"area": "AZALEA_TOWN", "room": "kurt", "at": [4, 6], "label": "Kurt", "done": "kurt_examined_gs_ball"}], "kurt_examined_gs_ball"),
+    ("post_celebi", "Celebi at Ilex Forest's shrine", "AZALEA_TOWN",
+     [{"area": "ILEX_FOREST", "floor": 0, "at": [13, 77], "label": "The shrine", "done": "ILEX_FOREST_boss_defeated"}], "ILEX_FOREST_boss_defeated"),
+    ("post_hooh", "Ho-Oh on the Bell Tower roof (Rainbow Wing)", "ECRUTEAK_CITY",
+     [{"area": "BELL_TOWER", "floor": 10, "at": [5, 6], "label": "Ho-Oh", "done": "caught_ho_oh"}], "caught_ho_oh"),
+    ("post_kimono", "The Kimono Girls (the Tidal Bell)", "ECRUTEAK_CITY",
+     [{"area": "ECRUTEAK_DANCE_THEATER", "floor": 0, "at": [12, 3], "label": "Kimono Girls", "done": "kimono_girls_defeated"}], "kimono_girls_defeated"),
+    ("post_silver_wing", "The Silver Wing (the Radio Director, on the Observation Deck)", "GOLDENROD_CITY",
+     [{"area": "RADIO_TOWER", "floor": 5, "at": [10, 14], "label": "The Director", "done": "has_item:SILVER_WING"}], "item:SILVER_WING"),
+    ("post_lugia", "Lugia in the Whirl Islands (Silver Wing + Tidal Bell)", "CIANWOOD_CITY",
+     [{"area": "JOHTO_ROUTE_41", "floor": 0, "at": [45, 21], "label": "The north-east island", "done": "visited_WHIRL_ISLANDS"},   # (of the four islands only
+      {"area": "WHIRL_ISLANDS", "floor": 4, "at": [16, 17], "label": "Lugia", "done": "caught_lugia"}], "caught_lugia"),     #  this one leads down to Lugia, as SoulSilver)
+    ("post_groudon", "Groudon in the Embedded Tower (SoulSilver's)", "CIANWOOD_CITY",
+     [{"area": "JOHTO_EMBEDDED_TOWER", "floor": 0, "at": [8, 7], "label": "Groudon", "done": "JOHTO_EMBEDDED_TOWER_boss_defeated"}], "JOHTO_EMBEDDED_TOWER_boss_defeated"),
+    ("post_kyogre", "Kyogre in the Embedded Tower (HeartGold's, after the title)", "CIANWOOD_CITY",
+     [{"area": "JOHTO_EMBEDDED_TOWER", "floor": 0, "at": [6, 8], "label": "Kyogre", "done": "embedded_kyogre_defeated"}], "embedded_kyogre_defeated"),
+    ("post_rayquaza", "Rayquaza in the Embedded Tower (after both)", "CIANWOOD_CITY",
+     [{"area": "JOHTO_EMBEDDED_TOWER", "floor": 0, "at": [10, 8], "label": "Rayquaza", "done": "embedded_rayquaza_defeated"}], "embedded_rayquaza_defeated"),
+    ("post_clair", "Clair and Lance in the Dragon's Den, with the rival", "BLACKTHORN_CITY",
+     [{"area": "DRAGONS_DEN", "floor": 1, "at": [15, 15], "label": "Clair", "done": "dragons_den_clair"},
+      {"area": "DRAGONS_DEN", "floor": 1, "at": [32, 49], "label": "Lance", "done": "dragons_den_lance"}], "dragons_den_lance"),
+    ("post_safari", "The Safari Zone (Route 48's gate)", "CIANWOOD_CITY",
+     [{"area": "SAFARI_ZONE_GATE", "room": "gate", "at": [5, 7], "label": "Into the Safari Zone", "done": "visited_JOHTO_SAFARI_ZONE"},
+      {"area": "JOHTO_SAFARI_ZONE", "label": "The Safari Zone", "done": "visited_JOHTO_SAFARI_ZONE"}], "visited_JOHTO_SAFARI_ZONE"),
+]
+POST = []
+
+
+def _got(flag):
+    """A job's end: a story flag, or "item:X" - X in the Bag."""
+    return story.inventory.get(flag[5:], 0) > 0 if str(flag).startswith("item:") else bool(story.story_flags.get(flag))
+
+
+def _the_end():   # (the goal of the job being played: _got(GOAL); the story's own goal before)
+    if story.story_flags.get(CHAMPION_FLAG) and not STATE.get("champion_at"):
+        STATE["champion_at"] = round(time.time() - T0)
+    return "CHAMPION" if _got(GOAL) else None
+
+
+if ENDED == "CHAMPION" and os.environ.get("KPT_POST", "1") != "0":
+    story.story_flags["move_offer_johto"] = story.story_flags["move_offer_kanto"] = True   # (the title's "where next?" already asked)
+    _missions = g.loader.area_data.setdefault("JOURNAL_MISSIONS", [])
+    for _id, _what, _fly, _steps, _flag in POST_JOBS:
+        _t0, _b0, _f0 = time.time(), STATE["battles"], len(FIND)
+        _m = {"id": _id, "type": "MAIN", "text": _what, "desc": "After the title: " + _what, "condition": {"required_region": "JOHTO", "flag": ["beat_johto_champion"]},
+              "completed_flag": (_flag if not _flag.startswith("item:") else "post_done_" + _id), "steps": _steps}
+        _missions.append(_m); MISSIONS[_id] = _m
+        GOAL = _flag
+        TIME_LIMIT = (time.time() - T0) + float(os.environ.get("KPT_POST_TIME", "150"))
+        _how = "?"
+        try:
+            if not _got(_flag):
+                put_at(_fly)
+                _how = play_through()
+            else:
+                _how = "already done"
+        except Exception:
+            crash("after the title: " + _what)
+        _missions.remove(_m)
+        _forced = [f for f in FIND[_f0:] if f.get("kind") in ("STUCK", "CRASH", "HANG")]
+        _ok = _got(_flag) and not _forced   # (a stuck point on the way - the run set something by hand - is no pass)
+        if _forced and _got(_flag):
+            _how = f"done only after {len(_forced)} stuck point(s): {str(_forced[-1].get('skip') or _forced[-1].get('what') or '')[:80]}"
+        POST.append({"job": _id, "what": _what, "ok": _ok, "how": _how, "battles": STATE["battles"] - _b0, "s": round(time.time() - _t0), "ended": here(),
+                     "found": [str(f.get("what") or f.get("why") or f.get("kind")) for f in FIND[_f0:]][:4]})
+        if not _ok:
+            FIND.append({"kind": "POST", "mission": _id, "where": here(), "what": f"{_what}: not done ({_how})", "extra": None})
+            shot("POST_" + _id)
+        out(f"  after the title: {_what}: {'DONE' if _ok else 'NOT DONE'} ({_how}; {POST[-1]['battles']} battles, {POST[-1]['s']} s, at {here()})")
+    GOAL = "defeated_red"
+    TIME_LIMIT = (time.time() - T0) + 600   # (the tour's own time)
 
 # ---------------------------------------------------------------- the tour: the paths the story never walks (11-19, ROADMAP_KANTO)
 # After the title, with what the run has collected: each leg walked over the maps by the same rules (head_for: the maps'
@@ -1791,15 +2043,18 @@ for what, words, how in THINGS:
     note = "" if mains else ("  <- no MAIN mission names it" + (" (a SIDE one does)" if sides else " (no mission at all)"))
     print(f"  {what:<52} {str(inw) if inw is not None else '-':>11}  {(', '.join(i + ('' if i in _shown else '(not shown)') for i in mains) or '-'):<40} {(', '.join(sides) or '-'):<26} {'yes' if got else 'NO'}{note}")
 
+print("==== after the title (every post-title event, played):")
+for _p in POST:
+    print(f"  {'ok ' if _p['ok'] else 'NO '} {_p['what']} ({_p['how']}; {_p['battles']} battles, {_p['s']} s; ended at {_p['ended']})" + ("" if _p['ok'] else f" | {_p['found']}"))
 print("==== the tour (the paths the story never walks):")
 for _t in TOUR:
     print(f"  {'ok ' if _t['ok'] else 'NO '} {_t['leg']} ({_t['moves']} moves; ended at {_t['ended']})")
-nf = sum(1 for f in FIND if f["kind"] in ("STUCK", "CRASH", "HANG", "TOUR")) + (ENDED != "CHAMPION")
+nf = sum(1 for f in FIND if f["kind"] in ("STUCK", "CRASH", "HANG", "TOUR", "POST")) + (ENDED != "CHAMPION")
 nf -= int(ENDED.startswith("built so far"))   # (stopped at what isn't built yet: passed)
 json.dump({"ended": ENDED, "badges": story.badges.get("SINNOH", []), "state": {k: (dict(v) if isinstance(v, collections.Counter) else v) for k, v in STATE.items() if k != "last_map"},
            "per": list(PER.values()), "find": [{k: v for k, v in f.items() if k not in ("key", "sig")} for f in FIND], "rows": ROWS,
            "never": [(m["id"], m.get("title") or m.get("text")) for m in never], "flags": sorted(k for k, v in story.story_flags.items() if v),
-           "gates": GATES, "second": SECOND, "tour": TOUR, "when": time.strftime("%Y-%m-%d %H:%M"),
+           "gates": GATES, "second": SECOND, "tour": TOUR, "post": POST, "when": time.strftime("%Y-%m-%d %H:%M"),
            "inventory": dict(story.inventory), "seconds": round(time.time() - T0)},
           open(os.path.join(OUT, "result.json"), "w", encoding="utf-8"), indent=1, default=str)
 print(f"##### {nf} failures (stuck points, crashes, and not beating Cynthia: these are the findings)")

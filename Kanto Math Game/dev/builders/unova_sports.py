@@ -43,8 +43,8 @@ VISITOR_ITEMS = {   # (Bulbapedia, Big Stadium and Small Court, "Items": what ea
     "Janitor Caleb": "GREEN_SHARD", "Hiker Russel": "RED_SHARD", "Worker Tyler": "YELLOW_SHARD"}
 # (everyone else: an Ultra Ball - Artist, the Clerks, Dancer, Depot Agent, Harlequin, Maid, Musician, Parasol Lady,
 #  Policeman, the Psychics, the School Kids)
-WALK_EXTRA = {"Dancer": 55, "Musician": 152}   # (classes not in overlay 12's table: the Dancer as Route 5's, the Musician
-#  by eye from the overworld sheets: the long-haired guitar player)
+WALK_EXTRA = {"Dancer": 55, "Musician": 56}   # (classes not in overlay 12's table: the Dancer and the Musician as Route 5's own people:
+#  Musician Preston is code 56 there, 11-24)
 PRIZES = {"1": "POTION", "2": "SUPER_POTION", "3": "HYPER_POTION",
           "4": {"Linebacker": "PROTEIN", "Infielder": "IRON", "Hoopster": "CALCIUM", "Smasher": "ZINC", "Striker": "CARBOS"}}
 SCHEDULE = {   # weekday (Monday 0) -> (Big Stadium's sport, Small Court's); game hours [start, end) in 24 h
@@ -71,8 +71,6 @@ def _pic(r, e, cls_id, obj):
     if cls_id in (68, 69):
         e["sprite"] = "b2_backers_%s.png" % ("m" if cls_id == 68 else "f")
         return
-    if e["sprite"].startswith("b2_") and os.path.isfile(os.path.join(ut.SPRITES, e["sprite"])):
-        return
     cls_text = utrainers._text(r, 383)
     me = ut._clean(cls_text[cls_id])
     twin = [k for k, t in enumerate(cls_text) if k != cls_id and ut._clean(t) == me and obj.get(k)]
@@ -81,6 +79,9 @@ def _pic(r, e, cls_id, obj):
         pic = "b2_%s_%s.png" % (slug, "m" if obj[cls_id] < obj[twin[0]] else "f")
         if os.path.isfile(os.path.join(ut.SPRITES, pic)):
             e["sprite"] = pic
+            return
+    if e["sprite"].startswith("b2_") and os.path.isfile(os.path.join(ut.SPRITES, e["sprite"])):
+        return
     if not os.path.isfile(os.path.join(ut.SPRITES, e["sprite"])):
         slug = ut._slug(me.replace("é", "e")).replace("pokemon_", "")
         if os.path.isfile(os.path.join(ut.SPRITES, "b2_%s.png" % slug)):

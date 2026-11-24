@@ -35,8 +35,8 @@ for _k in ("JUBILIFE_CITY", "OREBURGH_CITY", "FLOAROMA_TOWN"):
 ROUTES += ("SINNOH_ROUTE_202", "SINNOH_ROUTE_203", "OREBURGH_GATE", "OREBURGH_MINE", "SINNOH_ROUTE_204", "RAVAGED_PATH",
            "FLOAROMA_MEADOW", "SINNOH_ROUTE_205", "VALLEY_WINDWORKS", "ETERNA_FOREST", "ETERNA_FOREST_OUTSKIRTS")
 # S3 (11-23): Eterna to Solaceon. Flat for now: Eterna's two houses with no Platinum room (house_0601/0701), the Contest Hall
-# 2F (no ground picture). Hearthome's Gym: its four Platinum rooms, live (s_s3_hearthome_gym.py)
-FLAT |= {("ETERNA_CITY", "house_0601"), ("ETERNA_CITY", "house_0701"), ("HEARTHOME_CITY", "contest_2f")}
+# (2F: since 11-24). Hearthome's Gym: its four Platinum rooms, live (s_s3_hearthome_gym.py)
+FLAT |= {("ETERNA_CITY", "house_0601"), ("ETERNA_CITY", "house_0701")}   # (the Contest Hall 2F has its picture since 11-24)
 for _k in ("ETERNA_CITY", "HEARTHOME_CITY", "SOLACEON_TOWN"):
     PILOT[_k] = tuple(n for n in (_TM[_k].get("rooms") or {}) if (_k, n) not in FLAT)
 KNOWN_JUMPS = {}   # ((area, floor): (steps, why)): level jumps left open on the roadmap. S3's three fixed 11-23: Route 210's
@@ -44,6 +44,8 @@ KNOWN_JUMPS = {}   # ((area, floor): (steps, why)): level jumps left open on the
 # (pexport3d BDHC_FIX) - kanto_handoff/sinnoh_map_tools/s_s3_jumps.py
 ROUTES += ("SINNOH_ROUTE_206", "WAYWARD_CAVE", "SINNOH_ROUTE_207", "MT_CORONET_BASE", "SINNOH_ROUTE_208", "SINNOH_ROUTE_209",
            "SOLACEON_RUINS", "SINNOH_ROUTE_210", "OLD_CHATEAU", "ETERNA_GALACTIC_BUILDING", "LOST_TOWER")
+# S4 (11-24): Veilstone, the town and every room (the Department Store's seven floors, the Gym with its punching bags)
+PILOT["VEILSTONE_CITY"] = tuple(_TM["VEILSTONE_CITY"].get("rooms") or {})
 
 
 def settle(n=60):
@@ -137,7 +139,7 @@ for key, rooms in PILOT.items():
         if not lv:
             continue
         sc = lv[0]
-        opens = {(x, y) for y in range(t.h) for x in range(t.w) if t._open((x, y))}
+        opens = {(x, y) for y in range(t.h) for x in range(t.w) if t._open((x, y)) and (x, y) not in t.exits}   # (a way out: stepped into and left)
         check(not sc.holes([(x, int(round(sc.wz(x, y)))) for x, y in opens]), f"{key} / {room}: the room's floor is under every tile you can walk")
         got = reach(opens, tuple(t.player))
         jump = [(a, b) for a in got for b in ((a[0] + 1, a[1]), (a[0], a[1] + 1)) if b in got
