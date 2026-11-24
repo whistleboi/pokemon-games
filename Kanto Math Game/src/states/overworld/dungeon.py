@@ -3228,7 +3228,13 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
                 cy -= c3.lift(px, py) * TILE
                 top, mh = c3.span()
             cx = mw / 2 if mw <= W else min(max(cx, W / 2), mw - W / 2)
-            cy = (top + mh) / 2 if mh - top <= H else min(max(cy, top + H / 2), mh - H / 2)
+            if focus:   # (a battle on the map: only the part above its text box shows, so the map's foot may come up to
+                #  the box's top - a fight at a map's bottom edge was drawn under the box; Jordan 11-24)
+                band = Utils.get_full_dialogue_rect(self.game).top - self._view().top
+                lo, hi = top + H / 2, mh - H / 2 + (H - band)
+                cy = (top + mh) / 2 + (H - band) / 2 if mh - top <= band else min(max(cy, lo), hi)
+            else:
+                cy = (top + mh) / 2 if mh - top <= H else min(max(cy, top + H / 2), mh - H / 2)
         ease = getattr(self, "_cam_ease", None)
         if ease is not None:   # (a scene's pan: the view glides there and back)
             return ease

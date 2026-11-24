@@ -115,4 +115,39 @@ check(len(seen) >= 1 and ("SPECIAL", "FIRE") in kinds, f"Flamethrower played as 
 check(held > 10, f"...and the battle waited on it before the HP bar dropped ({held} frames)")
 story.battle_style = "TRADITIONAL"
 
+print("4) a map battle at the bottom edge of a map is drawn clear of the battle's text box (Jordan 11-24)")
+import os as _os
+from src.utils import Utils as _U
+story.battle_style = "OVERWORLD"
+p = kanto("KANTO_ROUTE_1")
+f = p.run.floor
+low = max((t for t in ((x, y) for y in range(f.h) for x in range(f.w)) if f.walkable(*t) and not f.occupied(*t)
+           and any(f.walkable(t[0] + dx, t[1]) and not f.occupied(t[0] + dx, t[1]) for dx in (-1, 1))), key=lambda t: t[1])
+p.run.player = p.partner = p.partner_from = p.anim_from = low
+p.run.reveal()
+w, _ = beside(p, "wild")
+p._meet_wild(w)
+p._pick(1)
+b = g.current_state
+for _ in range(400):
+    if b.dialogue_box.visible:
+        b.dialogue_box.is_finished = True
+        if b.dialogue_box.callback and b.phase == "MESSAGE":
+            cb, b.dialogue_box.callback = b.dialogue_box.callback, None
+            cb()
+    b.update()
+    if b.phase == "MENU":
+        break
+b.overworld.attack(b, {"name": "ROCK-TOMB", "side": "player", "user": b.player_pokemon, "target": b.opponent_pokemon})
+for _ in range(9):
+    b.overworld.attacking()
+b.draw()
+_os.makedirs(_os.path.join(S, "map_attacks"), exist_ok=True)
+pygame.image.save(g.screen, _os.path.join(S, "map_attacks", "edge_battle.png"))
+box_top = _U.get_full_dialogue_rect(g).top
+mine, foe = b.overworld.catch_points()
+check(low[1] >= f.h - 3, f"the battle is at the map's foot (row {low[1]} of {f.h})")
+check(mine.bottom <= box_top and foe.bottom <= box_top, f"both Pokemon drawn above the text box (bottoms {mine.bottom}, {foe.bottom}; box at {box_top})")
+story.battle_style = "TRADITIONAL"
+
 print(f"##### {fails} failures")
