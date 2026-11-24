@@ -45866,6 +45866,7 @@
   }
  },
  "DARK_CAVE": {
+  "smash_wild": true,
   "theme": "cave",
   "buildings": {},
   "floors": [
@@ -49051,8 +49052,12 @@
       "move": "HEADBUTT",
       "like": "HEADBUTT"
      },
+     "flag": "ilex_headbutt_tutor",
      "fail": [
       "Hmm, none of your Pokemon can learn Headbutt. Too bad!"
+     ],
+     "done": [
+      "Shake a tree with Headbutt and see what falls out!"
      ]
     }
    },
@@ -88903,6 +88908,7 @@
   ]
  },
  "JOHTO_CLIFF_CAVE": {
+  "smash_wild": true,
   "theme": "cave",
   "buildings": {},
   "floors": [
@@ -108957,7 +108963,15 @@
       "action": "EVENT",
       "event": {
        "lines": [
-        "You need a Coin Case to play. Keep your Coins safe in it!"
+        "You need a Coin Case to play. Here, I've got a spare one!",
+        "Keep your Coins safe in it!"
+       ],
+       "gift_item": {
+        "COIN_CASE": 1
+       },
+       "flag": "got_coin_case_hoenn",
+       "done": [
+        "Coin Case man: Keep your Coins safe in that Coin Case!"
        ]
       }
      },
@@ -244753,7 +244767,29 @@
   },
   "inside": {
    "22,18": "house_0101"
-  }
+  },
+  "berry_soil": [
+   [
+    19,
+    38,
+    "ASPEAR_BERRY"
+   ],
+   [
+    20,
+    38,
+    "CHERI_BERRY"
+   ],
+   [
+    10,
+    82,
+    "CHESTO_BERRY"
+   ],
+   [
+    11,
+    82,
+    "ORAN_BERRY"
+   ]
+  ]
  },
  "VALLEY_WINDWORKS": {
   "floors": [
@@ -246427,7 +246463,29 @@
     "hidden": {
      "19,18": "ULTRA_BALL",
      "17,2": "BIG_MUSHROOM"
-    }
+    },
+    "berry_soil": [
+     [
+      8,
+      18,
+      "KELPSY_BERRY"
+     ],
+     [
+      9,
+      18,
+      "SITRUS_BERRY"
+     ],
+     [
+      10,
+      18,
+      "WEPEAR_BERRY"
+     ],
+     [
+      11,
+      18,
+      "KELPSY_BERRY"
+     ]
+    ]
    },
    {
     "art": [
@@ -252194,7 +252252,29 @@
    "14,112": "gate",
    "15,112": "gate",
    "16,112": "gate"
-  }
+  },
+  "berry_soil": [
+   [
+    5,
+    51,
+    "BLUK_BERRY"
+   ],
+   [
+    6,
+    51,
+    "RAWST_BERRY"
+   ],
+   [
+    7,
+    115,
+    "RAZZ_BERRY"
+   ],
+   [
+    8,
+    115,
+    "BLUK_BERRY"
+   ]
+  ]
  },
  "SINNOH_ROUTE_207": {
   "art": [
@@ -252330,7 +252410,29 @@
    "TIMER BALL",
    "REVIVE"
   ],
-  "rock_climb": true
+  "rock_climb": true,
+  "berry_soil": [
+   [
+    2,
+    2,
+    "PINAP_BERRY"
+   ],
+   [
+    3,
+    2,
+    "CHERI_BERRY"
+   ],
+   [
+    4,
+    2,
+    "PINAP_BERRY"
+   ],
+   [
+    5,
+    2,
+    "CHERI_BERRY"
+   ]
+  ]
  },
  "SINNOH_ROUTE_208": {
   "art": [
@@ -254682,6 +254784,28 @@
     },
     "color": "GOLD"
    }
+  ],
+  "berry_soil": [
+   [
+    54,
+    25,
+    "BLUK_BERRY"
+   ],
+   [
+    55,
+    25,
+    "CHESTO_BERRY"
+   ],
+   [
+    18,
+    40,
+    "LEPPA_BERRY"
+   ],
+   [
+    19,
+    40,
+    "RAZZ_BERRY"
+   ]
   ]
  },
  "SINNOH_ROUTE_210": {
@@ -256606,7 +256730,49 @@
     31
    ]
   ],
-  "rock_climb": true
+  "rock_climb": true,
+  "berry_soil": [
+   [
+    12,
+    8,
+    "AGUAV_BERRY"
+   ],
+   [
+    13,
+    8,
+    "ASPEAR_BERRY"
+   ],
+   [
+    14,
+    8,
+    "CHESTO_BERRY"
+   ],
+   [
+    15,
+    8,
+    "PINAP_BERRY"
+   ],
+   [
+    26,
+    83,
+    "RAZZ_BERRY"
+   ],
+   [
+    27,
+    83,
+    "SITRUS_BERRY"
+   ],
+   [
+    28,
+    83,
+    "WEPEAR_BERRY"
+   ],
+   [
+    29,
+    83,
+    "WIKI_BERRY"
+   ]
+  ]
  },
  "SINNOH_ROUTE_211": {
   "art": [
@@ -256719,7 +256885,29 @@
    "TM087",
    "CARBOS"
   ],
-  "rock_climb": true
+  "rock_climb": true,
+  "berry_soil": [
+   [
+    19,
+    12,
+    "ASPEAR_BERRY"
+   ],
+   [
+    20,
+    12,
+    "GREPA_BERRY"
+   ],
+   [
+    21,
+    12,
+    "IAPAPA_BERRY"
+   ],
+   [
+    22,
+    12,
+    "PECHA_BERRY"
+   ]
+  ]
  },
  "SINNOH_ROUTE_212": {
   "art": [
@@ -260602,7 +260790,49 @@
   },
   "inside": {
    "69,110": "house_0101"
-  }
+  },
+  "berry_soil": [
+   [
+    111,
+    22,
+    "ASPEAR_BERRY"
+   ],
+   [
+    112,
+    22,
+    "BLUK_BERRY"
+   ],
+   [
+    113,
+    22,
+    "NANAB_BERRY"
+   ],
+   [
+    114,
+    22,
+    "PECHA_BERRY"
+   ],
+   [
+    12,
+    61,
+    "PINAP_BERRY"
+   ],
+   [
+    13,
+    61,
+    "SITRUS_BERRY"
+   ],
+   [
+    0,
+    81,
+    "ASPEAR_BERRY"
+   ],
+   [
+    1,
+    81,
+    "BLUK_BERRY"
+   ]
+  ]
  },
  "TROPHY_GARDEN": {
   "art": [
@@ -263202,7 +263432,29 @@
     ]
    }
   ],
-  "rock_climb": true
+  "rock_climb": true,
+  "berry_soil": [
+   [
+    16,
+    8,
+    "AGUAV_BERRY"
+   ],
+   [
+    17,
+    8,
+    "IAPAPA_BERRY"
+   ],
+   [
+    18,
+    8,
+    "PAMTRE_BERRY"
+   ],
+   [
+    19,
+    8,
+    "RAWST_BERRY"
+   ]
+  ]
  },
  "VALOR_LAKEFRONT": {
   "art": [
@@ -267821,6 +268073,23 @@
    "MAGMARIZER",
    "BIG ROOT",
    "RED SHARD"
+  ],
+  "berry_soil": [
+   [
+    24,
+    20,
+    "CHERI_BERRY"
+   ],
+   [
+    25,
+    20,
+    "CHESTO_BERRY"
+   ],
+   [
+    26,
+    20,
+    "DURIN_BERRY"
+   ]
   ]
  },
  "SENDOFF_SPRING": {
@@ -269406,6 +269675,28 @@
     "color": "GOLD"
    },
    "HYPER POTION"
+  ],
+  "berry_soil": [
+   [
+    52,
+    16,
+    "BELUE_BERRY"
+   ],
+   [
+    53,
+    16,
+    "BLUK_BERRY"
+   ],
+   [
+    84,
+    17,
+    "MAGO_BERRY"
+   ],
+   [
+    85,
+    17,
+    "NANAB_BERRY"
+   ]
   ]
  },
  "SINNOH_ROUTE_216": {
@@ -274429,6 +274720,28 @@
     }
    },
    "HYPER POTION"
+  ],
+  "berry_soil": [
+   [
+    23,
+    16,
+    "FIGY_BERRY"
+   ],
+   [
+    24,
+    16,
+    "PAMTRE_BERRY"
+   ],
+   [
+    25,
+    16,
+    "PERSIM_BERRY"
+   ],
+   [
+    26,
+    16,
+    "PINAP_BERRY"
+   ]
   ]
  },
  "SINNOH_ROUTE_219": {
@@ -276683,7 +276996,29 @@
    "37,4": "house_0201",
    "82,13": "house_0101",
    "83,13": "house_0101"
-  }
+  },
+  "berry_soil": [
+   [
+    54,
+    22,
+    "HONDEW_BERRY"
+   ],
+   [
+    55,
+    22,
+    "LEPPA_BERRY"
+   ],
+   [
+    56,
+    22,
+    "MAGO_BERRY"
+   ],
+   [
+    57,
+    22,
+    "PECHA_BERRY"
+   ]
+  ]
  },
  "SINNOH_ROUTE_222": {
   "art": [
@@ -277950,7 +278285,29 @@
   "inside": {
    "65,16": "house_0201",
    "59,16": "house_0101"
-  }
+  },
+  "berry_soil": [
+   [
+    24,
+    4,
+    "AGUAV_BERRY"
+   ],
+   [
+    25,
+    4,
+    "BELUE_BERRY"
+   ],
+   [
+    26,
+    4,
+    "DURIN_BERRY"
+   ],
+   [
+    27,
+    4,
+    "MAGO_BERRY"
+   ]
+  ]
  },
  "SINNOH_ROUTE_223": {
   "art": [
@@ -279154,6 +279511,28 @@
    "RARE CANDY",
    "UP GRADE",
    "RAZOR CLAW"
+  ],
+  "berry_soil": [
+   [
+    42,
+    42,
+    "BLUK_BERRY"
+   ],
+   [
+    43,
+    42,
+    "NANAB_BERRY"
+   ],
+   [
+    44,
+    42,
+    "SITRUS_BERRY"
+   ],
+   [
+    45,
+    42,
+    "WEPEAR_BERRY"
+   ]
   ]
  },
  "SINNOH_ROUTE_225": {
@@ -279515,7 +279894,29 @@
   "inside": {
    "9,48": "house_0101"
   },
-  "rock_climb": true
+  "rock_climb": true,
+  "berry_soil": [
+   [
+    2,
+    17,
+    "KELPSY_BERRY"
+   ],
+   [
+    3,
+    17,
+    "TAMATO_BERRY"
+   ],
+   [
+    4,
+    17,
+    "KELPSY_BERRY"
+   ],
+   [
+    5,
+    17,
+    "TAMATO_BERRY"
+   ]
+  ]
  },
  "SINNOH_ROUTE_226": {
   "art": [
@@ -279831,7 +280232,29 @@
   "inside": {
    "67,19": "house_0101"
   },
-  "rock_climb": true
+  "rock_climb": true,
+  "berry_soil": [
+   [
+    17,
+    8,
+    "ORAN_BERRY"
+   ],
+   [
+    18,
+    8,
+    "CHERI_BERRY"
+   ],
+   [
+    19,
+    8,
+    "PECHA_BERRY"
+   ],
+   [
+    20,
+    8,
+    "RAWST_BERRY"
+   ]
+  ]
  },
  "SINNOH_ROUTE_227": {
   "art": [
@@ -281059,7 +281482,29 @@
   "inside": {
    "21,35": "house_0201",
    "7,65": "house_0301"
-  }
+  },
+  "berry_soil": [
+   [
+    11,
+    69,
+    "ORAN_BERRY"
+   ],
+   [
+    12,
+    69,
+    "CHERI_BERRY"
+   ],
+   [
+    13,
+    69,
+    "PECHA_BERRY"
+   ],
+   [
+    14,
+    69,
+    "RAWST_BERRY"
+   ]
+  ]
  },
  "SINNOH_ROUTE_229": {
   "art": [
@@ -281141,6 +281586,28 @@
     "color": "GOLD"
    },
    "PROTEIN"
+  ],
+  "berry_soil": [
+   [
+    42,
+    18,
+    "ORAN_BERRY"
+   ],
+   [
+    43,
+    18,
+    "CHERI_BERRY"
+   ],
+   [
+    44,
+    18,
+    "PECHA_BERRY"
+   ],
+   [
+    45,
+    18,
+    "RAWST_BERRY"
+   ]
   ]
  },
  "SINNOH_ROUTE_230": {
@@ -281224,6 +281691,28 @@
     }
    },
    "BLUE SHARD"
+  ],
+  "berry_soil": [
+   [
+    12,
+    4,
+    "ORAN_BERRY"
+   ],
+   [
+    13,
+    4,
+    "CHERI_BERRY"
+   ],
+   [
+    14,
+    4,
+    "PECHA_BERRY"
+   ],
+   [
+    15,
+    4,
+    "RAWST_BERRY"
+   ]
   ]
  },
  "FLOWER_PARADISE": {
@@ -332744,7 +333233,7 @@
       ],
       "cast": [
        {
-        "sheet": "orre_trainer_fun_old_man.png",
+        "sheet": "orre_npc_eagun2.png",
         "from": [
          5,
          3
@@ -335665,7 +336154,7 @@
        "battle": {
         "name": "Myth Trainer Eagun",
         "class": "MYTH_TRAINER",
-        "sprite": "orre_fun_old_man.png",
+        "sprite": "orre_eagun.png",
         "team": [
          172,
          172,
@@ -595903,6 +596392,7 @@
   ]
  },
  "JOHTO_VICTORY_ROAD": {
+  "smash_wild": true,
   "theme": "cave",
   "buildings": {},
   "floors": [
@@ -602380,6 +602870,28 @@
    },
    "TM070",
    "SILVER POWDER"
+  ],
+  "berry_soil": [
+   [
+    38,
+    42,
+    "ORAN_BERRY"
+   ],
+   [
+    39,
+    42,
+    "CHERI_BERRY"
+   ],
+   [
+    40,
+    42,
+    "PECHA_BERRY"
+   ],
+   [
+    41,
+    42,
+    "RAWST_BERRY"
+   ]
   ]
  },
  "NIMBASA_CITY": {

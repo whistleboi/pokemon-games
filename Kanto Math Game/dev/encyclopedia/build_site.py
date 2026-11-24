@@ -26,6 +26,7 @@ REGIONS = [("kanto", "Kanto + Sevii Islands", "FireRed and LeafGreen, with Heart
            ("hoenn", "Hoenn", "Omega Ruby and Alpha Sapphire's story on Emerald's maps, with Ruby, Sapphire and Emerald extras"),
            ("sinnoh", "Sinnoh", "Diamond, Pearl and Platinum on Platinum's maps, with Brilliant Diamond and Shining Pearl's story"),
            ("unova", "Unova", "Black 2 and White 2 on their own maps, with Black and White's places")]
+# ("orre", "Orre", "Colosseum and XD: Gale of Darkness as one journey, on the Orre fan game's maps"): once its parts are written
 LATER = ["Orre"]
 IMPORTANT = ("GYM_LEADER", "ELITE_FOUR", "CHAMPION", "RIVAL", "ROCKET_LEADER")
 
@@ -139,7 +140,8 @@ NAV = {"kanto": [("Kanto", "KANTO", "kanto", "Settlements", ["Sevii Islands", "J
        "orange": [("Orange Islands", "ORANGE", "orange", "Islands", ["Kanto", "Johto"])],
        "hoenn": [("Hoenn", "HOENN", "hoenn", "Settlements", [])],
        "sinnoh": [("Sinnoh", "SINNOH", list(range(25, 33)), "Settlements", [])],
-       "unova": [("Unova", "UNOVA", list(range(33, 41)), "Settlements", [])]}   # (Sinnoh's badges: REGION_START badge_images
+       "unova": [("Unova", "UNOVA", list(range(33, 41)), "Settlements", [])],
+       "orre": [("Orre", "ORRE", None, "Settlements", [])]}   # (Sinnoh's badges: REGION_START badge_images
 
 
 def navboxes(region, places, first_part):
@@ -301,11 +303,11 @@ def pictures_of(m, prefix, store):
 MOVES = json.load(open(os.path.join(F.A, "moves.json"), encoding="utf-8"))
 
 
-def mechanics():
+def mechanics(folder="mechanics"):
     """The mechanics pages: dev/encyclopedia/mechanics/<slug>.html, each with <!--title: -->, <!--group: --> and
     <!--blurb: --> (a line for the list), then its HTML. A building's kind (buildings.KINDS) opens the page of that slug."""
     out = {}
-    d = os.path.join(HERE, "mechanics")
+    d = os.path.join(HERE, folder)
     if not os.path.isdir(d):
         return out
     for fn in sorted(os.listdir(d)):

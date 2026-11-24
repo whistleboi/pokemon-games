@@ -1460,12 +1460,10 @@ class StoryManager:
             ],
             "JOHTO": [
                 ("ZEPHYR", "JOHTO_MAP"),
-                ("HIVE", "OLD_ROD"),
                 ("PLAIN", "SQUIRT_BOTTLE"),
-                ("FOG", "SUPER_ROD"),
-                ("FOG", "AMULET_COIN"),      # (Morty's; Chuck gives the Rock Smasher, Pryce the Ice Melter)
+                ("FOG", "SUPER_ROD"),   # (HGSS gives it in Kanto, on Route 12; Johto's Bag is its own, so Morty's here. The Old Rod: Route 32's fisherman)
+                ("FOG", "AMULET_COIN"),      # (Morty's; Chuck gives the Rock Smasher)
                 ("STORMBADGE", "ROCK_SMASHER"),
-                ("GLACIER", "ICE_MELTER"),
                 ("RISING", "MT_SILVER_MAP"),
             ],
             "HOENN": [
@@ -1474,7 +1472,7 @@ class StoryManager:
                 ("HEAT_BADGE", "GO_GOGGLES"),
                 # (no Amulet Coin with the Balance Badge: Mom gives it after Norman, as ORAS - Hoenn H2/H5, 11-23)
                 ("FEATHER_BADGE", "ACRO_BIKE"),
-                ("MIND_BADGE", "DIVE_GOGGLES"),
+                # (no Dive Goggles with the Mind Badge: not an ORAS item; Steven's HM Dive is how you dive - 11-24)
                 ("RAIN_BADGE", "HOENN_CAVE_MAP"),
             ],
             "SINNOH": [
