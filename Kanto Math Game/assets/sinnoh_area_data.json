@@ -3677,10 +3677,7 @@
         "flag": "galactic_lake_verity_cleared",
         "visited_not": "SNOWPOINT_CITY"
       },
-      "target": "SNOWPOINT_CITY",
-      "steps": [
-        {"area": "SINNOH_ROUTE_211", "at": [28, 20], "label": "Mt. Coronet", "done": "coronet_north_side"}
-      ]
+      "target": "SNOWPOINT_CITY"
     },
     {
       "id": "sinnoh_m12b",
