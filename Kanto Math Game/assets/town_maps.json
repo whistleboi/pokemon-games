@@ -96422,7 +96422,7 @@
      "ccccccccccc",
      "ccccc..c<cc",
      "...........",
-     "..ccc......",
+     "..cc!......",
      "...........",
      "..Ncc......",
      "...cc......",
@@ -96478,7 +96478,24 @@
      }
     ],
     "theme": "room",
-    "title": "Your house"
+    "title": "Your house",
+    "signs": [
+     [
+      "The TV's on. A cooking show... Mom's favourite."
+     ]
+    ],
+    "sign_events": {
+     "4,4": {
+      "text": "TV",
+      "action": "EVENT",
+      "event": {
+       "swarm_news": "HOENN",
+       "lines": [
+        "The TV's on. A cooking show... Mom's favourite."
+       ]
+      }
+     }
+    }
    },
    "home_2": {
     "art": [
@@ -586776,11 +586793,11 @@
    "ccccccccccc...................c.ccccccccccccc.c.....cccccccccccc",
    "ccccccccccc...................c.cccccHDHccccc.c....Nc.cccccccc..",
    "cccccccccccccccccc.N..........c.c...cc.cc...c.c...N.cccccccccccc",
-   "cccccccccccccccccc............ccc...c...c...ccc.....}c........cc",
-   "cccccccccccccccccc............ccc....N.N....ccc.....}c........cc",
-   "cccccccccccccccccc.ccccccc............N.............}c........cc",
-   "cccccccccccccccccc.ccccccc...............!..c!c.....}c........cc",
-   "cccccccccccccccccc.ccccccc..........................}c........cc",
+   "cccccccccccccccccc............ccc...c...c...ccc.....qc........cc",
+   "cccccccccccccccccc............ccc....N.N....ccc.....qc........cc",
+   "cccccccccccccccccc.ccccccc............N.............qc........cc",
+   "cccccccccccccccccc.ccccccc...............!..c!c.....qc........cc",
+   "cccccccccccccccccc.ccccccc..........................qc........cc",
    "cccccccccccccccccc.ccccccc..........................cccccccccccc",
    "cccccccccccccccccc.ccccccc..........................c.cccccccc..",
    "ccccccccccccccIDIc!.cJDJc...........................cccccccccccc",
@@ -586799,7 +586816,7 @@
   ],
   "exits": {
    "v": "JOIN_AVENUE",
-   "}": "ROOM:park"
+   "q": "ROOM:park"
   },
   "buildings": {
    "A": "house",

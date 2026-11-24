@@ -6005,8 +6005,7 @@
       "route_name": "Castelia City",
       "region": "UNOVA",
       "backgrounds": {
-        "pokecenter": "castelia_center.png",
-        "gym": "castelia_gym.png"
+        "pokecenter": "castelia_center.png"
       },
       "has_gym": true,
       "gym": {
@@ -6224,8 +6223,7 @@
       "route_name": "Nimbasa City",
       "region": "UNOVA",
       "backgrounds": {
-        "pokecenter": "nimbasa_center.png",
-        "gym": "nimbasa_gym.png"
+        "pokecenter": "nimbasa_center.png"
       },
       "has_gym": true,
       "gym": {
@@ -12074,7 +12072,7 @@
     {"id": "b2_m3", "type": "MAIN", "title": "Alder's Town", "description": "Alder went on ahead to Floccesy Town, east along Route 19. Catch up with him there!", "condition": {"required_region": "UNOVA", "flag": "b2_route19_lesson", "flag_not": "b2_floccesy_met"}, "completed_flag": "b2_floccesy_met", "target": "FLOCCESY_TOWN"},
     {"id": "b2_m4", "type": "MAIN", "title": "Two Town Maps", "description": "{rival_name} was seen training on Route 20, east of Floccesy. Find him and give him his Town Map. He may have gone up to Floccesy Ranch!", "condition": {"required_region": "UNOVA", "flag": "b2_floccesy_met", "flag_not": "b2_ranch_owners"}, "completed_flag": "b2_ranch_owners", "target": "FLOCCESY_RANCH"},
     {"id": "b2_m5", "type": "MAIN", "title": "The Missing Herdier", "description": "One of Floccesy Ranch's Herdier has wandered off. Search the woods at the north of the ranch with {rival_name}.", "condition": {"required_region": "UNOVA", "flag": "b2_ranch_owners", "flag_not": "b2_herdier_found"}, "completed_flag": "b2_herdier_found", "target": "FLOCCESY_RANCH"},
-    {"id": "b2_m6", "type": "MAIN", "title": "Alder's Training", "description": "Herdier is home safe. Go back to Floccesy Town: Alder is waiting at his house to train you.", "condition": {"required_region": "UNOVA", "flag": "b2_herdier_found", "flag_not": "b2_alder_training"}, "completed_flag": "b2_alder_training", "target": "FLOCCESY_TOWN"},
+    {"id": "b2_m6", "type": "MAIN", "title": "Alder's Training", "description": "Herdier is home safe. Go back to Floccesy Town: Alder is waiting at his house to train you.", "condition": {"required_region": "UNOVA", "flag": "b2_herdier_found", "flag_not": "b2_alder_training"}, "completed_flag": "b2_alder_training", "target": "FLOCCESY_TOWN", "steps": [{"area": "FLOCCESY_TOWN", "at": [11, 21], "label": "Alder's house", "done": "b2_alder_training"}]},
     {"id": "b2_m7", "type": "MAIN", "title": "Basic Badge", "description": "Aspertia's Gym is open! It's behind the Trainers' School. Beat Cheren's two Gym Trainers, then Cheren himself.", "condition": {"required_region": "UNOVA", "flag": "b2_alder_training", "flag_not": "b2_basic_badge"}, "completed_badge": "BASIC", "completed_flag": "b2_basic_badge", "target": "ASPERTIA_CITY", "reward": "Basic Badge"},
     {"id": "b2_m8", "type": "MAIN", "title": "East to Virbank", "description": "The next Gym is in Virbank City. Go through Floccesy and east along Route 20. Hiker Jerome will let you up the steps now.", "condition": {"required_region": "UNOVA", "flag": "b2_basic_badge", "flag_not": "b2_virbank_arrived"}, "completed_flag": "b2_virbank_arrived", "target": "VIRBANK_CITY"},
     {"id": "b2_m9", "type": "MAIN", "title": "Virbank's Gym", "description": "Roxie leads Virbank City's Poison-type Gym, a rock club south of the Pokémon Center. Beat her two bandmates to stop the music, then challenge her.", "condition": {"required_region": "UNOVA", "flag": "b2_virbank_arrived", "flag_not": "b2_toxic_badge"}, "completed_badge": "TOXIC", "completed_flag": "b2_toxic_badge", "target": "VIRBANK_CITY", "reward": "Toxic Badge"},
@@ -12088,7 +12086,7 @@
     {"id": "b2_m17", "type": "MAIN", "title": "Burgh's Gym", "description": "Burgh is back at the Castelia Gym on Gym Street. Find your way through the cocoons to him.", "condition": {"required_region": "UNOVA", "flag": "b2_sewers_done", "flag_not": "b2_insect_badge"}, "completed_badge": "INSECT", "completed_flag": "b2_insect_badge", "target": "CASTELIA_CITY", "reward": "Insect Badge"},
     {"id": "b2_m18", "type": "MAIN", "title": "The Man in the White Coat", "description": "With Burgh's badge in hand, head for Central Plaza, the heart of Castelia, on the way to Route 4.", "condition": {"required_region": "UNOVA", "flag": "b2_insect_badge", "flag_not": "b2_colress_plaza"}, "completed_flag": "b2_colress_plaza", "target": "CASTELIA_CITY"},
     {"id": "b2_m19", "type": "MAIN", "title": "Colress Waits", "description": "Colress wants to test his theory in a battle. He's waiting on Route 4, north through Castelia's gate.", "condition": {"required_region": "UNOVA", "flag": "b2_colress_plaza", "flag_not": "b2_colress_route4"}, "completed_flag": "b2_colress_route4", "target": "UNOVA_ROUTE_4"},
-    {"id": "b2_m20", "type": "MAIN", "title": "The City of Lights", "description": "Nimbasa City is north through Join Avenue. Its Gym Leader, Elesa, is a famous model. Find the Gym in the amusement park, east of the city.", "condition": {"required_region": "UNOVA", "flag": "b2_colress_route4", "flag_not": "b2_nimbasa_gym_out"}, "completed_flag": "b2_nimbasa_gym_out", "target": "NIMBASA_CITY"},
+    {"id": "b2_m20", "type": "MAIN", "title": "The City of Lights", "description": "Nimbasa City is north through Join Avenue. Its Gym Leader, Elesa, is a famous model. Find the Gym in the amusement park, east of the city.", "condition": {"required_region": "UNOVA", "flag": "b2_colress_route4", "flag_not": "b2_nimbasa_gym_out"}, "completed_flag": "b2_nimbasa_gym_out", "target": "NIMBASA_CITY", "steps": [{"area": "NIMBASA_CITY", "room": "park", "at": [71, 12], "label": "The Gym", "done": "b2_nimbasa_gym_out"}]},
     {"id": "b2_m21", "type": "MAIN", "title": "The Leader Is Out", "description": "Elesa isn't at her Gym. The guide says she went to the roller coaster building by the park's entrance.", "condition": {"required_region": "UNOVA", "flag": "b2_nimbasa_gym_out", "flag_not": "b2_elesa_coaster"}, "completed_flag": "b2_elesa_coaster", "target": "NIMBASA_CITY"},
     {"id": "b2_m22", "type": "MAIN", "title": "Elesa's Runway", "description": "Elesa is back at the Nimbasa Gym, east of the Ferris wheel. Beat the Trainers on the catwalk, then Elesa.", "condition": {"required_region": "UNOVA", "flag": "b2_elesa_coaster", "flag_not": "b2_bolt_badge"}, "completed_badge": "BOLT", "completed_flag": "b2_bolt_badge", "target": "NIMBASA_CITY"},
     {"id": "b2_m23", "type": "MAIN", "title": "Trouble at Big Stadium", "description": "Hugh is shouting at Team Plasma outside Big Stadium, in the west of Nimbasa. He could use some help.", "condition": {"required_region": "UNOVA", "flag": "b2_bolt_badge", "flag_not": "b2_nimbasa_plasma"}, "completed_flag": "b2_nimbasa_plasma", "target": "NIMBASA_CITY"},

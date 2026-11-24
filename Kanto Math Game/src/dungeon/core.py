@@ -288,8 +288,14 @@ def path(floor, start, goal, blocked=()):
 
 def _free_tile(floor, rng, room=None, avoid=(), prefer_grass=False, far_from=None, min_dist=0):
     tiles = room.tiles() if room else [(x, y) for y in range(floor.h) for x in range(floor.w)]
-    ok = [t for t in tiles if floor.walkable(*t) and not floor.occupied(*t) and t not in avoid
-          and t != floor.start]
+    # (what floor.occupied asks, gathered once: it looked through every mover for every tile - millions of checks on a
+    #  big route, 11-24; the same tiles come out, in the same order, so the same rng picks the same one)
+    taken = set(floor.exits) | set(floor.items) | set(floor.tm_spots)
+    for m in floor.movers:
+        k = getattr(m, "size", 1)
+        taken.update((m.x + dx, m.y + dy) for dx in range(k) for dy in range(k))
+    avoid = set(avoid)
+    ok = [t for t in tiles if t not in taken and t not in avoid and t != floor.start and floor.walkable(*t)]
     if far_from is not None:
         ok = [t for t in ok if abs(t[0] - far_from[0]) + abs(t[1] - far_from[1]) >= min_dist]
     if prefer_grass:
