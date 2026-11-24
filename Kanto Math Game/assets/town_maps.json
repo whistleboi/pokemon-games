@@ -309487,7 +309487,7 @@
           "level": 55
          },
          "lines": [
-          "Hordel: You're Wes? I worked for Cipher... until I saw what they do. I ran, and took this one with me.",
+          "Hordel: You're {player_name}? I worked for Cipher... until I saw what they do. I ran, and took this one with me.",
           "Hordel: A Togepi from their factory. Its heart is shut. Please - open it.",
           "Hordel: And one more thing: Team Snagem is back in their old hideout, out in the desert. I'll mark it on your map."
          ]
@@ -314643,7 +314643,7 @@
      {
       "text": "Kid (behind the bookcase)",
       "action": "EVENT",
-      "condition": "beat_orre_champion",
+      "condition": "orre_part2",
       "event": {
        "stages": [
         {
@@ -314694,7 +314694,7 @@
         "It can be played on the Battle CD player at the Pokemon HQ Lab."
        ]
       },
-      "condition": "beat_orre_champion"
+      "condition": "xd_greevil_beaten"
      }
     ],
     "signs": [],
@@ -315867,7 +315867,7 @@
          ],
          "flag": "xd_le_asked",
          "lines": [
-          "Beluh: Wes, thank you for coming. Some of the village's Pokemon have stopped making any sound at all.",
+          "Beluh: {player_name}, thank you for coming. Some of the village's Pokemon have stopped making any sound at all.",
           "Beluh: Senilor's Wobbuffet was the first. His house is just down the hill, between ours and the Mart.",
           "Beluh: Would you look into it? Eagun says you have a knack for helping Pokemon."
          ]
@@ -315883,7 +315883,7 @@
          "lines": [
           "Beluh: Wobbuffet's chattering again, and the others too! And that Lotad was only shy? Ho ho!",
           "Beluh: You've done the whole village a kindness. Please, take this Lucky Egg.",
-          "Beluh: A Pokemon holding it learns more from every battle. Use it well, Wes."
+          "Beluh: A Pokemon holding it learns more from every battle. Use it well, {player_name}."
          ]
         }
        ],
@@ -316143,7 +316143,7 @@
           "You tell Senilor what Dr. Kaminko said: no machine can do it - Wobbuffet needs to hear its own trainer.",
           "Senilor: My voice? Well... I'll try. Wobbuffet! Hey! It's me, you big blue lump!",
           "Wobbuffet: ...Wob... WOBBUFFET!",
-          "Senilor: It spoke! Ha ha! Thank you, Wes. Go and tell Beluh the good news."
+          "Senilor: It spoke! Ha ha! Thank you, {player_name}. Go and tell Beluh the good news."
          ]
         }
        ],
@@ -317234,7 +317234,7 @@
       "text": "Lighthouse Electabuzz",
       "action": "BOSS",
       "color": "RED",
-      "condition": "beat_orre_champion",
+      "condition": "orre_part2",
       "flag_condition": "not gateon_lh_electabuzz",
       "boss": {
        "id": 125,
@@ -317319,7 +317319,7 @@
       "text": "Lighthouse Electrode",
       "action": "BOSS",
       "color": "RED",
-      "condition": "beat_orre_champion",
+      "condition": "orre_part2",
       "flag_condition": "not gateon_lh_electrode",
       "boss": {
        "id": 101,
@@ -317386,7 +317386,7 @@
       "text": "Lighthouse Ampharos",
       "action": "BOSS",
       "color": "RED",
-      "condition": "beat_orre_champion",
+      "condition": "orre_part2",
       "flag_condition": "not gateon_lh_ampharos",
       "boss": {
        "id": 181,
@@ -317456,7 +317456,7 @@
       "text": "Gym Leader Jasmine",
       "action": "EVENT",
       "color": "GOLD",
-      "condition": "beat_orre_champion",
+      "condition": "orre_part2",
       "event": {
        "stages": [
         {
@@ -320041,12 +320041,10 @@
       ],
       "cast": [],
       "call": [
-       "Referee: The champion of Cipher's Colosseum!",
-       "The crowd roars!"
+       "The roof of Realgam Tower falls silent. Cipher's leader has fallen."
       ],
       "event": {
-       "world": "orre_tournament",
-       "done": true
+       "world": "orre_skip"
       }
      }
     ]
@@ -320274,7 +320272,7 @@
      {
       "text": "Colosseum desk",
       "action": "EVENT",
-      "condition": "beat_orre_champion",
+      "condition": "xd_greevil_beaten",
       "event": {
        "xd_colosseum": {
         "rounds": [
@@ -320568,7 +320566,7 @@
            "music": "orre/admin_battle",
            "fit": "+15 (disc ace 60)",
            "intro": [
-            "Lovrina: Wes! I'm here to win, not to make friends. My new Pokemon are perfect!"
+            "Lovrina: {player_name}! I'm here to win, not to make friends. My new Pokemon are perfect!"
            ],
            "is_boss_battle": true
           }
@@ -322731,7 +322729,7 @@
       {
        "flag": "xd_eagun_lab",
        "lines": [
-        "Eagun: Wes! I heard you beat Greevil himself. Then you've earned this - one more battle, with me!",
+        "Eagun: {player_name}! I heard you beat Greevil himself. Then you've earned this - one more battle, with me!",
         "Eagun: My Pikachu and I haven't lost our spark. Show me everything!"
        ],
        "battle": {
@@ -322807,7 +322805,7 @@
       }
      ],
      "done": [
-      "Eagun: The Orre Colosseum's waiting for you, Wes. Beluh sends her love."
+      "Eagun: The Orre Colosseum's waiting for you, {player_name}. Beluh sends her love."
      ]
     }
    }
@@ -322853,7 +322851,7 @@
      {
       "text": "Professor Krane (the stairs)",
       "action": "EVENT",
-      "condition": "beat_orre_champion",
+      "condition": "xd_gorigan_beaten",
       "event": {
        "stages": [
         {
@@ -322865,10 +322863,10 @@
           "MASTER_BALL": 1
          },
          "lines": [
-          "Professor Krane: Wes, come with me. There's a staircase here even Lily rarely uses.",
+          "Professor Krane: {player_name}, come with me. There's a staircase here even Lily rarely uses.",
           "Professor Krane: Cipher has gathered on Citadark Isle. Greevil's 'XD001' - our readings say it's a Shadow Pokemon unlike any other.",
           "Professor Krane: This is a Master Ball. There's only one. It catches any Pokemon without fail. Save it for XD001.",
-          "Professor Krane: Makan and Perr have a robot at Gateon Port that can cross the sea. Good luck, Wes."
+          "Professor Krane: Makan and Perr have a robot at Gateon Port that can cross the sea. Good luck, {player_name}."
          ]
         }
        ],
@@ -322926,7 +322924,7 @@
          "lines": [
           "Lily: The Machine Part! Jovi, run it down to the Chamber.",
           "Datan: Lily! I traced Cipher's car. It went to the old Shadow Pokemon Lab, out in the desert.",
-          "Lily: The lab Cipher abandoned five years ago... They've opened it again. Wes, please - bring the Professor home."
+          "Lily: The lab Cipher abandoned five years ago... They've opened it again. {player_name}, please - bring the Professor home."
          ]
         },
         {
@@ -322939,8 +322937,8 @@
           "XD_DATA_ROM": 1
          },
          "lines": [
-          "Lily: You brought him back! Thank you, Wes. The Purify Chamber is nearly done - the Professor will finish it.",
-          "Professor Krane: Wes, one more favour. Take my research data to Nett at ONBS, in Pyrite. Keep it out of Cipher's hands."
+          "Lily: You brought him back! Thank you, {player_name}. The Purify Chamber is nearly done - the Professor will finish it.",
+          "Professor Krane: {player_name}, one more favour. Take my research data to Nett at ONBS, in Pyrite. Keep it out of Cipher's hands."
          ]
         }
        ],
@@ -323009,7 +323007,7 @@
         "It can be played on the Battle CD player at the Pokemon HQ Lab."
        ]
       },
-      "condition": "beat_orre_champion"
+      "condition": "xd_greevil_beaten"
      }
     ],
     "signs": [],
@@ -323113,7 +323111,7 @@
    {
     "trigger": "enter",
     "condition": [
-     "orre_ein_lab",
+     "orre_part2",
      "not:xd_kidnap_seen",
      "not:xd_lovrina_beaten"
     ],
