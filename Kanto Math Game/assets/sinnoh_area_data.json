@@ -3591,7 +3591,10 @@
         "flag": "delivered_old_charm"
       },
       "target": "HEARTHOME_CITY",
-      "reward": "Relic Badge"
+      "reward": "Relic Badge",
+      "steps": [
+        {"area": "CELESTIC_TOWN", "room": "ruins", "at": [8, 2], "label": "Elder", "done": "got_hm_surf_celestic"}
+      ]
     },
     {
       "id": "sinnoh_m9",
