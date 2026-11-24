@@ -1,0 +1,80 @@
+{
+ "_about": "Orre 2.1.1's own battlebacks (Graphics/Battlebacks), as its maps pick them (map_metadata.dat); made by kanto_handoff/orre_map_tools/battlebacks.py (bg + its two bases in one picture).",
+ "terrain": {
+  "sand": "sand.png",
+  "cave": "cave.png",
+  "inside": "indoor1.png",
+  "grass": "sand.png",
+  "water": "sand.png"
+ },
+ "areas": {
+  "OUTSKIRT_STAND": "sand.png",
+  "ORRE_DESERT": "sand.png",
+  "PHENAC_CITY": {
+   "trainer": "phenac.png",
+   "wild": "phenac.png",
+   "gym": "phenacgym.png",
+   "leader": "phenacgym.png"
+  },
+  "ORRE_POKE_SPOTS": "rocky.png",
+  "OASIS_POKE_SPOT": "Oasis.png",
+  "CAVE_POKE_SPOT": "cave.png",
+  "PYRITE_TOWN": {
+   "trainer": "pyrite.png",
+   "wild": "pyrite.png",
+   "gym": "pyritecol.png",
+   "leader": "pyritecol.png"
+  },
+  "CONSTRUCTION_LOT": "constructionlot.png",
+  "PYRITE_BUILDING": "pyritebldg.png",
+  "PYRITE_CAVE": "cave.png",
+  "AGATE_VILLAGE": "agate.png",
+  "RELIC_CAVE": "reliccave.png",
+  "RELIC_FOREST": "relicstone.png",
+  "MT_BATTLE": "mtbattle.png",
+  "THE_UNDER": "theunder.png",
+  "UNDER_COLOSSEUM": {
+   "trainer": "theunder.png",
+   "wild": "theunder.png",
+   "gym": "pyritecol.png",
+   "leader": "pyritecol.png"
+  },
+  "SHADOW_PKMN_LAB": "lab.png",
+  "GATEON_PORT": "gateon.png",
+  "POKEMON_HQ_LAB": "lab.png",
+  "KAMINKO_HOUSE": "indoor1.png",
+  "XD_CIPHER_LAB": "lab.png",
+  "SS_LIBRA": "indoor1.png",
+  "XD_ONBS": "tvstudio.png",
+  "PRESTIGE_PRECEPT_CENTER": "pregym.png",
+  "SNAGEM_HIDEOUT": "snagemhideout.png",
+  "ORRE_COLOSSEUM": {
+   "trainer": "orrecol.png",
+   "wild": "orrecol.png",
+   "gym": "orrecol.png",
+   "leader": "orrecol.png"
+  },
+  "XD_CIPHER_KEY_LAIR": {
+   "trainer": "keylair.png",
+   "wild": "keylair.png",
+   "gym": "keylairgym.png",
+   "leader": "keylairgym.png"
+  },
+  "REALGAM_TOWER": {
+   "trainer": "realgam.png",
+   "wild": "realgam.png",
+   "gym": "realgamgym.png",
+   "leader": "realgamgym.png",
+   "elite": [
+    "realgamgym.png"
+   ]
+  },
+  "CIPHER_COMMAND": "realgam.png",
+  "XD_CITADARK_ISLE": {
+   "trainer": "citadark.png",
+   "wild": "citadark.png",
+   "leader": "citadarkgym.png"
+  },
+  "DEEP_COLOSSEUM": "orrecol.png"
+ }
+}

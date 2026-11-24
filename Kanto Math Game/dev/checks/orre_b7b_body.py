@@ -415,6 +415,54 @@ jm = [m_["id"] for m_ in g.loader.area_data["JOURNAL_MISSIONS"] if m_["id"].star
 check(jm.index("orre_m17c") < jm.index("orre_m18") < jm.index("orre_m18b") < jm.index("orre_m18c"),
       "Gorigan, the four keys, inside the tower, Cipher's Colosseum")
 
+
+print("R2) Cipher's Colosseum walked (11-23): the host starts the run, the six walk in one by one, Evice, the Hall of Fame")
+from src.pokemon.data import Pokemon as _TP
+from src.world import levels as _tlv
+F = story.story_flags
+_keep = (list(story.player_team), dict(F), {k_: list(v_) for k_, v_ in story.badges.items()})
+_t = []
+for pid in (248, 6, 9, 3, 65, 149):
+    p_ = _TP(g.loader.fetch_specific(pid), g.assets, size_mult=2.5); _tlv.set_team([p_], [100], exact=True); p_.heal_full(); _t.append(p_)
+story.player_team = _t
+F.update({"col_gonzap_realgam": True, "xd_gorigan_beaten": True})
+F.pop("beat_orre_champion", None)
+for k_ in [k_ for k_ in F if k_.startswith(("gym_progress_REALGAM", "orre_tourney"))]:
+    F.pop(k_, None)
+story.badges["ORRE"] = ["PYRITE", "UNDER", "PHENAC", "ORRE"]
+t = town("REALGAM_TOWER", "PHENAC_CITY"); t._go("realgam", "OUT:31,7"); frames(2)
+t._go("colosseum", "ROOM:realgam"); frames(3)
+_heard = []
+for _try in range(4):   # (a lost run starts over: sign up again, as a player would)
+    if type(g.current_state).__name__ != "WalkTownState" or getattr(g.current_state, "room", None) != "colosseum":
+        t = town("REALGAM_TOWER", "PHENAC_CITY"); t._go("realgam", "OUT:31,7"); frames(2)
+        t._go("colosseum", "ROOM:realgam"); frames(2)
+    for p_ in story.player_team:
+        p_.heal_full()
+    said.clear()
+    meet(g.current_state, "Realgam Tower: Cipher's Colosseum")
+    _heard += said
+    for _ in range(12):
+        play(4000)
+        _heard += said
+        if story.story_flags.get("beat_orre_champion") or type(g.current_state).__name__ == "HallOfFameState" or not story.story_flags.get("orre_tourney_REALGAM_TOWER"):
+            break
+    if story.story_flags.get("beat_orre_champion") or type(g.current_state).__name__ == "HallOfFameState":
+        break
+_calls = list(dict.fromkeys(h_ for h_ in _heard if "takes the field" in h_))
+check(len(_calls) == 6 and "Evice" in _calls[-1], f"six walk in, Evice last ({len(_calls)})")
+check(story.story_flags.get("beat_orre_champion") or story.is_region_champion("ORRE") or type(g.current_state).__name__ == "HallOfFameState",
+      f"Evice beaten: Orre's Champion, the Hall of Fame ({type(g.current_state).__name__})")
+from src.world import orre_tournament as _ot
+_was = story.current_area_key
+story.current_area_key = "REALGAM_TOWER"
+check(_ot.condition(story, "won") and not _ot.condition(story, "lost"),
+      f"back on the tower top later, the run closes as won, not lost (count {story.story_flags.get('gym_progress_REALGAM_TOWER')}, "
+      f"battle {story.story_flags.get('orre_tourney_fight_REALGAM_TOWER')})")
+story.current_area_key = _was
+story.player_team, _f, story.badges = _keep[0], _keep[1], _keep[2]
+F.clear(); F.update(_f)
+
 print("FAILURES:", len(fails))
 for f_ in fails:
     print("  ", f_)

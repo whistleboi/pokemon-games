@@ -59,7 +59,22 @@ def links(area):
     if not _menu_targets(area):   # (a place with no menu buttons at all: its walked map's own ways out - Orre's Pyrite Building
         out += [t for t in _walk_exits(area, gated=True) if t not in out]   # lift to The Under, 11-23. Where a place still has menu buttons,
     out += [t for t in _rides(area, st) if t not in out]   # those carry its story gates; its map's barred ways aren't read here)
+    for o in (a.get("route_menu") or []) + (a.get("explore_options") or []):   # (a menu EVENT that sails you: Hoenn's Sailors and
+        ev = o.get("event") if isinstance(o.get("event"), dict) else {}             #  Ferry attendant, once their EXITs went; 11-23)
+        if o.get("action") != "EVENT" or not ev.get("travel") or not _flag_ok(o.get("flag_condition")):
+            continue
+        cond = o.get("condition")
+        if cond and not (st._check_route_condition(cond, False, o) if hasattr(st, "_check_route_condition") else _cond_ok(st, cond)):
+            continue
+        out += [t for t in _travel_to(area, ev["travel"]) if t not in out]
     return out
+
+
+def _travel_to(area, to):
+    """Where an event's "travel" goes: a place, or "@ferry" - each port of the area's own "ferry" map (the S.S. Tidal)."""
+    if to == "@ferry":
+        return [t for t in ((PROG.get(area) or {}).get("ferry") or {}).values() if t in PROG and t != area]
+    return [to] if to in PROG else []
 
 
 def _cond_ok(st, cond):
@@ -85,7 +100,7 @@ def _cond_ok(st, cond):
 def _rides(area, st):
     """The places a walked map's people take you (Unova's cleanup, 11-23): a person whose event has "travel" (ships, ferries,
     trains: Pop Roxie, the Liberty Garden sailor) or "travel_choices" (each with its own "requires"), shown now. Scenes
-    (one-off story rides) and "@ferry" sailors (a ship's own two ports, already its exits) aren't counted."""
+    (one-off story rides) aren't counted; "@ferry" is each port of the area's own "ferry" map."""
     _walk_exits(area)   # (loads the maps)
     m = _WALK["maps"].get(area) or {}
     out = []
@@ -103,8 +118,8 @@ def _rides(area, st):
             if not isinstance(ev, dict):
                 continue
             to = ev.get("travel")
-            if isinstance(to, str) and not to.startswith("@") and to in PROG:
-                out.append(to)
+            if isinstance(to, str):
+                out += _travel_to(area, to)
             for ch in ev.get("travel_choices") or []:
                 if ch.get("to") in PROG and _cond_ok(st, ch.get("requires")):
                     out.append(ch["to"])

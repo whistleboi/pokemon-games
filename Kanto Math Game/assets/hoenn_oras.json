@@ -38,21 +38,6 @@
       "flag": "oras_fallarbor_town_2"
      },
      "flag_condition": "not oras_fallarbor_town_2"
-    },
-    {
-     "text": "Professor Cozmo ",
-     "action": "EVENT",
-     "oras": true,
-     "event": {
-      "lines": [
-       "Professor Cozmo: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "TM179": 1
-      },
-      "flag": "oras_fallarbor_town_3"
-     },
-     "flag_condition": "not oras_fallarbor_town_3"
     }
    ]
   },
@@ -71,21 +56,6 @@
    },
    "explore_options": [
     {
-     "text": "Old woman",
-     "action": "EVENT",
-     "oras": true,
-     "event": {
-      "lines": [
-       "Old woman: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "TM272": 1
-      },
-      "flag": "oras_fortree_city_2"
-     },
-     "flag_condition": "not oras_fortree_city_2"
-    },
-    {
      "text": "TM081 GRASS KNOT",
      "action": "EVENT",
      "color": "GOLD",
@@ -101,21 +71,6 @@
       },
       "flag": "oras_fortree_city_3"
      }
-    },
-    {
-     "text": "Winona",
-     "action": "EVENT",
-     "oras": true,
-     "event": {
-      "lines": [
-       "Winona: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "TM268": 1
-      },
-      "flag": "oras_fortree_city_4"
-     },
-     "flag_condition": "not oras_fortree_city_4"
     },
     {
      "text": "Boy",
@@ -139,7 +94,6 @@
     {
      "text": "TM175 TOXIC",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_fiery_path_1",
@@ -156,7 +110,6 @@
     {
      "text": "FIRE STONE",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_fiery_path_2",
@@ -224,7 +177,6 @@
     {
      "text": "ESCAPE ROPE",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_granite_cave_2",
@@ -241,7 +193,6 @@
     {
      "text": "POKE BALL",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_granite_cave_3",
@@ -333,7 +284,6 @@
     {
      "text": "SUPER REPEL",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_jagged_pass_1",
@@ -350,7 +300,6 @@
     {
      "text": "MAX ETHER",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_jagged_pass_3",
@@ -367,7 +316,6 @@
     {
      "text": "X DEFENSE",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_jagged_pass_4",
@@ -384,7 +332,6 @@
     {
      "text": "TINY MUSHROOM",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_jagged_pass_5",
@@ -405,7 +352,6 @@
     {
      "text": "FULL HEAL",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_meteor_falls_1",
@@ -422,7 +368,6 @@
     {
      "text": "MOON STONE",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_meteor_falls_2",
@@ -439,7 +384,6 @@
     {
      "text": "GREAT BALL",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_meteor_falls_3",
@@ -456,7 +400,6 @@
     {
      "text": "STARDUST",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_meteor_falls_4",
@@ -473,7 +416,6 @@
     {
      "text": "STAR PIECE",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_meteor_falls_5",
@@ -490,7 +432,6 @@
     {
      "text": "TM078 DRAGON CLAW",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_meteor_falls_6",
@@ -507,7 +448,6 @@
     {
      "text": "PP MAX",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_meteor_falls_7",
@@ -524,7 +464,6 @@
     {
      "text": "SUPER REPEL",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_meteor_falls_8",
@@ -545,7 +484,6 @@
     {
      "text": "TM290 INCINERATE",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_mt_chimney_2",
@@ -655,7 +593,10 @@
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "battle_options": {
+      "double": true
+     }
     },
     {
      "name": "Mysterious Sisters Elle & Aya",
@@ -672,7 +613,10 @@
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "battle_options": {
+      "double": true
+     }
     },
     {
      "name": "Hex Maniac Tasha",
@@ -711,7 +655,6 @@
     {
      "text": "CLEANSE TAG",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_mt_pyre_1",
@@ -728,7 +671,6 @@
     {
      "text": "ULTRA BALL",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_mt_pyre_2",
@@ -745,7 +687,6 @@
     {
      "text": "DUSK STONE",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_mt_pyre_3",
@@ -762,7 +703,6 @@
     {
      "text": "SUPER REPEL",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_mt_pyre_4",
@@ -779,7 +719,6 @@
     {
      "text": "SHINY STONE",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_mt_pyre_5",
@@ -796,7 +735,6 @@
     {
      "text": "LAX INCENSE",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_mt_pyre_6",
@@ -813,7 +751,6 @@
     {
      "text": "MAX POTION",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_mt_pyre_8",
@@ -834,7 +771,6 @@
     {
      "text": "ESCAPE ROPE",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_new_mauville_1",
@@ -851,7 +787,6 @@
     {
      "text": "PARALYZE HEAL",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_new_mauville_2",
@@ -868,7 +803,6 @@
     {
      "text": "THUNDER STONE",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_new_mauville_3",
@@ -885,7 +819,6 @@
     {
      "text": "FULL HEAL",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_new_mauville_5",
@@ -902,7 +835,6 @@
     {
      "text": "ULTRA BALL",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_new_mauville_6",
@@ -919,7 +851,6 @@
     {
      "text": "METAL COAT",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_new_mauville_7",
@@ -962,7 +893,6 @@
     {
      "text": "PARALYZE HEAL",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_petalburg_woods_2",
@@ -979,7 +909,6 @@
     {
      "text": "BALM MUSHROOM",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_petalburg_woods_3",
@@ -996,7 +925,6 @@
     {
      "text": "ETHER",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_petalburg_woods_4",
@@ -1013,7 +941,6 @@
     {
      "text": "NET BALL",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_petalburg_woods_5",
@@ -1045,7 +972,6 @@
     {
      "text": "GREAT BALL",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_petalburg_woods_7",
@@ -1062,7 +988,6 @@
     {
      "text": "X ATTACK",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_petalburg_woods_8",
@@ -1172,7 +1097,6 @@
     {
      "text": "POTION",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_102_3",
@@ -1220,7 +1144,10 @@
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "battle_options": {
+      "double": true
+     }
     },
     { "rematch": {"source": "Emerald", "tiers": [{"team": [300], "levels": [29]}, {"team": [300], "levels": [32]}, {"team": [301], "levels": [35]}, {"team": [301], "levels": [38]}], "needs": {"badges": 5}},
      "name": "Poké Fan Miguel",
@@ -1254,7 +1181,6 @@
     {
      "text": "LEPPA BERRY",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_103_1",
@@ -1271,7 +1197,6 @@
     {
      "text": "CHESTO BERRY",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_103_2",
@@ -1288,7 +1213,6 @@
     {
      "text": "GUARD SPEC.",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_103_3",
@@ -1355,7 +1279,10 @@
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "battle_options": {
+      "double": true
+     }
     }
    ],
    "set_teams": {
@@ -1392,7 +1319,6 @@
     {
      "text": "PECHA BERRY",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_104_4",
@@ -1409,7 +1335,6 @@
     {
      "text": "ORAN BERRY",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_104_5",
@@ -1426,7 +1351,6 @@
     {
      "text": "POKE BALL",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_104_6",
@@ -1443,7 +1367,6 @@
     {
      "text": "LUXURY BALL",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_104_7",
@@ -1475,7 +1398,6 @@
     {
      "text": "PECHA BERRY ",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_104_9",
@@ -1492,7 +1414,6 @@
     {
      "text": "X ATTACK",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_104_12",
@@ -1539,7 +1460,6 @@
     {
      "text": "REVIVE",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_104_15",
@@ -1556,7 +1476,6 @@
     {
      "text": "PP UP",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_104_16",
@@ -1577,7 +1496,6 @@
     {
      "text": "IRON",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_105_1",
@@ -1642,7 +1560,6 @@
     {
      "text": "PROTEIN",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_106_4",
@@ -1878,7 +1795,10 @@
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "battle_options": {
+      "double": true
+     }
     },
     {
      "name": "Fisherman Carter",
@@ -1915,7 +1835,6 @@
     {
      "text": "SODA POP",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_109_5",
@@ -1932,7 +1851,6 @@
     {
      "text": "PP UP",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_109_6",
@@ -1949,7 +1867,6 @@
     {
      "text": "BIG PEARL",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_109_8",
@@ -2144,7 +2061,6 @@
     {
      "text": "DIRE HIT",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_110_1",
@@ -2176,7 +2092,6 @@
     {
      "text": "HEAL BALL",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_110_7",
@@ -2193,7 +2108,6 @@
     {
      "text": "REPEAT BALL",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_110_8",
@@ -2210,7 +2124,6 @@
     {
      "text": "RARE CANDY",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_110_9",
@@ -2227,7 +2140,6 @@
     {
      "text": "ELIXIR",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_110_10",
@@ -2260,7 +2172,10 @@
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "battle_options": {
+      "double": true
+     }
     },
     {
      "name": "Camper Travis",
@@ -2464,7 +2379,6 @@
     {
      "text": "MACHO BRACE",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_111_1",
@@ -2481,7 +2395,6 @@
     {
      "text": "HP UP",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_111_2",
@@ -2543,7 +2456,6 @@
     {
      "text": "ELIXIR",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_111_6",
@@ -2575,7 +2487,6 @@
     {
      "text": "TM051 SANDSTORM",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_111_12",
@@ -2676,7 +2587,6 @@
     {
      "text": "BIG MUSHROOM",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_112_1",
@@ -2693,7 +2603,6 @@
     {
      "text": "GUARD SPEC.",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_112_2",
@@ -2710,7 +2619,6 @@
     {
      "text": "NUGGET",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_112_3",
@@ -2842,7 +2750,6 @@
     {
      "text": "SUPER REPEL",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_113_2",
@@ -2859,7 +2766,6 @@
     {
      "text": "TM275 DOUBLE TEAM",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_113_3",
@@ -2876,7 +2782,6 @@
     {
      "text": "MAX ETHER",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_113_4",
@@ -2893,7 +2798,6 @@
     {
      "text": "HYPER POTION",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_113_6",
@@ -2910,7 +2814,6 @@
     {
      "text": "REVIVE",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_113_7",
@@ -2927,7 +2830,6 @@
     {
      "text": "MAX REPEL",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_113_8",
@@ -2992,7 +2894,10 @@
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "battle_options": {
+      "double": true
+     }
     },
     {
      "name": "Camper Shane",
@@ -3098,7 +3003,6 @@
     {
      "text": "PROTEIN",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_114_5",
@@ -3115,7 +3019,6 @@
     {
      "text": "ENERGY POWDER",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_114_8",
@@ -3132,7 +3035,6 @@
     {
      "text": "RARE CANDY",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_114_9",
@@ -3252,7 +3154,6 @@
     {
      "text": "GREAT BALL",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_115_2",
@@ -3284,7 +3185,6 @@
     {
      "text": "ZINC",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_115_4",
@@ -3331,7 +3231,6 @@
     {
      "text": "PP UP",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_115_7",
@@ -3348,7 +3247,6 @@
     {
      "text": "HEAL POWDER",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_115_8",
@@ -3365,7 +3263,6 @@
     {
      "text": "IRON",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_115_9",
@@ -3462,7 +3359,6 @@
     {
      "text": "REPEL",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_116_1",
@@ -3479,7 +3375,6 @@
     {
      "text": "POTION",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_116_2",
@@ -3496,7 +3391,6 @@
     {
      "text": "X SP. ATK",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_116_3",
@@ -3513,7 +3407,6 @@
     {
      "text": "ETHER",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_116_4",
@@ -3530,7 +3423,6 @@
     {
      "text": "CHESTO BERRY",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_116_5",
@@ -3547,7 +3439,6 @@
     {
      "text": "HP UP",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_116_7",
@@ -3682,7 +3573,6 @@
     {
      "text": "REVIVE",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_117_2",
@@ -3699,7 +3589,6 @@
     {
      "text": "GREAT BALL",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_117_3",
@@ -3716,7 +3605,6 @@
     {
      "text": "ULTRA BALL",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_117_4",
@@ -3835,7 +3723,6 @@
     {
      "text": "STARDUST",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_118_2",
@@ -3852,7 +3739,6 @@
     {
      "text": "LEAF STONE",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_118_3",
@@ -3884,7 +3770,6 @@
     {
      "text": "HYPER POTION",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_118_6",
@@ -4011,7 +3896,10 @@
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "battle_options": {
+      "double": true
+     }
     },
     { "rematch": {"source": "Emerald", "tiers": [{"team": [286], "levels": [31]}, {"team": [286], "levels": [34]}, {"team": [286], "levels": [37]}, {"team": [352, 286], "levels": [39, 39]}], "needs": {"badges": 5}},
      "name": "Pokémon Ranger Jackson",
@@ -4120,7 +4008,6 @@
     {
      "text": "MAX REPEL",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_119_1",
@@ -4137,7 +4024,6 @@
     {
      "text": "ZINC",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_119_3",
@@ -4154,7 +4040,6 @@
     {
      "text": "HONDEW BERRY",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_119_4",
@@ -4171,7 +4056,6 @@
     {
      "text": "CALCIUM",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_119_5",
@@ -4188,7 +4072,6 @@
     {
      "text": "PP MAX",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_119_6",
@@ -4205,7 +4088,6 @@
     {
      "text": "ELIXIR",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_119_7",
@@ -4222,7 +4104,6 @@
     {
      "text": "MAX ETHER",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_119_8",
@@ -4239,7 +4120,6 @@
     {
      "text": "ULTRA BALL",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_119_9",
@@ -4256,7 +4136,6 @@
     {
      "text": "LEAF STONE",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_119_10",
@@ -4273,7 +4152,6 @@
     {
      "text": "POMEG BERRY",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_119_11",
@@ -4290,7 +4168,6 @@
     {
      "text": "TIMER BALL",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_119_12",
@@ -4307,7 +4184,6 @@
     {
      "text": "RARE CANDY",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_119_13",
@@ -4324,7 +4200,6 @@
     {
      "text": "TM014 ACROBATICS",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_119_14",
@@ -4341,7 +4216,6 @@
     {
      "text": "LEPPA BERRY",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_119_15",
@@ -4358,7 +4232,6 @@
     {
      "text": "SITRUS BERRY",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_119_16",
@@ -4573,7 +4446,6 @@
     {
      "text": "RARE CANDY",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_120_1",
@@ -4590,7 +4462,6 @@
     {
      "text": "NEST BALL",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_120_3",
@@ -4607,7 +4478,6 @@
     {
      "text": "ASPEAR BERRY",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_120_4",
@@ -4624,7 +4494,6 @@
     {
      "text": "WEPEAR BERRY",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_120_5",
@@ -4641,7 +4510,6 @@
     {
      "text": "PINAP BERRY",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_120_6",
@@ -4658,7 +4526,6 @@
     {
      "text": "NUGGET",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_120_8",
@@ -4675,7 +4542,6 @@
     {
      "text": "REVIVE",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_120_9",
@@ -4692,7 +4558,6 @@
     {
      "text": "FULL HEAL",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_120_10",
@@ -4709,7 +4574,6 @@
     {
      "text": "RARE CANDY ",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_120_11",
@@ -4726,7 +4590,6 @@
     {
      "text": "LIGHT BALL",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_120_12",
@@ -4743,7 +4606,6 @@
     {
      "text": "FULL RESTORE",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_120_13",
@@ -4760,7 +4622,6 @@
     {
      "text": "DUSK BALL",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_120_14",
@@ -4823,7 +4684,10 @@
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "battle_options": {
+      "double": true
+     }
     },
     {
      "name": "Poké Fan Vanessa",
@@ -4845,7 +4709,6 @@
     {
      "text": "ASPEAR BERRY",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_121_1",
@@ -4862,7 +4725,6 @@
     {
      "text": "PERSIM BERRY",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_121_2",
@@ -4879,7 +4741,6 @@
     {
      "text": "RAWST BERRY",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_121_3",
@@ -4896,7 +4757,6 @@
     {
      "text": "ZINC",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_121_5",
@@ -4913,7 +4773,6 @@
     {
      "text": "MAX REPEL",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_121_6",
@@ -4930,7 +4789,6 @@
     {
      "text": "CARBOS",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_121_7",
@@ -4947,7 +4805,6 @@
     {
      "text": "SHINY STONE",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_121_8",
@@ -4964,7 +4821,6 @@
     {
      "text": "NUGGET",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_121_9",
@@ -4981,7 +4837,6 @@
     {
      "text": "NANAB BERRY",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_121_11",
@@ -4998,7 +4853,6 @@
     {
      "text": "PEARL",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_121_13",
@@ -5015,7 +4869,6 @@
     {
      "text": "NUGGET ",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_121_14",
@@ -5054,20 +4907,19 @@
      "sprite": "twins.png",
      "team": [
       267,
-      269,
-      64,
-      338
+      269
      ],
      "levels": [
       35,
-      35,
-      34,
-      36
+      35
      ],
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "battle_options": {
+      "double": true
+     }
     },
     {
      "name": "Picnicker Martha",
@@ -5211,12 +5063,12 @@
     },
     "Psychic Cameron": {
      "team": [
-      338,
-      65
+      64,
+      338
      ],
      "levels": [
-      40,
-      42
+      34,
+      36
      ]
     }
    },
@@ -5224,7 +5076,6 @@
     {
      "text": "REVIVAL HERB",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_123_1",
@@ -5256,7 +5107,6 @@
     {
      "text": "HONDEW BERRY",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_123_3",
@@ -5273,7 +5123,6 @@
     {
      "text": "LEPPA BERRY",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_123_4",
@@ -5290,7 +5139,6 @@
     {
      "text": "SITRUS BERRY",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_123_5",
@@ -5307,7 +5155,6 @@
     {
      "text": "QUALOT BERRY",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_123_8",
@@ -5324,7 +5171,6 @@
     {
      "text": "GREPA BERRY",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_123_9",
@@ -5341,7 +5187,6 @@
     {
      "text": "TAMATO BERRY",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_123_10",
@@ -5358,7 +5203,6 @@
     {
      "text": "ELIXIR",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_123_11",
@@ -5375,7 +5219,6 @@
     {
      "text": "WIDE LENS",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_123_12",
@@ -5392,7 +5235,6 @@
     {
      "text": "CALCIUM",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_123_13",
@@ -5424,7 +5266,6 @@
     {
      "text": "ULTRA BALL",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_123_15",
@@ -5441,7 +5282,6 @@
     {
      "text": "GRACIDEA",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_123_17",
@@ -5502,7 +5342,10 @@
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "battle_options": {
+      "double": true
+     }
     },
     {
      "name": "Swimmer ♂ Spencer",
@@ -5603,7 +5446,6 @@
     {
      "text": "HEART SCALE",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_124_8",
@@ -5620,7 +5462,6 @@
     {
      "text": "HEART SCALE ",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_124_9",
@@ -5683,7 +5524,10 @@
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "battle_options": {
+      "double": true
+     }
     },
     {
      "name": "Swimmer ♀ Sharon",
@@ -5738,7 +5582,6 @@
     {
      "text": "BIG PEARL",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_125_1",
@@ -5755,7 +5598,6 @@
     {
      "text": "DIVE BALL",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_125_2",
@@ -5926,7 +5768,6 @@
     {
      "text": "GREEN SHARD",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_126_1",
@@ -6121,7 +5962,6 @@
     {
      "text": "ZINC",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_127_1",
@@ -6138,7 +5978,6 @@
     {
      "text": "CARBOS",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_127_2",
@@ -6155,7 +5994,6 @@
     {
      "text": "RARE CANDY",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_127_3",
@@ -6540,7 +6378,10 @@
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "battle_options": {
+      "double": true
+     }
     }
    ]
   },
@@ -6597,7 +6438,6 @@
     {
      "text": "TM214 SLUDGE WAVE",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_132_1",
@@ -6738,7 +6578,6 @@
     {
      "text": "CALCIUM",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_133_1",
@@ -6868,7 +6707,6 @@
     {
      "text": "TM086 ROCK SLIDE",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_route_134_1",
@@ -6889,7 +6727,6 @@
     {
      "text": "POKE BALL",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_rusturf_tunnel_2",
@@ -6906,7 +6743,6 @@
     {
      "text": "MAX ETHER",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_rusturf_tunnel_3",
@@ -6942,7 +6778,6 @@
     {
      "text": "TM119 ENERGY BALL",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_safari_zone_2",
@@ -6959,7 +6794,6 @@
     {
      "text": "PROTEIN",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_safari_zone_3",
@@ -6976,7 +6810,6 @@
     {
      "text": "RARE CANDY",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_safari_zone_4",
@@ -6993,7 +6826,6 @@
     {
      "text": "ULTRA BALL",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_safari_zone_6",
@@ -7010,7 +6842,6 @@
     {
      "text": "TM147 WILD CHARGE",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_safari_zone_7",
@@ -7031,7 +6862,6 @@
     {
      "text": "FULL HEAL",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_scorched_slab_1",
@@ -7061,27 +6891,45 @@
       39,
       39
      ],
+     "team_by_version": {
+      "OMEGA_RUBY": [
+       322,
+       262
+      ],
+      "ALPHA_SAPPHIRE": [
+       318,
+       262
+      ]
+     },
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "villain": "grunt"
     },
     {
      "name": "Team Aqua Grunt",
      "class": "TEAM_AQUA",
      "sprite": "aqua_grunt.png",
      "team": [
-      318,
-      262
+      42
      ],
      "levels": [
-      39,
-      39
+      41
      ],
+     "team_by_version": {
+      "OMEGA_RUBY": [
+       42
+      ],
+      "ALPHA_SAPPHIRE": [
+       42
+      ]
+     },
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "villain": "grunt"
     }
    ]
   },
@@ -7090,7 +6938,6 @@
     {
      "text": "BIG PEARL",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_shoal_cave_2",
@@ -7107,7 +6954,6 @@
     {
      "text": "FOCUS BAND",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_shoal_cave_4",
@@ -7128,7 +6974,6 @@
     {
      "text": "DRAGON SCALE",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_sky_pillar_1",
@@ -7145,7 +6990,6 @@
     {
      "text": "TM281 EXPLOSION",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_sky_pillar_2",
@@ -7162,7 +7006,6 @@
     {
      "text": "FULL RESTORE",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_sky_pillar_3",
@@ -7179,7 +7022,6 @@
     {
      "text": "ULTRA BALL",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_sky_pillar_4",
@@ -7286,7 +7128,6 @@
     {
      "text": "TM280 EMBARGO",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_ss_tidal_1",
@@ -7303,7 +7144,6 @@
     {
      "text": "SHARP BEAK",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_ss_tidal_2",
@@ -7333,10 +7173,21 @@
       35,
       35
      ],
+     "team_by_version": {
+      "OMEGA_RUBY": [
+       109,
+       322
+      ],
+      "ALPHA_SAPPHIRE": [
+       88,
+       318
+      ]
+     },
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "villain": "grunt"
     },
     {
      "name": "Team Magma Grunts",
@@ -7366,17 +7217,34 @@
      "class": "TEAM_AQUA",
      "sprite": "aqua_grunt.png",
      "team": [
-      88,
-      318
+      42
      ],
      "levels": [
-      35,
-      35
+      37
      ],
+     "team_by_version": {
+      "OMEGA_RUBY": [
+       42
+      ],
+      "ALPHA_SAPPHIRE": [
+       318,
+       88
+      ]
+     },
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "levels_by_version": {
+      "OMEGA_RUBY": [
+       37
+      ],
+      "ALPHA_SAPPHIRE": [
+       35,
+       35
+      ]
+     },
+     "villain": "grunt"
     },
     {
      "name": "Team Aqua Grunts",
@@ -7406,7 +7274,6 @@
     {
      "text": "FULL RESTORE",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_team_hideout_1",
@@ -7423,7 +7290,6 @@
     {
      "text": "MAX ELIXIR",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_team_hideout_2",
@@ -7440,7 +7306,6 @@
     {
      "text": "ESCAPE ROPE",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_team_hideout_3",
@@ -7457,7 +7322,6 @@
     {
      "text": "NEST BALL",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_team_hideout_4",
@@ -7474,7 +7338,6 @@
     {
      "text": "TM094 DARK PULSE",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_team_hideout_5",
@@ -7491,7 +7354,6 @@
     {
      "text": "NUGGET ",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_team_hideout_6",
@@ -7508,7 +7370,6 @@
     {
      "text": "PP MAX",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_team_hideout_7",
@@ -7525,7 +7386,6 @@
     {
      "text": "MAX REVIVE",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_team_hideout_8",
@@ -7542,7 +7402,6 @@
     {
      "text": "NUGGET  ",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_team_hideout_9",
@@ -7559,7 +7418,6 @@
     {
      "text": "FULL RESTORE ",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_team_hideout_10",
@@ -7576,7 +7434,6 @@
     {
      "text": "MAX ELIXIR ",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_team_hideout_11",
@@ -7593,7 +7450,6 @@
     {
      "text": "ESCAPE ROPE ",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_team_hideout_12",
@@ -7610,7 +7466,6 @@
     {
      "text": "NEST BALL ",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_team_hideout_13",
@@ -7627,7 +7482,6 @@
     {
      "text": "TM094 DARK PULSE ",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_team_hideout_14",
@@ -7644,7 +7498,6 @@
     {
      "text": "NUGGET   ",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_team_hideout_15",
@@ -7661,7 +7514,6 @@
     {
      "text": "MASTER BALL ",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_team_hideout_16",
@@ -7678,7 +7530,6 @@
     {
      "text": "PP MAX ",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_team_hideout_17",
@@ -7695,7 +7546,6 @@
     {
      "text": "MAX REVIVE ",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_team_hideout_18",
@@ -7797,7 +7647,10 @@
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "battle_options": {
+      "double": true
+     }
     },
     {
      "name": "Expert Theodore",
@@ -7844,14 +7697,16 @@
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "battle_options": {
+      "double": true
+     }
     }
    ],
    "route_menu": [
     {
      "text": "FULL HEAL",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_victory_road_1",
@@ -7868,7 +7723,6 @@
     {
      "text": "PP UP",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_victory_road_5",
@@ -7885,7 +7739,6 @@
     {
      "text": "MAX ELIXIR",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_victory_road_6",
@@ -7902,7 +7755,6 @@
     {
      "text": "TM125 FLAMETHROWER",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_victory_road_7",
@@ -7919,7 +7771,6 @@
     {
      "text": "FULL RESTORE",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_victory_road_8",
@@ -7936,7 +7787,6 @@
     {
      "text": "TM105 X-SCISSOR",
      "action": "EVENT",
-     "color": "GOLD",
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_victory_road_10",
@@ -7966,27 +7816,55 @@
       29,
       29
      ],
+     "team_by_version": {
+      "OMEGA_RUBY": [
+       262,
+       42
+      ],
+      "ALPHA_SAPPHIRE": [
+       262,
+       42
+      ]
+     },
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "levels_by_version": {
+      "OMEGA_RUBY": [
+       29,
+       29
+      ],
+      "ALPHA_SAPPHIRE": [
+       28,
+       28
+      ]
+     },
+     "villain": "grunt"
     },
     {
      "name": "Team Aqua Grunt",
      "class": "TEAM_AQUA",
      "sprite": "aqua_grunt.png",
      "team": [
-      262,
-      42
+      109
      ],
      "levels": [
-      28,
-      28
+      30
      ],
+     "team_by_version": {
+      "OMEGA_RUBY": [
+       109
+      ],
+      "ALPHA_SAPPHIRE": [
+       88
+      ]
+     },
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "villain": "grunt"
     }
    ],
    "route_menu": [
@@ -8069,36 +7947,6 @@
   },
   "LAVARIDGE_TOWN": {
    "explore_options": [
-    {
-     "text": "Black Belt",
-     "action": "EVENT",
-     "oras": true,
-     "event": {
-      "lines": [
-       "Black Belt: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "TM088": 1
-      },
-      "flag": "oras_lavaridge_town_1"
-     },
-     "flag_condition": "not oras_lavaridge_town_1"
-    },
-    {
-     "text": "Flannery",
-     "action": "EVENT",
-     "oras": true,
-     "event": {
-      "lines": [
-       "Flannery: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "TM157": 1
-      },
-      "flag": "oras_lavaridge_town_3"
-     },
-     "flag_condition": "not oras_lavaridge_town_3"
-    }
    ]
   },
   "LILYCOVE_CITY": {
@@ -8119,21 +7967,6 @@
       },
       "flag": "oras_lilycove_city_1"
      }
-    },
-    {
-     "text": "Man",
-     "action": "EVENT",
-     "oras": true,
-     "event": {
-      "lines": [
-       "Man: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "TM085": 1
-      },
-      "flag": "oras_lilycove_city_2"
-     },
-     "flag_condition": "not oras_lilycove_city_2"
     },
     {
      "text": "Man ",
@@ -8177,14 +8010,15 @@
      "oras": true,
      "event": {
       "lines": [
-       "Mom: Here, I want you to have this!"
+       "Mom: You beat your father at his own Gym? I'm so proud of you! Here, this Amulet Coin is for you."
       ],
       "gift_item": {
        "AMULET_COIN": 1
       },
       "flag": "oras_littleroot_town_2"
      },
-     "flag_condition": "not oras_littleroot_town_2"
+     "flag_condition": "not oras_littleroot_town_2",
+     "condition": "has_balance_badge"
     }
    ]
   },
@@ -8250,21 +8084,6 @@
       "flag": "oras_mauville_city_4"
      },
      "flag_condition": "not oras_mauville_city_4"
-    },
-    {
-     "text": "Wattson",
-     "action": "EVENT",
-     "oras": true,
-     "event": {
-      "lines": [
-       "Wattson: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "TM048": 1
-      },
-      "flag": "oras_mauville_city_5"
-     },
-     "flag_condition": "not oras_mauville_city_5"
     },
     {
      "text": "Old man",
@@ -8473,21 +8292,6 @@
       "flag": "oras_mossdeep_city_7"
      },
      "flag_condition": "not oras_mossdeep_city_7"
-    },
-    {
-     "text": "Liza and Tate",
-     "action": "EVENT",
-     "oras": true,
-     "event": {
-      "lines": [
-       "Liza and Tate: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "TM129": 1
-      },
-      "flag": "oras_mossdeep_city_9"
-     },
-     "flag_condition": "not oras_mossdeep_city_9"
     }
    ]
   },
@@ -8512,21 +8316,6 @@
   },
   "PACIFIDLOG_TOWN": {
    "explore_options": [
-    {
-     "text": "Man",
-     "action": "EVENT",
-     "oras": true,
-     "event": {
-      "lines": [
-       "Man: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "TM054": 1
-      },
-      "flag": "oras_pacifidlog_town_1"
-     },
-     "flag_condition": "not oras_pacifidlog_town_1"
-    },
     {
      "text": "BIG PEARL",
      "action": "EVENT",
@@ -8727,36 +8516,6 @@
      "flag_condition": "not oras_rustboro_city_4"
     },
     {
-     "text": "Teacher",
-     "action": "EVENT",
-     "oras": true,
-     "event": {
-      "lines": [
-       "Teacher: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "QUICK_CLAW": 1
-      },
-      "flag": "oras_rustboro_city_5"
-     },
-     "flag_condition": "not oras_rustboro_city_5"
-    },
-    {
-     "text": "Roxanne",
-     "action": "EVENT",
-     "oras": true,
-     "event": {
-      "lines": [
-       "Roxanne: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "TM036": 1
-      },
-      "flag": "oras_rustboro_city_6"
-     },
-     "flag_condition": "not oras_rustboro_city_6"
-    },
-    {
      "text": "GREAT BALL",
      "action": "EVENT",
      "color": "GOLD",
@@ -8772,101 +8531,241 @@
       },
       "flag": "oras_rustboro_city_7"
      }
+    },
+    {
+     "text": "Team Magma Grunt (Devon 1)",
+     "action": "EVENT",
+     "color": "GOLD",
+     "oras": true,
+     "condition": [
+      "beat_hoenn_champion",
+      "hoenn_version:OMEGA_RUBY",
+      "delta_zinnia_granite"
+     ],
+     "flag_condition": "not h4_rustboro_city_delta_grunt_1",
+     "event": {
+      "lines": [
+       "Grunt: The meteor's coming and the Boss sent us to Devon. You won't get in our way!"
+      ],
+      "flag": "h4_rustboro_city_delta_grunt_1",
+      "battle": {
+       "name": "Team Magma Grunt",
+       "class": "TEAM_MAGMA",
+       "sprite": "magma_grunt.png",
+       "team": [
+        262,
+        42
+       ],
+       "levels": [
+        48,
+        50
+       ],
+       "rewards": {
+        "balls": 3
+       },
+       "dialogue": {
+        "player_won": [
+         "Grunt: Fine, fine! We'll leave Devon alone!"
+        ]
+       }
+      }
+     }
+    },
+    {
+     "text": "Team Aqua Grunt (Devon 1)",
+     "action": "EVENT",
+     "color": "GOLD",
+     "oras": true,
+     "condition": [
+      "beat_hoenn_champion",
+      "hoenn_version:ALPHA_SAPPHIRE",
+      "delta_zinnia_granite"
+     ],
+     "flag_condition": "not h4_rustboro_city_delta_grunt_1",
+     "event": {
+      "lines": [
+       "Grunt: The meteor's coming and the Boss sent us to Devon. You won't get in our way!"
+      ],
+      "flag": "h4_rustboro_city_delta_grunt_1",
+      "battle": {
+       "name": "Team Aqua Grunt",
+       "class": "TEAM_AQUA",
+       "sprite": "aqua_grunt.png",
+       "team": [
+        262,
+        42
+       ],
+       "levels": [
+        48,
+        50
+       ],
+       "rewards": {
+        "balls": 3
+       },
+       "dialogue": {
+        "player_won": [
+         "Grunt: Fine, fine! We'll leave Devon alone!"
+        ]
+       }
+      }
+     }
+    },
+    {
+     "text": "Team Magma Grunt (Devon 2)",
+     "action": "EVENT",
+     "color": "GOLD",
+     "oras": true,
+     "condition": [
+      "beat_hoenn_champion",
+      "hoenn_version:OMEGA_RUBY",
+      "delta_zinnia_granite"
+     ],
+     "flag_condition": "not h4_rustboro_city_delta_grunt_2",
+     "event": {
+      "lines": [
+       "Grunt: The meteor's coming and the Boss sent us to Devon. You won't get in our way!"
+      ],
+      "flag": "h4_rustboro_city_delta_grunt_2",
+      "battle": {
+       "name": "Team Magma Grunt",
+       "class": "TEAM_MAGMA",
+       "sprite": "magma_grunt.png",
+       "team": [
+        110
+       ],
+       "levels": [
+        51
+       ],
+       "rewards": {
+        "balls": 3
+       },
+       "dialogue": {
+        "player_won": [
+         "Grunt: Fine, fine! We'll leave Devon alone!"
+        ]
+       }
+      }
+     }
+    },
+    {
+     "text": "Team Aqua Grunt (Devon 2)",
+     "action": "EVENT",
+     "color": "GOLD",
+     "oras": true,
+     "condition": [
+      "beat_hoenn_champion",
+      "hoenn_version:ALPHA_SAPPHIRE",
+      "delta_zinnia_granite"
+     ],
+     "flag_condition": "not h4_rustboro_city_delta_grunt_2",
+     "event": {
+      "lines": [
+       "Grunt: The meteor's coming and the Boss sent us to Devon. You won't get in our way!"
+      ],
+      "flag": "h4_rustboro_city_delta_grunt_2",
+      "battle": {
+       "name": "Team Aqua Grunt",
+       "class": "TEAM_AQUA",
+       "sprite": "aqua_grunt.png",
+       "team": [
+        89
+       ],
+       "levels": [
+        51
+       ],
+       "rewards": {
+        "balls": 3
+       },
+       "dialogue": {
+        "player_won": [
+         "Grunt: Fine, fine! We'll leave Devon alone!"
+        ]
+       }
+      }
+     }
+    },
+    {
+     "text": "Team Magma Grunt (Devon 3)",
+     "action": "EVENT",
+     "color": "GOLD",
+     "oras": true,
+     "condition": [
+      "beat_hoenn_champion",
+      "hoenn_version:OMEGA_RUBY",
+      "delta_zinnia_granite"
+     ],
+     "flag_condition": "not h4_rustboro_city_delta_grunt_3",
+     "event": {
+      "lines": [
+       "Grunt: The meteor's coming and the Boss sent us to Devon. You won't get in our way!"
+      ],
+      "flag": "h4_rustboro_city_delta_grunt_3",
+      "battle": {
+       "name": "Team Magma Grunt",
+       "class": "TEAM_MAGMA",
+       "sprite": "magma_grunt.png",
+       "team": [
+        42,
+        323
+       ],
+       "levels": [
+        49,
+        49
+       ],
+       "rewards": {
+        "balls": 3
+       },
+       "dialogue": {
+        "player_won": [
+         "Grunt: Fine, fine! We'll leave Devon alone!"
+        ]
+       }
+      }
+     }
+    },
+    {
+     "text": "Team Aqua Grunt (Devon 3)",
+     "action": "EVENT",
+     "color": "GOLD",
+     "oras": true,
+     "condition": [
+      "beat_hoenn_champion",
+      "hoenn_version:ALPHA_SAPPHIRE",
+      "delta_zinnia_granite"
+     ],
+     "flag_condition": "not h4_rustboro_city_delta_grunt_3",
+     "event": {
+      "lines": [
+       "Grunt: The meteor's coming and the Boss sent us to Devon. You won't get in our way!"
+      ],
+      "flag": "h4_rustboro_city_delta_grunt_3",
+      "battle": {
+       "name": "Team Aqua Grunt",
+       "class": "TEAM_AQUA",
+       "sprite": "aqua_grunt.png",
+       "team": [
+        42,
+        319
+       ],
+       "levels": [
+        49,
+        49
+       ],
+       "rewards": {
+        "balls": 3
+       },
+       "dialogue": {
+        "player_won": [
+         "Grunt: Fine, fine! We'll leave Devon alone!"
+        ]
+       }
+      }
+     }
     }
    ]
   },
   "SLATEPORT_CITY": {
    "explore_options": [
-    {
-     "text": "Fan Club chairman",
-     "action": "EVENT",
-     "oras": true,
-     "event": {
-      "lines": [
-       "Fan Club chairman: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "RED_SCARF": 1
-      },
-      "flag": "oras_slateport_city_1"
-     },
-     "flag_condition": "not oras_slateport_city_1"
-    },
-    {
-     "text": "Fan Club chairman ",
-     "action": "EVENT",
-     "oras": true,
-     "event": {
-      "lines": [
-       "Fan Club chairman: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "BLUE_SCARF": 1
-      },
-      "flag": "oras_slateport_city_2"
-     },
-     "flag_condition": "not oras_slateport_city_2"
-    },
-    {
-     "text": "Fan Club chairman  ",
-     "action": "EVENT",
-     "oras": true,
-     "event": {
-      "lines": [
-       "Fan Club chairman: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "PINK_SCARF": 1
-      },
-      "flag": "oras_slateport_city_3"
-     },
-     "flag_condition": "not oras_slateport_city_3"
-    },
-    {
-     "text": "Fan Club chairman   ",
-     "action": "EVENT",
-     "oras": true,
-     "event": {
-      "lines": [
-       "Fan Club chairman: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "GREEN_SCARF": 1
-      },
-      "flag": "oras_slateport_city_4"
-     },
-     "flag_condition": "not oras_slateport_city_4"
-    },
-    {
-     "text": "Fan Club chairman    ",
-     "action": "EVENT",
-     "oras": true,
-     "event": {
-      "lines": [
-       "Fan Club chairman: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "YELLOW_SCARF": 1
-      },
-      "flag": "oras_slateport_city_5"
-     },
-     "flag_condition": "not oras_slateport_city_5"
-    },
-    {
-     "text": "Team MagmaOR/AquaAS Grunt",
-     "action": "EVENT",
-     "oras": true,
-     "event": {
-      "lines": [
-       "Team MagmaOR/AquaAS Grunt: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "TM018": 1
-      },
-      "flag": "oras_slateport_city_6"
-     },
-     "flag_condition": "not oras_slateport_city_6"
-    }
    ]
   },
   "SOOTOPOLIS_CITY": {
@@ -8885,21 +8784,6 @@
       "flag": "oras_sootopolis_city_3"
      },
      "flag_condition": "not oras_sootopolis_city_3"
-    },
-    {
-     "text": "Black Belt",
-     "action": "EVENT",
-     "oras": true,
-     "event": {
-      "lines": [
-       "Black Belt: Here, I want you to have this!"
-      ],
-      "gift_item": {
-       "TM058": 1
-      },
-      "flag": "oras_sootopolis_city_4"
-     },
-     "flag_condition": "not oras_sootopolis_city_4"
     }
    ]
   }
@@ -8911,17 +8795,8 @@
   "FALLARBOR_TOWN:Bug Maniac": {
    "sheet": "em_17.png"
   },
-  "FALLARBOR_TOWN:Professor Cozmo ": {
-   "sheet": "em_26.png"
-  },
   "FORTREE_CITY:TM86 GRASS KNOT": {
    "item": "TM081"
-  },
-  "FORTREE_CITY:Old woman": {
-   "sheet": "em_22.png"
-  },
-  "FORTREE_CITY:Winona": {
-   "sheet": "em_26.png"
   },
   "FORTREE_CITY:Boy": {
    "sheet": "em_5.png"
@@ -9598,17 +9473,8 @@
   "HOENN_WEATHER_INSTITUTE:Receptionist    ": {
    "sheet": "em_26.png"
   },
-  "LAVARIDGE_TOWN:Black Belt": {
-   "sheet": "em_33.png"
-  },
-  "LAVARIDGE_TOWN:Flannery": {
-   "sheet": "em_26.png"
-  },
   "LILYCOVE_CITY:MAX REPEL": {
    "item": "MAX_REPEL"
-  },
-  "LILYCOVE_CITY:Man": {
-   "sheet": "em_17.png"
   },
   "LILYCOVE_CITY:Man ": {
    "sheet": "em_17.png"
@@ -9640,9 +9506,6 @@
   "MAUVILLE_CITY:Girl": {
    "sheet": "em_12.png"
   },
-  "MAUVILLE_CITY:Wattson": {
-   "sheet": "em_26.png"
-  },
   "MAUVILLE_CITY:Old man": {
    "sheet": "em_21.png"
   },
@@ -9666,9 +9529,6 @@
   },
   "MOSSDEEP_CITY:Sailor": {
    "sheet": "em_49.png"
-  },
-  "MOSSDEEP_CITY:Liza and Tate": {
-   "sheet": "em_26.png"
   },
   "OLDALE_TOWN:Poké Mart attendant": {
    "sheet": "em_26.png"
@@ -9712,35 +9572,26 @@
   "RUSTBORO_CITY:Boy ": {
    "sheet": "em_5.png"
   },
-  "RUSTBORO_CITY:Teacher": {
-   "sheet": "em_26.png"
-  },
-  "RUSTBORO_CITY:Roxanne": {
-   "sheet": "em_26.png"
-  },
-  "SLATEPORT_CITY:Fan Club chairman": {
-   "sheet": "em_17.png"
-  },
-  "SLATEPORT_CITY:Fan Club chairman ": {
-   "sheet": "em_17.png"
-  },
-  "SLATEPORT_CITY:Fan Club chairman  ": {
-   "sheet": "em_17.png"
-  },
-  "SLATEPORT_CITY:Fan Club chairman   ": {
-   "sheet": "em_17.png"
-  },
-  "SLATEPORT_CITY:Fan Club chairman    ": {
-   "sheet": "em_17.png"
-  },
-  "SLATEPORT_CITY:Team MagmaOR/AquaAS Grunt": {
-   "sheet": "em_26.png"
-  },
   "SOOTOPOLIS_CITY:Collector": {
    "sheet": "em_38.png"
   },
-  "SOOTOPOLIS_CITY:Black Belt": {
-   "sheet": "em_33.png"
+  "RUSTBORO_CITY:Team Magma Grunt (Devon 1)": {
+   "sheet": "em_119.png"
+  },
+  "RUSTBORO_CITY:Team Aqua Grunt (Devon 1)": {
+   "sheet": "em_117.png"
+  },
+  "RUSTBORO_CITY:Team Magma Grunt (Devon 2)": {
+   "sheet": "em_119.png"
+  },
+  "RUSTBORO_CITY:Team Aqua Grunt (Devon 2)": {
+   "sheet": "em_117.png"
+  },
+  "RUSTBORO_CITY:Team Magma Grunt (Devon 3)": {
+   "sheet": "em_119.png"
+  },
+  "RUSTBORO_CITY:Team Aqua Grunt (Devon 3)": {
+   "sheet": "em_117.png"
   }
  }
 }

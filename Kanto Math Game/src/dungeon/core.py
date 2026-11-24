@@ -530,6 +530,20 @@ class Run:
         ff = (self.recipe or {}).get("fog_floors")
         return self._fog and (ff is None or self.index in ff)
 
+    @staticmethod
+    def _lit_room(f, room):
+        """The room that lights up whole as you stand in it - none when it is the whole map (a drawn map is one room:
+        its fog, a dark cave's or the Lost Tower's, would show nothing; 11-24)."""
+        if room is None or (room.w >= f.w - 2 and room.h >= f.h - 2):
+            return None
+        return room
+
+    def _clear(self, x, y):
+        """Out of the fog's box (recipe "fog_box": [[x0, y0, x1, y1], ...], the fog on part of a map only: Platinum's
+        Route 210, whose north half R210B is foggy; 11-24): always seen."""
+        boxes = (self.recipe or {}).get("fog_box")
+        return bool(boxes) and not any(b[0] <= x <= b[2] and b[1] <= y <= b[3] for b in boxes)
+
     @fog.setter
     def fog(self, on):
         self._fog = on
@@ -657,11 +671,14 @@ class Run:
             if len(f.seen) < f.w * f.h:
                 f.seen = {(x, y) for y in range(f.h) for x in range(f.w)}
             return
+        if (self.recipe or {}).get("fog_box") and not getattr(f, "_clear_seen", False):   # (out of the fog's box: seen at once)
+            f.seen |= {(x, y) for y in range(f.h) for x in range(f.w) if self._clear(x, y)}
+            f._clear_seen = True
         for y in range(py - radius, py + radius + 1):
             for x in range(px - radius, px + radius + 1):
                 if f.inside(x, y):
                     f.seen.add((x, y))
-        room = f.room_at(px, py)
+        room = self._lit_room(f, f.room_at(px, py))
         if room:  # a room lights up whole, with its edge
             for y in range(room.y - 1, room.y + room.h + 1):
                 for x in range(room.x - 1, room.x + room.w + 1):
@@ -678,10 +695,10 @@ class Run:
         """Can you see this tile right now (same room, or close by; anywhere, without fog)?"""
         if self.explore:
             return (x, y) in self.floor.seen
-        if not self.fog:
+        if not self.fog or self._clear(x, y):
             return True
         px, py = self.player
-        room = self.floor.room_at(px, py)
+        room = self._lit_room(self.floor, self.floor.room_at(px, py))
         if room and room.x - 1 <= x <= room.x + room.w and room.y - 1 <= y <= room.y + room.h:
             return True
         return abs(x - px) <= 2 and abs(y - py) <= 2

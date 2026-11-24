@@ -16,7 +16,8 @@ How a battle's background is found (pick):
     "wild"; a plain string for every battle but a Gym / League one (those look only at their own keys);
   - else the region's "terrain" by how the area looks (its battle_type: grass, cave, water, sand, inside, snow...);
   - time of day as the games do: a picture "<name>_eve.png" / "<name>_night.png" beside the chosen one is used in the
-    evening / at night (assets.time_of_day: eve 5-8pm, night 8pm-6am);
+    evening / at night (assets.time_of_day: eve 5-8pm, night 8pm-6am); the season too: "<name>_summer.png" / _autumn /
+    _winter (seasons.current_season; spring is the plain picture), and "<name>_<season>_<time>.png" for both;
   - nothing found (or no index for the region): None, and the battle goes on to the old rules - so a Gym the index leaves
     out keeps its own background (Kanto's custom ones), and the menu regions are untouched.
 """
@@ -49,12 +50,19 @@ def index(game, region):
 
 
 def _timed(game, region, name, now=None):
-    """name, or its evening / night picture when it's then and there is one."""
+    """name, or its season's / evening / night picture when there is one: "<name>_<season>" (summer, autumn, winter -
+    spring is the plain one; Black 2's changing backgrounds, Unova 11-24), "<name>_eve" / "<name>_night", or both,
+    "<name>_<season>_<time>"."""
     from src.core.assets import AssetManager
     tag = AssetManager.time_of_day(now) if hasattr(AssetManager, "time_of_day") else ""
-    if tag:
-        stem, ext = os.path.splitext(name)
-        alt = f"{stem}_{tag}{ext}"
+    try:
+        from src.world import seasons
+        season = seasons.current_season(now.date() if hasattr(now, "date") else None).lower()
+    except Exception:
+        season = "spring"
+    season = "" if season == "spring" else season
+    stem, ext = os.path.splitext(name)
+    for alt in ([f"{stem}_{season}_{tag}{ext}"] if season and tag else []) + ([f"{stem}_{season}{ext}"] if season else [])             + ([f"{stem}_{tag}{ext}"] if tag else []):
         if os.path.isfile(os.path.join(folder(game, region), alt)):
             return alt
     return name

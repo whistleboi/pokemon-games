@@ -4216,3 +4216,5 @@ from . import frontier_maison as _MAISON  # noqa: E402  (the Battle Maison at th
 _MAISON.apply(MAPS)
 from . import oras_extras as _EXTRAS  # noqa: E402  (ORAS's small places: 123 Go Fish, the Move Reminder)
 _EXTRAS.apply(MAPS)
+from . import hoenn_canon as _CANON  # noqa: E402  (11-23, re-audit H4: canon fixes - Mega Stones placed, the Museum grunt, Mom's stones)
+_CANON.apply(MAPS)

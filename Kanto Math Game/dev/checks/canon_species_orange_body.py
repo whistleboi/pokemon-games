@@ -13,8 +13,8 @@ print("8) Orange: the old pokeorange hack's Gen 2 species back; the dex is only 
 story.enter_region("ORANGE")
 _ost = _AD["REGION_START"]["ORANGE"]
 _odex = set(_ost["dex_list"]) | set(_ost["dex_extra"])
-check(len(_odex) == 133 and 152 not in _odex and {171, 176, 186, 222, 227, 233, 250, 251} <= _odex,
-      f"Orange's dex: 133, only what Orange gives (no Chikorita; Lanturn, Togetic, Politoed, Corsola, Skarmory, Porygon2, Ho-Oh, Celebi in) ({len(_odex)})")
+check(len(_odex) == 192 and 152 not in _odex and 151 not in _odex and {18, 137, 143, 150, 171, 176, 186, 222, 227, 233, 250, 251} <= _odex,
+      f"Orange's dex: everything Orange gives, 192 (Jordan 11-23; no Chikorita or Mew; Pidgeot, Porygon, Snorlax, Mewtwo, Lanturn, Togetic, Politoed, Corsola, Skarmory, Porygon2, Ho-Oh, Celebi in) ({len(_odex)})")
 _pm = next(o for o in _P["TROVITOPOLIS"]["explore_options"] if o.get("text") == "Porygon man")
 for _f in ("got_porygon_trovitopolis", "got_upgrade_trovitopolis", "beat_orange_champion"):
     story.story_flags.pop(_f, None)
