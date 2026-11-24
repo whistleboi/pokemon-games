@@ -1,0 +1,12 @@
+{
+  "_about": "Orre's places the built-in list in src/core/music.py (ORRE_AREAS) doesn't name: the story rework's post-game (S6, 11-24) - each on the nearest of XD's own tracks. Read before ORRE_AREAS (region_track).",
+  "areas": {
+    "CONSTRUCTION_LOT": "cipher_key_lair",
+    "MARINE_CAVE": "the_under",
+    "ORRE_SKY_PILLAR": "relic_forest",
+    "ORRE_BIRTH_ISLAND": "relic_forest",
+    "ORRE_NEW_ISLAND": "relic_forest",
+    "ORRE_LAKE_OF_RAGE": "relic_forest",
+    "ORRE_BATTLE_FRONTIER": "orre_colosseum"
+  }
+}

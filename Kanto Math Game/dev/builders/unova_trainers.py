@@ -39,7 +39,8 @@ PLACES = {"NIMBASA_CITY": [62, 64, 63, 585], "UNOVA_ROUTE_16": [383], "LOSTLORN_
           "CHARGESTONE_CAVE": [195], "CHARGESTONE_CAVE_B1F": [196], "CHARGESTONE_CAVE_B2F": [197],
           "UNOVA_ROUTE_7": [337], "CELESTIAL_TOWER_2F": [339], "CELESTIAL_TOWER_3F": [340], "CELESTIAL_TOWER_4F": [341],   # (batch 6b)
           "REVERSAL_MOUNTAIN": [461],   # (batch 7a: the mountainside's Cyclists; inside, each version's own chamber)
-          "REVERSAL_MOUNTAIN_INSIDE": [(533, "unova_version:BLACK_2"), (539, "unova_version:WHITE_2")]}
+          "REVERSAL_MOUNTAIN_INSIDE": [(533, "unova_version:BLACK_2"), (539, "unova_version:WHITE_2")],
+          "UNOVA_ROUTE_13": [370], "UNDELLA_BAY": [240]}   # (batch 7b)
 EXTRA = {"UNOVA_ROUTE_5": [(339, "unova_version:BLACK_2"), (340, "unova_version:WHITE_2")]}   # (Charles at the drawbridge)
 CLASS_FIX = {"⒆⒇": "Pokemon", "⑮": "F", "⑭": "M"}   # (the file's PKMN glyph, female / male signs)
 # Story and Gym battles that aren't standing trainers: written to town_maps/unova_teams.json {id: entry} for unova.py's _b2(id)
@@ -55,7 +56,8 @@ TEAMS = [207, 208, 209, 153,                     # Elesa's Beauties, Elesa
          368, 369, 370, 371,                     # (batch 5b) the Plasma Frigate: Hugh as your partner (by your starter), Cheren
          372, 373, 374, 375, 376, 377,           # the Frigate's Grunts: two alone, then two pairs (with Cheren, with Hugh)
          149, 150, 151, 152, 332,                # (batch 6b) Skyla's Pilots
-         515, 518, 390, 391]                     # (batch 7a) Rangers Lewis / Eliza in the side chambers; the Strange House's Boone, Lynette
+         515, 518, 390, 391,                     # (batch 7a) Rangers Lewis / Eliza in the side chambers; the Strange House's Boone, Lynette
+         701, 702, 703, 704, 705]                # (batch 7b) Lacunosa: Hugh as your partner (by your starter), Zinzolin, his Grunt
 # Battle pictures where the class slug isn't the file's name (a/0/7/1 slots matched by eye, 11-23; a class without its own
 # Black 2 picture keeps the same class from Platinum, never another class's look)
 BY_CLASS = {0: "b2_nate.png", 1: "b2_rosa.png", 90: "pt_cyclist_m.png", 91: "pt_cyclist_f.png", 33: "pt_artist.png",
