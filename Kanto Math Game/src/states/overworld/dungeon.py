@@ -497,6 +497,20 @@ def with_rooms(m):
     return out
 
 
+def way_on_water(recipe, floor, target):
+    """Is a floor's way out to target on the water (True), on land (False), or not known (None)? A room's (indoors) door is land."""
+    floors = ((recipe.get("art") or {}).get("floors")) or []
+    if not 0 <= floor < len(floors):
+        return None
+    f = floors[floor]
+    if f.get("indoors"):
+        return False
+    from src.dungeon import art as _art
+    grid, letters = f.get("art") or [], {c for c, t in (f.get("exits") or {}).items() if t == target}
+    wet = [c in "wu" or _art.at_sea(grid, x, y) for y, row in enumerate(grid) for x, c in enumerate(row) if c in letters]
+    return None if not wet else all(wet) if all(wet) or not any(wet) else None
+
+
 def art_recipe(m):
     """A route map recipe from one of our own maps (src/dungeon/art.py): its ground, its ways out (a letter
     each), what stands in the way (trees, fences, rocks, buildings, the sea), drawn in its own art. A map of
@@ -950,7 +964,13 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         if recipe.get("exit_floors") and entrance in recipe["exit_floors"]:  # (our map of floors: in by its floor)
             start = recipe["exit_floors"][entrance]
             _all = (recipe.get("exit_floors_all") or {}).get(entrance) or []
-            if len(_all) > 1 and core.ENTRANCE_COUNT >= len(_all):  # (in by the matching way: the far side has as many ways here as we have floors with one, or doors several tiles wide: Viridian Forest's gates)
+            _wet = core.ENTRANCE_WATER
+            core.ENTRANCE_WATER = None
+            _match = [i for i in _all if way_on_water(recipe, i, entrance) is _wet] if len(_all) > 1 and _wet is not None else []
+            if len(_match) == 1:   # (by sea or by land, as you left: the floor whose way back is the same kind; Sinnoh 11-24)
+                start = _match[0]
+                core.ENTRANCE_INDEX = core.ENTRANCE_COUNT = 0
+            elif len(_all) > 1 and core.ENTRANCE_COUNT >= len(_all):  # (in by the matching way: the far side has as many ways here as we have floors with one, or doors several tiles wide: Viridian Forest's gates)
                 start = _all[min(core.ENTRANCE_INDEX * len(_all) // core.ENTRANCE_COUNT, len(_all) - 1)]
                 core.ENTRANCE_INDEX = core.ENTRANCE_COUNT = 0
         if self.zones:
@@ -2605,6 +2625,7 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         self.game.arrive_edge = (self.area_key, target, tuple(_to)) if _to else None  # (out by an edge tile: in at its partner there)
         core.ENTRANCE_INDEX = same.index(tuple(self.run.player)) if tuple(self.run.player) in same else 0
         core.ENTRANCE_COUNT = len(same)  # (how many tiles that way out has here: the far side takes the matching place along its own)
+        core.ENTRANCE_WATER = None
         if len(same) > 1:  # (out to a town with as many ways back: in by the matching one, Victory Road's two mouths at Ever Grande)
             self.game.walk_town_exit = (self.area_key, core.ENTRANCE_INDEX, len(same))
         _all = (self.recipe.get("exit_floors_all") or {}).get(target) or []

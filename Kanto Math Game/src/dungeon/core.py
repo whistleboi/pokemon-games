@@ -29,6 +29,8 @@ CURRENT_TILE = None  # the tile a new wild Pokemon will stand on (out on the sea
 ENTRANCE_COUNT = 0  # how many tiles the way out you left by had (0: unknown): a wide edge maps place for place
 ENTRANCE_SPREAD = False  # the count is of buildings, not door tiles (out of one of Route 2's two gatehouses into Viridian Forest, whose gates are three tiles wide): the same way along
 ENTRANCE_INDEX = 0  # which of several ways in from the same place you came by (Route 41's four Whirl Islands caves)
+ENTRANCE_WATER = None  # did you leave by water (True) or by land (False)? None: not known. Of several floors with a way back, the
+                       # one that matches is taken (Pastoria to Route 213: the land way to its gatehouse, the sea to its sea edge)
 WALL, FLOOR, GRASS, WATER, SURF = 0, 1, 2, 3, 4  # (SURF: open sea, crossed with HM Surf)
 DIRS = ((0, -1), (1, 0), (0, 1), (-1, 0))
 STAIRS = "STAIRS"

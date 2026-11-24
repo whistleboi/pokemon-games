@@ -478,4 +478,11 @@ check(_p._journal_rect() is not None and _p._minimap_rect().y > _p._journal_rect
       "the Journal's mission stays on screen under MENU (the mini-map under it)")
 
 
+print("several floors with a way back to one place: in by the kind of way you left by, sea or land (Sinnoh 11-24)")
+from src.states.overworld.dungeon import way_on_water
+_r = {"art": {"floors": [{"art": ["ooooo", "oooo>", "ooooo"], "exits": {">": "PASTORIA"}},
+                         {"art": ["..T..", "....>", "....."], "exits": {">": "PASTORIA"}, "indoors": True}]}}
+check([way_on_water(_r, i, "PASTORIA") for i in (0, 1)] == [True, False] and way_on_water(_r, 4, "PASTORIA") is None,
+      "the sea edge's way is on the water, the gatehouse room's on land")
+
 print(f"##### {fails} failures")
