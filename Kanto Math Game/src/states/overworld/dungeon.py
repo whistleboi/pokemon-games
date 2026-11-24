@@ -743,6 +743,9 @@ def recipe_for(game, area_key):
         recipe.pop("zones", None)
         if recipe.get("dark") or mine.get("dark"):  # (a dark cave: its fog stays, till Flash lights it)
             recipe["fog"], recipe["dark"] = True, True
+            if isinstance(mine.get("dark"), dict):   # (a map's "dark" {"radius": [r]}: black but a small light round you, as
+                recipe["dark_radius"] = int((mine["dark"].get("radius") or [2])[0])   #  the towns' dark rooms; Mistralton Cave, Unova 11-24)
+                recipe["fog"] = False
         return recipe
     real = real_maps(game).get(area_key)
     if real and os.path.isfile(os.path.join(game.assets.assets_dir or "", "walk_routes", f"{area_key}.png")):
@@ -920,8 +923,9 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         if getattr(story, "last_area_key", None) in _ferry:   # (a ferry: the port you boarded at, so its sailor still knows where you're bound after a reload; a loaded save: none)
             story.story_flags[f"ferry_from_{self.area_key}"] = story.last_area_key
         self.recipe = recipe_for(game, self.area_key)
-        if self.recipe.get("dark") and __import__("src.world.hms", fromlist=["usable"]).usable(story, "HM_FLASH"):  # (Flash lights a dark cave)
-            self.recipe = dict(self.recipe, fog=False)
+        _hms = __import__("src.world.hms", fromlist=["usable"])
+        if self.recipe.get("dark") and (_hms.usable(story, "HM_FLASH") or _hms.by_move(story, "HM_FLASH")):  # (Flash lights a dark cave:
+            self.recipe = dict(self.recipe, fog=False, dark_radius=None)                                     #  the HM, or the TM's move in Gen 5+)
         if (self.recipe.get("art") or {}).get("fog") == "defog":  # (thick fog: you see only what is near, till Defog clears it: the Lost Tower)
             self.recipe = dict(self.recipe, fog=story.inventory.get("HM_DEFOG", 0) <= 0)
         if (self.recipe.get("art") or {}).get("fog_floors") is not None:   # (fog on some floors only: the map's "fog_floors")
@@ -5578,6 +5582,7 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
                 elif not self.run.visible(x, y):
                     screen.blit(fog, r)
 
+        self._draw_cave_light(screen, at(*self.run.player).center)
         for pill, tag in signs:  # where the ways out go
             pygame.draw.rect(screen, (30, 36, 58), pill, border_radius=8)
             screen.blit(tag, tag.get_rect(center=pill.center))
@@ -5594,6 +5599,19 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
             self._draw_guide(screen, at)
         screen.set_clip(None)
         return at
+
+    def _draw_cave_light(self, screen, centre):
+        """A dark cave with a light radius (recipe "dark_radius"): black but a soft circle round you, till Flash."""
+        r = self.recipe.get("dark_radius") if isinstance(getattr(self, "recipe", None), dict) else None
+        if not r:
+            return
+        area = screen.get_clip()
+        veil = pygame.Surface(area.size, pygame.SRCALPHA)
+        veil.fill((0, 0, 0, 250))
+        cx, cy, rad = centre[0] - area.x, centre[1] - area.y, int(r * TILE)
+        for i in range(6):  # (a soft edge)
+            pygame.draw.circle(veil, (0, 0, 0, 250 - 40 * (i + 1)), (cx, cy), max(1, rad - i * TILE // 8))
+        screen.blit(veil, area.topleft)
 
     def _draw_rest(self, screen, view, fonts, at):
         """Over the map: its frame, the HUD, the encounter, the dialogue."""

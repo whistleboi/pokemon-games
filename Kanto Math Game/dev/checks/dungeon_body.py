@@ -521,4 +521,23 @@ for _from in ("UNOVA_ROUTE_6", "MISTRALTON_CAVE_2F"):
     check(bool(_near), f"Mistralton Cave from {_from}: you stand beside its way back ({(_x, _y)})")
 _dg.recipe_for = _rf
 
+print("a dark cave: black but a small light round you; Flash - the HM, or in Unova a Pokemon that knows the TM's move - lights it (11-24)")
+story.enter_region("UNOVA")
+if "MISTRALTON_CAVE" in g.loader.area_data["STORY_PROGRESSION"]:
+    story.inventory.pop("HM_FLASH", None)
+    _pc = kanto("MISTRALTON_CAVE", came="UNOVA_ROUTE_6")
+    check(_pc.recipe.get("dark_radius") == 3 and not _pc.run.fog, f"Mistralton Cave: a light 3 tiles round you ({_pc.recipe.get('dark_radius')})")
+    import pygame as _pg
+    _sf = _pg.Surface((600, 600))
+    _sf.fill((200, 200, 200))
+    _pc._draw_cave_light(_sf, (300, 300))
+    check(sum(_sf.get_at((10, 10))[:3]) < 30 and sum(_sf.get_at((300, 300))[:3]) > 300, "...drawn black away from you, lit where you stand")
+    frames(_pc)   # (a frame of the map with the light drawn)
+    story.player_team = [mk(4)]
+    story.player_team[0].level = 12
+    story.player_team[0].moves = list(story.player_team[0].moves or [])[:3] + ["FLASH"]
+    story.current_area_key, story.last_area_key = "MISTRALTON_CAVE", "UNOVA_ROUTE_6"
+    _pl = PlayState(g)
+    check(not _pl.recipe.get("dark_radius") and not _pl.run.fog, "a Pokemon that knows Flash lights the whole cave")
+
 print(f"##### {fails} failures")

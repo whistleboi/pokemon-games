@@ -249,6 +249,7 @@ class RouteLive:
                 return pygame.Rect(-999, -999, TILE, TILE)
             return pygame.Rect(int(view.x + p[0] - TILE / 2), int(view.y + p[1] - TILE), TILE, TILE)
         screen.set_clip(view)
+        self._draw_cave_light(screen, at(*self.run.player).center)   # (a dark cave: a small light round you, till Flash)
         self._draw_tap_marks(screen, at)
         # the ways out: one sign over each road saying where it goes (as the flat map does)
         ways = {}

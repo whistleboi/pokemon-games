@@ -195,7 +195,8 @@ check(story.current_area_key == "MISTRALTON_CAVE", f"Route 6's east cave mouth: 
 for a in ("MISTRALTON_CAVE", "MISTRALTON_CAVE_2F", "GUIDANCE_CHAMBER"):
     check(tmaps[a].get("dark"), f"{a} is dark till Flash")
 ds = walked("MISTRALTON_CAVE", (2, 6))
-check(getattr(ds, "recipe", {}).get("fog"), "in the dark the cave shows only what you've walked")
+check(getattr(ds, "recipe", {}).get("dark_radius") or getattr(ds, "recipe", {}).get("fog"),
+      "in the dark the cave shows only a small light round you (main 11-24: dark_radius; was fog)")
 check(tmaps["MISTRALTON_CAVE"]["art"][17][5] == "b", "1F: the boulder waits on the hole south")
 check(tmaps["MISTRALTON_CAVE"]["exits"].get(">") == "CLAY_TUNNEL" and tmaps["MISTRALTON_CAVE"]["barred"][0]["until"]["flag_condition"] == "beat_unova_champion",
       "Clay Tunnel's door: shut (still being dug) till the Champion")

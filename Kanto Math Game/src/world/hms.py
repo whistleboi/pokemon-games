@@ -54,7 +54,15 @@ FIELD_STRICT = {"KANTO", "ORRE", "JOHTO", "HOENN"}   # (Hoenn 11-23, H5: ORAS ne
 
 # Field moves a region's game uses by the move alone, with no HM item (Orange Islands 5.7: Route L's swimmer teaches Waterfall
 # and a Pokemon that knows it climbs Butwal's falls; 11-18). {region: {our HM item: the move}}
-FIELD_BY_MOVE = {"ORANGE": {"HM_WATERFALL": "WATERFALL"}}
+FIELD_BY_MOVE = {"ORANGE": {"HM_WATERFALL": "WATERFALL"},
+                 "UNOVA": {"HM_FLASH": "FLASH"}, "KALOS": {"HM_FLASH": "FLASH"}}   # (Gen 5-6: Flash is a TM; a Pokemon that knows it lights a dark cave)
+
+
+def by_move(story, item):
+    """A Pokemon on your team knows the field move this region's game uses with no HM (FIELD_BY_MOVE)."""
+    move = FIELD_BY_MOVE.get(str(story.get_current_region()).upper(), {}).get(item)
+    return bool(move) and any(p and move in [str(m).upper().replace("-", "_") for m in (getattr(p, "moves", None) or [])]
+                              for p in (story.player_team or []))
 
 
 def field(story, item):
