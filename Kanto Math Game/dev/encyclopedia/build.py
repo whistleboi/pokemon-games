@@ -513,6 +513,25 @@ def prizes_html():
             f'</thead><tbody>{rows}</tbody></table></div>')
 
 
+def cd_prize_name(prize):
+    """A Battle CD's first-clear prize (assets/orre_battle_cds.json "prize"): an item key, or "tm:<MOVE>" for the TM that
+    teaches it (src/world/battle_cd.py _give_prize, tms.key_for_move)."""
+    p = str(prize or "")
+    if p.startswith("tm:"):
+        tm = next((k for k, d in F.TMS.items() if isinstance(d, dict) and d.get("move") == p[3:]), None)
+        return F.item_name(tm) if tm else ""
+    return F.item_name(p) if p else ""
+
+
+def cdprizes_html():
+    """Orre's fifty Battle CDs and what each gives the first time you clear it."""
+    cds = F.load("orre_battle_cds.json")
+    rows = "".join(f'<tr><td>{int(k):02d}</td><td>{esc(str(cd.get("title") or ""))}</td><td>{esc(cd_prize_name(cd.get("prize")) or "—")}</td></tr>'
+                   for k, cd in sorted(cds.items(), key=lambda kv: int(kv[0])))
+    return ('<div class="frame"><table><caption>Battle CD prizes (first clear)</caption><thead><tr><th>CD</th><th>Title</th>'
+            f'<th>Prize</th></tr></thead><tbody>{rows}</tbody></table></div>')
+
+
 WHEN = {}
 FACTS = {}
 BOXED = set()   # trainers with a {{battle}} box: left out of the trainer tables
@@ -610,6 +629,8 @@ def fill(text):
             return f'<div class="grid">{captable_html()}</div>'
         if kind == "prizes":
             return f'<div class="grid">{prizes_html()}</div>'
+        if kind == "cdprizes":
+            return f'<div class="grid">{cdprizes_html()}</div>'
         raise SystemExit(f"unknown marker {kind}")
     return re.sub(r"\{\{(\w+)(?::([^}]*))?\}\}", rep, text)
 
