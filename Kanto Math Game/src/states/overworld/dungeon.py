@@ -1926,8 +1926,11 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
                     if k not in ("zone_pools", "morning_pool_percentages", "day_pool_percentages", "night_pool_percentages")}
         layout = self.recipe.get("layout") if isinstance(getattr(self, "recipe", None), dict) else None
         own = layout[core.CURRENT_FLOOR].get("pool") if layout and core.CURRENT_FLOOR < len(layout) else None
-        if own:  # (this floor's own Pokemon: the seabed's)
-            area = {k: v for k, v in dict(area, wild_pool_percentages=own).items() if k != "zone_pools"}
+        if not own and not own_kind:   # (a walked floor's own land Pokemon: "floor_pools" {"<floor>": pool} - Dark Cave's two sides)
+            own = (area.get("floor_pools") or {}).get(str(core.CURRENT_FLOOR))
+        if own:  # (this floor's own Pokemon: the seabed's; a floor_pools one all day, as the game's)
+            area = {k: v for k, v in dict(area, wild_pool_percentages=own).items() if k not in (
+                "zone_pools", "morning_pool_percentages", "day_pool_percentages", "night_pool_percentages")}
         pool = self._get_wild_pool(area)
         if pool and own_kind == "surf_pool_percentages" and area.get("wild_pool_percentages") == self.area_data.get(own_kind):
             from src.world import swarms as _swarms   # (a swarm out on the water: Route 27's Luvdisc, SoulSilver; 11-19)
