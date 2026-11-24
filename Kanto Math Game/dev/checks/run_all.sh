@@ -1,26 +1,14 @@
 #!/usr/bin/env bash
-# Run every check headless from the game folder:  bash dev/checks/run_all.sh
-# Each suite is harness_head.py (+ sub_helpers_body.py) + <name>_body.py, built into dev/checks/out/.
-# A line "FAIL" is a failed check; batch5 raises ValueError("test") on purpose (its crash-handler test).
+# Run every check headless from the game folder:  bash dev/checks/run_all.sh   (only when Jordan asks: lean checks, 11-24)
+# Every suite in dev/checks/suites.txt but the long ones (the playthroughs: LONG=1 adds them), every region's reach walk,
+# side by side (JOBS at once, default 8; run_par.sh), then the 3.11 compile, tests/ and the smoke test.
 cd "$(dirname "$0")/../.." || exit 1
-C=dev/checks
-O=$C/out
-mkdir -p "$O"
-export PYTHONIOENCODING=utf-8
-HELPED="grokfix storage dlc sevii decolore sinjoh orre"
-PLAIN="canon1029 menus items items_pp moveeffects selfko tmshop savename faces townsea aiswitch flyrule vsseeker partners sinnohfolk rivals hoennstart kantostart sinnohstart unovastart unovacam live3d recheck recheck_uk recheck_agh recheck_pkt recheck_orre lumiose scaling movepool blackfog blockers bugs2 shadows orangeforms answers1023 slots orange batch6 batch5 ui batch4 batch3 fixes battle2 doubles events features loops eterna catch dungeon dungeon_kanto dungeon_johto frlg sevii_maps sinnoh orre_maps hoenn_maps johto_canon giant_volcano kanto_maps soaring soaring3d rowdy_pikachu yellow_kanto canon_species canon_species_johto canon_species_orre canon_species_orange canon_species_hoenn kanto_events orre_pilot orre_b1 orre_b2 orre_b3 orre_b4 orre_b5a orre_b5b orre_b6 orre_b7a orre_b7b orre_b8a orre_b8b orre_b8c orre_b8d reach_rides guide_exits exp_mode quest_book quest_book_johto quest_book_orange quest_book_hoenn quest_book_sinnoh gusts town_smash rotom_forms journal_rules quest_book_orre journal_regions"   # (the map suites: each region's walkable maps)
-for t in $HELPED; do cat $C/harness_head.py $C/sub_helpers_body.py $C/${t}_body.py > $O/check_$t.py; done
-for t in $PLAIN; do cat $C/harness_head.py $C/${t}_body.py > $O/check_$t.py; done
-for t in $HELPED $PLAIN; do
-  r=$(timeout 1500 python $O/check_$t.py $O 2>&1)
-  n=$(echo "$r" | grep -cE 'FAIL |Traceback|(Syntax|Indentation)Error')
-  [ "$t" = batch5 ] && n=$((n - $(echo "$r" | grep -c '^ValueError: test$')))  # its crash-handler test raises on purpose
-  echo "== $t: $n fails"; echo "$r" | grep -E "FAIL |Error" | head -5
-done
-for r in johto hoenn sinnoh unova kalos alola galar paldea kanto orange orre; do
-  cat $C/harness_head.py $C/reach_lib.py $C/walk_$r.py > $O/check_walk_$r.py
-  echo "walk $r: $(timeout 600 python $O/check_walk_$r.py $O 2>&1 | grep -ciE 'FAIL|Traceback') problems"
-done
+. dev/checks/suites_lib.sh
+lint   # (a suite missing from suites.txt would be left out of every set: add its line)
+sets="all"
+[ "${LONG:-0}" = 1 ] && sets="$sets tag:long"
+for r in johto hoenn sinnoh unova kalos alola galar paldea kanto orange orre; do sets="$sets walk:$r"; done
+bash $C/run_par.sh $sets
 # Android (Pydroid 3) runs Python 3.11: the game must compile there too (Jordan, 11-04)
 if py -3.11 -c "" 2>/dev/null; then
   echo "python 3.11 compile: $(py -3.11 -c "import compileall, sys; print('OK' if compileall.compile_dir('src', quiet=1, force=True) and compileall.compile_file('main.py', quiet=1, force=True) else 'FAIL')" 2>&1 | tail -3)"

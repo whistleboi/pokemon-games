@@ -1,0 +1,213 @@
+# Every check suite: name, owner (the Dev Map lane that writes and fixes it), tags. Read by run.sh / run_par.sh / run_all.sh
+# (suites_lib.sh). Checks branch, 11-24: kanto_handoff/ROADMAP_CHECKS.md.
+#   owner: main (shared engine, the hub), systems, journal, kanto (+ Sevii), johto, orange, hoenn, sinnoh, unova, orre
+#   tags (comma-separated, no spaces): helpers = joined with sub_helpers_body.py; long = left out of region:/all sets
+#          (name it to run it); quick = in the quick set; topics: maps story gates start look live3d dex canon report
+#          battle items world wild ui saves journal forms sound batch menu oneoff playthrough
+#   region:<lane> runs every suite with that owner (not the long ones) + walk:<lane>.
+#   alias <old name> <new name(s)>   keeps an old suite name working after a move (none yet)
+# New suite: add its line here (run.sh lint lists any body without one).
+
+# main
+aiswitch               main     battle
+battle2                main     battle
+battle_points          main     battle
+catch                  main     items
+doors                  main     world
+doubles                main     battle
+ds3d                   main     world
+dungeon                main     world
+events                 main     story
+exp_mode               main     battle
+faces                  main     world
+flyrule                main     world
+followers              main     world
+gym_tms                main     items
+hordes                 main     battle
+items                  main     items
+items_pp               main     items
+level_cap              main     battle
+loops                  main     story
+menus                  main     ui
+moveeffects            main     battle
+movepool               main     battle
+moves_all              main     battle
+reach_rides            main     world
+region_dex             main     story
+region_followers       main     world
+rivals                 main     story
+room_light             main     world
+rotom_forms            main     battle
+savename               main     ui
+savespot               main     world
+scaling                main     battle
+selfko                 main     battle
+slots                  main     ui,saves
+storage                main     saves,helpers
+tms_hazards            main     items
+tmshop                 main     items
+town_smash             main     world
+townsea                main     world
+ui                     main     ui
+vsseeker               main     story
+water_arrival          main     world
+
+# systems
+ambush                 systems  world,wild
+area_changes           systems  world
+battle_bg              systems  battle,look
+battle_intros          systems  battle,look
+map_attacks            systems  world
+menu_screens           systems  ui
+partners               systems  world
+walkup                 systems  world,wild
+
+# journal
+guide_exits            journal  journal
+journal_regions        journal  journal
+journal_rules          journal  journal
+quest_book             journal  journal
+quest_book_hoenn       journal  journal
+quest_book_johto       journal  journal
+quest_book_orange      journal  journal
+quest_book_orre        journal  journal
+quest_book_sinnoh      journal  journal
+
+# kanto
+canon_species          kanto    dex
+dungeon_kanto          kanto    maps
+ferry_landing          kanto    story
+frlg                   kanto    maps
+giant_volcano          kanto    story
+kanto_canon            kanto    report
+kanto_events           kanto    story
+kanto_gates            kanto    story,gates
+kanto_looks            kanto    look
+kanto_maps             kanto    maps
+kanto_played           kanto    story
+kanto_playthrough      kanto    long,playthrough
+kantostart             kanto    story,start
+rowdy_pikachu          kanto    story
+sevii                  kanto    story
+sevii_maps             kanto    maps
+yellow_kanto           kanto    story
+
+# johto
+alph                   johto    maps
+canon_species_johto    johto    dex
+dungeon_johto          johto    maps
+johto_canon            johto    maps,canon
+johto_events           johto    story
+johto_gates            johto    story,gates
+johto_live3d           johto    live3d
+johto_looks            johto    look
+johto_played           johto    story
+johto_playthrough      johto    long,playthrough
+live3d_depth           johto    live3d
+
+# orange
+canon_species_orange   orange   dex
+orange                 orange   story
+orange_canon           orange   report
+orange_events          orange   story
+orange_gates           orange   story,gates
+orange_maps            orange   maps
+orange_playthrough     orange   long,playthrough
+orange_postgame        orange   story
+orangeforms            orange   forms
+
+# hoenn
+canon_species_hoenn    hoenn    dex
+hoenn_canon            hoenn    report
+hoenn_gates            hoenn    story,gates
+hoenn_looks            hoenn    look
+hoenn_maps             hoenn    maps
+hoenn_played           hoenn    story
+hoenn_playthrough      hoenn    long,playthrough
+hoennstart             hoenn    story,start
+soaring                hoenn    world
+soaring3d              hoenn    world
+
+# sinnoh
+eterna                 sinnoh   story
+sinnoh                 sinnoh   maps
+sinnoh_gates           sinnoh   story,gates
+sinnoh_live3d          sinnoh   live3d
+sinnoh_played          sinnoh   story
+sinnoh_playthrough     sinnoh   long,playthrough
+sinnohfolk             sinnoh   maps
+sinnohstart            sinnoh   story,start
+
+# unova
+grottoes               unova    world
+gusts                  unova    world
+liberty                unova    live3d
+live3d                 unova    live3d
+royal_unova            unova    world
+unova_music            unova    sound
+unova_playthrough      unova    long,playthrough
+unovab1                unova    story,batch
+unovab2                unova    story,batch
+unovab3a               unova    story,batch
+unovab3b               unova    story,batch
+unovab4a               unova    story,batch
+unovab4b               unova    story,batch
+unovab4c               unova    story,batch
+unovab5a               unova    story,batch
+unovab5b               unova    story,batch
+unovab6a               unova    story,batch
+unovab6b               unova    story,batch
+unovab7a               unova    story,batch
+unovab7b               unova    story,batch
+unovab8a               unova    story,batch
+unovab8b               unova    story,batch
+unovab9a               unova    story,batch
+unovab9b               unova    story,batch
+unovacam               unova    live3d
+unovastart             unova    story,start
+
+# orre
+canon_species_orre     orre     dex
+orre                   orre     story,helpers
+orre_b1                orre     story,batch
+orre_b2                orre     story,batch
+orre_b3                orre     story,batch
+orre_b4                orre     story,batch
+orre_b5a               orre     story,batch
+orre_b5b               orre     story,batch
+orre_b6                orre     story,batch
+orre_b7a               orre     story,batch
+orre_b7b               orre     story,batch
+orre_b8a               orre     story,batch
+orre_b8b               orre     story,batch
+orre_b8c               orre     story,batch
+orre_b8d               orre     story,batch
+orre_maps              orre     maps
+orre_pilot             orre     story,batch
+orre_playthrough       orre     long,playthrough
+recheck_orre           orre     oneoff
+shadows                orre     forms
+
+
+
+# gone <name> <why>: a suite taken out on purpose; run.sh says why instead of failing
+gone canon1029 Jordan 11-24: "just delete canon 1029, it's very old"
+gone batch3 Jordan 11-24: old one-off suite, delete like canon1029
+gone batch4 Jordan 11-24: old one-off suite, delete like canon1029
+gone batch5 Jordan 11-24: old one-off suite, delete like canon1029
+gone batch6 Jordan 11-24: old one-off suite, delete like canon1029
+gone fixes Jordan 11-24: old one-off suite, delete like canon1029
+gone bugs2 Jordan 11-24: old one-off suite, delete like canon1029
+gone grokfix Jordan 11-24: old one-off suite, delete like canon1029
+gone answers1023 Jordan 11-24: old one-off suite, delete like canon1029
+gone blockers Jordan 11-24: old one-off suite, delete like canon1029
+gone blackfog Jordan 11-24: old one-off suite, delete like canon1029
+gone recheck Jordan 11-24: old one-off suite, delete like canon1029
+gone recheck_uk Jordan 11-24: old one-off suite, delete like canon1029
+gone features Jordan 11-24: old menu region's data suite; smoke_regions.py and walk:<region> still check it starts
+gone lumiose Jordan 11-24: old menu region's data suite; smoke_regions.py and walk:<region> still check it starts
+gone recheck_agh Jordan 11-24: old menu region's data suite; smoke_regions.py and walk:<region> still check it starts
+gone recheck_pkt Jordan 11-24: old menu region's data suite; smoke_regions.py and walk:<region> still check it starts
+gone dlc Jordan 11-24: old menu region's data suite; smoke_regions.py and walk:<region> still check it starts
+gone decolore Jordan 11-24: old menu region's data suite; smoke_regions.py and walk:<region> still check it starts
+gone sinjoh Jordan 11-24: old menu region's data suite; smoke_regions.py and walk:<region> still check it starts
