@@ -251,14 +251,20 @@ def walk_pick(st, label):
 
 
 def walk_exits(st):
-    """The places this map's ways out lead to (a town: its streets; a route: this floor's)."""
-    ex = st.exits if isinstance(st, _WL_WTS) else st.run.floor.exits
-    return set(ex.values())
+    """The places this map's ways out lead to (a town: its streets; a route: every floor's)."""
+    if isinstance(st, _WL_WTS):
+        return set(st.exits.values())
+    return {t for i in range(st.run.n_floors) for t in st.run.made(i).exits.values()}   # (every floor's: a gate's too)
 
 
 def walk_out(st, target, n=200):
     """Walk off the map by its way out to target. Returns the state you end in (the same map, with its message, if the
     way is shut)."""
+    if not isinstance(st, _WL_WTS) and target not in st.run.floor.exits.values():   # (on another floor: a gate's, a cave's)
+        for i in range(st.run.n_floors):
+            if target in st.run.made(i).exits.values():
+                st.run.enter_floor(i); walk_frames(2)
+                break
     ex = st.exits if isinstance(st, _WL_WTS) else st.run.floor.exits
     tiles = sorted(t for t, v in ex.items() if v == target)
     for t in tiles:
@@ -379,8 +385,8 @@ _WL_MAPS = {}
 def walk_map_exits(area):
     """The places a walked town's map (and its rooms) lead to, read from assets/town_maps.json without opening it; None
     if the place has no walked map of its own (a route: its exits are its route_menu's EXITs; a menu region's town)."""
+    import json as _json
     if "maps" not in _WL_MAPS:
-        import json as _json
         _d = _json.load(open("assets/town_maps.json", encoding="utf-8"))
         _WL_MAPS["maps"] = _d.get("maps", _d)
     m = _WL_MAPS["maps"].get(area)
@@ -393,7 +399,29 @@ def walk_map_exits(area):
             t = t if isinstance(t, str) else (t.get("target") if isinstance(t, dict) else None)
             if t and not t.startswith(("ROOM:", "OUT:")):
                 out.add(t)
+    import re as _re   # (and the rides its people give: Nimbasa's train to Anville - an event's "travel")
+    out |= set(_re.findall(r'"travel": "([A-Z0-9_]+)"', _json.dumps(m)))
     a = g.loader.area_data["STORY_PROGRESSION"].get(area) or {}
     out |= {o.get("target_area") for o in (a.get("travel_options") or []) + (a.get("explore_options") or [])
             if o.get("door") and o.get("target_area")}   # (through a door: a harbour's boats, the bike list)
     return out
+
+
+def walk_sign(st, text, play=False):
+    """Walk up to the sign (or panel, or slab) whose event is called text, in this town or one of its rooms, and read it.
+    Returns True if there was one to read."""
+    for room in [getattr(st, "room", None), None] + list((st.town_map.get("rooms") or {})):
+        part = (st.town_map.get("rooms") or {}).get(room) if room else st.town_map
+        hit = next((k for k, e in ((part or {}).get("sign_events") or {}).items() if e.get("text") == text), None)
+        if hit is None:
+            continue
+        if room != getattr(st, "room", None):
+            st._go(room, ""); walk_frames(2)
+        x, y = (int(v) for v in hit.split(","))
+        if not _wl_bump(st, (x, y)):
+            return False
+        walk_frames(2)
+        if play:
+            walk_play()
+        return True
+    return False

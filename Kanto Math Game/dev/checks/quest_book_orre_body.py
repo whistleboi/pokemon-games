@@ -37,7 +37,8 @@ for m in jmissions.values():
 for k in [k for k in flags if k.startswith(("visited_", "feat_", "badge_", "orre_", "xd_", "col_"))]:
     flags.pop(k, None)
 at("OUTSKIRT_STAND")
-city = CityState(g); g.change_state(city)
+exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())   # (11-24: the Journal opened from the walked town's map)
+city = walk_town(story.current_area_key, None, play=False)
 OBADGE = {"orre_m14": "PHENAC", "orre_m4c": "PYRITE", "orre_m6c": "AGATE", "orre_m10y": "SNAGEM", "orre_m10d": "GATEON",
           "orre_m17d": "KEY_LAIR", "orre_m19": "CITADARK", "orre_m20": "REALGAM"}
 OSCENE = {"orre_m2b": ["orre_wakin"],          # (the mayor sends you for Poke Balls)

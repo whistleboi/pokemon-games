@@ -368579,6 +368579,32 @@
        6,
        12
       ]
+     },
+     {
+      "who": "Prof. Ivy",
+      "trigger": "enter",
+      "condition": [
+       "orange_ivy_thanks",
+       "oak_gs_errand",
+       "not:got_gs_ball_ivy"
+      ],
+      "flag": "got_gs_ball_ivy",
+      "approach": true,
+      "after": "home",
+      "lines": [
+       "Professor Ivy: Oh! Professor Oak sent you? Then you've come for the GS Ball.",
+       "Professor Ivy: I found it here on Valencia. We've tried everything, but nobody can open it, and it won't fit any machine we have.",
+       "Professor Ivy: If anyone can work it out, it's Kurt of Azalea Town in Johto. He makes Poké Balls by hand from Apricorns."
+      ],
+      "event": {
+       "gift_item": {
+        "GS_BALL": 1
+       },
+       "flag": "got_gs_ball_ivy",
+       "lines": [
+        "Professor Ivy: Please look after it. And tell me what Kurt says!"
+       ]
+      }
      }
     ],
     "barred": [
@@ -368589,6 +368615,9 @@
         4
        ]
       ],
+      "until": {
+       "flag_condition": "got_gs_ball_ivy"
+      },
       "look": "oi_94.png",
       "lines": [
        "An odd Poké Ball with a G and an S carved on it. It won't open."

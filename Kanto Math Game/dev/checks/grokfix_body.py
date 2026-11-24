@@ -52,15 +52,10 @@ st2.rounds_completed = 0
 check(not st2._check_route_condition("can_exit", False), "wild routes still ask for their rounds")
 
 print("1.4) Silver League Plateau has exits")
-# (walked, 11-24: HGSS's Plateau is reached by Victory Road, its map's one way out; the old travel options to Mt. Silver
-#  City and the Gate are gone. That exit has no travel option, so walk_town._leave says "You can't go that way yet":
-#  sent to Johto's inbox, 11-24 - a KNOWN line until it's fixed, then a check again.)
+# (walked, 11-24: HGSS's Plateau is reached by Victory Road, its map's one way out and its one travel option now - the
+#  old ones to Mt. Silver City and the Gate are gone; Johto ccb0d791)
 _slp = walk_place("SILVER_LEAGUE_PLATEAU", "JOHTO_VICTORY_ROAD")
-check("JOHTO_VICTORY_ROAD" in walk_exits(_slp), "the Plateau's map leads back down Victory Road")
-if "JOHTO_VICTORY_ROAD" in walk_ways(_slp):
-    check(True, "...and you can leave that way")
-else:
-    print("   KNOWN the Plateau's Victory Road exit has no travel option: you can't leave (Johto's inbox, 11-24)")
+check({t for t in walk_ways(_slp) if str(t).isupper()} == {"JOHTO_VICTORY_ROAD"}, "back down Victory Road: the Plateau's way out")
 
 print("1.5) no balls: no catch screen")
 st = state_for("JOHTO_ROUTE_29")

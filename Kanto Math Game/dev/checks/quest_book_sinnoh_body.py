@@ -35,7 +35,8 @@ for m in jmissions.values():
 for k in [k for k in flags if k.startswith(("visited_", "feat_", "badge_"))] + ["received_starter_sinnoh", "defeated_rival_sinnoh_starter", "met_roark"]:
     flags.pop(k, None)
 at("TWINLEAF_TOWN")
-city = CityState(g); g.change_state(city)
+exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())   # (11-24: the Journal opened from the walked town's map)
+city = walk_town(story.current_area_key, None, play=False)
 SBADGE = {"sinnoh_m2b": "COAL", "sinnoh_m4b": "FOREST", "sinnoh_m5c": "COBBLE", "sinnoh_m6c": "FEN", "sinnoh_m8": "RELIC",
           "sinnoh_m9b": "MINE", "sinnoh_m12b": "ICICLE", "sinnoh_m14b": "BEACON"}
 SSCENE = {"sinnoh_m1": ["received_starter_sinnoh"], "sinnoh_m1b": ["defeated_rival_sinnoh_starter"], "sinnoh_m2": ["met_roark"]}
@@ -69,8 +70,8 @@ check(feats.value(story, next(f for f in ft["SINNOH"] if f["id"] == "poffins"), 
 from src.states.overworld import PlayState
 bk = next(k for k in sk if prog[k].get("berry_trees"))   # (a route's berry trees, picked from its menu, as a player would)
 at(bk); flags["has_berry_pouch"] = True; flags.pop("berries_picked_" + bk, None)
-for _ in range(5):
-    rt = PlayState(g, classic=True); g.change_state(rt); rt.action_pick_berries()
+for _ in range(5):   # (stays on the classic route screen: a walked route has no way to pick its berry_trees - the
+    rt = PlayState(g, classic=True); g.change_state(rt); rt.action_pick_berries()   # menu's button; LEGACY_MENU_AUDIT, journal's inbox 11-24)
     flags.pop("berries_picked_" + bk, None)   # (the next day)
 bp = feats.value(story, next(f for f in ft["SINNOH"] if f["id"] == "berry_picks"), "SINNOH")
 check(bp >= 10, f"Berries picked from trees count ({bp} from 5 days at {bk})")
