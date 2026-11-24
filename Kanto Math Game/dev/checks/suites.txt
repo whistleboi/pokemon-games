@@ -66,6 +66,7 @@ walkup                 systems  world,wild
 guide_exits            journal  journal
 journal_regions        journal  journal
 journal_rules          journal  journal
+journal_parts          journal  journal
 quest_book             journal  journal
 quest_book_hoenn       journal  journal
 quest_book_johto       journal  journal

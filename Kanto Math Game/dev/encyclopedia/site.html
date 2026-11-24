@@ -198,6 +198,8 @@ function monView(id) {
   let where = "", used = "";
   for (const r of Object.values(D.regions)) {
     const m = r.mons[id]; if (!m) continue;
+    if (m.gift && m.gift.length) where += frame(`Starter: ${esc(r.title)}`, ["Place", "How", "Level"], m.gift.map(g =>
+      `<tr><td>${g.p ? placeLink(g.p) : "—"}</td><td>${esc(g.how)}</td><td>${esc(g.lv)}</td></tr>`));
     if (m.wild.length) where += frame(`In the wild: ${esc(r.title)}`, ["Place", "How", "Levels", "Rate"], m.wild.map(w =>
       `<tr><td>${placeLink(w.p)}${w.form ? ` <span class="small">(${esc(w.form)})</span>` : ""}${w.after ? ` <span class="when">after ${esc(w.after)}</span>` : ""}${w.ours ? ' <span class="ours">ours</span>' : ""}</td><td><span class="how">${esc(w.how)}</span></td><td>${esc(w.lv)}</td><td class="rate">${w.rate}</td></tr>`));
     if (m.used.length) used += frame(`Trainers who use it: ${esc(r.title)}`, ["Trainer", "Where", "Level"], m.used.map(u =>

@@ -493,6 +493,34 @@ check(story.story_flags.get("oak_gs_errand") and any("Professor Ivy" in str(l) f
 said.clear()
 _t = town("PALLET_TOWN", "KANTO_ROUTE_1", room="lab"); play()
 check(not any("Professor Ivy" in str(l) for l in said), "...and only once")
+print("\n== Pokemon Yellow's starter gifts: only the two starters you didn't choose (Jordan 11-24)")
+_GIFTS = [(1, "CERULEAN_CITY", "KANTO_ROUTE_4", "house_s", "Melanie", "got_yellow_bulbasaur"),
+          (4, "KANTO_ROUTE_24", "CERULEAN_CITY", None, "Damian", "got_yellow_charmander"),
+          (7, "VERMILLION_CITY", "KANTO_ROUTE_6", None, "Officer Jenny", "got_yellow_squirtle")]
+story.story_flags["received_starter_kanto"] = True
+story.badges["KANTO"] = ["BOULDER", "CASCADE", "THUNDER"]
+for _mine in (1, 4, 7):
+    story.story_flags["starter_kanto"] = _mine
+    _got = []
+    for _pid, _area, _came, _room, _who, _flag in _GIFTS:
+        story.story_flags.pop(_flag, None)
+        team(_mine, level=20)
+        _st = town(_area, _came, room=_room) if _room or _area != "KANTO_ROUTE_24" else route(_area, _came)
+        _w = meet(_st, _who)
+        _ids = [getattr(p, "id", None) for p in story.player_team]
+        _got.append(_pid if (_pid in _ids and story.story_flags.get(_flag)) else None)
+        if _pid in _ids:
+            _m = next(p for p in story.player_team if p.id == _pid)
+            if _pid != _mine:
+                check(_m.level == 10 and len(_m.moves) == 3, f"...{_who}'s gift: Lv {_m.level}, Yellow's three moves {_m.moves}")
+    _want = [p for p in (1, 4, 7) if p != _mine]
+    check([g for g in _got if g] == _want, f"starter {_mine}: the gifts are {_want} only ({_got})")
+story.badges["KANTO"] = ["BOULDER", "CASCADE"]
+story.story_flags["starter_kanto"] = 4
+story.story_flags.pop("got_yellow_squirtle", None)
+team(4, level=20)
+_st = town("VERMILLION_CITY", "KANTO_ROUTE_6")
+check(meet(_st, "Officer Jenny") is None, "...Officer Jenny waits for the Thunder Badge")
 from src.states.game_corner import prizes_here as _ph
 story.current_area_key = "TWO_ISLAND"
 check(_ph(story) == [], "Two Island's Joyful Game Corner has no prize list of its own (FireRed: its games give Berries), not Celadon's")

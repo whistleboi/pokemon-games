@@ -6291,7 +6291,7 @@
        "battle": {
         "name": "Picnicker Diana",
         "class": "PICNICKER",
-        "sprite": "picnicker.png",
+        "sprite": "fr_picnicker.png",
         "team": [
          118
         ],
@@ -6325,7 +6325,7 @@
        "battle": {
         "name": "Swimmer Luis",
         "class": "SWIMMER",
-        "sprite": "swimmer_m.png",
+        "sprite": "fr_swimmer_m.png",
         "team": [
          116,
          90
@@ -6604,7 +6604,7 @@
      "ccccccccccc",
      "ccccccccccc",
      "...........",
-     ".....N.....",
+     ".....N..N..",
      ".....cc....",
      ".....cc....",
      "...........",
@@ -6633,6 +6633,31 @@
       "event": {
        "lines": [
         "The Bike Shop's bikes cost a fortune! I hear there's a voucher in Vermilion..."
+       ]
+      }
+     },
+     {
+      "text": "Melanie",
+      "action": "EVENT",
+      "condition": "world:kanto_lab:not_mine:1",
+      "event": {
+       "lines": [
+        "Melanie: I look after Pokémon that were hurt or left behind. This Bulbasaur is all better now.",
+        "Melanie: It wants to travel, but only with a Trainer who's kind to their Pokémon. You seem like one. Will you take it?"
+       ],
+       "gift_pokemon": 1,
+       "gift_level": 10,
+       "gift_moves": {
+        "if": "received_starter_kanto",
+        "moves": [
+         "TACKLE",
+         "GROWL",
+         "LEECH-SEED"
+        ]
+       },
+       "flag": "got_yellow_bulbasaur",
+       "done": [
+        "Melanie: How's Bulbasaur doing? I knew it'd be happy with you."
        ]
       }
      }
@@ -6757,7 +6782,7 @@
    "cccc.........)...(.....>",
    "ccc____..____c...c______",
    "ccc....................>",
-   "ccc....................>",
+   "ccc....N...............>",
    "ccc....................>",
    "ccc..........ccccccccccc",
    "ccc..........c.........>",
@@ -6808,6 +6833,31 @@
   },
   "people": [
    "TM240",
+   {
+    "text": "Damian",
+    "action": "EVENT",
+    "condition": "world:kanto_lab:not_mine:4",
+    "event": {
+     "lines": [
+      "Damian: You made it over Nugget Bridge! I've been waiting for a Trainer tough enough.",
+      "Damian: I can't raise this Charmander the way it deserves. Take it with you!"
+     ],
+     "gift_pokemon": 4,
+     "gift_level": 10,
+     "gift_moves": {
+      "if": "received_starter_kanto",
+      "moves": [
+       "SCRATCH",
+       "LEER",
+       "EMBER"
+      ]
+     },
+     "flag": "got_yellow_charmander",
+     "done": [
+      "Damian: Raise that Charmander right, and it'll be a Charizard before you know it!"
+     ]
+    }
+   },
    "{rival_name}"
   ],
   "trainer_spots": [
@@ -6923,6 +6973,10 @@
     "d": "d"
    },
    "11,37": {
+    "m": "face",
+    "d": "d"
+   },
+   "7,8": {
     "m": "face",
     "d": "d"
    },
@@ -8209,7 +8263,7 @@
    "cc~~oooo===cEccc==cFcc=....ccGc..........ccccccc",
    "ccc~~ooo==!cDccc==cDcc.....ccDccccccccccccccc!cc",
    "ccc~~ooo====......................!............>",
-   "cc~~oooo==.....................................>",
+   "cc~~oooo==..................N..................>",
    "cc~~oooo==.....................................>",
    "cc~~oooo==..........=====......ooo.....oooooooo>",
    "cc~~oooo==.ccccccc.=======.ccccooo.....oooooooo>",
@@ -8304,6 +8358,34 @@
     }
    },
    {
+    "text": "Officer Jenny",
+    "action": "EVENT",
+    "condition": [
+     "world:kanto_lab:not_mine:7",
+     "has_thunder_badge"
+    ],
+    "event": {
+     "lines": [
+      "Officer Jenny: You're the Trainer who beat Lt. Surge! Then I can trust you with this.",
+      "Officer Jenny: This Squirtle used to cause trouble around town. It needs a strong Trainer. Will you take it?"
+     ],
+     "gift_pokemon": 7,
+     "gift_level": 10,
+     "gift_moves": {
+      "if": "received_starter_kanto",
+      "moves": [
+       "TACKLE",
+       "TAIL-WHIP",
+       "BUBBLE"
+      ]
+     },
+     "flag": "got_yellow_squirtle",
+     "done": [
+      "Officer Jenny: That Squirtle's behaving itself with you. Good work!"
+     ]
+    }
+   },
+   {
     "text": "Sailor",
     "action": "EVENT",
     "event": {
@@ -8345,16 +8427,16 @@
    ]
   ],
   "inside": {
+   "22,34": "harbor",
+   "23,34": "harbor",
+   "24,34": "harbor",
    "9,6": "guru",
    "15,6": "center",
    "12,17": "fanclub",
    "19,17": "house_n",
    "29,17": "mart",
    "28,24": "house_e",
-   "14,25": "gym",
-   "22,34": "harbor",
-   "23,34": "harbor",
-   "24,34": "harbor"
+   "14,25": "gym"
   },
   "edge_to": {
    "22,0": [
@@ -8426,6 +8508,10 @@
    "25,7": {
     "m": "look",
     "d": "udlr"
+   },
+   "28,19": {
+    "m": "face",
+    "d": "d"
    }
   },
   "rooms": {
@@ -9484,6 +9570,8 @@
     "locked": {
      "KANTO_SS_ANNE": "Sailor: Boarding the S.S. Anne takes an S.S. Ticket."
     },
+    "surf": true,
+    "can_fish": true,
     "hidden": {
      "58,28": "LAVA_COOKIE"
     },
@@ -9506,9 +9594,7 @@
      }
     ],
     "theme": "room",
-    "title": "Vermilion Harbor",
-    "surf": true,
-    "can_fish": true
+    "title": "Vermilion Harbor"
    }
   },
   "surf": true,
@@ -353304,14 +353390,14 @@
      "cccccccccccccccc",
      "cccccccccccccccc",
      "cccc.cc.cc.ccccc",
-     "ccc...N....c.ccc",
+     "ccc........c.ccc",
      "c.............cc",
      "cc.............c",
      "cc.............c",
-     "cc.....c.......c",
+     "ccN....c..N....c",
      "cc............cc",
      "ccc..N..N.....cc",
-     "ccc....N...N.ccc",
+     "ccc....N..N..ccc",
      "ccc........ccccc",
      "ccc.cc...ccccccc",
      "cccccc...cc.cccc",
@@ -353328,6 +353414,7 @@
     "links": {},
     "parts": true,
     "people": [
+     "CIPHER STRAGGLER",
      "WANDERER MIROR B.",
      "SNAG SHADOW POKEMON",
      "SNAG AGAIN",
@@ -353430,7 +353517,8 @@
    "SNAG SHADOW POKEMON": 0,
    "SNAG AGAIN": 0,
    "MIROR B. AT THE CAVE": 0,
-   "WANDERER MIROR B.": 0
+   "WANDERER MIROR B.": 0,
+   "CIPHER STRAGGLER": 0
   },
   "theme": "tunnel"
  },
@@ -353443,12 +353531,12 @@
      "cccc.cc.cc.ccccc",
      "ccc........c.ccc",
      "c.............cc",
-     "cc........N....c",
      "cc.............c",
+     "cc.........N...c",
      "cc.....c.......c",
-     "cc............cc",
-     "ccc........N..cc",
-     "ccc..N..N....ccc",
+     "cc.N..........cc",
+     "ccc.N..N......cc",
+     "ccc.....N....ccc",
      "ccc........ccccc",
      "ccc.cc...ccccccc",
      "cccccc...cc.cccc",
@@ -353465,6 +353553,7 @@
     "links": {},
     "parts": true,
     "people": [
+     "CIPHER STRAGGLER",
      "WANDERER MIROR B.",
      "REPORTER POFTY",
      "DUKING AT THE ROCK",
@@ -353512,7 +353601,8 @@
   "figure_floors": {
    "DUKING AT THE ROCK": 0,
    "REPORTER POFTY": 0,
-   "WANDERER MIROR B.": 0
+   "WANDERER MIROR B.": 0,
+   "CIPHER STRAGGLER": 0
   },
   "theme": "tunnel"
  },
@@ -353524,16 +353614,16 @@
      "cccccccccccccccccc",
      "ccccccc..ccccccccc",
      "cccccc....cc..cccc",
-     "cccc........c.cccc",
+     "cccc...N....c.cccc",
      "ccc...........cccc",
-     "ccc...N........ccc",
+     "ccc.....N......ccc",
      "cc.............ccc",
      "ccc............ccc",
      "cc......c......ccc",
-     "cc.....N.........c",
+     "cc...............c",
      "c........N.....ccc",
      "ccc.............cc",
-     "ccccc........ccccc",
+     "ccccc.....N..ccccc",
      "cccc.........ccccc",
      "ccccccc.....cccccc",
      "ccccccc...cccccccc",
@@ -353549,8 +353639,8 @@
     "links": {},
     "parts": true,
     "people": [
+     "CIPHER STRAGGLER",
      "WANDERER MIROR B.",
-     "DUKING AT THE OASIS",
      {
       "text": "Snack tray",
       "action": "EVENT",
@@ -353559,7 +353649,8 @@
        "snack_tray": true,
        "lines": []
       }
-     }
+     },
+     "DUKING AT THE OASIS"
     ],
     "trainer_spots": [],
     "roofs": {
@@ -353594,7 +353685,8 @@
   ],
   "figure_floors": {
    "DUKING AT THE OASIS": 0,
-   "WANDERER MIROR B.": 0
+   "WANDERER MIROR B.": 0,
+   "CIPHER STRAGGLER": 0
   },
   "theme": "tunnel"
  },

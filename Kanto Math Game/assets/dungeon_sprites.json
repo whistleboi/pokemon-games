@@ -76,6 +76,9 @@
     ]
   },
   "figures": {
+    "CAVE_POKE_SPOT:CIPHER STRAGGLER": {"sheet": "orre_trainer_cipher_grunt.png"},
+    "OASIS_POKE_SPOT:CIPHER STRAGGLER": {"sheet": "orre_trainer_cipher_grunt.png"},
+    "ORRE_POKE_SPOTS:CIPHER STRAGGLER": {"sheet": "orre_trainer_cipher_grunt.png"},
     "HOENN_ROUTE_101:Professor Birch": {"sheet": "em_64.png"},
     "LAVARIDGE_TOWN:Flannery": {"sheet": "em_128.png"},
     "LAVARIDGE_TOWN:Black Belt": {"sheet": "em_44.png"},
@@ -8095,6 +8098,15 @@
       "sheet": "fr_49.png"
     },
     "CERULEAN_CITY:Police officer": {
+      "sheet": "fr_60.png"
+    },
+    "CERULEAN_CITY:Melanie": {
+      "sheet": "fr_23.png"
+    },
+    "KANTO_ROUTE_24:Damian": {
+      "sheet": "fr_39.png"
+    },
+    "VERMILLION_CITY:Officer Jenny": {
       "sheet": "fr_60.png"
     },
     "CERULEAN_CITY:Cave guard": {

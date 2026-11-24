@@ -119,6 +119,67 @@ def map_ways(game, area_key):
 
 
 _PARTS = {}
+_GROUPS = {}
+
+
+def place_groups(game, area_key):
+    """A walked place whose ways out don't all join (assets/journal_parts.json, made by dev/builders/journal_parts_body.py
+    with the walker's own reach; Jordan 11-24): its groups of ways out as they stand with the HMs you carry now -
+    [[[floor, x, y, area], ...], ...]. None: the place is all one (or isn't in the table)."""
+    if "table" not in _GROUPS:
+        import json, os
+        try:
+            with open(os.path.join(game.assets.assets_dir, "journal_parts.json"), encoding="utf-8") as f:
+                _GROUPS["table"] = json.load(f)
+        except (OSError, ValueError, AttributeError):
+            _GROUPS["table"] = {}
+    entry = _GROUPS["table"].get(area_key)
+    if not entry or map_ways(game, area_key) is None:
+        return None
+    inv = game.story_manager.inventory
+    held = sorted(h for h in entry.get("hms") or [] if inv.get(h, 0) > 0)
+    return (entry.get("sets") or {}).get(",".join(held))
+
+
+def good_ways(game, here, tiles, hop, nxt):
+    """Of the ways out of here (tiles: (x, y) on here's own map) to hop, a place in parts, the ones that don't land in a
+    part of hop with no way on to nxt (Pastoria's sea edge lands in Route 213's sea, which doesn't reach Valor Lakefront;
+    its gatehouse rows do). Where you land: the map's own edge pairing ("edge_to"), else the tile of hop's ground floor
+    in the same row (out by a side edge) or column (top or bottom). A way whose landing can't be told is kept. None:
+    hop isn't in parts, or nothing to drop."""
+    groups = place_groups(game, hop)
+    if not groups or not nxt:
+        return None
+    from src.states.overworld.walk_town import story_map
+    m = story_map(game, here)
+    if not isinstance(m, dict):
+        return None
+    plan = (m.get("floors") or [m])[0]
+    art = plan.get("art") or m.get("art") or []
+    H, W = len(art), len(art[0]) if art else 0
+    side = {}   # (hop's ground-floor ways back here -> leads on?)
+    for grp in groups:
+        on = any(e[3] == nxt for e in grp)
+        for e in grp:
+            if e[3] == here and e[0] == 0:
+                side[(e[1], e[2])] = on
+    if not side or all(side.values()):
+        return None
+    pairs = m.get("edge_to") or {}
+    keep = []
+    for t in tiles:
+        to = pairs.get(f"{t[0]},{t[1]}")
+        if to:
+            land = min(side, key=lambda b: abs(b[0] - to[0]) + abs(b[1] - to[1]))
+        elif t[0] in (0, W - 1):
+            land = next((b for b in side if b[1] == t[1]), None)
+        elif t[1] in (0, H - 1):
+            land = next((b for b in side if b[0] == t[0]), None)
+        else:
+            land = None
+        if land is None or side[land]:
+            keep.append(t)
+    return keep if keep and len(keep) < len(tiles) else None
 
 
 def map_parts(game, area_key):
@@ -126,6 +187,9 @@ def map_parts(game, area_key):
     east-west): [the areas each joined-up group of its rooms leads to, ...]. None: one group, or no walked map."""
     if map_ways(game, area_key) is None:
         return None
+    groups = place_groups(game, area_key)   # (a place in parts by its own floors and seas: the table, 11-24)
+    if groups:
+        return [{e[3] for e in grp} for grp in groups]
     from src.states.overworld.walk_town import story_map
     m = story_map(game, area_key)
     key = (id(m), area_key)
@@ -323,8 +387,9 @@ def neighbours(game, area_key, open_only=True, came=None):
     parts = map_parts(game, area_key) if came else None
     if parts:
         mine = [p for p in parts if came in p]
-        if len(mine) == 1:
-            return [n for n in neighbours(game, area_key, open_only) if n in mine[0]]
+        if mine:   # (every part a way in from there opens into: Mt. Coronet has two from Route 207)
+            joined = set().union(*mine)
+            return [n for n in neighbours(game, area_key, open_only) if n in joined]
     story = game.story_manager
     area = game.loader.area_data.get("STORY_PROGRESSION", {}).get(area_key, {})
     ways = map_ways(game, area_key)  # (a walked map: only where its own ways out and doors lead, not the menu's jumps)
@@ -356,14 +421,15 @@ def _avoided(game, mission=None):
     return out
 
 
-def path_to(game, start, goal, avoid=None):
+def path_to(game, start, goal, avoid=None, came=None):
     """Shortest list of areas from start to goal (both included), or None. (avoid: areas not to pass through, the
     tracked mission's own by default; ignored if there is no other way.)"""
     avoid = _avoided(game) if avoid is None else set(avoid)
     avoid -= {start, goal}
-    for skip in ((avoid, set()) if avoid else (set(),)):
+    for parts in (True, False):   # (places in parts: their own parts first; with no way at all that way, as one place -
+     for skip in ((avoid, set()) if avoid else (set(),)):   #  a door the table, made from a new game, saw shut; 11-24)
         for open_only in (True, False):  # the way you can take now, else any way
-            first = (start, None)   # (an area, and the one you came into it from)
+            first = (start, came if parts and came and map_parts(game, start) else None)   # (an area, and the one you came into it from)
             prev, q = {first: None}, deque([first])
             while q:
                 cur = q.popleft()
@@ -374,7 +440,7 @@ def path_to(game, start, goal, avoid=None):
                         cur = prev[cur]
                     return path[::-1]
                 for n in neighbours(game, cur[0], open_only, cur[1]):
-                    state = (n, cur[0] if map_parts(game, n) else None)
+                    state = (n, cur[0] if parts and map_parts(game, n) else None)
                     if state not in prev and n not in skip:
                         prev[state] = cur
                         q.append(state)
@@ -387,7 +453,7 @@ def next_hop(game, here=None):
     goal = goal_area(game)
     if not goal or goal == here:
         return None
-    path = path_to(game, here, goal)
+    path = path_to(game, here, goal, came=getattr(game.story_manager, "last_area_key", None))
     return path[1] if path and len(path) > 1 else None
 
 
@@ -421,7 +487,7 @@ def map_hop(game, targets):
     if key not in _CACHE:
         best = None
         for t in sorted(targets):
-            path = [t] if t == goal else path_to(game, t, goal)
+            path = [t] if t == goal else path_to(game, t, goal, came=here)
             if path and here not in path and (best is None or len(path) < best[0]):
                 best = (len(path), t)
         _CACHE[key] = best and best[1]
