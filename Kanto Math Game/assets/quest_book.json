@@ -89,7 +89,8 @@
       {"mission": "johto_m4", "title": "Wings Over Violet", "say": "Violet's Gym stands high above the city. Its Leader says no one has ever clipped his Pokemon's wings."}
     ]},
     {"title": "The Hive Badge", "chapters": [
-      {"mission": "johto_m5", "title": "Under the Ground", "done": {"any": ["visited_AZALEA_TOWN", "slowpoke_well_cleared"]}, "say": "South of Violet, the road dives into Union Cave. Somewhere past the dark, a sleepy town is waiting."},
+      {"mission": "johto_m5", "title": "Something Warm", "done": {"any": ["got_togepi_egg", "visited_AZALEA_TOWN", "slowpoke_well_cleared"]}, "say": "Word from the Pokemon Center: Prof. Elm's aide came all the way to Violet, and she's carrying something round and warm. She won't let anyone else hold it."},
+      {"mission": "johto_m5", "title": "Under the Ground", "when": {"any": ["got_togepi_egg", "visited_AZALEA_TOWN", "slowpoke_well_cleared"]}, "done": {"any": ["visited_AZALEA_TOWN", "slowpoke_well_cleared"]}, "say": "South of Violet, the road dives into Union Cave. Somewhere past the dark, a sleepy town is waiting."},
       {"mission": "johto_m5", "title": "The Well of Tails", "when": {"any": ["visited_AZALEA_TOWN", "slowpoke_well_cleared"]}, "say": "Azalea's Slowpoke have gone missing, and men in black stand guard at the old well. An old ball-maker named Kurt is furious."},
       {"mission": "johto_m6", "title": "The Bug Master", "say": "With the well quiet again, Azalea's Gym opens its doors. Its young Leader knows everything about Bug Pokemon... and they swarm."}
     ]},
@@ -107,7 +108,8 @@
     ]},
     {"title": "The Storm Badge", "chapters": [
       {"mission": "johto_m11", "title": "The Dancers' Trouble", "done": {"any": ["has_item:HM_SURF", "visited_CIANWOOD_CITY", "ampharos_cured"]}, "say": "Olivine's lighthouse has gone dark, and its keeper won't leave her sick Ampharos. Meanwhile, back in Ecruteak, a stranger in black is bothering the Kimono Girls."},
-      {"mission": "johto_m11", "title": "Across the Whirling Sea", "when": {"any": ["has_item:HM_SURF", "visited_CIANWOOD_CITY", "ampharos_cured"]}, "done": {"any": ["visited_CIANWOOD_CITY", "ampharos_cured"]}, "say": "Cianwood City lies across the open sea, west of Olivine. Its pharmacy makes a medicine no one else can."},
+      {"mission": "johto_m11", "title": "The Dark Tower", "when": {"any": ["has_item:HM_SURF", "jasmine_explained", "ampharos_cured"]}, "done": {"any": ["jasmine_explained", "has_item:SECRET_POTION", "ampharos_cured"]}, "say": "Olivine's lighthouse stands dark against the sea. Someone is keeping watch at the very top, and she hasn't come down in days."},
+      {"mission": "johto_m11", "title": "Across the Whirling Sea", "when": {"any": ["jasmine_explained", "has_item:SECRET_POTION", "ampharos_cured"]}, "done": {"any": ["visited_CIANWOOD_CITY", "ampharos_cured"]}, "say": "Cianwood City lies across the open sea, west of Olivine. Its pharmacy makes a medicine no one else can."},
       {"mission": "johto_m11", "title": "The Secret Potion", "when": {"any": ["visited_CIANWOOD_CITY", "ampharos_cured"]}, "done": {"any": ["has_item:SECRET_POTION", "ampharos_cured"]}, "say": "The pharmacist knows exactly what Amphy needs. He's just been waiting for someone to ask."},
       {"mission": "johto_m12", "title": "The Waterfall Fighter", "say": "Cianwood's Gym Leader trains under a waterfall, all day, every day. His Pokemon hit like falling rocks."}
     ]},
@@ -338,6 +340,48 @@
     {"title": "Champion of Sinnoh", "chapters": [
       {"mission": "sinnoh_m15", "title": "Victory Road", "say": "Eight badges. Past the waterfall, Victory Road twists through the dark, with the League at its end."},
       {"mission": "sinnoh_m15b", "title": "The Champion", "say": "{rival_name} wants one last battle. Then four of Sinnoh's strongest trainers. And at the very top, a familiar face."}
+    ]}
+  ],
+  "UNOVA": [
+    {"title": "A New Journey", "chapters": [
+      {"mission": "b2_m1", "title": "The Girl in the Green Hat", "say": "Professor Juniper's assistant is somewhere in Aspertia with a Pokemon meant for you. {rival_name} has a hunch she's up at the Outlook."}, {"mission": "b2_m1b", "title": "Bianca's Tour", "say": "Your partner has fought its first battle. Bianca waves you toward the Pokemon Center, where someone else is waiting too."},
+      {"mission": "b2_m2", "title": "A Catching Lesson", "say": "Bianca has gone on ahead through the north gate. On Route 19 she has something to show you, and the tall grass is rustling."}
+    ]},
+    {"title": "The Basic Badge", "chapters": [
+      {"mission": "b2_m3", "title": "Alder's Town", "say": "A man with wild red hair passed you on the road east. Floccesy Town is quiet, but people there know his name."},
+      {"mission": "b2_m4", "title": "Two Town Maps", "say": "{rival_name} ran off without his Town Map. Someone saw him training past Route 20, near the ranch on the hill."},
+      {"mission": "b2_m5", "title": "The Missing Herdier", "say": "The ranch owners look worried. One of their Herdier hasn't come home, and the woods to the north are thick."},
+      {"mission": "b2_m6", "title": "Alder's Training", "say": "Herdier is safe. Back in Floccesy, the old Champion is waiting with his students. He wants to see how you battle."},
+      {"mission": "b2_m7", "title": "Lessons at the School", "say": "Aspertia's Gym sits behind the Trainers' School. Its Leader used to be a challenger himself, not long ago."}
+    ]},
+    {"title": "The Toxic Badge", "chapters": [
+      {"mission": "b2_m8", "title": "Up the Steps", "say": "A Hiker has stood guard on Route 20's steps for days. With a badge in your case, he might finally step aside."},
+      {"mission": "b2_m9", "title": "The Loudest Gym in Unova", "say": "Virbank's Gym shakes with music every night. Its Leader plays bass, and her bandmates guard the stage."}
+    ]},
+    {"title": "Bound for Castelia", "chapters": [
+      {"mission": "b2_m10", "title": "A Star Is Born", "say": "A scout from Pokestar Studios has been watching you. North of Virbank, the cameras are ready to roll."},
+      {"mission": "b2_m11", "title": "Trouble at the Docks", "say": "People in strange uniforms have been seen on Virbank's pier. {rival_name} is already there, and he's furious."},
+      {"mission": "b2_m12", "title": "The Runaway Grunt", "say": "One of them slipped away west. Somewhere on Route 20, a grunt is hiding with a stolen Pokemon."},
+      {"mission": "b2_m13", "title": "The Ship to Castelia", "say": "The Gym Leader's father has his boat tied up at the pier. Across the bay, the towers of Castelia wait."}
+    ]},
+    {"title": "The Insect Badge", "chapters": [
+      {"mission": "b2_m14", "title": "The Big City", "say": "Castelia never stops moving. Somewhere up Gym Street, an artist runs a Gym full of cocoons."},
+      {"mission": "b2_m15", "title": "Iris's Hunch", "say": "The Gym Leader is out. A girl with big hair has a feeling about Thumb Pier, and she won't wait for you."},
+      {"mission": "b2_m16", "title": "Into the Sewers", "say": "{rival_name} chased a uniform down into the dark under the city. The tunnels go further than anyone thinks."},
+      {"mission": "b2_m17", "title": "Through the Cocoons", "say": "Burgh is back in his Gym, hidden behind walls of sticky silk. Push through, and find the way to him."}
+    ]},
+    {"title": "The Man in the White Coat", "chapters": [
+      {"mission": "b2_m18", "title": "Central Plaza", "say": "The fountain at the heart of Castelia draws a crowd. Today, a scientist in a white coat is watching it too."},
+      {"mission": "b2_m19", "title": "Colress Waits", "say": "Past Castelia's north gate, the road to the desert is blocked. The man in the white coat has a theory to test, and he wants you."}
+    ]},
+    {"title": "The Bolt Badge", "chapters": [
+      {"mission": "b2_m20", "title": "The City of Lights", "say": "North of Join Avenue, Nimbasa City glows day and night. Somewhere past its gates, a famous model runs the Gym."},
+      {"mission": "b2_m21", "title": "The Leader Is Out", "say": "The Gym's doors are open, but its Leader isn't home. Someone saw her heading for the roller coaster."},
+      {"mission": "b2_m22", "title": "Elesa's Runway", "say": "The lights come up one by one along the catwalk. At the end of it, Elesa waits for her audience."}
+    ]},
+    {"title": "Plasma's Secret Weapon", "chapters": [
+      {"mission": "b2_m23", "title": "Trouble at Big Stadium", "say": "Hugh's voice carries across the plaza. He's found Team Plasma, and he isn't going to let them walk away."},
+      {"mission": "b2_m24", "title": "West to Route 5", "say": "Route 5 is crowded with performers, and someone at the drawbridge is making a scene. Driftveil lies beyond it."}, {"mission": "b2_m25", "title": "Over the Drawbridge", "say": "The drawbridge is down at last. Across the river, Driftveil City waits, and so does whatever Team Plasma left behind."}
     ]}
   ]
 }

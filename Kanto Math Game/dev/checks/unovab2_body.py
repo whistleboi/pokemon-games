@@ -207,8 +207,10 @@ check(set(_tm["VIRBANK_CITY"]["rooms"]) == {"gate_w", "center", "house_ne", "nur
       "Virbank's rooms: both gates, the Center, three houses, the ship terminal, the Gym's lobby and stage")
 check(set(_tm["POKESTAR_STUDIOS"]["rooms"]) == {"studio", "studio_vfx", "theater"}, "Pokestar Studios: the soundstage, its effects room, the theater")
 _va = _tm["VIRBANK_CITY"]["art"]
-check(_va[11][11] == ";" and _va[13][11] == "." and _va[18][18] == "|" and _va[30][24] == ";",
-      "Virbank's lower level from the file's second walk layer: underpasses beneath the main street, the lane and the pier street")
+# (11-23: the canals are water, as Black 2's walk codes 0x3F / 0x44 say (batch 2 had read them as floor); the street over the
+#  north canal is a deck over it (Black 2's second walk layer); surfing beneath it comes with Surf: batch 6.)
+check(_va[7][11] == "o" and _va[14][10] == "o" and _va[11][11] == ";" and _va[18][18] == "|" and _va[30][24] == ";",
+      "Virbank's canals are water; the street crosses the north canal; the lane's and pier street's decks from the second walk layer")
 _ca = _tm["VIRBANK_COMPLEX"]["art"]
 check(all(_ca[y][8] == "|" for y in range(30, 35)) and _ca[44][23] == ";" and "m" not in "".join(_ca),
       "the Complex's raised walkways over the grass (bridges: along on top, across underneath); no counters on a route")
@@ -249,12 +251,9 @@ said.clear()
 put(25, 3, (0, -1)); step(0, -1)
 play(idle, 600)
 check(pos()[1] >= 3 and any("Auditions" in x or "pass" in x for x in said), f"no badge: the guard keeps you off the studios' road ({pos()})")
-put(11, 14, (0, -1))
-step(0, -1, 3)
-check(pos() == (11, 11) and not g.current_state.deck, f"through the underpass beneath the main street ({pos()}, deck {g.current_state.deck})")
-shot("02b_underpass")
-step(0, -1, 4)
-check(pos() == (11, 7), f"...up to the sunken stairway corner ({pos()})")
+put(11, 12, (0, 1))   # (11-23: the canal under the main street is water: you stop at its edge; surfing it, batch 6)
+step(0, 1, 2)
+check(pos() == (11, 12), f"the main street ends at the canal: water, no walking on it ({pos()})")
 put(8, 10, (1, 0))
 step(1, 0, 6)
 check(pos() == (14, 10) and g.current_state.deck, f"along the street over it ({pos()}, deck {g.current_state.deck})")
@@ -405,10 +404,15 @@ _keep = {k: flags.get(k) for k, _m in want + [("b2_sailed_castelia", None)]}
 for k in _keep:
     flags.pop(k, None)
 story.current_area_key = "VIRBANK_CITY"
+_badges = list(story.badges.get("UNOVA", []))
+story.badges["UNOVA"] = [b for b in _badges if b != "TOXIC"]   # (the badge comes with its own step: Gym missions name it, 11-23)
 for k, mid in want:
     flags[k] = True
+    if k == "b2_toxic_badge":
+        story.badges["UNOVA"].append("TOXIC")
     main = [m["id"] for m in story.get_active_missions() if m.get("type") == "MAIN"]
     check(mid in main, f"after {k}: {mid} ({main})")
+story.badges["UNOVA"] = _badges
 for k, v in _keep.items():
     if v:
         flags[k] = v

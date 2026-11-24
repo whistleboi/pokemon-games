@@ -1,4 +1,3 @@
-
 story.badges = {"UNOVA": []}
 story.inventory = {}
 story.story_flags = {"visited_NUVEMA_TOWN": True}

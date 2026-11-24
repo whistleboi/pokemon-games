@@ -1,0 +1,58 @@
+{
+ "areas": {
+  "ANVILLE_TOWN": "bg01.png",
+  "ASPERTIA_CITY": {
+   "gym": "bg03.png",
+   "leader": "bg03.png",
+   "trainer": "bg03.png",
+   "wild": "bg03.png"
+  },
+  "CASTELIA_CITY": {
+   "gym": "bg02.png",
+   "leader": "bg02.png",
+   "trainer": "bg02.png",
+   "wild": "bg02.png"
+  },
+  "CASTELIA_EMPTY_LOT": "bg02.png",
+  "CASTELIA_SEWERS": "bg09.png",
+  "DESERT_RESORT": "bg10.png",
+  "DESERT_RESORT_ENTRANCE": "bg10.png",
+  "FLOCCESY_RANCH": "bg01.png",
+  "FLOCCESY_RANCH_OUTSIDE": "bg01.png",
+  "FLOCCESY_TOWN": "bg03.png",
+  "JOIN_AVENUE": "bg09.png",
+  "LIBERTY_GARDEN": "bg00.png",
+  "LOSTLORN_FOREST": "bg06.png",
+  "NIMBASA_CITY": {
+   "gym": "bg09.png",
+   "leader": "bg09.png",
+   "trainer": "bg02.png",
+   "wild": "bg02.png"
+  },
+  "PLEDGE_GROVE": "bg06.png",
+  "POKESTAR_STUDIOS": "bg02.png",
+  "RELIC_CASTLE": "bg09.png",
+  "ROYAL_UNOVA": "bg09.png",
+  "UNOVA_ROUTE_16": "bg00.png",
+  "UNOVA_ROUTE_19": "bg01.png",
+  "UNOVA_ROUTE_20": "bg01.png",
+  "UNOVA_ROUTE_4": "bg02.png",
+  "UNOVA_ROUTE_5": "bg00.png",
+  "VIRBANK_CITY": {
+   "gym": "bg09.png",
+   "leader": "bg09.png",
+   "trainer": "bg03.png",
+   "wild": "bg03.png"
+  },
+  "VIRBANK_COMPLEX": "bg02.png",
+  "VIRBANK_COMPLEX_OUTSIDE": "bg03.png"
+ },
+ "source": "Pokemon Black 2 (US), Jordan's game file: zone header u16 0x1E bits 5-9 (CTRMapV's battleBG); the scenery in a/0/1/1 (batt_bg / batt_stage), rendered by kanto_handoff/unova_map_tools/battle_bg.py",
+ "terrain": {
+  "cave": "bg04.png",
+  "grass": "bg00.png",
+  "inside": "bg09.png",
+  "sand": "bg10.png",
+  "water": "bg08.png"
+ }
+}

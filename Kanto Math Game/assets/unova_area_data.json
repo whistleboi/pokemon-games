@@ -2,6 +2,14 @@
   "UNOVA_OLD_ROD_POOL_PERCENTAGES": {"550": 40, "118": 30, "129": 30},
   "UNOVA_GOOD_ROD_POOL_PERCENTAGES": {"550": 35, "118": 25, "592": 25, "339": 15},
   "UNOVA_SUPER_ROD_POOL_PERCENTAGES": {"550": 25, "592": 25, "594": 15, "119": 15, "223": 10, "90": 10},
+  "LOSTLORN_FOREST_SUPER_ROD_PERCENTAGES": {
+    "60": 70,
+    "550": 30
+  },
+  "LOSTLORN_FOREST_SURF_PERCENTAGES": {
+    "550": 70,
+    "418": 30
+  },
   "UNOVA_ROUTE_4_SUPER_ROD_PERCENTAGES": {
     "456": 65,
     "366": 30,
@@ -1556,44 +1564,6 @@
           "action": "SHOP"
         },
         {
-          "text": "Battle Leader Cheren",
-          "action": "EVENT",
-          "color": "GOLD",
-          "condition": "beat_alder",
-          "flag_condition": "not b2w2_cheren",
-          "event": {
-            "lines": [
-              "Cheren has opened a Gym in Aspertia City. 'A Champion visiting my Gym? Let's see how I measure up!'"
-            ],
-            "flag": "b2w2_cheren",
-            "battle": {
-              "name": "Leader Cheren",
-              "class": "GYM_LEADER",
-              "sprite": "cheren.png",
-              "team": [
-                504,
-                519,
-                506
-              ],
-              "levels": [
-                12,
-                12,
-                14
-              ],
-              "is_boss_battle": true,
-              "rewards": {
-                "balls": 15,
-                "RARE_CANDY": 1
-              },
-              "dialogue": {
-                "player_won": [
-                  "Cheren: Ha. I'm proud to have lost to you."
-                ]
-              }
-            }
-          }
-        },
-        {
           "text": "Challenge Gym",
           "action": "GYM"
         }
@@ -1869,30 +1839,16 @@
       "trainer_pool": [],
       "route_menu": [
         {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
           "text": "Floccesy Town",
           "action": "EXIT",
           "target_area": "FLOCCESY_TOWN",
-          "condition": "can_exit",
-          "color": "RED"
+          "condition": "can_exit"
         },
         {
           "text": "Aspertia City",
           "action": "EXIT",
           "target_area": "ASPERTIA_CITY",
-          "condition": "can_exit",
-          "color": "RED"
+          "condition": "can_exit"
         }
       ],
       "next_area": "FLOCCESY_TOWN",
@@ -2318,29 +2274,15 @@
       ],
       "route_menu": [
         {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
           "text": "BATTLE TRAINER",
           "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
+          "condition": "has_trainers"
         },
         {
           "text": "Ranch path",
           "action": "EXIT",
           "target_area": "FLOCCESY_RANCH_OUTSIDE",
-          "condition": "can_exit",
-          "color": "RED"
+          "condition": "can_exit"
         }
       ],
       "next_area": "FLOCCESY_RANCH_OUTSIDE",
@@ -2689,15 +2631,13 @@
           "text": "Floccesy Ranch",
           "action": "EXIT",
           "target_area": "FLOCCESY_RANCH",
-          "condition": "can_exit",
-          "color": "RED"
+          "condition": "can_exit"
         },
         {
           "text": "Route 20",
           "action": "EXIT",
           "target_area": "UNOVA_ROUTE_20",
-          "condition": "can_exit",
-          "color": "RED"
+          "condition": "can_exit"
         }
       ],
       "next_area": "FLOCCESY_RANCH",
@@ -2970,49 +2910,32 @@
       ],
       "route_menu": [
         {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
           "text": "FISH",
           "action": "FISH",
-          "condition": "can_fish",
-          "color": "ORANGE"
+          "condition": "can_fish"
         },
         {
           "text": "BATTLE TRAINER",
           "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
+          "condition": "has_trainers"
         },
         {
           "text": "Floccesy Town",
           "action": "EXIT",
           "target_area": "FLOCCESY_TOWN",
-          "condition": "can_exit",
-          "color": "RED"
+          "condition": "can_exit"
         },
         {
           "text": "Floccesy Ranch",
           "action": "EXIT",
           "target_area": "FLOCCESY_RANCH_OUTSIDE",
-          "condition": "can_exit",
-          "color": "RED"
+          "condition": "can_exit"
         },
         {
           "text": "Virbank City",
           "action": "EXIT",
           "target_area": "VIRBANK_CITY",
-          "condition": "can_exit",
-          "color": "RED"
+          "condition": "can_exit"
         },
         {
           "text": "CAVE OF BEING",
@@ -3021,8 +2944,7 @@
           "condition": [
             "can_exit",
             "beat_alder"
-          ],
-          "color": "RED"
+          ]
         }
       ],
       "next_area": "VIRBANK_CITY",
@@ -4721,29 +4643,15 @@
       ],
       "route_menu": [
         {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
           "text": "BATTLE TRAINER",
           "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
+          "condition": "has_trainers"
         },
         {
           "text": "Virbank Complex (outside)",
           "action": "EXIT",
           "target_area": "VIRBANK_COMPLEX_OUTSIDE",
-          "condition": "can_exit",
-          "color": "RED"
+          "condition": "can_exit"
         }
       ],
       "next_area": "VIRBANK_COMPLEX_OUTSIDE",
@@ -5054,30 +4962,16 @@
       "trainer_pool": [],
       "route_menu": [
         {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
           "text": "Virbank Complex",
           "action": "EXIT",
           "target_area": "VIRBANK_COMPLEX",
-          "condition": "can_exit",
-          "color": "RED"
+          "condition": "can_exit"
         },
         {
           "text": "Virbank City",
           "action": "EXIT",
           "target_area": "VIRBANK_CITY",
-          "condition": "can_exit",
-          "color": "RED"
+          "condition": "can_exit"
         }
       ],
       "next_area": "VIRBANK_COMPLEX",
@@ -5434,10 +5328,6 @@
       "has_gym": true,
       "travel_options": [
         {
-          "text": "Castelia City",
-          "target_area": "CASTELIA_CITY"
-        },
-        {
           "text": "Virbank Complex",
           "target_area": "VIRBANK_COMPLEX_OUTSIDE"
         },
@@ -5448,6 +5338,10 @@
         {
           "text": "PokéStar Studios",
           "target_area": "POKESTAR_STUDIOS"
+        },
+        {
+          "text": "Castelia City",
+          "target_area": "CASTELIA_CITY"
         }
       ],
       "explore_options": [
@@ -5458,44 +5352,6 @@
         {
           "text": "Shop",
           "action": "SHOP"
-        },
-        {
-          "text": "Battle Leader Roxie",
-          "action": "EVENT",
-          "color": "GOLD",
-          "condition": "beat_alder",
-          "flag_condition": "not b2w2_roxie",
-          "event": {
-            "lines": [
-              "Roxie: You're the Champion? Then let's make some noise!"
-            ],
-            "flag": "b2w2_roxie",
-            "battle": {
-              "name": "Leader Roxie",
-              "class": "GYM_LEADER",
-              "sprite": "roxie.png",
-              "team": [
-                109,
-                88,
-                544
-              ],
-              "levels": [
-                17,
-                17,
-                19
-              ],
-              "is_boss_battle": true,
-              "rewards": {
-                "balls": 15,
-                "RARE_CANDY": 1
-              },
-              "dialogue": {
-                "player_won": [
-                  "Roxie: Whoa, what a show! You rock!"
-                ]
-              }
-            }
-          }
         },
         {
           "text": "Challenge Gym",
@@ -6149,7 +6005,6 @@
       "route_name": "Castelia City",
       "region": "UNOVA",
       "backgrounds": {
-        "main": "castelia_city.png",
         "pokecenter": "castelia_center.png",
         "gym": "castelia_gym.png"
       },
@@ -6327,21 +6182,12 @@
           "condition": "has_insect_badge"
         },
         {
-          "text": "Pinwheel Forest",
-          "target_area": "PINWHEEL_FOREST"
-        },
-        {
           "text": "Unity Tower",
           "target_area": "UNITY_TOWER"
         },
         {
           "text": "Castelia Sewers",
           "target_area": "CASTELIA_SEWERS"
-        },
-        {
-          "text": "Liberty Garden (Ferry)",
-          "target_area": "LIBERTY_GARDEN",
-          "condition": "beat_unova_champion"
         },
         {
           "text": "Ferry to the Decolore Islands",
@@ -6351,22 +6197,18 @@
           "message": "The ferry leaves Castelia's pier for the colorful Decolore Islands."
         },
         {
-          "text": "Virbank City",
-          "target_area": "VIRBANK_CITY"
-        },
-        {
           "text": "Skyarrow Bridge",
           "target_area": "SKYARROW_BRIDGE"
+        },
+        {
+          "text": "Virbank City",
+          "target_area": "VIRBANK_CITY"
         }
       ],
       "explore_options": [
         {
           "text": "Pokémon Center",
           "action": "HEAL"
-        },
-        {
-          "text": "Department Store",
-          "action": "SHOP"
         },
         {
           "text": "Challenge Gym",
@@ -6381,25 +6223,94 @@
       "area_type": "town",
       "route_name": "Nimbasa City",
       "region": "UNOVA",
-      "backgrounds": { "main": "nimbasa_city.png", "pokecenter": "nimbasa_center.png", "gym": "nimbasa_gym.png" },
+      "backgrounds": {
+        "pokecenter": "nimbasa_center.png",
+        "gym": "nimbasa_gym.png"
+      },
       "has_gym": true,
-      "gym": {"trainers": [], "leader": {"name": "Elesa", "class": "GYM_LEADER", "sprite": "elesa.png", "team": [587, 587, 523], "levels": [28, 28, 30], "dialogue": {"intro": ["Elesa: Welcome to the stage. I'm Elesa — model and Gym Leader.", "Electric-types are fast, flashy, and relentless.", "Don't blink. This battle moves at the speed of lightning."], "player_won": ["Elesa: You were faster than my Emolga. That's the Bolt Badge.", "Here — take this. Bianca's father was blocking Route 5.", "I called him off. You're free to head to Driftveil."], "player_lost": ["Elesa: Speed and accuracy — that's all it takes.", "Come back when you've sharpened both."]}, "rewards": {"balls": 5, "TM048": 1}, "is_boss_battle": true, "badge_reward": "BOLT", "movesets": {"587": ["QUICK-ATTACK", "PURSUIT", "AERIAL-ACE", "VOLT-SWITCH"], "523": ["QUICK-ATTACK", "FLAME-CHARGE", "SPARK", "VOLT-SWITCH"]}}, "requirements": {"badges": 3, "fail_text": "Elesa is on the runway. Earn three badges to challenge the Nimbasa Gym!"}},
-      "travel_options": [
-        {"text": "Route 4", "target_area": "UNOVA_ROUTE_4"},
-        {"text": "Route 5", "target_area": "UNOVA_ROUTE_5", "condition": "has_bolt_badge"},
-        {"text": "Route 16", "target_area": "UNOVA_ROUTE_16"},
-        {"text": "Battle Subway", "target_area": "BATTLE_SUBWAY"},
-        {"text": "Join Avenue", "target_area": "JOIN_AVENUE"},
-        {"text": "Train to Anville Town", "target_area": "ANVILLE_TOWN", "condition": "beat_alder", "long_ride": true, "message": "The train heads out across the plains to Anville Town."}
-      ],
-      "explore_options": [
-        {"text": "Pokémon Center", "action": "HEAL"},
-        {"text": "Shop", "action": "SHOP"},
-        {"text": "Challenge Gym", "action": "GYM"},
-        {"text": "Ferris Wheel with N", "action": "NPC", "target": "n_nimbasa_ferris_wheel", "condition": "has_insect_badge", "flag_condition": "not met_n_nimbasa"}
-      ],
+      "gym": {
+        "requirements": {
+          "flags": [
+            "gym_trainer_NIMBASA_CITY_1",
+            "gym_trainer_NIMBASA_CITY_2",
+            "gym_trainer_NIMBASA_CITY_3"
+          ],
+          "fail_text": "The show isn't at its finale yet! Beat the Trainers waiting along the catwalk first."
+        },
+        "trainers": [],
+        "leader": {
+          "name": "Elesa",
+          "class": "GYM_LEADER",
+          "sprite": "b2_elesa.png",
+          "team": [
+            587,
+            180,
+            523
+          ],
+          "levels": [
+            28,
+            28,
+            30
+          ],
+          "movesets": {
+            "180": [
+              "VOLT-SWITCH",
+              "TAKE-DOWN",
+              "THUNDER-WAVE"
+            ],
+            "523": [
+              "VOLT-SWITCH",
+              "FLAME-CHARGE",
+              "QUICK-ATTACK",
+              "PURSUIT"
+            ],
+            "587": [
+              "VOLT-SWITCH",
+              "QUICK-ATTACK",
+              "PURSUIT"
+            ]
+          },
+          "held_items": {
+            "523": "SITRUS_BERRY"
+          },
+          "is_boss_battle": true,
+          "badge_reward": "BOLT",
+          "victory_flag": "b2_bolt_badge",
+          "rewards": {
+            "balls": 5,
+            "TM048": 1
+          },
+          "dialogue": {
+            "intro": [
+              "Elesa: Welcome to the main stage! My Pokemon and yours will see whose star shines brightest."
+            ],
+            "player_won": [
+              "Elesa: You're an even more wonderful Trainer than I expected. Your fighting style swept me off my feet!",
+              "{player_name} received the Bolt Badge from Elesa!",
+              "Elesa: And here's a move I like: Volt Switch. Hit, then trade places with another of your Pokemon."
+            ],
+            "player_lost": [
+              "Elesa: The spotlight stays on me this time. Shine brighter and come back!"
+            ]
+          }
+        }
+      },
       "next_area": "UNOVA_ROUTE_5",
-      "on_enter_event": null
+      "trainer_pool": [],
+      "travel_options": [
+        {
+          "text": "Route 5",
+          "target_area": "UNOVA_ROUTE_5"
+        },
+        {
+          "text": "Route 16",
+          "target_area": "UNOVA_ROUTE_16"
+        },
+        {
+          "text": "Join Avenue",
+          "target_area": "JOIN_AVENUE"
+        }
+      ]
     },
     "DRIFTVEIL_CITY": {
       "area_type": "town",
@@ -6744,16 +6655,597 @@
       "battle_type": "grass",
       "wild_pool_percentages": "UNOVA_LOSTLORN_FOREST_PERCENTAGES",
       "min_rounds": 2,
-      "backgrounds": { "main": "lostlorn_forest.png" },
-      "route_menu": [
-        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
-        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
-        {"text": "SEEK RAIKOU", "action": "BOSS", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not lostlorn_raikou", "boss": {"id": 243, "level": 25, "name": "Raikou", "victory_flag": "lostlorn_raikou", "lines": ["Raikou appears!"]}},
-        {"text": "SEEK ENTEI", "action": "BOSS", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not lostlorn_entei", "boss": {"id": 244, "level": 25, "name": "Entei", "victory_flag": "lostlorn_entei", "lines": ["Entei appears!"]}},
-        {"text": "SEEK SUICUNE", "action": "BOSS", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not lostlorn_suicune", "boss": {"id": 245, "level": 25, "name": "Suicune", "victory_flag": "lostlorn_suicune", "lines": ["Suicune appears!"]}},
-        {"text": "Pinwheel Forest", "action": "EXIT", "target_area": "PINWHEEL_FOREST", "condition": "can_exit", "color": "RED"},
-        {"text": "ROUTE 16", "action": "EXIT", "target": "UNOVA_ROUTE_16", "condition": "can_exit", "color": "RED"}
-      ]
+      "trainer_pool": [
+        {
+          "name": "Pokemon Breeder Galen",
+          "class": "BREEDER",
+          "sprite": "b2_breeder.png",
+          "team": [
+            520,
+            510
+          ],
+          "levels": [
+            24,
+            24
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 299
+        },
+        {
+          "name": "Pokemon Ranger Serenity",
+          "class": "RANGER",
+          "sprite": "ranger.png",
+          "team": [
+            568
+          ],
+          "levels": [
+            26
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 297
+        },
+        {
+          "name": "Pokemon Ranger Forrest",
+          "class": "RANGER",
+          "sprite": "ranger.png",
+          "team": [
+            587
+          ],
+          "levels": [
+            26
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 298
+        },
+        {
+          "name": "Veteran Murphy",
+          "class": "VETERAN",
+          "sprite": "b2_veteran.png",
+          "team": [
+            636,
+            127,
+            214,
+            542,
+            545
+          ],
+          "levels": [
+            51,
+            51,
+            51,
+            51,
+            51
+          ],
+          "rewards": {
+            "balls": 5
+          },
+          "b2_id": 142,
+          "movesets": {
+            "636": [
+              "FLAME-CHARGE",
+              "DOUBLE-EDGE",
+              "WILD-CHARGE",
+              "ACROBATICS"
+            ],
+            "127": [
+              "X-SCISSOR",
+              "BRICK-BREAK",
+              "BULLDOZE",
+              "BULK-UP"
+            ],
+            "214": [
+              "AERIAL-ACE",
+              "BRICK-BREAK",
+              "ROCK-SLIDE",
+              "SWORDS-DANCE"
+            ],
+            "542": [
+              "X-SCISSOR",
+              "LEAF-BLADE",
+              "SHADOW-CLAW",
+              "SWORDS-DANCE"
+            ],
+            "545": [
+              "X-SCISSOR",
+              "POISON-JAB",
+              "ROCK-SLIDE",
+              "SWORDS-DANCE"
+            ]
+          }
+        }
+      ],
+      "wild_tables": {
+        "ALL": {
+          "grass": [
+            [
+              546,
+              0,
+              10.0,
+              21,
+              21
+            ],
+            [
+              548,
+              0,
+              10.0,
+              21,
+              21
+            ],
+            [
+              541,
+              0,
+              20,
+              21,
+              21
+            ],
+            [
+              415,
+              0,
+              10,
+              22,
+              22
+            ],
+            [
+              543,
+              0,
+              10,
+              21,
+              21
+            ],
+            [
+              315,
+              0,
+              10,
+              23,
+              23
+            ],
+            [
+              543,
+              0,
+              10,
+              21,
+              21
+            ],
+            [
+              315,
+              0,
+              5,
+              24,
+              24
+            ],
+            [
+              214,
+              0,
+              2.5,
+              24,
+              24
+            ],
+            [
+              127,
+              0,
+              2.5,
+              24,
+              24
+            ],
+            [
+              546,
+              0,
+              2.0,
+              23,
+              23
+            ],
+            [
+              548,
+              0,
+              2.0,
+              23,
+              23
+            ],
+            [
+              541,
+              0,
+              4,
+              24,
+              24
+            ],
+            [
+              546,
+              0,
+              0.5,
+              24,
+              24
+            ],
+            [
+              548,
+              0,
+              0.5,
+              24,
+              24
+            ],
+            [
+              541,
+              0,
+              1,
+              24,
+              24
+            ]
+          ],
+          "dark": [
+            [
+              546,
+              0,
+              10.0,
+              23,
+              23
+            ],
+            [
+              548,
+              0,
+              10.0,
+              23,
+              23
+            ],
+            [
+              541,
+              0,
+              20,
+              23,
+              23
+            ],
+            [
+              415,
+              0,
+              10,
+              24,
+              24
+            ],
+            [
+              544,
+              0,
+              10,
+              23,
+              23
+            ],
+            [
+              315,
+              0,
+              10,
+              25,
+              25
+            ],
+            [
+              544,
+              0,
+              10,
+              23,
+              23
+            ],
+            [
+              315,
+              0,
+              5,
+              26,
+              26
+            ],
+            [
+              214,
+              0,
+              2.5,
+              26,
+              26
+            ],
+            [
+              127,
+              0,
+              2.5,
+              26,
+              26
+            ],
+            [
+              546,
+              0,
+              2.0,
+              25,
+              25
+            ],
+            [
+              548,
+              0,
+              2.0,
+              25,
+              25
+            ],
+            [
+              541,
+              0,
+              4,
+              26,
+              26
+            ],
+            [
+              546,
+              0,
+              0.5,
+              26,
+              26
+            ],
+            [
+              548,
+              0,
+              0.5,
+              26,
+              26
+            ],
+            [
+              541,
+              0,
+              1,
+              26,
+              26
+            ]
+          ],
+          "rustle": [
+            [
+              531,
+              0,
+              20,
+              21,
+              21
+            ],
+            [
+              531,
+              0,
+              20,
+              23,
+              23
+            ],
+            [
+              587,
+              0,
+              10,
+              22,
+              22
+            ],
+            [
+              511,
+              0,
+              10,
+              22,
+              22
+            ],
+            [
+              513,
+              0,
+              10,
+              22,
+              22
+            ],
+            [
+              515,
+              0,
+              10,
+              22,
+              22
+            ],
+            [
+              416,
+              0,
+              5,
+              24,
+              24
+            ],
+            [
+              407,
+              0,
+              5,
+              24,
+              24
+            ],
+            [
+              542,
+              0,
+              4,
+              24,
+              24
+            ],
+            [
+              547,
+              0,
+              2.0,
+              24,
+              24
+            ],
+            [
+              549,
+              0,
+              2.0,
+              24,
+              24
+            ],
+            [
+              542,
+              0,
+              1,
+              24,
+              24
+            ],
+            [
+              547,
+              0,
+              0.5,
+              24,
+              24
+            ],
+            [
+              549,
+              0,
+              0.5,
+              24,
+              24
+            ]
+          ],
+          "surf": [
+            [
+              550,
+              0,
+              60,
+              10,
+              25
+            ],
+            [
+              418,
+              0,
+              30,
+              10,
+              25
+            ],
+            [
+              550,
+              0,
+              5,
+              10,
+              25
+            ],
+            [
+              550,
+              0,
+              4,
+              10,
+              25
+            ],
+            [
+              550,
+              0,
+              1,
+              10,
+              25
+            ]
+          ],
+          "ripple": [
+            [
+              418,
+              0,
+              60,
+              10,
+              30
+            ],
+            [
+              550,
+              1,
+              30,
+              10,
+              30
+            ],
+            [
+              419,
+              0,
+              5,
+              10,
+              30
+            ],
+            [
+              419,
+              0,
+              4,
+              10,
+              30
+            ],
+            [
+              419,
+              0,
+              1,
+              10,
+              30
+            ]
+          ],
+          "fish": [
+            [
+              60,
+              0,
+              60,
+              40,
+              60
+            ],
+            [
+              550,
+              0,
+              30,
+              40,
+              60
+            ],
+            [
+              60,
+              0,
+              5,
+              50,
+              70
+            ],
+            [
+              60,
+              0,
+              4,
+              50,
+              70
+            ],
+            [
+              60,
+              0,
+              1,
+              50,
+              70
+            ]
+          ],
+          "fish_ripple": [
+            [
+              61,
+              0,
+              60,
+              40,
+              60
+            ],
+            [
+              550,
+              1,
+              30,
+              40,
+              60
+            ],
+            [
+              61,
+              0,
+              5,
+              50,
+              70
+            ],
+            [
+              186,
+              0,
+              4,
+              50,
+              70
+            ],
+            [
+              186,
+              0,
+              1,
+              50,
+              70
+            ]
+          ]
+        }
+      },
+      "wild_levels": {
+        "land": [
+          21,
+          24
+        ]
+      },
+      "surf_pool_percentages": "LOSTLORN_FOREST_SURF_PERCENTAGES"
     },
     "CASTELIA_SEWERS": {
       "area_type": "dungeon",
@@ -6762,10 +7254,6 @@
       "battle_type": "indoor",
       "wild_pool_percentages": "UNOVA_CASTELIA_SEWERS_PERCENTAGES",
       "min_rounds": 2,
-      "backgrounds": {
-        "main": "castelia_sewers.png",
-        "battle": "battle_castelia_sewers.png"
-      },
       "trainer_pool": [
         {
           "name": "Janitor Felix",
@@ -6928,43 +7416,27 @@
       ],
       "route_menu": [
         {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
           "text": "BATTLE TRAINER",
           "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
+          "condition": "has_trainers"
         },
         {
           "text": "Castelia City",
           "action": "EXIT",
           "target_area": "CASTELIA_CITY",
-          "condition": "can_exit",
-          "color": "RED"
+          "condition": "can_exit"
         },
         {
           "text": "The Empty Lot",
           "action": "EXIT",
           "target_area": "CASTELIA_EMPTY_LOT",
-          "condition": "can_exit",
-          "color": "RED"
+          "condition": "can_exit"
         },
         {
           "text": "Relic Passage",
           "action": "EXIT",
           "target_area": "RELIC_PASSAGE",
-          "condition": "can_exit",
-          "color": "RED"
+          "condition": "can_exit"
         }
       ],
       "next_area": "CASTELIA_CITY",
@@ -7224,23 +7696,10 @@
       "trainer_pool": [],
       "route_menu": [
         {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
           "text": "Castelia Sewers",
           "action": "EXIT",
           "target_area": "CASTELIA_SEWERS",
-          "condition": "can_exit",
-          "color": "RED"
+          "condition": "can_exit"
         }
       ],
       "next_area": "CASTELIA_SEWERS",
@@ -7632,36 +8091,18 @@
       "battle_type": "field",
       "wild_pool_percentages": "UNOVA_DESERT_RESORT_PERCENTAGES",
       "min_rounds": 2,
-      "backgrounds": {
-        "main": "desert_resort.png",
-        "battle": "battle_desert_resort.png"
-      },
       "route_menu": [
-        {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
         {
           "text": "Relic Castle",
           "action": "EXIT",
           "target_area": "RELIC_CASTLE",
-          "condition": "can_exit",
-          "color": "GOLD"
+          "condition": "can_exit"
         },
         {
           "text": "Desert entrance",
           "action": "EXIT",
           "target_area": "DESERT_RESORT_ENTRANCE",
-          "condition": "can_exit",
-          "color": "RED"
+          "condition": "can_exit"
         }
       ],
       "weather": "SAND",
@@ -7889,30 +8330,16 @@
       "trainer_pool": [],
       "route_menu": [
         {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
           "text": "Desert Resort",
           "action": "EXIT",
           "target_area": "DESERT_RESORT",
-          "condition": "can_exit",
-          "color": "GOLD"
+          "condition": "can_exit"
         },
         {
           "text": "Route 4",
           "action": "EXIT",
           "target_area": "UNOVA_ROUTE_4",
-          "condition": "can_exit",
-          "color": "RED"
+          "condition": "can_exit"
         }
       ],
       "next_area": "DESERT_RESORT",
@@ -8020,10 +8447,6 @@
       "battle_type": "cave",
       "wild_pool_percentages": "UNOVA_RELIC_CASTLE_PERCENTAGES",
       "min_rounds": 3,
-      "backgrounds": {
-        "main": "relic_castle.png",
-        "battle": "battle_relic_castle.png"
-      },
       "trainer_pool": [
         {
           "name": "Psychic Perry",
@@ -8042,23 +8465,10 @@
       ],
       "route_menu": [
         {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
           "text": "Desert Resort",
           "action": "EXIT",
           "target_area": "DESERT_RESORT",
-          "condition": "can_exit",
-          "color": "RED"
+          "condition": "can_exit"
         },
         {
           "text": "DRIFTVEIL CITY",
@@ -8067,15 +8477,13 @@
           "condition": [
             "can_exit",
             "has_bolt_badge"
-          ],
-          "color": "RED"
+          ]
         },
         {
           "text": "Relic Passage",
           "action": "EXIT",
           "target_area": "RELIC_PASSAGE",
-          "condition": "can_exit",
-          "color": "RED"
+          "condition": "can_exit"
         }
       ],
       "area_boss": {
@@ -8474,21 +8882,6 @@
       ],
       "area_boss": { "id": 648, "name": "Meloetta", "victory_flag": "UNITY_TOWER_boss_defeated" }
     },
-    "BATTLE_SUBWAY": {
-      "area_type": "dungeon",
-      "route_name": "Battle Subway",
-      "region": "UNOVA",
-      "battle_type": "indoor",
-      "wild_pool_percentages": null,
-      "min_rounds": 0,
-      "backgrounds": { "main": "battle_subway.png" },
-      "route_menu": [
-        { "text": "CHALLENGE SUBWAY", "action": "TRAINER", "condition": "has_trainers", "color": "GOLD" },
-        { "text": "EXCHANGE: ITEMS", "action": "BP_SHOP", "shop": "b2w2_items", "color": "BLUE" },
-        { "text": "EXCHANGE: TMs", "action": "BP_SHOP", "shop": "b2w2_tms", "color": "BLUE" },
-        { "text": "Nimbasa City", "action": "EXIT", "target_area": "NIMBASA_CITY", "condition": "can_exit", "color": "RED" }
-      ]
-    },
     "UNOVA_ROUTE_1": {
       "area_type": "wild_route",
       "route_name": "Route 1",
@@ -8787,6 +9180,9 @@
           ]
         },
         {
+          "battle_options": {
+            "double": true
+          },
           "name": "Hooligans Rob & Sal",
           "class": "HOOLIGANS",
           "sprite": "b2_hooligans.png",
@@ -8825,6 +9221,9 @@
           ]
         },
         {
+          "battle_options": {
+            "double": true
+          },
           "name": "Twins Tara & Val",
           "class": "TWINS",
           "sprite": "twins.png",
@@ -8954,44 +9353,22 @@
       ],
       "route_menu": [
         {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
           "text": "Castelia City",
           "action": "EXIT",
           "target_area": "CASTELIA_CITY",
-          "condition": "can_exit",
-          "color": "RED"
-        },
-        {
-          "text": "Nimbasa City",
-          "action": "EXIT",
-          "target_area": "NIMBASA_CITY",
-          "condition": "can_exit",
-          "color": "RED"
+          "condition": "can_exit"
         },
         {
           "text": "JOIN AVENUE",
           "action": "EXIT",
           "target": "JOIN_AVENUE",
-          "condition": "can_exit",
-          "color": "RED"
+          "condition": "can_exit"
         },
         {
           "text": "Desert Resort",
           "action": "EXIT",
           "target_area": "DESERT_RESORT_ENTRANCE",
-          "condition": "can_exit",
-          "color": "GOLD"
+          "condition": "can_exit"
         }
       ],
       "next_area": "NIMBASA_CITY",
@@ -9052,7 +9429,8 @@
           },
           "condition": [
             "has_insect_badge",
-            "not:has_bolt_badge"
+            "not:has_bolt_badge",
+            "friend:cheren"
           ],
           "flag_check": "defeated_cheren_route4"
         },
@@ -9111,7 +9489,8 @@
           },
           "condition": [
             "has_insect_badge",
-            "not:has_bolt_badge"
+            "not:has_bolt_badge",
+            "friend:bianca"
           ],
           "flag_check": "defeated_bianca_route4"
         }
@@ -9406,30 +9785,643 @@
       "min_rounds": 2,
       "trainer_pool": [
         {
-          "name": "Musician Preston",
-          "class": "GENTLEMAN",
-          "sprite": "gentleman.png",
-          "team": [572, 587],
-          "rewards": { "balls": 2 }
+          "name": "Baker Jenn",
+          "class": "BAKER",
+          "sprite": "b2_baker.png",
+          "team": [
+            191,
+            415
+          ],
+          "levels": [
+            24,
+            24
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 253
         },
         {
-          "name": "Janitor Melvin",
-          "class": "SAILOR",
-          "sprite": "sailor.png",
-          "team": [568, 569],
-          "rewards": { "balls": 2 }
+          "name": "Dancer Brian",
+          "class": "DANCER",
+          "sprite": "b2_dancer.png",
+          "team": [
+            559
+          ],
+          "levels": [
+            25
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 255
+        },
+        {
+          "name": "Backers Ava & Aya",
+          "class": "BACKERS",
+          "sprite": "backers.png",
+          "team": [
+            572,
+            572
+          ],
+          "levels": [
+            24,
+            24
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 252,
+          "battle_options": {
+            "double": true
+          }
+        },
+        {
+          "name": "Artist Horton",
+          "class": "ARTIST",
+          "sprite": "pt_artist.png",
+          "team": [
+            561
+          ],
+          "levels": [
+            25
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 254
+        },
+        {
+          "name": "Pokemon Ranger Lois",
+          "class": "RANGER",
+          "sprite": "ranger.png",
+          "team": [
+            406,
+            315
+          ],
+          "levels": [
+            25,
+            25
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 293
+        },
+        {
+          "name": "Motorcyclist Charles",
+          "class": "MOTORCYCLIST",
+          "sprite": "b2_motorcyclist.png",
+          "team": [
+            561,
+            564,
+            566
+          ],
+          "levels": [
+            26,
+            26,
+            26
+          ],
+          "rewards": {
+            "balls": 4
+          },
+          "b2_id": 339,
+          "battle_options": {
+            "double": true
+          },
+          "when_flags": [
+            "unova_version:BLACK_2"
+          ]
+        },
+        {
+          "name": "Motorcyclist Charles",
+          "class": "MOTORCYCLIST",
+          "sprite": "b2_motorcyclist.png",
+          "team": [
+            564,
+            561,
+            566
+          ],
+          "levels": [
+            26,
+            26,
+            26
+          ],
+          "rewards": {
+            "balls": 4
+          },
+          "b2_id": 340,
+          "battle_options": {
+            "double": true
+          },
+          "when_flags": [
+            "unova_version:WHITE_2"
+          ]
         }
       ],
-      "route_menu": [
-        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
-        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
-        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
-        {"text": "Nimbasa City", "action": "EXIT", "target_area": "NIMBASA_CITY", "condition": "can_exit", "color": "RED"},
-        {"text": "Driftveil City", "action": "EXIT", "target_area": "DRIFTVEIL_CITY", "condition": "can_exit", "color": "RED"},
-        {"text": "DRIFTVEIL DRAWBRIDGE", "action": "EXIT", "target": "DRIFTVEIL_DRAWBRIDGE", "condition": "can_exit", "color": "RED"}
-      ],
       "next_area": "DRIFTVEIL_CITY",
-        "on_enter_event": {"type": "trainer_battle", "trainer": {"who": "cheren", "class": "PKMN_TRAINER", "team": [510, 511, 520, 499], "team_choice": {"495": [510, 511, 520, 499], "498": [510, 513, 520, 502], "501": [510, 515, 520, 496]}, "levels": [24, 24, 24, 26], "is_boss_battle": true, "rewards": {"balls": 5}, "dialogue": {"intro": ["Cheren: I want to know what it means to be strong. Battle me again!"], "player_won": ["Cheren: ...I'm still looking for the answer."], "player_lost": ["Better luck next time!"]}}, "condition": ["has_bolt_badge", "not:has_quake_badge"], "flag_check": "defeated_cheren_route5"}
+      "on_enter_event": [
+        {
+          "type": "trainer_battle",
+          "trainer": {
+            "who": "cheren",
+            "class": "PKMN_TRAINER",
+            "team": [
+              510,
+              511,
+              520,
+              499
+            ],
+            "team_choice": {
+              "495": [
+                510,
+                511,
+                520,
+                499
+              ],
+              "498": [
+                510,
+                513,
+                520,
+                502
+              ],
+              "501": [
+                510,
+                515,
+                520,
+                496
+              ]
+            },
+            "levels": [
+              24,
+              24,
+              24,
+              26
+            ],
+            "is_boss_battle": true,
+            "rewards": {
+              "balls": 5
+            },
+            "dialogue": {
+              "intro": [
+                "Cheren: I want to know what it means to be strong. Battle me again!"
+              ],
+              "player_won": [
+                "Cheren: ...I'm still looking for the answer."
+              ],
+              "player_lost": [
+                "Better luck next time!"
+              ]
+            }
+          },
+          "condition": [
+            "b2_nimbasa_plasma",
+            "not:b2_charles",
+            "friend:cheren"
+          ],
+          "flag_check": "defeated_cheren_route5"
+        },
+        {
+          "type": "trainer_battle",
+          "trainer": {
+            "who": "bianca",
+            "class": "PKMN_TRAINER",
+            "team": [
+              507,
+              513,
+              517,
+              502
+            ],
+            "team_choice": {
+              "495": [
+                507,
+                513,
+                517,
+                502
+              ],
+              "498": [
+                507,
+                515,
+                517,
+                496
+              ],
+              "501": [
+                507,
+                511,
+                517,
+                499
+              ]
+            },
+            "levels": [
+              22,
+              22,
+              22,
+              24
+            ],
+            "is_boss_battle": true,
+            "rewards": {
+              "balls": 5
+            },
+            "dialogue": {
+              "intro": [
+                "Bianca: {player_name}! Wait up! Before the drawbridge, let's battle! I want to see how far we've both come!"
+              ],
+              "player_won": [
+                "Bianca: Wow... You and your Pokemon are so in sync!"
+              ],
+              "player_lost": [
+                "Bianca: Yay! We did it!"
+              ]
+            }
+          },
+          "condition": [
+            "b2_nimbasa_plasma",
+            "not:b2_charles",
+            "friend:bianca"
+          ],
+          "flag_check": "defeated_bianca_route5"
+        }
+      ],
+      "wild_tables": {
+        "ALL": {
+          "grass": [
+            [
+              574,
+              0,
+              10.0,
+              21,
+              21
+            ],
+            [
+              577,
+              0,
+              10.0,
+              21,
+              21
+            ],
+            [
+              572,
+              0,
+              20,
+              21,
+              21
+            ],
+            [
+              568,
+              0,
+              10,
+              21,
+              21
+            ],
+            [
+              568,
+              0,
+              5.0,
+              23,
+              23
+            ],
+            [
+              572,
+              0,
+              5.0,
+              23,
+              23
+            ],
+            [
+              510,
+              0,
+              10,
+              22,
+              22
+            ],
+            [
+              510,
+              0,
+              10,
+              24,
+              24
+            ],
+            [
+              572,
+              0,
+              2.5,
+              22,
+              22
+            ],
+            [
+              568,
+              0,
+              2.5,
+              22,
+              22
+            ],
+            [
+              574,
+              0,
+              2.5,
+              22,
+              22
+            ],
+            [
+              577,
+              0,
+              2.5,
+              22,
+              22
+            ],
+            [
+              572,
+              0,
+              2.0,
+              23,
+              23
+            ],
+            [
+              568,
+              0,
+              2.0,
+              23,
+              23
+            ],
+            [
+              574,
+              0,
+              2.0,
+              23,
+              23
+            ],
+            [
+              577,
+              0,
+              2.0,
+              23,
+              23
+            ],
+            [
+              572,
+              0,
+              0.5,
+              24,
+              24
+            ],
+            [
+              568,
+              0,
+              0.5,
+              24,
+              24
+            ],
+            [
+              574,
+              0,
+              0.5,
+              24,
+              24
+            ],
+            [
+              577,
+              0,
+              0.5,
+              24,
+              24
+            ]
+          ],
+          "dark": [
+            [
+              574,
+              0,
+              10.0,
+              23,
+              23
+            ],
+            [
+              577,
+              0,
+              10.0,
+              23,
+              23
+            ],
+            [
+              572,
+              0,
+              20,
+              23,
+              23
+            ],
+            [
+              568,
+              0,
+              10,
+              23,
+              23
+            ],
+            [
+              568,
+              0,
+              5.0,
+              25,
+              25
+            ],
+            [
+              572,
+              0,
+              5.0,
+              25,
+              25
+            ],
+            [
+              510,
+              0,
+              10,
+              24,
+              24
+            ],
+            [
+              510,
+              0,
+              10,
+              26,
+              26
+            ],
+            [
+              572,
+              0,
+              2.5,
+              24,
+              24
+            ],
+            [
+              568,
+              0,
+              2.5,
+              24,
+              24
+            ],
+            [
+              574,
+              0,
+              2.5,
+              24,
+              24
+            ],
+            [
+              577,
+              0,
+              2.5,
+              24,
+              24
+            ],
+            [
+              572,
+              0,
+              2.0,
+              25,
+              25
+            ],
+            [
+              568,
+              0,
+              2.0,
+              25,
+              25
+            ],
+            [
+              574,
+              0,
+              2.0,
+              25,
+              25
+            ],
+            [
+              577,
+              0,
+              2.0,
+              25,
+              25
+            ],
+            [
+              572,
+              0,
+              0.5,
+              26,
+              26
+            ],
+            [
+              568,
+              0,
+              0.5,
+              26,
+              26
+            ],
+            [
+              574,
+              0,
+              0.5,
+              26,
+              26
+            ],
+            [
+              577,
+              0,
+              0.5,
+              26,
+              26
+            ]
+          ],
+          "rustle": [
+            [
+              531,
+              0,
+              20,
+              21,
+              21
+            ],
+            [
+              531,
+              0,
+              20,
+              21,
+              21
+            ],
+            [
+              587,
+              0,
+              10,
+              22,
+              22
+            ],
+            [
+              531,
+              0,
+              10,
+              22,
+              22
+            ],
+            [
+              531,
+              0,
+              10,
+              23,
+              23
+            ],
+            [
+              531,
+              0,
+              10,
+              23,
+              23
+            ],
+            [
+              531,
+              0,
+              5,
+              24,
+              24
+            ],
+            [
+              531,
+              0,
+              5,
+              24,
+              24
+            ],
+            [
+              573,
+              0,
+              4,
+              24,
+              24
+            ],
+            [
+              531,
+              0,
+              4,
+              24,
+              24
+            ],
+            [
+              573,
+              0,
+              1,
+              24,
+              24
+            ],
+            [
+              531,
+              0,
+              1,
+              24,
+              24
+            ]
+          ]
+        }
+      },
+      "wild_levels": {
+        "land": [
+          21,
+          24
+        ]
+      }
     },
     "UNOVA_ROUTE_6": {
       "area_type": "wild_route",
@@ -10263,23 +11255,482 @@
       "min_rounds": 2,
       "trainer_pool": [
         {
-          "name": "Biker Zigzag",
-          "class": "BIKER",
-          "sprite": "biker.png",
-          "team": [509, 510],
-          "rewards": { "balls": 2 }
+          "name": "Backers Stu & Art",
+          "class": "BACKERS",
+          "sprite": "backers.png",
+          "team": [
+            559,
+            559
+          ],
+          "levels": [
+            24,
+            24
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 257,
+          "battle_options": {
+            "double": true
+          }
+        },
+        {
+          "name": "Cyclist Krissa",
+          "class": "CYCLIST",
+          "sprite": "pt_cyclist_f.png",
+          "team": [
+            544
+          ],
+          "levels": [
+            25
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 261
+        },
+        {
+          "name": "Cyclist Hector",
+          "class": "CYCLIST",
+          "sprite": "pt_cyclist_m.png",
+          "team": [
+            520
+          ],
+          "levels": [
+            25
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 260
+        },
+        {
+          "name": "Backpacker Blossom",
+          "class": "BACKPACKER",
+          "sprite": "backpacker.png",
+          "team": [
+            510
+          ],
+          "levels": [
+            25
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 259
+        },
+        {
+          "name": "Backpacker Ivan",
+          "class": "BACKPACKER",
+          "sprite": "backpacker.png",
+          "team": [
+            505
+          ],
+          "levels": [
+            25
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 258
+        },
+        {
+          "name": "Depot Agent Hank",
+          "class": "DEPOT_AGENT",
+          "sprite": "b2_depot_agent.png",
+          "team": [
+            529
+          ],
+          "levels": [
+            25
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 262
         }
       ],
-      "route_menu": [
-        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
-        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
-        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
-        {"text": "Nimbasa City", "action": "EXIT", "target_area": "NIMBASA_CITY", "condition": "can_exit", "color": "RED"},
-        {"text": "Route 15", "action": "EXIT", "target_area": "UNOVA_ROUTE_15", "condition": ["can_exit", "visited_UNOVA_ROUTE_15"], "color": "RED"},
-        {"text": "Marvelous Bridge", "action": "EXIT", "target_area": "MARVELOUS_BRIDGE", "condition": ["can_exit", "beat_unova_champion"], "color": "RED"},
-        {"text": "LOSTLORN FOREST", "action": "EXIT", "target": "LOSTLORN_FOREST", "condition": "can_exit", "color": "RED"}
-      ],
-      "next_area": "NIMBASA_CITY"
+      "next_area": "NIMBASA_CITY",
+      "wild_tables": {
+        "ALL": {
+          "grass": [
+            [
+              574,
+              0,
+              10.0,
+              21,
+              21
+            ],
+            [
+              577,
+              0,
+              10.0,
+              21,
+              21
+            ],
+            [
+              572,
+              0,
+              20,
+              21,
+              21
+            ],
+            [
+              568,
+              0,
+              10,
+              21,
+              21
+            ],
+            [
+              568,
+              0,
+              5.0,
+              23,
+              23
+            ],
+            [
+              572,
+              0,
+              5.0,
+              23,
+              23
+            ],
+            [
+              510,
+              0,
+              10,
+              22,
+              22
+            ],
+            [
+              510,
+              0,
+              10,
+              24,
+              24
+            ],
+            [
+              572,
+              0,
+              2.5,
+              22,
+              22
+            ],
+            [
+              568,
+              0,
+              2.5,
+              22,
+              22
+            ],
+            [
+              574,
+              0,
+              2.5,
+              22,
+              22
+            ],
+            [
+              577,
+              0,
+              2.5,
+              22,
+              22
+            ],
+            [
+              572,
+              0,
+              2.0,
+              23,
+              23
+            ],
+            [
+              568,
+              0,
+              2.0,
+              23,
+              23
+            ],
+            [
+              574,
+              0,
+              2.0,
+              23,
+              23
+            ],
+            [
+              577,
+              0,
+              2.0,
+              23,
+              23
+            ],
+            [
+              572,
+              0,
+              0.5,
+              24,
+              24
+            ],
+            [
+              568,
+              0,
+              0.5,
+              24,
+              24
+            ],
+            [
+              574,
+              0,
+              0.5,
+              24,
+              24
+            ],
+            [
+              577,
+              0,
+              0.5,
+              24,
+              24
+            ]
+          ],
+          "dark": [
+            [
+              574,
+              0,
+              10.0,
+              23,
+              23
+            ],
+            [
+              577,
+              0,
+              10.0,
+              23,
+              23
+            ],
+            [
+              572,
+              0,
+              20,
+              23,
+              23
+            ],
+            [
+              568,
+              0,
+              10,
+              23,
+              23
+            ],
+            [
+              568,
+              0,
+              5.0,
+              25,
+              25
+            ],
+            [
+              572,
+              0,
+              5.0,
+              25,
+              25
+            ],
+            [
+              510,
+              0,
+              10,
+              24,
+              24
+            ],
+            [
+              510,
+              0,
+              10,
+              26,
+              26
+            ],
+            [
+              572,
+              0,
+              2.5,
+              24,
+              24
+            ],
+            [
+              568,
+              0,
+              2.5,
+              24,
+              24
+            ],
+            [
+              574,
+              0,
+              2.5,
+              24,
+              24
+            ],
+            [
+              577,
+              0,
+              2.5,
+              24,
+              24
+            ],
+            [
+              572,
+              0,
+              2.0,
+              25,
+              25
+            ],
+            [
+              568,
+              0,
+              2.0,
+              25,
+              25
+            ],
+            [
+              574,
+              0,
+              2.0,
+              25,
+              25
+            ],
+            [
+              577,
+              0,
+              2.0,
+              25,
+              25
+            ],
+            [
+              572,
+              0,
+              0.5,
+              26,
+              26
+            ],
+            [
+              568,
+              0,
+              0.5,
+              26,
+              26
+            ],
+            [
+              574,
+              0,
+              0.5,
+              26,
+              26
+            ],
+            [
+              577,
+              0,
+              0.5,
+              26,
+              26
+            ]
+          ],
+          "rustle": [
+            [
+              531,
+              0,
+              20,
+              21,
+              21
+            ],
+            [
+              531,
+              0,
+              20,
+              21,
+              21
+            ],
+            [
+              587,
+              0,
+              10,
+              22,
+              22
+            ],
+            [
+              531,
+              0,
+              10,
+              22,
+              22
+            ],
+            [
+              531,
+              0,
+              10,
+              23,
+              23
+            ],
+            [
+              531,
+              0,
+              10,
+              23,
+              23
+            ],
+            [
+              531,
+              0,
+              5,
+              24,
+              24
+            ],
+            [
+              531,
+              0,
+              5,
+              24,
+              24
+            ],
+            [
+              573,
+              0,
+              4,
+              24,
+              24
+            ],
+            [
+              531,
+              0,
+              4,
+              24,
+              24
+            ],
+            [
+              573,
+              0,
+              1,
+              24,
+              24
+            ],
+            [
+              531,
+              0,
+              1,
+              24,
+              24
+            ]
+          ]
+        }
+      },
+      "wild_levels": {
+        "land": [
+          21,
+          24
+        ]
+      }
     },
     "UNOVA_ROUTE_17": {
       "area_type": "wild_route",
@@ -10459,24 +11910,27 @@
       "route_name": "Liberty Garden",
       "region": "UNOVA",
       "battle_type": "grass",
-      "backgrounds": { "main": "liberty_garden.png" },
       "min_rounds": 1,
       "trainer_pool": [],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
         {
           "text": "Find Victini",
           "action": "BOSS",
-          "condition": ["boss_not_defeated", "beat_unova_champion"],
-          "color": "GOLD",
+          "condition": [
+            "boss_not_defeated",
+            "beat_unova_champion"
+          ],
           "not_on_map": true
-        },
-        { "text": "Castelia City", "action": "EXIT", "target_area": "CASTELIA_CITY", "condition": "can_exit", "color": "RED" }
+        }
       ],
       "next_area": "CASTELIA_CITY",
       "wild_pool_percentages": "UNOVA_LIBERTY_GARDEN_PERCENTAGES",
-      "area_boss": { "id": 494, "level": 15, "name": "Victini", "victory_flag": "LIBERTY_GARDEN_boss_defeated" }
+      "area_boss": {
+        "id": 494,
+        "level": 15,
+        "name": "Victini",
+        "victory_flag": "LIBERTY_GARDEN_boss_defeated"
+      }
     },
     "ROYAL_UNOVA": {
       "area_type": "dungeon",
@@ -10514,7 +11968,37 @@
         "DRIFTVEIL_DRAWBRIDGE": {"area_type": "dungeon", "route_name": "Driftveil Drawbridge", "region": "UNOVA", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "ROUTE 5", "action": "EXIT", "target": "UNOVA_ROUTE_5", "condition": "can_exit", "color": "RED"}, {"text": "DRIFTVEIL CITY", "action": "EXIT", "target": "DRIFTVEIL_CITY", "condition": "can_exit", "color": "RED"}], "next_area": "DRIFTVEIL_CITY", "wild_pool_percentages": "DRIFTVEIL_DRAWBRIDGE_PERCENTAGES"},
         "UNDERGROUND_RUINS": {"area_type": "dungeon", "route_name": "Underground Ruins", "region": "UNOVA", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "AWAKEN REGIROCK", "action": "BOSS", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not ruins_regirock", "boss": {"id": 377, "level": 65, "name": "Regirock", "victory_flag": "ruins_regirock", "lines": ["Regirock appears!"]}}, {"text": "AWAKEN REGICE", "action": "BOSS", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not ruins_regice", "boss": {"id": 378, "level": 65, "name": "Regice", "victory_flag": "ruins_regice", "lines": ["Regice appears!"]}}, {"text": "AWAKEN REGISTEEL", "action": "BOSS", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not ruins_registeel", "boss": {"id": 379, "level": 65, "name": "Registeel", "victory_flag": "ruins_registeel", "lines": ["Registeel appears!"]}}, {"text": "CLAY TUNNEL", "action": "EXIT", "target": "CLAY_TUNNEL", "condition": "can_exit", "color": "RED"}], "next_area": "CLAY_TUNNEL", "wild_pool_percentages": "UNDERGROUND_RUINS_PERCENTAGES"},
         "PWT": {"area_type": "dungeon", "route_name": "Pokémon World Tournament", "region": "UNOVA", "battle_type": "indoor", "min_rounds": 0, "trainer_pool": [{"name": "Leader Trio (Cilan / Chili / Cress)", "class": "GYM_LEADER", "sprite": "trio_cilan_chili_cress.png", "team": [506, 511], "is_boss_battle": true, "rewards": {"balls": 5}}, {"name": "Leader Lenora", "class": "GYM_LEADER", "sprite": "lenora.png", "team": [507, 505], "is_boss_battle": true, "rewards": {"balls": 5}}, {"name": "Leader Burgh", "class": "GYM_LEADER", "sprite": "burgh.png", "team": [544, 557, 542], "is_boss_battle": true, "rewards": {"balls": 5}}, {"name": "Leader Elesa", "class": "GYM_LEADER", "sprite": "elesa.png", "team": [587, 587, 523], "is_boss_battle": true, "rewards": {"balls": 5}}, {"name": "Leader Clay", "class": "GYM_LEADER", "sprite": "clay.png", "team": [552, 536, 530], "is_boss_battle": true, "rewards": {"balls": 5}}, {"name": "Leader Skyla", "class": "GYM_LEADER", "sprite": "skyla.png", "team": [528, 521, 581], "is_boss_battle": true, "rewards": {"balls": 5}}, {"name": "Leader Brycen", "class": "GYM_LEADER", "sprite": "brycen.png", "team": [583, 615, 614], "is_boss_battle": true, "rewards": {"balls": 5}}, {"name": "Leader Drayden", "class": "GYM_LEADER", "sprite": "brycenman.png", "team": [611, 621, 612], "is_boss_battle": true, "rewards": {"balls": 20, "RARE_CANDY": 3}, "victory_flag": "pwt_cleared"}], "route_menu": [{"text": "ENTER THE UNOVA LEADERS TOURNAMENT", "action": "GALACTIC_GAUNTLET", "color": "GOLD", "flag_condition": "not pwt_cleared"}, {"text": "DRIFTVEIL CITY", "action": "EXIT", "target": "DRIFTVEIL_CITY", "condition": "can_exit", "color": "RED"}], "next_area": "DRIFTVEIL_CITY"},
-        "PLEDGE_GROVE": {"area_type": "dungeon", "route_name": "Pledge Grove", "region": "UNOVA", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "SEEK KELDEO", "action": "BOSS", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not pledge_grove_keldeo", "boss": {"id": 647, "name": "Keldeo", "victory_flag": "pledge_grove_keldeo", "lines": ["A small Pokémon stands proudly in the grove: Keldeo, the Colt Pokémon!"]}}, {"text": "FLOCCESY TOWN", "action": "EXIT", "target": "FLOCCESY_TOWN", "condition": "can_exit", "color": "RED"}], "next_area": "FLOCCESY_TOWN"},
+        "PLEDGE_GROVE": {
+          "area_type": "dungeon",
+          "route_name": "Pledge Grove",
+          "region": "UNOVA",
+          "battle_type": "cave",
+          "min_rounds": 0,
+          "trainer_pool": [],
+          "route_menu": [
+            {
+              "text": "SEEK KELDEO",
+              "action": "BOSS",
+              "condition": "beat_alder",
+              "flag_condition": "not pledge_grove_keldeo",
+              "boss": {
+                "id": 647,
+                "name": "Keldeo",
+                "victory_flag": "pledge_grove_keldeo",
+                "lines": [
+                  "A small Pokémon stands proudly in the grove: Keldeo, the Colt Pokémon!"
+                ]
+              }
+            },
+            {
+              "text": "FLOCCESY TOWN",
+              "action": "EXIT",
+              "target": "FLOCCESY_TOWN",
+              "condition": "can_exit"
+            }
+          ],
+          "next_area": "FLOCCESY_TOWN"
+        },
         "ABYSSAL_RUINS": {"area_type": "dungeon", "route_name": "Abyssal Ruins", "region": "UNOVA", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "SEARCH THE RUINS", "action": "EVENT", "color": "GOLD", "flag_condition": "not abyssal_ruins_searched", "event": {"lines": ["You dive deep into the sunken ruins. Strange carvings cover the walls...", "Something glitters in the silt!"], "gift_item": {"RARE_CANDY": 2}, "flag": "abyssal_ruins_searched"}}, {"text": "SURFACE", "action": "EXIT", "target": "UNDELLA_BAY", "condition": "can_exit", "color": "RED"}], "next_area": "UNDELLA_BAY"},
         "CAVE_OF_BEING": {"area_type": "dungeon", "route_name": "Cave of Being", "region": "UNOVA", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "SEEK UXIE", "action": "BOSS", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not cave_of_being_uxie", "boss": {"id": 480, "name": "Uxie", "victory_flag": "cave_of_being_uxie", "lines": ["Uxie appears!"]}}, {"text": "SEEK MESPRIT", "action": "BOSS", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not cave_of_being_mesprit", "boss": {"id": 481, "name": "Mesprit", "victory_flag": "cave_of_being_mesprit", "lines": ["Mesprit appears!"]}}, {"text": "SEEK AZELF", "action": "BOSS", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not cave_of_being_azelf", "boss": {"id": 482, "name": "Azelf", "victory_flag": "cave_of_being_azelf", "lines": ["Azelf appears!"]}}, {"text": "ROUTE 20", "action": "EXIT", "target": "UNOVA_ROUTE_20", "condition": "can_exit", "color": "RED"}], "next_area": "UNOVA_ROUTE_20"},
         "MARINE_TUBE": {"area_type": "dungeon", "route_name": "Marine Tube", "region": "UNOVA", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [
@@ -10522,7 +12006,22 @@
           {"text": "HUMILAU CITY", "action": "EXIT", "target": "HUMILAU_CITY", "condition": ["can_exit", "beat_unova_champion"], "color": "RED"},
           {"text": "UNDELLA TOWN", "action": "EXIT", "target": "UNDELLA_TOWN", "condition": "can_exit", "color": "RED"}
         ], "next_area": "UNDELLA_TOWN"},
-        "POKESTAR_STUDIOS": {"area_type": "town", "route_name": "PokéStar Studios", "region": "UNOVA", "has_gym": false, "trainer_encounter_rate": 0, "travel_options": [{"text": "Virbank City", "target_area": "VIRBANK_CITY"}], "explore_options": [{"text": "Film 'Brycen-Man'", "action": "EVENT", "color": "GOLD", "flag_condition": "not pokestar_brycen_man", "event": {"lines": ["Director: Action! Brycen-Man has kidnapped the city! Only you can save it!"], "flag": "pokestar_brycen_man", "battle": {"name": "Brycen-Man", "class": "PKMN_TRAINER", "sprite": "brycenman.png", "team": [614, 615], "is_boss_battle": true, "rewards": {"balls": 5, "RARE_CANDY": 1}, "dialogue": {"player_won": ["Director: Cut! What a hit! The fans will love it!"]}}}}, {"text": "Watch a premiere", "action": "EVENT", "event": {"lines": ["The crowd cheers as the latest PokéStar film rolls."]}}], "trainer_pool": [], "on_enter_event": null},
+        "POKESTAR_STUDIOS": {
+          "area_type": "town",
+          "route_name": "PokéStar Studios",
+          "region": "UNOVA",
+          "has_gym": false,
+          "trainer_encounter_rate": 0,
+          "travel_options": [
+            {
+              "text": "Virbank City",
+              "target_area": "VIRBANK_CITY"
+            }
+          ],
+          "explore_options": [],
+          "trainer_pool": [],
+          "on_enter_event": null
+        },
         "JOIN_AVENUE": {
           "area_type": "town",
           "route_name": "Join Avenue",
@@ -10543,29 +12042,58 @@
           "trainer_pool": [],
           "on_enter_event": null
         },
-        "ANVILLE_TOWN": {"area_type": "town", "route_name": "Anville Town", "region": "UNOVA", "has_gym": false, "trainer_encounter_rate": 0, "travel_options": [{"text": "Train to Nimbasa City", "target_area": "NIMBASA_CITY", "long_ride": true, "message": "The train rolls back across the plains to Nimbasa City."}], "explore_options": [{"text": "Pokémon Center", "action": "HEAL"}, {"text": "Watch the turntable", "action": "EVENT", "event": {"lines": ["A great turntable swings a train around. Train fans cheer from the platform!"]}}], "trainer_pool": [], "on_enter_event": null},
+        "ANVILLE_TOWN": {"area_type": "town", "route_name": "Anville Town", "region": "UNOVA", "has_gym": false, "trainer_encounter_rate": 0, "trainer_pool": [], "on_enter_event": null},
         "ENTRALINK": {"area_type": "town", "route_name": "Entralink", "region": "UNOVA", "has_gym": false, "trainer_encounter_rate": 0, "travel_options": [{"text": "Back to Nuvema Town", "target_area": "NUVEMA_TOWN"}], "explore_options": [{"text": "Rest in the Dream Forest", "action": "HEAL"}, {"text": "Listen to the Entree Forest", "action": "EVENT", "event": {"lines": ["Pokémon from dreams drift between the trees... then fade, smiling."]}}], "trainer_pool": [], "on_enter_event": null}
     },
+  "HIDDEN_GROTTOES": [
+    {"grotto": 0, "area": "FLOCCESY_RANCH", "where": "Floccesy Ranch (north-east, by Surf)", "pokemon": {"BLACK_2": [{"id": 206, "name": "Dunsparce", "min": 10, "max": 14, "female": 30, "rate": 0.25}, {"id": 206, "name": "Dunsparce", "min": 10, "max": 14, "female": 30, "rate": 0.25}, {"id": 206, "name": "Dunsparce", "min": 10, "max": 14, "female": 30, "rate": 0.25}, {"id": 206, "name": "Dunsparce", "min": 10, "max": 14, "female": 30, "rate": 0.25}, {"id": 507, "name": "Herdier", "min": 10, "max": 14, "female": 30, "rate": 1.0}, {"id": 507, "name": "Herdier", "min": 10, "max": 14, "female": 30, "rate": 1.0}, {"id": 507, "name": "Herdier", "min": 10, "max": 14, "female": 30, "rate": 1.0}, {"id": 507, "name": "Herdier", "min": 10, "max": 14, "female": 30, "rate": 1.0}, {"id": 183, "name": "Marill", "min": 10, "max": 14, "female": 30, "rate": 3.75}, {"id": 183, "name": "Marill", "min": 10, "max": 14, "female": 30, "rate": 3.75}, {"id": 183, "name": "Marill", "min": 10, "max": 14, "female": 30, "rate": 3.75}, {"id": 183, "name": "Marill", "min": 10, "max": 14, "female": 30, "rate": 3.75}], "WHITE_2": [{"id": 206, "name": "Dunsparce", "min": 10, "max": 14, "female": 30, "rate": 0.25}, {"id": 206, "name": "Dunsparce", "min": 10, "max": 14, "female": 30, "rate": 0.25}, {"id": 206, "name": "Dunsparce", "min": 10, "max": 14, "female": 30, "rate": 0.25}, {"id": 206, "name": "Dunsparce", "min": 10, "max": 14, "female": 30, "rate": 0.25}, {"id": 507, "name": "Herdier", "min": 10, "max": 14, "female": 30, "rate": 1.0}, {"id": 507, "name": "Herdier", "min": 10, "max": 14, "female": 30, "rate": 1.0}, {"id": 507, "name": "Herdier", "min": 10, "max": 14, "female": 30, "rate": 1.0}, {"id": 507, "name": "Herdier", "min": 10, "max": 14, "female": 30, "rate": 1.0}, {"id": 183, "name": "Marill", "min": 10, "max": 14, "female": 30, "rate": 3.75}, {"id": 183, "name": "Marill", "min": 10, "max": 14, "female": 30, "rate": 3.75}, {"id": 183, "name": "Marill", "min": 10, "max": 14, "female": 30, "rate": 3.75}, {"id": 183, "name": "Marill", "min": 10, "max": 14, "female": 30, "rate": 3.75}]}, "stones": {"FIRE_STONE": 0.25}},
+    {"grotto": 1, "area": "UNOVA_ROUTE_5", "where": "Route 5 (right of the trailer)", "pokemon": {"BLACK_2": [{"id": 572, "name": "Minccino", "min": 20, "max": 24, "female": 60, "rate": 0.25}, {"id": 572, "name": "Minccino", "min": 20, "max": 24, "female": 60, "rate": 0.25}, {"id": 572, "name": "Minccino", "min": 20, "max": 24, "female": 60, "rate": 0.25}, {"id": 572, "name": "Minccino", "min": 20, "max": 24, "female": 60, "rate": 0.25}, {"id": 510, "name": "Liepard", "min": 20, "max": 24, "female": 30, "rate": 1.0}, {"id": 510, "name": "Liepard", "min": 20, "max": 24, "female": 30, "rate": 1.0}, {"id": 510, "name": "Liepard", "min": 20, "max": 24, "female": 30, "rate": 1.0}, {"id": 510, "name": "Liepard", "min": 20, "max": 24, "female": 30, "rate": 1.0}, {"id": 590, "name": "Foongus", "min": 20, "max": 24, "female": 30, "rate": 3.75}, {"id": 590, "name": "Foongus", "min": 20, "max": 24, "female": 30, "rate": 3.75}, {"id": 590, "name": "Foongus", "min": 20, "max": 24, "female": 30, "rate": 3.75}, {"id": 590, "name": "Foongus", "min": 20, "max": 24, "female": 30, "rate": 3.75}], "WHITE_2": [{"id": 572, "name": "Minccino", "min": 20, "max": 24, "female": 60, "rate": 0.25}, {"id": 572, "name": "Minccino", "min": 20, "max": 24, "female": 60, "rate": 0.25}, {"id": 572, "name": "Minccino", "min": 20, "max": 24, "female": 60, "rate": 0.25}, {"id": 572, "name": "Minccino", "min": 20, "max": 24, "female": 60, "rate": 0.25}, {"id": 510, "name": "Liepard", "min": 20, "max": 24, "female": 30, "rate": 1.0}, {"id": 510, "name": "Liepard", "min": 20, "max": 24, "female": 30, "rate": 1.0}, {"id": 510, "name": "Liepard", "min": 20, "max": 24, "female": 30, "rate": 1.0}, {"id": 510, "name": "Liepard", "min": 20, "max": 24, "female": 30, "rate": 1.0}, {"id": 590, "name": "Foongus", "min": 20, "max": 24, "female": 30, "rate": 3.75}, {"id": 590, "name": "Foongus", "min": 20, "max": 24, "female": 30, "rate": 3.75}, {"id": 590, "name": "Foongus", "min": 20, "max": 24, "female": 30, "rate": 3.75}, {"id": 590, "name": "Foongus", "min": 20, "max": 24, "female": 30, "rate": 3.75}]}, "stones": {"FIRE_STONE": 0.25}},
+    {"grotto": 2, "area": "LOSTLORN_FOREST", "where": "Lostlorn Forest (north-east)", "pokemon": {"BLACK_2": [{"id": 214, "name": "Heracross", "min": 20, "max": 24, "female": 30, "rate": 0.25}, {"id": 214, "name": "Heracross", "min": 20, "max": 24, "female": 30, "rate": 0.25}, {"id": 214, "name": "Heracross", "min": 20, "max": 24, "female": 30, "rate": 0.25}, {"id": 127, "name": "Pinsir", "min": 20, "max": 24, "female": 30, "rate": 0.25}, {"id": 542, "name": "Leavanny", "min": 20, "max": 24, "female": 30, "rate": 1.0}, {"id": 542, "name": "Leavanny", "min": 20, "max": 24, "female": 30, "rate": 1.0}, {"id": 542, "name": "Leavanny", "min": 20, "max": 24, "female": 30, "rate": 1.0}, {"id": 542, "name": "Leavanny", "min": 20, "max": 24, "female": 30, "rate": 1.0}, {"id": 415, "name": "Combee", "min": 20, "max": 24, "female": 5, "rate": 3.75}, {"id": 415, "name": "Combee", "min": 20, "max": 24, "female": 5, "rate": 3.75}, {"id": 415, "name": "Combee", "min": 20, "max": 24, "female": 5, "rate": 3.75}, {"id": 415, "name": "Combee", "min": 20, "max": 24, "female": 5, "rate": 3.75}], "WHITE_2": [{"id": 127, "name": "Pinsir", "min": 20, "max": 24, "female": 30, "rate": 0.25}, {"id": 127, "name": "Pinsir", "min": 20, "max": 24, "female": 30, "rate": 0.25}, {"id": 127, "name": "Pinsir", "min": 20, "max": 24, "female": 30, "rate": 0.25}, {"id": 214, "name": "Heracross", "min": 20, "max": 24, "female": 30, "rate": 0.25}, {"id": 542, "name": "Leavanny", "min": 20, "max": 24, "female": 30, "rate": 1.0}, {"id": 542, "name": "Leavanny", "min": 20, "max": 24, "female": 30, "rate": 1.0}, {"id": 542, "name": "Leavanny", "min": 20, "max": 24, "female": 30, "rate": 1.0}, {"id": 542, "name": "Leavanny", "min": 20, "max": 24, "female": 30, "rate": 1.0}, {"id": 415, "name": "Combee", "min": 20, "max": 24, "female": 5, "rate": 3.75}, {"id": 415, "name": "Combee", "min": 20, "max": 24, "female": 5, "rate": 3.75}, {"id": 415, "name": "Combee", "min": 20, "max": 24, "female": 5, "rate": 3.75}, {"id": 415, "name": "Combee", "min": 20, "max": 24, "female": 5, "rate": 3.75}]}, "stones": {"FIRE_STONE": 0.25}},
+    {"grotto": 3, "area": "UNOVA_ROUTE_6", "where": "Route 6 (north of the Breeder)", "pokemon": {"BLACK_2": [{"id": 206, "name": "Dunsparce", "min": 25, "max": 29, "female": 30, "rate": 0.25}, {"id": 206, "name": "Dunsparce", "min": 25, "max": 29, "female": 30, "rate": 0.25}, {"id": 206, "name": "Dunsparce", "min": 25, "max": 29, "female": 30, "rate": 0.25}, {"id": 206, "name": "Dunsparce", "min": 25, "max": 29, "female": 30, "rate": 0.25}, {"id": 527, "name": "Woobat", "min": 25, "max": 29, "female": 30, "rate": 1.0}, {"id": 527, "name": "Woobat", "min": 25, "max": 29, "female": 30, "rate": 1.0}, {"id": 527, "name": "Woobat", "min": 25, "max": 29, "female": 30, "rate": 1.0}, {"id": 527, "name": "Woobat", "min": 25, "max": 29, "female": 30, "rate": 1.0}, {"id": 590, "name": "Foongus", "min": 25, "max": 29, "female": 30, "rate": 3.75}, {"id": 590, "name": "Foongus", "min": 25, "max": 29, "female": 30, "rate": 3.75}, {"id": 590, "name": "Foongus", "min": 25, "max": 29, "female": 30, "rate": 3.75}, {"id": 590, "name": "Foongus", "min": 25, "max": 29, "female": 30, "rate": 3.75}], "WHITE_2": [{"id": 206, "name": "Dunsparce", "min": 25, "max": 29, "female": 30, "rate": 0.25}, {"id": 206, "name": "Dunsparce", "min": 25, "max": 29, "female": 30, "rate": 0.25}, {"id": 206, "name": "Dunsparce", "min": 25, "max": 29, "female": 30, "rate": 0.25}, {"id": 206, "name": "Dunsparce", "min": 25, "max": 29, "female": 30, "rate": 0.25}, {"id": 527, "name": "Woobat", "min": 25, "max": 29, "female": 30, "rate": 1.0}, {"id": 527, "name": "Woobat", "min": 25, "max": 29, "female": 30, "rate": 1.0}, {"id": 527, "name": "Woobat", "min": 25, "max": 29, "female": 30, "rate": 1.0}, {"id": 527, "name": "Woobat", "min": 25, "max": 29, "female": 30, "rate": 1.0}, {"id": 590, "name": "Foongus", "min": 25, "max": 29, "female": 30, "rate": 3.75}, {"id": 590, "name": "Foongus", "min": 25, "max": 29, "female": 30, "rate": 3.75}, {"id": 590, "name": "Foongus", "min": 25, "max": 29, "female": 30, "rate": 3.75}, {"id": 590, "name": "Foongus", "min": 25, "max": 29, "female": 30, "rate": 3.75}]}, "stones": {"FIRE_STONE": 0.25}},
+    {"grotto": 4, "area": "UNOVA_ROUTE_6", "where": "Route 6 (by Mistralton Cave, by Surf)", "pokemon": {"BLACK_2": [{"id": 299, "name": "Nosepass", "min": 25, "max": 29, "female": 0, "rate": 0.25}, {"id": 299, "name": "Nosepass", "min": 25, "max": 29, "female": 0, "rate": 0.25}, {"id": 299, "name": "Nosepass", "min": 25, "max": 29, "female": 0, "rate": 0.25}, {"id": 299, "name": "Nosepass", "min": 25, "max": 29, "female": 0, "rate": 0.25}, {"id": 527, "name": "Woobat", "min": 25, "max": 29, "female": 30, "rate": 1.0}, {"id": 527, "name": "Woobat", "min": 25, "max": 29, "female": 30, "rate": 1.0}, {"id": 527, "name": "Woobat", "min": 25, "max": 29, "female": 30, "rate": 1.0}, {"id": 527, "name": "Woobat", "min": 25, "max": 29, "female": 30, "rate": 1.0}, {"id": 590, "name": "Foongus", "min": 25, "max": 29, "female": 30, "rate": 3.75}, {"id": 590, "name": "Foongus", "min": 25, "max": 29, "female": 30, "rate": 3.75}, {"id": 590, "name": "Foongus", "min": 25, "max": 29, "female": 30, "rate": 3.75}, {"id": 590, "name": "Foongus", "min": 25, "max": 29, "female": 30, "rate": 3.75}], "WHITE_2": [{"id": 299, "name": "Nosepass", "min": 25, "max": 29, "female": 30, "rate": 0.25}, {"id": 299, "name": "Nosepass", "min": 25, "max": 29, "female": 30, "rate": 0.25}, {"id": 299, "name": "Nosepass", "min": 25, "max": 29, "female": 30, "rate": 0.25}, {"id": 299, "name": "Nosepass", "min": 25, "max": 29, "female": 30, "rate": 0.25}, {"id": 527, "name": "Woobat", "min": 25, "max": 29, "female": 30, "rate": 1.0}, {"id": 527, "name": "Woobat", "min": 25, "max": 29, "female": 30, "rate": 1.0}, {"id": 527, "name": "Woobat", "min": 25, "max": 29, "female": 30, "rate": 1.0}, {"id": 527, "name": "Woobat", "min": 25, "max": 29, "female": 30, "rate": 1.0}, {"id": 590, "name": "Foongus", "min": 25, "max": 29, "female": 30, "rate": 3.75}, {"id": 590, "name": "Foongus", "min": 25, "max": 29, "female": 30, "rate": 3.75}, {"id": 590, "name": "Foongus", "min": 25, "max": 29, "female": 30, "rate": 3.75}, {"id": 590, "name": "Foongus", "min": 25, "max": 29, "female": 30, "rate": 3.75}]}, "stones": {"WATER_STONE": 0.25, "THUNDER_STONE": 0.25, "LEAF_STONE": 0.25, "MOON_STONE": 0.25}},
+    {"grotto": 5, "area": "UNOVA_ROUTE_7", "where": "Route 7 (right of the house)", "pokemon": {"BLACK_2": [{"id": 613, "name": "Cubchoo", "min": 30, "max": 34, "female": 30, "rate": 0.25}, {"id": 613, "name": "Cubchoo", "min": 30, "max": 34, "female": 30, "rate": 0.25}, {"id": 613, "name": "Cubchoo", "min": 30, "max": 34, "female": 30, "rate": 0.25}, {"id": 613, "name": "Cubchoo", "min": 30, "max": 34, "female": 30, "rate": 0.25}, {"id": 505, "name": "Watchog", "min": 30, "max": 34, "female": 30, "rate": 1.0}, {"id": 505, "name": "Watchog", "min": 30, "max": 34, "female": 30, "rate": 1.0}, {"id": 505, "name": "Watchog", "min": 30, "max": 34, "female": 30, "rate": 1.0}, {"id": 505, "name": "Watchog", "min": 30, "max": 34, "female": 30, "rate": 1.0}, {"id": 335, "name": "Zangoose", "min": 30, "max": 34, "female": 30, "rate": 3.75}, {"id": 335, "name": "Zangoose", "min": 30, "max": 34, "female": 30, "rate": 3.75}, {"id": 336, "name": "Seviper", "min": 30, "max": 34, "female": 30, "rate": 3.75}, {"id": 336, "name": "Seviper", "min": 30, "max": 34, "female": 30, "rate": 3.75}], "WHITE_2": [{"id": 613, "name": "Cubchoo", "min": 30, "max": 34, "female": 30, "rate": 0.25}, {"id": 613, "name": "Cubchoo", "min": 30, "max": 34, "female": 30, "rate": 0.25}, {"id": 613, "name": "Cubchoo", "min": 30, "max": 34, "female": 30, "rate": 0.25}, {"id": 613, "name": "Cubchoo", "min": 30, "max": 34, "female": 30, "rate": 0.25}, {"id": 505, "name": "Watchog", "min": 30, "max": 34, "female": 30, "rate": 1.0}, {"id": 505, "name": "Watchog", "min": 30, "max": 34, "female": 30, "rate": 1.0}, {"id": 505, "name": "Watchog", "min": 30, "max": 34, "female": 30, "rate": 1.0}, {"id": 505, "name": "Watchog", "min": 30, "max": 34, "female": 30, "rate": 1.0}, {"id": 335, "name": "Zangoose", "min": 30, "max": 34, "female": 30, "rate": 3.75}, {"id": 335, "name": "Zangoose", "min": 30, "max": 34, "female": 30, "rate": 3.75}, {"id": 336, "name": "Seviper", "min": 30, "max": 34, "female": 30, "rate": 3.75}, {"id": 336, "name": "Seviper", "min": 30, "max": 34, "female": 30, "rate": 3.75}]}, "stones": {"FIRE_STONE": 0.25}},
+    {"grotto": 6, "area": "UNOVA_ROUTE_13", "where": "Route 13 (top of the stairs)", "pokemon": {"BLACK_2": [{"id": 451, "name": "Skorupi", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 451, "name": "Skorupi", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 451, "name": "Skorupi", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 451, "name": "Skorupi", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 114, "name": "Tangela", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 114, "name": "Tangela", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 114, "name": "Tangela", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 114, "name": "Tangela", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 590, "name": "Foongus", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 590, "name": "Foongus", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 590, "name": "Foongus", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 590, "name": "Foongus", "min": 35, "max": 39, "female": 30, "rate": 3.75}], "WHITE_2": [{"id": 451, "name": "Skorupi", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 451, "name": "Skorupi", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 451, "name": "Skorupi", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 451, "name": "Skorupi", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 114, "name": "Tangela", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 114, "name": "Tangela", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 114, "name": "Tangela", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 114, "name": "Tangela", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 590, "name": "Foongus", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 590, "name": "Foongus", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 590, "name": "Foongus", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 590, "name": "Foongus", "min": 35, "max": 39, "female": 30, "rate": 3.75}]}, "stones": {"WATER_STONE": 0.25, "THUNDER_STONE": 0.25, "LEAF_STONE": 0.25, "MOON_STONE": 0.25}},
+    {"grotto": 7, "area": "UNOVA_ROUTE_13", "where": "Route 13 (south-west of the cut trees)", "pokemon": {"BLACK_2": [{"id": 363, "name": "Spheal", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 363, "name": "Spheal", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 363, "name": "Spheal", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 363, "name": "Spheal", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 425, "name": "Drifloon", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 425, "name": "Drifloon", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 425, "name": "Drifloon", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 425, "name": "Drifloon", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 590, "name": "Foongus", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 590, "name": "Foongus", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 590, "name": "Foongus", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 590, "name": "Foongus", "min": 35, "max": 39, "female": 30, "rate": 3.75}], "WHITE_2": [{"id": 363, "name": "Spheal", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 363, "name": "Spheal", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 363, "name": "Spheal", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 363, "name": "Spheal", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 425, "name": "Drifloon", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 425, "name": "Drifloon", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 425, "name": "Drifloon", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 425, "name": "Drifloon", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 590, "name": "Foongus", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 590, "name": "Foongus", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 590, "name": "Foongus", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 590, "name": "Foongus", "min": 35, "max": 39, "female": 30, "rate": 3.75}]}, "stones": {"FIRE_STONE": 0.25}},
+    {"grotto": 8, "area": "UNOVA_ROUTE_9", "where": "Route 9 (left of Shopping Mall Nine)", "pokemon": {"BLACK_2": [{"id": 626, "name": "Bouffalant", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 626, "name": "Bouffalant", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 626, "name": "Bouffalant", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 626, "name": "Bouffalant", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 89, "name": "Muk", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 89, "name": "Muk", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 569, "name": "Garbodor", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 569, "name": "Garbodor", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 510, "name": "Liepard", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 510, "name": "Liepard", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 510, "name": "Liepard", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 510, "name": "Liepard", "min": 35, "max": 39, "female": 30, "rate": 3.75}], "WHITE_2": [{"id": 626, "name": "Bouffalant", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 626, "name": "Bouffalant", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 626, "name": "Bouffalant", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 626, "name": "Bouffalant", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 89, "name": "Muk", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 89, "name": "Muk", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 569, "name": "Garbodor", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 569, "name": "Garbodor", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 510, "name": "Liepard", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 510, "name": "Liepard", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 510, "name": "Liepard", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 510, "name": "Liepard", "min": 35, "max": 39, "female": 30, "rate": 3.75}]}, "stones": {"FIRE_STONE": 0.25}},
+    {"grotto": 9, "area": "GIANT_CHASM", "where": "Giant Chasm (by the forest)", "pokemon": {"BLACK_2": [{"id": 132, "name": "Ditto", "min": 45, "max": 49, "female": 0, "rate": 0.25}, {"id": 132, "name": "Ditto", "min": 45, "max": 49, "female": 0, "rate": 0.25}, {"id": 132, "name": "Ditto", "min": 45, "max": 49, "female": 0, "rate": 0.25}, {"id": 132, "name": "Ditto", "min": 45, "max": 49, "female": 0, "rate": 0.25}, {"id": 375, "name": "Metang", "min": 45, "max": 49, "female": 0, "rate": 1.0}, {"id": 375, "name": "Metang", "min": 45, "max": 49, "female": 0, "rate": 1.0}, {"id": 215, "name": "Sneasel", "min": 45, "max": 49, "female": 30, "rate": 1.0}, {"id": 215, "name": "Sneasel", "min": 45, "max": 49, "female": 30, "rate": 1.0}, {"id": 35, "name": "Clefairy", "min": 45, "max": 49, "female": 60, "rate": 3.75}, {"id": 35, "name": "Clefairy", "min": 45, "max": 49, "female": 60, "rate": 3.75}, {"id": 35, "name": "Clefairy", "min": 45, "max": 49, "female": 60, "rate": 3.75}, {"id": 35, "name": "Clefairy", "min": 45, "max": 49, "female": 60, "rate": 3.75}], "WHITE_2": [{"id": 132, "name": "Ditto", "min": 45, "max": 49, "female": 0, "rate": 0.25}, {"id": 132, "name": "Ditto", "min": 45, "max": 49, "female": 0, "rate": 0.25}, {"id": 132, "name": "Ditto", "min": 45, "max": 49, "female": 0, "rate": 0.25}, {"id": 132, "name": "Ditto", "min": 45, "max": 49, "female": 0, "rate": 0.25}, {"id": 375, "name": "Metang", "min": 45, "max": 49, "female": 0, "rate": 1.0}, {"id": 375, "name": "Metang", "min": 45, "max": 49, "female": 0, "rate": 1.0}, {"id": 215, "name": "Sneasel", "min": 45, "max": 49, "female": 30, "rate": 1.0}, {"id": 215, "name": "Sneasel", "min": 45, "max": 49, "female": 30, "rate": 1.0}, {"id": 35, "name": "Clefairy", "min": 45, "max": 49, "female": 60, "rate": 3.75}, {"id": 35, "name": "Clefairy", "min": 45, "max": 49, "female": 60, "rate": 3.75}, {"id": 35, "name": "Clefairy", "min": 45, "max": 49, "female": 60, "rate": 3.75}, {"id": 35, "name": "Clefairy", "min": 45, "max": 49, "female": 60, "rate": 3.75}]}, "stones": {"FIRE_STONE": 0.25}},
+    {"grotto": 10, "area": "UNOVA_ROUTE_22", "where": "Route 22 (the walkways)", "pokemon": {"BLACK_2": [{"id": 619, "name": "Mienfoo", "min": 40, "max": 44, "female": 30, "rate": 0.25}, {"id": 619, "name": "Mienfoo", "min": 40, "max": 44, "female": 30, "rate": 0.25}, {"id": 619, "name": "Mienfoo", "min": 40, "max": 44, "female": 30, "rate": 0.25}, {"id": 619, "name": "Mienfoo", "min": 40, "max": 44, "female": 30, "rate": 0.25}, {"id": 279, "name": "Pelipper", "min": 40, "max": 44, "female": 30, "rate": 1.0}, {"id": 279, "name": "Pelipper", "min": 40, "max": 44, "female": 30, "rate": 1.0}, {"id": 279, "name": "Pelipper", "min": 40, "max": 44, "female": 30, "rate": 1.0}, {"id": 279, "name": "Pelipper", "min": 40, "max": 44, "female": 30, "rate": 1.0}, {"id": 591, "name": "Amoonguss", "min": 40, "max": 44, "female": 30, "rate": 3.75}, {"id": 591, "name": "Amoonguss", "min": 40, "max": 44, "female": 30, "rate": 3.75}, {"id": 591, "name": "Amoonguss", "min": 40, "max": 44, "female": 30, "rate": 3.75}, {"id": 591, "name": "Amoonguss", "min": 40, "max": 44, "female": 30, "rate": 3.75}], "WHITE_2": [{"id": 619, "name": "Mienfoo", "min": 40, "max": 44, "female": 30, "rate": 0.25}, {"id": 619, "name": "Mienfoo", "min": 40, "max": 44, "female": 30, "rate": 0.25}, {"id": 619, "name": "Mienfoo", "min": 40, "max": 44, "female": 30, "rate": 0.25}, {"id": 619, "name": "Mienfoo", "min": 40, "max": 44, "female": 30, "rate": 0.25}, {"id": 279, "name": "Pelipper", "min": 40, "max": 44, "female": 30, "rate": 1.0}, {"id": 279, "name": "Pelipper", "min": 40, "max": 44, "female": 30, "rate": 1.0}, {"id": 279, "name": "Pelipper", "min": 40, "max": 44, "female": 30, "rate": 1.0}, {"id": 279, "name": "Pelipper", "min": 40, "max": 44, "female": 30, "rate": 1.0}, {"id": 591, "name": "Amoonguss", "min": 40, "max": 44, "female": 30, "rate": 3.75}, {"id": 591, "name": "Amoonguss", "min": 40, "max": 44, "female": 30, "rate": 3.75}, {"id": 591, "name": "Amoonguss", "min": 40, "max": 44, "female": 30, "rate": 3.75}, {"id": 591, "name": "Amoonguss", "min": 40, "max": 44, "female": 30, "rate": 3.75}]}, "stones": {"FIRE_STONE": 0.25}},
+    {"grotto": 11, "area": "UNOVA_ROUTE_23", "where": "Route 23 (upper level)", "pokemon": {"BLACK_2": [{"id": 207, "name": "Gligar", "min": 50, "max": 54, "female": 30, "rate": 0.25}, {"id": 207, "name": "Gligar", "min": 50, "max": 54, "female": 30, "rate": 0.25}, {"id": 207, "name": "Gligar", "min": 50, "max": 54, "female": 30, "rate": 0.25}, {"id": 207, "name": "Gligar", "min": 50, "max": 54, "female": 30, "rate": 0.25}, {"id": 55, "name": "Golduck", "min": 50, "max": 54, "female": 30, "rate": 1.0}, {"id": 55, "name": "Golduck", "min": 50, "max": 54, "female": 30, "rate": 1.0}, {"id": 359, "name": "Absol", "min": 50, "max": 54, "female": 30, "rate": 1.0}, {"id": 359, "name": "Absol", "min": 50, "max": 54, "female": 30, "rate": 1.0}, {"id": 335, "name": "Zangoose", "min": 50, "max": 54, "female": 30, "rate": 3.75}, {"id": 335, "name": "Zangoose", "min": 50, "max": 54, "female": 30, "rate": 3.75}, {"id": 336, "name": "Seviper", "min": 50, "max": 54, "female": 30, "rate": 3.75}, {"id": 336, "name": "Seviper", "min": 50, "max": 54, "female": 30, "rate": 3.75}], "WHITE_2": [{"id": 207, "name": "Gligar", "min": 50, "max": 54, "female": 30, "rate": 0.25}, {"id": 207, "name": "Gligar", "min": 50, "max": 54, "female": 30, "rate": 0.25}, {"id": 207, "name": "Gligar", "min": 50, "max": 54, "female": 30, "rate": 0.25}, {"id": 207, "name": "Gligar", "min": 50, "max": 54, "female": 30, "rate": 0.25}, {"id": 55, "name": "Golduck", "min": 50, "max": 54, "female": 30, "rate": 1.0}, {"id": 55, "name": "Golduck", "min": 50, "max": 54, "female": 30, "rate": 1.0}, {"id": 359, "name": "Absol", "min": 50, "max": 54, "female": 30, "rate": 1.0}, {"id": 359, "name": "Absol", "min": 50, "max": 54, "female": 30, "rate": 1.0}, {"id": 335, "name": "Zangoose", "min": 50, "max": 54, "female": 30, "rate": 3.75}, {"id": 335, "name": "Zangoose", "min": 50, "max": 54, "female": 30, "rate": 3.75}, {"id": 336, "name": "Seviper", "min": 50, "max": 54, "female": 30, "rate": 3.75}, {"id": 336, "name": "Seviper", "min": 50, "max": 54, "female": 30, "rate": 3.75}]}, "stones": {"FIRE_STONE": 0.25}},
+    {"grotto": 12, "area": "ABUNDANT_SHRINE", "where": "Abundant Shrine (by Youngster Wes)", "pokemon": {"BLACK_2": [{"id": 37, "name": "Vulpix", "min": 35, "max": 39, "female": 10, "rate": 0.25}, {"id": 37, "name": "Vulpix", "min": 35, "max": 39, "female": 10, "rate": 0.25}, {"id": 37, "name": "Vulpix", "min": 35, "max": 39, "female": 10, "rate": 0.25}, {"id": 37, "name": "Vulpix", "min": 35, "max": 39, "female": 10, "rate": 0.25}, {"id": 436, "name": "Bronzor", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 436, "name": "Bronzor", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 436, "name": "Bronzor", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 436, "name": "Bronzor", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 591, "name": "Amoonguss", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 591, "name": "Amoonguss", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 591, "name": "Amoonguss", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 591, "name": "Amoonguss", "min": 35, "max": 39, "female": 30, "rate": 3.75}], "WHITE_2": [{"id": 37, "name": "Vulpix", "min": 35, "max": 39, "female": 10, "rate": 0.25}, {"id": 37, "name": "Vulpix", "min": 35, "max": 39, "female": 10, "rate": 0.25}, {"id": 37, "name": "Vulpix", "min": 35, "max": 39, "female": 10, "rate": 0.25}, {"id": 37, "name": "Vulpix", "min": 35, "max": 39, "female": 10, "rate": 0.25}, {"id": 436, "name": "Bronzor", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 436, "name": "Bronzor", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 436, "name": "Bronzor", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 436, "name": "Bronzor", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 591, "name": "Amoonguss", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 591, "name": "Amoonguss", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 591, "name": "Amoonguss", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 591, "name": "Amoonguss", "min": 35, "max": 39, "female": 30, "rate": 3.75}]}, "stones": {"FIRE_STONE": 0.25}},
+    {"grotto": 13, "area": "ABUNDANT_SHRINE", "where": "Abundant Shrine (across the water)", "pokemon": {"BLACK_2": [{"id": 333, "name": "Swablu", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 333, "name": "Swablu", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 333, "name": "Swablu", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 333, "name": "Swablu", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 55, "name": "Golduck", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 55, "name": "Golduck", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 55, "name": "Golduck", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 55, "name": "Golduck", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 591, "name": "Amoonguss", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 591, "name": "Amoonguss", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 591, "name": "Amoonguss", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 591, "name": "Amoonguss", "min": 35, "max": 39, "female": 30, "rate": 3.75}], "WHITE_2": [{"id": 333, "name": "Swablu", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 333, "name": "Swablu", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 333, "name": "Swablu", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 333, "name": "Swablu", "min": 35, "max": 39, "female": 30, "rate": 0.25}, {"id": 55, "name": "Golduck", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 55, "name": "Golduck", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 55, "name": "Golduck", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 55, "name": "Golduck", "min": 35, "max": 39, "female": 30, "rate": 1.0}, {"id": 591, "name": "Amoonguss", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 591, "name": "Amoonguss", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 591, "name": "Amoonguss", "min": 35, "max": 39, "female": 30, "rate": 3.75}, {"id": 591, "name": "Amoonguss", "min": 35, "max": 39, "female": 30, "rate": 3.75}]}, "stones": {"WATER_STONE": 0.25, "THUNDER_STONE": 0.25, "LEAF_STONE": 0.25, "MOON_STONE": 0.25}},
+    {"grotto": 14, "area": "PINWHEEL_FOREST", "where": "Pinwheel Forest (inside, by Surf)", "pokemon": {"BLACK_2": [{"id": 198, "name": "Murkrow", "min": 55, "max": 59, "female": 30, "rate": 0.25}, {"id": 198, "name": "Murkrow", "min": 55, "max": 59, "female": 30, "rate": 0.25}, {"id": 198, "name": "Murkrow", "min": 55, "max": 59, "female": 30, "rate": 0.25}, {"id": 198, "name": "Murkrow", "min": 55, "max": 59, "female": 30, "rate": 0.25}, {"id": 12, "name": "Butterfree", "min": 55, "max": 59, "female": 30, "rate": 1.0}, {"id": 12, "name": "Butterfree", "min": 55, "max": 59, "female": 30, "rate": 1.0}, {"id": 12, "name": "Butterfree", "min": 55, "max": 59, "female": 30, "rate": 1.0}, {"id": 12, "name": "Butterfree", "min": 55, "max": 59, "female": 30, "rate": 1.0}, {"id": 591, "name": "Amoonguss", "min": 55, "max": 59, "female": 30, "rate": 3.75}, {"id": 591, "name": "Amoonguss", "min": 55, "max": 59, "female": 30, "rate": 3.75}, {"id": 591, "name": "Amoonguss", "min": 55, "max": 59, "female": 30, "rate": 3.75}, {"id": 286, "name": "Breloom", "min": 55, "max": 59, "female": 30, "rate": 3.75}], "WHITE_2": [{"id": 198, "name": "Murkrow", "min": 55, "max": 59, "female": 30, "rate": 0.25}, {"id": 198, "name": "Murkrow", "min": 55, "max": 59, "female": 30, "rate": 0.25}, {"id": 198, "name": "Murkrow", "min": 55, "max": 59, "female": 30, "rate": 0.25}, {"id": 198, "name": "Murkrow", "min": 55, "max": 59, "female": 30, "rate": 0.25}, {"id": 15, "name": "Beedrill", "min": 55, "max": 59, "female": 30, "rate": 1.0}, {"id": 15, "name": "Beedrill", "min": 55, "max": 59, "female": 30, "rate": 1.0}, {"id": 15, "name": "Beedrill", "min": 55, "max": 59, "female": 30, "rate": 1.0}, {"id": 15, "name": "Beedrill", "min": 55, "max": 59, "female": 30, "rate": 1.0}, {"id": 591, "name": "Amoonguss", "min": 55, "max": 59, "female": 30, "rate": 3.75}, {"id": 591, "name": "Amoonguss", "min": 55, "max": 59, "female": 30, "rate": 3.75}, {"id": 591, "name": "Amoonguss", "min": 55, "max": 59, "female": 30, "rate": 3.75}, {"id": 286, "name": "Breloom", "min": 55, "max": 59, "female": 30, "rate": 3.75}]}, "stones": {"FIRE_STONE": 0.25}},
+    {"grotto": 15, "area": "PINWHEEL_FOREST", "where": "Pinwheel Forest (by Challenge Rock)", "pokemon": {"BLACK_2": [{"id": 61, "name": "Poliwhirl", "min": 55, "max": 59, "female": 10, "rate": 0.25}, {"id": 61, "name": "Poliwhirl", "min": 55, "max": 59, "female": 10, "rate": 0.25}, {"id": 61, "name": "Poliwhirl", "min": 55, "max": 59, "female": 10, "rate": 0.25}, {"id": 61, "name": "Poliwhirl", "min": 55, "max": 59, "female": 10, "rate": 0.25}, {"id": 371, "name": "Bagon", "min": 55, "max": 59, "female": 30, "rate": 1.0}, {"id": 371, "name": "Bagon", "min": 55, "max": 59, "female": 30, "rate": 1.0}, {"id": 371, "name": "Bagon", "min": 55, "max": 59, "female": 30, "rate": 1.0}, {"id": 297, "name": "Hariyama", "min": 55, "max": 59, "female": 30, "rate": 1.0}, {"id": 308, "name": "Medicham", "min": 55, "max": 59, "female": 30, "rate": 3.75}, {"id": 308, "name": "Medicham", "min": 55, "max": 59, "female": 30, "rate": 3.75}, {"id": 308, "name": "Medicham", "min": 55, "max": 59, "female": 30, "rate": 3.75}, {"id": 308, "name": "Medicham", "min": 55, "max": 59, "female": 30, "rate": 3.75}], "WHITE_2": [{"id": 61, "name": "Poliwhirl", "min": 55, "max": 59, "female": 10, "rate": 0.25}, {"id": 61, "name": "Poliwhirl", "min": 55, "max": 59, "female": 10, "rate": 0.25}, {"id": 61, "name": "Poliwhirl", "min": 55, "max": 59, "female": 10, "rate": 0.25}, {"id": 61, "name": "Poliwhirl", "min": 55, "max": 59, "female": 10, "rate": 0.25}, {"id": 371, "name": "Bagon", "min": 55, "max": 59, "female": 30, "rate": 1.0}, {"id": 371, "name": "Bagon", "min": 55, "max": 59, "female": 30, "rate": 1.0}, {"id": 371, "name": "Bagon", "min": 55, "max": 59, "female": 30, "rate": 1.0}, {"id": 308, "name": "Medicham", "min": 55, "max": 59, "female": 30, "rate": 1.0}, {"id": 297, "name": "Hariyama", "min": 55, "max": 59, "female": 30, "rate": 3.75}, {"id": 297, "name": "Hariyama", "min": 55, "max": 59, "female": 30, "rate": 3.75}, {"id": 297, "name": "Hariyama", "min": 55, "max": 59, "female": 30, "rate": 3.75}, {"id": 297, "name": "Hariyama", "min": 55, "max": 59, "female": 30, "rate": 3.75}]}, "stones": {"FIRE_STONE": 0.25}},
+    {"grotto": 16, "area": "UNOVA_ROUTE_3", "where": "Route 3 (the dark grass)", "pokemon": {"BLACK_2": [{"id": 523, "name": "Zebstrika", "min": 55, "max": 59, "female": 30, "rate": 0.25}, {"id": 523, "name": "Zebstrika", "min": 55, "max": 59, "female": 30, "rate": 0.25}, {"id": 523, "name": "Zebstrika", "min": 55, "max": 59, "female": 30, "rate": 0.25}, {"id": 523, "name": "Zebstrika", "min": 55, "max": 59, "female": 30, "rate": 0.25}, {"id": 310, "name": "Manectric", "min": 55, "max": 59, "female": 30, "rate": 1.0}, {"id": 310, "name": "Manectric", "min": 55, "max": 59, "female": 30, "rate": 1.0}, {"id": 310, "name": "Manectric", "min": 55, "max": 59, "female": 30, "rate": 1.0}, {"id": 310, "name": "Manectric", "min": 55, "max": 59, "female": 30, "rate": 1.0}, {"id": 417, "name": "Pachirisu", "min": 55, "max": 59, "female": 60, "rate": 3.75}, {"id": 417, "name": "Pachirisu", "min": 55, "max": 59, "female": 60, "rate": 3.75}, {"id": 417, "name": "Pachirisu", "min": 55, "max": 59, "female": 60, "rate": 3.75}, {"id": 417, "name": "Pachirisu", "min": 55, "max": 59, "female": 60, "rate": 3.75}], "WHITE_2": [{"id": 523, "name": "Zebstrika", "min": 55, "max": 59, "female": 30, "rate": 0.25}, {"id": 523, "name": "Zebstrika", "min": 55, "max": 59, "female": 30, "rate": 0.25}, {"id": 523, "name": "Zebstrika", "min": 55, "max": 59, "female": 30, "rate": 0.25}, {"id": 523, "name": "Zebstrika", "min": 55, "max": 59, "female": 30, "rate": 0.25}, {"id": 310, "name": "Manectric", "min": 55, "max": 59, "female": 30, "rate": 1.0}, {"id": 310, "name": "Manectric", "min": 55, "max": 59, "female": 30, "rate": 1.0}, {"id": 310, "name": "Manectric", "min": 55, "max": 59, "female": 30, "rate": 1.0}, {"id": 310, "name": "Manectric", "min": 55, "max": 59, "female": 30, "rate": 1.0}, {"id": 417, "name": "Pachirisu", "min": 55, "max": 59, "female": 60, "rate": 3.75}, {"id": 417, "name": "Pachirisu", "min": 55, "max": 59, "female": 60, "rate": 3.75}, {"id": 417, "name": "Pachirisu", "min": 55, "max": 59, "female": 60, "rate": 3.75}, {"id": 417, "name": "Pachirisu", "min": 55, "max": 59, "female": 60, "rate": 3.75}]}, "stones": {"FIRE_STONE": 0.25}},
+    {"grotto": 17, "area": "UNOVA_ROUTE_3", "where": "Route 3 (the pond, by Surf)", "pokemon": {"BLACK_2": [{"id": 271, "name": "Lombre", "min": 55, "max": 59, "female": 30, "rate": 0.25}, {"id": 271, "name": "Lombre", "min": 55, "max": 59, "female": 30, "rate": 0.25}, {"id": 271, "name": "Lombre", "min": 55, "max": 59, "female": 30, "rate": 0.25}, {"id": 271, "name": "Lombre", "min": 55, "max": 59, "female": 30, "rate": 0.25}, {"id": 48, "name": "Venonat", "min": 55, "max": 59, "female": 30, "rate": 1.0}, {"id": 48, "name": "Venonat", "min": 55, "max": 59, "female": 30, "rate": 1.0}, {"id": 48, "name": "Venonat", "min": 55, "max": 59, "female": 30, "rate": 1.0}, {"id": 48, "name": "Venonat", "min": 55, "max": 59, "female": 30, "rate": 1.0}, {"id": 400, "name": "Bibarel", "min": 55, "max": 59, "female": 30, "rate": 3.75}, {"id": 400, "name": "Bibarel", "min": 55, "max": 59, "female": 30, "rate": 3.75}, {"id": 400, "name": "Bibarel", "min": 55, "max": 59, "female": 30, "rate": 3.75}, {"id": 400, "name": "Bibarel", "min": 55, "max": 59, "female": 30, "rate": 3.75}], "WHITE_2": [{"id": 271, "name": "Lombre", "min": 55, "max": 59, "female": 30, "rate": 0.25}, {"id": 271, "name": "Lombre", "min": 55, "max": 59, "female": 30, "rate": 0.25}, {"id": 271, "name": "Lombre", "min": 55, "max": 59, "female": 30, "rate": 0.25}, {"id": 271, "name": "Lombre", "min": 55, "max": 59, "female": 30, "rate": 0.25}, {"id": 48, "name": "Venonat", "min": 55, "max": 59, "female": 30, "rate": 1.0}, {"id": 48, "name": "Venonat", "min": 55, "max": 59, "female": 30, "rate": 1.0}, {"id": 48, "name": "Venonat", "min": 55, "max": 59, "female": 30, "rate": 1.0}, {"id": 48, "name": "Venonat", "min": 55, "max": 59, "female": 30, "rate": 1.0}, {"id": 400, "name": "Bibarel", "min": 55, "max": 59, "female": 30, "rate": 3.75}, {"id": 400, "name": "Bibarel", "min": 55, "max": 59, "female": 30, "rate": 3.75}, {"id": 400, "name": "Bibarel", "min": 55, "max": 59, "female": 30, "rate": 3.75}, {"id": 400, "name": "Bibarel", "min": 55, "max": 59, "female": 30, "rate": 3.75}]}, "stones": {"SUN_STONE": 0.25, "SHINY_STONE": 0.25, "DUSK_STONE": 0.25, "DAWN_STONE": 1.0}},
+    {"grotto": 18, "area": "UNOVA_ROUTE_2", "where": "Route 2 (by Accumula's gate)", "pokemon": {"BLACK_2": [{"id": 210, "name": "Granbull", "min": 55, "max": 59, "female": 30, "rate": 0.25}, {"id": 210, "name": "Granbull", "min": 55, "max": 59, "female": 30, "rate": 0.25}, {"id": 210, "name": "Granbull", "min": 55, "max": 59, "female": 30, "rate": 0.25}, {"id": 210, "name": "Granbull", "min": 55, "max": 59, "female": 30, "rate": 0.25}, {"id": 32, "name": "Nidoran M", "min": 55, "max": 59, "female": 0, "rate": 1.0}, {"id": 32, "name": "Nidoran M", "min": 55, "max": 59, "female": 0, "rate": 1.0}, {"id": 29, "name": "Nidoran F", "min": 55, "max": 59, "female": 100, "rate": 1.0}, {"id": 29, "name": "Nidoran F", "min": 55, "max": 59, "female": 100, "rate": 1.0}, {"id": 505, "name": "Watchog", "min": 55, "max": 59, "female": 30, "rate": 3.75}, {"id": 505, "name": "Watchog", "min": 55, "max": 59, "female": 30, "rate": 3.75}, {"id": 505, "name": "Watchog", "min": 55, "max": 59, "female": 30, "rate": 3.75}, {"id": 505, "name": "Watchog", "min": 55, "max": 59, "female": 30, "rate": 3.75}], "WHITE_2": [{"id": 210, "name": "Granbull", "min": 55, "max": 59, "female": 30, "rate": 0.25}, {"id": 210, "name": "Granbull", "min": 55, "max": 59, "female": 30, "rate": 0.25}, {"id": 210, "name": "Granbull", "min": 55, "max": 59, "female": 30, "rate": 0.25}, {"id": 210, "name": "Granbull", "min": 55, "max": 59, "female": 30, "rate": 0.25}, {"id": 32, "name": "Nidoran M", "min": 55, "max": 59, "female": 0, "rate": 1.0}, {"id": 32, "name": "Nidoran M", "min": 55, "max": 59, "female": 0, "rate": 1.0}, {"id": 29, "name": "Nidoran F", "min": 55, "max": 59, "female": 100, "rate": 1.0}, {"id": 29, "name": "Nidoran F", "min": 55, "max": 59, "female": 100, "rate": 1.0}, {"id": 505, "name": "Watchog", "min": 55, "max": 59, "female": 30, "rate": 3.75}, {"id": 505, "name": "Watchog", "min": 55, "max": 59, "female": 30, "rate": 3.75}, {"id": 505, "name": "Watchog", "min": 55, "max": 59, "female": 30, "rate": 3.75}, {"id": 505, "name": "Watchog", "min": 55, "max": 59, "female": 30, "rate": 3.75}]}, "stones": {"FIRE_STONE": 0.25}},
+    {"grotto": 19, "area": "UNOVA_ROUTE_18", "where": "Route 18 (south of the Hiker)", "pokemon": {"BLACK_2": [{"id": 149, "name": "Dragonite", "min": 55, "max": 59, "female": 10, "rate": 0.25}, {"id": 149, "name": "Dragonite", "min": 55, "max": 59, "female": 10, "rate": 0.25}, {"id": 149, "name": "Dragonite", "min": 55, "max": 59, "female": 10, "rate": 0.25}, {"id": 149, "name": "Dragonite", "min": 55, "max": 59, "female": 10, "rate": 0.25}, {"id": 441, "name": "Chatot", "min": 55, "max": 59, "female": 30, "rate": 1.0}, {"id": 441, "name": "Chatot", "min": 55, "max": 59, "female": 30, "rate": 1.0}, {"id": 441, "name": "Chatot", "min": 55, "max": 59, "female": 30, "rate": 1.0}, {"id": 441, "name": "Chatot", "min": 55, "max": 59, "female": 30, "rate": 1.0}, {"id": 99, "name": "Kingler", "min": 55, "max": 59, "female": 30, "rate": 3.75}, {"id": 99, "name": "Kingler", "min": 55, "max": 59, "female": 30, "rate": 3.75}, {"id": 222, "name": "Corsola", "min": 55, "max": 59, "female": 60, "rate": 3.75}, {"id": 222, "name": "Corsola", "min": 55, "max": 59, "female": 60, "rate": 3.75}], "WHITE_2": [{"id": 149, "name": "Dragonite", "min": 55, "max": 59, "female": 10, "rate": 0.25}, {"id": 149, "name": "Dragonite", "min": 55, "max": 59, "female": 10, "rate": 0.25}, {"id": 149, "name": "Dragonite", "min": 55, "max": 59, "female": 10, "rate": 0.25}, {"id": 149, "name": "Dragonite", "min": 55, "max": 59, "female": 10, "rate": 0.25}, {"id": 441, "name": "Chatot", "min": 55, "max": 59, "female": 30, "rate": 1.0}, {"id": 441, "name": "Chatot", "min": 55, "max": 59, "female": 30, "rate": 1.0}, {"id": 441, "name": "Chatot", "min": 55, "max": 59, "female": 30, "rate": 1.0}, {"id": 441, "name": "Chatot", "min": 55, "max": 59, "female": 30, "rate": 1.0}, {"id": 99, "name": "Kingler", "min": 55, "max": 59, "female": 30, "rate": 3.75}, {"id": 99, "name": "Kingler", "min": 55, "max": 59, "female": 30, "rate": 3.75}, {"id": 222, "name": "Corsola", "min": 55, "max": 59, "female": 60, "rate": 3.75}, {"id": 222, "name": "Corsola", "min": 55, "max": 59, "female": 60, "rate": 3.75}]}, "stones": {"FIRE_STONE": 0.25}}
+  ],
   "JOURNAL_MISSIONS": [
     {"id": "b2_m1", "type": "MAIN", "title": "Find Bianca", "description": "Professor Juniper's assistant Bianca is somewhere in Aspertia City with a Pokémon for you. Look for a big green hat! {rival_name} thinks she's up at the Outlook.", "condition": {"required_region": "UNOVA", "flag_not": "received_starter_unova"}, "completed_flag": "received_starter_unova", "target": "ASPERTIA_CITY", "steps": [{"at": [4, 5], "label": "Bianca", "done": "received_starter_unova"}], "reward": "Your first partner + Pokédex"},
+    {"id": "b2_m1b", "type": "MAIN", "title": "Bianca's Tour", "description": "Your first Pokemon needs a rest after its first battle. Bianca is waiting at Aspertia's Pokemon Center, and so is Mom.", "condition": {"required_region": "UNOVA", "flag": "received_starter_unova", "flag_not": "b2_send_off"}, "completed_flag": "b2_send_off", "target": "ASPERTIA_CITY"},
     {"id": "b2_m2", "type": "MAIN", "title": "A Catching Lesson", "description": "Bianca is waiting on Route 19, just through the gate at the north end of Aspertia. She'll show you how to catch a Pokémon.", "condition": {"required_region": "UNOVA", "flag": "b2_send_off", "flag_not": "b2_route19_lesson"}, "completed_flag": "b2_route19_lesson", "target": "UNOVA_ROUTE_19"},
     {"id": "b2_m3", "type": "MAIN", "title": "Alder's Town", "description": "Alder went on ahead to Floccesy Town, east along Route 19. Catch up with him there!", "condition": {"required_region": "UNOVA", "flag": "b2_route19_lesson", "flag_not": "b2_floccesy_met"}, "completed_flag": "b2_floccesy_met", "target": "FLOCCESY_TOWN"},
     {"id": "b2_m4", "type": "MAIN", "title": "Two Town Maps", "description": "{rival_name} was seen training on Route 20, east of Floccesy. Find him and give him his Town Map. He may have gone up to Floccesy Ranch!", "condition": {"required_region": "UNOVA", "flag": "b2_floccesy_met", "flag_not": "b2_ranch_owners"}, "completed_flag": "b2_ranch_owners", "target": "FLOCCESY_RANCH"},
     {"id": "b2_m5", "type": "MAIN", "title": "The Missing Herdier", "description": "One of Floccesy Ranch's Herdier has wandered off. Search the woods at the north of the ranch with {rival_name}.", "condition": {"required_region": "UNOVA", "flag": "b2_ranch_owners", "flag_not": "b2_herdier_found"}, "completed_flag": "b2_herdier_found", "target": "FLOCCESY_RANCH"},
     {"id": "b2_m6", "type": "MAIN", "title": "Alder's Training", "description": "Herdier is home safe. Go back to Floccesy Town: Alder is waiting at his house to train you.", "condition": {"required_region": "UNOVA", "flag": "b2_herdier_found", "flag_not": "b2_alder_training"}, "completed_flag": "b2_alder_training", "target": "FLOCCESY_TOWN"},
-    {"id": "b2_m7", "type": "MAIN", "title": "Basic Badge", "description": "Aspertia's Gym is open! It's behind the Trainers' School. Beat Cheren's two Gym Trainers, then Cheren himself.", "condition": {"required_region": "UNOVA", "flag": "b2_alder_training", "flag_not": "b2_basic_badge"}, "completed_flag": "b2_basic_badge", "target": "ASPERTIA_CITY", "reward": "Basic Badge"},
+    {"id": "b2_m7", "type": "MAIN", "title": "Basic Badge", "description": "Aspertia's Gym is open! It's behind the Trainers' School. Beat Cheren's two Gym Trainers, then Cheren himself.", "condition": {"required_region": "UNOVA", "flag": "b2_alder_training", "flag_not": "b2_basic_badge"}, "completed_badge": "BASIC", "completed_flag": "b2_basic_badge", "target": "ASPERTIA_CITY", "reward": "Basic Badge"},
     {"id": "b2_m8", "type": "MAIN", "title": "East to Virbank", "description": "The next Gym is in Virbank City. Go through Floccesy and east along Route 20. Hiker Jerome will let you up the steps now.", "condition": {"required_region": "UNOVA", "flag": "b2_basic_badge", "flag_not": "b2_virbank_arrived"}, "completed_flag": "b2_virbank_arrived", "target": "VIRBANK_CITY"},
-    {"id": "b2_m9", "type": "MAIN", "title": "Virbank's Gym", "description": "Roxie leads Virbank City's Poison-type Gym, a rock club south of the Pokémon Center. Beat her two bandmates to stop the music, then challenge her.", "condition": {"required_region": "UNOVA", "flag": "b2_virbank_arrived", "flag_not": "b2_toxic_badge"}, "completed_flag": "b2_toxic_badge", "target": "VIRBANK_CITY", "reward": "Toxic Badge"},
-    {"id": "b2_m10", "type": "MAIN", "title": "Pokéstar Studios", "description": "A scout from Pokéstar Studios wants you in the movies! Go north through Virbank's gate to the studios.", "condition": {"required_region": "UNOVA", "flag": "b2_toxic_badge", "flag_not": "b2_first_film"}, "completed_flag": "b2_first_film", "target": "POKESTAR_STUDIOS"},
+    {"id": "b2_m9", "type": "MAIN", "title": "Virbank's Gym", "description": "Roxie leads Virbank City's Poison-type Gym, a rock club south of the Pokémon Center. Beat her two bandmates to stop the music, then challenge her.", "condition": {"required_region": "UNOVA", "flag": "b2_virbank_arrived", "flag_not": "b2_toxic_badge"}, "completed_badge": "TOXIC", "completed_flag": "b2_toxic_badge", "target": "VIRBANK_CITY", "reward": "Toxic Badge"},
+    {"id": "b2_m10", "type": "MAIN", "title": "Pokéstar Studios", "description": "A scout from Pokéstar Studios wants you in the movies! Go north through Virbank's gate to the studios.", "condition": {"required_region": "UNOVA", "flag": "b2_toxic_badge", "flag_not": "b2_first_film"}, "completed_flag": "b2_first_film", "target": "POKESTAR_STUDIOS", "steps": [{"area": "POKESTAR_STUDIOS", "room": "studio", "at": [14, 20], "label": "The set", "done": "b2_first_film"}]},
     {"id": "b2_m11", "type": "MAIN", "title": "Trouble at the Docks", "description": "Roxie and {rival_name} have Team Plasma cornered on Virbank's pier, east of the Gym. Help them out!", "condition": {"required_region": "UNOVA", "flag": "b2_first_film", "flag_not": "b2_virbank_dock"}, "completed_flag": "b2_virbank_dock", "target": "VIRBANK_CITY"},
     {"id": "b2_m12", "type": "MAIN", "title": "The Runaway Grunt", "description": "One Grunt fled west to Route 20. Climb the steps in the middle of the route, then look south in a small clearing.", "condition": {"required_region": "UNOVA", "flag": "b2_virbank_dock", "flag_not": "b2_r20_hugh"}, "completed_flag": "b2_r20_hugh", "target": "UNOVA_ROUTE_20"},
     {"id": "b2_m13", "type": "MAIN", "title": "The Ship to Castelia", "description": "Pop Roxie is back on Virbank's pier. Board his ship at the terminal for Castelia City.", "condition": {"required_region": "UNOVA", "flag": "b2_r20_hugh", "flag_not": "b2_sailed_castelia"}, "completed_flag": "b2_sailed_castelia", "target": "VIRBANK_CITY"},
     {"id": "b2_m14", "type": "MAIN", "title": "The Big City", "description": "Castelia City! Its Gym is on Gym Street, up from the waterfront. Go and see Gym Leader Burgh.", "condition": {"required_region": "UNOVA", "flag": "b2_castelia_arrived", "flag_not": "b2_burgh_away"}, "completed_flag": "b2_burgh_away", "target": "CASTELIA_CITY"},
     {"id": "b2_m15", "type": "MAIN", "title": "Iris's Hunch", "description": "Burgh is away. Iris thinks Team Plasma could be hiding by Thumb Pier, east along the waterfront.", "condition": {"required_region": "UNOVA", "flag": "b2_burgh_away", "flag_not": "b2_thumb_scene"}, "completed_flag": "b2_thumb_scene", "target": "CASTELIA_CITY"},
     {"id": "b2_m16", "type": "MAIN", "title": "Into the Sewers", "description": "{rival_name} ran into the Castelia Sewers from Thumb Pier. Follow him, then climb the north stairs after Team Plasma.", "condition": {"required_region": "UNOVA", "flag": "b2_thumb_scene", "flag_not": "b2_sewers_done"}, "completed_flag": "b2_sewers_done", "target": "CASTELIA_SEWERS"},
-    {"id": "b2_m17", "type": "MAIN", "title": "Burgh's Gym", "description": "Burgh is back at the Castelia Gym on Gym Street. Find your way through the cocoons to him.", "condition": {"required_region": "UNOVA", "flag": "b2_sewers_done", "flag_not": "b2_insect_badge"}, "completed_flag": "b2_insect_badge", "target": "CASTELIA_CITY", "reward": "Insect Badge"},
+    {"id": "b2_m17", "type": "MAIN", "title": "Burgh's Gym", "description": "Burgh is back at the Castelia Gym on Gym Street. Find your way through the cocoons to him.", "condition": {"required_region": "UNOVA", "flag": "b2_sewers_done", "flag_not": "b2_insect_badge"}, "completed_badge": "INSECT", "completed_flag": "b2_insect_badge", "target": "CASTELIA_CITY", "reward": "Insect Badge"},
     {"id": "b2_m18", "type": "MAIN", "title": "The Man in the White Coat", "description": "With Burgh's badge in hand, head for Central Plaza, the heart of Castelia, on the way to Route 4.", "condition": {"required_region": "UNOVA", "flag": "b2_insect_badge", "flag_not": "b2_colress_plaza"}, "completed_flag": "b2_colress_plaza", "target": "CASTELIA_CITY"},
     {"id": "b2_m19", "type": "MAIN", "title": "Colress Waits", "description": "Colress wants to test his theory in a battle. He's waiting on Route 4, north through Castelia's gate.", "condition": {"required_region": "UNOVA", "flag": "b2_colress_plaza", "flag_not": "b2_colress_route4"}, "completed_flag": "b2_colress_route4", "target": "UNOVA_ROUTE_4"},
+    {"id": "b2_m20", "type": "MAIN", "title": "The City of Lights", "description": "Nimbasa City is north through Join Avenue. Its Gym Leader, Elesa, is a famous model. Find the Gym in the amusement park, east of the city.", "condition": {"required_region": "UNOVA", "flag": "b2_colress_route4", "flag_not": "b2_nimbasa_gym_out"}, "completed_flag": "b2_nimbasa_gym_out", "target": "NIMBASA_CITY"},
+    {"id": "b2_m21", "type": "MAIN", "title": "The Leader Is Out", "description": "Elesa isn't at her Gym. The guide says she went to the roller coaster building by the park's entrance.", "condition": {"required_region": "UNOVA", "flag": "b2_nimbasa_gym_out", "flag_not": "b2_elesa_coaster"}, "completed_flag": "b2_elesa_coaster", "target": "NIMBASA_CITY"},
+    {"id": "b2_m22", "type": "MAIN", "title": "Elesa's Runway", "description": "Elesa is back at the Nimbasa Gym, east of the Ferris wheel. Beat the Trainers on the catwalk, then Elesa.", "condition": {"required_region": "UNOVA", "flag": "b2_elesa_coaster", "flag_not": "b2_bolt_badge"}, "completed_badge": "BOLT", "completed_flag": "b2_bolt_badge", "target": "NIMBASA_CITY"},
+    {"id": "b2_m23", "type": "MAIN", "title": "Trouble at Big Stadium", "description": "Hugh is shouting at Team Plasma outside Big Stadium, in the west of Nimbasa. He could use some help.", "condition": {"required_region": "UNOVA", "flag": "b2_bolt_badge", "flag_not": "b2_nimbasa_plasma"}, "completed_flag": "b2_nimbasa_plasma", "target": "NIMBASA_CITY"},
+    {"id": "b2_m24", "type": "MAIN", "title": "West to Route 5", "description": "The road to Driftveil runs west through Nimbasa's gate, along Route 5 to the drawbridge.", "condition": {"required_region": "UNOVA", "flag": "b2_nimbasa_plasma", "flag_not": "b2_charles"}, "completed_flag": "b2_charles", "target": "UNOVA_ROUTE_5"},
+    {"id": "b2_m25", "type": "MAIN", "title": "Over the Drawbridge", "description": "With the drawbridge lowered, Driftveil City waits on the far side of the river, and its Gym Leader Clay with it.", "condition": {"required_region": "UNOVA", "flag": "b2_charles", "flag_not": "visited_DRIFTVEIL_CITY"}, "completed_flag": "visited_DRIFTVEIL_CITY", "target": "DRIFTVEIL_CITY"},
     {"id": "unova_m2", "type": "MAIN", "title": "Team Plasma's Speech", "description": "Follow Route 1 north to Accumula Town. A group called Team Plasma is giving a speech in the square. Go and listen.", "condition": {"required_region": "UNOVA", "flag": "defeated_rival_nuvema", "flag_not": ["heard_n_accumula", "b2_mom_talk"]}, "completed_flag": "heard_n_accumula", "target": "ACCUMULA_TOWN"},
     {"id": "unova_m3", "type": "MAIN", "title": "A Stranger Named N", "description": "On Route 2 you'll meet Alder, and a strange young man named N who says he can hear Pokémon talk. He wants to battle!", "condition": {"required_region": "UNOVA", "flag": "heard_n_accumula", "flag_not": ["defeated_n_route2", "b2_mom_talk"], "region_badges_less": 1}, "completed_flag": "defeated_n_route2", "target": "UNOVA_ROUTE_2"},
     {"id": "unova_m4", "type": "MAIN", "title": "A Gift in the Dreamyard", "description": "A researcher named Fennel is at the Dreamyard, next to Striaton City. She has a Pokémon that's strong against the Striaton Gym.", "condition": {"required_region": "UNOVA", "flag": "defeated_n_route2", "flag_not": ["got_elemental_monkey", "b2_mom_talk"], "region_badges_less": 1}, "completed_flag": "got_elemental_monkey", "target": "DREAMYARD", "reward": "Pansage, Pansear or Panpour"},
@@ -10587,27 +12115,34 @@
     {"id": "unova_m20", "type": "MAIN", "title": "The Unova League", "description": "With eight badges, take Route 10 and climb Victory Road. Beat the Elite Four, then the Champion, Alder!", "condition": {"required_region": "UNOVA", "region_badges_min": 8, "flag_not": ["beat_alder", "b2_mom_talk"]}, "completed_flag": "beat_alder", "target": "UNOVA_POKEMON_LEAGUE", "reward": "Unova Champion"},
     {"id": "unova_m21", "type": "MAIN", "title": "N's Castle", "description": "N's Castle rose out of the ground behind the League! Get past the Seven Sages and battle N.", "condition": {"required_region": "UNOVA", "flag": "beat_alder", "flag_not": ["defeated_n_castle", "b2_mom_talk"]}, "completed_flag": "defeated_n_castle", "target": "NS_CASTLE"},
     {"id": "unova_m22", "type": "MAIN", "title": "Stop Ghetsis", "description": "Ghetsis was using N all along! Stop him to save Unova.", "condition": {"required_region": "UNOVA", "flag": "defeated_n_castle", "flag_not": ["beat_unova_champion", "b2_mom_talk"]}, "completed_flag": "beat_unova_champion", "target": "NS_CASTLE", "reward": "Unova at peace"},
-    {"id": "unova_s1", "type": "SIDE", "title": "Team Plasma at Relic Castle", "description": "Team Plasma is digging in Relic Castle, out in the Desert Resort. Ask in Driftveil City and go stop them.", "condition": {"required_region": "UNOVA", "region_badges_min": 4, "flag_not": "plasma_relic_castle_cleared"}, "completed_flag": "plasma_relic_castle_cleared", "target": "DRIFTVEIL_CITY"},
+    {"id": "unova_s1", "type": "SIDE", "title": "Team Plasma at Relic Castle", "description": "Team Plasma is digging in Relic Castle, out in the Desert Resort. Ask in Driftveil City and go stop them.", "condition": {"required_region": "UNOVA", "region_badges_min": 4, "flag_not": ["plasma_relic_castle_cleared", "b2_mom_talk"]}, "completed_flag": "plasma_relic_castle_cleared", "target": "DRIFTVEIL_CITY"},
     {"id": "unova_s2", "type": "SIDE", "title": "The Iron Will Pokémon", "description": "Cobalion, one of the Swords of Justice, waits in Mistralton Cave.", "condition": {"required_region": "UNOVA", "region_badges_min": 5, "flag_not": "MISTRALTON_CAVE_boss_defeated"}, "completed_flag": "MISTRALTON_CAVE_boss_defeated", "target": "MISTRALTON_CAVE", "reward": "Cobalion"},
     {"id": "unova_s3", "type": "SIDE", "title": "The Cavern Pokémon", "description": "Terrakion, another of the Swords of Justice, guards a hidden cave on Victory Road.", "condition": {"required_region": "UNOVA", "region_badges_min": 8, "flag_not": "VICTORY_ROAD_UNOVA_boss_defeated"}, "completed_flag": "VICTORY_ROAD_UNOVA_boss_defeated", "target": "VICTORY_ROAD_UNOVA", "reward": "Terrakion"},
     {"id": "unova_s4", "type": "SIDE", "title": "The Grassland Pokémon", "description": "Virizion, the last of the Swords of Justice, hides on Route 22, west of Opelucid City.", "condition": {"required_region": "UNOVA", "region_badges_min": 8, "flag_not": "UNOVA_ROUTE_22_boss_defeated"}, "completed_flag": "UNOVA_ROUTE_22_boss_defeated", "target": "UNOVA_ROUTE_22", "reward": "Virizion"},
     {"id": "unova_s5", "type": "SIDE", "title": "The Colt Pokémon", "description": "With all three Swords of Justice met, young Keldeo appears in the Moor of Icirrus.", "condition": {"required_region": "UNOVA", "flag": ["MISTRALTON_CAVE_boss_defeated", "VICTORY_ROAD_UNOVA_boss_defeated", "UNOVA_ROUTE_22_boss_defeated"], "flag_not": "MOOR_OF_ICIRRUS_boss_defeated"}, "completed_flag": "MOOR_OF_ICIRRUS_boss_defeated", "target": "MOOR_OF_ICIRRUS", "reward": "Keldeo"},
-    {"id": "unova_s6", "type": "SIDE", "title": "The Ancient Sun", "description": "Deep inside Relic Castle, Volcarona sleeps. Long ago, people said it took the sun's place.", "condition": {"required_region": "UNOVA", "visited": "RELIC_CASTLE", "flag_not": "RELIC_CASTLE_boss_defeated"}, "completed_flag": "RELIC_CASTLE_boss_defeated", "target": "RELIC_CASTLE", "reward": "Volcarona"},
+    {"id": "unova_s6", "type": "SIDE", "title": "The Ancient Sun", "description": "Deep inside Relic Castle, Volcarona sleeps. Long ago, people said it took the sun's place.", "condition": {"required_region": "UNOVA", "visited": "RELIC_CASTLE", "flag_not": ["RELIC_CASTLE_boss_defeated", "b2_mom_talk"]}, "completed_flag": "RELIC_CASTLE_boss_defeated", "target": "RELIC_CASTLE", "reward": "Volcarona"},
     {"id": "unova_s7", "type": "SIDE", "title": "The Other Dragon", "description": "N's legendary dragon has left. Its partner still waits at Dragonspiral Tower.", "condition": {"required_region": "UNOVA", "flag": "beat_unova_champion", "flag_not": "DRAGONSPIRAL_TOWER_boss_defeated"}, "completed_flag": "DRAGONSPIRAL_TOWER_boss_defeated", "target": "DRAGONSPIRAL_TOWER", "reward": "A legendary dragon"},
     {"id": "unova_s8", "type": "SIDE", "title": "The Boundary Pokémon", "description": "Lacunosa Town's elder tells of a monster in the Giant Chasm. Find Kyurem in the cold.", "condition": {"required_region": "UNOVA", "flag": "beat_unova_champion", "flag_not": "GIANT_CHASM_boss_defeated"}, "completed_flag": "GIANT_CHASM_boss_defeated", "target": "GIANT_CHASM", "reward": "Kyurem"},
     {"id": "unova_s9", "type": "SIDE", "title": "Storm and Thunder", "description": "Strange storms are blowing on Routes 7 and 8. Tornadus and Thundurus are behind them!", "condition": {"required_region": "UNOVA", "flag": "beat_unova_champion", "flag_not": ["UNOVA_ROUTE_7_boss_defeated", "UNOVA_ROUTE_8_boss_defeated"]}, "completed_flag": "UNOVA_ROUTE_8_boss_defeated", "target": "UNOVA_ROUTE_7", "reward": "Tornadus + Thundurus"},
     {"id": "unova_s10", "type": "SIDE", "title": "The Abundant Shrine", "description": "With the storms calmed, Landorus appears at the Abundant Shrine, east of Undella Town.", "condition": {"required_region": "UNOVA", "flag": "beat_unova_champion", "flag_not": "ABUNDANT_SHRINE_boss_defeated"}, "completed_flag": "ABUNDANT_SHRINE_boss_defeated", "target": "ABUNDANT_SHRINE", "reward": "Landorus"},
     {"id": "unova_s11", "type": "SIDE", "title": "Larvesta's Egg", "description": "A Pokémon Ranger on Route 18 has an egg that needs a good home.", "condition": {"required_region": "UNOVA", "flag": "beat_unova_champion", "flag_not": "got_unova_larvesta"}, "completed_flag": "got_unova_larvesta", "target": "UNOVA_ROUTE_18", "reward": "Larvesta"},
-    {"id": "unova_s12", "type": "SIDE", "title": "Aspertia's Gym", "description": "Cheren is now a Gym Leader in Aspertia City, in the southwest. Battle him!", "condition": {"required_region": "UNOVA", "flag": "beat_alder", "flag_not": "b2w2_cheren"}, "completed_flag": "b2w2_cheren", "target": "ASPERTIA_CITY"},
-    {"id": "unova_s13", "type": "SIDE", "title": "Virbank's Gym", "description": "Roxie plays in a band and leads Virbank City's Poison-type Gym.", "condition": {"required_region": "UNOVA", "flag": "beat_alder", "flag_not": "b2w2_roxie"}, "completed_flag": "b2w2_roxie", "target": "VIRBANK_CITY"},
-    {"id": "unova_s14", "type": "SIDE", "title": "Humilau's Gym", "description": "Marlon, a laid-back surfer, leads the Water-type Gym in Humilau City.", "condition": {"required_region": "UNOVA", "flag": "beat_alder", "flag_not": "b2w2_marlon"}, "completed_flag": "b2w2_marlon", "target": "HUMILAU_CITY"},
-    {"id": "unova_s15", "type": "SIDE", "title": "Champion Iris", "description": "Iris has become a Champion! Challenge her at the Pokémon League.", "condition": {"required_region": "UNOVA", "flag": "beat_alder", "flag_not": "b2w2_iris"}, "completed_flag": "b2w2_iris", "target": "UNOVA_POKEMON_LEAGUE"},
+    {"id": "unova_s12", "type": "SIDE", "title": "Aspertia's Gym", "description": "Cheren is now a Gym Leader in Aspertia City, in the southwest. Battle him!", "condition": {"required_region": "UNOVA", "flag": "beat_alder", "flag_not": ["b2w2_cheren", "b2_mom_talk"]}, "completed_flag": "b2w2_cheren", "target": "ASPERTIA_CITY"},
+    {"id": "unova_s13", "type": "SIDE", "title": "Virbank's Gym", "description": "Roxie plays in a band and leads Virbank City's Poison-type Gym.", "condition": {"required_region": "UNOVA", "flag": "beat_alder", "flag_not": ["b2w2_roxie", "b2_mom_talk"]}, "completed_flag": "b2w2_roxie", "target": "VIRBANK_CITY"},
+    {"id": "unova_s14", "type": "SIDE", "title": "Humilau's Gym", "description": "Marlon, a laid-back surfer, leads the Water-type Gym in Humilau City.", "condition": {"required_region": "UNOVA", "flag": "beat_alder", "flag_not": ["b2w2_marlon", "b2_mom_talk"]}, "completed_flag": "b2w2_marlon", "target": "HUMILAU_CITY"},
+    {"id": "unova_s15", "type": "SIDE", "title": "Champion Iris", "description": "Iris has become a Champion! Challenge her at the Pokémon League.", "condition": {"required_region": "UNOVA", "flag": "beat_alder", "flag_not": ["b2w2_iris", "b2_mom_talk"]}, "completed_flag": "b2w2_iris", "target": "UNOVA_POKEMON_LEAGUE"},
     {"id": "unova_s16", "type": "SIDE", "title": "The Plasma Frigate", "description": "A new Team Plasma has a ship off Humilau City. Sneak aboard and stop it!", "condition": {"required_region": "UNOVA", "flag": "beat_alder", "flag_not": "plasma_frigate_cleared"}, "completed_flag": "plasma_frigate_cleared", "target": "PLASMA_FRIGATE"},
     {"id": "unova_s17", "type": "SIDE", "title": "Pokémon World Tournament", "description": "Leaders and Champions from every region gather near Driftveil City. Win the tournament!", "condition": {"required_region": "UNOVA", "flag": "beat_alder", "flag_not": "pwt_cleared"}, "completed_flag": "pwt_cleared", "target": "PWT"},
     {"id": "unova_s18", "type": "SIDE", "title": "The Golems of Clay Tunnel", "description": "Regirock, Regice and Registeel sleep in the Underground Ruins past Clay Tunnel.", "condition": {"required_region": "UNOVA", "flag": "beat_alder", "flag_not": ["ruins_regirock", "ruins_regice", "ruins_registeel"]}, "completed_flag": "ruins_registeel", "target": "UNDERGROUND_RUINS", "reward": "The three Regis"},
     {"id": "unova_s19", "type": "SIDE", "title": "The Colossal Pokémon", "description": "With all three Regis, go deep into Twist Mountain. Regigigas is waking up!", "condition": {"required_region": "UNOVA", "flag": ["ruins_regirock", "ruins_regice", "ruins_registeel"], "flag_not": "twist_regigigas"}, "completed_flag": "twist_regigigas", "target": "TWIST_MOUNTAIN", "reward": "Regigigas"},
     {"id": "unova_s20", "type": "SIDE", "title": "Reversal Mountain", "description": "Heatran lives in the lava deep inside Reversal Mountain, near Lentimas Town.", "condition": {"required_region": "UNOVA", "flag": "beat_alder", "flag_not": "reversal_heatran"}, "completed_flag": "reversal_heatran", "target": "REVERSAL_MOUNTAIN", "reward": "Heatran"},
-    {"id": "unova_s21", "type": "SIDE", "title": "Black Tower and White Treehollow", "description": "Climb Black Tower in Black City, or White Treehollow in the White Forest. How far can you go?", "condition": {"required_region": "UNOVA", "flag": "beat_alder", "flag_not": ["black_tower_cleared", "white_treehollow_cleared"]}, "completed_flag": "black_tower_cleared", "target": "BLACK_CITY"}
+    {"id": "unova_s21", "type": "SIDE", "title": "Black Tower and White Treehollow", "description": "Climb Black Tower in Black City, or White Treehollow in the White Forest. How far can you go?", "condition": {"required_region": "UNOVA", "flag": "beat_alder", "flag_not": ["black_tower_cleared", "white_treehollow_cleared"]}, "completed_flag": "black_tower_cleared", "target": "BLACK_CITY"},
+    {"id": "b2_s_r4_trade", "type": "SIDE", "title": "A Swap on Route 4", "description": "Someone in a house on Route 4 has a Pokemon to swap. Bring them the one they're hoping for.", "condition": {"required_region": "UNOVA", "flag": "b2_colress_plaza", "flag_not": "b2_r4_trade"}, "completed_flag": "b2_r4_trade", "target": "UNOVA_ROUTE_4"},
+    {"id": "b2_s_join", "type": "SIDE", "title": "The Avenue Needs a Manager", "description": "North of Route 4, a whole street of empty shops is waiting for someone to bring it to life.", "condition": {"required_region": "UNOVA", "flag": "b2_colress_route4", "flag_not": "b2_join_manager"}, "completed_flag": "b2_join_manager", "target": "JOIN_AVENUE"},
+    {"id": "b2_s_royal", "type": "SIDE", "title": "The Royal Unova", "description": "Each evening a cruise ship leaves Castelia's Cruise Dock, full of Trainers. Beat every one aboard before it docks.", "condition": {"required_region": "UNOVA", "flag": "b2_castelia_arrived", "flag_not": "royal_unova_prize"}, "completed_flag": "royal_unova_prize", "target": "CASTELIA_CITY"},
+    {"id": "b2_s_victini", "type": "SIDE", "title": "The Lighthouse on the Island", "description": "Out past Liberty Pier, something small has been seen near the old lighthouse. It seems to bring good luck.", "condition": {"required_region": "UNOVA", "flag": "beat_unova_champion", "flag_not": "LIBERTY_GARDEN_boss_defeated"}, "completed_flag": "LIBERTY_GARDEN_boss_defeated", "target": "LIBERTY_GARDEN", "reward": "Victini"},
+    {"id": "b2_s_subway", "type": "SIDE", "title": "Two on Two", "description": "Outside Gear Station, a Trainer wants a partner to take on the Subway Bosses, Ingo and Emmet. They'll only battle two on two.", "condition": {"required_region": "UNOVA", "visited": "NIMBASA_CITY", "flag_not": "b2_subway_bosses"}, "completed_flag": "b2_subway_bosses", "target": "NIMBASA_CITY"},
+    {"id": "b2_s_pansage", "type": "SIDE", "title": "The Lost Pansage", "description": "A girl on Anville Town's platform lost her Pansage: it got on the wrong train home from Nimbasa. Someone at a Nimbasa station might have seen it.", "condition": {"required_region": "UNOVA", "flag": "b2_pansage_asked", "flag_not": "b2_pansage_reward"}, "completed_flag": "b2_pansage_reward", "target": "NIMBASA_CITY"},
+    {"id": "b2_s_subway_boss", "type": "SIDE", "title": "Last Stop: the Subway Boss", "description": "Seven Trainers to a train, three trains in a row on the Single Train, and the Subway Boss Ingo waits for whoever gets that far.", "condition": {"required_region": "UNOVA", "flag": "b2_subway_bosses", "flag_not": "b2_sub_single_boss"}, "completed_flag": "b2_sub_single_boss", "target": "NIMBASA_CITY"}
   ],
   "UNOVA_ROUTE_1_PERCENTAGES": {"504": 50, "506": 50, "507": 5, "505": 5, "559": 5, "531": 5},
   "UNOVA_ROUTE_2_PERCENTAGES": {"504": 40, "506": 40, "509": 20, "531": 5},
@@ -10619,7 +12154,13 @@
     "572": 12,
     "559": 5
   },
-  "UNOVA_ROUTE_5_PERCENTAGES": {"574": 15, "572": 30, "568": 20, "510": 20, "577": 15, "531": 5, "587": 4, "573": 2},
+  "UNOVA_ROUTE_5_PERCENTAGES": {
+    "572": 30,
+    "568": 20,
+    "510": 20,
+    "574": 15,
+    "577": 15
+  },
   "UNOVA_ROUTE_6_PERCENTAGES": {"585": 14, "588": 10, "520": 6, "590": 6, "541": 4, "616": 10, "183": 2, "531": 29, "587": 8, "521": 2, "542": 2, "206": 4, "184": 2, "351": 2, "580": 2},
   "UNOVA_ROUTE_7_PERCENTAGES": {"520": 14, "585": 9, "505": 9, "523": 9, "590": 5, "335": 2, "336": 2, "531": 40, "587": 7, "521": 2},
   "UNOVA_ROUTE_8_PERCENTAGES": {"536": 30, "616": 30, "618": 15, "453": 11, "588": 15, "592": 2},
@@ -10631,7 +12172,13 @@
   "UNOVA_ROUTE_14_PERCENTAGES": {"55": 20, "39": 20, "357": 15, "619": 10, "334": 10, "426": 10, "606": 10, "213": 5, "620": 4, "531": 5, "587": 4, "40": 2},
   "UNOVA_ROUTE_15_PERCENTAGES": {"22": 30, "105": 20, "207": 15, "539": 8, "115": 10, "247": 10, "538": 8, "505": 2, "531": 5, "587": 4, "248": 2, "472": 2},
   "WHITE_FOREST_PERCENTAGES": { "16": 10, "29": 10, "32": 10, "43": 10, "63": 10, "66": 10, "81": 10, "92": 10, "280": 10, "371": 10 },
-  "UNOVA_ROUTE_16_PERCENTAGES": {"574": 15, "572": 30, "568": 20, "510": 20, "577": 15, "531": 5, "587": 4, "573": 2},
+  "UNOVA_ROUTE_16_PERCENTAGES": {
+    "572": 30,
+    "568": 20,
+    "510": 20,
+    "574": 15,
+    "577": 15
+  },
   "UNOVA_ROUTE_17_PERCENTAGES": { "550": 30, "580": 25, "592": 25, "594": 20 },
   "UNOVA_ROUTE_18_PERCENTAGES": {"559": 40, "557": 30, "505": 20, "539": 5, "538": 5, "558": 5, "531": 5, "594": 2},
   "UNOVA_ROUTE_21_PERCENTAGES": { "580": 30, "592": 25, "594": 25, "550": 20 },
@@ -10640,7 +12187,16 @@
   "UNOVA_DREAMYARD_PERCENTAGES": {"504": 40, "509": 40, "517": 20, "505": 5, "510": 5, "20": 3, "166": 3, "168": 3, "402": 3, "49": 3, "531": 5, "518": 1},
   "UNOVA_WELLSPRING_CAVE_PERCENTAGES": {"524": 50, "527": 50, "529": 5},
   "UNOVA_PINWHEEL_FOREST_PERCENTAGES": {"535": 20, "519": 22, "532": 10, "539": 2, "538": 2, "546": 9, "540": 18, "543": 8, "548": 9, "531": 5, "541": 5, "544": 3, "520": 3, "511": 2, "513": 2, "515": 2, "547": 1, "549": 1},
-  "UNOVA_LOSTLORN_FOREST_PERCENTAGES": {"546": 18, "541": 35, "520": 15, "543": 15, "548": 18, "531": 5, "587": 3, "511": 3, "513": 3, "515": 3, "521": 2, "542": 2, "547": 2, "549": 2},
+  "UNOVA_LOSTLORN_FOREST_PERCENTAGES": {
+    "541": 25,
+    "543": 20,
+    "315": 15,
+    "546": 12,
+    "548": 12,
+    "415": 10,
+    "214": 2,
+    "127": 2
+  },
   "UNOVA_CASTELIA_SEWERS_PERCENTAGES": {
     "19": 45,
     "41": 45,

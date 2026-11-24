@@ -360,7 +360,8 @@ shot("09_autumn")
 put(1, 0, (-1, 0))
 step(-1, 0)
 play(lambda: isinstance(g.current_state, _WTS) and story.current_area_key == "FLOCCESY_TOWN" and idle(), 600)
-check(story.current_area_key == "FLOCCESY_TOWN" and pos() in ((31, 0), (31, 1), (30, 0), (30, 1)),
+check(story.current_area_key == "FLOCCESY_TOWN" and pos() in ((31, 0), (31, 1), (30, 0), (30, 1), (31, 2)),   # (11-23: the walker
+      # sets you one step in from the way out you came by: (31, 2), at the top of the dead end, (31, 0/1) being Route 20's edge)
       f"the leaves' top corner leads west onto Floccesy's dead end ({story.current_area_key}, {pos()})")
 _ht = g.current_state
 check("31,15" in (_ht.town_map or {}).get("hidden", {}), "where Floccesy's hidden Potion waits")

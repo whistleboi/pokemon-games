@@ -433,6 +433,11 @@ class TrainerBattleState(ShadowBattle, GimmickEffects, AbilityEffects, MoveMecha
                 default_win_text = f"Player defeated {self.trainer_name or self.trainer_class}!"
                 text = random.choice(lines) if lines else default_win_text
             extra = self._shadow_after()   # (Shadow Pokemon that fought open their hearts a little)
+            if self.trainer_index is not None:   # (the last of a group beaten: what they hand you - the Kimono Girls' Tidal Bell)
+                try:
+                    extra = list(extra or []) + self.game.story_manager.finish_trainer_group(self.game.story_manager.current_area_key, self.trainer_index)
+                except Exception:
+                    pass
             if extra:
                 text = (list(text) if isinstance(text, list) else [text]) + extra
 
