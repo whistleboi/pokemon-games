@@ -28,9 +28,18 @@ check(evolution.item_evolution(g, gloom, "LEAF_STONE") == ("VILEPLUME_PINKAN", 4
 valencia = [k for k, v in FM.items() if v.get("form") == "valencia"]
 check(len(valencia) == 17, f"17 Valencia variants: {len(valencia)}")
 beach = g.loader.area_data["ORANGE_VALENCIA_PARK_PERCENTAGES"]
-_evolved = {"9504", "9505", "9507", "9508", "9511", "9513", "9515"}   # (their earlier Valencia stage is in the park)
+_evolved = {"9505", "9508", "9511", "9513", "9515"}   # (their earlier Valencia stage is in the park; middle stages back, Jordan 11-24)
 check(all(k in beach for k in valencia if k not in _evolved) and not _evolved & set(beach) and sum(beach.values()) == 100,
       "Valencia Park has each Valencia line's lowest stage only; Nidorina, Parasect... come by evolving (Jordan 11-24)")
+
+# The Valencia Pokemon older than the park's Lv 6-15 meet you at their own levels, still rare (Jordan 11-24).
+from src.world import levels as _lv
+from src.dungeon import core as _core
+_core.CURRENT_TILE = None
+_lvs = {pid: {_lv.set_wild(g, mkf(pid), "VALENCIA_PARK").level for _ in range(40)} for pid in (9517, 9512, 9501, 9510, 9504, 9507)}
+check(_lvs[9517] <= set(range(20, 23)) and _lvs[9512] <= set(range(25, 28)) and _lvs[9501] <= set(range(10, 16))
+      and _lvs[9510] <= set(range(6, 16)) and _lvs[9504] | _lvs[9507] <= set(range(16, 19)) and beach["9517"] == 1,
+      f"Valencia Park: Gyarados 20-22, Poliwhirl 25-27, Butterfree 10-15, Paras the park's 6-15, Nidorina/Nidorino 16-18, still 1-2% ({_lvs})")
 
 # Eggs keep a Pinkan or Valencia colour from either parent (Jordan 11-24).
 from src.pokemon import breeding
