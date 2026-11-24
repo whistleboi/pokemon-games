@@ -164,6 +164,17 @@ def main():
                 continue
             pygame.image.save(recolour_sheet(sheet, colour_map(a, b)), os.path.join(OUT, sub, f"{dex}_{form}.png"))
             made += 1
+    # (Jordan 11-23: the Pinkan / Valencia Pokemon with a Mega or G-Max form get that sheet in their own colours:
+    # <dex>_<form>_mega / _gmax, the species -> form battle colours laid on the Mega / G-Max walking sheet)
+    for fid, dex, form, _name in entries:
+        for big in ("mega", "gmax"):
+            for sub in ("", "shiny"):
+                sheet = os.path.join(OUT, sub, f"{dex}_{big}.png")
+                a, b = os.path.join(SPRITES, sub, f"{dex}.png"), os.path.join(SPRITES, sub, f"{fid}.png")
+                if os.path.exists(sheet) and os.path.exists(a) and os.path.exists(b):
+                    pygame.image.save(recolour_sheet(sheet, colour_map(a, b)),
+                                      os.path.join(OUT, sub, f"{dex}_{form}_{big}.png"))
+                    made += 1
     for name, (a, b) in SHINY_ONLY.items():   # (a form sheet whose pack had no shiny: its shiny battle colours)
         a, b = os.path.join(SPRITES, a), os.path.join(SPRITES, b)
         if os.path.exists(os.path.join(OUT, name + ".png")) and os.path.exists(a) and os.path.exists(b):
