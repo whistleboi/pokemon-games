@@ -182,6 +182,7 @@ def build_region(region, title):
         text = open(os.path.join(pdir, fn), encoding="utf-8").read()
         ptitle = re.search(r"<!--title:\s*(.*?)-->", text).group(1).strip()
         body = B.link_places(B.fill(text))
+        body = re.sub(r'href="#mon-(\d+)"', lambda q: f'href="#pokemon-{F.base_id(int(q.group(1)))}"', body)   # (hand-written boxes)
         for k, anchor in B.PLACE_ID.items():   # (a place's name in the text opens its own page)
             body = body.replace(f'href="#{anchor}"', f'href="#{site_ids[k]}"')
         body, box = B.toc(body, f"p{n}")
@@ -224,6 +225,17 @@ def build_region(region, title):
 
     # where each Pokemon and item turns up, and who uses each Pokemon
     mons, items, trainers = {}, {}, {}
+    # the professor's first Pokemon (REGION_START: the region's starters, where they're given, at what level)
+    rs = (F.DATA.get("REGION_START") or {}).get(region.upper()) or {}
+    sts = [int(x) for x in rs.get("starters") or []]
+    for pid in sts:
+        lv = (rs.get("starter_levels") or {}).get(str(pid)) or rs.get("starter_level") or 5   # (Pokemon's own default: Lv. 5)
+        others = [F.mon_name(x) for x in sts if x != pid]
+        prof = rs.get("professor") or "the professor"
+        how = (f"Joins you at the start, together with {' and '.join(others)}" if rs.get("partners_join")
+               else f"Gift from {prof} at the start: pick one of {({2: "two", 3: "three"}).get(len(sts), len(sts))} (the others are {' and '.join(others)})")
+        mons.setdefault(F.base_id(pid), {"wild": [], "used": []}).setdefault("gift", []).append(
+            {"p": rs.get("starter_area") or rs.get("start_area"), "how": how, "lv": str(lv)})
     for k, f in B.FACTS.items():
         w = f["wild"]
         for r in w["land"] + w["water"] + w["trees"] + [dict(r, zone=z["zone"]) for z in w["zones"] for r in z["rows"]]:
@@ -251,6 +263,15 @@ def build_region(region, title):
             e = items.setdefault(slug(i["item"]), {"key": i["item"], "name": i["name"], "ic": B.icon("i", i.get("sprite")),
                                                    "desc": item_desc(i["item"]), "where": []})
             e["where"].append({"p": k, "w": where + (f" ({when})" if when else "") + (qty and f" {qty}")})
+    import trainer_classes as TC
+    for k, f in B.FACTS.items():
+        TC.collect(title, k, f)
+    import shops as SH   # (sold or exchanged: the Mart counter by badges, Game Corner prizes, BP counters)
+    for key, place, words, link in SH.entries(["KANTO", "SEVII"] if region == "kanto" else [region.upper()]):
+        key = {"POKE_BALLS": "POKE_BALL"}.get(key, key)
+        e = items.setdefault(slug(key), {"key": key, "name": F.item_name(key), "ic": B.icon("i", F.item_sprite(key)),
+                                         "desc": item_desc(key), "where": []})
+        e["where"].append({"p": place, "w": words, **({"l": link} if link else {})})
     for e in mons.values():
         e["wild"].sort(key=lambda r: first_part.get(r["p"], 99))
     return {"key": region, "title": title, "parts": parts, "places": places, "mons": mons, "items": items, "buildings": blds,
@@ -366,6 +387,12 @@ def main(out):
     for key, _t, _s in REGIONS:
         known |= set(json.load(open(os.path.join(out, "data", f"{key}.json"), encoding="utf-8")).get("items", {}))
     mech.update(facilities.pages(B, F, known))
+    import shops as SH
+    mech["type-chart"] = SH.type_chart_page()   # (the game's own TYPE_CHART)
+    import trainer_classes as TC   # (a page per trainer class, from every region's trainers; collected region by region)
+    mech.update(TC.pages())
+    with open(os.path.join(out, "data", "trainers-maps.json"), "w", encoding="utf-8", newline="\n") as fh:
+        json.dump(TC.PICS, fh, separators=(",", ":"))
     with open(os.path.join(out, "data", "mechanics.json"), "w", encoding="utf-8", newline="\n") as fh:
         json.dump(mech, fh, ensure_ascii=False, separators=(",", ":"))
     import journal as J   # (the Journal pages, from quest_book.json / the missions / quest_feats.json every build)

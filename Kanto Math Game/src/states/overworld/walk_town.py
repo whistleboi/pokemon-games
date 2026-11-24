@@ -3041,9 +3041,12 @@ class WalkTownState(TownWalkUps, CityState):
         if len(mine) < 2:
             return tiles
         goal = guide.mission_target(self.game, mission)
-        path = guide.path_to(self.game, hop, goal) if goal and goal != hop else None
+        path = guide.path_to(self.game, hop, goal, came=self.area_key) if goal and goal != hop else None
         nxt = path[1] if path and len(path) > 1 else None
         other = story_map(self.game, hop) if nxt else None
+        _good = guide.good_ways(self.game, self.area_key, [t for r, t in tiles if r is None], hop, nxt)   # (a place in parts, by
+        if _good:                                                     #  the table: Route 213's sea edge can't reach Valor Lakefront; 11-24)
+            return {(r, t) for r, t in tiles if r is not None or t in _good}
         if not isinstance(other, dict) or other.get("floors") or not other.get("art"):
             return tiles
         art, ex = other["art"], other.get("exits") or {}

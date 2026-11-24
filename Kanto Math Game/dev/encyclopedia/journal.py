@@ -14,7 +14,7 @@ import facts as F
 QB = F.load("quest_book.json")
 FEATS = F.load("quest_feats.json")
 TITLES = {"KANTO": "Kanto + Sevii Islands", "JOHTO": "Johto", "ORANGE": "Orange Islands", "HOENN": "Hoenn",
-          "SINNOH": "Sinnoh", "UNOVA": "Unova"}
+          "SINNOH": "Sinnoh", "UNOVA": "Unova", "ORRE": "Orre"}   # (Orre: no Quest Book yet; its missions in order)
 ORD = ["first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth"]
 
 
@@ -155,7 +155,8 @@ def region_page(region, slug, parts):
             out.append("</ol>")
     mains = [m for m in F.MISSIONS if m.get("type") == "MAIN" and region_of_mission(m) == region and m["id"] not in in_book]
     if mains and not arcs:
-        out.append('<h2 id="story">Story</h2><ol class="chapters">' + "".join(
+        out.append('<h2 id="story">Story</h2><p>This region has no Quest Book of arcs and chapters yet, so the Journal shows its '
+                   'main missions one at a time. Here they are in the order the data lists them.</p><ol class="chapters">' + "".join(
             f"<li><b>{B.esc(words(m.get('title') or m.get('text')))}</b><details class=\"howto\"><summary>How to complete</summary>"
             f"{how_to(m, slug, parts)}</details></li>" for m in mains) + "</ol>")
     sides = [m for m in F.MISSIONS if m.get("type") == "SIDE" and region_of_mission(m) == region]

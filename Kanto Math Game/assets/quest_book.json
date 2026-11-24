@@ -312,6 +312,7 @@
     ]},
     {"title": "The Relic Badge", "chapters": [
       {"mission": "sinnoh_m7", "title": "The Old Charm", "say": "Cynthia's grandmother lives in Celestic Town, beyond the fog. The Charm in your Bag is very old. Someone else wants it."},
+      {"mission": "sinnoh_m8", "steps": [0], "title": "The Elder's Gift", "say": "The Old Charm is home in Celestic's shrine. The town's Elder hasn't finished with you yet: she has something for a Trainer who can cross water."},
       {"mission": "sinnoh_m8", "title": "Ghosts of Hearthome", "say": "Hearthome's Gym Leader is finally home. Her Gym is dark, and the lights only come on for the right answers."}
     ]},
     {"title": "The Mine Badge", "chapters": [
@@ -414,6 +415,19 @@
       {"mission": "b2_m38", "title": "The Splicers", "say": "Drayden has kept something hidden for two years, and Team Plasma has come to take it.", "when": "b2_opelucid_zinzolin", "done": "b2_splicers_stolen"},
       {"mission": "b2_m38", "title": "A Shadow at the Gate", "say": "The thieves are gone, but one of them is still watching from the east gate.", "when": "b2_splicers_stolen"},
       {"mission": "b2_m39", "title": "The Coldest Place", "say": "Cheren is on the line. Something in the far east of Unova is colder than any winter, and the only way there runs under the sea from Undella."}
+    ]},
+    {"title": "The Wave Badge", "chapters": [
+      {"mission": "b2_m40", "title": "The Lily Pad Gym", "say": "Humilau City stands on stilts over the sea, and its Gym Leader would rather be surfing. The way to him is a maze of floating lily pads."}
+    ]},
+    {"title": "The Frigate Returns", "chapters": [
+      {"mission": "b2_m41", "title": "A Presence on Route 22", "say": "Something large moved through the trees on Route 22. A man in a lab coat is following it with a very strange machine."},
+      {"mission": "b2_m42", "title": "The Sturdy Boulder", "say": "Seaside Cave is the only way through to the coast, and something with a very hard shell is sitting in the exit."},
+      {"mission": "b2_m43", "title": "The Ship off Route 21", "say": "Out past Route 21, the ship with no flag waits again. This time it isn't sailing off without a fight.", "done": "b2_frigate2_open"},
+      {"mission": "b2_m43", "title": "Aboard the Frigate", "say": "The gangplank is down. Somewhere below deck, a door only opens for the right password, and the crew aren't sharing it.", "when": "b2_frigate2_open", "done": "b2_frigate2_cc"},
+      {"mission": "b2_m43", "title": "Thrown Overboard", "say": "The Command Center held something enormous and frozen. Then the shadows moved, and the ship was gone.", "when": "b2_frigate2_cc"}
+    ]},
+    {"title": "The Giant Chasm", "chapters": [
+      {"mission": "b2_m44", "title": "Into the Giant Chasm", "say": "Cheren says the frigate was heading for the Giant Chasm, a crater in the forest past Route 22 where a meteor fell long ago. The cold seems to start there."}
     ]}
   ],
   "ORRE": [
@@ -447,7 +461,7 @@
     ]},
     {"title": "Beneath Pyrite", "chapters": [
       {"mission": "orre_m7", "title": "Smoke on Mt. Battle", "say": "Something is wrong on the mountain next to Agate. Trainers are coming down beaten and shaking."},
-      {"mission": "orre_m7b", "title": "A Gift from the Top", "say": "Mt. Battle is quiet again. The trainer at the top of its first area has been waiting to say something."},
+      {"mission": "orre_m7b", "title": "A Gift from the Top", "say": "Mt. Battle is quiet again. The trainer at the top of its first area has been waiting to say something, and whoever ran off in such a hurry dropped something shiny on the way."},
       {"mission": "orre_m7c", "title": "The Jail Key", "say": "Two of Miror B.'s men sit in Pyrite's cells. Whatever they're carrying, they aren't going to hand it over."},
       {"mission": "orre_m8", "title": "Down the Giant Lift", "say": "Beneath the Pyrite Building, a lift big enough for a truck goes down and down. At the bottom is a whole town that never sees the sun."},
       {"mission": "orre_m8b", "title": "A Spy in a Cage", "say": "Somebody in The Under has been locked away for asking too many questions."},
@@ -467,9 +481,11 @@
     ]},
     {"title": "Five Years Later", "chapters": [
       {"mission": "orre_m10b", "title": "An Empty Lab", "say": "Five years have passed. Professor Krane's lab near Gateon Port studies how to heal dark hearts. Today the door is open and nobody answers."},
-      {"mission": "orre_m10c", "title": "A Machine Part", "say": "The Purify Chamber needs a part nobody in Gateon has. A shopkeeper's father might, if anyone can find him.", "done": "xd_gateon_bridges"},
+      {"mission": "orre_m10c", "title": "A Machine Part", "say": "The Purify Chamber needs a part nobody in Gateon has. The shopkeeper at the Parts Shop might know someone who does."},
+      {"mission": "orre_m10c2", "title": "Down at Kaminko's", "say": "Perr's father went to visit a very strange inventor and never came back. Kaminko's house is full of machines, and one small, loud assistant guards the stairs."},
       {"mission": "orre_m10d", "title": "The Lighthouse", "say": "Gateon's bridges swing back into place, and the lighthouse on the islands is lit. Three guardians stand between you and the top."},
-      {"mission": "orre_m10c", "title": "Back to the Lab", "say": "The part is in your bag. Lily has been waiting at the lab with the Purify Chamber open.", "when": "xd_gateon_bridges"}
+      {"mission": "orre_m10c3", "title": "A Part at Last", "say": "Makan made it home to the Parts Shop. He has been rummaging through his shelves for something with exactly the right shape."},
+      {"mission": "orre_m10c4", "title": "Back to Lily", "say": "The part is in your bag. Lily has been waiting at the lab with the Purify Chamber open."}
     ]},
     {"title": "Cipher Returns", "chapters": [
       {"mission": "orre_m11", "title": "The Lab Reopened", "say": "A car with no plates was seen driving toward the old lab in the sand. The professor might still be inside."},

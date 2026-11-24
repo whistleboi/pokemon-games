@@ -949,6 +949,17 @@ check(_c1_open and _s1_done and _c1_done,
       f"the Journal's Unown missions end: 'Ruins of Alph' once the Unown Report is yours ({_s1_done}), "
       f"'Unown Researcher' with five Unown forms ({_c1_open}, {_c1_done})")
 story.story_flags, story.inventory, story.pc_pokemon, story.player_team = _fl2, _inv2, _pc2, _tm2
+# Johto's Battle Frontier draws HGSS's own Tower Pokemon (Dev Map clean-johto-main-frontier-gen4-pokemon)
+from src.world import frontier as _fr
+_g4 = _fr.data4(g).get("groups") or {}
+_g4all = {i for v in _g4.values() for i in v}
+_seen = set()
+for _fac in _fr.JOHTO_FIVE:
+    for _k in range(25):
+        _seen |= set(_fr.next_trainer(g, _fac)["team"])
+check(len(_g4) == 4 and _seen and _seen <= _g4all and any(i >= 387 for i in _seen),
+      f"Johto's Frontier opponents come from SoulSilver's own Tower sets (Gen 4 Pokemon too): {len(_seen)} species seen, "
+      f"Gen 4 among them {sorted(i for i in _seen if i >= 387)[:6]}")
 # the Silver League Plateau's one way out (Dev Map clean-johto-main-plateau-victory-road-exit): back down Victory Road
 story.current_area_key, story.last_area_key = "SILVER_LEAGUE_PLATEAU", "JOHTO_VICTORY_ROAD"
 _pl = _CS(g); g.change_state(_pl); _tap_through(_pl)

@@ -1334,6 +1334,37 @@ check(_wait and _in and "MINE" not in _hm, f"Canalave: Barry waits at the Librar
 story.story_flags.clear(); story.story_flags.update(_sv); story.badges["SINNOH"] = _bv
 story.inventory.clear(); story.inventory.update(_iv)
 
+# ---- S5 (11-24, the Journal's full playthrough): back from Iron Island you land on Canalave's dock, not a pocket by the boats
+t = town("CANALAVE_CITY", "IRON_ISLAND"); frames(t, 3)
+_seen, _todo = {tuple(t.player)}, [tuple(t.player)]
+while _todo:
+    _c = _todo.pop()
+    for _dx, _dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+        _n = (_c[0] + _dx, _c[1] + _dy)
+        if _n not in _seen and t._open(_n) and _n not in t.exits:
+            _seen.add(_n); _todo.append(_n)
+check((7, 28) in _seen and (13, 45) not in _seen, f"Canalave: off the Iron Island boat at {t.player}, the Gym's door can be walked to ({len(_seen)} tiles open)")
+
+# ---- S5 (11-24, the Journal's split-place step): in at Mt. Coronet's Route 211 side, its north part, sets coronet_north_side
+story.story_flags.pop("coronet_north_side", None)
+r = route("MT_CORONET_BASE", "SINNOH_ROUTE_211")
+for _ in range(120):
+    g.current_state.update()
+_f7 = getattr(getattr(r, "run", None), "index", None)
+check(_f7 == 7 and story.story_flags.get("coronet_north_side"), f"Mt. Coronet: in from Route 211 you're on its north side (floor {_f7}), and it's noted (coronet_north_side: {story.story_flags.get('coronet_north_side')})")
+story.story_flags.pop("coronet_north_side", None)
+r = route("MT_CORONET_BASE", "SINNOH_ROUTE_207")
+for _ in range(120):
+    g.current_state.update()
+check(not story.story_flags.get("coronet_north_side"), "Mt. Coronet: in from Route 207 (the south rooms) it isn't")
+
+# ---- (11-24, inbox clean-sinnoh-main-frontier-gen4-pokemon): Sinnoh's Frontier draws Gen IV's own Tower sets' Pokemon (HGSS = Platinum's)
+from src.world import frontier as _fr
+_ids = {i for _ in range(40) for i in _fr._team(g, [0, 1, 2, 3], 3, fac="stower")}
+_g4 = {str(i) for gg in _fr.data4(g)["groups"].values() for i in gg}
+check(_ids and all(str(i) in _g4 for i in _ids) and any(387 <= int(i) <= 493 for i in _ids),
+      f"Sinnoh's Battle Tower: its Pokemon from Gen IV's groups, Gen 4 ones among them ({len(_ids)} seen)")
+
 # ---- S5 (11-24): Route 213's gatehouse is a room again, walked through (main a91de160: arrival by land or by sea)
 story.badges["SINNOH"] = ["COAL", "FOREST", "COBBLE", "FEN", "RELIC"]
 t = town("PASTORIA_CITY", "SINNOH_ROUTE_212"); frames(t, 3); _drive(t, 200, lambda: not t._busy())
@@ -1559,6 +1590,19 @@ _wakes = "Battle" in type(g.current_state).__name__
 check(_clown["event"].get("gift_item") == {"COIN_CASE": 1} and _fl["event"].get("gift_item") == {"SPRAYDUCK": 1} and _wet and _asleep and _wakes,
       f"Veilstone's clown gives the Coin Case, Floaroma's florist the Sprayduck that waters Berry soil, Regigigas wakes only for the three Regis ({_wet}, {_asleep}, {_wakes})")
 story.story_flags.clear(); story.story_flags.update(_sv); story.inventory.clear(); story.inventory.update(_iv); story.player_team = _team
+
+# ---- 11-24 (Jordan: "from the game file"): Sinnoh's own soundtrack, Platinum's tracks (s_music.py): every track music.json
+#      names is there, and the game picks Sinnoh's own for a Sinnoh town and a wild battle
+_mj = __import__("json").load(open("assets/music/sinnoh/music.json", encoding="utf-8"))
+_names = set()
+for _v in list(_mj["areas"].values()) + list(_mj["rooms"].values()) + list(_mj["kinds"].values()):
+    _names |= set(_v.values()) if isinstance(_v, dict) else {_v}
+_missing = sorted(n for n in _names if not __import__("os").path.isfile(f"assets/music/sinnoh/{n}.ogg"))
+t = town("TWINLEAF_TOWN", None); frames(t, 3)
+_tt = g.music.region_track("town", "SINNOH") if hasattr(g, "music") else None
+_wt = g.music.region_track("wild", "SINNOH") if hasattr(g, "music") else None
+check(not _missing and len(_mj["areas"]) >= 80 and _tt and "town01" in _tt and _wt and _wt.endswith("ba_poke.ogg"),
+      f"Sinnoh's own music: {len(_names)} Platinum tracks for {len(_mj['areas'])} places and {len(_mj['rooms'])} rooms, Twinleaf's theme in Twinleaf ({_missing[:3]}, {_tt}, {_wt})")
 
 g.walk_towns = False
 print(f"##### {fails} failures")

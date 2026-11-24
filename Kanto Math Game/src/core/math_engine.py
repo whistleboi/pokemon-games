@@ -6,7 +6,7 @@ Difficulty levels live in assets/math_levels.json so new regions can add
 new kinds of math (fractions, decimals...) without touching game states.
 
 The player picks a level (or AUTO) per save file. AUTO follows the story:
-the current region + badges earned in that region choose the level.
+the badges earned in every region together choose the level (the "GLOBAL" table; story.get_math_level).
 
 This module deliberately has no pygame import so it can be unit-tested.
 """

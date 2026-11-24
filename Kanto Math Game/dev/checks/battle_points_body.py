@@ -272,4 +272,21 @@ _said.clear()
 _tutor_flow(g.current_state, ev["tutor"], ev, [], lambda l: _said.extend(l))
 _mvp = __import__("src.pokemon.moves", fromlist=["move_pool"]).move_pool(g, drag)
 check(story.money == 50 and "DRACO-METEOR" in _mvp and "unlocked" in " ".join(_said), f"again: nothing to pay - it's unlocked, in the Summary like a TM's move (${story.money}, {_said})")
+print("Frontier trainers from every column; Smelling Salts by its old name (the encyclopedia, 11-24)")
+from src.world import frontier as _fr
+from src.pokemon import moves as _mv
+_fk = next(iter(k for k in _fr.NAMES if k not in _fr.ENDLESS))
+_was = {k: story.story_flags.get(k) for k in (f"frontier_{_fk}_wins", f"frontier_{_fk}_silver")}
+_cols = set()
+for _silver in (False, True):
+    story.story_flags[f"frontier_{_fk}_silver"] = _silver
+    for _w in range(_fr.AGAIN if _silver else _fr.FIRST):
+        story.story_flags[f"frontier_{_fk}_wins"] = _w
+        _cols.add(_fr.trainer_column(g, _fk))
+check(_cols == set(range(8)), f"all eight of Emerald's trainer columns turn up over the two streaks ({sorted(_cols)})")
+for _k, _v in _was.items():
+    story.story_flags[_k] = _v
+_mon = Pokemon(g.loader.fetch_specific(286), g.assets)
+check("SMELLING-SALTS" in _mv.preset_moves(g, _mon, ["SMELLINGSALT"]), "a set's SMELLINGSALT is Smelling Salts")
+
 print(f"##### {len(fails)} failures")

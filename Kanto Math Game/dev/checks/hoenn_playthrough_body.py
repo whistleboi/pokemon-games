@@ -1361,6 +1361,28 @@ def push_gates(st):
     return {"gates": len(steps)}
 
 
+def stop_on_crack(st):
+    """On the marker's cracked tile: stand still till it gives way. -> what was done, or None."""
+    if not is_dun(st) or not hasattr(st, "_guide_spot"):
+        return None
+    try:
+        hit = st._guide_spot()
+    except Exception:
+        return None
+    if not hit or not str(hit[1]).startswith("Cracked floor") or tuple(hit[0]) != tuple(pos(st)):
+        return None
+    L = loc()
+    if TRIED[(L, ("CRACK",))] >= 3:
+        return None
+    TRIED[(L, ("CRACK",))] += 1
+    f0 = st.run.index
+    for _ in range(20):   # (a moment standing still: the game's own frames)
+        st.update(); st.draw()
+    st = settle()
+    out(f"  .... [{STATE['mission']}] stood on the crack at {tuple(hit[0])}: floor {f0} -> {getattr(getattr(st, 'run', None), 'index', '?')}")
+    return {"crack": tuple(hit[0])}
+
+
 def talk_companions(st):
     """Someone walking with you (Lance in the Rocket hideout) with a line on this floor not heard yet (an unset flag):
     turn to them and press the action key (the game's own _talk_companion, as the key does). -> True if talked."""
@@ -1962,6 +1984,8 @@ def play_through():
             continue
         if dive_now(st) is not None:   # (Hoenn: Dive / come up on the marker's tile)
             continue
+        if stop_on_crack(st) is not None:   # (Sky Pillar: stop on the crack to fall through)
+            continue
         if turn_blocks(st) is not None:   # (Mossdeep Gym's coloured switches)
             continue
         if walk_ice(st) is not None:   # (Sootopolis Gym's thin ice)
@@ -2069,13 +2093,22 @@ POST_JOBS = [   # (id, what, where it starts (Fly), steps, the flag that says it
     ("delta_mossdeep", "Courtney and Matt in Mossdeep", "MOSSDEEP_CITY",
      [{"area": "MOSSDEEP_CITY", "at": [62, 17], "label": "Courtney", "done": "delta_courtney_mossdeep"},
       {"area": "MOSSDEEP_CITY", "at": [68, 17], "label": "Matt", "done": "delta_matt_mossdeep"}], "delta_matt_mossdeep"),
-    ("delta_wallace", "Wallace by Sky Pillar (Route 131)", "PACIFIDLOG_TOWN",
-     [{"area": "HOENN_ROUTE_131", "floor": 0, "at": [37, 35], "label": "Wallace", "done": "delta_wallace_131"}], "delta_wallace_131"),
-    ("delta_zinnia", "Zinnia atop Sky Pillar", "PACIFIDLOG_TOWN",
+    ("delta_bike", "Rydel's Bicycle (Mauville), for Sky Pillar's cracked floors", "MAUVILLE_CITY",
+     [{"area": "MAUVILLE_CITY", "room": "bike_shop", "at": [2, 5], "label": "Rydel", "done": "got_bike_hoenn"}], "got_bike_hoenn"),
+    # (Sky Pillar's stretch of sea is reached as in Emerald's maps: Mossdeep, Route 127, Route 128, then a Dive on Route
+    #  129 up into its north sea and west along Routes 130-131 - Route 131's south half, off Pacifidlog, doesn't join it; 11-24.
+    #  Wallace's job sails it; the jobs after him start at Sky Pillar's door and climb it)
+    ("delta_wallace", "Wallace by Sky Pillar (Route 131)", "MOSSDEEP_CITY",
+     [{"area": "HOENN_ROUTE_127", "floor": 0, "at": [20, 79], "label": "To Route 128", "done": "delta_wallace_131"},
+      {"area": "HOENN_ROUTE_128", "floor": 0, "at": [32, 39], "label": "To Route 129", "done": "delta_wallace_131"},
+      {"area": "HOENN_ROUTE_129", "floor": 0, "at": [0, 5], "label": "To Route 130", "done": "delta_wallace_131"},
+      {"area": "HOENN_ROUTE_130", "floor": 0, "at": [0, 5], "label": "To Route 131", "done": "delta_wallace_131"},
+      {"area": "HOENN_ROUTE_131", "floor": 0, "at": [37, 6], "label": "Wallace", "done": "delta_wallace_131"}], "delta_wallace_131"),
+    ("delta_zinnia", "Zinnia atop Sky Pillar", "HOENN_SKY_PILLAR",
      [{"area": "HOENN_SKY_PILLAR", "floor": 7, "at": [14, 10], "label": "Zinnia", "done": "delta_zinnia_defeated"}], "delta_zinnia_defeated"),
-    ("delta_rayquaza", "Rayquaza called down", "PACIFIDLOG_TOWN",
+    ("delta_rayquaza", "Rayquaza called down", "HOENN_SKY_PILLAR",
      [{"area": "HOENN_SKY_PILLAR", "floor": 7, "at": [14, 7], "label": "Rayquaza", "done": "rayquaza_awakened"}], "rayquaza_awakened"),
-    ("delta_space", "Into space on Rayquaza", "PACIFIDLOG_TOWN",
+    ("delta_space", "Into space on Rayquaza", "HOENN_SKY_PILLAR",
      [{"area": "HOENN_SKY_PILLAR", "floor": 7, "at": [15, 9], "label": "Rayquaza", "done": "delta_episode_cleared"}], "delta_episode_cleared"),
     ("post_steven", "Steven in Meteor Falls' hidden room (Emerald)", "FALLARBOR_TOWN",
      [{"area": "HOENN_METEOR_FALLS", "floor": 4, "at": [19, 3], "label": "Steven", "done": "meteor_falls_steven_beaten"}], "meteor_falls_steven_beaten"),
@@ -2143,15 +2176,15 @@ TOUR_LEGS = [("FALLARBOR_TOWN", "HOENN_METEOR_FALLS", "Fallarbor down Route 114 
              ("HOENN_ROUTE_120", "HOENN_SCORCHED_SLAB", "Route 120 to the Scorched Slab"),
              ("HOENN_ROUTE_120", "HOENN_ANCIENT_TOMB", "Route 120 to the Ancient Tomb"),
              ("LILYCOVE_CITY", "HOENN_SAFARI_ZONE", "Lilycove up Route 121 into the Safari Zone"),
-             ("HOENN_ROUTE_125", "HOENN_SHOAL_CAVE", "Route 125 into Shoal Cave"),
+             ("MOSSDEEP_CITY", "HOENN_SHOAL_CAVE", "Mossdeep up Route 125 into Shoal Cave"),
              ("HOENN_ROUTE_105", "HOENN_ISLAND_CAVE", "Route 105 to the Island Cave"),
              ("HOENN_ROUTE_108", "HOENN_ABANDONED_SHIP", "Route 108 to the Abandoned Ship"),
              ("PACIFIDLOG_TOWN", "HOENN_ROUTE_134", "Pacifidlog along Routes 132-134"),
-             ("HOENN_ROUTE_134", "HOENN_SEALED_CHAMBER", "Route 134 down to the Sealed Chamber"),
-             ("SLATEPORT_CITY", "HOENN_BATTLE_FRONTIER", "Slateport by the S.S. Tidal to the Battle Frontier")]
+             ("HOENN_ROUTE_133", "HOENN_SEALED_CHAMBER", "Route 133 down Route 134's currents to the Sealed Chamber")]
 TOUR = []
 if ENDED == "CHAMPION" and os.environ.get("KPT_TOUR", "0") != "0":
     story.inventory.setdefault("BICYCLE", 1)
+    story.inventory.setdefault("MAGMA_EMBLEM", 1); story.story_flags.setdefault("regi_trio_awakened", True)
     story.story_flags["move_offer_johto"] = story.story_flags["move_offer_kanto"] = True   # (the title's "where next?" already asked)
     for _a, _b, _what, *_at in TOUR_LEGS:
         STATE["mission"] = "tour"
