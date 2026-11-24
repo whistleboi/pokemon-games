@@ -21,8 +21,9 @@ import build as B   # noqa: E402
 import facts as F   # noqa: E402
 
 REGIONS = [("kanto", "Kanto + Sevii Islands", "FireRed and LeafGreen, with HeartGold/SoulSilver and Yellow extras"),
-           ("johto", "Johto", "HeartGold and SoulSilver, on SoulSilver's maps, with Crystal extras")]
-LATER = ["Orange Islands", "Hoenn", "Sinnoh", "Unova", "Orre"]
+           ("johto", "Johto", "HeartGold and SoulSilver, on SoulSilver's maps, with Crystal extras"),
+           ("orange", "Orange Islands", "the anime and the fan game Pokémon Orange Islands")]
+LATER = ["Hoenn", "Sinnoh", "Unova", "Orre"]
 IMPORTANT = ("GYM_LEADER", "ELITE_FOUR", "CHAMPION", "RIVAL", "ROCKET_LEADER")
 
 
@@ -129,9 +130,10 @@ def connections(k, f):
 
 
 # The region boxes (like Bulbapedia's): badges, then Settlements / Routes / Landmarks, then the regions you can reach.
-NAV = {"kanto": [("Kanto", "KANTO", "kanto", "Settlements", ["Sevii Islands", "Johto"]),
+NAV = {"kanto": [("Kanto", "KANTO", "kanto", "Settlements", ["Sevii Islands", "Johto", "Orange Islands"]),
                  ("Sevii Islands", "SEVII", None, "Islands", ["Kanto"])],
-       "johto": [("Johto", "JOHTO", "johto", "Settlements", ["Kanto"])]}
+       "johto": [("Johto", "JOHTO", "johto", "Settlements", ["Kanto", "Orange Islands"])],
+       "orange": [("Orange Islands", "ORANGE", "orange", "Islands", ["Kanto", "Johto"])]}
 
 
 def navboxes(region, places, first_part):
@@ -146,7 +148,7 @@ def navboxes(region, places, first_part):
                 routes.append([int(m.group(1)), k])
             elif m:
                 continue   # (Route 10's south half: Route 10's own page covers it in the list)
-            elif (F.PLACES.get(k) or {}).get("area_type") == "town" and re.search(r"(Town|City|Island|Plateau)$", places[k]["name"]):
+            elif (F.PLACES.get(k) or {}).get("area_type") == "town" and (reg != "KANTO" or re.search(r"(Town|City|Island|Plateau)$", places[k]["name"])):
                 towns.append(k)
             else:
                 marks.append(k)
@@ -154,7 +156,7 @@ def navboxes(region, places, first_part):
                   ["Routes", [[str(n), k] for n, k in sorted(routes)]],
                   ["Landmarks", [[places[k]["name"], k] for k in marks]]]
         out.append({"title": title, "slug": slug(title), "keys": keys,
-                    "badges": [B.icon("b", f"{badges}_{i}.png") for i in range(1, 9)] if badges else [],
+                    "badges": [i for i in (B.icon("b", f"{badges}_{n}.png") for n in range(1, 9)) if i] if badges else [],
                     "groups": [g for g in groups if g[1]], "access": access})
     return out
 

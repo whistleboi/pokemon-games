@@ -66,8 +66,18 @@ for k, v in JOHTO.items():   # (Johto's own file: its places, pools and missions
         DATA[k] = dict(v, **DATA[k])
     elif k not in DATA:
         DATA[k] = v
+ORANGE = load("orange_area_data.json")
+for k, v in ORANGE.items():   # (the Orange Islands' own file, merged the same way)
+    if k == "STORY_PROGRESSION":
+        DATA[k] = dict(DATA[k], **v)
+    elif k == "JOURNAL_MISSIONS":
+        continue
+    elif isinstance(v, dict) and isinstance(DATA.get(k), dict):
+        DATA[k] = dict(v, **DATA[k])
+    elif k not in DATA:
+        DATA[k] = v
 PLACES = DATA["STORY_PROGRESSION"]
-MISSIONS = AREA["GAME_CONFIG"]["JOURNAL_MISSIONS"] + SEVII.get("JOURNAL_MISSIONS", []) + JOHTO.get("JOURNAL_MISSIONS", [])
+MISSIONS = AREA["GAME_CONFIG"]["JOURNAL_MISSIONS"] + SEVII.get("JOURNAL_MISSIONS", []) + JOHTO.get("JOURNAL_MISSIONS", []) + ORANGE.get("JOURNAL_MISSIONS", [])
 
 
 def region_of(key):
@@ -75,12 +85,14 @@ def region_of(key):
         return "SEVII"
     if key in JOHTO["STORY_PROGRESSION"]:
         return "JOHTO"
+    if key in ORANGE["STORY_PROGRESSION"]:
+        return "ORANGE"
     return "KANTO"
 MAPS = load("town_maps.json")
 LEVELS = load("area_levels.json")
 EVO = load("pokemon_levels.json")
 NAMES = load("pokemon_names.json")
-FORMS = AREA.get("FORM_MAP", {})
+FORMS = DATA.get("FORM_MAP", {})   # (every region's forms: Kanto's regional ones, Orange's pink Pinkan Pokemon...)
 TMS = load("tms.json")
 
 SPECIAL = {"mr-mime": "Mr. Mime", "nidoran-f": "Nidoran♀", "nidoran-m": "Nidoran♂", "farfetchd": "Farfetch'd",
@@ -100,7 +112,13 @@ def mon_name(pid):
     if pid in PLACEHOLDER:
         return PLACEHOLDER[pid][0]
     if pid in FORMS:
-        return FORMS[pid].get("name") or mon_name(FORMS[pid]["id"])
+        nm = FORMS[pid].get("name")
+        form = str(FORMS[pid].get("form") or "")
+        if form == "pinkan":
+            return "Pink " + mon_name(FORMS[pid]["id"])   # (Pinkan Island's pink Pokemon: "Pinkan butterfree" in the data)
+        if nm and nm == nm.lower() or (nm and nm.split(" ", 1)[-1].islower()):   # ("Valencia butterfree": the form, then the name)
+            return f"{form.title()} {mon_name(FORMS[pid]['id'])}"
+        return nm or mon_name(FORMS[pid]["id"])
     n = NAMES.get(pid)
     if not n:
         return f"#{pid}"
@@ -234,7 +252,7 @@ def later(r, region):
         return FORM_HOME[r["form"]]
     n = int(pid)
     native = next((reg for top, reg in REGION_OF_DEX if n <= top), None)
-    if native in (None, "KANTO") or (native == "JOHTO" and region in ("SEVII", "JOHTO")):
+    if native in (None, "KANTO") or (native == "JOHTO" and region in ("SEVII", "JOHTO", "ORANGE")):
         return None
     return native
 
@@ -361,7 +379,7 @@ def wild(key):
             share = 1.0 / (len(tp) if isinstance(tp, list) else 1)
             for r in rows_of(pool, "Headbutt", band):
                 r["rate"] *= share
-                r["ours"] = region_of(key) == "SEVII"   # (HGSS has Headbutt trees, in Johto and Kanto; not on the Sevii Islands)
+                r["ours"] = region_of(key) == "SEVII"   # (Orange: unknown whether the fan game has them, so no tag)   # (HGSS has Headbutt trees, in Johto and Kanto; not on the Sevii Islands)
                 out["trees"].append(r)
         out["tree_pool"] = tp
     region = region_of(key)
@@ -661,7 +679,9 @@ def region_keys(region):
         return [k for k in MAPS if k in sevii]
     if region == "JOHTO":
         return [k for k in MAPS if k in JOHTO["STORY_PROGRESSION"]]
-    kanto = set(AREA["STORY_PROGRESSION"]) - sevii - set(JOHTO["STORY_PROGRESSION"])
+    if region == "ORANGE":
+        return [k for k in MAPS if k in ORANGE["STORY_PROGRESSION"]]
+    kanto = set(AREA["STORY_PROGRESSION"]) - sevii - set(JOHTO["STORY_PROGRESSION"]) - set(ORANGE["STORY_PROGRESSION"])
     return [k for k in MAPS if k in kanto and (AREA["STORY_PROGRESSION"][k].get("region") in (None, "KANTO"))]
 
 

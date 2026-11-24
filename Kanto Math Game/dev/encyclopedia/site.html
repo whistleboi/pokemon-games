@@ -90,7 +90,7 @@ details.walk summary h2 { display: inline-block; } details.walk summary::after {
 
 <header class="bar"><div class="in">
   <a class="home" href="#home">Pokémath Encyclopedia</a>
-  <nav aria-label="Lists"><a href="#list-places">Places</a><a href="#list-pokemon">Pokémon</a><a href="#list-items">Items</a><a href="#list-trainers">Trainers</a></nav>
+  <nav aria-label="Lists"><a href="#list-walkthrough">Walkthrough</a><a href="#list-places">Places</a><a href="#list-pokemon">Pokémon</a><a href="#list-items">Items</a><a href="#list-trainers">Trainers</a></nav>
   <div class="search"><input id="q" type="search" placeholder="Search a place, Pokémon, item…" aria-label="Search" autocomplete="off"><div class="hits" id="hits" hidden></div></div>
 </div></header>
 <main class="wrap" id="app"><p class="loading">Loading…</p></main>
@@ -127,10 +127,14 @@ function home() {
   const live = SITE.live.map(r => `<div class="card"><h3>${esc(r.title)}</h3><p>${esc(r.src)}. ${r.parts} parts, ${r.places} places.</p>
     <div class="chips"><a href="#part-${r.key}-1">Start the walkthrough</a><a href="#places-${slug(r.title.split(" + ")[0])}">Its places</a></div></div>`).join("");
   const later = SITE.later.map(n => `<div class="card later"><h3>${esc(n)}</h3><p>Not written yet.</p></div>`).join("");
-  const walks = Object.values(D.regions).map(reg => `<details class="walk" open><summary><h2>${esc(reg.title)} walkthrough</h2></summary><ol class="parts">${reg.parts.map(p => `<li><a href="#part-${reg.key}-${p.n}">Part ${p.n}</a>: ${esc(p.title)}</li>`).join("")}</ol></details>`).join("");
+  const walks = walksHTML();
   return `<div class="crumb">Kanto Math Game</div><h1>Pokémath Encyclopedia</h1>
     <p class="lede">The game's own guide, written from its data: the story in order, and a page for every place, Pokémon, item and important trainer. Names in the tables and text link to their pages. An <span class="ours">ours</span> tag marks something none of that region's source games have.</p>
     <div class="cards">${live}${later}</div>${walks}`;
+}
+
+function walksHTML() {
+  return Object.values(D.regions).map(reg => `<details class="walk" open><summary><h2>${esc(reg.title)} walkthrough</h2></summary><ol class="parts">${reg.parts.map(p => `<li><a href="#part-${reg.key}-${p.n}">Part ${p.n}</a>: ${esc(p.title)}</li>`).join("")}</ol></details>`).join("");
 }
 
 function partView(regKey, n) {
@@ -216,6 +220,10 @@ function trainerView(s) {
 }
 
 function listView(kind) {
+  if (kind === "walkthrough") {
+    setTitle("Walkthrough");
+    return `<div class="crumb">Lists</div><h1>Walkthrough</h1><p class="lede">The story of each region, part by part, in the order you play it.</p>` + walksHTML();
+  }
   if (kind === "places") {
     setTitle("Places");
     return `<div class="crumb">Lists</div><h1>Places</h1><p class="lede">Every place, region by region. Tap a region's name to fold it away.</p>` +

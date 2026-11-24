@@ -104,7 +104,7 @@ def _table(name, region):
     """levels.py's per-region table entry: GYM_ACE (a list), CHAMPION_ACE / LEAGUE_REMATCH_FLOOR (a number)."""
     block = _LV[_LV.index(name + " = {"):]
     m = re.search(rf'"{region}": (\[[\d, ]+\]|\d+)', block[:block.index("}") + 1])
-    return eval(m.group(1))
+    return eval(m.group(1)) if m else None
 
 
 def story_ace(badges):
@@ -135,11 +135,12 @@ def at_cap(r, band, fixed_land):
 def cap_html():
     if CAP["post"]:
         return ('<div class="note cap"><b>Level cap: your team.</b> After the title the cap follows your own team: it\'s your '
-                f'highest level, and never below Lv {_table("LEAGUE_REMATCH_FLOOR", CAP["region"])}. Wild Pokémon stay at each place\'s own level, and '
+                f'highest level, and never below Lv {_table("LEAGUE_REMATCH_FLOOR", CAP["region"]) or 50}. Wild Pokémon stay at each place\'s own level, and '
                 'trainers keep their own levels.</div>')
     n = CAP["badges"]
     ace = story_ace(n)
-    who = (f"your {['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth'][n]} badge" if n < 8
+    nb = len(_table("GYM_ACE", CAP["region"]))
+    who = (f"your {['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth'][n]} badge" if n < nb
            else "the Champion")
     return (f'<div class="note cap"><b>Level cap: Lv {ace + CAP_OVER}</b> until {who}. Your Pokémon stop gaining Exp. there, '
             f'and Rare Candies stop working. The next Leader\'s best Pokémon is Lv {ace}.</div>')
@@ -149,13 +150,14 @@ def captable_html():
     """The cap for each badge count, with the Leader usually next (levels.GYM_ORDER) and his best Pokemon."""
     order = re.findall(r'"([A-Z_]+)"', re.search(rf'"{CAP["region"]}": \[([^\]]+)\]', _LV[_LV.index("GYM_ORDER"):]).group(1))
     rows = []
-    for n in range(9):
+    nb = len(_table("GYM_ACE", CAP["region"]))
+    for n in range(nb + 1):
         ace = story_ace(n)
-        if n < 8:
+        if n < nb:
             leader = ((F.PLACES.get(order[n]) or {}).get("gym") or {}).get("leader") or {}
             nxt = f"{leader.get('name', '?')} ({FACTS[order[n]]['name'] if order[n] in FACTS else order[n].title()})"
         else:
-            nxt = "the Elite Four and the Champion"
+            nxt = "the Elite Four and the Champion" if nb == 8 else "the League's champion"
         rows.append(f"<tr><td>{n}</td><td><b>Lv {ace + CAP_OVER}</b></td><td>{esc(nxt)}</td><td>Lv {ace}</td></tr>")
     rows.append(f"<tr><td>Champion</td><td><b>Your team</b></td><td>the post-game</td><td>—</td></tr>")
     return ('<div class="frame captab"><table><caption>The story level cap</caption><thead><tr><th>Badges</th><th>Cap</th>'
@@ -214,6 +216,10 @@ def human_cond(c):
         if m:
             words.append(f"Catch all {int(m.group(2)) - int(m.group(1)) + 1} Pokémon from #{m.group(1)} to #{m.group(2)}")
             continue
+        m = re.match(r"has_badge:(\w+)$", x)
+        if m:
+            words.append(f"After the {m.group(1).replace('_', ' ').title()} Badge")
+            continue
         m = re.match(r"(?:not:|not )?has_(\w+)_badge$", x)
         if m:
             words.append(("Before" if x.startswith("not") else "After") + f" the {m.group(1).title()} Badge")
@@ -266,7 +272,7 @@ def team_html(team):
                     + (f' <span class="lv">Lv {m["lv"]}</span>' if m.get("lv") else "") + "</span>" for m in team)
 
 
-CLASS_WORDS = {"GYM_LEADER": "Gym Leader", "ROCKET": "Team Rocket", "ROCKET_GRUNT": "Team Rocket Grunt", "ACE_TRAINER": "Ace Trainer",
+CLASS_WORDS = {"GYM_LEADER": "Gym Leader", "ROCKET": "Team Rocket", "TEAM_ROCKET": "Team Rocket", "ROCKET_GRUNT": "Team Rocket Grunt", "ACE_TRAINER": "Ace Trainer",
                "COOLTRAINER": "Cooltrainer", "BLACKBELT": "Black Belt", "BUG_CATCHER": "Bug Catcher", "POKEMANIAC": "PokéManiac",
                "SUPER_NERD": "Super Nerd", "BIRD_KEEPER": "Bird Keeper", "CUE_BALL": "Cue Ball", "PSYCHIC_M": "Psychic",
                "PSYCHIC_F": "Psychic", "ELITE_FOUR": "Elite Four", "RIVAL": "Rival", "CHAMPION": "Champion"}
@@ -280,11 +286,11 @@ def class_word(c):
 def trainer_name(t):
     who = t.get("who") or ""
     n = (t["name"] if who.isupper() and t.get("name") else who) or t["name"] or ""
-    n = n.replace("{rival_name}", "Your rival").strip()
+    n = re.sub(r"\s+\d+$", "", n.replace("{rival_name}", "Your rival").strip())   # ("Grunt 373": the fan game's trainer number)
     cw = class_word(t.get("class"))
     if n.lower() in cw.lower().split() or n.lower() == cw.lower():
         return cw
-    if len(n.split()) >= 2 and t.get("class") not in ("ROCKET", "ROCKET_GRUNT"):
+    if len(n.split()) >= 2 and t.get("class") not in ("ROCKET", "ROCKET_GRUNT", "TEAM_ROCKET"):
         return n   # (the name already says who: "Karate Master Koichi", "Camper Liam")
     return n if n.lower().startswith(cw.lower().split()[0]) or t.get("class") in ("RIVAL", "GYM_LEADER", None) else f"{cw} {n}"
 
@@ -363,7 +369,7 @@ def reward_words(t):
         out.append(f"{nm} ×{v}" if isinstance(v, int) and v > 1 else nm)
     if t.get("badge"):
         b = t["badge"].replace("_", " ").title()
-        out.insert(0, f"the {b}" if b.endswith("badge") or b.endswith("Badge") else f"the {b} Badge")
+        out.insert(0, f"the {b}" if b.lower().endswith(("badge", "trophy")) else f"the {b} Badge")
     return ", ".join(out)
 
 
@@ -408,7 +414,8 @@ def journal_html(mid):
         raise SystemExit(f"journal mission not found: {mid}")
     m = F.deep_fix(m)
     kind = {"MAIN": "Main", "SIDE": "Side"}.get(m.get("type"), (m.get("type") or "").title())
-    desc = (m.get("desc") or m.get("description") or "").replace("{rival_name}", "your rival").replace("{player_name}", "you")
+    desc = (m.get("desc") or m.get("description") or "")
+    desc = re.sub(r"([Yy]our rival),? \{rival_name\}", lambda q: q.group(1), desc).replace("{rival_name}", "your rival").replace("{player_name}", "you")
     title = (m.get("text") or m.get("title") or "").replace("{rival_name}", "Your rival")
     return (f'<div class="journal"><span class="tag">Journal · {esc(kind)}</span><br><b>{esc(title)}</b>: '
             f'<q>{esc(desc)}</q></div>')
@@ -577,7 +584,7 @@ def index_html():
                     f'<td class="places">{at}</td></tr>')
     item_t = ('<div class="frame idx"><table><caption>Items found and given</caption><thead><tr><th>Item</th><th>Where</th></tr>'
               f'</thead><tbody>{"".join(rows)}</tbody></table></div>')
-    return ('<h2 id="index-pokemon">Pokémon</h2><p>Every Pokémon you can meet in Kanto and the Sevii Islands: where it lives in the wild, and which trainers use it.</p>'
+    return ('<h2 id="index-pokemon">Pokémon</h2><p>Every Pokémon you can meet in this region: where it lives in the wild, and which trainers use it.</p>'
             + mon_t + '<h2 id="index-items">Items</h2><p>Every item lying on the ground, hidden, or handed to you.</p>' + item_t)
 
 
