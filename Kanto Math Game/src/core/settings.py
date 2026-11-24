@@ -4,7 +4,7 @@ import os
 import pygame
 
 DEFAULTS = {"math_timer": "NORMAL", "text_speed": 3, "auto_text": 2, "move_anims": True, "battle_intros": True, "screen_fade": True,
-            "music": 5, "sfx": 5, "live3d": True, "difficulty": "NORMAL"}
+            "music": 5, "sfx": 5, "difficulty": "NORMAL"}
 DIFFICULTY_EXP = {"NORMAL": 1.0, "EXP": 1.3}   # (Jordan 11-24: EXP Mode, an easy mode - 30% more Exp. from every battle)
 
 

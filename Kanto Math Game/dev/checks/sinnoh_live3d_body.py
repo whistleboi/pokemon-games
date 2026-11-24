@@ -245,10 +245,10 @@ for k, v in _had.items():
     else:
         story.story_flags[k] = v
 
-print("5) the flat pictures stay when the live camera is off")
+print("5) the checks-only switch off: Twinleaf still loads and draws")
 g.live3d = False
-t = town("TWINLEAF_TOWN")
-check(not t._live(), "3D camera Flat: Twinleaf draws its baked picture")
+t = town("TWINLEAF_TOWN"); t.draw()
+check(not t._live(), "live camera switched off: Twinleaf draws without its scene, no crash")
 g.live3d = True
 
 print(f"##### {len(fails)} failures")
