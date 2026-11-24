@@ -1621,7 +1621,6 @@
         "battle_type": "grass",
         "wild_pool_percentages": "SINNOH_LAKE_VERITY_PERCENTAGES",
         "min_rounds": 1,
-        "backgrounds": {"battle": "battle_lake_verity.png"},
         "route_menu": [
             {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
             {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
@@ -1649,7 +1648,6 @@
         "battle_type": "grass",
         "wild_pool_percentages": "SINNOH_LAKE_VALOR_PERCENTAGES",
         "min_rounds": 1,
-        "backgrounds": {"battle": "battle_lake_valor.png"},
         "route_menu": [
             {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
             {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
@@ -1671,7 +1669,6 @@
         "battle_type": "grass",
         "wild_pool_percentages": "SINNOH_LAKE_ACUITY_PERCENTAGES",
         "min_rounds": 1,
-        "backgrounds": {"battle": "battle_lake_acuity.png"},
         "route_menu": [
             {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
             {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
@@ -1693,7 +1690,6 @@
         "battle_type": "cave",
         "wild_pool_percentages": "SINNOH_OREBURGH_MINE_PERCENTAGES",
         "min_rounds": 2,
-        "backgrounds": {"battle": "battle_oreburgh_mine.png"},
         "route_menu": [
             {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
             {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
@@ -1716,7 +1712,6 @@
         "battle_type": "grass",
         "wild_pool_percentages": "SINNOH_ETERNA_FOREST_PERCENTAGES",
         "min_rounds": 2,
-        "backgrounds": {"battle": "battle_eterna_forest.png"},
         "route_menu": [
             {"text": "Cheryl", "action": "NPC", "target": "walk_cheryl", "flag_condition": "not walk_cheryl_done", "color": "GOLD"},
             {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
@@ -1770,7 +1765,6 @@
         "battle_type": "indoor",
         "wild_pool_percentages": "SINNOH_OLD_CHATEAU_PERCENTAGES",
         "min_rounds": 2,
-        "backgrounds": {"battle": "battle_old_chateau.png"},
         "route_menu": [
             {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
             {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
@@ -1795,7 +1789,6 @@
         "battle_type": "cave",
         "wild_pool_percentages": "SINNOH_MT_CORONET_PERCENTAGES",
         "min_rounds": 3,
-        "backgrounds": {"battle": "battle_mt_coronet.png"},
         "route_menu": [
             {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
             {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
@@ -1845,7 +1838,6 @@
         "battle_type": "outdoor",
         "wild_pool_percentages": "SPEAR_PILLAR_PERCENTAGES",
         "min_rounds": 0,
-        "backgrounds": {"battle": "battle_spear_pillar.png"},
         "route_menu": [
             {"text": "Battle Mars and Jupiter", "action": "NPC", "target": "spear_pillar_commanders", "flag_condition": "not spear_pillar_commanders", "color": "GOLD"},
             {"text": "Confront Cyrus", "action": "NPC", "target": "cyrus_spear_pillar", "flag_condition": "not spear_pillar_resolved", "color": "GOLD"},
@@ -1872,7 +1864,6 @@
         "battle_type": "indoor",
         "wild_pool_percentages": null,
         "min_rounds": 0,
-        "backgrounds": {"battle": "battle_galactic_hq.png"},
         "trainer_pool": [
             {"name": "Galactic Grunt", "class": "GALACTIC", "team": [431], "rewards": {"balls": 3}, "dialogue": {"intro": ["Team Galactic will make a new world!"], "player_won": ["Our boss will still win in the end!"]}, "levels": [41], "sprite": "pt_galactic_grunt_f.png", "spot_name": "Galactic Grunt 1"},
             {"name": "Galactic Grunt", "class": "GALACTIC", "team": [431, 198, 453], "rewards": {"balls": 3}, "dialogue": {"intro": ["You broke in here? Bold!"], "player_won": ["How did a kid get this far?"]}, "levels": [37, 38, 39], "sprite": "pt_galactic_grunt_m.png", "spot_name": "Galactic Grunt 2"},
@@ -1909,7 +1900,6 @@
         "battle_type": "cave",
         "wild_pool_percentages": "SINNOH_IRON_ISLAND_PERCENTAGES",
         "min_rounds": 3,
-        "backgrounds": {"battle": "battle_iron_island.png"},
         "route_menu": [
             {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
             {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
@@ -1954,7 +1944,6 @@
         "battle_type": "cave",
         "wild_pool_percentages": "SINNOH_SNOWPOINT_TEMPLE_PERCENTAGES",
         "min_rounds": 2,
-        "backgrounds": {"battle": "battle_snowpoint_temple.png"},
         "route_menu": [
             {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
             {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
@@ -2056,7 +2045,6 @@
         "battle_type": "cave",
         "wild_pool_percentages": "SINNOH_VICTORY_ROAD_PERCENTAGES",
         "min_rounds": 3,
-        "backgrounds": {"battle": "battle_victory_road_sinnoh.png"},
         "trainer_pool": [
             {"name": "Psychic Bryce", "class": "PSYCHIC", "sprite": "pt_psychic_m.png", "team": [93, 282, 94], "levels": [43, 46, 46], "rewards": {"balls": 2}},
             {"name": "Black Belt Miles", "class": "BLACK_BELT", "sprite": "pt_black_belt.png", "team": [68], "levels": [48], "rewards": {"balls": 2}},

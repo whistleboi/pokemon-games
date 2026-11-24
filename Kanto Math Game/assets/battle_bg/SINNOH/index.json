@@ -1,0 +1,467 @@
+{
+ "areas": {
+  "ACUITY_LAKEFRONT": {
+   "trainer": "snow_snow.png",
+   "water": "water_water.png",
+   "wild": "snow_snow.png"
+  },
+  "CANALAVE_CITY": {
+   "gym": "indoors1_indoors.png",
+   "leader": "indoors1_indoors.png",
+   "trainer": "city_path.png",
+   "water": "water_water.png",
+   "wild": "city_grass.png"
+  },
+  "CELESTIC_TOWN": {
+   "trainer": "city_path.png",
+   "water": "water_water.png",
+   "wild": "city_grass.png"
+  },
+  "DISTORTION_WORLD": {
+   "trainer": "distortion_distortion.png",
+   "water": "water_water.png",
+   "wild": "distortion_distortion.png"
+  },
+  "ETERNA_CITY": {
+   "gym": "indoors1_indoors.png",
+   "leader": "indoors1_indoors.png",
+   "trainer": "city_path.png",
+   "water": "water_water.png",
+   "wild": "city_grass.png"
+  },
+  "ETERNA_FOREST": {
+   "trainer": "forest_grass.png",
+   "water": "water_water.png",
+   "wild": "forest_grass.png"
+  },
+  "ETERNA_FOREST_OUTSKIRTS": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "ETERNA_GALACTIC_BUILDING": {
+   "trainer": "indoors2_indoors.png",
+   "water": "water_water.png",
+   "wild": "indoors2_indoors.png"
+  },
+  "FIGHT_AREA": {
+   "trainer": "city_path.png",
+   "water": "water_water.png",
+   "wild": "city_grass.png"
+  },
+  "FLOAROMA_MEADOW": {
+   "trainer": "forest_grass.png",
+   "water": "water_water.png",
+   "wild": "forest_grass.png"
+  },
+  "FLOAROMA_TOWN": {
+   "trainer": "city_path.png",
+   "water": "water_water.png",
+   "wild": "city_grass.png"
+  },
+  "FLOWER_PARADISE": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "FUEGO_IRONWORKS": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "FULLMOON_ISLAND": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "GALACTIC_WAREHOUSE": {
+   "trainer": "indoors2_indoors.png",
+   "water": "water_water.png",
+   "wild": "indoors2_indoors.png"
+  },
+  "GREAT_MARSH": {
+   "trainer": "forest_grass.png",
+   "water": "water_water.png",
+   "wild": "forest_mud.png"
+  },
+  "HALL_OF_ORIGIN": {
+   "trainer": "cave1_cave.png",
+   "water": "water_water.png",
+   "wild": "cave1_cave.png"
+  },
+  "HEARTHOME_CITY": {
+   "gym": "indoors1_indoors.png",
+   "leader": "indoors1_indoors.png",
+   "trainer": "city_path.png",
+   "water": "water_water.png",
+   "wild": "city_grass.png"
+  },
+  "IRON_ISLAND": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "JUBILIFE_CITY": {
+   "trainer": "city_path.png",
+   "water": "water_water.png",
+   "wild": "city_grass.png"
+  },
+  "LAKE_ACUITY": {
+   "trainer": "snow_snow.png",
+   "water": "water_water.png",
+   "wild": "snow_snow.png"
+  },
+  "LAKE_VALOR": {
+   "trainer": "forest_grass.png",
+   "water": "water_water.png",
+   "wild": "forest_grass.png"
+  },
+  "LAKE_VERITY": {
+   "trainer": "forest_grass.png",
+   "water": "water_water.png",
+   "wild": "forest_grass.png"
+  },
+  "LOST_TOWER": {
+   "trainer": "indoors3_indoors.png",
+   "water": "water_water.png",
+   "wild": "indoors3_indoors.png"
+  },
+  "MANIAC_TUNNEL": {
+   "trainer": "cave2_cave.png",
+   "water": "water_water.png",
+   "wild": "cave2_cave.png"
+  },
+  "MT_CORONET_BASE": {
+   "trainer": "cave2_cave.png",
+   "water": "water_water.png",
+   "wild": "cave2_cave.png"
+  },
+  "NEWMOON_ISLAND": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "OLD_CHATEAU": {
+   "trainer": "indoors3_indoors.png",
+   "water": "water_water.png",
+   "wild": "indoors3_indoors.png"
+  },
+  "OREBURGH_CITY": {
+   "gym": "indoors1_indoors.png",
+   "leader": "indoors1_indoors.png",
+   "trainer": "city_path.png",
+   "water": "water_water.png",
+   "wild": "city_grass.png"
+  },
+  "OREBURGH_GATE": {
+   "trainer": "cave1_cave.png",
+   "water": "water_water.png",
+   "wild": "cave1_cave.png"
+  },
+  "OREBURGH_MINE": {
+   "trainer": "cave1_cave.png",
+   "water": "water_water.png",
+   "wild": "cave1_cave.png"
+  },
+  "PASTORIA_CITY": {
+   "gym": "indoors1_indoors.png",
+   "leader": "indoors1_indoors.png",
+   "trainer": "city_path.png",
+   "water": "water_water.png",
+   "wild": "city_grass.png"
+  },
+  "RAVAGED_PATH": {
+   "trainer": "cave1_cave.png",
+   "water": "water_water.png",
+   "wild": "cave1_cave.png"
+  },
+  "RESORT_AREA": {
+   "trainer": "city_path.png",
+   "water": "water_water.png",
+   "wild": "city_grass.png"
+  },
+  "SANDGEM_TOWN": {
+   "trainer": "city_path.png",
+   "water": "water_water.png",
+   "wild": "city_grass.png"
+  },
+  "SENDOFF_SPRING": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "SINNOH_POKEMON_LEAGUE": {
+   "elite": [
+    "aaron_aaron.png",
+    "bertha_bertha.png",
+    "flint_flint.png",
+    "lucian_lucian.png"
+   ],
+   "leader": "cynthia_cynthia.png",
+   "trainer": "city_path.png",
+   "water": "water_water.png",
+   "wild": "city_grass.png"
+  },
+  "SINNOH_ROUTE_201": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "SINNOH_ROUTE_202": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "SINNOH_ROUTE_203": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "SINNOH_ROUTE_204": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "SINNOH_ROUTE_205": {
+   "trainer": "mountain_rocky.png",
+   "water": "water_water.png",
+   "wild": "mountain_grass.png"
+  },
+  "SINNOH_ROUTE_206": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "SINNOH_ROUTE_207": {
+   "trainer": "mountain_rocky.png",
+   "water": "water_water.png",
+   "wild": "mountain_grass.png"
+  },
+  "SINNOH_ROUTE_208": {
+   "trainer": "mountain_rocky.png",
+   "water": "water_water.png",
+   "wild": "mountain_grass.png"
+  },
+  "SINNOH_ROUTE_209": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "SINNOH_ROUTE_210": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "SINNOH_ROUTE_211": {
+   "trainer": "mountain_rocky.png",
+   "water": "water_water.png",
+   "wild": "mountain_grass.png"
+  },
+  "SINNOH_ROUTE_212": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "SINNOH_ROUTE_213": {
+   "trainer": "water_water.png",
+   "water": "water_water.png",
+   "wild": "water_water.png"
+  },
+  "SINNOH_ROUTE_214": {
+   "trainer": "mountain_rocky.png",
+   "water": "water_water.png",
+   "wild": "mountain_grass.png"
+  },
+  "SINNOH_ROUTE_215": {
+   "trainer": "forest_grass.png",
+   "water": "water_water.png",
+   "wild": "forest_grass.png"
+  },
+  "SINNOH_ROUTE_216": {
+   "trainer": "snow_snow.png",
+   "water": "water_water.png",
+   "wild": "snow_snow.png"
+  },
+  "SINNOH_ROUTE_217": {
+   "trainer": "snow_snow.png",
+   "water": "water_water.png",
+   "wild": "snow_snow.png"
+  },
+  "SINNOH_ROUTE_218": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "SINNOH_ROUTE_219": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "SINNOH_ROUTE_220": {
+   "trainer": "water_water.png",
+   "water": "water_water.png",
+   "wild": "water_water.png"
+  },
+  "SINNOH_ROUTE_221": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "SINNOH_ROUTE_222": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "SINNOH_ROUTE_223": {
+   "trainer": "water_water.png",
+   "water": "water_water.png",
+   "wild": "water_water.png"
+  },
+  "SINNOH_ROUTE_224": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "SINNOH_ROUTE_225": {
+   "trainer": "mountain_rocky.png",
+   "water": "water_water.png",
+   "wild": "mountain_grass.png"
+  },
+  "SINNOH_ROUTE_226": {
+   "trainer": "mountain_rocky.png",
+   "water": "water_water.png",
+   "wild": "mountain_grass.png"
+  },
+  "SINNOH_ROUTE_227": {
+   "trainer": "mountain_rocky.png",
+   "water": "water_water.png",
+   "wild": "mountain_grass.png"
+  },
+  "SINNOH_ROUTE_228": {
+   "trainer": "mountain_rocky.png",
+   "water": "water_water.png",
+   "wild": "mountain_grass.png"
+  },
+  "SINNOH_ROUTE_229": {
+   "trainer": "forest_grass.png",
+   "water": "water_water.png",
+   "wild": "forest_grass.png"
+  },
+  "SINNOH_ROUTE_230": {
+   "trainer": "water_water.png",
+   "water": "water_water.png",
+   "wild": "water_water.png"
+  },
+  "SNOWPOINT_CITY": {
+   "gym": "indoors1_indoors.png",
+   "leader": "indoors1_indoors.png",
+   "trainer": "snow_snow.png",
+   "water": "water_water.png",
+   "wild": "snow_snow.png"
+  },
+  "SNOWPOINT_TEMPLE": {
+   "trainer": "cave2_cave.png",
+   "water": "water_water.png",
+   "wild": "cave2_cave.png"
+  },
+  "SOLACEON_RUINS": {
+   "trainer": "cave2_cave.png",
+   "water": "water_water.png",
+   "wild": "cave2_cave.png"
+  },
+  "SOLACEON_TOWN": {
+   "trainer": "city_path.png",
+   "water": "water_water.png",
+   "wild": "city_grass.png"
+  },
+  "SPEAR_PILLAR": {
+   "trainer": "cave2_cave.png",
+   "water": "water_water.png",
+   "wild": "cave2_cave.png"
+  },
+  "SPEAR_PILLAR_RIFT": {
+   "trainer": "mountain_rocky.png",
+   "water": "water_water.png",
+   "wild": "mountain_grass.png"
+  },
+  "STARK_MOUNTAIN": {
+   "trainer": "mountain_rocky.png",
+   "water": "water_water.png",
+   "wild": "mountain_grass.png"
+  },
+  "SUNYSHORE_CITY": {
+   "gym": "indoors1_indoors.png",
+   "leader": "indoors1_indoors.png",
+   "trainer": "city_path.png",
+   "water": "water_water.png",
+   "wild": "city_grass.png"
+  },
+  "SURVIVAL_AREA": {
+   "trainer": "mountain_rocky.png",
+   "water": "water_water.png",
+   "wild": "mountain_grass.png"
+  },
+  "TEAM_GALACTIC_HQ": {
+   "trainer": "indoors2_indoors.png",
+   "water": "water_water.png",
+   "wild": "indoors2_indoors.png"
+  },
+  "TROPHY_GARDEN": {
+   "trainer": "forest_grass.png",
+   "water": "water_water.png",
+   "wild": "forest_grass.png"
+  },
+  "TURNBACK_CAVE": {
+   "trainer": "forest_grass.png",
+   "water": "water_water.png",
+   "wild": "forest_grass.png"
+  },
+  "TWINLEAF_TOWN": {
+   "trainer": "city_path.png",
+   "water": "water_water.png",
+   "wild": "city_grass.png"
+  },
+  "VALLEY_WINDWORKS": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "VALOR_LAKEFRONT": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "VEILSTONE_CITY": {
+   "gym": "indoors1_indoors.png",
+   "leader": "indoors1_indoors.png",
+   "trainer": "city_path.png",
+   "water": "water_water.png",
+   "wild": "city_grass.png"
+  },
+  "VERITY_LAKEFRONT": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "VICTORY_ROAD_SINNOH": {
+   "trainer": "cave2_cave.png",
+   "water": "water_water.png",
+   "wild": "cave2_cave.png"
+  },
+  "WAYWARD_CAVE": {
+   "trainer": "cave3_cave.png",
+   "water": "water_water.png",
+   "wild": "cave3_cave.png"
+  }
+ },
+ "source": "Pokemon Platinum (U), Jordan's game file: pl_batt_bg.narc backdrops, pl_batt_obj.narc platforms, each place's zone header battleBG; kanto_handoff/sinnoh_map_tools/s_battle_bg.py",
+ "terrain": {
+  "cave": "cave1_cave.png",
+  "grass": "plain_grass.png",
+  "inside": "indoors1_indoors.png",
+  "sand": "plain_sand.png",
+  "snow": "snow_snow.png",
+  "swamp": "forest_mud.png",
+  "water": "water_water.png"
+ }
+}
