@@ -404,10 +404,15 @@ _keep = {k: flags.get(k) for k, _m in want + [("b2_sailed_castelia", None)]}
 for k in _keep:
     flags.pop(k, None)
 story.current_area_key = "VIRBANK_CITY"
+_badges = list(story.badges.get("UNOVA", []))
+story.badges["UNOVA"] = [b for b in _badges if b != "TOXIC"]   # (the badge comes with its own step: Gym missions name it, 11-23)
 for k, mid in want:
     flags[k] = True
+    if k == "b2_toxic_badge":
+        story.badges["UNOVA"].append("TOXIC")
     main = [m["id"] for m in story.get_active_missions() if m.get("type") == "MAIN"]
     check(mid in main, f"after {k}: {mid} ({main})")
+story.badges["UNOVA"] = _badges
 for k, v in _keep.items():
     if v:
         flags[k] = v

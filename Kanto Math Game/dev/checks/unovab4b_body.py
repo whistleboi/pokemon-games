@@ -279,7 +279,8 @@ check(_ix and len(_ix["areas"]) >= 26, "Unova has its own battle background inde
 missing = sorted({f for e in _ix["areas"].values() for f in ([e] if isinstance(e, str) else e.values())
                   if not os.path.isfile(os.path.join("assets", "battle_bg", "UNOVA", f))})
 check(not missing, f"every picture it names is there ({missing})")
-check(str(_bb.pick(g, "UNOVA_ROUTE_19")).endswith("bg01.png") and str(_bb.pick(g, "LOSTLORN_FOREST")).endswith("bg06.png"),
-      "Route 19 on Black 2's open field, Lostlorn Forest on its forest (zone values 1 and 6)")
+import re as _re
+check(_re.search(r"bg01(_summer|_autumn|_winter)?\.png$", str(_bb.pick(g, "UNOVA_ROUTE_19"))) and str(_bb.pick(g, "LOSTLORN_FOREST")).endswith("bg06.png"),
+      f"Route 19 on Black 2's open field (its season's), Lostlorn Forest on its forest (zone values 1 and 6) ({_bb.pick(g, 'UNOVA_ROUTE_19')})")
 check(str(_bb.pick(g, "NIMBASA_CITY", trainer=True, gym=True)).endswith("bg09.png"), "Elesa's Gym: its room's own background")
 print(f"##### {len(fails)} failures")
