@@ -646,6 +646,7 @@ STORY_TEXT = {
     "SECRET_KEY": "A key for the locked Gym door.",
     "STORAGE_KEY": "A key to the ship's storage room.",
     "SUITE_KEY": "The key to a lakeside suite at Valor Lakefront. Its owner must be looking for it.",   # (Sinnoh S4, 11-24)
+    "SPRAYDUCK": "A watering can shaped like a Psyduck. It waters the soil where Berries are planted.",   # (Sinnoh, Platinum's Floaroma flower shop; 11-24)
     "RM_1_KEY": "A key to cabin 1.", "RM_2_KEY": "A key to cabin 2.", "RM_4_KEY": "A key to cabin 4.", "RM_6_KEY": "A key to cabin 6.",
     "MACHINE_PART": "A part stolen from the Power Plant.",
     "SCANNER": "A scanner lost in the Abandoned Ship.",
