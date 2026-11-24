@@ -2,6 +2,15 @@
   "UNOVA_OLD_ROD_POOL_PERCENTAGES": {"550": 40, "118": 30, "129": 30},
   "UNOVA_GOOD_ROD_POOL_PERCENTAGES": {"550": 35, "118": 25, "592": 25, "339": 15},
   "UNOVA_SUPER_ROD_POOL_PERCENTAGES": {"550": 25, "592": 25, "594": 15, "119": 15, "223": 10, "90": 10},
+  "REVERSAL_MOUNTAIN_INSIDE_PERCENTAGES": {
+    "527": 35,
+    "525": 25,
+    "451": 15,
+    "325": 10,
+    "322": 10,
+    "326": 2,
+    "323": 2
+  },
   "CELESTIAL_TOWER_ROOF_PERCENTAGES": {
     "607": 40,
     "605": 40,
@@ -493,8 +502,26 @@
     "95": 5
   },
   "CLAY_TUNNEL_PERCENTAGES": {"525": 35, "632": 20, "305": 15, "299": 15, "527": 10, "95": 5, "530": 5, "208": 3, "550": 2, "60": 2},
-  "REVERSAL_MOUNTAIN_PERCENTAGES": {"451": 17, "325": 9, "426": 3, "328": 2, "326": 4, "227": 1, "322": 9, "323": 4, "527": 30, "525": 21, "329": 1, "531": 5, "530": 5},
-  "STRANGE_HOUSE_PERCENTAGES": {"607": 30, "574": 10, "20": 15, "42": 15, "354": 15, "575": 2, "577": 10, "578": 2},
+  "REVERSAL_MOUNTAIN_PERCENTAGES": {
+    "451": 30,
+    "426": 20,
+    "328": 15,
+    "325": 10,
+    "322": 10,
+    "227": 5,
+    "326": 5,
+    "323": 5
+  },
+  "STRANGE_HOUSE_PERCENTAGES": {
+    "607": 30,
+    "20": 15,
+    "42": 15,
+    "354": 15,
+    "574": 10,
+    "577": 10,
+    "575": 2,
+    "578": 2
+  },
   "UNDELLA_BAY_PERCENTAGES": { "278": 12, "458": 8, "279": 8, "363": 8, "592": 8, "223": 8, "320": 8, "226": 8, "321": 8, "364": 8, "365": 8, "593": 8 },
   "SEASIDE_CAVE_PERCENTAGES": {"527": 35, "55": 28, "525": 25, "86": 5, "602": 2, "603": 2, "213": 2, "530": 5, "592": 2, "370": 2, "90": 2},
   "NATURE_PRESERVE_PERCENTAGES": {"274": 30, "334": 20, "55": 10, "164": 10, "203": 15, "611": 10, "352": 5, "531": 5, "206": 5, "275": 2, "550": 2, "418": 2, "129": 2, "130": 2},
@@ -1110,242 +1137,1532 @@
       "battle_type": "indoor",
       "wild_pool_percentages": "STRANGE_HOUSE_PERCENTAGES",
       "min_rounds": 1,
-      "trainer_pool": [
-        {
-          "name": "Backpacker Boone",
-          "class": "CAMPER",
-          "sprite": "camper.png",
-          "team": [
-            322,
-            561
-          ],
-          "rewards": {
-            "balls": 4
-          }
-        },
-        {
-          "name": "Psychic Lynette",
-          "class": "PSYCHIC",
-          "sprite": "psychic.png",
-          "team": [
-            425,
-            325,
-            426
-          ],
-          "rewards": {
-            "balls": 5
-          }
+      "trainer_pool": [],
+      "route_menu": [],
+      "level": 30,
+      "wild_tables": {
+        "ALL": {
+          "grass": [
+            [
+              607,
+              0,
+              20,
+              31,
+              31
+            ],
+            [
+              574,
+              0,
+              10.0,
+              31,
+              31
+            ],
+            [
+              577,
+              0,
+              10.0,
+              31,
+              31
+            ],
+            [
+              20,
+              0,
+              10,
+              32,
+              32
+            ],
+            [
+              42,
+              0,
+              10,
+              32,
+              32
+            ],
+            [
+              607,
+              0,
+              10,
+              33,
+              33
+            ],
+            [
+              354,
+              0,
+              10,
+              32,
+              32
+            ],
+            [
+              20,
+              0,
+              5,
+              33,
+              33
+            ],
+            [
+              42,
+              0,
+              5,
+              33,
+              33
+            ],
+            [
+              354,
+              0,
+              4,
+              34,
+              34
+            ],
+            [
+              575,
+              0,
+              2.0,
+              34,
+              34
+            ],
+            [
+              578,
+              0,
+              2.0,
+              34,
+              34
+            ],
+            [
+              354,
+              0,
+              1,
+              34,
+              34
+            ],
+            [
+              575,
+              0,
+              0.5,
+              34,
+              34
+            ],
+            [
+              578,
+              0,
+              0.5,
+              34,
+              34
+            ]
+          ]
         }
-      ],
-      "route_menu": [
-        {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
-        },
-        {
-          "text": "Reversal Mountain",
-          "action": "EXIT",
-          "target_area": "REVERSAL_MOUNTAIN",
-          "condition": "can_exit",
-          "color": "RED"
-        }
-      ],
-      "next_area": "REVERSAL_MOUNTAIN"
+      },
+      "wild_levels": {
+        "land": [
+          31,
+          34
+        ]
+      }
     },
     "REVERSAL_MOUNTAIN": {
-      "area_type": "dungeon",
+      "area_type": "wild_route",
       "route_name": "Reversal Mountain",
       "region": "UNOVA",
-      "battle_type": "cave",
+      "battle_type": "grass",
       "wild_pool_percentages": "REVERSAL_MOUNTAIN_PERCENTAGES",
       "min_rounds": 1,
       "trainer_pool": [
         {
           "name": "Cyclist Jeremiah",
-          "class": "BIKER",
-          "sprite": "biker.png",
+          "class": "CYCLIST",
+          "sprite": "pt_cyclist_m.png",
           "team": [
             523
           ],
+          "levels": [
+            37
+          ],
           "rewards": {
-            "balls": 3
-          }
+            "balls": 2
+          },
+          "b2_id": 468
         },
         {
           "name": "Cyclist Adelaide",
-          "class": "BIKER",
-          "sprite": "biker.png",
+          "class": "CYCLIST",
+          "sprite": "pt_cyclist_f.png",
           "team": [
             521
           ],
+          "levels": [
+            37
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 467
+        }
+      ],
+      "route_menu": [],
+      "wild_tables": {
+        "ALL": {
+          "grass": [
+            [
+              451,
+              0,
+              20,
+              31,
+              31
+            ],
+            [
+              325,
+              0,
+              10.0,
+              31,
+              31
+            ],
+            [
+              322,
+              0,
+              10.0,
+              31,
+              31
+            ],
+            [
+              328,
+              0,
+              10,
+              32,
+              32
+            ],
+            [
+              451,
+              0,
+              10,
+              33,
+              33
+            ],
+            [
+              426,
+              0,
+              10,
+              32,
+              32
+            ],
+            [
+              426,
+              0,
+              10,
+              33,
+              33
+            ],
+            [
+              227,
+              0,
+              5,
+              34,
+              34
+            ],
+            [
+              326,
+              0,
+              2.5,
+              33,
+              33
+            ],
+            [
+              323,
+              0,
+              2.5,
+              33,
+              33
+            ],
+            [
+              328,
+              0,
+              4,
+              34,
+              34
+            ],
+            [
+              326,
+              0,
+              2.0,
+              33,
+              33
+            ],
+            [
+              323,
+              0,
+              2.0,
+              33,
+              33
+            ],
+            [
+              328,
+              0,
+              1,
+              34,
+              34
+            ],
+            [
+              326,
+              0,
+              0.5,
+              33,
+              33
+            ],
+            [
+              323,
+              0,
+              0.5,
+              33,
+              33
+            ]
+          ],
+          "dark": [
+            [
+              451,
+              0,
+              20,
+              35,
+              35
+            ],
+            [
+              326,
+              0,
+              10.0,
+              35,
+              35
+            ],
+            [
+              323,
+              0,
+              10.0,
+              35,
+              35
+            ],
+            [
+              227,
+              0,
+              10,
+              36,
+              36
+            ],
+            [
+              451,
+              0,
+              10,
+              37,
+              37
+            ],
+            [
+              426,
+              0,
+              10,
+              36,
+              36
+            ],
+            [
+              426,
+              0,
+              10,
+              37,
+              37
+            ],
+            [
+              227,
+              0,
+              5,
+              38,
+              38
+            ],
+            [
+              326,
+              0,
+              2.5,
+              37,
+              37
+            ],
+            [
+              323,
+              0,
+              2.5,
+              37,
+              37
+            ],
+            [
+              329,
+              0,
+              4,
+              38,
+              38
+            ],
+            [
+              326,
+              0,
+              2.0,
+              37,
+              37
+            ],
+            [
+              323,
+              0,
+              2.0,
+              37,
+              37
+            ],
+            [
+              329,
+              0,
+              1,
+              38,
+              38
+            ],
+            [
+              326,
+              0,
+              0.5,
+              37,
+              37
+            ],
+            [
+              323,
+              0,
+              0.5,
+              37,
+              37
+            ]
+          ],
+          "rustle": [
+            [
+              531,
+              0,
+              20,
+              31,
+              31
+            ],
+            [
+              531,
+              0,
+              20,
+              31,
+              31
+            ],
+            [
+              531,
+              0,
+              10,
+              32,
+              32
+            ],
+            [
+              531,
+              0,
+              10,
+              32,
+              32
+            ],
+            [
+              531,
+              0,
+              10,
+              33,
+              33
+            ],
+            [
+              531,
+              0,
+              10,
+              33,
+              33
+            ],
+            [
+              531,
+              0,
+              5,
+              34,
+              34
+            ],
+            [
+              531,
+              0,
+              5,
+              34,
+              34
+            ],
+            [
+              531,
+              0,
+              4,
+              34,
+              34
+            ],
+            [
+              531,
+              0,
+              4,
+              34,
+              34
+            ],
+            [
+              531,
+              0,
+              1,
+              34,
+              34
+            ],
+            [
+              531,
+              0,
+              1,
+              34,
+              34
+            ]
+          ]
+        }
+      },
+      "wild_levels": {
+        "land": [
+          31,
+          34
+        ]
+      }
+    },
+    "REVERSAL_MOUNTAIN_INSIDE": {
+      "area_type": "dungeon",
+      "region": "UNOVA",
+      "battle_type": "cave",
+      "min_rounds": 1,
+      "route_menu": [],
+      "phenomena": "dust",
+      "route_name": "Reversal Mountain",
+      "trainer_pool": [
+        {
+          "name": "Pokemon Ranger Eliza",
+          "class": "RANGER",
+          "sprite": "ranger.png",
+          "team": [
+            354,
+            55
+          ],
+          "levels": [
+            38,
+            38
+          ],
           "rewards": {
             "balls": 3
-          }
+          },
+          "b2_id": 517,
+          "when_flags": [
+            "unova_version:BLACK_2"
+          ]
+        },
+        {
+          "name": "Hiker Jared",
+          "class": "HIKER",
+          "sprite": "b2_hiker.png",
+          "team": [
+            525,
+            530
+          ],
+          "levels": [
+            37,
+            37
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 521,
+          "when_flags": [
+            "unova_version:BLACK_2"
+          ]
         },
         {
           "name": "Black Belt Corey",
-          "class": "BLACKBELT",
-          "sprite": "blackbelt.png",
+          "class": "BLACK_BELT",
+          "sprite": "b2_black_belt.png",
           "team": [
             533,
             559,
             559
           ],
-          "rewards": {
-            "balls": 5
-          }
-        },
-        {
-          "name": "Backpacker Kumiko",
-          "class": "CAMPER",
-          "sprite": "camper.png",
-          "team": [
-            42,
-            555
+          "levels": [
+            37,
+            37,
+            37
           ],
           "rewards": {
             "balls": 4
-          }
+          },
+          "b2_id": 523,
+          "battle_options": {
+            "double": true
+          },
+          "when_flags": [
+            "unova_version:BLACK_2"
+          ]
         },
         {
           "name": "Ace Trainer Cora",
           "class": "ACE_TRAINER",
-          "sprite": "acetrainer_m.png",
+          "sprite": "ace_trainer.png",
           "team": [
             326,
             426
           ],
+          "levels": [
+            39,
+            39
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 520,
+          "when_flags": [
+            "unova_version:BLACK_2"
+          ]
+        },
+        {
+          "name": "Backpacker Kumiko",
+          "class": "BACKPACKER",
+          "sprite": "b2_backpacker_f.png",
+          "team": [
+            42,
+            555
+          ],
+          "levels": [
+            37,
+            37
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 789,
+          "when_flags": [
+            "unova_version:BLACK_2"
+          ]
+        },
+        {
+          "name": "Battle Girl Chan",
+          "class": "BATTLE_GIRL",
+          "sprite": "b2_battle_girl.png",
+          "team": [
+            447,
+            533,
+            447
+          ],
+          "levels": [
+            37,
+            37,
+            37
+          ],
           "rewards": {
             "balls": 4
-          }
+          },
+          "b2_id": 524,
+          "battle_options": {
+            "double": true
+          },
+          "when_flags": [
+            "unova_version:BLACK_2"
+          ]
         },
         {
           "name": "Ace Trainer Ray",
           "class": "ACE_TRAINER",
-          "sprite": "acetrainer_f.png",
+          "sprite": "ace_trainer.png",
           "team": [
             329,
             323
           ],
+          "levels": [
+            39,
+            39
+          ],
           "rewards": {
-            "balls": 4
-          }
+            "balls": 3
+          },
+          "b2_id": 786,
+          "when_flags": [
+            "unova_version:BLACK_2"
+          ]
+        },
+        {
+          "name": "Doctor Derek",
+          "class": "DOCTOR",
+          "sprite": "b2_doctor.png",
+          "team": [
+            528
+          ],
+          "levels": [
+            38
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 672,
+          "when_flags": [
+            "unova_version:BLACK_2"
+          ]
         },
         {
           "name": "Backpacker Kiyo",
-          "class": "CAMPER",
-          "sprite": "camper.png",
+          "class": "BACKPACKER",
+          "sprite": "b2_backpacker_m.png",
           "team": [
             42,
             581
           ],
+          "levels": [
+            37,
+            37
+          ],
           "rewards": {
-            "balls": 4
-          }
+            "balls": 3
+          },
+          "b2_id": 513,
+          "when_flags": [
+            "unova_version:BLACK_2"
+          ]
         },
         {
           "name": "Hiker Markus",
           "class": "HIKER",
-          "sprite": "hiker.png",
+          "sprite": "b2_hiker.png",
           "team": [
             533,
             558
           ],
+          "levels": [
+            37,
+            37
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 522,
+          "when_flags": [
+            "unova_version:BLACK_2"
+          ]
+        },
+        {
+          "name": "Battle Girl Chan",
+          "class": "BATTLE_GIRL",
+          "sprite": "b2_battle_girl.png",
+          "team": [
+            447,
+            533,
+            447
+          ],
+          "levels": [
+            37,
+            37,
+            37
+          ],
           "rewards": {
             "balls": 4
-          }
-        }
-      ],
-      "route_menu": [
-        {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
+          },
+          "b2_id": 524,
+          "battle_options": {
+            "double": true
+          },
+          "when_flags": [
+            "unova_version:WHITE_2"
+          ]
         },
         {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
-        },
-        {
-          "text": "SEEK HEATRAN",
-          "action": "BOSS",
-          "color": "GOLD",
-          "condition": "beat_alder",
-          "flag_condition": "not reversal_heatran",
-          "boss": {
-            "id": 485,
-            "level": 68,
-            "name": "Heatran",
-            "victory_flag": "reversal_heatran",
-            "lines": [
-              "Heatran appears!"
-            ]
-          }
-        },
-        {
-          "text": "SEARCH THE CAVE",
-          "action": "EVENT",
-          "color": "GOLD",
-          "flag_condition": "not reversal_mountain_orbs",
-          "event": {
-            "lines": [
-              "Two odd orbs sit among the hot rocks..."
-            ],
-            "gift_item": {
-              "FLAME_ORB": 1,
-              "TOXIC_ORB": 1
-            },
-            "flag": "reversal_mountain_orbs"
-          }
-        },
-        {
-          "text": "Lentimas Town",
-          "action": "EXIT",
-          "target_area": "LENTIMAS_TOWN",
-          "condition": "can_exit",
-          "color": "RED"
-        },
-        {
-          "text": "Strange House",
-          "action": "EXIT",
-          "target_area": "STRANGE_HOUSE",
-          "condition": "can_exit",
-          "color": "RED"
-        },
-        {
-          "text": "Undella Town",
-          "action": "EXIT",
-          "target_area": "UNDELLA_TOWN",
-          "condition": [
-            "can_exit"
+          "name": "Backpacker Kiyo",
+          "class": "BACKPACKER",
+          "sprite": "b2_backpacker_m.png",
+          "team": [
+            42,
+            581
           ],
-          "color": "RED"
+          "levels": [
+            37,
+            37
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 788,
+          "when_flags": [
+            "unova_version:WHITE_2"
+          ]
+        },
+        {
+          "name": "Black Belt Corey",
+          "class": "BLACK_BELT",
+          "sprite": "b2_black_belt.png",
+          "team": [
+            533,
+            559,
+            559
+          ],
+          "levels": [
+            37,
+            37,
+            37
+          ],
+          "rewards": {
+            "balls": 4
+          },
+          "b2_id": 523,
+          "battle_options": {
+            "double": true
+          },
+          "when_flags": [
+            "unova_version:WHITE_2"
+          ]
+        },
+        {
+          "name": "Hiker Markus",
+          "class": "HIKER",
+          "sprite": "b2_hiker.png",
+          "team": [
+            533,
+            558
+          ],
+          "levels": [
+            37,
+            37
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 522,
+          "when_flags": [
+            "unova_version:WHITE_2"
+          ]
+        },
+        {
+          "name": "Pokemon Ranger Lewis",
+          "class": "RANGER",
+          "sprite": "ranger.png",
+          "team": [
+            505,
+            323
+          ],
+          "levels": [
+            38,
+            38
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 516,
+          "when_flags": [
+            "unova_version:WHITE_2"
+          ]
+        },
+        {
+          "name": "Ace Trainer Cora",
+          "class": "ACE_TRAINER",
+          "sprite": "ace_trainer.png",
+          "team": [
+            326,
+            426
+          ],
+          "levels": [
+            39,
+            39
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 787,
+          "when_flags": [
+            "unova_version:WHITE_2"
+          ]
+        },
+        {
+          "name": "Ace Trainer Ray",
+          "class": "ACE_TRAINER",
+          "sprite": "ace_trainer.png",
+          "team": [
+            329,
+            323
+          ],
+          "levels": [
+            39,
+            39
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 519,
+          "when_flags": [
+            "unova_version:WHITE_2"
+          ]
+        },
+        {
+          "name": "Doctor Derek",
+          "class": "DOCTOR",
+          "sprite": "b2_doctor.png",
+          "team": [
+            528
+          ],
+          "levels": [
+            38
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 672,
+          "when_flags": [
+            "unova_version:WHITE_2"
+          ]
+        },
+        {
+          "name": "Backpacker Kumiko",
+          "class": "BACKPACKER",
+          "sprite": "b2_backpacker_f.png",
+          "team": [
+            42,
+            555
+          ],
+          "levels": [
+            37,
+            37
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 514,
+          "when_flags": [
+            "unova_version:WHITE_2"
+          ]
+        },
+        {
+          "name": "Hiker Jared",
+          "class": "HIKER",
+          "sprite": "b2_hiker.png",
+          "team": [
+            525,
+            530
+          ],
+          "levels": [
+            37,
+            37
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 521,
+          "when_flags": [
+            "unova_version:WHITE_2"
+          ]
         }
       ],
-      "next_area": "LENTIMAS_TOWN"
+      "level": 29,
+      "wild_pool_percentages": "REVERSAL_MOUNTAIN_INSIDE_PERCENTAGES",
+      "wild_tables": {
+        "ALL": {
+          "grass": [
+            [
+              325,
+              0,
+              10.0,
+              31,
+              31
+            ],
+            [
+              322,
+              0,
+              10.0,
+              31,
+              31
+            ],
+            [
+              527,
+              0,
+              20,
+              32,
+              32
+            ],
+            [
+              525,
+              0,
+              10,
+              32,
+              32
+            ],
+            [
+              451,
+              0,
+              10,
+              33,
+              33
+            ],
+            [
+              525,
+              0,
+              10,
+              34,
+              34
+            ],
+            [
+              527,
+              0,
+              10,
+              34,
+              34
+            ],
+            [
+              326,
+              0,
+              2.5,
+              35,
+              35
+            ],
+            [
+              323,
+              0,
+              2.5,
+              35,
+              35
+            ],
+            [
+              451,
+              0,
+              5,
+              35,
+              35
+            ],
+            [
+              527,
+              0,
+              4,
+              35,
+              35
+            ],
+            [
+              525,
+              0,
+              4,
+              35,
+              35
+            ],
+            [
+              527,
+              0,
+              1,
+              35,
+              35
+            ],
+            [
+              525,
+              0,
+              1,
+              35,
+              35
+            ]
+          ],
+          "rustle": [
+            [
+              530,
+              0,
+              20,
+              32,
+              32
+            ],
+            [
+              530,
+              0,
+              20,
+              32,
+              32
+            ],
+            [
+              530,
+              0,
+              10,
+              33,
+              33
+            ],
+            [
+              530,
+              0,
+              10,
+              33,
+              33
+            ],
+            [
+              530,
+              0,
+              10,
+              34,
+              34
+            ],
+            [
+              530,
+              0,
+              10,
+              34,
+              34
+            ],
+            [
+              530,
+              0,
+              5,
+              35,
+              35
+            ],
+            [
+              530,
+              0,
+              5,
+              35,
+              35
+            ],
+            [
+              530,
+              0,
+              4,
+              35,
+              35
+            ],
+            [
+              530,
+              0,
+              4,
+              35,
+              35
+            ],
+            [
+              530,
+              0,
+              1,
+              35,
+              35
+            ],
+            [
+              530,
+              0,
+              1,
+              35,
+              35
+            ]
+          ]
+        }
+      },
+      "wild_levels": {
+        "land": [
+          31,
+          35
+        ]
+      }
+    },
+    "REVERSAL_MOUNTAIN_SOUTH": {
+      "area_type": "dungeon",
+      "region": "UNOVA",
+      "battle_type": "cave",
+      "min_rounds": 1,
+      "route_menu": [],
+      "phenomena": "dust",
+      "route_name": "Reversal Mountain",
+      "trainer_pool": [],
+      "level": 29,
+      "wild_pool_percentages": "REVERSAL_MOUNTAIN_INSIDE_PERCENTAGES",
+      "wild_tables": {
+        "ALL": {
+          "grass": [
+            [
+              325,
+              0,
+              10.0,
+              31,
+              31
+            ],
+            [
+              322,
+              0,
+              10.0,
+              31,
+              31
+            ],
+            [
+              527,
+              0,
+              20,
+              32,
+              32
+            ],
+            [
+              525,
+              0,
+              10,
+              32,
+              32
+            ],
+            [
+              451,
+              0,
+              10,
+              33,
+              33
+            ],
+            [
+              525,
+              0,
+              10,
+              34,
+              34
+            ],
+            [
+              527,
+              0,
+              10,
+              34,
+              34
+            ],
+            [
+              326,
+              0,
+              2.5,
+              35,
+              35
+            ],
+            [
+              323,
+              0,
+              2.5,
+              35,
+              35
+            ],
+            [
+              451,
+              0,
+              5,
+              35,
+              35
+            ],
+            [
+              527,
+              0,
+              4,
+              35,
+              35
+            ],
+            [
+              525,
+              0,
+              4,
+              35,
+              35
+            ],
+            [
+              527,
+              0,
+              1,
+              35,
+              35
+            ],
+            [
+              525,
+              0,
+              1,
+              35,
+              35
+            ]
+          ],
+          "rustle": [
+            [
+              530,
+              0,
+              20,
+              32,
+              32
+            ],
+            [
+              530,
+              0,
+              20,
+              32,
+              32
+            ],
+            [
+              530,
+              0,
+              10,
+              33,
+              33
+            ],
+            [
+              530,
+              0,
+              10,
+              33,
+              33
+            ],
+            [
+              530,
+              0,
+              10,
+              34,
+              34
+            ],
+            [
+              530,
+              0,
+              10,
+              34,
+              34
+            ],
+            [
+              530,
+              0,
+              5,
+              35,
+              35
+            ],
+            [
+              530,
+              0,
+              5,
+              35,
+              35
+            ],
+            [
+              530,
+              0,
+              4,
+              35,
+              35
+            ],
+            [
+              530,
+              0,
+              4,
+              35,
+              35
+            ],
+            [
+              530,
+              0,
+              1,
+              35,
+              35
+            ],
+            [
+              530,
+              0,
+              1,
+              35,
+              35
+            ]
+          ]
+        }
+      },
+      "wild_levels": {
+        "land": [
+          31,
+          35
+        ]
+      }
+    },
+    "REVERSAL_MOUNTAIN_ENTRY": {
+      "area_type": "dungeon",
+      "region": "UNOVA",
+      "battle_type": "cave",
+      "min_rounds": 1,
+      "route_menu": [],
+      "phenomena": "dust",
+      "route_name": "Reversal Mountain",
+      "trainer_pool": [],
+      "level": 29,
+      "wild_pool_percentages": "REVERSAL_MOUNTAIN_INSIDE_PERCENTAGES",
+      "wild_tables": {
+        "ALL": {
+          "grass": [
+            [
+              325,
+              0,
+              10.0,
+              31,
+              31
+            ],
+            [
+              322,
+              0,
+              10.0,
+              31,
+              31
+            ],
+            [
+              527,
+              0,
+              20,
+              32,
+              32
+            ],
+            [
+              525,
+              0,
+              10,
+              32,
+              32
+            ],
+            [
+              451,
+              0,
+              10,
+              33,
+              33
+            ],
+            [
+              525,
+              0,
+              10,
+              34,
+              34
+            ],
+            [
+              527,
+              0,
+              10,
+              34,
+              34
+            ],
+            [
+              326,
+              0,
+              2.5,
+              35,
+              35
+            ],
+            [
+              323,
+              0,
+              2.5,
+              35,
+              35
+            ],
+            [
+              451,
+              0,
+              5,
+              35,
+              35
+            ],
+            [
+              527,
+              0,
+              4,
+              35,
+              35
+            ],
+            [
+              525,
+              0,
+              4,
+              35,
+              35
+            ],
+            [
+              527,
+              0,
+              1,
+              35,
+              35
+            ],
+            [
+              525,
+              0,
+              1,
+              35,
+              35
+            ]
+          ],
+          "rustle": [
+            [
+              530,
+              0,
+              20,
+              32,
+              32
+            ],
+            [
+              530,
+              0,
+              20,
+              32,
+              32
+            ],
+            [
+              530,
+              0,
+              10,
+              33,
+              33
+            ],
+            [
+              530,
+              0,
+              10,
+              33,
+              33
+            ],
+            [
+              530,
+              0,
+              10,
+              34,
+              34
+            ],
+            [
+              530,
+              0,
+              10,
+              34,
+              34
+            ],
+            [
+              530,
+              0,
+              5,
+              35,
+              35
+            ],
+            [
+              530,
+              0,
+              5,
+              35,
+              35
+            ],
+            [
+              530,
+              0,
+              4,
+              35,
+              35
+            ],
+            [
+              530,
+              0,
+              4,
+              35,
+              35
+            ],
+            [
+              530,
+              0,
+              1,
+              35,
+              35
+            ],
+            [
+              530,
+              0,
+              1,
+              35,
+              35
+            ]
+          ]
+        }
+      },
+      "wild_levels": {
+        "land": [
+          31,
+          35
+        ]
+      }
     },
     "LENTIMAS_TOWN": {
       "area_type": "town",
@@ -1354,25 +2671,11 @@
       "has_gym": false,
       "travel_options": [
         {
-          "text": "Mistralton City",
-          "target_area": "MISTRALTON_CITY"
-        },
-        {
           "text": "Reversal Mountain",
           "target_area": "REVERSAL_MOUNTAIN"
         }
       ],
-      "explore_options": [
-        {
-          "text": "Pok\u00e9mon Center",
-          "action": "HEAL"
-        },
-        {
-          "text": "Shop",
-          "action": "SHOP"
-        }
-      ],
-      "next_area": "MISTRALTON_CITY"
+      "level": 28
     },
     "TUBELINE_BRIDGE": {
       "area_type": "wild_route",
@@ -7637,7 +8940,7 @@
         },
         {
           "text": "Reversal Mountain",
-          "target_area": "REVERSAL_MOUNTAIN"
+          "target_area": "REVERSAL_MOUNTAIN_INSIDE"
         },
         {
           "text": "Humilau City",
@@ -18628,6 +19931,7 @@
     {"id": "b2_m31", "type": "MAIN", "title": "The Charged Stones", "description": "Chargestone Cave's floating stones crackle with power. Mistralton City and its Gym lie on the far side.", "condition": {"required_region": "UNOVA", "flag": "b2_r6_surf", "flag_not": "visited_MISTRALTON_CITY"}, "completed_flag": "visited_MISTRALTON_CITY", "target": "CHARGESTONE_CAVE"},
     {"id": "b2_m32", "type": "MAIN", "title": "The Wind Tunnel", "description": "Skyla, Mistralton's pilot and Gym Leader, runs her Gym in an aircraft hangar. Mind the turbines!", "condition": {"required_region": "UNOVA", "flag": "visited_MISTRALTON_CITY", "flag_not": "b2_jet_badge"}, "completed_flag": "b2_jet_badge", "target": "MISTRALTON_CITY"},
     {"id": "b2_m33", "type": "MAIN", "title": "Over the Mountain", "description": "Twist Mountain has caved in. Skyla will fly Professor Juniper over it from the Cargo Service. Fetch the professor from Celestial Tower and get aboard!", "condition": {"required_region": "UNOVA", "flag": "b2_jet_badge", "flag_not": "b2_lentimas_flight"}, "completed_flag": "b2_lentimas_flight", "target": "MISTRALTON_CITY"},
+    {"id": "b2_m34", "type": "MAIN", "title": "The Smouldering Mountain", "description": "Professor Juniper wants you to ask Opelucid's Gym Leader, Drayden, about the legendary dragons. The way east is through Reversal Mountain, where Bianca is chasing rumours of a rare Pokemon.", "condition": {"required_region": "UNOVA", "flag": "b2_lentimas_juniper", "flag_not": "visited_UNDELLA_TOWN"}, "completed_flag": "visited_UNDELLA_TOWN", "target": "REVERSAL_MOUNTAIN"},
     {"id": "unova_m2", "type": "MAIN", "title": "Team Plasma's Speech", "description": "Follow Route 1 north to Accumula Town. A group called Team Plasma is giving a speech in the square. Go and listen.", "condition": {"required_region": "UNOVA", "flag": "defeated_rival_nuvema", "flag_not": ["heard_n_accumula", "b2_mom_talk"]}, "completed_flag": "heard_n_accumula", "target": "ACCUMULA_TOWN"},
     {"id": "unova_m3", "type": "MAIN", "title": "A Stranger Named N", "description": "On Route 2 you'll meet Alder, and a strange young man named N who says he can hear Pokémon talk. He wants to battle!", "condition": {"required_region": "UNOVA", "flag": "heard_n_accumula", "flag_not": ["defeated_n_route2", "b2_mom_talk"], "region_badges_less": 1}, "completed_flag": "defeated_n_route2", "target": "UNOVA_ROUTE_2"},
     {"id": "unova_m4", "type": "MAIN", "title": "A Gift in the Dreamyard", "description": "A researcher named Fennel is at the Dreamyard, next to Striaton City. She has a Pokémon that's strong against the Striaton Gym.", "condition": {"required_region": "UNOVA", "flag": "defeated_n_route2", "flag_not": ["got_elemental_monkey", "b2_mom_talk"], "region_badges_less": 1}, "completed_flag": "got_elemental_monkey", "target": "DREAMYARD", "reward": "Pansage, Pansear or Panpour"},
