@@ -1542,7 +1542,6 @@
             {"text": "Iron Island", "action": "TRAVEL", "target_area": "IRON_ISLAND"},
             {"text": "TM060", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm060_canalave_city_c02_2_58", "event": {"lines": ["A TM (U-Turn), lying by the path."], "gift_item": {"TM060": 1}, "flag": "got_tm060_canalave_city_c02_2_58"}}
         ],
-        "on_enter_event": {"type": "trainer_battle", "trainer": {"name": "{rival_name}", "class": "PKMN_TRAINER", "sprite": "{rival_character}", "team": [397, 418, 214, 315, 391], "team_choice": {"387": [397, 418, 214, 315, 391], "390": [397, 315, 214, 77, 394], "393": [397, 418, 214, 77, 388]}, "rewards": {"balls": 5}, "victory_flag": "defeated_rival_canalave", "dialogue": {"intro": ["{player_name}! I've grown SO much stronger! BATTLE ME RIGHT NOW!"], "player_won": ["You're unreal. I'm gonna train harder than ever!"], "player_lost": ["FINALLY! I'm getting closer to you!"]}, "levels": [32, 33, 32, 34, 37]}, "condition": "has_relic_badge", "flag_check": "defeated_rival_canalave"},
         "trainer_pool": []
     },
     "SNOWPOINT_CITY": {
@@ -3643,19 +3642,21 @@
         "visited": "CANALAVE_CITY"
       },
       "target": "CANALAVE_CITY",
+      "steps": [{"area": "CANALAVE_CITY", "at": [15, 20], "label": "Barry", "done": "defeated_rival_canalave"}],
       "reward": "Mine Badge"
     },
     {
       "id": "sinnoh_m10",
       "type": "MAIN",
       "title": "The Canalave Library",
-      "description": "Professor Rowan wants to meet at the Canalave Library.",
+      "description": "Professor Rowan wants to meet at the Canalave Library, but Barry won't go in till you have HM Strength. Riley on Iron Island has it: take the boat from the harbour.",
       "condition": {
         "required_region": "SINNOH",
         "badges_min": 6,
         "flag_not": "canalave_library_meeting"
       },
       "target": "CANALAVE_CITY",
+      "steps": [{"area": "IRON_ISLAND", "at": [21, 10], "label": "Riley", "done": "got_hm_strength_iron_island"}, {"area": "CANALAVE_CITY", "at": [5, 14], "label": "Canalave Library", "done": "canalave_library_meeting"}],
       "completed_flag": "canalave_library_meeting"
     },
     {

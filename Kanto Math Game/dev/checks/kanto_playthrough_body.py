@@ -799,6 +799,8 @@ def things(st):
             now = next(o for o in opt["any"] if st._shown(o)) if "any" in opt else opt
             if str(now.get("action") or "").upper() in BORING:
                 continue
+            if (now.get("event") or {}).get("stock"):   # (a shop made as an event - a store counter, a vending machine, a stall: a
+                continue                                # shop screen the run can't leave, like the SHOP clerks; Sinnoh 11-24)
             _ride = (now.get("event") or {}).get("travel")   # (a ride - a ship, a ferry, a train - only toward the mission's place: else a
             if _ride and _ride != (MISSIONS.get(STATE.get("mission")) or {}).get("target"):   # run sails off and is stranded; Unova 11-23)
                 continue
@@ -829,6 +831,8 @@ def things(st):
         for m in f.movers:
             if m.kind == "figure" and isinstance(m.payload, dict):
                 if str(m.payload.get("action") or "").upper() in BORING:
+                    continue
+                if (m.payload.get("event") or {}).get("stock"):   # (a shop made as an event, as above)
                     continue
                 out_.append((0, ("F", (m.x, m.y), str(m.payload.get("text"))), [(m.x, m.y)], f"walk up to {m.payload.get('text')}", None))
         rest, ways = {}, {}

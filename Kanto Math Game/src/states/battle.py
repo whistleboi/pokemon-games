@@ -1466,7 +1466,7 @@ class TrainerBattleState(ShadowBattle, GimmickEffects, AbilityEffects, MoveMecha
         if v.get("no_escape") or v.get("trapped") or v.get("ingrain"):
             return False
         a = self.ab(self.player_pokemon)
-        grounded = "FLYING" not in (foe.types or []) and self.ab(foe) != "LEVITATE"
+        grounded = "FLYING" not in (foe.types or []) and self.ab(foe) != "LEVITATE" and self.held(foe) != "AIR_BALLOON"
         return not (a == "SHADOWTAG" and self.ab(foe) != "SHADOWTAG" or a == "ARENATRAP" and grounded
                     or a == "MAGNETPULL" and "STEEL" in (foe.types or []))
 

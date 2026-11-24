@@ -664,7 +664,8 @@ class MoveMechanics:
     def _airborne(self, mon):
         """Magnet Rise or Telekinesis lift it above Ground moves (not under Gravity, Smack Down or an Iron Ball)."""
         v = self.vol(mon)
-        return bool((v.get("magnet_rise") or v.get("telekinesis")) and not self.forced_grounded(mon))
+        return bool((v.get("magnet_rise") or v.get("telekinesis") or self.held(mon) == "AIR_BALLOON")   # (an Air Balloon too)
+                    and not self.forced_grounded(mon))
 
     def forced_grounded(self, mon):
         """Pulled down: an Iron Ball, Smack Down / Thousand Arrows, Gravity, Ingrain."""
@@ -1987,8 +1988,11 @@ class MoveMechanics:
             if wish == "LUNAR-DANCE":
                 mon.pp = {}
             return [f"{self._label(mon)} became cloaked in mystical light!" if wish == "LUNAR-DANCE"
-                    else f"The healing wish came true for {self._label(mon)}!"]
-        return []
+                    else f"The healing wish came true for {self._label(mon)}!"] + self._balloon_line(mon)
+        return self._balloon_line(mon)
+
+    def _balloon_line(self, mon):
+        return [f"{self._label(mon)} floats in the air with its Air Balloon!"] if self.held(mon) == "AIR_BALLOON" else []
 
     def mv_left_field(self, active):
         """Called as the field's stat stages and conditions are cleared: whoever isn't out now gets its own

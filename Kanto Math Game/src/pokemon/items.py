@@ -193,6 +193,8 @@ HELD = {"MYSTIC_WATER": {"price": 1000, "text": "Give it to a Pokemon to hold: i
         "BIG_ROOT": {"price": 4000, "text": "Held: moves that drain HP give its holder more back."},
         "SAFETY_GOGGLES": {"price": 4000, "text": "Held: its holder takes no sandstorm damage, and powder moves don't affect it."},
         "ROCKY_HELMET": {"price": 4000, "text": "Held: a foe that touches its holder with a move gets hurt. (Lets your Pokemon Headbutt trees, too.)"},
+        "AIR_BALLOON": {"price": 400, "text": "Held: its holder floats, so Ground moves miss it. It pops when its holder is hit."},   # (B2W2: Driftveil's Chateau 25F; 11-24)
+        "PRETTY_WING": {"price": 400, "text": "A pretty feather. It does nothing, but it sells for a little money."},   # (B2W2: the Driftveil Drawbridge's bird shadows)
         "STICKY_BARB": {"price": 200, "text": "Held: it hurts its holder every turn, and sticks to a foe that touches it."},   # (B2W2: Route 20, autumn; 11-20)
         "BLACK_SLUDGE": {"price": 200, "text": "Held: a Poison-type holder gets back a little HP every turn. Any other is hurt by it."},   # (B2W2: the Castelia Sewers; 11-20)
         "POISON_GEM": {"price": 200, "text": "Held: its holder's first Poison-type move hits harder. Then it's used up."},   # (B2W2: the Castelia Sewers, hidden; 11-20)

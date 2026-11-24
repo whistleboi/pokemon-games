@@ -413,6 +413,17 @@ _mv = _json.load(open("assets/moves.json", encoding="utf-8"))
 _bad = [(l, m) for _k, _b, _n, l in _chain for mm in _SP[_k]["gym"]["leader"]["team_moves"] for m in mm if m not in _mv]
 _gen = [(l, i) for _k, _b, _n, l in _chain for i in _SP[_k]["gym"]["leader"]["team"] if i > 386]
 check(not _bad and not _gen, f"S2: the Leaders' moves are real and their Pokemon Gen 3 or earlier {_bad[:3]} {_gen[:3]}")
+# S2b (Jordan 11-24): Kanto's level caps at each badge (FireRed's 14, 21, 24, 29); the Under Colosseum between badges 3 and 4;
+# no Pokemon under its species' min level, rounds below their Leader
+_minlv = _json.load(open("assets/pokemon_levels.json", encoding="utf-8"))["min_level"]
+_aces = [max(_SP[_k]["gym"]["leader"]["levels"]) for _k, _b, _n, _l in _chain]
+_tops = {k: (max(max(t["levels"]) for t in _SP[k]["gym"]["trainers"]) if _SP[k]["gym"]["trainers"] else 0,
+             max(_SP[k]["gym"]["leader"]["levels"])) for k in ("PHENAC_CITY", "PYRITE_TOWN", "UNDER_COLOSSEUM")}
+_young = [(t["name"], p, lv) for k in ("PHENAC_CITY", "PYRITE_TOWN", "AGATE_VILLAGE", "UNDER_COLOSSEUM", "SNAGEM_HIDEOUT")
+          for t in _SP[k]["gym"]["trainers"] + [_SP[k]["gym"]["leader"]] for p, lv in zip(t["team"], t["levels"])
+          if _minlv.get(str(p), 1) > lv]
+check(_aces == [14, 21, 24, 29] and all(a < b for a, b in _tops.values()) and 24 < _tops["UNDER_COLOSSEUM"][1] <= 29 and not _young,
+      f"S2b: Part 1 at Kanto's caps - Leaders' best {_aces}, rounds under their final {_tops}, too young {_young[:3]}")
 t = town("AGATE_VILLAGE", "PYRITE_TOWN")
 _gd = next(tuple(int(v) for v in d.split(",")) for d, n in _tm["AGATE_VILLAGE"]["inside"].items() if n == "gym")
 _in = walk_to(t, _gd) and t.room == "gym"
