@@ -58,6 +58,10 @@ def open_map(key, came):
     return g.current_state
 
 
+def _ev1(ev):   # (11-23: Danny's option is the after-title rematch hook now; his first event is its "first")
+    return ev.get("first", ev) if ev.get("world") == "orange_rematch" else ev
+
+
 print("1) every built Orange map")
 for key in BUILT:
     m = _tm[key]
@@ -235,7 +239,7 @@ if "BAY_CAVE" in BUILT:
         _play_event("FUKUHARA_ISLAND", "Nurse Joy")
         check(story.inventory.get("OLD_AMBER") == 1, f"...and Nurse Joy's Old Amber follows with the {fossil.replace('_', ' ').title()}")
 if "MT_NAVEL" in BUILT:
-    _d = next(o for o in _area["MT_NAVEL"]["route_menu"] if o["text"] == "Danny")["event"]["battle"]
+    _d = _ev1(next(o for o in _area["MT_NAVEL"]["route_menu"] if o["text"] == "Danny")["event"])["battle"]
     check(_d["team"] == [74, 101, 67, 123, 31] and _d["levels"] == [30, 30, 32, 32, 35] and _d["badge_reward"] == "SEA_RUBY"
           and _d["rewards"].get("TM135") == 1, f"Danny atop Navel Mountain: 5.7's five (to Nidoqueen 35), the Sea Ruby Badge and TM Ice Beam ({_d['team']})")
     _mt = _tm["MT_NAVEL"]
@@ -310,7 +314,7 @@ if "MT_NAVEL" in BUILT:
     check(_area["MT_NAVEL"].get("weather") == "SNOW", "Navel Mountain is snowy (the whole area)")
     from src.world import seasons as _sea
     check(_sea.area_weather(g, "MT_NAVEL") == "SNOW", "...and battles there start in the snow (Hail / Blizzard)")
-    _dn = next(o for o in _area["MT_NAVEL"]["route_menu"] if o["text"] == "Danny")["event"]["battle"]
+    _dn = _ev1(next(o for o in _area["MT_NAVEL"]["route_menu"] if o["text"] == "Danny")["event"])["battle"]
     check(_dn["sprite"] == "danny_oi.png" and _os.path.isfile("assets/sprites/trainers/danny_oi.png"), "Danny: 5.7's own battle picture (trainer pic 119)")
     check(not {"37", "27", "41", "42"} & set(g.loader.area_data["ORANGE_MT_NAVEL_PERCENTAGES"]), "Navel Mountain: the old menu extras (Vulpix, Sandshrew, Zubat, Golbat) dropped")
 if "SEVEN_GRAPEFRUITS" in BUILT:
@@ -583,8 +587,8 @@ _ofile = json.load(open("assets/orange_area_data.json", encoding="utf-8"))
 _left = sorted({k for k, v in _ofile.items() if k.endswith("_PERCENTAGES") and isinstance(v, dict) and any(x.isdigit() and int(x) in _drop for x in v)})
 _ext = g.loader.area_data["REGION_START"]["ORANGE"]["dex_extra"]   # (11-19, Jordan: the hack's species back, the dex only what Orange gives)
 _back = [171, 176, 179, 180, 183, 191, 192, 211, 218, 219, 223, 226, 231, 232]
-check(len(_dl) == 95 and not set(_drop) & set(_dl) and set(_back) <= set(_ext) and not {177, 178} & set(_ext) and len(_left) >= 8,
-      f"Orange dex: 5.7's list stays 95; the old hack's species are back as extras and in their tables, Natu and Xatu not ({len(_dl)}; {_left[:4]})")
+check(len(_dl) == 192 and set(_back) <= set(_ext) <= set(_dl) and not {177, 178} & set(_dl) and len(_left) >= 8,
+      f"Orange dex (Jordan 11-23: everything Orange gives, odex.py): 192; the old hack's species back as extras and in their tables, Natu and Xatu not ({len(_dl)}; {_left[:4]})")
 check(not {"MANDARIN_DESERT", "SUNRAY_CAVE"} & set(_ofile["STORY_PROGRESSION"]), "the menu-era Mandarin Desert and Sunray Cave are deleted")
 if "ORANGE_ROUTE_64" in BUILT:
     story.story_flags["orange_magnemite_saved"] = True
@@ -899,8 +903,8 @@ if "ORANGE_ROUTE_71" in BUILT:
     _play_event("ORANGE_ROUTE_71", "Quackenpoker")
     check(story.inventory.get("DRAGON_FANG") == 1, "...and Quackenpoker gives you a Dragon Fang (4 -> 5)")
     _r70 = {o["text"]: o for o in _area["ORANGE_ROUTE_70"]["route_menu"]}
-    check(_r70["Mega Punch man"]["event"]["tutor"]["move"] == "MEGA_PUNCH" and _r70["Mega Kick man"]["event"]["tutor"]["move"] == "MEGA_KICK",
-          "Route 70: the Mega Punch and Mega Kick tutors")
+    check(_r70["Mega Punch man"]["event"]["tutor"]["move"] == "MEGA-PUNCH" and _r70["Mega Kick man"]["event"]["tutor"]["move"] == "MEGA-KICK",
+          "Route 70: the Mega Punch and Mega Kick tutors (our move keys, hyphenated: 11-23, orange_events plays them)")
 if "SALVEYO_ISLAND" in BUILT:
     for _f in ("orange_salveyo_asked", "got_salveyo_weed", "orange_tracey_healed"):
         story.story_flags.pop(_f, None)
@@ -1266,8 +1270,8 @@ def _played(key, at, step, flag, came, floor=None, n=6000):
 
 _dl = g.loader.area_data["REGION_START"]["ORANGE"]["dex_list"]
 _isl = [g.loader.area_data.get(f"ORANGE_{k}_PERCENTAGES") or {} for k in ("FIRE_ISLAND", "LIGHTNING_ISLAND", "ICE_ISLAND")]
-check(not any(p in _dl for p in (68, 236, 238, 239, 240)) and not any(str(p) in t for t in _isl for p in (236, 238, 239, 240, 68)),
-      "Q35: no Magby, Elekid, Tyrogue, Machamp or Smoochum on the islands (5.7's own tables), and off the ORANGE dex (nothing else gives them; Machoke needs a Linking Cord)")
+check(all(p in _dl for p in (68, 236, 238, 239, 240)) and not any(str(p) in t for t in _isl for p in (236, 238, 239, 240, 68)),
+      "Q35: no Magby, Elekid, Tyrogue, Machamp or Smoochum on the islands (5.7's own tables); in the dex since they come other ways (11-19: the roof Eggs, the Tyrogue gift, the Linking Cord; D1 11-23)")
 _sh = _area["SHAMOUTI_ISLAND"]
 _tr = {o["target_area"]: o.get("condition") for o in _sh["travel_options"]}
 _bars = {tuple(t): b["until"]["flag_condition"] for b in _tm["SHAMOUTI_ISLAND"]["barred"] for t in b["tiles"]}
@@ -1454,10 +1458,42 @@ check(_ta["art"][31][47] in _ta["exits"] and _tm["ORANGE_ROUTE_74"]["art"][31][0
       "Q28: you can sail into Tarroco's south-east sea pocket from Route 74's row 31, as 5.7")
 
 print("23) batch 30 (11-18, Jordan's Q70): every scene's swimmers keep to water and its walkers to ground (flyers cross anything)")
-_osp = _u.spec_from_file_location("oscenepaths", os.path.join("..", "..", "kanto_handoff", "orange_rom_tools", "oscenepaths.py"))
+_otools = os.environ.get("ORANGE_TOOLS") or next((os.path.join(_d, "kanto_handoff", "orange_rom_tools") for _d in
+           [os.path.abspath(os.path.join(os.getcwd(), *[".."] * _n)) for _n in range(1, 8)]
+           if os.path.isdir(os.path.join(_d, "kanto_handoff", "orange_rom_tools"))), "")   # (main folder or a worktree, 11-23)
+_osp = _u.spec_from_file_location("oscenepaths", os.path.join(_otools, "oscenepaths.py"))
 _osm = _u.module_from_spec(_osp); _osp.loader.exec_module(_osm)
 _bad = _osm.report(_oi.ORANGE)
 _n = sum(1 for _ in _osm.every_scene(_oi.ORANGE))
 check(not _bad, f"the moves of {_n} scenes, as the game routes them: no swimmer or walker on rock, shore or wall, none short of its stop ({_bad[:3]})")
+
+print("24) 5.7's own battle backgrounds (11-23, Dev Map clean-orange-main-battle-backgrounds; oi_battle_bg.py)")
+from src.world import battle_bg as _bbg
+import datetime as _dt
+_bbg._INDEX.clear()
+_ix = _bbg.index(g, "ORANGE") or {}
+_okeys = [k for k, a in _area.items() if isinstance(a, dict) and a.get("region") == "ORANGE"]
+check(_ix and not [k for k in _okeys if k not in _ix.get("areas", {})],
+      f"every Orange area ({len(_okeys)}) has 5.7's pictures ({[k for k in _okeys if k not in (_ix.get('areas') or {})][:4]})")
+_used = {v for e in (_ix.get("areas") or {}).values() for v in ([e] if isinstance(e, str) else e.values())}
+_miss = [v for v in _used | set((_ix.get("terrain") or {}).values())
+         if not os.path.isfile(os.path.join(_bbg.folder(g, "ORANGE"), v))]
+check(not _miss, f"all {len(_used)} pictures it names are there ({_miss})")
+_bn = lambda p: os.path.basename(p) if p else None
+_noon = _dt.datetime(2026, 1, 1, 12)
+check(_bn(_bbg.pick(g, "MIKAN_ISLAND", trainer=True, gym=True, leader=True, water=False, now=_noon)) == "leader.png",
+      "Cissy in the Gym hall: 5.7's Leader picture")
+check(_bn(_bbg.pick(g, "PUMMELO_ISLAND", trainer=True, gym=True, leader=True, water=False, now=_noon)) == "champion.png",
+      "Drake in the Stadium: 5.7's Champion picture")
+check(all(_bn(_bbg.pick(g, _a, trainer=True, leader=True, water=False, now=_noon)) == "leader.png"
+          for _a in ("TROVITA_ISLAND", "MT_NAVEL", "KUMQUAT_ISLAND")),
+      "Rudy, Danny and Luana's own battles (events: main 8c0a6ccf asks 'leader'): 5.7's Leader picture")
+check(_bn(_bbg.pick(g, "ORANGE_ROUTE_57", water=False, now=_noon)) == "grass.png"
+      and _bn(_bbg.pick(g, "ORANGE_ROUTE_57", water=True, now=_noon)) == "water.png",
+      "Route 57: grass for its grass, water on the sea")
+check(_bn(_bbg.pick(g, "CRYSTAL_CAVE", water=False, now=_noon)) == "cave.png"
+      and _bn(_bbg.pick(g, "CRYSTAL_CAVE", water=True, now=_noon)) == "pond.png", "the Crystal Cave: cave, pond on its water")
+check(_bn(_bbg.pick(g, "TROVITOPOLIS_SEWERS", trainer=True, water=False, now=_noon)) == "indoor_2.png",
+      "the Trovitopolis Sewers: the indoor scene 5.7's map sets")
 
 print(f"##### {len(fails)} failures")

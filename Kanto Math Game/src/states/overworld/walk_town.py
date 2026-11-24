@@ -2968,7 +2968,7 @@ class WalkTownState(CityState):
         mine = sorted((t for r, t in goals if r == here), key=near)
         if mine:   # (it's in this room, and there's no way to it yet)
             unlock = self._guide_unlock()
-            return unlock or (mine[0], label)
+            return unlock or self._guide_round(mine[0]) or (mine[0], label)
         rooms = self._guide_rooms()
         room = min((r for r, _t in goals), key=lambda r: (rooms.get(r, (99, None))[0], str(r)))
         first = rooms.get(room, (0, None))[1]
@@ -2980,6 +2980,92 @@ class WalkTownState(CityState):
             return None
         t, kind = min(tiles, key=lambda tk: near(tk[0]))
         return (t, names.get(kind, "Here"))
+
+    # ---------------------------------------------------------------- a place in parts (Jordan 11-24)
+    # A walked map can be split into parts you can't walk between (Floccesy's dead end, Castelia's piers, Route 38's two
+    # halves): each part is reached through the places around it. The parts are found from the map itself (the open
+    # ground joined up, with the HMs you have); a map may name them, as the games do: "part_names": {"x,y": "Outskirts"}
+    # (any tile of the part). The Journal marker points the way round to the part it needs, and arriving in a named part
+    # shows its name with the place's.
+    def _parts(self):
+        """{tile: part number} for the place's own map (not its rooms), worked out once per HM set."""
+        key = (self.area_key, self._has("HM_SURF"), self._has("HM_CUT"), self._has_waterfall())
+        if getattr(self, "_parts_key", None) == key:
+            return self._parts_map
+        if getattr(self, "room", None):   # (the place's own map only; inside a room you're in no part)
+            return {}
+        rows, exits = self.rows, self.exits
+        h, w = len(rows), len(rows[0]) if rows else 0
+        surf, cut, fall = key[1], key[2], key[3]
+        ok = lambda x, y: 0 <= x < w and 0 <= y < h and (rows[y][x] == "." or (x, y) in exits or (rows[y][x] == "$" and fall)
+                                                       or (rows[y][x] == "o" and surf) or (rows[y][x] == "2" and cut))
+        part, n = {}, 0
+        for y in range(h):
+            for x in range(w):
+                if (x, y) in part or not ok(x, y):
+                    continue
+                todo = [(x, y)]
+                part[(x, y)] = n
+                while todo:
+                    cx, cy = todo.pop()
+                    for dx, dy in DIRS:
+                        q = (cx + dx, cy + dy)
+                        if q not in part and ok(*q):
+                            part[q] = n
+                            todo.append(q)
+                n += 1
+        self._parts_key, self._parts_map = key, part
+        return part
+
+    def _part_of(self, t):
+        """The part a tile belongs to (a person or a counter: the part beside it)."""
+        parts = self._parts()
+        t = tuple(t)
+        if t in parts:
+            return parts[t]
+        return next((parts[(t[0] + dx, t[1] + dy)] for dx, dy in DIRS if (t[0] + dx, t[1] + dy) in parts), None)
+
+    def part_name(self, t=None):
+        """The name the map gives the part a tile (default: where you stand) is in, or None."""
+        names = self.town_map.get("part_names") or {}
+        if not names or getattr(self, "room", None):
+            return None
+        mine = self._part_of(t or self.player)
+        for k, name in names.items():
+            x, y = (int(v) for v in str(k).split(","))
+            if mine is not None and self._part_of((x, y)) == mine:
+                return name
+        return None
+
+    def _guide_round(self, goal):
+        """(tile, label) of the way out of the part you stand in that leads round to the part the goal is in, or None
+        (the same part, or no way round known). Goes by the places around: the shortest trip from one of this part's
+        ways out to one of that part's."""
+        if getattr(self, "room", None):
+            return None
+        from src.world import guide
+        gp, mp = self._part_of(goal), self._part_of(self.player)
+        if gp is None or mp is None or gp == mp:
+            return None
+        parts = self._parts()
+        outer = lambda t: not str(t).startswith(("OUT:", "ROOM:"))
+        theirs = {tg for t, tg in self.exits.items() if parts.get(t) == gp and outer(tg)}
+        px, py = self.player
+        best = None
+        for t, tg in self.exits.items():
+            if parts.get(t) != mp or not outer(tg):
+                continue
+            for o in theirs:
+                path = [tg] if tg == o else guide.path_to(self.game, tg, o, avoid={self.area_key})
+                if not path or (self.area_key in path[:-1]):
+                    continue
+                rank = (len(path), abs(t[0] - px) + abs(t[1] - py), t)
+                if best is None or rank < best[0]:
+                    best = (rank, t)
+        if best is None:
+            return None
+        name = self.part_name(goal)
+        return (best[1], f"To {name}" if name else "Way round")
 
     def _guide_unlock(self):
         """(tile, label) of what opens the way on in this room, when the Journal's spot can't be walked to yet: the
@@ -3054,6 +3140,11 @@ class WalkTownState(CityState):
             self._draw_minimap(screen)
         W, H = self.game.width, self.game.height
         name = theme.pokemon_word(self.area_data.get("route_name") or self.area_key.replace("_", " ").title())
+        if self.banner > 0 and self.town_map.get("part_names"):   # (a named part: "Floccesy Town - Outskirts")
+            if getattr(self, "_banner_part", 0) == 0:
+                self._banner_part = self.part_name()
+            if self._banner_part:
+                name = f"{name} - {self._banner_part}"
         if self.banner > 0:
             t = fonts["big"].render(name, True, (255, 255, 255))
             r = t.get_rect(center=(dn.map_view(self.game).centerx, int(H * 0.3))).inflate(60, 24)
