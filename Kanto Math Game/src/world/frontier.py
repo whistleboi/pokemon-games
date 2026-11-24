@@ -167,8 +167,9 @@ def brain_next(game, fac):
     return wins(game, fac) >= goal(game, fac)
 
 
-def _team(game, groups, n=3):
-    pool = [i for g in groups for i in data(game)["groups"].get(str(g), [])]
+def _team(game, groups, n=3, fac=None):
+    src = data4(game) if fac in JOHTO_FIVE and data4(game).get("groups") else data(game)   # (Johto: HGSS's own Tower sets' Pokemon, 11-24)
+    pool = [i for g in groups for i in src["groups"].get(str(g), [])]
     team = []
     while len(team) < n and pool:
         pid = random.choice(pool)
@@ -178,7 +179,7 @@ def _team(game, groups, n=3):
 
 
 def _groups(game, fac):
-    """Stronger Pokemon as the streak goes on (Emerald's groups: 0 the weakest, 3 the strongest)."""
+    """Stronger Pokemon as the streak goes on (Emerald's groups - Johto's from HGSS: 0 the weakest, 3 the strongest)."""
     w, g = wins(game, fac), goal(game, fac)
     if g == FIRST:
         return [0, 1] if w < 2 else [1, 2] if w < 4 else [2, 3]
@@ -201,7 +202,7 @@ def next_trainer(game, fac):
     if brain_next(game, fac):
         title, sprite, silver, gold, _sym = BRAINS[fac]
         is_gold = bool(_flags(game).get(f"frontier_{fac}_silver"))
-        team = (gold if is_gold else silver) or _team(game, [3])
+        team = (gold if is_gold else silver) or _team(game, [3], fac=fac)
         info = {"name": title, "class": "FRONTIER_BRAIN", "sprite": sprite, "team": list(team),
                 "is_boss_battle": True, "rewards": {"balls": 5}}
         if fac in BRAIN_MOVES:
@@ -215,7 +216,7 @@ def next_trainer(game, fac):
     t = random.choice(trainers)
     cls = t["class"].rstrip("♂♀")
     return {"name": f"{cls} {t['name']}", "class": cls.upper().replace(" ", "_").replace("É", "E").replace("é", "E"),
-            "sprite": t["sprite"], "team": _team(game, _groups(game, fac))}
+            "sprite": t["sprite"], "team": _team(game, _groups(game, fac), fac=fac)}
 
 
 def intro_lines(game, fac):
