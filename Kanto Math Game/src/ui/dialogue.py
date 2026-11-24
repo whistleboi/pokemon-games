@@ -168,7 +168,7 @@ class ClassicDialogueBox(UIElement):
             from src.core import music
             music.line_cue(self.text_lines[self.current_line])
         from src.ui import theme
-        theme.draw_textbox(surface, self.rect)  # the games' white box, dark text (src/ui/theme.py)
+        theme.draw_textbox(surface, self.rect, flush=getattr(self, "flush", False))  # (src/ui/theme.py; flush: a battle's)
 
         more = self.is_waiting_for_click and not (
             self._last_page() and self.current_line >= len(self.text_lines) - 1)

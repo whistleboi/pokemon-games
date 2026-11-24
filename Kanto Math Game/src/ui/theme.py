@@ -116,17 +116,19 @@ def draw_panel(surface, rect, radius=14, accent=None, tab=True):
 ACCENT_TAB = (40, 150, 232)
 
 
-def draw_textbox(surface, rect, radius=14):
+def draw_textbox(surface, rect, radius=14, flush=False):
     """The message box (Solar Eclipse / Elite Battle style): near black, a light inner line, a
-    yellow line along the top, two corners cut."""
+    yellow line along the top, two corners cut. flush (a battle's box, Sinnoh 11-24): set right
+    against the field above it - no shadow, no dark band over the inner line, which runs along the top."""
     rect = pygame.Rect(rect)
     c = _cut(radius)
-    _shadow(surface, rect, radius)
+    if not flush:
+        _shadow(surface, rect, radius)
     pts = chamfer(rect, c, tl=False, br=True, tr=False, bl=False)
     pygame.draw.polygon(surface, TEXTBOX, pts)
     if rect.h > 26 and rect.w > 40:
-        pygame.draw.polygon(surface, (62, 62, 72), chamfer(rect.inflate(-10, -10), max(3, c - 5), tl=False,
-                                                           tr=False, bl=False), 2)
+        inner = rect.inflate(-10, -10) if not flush else pygame.Rect(rect.x + 5, rect.y + 2, rect.w - 10, rect.h - 7)
+        pygame.draw.polygon(surface, (62, 62, 72), chamfer(inner, max(3, c - 5), tl=False, tr=False, bl=False), 2)
     pygame.draw.polygon(surface, TEXTBOX_FRAME, pts, 3)
     if rect.w > 120 and rect.h > 40:
         pygame.draw.line(surface, TEXTBOX_ACCENT, (rect.x + 3, rect.y + 2), (rect.x + min(rect.w // 3, 260), rect.y + 2), 3)
