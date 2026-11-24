@@ -6108,10 +6108,6 @@
         {
           "text": "PokéStar Studios",
           "target_area": "POKESTAR_STUDIOS"
-        },
-        {
-          "text": "Castelia City",
-          "target_area": "CASTELIA_CITY"
         }
       ],
       "explore_options": [
@@ -6968,10 +6964,6 @@
         {
           "text": "Skyarrow Bridge",
           "target_area": "SKYARROW_BRIDGE"
-        },
-        {
-          "text": "Virbank City",
-          "target_area": "VIRBANK_CITY"
         }
       ],
       "explore_options": [

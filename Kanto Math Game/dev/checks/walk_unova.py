@@ -5,7 +5,8 @@ story.defeated_trainers = {}
 story.starting_region = "UNOVA"
 R, S = "UNOVA", "NUVEMA_TOWN"
 seen = report("start", S, set())
-steps = [("TRIO", {}, "TRIO"), ("BASIC", {}, "BASIC"), ("Castelia sewers", {"plasma_castelia_cleared": True}, None),
+steps = [("TRIO", {}, "TRIO"), ("BASIC", {"b2_pop_roxie_back": True}, "BASIC"),   # (Pop Roxie back at Virbank's terminal: his ship to Castelia)
+         ("Castelia sewers", {"plasma_castelia_cleared": True, "b2_castelia_arrived": True}, None),   # (and his ship back)
          ("INSECT", {}, "INSECT"), ("BOLT", {}, "BOLT"), ("Relic Castle", {"plasma_relic_castle_cleared": True}, None),
          ("QUAKE", {}, "QUAKE"), ("JET", {}, "JET"), ("Dragonspiral", {"plasma_dragonspiral_cleared": True}, None),
          ("FREEZE", {}, "FREEZE"), ("LEGEND", {}, "LEGEND"), ("champion", {"beat_unova_champion": True}, None)]
