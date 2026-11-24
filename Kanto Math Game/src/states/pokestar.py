@@ -172,7 +172,7 @@ class MovieState(GameState):
         _feats.note(story, "films")   # (a Feat: movies shot at Pokestar Studios)
         if self.ending == "good":
             story.story_flags["pokestar_happy_" + self.script["key"]] = True
-            self.gift = FAN_GIFTS[min(len(FAN_GIFTS) - 1, rank(story) // 2)]
+            self.gift = FAN_GIFTS[min(len(FAN_GIFTS) - 1, rank(story) * (len(FAN_GIFTS) - 1) // 10)]   # (rank 0-10 across the list: Rare Candy at the top)
             story.inventory[self.gift] = story.inventory.get(self.gift, 0) + 1
         self.reviews = {
             "good": ["\"A heartwarming triumph! Two thumbs up!\"", "\"The hero's lines were perfect.\"", "\"I'd watch it again tomorrow!\""],
