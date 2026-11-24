@@ -1438,8 +1438,8 @@
       ],
       "route_menu": [
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers"},
-        {"text": "FULL HEAL", "action": "EVENT", "found": true, "flag_condition": "not got_trick3_full_heal", "event": {"lines": ["A Full Heal, dropped in the dark. (ORAS: a Lumiose Galette)"], "gift_item": {"FULL_HEAL": 1}, "flag": "got_trick3_full_heal"}},
-        {"text": "FULL HEAL ", "action": "EVENT", "found": true, "flag_condition": "not got_trick3_full_heal_2", "event": {"lines": ["A Full Heal, by the scroll. (ORAS: a Lumiose Galette)"], "gift_item": {"FULL_HEAL": 1}, "flag": "got_trick3_full_heal_2"}},
+        {"text": "LUMIOSE GALETTE", "action": "EVENT", "found": true, "flag_condition": "not got_trick3_full_heal", "event": {"lines": ["A Lumiose Galette, dropped in the dark."], "gift_item": {"LUMIOSE_GALETTE": 1}, "flag": "got_trick3_full_heal"}},
+        {"text": "LUMIOSE GALETTE ", "action": "EVENT", "found": true, "flag_condition": "not got_trick3_full_heal_2", "event": {"lines": ["A Lumiose Galette, by the scroll."], "gift_item": {"LUMIOSE_GALETTE": 1}, "flag": "got_trick3_full_heal_2"}},
         {"text": "Trick Master", "action": "EVENT", "event": {"stages": [{"ready": [], "flag": "trick_puzzle_3_done", "lines": ["Trick Master: Aak! You found your way in the pitch dark? Your eyes must be like a Noctowl's!", "Trick Master: Take this!"], "gift_item": {"TM161": 1}}], "then": {"lines": ["Trick Master: Hmph! The next one won't be so easy. Mufufufu!"]}}},
         {"text": "Mechadoll 3", "action": "EVENT", "condition": "not:trick_puzzle_6_done", "event": {"lines": ["CLICKETY-CLACK! MECHADOLL 3 AM I. ESCAPE ROPES I SELL, FOR THOSE WHO ARE STUCK."], "stock": ["ESCAPE_ROPE"]}},
         {"text": "TRICK HOUSE", "action": "EXIT", "target_area": "HOENN_TRICK_HOUSE", "condition": "can_exit"}
@@ -1490,8 +1490,8 @@
       "wild_pool_percentages": "NO_WILD_INDOORS_PERCENTAGES",
       "min_rounds": 2,
       "route_menu": [
-        {"text": "FULL HEAL", "action": "EVENT", "found": true, "flag_condition": "not got_trick6_full_heal", "event": {"lines": ["A Full Heal, in the corner. (ORAS: a Shalour Sable)"], "gift_item": {"FULL_HEAL": 1}, "flag": "got_trick6_full_heal"}},
-        {"text": "FULL HEAL ", "action": "EVENT", "found": true, "flag_condition": "not got_trick6_full_heal_2", "event": {"lines": ["A Full Heal, past the doors. (ORAS: a Shalour Sable)"], "gift_item": {"FULL_HEAL": 1}, "flag": "got_trick6_full_heal_2"}},
+        {"text": "SHALOUR SABLE", "action": "EVENT", "found": true, "flag_condition": "not got_trick6_full_heal", "event": {"lines": ["A Shalour Sable, in the corner."], "gift_item": {"SHALOUR_SABLE": 1}, "flag": "got_trick6_full_heal"}},
+        {"text": "SHALOUR SABLE ", "action": "EVENT", "found": true, "flag_condition": "not got_trick6_full_heal_2", "event": {"lines": ["A Shalour Sable, past the doors."], "gift_item": {"SHALOUR_SABLE": 1}, "flag": "got_trick6_full_heal_2"}},
         {"text": "Trick Master", "action": "EVENT", "event": {"stages": [{"ready": [], "flag": "trick_puzzle_6_done", "lines": ["Trick Master: Aak! You beat even my greatest puzzle...", "Trick Master: I have nothing left to trick you with! Take this, my very last reward!", "Trick Master: I must go on a journey and dream up new tricks. Farewell!"], "gift_item": {"RARE_CANDY": 1}}], "then": {"lines": ["Trick Master: I must go on a journey and dream up new tricks. Farewell!"]}}, "flag_condition": "not trick_puzzle_6_done", "stays": true},
         {"text": "Mechadoll 3", "action": "EVENT", "condition": "not:trick_puzzle_6_done", "event": {"lines": ["CLICKETY-CLACK! MECHADOLL 3 AM I. ESCAPE ROPES I SELL, FOR THOSE WHO ARE STUCK."], "stock": ["ESCAPE_ROPE"]}},
         {"text": "TRICK HOUSE", "action": "EXIT", "target_area": "HOENN_TRICK_HOUSE", "condition": "can_exit"}

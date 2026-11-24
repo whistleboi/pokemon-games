@@ -15695,11 +15695,11 @@
     "HOENN_TRICK_HOUSE_3:Trick Master": {
       "sheet": "em_19.png"
     },
-    "HOENN_TRICK_HOUSE_3:FULL HEAL": {
-      "item": "FULL_HEAL"
+    "HOENN_TRICK_HOUSE_3:LUMIOSE GALETTE": {
+      "item": "LUMIOSE_GALETTE"
     },
-    "HOENN_TRICK_HOUSE_3:FULL HEAL ": {
-      "item": "FULL_HEAL"
+    "HOENN_TRICK_HOUSE_3:LUMIOSE GALETTE ": {
+      "item": "LUMIOSE_GALETTE"
     },
     "HOENN_TRICK_HOUSE_3:Mechadoll 3": {
       "sheet": "em_19.png"
@@ -15743,11 +15743,11 @@
     "HOENN_TRICK_HOUSE_6:Trick Master": {
       "sheet": "em_19.png"
     },
-    "HOENN_TRICK_HOUSE_6:FULL HEAL": {
-      "item": "FULL_HEAL"
+    "HOENN_TRICK_HOUSE_6:SHALOUR SABLE": {
+      "item": "SHALOUR_SABLE"
     },
-    "HOENN_TRICK_HOUSE_6:FULL HEAL ": {
-      "item": "FULL_HEAL"
+    "HOENN_TRICK_HOUSE_6:SHALOUR SABLE ": {
+      "item": "SHALOUR_SABLE"
     },
     "HOENN_TRICK_HOUSE_6:Mechadoll 3": {
       "sheet": "em_19.png"

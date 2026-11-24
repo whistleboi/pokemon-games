@@ -647612,9 +647612,9 @@
     },
     "parts": true,
     "people": [
-     "FULL HEAL ",
+     "LUMIOSE GALETTE ",
      "Mechadoll 3",
-     "FULL HEAL"
+     "LUMIOSE GALETTE"
     ],
     "moves": {
      "4,5": {
@@ -647801,8 +647801,8 @@
    "Lass Robin": 0,
    "Schoolkid Ted": 0,
    "Ace Duo Pike & Shiel": 0,
-   "FULL HEAL": 0,
-   "FULL HEAL ": 0,
+   "LUMIOSE GALETTE": 0,
+   "LUMIOSE GALETTE ": 0,
    "Mechadoll 3": 0,
    "Trick Master": 1
   },
@@ -648663,8 +648663,8 @@
     ],
     "trainer_spots": [],
     "people": [
-     "FULL HEAL",
-     "FULL HEAL ",
+     "SHALOUR SABLE",
+     "SHALOUR SABLE ",
      "Mechadoll 3"
     ],
     "moves": {
@@ -649518,8 +649518,8 @@
    "Way out"
   ],
   "figure_floors": {
-   "FULL HEAL": 0,
-   "FULL HEAL ": 0,
+   "SHALOUR SABLE": 0,
+   "SHALOUR SABLE ": 0,
    "Mechadoll 3": 0,
    "Trick Master": 1
   }
