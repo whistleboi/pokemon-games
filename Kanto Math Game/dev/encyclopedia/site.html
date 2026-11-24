@@ -92,6 +92,7 @@ ol.chapters li, ul.sides li { margin: .6em 0; } details.howto summary { cursor: 
 .mapdot { position: absolute; width: 14px; height: 14px; margin: -7px 0 0 -7px; border-radius: 50%; background: var(--accent, #e33); border: 2px solid #fff; box-shadow: 0 0 0 1px #0006; }
 .mapdot span { display: none; position: absolute; left: 16px; top: -4px; white-space: nowrap; background: #000c; color: #fff; padding: 1px 6px; border-radius: 4px; font-size: 12px; }
 .mapdot:hover span, .mapdot:focus span { display: block; }
+.tcpics { display: flex; gap: 12px; flex-wrap: wrap; align-items: flex-end; margin: 8px 0 12px; } .tcpics img { image-rendering: pixelated; max-height: 96px; }
 </style>
 
 <header class="bar"><div class="in">
@@ -212,7 +213,7 @@ function itemView(s) {
   let e = null; for (const r of Object.values(D.regions)) if (r.items[s]) { e = { ...r.items[s], all: [] }; break; }
   if (!e) return notFound();
   setTitle(e.name);
-  const rows = []; for (const r of Object.values(D.regions)) (r.items[s]?.where || []).forEach(w => rows.push(`<tr><td>${placeLink(w.p)}</td><td>${esc(w.w)}</td></tr>`));
+  const rows = []; for (const r of Object.values(D.regions)) (r.items[s]?.where || []).forEach(w => rows.push(`<tr><td>${w.p ? placeLink(w.p) : (w.l || "—")}${w.p ? "" : ` <span class="small">(${esc(r.title)})</span>`}</td><td>${esc(w.w)}</td></tr>`));
   return `<div class="crumb"><a href="#list-items">Items</a></div><div class="hero">${e.ic.replace('class="ic ', 'class="ic mid ')}<h1>${esc(e.name)}</h1></div>
     ${e.desc ? `<p>${esc(e.desc)}</p>` : ""}<div class="grid">${frame("Where to get it", ["Place", "How"], rows)}</div>`;
 }
@@ -371,7 +372,7 @@ function listView(kind) {
     setTitle("Items");
     const all = {}; Object.values(D.regions).forEach(r => Object.entries(r.items).forEach(([k, e]) => all[k] ||= e));
     const ks = Object.keys(all).sort((a, b) => all[a].name.localeCompare(all[b].name));
-    return `<div class="crumb">Lists</div><h1>Items</h1><p class="lede">Every item lying on the ground, hidden, or handed to you.</p>
+    return `<div class="crumb">Lists</div><h1>Items</h1><p class="lede">Every item lying on the ground, hidden, handed to you, sold at the Poké Mart counter, or swapped at a Game Corner or Battle Points counter.</p>
       <ul class="grid3">${ks.map(k => `<li><a href="#item-${k}">${all[k].ic}${esc(all[k].name)}</a></li>`).join("")}</ul>`;
   }
   if (kind === "buildings") {
@@ -385,13 +386,14 @@ function listView(kind) {
   }
   if (kind === "mechanics") {
     setTitle("Mechanics");
-    const groups = {}; Object.entries(D.mech).forEach(([k, m]) => (groups[m.group] ||= []).push([k, m]));
+    const groups = {}; Object.entries(D.mech).filter(([, m]) => m.group !== "Trainer classes").forEach(([k, m]) => (groups[m.group] ||= []).push([k, m]));
     return `<div class="crumb">Lists</div><h1>Mechanics</h1><p class="lede">How the game's systems work: the ones every region shares, with what changes from region to region, and each region's own.</p>` +
       Object.entries(groups).map(([g, ms]) => `<h2>${esc(g)}</h2><ul class="mechlist">${ms.map(([k, m]) => `<li><a href="#mechanic-${k}">${esc(m.title)}</a>${m.blurb ? ` <span class="small">${esc(m.blurb)}</span>` : ""}</li>`).join("")}</ul>`).join("");
   }
   if (kind === "trainers") {
     setTitle("Trainers");
-    return `<div class="crumb">Lists</div><h1>Trainers</h1><p class="lede">Gym Leaders, the Elite Four, your rival, Team Rocket's bosses and the other trainers you meet in the story. Route trainers are on their places' pages.</p>` +
+    return `<div class="crumb">Lists</div><h1>Trainers</h1><p class="lede">Gym Leaders, the Elite Four, your rival, Team Rocket's bosses and the other trainers you meet in the story. Route trainers are on their places' pages, and every kind of trainer has a page of its own:</p>
+      <div class="chips">${Object.entries(D.mech).filter(([, m]) => m.group === "Trainer classes").map(([k, m]) => `<a href="#mechanic-${k}">${esc(m.title)}</a>`).join("")}</div>` +
       Object.values(D.regions).map(r => {
         const groups = {}; Object.entries(r.trainers).forEach(([k, t]) => (groups[t.cls] ||= []).push([k, t]));
         return `<h2>${esc(r.title)}</h2>` + Object.entries(groups).map(([c, ts]) => `<h4>${esc(c)}</h4><div class="chips">${ts.map(([k, t]) => `<a href="#trainer-${k}">${esc(t.name)}</a>`).join("")}</div>`).join("");
