@@ -869,5 +869,35 @@ _shw.walked(g, 250)
 _dc["mons"] = _dc_was
 check(_dcm.shadow["gauge"] < 100, f"11-24: a Shadow Pokemon at the Day Care opens its heart as you walk (gauge {_dcm.shadow['gauge']})")
 
+# ---- Shadow farming at the Poke Spots (Jordan 11-24, questions/ORRE.md 13a): a Cipher straggler from Part 2, with a Shadow of
+# that spot's pool you've snagged before - Rock = Colosseum's, Oasis = XD's early ones, Cave = XD's late ones
+from src.world import orre_farm as _farm
+_pools = {k: [e["name"] for e in _farm.pool(g, k)] for k in ("rock", "oasis", "cave")}
+_pf = {k: story.story_flags.get(k) for k in ("orre_part2", "snagged_shadow_makuhita", "snagged_shadow_zangoose")}
+for _k in _pf:
+    story.story_flags.pop(_k, None)
+story.current_area_key = "ORRE_POKE_SPOTS"
+_off = _farm.condition(story, "here")
+story.story_flags["orre_part2"] = True
+_none = _farm.condition(story, "here")
+story.story_flags["snagged_shadow_makuhita"] = True
+_on = _farm.condition(story, "here")
+r = route("ORRE_POKE_SPOTS", "ORRE_DESERT")
+_figs = [o.get("text") for o in r._figure_items()]
+_farm.event(r, {"world": "orre_farm"}, [], lambda l: None)
+_fb = getattr(g.current_state, "next_state", None) or getattr(g.current_state, "battle_state", None)
+_team = [getattr(p_, "id", None) for p_ in (getattr(_fb, "opponent_team", None) or [])]
+story.current_area_key = "CAVE_POKE_SPOT"
+_cave_off = _farm.condition(story, "here")
+for _k, _v in _pf.items():
+    story.story_flags.pop(_k, None)
+    if _v:
+        story.story_flags[_k] = _v
+check(not _off and not _none and _on and "CIPHER STRAGGLER" in _figs and type(g.current_state).__name__ == "TrainerIntroState"
+      and not _cave_off and _team == [9406] and "Shadow Makuhita" in _pools["rock"] and "Shadow Zangoose" in _pools["cave"] and _pools["oasis"]
+      and not set(_pools["rock"]) & set(_pools["oasis"]) and not set(_pools["oasis"]) & set(_pools["cave"]),
+      f"13a: Poke Spot farming - the straggler from Part 2 once a spot Shadow is snagged ({_off}, {_none}, {_on}, {_figs}); "
+      f"pools {[(k, len(v)) for k, v in _pools.items()]}, his team {_team}")
+
 g.walk_towns = False
 print(f"##### {fails} failures")

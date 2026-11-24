@@ -31,26 +31,28 @@ check(s["ATTACK"] == b["DEFENSE"] and s["DEFENSE"] == b["ATTACK"]
       and s["SPECIAL-ATTACK"] == b["SPECIAL-DEFENSE"] and s["SPECIAL-DEFENSE"] == b["SPECIAL-ATTACK"]
       and sum(s.values()) == sum(b.values()), f"Shadow Tyranitar stats swapped: {s}")
 
-# Snag: Orre is walked (legacy menu clear, Step 5, 11-24): the desert's SNAG figure; walk up and a Cipher trainer sends out
+# Snag: Orre is walked (legacy menu clear, Step 5, 11-24): a place's SNAG figure (The Under's); walk up and a Cipher trainer sends out
 # the next un-snagged Shadow each time; gone from the map when the area is done.
 exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())
 story.enter_region("ORRE")
 story.inventory["SNAG_MACHINE"] = 1
 story.story_flags["got_snag_machine"] = True   # (Snag menus open once Phenac's guards are beaten: the pilot, 11-20)
 story.story_flags["cipher_defeated"] = True
-pool = [e for e in SP["ORRE_DESERT"]["shadow_pool"] if not e.get("event_only")]   # (event_only: only its own battle has it, 11-21)
-p = walk_route("ORRE_DESERT", "PHENAC_CITY")
+story.story_flags["cleared_the_under"] = True   # (The Under's SNAG figure stands once Venus is beaten)
+_SNAG_AT = ("THE_UNDER", "PYRITE_BUILDING")   # (11-24: the desert's Shadows are all their own trainers' now - The Under has six generic ones)
+pool = [e for e in SP[_SNAG_AT[0]]["shadow_pool"] if not e.get("event_only")]   # (event_only: only its own battle has it, 11-21)
+p = walk_route(*_SNAG_AT)
 walk_meet(p, "SNAG SHADOW POKEMON", fight=False)
 b_ = g.current_state
 check(getattr(getattr(b_, "opponent_pokemon", None), "id", None) == pool[0]["id"], f"walk up to the SNAG figure: the area's first Shadow ({type(b_).__name__})")
 story.story_flags[pool[0]["flag"]] = True
-p = walk_route("ORRE_DESERT", "PHENAC_CITY")
+p = walk_route(*_SNAG_AT)
 walk_meet(p, "SNAG SHADOW POKEMON", fight=False)
 b_ = g.current_state
 check(getattr(getattr(b_, "opponent_pokemon", None), "id", None) == pool[1]["id"], "a snagged Shadow is skipped")
 for s_ in pool:
     story.story_flags[s_["flag"]] = True
-p = walk_route("ORRE_DESERT", "PHENAC_CITY")
+p = walk_route(*_SNAG_AT)
 check(walk_who(p, "SNAG SHADOW POKEMON") is None, "SNAG figure gone once the area is cleared")
 for s_ in pool:
     story.story_flags.pop(s_["flag"], None)
