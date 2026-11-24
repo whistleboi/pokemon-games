@@ -59,6 +59,68 @@
    180
   ]
  },
+ "149": {
+  "b2_id": 149,
+  "class": "PILOT",
+  "levels": [
+   37
+  ],
+  "name": "Pilot Flynn",
+  "rewards": {
+   "balls": 2
+  },
+  "sprite": "b2_pilot.png",
+  "team": [
+   528
+  ]
+ },
+ "150": {
+  "b2_id": 150,
+  "class": "PILOT",
+  "levels": [
+   37
+  ],
+  "name": "Pilot Winslow",
+  "rewards": {
+   "balls": 2
+  },
+  "sprite": "b2_pilot.png",
+  "team": [
+   561
+  ]
+ },
+ "151": {
+  "b2_id": 151,
+  "class": "PILOT",
+  "levels": [
+   37
+  ],
+  "name": "Pilot Ewing",
+  "rewards": {
+   "balls": 2
+  },
+  "sprite": "b2_pilot.png",
+  "team": [
+   521
+  ]
+ },
+ "152": {
+  "b2_id": 152,
+  "class": "PILOT",
+  "levels": [
+   36,
+   36
+  ],
+  "name": "Pilot Chase",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "b2_pilot.png",
+  "team": [
+   580,
+   528
+  ]
+ },
  "153": {
   "b2_id": 153,
   "class": "LEADER",
@@ -320,6 +382,23 @@
   "sprite": "b2_worker.png",
   "team": [
    551
+  ]
+ },
+ "332": {
+  "b2_id": 332,
+  "class": "PILOT",
+  "levels": [
+   36,
+   36
+  ],
+  "name": "Pilot Elron",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "b2_pilot.png",
+  "team": [
+   566,
+   521
   ]
  },
  "339": {

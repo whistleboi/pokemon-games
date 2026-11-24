@@ -57,6 +57,10 @@ ROUTES += tuple(k for k in ("SINNOH_ROUTE_211", "SINNOH_ROUTE_212", "SINNOH_ROUT
                             "MANIAC_TUNNEL", "GALACTIC_WAREHOUSE") if k not in ROUTES)
 
 
+# S5 (11-24): Lake Valor's three floors (drained, full, Valor Cavern)
+ROUTES += tuple(k for k in ("LAKE_VALOR",) if k not in ROUTES)
+
+
 def settle(n=60):
     for _ in range(n):
         st = g.current_state

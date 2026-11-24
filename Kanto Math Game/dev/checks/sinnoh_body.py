@@ -1341,5 +1341,55 @@ _ok = story.current_area_key == "SINNOH_ROUTE_213" and {"Man", "Gentleman"} <= s
 check(_ok, f"Route 213: walking out of Pastoria by land puts you in its gatehouse, on its floor, beside its two people ({story.current_area_key}, {_here}, {_pos})")
 story.badges["SINNOH"] = _bv
 
+# ---- S5 (11-24): Lake Valor as Platinum's - the drained lake with Saturn's grunts till he's beaten in Valor Cavern, then the full lake
+_sv = dict(story.story_flags)
+story.story_flags["canalave_library_meeting"] = True
+story.story_flags.pop("galactic_lake_valor_cleared", None)
+r = route("LAKE_VALOR", "VALOR_LAKEFRONT")
+_dr = r.run.index == 0
+_gr = [m for m in r.run.floor.movers if m.kind == "trainer"]
+_lk = (r.run.recipe.get("art") or {}).get("floors", [{}])[0].get("links") or {}
+r.run.warp(0, 32, 32)                                          # (beside the drained lake's cave mouth...)
+_px, _py = r.run.player
+r._handle(r.run.step(32 - _px, 32 - _py))                      # (...and into Valor Cavern)
+for _q in range(40):
+    frames(r)
+_cav = r.run.index == 2
+_sat = next((m for m in r.run.floor.movers if m.kind == "figure" and str((m.payload or {}).get("text")) == "Confront Saturn at the Lake"), None)
+_vb = False
+if _sat is not None:
+    r.run.player = [_sat.x, _sat.y + 1]
+    r._use_figure(_sat)
+    _drive(r, 600, lambda: "Battle" in type(g.current_state).__name__)
+    _vb = "Battle" in type(g.current_state).__name__
+    _st = g.current_state
+    _foe = [p.id if hasattr(p, "id") else getattr(p, "species_id", None) for p in (getattr(_st, "enemy_team", None) or [])]
+check(_cav and _vb, f"Lake Valor: the drained lake's cave mouth leads into Valor Cavern, where Saturn battles you ({_cav}, {_sat is not None}, {_vb})")
+story.story_flags["galactic_lake_valor_cleared"] = True
+r = route("LAKE_VALOR", "VALOR_LAKEFRONT")
+_full = r.run.index == 1
+check(_dr and len(_gr) == 2 and _full and list(_lk.values()) == [[2, 14, 29]],
+      f"Lake Valor: drained with two Galactic Grunts till Saturn is beaten (the cave mouth leads to Valor Cavern), then the full lake ({_dr}, {len(_gr)}, {_full}, {_lk})")
+story.story_flags.clear(); story.story_flags.update(_sv)
+
+# ---- S5 (11-24): Lake Verity after Valor, as Platinum's - Mars at the lake's edge with Rowan and Dawn beside her, four grunts
+_sv = dict(story.story_flags)
+story.story_flags.update({"canalave_library_meeting": True, "galactic_lake_valor_cleared": True, "sinnoh_rowan_walked_up": True, "received_starter_sinnoh": True})
+story.story_flags.pop("galactic_lake_verity_cleared", None)
+r = route("LAKE_VERITY", "VERITY_LAKEFRONT")
+_f = r.run.floor
+_mars = next((m for m in _f.movers if m.kind == "figure" and str((m.payload or {}).get("text")) == "Confront Galactic at the Lake"), None)
+_two = all(str(_f.decor.get(t, "")).startswith("barrier:") for t in ((45, 25), (46, 24)))
+_gr = [m for m in _f.movers if m.kind == "trainer"]
+_vb = False
+if _mars is not None:
+    r.run.player = [_mars.x - 1, _mars.y]
+    r._use_figure(_mars)
+    _drive(r, 600, lambda: "Battle" in type(g.current_state).__name__)
+    _vb = "Battle" in type(g.current_state).__name__
+check(_mars is not None and (_mars.x, _mars.y) == (47, 24) and _two and len(_gr) == 4 and _vb,
+      f"Lake Verity after Valor: Mars at Platinum's spot with Rowan and Dawn beside her, four grunts, and her battle ({_mars and (_mars.x, _mars.y)}, {_two}, {len(_gr)}, {_vb})")
+story.story_flags.clear(); story.story_flags.update(_sv)
+
 g.walk_towns = False
 print(f"##### {fails} failures")

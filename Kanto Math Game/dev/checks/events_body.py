@@ -121,4 +121,13 @@ for key, ev in story_events.EVENTS.items():
             n = len(story.player_team)
             s2.story_event(key)
             check(len(story.player_team) == n, f"{key}: no repeat gift")
+print("a gift with a set Ability (Route 6's Deerling: Serene Grace, its hidden one; Black 2; 11-24)")
+from src.world import story_events as _se
+from src.pokemon import abilities as _abl
+story.player_team = story.player_team[:1]
+_se.gift_pokemon(g, 585, 20, None, "SERENE-GRACE", True)
+_d = story.player_team[-1]
+check(_d.id == 585 and _d.ability_slot == _abl.HIDDEN_SLOT and not _d.is_shiny, f"Deerling: Serene Grace, not Shiny (slot {_d.ability_slot})")
+check(_se.gift_ability_slot(g, 585, "hidden") == 2 and _se.gift_ability_slot(g, 585, "Sap Sipper") == 1 and _se.gift_ability_slot(g, 585, 0) == 0,
+      "the Ability by 'hidden', by name or by slot")
 print(f"##### {fails} failures")
