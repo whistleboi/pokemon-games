@@ -40,7 +40,7 @@ LEFT_OUT = {
 # one fails. Remove an entry when it is fixed.
 KNOWN = set()   # (Unova's b2_m23 / b2_m29 "Hugh" fixed on region/unova 4392cd97, 11-24)
 KNOWN_SIDE = {(r, i) for r, ids in {   # (SIDE lines sent to their regions 11-24; take each out when its region's fix is on main)
-    "ORRE": ["orre_s1", "orre_s2", "orre_s2a"]}.items() for i in ids}
+    }.items() for i in ids}
 NOT_YET = set()   # (walked regions with no book yet; Orre's came 11-24, J5)
 OWN_FORMS = {"ORANGE", "SINNOH", "ALOLA", "GALAR", "PALDEA", "HISUI"}
 RIVALS = {"KANTO": ["Blue", "Gary"], "JOHTO": ["Silver"], "HOENN": ["Brendan", "May"], "SINNOH": ["Barry"],
