@@ -415,6 +415,14 @@
       {"mission": "b2_m38", "title": "The Splicers", "say": "Drayden has kept something hidden for two years, and Team Plasma has come to take it.", "when": "b2_opelucid_zinzolin", "done": "b2_splicers_stolen"},
       {"mission": "b2_m38", "title": "A Shadow at the Gate", "say": "The thieves are gone, but one of them is still watching from the east gate.", "when": "b2_splicers_stolen"},
       {"mission": "b2_m39", "title": "The Coldest Place", "say": "Cheren is on the line. Something in the far east of Unova is colder than any winter, and the only way there runs under the sea from Undella."}
+    ]},
+    {"title": "The Wave Badge", "chapters": [
+      {"mission": "b2_m40", "title": "The Lily Pad Gym", "say": "Humilau City stands on stilts over the sea, and its Gym Leader would rather be surfing. The way to him is a maze of floating lily pads."}
+    ]},
+    {"title": "The Frigate Returns", "chapters": [
+      {"mission": "b2_m41", "title": "A Presence on Route 22", "say": "Something large moved through the trees on Route 22. A man in a lab coat is following it with a very strange machine."},
+      {"mission": "b2_m42", "title": "The Sturdy Boulder", "say": "Seaside Cave is the only way through to the coast, and something with a very hard shell is sitting in the exit."},
+      {"mission": "b2_m43", "title": "The Ship off Route 21", "say": "Out past Route 21, the ship with no flag waits again. This time it isn't sailing off without a fight."}
     ]}
   ],
   "ORRE": [
