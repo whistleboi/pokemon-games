@@ -881,7 +881,8 @@ class Run:
         f, events = self.floor, []
         px, py = self.player
         for m in list(f.movers):
-            if m.kind in ("figure", "escort"):   # (an escort only moves with its leader: src/world/escorts.py)
+            if m.kind in ("figure", "escort", "walkup"):   # (an escort only moves with its leader: src/world/escorts.py; a
+                #  "walkup" one is walking up to you or running off: src/states/overworld/wild_walkup.py moves it)
                 continue
             if m.kind == "trainer":
                 if self._sees(m):
