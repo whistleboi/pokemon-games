@@ -39,6 +39,12 @@ LEFT_OUT = {
 # Open items already on the Journal plan (ROADMAP_JOURNAL): listed so the check stays green until they're done; a NEW
 # one fails. Remove an entry when it is fixed.
 KNOWN = set()   # (Unova's b2_m23 / b2_m29 "Hugh" fixed on region/unova 4392cd97, 11-24)
+KNOWN_SIDE = {(r, i) for r, ids in {   # (SIDE lines sent to their regions 11-24; take each out when its region's fix is on main)
+    "JOHTO": ["johto_c1", "johto_s_oddegg", "sinjoh_m1"],   # (done on region/johto b3c7c9b4)
+    "HOENN": ["hoenn_s3", "hoenn_s4", "hoenn_s5", "hoenn_s7", "hoenn_s11", "hoenn_s14", "hoenn_s22", "hoenn_s25", "hoenn_s28"],
+    "SINNOH": ["sinnoh_s8"],
+    "UNOVA": ["unova_s9", "unova_s12", "unova_s15", "unova_s16", "unova_s17", "unova_s19", "unova_s21"],
+    "ORRE": ["orre_s1", "orre_s2", "orre_s2a"]}.items() for i in ids}
 NOT_YET = set()   # (walked regions with no book yet; Orre's came 11-24, J5)
 OWN_FORMS = {"ORANGE", "SINNOH", "ALOLA", "GALAR", "PALDEA", "HISUI"}
 RIVALS = {"KANTO": ["Blue", "Gary"], "JOHTO": ["Silver"], "HOENN": ["Brendan", "May"], "SINNOH": ["Barry"],
@@ -77,6 +83,16 @@ for r in regions:
     order = [c["title"] for c in chs if re.match(r"(Defeat|Beat|Go to|Head to|Talk to|Visit|Travel to|Catch|Win|Return to|Bring|Challenge)\b",
                                                    str(c.get("say", "")))]
     check(not order, f"{r}: no page opens with an order ({order})")
+    # (J2 11-24: the SIDE tab shows a SIDE mission's own words - no '!' and no order to open with)
+    sides = [i for i, m in missions.items() if region_of(m) == r and str(m.get("type", "")).upper() != "MAIN"
+             and not (m.get("region_species") or m.get("kanto_species"))]
+    loud_side = sorted(i for i in sides if (r, i) not in KNOWN_SIDE and (
+        "!" in str(missions[i].get("description") or missions[i].get("desc") or "")
+        or re.match(r"(Defeat|Beat|Go to|Head to|Talk to|Visit|Travel to|Catch|Win|Return to|Bring|Challenge|Explore|Battle|Climb)\b",
+                    str(missions[i].get("description") or missions[i].get("desc") or ""))))
+    check(not loud_side, f"{r}: SIDE missions in the Journal's voice ({loud_side})")
+    for k in sorted(x for x in KNOWN_SIDE if x[0] == r):
+        print(f"   open  {k[1]}: SIDE line waits on {r.title()}'s card clean-{r.lower()}-journal-side-wording")
     names = RIVALS.get(r, [])
     if names:
         pat = re.compile(r"(?<!Mt\. )\b(" + "|".join(names) + r")\b(?! (League|Wing|Cave|Trophy))")   # (not Mt. Silver)

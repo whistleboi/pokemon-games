@@ -36,7 +36,7 @@ def _wl_note(st):
                 walk_said.append(line)
 
 
-def walk_play(picks=(), n=3000, until=None, fight=True):
+def walk_play(picks=(), n=3000, until=None, fight=True, off_map=False):
     """Run the game as a player: tap through what's said, answer each pick list with the next of picks (by value, or True
     for the first), fight battles with the right answers (fight=False: stop at a battle). Stops when nothing is left to do
     (or until() is true)."""
@@ -47,6 +47,12 @@ def walk_play(picks=(), n=3000, until=None, fight=True):
             return True
         st = g.current_state
         name = type(st).__name__
+        if off_map and not walked(st):   # (stop at whatever screen the map handed over to: a battle, the starter pick)
+            return True
+        if name == "RegionSelectionState" and getattr(st, "return_state", None) is not None:   # (Mom's move offer after a
+            g.change_state(st.return_state)   # title: stay put - a suite moves regions itself)
+            quiet = 0
+            continue
         if name == "PickListState":
             v = picks.pop(0) if picks else None
             if v is None:
@@ -108,6 +114,8 @@ def walk_town(area, came=None, room=None, play=True):
     t = _WL_CS(g); g.change_state(t); walk_frames(2)
     if play:
         walk_play()
+        if isinstance(g.current_state, _WL_CS) and g.current_state is not t:   # (the town made anew: back from Mom's offer)
+            t = g.current_state
     if room:
         t._go(room, ""); walk_frames(2)
     return t
@@ -214,9 +222,13 @@ def walk_meet(st, text, picks=(), n=3000, play=True, fight=True, choose=None):
 
 def walk_door(st, kind, picks=(), play=True):
     """Walk through a door of kind (center, mart, gym, house, a named building...) on this town's map. Returns the hover
-    list's labels if the door holds several things, else what was said; None if there's no such door."""
+    list's labels if the door holds several things, else what was said; None if there's no such door, or none you can
+    walk to from where you stand."""
     walk_said.clear()
-    door = next((t for t, k in sorted(st.doors.items()) if k == kind), None)
+    doors = [t for t, k in sorted(st.doors.items()) if k == kind]
+    if not doors:
+        return None
+    door = next((d for d in doors if st._path(d)), None)   # (one you can walk to from where you stand: a Cut tree can bar it)
     if door is None:
         return None
     if not _wl_bump(st, door):
@@ -287,3 +299,101 @@ def npc(target):
     """A test for walk_meet / walk_who: the person whose option visits target (an NPC option's "target":
     "professor_oak", "mom"...)."""
     return lambda o: o.get("target") == target or any(x.get("target") == target for x in o.get("any") or [])
+
+
+def walk_ways(st):
+    """The ways on from this walked map that would open now, as the map gates them: a town's exits (walk_town._leave:
+    its matching travel option, shown), its doors' and people's TRAVEL options (a harbour's boats, the bike list); a
+    route's exits on every floor (dungeon._try_exit: no story block). A set of the target areas and the options' words."""
+    out = set()
+    if isinstance(st, _WL_WTS):
+        for t in set(st.exits.values()):
+            if str(t).startswith(("OUT:", "ROOM:")):
+                continue
+            o = st._travel_option(t)
+            if o is not None and st._shown(o):
+                out |= {t, o.get("text")}
+        for kind in set(st.doors.values()):
+            for o in st._door_options(kind):
+                if str(o.get("action") or "").upper() == "TRAVEL" and st._shown(o):
+                    out |= {o.get("target_area") or o.get("target"), o.get("text")}
+        for room in [None] + list((st.town_map.get("rooms") or {})):
+            if room != getattr(st, "room", None):
+                st._go(room, "")
+            for o in st._people().values():
+                if str(o.get("action") or "").upper() == "TRAVEL":
+                    out |= {o.get("target_area"), o.get("text")}
+        if getattr(st, "room", None):
+            st._go(None, "")
+    else:
+        story_ = g.story_manager
+        pool = st.area_data.get("trainer_pool", [])
+        left = any(not story_.is_trainer_defeated(st.area_key, i) for i in range(len(pool)))
+        for i in range(st.run.n_floors):
+            for t in set(st.run.made(i).exits.values()):
+                item = st.exit_items.get(t)
+                if item is None or st._exit_block(item, left) not in ("story", "hidden"):
+                    out.add(t)
+                    if item is not None:
+                        out.add(item.get("text"))
+    out.discard(None)
+    return out
+
+
+def walk_travel(area, came=None):
+    """sub_helpers' travel(area), walked: where this place's map lets you go on now (targets and option words)."""
+    return walk_ways(walk_place(area, came))
+
+
+def walk_state_for(area, came=None):
+    """sub_helpers' state_for(area), walked: the place's map."""
+    return walk_place(area, came)
+
+
+def walk_run(area, text, solve=True, came=None, picks=()):
+    """sub_helpers' run(area, text), walked: open the place's map, walk up to whoever (or whatever) is called text and
+    play out what they say; a battle is left at its start (as run() leaves it). Returns [what was said] (run()'s shape),
+    or [] if they aren't on the map now."""
+    from src.states import gym_puzzles as _gp
+    st = walk_place(area, came)
+    said = walk_meet(st, text, picks=picks, fight=False)
+    if said is None:
+        print(f"   (walk_run: {text!r} isn't on {area}'s map now)")
+        return []
+    pz = g.current_state
+    if isinstance(pz, _gp.GymPuzzleState):
+        if not solve:
+            pz.answer(next(i for i, o in enumerate(pz.options) if not o[1]))
+            pz.leave()
+        else:
+            while not pz.finished:
+                pz.answer(next(i for i, o in enumerate(pz.options) if o[1]))
+            pz.on_done(pz.solved)
+        walk_play(fight=False)
+    return [said]
+
+
+_WL_MAPS = {}
+
+
+def walk_map_exits(area):
+    """The places a walked town's map (and its rooms) lead to, read from assets/town_maps.json without opening it; None
+    if the place has no walked map of its own (a route: its exits are its route_menu's EXITs; a menu region's town)."""
+    if "maps" not in _WL_MAPS:
+        import json as _json
+        _d = _json.load(open("assets/town_maps.json", encoding="utf-8"))
+        _WL_MAPS["maps"] = _d.get("maps", _d)
+    m = _WL_MAPS["maps"].get(area)
+    if not isinstance(m, dict):
+        return None
+    out = set()
+    for part in [m] + list(m.get("floors") or []) + list((m.get("rooms") or {}).values()):
+        ex = (part or {}).get("exits") if isinstance(part, dict) else None
+        for t in (ex.values() if isinstance(ex, dict) else ex or []):
+            t = t if isinstance(t, str) else (t.get("target") if isinstance(t, dict) else None)
+            if t and not t.startswith(("ROOM:", "OUT:")):
+                out.add(t)
+    a = g.loader.area_data["STORY_PROGRESSION"].get(area) or {}
+    out |= {o.get("target_area") for o in (a.get("travel_options") or []) + (a.get("explore_options") or [])
+            if o.get("door") and o.get("target_area")}   # (through a door: a harbour's boats, the bike list)
+    return out

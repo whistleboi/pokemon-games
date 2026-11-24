@@ -26,9 +26,11 @@ def city_buttons(area, kind="travel_options"):
     story.current_area_key = area
     c = CityState(g); g.change_state(c)
     c.open_travel_menu() if kind == "travel_options" else c.open_explore_menu()
-    return c, [b.text for b in c.hover_buttons]
+    return c, [b.text.lstrip("> ") for b in c.hover_buttons]   # (gold: the Journal's next step)
 
 
+# (Legacy menu clear, Step 5, 11-24: Unova's League and N's Castle aren't walked yet, Kalos/Alola/Galar/Paldea are menu
+#  regions: they stay on the menus. Johto's National Park and Orre's Phenac are walked: played on their maps below.)
 # U-B2 Unova finale: Alder opens N's Castle; the Sages, N, then Ghetsis give the title.
 check(SP["UNOVA_POKEMON_LEAGUE"]["gym"]["leader"]["victory_flag"] == "beat_alder", "Alder's win sets beat_alder")
 for f in ("beat_alder", "defeated_n_castle", "beat_unova_champion", "plasma_sages_defeated"):
@@ -112,8 +114,11 @@ for area, want in (("UNOVA_ROUTE_17", "UNOVA"), ("JOHTO_ROUTE_32", "JOHTO"), ("K
     check(pool == want_pool, f"{area} fishes its own pool (the area's, else the region's)")
 
 # J-D1 / J-D2 Johto: National Park catches, headbutt buttons.
-p, btns = route_buttons("NATIONAL_PARK")
-check("CATCH WILD POKéMON" in btns and "Route 35" in btns, f"National Park is a wild route: {btns}")
+exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())
+story.enter_region("JOHTO")
+p = walk_route("NATIONAL_PARK", "JOHTO_ROUTE_35")
+_wild = sum(m.kind == "wild" for i in range(p.run.n_floors) for m in p.run.made(i).movers)
+check(walked(p) and _wild > 0 and "JOHTO_ROUTE_35" in walk_ways(p), f"National Park is a wild place: {_wild} wild Pokemon on its map, the way to Route 35")
 for r in ("JOHTO_ROUTE_30", "JOHTO_ROUTE_42"):
     check(any(o.get("action") == "HEADBUTT" for o in SP[r]["route_menu"]), f"{r} has HEADBUTT")
 
@@ -141,11 +146,12 @@ check("892-normal" in keys and "8004-single" in keys, "Urshifu registers as #892
 shadow = Pokemon(g.loader.fetch_specific(9406), g.assets, size_mult=2.5)
 shadow.level = 40
 story.player_team = [shadow]
-story.current_area_key = "PHENAC_CITY" if "PHENAC_CITY" in SP else story.current_area_key
-c = CityState(g); g.change_state(c)
+story.enter_region("ORRE")
+c = walk_town("PHENAC_CITY", "ORRE_DESERT")
 _run_story_event(c, {"purify": True, "lines": ["The Relic Stone glows."]}, lambda cond: True, lambda lines: None)
 check(story.player_team[0].id == 297, f"purified Makuhita evolved: {story.player_team[0].name}")
 
+g.walk_towns = g.dungeon_routes = False
 # K-D3 Kalos NPC flags; D-4 Zarude flag; H-F1 KNUCKLE migration.
 for target, flag in (("kalos_sycamore_intro", "met_sycamore"), ("kalos_shauna_intro", "met_kalos_friends")):
     opt = next(o for a in SP.values() for o in a.get("explore_options", []) if o.get("target") == target)
