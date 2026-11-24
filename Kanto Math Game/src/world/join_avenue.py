@@ -37,7 +37,7 @@ KINDS = {   # kind: (shop name, the dream, goods by shop rank: rank 1 first, eac
                "PEARL_STRING", "COMET_SHARD"]),
     "nursery": ("Nursery", "I want to look after Eggs and help them hatch!",
                 ["EVERSTONE", "DESTINY_KNOT", "POWER_WEIGHT", "POWER_BRACER", "POWER_BELT", "POWER_LENS", "POWER_BAND",
-                 "POWER_ANKLET", "OVAL_CHARM", "SHINY_CHARM"]),
+                 "POWER_ANKLET", "LAX_INCENSE", "FULL_INCENSE"]),   # (11-24: Black 2's Nursery sells no charms: breeding incenses)
 }
 NAMES = ["Kirk", "Rosa", "Dean", "Amira", "Lewis", "Pia", "Omar", "Celia", "Hank", "Mina", "Theo", "Lila", "Ravi", "Noor",
          "Bram", "Iris", "Jude", "Vera", "Otto", "Sana"]
