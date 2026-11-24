@@ -421,6 +421,21 @@ class RouteEncounters:
         base_key = area_data.get("wild_pool_percentages")
         return self.game.loader.area_data.get(base_key, {}) if base_key else {}
 
+    def pick_catch_three(self):
+        """The catch screen's three wild Pokemon from the area's pool: (raw entries, Pokemon or None each), or None when
+        nothing lives here."""
+        wild_pool_pct = self._get_wild_pool(self.area_data)
+        if not wild_pool_pct:
+            return None
+        p_list = []
+        for _ in range(3):
+            p_id = int(Utils.weighted_random_choice(wild_pool_pct))
+            p_list.append(self.game.loader._fetch_raw(id_pool=[p_id], area_data=self.area_data))
+        mons = [Pokemon(p, self.game.assets, size_mult=3.125) if p["id"] != 0 else None for p in p_list]
+        for p in mons:
+            levels.set_wild(self.game, p, self.game.story_manager.current_area_key)
+        return p_list, mons
+
     def trigger_wild_encounter(self):
         if catching.total_balls(self.game.story_manager) <= 0:  # no catch screen without balls: say so
             self.p_data = [None, None, None]
@@ -428,34 +443,24 @@ class RouteEncounters:
             self.pending_wild_encounters = 0
             self.show_dialogue([self.game.assets.get_text("no_balls_left")], callback=self.show_progression_menu)
             return
-        wild_pool_pct = self._get_wild_pool(self.area_data)
-        if not wild_pool_pct:
-            print(
-                f"Warning: No wild Pokémon defined for area {self.game.story_manager.current_area_key}"
-            )
-            self.p_data = [None, None, None]
-            self.problem_str, self.correct_ans, self.options = (
-                "...",
-                "...",
-                ["...", "...", "..."],
-            )
-            return
-
-        p_list = []
-        for _ in range(3):
-            p_id_str = Utils.weighted_random_choice(wild_pool_pct)
-            p_id = int(p_id_str)
-            p_raw = self.game.loader._fetch_raw(
-                id_pool=[p_id], area_data=self.area_data
-            )
-            p_list.append(p_raw)
-
-        self.current_raw = {"normal": p_list}
-        self.p_data = [
-            Pokemon(p, self.game.assets, size_mult=3.125) if p["id"] != 0 else None for p in p_list
-        ]
-        for p in self.p_data:
-            levels.set_wild(self.game, p, self.game.story_manager.current_area_key)
+        preset = getattr(self, "_preset_catch", None)   # (the three already picked: Honey's walk-up on a walked map, region/systems)
+        self._preset_catch = None
+        if preset:
+            self.current_raw, self.p_data = {"normal": list(preset[0])}, list(preset[1])
+        else:
+            picked = self.pick_catch_three()
+            if picked is None:
+                print(
+                    f"Warning: No wild Pokémon defined for area {self.game.story_manager.current_area_key}"
+                )
+                self.p_data = [None, None, None]
+                self.problem_str, self.correct_ans, self.options = (
+                    "...",
+                    "...",
+                    ["...", "...", "..."],
+                )
+                return
+            self.current_raw, self.p_data = {"normal": picked[0]}, picked[1]
 
         for p in self.p_data:
             if p:

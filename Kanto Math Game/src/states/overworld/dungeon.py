@@ -879,9 +879,10 @@ def person_scale(sheet, cw, ch):
 
 
 from src.states.overworld.dungeon_live import RouteLive   # (the live 3D camera on the route maps, 11-21)
+from src.states.overworld.wild_walkup import WildWalkUps   # (Honey's and the swarms' Pokemon walking up to you: region/systems 11-23)
 
 
-class DungeonState(RouteLive, OverworldBattles, PlayState):
+class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
 
     def __init__(self, game, restore_data=None, classic=False):
         if getattr(self, "_dungeon_ready", False):  # the walk going on, back from a battle
@@ -2002,6 +2003,9 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
         self.btn_flee.set_visibility(False)
         self.dialogue_box.visible = False
         self.mode = "MAP"
+        for b in self.hud_buttons:   # (hidden while the catch screen was over the map)
+            b.set_visibility(True)
+        self.walkup_catch_over()   # (Honey's three: the one you caught is gone, the others run off)
         self._sync_figures()
 
     def _leave(self, target):
@@ -2629,6 +2633,8 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
         return catching.total_balls(story) > 0 and story.catch_unlocked()
 
     def _meet_wild(self, mover):
+        if self.swarm_call(mover):   # (today's swarm here: it calls two friends over, and they battle you on the map)
+            return
         self.walk_goal = None
         self.encounter = mover
         self.choice = 0 if self._can_catch() else 1
@@ -3026,13 +3032,24 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
             first = "A sweet scent drifted through the air..."
         self.walk_goal = None
 
-        def begin():
-            self.route_bg = self._map_backdrop()  # (this very map behind the Pokemon the Honey drew in)
+        def catch(picked=None):
+            self.route_bg = None   # (the live map under the catch screen: _draw_catch_layer)
             self.mode = "CATCH"
+            for b in self.hud_buttons:   # (only the catch screen takes taps while it's up)
+                b.set_visibility(False)
             self.is_progression_paused = False
             self.pending_wild_encounters = 0
             self.input_delay = 20
+            self._preset_catch = picked
             self.trigger_wild_encounter()  # the route's three-Pokemon catch, then show_progression_menu
+
+        def begin():
+            picked = self.pick_catch_three() if catching.total_balls(story) > 0 else None
+            if not picked or not any(picked[1]):
+                catch()
+                return
+            self.walkup_start([p for p in picked[1] if p is not None], lambda: catch(picked))   # (they walk up first)
+            self._wu["kind"] = "catch"
         self.say([first, "Wild Pokemon were drawn in!"], then=begin)
 
     def _starter_walk_up(self):
@@ -3300,7 +3317,8 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
             return
         if getattr(self, "_vs_anim", None):   # (the VS Seeker is playing: wait for it)
             return
-        events = [e for e in events if not self._qp_event(e)]  # (the POKEMON button and its list first)
+        if self.mode not in ("WALKUP", "SWARM"):   # (not while wild ones walk up to you or battle you on the map)
+            events = [e for e in events if not self._qp_event(e)]  # (the POKEMON button and its list first)
         for e in events:
             if e.type == pygame.MOUSEBUTTONUP and e.button == 1:
                 self._map_press = False
@@ -3315,6 +3333,8 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
                 self._choice_event(e)
             elif self.mode == "MATH":
                 self._math_event(e)
+            elif self.mode == "SWARM":
+                self._sw_event(e)
 
     def _map_event(self, e):
         if e.type == pygame.KEYDOWN:
@@ -4081,6 +4101,8 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
                 self._boxes_seen = _bk
                 self._place_boxes()
         if self.mode == "CATCH":
+            if hasattr(self, "run"):
+                self._npc_tick()   # (the map under the catch screen keeps going: people walk about; none can spot you)
             return super().update()
         if hasattr(self, "run") and self.run.player:   # (where you stand, kept for the save file: Continue puts you back here; Jordan 11-20)
             self.game.last_spot = {"area": self.area_key, "kind": "map", "floor": int(self.run.index),
@@ -4110,6 +4132,12 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
         if getattr(self, "_walker", None):
             self._walker_step()
             return
+        if hasattr(self, "run"):
+            self._wu_leavers_tick()   # (wild ones running off: Honey's, a swarm's)
+            if self.mode in ("WALKUP", "SWARM"):   # (walking up to you; the swarm's battle on the map)
+                self._npc_tick()
+                self._wu_tick() if self.mode == "WALKUP" else self._sw_tick()
+                return
         if self.mode == "MAP" and hasattr(self, "run") and not self.dialogue_box.visible:
             self._npc_tick()
         if self.mode == "MAP":
@@ -4800,8 +4828,8 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
             self._backdrop = False
 
     def draw(self):
-        if self.mode == "CATCH":
-            return super().draw()
+        if self.mode == "CATCH" and not getattr(self, "_under_catch", False):
+            return self._draw_catch_layer()
         screen = self.game.screen
         view = self._view()
         fonts = self.game.assets.fonts
@@ -4828,7 +4856,31 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
             at = self._draw_world(screen, view, fonts)
         if self._backdrop:  # (only the map: an OVERWORLD-style battle is drawn over it)
             return
+        if getattr(self, "_under_catch", False):   # (the map in its frame: the catch screen is drawn over it)
+            draw_frame(screen, view)
+            return
         self._draw_rest(screen, view, fonts, at)
+
+    CATCH_TINT = (8, 12, 24, 150)   # (how dark the map is under the catch screen)
+
+    def _draw_catch_layer(self):
+        """The route's catch screen as a see-through layer: the live map (its people, the Pokemon round you), darkened,
+        then the catch screen's own pieces over it. Its taps and keys never reach the map (handle_events)."""
+        screen = self.game.screen
+        self._under_catch = True
+        try:
+            self.draw()
+        finally:
+            self._under_catch = False
+        tint = getattr(self, "_catch_tint", None)
+        if tint is None or tint.get_size() != screen.get_size():
+            tint = self._catch_tint = pygame.Surface(screen.get_size(), pygame.SRCALPHA)
+            tint.fill(self.CATCH_TINT)
+        self.route_bg, self._catch_over_map = tint, True
+        try:
+            return super().draw()
+        finally:
+            self.route_bg, self._catch_over_map = None, False
 
     def _draw_world(self, screen, view, fonts):
         """The map in its frame (draw() adds the frame, the HUD, the encounter): its tile-to-screen function."""
@@ -5049,10 +5101,16 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
                     emotes.append(r)
             if _shadow is not None:   # (B2W2's oval under everyone's feet)
                 screen.blit(_shadow, _shadow.get_rect(center=(r.centerx, r.bottom - 3)))
-            if m.kind == "wild":
+            if m.kind in ("wild", "walkup"):   # (walkup: drawn in by Honey or a swarm - wild_walkup.py: it hops out, faints, fades)
                 img = self._icon(m.payload, TILE, flip=(m.x < self.run.player[0]), facing=getattr(m, "facing", None))
-                screen.blit(img, img.get_rect(midbottom=(r.centerx, r.bottom + 4)))
-                _movers_drawn.append((r.bottom, img, img.get_rect(midbottom=(r.centerx, r.bottom + 4))))
+                _lift, _alpha = (self._wu_lift(m), getattr(m, "_wu_alpha", 255)) if m.kind == "walkup" else (0, 255)
+                if _alpha <= 0:
+                    continue
+                if _alpha < 255:
+                    img = img.copy()
+                    img.set_alpha(_alpha)
+                screen.blit(img, img.get_rect(midbottom=(r.centerx, r.bottom + 4 - _lift)))
+                _movers_drawn.append((r.bottom, img, img.get_rect(midbottom=(r.centerx, r.bottom + 4 - _lift))))
                 if m.payload.is_shiny:
                     pygame.draw.circle(screen, (255, 230, 90), (r.right - 8, r.y + 8), 5)
                 if m.alert:
@@ -5308,6 +5366,8 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
         self._draw_qparty(screen)
         if self.mode in ("CHOICE", "MATH", "THROW"):
             self._draw_encounter(screen)
+        elif self.mode == "SWARM":
+            self._draw_swarm(screen, at)
         elif self.mode == "SPOTTED" and self.encounter:
             m = self.encounter
             r = at(m.x, m.y)
