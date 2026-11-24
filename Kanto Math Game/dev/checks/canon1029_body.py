@@ -1009,8 +1009,8 @@ _twr = json.load(open("assets/town_maps.json", encoding="utf-8"))["KANTO_POKEMON
 check(len(_twr["floors"]) == 7 and _twr["floor_names"][-1] == "7F" and not _twr["floors"][-1].get("exits"),
       f"7F is the top: FireRed's seven floors {_twr['floor_names']}")
 check(not any("BLACK FOG" in t for n in (1, 2, 3, 4) for t in _floor(n)[1]), "no Black Fog option on any floor")
-check(all(g.assets.get_journeys_background("routes", f"KANTO_POKEMON_TOWER_floor_{n}") for n in range(1, 5)),
-      "each floor has its own picture")
+check(all(f.get("art") for f in _twr["floors"]),   # (11-24: walked floors; the old menu pictures were deleted, 1786e09c)
+      "each floor is drawn (walked: its own map)")
 _pool = g.loader.area_data["STORY_PROGRESSION"]["KANTO_POKEMON_TOWER"]["trainer_pool"]
 for _i, _t in enumerate(_pool):
     if _t.get("zone") == "floor_4":
@@ -1158,8 +1158,9 @@ for _area, _n in (("SAFARI_ZONE", 4), ("JOHTO_SAFARI_ZONE", 12), ("HOENN_SAFARI_
     _pics = [z["key"] for z in _zs if g.assets.get_journeys_background("routes", f"{_area}_{z['key']}") is not None]
     _union = set(g.loader.area_data[_ad["wild_pool_percentages"]])
     _parts = set().union(*(g.loader.area_data[_ad["zone_pools"][z["key"]]] for z in _zs))
-    check(len(_zs) == _n and len(_pics) == _n and _union == _parts,
-          f"{_area}: {len(_zs)} areas, {len(_pics)} pictures, the whole pool is the areas' together")
+    _walked31 = _area in _tm29   # (11-24: a walked Safari Zone has its map, not the old menu pictures - deleted with each
+    check(len(_zs) == _n and (len(_pics) == _n or _walked31) and _union == _parts,   #  region's menu-picture clean-up)
+          f"{_area}: {len(_zs)} areas, {len(_pics)} pictures{' (walked: its map)' if _walked31 else ''}, the whole pool is the areas' together")
 story.current_area_key = "JOHTO_SAFARI_ZONE"
 story.story_flags["zone_JOHTO_SAFARI_ZONE"] = "desert"
 _ps31 = PlayState(g); g.change_state(_ps31); _ps31.show_progression_menu()
@@ -1305,8 +1306,7 @@ check(len(_sfm["floors"]) == 5 and _sfm["floors"][0].get("exits", {}).get("n") =
       and not any(f.get("exits") for f in _sfm["floors"][1:]), f"1F-B4F, the way out on 1F only {_sfm['floor_names']}")
 check((_sfm.get("figure_floors") or {}).get("CHALLENGE ARTICUNO") == 4 and "144" not in _sfp and {"86", "87"} <= set(_sfp),
       "Articuno at the bottom (B4F), not in the wild; Seel and Dewgong in the cave")
-_pic = g.assets.get_journeys_background("routes", "SEAFOAM_ISLANDS_b3f")
-check(_pic is not None, "each floor has its picture")
+check(all(f.get("art") for f in _sfm["floors"]), "each floor is drawn (walked: its own map; the old menu pictures were deleted, 1786e09c)")
 story.story_flags, story.current_area_key = _saved36
 
 print("37) Norman's ORAS team: Slaking 28, Vigoroth 28, Slaking 30, each with its own moves (Jordan, 11-03)")
