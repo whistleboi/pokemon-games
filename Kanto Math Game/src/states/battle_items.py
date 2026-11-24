@@ -208,6 +208,9 @@ class HeldItemEffects:
         lines = []
         if not damage or attacker is defender:
             return lines
+        if self.held(defender) == "AIR_BALLOON":   # (any hit pops it: gone for the battle, Gen 5)
+            self.consume_held(defender)
+            lines.append(f"{self._label(defender)}'s Air Balloon popped!")
         if self.held(defender) == "ROCKY_HELMET" and "contact" in self._flags(name) and self._hp(attacker) > 0 \
                 and self.ab(attacker) != "MAGICGUARD":
             self._adjust_hp(attacker, -max(1, self._max_hp(attacker) // 6))
