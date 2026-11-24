@@ -1002,6 +1002,8 @@ class BagState(GameState):
 
         def rope():
             self._take(item)
+            from src.vfx import area_changes   # (the Escape Rope's fade, as this region's game: Jordan 11-24)
+            area_changes.note_leave(self.game, story.current_area_key, kind="escape")
             self.game.change_state(AreaTransitionState(self.game, dest, initial_message="You used the ESCAPE ROPE!"))
         if not travel.held(self.game, travel.area_name(self.game, dest), rope):
             rope()

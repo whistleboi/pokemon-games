@@ -427,7 +427,7 @@ _wp = dict(zip([(x, y) for y, r in enumerate(_wm["art"]) for x, c in enumerate(r
 check(_wp.get((25, 11)) == "CONFRONT THE ADMIN" and _tr.get((27, 16)) == "Admin" and _tr.get((27, 4)) == "Gideon"
       and _ad["team"] == [42, 110, 229] and _ad["levels"] == [53, 54, 55],
       f"Rocket Warehouse: FireRed's two Admins (the one by the way in, and the last on FireRed's tile with his team), Gideon by his machine ({_tr}, {_wp.get((25, 11))})")
-check(_fig.get("TM208") == (17, 3) and _fig.get("PEARL") == (1, 16) and _fig.get("BIG PEARL") == (8, 25) and "UP-GRADE" not in _fig
+check(_fig.get("TM148") == (17, 3) and _fig.get("PEARL") == (1, 16) and _fig.get("BIG PEARL") == (8, 25) and "UP-GRADE" not in _fig
       and len(_wm.get("stops", [])) >= 15,
       f"...FireRed's items (TM36 Sludge Bomb = TM141; no Up-Grade in Kanto) and its spin maze's stop tiles ({len(_wm.get('stops', []))})")
 p = route("MEMORIAL_PILLAR", "FIVE_ISLE_MEADOW")

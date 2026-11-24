@@ -433,6 +433,40 @@ for _reg in ("KANTO", "JOHTO", "HOENN", "SINNOH", "ORANGE", "ORRE", "UNOVA"):
     _ok.append((_reg, bool(_d) and any("ASH" in l for l in _lines) and (_reg in ("JOHTO", "ORRE") or any("GARY" in l for l in _lines))))
 check(all(o for _, o in _ok), f"...every region's opening plays through, by name ({_ok})")
 
+print("\n== Celadon Dept. Store's 5F and roof (11-23 cleanup: FireRed's clerks, vending machines and the thirsty girl's TMs)")
+for _k in ("FRESH_WATER", "SODA_POP", "LEMONADE", "TM075", "TM236", "TM074"):
+    story.inventory.pop(_k, None)
+for _f in ("got_celadon_roof_tm_water", "got_celadon_roof_tm_soda", "got_celadon_roof_tm_lemonade"):
+    story.story_flags.pop(_f, None)
+story.money = 1000
+_t = town("CELADON_CITY", "KANTO_ROUTE_7", room="dept_roof")
+said.clear(); _t._read((10, 3)); play()
+check(story.money == 800 and story.inventory.get("FRESH_WATER") == 1, f"a roof vending machine sells Fresh Water for $200 (money {story.money}, {story.inventory.get('FRESH_WATER')})")
+said.clear(); _t._read((12, 3)); play()
+check(story.money == 450 and story.inventory.get("LEMONADE") == 1, f"...and the next-but-one Lemonade for $350 ({story.money})")
+_s = meet(_t, "Little girl") or []
+check(story.inventory.get("TM075") == 1 and not story.inventory.get("FRESH_WATER"), f"the thirsty girl takes the Fresh Water and gives TM Light Screen ({_s[-2:]})")
+_s = meet(_t, "Little girl") or []
+check(story.inventory.get("TM074") == 1 and not story.inventory.get("LEMONADE"), "...then the Lemonade for TM Reflect, one TM per drink")
+_s = meet(_t, "Little girl") or []
+check(not story.inventory.get("TM236") and any("thirsty" in l for l in _s), f"...with no drink left she's still thirsty ({_s[-1:]})")
+story.money = 3
+said.clear(); _t._read((11, 3)); play()
+check(story.money == 3 and not story.inventory.get("SODA_POP"), "...and the machines want the money first")
+_t = town("CELADON_CITY", "KANTO_ROUTE_7", room="dept_5")
+_shelves = {o.get("text"): o.get("stock") for o in _t._people().values() if o.get("action") == "SHOP"}
+check(_shelves.get("Vitamin clerk") == ["HP_UP", "PROTEIN", "IRON", "CARBOS", "CALCIUM"] and "X_ATTACK" in (_shelves.get("Battle item clerk") or []),
+      f"5F's two clerks sell FireRed's vitamins and X items ({_shelves})")
+_cb = _t._get_callback_for_option(next(o for o in _t._people().values() if o.get("text") == "Vitamin clerk")); _cb()
+check(type(g.current_state).__name__ == "PokeMartState" and g.current_state.stock[:1] == ["HP_UP"], f"...talking to the vitamin clerk opens her shelf ({type(g.current_state).__name__})")
+_ng = next(t for t in g.loader.area_data["STORY_PROGRESSION"]["KANTO_ROUTE_24"]["trainer_pool"] if t["name"] == "Team Rocket Grunt")
+check(_ng["rewards"].get("NUGGET") == 1, "the Nugget Bridge Grunt gives the nugget he talks about")
+_up = town("UNDERGROUND_PATH", "KANTO_ROUTE_5")
+_up._get_callback_for_option({"action": "NPC", "target": "stoneman"})()
+_m = list(getattr(getattr(_up, "npc_dialogue", None), "text_lines", None) or getattr(_up, "npc_messages", None) or [])
+check(not any("fossil lab" in str(l) for l in _m) and _m, f"the Underground Path's Fossil Maniac doesn't call it the fossil lab ({_m[:1]})")
+story.inventory.clear(); story.inventory.update(_inv0)
+
 story.story_flags.clear(); story.story_flags.update(_flags0)
 story.inventory.clear(); story.inventory.update(_inv0)
 story.player_team, story.money = _team0, _money0

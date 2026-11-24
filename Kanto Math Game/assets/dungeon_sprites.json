@@ -76,6 +76,159 @@
     ]
   },
   "figures": {
+    "GALACTIC_WAREHOUSE:Looker": {"sheet": "pt_icpo.png"},
+    "VEILSTONE_CITY:Dawn": {"sheet": "pt_heroine.png"},
+    "VEILSTONE_CITY:Galactic Grunt ": {"sheet": "pt_gingam.png"},
+    "VEILSTONE_CITY:Galactic Grunt": {"sheet": "pt_gingam.png"},
+    "VEILSTONE_CITY:Gentleman": {"sheet": "pt_gentleman.png"},
+    "VEILSTONE_CITY:Lady ": {"sheet": "pt_lady.png"},
+    "VEILSTONE_CITY:Candy seller": {"sheet": "pt_shopw1.png"},
+    "VEILSTONE_CITY:Berry seller": {"sheet": "pt_shopw1.png"},
+    "VEILSTONE_CITY:Gardener": {"sheet": "pt_woman6.png"},
+    "VEILSTONE_CITY:Poffin seller": {"sheet": "pt_shopw1.png"},
+    "VEILSTONE_CITY:Cookie seller": {"sheet": "pt_shopw1.png"},
+    "VEILSTONE_CITY:Lift attendant": {"sheet": "pt_woman6.png"},
+    "VEILSTONE_CITY:Strongman ": {"sheet": "pt_bigman.png"},
+    "VEILSTONE_CITY:Strongman": {"sheet": "pt_bigman.png"},
+    "VEILSTONE_CITY:Regular": {"sheet": "pt_middlewoman2.png"},
+    "VEILSTONE_CITY:Thirsty boy": {"sheet": "pt_boy3.png"},
+    "VEILSTONE_CITY:Gamer boy": {"sheet": "pt_boy1.png"},
+    "VEILSTONE_CITY:Doll clerk": {"sheet": "pt_shopm1.png"},
+    "VEILSTONE_CITY:Goods clerk": {"sheet": "pt_shopw1.png"},
+    "VEILSTONE_CITY:Mother": {"sheet": "pt_middlewoman1.png"},
+    "VEILSTONE_CITY:Little boy": {"sheet": "pt_babyboy1.png"},
+    "VEILSTONE_CITY:Woman": {"sheet": "pt_woman1.png"},
+    "VEILSTONE_CITY:Big TM clerk": {"sheet": "pt_shopm1.png"},
+    "VEILSTONE_CITY:TM clerk": {"sheet": "pt_shopw1.png"},
+    "VEILSTONE_CITY:Little girl": {"sheet": "pt_babygirl1.png"},
+    "VEILSTONE_CITY:Boy ": {"sheet": "pt_boy3.png"},
+    "VEILSTONE_CITY:Vitamin clerk": {"sheet": "pt_shopw1.png"},
+    "VEILSTONE_CITY:Battle item clerk": {"sheet": "pt_shopw1.png"},
+    "VEILSTONE_CITY:Floor guide": {"sheet": "pt_woman6.png"},
+    "VEILSTONE_CITY:Promo clerk": {"sheet": "pt_shopm1.png"},
+    "VEILSTONE_CITY:Boy": {"sheet": "pt_boy3.png"},
+    "VEILSTONE_CITY:Medicine clerk": {"sheet": "pt_shopw1.png"},
+    "VEILSTONE_CITY:Ball clerk": {"sheet": "pt_shopm1.png"},
+    "VEILSTONE_CITY:Kind lady": {"sheet": "pt_lady.png"},
+    "VEILSTONE_CITY:Lady shopper": {"sheet": "pt_gorggeousw.png"},
+    "VEILSTONE_CITY:Shopper": {"sheet": "pt_middleman2.png"},
+    "VEILSTONE_CITY:Receptionist": {"sheet": "pt_woman6.png"},
+    "HEARTHOME_CITY:Old lady": {"sheet": "pt_oldwoman2.png"},
+    "HEARTHOME_CITY:Grandpa": {"sheet": "pt_oldman2.png"},
+    "HEARTHOME_CITY:Grandma": {"sheet": "pt_oldwoman1.png"},
+    "HEARTHOME_CITY:Kind grandpa": {"sheet": "pt_oldman1.png"},
+    "HEARTHOME_CITY:Hotel guest": {"sheet": "pt_woman3.png"},
+    "HEARTHOME_CITY:Cool fan": {"sheet": "pt_fighter.png"},
+    "HEARTHOME_CITY:Acting coach": {"sheet": "pt_woman2.png"},
+    "HEARTHOME_CITY:Dance coach": {"sheet": "pt_idol.png"},
+    "HEARTHOME_CITY:Visual coach": {"sheet": "pt_mount.png"},
+    "ETERNA_CITY:Battle fan": {"sheet": "pt_boy1.png"},
+    "SINNOH_ROUTE_206:Gardener girl": {"sheet": "pt_girl2.png"},
+    "SINNOH_ROUTE_206:Cyclist ": {"sheet": "pt_shopm1.png"},
+    "SINNOH_ROUTE_206:Cyclist": {"sheet": "pt_shopm1.png"},
+    "ETERNA_CITY:Fossil boy": {"sheet": "pt_boy3.png"},
+    "ETERNA_CITY:Underground Man": {"sheet": "pt_oldman1.png"},
+    "ETERNA_CITY:Museum worker": {"sheet": "pt_assistantm.png"},
+    "ETERNA_CITY:Digging boy": {"sheet": "pt_boy2.png"},
+    "ETERNA_CITY:Cyclist ": {"sheet": "pt_shopm1.png"},
+    "ETERNA_CITY:Cyclist": {"sheet": "pt_shopm1.png"},
+    "HEARTHOME_CITY:Poffin fan": {"sheet": "pt_cowgirl.png"},
+    "HEARTHOME_CITY:Traveler": {"sheet": "pt_bigman.png"},
+    "HEARTHOME_CITY:Curious girl": {"sheet": "pt_girl2.png"},
+    "HEARTHOME_CITY:Gate visitor": {"sheet": "pt_man1.png"},
+    "HOENN_ROUTE_109:Mr. Briney": {
+      "sheet": "em_21.png"
+    },
+    "HOENN_ROUTE_110:Undecided camper": {
+      "sheet": "em_31.png"
+    },
+    "HOENN_ROUTE_110:Trick rider": {
+      "sheet": "em_56.png"
+    },
+    "HOENN_ROUTE_110:Strolling lady": {
+      "sheet": "em_22.png"
+    },
+    "HOENN_ROUTE_110:Bike fan": {
+      "sheet": "em_56.png"
+    },
+    "HOENN_ROUTE_110:Old man": {
+      "sheet": "em_21.png"
+    },
+    "HOENN_ROUTE_110:Long-haired rider": {
+      "sheet": "em_57.png"
+    },
+    "HOENN_ROUTE_110:Boy": {
+      "sheet": "em_13.png"
+    },
+    "HOENN_ROUTE_110:Cycling Road judge": {
+      "sheet": "em_56.png"
+    },
+    "HOENN_ROUTE_110:Rowdy grunt": {
+      "sheet": "@grunt"
+    },
+    "HOENN_ROUTE_110:Silent grunt": {
+      "sheet": "@grunt"
+    },
+    "HOENN_SPACE_CENTER:Launch scientist": {
+      "sheet": "em_46.png"
+    },
+    "HOENN_SPACE_CENTER:Launch engineer": {
+      "sheet": "em_46.png"
+    },
+    "HOENN_SPACE_CENTER:Fuel thief grunt": {
+      "sheet": "@grunt"
+    },
+    "HOENN_MT_CHIMNEY:Worried grunt": {
+      "sheet": "@other_grunt"
+    },
+    "HOENN_ROUTE_109:Mr. Sea": {
+      "sheet": "em_25.png"
+    },
+    "HOENN_ROUTE_110:Cycling Road attendant": {
+      "sheet": "em_83.png"
+    },
+    "HOENN_ROUTE_110:Cycling Road guide": {
+      "sheet": "em_83.png"
+    },
+    "HOENN_ROUTE_121:Safari attendant": {
+      "sheet": "em_31.png"
+    },
+    "HOENN_ROUTE_121:Safari clerk": {
+      "sheet": "em_31.png"
+    },
+    "HOENN_ROUTE_121:Safari guide": {
+      "sheet": "em_32.png"
+    },
+    "AGATE_VILLAGE:Agate Gym": {
+      "sheet": "orre_trainer_leader_erika.png"
+    },
+    "AGATE_VILLAGE:Blaine": {
+      "sheet": "orre_trainer_leader_blaine.png"
+    },
+    "SNAGEM_HIDEOUT:GYM LEADER PRYCE": {
+      "sheet": "orre_trainer_leader_pryce.png"
+    },
+    "GATEON_PORT:Old man": {
+      "sheet": "orre_npc_10.png"
+    },
+    "GATEON_PORT:Old woman": {
+      "sheet": "orre_npc_11.png"
+    },
+    "GATEON_PORT:Lighthouse keeper": {
+      "sheet": "orre_npc_15.png"
+    },
+    "GATEON_PORT:Gym Leader Jasmine": {
+      "sheet": "orre_trainer_leader_jasmine.png"
+    },
+    "GATEON_PORT:Lighthouse Electabuzz": {
+      "pokemon": 125
+    },
+    "GATEON_PORT:Lighthouse Electrode": {
+      "pokemon": 101
+    },
+    "GATEON_PORT:Lighthouse Ampharos": {
+      "pokemon": 181
+    },
     "ANVILLE_TOWN:Boy": {"sheet": "b2_c29.png"},
     "ANVILLE_TOWN:Boy by the fence": {"sheet": "b2_c28.png"},
     "ANVILLE_TOWN:Collector": {"sheet": "b2_c27.png"},
@@ -1364,7 +1517,7 @@
     "CHERRYGROVE_CITY:Link desk": {
       "sheet": "hg_pcwoman2.png"
     },
-    "CIANWOOD_CITY:Talk to Euskine": {
+    "CIANWOOD_CITY:Talk to Eusine": {
       "sheet": "hg_minaki.png"
     },
     "CIANWOOD_CITY:Battle Eusine": {
@@ -2173,7 +2326,7 @@
     "ROCKET_HIDEOUT:TM299": {
       "item": "POKE_BALL"
     },
-    "ROCKET_WAREHOUSE:TM208": {
+    "ROCKET_WAREHOUSE:TM148": {
       "item": "POKE_BALL"
     },
     "SAFARI_ZONE:TM049": {
@@ -3733,12 +3886,8 @@
     "VEILSTONE_CITY:Department Store": {
       "sheet": "pt_shopw1.png"
     },
-    "VEILSTONE_CITY:Gym": {
-      "sheet": "pt_leader3.png"
-    },
-    "PASTORIA_CITY:Gym": {
-      "sheet": "pt_leader4.png"
-    },
+    "VEILSTONE_CITY:Gym": {"sheet": "pt_leader4.png"},
+    "PASTORIA_CITY:Gym": {"sheet": "pt_leader3.png"},
     "PASTORIA_CITY:Shop": {
       "sheet": "pt_shopw1.png"
     },
@@ -16487,6 +16636,93 @@
     },
     "ETERNA_FOREST_OUTSKIRTS:Woman": {
       "sheet": "pt_woman1.png"
+    },
+    "HOENN_TRICK_HOUSE:Trick Master": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_1:Trick Master": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_1:LAVA COOKIE": {
+      "item": "LAVA_COOKIE"
+    },
+    "HOENN_TRICK_HOUSE_1:LAVA COOKIE ": {
+      "item": "LAVA_COOKIE"
+    },
+    "HOENN_TRICK_HOUSE_2:Trick Master": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_2:RAGE CANDY BAR": {
+      "item": "RAGECANDYBAR"
+    },
+    "HOENN_TRICK_HOUSE_2:RAGE CANDY BAR ": {
+      "item": "RAGECANDYBAR"
+    },
+    "HOENN_TRICK_HOUSE_2:Mechadoll 3": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_3:Trick Master": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_3:LUMIOSE GALETTE": {
+      "item": "LUMIOSE_GALETTE"
+    },
+    "HOENN_TRICK_HOUSE_3:LUMIOSE GALETTE ": {
+      "item": "LUMIOSE_GALETTE"
+    },
+    "HOENN_TRICK_HOUSE_3:Mechadoll 3": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_4:Trick Master": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_4:CASTELIACONE": {
+      "item": "CASTELIACONE"
+    },
+    "HOENN_TRICK_HOUSE_4:CASTELIACONE ": {
+      "item": "CASTELIACONE"
+    },
+    "HOENN_TRICK_HOUSE_4:Mechadoll 3": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_5:Trick Master": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_5:OLD GATEAU": {
+      "item": "OLD_GATEAU"
+    },
+    "HOENN_TRICK_HOUSE_5:OLD GATEAU ": {
+      "item": "OLD_GATEAU"
+    },
+    "HOENN_TRICK_HOUSE_5:Mechadoll 3": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_5:Mechadoll 1": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_5:Mechadoll 2": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_5:Mechadoll 4": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_5:Mechadoll 5": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_6:Trick Master": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_6:SHALOUR SABLE": {
+      "item": "SHALOUR_SABLE"
+    },
+    "HOENN_TRICK_HOUSE_6:SHALOUR SABLE ": {
+      "item": "SHALOUR_SABLE"
+    },
+    "HOENN_TRICK_HOUSE_6:Mechadoll 3": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_1:EXPERT BELT": {
+      "item": "EXPERT_BELT"
     }
   },
   "townsperson": "NPC 17.png",
@@ -16714,6 +16950,11 @@
     "pt_sis_and_bro.png": "pt_boy2.png"
   },
   "trainers_ORRE": {
+    "orre_leader_misty.png": "orre_trainer_leader_misty.png",
+    "orre_leader_duking.png": "orre_npc_duking.png",
+    "orre_leader_blaine_erika.png": "orre_trainer_leader_erika.png",
+    "orre_leader_pryce.png": "orre_trainer_leader_pryce.png",
+    "orre_leader_jasmine.png": "orre_trainer_leader_jasmine.png",
     "acetrainer_m.png": "orre_trainer_ace_trainer.png",
     "beauty.png": "orre_trainer_beauty.png",
     "orre_bodybuilder.png": "orre_trainer_bodybuilder.png",
@@ -16856,6 +17097,47 @@
     "fr_leader_giovanni.png": "fr_87.png"
   },
   "trainers_JOHTO": {
+    "ss_ace_trainer_f.png": "hg_gswoman3.png",
+    "ss_ace_trainer_m.png": "hg_gsman3.png",
+    "ss_archer.png": "trchar030.png",
+    "ss_ariana.png": "hg_rkanbuw.png",
+    "ss_beauty.png": "hg_gswoman2.png",
+    "ss_bird_keeper.png": "hg_gsman2.png",
+    "ss_black_belt.png": "hg_gsfighter.png",
+    "ss_bug_catcher.png": "hg_gsboy3.png",
+    "ss_burglar.png": "hg_thief.png",
+    "ss_camper.png": "hg_campboy.png",
+    "ss_elder.png": "hg_chourou.png",
+    "ss_eusine.png": "hg_minaki.png",
+    "ss_firebreather.png": "hg_fire.png",
+    "ss_fisherman.png": "hg_fishing.png",
+    "ss_gentleman.png": "hg_gsgentleman.png",
+    "ss_guitarist.png": "hg_gsman2.png",
+    "ss_hiker.png": "hg_mount.png",
+    "ss_juggler.png": "hg_juggrer.png",
+    "ss_kimono_girl.png": "hg_dancer.png",
+    "ss_lass.png": "hg_picnicgirl.png",
+    "ss_petrel.png": "hg_rkanbum.png",
+    "ss_picnicker.png": "hg_picnicgirl.png",
+    "ss_poke_maniac.png": "hg_mania.png",
+    "ss_pokefan_f.png": "hg_middlewoman1.png",
+    "ss_pokefan_m.png": "hg_gsmiddleman1.png",
+    "ss_policeman.png": "hg_policeman.png",
+    "ss_proton.png": "trchar027.png",
+    "ss_psychic.png": "hg_mystery.png",
+    "ss_red.png": "hg_red.png",
+    "ss_rocket_grunt_f.png": "trchar025.png",
+    "ss_rocket_grunt_m.png": "hg_rocketm.png",
+    "ss_sage.png": "hg_bozu.png",
+    "ss_sailor.png": "hg_seaman.png",
+    "ss_school_kid.png": "hg_gsboy1.png",
+    "ss_scientist.png": "hg_assistantm.png",
+    "ss_super_nerd.png": "hg_mania.png",
+    "ss_swimmer_f.png": "hg_gsswimmerw.png",
+    "ss_swimmer_m.png": "hg_gsswimmerw.png",
+    "ss_teacher.png": "hg_middlewoman1.png",
+    "ss_twins.png": "hg_gsbabygirl1.png",
+    "ss_youngster.png": "hg_gsboy2.png",
     "kimono_girl.png": "hg_dancer.png",
     "guitarist.png": "hg_gsman2.png",
     "black_belt.png": "hg_gsfighter.png",
