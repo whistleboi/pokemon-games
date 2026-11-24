@@ -141,11 +141,11 @@ c.story_event("canalave_library")
 check(flags.get("canalave_library_meeting") and any("Lake Valor" in l for l in said), "the library: an explosion at Lake Valor")
 lv = route("LAKE_VALOR")
 lv.story_event("saturn_lake_valor")
-check(battle_team(g.current_state) == [(64, 35), (436, 35), (454, 37)], f"Saturn in Valor Cavern {battle_team(g.current_state)}")
+check(battle_team(g.current_state) == [(42, 38), (436, 38), (454, 40)], f"Saturn in Valor Cavern, Platinum's team {battle_team(g.current_state)}")
 flags["galactic_lake_valor_cleared"] = True
 ve = route("LAKE_VERITY")
 ve.story_event("galactic_lake_verity")
-check(battle_team(g.current_state) == [(42, 37), (436, 37), (432, 39)], f"Mars at Lake Verity {battle_team(g.current_state)}")
+check(battle_team(g.current_state) == [(42, 38), (436, 38), (432, 40)], f"Mars at Lake Verity, Platinum's team {battle_team(g.current_state)}")
 flags["galactic_lake_verity_cleared"] = True
 ac = route("LAKE_ACUITY")
 check(not ac._check_route_condition(opt("LAKE_ACUITY", "Confront Jupiter at the Lake")["condition"], False),
