@@ -315320,40 +315320,40 @@
    "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
    "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
    "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccN.cccccccccccc",
-   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc..cccccccccccc",
-   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc..cccccccccccc",
-   "ccccccccc.ccccccccccccccccccccccccccccccccccccccccccccccccccc..cccccccccccc",
-   "cccccccc.N.cccccccccccccccccccccccccccccccccccccccccccccccccc..cccccccccccc",
-   "cccccccc....ccccccccccccccccccccccccccccccccccccccccccccccccc..cccccccccccc",
-   "cccccccc...cccccccccccccccccccccccccccccccccccccccccccccccccc..cccccccccccc",
-   "cccccccc..ccccccccccccccccccccccccccccccccccccccccccccccccccc..cccccccccccc",
-   "cccccccc..cccccccccccccccccccccccccccccccccccccccccccccccc.....cccccccccccc",
-   "cccccccc..ccccccccccccccccccccccccccccccccccccccccccccccccc....cccccccccccc",
-   "cccccccc..ccccccccccccccccccccccccccccccccccccccccccccccccc....cccccccccccc",
-   "cccccccc..cccccccccccccccccccccccccccccccccccc..ccccccccccc....cccccccccccc",
-   "cccccccc..cccccccccccccccccccccccccccccccccccc..ccccADAccc.....cccccccccccc",
-   "cccccccc..cccccccccccccccccccccccccccccccccccc..ccccc.ccccc....cccccccccccc",
-   "ccccccccc..cccccc..ccccccccccccccccccccccccccc..ccccc.ccccc....cccccccccccc",
-   "ccccccccc..cccccc..ccccccccccccccccccccccccccc..ccccc.ccccc....cccccccccccc",
-   "ccccccccc..cccccc..ccccccccccccccccccccccccccc..cccc...cccc..cccccccccccccc",
+   "cccccccccccccccccccccccccc.....ccccc...cccccccccccccccccccccccccccccccccccc",
+   "ccccccccccccc.cccc.cccccccc....ccccc...cccccccccccccccccccccccccccccccccccc",
+   "ccccccccccccc.cccc.cccccccc....ccccc...cccccccccccccccccccccccccccccccccccc",
+   "cccccccccccc..ADAc.cccccccc....cBDBc..ccccccccccccccccccccccccccccccccccccc",
+   "ccccccccccccc......cccccccc...........ccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccc...N.cccccccccccc.....ccccccccccccccccccccccccccccccccccccccc",
+   "ccccccccccccccccc..cccccccccccc..cccccccccccccccccccccccccccccccccccccccccc",
+   "ccccccccccccccccc..cccccccccccc..cccccccccccccccccccccccccccccccccccccccccc",
+   "ccccccccccccccccc..cccccccccccc..ccccccccccccccccccccccccccccN.cccccccccccc",
+   "ccccccccccccccccc..cccccccccccc..cccccccccccccccccccccccccccc..cccccccccccc",
+   "ccccccccccccccccc..cccccccccccc..cccccccccccccccccccccccccccc..cccccccccccc",
+   "ccccccccc.ccccccc..cccccccccccc..ccccccccccccccc.cccccccccccc..cccccccccccc",
+   "cccccccc.N.ccccc.c....c........c....c..............cccccccccc..cccccccccccc",
+   "cccccccc....cccc.................................c.....cccccc..cccccccccccc",
+   "cccccccc...cccccc..ccccccccccccc.cccccccccc..ccccc.....cccccc..cccccccccccc",
+   "cccccccc..ccccccc..cccccccccccc..ccccccccccccccccc....ccccccc..cccccccccccc",
+   "cccccccc..ccccccc..cccccccccccc..ccccccccccccccccccccccccc.....cccccccccccc",
+   "cccccccc..cccccccc.cccccccccccc..cccccccccccccccccccccccccc....cccccccccccc",
+   "cccccccc..ccccccc..cccccccccccc..cccccccccccccccccccccccccc....cccccccccccc",
+   "cccccccc..ccccccc..cccccccccccc..ccccccccccccc..ccccccccccc....cccccccccccc",
+   "cccccccc..ccccccc..cccccccccccc..ccccccccccccc..ccccCDCccc.....cccccccccccc",
+   "cccccccc..ccccccc..cccccccccccc...cccccccccccc..ccccc.ccccc....cccccccccccc",
+   "ccccccccc..cccccc..cccccccccccc...cccccccccccc..ccccc.ccccc....cccccccccccc",
+   "ccccccccc..cccccc..cccccccccccc...DEcccccccccc..ccccc.ccccc....cccccccccccc",
+   "ccccccccc..cccccc..ccccccccccccc..cccccccccccc..cccc...cccc..cccccccccccccc",
    "ccccccccc..cccc....ccccccccccccccccccccccccccc.....N.........cccccccccccccc",
    "ccccccccc..cccc....ccccccccccccccccccccccccccc...N...........cccccccccccccc",
    "ccccccccc..cccc....ccccccccccccccccccccccccccc...............cccccccccccccc",
    "cccccccc...cccc....ccccccccccccccccccccccccccc...............cccccccccccccc",
    "cccccccc............cccccccccccccccccccccccccc........ccccc..cccccccccccccc",
-   "ccccccccc..cccc.....cccNN.ccc.N.cccccccccccccc........ccccc..cccccccccccccc",
+   "ccccccccc..cccc.....ccc...ccc.N.cccccccccccccc........ccccc..cccccccccccccc",
    "cccccccc...cccc.....ccc...ccc...cccccccccccccc........ccccc..cccccccccccccc",
    "cccccccc...cccc.....ccc...ccc...cccccccccccccc........ccccc..cccccccccccccc",
-   "cccccccc...ccBD.....ccc...ccc...ccccccccccccccc.......cCDCc..cccccccccccccc",
+   "cccccccc...ccFD.....ccc...ccc...ccccccccccccccc.......cGDGc..cccccccccccccc",
    "cccccccc.c.cccc......c.....c.....c...........................cccccccccccccc",
    "cccccccc.cccc....N...........................................cccccccccccccc",
    "cccccccc.cccc................................................cccccccccccccc",
@@ -315362,13 +315362,13 @@
    "cccccccc.ccccc.....cccc............................ccccccccc.cccccccccccccc",
    "cccccccc..cccc.....cccc.......N....................ccccccccc.cccccccccccccc",
    "cccccccc..cccc.....cccc............................ccccccccc.cccccccccccccc",
-   "cccccccc..ccED.....ccFD............................ccccccccc.cccccccccccccc",
-   "cccccccc..cccc.....cccc...........................ccccGDGcccccccccccccccccc",
+   "cccccccc..ccHD.....ccID............................ccccccccc.cccccccccccccc",
+   "cccccccc..cccc.....cccc...........................ccccJDJcccccccccccccccccc",
    "cccccccc..........................c..........................cccccccccccccc",
    "cccccccc....................c...c............................cccccccccccccc",
    "ccccccccccccccccccccccccccccc...ccccccccccccccccccccccccccccccccccccccccccc",
    "ccccccccccccccccccccccccccccc...ccccccccccccccccccccccccccccccccccccccccccc",
-   "cccccccccccccccccccccccccccccHDHccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccKDKccccccccccccccccccccccccccccccccccccccccccc",
    "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
    "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
    "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
@@ -315383,15 +315383,71 @@
   ],
   "exits": {},
   "buildings": {
-   "A": "krabby",
-   "B": "bikeshop",
-   "C": "mart",
+   "A": "house",
+   "B": "lighthouse",
+   "C": "krabby",
    "E": "house",
-   "F": "house",
-   "G": "center",
-   "H": "cycle"
+   "F": "bikeshop",
+   "G": "mart",
+   "H": "house",
+   "I": "house",
+   "J": "center",
+   "K": "cycle"
   },
   "people": [
+   {
+    "text": "Casual Guy Cyle",
+    "action": "EVENT",
+    "event": {
+     "stages": [
+      {
+       "flag": "xd_gateon_cyle",
+       "lines": [
+        "Casual Guy Cyle: The bridges work again! First one across gets a battle - that's you!"
+       ],
+       "battle": {
+        "name": "Casual Guy Cyle",
+        "class": "CASUAL_GUY",
+        "sprite": "orre_chaser_m.png",
+        "team": [
+         276,
+         9353
+        ],
+        "levels": [
+         43,
+         48
+        ],
+        "team_moves": [
+         [
+          "PECK",
+          "GROWL"
+         ],
+         [
+          "PSYBEAM",
+          "REFRESH",
+          "AERIAL-ACE",
+          "SUPERSONIC"
+         ]
+        ],
+        "double": true,
+        "rewards": {
+         "balls": 0
+        },
+        "fit": "+37 (disc ace 11)",
+        "dialogue": {
+         "player_won": [
+          "Casual Guy Cyle: Huh. My Ledyba felt... strange."
+         ]
+        }
+       }
+      }
+     ],
+     "done": [
+      "Casual Guy Cyle: Huh. My Ledyba felt... strange."
+     ]
+    },
+    "condition": "xd_gateon_bridges"
+   },
    {
     "text": "Wanderer Miror B.",
     "action": "EVENT",
@@ -315537,112 +315593,6 @@
       "Navigator Berk: Fair enough. In you go."
      ]
     }
-   },
-   {
-    "text": "Casual Guy Cyle",
-    "action": "EVENT",
-    "event": {
-     "stages": [
-      {
-       "flag": "xd_gateon_cyle",
-       "lines": [
-        "Casual Guy Cyle: The bridges work again! First one across gets a battle - that's you!"
-       ],
-       "battle": {
-        "name": "Casual Guy Cyle",
-        "class": "CASUAL_GUY",
-        "sprite": "orre_chaser_m.png",
-        "team": [
-         276,
-         9353
-        ],
-        "levels": [
-         43,
-         48
-        ],
-        "team_moves": [
-         [
-          "PECK",
-          "GROWL"
-         ],
-         [
-          "PSYBEAM",
-          "REFRESH",
-          "AERIAL-ACE",
-          "SUPERSONIC"
-         ]
-        ],
-        "double": true,
-        "rewards": {
-         "balls": 0
-        },
-        "fit": "+37 (disc ace 11)",
-        "dialogue": {
-         "player_won": [
-          "Casual Guy Cyle: Huh. My Ledyba felt... strange."
-         ]
-        }
-       }
-      }
-     ],
-     "done": [
-      "Casual Guy Cyle: Huh. My Ledyba felt... strange."
-     ]
-    },
-    "condition": "xd_gateon_bridges"
-   },
-   {
-    "text": "Bodybuilder Kilen",
-    "action": "EVENT",
-    "event": {
-     "stages": [
-      {
-       "flag": "xd_gateon_kilen",
-       "lines": [
-        "Bodybuilder Kilen: I climbed the lighthouse every day while the bridge was out. Now, fight!"
-       ],
-       "battle": {
-        "name": "Bodybuilder Kilen",
-        "class": "BODYBUILDER",
-        "sprite": "orre_bodybuilder.png",
-        "team": [
-         41,
-         9401
-        ],
-        "levels": [
-         43,
-         48
-        ],
-        "team_moves": [
-         [
-          "SUPERSONIC",
-          "LEECH-LIFE"
-         ],
-         [
-          "DIG",
-          "HEAL-BELL",
-          "POISON-FANG",
-          "HOWL"
-         ]
-        ],
-        "double": true,
-        "rewards": {
-         "balls": 0
-        },
-        "fit": "+37 (disc ace 11)",
-        "dialogue": {
-         "player_won": [
-          "Bodybuilder Kilen: Lost to a kid. Back up the lighthouse I go."
-         ]
-        }
-       }
-      }
-     ],
-     "done": [
-      "Bodybuilder Kilen: Lost to a kid. Back up the lighthouse I go."
-     ]
-    },
-    "condition": "xd_gateon_bridges"
    },
    {
     "text": "Chaser Laken",
@@ -316064,7 +316014,7 @@
      "c.c..............cc",
      "c.c..............cc",
      "c.cc.............cc",
-     "c.........N......cc",
+     "c................cc",
      "c................vc",
      "c................cc",
      "c................cc",
@@ -316077,48 +316027,7 @@
      "v": "OUT:13,52"
     },
     "buildings": {},
-    "people": [
-     {
-      "text": "Eevee expert",
-      "action": "EVENT",
-      "event": {
-       "lines": [
-        "I know all about Eevee! It can become so many things.",
-        "Here, take a stone to evolve yours. Which one? Come back tomorrow for another!"
-       ],
-       "flag": "xd_eevee_stone_day",
-       "choose": {
-        "flag": "xd_eevee_stone",
-        "ask": "WHICH STONE?",
-        "gift": true,
-        "choices": [
-         {
-          "text": "WATER STONE (Vaporeon)",
-          "value": "WATER_STONE"
-         },
-         {
-          "text": "THUNDER STONE (Jolteon)",
-          "value": "THUNDER_STONE"
-         },
-         {
-          "text": "FIRE STONE (Flareon)",
-          "value": "FIRE_STONE"
-         }
-        ],
-        "cancel": [
-         "Come back when you've made up your mind!"
-        ],
-        "done": [
-         "Eevee in the sun becomes Espeon, under the moon Umbreon - if it really loves you!"
-        ]
-       },
-       "done": [
-        "That's today's stone! Come back tomorrow and I'll have another for you."
-       ],
-       "daily": true
-      }
-     }
-    ],
+    "people": [],
     "signs": [],
     "roofs": {
      "_picture": {
@@ -316252,10 +316161,561 @@
       ]
      }
     ]
+   },
+   "house_north": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccc",
+     "ccccccccccccc",
+     "cc..........c",
+     "c...........c",
+     "cN..........c",
+     "ccc.........c",
+     "ccc.........c",
+     "c...........c",
+     "c.c........cc",
+     "c.c........cc",
+     "ccccccvcccccc",
+     "ccccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:15,13"
+    },
+    "buildings": {},
+    "people": [
+     {
+      "text": "Old man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "While the bridges were stuck I rowed over to the shops every morning. Good thing Makan fixed them!"
+       ]
+      }
+     }
+    ],
+    "signs": [],
+    "roofs": {
+     "_picture": {
+      "f": "orre_ground/150.png",
+      "at": [
+       11,
+       8
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "orre_top/150.png",
+      "at": [
+       11,
+       8
+      ],
+      "size": [
+       13,
+       12
+      ]
+     }
+    ]
+   },
+   "house_island": {
+    "theme": "room",
+    "art": [
+     "cccccccccccccc",
+     "cccccccccccccc",
+     "cccccc......cc",
+     "cc..N........c",
+     "cc..........cc",
+     "cc...........c",
+     "cv...........c",
+     "cc...........c",
+     "cc........c.cc",
+     "cccc......c.cc",
+     "cccccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:34,33"
+    },
+    "buildings": {},
+    "people": [
+     {
+      "text": "Old woman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I watch the ships from my window. The big grey ones that sail out past the rocks... I don't like them."
+       ]
+      }
+     }
+    ],
+    "signs": [],
+    "roofs": {
+     "_picture": {
+      "f": "orre_ground/151.png",
+      "at": [
+       10,
+       8
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "orre_top/151.png",
+      "at": [
+       10,
+       8
+      ],
+      "size": [
+       14,
+       11
+      ]
+     }
+    ]
+   },
+   "lighthouse": {
+    "theme": "room",
+    "art": [
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "ccccc..........ccc",
+     "cccc..........N^cc",
+     "ccc............ccc",
+     "cc...............c",
+     "cc...............c",
+     "c................c",
+     "cc..............cc",
+     "cc..............cc",
+     "c......N!.!......c",
+     "cc..............cc",
+     "cccccccccvcccccccc",
+     "cccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:lighthouse_2f",
+     "v": "OUT:33,13"
+    },
+    "buildings": {},
+    "people": [
+     {
+      "text": "Lighthouse Electabuzz",
+      "action": "BOSS",
+      "color": "RED",
+      "condition": "beat_orre_champion",
+      "flag_condition": "not gateon_lh_electabuzz",
+      "boss": {
+       "id": 125,
+       "name": "Electabuzz",
+       "level": 65,
+       "victory_flag": "gateon_lh_electabuzz",
+       "lines": [
+        "Electabuzz crackles with stored power. It guards the stairs!"
+       ]
+      }
+     },
+     {
+      "text": "Lighthouse keeper",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The lighthouse? Jasmine keeps it now. Steel types, strong as the girders."
+       ]
+      }
+     }
+    ],
+    "signs": [
+     [
+      "GATEON LIGHTHOUSE",
+      "Gym Leader: Jasmine. Steel to the core."
+     ],
+     [
+      "GATEON LIGHTHOUSE",
+      "Gym Leader: Jasmine. Steel to the core."
+     ]
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "orre_ground/153.png",
+      "at": [
+       6,
+       7
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "orre_top/153.png",
+      "at": [
+       6,
+       7
+      ],
+      "size": [
+       18,
+       14
+      ]
+     }
+    ]
+   },
+   "lighthouse_2f": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccc.........ccc",
+     "ccc...........^cc",
+     "c.............ccc",
+     "c...............c",
+     "c..............cc",
+     "c..............cc",
+     "cc..............c",
+     "cc.............cc",
+     "c<N............cc",
+     "cc.............cc",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:lighthouse",
+     "<": "ROOM:lighthouse_3f"
+    },
+    "buildings": {},
+    "people": [
+     {
+      "text": "Lighthouse Electrode",
+      "action": "BOSS",
+      "color": "RED",
+      "condition": "beat_orre_champion",
+      "flag_condition": "not gateon_lh_electrode",
+      "boss": {
+       "id": 101,
+       "name": "Electrode",
+       "level": 65,
+       "victory_flag": "gateon_lh_electrode",
+       "lines": [
+        "Electrode crackles with stored power. It guards the stairs!"
+       ]
+      }
+     }
+    ],
+    "signs": [],
+    "roofs": {
+     "_picture": {
+      "f": "orre_ground/154.png",
+      "at": [
+       7,
+       7
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "orre_top/154.png",
+      "at": [
+       7,
+       7
+      ],
+      "size": [
+       17,
+       13
+      ]
+     }
+    ]
+   },
+   "lighthouse_3f": {
+    "theme": "room",
+    "art": [
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccccc.......ccc",
+     "ccccc.........N^cc",
+     "cc.............ccc",
+     "c................c",
+     "cc..............cc",
+     "cc..............cc",
+     "c................c",
+     "ccc..............c",
+     "cc<..............c",
+     "ccc.............cc",
+     "cccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:lighthouse_roof",
+     "<": "ROOM:lighthouse_2f"
+    },
+    "buildings": {},
+    "people": [
+     {
+      "text": "Lighthouse Ampharos",
+      "action": "BOSS",
+      "color": "RED",
+      "condition": "beat_orre_champion",
+      "flag_condition": "not gateon_lh_ampharos",
+      "boss": {
+       "id": 181,
+       "name": "Ampharos",
+       "level": 65,
+       "victory_flag": "gateon_lh_ampharos",
+       "lines": [
+        "Ampharos crackles with stored power. It guards the stairs!"
+       ]
+      }
+     }
+    ],
+    "signs": [],
+    "roofs": {
+     "_picture": {
+      "f": "orre_ground/155.png",
+      "at": [
+       6,
+       7
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "orre_top/155.png",
+      "at": [
+       6,
+       7
+      ],
+      "size": [
+       18,
+       13
+      ]
+     }
+    ]
+   },
+   "lighthouse_roof": {
+    "theme": "room",
+    "art": [
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccc..cc..cccccc",
+     "ccc...........cccc",
+     "cc............^ccc",
+     "cc............cccc",
+     "cc..c...c.......cc",
+     "c.....N..........c",
+     "cc..............cc",
+     "c................c",
+     "cc........N.....cc",
+     "cc..c...c.......cc",
+     "c................c",
+     "c.....c..........c",
+     "cc..............cc",
+     "ccc............ccc",
+     "cccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:lighthouse_3f"
+    },
+    "buildings": {},
+    "people": [
+     {
+      "text": "Gym Leader Jasmine",
+      "action": "EVENT",
+      "color": "GOLD",
+      "condition": "beat_orre_champion",
+      "event": {
+       "stages": [
+        {
+         "requires": [
+          "gateon_lh_electabuzz",
+          "gateon_lh_electrode",
+          "gateon_lh_ampharos"
+         ],
+         "flag": "gateon_jasmine_beaten",
+         "fail": [
+          "Jasmine: The lighthouse's Pokemon guard the stairs for me. Get past all three, then we'll battle."
+         ],
+         "lines": [
+          "Jasmine: ...You got past all three of the lighthouse's Pokemon? Then you've earned a battle.",
+          "Jasmine: I came to Orre to see its Colosseums. Steel types don't bend - let's see if you do."
+         ],
+         "battle": {
+          "name": "Gym Leader Jasmine",
+          "class": "LEADER",
+          "sprite": "jasmine.png",
+          "team": [
+           208,
+           227,
+           212,
+           376,
+           82,
+           101
+          ],
+          "levels": [
+           70,
+           70,
+           70,
+           70,
+           70,
+           70
+          ],
+          "team_moves": [
+           [
+            "ROCK-SLIDE",
+            "EXPLOSION",
+            "EARTHQUAKE",
+            "IRON-TAIL"
+           ],
+           [
+            "SPIKES",
+            "DRILL-PECK",
+            "TOXIC",
+            "PROTECT"
+           ],
+           [
+            "METAL-CLAW",
+            "SILVER-WIND",
+            "BRICK-BREAK",
+            "SWORDS-DANCE"
+           ],
+           [
+            "METEOR-MASH",
+            "EARTHQUAKE",
+            "EXPLOSION",
+            "ROCK-SLIDE"
+           ],
+           [
+            "THUNDERBOLT",
+            "THUNDER-WAVE",
+            "TOXIC",
+            "PROTECT"
+           ],
+           [
+            "THUNDERBOLT",
+            "EXPLOSION",
+            "THUNDER-WAVE",
+            "LIGHT-SCREEN"
+           ]
+          ],
+          "rewards": {
+           "balls": 0,
+           "TM265": 1
+          },
+          "double": true,
+          "team_items": [
+           "QUICK_CLAW",
+           "LEFTOVERS",
+           "SCOPE_LENS",
+           "FOCUS_BAND",
+           "LEFTOVERS",
+           "SCOPE_LENS"
+          ],
+          "dialogue": {
+           "player_won": [
+            "Jasmine: ...You're stronger than steel. Here - the Mineral Badge.",
+            "Jasmine: It means nothing to Orre's League, but it means something to me. And take this TM: Iron Tail."
+           ]
+          }
+         }
+        }
+       ],
+       "done": [
+        "Jasmine: The lighthouse light reaches past Citadark on a clear night. I'll keep it burning."
+       ]
+      }
+     },
+     {
+      "text": "Bodybuilder Kilen",
+      "action": "EVENT",
+      "event": {
+       "stages": [
+        {
+         "flag": "xd_gateon_kilen",
+         "lines": [
+          "Bodybuilder Kilen: Up here every day while the bridge was out... and you finally climbed up. Fight!"
+         ],
+         "battle": {
+          "name": "Bodybuilder Kilen",
+          "class": "BODYBUILDER",
+          "sprite": "orre_bodybuilder.png",
+          "team": [
+           41,
+           9401
+          ],
+          "levels": [
+           43,
+           48
+          ],
+          "team_moves": [
+           [
+            "SUPERSONIC",
+            "LEECH-LIFE"
+           ],
+           [
+            "DIG",
+            "HEAL-BELL",
+            "POISON-FANG",
+            "HOWL"
+           ]
+          ],
+          "double": true,
+          "rewards": {
+           "balls": 0
+          },
+          "fit": "+37 (disc ace 11)",
+          "dialogue": {
+           "player_won": [
+            "Bodybuilder Kilen: Lost to a kid. Back to my push-ups."
+           ]
+          }
+         }
+        }
+       ],
+       "done": [
+        "Bodybuilder Kilen: Lost to a kid. Back to my push-ups."
+       ]
+      },
+      "condition": "xd_gateon_bridges"
+     }
+    ],
+    "signs": [],
+    "roofs": {
+     "_picture": {
+      "f": "orre_ground/156.png",
+      "at": [
+       10,
+       5
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "orre_top/156.png",
+      "at": [
+       10,
+       5
+      ],
+      "size": [
+       18,
+       17
+      ]
+     }
+    ]
    }
   },
   "inside": {
+   "15,13": "house_north",
+   "33,13": "lighthouse",
    "53,30": "krabby",
+   "34,33": "house_island",
    "14,43": "bikeshop",
    "56,43": "mart",
    "13,52": "house_west",
@@ -316416,6 +316876,632 @@
        ]
       ]
      }
+    ]
+   }
+  ],
+  "barred": [
+   {
+    "tiles": [
+     [
+      37,
+      22
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_37_22.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      38,
+      22
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_38_22.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      39,
+      22
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_39_22.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      40,
+      22
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_40_22.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      37,
+      23
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_37_23.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      38,
+      23
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_38_23.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      39,
+      23
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_39_23.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      40,
+      23
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_40_23.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      23,
+      22
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_23_22.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      24,
+      22
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_24_22.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      25,
+      22
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_25_22.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      26,
+      22
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_26_22.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      23,
+      23
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_23_23.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      24,
+      23
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_24_23.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      25,
+      23
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_25_23.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      26,
+      23
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_26_23.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      31,
+      18
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_31_18.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      32,
+      18
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_32_18.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      31,
+      19
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_31_19.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      32,
+      19
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_32_19.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      31,
+      20
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_31_20.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      32,
+      20
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_32_20.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      31,
+      21
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_31_21.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      32,
+      21
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_32_21.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      17,
+      18
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_17_18.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      18,
+      18
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_18_18.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      17,
+      19
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_17_19.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      18,
+      19
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_18_19.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      17,
+      20
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_17_20.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      18,
+      20
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_18_20.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      17,
+      21
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_17_21.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      18,
+      21
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_18_21.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      31,
+      25
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_31_25.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      32,
+      25
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_32_25.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      31,
+      26
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_31_26.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      32,
+      26
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_32_26.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      31,
+      27
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_31_27.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      32,
+      27
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_32_27.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      31,
+      28
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_31_28.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      32,
+      28
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_32_28.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      17,
+      28
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_17_28.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      18,
+      28
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_18_28.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      17,
+      29
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_17_29.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      18,
+      29
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_18_29.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      17,
+      30
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_17_30.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      18,
+      30
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_18_30.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      17,
+      31
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_17_31.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
+    ]
+   },
+   {
+    "tiles": [
+     [
+      18,
+      31
+     ]
+    ],
+    "flag": "xd_gateon_bridges",
+    "look": "img:orre_bridge/80_18_31.png",
+    "lines": [
+     "The movable bridge is raised. It's been stuck like that for ages."
     ]
    }
   ]
