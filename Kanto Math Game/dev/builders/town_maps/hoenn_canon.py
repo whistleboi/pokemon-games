@@ -704,6 +704,23 @@ def _ship_legends(maps):
     m.setdefault("figure_floors", {}).update({"LUGIA": 8, "HO-OH": 8})
 
 
+def _hideout_one_horde(maps):
+    """Jordan 11-24 (questions/HOENN.md #10, as ORAS): the Team Hideout has one five-Poochyena group, your version's team
+    (hoenn_oras.json "Team Magma Grunts", villain grunt) - the other team's spot goes."""
+    m = maps.get("HOENN_TEAM_HIDEOUT")
+    f = ((m or {}).get("floors") or [None])[0]
+    names = list((f or {}).get("trainer_spots") or [])
+    if "Team Aqua Grunts" not in names:
+        return
+    k = names.index("Team Aqua Grunts")
+    xs = [(x, y) for y, r in enumerate(f["art"]) for x, c in enumerate(r) if c == "X"]
+    x, y = xs[k]
+    art = [list(r) for r in f["art"]]
+    art[y][x] = "."
+    f["art"] = ["".join(r) for r in art]
+    f["trainer_spots"] = names[:k] + names[k + 1:]
+
+
 def _part(m, floor, room):
     if room:
         return m["rooms"][room]
@@ -790,6 +807,7 @@ def apply(maps):
     _wally_victory_road(maps)
     _steven_meteor_falls(maps)
     _ship_legends(maps)
+    _hideout_one_horde(maps)
     _h7(maps)
     for key, floor, room, x, y, who in PEOPLE:
         m = maps.get(key)
