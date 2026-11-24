@@ -138,7 +138,7 @@ if "VALENCIA_ISLAND" in BUILT:
     check(len(pp.get("trainer_spots", [])) == 4 and all(t.get("levels") for t in _area["TANGELO_JUNGLE"]["trainer_pool"]),
           "Pokémon Park's four 5.7 trainers, on its tiles, with fixed levels")
     _forms = [s for s in g.loader.area_data.get("ORANGE_VALENCIA_PARK_PERCENTAGES", {}) if int(s) >= 9500]
-    check(len(_forms) == 10, f"each Valencia line's lowest stage kept as an extra in Valencia Park (Jordan 11-24: 10 of 17; {len(_forms)})")
+    check(len(_forms) == 12, f"each Valencia line's lowest stage and the Nidoran middle stages as extras in Valencia Park (Jordan 11-24: 12 of 17; {len(_forms)})")
     check(not any("CROSS" in json.dumps(v) for k, v in _area.items() if k in BUILT), "no rival Cross in the built areas")
 print("3) Jordan's answers of 11-17 (batches 1-2)")
 cfg = story.get_region_start("ORANGE")
