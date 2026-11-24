@@ -399,6 +399,146 @@ def _emerald_paths(maps):
             part["split"] = True   # (the path is its own part, fenced off from the town: reached from Route 104 only, as in Emerald)
 
 
+# Lavaridge Gym (Emerald 4.1 / 4.2): a warp there is two-way only as a place to land. On 1F only the sand pits drop you
+# (behaviour 0x68), on B1F only the vents send you up (0x29); the rest of the warps are where the other floor's pit or
+# vent sets you down. Found by the Hoenn playthrough (H8, 11-24): the tile inside the door (13,17) dropped you straight to
+# B1F, onto a Kindler. Read from em/4_1.json and em/4_2.json (tile [3] = behaviour).
+_LAVARIDGE_LANDINGS = {"gym": [(3, 6), (4, 16), (4, 18), (13, 17)],
+                       "gym_2": [(2, 15), (3, 10), (3, 14), (5, 2), (5, 6), (5, 9), (8, 6), (10, 6), (14, 6)]}
+_LAVARIDGE_SOLID = {("gym", 4, 16)}   # (Emerald's collision bit: solid)
+
+
+def _lavaridge_pads(maps):
+    rooms = (maps.get("LAVARIDGE_TOWN") or {}).get("rooms") or {}
+    for name, spots in _LAVARIDGE_LANDINGS.items():
+        r = rooms.get(name)
+        if not r:
+            continue
+        art = [list(row) for row in r["art"]]
+        for x, y in spots:
+            r.get("links", {}).pop(f"{x},{y}", None)
+            if art[y][x] == "1":
+                art[y][x] = "c" if (name, x, y) in _LAVARIDGE_SOLID else "."
+        r["art"] = ["".join(row) for row in art]
+
+
+def _route110_grunts(maps):
+    """H8 (11-24, the Hoenn playthrough): the five grunts on Route 110 after the Museum stood across the walking path north
+    (x 7-10, rows 82-83), so without the Bicycle there was no way to Mauville. They stand in a file along the west wall
+    now (the same order, so each keeps their words), looking at the path."""
+    m = maps.get("HOENN_ROUTE_110")
+    if not m or not m.get("floors"):
+        return
+    f = m["floors"][0]
+    old = [(8, 82), (7, 83), (8, 83), (9, 83), (10, 83)]
+    new = [(7, 80), (7, 81), (7, 82), (7, 83), (7, 84)]
+    art = [list(r) for r in f["art"]]
+    if any(art[y][x] != "N" for x, y in old) or any(art[y][x] not in ".N" for x, y in new):
+        print("  hoenn_canon: Route 110's grunts are not where they were: left as they are")
+        return
+    for x, y in old:
+        art[y][x] = "."
+    for x, y in new:
+        art[y][x] = "N"
+    f["art"] = ["".join(r) for r in art]
+    mv = f.setdefault("moves", {})
+    for x, y in old:
+        mv.pop(f"{x},{y}", None)
+    for x, y in new:
+        mv[f"{x},{y}"] = {"m": "face", "d": "r"}
+
+
+def _slateport_dock(maps):
+    """H8 (11-24): the Grunts' queue at the Oceanic Museum steps aside once you have been to the Shipyard
+    (slateport_saw_dock, as ORAS: Captain Stern isn't there, he's at the Museum), but nothing set that flag, so the Museum
+    could never be entered. Dock tells you, as you come in, and sets it."""
+    r = ((maps.get("SLATEPORT_CITY") or {}).get("rooms") or {}).get("shipyard")
+    if not r:
+        return
+    r.setdefault("scenes", []).append(
+        {"who": "Dock", "trigger": "enter", "condition": "not:oceanic_museum_cleared", "flag": "slateport_saw_dock",
+         "lines": ["Dock: Captain Stern? He went over to the Oceanic Museum.",
+                   "Dock: There's a long line of strange-looking people outside it, though. Take care!"]})
+
+
+def _rusturf_west(maps):
+    """H8 (11-24): Rusturf Tunnel has two ways in from Route 116; the thief with the Devon Parts is in the west half (its
+    rocks shut the east half off till Rock Smash). The Journal's Devon Parts mission leads to the west way in, then to the
+    thief: this shout, as you reach the west half, marks that you're there (rusturf_west_reached)."""
+    m = maps.get("HOENN_RUSTURF_TUNNEL")
+    if not m:
+        return
+    part = m["floors"][0] if m.get("floors") else m
+    part.setdefault("scenes", []).append(
+        {"trigger": {"zone": [3, 1, 23, 10]}, "condition": "not:rusturf_rescued", "flag": "rusturf_west_reached", "cast": [],
+         "call": ["Grunt: Hey! Don't come any closer! These Devon Parts are mine now!"]})
+
+
+_STRAYS = [("RUSTBORO_CITY", "devon", (14, 0)), ("SOOTOPOLIS_CITY", "gym_2", (11, 21)),
+           ("HOENN_ROUTE_112", None, (11, 35))]   # (None: the map itself: above Fiery Path's mouth)
+
+
+def _stray_tiles(maps):
+    """H8 (11-24): a lone floor tile beside a room's stairs, with nothing else round it, is where you came down: Devon's
+    1F (14,0) above its stairs, Sootopolis Gym B1F (11,21) above its way up - stuck there, no way to walk on. Wall."""
+    for key, room, (x, y) in _STRAYS:
+        m = maps.get(key) or {}
+        r = (m.get("rooms") or {}).get(room) if room else ((m.get("floors") or [m])[0] if m else None)
+        if r and r["art"][y][x] == ".":
+            row = list(r["art"][y])
+            row[x] = "c"
+            r["art"][y] = "".join(row)
+
+
+def _r112_cable_side(maps):
+    """H8 (11-24): Route 112's Cable Car stands on its south side; its north end (Jagged Pass, the way down from Route
+    111's north) joins it only through Fiery Path. Coming back from Meteor Falls you are on the north end, so the
+    Journal's Mt. Chimney mission leads through Fiery Path first, till you're on the south side (this flag)."""
+    m = maps.get("HOENN_ROUTE_112")
+    if not m:
+        return
+    part = m["floors"][0] if m.get("floors") else m
+    part.setdefault("scenes", []).append(
+        {"trigger": {"zone": [0, 20, 39, 59]}, "condition": "meteor_falls_cleared", "flag": "r112_cable_side", "cast": []})
+
+
+def _fortree_gym_side(maps):
+    """H8 (11-24): Fortree's ground is in parts joined by the tree-top walkways (FORTREE_CITY_UPPER); Winona's Gym stands
+    in the part under the ladder at 25,6. The Journal's Feather Badge mission leads to that ladder on the walkways till
+    you're down beside the Gym (this flag)."""
+    m = maps.get("FORTREE_CITY")
+    if m:
+        m.setdefault("scenes", []).append({"trigger": {"zone": [17, 7, 26, 13]}, "flag": "fortree_gym_side", "cast": []})
+        m["scenes"].append({"trigger": {"zone": [32, 7, 39, 10]}, "flag": "fortree_east_side", "cast": []})   # (the part by the way east, to Route 120)
+
+
+def _sootopolis_wallace(maps):
+    """H8 (11-24): Wallace stands in the Cave of Origin's mouth till you've met him (his scene as you come into
+    Sootopolis); once the cave is cleared he is never in the way, whichever way you came (else, out of the cave, you are
+    shut in on its doorstep)."""
+    for b in (maps.get("SOOTOPOLIS_CITY") or {}).get("barred") or []:
+        if [31, 17] in b.get("tiles", []) and (b.get("until") or {}).get("flag_condition") == "sootopolis_wallace_met":
+            b.pop("until")
+            b["until_any"] = [{"flag_condition": "sootopolis_wallace_met"}, {"flag_condition": "cave_of_origin_cleared"}]
+
+
+def _seafloor_lookout(maps):
+    """H8 (11-24): the Seafloor Cavern's lookout stood in the only way on (the passage at 10,1), with nothing to do but
+    talk - so the cavern couldn't be crossed. He battles you now, and is gone once beaten (the team's Lv 36-38, as the
+    cavern's own grunts)."""
+    m = maps.get("HOENN_SEAFLOOR_CAVERN")
+    f = (m or {}).get("floors", [None])[0] if m else None
+    for p in (f or {}).get("people") or []:
+        if isinstance(p, dict) and p.get("text") == "Lookout grunt":
+            p["condition"] = ["not:seafloor_cavern_cleared", "not:seafloor_lookout_beaten"]
+            p["event"] = {"lines": ["Hey! How did you get down here without a sub?!", "Nobody gets past me!"],
+                          "flag": "seafloor_lookout_beaten",
+                          "battle": {"name": "Team Grunt (lookout)", "class": "ROCKET", "villain": "grunt",
+                                     "sprite": "magma_grunt.png", "team": [262, 42], "levels": [36, 38], "rewards": {"balls": 3},
+                                     "team_by_version": {"OMEGA_RUBY": [262, 324], "ALPHA_SAPPHIRE": [262, 319]},
+                                     "dialogue": {"player_won": ["Grunt: Gah! Fine, go on in... The Boss will finish you!"]}}}
+
+
 def _part(m, floor, room):
     if room:
         return m["rooms"][room]
@@ -467,6 +607,14 @@ def apply(maps):
     _museum_queue(maps)
     _home_tv(maps)
     _emerald_paths(maps)
+    _lavaridge_pads(maps)
+    _slateport_dock(maps)
+    _rusturf_west(maps)
+    _stray_tiles(maps)
+    _r112_cable_side(maps)
+    _fortree_gym_side(maps)
+    _sootopolis_wallace(maps)
+    _seafloor_lookout(maps)
     _h7(maps)
     for key, floor, room, x, y, who in PEOPLE:
         m = maps.get(key)
@@ -514,3 +662,4 @@ def apply(maps):
         had = p["people"][i]
         p["people"][i] = list(more) + (had if isinstance(had, list) else [had])
     _seabeds(maps)
+    _route110_grunts(maps)   # (after PEOPLE: two of the five are placed there)
