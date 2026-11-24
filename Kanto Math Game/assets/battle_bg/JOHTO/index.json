@@ -1,0 +1,398 @@
+{
+ "areas": {
+  "AZALEA_TOWN": {
+   "gym": "indoors1_indoors.png",
+   "leader": "indoors1_indoors.png",
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "BELLCHIME_TRAIL": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "BELL_TOWER": {
+   "trainer": "indoors3_indoors.png",
+   "water": "water_water.png",
+   "wild": "indoors3_indoors.png"
+  },
+  "BLACKTHORN_CITY": {
+   "gym": "indoors1_indoors.png",
+   "leader": "indoors1_indoors.png",
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "BUG_CONTEST": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "BURNED_TOWER": {
+   "trainer": "indoors3_indoors.png",
+   "water": "water_water.png",
+   "wild": "indoors3_indoors.png"
+  },
+  "CHERRYGROVE_CITY": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "CIANWOOD_CITY": {
+   "gym": "indoors2_indoors.png",
+   "leader": "indoors2_indoors.png",
+   "trainer": "city_path.png",
+   "water": "water_water.png",
+   "wild": "city_grass.png"
+  },
+  "CLIFF_EDGE_GATE": {
+   "trainer": "cave1_cave.png",
+   "water": "water_water.png",
+   "wild": "cave1_cave.png"
+  },
+  "DARK_CAVE": {
+   "trainer": "cave1_cave.png",
+   "water": "water_water.png",
+   "wild": "cave1_cave.png"
+  },
+  "DRAGONS_DEN": {
+   "trainer": "cave1_cave.png",
+   "water": "water_water.png",
+   "wild": "cave1_cave.png"
+  },
+  "DRAGON_SHRINE": {
+   "trainer": "indoors3_indoors.png",
+   "water": "water_water.png",
+   "wild": "indoors3_indoors.png"
+  },
+  "ECRUTEAK_CITY": {
+   "gym": "indoors1_indoors.png",
+   "leader": "indoors1_indoors.png",
+   "trainer": "city_path.png",
+   "water": "water_water.png",
+   "wild": "city_grass.png"
+  },
+  "ECRUTEAK_DANCE_THEATER": {
+   "trainer": "indoors1_indoors.png",
+   "water": "water_water.png",
+   "wild": "indoors1_indoors.png"
+  },
+  "FRONTIER_ACCESS": {
+   "trainer": "city_path.png",
+   "water": "water_water.png",
+   "wild": "city_grass.png"
+  },
+  "GOLDENROD_CITY": {
+   "gym": "indoors1_indoors.png",
+   "leader": "indoors1_indoors.png",
+   "trainer": "city_path.png",
+   "water": "water_water.png",
+   "wild": "city_grass.png"
+  },
+  "GOLDENROD_UNDERGROUND": {
+   "trainer": "indoors3_indoors.png",
+   "water": "water_water.png",
+   "wild": "indoors3_indoors.png"
+  },
+  "ICE_PATH": {
+   "trainer": "cave3_cave.png",
+   "water": "water_water.png",
+   "wild": "cave3_cave.png"
+  },
+  "ILEX_FOREST": {
+   "trainer": "forest_grass.png",
+   "water": "water_water.png",
+   "wild": "forest_grass.png"
+  },
+  "JOHTO_BATTLE_FRONTIER": {
+   "trainer": "indoors1_indoors.png",
+   "water": "water_water.png",
+   "wild": "indoors1_indoors.png"
+  },
+  "JOHTO_CLIFF_CAVE": {
+   "trainer": "cave1_cave.png",
+   "water": "water_water.png",
+   "wild": "cave1_cave.png"
+  },
+  "JOHTO_EMBEDDED_TOWER": {
+   "trainer": "cave1_cave.png",
+   "water": "water_water.png",
+   "wild": "cave1_cave.png"
+  },
+  "JOHTO_ROUTE_29": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "JOHTO_ROUTE_30": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "JOHTO_ROUTE_31": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "JOHTO_ROUTE_32": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "JOHTO_ROUTE_33": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "JOHTO_ROUTE_34": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "JOHTO_ROUTE_35": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "JOHTO_ROUTE_36": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "JOHTO_ROUTE_37": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "JOHTO_ROUTE_38": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "JOHTO_ROUTE_39": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "JOHTO_ROUTE_40": {
+   "trainer": "water_water.png",
+   "water": "water_water.png",
+   "wild": "water_water.png"
+  },
+  "JOHTO_ROUTE_41": {
+   "trainer": "water_water.png",
+   "water": "water_water.png",
+   "wild": "water_water.png"
+  },
+  "JOHTO_ROUTE_42": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "JOHTO_ROUTE_43": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "JOHTO_ROUTE_44": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "JOHTO_ROUTE_45": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "JOHTO_ROUTE_46": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "JOHTO_ROUTE_47": {
+   "trainer": "mountain_rocky.png",
+   "water": "water_water.png",
+   "wild": "mountain_grass.png"
+  },
+  "JOHTO_ROUTE_48": {
+   "trainer": "mountain_rocky.png",
+   "water": "water_water.png",
+   "wild": "mountain_grass.png"
+  },
+  "JOHTO_SAFARI_ZONE": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "JOHTO_SS_AQUA": {
+   "trainer": "indoors1_indoors.png",
+   "water": "water_water.png",
+   "wild": "indoors1_indoors.png"
+  },
+  "JOHTO_VICTORY_ROAD": {
+   "trainer": "cave3_cave.png",
+   "water": "water_water.png",
+   "wild": "cave3_cave.png"
+  },
+  "KANTO_ROUTE_26": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "KANTO_ROUTE_27": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "KANTO_ROUTE_28": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "LAKE_OF_RAGE": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "MAHOGANY_TOWN": {
+   "gym": "indoors2_indoors.png",
+   "leader": "indoors2_indoors.png",
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "MR_POKEMONS_HOUSE": {
+   "trainer": "indoors1_indoors.png",
+   "water": "water_water.png",
+   "wild": "indoors1_indoors.png"
+  },
+  "MT_MORTAR": {
+   "trainer": "cave2_cave.png",
+   "water": "water_water.png",
+   "wild": "cave2_cave.png"
+  },
+  "MT_SILVER": {
+   "trainer": "cave1_cave.png",
+   "water": "water_water.png",
+   "wild": "cave1_cave.png"
+  },
+  "MT_SILVER_CITY": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "NATIONAL_PARK": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "NEW_BARK_TOWN": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "OLIVINE_CITY": {
+   "gym": "indoors1_indoors.png",
+   "leader": "indoors1_indoors.png",
+   "trainer": "city_path.png",
+   "water": "water_water.png",
+   "wild": "city_grass.png"
+  },
+  "OLIVINE_LIGHTHOUSE": {
+   "trainer": "indoors3_indoors.png",
+   "water": "water_water.png",
+   "wild": "indoors3_indoors.png"
+  },
+  "OLIVINE_LIGHTHOUSE_BALCONY": {
+   "trainer": "city_path.png",
+   "water": "water_water.png",
+   "wild": "city_grass.png"
+  },
+  "OLIVINE_LIGHTHOUSE_FLOORS": {
+   "trainer": "indoors3_indoors.png",
+   "water": "water_water.png",
+   "wild": "indoors3_indoors.png"
+  },
+  "POKEATHLON_DOME": {
+   "trainer": "city_path.png",
+   "water": "water_water.png",
+   "wild": "city_grass.png"
+  },
+  "RADIO_TOWER": {
+   "trainer": "indoors1_indoors.png",
+   "water": "water_water.png",
+   "wild": "indoors1_indoors.png"
+  },
+  "ROCKET_HQ": {
+   "trainer": "indoors1_indoors.png",
+   "water": "water_water.png",
+   "wild": "indoors1_indoors.png"
+  },
+  "RUINS_OF_ALPH": {
+   "trainer": "mountain_rocky.png",
+   "water": "water_water.png",
+   "wild": "mountain_grass.png"
+  },
+  "SAFARI_ZONE_GATE": {
+   "trainer": "plain_path.png",
+   "water": "water_water.png",
+   "wild": "plain_grass.png"
+  },
+  "SILVER_LEAGUE_PLATEAU": {
+   "elite": [
+    "will_will.png",
+    "koga_koga.png",
+    "bruno_bruno.png",
+    "karen_karen.png"
+   ],
+   "gym": "lance_lance.png",
+   "leader": "lance_lance.png",
+   "trainer": "city_path.png",
+   "water": "water_water.png",
+   "wild": "city_grass.png"
+  },
+  "SLOWPOKE_WELL": {
+   "trainer": "cave1_cave.png",
+   "water": "water_water.png",
+   "wild": "cave1_cave.png"
+  },
+  "SPROUT_TOWER": {
+   "trainer": "indoors3_indoors.png",
+   "water": "water_water.png",
+   "wild": "indoors3_indoors.png"
+  },
+  "TOHJO_FALLS": {
+   "trainer": "cave1_cave.png",
+   "water": "water_water.png",
+   "wild": "cave1_cave.png"
+  },
+  "UNION_CAVE": {
+   "trainer": "cave1_cave.png",
+   "water": "water_water.png",
+   "wild": "cave1_cave.png"
+  },
+  "VIOLET_CITY": {
+   "gym": "indoors1_indoors.png",
+   "leader": "indoors1_indoors.png",
+   "trainer": "city_path.png",
+   "water": "water_water.png",
+   "wild": "city_grass.png"
+  },
+  "WHIRL_ISLANDS": {
+   "trainer": "cave3_cave.png",
+   "water": "water_water.png",
+   "wild": "cave3_cave.png"
+  }
+ },
+ "source": "Pokemon SoulSilver (E), Jordan's game file: a/0/0/7 backdrops, a/0/0/8 platforms, each place's zone header battle background; kanto_handoff/johto_map_tools/j_battle_bg.py",
+ "terrain": {
+  "cave": "cave1_cave.png",
+  "grass": "plain_grass.png",
+  "inside": "indoors1_indoors.png",
+  "sand": "plain_sand.png",
+  "snow": "snow_snow.png",
+  "swamp": "forest_mud.png",
+  "water": "water_water.png"
+ }
+}

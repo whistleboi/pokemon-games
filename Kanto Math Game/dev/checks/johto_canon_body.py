@@ -550,7 +550,18 @@ if _rw is None:
     _inv.pop("RAINBOW_WING", None)
 else:
     _inv["RAINBOW_WING"] = _rw
-check(any((t.get("rewards") or {}).get("TIDAL_BELL") for t in _area["ECRUTEAK_DANCE_THEATER"]["trainer_pool"]), "...which Kimono Girl Miki gives after the dance")
+_kt = [i for i, t in enumerate(_area["ECRUTEAK_DANCE_THEATER"]["trainer_pool"]) if t["name"].startswith("Kimono Girl")]
+_inv.pop("TIDAL_BELL", None); story.story_flags.pop("kimono_girls_defeated", None); story.story_flags.pop("kimono_girls_defeated_gift", None)
+_dt0 = set(story.defeated_trainers.get("ECRUTEAK_DANCE_THEATER", set()))
+story.defeated_trainers["ECRUTEAK_DANCE_THEATER"] = set(_kt[:3])
+_four = story.finish_trainer_group("ECRUTEAK_DANCE_THEATER", _kt[3])
+story.defeated_trainers["ECRUTEAK_DANCE_THEATER"].add(_kt[3])
+_five = story.finish_trainer_group("ECRUTEAK_DANCE_THEATER", _kt[4])
+story.mark_trainer_defeated("ECRUTEAK_DANCE_THEATER", _kt[4])
+check(not any((t.get("rewards") or {}).get("TIDAL_BELL") for t in _area["ECRUTEAK_DANCE_THEATER"]["trainer_pool"]) and not _four and _five
+      and _inv.get("TIDAL_BELL") and story.story_flags.get("kimono_girls_defeated"),
+      f"...the Tidal Bell once all five are beaten, whichever is last (SoulSilver); not before ({_four} / {_five[-1:] if _five else _five})")
+story.defeated_trainers["ECRUTEAK_DANCE_THEATER"] = _dt0; _inv.pop("TIDAL_BELL", None); story.story_flags.pop("kimono_girls_defeated", None); story.story_flags.pop("kimono_girls_defeated_gift", None)
 # ---- N10: Route 42, Mahogany, Mt. Mortar (HGSS)
 _r42 = {p.get("text"): p for p in _ppl("JOHTO_ROUTE_42")}
 check(((_r42.get("Hiker") or {}).get("event") or {}).get("gift_item", {}).get("HM_STRENGTH")
@@ -1111,6 +1122,17 @@ play3(lambda: story.current_area_key == "NEW_BARK_TOWN" and not getattr(g.curren
 check(story.current_area_key == "NEW_BARK_TOWN" and any("entered in the Hall of Fame" in s for s in said)
       and not story.story_flags.get("hall_of_fame_due_SILVER_LEAGUE_PLATEAU"), f"...your team recorded, then home to New Bark ({story.current_area_key}, {said[-3:]})")
 story.player_team = _lteam; story.story_flags.clear(); story.story_flags.update(_lsave); story.badges.clear(); story.badges.update(_lbad)
+
+print("Found TMs on the maps are drawn as item balls (11-23, Dev Map clean-johto-kanto-tm-figures: their looks were under old TM numbers)")
+import re as _re2
+_fig = (json.load(open("assets/dungeon_sprites.json", encoding="utf-8-sig")).get("figures") or {})
+_P = json.load(open("assets/johto_area_data.json", encoding="utf-8"))["STORY_PROGRESSION"]   # (Johto's own places)
+_tm_found = [(a, str(o.get("text"))) for a, d in _P.items() for o in (d.get("route_menu") or []) if o.get("found") and _re2.fullmatch(r"TM\d+", str(o.get("text") or ""))]
+_no_look = [f"{a}:{t}" for a, t in _tm_found if (_fig.get(f"{a}:{t}") or {}).get("item") != "POKE_BALL"]
+check(_tm_found and not _no_look, f"{len(_tm_found)} found TMs, each with its item-ball look ({_no_look[:6]})")
+_stale = [k for k in _fig if k.split(":", 1)[0] in _P and _re2.fullmatch(r"TM\d+", k.split(":", 1)[1])
+          and k.split(":", 1)[1] not in {str(o.get("text")) for o in (_P[k.split(':', 1)[0]].get("route_menu") or []) + (_P[k.split(':', 1)[0]].get("explore_options") or [])}]
+check(not _stale, f"no TM looks left under numbers no option has ({_stale[:6]})")
 
 if fails:
     print("FAILS:", len(fails))

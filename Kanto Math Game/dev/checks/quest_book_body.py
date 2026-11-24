@@ -227,10 +227,90 @@ pygame.image.save(g.screen, os.path.join(S, "quest_book_sevii_feats.png"))
 g.change_state(city)
 
 
+print("UNOVA: the book's data (11-23: Aspertia to Route 4, the part walkable so far; each batch adds its chapters)")
+ub = book["UNOVA"]
+uids = [c["mission"] for a in ub for c in a["chapters"]]
+check(all(i in jmissions for i in uids), "every Unova chapter's mission exists")
+check(all(c.get("title") and c.get("say") for a in ub for c in a["chapters"]), "every Unova chapter has a title and a page")
+umain = [m for m in jmissions if m.startswith("b2_") and jmissions[m]["type"] == "MAIN"]
+check(sorted(set(umain) - set(uids)) == [], f"every B2W2 story mission is in the book (missing: {sorted(set(umain) - set(uids))})")
+said = " ".join(c["say"] for a in ub for c in a["chapters"]).lower()
+check(not re.search(r"\b(because|so that|in order to)\b", said), "Unova's pages never spell out why")
+uk = [k for k, a in prog.items() if str(a.get("region", "")).upper() == "UNOVA"]
+uused = set(re.findall(r"TM\d{3}", json.dumps([prog[k] for k in uk]) + json.dumps([tmaps[k] for k in uk if k in tmaps])))
+ugiven = [t[1]["tm"] for f in ft["UNOVA"] for t in f["tiers"] if t[1].get("tm")]
+check(all(k in tms for k in ugiven) and len(ugiven) == len(set(ugiven)), "Unova Feat TMs: real, none twice")
+check(not (set(ugiven) & uused), f"no Unova Feat TM is also on Unova's maps / people ({sorted(set(ugiven) & uused)})")
+check(not (set(ugiven) & set(tutors.tutor_tms(g, "UNOVA"))), "no Unova Feat TM is a Unova tutor's")
+check(all(_items.describe(i) for f in ft["UNOVA"] for t in f["tiers"] for i in (t[1].get("items") or {})), "every Unova reward item is real")
+
+print("UNOVA: chapters follow the story, Aspertia to Colress on Route 4 (the order the Journal leads)")
+story.starting_region = "UNOVA"
+story.badges = {r: [] for r in story.badges}
+story.badges["UNOVA"] = []
+for m in jmissions.values():
+    if m["id"].startswith(("b2_", "unova_")):
+        for f in story.mission_flags(m):
+            flags.pop(f, None)
+for k in [k for k in flags if k.startswith(("visited_", "feat_", "badge_"))] + ["b2_send_off", "b2_castelia_arrived", "b2_mom_talk"]:
+    flags.pop(k, None)
+flags["unova_version"] = "BLACK_2"
+at("ASPERTIA_CITY")
+city = CityState(g); g.change_state(city)
+UBADGE = {"b2_m7": "BASIC", "b2_m9": "TOXIC", "b2_m17": "INSECT"}
+USCENE = {"b2_m1": ["b2_mom_talk"], "b2_m13": ["b2_castelia_arrived"]}   # (the scenes between: Mom's talk, the arrival; the send-off is b2_m1b's own, 11-23)
+n_u = 0
+for arc in ub:
+    for ch in arc["chapters"]:
+        m = jmissions[ch["mission"]]
+        want(quest_book._words(story, arc["title"]), quest_book._words(story, ch["title"]), f"[{m['id']}]")
+        if m["id"] == "b2_m10":
+            jn_ = JournalState(g, city); g.change_state(jn_); jn_.draw()
+            pygame.image.save(g.screen, os.path.join(S, "quest_book_unova_story.png"))
+            g.change_state(city)
+        for f in story.mission_flags(m):
+            flags[f] = True
+        if m["id"] in UBADGE:
+            story.badges["UNOVA"].append(UBADGE[m["id"]])
+        done_(USCENE.get(m["id"], []))
+        if m.get("target"):
+            at(m["target"])
+        n_u += 1
+check(n_u == len(uids) and all(a["state"] == "done" for a in quest_book.arcs(g)), "the whole Unova book so far is played through")
+jn = JournalState(g, city); g.change_state(jn); jn.set_tab("STORY"); jn.draw()
+check(not any(str(r.get("title", "")).startswith(("Team Plasma's Speech", "A Stranger Named N")) for r in jn.rows),
+      "the menu-era BW story missions stay out of the book")
+flags["visited_RELIC_CASTLE"] = True
+jn.set_tab("SIDE"); jn.draw()
+side = {r["mission"]["id"] for r in jn.rows if r.get("mission")}
+check({"b2_s_r4_trade", "b2_s_join", "b2_s_royal"} <= side, f"SIDE: Route 4's swap, Join Avenue, the Royal Unova ({sorted(side)})")
+check(not side & {"unova_s1", "unova_s6", "unova_s12", "unova_s13"}, "SIDE: menu-era errands for rebuilt places stay hidden (Relic Castle's, Cheren's and Roxie's)")
+pygame.image.save(g.screen, os.path.join(S, "quest_book_unova_side.png"))
+from src.world import medals as _medals
+story.inventory["MEDAL_BOX"] = 1; flags["medal_box"] = True
+before = feats.value(story, next(f for f in ft["UNOVA"] if f["id"] == "medals"), "UNOVA")
+got = len(_medals.waiting(story)) if _medals.have_box(story) else 0
+_medals.hand_out(story)
+check(feats.value(story, next(f for f in ft["UNOVA"] if f["id"] == "medals"), "UNOVA") == before + got and got > 0,
+      f"Medals from Mr. Medal count ({got})")
+from src.states.pokestar import MovieState, SCRIPTS
+mv = MovieState(g, city, SCRIPTS[0]); mv.picks = ["good"] * 3
+mv._finish()
+check(feats.value(story, next(f for f in ft["UNOVA"] if f["id"] == "films"), "UNOVA") == 1, "a Pokestar film shot counts")
+feats.note(story, "phenomena", 5)
+feats.pay(story)
+for fid in ("films", "phenomena", "medals"):
+    f_ = next(f for f in ft["UNOVA"] if f["id"] == fid)
+    check(flags.get(feats.tier_flag("UNOVA", f_, 0)), f"Unova: {f_['name']} Bronze paid")
+jn.set_tab("FEATS"); jn.draw()
+check(len(jn.rows) == len(ft["UNOVA"]), "FEATS lists Unova's feats")
+pygame.image.save(g.screen, os.path.join(S, "quest_book_unova_feats.png"))
+g.change_state(city)
+
 print("Other regions: no book yet, each story mission an arc of its own")
-story.current_area_key = next(k for k, a in prog.items() if str(a.get("region", "")).upper() == "UNOVA")
+story.current_area_key = next(k for k, a in prog.items() if str(a.get("region", "")).upper() == "KALOS")
 a = quest_book.arcs(g)
-check(a and all(c.get("title") for x in a for c in x["chapters"]), f"Unova's missions show as arcs ({len(a)})")
+check(a and all(c.get("title") for x in a for c in x["chapters"]), f"Kalos's missions show as arcs ({len(a)})")
 jn = JournalState(g, city); g.change_state(jn); jn.draw()
 jn.set_tab("FEATS"); jn.draw()
 check(jn.rows == [], "no Feats in a region without its list yet")

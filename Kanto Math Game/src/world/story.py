@@ -1371,7 +1371,34 @@ class StoryManager:
     # A flag set once every one of these trainers of an area is beaten (by "spot_name", else "name").
     # wise_trio_beaten: Crystal's Wise Trio on Bellchime Trail (11-22): the way to the Bell Tower opens once all three are beaten
     TRAINER_FLAGS = {"hideout_b4f_door_open": ("ROCKET_HIDEOUT", ("Grunt B4F 2", "Grunt B4F 3")),
-                     "wise_trio_beaten": ("BELLCHIME_TRAIL", ("Sage Gaku", "Sage Masa", "Sage Koji"))}
+                     "wise_trio_beaten": ("BELLCHIME_TRAIL", ("Sage Gaku", "Sage Masa", "Sage Koji")),
+                     "kimono_girls_defeated": ("ECRUTEAK_DANCE_THEATER", ("Kimono Girl Zuki", "Kimono Girl Naoko", "Kimono Girl Miki",
+                                                                          "Kimono Girl Sayo", "Kimono Girl Kuni"))}
+    # (what the last of such a group hands you, said as their battle ends: SoulSilver's Kimono Girls give the Tidal Bell once
+    #  all five are beaten, scr_seq_0928_T27R0501; 11-23, found by Johto's post-title playthrough)
+    TRAINER_FLAG_GIFTS = {"kimono_girls_defeated": {"items": {"TIDAL_BELL": 1},
+                                                    "lines": ["The five Kimono Girls bow together.",
+                                                              "Kimono Girls: This bell rings for the guardian of the sea. Please take it.",
+                                                              "You received the TIDAL BELL!"]}}
+
+    def finish_trainer_group(self, area, index):
+        """The trainer at index in area just beaten: if that leaves every trainer of a TRAINER_FLAGS group beaten, the
+        group's gift (TRAINER_FLAG_GIFTS) goes in the Bag now and its lines are returned (else [])."""
+        for flag, (where, names) in self.TRAINER_FLAGS.items():
+            gift = self.TRAINER_FLAG_GIFTS.get(flag)
+            if not gift or where != area or self.story_flags.get(flag) or self.story_flags.get(f"{flag}_gift"):
+                continue
+            try:
+                pool = self.game.loader.area_data["STORY_PROGRESSION"][where]["trainer_pool"]
+            except (AttributeError, KeyError, TypeError):
+                continue
+            idx = [i for i, t in enumerate(pool) if (t.get("spot_name") or t.get("name")) in names]
+            if index in idx and len(idx) >= len(names) and all(i == index or self.is_trainer_defeated(where, i) for i in idx):
+                for item, n in (gift.get("items") or {}).items():
+                    self.inventory[item] = self.inventory.get(item, 0) + n
+                self.story_flags[f"{flag}_gift"] = True
+                return list(gift.get("lines") or [])
+        return []
 
     def sync_story_flags(self):
         for flag, sources in self.DERIVED_FLAGS.items():
@@ -1390,6 +1417,11 @@ class StoryManager:
             idx = [i for i, t in enumerate(pool) if (t.get("spot_name") or t.get("name")) in names]
             if len(idx) >= len(names) and all(self.is_trainer_defeated(where, i) for i in idx):
                 self.story_flags[flag] = True
+                gift = self.TRAINER_FLAG_GIFTS.get(flag)
+                if gift and not self.story_flags.get(f"{flag}_gift"):   # (not handed over as the battle ended: given now, all the same)
+                    for item, n in (gift.get("items") or {}).items():
+                        self.inventory[item] = self.inventory.get(item, 0) + n
+                    self.story_flags[f"{flag}_gift"] = True
 
     RETIRED_ITEMS = ("SURF_BOARD", "AIR_BALLOON", "EXP_SHARE")  # (Exp. Share is an Option now: Jordan, 11-16)
 
@@ -1915,7 +1947,9 @@ class StoryManager:
         # (11-23: the region's own game's Gym / League background first, if its index names one: src/world/battle_bg.py.
         #  A League's rooms are the ones listing a background per trainer; an Elite Four member goes by their place.)
         from src.world import battle_bg as _bbg
-        _league = any(isinstance(backgrounds.get(k), list) for k in ("gym", "battle"))
+        from src.states.overworld.area_transition import is_league as _is_league   # (a League by its trainers - Elite Four or a
+        _league = _is_league(area_data.get("gym"))                                  #  Champion - not by its pictures: a Gym town
+                                                                                    #  listing several isn't one; Hoenn 11-24)
         _own = _bbg.pick(self.game, area_id, trainer=True, gym=True, leader=is_leader and not _league,
                          elite_index=(trainer_index if _league and not is_leader else None) if _league else None)
         if _own:

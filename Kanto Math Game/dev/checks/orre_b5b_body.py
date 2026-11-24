@@ -334,6 +334,32 @@ jm = [m["id"] for m in g.loader.area_data["JOURNAL_MISSIONS"] if m["id"].startsw
 check(jm.index("orre_m11") < jm.index("orre_m11b") < jm.index("orre_m11c") < jm.index("orre_m12") < jm.index("orre_m12b") < jm.index("orre_m13"),
       "Lovrina, Nett's data, the Poke Spots, ONBS, the Libra, then Phenac")
 
+print("10) R1 (11-23): ONBS's front door in Pyrite (Q21, Jordan's pick: the small building left of the stairs)")
+_had = F.pop("xd_lovrina_beaten", None)
+t = town("PYRITE_TOWN", "PHENAC_CITY")
+door = [xy for xy, v in t.exits.items() if v == "XD_ONBS"]
+check(len(door) == 1, f"one ONBS door in Pyrite {door}")
+_msgs = []
+t.flash = lambda s_, *a, **k: _msgs.append(s_)
+t.player = list(door[0]); t._leave("XD_ONBS"); frames(3)
+check(story.current_area_key == "PYRITE_TOWN" and any("ONBS" in m_ for m_ in _msgs), f"shut before Lovrina ({_msgs[:1]})")
+F["xd_lovrina_beaten"] = True
+t = town("PYRITE_TOWN", "PHENAC_CITY")
+t.player = list(door[0]); t._leave("XD_ONBS")
+check(getattr(g.current_state, "ride", None) is None, "walked in: no bike ride on the way")
+for _ in range(300):
+    st = g.current_state
+    if getattr(st, "area_key", None) == "XD_ONBS" and hasattr(st, "run"):
+        break
+    st.update(); st.draw()
+check(getattr(g.current_state, "area_key", None) == "XD_ONBS", "through the door: the ONBS lobby")
+t = town("PYRITE_TOWN", "XD_ONBS")
+check(abs(t.player[0] - door[0][0]) + abs(t.player[1] - door[0][1]) <= 1, f"back out at that door ({t.player})")
+if _had is None:
+    F.pop("xd_lovrina_beaten", None)
+else:
+    F["xd_lovrina_beaten"] = _had
+
 print("FAILURES:", len(fails))
 for f_ in fails:
     print("  ", f_)

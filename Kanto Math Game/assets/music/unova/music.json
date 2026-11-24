@@ -1,0 +1,124 @@
+{
+ "_about": "Unova's soundtrack: Black 2's own tracks, rendered from the game file by kanto_handoff/unova_map_tools/music.py (src/core/music.py region_track reads this).",
+ "areas": {
+  "ANVILLE_TOWN": "t_03",
+  "ASPERTIA_CITY": "sw_c_12",
+  "CASTELIA_CITY": "c_03",
+  "CASTELIA_EMPTY_LOT": "c_03",
+  "CASTELIA_SEWERS": "sw_d_gesui",
+  "DESERT_RESORT": "d_02",
+  "DESERT_RESORT_ENTRANCE": {
+   "AUTUMN": "r_c_au",
+   "SPRING": "r_c_sp",
+   "SUMMER": "r_c_su",
+   "WINTER": "r_c_wi"
+  },
+  "FLOCCESY_RANCH": "sw_d_22",
+  "FLOCCESY_RANCH_OUTSIDE": {
+   "AUTUMN": "sw_r_19_au",
+   "SPRING": "sw_r_19_sp",
+   "SUMMER": "sw_r_19_su",
+   "WINTER": "sw_r_19_wi"
+  },
+  "FLOCCESY_TOWN": "sw_t_06",
+  "JOIN_AVENUE": "rezo_rizo",
+  "LIBERTY_GARDEN": {
+   "AUTUMN": "r_d_au",
+   "SPRING": "r_d_sp",
+   "SUMMER": "r_d_su",
+   "WINTER": "r_d_wi"
+  },
+  "LOSTLORN_FOREST": "d_06",
+  "NIMBASA_CITY": "c_04",
+  "PLEDGE_GROVE": "d_01",
+  "POKESTAR_STUDIOS": "pw_land",
+  "RELIC_CASTLE": "d_04",
+  "ROYAL_UNOVA": "pleasure_boat",
+  "UNOVA_ROUTE_16": {
+   "AUTUMN": "r_c_au",
+   "SPRING": "r_c_sp",
+   "SUMMER": "r_c_su",
+   "WINTER": "r_c_wi"
+  },
+  "UNOVA_ROUTE_19": {
+   "AUTUMN": "sw_r_19_au",
+   "SPRING": "sw_r_19_sp",
+   "SUMMER": "sw_r_19_su",
+   "WINTER": "sw_r_19_wi"
+  },
+  "UNOVA_ROUTE_20": {
+   "AUTUMN": "sw_r_19_au",
+   "SPRING": "sw_r_19_sp",
+   "SUMMER": "sw_r_19_su",
+   "WINTER": "sw_r_19_wi"
+  },
+  "UNOVA_ROUTE_4": {
+   "AUTUMN": "r_c_au",
+   "SPRING": "r_c_sp",
+   "SUMMER": "r_c_su",
+   "WINTER": "r_c_wi"
+  },
+  "UNOVA_ROUTE_5": {
+   "AUTUMN": "r_c_au",
+   "SPRING": "r_c_sp",
+   "SUMMER": "r_c_su",
+   "WINTER": "r_c_wi"
+  },
+  "VIRBANK_CITY": "sw_c_13",
+  "VIRBANK_COMPLEX": "sw_d_23",
+  "VIRBANK_COMPLEX_OUTSIDE": "sw_c_13"
+ },
+ "kinds": {
+  "center": "pokecen",
+  "evolution": "shinka",
+  "final": "vs_shitenno",
+  "gym": "vs_gymleader",
+  "gym_lobby": "gym",
+  "lab": "labo",
+  "trainer": "vs_trainer",
+  "victory": "win1",
+  "villain": "vs_neo_plasma",
+  "wild": "vs_norapoke"
+ },
+ "rooms": {
+  "ASPERTIA_CITY:center": "pokecen",
+  "ASPERTIA_CITY:gate": "gate",
+  "ASPERTIA_CITY:gym": "gym",
+  "CASTELIA_CITY:bridge_gate": "gate",
+  "CASTELIA_CITY:center": "pokecen",
+  "CASTELIA_CITY:gate_route4": "gate",
+  "CASTELIA_CITY:gym": "insect_gym_01",
+  "CASTELIA_CITY:gym_10": "insect_gym_01",
+  "CASTELIA_CITY:gym_20": "insect_gym_01",
+  "CASTELIA_CITY:gym_burgh": "insect_gym_01",
+  "CASTELIA_SEWERS:back_street": "c_03",
+  "DESERT_RESORT_ENTRANCE:gate": "gate",
+  "FLOCCESY_RANCH:grotto": "kemonomichi",
+  "FLOCCESY_TOWN:center": "pokecen",
+  "LIBERTY_GARDEN:lighthouse": "d_03",
+  "LIBERTY_GARDEN:victini_room": "d_03",
+  "LOSTLORN_FOREST:grotto": "kemonomichi",
+  "NIMBASA_CITY:car": "battle_subway",
+  "NIMBASA_CITY:center": "pokecen",
+  "NIMBASA_CITY:gate_e": "gate",
+  "NIMBASA_CITY:gate_w": "gate",
+  "NIMBASA_CITY:gear": "gear_station",
+  "NIMBASA_CITY:gym": "erectric_gym_01",
+  "NIMBASA_CITY:plat_anville": "gear_station",
+  "NIMBASA_CITY:plat_double": "gear_station",
+  "NIMBASA_CITY:plat_multi": "gear_station",
+  "NIMBASA_CITY:plat_single": "gear_station",
+  "NIMBASA_CITY:plat_super_double": "gear_station",
+  "NIMBASA_CITY:plat_super_multi": "gear_station",
+  "NIMBASA_CITY:plat_super_single": "gear_station",
+  "NIMBASA_CITY:plat_wifi": "gear_station",
+  "NIMBASA_CITY:subway_stop": "gear_station",
+  "UNOVA_ROUTE_16:bridge_gate": "gate",
+  "UNOVA_ROUTE_5:grotto": "kemonomichi",
+  "VIRBANK_CITY:center": "pokecen",
+  "VIRBANK_CITY:gate_n": "gate",
+  "VIRBANK_CITY:gate_w": "gate",
+  "VIRBANK_CITY:gym": "poisone_gym_01",
+  "VIRBANK_CITY:gym_stage": "poisone_gym_01"
+ }
+}
