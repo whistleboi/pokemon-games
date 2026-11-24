@@ -1633,7 +1633,8 @@
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "victory_flag": "seashore_beat_simon"
     },
     {
      "name": "Delinquent Destinee",
@@ -1648,7 +1649,8 @@
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "victory_flag": "seashore_beat_destinee"
     },
     {
      "name": "Street Thug Blair",
@@ -1665,7 +1667,8 @@
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "victory_flag": "seashore_beat_blair"
     },
     {
      "name": "Beauty Johanna",
@@ -1680,7 +1683,8 @@
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "victory_flag": "seashore_beat_johanna"
     },
     {
      "name": "Sailor Dwayne",
@@ -1697,7 +1701,8 @@
      "rewards": {
       "balls": 3
      },
-     "oras": true
+     "oras": true,
+     "victory_flag": "seashore_beat_dwayne"
     },
     {
      "name": "Tuber Gwen",
@@ -1831,22 +1836,6 @@
       "flag": "oras_hoenn_route_109_2"
      },
      "flag_condition": "not oras_hoenn_route_109_2"
-    },
-    {
-     "text": "SODA POP",
-     "action": "EVENT",
-     "found": true,
-     "oras": true,
-     "flag_condition": "not oras_hoenn_route_109_5",
-     "event": {
-      "lines": [
-       "You found 6 Soda Pop!"
-      ],
-      "gift_item": {
-       "SODA_POP": 6
-      },
-      "flag": "oras_hoenn_route_109_5"
-     }
     },
     {
      "text": "PP UP",
@@ -8789,6 +8778,27 @@
   }
  },
  "FIGURES": {
+  "MAUVILLE_CITY:TM126 THUNDERBOLT": {
+   "item": "TM126"
+  },
+  "MAUVILLE_CITY:TM060 U-TURN": {
+   "item": "TM060"
+  },
+  "MAUVILLE_CITY:TM278 SKY DROP": {
+   "item": "TM278"
+  },
+  "FORTREE_CITY:TM081 GRASS KNOT": {
+   "item": "TM081"
+  },
+  "PACIFIDLOG_TOWN:TM273 FRUSTRATION": {
+   "item": "TM273"
+  },
+  "PACIFIDLOG_TOWN:TM274 RETURN": {
+   "item": "TM274"
+  },
+  "EVER_GRANDE_CITY:TM120 PSYCHIC": {
+   "item": "TM120"
+  },
   "EVER_GRANDE_CITY:TM29 PSYCHIC": {
    "item": "TM120"
   },

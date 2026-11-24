@@ -1940,7 +1940,7 @@
    "battle": {
     "name": "Veteran Arlen",
     "class": "VETERAN",
-    "sprite": "b2_veteran.png",
+    "sprite": "b2_veteran_m.png",
     "team": [
      135,
      28,
@@ -1993,7 +1993,7 @@
    "battle": {
     "name": "Veteran Sayuri",
     "class": "VETERAN",
-    "sprite": "b2_veteran.png",
+    "sprite": "b2_veteran_f.png",
     "team": [
      369,
      219,
@@ -2731,7 +2731,7 @@
   {
    "id": 124,
    "slot": 0,
-   "walk": "b2_c152.png",
+   "walk": "b2_c56.png",
    "battle": {
     "name": "Musician Boris",
     "class": "MUSICIAN",

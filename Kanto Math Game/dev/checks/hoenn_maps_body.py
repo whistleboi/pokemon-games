@@ -102,7 +102,8 @@ for key in BUILT:
         walk = set(".=\"NX!ow$[]{}%_()D<>^vnwu20b:|;,'")   # (' round stones: crossed on the Bicycle)
         starts = [(x, y) for y, r in enumerate(grid) for x, c in enumerate(r) if c in "<>^vnwu"]
         _back = [(x, y - 1) for x, y in map(tuple, m.get("back_doors", []))]   # (a yard reached by a back door: Lavaridge's hot springs)
-        seen, todo = set(starts[:1] + _back), deque(starts[:1] + _back)
+        _first = starts if m.get("split") else starts[:1]   # ("split": a map in parts, each from its own edge - Rustboro's fence path from Route 104, H7)
+        seen, todo = set(_first + _back), deque(_first + _back)
         while todo:
             x, y = todo.popleft()
             for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
@@ -275,7 +276,7 @@ if _ms is None:
 # (by here in the story you carry Cut and Rock Smash: the small trees and cracked rocks are out of the way)
 _hm_had = {k: story.inventory.get(k) for k in ("HM_CUT", "HM_ROCK_SMASH")}
 story.inventory.update({"HM_CUT": 1, "HM_ROCK_SMASH": 1})
-# Route 110: the Cycling Road a deck of its own, its gates barred without a Bicycle; underneath, Slateport to Mauville on foot
+# Route 110: the Cycling Road a deck of its own (+ its two gate rooms, H7), its gates barred without a Bicycle; underneath, Slateport to Mauville on foot
 _bk = story.inventory.pop("BICYCLE", None)
 st = arrive("HOENN_ROUTE_110", "SLATEPORT_CITY")
 st._clear_boulders()
@@ -284,7 +285,7 @@ _shut110 = [str(st.run.floor.decor.get(t, "")) for t in _bars]
 _walk110 = _by(_reach(st), st, "MAUVILLE_CITY")
 story.inventory["BICYCLE"] = 1
 st._clear_boulders()
-check(st.run.n_floors == 2 and _bars and all(v.startswith("barrier:") for v in _shut110) and all(st.run.floor.walkable(*t) for t in _bars) and _walk110,
+check(st.run.n_floors == 4 and _bars and all(v.startswith("barrier:") for v in _shut110) and all(st.run.floor.walkable(*t) for t in _bars) and _walk110,
       f"Route 110: the Cycling Road is a deck of its own; its gates {_bars} barred without a Bicycle ({_shut110}), open with one; underneath you walk from Slateport to Mauville ({_walk110})")
 if _bk is None:
     story.inventory.pop("BICYCLE", None)
@@ -480,7 +481,7 @@ check(p.run.index == 2, f"Granite Cave: 1F's ladder at {_lad} takes you down to 
 
 # Route 110: through a gatehouse with the Bicycle, up the ramp onto the Cycling Road
 _r110 = _tm["HOENN_ROUTE_110"]["floors"]
-_gate = {k: v for k, v in _r110[0].get("links", {}).items() if v[0] == 0}
+_gate = {k: v for k, v in _r110[0].get("inside", {}).items() if v in _tm["HOENN_ROUTE_110"].get("rooms", {})}   # (H7, 11-24: the gates are rooms, two doors each)
 _ramps = {k: v for k, v in _r110[0].get("links", {}).items() if v[0] == 1}
 check(len(_gate) == 4 and len(_ramps) >= 2 and any(b.get("item") == "BICYCLE" for b in _r110[0].get("barred", [])),
       f"Route 110: two gatehouses walked through ({len(_gate)} doors), {len(_ramps)} ramps up to the Cycling Road, the Bicycle checked at the gates")
@@ -731,7 +732,8 @@ _rr = st._door_options("rivalride")
 _shown_rival = any((o.get("any") or [o])[0].get("door") == "rivalride" for o in st._people().values() if isinstance(o, dict))
 st._get_callback_for_option(_rr[0])()
 frames(3)
-check(_shown_rival and len(_rr) == 2 and type(g.current_state).__name__ == "AreaTransitionState" and getattr(g.current_state, "next_area_key", None) == "MAUVILLE_CITY",
+check(_shown_rival and len(_rr) == 2 and ((type(g.current_state).__name__ == "AreaTransitionState" and getattr(g.current_state, "next_area_key", None) == "MAUVILLE_CITY")
+                                         or story.current_area_key == "MAUVILLE_CITY"),   # (11-24: no in-between screen on the walked maps: there already)
       f"Fallarbor: your rival waits outside Cozmo's house and takes you back to Mauville if you like ({[o.get('text') for o in _rr]})")
 st = open_map("HOENN_MT_CHIMNEY", "HOENN_ROUTE_112")
 _lady = next(m for m in st.run.floor.movers if m.kind == "figure" and isinstance(m.payload, dict) and m.payload.get("text") == "Lava Cookie lady")
@@ -2434,7 +2436,7 @@ _reg = story.get_current_region()
 st = open_map("NAVEL_ROCK", "LILYCOVE_CITY")
 _figs = sorted(m.payload.get("text") for f in [st.run.made(i) for i in (8, 20)] for m in f.movers if m.kind == "figure" and isinstance(m.payload, dict))
 st._leave("ONE_ISLAND"); frames(1)
-_back = getattr(g.current_state, "next_area_key", None)
+_back = getattr(g.current_state, "next_area_key", None) or story.current_area_key   # (11-24: no in-between screen on the walked maps: there already)
 g.transitioning = False
 story.current_area_key = "LILYCOVE_CITY"
 from src.states.systems.fly_map import FlyState as _Fly
@@ -2453,7 +2455,7 @@ story.current_area_key = "BIRTH_ISLAND"
 _reg2 = story.get_current_region()
 st = open_map("BIRTH_ISLAND", "ONE_ISLAND")
 st._leave("ONE_ISLAND"); frames(1)
-_back2 = getattr(g.current_state, "next_area_key", None)
+_back2 = getattr(g.current_state, "next_area_key", None) or story.current_area_key   # (11-24: as above)
 g.transitioning = False
 check({o.get("item_condition") for o in _one} == {"MYSTIC_TICKET", "AURORA_TICKET"} and "MYSTIC_TICKET" in story.CARRY_ITEMS
       and _reg2 == "KANTO" and _back2 == "ONE_ISLAND" and not _spN["BIRTH_ISLAND"]["route_menu"][0].get("condition"),
@@ -3126,7 +3128,7 @@ story.inventory.clear(); story.inventory.update(_i5b)
 # Legacy menu clear, pass 2 (11-23): the route doors find their buttons by kind (the Cable Car stations, the Safari Zone gate);
 # the menu's CATCH / BATTLE buttons, colours and dead EXIT shortcuts are gone
 for _dk, _came, _kind in (("HOENN_ROUTE_112", "HOENN_ROUTE_111", "cablecar"), ("HOENN_MT_CHIMNEY", "HOENN_JAGGED_PASS", "cablecar"),
-                          ("HOENN_ROUTE_121", "HOENN_ROUTE_120", "safari")):
+                          ):   # (H7, 11-24: Route 121's Safari Zone door leads into the gate room, its far side into the Safari Zone: the H7 section)
     _mf = story.story_flags.get("meteor_falls_cleared")
     story.story_flags["meteor_falls_cleared"] = True   # (the Cable Car runs once Magma's left Meteor Falls)
     st = arrive(_dk, _came)
@@ -3289,6 +3291,56 @@ frames(2)
 check(getattr(g.current_state, "area_key", None) == "HOENN_ROUTE_130" and g.current_state.run.index == 1,
       f"Route 129's seabed runs on into Route 130's: you stay on the seabed ({getattr(g.current_state, 'area_key', None)})")
 story.inventory.clear(); story.inventory.update(_inv6)
+
+# ---- H7 (Jordan 11-24, DECISIONS #25): the last route buildings walked inside, from Emerald's maps (h_h7_rooms.py), and
+# Hoenn's one Center and one Mart (h_center_mart.py, Dev Map clean-hoenn-main-one-center-builder)
+_tm7 = json.load(open("assets/town_maps.json", encoding="utf-8"))
+_inv7 = dict(story.inventory); _fl7 = dict(story.story_flags)
+story.inventory.update({"BICYCLE": 1, "HM_SURF": 1})
+_title7 = lambda st: (st.recipe.get("art") or {}).get("floor_names", [""] * 99)[st.run.index]
+def _in7(st, at, way):
+    st.run.player, st.anim = tuple(at), 0
+    _calm(st); st.dialogue_box.visible = False
+    st.step(*way)
+    for _ in range(300):
+        if g.current_state is not st or not (st.dialogue_box.visible or st._scenes().busy()):
+            break
+        if st.dialogue_box.visible:
+            st.dialogue_box.advance()
+        st.update()
+    return _title7(st), tuple(st.run.player), st.run.index
+st = open_map("HOENN_ROUTE_109", "SLATEPORT_CITY")
+_sh7 = _in7(st, (12, 6), (0, -1))
+_tr7 = sorted(m.payload[1].get("name") for m in st.run.floor.movers if m.kind == "trainer")
+_out7 = _in7(st, (6, 8), (0, 1))
+_sea7 = _tm7["HOENN_ROUTE_109"]["rooms"]["seashore_house"]["people"][0]
+check("Seashore" in _sh7[0] and _tr7 == ["Beauty Johanna", "Delinquent Destinee", "Sailor Dwayne", "Street Thug Blair", "Tuber Simon"]
+      and _out7[2] == 0 and abs(_out7[1][0] - 12) + abs(_out7[1][1] - 6) <= 1
+      and [p.get("action") for p in _sea7] == ["EVENT", "EVENT", "SHOP"] and _sea7[1]["event"]["gift_item"] == {"SODA_POP": 6},
+      f"Route 109: the Seashore House walked in and out ({_sh7}, {_out7}), ORAS's five trainers inside ({_tr7}), Mr. Sea's six Soda Pop then his shop")
+st = open_map("HOENN_ROUTE_110", "SLATEPORT_CITY")
+st.run.jump_floor(0, (16, 89))
+_s7 = _in7(st, (16, 89), (0, -1)); _e7 = _in7(st, (12, 4), (0, 1))
+st.run.jump_floor(0, (18, 17))
+_n7 = _in7(st, (18, 17), (0, -1)); _w7 = _in7(st, (1, 4), (0, 1))
+check("Gate" in _s7[0] and _e7[2] == 0 and _e7[1][0] >= 19 and "Gate" in _n7[0] and _w7[2] == 0 and _w7[1][0] <= 16,
+      f"Route 110: through each Cycling Road gate, in at one door and out of the other ({_s7}, {_e7}, {_n7}, {_w7})")
+st = open_map("HOENN_ROUTE_121", "LILYCOVE_CITY")
+_g7 = _in7(st, (37, 6), (0, -1)); _in7(st, (3, 4), (0, 1))
+for _ in range(400):
+    if getattr(g.current_state, "area_key", None) == "HOENN_SAFARI_ZONE":
+        break
+    g.current_state.update()
+_sz7 = getattr(g.current_state, "area_key", None)
+st = open_map("HOENN_ROUTE_121", "HOENN_SAFARI_ZONE")
+check("Safari" in _g7[0] and _sz7 == "HOENN_SAFARI_ZONE" and "Safari" in _title7(st),
+      f"Route 121: into the Safari Zone gate ({_g7}), out of its far side into the Safari Zone ({_sz7}), and back into the gate ({_title7(st)})")
+_pics7 = {(k, n): r["rooms"][n]["roofs"]["_picture"]["f"] for k, r in _tm7.items() if k in BUILT for n in ("center", "center_2", "mart") if n in (r.get("rooms") or {})}
+_odd7 = {kn: f for kn, f in _pics7.items() if f != {"center": "em_ground/2_2.png", "center_2": "em_ground/2_3.png", "mart": "em_ground/2_4.png"}[kn[1]]}
+_lav7 = _tm7["LAVARIDGE_TOWN"]["rooms"]["center"]["exits"]
+check(len(_pics7) >= 40 and _odd7 == {("LAVARIDGE_TOWN", "center"): "em_ground/4_5.png"} and {"OUT:9,6", "OUT:9,2"} <= set(_lav7.values()),
+      f"every Hoenn Center and Mart is Emerald's one room ({len(_pics7)}; only Lavaridge's hot-springs Center its own: {_odd7}), Lavaridge's front and back doors each lead out their own way")
+story.inventory.clear(); story.inventory.update(_inv7); story.story_flags.clear(); story.story_flags.update(_fl7)
 
 story.story_flags.clear(); story.story_flags.update(_saved)
 print(f"##### {len(fails)} failures")

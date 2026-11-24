@@ -260,4 +260,104 @@ for m in walls:
     f.movers.remove(m)
 story.battle_style = "TRADITIONAL"
 
+print("6) fishing and Headbutt in the map battle style: the battle is on the map too (Jordan 11-24)")
+story.battle_style = "OVERWORLD"
+story.inventory["SUPER_ROD"] = 1
+p = kanto("KANTO_ROUTE_12", came="LAVENDER_TOWN")
+f = p.run.floor
+shore = None
+for yy in range(1, f.h - 1):
+    for xx in range(1, f.w - 1):
+        if f.walkable(xx, yy) and f.tile(xx, yy) == core.FLOOR and not f.occupied(xx, yy):
+            for dx, dy in core.DIRS:
+                if f.tile(xx + dx, yy + dy) in (core.WATER, core.SURF) and                         sum(f.walkable(xx + ex, yy) and f.tile(xx + ex, yy) == core.FLOOR for ex in (-3, -2, -1, 1, 2, 3)) >= 3:
+                    shore = ((xx, yy), (dx, dy))
+                    break
+        if shore:
+            break
+    if shore:
+        break
+check(shore is not None, f"Route 12: a shore to fish from ({shore})")
+b = None
+for _ in range(40):
+    f.movers[:] = [m for m in f.movers if m.kind != "wild"]
+    p.mode, p.anim = "MAP", 0
+    p.dialogue_box.visible = False
+    p.run.player = p.partner = p.partner_from = p.anim_from = shore[0]
+    p.facing = shore[1]
+    p.run.reveal()
+    p.action_fish()
+    for _k in range(60):
+        if p.dialogue_box.visible:
+            p.dialogue_box.advance()
+        if g.current_state is not p:
+            break
+        p.update()
+    if isinstance(g.current_state, WildBattleState):
+        b = g.current_state
+        break
+    g.change_state(p)
+check(b is not None and getattr(b, "overworld", None) is not None, "a bite: the battle is on the map")
+if b is not None:
+    ov = b.overworld
+    water = (shore[0][0] + shore[1][0], shore[0][1] + shore[1][1])
+    check(ov.spot == water and f.tile(*ov.mine) not in (core.WATER, core.SURF),
+          f"...the hooked Pokemon in the water you cast into, yours on the shore (foe {ov.spot}, yours {ov.mine})")
+    ov.attack(b, {"name": "WATER-GUN", "side": "opponent", "user": b.opponent_pokemon, "target": b.player_pokemon})
+    for _ in range(14):
+        ov.attacking()
+    b.draw()
+    pygame.image.save(g.screen, _os.path.join(S, "map_attacks", "fishing_battle.png"))
+    g.change_state(p)
+    p._back_from_battle()
+    walk_back(p)
+    check(p.mode == "MAP" and tuple(p.run.player) == shore[0], "after it, back on the shore where you cast")
+story.inventory.pop("SUPER_ROD", None)
+
+spot_tree = None
+for _area in ("JOHTO_ROUTE_30", "JOHTO_ROUTE_31", "JOHTO_ROUTE_42", "KANTO_ROUTE_2", "VIRIDIAN_FOREST"):
+  p = kanto(_area)
+  f = p.run.floor
+  f.movers[:] = [m for m in f.movers if m.kind != "wild"]
+  for yy in range(2, f.h - 2):
+      for xx in range(2, f.w - 2):
+          if f.walkable(xx, yy) and not f.occupied(xx, yy):
+              p.run.player = (xx, yy)
+              for d in core.DIRS:
+                  p.facing = d
+                  t = p._beside("tree")
+                  if t and sum(f.walkable(xx + ex, yy + ey) for ex, ey in core.DIRS) >= 2:
+                      spot_tree = ((xx, yy), d, t)
+                      break
+          if spot_tree:
+              break
+      if spot_tree:
+          break
+  if spot_tree:
+    break
+check(spot_tree is not None, f"{_area}: a tree to Headbutt ({spot_tree})")
+p.run.player = p.partner = p.partner_from = p.anim_from = spot_tree[0]
+p.facing = spot_tree[1]
+p.run.reveal()
+p.action_headbutt()
+said = list(p.dialogue_box.text_lines)
+check(any("fell out of the tree" in l for l in said), f"Headbutt: '{said[-1:]}'")
+dropped = next((m for m in f.movers if m.kind == "wild"), None)
+check(dropped is not None and abs(dropped.x - spot_tree[0][0]) + abs(dropped.y - spot_tree[0][1]) == 1, "...it lands beside you, on the map")
+while p.dialogue_box.visible:
+    p.dialogue_box.advance()
+to_battle(p, "headbutt_walk.png")
+b = g.current_state
+check(isinstance(b, WildBattleState) and getattr(b, "overworld", None) is not None, "...and the battle is on the map")
+if getattr(b, "overworld", None) is not None:
+    ov = b.overworld
+    check(ov.spot[1] == ov.mine[1] or abs(ov.spot[1] - ov.mine[1]) == 3, f"...side by side, or two apart up and down (foe {ov.spot}, yours {ov.mine})")
+    b.draw()
+    pygame.image.save(g.screen, _os.path.join(S, "map_attacks", "headbutt_battle.png"))
+    g.change_state(p)
+    p._back_from_battle()
+    walk_back(p)
+    check(p.mode == "MAP" and tuple(p.run.player) == spot_tree[0], "after it, back by the tree")
+story.battle_style = "TRADITIONAL"
+
 print(f"##### {fails} failures")

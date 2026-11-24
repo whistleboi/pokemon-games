@@ -15,6 +15,9 @@ The options themselves (texts, conditions, lines) are the area data's (hoenn_are
 - H6 seabeds (Jordan 11-24, DECISIONS #24): Routes 107, 129 and 130 get ORAS's seabeds, from the approved draft
   (kanto_handoff/hoenn_check/seabeds), written to dev/builders/data/h6_seabeds.json by
   kanto_handoff/hoenn_rom_tools/h_h6_seabeds.py: _seabeds() below.
+- H7 people (Jordan 11-24, DECISIONS #25): Emerald's people still missing on Routes 109 and 110, in the Space Center and
+  on Mt. Chimney (PEOPLE, SET); the Seashore House's five ORAS trainers moved inside off the beach (ROOM_TRAINERS) and the
+  beach's Soda Pop ball taken away (DROP): _h7() below. The rooms themselves: hoenn_rom_tools/h_h7_rooms.py.
 """
 import json
 import os
@@ -201,6 +204,110 @@ LISTS = [
 ]
 
 
+# ---- H7 (Jordan 11-24, DECISIONS #25): Emerald's people still missing on the routes and in the caves, on Emerald's own
+# tiles, in our own words (their looks: Emerald's sprite at the tile, dungeon_sprites.json "figures", written by
+# kanto_handoff/hoenn_rom_tools/h_h7_data.py). The route buildings themselves (the Seashore House, the Cycling Road
+# gates, the Safari Zone gate, Mt. Chimney's cable car station) are rooms in emerald.py (h_h7_rooms.py).
+def _say(text, *lines, **more):
+    return dict({"text": text, "action": "EVENT", "event": {"lines": list(lines)}}, **more)
+
+
+_R110_GRUNTS = ["oceanic_museum_cleared", "not:mt_chimney_boss_defeated"]   # (as the three already there)
+_INVASION = ["badge_mind_earned", "not:space_center_cleared"]                 # (as the Space Center's notice)
+PEOPLE += [
+    # Route 109: Mr. Briney at the end of the beach, where his boat ties up once he has sailed you to Slateport
+    ("HOENN_ROUTE_109", None, None, 21, 24, _say("Mr. Briney", "Mr. Briney: Ahoy! Peeko and I tie up here when we bring folk to Slateport.",
+                                                 "Mr. Briney: Fine sailing weather today, isn't it? Peeko loves a day at the beach!", condition="met_steven")),
+    # Route 110: the low road's walkers, the Cycling Road's riders (on the deck, floor 1), its judge by the ramp, and the
+    # two grunts the first three stood with
+    ("HOENN_ROUTE_110", 0, None, 17, 90, _say("Undecided camper", "Race along the Cycling Road straight to Mauville, or stroll the low road under it? I can't decide!")),
+    ("HOENN_ROUTE_110", 1, None, 29, 79, _say("Trick rider", "Learn a few Bike tricks and riding gets even more fun. Some places you can only reach with the right moves!")),
+    ("HOENN_ROUTE_110", 0, None, 14, 69, _say("Strolling lady", "I don't have a Bike, so I'm taking a nice slow walk along the low road.")),
+    ("HOENN_ROUTE_110", 1, None, 9, 57, _say("Bike fan", "Hey, that Bike's from Rydel's shop, isn't it? His name's right there on the frame!")),
+    ("HOENN_ROUTE_110", 0, None, 10, 11, _say("Old man", "Two roads, one up above and one down below. One for people, one for Pokémon. Maybe that's how it should be.")),
+    ("HOENN_ROUTE_110", 1, None, 27, 24, _say("Long-haired rider", "See how my hair streams out behind me when I ride? I grew it long just for that!")),
+    ("HOENN_ROUTE_110", 0, None, 15, 7, _say("Boy", "Wouldn't it be great to zoom down the Cycling Road at full speed?")),
+    ("HOENN_ROUTE_110", 0, None, 27, 92, _say("Cycling Road judge", "This is the Seaside Cycling Road! Ride from Slateport to Mauville as fast as you can, and try not to bump into anyone.")),
+    ("HOENN_ROUTE_110", 0, None, 8, 83, _say("Rowdy grunt", "I can't wait to get to Slateport and stir up some trouble!", condition=_R110_GRUNTS)),
+    ("HOENN_ROUTE_110", 0, None, 8, 82, _say("Silent grunt", "...Hmph. Keep walking, kid.", condition=_R110_GRUNTS)),
+    # Mossdeep's Space Center: the two launch scientists on 1F; on 2F the grunt by the leader, while the team is inside
+    ("HOENN_SPACE_CENTER", 0, None, 7, 2, _say("Launch scientist", "The next rocket launch is coming up soon! Every launch so far has gone up safely.")),
+    ("HOENN_SPACE_CENTER", 0, None, 2, 2, _say("Launch engineer", "A rocket launch has to be perfect. Not even the tiniest mistake is allowed!")),
+    ("HOENN_SPACE_CENTER", 1, None, 0, 8, _say("Fuel thief grunt", "Grunt: We came all this way for the rocket fuel, and you get in our way again!", condition=_INVASION)),
+]
+# (Mt. Chimney's south end: Emerald's other-team grunt stands where the Lava Cookie lady sells, until the fight is over;
+# then she is back. The person on the tile becomes the pair, one at a time)
+SET = [
+    ("HOENN_MT_CHIMNEY", None, None, 19, 39, [
+        _say("Worried grunt", "If they make more land, where will all the Water Pokémon live?", condition="not:mt_chimney_boss_defeated"),
+        {"text": "Lava Cookie lady", "action": "SHOP", "stock": ["LAVA_COOKIE"], "condition": "mt_chimney_boss_defeated"}]),
+]
+# The Seashore House (ORAS: "battling all the Trainers in the building", six Soda Pop from Mr. Sea): the five ORAS
+# trainers oras_fill stood on the beach go inside, on Emerald's three trainer tiles and two more of the room's; each one
+# beaten sets its flag (hoenn_oras.json "victory_flag"), Mr. Sea's challenge counts them (h_h7_rooms.py MR_SEA)
+ROOM_TRAINERS = [   # (area, room, [(name, x, y, how they move, the beach tile's own ground they leave)])
+    ("HOENN_ROUTE_109", "seashore_house", [
+        ("Sailor Dwayne", 2, 3, {"m": "face", "d": "d", "s": 2}, "="),
+        ("Beauty Johanna", 10, 5, {"m": "look", "d": "lr", "s": 2}, "="),
+        ("Delinquent Destinee", 4, 7, {"m": "face", "d": "d", "s": 2}, "="),
+        ("Street Thug Blair", 12, 7, {"m": "face", "d": "l", "s": 2}, "="),
+        ("Tuber Simon", 14, 9, {"m": "face", "d": "l", "s": 2}, "o")]),
+]
+DROP = [   # (someone oras_fill stood on a map who is now elsewhere: area, floor, text, the tile's own ground)
+    ("HOENN_ROUTE_109", None, "SODA POP", "="),   # (ORAS's six Soda Pop are Mr. Sea's prize, not a ball on the beach)
+]
+
+
+def _h7(maps):
+    for key, floor, room, x, y, people in SET:
+        m = maps.get(key)
+        p = _part(m, floor, room) if m else None
+        i = _at(p, x, y) if p else None
+        if i is None:
+            print(ascii(f"  hoenn_canon: nobody stands on {key} {x},{y} to set"))
+            continue
+        p["people"][i] = list(people)
+    for key, floor, text, ground in DROP:
+        m = maps.get(key)
+        p = _part(m, floor, None) if m else None
+        if not p:
+            continue
+        spots = [(cx, cy) for cy, r in enumerate(p["art"]) for cx, c in enumerate(r) if c == "N"]
+        ppl = list(p.get("people") or [])
+        at = [n for n, q in enumerate(ppl) if (q if isinstance(q, str) else (q or {}).get("text") if isinstance(q, dict) else None) == text]
+        if not at or at[0] >= len(spots):
+            print(ascii(f"  hoenn_canon: no {text} on {key} to take away"))
+            continue
+        x, y = spots[at[0]]
+        rows = [list(r) for r in p["art"]]
+        rows[y][x] = ground
+        p["art"] = ["".join(r) for r in rows]
+        p["people"] = ppl[:at[0]] + ppl[at[0] + 1:]
+        (p.get("moves") or {}).pop(f"{x},{y}", None)
+    for key, room, moves in ROOM_TRAINERS:
+        m = maps.get(key)
+        if not m or room not in (m.get("rooms") or {}):
+            continue
+        f = _part(m, None, None)
+        rows = [list(r) for r in f["art"]]
+        spots = [(cx, cy) for cy, r in enumerate(rows) for cx, c in enumerate(r) if c == "X"]
+        names = list(f.get("trainer_spots") or [])
+        keep = []
+        for xy, n in zip(spots, names):
+            hit = next((t for t in moves if t[0] == n), None)
+            if hit:
+                rows[xy[1]][xy[0]] = hit[4]
+                (f.get("moves") or {}).pop(f"{xy[0]},{xy[1]}", None)
+            else:
+                keep.append(n)
+        left = {t[0] for t in moves} - set(names)
+        if left:
+            print(ascii(f"  hoenn_canon: {key}: not on the map to move inside: {sorted(left)}"))
+        f["art"] = ["".join(r) for r in rows]
+        f["trainer_spots"] = keep + names[len(spots):]
+        _F._put(m["rooms"][room], "X", "trainer_spots", [[x, y, n, spec] for n, x, y, spec, _g in moves if n not in left])
+
+
 def _slateport_sub(maps):
     """H5 (ORAS): two grunts hold you up at Slateport's harbour while the sub is stolen - Mightyena Lv 36, then Numel /
     Carvanha with Golbat Lv 34, by version (hoenn.py applies "team_by_version" to a villain's battle)."""
@@ -253,6 +360,43 @@ def _home_tv(maps):
     room["signs"] = [["The TV's on. A cooking show... Mom's favourite."]]
     room["sign_events"] = {"4,4": {"text": "TV", "action": "EVENT",
                                    "event": {"swarm_news": "HOENN", "lines": ["The TV's on. A cooking show... Mom's favourite."]}}}
+
+
+def _emerald_paths(maps):
+    """H7 layout review (Jordan 11-24): ground you can walk in Emerald that was wall in ours.
+    - Routes 111 and 115: the mountain tops past Emerald's muddy slopes ('7': up them on the Bicycle) - "a bike path up to
+      the mountaintop";
+    - Rustboro: the path along the south-east fence, "a walk path from the route to the south": it meets Route 104's top
+      edge at x 33 (Emerald's map join), so both maps get that edge tile.
+    The tiles come from hlayout_review (Emerald open and reachable, ours wall): dev/builders/data/h7_emerald_paths.json."""
+    import os as _os
+    p = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "..", "data", "h7_emerald_paths.json")
+    tiles = json.load(open(p, encoding="utf-8"))
+    for key, spots in tiles.items():
+        m = maps.get(key)
+        if not m:
+            continue
+        part = m["floors"][0] if m.get("floors") else m
+        art = [list(r) for r in part["art"]]
+        for x, y in spots:
+            if art[y][x] == "c":
+                art[y][x] = "."
+        part["art"] = ["".join(r) for r in art]
+    for key, (x, y), ch, other, to in (("RUSTBORO_CITY", (33, 59), "v", "HOENN_ROUTE_104", (33, 0)),
+                                       ("HOENN_ROUTE_104", (33, 0), "^", "RUSTBORO_CITY", (33, 59))):
+        m = maps.get(key)
+        if not m:
+            continue
+        part = m["floors"][0] if m.get("floors") else m
+        if part.get("exits", {}).get(ch) != other:
+            print(ascii(f"  hoenn_canon: {key} has no {ch!r} exit to {other}: path link left out"))
+            continue
+        row = list(part["art"][y])
+        row[x] = ch
+        part["art"][y] = "".join(row)
+        part.setdefault("edge_to", {})[f"{x},{y}"] = list(to)
+        if key == "RUSTBORO_CITY":
+            part["split"] = True   # (the path is its own part, fenced off from the town: reached from Route 104 only, as in Emerald)
 
 
 def _part(m, floor, room):
@@ -322,6 +466,8 @@ def apply(maps):
     _slateport_sub(maps)
     _museum_queue(maps)
     _home_tv(maps)
+    _emerald_paths(maps)
+    _h7(maps)
     for key, floor, room, x, y, who in PEOPLE:
         m = maps.get(key)
         if m:

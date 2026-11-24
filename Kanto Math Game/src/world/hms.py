@@ -15,8 +15,12 @@ HM_BY_BADGE = {
     # the rival on Route 112 and on Route 119; Jordan, 11-06: one source for each key item in a region)
     "HOENN": {},   # (11-23, Jordan H5: every HM from ORAS's own giver on the maps - Cut the Cutter in Rustboro, Flash Granite
     #              Cave's hiker, Surf Wally's father after Norman, Dive Steven in Mossdeep, Waterfall Wallace's prize)
-    "SINNOH": {"COAL": "HM_ROCK_SMASH", "FOREST": "HM_CUT", "COBBLE": "HM_FLY", "FEN": "HM_DEFOG",
-               "RELIC": "HM_SURF", "MINE": "HM_STRENGTH", "ICICLE": "HM_ROCK_CLIMB", "BEACON": "HM_WATERFALL"},
+    "SINNOH": {"COAL": "HM_ROCK_SMASH", "FOREST": "HM_CUT", "FEN": "HM_DEFOG",
+               "ICICLE": "HM_ROCK_CLIMB", "BEACON": "HM_WATERFALL"},
+    # (11-24, Sinnoh S5, Jordan: Strength is Platinum's - Riley on Iron Island - not Byron's Mine Badge; Barry waits at the
+    #  Canalave Library till you have it)
+    # (11-24, Sinnoh S4: Fly is Platinum's - the ball beside Looker in the Galactic Warehouse, after the raid - not Maylene's;
+    #  Surf is Platinum's too - Cynthia's grandmother in the Celestic ruins, after the Old Charm - not Fantina's)
     # (11-20, Black 2 / White 2: every HM is a story gift - Cut from Roxie at Virbank's docks, Strength from Hugh in the
     #  Castelia Sewers, Fly from Bianca on Route 5, Surf from Cheren on Route 6, Waterfall from N at Victory Road, Dive from
     #  Hugh in Undella after the League. Until each batch builds its gift, the badge just before stands in; Cut is the

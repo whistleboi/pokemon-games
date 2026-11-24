@@ -14,9 +14,15 @@ steps = [
     ("FOREST", {}, "FOREST"),
     ("Galactic Eterna", {"galactic_eterna_cleared": True}, None),
     ("COBBLE (Maylene)", {}, "COBBLE"),
+    ("Galactic Warehouse (Dawn's tag battle, Looker)", {"sinnoh_dawn_warehouse_call": True, "sinnoh_warehouse_guards_beaten": True,
+                                                       "galactic_warehouse_cleared": True}, None),   # (Platinum, S4 11-24)
     ("FEN (Wake)", {}, "FEN"),
+    ("Pastoria's bomb, the chase, Cynthia's SecretPotion", {"sinnoh_pastoria_bomb_warned": True, "sinnoh_pastoria_bomb": True,
+                                                           "sinnoh_valor_grunt_beaten": True, "sinnoh_secretpotion": True}, None),
+    ("Celestic: the Old Charm, Surf from the Elder", {"got_old_charm_r210": True, "sinnoh_celestic_grunt_beaten": True,
+                                                       "delivered_old_charm": True, "got_hm_surf_celestic": True}, None),   # (Platinum, S4 11-24)
     ("RELIC (Fantina, 4+ badges)", {}, "RELIC"),
-    ("Iron Island", {"visited_IRON_ISLAND": True}, None),
+    ("Iron Island", {"visited_IRON_ISLAND": True, "got_hm_strength_iron_island": True}, None),   # (Riley's Strength, Jordan 11-24)
     ("MINE (Byron)", {}, "MINE"),
     ("ICICLE (Candice)", {}, "ICICLE"),
     ("Galactic HQ", {"galactic_hq_cleared": True}, None),
@@ -26,6 +32,10 @@ steps = [
 ]
 for title, flags, b in steps:
     story.story_flags.update(flags)
+    if flags.get("got_hm_surf_celestic"):
+        story.inventory["HM_SURF"] = 1   # (the Elder's gift, not a badge's)
+    if flags.get("got_hm_strength_iron_island"):
+        story.inventory["HM_STRENGTH"] = 1   # (Riley's gift on Iron Island, not the Mine Badge's)
     if b:
         badge(R, b)
     seen = report(title, S, seen)
@@ -37,7 +47,7 @@ SINNOH_NEW = ["SINNOH_ROUTE_219", "SINNOH_ROUTE_220", "SINNOH_ROUTE_221", "FIGHT
               "SINNOH_ROUTE_224", "SINNOH_BATTLE_FRONTIER", "DISTORTION_WORLD", "WAYWARD_CAVE", "LOST_TOWER", "FLOAROMA_MEADOW",
               "FUEGO_IRONWORKS", "RAVAGED_PATH", "MANIAC_TUNNEL", "TROPHY_GARDEN", "ACUITY_LAKEFRONT", "VALOR_LAKEFRONT",
               "VERITY_LAKEFRONT", "SENDOFF_SPRING", "OREBURGH_GATE", "ETERNA_GALACTIC_BUILDING", "GALACTIC_WAREHOUSE", "GRAND_UNDERGROUND"]
-story.inventory["STORAGE_KEY"] = 1  # the grunt outside the Galactic building drops it (BDSP)
+story.inventory["STORAGE_KEY"] = 1  # (the Underpass door's key: S5, from Looker after Lake Acuity)
 expansion_check("sinnoh expansion", SINNOH_NEW, S)
 gate_check("battle zone gate", ["FIGHT_AREA", "SINNOH_ROUTE_224", "SINNOH_ROUTE_227", "STARK_MOUNTAIN", "SINNOH_BATTLE_FRONTIER"], S, "beat_sinnoh_champion")
 # (11-13: Sinnoh follows Platinum now: the Trophy Garden (Route 212) and Sendoff Spring (out of the Distortion World) are open before the League)

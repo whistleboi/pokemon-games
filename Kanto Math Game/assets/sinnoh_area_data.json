@@ -467,11 +467,11 @@
         "min_rounds": 0,
         "trainer_pool": [
             {"name": "Galactic Grunt", "class": "PKMN_TRAINER", "sprite": "pt_galactic_grunt_m.png", "team": [42], "rewards": {"balls": 3}, "levels": [41], "spot_name": "Galactic Grunt 1"},
-            {"name": "Galactic Grunt", "class": "PKMN_TRAINER", "sprite": "pt_galactic_grunt_m.png", "team": [228, 198], "rewards": {"balls": 10}, "is_boss_battle": true, "victory_flag": "galactic_warehouse_cleared", "levels": [38, 40], "spot_name": "Galactic Grunt 2"}
+            {"name": "Galactic Grunt", "class": "PKMN_TRAINER", "sprite": "pt_galactic_grunt_m.png", "team": [228, 198], "rewards": {"balls": 10}, "is_boss_battle": true, "victory_flag": "galactic_underpass_cleared", "levels": [38, 40], "spot_name": "Galactic Grunt 2"}
         ],
         "route_menu": [
             {"text": "Team Galactic HQ", "action": "EXIT", "target_area": "TEAM_GALACTIC_HQ", "condition": "can_exit", "color": "RED"},
-            {"text": "RAID THE WAREHOUSE", "action": "GALACTIC_GAUNTLET", "flag_condition": "not galactic_warehouse_cleared", "color": "GOLD"},
+            {"text": "RAID THE WAREHOUSE", "action": "GALACTIC_GAUNTLET", "flag_condition": "not galactic_underpass_cleared", "color": "GOLD"},
             {"text": "Veilstone City", "action": "EXIT", "target_area": "VEILSTONE_CITY", "condition": "can_exit", "color": "RED"},
             {"text": "DUSK STONE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_dusk_stone_galactic_warehouse_c07r0301_7_4", "event": {"lines": ["A Dusk Stone, lying among the rocks."], "gift_item": {"DUSK_STONE": 1}, "flag": "got_dusk_stone_galactic_warehouse_c07r0301_7_4"}},
             {"text": "HM FLY", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_hm_fly_galactic_warehouse_c07r0301_13_8", "event": {"lines": ["A Hm Fly, in a dark corner."], "gift_item": {"HM_FLY": 1}, "flag": "got_hm_fly_galactic_warehouse_c07r0301_13_8"}},
@@ -1455,7 +1455,7 @@
             {"text": "Route 214", "target_area": "SINNOH_ROUTE_214"},
             {"text": "Route 215", "target_area": "SINNOH_ROUTE_215"},
             {"text": "Team Galactic HQ", "target_area": "TEAM_GALACTIC_HQ", "item_condition": "GALACTIC_KEY"},
-            {"text": "Galactic Warehouse", "target_area": "GALACTIC_WAREHOUSE", "condition": "has_cobble_badge", "item_condition": "STORAGE_KEY"}
+            {"text": "Galactic Warehouse", "target_area": "GALACTIC_WAREHOUSE", "condition": "sinnoh_warehouse_guards_beaten"}
         ],
         "explore_options": [
             {"text": "Heal", "action": "HEAL"},
@@ -1464,13 +1464,11 @@
             {"text": "Game Corner", "action": "GAMECORNER"},
             {"text": "Galactic Veilstone HQ", "action": "TRAVEL", "target_area": "TEAM_GALACTIC_HQ", "item_condition": "GALACTIC_KEY"},
             {"text": "Talk to Looker", "action": "NPC", "target": "looker_veilstone", "condition": "has_cobble_badge"},
-            {"text": "Talk to the Galactic Grunt", "action": "EVENT", "condition": ["has_cobble_badge", "not:has_item:STORAGE_KEY", "not:galactic_warehouse_cleared"], "event": {"lines": ["A Galactic Grunt is loitering outside the Galactic building.", "Grunt: Wh-what do you want? I'm not guarding anything! ...Gotta go!", "The grunt ran off, dropping something."], "gift_item": {"STORAGE_KEY": 1}, "flag": "got_storage_key"}},
             {"text": "Warehouse Underpass", "action": "EVENT", "color": "GOLD", "condition": ["galactic_lake_acuity_cleared", "not:has_item:GALACTIC_KEY", "not:galactic_hq_cleared"], "event": {"lines": ["A Galactic Grunt is guarding the underpass beneath the Galactic Warehouse.", "Grunt: The boss has all three lake Pokémon now! Nobody gets into HQ!"], "flag": "got_galactic_key", "battle": {"name": "Galactic Grunt", "class": "GALACTIC_GRUNT", "sprite": "galactic_grunt.png", "team": [41, 434], "rewards": {"balls": 3, "GALACTIC_KEY": 1}, "dialogue": {"player_won": ["Grunt: No! The Galactic Key!", "You found the GALACTIC KEY! It opens Team Galactic HQ."]}}}},
             {"text": "FULL INCENSE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_full_incense_veilstone_city_c07_18_37", "event": {"lines": ["A Full Incense, lying by the path."], "gift_item": {"FULL_INCENSE": 1}, "flag": "got_full_incense_veilstone_city_c07_18_37"}},
             {"text": "RARE CANDY", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_rare_candy_veilstone_city_c07_38_8", "event": {"lines": ["A Rare Candy, left on the ground."], "gift_item": {"RARE_CANDY": 1}, "flag": "got_rare_candy_veilstone_city_c07_38_8"}},
             {"text": "STAR PIECE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_star_piece_veilstone_city_c07_21_8", "event": {"lines": ["A Star Piece, half hidden by a fence."], "gift_item": {"STAR_PIECE": 1}, "flag": "got_star_piece_veilstone_city_c07_21_8"}}
         ],
-        "on_enter_event": {"type": "trainer_battle", "trainer": {"name": "Dawn", "class": "PKMN_TRAINER", "sprite": "dawn.png", "is_boss_battle": true, "team": [35, 64, 394], "team_choice": {"387": [35, 64, 394], "390": [35, 64, 388], "393": [35, 64, 391]}, "levels": [25, 25, 28], "rewards": {"balls": 5}, "dialogue": {"intro": ["Dawn: {player_name}! The Professor wants to know how strong you've become.", "Let's battle, so I can tell him!"], "player_won": ["Dawn: Wow, you and your Pokémon really are in sync!"], "player_lost": ["Dawn: I won? Don't tell the Professor I was surprised!"]}}, "condition": "has_forest_badge", "flag_check": "defeated_dawn_veilstone"},
         "department_store": true,
         "extra_stock": [
             {"item": "UPGRADE"}
@@ -1491,14 +1489,13 @@
             {"text": "Great Marsh", "target_area": "GREAT_MARSH"}
         ],
         "explore_options": [
-            {"text": "Move Reminder", "action": "EVENT", "door": "reminder", "event": {"quips": "move_reminder", "lines": ["Move Reminder: I can help a Pokemon remember a move... wait, they already remember everything? Since when?"]}},
+            {"text": "Move Reminder", "action": "EVENT", "event": {"quips": "move_reminder", "lines": ["Move Reminder: I can help a Pokemon remember a move... wait, they already remember everything? Since when?"]}},
             {"text": "Heal", "action": "HEAL"},
             {"text": "Shop", "action": "SHOP"},
             {"text": "Gym", "action": "GYM"},
             {"text": "Great Marsh", "action": "TRAVEL", "target_area": "GREAT_MARSH"},
             {"text": "MYSTIC WATER", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_mystic_water_pastoria_city_c06_49_29", "event": {"lines": ["A Mystic Water, lying by the path."], "gift_item": {"MYSTIC_WATER": 1}, "flag": "got_mystic_water_pastoria_city_c06_49_29"}}
         ],
-        "on_enter_event": {"type": "trainer_battle", "trainer": {"name": "{rival_name}", "class": "PKMN_TRAINER", "sprite": "{rival_character}", "team": [396, 418, 315, 391], "team_choice": {"387": [396, 418, 315, 391], "390": [396, 315, 77, 394], "393": [396, 418, 77, 388]}, "rewards": {"balls": 5}, "victory_flag": "defeated_rival_pastoria", "dialogue": {"intro": ["Oh! {player_name}! I'm heading to Lake Valor after this — BATTLE FIRST!"], "player_won": ["Every time! I'll beat you at the lakes though!"], "player_lost": ["Lake Valor, here I come — AND I BEAT YOU!"]}, "levels": [26, 26, 27, 31]}, "condition": "has_cobble_badge", "flag_check": "defeated_rival_pastoria"},
         "trainer_pool": [],
         "berry_trees": ["NANAB_BERRY", "PERSIM_BERRY"]
     },
@@ -1520,7 +1517,6 @@
             {"text": "Deliver Old Charm", "action": "NPC", "target": "old_charm_delivery", "flag_condition": "not delivered_old_charm"},
             {"text": "DRAGON FANG", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_dragon_fang_celestic_town_t05_21_21", "event": {"lines": ["A Dragon Fang, lying by the path."], "gift_item": {"DRAGON_FANG": 1}, "flag": "got_dragon_fang_celestic_town_t05_21_21"}}
         ],
-        "on_enter_event": {"type": "trainer_battle", "trainer": {"name": "Galactic Commander Cyrus", "class": "GALACTIC", "sprite": "cyrus.png", "is_boss_battle": true, "team": [430, 130, 461], "rewards": {"balls": 5}, "victory_flag": "defeated_cyrus_celestic", "dialogue": {"intro": ["You again. You've been disrupting our plans at every turn.", "No matter. The ruins here won't tell you anything useful.", "Still — I'll enjoy defeating you."], "player_won": ["...Unexpected. You have my respect, if nothing else.", "The old woman can keep her ruins. For now."], "player_lost": ["As I predicted. Your interference ends here."]}}, "condition": "has_fen_badge", "flag_check": "defeated_cyrus_celestic"},
         "trainer_pool": []
     },
     "CANALAVE_CITY": {
@@ -1546,7 +1542,6 @@
             {"text": "Iron Island", "action": "TRAVEL", "target_area": "IRON_ISLAND"},
             {"text": "TM060", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm060_canalave_city_c02_2_58", "event": {"lines": ["A TM (U-Turn), lying by the path."], "gift_item": {"TM060": 1}, "flag": "got_tm060_canalave_city_c02_2_58"}}
         ],
-        "on_enter_event": {"type": "trainer_battle", "trainer": {"name": "{rival_name}", "class": "PKMN_TRAINER", "sprite": "{rival_character}", "team": [397, 418, 214, 315, 391], "team_choice": {"387": [397, 418, 214, 315, 391], "390": [397, 315, 214, 77, 394], "393": [397, 418, 214, 77, 388]}, "rewards": {"balls": 5}, "victory_flag": "defeated_rival_canalave", "dialogue": {"intro": ["{player_name}! I've grown SO much stronger! BATTLE ME RIGHT NOW!"], "player_won": ["You're unreal. I'm gonna train harder than ever!"], "player_lost": ["FINALLY! I'm getting closer to you!"]}, "levels": [32, 33, 32, 34, 37]}, "condition": "has_relic_badge", "flag_check": "defeated_rival_canalave"},
         "trainer_pool": []
     },
     "SNOWPOINT_CITY": {
@@ -1979,6 +1974,7 @@
     },
     "GREAT_MARSH": {
         "surf_pool_percentages": "GREAT_MARSH_SURF_PERCENTAGES",
+        "safari_game": {"balls": 30, "steps": 500},
         "zones": [
             {"key": "area_1", "name": "Area 1"},
             {"key": "area_2", "name": "Area 2"},
@@ -3535,7 +3531,7 @@
       "id": "sinnoh_m6",
       "type": "MAIN",
       "title": "The Galactic Warehouse",
-      "description": "A Galactic Grunt in Veilstone is up to something. Talk to him, take the Storage Key and raid the Warehouse.",
+      "description": "Team Galactic grunts took Dawn's Pokedex! Team up with her in front of the warehouses, then look inside with Looker.",
       "condition": {
         "required_region": "SINNOH",
         "badges_min": 3,
@@ -3543,7 +3539,11 @@
         "flag_not": "galactic_warehouse_cleared"
       },
       "target": "VEILSTONE_CITY",
-      "completed_flag": "galactic_warehouse_cleared"
+      "completed_flag": "galactic_warehouse_cleared",
+      "steps": [
+        {"area": "VEILSTONE_CITY", "at": [24, 20], "label": "Dawn", "done": "sinnoh_warehouse_guards_beaten"},
+        {"area": "GALACTIC_WAREHOUSE", "at": [12, 7], "label": "Looker", "done": "galactic_warehouse_cleared"}
+      ]
     },
     {
       "id": "sinnoh_m6b",
@@ -3571,7 +3571,37 @@
         "visited": "PASTORIA_CITY"
       },
       "target": "PASTORIA_CITY",
+      "steps": [{"area": "PASTORIA_CITY", "at": [13, 28], "label": "Barry", "done": "defeated_rival_pastoria"}],
       "reward": "Fen Badge"
+    },
+    {
+      "id": "sinnoh_m7",
+      "type": "MAIN",
+      "title": "The Old Charm",
+      "description": "Cynthia is at Valor Lakefront, east of Pastoria, with something for the Psyduck on Route 210. Then carry her Old Charm north, through Solaceon and the fog of Route 210, to Celestic Town.",
+      "condition": {
+        "required_region": "SINNOH",
+        "badges_min": 4,
+        "flag_not": "delivered_old_charm"
+      },
+      "target": "CELESTIC_TOWN",
+      "completed_flag": "delivered_old_charm",
+      "steps": [
+        {"area": "PASTORIA_CITY", "at": [13, 28], "label": "Gym", "done": "sinnoh_pastoria_bomb_warned"},
+        {"area": "PASTORIA_CITY", "at": [34, 10], "label": "Observatory Gate", "done": "sinnoh_pastoria_bomb"},
+        {"area": "VALOR_LAKEFRONT", "at": [36, 54], "label": "Galactic Grunt", "done": "sinnoh_valor_grunt_beaten"},
+        {
+          "area": "VALOR_LAKEFRONT",
+          "at": [
+            35,
+            54
+          ],
+          "label": "Cynthia",
+          "done": "sinnoh_secretpotion"
+        },
+        {"area": "SINNOH_ROUTE_210", "at": [81, 71], "label": "Cynthia", "done": "got_old_charm_r210"},
+        {"area": "CELESTIC_TOWN", "at": [15, 10], "label": "Galactic Grunt", "done": "delivered_old_charm"}
+      ]
     },
     {
       "id": "sinnoh_m8",
@@ -3612,44 +3642,21 @@
         "visited": "CANALAVE_CITY"
       },
       "target": "CANALAVE_CITY",
+      "steps": [{"area": "CANALAVE_CITY", "at": [15, 20], "label": "Barry", "done": "defeated_rival_canalave"}],
       "reward": "Mine Badge"
-    },
-    {
-      "id": "sinnoh_m7",
-      "type": "MAIN",
-      "title": "The Old Charm",
-      "description": "Cynthia is at Valor Lakefront, east of Pastoria, with something for the Psyduck on Route 210. Then carry her Old Charm north, through Solaceon and the fog of Route 210, to Celestic Town.",
-      "condition": {
-        "required_region": "SINNOH",
-        "badges_min": 4,
-        "flag_not": "delivered_old_charm"
-      },
-      "target": "CELESTIC_TOWN",
-      "completed_flag": "delivered_old_charm",
-      "steps": [
-        {
-          "area": "VALOR_LAKEFRONT",
-          "at": [
-            36,
-            54
-          ],
-          "label": "Cynthia",
-          "done": "sinnoh_secretpotion"
-        },
-        {"area": "SINNOH_ROUTE_210", "at": [81, 71], "label": "Cynthia", "done": "got_old_charm_r210"}
-      ]
     },
     {
       "id": "sinnoh_m10",
       "type": "MAIN",
       "title": "The Canalave Library",
-      "description": "Professor Rowan wants to meet at the Canalave Library.",
+      "description": "Professor Rowan wants to meet at the Canalave Library, but Barry won't go in till you have HM Strength. Riley on Iron Island has it: take the boat from the harbour.",
       "condition": {
         "required_region": "SINNOH",
         "badges_min": 6,
         "flag_not": "canalave_library_meeting"
       },
       "target": "CANALAVE_CITY",
+      "steps": [{"area": "IRON_ISLAND", "at": [21, 10], "label": "Riley", "done": "got_hm_strength_iron_island"}, {"area": "CANALAVE_CITY", "at": [5, 14], "label": "Canalave Library", "done": "canalave_library_meeting"}],
       "completed_flag": "canalave_library_meeting"
     },
     {

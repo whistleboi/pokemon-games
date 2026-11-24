@@ -16297,7 +16297,7 @@
 "name": "Veteran Ponta",
 "class": "VETERAN",
 "class_id": 70,
-"sprite": "b2_veteran.png",
+"sprite": "b2_veteran_m.png",
 "walk": "b2_c32.png",
 "pool": [
 823,
@@ -16376,7 +16376,7 @@
 "name": "Veteran Donta",
 "class": "VETERAN",
 "class_id": 70,
-"sprite": "b2_veteran.png",
+"sprite": "b2_veteran_m.png",
 "walk": "b2_c32.png",
 "pool": [
 823,
@@ -16455,7 +16455,7 @@
 "name": "Veteran Colombo",
 "class": "VETERAN",
 "class_id": 70,
-"sprite": "b2_veteran.png",
+"sprite": "b2_veteran_m.png",
 "walk": "b2_c32.png",
 "pool": [
 909,
@@ -16544,7 +16544,7 @@
 "name": "Veteran Leron",
 "class": "VETERAN",
 "class_id": 70,
-"sprite": "b2_veteran.png",
+"sprite": "b2_veteran_m.png",
 "walk": "b2_c32.png",
 "pool": [
 909,
@@ -16633,7 +16633,7 @@
 "name": "Veteran Hecate",
 "class": "VETERAN",
 "class_id": 71,
-"sprite": "b2_veteran.png",
+"sprite": "b2_veteran_f.png",
 "walk": "b2_c33.png",
 "pool": [
 822,
@@ -16729,7 +16729,7 @@
 "name": "Veteran Ginger",
 "class": "VETERAN",
 "class_id": 71,
-"sprite": "b2_veteran.png",
+"sprite": "b2_veteran_f.png",
 "walk": "b2_c33.png",
 "pool": [
 822,
@@ -16825,7 +16825,7 @@
 "name": "Veteran Risha",
 "class": "VETERAN",
 "class_id": 71,
-"sprite": "b2_veteran.png",
+"sprite": "b2_veteran_f.png",
 "walk": "b2_c33.png",
 "pool": [
 909,
@@ -16914,7 +16914,7 @@
 "name": "Veteran Jeune",
 "class": "VETERAN",
 "class_id": 71,
-"sprite": "b2_veteran.png",
+"sprite": "b2_veteran_f.png",
 "walk": "b2_c33.png",
 "pool": [
 909,

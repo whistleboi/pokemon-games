@@ -323,7 +323,9 @@ for area in [k for k in _SIN if (_tm.get(k) or {}).get("rooms") and _AD.get(k, {
         if inside and mat:
             p.run.player = (mat[0], mat[1] - 1); p.anim = 0
             p.step(0, 1); frames(3)
-            out = p.run.index == 0 and abs(p.run.player[0] - (x + dx)) <= 1 and abs(p.run.player[1] - (y + dy)) <= 1
+            _side = [tuple(int(v) for v in k.split(",")) for k, v in (_tm[area].get("inside") or {}).items() if v == room]
+            out = p.run.index == 0 and (abs(p.run.player[0] - (x + dx)) <= 1 and abs(p.run.player[1] - (y + dy)) <= 1
+                                        or any(abs(p.run.player[0] - a) <= 1 and abs(p.run.player[1] - b) <= 1 for a, b in _side))   # (a wide gate's doors, Route 206's: out by any of them)
         _n += 1
         if not (inside and out):
             _bad.append((area, d, room, inside, out, p.run.index, p.run.player))
@@ -331,8 +333,9 @@ check(_n >= 20 and not _bad, f"{_n} route doors: in to the room and back out bel
 
 print("8) Gym trainers in the Gym rooms (sgym.py): Platinum's own, talk and you battle, once")
 from src.states.battle import TrainerIntroState, TrainerBattleState
-_gn = {k: [q for q in (e.get("rooms") or {}).get("gym", {}).get("people") or [] if isinstance(q, dict) and (q.get("event") or {}).get("battle")]
-       for k, e in _tm.items() if k in _SIN}
+_gn = {k: [q for rn, r in (e.get("rooms") or {}).items() if rn == "gym" or rn.startswith("gym_") for q in r.get("people") or []
+           if isinstance(q, dict) and (q.get("event") or {}).get("battle")]
+       for k, e in _tm.items() if k in _SIN}   # (a Gym of several rooms: all of them - Canalave's four floors, S5 11-24)
 check(sum(len(v) for v in _gn.values()) >= 29, f"{sum(len(v) for v in _gn.values())} Gym trainers standing in {sum(1 for v in _gn.values() if v)} Gyms")
 t = into("OREBURGH_CITY", "gym")
 fs = figures(t)
