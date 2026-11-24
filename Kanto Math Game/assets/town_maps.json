@@ -19851,7 +19851,7 @@
      "ccccc..c.....c",
      "ccccc..c...ccc",
      "cc<!!..c.....c",
-     "c......c.....c",
+     "c......c..N..c",
      "c......c.....c",
      "cccccccc.....c",
      "c............c",
@@ -19878,6 +19878,30 @@
      "_signs_in_picture": true,
      "_buildings_in_picture": true
     },
+    "people": [
+     {
+      "text": "EEVEE",
+      "action": "EVENT",
+      "color": "GOLD",
+      "found": true,
+      "flag_condition": "not got_eevee_celadon_roof",
+      "event": {
+       "requires": [
+        "party_room"
+       ],
+       "fail": [
+        "A Poké Ball sits here... but your team is full. Make room and come back!"
+       ],
+       "lines": [
+        "A Poké Ball sits out on the roof, with a note: \"This Eevee loves the sunshine up here. Please take it somewhere fun!\"",
+        "You got an Eevee!"
+       ],
+       "gift_pokemon": 133,
+       "gift_level": 25,
+       "flag": "got_eevee_celadon_roof"
+      }
+     }
+    ],
     "signs": [
      [
       "I KNOW EVERYTHING!"
