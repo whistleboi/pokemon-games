@@ -165,7 +165,6 @@ unovab8b               unova    story,batch
 unovab9a               unova    story,batch
 unovab9b               unova    story,batch
 unovab9c               unova    story,batch
-unovacam               unova    live3d
 unovastart             unova    story,start
 
 # orre

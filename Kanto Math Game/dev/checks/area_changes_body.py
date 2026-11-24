@@ -144,7 +144,9 @@ PLACES = {
     "HOENN": ("emerald", "OLDALE_TOWN", "HOENN_ROUTE_111", "HOENN_DESERT_RUINS", "HOENN_GRANITE_CAVE"),
     "JOHTO": ("hgss", "VIOLET_CITY", "JOHTO_ROUTE_47", "JOHTO_CLIFF_CAVE", "SPROUT_TOWER"),
     "SINNOH": ("platinum", "JUBILIFE_CITY", "SINNOH_ROUTE_203", "OREBURGH_GATE", "OREBURGH_GATE"),
-    "UNOVA": ("platinum", "FLOCCESY_TOWN", "UNOVA_ROUTE_9", "CHALLENGERS_CAVE", "SEASIDE_CAVE"),
+    "UNOVA": ("platinum", "FLOCCESY_TOWN", "UNOVA_ROUTE_9", "CHALLENGERS_CAVE", "TWIST_MOUNTAIN"),   # (Unova's walked caves give each floor
+                                                                                                    #  a place of its own, Seaside Cave B1F 9a: stairs on one map
+                                                                                                    #  only where it isn't walked yet)
     "ORRE": ("orre", "PHENAC_CITY", "PYRITE_TOWN", "PYRITE_CAVE", "SNAGEM_HIDEOUT"),
 }
 
