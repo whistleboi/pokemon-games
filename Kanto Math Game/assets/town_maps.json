@@ -319106,17 +319106,17 @@
          264
         ],
         "levels": [
-         53,
-         53,
-         55,
-         55
+         41,
+         41,
+         42,
+         42
         ],
         "team_moves": [
          [
           "PIN-MISSILE",
-          "MUD-SPORT",
           "HEADBUTT",
-          "SAND-ATTACK"
+          "SAND-ATTACK",
+          "DOUBLE-EDGE"
          ],
          [
           "PIN-MISSILE",
@@ -319127,8 +319127,8 @@
          [
           "WATER-PULSE",
           "ICY-WIND",
-          "MUD-SLAP",
-          "HEADBUTT"
+          "HEADBUTT",
+          "FLAIL"
          ],
          [
           "SHOCK-WAVE",
@@ -319179,11 +319179,11 @@
        272
       ],
       "levels": [
-       54,
-       54,
-       54,
-       57,
-       54
+       42,
+       42,
+       42,
+       43,
+       42
       ],
       "team_moves": [
        [
@@ -319212,9 +319212,8 @@
        ],
        [
         "RAIN-DANCE",
-        "MEGA-DRAIN",
-        "WATER-GUN",
-        "ASTONISH"
+        "FAKE-OUT",
+        "BUBBLE-BEAM"
        ]
       ],
       "double": true,
@@ -319257,12 +319256,12 @@
          130
         ],
         "levels": [
-         34,
-         82,
-         82,
-         82,
-         82,
-         82
+         42,
+         54,
+         54,
+         54,
+         54,
+         54
         ],
         "team_moves": [
          [
@@ -319280,8 +319279,8 @@
          [
           "HYDRO-PUMP",
           "ICE-BEAM",
-          "DRAGON-BREATH",
-          "SAFEGUARD"
+          "SAFEGUARD",
+          "RAIN-DANCE"
          ],
          [
           "THUNDERBOLT",
@@ -319298,8 +319297,8 @@
          [
           "HYDRO-PUMP",
           "EARTHQUAKE",
-          "STRENGTH",
-          "ROAR"
+          "ROAR",
+          "HYPER-BEAM"
          ]
         ],
         "double": true,
@@ -319382,8 +319381,8 @@
            263
           ],
           "levels": [
-           24,
-           24
+           8,
+           8
           ],
           "team_moves": [
            [
@@ -319455,7 +319454,7 @@
          "flag": "xd_hordel",
          "gift_shadow": {
           "id": 9357,
-          "level": 55
+          "level": 42
          },
          "lines": [
           "Hordel: You're {player_name}? I worked for Cipher... until I saw what they do. I ran, and took this one with me.",
@@ -319738,9 +319737,9 @@
        325
       ],
       "levels": [
-       30,
-       26,
-       24
+       12,
+       11,
+       10
       ],
       "team_moves": [
        [
@@ -319750,12 +319749,12 @@
         "BITE"
        ],
        [
-        "SLUDGE",
-        "SCREECH"
+        "MUD-SLAP",
+        "HARDEN"
        ],
        [
-        "PSYWAVE",
-        "TORMENT"
+        "GROWL",
+        "CONFUSION"
        ]
       ],
       "rewards": {
@@ -319819,9 +319818,9 @@
        325
       ],
       "levels": [
-       30,
-       26,
-       24
+       12,
+       11,
+       10
       ],
       "team_moves": [
        [
@@ -319831,12 +319830,12 @@
         "DIG"
        ],
        [
-        "SLUDGE",
-        "SCREECH"
+        "MUD-SLAP",
+        "HARDEN"
        ],
        [
-        "PSYWAVE",
-        "TORMENT"
+        "GROWL",
+        "CONFUSION"
        ]
       ],
       "rewards": {
@@ -319876,13 +319875,13 @@
        109
       ],
       "levels": [
-       25,
-       27
+       11,
+       11
       ],
       "team_moves": [
        [
-        "BUBBLE",
-        "VICE-GRIP"
+        "TAUNT",
+        "LEER"
        ],
        [
         "POISON-GAS",
@@ -319940,10 +319939,10 @@
          359
         ],
         "levels": [
-         50,
-         49,
-         49,
-         49
+         41,
+         41,
+         41,
+         41
         ],
         "team_moves": [
          [
@@ -319953,18 +319952,18 @@
          ],
          [
           "THUNDER-SHOCK",
-          "SONIC-BOOM",
-          "SUPERSONIC"
+          "SUPERSONIC",
+          "METAL-SOUND"
          ],
          [
-          "CAMOUFLAGE",
           "WATER-GUN",
-          "RAPID-SPIN"
+          "RAPID-SPIN",
+          "PSYCHIC"
          ],
          [
-          "BITE",
           "TAUNT",
-          "QUICK-ATTACK"
+          "QUICK-ATTACK",
+          "FOCUS-ENERGY"
          ]
         ],
         "double": true,
@@ -320045,13 +320044,13 @@
          161
         ],
         "levels": [
-         25,
-         25
+         11,
+         11
         ],
         "team_moves": [
          [
           "PECK",
-          "HYPNOSIS"
+          "CONFUSION"
          ],
          [
           "SCRATCH",
@@ -320097,8 +320096,8 @@
        288
       ],
       "levels": [
-       48,
-       48
+       41,
+       41
       ],
       "team_moves": [
        [
@@ -320109,7 +320108,7 @@
        [
         "FURY-SWIPES",
         "SCRATCH",
-        "YAWN"
+        "FOCUS-PUNCH"
        ]
       ],
       "double": true,
@@ -320150,8 +320149,8 @@
        322
       ],
       "levels": [
-       48,
-       48
+       41,
+       41
       ],
       "team_moves": [
        [
@@ -320205,9 +320204,9 @@
        374
       ],
       "levels": [
-       48,
-       48,
-       47
+       41,
+       41,
+       40
       ],
       "team_moves": [
        [
@@ -320218,7 +320217,7 @@
        [
         "PECK",
         "TAIL-WHIP",
-        "WATER-SPORT"
+        "WATERFALL"
        ],
        [
         "TAKE-DOWN"
@@ -320263,16 +320262,16 @@
        81
       ],
       "levels": [
-       48,
-       48,
-       48
+       41,
+       41,
+       41
       ],
       "team_moves": [
        [
-        "SPARK",
         "QUICK-ATTACK",
         "HOWL",
-        "LEER"
+        "LEER",
+        "CHARGE"
        ],
        [
         "WATER-GUN",
@@ -320281,10 +320280,10 @@
         "THUNDER-WAVE"
        ],
        [
-        "SONIC-BOOM",
         "SUPERSONIC",
         "THUNDER-SHOCK",
-        "TACKLE"
+        "TACKLE",
+        "METAL-SOUND"
        ]
       ],
       "double": true,
@@ -320327,10 +320326,10 @@
        41
       ],
       "levels": [
-       48,
-       48,
-       48,
-       48
+       41,
+       41,
+       41,
+       41
       ],
       "team_moves": [
        [
@@ -320414,11 +320413,11 @@
        204
       ],
       "levels": [
-       46,
-       46,
-       47,
-       47,
-       48
+       40,
+       40,
+       40,
+       40,
+       41
       ],
       "team_moves": [
        [
@@ -320480,8 +320479,8 @@
          266
         ],
         "levels": [
-         25,
-         25
+         11,
+         11
         ],
         "team_moves": [
          [
@@ -320489,7 +320488,6 @@
           "STRING-SHOT"
          ],
          [
-          "TACKLE",
           "HARDEN"
          ]
         ],
@@ -320554,16 +320552,16 @@
          41
         ],
         "levels": [
-         51,
-         51,
-         51
+         42,
+         42,
+         42
         ],
         "team_moves": [
          [
           "REFLECT",
           "HYPNOSIS",
           "PECK",
-          "FORESIGHT"
+          "DREAM-EATER"
          ],
          [
           "HELPING-HAND",
@@ -320572,10 +320570,10 @@
           "DEFENSE-CURL"
          ],
          [
-          "WING-ATTACK",
           "BITE",
           "ASTONISH",
-          "SUPERSONIC"
+          "SUPERSONIC",
+          "HAZE"
          ]
         ],
         "double": true,
@@ -320617,28 +320615,28 @@
          327
         ],
         "levels": [
-         51,
-         51,
-         51
+         42,
+         42,
+         42
         ],
         "team_moves": [
          [
-          "FEINT-ATTACK",
           "SCREECH",
           "QUICK-ATTACK",
-          "TAUNT"
+          "TAUNT",
+          "BEAT-UP"
          ],
          [
           "PSYCH-UP",
           "PSYBEAM",
-          "ODOR-SLEUTH",
-          "PSYWAVE"
+          "SNORE",
+          "REST"
          ],
          [
           "HYPNOSIS",
           "PSYBEAM",
-          "FEINT-ATTACK",
-          "UPROAR"
+          "UPROAR",
+          "PSYCH-UP"
          ]
         ],
         "double": true,
@@ -320680,22 +320678,22 @@
          182
         ],
         "levels": [
-         49,
-         49,
-         49
+         41,
+         41,
+         41
         ],
         "team_moves": [
          [
-          "COMET-PUNCH",
           "SUPERSONIC",
           "TACKLE",
-          "DOUBLE-TEAM"
+          "DOUBLE-TEAM",
+          "DOUBLE-EDGE"
          ],
          [
           "PSYCH-UP",
           "PSYBEAM",
-          "ODOR-SLEUTH",
-          "PSYWAVE"
+          "SNORE",
+          "REST"
          ],
          [
           "MAGICAL-LEAF",
@@ -320743,9 +320741,9 @@
          264
         ],
         "levels": [
-         50,
-         50,
-         50
+         41,
+         41,
+         41
         ],
         "team_moves": [
          [
@@ -320761,10 +320759,10 @@
           "DOUBLE-TEAM"
          ],
          [
-          "MUD-SPORT",
-          "ODOR-SLEUTH",
           "DOUBLE-TEAM",
-          "HEADBUTT"
+          "HEADBUTT",
+          "FLAIL",
+          "TAKE-DOWN"
          ]
         ],
         "double": true,
@@ -320806,16 +320804,16 @@
          193
         ],
         "levels": [
-         51,
-         51,
-         51
+         42,
+         42,
+         42
         ],
         "team_moves": [
          [
           "DOUBLE-TEAM",
           "PSYBEAM",
           "FURY-SWIPES",
-          "FEINT-ATTACK"
+          "SUBSTITUTE"
          ],
          [
           "BUBBLE-BEAM",
@@ -320824,10 +320822,10 @@
           "DOUBLE-TEAM"
          ],
          [
-          "SONIC-BOOM",
           "DOUBLE-TEAM",
           "QUICK-ATTACK",
-          "FORESIGHT"
+          "HYPNOSIS",
+          "ANCIENT-POWER"
          ]
         ],
         "double": true,
@@ -320869,9 +320867,9 @@
          359
         ],
         "levels": [
-         52,
-         52,
-         52
+         42,
+         42,
+         42
         ],
         "team_moves": [
          [
@@ -320887,10 +320885,10 @@
           "QUICK-ATTACK"
          ],
          [
-          "BITE",
           "DOUBLE-TEAM",
           "QUICK-ATTACK",
-          "TAUNT"
+          "TAUNT",
+          "FOCUS-ENERGY"
          ]
         ],
         "double": true,
@@ -320943,13 +320941,13 @@
        293
       ],
       "levels": [
-       24,
-       25
+       10,
+       11
       ],
       "team_moves": [
        [
         "POUND",
-        "UPROAR"
+        "HOWL"
        ],
        [
         "POUND",
@@ -321012,9 +321010,9 @@
        325
       ],
       "levels": [
-       30,
-       26,
-       24
+       12,
+       11,
+       10
       ],
       "team_moves": [
        [
@@ -321024,12 +321022,12 @@
         "RAZOR-LEAF"
        ],
        [
-        "SLUDGE",
-        "SCREECH"
+        "MUD-SLAP",
+        "HARDEN"
        ],
        [
-        "PSYWAVE",
-        "TORMENT"
+        "GROWL",
+        "CONFUSION"
        ]
       ],
       "rewards": {
@@ -321405,10 +321403,10 @@
            262
           ],
           "levels": [
-           48,
-           51,
-           50,
-           49
+           41,
+           42,
+           41,
+           41
           ],
           "team_moves": [
            [
@@ -321479,16 +321477,16 @@
            168
           ],
           "levels": [
-           50,
-           51,
-           50
+           41,
+           42,
+           41
           ],
           "team_moves": [
            [
             "HAZE",
-            "PURSUIT",
             "ASTONISH",
-            "PECK"
+            "PECK",
+            "MEAN-LOOK"
            ],
            [
             "PIN-MISSILE",
@@ -321546,9 +321544,9 @@
            9322
           ],
           "levels": [
-           51,
-           51,
-           54
+           42,
+           42,
+           42
           ],
           "team_moves": [
            [
@@ -321613,23 +321611,23 @@
            9321
           ],
           "levels": [
-           53,
-           54,
-           54,
-           55
+           42,
+           42,
+           42,
+           43
           ],
           "team_moves": [
            [
-            "FORESIGHT",
             "GROWL",
             "PECK",
-            "FACADE"
+            "FACADE",
+            "DREAM-EATER"
            ],
            [
             "ROCK-THROW",
             "BRICK-BREAK",
             "DIG",
-            "MUD-SPORT"
+            "EARTHQUAKE"
            ],
            [
             "POUND",
@@ -321693,9 +321691,9 @@
            9305
           ],
           "levels": [
-           51,
-           51,
-           53
+           42,
+           42,
+           42
           ],
           "team_moves": [
            [
@@ -321705,10 +321703,10 @@
             "WATER-GUN"
            ],
            [
-            "SPARK",
             "QUICK-ATTACK",
             "HOWL",
-            "LEER"
+            "LEER",
+            "CHARGE"
            ],
            [
             "FALSE-SWIPE",
@@ -322042,23 +322040,23 @@
            262
           ],
           "levels": [
-           49,
-           49,
-           49,
-           49
+           41,
+           41,
+           41,
+           41
           ],
           "team_moves": [
            [
             "HORN-ATTACK",
             "SUPERSONIC",
-            "WATER-SPORT",
-            "TAIL-WHIP"
+            "TAIL-WHIP",
+            "WATERFALL"
            ],
            [
             "SCARY-FACE",
             "FOCUS-ENERGY",
-            "RAGE",
-            "BITE"
+            "BITE",
+            "AGILITY"
            ],
            [
             "SLUDGE",
@@ -322066,10 +322064,10 @@
             "SMOG"
            ],
            [
-            "ODOR-SLEUTH",
             "BITE",
             "SAND-ATTACK",
-            "HOWL"
+            "HOWL",
+            "TAUNT"
            ]
           ],
           "double": true,
@@ -322166,8 +322164,8 @@
            366
           ],
           "levels": [
-           48,
-           49
+           41,
+           41
           ],
           "team_moves": [
            [
@@ -322178,8 +322176,7 @@
            [
             "IRON-DEFENSE",
             "WHIRLPOOL",
-            "WATER-GUN",
-            "CLAMP"
+            "WATER-GUN"
            ]
           ],
           "double": true,
@@ -322243,14 +322240,14 @@
          270
         ],
         "levels": [
-         26,
-         25
+         11,
+         11
         ],
         "team_moves": [
          [
           "POUND",
-          "UPROAR",
-          "ASTONISH"
+          "ASTONISH",
+          "HOWL"
          ],
          [
           "ABSORB",
@@ -322301,18 +322298,18 @@
          9406
         ],
         "levels": [
-         25,
-         25,
-         30
+         11,
+         11,
+         12
         ],
         "team_moves": [
          [
-          "NIGHT-SHADE",
-          "LEER"
+          "LEER",
+          "DISABLE"
          ],
          [
-          "CONSTRICT",
-          "STRING-SHOT"
+          "STRING-SHOT",
+          "ABSORB"
          ],
          [
           "SHADOW-RUSH",
@@ -322865,10 +322862,10 @@
          283
         ],
         "levels": [
-         33,
-         32,
-         31,
-         32
+         20,
+         20,
+         19,
+         20
         ],
         "team_moves": [
          [
@@ -322880,16 +322877,16 @@
          [
           "TACKLE",
           "RAPID-SPIN",
-          "BIDE"
+          "ROLLOUT"
          ],
          [
-          "LEECH-LIFE",
-          "DIG"
+          "MUD-SLAP",
+          "FALSE-SWIPE"
          ],
          [
-          "BUBBLE",
-          "FORESIGHT",
-          "QUICK-ATTACK"
+          "QUICK-ATTACK",
+          "BUBBLE-BEAM",
+          "SWEET-SCENT"
          ]
         ],
         "double": true,
@@ -322933,33 +322930,32 @@
          366
         ],
         "levels": [
-         49,
-         49,
-         49,
-         49
+         41,
+         41,
+         41,
+         41
         ],
         "team_moves": [
          [
           "POWDER-SNOW",
-          "ODOR-SLEUTH",
-          "TACKLE"
+          "TACKLE",
+          "TAKE-DOWN"
          ],
          [
           "HEADBUTT",
           "LEER",
           "BITE",
-          "RAGE"
+          "FOCUS-ENERGY"
          ],
          [
-          "PURSUIT",
           "ASTONISH",
-          "PECK"
+          "PECK",
+          "MEAN-LOOK"
          ],
          [
           "IRON-DEFENSE",
           "WHIRLPOOL",
-          "WATER-GUN",
-          "CLAMP"
+          "WATER-GUN"
          ]
         ],
         "double": true,
@@ -323000,20 +322996,20 @@
          72
         ],
         "levels": [
-         48,
-         48
+         40,
+         40
         ],
         "team_moves": [
          [
-          "KARATE-CHOP",
           "FOCUS-ENERGY",
           "LIGHT-SCREEN",
-          "LOW-KICK"
+          "LOW-KICK",
+          "SEISMIC-TOSS"
          ],
          [
-          "CONSTRICT",
           "SUPERSONIC",
-          "POISON-STING"
+          "POISON-STING",
+          "SURF"
          ]
         ],
         "double": true,
@@ -323054,21 +323050,21 @@
          41
         ],
         "levels": [
-         27,
-         27
+         18,
+         18
         ],
         "team_moves": [
          [
           "SLUDGE",
           "YAWN",
-          "ACID-ARMOR",
-          "THIEF"
+          "AMNESIA",
+          "POISON-GAS"
          ],
          [
-          "GUST",
           "ASTONISH",
-          "LEECH-LIFE",
-          "THIEF"
+          "POISON-FANG",
+          "MEAN-LOOK",
+          "ABSORB"
          ]
         ],
         "double": true,
@@ -323108,15 +323104,15 @@
          287
         ],
         "levels": [
-         25,
-         25,
-         26
+         17,
+         17,
+         17
         ],
         "team_moves": [
          [
           "SCRATCH",
           "DEFENSE-CURL",
-          "THIEF"
+          "HELPING-HAND"
          ],
          [
           "PECK",
@@ -323126,7 +323122,7 @@
          [
           "SCRATCH",
           "AMNESIA",
-          "PURSUIT"
+          "HEADBUTT"
          ]
         ],
         "double": true,
@@ -323165,8 +323161,8 @@
          54
         ],
         "levels": [
-         30,
-         29
+         19,
+         19
         ],
         "team_moves": [
          [
@@ -323218,8 +323214,8 @@
          285
         ],
         "levels": [
-         30,
-         26
+         19,
+         17
         ],
         "team_moves": [
          [
@@ -323270,8 +323266,8 @@
          304
         ],
         "levels": [
-         34,
-         35
+         21,
+         21
         ],
         "team_moves": [
          [
@@ -323279,7 +323275,7 @@
          ],
          [
           "HEADBUTT",
-          "METAL-SOUND"
+          "PROTECT"
          ]
         ],
         "double": true,
@@ -323320,9 +323316,9 @@
          269
         ],
         "levels": [
-         30,
-         26,
-         26
+         19,
+         17,
+         17
         ],
         "team_moves": [
          [
@@ -323333,9 +323329,9 @@
          ],
          [
           "ABSORB",
-          "SLEEP-POWDER",
           "SWEET-SCENT",
-          "ACID"
+          "ACID",
+          "STUN-SPORE"
          ],
          [
           "TACKLE",
@@ -323382,17 +323378,17 @@
          206
         ],
         "levels": [
-         48,
-         48,
-         48,
-         48
+         40,
+         40,
+         40,
+         40
         ],
         "team_moves": [
          [
-          "ODOR-SLEUTH",
           "SAND-ATTACK",
           "TACKLE",
-          "TAIL-WHIP"
+          "TAIL-WHIP",
+          "DOUBLE-EDGE"
          ],
          [
           "UPROAR",
@@ -323409,7 +323405,7 @@
           "ROCK-SMASH",
           "THIEF",
           "DEFENSE-CURL",
-          "RAGE"
+          "YAWN"
          ]
         ],
         "double": true,
@@ -323452,10 +323448,10 @@
          333
         ],
         "levels": [
-         30,
-         27,
-         28,
-         27
+         19,
+         18,
+         18,
+         18
         ],
         "team_moves": [
          [
@@ -323465,19 +323461,19 @@
           "ROCK-THROW"
          ],
          [
-          "SING",
           "TAIL-WHIP",
-          "WATER-GUN"
+          "WATER-GUN",
+          "BOUNCE"
          ],
          [
           "SING",
-          "CHARM",
-          "POUND"
+          "POUND",
+          "DISABLE"
          ],
          [
-          "SING",
           "GROWL",
-          "PECK"
+          "PECK",
+          "FURY-ATTACK"
          ]
         ],
         "double": true,
@@ -323517,9 +323513,9 @@
          278
         ],
         "levels": [
-         30,
-         27,
-         27
+         19,
+         18,
+         18
         ],
         "team_moves": [
          [
@@ -323531,12 +323527,12 @@
          [
           "TACKLE",
           "SAFEGUARD",
-          "COMET-PUNCH"
+          "MACH-PUNCH"
          ],
          [
           "WATER-GUN",
           "GROWL",
-          "GUST"
+          "WING-ATTACK"
          ]
         ],
         "double": true,
@@ -323576,9 +323572,9 @@
          263
         ],
         "levels": [
-         30,
-         28,
-         28
+         19,
+         18,
+         18
         ],
         "team_moves": [
          [
@@ -323588,14 +323584,14 @@
           "MEAN-LOOK"
          ],
          [
-          "TICKLE",
           "GROWL",
-          "TACKLE"
+          "TACKLE",
+          "FURY-SWIPES"
          ],
          [
-          "TICKLE",
           "TAIL-WHIP",
-          "HEADBUTT"
+          "HEADBUTT",
+          "PIN-MISSILE"
          ]
         ],
         "double": true,
@@ -323640,22 +323636,22 @@
          322
         ],
         "levels": [
-         48,
-         48,
-         48
+         40,
+         40,
+         40
         ],
         "team_moves": [
          [
           "SPLASH",
-          "ODOR-SLEUTH",
-          "PSYWAVE",
-          "REFLECT"
+          "REFLECT",
+          "SNORE",
+          "REST"
          ],
          [
           "THUNDER-SHOCK",
-          "SONIC-BOOM",
           "METAL-SOUND",
-          "TACKLE"
+          "TACKLE",
+          "SCREECH"
          ],
          [
           "EMBER",
@@ -323703,31 +323699,31 @@
          175
         ],
         "levels": [
-         47,
-         47,
-         47,
-         48
+         40,
+         40,
+         40,
+         40
         ],
         "team_moves": [
          [
           "NIGHT-SHADE",
           "SCREECH",
-          "KNOCK-OFF"
+          "ROLE-PLAY"
          ],
          [
-          "COMET-PUNCH",
           "SUPERSONIC",
           "TACKLE",
-          "LIGHT-SCREEN"
+          "LIGHT-SCREEN",
+          "DOUBLE-EDGE"
          ],
          [
           "LOCK-ON",
           "WATER-GUN"
          ],
          [
-          "PECK",
           "SWEET-KISS",
-          "CHARM"
+          "CHARM",
+          "FOLLOW-ME"
          ]
         ],
         "double": true,
@@ -323770,10 +323766,10 @@
          228
         ],
         "levels": [
-         49,
-         49,
-         49,
-         49
+         41,
+         41,
+         41,
+         41
         ],
         "team_moves": [
          [
@@ -323788,10 +323784,10 @@
           "SCARY-FACE"
          ],
          [
-          "BIDE",
           "BULLET-SEED",
           "GROWTH",
-          "HARDEN"
+          "HARDEN",
+          "EXPLOSION"
          ],
          [
           "BITE",
@@ -323840,9 +323836,9 @@
          43
         ],
         "levels": [
-         48,
-         48,
-         48
+         40,
+         40,
+         40
         ],
         "team_moves": [
          [
@@ -323931,10 +323927,10 @@
          66
         ],
         "levels": [
-         33,
-         29,
-         29,
-         29
+         20,
+         19,
+         19,
+         19
         ],
         "team_moves": [
          [
@@ -323945,16 +323941,16 @@
          ],
          [
           "CONFUSION",
-          "IMPRISON"
+          "PSYBEAM"
          ],
          [
-          "ROCK-SMASH",
-          "BIDE"
+          "MEGA-DRAIN",
+          "ROLLOUT"
          ],
          [
-          "KARATE-CHOP",
           "FOCUS-ENERGY",
-          "STRENGTH"
+          "KNOCK-OFF",
+          "REVENGE"
          ]
         ],
         "double": true,
@@ -323988,10 +323984,10 @@
          68
         ],
         "levels": [
-         48,
-         72,
-         71,
-         72
+         42,
+         50,
+         49,
+         50
         ],
         "team_moves": [
          [
@@ -324008,15 +324004,15 @@
          ],
          [
           "GIGA-DRAIN",
-          "FEINT-ATTACK",
-          "EXTRASENSORY",
-          "NATURE-POWER"
+          "NATURE-POWER",
+          "LEAF-BLADE",
+          "AIR-CUTTER"
          ],
          [
-          "CROSS-CHOP",
           "EARTHQUAKE",
           "STRENGTH",
-          "ROCK-SLIDE"
+          "ROCK-SLIDE",
+          "SEISMIC-TOSS"
          ]
         ],
         "double": true,
@@ -324044,10 +324040,10 @@
            68
           ],
           "levels": [
-           71,
-           72,
-           71,
-           72
+           49,
+           50,
+           49,
+           50
           ],
           "team_moves": [
            [
@@ -324064,15 +324060,15 @@
            ],
            [
             "GIGA-DRAIN",
-            "FEINT-ATTACK",
-            "EXTRASENSORY",
-            "NATURE-POWER"
+            "NATURE-POWER",
+            "LEAF-BLADE",
+            "AIR-CUTTER"
            ],
            [
-            "CROSS-CHOP",
             "EARTHQUAKE",
             "STRENGTH",
-            "ROCK-SLIDE"
+            "ROCK-SLIDE",
+            "SEISMIC-TOSS"
            ]
           ],
           "double": true,
@@ -325452,9 +325448,9 @@
          162
         ],
         "levels": [
-         34,
-         35,
-         34
+         23,
+         23,
+         23
         ],
         "team_moves": [
          [
@@ -325466,8 +325462,8 @@
           "GROWTH"
          ],
          [
-          "CUT",
-          "SECRET-POWER"
+          "SECRET-POWER",
+          "FOLLOW-ME"
          ]
         ],
         "double": true,
@@ -325552,15 +325548,15 @@
          192
         ],
         "levels": [
-         39,
-         39,
-         40
+         25,
+         25,
+         25
         ],
         "team_moves": [
          [
           "WING-ATTACK",
-          "REFRESH",
-          "SECRET-POWER"
+          "SECRET-POWER",
+          "AERIAL-ACE"
          ],
          [
           "ROCK-SLIDE",
@@ -326500,8 +326496,8 @@
          9353
         ],
         "levels": [
-         43,
-         48
+         37,
+         38
         ],
         "team_moves": [
          [
@@ -326560,12 +326556,12 @@
          9347
         ],
         "levels": [
-         78,
-         78,
-         78,
-         78,
-         78,
-         78
+         63,
+         63,
+         63,
+         63,
+         63,
+         63
         ],
         "team_moves": [
          [
@@ -326649,8 +326645,8 @@
          270
         ],
         "levels": [
-         46,
-         46
+         37,
+         37
         ],
         "team_moves": [
          [
@@ -326699,8 +326695,8 @@
          349
         ],
         "levels": [
-         46,
-         46
+         37,
+         37
         ],
         "team_moves": [
          [
@@ -326749,8 +326745,8 @@
          183
         ],
         "levels": [
-         46,
-         46
+         37,
+         37
         ],
         "team_moves": [
          [
@@ -327734,8 +327730,8 @@
            9401
           ],
           "levels": [
-           43,
-           48
+           37,
+           38
           ],
           "team_moves": [
            [
@@ -328838,16 +328834,16 @@
            305
           ],
           "levels": [
-           58,
-           57,
-           59
+           32,
+           32,
+           33
           ],
           "team_moves": [
            [
             "ANCIENT-POWER",
             "BRICK-BREAK",
             "IRON-DEFENSE",
-            "STRENGTH"
+            "SWEET-SCENT"
            ],
            [
             "METAL-CLAW",
@@ -328859,7 +328855,7 @@
             "IRON-TAIL",
             "DIG",
             "IRON-DEFENSE",
-            "TAKE-DOWN"
+            "ROCK-SLIDE"
            ]
           ],
           "double": true,
@@ -328901,35 +328897,35 @@
            160
           ],
           "levels": [
-           58,
-           59,
-           58,
-           59
+           32,
+           33,
+           32,
+           33
           ],
           "team_moves": [
            [
             "DIVE",
             "PSYBEAM",
             "FOCUS-ENERGY",
-            "HAZE"
+            "BULLET-SEED"
            ],
            [
             "SURF",
-            "ASTONISH",
             "SPIKES",
-            "TAKE-DOWN"
+            "TAKE-DOWN",
+            "PIN-MISSILE"
            ],
            [
             "WATERFALL",
             "TWISTER",
-            "FLAIL",
-            "SMOKESCREEN"
+            "SMOKESCREEN",
+            "AGILITY"
            ],
            [
             "HYDRO-PUMP",
-            "SLASH",
             "SCARY-FACE",
-            "EARTHQUAKE"
+            "EARTHQUAKE",
+            "CRUNCH"
            ]
           ],
           "double": true,
@@ -328971,17 +328967,17 @@
            271
           ],
           "levels": [
-           56,
-           59,
-           58,
-           59
+           32,
+           33,
+           32,
+           33
           ],
           "team_moves": [
            [
             "FAKE-OUT",
-            "FEINT-ATTACK",
             "GIGA-DRAIN",
-            "EXPLOSION"
+            "EXPLOSION",
+            "SYNTHESIS"
            ],
            [
             "FOCUS-PUNCH",
@@ -328999,7 +328995,7 @@
             "FAKE-OUT",
             "BLIZZARD",
             "NATURE-POWER",
-            "SWEET-SCENT"
+            "LEECH-SEED"
            ]
           ],
           "double": true,
@@ -329119,35 +329115,35 @@
             338
            ],
            "levels": [
-            40,
-            40,
-            40,
-            40
+            47,
+            47,
+            47,
+            47
            ],
            "team_moves": [
             [
              "DEFENSE-CURL",
              "ROLLOUT",
              "IRON-TAIL",
-             "STRENGTH"
+             "EARTHQUAKE"
             ],
             [
              "DEFENSE-CURL",
-             "ICE-BALL",
              "WATERFALL",
-             "ATTRACT"
+             "ATTRACT",
+             "SURF"
             ],
             [
-             "DEFENSE-CURL",
-             "ROLLOUT",
              "SLUDGE-BOMB",
-             "YAWN"
+             "YAWN",
+             "SWALLOW",
+             "SPIT-UP"
             ],
             [
-             "DEFENSE-CURL",
-             "ROLLOUT",
              "FLAMETHROWER",
-             "PSYCHIC"
+             "PSYCHIC",
+             "SOLAR-BEAM",
+             "COSMIC-POWER"
             ]
            ],
            "double": true,
@@ -329166,10 +329162,10 @@
             111
            ],
            "levels": [
-            40,
-            40,
-            40,
-            40
+            47,
+            47,
+            47,
+            47
            ],
            "team_moves": [
             [
@@ -329213,10 +329209,10 @@
             51
            ],
            "levels": [
-            40,
-            40,
-            40,
-            40
+            47,
+            47,
+            47,
+            47
            ],
            "team_moves": [
             [
@@ -329240,8 +329236,8 @@
             [
              "SUBSTITUTE",
              "UPROAR",
-             "MAGNITUDE",
-             "SCREECH"
+             "SCREECH",
+             "DIG"
             ]
            ],
            "double": true,
@@ -329260,17 +329256,17 @@
             198
            ],
            "levels": [
-            40,
-            40,
-            40,
-            40
+            47,
+            47,
+            47,
+            47
            ],
            "team_moves": [
             [
-             "SKY-ATTACK",
              "AGILITY",
              "ENDEAVOR",
-             "STEEL-WING"
+             "STEEL-WING",
+             "AERIAL-ACE"
             ],
             [
              "SKY-ATTACK",
@@ -329279,16 +329275,16 @@
              "MUD-SLAP"
             ],
             [
-             "SKY-ATTACK",
              "AGILITY",
              "ROCK-SMASH",
-             "STEEL-WING"
+             "STEEL-WING",
+             "SPIKES"
             ],
             [
-             "SKY-ATTACK",
              "THUNDER-WAVE",
              "PSYCH-UP",
-             "SHADOW-BALL"
+             "SHADOW-BALL",
+             "MEAN-LOOK"
             ]
            ],
            "double": true,
@@ -329310,10 +329306,10 @@
             237
            ],
            "levels": [
-            40,
-            40,
-            40,
-            40
+            47,
+            47,
+            47,
+            47
            ],
            "team_moves": [
             [
@@ -329329,10 +329325,10 @@
              "ROCK-TOMB"
             ],
             [
-             "SKY-UPPERCUT",
              "THUNDER-PUNCH",
              "GIGA-DRAIN",
-             "SUBSTITUTE"
+             "SUBSTITUTE",
+             "BRICK-BREAK"
             ],
             [
              "TRIPLE-KICK",
@@ -329357,10 +329353,10 @@
             292
            ],
            "levels": [
-            40,
-            40,
-            40,
-            40
+            47,
+            47,
+            47,
+            47
            ],
            "team_moves": [
             [
@@ -329372,8 +329368,8 @@
             [
              "SURF",
              "ICY-WIND",
-             "MIRROR-COAT",
-             "COUNTER"
+             "COUNTER",
+             "SCREECH"
             ],
             [
              "BRICK-BREAK",
@@ -329383,9 +329379,9 @@
             ],
             [
              "SHADOW-BALL",
-             "SILVER-WIND",
              "AERIAL-ACE",
-             "DIG"
+             "DIG",
+             "MIND-READER"
             ]
            ],
            "double": true,
@@ -329404,10 +329400,10 @@
             283
            ],
            "levels": [
-            40,
-            40,
-            40,
-            40
+            47,
+            47,
+            47,
+            47
            ],
            "team_moves": [
             [
@@ -329451,10 +329447,10 @@
             357
            ],
            "levels": [
-            40,
-            40,
-            40,
-            40
+            47,
+            47,
+            47,
+            47
            ],
            "team_moves": [
             [
@@ -329470,16 +329466,16 @@
              "REFLECT"
             ],
             [
-             "ERUPTION",
              "IRON-TAIL",
              "SUNNY-DAY",
-             "FIRE-SPIN"
+             "FIRE-SPIN",
+             "CURSE"
             ],
             [
              "MAGICAL-LEAF",
              "AERIAL-ACE",
-             "SYNTHESIS",
-             "STOMP"
+             "STOMP",
+             "OUTRAGE"
             ]
            ],
            "double": true,
@@ -329502,11 +329498,11 @@
             241
            ],
            "levels": [
-            40,
-            40,
-            40,
-            40,
-            40
+            47,
+            47,
+            47,
+            47,
+            47
            ],
            "team_moves": [
             [
@@ -329557,11 +329553,11 @@
             166
            ],
            "levels": [
-            40,
-            40,
-            40,
-            40,
-            40
+            47,
+            47,
+            47,
+            47,
+            47
            ],
            "team_moves": [
             [
@@ -329608,17 +329604,17 @@
             184
            ],
            "levels": [
-            40,
-            40,
-            40,
-            40
+            47,
+            47,
+            47,
+            47
            ],
            "team_moves": [
             [
              "FLY",
              "FLASH",
-             "STRENGTH",
-             "SWEET-SCENT"
+             "SWEET-SCENT",
+             "OUTRAGE"
             ],
             [
              "WATERFALL",
@@ -329628,15 +329624,15 @@
             ],
             [
              "ROCK-SMASH",
-             "CUT",
              "SURF",
-             "STRENGTH"
+             "BELLY-DRUM",
+             "FLAIL"
             ],
             [
              "DIVE",
              "ROCK-SMASH",
              "WATERFALL",
-             "PRESENT"
+             "DOUBLE-EDGE"
             ]
            ],
            "double": true,
@@ -329656,11 +329652,11 @@
             193
            ],
            "levels": [
-            40,
-            40,
-            40,
-            40,
-            40
+            47,
+            47,
+            47,
+            47,
+            47
            ],
            "team_moves": [
             [
@@ -329670,16 +329666,16 @@
              "THUNDERBOLT"
             ],
             [
-             "REFRESH",
              "IRON-DEFENSE",
-             "MUD-SPORT",
-             "WATERFALL"
+             "WATERFALL",
+             "PSYCHIC",
+             "BATON-PASS"
             ],
             [
-             "GUILLOTINE",
              "BUBBLE-BEAM",
              "SWORDS-DANCE",
-             "VICE-GRIP"
+             "CRUNCH",
+             "PROTECT"
             ],
             [
              "BITE",
@@ -329690,8 +329686,8 @@
             [
              "DETECT",
              "THIEF",
-             "SIGNAL-BEAM",
-             "HIDDEN-POWER"
+             "HIDDEN-POWER",
+             "SCREECH"
             ]
            ],
            "double": true,
@@ -329713,10 +329709,10 @@
             262
            ],
            "levels": [
-            40,
-            40,
-            40,
-            40
+            47,
+            47,
+            47,
+            47
            ],
            "team_moves": [
             [
@@ -329726,22 +329722,22 @@
              "EMBER"
             ],
             [
-             "FAKE-OUT",
              "AGILITY",
              "QUICK-ATTACK",
-             "FEINT-ATTACK"
+             "BEAT-UP",
+             "FURY-SWIPES"
             ],
             [
-             "ASSIST",
-             "DOUBLE-SLAP",
              "TAIL-WHIP",
-             "ATTRACT"
+             "ATTRACT",
+             "COVET",
+             "FACADE"
             ],
             [
              "BITE",
              "SAND-ATTACK",
-             "POISON-FANG",
-             "SNATCH"
+             "SNATCH",
+             "YAWN"
             ]
            ],
            "double": true,
@@ -329760,10 +329756,10 @@
             202
            ],
            "levels": [
-            40,
-            40,
-            40,
-            40
+            47,
+            47,
+            47,
+            47
            ],
            "team_moves": [
             [
@@ -329780,9 +329776,9 @@
             ],
             [
              "CONFUSE-RAY",
-             "MEAN-LOOK",
              "SCREECH",
-             "PURSUIT"
+             "MOONLIGHT",
+             "QUICK-ATTACK"
             ],
             [
              "DESTINY-BOND",
@@ -329807,10 +329803,10 @@
             313
            ],
            "levels": [
-            40,
-            40,
-            40,
-            40
+            47,
+            47,
+            47,
+            47
            ],
            "team_moves": [
             [
@@ -329826,16 +329822,16 @@
              "PAIN-SPLIT"
             ],
             [
-             "BARRIER",
-             "MIRROR-COAT",
              "WATER-PULSE",
-             "TOXIC"
+             "TOXIC",
+             "SURF",
+             "ACID-ARMOR"
             ],
             [
-             "SIGNAL-BEAM",
              "SEISMIC-TOSS",
-             "DYNAMIC-PUNCH",
-             "SHADOW-BALL"
+             "SHADOW-BALL",
+             "DOUBLE-EDGE",
+             "HELPING-HAND"
             ]
            ],
            "double": true,
@@ -329855,11 +329851,11 @@
             286
            ],
            "levels": [
-            40,
-            40,
-            40,
-            40,
-            40
+            47,
+            47,
+            47,
+            47,
+            47
            ],
            "team_moves": [
             [
@@ -330447,12 +330443,12 @@
             282
            ],
            "levels": [
-            74,
-            74,
-            74,
-            74,
-            74,
-            74
+            51,
+            51,
+            51,
+            51,
+            51,
+            51
            ],
            "team_moves": [
             [
@@ -330462,10 +330458,10 @@
              "RETURN"
             ],
             [
-             "SPORE",
              "SLUDGE-BOMB",
              "FOCUS-PUNCH",
-             "SUBSTITUTE"
+             "SUBSTITUTE",
+             "DYNAMIC-PUNCH"
             ],
             [
              "DREAM-EATER",
@@ -330483,7 +330479,7 @@
              "DREAM-EATER",
              "FLAMETHROWER",
              "CRUNCH",
-             "PURSUIT"
+             "TORMENT"
             ],
             [
              "DREAM-EATER",
@@ -330519,19 +330515,19 @@
             235
            ],
            "levels": [
-            74,
-            74,
-            74,
-            74,
-            74,
-            74
+            51,
+            51,
+            51,
+            51,
+            51,
+            51
            ],
            "team_moves": [
             [
              "TEETER-DANCE",
              "FLAIL",
-             "DIZZY-PUNCH",
-             "PROTECT"
+             "PROTECT",
+             "DOUBLE-EDGE"
             ],
             [
              "YAWN",
@@ -330540,16 +330536,16 @@
              "ICE-BEAM"
             ],
             [
-             "TEETER-DANCE",
              "TOXIC",
-             "NEEDLE-ARM",
-             "DOUBLE-TEAM"
+             "DOUBLE-TEAM",
+             "COTTON-SPORE",
+             "PIN-MISSILE"
             ],
             [
              "BODY-SLAM",
              "SHADOW-BALL",
              "EARTHQUAKE",
-             "BELLY-DRUM"
+             "SLAM"
             ],
             [
              "CONFUSE-RAY",
@@ -330558,10 +330554,7 @@
              "FIRE-PUNCH"
             ],
             [
-             "TEETER-DANCE",
-             "LOCK-ON",
-             "SHEER-COLD",
-             "PROTECT"
+             "SKETCH"
             ]
            ],
            "double": true,
@@ -330591,12 +330584,12 @@
             12
            ],
            "levels": [
-            74,
-            74,
-            74,
-            74,
-            74,
-            74
+            51,
+            51,
+            51,
+            51,
+            51,
+            51
            ],
            "team_moves": [
             [
@@ -330619,15 +330612,15 @@
             ],
             [
              "CONFUSE-RAY",
-             "EXTRASENSORY",
              "ICE-PUNCH",
-             "FIRE-PUNCH"
+             "FIRE-PUNCH",
+             "SNORE"
             ],
             [
-             "VOLT-TACKLE",
              "THUNDER-WAVE",
              "SWEET-KISS",
-             "ENCORE"
+             "ENCORE",
+             "THUNDERBOLT"
             ],
             [
              "STUN-SPORE",
@@ -330663,12 +330656,12 @@
             154
            ],
            "levels": [
-            75,
-            75,
-            75,
-            75,
-            75,
-            75
+            51,
+            51,
+            51,
+            51,
+            51,
+            51
            ],
            "team_moves": [
             [
@@ -330734,7 +330727,7 @@
            "class": "WORKER",
            "sprite": "pt_worker.png",
            "team": [
-            248,
+            247,
             28,
             195,
             344,
@@ -330742,19 +330735,19 @@
             51
            ],
            "levels": [
-            75,
-            75,
-            75,
-            75,
-            75,
-            75
+            51,
+            51,
+            51,
+            51,
+            51,
+            51
            ],
            "team_moves": [
             [
              "CRUNCH",
-             "THUNDERBOLT",
-             "FIRE-BLAST",
-             "PROTECT"
+             "PROTECT",
+             "SANDSTORM",
+             "THRASH"
             ],
             [
              "AERIAL-ACE",
@@ -330814,31 +330807,31 @@
             131
            ],
            "levels": [
-            75,
-            75,
-            75,
-            75,
-            75,
-            75
+            51,
+            51,
+            51,
+            51,
+            51,
+            51
            ],
            "team_moves": [
             [
-             "FAKE-OUT",
              "BLIZZARD",
              "ENCORE",
-             "SHEER-COLD"
+             "SHEER-COLD",
+             "DIVE"
             ],
             [
-             "GUILLOTINE",
              "AMNESIA",
              "REST",
-             "SLEEP-TALK"
+             "SLEEP-TALK",
+             "SWORDS-DANCE"
             ],
             [
-             "ANCIENT-POWER",
              "EARTHQUAKE",
              "PROTECT",
-             "FISSURE"
+             "FISSURE",
+             "DIG"
             ],
             [
              "SLUDGE-BOMB",
@@ -330847,16 +330840,16 @@
              "PROTECT"
             ],
             [
-             "FLAIL",
              "BRICK-BREAK",
              "ENDURE",
-             "GUILLOTINE"
+             "GUILLOTINE",
+             "SUBMISSION"
             ],
             [
              "ICE-BEAM",
              "THUNDERBOLT",
              "HYDRO-PUMP",
-             "SHEER-COLD"
+             "RAIN-DANCE"
             ]
            ],
            "double": true,
@@ -330886,19 +330879,19 @@
             78
            ],
            "levels": [
-            75,
-            75,
-            75,
-            75,
-            75,
-            75
+            51,
+            51,
+            51,
+            51,
+            51,
+            51
            ],
            "team_moves": [
             [
-             "SILVER-WIND",
              "AERIAL-ACE",
              "SHADOW-BALL",
-             "SWORDS-DANCE"
+             "MIND-READER",
+             "FURY-SWIPES"
             ],
             [
              "TRANSFORM"
@@ -330925,7 +330918,7 @@
              "SUNNY-DAY",
              "FLAMETHROWER",
              "SOLAR-BEAM",
-             "HYPNOSIS"
+             "TAKE-DOWN"
             ]
            ],
            "double": true,
@@ -330955,12 +330948,12 @@
             378
            ],
            "levels": [
-            76,
-            76,
-            76,
-            76,
-            76,
-            76
+            51,
+            51,
+            51,
+            51,
+            51,
+            51
            ],
            "team_moves": [
             [
@@ -331034,12 +331027,12 @@
             31
            ],
            "levels": [
-            76,
-            76,
-            76,
-            76,
-            76,
-            76
+            51,
+            51,
+            51,
+            51,
+            51,
+            51
            ],
            "team_moves": [
             [
@@ -331067,10 +331060,10 @@
              "ROCK-BLAST"
             ],
             [
-             "FLAIL",
              "SHADOW-BALL",
              "ENDURE",
-             "CRUSH-CLAW"
+             "CRUSH-CLAW",
+             "SWORDS-DANCE"
             ],
             [
              "SLUDGE-BOMB",
@@ -331106,12 +331099,12 @@
             348
            ],
            "levels": [
-            76,
-            76,
-            76,
-            76,
-            76,
-            76
+            51,
+            51,
+            51,
+            51,
+            51,
+            51
            ],
            "team_moves": [
             [
@@ -331134,9 +331127,9 @@
             ],
             [
              "LOVELY-KISS",
-             "FAKE-OUT",
              "ICE-BEAM",
-             "DREAM-EATER"
+             "DREAM-EATER",
+             "MEAN-LOOK"
             ],
             [
              "ICE-BEAM",
@@ -331178,12 +331171,12 @@
             57
            ],
            "levels": [
-            76,
-            76,
-            76,
-            76,
-            76,
-            76
+            51,
+            51,
+            51,
+            51,
+            51,
+            51
            ],
            "team_moves": [
             [
@@ -331207,14 +331200,14 @@
             [
              "ICE-BEAM",
              "WATERFALL",
-             "SHEER-COLD",
-             "ICY-WIND"
+             "ICY-WIND",
+             "SURF"
             ],
             [
-             "ANCIENT-POWER",
              "SLUDGE-BOMB",
              "BODY-SLAM",
-             "EARTHQUAKE"
+             "EARTHQUAKE",
+             "TOXIC"
             ],
             [
              "LOW-KICK",
@@ -331250,12 +331243,12 @@
             130
            ],
            "levels": [
-            77,
-            77,
-            77,
-            77,
-            77,
-            77
+            52,
+            52,
+            52,
+            52,
+            52,
+            52
            ],
            "team_moves": [
             [
@@ -331329,12 +331322,12 @@
             133
            ],
            "levels": [
-            77,
-            77,
-            77,
-            77,
-            77,
-            77
+            52,
+            52,
+            52,
+            52,
+            52,
+            52
            ],
            "team_moves": [
             [
@@ -331346,8 +331339,8 @@
             [
              "CONFUSE-RAY",
              "HELPING-HAND",
-             "FEINT-ATTACK",
-             "CHARM"
+             "CHARM",
+             "MEAN-LOOK"
             ],
             [
              "THUNDERBOLT",
@@ -331371,7 +331364,7 @@
              "HELPING-HAND",
              "ATTRACT",
              "GROWL",
-             "WISH"
+             "DOUBLE-EDGE"
             ]
            ],
            "double": true,
@@ -331401,12 +331394,12 @@
             344
            ],
            "levels": [
-            77,
-            77,
-            77,
-            77,
-            77,
-            77
+            52,
+            52,
+            52,
+            52,
+            52,
+            52
            ],
            "team_moves": [
             [
@@ -331436,8 +331429,8 @@
             [
              "ICE-BEAM",
              "HYDRO-PUMP",
-             "MIRROR-COAT",
-             "PROTECT"
+             "PROTECT",
+             "RAIN-DANCE"
             ],
             [
              "SHADOW-BALL",
@@ -331473,12 +331466,12 @@
             214
            ],
            "levels": [
-            77,
-            77,
-            77,
-            77,
-            77,
-            77
+            52,
+            52,
+            52,
+            52,
+            52,
+            52
            ],
            "team_moves": [
             [
@@ -331500,9 +331493,9 @@
             ],
             [
              "FACADE",
-             "CROSS-CHOP",
              "EARTHQUAKE",
-             "ROCK-TOMB"
+             "ROCK-TOMB",
+             "SEISMIC-TOSS"
             ],
             [
              "FAKE-OUT",
@@ -331538,18 +331531,18 @@
            "team": [
             212,
             122,
-            149,
+            148,
             105,
             115,
             291
            ],
            "levels": [
-            78,
-            78,
-            78,
-            78,
-            78,
-            78
+            52,
+            52,
+            52,
+            52,
+            52,
+            52
            ],
            "team_moves": [
             [
@@ -331565,10 +331558,10 @@
              "PSYCHIC"
             ],
             [
-             "AERIAL-ACE",
              "RETURN",
-             "EARTHQUAKE",
-             "BRICK-BREAK"
+             "SAFEGUARD",
+             "SLAM",
+             "AGILITY"
             ],
             [
              "ANCIENT-POWER",
@@ -331622,12 +331615,12 @@
             106
            ],
            "levels": [
-            78,
-            78,
-            78,
-            78,
-            78,
-            78
+            52,
+            52,
+            52,
+            52,
+            52,
+            52
            ],
            "team_moves": [
             [
@@ -331662,9 +331655,9 @@
             ],
             [
              "EARTHQUAKE",
-             "MACH-PUNCH",
              "REVERSAL",
-             "ENDURE"
+             "ENDURE",
+             "HIGH-JUMP-KICK"
             ]
            ],
            "double": true,
@@ -331695,12 +331688,12 @@
             169
            ],
            "levels": [
-            78,
-            78,
-            78,
-            78,
-            78,
-            78
+            52,
+            52,
+            52,
+            52,
+            52,
+            52
            ],
            "team_moves": [
             [
@@ -331734,10 +331727,10 @@
              "FIRE-BLAST"
             ],
             [
-             "CONFUSE-RAY",
              "AERIAL-ACE",
              "SLUDGE-BOMB",
-             "SHADOW-BALL"
+             "SHADOW-BALL",
+             "HAZE"
             ]
            ],
            "double": true,
@@ -331768,25 +331761,25 @@
             45
            ],
            "levels": [
-            78,
-            78,
-            78,
-            78,
-            78,
-            78
+            52,
+            52,
+            52,
+            52,
+            52,
+            52
            ],
            "team_moves": [
             [
              "ICE-BEAM",
              "HYDRO-PUMP",
-             "MIRROR-COAT",
-             "COUNTER"
+             "COUNTER",
+             "SCREECH"
             ],
             [
              "PSYCHIC",
              "THUNDERBOLT",
              "FIRE-PUNCH",
-             "DESTINY-BOND"
+             "CALM-MIND"
             ],
             [
              "LEAF-BLADE",
@@ -331840,19 +331833,19 @@
             3
            ],
            "levels": [
-            79,
-            79,
-            79,
-            79,
-            79,
-            79
+            53,
+            53,
+            53,
+            53,
+            53,
+            53
            ],
            "team_moves": [
             [
              "ICE-BEAM",
              "HYDRO-CANNON",
-             "YAWN",
-             "ROAR"
+             "ROAR",
+             "HYDRO-PUMP"
             ],
             [
              "HYPER-BEAM",
@@ -331875,7 +331868,7 @@
              "DRAGON-CLAW",
              "BLAST-BURN",
              "ROAR",
-             "BITE"
+             "FIRE-SPIN"
             ],
             [
              "FRENZY-PLANT",
@@ -331912,18 +331905,18 @@
            "team": [
             356,
             373,
-            149,
+            148,
             330,
             142,
             145
            ],
            "levels": [
-            79,
-            79,
-            79,
-            79,
-            79,
-            79
+            53,
+            53,
+            53,
+            53,
+            53,
+            53
            ],
            "team_moves": [
             [
@@ -331939,10 +331932,10 @@
              "PROTECT"
             ],
             [
-             "AERIAL-ACE",
              "RETURN",
-             "EARTHQUAKE",
-             "PROTECT"
+             "PROTECT",
+             "RAIN-DANCE",
+             "SAFEGUARD"
             ],
             [
              "DRAGON-CLAW",
@@ -331990,25 +331983,25 @@
             257
            ],
            "levels": [
-            79,
-            79,
-            79,
-            79,
-            79,
-            79
+            53,
+            53,
+            53,
+            53,
+            53,
+            53
            ],
            "team_moves": [
             [
-             "FAKE-OUT",
-             "FEINT-ATTACK",
-             "EXTRASENSORY",
-             "SOLAR-BEAM"
+             "SOLAR-BEAM",
+             "LEAF-BLADE",
+             "AIR-CUTTER",
+             "SUNNY-DAY"
             ],
             [
              "PSYCHIC",
-             "ANCIENT-POWER",
              "SOLAR-BEAM",
-             "SUNNY-DAY"
+             "SUNNY-DAY",
+             "BULLET-SEED"
             ],
             [
              "HELPING-HAND",
@@ -332062,12 +332055,12 @@
             211
            ],
            "levels": [
-            79,
-            79,
-            79,
-            79,
-            79,
-            79
+            53,
+            53,
+            53,
+            53,
+            53,
+            53
            ],
            "team_moves": [
             [
@@ -332103,8 +332096,8 @@
             [
              "SLUDGE-BOMB",
              "SHADOW-BALL",
-             "DESTINY-BOND",
-             "DOUBLE-EDGE"
+             "DOUBLE-EDGE",
+             "TOXIC"
             ]
            ],
            "double": true,
@@ -332134,12 +332127,12 @@
             121
            ],
            "levels": [
-            80,
-            80,
-            80,
-            80,
-            80,
-            80
+            53,
+            53,
+            53,
+            53,
+            53,
+            53
            ],
            "team_moves": [
             [
@@ -332151,8 +332144,8 @@
             [
              "DRAGON-CLAW",
              "FIRE-BLAST",
-             "BITE",
-             "SEISMIC-TOSS"
+             "SEISMIC-TOSS",
+             "FIRE-SPIN"
             ],
             [
              "SLUDGE-BOMB",
@@ -332212,31 +332205,31 @@
             214
            ],
            "levels": [
-            80,
-            80,
-            80,
-            80,
-            80,
-            80
+            53,
+            53,
+            53,
+            53,
+            53,
+            53
            ],
            "team_moves": [
             [
-             "BELLY-DRUM",
              "AERIAL-ACE",
              "OVERHEAT",
-             "EARTHQUAKE"
+             "EARTHQUAKE",
+             "FIRE-SPIN"
             ],
             [
-             "FOLLOW-ME",
-             "COSMIC-POWER",
              "SOFT-BOILED",
-             "PROTECT"
+             "PROTECT",
+             "METEOR-MASH",
+             "METRONOME"
             ],
             [
              "AERIAL-ACE",
-             "SILVER-WIND",
              "SHADOW-BALL",
-             "PROTECT"
+             "PROTECT",
+             "MIND-READER"
             ],
             [
              "FOLLOW-ME",
@@ -332284,12 +332277,12 @@
             245
            ],
            "levels": [
-            80,
-            80,
-            80,
-            80,
-            80,
-            80
+            53,
+            53,
+            53,
+            53,
+            53,
+            53
            ],
            "team_moves": [
             [
@@ -332356,12 +332349,12 @@
             131
            ],
            "levels": [
-            80,
-            80,
-            80,
-            80,
-            80,
-            80
+            53,
+            53,
+            53,
+            53,
+            53,
+            53
            ],
            "team_moves": [
             [
@@ -332386,7 +332379,7 @@
              "RETURN",
              "DRILL-PECK",
              "HYPER-BEAM",
-             "HAZE"
+             "THRASH"
             ],
             [
              "PSYCHIC",
@@ -332428,12 +332421,12 @@
             128
            ],
            "levels": [
-            82,
-            82,
-            82,
-            82,
-            82,
-            82
+            54,
+            54,
+            54,
+            54,
+            54,
+            54
            ],
            "team_moves": [
             [
@@ -332852,7 +332845,7 @@
        9380
       ],
       "levels": [
-       47
+       35
       ],
       "team_moves": [
        [
@@ -332902,12 +332895,12 @@
          26
         ],
         "levels": [
-         62,
-         62,
-         67,
-         67,
-         72,
-         72
+         48,
+         48,
+         49,
+         49,
+         50,
+         50
         ],
         "team_moves": [
          [
@@ -332923,8 +332916,8 @@
           "THUNDER-WAVE"
          ],
          [
-          "VOLT-TACKLE",
-          "RAIN-DANCE"
+          "RAIN-DANCE",
+          "THUNDER"
          ],
          [
           "THUNDER",
@@ -332933,10 +332926,10 @@
           "COUNTER"
          ],
          [
-          "VOLT-TACKLE",
           "RAIN-DANCE",
           "BRICK-BREAK",
-          "COUNTER"
+          "COUNTER",
+          "THUNDERBOLT"
          ]
         ],
         "double": true,
@@ -333124,7 +333117,7 @@
            161
           ],
           "levels": [
-           45
+           35
           ],
           "team_moves": [
            [
@@ -334634,35 +334627,35 @@
            111
           ],
           "levels": [
-           74,
-           73,
-           73,
-           73
+           51,
+           50,
+           50,
+           50
           ],
           "team_moves": [
            [
             "CRUSH-CLAW",
-            "DOUBLE-KICK",
             "LEER",
-            "SHADOW-BALL"
+            "SHADOW-BALL",
+            "SWORDS-DANCE"
            ],
            [
-            "CRUSH-CLAW",
             "BRICK-BREAK",
             "LEER",
-            "PURSUIT"
+            "ENDEAVOR",
+            "SCREECH"
            ],
            [
-            "CRUSH-CLAW",
             "REVERSAL",
             "COUNTER",
-            "SHADOW-BALL"
+            "SHADOW-BALL",
+            "FOCUS-PUNCH"
            ],
            [
-            "CRUSH-CLAW",
             "ROAR",
             "TAIL-WHIP",
-            "ROCK-SMASH"
+            "ROCK-SMASH",
+            "EARTHQUAKE"
            ]
           ],
           "double": true,
@@ -334706,10 +334699,10 @@
            277
           ],
           "levels": [
-           73,
-           73,
-           74,
-           74
+           50,
+           50,
+           51,
+           51
           ],
           "team_moves": [
            [
@@ -334727,8 +334720,8 @@
            [
             "PRESENT",
             "BLIZZARD",
-            "SPLASH",
-            "AERIAL-ACE"
+            "AERIAL-ACE",
+            "DRILL-PECK"
            ],
            [
             "FACADE",
@@ -334858,10 +334851,10 @@
            284
           ],
           "levels": [
-           52,
-           70,
-           74,
-           71
+           42,
+           49,
+           51,
+           49
           ],
           "team_moves": [
            [
@@ -334871,10 +334864,10 @@
             "SONIC-BOOM"
            ],
            [
-            "PIN-MISSILE",
             "REFLECT",
             "LIGHT-SCREEN",
-            "SPIKES"
+            "SPIKES",
+            "IRON-DEFENSE"
            ],
            [
             "SILVER-WIND",
@@ -334933,10 +334926,10 @@
            202
           ],
           "levels": [
-           59,
-           72,
-           73,
-           74
+           45,
+           50,
+           50,
+           51
           ],
           "team_moves": [
            [
@@ -335013,9 +335006,9 @@
            314
           ],
           "levels": [
-           61,
-           74,
-           74
+           45,
+           51,
+           51
           ],
           "team_moves": [
            [
@@ -335025,10 +335018,10 @@
             "SUPERSONIC"
            ],
            [
-            "SIGNAL-BEAM",
             "SHADOW-BALL",
             "AERIAL-ACE",
-            "TAIL-GLOW"
+            "TAIL-GLOW",
+            "DOUBLE-EDGE"
            ],
            [
             "SILVER-WIND",
@@ -335081,10 +335074,10 @@
            303
           ],
           "levels": [
-           65,
-           73,
-           74,
-           74
+           47,
+           50,
+           51,
+           51
           ],
           "team_moves": [
            [
@@ -335107,9 +335100,9 @@
            ],
            [
             "FAKE-TEARS",
-            "VICE-GRIP",
             "BRICK-BREAK",
-            "ASTONISH"
+            "ASTONISH",
+            "TAUNT"
            ]
           ],
           "double": true,
@@ -335155,10 +335148,10 @@
            55
           ],
           "levels": [
-           64,
-           74,
-           73,
-           73
+           47,
+           51,
+           50,
+           50
           ],
           "team_moves": [
            [
@@ -335170,8 +335163,8 @@
            [
             "SLEEP-POWDER",
             "ACID",
-            "RAZOR-LEAF",
-            "BULLET-SEED"
+            "BULLET-SEED",
+            "PETAL-DANCE"
            ],
            [
             "SLEEP-POWDER",
@@ -335180,10 +335173,10 @@
             "FRUSTRATION"
            ],
            [
-            "HYPNOSIS",
             "WATER-PULSE",
             "CONFUSION",
-            "ROCK-SMASH"
+            "ROCK-SMASH",
+            "HYDRO-PUMP"
            ]
           ],
           "double": true,
@@ -335228,10 +335221,10 @@
            64
           ],
           "levels": [
-           73,
-           74,
-           70,
-           73
+           50,
+           51,
+           49,
+           50
           ],
           "team_moves": [
            [
@@ -335241,16 +335234,16 @@
             "WATER-PULSE"
            ],
            [
-            "COVET",
             "SNATCH",
             "SWAGGER",
-            "BITE"
+            "BITE",
+            "TAKE-DOWN"
            ],
            [
-            "COVET",
             "SNATCH",
             "SWAGGER",
-            "BITE"
+            "BITE",
+            "TAKE-DOWN"
            ],
            [
             "SNATCH",
@@ -335299,10 +335292,10 @@
            327
           ],
           "levels": [
-           74,
-           74,
-           71,
-           71
+           51,
+           51,
+           49,
+           49
           ],
           "team_moves": [
            [
@@ -335312,22 +335305,22 @@
             "SCARY-FACE"
            ],
            [
-            "THRASH",
             "DRAGON-BREATH",
             "AERIAL-ACE",
-            "HEADBUTT"
+            "HEADBUTT",
+            "FOCUS-ENERGY"
            ],
            [
-            "THRASH",
-            "RAGE",
             "DIVE",
-            "THIEF"
+            "THIEF",
+            "TAKE-DOWN",
+            "AGILITY"
            ],
            [
-            "THRASH",
-            "FEINT-ATTACK",
             "PSYBEAM",
-            "FLAIL"
+            "DOUBLE-EDGE",
+            "PSYCH-UP",
+            "UPROAR"
            ]
           ],
           "double": true,
@@ -335374,10 +335367,10 @@
            180
           ],
           "levels": [
-           62,
-           70,
-           73,
-           74
+           46,
+           49,
+           50,
+           51
           ],
           "team_moves": [
            [
@@ -335451,10 +335444,10 @@
            264
           ],
           "levels": [
-           70,
-           71,
-           72,
-           74
+           49,
+           49,
+           50,
+           51
           ],
           "team_moves": [
            [
@@ -335470,16 +335463,16 @@
             "SHOCK-WAVE"
            ],
            [
-            "FLAIL",
             "SLASH",
             "SWIFT",
-            "SAND-TOMB"
+            "SAND-TOMB",
+            "DIG"
            ],
            [
             "FLAIL",
-            "ODOR-SLEUTH",
             "SHOCK-WAVE",
-            "HEADBUTT"
+            "HEADBUTT",
+            "DOUBLE-EDGE"
            ]
           ],
           "double": true,
@@ -335524,10 +335517,10 @@
           319
          ],
          "levels": [
-          50,
-          75,
-          74,
-          73
+          42,
+          51,
+          51,
+          50
          ],
          "team_moves": [
           [
@@ -335538,21 +335531,21 @@
           ],
           [
            "SLUDGE-BOMB",
-           "STRENGTH",
            "DIG",
-           "ACID-ARMOR"
+           "ACID-ARMOR",
+           "SCREECH"
           ],
           [
-           "EXTRASENSORY",
            "SHADOW-BALL",
-           "BOUNCE",
-           "PSYCH-UP"
+           "PSYCH-UP",
+           "SNORE",
+           "REST"
           ],
           [
            "WATERFALL",
            "BITE",
-           "SKULL-BASH",
-           "TORMENT"
+           "TORMENT",
+           "AGILITY"
           ]
          ],
          "double": true,
@@ -335579,10 +335572,10 @@
           286
          ],
          "levels": [
-          50,
-          75,
-          74,
-          73
+          42,
+          51,
+          51,
+          50
          ],
          "team_moves": [
           [
@@ -335593,21 +335586,21 @@
           ],
           [
            "SLUDGE-BOMB",
-           "STRENGTH",
            "DIG",
-           "ACID-ARMOR"
+           "ACID-ARMOR",
+           "SCREECH"
           ],
           [
-           "EXTRASENSORY",
            "SHADOW-BALL",
-           "BOUNCE",
-           "PSYCH-UP"
+           "PSYCH-UP",
+           "SNORE",
+           "REST"
           ],
           [
            "GIGA-DRAIN",
-           "SKY-UPPERCUT",
            "HEADBUTT",
-           "HELPING-HAND"
+           "HELPING-HAND",
+           "DYNAMIC-PUNCH"
           ]
          ],
          "double": true,
@@ -335634,10 +335627,10 @@
           323
          ],
          "levels": [
-          50,
-          75,
-          74,
-          73
+          42,
+          51,
+          51,
+          50
          ],
          "team_moves": [
           [
@@ -335648,21 +335641,21 @@
           ],
           [
            "SLUDGE-BOMB",
-           "STRENGTH",
            "DIG",
-           "ACID-ARMOR"
+           "ACID-ARMOR",
+           "SCREECH"
           ],
           [
-           "EXTRASENSORY",
            "SHADOW-BALL",
-           "BOUNCE",
-           "PSYCH-UP"
+           "PSYCH-UP",
+           "SNORE",
+           "REST"
           ],
           [
            "FLAMETHROWER",
-           "MAGNITUDE",
            "TAKE-DOWN",
-           "HOWL"
+           "EARTHQUAKE",
+           "YAWN"
           ]
          ],
          "double": true,
@@ -335706,10 +335699,10 @@
            121
           ],
           "levels": [
-           74,
-           69,
-           72,
-           71
+           51,
+           49,
+           50,
+           49
           ],
           "team_moves": [
            [
@@ -335728,13 +335721,13 @@
             "SURF",
             "FLY",
             "THIEF",
-            "GUST"
+            "MIST"
            ],
            [
             "WATERFALL",
             "PSYCHIC",
-            "CAMOUFLAGE",
-            "MINIMIZE"
+            "MINIMIZE",
+            "COSMIC-POWER"
            ]
           ],
           "double": true,
@@ -335866,9 +335859,9 @@
            189
           ],
           "levels": [
-           66,
-           72,
-           74
+           47,
+           50,
+           51
           ],
           "team_moves": [
            [
@@ -335933,9 +335926,9 @@
            362
           ],
           "levels": [
-           64,
-           74,
-           73
+           47,
+           51,
+           50
           ],
           "team_moves": [
            [
@@ -335947,8 +335940,8 @@
            [
             "BLIZZARD",
             "MUD-SHOT",
-            "HORN-ATTACK",
-            "HAIL"
+            "HAIL",
+            "EARTHQUAKE"
            ],
            [
             "BLIZZARD",
@@ -336005,9 +335998,9 @@
            205
           ],
           "levels": [
-           65,
-           74,
-           73
+           47,
+           51,
+           50
           ],
           "team_moves": [
            [
@@ -336023,10 +336016,10 @@
             "ICE-BEAM"
            ],
            [
-            "PIN-MISSILE",
             "DOUBLE-EDGE",
             "EARTHQUAKE",
-            "GIGA-DRAIN"
+            "GIGA-DRAIN",
+            "IRON-DEFENSE"
            ]
           ],
           "double": true,
@@ -336072,12 +336065,12 @@
            210
           ],
           "levels": [
-           61,
-           78,
-           78,
-           78,
-           78,
-           78
+           45,
+           52,
+           52,
+           52,
+           52,
+           52
           ],
           "team_moves": [
            [
@@ -336102,13 +336095,13 @@
             "HYPER-BEAM",
             "BULK-UP",
             "SUBMISSION",
-            "FORESIGHT"
+            "SEISMIC-TOSS"
            ],
            [
             "HYPER-BEAM",
             "BULK-UP",
-            "SKY-UPPERCUT",
-            "IRON-TAIL"
+            "IRON-TAIL",
+            "DYNAMIC-PUNCH"
            ],
            [
             "HYPER-BEAM",
@@ -336154,12 +336147,12 @@
              210
             ],
             "levels": [
-             78,
-             78,
-             78,
-             78,
-             78,
-             78
+             52,
+             52,
+             52,
+             52,
+             52,
+             52
             ],
             "team_moves": [
              [
@@ -336184,13 +336177,13 @@
               "HYPER-BEAM",
               "BULK-UP",
               "SUBMISSION",
-              "FORESIGHT"
+              "SEISMIC-TOSS"
              ],
              [
               "HYPER-BEAM",
               "BULK-UP",
-              "SKY-UPPERCUT",
-              "IRON-TAIL"
+              "IRON-TAIL",
+              "DYNAMIC-PUNCH"
              ],
              [
               "HYPER-BEAM",
@@ -336248,10 +336241,10 @@
            9381
           ],
           "levels": [
-           73,
-           76,
-           71,
-           66
+           50,
+           51,
+           49,
+           47
           ],
           "team_moves": [
            [
@@ -336268,9 +336261,9 @@
            ],
            [
             "TORMENT",
-            "FAKE-OUT",
             "GIGA-DRAIN",
-            "FEINT-ATTACK"
+            "LEAF-BLADE",
+            "AIR-CUTTER"
            ],
            [
             "SHADOW-RUSH",
@@ -336323,10 +336316,10 @@
            235
           ],
           "levels": [
-           69,
-           74,
-           75,
-           76
+           49,
+           51,
+           51,
+           51
           ],
           "team_moves": [
            [
@@ -336336,22 +336329,13 @@
             "DOUBLE-SLAP"
            ],
            [
-            "DESTINY-BOND",
-            "FOCUS-PUNCH",
-            "SPORE",
-            "DREAM-EATER"
+            "SKETCH"
            ],
            [
-            "THRASH",
-            "PETAL-DANCE",
-            "OUTRAGE",
-            "TEETER-DANCE"
+            "SKETCH"
            ],
            [
-            "SWEET-SCENT",
-            "DEFENSE-CURL",
-            "ICE-BALL",
-            "ROLLOUT"
+            "SKETCH"
            ]
           ],
           "double": true,
@@ -336399,10 +336383,10 @@
            294
           ],
           "levels": [
-           64,
-           73,
-           71,
-           74
+           47,
+           50,
+           49,
+           51
           ],
           "team_moves": [
            [
@@ -336414,20 +336398,20 @@
            [
             "SWAGGER",
             "SCREECH",
-            "STOCKPILE",
-            "SPIT-UP"
+            "SLUDGE-BOMB",
+            "CRUNCH"
            ],
            [
-            "CONFUSE-RAY",
             "ROCK-SMASH",
-            "SPIKE-CANNON",
-            "DIG"
+            "DIG",
+            "FLAIL",
+            "BUBBLE-BEAM"
            ],
            [
             "SWAGGER",
             "SCREECH",
             "BRICK-BREAK",
-            "STRENGTH"
+            "UPROAR"
            ]
           ],
           "double": true,
@@ -342584,15 +342568,15 @@
            321
           ],
           "levels": [
-           76,
-           76
+           51,
+           51
           ],
           "team_moves": [
            [
-            "WATER-SPOUT",
             "SWAGGER",
-            "ROLLOUT",
-            "AMNESIA"
+            "AMNESIA",
+            "HYDRO-PUMP",
+            "REST"
            ],
            [
             "HYDRO-PUMP",
@@ -343519,10 +343503,10 @@
           319
          ],
          "levels": [
-          44,
-          77,
-          76,
-          75
+          42,
+          52,
+          51,
+          51
          ],
          "team_moves": [
           [
@@ -343574,10 +343558,10 @@
           286
          ],
          "levels": [
-          44,
-          77,
-          76,
-          75
+          42,
+          52,
+          51,
+          51
          ],
          "team_moves": [
           [
@@ -343599,10 +343583,10 @@
            "CONFUSE-RAY"
           ],
           [
-           "MIND-READER",
            "DYNAMIC-PUNCH",
            "IRON-TAIL",
-           "SWAGGER"
+           "SWAGGER",
+           "BRICK-BREAK"
           ]
          ],
          "double": true,
@@ -343629,10 +343613,10 @@
           323
          ],
          "levels": [
-          44,
-          77,
-          76,
-          75
+          42,
+          52,
+          51,
+          51
          ],
          "team_moves": [
           [
@@ -343657,7 +343641,7 @@
            "FLAMETHROWER",
            "EARTHQUAKE",
            "ROCK-SLIDE",
-           "HOWL"
+           "YAWN"
           ]
          ],
          "double": true,
@@ -345850,28 +345834,28 @@
             357
            ],
            "levels": [
-            75,
-            75,
-            76
+            51,
+            51,
+            51
            ],
            "team_moves": [
             [
-             "RAZOR-WIND",
              "LEER",
              "FURY-CUTTER",
-             "FALSE-SWIPE"
+             "FALSE-SWIPE",
+             "SWORDS-DANCE"
             ],
             [
-             "RAZOR-WIND",
              "FAKE-OUT",
              "TORMENT",
-             "FALSE-SWIPE"
+             "FALSE-SWIPE",
+             "EXTRASENSORY"
             ],
             [
-             "RAZOR-WIND",
              "RAZOR-LEAF",
              "GUST",
-             "SWEET-SCENT"
+             "SWEET-SCENT",
+             "SYNTHESIS"
             ]
            ],
            "double": true,
@@ -345890,9 +345874,9 @@
             297
            ],
            "levels": [
-            75,
-            75,
-            76
+            51,
+            51,
+            51
            ],
            "team_moves": [
             [
@@ -345908,10 +345892,10 @@
              "REVERSAL"
             ],
             [
-             "VITAL-THROW",
-             "FORESIGHT",
              "ENDURE",
-             "REVERSAL"
+             "REVERSAL",
+             "FOCUS-PUNCH",
+             "SEISMIC-TOSS"
             ]
            ],
            "double": true,
@@ -345931,10 +345915,10 @@
             166
            ],
            "levels": [
-            75,
-            75,
-            75,
-            76
+            51,
+            51,
+            51,
+            51
            ],
            "team_moves": [
             [
@@ -345947,7 +345931,7 @@
              "REST",
              "PSYBEAM",
              "STOMP",
-             "MAGIC-COAT"
+             "PSYCHIC"
             ],
             [
              "REST",
@@ -345980,11 +345964,11 @@
             295
            ],
            "levels": [
-            47,
-            75,
-            76,
-            77,
-            76
+            42,
+            51,
+            51,
+            52,
+            51
            ],
            "team_moves": [
             [
@@ -346008,14 +345992,14 @@
             [
              "DIVE",
              "GIGA-DRAIN",
-             "LEECH-SEED",
-             "RAIN-DANCE"
+             "RAIN-DANCE",
+             "FAKE-OUT"
             ],
             [
-             "TAKE-DOWN",
              "SHADOW-BALL",
              "EARTHQUAKE",
-             "EXTRASENSORY"
+             "UPROAR",
+             "SUPERSONIC"
             ]
            ],
            "double": true,
@@ -346046,18 +346030,18 @@
               295
              ],
              "levels": [
-              77,
-              75,
-              76,
-              77,
-              76
+              52,
+              51,
+              51,
+              52,
+              51
              ],
              "team_moves": [
               [
                "ROCK-SLIDE",
                "METAL-CLAW",
-               "STRENGTH",
-               "AERIAL-ACE"
+               "AERIAL-ACE",
+               "PROTECT"
               ],
               [
                "HYDRO-PUMP",
@@ -346074,14 +346058,14 @@
               [
                "DIVE",
                "GIGA-DRAIN",
-               "LEECH-SEED",
-               "RAIN-DANCE"
+               "RAIN-DANCE",
+               "FAKE-OUT"
               ],
               [
-               "TAKE-DOWN",
                "SHADOW-BALL",
                "EARTHQUAKE",
-               "EXTRASENSORY"
+               "UPROAR",
+               "SUPERSONIC"
               ]
              ],
              "double": true,
@@ -346109,22 +346093,22 @@
             189
            ],
            "levels": [
-            77,
-            77,
-            78
+            52,
+            52,
+            52
            ],
            "team_moves": [
             [
              "SPARK",
              "CHARGE",
-             "SONIC-BOOM",
-             "FLASH"
+             "FLASH",
+             "EXPLOSION"
             ],
             [
              "BEAT-UP",
              "ICY-WIND",
-             "CRUSH-CLAW",
-             "FAKE-OUT"
+             "AGILITY",
+             "FURY-SWIPES"
             ],
             [
              "MEGA-DRAIN",
@@ -346149,28 +346133,28 @@
             225
            ],
            "levels": [
-            77,
-            77,
-            78
+            52,
+            52,
+            52
            ],
            "team_moves": [
             [
-             "ICE-BALL",
              "SURF",
              "ROCK-SMASH",
-             "YAWN"
+             "BODY-SLAM",
+             "ENCORE"
             ],
             [
-             "ICE-BALL",
              "MUDDY-WATER",
              "MUD-SLAP",
-             "MUD-SPORT"
+             "ENDEAVOR",
+             "SCREECH"
             ],
             [
-             "ICE-BALL",
              "AERIAL-ACE",
              "WATER-PULSE",
-             "PRESENT"
+             "PRESENT",
+             "DRILL-PECK"
             ]
            ],
            "double": true,
@@ -346190,10 +346174,10 @@
             264
            ],
            "levels": [
-            77,
-            77,
-            77,
-            78
+            52,
+            52,
+            52,
+            52
            ],
            "team_moves": [
             [
@@ -346209,10 +346193,10 @@
              "SHADOW-BALL"
             ],
             [
-             "BELLY-DRUM",
              "ROLLOUT",
              "WATERFALL",
-             "DOUBLE-EDGE"
+             "DOUBLE-EDGE",
+             "SUPERPOWER"
             ],
             [
              "BELLY-DRUM",
@@ -346239,11 +346223,11 @@
             260
            ],
            "levels": [
-            54,
-            77,
-            78,
-            78,
-            79
+            43,
+            52,
+            52,
+            52,
+            53
            ],
            "team_moves": [
             [
@@ -346298,11 +346282,11 @@
               260
              ],
              "levels": [
-              79,
-              77,
-              78,
-              78,
-              79
+              53,
+              52,
+              52,
+              52,
+              53
              ],
              "team_moves": [
               [
@@ -346361,16 +346345,16 @@
             217
            ],
            "levels": [
-            79,
-            79,
-            80
+            53,
+            53,
+            53
            ],
            "team_moves": [
             [
              "FACADE",
              "TOXIC",
              "EARTHQUAKE",
-             "ROLLING-KICK"
+             "SEISMIC-TOSS"
             ],
             [
              "FACADE",
@@ -346402,17 +346386,17 @@
             320
            ],
            "levels": [
-            78,
-            78,
-            79,
-            80
+            52,
+            52,
+            53,
+            53
            ],
            "team_moves": [
             [
              "DOUBLE-TEAM",
              "DEFENSE-CURL",
              "ROLLOUT",
-             "MAGNITUDE"
+             "DOUBLE-EDGE"
             ],
             [
              "DOUBLE-TEAM",
@@ -346428,9 +346412,9 @@
             ],
             [
              "DOUBLE-TEAM",
-             "ROLLOUT",
              "SURF",
-             "AMNESIA"
+             "AMNESIA",
+             "WATER-SPOUT"
             ]
            ],
            "double": true,
@@ -346449,9 +346433,9 @@
             301
            ],
            "levels": [
-            80,
-            80,
-            80
+            53,
+            53,
+            53
            ],
            "team_moves": [
             [
@@ -346461,16 +346445,16 @@
              "TAKE-DOWN"
             ],
             [
-             "WISH",
-             "ASSIST",
-             "DIZZY-PUNCH",
-             "TEETER-DANCE"
+             "TEETER-DANCE",
+             "FLAIL",
+             "DOUBLE-EDGE",
+             "PSYCH-UP"
             ],
             [
-             "WISH",
-             "ASSIST",
              "CHARM",
-             "DOUBLE-SLAP"
+             "COVET",
+             "FACADE",
+             "FAKE-OUT"
             ]
            ],
            "double": true,
@@ -346491,11 +346475,11 @@
             242
            ],
            "levels": [
-            56,
-            79,
-            80,
-            80,
-            81
+            43,
+            53,
+            53,
+            53,
+            53
            ],
            "team_moves": [
             [
@@ -346513,8 +346497,8 @@
             [
              "ATTRACT",
              "LEECH-SEED",
-             "INGRAIN",
-             "GIGA-DRAIN"
+             "GIGA-DRAIN",
+             "BODY-SLAM"
             ],
             [
              "ATTRACT",
@@ -346550,11 +346534,11 @@
               242
              ],
              "levels": [
-              81,
-              79,
-              80,
-              80,
-              81
+              53,
+              53,
+              53,
+              53,
+              53
              ],
              "team_moves": [
               [
@@ -346572,8 +346556,8 @@
               [
                "ATTRACT",
                "LEECH-SEED",
-               "INGRAIN",
-               "GIGA-DRAIN"
+               "GIGA-DRAIN",
+               "BODY-SLAM"
               ],
               [
                "ATTRACT",
@@ -346614,10 +346598,10 @@
             313
            ],
            "levels": [
-            81,
-            81,
-            82,
-            81
+            53,
+            53,
+            54,
+            53
            ],
            "team_moves": [
             [
@@ -346640,9 +346624,9 @@
             ],
             [
              "SOLAR-BEAM",
-             "SIGNAL-BEAM",
              "MOONLIGHT",
-             "SUNNY-DAY"
+             "SUNNY-DAY",
+             "DOUBLE-EDGE"
             ]
            ],
            "double": true,
@@ -346662,10 +346646,10 @@
             305
            ],
            "levels": [
-            81,
-            82,
-            82,
-            81
+            53,
+            54,
+            54,
+            53
            ],
            "team_moves": [
             [
@@ -346675,10 +346659,10 @@
              "TAKE-DOWN"
             ],
             [
-             "SMELLING-SALTS",
              "SHOCK-WAVE",
              "HOWL",
-             "SHADOW-BALL"
+             "SHADOW-BALL",
+             "SCREECH"
             ],
             [
              "THUNDER-WAVE",
@@ -346687,10 +346671,10 @@
              "PSYBEAM"
             ],
             [
-             "SMELLING-SALTS",
              "METAL-CLAW",
              "METAL-SOUND",
-             "AERIAL-ACE"
+             "AERIAL-ACE",
+             "IRON-TAIL"
             ]
            ],
            "double": true,
@@ -346709,9 +346693,9 @@
             259
            ],
            "levels": [
-            81,
-            81,
-            82
+            53,
+            53,
+            54
            ],
            "team_moves": [
             [
@@ -346751,11 +346735,11 @@
             169
            ],
            "levels": [
-            58,
-            81,
-            82,
-            82,
-            83
+            44,
+            53,
+            54,
+            54,
+            54
            ],
            "team_moves": [
             [
@@ -346771,10 +346755,10 @@
              "TOXIC"
             ],
             [
-             "TWISTER",
-             "CONFUSE-RAY",
              "TOXIC",
-             "RAIN-DANCE"
+             "RAIN-DANCE",
+             "HYDRO-PUMP",
+             "TAKE-DOWN"
             ],
             [
              "HYDRO-PUMP",
@@ -346784,9 +346768,9 @@
             ],
             [
              "BITE",
-             "CONFUSE-RAY",
              "PROTECT",
-             "TOXIC"
+             "TOXIC",
+             "HAZE"
             ]
            ],
            "double": true,
@@ -346810,11 +346794,11 @@
               169
              ],
              "levels": [
-              83,
-              81,
-              82,
-              82,
-              83
+              54,
+              53,
+              54,
+              54,
+              54
              ],
              "team_moves": [
               [
@@ -346830,10 +346814,10 @@
                "TOXIC"
               ],
               [
-               "TWISTER",
-               "CONFUSE-RAY",
                "TOXIC",
-               "RAIN-DANCE"
+               "RAIN-DANCE",
+               "HYDRO-PUMP",
+               "TAKE-DOWN"
               ],
               [
                "HYDRO-PUMP",
@@ -346843,9 +346827,9 @@
               ],
               [
                "BITE",
-               "CONFUSE-RAY",
                "PROTECT",
-               "TOXIC"
+               "TOXIC",
+               "HAZE"
               ]
              ],
              "double": true,
@@ -346873,28 +346857,28 @@
             353
            ],
            "levels": [
-            83,
-            84,
-            83
+            54,
+            55,
+            54
            ],
            "team_moves": [
             [
              "SURF",
-             "DRAGON-RAGE",
              "SMOKESCREEN",
-             "FLAIL"
+             "DRAGON-DANCE",
+             "HYDRO-PUMP"
             ],
             [
-             "CUT",
              "MUD-SLAP",
              "LEECH-LIFE",
-             "SAND-ATTACK"
+             "SAND-ATTACK",
+             "DIG"
             ],
             [
              "ASTONISH",
-             "KNOCK-OFF",
              "SPITE",
-             "FLASH"
+             "FLASH",
+             "ROLE-PLAY"
             ]
            ],
            "double": true,
@@ -346914,10 +346898,10 @@
             117
            ],
            "levels": [
-            83,
-            84,
-            83,
-            84
+            54,
+            55,
+            54,
+            55
            ],
            "team_moves": [
             [
@@ -346940,9 +346924,9 @@
             ],
             [
              "WATERFALL",
-             "DRAGON-RAGE",
              "AGILITY",
-             "SECRET-POWER"
+             "SECRET-POWER",
+             "HYDRO-PUMP"
             ]
            ],
            "double": true,
@@ -346961,9 +346945,9 @@
             369
            ],
            "levels": [
-            83,
-            83,
-            84
+            54,
+            54,
+            55
            ],
            "team_moves": [
             [
@@ -346973,16 +346957,16 @@
              "TAUNT"
             ],
             [
-             "PURSUIT",
              "WING-ATTACK",
              "NIGHT-SHADE",
-             "SNATCH"
+             "SNATCH",
+             "MEAN-LOOK"
             ],
             [
              "DIVE",
              "ANCIENT-POWER",
-             "SKULL-BASH",
-             "YAWN"
+             "YAWN",
+             "DOUBLE-EDGE"
             ]
            ],
            "double": true,
@@ -347004,12 +346988,12 @@
             230
            ],
            "levels": [
-            60,
-            83,
-            84,
-            81,
-            83,
-            85
+            45,
+            54,
+            55,
+            53,
+            54,
+            55
            ],
            "team_moves": [
             [
@@ -347025,10 +347009,10 @@
              "LIGHT-SCREEN"
             ],
             [
-             "FEINT-ATTACK",
              "SHADOW-BALL",
              "AERIAL-ACE",
-             "CONFUSE-RAY"
+             "CONFUSE-RAY",
+             "MEAN-LOOK"
             ],
             [
              "STEEL-WING",
@@ -347037,10 +347021,10 @@
              "SAND-ATTACK"
             ],
             [
-             "SILVER-WIND",
              "SHADOW-BALL",
              "DIG",
-             "CONFUSE-RAY"
+             "CONFUSE-RAY",
+             "MIND-READER"
             ],
             [
              "HYDRO-PUMP",
@@ -347069,11 +347053,11 @@
               230
              ],
              "levels": [
-              83,
-              84,
-              81,
-              83,
-              85
+              54,
+              55,
+              53,
+              54,
+              55
              ],
              "team_moves": [
               [
@@ -347083,10 +347067,10 @@
                "LIGHT-SCREEN"
               ],
               [
-               "FEINT-ATTACK",
                "SHADOW-BALL",
                "AERIAL-ACE",
-               "CONFUSE-RAY"
+               "CONFUSE-RAY",
+               "MEAN-LOOK"
               ],
               [
                "STEEL-WING",
@@ -347095,10 +347079,10 @@
                "SAND-ATTACK"
               ],
               [
-               "SILVER-WIND",
                "SHADOW-BALL",
                "DIG",
-               "CONFUSE-RAY"
+               "CONFUSE-RAY",
+               "MIND-READER"
               ],
               [
                "HYDRO-PUMP",
