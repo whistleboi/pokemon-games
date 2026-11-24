@@ -240082,7 +240082,16 @@
   "inside": {
    "86,79": "house_0101",
    "84,4": "house_0101b"
-  }
+  },
+  "fog": "defog",
+  "fog_box": [
+   [
+    0,
+    0,
+    95,
+    31
+   ]
+  ]
  },
  "SINNOH_ROUTE_211": {
   "art": [
@@ -270200,7 +270209,11 @@
   "roofs": {
    "_bridge": "wood"
   },
-  "theme": "cave"
+  "theme": "cave",
+  "dark": true,
+  "fog_floors": [
+   0
+  ]
  },
  "ETERNA_GALACTIC_BUILDING": {
   "floors": [
@@ -276106,7 +276119,11 @@
    "Galactic Grunt 5": 6,
    "Galactic Grunt 6": 6,
    "Galactic Grunt 7": 6
-  }
+  },
+  "fog": "defog",
+  "fog_floors": [
+   8
+  ]
  },
  "SPEAR_PILLAR": {
   "floors": [

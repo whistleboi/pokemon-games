@@ -957,5 +957,31 @@ check(_none is None and _cy is not None and (_cy.x, _cy.y) == (81, 71) and story
       f"Route 210: past the Psyduck, Cynthia gives the Old Charm once you have the SecretPotion ({_none is None}, {(getattr(_cy, 'x', None), getattr(_cy, 'y', None))})")
 story.story_flags.clear(); story.story_flags.update(_sv); story.inventory.clear(); story.inventory.update(_inv)
 
+# ---- S3 (11-24): fog and darkness by Platinum's zone weather (s_s3_fog.py)
+_inv = dict(story.inventory)
+for _k in ("HM_DEFOG", "HM_FLASH"):
+    story.inventory.pop(_k, None)
+r = route("SINNOH_ROUTE_210", "SOLACEON_TOWN")
+r.run.player = (80, 100); r.run.reveal()
+_r210 = (r.run.visible(80, 110), r.run.visible(20, 10))   # (the south half clear, the north half R210B in fog)
+_cor = []
+r = route("MT_CORONET_BASE", "SINNOH_ROUTE_207")
+for _i in (0, 8):
+    if r.run.index != _i:
+        r._warp(_i, 1, 1); frames(r, 3)
+    _cor.append(bool(r.run.fog))
+_way = []
+r = route("WAYWARD_CAVE", "SINNOH_ROUTE_206")
+for _i in (0, 1):
+    if r.run.index != _i:
+        r._warp(_i, 1, 1); frames(r, 3)
+    _way.append(bool(r.run.fog))
+story.inventory["HM_DEFOG"] = 1; story.inventory["HM_FLASH"] = 1
+r = route("SINNOH_ROUTE_210", "SOLACEON_TOWN")
+_lift = not r.run.fog
+check(_r210 == (True, False) and _cor == [False, True] and _way == [True, False] and _lift,
+      f"Fog as Platinum's weather: Route 210's north half, Mt. Coronet's D05R0113, Wayward Cave 1F dark; Defog clears ({_r210}, {_cor}, {_way}, {_lift})")
+story.inventory.clear(); story.inventory.update(_inv)
+
 g.walk_towns = False
 print(f"##### {fails} failures")
