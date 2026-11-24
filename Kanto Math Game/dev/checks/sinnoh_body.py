@@ -1042,5 +1042,38 @@ t._go("gate_212", "OUT:10,57"); frames(t, 25)
 check(_shut and (5, 12) not in t.barred, f"Route 212's gate: the TV crew stand in the way out till you've been to Pastoria City ({_shut})")
 story.story_flags.clear(); story.story_flags.update(_sv); story.inventory.clear(); story.inventory.update(_inv)
 
+# ---- S4 (11-24): the Veilstone Department Store, every floor as Platinum (s_s4_dept.py)
+from src.states.systems import PokeMartState as _PMS
+_sv = dict(story.story_flags)
+story.story_flags.pop("veilstone_dept_lift", None)
+t = town("VEILSTONE_CITY", "SINNOH_ROUTE_214")
+t._go("mart", "OUT:29,27"); frames(t, 3)
+_title = t.town_map["rooms"]["mart"].get("title")
+_bc = next((s for s, o in t._people().items() if str(o.get("text")) == "Ball clerk"), None)
+_shop = None
+if _bc:
+    t._talk(_bc); _drive(t, 200, lambda: isinstance(g.current_state, _PMS))
+    _shop = list(getattr(g.current_state, "stock", None) or []) if isinstance(g.current_state, _PMS) else None
+t = town("VEILSTONE_CITY", "SINNOH_ROUTE_214")   # (a fresh visit for the lift: the shop screen left as a player leaves it)
+t._go("mart", "OUT:29,27"); frames(t, 3)
+_lift = next(k for k, v in t.exits.items() if v == "ROOM:dept_lift")
+_drive(t, 200, lambda: not t._busy())
+t.player = t.anim_from = (_lift[0], _lift[1] + 1); t.anim = 0; t.walk_goal = None; t.step(0, -1)
+_drive(t, 120, lambda: t.room == "dept_lift")
+_att = next((s for s, o in t._people().items() if str(o.get("text")) == "Lift attendant"), None)
+if _att:
+    t._talk(_att); _drive(t, 300, lambda: isinstance(g.current_state, _PLS))
+    if isinstance(g.current_state, _PLS):
+        g.current_state.pick("dept_3f")
+    _drive(t, 300, lambda: g.current_state is t and not getattr(t, "npc_active", False))
+_door = next((k for k, v in t.exits.items() if str(v).startswith("ROOM:")), None)
+if _door:
+    t.player = t.anim_from = (_door[0], _door[1] - 1); t.anim = 0; t.step(0, 1)
+    _drive(t, 120, lambda: t.room == "dept_3f")
+_tms = [o for o in t._people().values() if str(o.get("text")) == "TM clerk"]
+check(_title == "Veilstone Dept. Store 1F" and _shop and "POKE_BALLS" in _shop and t.room == "dept_3f" and _tms and _tms[0]["event"]["stock"],
+      f"Veilstone Dept. Store: 1F's ball counter sells balls, the lift's attendant takes you to 3F's TM Corner ({_title}, {_shop and _shop[:3]}, {t.room})")
+story.story_flags.clear(); story.story_flags.update(_sv)
+
 g.walk_towns = False
 print(f"##### {fails} failures")
