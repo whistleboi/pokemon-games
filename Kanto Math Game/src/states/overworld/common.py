@@ -598,7 +598,7 @@ def _run_story_event(state, key, check, show):
         story.story_flags[f] = True
     if ev.get("swarm_news"):   # (Sandgem's little sibling: today's swarm from the TV news, once you have the National Pokedex - Platinum)
         from src.world import swarms as _swarms
-        said = _swarms.news(game)
+        said = _swarms.news(game, ev["swarm_news"] if isinstance(ev["swarm_news"], str) else "SINNOH")   # (a region's own TV: "swarm_news": "HOENN")
         if said:
             show(_resolve_lines(game, said))
             return

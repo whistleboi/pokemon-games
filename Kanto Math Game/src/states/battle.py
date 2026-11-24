@@ -232,6 +232,7 @@ class TrainerBattleState(ShadowBattle, GimmickEffects, AbilityEffects, MoveMecha
         self.dialogue_box = ClassicDialogueBox(
             main_rect, [""], self.game.assets.fonts["med"]
         )
+        self.dialogue_box.flush = True   # (right against the field: no sliver between them, Sinnoh 11-24)
 
         if self.check_ditto_transform():
             if self.math_ui:
@@ -2623,6 +2624,7 @@ class TrainerBattleState(ShadowBattle, GimmickEffects, AbilityEffects, MoveMecha
 
         is_summoning_enemy = (self.phase == "ENEMY_SUMMON" and self.enemy_summon_anim is not None)
         is_summoning_player = (self.phase == "PLAYER_SUMMON")
+        screen.set_clip(pygame.Rect(0, 0, self.game.width, Utils.get_full_dialogue_rect(self.game).top))   # (the field: nothing
 
         self.renderer.draw(
             screen,
@@ -2656,6 +2658,7 @@ class TrainerBattleState(ShadowBattle, GimmickEffects, AbilityEffects, MoveMecha
             self.player_summon_anim.draw(screen)
         if getattr(self, "raid_allies", None):
             self._draw_raid_allies(screen)
+        screen.set_clip(None)   # draws into or behind the text box: a back sprite sliding in stops at its top edge)
 
         self.game.ui_manager.draw(screen)
         self._snag_draw(screen)
@@ -3582,6 +3585,7 @@ class WildBattleState(TrainerBattleState):
             self._draw_catch_extras(screen, catching_now)
             return
 
+        screen.set_clip(pygame.Rect(0, 0, self.game.width, Utils.get_full_dialogue_rect(self.game).top))   # (the field, above the box)
         self.renderer.draw(
             screen,
             self.opponent_pokemon,
@@ -3609,6 +3613,7 @@ class WildBattleState(TrainerBattleState):
             self.faint_anim.draw(screen)
         if self.phase == "PLAYER_SUMMON" and getattr(self, "player_summon_anim", None):
             self.player_summon_anim.draw(screen)  # (a Pokemon sent in after a switch)
+        screen.set_clip(None)
 
         self.game.ui_manager.draw(screen)
         self._draw_catch_extras(screen, catching_now)
@@ -3699,6 +3704,7 @@ class TrainerIntroState(GameState):
             self.box_rect, [f"You are challenged by {self._foe_name()}!"] + lines,
             self.game.assets.fonts["med"], callback=self.on_dialogue_finish)
         self.dialogue_box.visible = False
+        self.dialogue_box.flush = True
 
         # The foe on its platform; you from behind, cut off by the text box (as in the games).
         self.foe_sprite = self._fit(trainer_sprite, h * 0.40)
@@ -3940,6 +3946,7 @@ class TrainerIntroState(GameState):
     def draw(self):
         screen = self.game.screen
         w = self.game.width
+        screen.set_clip(pygame.Rect(0, 0, w, self.box_rect.top))   # (the field above the box: you slide in from behind it, not under it)
         if self.battle_bg:
             screen.blit(self.battle_bg, (0, 0))
         else:
@@ -3993,7 +4000,8 @@ class TrainerIntroState(GameState):
             k = self._ease(self.my_box_in / self.BOX_IN)
             r.draw_my_box(screen, ns.player_pokemon, ns.player_hp, ns.player_max_hp, dx=(1 - k) * w * 0.5)
 
-        theme.draw_textbox(screen, self.box_rect)
+        screen.set_clip(None)
+        theme.draw_textbox(screen, self.box_rect, flush=True)
         if self.dialogue_box.visible:
             self.dialogue_box.draw(screen)
 
@@ -4009,6 +4017,7 @@ class TrainerVictoryState(GameState):
             game.assets.fonts["med"],
             callback=lambda: game.change_state(next_state)
         )
+        self.dialogue_box.flush = True
 
     def start(self):
         self.game.ui_manager.add_element(self.dialogue_box)
