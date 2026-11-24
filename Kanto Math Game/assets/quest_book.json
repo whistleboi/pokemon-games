@@ -397,6 +397,9 @@
     {"title": "Above the Clouds", "chapters": [
       {"mission": "b2_m32", "title": "The Wind Tunnel", "say": "Skyla's Gym is a hangar full of roaring turbines. When the wind kicks up, anyone out in the open goes flying back to the door. Time your run, and hide behind the walls."},
       {"mission": "b2_m33", "title": "Over the Mountain", "say": "Twist Mountain has caved in, and the road to Opelucid is gone. Skyla's plane is fuelled and waiting. All that's missing is a professor lost somewhere in Celestial Tower."}
+    ]},
+    {"title": "The Road to Opelucid", "chapters": [
+      {"mission": "b2_m34", "title": "The Smouldering Mountain", "say": "Professor Juniper has a question that only Opelucid's Gym Leader can answer, and the only road east runs through Reversal Mountain. The rock there is warm to the touch. Bianca has already gone in, chasing a rumour."}
     ]}
   ]
 }
