@@ -37,7 +37,8 @@
    "water": "pond.png"
   },
   "CELADON_CITY": {
-   "water": "pond.png"
+   "water": "pond.png",
+   "trainer": "plain.png"
   },
   "CELADON_GAME_CORNER": {
    "wild": "building.png",
@@ -49,10 +50,12 @@
    "water": "pond.png"
   },
   "CERULEAN_CITY": {
-   "water": "water.png"
+   "water": "water.png",
+   "trainer": "plain.png"
   },
   "CINNABAR_ISLAND": {
-   "water": "water.png"
+   "water": "water.png",
+   "trainer": "plain.png"
   },
   "DIGGLETT_CAVE": {
    "wild": "cave.png",
@@ -77,7 +80,8 @@
    "water": "pond.png"
   },
   "FUCHSIA_CITY": {
-   "water": "pond.png"
+   "water": "pond.png",
+   "trainer": "plain.png"
   },
   "GREEN_PATH": {
    "trainer": "sand.png",
@@ -263,7 +267,9 @@
    "wild": "grass.png",
    "trainer": "plain.png"
   },
-  "PEWTER_CITY": {},
+  "PEWTER_CITY": {
+   "trainer": "plain.png"
+  },
   "POKEMON_MANSION": "indoor_2.png",
   "POWER_PLANT": "indoor_2.png",
   "RESORT_GORGEOUS": {
@@ -287,7 +293,8 @@
    "water": "water.png"
   },
   "SAFFRON_CITY": {
-   "wild": "grass.png"
+   "wild": "grass.png",
+   "trainer": "plain.png"
   },
   "SEAFOAM_ISLANDS": {
    "wild": "cave.png",
@@ -339,14 +346,16 @@
    "trainer": "building.png"
   },
   "VERMILLION_CITY": {
-   "water": "water.png"
+   "water": "water.png",
+   "trainer": "plain.png"
   },
   "VICTORY_ROAD": {
    "wild": "cave.png",
    "trainer": "cave.png"
   },
   "VIRIDIAN_CITY": {
-   "water": "pond.png"
+   "water": "pond.png",
+   "trainer": "plain.png"
   },
   "VIRIDIAN_FOREST": {
    "wild": "grass.png",
