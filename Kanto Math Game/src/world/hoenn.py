@@ -13,11 +13,13 @@ Kyogre) appear everywhere. Before a choice is made the text stays neutral.
 """
 import copy
 
+# (battle portraits: Emerald's own, assets/sprites/trainers/em_tp_<n>.png from hoenn_rom_tools/em_trainer_pics.py; Courtney is
+#  ORAS's, not in Emerald, and keeps hers - 11-24)
 VERSIONS = {
     "OMEGA_RUBY": {
         "key": "OMEGA_RUBY", "title": "OMEGA RUBY", "team": "Team Magma", "team_short": "Magma", "leader": "Maxie",
-        "leader_sprite": "maxie.png", "grunt_sprite": "magma_grunt.png", "grunt_class": "TEAM_MAGMA",
-        "admin_a": ("Tabitha", "tabitha.png"), "admin_b": ("Courtney", "courtney.png"),
+        "leader_sprite": "em_tp_76.png", "grunt_sprite": "em_tp_8.png", "grunt_class": "TEAM_MAGMA",
+        "admin_a": ("Tabitha", "em_tp_69.png"), "admin_b": ("Courtney", "courtney.png"),
         "legend": "Groudon", "legend_id": 383, "orb": "Red Orb", "orb_item": "RED_ORB",
         "other_legend": "Kyogre", "other_legend_id": 382, "other_orb": "Blue Orb", "other_orb_item": "BLUE_ORB",
         "eon": "Latios", "eon_id": 381, "eon_stone": "LATIOSITE", "other_eon": "Latias", "other_eon_id": 380,
@@ -28,8 +30,8 @@ VERSIONS = {
     },
     "ALPHA_SAPPHIRE": {
         "key": "ALPHA_SAPPHIRE", "title": "ALPHA SAPPHIRE", "team": "Team Aqua", "team_short": "Aqua", "leader": "Archie",
-        "leader_sprite": "archie.png", "grunt_sprite": "aqua_grunt.png", "grunt_class": "TEAM_AQUA",
-        "admin_a": ("Shelly", "shelly.png"), "admin_b": ("Matt", "matt.png"),
+        "leader_sprite": "em_tp_13.png", "grunt_sprite": "em_tp_1.png", "grunt_class": "TEAM_AQUA",
+        "admin_a": ("Shelly", "em_tp_12.png"), "admin_b": ("Matt", "em_tp_10.png"),
         "legend": "Kyogre", "legend_id": 382, "orb": "Blue Orb", "orb_item": "BLUE_ORB",
         "other_legend": "Groudon", "other_legend_id": 383, "other_orb": "Red Orb", "other_orb_item": "RED_ORB",
         "eon": "Latias", "eon_id": 380, "eon_stone": "LATIASITE", "other_eon": "Latios", "other_eon_id": 381,
