@@ -239,6 +239,7 @@ p, me = swarm_route()
 check(p._swarm_today() == (113, "grass"), "Route 13 knows its swarm today")
 pool = p._get_wild_pool(p.area_data)
 check(abs(pool.get("113", 0) / sum(pool.values()) - 0.4) < 0.02, "...the grass table is 40% Chansey, as before")
+wu.SWARM_CALL = 0.6   # (the game's own rate: dungeon_lib turns calls off for the other suites, 11-24)
 calls = 0
 for i in range(200):   # (how often one calls: about 6 in 10, so 1 meeting in 4 there; the text box closed each time)
     m = core.Mover("wild", me[0] + 1, me[1], p._swarm_mon(113))

@@ -325,7 +325,8 @@ meet(t, "Super Potion ball")
 check(story.inventory.get("SUPER_POTION", 0) == sp + 3 and F.get("orre_phenac_superpotion"), "3 Super Potions by the bike, once")
 t = town("PHENAC_CITY", "OUTSKIRT_STAND")
 said_m = meet(t, "Girl") or []
-check(any("nobody sells them" in ln for ln in said_m), f"the Mart: Orre's shops sell no Poke Balls ({said_m[:1]})")
+check(any("back on the shelves" in ln for ln in said_m) if F.get("got_snag_machine") else any("nobody sells them" in ln for ln in said_m),
+      f"the Mart girl: no Poke Balls sold before the Snag Machine, back on the shelves after (11-24) ({said_m[:1]})")
 
 print("6) An older save already past Phenac sees none of it again")
 story.story_flags = {"got_snag_machine": True, "orre_beat_willie": True}

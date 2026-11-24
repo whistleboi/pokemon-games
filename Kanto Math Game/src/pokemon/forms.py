@@ -209,6 +209,31 @@ def rotom_change(game, slot_index, form):
     return lines
 
 
+# Kyurem's fused forms (Black 2 / White 2): Black Kyurem (Teravolt, Fusion Bolt / Freeze Shock) and White Kyurem (Turboblaze,
+# Fusion Flare / Ice Burn); data "646_black" / "646_white", sprites in altform/. Unova 11-24: the Giant Chasm's boss; later the
+# DNA Splicers. form_extras gives any Pokemon built in such a form its form's own ability and moves.
+KYUREM = 646
+KYUREM_FORMS = {"black": ("TERAVOLT", ["FUSION-BOLT", "FREEZE-SHOCK", "DRAGON-CLAW", "SCARY-FACE"]),
+                "white": ("TURBOBLAZE", ["FUSION-FLARE", "ICE-BURN", "DRAGON-PULSE", "SCARY-FACE"])}
+
+
+def form_extras(p, form):
+    """What a form brings beyond its data: Kyurem's fused ability and signature moves, Rotom's appliance move."""
+    if p is None or not form or form == "normal":
+        return p
+    pid = int(getattr(p, "id", 0) or 0)
+    if pid == KYUREM and form in KYUREM_FORMS:
+        ab, moves = KYUREM_FORMS[form]
+        p.ability_override = ab
+        if not getattr(p, "preset_moves", None):
+            p.preset_moves = list(moves)
+            p.moves = []
+    elif pid == ROTOM and form in ROTOM_FORMS and not getattr(p, "preset_moves", None):
+        p.preset_moves = [ROTOM_FORMS[form]]
+    p.form = form
+    return p
+
+
 def _apply_forms(team, forms_list):
     """A trainer team's forms by slot ("forms": ["heat", None, ...]): each Pokemon rebuilt in that form (the PWT's Rotom)."""
     from src.ui import theme
@@ -225,9 +250,9 @@ def _apply_forms(team, forms_list):
             new = Pokemon(raw, game.assets, size_mult=getattr(p, "size_mult", 3.125))
             new.level = p.level
             new.current_hp = new.get_max_hp()
-            if int(p.id) == ROTOM and f in ROTOM_FORMS:   # (its form's own move, as in the games)
-                new.preset_moves = list(getattr(p, "preset_moves", None) or []) or [ROTOM_FORMS[f]]
-            team[i] = new
+            if getattr(p, "preset_moves", None):
+                new.preset_moves = list(p.preset_moves)
+            team[i] = form_extras(new, f)   # (its form's own ability and moves: Rotom's appliance move, Kyurem's fusion)
 
 
 def mark_trainer_team(team, trainer_info):
