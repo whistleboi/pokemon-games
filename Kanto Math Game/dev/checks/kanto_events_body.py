@@ -477,6 +477,8 @@ ace()
 _w = meet(p, "THE BLACK FOG") or []
 check(any("giant Haunter rises" in str(l) for l in _w) and story.story_flags.get("black_fog_banished_kanto_pokemon_tower"),
       f"walking up to it starts the Black Fog's battle, and beating it banishes it ({[l for l in _w if 'Black Fog' in str(l)][:1]})")
+import datetime as _dt   # (no 10% return today: black_fog.maybe_return, once a day per place)
+story.story_flags["black_fog_back_KANTO_POKEMON_TOWER"] = _dt.date.today().isoformat()
 p = route("KANTO_POKEMON_TOWER", "LAVENDER_TOWN", floor=3)
 check(_bf(p.run.floor) is None, "...after which 4F is clear")
 print("\n== Professor Oak's GS Ball errand after the Kanto title (11-24, a Journal Journey)")
@@ -528,6 +530,29 @@ check({"FIRE_STONE", "THUNDER_STONE", "WATER_STONE", "LEAF_STONE", "LINKING_CORD
 _k = mk(64); _k.level = 30
 from src.pokemon import evolution as _evo
 check(all(_evo.item_evolution(g, mk(_a), "LINKING_CORD") for _a in (64, 67, 75, 93)), "...and the Linking Cord evolves Kadabra, Machoke, Graveler and Haunter")
+print("\n== Eevee: a second on Celadon Mansion's roof (Yellow), and Bill's third for two evolved Eevee (Jordan 11-24)")
+story.story_flags.pop("got_eevee_celadon_roof", None)
+team(25, level=30)
+_t = town("CELADON_CITY", "KANTO_ROUTE_7", room="mansion_roof")
+meet(_t, "EEVEE")
+check(story.story_flags.get("got_eevee_celadon_roof") and any(getattr(p, "id", None) == 133 for p in story.player_team),
+      "the Poke Ball out on Celadon Mansion's roof is an Eevee (Lv 25)")
+story.story_flags["got_ss_ticket_bill"] = True
+story.story_flags.pop("received_bill_eevee_evolved", None)
+team(25, 134, level=30)
+_b = place("BILLS_HOUSE", "KANTO_ROUTE_25")
+_w = meet(_b, "Bill") or []
+check(not story.story_flags.get("received_bill_eevee_evolved") and not any(p.id == 133 for p in story.player_team) and any("two evolved Eevee" in str(l) for l in _w),
+      f"Bill with one evolved Eevee: he asks to see two, no gift yet ({_w[-1:]})")
+team(134, 135, level=30)
+_b = place("BILLS_HOUSE", "KANTO_ROUTE_25")
+_w = meet(_b, "Bill") or []
+check(story.story_flags.get("received_bill_eevee_evolved") and any(p.id == 133 for p in story.player_team),
+      f"...with Vaporeon and Jolteon he gives you an Eevee ({_w[-2:]})")
+_n = len(story.player_team)
+_b = place("BILLS_HOUSE", "KANTO_ROUTE_25")
+meet(_b, "Bill")
+check(len(story.player_team) == _n, "...once only")
 from src.states.game_corner import prizes_here as _ph
 story.current_area_key = "TWO_ISLAND"
 check(_ph(story) == [], "Two Island's Joyful Game Corner has no prize list of its own (FireRed: its games give Berries), not Celadon's")

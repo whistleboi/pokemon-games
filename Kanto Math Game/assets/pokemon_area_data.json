@@ -287,16 +287,8 @@
         "condition": { "visited": "MT_MOON", "flag_not": ["took_dome_fossil", "took_helix_fossil", "received_museum_fossil"] }
       },
       {
-        "id": "s_bill1", "type": "SIDE", "text": "Nugget Bridge", "desc": "Bill is looking for a trainer who can clear the Nugget Bridge challenge on Route 24. Beat all its trainers, then visit him.",
-        "condition": { "visited": "BILLS_HOUSE" }, "completed_flag": "received_bill_eevee"
-      },
-      {
-        "id": "s_bill2", "type": "SIDE", "text": "Bill's Research: Snorlax", "desc": "Bill has never seen a real Snorlax. There are rumours of one sleeping across a road near Lavender Town.",
-        "condition": { "flag": "received_bill_eevee" }, "completed_flag": "received_bill_eevee_snorlax", "target": "BILLS_HOUSE"
-      },
-      {
-        "id": "s_bill3", "type": "SIDE", "text": "Bill's Research: Lickitung", "desc": "Bill is fascinated by long tongues. Bring him a Lickitung, rumored to live in the Safari Zone.",
-        "condition": { "flag": "received_bill_eevee_snorlax" }, "completed_flag": "received_bill_eevee_lickitung", "target": "BILLS_HOUSE"
+        "id": "s_bill_eevee", "type": "SIDE", "text": "Bill's Eevee", "desc": "Bill can't stop talking about Eevee and everything it can become. Show him two that have evolved, and he might part with one of his own.",
+        "condition": { "flag": "got_ss_ticket_bill" }, "completed_flag": "received_bill_eevee_evolved", "target": "BILLS_HOUSE"
       },
       {
         "id": "s_bike", "type": "SIDE", "text": "New Wheels", "target": "CERULEAN_CITY", "desc": "A Bike Voucher, and a Bike Shop in Cerulean City that has never given anything away.",
