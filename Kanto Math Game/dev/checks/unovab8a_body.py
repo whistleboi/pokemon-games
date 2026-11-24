@@ -266,6 +266,24 @@ flags.pop("b2_opelucid_thawed", None)
 check(WT.story_map(g, "OPELUCID_CITY")["art"] == ope["story_maps"][0]["map"]["art"], "White 2: frozen in its own look")
 flags["unova_version"] = "BLACK_2"
 
+print("8) extras: the Mimic game, the Medal Box painter, the HMs")
+from src.world import unova_story as US, medals as MD, hms as HMS
+_S = type("S", (), {"game": g})()
+said.clear(); US.event(_S, {"mimic": "girl"}, [], lambda ls: said.extend(ls))
+k = flags.get("b2_mimic_pick")
+check(k is not None and "Who mimicked me" in heard(), "the Mimic girl calls out a Pokemon")
+said.clear(); US.event(_S, {"mimic": k}, [], lambda ls: said.extend(ls))
+check("Correct" in heard() and flags.get("b2_mimic_wins"), "...and the friend of its family is right")
+story.inventory["MEDAL_BOX"] = 1
+for m in MD.MEDALS[:len(MD.MEDALS) // 2]:
+    flags["medal_" + m[0]] = True
+said.clear(); US.event(_S, {"medal_paint": True}, [], lambda ls: said.extend(ls))
+check(flags.get("b2_medal_box_paint") == "copper", f"the painter: half the Medals, a copper box ({flags.get('b2_medal_box_paint')})")
+_pt = sum(1 for v in tmaps.values() if isinstance(v, dict) for r in (v.get("rooms") or {}).values()
+          for o in r.get("people", []) if isinstance(o, dict) and o.get("text") == "Medal Box painter")
+check(_pt >= 7, f"a Medal Box painter in every walked Center ({_pt})")
+check(HMS.HM_BY_BADGE["UNOVA"] == {"WAVE": "HM_WATERFALL"}, "Strength, Fly, Surf: story gifts only (no badge stand-ins)")
+
 print("\n##### %d failures" % len(fails))
 for f_ in fails:
     print("  -", f_)
