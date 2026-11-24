@@ -327,10 +327,6 @@ EVENTS = {
         "battle": _t(GRUNT_P, team=[510, 505, 521], dialogue={"player_won": [
             "A blinding light fills the tower. N flies away on the legendary dragon!",
             "N: Find the other dragon stone, {player_name}. Then we'll see whose truth is stronger."]})},
-    "lacunosa_elder": {"lines": ["Elder: Long ago, a monster fell from the sky in a meteorite at Giant Chasm.",
-                                 "On cold nights it comes to town and takes people away. So we stay inside at night.",
-                                 "That monster... some say it is the empty shell of the original dragon. Kyurem."],
-                       "flag": "heard_kyurem_legend"},
     "drayden_dragon_stones": {"lines": ["Drayden: The Light Stone and Dark Stone hold the dragons of truth and ideals.",
                                         "N has one. The other must be awakened by someone the dragon accepts.",
                                         "I believe that someone is you."],
