@@ -447,7 +447,7 @@
     ]},
     {"title": "Beneath Pyrite", "chapters": [
       {"mission": "orre_m7", "title": "Smoke on Mt. Battle", "say": "Something is wrong on the mountain next to Agate. Trainers are coming down beaten and shaking."},
-      {"mission": "orre_m7b", "title": "A Gift from the Top", "say": "Mt. Battle is quiet again. The trainer at the top of its first area has been waiting to say something."},
+      {"mission": "orre_m7b", "title": "A Gift from the Top", "say": "Mt. Battle is quiet again. The trainer at the top of its first area has been waiting to say something, and whoever ran off in such a hurry dropped something shiny on the way."},
       {"mission": "orre_m7c", "title": "The Jail Key", "say": "Two of Miror B.'s men sit in Pyrite's cells. Whatever they're carrying, they aren't going to hand it over."},
       {"mission": "orre_m8", "title": "Down the Giant Lift", "say": "Beneath the Pyrite Building, a lift big enough for a truck goes down and down. At the bottom is a whole town that never sees the sun."},
       {"mission": "orre_m8b", "title": "A Spy in a Cage", "say": "Somebody in The Under has been locked away for asking too many questions."},
