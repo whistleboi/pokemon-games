@@ -179,12 +179,11 @@ class JohtoTown:
         elif not flags.get("slowpoke_well_cleared"):
             flags["kurt_went_to_well"] = True   # (HGSS: Kurt sees off the Grunt guarding the Well: the way in is open; 11-22)
             msg = self.game.assets.get_text("kurt_intro")
-        elif not flags.get("got_fast_ball_kurt"):   # (once: his thanks for the Well, and the Fast Ball he made; HGSS)
+        elif not flags.get("got_fast_ball_kurt"):   # (once: his thanks for the Well, the Fast Ball he made - HGSS; Crystal's was a Lure Ball)
             flags["got_fast_ball_kurt"] = True
-            story.balls_left += 5
             story.inventory["FAST_BALL"] = story.inventory.get("FAST_BALL", 0) + 1
             msg = list(self.game.assets.get_text("kurt_reward")) + [
-                "Kurt: And take this. It's a Fast Ball I made from a White Apricorn.",
+                "Kurt: Take this. It's a Fast Ball I made from a White Apricorn.", "You received a FAST BALL!",
                 "Bring me Apricorns from the trees around Johto, and I'll make you balls from them!"]
         else:   # (Apricorns into his balls, on the spot: Jordan 11-15, simplified)
             from src.pokemon.items import APRICORN_BALL

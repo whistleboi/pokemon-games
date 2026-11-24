@@ -1,0 +1,1355 @@
+{
+ "source": "Pokemon Black 2 (US), Jordan's game file: props a/0/4/4, names system text 93, stages a/0/4/6 30-34, songs SEQ_BGM_MSL_*; kinds and spots from Bulbapedia's Prop table. Written by kanto_handoff/unova_map_tools/musical.py",
+ "props": [
+  {
+   "id": 0,
+   "name": "Pink Barrette",
+   "kind": "Cute",
+   "spot": "ear",
+   "alt": "body",
+   "box": [
+    7,
+    9,
+    25,
+    24
+   ]
+  },
+  {
+   "id": 1,
+   "name": "Blue Barrette",
+   "kind": "Cute",
+   "spot": "ear",
+   "alt": "body",
+   "box": [
+    6,
+    8,
+    26,
+    25
+   ]
+  },
+  {
+   "id": 2,
+   "name": "Red Barrette",
+   "kind": "Cute",
+   "spot": "ear",
+   "alt": "body",
+   "box": [
+    7,
+    9,
+    25,
+    23
+   ]
+  },
+  {
+   "id": 3,
+   "name": "Blue Flower",
+   "kind": "Cute",
+   "spot": "ear",
+   "alt": "body",
+   "box": [
+    6,
+    5,
+    25,
+    26
+   ]
+  },
+  {
+   "id": 4,
+   "name": "Crimson Scarf",
+   "kind": "Cute",
+   "spot": "body",
+   "alt": "waist",
+   "box": [
+    13,
+    8,
+    52,
+    24
+   ]
+  },
+  {
+   "id": 5,
+   "name": "Red Flower",
+   "kind": "Cute",
+   "spot": "ear",
+   "alt": "body",
+   "box": [
+    7,
+    8,
+    24,
+    24
+   ]
+  },
+  {
+   "id": 6,
+   "name": "Big Barrette",
+   "kind": "Cute",
+   "spot": "head",
+   "alt": "body",
+   "box": [
+    3,
+    6,
+    29,
+    27
+   ]
+  },
+  {
+   "id": 7,
+   "name": "Headband",
+   "kind": "Cute",
+   "spot": "head",
+   "alt": null,
+   "box": [
+    3,
+    9,
+    29,
+    23
+   ]
+  },
+  {
+   "id": 8,
+   "name": "Square Glasses",
+   "kind": "Elegant",
+   "spot": "face",
+   "alt": "head",
+   "box": [
+    6,
+    12,
+    30,
+    19
+   ]
+  },
+  {
+   "id": 9,
+   "name": "Striped Barrette",
+   "kind": "Cute",
+   "spot": "ear",
+   "alt": "body",
+   "box": [
+    6,
+    10,
+    25,
+    24
+   ]
+  },
+  {
+   "id": 10,
+   "name": "Small Barrette",
+   "kind": "Cute",
+   "spot": "ear",
+   "alt": "body",
+   "box": [
+    9,
+    11,
+    23,
+    21
+   ]
+  },
+  {
+   "id": 11,
+   "name": "Decorative Ribbon",
+   "kind": "Cute",
+   "spot": "head",
+   "alt": null,
+   "box": [
+    9,
+    1,
+    55,
+    30
+   ]
+  },
+  {
+   "id": 12,
+   "name": "Purse",
+   "kind": "Cute",
+   "spot": "arm",
+   "alt": null,
+   "box": [
+    4,
+    2,
+    27,
+    30
+   ]
+  },
+  {
+   "id": 13,
+   "name": "Necklace",
+   "kind": "Elegant",
+   "spot": "body",
+   "alt": null,
+   "box": [
+    4,
+    8,
+    28,
+    24
+   ]
+  },
+  {
+   "id": 14,
+   "name": "Gorgeous Flower",
+   "kind": "Elegant",
+   "spot": "ear",
+   "alt": "body",
+   "box": [
+    6,
+    6,
+    26,
+    26
+   ]
+  },
+  {
+   "id": 15,
+   "name": "Round Button",
+   "kind": "Cute",
+   "spot": "waist",
+   "alt": "body",
+   "box": [
+    10,
+    10,
+    22,
+    22
+   ]
+  },
+  {
+   "id": 16,
+   "name": "Green Barrette",
+   "kind": "Quirky",
+   "spot": "ear",
+   "alt": "head",
+   "box": [
+    6,
+    8,
+    25,
+    24
+   ]
+  },
+  {
+   "id": 17,
+   "name": "Straw Hat",
+   "kind": "Quirky",
+   "spot": "head",
+   "alt": null,
+   "box": [
+    1,
+    8,
+    31,
+    23
+   ]
+  },
+  {
+   "id": 18,
+   "name": "Snow Crystal",
+   "kind": "Elegant",
+   "spot": "ear",
+   "alt": "body",
+   "box": [
+    6,
+    4,
+    25,
+    27
+   ]
+  },
+  {
+   "id": 19,
+   "name": "Lonely Flower",
+   "kind": "Elegant",
+   "spot": "arm",
+   "alt": "head",
+   "box": [
+    2,
+    15,
+    26,
+    50
+   ]
+  },
+  {
+   "id": 20,
+   "name": "Paintbrush",
+   "kind": "Quirky",
+   "spot": "arm",
+   "alt": null,
+   "box": [
+    12,
+    0,
+    20,
+    32
+   ]
+  },
+  {
+   "id": 21,
+   "name": "Beret",
+   "kind": "Quirky",
+   "spot": "head",
+   "alt": null,
+   "box": [
+    7,
+    8,
+    28,
+    21
+   ]
+  },
+  {
+   "id": 22,
+   "name": "Whisk",
+   "kind": "Quirky",
+   "spot": "arm",
+   "alt": null,
+   "box": [
+    9,
+    12,
+    25,
+    53
+   ]
+  },
+  {
+   "id": 23,
+   "name": "Ladle",
+   "kind": "Cool",
+   "spot": "arm",
+   "alt": null,
+   "box": [
+    3,
+    11,
+    25,
+    47
+   ]
+  },
+  {
+   "id": 24,
+   "name": "Toy Cake",
+   "kind": "Quirky",
+   "spot": "arm",
+   "alt": "head",
+   "box": [
+    3,
+    1,
+    28,
+    31
+   ]
+  },
+  {
+   "id": 25,
+   "name": "Chef's Hat",
+   "kind": "Cool",
+   "spot": "head",
+   "alt": null,
+   "box": [
+    5,
+    5,
+    27,
+    28
+   ]
+  },
+  {
+   "id": 26,
+   "name": "Frying Pan",
+   "kind": "Quirky",
+   "spot": "arm",
+   "alt": null,
+   "box": [
+    6,
+    15,
+    26,
+    50
+   ]
+  },
+  {
+   "id": 27,
+   "name": "Bib",
+   "kind": "Quirky",
+   "spot": "body",
+   "alt": "waist",
+   "box": [
+    2,
+    2,
+    30,
+    30
+   ]
+  },
+  {
+   "id": 28,
+   "name": "Red Parasol",
+   "kind": "Cute",
+   "spot": "arm",
+   "alt": null,
+   "box": [
+    0,
+    12,
+    31,
+    51
+   ]
+  },
+  {
+   "id": 29,
+   "name": "Germ Mask",
+   "kind": "Quirky",
+   "spot": "face",
+   "alt": null,
+   "box": [
+    3,
+    9,
+    29,
+    23
+   ]
+  },
+  {
+   "id": 30,
+   "name": "Mallet",
+   "kind": "Quirky",
+   "spot": "arm",
+   "alt": null,
+   "box": [
+    8,
+    2,
+    23,
+    30
+   ]
+  },
+  {
+   "id": 31,
+   "name": "Colorful Parasol",
+   "kind": "Cute",
+   "spot": "arm",
+   "alt": null,
+   "box": [
+    0,
+    7,
+    31,
+    56
+   ]
+  },
+  {
+   "id": 32,
+   "name": "Wrench",
+   "kind": "Quirky",
+   "spot": "arm",
+   "alt": null,
+   "box": [
+    10,
+    1,
+    22,
+    31
+   ]
+  },
+  {
+   "id": 33,
+   "name": "Lantern",
+   "kind": "Cool",
+   "spot": "arm",
+   "alt": null,
+   "box": [
+    5,
+    2,
+    27,
+    31
+   ]
+  },
+  {
+   "id": 34,
+   "name": "Windup Key",
+   "kind": "Quirky",
+   "spot": "head",
+   "alt": null,
+   "box": [
+    5,
+    6,
+    26,
+    26
+   ]
+  },
+  {
+   "id": 35,
+   "name": "Helmet",
+   "kind": "Quirky",
+   "spot": "head",
+   "alt": null,
+   "box": [
+    4,
+    8,
+    27,
+    22
+   ]
+  },
+  {
+   "id": 36,
+   "name": "Frilly Apron",
+   "kind": "Elegant",
+   "spot": "waist",
+   "alt": "body",
+   "box": [
+    2,
+    6,
+    29,
+    26
+   ]
+  },
+  {
+   "id": 37,
+   "name": "Dressy Tie",
+   "kind": "Elegant",
+   "spot": "body",
+   "alt": "ear",
+   "box": [
+    8,
+    11,
+    24,
+    21
+   ]
+  },
+  {
+   "id": 38,
+   "name": "Lace Cap",
+   "kind": "Elegant",
+   "spot": "head",
+   "alt": null,
+   "box": [
+    2,
+    9,
+    29,
+    23
+   ]
+  },
+  {
+   "id": 39,
+   "name": "Scarlet Cape",
+   "kind": "Cool",
+   "spot": "body",
+   "alt": null,
+   "box": [
+    5,
+    0,
+    59,
+    32
+   ]
+  },
+  {
+   "id": 40,
+   "name": "Toy Cutlass",
+   "kind": "Cool",
+   "spot": "arm",
+   "alt": null,
+   "box": [
+    8,
+    12,
+    23,
+    51
+   ]
+  },
+  {
+   "id": 41,
+   "name": "Toy Sword",
+   "kind": "Cool",
+   "spot": "arm",
+   "alt": null,
+   "box": [
+    9,
+    14,
+    22,
+    50
+   ]
+  },
+  {
+   "id": 42,
+   "name": "Pirate Hat",
+   "kind": "Cool",
+   "spot": "head",
+   "alt": null,
+   "box": [
+    2,
+    9,
+    30,
+    23
+   ]
+  },
+  {
+   "id": 43,
+   "name": "Cowboy Hat",
+   "kind": "Cool",
+   "spot": "head",
+   "alt": "arm",
+   "box": [
+    1,
+    8,
+    32,
+    23
+   ]
+  },
+  {
+   "id": 44,
+   "name": "Rigid Shield",
+   "kind": "Cool",
+   "spot": "arm",
+   "alt": "body",
+   "box": [
+    5,
+    4,
+    26,
+    28
+   ]
+  },
+  {
+   "id": 45,
+   "name": "Black Wings",
+   "kind": "Cool",
+   "spot": "body",
+   "alt": "head",
+   "box": [
+    1,
+    10,
+    63,
+    28
+   ]
+  },
+  {
+   "id": 46,
+   "name": "Witchy Hat",
+   "kind": "Quirky",
+   "spot": "head",
+   "alt": null,
+   "box": [
+    0,
+    5,
+    32,
+    29
+   ]
+  },
+  {
+   "id": 47,
+   "name": "White Wings",
+   "kind": "Cute",
+   "spot": "body",
+   "alt": "head",
+   "box": [
+    0,
+    9,
+    64,
+    23
+   ]
+  },
+  {
+   "id": 48,
+   "name": "Umber Belt",
+   "kind": "Cool",
+   "spot": "waist",
+   "alt": null,
+   "box": [
+    14,
+    12,
+    51,
+    21
+   ]
+  },
+  {
+   "id": 49,
+   "name": "Horned Helm",
+   "kind": "Cool",
+   "spot": "head",
+   "alt": null,
+   "box": [
+    1,
+    4,
+    31,
+    27
+   ]
+  },
+  {
+   "id": 50,
+   "name": "Trident",
+   "kind": "Cool",
+   "spot": "arm",
+   "alt": null,
+   "box": [
+    7,
+    12,
+    24,
+    52
+   ]
+  },
+  {
+   "id": 51,
+   "name": "Magic Wand",
+   "kind": "Quirky",
+   "spot": "arm",
+   "alt": null,
+   "box": [
+    11,
+    15,
+    21,
+    50
+   ]
+  },
+  {
+   "id": 52,
+   "name": "Red Nose",
+   "kind": "Quirky",
+   "spot": "face",
+   "alt": null,
+   "box": [
+    10,
+    10,
+    22,
+    21
+   ]
+  },
+  {
+   "id": 53,
+   "name": "Jester's Cap",
+   "kind": "Quirky",
+   "spot": "head",
+   "alt": null,
+   "box": [
+    14,
+    7,
+    49,
+    25
+   ]
+  },
+  {
+   "id": 54,
+   "name": "Googly Specs",
+   "kind": "Quirky",
+   "spot": "face",
+   "alt": "head",
+   "box": [
+    4,
+    10,
+    28,
+    21
+   ]
+  },
+  {
+   "id": 55,
+   "name": "Crown",
+   "kind": "Elegant",
+   "spot": "head",
+   "alt": null,
+   "box": [
+    1,
+    3,
+    30,
+    29
+   ]
+  },
+  {
+   "id": 56,
+   "name": "Black Tie",
+   "kind": "Elegant",
+   "spot": "body",
+   "alt": null,
+   "box": [
+    12,
+    5,
+    20,
+    28
+   ]
+  },
+  {
+   "id": 57,
+   "name": "Black Cape",
+   "kind": "Elegant",
+   "spot": "body",
+   "alt": null,
+   "box": [
+    3,
+    0,
+    62,
+    30
+   ]
+  },
+  {
+   "id": 58,
+   "name": "Gorgeous Specs",
+   "kind": "Elegant",
+   "spot": "face",
+   "alt": "head",
+   "box": [
+    3,
+    12,
+    30,
+    21
+   ]
+  },
+  {
+   "id": 59,
+   "name": "Top Hat",
+   "kind": "Elegant",
+   "spot": "head",
+   "alt": "arm",
+   "box": [
+    6,
+    8,
+    26,
+    26
+   ]
+  },
+  {
+   "id": 60,
+   "name": "White Domino Mask",
+   "kind": "Cool",
+   "spot": "face",
+   "alt": null,
+   "box": [
+    4,
+    9,
+    27,
+    24
+   ]
+  },
+  {
+   "id": 61,
+   "name": "White Cape",
+   "kind": "Elegant",
+   "spot": "body",
+   "alt": null,
+   "box": [
+    6,
+    1,
+    55,
+    30
+   ]
+  },
+  {
+   "id": 62,
+   "name": "Gentleman's Hat",
+   "kind": "Elegant",
+   "spot": "head",
+   "alt": "arm",
+   "box": [
+    6,
+    6,
+    27,
+    25
+   ]
+  },
+  {
+   "id": 63,
+   "name": "Cane",
+   "kind": "Elegant",
+   "spot": "arm",
+   "alt": null,
+   "box": [
+    10,
+    13,
+    21,
+    50
+   ]
+  },
+  {
+   "id": 64,
+   "name": "Striped Tie",
+   "kind": "Elegant",
+   "spot": "body",
+   "alt": null,
+   "box": [
+    12,
+    3,
+    19,
+    32
+   ]
+  },
+  {
+   "id": 65,
+   "name": "Pocket Watch",
+   "kind": "Elegant",
+   "spot": "arm",
+   "alt": "body",
+   "box": [
+    6,
+    4,
+    24,
+    27
+   ]
+  },
+  {
+   "id": 66,
+   "name": "Bow Tie",
+   "kind": "Elegant",
+   "spot": "body",
+   "alt": "ear",
+   "box": [
+    7,
+    11,
+    24,
+    21
+   ]
+  },
+  {
+   "id": 67,
+   "name": "Tiara",
+   "kind": "Elegant",
+   "spot": "head",
+   "alt": null,
+   "box": [
+    1,
+    6,
+    30,
+    26
+   ]
+  },
+  {
+   "id": 68,
+   "name": "Rose",
+   "kind": "Elegant",
+   "spot": "arm",
+   "alt": "head",
+   "box": [
+    8,
+    13,
+    25,
+    51
+   ]
+  },
+  {
+   "id": 69,
+   "name": "Monocle",
+   "kind": "Elegant",
+   "spot": "face",
+   "alt": null,
+   "box": [
+    9,
+    11,
+    23,
+    22
+   ]
+  },
+  {
+   "id": 70,
+   "name": "Tie",
+   "kind": "Elegant",
+   "spot": "body",
+   "alt": null,
+   "box": [
+    13,
+    4,
+    18,
+    28
+   ]
+  },
+  {
+   "id": 71,
+   "name": "Wig",
+   "kind": "Cool",
+   "spot": "head",
+   "alt": null,
+   "box": [
+    9,
+    1,
+    53,
+    31
+   ]
+  },
+  {
+   "id": 72,
+   "name": "Standing Mike",
+   "kind": "Cool",
+   "spot": "arm",
+   "alt": null,
+   "box": [
+    7,
+    10,
+    26,
+    54
+   ]
+  },
+  {
+   "id": 73,
+   "name": "Tambourine",
+   "kind": "Cute",
+   "spot": "arm",
+   "alt": null,
+   "box": [
+    8,
+    1,
+    23,
+    31
+   ]
+  },
+  {
+   "id": 74,
+   "name": "Fedora",
+   "kind": "Cute",
+   "spot": "head",
+   "alt": null,
+   "box": [
+    8,
+    9,
+    23,
+    24
+   ]
+  },
+  {
+   "id": 75,
+   "name": "Microphone",
+   "kind": "Cool",
+   "spot": "arm",
+   "alt": null,
+   "box": [
+    9,
+    2,
+    22,
+    30
+   ]
+  },
+  {
+   "id": 76,
+   "name": "Maraca",
+   "kind": "Quirky",
+   "spot": "arm",
+   "alt": null,
+   "box": [
+    10,
+    3,
+    21,
+    31
+   ]
+  },
+  {
+   "id": 77,
+   "name": "Trumpet",
+   "kind": "Elegant",
+   "spot": "arm",
+   "alt": null,
+   "box": [
+    1,
+    6,
+    30,
+    26
+   ]
+  },
+  {
+   "id": 78,
+   "name": "Laurel Wreath",
+   "kind": "Elegant",
+   "spot": "head",
+   "alt": null,
+   "box": [
+    1,
+    10,
+    31,
+    21
+   ]
+  },
+  {
+   "id": 79,
+   "name": "White Pompom",
+   "kind": "Cute",
+   "spot": "arm",
+   "alt": "body",
+   "box": [
+    4,
+    5,
+    29,
+    27
+   ]
+  },
+  {
+   "id": 80,
+   "name": "Pennant",
+   "kind": "Quirky",
+   "spot": "arm",
+   "alt": "head",
+   "box": [
+    2,
+    12,
+    24,
+    53
+   ]
+  },
+  {
+   "id": 81,
+   "name": "Football",
+   "kind": "Cool",
+   "spot": "arm",
+   "alt": "head",
+   "box": [
+    3,
+    7,
+    30,
+    25
+   ]
+  },
+  {
+   "id": 82,
+   "name": "Winner's Belt",
+   "kind": "Cool",
+   "spot": "waist",
+   "alt": null,
+   "box": [
+    0,
+    8,
+    32,
+    24
+   ]
+  },
+  {
+   "id": 83,
+   "name": "Racket",
+   "kind": "Cool",
+   "spot": "arm",
+   "alt": null,
+   "box": [
+    5,
+    10,
+    26,
+    54
+   ]
+  },
+  {
+   "id": 84,
+   "name": "Electric Guitar",
+   "kind": "Cool",
+   "spot": "arm",
+   "alt": null,
+   "box": [
+    4,
+    1,
+    26,
+    62
+   ]
+  },
+  {
+   "id": 85,
+   "name": "Toy Fishing Rod",
+   "kind": "Cool",
+   "spot": "arm",
+   "alt": null,
+   "box": [
+    2,
+    11,
+    31,
+    53
+   ]
+  },
+  {
+   "id": 86,
+   "name": "Smiley-Face Mask",
+   "kind": "Quirky",
+   "spot": "face",
+   "alt": "arm",
+   "box": [
+    4,
+    4,
+    28,
+    28
+   ]
+  },
+  {
+   "id": 87,
+   "name": "Fake Bellybutton",
+   "kind": "Quirky",
+   "spot": "waist",
+   "alt": null,
+   "box": [
+    10,
+    10,
+    21,
+    21
+   ]
+  },
+  {
+   "id": 88,
+   "name": "Professor Hat",
+   "kind": "Quirky",
+   "spot": "head",
+   "alt": null,
+   "box": [
+    3,
+    7,
+    28,
+    27
+   ]
+  },
+  {
+   "id": 89,
+   "name": "Hula Skirt",
+   "kind": "Quirky",
+   "spot": "waist",
+   "alt": "body",
+   "box": [
+    10,
+    4,
+    54,
+    29
+   ]
+  },
+  {
+   "id": 90,
+   "name": "Thick Book",
+   "kind": "Quirky",
+   "spot": "arm",
+   "alt": null,
+   "box": [
+    2,
+    8,
+    30,
+    25
+   ]
+  },
+  {
+   "id": 91,
+   "name": "Bouquet",
+   "kind": "Elegant",
+   "spot": "arm",
+   "alt": null,
+   "box": [
+    1,
+    9,
+    31,
+    56
+   ]
+  },
+  {
+   "id": 92,
+   "name": "Fake Bone",
+   "kind": "Quirky",
+   "spot": "arm",
+   "alt": null,
+   "box": [
+    10,
+    15,
+    22,
+    49
+   ]
+  },
+  {
+   "id": 93,
+   "name": "Round Mushroom",
+   "kind": "Quirky",
+   "spot": "arm",
+   "alt": "head",
+   "box": [
+    7,
+    7,
+    25,
+    24
+   ]
+  },
+  {
+   "id": 94,
+   "name": "Shuriken",
+   "kind": "Quirky",
+   "spot": "arm",
+   "alt": "ear",
+   "box": [
+    7,
+    7,
+    25,
+    25
+   ]
+  },
+  {
+   "id": 95,
+   "name": "Scarlet Hat",
+   "kind": "Quirky",
+   "spot": "head",
+   "alt": null,
+   "box": [
+    4,
+    6,
+    28,
+    27
+   ]
+  },
+  {
+   "id": 96,
+   "name": "Big Bag",
+   "kind": "Quirky",
+   "spot": "arm",
+   "alt": null,
+   "box": [
+    15,
+    0,
+    48,
+    31
+   ]
+  },
+  {
+   "id": 97,
+   "name": "Candy",
+   "kind": "Cute",
+   "spot": "arm",
+   "alt": "ear",
+   "box": [
+    4,
+    8,
+    27,
+    23
+   ]
+  },
+  {
+   "id": 98,
+   "name": "Fluffy Beard",
+   "kind": "Elegant",
+   "spot": "face",
+   "alt": null,
+   "box": [
+    5,
+    5,
+    28,
+    27
+   ]
+  },
+  {
+   "id": 99,
+   "name": "Gift Box",
+   "kind": "Cute",
+   "spot": "arm",
+   "alt": "head",
+   "box": [
+    6,
+    6,
+    27,
+    28
+   ]
+  }
+ ],
+ "shows": [
+  {
+   "key": "stardom",
+   "name": "Stardom",
+   "kind": "Cool",
+   "audience": "Men",
+   "stage": "stage_01.png",
+   "song": "unova/msl_01"
+  },
+  {
+   "key": "soiree",
+   "name": "A Sweet Soiree",
+   "kind": "Elegant",
+   "audience": "Women",
+   "stage": "stage_02.png",
+   "song": "unova/msl_02"
+  },
+  {
+   "key": "nimbasa",
+   "name": "Exciting Nimbasa",
+   "kind": "Quirky",
+   "audience": "Boys",
+   "stage": "stage_03.png",
+   "song": "unova/msl_03"
+  },
+  {
+   "key": "forest",
+   "name": "Forest Stroll",
+   "kind": "Cute",
+   "audience": "Girls",
+   "stage": "stage_04.png",
+   "song": "unova/msl_04"
+  }
+ ],
+ "opposite": {
+  "Cool": "Cute",
+  "Cute": "Cool",
+  "Elegant": "Quirky",
+  "Quirky": "Elegant"
+ },
+ "spots": [
+  "head",
+  "ear",
+  "ear",
+  "face",
+  "body",
+  "waist",
+  "arm",
+  "arm"
+ ]
+}

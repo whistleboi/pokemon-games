@@ -315,14 +315,15 @@ class KantoTown:
         return [f"A Super Nerd from Mt. Moon sent us his {name}. He says you should have it!",
                 f"You received the {name}!"]
 
-    def visit_stoneman(self):
+    def visit_stoneman(self, target=None):
         self.clear_hover_menu()
         self.npc_active = True
         self.current_npc = "stoneman"
         self.action_menu.set_visibility(False)
         self.npc_sprite = self.game.assets.get_trainer_image("ruinmaniac.png")
 
-        msgs = ["Welcome to the fossil lab!", "We can bring ancient Pokémon back to life."]
+        msgs = (["I'm a Fossil Maniac! I dig for fossils down here.", "And I know how to bring ancient Pokémon back to life!"]   # (the Underground Path's,
+                if target == "stoneman" else ["Welcome to the fossil lab!", "We can bring ancient Pokémon back to life."])  #  11-23 cleanup)
         msgs += self._miguels_fossil()
         items, target_id = self._next_fossil_revival()
 

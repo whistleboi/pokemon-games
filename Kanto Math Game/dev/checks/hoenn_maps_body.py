@@ -102,7 +102,8 @@ for key in BUILT:
         walk = set(".=\"NX!ow$[]{}%_()D<>^vnwu20b:|;,'")   # (' round stones: crossed on the Bicycle)
         starts = [(x, y) for y, r in enumerate(grid) for x, c in enumerate(r) if c in "<>^vnwu"]
         _back = [(x, y - 1) for x, y in map(tuple, m.get("back_doors", []))]   # (a yard reached by a back door: Lavaridge's hot springs)
-        seen, todo = set(starts[:1] + _back), deque(starts[:1] + _back)
+        _first = starts if m.get("split") else starts[:1]   # ("split": a map in parts, each from its own edge - Rustboro's fence path from Route 104, H7)
+        seen, todo = set(_first + _back), deque(_first + _back)
         while todo:
             x, y = todo.popleft()
             for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
@@ -275,7 +276,7 @@ if _ms is None:
 # (by here in the story you carry Cut and Rock Smash: the small trees and cracked rocks are out of the way)
 _hm_had = {k: story.inventory.get(k) for k in ("HM_CUT", "HM_ROCK_SMASH")}
 story.inventory.update({"HM_CUT": 1, "HM_ROCK_SMASH": 1})
-# Route 110: the Cycling Road a deck of its own, its gates barred without a Bicycle; underneath, Slateport to Mauville on foot
+# Route 110: the Cycling Road a deck of its own (+ its two gate rooms, H7), its gates barred without a Bicycle; underneath, Slateport to Mauville on foot
 _bk = story.inventory.pop("BICYCLE", None)
 st = arrive("HOENN_ROUTE_110", "SLATEPORT_CITY")
 st._clear_boulders()
@@ -284,7 +285,7 @@ _shut110 = [str(st.run.floor.decor.get(t, "")) for t in _bars]
 _walk110 = _by(_reach(st), st, "MAUVILLE_CITY")
 story.inventory["BICYCLE"] = 1
 st._clear_boulders()
-check(st.run.n_floors == 2 and _bars and all(v.startswith("barrier:") for v in _shut110) and all(st.run.floor.walkable(*t) for t in _bars) and _walk110,
+check(st.run.n_floors == 4 and _bars and all(v.startswith("barrier:") for v in _shut110) and all(st.run.floor.walkable(*t) for t in _bars) and _walk110,
       f"Route 110: the Cycling Road is a deck of its own; its gates {_bars} barred without a Bicycle ({_shut110}), open with one; underneath you walk from Slateport to Mauville ({_walk110})")
 if _bk is None:
     story.inventory.pop("BICYCLE", None)
@@ -480,7 +481,7 @@ check(p.run.index == 2, f"Granite Cave: 1F's ladder at {_lad} takes you down to 
 
 # Route 110: through a gatehouse with the Bicycle, up the ramp onto the Cycling Road
 _r110 = _tm["HOENN_ROUTE_110"]["floors"]
-_gate = {k: v for k, v in _r110[0].get("links", {}).items() if v[0] == 0}
+_gate = {k: v for k, v in _r110[0].get("inside", {}).items() if v in _tm["HOENN_ROUTE_110"].get("rooms", {})}   # (H7, 11-24: the gates are rooms, two doors each)
 _ramps = {k: v for k, v in _r110[0].get("links", {}).items() if v[0] == 1}
 check(len(_gate) == 4 and len(_ramps) >= 2 and any(b.get("item") == "BICYCLE" for b in _r110[0].get("barred", [])),
       f"Route 110: two gatehouses walked through ({len(_gate)} doors), {len(_ramps)} ramps up to the Cycling Road, the Bicycle checked at the gates")
@@ -2916,7 +2917,8 @@ _twice = [k for k, n in _leaders.items() if n in [o.get("text") for o in _area[k
 check(not _twice, f"no Gym Leader stands in town handing out their Gym TM a second time {_twice}")
 _r129 = _tm2["HOENN_ROUTE_129"]
 _r129 = _r129["floors"][0] if _r129.get("floors") else _r129
-check({"Scuba Diver Colten", "Free Diver Coral"} <= set(_r129.get("trainer_spots") or []), "Route 129: Colten and Coral have spots on the water")
+_r129_all = [n for f in (_tm2["HOENN_ROUTE_129"].get("floors") or [_tm2["HOENN_ROUTE_129"]]) for n in (f.get("trainer_spots") or [])]
+check({"Scuba Diver Colten", "Free Diver Coral"} <= set(_r129_all), "Route 129: Colten and Coral have spots (H6: on the seabed)")
 st = open_map("LAVARIDGE_TOWN", "HOENN_ROUTE_112")
 st.scenes.entered = True
 _press(st, (6, 9), (0, 1))
@@ -3126,7 +3128,7 @@ story.inventory.clear(); story.inventory.update(_i5b)
 # Legacy menu clear, pass 2 (11-23): the route doors find their buttons by kind (the Cable Car stations, the Safari Zone gate);
 # the menu's CATCH / BATTLE buttons, colours and dead EXIT shortcuts are gone
 for _dk, _came, _kind in (("HOENN_ROUTE_112", "HOENN_ROUTE_111", "cablecar"), ("HOENN_MT_CHIMNEY", "HOENN_JAGGED_PASS", "cablecar"),
-                          ("HOENN_ROUTE_121", "HOENN_ROUTE_120", "safari")):
+                          ):   # (H7, 11-24: Route 121's Safari Zone door leads into the gate room, its far side into the Safari Zone: the H7 section)
     _mf = story.story_flags.get("meteor_falls_cleared")
     story.story_flags["meteor_falls_cleared"] = True   # (the Cable Car runs once Magma's left Meteor Falls)
     st = arrive(_dk, _came)
@@ -3168,6 +3170,177 @@ said3 = _press(st, (6, 4), (0, -1))
 check(_none and _one and story.inventory.get("REVEAL_GLASS", 0) == 1,
       f"Mauville: the mirror shop owner gives the Reveal Glass once, for a force of nature with you ({said[:1]}, {said2[-1:]})")
 story.player_team = _tr; story.inventory.clear(); story.inventory.update(_ir); story.story_flags.clear(); story.story_flags.update(_fr)
+
+# H6 (11-24): the Trick House on Route 110 (kanto_handoff/hoenn_rom_tools/h_h6_trick.py): Emerald's rooms, ORAS's six
+# puzzles. The door, the Trick Master hidden at puzzle 1's spot, the scroll, the room's password, the end door, his prize,
+# the way out by the scroll, then puzzle 2's spot; puzzle 6's switch doors flip
+_f6, _i6, _b6 = dict(story.story_flags), dict(story.inventory), {r: list(b) for r, b in story.badges.items()}
+for _k in [k for k in story.story_flags if k.startswith("trick")]:
+    story.story_flags.pop(_k)
+story.badges["HOENN"] = list(dict.fromkeys(list(story.badges.get("HOENN", [])) + ["STONE", "DYNAMO", "HEAT"]))
+for _k in ("HM_CUT", "HM_ROCK_SMASH", "HM_STRENGTH"):
+    story.inventory[_k] = 1
+
+
+def _th_press(st, at, face):
+    st.run.player, st.facing, st.anim = tuple(at), tuple(face), 0
+    st.dialogue_box.visible = False
+    st._read_sign()
+    return _play(st)
+
+
+def _th_step(st, at, way):
+    st.run.player, st.anim = tuple(at), 0
+    st.dialogue_box.visible = False
+    _calm(st); st.step(*way)
+    return _play(st, 400)
+
+
+def _th_in(key, n=600):
+    """Through an area change (its fade and banner) till key's walked map is up."""
+    for _ in range(n):
+        s = g.current_state
+        if isinstance(s, DungeonState) and s.area_key == key:
+            frames(2)
+            return s
+        if getattr(s, "dialogue_box", None) is not None and s.dialogue_box.visible:
+            s.dialogue_box.advance()
+        s.update(); s.draw()
+    return g.current_state
+
+
+st = open_map("HOENN_ROUTE_110", "MAUVILLE_CITY")
+st.run.jump_floor(0, (11, 67))
+_th_step(st, (11, 67), (0, -1))
+st = _th_in("HOENN_TRICK_HOUSE")
+check(isinstance(st, DungeonState) and st.area_key == "HOENN_TRICK_HOUSE", "Route 110: the Trick House door leads in")
+said = _th_press(st, (5, 2), (0, -1))
+check(g.current_state is st and not story.story_flags.get("trick_found_1"), f"Trick House: the scroll is just a scroll till he's found ({said[:1]})")
+_rope = story.inventory.get("ESCAPE_ROPE", 0)
+said = _th_press(st, (5, 2), (0, 1))
+check(story.story_flags.get("trick_found_1") and story.inventory.get("ESCAPE_ROPE", 0) == _rope + 1, f"Trick House: found under the desk (ORAS), an Escape Rope ({said[:1]})")
+_th_press(st, (5, 2), (0, -1))
+st = _th_in("HOENN_TRICK_HOUSE_1")
+check(isinstance(st, DungeonState) and st.area_key == "HOENN_TRICK_HOUSE_1" and (st.run.index, tuple(st.run.player)) == (0, (0, 20)),
+      "Trick House: behind the scroll, puzzle 1 (Emerald's Cut room), in at its bottom left")
+said = _th_press(st, (13, 2), (0, -1))
+check(str(st.run.floor.decor.get((13, 1), "")).startswith("barrier:") and any("locked" in x for x in said), "Trick House: the end door is locked till the password")
+said = _th_press(st, (3, 15), (0, 1))
+frames(2)
+check(story.story_flags.get("trick_password_1") and not str(st.run.floor.decor.get((13, 1), "")).startswith("barrier:"),
+      f"Trick House: the room's scroll gives the password, the door opens ({said[:1]})")
+_th_step(st, (13, 2), (0, -1)); frames(2)
+_who = next((m for m in st.run.floor.movers if m.kind == "figure" and (m.x, m.y) == (4, 5)), None)
+st.run.player, st.facing, st.anim = (5, 5), (-1, 0), 0
+if _who is not None:
+    st._use_figure(_who)
+said = _play(st)
+check(st.run.index == 1 and story.story_flags.get("trick_puzzle_1_done") and story.inventory.get("TM087", 0) > 0,
+      f"Trick House: the Trick Master's prize for puzzle 1, TM87 Taunt (ORAS) ({said[-1:]})")
+_th_step(st, (2, 2), (0, -1)); frames(2)
+_th_step(st, (4, 22), (0, 1))
+st = _th_in("HOENN_TRICK_HOUSE")
+check(st.area_key == "HOENN_TRICK_HOUSE" and tuple(st.run.player) == (5, 2), f"Trick House: the way out leads back to the scroll ({st.run.player})")
+_th_press(st, (5, 2), (0, 1))
+said = _th_press(st, (11, 4), (0, 1))
+check(story.story_flags.get("trick_found_2") and not story.story_flags.get("trick_puzzle_2_done"), f"Trick House: next he hides in the right tree pot ({said[:1]})")
+story.story_flags.update({f"trick_puzzle_{n}_done": True for n in range(1, 6)})
+st = open_map("HOENN_TRICK_HOUSE_6", "HOENN_TRICK_HOUSE")
+_d6 = lambda t: str(st.run.floor.decor.get(t, "")).startswith("barrier:")
+_was = (_d6((1, 4)), _d6((1, 7)))
+_th_step(st, (4, 13), (0, 1)); frames(2)
+check(_was == (True, False) and (_d6((1, 4)), _d6((1, 7))) == (False, True), "Trick House puzzle 6: a floor switch flips Emerald's red and blue doors")
+story.story_flags.clear(); story.story_flags.update(_f6); story.inventory.clear(); story.inventory.update(_i6)
+story.badges.clear(); story.badges.update(_b6)
+
+# H6 (11-24): the seabeds of Routes 107, 129 and 130 (ORAS's own size, Emerald's tiles; town_maps/hoenn_canon.py _seabeds)
+_tm6 = json.load(open("assets/town_maps.json", encoding="utf-8"))
+_inv6 = dict(story.inventory)
+story.inventory["HM_DIVE"] = 1
+_in6 = lambda p, r: r[0] <= p[0] <= r[2] and r[1] <= p[1] <= r[3]
+for _k6, _came6 in (("HOENN_ROUTE_107", "DEWFORD_TOWN"), ("HOENN_ROUTE_129", "HOENN_ROUTE_128"), ("HOENN_ROUTE_130", "HOENN_ROUTE_129")):
+    _sea6, _bed6 = _tm6[_k6]["floors"]
+    st = open_map(_k6, _came6); _calm(st)
+    _lk6 = _sea6["dive_links"][0]
+    _t6 = sorted(t for t in st.run.floor.deep if _in6(t, _lk6["up"]))[0]
+    st.run.player, st.anim = _t6, 0
+    st.dive_here(); frames(2)
+    _down6 = tuple(st.run.player)
+    _ok_down = st.run.index == 1 and _down6 in st.run.floor.deep and _in6(_down6, _lk6["down"])
+    _calm(st)
+    _plain6 = next((x, y) for y, r in enumerate(_bed6["art"]) for x, c in enumerate(r) if c == "." and st.run.floor.walkable(x, y))
+    st.run.player = _plain6
+    _no_btn = not ((st._act_here() or ("",))[0] == "SURFACE")
+    st.surface_here(); frames(1)
+    _stayed = st.run.index == 1
+    st.run.player = _down6
+    st.surface_here(); frames(2)
+    check(_ok_down and _no_btn and _stayed and st.run.index == 0 and _in6(tuple(st.run.player), _lk6["up"])
+          and len(_bed6["hidden"]) >= 2 and _bed6.get("pool") == "HOENN_SEABED_SEAWEED_PERCENTAGES",
+          f"{_k6}: Dive from a dark patch to its own sunlit patch {_down6}, no coming up off the sunlit tiles, back up in the patch {st.run.player}")
+st = open_map("HOENN_ROUTE_129", "HOENN_ROUTE_128")
+st.run.jump_floor(1, (1, 25)); _calm(st)
+_row6 = next(y for y in range(13, 38) if _tm6["HOENN_ROUTE_129"]["floors"][1]["art"][y][0] == "<" and st.run.floor.walkable(1, y) and not st.run.floor.mover_at(1, y))
+st.run.player, st.anim = (1, _row6), 0
+st.step(-1, 0)
+for _ in range(400):
+    g.current_state.update()
+    if g.current_state is not st and getattr(g.current_state, "area_key", None) == "HOENN_ROUTE_130":
+        break
+frames(2)
+check(getattr(g.current_state, "area_key", None) == "HOENN_ROUTE_130" and g.current_state.run.index == 1,
+      f"Route 129's seabed runs on into Route 130's: you stay on the seabed ({getattr(g.current_state, 'area_key', None)})")
+story.inventory.clear(); story.inventory.update(_inv6)
+
+# ---- H7 (Jordan 11-24, DECISIONS #25): the last route buildings walked inside, from Emerald's maps (h_h7_rooms.py), and
+# Hoenn's one Center and one Mart (h_center_mart.py, Dev Map clean-hoenn-main-one-center-builder)
+_tm7 = json.load(open("assets/town_maps.json", encoding="utf-8"))
+_inv7 = dict(story.inventory); _fl7 = dict(story.story_flags)
+story.inventory.update({"BICYCLE": 1, "HM_SURF": 1})
+_title7 = lambda st: (st.recipe.get("art") or {}).get("floor_names", [""] * 99)[st.run.index]
+def _in7(st, at, way):
+    st.run.player, st.anim = tuple(at), 0
+    _calm(st); st.dialogue_box.visible = False
+    st.step(*way)
+    for _ in range(300):
+        if g.current_state is not st or not (st.dialogue_box.visible or st._scenes().busy()):
+            break
+        if st.dialogue_box.visible:
+            st.dialogue_box.advance()
+        st.update()
+    return _title7(st), tuple(st.run.player), st.run.index
+st = open_map("HOENN_ROUTE_109", "SLATEPORT_CITY")
+_sh7 = _in7(st, (12, 6), (0, -1))
+_tr7 = sorted(m.payload[1].get("name") for m in st.run.floor.movers if m.kind == "trainer")
+_out7 = _in7(st, (6, 8), (0, 1))
+_sea7 = _tm7["HOENN_ROUTE_109"]["rooms"]["seashore_house"]["people"][0]
+check("Seashore" in _sh7[0] and _tr7 == ["Beauty Johanna", "Delinquent Destinee", "Sailor Dwayne", "Street Thug Blair", "Tuber Simon"]
+      and _out7[2] == 0 and abs(_out7[1][0] - 12) + abs(_out7[1][1] - 6) <= 1
+      and [p.get("action") for p in _sea7] == ["EVENT", "EVENT", "SHOP"] and _sea7[1]["event"]["gift_item"] == {"SODA_POP": 6},
+      f"Route 109: the Seashore House walked in and out ({_sh7}, {_out7}), ORAS's five trainers inside ({_tr7}), Mr. Sea's six Soda Pop then his shop")
+st = open_map("HOENN_ROUTE_110", "SLATEPORT_CITY")
+st.run.jump_floor(0, (16, 89))
+_s7 = _in7(st, (16, 89), (0, -1)); _e7 = _in7(st, (12, 4), (0, 1))
+st.run.jump_floor(0, (18, 17))
+_n7 = _in7(st, (18, 17), (0, -1)); _w7 = _in7(st, (1, 4), (0, 1))
+check("Gate" in _s7[0] and _e7[2] == 0 and _e7[1][0] >= 19 and "Gate" in _n7[0] and _w7[2] == 0 and _w7[1][0] <= 16,
+      f"Route 110: through each Cycling Road gate, in at one door and out of the other ({_s7}, {_e7}, {_n7}, {_w7})")
+st = open_map("HOENN_ROUTE_121", "LILYCOVE_CITY")
+_g7 = _in7(st, (37, 6), (0, -1)); _in7(st, (3, 4), (0, 1))
+for _ in range(400):
+    if getattr(g.current_state, "area_key", None) == "HOENN_SAFARI_ZONE":
+        break
+    g.current_state.update()
+_sz7 = getattr(g.current_state, "area_key", None)
+st = open_map("HOENN_ROUTE_121", "HOENN_SAFARI_ZONE")
+check("Safari" in _g7[0] and _sz7 == "HOENN_SAFARI_ZONE" and "Safari" in _title7(st),
+      f"Route 121: into the Safari Zone gate ({_g7}), out of its far side into the Safari Zone ({_sz7}), and back into the gate ({_title7(st)})")
+_pics7 = {(k, n): r["rooms"][n]["roofs"]["_picture"]["f"] for k, r in _tm7.items() if k in BUILT for n in ("center", "center_2", "mart") if n in (r.get("rooms") or {})}
+_odd7 = {kn: f for kn, f in _pics7.items() if f != {"center": "em_ground/2_2.png", "center_2": "em_ground/2_3.png", "mart": "em_ground/2_4.png"}[kn[1]]}
+_lav7 = _tm7["LAVARIDGE_TOWN"]["rooms"]["center"]["exits"]
+check(len(_pics7) >= 40 and _odd7 == {("LAVARIDGE_TOWN", "center"): "em_ground/4_5.png"} and {"OUT:9,6", "OUT:9,2"} <= set(_lav7.values()),
+      f"every Hoenn Center and Mart is Emerald's one room ({len(_pics7)}; only Lavaridge's hot-springs Center its own: {_odd7}), Lavaridge's front and back doors each lead out their own way")
+story.inventory.clear(); story.inventory.update(_inv7); story.story_flags.clear(); story.story_flags.update(_fl7)
 
 story.story_flags.clear(); story.story_flags.update(_saved)
 print(f"##### {len(fails)} failures")
