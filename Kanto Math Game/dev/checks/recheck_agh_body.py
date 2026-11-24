@@ -1,3 +1,4 @@
+# (Legacy menu clear, Step 5, 11-24: stays on the menus - every place here is in a menu region (Alola, Galar and Hisui; Kanto's Route 1 only hosts a battle).)
 
 # The 10-27 Serebii PokéEarth recheck of Alola (USUM + SM), Galar (SwSh + DLC) and Hisui (PLA),
 # critical to low (kanto_handoff/SEREBII_RECHECK_ALOLA_GALAR_HISUI_2026-10-27.md), and S.O.S. battles.

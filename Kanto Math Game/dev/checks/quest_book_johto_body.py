@@ -37,7 +37,8 @@ for k in [k for k in story.story_flags if k.startswith(("visited_", "feat_"))]:
 flags = story.story_flags
 flags.update({"received_starter_johto": True, "has_johto_starter": True, "received_pokedex_johto": True})
 story.current_area_key = "NEW_BARK_TOWN"; flags["visited_NEW_BARK_TOWN"] = True
-city = CityState(g); g.change_state(city)
+exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())   # (11-24: the Journal opened from the walked town's map)
+city = walk_town(story.current_area_key, None, play=False)
 
 
 def at(area):
