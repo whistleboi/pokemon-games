@@ -328,50 +328,101 @@ class OverworldView:
         self.anim_seen = None
         self.atk = None   # the move playing: src/vfx/map_attacks.py (a lunge, a beam, a ring)
 
+    # ---------------------------------------------------------------- where the battle stands (Jordan 11-24)
+    # Side by side first: a battle up and down the screen is hard to see. If the two can't stand side by side where they
+    # met, the battle moves to open ground nearby (everyone is put back after it: dungeon._back_from_battle, _ow_home).
+    # Only when there's no room anywhere near is it up and down, and then with two tiles between the Pokemon.
+    NEAR = 8   # (how far, in steps from you, the battle may move to find room)
+
     @staticmethod
-    def _line_up(play, mover):
-        """The trainer, its Pokemon, (a gap,) yours, then you, in a line (you step back if you need to), so no
-        one stands on anyone; else its Pokemon in front of it and yours beside that."""
+    def _plan(play, mover, trainer):
+        """(anchor, (dx, dy), line) - where the foe stands, the way along the line, and the line's tiles (the trainer's
+        Pokemon first, then the gap, yours, you) - or None. Side by side (where you met, then nearby), else up and down."""
         f = play.run.floor
-        tx, ty = mover.x, mover.y
         px, py = play.run.player
-        side = 1 if px >= tx else -1
-        ways = [(side, 0), (-side, 0), (0, 1 if py >= ty else -1), (0, -1 if py >= ty else 1)]  # (left to right if there's room: all in view)
         from src.coop import world
         busy = {(m.x, m.y) for m in f.movers if m is not mover} | world.people_tiles(play.game)
-        for dx, dy in ways:
-            for gap in (1, 0):  # (a tile between the two Pokemon, if there's room)
-                line = [(tx + dx * k, ty + dy * k) for k in range(1, 4 + gap)]
-                if all(f.walkable(*t) and (t not in busy or t == (px, py)) for t in line):
-                    play.anim, play.anim_from = 0, line[-1]
-                    play.run.player = line[-1]  # (you stand behind your Pokemon)
-                    mover.facing, play.facing = (dx, dy), (-dx, -dy)  # (face each other)
-                    return line[0], line[-2]
+
+        def free(t):
+            return t == (px, py) or (f.walkable(*t) and t not in busy and not f.occupied(*t)) or t == (mover.x, mover.y)
+
+        def fits(anchor, d, gap):
+            n = (3 if trainer else 2) + gap
+            line = [(anchor[0] + d[0] * k, anchor[1] + d[1] * k) for k in range(1, n + 1)]
+            return line if all(free(t) for t in line) else None
+
+        tx, ty = mover.x, mover.y
+        side = 1 if px >= tx else -1
+        horiz = [(side, 0), (-side, 0)]
+        vert = [(0, 1 if py >= ty else -1), (0, -1 if py >= ty else 1)]
+        for gap in (1, 0):   # (side by side, where you met)
+            for d in horiz:
+                line = fits((tx, ty), d, gap)
+                if line:
+                    return (tx, ty), d, line
+        seen, todo, spots = {(px, py): 0}, [(px, py)], []
+        while todo:   # (side by side, on open ground near you: the nearest)
+            cur = todo.pop(0)
+            for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                t = (cur[0] + dx, cur[1] + dy)
+                if t not in seen and seen[cur] < OverworldView.NEAR and free(t):
+                    seen[t] = seen[cur] + 1
+                    todo.append(t)
+                    spots.append(t)
+        for gap in (1, 0):
+            for anchor in sorted(spots, key=lambda t: (seen[t], abs(t[1] - ty))):
+                for d in horiz:
+                    line = fits(anchor, d, gap)
+                    if line:
+                        return anchor, d, line
+        for gap in (2, 1, 0):   # (no room side by side: up and down, with more room between)
+            for d in vert:
+                line = fits((tx, ty), d, gap)
+                if line:
+                    return (tx, ty), d, line
+        return None
+
+    @staticmethod
+    def _stand(play, mover, anchor, d, line):
+        """Put the foe on anchor and you at the line's end, facing each other; moving them away from where they met is
+        remembered to put back after the battle."""
+        if anchor != (mover.x, mover.y) or line[-1] != tuple(play.run.player):
+            if not getattr(play, "_ow_home", None):
+                play._ow_home = {"player": tuple(play.run.player), "facing": tuple(getattr(play, "facing", (0, 1))),
+                                 "mover": mover, "at": (mover.x, mover.y), "mover_facing": tuple(mover.facing or (0, 1))}
+        mover.x, mover.y = anchor
+        mo = getattr(mover, "motion", None)
+        if mo is not None:   # (a trainer's own steps: stood there too)
+            mo.pos = mo.frm = anchor
+            mo.path, mo.t = [], 1.0
+        play.anim, play.anim_from = 0, line[-1]
+        play.run.player = line[-1]
+        mover.facing, play.facing = d, (-d[0], -d[1])
+
+    @staticmethod
+    def _line_up(play, mover):
+        """The trainer, its Pokemon, (a gap,) yours, then you, in a line; else its Pokemon in front of it and yours
+        beside that."""
+        plan = OverworldView._plan(play, mover, trainer=True)
+        if plan:
+            anchor, d, line = plan
+            OverworldView._stand(play, mover, anchor, d, line)
+            return line[0], line[-2]
         spot = play._throw_spot(mover)
         play._partner_beside(spot)
         return spot, play.partner
 
     @staticmethod
     def _line_up_wild(play, mover):
-        """The wild Pokemon where it stands, (a gap,) yours, then you, in a line; else yours beside it."""
+        """The wild Pokemon, (a gap,) yours, then you, in a line; else yours beside it."""
         play._ow_foe = mover  # (the battle draws it now, with its HP)
-        f = play.run.floor
-        tx, ty = mover.x, mover.y
-        px, py = play.run.player
-        side = 1 if px >= tx else -1
-        ways = [(side, 0), (-side, 0), (0, 1 if py >= ty else -1), (0, -1 if py >= ty else 1)]  # (left to right if there's room: all in view)
-        from src.coop import world
-        busy = {(m.x, m.y) for m in f.movers if m is not mover} | world.people_tiles(play.game)
-        for dx, dy in ways:
-            for gap in (1, 0):
-                line = [(tx + dx * k, ty + dy * k) for k in range(1, 3 + gap)]
-                if all(f.walkable(*t) and (t not in busy or t == (px, py)) for t in line):
-                    play.anim, play.anim_from = 0, line[-1]
-                    play.run.player = line[-1]
-                    mover.facing, play.facing = (dx, dy), (-dx, -dy)
-                    return (tx, ty), line[-2]
-        play._partner_beside((tx, ty))
-        return (tx, ty), play.partner
+        plan = OverworldView._plan(play, mover, trainer=False)
+        if plan:
+            anchor, d, line = plan
+            OverworldView._stand(play, mover, anchor, d, line)
+            return anchor, line[-2]
+        play._partner_beside((mover.x, mover.y))
+        return (mover.x, mover.y), play.partner
 
     def catch_points(self):
         """Where a thrown ball starts and lands, on the screen: (your Pokemon's tile, the foe's tile)."""

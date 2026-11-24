@@ -150,4 +150,76 @@ check(low[1] >= f.h - 3, f"the battle is at the map's foot (row {low[1]} of {f.h
 check(mine.bottom <= box_top and foe.bottom <= box_top, f"both Pokemon drawn above the text box (bottoms {mine.bottom}, {foe.bottom}; box at {box_top})")
 story.battle_style = "TRADITIONAL"
 
+print("5) side by side first: a battle moves to open ground when they can't stand side by side where they met;")
+print("   up and down only when there's no room, with two tiles between; everyone back after (Jordan 11-24)")
+story.battle_style = "OVERWORLD"
+
+
+def open_spot(p, w=4, h=10):
+    f = p.run.floor
+    f.movers[:] = [m for m in f.movers if m.kind != "wild"]
+    for y in range(h, f.h - h):
+        for x in range(w, f.w - w):
+            if all(f.walkable(x + dx, y + dy) and not f.occupied(x + dx, y + dy) for dx in range(-w, w + 1) for dy in range(-2, 3)):
+                return x, y
+    return None
+
+
+def rock(p, t):
+    m = core.Mover("figure", t[0], t[1], {"text": "ROCK"})
+    p.run.floor.movers.append(m)
+    return m
+
+
+def battle_at(p, foe_at, me_at):
+    f = p.run.floor
+    f.movers[:] = [m for m in f.movers if m.kind != "wild"]
+    w = core.Mover("wild", foe_at[0], foe_at[1], p._make_wild(_rnd.Random(1)))
+    f.movers.append(w)
+    p.run.player = p.anim_from = p.partner = p.partner_from = me_at
+    p.run.reveal()
+    p._meet_wild(w)
+    p._pick(1)
+    return g.current_state, w
+
+
+for _try in ("KANTO_ROUTE_1", "KANTO_ROUTE_22", "KANTO_ROUTE_2"):
+    p = kanto(_try)
+    c = open_spot(p)
+    if c:
+        break
+check(c is not None, f"an open stretch to test on ({_try} {c})")
+x, y = c
+rocks = [rock(p, (x + dx, y + dy)) for dx in (-2, -1, 1, 2) for dy in (0, 1)]   # (boxed in left and right where they meet)
+b, w = battle_at(p, (x, y), (x, y + 1))
+ov = b.overworld
+check(ov.spot[1] == ov.mine[1] and ov.spot != ov.mine, f"boxed in sideways where they met: the battle stands side by side nearby (foe {ov.spot}, yours {ov.mine})")
+check((w.x, w.y) != (x, y) and getattr(p, "_ow_home", None), "...moved to open ground for the battle")
+b.overworld.attack(b, {"name": "THUNDERBOLT", "side": "player", "user": b.player_pokemon, "target": b.opponent_pokemon})
+for _ in range(12):
+    ov.attacking()
+b.draw()
+pygame.image.save(g.screen, _os.path.join(S, "map_attacks", "moved_side_by_side.png"))
+p._back_from_battle()
+check(tuple(p.run.player) == (x, y + 1) and not getattr(p, "_ow_home", None), f"after the battle you're back where you met ({p.run.player})")
+for m in rocks:
+    p.run.floor.movers.remove(m)
+g.change_state(p)
+
+p = kanto(_try)
+f = p.run.floor
+f.movers[:] = [m for m in f.movers if m.kind != "wild"]
+walls = [rock(p, (x + dx, y + dy)) for dy in range(-8, 9) for dx in (-1, 1)]   # (a corridor one tile wide) + [rock(p, (x, y - 9)), rock(p, (x, y + 9))]
+b, w = battle_at(p, (x, y), (x, y + 1))
+ov = b.overworld
+check(ov.spot[0] == ov.mine[0] and abs(ov.spot[1] - ov.mine[1]) == 3,
+      f"no room side by side anywhere near: up and down, two tiles between the Pokemon (foe {ov.spot}, yours {ov.mine})")
+b.draw()
+pygame.image.save(g.screen, _os.path.join(S, "map_attacks", "vertical_gap.png"))
+p._back_from_battle()
+check(tuple(p.run.player) == (x, y + 1) and (w not in f.movers or (w.x, w.y) == (x, y)), "...and back where you met after")
+for m in walls:
+    f.movers.remove(m)
+story.battle_style = "TRADITIONAL"
+
 print(f"##### {fails} failures")

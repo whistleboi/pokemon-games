@@ -1960,6 +1960,17 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         kind, mover = self.pending or (None, None)
         self.pending = None
         self._ow_foe = None
+        home = self.__dict__.pop("_ow_home", None)
+        if home:   # (the battle moved to open ground to stand side by side: everyone back where they met; Jordan 11-24)
+            self.run.player = self.anim_from = self.partner = self.partner_from = home["player"]
+            self.anim, self.facing = 0, home["facing"]
+            m = home["mover"]
+            m.x, m.y = home["at"]
+            m.facing = home["mover_facing"]
+            mo = getattr(m, "motion", None)
+            if mo is not None:
+                mo.pos = mo.frm = home["at"]
+                mo.facing = m.facing
         if mover is not None:
             if kind == "wild":
                 if getattr(mover.payload, "snack_visitor", None):   # (the snack tray's visitor: gone - Orre batch 8d)
