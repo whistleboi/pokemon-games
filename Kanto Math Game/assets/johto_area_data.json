@@ -4278,12 +4278,12 @@
             "reward": "Mystery Egg"
         },
         {
-            "id": "johto_c1", "type": "SIDE", "title": "Unown Researcher", "description": "The Ruins of Alph are mysterious. Catch at least 5 different forms of Unown!",
+            "id": "johto_c1", "type": "SIDE", "title": "Unown Researcher", "description": "The Ruins of Alph hold Unown in strange shapes. Five different ones would be a start.",
             "condition": { "required_region": "JOHTO", "catch_id": "201", "catch_count": 5 },
             "completed_flag": "unown_research_complete",
             "reward": "Master Ball"
         },
-        {"id": "johto_s_oddegg", "type": "SIDE", "title": "The Odd Egg", "description": "The Day-Care Man on Route 34 has found another odd Egg. Go and see him!", "target": "JOHTO_ROUTE_34", "condition": {"required_region": "JOHTO", "flag": "odd_egg_ready"}, "completed_flag": "odd_egg_pending"},
+        {"id": "johto_s_oddegg", "type": "SIDE", "title": "The Odd Egg", "description": "The Day-Care Man on Route 34 has turned up another odd Egg. Nobody knows what's inside.", "target": "JOHTO_ROUTE_34", "condition": {"required_region": "JOHTO", "flag": "odd_egg_ready"}, "completed_flag": "odd_egg_pending"},
         {
             "id": "johto_m2", "type": "MAIN", "title": "The Mystery Egg", "description": "You've got Mr. Pokemon's egg! Return to the Lab in New Bark Town to show Prof. Elm the Mystery Egg.",
             "target": "NEW_BARK_TOWN",

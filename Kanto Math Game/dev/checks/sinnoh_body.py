@@ -1142,7 +1142,7 @@ r = g.current_state
 _lk = next((m for m in r.run.floor.movers if m.kind == "figure" and str((m.payload or {}).get("text")) == "Looker"), None) if hasattr(r, "run") else None
 if _lk is not None:
     r._use_figure(_lk); _drive(r, 300, lambda: not (getattr(r, "dialogue_box", None) and r.dialogue_box.visible))
-_locked = hasattr(r, "run") and r.run.floor.tile(13, 2) == core.WALL   # (the rusty door to the Underpass: the Storage Key's)
+_locked = hasattr(r, "run") and r.run.floor.tile(8, 6) == core.WALL   # (the rusty door across the corridor to the Underpass: Platinum's, opened by Looker after Lake Acuity)
 check(_locked and _shut and _dawn == (24, 20) and _bs is not None and story.story_flags.get("sinnoh_warehouse_looker") and _open
       and _lk is not None and story.story_flags.get("galactic_warehouse_cleared"),
       f"Galactic Warehouse: the Grunts block the lane; with the Cobble Badge Dawn asks for help; a tag battle; Looker leads you in and the mission ends; the Underpass door stays locked ({_locked}, {_shut}, {_dawn}, {type(_bs).__name__}, {_open}, {_lk is not None})")
@@ -1481,6 +1481,52 @@ r = route("SINNOH_ROUTE_211", "ETERNA_CITY")
 _soil = sorted(t for t, d in r.run.floor.decor.items() if str(d).startswith("soil:"))
 _ns = sum(len(((_tm[k].get("floors") or [_tm[k]])[0]).get("berry_soil") or []) for k in _tm if k in _sin)
 check(len(_soil) == 4 and _ns >= 80, f"Route 211: Platinum's four Berry patches stand as soil you can pick and plant; {_ns} patches over Sinnoh's routes ({_soil})")
+
+# ---- S5 (11-24): Galactic HQ as Platinum's - Looker opens the Warehouse with the Storage Key, Galactic Key doors, Cyrus on 4F, Saturn and the lake trio's machine
+_sv, _iv = dict(story.story_flags), dict(story.inventory)
+for _k in ("sinnoh_storage_door_open", "sinnoh_hq_cyrus_beaten", "sinnoh_hq_saturn_beaten", "galactic_hq_cleared"):
+    story.story_flags.pop(_k, None)
+story.story_flags.update({"galactic_lake_acuity_cleared": True, "sinnoh_warehouse_looker": True})
+story.inventory["GALACTIC_KEY"] = 0
+r = route("GALACTIC_WAREHOUSE", "VEILSTONE_CITY")
+for _q in range(900):
+    if getattr(r, "dialogue_box", None) and r.dialogue_box.visible:
+        r.dialogue_box.advance()
+    frames(r)
+    if story.story_flags.get("sinnoh_storage_door_open"):
+        break
+_door = bool(story.story_flags.get("sinnoh_storage_door_open"))
+def _hq_battle(r, who):
+    _m = next((m for m in r.run.floor.movers if m.kind == "figure" and str((m.payload or {}).get("text")) == who), None)
+    if _m is None:
+        return None
+    r.run.player = [_m.x - 1, _m.y]
+    r._use_figure(_m)
+    _drive(r, 600, lambda: "Battle" in type(g.current_state).__name__)
+    return "Battle" in type(g.current_state).__name__
+r = route("TEAM_GALACTIC_HQ", "VEILSTONE_CITY")
+r.run.warp(3, 8, 10); frames(r, 3)
+_locked = str(r.run.floor.decor.get((8, 13), "")).startswith("barrier:")
+_cy = _hq_battle(r, "Cyrus")
+r = route("TEAM_GALACTIC_HQ", "VEILSTONE_CITY")
+r.run.warp(5, 8, 11); frames(r, 3)
+_trio = sum(1 for t in ((2, 3), (14, 3), (8, 9)) if str((getattr(r, "_bars", {}).get(t) or {}).get("look", "")).startswith("mon:48") and str(r.run.floor.decor.get(t, "")).startswith("barrier:"))
+_sa = _hq_battle(r, "Commander Saturn")
+story.story_flags["sinnoh_hq_saturn_beaten"] = True
+r = route("TEAM_GALACTIC_HQ", "VEILSTONE_CITY")
+r.run.warp(5, 8, 11); frames(r, 3)
+_mc = next((m for m in r.run.floor.movers if m.kind == "figure" and str((m.payload or {}).get("text")) == "Galactic machine"), None)
+if _mc is not None:
+    r.run.player = [_mc.x - 1, _mc.y]
+    r._use_figure(_mc)
+    for _q in range(300):
+        if getattr(r, "dialogue_box", None) and r.dialogue_box.visible:
+            r.dialogue_box.advance()
+        frames(r)
+_free = bool(story.story_flags.get("galactic_hq_cleared"))
+check(_door and _locked and _cy and _trio == 3 and _sa and _free,
+      f"Galactic HQ: Looker opens the Warehouse door, Galactic Key doors, Cyrus battles on 4F, the trio sealed, Saturn battles, the button frees them ({_door}, {_locked}, {_cy}, {_trio}, {_sa}, {_free})")
+story.story_flags.clear(); story.story_flags.update(_sv); story.inventory.clear(); story.inventory.update(_iv)
 
 g.walk_towns = False
 print(f"##### {fails} failures")

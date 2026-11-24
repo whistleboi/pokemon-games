@@ -1113,7 +1113,8 @@ _m0 = story.money
 _lines = story.catch_milestones()
 from src.world import feats as _feats29
 if _feats29.feats(g, "KANTO"):   # (11-22: Kanto's catch bonuses are its Pokedex Feat now, Quest Book: no money milestones)
-    check(not story.story_flags.get("kanto_catch_30") and story.money == _m0, f"64 Kanto species: the Pokedex Feat counts them, no old bonus ({_lines})")
+    check(not story.story_flags.get("kanto_catch_30") and not any("Kanto species owned" in l for l in _lines),   # (the region you're in
+          f"64 Kanto species: the Pokedex Feat counts them, no old bonus ({_lines})")                     #  may pay its own Feats: Orre's, 11-24)
 else:
     check(story.story_flags.get("kanto_catch_30") and story.story_flags.get("kanto_catch_60")
           and not story.story_flags.get("kanto_catch_90") and story.money - _m0 == 2 * story.CATCH_BONUS,   # (the bonus: $5,000 since 11-10)
