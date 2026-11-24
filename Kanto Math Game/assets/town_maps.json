@@ -149720,7 +149720,7 @@
    "ccccccccccccccccooooooooooooooooooooooooooooooooooooooooooo>",
    "cccccccccccccccoooooooooooooooooooooooooooooooooooooooooooo>",
    "ccccccccccooooooooccooooooooooooooooooooooooooooooooooooooo>",
-   "cccccooooooccocccoccoooooooooooooooonoooooooooooooooooooooo>",
+   "cccccooooooccocccoccoooooooooooooooonNooooooooooooooooooooo>",
    "ooccoooooooccocccoooooooooooooooooooooooooooooooccooooooooo>",
    "<occooooccoooocccoooooooccooooooooooooooooocccccccooooooooo>",
    "oooocccoccooccccooooooccccooooooooooooooocccccccccccooooooo>",
@@ -149984,6 +149984,9 @@
      40
     ]
    }
+  ],
+  "people": [
+   "BATTLE WALLACE"
   ]
  },
  "HOENN_ROUTE_132": {

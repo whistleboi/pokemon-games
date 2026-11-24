@@ -2480,19 +2480,30 @@ _a24 = _tm24["HOENN_SKY_PILLAR"]["floors"][3]["art"]
 _crt = {tuple(int(v) for v in s.split(",")) for s in _cr["tiles"]}
 _step24 = next(((x + dx, y + dy), (-dx, -dy)) for (x, y) in sorted(_crt) for dx, dy in ((0, 1), (1, 0), (0, -1), (-1, 0))
                if 0 <= y + dy < len(_a24) and 0 <= x + dx < len(_a24[0]) and _a24[y + dy][x + dx] == "." and (x + dx, y + dy) not in _crt)
+# (11-24, Emerald's Mach Bike: only speed carries you over - two steps in a row one way; from a stop, or on foot, you fall)
+_free = lambda x, y: 0 <= y < len(_a24) and 0 <= x < len(_a24[0]) and _a24[y][x] == "." and (x, y) not in _crt
+_run24 = next(((x + 2 * dx, y + 2 * dy), (-dx, -dy)) for (x, y) in sorted(_crt) for dx, dy in ((0, 1), (1, 0), (0, -1), (-1, 0))
+              if _free(x + dx, y + dy) and _free(x + 2 * dx, y + 2 * dy))
 _res24 = {}
-for _bike in (False, True):
+for _bike, _from, _n in ((False, _step24[0], 1), (True, _step24[0], 1), (True, _run24[0], 2)):
     if _bike:
         story.inventory["BICYCLE"] = 1
     else:
         story.inventory.pop("BICYCLE", None)
     st = open_map("HOENN_SKY_PILLAR", "HOENN_ROUTE_131")
-    st.run.jump_floor(3, _step24[0]); _calm(st); st.anim = 0
-    st.step(*_step24[1])
-    _said = _play(st, 300)
-    _res24[_bike] = (st.run.index, any("crumbled" in x for x in _said))
-check(_cr["to"] == 2 and _res24[False] == (2, True) and _res24[True] == (3, False),
-      f"Sky Pillar: a cracked floor drops you to the floor below on foot; on the Bicycle you're over it ({_res24})")
+    st.run.jump_floor(3, _from); _calm(st); st.anim = 0
+    _said = []
+    for _k in range(_n):
+        st.step(*(_step24[1] if _n == 1 else _run24[1]))
+        _said += _play(st, 300)
+    _res24[(_bike, _n)] = (st.run.index, any("crumbled" in x for x in _said))
+check(_cr["to"] == 2 and _res24[(False, 1)] == (2, True) and _res24[(True, 1)] == (2, True) and _res24[(True, 2)] == (3, False),
+      f"Sky Pillar: a cracked floor drops you to the floor below on foot or from a stop; riding at speed you're over it ({_res24})")
+story.story_flags["delta_wallace_131"] = True
+st = open_map("HOENN_SKY_PILLAR", "HOENN_ROUTE_131")
+_way24 = st._guide_route((st.run.index, *st.run.player), (7, 14, 10), "x")
+story.inventory.pop("BICYCLE", None)
+check(_way24 is not None, f"Sky Pillar: the Journal's marker leads to the top on the Bicycle - through 4F's cracks to 3F's pocket and back up, as Emerald's ({_way24})")
 story.story_flags.update({"beat_hoenn_champion": True, "delta_zinnia_defeated": True})
 st = open_map("HOENN_SKY_PILLAR", "HOENN_ROUTE_131")
 st.run.jump_floor(7, (16, 15))

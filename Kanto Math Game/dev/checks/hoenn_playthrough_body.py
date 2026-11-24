@@ -2070,7 +2070,7 @@ POST_JOBS = [   # (id, what, where it starts (Fly), steps, the flag that says it
      [{"area": "MOSSDEEP_CITY", "at": [62, 17], "label": "Courtney", "done": "delta_courtney_mossdeep"},
       {"area": "MOSSDEEP_CITY", "at": [68, 17], "label": "Matt", "done": "delta_matt_mossdeep"}], "delta_matt_mossdeep"),
     ("delta_wallace", "Wallace by Sky Pillar (Route 131)", "PACIFIDLOG_TOWN",
-     [{"area": "HOENN_ROUTE_131", "floor": 0, "at": [37, 35], "label": "Wallace", "done": "delta_wallace_131"}], "delta_wallace_131"),
+     [{"area": "HOENN_ROUTE_131", "floor": 0, "at": [37, 6], "label": "Wallace", "done": "delta_wallace_131"}], "delta_wallace_131"),
     ("delta_zinnia", "Zinnia atop Sky Pillar", "PACIFIDLOG_TOWN",
      [{"area": "HOENN_SKY_PILLAR", "floor": 7, "at": [14, 10], "label": "Zinnia", "done": "delta_zinnia_defeated"}], "delta_zinnia_defeated"),
     ("delta_rayquaza", "Rayquaza called down", "PACIFIDLOG_TOWN",
@@ -2143,15 +2143,15 @@ TOUR_LEGS = [("FALLARBOR_TOWN", "HOENN_METEOR_FALLS", "Fallarbor down Route 114 
              ("HOENN_ROUTE_120", "HOENN_SCORCHED_SLAB", "Route 120 to the Scorched Slab"),
              ("HOENN_ROUTE_120", "HOENN_ANCIENT_TOMB", "Route 120 to the Ancient Tomb"),
              ("LILYCOVE_CITY", "HOENN_SAFARI_ZONE", "Lilycove up Route 121 into the Safari Zone"),
-             ("HOENN_ROUTE_125", "HOENN_SHOAL_CAVE", "Route 125 into Shoal Cave"),
+             ("MOSSDEEP_CITY", "HOENN_SHOAL_CAVE", "Mossdeep up Route 125 into Shoal Cave"),
              ("HOENN_ROUTE_105", "HOENN_ISLAND_CAVE", "Route 105 to the Island Cave"),
              ("HOENN_ROUTE_108", "HOENN_ABANDONED_SHIP", "Route 108 to the Abandoned Ship"),
              ("PACIFIDLOG_TOWN", "HOENN_ROUTE_134", "Pacifidlog along Routes 132-134"),
-             ("HOENN_ROUTE_134", "HOENN_SEALED_CHAMBER", "Route 134 down to the Sealed Chamber"),
-             ("SLATEPORT_CITY", "HOENN_BATTLE_FRONTIER", "Slateport by the S.S. Tidal to the Battle Frontier")]
+             ("HOENN_ROUTE_133", "HOENN_SEALED_CHAMBER", "Route 133 down Route 134's currents to the Sealed Chamber")]
 TOUR = []
 if ENDED == "CHAMPION" and os.environ.get("KPT_TOUR", "0") != "0":
     story.inventory.setdefault("BICYCLE", 1)
+    story.inventory.setdefault("MAGMA_EMBLEM", 1); story.story_flags.setdefault("regi_trio_awakened", True)
     story.story_flags["move_offer_johto"] = story.story_flags["move_offer_kanto"] = True   # (the title's "where next?" already asked)
     for _a, _b, _what, *_at in TOUR_LEGS:
         STATE["mission"] = "tour"
