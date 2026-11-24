@@ -10,6 +10,8 @@ What a feat counts ("count"):
   or the feat's own "places" list: Sevii's), "unown" (Unown forms caught, of 28),
   "forms" (the region's own forms you own: FORM_MAP entries of the feat's "forms", less its "not_yet", ones that
   can't be got yet: each region's Variants feat, Orange's Pinkan, Valencia and Crystal Pokemon; Jordan 11-23);
+  Orre's (11-24): "snagged" (Shadow Pokemon of the region's shadow_pool snagged), "purified" (Shadow lines purified at
+  least once, purified_line_<base>), "battle_cds" (XD's Battle CDs cleared);
 - counted as you play, per region (StoryManager.feat_counts {region: {kind: n}}), by note(): "trainers", "steps", "fish",
   "finds" (Headbutt, Rock Smash), "evolved", "evo_items", "berries", "safari", any region's own event kinds.
 A tier is [goal, reward] with goal a number or "all" (the most there is: every species of the dex, every type in it);
@@ -89,6 +91,24 @@ def _form_ids(story, feat):
     return {int(s) for s, m in fm.items() if isinstance(m, dict) and m.get("form") in want} - set(feat.get("not_yet") or [])
 
 
+def _shadow_pool(story, region):
+    """The region's Shadow Pokemon: {snag flag: species id} from its places' shadow_pool (Orre)."""
+    prog = story.game.loader.area_data.get("STORY_PROGRESSION", {})
+    return {s["flag"]: s.get("id") for a in prog.values() if isinstance(a, dict)
+            and str(a.get("region", "KANTO")).upper() == region for s in a.get("shadow_pool") or [] if s.get("flag")}
+
+
+def _shadow_lines(story, region):
+    """The base species of the region's Shadow Pokemon (a line counts as purified once any of it was: story.py)."""
+    fm = story.game.loader.area_data.get("FORM_MAP", {})
+    return {int((fm.get(str(i)) or {}).get("id", 0) or 0) for i in _shadow_pool(story, region).values()} - {0}
+
+
+def _battle_cds(story):
+    from src.world import battle_cd
+    return list(battle_cd.data(story.game))
+
+
 def value(story, feat, region):
     """How far along a feat is."""
     kind = feat.get("count")
@@ -100,6 +120,12 @@ def value(story, feat, region):
         return len(_form_ids(story, feat) & _owned_ids(story))
     if kind == "unown":
         return story.unown_forms_caught()
+    if kind == "snagged":
+        return sum(1 for f in _shadow_pool(story, region) if story.story_flags.get(f))
+    if kind == "purified":
+        return sum(1 for b in _shadow_lines(story, region) if story.story_flags.get(f"purified_line_{b}"))
+    if kind == "battle_cds":
+        return sum(1 for k in _battle_cds(story) if story.story_flags.get(f"battle_cd_{k}_cleared"))
     if kind == "places":
         return sum(1 for k in _places(story, feat, region) if story.story_flags.get("visited_" + k))
     if kind == "lv50":
@@ -125,6 +151,12 @@ def goal(story, feat, tier, region):
             return len(_form_ids(story, feat))
         if feat.get("count") == "unown":
             return len(story.UNOWN_FORMS)
+        if feat.get("count") == "snagged":
+            return len(_shadow_pool(story, region))
+        if feat.get("count") == "purified":
+            return len(_shadow_lines(story, region))
+        if feat.get("count") == "battle_cds":
+            return len(_battle_cds(story))
     return int(g)
 
 

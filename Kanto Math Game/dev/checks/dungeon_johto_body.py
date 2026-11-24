@@ -10,7 +10,7 @@ _want = {"HAINA_DESERT": "desert", "ASADO_DESERT": "desert", "GLASEADO_MOUNTAIN"
 # Pledge Grove: Black 2's own map and picture since 11-20, the Desert Resort since 11-21: unova suites)
 _got = {k: _dg.recipe_for(g, k).get("style") for k in _want}
 check(_got == _want, f"each region's places look like its game's {[(k, v) for k, v in _got.items() if _want[k] != v]}")
-_fl = {k: _dg.recipe_for(g, k).get("floors") for k in ("UNION_CAVE", "BELL_TOWER", "MT_CORONET_BASE", "CHARGESTONE_CAVE", "REFLECTION_CAVE")}
+_fl = {k: _dg.recipe_for(g, k).get("floors") for k in ("UNION_CAVE", "BELL_TOWER", "MT_CORONET_BASE", "REFLECTION_CAVE")}   # (Chargestone Cave: Black 2's own walked map since 11-24, unova suites)
 check(all((v or 1) > 1 for v in _fl.values()), f"the big dungeons have their floors {_fl}")
 _bt = kanto("BELL_TOWER", came="ECRUTEAK_CITY")
 check(_bt.run.n_floors == 11 and _bt._figure_floor({"text": "TALK TO SAGE LI", "action": "NPC"}, 11) == 0 and _bt._figure_floor({"text": "CHALLENGE HO-OH", "action": "BOSS"}, 11) == 10,
@@ -884,6 +884,63 @@ _tw = mk(158)
 _tw.held_item = "MYSTIC_WATER"
 check(_it2.held_boost(_tw, "WATER") == 1.2 and _it2.held_boost(_tw, "FIRE") == 1.0,
       "Mystic Water, held: Water moves x1.2 (only Water)")
+
+# ---- the encyclopedia's building / mechanics findings (11-24, Dev Map clean-johto-encyclopedia-buildings-mechanics)
+_prog = g.loader.area_data["STORY_PROGRESSION"]
+_inv0, _flags0 = dict(story.inventory), dict(story.story_flags)
+_bad0 = {k: list(v) for k, v in story.badges.items()}
+story.badges["JOHTO"] = ["ZEPHYR"]
+story.inventory["HM_ROCK_SMASH"] = 1   # (Rock Smash: from the man on Route 36; used outside battle with the Zephyr Badge)
+_sm = {}
+for _ak, _pool in (("DARK_CAVE", "JOHTO_DARK_CAVE_ROCK_SMASH_PERCENTAGES"), ("JOHTO_CLIFF_CAVE", "JOHTO_JOHTO_CLIFF_CAVE_ROCK_SMASH_PERCENTAGES"),
+                   ("JOHTO_VICTORY_ROAD", "JOHTO_JOHTO_VICTORY_ROAD_ROCK_SMASH_PERCENTAGES")):
+    _p = kanto(_ak, came="JOHTO_ROUTE_31")
+    for _i in range(_p.run.n_floors):
+        if _p.run.index != _i:
+            _p.run.enter_floor(_i)
+        _cr = [t for t, d in _p.run.floor.decor.items() if str(d).startswith("crack:")]
+        if _cr:
+            break
+    _want = {int(k) for k in g.loader.area_data[_pool]}
+    _type = type(_p)
+    _old_sw = _type.SMASH_WILD
+    _type.SMASH_WILD = 1.0   # (a Pokemon behind every rock, for the check)
+    try:
+        _got = set()
+        for _t in _cr[:3]:
+            _p._smash(_t)
+            _w = [m for m in _p.run.floor.movers if m.kind == "wild" and (m.x, m.y) == _t]
+            _got |= {int(getattr(m.payload, "id", 0) or 0) for m in _w}
+            _p.run.floor.movers = [m for m in _p.run.floor.movers if m not in _w]
+    finally:
+        _type.SMASH_WILD = _old_sw
+    _sm[_ak] = (len(_cr), _got, _want, _cr[:1] and _p.run.floor.decor.get(_cr[0]) is None)
+check(all(n and got and got <= want and gone for n, got, want, gone in _sm.values()),
+      f"Rock Smash finds Pokemon (HGSS): Dark Cave, Cliff Cave, Victory Road break one rock at a time and some hide the area's own "
+      f"Rock Smash Pokemon: {_sm}")
+story.inventory.pop("ROCKY_HELMET", None)
+story.story_flags.pop("ilex_headbutt_tutor", None)
+_il = kanto("ILEX_FOREST", came="AZALEA_TOWN")
+_hb0 = _il._menu_item("HEADBUTT")
+story.story_flags["ilex_headbutt_tutor"] = True   # (Ilex Forest's tree shaker taught Headbutt)
+_hb1 = _il._menu_item("HEADBUTT")
+
+check(_hb0 is None and _hb1 is not None and sum(1 for k, a in _prog.items() for m in a.get("route_menu", [])
+                                                  if m.get("action") == "HEADBUTT" and "ilex_headbutt_tutor" in str(m.get("condition"))) == 16,
+      "Headbutt in Johto: the Ilex Forest tutor unlocks it (HGSS: no Rocky Helmet in Johto); all 16 tree places")
+story.story_flags = dict(_flags0)
+story.inventory = dict(_inv0)
+story.badges["JOHTO"] = ["ZEPHYR", "HIVE", "FOG", "GLACIER"]
+story.sync_key_items()
+_si = dict(story.inventory)
+story.inventory = dict(_inv0)
+story.badges = _bad0
+check(not _si.get("ICE_MELTER") and not (_si.get("OLD_ROD") and not _inv0.get("OLD_ROD")) and _si.get("SUPER_ROD"),
+      f"Johto's badges: no Old Rod at the Hive Badge (Route 32's fisherman) and no Ice Melter; the Super Rod with the Fog Badge")
+_cl = _prog["BLACKTHORN_CITY"]["gym"]["leader"]["rewards"]
+_gs = [e["item"] for e in _prog["GOLDENROD_CITY"].get("extra_stock", [])]
+check(_cl.get("TM115") and not {"TM067", "TM068", "TM069"} & set(_gs),
+      f"Clair gives HGSS's Dragon Pulse (TM115), no random TM; the Dept. Store lists none of the tutors' punch TMs: {_cl}")
 
 g.walk_towns = False
 

@@ -31,7 +31,7 @@ LEFT_OUT = {
 # Open items already on the Journal plan (ROADMAP_JOURNAL): listed so the check stays green until they're done; a NEW
 # one fails. Remove an entry when it is fixed.
 KNOWN = set()   # (Unova's b2_m23 / b2_m29 "Hugh" fixed on region/unova 4392cd97, 11-24)
-NOT_YET = {"ORRE"}   # (walked, no book yet: J5, in step with Orre's story rework)
+NOT_YET = set()   # (walked regions with no book yet; Orre's came 11-24, J5)
 OWN_FORMS = {"ORANGE", "SINNOH", "ALOLA", "GALAR", "PALDEA", "HISUI"}
 RIVALS = {"KANTO": ["Blue", "Gary"], "JOHTO": ["Silver"], "HOENN": ["Brendan", "May"], "SINNOH": ["Barry"],
           "UNOVA": ["Hugh"]}

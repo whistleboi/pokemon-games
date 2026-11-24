@@ -327,7 +327,8 @@ check(rs and rs[0]["event"]["gift_item"].get("HM_ROCK_SMASH") and rs[0]["event"]
 dept5 = _tm["GOLDENROD_CITY"]["rooms"]["dept_5"].get("people", [])
 check(any("Trader" in str(p) for p in dept5) and any("TM lady" in str(p) for p in dept5), "Dept. Store 5F: the Machop trader and the Sunday TM lady")
 stock = {e["item"] for e in gr.get("extra_stock", [])}
-check({"TM068", "TM067", "TM069", "TM166", "TM143", "TM163", "TM158"} <= stock, f"...and the 5F TM Corner's TMs on the shelf ({sorted(stock)})")
+check({"TM166", "TM143", "TM163", "TM158"} <= stock and not {"TM067", "TM068", "TM069"} & stock,   # (the punches: Frontier Access tutors' moves, which the shop never shows; 11-24)
+      f"...and the 5F TM Corner's TMs on the shelf ({sorted(stock)})")
 
 # ---- the Radio Card quiz, the radio, Buena, the Daily Drawing (Jordan 11-15)
 from src.states.systems.yes_no_quiz import YesNoQuizState, make_question
