@@ -143782,7 +143782,7 @@
      "ccccccccc",
      "ccccccccc",
      "cNNN..NNc",
-     "cN.....Nc",
+     "cN.N.N.Nc",
      "c...N...c",
      "cN.....Nc",
      "cNN...NNc",
@@ -143808,6 +143808,8 @@
      "BIG NUGGET   ",
      "BIG NUGGET    ",
      "BIG NUGGET     ",
+     "LUGIA",
+     "HO-OH",
      "BIG NUGGET      ",
      "TM135 ICE BEAM",
      "BIG NUGGET       ",
@@ -144131,7 +144133,9 @@
    "Youngster Demetrius": 2,
    "Ruin Maniac Garrison": 3,
    "Swimmer Jani": 3,
-   "Sailor Duncan": 5
+   "Sailor Duncan": 5,
+   "LUGIA": 8,
+   "HO-OH": 8
   }
  },
  "HOENN_OCEANIC_MUSEUM": {

@@ -104,6 +104,9 @@ def _villain(trainer, v):
     role = (trainer.get("villain_by_version") or {}).get((v or {}).get("key")) or trainer.get("villain")
     if not role or not v:   # ("villain_by_version": a different role per version: the Space Center's Tabitha / Matt, 11-18)
         return trainer
+    if role.startswith("other_"):   # (the OTHER version's team: the Magma Hideout after the title, Jordan 11-24 - Aqua's in
+        v = VERSIONS["ALPHA_SAPPHIRE" if v["key"] == "OMEGA_RUBY" else "OMEGA_RUBY"]   # Omega Ruby, Magma's in Alpha Sapphire)
+        role = role[len("other_"):]
     trainer.setdefault("spot_name", trainer.get("name"))  # (its own spot on a walking map is under the name the data gives it)
     if role == "grunt":
         trainer["name"] = f"{v['team']} Grunt"

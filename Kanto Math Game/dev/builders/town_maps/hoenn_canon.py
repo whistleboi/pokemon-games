@@ -694,6 +694,16 @@ def _steven_meteor_falls(maps):
                                                                  "Steven: I'll keep travelling, looking for rare stones. Until we meet again!"]}}}
 
 
+def _ship_legends(maps):
+    """Jordan 11-24 (questions/HOENN.md #8, ORAS's Sea Mauville): after the title Lugia and Ho-Oh wait in the Abandoned
+    Ship's storeroom (its BOSS options LUGIA / HO-OH; the Sea Mauville mission, hoenn_s29, points here)."""
+    m = maps.get("HOENN_ABANDONED_SHIP")
+    if not m or len(m.get("floors") or []) < 9:
+        return
+    _F._put(m["floors"][8], "N", "people", [[3, 3, "LUGIA"], [5, 3, "HO-OH"]])
+    m.setdefault("figure_floors", {}).update({"LUGIA": 8, "HO-OH": 8})
+
+
 def _part(m, floor, room):
     if room:
         return m["rooms"][room]
@@ -779,6 +789,7 @@ def apply(maps):
     _coin_case(maps)
     _wally_victory_road(maps)
     _steven_meteor_falls(maps)
+    _ship_legends(maps)
     _h7(maps)
     for key, floor, room, x, y, who in PEOPLE:
         m = maps.get(key)

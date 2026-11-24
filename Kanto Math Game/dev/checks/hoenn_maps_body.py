@@ -3365,3 +3365,36 @@ if _c5 is None:
     story.story_flags.pop("beat_hoenn_champion", None)
 if _s5 is not None:
     story.story_flags["meteor_falls_steven_beaten"] = _s5
+
+# H8 (Jordan 11-24, questions/HOENN.md #9): the Magma Hideout is the OTHER version's team's (Aqua's in Omega Ruby, Magma's
+# in Alpha Sapphire), in only after the title, with ORAS's own volcano-cave Pokemon (Fiery Path's table: no water there)
+from src.world import hoenn as _hn9
+_v9 = story.story_flags.get("hoenn_version")
+_got9 = {}
+for _ver in ("OMEGA_RUBY", "ALPHA_SAPPHIRE"):
+    story.story_flags["hoenn_version"] = _ver
+    _hn9.apply_version(g)
+    _a9 = g.loader.area_data["STORY_PROGRESSION"]["HOENN_MAGMA_HIDEOUT"]
+    _got9[_ver] = sorted({t["name"] for t in _a9["trainer_pool"]})
+if _v9 is None:
+    story.story_flags.pop("hoenn_version", None)
+else:
+    story.story_flags["hoenn_version"] = _v9
+_hn9.apply_version(g)
+_ex9 = next(o for o in g.loader.area_data["STORY_PROGRESSION"]["HOENN_JAGGED_PASS"]["route_menu"] if o.get("target_area") == "HOENN_MAGMA_HIDEOUT")
+_wild9 = g.loader.area_data["HOENN_MAGMA_HIDEOUT_PERCENTAGES"]
+check(_got9["OMEGA_RUBY"] == ["Aqua Admin Matt", "Aqua Admin Shelly", "Team Aqua Grunt"]
+      and _got9["ALPHA_SAPPHIRE"] == ["Magma Admin Courtney", "Magma Admin Tabitha", "Team Magma Grunt"]
+      and "beat_hoenn_champion" in _ex9["condition"] and set(_wild9) == {"322", "109", "218", "324", "66", "88"},
+      f"Magma Hideout: the other version's team ({_got9}), after the title ({_ex9['condition']}), Fiery Path's ORAS Pokemon ({_wild9})")
+
+# H8 (Jordan 11-24, questions/HOENN.md #8): ORAS's Lugia and Ho-Oh wait in the Abandoned Ship's storeroom after the title;
+# the Sea Mauville mission points there
+_sm = next(m for m in g.loader.area_data["JOURNAL_MISSIONS"] if m.get("id") == "hoenn_s29")
+_shp = {o.get("text"): o for o in g.loader.area_data["STORY_PROGRESSION"]["HOENN_ABANDONED_SHIP"]["route_menu"]}
+_st8 = _tm["HOENN_ABANDONED_SHIP"]["floors"][8].get("people") or []
+check(_sm["target"] == "HOENN_ABANDONED_SHIP" and "sea_mauville_open" not in str(_sm["condition"])
+      and (_shp.get("LUGIA") or {}).get("boss", {}).get("victory_flag") == "sea_mauville_lugia"
+      and (_shp.get("HO-OH") or {}).get("boss", {}).get("victory_flag") == "sea_mauville_ho_oh"
+      and "beat_hoenn_champion" in _shp["LUGIA"]["condition"] and "LUGIA" in _st8 and "HO-OH" in _st8,
+      f"Abandoned Ship: Lugia and Ho-Oh in the storeroom after the title; the Sea Mauville mission points there ({_sm['condition']})")
