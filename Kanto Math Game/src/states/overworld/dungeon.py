@@ -2804,8 +2804,19 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         else:
             self._battle_trainer(mover)
 
+    STORY_CLASSES = ("RIVAL", "ROCKET_LEADER", "GYM_LEADER", "ELITE_FOUR", "CHAMPION")
+
+    @classmethod
+    def story_battle(cls, info):
+        """An important story battle - a Leader, a villain team's boss, the rival, the Elite Four, the Champion: always on
+        the battle screen, whatever the BATTLE STYLE (Jordan 11-24: "the important story battles, as always classic")."""
+        info = info if isinstance(info, dict) else {}
+        return bool(info.get("is_boss_battle") or info.get("villain") == "leader"
+                    or str(info.get("class") or info.get("trainer_class") or "").upper() in cls.STORY_CLASSES)
+
     def _battle_trainer(self, mover):
-        if self._ow_on():  # Options > BATTLE STYLE: OVERWORLD (src/states/overworld/overworld_battle.py)
+        info = mover.payload[1] if isinstance(mover.payload, (list, tuple)) and len(mover.payload) > 1 else {}
+        if self._ow_on() and not self.story_battle(info):  # Options > BATTLE STYLE: OVERWORLD (src/states/overworld/overworld_battle.py)
             self._ow_trainer(mover)
             return
         self.pending = ("trainer", mover)
