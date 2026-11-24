@@ -344,10 +344,6 @@ EVENTS = {
                                    "501": [510, 516, 521, 526, 612, 497]},
                    "dialogue": {"player_won": ["unova_cheren_rival_won"],
                                 "player_lost": ["unova_cheren_rival_lost"]}}},
-    "n_chargestone": {
-        "lines": ["unova_n_chargestone"], "flag": "defeated_n_chargestone",
-        "battle": {"name": "N", "class": "PKMN_TRAINER", "sprite": "n.png", "team": [525, 595, 597, 599],
-                   "dialogue": {"player_won": ["N: I'll go to Dragonspiral Tower. The legendary dragon is waiting."]}}},
 
     # ---------------- Johto (HeartGold / SoulSilver) ----------------
     "giovanni": {

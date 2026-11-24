@@ -140,6 +140,10 @@ talk(st, "Scientist with the Deerling")
 check(flags.get("b2_r6_deerling") and any(int(getattr(p, "id", 0)) == 585 and int(getattr(p, "level", 0)) == 30
                                           for p in list(story.player_team) + [p for p in story.pc_pokemon if p]),
       "the rare Deerling, Lv 30")
+_d = next((p for p in list(story.player_team) + [p for p in story.pc_pokemon if p] if int(getattr(p, "id", 0)) == 585), None)
+_ev = next(c for o in tmaps["UNOVA_ROUTE_6"]["rooms"]["lab"]["people"] for c in _opts(o) if isinstance(c, dict) and (c.get("event") or {}).get("gift_pokemon") == 585)
+check(_ev["event"].get("gift_ability") == "hidden" and _ev["event"].get("gift_no_shiny") and _d is not None
+      and not getattr(_d, "is_shiny", False), f"its Hidden Ability, Serene Grace, and never Shiny (slot {getattr(_d, 'ability_slot', None)})")
 st = town("UNOVA_ROUTE_6", (10, 7), "house", (0, -1))
 talk(st, "Girl in the rest house")
 check(story.inventory.get("SHINY_STONE", 0) >= 1, "the girl's Shiny Stone")
@@ -165,19 +169,43 @@ flags.pop("b2_charge_bianca", None)
 ds = walked("CHARGESTONE_CAVE", (7, 51))
 go(0, -1, 1, 1500)
 check(flags.get("b2_charge_bianca") and "Bianca" in heard() and "push" in heard(), "Bianca: push the floating stones!")
-stones = [o for o in tmaps["CHARGESTONE_CAVE"]["roofs"].get("_objects") or [] if "_110_" in o["k"]]
-check(len(stones) == 10, f"1F's ten floating stones stand where Black 2 has them ({len(stones)})")
+cc = tmaps["CHARGESTONE_CAVE"]
+check(len(cc.get("stones") or []) == 10 and not any("_110_" in o["k"] for o in cc["roofs"].get("_objects") or []),
+      f"1F's ten floating stones are stones you push, not the map's fixed models ({len(cc.get('stones') or [])})")
+pushed = None
+for cx, cy in cc.get("stones") or []:   # (stand off a stone's edge and walk into it: the 3 x 3 slides that way)
+    for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+        frm = (cx - 2 * dx, cy - 2 * dy)
+        row = cc["art"][frm[1]] if 0 <= frm[1] < len(cc["art"]) else ""
+        if not (0 <= frm[0] < len(row)) or row[frm[0]] not in '."':
+            continue
+        flags.pop("stones_CHARGESTONE_CAVE_0", None)
+        ds = walked("CHARGESTONE_CAVE", frm)
+        if tuple(getattr(getattr(ds, "run", None), "player", (0, 0))) != frm:
+            continue
+        go(dx, dy, 1, 60)
+        now = flags.get("stones_CHARGESTONE_CAVE_0")
+        if isinstance(now, list) and [cx, cy] not in [list(t) for t in now]:
+            pushed = ((cx, cy), (dx, dy), [t for t in now if list(t) not in (cc.get("stones") or [])])
+            break
+    if pushed:
+        break
+check(pushed, f"walk into a floating stone: it slides on, and stays moved ({pushed})")
 flags.pop("b2_charge_voice", None)
 ds = walked("CHARGESTONE_CAVE", (44, 41))
 go(1, 0, 1, 1200)
 check(flags.get("b2_charge_voice") and "save Pokemon" in heard(), "a voice by the bridge: 'I have to go...'")
 
 print("6) Chargestone's floors: 1F <-> B1F (three ways), B1F <-> B2F; out to Mistralton")
-ds = walked("CHARGESTONE_CAVE", (54, 5))
-go(-1, 0, 1, 60)
-pl = tuple(getattr(getattr(g.current_state, "run", None), "player", (0, 0)))
-check(story.current_area_key == "CHARGESTONE_CAVE_B1F" and abs(pl[0] - 39) + abs(pl[1] - 5) <= 2,
-      f"1F's north stairs down land by B1F's north stairs, as the file pairs them ({story.current_area_key} {pl})")
+for door, there in (((53, 5), (39, 5)), ((20, 42), (9, 42)), ((64, 50), (47, 50))):   # (the file's own pairs)
+    art = cc["art"]
+    side = next(((door[0] - dx, door[1] - dy, dx, dy) for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))
+                 if art[door[1] - dy][door[0] - dx] in '."'), None)
+    ds = walked("CHARGESTONE_CAVE", side[:2])
+    go(side[2], side[3], 1, 60)
+    pl = tuple(getattr(getattr(g.current_state, "run", None), "player", (0, 0)))
+    check(story.current_area_key == "CHARGESTONE_CAVE_B1F" and abs(pl[0] - there[0]) + abs(pl[1] - there[1]) <= 2,
+          f"1F's stairs at {door} land by B1F's {there}, as the file pairs them ({story.current_area_key} {pl})")
 check(tmaps["CHARGESTONE_CAVE"]["exits"].get("^") == "MISTRALTON_CITY", "1F's north-east exit leads to Mistralton City")
 ds = walked("CHARGESTONE_CAVE_B1F", (28, 8))
 go(-1, 0, 2)
