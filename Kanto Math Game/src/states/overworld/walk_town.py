@@ -380,11 +380,43 @@ class WalkTownState(TownWalkUps, CityState):
     def _npc_init(self, m):
         """Each person's way of moving (the map's "moves", by their spot) and the map's story scenes."""
         from src.dungeon import npc
-        self.motions = {home: npc.Motion(home, npc.spec_at(m.get("moves"), home), seed=self.area_key) for home in self.people}
+        moves = self._add_partners(m)
+        self.motions = {home: npc.Motion(home, npc.spec_at(moves, home), seed=self.area_key) for home in self.people}
         self.scenes = npc.Scenes(m.get("scenes"), self)
         self._scene_lock = False
         # (an arrival event a scene acts out in its place: Norman outside the Gym instead of the old text)
         self._scene_instead = {s["instead_of"] for s in self.scenes.list if s.get("instead_of") and self.scenes.pending(s)}
+
+    def _add_partners(self, m):
+        """The important people's partner Pokemon (src/world/partners.py: Gym Leaders, the League, rivals, villain
+        bosses and admins - their ace), each on a free tile beside them, following them (a "trail" move). The map's moves
+        with theirs added. A person the map already gives a Pokemon to follow (Lance's Dragonite) keeps that one."""
+        from src.world import partners
+        moves = dict(m.get("moves") or {})
+        followed = {str(s.get("who") or "").strip() for s in moves.values() if isinstance(s, dict) and s.get("m") == "trail"}
+        taken = set(self.people) | set(self.doors) | set(self.signs) | set(self.exits)
+        grid = getattr(self, "grid", None) or self.rows
+        for home, opt in list(self.people.items()):
+            if not isinstance(opt, dict) or opt.get("_partner_of") is not None:
+                continue
+            text = opt.get("text") or next((o.get("text") for o in opt.get("any") or [] if isinstance(o, dict)), None)
+            if not text or str(text).strip() in followed:
+                continue
+            got = partners.partner_for(self.game, self.area_data, opt)
+            if not got:
+                continue
+            species, owner = got
+            spot = next(((home[0] + dx, home[1] + dy) for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))
+                         if 0 <= home[0] + dx < self.w and 0 <= home[1] + dy < self.h
+                         and self.rows[home[1] + dy][home[0] + dx] == "." and grid[home[1] + dy][home[0] + dx] not in "_()"
+                         and (home[0] + dx, home[1] + dy) not in taken), None)
+            if spot is None:
+                continue
+            taken.add(spot)
+            self.people[spot] = {"text": species, "_partner_of": home, "action": "EVENT",
+                                 "event": {"lines": partners.line(owner, species)}}
+            moves[f"{spot[0]},{spot[1]}"] = {"m": "trail", "who": text}
+        return moves
 
     def _home_at(self, spot):
         """The spot a person was placed on (their key in self.people), from where they stand now."""
@@ -693,6 +725,9 @@ class WalkTownState(TownWalkUps, CityState):
         return bool(story.story_flags.get(bar.get("flag")))
 
     def _shown(self, opt):
+        if opt.get("_partner_of") is not None:   # (a partner Pokemon: there while its trainer is)
+            lead = self.people.get(opt["_partner_of"])
+            return lead is not None and self._shown(lead)
         if "any" in opt:
             return any(self._shown(o) for o in opt["any"])
         story = self.game.story_manager

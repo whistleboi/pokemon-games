@@ -1286,6 +1286,43 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         self._sync_gate()
         self._hide_followed()
 
+    def _sync_partners(self):
+        """The important people here (src/world/partners.py) with their partner Pokemon beside them, following them; a
+        partner whose trainer has left (beaten, gone) leaves too. Checked when the floor's people change."""
+        f = self.run.floor
+        key = (id(f), len(f.movers))
+        if getattr(self, "_partners_key", None) == key:
+            return
+        from src.world import partners
+        from src.dungeon import npc
+        owners = {id(m) for m in f.movers}
+        f.movers[:] = [m for m in f.movers if getattr(m, "_partner_of", None) is None or id(m._partner_of) in owners]
+        have = {id(m._partner_of) for m in f.movers if getattr(m, "_partner_of", None) is not None}
+        for m in list(f.movers):
+            if m.kind not in ("figure", "trainer") or id(m) in have or getattr(m, "_partner_of", None) is not None:
+                continue
+            info = m.payload if m.kind == "figure" else (m.payload[1] if isinstance(m.payload, tuple) else None)
+            if not isinstance(info, dict):
+                continue
+            text = info.get("text") if m.kind == "figure" else info.get("name")
+            if any(getattr(o, "motion", None) is not None and getattr(o.motion, "leader", None) == text for o in f.movers):
+                continue   # (the map gives it one already)
+            got = partners.partner_for(self.game, self.area_data, info)
+            if not got:
+                continue
+            spot = next(((m.x + dx, m.y + dy) for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))
+                         if f.walkable(m.x + dx, m.y + dy) and not f.occupied(m.x + dx, m.y + dy)
+                         and f.tile(m.x + dx, m.y + dy) != core.SURF and (m.x + dx, m.y + dy) != tuple(self.run.player)), None)
+            if spot is None:
+                continue
+            species, owner = got
+            p = core.Mover("figure", spot[0], spot[1], {"text": species, "action": "EVENT",
+                                                         "event": {"lines": partners.line(owner, species)}})
+            p._partner_of = m
+            p.motion = npc.Motion(spot, {"m": "trail", "who": text}, seed=self.area_key)
+            f.movers.append(p)
+        self._partners_key = (id(f), len(f.movers))
+
     def _boss_spot(self):
         """The tile the area's boss sleeps on (the map's "boss_spot"), while it is still there."""
         art = self.recipe.get("art") or {}
@@ -1470,6 +1507,8 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
             if mo.kind == "trail":   # (a Pokemon at its trainer's heels: into the tile they just left)
                 if _leads is None:
                     _leads = {o.payload.get("text"): self._motion(o) for o in f.movers if o.kind == "figure" and isinstance(o.payload, dict)}
+                    _leads.update({(o.payload[1] or {}).get("name"): self._motion(o) for o in f.movers   # (a trainer's partner: partners.py)
+                                   if o.kind == "trainer" and isinstance(o.payload, tuple) and isinstance(o.payload[1], dict)})
                 from src.dungeon import npc as _npc
                 _npc.trail(mo, _leads.get(mo.leader), lambda t, m=m: self._npc_free(t, m))
                 m.x, m.y = mo.pos
@@ -4176,6 +4215,7 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
                 self._wu_tick() if self.mode == "WALKUP" else self._sw_tick()
                 return
         if self.mode == "MAP" and hasattr(self, "run") and not self.dialogue_box.visible:
+            self._sync_partners()
             self._npc_tick()
         if self.mode == "MAP":
             self._contest_check()
