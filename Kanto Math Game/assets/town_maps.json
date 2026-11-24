@@ -298333,14 +298333,41 @@
      {
       "tiles": [
        [
-        13,
-        2
+        8,
+        6
+       ],
+       [
+        9,
+        6
        ]
       ],
-      "item": "STORAGE_KEY",
+      "until": {
+       "flag_condition": "sinnoh_storage_door_open"
+      },
       "look": "unseen",
       "lines": [
        "The rust-encrusted door is locked. It appears to take a special key."
+      ]
+     }
+    ],
+    "scenes": [
+     {
+      "trigger": "enter",
+      "condition": [
+       "galactic_lake_acuity_cleared",
+       "not:sinnoh_storage_door_open"
+      ],
+      "flag": "sinnoh_storage_door_open",
+      "cast": [
+       {
+        "person": "Looker",
+        "lines": [
+         "Looker: Ah, {player_name}! The Team Galactic has taken the Pokemon of the lakes to its hideout.",
+         "Looker: A frontal assault, it is not possible. But this Storage Key, I have obtained from the Team Galactic!",
+         "Looker: I will use this Storage Key... ...Ker-chunk! Yes! It is opened!",
+         "Looker: Beyond lies their underpass. It leads to their Veilstone building. Go! I will follow when I can."
+        ]
+       }
       ]
      }
     ]
@@ -299919,6 +299946,26 @@
       }
      },
      "TM148"
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        14,
+        7
+       ],
+       [
+        15,
+        7
+       ]
+      ],
+      "item": "GALACTIC_KEY",
+      "look": "unseen",
+      "lines": [
+       "The door is locked. A special key is needed.",
+       "It takes a Galactic Key."
+      ]
+     }
     ]
    },
    {
@@ -301300,6 +301347,26 @@
         "We research new energy here, day and night. For what, exactly? Nobody tells me."
        ]
       }
+     }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        22,
+        17
+       ],
+       [
+        23,
+        17
+       ]
+      ],
+      "item": "GALACTIC_KEY",
+      "look": "unseen",
+      "lines": [
+       "The door is locked. A special key is needed.",
+       "It takes a Galactic Key."
+      ]
      }
     ]
    },
@@ -304125,6 +304192,26 @@
      "Galactic Grunt 8",
      "Galactic Grunt 6",
      "Galactic Grunt 5"
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        27,
+        18
+       ],
+       [
+        28,
+        18
+       ]
+      ],
+      "item": "GALACTIC_KEY",
+      "look": "unseen",
+      "lines": [
+       "The door is locked. A special key is needed.",
+       "It takes a Galactic Key."
+      ]
+     }
     ]
    },
    {
@@ -304152,7 +304239,7 @@
     ],
     "parts": true,
     "people": [
-     "BATTLE GALACTIC"
+     "Cyrus"
     ],
     "links": {
      "21,16": [
@@ -304512,7 +304599,27 @@
     },
     "hidden": {
      "20,6": "RAZOR_CLAW"
-    }
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        8,
+        13
+       ],
+       [
+        9,
+        13
+       ]
+      ],
+      "item": "GALACTIC_KEY",
+      "look": "unseen",
+      "lines": [
+       "The door is locked. A special key is needed.",
+       "It takes a Galactic Key."
+      ]
+     }
+    ]
    },
    {
     "art": [
@@ -304896,13 +305003,13 @@
      "cccccccccccccccccc",
      "cccccccccccccccccc",
      "cjjj..jjjjj..jjjcc",
-     "cjjj..jjjjj..jjjcc",
+     "cj.j..jjjjj..j.jcc",
      "c.....jjjjj.....cc",
-     "c...............cc",
-     "c...............cc",
+     "c.......N.......cc",
+     "c.......N.......cc",
      "c......ccc......cc",
      "c......jjj......cc",
-     "c......jjj......cc",
+     "c......j.j......cc",
      "c...............cc",
      "c...............cc",
      "c.......-.......cc",
@@ -305038,7 +305145,97 @@
        64
       ]
      }
-    }
+    },
+    "people": [
+     "Commander Saturn",
+     "Galactic machine"
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        2,
+        3
+       ]
+      ],
+      "look": "unseen",
+      "machine": true,
+      "lines": [
+       "It's Team Galactic's sinister machine. It stands empty now."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        3
+       ]
+      ],
+      "look": "unseen",
+      "machine": true,
+      "lines": [
+       "It's Team Galactic's sinister machine. It stands empty now."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        8,
+        9
+       ]
+      ],
+      "look": "unseen",
+      "machine": true,
+      "lines": [
+       "It's Team Galactic's sinister machine. It stands empty now."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        2,
+        3
+       ]
+      ],
+      "look": "mon:481",
+      "until": {
+       "flag_condition": "galactic_hq_cleared"
+      },
+      "lines": [
+       "Mesprit is sealed inside! It seems to be suffering, with its tail twitching."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        3
+       ]
+      ],
+      "look": "mon:482",
+      "until": {
+       "flag_condition": "galactic_hq_cleared"
+      },
+      "lines": [
+       "Azelf is sealed inside! It appears to be suffering, with wracking shudders."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        8,
+        9
+       ]
+      ],
+      "look": "mon:480",
+      "until": {
+       "flag_condition": "galactic_hq_cleared"
+      },
+      "lines": [
+       "Uxie is sealed inside! It appears to be suffering, with eyes squeezed shut."
+      ]
+     }
+    ]
    },
    {
     "art": [
@@ -305533,9 +305730,8 @@
    "Side room"
   ],
   "figure_floors": {
-   "Commander Saturn": 1,
-   "Cyrus": 1,
-   "BATTLE GALACTIC": 3,
+   "Commander Saturn": 5,
+   "Cyrus": 3,
    "Scientist Fredrick": 0,
    "TM299": 0,
    "DUBIOUS DISC": 0,
@@ -305556,7 +305752,8 @@
    "Galactic Grunt 5": 2,
    "Galactic Grunt 6": 2,
    "Galactic Grunt 7": 2,
-   "Galactic Grunt 8": 2
+   "Galactic Grunt 8": 2,
+   "Galactic machine": 5
   },
   "theme": "tunnel"
  },
