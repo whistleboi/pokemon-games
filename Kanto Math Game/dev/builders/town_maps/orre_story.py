@@ -1395,3 +1395,9 @@ def apply(maps):
         _phenac(maps)
         _past_guard(maps["PHENAC_CITY"])
     _tournament(maps)   # (last: after every place has its people)
+    # Story rework L1 (Jordan 11-24): every town battle at Kanto's level caps for its stage (orre_levels.py; the disc
+    # levels stay the source, so every build maps them the same way)
+    from . import orre_levels as _L
+    import json as _j, os as _o
+    _sp = _j.load(open(_o.path.join(_L._REPO, "assets", "orre_area_data.json"), encoding="utf-8"))["STORY_PROGRESSION"]
+    _L.apply_towns(maps, list(_sp))

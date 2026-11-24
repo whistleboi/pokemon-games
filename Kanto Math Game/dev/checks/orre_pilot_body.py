@@ -274,7 +274,7 @@ ss.load_starters(); ss.selected_idx = 0; ss.complete_selection()
 ss.dialogue_box.callback()
 frames(3)
 lv = {p.id: p.level for p in story.player_team}
-check(lv == {196: 25, 197: 26}, f"Espeon Lv 25 and Umbreon Lv 26, as Colosseum gives them ({lv})")
+check(lv == {196: 10, 197: 11}, f"Espeon Lv 10 and Umbreon Lv 11 (L1, Jordan 11-24: Kanto's level caps; Colosseum gave 25 / 26) ({lv})")
 check(story.inventory.get("SNAG_MACHINE") and F.get("orre_opening_seen"), "the Snag Machine from the opening")
 check(story.inventory.get(catching.POKE, 0) == 0, "no Poke Balls yet (Orre's Marts have none)")
 mv = {p.id: p.moves for p in story.player_team}

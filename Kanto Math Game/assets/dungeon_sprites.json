@@ -76,6 +76,27 @@
     ]
   },
   "figures": {
+    "IRON_ISLAND:Byron": {"sheet": "pt_leader7.png"},
+    "IRON_ISLAND:Riley": {"sheet": "pt_seven2.png"},
+    "VALOR_LAKEFRONT:Suite guest": {"sheet": "pt_woman2.png"},
+    "SINNOH_ROUTE_213:Dr. Footstep": {"sheet": "pt_oldman1.png"},
+    "SINNOH_ROUTE_213:Gentleman": {"sheet": "pt_gentleman.png"},
+    "SINNOH_ROUTE_213:Man": {"sheet": "pt_man1.png"},
+    "PASTORIA_CITY:Woman ": {"sheet": "pt_woman2.png"},
+    "PASTORIA_CITY:Cowgirl": {"sheet": "pt_cowgirl.png"},
+    "PASTORIA_CITY:Receptionist": {"sheet": "pt_woman6.png"},
+    "PASTORIA_CITY:Scarf man": {"sheet": "pt_middleman1.png"},
+    "PASTORIA_CITY:Boy": {"sheet": "pt_boy1.png"},
+    "PASTORIA_CITY:Old man": {"sheet": "pt_oldman1.png"},
+    "CELESTIC_TOWN:Cyrus": {"sheet": "pt_gingaboss.png"},
+    "CELESTIC_TOWN:Elder": {"sheet": "pt_oldwoman1.png"},
+    "CELESTIC_TOWN:Cynthia": {"sheet": "pt_champion.png"},
+    "CELESTIC_TOWN:Galactic Grunt": {"sheet": "pt_gingam.png"},
+    "VALOR_LAKEFRONT:Galactic Grunt": {"sheet": "pt_gingam.png"},
+    "SINNOH_ROUTE_213:Galactic Grunt": {"sheet": "pt_gingam.png"},
+    "PASTORIA_CITY:Barry": {"sheet": "pt_rivel.png"},
+    "PASTORIA_CITY:Crasher Wake": {"sheet": "pt_leader3.png"},
+    "PASTORIA_CITY:Galactic Grunt": {"sheet": "pt_gingam.png"},
     "HOENN_MAGMA_HIDEOUT:MAX ELIXIR far side": {
       "item": "MAX_ELIXIR"
     },

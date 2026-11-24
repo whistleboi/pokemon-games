@@ -161,7 +161,7 @@ class AbilityEffects:
             return None
         fa = self.ab(foe)
         if fa == "SHADOWTAG" and self.ab(me) != "SHADOWTAG" or (
-                fa == "ARENATRAP" and "FLYING" not in (me.types or []) and self.ab(me) != "LEVITATE"):
+                fa == "ARENATRAP" and "FLYING" not in (me.types or []) and self.ab(me) != "LEVITATE" and self.held(me) != "AIR_BALLOON"):
             return f"{self._label(foe)}'s {self.ab_name(foe)} prevents escape!"
         return None
 

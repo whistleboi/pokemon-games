@@ -334,8 +334,12 @@ p._battle_trainer(_t)
 while p.dialogue_box.visible:
     p.dialogue_box.advance()
     p.update()
+for _ in range(600):   # (the region's battle intro plays first: Systems 11-24)
+    if isinstance(g.current_state, TrainerBattleState):
+        break
+    g.current_state.update()
 ob = g.current_state
-check(isinstance(ob, TrainerBattleState) and getattr(ob, "overworld", None) is not None, "the battle is drawn on the map")
+check(isinstance(ob, TrainerBattleState) and getattr(ob, "overworld", None) is not None, f"the battle is drawn on the map ({type(ob).__name__})")
 ob.side(ob.opponent_pokemon).update({"stealth_rock": 1, "spikes": 2, "sticky_web": 1})
 asked = 0
 for _ in range(6000):

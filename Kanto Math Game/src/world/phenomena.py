@@ -27,7 +27,7 @@ def _state(ds):
 
 
 SHARDS = ["RED_SHARD", "BLUE_SHARD", "YELLOW_SHARD", "GREEN_SHARD"]
-WINGS = ["HEALTH_WING", "MUSCLE_WING", "RESIST_WING", "GENIUS_WING", "CLEVER_WING", "SWIFT_WING"]   # (Pretty Wing: waits for the item, Main inbox clean-main-unova-air-balloon)
+WINGS = ["HEALTH_WING", "MUSCLE_WING", "RESIST_WING", "GENIUS_WING", "CLEVER_WING", "SWIFT_WING", "PRETTY_WING"]   # (the seven B2W2 Wings; Pretty Wing added 11-24)
 
 
 def _bridge(ds):

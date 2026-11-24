@@ -74,4 +74,25 @@ if hasattr(t, "exits") and "center" in (t.town_map.get("rooms") or {}):
 else:
     print("   (Nimbasa's Center isn't walked on this branch yet)")
 g.walk_town_pos = g.walk_town_room = None
+print("walked maps find the trainer a mission needs by its own win flag, not the old BATTLE TRAINER button (11-24)")
+from src.world import guide as _gd
+from src.states.overworld import PlayState as _PS
+story.enter_region("JOHTO")
+_sprout = g.loader.area_data["STORY_PROGRESSION"]["SPROUT_TOWER"]
+_menu = _sprout.get("route_menu")
+_sprout["route_menu"] = [o for o in (_menu or []) if o.get("action") != "TRAINER"]
+_tm = _gd.tracked_mission
+_gd.tracked_mission = lambda game: {"title": "Elder Li", "completed_flag": "defeated_elder_li", "target": "SPROUT_TOWER"}
+story.story_flags.pop("defeated_elder_li", None)
+story.current_area_key, story.last_area_key = "SPROUT_TOWER", "VIOLET_CITY"
+_p = _PS(g)
+g.states["play"] = _p
+g.change_state(_p)
+_hit = _p._guide_spot() if hasattr(_p, "_guide_spot") else None
+_li = [(i, m.x, m.y) for i in range(_p.run.n_floors) for m in _p.run.made(i).movers if m.kind == "trainer"
+       and (m.payload[1] or {}).get("victory_flag") == "defeated_elder_li"]
+check(bool(_li) and _hit is not None, f"Sprout Tower with no TRAINER button: the marker still leads to Elder Li ({_hit}, Li at {_li})")
+_gd.tracked_mission = _tm
+_sprout["route_menu"] = _menu
+
 print(f"##### {fails} failures")

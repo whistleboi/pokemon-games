@@ -433,7 +433,8 @@ def with_rooms(m):
     {name: a map of its own (theme "room", its mats' "exits" {"v": "OUT:x,y"}, "people": route options by their text)}
     and "inside" {"x,y" of a door: room name} on the map (or on a floor of it). Each room becomes a floor of the area
     after its own, joined to its door: in at the door you stand on the room's mat, out by the mat you stand below the
-    door. No wild Pokemon indoors. The map itself is not changed."""
+    door. No wild Pokemon indoors, unless the room has its own "wild_tables" (src/world/wild_tables.py's shape: Relic Castle's
+    Baltoy rooms, Black 2). The map itself is not changed."""
     rooms = m.get("rooms") or {}
     if not rooms:
         return m
@@ -480,7 +481,7 @@ def with_rooms(m):
                         mats.setdefault(f"{x},{y}", (rx, ry))
         own = {k: v for k, v in room.items() if k not in ("art", "exits", "links", "land", "enter")}
         floors.append(dict(own, art=["".join(r) for r in art], exits=keep, links=links, boss_spot=None, parts=True, indoors=True,
-                           pool="NO_WILD_INDOORS_PERCENTAGES", buildings=room.get("buildings") or {}))
+                           pool=None if room.get("wild_tables") else "NO_WILD_INDOORS_PERCENTAGES", buildings=room.get("buildings") or {}))
         names.append(str(room.get("title") or name).title())
         for i, d in doors.get(name, []):  # (the door outside: onto the room's mat for it)
             mat = (enter[d][0], enter[d][1] + 1) if d in enter else mats.get(d) or next(iter(mats.values()), None)
@@ -497,6 +498,20 @@ def with_rooms(m):
     return out
 
 
+def way_on_water(recipe, floor, target):
+    """Is a floor's way out to target on the water (True), on land (False), or not known (None)? A room's (indoors) door is land."""
+    floors = ((recipe.get("art") or {}).get("floors")) or []
+    if not 0 <= floor < len(floors):
+        return None
+    f = floors[floor]
+    if f.get("indoors"):
+        return False
+    from src.dungeon import art as _art
+    grid, letters = f.get("art") or [], {c for c, t in (f.get("exits") or {}).items() if t == target}
+    wet = [c in "wu" or _art.at_sea(grid, x, y) for y, row in enumerate(grid) for x, c in enumerate(row) if c in letters]
+    return None if not wet else all(wet) if all(wet) or not any(wet) else None
+
+
 def art_recipe(m):
     """A route map recipe from one of our own maps (src/dungeon/art.py): its ground, its ways out (a letter
     each), what stands in the way (trees, fences, rocks, buildings, the sea), drawn in its own art. A map of
@@ -509,7 +524,7 @@ def art_recipe(m):
         out["legend"] = {}
         for i, p in enumerate(parts):  # (each floor's own legend, under its own keys)
             out["layout"][i] = {"map": p["layout"][0]["map"], "legend": p["legend"]}
-            for k in ("dive", "dive_at", "dive_links", "surface", "pool", "exit_order", "indoors"):  # (Dive: the seabed floor under this one, the surface over it, its own wild Pokemon)
+            for k in ("dive", "dive_at", "dive_links", "surface", "pool", "exit_order", "indoors", "wild_tables"):  # (Dive: the seabed floor under this one, the surface over it, its own wild Pokemon)
                 if m["floors"][i].get(k) is not None:
                     out["layout"][i][k] = m["floors"][i][k]
         out["floors"] = len(parts)
@@ -950,7 +965,13 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         if recipe.get("exit_floors") and entrance in recipe["exit_floors"]:  # (our map of floors: in by its floor)
             start = recipe["exit_floors"][entrance]
             _all = (recipe.get("exit_floors_all") or {}).get(entrance) or []
-            if len(_all) > 1 and core.ENTRANCE_COUNT >= len(_all):  # (in by the matching way: the far side has as many ways here as we have floors with one, or doors several tiles wide: Viridian Forest's gates)
+            _wet = core.ENTRANCE_WATER
+            core.ENTRANCE_WATER = None
+            _match = [i for i in _all if way_on_water(recipe, i, entrance) is _wet] if len(_all) > 1 and _wet is not None else []
+            if len(_match) == 1:   # (by sea or by land, as you left: the floor whose way back is the same kind; Sinnoh 11-24)
+                start = _match[0]
+                core.ENTRANCE_INDEX = core.ENTRANCE_COUNT = 0
+            elif len(_all) > 1 and core.ENTRANCE_COUNT >= len(_all):  # (in by the matching way: the far side has as many ways here as we have floors with one, or doors several tiles wide: Viridian Forest's gates)
                 start = _all[min(core.ENTRANCE_INDEX * len(_all) // core.ENTRANCE_COUNT, len(_all) - 1)]
                 core.ENTRANCE_INDEX = core.ENTRANCE_COUNT = 0
         if self.zones:
@@ -1957,7 +1978,7 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         """kind "smash": the area's Rock Smash Pokemon; on a sea tile (core.CURRENT_TILE) its surfing Pokemon (Jordan,
         11-14: the games' own pools, "rock_smash_pool_percentages" / "surf_pool_percentages"), else its usual pool."""
         from src.world import wild_tables as _wt
-        if _wt.tables(self.area_data) and kind != "smash":   # (the place's own game's slots, levels and seasons: B2W2's, 11-20)
+        if (_wt.tables(self.area_data) or self._floor_tables()) and kind != "smash":   # (the place's own game's slots, levels and seasons: B2W2's, 11-20)
             got = self._from_wild_tables(rng)
             if got is not None:
                 return got
@@ -1992,6 +2013,12 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         art = (getattr(getattr(self, "run", None), "recipe", None) or getattr(self, "recipe", None) or {}).get("art") or {}
         return {tuple(t) for t in (art.get("dark_grass") or [])}
 
+    def _floor_tables(self):
+        """This floor's own "wild_tables" (a room of the map with its own wild Pokemon), else None."""
+        layout = self.recipe.get("layout") if isinstance(getattr(self, "recipe", None), dict) else None
+        f = layout[core.CURRENT_FLOOR] if layout and 0 <= core.CURRENT_FLOOR < len(layout) else None
+        return (f.get("wild_tables") or None) if isinstance(f, dict) else None
+
     def _from_wild_tables(self, rng):
         """A wild Pokemon from the area's "wild_tables" (src/world/wild_tables.py): on the water its surfing slots, in dark
         grass its dark grass slots, at a phenomenon its own (rustling grass, rippling water), else the tall grass's."""
@@ -1999,7 +2026,8 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         on_water = core.CURRENT_TILE in (core.SURF, getattr(core, "WATER", None))
         kind = getattr(self, "_phenom_kind", None) or ("surf" if on_water else
                                                        "dark" if getattr(self, "_wild_spot", None) in self._dark_tiles() else "grass")
-        got = _wt.pick(self.area_data, kind, rng) or (_wt.pick(self.area_data, "grass", rng) if kind in ("dark", "rustle") else None)
+        place = {"wild_tables": self._floor_tables()} if self._floor_tables() else self.area_data   # (a room's own: Relic Castle's Baltoy rooms)
+        got = _wt.pick(place, kind, rng) or (_wt.pick(place, "grass", rng) if kind in ("dark", "rustle") else None)
         if got is None:
             return None
         pid, level = got
@@ -2605,6 +2633,7 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         self.game.arrive_edge = (self.area_key, target, tuple(_to)) if _to else None  # (out by an edge tile: in at its partner there)
         core.ENTRANCE_INDEX = same.index(tuple(self.run.player)) if tuple(self.run.player) in same else 0
         core.ENTRANCE_COUNT = len(same)  # (how many tiles that way out has here: the far side takes the matching place along its own)
+        core.ENTRANCE_WATER = None
         if len(same) > 1:  # (out to a town with as many ways back: in by the matching one, Victory Road's two mouths at Ever Grande)
             self.game.walk_town_exit = (self.area_key, core.ENTRANCE_INDEX, len(same))
         _all = (self.recipe.get("exit_floors_all") or {}).get(target) or []

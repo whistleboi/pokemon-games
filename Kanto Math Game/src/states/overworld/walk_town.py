@@ -1447,6 +1447,7 @@ class WalkTownState(TownWalkUps, CityState):
         self.game.arrive_edge = (self.area_key, target, tuple(_to)) if _to else None
         dn.core.ENTRANCE_INDEX = same.index(at) if at in same and len(same) > 1 else 0  # (the same, into a route or cave)
         dn.core.ENTRANCE_COUNT = len(same) if at in same else 0
+        dn.core.ENTRANCE_WATER = (at in self.water_exits) if at in same else None   # (by sea or by land: Sinnoh 11-24)
         cb()
 
     def _step_back(self):

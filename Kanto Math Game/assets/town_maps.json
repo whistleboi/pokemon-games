@@ -213693,11 +213693,11 @@
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTAAAAATTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTAAAAATTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTAADDATTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTfff....!ff..........ff............",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTfff..N.!Nf..........ff............",
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT....................ff............",
    "TTTTTTTTTTTTTTTTTTTTTTTBBBB..fff......fff.........f............>",
    "TTTTTTTTTTTTTTTTTTTTTTTBBBB....................................>",
-   "TTTTTTTTTTTTTTTTTTTTTTTBBBBff..................N......TTTTTT....",
+   "TTTTTTTTTTTTTTTTTTTTTTTBBBBff...N..............N......TTTTTT....",
    "TTTTTTTTTTTTTTTTTTTTTTTBDBBff.jjTT....................TTTTTT....",
    "TTTTTTTTTTTTTTTT...fff.....ff................ffKCCC.TTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTT.fffff......ff...............ffKCCC.TTTTTTTTTTTT",
@@ -213750,8 +213750,7 @@
   ],
   "exits": {
    ">": "SINNOH_ROUTE_213",
-   "<": "SINNOH_ROUTE_212",
-   "A": "GREAT_MARSH"
+   "<": "SINNOH_ROUTE_212"
   },
   "buildings": {
    "A": "gate",
@@ -213759,7 +213758,7 @@
    "C": "house",
    "E": "house",
    "F": "gym",
-   "G": "reminder",
+   "G": "house",
    "H": "house",
    "I": "house",
    "J": "mart",
@@ -217521,6 +217520,590 @@
        ]
       }
      }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        1,
+        34
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:high"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        1,
+        36
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:high"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        6,
+        8
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:low"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        6,
+        10
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:low"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        6,
+        25
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:high"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        6,
+        27
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:high"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        7,
+        8
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:low"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        7,
+        10
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:low"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        10,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:mid"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        10,
+        4
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:low"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        6
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:high"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        8
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:high"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        19
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:low"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        21
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:low"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        27
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:mid"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        29
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:mid"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        33
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:mid"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        35
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:mid"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:mid"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        4
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:low"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        25
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:low"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        27
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:low"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        21
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:high"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        25
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:high"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        25,
+        34
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:high"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        25,
+        36
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:high"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     }
+    ],
+    "scenes": [
+     {
+      "trigger": {
+       "zone": [
+        3,
+        6,
+        3,
+        6
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:pastoria_gym:not:high"
+      ],
+      "cast": [],
+      "event": {
+       "world": "pastoria_gym",
+       "press": "high"
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        3,
+        34,
+        3,
+        34
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:pastoria_gym:not:low"
+      ],
+      "cast": [],
+      "event": {
+       "world": "pastoria_gym",
+       "press": "low"
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        9,
+        14,
+        9,
+        14
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:pastoria_gym:not:low"
+      ],
+      "cast": [],
+      "event": {
+       "world": "pastoria_gym",
+       "press": "low"
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        9,
+        24,
+        9,
+        24
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:pastoria_gym:not:high"
+      ],
+      "cast": [],
+      "event": {
+       "world": "pastoria_gym",
+       "press": "high"
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        10,
+        30,
+        10,
+        30
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:pastoria_gym:not:mid"
+      ],
+      "cast": [],
+      "event": {
+       "world": "pastoria_gym",
+       "press": "mid"
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        17,
+        9,
+        17,
+        9
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:pastoria_gym:not:mid"
+      ],
+      "cast": [],
+      "event": {
+       "world": "pastoria_gym",
+       "press": "mid"
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        19,
+        13,
+        19,
+        13
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:pastoria_gym:not:mid"
+      ],
+      "cast": [],
+      "event": {
+       "world": "pastoria_gym",
+       "press": "mid"
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        19,
+        22,
+        19,
+        22
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:pastoria_gym:not:low"
+      ],
+      "cast": [],
+      "event": {
+       "world": "pastoria_gym",
+       "press": "low"
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        19,
+        24,
+        19,
+        24
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:pastoria_gym:not:mid"
+      ],
+      "cast": [],
+      "event": {
+       "world": "pastoria_gym",
+       "press": "mid"
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        23,
+        31,
+        23,
+        31
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:pastoria_gym:not:low"
+      ],
+      "cast": [],
+      "event": {
+       "world": "pastoria_gym",
+       "press": "low"
+      }
+     }
     ]
    },
    "mart": {
@@ -218855,40 +219438,6 @@
     ],
     "title": "Pokemon Center B1F"
    },
-   "reminder": {
-    "theme": "room",
-    "art": [
-     "ccccccccccc",
-     "ccccccccccc",
-     "c.....mmmmc",
-     "c.........c",
-     "c..mmN....c",
-     "c..mm.....c",
-     "c.........c",
-     "c...v.....c",
-     "ccccccccccc"
-    ],
-    "exits": {
-     "v": "OUT:25,35"
-    },
-    "buildings": {},
-    "roofs": {
-     "_floor": [
-      222,
-      206,
-      160
-     ],
-     "_wall": [
-      210,
-      210,
-      220
-     ],
-     "_things": {}
-    },
-    "people": [
-     "Move Reminder"
-    ]
-   },
    "house_0501": {
     "theme": "room",
     "art": [
@@ -219087,7 +219636,7 @@
      "ccccccccccc",
      "ccccccccccc",
      "cm...mmmmmc",
-     "cmN.......c",
+     "cmN.....N.c",
      "c......m..c",
      "c.mm......c",
      "cmmm.....mc",
@@ -219378,7 +219927,8 @@
         "I run errands for the Solaceon newspaper. They pay me in Heart Scales!"
        ]
       }
-     }
+     },
+     "Move Reminder"
     ]
    },
    "house_0601": {
@@ -219388,7 +219938,7 @@
      "ccccccccccc",
      "c..N..mmmmc",
      "c.........c",
-     "c..mm.....c",
+     "c..mmN....c",
      "c..mm...N.c",
      "c.........c",
      "c...v.....c",
@@ -219550,6 +220100,16 @@
       "event": {
        "lines": [
         "PACHIRISU: Suuu pasu!"
+       ]
+      }
+     },
+     {
+      "text": "Scarf man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Howdy, there! I give scarves to Pokemon that are worthy... for Contests, you understand.",
+        "Hmhm... Contests aren't held round here these days. Ah well! Maybe someday."
        ]
       }
      },
@@ -219746,23 +220306,299 @@
       }
      }
     ]
+   },
+   "house_0301": {
+    "theme": "room",
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "c.....mmmmc",
+     "c.........c",
+     "c..mmN....c",
+     "c..mm..N..c",
+     "c.........c",
+     "c...v.....c",
+     "ccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:25,35"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      222,
+      206,
+      160
+     ],
+     "_wall": [
+      210,
+      210,
+      220
+     ],
+     "_things": {},
+     "_picture": {
+      "f": "pt_ground/C06R0301.png",
+      "at": [
+       0,
+       1
+      ]
+     }
+    },
+    "people": [
+     {
+      "any": [
+       {
+        "text": "Boy",
+        "action": "EVENT",
+        "condition": [
+         "world:pastoria:combee_pair"
+        ],
+        "event": {
+         "lines": [
+          "Cool! A female and a male Combee. I feel giddy! Here, take this!",
+          "You received a Macho Brace!"
+         ],
+         "gift_item": {
+          "MACHO_BRACE": 1
+         },
+         "flag": "got_macho_brace_pastoria",
+         "done": [
+          "The Macho Brace makes a Pokemon slow, but it grows stronger faster. Like my dad says, no pain, no gain!"
+         ]
+        }
+       },
+       {
+        "text": "Boy",
+        "action": "EVENT",
+        "condition": [
+         "not:world:pastoria:combee_pair"
+        ],
+        "event": {
+         "lines": [
+          "Hey, have you caught both the female and male forms of Combee?",
+          "If you have, I want to see both of them together. I'll give you a Macho Brace if you do that for me!"
+         ]
+        }
+       }
+      ]
+     },
+     {
+      "text": "Old man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Pokemon Combee is quite interesting. Only the female evolves and grows strong. The male does not.",
+        "Come to think of it, my wife was awfully strong, too."
+       ]
+      }
+     }
+    ]
+   },
+   "observatory_gate": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccc",
+     "ccccccccccccc",
+     "cccccnccccccc",
+     "czmc........c",
+     "cccc........c",
+     "cccc..ccccccc",
+     "ccNm..ccccccc",
+     "cccc..ccccccc",
+     "cccc..cccc^.c",
+     "cN....cccc..c",
+     "c...........c",
+     "c....v......c",
+     "ccccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:34,9",
+     "n": "GREAT_MARSH",
+     "^": "ROOM:observatory"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      222,
+      206,
+      160
+     ],
+     "_wall": [
+      210,
+      210,
+      220
+     ],
+     "_things": {},
+     "_picture": {
+      "f": "pt_ground/C06R0101.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Receptionist",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to the Great Marsh! Is this your first Safari Game?",
+        "When you enter the Great Marsh, you start with 30 Safari Balls. That's the only kind of Ball you're allowed to use.",
+        "The game is over when you run out of Safari Balls or have walked 500 steps. Have fun!"
+       ]
+      }
+     },
+     {
+      "text": "Cowgirl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Howdy. Playing the Safari Game? Catch five Pokemon in one game and you're a real marsh hand!"
+       ]
+      }
+     }
+    ],
+    "title": "Observatory Gate"
+   },
+   "observatory": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccc",
+     "ccccccccccccc",
+     "cjjccjjccjjcc",
+     "c.j...j...j.c",
+     "c...........c",
+     "c...N..N....c",
+     "c...........c",
+     "ccc.....cc..c",
+     "cmmmm..^cc..c",
+     "cmmN....cc..c",
+     "c....N......c",
+     "c...........c",
+     "ccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:observatory_gate"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      222,
+      206,
+      160
+     ],
+     "_wall": [
+      210,
+      210,
+      220
+     ],
+     "_things": {},
+     "_picture": {
+      "f": "pt_ground/C06R0102.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Woman ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Use a pair of binoculars to look out over the Great Marsh. You can see what kinds of Pokemon can be caught, and where."
+       ]
+      }
+     },
+     {
+      "text": "Boy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "When you're walking on the bog, you sometimes sink right in... There's something pretty cool about it, though."
+       ]
+      }
+     },
+     {
+      "text": "Man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "There are shuttle trains in the marsh called Quick Trams. Take those if you're going to a deeper area."
+       ]
+      }
+     },
+     {
+      "text": "Woman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Tell me I'm not imagining this... The Great Marsh's Pokemon seem to be different from the ones yesterday..."
+       ]
+      }
+     }
+    ],
+    "title": "Great Marsh Observatory"
    }
   },
   "inside": {
    "13,27": "gym",
    "25,44": "mart",
    "24,15": "center",
-   "25,35": "reminder",
+   "25,35": "house_0301",
    "24,24": "house_0501",
    "35,35": "house_0401",
    "48,19": "house_0601",
-   "13,44": "house_0201"
+   "13,44": "house_0201",
+   "34,9": "observatory_gate",
+   "35,9": "observatory_gate"
   },
   "parts": true,
   "hidden": {
    "7,57": "ZINC"
   },
   "people": [
+   {
+    "text": "Crasher Wake",
+    "action": "EVENT",
+    "condition": [
+     "sinnoh_pastoria_bomb_warned",
+     "not:sinnoh_pastoria_bomb"
+    ],
+    "event": {
+     "lines": [
+      "Wake: The Great Marsh is invaluable... I won't let anyone harm it."
+     ]
+    }
+   },
+   {
+    "text": "Galactic Grunt",
+    "action": "EVENT",
+    "condition": [
+     "not:has_fen_badge"
+    ],
+    "event": {
+     "lines": [
+      "Grunt: Grr... The package hasn't arrived from the Veilstone warehouse yet... I have to wait here until then?",
+      "Grunt: Oh, man, I wish I could do something that involved lots of explosives! This is going to be a smashing job for Team Galactic..."
+     ]
+    }
+   },
+   {
+    "text": "Barry",
+    "action": "EVENT",
+    "condition": [
+     "sinnoh_pastoria_bomb_warned",
+     "not:sinnoh_pastoria_bomb"
+    ],
+    "event": {
+     "lines": [
+      "{rival_name}: Hey! What am I, chopped liver? Don't forget I'm here, too!"
+     ]
+    }
+   },
    {
     "text": "Woman",
     "action": "EVENT",
@@ -219854,6 +220690,303 @@
      ]
     }
    }
+  ],
+  "scenes": [
+   {
+    "trigger": {
+     "zone": [
+      13,
+      28,
+      13,
+      28
+     ]
+    },
+    "condition": [
+     "has_fen_badge",
+     "not:sinnoh_pastoria_bomb_warned"
+    ],
+    "flag": "sinnoh_pastoria_bomb_warned",
+    "cast": [
+     {
+      "sheet": "pt_rivel.png",
+      "from": [
+       19,
+       19
+      ],
+      "to": "player",
+      "stay": true,
+      "lines": [
+       "{rival_name}: Oh, hey! You got the Gym Badge here, huh? What'd I tell you? The master is pretty awesome, hey?"
+      ]
+     },
+     {
+      "sheet": "pt_leader3.png",
+      "from": [
+       13,
+       27
+      ],
+      "to": "player",
+      "stay": true,
+      "lines": [
+       "Wake: What's this racket, then? Oh, it's you two."
+      ]
+     },
+     {
+      "as": 0,
+      "lines": [
+       "{rival_name}: Oh, Master!"
+      ]
+     },
+     {
+      "as": 1,
+      "lines": [
+       "Wake: ...Listen, kid. I know your father. I won't deny that. But I don't recall ever taking you on as an apprentice.",
+       "Wake: Besides, you two don't need me. You can become strong on your own."
+      ]
+     },
+     {
+      "as": 0,
+      "lines": [
+       "{rival_name}: It doesn't matter. I made you my master! I decided! But forget that! There's trouble brewing!",
+       "{rival_name}: There's a Team Galactic goon in front of the Observatory Gate. He said something about using a bomb!"
+      ]
+     },
+     {
+      "as": 1,
+      "lines": [
+       "Wake: WHAAAAT?! No one messes with Pastoria! Not on my watch!"
+      ],
+      "leave": [
+       35,
+       10
+      ]
+     },
+     {
+      "as": 0,
+      "lines": [
+       "{rival_name}: Hey! Master! Wait!"
+      ],
+      "leave": [
+       32,
+       14
+      ]
+     }
+    ]
+   },
+   {
+    "trigger": {
+     "zone": [
+      34,
+      10,
+      34,
+      10
+     ]
+    },
+    "condition": [
+     "sinnoh_pastoria_bomb_warned",
+     "not:sinnoh_pastoria_bomb"
+    ],
+    "flag": "sinnoh_pastoria_bomb",
+    "cast": [
+     {
+      "person": "Crasher Wake",
+      "lines": [
+       "Wake: The Great Marsh is invaluable..."
+      ]
+     },
+     {
+      "person": "Barry",
+      "lines": [
+       "{rival_name}: Hey! What am I, chopped liver? Don't forget I'm here, too!"
+      ]
+     },
+     {
+      "as": 0,
+      "lines": [
+       "Wake: So, where's this Galac..."
+      ]
+     },
+     {
+      "as": 0,
+      "lines": [
+       "DDDOOOMMM!!"
+      ],
+      "shake": 900
+     },
+     {
+      "sheet": "pt_gingam.png",
+      "from": [
+       34,
+       9
+      ],
+      "to": "player",
+      "stay": true,
+      "lines": [
+       "Grunt: Fweh! That was rough."
+      ]
+     },
+     {
+      "as": 0,
+      "lines": [
+       "Wake: YOU! What've you done?!"
+      ]
+     },
+     {
+      "as": 2,
+      "lines": [
+       "Grunt: What've I done, you're asking? Well, technically speaking, it wasn't me.",
+       "Grunt: The package that arrived, see, that was a bomb, named the Galactic Bomb. Me, I was told to push the button. So I did. 'Poink!'",
+       "Grunt: Oh, that's right! The test results need reporting! Cheerio, then! You daft codger, your mask's absurd!"
+      ],
+      "leave": [
+       63,
+       12
+      ]
+     },
+     {
+      "as": 0,
+      "lines": [
+       "Wake: You two! Do NOT follow me! Don't let anyone else in, either! There'd be big trouble if there's any of that bomb left!"
+      ],
+      "path": [
+       [
+        34,
+        9
+       ]
+      ],
+      "gone": true
+     },
+     {
+      "as": 1,
+      "lines": [
+       "{rival_name}: Hey! {player_name}! You go after that Galactic goon! I'm staying here like Master said!",
+       "{rival_name}: Gotta keep others from going in! Don't let that Galactic guy get away!"
+      ]
+     }
+    ]
+   }
+  ],
+  "barred": [
+   {
+    "tiles": [
+     [
+      13,
+      28
+     ]
+    ],
+    "look": "sheet:pt_rivel.png",
+    "face": "u",
+    "until": {
+     "flag_condition": "defeated_rival_pastoria"
+    },
+    "lines": [
+     "{rival_name}: Whoops! Hehehe! I'm not always going to plow into you every time we meet!"
+    ],
+    "on_bump": {
+     "need": "has_cobble_badge",
+     "no": [
+      "{rival_name}: Hey, {player_name}! Mr. Wake's Gym is right here! Go get your Badges first!"
+     ],
+     "event": {
+      "lines": [
+       "{rival_name}: Whoops! Hehehe! I'm not always going to plow into you every time we meet!",
+       "{rival_name}: So how's it going, {player_name}? Buffing up your Pokemon, eh? I'll test how buff and tough you are!"
+      ],
+      "battle": {
+       "name": "{rival_name}",
+       "class": "PKMN_TRAINER",
+       "sprite": "{rival_character}",
+       "team": [
+        396,
+        418,
+        315,
+        391
+       ],
+       "team_choice": {
+        "387": [
+         396,
+         418,
+         315,
+         391
+        ],
+        "390": [
+         396,
+         315,
+         77,
+         394
+        ],
+        "393": [
+         396,
+         418,
+         77,
+         388
+        ]
+       },
+       "rewards": {
+        "balls": 5
+       },
+       "victory_flag": "defeated_rival_pastoria",
+       "dialogue": {
+        "intro": [],
+        "player_won": [
+         "{rival_name}: Heh, yeah, maybe you did get a bit tougher since last time. I got beat 'cause I was careless.",
+         "{rival_name}: Oh, yeah, I joined Mr. Wake as an apprentice! Like, I want my own theme song!"
+        ],
+        "player_lost": [
+         "Lake Valor, here I come — AND I BEAT YOU!"
+        ]
+       },
+       "levels": [
+        26,
+        26,
+        27,
+        31
+       ]
+      },
+      "flag": "defeated_rival_pastoria"
+     }
+    }
+   },
+   {
+    "tiles": [
+     [
+      34,
+      10
+     ]
+    ],
+    "look": "sheet:pt_rivel.png",
+    "until_any": [
+     {
+      "flag_condition": "not sinnoh_pastoria_bomb"
+     },
+     {
+      "flag_condition": "sinnoh_valor_grunt_beaten"
+     }
+    ],
+    "lines": [
+     "{rival_name}: What's the matter?! Why aren't you gone already?! Go after that Galactic goon!"
+    ]
+   },
+   {
+    "tiles": [
+     [
+      35,
+      10
+     ]
+    ],
+    "look": "unseen",
+    "until_any": [
+     {
+      "flag_condition": "not sinnoh_pastoria_bomb"
+     },
+     {
+      "flag_condition": "sinnoh_valor_grunt_beaten"
+     }
+    ],
+    "lines": [
+     "{rival_name}: What's the matter?! Why aren't you gone already?! Go after that Galactic goon!"
+    ]
+   }
   ]
  },
  "CELESTIC_TOWN": {
@@ -219866,9 +220999,9 @@
    "c.==.........=====.......==.cccc",
    "c....................N......cccc",
    "c.........................T.cccc",
-   "c......T.ccEEEcccFFFcc.....Tcccc",
-   "c....TT..ccEEEcNcFFFcc......cccc",
-   "c....cccccc....=....cccccc..cccc",
+   "c......T.ccEEERRRFFFcc.....Tcccc",
+   "c....TT..ccEEERDRFFFcc......cccc",
+   "c....cccccc....N..N.cccccc..cccc",
    "c....c..f.c....=....cffffc..cccc",
    "c....c.cccc.........ccccfc..cccc",
    "c....c.cff.............cfc..cccc",
@@ -219903,7 +221036,8 @@
    "F": "house",
    "G": "house",
    "H": "center",
-   "I": "house"
+   "I": "house",
+   "R": "house"
   },
   "roofs": {
    "A": {
@@ -220104,7 +221238,20 @@
      ]
     }
    ],
-   "_models": true
+   "_models": true,
+   "R": {
+    "roof": [
+     128,
+     118,
+     104
+    ],
+    "wall": [
+     104,
+     96,
+     86
+    ],
+    "design": "block"
+   }
   },
   "signs": [
    [
@@ -220131,16 +221278,68 @@
      ]
     }
    },
-   "Celestic Ruins",
+   {
+    "text": "Galactic Grunt",
+    "action": "EVENT",
+    "condition": [
+     "not:sinnoh_celestic_grunt_beaten"
+    ],
+    "event": {
+     "lines": [
+      "Grunt: This town is insignificant! There's nothing of value here. It doesn't need to exist, so I'll blow it up with a Galactic Bomb!",
+      "Grunt: You dare to oppose Team Galactic? That means you're taking on the world... No, the universe, even!"
+     ],
+     "flag": "sinnoh_celestic_grunt_beaten",
+     "battle": {
+      "name": "Galactic Grunt",
+      "class": "GALACTIC_GRUNT",
+      "sprite": "pt_galactic_grunt_m.png",
+      "team": [
+       228,
+       42
+      ],
+      "levels": [
+       32,
+       30
+      ],
+      "rewards": {
+       "balls": 3
+      },
+      "dialogue": {
+       "player_won": [
+        "Grunt: Too much to handle... I can't do anything here... This place is nothing! I'll be happily rid of this place!"
+       ]
+      }
+     }
+    }
+   },
+   {
+    "text": "Cynthia",
+    "action": "EVENT",
+    "condition": [
+     "got_hm_surf_celestic",
+     "not:canalave_library_meeting"
+    ],
+    "event": {
+     "lines": [
+      "Cynthia: By the way, were the ruins fun to explore?",
+      "Cynthia: If you're interested, there is a library in Canalave City, stocked with ancient books. You can look up Sinnoh's history there."
+     ]
+    }
+   },
    "DRAGON FANG",
    {
     "text": "Old woman",
     "action": "EVENT",
     "event": {
      "lines": [
-      "You came all this way. Take your time and look at the ruins."
+      "Old woman: There's an odd spaceman in front of the ruins. There isn't anything there, but that only seemed to make him angry.",
+      "Old woman: He's saying he will blow the town up with some bomb!"
      ]
-    }
+    },
+    "condition": [
+     "not:sinnoh_celestic_grunt_beaten"
+    ]
    },
    {
     "text": "Little boy",
@@ -221522,22 +222721,76 @@
     },
     "people": [
      {
-      "text": "Glasses man",
-      "action": "EVENT",
-      "event": {
-       "lines": [
-        "Put on glasses, and the world looks different. Take them off, same thing. Deep.",
-        "Want to change how the world looks? Try these."
-       ],
-       "gift_item": {
-        "BLACK_GLASSES": 1
+      "any": [
+       {
+        "text": "Glasses man",
+        "action": "EVENT",
+        "color": "GOLD",
+        "condition": [
+         "time:day",
+         "not:got_choice_specs_celestic"
+        ],
+        "event": {
+         "lines": [
+          "Putting on a pair of glasses changes how the world looks. Taking them off changes it too. Deep, man.",
+          "So, would you like to change how the world looks to your Pokemon?",
+          "Morning is the start of a new day. Put on the Choice Specs and make it a good one!",
+          "You received the Choice Specs!"
+         ],
+         "gift_item": {
+          "CHOICE_SPECS": 1
+         },
+         "flag": "got_choice_specs_celestic"
+        }
        },
-       "flag": "got_black_glasses_celestic_town",
-       "done": [
-        "Glasses change everything. Deep, man."
-       ]
-      },
-      "color": "GOLD"
+       {
+        "text": "Glasses man",
+        "action": "EVENT",
+        "color": "GOLD",
+        "condition": [
+         "time:night",
+         "not:got_wise_glasses_celestic"
+        ],
+        "event": {
+         "lines": [
+          "Putting on a pair of glasses changes how the world looks. Taking them off changes it too. Deep, man.",
+          "So, would you like to change how the world looks to your Pokemon?",
+          "The night is for deep thinking. The Wise Glasses will help with that!",
+          "You received the Wise Glasses!"
+         ],
+         "gift_item": {
+          "WISE_GLASSES": 1
+         },
+         "flag": "got_wise_glasses_celestic"
+        }
+       },
+       {
+        "text": "Glasses man",
+        "action": "EVENT",
+        "condition": [
+         "time:day",
+         "got_choice_specs_celestic"
+        ],
+        "event": {
+         "lines": [
+          "Glasses change everything. Come back at another time of day, man."
+         ]
+        }
+       },
+       {
+        "text": "Glasses man",
+        "action": "EVENT",
+        "condition": [
+         "time:night",
+         "got_wise_glasses_celestic"
+        ],
+        "event": {
+         "lines": [
+          "Glasses change everything. Come back at another time of day, man."
+         ]
+        }
+       }
+      ]
      }
     ]
    },
@@ -221569,7 +222822,14 @@
       210,
       220
      ],
-     "_things": {}
+     "_things": {},
+     "_picture": {
+      "f": "pt_ground/T05R0301.png",
+      "at": [
+       0,
+       1
+      ]
+     }
     },
     "people": [
      {
@@ -221620,7 +222880,14 @@
       210,
       220
      ],
-     "_things": {}
+     "_things": {},
+     "_picture": {
+      "f": "pt_ground/T05R0401.png",
+      "at": [
+       0,
+       1
+      ]
+     }
     },
     "people": [
      {
@@ -221642,6 +222909,123 @@
       }
      }
     ]
+   },
+   "ruins": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "cccc...NN..cccc",
+     "ccc..........cc",
+     "cc...cc..cc..cc",
+     "c..ccc...rcc.cc",
+     "c..c.......c..c",
+     "c..c.......c..c",
+     "c..cc....ccc..c",
+     "c...cccccc...cc",
+     "cc......r...rcc",
+     "cc.........cccc",
+     "ccccc....cccccc",
+     "cccccr...cccccc",
+     "ccccccc..cccccc",
+     "ccccccc..rccccc",
+     "ccccccc...ccccc",
+     "ccccccc...ccccc",
+     "ccccccc...ccccc",
+     "ccccccc.v.ccccc",
+     "ccccccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:15,9"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      222,
+      206,
+      160
+     ],
+     "_wall": [
+      210,
+      210,
+      220
+     ],
+     "_things": {},
+     "_picture": {
+      "f": "pt_ground/T05R0501.png",
+      "at": [
+       2,
+       1
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Cyrus",
+      "action": "EVENT",
+      "condition": [
+       "delivered_old_charm",
+       "not:defeated_cyrus_celestic"
+      ],
+      "event": {
+       "lines": [
+        "Cyrus: ...Remarkable. But, Elder, your attitude told me what I needed to know.",
+        "Cyrus: If the beings of time and space are brought together, they can't be stopped...",
+        "Cyrus: ...I know you, Trainer. We've met at Mt. Coronet. Why would you want to protect this incomplete world?",
+        "Cyrus: As the boss of Team Galactic, I will show you the error of your ways."
+       ],
+       "flag": "defeated_cyrus_celestic",
+       "battle": {
+        "name": "Galactic Boss Cyrus",
+        "class": "GALACTIC_BOSS",
+        "sprite": "cyrus.png",
+        "is_boss_battle": true,
+        "team": [
+         215,
+         42,
+         198
+        ],
+        "levels": [
+         34,
+         34,
+         36
+        ],
+        "rewards": {
+         "balls": 5
+        },
+        "dialogue": {
+         "player_won": [
+          "Cyrus: ...So this is your strength. It changes nothing. Stand aside and watch as I change the world."
+         ]
+        }
+       }
+      }
+     },
+     {
+      "text": "Elder",
+      "action": "EVENT",
+      "condition": [
+       "delivered_old_charm"
+      ],
+      "event": {
+       "lines": [
+        "Elder: Such a strange, strange man. The time and space of Sinnoh are filled with the memories of countless people and Pokemon.",
+        "Elder: This is a wonderful world. What need is there to change it?",
+        "Elder: Oh, yes. I found something useful. It belonged to my granddaughter, but she doesn't use it. You should take this.",
+        "You received HM03 Surf!",
+        "Elder: If a Pokemon learns Surf, it can carry you across water and the sea. That's my thanks for your help."
+       ],
+       "gift_item": {
+        "HM_SURF": 1
+       },
+       "flag": "got_hm_surf_celestic",
+       "done": [
+        "Elder: That cave painting is preserved because we value the memories it represents: people and Pokemon, long ago."
+       ]
+      }
+     }
+    ],
+    "title": "Celestic Ruins"
    }
   },
   "inside": {
@@ -221649,8 +223033,60 @@
    "24,26": "center",
    "2,3": "house_0201",
    "25,3": "house_0301",
-   "6,26": "house_0401"
-  }
+   "6,26": "house_0401",
+   "15,9": "ruins"
+  },
+  "scenes": [
+   {
+    "trigger": {
+     "zone": [
+      11,
+      9,
+      20,
+      15
+     ]
+    },
+    "condition": [
+     "sinnoh_celestic_grunt_beaten",
+     "not:delivered_old_charm",
+     "has_item:OLD_CHARM"
+    ],
+    "flag": "delivered_old_charm",
+    "cast": [
+     {
+      "sheet": "pt_oldwoman1.png",
+      "from": [
+       14,
+       26
+      ],
+      "to": "player",
+      "stay": true,
+      "lines": [
+       "Elder: Oh, you were magnificent! As the elder of Celestic Town, I give you my thanks.",
+       "Elder: Oh? That Old Charm... May I see that, dear? ...Cynthia entrusted you with it to deliver to me? She's my granddaughter."
+      ]
+     },
+     {
+      "as": 0,
+      "lines": [
+       "You handed over the Old Charm to the Elder.",
+       "Elder: This Old Charm was made in Celestic Town long, long ago, in honor of a mythical deity said to have created Sinnoh.",
+       "Elder: Since you're in Celestic Town, why not look around inside the ruins?"
+      ],
+      "leave": [
+       15,
+       10
+      ]
+     }
+    ],
+    "event": {
+     "lines": [],
+     "take_item": {
+      "OLD_CHARM": 1
+     }
+    }
+   }
+  ]
  },
  "CANALAVE_CITY": {
   "art": [
@@ -222571,34 +224007,34 @@
    "gym": {
     "theme": "room",
     "art": [
-     "................................",
-     "................................",
-     "................................",
-     "........N.....N.N.......N.......",
-     "................................",
-     "...........................N....",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "......................N.........",
-     ".........N......................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "...............N...........N....",
-     "................................",
-     "................v...............",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccc...c.................ccccc",
+     "cccccc...c.................ccccc",
+     "cccccc...c.................ccccc",
+     "cccccc...ccccccccccccccccccccccc",
+     "cccccc...........c.........ccccc",
+     "cccccc...........c.........ccccc",
+     "cccccc...........c.........ccccc",
+     "cccccc...........c.........ccccc",
+     "cccccc................N....ccccc",
+     "cccccc...N.................ccccc",
+     "cccccc...ccccccccccc.......ccccc",
+     "cccccc.............c.......ccccc",
+     "cccccc.............ccccc...ccccc",
+     "cccccc.............c...c...c...c",
+     "cccccc.............c...c...c...c",
+     "cccccc.............c...c...c...c",
+     "cccccc.............c...ccccc...c",
+     "cccccc........cN..cc.......N...c",
+     "cccccc.............c...........c",
+     "cccccc..........v..c...........c",
      "cccccccccccccccccccccccccccccccc"
     ],
     "exits": {
@@ -222635,7 +224071,7 @@
      ],
      "_models": true,
      "_picture": {
-      "f": "pt_ground/C02GYM0101.png",
+      "f": "pt_ground/C02GYM0101_f0.png",
       "at": [
        0,
        0
@@ -222643,147 +224079,6 @@
      }
     },
     "people": [
-     {
-      "text": "Worker Gerardo",
-      "action": "EVENT",
-      "event": {
-       "lines": [
-        "Worker Gerardo: Two Magnemite, double the trouble!"
-       ],
-       "battle": {
-        "name": "Worker Gerardo",
-        "class": "WORKER",
-        "sprite": "pt_worker.png",
-        "team": [
-         81,
-         81
-        ],
-        "levels": [
-         35,
-         35
-        ],
-        "rewards": {
-         "balls": 2
-        },
-        "dialogue": {
-         "player_won": [
-          "Worker Gerardo: Double the trouble for me, then."
-         ]
-        }
-       },
-       "flag": "gym_trainer_CANALAVE_CITY_6",
-       "done": [
-        "Worker Gerardo: Double the trouble for me, then."
-       ]
-      }
-     },
-     {
-      "text": "Worker Jackson",
-      "action": "EVENT",
-      "event": {
-       "lines": [
-        "Worker Jackson: Byron's Gym runs on hard work!"
-       ],
-       "battle": {
-        "name": "Worker Jackson",
-        "class": "WORKER",
-        "sprite": "pt_worker.png",
-        "team": [
-         81,
-         81,
-         81
-        ],
-        "levels": [
-         34,
-         34,
-         34
-        ],
-        "rewards": {
-         "balls": 2
-        },
-        "dialogue": {
-         "player_won": [
-          "Worker Jackson: Back to work for me..."
-         ]
-        }
-       },
-       "flag": "gym_trainer_CANALAVE_CITY_2",
-       "done": [
-        "Worker Jackson: Back to work for me..."
-       ]
-      }
-     },
-     "Gym",
-     {
-      "text": "Black Belt David",
-      "action": "EVENT",
-      "event": {
-       "lines": [
-        "Black Belt David: My Steelix will crush you!"
-       ],
-       "battle": {
-        "name": "Black Belt David",
-        "class": "BLACK_BELT",
-        "sprite": "pt_black_belt.png",
-        "team": [
-         208,
-         208
-        ],
-        "levels": [
-         35,
-         37
-        ],
-        "rewards": {
-         "balls": 2
-        },
-        "dialogue": {
-         "player_won": [
-          "Black Belt David: Steel is strong, but you're stronger."
-         ]
-        }
-       },
-       "flag": "gym_trainer_CANALAVE_CITY_1",
-       "done": [
-        "Black Belt David: Steel is strong, but you're stronger."
-       ]
-      }
-     },
-     {
-      "text": "Ace Trainer Breanna",
-      "action": "EVENT",
-      "event": {
-       "lines": [
-        "Ace Trainer Breanna: Bronzor can take any hit. Try us!"
-       ],
-       "battle": {
-        "name": "Ace Trainer Breanna",
-        "class": "ACE_TRAINER",
-        "sprite": "pt_ace_trainer_f.png",
-        "team": [
-         436,
-         436,
-         436
-        ],
-        "levels": [
-         35,
-         36,
-         38
-        ],
-        "rewards": {
-         "balls": 2
-        },
-        "dialogue": {
-         "player_won": [
-          "Ace Trainer Breanna: They took every hit... except yours."
-         ]
-        }
-       },
-       "flag": "gym_trainer_CANALAVE_CITY_7",
-       "done": [
-        "Ace Trainer Breanna: They took every hit... except yours."
-       ]
-      }
-     },
      {
       "text": "Worker Gary",
       "action": "EVENT",
@@ -222889,6 +224184,218 @@
        ]
       }
      }
+    ],
+    "title": "Canalave Gym 1F",
+    "scenes": [
+     {
+      "trigger": {
+       "zone": [
+        16,
+        9,
+        16,
+        9
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:0:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 0
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        11,
+        13,
+        11,
+        13
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:1:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 1
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        15,
+        13,
+        15,
+        13
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:2:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 2
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        19,
+        13,
+        19,
+        13
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:3:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 3
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        24,
+        13,
+        24,
+        13
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:4:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 4
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        21,
+        22,
+        21,
+        22
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:5:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 5
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        25,
+        9,
+        25,
+        9
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:6:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 6
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        25,
+        22,
+        25,
+        22
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:7:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 7
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        29,
+        22,
+        29,
+        22
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:8:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 8
+      }
+     }
+    ],
+    "landings": [
+     [
+      11,
+      13
+     ],
+     [
+      15,
+      13
+     ],
+     [
+      16,
+      9
+     ],
+     [
+      19,
+      13
+     ],
+     [
+      21,
+      22
+     ],
+     [
+      24,
+      13
+     ],
+     [
+      25,
+      9
+     ],
+     [
+      25,
+      22
+     ],
+     [
+      29,
+      22
+     ]
     ]
    },
    "center": {
@@ -226065,6 +227572,970 @@
       ]
      }
     }
+   },
+   "gym_2f": {
+    "theme": "room",
+    "buildings": {},
+    "art": [
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccc...c....N.......c........c",
+     "cccccc...c............c........c",
+     "cccccc...c............c....N...c",
+     "cccccc...c...ccccccc..c.cccc...c",
+     "cccccc...c...c.....c..c....c...c",
+     "cccccccccc...c.ccc.c..c....c...c",
+     "cccccccccc...c.ccc.c..c....c...c",
+     "cccccccccc...c.ccc.c..c....c...c",
+     "cccccc...c...ccccccccccccccccccc",
+     "cccccccccc...c...c....c........c",
+     "cccccccccc...c...c....c........c",
+     "cccccccccc...c...c....c........c",
+     "cccccccccccccccccccc..c........c",
+     "cccccccccccccccccccc..ccccccc..c",
+     "cccccccccccccccccccc.......c...c",
+     "cccccccccccccccccccc.......c...c",
+     "cccccccccccccccccccc.......c...c",
+     "c.........cccccccccccccc...c...c",
+     "c.........cccccccccc...c...c...c",
+     "c..ccccc....cccccc.....c...c...c",
+     "c......c..cccccccccc...c...c...c",
+     "c......c..cccccccccccccccccccccc",
+     "c......c..cccccccccccccccccccccc",
+     "c......c..cccccccccccccccccccccc",
+     "c......c..cccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc"
+    ],
+    "people": [
+     {
+      "text": "Worker Jackson",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Worker Jackson: Byron's Gym runs on hard work!"
+       ],
+       "battle": {
+        "name": "Worker Jackson",
+        "class": "WORKER",
+        "sprite": "pt_worker.png",
+        "team": [
+         81,
+         81,
+         81
+        ],
+        "levels": [
+         34,
+         34,
+         34
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Worker Jackson: Back to work for me..."
+         ]
+        }
+       },
+       "flag": "gym_trainer_CANALAVE_CITY_2",
+       "done": [
+        "Worker Jackson: Back to work for me..."
+       ]
+      }
+     },
+     {
+      "text": "Ace Trainer Breanna",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Ace Trainer Breanna: Bronzor can take any hit. Try us!"
+       ],
+       "battle": {
+        "name": "Ace Trainer Breanna",
+        "class": "ACE_TRAINER",
+        "sprite": "pt_ace_trainer_f.png",
+        "team": [
+         436,
+         436,
+         436
+        ],
+        "levels": [
+         35,
+         36,
+         38
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Ace Trainer Breanna: They took every hit... except yours."
+         ]
+        }
+       },
+       "flag": "gym_trainer_CANALAVE_CITY_7",
+       "done": [
+        "Ace Trainer Breanna: They took every hit... except yours."
+       ]
+      }
+     }
+    ],
+    "exits": {},
+    "title": "Canalave Gym 2F",
+    "roofs": {
+     "_picture": {
+      "f": "pt_ground/C02GYM0101_f1.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "scenes": [
+     {
+      "trigger": {
+       "zone": [
+        11,
+        13,
+        11,
+        13
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:1:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 1
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        15,
+        13,
+        15,
+        13
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:2:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 2
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        19,
+        13,
+        19,
+        13
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:3:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 3
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        24,
+        13,
+        24,
+        13
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:4:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 4
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        21,
+        22,
+        21,
+        22
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:5:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 5
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        25,
+        9,
+        25,
+        9
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:6:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 6
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        25,
+        22,
+        25,
+        22
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:7:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 7
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        29,
+        22,
+        29,
+        22
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:8:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 8
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        5,
+        26,
+        5,
+        26
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:9:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 9
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        11,
+        22,
+        11,
+        22
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:10:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 10
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        18,
+        22,
+        18,
+        22
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:10:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 10
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        29,
+        9,
+        29,
+        9
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:11:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 11
+      }
+     }
+    ],
+    "landings": [
+     [
+      5,
+      26
+     ],
+     [
+      11,
+      13
+     ],
+     [
+      11,
+      22
+     ],
+     [
+      15,
+      13
+     ],
+     [
+      18,
+      22
+     ],
+     [
+      19,
+      13
+     ],
+     [
+      21,
+      22
+     ],
+     [
+      24,
+      13
+     ],
+     [
+      25,
+      9
+     ],
+     [
+      25,
+      22
+     ],
+     [
+      29,
+      9
+     ],
+     [
+      29,
+      22
+     ]
+    ]
+   },
+   "gym_3f": {
+    "theme": "room",
+    "buildings": {},
+    "art": [
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "c..c....Nccccccc..ccccccN......c",
+     "c..c.......ccc......cc.........c",
+     "c..c.....ccccccc..cccccc.......c",
+     "c..c.....ccccc......cccc.......c",
+     "c..c..cccccccc......cccccc.ccccc",
+     "c..c..cccccccc.ccc..cccc.c.c...c",
+     "c..c..cccccccc.ccc..cccc.c.c...c",
+     "c..c..cccccccc.ccc..cccc.c.c...c",
+     "cccc..cccccccccccccccccc.c.c...c",
+     "c.......cccccccccccccc...c.c...c",
+     "c.....cccccccccccccccccc.c.c...c",
+     "c.....cccccccccccccccccc.c.c...c",
+     "c.....cccccccccccccccccccc.cc.cc",
+     "c.....cccccccccccccccccccc.cc.cc",
+     "c.....cccccccccccccccccccccccccc",
+     "cc.ccccccccccccccccccccccccccccc",
+     "cc.ccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cc.ccccccccccccccccccccccc.cc.cc",
+     "cc.ccccccccccccccccccccccc.cc.cc",
+     "c.......ccccccccccccccc.c......c",
+     "c.......ccccccccccccccc.c......c",
+     "c.........ccccccccccc...c......c",
+     "c.......ccccccccccccccc.c......c",
+     "cccccccccccccccccccccccccccccccc"
+    ],
+    "people": [
+     {
+      "text": "Worker Gerardo",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Worker Gerardo: Two Magnemite, double the trouble!"
+       ],
+       "battle": {
+        "name": "Worker Gerardo",
+        "class": "WORKER",
+        "sprite": "pt_worker.png",
+        "team": [
+         81,
+         81
+        ],
+        "levels": [
+         35,
+         35
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Worker Gerardo: Double the trouble for me, then."
+         ]
+        }
+       },
+       "flag": "gym_trainer_CANALAVE_CITY_6",
+       "done": [
+        "Worker Gerardo: Double the trouble for me, then."
+       ]
+      }
+     },
+     {
+      "text": "Black Belt David",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Black Belt David: My Steelix will crush you!"
+       ],
+       "battle": {
+        "name": "Black Belt David",
+        "class": "BLACK_BELT",
+        "sprite": "pt_black_belt.png",
+        "team": [
+         208,
+         208
+        ],
+        "levels": [
+         35,
+         37
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Black Belt David: Steel is strong, but you're stronger."
+         ]
+        }
+       },
+       "flag": "gym_trainer_CANALAVE_CITY_1",
+       "done": [
+        "Black Belt David: Steel is strong, but you're stronger."
+       ]
+      }
+     }
+    ],
+    "exits": {},
+    "title": "Canalave Gym 3F",
+    "roofs": {
+     "_picture": {
+      "f": "pt_ground/C02GYM0101_f2.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "scenes": [
+     {
+      "trigger": {
+       "zone": [
+        5,
+        26,
+        5,
+        26
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:9:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 9
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        29,
+        9,
+        29,
+        9
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:11:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 11
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        10,
+        4,
+        10,
+        4
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:12:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 12
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        14,
+        4,
+        14,
+        4
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:12:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 12
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        19,
+        4,
+        19,
+        4
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:13:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 13
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        22,
+        4,
+        22,
+        4
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:13:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 13
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        7,
+        12,
+        7,
+        12
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:14:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 14
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        22,
+        12,
+        22,
+        12
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:14:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 14
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        9,
+        26,
+        9,
+        26
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:15:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 15
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        21,
+        26,
+        21,
+        26
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:15:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 15
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        2,
+        19,
+        2,
+        19
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:16:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 16
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        2,
+        22,
+        2,
+        22
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:16:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 16
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        26,
+        16,
+        26,
+        16
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:17:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 17
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        26,
+        22,
+        26,
+        22
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:17:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 17
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        29,
+        16,
+        29,
+        16
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:18:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 18
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        29,
+        22,
+        29,
+        22
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:18:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 18
+      }
+     }
+    ],
+    "landings": [
+     [
+      2,
+      19
+     ],
+     [
+      2,
+      22
+     ],
+     [
+      5,
+      26
+     ],
+     [
+      7,
+      12
+     ],
+     [
+      9,
+      26
+     ],
+     [
+      10,
+      4
+     ],
+     [
+      14,
+      4
+     ],
+     [
+      19,
+      4
+     ],
+     [
+      21,
+      26
+     ],
+     [
+      22,
+      4
+     ],
+     [
+      22,
+      12
+     ],
+     [
+      26,
+      16
+     ],
+     [
+      26,
+      22
+     ],
+     [
+      29,
+      9
+     ],
+     [
+      29,
+      16
+     ],
+     [
+      29,
+      22
+     ]
+    ]
+   },
+   "gym_4f": {
+    "theme": "room",
+    "buildings": {},
+    "art": [
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccNccccccccccc...c",
+     "ccccccccccccccc.....cccccc.....c",
+     "ccccccccccccccc...cccccccccc...c",
+     "cccccccccccccc.....cccccccccc.cc",
+     "cccccccccccccc.....cccccccccc.cc",
+     "c........ccccc.....ccccccccccccc",
+     "c........ccccc.....ccccccccccccc",
+     "c........ccccc.....ccccccccccccc",
+     "cc.ccccccccccccccccccccccccccccc",
+     "cc.ccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cc.cccccccccccccccccccccccccc.cc",
+     "cc.cccccccccccccccccccccccccc.cc",
+     "c...cccccccccccccccccccccccc...c",
+     "c.....cccccccccccccccccccc.....c",
+     "c...cccccccccccccccccccccccc...c",
+     "cccccccccccccccccccccccccccccccc"
+    ],
+    "people": [
+     "Gym"
+    ],
+    "exits": {},
+    "title": "Canalave Gym 4F",
+    "roofs": {
+     "_picture": {
+      "f": "pt_ground/C02GYM0101_f3.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "scenes": [
+     {
+      "trigger": {
+       "zone": [
+        16,
+        9,
+        16,
+        9
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:0:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 0
+      }
+     }
+    ],
+    "landings": [
+     [
+      16,
+      9
+     ]
+    ]
    }
   },
   "inside": {
@@ -226135,6 +228606,116 @@
     }
    },
    "TM060"
+  ],
+  "scenes": [
+   {
+    "trigger": {
+     "zone": [
+      15,
+      19,
+      15,
+      22
+     ]
+    },
+    "every": true,
+    "condition": [
+     "has_relic_badge",
+     "not:defeated_rival_canalave"
+    ],
+    "flag": "sinnoh_canalave_barry_met",
+    "cast": [
+     {
+      "sheet": "pt_rivel.png",
+      "from": [
+       11,
+       20
+      ],
+      "to": "player",
+      "lines": [
+       "{rival_name}: Whoops! Hey, {player_name}! You're going to challenge the Gym Leader past here, eh?",
+       "{rival_name}: Someone should check you're ready for it! That someone is me, with my brand-new Gym Badge!"
+      ]
+     }
+    ],
+    "event": {
+     "flag": "defeated_rival_canalave",
+     "battle": {
+      "name": "{rival_name}",
+      "class": "PKMN_TRAINER",
+      "sprite": "{rival_character}",
+      "team": [
+       397,
+       418,
+       214,
+       315,
+       391
+      ],
+      "team_choice": {
+       "387": [
+        397,
+        418,
+        214,
+        315,
+        391
+       ],
+       "390": [
+        397,
+        315,
+        214,
+        77,
+        394
+       ],
+       "393": [
+        397,
+        418,
+        214,
+        77,
+        388
+       ]
+      },
+      "rewards": {
+       "balls": 5
+      },
+      "dialogue": {
+       "intro": [],
+       "player_won": [
+        "{rival_name}: Yeah, yeah, you're just a bit better than me, as usual.",
+        "{rival_name}: But I'm the one who's going to become the Champion! Anyway, go train on Iron Island. That's what I did before the Gym!"
+       ],
+       "player_lost": [
+        "FINALLY! I'm getting closer to you!"
+       ]
+      },
+      "levels": [
+       32,
+       33,
+       32,
+       34,
+       37
+      ]
+     }
+    }
+   }
+  ],
+  "barred": [
+   {
+    "tiles": [
+     [
+      5,
+      15
+     ]
+    ],
+    "look": "sheet:pt_rivel.png",
+    "face": "d",
+    "when": {
+     "condition": "has_mine_badge"
+    },
+    "item": "HM_STRENGTH",
+    "lines": [
+     "{rival_name}: Hey, you're here! Finally! Oh... you haven't been to Iron Island yet? No HM Strength?",
+     "{rival_name}: Aww, sheesh! I'll wait here for you! Hurry up and go already!"
+    ]
+   }
   ]
  },
  "SNOWPOINT_CITY": {
@@ -257612,9 +260193,9 @@
    "TTTTTTTTTTTTTTTT....TTTTTTTTTTTTTTTTTTcccccTTTT........ccccceeee=aaaeEEEEckkekkkccoooooooorroooo",
    "FFFFFF===========....\"\"\"\"\"\"\".\"....TTTTcccccTTTT.ff..ff.ckkkkeeee=aaaeEDEEckeeeekccoooooorroooooo",
    "FFFFFF============...\"\"\"\"\"\"..\"....TTTTcccccTTTT.ffN.ff.ceeeeeeeecaaaeaaaackeeeekccoooooorroooooo",
-   "FFFFFF<===========..\"\"\"\"\".===.........cccccTTTT........ckkkkeeeecaaaeaaaackeeeekccoooooorroooooo",
-   "FFFFFF<===========\"\"\"\"\"\"\"==========...cccccTTTTTTTTTTTTccccccccccaaaeeeeeckeeNekccoooooorroooooo",
-   "FFFFFF===========.\"\"\"\"\"...==========..cccccTTTTTTTTTTTTcccccccccciiicccccckeeeekccoooooooorroooo",
+   "FFFFFD.===========..\"\"\"\"\".===.........cccccTTTT........ckkkkeeeecaaaeaaaackeeeekccoooooorroooooo",
+   "FFFFFD.===========\"\"\"\"\"\"\"==========...cccccTTTTTTTTTTTTccccccccccaaaeeeeeckeeNekccoooooorroooooo",
+   "FFFFFF===========.\"\"\"\"\"...==========..cccccTTTTTTTTTTTTcccccccccciDicccccckeeeekccoooooooorroooo",
    "TTTTTT...........\"\"\"\"\"\"\"....=======...ccccck\"\"\"TT\"\"TT\"kccckkkkkaGGGGGakkkkkeeeekccoooooooorrorro",
    "TTTTTT.......\"\"\"\"\"\"\"\"\".\"..............ccccck\"\"\"TT\"\"TT\"kccckeeekaGGGGGakeekccccccccoooooooorrorro",
    "TTTTTT...\"\"\"\"\"\"\"\"\"\"\"\"\".ccccccc........ccccck\"\"\"\"\"\"\"\"\"\"kccckeeekaGGGGGakeekccccccccoooooooorroooo",
@@ -257633,7 +260214,7 @@
    "TTTTTTTTTTTTTTcccccccssssssssscccccccsccccccccccccccccccccccssssssssssssssssoooooooooooorroooooo",
    "TTTTTTTTTTTTTTcccccccsIIIIsssscccccccNccccccccccccccccccccccssssssssssssssssoooooooooooorro~~ooo",
    "TTTTTTTTTTTTTTcccccccsIIIIsssscccccccccssssssssssssssssssssssssXssssssssssssoooooooooorrooorrooo",
-   "TTTTTTTTTTTTTTcccccccsIIIIsssssssscccccssssssssssooooooooooooooooooooooooooooooooooooorroooooooo",
+   "TTTTTTTTTTTTTTcccccccsIIIIsssssssscccccssssNsssssooooooooooooooooooooooooooooooooooooorroooooooo",
    "TTTTTTTTTTTTTTcccccccsIDIIssssssssccccsssssssooooooooooooooooooooooooooooooooooooooorroorroooooo",
    "TTTTTTTTTTTTTTcccccccssss!sssssssssssssssssooooooooooooooooooooooooooooooooooooooooorroorroooooo",
    "<oTTTTTTTTTTTTcccccccssssssssssssssssssssooooooooooooocccoooooooooooooooooooooooooorrooooorroooo",
@@ -259123,6 +261704,23 @@
    "TM172",
    "TM027",
    {
+    "text": "Galactic Grunt",
+    "action": "EVENT",
+    "condition": [
+     "sinnoh_pastoria_bomb",
+     "not:sinnoh_r213_grunt_heard"
+    ],
+    "event": {
+     "lines": [
+      "Grunt: We needed the energy from the Valley Windworks to make this... Our boss, who made this, is a scientific mechanical genius!",
+      "Grunt: Graw! You were eavesdropping! I was just thinking out loud! But I'm not going to waste my energy knocking you around...",
+      "Grunt: But, boy, this Galactic Bomb packs a pretty big wallop. With this baby there's not much we can't blow up...",
+      "The Grunt ran off toward Valor Lakefront!"
+     ],
+     "flag": "sinnoh_r213_grunt_heard"
+    }
+   },
+   {
     "text": "Fisherman",
     "action": "EVENT",
     "event": {
@@ -259140,7 +261738,7 @@
     "art": [
      "ccccccccccccccccc",
      "ccccccccccccccccc",
-     "ccccccccvcccccccc",
+     "ccccccccncccccccc",
      "cz...mc..Nccccczc",
      "c.....c...ccccc.c",
      "c..N..c...ccccc.c",
@@ -259153,7 +261751,8 @@
      "ccccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:66,18"
+     "v": "OUT:66,18",
+     "n": "OUT:66,14"
     },
     "buildings": {},
     "roofs": {
@@ -259368,7 +261967,19 @@
        ]
       }
      }
-    ]
+    ],
+    "land": {
+     "66,14": [
+      66,
+      13
+     ]
+    },
+    "enter": {
+     "66,14": [
+      8,
+      3
+     ]
+    }
    },
    "house_0401": {
     "theme": "room",
@@ -259951,15 +262562,173 @@
        ]
       }
      }
-    ]
+    ],
+    "hidden": {
+     "9,5": "MAX_REVIVE"
+    }
+   },
+   "house_0201": {
+    "theme": "room",
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "cmm....mmmc",
+     "cm......mmc",
+     "c.......mmc",
+     "c....N....c",
+     "c.........c",
+     "c...v.....c",
+     "ccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:23,34"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      222,
+      206,
+      160
+     ],
+     "_wall": [
+      210,
+      210,
+      220
+     ],
+     "_things": {},
+     "_picture": {
+      "f": "pt_ground/R213R0201.png",
+      "at": [
+       0,
+       1
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Dr. Footstep",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Dr. Footstep: Pokemon are quite easy for me to read. I need only to see their footprints, and their innermost thoughts are revealed to me!",
+        "Dr. Footstep: Oh? You are skeptical? Then let me see your first Pokemon's footprints...",
+        "Dr. Footstep: Hmm... It walks close beside you, step for step. It trusts you more every day. Keep treating it kindly!"
+       ]
+      }
+     }
+    ],
+    "title": "Footprint House"
+   },
+   "gate": {
+    "theme": "room",
+    "art": [
+     "cccccccccccc",
+     "cccccccccccc",
+     "cz..cccc..zc",
+     "c...cccc...c",
+     "c.......N..c",
+     "c..........c",
+     "c<........vc",
+     "c....N.....c",
+     "c..........c",
+     "cc..cccc..cc",
+     "cz..cccc..zc",
+     "cccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:5,12",
+     "<": "PASTORIA_CITY"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      222,
+      206,
+      160
+     ],
+     "_wall": [
+      210,
+      210,
+      220
+     ],
+     "_things": {},
+     "_picture": {
+      "f": "pt_ground/R213R0101.png",
+      "at": [
+       0,
+       1
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Walk on the beach and you leave footprints in the sand. Pokemon seem to love leaving theirs too."
+       ]
+      }
+     },
+     {
+      "text": "Gentleman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Do you know about the Battle Frontier? I hear it has facilities where you battle under all sorts of rules."
+       ]
+      }
+     }
+    ],
+    "title": "Route 213 Gate"
    }
   },
   "inside": {
    "66,18": "house_0301",
    "70,10": "house_0401",
    "61,5": "house_0501",
-   "72,5": "house_0601"
-  }
+   "72,5": "house_0601",
+   "23,34": "house_0201",
+   "66,14": "house_0301",
+   "5,12": "gate",
+   "5,13": "gate"
+  },
+  "scenes": [
+   {
+    "trigger": {
+     "zone": [
+      30,
+      26,
+      56,
+      40
+     ]
+    },
+    "condition": [
+     "sinnoh_r213_grunt_heard",
+     "not:sinnoh_r213_looker"
+    ],
+    "flag": "sinnoh_r213_looker",
+    "cast": [
+     {
+      "sheet": "pt_icpo.png",
+      "from": [
+       31,
+       35
+      ],
+      "to": "player",
+      "lines": [
+       "Looker: Hello, my friend! The cargo that the Team Galactic brought is worrisome, so I have come.",
+       "Looker: ...You say the cargo, it was a bomb? And there was an explosion at the Great Marsh? And you are pursuing a man with funny bowl-cut hair?",
+       "Looker: Oh, no, no, no! The man I have seen running away, he was the bearer of the bomb! Ach! Wait! Wait, I say!"
+      ],
+      "leave": [
+       56,
+       33
+      ]
+     }
+    ]
+   }
+  ]
  },
  "VALOR_LAKEFRONT": {
   "art": [
@@ -260009,7 +262778,7 @@
    "TTTTTTTccTTTTTTTTTTTTTTTTTTckkkAAAAeeeeeeecc.TTTTTTTT",
    "ccccc..cc......TTTTTTTTTT..ceNkAAAAeeeeeeecc.TTTTTTTT",
    "ccccc..//......TTTTTTTTTT../eekADAAeeeeeeecc.TTTTTTTT",
-   "TTTcc..ccccccc/cccccccccc/cceekaaaaeeeeeeecc.TTTTTTTT",
+   "TTTcc..ccccccc/cccccccccc/cceekaNaaeeeeeeecc.TTTTTTTT",
    "TTTcc..ccccccc/cccccccccc/cceNkaaaaeeeeeeecc.TTTTTTTT",
    "TTTcc........c/cccccccccc/cckkkeeeeeeeeeeecc.TTTTTTTT",
    "TTTcc........ceeeeeeeeeeeeccccccccc===cckkcc.TTTTTTTT",
@@ -260017,7 +262786,7 @@
    "TTTcccccccc/cccccccccccccccccceeeeeeeecckkcc........>",
    "Tcccccccccc/ccceeeeeaBBBBBaaa=aaaaaaaa==aa==========>",
    "TceeeaCCCCaeeeceeeeeaBBBBBaaa=aaaaaaaa==aa==========>",
-   "TceeeaCCCCaeeeceeeeeaBBDBBaaa=aaaaaaNa==aa==========>",
+   "TceeeaCCCCaeeeceeeeeaBBDBBaaa=aaaaaNNa==aa==========>",
    "TceeeaCDCCaeeeceeeeeaaaaaaaaa=aaaaaaaa==aa==========>",
    "cceeeaaaaaaeeeceeeeea!aaaaaeeceeeeeeeecckkcc........>",
    "cceeeeeaaeeeeeceeeeeeeaaaeeeeckkkkkkkkcckkcc........>",
@@ -262004,12 +264773,41 @@
     }
    },
    "IRON",
+   {
+    "text": "Suite guest",
+    "action": "EVENT",
+    "condition": [
+     "not:returned_suite_key_valor"
+    ],
+    "event": {
+     "requires": [
+      "has_item:SUITE_KEY"
+     ],
+     "fail": [
+      "What am I to do...? I've gone and dropped my Suite Key somewhere again...",
+      "The hotel people won't be happy with me... I'm sure I had it when I left the reception by Route 213..."
+     ],
+     "lines": [
+      "Oh! That's my Suite Key! You found it for me? Thank you so much!",
+      "You handed over the Suite Key.",
+      "This is a little something I found by the lake. It's yours! You received a White Flute!"
+     ],
+     "take_item": {
+      "SUITE_KEY": 1
+     },
+     "gift_item": {
+      "WHITE_FLUTE": 1
+     },
+     "flag": "returned_suite_key_valor"
+    }
+   },
    "TM270",
    {
     "text": "Cynthia",
     "action": "EVENT",
     "condition": [
      "has_fen_badge",
+     "sinnoh_valor_grunt_beaten",
      "not:sinnoh_secretpotion"
     ],
     "event": {
@@ -262025,6 +264823,40 @@
      "done": [
       "Cynthia: The Psyduck are on Route 210, north of Solaceon Town. Good luck!"
      ]
+    }
+   },
+   {
+    "text": "Galactic Grunt",
+    "action": "EVENT",
+    "condition": [
+     "sinnoh_pastoria_bomb",
+     "not:sinnoh_valor_grunt_beaten"
+    ],
+    "event": {
+     "lines": [
+      "Grunt: ...Pant...pant... Why am I running like this anyway?! That new universe our boss was talking about...",
+      "Grunt: Aww, no... You're still on my tail...? The lake's within sight... You leave me no choice... My Pokemon will KO you..."
+     ],
+     "flag": "sinnoh_valor_grunt_beaten",
+     "battle": {
+      "name": "Galactic Grunt",
+      "class": "GALACTIC_GRUNT",
+      "sprite": "pt_galactic_grunt_m.png",
+      "team": [
+       453
+      ],
+      "levels": [
+       31
+      ],
+      "rewards": {
+       "balls": 3
+      },
+      "dialogue": {
+       "player_won": [
+        "Grunt: I can't battle anymore... I'm running on fumes... I'll have to give this to the Commander..."
+       ]
+      }
+     }
     }
    }
   ],
@@ -263599,7 +266431,64 @@
    "23,54": "house_0101",
    "32,45": "house_0201",
    "7,55": "house_0301"
-  }
+  },
+  "scenes": [
+   {
+    "trigger": {
+     "zone": [
+      28,
+      46,
+      46,
+      62
+     ]
+    },
+    "condition": [
+     "sinnoh_valor_grunt_beaten",
+     "not:sinnoh_secretpotion",
+     "not:sinnoh_valor_cynthia_came"
+    ],
+    "flag": "sinnoh_valor_cynthia_came",
+    "cast": [
+     {
+      "sheet": "pt_champion.png",
+      "from": [
+       40,
+       30
+      ],
+      "to": "player",
+      "stay": true,
+      "lines": [
+       "Cynthia: Oh, hello, long time no see! How is your Pokedex filling up?",
+       "Cynthia: I came to research the folklore about the lake. They say there is an island inside the lake, and inside it a mirage of a Pokemon..."
+      ]
+     },
+     {
+      "sheet": "pt_rivel.png",
+      "from": [
+       36,
+       62
+      ],
+      "to": "player",
+      "lines": [
+       "{rival_name}: Hey, {player_name}! Where'd that Galactic goon run off to? Huh? Is this your older sister? No? Oh, OK.",
+       "{rival_name}: That explosion in the Great Marsh? It wasn't anything serious. Mr. Wake told me to tell you that.",
+       "{rival_name}: Next time I see Team Galactic, I'll teach them a lesson they won't forget! See you around!"
+      ],
+      "leave": "back"
+     },
+     {
+      "as": 0,
+      "lines": [
+       "Cynthia: He's your friend? He's more impatient than he is energetic, isn't he?"
+      ],
+      "leave": [
+       35,
+       54
+      ]
+     }
+    ]
+   }
+  ]
  },
  "SINNOH_ROUTE_214": {
   "art": [
@@ -299807,7 +302696,7 @@
      "ooocccccccccccccccccccccccckkccc",
      "oooccc..cccccccccccccccccccccccc",
      "oooccc.1ccccccccccccc+cckccccccc",
-     "oooccc..ccccccccccc...kccccccccc",
+     "oooccc..ccccccccccc..Nkccccccccc",
      "oooccc__ccccccccccc...kccccccccc",
      "oooccc..ccccccccccc===cccccccccc",
      "oooccc..ccccccccccc===cccccccccc",
@@ -299894,7 +302783,28 @@
     },
     "hidden": {
      "18,24": "STAR_PIECE"
-    }
+    },
+    "people": [
+     {
+      "text": "Riley",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "...You are? OK, you're {player_name}. I'm Riley. I'm a Trainer, and yes, it is a bit odd that I would be training here.",
+        "Anyway, it's always nice to meet another Trainer. Here, take this with you.",
+        "You received HM04 Strength!",
+        "Riley: That Hidden Machine contains the move Strength. To use it outside battle, you need the Mine Badge from Canalave's Gym."
+       ],
+       "gift_item": {
+        "HM_STRENGTH": 1
+       },
+       "flag": "got_hm_strength_iron_island",
+       "done": [
+        "Riley: Iron Island's caves are full of strong Pokemon. I come here to train with Lucario."
+       ]
+      }
+     }
+    ]
    },
    {
     "art": [
@@ -300794,7 +303704,7 @@
      "cccccccccccc",
      "cmmm...mmmcc",
      "c.........cc",
-     "c.m.....m.cc",
+     "c.m..N..m.cc",
      "c.........cc",
      "cc......m.cc",
      "cz..1.....cc",
@@ -300943,7 +303853,34 @@
        224
       ]
      }
-    }
+    },
+    "people": [
+     {
+      "text": "Byron",
+      "action": "EVENT",
+      "event": {
+       "requires": [
+        "unlocked_national_dex"
+       ],
+       "fail": [
+        "Byron: Hm? You're in training, then? You know, my son trains as hard as you do.",
+        "Byron: But I still treat him as if he were a child. It's ridiculous, really. He is a proper Gym Leader now."
+       ],
+       "lines": [
+        "Byron: Hm? You've seen Pokemon from far beyond Sinnoh, have you? Then you'll want this.",
+        "You received a Metal Coat!",
+        "Byron: There are Pokemon that evolve into the Steel type using that Metal Coat. Try it!"
+       ],
+       "gift_item": {
+        "METAL_COAT": 1
+       },
+       "flag": "got_metal_coat_iron_island",
+       "done": [
+        "Byron: There are Pokemon that evolve into the Steel type using that Metal Coat. Steel is the best, I say!"
+       ]
+      }
+     }
+    ]
    }
   ],
   "floor_names": [
@@ -300984,7 +303921,9 @@
    "Worker Noel": 6,
    "Worker Braden": 6,
    "ELIXIR": 6,
-   "TM265": 6
+   "TM265": 6,
+   "Riley": 0,
+   "Byron": 7
   },
   "roofs": {
    "A": {
@@ -316280,17 +319219,17 @@
          264
         ],
         "levels": [
-         53,
-         53,
-         55,
-         55
+         41,
+         41,
+         42,
+         42
         ],
         "team_moves": [
          [
           "PIN-MISSILE",
-          "MUD-SPORT",
           "HEADBUTT",
-          "SAND-ATTACK"
+          "SAND-ATTACK",
+          "DOUBLE-EDGE"
          ],
          [
           "PIN-MISSILE",
@@ -316301,8 +319240,8 @@
          [
           "WATER-PULSE",
           "ICY-WIND",
-          "MUD-SLAP",
-          "HEADBUTT"
+          "HEADBUTT",
+          "FLAIL"
          ],
          [
           "SHOCK-WAVE",
@@ -316353,11 +319292,11 @@
        272
       ],
       "levels": [
-       54,
-       54,
-       54,
-       57,
-       54
+       42,
+       42,
+       42,
+       43,
+       42
       ],
       "team_moves": [
        [
@@ -316386,9 +319325,8 @@
        ],
        [
         "RAIN-DANCE",
-        "MEGA-DRAIN",
-        "WATER-GUN",
-        "ASTONISH"
+        "FAKE-OUT",
+        "BUBBLE-BEAM"
        ]
       ],
       "double": true,
@@ -316431,12 +319369,12 @@
          130
         ],
         "levels": [
-         34,
-         82,
-         82,
-         82,
-         82,
-         82
+         42,
+         54,
+         54,
+         54,
+         54,
+         54
         ],
         "team_moves": [
          [
@@ -316454,8 +319392,8 @@
          [
           "HYDRO-PUMP",
           "ICE-BEAM",
-          "DRAGON-BREATH",
-          "SAFEGUARD"
+          "SAFEGUARD",
+          "RAIN-DANCE"
          ],
          [
           "THUNDERBOLT",
@@ -316472,8 +319410,8 @@
          [
           "HYDRO-PUMP",
           "EARTHQUAKE",
-          "STRENGTH",
-          "ROAR"
+          "ROAR",
+          "HYPER-BEAM"
          ]
         ],
         "double": true,
@@ -316556,8 +319494,8 @@
            263
           ],
           "levels": [
-           24,
-           24
+           8,
+           8
           ],
           "team_moves": [
            [
@@ -316629,7 +319567,7 @@
          "flag": "xd_hordel",
          "gift_shadow": {
           "id": 9357,
-          "level": 55
+          "level": 42
          },
          "lines": [
           "Hordel: You're {player_name}? I worked for Cipher... until I saw what they do. I ran, and took this one with me.",
@@ -316912,9 +319850,9 @@
        325
       ],
       "levels": [
-       30,
-       26,
-       24
+       12,
+       11,
+       10
       ],
       "team_moves": [
        [
@@ -316924,12 +319862,12 @@
         "BITE"
        ],
        [
-        "SLUDGE",
-        "SCREECH"
+        "MUD-SLAP",
+        "HARDEN"
        ],
        [
-        "PSYWAVE",
-        "TORMENT"
+        "GROWL",
+        "CONFUSION"
        ]
       ],
       "rewards": {
@@ -316993,9 +319931,9 @@
        325
       ],
       "levels": [
-       30,
-       26,
-       24
+       12,
+       11,
+       10
       ],
       "team_moves": [
        [
@@ -317005,12 +319943,12 @@
         "DIG"
        ],
        [
-        "SLUDGE",
-        "SCREECH"
+        "MUD-SLAP",
+        "HARDEN"
        ],
        [
-        "PSYWAVE",
-        "TORMENT"
+        "GROWL",
+        "CONFUSION"
        ]
       ],
       "rewards": {
@@ -317050,13 +319988,13 @@
        109
       ],
       "levels": [
-       25,
-       27
+       11,
+       11
       ],
       "team_moves": [
        [
-        "BUBBLE",
-        "VICE-GRIP"
+        "TAUNT",
+        "LEER"
        ],
        [
         "POISON-GAS",
@@ -317114,10 +320052,10 @@
          359
         ],
         "levels": [
-         50,
-         49,
-         49,
-         49
+         41,
+         41,
+         41,
+         41
         ],
         "team_moves": [
          [
@@ -317127,18 +320065,18 @@
          ],
          [
           "THUNDER-SHOCK",
-          "SONIC-BOOM",
-          "SUPERSONIC"
+          "SUPERSONIC",
+          "METAL-SOUND"
          ],
          [
-          "CAMOUFLAGE",
           "WATER-GUN",
-          "RAPID-SPIN"
+          "RAPID-SPIN",
+          "PSYCHIC"
          ],
          [
-          "BITE",
           "TAUNT",
-          "QUICK-ATTACK"
+          "QUICK-ATTACK",
+          "FOCUS-ENERGY"
          ]
         ],
         "double": true,
@@ -317219,13 +320157,13 @@
          161
         ],
         "levels": [
-         25,
-         25
+         11,
+         11
         ],
         "team_moves": [
          [
           "PECK",
-          "HYPNOSIS"
+          "CONFUSION"
          ],
          [
           "SCRATCH",
@@ -317271,8 +320209,8 @@
        288
       ],
       "levels": [
-       48,
-       48
+       41,
+       41
       ],
       "team_moves": [
        [
@@ -317283,7 +320221,7 @@
        [
         "FURY-SWIPES",
         "SCRATCH",
-        "YAWN"
+        "FOCUS-PUNCH"
        ]
       ],
       "double": true,
@@ -317324,8 +320262,8 @@
        322
       ],
       "levels": [
-       48,
-       48
+       41,
+       41
       ],
       "team_moves": [
        [
@@ -317379,9 +320317,9 @@
        374
       ],
       "levels": [
-       48,
-       48,
-       47
+       41,
+       41,
+       40
       ],
       "team_moves": [
        [
@@ -317392,7 +320330,7 @@
        [
         "PECK",
         "TAIL-WHIP",
-        "WATER-SPORT"
+        "WATERFALL"
        ],
        [
         "TAKE-DOWN"
@@ -317437,16 +320375,16 @@
        81
       ],
       "levels": [
-       48,
-       48,
-       48
+       41,
+       41,
+       41
       ],
       "team_moves": [
        [
-        "SPARK",
         "QUICK-ATTACK",
         "HOWL",
-        "LEER"
+        "LEER",
+        "CHARGE"
        ],
        [
         "WATER-GUN",
@@ -317455,10 +320393,10 @@
         "THUNDER-WAVE"
        ],
        [
-        "SONIC-BOOM",
         "SUPERSONIC",
         "THUNDER-SHOCK",
-        "TACKLE"
+        "TACKLE",
+        "METAL-SOUND"
        ]
       ],
       "double": true,
@@ -317501,10 +320439,10 @@
        41
       ],
       "levels": [
-       48,
-       48,
-       48,
-       48
+       41,
+       41,
+       41,
+       41
       ],
       "team_moves": [
        [
@@ -317588,11 +320526,11 @@
        204
       ],
       "levels": [
-       46,
-       46,
-       47,
-       47,
-       48
+       40,
+       40,
+       40,
+       40,
+       41
       ],
       "team_moves": [
        [
@@ -317654,8 +320592,8 @@
          266
         ],
         "levels": [
-         25,
-         25
+         11,
+         11
         ],
         "team_moves": [
          [
@@ -317663,7 +320601,6 @@
           "STRING-SHOT"
          ],
          [
-          "TACKLE",
           "HARDEN"
          ]
         ],
@@ -317728,16 +320665,16 @@
          41
         ],
         "levels": [
-         51,
-         51,
-         51
+         42,
+         42,
+         42
         ],
         "team_moves": [
          [
           "REFLECT",
           "HYPNOSIS",
           "PECK",
-          "FORESIGHT"
+          "DREAM-EATER"
          ],
          [
           "HELPING-HAND",
@@ -317746,10 +320683,10 @@
           "DEFENSE-CURL"
          ],
          [
-          "WING-ATTACK",
           "BITE",
           "ASTONISH",
-          "SUPERSONIC"
+          "SUPERSONIC",
+          "HAZE"
          ]
         ],
         "double": true,
@@ -317791,28 +320728,28 @@
          327
         ],
         "levels": [
-         51,
-         51,
-         51
+         42,
+         42,
+         42
         ],
         "team_moves": [
          [
-          "FEINT-ATTACK",
           "SCREECH",
           "QUICK-ATTACK",
-          "TAUNT"
+          "TAUNT",
+          "BEAT-UP"
          ],
          [
           "PSYCH-UP",
           "PSYBEAM",
-          "ODOR-SLEUTH",
-          "PSYWAVE"
+          "SNORE",
+          "REST"
          ],
          [
           "HYPNOSIS",
           "PSYBEAM",
-          "FEINT-ATTACK",
-          "UPROAR"
+          "UPROAR",
+          "PSYCH-UP"
          ]
         ],
         "double": true,
@@ -317854,22 +320791,22 @@
          182
         ],
         "levels": [
-         49,
-         49,
-         49
+         41,
+         41,
+         41
         ],
         "team_moves": [
          [
-          "COMET-PUNCH",
           "SUPERSONIC",
           "TACKLE",
-          "DOUBLE-TEAM"
+          "DOUBLE-TEAM",
+          "DOUBLE-EDGE"
          ],
          [
           "PSYCH-UP",
           "PSYBEAM",
-          "ODOR-SLEUTH",
-          "PSYWAVE"
+          "SNORE",
+          "REST"
          ],
          [
           "MAGICAL-LEAF",
@@ -317917,9 +320854,9 @@
          264
         ],
         "levels": [
-         50,
-         50,
-         50
+         41,
+         41,
+         41
         ],
         "team_moves": [
          [
@@ -317935,10 +320872,10 @@
           "DOUBLE-TEAM"
          ],
          [
-          "MUD-SPORT",
-          "ODOR-SLEUTH",
           "DOUBLE-TEAM",
-          "HEADBUTT"
+          "HEADBUTT",
+          "FLAIL",
+          "TAKE-DOWN"
          ]
         ],
         "double": true,
@@ -317980,16 +320917,16 @@
          193
         ],
         "levels": [
-         51,
-         51,
-         51
+         42,
+         42,
+         42
         ],
         "team_moves": [
          [
           "DOUBLE-TEAM",
           "PSYBEAM",
           "FURY-SWIPES",
-          "FEINT-ATTACK"
+          "SUBSTITUTE"
          ],
          [
           "BUBBLE-BEAM",
@@ -317998,10 +320935,10 @@
           "DOUBLE-TEAM"
          ],
          [
-          "SONIC-BOOM",
           "DOUBLE-TEAM",
           "QUICK-ATTACK",
-          "FORESIGHT"
+          "HYPNOSIS",
+          "ANCIENT-POWER"
          ]
         ],
         "double": true,
@@ -318043,9 +320980,9 @@
          359
         ],
         "levels": [
-         52,
-         52,
-         52
+         42,
+         42,
+         42
         ],
         "team_moves": [
          [
@@ -318061,10 +320998,10 @@
           "QUICK-ATTACK"
          ],
          [
-          "BITE",
           "DOUBLE-TEAM",
           "QUICK-ATTACK",
-          "TAUNT"
+          "TAUNT",
+          "FOCUS-ENERGY"
          ]
         ],
         "double": true,
@@ -318117,13 +321054,13 @@
        293
       ],
       "levels": [
-       24,
-       25
+       10,
+       11
       ],
       "team_moves": [
        [
         "POUND",
-        "UPROAR"
+        "HOWL"
        ],
        [
         "POUND",
@@ -318186,9 +321123,9 @@
        325
       ],
       "levels": [
-       30,
-       26,
-       24
+       12,
+       11,
+       10
       ],
       "team_moves": [
        [
@@ -318198,12 +321135,12 @@
         "RAZOR-LEAF"
        ],
        [
-        "SLUDGE",
-        "SCREECH"
+        "MUD-SLAP",
+        "HARDEN"
        ],
        [
-        "PSYWAVE",
-        "TORMENT"
+        "GROWL",
+        "CONFUSION"
        ]
       ],
       "rewards": {
@@ -318579,10 +321516,10 @@
            262
           ],
           "levels": [
-           48,
-           51,
-           50,
-           49
+           41,
+           42,
+           41,
+           41
           ],
           "team_moves": [
            [
@@ -318653,16 +321590,16 @@
            168
           ],
           "levels": [
-           50,
-           51,
-           50
+           41,
+           42,
+           41
           ],
           "team_moves": [
            [
             "HAZE",
-            "PURSUIT",
             "ASTONISH",
-            "PECK"
+            "PECK",
+            "MEAN-LOOK"
            ],
            [
             "PIN-MISSILE",
@@ -318720,9 +321657,9 @@
            9322
           ],
           "levels": [
-           51,
-           51,
-           54
+           42,
+           42,
+           42
           ],
           "team_moves": [
            [
@@ -318787,23 +321724,23 @@
            9321
           ],
           "levels": [
-           53,
-           54,
-           54,
-           55
+           42,
+           42,
+           42,
+           43
           ],
           "team_moves": [
            [
-            "FORESIGHT",
             "GROWL",
             "PECK",
-            "FACADE"
+            "FACADE",
+            "DREAM-EATER"
            ],
            [
             "ROCK-THROW",
             "BRICK-BREAK",
             "DIG",
-            "MUD-SPORT"
+            "EARTHQUAKE"
            ],
            [
             "POUND",
@@ -318867,9 +321804,9 @@
            9305
           ],
           "levels": [
-           51,
-           51,
-           53
+           42,
+           42,
+           42
           ],
           "team_moves": [
            [
@@ -318879,10 +321816,10 @@
             "WATER-GUN"
            ],
            [
-            "SPARK",
             "QUICK-ATTACK",
             "HOWL",
-            "LEER"
+            "LEER",
+            "CHARGE"
            ],
            [
             "FALSE-SWIPE",
@@ -319216,23 +322153,23 @@
            262
           ],
           "levels": [
-           49,
-           49,
-           49,
-           49
+           41,
+           41,
+           41,
+           41
           ],
           "team_moves": [
            [
             "HORN-ATTACK",
             "SUPERSONIC",
-            "WATER-SPORT",
-            "TAIL-WHIP"
+            "TAIL-WHIP",
+            "WATERFALL"
            ],
            [
             "SCARY-FACE",
             "FOCUS-ENERGY",
-            "RAGE",
-            "BITE"
+            "BITE",
+            "AGILITY"
            ],
            [
             "SLUDGE",
@@ -319240,10 +322177,10 @@
             "SMOG"
            ],
            [
-            "ODOR-SLEUTH",
             "BITE",
             "SAND-ATTACK",
-            "HOWL"
+            "HOWL",
+            "TAUNT"
            ]
           ],
           "double": true,
@@ -319340,8 +322277,8 @@
            366
           ],
           "levels": [
-           48,
-           49
+           41,
+           41
           ],
           "team_moves": [
            [
@@ -319352,8 +322289,7 @@
            [
             "IRON-DEFENSE",
             "WHIRLPOOL",
-            "WATER-GUN",
-            "CLAMP"
+            "WATER-GUN"
            ]
           ],
           "double": true,
@@ -319417,14 +322353,14 @@
          270
         ],
         "levels": [
-         26,
-         25
+         11,
+         11
         ],
         "team_moves": [
          [
           "POUND",
-          "UPROAR",
-          "ASTONISH"
+          "ASTONISH",
+          "HOWL"
          ],
          [
           "ABSORB",
@@ -319475,18 +322411,18 @@
          9406
         ],
         "levels": [
-         25,
-         25,
-         30
+         11,
+         11,
+         12
         ],
         "team_moves": [
          [
-          "NIGHT-SHADE",
-          "LEER"
+          "LEER",
+          "DISABLE"
          ],
          [
-          "CONSTRICT",
-          "STRING-SHOT"
+          "STRING-SHOT",
+          "ABSORB"
          ],
          [
           "SHADOW-RUSH",
@@ -320039,10 +322975,10 @@
          283
         ],
         "levels": [
-         33,
-         32,
-         31,
-         32
+         20,
+         20,
+         19,
+         20
         ],
         "team_moves": [
          [
@@ -320054,16 +322990,16 @@
          [
           "TACKLE",
           "RAPID-SPIN",
-          "BIDE"
+          "ROLLOUT"
          ],
          [
-          "LEECH-LIFE",
-          "DIG"
+          "MUD-SLAP",
+          "FALSE-SWIPE"
          ],
          [
-          "BUBBLE",
-          "FORESIGHT",
-          "QUICK-ATTACK"
+          "QUICK-ATTACK",
+          "BUBBLE-BEAM",
+          "SWEET-SCENT"
          ]
         ],
         "double": true,
@@ -320107,33 +323043,32 @@
          366
         ],
         "levels": [
-         49,
-         49,
-         49,
-         49
+         41,
+         41,
+         41,
+         41
         ],
         "team_moves": [
          [
           "POWDER-SNOW",
-          "ODOR-SLEUTH",
-          "TACKLE"
+          "TACKLE",
+          "TAKE-DOWN"
          ],
          [
           "HEADBUTT",
           "LEER",
           "BITE",
-          "RAGE"
+          "FOCUS-ENERGY"
          ],
          [
-          "PURSUIT",
           "ASTONISH",
-          "PECK"
+          "PECK",
+          "MEAN-LOOK"
          ],
          [
           "IRON-DEFENSE",
           "WHIRLPOOL",
-          "WATER-GUN",
-          "CLAMP"
+          "WATER-GUN"
          ]
         ],
         "double": true,
@@ -320174,20 +323109,20 @@
          72
         ],
         "levels": [
-         48,
-         48
+         40,
+         40
         ],
         "team_moves": [
          [
-          "KARATE-CHOP",
           "FOCUS-ENERGY",
           "LIGHT-SCREEN",
-          "LOW-KICK"
+          "LOW-KICK",
+          "SEISMIC-TOSS"
          ],
          [
-          "CONSTRICT",
           "SUPERSONIC",
-          "POISON-STING"
+          "POISON-STING",
+          "SURF"
          ]
         ],
         "double": true,
@@ -320228,21 +323163,21 @@
          41
         ],
         "levels": [
-         27,
-         27
+         18,
+         18
         ],
         "team_moves": [
          [
           "SLUDGE",
           "YAWN",
-          "ACID-ARMOR",
-          "THIEF"
+          "AMNESIA",
+          "POISON-GAS"
          ],
          [
-          "GUST",
           "ASTONISH",
-          "LEECH-LIFE",
-          "THIEF"
+          "POISON-FANG",
+          "MEAN-LOOK",
+          "ABSORB"
          ]
         ],
         "double": true,
@@ -320282,15 +323217,15 @@
          287
         ],
         "levels": [
-         25,
-         25,
-         26
+         17,
+         17,
+         17
         ],
         "team_moves": [
          [
           "SCRATCH",
           "DEFENSE-CURL",
-          "THIEF"
+          "HELPING-HAND"
          ],
          [
           "PECK",
@@ -320300,7 +323235,7 @@
          [
           "SCRATCH",
           "AMNESIA",
-          "PURSUIT"
+          "HEADBUTT"
          ]
         ],
         "double": true,
@@ -320339,8 +323274,8 @@
          54
         ],
         "levels": [
-         30,
-         29
+         19,
+         19
         ],
         "team_moves": [
          [
@@ -320392,8 +323327,8 @@
          285
         ],
         "levels": [
-         30,
-         26
+         19,
+         17
         ],
         "team_moves": [
          [
@@ -320444,8 +323379,8 @@
          304
         ],
         "levels": [
-         34,
-         35
+         21,
+         21
         ],
         "team_moves": [
          [
@@ -320453,7 +323388,7 @@
          ],
          [
           "HEADBUTT",
-          "METAL-SOUND"
+          "PROTECT"
          ]
         ],
         "double": true,
@@ -320494,9 +323429,9 @@
          269
         ],
         "levels": [
-         30,
-         26,
-         26
+         19,
+         17,
+         17
         ],
         "team_moves": [
          [
@@ -320507,9 +323442,9 @@
          ],
          [
           "ABSORB",
-          "SLEEP-POWDER",
           "SWEET-SCENT",
-          "ACID"
+          "ACID",
+          "STUN-SPORE"
          ],
          [
           "TACKLE",
@@ -320556,17 +323491,17 @@
          206
         ],
         "levels": [
-         48,
-         48,
-         48,
-         48
+         40,
+         40,
+         40,
+         40
         ],
         "team_moves": [
          [
-          "ODOR-SLEUTH",
           "SAND-ATTACK",
           "TACKLE",
-          "TAIL-WHIP"
+          "TAIL-WHIP",
+          "DOUBLE-EDGE"
          ],
          [
           "UPROAR",
@@ -320583,7 +323518,7 @@
           "ROCK-SMASH",
           "THIEF",
           "DEFENSE-CURL",
-          "RAGE"
+          "YAWN"
          ]
         ],
         "double": true,
@@ -320626,10 +323561,10 @@
          333
         ],
         "levels": [
-         30,
-         27,
-         28,
-         27
+         19,
+         18,
+         18,
+         18
         ],
         "team_moves": [
          [
@@ -320639,19 +323574,19 @@
           "ROCK-THROW"
          ],
          [
-          "SING",
           "TAIL-WHIP",
-          "WATER-GUN"
+          "WATER-GUN",
+          "BOUNCE"
          ],
          [
           "SING",
-          "CHARM",
-          "POUND"
+          "POUND",
+          "DISABLE"
          ],
          [
-          "SING",
           "GROWL",
-          "PECK"
+          "PECK",
+          "FURY-ATTACK"
          ]
         ],
         "double": true,
@@ -320691,9 +323626,9 @@
          278
         ],
         "levels": [
-         30,
-         27,
-         27
+         19,
+         18,
+         18
         ],
         "team_moves": [
          [
@@ -320705,12 +323640,12 @@
          [
           "TACKLE",
           "SAFEGUARD",
-          "COMET-PUNCH"
+          "MACH-PUNCH"
          ],
          [
           "WATER-GUN",
           "GROWL",
-          "GUST"
+          "WING-ATTACK"
          ]
         ],
         "double": true,
@@ -320750,9 +323685,9 @@
          263
         ],
         "levels": [
-         30,
-         28,
-         28
+         19,
+         18,
+         18
         ],
         "team_moves": [
          [
@@ -320762,14 +323697,14 @@
           "MEAN-LOOK"
          ],
          [
-          "TICKLE",
           "GROWL",
-          "TACKLE"
+          "TACKLE",
+          "FURY-SWIPES"
          ],
          [
-          "TICKLE",
           "TAIL-WHIP",
-          "HEADBUTT"
+          "HEADBUTT",
+          "PIN-MISSILE"
          ]
         ],
         "double": true,
@@ -320814,22 +323749,22 @@
          322
         ],
         "levels": [
-         48,
-         48,
-         48
+         40,
+         40,
+         40
         ],
         "team_moves": [
          [
           "SPLASH",
-          "ODOR-SLEUTH",
-          "PSYWAVE",
-          "REFLECT"
+          "REFLECT",
+          "SNORE",
+          "REST"
          ],
          [
           "THUNDER-SHOCK",
-          "SONIC-BOOM",
           "METAL-SOUND",
-          "TACKLE"
+          "TACKLE",
+          "SCREECH"
          ],
          [
           "EMBER",
@@ -320877,31 +323812,31 @@
          175
         ],
         "levels": [
-         47,
-         47,
-         47,
-         48
+         40,
+         40,
+         40,
+         40
         ],
         "team_moves": [
          [
           "NIGHT-SHADE",
           "SCREECH",
-          "KNOCK-OFF"
+          "ROLE-PLAY"
          ],
          [
-          "COMET-PUNCH",
           "SUPERSONIC",
           "TACKLE",
-          "LIGHT-SCREEN"
+          "LIGHT-SCREEN",
+          "DOUBLE-EDGE"
          ],
          [
           "LOCK-ON",
           "WATER-GUN"
          ],
          [
-          "PECK",
           "SWEET-KISS",
-          "CHARM"
+          "CHARM",
+          "FOLLOW-ME"
          ]
         ],
         "double": true,
@@ -320944,10 +323879,10 @@
          228
         ],
         "levels": [
-         49,
-         49,
-         49,
-         49
+         41,
+         41,
+         41,
+         41
         ],
         "team_moves": [
          [
@@ -320962,10 +323897,10 @@
           "SCARY-FACE"
          ],
          [
-          "BIDE",
           "BULLET-SEED",
           "GROWTH",
-          "HARDEN"
+          "HARDEN",
+          "EXPLOSION"
          ],
          [
           "BITE",
@@ -321014,9 +323949,9 @@
          43
         ],
         "levels": [
-         48,
-         48,
-         48
+         40,
+         40,
+         40
         ],
         "team_moves": [
          [
@@ -321105,10 +324040,10 @@
          66
         ],
         "levels": [
-         33,
-         29,
-         29,
-         29
+         20,
+         19,
+         19,
+         19
         ],
         "team_moves": [
          [
@@ -321119,16 +324054,16 @@
          ],
          [
           "CONFUSION",
-          "IMPRISON"
+          "PSYBEAM"
          ],
          [
-          "ROCK-SMASH",
-          "BIDE"
+          "MEGA-DRAIN",
+          "ROLLOUT"
          ],
          [
-          "KARATE-CHOP",
           "FOCUS-ENERGY",
-          "STRENGTH"
+          "KNOCK-OFF",
+          "REVENGE"
          ]
         ],
         "double": true,
@@ -321162,10 +324097,10 @@
          68
         ],
         "levels": [
-         48,
-         72,
-         71,
-         72
+         42,
+         50,
+         49,
+         50
         ],
         "team_moves": [
          [
@@ -321182,15 +324117,15 @@
          ],
          [
           "GIGA-DRAIN",
-          "FEINT-ATTACK",
-          "EXTRASENSORY",
-          "NATURE-POWER"
+          "NATURE-POWER",
+          "LEAF-BLADE",
+          "AIR-CUTTER"
          ],
          [
-          "CROSS-CHOP",
           "EARTHQUAKE",
           "STRENGTH",
-          "ROCK-SLIDE"
+          "ROCK-SLIDE",
+          "SEISMIC-TOSS"
          ]
         ],
         "double": true,
@@ -321218,10 +324153,10 @@
            68
           ],
           "levels": [
-           71,
-           72,
-           71,
-           72
+           49,
+           50,
+           49,
+           50
           ],
           "team_moves": [
            [
@@ -321238,15 +324173,15 @@
            ],
            [
             "GIGA-DRAIN",
-            "FEINT-ATTACK",
-            "EXTRASENSORY",
-            "NATURE-POWER"
+            "NATURE-POWER",
+            "LEAF-BLADE",
+            "AIR-CUTTER"
            ],
            [
-            "CROSS-CHOP",
             "EARTHQUAKE",
             "STRENGTH",
-            "ROCK-SLIDE"
+            "ROCK-SLIDE",
+            "SEISMIC-TOSS"
            ]
           ],
           "double": true,
@@ -322626,9 +325561,9 @@
          162
         ],
         "levels": [
-         34,
-         35,
-         34
+         23,
+         23,
+         23
         ],
         "team_moves": [
          [
@@ -322640,8 +325575,8 @@
           "GROWTH"
          ],
          [
-          "CUT",
-          "SECRET-POWER"
+          "SECRET-POWER",
+          "FOLLOW-ME"
          ]
         ],
         "double": true,
@@ -322726,15 +325661,15 @@
          192
         ],
         "levels": [
-         39,
-         39,
-         40
+         25,
+         25,
+         25
         ],
         "team_moves": [
          [
           "WING-ATTACK",
-          "REFRESH",
-          "SECRET-POWER"
+          "SECRET-POWER",
+          "AERIAL-ACE"
          ],
          [
           "ROCK-SLIDE",
@@ -323674,8 +326609,8 @@
          9353
         ],
         "levels": [
-         43,
-         48
+         37,
+         38
         ],
         "team_moves": [
          [
@@ -323734,12 +326669,12 @@
          9347
         ],
         "levels": [
-         78,
-         78,
-         78,
-         78,
-         78,
-         78
+         63,
+         63,
+         63,
+         63,
+         63,
+         63
         ],
         "team_moves": [
          [
@@ -323823,8 +326758,8 @@
          270
         ],
         "levels": [
-         46,
-         46
+         37,
+         37
         ],
         "team_moves": [
          [
@@ -323873,8 +326808,8 @@
          349
         ],
         "levels": [
-         46,
-         46
+         37,
+         37
         ],
         "team_moves": [
          [
@@ -323923,8 +326858,8 @@
          183
         ],
         "levels": [
-         46,
-         46
+         37,
+         37
         ],
         "team_moves": [
          [
@@ -324908,8 +327843,8 @@
            9401
           ],
           "levels": [
-           43,
-           48
+           37,
+           38
           ],
           "team_moves": [
            [
@@ -326012,16 +328947,16 @@
            305
           ],
           "levels": [
-           58,
-           57,
-           59
+           32,
+           32,
+           33
           ],
           "team_moves": [
            [
             "ANCIENT-POWER",
             "BRICK-BREAK",
             "IRON-DEFENSE",
-            "STRENGTH"
+            "SWEET-SCENT"
            ],
            [
             "METAL-CLAW",
@@ -326033,7 +328968,7 @@
             "IRON-TAIL",
             "DIG",
             "IRON-DEFENSE",
-            "TAKE-DOWN"
+            "ROCK-SLIDE"
            ]
           ],
           "double": true,
@@ -326075,35 +329010,35 @@
            160
           ],
           "levels": [
-           58,
-           59,
-           58,
-           59
+           32,
+           33,
+           32,
+           33
           ],
           "team_moves": [
            [
             "DIVE",
             "PSYBEAM",
             "FOCUS-ENERGY",
-            "HAZE"
+            "BULLET-SEED"
            ],
            [
             "SURF",
-            "ASTONISH",
             "SPIKES",
-            "TAKE-DOWN"
+            "TAKE-DOWN",
+            "PIN-MISSILE"
            ],
            [
             "WATERFALL",
             "TWISTER",
-            "FLAIL",
-            "SMOKESCREEN"
+            "SMOKESCREEN",
+            "AGILITY"
            ],
            [
             "HYDRO-PUMP",
-            "SLASH",
             "SCARY-FACE",
-            "EARTHQUAKE"
+            "EARTHQUAKE",
+            "CRUNCH"
            ]
           ],
           "double": true,
@@ -326145,17 +329080,17 @@
            271
           ],
           "levels": [
-           56,
-           59,
-           58,
-           59
+           32,
+           33,
+           32,
+           33
           ],
           "team_moves": [
            [
             "FAKE-OUT",
-            "FEINT-ATTACK",
             "GIGA-DRAIN",
-            "EXPLOSION"
+            "EXPLOSION",
+            "SYNTHESIS"
            ],
            [
             "FOCUS-PUNCH",
@@ -326173,7 +329108,7 @@
             "FAKE-OUT",
             "BLIZZARD",
             "NATURE-POWER",
-            "SWEET-SCENT"
+            "LEECH-SEED"
            ]
           ],
           "double": true,
@@ -326293,35 +329228,35 @@
             338
            ],
            "levels": [
-            40,
-            40,
-            40,
-            40
+            47,
+            47,
+            47,
+            47
            ],
            "team_moves": [
             [
              "DEFENSE-CURL",
              "ROLLOUT",
              "IRON-TAIL",
-             "STRENGTH"
+             "EARTHQUAKE"
             ],
             [
              "DEFENSE-CURL",
-             "ICE-BALL",
              "WATERFALL",
-             "ATTRACT"
+             "ATTRACT",
+             "SURF"
             ],
             [
-             "DEFENSE-CURL",
-             "ROLLOUT",
              "SLUDGE-BOMB",
-             "YAWN"
+             "YAWN",
+             "SWALLOW",
+             "SPIT-UP"
             ],
             [
-             "DEFENSE-CURL",
-             "ROLLOUT",
              "FLAMETHROWER",
-             "PSYCHIC"
+             "PSYCHIC",
+             "SOLAR-BEAM",
+             "COSMIC-POWER"
             ]
            ],
            "double": true,
@@ -326340,10 +329275,10 @@
             111
            ],
            "levels": [
-            40,
-            40,
-            40,
-            40
+            47,
+            47,
+            47,
+            47
            ],
            "team_moves": [
             [
@@ -326387,10 +329322,10 @@
             51
            ],
            "levels": [
-            40,
-            40,
-            40,
-            40
+            47,
+            47,
+            47,
+            47
            ],
            "team_moves": [
             [
@@ -326414,8 +329349,8 @@
             [
              "SUBSTITUTE",
              "UPROAR",
-             "MAGNITUDE",
-             "SCREECH"
+             "SCREECH",
+             "DIG"
             ]
            ],
            "double": true,
@@ -326434,17 +329369,17 @@
             198
            ],
            "levels": [
-            40,
-            40,
-            40,
-            40
+            47,
+            47,
+            47,
+            47
            ],
            "team_moves": [
             [
-             "SKY-ATTACK",
              "AGILITY",
              "ENDEAVOR",
-             "STEEL-WING"
+             "STEEL-WING",
+             "AERIAL-ACE"
             ],
             [
              "SKY-ATTACK",
@@ -326453,16 +329388,16 @@
              "MUD-SLAP"
             ],
             [
-             "SKY-ATTACK",
              "AGILITY",
              "ROCK-SMASH",
-             "STEEL-WING"
+             "STEEL-WING",
+             "SPIKES"
             ],
             [
-             "SKY-ATTACK",
              "THUNDER-WAVE",
              "PSYCH-UP",
-             "SHADOW-BALL"
+             "SHADOW-BALL",
+             "MEAN-LOOK"
             ]
            ],
            "double": true,
@@ -326484,10 +329419,10 @@
             237
            ],
            "levels": [
-            40,
-            40,
-            40,
-            40
+            47,
+            47,
+            47,
+            47
            ],
            "team_moves": [
             [
@@ -326503,10 +329438,10 @@
              "ROCK-TOMB"
             ],
             [
-             "SKY-UPPERCUT",
              "THUNDER-PUNCH",
              "GIGA-DRAIN",
-             "SUBSTITUTE"
+             "SUBSTITUTE",
+             "BRICK-BREAK"
             ],
             [
              "TRIPLE-KICK",
@@ -326531,10 +329466,10 @@
             292
            ],
            "levels": [
-            40,
-            40,
-            40,
-            40
+            47,
+            47,
+            47,
+            47
            ],
            "team_moves": [
             [
@@ -326546,8 +329481,8 @@
             [
              "SURF",
              "ICY-WIND",
-             "MIRROR-COAT",
-             "COUNTER"
+             "COUNTER",
+             "SCREECH"
             ],
             [
              "BRICK-BREAK",
@@ -326557,9 +329492,9 @@
             ],
             [
              "SHADOW-BALL",
-             "SILVER-WIND",
              "AERIAL-ACE",
-             "DIG"
+             "DIG",
+             "MIND-READER"
             ]
            ],
            "double": true,
@@ -326578,10 +329513,10 @@
             283
            ],
            "levels": [
-            40,
-            40,
-            40,
-            40
+            47,
+            47,
+            47,
+            47
            ],
            "team_moves": [
             [
@@ -326625,10 +329560,10 @@
             357
            ],
            "levels": [
-            40,
-            40,
-            40,
-            40
+            47,
+            47,
+            47,
+            47
            ],
            "team_moves": [
             [
@@ -326644,16 +329579,16 @@
              "REFLECT"
             ],
             [
-             "ERUPTION",
              "IRON-TAIL",
              "SUNNY-DAY",
-             "FIRE-SPIN"
+             "FIRE-SPIN",
+             "CURSE"
             ],
             [
              "MAGICAL-LEAF",
              "AERIAL-ACE",
-             "SYNTHESIS",
-             "STOMP"
+             "STOMP",
+             "OUTRAGE"
             ]
            ],
            "double": true,
@@ -326676,11 +329611,11 @@
             241
            ],
            "levels": [
-            40,
-            40,
-            40,
-            40,
-            40
+            47,
+            47,
+            47,
+            47,
+            47
            ],
            "team_moves": [
             [
@@ -326731,11 +329666,11 @@
             166
            ],
            "levels": [
-            40,
-            40,
-            40,
-            40,
-            40
+            47,
+            47,
+            47,
+            47,
+            47
            ],
            "team_moves": [
             [
@@ -326782,17 +329717,17 @@
             184
            ],
            "levels": [
-            40,
-            40,
-            40,
-            40
+            47,
+            47,
+            47,
+            47
            ],
            "team_moves": [
             [
              "FLY",
              "FLASH",
-             "STRENGTH",
-             "SWEET-SCENT"
+             "SWEET-SCENT",
+             "OUTRAGE"
             ],
             [
              "WATERFALL",
@@ -326802,15 +329737,15 @@
             ],
             [
              "ROCK-SMASH",
-             "CUT",
              "SURF",
-             "STRENGTH"
+             "BELLY-DRUM",
+             "FLAIL"
             ],
             [
              "DIVE",
              "ROCK-SMASH",
              "WATERFALL",
-             "PRESENT"
+             "DOUBLE-EDGE"
             ]
            ],
            "double": true,
@@ -326830,11 +329765,11 @@
             193
            ],
            "levels": [
-            40,
-            40,
-            40,
-            40,
-            40
+            47,
+            47,
+            47,
+            47,
+            47
            ],
            "team_moves": [
             [
@@ -326844,16 +329779,16 @@
              "THUNDERBOLT"
             ],
             [
-             "REFRESH",
              "IRON-DEFENSE",
-             "MUD-SPORT",
-             "WATERFALL"
+             "WATERFALL",
+             "PSYCHIC",
+             "BATON-PASS"
             ],
             [
-             "GUILLOTINE",
              "BUBBLE-BEAM",
              "SWORDS-DANCE",
-             "VICE-GRIP"
+             "CRUNCH",
+             "PROTECT"
             ],
             [
              "BITE",
@@ -326864,8 +329799,8 @@
             [
              "DETECT",
              "THIEF",
-             "SIGNAL-BEAM",
-             "HIDDEN-POWER"
+             "HIDDEN-POWER",
+             "SCREECH"
             ]
            ],
            "double": true,
@@ -326887,10 +329822,10 @@
             262
            ],
            "levels": [
-            40,
-            40,
-            40,
-            40
+            47,
+            47,
+            47,
+            47
            ],
            "team_moves": [
             [
@@ -326900,22 +329835,22 @@
              "EMBER"
             ],
             [
-             "FAKE-OUT",
              "AGILITY",
              "QUICK-ATTACK",
-             "FEINT-ATTACK"
+             "BEAT-UP",
+             "FURY-SWIPES"
             ],
             [
-             "ASSIST",
-             "DOUBLE-SLAP",
              "TAIL-WHIP",
-             "ATTRACT"
+             "ATTRACT",
+             "COVET",
+             "FACADE"
             ],
             [
              "BITE",
              "SAND-ATTACK",
-             "POISON-FANG",
-             "SNATCH"
+             "SNATCH",
+             "YAWN"
             ]
            ],
            "double": true,
@@ -326934,10 +329869,10 @@
             202
            ],
            "levels": [
-            40,
-            40,
-            40,
-            40
+            47,
+            47,
+            47,
+            47
            ],
            "team_moves": [
             [
@@ -326954,9 +329889,9 @@
             ],
             [
              "CONFUSE-RAY",
-             "MEAN-LOOK",
              "SCREECH",
-             "PURSUIT"
+             "MOONLIGHT",
+             "QUICK-ATTACK"
             ],
             [
              "DESTINY-BOND",
@@ -326981,10 +329916,10 @@
             313
            ],
            "levels": [
-            40,
-            40,
-            40,
-            40
+            47,
+            47,
+            47,
+            47
            ],
            "team_moves": [
             [
@@ -327000,16 +329935,16 @@
              "PAIN-SPLIT"
             ],
             [
-             "BARRIER",
-             "MIRROR-COAT",
              "WATER-PULSE",
-             "TOXIC"
+             "TOXIC",
+             "SURF",
+             "ACID-ARMOR"
             ],
             [
-             "SIGNAL-BEAM",
              "SEISMIC-TOSS",
-             "DYNAMIC-PUNCH",
-             "SHADOW-BALL"
+             "SHADOW-BALL",
+             "DOUBLE-EDGE",
+             "HELPING-HAND"
             ]
            ],
            "double": true,
@@ -327029,11 +329964,11 @@
             286
            ],
            "levels": [
-            40,
-            40,
-            40,
-            40,
-            40
+            47,
+            47,
+            47,
+            47,
+            47
            ],
            "team_moves": [
             [
@@ -327621,12 +330556,12 @@
             282
            ],
            "levels": [
-            74,
-            74,
-            74,
-            74,
-            74,
-            74
+            51,
+            51,
+            51,
+            51,
+            51,
+            51
            ],
            "team_moves": [
             [
@@ -327636,10 +330571,10 @@
              "RETURN"
             ],
             [
-             "SPORE",
              "SLUDGE-BOMB",
              "FOCUS-PUNCH",
-             "SUBSTITUTE"
+             "SUBSTITUTE",
+             "DYNAMIC-PUNCH"
             ],
             [
              "DREAM-EATER",
@@ -327657,7 +330592,7 @@
              "DREAM-EATER",
              "FLAMETHROWER",
              "CRUNCH",
-             "PURSUIT"
+             "TORMENT"
             ],
             [
              "DREAM-EATER",
@@ -327693,19 +330628,19 @@
             235
            ],
            "levels": [
-            74,
-            74,
-            74,
-            74,
-            74,
-            74
+            51,
+            51,
+            51,
+            51,
+            51,
+            51
            ],
            "team_moves": [
             [
              "TEETER-DANCE",
              "FLAIL",
-             "DIZZY-PUNCH",
-             "PROTECT"
+             "PROTECT",
+             "DOUBLE-EDGE"
             ],
             [
              "YAWN",
@@ -327714,16 +330649,16 @@
              "ICE-BEAM"
             ],
             [
-             "TEETER-DANCE",
              "TOXIC",
-             "NEEDLE-ARM",
-             "DOUBLE-TEAM"
+             "DOUBLE-TEAM",
+             "COTTON-SPORE",
+             "PIN-MISSILE"
             ],
             [
              "BODY-SLAM",
              "SHADOW-BALL",
              "EARTHQUAKE",
-             "BELLY-DRUM"
+             "SLAM"
             ],
             [
              "CONFUSE-RAY",
@@ -327732,10 +330667,7 @@
              "FIRE-PUNCH"
             ],
             [
-             "TEETER-DANCE",
-             "LOCK-ON",
-             "SHEER-COLD",
-             "PROTECT"
+             "SKETCH"
             ]
            ],
            "double": true,
@@ -327765,12 +330697,12 @@
             12
            ],
            "levels": [
-            74,
-            74,
-            74,
-            74,
-            74,
-            74
+            51,
+            51,
+            51,
+            51,
+            51,
+            51
            ],
            "team_moves": [
             [
@@ -327793,15 +330725,15 @@
             ],
             [
              "CONFUSE-RAY",
-             "EXTRASENSORY",
              "ICE-PUNCH",
-             "FIRE-PUNCH"
+             "FIRE-PUNCH",
+             "SNORE"
             ],
             [
-             "VOLT-TACKLE",
              "THUNDER-WAVE",
              "SWEET-KISS",
-             "ENCORE"
+             "ENCORE",
+             "THUNDERBOLT"
             ],
             [
              "STUN-SPORE",
@@ -327837,12 +330769,12 @@
             154
            ],
            "levels": [
-            75,
-            75,
-            75,
-            75,
-            75,
-            75
+            51,
+            51,
+            51,
+            51,
+            51,
+            51
            ],
            "team_moves": [
             [
@@ -327908,7 +330840,7 @@
            "class": "WORKER",
            "sprite": "pt_worker.png",
            "team": [
-            248,
+            247,
             28,
             195,
             344,
@@ -327916,19 +330848,19 @@
             51
            ],
            "levels": [
-            75,
-            75,
-            75,
-            75,
-            75,
-            75
+            51,
+            51,
+            51,
+            51,
+            51,
+            51
            ],
            "team_moves": [
             [
              "CRUNCH",
-             "THUNDERBOLT",
-             "FIRE-BLAST",
-             "PROTECT"
+             "PROTECT",
+             "SANDSTORM",
+             "THRASH"
             ],
             [
              "AERIAL-ACE",
@@ -327988,31 +330920,31 @@
             131
            ],
            "levels": [
-            75,
-            75,
-            75,
-            75,
-            75,
-            75
+            51,
+            51,
+            51,
+            51,
+            51,
+            51
            ],
            "team_moves": [
             [
-             "FAKE-OUT",
              "BLIZZARD",
              "ENCORE",
-             "SHEER-COLD"
+             "SHEER-COLD",
+             "DIVE"
             ],
             [
-             "GUILLOTINE",
              "AMNESIA",
              "REST",
-             "SLEEP-TALK"
+             "SLEEP-TALK",
+             "SWORDS-DANCE"
             ],
             [
-             "ANCIENT-POWER",
              "EARTHQUAKE",
              "PROTECT",
-             "FISSURE"
+             "FISSURE",
+             "DIG"
             ],
             [
              "SLUDGE-BOMB",
@@ -328021,16 +330953,16 @@
              "PROTECT"
             ],
             [
-             "FLAIL",
              "BRICK-BREAK",
              "ENDURE",
-             "GUILLOTINE"
+             "GUILLOTINE",
+             "SUBMISSION"
             ],
             [
              "ICE-BEAM",
              "THUNDERBOLT",
              "HYDRO-PUMP",
-             "SHEER-COLD"
+             "RAIN-DANCE"
             ]
            ],
            "double": true,
@@ -328060,19 +330992,19 @@
             78
            ],
            "levels": [
-            75,
-            75,
-            75,
-            75,
-            75,
-            75
+            51,
+            51,
+            51,
+            51,
+            51,
+            51
            ],
            "team_moves": [
             [
-             "SILVER-WIND",
              "AERIAL-ACE",
              "SHADOW-BALL",
-             "SWORDS-DANCE"
+             "MIND-READER",
+             "FURY-SWIPES"
             ],
             [
              "TRANSFORM"
@@ -328099,7 +331031,7 @@
              "SUNNY-DAY",
              "FLAMETHROWER",
              "SOLAR-BEAM",
-             "HYPNOSIS"
+             "TAKE-DOWN"
             ]
            ],
            "double": true,
@@ -328129,12 +331061,12 @@
             378
            ],
            "levels": [
-            76,
-            76,
-            76,
-            76,
-            76,
-            76
+            51,
+            51,
+            51,
+            51,
+            51,
+            51
            ],
            "team_moves": [
             [
@@ -328208,12 +331140,12 @@
             31
            ],
            "levels": [
-            76,
-            76,
-            76,
-            76,
-            76,
-            76
+            51,
+            51,
+            51,
+            51,
+            51,
+            51
            ],
            "team_moves": [
             [
@@ -328241,10 +331173,10 @@
              "ROCK-BLAST"
             ],
             [
-             "FLAIL",
              "SHADOW-BALL",
              "ENDURE",
-             "CRUSH-CLAW"
+             "CRUSH-CLAW",
+             "SWORDS-DANCE"
             ],
             [
              "SLUDGE-BOMB",
@@ -328280,12 +331212,12 @@
             348
            ],
            "levels": [
-            76,
-            76,
-            76,
-            76,
-            76,
-            76
+            51,
+            51,
+            51,
+            51,
+            51,
+            51
            ],
            "team_moves": [
             [
@@ -328308,9 +331240,9 @@
             ],
             [
              "LOVELY-KISS",
-             "FAKE-OUT",
              "ICE-BEAM",
-             "DREAM-EATER"
+             "DREAM-EATER",
+             "MEAN-LOOK"
             ],
             [
              "ICE-BEAM",
@@ -328352,12 +331284,12 @@
             57
            ],
            "levels": [
-            76,
-            76,
-            76,
-            76,
-            76,
-            76
+            51,
+            51,
+            51,
+            51,
+            51,
+            51
            ],
            "team_moves": [
             [
@@ -328381,14 +331313,14 @@
             [
              "ICE-BEAM",
              "WATERFALL",
-             "SHEER-COLD",
-             "ICY-WIND"
+             "ICY-WIND",
+             "SURF"
             ],
             [
-             "ANCIENT-POWER",
              "SLUDGE-BOMB",
              "BODY-SLAM",
-             "EARTHQUAKE"
+             "EARTHQUAKE",
+             "TOXIC"
             ],
             [
              "LOW-KICK",
@@ -328424,12 +331356,12 @@
             130
            ],
            "levels": [
-            77,
-            77,
-            77,
-            77,
-            77,
-            77
+            52,
+            52,
+            52,
+            52,
+            52,
+            52
            ],
            "team_moves": [
             [
@@ -328503,12 +331435,12 @@
             133
            ],
            "levels": [
-            77,
-            77,
-            77,
-            77,
-            77,
-            77
+            52,
+            52,
+            52,
+            52,
+            52,
+            52
            ],
            "team_moves": [
             [
@@ -328520,8 +331452,8 @@
             [
              "CONFUSE-RAY",
              "HELPING-HAND",
-             "FEINT-ATTACK",
-             "CHARM"
+             "CHARM",
+             "MEAN-LOOK"
             ],
             [
              "THUNDERBOLT",
@@ -328545,7 +331477,7 @@
              "HELPING-HAND",
              "ATTRACT",
              "GROWL",
-             "WISH"
+             "DOUBLE-EDGE"
             ]
            ],
            "double": true,
@@ -328575,12 +331507,12 @@
             344
            ],
            "levels": [
-            77,
-            77,
-            77,
-            77,
-            77,
-            77
+            52,
+            52,
+            52,
+            52,
+            52,
+            52
            ],
            "team_moves": [
             [
@@ -328610,8 +331542,8 @@
             [
              "ICE-BEAM",
              "HYDRO-PUMP",
-             "MIRROR-COAT",
-             "PROTECT"
+             "PROTECT",
+             "RAIN-DANCE"
             ],
             [
              "SHADOW-BALL",
@@ -328647,12 +331579,12 @@
             214
            ],
            "levels": [
-            77,
-            77,
-            77,
-            77,
-            77,
-            77
+            52,
+            52,
+            52,
+            52,
+            52,
+            52
            ],
            "team_moves": [
             [
@@ -328674,9 +331606,9 @@
             ],
             [
              "FACADE",
-             "CROSS-CHOP",
              "EARTHQUAKE",
-             "ROCK-TOMB"
+             "ROCK-TOMB",
+             "SEISMIC-TOSS"
             ],
             [
              "FAKE-OUT",
@@ -328712,18 +331644,18 @@
            "team": [
             212,
             122,
-            149,
+            148,
             105,
             115,
             291
            ],
            "levels": [
-            78,
-            78,
-            78,
-            78,
-            78,
-            78
+            52,
+            52,
+            52,
+            52,
+            52,
+            52
            ],
            "team_moves": [
             [
@@ -328739,10 +331671,10 @@
              "PSYCHIC"
             ],
             [
-             "AERIAL-ACE",
              "RETURN",
-             "EARTHQUAKE",
-             "BRICK-BREAK"
+             "SAFEGUARD",
+             "SLAM",
+             "AGILITY"
             ],
             [
              "ANCIENT-POWER",
@@ -328796,12 +331728,12 @@
             106
            ],
            "levels": [
-            78,
-            78,
-            78,
-            78,
-            78,
-            78
+            52,
+            52,
+            52,
+            52,
+            52,
+            52
            ],
            "team_moves": [
             [
@@ -328836,9 +331768,9 @@
             ],
             [
              "EARTHQUAKE",
-             "MACH-PUNCH",
              "REVERSAL",
-             "ENDURE"
+             "ENDURE",
+             "HIGH-JUMP-KICK"
             ]
            ],
            "double": true,
@@ -328869,12 +331801,12 @@
             169
            ],
            "levels": [
-            78,
-            78,
-            78,
-            78,
-            78,
-            78
+            52,
+            52,
+            52,
+            52,
+            52,
+            52
            ],
            "team_moves": [
             [
@@ -328908,10 +331840,10 @@
              "FIRE-BLAST"
             ],
             [
-             "CONFUSE-RAY",
              "AERIAL-ACE",
              "SLUDGE-BOMB",
-             "SHADOW-BALL"
+             "SHADOW-BALL",
+             "HAZE"
             ]
            ],
            "double": true,
@@ -328942,25 +331874,25 @@
             45
            ],
            "levels": [
-            78,
-            78,
-            78,
-            78,
-            78,
-            78
+            52,
+            52,
+            52,
+            52,
+            52,
+            52
            ],
            "team_moves": [
             [
              "ICE-BEAM",
              "HYDRO-PUMP",
-             "MIRROR-COAT",
-             "COUNTER"
+             "COUNTER",
+             "SCREECH"
             ],
             [
              "PSYCHIC",
              "THUNDERBOLT",
              "FIRE-PUNCH",
-             "DESTINY-BOND"
+             "CALM-MIND"
             ],
             [
              "LEAF-BLADE",
@@ -329014,19 +331946,19 @@
             3
            ],
            "levels": [
-            79,
-            79,
-            79,
-            79,
-            79,
-            79
+            53,
+            53,
+            53,
+            53,
+            53,
+            53
            ],
            "team_moves": [
             [
              "ICE-BEAM",
              "HYDRO-CANNON",
-             "YAWN",
-             "ROAR"
+             "ROAR",
+             "HYDRO-PUMP"
             ],
             [
              "HYPER-BEAM",
@@ -329049,7 +331981,7 @@
              "DRAGON-CLAW",
              "BLAST-BURN",
              "ROAR",
-             "BITE"
+             "FIRE-SPIN"
             ],
             [
              "FRENZY-PLANT",
@@ -329086,18 +332018,18 @@
            "team": [
             356,
             373,
-            149,
+            148,
             330,
             142,
             145
            ],
            "levels": [
-            79,
-            79,
-            79,
-            79,
-            79,
-            79
+            53,
+            53,
+            53,
+            53,
+            53,
+            53
            ],
            "team_moves": [
             [
@@ -329113,10 +332045,10 @@
              "PROTECT"
             ],
             [
-             "AERIAL-ACE",
              "RETURN",
-             "EARTHQUAKE",
-             "PROTECT"
+             "PROTECT",
+             "RAIN-DANCE",
+             "SAFEGUARD"
             ],
             [
              "DRAGON-CLAW",
@@ -329164,25 +332096,25 @@
             257
            ],
            "levels": [
-            79,
-            79,
-            79,
-            79,
-            79,
-            79
+            53,
+            53,
+            53,
+            53,
+            53,
+            53
            ],
            "team_moves": [
             [
-             "FAKE-OUT",
-             "FEINT-ATTACK",
-             "EXTRASENSORY",
-             "SOLAR-BEAM"
+             "SOLAR-BEAM",
+             "LEAF-BLADE",
+             "AIR-CUTTER",
+             "SUNNY-DAY"
             ],
             [
              "PSYCHIC",
-             "ANCIENT-POWER",
              "SOLAR-BEAM",
-             "SUNNY-DAY"
+             "SUNNY-DAY",
+             "BULLET-SEED"
             ],
             [
              "HELPING-HAND",
@@ -329236,12 +332168,12 @@
             211
            ],
            "levels": [
-            79,
-            79,
-            79,
-            79,
-            79,
-            79
+            53,
+            53,
+            53,
+            53,
+            53,
+            53
            ],
            "team_moves": [
             [
@@ -329277,8 +332209,8 @@
             [
              "SLUDGE-BOMB",
              "SHADOW-BALL",
-             "DESTINY-BOND",
-             "DOUBLE-EDGE"
+             "DOUBLE-EDGE",
+             "TOXIC"
             ]
            ],
            "double": true,
@@ -329308,12 +332240,12 @@
             121
            ],
            "levels": [
-            80,
-            80,
-            80,
-            80,
-            80,
-            80
+            53,
+            53,
+            53,
+            53,
+            53,
+            53
            ],
            "team_moves": [
             [
@@ -329325,8 +332257,8 @@
             [
              "DRAGON-CLAW",
              "FIRE-BLAST",
-             "BITE",
-             "SEISMIC-TOSS"
+             "SEISMIC-TOSS",
+             "FIRE-SPIN"
             ],
             [
              "SLUDGE-BOMB",
@@ -329386,31 +332318,31 @@
             214
            ],
            "levels": [
-            80,
-            80,
-            80,
-            80,
-            80,
-            80
+            53,
+            53,
+            53,
+            53,
+            53,
+            53
            ],
            "team_moves": [
             [
-             "BELLY-DRUM",
              "AERIAL-ACE",
              "OVERHEAT",
-             "EARTHQUAKE"
+             "EARTHQUAKE",
+             "FIRE-SPIN"
             ],
             [
-             "FOLLOW-ME",
-             "COSMIC-POWER",
              "SOFT-BOILED",
-             "PROTECT"
+             "PROTECT",
+             "METEOR-MASH",
+             "METRONOME"
             ],
             [
              "AERIAL-ACE",
-             "SILVER-WIND",
              "SHADOW-BALL",
-             "PROTECT"
+             "PROTECT",
+             "MIND-READER"
             ],
             [
              "FOLLOW-ME",
@@ -329458,12 +332390,12 @@
             245
            ],
            "levels": [
-            80,
-            80,
-            80,
-            80,
-            80,
-            80
+            53,
+            53,
+            53,
+            53,
+            53,
+            53
            ],
            "team_moves": [
             [
@@ -329530,12 +332462,12 @@
             131
            ],
            "levels": [
-            80,
-            80,
-            80,
-            80,
-            80,
-            80
+            53,
+            53,
+            53,
+            53,
+            53,
+            53
            ],
            "team_moves": [
             [
@@ -329560,7 +332492,7 @@
              "RETURN",
              "DRILL-PECK",
              "HYPER-BEAM",
-             "HAZE"
+             "THRASH"
             ],
             [
              "PSYCHIC",
@@ -329602,12 +332534,12 @@
             128
            ],
            "levels": [
-            82,
-            82,
-            82,
-            82,
-            82,
-            82
+            54,
+            54,
+            54,
+            54,
+            54,
+            54
            ],
            "team_moves": [
             [
@@ -330026,7 +332958,7 @@
        9380
       ],
       "levels": [
-       47
+       35
       ],
       "team_moves": [
        [
@@ -330076,12 +333008,12 @@
          26
         ],
         "levels": [
-         62,
-         62,
-         67,
-         67,
-         72,
-         72
+         48,
+         48,
+         49,
+         49,
+         50,
+         50
         ],
         "team_moves": [
          [
@@ -330097,8 +333029,8 @@
           "THUNDER-WAVE"
          ],
          [
-          "VOLT-TACKLE",
-          "RAIN-DANCE"
+          "RAIN-DANCE",
+          "THUNDER"
          ],
          [
           "THUNDER",
@@ -330107,10 +333039,10 @@
           "COUNTER"
          ],
          [
-          "VOLT-TACKLE",
           "RAIN-DANCE",
           "BRICK-BREAK",
-          "COUNTER"
+          "COUNTER",
+          "THUNDERBOLT"
          ]
         ],
         "double": true,
@@ -330298,7 +333230,7 @@
            161
           ],
           "levels": [
-           45
+           35
           ],
           "team_moves": [
            [
@@ -331808,35 +334740,35 @@
            111
           ],
           "levels": [
-           74,
-           73,
-           73,
-           73
+           51,
+           50,
+           50,
+           50
           ],
           "team_moves": [
            [
             "CRUSH-CLAW",
-            "DOUBLE-KICK",
             "LEER",
-            "SHADOW-BALL"
+            "SHADOW-BALL",
+            "SWORDS-DANCE"
            ],
            [
-            "CRUSH-CLAW",
             "BRICK-BREAK",
             "LEER",
-            "PURSUIT"
+            "ENDEAVOR",
+            "SCREECH"
            ],
            [
-            "CRUSH-CLAW",
             "REVERSAL",
             "COUNTER",
-            "SHADOW-BALL"
+            "SHADOW-BALL",
+            "FOCUS-PUNCH"
            ],
            [
-            "CRUSH-CLAW",
             "ROAR",
             "TAIL-WHIP",
-            "ROCK-SMASH"
+            "ROCK-SMASH",
+            "EARTHQUAKE"
            ]
           ],
           "double": true,
@@ -331880,10 +334812,10 @@
            277
           ],
           "levels": [
-           73,
-           73,
-           74,
-           74
+           50,
+           50,
+           51,
+           51
           ],
           "team_moves": [
            [
@@ -331901,8 +334833,8 @@
            [
             "PRESENT",
             "BLIZZARD",
-            "SPLASH",
-            "AERIAL-ACE"
+            "AERIAL-ACE",
+            "DRILL-PECK"
            ],
            [
             "FACADE",
@@ -332032,10 +334964,10 @@
            284
           ],
           "levels": [
-           52,
-           70,
-           74,
-           71
+           42,
+           49,
+           51,
+           49
           ],
           "team_moves": [
            [
@@ -332045,10 +334977,10 @@
             "SONIC-BOOM"
            ],
            [
-            "PIN-MISSILE",
             "REFLECT",
             "LIGHT-SCREEN",
-            "SPIKES"
+            "SPIKES",
+            "IRON-DEFENSE"
            ],
            [
             "SILVER-WIND",
@@ -332107,10 +335039,10 @@
            202
           ],
           "levels": [
-           59,
-           72,
-           73,
-           74
+           45,
+           50,
+           50,
+           51
           ],
           "team_moves": [
            [
@@ -332187,9 +335119,9 @@
            314
           ],
           "levels": [
-           61,
-           74,
-           74
+           45,
+           51,
+           51
           ],
           "team_moves": [
            [
@@ -332199,10 +335131,10 @@
             "SUPERSONIC"
            ],
            [
-            "SIGNAL-BEAM",
             "SHADOW-BALL",
             "AERIAL-ACE",
-            "TAIL-GLOW"
+            "TAIL-GLOW",
+            "DOUBLE-EDGE"
            ],
            [
             "SILVER-WIND",
@@ -332255,10 +335187,10 @@
            303
           ],
           "levels": [
-           65,
-           73,
-           74,
-           74
+           47,
+           50,
+           51,
+           51
           ],
           "team_moves": [
            [
@@ -332281,9 +335213,9 @@
            ],
            [
             "FAKE-TEARS",
-            "VICE-GRIP",
             "BRICK-BREAK",
-            "ASTONISH"
+            "ASTONISH",
+            "TAUNT"
            ]
           ],
           "double": true,
@@ -332329,10 +335261,10 @@
            55
           ],
           "levels": [
-           64,
-           74,
-           73,
-           73
+           47,
+           51,
+           50,
+           50
           ],
           "team_moves": [
            [
@@ -332344,8 +335276,8 @@
            [
             "SLEEP-POWDER",
             "ACID",
-            "RAZOR-LEAF",
-            "BULLET-SEED"
+            "BULLET-SEED",
+            "PETAL-DANCE"
            ],
            [
             "SLEEP-POWDER",
@@ -332354,10 +335286,10 @@
             "FRUSTRATION"
            ],
            [
-            "HYPNOSIS",
             "WATER-PULSE",
             "CONFUSION",
-            "ROCK-SMASH"
+            "ROCK-SMASH",
+            "HYDRO-PUMP"
            ]
           ],
           "double": true,
@@ -332402,10 +335334,10 @@
            64
           ],
           "levels": [
-           73,
-           74,
-           70,
-           73
+           50,
+           51,
+           49,
+           50
           ],
           "team_moves": [
            [
@@ -332415,16 +335347,16 @@
             "WATER-PULSE"
            ],
            [
-            "COVET",
             "SNATCH",
             "SWAGGER",
-            "BITE"
+            "BITE",
+            "TAKE-DOWN"
            ],
            [
-            "COVET",
             "SNATCH",
             "SWAGGER",
-            "BITE"
+            "BITE",
+            "TAKE-DOWN"
            ],
            [
             "SNATCH",
@@ -332473,10 +335405,10 @@
            327
           ],
           "levels": [
-           74,
-           74,
-           71,
-           71
+           51,
+           51,
+           49,
+           49
           ],
           "team_moves": [
            [
@@ -332486,22 +335418,22 @@
             "SCARY-FACE"
            ],
            [
-            "THRASH",
             "DRAGON-BREATH",
             "AERIAL-ACE",
-            "HEADBUTT"
+            "HEADBUTT",
+            "FOCUS-ENERGY"
            ],
            [
-            "THRASH",
-            "RAGE",
             "DIVE",
-            "THIEF"
+            "THIEF",
+            "TAKE-DOWN",
+            "AGILITY"
            ],
            [
-            "THRASH",
-            "FEINT-ATTACK",
             "PSYBEAM",
-            "FLAIL"
+            "DOUBLE-EDGE",
+            "PSYCH-UP",
+            "UPROAR"
            ]
           ],
           "double": true,
@@ -332548,10 +335480,10 @@
            180
           ],
           "levels": [
-           62,
-           70,
-           73,
-           74
+           46,
+           49,
+           50,
+           51
           ],
           "team_moves": [
            [
@@ -332625,10 +335557,10 @@
            264
           ],
           "levels": [
-           70,
-           71,
-           72,
-           74
+           49,
+           49,
+           50,
+           51
           ],
           "team_moves": [
            [
@@ -332644,16 +335576,16 @@
             "SHOCK-WAVE"
            ],
            [
-            "FLAIL",
             "SLASH",
             "SWIFT",
-            "SAND-TOMB"
+            "SAND-TOMB",
+            "DIG"
            ],
            [
             "FLAIL",
-            "ODOR-SLEUTH",
             "SHOCK-WAVE",
-            "HEADBUTT"
+            "HEADBUTT",
+            "DOUBLE-EDGE"
            ]
           ],
           "double": true,
@@ -332698,10 +335630,10 @@
           319
          ],
          "levels": [
-          50,
-          75,
-          74,
-          73
+          42,
+          51,
+          51,
+          50
          ],
          "team_moves": [
           [
@@ -332712,21 +335644,21 @@
           ],
           [
            "SLUDGE-BOMB",
-           "STRENGTH",
            "DIG",
-           "ACID-ARMOR"
+           "ACID-ARMOR",
+           "SCREECH"
           ],
           [
-           "EXTRASENSORY",
            "SHADOW-BALL",
-           "BOUNCE",
-           "PSYCH-UP"
+           "PSYCH-UP",
+           "SNORE",
+           "REST"
           ],
           [
            "WATERFALL",
            "BITE",
-           "SKULL-BASH",
-           "TORMENT"
+           "TORMENT",
+           "AGILITY"
           ]
          ],
          "double": true,
@@ -332753,10 +335685,10 @@
           286
          ],
          "levels": [
-          50,
-          75,
-          74,
-          73
+          42,
+          51,
+          51,
+          50
          ],
          "team_moves": [
           [
@@ -332767,21 +335699,21 @@
           ],
           [
            "SLUDGE-BOMB",
-           "STRENGTH",
            "DIG",
-           "ACID-ARMOR"
+           "ACID-ARMOR",
+           "SCREECH"
           ],
           [
-           "EXTRASENSORY",
            "SHADOW-BALL",
-           "BOUNCE",
-           "PSYCH-UP"
+           "PSYCH-UP",
+           "SNORE",
+           "REST"
           ],
           [
            "GIGA-DRAIN",
-           "SKY-UPPERCUT",
            "HEADBUTT",
-           "HELPING-HAND"
+           "HELPING-HAND",
+           "DYNAMIC-PUNCH"
           ]
          ],
          "double": true,
@@ -332808,10 +335740,10 @@
           323
          ],
          "levels": [
-          50,
-          75,
-          74,
-          73
+          42,
+          51,
+          51,
+          50
          ],
          "team_moves": [
           [
@@ -332822,21 +335754,21 @@
           ],
           [
            "SLUDGE-BOMB",
-           "STRENGTH",
            "DIG",
-           "ACID-ARMOR"
+           "ACID-ARMOR",
+           "SCREECH"
           ],
           [
-           "EXTRASENSORY",
            "SHADOW-BALL",
-           "BOUNCE",
-           "PSYCH-UP"
+           "PSYCH-UP",
+           "SNORE",
+           "REST"
           ],
           [
            "FLAMETHROWER",
-           "MAGNITUDE",
            "TAKE-DOWN",
-           "HOWL"
+           "EARTHQUAKE",
+           "YAWN"
           ]
          ],
          "double": true,
@@ -332880,10 +335812,10 @@
            121
           ],
           "levels": [
-           74,
-           69,
-           72,
-           71
+           51,
+           49,
+           50,
+           49
           ],
           "team_moves": [
            [
@@ -332902,13 +335834,13 @@
             "SURF",
             "FLY",
             "THIEF",
-            "GUST"
+            "MIST"
            ],
            [
             "WATERFALL",
             "PSYCHIC",
-            "CAMOUFLAGE",
-            "MINIMIZE"
+            "MINIMIZE",
+            "COSMIC-POWER"
            ]
           ],
           "double": true,
@@ -333040,9 +335972,9 @@
            189
           ],
           "levels": [
-           66,
-           72,
-           74
+           47,
+           50,
+           51
           ],
           "team_moves": [
            [
@@ -333107,9 +336039,9 @@
            362
           ],
           "levels": [
-           64,
-           74,
-           73
+           47,
+           51,
+           50
           ],
           "team_moves": [
            [
@@ -333121,8 +336053,8 @@
            [
             "BLIZZARD",
             "MUD-SHOT",
-            "HORN-ATTACK",
-            "HAIL"
+            "HAIL",
+            "EARTHQUAKE"
            ],
            [
             "BLIZZARD",
@@ -333179,9 +336111,9 @@
            205
           ],
           "levels": [
-           65,
-           74,
-           73
+           47,
+           51,
+           50
           ],
           "team_moves": [
            [
@@ -333197,10 +336129,10 @@
             "ICE-BEAM"
            ],
            [
-            "PIN-MISSILE",
             "DOUBLE-EDGE",
             "EARTHQUAKE",
-            "GIGA-DRAIN"
+            "GIGA-DRAIN",
+            "IRON-DEFENSE"
            ]
           ],
           "double": true,
@@ -333246,12 +336178,12 @@
            210
           ],
           "levels": [
-           61,
-           78,
-           78,
-           78,
-           78,
-           78
+           45,
+           52,
+           52,
+           52,
+           52,
+           52
           ],
           "team_moves": [
            [
@@ -333276,13 +336208,13 @@
             "HYPER-BEAM",
             "BULK-UP",
             "SUBMISSION",
-            "FORESIGHT"
+            "SEISMIC-TOSS"
            ],
            [
             "HYPER-BEAM",
             "BULK-UP",
-            "SKY-UPPERCUT",
-            "IRON-TAIL"
+            "IRON-TAIL",
+            "DYNAMIC-PUNCH"
            ],
            [
             "HYPER-BEAM",
@@ -333328,12 +336260,12 @@
              210
             ],
             "levels": [
-             78,
-             78,
-             78,
-             78,
-             78,
-             78
+             52,
+             52,
+             52,
+             52,
+             52,
+             52
             ],
             "team_moves": [
              [
@@ -333358,13 +336290,13 @@
               "HYPER-BEAM",
               "BULK-UP",
               "SUBMISSION",
-              "FORESIGHT"
+              "SEISMIC-TOSS"
              ],
              [
               "HYPER-BEAM",
               "BULK-UP",
-              "SKY-UPPERCUT",
-              "IRON-TAIL"
+              "IRON-TAIL",
+              "DYNAMIC-PUNCH"
              ],
              [
               "HYPER-BEAM",
@@ -333422,10 +336354,10 @@
            9381
           ],
           "levels": [
-           73,
-           76,
-           71,
-           66
+           50,
+           51,
+           49,
+           47
           ],
           "team_moves": [
            [
@@ -333442,9 +336374,9 @@
            ],
            [
             "TORMENT",
-            "FAKE-OUT",
             "GIGA-DRAIN",
-            "FEINT-ATTACK"
+            "LEAF-BLADE",
+            "AIR-CUTTER"
            ],
            [
             "SHADOW-RUSH",
@@ -333497,10 +336429,10 @@
            235
           ],
           "levels": [
-           69,
-           74,
-           75,
-           76
+           49,
+           51,
+           51,
+           51
           ],
           "team_moves": [
            [
@@ -333510,22 +336442,13 @@
             "DOUBLE-SLAP"
            ],
            [
-            "DESTINY-BOND",
-            "FOCUS-PUNCH",
-            "SPORE",
-            "DREAM-EATER"
+            "SKETCH"
            ],
            [
-            "THRASH",
-            "PETAL-DANCE",
-            "OUTRAGE",
-            "TEETER-DANCE"
+            "SKETCH"
            ],
            [
-            "SWEET-SCENT",
-            "DEFENSE-CURL",
-            "ICE-BALL",
-            "ROLLOUT"
+            "SKETCH"
            ]
           ],
           "double": true,
@@ -333573,10 +336496,10 @@
            294
           ],
           "levels": [
-           64,
-           73,
-           71,
-           74
+           47,
+           50,
+           49,
+           51
           ],
           "team_moves": [
            [
@@ -333588,20 +336511,20 @@
            [
             "SWAGGER",
             "SCREECH",
-            "STOCKPILE",
-            "SPIT-UP"
+            "SLUDGE-BOMB",
+            "CRUNCH"
            ],
            [
-            "CONFUSE-RAY",
             "ROCK-SMASH",
-            "SPIKE-CANNON",
-            "DIG"
+            "DIG",
+            "FLAIL",
+            "BUBBLE-BEAM"
            ],
            [
             "SWAGGER",
             "SCREECH",
             "BRICK-BREAK",
-            "STRENGTH"
+            "UPROAR"
            ]
           ],
           "double": true,
@@ -339758,15 +342681,15 @@
            321
           ],
           "levels": [
-           76,
-           76
+           51,
+           51
           ],
           "team_moves": [
            [
-            "WATER-SPOUT",
             "SWAGGER",
-            "ROLLOUT",
-            "AMNESIA"
+            "AMNESIA",
+            "HYDRO-PUMP",
+            "REST"
            ],
            [
             "HYDRO-PUMP",
@@ -340693,10 +343616,10 @@
           319
          ],
          "levels": [
-          44,
-          77,
-          76,
-          75
+          42,
+          52,
+          51,
+          51
          ],
          "team_moves": [
           [
@@ -340748,10 +343671,10 @@
           286
          ],
          "levels": [
-          44,
-          77,
-          76,
-          75
+          42,
+          52,
+          51,
+          51
          ],
          "team_moves": [
           [
@@ -340773,10 +343696,10 @@
            "CONFUSE-RAY"
           ],
           [
-           "MIND-READER",
            "DYNAMIC-PUNCH",
            "IRON-TAIL",
-           "SWAGGER"
+           "SWAGGER",
+           "BRICK-BREAK"
           ]
          ],
          "double": true,
@@ -340803,10 +343726,10 @@
           323
          ],
          "levels": [
-          44,
-          77,
-          76,
-          75
+          42,
+          52,
+          51,
+          51
          ],
          "team_moves": [
           [
@@ -340831,7 +343754,7 @@
            "FLAMETHROWER",
            "EARTHQUAKE",
            "ROCK-SLIDE",
-           "HOWL"
+           "YAWN"
           ]
          ],
          "double": true,
@@ -343024,28 +345947,28 @@
             357
            ],
            "levels": [
-            75,
-            75,
-            76
+            51,
+            51,
+            51
            ],
            "team_moves": [
             [
-             "RAZOR-WIND",
              "LEER",
              "FURY-CUTTER",
-             "FALSE-SWIPE"
+             "FALSE-SWIPE",
+             "SWORDS-DANCE"
             ],
             [
-             "RAZOR-WIND",
              "FAKE-OUT",
              "TORMENT",
-             "FALSE-SWIPE"
+             "FALSE-SWIPE",
+             "EXTRASENSORY"
             ],
             [
-             "RAZOR-WIND",
              "RAZOR-LEAF",
              "GUST",
-             "SWEET-SCENT"
+             "SWEET-SCENT",
+             "SYNTHESIS"
             ]
            ],
            "double": true,
@@ -343064,9 +345987,9 @@
             297
            ],
            "levels": [
-            75,
-            75,
-            76
+            51,
+            51,
+            51
            ],
            "team_moves": [
             [
@@ -343082,10 +346005,10 @@
              "REVERSAL"
             ],
             [
-             "VITAL-THROW",
-             "FORESIGHT",
              "ENDURE",
-             "REVERSAL"
+             "REVERSAL",
+             "FOCUS-PUNCH",
+             "SEISMIC-TOSS"
             ]
            ],
            "double": true,
@@ -343105,10 +346028,10 @@
             166
            ],
            "levels": [
-            75,
-            75,
-            75,
-            76
+            51,
+            51,
+            51,
+            51
            ],
            "team_moves": [
             [
@@ -343121,7 +346044,7 @@
              "REST",
              "PSYBEAM",
              "STOMP",
-             "MAGIC-COAT"
+             "PSYCHIC"
             ],
             [
              "REST",
@@ -343154,11 +346077,11 @@
             295
            ],
            "levels": [
-            47,
-            75,
-            76,
-            77,
-            76
+            42,
+            51,
+            51,
+            52,
+            51
            ],
            "team_moves": [
             [
@@ -343182,14 +346105,14 @@
             [
              "DIVE",
              "GIGA-DRAIN",
-             "LEECH-SEED",
-             "RAIN-DANCE"
+             "RAIN-DANCE",
+             "FAKE-OUT"
             ],
             [
-             "TAKE-DOWN",
              "SHADOW-BALL",
              "EARTHQUAKE",
-             "EXTRASENSORY"
+             "UPROAR",
+             "SUPERSONIC"
             ]
            ],
            "double": true,
@@ -343220,18 +346143,18 @@
               295
              ],
              "levels": [
-              77,
-              75,
-              76,
-              77,
-              76
+              52,
+              51,
+              51,
+              52,
+              51
              ],
              "team_moves": [
               [
                "ROCK-SLIDE",
                "METAL-CLAW",
-               "STRENGTH",
-               "AERIAL-ACE"
+               "AERIAL-ACE",
+               "PROTECT"
               ],
               [
                "HYDRO-PUMP",
@@ -343248,14 +346171,14 @@
               [
                "DIVE",
                "GIGA-DRAIN",
-               "LEECH-SEED",
-               "RAIN-DANCE"
+               "RAIN-DANCE",
+               "FAKE-OUT"
               ],
               [
-               "TAKE-DOWN",
                "SHADOW-BALL",
                "EARTHQUAKE",
-               "EXTRASENSORY"
+               "UPROAR",
+               "SUPERSONIC"
               ]
              ],
              "double": true,
@@ -343283,22 +346206,22 @@
             189
            ],
            "levels": [
-            77,
-            77,
-            78
+            52,
+            52,
+            52
            ],
            "team_moves": [
             [
              "SPARK",
              "CHARGE",
-             "SONIC-BOOM",
-             "FLASH"
+             "FLASH",
+             "EXPLOSION"
             ],
             [
              "BEAT-UP",
              "ICY-WIND",
-             "CRUSH-CLAW",
-             "FAKE-OUT"
+             "AGILITY",
+             "FURY-SWIPES"
             ],
             [
              "MEGA-DRAIN",
@@ -343323,28 +346246,28 @@
             225
            ],
            "levels": [
-            77,
-            77,
-            78
+            52,
+            52,
+            52
            ],
            "team_moves": [
             [
-             "ICE-BALL",
              "SURF",
              "ROCK-SMASH",
-             "YAWN"
+             "BODY-SLAM",
+             "ENCORE"
             ],
             [
-             "ICE-BALL",
              "MUDDY-WATER",
              "MUD-SLAP",
-             "MUD-SPORT"
+             "ENDEAVOR",
+             "SCREECH"
             ],
             [
-             "ICE-BALL",
              "AERIAL-ACE",
              "WATER-PULSE",
-             "PRESENT"
+             "PRESENT",
+             "DRILL-PECK"
             ]
            ],
            "double": true,
@@ -343364,10 +346287,10 @@
             264
            ],
            "levels": [
-            77,
-            77,
-            77,
-            78
+            52,
+            52,
+            52,
+            52
            ],
            "team_moves": [
             [
@@ -343383,10 +346306,10 @@
              "SHADOW-BALL"
             ],
             [
-             "BELLY-DRUM",
              "ROLLOUT",
              "WATERFALL",
-             "DOUBLE-EDGE"
+             "DOUBLE-EDGE",
+             "SUPERPOWER"
             ],
             [
              "BELLY-DRUM",
@@ -343413,11 +346336,11 @@
             260
            ],
            "levels": [
-            54,
-            77,
-            78,
-            78,
-            79
+            43,
+            52,
+            52,
+            52,
+            53
            ],
            "team_moves": [
             [
@@ -343472,11 +346395,11 @@
               260
              ],
              "levels": [
-              79,
-              77,
-              78,
-              78,
-              79
+              53,
+              52,
+              52,
+              52,
+              53
              ],
              "team_moves": [
               [
@@ -343535,16 +346458,16 @@
             217
            ],
            "levels": [
-            79,
-            79,
-            80
+            53,
+            53,
+            53
            ],
            "team_moves": [
             [
              "FACADE",
              "TOXIC",
              "EARTHQUAKE",
-             "ROLLING-KICK"
+             "SEISMIC-TOSS"
             ],
             [
              "FACADE",
@@ -343576,17 +346499,17 @@
             320
            ],
            "levels": [
-            78,
-            78,
-            79,
-            80
+            52,
+            52,
+            53,
+            53
            ],
            "team_moves": [
             [
              "DOUBLE-TEAM",
              "DEFENSE-CURL",
              "ROLLOUT",
-             "MAGNITUDE"
+             "DOUBLE-EDGE"
             ],
             [
              "DOUBLE-TEAM",
@@ -343602,9 +346525,9 @@
             ],
             [
              "DOUBLE-TEAM",
-             "ROLLOUT",
              "SURF",
-             "AMNESIA"
+             "AMNESIA",
+             "WATER-SPOUT"
             ]
            ],
            "double": true,
@@ -343623,9 +346546,9 @@
             301
            ],
            "levels": [
-            80,
-            80,
-            80
+            53,
+            53,
+            53
            ],
            "team_moves": [
             [
@@ -343635,16 +346558,16 @@
              "TAKE-DOWN"
             ],
             [
-             "WISH",
-             "ASSIST",
-             "DIZZY-PUNCH",
-             "TEETER-DANCE"
+             "TEETER-DANCE",
+             "FLAIL",
+             "DOUBLE-EDGE",
+             "PSYCH-UP"
             ],
             [
-             "WISH",
-             "ASSIST",
              "CHARM",
-             "DOUBLE-SLAP"
+             "COVET",
+             "FACADE",
+             "FAKE-OUT"
             ]
            ],
            "double": true,
@@ -343665,11 +346588,11 @@
             242
            ],
            "levels": [
-            56,
-            79,
-            80,
-            80,
-            81
+            43,
+            53,
+            53,
+            53,
+            53
            ],
            "team_moves": [
             [
@@ -343687,8 +346610,8 @@
             [
              "ATTRACT",
              "LEECH-SEED",
-             "INGRAIN",
-             "GIGA-DRAIN"
+             "GIGA-DRAIN",
+             "BODY-SLAM"
             ],
             [
              "ATTRACT",
@@ -343724,11 +346647,11 @@
               242
              ],
              "levels": [
-              81,
-              79,
-              80,
-              80,
-              81
+              53,
+              53,
+              53,
+              53,
+              53
              ],
              "team_moves": [
               [
@@ -343746,8 +346669,8 @@
               [
                "ATTRACT",
                "LEECH-SEED",
-               "INGRAIN",
-               "GIGA-DRAIN"
+               "GIGA-DRAIN",
+               "BODY-SLAM"
               ],
               [
                "ATTRACT",
@@ -343788,10 +346711,10 @@
             313
            ],
            "levels": [
-            81,
-            81,
-            82,
-            81
+            53,
+            53,
+            54,
+            53
            ],
            "team_moves": [
             [
@@ -343814,9 +346737,9 @@
             ],
             [
              "SOLAR-BEAM",
-             "SIGNAL-BEAM",
              "MOONLIGHT",
-             "SUNNY-DAY"
+             "SUNNY-DAY",
+             "DOUBLE-EDGE"
             ]
            ],
            "double": true,
@@ -343836,10 +346759,10 @@
             305
            ],
            "levels": [
-            81,
-            82,
-            82,
-            81
+            53,
+            54,
+            54,
+            53
            ],
            "team_moves": [
             [
@@ -343849,10 +346772,10 @@
              "TAKE-DOWN"
             ],
             [
-             "SMELLING-SALTS",
              "SHOCK-WAVE",
              "HOWL",
-             "SHADOW-BALL"
+             "SHADOW-BALL",
+             "SCREECH"
             ],
             [
              "THUNDER-WAVE",
@@ -343861,10 +346784,10 @@
              "PSYBEAM"
             ],
             [
-             "SMELLING-SALTS",
              "METAL-CLAW",
              "METAL-SOUND",
-             "AERIAL-ACE"
+             "AERIAL-ACE",
+             "IRON-TAIL"
             ]
            ],
            "double": true,
@@ -343883,9 +346806,9 @@
             259
            ],
            "levels": [
-            81,
-            81,
-            82
+            53,
+            53,
+            54
            ],
            "team_moves": [
             [
@@ -343925,11 +346848,11 @@
             169
            ],
            "levels": [
-            58,
-            81,
-            82,
-            82,
-            83
+            44,
+            53,
+            54,
+            54,
+            54
            ],
            "team_moves": [
             [
@@ -343945,10 +346868,10 @@
              "TOXIC"
             ],
             [
-             "TWISTER",
-             "CONFUSE-RAY",
              "TOXIC",
-             "RAIN-DANCE"
+             "RAIN-DANCE",
+             "HYDRO-PUMP",
+             "TAKE-DOWN"
             ],
             [
              "HYDRO-PUMP",
@@ -343958,9 +346881,9 @@
             ],
             [
              "BITE",
-             "CONFUSE-RAY",
              "PROTECT",
-             "TOXIC"
+             "TOXIC",
+             "HAZE"
             ]
            ],
            "double": true,
@@ -343984,11 +346907,11 @@
               169
              ],
              "levels": [
-              83,
-              81,
-              82,
-              82,
-              83
+              54,
+              53,
+              54,
+              54,
+              54
              ],
              "team_moves": [
               [
@@ -344004,10 +346927,10 @@
                "TOXIC"
               ],
               [
-               "TWISTER",
-               "CONFUSE-RAY",
                "TOXIC",
-               "RAIN-DANCE"
+               "RAIN-DANCE",
+               "HYDRO-PUMP",
+               "TAKE-DOWN"
               ],
               [
                "HYDRO-PUMP",
@@ -344017,9 +346940,9 @@
               ],
               [
                "BITE",
-               "CONFUSE-RAY",
                "PROTECT",
-               "TOXIC"
+               "TOXIC",
+               "HAZE"
               ]
              ],
              "double": true,
@@ -344047,28 +346970,28 @@
             353
            ],
            "levels": [
-            83,
-            84,
-            83
+            54,
+            55,
+            54
            ],
            "team_moves": [
             [
              "SURF",
-             "DRAGON-RAGE",
              "SMOKESCREEN",
-             "FLAIL"
+             "DRAGON-DANCE",
+             "HYDRO-PUMP"
             ],
             [
-             "CUT",
              "MUD-SLAP",
              "LEECH-LIFE",
-             "SAND-ATTACK"
+             "SAND-ATTACK",
+             "DIG"
             ],
             [
              "ASTONISH",
-             "KNOCK-OFF",
              "SPITE",
-             "FLASH"
+             "FLASH",
+             "ROLE-PLAY"
             ]
            ],
            "double": true,
@@ -344088,10 +347011,10 @@
             117
            ],
            "levels": [
-            83,
-            84,
-            83,
-            84
+            54,
+            55,
+            54,
+            55
            ],
            "team_moves": [
             [
@@ -344114,9 +347037,9 @@
             ],
             [
              "WATERFALL",
-             "DRAGON-RAGE",
              "AGILITY",
-             "SECRET-POWER"
+             "SECRET-POWER",
+             "HYDRO-PUMP"
             ]
            ],
            "double": true,
@@ -344135,9 +347058,9 @@
             369
            ],
            "levels": [
-            83,
-            83,
-            84
+            54,
+            54,
+            55
            ],
            "team_moves": [
             [
@@ -344147,16 +347070,16 @@
              "TAUNT"
             ],
             [
-             "PURSUIT",
              "WING-ATTACK",
              "NIGHT-SHADE",
-             "SNATCH"
+             "SNATCH",
+             "MEAN-LOOK"
             ],
             [
              "DIVE",
              "ANCIENT-POWER",
-             "SKULL-BASH",
-             "YAWN"
+             "YAWN",
+             "DOUBLE-EDGE"
             ]
            ],
            "double": true,
@@ -344178,12 +347101,12 @@
             230
            ],
            "levels": [
-            60,
-            83,
-            84,
-            81,
-            83,
-            85
+            45,
+            54,
+            55,
+            53,
+            54,
+            55
            ],
            "team_moves": [
             [
@@ -344199,10 +347122,10 @@
              "LIGHT-SCREEN"
             ],
             [
-             "FEINT-ATTACK",
              "SHADOW-BALL",
              "AERIAL-ACE",
-             "CONFUSE-RAY"
+             "CONFUSE-RAY",
+             "MEAN-LOOK"
             ],
             [
              "STEEL-WING",
@@ -344211,10 +347134,10 @@
              "SAND-ATTACK"
             ],
             [
-             "SILVER-WIND",
              "SHADOW-BALL",
              "DIG",
-             "CONFUSE-RAY"
+             "CONFUSE-RAY",
+             "MIND-READER"
             ],
             [
              "HYDRO-PUMP",
@@ -344243,11 +347166,11 @@
               230
              ],
              "levels": [
-              83,
-              84,
-              81,
-              83,
-              85
+              54,
+              55,
+              53,
+              54,
+              55
              ],
              "team_moves": [
               [
@@ -344257,10 +347180,10 @@
                "LIGHT-SCREEN"
               ],
               [
-               "FEINT-ATTACK",
                "SHADOW-BALL",
                "AERIAL-ACE",
-               "CONFUSE-RAY"
+               "CONFUSE-RAY",
+               "MEAN-LOOK"
               ],
               [
                "STEEL-WING",
@@ -344269,10 +347192,10 @@
                "SAND-ATTACK"
               ],
               [
-               "SILVER-WIND",
                "SHADOW-BALL",
                "DIG",
-               "CONFUSE-RAY"
+               "CONFUSE-RAY",
+               "MIND-READER"
               ],
               [
                "HYDRO-PUMP",
@@ -384055,7 +386978,7 @@
    ],
    [
     "ROUTE 71",
-    "North: Route 70  West: Rind Island"
+    "North: Route 70  West: Rind Island, Route 72"
    ]
   ],
   "trainer_spots": [
@@ -385222,7 +388145,7 @@
    ],
    [
     "ROUTE 72",
-    "North: Rind Island  West: Salveyo Island"
+    "North: Salveyo Island, Pummelo Island  East: Route 71"
    ]
   ],
   "trainer_spots": [
@@ -684865,41 +687788,23 @@
      "_shadows": true
     },
     "people": [
-     [
-      {
-       "text": "Gentleman on 25F",
-       "action": "EVENT",
-       "event": {
-        "lines": [
-         "I'll give this to you! An Air Balloon!"
-        ],
-        "gift_item": {
-         "AIR_BALLOON": 1
-        },
-        "flag": "b2_drift_air_balloon",
-        "done": [
-         "A Pokemon holding an Air Balloon floats! Ground-type moves miss it until it's hit. I'm a balloon man!"
-        ]
-       },
-       "condition": [
-        "world:anville:item:AIR_BALLOON"
+     {
+      "text": "Gentleman on 25F",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'll give this to you! An Air Balloon!"
        ],
-       "_look": "sheet:b2_c44.png"
+       "gift_item": {
+        "AIR_BALLOON": 1
+       },
+       "flag": "b2_drift_air_balloon",
+       "done": [
+        "A Pokemon holding an Air Balloon floats! Ground-type moves miss it until it's hit. I'm a balloon man!"
+       ]
       },
-      {
-       "text": "Gentleman on 25F",
-       "action": "EVENT",
-       "event": {
-        "lines": [
-         "Balloons! I'm a balloon man! ...My Air Balloons are still on their way. Come back later!"
-        ]
-       },
-       "condition": [
-        "not:world:anville:item:AIR_BALLOON"
-       ],
-       "_look": "sheet:b2_c44.png"
-      }
-     ],
+      "_look": "sheet:b2_c44.png"
+     },
      {
       "text": "Boy on 25F",
       "action": "EVENT",
@@ -751934,7 +754839,97 @@
      "_shadows": true
     },
     "people": [],
-    "title": "Relic Castle"
+    "title": "Relic Castle",
+    "wild_tables": {
+     "ALL": {
+      "grass": [
+       [
+        562,
+        0,
+        20,
+        27,
+        27
+       ],
+       [
+        551,
+        0,
+        20,
+        27,
+        27
+       ],
+       [
+        562,
+        0,
+        10,
+        28,
+        28
+       ],
+       [
+        551,
+        0,
+        10,
+        28,
+        28
+       ],
+       [
+        28,
+        0,
+        10,
+        28,
+        28
+       ],
+       [
+        28,
+        0,
+        10,
+        29,
+        29
+       ],
+       [
+        562,
+        0,
+        5,
+        29,
+        29
+       ],
+       [
+        552,
+        0,
+        5,
+        29,
+        29
+       ],
+       [
+        562,
+        0,
+        4,
+        30,
+        30
+       ],
+       [
+        552,
+        0,
+        4,
+        30,
+        30
+       ],
+       [
+        562,
+        0,
+        1,
+        30,
+        30
+       ],
+       [
+        552,
+        0,
+        1,
+        30,
+        30
+       ]
+      ]
+     }
+    }
    },
    "middle": {
     "theme": "room",
@@ -752441,7 +755436,97 @@
     "hidden": {
      "6,7": "SUN_STONE"
     },
-    "title": "Relic Castle"
+    "title": "Relic Castle",
+    "wild_tables": {
+     "ALL": {
+      "grass": [
+       [
+        343,
+        0,
+        20,
+        27,
+        27
+       ],
+       [
+        343,
+        0,
+        20,
+        27,
+        27
+       ],
+       [
+        343,
+        0,
+        10,
+        28,
+        28
+       ],
+       [
+        343,
+        0,
+        10,
+        28,
+        28
+       ],
+       [
+        343,
+        0,
+        10,
+        28,
+        28
+       ],
+       [
+        343,
+        0,
+        10,
+        28,
+        28
+       ],
+       [
+        343,
+        0,
+        5,
+        29,
+        29
+       ],
+       [
+        343,
+        0,
+        5,
+        29,
+        29
+       ],
+       [
+        343,
+        0,
+        4,
+        30,
+        30
+       ],
+       [
+        343,
+        0,
+        4,
+        30,
+        30
+       ],
+       [
+        343,
+        0,
+        1,
+        30,
+        30
+       ],
+       [
+        343,
+        0,
+        1,
+        30,
+        30
+       ]
+      ]
+     }
+    }
    },
    "hall_e": {
     "theme": "room",
@@ -752878,7 +755963,97 @@
      "_shadows": true
     },
     "people": [],
-    "title": "Relic Castle"
+    "title": "Relic Castle",
+    "wild_tables": {
+     "ALL": {
+      "grass": [
+       [
+        562,
+        0,
+        20,
+        27,
+        27
+       ],
+       [
+        551,
+        0,
+        20,
+        27,
+        27
+       ],
+       [
+        562,
+        0,
+        10,
+        28,
+        28
+       ],
+       [
+        551,
+        0,
+        10,
+        28,
+        28
+       ],
+       [
+        28,
+        0,
+        10,
+        28,
+        28
+       ],
+       [
+        28,
+        0,
+        10,
+        29,
+        29
+       ],
+       [
+        562,
+        0,
+        5,
+        29,
+        29
+       ],
+       [
+        552,
+        0,
+        5,
+        29,
+        29
+       ],
+       [
+        562,
+        0,
+        4,
+        30,
+        30
+       ],
+       [
+        552,
+        0,
+        4,
+        30,
+        30
+       ],
+       [
+        562,
+        0,
+        1,
+        30,
+        30
+       ],
+       [
+        552,
+        0,
+        1,
+        30,
+        30
+       ]
+      ]
+     }
+    }
    },
    "east": {
     "theme": "room",
@@ -753330,7 +756505,97 @@
       "_look": "sheet:b2_item_ball.png"
      }
     ],
-    "title": "Relic Castle"
+    "title": "Relic Castle",
+    "wild_tables": {
+     "ALL": {
+      "grass": [
+       [
+        562,
+        0,
+        20,
+        27,
+        27
+       ],
+       [
+        551,
+        0,
+        20,
+        27,
+        27
+       ],
+       [
+        562,
+        0,
+        10,
+        28,
+        28
+       ],
+       [
+        551,
+        0,
+        10,
+        28,
+        28
+       ],
+       [
+        28,
+        0,
+        10,
+        28,
+        28
+       ],
+       [
+        28,
+        0,
+        10,
+        29,
+        29
+       ],
+       [
+        562,
+        0,
+        5,
+        29,
+        29
+       ],
+       [
+        552,
+        0,
+        5,
+        29,
+        29
+       ],
+       [
+        562,
+        0,
+        4,
+        30,
+        30
+       ],
+       [
+        552,
+        0,
+        4,
+        30,
+        30
+       ],
+       [
+        562,
+        0,
+        1,
+        30,
+        30
+       ],
+       [
+        552,
+        0,
+        1,
+        30,
+        30
+       ]
+      ]
+     }
+    }
    },
    "volcarona": {
     "theme": "room",
@@ -754289,7 +757554,97 @@
       }
      }
     ],
-    "title": "Relic Castle"
+    "title": "Relic Castle",
+    "wild_tables": {
+     "ALL": {
+      "grass": [
+       [
+        343,
+        0,
+        20,
+        27,
+        27
+       ],
+       [
+        343,
+        0,
+        20,
+        27,
+        27
+       ],
+       [
+        343,
+        0,
+        10,
+        28,
+        28
+       ],
+       [
+        343,
+        0,
+        10,
+        28,
+        28
+       ],
+       [
+        343,
+        0,
+        10,
+        28,
+        28
+       ],
+       [
+        343,
+        0,
+        10,
+        28,
+        28
+       ],
+       [
+        343,
+        0,
+        5,
+        29,
+        29
+       ],
+       [
+        343,
+        0,
+        5,
+        29,
+        29
+       ],
+       [
+        343,
+        0,
+        4,
+        30,
+        30
+       ],
+       [
+        343,
+        0,
+        4,
+        30,
+        30
+       ],
+       [
+        343,
+        0,
+        1,
+        30,
+        30
+       ],
+       [
+        343,
+        0,
+        1,
+        30,
+        30
+       ]
+      ]
+     }
+    }
    }
   },
   "inside": {

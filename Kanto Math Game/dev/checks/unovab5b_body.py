@@ -281,6 +281,23 @@ vo = tmaps["RELIC_CASTLE_DEPTHS"]["rooms"]["volcarona"]
 boss = next((c for o in vo.get("people") or [] for c in _opts(o) if isinstance(c, dict) and c.get("action") == "BOSS"), None)
 check(boss and boss["boss"]["id"] == 637 and boss["boss"]["level"] == 35, "Volcarona waits in the north room, Lv 35")
 check(tmaps["RELIC_CASTLE_DEPTHS"]["rooms"]["middle"].get("hidden", {}).get("6,7") == "SUN_STONE", "the middle room's hidden Sun Stone")
+# each room's own wild Pokemon (main a91de160 "wild_tables" on a room): walk in and see who wanders there
+def _room_wild(room):
+    fl = 1 + list(tmaps["RELIC_CASTLE_DEPTHS"]["rooms"]).index(room)   # (a route's rooms are its floors after its own)
+    seen = set()
+    for _ in range(6):
+        story.current_area_key = "RELIC_CASTLE_DEPTHS"; g.walk_town_pos = g.walk_town_room = None
+        g.arrive_floor = ("RELIC_CASTLE_DEPTHS", fl, [0, 0])   # (the room's own arrival spot)
+        g.change_state(PlayState(g)); settle(30)
+        ds = g.current_state
+        for m in ds.run.floor.movers:
+            if m.kind == "wild":
+                p = m.payload
+                seen.add(p.get("id") if isinstance(p, dict) else getattr(p, "id", None))
+    return seen
+for room, want in (("volcarona", {343}), ("middle", {343}), ("hall_w", {562, 551, 28, 552})):
+    got = _room_wild(room)
+    check(got and got <= want, f"Relic Castle's {room} room: its own wild Pokemon, as Black 2 ({sorted(got)})")
 
 print("10) the Journal, the music")
 missions = {m["id"]: m for m in prog["JOURNAL_MISSIONS"]}
