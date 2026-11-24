@@ -523,6 +523,17 @@ class Run:
     def floor(self):
         return self.floors[self.index]
 
+    @property
+    def fog(self):
+        """Fog on this floor: the place's fog, only on its "fog_floors" when the recipe lists them (Platinum's Lost Tower:
+        3F-5F, the zones whose weather is fog; 11-23)."""
+        ff = (self.recipe or {}).get("fog_floors")
+        return self._fog and (ff is None or self.index in ff)
+
+    @fog.setter
+    def fog(self, on):
+        self._fog = on
+
     @staticmethod
     def _ladder(floor, kind, nth=0):
         """The nth STAIRS (or STAIRS_UP) tile of a floor in reading order (else the first): ladders pair up
