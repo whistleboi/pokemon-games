@@ -94,6 +94,13 @@ for _ in range(40):
 check(bool(story.story_flags.get("zz_empty_scene")), "an 'enter' scene ran with no people in the room")
 t.people, t.motions, t.scenes = _ppl, _mo, _sc
 
+print("5) the Journal marker's path search with the goal where you stand (Unova 11-23: it looped forever)")
+import threading
+_res = []
+_th = threading.Thread(target=lambda: _res.append(t._guide_walk({(getattr(t, "room", None), tuple(t.player))})), daemon=True)
+_th.start(); _th.join(10)
+check(not _th.is_alive(), f"it finishes ({_res[:1]})")
+
 story.story_flags = _saved
 g.walk_town_pos = g.walk_town_room = None
 print(f"##### {len(fails)} failures")

@@ -48,6 +48,7 @@ import json
 import math
 import os
 import random
+import weakref
 
 import pygame
 
@@ -847,6 +848,28 @@ PERSON_H = 72   # (Jordan's pick: about 1.3 tiles; SoulSilver's and Platinum's p
 SET_ADULT = (("hg_", 24), ("pt_", 24), ("b2_", 28), ("fr_", 20), ("em_", 20), ("oi_", 20), ("trchar", 40), ("NPC ", 40), ("orre_", 40))
 
 
+# Live 3D (11-23, Johto: people stood 1.5x too tall in 3D once they were 72 px on the map): the 3D view sizes a figure by its
+# picture, so a person's picture is remembered here as it's made, and stands LIVE_PERSON tiles tall for a PERSON_H adult in
+# the world, whatever its set (Black 2's people stood exactly that tall before; the DS shows people about 1.5 tiles).
+PERSON_FRAMES = weakref.WeakSet()
+LIVE_PERSON = 1.5
+
+
+def live_height(img, live_sprite):
+    """A figure's height in the 3D world, in tiles: a person by PERSON_H (one adult height for every set), else by its
+    picture's height (live_sprite tiles per tile of picture), as before."""
+    if img in PERSON_FRAMES:
+        return img.get_height() / PERSON_H * LIVE_PERSON
+    return img.get_height() / TILE * live_sprite
+
+
+def same_kind(new, old):
+    """new (a pose's scaled copy of old, say) counts as a person when old does. Returns new."""
+    if old is not None and new is not None and old in PERSON_FRAMES:
+        PERSON_FRAMES.add(new)
+    return new
+
+
 def person_scale(sheet, cw, ch):
     """The scale for a person-shaped frame (taller than wide) of a known sprite set, else None."""
     if ch < cw * 1.4:
@@ -876,6 +899,8 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
             self.recipe = dict(self.recipe, fog=False)
         if (self.recipe.get("art") or {}).get("fog") == "defog":  # (thick fog: you see only what is near, till Defog clears it: the Lost Tower)
             self.recipe = dict(self.recipe, fog=story.inventory.get("HM_DEFOG", 0) <= 0)
+        if (self.recipe.get("art") or {}).get("fog_floors") is not None:   # (fog on some floors only: the map's "fog_floors")
+            self.recipe = dict(self.recipe, fog_floors=list(self.recipe["art"]["fog_floors"]))
         game.dungeon_state = self
 
         self.exit_items = {}  # target area -> its route_menu entry (for the sign's name and its locks)
@@ -4382,6 +4407,8 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
                 for p in order:
                     out.blit(p, (x, h - p.get_height()))
                     x += p.get_width() + gap
+                if any(p_ in PERSON_FRAMES for p_ in parts):   # (two people together: a person in 3D too)
+                    PERSON_FRAMES.add(out)
                 return out
             if "mon:" in str(sheet):   # (a Pokemon in it steps all the time: made fresh each look)
                 return make_pair()
@@ -4398,7 +4425,9 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
             k = scale or max(1, round(height / max(1, tall)))   # (whole steps: crisp pixels; "scale": a fixed one)
             pk = person_scale(sheet, cw, ch) if as_person and sheet not in CELL_SIZED else None
             if pk:   # (a person from a known set: its set's adult PERSON_H tall, 11-23)
-                return pygame.transform.scale(cell, (max(1, round(cell.get_width() * pk)), max(1, round(cell.get_height() * pk))))
+                out_ = pygame.transform.scale(cell, (max(1, round(cell.get_width() * pk)), max(1, round(cell.get_height() * pk))))
+                PERSON_FRAMES.add(out_)   # (and LIVE_PERSON tall in the 3D world)
+                return out_
             return pygame.transform.scale(cell, (max(1, int(cell.get_width() * k)), max(1, int(cell.get_height() * k))))
         return self._sprite(("sheet", sheet, facing, col, frame, height, scale, as_person), make)
 
@@ -4529,7 +4558,10 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
                 return None
             half = max(cw // 2 - box.x, box.right - cw // 2)
             part = cell.subsurface((cw // 2 - half, box.y, 2 * half, box.h))
-            return pygame.transform.scale(part, (max(1, round(part.get_width() * k * big)), max(1, round(part.get_height() * k * big))))
+            out_ = pygame.transform.scale(part, (max(1, round(part.get_width() * k * big)), max(1, round(part.get_height() * k * big))))
+            if walk and person_scale(walk, w_img.get_width() // 4, w_img.get_height() // 4):
+                PERSON_FRAMES.add(out_)   # (your run / dive / fish frames: a person in 3D, as your walking ones)
+            return out_
         return self._sprite(("player_extra", name, facing, col % cols), make)
 
     def _pose_start(self, kind):

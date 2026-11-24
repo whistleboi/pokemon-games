@@ -1912,6 +1912,14 @@ class StoryManager:
         """
         area_data = self.game.loader.area_data.get("STORY_PROGRESSION", {}).get(area_id, {})
         backgrounds = area_data.get("backgrounds", {})
+        # (11-23: the region's own game's Gym / League background first, if its index names one: src/world/battle_bg.py.
+        #  A League's rooms are the ones listing a background per trainer; an Elite Four member goes by their place.)
+        from src.world import battle_bg as _bbg
+        _league = any(isinstance(backgrounds.get(k), list) for k in ("gym", "battle"))
+        _own = _bbg.pick(self.game, area_id, trainer=True, gym=True, leader=is_leader and not _league,
+                         elite_index=(trainer_index if _league and not is_leader else None) if _league else None)
+        if _own:
+            return _own
         
         # ARCHITECT: Check both 'gym' and 'battle' keys for potential lists (used in Leagues)
         for key in ["gym", "battle"]:

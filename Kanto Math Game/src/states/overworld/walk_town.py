@@ -2448,7 +2448,7 @@ class WalkTownState(CityState):
 
         def put(img, fx, fy):
             if img is not None:
-                sprites.append((img, (fx + 0.5, h(fx, fy), sc.wz(fx, fy) + 0.55), img.get_height() / TILE * LIVE_SPRITE))
+                sprites.append((img, (fx + 0.5, h(fx, fy), sc.wz(fx, fy) + 0.55), dn.live_height(img, LIVE_SPRITE)))   # (a person: one adult height, 11-23)
                 shadows.append((fx + 0.5, h(fx, fy), sc.wz(fx, fy) + 0.55))
         people = self._people()
         mos = getattr(self, "motions", {})
@@ -2479,7 +2479,7 @@ class WalkTownState(CityState):
             if pose[3] or me is None:
                 me = None
             else:
-                me = pygame.transform.smoothscale(me, (max(1, int(me.get_width() * pose[2])), max(1, int(me.get_height() * pose[2]))))
+                me = dn.same_kind(pygame.transform.smoothscale(me, (max(1, int(me.get_width() * pose[2])), max(1, int(me.get_height() * pose[2])))), me)
                 mfx, mfy = mfx + pose[0], mfy + pose[1]
         put(me, mfx, mfy)
         if lead and self.partner != self.player:
@@ -2699,8 +2699,8 @@ class WalkTownState(CityState):
         options = {o.get("text"): o for o in self.area_data.get("explore_options", [])}
         for y, row in enumerate(grid):
             for x, c in enumerate(row):
-                if c in art.EXIT_CHARS and c in ways:
-                    part["exits"][(x, y)] = ways[c]
+                if (c in art.EXIT_CHARS or c in MORE_EXIT_CHARS) and c in ways:   # (MORE, as the walker reads them: Castelia's
+                    part["exits"][(x, y)] = ways[c]                              #  streets, Nimbasa's rooms; Unova 11-23)
                 elif c == "N" and names:
                     who = names.pop(0)
                     opt = who if isinstance(who, dict) else None if isinstance(who, list) else options.get(who)
@@ -2889,13 +2889,15 @@ class WalkTownState(CityState):
                 n = (x + dx, y + dy)
                 if (room, n) in goals:
                     found = (room, n)
-                    prev[found] = (cur, None)
+                    if found not in prev:   # (the goal already reached, the start itself included: a second link would loop - Unova 11-23)
+                        prev[found] = (cur, None)
                     break
                 if 0 <= n[1] < len(grid) and 0 <= n[0] < len(grid[0]) and grid[n[1]][n[0]] == "m":   # (someone behind a counter: talked to across it)
                     over = next(((room, (n[0] + k * dx, n[1] + k * dy)) for k in (1, 2) if (room, (n[0] + k * dx, n[1] + k * dy)) in goals), None)
                     if over:
                         found = over
-                        prev[found] = (cur, None)
+                        if found not in prev:
+                            prev[found] = (cur, None)
                         break
                 on = beyond(room, n)
                 if on is not None:
@@ -2929,7 +2931,9 @@ class WalkTownState(CityState):
         if found is None:
             return None
         first, node = None, found
-        while prev[node] is not None:
+        for _ in range(len(prev) + 1):   # (bounded: back-links can never spin forever)
+            if prev.get(node) is None:
+                break
             node, via = prev[node]
             if via is not None:
                 first = via

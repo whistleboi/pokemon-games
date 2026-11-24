@@ -28,10 +28,16 @@ SWARMS = {
     "KANTO": {"KANTO_ROUTE_1": 261, "KANTO_ROUTE_3": 316, "KANTO_ROUTE_9": 303, "KANTO_ROUTE_12": ("fish", 369),
               "KANTO_ROUTE_13": 113, "KANTO_ROUTE_19": ("surf", 366), "KANTO_ROUTE_25": 427, "VIRIDIAN_FOREST": 401,
               "VERMILLION_CITY": ("surf", 278)},
+    # Hoenn (11-24, main M6): Emerald's own mass outbreaks, told on TV (Bulbapedia "Mass outbreak", Gen III: Emerald's
+    # Seedot / Nuzleaf / Skitty; the Surskit rows are Ruby and Sapphire's). After the Hall of Fame, as in Emerald
+    # (Hoenn's National Pokedex comes then too); half the grass encounters are the outbreak's (Emerald's 50%).
+    "HOENN": {"HOENN_ROUTE_102": 273, "HOENN_ROUTE_114": 274, "HOENN_ROUTE_116": 300, "HOENN_ROUTE_117": 273,
+              "HOENN_ROUTE_120": 273},
 }
 FROM_START = {"KANTO"}   # (regions whose swarms don't wait for the National Pokedex: Jordan 11-23 for Kanto)
 PLACE = {"VALLEY_WINDWORKS": "the Valley Windworks", "ETERNA_FOREST": "Eterna Forest"}
 SHARE = 0.4   # (Platinum: the swarm takes the grass table's two 20% slots)
+SHARE_BY = {"HOENN": 0.5}   # (Emerald: half the encounters while an outbreak is on)
 
 
 def place_name(area):
@@ -76,7 +82,8 @@ def adjust(game, pool, area_key, kind="grass"):
     pool = dict(pool)
     sp = str(sw[1])
     rest = sum(v for k, v in pool.items() if k != sp)
-    pool[sp] = max(1, round(rest * SHARE / (1 - SHARE)))
+    share = SHARE_BY.get(str(region or "").upper(), SHARE)
+    pool[sp] = max(1, round(rest * share / (1 - share)))
     return pool
 
 
