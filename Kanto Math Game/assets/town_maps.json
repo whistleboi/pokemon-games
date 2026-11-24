@@ -357463,10 +357463,12 @@
        ]
       ],
       "until": {
-       "condition": [
-        "has_phenac_badge",
-        "xd_hordel"
-       ]
+       "condition": {
+        "any": [
+         "orre_data_rom_given",
+         "xd_hordel"
+        ]
+       }
       },
       "lines": [
        "Sand blows across the track. You don't know the way to Snagem's hideout yet."
@@ -357481,10 +357483,12 @@
        ]
       ],
       "until": {
-       "condition": [
-        "has_phenac_badge",
-        "xd_hordel"
-       ]
+       "condition": {
+        "any": [
+         "orre_data_rom_given",
+         "xd_hordel"
+        ]
+       }
       },
       "lines": [
        "Sand blows across the track. You don't know the way to Snagem's hideout yet."
@@ -357499,10 +357503,12 @@
        ]
       ],
       "until": {
-       "condition": [
-        "has_phenac_badge",
-        "xd_hordel"
-       ]
+       "condition": {
+        "any": [
+         "orre_data_rom_given",
+         "xd_hordel"
+        ]
+       }
       },
       "lines": [
        "Sand blows across the track. You don't know the way to Snagem's hideout yet."
