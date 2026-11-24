@@ -655,6 +655,72 @@ def _coin_case(maps):
                           "done": ["Coin Case man: Keep your Coins safe in that Coin Case!"]}
 
 
+def _wally_victory_road(maps):
+    """Jordan 11-24 (questions/HOENN.md #4, Emerald): after his battle, Wally stays at Victory Road, beside where he
+    stopped you, with a word for you."""
+    m = maps.get("HOENN_VICTORY_ROAD")
+    if not m or not m.get("floors"):
+        return
+    _F._put(m["floors"][0], "N", "people", [[32, 8, {
+        "text": "Wally ", "action": "EVENT", "condition": "defeated_wally_victory",
+        "event": {"lines": ["Wally: {player_name}... I'm not giving up. I'll keep training until I can beat you!",
+                            "Wally: Go on. The Pokemon League is waiting for you!"]}}]])
+
+
+def _steven_meteor_falls(maps):
+    """Jordan 11-24 (questions/HOENN.md #3, Emerald): Meteor Falls' hidden room (24.107, built as a room by h_h7_rooms.py)
+    opens off 1F's north-west corner, and after the Champion Steven waits in it to battle you (Emerald's team and levels:
+    Skarmory 77, Claydol 75, Aggron 76, Cradily 76, Armaldo 76, Metagross 78); once beaten he has gone on his way."""
+    m = maps.get("HOENN_METEOR_FALLS")
+    if not m or not m.get("floors") or "steven_cave" not in (m.get("rooms") or {}):
+        return
+    f0 = m["floors"][0]
+    art = [list(r) for r in f0["art"]]
+    if art[2][4] == "c":
+        art[2][4] = "1"   # (the opening in the cave wall: Emerald's warp at 4,2)
+    f0["art"] = ["".join(r) for r in art]
+    room = m["rooms"]["steven_cave"]
+    for p in room.get("people") or []:
+        if isinstance(p, dict) and p.get("text") == "Steven":
+            p["condition"] = ["beat_hoenn_champion", "not:meteor_falls_steven_beaten"]
+            p["event"] = {"lines": ["Steven: Oh, wow, {player_name}. I'm amazed you knew where to find me.",
+                                    "Steven: We battled side by side at the Mossdeep Space Center, and you became the Champion.",
+                                    "Steven: Now I want to see how strong you've grown. Shall we?"],
+                          "flag": "meteor_falls_steven_beaten",
+                          "battle": {"name": "Steven", "class": "CHAMPION", "sprite": "steven.png",
+                                     "team": [227, 344, 306, 346, 348, 376], "levels": [77, 75, 76, 76, 76, 78],
+                                     "rewards": {"balls": 5},
+                                     "dialogue": {"player_won": ["Steven: I see... You really are the Champion.",
+                                                                 "Steven: I'll keep travelling, looking for rare stones. Until we meet again!"]}}}
+
+
+def _ship_legends(maps):
+    """Jordan 11-24 (questions/HOENN.md #8, ORAS's Sea Mauville): after the title Lugia and Ho-Oh wait in the Abandoned
+    Ship's storeroom (its BOSS options LUGIA / HO-OH; the Sea Mauville mission, hoenn_s29, points here)."""
+    m = maps.get("HOENN_ABANDONED_SHIP")
+    if not m or len(m.get("floors") or []) < 9:
+        return
+    _F._put(m["floors"][8], "N", "people", [[3, 3, "LUGIA"], [5, 3, "HO-OH"]])
+    m.setdefault("figure_floors", {}).update({"LUGIA": 8, "HO-OH": 8})
+
+
+def _hideout_one_horde(maps):
+    """Jordan 11-24 (questions/HOENN.md #10, as ORAS): the Team Hideout has one five-Poochyena group, your version's team
+    (hoenn_oras.json "Team Magma Grunts", villain grunt) - the other team's spot goes."""
+    m = maps.get("HOENN_TEAM_HIDEOUT")
+    f = ((m or {}).get("floors") or [None])[0]
+    names = list((f or {}).get("trainer_spots") or [])
+    if "Team Aqua Grunts" not in names:
+        return
+    k = names.index("Team Aqua Grunts")
+    xs = [(x, y) for y, r in enumerate(f["art"]) for x, c in enumerate(r) if c == "X"]
+    x, y = xs[k]
+    art = [list(r) for r in f["art"]]
+    art[y][x] = "."
+    f["art"] = ["".join(r) for r in art]
+    f["trainer_spots"] = names[:k] + names[k + 1:]
+
+
 def _part(m, floor, room):
     if room:
         return m["rooms"][room]
@@ -738,6 +804,10 @@ def apply(maps):
     _drop_dupes(maps)
     _mauville_slots(maps)
     _coin_case(maps)
+    _wally_victory_road(maps)
+    _steven_meteor_falls(maps)
+    _ship_legends(maps)
+    _hideout_one_horde(maps)
     _h7(maps)
     for key, floor, room, x, y, who in PEOPLE:
         m = maps.get(key)

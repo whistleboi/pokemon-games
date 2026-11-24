@@ -1135,7 +1135,7 @@ def g30():
     gid = "magma_emblem_hideout"
     title(gid, "Jagged Pass: the Magma Hideout's hidden door (16,18) opens with the Magma Emblem from Mt. Pyre (Emerald only, kept)")
     for which, also in (("before", False), ("after", True)):
-        at("pyre", also=also)
+        at("pyre", also=also, flags=("beat_hoenn_champion",))   # (H8, Jordan 11-24 #9: the other team's hideout, after the title)
         out, n, s_ = take_exit("HOENN_JAGGED_PASS", "HOENN_ROUTE_112", "HOENN_MAGMA_HIDEOUT")
         side(gid, "deviation kept: " + which, out == also, f"Emerald-only, kept: {'with' if also else 'without'} the Magma Emblem: into the hideout {'yes' if out else 'no'} (from {n}: {where()}) {s_[-1:]}")
 
