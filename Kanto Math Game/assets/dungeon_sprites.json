@@ -76,6 +76,75 @@
     ]
   },
   "figures": {
+    "NATIONAL_PARK:TM055": {
+      "item": "POKE_BALL"
+    },
+    "MT_SILVER_CITY:TM125": {
+      "item": "POKE_BALL"
+    },
+    "OLIVINE_LIGHTHOUSE_FLOORS:TM286": {
+      "item": "POKE_BALL"
+    },
+    "OLIVINE_LIGHTHOUSE_BALCONY:TM023": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_ROUTE_27:TM078": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_ROUTE_28:TM246": {
+      "item": "POKE_BALL"
+    },
+    "JOHTO_ROUTE_32:TM056": {
+      "item": "POKE_BALL"
+    },
+    "JOHTO_ROUTE_35:TM247": {
+      "item": "POKE_BALL"
+    },
+    "LAKE_OF_RAGE:TM292": {
+      "item": "POKE_BALL"
+    },
+    "UNION_CAVE:TM036": {
+      "item": "POKE_BALL"
+    },
+    "DARK_CAVE:TM057": {
+      "item": "POKE_BALL"
+    },
+    "ILEX_FOREST:TM050": {
+      "item": "POKE_BALL"
+    },
+    "BELL_TOWER:TM087": {
+      "item": "POKE_BALL"
+    },
+    "MT_MORTAR:TM061": {
+      "item": "POKE_BALL"
+    },
+    "MT_MORTAR:TM027": {
+      "item": "POKE_BALL"
+    },
+    "ICE_PATH:TM046": {
+      "item": "POKE_BALL"
+    },
+    "WHIRL_ISLANDS:TM297": {
+      "item": "POKE_BALL"
+    },
+    "ROCKET_HQ:TM018": {
+      "item": "POKE_BALL"
+    },
+    "ROCKET_HQ:TM299": {
+      "item": "POKE_BALL"
+    },
+    "GOLDENROD_UNDERGROUND:TM280": {
+      "item": "POKE_BALL"
+    },
+    "GOLDENROD_UNDERGROUND:TM070": {
+      "item": "POKE_BALL"
+    },
+    "RADIO_TOWER:TM302": {
+      "item": "POKE_BALL"
+    },
+    "MT_SILVER:TM116": {
+      "item": "POKE_BALL"
+    },
     "FRONTIER_ACCESS:POKE MART": {
       "sheet": "hg_shopm1.png"
     },
@@ -7092,18 +7161,6 @@
     "JOHTO_ROUTE_34:NUGGET": {
       "item": "POKE_BALL"
     },
-    "JOHTO_ROUTE_32:TM50": {
-      "item": "POKE_BALL"
-    },
-    "UNION_CAVE:TM48": {
-      "item": "POKE_BALL"
-    },
-    "DARK_CAVE:TM94": {
-      "item": "POKE_BALL"
-    },
-    "ILEX_FOREST:TM33": {
-      "item": "POKE_BALL"
-    },
     "NEW_BARK_TOWN:Woman": {
       "sheet": "hg_gswoman1.png"
     },
@@ -7395,9 +7452,6 @@
     "JOHTO_ROUTE_35:ULTRA BALL": {
       "item": "POKE_BALL"
     },
-    "JOHTO_ROUTE_35:TM57": {
-      "item": "POKE_BALL"
-    },
     "JOHTO_ROUTE_36:SHINY STONE": {
       "item": "POKE_BALL"
     },
@@ -7445,9 +7499,6 @@
     },
     "GOLDENROD_CITY:Rocket Grunt         ": {
       "sheet": "hg_rocketm.png"
-    },
-    "RADIO_TOWER:TM131": {
-      "item": "POKE_BALL"
     },
     "JOHTO_ROUTE_35:GREEN APRICORN TREE": {
       "pic": "tiles/ss/ow_bonguri_g.png"
@@ -7659,12 +7710,6 @@
     "GOLDENROD_UNDERGROUND:Switch 3": {
       "draw": "terminal"
     },
-    "GOLDENROD_UNDERGROUND:TM133": {
-      "item": "POKE_BALL"
-    },
-    "GOLDENROD_UNDERGROUND:TM134": {
-      "item": "POKE_BALL"
-    },
     "GOLDENROD_UNDERGROUND:Director": {
       "sheet": "hg_gsgentleman.png"
     },
@@ -7687,9 +7732,6 @@
       "item": "POKE_BALL"
     },
     "NATIONAL_PARK:PARALYZE HEAL": {
-      "item": "POKE_BALL"
-    },
-    "NATIONAL_PARK:TM15": {
       "item": "POKE_BALL"
     },
     "NATIONAL_PARK:Lass": {
@@ -7764,9 +7806,6 @@
     "BUG_CONTEST:PARALYZE HEAL": {
       "item": "POKE_BALL"
     },
-    "BUG_CONTEST:TM15": {
-      "item": "POKE_BALL"
-    },
     "ECRUTEAK_CITY:Gate guard": {
       "sheet": "hg_counterm.png"
     },
@@ -7780,9 +7819,6 @@
       "item": "POKE_BALL"
     },
     "BURNED_TOWER:HP UP": {
-      "item": "POKE_BALL"
-    },
-    "BELL_TOWER:TM122": {
       "item": "POKE_BALL"
     },
     "BELL_TOWER:FULL HEAL": {
@@ -7863,9 +7899,6 @@
     "JOHTO_ROUTE_39:LAX INCENSE": {
       "item": "POKE_BALL"
     },
-    "OLIVINE_CITY:TM63": {
-      "item": "POKE_BALL"
-    },
     "OLIVINE_LIGHTHOUSE:SUPER REPEL": {
       "item": "POKE_BALL"
     },
@@ -7873,12 +7906,6 @@
       "item": "POKE_BALL"
     },
     "OLIVINE_LIGHTHOUSE_FLOORS:ETHER": {
-      "item": "POKE_BALL"
-    },
-    "OLIVINE_LIGHTHOUSE_BALCONY:TM130": {
-      "item": "POKE_BALL"
-    },
-    "OLIVINE_LIGHTHOUSE_FLOORS:TM135": {
       "item": "POKE_BALL"
     },
     "JOHTO_ROUTE_38:WHITE APRICORN TREE": {
@@ -7959,9 +7986,6 @@
     "WHIRL_ISLANDS:MAX ELIXIR": {
       "item": "POKE_BALL"
     },
-    "WHIRL_ISLANDS:TM137": {
-      "item": "POKE_BALL"
-    },
     "WHIRL_ISLANDS:Old man": {
       "sheet": "hg_gsoldman1.png"
     },
@@ -7972,9 +7996,6 @@
       "item": "POKE_BALL"
     },
     "JOHTO_ROUTE_42:DUBIOUS DISC": {
-      "item": "POKE_BALL"
-    },
-    "MT_MORTAR:TM65": {
       "item": "POKE_BALL"
     },
     "MT_MORTAR:ETHER": {
@@ -8014,9 +8035,6 @@
       "item": "POKE_BALL"
     },
     "MT_MORTAR:MAX POTION ": {
-      "item": "POKE_BALL"
-    },
-    "MT_MORTAR:TM121": {
       "item": "POKE_BALL"
     },
     "MT_MORTAR:ELIXIR": {
@@ -8082,9 +8100,6 @@
     "LAKE_OF_RAGE:CHOICE SPECS": {
       "item": "POKE_BALL"
     },
-    "LAKE_OF_RAGE:TM112": {
-      "item": "POKE_BALL"
-    },
     "JOHTO_ROUTE_43:ULTRA BALL": {
       "item": "POKE_BALL"
     },
@@ -8104,12 +8119,6 @@
       "item": "POKE_BALL"
     },
     "ROCKET_HQ:PROTEIN": {
-      "item": "POKE_BALL"
-    },
-    "ROCKET_HQ:TM23": {
-      "item": "POKE_BALL"
-    },
-    "ROCKET_HQ:TM123": {
       "item": "POKE_BALL"
     },
     "ROCKET_HQ:X SP ATK": {
@@ -8173,9 +8182,6 @@
       "item": "POKE_BALL"
     },
     "ICE_PATH:PROTEIN": {
-      "item": "POKE_BALL"
-    },
-    "ICE_PATH:TM64": {
       "item": "POKE_BALL"
     },
     "ICE_PATH:NEVER MELT ICE": {
@@ -8508,9 +8514,6 @@
     "JOHTO_SS_AQUA:Little girl": {
       "sheet": "hg_gsbabygirl1.png"
     },
-    "MT_SILVER_CITY:TM139": {
-      "item": "POKE_BALL"
-    },
     "FRONTIER_ACCESS:Lift fan": {
       "sheet": "hg_gsmiddleman1.png"
     },
@@ -8598,9 +8601,6 @@
     "KANTO_ROUTE_27:RARE CANDY": {
       "item": "POKE_BALL"
     },
-    "KANTO_ROUTE_27:TM129": {
-      "item": "POKE_BALL"
-    },
     "KANTO_ROUTE_26:DESTINY KNOT": {
       "item": "POKE_BALL"
     },
@@ -8611,9 +8611,6 @@
       "item": "POKE_BALL"
     },
     "MT_SILVER:ESCAPE ROPE": {
-      "item": "POKE_BALL"
-    },
-    "MT_SILVER:TM140": {
       "item": "POKE_BALL"
     },
     "MT_SILVER:EXPERT BELT": {
@@ -8632,9 +8629,6 @@
       "item": "POKE_BALL"
     },
     "MT_SILVER:PURE INCENSE": {
-      "item": "POKE_BALL"
-    },
-    "KANTO_ROUTE_28:TM55": {
       "item": "POKE_BALL"
     },
     "VIRIDIAN_CITY:Clerk": {

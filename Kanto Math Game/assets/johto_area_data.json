@@ -4027,7 +4027,7 @@
 
                 {"name": "Kimono Girl Kuni", "class": "KIMONO_GIRL", "sprite": "kimono_girl.png", "team": [134], "rewards": {"balls": 2}, "levels": [38], "when_flags": ["badge:RISING"]},
 
-                {"name": "Kimono Girl Miki", "class": "KIMONO_GIRL", "sprite": "kimono_girl.png", "team": [136], "rewards": {"balls": 5, "TIDAL_BELL": 1}, "victory_flag": "kimono_girls_defeated", "is_boss_battle": true, "dialogue": {"intro": ["I am the last of the sisters.", "Let us dance!"], "player_won": ["Incredible. The bell resonates with you."]}, "levels": [38], "when_flags": ["badge:RISING"]}
+                {"name": "Kimono Girl Miki", "class": "KIMONO_GIRL", "sprite": "kimono_girl.png", "team": [136], "rewards": {"balls": 5}, "is_boss_battle": true, "dialogue": {"intro": ["I am the last of the sisters.", "Let us dance!"], "player_won": ["Incredible. You and your Pokemon move as one."]}, "levels": [38], "when_flags": ["badge:RISING"]}
 
             ]
 
