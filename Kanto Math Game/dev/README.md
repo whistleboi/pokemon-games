@@ -20,7 +20,10 @@ Nothing here is loaded by the game. Rules for map work and which checks to run: 
 
 ## checks/ — the check suites
 Each suite is `harness_head.py` + `<name>_body.py` (a few also `sub_helpers_body.py`), run headless.
-`bash dev/checks/run.sh <suite> ... walk:<region>` runs some; `run_all.sh` runs everything (about 40 minutes).
+`bash dev/checks/run.sh <suite> ... walk:<region>` runs some; `run.sh region:<lane>` a region's set, `run.sh quick` the
+quick set, `run_par.sh` the same side by side; `run_all.sh` runs everything. `suites.txt` lists every suite with its
+owner (the Dev Map lane) and tags; `suites_lib.sh` is the runners' shared code. Plan and timings:
+`kanto_handoff/ROADMAP_CHECKS.md`.
 
 | Kind | Suites |
 |---|---|
@@ -28,8 +31,8 @@ Each suite is `harness_head.py` + `<name>_body.py` (a few also `sub_helpers_body
 | Region starts | `kantostart`, `hoennstart`, `sinnohstart`, `smoke_regions.py` (every region starts) |
 | Reach walks | `walk_<region>.py` with `reach_lib.py` (`walk:<region>` in run.sh) |
 | Engine | `battle2`, `doubles`, `catch`, `items`, `items_pp`, `moveeffects`, `selfko`, `tmshop`, `savename`, `faces`, `townsea`, `aiswitch`, `flyrule`, `vsseeker`, `partners`, `movepool`, `scaling`, `storage`, `slots`, `menus`, `ui`, `events`, `features`, `loops` |
-| Old (menu) regions' data | `orange`, `orangeforms`, `decolore`, `sinjoh`, `dlc`, `lumiose`, `eterna`, `orre`, `shadows`, `sevii` (older Sevii story) |
-| Older fix batches | `batch3`-`batch6`, `fixes`, `bugs2`, `grokfix`, `recheck*`, `answers1023`, `canon1029`, `rivals`, `blockers`, `blackfog` |
+| Old (menu) regions | `orange`, `orangeforms`, `orre`, `shadows`, `sevii` (older Sevii story). The menu-only regions' data suites were deleted 11-24 (Jordan); `smoke_regions.py` checks they start |
+| Older one-offs | `rivals`, `recheck_orre` (the 10-23..11-05 fix batches and canon1029 were deleted 11-24, Jordan: very old) |
 
 `out/` (not in git) holds the joined suites and their scratch files.
 
