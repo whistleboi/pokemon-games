@@ -783,11 +783,10 @@
       "battle_type": "distortion",
       "wild_pool_percentages": null,
       "min_rounds": 0,
-      "trainer_pool": [{"name": "Galactic Boss Cyrus", "class": "GALACTIC_BOSS", "sprite": "cyrus.png", "team": [229, 430, 169, 130, 461], "rewards": {"balls": 10}, "is_boss_battle": true, "victory_flag": "distortion_world_cleared", "levels": [45, 47, 46, 46, 48], "dialogue": {"intro": ["Cyrus: So you followed me here. This is the Distortion World, where time and space mean nothing.", "Giratina dragged me into its world. Very well. I will make it mine, and remake everything."], "player_won": ["Cyrus: ...Even here, I lose to you.", "Cyrus: Then I will stay. This world has no spirit to get in my way."], "player_lost": ["Cyrus: Spirit is weakness. You prove it."]}}],
+      "trainer_pool": [{"name": "Galactic Boss Cyrus", "class": "GALACTIC_BOSS", "sprite": "cyrus.png", "team": [229, 430, 169, 130, 461], "rewards": {"balls": 10}, "is_boss_battle": true, "victory_flag": "distortion_world_cleared", "movesets": {"229": ["FLAMETHROWER", "DARK-PULSE", "WILL-O-WISP", "THUNDER-FANG"], "430": ["DRILL-PECK", "NIGHT-SLASH", "HEAT-WAVE", "PSYCHIC"], "169": ["CROSS-POISON", "AIR-SLASH", "TOXIC", "CONFUSE-RAY"], "130": ["GIGA-IMPACT", "WATERFALL", "ICE-FANG", "EARTHQUAKE"], "461": ["NIGHT-SLASH", "ICE-PUNCH", "FAKE-OUT", "X-SCISSOR"]}, "levels": [45, 47, 46, 46, 48], "dialogue": {"intro": ["Cyrus: So you followed me here. This is the Distortion World, where time and space mean nothing.", "Giratina dragged me into its world. Very well. I will make it mine, and remake everything."], "player_won": ["Cyrus: ...Even here, I lose to you.", "Cyrus: Then I will stay. This world has no spirit to get in my way."], "player_lost": ["Cyrus: Spirit is weakness. You prove it."]}}],
       "route_menu": [
-        {"text": "CONFRONT CYRUS", "action": "GALACTIC_GAUNTLET", "flag_condition": "not distortion_world_cleared", "color": "GOLD"},
         {"text": "FACE GIRATINA", "action": "BOSS", "color": "PURPLE", "condition": "distortion_world_cleared", "flag_condition": "not TURNBACK_CAVE_boss_defeated", "boss": {"id": 4001, "name": "Giratina", "victory_flag": "TURNBACK_CAVE_boss_defeated", "lines": ["The ruler of the Distortion World, Giratina, emerges in its Origin Forme!"], "won": ["Giratina sinks back into the shadows of its world.", "Its shadow still flickers somewhere... perhaps in Turnback Cave."]}},
-        {"text": "PICK UP THE GLOWING ORB", "action": "EVENT", "color": "GOLD", "condition": "distortion_world_cleared", "flag_condition": "not got_griseous_orb", "event": {"lines": ["Something golden glows where Giratina stood..."], "gift_item": {"GRISEOUS_ORB": 1}, "flag": "got_griseous_orb"}},
+        {"text": "PICK UP THE GLOWING ORB", "action": "EVENT", "color": "GOLD", "condition": ["distortion_world_cleared", "TURNBACK_CAVE_boss_defeated"], "flag_condition": "not got_griseous_orb", "event": {"lines": ["Something golden glows where Giratina stood..."], "gift_item": {"GRISEOUS_ORB": 1}, "flag": "got_griseous_orb"}},
         {"text": "Spear Pillar", "action": "EXIT", "target_area": "SPEAR_PILLAR", "condition": "can_exit", "color": "RED"}
       ],
       "next_area": "SPEAR_PILLAR"
@@ -1814,9 +1813,9 @@
         "route_menu": [
             {"text": "Battle Mars and Jupiter", "action": "NPC", "target": "spear_pillar_commanders", "flag_condition": "not spear_pillar_commanders", "color": "GOLD"},
             {"text": "Confront Cyrus", "action": "NPC", "target": "cyrus_spear_pillar", "flag_condition": "not spear_pillar_resolved", "color": "GOLD"},
-            {"text": "Encounter Dialga", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD"},
-            {"text": "HALL OF ORIGIN", "target_area": "HALL_OF_ORIGIN", "action": "EXIT", "color": "GOLD", "condition": ["boss_defeated", "beat_sinnoh_champion"]},
-            {"text": "SPATIAL RIFT", "target_area": "SPEAR_PILLAR_RIFT", "action": "EXIT", "color": "GOLD", "condition": "boss_defeated"},
+            {"text": "Encounter Dialga", "action": "BOSS", "condition": ["spear_pillar_resolved", "boss_not_defeated"], "color": "GOLD"},
+            {"text": "HALL OF ORIGIN", "target_area": "HALL_OF_ORIGIN", "action": "EXIT", "color": "GOLD", "condition": ["SPEAR_PILLAR_boss_defeated", "beat_sinnoh_champion"]},
+            {"text": "SPATIAL RIFT", "target_area": "SPEAR_PILLAR_RIFT", "action": "EXIT", "color": "GOLD", "condition": "SPEAR_PILLAR_boss_defeated"},
             {"text": "Mt. Coronet", "action": "EXIT", "target_area": "MT_CORONET_BASE", "condition": "can_exit", "color": "RED"},
             {"text": "Distortion World", "action": "EXIT", "target_area": "DISTORTION_WORLD", "condition": ["can_exit", "spear_pillar_resolved"], "color": "RED"}
         ],
@@ -3635,7 +3634,7 @@
         "flag_not": "canalave_library_meeting"
       },
       "target": "CANALAVE_CITY",
-      "steps": [{"area": "IRON_ISLAND", "at": [21, 10], "label": "Riley", "done": "got_hm_strength_iron_island"}, {"area": "CANALAVE_CITY", "at": [5, 14], "label": "Canalave Library", "done": "canalave_library_meeting"}],
+      "steps": [{"area": "IRON_ISLAND", "at": [21, 10], "label": "Riley", "done": "got_hm_strength_iron_island"}, {"area": "CANALAVE_CITY", "room": "library", "at": [16, 3], "label": "Canalave Library", "done": "canalave_library_meeting"}],
       "completed_flag": "canalave_library_meeting"
     },
     {
@@ -3678,10 +3677,7 @@
         "flag": "galactic_lake_verity_cleared",
         "visited_not": "SNOWPOINT_CITY"
       },
-      "target": "SNOWPOINT_CITY",
-      "steps": [
-        {"area": "SINNOH_ROUTE_211", "at": [28, 20], "label": "Mt. Coronet", "done": "coronet_north_side"}
-      ]
+      "target": "SNOWPOINT_CITY"
     },
     {
       "id": "sinnoh_m12b",
@@ -3738,7 +3734,7 @@
         "flag_not": "spear_pillar_resolved"
       },
       "target": "SPEAR_PILLAR",
-      "completed_flag": "spear_pillar_resolved"
+      "steps": [{"area": "SPEAR_PILLAR", "floor": 3, "at": [10, 41], "label": "Mars and Jupiter", "done": "spear_pillar_commanders"}, {"area": "SPEAR_PILLAR", "floor": 3, "at": [10, 14], "label": "Cyrus", "done": "spear_pillar_resolved"}], "completed_flag": "spear_pillar_resolved"
     },
     {
       "id": "sinnoh_m14",
@@ -3983,10 +3979,10 @@
       "condition": {
         "required_region": "SINNOH",
         "flag": "spear_pillar_resolved",
-        "flag_not": "distortion_world_cleared"
+        "flag_not": "TURNBACK_CAVE_boss_defeated"
       },
       "target": "DISTORTION_WORLD",
-      "completed_flag": "distortion_world_cleared",
+      "steps": [{"area": "DISTORTION_WORLD", "floor": 8, "at": [9, 3], "label": "Cyrus", "done": "distortion_world_cleared"}, {"area": "DISTORTION_WORLD", "floor": 9, "at": [3, 4], "label": "Giratina", "done": "TURNBACK_CAVE_boss_defeated"}], "completed_flag": "TURNBACK_CAVE_boss_defeated",
       "reward": "Cyrus, Giratina and the Griseous Orb"
     },
     {

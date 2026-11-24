@@ -76,6 +76,9 @@
     ]
   },
   "figures": {
+    "SPEAR_PILLAR:Confront Cyrus": {"sheet": "pt_gingaboss.png"},
+    "SPEAR_PILLAR:Battle Mars and Jupiter": {"sheet": "pt_gkanbu1.png"},
+    "DISTORTION_WORLD:PICK UP THE GLOWING ORB": {"item": "POKE_BALL"},
     "CAVE_POKE_SPOT:CIPHER STRAGGLER": {"sheet": "orre_trainer_cipher_grunt.png"},
     "OASIS_POKE_SPOT:CIPHER STRAGGLER": {"sheet": "orre_trainer_cipher_grunt.png"},
     "ORRE_POKE_SPOTS:CIPHER STRAGGLER": {"sheet": "orre_trainer_cipher_grunt.png"},
