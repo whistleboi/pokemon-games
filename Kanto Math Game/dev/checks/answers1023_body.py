@@ -29,13 +29,25 @@ hoenn = {(o.get("boss") or {}).get("id"): k for k, a in SP.items() for o in a.ge
 hoenn.update({(a.get("area_boss") or {}).get("id"): k for k, a in SP.items() if k.startswith("HOENN_")})  # (Unova's Underground Ruins has them too)
 check(hoenn.get(377) == "HOENN_DESERT_RUINS" and hoenn.get(378) == "HOENN_ISLAND_CAVE" and hoenn.get(379) == "HOENN_ANCIENT_TOMB",   # (11-13: in their own caves, walked inside; off Routes 111, 105, 120)
       f"Regis at the Desert Ruins, Island Cave and Ancient Tomb: {[hoenn.get(i) for i in (377, 378, 379)]}")
-_un = [i for i in (637, 638, 645, 646) if not bosses.get(i)]
-if set(_un) <= {637, 638}:   # (Volcarona has no boss option since Unova's walked rebuild: Unova's inbox, 11-24)
-    check(True, "Unova's legendaries all have bosses (Landorus, Kyurem)")
-    for i in _un:
-        print(f"   KNOWN #{i} has no boss in Unova now (Relic Castle's Volcarona): Unova's inbox, 11-24")
-else:
-    check(False, f"Unova's legendaries all have bosses: none for {_un}")
+_walked_bosses = {}   # (and the bosses standing on walked maps: Relic Castle's Volcarona is a BOSS person there, 11-24)
+
+
+def _wb(o, where):
+    if isinstance(o, dict):
+        if str(o.get("action") or "").upper() == "BOSS" and isinstance(o.get("boss"), dict):
+            _walked_bosses.setdefault(o["boss"].get("id"), where)
+        for k, v in o.items():
+            _wb(v, k if isinstance(k, str) and k.isupper() and len(k) > 3 else where)
+    elif isinstance(o, list):
+        for v in o:
+            _wb(v, where)
+
+
+_wb(json.load(open("assets/town_maps.json", encoding="utf-8")), "")
+for _pid in (637, 638, 645, 646):
+    if not bosses.get(_pid) and _walked_bosses.get(_pid):
+        bosses[_pid] = _walked_bosses[_pid]
+check(all(bosses.get(i) for i in (637, 638, 645, 646)), f"Unova's legendaries all have bosses {[bosses.get(i) for i in (637, 638, 645, 646)]}")
 
 # Up-Grade: only at Veilstone.
 for area, want in (("VEILSTONE_CITY", True), ("CELADON_CITY", False), ("GOLDENROD_CITY", False)):

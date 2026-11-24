@@ -96,6 +96,9 @@ check(guide.goal_area(g) == "PALLET_TOWN", f"the marker points at Pallet Town ({
 flags["oak_gs_errand"] = True
 check("journey_gs_oak" not in side(), "Oak's part done once he asks")
 at("VALENCIA_ISLAND")
+flags.pop("orange_ivy_thanks", None)
+check("journey_gs_ivy" not in side(), "not before Orange's 'Get Well Soon' step (Ivy can't hand it over yet)")
+flags["orange_ivy_thanks"] = True
 check("journey_gs_ivy" in side(), "SIDE on Valencia: Professor Ivy's ball")
 flags["got_gs_ball_ivy"] = True; story.inventory["GS_BALL"] = 1
 check("journey_gs_ivy" not in side(), "Ivy's part done with the GS Ball in the Bag")
@@ -118,5 +121,20 @@ check(guide.goal_area(g) == "JOHTO_EMBEDDED_TOWER", f"the marker points at the E
 story.tracked_mission = None
 flags["embedded_rayquaza_defeated"] = True
 check("journey_embedded_tower" not in side(), "done once Rayquaza has come")
+
+print("New Feat counts (J6): swarm catches, rematches")
+from src.world import swarms as _sw
+from src.pokemon import catching as _catching
+_real_today = _sw.today
+_sw.today = lambda st, region, day=None: ("JOHTO_ROUTE_35", 193) if region == "JOHTO" else None
+at("JOHTO_ROUTE_35")
+_before = story.feat_counts.get("JOHTO", {}).get("swarm", 0)
+_catching.after_catch(g, mk(193), "POKE_BALL")
+_catching.after_catch(g, mk(16), "POKE_BALL")
+check(story.feat_counts.get("JOHTO", {}).get("swarm", 0) == _before + 1, "a swarm Pokemon caught where it swarms counts; another doesn't")
+_sw.today = _real_today
+check(any(f["id"] == "swarm" for f in ft["JOHTO"]) and any(f["id"] == "rematches" for f in ft["ORRE"]),
+      "Swarm Chaser where a region has swarms; Old Rivals in every region")
+check(all(any(f["id"] == "rematches" for f in ft[r]) for r in ft if not r.startswith("_")), "every region has Old Rivals")
 
 print(f"##### {fails} failures")

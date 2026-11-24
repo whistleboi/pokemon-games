@@ -74,18 +74,25 @@ pool = g.loader.area_data["HOENN_ROUTE_101_PERCENTAGES"]
 story.visited_region_set = {"HOENN"}
 story.current_area_key = "HOENN_ROUTE_101"
 check("2032" not in regional_forms.extend_pool(g, pool), "Galarian Zigzagoon filtered out")
-ps = PlayState(g)
+# (11-24, legacy menu clear Step 5: Route 101 is walked - its wild Pokemon are the ones the map puts out, not BATTLE WILD)
+exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())
+story.enter_region("HOENN")
+story.visited_region_set = {"HOENN"}
+import random as _rnd4
+ps = walk_route("HOENN_ROUTE_101", "LITTLEROOT_TOWN")
 picks = Counter()
-orig = levels.set_wild
-levels.set_wild = lambda game, poke, area: picks.update([poke.id]) or orig(game, poke, area)
+_r4 = _rnd4.Random(4)
 for _ in range(120):
-    g.change_state(ps)
-    ps.action_battle_wild()
-levels.set_wild = orig
+    _w4 = ps._make_wild(_r4)
+    if _w4 is not None:
+        picks.update([_w4.id])
+g.walk_towns = g.dungeon_routes = False
 check(picks[263] > picks[2032] * 5 and picks[263] > 20, f"Zigzagoon common, no Galarian: {dict(picks)}")
 
 print("5) routes: the town menu (EXPLORE / PKDEX / POKeMON / TRAVEL) with pop-ups")
-story.current_area_key = "HOENN_ROUTE_104"
+# (Legacy menu clear, Step 5, 11-24: the route menu's own mechanics - pop-ups, the exit ambush, leaving by the ambush - are
+#  tested on a menu region's route now (Kalos's Route 22); Hoenn's Route 104 and Unova's Route 2 are walked, with no route menu.)
+story.current_area_key = "KALOS_ROUTE_22"
 ps = PlayState(g)
 g.change_state(ps)
 ps.rounds_completed = 99  # the route's opening rounds done: its ways out are open
@@ -102,10 +109,11 @@ print("6) leaving a route early: an ambush or a reason (Jordan, 10-29)")
 import random as _rnd
 
 said = []
+_ps_show = PlayState.show_dialogue
 
 PlayState.show_dialogue = lambda self, lines, callback=None: said.append((list(lines), callback))
 
-story.current_area_key = "HOENN_ROUTE_104"
+story.current_area_key = "KALOS_ROUTE_22"
 
 ps = PlayState(g)
 
@@ -139,7 +147,7 @@ check(55 <= kinds["blocked"] <= 145 and kinds["trainer"] and kinds["wild"],
 
 for i in range(len(ps.area_data.get("trainer_pool", []))):
 
-    story.mark_trainer_defeated("HOENN_ROUTE_104", i)
+    story.mark_trainer_defeated("KALOS_ROUTE_22", i)
 
 kinds = Counter()
 
@@ -153,33 +161,24 @@ for _ in range(100):
 
 check(kinds["trainer"] == 0, "no trainers left: the ambush is always wild")
 
-story.current_area_key = "KANTO_ROUTE_22"
-
 story.badges = {"KANTO": []}
-
-ps = PlayState(g)
-
-g.change_state(ps)
-
-ps.rounds_completed = 99
-
-ps.show_progression_menu()
-
-r23 = next((b for b in ps.route_buttons if "23" in b.text), None)
-
-said.clear()
-
-if r23:
-
-    r23.callback()
-
-check(r23 is not None and said and "eight badges" in said[-1][0][0], f"Route 23 says why: {said[-1][0] if said else None}")
+exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())   # (Kanto's Route 22 is walked: walk to its gate, 11-24)
+story.enter_region("KANTO")
+story.badges = {"KANTO": []}
+PlayState.show_dialogue = _ps_show   # (the walker's own words, as a player sees them)
+ps = walk_route("KANTO_ROUTE_22", "VIRIDIAN_CITY")
+walk_said.clear()
+walk_out(ps, "KANTO_ROUTE_23")
+check(story.current_area_key == "KANTO_ROUTE_22" and any("eight badges" in l for l in walk_said),
+      f"Route 23 says why: {walk_said[-2:]}")
+g.walk_towns = g.dungeon_routes = False
+PlayState.show_dialogue = lambda self, lines, callback=None: said.append((list(lines), callback))
 
 print("7) get through the exit ambush and you leave that way")
 
 from src.states.overworld import AreaTransitionState
 
-story.current_area_key = "UNOVA_ROUTE_2"
+story.current_area_key = "KALOS_ROUTE_2"
 
 story.player_team = [mk(495)]
 
@@ -187,13 +186,13 @@ ps = PlayState(g)
 
 g.change_state(ps)
 
-exit_opt = {"text": "Striaton City", "action": "EXIT", "target_area": "STRIATON_CITY", "condition": "can_exit"}
+exit_opt = {"text": "Santalune Forest", "action": "EXIT", "target_area": "SANTALUNE_FOREST", "condition": "can_exit"}
 
-story.ambush_exit = {"area": "UNOVA_ROUTE_2", "exit": exit_opt}
+story.ambush_exit = {"area": "KALOS_ROUTE_2", "exit": exit_opt}
 
 ps.show_progression_menu()
 
-check(isinstance(g.current_state, AreaTransitionState) and story.ambush_exit is None, "won the ambush: off to Striaton City")
+check(isinstance(g.current_state, AreaTransitionState) and story.ambush_exit is None, "won the ambush: off to Santalune Forest")
 
 ps = PlayState(g)
 
@@ -201,12 +200,12 @@ g.change_state(ps)
 
 story.player_team[0].current_hp = 0
 
-story.ambush_exit = {"area": "UNOVA_ROUTE_2", "exit": exit_opt}
+story.ambush_exit = {"area": "KALOS_ROUTE_2", "exit": exit_opt}
 
 ps.show_progression_menu()
 
-left = isinstance(g.current_state, AreaTransitionState) and getattr(g.current_state, "next_area_key", "") == "STRIATON_CITY"
-check(not left and story.ambush_exit is None, f"lost it: not sent on to Striaton ({type(g.current_state).__name__})")
+left = isinstance(g.current_state, AreaTransitionState) and getattr(g.current_state, "next_area_key", "") == "SANTALUNE_FOREST"
+check(not left and story.ambush_exit is None, f"lost it: not sent on to Santalune Forest ({type(g.current_state).__name__})")
 
 story.player_team[0].current_hp = story.player_team[0].get_max_hp()
 
@@ -216,13 +215,19 @@ from src.states.battle import TrainerBattleState
 from src.vfx import animations as _an
 from src.utils import Utils as _U
 PlayState.show_dialogue = PlayState.__dict__.get("_orig_show", PlayState.show_dialogue)
-story.current_area_key = "KANTO_ROUTE_24"
 story.player_team = [mk(4), mk(25)]
 for p in story.player_team:
     p.current_hp = p.get_max_hp()
-ps = PlayState(g)
-g.change_state(ps)
-ps.trigger_trainer_battle(specific_index=0)
+# (11-24: Nugget Bridge is walked - walk into its first trainer, as a player would, and watch the intro)
+exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())
+story.enter_region("KANTO")
+story.story_flags["defeated_rival_nugget_bridge"] = True
+story.defeated_trainers.pop("KANTO_ROUTE_24", None)
+ps = walk_route("KANTO_ROUTE_24", "CERULEAN_CITY")
+_t8 = next(m for i in range(ps.run.n_floors) for m in ps.run.made(i).movers if m.kind == "trainer" and m.payload[0] == 0)
+ps.run.floor.movers = [m for m in ps.run.floor.movers if m.kind != "wild"]
+_wl_bump(ps, (_t8.x, _t8.y))
+g.walk_towns = g.dungeon_routes = False
 seen, texts = [], []
 for i in range(600):
     st = g.current_state
@@ -275,11 +280,15 @@ print("10) Journeys graphics: battle intros, battle backgrounds, Ash's throw, ti
 import datetime as _dt
 from src.vfx import transitions as _tr
 from src.states.battle import TrainerIntroState as _TIS
-story.current_area_key = "KANTO_ROUTE_24"
-_ps = PlayState(g); g.change_state(_ps); g.current_state = _ps; _ps.draw()
+exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())   # (Nugget Bridge walked: walk into a trainer, 11-24)
+story.defeated_trainers.pop("KANTO_ROUTE_24", None)
+_ps = walk_route("KANTO_ROUTE_24", "CERULEAN_CITY"); _ps.draw()
 check(not g.battle_transitions, "no intros headless (checks step straight into battles)")
 g.battle_transitions = True
-_ps.trigger_trainer_battle(specific_index=0)
+_t10 = next(m for m in _ps.run.floor.movers if m.kind == "trainer")
+_ps.run.floor.movers = [m for m in _ps.run.floor.movers if m.kind != "wild"]
+_wl_bump(_ps, (_t10.x, _t10.y))
+g.walk_towns = g.dungeon_routes = False
 check(isinstance(g.current_state, _tr.BattleTransitionState), f"a trainer battle opens with an intro {type(g.current_state).__name__}")
 for _i in range(80):
     g.current_state.draw(); g.current_state.update()
@@ -392,6 +401,7 @@ def _mon(pid, level, moves):
 
 
 story.level_cap_mode = "NONE"
+import random as _r12; _r12.seed(12)   # (11-24: a critical Tackle could faint Meowth on turn 2 and leave no move menu: one fixed roll)
 story.current_area_key = "KANTO_ROUTE_1"
 _me = _mon(52, 30, ["FAKE-OUT"])
 story.player_team = [_me, _mon(52, 30, ["FAKE-OUT"])]
@@ -489,8 +499,10 @@ print("16) Orre's Pokemon Center and Mart from Pokemon Orre, for all its towns (
 from src.states import overworld as _ow2
 from src.states.systems import PokeMartState as _PM2
 _shots = []
+g.walk_towns = g.dungeon_routes = True   # (Orre is walked: the screens over its towns' maps - the Mart's, and the Center's at a whiteout; 11-24)
 for _area in ("PHENAC_CITY", "AGATE_VILLAGE"):
     story.current_area_key = _area
+    g.walk_town_pos = g.walk_town_room = None
     _town = _ow2.CityState(g); g.change_state(_town)
     _c = _ow2.PokeCenterState(g, _town)
     _m = _PM2(g, _town)
@@ -500,6 +512,7 @@ _want_c = _pg.transform.scale(g.assets.get_background("orre_center.png"), _shots
 _want_m = _pg.transform.scale(g.assets.get_background("orre_mart.png"), _shots[0][1].get_size())
 _same = lambda a, b: _pg.image.tobytes(a, "RGB") == _pg.image.tobytes(b, "RGB")
 check(all(_same(c, _want_c) and _same(m, _want_m) for c, m in _shots), "every Orre town: the same Center and Mart")
+g.walk_towns = g.dungeon_routes = False
 story.current_area_key = "SANTALUNE_CITY"
 check(g.assets.get_region_building("KALOS", "mart") is not None, "Kalos keeps its one Center (shop inside)")
 check(g.assets.get_region_building("KANTO", "center") is None, "Kanto keeps each town's own")
@@ -560,26 +573,38 @@ story.defeated_trainers.pop("HOENN_METEOR_FALLS", None)
 _g19._CACHE.clear()
 
 
-def _labels(area, explore=True):
-    story.current_area_key = area
-    if g.loader.area_data["STORY_PROGRESSION"][area].get("area_type") == "town":
-        c = _CS19(g); g.change_state(c); c.open_explore_menu()
-        return [b.text for b in c.hover_buttons]
-    p = PlayState(g); g.change_state(p); p.show_progression_menu()
-    return [b.text for b in p.route_buttons if getattr(b, "route_group", "") == "explore"]
+# (11-24, legacy menu clear Step 5: Hoenn is walked - the gold button is the Journal's marker on the map now: where it
+#  points, played on Fallarbor, Meteor Falls and Lavaridge's maps)
+exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())
+story.enter_region("HOENN")
 
 
-story.current_area_key = "FALLARBOR_TOWN"
-_t = _labels("FALLARBOR_TOWN")
-check(any(l.startswith("> ") and "Cozmo" in l for l in _t), f"Fallarbor: Talk to Cozmo is gold {_t}")
+def _marker(area, came):
+    st = walk_place(area, came)
+    hit = st._guide_spot() if hasattr(st, "_guide_spot") else None
+    if not hit:
+        return st, None, None
+    tile = tuple(hit[0])
+    if isinstance(st, _WL_WTS):
+        who = (st._people().get(tile) or {}).get("text")
+        door = st.doors.get(tile)
+        what = who or (door and [o.get("text") for o in st._door_options(door)]) or str(st.exits.get(tile))
+    else:
+        m = st.run.floor.mover_at(*tile)
+        what = (m.kind, (m.payload[1] if m.kind == "trainer" else m.payload).get("name") or (m.payload.get("text") if isinstance(m.payload, dict) else None)) if m else None
+    return st, tile, what
+
+
+_st, _tile, _what = _marker("FALLARBOR_TOWN", "HOENN_ROUTE_113")
+check("Cozmo" in str(_what), f"Fallarbor: the marker points at Cozmo ({_what})")
 story.story_flags["heard_cozmo"] = True
-_t = _labels("HOENN_METEOR_FALLS")
-check(any(l.startswith("> ") and "TRAINER" in l for l in _t) and not any(l.startswith("> ") and "CATCH" in l for l in _t),
-      f"Meteor Falls: BATTLE TRAINER is gold, catching isn't {_t}")
+_st, _tile, _what = _marker("HOENN_METEOR_FALLS", "HOENN_ROUTE_114")
+check(_what is not None and _what[0] == "trainer", f"Meteor Falls: the marker points at a trainer to beat ({_what})")
 story.story_flags["meteor_falls_cleared"] = True
 story.story_flags["mt_chimney_boss_defeated"] = True
-_t = _labels("LAVARIDGE_TOWN")
-check(any(l.startswith("> ") and "Gym" in l for l in _t), f"Lavaridge: the Gym is gold for the Heat Badge {_t}")
+_st, _tile, _what = _marker("LAVARIDGE_TOWN", "HOENN_ROUTE_112")
+check(_tile is not None and _st.doors.get(_tile) == "gym", f"Lavaridge: the marker points at the Gym for the Heat Badge ({_what})")
+g.walk_towns = g.dungeon_routes = False
 story.story_flags, _b19, story.current_area_key, story.defeated_trainers = _saved19
 story.badges = _b19
 print("20) Kalos's Journal: the X/Y story in order, and each step's place is open by then (Jordan, 11-01)")
@@ -674,7 +699,12 @@ story.current_area_key = _gk
 _lob = _GL21(g); g.change_state(_lob)
 check(_lob.redo and _lob.next_opponent is _lob.leader, f"{_gk}: the Leader waits, League Redo ({_lob.status_text})")
 story.player_team = [_mon(150, 100, ["PSYCHIC"])]
-_lob.challenge_gym()
+# (11-24, legacy menu clear Step 5: Kanto's Gyms are walked - into the Gym, up to the Leader, as a player would)
+exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())
+story.story_flags["got_secret_key"] = True; story.inventory["SECRET_KEY"] = 1   # (Cinnabar's Gym door)
+_ldr21 = g.loader.area_data["STORY_PROGRESSION"][_gk]["gym"]["leader"]["name"]
+walk_meet(walk_town(_gk, None), lambda o: str(o.get("action") or "").upper() == "GYM" or str(o.get("text") or "").strip() == _ldr21, fight=False)
+g.walk_towns = g.dungeon_routes = False
 _bs = g.current_state
 _bs = getattr(_bs, "battle_state", None) or getattr(_bs, "next_state", None) or _bs
 _team = getattr(_bs, "enemy_team", None) or getattr(_bs, "opponent_team", None) or []
@@ -700,7 +730,9 @@ story.current_area_key = _lk
 story.story_flags[f"gym_progress_{_lk}"] = 0
 _lob = _GL21(g); g.change_state(_lob)
 check(_lob.redo and "League Redo" in _lob.status_text, f"{_lk}: {_lob.status_text}")
-_lob.challenge_gym()
+g.walk_towns = g.dungeon_routes = True   # (the walked Plateau: up to the first Elite Four member's room)
+walk_meet(walk_town(_lk, None), lambda o: str(o.get("action") or "").upper() == "LEAGUE", fight=False)
+g.walk_towns = g.dungeon_routes = False
 _bs = g.current_state
 _bs = getattr(_bs, "battle_state", None) or getattr(_bs, "next_state", None) or _bs
 _team = getattr(_bs, "enemy_team", None) or getattr(_bs, "opponent_team", None) or []
@@ -807,13 +839,15 @@ for _k, _cls in _mg.GAMES.items():  # each one starts, plays a while, and can lo
         check(_m.backdrop is not None and g.screen.get_at((g.width // 2, g.height - 4)) != (0, 0, 0)
               and pygame.image.tostring(_shot, "RGB") != pygame.image.tostring(g.screen, "RGB"),
               f"{_k}: its scene ({_MGB.SCENES[_k]}) behind it, alive")
-story.current_area_key = "PEWTER_CITY"
-story.badges["KANTO"] = []
-for _f in [f for f in story.story_flags if f.startswith(("gym_challenge", "gym_progress_PEWTER"))]:
+# (11-24, legacy menu clear Step 5: the Gym lobby's challenge is the menu's - walked Gyms have their own game's
+#  puzzles - so it's played at a menu region's Gym now: Kalos's Santalune, Viola)
+story.current_area_key = "SANTALUNE_CITY"
+story.badges["KALOS"] = []
+for _f in [f for f in story.story_flags if f.startswith(("gym_challenge", "gym_progress_SANTALUNE"))]:
     story.story_flags.pop(_f)
 _lob = _GL23(g, None); g.change_state(_lob)
-check(_lob.challenge is not None and "Gym Challenge" in _lob.status_text, f"Pewter: {_lob.status_text}")
-_first = story.story_flags.get(_mg.picked_flag("PEWTER_CITY"))
+check(_lob.challenge is not None and "Gym Challenge" in _lob.status_text, f"Santalune: {_lob.status_text}")
+_first = story.story_flags.get(_mg.picked_flag("SANTALUNE_CITY"))
 _lob.challenge_gym()
 check(isinstance(g.current_state, _MG) and g.current_state.key == _first, f"CHALLENGE plays it ({g.current_state.key})")
 g.current_state.buttons[0][3]()
@@ -827,11 +861,11 @@ g.current_state.buttons[0][3]()
 g.current_state.win()
 g.current_state.buttons[0][3]()  # CONTINUE
 _lob = g.current_state
-check(story.story_flags.get(_mg.done_flag("PEWTER_CITY")) and not _lob.challenge and _lob.next_opponent is _lob.leader,
+check(story.story_flags.get(_mg.done_flag("SANTALUNE_CITY")) and not _lob.challenge and _lob.next_opponent is _lob.leader,
       f"won: the Leader is next ({_lob.status_text})")
 check(story.balls_left > _balls, "and the trainers' Poke Balls come with it")
-story.badges["KANTO"] = ["BOULDER"]
-story.story_flags.pop(_mg.done_flag("PEWTER_CITY"))
+story.badges["KALOS"] = ["BUG"]
+story.story_flags.pop(_mg.done_flag("SANTALUNE_CITY"))
 check(not _GL23(g, None).challenge, "a Gym already beaten has no challenge")
 from src.states.game_corner import GymGamesState as _GGS, coins as _coins1106
 story.story_flags[_mg.done_flag("PEWTER_CITY")] = True
@@ -957,16 +991,17 @@ story.current_area_key = "RUINS_OF_ALPH"
 story.story_flags.pop(_alph_flag("kabuto"), None)
 _alph = [o for o in g.loader.area_data["STORY_PROGRESSION"]["RUINS_OF_ALPH"]["explore_options"] if o.get("action") == "TILE_PUZZLE"]
 check([o["panel"] for o in _alph] == ["kabuto", "omanyte", "aerodactyl", "hooh"], "the Ruins of Alph's four chambers")
-from src.states.overworld import CityState as _CS25
-_city = _CS25(g)
-g.change_state(_city)
-_city.solve_alph_panel("kabuto")
+# (the Ruins of Alph is walked, 11-24: into the Kabuto chamber, walk up to its panel)
+exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())
+_city = walk_town("RUINS_OF_ALPH", "JOHTO_ROUTE_32")
+_read = walk_sign(_city, "Kabuto Panel")
 _ap = g.current_state
-check(isinstance(_ap, _AP), "a chamber opens its puzzle")
+check(_read and isinstance(_ap, _AP), f"a chamber's panel opens its puzzle ({type(_ap).__name__})")
 _ap.buttons[0][3]()
 _ap.win()
 _ap.buttons[0][3]()
 check(story.story_flags.get(_alph_flag("kabuto")) and g.current_state is _city, "solved: it stays solved")
+g.walk_towns = g.dungeon_routes = False   # (the rest: as before)
 check(_gc25.hand_total([("A", "spade"), ("K", "heart")]) == (21, True) and _gc25.blackjack([("A", "spade"), ("10", "club")])
       and _gc25.hand_total([("A", "spade"), ("9", "heart"), ("5", "club")]) == (15, False), "Blackjack hand totals (an Ace is 1 or 11)")
 story.story_flags[_gc25.COINS_FLAG] = 100
@@ -983,7 +1018,7 @@ for _f in range(200):
 _bj.draw()
 check(_bj.phase == "DONE" and _gc25.coins(story) in (90, 100, 110, 115), f"a hand plays out and pays ({_bj.message}, {_gc25.coins(story)} coins)")
 story.story_flags, story.current_area_key = _saved25
-print("26) The Pokemon Tower in four floors; the Black Fog ambushes on the stairs (Jordan, 11-02)")
+print("26) The Pokemon Tower: FireRed's seven floors; the Black Fog on 4F (Jordan, 11-02; walked 11-24)")
 from src.states.overworld import PlayState as _PS26
 _saved26 = (dict(story.story_flags), story.current_area_key, {k: set(v) for k, v in story.defeated_trainers.items()},
             dict(story.inventory))
@@ -995,47 +1030,27 @@ story.story_flags["defeated_rival_tower"] = True  # (the rival met at the door: 
 story.defeated_trainers.pop("KANTO_POKEMON_TOWER", None)
 
 
-def _floor(n):
-    story.story_flags["zone_KANTO_POKEMON_TOWER"] = f"floor_{n}"
-    p = _PS26(g); g.change_state(p); p.show_progression_menu()
-    return p, [b.text.replace("> ", "") for b in p.route_buttons]
-
-
-_p, _f1 = _floor(1)
-_p4, _f4 = _floor(4)
-check("UP TO 2F" in _f1 and "Lavender Town" in _f1 and not any("DOWN" in t for t in _f1), f"1F: up the stairs or out {_f1}")
-# (11-14 on, the Tower is FireRed's seven walked floors, not four menu floors: kanto_maps walks it)
+# (11-24, legacy menu clear Step 5: the Tower is FireRed's seven walked floors (kanto_maps walks them); the menu's floor
+#  buttons and its stairs ambush are gone - the Black Fog stands on 4F now, seen with the Silph Scope (Kanto c4a5b28e))
 _twr = json.load(open("assets/town_maps.json", encoding="utf-8"))["KANTO_POKEMON_TOWER"]
 check(len(_twr["floors"]) == 7 and _twr["floor_names"][-1] == "7F" and not _twr["floors"][-1].get("exits"),
       f"7F is the top: FireRed's seven floors {_twr['floor_names']}")
-check(not any("BLACK FOG" in t for n in (1, 2, 3, 4) for t in _floor(n)[1]), "no Black Fog option on any floor")
-check(all(g.assets.get_journeys_background("routes", f"KANTO_POKEMON_TOWER_floor_{n}") for n in range(1, 5)),
-      "each floor has its own picture")
-_pool = g.loader.area_data["STORY_PROGRESSION"]["KANTO_POKEMON_TOWER"]["trainer_pool"]
-for _i, _t in enumerate(_pool):
-    if _t.get("zone") == "floor_4":
-        story.defeated_trainers.setdefault("KANTO_POKEMON_TOWER", set()).add(_i)
 _6f = _twr["floors"][5]
 check(any((b.get("until") or {}).get("flag_condition") == "tower_ghost_defeated" for b in _6f.get("barred", [])) and _6f.get("boss_spot")
       and "MR. FUJI" in _twr["floors"][6].get("people", []),
       "the ghost bars 6F's stairs up to Team Rocket's 7F, where Mr. Fuji is held (FireRed; Jordan 11-07: as in the games)")
-_tower = g.loader.area_data["STORY_PROGRESSION"]["KANTO_POKEMON_TOWER"]
-_chance = _tower["zone_ambush"]["chance"]
-_tower["zone_ambush"]["chance"] = 1.0
-_p, _ = _floor(1)
-_p.dialogue_box.visible = False  # (the arrival message, read)
-said.clear()
-_p.action_switch_zone("floor_2")
-_said = " ".join(map(str, said[-1][0])) if said else ""
-check("lights go out" in _said and said and said[-1][1] is not None, f"changing floors can bring the Black Fog ({_said[:60]})")
+exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())
+story.enter_region("KANTO")
+import datetime as _dt26
+story.story_flags["black_fog_back_KANTO_POKEMON_TOWER"] = _dt26.date.today().isoformat()   # (no 10% return today)
+_fog = lambda o: "BLACK FOG" in str(o.get("text") or "").upper()
+_p26 = walk_route("KANTO_POKEMON_TOWER", "LAVENDER_TOWN")
+_at = [(i, m.x, m.y) for i in range(_p26.run.n_floors) for m in _p26.run.made(i).movers if isinstance(m.payload, dict) and _fog(m.payload)]
+check(_at and _at[0][0] == 3, f"the Black Fog stands on 4F ({_at})")
 story.story_flags["black_fog_banished_kanto_pokemon_tower"] = True
-_p, _ = _floor(1)
-_p.dialogue_box.visible = False  # (the arrival message, read)
-said.clear()
-_p.action_switch_zone("floor_2")
-_said = " ".join(map(str, said[-1][0])) if said else ""
-check("lights go out" not in _said and "2F" in _said, f"not once it's banished ({_said[:70]})")
-_tower["zone_ambush"]["chance"] = _chance
+_p26 = walk_route("KANTO_POKEMON_TOWER", "LAVENDER_TOWN")
+check(walk_who(_p26, _fog) is None, "not once it's banished")
+g.walk_towns = g.dungeon_routes = False
 story.story_flags, story.current_area_key, story.defeated_trainers, story.inventory = _saved26
 print("27) Regional forms: plain names; only the region's own forms count for Area Complete (Jordan, 11-02)")
 from src.world import regional_forms as _rf27
@@ -1054,12 +1069,7 @@ story.current_area_key = "HOENN_ROUTE_101"
 _in_hoenn = (_rf27.counts_for_area(g, _alolan), _rf27.counts_for_area(g, _galarian), _rf27.counts_for_area(g, 263))
 check(_in_alola == (True, False, True) and _in_hoenn == (False, False, True),
       f"own forms count, other regions' don't (Alola {_in_alola}, Hoenn {_in_hoenn})")
-story.current_area_key = "KANTO_POKEMON_TOWER"
-story.story_flags["defeated_rival_tower"] = True
-story.story_flags["zone_KANTO_POKEMON_TOWER"] = "floor_2"
-_pt = _PS27(g); g.change_state(_pt); _pt.show_progression_menu()
-_stairs = [b for b in _pt.route_buttons if "UP TO" in b.text or "DOWN TO" in b.text]
-check(_stairs and all(b.route_group == "explore" for b in _stairs), f"the tower's stairs are under EXPLORE {[b.text for b in _stairs]}")
+# (the menu's stairs buttons under EXPLORE dropped 11-24: the walked tower's stairs are on its floors - kanto_maps walks them)
 story.story_flags, story.current_area_key = _saved27
 print("28) The Black Fog returns and scales; League rematches Lv 70+; the League Redo Lv 80+ (Jordan, 11-02)")
 import datetime as _dt28
@@ -1156,18 +1166,16 @@ _saved31 = (dict(story.story_flags), story.current_area_key)
 for _area, _n in (("SAFARI_ZONE", 4), ("JOHTO_SAFARI_ZONE", 12), ("HOENN_SAFARI_ZONE", 6), ("GREAT_MARSH", 6)):
     _ad = g.loader.area_data["STORY_PROGRESSION"][_area]
     _zs = _ad.get("zones") or []
-    _pics = [z["key"] for z in _zs if g.assets.get_journeys_background("routes", f"{_area}_{z['key']}") is not None]
     _union = set(g.loader.area_data[_ad["wild_pool_percentages"]])
     _parts = set().union(*(g.loader.area_data[_ad["zone_pools"][z["key"]]] for z in _zs))
-    check(len(_zs) == _n and len(_pics) == _n and _union == _parts,
-          f"{_area}: {len(_zs)} areas, {len(_pics)} pictures, the whole pool is the areas' together")
+    # (11-24: each area's own menu picture dropped from the check - these four are walked, their menu pictures gone)
+    check(len(_zs) == _n and _union == _parts, f"{_area}: {len(_zs)} areas, the whole pool is the areas' together")
 story.current_area_key = "JOHTO_SAFARI_ZONE"
 story.story_flags["zone_JOHTO_SAFARI_ZONE"] = "desert"
 _ps31 = PlayState(g); g.change_state(_ps31); _ps31.show_progression_menu()
 _pool31 = _ps31._base_wild_pool(_ps31.area_data)
 check("27" in _pool31 and "74" not in _pool31, f"the Desert has Sandshrew, not the Peak's Geodude ({sorted(_pool31)[:6]})")
-_to = [b for b in _ps31.route_buttons if b.text.startswith("TO ") or b.text.startswith("> TO ")]
-check(len(_to) == 11 and all(b.route_group == "explore" for b in _to), f"11 other areas, under EXPLORE ({len(_to)})")
+# (the menu's "TO <area>" buttons dropped 11-24: the walked Safari Zone's areas are parts of its own map)
 story.story_flags, story.current_area_key = _saved31
 
 print("32) PC search and filter; Summary pages through the party / Box; shiny badge (Jordan, 11-02)")
@@ -1306,8 +1314,7 @@ check(len(_sfm["floors"]) == 5 and _sfm["floors"][0].get("exits", {}).get("n") =
       and not any(f.get("exits") for f in _sfm["floors"][1:]), f"1F-B4F, the way out on 1F only {_sfm['floor_names']}")
 check((_sfm.get("figure_floors") or {}).get("CHALLENGE ARTICUNO") == 4 and "144" not in _sfp and {"86", "87"} <= set(_sfp),
       "Articuno at the bottom (B4F), not in the wild; Seel and Dewgong in the cave")
-_pic = g.assets.get_journeys_background("routes", "SEAFOAM_ISLANDS_b3f")
-check(_pic is not None, "each floor has its picture")
+# (the menu's per-floor picture check dropped 11-24: Seafoam is walked, Kanto's menu pictures are gone)
 story.story_flags, story.current_area_key = _saved36
 
 print("37) Norman's ORAS team: Slaking 28, Vigoroth 28, Slaking 30, each with its own moves (Jordan, 11-03)")
@@ -1528,22 +1535,26 @@ story.current_area_key = "KANTO_ROUTE_24"
 story.story_flags.pop("nugget_bridge_cleared", None)
 story.story_flags["defeated_rival_nugget_bridge"] = True
 story.defeated_trainers.pop("KANTO_ROUTE_24", None)
-_ps41 = _PS41(g); g.change_state(_ps41); _ps41.rounds_completed = 9; _ps41.show_progression_menu()
+exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())   # (Nugget Bridge is walked: its ways off, as the walker gates them, 11-24)
+story.enter_region("KANTO")
+_ps41 = walk_route("KANTO_ROUTE_24", "CERULEAN_CITY")
 _exits = [m for m in _ps41.area_data["route_menu"] if m.get("action") == "EXIT"]
-_blocks = [_ps41._exit_block(m, True) for m in _exits]
-check(_blocks == ["story", "story"], f"fresh on the bridge: both ways off it are locked ({_blocks})")
-_ps41._exit_locked(_exits[0])
-check(any("no turning back" in l for l in _ps41.npc_dialogue.text_lines if isinstance(l, str))
-      if hasattr(_ps41, "npc_dialogue") else True, "it says why")
+_ways = walk_ways(_ps41)
+check(not any((m.get("target") or m.get("target_area")) in _ways for m in _exits), f"fresh on the bridge: both ways off it are locked ({sorted(x for x in _ways if x.isupper())})")
+walk_said.clear()
+walk_out(_ps41, _exits[0].get("target") or _exits[0].get("target_area"))
+check(story.current_area_key == "KANTO_ROUTE_24" and any("no turning back" in l for l in walk_said), f"it says why ({walk_said[-1:]})")
 for _i in range(6):
     story.mark_trainer_defeated("KANTO_ROUTE_24", _i)
-_ps41.show_progression_menu()
+_ps41 = walk_route("KANTO_ROUTE_24", "CERULEAN_CITY")
 check(not story.story_flags.get("nugget_bridge_cleared"), "six of seven beaten: still on the bridge")
 story.mark_trainer_defeated("KANTO_ROUTE_24", 6)
-_ps41.show_progression_menu()
-_blocks = [_ps41._exit_block(m, False) for m in _exits]
-check(story.story_flags.get("nugget_bridge_cleared") and _blocks == [None, None],
-      f"all seven: the story flag, and both ways open ({_blocks})")
+_ps41 = walk_route("KANTO_ROUTE_24", "CERULEAN_CITY")
+_ps41.show_progression_menu()   # (the route screen's own check, as after each battle won on the map)
+_ways = walk_ways(_ps41)
+check(story.story_flags.get("nugget_bridge_cleared") and all((m.get("target") or m.get("target_area")) in _ways for m in _exits),
+      f"all seven: the story flag, and both ways open ({sorted(x for x in _ways if x.isupper())})")
+g.walk_towns = g.dungeon_routes = False
 _f = story.story_flags
 _f.pop("nugget_bridge_cleared"); _f["visited_BILLS_HOUSE"] = True
 story._migrate_flags() if hasattr(story, "_migrate_flags") else None

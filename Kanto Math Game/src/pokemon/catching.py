@@ -257,6 +257,10 @@ def after_catch(game, pokemon, ball):
         _feats.note(story, "caught")   # (Feats: Pokemon caught, and caught in the Safari Zone)
         if ball == "SAFARI_BALL":
             _feats.note(story, "safari")
+        from src.world import swarms as _swarms   # (a Feat: today's swarm Pokemon caught where it swarms; J6 11-24)
+        _sw = _swarms.today(story, story.get_current_region())
+        if _sw and _sw[0] == story.current_area_key and int(getattr(pokemon, "id", 0) or 0) == int(_sw[1]):
+            _feats.note(story, "swarm")
     except Exception:
         pass
     if ball == "HEAL_BALL":
