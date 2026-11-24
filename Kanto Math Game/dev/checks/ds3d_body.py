@@ -85,6 +85,7 @@ def _ds(roofs, kind):
 if not _l3.available(g):
     print("   (no OpenGL 3.3 here: part 5 skipped)")
 else:
+    story.story_flags.setdefault("unova_version", "BLACK_2")   # (past Unova's version choice: Black 2's maps)
     for _kind, _reg in (("pt", "Sinnoh"), ("b2", "Unova")):
         _bad, _n = [], 0
         for _key, _m in _TMS.items():
