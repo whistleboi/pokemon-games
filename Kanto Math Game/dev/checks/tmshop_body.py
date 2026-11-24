@@ -22,11 +22,15 @@ def shot(n):
     pygame.image.save(g.screen, S + "/" + n)
 
 
-story.current_area_key = "CELADON_CITY"
+exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())   # (Celadon is walked: its Dept. Store opens from the map, 11-24)
+story.enter_region("KANTO")
+city = walk_town("CELADON_CITY", "KANTO_ROUTE_7")
 story.money = 99999
 story.badges = {"KANTO": ["B%d" % i for i in range(8)]}
-m = PokeMartState(g, ow.CityState(g))
-g.change_state(m)
+walk_meet(city, "Dept. Store", play=False)   # (up the Dept. Store to its counter: the shop opens)
+walk_frames(2)
+m = g.current_state
+check(isinstance(m, PokeMartState), f"the Dept. Store's counter opens the shop ({type(m).__name__})")
 if m.phase == "DIALOGUE":
     m.on_welcome_dialogue_end()
 click(m.cat_buttons["TMs"])
@@ -73,6 +77,6 @@ m.cancel_purchase()
 click(m.cat_buttons["BALLS"])
 check(m.btn_tm_sort not in g.ui_manager.elements and m._shelf_top() == m.panel.y, "other tabs: no bar")
 m.tm_sort = "POWER"; m._label_tm_bar()
-m2 = PokeMartState(g, ow.CityState(g))
+m2 = PokeMartState(g, city)
 check(m2.tm_sort == "POWER", "the sort is kept for the next Mart visit")
 print("FAILURES:", fails)

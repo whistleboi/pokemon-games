@@ -12,6 +12,7 @@ def check(c, m):
 
 
 g.data.save = lambda *a, **k: None
+exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())   # (Pallet and Littleroot are walked: Oak and Mom met on the map, 11-24)
 
 
 def finish(city, limit=12):
@@ -46,9 +47,8 @@ story.badges["KANTO"].append("THUNDER")
 check(rowdy.can_get(story), "the Thunder Badge: Oak has one for you")
 _side = [m.get("id") for m in story.get_active_missions()]
 check("s_rowdy_pikachu" in _side, f"the Journal's side mission sends you to Oak ({_side[:4]})")
-city = ow.CityState(g); g.change_state(city)
-city.visit_prof_oak()
-said = finish(city)
+city = walk_town("PALLET_TOWN", "KANTO_ROUTE_1")
+said = walk_meet(city, npc("professor_oak"), choose="Professor Oak") or []   # (into the lab, walk up to Oak)
 pk = rowdy.in_party(story)
 check(pk is not None, "Oak gives the Pikachu (it joins the party)")
 check(any("PIKACHU" in l for l in said), f"he says so ({len(said)} lines)")
@@ -89,21 +89,13 @@ check(len(story.player_team) == before and rowdy.in_party(story), "the Day Care 
 
 print("5) Mom keeps it, in any region")
 story.starting_region = "KANTO"   # (a Kanto player: Mom lives in Pallet Town; from Hoenn on, in every start town)
-story.current_area_key = "PALLET_TOWN"
-city = ow.CityState(g); g.change_state(city)
-city.visit_mom()
-finish(city)
-check(isinstance(g.current_state, PickListState), "Kanto Mom offers to keep Pikachu")
-if isinstance(g.current_state, PickListState):
-    g.current_state.pick("leave"); finish(g.current_state if hasattr(g.current_state, "npc_dialogue") else city)
+city = walk_town("PALLET_TOWN", "KANTO_ROUTE_1")
+w = walk_meet(city, npc("mom"), picks=["leave"])   # (home, walk up to Mom: she offers to keep it; leave it)
+check(w is not None, "Kanto Mom offers to keep Pikachu")
 check(rowdy.in_party(story) is None and rowdy.at_mom(story), "left with Mom")
-story.current_area_key = "LITTLEROOT_TOWN"
-city = ow.CityState(g); g.change_state(city)
-city.visit_mom()
-finish(city)
-check(isinstance(g.current_state, PickListState) and rowdy.at_mom(story), "Hoenn Mom has it too")
-if isinstance(g.current_state, PickListState):
-    g.current_state.pick("take"); finish(city)
+city = walk_town("LITTLEROOT_TOWN", "HOENN_ROUTE_101")
+w = walk_meet(city, npc("mom"), picks=["take"])
+check(w is not None, f"Hoenn Mom has it too ({(w or [])[:1]})")
 pk = rowdy.in_party(story)
 check(pk is not None and not rowdy.at_mom(story), "picked up in Hoenn")
 check(pk is not None and pk.moves and "VOLT-TACKLE" in pk.moves and all(v == 31 for v in pk.ivs.values()), "still the same Pikachu")
