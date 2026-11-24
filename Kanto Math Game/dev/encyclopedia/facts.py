@@ -361,7 +361,7 @@ def wild(key):
             share = 1.0 / (len(tp) if isinstance(tp, list) else 1)
             for r in rows_of(pool, "Headbutt", band):
                 r["rate"] *= share
-                r["ours"] = region_of(key) != "JOHTO"   # (HGSS has Headbutt trees; FireRed doesn't)
+                r["ours"] = region_of(key) == "SEVII"   # (HGSS has Headbutt trees, in Johto and Kanto; not on the Sevii Islands)
                 out["trees"].append(r)
         out["tree_pool"] = tp
     region = region_of(key)

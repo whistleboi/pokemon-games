@@ -13,9 +13,23 @@ from the game's data (`facts.py`); the words between them are written by hand, o
   "Walkthrough_..._Part N", show the layout and the order of places only). Don't paste NPC lines either: say what
   they tell you, briefly (the sample: "A boy near the ledges points out that hopping down them is the quickest way back").
   Journal text is the one exception: it goes in its box with `{{journal:ID}}`, word for word, by the builder.
-- **"Ours"**: mark anything FireRed doesn't have with `<span class="ours">ours</span>` (the tables do this themselves
-  for Headbutt trees and later regions' Pokémon). Examples: Headbutt, the Shiny Charm from Oak, move tutors that sell
-  TMs, HGSS / Yellow extras. Only tag it when you're sure FireRed lacks it; otherwise leave the tag off.
+- **Each region's source games** (Jordan 11-24): a region draws on several games, and "ours" marks only what none
+  of them has.
+
+  | Region | Source games | Walkthrough layout from |
+  |---|---|---|
+  | Kanto | FireRed/LeafGreen, HeartGold/SoulSilver's Kanto, Yellow | Bulbapedia FRLG |
+  | Sevii Islands | FireRed/LeafGreen | Bulbapedia FRLG |
+  | Johto | HeartGold/SoulSilver, Crystal | Bulbapedia HGSS |
+  | Orange Islands | the anime, the fan game (Orange Islands Beta 5.7) | — |
+  | Hoenn | Ruby/Sapphire/Emerald, Omega Ruby/Alpha Sapphire | Bulbapedia ORAS / Emerald |
+  | Sinnoh | Diamond/Pearl/Platinum, Brilliant Diamond/Shining Pearl | Bulbapedia BDSP / Platinum |
+  | Unova | Black/White, Black 2/White 2 | Bulbapedia B2W2 |
+
+- **"Ours"**: mark anything none of the region's source games have with `<span class="ours">ours</span>` (the tables do this themselves
+  for Headbutt trees and later regions' Pokémon). Kanto examples: the Rocky Helmet that Headbutt needs, the Shiny Charm from
+  Oak, move tutors that sell TMs, the Gyms' mini-games. Not ours in Kanto: Yellow's Jessie and James, HGSS's Kanto
+  buildings; in Johto: Crystal's extras. Only tag it when you're sure FireRed lacks it; otherwise leave the tag off.
 - Plain, friendly English for a young player; short paragraphs. "You", present tense. Pokémon with the accent.
   The rival is "your rival" (his name is the player's choice); he's Professor Oak's grandson.
 

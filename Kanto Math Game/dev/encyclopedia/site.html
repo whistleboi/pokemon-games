@@ -129,7 +129,7 @@ function home() {
   const later = SITE.later.map(n => `<div class="card later"><h3>${esc(n)}</h3><p>Not written yet.</p></div>`).join("");
   const walks = Object.values(D.regions).map(reg => `<details class="walk" open><summary><h2>${esc(reg.title)} walkthrough</h2></summary><ol class="parts">${reg.parts.map(p => `<li><a href="#part-${reg.key}-${p.n}">Part ${p.n}</a>: ${esc(p.title)}</li>`).join("")}</ol></details>`).join("");
   return `<div class="crumb">Kanto Math Game</div><h1>Pokémath Encyclopedia</h1>
-    <p class="lede">The game's own guide, written from its data: the story in order, and a page for every place, Pokémon, item and important trainer. Names in the tables and text link to their pages.</p>
+    <p class="lede">The game's own guide, written from its data: the story in order, and a page for every place, Pokémon, item and important trainer. Names in the tables and text link to their pages. An <span class="ours">ours</span> tag marks something none of that region's source games have.</p>
     <div class="cards">${live}${later}</div>${walks}`;
 }
 
