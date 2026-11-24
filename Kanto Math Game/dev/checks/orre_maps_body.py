@@ -461,8 +461,53 @@ _rs = _json.load(open("assets/orre_area_data.json", encoding="utf-8"))["REGION_S
 check(not _over and not _young2 and None not in _lv and all(a <= b for a, b in zip(_lv, _lv[1:])) and _lv[12] == 37
       and _rs == {"196": 10, "197": 11},
       f"L1: Orre at Kanto's caps - over a cap {_over[:3]}, too young {_young2[:3]}, bosses in order {_order}, partners {_rs}")
+# the Agate Gym's number garden (Jordan 11-24): vines on the way in till three gardens bloom; walked as a player would
 t = town("AGATE_VILLAGE", "PYRITE_TOWN")
-_gd =next(tuple(int(v) for v in d.split(",")) for d, n in _tm["AGATE_VILLAGE"]["inside"].items() if n == "gym")
+_gd = next(tuple(int(v) for v in d.split(",")) for d, n in _tm["AGATE_VILLAGE"]["inside"].items() if n == "gym")
+for _f in [k for k in story.story_flags if k.startswith("agate_garden_done")]:
+    story.story_flags.pop(_f)
+_in0 = walk_to(t, _gd) and t.room == "gym"
+_G = _tm["AGATE_VILLAGE"]["rooms"]["gym"]["gardens"]
+_beds = {tuple(int(v) for v in k.split(",")) for gd in _G["gardens"] for k in gd["beds"]}
+_shut = (21, 7) in t.barred
+
+
+def _bed_walk(st, b):
+    """Walk to bed b without stepping on any other bed (a player picking their way round the gardens)."""
+    prev, q = {tuple(st.player): None}, _dq([tuple(st.player)])
+    while q:
+        cur = q.popleft()
+        if cur == b:
+            break
+        for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            nxt = (cur[0] + dx, cur[1] + dy)
+            if nxt in prev or (nxt != b and (nxt in _beds or not st._open(nxt) or nxt in st.exits or nxt in st._people() or nxt in st.barred)):
+                continue
+            prev[nxt] = cur; q.append(nxt)
+    if b not in prev:
+        return False
+    way, cur = [], b
+    while cur is not None:
+        way.append(cur); cur = prev[cur]
+    for (x0, y0), (x1, y1) in zip(way[::-1], way[::-1][1:]):
+        st.anim = 0; st.step(x1 - x0, y1 - y0); st.anim = 0
+    return tuple(st.player) == b
+
+
+_g1 = {v: tuple(int(c) for c in k.split(",")) for k, v in _G["gardens"][0]["beds"].items()}
+_over = _bed_walk(t, _g1[7]) and _bed_walk(t, _g1[6]) and not story.story_flags.get("agate_garden_done_0")   # (7 + 6 > 10: the vines grow back)
+_sols = [(7, 3), (9, 6, 3), (12, 9, 6)]
+_solved = True
+for _i, _sol in enumerate(_sols):
+    _bd = {v: tuple(int(c) for c in k.split(",")) for k, v in _G["gardens"][_i]["beds"].items()}
+    for _n in _sol:
+        _solved = _bed_walk(t, _bd[_n]) and _solved
+    _solved = _solved and bool(story.story_flags.get(f"agate_garden_done_{_i}"))
+    _tap_through(t)
+check(_in0 and _shut and _over and _solved and story.story_flags.get("agate_garden_done") and (21, 7) not in t.barred,
+      f"the Agate Gym's number garden: vines shut the way in ({_shut}); 7 + 6 overshoots 10 and resets ({_over}); 10, 18 and 27 "
+      f"made by walking the beds ({_solved}); then Blaine burns the vines away")
+t = town("AGATE_VILLAGE", "PYRITE_TOWN")
 _in = walk_to(t, _gd) and t.room == "gym"
 _deep = _in and (lambda st: (lambda e: e is not None and walk_to(st, e) and st.room == "gym_2")(next((k for k, v in st.exits.items() if v == "ROOM:gym_2"), None)))(t)
 _lead = _deep and any(isinstance(o, dict) and o.get("action") == "GYM" for o in t.people.values())

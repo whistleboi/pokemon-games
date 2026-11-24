@@ -400,6 +400,30 @@ def _agate(maps):
     _set_people(m, {(52, 22): SKOF, (70, 27): DURY, (60, 27): QUICK_CLAW, (37, 28): EIN_FILE_C})
     m["barred"] = list(m.get("barred") or []) + [CAVE_GUARD]
     _set_people(m["rooms"]["elder"], {(3, 5): BELUH})
+    _agate_garden(m["rooms"]["gym"])
+
+
+# The Agate Gym's number garden (Jordan 11-24, questions/ORRE.md 6 - "our own puzzle", not the fan game's mirrors): three
+# gardens in the hall; walk over beds whose numbers make each garden's target (too much and its vines grow back); all three
+# in bloom and Blaine burns the vines off the way in to the Leaders (src/world/number_garden.py). Targets up to about 30.
+AGATE_GARDENS = {"flag": "agate_garden_done", "gardens": [
+    {"target": 10, "label": [2, 5], "beds": {"2,6": 2, "3,6": 7, "4,6": 4, "2,7": 6, "3,7": 3, "4,7": 5}},
+    {"target": 18, "label": [9, 6], "beds": {"9,7": 8, "10,7": 3, "11,7": 6, "9,8": 4, "10,8": 9, "11,8": 5}},
+    {"target": 27, "label": [16, 2], "beds": {"16,3": 9, "17,3": 5, "18,3": 12, "16,4": 7, "17,4": 8, "18,4": 6}}],
+    "done": ["Every garden in the hall is in full bloom!",
+             "Blaine: Hah! Not bad at all. Erika's flowers like you - so I'll clear the way.",
+             "Blaine burns the vines off the door to the inner garden!"]}
+AGATE_VINES = {"tiles": [[21, 7]], "flag": "agate_garden_done", "look": "img:orre_garden/vines.png",
+               "lines": ["Thick vines cover the door. Erika's sign says the gardens must bloom first."]}
+AGATE_SIGNS = [["AGATE GYM - Leaders: Blaine and Erika", "Walk over a garden's flower beds: each one you step on blooms and adds its number.",
+                "Make the garden's number exactly and it stays in bloom. Go over, and the vines grow back!"],
+               ["AGATE GYM", "Three gardens in bloom, and the way to the Leaders opens."]]
+
+
+def _agate_garden(room):
+    room["gardens"] = AGATE_GARDENS
+    room["barred"] = list(room.get("barred") or []) + [AGATE_VINES]
+    room["signs"] = [list(x) for x in AGATE_SIGNS[:len(room.get("signs") or [])]]
 
 
 OLD_SAVE = "not:got_snag_machine"   # (a save already past this stretch: none of it plays again)

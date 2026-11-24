@@ -326407,12 +326407,13 @@
     "people": [],
     "signs": [
      [
-      "AGATE GYM",
-      "Leaders: Blaine and Erika. Enlighten the eyes and you may proceed."
+      "AGATE GYM - Leaders: Blaine and Erika",
+      "Walk over a garden's flower beds: each one you step on blooms and adds its number.",
+      "Make the garden's number exactly and it stays in bloom. Go over, and the vines grow back!"
      ],
      [
       "AGATE GYM",
-      "Leaders: Blaine and Erika. Enlighten the eyes and you may proceed."
+      "Three gardens in bloom, and the way to the Leaders opens."
      ]
     ],
     "roofs": {
@@ -326437,6 +326438,76 @@
       "size": [
        24,
        15
+      ]
+     }
+    ],
+    "gardens": {
+     "flag": "agate_garden_done",
+     "gardens": [
+      {
+       "target": 10,
+       "label": [
+        2,
+        5
+       ],
+       "beds": {
+        "2,6": 2,
+        "3,6": 7,
+        "4,6": 4,
+        "2,7": 6,
+        "3,7": 3,
+        "4,7": 5
+       }
+      },
+      {
+       "target": 18,
+       "label": [
+        9,
+        6
+       ],
+       "beds": {
+        "9,7": 8,
+        "10,7": 3,
+        "11,7": 6,
+        "9,8": 4,
+        "10,8": 9,
+        "11,8": 5
+       }
+      },
+      {
+       "target": 27,
+       "label": [
+        16,
+        2
+       ],
+       "beds": {
+        "16,3": 9,
+        "17,3": 5,
+        "18,3": 12,
+        "16,4": 7,
+        "17,4": 8,
+        "18,4": 6
+       }
+      }
+     ],
+     "done": [
+      "Every garden in the hall is in full bloom!",
+      "Blaine: Hah! Not bad at all. Erika's flowers like you - so I'll clear the way.",
+      "Blaine burns the vines off the door to the inner garden!"
+     ]
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        21,
+        7
+       ]
+      ],
+      "flag": "agate_garden_done",
+      "look": "img:orre_garden/vines.png",
+      "lines": [
+       "Thick vines cover the door. Erika's sign says the gardens must bloom first."
       ]
      }
     ]
