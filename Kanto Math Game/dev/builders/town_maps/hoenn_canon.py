@@ -10,10 +10,18 @@ have to carry): each entry names the area, the floor (or a town's room) and the 
   showing at once the player picks from a small menu (walk_town: a person that is a list).
 The options themselves (texts, conditions, lines) are the area data's (hoenn_area_data.json / hoenn_oras.json).
 - H4 items (11-23): the missing ORAS / Emerald item balls (PEOPLE, made by _ball: a "found" item stepped into once) and
-  hidden items (HIDDEN), each on the tile its walkthrough line or Emerald's map gives. Routes 107, 129 and 130 have no
-  seabed floor yet, so their seabed Plates, Orbs and shards wait for one.
+  hidden items (HIDDEN), each on the tile its walkthrough line or Emerald's map gives. Routes 107, 129 and 130's seabed
+  Plates, Orbs and shards are on their seabeds (H6, below).
+- H6 seabeds (Jordan 11-24, DECISIONS #24): Routes 107, 129 and 130 get ORAS's seabeds, from the approved draft
+  (kanto_handoff/hoenn_check/seabeds), written to dev/builders/data/h6_seabeds.json by
+  kanto_handoff/hoenn_rom_tools/h_h6_seabeds.py: _seabeds() below.
 """
+import json
+import os
+
 from . import oras_fill as _F
+
+SEABEDS = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "h6_seabeds.json")
 
 # Every ORAS Mega Stone obtainable (Jordan 11-23, DECISIONS #20): the stones that were area options with no spot.
 # The post-Primal ones (ORAS: "after capturing or defeating Groudon / Kyogre") wait for cave_of_origin_cleared in the data.
@@ -261,6 +269,55 @@ def _at(part, x, y):
     return spots.index((x, y)) if (x, y) in spots else None
 
 
+def _seabeds(maps):
+    """H6: each of Routes 107, 129 and 130 becomes two floors, the sea and its seabed (ORAS's own size and shape, in
+    Emerald's seabed tiles). On the sea: ORAS's dark dive patches (":"), its dive links (each patch to its own sunlit patch
+    below: dungeon.py's "dive_links"), its own picture with the patches drawn in, and Route 129's Big Pearl and Heart
+    Scale on its south-middle island. The seven divers move down to their ORAS tiles on the seabed (figure_floors 1;
+    everyone else stays on the sea, 0). The seabed: its sunlit tiles (":"), its hidden items, the seaweed's own wild list,
+    and the 129 <-> 130 seabed edge (exits + edge_to; the floor you arrive on follows the floor you left from)."""
+    if not os.path.exists(SEABEDS):
+        return
+    plan = json.load(open(SEABEDS, encoding="utf-8"))
+    for key, p in plan.items():
+        m = maps.get(key)
+        if not m or m.get("floors"):
+            continue
+        sea = dict(m)
+        art = [list(r) for r in sea["art"]]
+        names = list(sea.get("trainer_spots") or [])
+        spots = [(x, y) for y, r in enumerate(art) for x, c in enumerate(r) if c == "X"]
+        moved = set(p["surface"]["divers_moved"])
+        keep = []
+        for (x, y), name in zip(spots, names):
+            if name in moved:
+                art[y][x] = "o"
+                (sea.get("moves") or {}).pop(f"{x},{y}", None)
+            else:
+                keep.append(name)
+        missing = moved - set(names)
+        if missing:
+            print(ascii(f"  hoenn_canon: {key}: divers not on the sea to move down: {sorted(missing)}"))
+        for x, y in p["surface"]["deep"]:
+            if art[y][x] == "o":
+                art[y][x] = ":"
+        sea["art"] = ["".join(r) for r in art]
+        sea["trainer_spots"] = keep
+        sea["dive"] = 1
+        sea["dive_links"] = p["surface"]["dive_links"]
+        sea["roofs"] = dict(sea.get("roofs") or {}, _picture=dict((sea.get("roofs") or {}).get("_picture") or {}, f=p["surface"]["picture"]))
+        if p["surface"]["hidden"]:
+            sea["hidden"] = dict(sea.get("hidden") or {}, **p["surface"]["hidden"])
+        bed = dict(p["seabed"])
+        on = {name: 0 for name in keep}
+        on.update({name: 1 for name in bed["trainer_spots"]})
+        for q in sea.get("people") or []:
+            on[q.get("text") if isinstance(q, dict) else q] = 0
+        m.clear()
+        m.update(floors=[sea, bed], floor_names=[sea.get("name") or key.replace("HOENN_ROUTE_", "Route "), "The seabed"],
+                 figure_floors=on)
+
+
 def apply(maps):
     _slateport_sub(maps)
     _museum_queue(maps)
@@ -310,3 +367,4 @@ def apply(maps):
             continue
         had = p["people"][i]
         p["people"][i] = list(more) + (had if isinstance(had, list) else [had])
+    _seabeds(maps)

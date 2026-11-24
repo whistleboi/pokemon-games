@@ -1775,5 +1775,12 @@
       24
     ],
     "ponds": 3
-  }
+  },
+  "HOENN_TRICK_HOUSE": {"_about": "ORAS's Trick House (Hoenn H6): only its own items, no loose ones (Jordan 11-24)", "loot": {"per_floor": [0, 0], "items": {}}},
+  "HOENN_TRICK_HOUSE_1": {"_about": "ORAS's Trick House (Hoenn H6): only its own items, no loose ones (Jordan 11-24)", "loot": {"per_floor": [0, 0], "items": {}}},
+  "HOENN_TRICK_HOUSE_2": {"_about": "ORAS's Trick House (Hoenn H6): only its own items, no loose ones (Jordan 11-24)", "loot": {"per_floor": [0, 0], "items": {}}},
+  "HOENN_TRICK_HOUSE_3": {"_about": "ORAS's Trick House (Hoenn H6): only its own items, no loose ones (Jordan 11-24)", "loot": {"per_floor": [0, 0], "items": {}}},
+  "HOENN_TRICK_HOUSE_4": {"_about": "ORAS's Trick House (Hoenn H6): only its own items, no loose ones (Jordan 11-24)", "loot": {"per_floor": [0, 0], "items": {}}},
+  "HOENN_TRICK_HOUSE_5": {"_about": "ORAS's Trick House (Hoenn H6): only its own items, no loose ones (Jordan 11-24)", "loot": {"per_floor": [0, 0], "items": {}}},
+  "HOENN_TRICK_HOUSE_6": {"_about": "ORAS's Trick House (Hoenn H6): only its own items, no loose ones (Jordan 11-24)", "loot": {"per_floor": [0, 0], "items": {}}}
 }

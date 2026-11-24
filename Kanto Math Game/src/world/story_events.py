@@ -122,6 +122,12 @@ EVENTS = {
     "b2_coaster_switch_1": {"world": "unova_story", "toggle": "b2_coaster_sw1"},   # (the roller coaster's switches, 11-23)
     "b2_coaster_switch_2": {"world": "unova_story", "toggle": "b2_coaster_sw2"},   # (the roller coaster's switches, 11-23)
     "b2_coaster_switch_3": {"world": "unova_story", "toggle": "b2_coaster_sw3"},   # (the roller coaster's switches, 11-23)
+    # (Nimbasa's Big Stadium and Small Court: the lobbies' warp panels onto the day's field and back, 11-24)
+    "b2_field_stadium": {"world": "nimbasa_sports", "enter": "stadium"},
+    "b2_field_court": {"world": "nimbasa_sports", "enter": "court"},
+    "b2_field_leave_stadium": {"world": "nimbasa_sports", "leave": "stadium"},
+    "b2_field_leave_court": {"world": "nimbasa_sports", "leave": "court"},
+    "b2_prop_case": {"world": "musical", "case": True},   # (the Musical Theater's owner hands over the Prop Case, 11-24)
     "b2_r5_grotto_minccino": {"world": "grottoes", "grotto": 1, "fill": {"kind": "pokemon", "id": 572, "level": 22, "female": True}},
     # (the Rocket Hideout's B1F Persian statues: walk in front of one and a grunt comes running, once each - HGSS, Jordan 11-15)
     "hq_alarm_1": {"lines": ["Rocket Grunt: Intruder alert! The Persian statue spotted you!"], "flag": "hq_alarm_1",
