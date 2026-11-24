@@ -319761,7 +319761,7 @@
        ]
       ],
       "until": {
-       "flag_condition": "sinnoh_storage_door_open"
+       "flag_condition": "galactic_lake_acuity_cleared"
       },
       "look": "unseen",
       "lines": [
