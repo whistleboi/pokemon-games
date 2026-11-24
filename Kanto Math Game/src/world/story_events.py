@@ -328,10 +328,6 @@ EVENTS = {
         "battle": _t(GRUNT_P, team=[510, 505, 521], dialogue={"player_won": [
             "A blinding light fills the tower. N flies away on the legendary dragon!",
             "N: Find the other dragon stone, {player_name}. Then we'll see whose truth is stronger."]})},
-    "drayden_dragon_stones": {"lines": ["Drayden: The Light Stone and Dark Stone hold the dragons of truth and ideals.",
-                                        "N has one. The other must be awakened by someone the dragon accepts.",
-                                        "I believe that someone is you."],
-                              "flag": "heard_dragon_stones"},
     # Cheren's B2W2 battle (Serebii PokeEarth): tied to Cheren, whichever role he holds in this save.
     "cheren_victory_road": {
         "lines": ["unova_cheren_victory_road"], "flag": "defeated_rival_victory_road",
