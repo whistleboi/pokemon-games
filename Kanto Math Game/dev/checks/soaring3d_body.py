@@ -67,7 +67,12 @@ flags["got_mega_bracelet"] = True
 flags.pop("cave_of_origin_cleared", None)
 check(not S3.give_flute(story), "no flute yet after Southern Island: Steven gives it after the Cave of Origin (ORAS; Hoenn H5)")
 flags["cave_of_origin_cleared"] = True
-check(S3.give_flute(story) and story.inventory.get(S3.FLUTE) == 1, "a save past the Cave of Origin gets the flute")
+_champ = flags.pop("beat_hoenn_champion", None)
+check(not S3.give_flute(story), "after the Cave of Origin the flute is Steven's to give in Sootopolis, not given by itself")
+flags["beat_hoenn_champion"] = True
+check(S3.give_flute(story) and story.inventory.get(S3.FLUTE) == 1, "a save past the Champion without Steven's flute gets it")
+if _champ is None:
+    flags.pop("beat_hoenn_champion", None)
 bag = BagState(g, g.current_state)
 check(bag.usable(S3.FLUTE), "the flute can be used from the Bag")
 check(bag.pocket_of(S3.FLUTE) == "KEY ITEMS", f"the flute is in Key Items ({bag.pocket_of(S3.FLUTE)})")

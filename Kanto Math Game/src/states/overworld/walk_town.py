@@ -2699,8 +2699,8 @@ class WalkTownState(CityState):
         options = {o.get("text"): o for o in self.area_data.get("explore_options", [])}
         for y, row in enumerate(grid):
             for x, c in enumerate(row):
-                if c in art.EXIT_CHARS and c in ways:
-                    part["exits"][(x, y)] = ways[c]
+                if (c in art.EXIT_CHARS or c in MORE_EXIT_CHARS) and c in ways:   # (MORE, as the walker reads them: Castelia's
+                    part["exits"][(x, y)] = ways[c]                              #  streets, Nimbasa's rooms; Unova 11-23)
                 elif c == "N" and names:
                     who = names.pop(0)
                     opt = who if isinstance(who, dict) else None if isinstance(who, list) else options.get(who)
