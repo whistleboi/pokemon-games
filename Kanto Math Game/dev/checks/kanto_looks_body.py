@@ -181,7 +181,7 @@ _want = [("KANTO_ROUTE_1", {}, "grass.png"), ("KANTO_ROUTE_1", {"trainer": True}
          ("KANTO_POKEMON_TOWER", {"trainer": True}, "indoor_1.png"), ("ROCKET_HIDEOUT", {"trainer": True}, "indoor_2.png"),
          ("POWER_PLANT", {}, "indoor_2.png"), ("SILPH_CITY", {"trainer": True}, "building.png"),
          ("KINDLE_ROAD", {"trainer": True}, "sand.png"), ("TANOBY_RUINS", {}, "indoor_1.png"), ("ONE_ISLAND", {"trainer": True}, "plain.png"),
-         ("PEWTER_CITY", {"trainer": True, "gym": True}, None), ("PEWTER_CITY", {"trainer": True, "gym": True, "leader": True}, None)]
+         ("PEWTER_CITY", {"trainer": True}, "plain.png"), ("PEWTER_CITY", {"trainer": True, "gym": True}, None), ("PEWTER_CITY", {"trainer": True, "gym": True, "leader": True}, None)]
 _got = [(a, kw, _bn(bbg.pick(g, a, water=kw.get("water", False), **{k: v for k, v in kw.items() if k != "water"})), w) for a, kw, w in _want]
 for a, kw, got, w in _got:
     print(f"   {a} {kw}: {got} (FireRed's: {w or 'none - the Gym keeps its own'})")

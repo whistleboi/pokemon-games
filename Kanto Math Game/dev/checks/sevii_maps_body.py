@@ -289,7 +289,7 @@ for _i, _side in ((0, "west"), (5, "east")):
 p = route("GREEN_PATH", "WATER_PATH")
 check(p.run.player[0] >= 60, f"Green Path from Water Path: on the east lane {p.run.player}")
 
-# Faraway Island (Emerald's: its own walls, its look from the pictures): from the boat up the cliff steps, through the grove to the forest's way in, to Mew
+# Faraway Island (Emerald's own map data and art, 11-23 - was its walls + Jordan's pictures): from the boat up the cliff steps, through the grove to the forest's way in, to Mew
 p = route("FARAWAY_ISLAND", "ONE_ISLAND")
 f0, f1 = p.run.made(0), p.run.made(1)
 _got0 = reach(f0, tuple(p.run.player))
@@ -305,8 +305,9 @@ while _todo:  # (the same walk without Surf: the ponds are in the way)
         _n = (_x + _dx, _y + _dy)
         if _n not in _land and f0.inside(*_n) and f0.walkable(*_n) and f0.tile(*_n) != core.SURF:
             _land.add(_n); _todo.append(_n)
-check((9, 16) in _land and (22, 9) not in _land and not f0.walkable(18, 13) and f0.tile(18, 10) == core.SURF,
-      "...as Emerald's own walls have it: on foot you reach the grove but not the forest's way in; the way crosses the ponds (Surf); the three trees across the lane stand")
+_pics = [((MAPS["FARAWAY_ISLAND"]["floors"][i].get("roofs") or {}).get("_picture") or {}).get("f") for i in (0, 1)]
+check((22, 8) in _land and (9, 16) in _land and _pics == ["fr_ground/26_56.png", "fr_ground/26_57.png"],
+      f"...as Emerald's own map data has it (11-23: built from Jordan's Emerald file, k_batch38): on foot, no Surf, from the pier up to the forest's way in; drawn from Emerald's own pictures ({_pics})")
 
 # Tanoby Ruins: the Unown are in the chambers, not out on the sea; each of the seven ruins leads into its own chamber
 p = route("TANOBY_RUINS", "SEVAULT_CANYON")
