@@ -149,6 +149,8 @@ story.starting_region = "HOENN"; story.visited_region_set = {"HOENN"}; story.cur
 kirlia = mk(281); kirlia.level = 40
 check(475 in [t for _, t, _ in evolution.evolution_options(g, kirlia)], "Hoenn still allows Kirlia -> Gallade (its dex exception)")
 
+exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())   # (Kanto is walked: 8-10 played on its maps, 11-24)
+story.enter_region("KANTO")
 print("8) Up-Grade")
 kanto_only()
 for area in ("CELADON_CITY", "GOLDENROD_CITY", "VIRIDIAN_CITY"):
@@ -158,14 +160,12 @@ por = mk(137); por.level = 30
 check(evolution.item_evolution(g, por, "UPGRADE") is None, "Porygon2 locked in a Kanto-only game")
 story.visited_region_set.add("JOHTO")
 check(evolution.item_evolution(g, por, "UPGRADE") is not None, "Up-Grade works once Johto is visited")
-story.current_area_key = "SILPH_CITY"; story.story_flags["silph_co_cleared"] = True
-from src.states import overworld as _ow
-_said = []
-_c = _ow.PlayState(g)
-_emp = next(o for o in prog["SILPH_CITY"]["route_menu"] if o["text"] == "TALK TO EMPLOYEE")
-_ow._run_story_event(_c, _emp["event"], lambda x: _c._check_route_condition(x, False), _said.append)
-check(not story.inventory.get("UPGRADE") and "Veilstone" in " ".join(_said[-1]),
-      "Silph employee points to Veilstone (no Kanto Up-Grade)")
+story.story_flags["silph_co_cleared"] = True
+_said = walk_run("SILPH_CITY", "TALK TO EMPLOYEE", came="SAFFRON_CITY")
+# (Kanto's walked Silph: the employee points to the 1F scientist, who makes the Up-Grade once you have the National Dex -
+#  FireRed's; it used to send you to Veilstone)
+check(not story.inventory.get("UPGRADE") and "UP-GRADE" in " ".join(_said[-1] if _said else []),
+      f"Silph employee: no Up-Grade from him, the scientist on 1F makes it ({_said[-1][:1] if _said else 'not on the map'})")
 story.current_area_key = "VEILSTONE_CITY"
 check("UPGRADE" in PokeMartState(g, None)._shop_items(), "Veilstone Department Store sells the Up-Grade")
 
@@ -174,60 +174,58 @@ kanto_only(); story.badges["KANTO"] = []; story.inventory = {}
 story.story_flags.pop("silph_co_cleared", None)
 
 
-def town_opts(area, key):
-    story.current_area_key = area
-    c = CityState(g)
-    return c, [o for o in prog[area][key] if c._check_menu_condition(o.get("condition")) if True]
-
-
-c, opts = town_opts("PEWTER_CITY", "travel_options")
-check("KANTO_ROUTE_3" not in [o["target_area"] for o in opts], "Pewter -> Route 3 closed before Brock")
+c = walk_town("PEWTER_CITY", "KANTO_ROUTE_2")
+check("KANTO_ROUTE_3" in walk_exits(c) and "KANTO_ROUTE_3" not in walk_ways(c), "Pewter -> Route 3 closed before Brock")
 story.badges["KANTO"] = ["BOULDER"]
-c, opts = town_opts("PEWTER_CITY", "travel_options")
-check("KANTO_ROUTE_3" in [o["target_area"] for o in opts], "open after the Boulder Badge")
+c = walk_town("PEWTER_CITY", "KANTO_ROUTE_2")
+check("KANTO_ROUTE_3" in walk_ways(c), "open after the Boulder Badge")
 # (11-19: as FireRed, Route 9's gate is the Cut tree on its map (2,8: kanto_gates walks it), not a closed road out of Cerulean)
 _r9 = json.load(open("assets/town_maps.json", encoding="utf-8"))
 _r9 = (_r9.get("maps", _r9)["KANTO_ROUTE_9"].get("floors") or [_r9.get("maps", _r9)["KANTO_ROUTE_9"]])[0]["art"]
 check(_r9[8][2] == "2", "Route 9 shut before Cut: FireRed's small tree at its west end")
-story.current_area_key = "KANTO_ROUTE_7"; p7 = PlayState(g); p7.rounds_completed = 9
-sf = next(o for o in prog["KANTO_ROUTE_7"]["route_menu"] if o.get("target") == "SAFFRON_CITY")
-check(not p7._check_route_condition(sf["condition"], False, sf), "Saffron gate closed without Tea")
-story.current_area_key = "CELADON_CITY"; cc = CityState(g)
-tea = next(o for o in prog["CELADON_CITY"]["explore_options"] if o["text"] == "Celadon Mansion")
-cc._get_callback_for_option(tea)()
-check(story.inventory.get("TEA") == 1, "Celadon Mansion gives Tea")
-story.current_area_key = "KANTO_ROUTE_7"
-check(p7._check_route_condition(sf["condition"], False, sf), "Saffron open with Tea")
-for area, need in (("VERMILLION_CITY", "Cut"), ("SAFFRON_CITY", "Rocket"), ("CINNABAR_ISLAND", "key")):
-    story.current_area_key = area; ci = CityState(g); g.change_state(ci); ci.start_gym_battle()
-    check(type(g.current_state).__name__ == "CityState" and ci.npc_active, f"{area} gym closed ({need})")
-story.current_area_key = "CINNABAR_ISLAND"; ci = CityState(g)
+p7 = walk_route("KANTO_ROUTE_7", "CELADON_CITY")
+check("SAFFRON_CITY" not in walk_ways(p7), "Saffron gate closed without Tea")
+cc = walk_town("CELADON_CITY", "KANTO_ROUTE_7")
+_tea = walk_meet(cc, "Celadon Mansion")
+if _tea is None:
+    _tea = walk_door(cc, "mansion")
+check(story.inventory.get("TEA") == 1, f"Celadon Mansion gives Tea ({(_tea or [])[:1]})")
+p7 = walk_route("KANTO_ROUTE_7", "CELADON_CITY")
+check("SAFFRON_CITY" in walk_ways(p7), "Saffron open with Tea")
+for area, came, need in (("VERMILLION_CITY", "KANTO_ROUTE_6", "Cut"), ("SAFFRON_CITY", "KANTO_ROUTE_7", "Rocket"), ("CINNABAR_ISLAND", "KANTO_ROUTE_21", "key")):
+    ci = walk_town(area, came)
+    got = walk_door(ci, "gym", play=False)   # (Vermilion's: a Cut tree in the way, so no path to the door at all)
+    walk_frames(5)
+    check(g.current_state is ci and getattr(ci, "room", None) is None and type(g.current_state).__name__ == "WalkTownState",
+          f"{area} gym closed ({need}): {'no way to its door' if got is None else ci.toast or getattr(ci, 'npc_active', None)}")
 mansion = next(o for o in prog["CINNABAR_ISLAND"]["explore_options"] if o["text"] == "Pokemon Mansion")
-check(mansion.get("target_area") == "POKEMON_MANSION", "Cinnabar: the Pokemon Mansion is a place to go in (11-05)")
+ci = walk_town("CINNABAR_ISLAND", "KANTO_ROUTE_21")
+check(mansion.get("target_area") == "POKEMON_MANSION" and "POKEMON_MANSION" in walk_exits(ci), "Cinnabar: the Pokemon Mansion is a place to go in (11-05)")
 story.player_team = [mk(9)]
-story.current_area_key = "POKEMON_MANSION"
-_pm = PlayState(g)
-_pm._get_route_callback(next(o for o in prog["POKEMON_MANSION"]["route_menu"] if o["text"] == "BURGLAR SIMON"))()
-bt = g.current_state.next_state
+walk_run("POKEMON_MANSION", "BURGLAR SIMON", came="CINNABAR_ISLAND")
+bt = g.current_state.next_state if hasattr(g.current_state, "next_state") else g.current_state
 _simon = next(o for o in prog["POKEMON_MANSION"]["route_menu"] if o["text"] == "BURGLAR SIMON")["event"]["battle"]
-check([p.level for p in bt.opponent_team] == _simon["levels"] and _simon["levels"] == [38], "Mansion burglar battle (FireRed's team)")
-bt.player_won = True; bt.exit_battle()
+check(hasattr(bt, "opponent_team") and [p.level for p in bt.opponent_team] == _simon["levels"] and _simon["levels"] == [38], "Mansion burglar battle (FireRed's team): walk up to him")
+if hasattr(bt, "exit_battle"):
+    bt.player_won = True; bt.exit_battle()
 # (11-17, Kanto decisions: the Secret Key is FireRed's item ball in the Mansion basement, not the burglar's)
 check(not story.inventory.get("SECRET_KEY") and any("SECRET" in str(o.get("text", "")).upper() and o.get("found")
                                                   for o in prog["POKEMON_MANSION"]["route_menu"]),
       "the Secret Key isn't his: it lies in the basement, as in FireRed")
-story.current_area_key = "KANTO_ROUTE_16"; p16 = PlayState(g); p16.rounds_completed = 9
-cy = next(o for o in prog["KANTO_ROUTE_16"]["route_menu"] if o.get("target") == "KANTO_ROUTE_17")
-check(not p16._check_route_condition(cy["condition"], False, cy), "Cycling Road needs a Bicycle")
+p16 = walk_route("KANTO_ROUTE_16", "CELADON_CITY")
+check("KANTO_ROUTE_17" not in walk_ways(p16), "Cycling Road needs a Bicycle")
 
 print("10) story triggers")
 kanto_only(); story.badges["KANTO"] = []
 story.story_flags.pop("defeated_rival_route22_early", None)
 g.rival_name, g.rival_character = "GARY", "blue"
-story.current_area_key = "KANTO_ROUTE_22"; p22 = PlayState(g)
-g.change_state(p22)
+p22 = walk_route("KANTO_ROUTE_22", "VIRIDIAN_CITY", play=False)
+walk_play(fight=False, off_map=True)
+if walked(g.current_state):   # (the rival waits on the walked map: walk up)
+    walk_meet(g.current_state, "{rival_name}", fight=False)
 intro = g.current_state
-check(type(intro).__name__ == "TrainerIntroState" and intro.next_state.trainer_name == story.region_rivals["KANTO"]["name"],
+intro = intro if type(intro).__name__ == "TrainerIntroState" else type("I", (), {"next_state": intro})()
+check(hasattr(intro.next_state, "trainer_name") and intro.next_state.trainer_name == story.region_rivals["KANTO"]["name"],
       f"Route 22 rival appears at 0 badges: {getattr(getattr(intro, 'next_state', None), 'trainer_name', None)}")
 story.current_area_key = "KANTO_ROUTE_11"; story.player_team = [mk(9)]
 snor = mk(143)
@@ -238,7 +236,8 @@ wb.trigger_outro(True)
 check(story.story_flags.get("KANTO_ROUTE_11_boss_defeated"), "knocking Snorlax out clears the road (no catch needed)")
 story.badges["KANTO"] = []; story.story_flags.pop("viridian_rocket_defeated", None)
 story.player_team = [mk(7)]; story.player_team[0].level = 5  # canon levels: a team that hasn't outgrown them
-story.current_area_key = "VIRIDIAN_CITY"; vc = CityState(g); g.change_state(vc); vc.start_gym_battle()
-rb = g.current_state.next_state
+vc = walk_town("VIRIDIAN_CITY", "KANTO_ROUTE_1")
+walk_meet(vc, "Jessie and James", fight=False)   # (they stand by the locked Gym: walk up)
+rb = g.current_state.next_state if hasattr(g.current_state, "next_state") else g.current_state
 check(max(p.level for p in rb.opponent_team) <= 10, f"Viridian Team Rocket at fair levels: {[p.level for p in rb.opponent_team]}")
 print(f"##### {fails} failures")

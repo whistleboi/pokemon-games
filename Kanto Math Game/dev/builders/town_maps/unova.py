@@ -5247,6 +5247,199 @@ _room_wild(RM_INSIDE, "REVERSAL_MOUNTAIN_INSIDE")
 _room_wild(STRANGE_HOUSE, "STRANGE_HOUSE")
 
 
+# ======================================================================================================== batch 7b (11-24)
+# Undella Town (412: the Center 413, the house 415, Caitlin's villa 416; the Undella Gate 372 north to Route 13), Undella Bay
+# (240, by Surf), Route 13 (370, 128 x 128: Lacunosa's corner and its empty quarters walled; the houses 371 and 373; Hidden
+# Grottoes 6 and 7), Lacunosa Town (406: the Center 407, houses 408, 409 the old woman's, 410, 411). Story flags:
+# visited_UNDELLA_TOWN -> b2_lacunosa_juniper (Juniper and Bianca meet you) -> b2_lacunosa_tale (the old woman's tale) ->
+# b2_lacunosa_zinzolin (with Hugh, against Zinzolin and a Grunt) -> visited_OPELUCID_CITY (batch 8).
+OUTSIDE.update({413: 412, 415: 412, 416: 412, 372: 412})
+UNDELLA_GATE = room(372, {0: _say("Maid in the gate", "The longest road in Unova... I heard it's Route 13."),
+                          1: _say("Hiker in the gate", "I love clearing my path with Hidden Moves!")},
+                    {1: ["UNDELLA GATE", "North: Route 13"]}, (48, 7), exits_extra={370: ("^", "UNOVA_ROUTE_13")})
+UNDELLA_GATE["title"] = "Undella Gate"
+UNDELLA = town(
+    412, {5: _ball("Poke Ball by the west villa", "BERRY_JUICE", "b2_undella_berry_juice", name="a Berry Juice"),
+          8: _say("Worker by the Marine Tube", "The Marine Tube runs under the bay to Humilau. We're still cleaning it: it's not open yet!",
+                  condition=["not:beat_unova_champion"]),
+          9: _say("Ace Trainer on the beach", "Undellaaaaa!"),
+          4: _say("Girl on the beach", "The Pokemon World Tournament... I wonder if Cynthia will enter too.")},
+    {14: ["UNDELLA TOWN", "A town of villas by the bay"], 2: ["MARINE TUBE", "Closed for cleaning"], 1: ["UNDELLA TOWN"]},
+    {413: ("center", "center"), 415: ("house", "house"), 416: ("house", "villa"), 372: ("gate", "gate", "UNOVA_ROUTE_13")},
+    {"center": room(413, {4: {"text": "Pokémon Center", "action": "HEAL"}, 2: {"text": "Shop", "action": "SHOP"},
+                          1: _say("Clerk ", "The counter on the left sells everyday items."),
+                          3: _say("Clerk  ", "Specialty Poke Balls are over here!"),
+                          0: {"text": "Mr. Medal", "action": "EVENT", "event": {"medal_rally": True}},
+                          8: _say("Woman by the PC", "Undella Bay's Abyssal Ruins have messages carved into their walls..."),
+                          9: _say("Lady in the Center", "Somebody, somewhere, makes all these Poke Balls. Thank you, whoever you are!"),
+                          10: _say("Man in sunglasses", "Heh heh... Would you pay $1,000 for a plain old Sitrus Berry? "
+                                                        "If you agree with the price, that's what shopping's all about!")},
+                    {}, (56, 11)),
+     "house": room(415, {1: _say("Woman in the house", "I wonder why only the father of The Riches stayed here..."),
+                         2: _say("Boy in the house", "The shops on Join Avenue are run by amazing Trainers. I'm getting excited!")},
+                   {}, (24, 9)),
+     "villa": room(416, {1: _say("Cynthia", "Cynthia: I'm staying at my friend's villa to research the Abyssal Ruins. "
+                                            "Let's battle someday, Trainer.", condition=["beat_unova_champion"])}, {}, (41, 9)),
+     "gate": UNDELLA_GATE},
+    edges={">": ("UNDELLA_BAY", [(63, y) for y in range(16, 25)]), "<": ("REVERSAL_MOUNTAIN_INSIDE", [(5, 11)]),
+           "v": ("UNOVA_ROUTE_14", [(x, 31) for x in range(11, 53)])},
+    hidden={"5,2": "SHINY_STONE", "29,19": "HEART_SCALE", "49,17": "PEARL", "15,29": "PEARL"},
+    title="Undella Town")
+UNDELLA["edge_to"] = {"63,%d" % y: [1, min(48 + y - 16, 55)] for y in range(16, 25)}
+UNDELLA["gated_exits"] = {"UNOVA_ROUTE_14": ["beat_unova_champion"]}
+UNDELLA["barred"] = [{"tiles": [[x, 31] for x in range(11, 53)], "until": {"flag_condition": "beat_unova_champion"},
+                      "look": "unseen", "lines": ["The beach road south is closed off till the summer crowds go home."]}]
+for _r, _t in (("center", "Pokémon Center"), ("house", "House"), ("villa", "Villa")):
+    UNDELLA["rooms"][_r]["title"] = _t
+
+JELLICENT = [{"text": "Jellicent", "action": "BOSS", "color": "RED", "_look": "mon:593",
+              "condition": ["weekday:" + _d, "unova_version:" + _v],
+              "boss": {"id": 593, "name": "Jellicent", "level": 40, "victory_flag": "b2_bay_jellicent",
+                       "lines": ["Jelliiii! A Jellicent drifts up out of the bay!"]}}
+             for _d, _v in (("mon", "BLACK_2"), ("thu", "WHITE_2"))]   # (Black 2: a male on Mondays; White 2: a female on Thursdays)
+UNDELLA_BAY_MAP = route(
+    240, {7: _ball("Poke Ball on the rocks", "DRACO_PLATE", "b2_bay_draco_plate", name="a Draco Plate"),
+          6: _ball("Poke Ball on the sandbar", "SPLASH_PLATE", "b2_bay_splash_plate", name="a Splash Plate"),
+          8: JELLICENT},
+    {}, exits={"<": ("UNDELLA_TOWN", [(0, y) for y in range(48, 56)]), "w": ("UNOVA_ROUTE_13", [(0, y) for y in range(15, 32)]),
+               "q": ("SEASIDE_CAVE", [(14, 6), (15, 6)])},   # (the file's door to 515, Seaside Cave)
+    trainers={0: ("Ace Trainer Summer", 4), 1: ("Swimmer F Arissa", 6), 2: ("Swimmer M Matt", 3), 3: ("Swimmer M Bart", 3),
+              4: ("Swimmer F Mitzi", 3), 5: ("Swimmer M Tim", 5)},
+    hidden={"4,40": "HEART_SCALE"}, title="Undella Bay")
+UNDELLA_BAY_MAP["gated_exits"] = {"SEASIDE_CAVE": ["beat_unova_champion"]}   # (the cave and Route 21 beyond: after the League, as before)
+UNDELLA_BAY_MAP["barred"] = [{"tiles": [[14, 6], [15, 6]], "until": {"flag_condition": "beat_unova_champion"}, "look": "unseen",
+                              "lines": ["The waves are crashing into the cave mouth. It's too rough to go in right now."]}]
+UNDELLA_BAY_MAP["split"] = True   # (the bay: crossed by Surf, each shore its own way in)
+UNDELLA_BAY_MAP["edge_to"] = dict({"0,%d" % y: [62, min(16 + y - 48, 24)] for y in range(48, 56)},
+                                  **{"0,%d" % y: [126, 111 + y - 15] for y in range(15, 32)})
+
+OUTSIDE.update({371: 370, 373: 370})
+ROUTE_13 = route(
+    370, {19: _ball("Poke Ball on the cliff top", "HYPER_POTION", "b2_r13_hyper_potion", name="a Hyper Potion"),
+          18: _ball("Poke Ball by the stairs", "MAX_ETHER", "b2_r13_max_ether", name="a Max Ether"),
+          26: _ball("Poke Ball past the small trees", "BLUE_SHARD", "b2_r13_blue_shard", name="a Blue Shard"),
+          17: _ball("Poke Ball on the beach", "STAR_PIECE", "b2_r13_star_piece", name="a Star Piece"),
+          20: _ball("Poke Ball by the dunes", "TM120", "b2_r13_tm29", name="TM120 Psychic"),
+          16: _ball("Poke Ball in the sand", "RED_SHARD", "b2_r13_red_shard", name="a Red Shard"),
+          23: _ball("Poke Ball by the water", "LUXURY_BALL", "b2_r13_luxury_ball", name="a Luxury Ball"),
+          22: _ball("Poke Ball on the shore", "ULTRA_BALL", "b2_r13_ultra_ball", name="an Ultra Ball"),
+          15: _ball("Poke Ball by the gate", "MAX_REPEL", "b2_r13_max_repel", name="a Max Repel"),
+          13: {"text": "Treasure hunter", "action": "EVENT", "event": {"world": "unova_story", "daily_gift": {
+              "key": "b2_r13_treasure", "items": ["BLUE_FLUTE", "RED_FLUTE", "YELLOW_FLUTE", "BLACK_FLUTE", "WHITE_FLUTE"],
+              "done": ["I'll be hunting for treasure here tomorrow, too. Stop by if you have time!"]},
+              "lines": ["What am I doing? Hunting for TREASURE! Things get buried in the sand dunes.",
+                        "I just found something, but it's the same one as before. You have it!"]}}},
+    {1: ["ROUTE 13", "Lacunosa Town - Undella Town"], 2: ["ROUTE 13"],
+     3: ["TRAINER TIPS", "Change your Trainer Card's type to change how other players see you!"]},
+    exits={"<": ("LACUNOSA_TOWN", [(32, y) for y in range(14, 20)]), "n": ("LACUNOSA_TOWN", [(x, 32) for x in range(20, 24)]),
+           "^": ("GIANT_CHASM", [(x, 0) for x in range(46, 50)]), ">": ("UNDELLA_BAY", [(127, y) for y in range(111, 128)]),
+           "v": ("UNDELLA_TOWN", [(112, 127)])},
+    trainers={5: ("Ace Trainer Angi", 4), 6: ("Fisherman Jones", 1), 7: ("Fisherman Damon", 1), 8: ("Pokemon Ranger Daryl", 4),
+              9: ("Fisherman Vince", 1), 10: ("Ace Trainer Miguel", 3), 11: ("Fisherman Leroy", 1), 12: ("Parasol Lady Laura", 5),
+              14: ("Pokemon Ranger Dianne", 1), 24: ("Battle Girl Alize", 6), 25: ("Black Belt Wesley", 2)},
+    hidden={"58,74": "BIG_PEARL", "40,106": "ZINC", "58,48": "PEARL", "92,105": "HEART_SCALE", "57,24": "HEART_SCALE"},
+    rooms={"house_w": room(371, {0: {"text": "Woman with a Pokemon", "action": "EVENT", "event": {
+               "lines": ["This Pokemon used to deliver Mail to everyone! I know: I'll give you what it brought me!"],
+               "stages": [{"ready": ["unova_version:BLACK_2"], "gift_item": {"POWER_LENS": 1}, "flag": "b2_r13_power_item",
+                           "lines": ["You received a Power Lens!"]},
+                          {"ready": ["unova_version:WHITE_2"], "gift_item": {"POWER_BAND": 1}, "flag": "b2_r13_power_item",
+                           "lines": ["You received a Power Band!"]}],
+               "then": {"lines": ["It doesn't matter to this Pokemon if it isn't good at battles!"]}}},
+                                 2: _say("Boy in the house", "I hope a new winner has emerged in the PWT!"),
+                                 3: _say("Woman by the window", "I'd like to go to Pokestar Studios. I'm a fan of Mr. Stu Deeoh!")},
+                           {}, (4, 47)),
+           "house_e": room(373, {0: _say("Man with a Panpour", "Team Plasma's old words got to me, so I keep my Pokemon out of their "
+                                                              "Poke Balls. But Panpour doesn't listen to me at all..."),
+                                 1: _say("Chatot", "Chatot: Chatttteeeer!!"),
+                                 2: _say("Woman in the house", "Poke Balls made it possible for everyone to be with Pokemon. Everyone...")},
+                           {}, (37, 74)),
+           "grotto": grotto_room(7, (37, 41)), "grotto2": grotto_room(6, (59, 13))},
+    inside={"4,47": "house_w", "37,74": "house_e", "37,41": "grotto", "59,13": "grotto2"},
+    title="Route 13")
+_doors(ROUTE_13, ROUTE_13["inside"])
+for _x, _y in ((42, 35), (43, 36), (59, 110)):   # (Black 2's small trees: Cut)
+    _put_char(ROUTE_13, _x, _y, "2")
+for _x, _y in ((48, 15), (48, 94)):              # (Black 2's rocks: Rock Smash)
+    _put_char(ROUTE_13, _x, _y, "0")
+for _box in ((0, 0, 31, 31), (64, 0, 127, 63), (0, 64, 31, 127), (96, 64, 127, 95)):   # (Lacunosa's corner and the empty quarters)
+    _wall(ROUTE_13, *_box)
+_put_char(ROUTE_13, 50, 90, ".")   # (the Red Shard's pocket: our walk grid shuts it off by one tile; opened to the path below. Check)
+ROUTE_13["split"] = True
+ROUTE_13["gated_exits"] = {"GIANT_CHASM": ["beat_unova_champion"]}
+ROUTE_13["edge_to"] = dict({"32,%d" % y: [30, y] for y in range(14, 20)}, **{"%d,32" % x: [min(x, 22), 30] for x in range(20, 24)},
+                           **{"127,%d" % y: [1, 15 + y - 111] for y in range(111, 128)})
+for _r in ("house_w", "house_e"):
+    ROUTE_13["rooms"][_r]["title"] = "House"
+
+LACUNOSA_HUGH = {"name": "{rival_name}", "class": "PKMN_TRAINER", "sprite": "hugh.png", "team": _b2(701)["team"],
+                 "levels": _b2(701)["levels"],
+                 "team_choice": {s: _TEAMS[str(t)]["team"] for s, t in zip(("495", "498", "501"), (701, 702, 703))}}
+LACUNOSA_SCENES = [
+    {"trigger": "enter", "condition": ["visited_UNDELLA_TOWN", "not:b2_lacunosa_juniper"], "flag": "b2_lacunosa_juniper",
+     "cast": [{"sheet": "b2_juniper.png", "from": [18, 11], "to": "player", "stay": True, "lines": [
+         "Professor Juniper: Hi there, {player_name}! Straight past Lacunosa is the road to Opelucid. But first, there's "
+         "something I want you two to hear."]},
+              {"sheet": "b2_bianca.png", "from": [18, 10], "to": "player", "lines": [
+                  "Bianca: Hee hee! I used Fly, so I beat you here. Thanks for your help in Reversal Mountain!"],
+               "leave": [12, 10]},
+              {"as": 0, "lines": ["Professor Juniper: You'll see soon enough. The house up north. Hurry now!"], "leave": [12, 10]}]},
+    {"trigger": {"zone": [6, 24, 12, 27]}, "condition": ["b2_lacunosa_tale", "not:b2_lacunosa_zinzolin"], "flag": "b2_lacunosa_hugh",
+     "cast": [{"sheet": "b2_hugh.png", "from": [9, 25], "to": "player", "stay": True, "lines": [
+         "{rival_name}: {player_name}! I heard Team Plasma was around here..."]},
+              {"sheet": "b2_c302.png", "from": [0, 25], "to": [4, 25], "stay": True, "lines": [
+                  "Zinzolin: Ohhh, so the children from the frigate are here as well. How vexing.",
+                  "Zinzolin: The creature of the Giant Chasm will freeze Unova solid, and Team Plasma will rule it!"]},
+              {"sheet": "b2_plasma_grunt_m.png", "from": [0, 26], "to": [4, 26], "stay": True, "lines": ["Grunt: Lord Zinzolin, leave them to us!"]},
+              {"as": 0, "lines": ["{rival_name}: Not a chance! {player_name}, help me take them down!"]}],
+     "event": {"flag": "b2_lacunosa_zinzolin",
+               "battle": _b2(704, battle_options={"double": True, "partner": LACUNOSA_HUGH, "second_trainer": _b2(705)},
+                             dialogue={"player_won": ["Zinzolin: Ugh... Fine. We have what we came to learn. Away!",
+                                                      "{rival_name}: Hey! Get back here! ...{player_name}, I'm going after them!"],
+                                       "player_lost": ["Zinzolin: Children should be in bed before dark."]})}},
+]
+OUTSIDE.update({407: 406, 408: 406, 409: 406, 410: 406, 411: 406})
+LACUNOSA = town(
+    406, {13: _ball("Poke Ball by the west wall", "FULL_HEAL", "b2_lacunosa_full_heal", name="a Full Heal"),
+          0: _say("Old man by the gate", "Lacunosa's walls keep out what comes at night. Nobody goes outside after dark here."),
+          1: _say("Girl in town", "The scary monster from the big hole is really a Pokemon, isn't it?"),
+          4: _say("Parasol Lady", "Everyone here lives by the rules, from waking up to going to sleep."),
+          5: _say("Woman by the Center", "Be home before dark! That's the rule in Lacunosa.")},
+    {7: ["LACUNOSA TOWN", "A town that keeps its rules"]},
+    {407: ("center", "center"), 408: ("house", "house_sw"), 409: ("house", "elder"), 410: ("house", "house_n"),
+     411: ("house", "house_ne")},
+    {"center": room(407, {4: {"text": "Pokémon Center", "action": "HEAL"}, 1: {"text": "Shop", "action": "SHOP"},
+                          2: _say("Clerk ", "The counter on the left sells everyday items."),
+                          3: _say("Clerk  ", "Specialty Poke Balls are over here!"),
+                          0: {"text": "Mr. Medal", "action": "EVENT", "event": {"medal_rally": True}},
+                          10: _say("Psychic by the PC", "Every Gym Badge tells the story of a hard-won battle. Treasure them!")},
+                    {}, (20, 24)),
+     "house_sw": room(408, {0: _say("Ace Trainer", "My Pokemon is much stronger than me... Poke Balls are amazing."),
+                            3: _say("Girl in the house", "The monster from the big hole is really a Pokemon, right?")}, {}, (8, 24)),
+     "elder": room(409, {0: _say("Old woman", "That old tale? Come in, dearies.")}, {}, (12, 9),
+                   scenes=[{"trigger": "enter", "condition": ["b2_lacunosa_juniper", "not:b2_lacunosa_tale"], "flag": "b2_lacunosa_tale",
+                            "cast": [], "call": [
+                                "Old woman: Behind Lacunosa there's a mighty big hole: the Giant Chasm.",
+                                "Bianca: Cheren says the temperature around it dropped to minus 58 degrees!",
+                                "Old woman: Long ago a meteorite fell and made it. A terrible Pokemon was hidden inside.",
+                                "Old woman: When darkness falls it comes, with a freezing wind. It freezes everything, and eats "
+                                "people and Pokemon...",
+                                "Old woman: So our ancestors built walls round the town, and made a rule: nobody goes out after dark.",
+                                "Professor Juniper: A power to freeze everything... It could rival the legendary dragons.",
+                                "Professor Juniper: And the same minerals were found in Dragonspiral Tower and the Giant Chasm..."]}]),
+     "house_n": room(410, {0: _say("Woman in the house", "Going out at night is dangerous. Maybe stay inside in the afternoon too!")},
+                     {}, (17, 9)),
+     "house_ne": room(411, {0: _say("Parasol Lady", "There are so many people in the world, and so many ideas. I'd love to meet them all!"),
+                            2: _say("Businessman", "My work keeps me busy, but I'm home at night. I'm a super businessman!"),
+                            1: _ball("Poke Ball by the table", "METRONOME", "b2_lacunosa_metronome", name="a Metronome")},
+                      {}, (27, 5))},
+    edges={">": ("UNOVA_ROUTE_13", [(31, y) for y in range(14, 20)]), "v": ("UNOVA_ROUTE_13", [(x, 31) for x in range(20, 23)]),
+           "<": ("UNOVA_ROUTE_12", [(0, y) for y in range(25, 32)])},
+    scenes=LACUNOSA_SCENES, title="Lacunosa Town")
+LACUNOSA["edge_to"] = dict({"31,%d" % y: [33, y] for y in range(14, 20)}, **{"%d,31" % x: [x, 33] for x in range(20, 23)})
+for _r, _t in (("center", "Pokémon Center"), ("house_sw", "House"), ("elder", "House"), ("house_n", "House"), ("house_ne", "House")):
+    LACUNOSA["rooms"][_r]["title"] = _t
+
+
 MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": FLOCCESY, "UNOVA_ROUTE_20": ROUTE_20,
         "FLOCCESY_RANCH_OUTSIDE": RANCH_OUTSIDE, "FLOCCESY_RANCH": RANCH, "PLEDGE_GROVE": PLEDGE_GROVE,
         "VIRBANK_CITY": VIRBANK, "VIRBANK_COMPLEX_OUTSIDE": COMPLEX_OUTSIDE, "VIRBANK_COMPLEX": COMPLEX, "POKESTAR_STUDIOS": POKESTAR,
@@ -5266,4 +5459,5 @@ MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": 
         "CELESTIAL_TOWER": CT_1F, "CELESTIAL_TOWER_2F": CT_2F, "CELESTIAL_TOWER_3F": CT_3F, "CELESTIAL_TOWER_4F": CT_4F,
         "CELESTIAL_TOWER_ROOF": CT_ROOF,
         "LENTIMAS_TOWN": LENTIMAS, "REVERSAL_MOUNTAIN": REVERSAL, "REVERSAL_MOUNTAIN_ENTRY": RM_ENTRY,   # (batch 7a)
-        "REVERSAL_MOUNTAIN_INSIDE": RM_INSIDE, "REVERSAL_MOUNTAIN_SOUTH": RM_SOUTH, "STRANGE_HOUSE": STRANGE_HOUSE}
+        "REVERSAL_MOUNTAIN_INSIDE": RM_INSIDE, "REVERSAL_MOUNTAIN_SOUTH": RM_SOUTH, "STRANGE_HOUSE": STRANGE_HOUSE,
+        "UNDELLA_TOWN": UNDELLA, "UNDELLA_BAY": UNDELLA_BAY_MAP, "UNOVA_ROUTE_13": ROUTE_13, "LACUNOSA_TOWN": LACUNOSA}   # (batch 7b)

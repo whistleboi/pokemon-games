@@ -46,7 +46,8 @@ flags = story.story_flags
 flags.update({"kanto_oak_led": True, "kanto_lab_intro": True, "received_starter_kanto": True, "got_oaks_parcel": True,
               "received_pokedex_kanto": True})
 story.player_team = [mk(6)]
-city = CityState(g); g.change_state(city)
+exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())   # (11-24: the Journal opened from the walked town's map)
+city = walk_town(story.current_area_key, None, play=False)
 
 
 def now():
@@ -162,7 +163,7 @@ flags.update({"got_oaks_parcel": True, "received_pokedex_kanto": True, "received
               "kanto_lab_intro": True, "silph_co_cleared": True})
 item("SILPH_SCOPE")
 at("CINNABAR_ISLAND")
-city = CityState(g); g.change_state(city)
+city = walk_town(story.current_area_key, None, play=False)
 
 
 def play(arcs_):
@@ -256,7 +257,7 @@ for k in [k for k in flags if k.startswith(("visited_", "feat_", "badge_"))] + [
     flags.pop(k, None)
 flags["unova_version"] = "BLACK_2"
 at("ASPERTIA_CITY")
-city = CityState(g); g.change_state(city)
+city = walk_town(story.current_area_key, None, play=False)
 UBADGE = {"b2_m7": "BASIC", "b2_m9": "TOXIC", "b2_m17": "INSECT"}
 USCENE = {"b2_m1": ["b2_mom_talk"], "b2_m13": ["b2_castelia_arrived"], "b2_m33": ["b2_lentimas_juniper"]}   # (the scenes between: Mom's talk, the arrival; the send-off is b2_m1b's own, 11-23; Juniper at Lentimas, 11-24)
 n_u = 0
@@ -268,6 +269,10 @@ for arc in ub:
             jn_ = JournalState(g, city); g.change_state(jn_); jn_.draw()
             pygame.image.save(g.screen, os.path.join(S, "quest_book_unova_story.png"))
             g.change_state(city)
+        if ch.get("done"):   # (a chapter over part of a mission: Lacunosa's scenes, 11-24)
+            done_(ch["done"])
+            n_u += 1
+            continue
         for f in story.mission_flags(m):
             flags[f] = True
         if m["id"] in UBADGE:

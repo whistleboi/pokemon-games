@@ -90,7 +90,7 @@ class StoryManager:
     # the region they're reached from ("storage_region" in REGION_START). Money and Poke Balls
     # are shared everywhere.
     LINKED = "LINKED"
-    CARRY_ITEMS = {"SS_TICKET", "MYSTIC_TICKET", "AURORA_TICKET"}  # travel tickets go with you between regions' Bags (the far islands' from Lilycove)
+    CARRY_ITEMS = {"SS_TICKET", "MYSTIC_TICKET", "AURORA_TICKET", "GS_BALL"}  # travel tickets go with you between regions' Bags (the far islands' from Lilycove); the GS Ball too, from Ivy in Orange to Kurt in Johto (Journeys, Jordan 11-24)
 
     @property
     def player_team(self):
@@ -1552,6 +1552,8 @@ class StoryManager:
                 and self.inventory.get("UNOWN_REPORT", 0) == 0):
             print("Sync: Awarding missing UNOWN_REPORT!")
             self.inventory["UNOWN_REPORT"] = 1
+        if "JOHTO" in self.store_regions() and self.inventory.get("UNOWN_REPORT", 0) > 0:   # (the Journal's "Ruins of Alph" (johto_s1)
+            self.story_flags["got_unown_report"] = True                                    #  ends on it; 11-24)
 
         # The Poke Flute is Mr. Fuji's to give (talk to him in Lavender Town).
         if self.story_flags.get("tower_ghost_defeated") and "KANTO" in self.store_regions():

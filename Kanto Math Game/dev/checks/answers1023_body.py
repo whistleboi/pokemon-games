@@ -29,7 +29,25 @@ hoenn = {(o.get("boss") or {}).get("id"): k for k, a in SP.items() for o in a.ge
 hoenn.update({(a.get("area_boss") or {}).get("id"): k for k, a in SP.items() if k.startswith("HOENN_")})  # (Unova's Underground Ruins has them too)
 check(hoenn.get(377) == "HOENN_DESERT_RUINS" and hoenn.get(378) == "HOENN_ISLAND_CAVE" and hoenn.get(379) == "HOENN_ANCIENT_TOMB",   # (11-13: in their own caves, walked inside; off Routes 111, 105, 120)
       f"Regis at the Desert Ruins, Island Cave and Ancient Tomb: {[hoenn.get(i) for i in (377, 378, 379)]}")
-check(all(bosses.get(i) for i in (637, 638, 645, 646)), "Unova's legendaries all have bosses")
+_walked_bosses = {}   # (and the bosses standing on walked maps: Relic Castle's Volcarona is a BOSS person there, 11-24)
+
+
+def _wb(o, where):
+    if isinstance(o, dict):
+        if str(o.get("action") or "").upper() == "BOSS" and isinstance(o.get("boss"), dict):
+            _walked_bosses.setdefault(o["boss"].get("id"), where)
+        for k, v in o.items():
+            _wb(v, k if isinstance(k, str) and k.isupper() and len(k) > 3 else where)
+    elif isinstance(o, list):
+        for v in o:
+            _wb(v, where)
+
+
+_wb(json.load(open("assets/town_maps.json", encoding="utf-8")), "")
+for _pid in (637, 638, 645, 646):
+    if not bosses.get(_pid) and _walked_bosses.get(_pid):
+        bosses[_pid] = _walked_bosses[_pid]
+check(all(bosses.get(i) for i in (637, 638, 645, 646)), f"Unova's legendaries all have bosses {[bosses.get(i) for i in (637, 638, 645, 646)]}")
 
 # Up-Grade: only at Veilstone.
 for area, want in (("VEILSTONE_CITY", True), ("CELADON_CITY", False), ("GOLDENROD_CITY", False)):
@@ -67,13 +85,15 @@ check(gift["event"]["gift_pokemon"] == 790 and gift["condition"] == "ALTAR_boss_
 # Mt. Battle: its trainers, the Master, and starting over (11-20, Orre batch 3: XD's 100 + Colosseum's 9; orre_b3 plays it).
 mt = SP["MT_BATTLE"]
 check(len(mt["trainer_pool"]) == 109 and any(o["text"] == "MT. BATTLE MASTER" for o in mt["route_menu"]), "Mt. Battle: 109 + Master")
-story.current_area_key = "MT_BATTLE"
 for i in range(109):
     story.mark_trainer_defeated("MT_BATTLE", i)
 story.story_flags["mt_battle_master_beaten"] = True
-c = CityState(g)
-restart = next(o for o in mt["route_menu"] if o["text"] == "START OVER FROM AREA 1")
-_run_story_event(c, restart["event"], lambda x: True, lambda lines: None)
+story.story_flags["orre_dakim_mt_battle"] = True   # (START OVER shows once Dakim's attack is over)
+exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())   # (Orre is walked: START OVER is someone on Mt. Battle's map, 11-24)
+story.enter_region("ORRE")
+_said = walk_run("MT_BATTLE", "START OVER FROM AREA 1", picks=[True])
+check(bool(_said), "Mt. Battle's map: START OVER is there to walk up to")
+g.walk_towns = g.dungeon_routes = False
 check(not story.is_trainer_defeated("MT_BATTLE", 0) and not story.story_flags.get("mt_battle_master_beaten"),
       "START OVER resets the mountain")
 
