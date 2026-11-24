@@ -43,11 +43,8 @@ check("SINNOH_ROUTE_216" in nb("MT_CORONET_BASE", "SINNOH_ROUTE_207"), "with Roc
 kit("HM_SURF")
 check("SINNOH_ROUTE_216" not in nb("MT_CORONET_BASE", "SINNOH_ROUTE_211"), "without Strength, the Route 211 side doesn't either")
 
-print("Team Galactic HQ: the warehouse side and the front door don't join")
-hq = groups(g, "TEAM_GALACTIC_HQ") or []
-sides = [{e[3] for e in grp} for grp in hq]
-check({"GALACTIC_WAREHOUSE"} in sides and any("VEILSTONE_CITY" in s and "GALACTIC_WAREHOUSE" not in s for s in sides),
-      f"two sides ({sides})")
+print("Splits the same with every HM and none (story gates a new game sees shut) are left out: the planner keeps them whole")
+check(groups(g, "KANTO_ROUTE_23") is None, "Kanto's Route 23 (its badge gates) isn't treated as a place in parts")
 
 print("Route 213: Pastoria's sea edge lands in a part that can't reach Valor Lakefront; the gatehouse way can")
 kit("HM_SURF", "HM_STRENGTH")

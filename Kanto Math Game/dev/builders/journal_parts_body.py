@@ -63,6 +63,8 @@ for area in areas:
     if len(every) <= 1 and len(none) <= 1:
         continue
     rel = [h for h in HMS if every != none and groups(area, [x for x in HMS if x != h])[1] != every]
+    if not rel:   # (a place split the same with every HM and none: a story gate the new game sees shut - Route 23's badge
+        continue  #  checks - or a door inside: left whole, so the planner never avoids a way the story opens; 11-24)
     sets = {}
     for n in range(len(rel) + 1):
         for kit in itertools.combinations(rel, n):
