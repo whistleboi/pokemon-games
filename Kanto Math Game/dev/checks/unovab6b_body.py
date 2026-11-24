@@ -129,7 +129,7 @@ for a, n in (("UNOVA_ROUTE_7", 9), ("CELESTIAL_TOWER_2F", 2), ("CELESTIAL_TOWER_
 for a in ("UNOVA_ROUTE_7", "CELESTIAL_TOWER_2F", "CELESTIAL_TOWER_3F", "CELESTIAL_TOWER_4F", "CELESTIAL_TOWER_ROOF"):
     check(bool(SP[a].get("wild_tables")), f"{a}: its own wild Pokemon")
 check({"gym", "center", "house_kids", "cargo", "house_tm"} <= set(tmaps["MISTRALTON_CITY"]["rooms"]), "Mistralton's five buildings")
-check(not any(o.get("condition") for o in SP["MISTRALTON_CITY"]["travel_options"] if o["target_area"] != "LENTIMAS_TOWN") and "explore_options" not in SP["MISTRALTON_CITY"],
+check(not any(o.get("condition") for o in SP["MISTRALTON_CITY"]["travel_options"]) and "explore_options" not in SP["MISTRALTON_CITY"],
       "no menu-era buttons; Route 7 open before the Gym, as in Black 2")
 
 print("2) Chargestone -> Mistralton; Juniper's Master Ball and Skyla")
@@ -147,6 +147,16 @@ print("3) Skyla's Gym: five Pilots, Skyla (Black 2's team), the Jet Badge, TM62 
 gym = tmaps["MISTRALTON_CITY"]["rooms"]["gym"]
 pilots = [c for o in gym["people"] for c in _opts(o) if isinstance(c, dict) and str(c.get("text", "")).startswith("Pilot")]
 check(len(pilots) == 5 and all(c["event"]["flag"].startswith("gym_trainer_MISTRALTON_CITY_") for c in pilots), "five Pilots, each a Gym trainer")
+check((gym.get("gusts") or {}).get("from") == "n" and gym["gusts"].get("to") == [11, 47], "the wind tunnel: the turbines blow you back to the door")
+st = town("MISTRALTON_CITY", (2, 14), "gym", (0, -1))   # (out in the open: nothing upwind)
+for _ in range(900):
+    settle(1)
+    if tuple(g.current_state.player) == (11, 47):
+        break
+check(tuple(g.current_state.player) == (11, 47), f"out in the open, a gust blows you back to the door ({g.current_state.player})")
+st = town("MISTRALTON_CITY", (15, 14), "gym", (0, -1))   # (a wall straight upwind: sheltered)
+settle(700)
+check(tuple(g.current_state.player) == (15, 14), f"behind a wall, the wind can't reach you ({g.current_state.player})")
 st = town("MISTRALTON_CITY", (11, 4), "gym", (0, -1))
 for k in range(1, 6):
     flags["gym_trainer_MISTRALTON_CITY_%d" % k] = True
@@ -241,7 +251,8 @@ check("b2_m33" in main, f"the Journal: Over the Mountain ({main})")
 st = town("MISTRALTON_CITY", (24, 21), "cargo", (0, -1))
 talk(st, "Skyla")
 settle(300)
-check(flags.get("b2_lentimas_flight") and story.current_area_key == "LENTIMAS_TOWN" and "Bianca" in heard(),
+_sk = next(c for o in tmaps["MISTRALTON_CITY"]["rooms"]["cargo"]["people"] for c in _opts(o) if isinstance(c, dict) and c.get("text") == "Skyla ")
+check(flags.get("b2_lentimas_flight") and story.current_area_key == "LENTIMAS_TOWN" and any("Bianca" in x for x in _sk["event"]["lines"]),
       f"Skyla flies you, Juniper and Bianca to Lentimas Town ({story.current_area_key})")
 
 print("\n##### %d failures" % len(fails))

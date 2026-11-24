@@ -542,11 +542,12 @@ if "MISTRALTON_CAVE" in g.loader.area_data["STORY_PROGRESSION"]:
 
 print("stones you push, 3 x 3, sliding till they stop (Black 2's Chargestone Cave; Unova 11-24)")
 if "CHARGESTONE_CAVE" in g.loader.area_data["STORY_PROGRESSION"]:
+    _own = (_rf(g, "CHARGESTONE_CAVE").get("art") or {}).get("stones")   # (the map's own, since Unova moved them 11-24)
     _objs = [o for o in ((_rf(g, "CHARGESTONE_CAVE").get("art") or {}).get("roofs") or {}).get("_objects", []) if str(o.get("k", "")).endswith("_110_0")]
-    _cs = [[int(o["at"][0]), int(o["at"][1])] for o in _objs]
+    _cs = [[int(c[0]), int(c[1])] for c in _own] if _own else [[int(o["at"][0]), int(o["at"][1])] for o in _objs]
     def _with_stones(game, key):
         r = _rf(game, key)
-        if key == "CHARGESTONE_CAVE" and isinstance(r.get("art"), dict):
+        if key == "CHARGESTONE_CAVE" and isinstance(r.get("art"), dict) and not _own:
             r = dict(r, art=dict(r["art"], stones=_cs, stone_model=_objs[0]["k"] if _objs else None))
             if r.get("layout"):
                 r["layout"] = [dict(r["layout"][0], **{})] + list(r["layout"][1:])
@@ -585,5 +586,39 @@ if "CHARGESTONE_CAVE" in g.loader.area_data["STORY_PROGRESSION"]:
         check(_ps2._stone_spots()[_i] == tuple(_a) and str(_ps2.run.floor.decor.get(tuple(_a), "")).startswith("stone:"), "...still there on the next visit")
     _dg.recipe_for = _rf
     story.story_flags.pop("stones_CHARGESTONE_CAVE_0", None)
+
+print("dark grass: now and then two wild Pokemon at once, a wild double battle (Gen 5; Unova 11-24)")
+story.enter_region("UNOVA")
+if "UNOVA_ROUTE_20" in g.loader.area_data["STORY_PROGRESSION"]:
+    from src.states.battle_wild_double import WildDoubleBattleState as _WDB
+    _pd = kanto("UNOVA_ROUTE_20", came="ASPERTIA_CITY")
+    _dk = sorted(_pd._dark_tiles())
+    _ww = next((m for m in _pd.run.floor.movers if m.kind == "wild"), None)
+    check(bool(_dk) and _ww is not None, f"Route 20 has dark grass ({len(_dk)} tiles) and a wild Pokemon")
+    if _dk and _ww is not None:
+        _ww.x, _ww.y = _dk[0]
+        _was_r = _dg.DungeonState.DARK_DOUBLE
+        _dg.DungeonState.DARK_DOUBLE = 1.0
+        _pd._battle_wild(_ww)
+        _b = g.current_state
+        check(isinstance(_b, _WDB) and len([p for p in _b.o_slots if p]) == 2 and not _b.partner_team,
+              f"...met in the dark grass: two wild Pokemon, you alone ({type(_b).__name__})")
+        g.change_state(_pd)
+        _pd = kanto("UNOVA_ROUTE_20", came="ASPERTIA_CITY")
+        _ww = next((m for m in _pd.run.floor.movers if m.kind == "wild"), None)
+        _ww.x, _ww.y = _dk[0]
+        _dg.DungeonState.DARK_DOUBLE = 0.0
+        _pd._battle_wild(_ww)
+        check(not isinstance(g.current_state, _WDB), "...the other nine times in ten, one")
+        _lt = next((t for t in [(x, y) for y in range(_pd.run.floor.h) for x in range(_pd.run.floor.w)] if _pd.run.floor.walkable(*t) and t not in _dk), None)
+        g.change_state(_pd)
+        _pd = kanto("UNOVA_ROUTE_20", came="ASPERTIA_CITY")
+        _ww = next((m for m in _pd.run.floor.movers if m.kind == "wild"), None)
+        _ww.x, _ww.y = _lt
+        _dg.DungeonState.DARK_DOUBLE = 1.0
+        _pd._battle_wild(_ww)
+        check(not isinstance(g.current_state, _WDB), "...and never in ordinary grass")
+        _dg.DungeonState.DARK_DOUBLE = _was_r
+        g.change_state(_pd)
 
 print(f"##### {fails} failures")

@@ -165,7 +165,7 @@ ALOLA_EVOLVES = {26, 103, 105}
 
 def _form_item_rules(game):
     """{(source key, target entry): item} for item evolutions from or into a form in EVOLUTION_ITEMS
-    (Galarian Slowpoke + Galarica Cuff; Onix + Crystal Stone -> Crystal Onix)."""
+    (Galarian Slowpoke + Galarica Cuff; Pinkan Gloom + Leaf Stone -> Pinkan Vileplume)."""
     cache = getattr(game, "_form_item_rules", None)
     if cache is None:
         cache = {}

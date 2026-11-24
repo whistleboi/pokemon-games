@@ -348,6 +348,10 @@ def _run_story_event(state, key, check, show):
         for k in [k for k in story.story_flags if k.startswith(ev["flag"] + "@") and k != today]:
             story.story_flags.pop(k)   # (yesterday's picking forgotten: one flag a tree)
         ev = dict(ev, flag=today)
+    if isinstance(ev.get("trade"), dict) and not ev.get("flag"):   # (an in-game trade with no flag of its own: once, as in the games -
+        _tr = ev["trade"]                                            #  its own flag; the encyclopedia found nine repeatable, 11-24)
+        ev = dict(ev, flag=f"trade_done_{story.current_area_key}_{_tr.get('want')}_{_tr.get('give')}",
+                  done=ev.get("done") or ["Thanks again for the trade! I'm taking good care of it."])
     flag = ev.get("flag")
     if flag and story.story_flags.get(flag) and (ev.get("battle") or {}).get("rematch"):   # (the VS Seeker called it back: Dario, Rodette)
         from src.world import vs_seeker

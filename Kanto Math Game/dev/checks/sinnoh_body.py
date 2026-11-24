@@ -1391,5 +1391,90 @@ check(_mars is not None and (_mars.x, _mars.y) == (47, 24) and _two and len(_gr)
       f"Lake Verity after Valor: Mars at Platinum's spot with Rowan and Dawn beside her, four grunts, and her battle ({_mars and (_mars.x, _mars.y)}, {_two}, {len(_gr)}, {_vb})")
 story.story_flags.clear(); story.story_flags.update(_sv)
 
+# ---- S5 (11-24): Snowpoint Gym as Platinum's - you slide across its ice; sliding into a snowball crushes it, walking into one doesn't
+_sv = dict(story.story_flags)
+for _k in [k for k in story.story_flags if k.startswith("snowpoint_gym_snowball_")]:
+    story.story_flags.pop(_k)
+t = town("SNOWPOINT_CITY", "SINNOH_ROUTE_217"); frames(t, 3)
+t._go("gym", "OUT:15,30"); frames(t, 5); _drive(t, 200, lambda: not t._busy())
+_ga = _tm["SNOWPOINT_CITY"]["rooms"]["gym"]["art"]
+_balls = {tuple(b["tiles"][0]): b for b in _tm["SNOWPOINT_CITY"]["rooms"]["gym"]["barred"] if b.get("smash")}
+_try = None
+for (_bx, _by), _b in sorted(_balls.items()):
+    for _dx, _dy in ((0, 1), (0, -1), (1, 0), (-1, 0)):
+        _cx, _cy, _n = _bx - _dx, _by - _dy, 0
+        while 0 <= _cy < len(_ga) and 0 <= _cx < len(_ga[0]) and _ga[_cy][_cx] == "%" and (_cx, _cy) not in _balls:
+            _cx, _cy, _n = _cx - _dx, _cy - _dy, _n + 1
+        if _n >= 2 and 0 <= _cy < len(_ga) and _ga[_cy][_cx] == "." and t._open((_cx, _cy)):
+            _try = ((_cx, _cy), (_dx, _dy), (_bx, _by), _b["smash"])
+            break
+    if _try:
+        break
+_slid = _crushed = False
+if _try:
+    (_sx, _sy), (_dx, _dy), _bt, _bf = _try
+    t.player = t.anim_from = (_sx, _sy); t.anim = 0; t.walk_goal = None
+    t.step(_dx, _dy)
+    _drive(t, 400, lambda: not getattr(t, "_slide", None) and t.anim == 0 and not t._busy())
+    _crushed = bool(story.story_flags.get(_bf)) and _bt not in t.barred
+    _slid = abs(t.player[0] - _sx) + abs(t.player[1] - _sy) >= 2
+check(_try is not None and _slid and _crushed and t.room == "gym",
+      f"Snowpoint Gym: you slide across the ice and crush a snowball in your way ({_try}, {_slid}, {_crushed}, {t.player})")
+story.story_flags.clear(); story.story_flags.update(_sv)
+
+# ---- S5 (11-24): the road to Snowpoint as Platinum's - Maylene on Route 217, Barry at Acuity's lumpy rocks, Rock Climb walls
+_sv, _bv, _iv = dict(story.story_flags), list(story.badges.get("SINNOH", [])), dict(story.inventory)
+story.badges["SINNOH"] = ["COAL", "FOREST", "COBBLE", "FEN", "RELIC", "MINE"]
+for _k in ("sinnoh_r217_maylene", "sinnoh_acuity_barry"):
+    story.story_flags.pop(_k, None)
+t = town("SINNOH_ROUTE_217", "SINNOH_ROUTE_216"); frames(t, 3); _drive(t, 100, lambda: not t._busy())
+t.player = t.anim_from = (14, 121); t.anim = 0; t.walk_goal = None; t.step(0, -1)
+_drive(t, 900, lambda: story.story_flags.get("sinnoh_r217_maylene") and not t._busy())
+_may = bool(story.story_flags.get("sinnoh_r217_maylene"))
+story.inventory["HM_ROCK_CLIMB"] = 0
+t = town("ACUITY_LAKEFRONT", "SINNOH_ROUTE_217"); frames(t, 3); _drive(t, 100, lambda: not t._busy())
+t.player = t.anim_from = (12, 35); t.anim = 0; t.walk_goal = None; t.step(0, -1)
+_drive(t, 900, lambda: story.story_flags.get("sinnoh_acuity_barry") and not t._busy())
+_bar = bool(story.story_flags.get("sinnoh_acuity_barry"))
+_wall = not t._open((12, 30))
+story.inventory["HM_ROCK_CLIMB"] = 1
+_climb = t._open((12, 30))
+t = town("SNOWPOINT_CITY", "SINNOH_ROUTE_217"); frames(t, 3)
+t._go("center", "OUT:27,41"); frames(t, 5); _drive(t, 200, lambda: not t._busy())
+_mp = [o for o in t.people.values() if o.get("text") == "Maylene"]
+check(_may and _bar and _wall and _climb and len(_mp) == 1,
+      f"Snowpoint road: Maylene meets you on Route 217, Barry warns you off Acuity's rocks, they're climbed with Rock Climb, Maylene warms up in the Center ({_may}, {_bar}, {_wall}, {_climb}, {len(_mp)})")
+story.story_flags.clear(); story.story_flags.update(_sv); story.badges["SINNOH"] = _bv
+story.inventory.clear(); story.inventory.update(_iv)
+
+# ---- S5 (11-24): Lake Acuity as Platinum's - Barry has just lost to Jupiter as you arrive; she leaves for the Veilstone HQ, he swears to get stronger
+_sv, _bv = dict(story.story_flags), list(story.badges.get("SINNOH", []))
+story.badges["SINNOH"] = ["COAL", "FOREST", "COBBLE", "FEN", "RELIC", "MINE", "ICICLE"]
+story.story_flags.pop("galactic_lake_acuity_cleared", None)
+r = route("LAKE_ACUITY", "ACUITY_LAKEFRONT")
+for _q in range(1500):
+    if getattr(r, "dialogue_box", None) and r.dialogue_box.visible:
+        r.dialogue_box.advance()
+    frames(r)
+    if story.story_flags.get("galactic_lake_acuity_cleared"):
+        break
+_done = bool(story.story_flags.get("galactic_lake_acuity_cleared"))
+r = route("LAKE_ACUITY", "ACUITY_LAKEFRONT"); frames(r, 5)
+_jgone = not any(m.kind == "figure" and str((m.payload or {}).get("text")) == "Confront Jupiter at the Lake" for m in r.run.floor.movers)
+check(_done and _jgone, f"Lake Acuity: Platinum's scene plays as you arrive with the Icicle Badge (Barry beaten, Jupiter off to Veilstone), then she's gone ({_done}, {_jgone})")
+story.story_flags.clear(); story.story_flags.update(_sv); story.badges["SINNOH"] = _bv
+
+# ---- 11-24 (hub cleanup): Veilstone's Game Corner machines are played by walking up to them, as Goldenrod's
+_iv = dict(story.inventory)
+t = town("VEILSTONE_CITY", None); frames(t, 3)
+t._go("game_corner", "OUT:34,47"); frames(t, 5); _drive(t, 200, lambda: not t._busy())
+_mach = [(x, y) for x in (7, 8, 12, 13) for y in range(4, 9) if t._game_machine((x, y))]
+story.inventory["COIN_CASE"] = 1
+t.player = t.anim_from = (6, 6); t.anim = 0; t.walk_goal = None; t.step(1, 0)
+frames(t, 3)
+_play = "Voltorb" in type(g.current_state).__name__
+check(len(_mach) == 20 and _play, f"Veilstone Game Corner: its 20 slot machine tiles are machines you walk up to and play ({len(_mach)}, {_play}, {type(g.current_state).__name__})")
+story.inventory.clear(); story.inventory.update(_iv)
+
 g.walk_towns = False
 print(f"##### {fails} failures")

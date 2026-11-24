@@ -74,7 +74,7 @@ EVENTS = {
     "b2_grunt_tm": {"gift_item": {"TM273": 1}, "flag": "b2_grunt_tm273"},   # (B2W2's TM21 Frustration, thrown by the Grunt)
     "b2_seymour": {"flag": "b2_seymour_battled", "battle": {
         "name": "School Kid Seymour", "class": "SCHOOL_KID", "sprite": "school_kid_m.png", "team": [515], "level": 9,
-        "team_choice": {"495": [515], "498": [511], "501": [513]},   # (the monkey strong against yours)
+        "team_choice": {"495": [515], "498": [511], "501": [513]},   # (the monkey weak to yours, as B2W2 has it)
         "rewards": {"balls": 2},
         "dialogue": {"player_won": ["Boy: You really are tough!"], "player_lost": ["Boy: I did it! Did you see, Alder?"]}}},
     "b2_cassie": {"flag": "b2_cassie_battled", "battle": {
@@ -249,7 +249,8 @@ EVENTS = {
                   "{rival_name}: Sorry... Commander Jupiter took Uxie. I couldn't stop her.",
                   "{rival_name}: She said they're taking all three lake Pokémon to their HQ in Veilstone City!",
                   "Team Galactic has the lake trio. Head to Veilstone City."],
-        "requires": ["has_icicle_badge"], "flag": "galactic_lake_acuity_cleared"},
+        "requires": ["has_icicle_badge"], "flag": "galactic_lake_acuity_cleared",
+        "fail": ["Jupiter: Hm? Run along, kid. Grown-ups are working here."]},   # (the map plays Platinum's scene after the Icicle Badge: s_s5_lake_acuity.py)
     # Platinum's multi battle (11-18): you and Barry against Mars and Jupiter, their teams and levels from Platinum
     # (Bulbapedia's walkthrough, part 17); Barry's team by your starter. Afterwards he heals your team, as in the game.
     "spear_pillar_commanders": {
@@ -344,10 +345,6 @@ EVENTS = {
                                    "501": [510, 516, 521, 526, 612, 497]},
                    "dialogue": {"player_won": ["unova_cheren_rival_won"],
                                 "player_lost": ["unova_cheren_rival_lost"]}}},
-    "n_chargestone": {
-        "lines": ["unova_n_chargestone"], "flag": "defeated_n_chargestone",
-        "battle": {"name": "N", "class": "PKMN_TRAINER", "sprite": "n.png", "team": [525, 595, 597, 599],
-                   "dialogue": {"player_won": ["N: I'll go to Dragonspiral Tower. The legendary dragon is waiting."]}}},
 
     # ---------------- Johto (HeartGold / SoulSilver) ----------------
     "giovanni": {

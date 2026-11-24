@@ -159,7 +159,8 @@ def lead_level(game):
 
 
 def area_level(game, area_key):
-    """The level an area's wild Pokemon and route trainers are built around (Jordan, 11-15). Before the region's title:
+    """The level an area's route trainers (and anything else built on it) are built around (Jordan, 11-15); wild Pokemon
+    keep the area's canon level since 11-24 (wild_level). Before the region's title:
     its canon level, unless your lead Pokemon has reached the next Gym's ace (story_ace): then the areas rise to
     CAP_LIFT_BELOW levels under that ace. After the title (the post-game): its canon level, or the player's team level
     (team_level) once the team is ahead of it (Jordan, 11-07: keep up with me)."""
@@ -174,8 +175,8 @@ def area_level(game, area_key):
 
 
 def capped_band(game, area_key):
-    """Before the title, once your lead Pokemon has reached the next ace: the (low, high) levels the area's wild
-    Pokemon and route trainers come at, ace - CAP_LIFT_BELOW to ace + CAP_LIFT_ABOVE (Jordan, 11-15). None otherwise,
+    """Before the title, once your lead Pokemon has reached the next ace: the (low, high) levels the area's route
+    trainers come at (not wild Pokemon since 11-24: wild_level), ace - CAP_LIFT_BELOW to ace + CAP_LIFT_ABOVE (Jordan, 11-15). None otherwise,
     or where the area's canon level is already above that."""
     story = getattr(game, "story_manager", None)
     if story is None or is_postgame(story):
@@ -282,7 +283,8 @@ def cap_mode(story):
 # the canon first run + 10. Patch 11: Hoenn 56 -> 61 (its League is raised +5; RS has no rematch, so +10 on top).
 # 10-26: Hoenn 61 -> 70: ORAS has its own rematch teams (Elite Four 70-75, Steven 77-79; Serebii).
 # Patch 12: Alola 63 -> 68 (its title-defense rematch raised +5 like its first run: Elite Four 68, Kukui 70).
-LEAGUE_REMATCH_FLOOR = {"KANTO": 63, "JOHTO": 58, "HOENN": 70, "SINNOH": 65, "UNOVA": 71,
+# 11-24: Sinnoh 65 -> 66, never below its Champion's first-battle ace (the encyclopedia's check).
+LEAGUE_REMATCH_FLOOR = {"KANTO": 63, "JOHTO": 58, "HOENN": 70, "SINNOH": 66, "UNOVA": 71,
                         "KALOS": 73, "ALOLA": 68, "GALAR": 72, "PALDEA": 67}
 # League rosters: only these classes keep the League's own (rematch) levels. Anyone else in a
 # League lobby (Galar's Marnie/Hop, Paldea's Nemona) is a post-game rematch on the cap rules.

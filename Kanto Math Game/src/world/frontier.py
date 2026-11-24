@@ -74,6 +74,48 @@ NAMES = {"tower": "Battle Tower", "dome": "Battle Dome", "palace": "Battle Palac
          "factory": "Battle Factory", "pike": "Battle Pike", "pyramid": "Battle Pyramid", "maison": "Battle Maison",
          "jtower": "Battle Tower", "jfactory": "Battle Factory", "jhall": "Battle Hall", "jcastle": "Battle Castle", "jarcade": "Battle Arcade",
          "stower": "Battle Tower", "sfactory": "Battle Factory", "shall": "Battle Hall", "scastle": "Battle Castle", "sarcade": "Battle Arcade"}
+# Orre's Battle Tower (the fan game Pokemon Orre 2.1.1's, after Orre's League - Jordan 11-24, questions/ORRE.md 10b: "all
+# three"): no Brain, an endless streak each, its best kept. "otower" single battles (three Pokemon a side, Lv 50); "otower2"
+# 2-on-2 double battles (exactly two Pokemon); "olc" the Little Cup (three unevolved Pokemon that can still evolve, Lv 5 or
+# under; the tower's seller has some for BP - src/world/orre_frontier.py). Emerald's Frontier trainers, Gen 3 Pokemon.
+ENDLESS = {"otower": (3, 50, False), "otower2": (2, 50, True), "olc": (3, 5, False)}   # facility: (team size, level, double)
+NAMES.update({"otower": "Battle Tower", "otower2": "Battle Tower's 2-on-2", "olc": "Battle Tower's Little Cup"})
+_LC = None
+
+
+def lc_pool(game):
+    """The Little Cup's Pokemon: Gen 3 and earlier, the first of a line that still evolves by level (no legends, no babies
+    that only evolve by friendship)."""
+    global _LC
+    if _LC is None:
+        with open(os.path.join(game.assets.assets_dir, "pokemon_levels.json"), encoding="utf-8") as f:
+            lv = json.load(f)
+        pairs = [tuple(int(x) for x in k.split(">")) + (v,) for k, v in lv["pairs"].items()]
+        later = {b for a, b, _v in pairs}
+        _LC = sorted({a for a, b, v in pairs if a <= 386 and b <= 386 and a not in later and isinstance(v, dict) and v.get("level")})
+    return _LC
+
+
+def best(game, fac):
+    return int(_flags(game).get(f"frontier_{fac}_best", 0) or 0)
+
+
+def rule_problem(game, fac):
+    """Why your party can't enter this facility (lines), else None."""
+    if fac not in ENDLESS:
+        return None
+    team = [p for p in game.story_manager.player_team if p is not None and not getattr(p, "is_egg", False)]
+    if fac == "otower2" and len(team) != 2:
+        return ["The 2-on-2 challenge takes exactly two Pokemon. Leave the rest in the PC, then come back."]
+    if fac == "olc":
+        pool = set(lc_pool(game))
+        bad = [p for p in team if int(p.level) > 5 or int(getattr(p, "id", 0)) not in pool]
+        if len(team) != 3 or bad:
+            return ["The Little Cup takes exactly three Pokemon, each Lv 5 or under and not yet evolved - ones that can still evolve.",
+                    "The seller here has some for Battle Points."]
+    return None
+
+
 _DATA = None
 _DATA4 = None
 
@@ -105,7 +147,9 @@ def wins(game, fac):
 
 
 def goal(game, fac):
-    """Wins needed before the Brain: 5 the first time, 10 after the Silver Symbol."""
+    """Wins needed before the Brain: 5 the first time, 10 after the Silver Symbol. (Orre's endless streaks: no Brain.)"""
+    if fac in ENDLESS:
+        return 10 ** 9
     return AGAIN if _flags(game).get(f"frontier_{fac}_silver") else FIRST
 
 
@@ -133,6 +177,17 @@ def _groups(game, fac):
 
 def next_trainer(game, fac):
     """The next opponent's trainer info (as a trainer_pool entry): a random Frontier trainer, or the Brain."""
+    if fac in ENDLESS:   # (Orre's Battle Tower: Emerald's trainers; the Little Cup's from its own pool)
+        n, lvl, double = ENDLESS[fac]
+        t = random.choice(data(game)["trainers"])
+        cls = t["class"].rstrip("♂♀")
+        w = wins(game, fac)
+        team = random.sample(lc_pool(game), n) if fac == "olc" else _team(game, [2, 3] if w < 10 else [3], n)
+        info = {"name": f"{cls} {t['name']}", "class": cls.upper().replace(" ", "_").replace("É", "E").replace("é", "E"),
+                "sprite": t["sprite"], "team": team, "levels": [lvl] * len(team)}
+        if double:
+            info["double"] = True
+        return info
     if brain_next(game, fac):
         title, sprite, silver, gold, _sym = BRAINS[fac]
         is_gold = bool(_flags(game).get(f"frontier_{fac}_silver"))
@@ -158,6 +213,11 @@ def intro_lines(game, fac):
     """The attendant's words before a battle."""
     w, g = wins(game, fac), goal(game, fac)
     name = NAMES[fac]
+    if fac in ENDLESS:
+        if w == 0:
+            return [f"Welcome to the {name}! Win as many battles in a row as you can - the streak never ends until you lose.",
+                    f"Your best so far: {best(game, fac)}. Your team will be healed before every battle. Here comes your first opponent!"]
+        return [f"Your streak: {w} win{'s' if w != 1 else ''} (best {best(game, fac)}). Your team has been healed. Here comes the next!"]
     if brain_next(game, fac):
         if fac == "maison":
             return [f"{w} wins in a row! The Chatelaine herself, {BRAINS[fac][0]}, will battle you!"]
@@ -187,6 +247,11 @@ def after_battle(game, fac, won):
         heal(game)
         return [f"Your streak ended at {w} win{'s' if w != 1 else ''}. Your team was healed. Try again any time!"]
     from src.world import battle_points as _bp   # (Battle Points for every win, more for a Brain: 11-22)
+    if fac in ENDLESS:   # (Orre's Battle Tower: no Brain; the best streak kept)
+        flags[key] = wins(game, fac) + 1
+        flags[f"frontier_{fac}_best"] = max(best(game, fac), wins(game, fac))
+        got = _bp.add_bp(game.story_manager, _bp.WIN_BP)
+        return [f"You earned {got} BP! You have {_bp.bp(game.story_manager)} BP."] if got else []
     if not brain_next(game, fac):
         flags[key] = wins(game, fac) + 1
         got = _bp.add_bp(game.story_manager, _bp.WIN_BP)

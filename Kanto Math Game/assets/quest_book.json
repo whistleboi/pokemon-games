@@ -253,8 +253,8 @@
       {"mission": "hoenn_m10", "title": "Father and Child", "say": "Four badges. Now there's only one Gym in Hoenn that really matters: your dad's."}
     ]},
     {"title": "The Feather Badge", "chapters": [
+      {"mission": "hoenn_m11", "title": "A Stone That Shines", "say": "Wally's father has something for you back in Petalburg. Past it, Steven waits on Route 118, turning a strange stone over in his hand. It seems to shine from the inside."},
       {"mission": "hoenn_m12", "title": "The Weather Institute", "say": "Researchers on Route 119 study storms and sunshine. Today, someone has locked them inside."},
-      {"mission": "hoenn_m11", "title": "A Stone That Shines", "say": "Steven is waiting on Route 118. He wants to show you a power hidden inside certain stones."},
       {"mission": "hoenn_m14", "title": "Steven's Gift", "say": "Something invisible is blocking the way to Fortree's Gym. Steven might have a way to see it."},
       {"mission": "hoenn_m13", "title": "Wings Over Fortree", "say": "Fortree City is built in the treetops, and its Gym Leader flies higher than anyone."}
     ]},
@@ -379,16 +379,16 @@
       {"mission": "b2_m22", "title": "Elesa's Runway", "say": "The lights come up one by one along the catwalk. At the end of it, Elesa waits for her audience."}
     ]},
     {"title": "Plasma's Secret Weapon", "chapters": [
-      {"mission": "b2_m23", "title": "Trouble at Big Stadium", "say": "Hugh's voice carries across the plaza. He's found Team Plasma, and he isn't going to let them walk away."},
+      {"mission": "b2_m23", "title": "Trouble at Big Stadium", "say": "{rival_name}'s voice carries across the plaza. He's found Team Plasma, and he isn't going to let them walk away."},
       {"mission": "b2_m24", "title": "West to Route 5", "say": "Route 5 is crowded with performers, and someone at the drawbridge is making a scene. Driftveil lies beyond it."}, {"mission": "b2_m25", "title": "Over the Drawbridge", "say": "The drawbridge is down at last. Across the river, Driftveil City waits, and so does whatever Team Plasma left behind."}
     ]},
     {"title": "The Quake Badge", "chapters": [
-      {"mission": "b2_m26", "title": "Team Plasma, Old and New", "say": "On the hill north of the Gym stands a house full of people who used to wear Team Plasma's uniform. They say they've changed. Hugh isn't so sure."},
+      {"mission": "b2_m26", "title": "Team Plasma, Old and New", "say": "On the hill north of the Gym stands a house full of people who used to wear Team Plasma's uniform. They say they've changed. {rival_name} isn't so sure."},
       {"mission": "b2_m27", "title": "Down the Mine", "say": "Clay's Gym is a mine, and the mine is dark. The conveyor belts rumble from platform to platform, and only the ones you've stood on light up."},
       {"mission": "b2_m28", "title": "The World Tournament", "say": "South of the city, Trainers from every region gather to find out who's strongest. Clay has saved you a place."}
     ]},
     {"title": "The Plasma Frigate", "chapters": [
-      {"mission": "b2_m29", "title": "Aboard the Plasma Frigate", "say": "Grunts in black are running for the pier, where a ship with no flag waits. Hugh is already gone after them. Whoever is on that deck has been expecting company."}
+      {"mission": "b2_m29", "title": "Aboard the Plasma Frigate", "say": "Grunts in black are running for the pier, where a ship with no flag waits. {rival_name} is already gone after them. Whoever is on that deck has been expecting company."}
     ]},
     {"title": "The Cold Snap", "chapters": [
       {"mission": "b2_m30", "title": "The Cold Snap", "say": "Somewhere near Lacunosa Town the air froze solid for a moment, colder than any winter. It happened at Castelia too, and Driftveil. Cheren is waiting at the Season Research Lab, and he doesn't like what the numbers say."},
@@ -397,6 +397,90 @@
     {"title": "Above the Clouds", "chapters": [
       {"mission": "b2_m32", "title": "The Wind Tunnel", "say": "Skyla's Gym is a hangar full of roaring turbines. When the wind kicks up, anyone out in the open goes flying back to the door. Time your run, and hide behind the walls."},
       {"mission": "b2_m33", "title": "Over the Mountain", "say": "Twist Mountain has caved in, and the road to Opelucid is gone. Skyla's plane is fuelled and waiting. All that's missing is a professor lost somewhere in Celestial Tower."}
+    ]},
+    {"title": "The Road to Opelucid", "chapters": [
+      {"mission": "b2_m34", "title": "The Smouldering Mountain", "say": "Professor Juniper has a question that only Opelucid's Gym Leader can answer, and the only road east runs through Reversal Mountain. The rock there is warm to the touch. Bianca has already gone in, chasing a rumour."}
+    ]}
+  ],
+  "ORRE": [
+    {"title": "A Stranger at the Stand", "chapters": [
+      {"mission": "orre_m1", "title": "Dust and Diesel", "say": "The Outskirt Stand sits alone in the desert, an old train turned diner. A young rider at the far end has been watching the door since you came in."},
+      {"mission": "orre_m2", "title": "The Sack on the Road", "say": "Two men in odd clothes passed this way with a sack that moved. They were heading for Phenac City, and so are you."},
+      {"mission": "orre_m2b", "title": "Eyes That See Shadows", "say": "The girl from the sack sees something in certain Pokemon that nobody else can: a dark glow, like smoke. Phenac's mayor ought to hear about it."},
+      {"mission": "orre_m2c", "title": "An Empty Belt", "say": "A Snag Machine on your arm, and not one Poke Ball to throw. The bartender back at the Outskirt Stand keeps a box under the counter."},
+      {"mission": "orre_m2d", "title": "Trouble at the Mayor's", "say": "Shouting, from the direction of the mayor's house. Something's wrong."},
+      {"mission": "orre_m3", "title": "Three at the Gates", "say": "Strangers in matching outfits stand at every road out of Phenac, and each one keeps a Pokemon with that same dark glow."}
+    ]},
+    {"title": "The Phenac Badge", "chapters": [
+      {"mission": "orre_m14", "title": "The Stadium by the Fountain", "say": "Phenac Stadium has opened its doors to challengers. Four rounds, and at the end of them, a Gym Leader who fights like the tide."}
+    ]},
+    {"title": "The Pyrite Badge", "chapters": [
+      {"mission": "orre_m4", "title": "A Town Without Law", "say": "Pyrite Town: no sheriff worth the name, and dark Pokemon passed hand to hand in the duel square. Someone called Cail knows where they come from."},
+      {"mission": "orre_m4b", "title": "The Stolen Gear", "say": "The windmill has stopped and the Colosseum has gone dark. A missing gear, a thief called Silva, and a building site out past the bridge."},
+      {"mission": "orre_m4c", "title": "Lights On at the Colosseum", "say": "The windmill turns again. Pyrite's Colosseum is lit, and its Leader is waiting at the end of four rounds."}
+    ]},
+    {"title": "The Man with the Music", "chapters": [
+      {"mission": "orre_m4d", "title": "The Building by the Bridge", "say": "Duking's Plusle has been taken. The trail leads up through the Pyrite Building, past guards who don't want visitors, to its roof."},
+      {"mission": "orre_m5", "title": "Music in the Cave", "say": "Somewhere in Pyrite Cave, someone is playing very loud music. Follow the beat."}
+    ]},
+    {"title": "The Agate Badge", "chapters": [
+      {"mission": "orre_m6", "title": "The Village in the Trees", "say": "Agate Village is green, quiet, and old. Rui's grandparents live there, and a fortune-teller saw trouble heading their way."},
+      {"mission": "orre_m6b", "title": "Into the Relic Cave", "say": "Footprints lead into the Relic Cave, and an old man went in after them alone."},
+      {"mission": "orre_m6c", "title": "The Hall of Light", "say": "Agate has a Gym, and two Leaders who battle side by side. Its hall is a puzzle of light before it is a battle."}
+    ]},
+    {"title": "Beneath Pyrite", "chapters": [
+      {"mission": "orre_m7", "title": "Smoke on Mt. Battle", "say": "Something is wrong on the mountain next to Agate. Trainers are coming down beaten and shaking."},
+      {"mission": "orre_m7b", "title": "A Gift from the Top", "say": "Mt. Battle is quiet again. The trainer at the top of its first area has been waiting to say something."},
+      {"mission": "orre_m7c", "title": "The Jail Key", "say": "Two of Miror B.'s men sit in Pyrite's cells. Whatever they're carrying, they aren't going to hand it over."},
+      {"mission": "orre_m8", "title": "Down the Giant Lift", "say": "Beneath the Pyrite Building, a lift big enough for a truck goes down and down. At the bottom is a whole town that never sees the sun."},
+      {"mission": "orre_m8b", "title": "A Spy in a Cage", "say": "Somebody in The Under has been locked away for asking too many questions."},
+      {"mission": "orre_m8c", "title": "On Air", "say": "Every screen in The Under shows the same smiling face. Her studio floats above the town, if you can find the way up."},
+      {"mission": "orre_m8d", "title": "The Old Subway", "say": "She ran for the back stairs, down into tunnels nobody has used in years."},
+      {"mission": "orre_m9", "title": "The Under Colosseum", "say": "The Under has its own Colosseum, and the winner walks away with more than a trophy."},
+      {"mission": "orre_m10", "title": "The Lab in the Sand", "say": "Out in the desert stands a building with no sign and a locked gate. This is where the dark Pokemon are made."},
+      {"mission": "orre_m10z", "title": "A Disk Full of Secrets", "say": "A Data ROM, dropped in a hurry. The kids in The Under are good at opening things that are meant to stay shut."}
+    ]},
+    {"title": "The Snagem Badge", "chapters": [
+      {"mission": "orre_m10y", "title": "Cold Halls in the Ruins", "say": "The old Snagem hideout is a Gym now. The halls have gone cold, and the Leader inside likes it that way."}
+    ]},
+    {"title": "Realgam Tower", "chapters": [
+      {"mission": "orre_m18", "title": "Four Coloured Keys", "say": "Realgam Tower glitters like a jewel in the sand. Behind it, four old enemies each hold a key to one great door."},
+      {"mission": "orre_m18b", "title": "The Tower Halls", "say": "The great door is open. Beyond it, long halls and the lifts at their far end."},
+      {"mission": "orre_m18c", "title": "No Rest at the Top", "say": "The roof Colosseum. Match after match, and no Pokemon Center between them. Whoever runs Cipher is watching from the best seat."}
+    ]},
+    {"title": "Five Years Later", "chapters": [
+      {"mission": "orre_m10b", "title": "An Empty Lab", "say": "Five years have passed. Professor Krane's lab near Gateon Port studies how to heal dark hearts. Today the door is open and nobody answers."},
+      {"mission": "orre_m10c", "title": "A Machine Part", "say": "The Purify Chamber needs a part nobody in Gateon has. A shopkeeper's father might, if anyone can find him.", "done": "xd_gateon_bridges"},
+      {"mission": "orre_m10d", "title": "The Lighthouse", "say": "Gateon's bridges swing back into place, and the lighthouse on the islands is lit. Three guardians stand between you and the top."},
+      {"mission": "orre_m10c", "title": "Back to the Lab", "say": "The part is in your bag. Lily has been waiting at the lab with the Purify Chamber open.", "when": "xd_gateon_bridges"}
+    ]},
+    {"title": "Cipher Returns", "chapters": [
+      {"mission": "orre_m11", "title": "The Lab Reopened", "say": "A car with no plates was seen driving toward the old lab in the sand. The professor might still be inside."},
+      {"mission": "orre_m11b", "title": "Data for Nett", "say": "Professor Krane is safe, and his research needs a pair of clever eyes at the ONBS building."},
+      {"mission": "orre_m12", "title": "Static on the Airwaves", "say": "Orre's TV station has stopped broadcasting the news. Someone else is holding the microphone now."},
+      {"mission": "orre_m13", "title": "Strangers Wearing Phenac", "say": "Phenac looks the same, but the faces are wrong. Even the mayor's people aren't who they say they are."},
+      {"mission": "orre_m13b", "title": "Locked Below", "say": "There are voices under the Pre Gym, and a key in your hand."},
+      {"mission": "orre_m14b", "title": "A Runaway", "say": "Someone who got away from Cipher is hiding at the Outskirt Stand, jumping at every noise."},
+      {"mission": "orre_m15", "title": "The Desert Gang", "say": "Team Snagem has crept back into its old desert hideout. Its boss never did like losing."},
+      {"mission": "orre_m16", "title": "The Biggest Stage in Orre", "say": "The Orre Colosseum: the biggest crowd, the biggest prize, and a final against a face you know."}
+    ]},
+    {"title": "The Key Lair Badge", "chapters": [
+      {"mission": "orre_m17", "title": "A Door in Gateon Port", "say": "There's a building in Gateon Port with a thug at the door and no name on the wall."},
+      {"mission": "orre_m17b", "title": "Lights in the Maze", "say": "Corridors that loop back on themselves, crates to shift, and a lever sitting on a table as if someone forgot it."},
+      {"mission": "orre_m17c", "title": "Gorigan's Hall", "say": "The power is back on. At the top of the Lair, a very large man is waiting with his fists ready."},
+      {"mission": "orre_m17d", "title": "Norman's Hall", "say": "Gorigan's hall has a new master, and he has been training for exactly this fight."}
+    ]},
+    {"title": "Gale of Darkness", "chapters": [
+      {"mission": "orre_s5", "title": "A Gift Before the Storm", "say": "Cipher's Grand Master waits on an island far out to sea. Professor Krane has something for you before you go."},
+      {"mission": "orre_s5b", "title": "Citadark Isle", "say": "Citadark Isle: a fortress, a volcano, and a tower with a dome on top. Something enormous is shut away up there.", "done": "xd_eldes_beaten"},
+      {"mission": "orre_m19", "title": "An Ancient Force", "say": "At the top of the Dome, a Gym Leader with dragons stands between you and the Grand Master's arena."},
+      {"mission": "orre_s5b", "title": "The Shadow at the Summit", "say": "The arena is open. The Grand Master is small, and smiling, and has been waiting a long time.", "when": "xd_eldes_beaten"}
+    ]},
+    {"title": "The Realgam Badge", "chapters": [
+      {"mission": "orre_m20", "title": "The Colosseum in the Sky", "say": "Cipher is gone. High above Realgam Tower, a Colosseum in the sky has a Gym Leader of its own."}
+    ]},
+    {"title": "The Orre League", "chapters": [
+      {"mission": "orre_m21", "title": "Five Battles in the Sky", "say": "Eight badges. The Orre League waits at Realgam: four of Orre's strongest, one after another, and then its Champion."}
     ]}
   ]
 }

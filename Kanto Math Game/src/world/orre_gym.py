@@ -29,14 +29,28 @@ def event(state, ev, lines, show):
     name = _fill_names(game, ld.get("name", "The Leader"))
     badge = ld.get("badge_reward")
     if badge and story.has_badge(badge):
+        rm = ld.get("orre_rematch")
+        if rm and story.is_region_champion("ORRE"):   # (S6d, Jordan 11-24: their second team after the League, once a day)
+            import datetime
+            day = f"orre_rematch_{area}_{ev.get('gym') or 'gym'}@{datetime.date.today().isoformat()}"
+            if story.story_flags.get(day):
+                return show([f"{name}: That was a great battle today. Come back tomorrow for another!"])
+            for k in [k for k in story.story_flags if k.startswith(day.split("@")[0] + "@")]:
+                story.story_flags.pop(k)   # (yesterday's forgotten)
+            story.story_flags[day] = True
+            info = dict(ld, team=list(rm["team"]), levels=list(rm["levels"]), team_moves=[list(m) for m in rm["team_moves"]],
+                        badge_reward=None, rewards={"balls": 10},
+                        dialogue={"player_won": [f"{name}: Still the Champion! Come back tomorrow."],
+                                  "player_lost": [f"{name}: Not today, Champion! Try again tomorrow."]})
+            for k in ("victory_flag", "orre_rematch"):
+                info.pop(k, None)
+            info["_intro_lines"] = [f"{name}: Champion! My team has grown too. Let's see how far you've come!"]
+            return game.change_state(_start_event_battle(game, area, info, None))
         return show(lines or [f"{name}: You have my badge already. Keep it with pride."])
     req = dict((lobby.gym_data or {}).get("requirements") or {})
     have = len(story.badges.get(lobby.region, []))
     if have < int(req.get("badges", 0)) or (req.get("flag") and not story.story_flags.get(req["flag"])):
         return show(_resolve_lines(game, [req.get("fail_text") or f"{name}: Come back with {req.get('badges', 0)} badges."]))
-    closed = state.gym_closed() if hasattr(state, "gym_closed") else None
-    if closed:
-        return show(closed)
 
     def battle():
         info = dict(ld)
