@@ -110,7 +110,8 @@
   "MT_NAVEL": {
    "trainer": "plain.png",
    "water": "water.png",
-   "wild": "plain.png"
+   "wild": "plain.png",
+   "leader": "leader.png"
   },
   "MURCOTT_ISLAND": {
    "water": "water.png",

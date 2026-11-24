@@ -1485,6 +1485,9 @@ check(_bn(_bbg.pick(g, "MIKAN_ISLAND", trainer=True, gym=True, leader=True, wate
       "Cissy in the Gym hall: 5.7's Leader picture")
 check(_bn(_bbg.pick(g, "PUMMELO_ISLAND", trainer=True, gym=True, leader=True, water=False, now=_noon)) == "champion.png",
       "Drake in the Stadium: 5.7's Champion picture")
+check(all(_bn(_bbg.pick(g, _a, trainer=True, leader=True, water=False, now=_noon)) == "leader.png"
+          for _a in ("TROVITA_ISLAND", "MT_NAVEL", "KUMQUAT_ISLAND")),
+      "Rudy, Danny and Luana's own battles (events: main 8c0a6ccf asks 'leader'): 5.7's Leader picture")
 check(_bn(_bbg.pick(g, "ORANGE_ROUTE_57", water=False, now=_noon)) == "grass.png"
       and _bn(_bbg.pick(g, "ORANGE_ROUTE_57", water=True, now=_noon)) == "water.png",
       "Route 57: grass for its grass, water on the sea")
