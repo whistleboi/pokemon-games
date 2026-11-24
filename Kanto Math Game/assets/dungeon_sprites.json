@@ -76,6 +76,42 @@
     ]
   },
   "figures": {
+    "ORRE_BATTLE_FRONTIER:Ace Trainer": {
+      "sheet": "orre_trainer_ace_trainer.png"
+    },
+    "ORRE_BATTLE_FRONTIER:Cooltrainer": {
+      "sheet": "orre_trainer_cooltrainer_f.png"
+    },
+    "ORRE_BATTLE_FRONTIER:NURSE (FRONTIER)": {
+      "sheet": "orre_npc_16.png"
+    },
+    "ORRE_BATTLE_FRONTIER:BP EXCHANGE": {
+      "sheet": "orre_npc_19.png"
+    },
+    "ORRE_BATTLE_FRONTIER:BP EXCHANGE (TMS)": {
+      "sheet": "orre_npc_19.png"
+    },
+    "ORRE_BATTLE_FRONTIER:NURSE (TOWER)": {
+      "sheet": "orre_npc_16.png"
+    },
+    "ORRE_BATTLE_FRONTIER:ENDLESS CHALLENGE": {
+      "sheet": "orre_npc_23.png"
+    },
+    "ORRE_BATTLE_FRONTIER:2-ON-2 CHALLENGE": {
+      "sheet": "orre_npc_23.png"
+    },
+    "ORRE_BATTLE_FRONTIER:LITTLE CUP CHALLENGE": {
+      "sheet": "orre_npc_23.png"
+    },
+    "ORRE_BATTLE_FRONTIER:LITTLE CUP SELLER": {
+      "sheet": "orre_npc_15.png"
+    },
+    "ORRE_BATTLE_FRONTIER:MOVE TUTOR (TOWER)": {
+      "sheet": "orre_npc_06.png"
+    },
+    "ORRE_BATTLE_FRONTIER:RECORD BOARD": {
+      "sheet": "orre_signs.png"
+    },
     "ORRE_NEW_ISLAND:BLASTOISE CLONE": {"pokemon": 9},
     "ORRE_NEW_ISLAND:CHARIZARD CLONE": {"pokemon": 6},
     "ORRE_NEW_ISLAND:VENUSAUR CLONE": {"pokemon": 3},
