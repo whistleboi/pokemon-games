@@ -187,8 +187,9 @@ def overlay(maps):
     room = (town.get("rooms") or {}).get(LAB_ROOM)
     if room:
         people = room.setdefault("people", [])
-        for i, who in enumerate(people):   # (the scientist by the machines: the experiment too, after Blaine)
-            if isinstance(who, dict) and who.get("text") == "Scientist":
+        for i, who in enumerate(people):   # (the scientist by the machines: the experiment too, after Blaine. Since Kanto batch 23
+            text = who.get("text") if isinstance(who, dict) else who   #  that's FireRed's fossil scientist, "Pokemon Lab", 11-24)
+            if text in ("Scientist", "Pokemon Lab"):
                 people[i] = [OFFER, who]
                 break
     town.setdefault("scenes", []).append(CAST)

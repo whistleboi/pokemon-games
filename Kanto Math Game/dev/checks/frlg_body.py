@@ -345,7 +345,7 @@ check(t.room == "center", "...its Center is the shared room")
 t._go(None, "OUT:22,19")
 enter(t, (31, 21))
 # (11-14: FireRed's Picnicker Diana and Swimmer Luis stand in it too, talk to battle)
-check(t.room == "gym" and t.people.get((8, 6), {}).get("action") == "GYM" and len(t.people) == 5
+check(t.room == "gym" and t.people.get((8, 6), {}).get("action") == "GYM" and len([o for o in t.people.values() if o.get("_partner_of") is None]) == 5   # (11-24: not counting Misty's partner Pokemon, src/world/partners.py)
       and {o.get("text") for o in t.people.values()} >= {"Gym Guide", "Search the Gym's Pool", "Picnicker Diana", "Swimmer Luis"},
       f"...its Gym: FireRed's room, Misty, the guide, her two trainers and the poolside spot ({t.room})")
 t.draw(); t._go(None, "OUT:31,21")
@@ -1018,9 +1018,9 @@ for _k, _v in _had.items():
     if _v is None: story.inventory.pop(_k, None)
     else: story.inventory[_k] = _v
 
-# ---- the ordinary houses in the towns (FireRed's own rooms: 7.0-7.9, 9.4, 9.7, 8.3, 8.4, 10.17-10.19, 14.4, 14.8, 14.9, 11.2, 11.4, 11.9)
+# ---- the ordinary houses in the towns (Cerulean's south house: 1 or 2 - Yellow's Melanie, when Bulbasaur isn't your starter, 11-24) (FireRed's own rooms: 7.0-7.9, 9.4, 9.7, 8.3, 8.4, 10.17-10.19, 14.4, 14.8, 14.9, 11.2, 11.4, 11.9)
 for _town, _came, _doors in (
-        ("CERULEAN_CITY", "KANTO_ROUTE_4", (((10, 11), "house_w", (10, 10), 1), ((10, 8), "house_w", (10, 10), 1), ((30, 11), "house_ne", (10, 9), 2), ((31, 8), "house_ne", (10, 9), 2), ((15, 17), "house_mid", (11, 9), 2), ((23, 28), "house_s", (11, 9), 1), ((17, 11), "house_n", (11, 9), 1))),
+        ("CERULEAN_CITY", "KANTO_ROUTE_4", (((10, 11), "house_w", (10, 10), 1), ((10, 8), "house_w", (10, 10), 1), ((30, 11), "house_ne", (10, 9), 2), ((31, 8), "house_ne", (10, 9), 2), ((15, 17), "house_mid", (11, 9), 2), ((23, 28), "house_s", (11, 9), (1, 2)), ((17, 11), "house_n", (11, 9), 1))),
         ("VERMILLION_CITY", "KANTO_ROUTE_6", (((19, 17), "house_n", (11, 9), 1), ((28, 24), "house_e", (11, 9), 3))),   # (11-14: FireRed's Pidgey stands with its owners)
         ("LAVENDER_TOWN", "KANTO_ROUTE_8", (((5, 16), "house_w", (11, 9), 2), ((10, 16), "rater", (11, 9), 1))),   # (batch 10: the Cubone house has its Cubone)
         ("CELADON_CITY", "KANTO_ROUTE_7", (((37, 29), "restaurant", (15, 11), 4), ((41, 29), "house_e", (11, 9), 3), ((49, 29), "hotel", (17, 11), 4))),   # (batch 12: FireRed's own people)
@@ -1030,7 +1030,7 @@ for _town, _came, _doors in (
     for _d, _room, _size, _n in _doors:
         enter(t, _d)
         _said = [o.get("event", {}).get("lines") for o in t.people.values() if isinstance(o, dict)]
-        check(t.room == _room and (t.w, t.h) == _size and len(t.people) == _n and all(_said) and set(t.exits.values()) <= {"OUT:%d,%d" % q for q, r, _s, _c in _doors if r == _room},
+        check(t.room == _room and (t.w, t.h) == _size and len(t.people) in (_n if isinstance(_n, tuple) else (_n,)) and all(_said) and set(t.exits.values()) <= {"OUT:%d,%d" % q for q, r, _s, _c in _doors if r == _room},
               f"{_town} door {_d}: FireRed's room {_size[0]} x {_size[1]} ({t.room}), {len(t.people)} people with something to say, in by the mat {tuple(t.player)}")
         _near = [q for q in t.people if any(t._open((q[0] + a, q[1] + b)) or t._open((q[0] + 2 * a, q[1] + 2 * b)) for a, b in ((0, 1), (0, -1), (1, 0), (-1, 0)))]
         check(len(_near) == len(t.people), f"...everyone can be walked up to ({len(_near)} of {len(t.people)})")

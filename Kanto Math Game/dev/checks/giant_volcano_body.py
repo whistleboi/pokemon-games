@@ -86,15 +86,15 @@ _badges = story.badges.get("KANTO")
 # ---- the Lab's Testing Room: the scientist by the machines
 story.badges["KANTO"] = [b for b in (story.badges.get("KANTO") or []) if b != "VOLCANO"]
 lab = open_town("lab_test")
-spot, opt = person(lab, "Scientist")
-check(spot == (11, 8) and isinstance(opt, dict) and "any" in opt, f"Testing Room: the scientist by the machines ({spot})")
+spot, opt = person(lab, "Pokemon Lab")   # (FireRed's fossil scientist by the machines, since Kanto batch 23; 11-24)
+check(spot == (12, 3) and isinstance(opt, dict) and "any" in opt, f"Testing Room: the scientist by the machines ({spot})")
 shown = [o.get("text") for o in opt.get("any", []) if lab._shown(o)]
-check(shown == ["Scientist"], f"...before Blaine he only chats ({shown})")
+check(shown == ["Pokemon Lab"], f"...before Blaine he only revives fossils ({shown})")
 story.badges.setdefault("KANTO", []).append("VOLCANO")
 lab = open_town("lab_test")
-spot, opt = person(lab, "Scientist")
+spot, opt = person(lab, "Pokemon Lab")
 shown = [o.get("text") for o in opt.get("any", []) if lab._shown(o)]
-check(shown == ["Volcano experiment", "Scientist"], f"...with the Volcano Badge he offers the experiment ({shown})")
+check(shown == ["Volcano experiment", "Pokemon Lab"], f"...with the Volcano Badge he offers the experiment ({shown})")
 
 # talk to him and pick the experiment: out of the Lab, he walks you to the volcano, you fall in
 said.clear()
