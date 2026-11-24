@@ -4479,17 +4479,14 @@ for _k, _t in (("hall_w", _RC_HALL), ("hall_e", _RC_HALL), ("east", _RC_HALL), (
 # visited_MISTRALTON_CITY (batch 6b).
 
 
-def _arrive(m, z, came, door):
-    """In from another place by a door inside the map (not on its edge): set down on the walkable tile beside that door
-    (the map's "arrive" {place: [x, y]}). The walker only finds its own way in at a map edge (edge_to): Main's inbox
-    clean-main-unova-door-arrival."""
-    rows = GEO[str(z)]["rows"]
-    x, y = door
-    for dx, dy in ((0, 1), (1, 0), (-1, 0), (0, -1), (1, 1), (-1, 1), (1, -1), (-1, -1)):
-        tx, ty = x + dx, y + dy
-        if 0 <= ty < len(rows) and 0 <= tx < len(rows[0]) and rows[ty][tx] in '."' and m["art"][ty][tx] in '."':
-            m.setdefault("arrive", {})[came] = [tx, ty]
-            return
+def _stones(m, z):
+    """Chargestone's floating stones (Black 2's model 110 on each floor, the middle of a 3 x 3 block of rock in the file's
+    walk grid): out of the map's own models and onto the map as stones you push (Jordan 11-24: as Black 2, each slides till
+    it stops, where it ends kept; main 30e27d4a "stones")."""
+    objs = m["roofs"].get("_objects") or []
+    m["stones"] = [[int(o["at"][0]), int(o["at"][1])] for o in objs if o["k"] == "b2:%d_110_0" % z]
+    m["stone_model"] = "b2:%d_110_0" % z
+    m["roofs"]["_objects"] = [o for o in objs if o["k"] != "b2:%d_110_0" % z]
 
 
 # ---------------------------------------------------------------------------------------------------------------- Route 6
@@ -4537,7 +4534,7 @@ R6_LAB = room(332, {
         "lines": ["You can see Deerling from all four seasons here. We're sort of the Deerling experts.",
                   "We found a rather rare Deerling. Will you raise it for us?",
                   "Here you are! Take good care of it! Its Ability is Serene Grace: it doubles the chance of a move's extra effect."],
-        "gift_pokemon": 585, "gift_level": 30, "flag": "b2_r6_deerling",
+        "gift_pokemon": 585, "gift_level": 30, "gift_ability": "hidden", "gift_no_shiny": True, "flag": "b2_r6_deerling",
         "done": ["How's the Deerling doing? Its coat changes with the seasons, you know."]}},
     8: _say("Scientist at the glass", "A machine keeps the temperature and humidity just right in the case beside me.",
             "The plants inside change with the season, the same as outside."),
@@ -4643,8 +4640,8 @@ CHARGE_B2F = route(
     {}, exits={"^": ("CHARGESTONE_CAVE_B1F", [(9, 7)])},
     trainers={3: ("Hiker Jeremy", 5), 4: ("Ace Trainer Vicki", 5), 5: ("Guitarist Beverly", 5), 6: ("Ace Trainer Shaye", 1)},
     hidden={"20,34": "ELECTRIC_GEM"}, title="Chargestone Cave")
-# (the floating stones stay where Black 2 stands them, as the map's own models: the file's walk grid has rock all round each
-#  one, and none of them stands in the way, so the cave is crossed without pushing; pushing them: unova_check/DECISIONS.md)
+for _m, _z in ((CHARGE_1F, 195), (CHARGE_B1F, 196), (CHARGE_B2F, 197)):
+    _stones(_m, _z)
 # (the floors' stairs pair up by reading order on both sides, as the file pairs them: 1F (53, 5) / (20, 42) / (64, 50)
 #  <-> B1F (39, 5) / (9, 42) / (47, 50); the walker sets you down beside the matching door)
 
@@ -4697,15 +4694,6 @@ MISTRAL_1F["exits"][">"] = "CLAY_TUNNEL"   #  is batch 11/13, the menu-era place
 MISTRAL_1F["gated_exits"] = {"CLAY_TUNNEL": ["beat_unova_champion"]}
 MISTRAL_1F["barred"] = [{"tiles": [[26, 25]], "until": {"flag_condition": "beat_unova_champion"}, "look": "unseen",
                          "lines": ["Worker: This is Clay Tunnel. We're still digging it, so you can't go through yet!"]}]
-for _m, _z, _came, _door in (
-        (CHARGE_ENTRANCE, 194, "CHARGESTONE_CAVE", (11, 19)), (CHARGE_1F, 195, "CHARGESTONE_CAVE_ENTRANCE", (5, 60)),
-        (CHARGE_1F, 195, "CHARGESTONE_CAVE_B1F", (53, 5)), (CHARGE_1F, 195, "MISTRALTON_CITY", (73, 5)),
-        (CHARGE_B1F, 196, "CHARGESTONE_CAVE", (39, 5)), (CHARGE_B1F, 196, "CHARGESTONE_CAVE_B2F", (27, 8)),
-        (CHARGE_B2F, 197, "CHARGESTONE_CAVE_B1F", (9, 7)), (MISTRAL_1F, 333, "UNOVA_ROUTE_6", (1, 6)),
-        (MISTRAL_1F, 333, "MISTRALTON_CAVE_2F", (13, 16)), (MISTRAL_2F, 334, "MISTRALTON_CAVE", (4, 20)),
-        (MISTRAL_2F, 334, "GUIDANCE_CHAMBER", (18, 12)), (GUIDANCE, 335, "MISTRALTON_CAVE_2F", (16, 27)),
-        (ROUTE_6, 331, "MISTRALTON_CAVE", (60, 10))):
-    _arrive(_m, _z, _came, _door)   # (1F <-> B1F's two other stairs land at the north ones, till the walker finds its door)
 
 
 # ======================================================================================================== batch 6b (11-24)
@@ -4754,6 +4742,9 @@ MIST_GYM = room(108, {
            (1, 150, "Pilot Winslow", ["Pilot Winslow: You made it this far against the wind? Let's see!"], ["Pilot Winslow: Ready for the Leader!"])))},
 }, {(13, 45): ["MISTRALTON GYM", "Leader: Skyla", "The Highflying Girl"], (9, 45): ["MISTRALTON GYM", "Leader: Skyla"]}, (14, 12))
 MIST_GYM["title"] = "Mistralton Gym"
+MIST_GYM["gusts"] = {"from": "n", "lanes": [[1, 5, 21, 41]], "to": [11, 47],   # (the wind tunnel: the turbines at the back blow
+                     "lines": {"warn": "The turbines at the back are spinning up!",   #  toward the door; a wall upwind shelters
+                               "blown": "Whoosh! The wind blew you back to the entrance!"}}   #  you: src/world/gusts.py, main 11-24)
 MIST_CENTER = room(109, {
     0: {"text": "Pokémon Center", "action": "HEAL"}, 2: {"text": "Shop", "action": "SHOP"},
     3: _say("Clerk ", "Specialty Poke Balls are over here!"), 4: _say("Clerk  ", "The counter on the left sells everyday items."),
@@ -4984,14 +4975,6 @@ for _m in (CT_1F, CT_2F, CT_3F, CT_4F):   # (Black 2's camera 33 looks along the
 CT_ROOF["sign_events"] = {"16,10": {"text": "The bell", "action": "EVENT", "event": {
     "lines": ["It's Celestial Tower's bell.", "{player_name} rang the bell...", "The sound of the bell reverberates through the area..."],
     "flag": "b2_celestial_bell"}}}
-for _m, _z, _came, _door in (
-        (CT_1F, 338, "UNOVA_ROUTE_7", (11, 23)), (CT_1F, 338, "CELESTIAL_TOWER_2F", (9, 1)),
-        (CT_2F, 339, "CELESTIAL_TOWER", (10, 19)), (CT_2F, 339, "CELESTIAL_TOWER_3F", (13, 1)),
-        (CT_3F, 340, "CELESTIAL_TOWER_2F", (6, 16)), (CT_3F, 340, "CELESTIAL_TOWER_4F", (10, 1)),
-        (CT_4F, 341, "CELESTIAL_TOWER_3F", (8, 15)), (CT_4F, 341, "CELESTIAL_TOWER_ROOF", (10, 1)),
-        (CT_ROOF, 342, "CELESTIAL_TOWER_4F", (22, 14)), (ROUTE_7, 337, "CELESTIAL_TOWER", (11, 8)),
-        (CHARGE_1F, 195, "MISTRALTON_CITY", (73, 5))):
-    _arrive(_m, _z, _came, _door)
 
 
 MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": FLOCCESY, "UNOVA_ROUTE_20": ROUTE_20,

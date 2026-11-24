@@ -34,9 +34,6 @@ def event(state, ev, lines, show):
     have = len(story.badges.get(lobby.region, []))
     if have < int(req.get("badges", 0)) or (req.get("flag") and not story.story_flags.get(req["flag"])):
         return show(_resolve_lines(game, [req.get("fail_text") or f"{name}: Come back with {req.get('badges', 0)} badges."]))
-    closed = state.gym_closed() if hasattr(state, "gym_closed") else None
-    if closed:
-        return show(closed)
 
     def battle():
         info = dict(ld)

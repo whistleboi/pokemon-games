@@ -332355,28 +332355,55 @@
        ]
       }
      },
-     {
-      "text": "Realgam Tower: Cipher's Colosseum",
-      "action": "EVENT",
-      "event": {
-       "world": "orre_tournament",
-       "referee": true,
-       "signup": {
-        "arena": "colosseum",
-        "at": [
-         5,
-         10
-        ],
-        "lines": [
-         "Host: Welcome to Cipher's Colosseum! Take your place. Here they come!"
-        ],
-        "champion": [
-         "Host: The champion of Cipher's Colosseum! Come back once the Gym battles start again."
-        ]
-       }
+     [
+      {
+       "text": "Realgam Tower: Cipher's Colosseum",
+       "action": "EVENT",
+       "event": {
+        "world": "orre_tournament",
+        "referee": true,
+        "signup": {
+         "arena": "colosseum",
+         "at": [
+          5,
+          10
+         ],
+         "lines": [
+          "Host: Welcome to Cipher's Colosseum! Take your place. Here they come!"
+         ],
+         "champion": [
+          "Host: The champion of Cipher's Colosseum! Come back once the Gym battles start again."
+         ]
+        }
+       },
+       "condition": "not:orre_part2",
+       "color": "GOLD"
       },
-      "color": "GOLD"
-     },
+      {
+       "text": "Realgam Tower: Orre League",
+       "action": "EVENT",
+       "event": {
+        "world": "orre_tournament",
+        "referee": true,
+        "signup": {
+         "arena": "colosseum",
+         "at": [
+          5,
+          10
+         ],
+         "lines": [
+          "Host: Welcome to the Orre League! Four of Orre's strongest, one after another - then the Champion.",
+          "Host: No rest between battles, and no turning back. Take your place!"
+         ],
+         "champion": [
+          "Host: Our Champion! The Elite Four are always glad of a rematch."
+         ]
+        }
+       },
+       "condition": "orre_part2",
+       "color": "GOLD"
+      }
+     ],
      "GYM LEADER BIRCH"
     ],
     "signs": [],
@@ -332409,7 +332436,8 @@
      {
       "trigger": "enter",
       "condition": [
-       "world:orre_tournament:round:0"
+       "world:orre_tournament:round:0",
+       "world:orre_skip:part1"
       ],
       "call": [
        "Referee: Round 1! Bodybuilder Jomas takes the field!"
@@ -332440,7 +332468,8 @@
      {
       "trigger": "enter",
       "condition": [
-       "world:orre_tournament:round:1"
+       "world:orre_tournament:round:1",
+       "world:orre_skip:part1"
       ],
       "call": [
        "Referee: Round 2! Rider Delan takes the field!"
@@ -332471,7 +332500,8 @@
      {
       "trigger": "enter",
       "condition": [
-       "world:orre_tournament:round:2"
+       "world:orre_tournament:round:2",
+       "world:orre_skip:part1"
       ],
       "call": [
        "Referee: Round 3! Cipher Peon Nella takes the field!"
@@ -332502,7 +332532,8 @@
      {
       "trigger": "enter",
       "condition": [
-       "world:orre_tournament:round:3"
+       "world:orre_tournament:round:3",
+       "world:orre_skip:part1"
       ],
       "call": [
        "Referee: Round 4! Cipher Peon Ston takes the field!"
@@ -332533,7 +332564,8 @@
      {
       "trigger": "enter",
       "condition": [
-       "world:orre_tournament:round:4"
+       "world:orre_tournament:round:4",
+       "world:orre_skip:part1"
       ],
       "call": [
        "Referee: Round 5! Cipher Nascour takes the field!"
@@ -332564,7 +332596,8 @@
      {
       "trigger": "enter",
       "condition": [
-       "world:orre_tournament:round:5"
+       "world:orre_tournament:round:5",
+       "world:orre_skip:part1"
       ],
       "call": [
        "Referee: The final! Cipher Head Evice takes the field!"
@@ -332584,6 +332617,166 @@
         "stay": true,
         "lines": [
          "The floor of the arena splits open. Up rises... Phenac's mayor, Es Cade?!"
+        ],
+        "event": {
+         "world": "orre_tournament",
+         "fight": true
+        }
+       }
+      ]
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:round:0",
+       "world:orre_skip:part2"
+      ],
+      "call": [
+       "Host: Elite Four battle 1! Elite Four Justy takes the field!"
+      ],
+      "cast": [
+       {
+        "sheet": "orre_trainer_ace_trainer.png",
+        "from": [
+         5,
+         3
+        ],
+        "to": [
+         5,
+         7
+        ],
+        "face": "d",
+        "stay": true,
+        "lines": [
+         "Justy: The Pre Gym taught you your first steps. Now I teach you your last lesson before the Champion. Begin!"
+        ],
+        "event": {
+         "world": "orre_tournament",
+         "fight": true
+        }
+       }
+      ]
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:round:1",
+       "world:orre_skip:part2"
+      ],
+      "call": [
+       "Host: Elite Four battle 2! Elite Four Eagun takes the field!"
+      ],
+      "cast": [
+       {
+        "sheet": "orre_trainer_fun_old_man.png",
+        "from": [
+         5,
+         3
+        ],
+        "to": [
+         5,
+         7
+        ],
+        "face": "d",
+        "stay": true,
+        "lines": [
+         "Eagun: Rui sends her love - and so do my Pikachu. Old as I am, Orre's League asked for me. Let's see how you've grown!"
+        ],
+        "event": {
+         "world": "orre_tournament",
+         "fight": true
+        }
+       }
+      ]
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:round:2",
+       "world:orre_skip:part2"
+      ],
+      "call": [
+       "Host: Elite Four battle 3! Elite Four Miror B. takes the field!"
+      ],
+      "cast": [
+       {
+        "sheet": "orre_trainer_ace_trainer.png",
+        "from": [
+         5,
+         3
+        ],
+        "to": [
+         5,
+         7
+        ],
+        "face": "d",
+        "stay": true,
+        "lines": [
+         "Miror B.: No more Shadow Pokemon for me, baby! Just my Ludicolo, dancing for the League. Let's groove!"
+        ],
+        "event": {
+         "world": "orre_tournament",
+         "fight": true
+        }
+       }
+      ]
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:round:3",
+       "world:orre_skip:part2"
+      ],
+      "call": [
+       "Host: Elite Four battle 4! Elite Four Vander takes the field!"
+      ],
+      "cast": [
+       {
+        "sheet": "trchar007.png",
+        "from": [
+         5,
+         3
+        ],
+        "to": [
+         5,
+         7
+        ],
+        "face": "d",
+        "stay": true,
+        "lines": [
+         "Vander: I keep the peak of Mt. Battle. Today the peak comes to you. Show me everything!"
+        ],
+        "event": {
+         "world": "orre_tournament",
+         "fight": true
+        }
+       }
+      ]
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:round:4",
+       "world:orre_skip:part2"
+      ],
+      "call": [
+       "Host: The Champion of Orre! Champion Eldes takes the field!"
+      ],
+      "cast": [
+       {
+        "sheet": "orre_trainer_cipher_grunt.png",
+        "from": [
+         5,
+         3
+        ],
+        "to": [
+         5,
+         7
+        ],
+        "face": "d",
+        "stay": true,
+        "lines": [
+         "Eldes: I was Greevil's son, and Cipher's admin. I left all that behind to guard Orre instead. Now - the last battle. Come!"
         ],
         "event": {
          "world": "orre_tournament",
@@ -332633,7 +332826,8 @@
      {
       "trigger": "enter",
       "condition": [
-       "world:orre_tournament:won"
+       "world:orre_tournament:won",
+       "world:orre_skip:part1"
       ],
       "cast": [],
       "call": [
@@ -332641,6 +332835,22 @@
       ],
       "event": {
        "world": "orre_skip"
+      }
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:won",
+       "world:orre_skip:part2"
+      ],
+      "cast": [],
+      "call": [
+       "Host: Ladies and gentlemen... the new Champion of Orre, {player_name}!",
+       "The whole tower roars!"
+      ],
+      "event": {
+       "world": "orre_tournament",
+       "done": true
       }
      }
     ]
@@ -765248,6 +765458,8 @@
        ],
        "gift_pokemon": 585,
        "gift_level": 30,
+       "gift_ability": "hidden",
+       "gift_no_shiny": true,
        "flag": "b2_r6_deerling",
        "done": [
         "How's the Deerling doing? Its coat changes with the seasons, you know."
@@ -768295,12 +768507,6 @@
     0,
     23
    ]
-  },
-  "arrive": {
-   "MISTRALTON_CAVE": [
-    59,
-    10
-   ]
   }
  },
  "CHARGESTONE_CAVE_ENTRANCE": {
@@ -769499,12 +769705,6 @@
     18,
     1
    ]
-  },
-  "arrive": {
-   "CHARGESTONE_CAVE": [
-    11,
-    20
-   ]
   }
  },
  "CHARGESTONE_CAVE": {
@@ -769589,88 +769789,7 @@
     "px": 32
    },
    "_signs_in_picture": true,
-   "_objects": [
-    {
-     "k": "b2:195_110_0",
-     "at": [
-      34.5,
-      13.5
-     ],
-     "h": 1.0
-    },
-    {
-     "k": "b2:195_110_0",
-     "at": [
-      14.5,
-      17.5
-     ],
-     "h": 1.0
-    },
-    {
-     "k": "b2:195_110_0",
-     "at": [
-      22.5,
-      25.5
-     ],
-     "h": 1.0
-    },
-    {
-     "k": "b2:195_110_0",
-     "at": [
-      15.5,
-      27.5
-     ],
-     "h": 0.0
-    },
-    {
-     "k": "b2:195_110_0",
-     "at": [
-      37.5,
-      27.5
-     ],
-     "h": 0.0
-    },
-    {
-     "k": "b2:195_110_0",
-     "at": [
-      57.5,
-      35.5
-     ],
-     "h": 0.0
-    },
-    {
-     "k": "b2:195_110_0",
-     "at": [
-      8.5,
-      39.5
-     ],
-     "h": 0.0
-    },
-    {
-     "k": "b2:195_110_0",
-     "at": [
-      57.5,
-      47.5
-     ],
-     "h": 0.0
-    },
-    {
-     "k": "b2:195_110_0",
-     "at": [
-      11.5,
-      49.5
-     ],
-     "h": 0.0
-    },
-    {
-     "k": "b2:195_110_0",
-     "at": [
-      54.5,
-      52.5
-     ],
-     "h": 0.0
-    }
-   ],
+   "_objects": [],
    "_models": true,
    "_cam": {
     "picture": "b2_ground/195_cam.png",
@@ -775189,20 +775308,49 @@
    }
   ],
   "title": "Chargestone Cave",
-  "arrive": {
-   "CHARGESTONE_CAVE_ENTRANCE": [
-    5,
-    59
+  "stones": [
+   [
+    34,
+    13
    ],
-   "CHARGESTONE_CAVE_B1F": [
+   [
+    14,
+    17
+   ],
+   [
+    22,
+    25
+   ],
+   [
+    15,
+    27
+   ],
+   [
+    37,
+    27
+   ],
+   [
+    57,
+    35
+   ],
+   [
+    8,
+    39
+   ],
+   [
+    57,
+    47
+   ],
+   [
+    11,
+    49
+   ],
+   [
     54,
-    5
-   ],
-   "MISTRALTON_CITY": [
-    73,
-    6
+    52
    ]
-  }
+  ],
+  "stone_model": "b2:195_110_0"
  },
  "CHARGESTONE_CAVE_B1F": {
   "art": [
@@ -775285,48 +775433,7 @@
     "px": 32
    },
    "_signs_in_picture": true,
-   "_objects": [
-    {
-     "k": "b2:196_110_0",
-     "at": [
-      29.5,
-      5.5
-     ],
-     "h": -1.7
-    },
-    {
-     "k": "b2:196_110_0",
-     "at": [
-      25.5,
-      15.5
-     ],
-     "h": -1.7
-    },
-    {
-     "k": "b2:196_110_0",
-     "at": [
-      29.5,
-      17.5
-     ],
-     "h": -1.7
-    },
-    {
-     "k": "b2:196_110_0",
-     "at": [
-      33.5,
-      38.5
-     ],
-     "h": -0.7
-    },
-    {
-     "k": "b2:196_110_0",
-     "at": [
-      30.5,
-      44.5
-     ],
-     "h": -0.7
-    }
-   ],
+   "_objects": [],
    "_models": true,
    "_cam": {
     "picture": "b2_ground/196_cam.png",
@@ -778780,16 +778887,29 @@
    "28,40": "ULTRA_BALL"
   },
   "title": "Chargestone Cave",
-  "arrive": {
-   "CHARGESTONE_CAVE": [
-    38,
+  "stones": [
+   [
+    29,
     5
    ],
-   "CHARGESTONE_CAVE_B2F": [
-    28,
-    8
+   [
+    25,
+    15
+   ],
+   [
+    29,
+    17
+   ],
+   [
+    33,
+    38
+   ],
+   [
+    30,
+    44
    ]
-  }
+  ],
+  "stone_model": "b2:196_110_0"
  },
  "CHARGESTONE_CAVE_B2F": {
   "art": [
@@ -778869,56 +778989,7 @@
     "px": 32
    },
    "_signs_in_picture": true,
-   "_objects": [
-    {
-     "k": "b2:197_110_0",
-     "at": [
-      21.5,
-      6.5
-     ],
-     "h": 0.0
-    },
-    {
-     "k": "b2:197_110_0",
-     "at": [
-      27.5,
-      9.5
-     ],
-     "h": 0.0
-    },
-    {
-     "k": "b2:197_110_0",
-     "at": [
-      9.5,
-      16.5
-     ],
-     "h": 0.0
-    },
-    {
-     "k": "b2:197_110_0",
-     "at": [
-      14.5,
-      23.5
-     ],
-     "h": 0.0
-    },
-    {
-     "k": "b2:197_110_0",
-     "at": [
-      8.5,
-      29.5
-     ],
-     "h": 0.0
-    },
-    {
-     "k": "b2:197_110_0",
-     "at": [
-      22.5,
-      44.5
-     ],
-     "h": -2.0
-    }
-   ],
+   "_objects": [],
    "_models": true,
    "_cam": {
     "picture": "b2_ground/197_cam.png",
@@ -781123,12 +781194,33 @@
    "20,34": "ELECTRIC_GEM"
   },
   "title": "Chargestone Cave",
-  "arrive": {
-   "CHARGESTONE_CAVE_B1F": [
+  "stones": [
+   [
+    21,
+    6
+   ],
+   [
+    27,
+    9
+   ],
+   [
+    9,
+    16
+   ],
+   [
+    14,
+    23
+   ],
+   [
     8,
-    7
+    29
+   ],
+   [
+    22,
+    44
    ]
-  }
+  ],
+  "stone_model": "b2:197_110_0"
  },
  "MISTRALTON_CAVE": {
   "art": [
@@ -782387,17 +782479,7 @@
      "Worker: This is Clay Tunnel. We're still digging it, so you can't go through yet!"
     ]
    }
-  ],
-  "arrive": {
-   "UNOVA_ROUTE_6": [
-    2,
-    6
-   ],
-   "MISTRALTON_CAVE_2F": [
-    12,
-    16
-   ]
-  }
+  ]
  },
  "MISTRALTON_CAVE_2F": {
   "art": [
@@ -783627,16 +783709,6 @@
   "dark": {
    "radius": [
     3
-   ]
-  },
-  "arrive": {
-   "MISTRALTON_CAVE": [
-    5,
-    20
-   ],
-   "GUIDANCE_CHAMBER": [
-    18,
-    13
    ]
   }
  },
@@ -784894,12 +784966,6 @@
   "dark": {
    "radius": [
     3
-   ]
-  },
-  "arrive": {
-   "MISTRALTON_CAVE_2F": [
-    16,
-    26
    ]
   }
  },
@@ -794081,7 +794147,26 @@
       "The Highflying Girl"
      ]
     ],
-    "title": "Mistralton Gym"
+    "title": "Mistralton Gym",
+    "gusts": {
+     "from": "n",
+     "lanes": [
+      [
+       1,
+       5,
+       21,
+       41
+      ]
+     ],
+     "to": [
+      11,
+      47
+     ],
+     "lines": {
+      "warn": "The turbines at the back are spinning up!",
+      "blown": "Whoosh! The wind blew you back to the entrance!"
+     }
+    }
    },
    "center": {
     "theme": "room",
@@ -803333,12 +803418,6 @@
     19,
     30
    ]
-  },
-  "arrive": {
-   "CELESTIAL_TOWER": [
-    11,
-    9
-   ]
   }
  },
  "TWIST_MOUNTAIN_ENTRANCE": {
@@ -804739,17 +804818,7 @@
     "_look": "sheet:b2_c43.png"
    }
   ],
-  "title": "Celestial Tower",
-  "arrive": {
-   "UNOVA_ROUTE_7": [
-    11,
-    22
-   ],
-   "CELESTIAL_TOWER_2F": [
-    9,
-    2
-   ]
-  }
+  "title": "Celestial Tower"
  },
  "CELESTIAL_TOWER_2F": {
   "art": [
@@ -804860,17 +804929,7 @@
     "s": 3
    }
   },
-  "title": "Celestial Tower",
-  "arrive": {
-   "CELESTIAL_TOWER": [
-    10,
-    18
-   ],
-   "CELESTIAL_TOWER_3F": [
-    13,
-    2
-   ]
-  }
+  "title": "Celestial Tower"
  },
  "CELESTIAL_TOWER_3F": {
   "art": [
@@ -804966,17 +805025,7 @@
     "s": 1
    }
   },
-  "title": "Celestial Tower",
-  "arrive": {
-   "CELESTIAL_TOWER_2F": [
-    6,
-    15
-   ],
-   "CELESTIAL_TOWER_4F": [
-    10,
-    2
-   ]
-  }
+  "title": "Celestial Tower"
  },
  "CELESTIAL_TOWER_4F": {
   "art": [
@@ -805079,17 +805128,7 @@
     "s": 2
    }
   },
-  "title": "Celestial Tower",
-  "arrive": {
-   "CELESTIAL_TOWER_3F": [
-    8,
-    14
-   ],
-   "CELESTIAL_TOWER_ROOF": [
-    10,
-    2
-   ]
-  }
+  "title": "Celestial Tower"
  },
  "CELESTIAL_TOWER_ROOF": {
   "art": [
@@ -806303,12 +806342,6 @@
      "flag": "b2_celestial_bell"
     }
    }
-  },
-  "arrive": {
-   "CELESTIAL_TOWER_4F": [
-    22,
-    15
-   ]
   }
  }
 }
