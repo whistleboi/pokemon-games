@@ -593,6 +593,7 @@ PRIZES = {
                       ("ITEM", "KINGS_ROCK", 1500)],
     "HOENN_BATTLE_FRONTIER": [("ITEM", "RARE_CANDY", 500), ("ITEM", "PP_UP", 800), ("ITEM", "NUGGET", 1000),   # (the Battle Tower's
                               ("ITEM", "KINGS_ROCK", 1500), ("ITEM", "LEFTOVERS", 4000)],  #  secret floor, 11-15)
+    "TWO_ISLAND": [],   # FireRed's Joyful Game Corner has no prize counter: its games give Berries (src/world/joyful_games.py)
     "VEILSTONE_CITY": [("POKEMON", 133, 1000), ("ITEM", "RARE_CANDY", 500), ("ITEM", "HARD_STONE", 800),
                        ("ITEM", "AMULET_COIN", 2000)],
 }

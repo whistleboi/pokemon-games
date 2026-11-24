@@ -107,4 +107,16 @@ flags["ILEX_FOREST_boss_defeated"] = True
 check("journey_gs_shrine" not in side(), "done once Celebi has come")
 story.tracked_mission = None
 
+print("The ancient pair: Hoenn's Champion hears of Johto's Embedded Tower (Jordan 11-24)")
+flags.pop("embedded_rayquaza_defeated", None)
+at("LITTLEROOT_TOWN")
+check("journey_ancient_pair" in side(), "SIDE in Hoenn after the title: echoes in Johto")
+at("NEW_BARK_TOWN")
+check("journey_embedded_tower" in side(), "SIDE in Johto after its title: the tower in the cliffs")
+story.tracked_mission = "journey_embedded_tower"
+check(guide.goal_area(g) == "JOHTO_EMBEDDED_TOWER", f"the marker points at the Embedded Tower ({guide.goal_area(g)})")
+story.tracked_mission = None
+flags["embedded_rayquaza_defeated"] = True
+check("journey_embedded_tower" not in side(), "done once Rayquaza has come")
+
 print(f"##### {fails} failures")

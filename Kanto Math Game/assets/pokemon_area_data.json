@@ -133,7 +133,7 @@
       },
       {
         "id": "m0e", "type": "SIDE", "text": "A Rival on Route 22", "target": "KANTO_ROUTE_22",
-        "desc": "{rival_name} went off west of Viridian City, toward the Pokemon League's gate on Route 22. Go and show him how your Pokemon is doing!",
+        "desc": "{rival_name} headed west out of Viridian City, toward the road to the Pokemon League. He'll want to see how your Pokemon is coming along.",
         "condition": { "required_region": "KANTO", "flag": "received_pokedex_kanto", "flag_not": "defeated_rival_route22_early", "badges_less": 1 }, "completed_flag": "defeated_rival_route22_early"
       },
       {
@@ -143,7 +143,7 @@
       },
       {
         "id": "s_rowdy_pikachu", "type": "SIDE", "text": "A Rowdy Pikachu", "target": "PALLET_TOWN",
-        "desc": "Professor Oak heard you beat Lt. Surge. He has an Electric Pokemon at his Lab in Pallet Town that might listen to a trainer like you!",
+        "desc": "Word of your win over Lt. Surge reached Professor Oak. He has an Electric Pokemon at the lab in Pallet Town that won't listen to anyone. Yet.",
         "condition": { "required_region": "KANTO", "badge": "THUNDER", "flag_not": "got_rowdy_pikachu" }, "completed_flag": "got_rowdy_pikachu",
         "steps": [{"at": [16, 14], "label": "Oak's Lab", "done": "got_rowdy_pikachu"}]
       },
@@ -190,7 +190,7 @@
                   {"area": "KANTO_POKEMON_TOWER", "floor": 6, "at": [11, 4], "label": "Mr. Fuji", "done": "fuji_rescued"},
                   {"area": "LAVENDER_TOWN", "room": "fuji", "at": [3, 3], "label": "Mr. Fuji", "done": "has_item:POKE_FLUTE"}]
       },
-      {"id": "k_power", "type": "SIDE", "text": "Lights Out in Lavender", "target": "POWER_PLANT", "desc": "Lavender's Radio Tower has no power! Surf along the channel on Route 10 to the Power Plant and help the manager fix the generator.", "condition": {"visited": "LAVENDER_TOWN", "flag_not": "power_plant_fixed"}},
+      {"id": "k_power", "type": "SIDE", "text": "Lights Out in Lavender", "target": "POWER_PLANT", "desc": "The lights are out in Lavender. Down the channel on Route 10, the Power Plant's generator has gone quiet, and the manager can't fix it alone.", "condition": {"visited": "LAVENDER_TOWN", "flag_not": "power_plant_fixed"}},
 
       {
         "id": "m9", "type": "MAIN", "text": "The Rainbow Badge", "target": "CELADON_CITY", "completed_badge": "RAINBOW", "desc": "Travel west through Route 8 and Route 7 to reach Celadon City. Challenge Erika for the Rainbow Badge!",
@@ -275,7 +275,7 @@
         "condition": { "badges_min": 8, "flag_not": "beat_champion", "item": "HM_STRENGTH" }
       },
       {
-        "id": "s_helmet", "type": "SIDE", "text": "The Sleeping Man", "desc": "An old man is blocking the path in Viridian City. People say he needs a math genius to wake him up... and he might have a handy gift!",
+        "id": "s_helmet", "type": "SIDE", "text": "The Sleeping Man", "desc": "An old man is snoring in the middle of a Viridian City path. People say only a real math whiz could ever wake him.",
         "condition": { "visited": "VIRIDIAN_CITY", "flag_not": "got_rocky_helmet" }
       },
       {
@@ -283,7 +283,7 @@
         "condition": { "badges_min": 2, "flag_not": "received_old_amber" }
       },
       {
-        "id": "s_fossil", "type": "SIDE", "text": "Mt. Moon Fossils", "desc": "A Super Nerd has dug up two fossils deep inside Mt. Moon. Beat him and pick one!",
+        "id": "s_fossil", "type": "SIDE", "text": "Mt. Moon Fossils", "desc": "Deep in Mt. Moon, a Super Nerd guards two fossils he dug up himself. He might part with one, for the right Trainer.",
         "condition": { "visited": "MT_MOON", "flag_not": ["took_dome_fossil", "took_helix_fossil", "received_museum_fossil"] }
       },
       {
@@ -291,7 +291,7 @@
         "condition": { "visited": "BILLS_HOUSE" }, "completed_flag": "received_bill_eevee"
       },
       {
-        "id": "s_bill2", "type": "SIDE", "text": "Bill's Research: Snorlax", "desc": "Bill wants to see a real Snorlax. He's heard rumors of one blocking paths near Lavender Town. Catch one and show him!",
+        "id": "s_bill2", "type": "SIDE", "text": "Bill's Research: Snorlax", "desc": "Bill has never seen a real Snorlax. There are rumours of one sleeping across a road near Lavender Town.",
         "condition": { "flag": "received_bill_eevee" }, "completed_flag": "received_bill_eevee_snorlax", "target": "BILLS_HOUSE"
       },
       {
@@ -299,7 +299,7 @@
         "condition": { "flag": "received_bill_eevee_snorlax" }, "completed_flag": "received_bill_eevee_lickitung", "target": "BILLS_HOUSE"
       },
       {
-        "id": "s_bike", "type": "SIDE", "text": "New Wheels", "target": "CERULEAN_CITY", "desc": "You have a Bike Voucher! Visit the Bike Shop in Cerulean City to claim your miracle cycle.",
+        "id": "s_bike", "type": "SIDE", "text": "New Wheels", "target": "CERULEAN_CITY", "desc": "A Bike Voucher, and a Bike Shop in Cerulean City that has never given anything away.",
         "condition": { "item": "BIKE_VOUCHER", "item_not": "BICYCLE" }
       },
       {
@@ -314,7 +314,7 @@
         "condition": { "visited": "CELADON_CITY", "item_not": "HM_FLY" }, "completed_flag": "got_hm_fly_kanto"
       },
       {
-        "id": "s_fuji", "type": "SIDE", "text": "Fuji's Flute", "desc": "Talk to Mr. Fuji in Lavender Town now that the Pokémon Tower ghost is at peace.",
+        "id": "s_fuji", "type": "SIDE", "text": "Fuji's Flute", "desc": "The ghost in the Pokemon Tower is at peace. Mr. Fuji, back in his Lavender home, has something for whoever freed it.",
         "condition": { "flag": "tower_ghost_defeated", "item_not": "POKE_FLUTE" }
       },
       {
@@ -351,7 +351,7 @@
         "condition": { "visited": "KANTO_ROUTE_20", "flag_not": "SEAFOAM_ISLANDS_boss_defeated" }
       },
       {
-        "id": "s_zapdos", "type": "SIDE", "text": "The Electric Legend", "desc": "An intense crackle of electricity emanates from the Abandoned Power Plant near Route 10. Zapdos awaits a challenger!",
+        "id": "s_zapdos", "type": "SIDE", "text": "The Electric Legend", "desc": "The abandoned Power Plant near Route 10 crackles day and night. Something in the dark is made of lightning.",
         "condition": { "badges_min": 3, "flag_not": "POWER_PLANT_boss_defeated" }
       },
       {
@@ -3863,6 +3863,7 @@
           "color": "GOLD",
           "zone": "floor_6"
         },
+        {"text": "THE BLACK FOG", "action": "BOSS", "color": "PURPLE", "condition": "has_item:SILPH_SCOPE", "flag_condition": "not black_fog_banished_kanto_pokemon_tower", "zone": "floor_4", "boss": {"id": 10501, "name": "Black Fog", "level": 25, "no_catch": true, "victory_flag": "black_fog_banished_kanto_pokemon_tower", "lines": ["The air turns ice-cold. A black fog pours across the floor...", "Two huge eyes open in the dark. A giant Haunter rises: the Black Fog!", "Long ago people worshipped it as a god. It feeds on dreams. Don't let it get yours!"], "won": ["The Black Fog is too proud to ever be caught.", "It Self-Destructs in a burst of black mist... and is gone.", "But a cold whisper lingers: it will rise again in another haunted place."], "rewards": {"balls": 10, "RARE_CANDY": 3}}},
         {
           "text": "EXIT TOWER",
           "action": "EXIT",
@@ -3963,34 +3964,7 @@
         "Faint crying echoes from above.",
         "You feel like you're being watched.",
         "A voice whispers: 'Go... away...'"
-      ],
-      "zone_ambush": {
-        "chance": 0.25,
-        "boss": {
-          "id": 10501,
-          "name": "Black Fog",
-          "level": 25,
-          "no_catch": true,
-          "victory_flag": "black_fog_banished_kanto_pokemon_tower",
-          "lines": [
-            "The air turns ice-cold. A black fog pours across the floor...",
-            "Two huge eyes open in the dark. A giant Haunter rises: the Black Fog!",
-            "Long ago people worshipped it as a god. It feeds on dreams. Don't let it get yours!"
-          ],
-          "won": [
-            "The Black Fog is too proud to ever be caught.",
-            "It Self-Destructs in a burst of black mist... and is gone.",
-            "But a cold whisper lingers: it will rise again in another haunted place."
-          ],
-          "rewards": {
-            "balls": 10,
-            "RARE_CANDY": 3
-          }
-        },
-        "lines": [
-          "Halfway up the stairs, the lights go out..."
-        ]
-      }
+      ]
     },
 
 
