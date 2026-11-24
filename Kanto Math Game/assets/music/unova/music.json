@@ -13,6 +13,8 @@
    "SUMMER": "r_c_su",
    "WINTER": "r_c_wi"
   },
+  "DRIFTVEIL_CITY": "sw_c_5_new",
+  "DRIFTVEIL_DRAWBRIDGE": "h_02",
   "FLOCCESY_RANCH": "sw_d_22",
   "FLOCCESY_RANCH_OUTSIDE": {
    "AUTUMN": "sw_r_19_au",
@@ -93,6 +95,9 @@
   "CASTELIA_CITY:gym_burgh": "insect_gym_01",
   "CASTELIA_SEWERS:back_street": "c_03",
   "DESERT_RESORT_ENTRANCE:gate": "gate",
+  "DRIFTVEIL_CITY:center": "pokecen",
+  "DRIFTVEIL_CITY:gym": "ground_gym_01",
+  "DRIFTVEIL_CITY:gym_lobby": "ground_gym_01",
   "FLOCCESY_RANCH:grotto": "kemonomichi",
   "FLOCCESY_TOWN:center": "pokecen",
   "LIBERTY_GARDEN:lighthouse": "d_03",

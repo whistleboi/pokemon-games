@@ -6314,33 +6314,156 @@
       "area_type": "town",
       "route_name": "Driftveil City",
       "region": "UNOVA",
-      "backgrounds": { "main": "driftveil_city.png", "pokecenter": "driftveil_center.png", "gym": "driftveil_gym.png" },
+      "backgrounds": {
+        "pokecenter": "driftveil_center.png",
+        "gym": "driftveil_gym.png"
+      },
       "has_gym": true,
-      "gym": {"trainers": [], "leader": {"name": "Clay", "class": "GYM_LEADER", "sprite": "clay.png", "team": [552, 536, 530], "levels": [31, 31, 33], "dialogue": {"intro": ["Clay: Y'all came a long way to challenge me, huh?", "I'm Clay. I dug this whole city outta the ground.", "Ground-types are tough as the earth itself. Let's see if you can shake 'em!"], "player_won": ["Clay: Not bad at all! You've got the Quake Badge, kid.", "Now get outta my gym and go challenge the rest of the world!", "Take this Plume Fossil too. The fossil lab in Nacrene City can revive it!"], "player_lost": ["Clay: The earth don't move for just anyone.", "Come back when you've got more dig in you."]}, "rewards": {"balls": 5, "PLUME_FOSSIL": 1, "TM028": 1}, "is_boss_battle": true, "badge_reward": "QUAKE", "movesets": {"552": ["SWAGGER", "TORMENT", "CRUNCH", "BULLDOZE"], "536": ["AQUA-RING", "BUBBLEBEAM", "MUDDY-WATER", "BULLDOZE"], "530": ["HONE-CLAWS", "SLASH", "ROCK-SLIDE", "BULLDOZE"]}}, "requirements": {"badges": 4, "flag": "plasma_relic_castle_cleared", "fail_text": "Clay is chasing Team Plasma in the Relic Castle. Help him first!"}},
+      "gym": {
+        "requirements": {},
+        "trainers": [],
+        "leader": {
+          "class": "GYM_LEADER",
+          "held_items": {
+            "530": "SITRUS_BERRY"
+          },
+          "levels": [
+            31,
+            31,
+            33
+          ],
+          "movesets": {
+            "28": [
+              "BULLDOZE",
+              "CRUSH-CLAW",
+              "ROLLOUT",
+              "FURY-CUTTER"
+            ],
+            "530": [
+              "BULLDOZE",
+              "METAL-CLAW",
+              "SLASH",
+              "ROCK-SLIDE"
+            ],
+            "552": [
+              "BULLDOZE",
+              "CRUNCH",
+              "SAND-TOMB",
+              "TORMENT"
+            ]
+          },
+          "name": "Clay",
+          "rewards": {
+            "balls": 5,
+            "TM028": 1
+          },
+          "sprite": "b2_clay.png",
+          "team": [
+            552,
+            28,
+            530
+          ],
+          "is_boss_battle": true,
+          "badge_reward": "QUAKE",
+          "victory_flag": "b2_quake_badge",
+          "dialogue": {
+            "intro": [
+              "Clay: Harrumph! Kept me waitin', didn't ya, kid? All right, let's see what ya can do!"
+            ],
+            "player_won": [
+              "Clay: Phew... You're really somethin'! Here, take this!",
+              "{player_name} received the Quake Badge from Clay!",
+              "Clay: Yer fifth Badge, huh? And take this too: Bulldoze. Hits and slows 'em down!",
+              "Clay: If ya think ya can go somewhere, go. Decide yer own limits!"
+            ],
+            "player_lost": [
+              "Clay: Mrmph. Dig a little deeper and come back."
+            ]
+          }
+        }
+      },
       "travel_options": [
-        {"text": "Route 5", "target_area": "UNOVA_ROUTE_5"},
-        {"text": "Route 6", "target_area": "UNOVA_ROUTE_6", "condition": "has_quake_badge"},
-        {"text": "Cold Storage", "target_area": "COLD_STORAGE"},
-        {"text": "Relic Castle (via Desert)", "target_area": "RELIC_CASTLE"},
-        {"text": "Clay Tunnel", "target_area": "CLAY_TUNNEL", "condition": "beat_unova_champion"},
-        {"text": "Driftveil Drawbridge", "target_area": "DRIFTVEIL_DRAWBRIDGE"},
-        {"text": "Pokémon World Tournament", "target_area": "PWT", "condition": "beat_alder"}
-      ],
-      "explore_options": [
-        { "text": "Pokémon Center", "action": "HEAL" },
-        { "text": "Shop", "action": "SHOP" },
-        { "text": "Challenge Gym", "action": "GYM" },
         {
-          "text": "Relic Castle — Clear Team Plasma",
-          "action": "NPC",
-          "target": "plasma_relic_castle",
-          "condition": "has_bolt_badge",
-          "flag_condition": "not plasma_relic_castle_cleared",
-          "color": "GOLD"
+          "text": "Route 6",
+          "target_area": "UNOVA_ROUTE_6",
+          "condition": "has_quake_badge"
+        },
+        {
+          "text": "Driftveil Drawbridge",
+          "target_area": "DRIFTVEIL_DRAWBRIDGE"
+        },
+        {
+          "text": "Clay Tunnel",
+          "target_area": "CLAY_TUNNEL",
+          "condition": "beat_unova_champion"
+        },
+        {
+          "text": "Pokemon World Tournament",
+          "target_area": "PWT",
+          "condition": "b2_pwt_open"
         }
       ],
       "next_area": "UNOVA_ROUTE_6",
-        "on_enter_event": {"type": "trainer_battle", "trainer": {"who": "bianca", "class": "PKMN_TRAINER", "team": [507, 513, 518, 502], "team_choice": {"495": [507, 513, 518, 502], "498": [507, 515, 518, 496], "501": [507, 511, 518, 499]}, "levels": [26, 26, 26, 28], "is_boss_battle": true, "rewards": {"balls": 5}, "dialogue": {"intro": ["Bianca: My dad wanted me to go home... but I'm not giving up! Battle!"], "player_won": ["Bianca: I'm going to keep traveling. I've decided!"], "player_lost": ["Better luck next time!"]}}, "condition": ["has_bolt_badge", "not:has_quake_badge"], "flag_check": "defeated_bianca_driftveil"}
+      "on_enter_event": {
+        "type": "trainer_battle",
+        "trainer": {
+          "who": "bianca",
+          "class": "PKMN_TRAINER",
+          "team": [
+            507,
+            513,
+            518,
+            502
+          ],
+          "team_choice": {
+            "495": [
+              507,
+              513,
+              518,
+              502
+            ],
+            "498": [
+              507,
+              515,
+              518,
+              496
+            ],
+            "501": [
+              507,
+              511,
+              518,
+              499
+            ]
+          },
+          "levels": [
+            26,
+            26,
+            26,
+            28
+          ],
+          "is_boss_battle": true,
+          "rewards": {
+            "balls": 5
+          },
+          "dialogue": {
+            "intro": [
+              "Bianca: My dad wanted me to go home... but I'm not giving up! Battle!"
+            ],
+            "player_won": [
+              "Bianca: I'm going to keep traveling. I've decided!"
+            ],
+            "player_lost": [
+              "Better luck next time!"
+            ]
+          }
+        },
+        "condition": [
+          "has_bolt_badge",
+          "not:has_quake_badge",
+          "friend:bianca"
+        ],
+        "flag_check": "defeated_bianca_driftveil"
+      }
     },
     "MISTRALTON_CITY": {
       "area_type": "town",
@@ -11963,7 +12086,107 @@
         "area_boss": {"id": 649, "name": "Genesect", "victory_flag": "P2_LABORATORY_boss_defeated", "lines": ["Deep in the lab, a capsule cracks open. An ancient Pokemon, rebuilt by Team Plasma, steps out...", "Genesect fires up its cannon!"], "rewards": {"BURN_DRIVE": 1, "DOUSE_DRIVE": 1, "CHILL_DRIVE": 1, "SHOCK_DRIVE": 1}}
     },
         "SKYARROW_BRIDGE": {"area_type": "dungeon", "route_name": "Skyarrow Bridge", "region": "UNOVA", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "PINWHEEL FOREST", "action": "EXIT", "target": "PINWHEEL_FOREST", "condition": "can_exit", "color": "RED"}, {"text": "CASTELIA CITY", "action": "EXIT", "target": "CASTELIA_CITY", "condition": "can_exit", "color": "RED"}], "next_area": "CASTELIA_CITY"},
-        "DRIFTVEIL_DRAWBRIDGE": {"area_type": "dungeon", "route_name": "Driftveil Drawbridge", "region": "UNOVA", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "ROUTE 5", "action": "EXIT", "target": "UNOVA_ROUTE_5", "condition": "can_exit", "color": "RED"}, {"text": "DRIFTVEIL CITY", "action": "EXIT", "target": "DRIFTVEIL_CITY", "condition": "can_exit", "color": "RED"}], "next_area": "DRIFTVEIL_CITY", "wild_pool_percentages": "DRIFTVEIL_DRAWBRIDGE_PERCENTAGES"},
+    "DRIFTVEIL_DRAWBRIDGE": {
+      "area_type": "dungeon",
+      "route_name": "Driftveil Drawbridge",
+      "region": "UNOVA",
+      "battle_type": "cave",
+      "min_rounds": 0,
+      "trainer_pool": [],
+      "route_menu": [],
+      "next_area": "DRIFTVEIL_CITY",
+      "wild_pool_percentages": "DRIFTVEIL_DRAWBRIDGE_PERCENTAGES",
+      "wild_tables": {
+        "ALL": {
+          "rustle": [
+            [
+              580,
+              0,
+              20,
+              23,
+              23
+            ],
+            [
+              580,
+              0,
+              20,
+              23,
+              23
+            ],
+            [
+              580,
+              0,
+              10,
+              24,
+              24
+            ],
+            [
+              580,
+              0,
+              10,
+              24,
+              24
+            ],
+            [
+              580,
+              0,
+              10,
+              25,
+              25
+            ],
+            [
+              580,
+              0,
+              10,
+              25,
+              25
+            ],
+            [
+              580,
+              0,
+              5,
+              26,
+              26
+            ],
+            [
+              580,
+              0,
+              5,
+              25,
+              25
+            ],
+            [
+              580,
+              0,
+              4,
+              26,
+              26
+            ],
+            [
+              580,
+              0,
+              4,
+              26,
+              26
+            ],
+            [
+              580,
+              0,
+              1,
+              26,
+              26
+            ],
+            [
+              580,
+              0,
+              1,
+              26,
+              26
+            ]
+          ]
+        }
+      }
+    },
         "UNDERGROUND_RUINS": {"area_type": "dungeon", "route_name": "Underground Ruins", "region": "UNOVA", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"}, {"text": "AWAKEN REGIROCK", "action": "BOSS", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not ruins_regirock", "boss": {"id": 377, "level": 65, "name": "Regirock", "victory_flag": "ruins_regirock", "lines": ["Regirock appears!"]}}, {"text": "AWAKEN REGICE", "action": "BOSS", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not ruins_regice", "boss": {"id": 378, "level": 65, "name": "Regice", "victory_flag": "ruins_regice", "lines": ["Regice appears!"]}}, {"text": "AWAKEN REGISTEEL", "action": "BOSS", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not ruins_registeel", "boss": {"id": 379, "level": 65, "name": "Registeel", "victory_flag": "ruins_registeel", "lines": ["Registeel appears!"]}}, {"text": "CLAY TUNNEL", "action": "EXIT", "target": "CLAY_TUNNEL", "condition": "can_exit", "color": "RED"}], "next_area": "CLAY_TUNNEL", "wild_pool_percentages": "UNDERGROUND_RUINS_PERCENTAGES"},
         "PWT": {"area_type": "dungeon", "route_name": "Pokémon World Tournament", "region": "UNOVA", "battle_type": "indoor", "min_rounds": 0, "trainer_pool": [{"name": "Leader Trio (Cilan / Chili / Cress)", "class": "GYM_LEADER", "sprite": "trio_cilan_chili_cress.png", "team": [506, 511], "is_boss_battle": true, "rewards": {"balls": 5}}, {"name": "Leader Lenora", "class": "GYM_LEADER", "sprite": "lenora.png", "team": [507, 505], "is_boss_battle": true, "rewards": {"balls": 5}}, {"name": "Leader Burgh", "class": "GYM_LEADER", "sprite": "burgh.png", "team": [544, 557, 542], "is_boss_battle": true, "rewards": {"balls": 5}}, {"name": "Leader Elesa", "class": "GYM_LEADER", "sprite": "elesa.png", "team": [587, 587, 523], "is_boss_battle": true, "rewards": {"balls": 5}}, {"name": "Leader Clay", "class": "GYM_LEADER", "sprite": "clay.png", "team": [552, 536, 530], "is_boss_battle": true, "rewards": {"balls": 5}}, {"name": "Leader Skyla", "class": "GYM_LEADER", "sprite": "skyla.png", "team": [528, 521, 581], "is_boss_battle": true, "rewards": {"balls": 5}}, {"name": "Leader Brycen", "class": "GYM_LEADER", "sprite": "brycen.png", "team": [583, 615, 614], "is_boss_battle": true, "rewards": {"balls": 5}}, {"name": "Leader Drayden", "class": "GYM_LEADER", "sprite": "brycenman.png", "team": [611, 621, 612], "is_boss_battle": true, "rewards": {"balls": 20, "RARE_CANDY": 3}, "victory_flag": "pwt_cleared"}], "route_menu": [{"text": "ENTER THE UNOVA LEADERS TOURNAMENT", "action": "GALACTIC_GAUNTLET", "color": "GOLD", "flag_condition": "not pwt_cleared"}, {"text": "DRIFTVEIL CITY", "action": "EXIT", "target": "DRIFTVEIL_CITY", "condition": "can_exit", "color": "RED"}], "next_area": "DRIFTVEIL_CITY"},
         "PLEDGE_GROVE": {
@@ -12092,6 +12315,9 @@
     {"id": "b2_m23", "type": "MAIN", "title": "Trouble at Big Stadium", "description": "Hugh is shouting at Team Plasma outside Big Stadium, in the west of Nimbasa. He could use some help.", "condition": {"required_region": "UNOVA", "flag": "b2_bolt_badge", "flag_not": "b2_nimbasa_plasma"}, "completed_flag": "b2_nimbasa_plasma", "target": "NIMBASA_CITY"},
     {"id": "b2_m24", "type": "MAIN", "title": "West to Route 5", "description": "The road to Driftveil runs west through Nimbasa's gate, along Route 5 to the drawbridge.", "condition": {"required_region": "UNOVA", "flag": "b2_nimbasa_plasma", "flag_not": "b2_charles"}, "completed_flag": "b2_charles", "target": "UNOVA_ROUTE_5"},
     {"id": "b2_m25", "type": "MAIN", "title": "Over the Drawbridge", "description": "With the drawbridge lowered, Driftveil City waits on the far side of the river, and its Gym Leader Clay with it.", "condition": {"required_region": "UNOVA", "flag": "b2_charles", "flag_not": "visited_DRIFTVEIL_CITY"}, "completed_flag": "visited_DRIFTVEIL_CITY", "target": "DRIFTVEIL_CITY"},
+    {"id": "b2_m26", "type": "MAIN", "title": "Team Plasma, Old and New", "description": "A former member of Team Plasma said their old base is on the hill north of the Gym. What are they up to?", "condition": {"required_region": "UNOVA", "flag": "visited_DRIFTVEIL_CITY", "flag_not": "b2_rood_talk"}, "completed_flag": "b2_rood_talk", "target": "DRIFTVEIL_CITY", "steps": [{"area": "DRIFTVEIL_CITY", "at": [37, 13], "label": "The house on the hill", "done": "b2_rood_talk"}]},
+    {"id": "b2_m27", "type": "MAIN", "title": "Down the Mine", "description": "Clay's Gym is a dark mine. Ride the conveyor belts from platform to platform and find the Underground Boss.", "condition": {"required_region": "UNOVA", "flag": "b2_rood_talk", "flag_not": "b2_quake_badge"}, "completed_badge": "QUAKE", "completed_flag": "b2_quake_badge", "target": "DRIFTVEIL_CITY"},
+    {"id": "b2_m28", "type": "MAIN", "title": "The World Tournament", "description": "Clay invited you to the Pokemon World Tournament, south of Driftveil. Trainers from all over the world compete there.", "condition": {"required_region": "UNOVA", "flag": "b2_quake_badge", "flag_not": "b2_pwt_driftveil_won"}, "completed_flag": "b2_pwt_driftveil_won", "target": "DRIFTVEIL_CITY"},
     {"id": "unova_m2", "type": "MAIN", "title": "Team Plasma's Speech", "description": "Follow Route 1 north to Accumula Town. A group called Team Plasma is giving a speech in the square. Go and listen.", "condition": {"required_region": "UNOVA", "flag": "defeated_rival_nuvema", "flag_not": ["heard_n_accumula", "b2_mom_talk"]}, "completed_flag": "heard_n_accumula", "target": "ACCUMULA_TOWN"},
     {"id": "unova_m3", "type": "MAIN", "title": "A Stranger Named N", "description": "On Route 2 you'll meet Alder, and a strange young man named N who says he can hear Pokémon talk. He wants to battle!", "condition": {"required_region": "UNOVA", "flag": "heard_n_accumula", "flag_not": ["defeated_n_route2", "b2_mom_talk"], "region_badges_less": 1}, "completed_flag": "defeated_n_route2", "target": "UNOVA_ROUTE_2"},
     {"id": "unova_m4", "type": "MAIN", "title": "A Gift in the Dreamyard", "description": "A researcher named Fennel is at the Dreamyard, next to Striaton City. She has a Pokémon that's strong against the Striaton Gym.", "condition": {"required_region": "UNOVA", "flag": "defeated_n_route2", "flag_not": ["got_elemental_monkey", "b2_mom_talk"], "region_badges_less": 1}, "completed_flag": "got_elemental_monkey", "target": "DREAMYARD", "reward": "Pansage, Pansear or Panpour"},

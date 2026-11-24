@@ -3670,7 +3670,16 @@ ROUTE_5 = route(
     329, {18: _ball("Poke Ball on the ledge", "SUPER_REPEL", "b2_r5_super_repel", name="a Super Repel"),
           19: _ball("Poke Ball behind the fence", "HYPER_POTION", "b2_r5_hyper_potion", name="a Hyper Potion"),
           0: _say("Ranger by the gate", "Pokemon Rangers patrol here. Route 5 is always lively: performers love it!"),
-          2: _say("Man watching", "Every day there's a show on Route 5. Never the same one twice!"),
+          2: {"text": "Musician Preston", "action": "EVENT", "event": {"stages": [   # (fixed 11-24: Black 2's person 2, missed in 4a)
+              {"ready": ["not:b2_prop_case"], "lines": ["Musician Preston: Hum fiercely! My battle song!... Huh? You don't have a "
+                                                        "Prop Case? Then I won't battle you!"]},
+              {"ready": ["b2_prop_case"], "flag": "b2_preston",
+               "lines": ["Musician Preston: Hum fiercely! My battle song! Battle fiercely, my Pokemon!"],
+               "battle": _b2(256, dialogue={"player_won": ["Preston: In battling you, I came to understand... You're the best!"]})},
+              {"ready": ["b2_preston"], "world": "musical", "give_prop": 84, "flag": "b2_preston_guitar",
+               "lines": ["Preston: You've got a Prop Case! Then this Electric Guitar is yours. Take it to the Musical Theater!",
+                         "Cooler than cool!"]}],
+              "then": {"lines": ["Preston: Cooler than cool! Rock the Musical with that guitar!"]}}},
           20: _say("Girl watching", "Look at all the performers! I want to be in a show too!"),
           21: {"text": "Berry seller", "action": "EVENT", "event": {"world": "b2_errands", "berry_bunch": {"key": "b2_r5_berry_bunch"}}},
           22: _say("Clown by the trailer", "Smile! A sad face makes a bad show!"),
@@ -3714,6 +3723,449 @@ ROUTE_5["art"][8] = ROUTE_5["art"][8][:53] + "D" + ROUTE_5["art"][8][54:]
 ROUTE_5["rooms"]["trailer"]["title"] = "Trailer"
 ROUTE_5["art"][18] = ROUTE_5["art"][18][:45] + "D" + ROUTE_5["art"][18][46:]   # (the trailer's door)
 
+# ======================================================================================================== batch 5a (11-24)
+# The Driftveil Drawbridge (253), Driftveil City (96) and its rooms: the Gym's entrance (98) and cavern (97), the Center
+# (99), the Chateau (100: the Red Shard tutor; floors 543 / 544), Grand Hotel (101: 545 / 546), Luxury Suites (102:
+# 547 / 548), Continental Hotel (103: 549 / 550), the former Plasma base (104: Rood, Zorua), the Market (105), the gate
+# south to the PWT (106: batch 5b). Jordan's calls: unova_check/DECISIONS.md "Batch 5 calls". Story flags in order:
+# b2_drift_arrival (the Grunt and the ex-Plasma, Hugh) -> b2_rood_battled -> b2_rood_talk (Hugh in the base; Zorua) ->
+# gym_trainer_DRIFTVEIL_CITY_* -> b2_quake_badge -> b2_drift_clay_out (Clay and Hugh: the PWT).
+DRIFT_TOWN_DOORS = {d["warp"]: (d["x"], d["y"]) for d in GEO["96"]["doors"]}
+
+
+def drift_room(z, people, signs, extra_people=(), scenes=None, title=None, lift=None, stairs=None, **more):
+    """A Driftveil room: each way back to the city comes out at the city's own door it pairs with (the Market's four);
+    lift: [[label, room, x, y], ...] read from the lobby's two lift signs (scripts 10419-10426); stairs: {zone: "ROOM:x"}."""
+    g = GEO[str(z)]
+    sg_lines = dict(signs)
+    lift_tiles = [s for s in g["signs"] if 10419 <= s["script"] <= 10426] if lift else []
+    for s in lift_tiles:
+        sg_lines[(s["x"], s["y"])] = ["The lift."]
+    rows, ppl, sg, doors = _place(z, people, sg_lines, extra_people, counters=not g["outdoor"])
+    exits, chars = {}, {}
+    for d in doors:
+        if d["to"] == 96:
+            tgt = "OUT:%d,%d" % DRIFT_TOWN_DOORS[d["to_warp"]]
+        else:
+            tgt = (stairs or {}).get(d["to"])
+        if not tgt:
+            continue
+        ch = chars.get(tgt) or _EXIT_CHARS[len(chars)]
+        chars[tgt] = ch
+        for k in range(max(1, d["w"])):
+            for j in range(max(1, d.get("h", 1))):
+                if 0 <= d["x"] + k < len(rows[0]) and 0 <= d["y"] + j < len(rows):
+                    rows[d["y"] + j][d["x"] + k] = ch
+        exits[ch] = tgt
+    _thin(rows, set(exits))
+    _no_drops(z, rows, set(exits))
+    m = {"theme": "room", "art": ["".join(r) for r in rows], "exits": exits, "buildings": {}, "roofs": _picture(z, False),
+         "people": ppl}
+    if sg:
+        m["signs"] = sg
+    if scenes:
+        m["scenes"] = scenes
+    if lift:
+        m["sign_events"] = {"%d,%d" % (s["x"], s["y"]): {"text": "Lift", "action": "EVENT", "event": {"lift": lift}} for s in lift_tiles}
+        if not exits:   # (an upper floor: you step out of the lift)
+            m["landings"] = [[f[2], f[3]] for f in lift if f[1] == title_room(z)]
+    if title:
+        m["title"] = title
+    m.update(_camera(z))
+    m.update(more)
+    return m
+
+
+_DRIFT_ROOM = {98: "gym_lobby", 97: "gym", 99: "center", 100: "chateau", 543: "chateau_2", 544: "chateau_25",
+               101: "grand", 545: "grand_2", 546: "grand_19", 102: "luxury", 547: "luxury_2", 548: "luxury_23",
+               103: "continental", 549: "continental_2", 550: "continental_25", 104: "rood", 105: "market", 106: "pwt_gate"}
+
+
+def title_room(z):
+    return _DRIFT_ROOM.get(z)
+
+
+CHATEAU_LIFT = [["1F", "chateau", 7, 3], ["2F", "chateau_2", 3, 3], ["25F", "chateau_25", 3, 3]]
+GRAND_LIFT = [["1F", "grand", 7, 3], ["2F", "grand_2", 3, 3], ["19F", "grand_19", 3, 3]]
+LUXURY_LIFT = [["1F", "luxury", 7, 3], ["2F", "luxury_2", 3, 3], ["23F", "luxury_23", 3, 3]]
+CONTINENTAL_LIFT = [["1F", "continental", 7, 3], ["2F", "continental_2", 3, 3], ["25F", "continental_25", 3, 3]]
+_RECEPTION = "Welcome to the %s! We're fully booked, I'm afraid, but please make yourself at home in the lobby."
+# Driftveil's shard tutor (Black 2: 15 moves for Red Shards; Jordan's rule: a tutor's move, once paid, stays yours)
+DRIFT_TUTOR = {"text": "Move Tutor", "action": "EVENT", "event": {
+    "lines": ["I'm a Move Tutor, and I love Red Shards! Bring me some and I'll teach your Pokemon a move."],
+    "tutor": {"choices": ["COVET", "BUG-BITE", "DRILL-RUN", "BOUNCE", "SIGNAL-BEAM", "IRON-HEAD", "SUPER-FANG", "UPROAR",
+                          "SEED-BOMB", "DUAL-CHOP", "LOW-KICK", "GUNK-SHOT", "FIRE-PUNCH", "THUNDER-PUNCH", "ICE-PUNCH"],
+              "costs": {m: {"RED_SHARD": n} for m, n in (
+                  ("COVET", 2), ("BUG-BITE", 2), ("DRILL-RUN", 4), ("BOUNCE", 4), ("SIGNAL-BEAM", 4), ("IRON-HEAD", 4),
+                  ("SUPER-FANG", 6), ("UPROAR", 6), ("SEED-BOMB", 6), ("DUAL-CHOP", 6), ("LOW-KICK", 8), ("GUNK-SHOT", 8),
+                  ("FIRE-PUNCH", 10), ("THUNDER-PUNCH", 10), ("ICE-PUNCH", 10))}},
+    "cancel": ["Come back with more Red Shards!"]}}
+_RECOMMEND = ["Hey, Trainer! The move I recommend today is Bug Bite: it eats the target's Berry and uses it for itself!",
+              "Hey, Trainer! Today's pick is Covet: hit the target and take its held item!",
+              "Hey, Trainer! Today it's Super Fang: it halves the target's HP, however tough it is!",
+              "Hey, Trainer! Today, Low Kick: the heavier the target, the harder it hits!",
+              "Hey, Trainer! Today, Uproar: three turns of damage, and nobody can fall asleep!"]
+DRIFT_ROOMS = {
+    "center": drift_room(99, {
+        0: {"text": "Pokémon Center", "action": "HEAL"}, 2: {"text": "Shop", "action": "SHOP"},
+        4: _say("Clerk ", "The counter on the left sells everyday items."), 3: _say("Clerk  ", "Specialty Poke Balls are over here!"),
+        7: {"text": "Mr. Medal", "action": "EVENT", "event": {"medal_rally": True}},
+        1: _say("Man by the counter", "Hotels line Driftveil now. I guess Charles the heartbreaker isn't the big attraction any more..."),
+        5: _gift("Girl upstairs", ["Have you tried this kind of Poke Ball? My Pokemon love me because I caught them in these!"],
+                 "LUXURY_BALL", "b2_drift_luxury", ["Pokemon caught in a Luxury Ball warm up to you faster!"], count=3),
+        8: _say("Trainer by the PC", "I store the Pokemon I'm not using in a Box. Keeps my team fresh!"),
+        9: _say("Woman by the window", "Driftveil's market sells things you can't buy anywhere else in Unova."),
+        6: _say("Boy by the sofa", "The drawbridge goes up and down for the ships. When it's up, it looks like a Charizard!"),
+        10: _say("Man by the stairs", "I came all the way here for the World Tournament. Strong Trainers from everywhere!"),
+    }, {}, title="Pokémon Center"),
+    "chateau": drift_room(100, {
+        0: _say("Receptionist", _RECEPTION % "Driftveil Chateau Hotel"),
+        1: DRIFT_TUTOR,
+        2: [_say("Man with a tip", line, condition=["weekday:" + day]) for day, line in
+            zip(("mon", "tue", "wed", "thu", "fri", "sat", "sun"), _RECOMMEND + _RECOMMEND[:2])],
+    }, {}, lift=CHATEAU_LIFT, title="Chateau Hotel"),
+    "chateau_2": drift_room(543, {
+        2: _say("Boy watching TV", "Sometimes you learn about moves and items from TV shows!"),
+        0: _say("Girl on the sofa", "Some Pokemon evolve when you trade them! Why, though?!"),
+        1: _say("Patrat", "Patrat: Queak, queak!"),
+        3: _say("Man by the window", "Watch stronger people battle and you might learn something."),
+    }, {}, lift=CHATEAU_LIFT, title="Chateau Hotel 2F"),
+    "chateau_25": drift_room(544, {
+        0: [dict(_gift("Gentleman on 25F", ["I'll give this to you! An Air Balloon!"], "AIR_BALLOON", "b2_drift_air_balloon",
+                       ["A Pokemon holding an Air Balloon floats! Ground-type moves miss it until it's hit. I'm a balloon man!"]),
+                 condition=["world:anville:item:AIR_BALLOON"]),
+            _say("Gentleman on 25F", "Balloons! I'm a balloon man! ...My Air Balloons are still on their way. Come back later!",
+                 condition=["not:world:anville:item:AIR_BALLOON"])],   # (till the item exists: Main's inbox clean-main-unova-air-balloon)
+        1: _say("Boy on 25F", "Balloon! Balloon! My hobby is the minigames on my Xtransceiver!"),
+    }, {}, lift=CHATEAU_LIFT, title="Chateau Hotel 25F"),
+    "grand": drift_room(101, {
+        1: _say("Receptionist ", _RECEPTION % "Grand Hotel Driftveil"),
+        0: {"text": "Old man in the lobby", "action": "EVENT", "event": {
+            "lines": ["Ho ha! You have a Pokedex! How many Pokemon have you seen? Seventy or more, and I've something for you!"],
+            "requires": ["seen_at_least:70"], "fail": ["Not seventy yet? Come back when you've seen more!"],
+            "gift_item": {"SHELL_BELL": 1}, "flag": "b2_drift_shell_bell",
+            "done": ["A Pokemon holding a Shell Bell gets back a little HP whenever it deals damage."]}},
+        3: _say("Scientist in the lobby", "Battling Pokemon stronger than yours earns more Exp. Points!"),
+        2: _say("Girl in the lobby", "I read it in Pokemon Pal: you can check a move's details while you pick it in battle!"),
+    }, {}, lift=GRAND_LIFT, title="Grand Hotel Driftveil"),
+    "grand_2": drift_room(545, {
+        0: _say("Lady on 2F", "I gave my Pokemon a nickname and an item to hold. Take good care of it, all right?"),
+        1: _say("Boy on 2F", "We can trade Pokemon over the wireless, even far apart!"),
+        2: _say("Kid on 2F", "He's trading the moment he arrives somewhere new... Children make friends so easily."),
+    }, {}, lift=GRAND_LIFT, title="Grand Hotel 2F"),
+    "grand_19": drift_room(546, {
+        0: _say("Lady on 19F", "We stay the same by always changing. Pokemon evolve, but their Natures don't change."),
+        1: _say("Man on 19F", "I remember Driftveil as a shabby old port. Look at it now!"),
+        2: _gift("Axew", ["Axew: Roooar!", "Oh! The Axew has something in its mouth..."], "HABAN_BERRY", "b2_drift_haban",
+                 ["Axew: Roooar!"]),
+    }, {}, lift=GRAND_LIFT, title="Grand Hotel 19F"),
+    "luxury": drift_room(102, {
+        1: _say("Receptionist  ", _RECEPTION % "Driftveil Luxury Suites"),
+        0: {"text": "Lady who loves moves", "action": "EVENT", "event": {"world": "unova_story", "move_lady": True}},
+        2: _say("Gentleman in the lobby", "Different Pokemon can learn different moves. That's what makes it fun!"),
+    }, {}, lift=LUXURY_LIFT, title="Driftveil Luxury Suites"),
+    "luxury_2": drift_room(547, {
+        1: _say("Woman on 2F", "Getting to know someone brings joy and sorrow. Jokes get old when you hear them every day."),
+        2: _say("Man on 2F", "Elesa is so busy, being Nimbasa's Gym Leader and a model!"),
+        0: _say("Old man on 2F", "Three years ago Team Plasma talked me into setting my Pokemon free. Now I stay in hotels... I'm lonely."),
+    }, {}, lift=LUXURY_LIFT, title="Luxury Suites 2F"),
+    "luxury_23": drift_room(548, {
+        0: _say("Guest on 23F", "Stunfisk! Panpour! My precious Pokemon! Relax today!"),
+        2: _say("Panpour", "Panpour: Papur-pur!"), 1: _say("Stunfisk", "Stunfisk: Stun!"),
+        3: _gift("Waiter on 23F", ["An unexpected guest! This is a gift for such a person."], "EVERSTONE", "b2_drift_everstone",
+                 ["Whatever my guests order, I serve them the same way. My father taught me that. He was a Trainer."]),
+    }, {}, lift=LUXURY_LIFT, title="Luxury Suites 23F"),
+    "continental": drift_room(103, {
+        0: _say("Receptionist   ", _RECEPTION % "Driftveil Continental Hotel"),
+        1: _say("Woman in the lobby", "My guilty pleasure? The newest films from Pokestar Studios!"),
+        2: _say("Old man in the lobby", "Driftveil's changed so much, I thought I'd been tricked!"),
+        3: _say("Worker in the lobby", "I'm going to watch the Pokemon World Tournament! It's at the south end of town."),
+        4: _say("Pokefan in the lobby", "Even if your Pokemon's item is taken in a Trainer battle, you get it back after. Don't worry!"),
+    }, {}, lift=CONTINENTAL_LIFT, title="Driftveil Continental Hotel"),
+    "continental_2": drift_room(549, {
+        0: _say("Lady on 2F", "Did your mother work at a Pokemon Center? You look just like a receptionist I know."),
+        1: _say("Garchomp... no, Gible", "Gible: Garcs! Garcs!"),
+        3: _say("Boy on 2F", "When things change I miss how they were, and when they don't I get bored. I'm complicated."),
+        2: _say("Girl on 2F", "The Pokemon in the next room... I feel like it's glaring at me."),
+    }, {}, lift=CONTINENTAL_LIFT, title="Continental Hotel 2F"),
+    "continental_25": drift_room(550, {
+        0: _gift("Veteran on 25F", ["Trainer... If my Pokemon were with me, I'd challenge you. Take this instead."], "BIG_ROOT",
+                 "b2_drift_big_root", ["A Big Root! A Pokemon holding it drains more HP. Perfect for my Pokemon's favourite move..."]),
+    }, {}, lift=CONTINENTAL_LIFT, title="Continental Hotel 25F"),
+    "market": drift_room(105, {
+        3: {"text": "Herb seller", "action": "EVENT", "event": {
+            "lines": ["Medicinal herbs, imported from another region! They work wonders, though Pokemon find them a bit bitter."],
+            "stock": ["HEAL_POWDER", "ENERGY_POWDER", "ENERGY_ROOT", "REVIVAL_HERB"]}},
+        1: {"text": "Milk seller", "action": "EVENT", "event": {
+            "lines": ["Welcome! This is straight from the farm! Moomoo Milk, $500 a bottle."], "stock": ["MOOMOO_MILK"]}},
+        9: {"text": "Incense seller", "action": "EVENT", "event": {
+            "lines": ["I used to be in Team Plasma. Now I sell incense. Many kinds!"],
+            "stock": ["ODD_INCENSE", "SEA_INCENSE", "ROSE_INCENSE", "WAVE_INCENSE", "ROCK_INCENSE", "PURE_INCENSE", "LUCK_INCENSE",
+                      "LAX_INCENSE", "FULL_INCENSE"]}},
+        4: {"text": "Man in sunglasses", "action": "EVENT", "event": {
+            "lines": ["You! Glad you came! You want something good? Show me a Pokemon at Lv. 30 or more!"],
+            "requires": ["world:unova_story:party_level:30"], "fail": ["Oh! You, not so strong yet! Train your Pokemon and come back!"],
+            "gift_item": {"EXPERT_BELT": 1}, "flag": "b2_drift_expert_belt",
+            "done": ["You! An Expert Belt boosts super-effective moves a little. Good, yes?"]}},
+        5: _say("Man by the stall", "Somewhere there's a town where everything's imported and you can get anything."),
+        6: _say("Woman by the vegetables", "I hear the market brings in goods from a sleepy town that loves its seasons."),
+        0: _say("Girl by the vegetables", "Seasonal vegetables are fun. When the season changes, so do the vegetables!"),
+        7: _say("Boy in the market", "At the market you can get vegetables from every season at once. Amazing!"),
+        8: _say("Sailor in the market", "Goods leave Driftveil and arrive in some other town... The world's all connected."),
+        2: _ball("Poke Ball in the corner", "TM280", "b2_drift_tm63", name="TM63 Embargo"),
+    }, {}, title="Driftveil Market"),
+    "rood": drift_room(104, {
+        0: [{"text": "Rood", "action": "EVENT", "condition": ["not:b2_drift_zorua"], "event": {
+                "lines": ["Rood: My lord N's friend, Zorua... Would you look after it for us?"],
+                "gift_pokemon": 570, "gift_level": 25, "flag": "b2_drift_zorua",
+                "done": ["Rood: That Zorua travelled with my lord N. Please take good care of it."]}},
+            _say("Rood", "Rood: My lord N understands the hearts of Pokemon. People's hearts... he's still learning.",
+                 "Rood: I hope he finds what he wants to do, out there with the legendary Pokemon.", condition=["b2_drift_zorua"])],
+        2: _say("Ex-Plasma by the window", "Team Plasma was built by a man named Ghetsis to take over Unova. N was the boy he raised to do it."),
+        3: _say("Ex-Plasma by the window ", "Trainers battle to understand their Pokemon, not to hurt them. I hope N knows that now."),
+        5: _say("Ex-Plasma at the table", "N was an orphan. He lived in the woods with Darmanitan and Zorua before Ghetsis took him in."),
+        8: _say("Ex-Plasma by the shelves", "We look after the Pokemon whose Trainers we can't find. It's a small way to make up for what we did."),
+        6: _say("Ex-Plasma by the plants", "You can't change the past, but you can change the future! That's why I changed my outfit."),
+        7: _say("Ex-Plasma by the door", "This Pokemon has grown fond of me. I treat it as a friend, not a tool."),
+        1: _say("Ex-Plasma by Rood", "I'm waiting for my lord N to come back. He can talk to Pokemon, so we'd know what these ones want.",
+                condition=["b2_rood_talk"]),
+        9: _say("Herdier", "Herdier: Bwoaf bowoaf!"), 10: _say("Swoobat", "Swoobat: Swwaaa!"), 11: _say("Scraggy", "Scraggy: Scrarara!"),
+        4: _say("Patrat", "Patrat: Skreeree..."),
+        13: _say("Zorua", "Zorua: Kwip yip!", condition=["not:b2_drift_zorua"]),
+    }, {}, title="Former Plasma base"),
+    "pwt_gate": drift_room(106, {
+        0: [_say("Guard at the gate", "I'm very sorry. The Pokemon World Tournament isn't open yet. Have you challenged the Gym?",
+                 condition=["not:b2_quake_badge"]),
+            _say("Guard at the gate", "I'm very sorry. We're still getting the tournament ready. Please come back soon!",
+                 condition=["b2_quake_badge", "not:b2_pwt_open"])],
+        1: _say("Guide by the wall", "Keep winning at the PWT and you earn BP! Save them up and trade them for great items!"),
+        2: _say("Man by the door", "The Pokemon World Tournament is just ahead!"),
+    }, {}, title="Pokémon World Tournament gate"),
+}
+DRIFT_ROOMS["market"]["split"] = True   # (its south-west corner, with TM63, is entered by the west door only: Black 2's)
+DRIFT_ROOMS["pwt_gate"]["art"][14] = DRIFT_ROOMS["pwt_gate"]["art"][14].replace("v", "c") if "v" in DRIFT_ROOMS["pwt_gate"]["art"][14] else \
+    DRIFT_ROOMS["pwt_gate"]["art"][14]   # (the PWT side stays shut till batch 5b)
+
+# --- the Gym (Clay's: 97 the cavern, 98 its entrance). Black 2's conveyor belts carry you between the 36 platforms (a 6 x 6
+# grid); every platform you land on lights up in the dark (Bulbapedia's Driftveil Gym: "each time the player lands on a
+# new platform, it lights up"). Which sides have a belt: read 11-24 from Bulbapedia's map of Black 2's Gym (each belt's
+# end shows at both platforms it joins; checked against StrategyWiki's fastest path to Clay, step by step). "M" a belt to
+# the next platform that way, "P" a pink belt that runs under the next one to the one beyond, "." none. A belt runs both
+# ways. The data itself isn't in any file read (not the walk codes, rails, props or the Gym's overlay 97).
+# Rows top (j 0) to bottom (j 5); each platform: up, down, left, right.
+_BELT_SIDES = [   # (U D L R)
+    [".M.M", ".MMP", ".M..", ".MPM", "..MM", "..M."],
+    ["MM.M", "MMMM", "MMMM", "MPM.", ".P..", ".M.."],
+    ["MM..", "M..M", "MMMM", "..MM", "..MM", "MMM."],
+    ["M...", ".M..", "MP..", "P..M", "P.M.", "MM.."],
+    [".M.M", "MMM.", "...M", ".MMM", ".MMM", "MMM."],
+    ["M...", "M..M", "P.MM", "M.MM", "M.MM", "M.M."],
+]
+_PX, _PY = [3, 13, 23, 33, 43, 53], [5, 16, 27, 38, 49, 60]
+
+
+def _plat_flag(i, j):
+    return "b2_dgym_lit_%d_%d" % (i, j)
+
+
+BELT_TILES = []   # (filled by _gym_belts: the belts drawn on the map, from Black 2's own belt texture, in27_belt01)
+
+
+def _gym_belts():
+    scenes, open_tiles = [], []
+    for j in range(6):
+        for i in range(6):
+            x0, y0 = _PX[i], _PY[j]
+            for side, (di, dj) in zip(_BELT_SIDES[j][i], ((0, -1), (0, 1), (-1, 0), (1, 0))):
+                if side == ".":
+                    continue
+                step = 2 if side == "P" else 1
+                ni, nj = i + di * step, j + dj * step
+                if not (0 <= ni < 6 and 0 <= nj < 6):
+                    continue
+                back = _BELT_SIDES[nj][ni][{(0, -1): 1, (0, 1): 0, (-1, 0): 3, (1, 0): 2}[(di, dj)]]
+                assert back == side, ("a belt without its other end", (i, j), (ni, nj))   # (both ends show on the map)
+                nx0, ny0 = _PX[ni], _PY[nj]
+                if di:   # (sideways: off the middle row of the platform's side)
+                    stub = (x0 + 5 if di > 0 else x0 - 1, y0 + 1)
+                    land = ((nx0 - 1 if di > 0 else nx0 + 5), y0 + 1)
+                    off = (nx0 if di > 0 else nx0 + 4, y0 + 1)
+                else:    # (up and down: off the middle of its top or bottom)
+                    stub = (x0 + 2, y0 + 3 if dj > 0 else y0 - 1)
+                    land = (x0 + 2, (ny0 - 1 if dj > 0 else ny0 + 3))
+                    off = (x0 + 2, ny0 if dj > 0 else ny0 + 2)
+                open_tiles.append(stub)
+                scenes.append({"trigger": {"zone": [stub[0], stub[1], stub[0], stub[1]]}, "every": True,
+                               "mark": _plat_flag(ni, nj), "cast": [{"you": [list(land), list(off)], "zoom": 0.9}]})
+                if (di, dj) in ((1, 0), (0, 1)):   # (the belt itself, drawn once: on the gap between the two step-off tiles,
+                    path = [(x, stub[1]) for x in range(stub[0] + 1, land[0])] if di else                            [(stub[0], y) for y in range(stub[1] + 1, land[1])]   # not over the platform a pink one runs under)
+                    path = [t for t in path if not any(_PX[a] <= t[0] <= _PX[a] + 4 and _PY[b] <= t[1] <= _PY[b] + 2
+                                                       for a in range(6) for b in range(6))]
+                    look = "img:b2_belt/%s%s.png" % ("h" if di else "v", "_pink" if side == "P" else "")
+                    BELT_TILES.append({"tiles": [list(t) for t in path], "look": look,
+                                       "lines": ["A conveyor belt. Step onto it from a platform's edge."]})
+    return scenes, open_tiles
+
+
+_BELT_SCENES, _BELT_TILES = _gym_belts()
+_WORKER_SPOTS = {6: (319, "Worker Maynard"), 1: (320, "Worker Pasqual"), 2: (321, "Worker Tibor"), 3: (322, "Worker Niel"),
+                 4: (323, "Worker Tavarius"), 5: (324, "Worker Noel"), 8: (325, "Worker Friedrich")}
+_WORKER_LINES = {6: (["Worker Maynard: Ride a conveyor and the first one you meet is me!"], ["Worker Maynard: Have you tried the lifts? From up there you can see where you haven't been."]),
+                 1: (["Worker Pasqual: Hard work doesn't always get you what you want. But without it, you can't do much! Let me show you!"],
+                     ["Worker Pasqual: This Gym is soaked in the sweat and tears of the Pokemon who dug it out. It smells a bit funny!"]),
+                 2: (["Worker Tibor: My Pokemon and I are professional tunnellers! Nobody outdigs us!"],
+                     ["Worker Tibor: Drilbur and Excadrill know Drill Run! When I call it, I get all wound up!"]),
+                 3: (["Worker Niel: Riddle time! What's far away but close?"],
+                     ["Worker Niel: It's Clay! He's right nearby but keeps to himself. ...Not much of a riddle, sorry."]),
+                 4: (["Worker Tavarius: In this darkness I've felt my Pokemon's every breath. See the bond we built!"],
+                     ["Worker Tavarius: Isn't the dark great? It's a world of dreams: you never know what's out there!"]),
+                 5: (["Worker Noel: When I say dig, you say how low?"], ["Worker Noel: Life is full of pitfalls! If you fall in, climb back out!"]),
+                 8: (["Worker Friedrich: My Pokemon dig because they believe they'll find something, and battle because they believe they'll win!"],
+                     ["Worker Friedrich: Clay can just tell where the ore is. Wherever there's lots of it, that's where you'll find him!"])}
+DRIFT_GYM = drift_room(97, dict({
+    7: {"text": "Gym", "action": "GYM", "_look": "sheet:b2_c227.png"},
+    0: _gift("Gym guide", ["Welcome to the Driftveil Gym! This is for you!"], "FRESH_WATER", "b2_clyde_driftveil",
+             ["Clay uses Ground-type Pokemon. They don't like Water-, Grass- or Ice-type attacks!",
+              "And here, the conveyor belts carry you between the platforms. Each one you land on lights up!"]),
+}) | {n: _b2_battle(name, tid, "gym_trainer_DRIFTVEIL_CITY_%d" % (k + 1), _WORKER_LINES[n][0], ["%s: You're tough!" % name],
+                     _WORKER_LINES[n][1])
+       for k, (n, (tid, name)) in enumerate(sorted(_WORKER_SPOTS.items()))},
+    {}, title="Driftveil Gym", scenes=_BELT_SCENES)
+for _x, _y in _BELT_TILES:   # (the belt ends: a step off the platform's edge)
+    DRIFT_GYM["art"][_y] = DRIFT_GYM["art"][_y][:_x] + "." + DRIFT_GYM["art"][_y][_x + 1:]
+DRIFT_GYM["dark"] = {"flags": [], "radius": [2.0],   # (each platform's spotlight reaches a little past its edges: its belt ends)
+                     "lit": [[0, 63, 14, 88, None], [_PX[0] - 2, _PY[5] - 2, _PX[0] + 6, _PY[5] + 4, None]]
+                     + [[_PX[i] - 2, _PY[j] - 2, _PX[i] + 6, _PY[j] + 4, _plat_flag(i, j)] for j in range(6) for i in range(6)]}
+DRIFT_GYM["barred"] = BELT_TILES
+DRIFT_GYM["landings"] = [[10, 86]] + [[_PX[i] + 2, _PY[j] + 1] for j in range(6) for i in range(6)]   # (the lift's spot, and
+#  every platform: reached by the belts' rides, as the roller coaster's platforms by its cars)
+DRIFT_GYM["sign_events"] = {"11,85": {"text": "Lift", "action": "EVENT", "event": {"lift": [
+    ["Gym entrance", "gym_lobby", 7, 4], ["Down in the Gym", "gym", 10, 86]]}}}
+DRIFT_ROOMS["gym"] = DRIFT_GYM
+DRIFT_ROOMS["gym_lobby"] = drift_room(98, {
+    0: _say("Guide in the lobby", "Welcome to the Driftveil Gym! Take the lift down to the Gym floor."),
+}, {(4, 8): ["DRIFTVEIL GYM", "Leader: Clay", "Certified Trainers: {player_name}"],
+    (10, 8): ["DRIFTVEIL GYM", "Leader: Clay", "Certified Trainers: {player_name}"]}, title="Driftveil Gym")
+DRIFT_ROOMS["gym_lobby"]["sign_events"] = {"8,3": {"text": "Lift", "action": "EVENT", "event": {"lift": [
+    ["Gym entrance", "gym_lobby", 7, 4], ["Down in the Gym", "gym", 10, 86]]}}}
+
+DRIFT_PEOPLE = {
+    4: {"text": "Rood", "action": "EVENT", "condition": ["not:b2_rood_talk"], "event": {
+        "lines": ["Rood: Let us begin!"], "flag": "b2_rood_battled",
+        "battle": _b2(346, dialogue={"player_won": ["Rood: I see. You care for your Pokemon. Thank you."]}),
+        "done": ["Rood: Please, come inside."]}},
+    20: _say("Worker by the tunnel", "We've started digging a shortcut to Twist Mountain. It'll take a while: the rock's hard going."),
+    1: _say("Worker by the Gym", "Clay, the Gym Leader, is in the middle of something. Please come back later.",
+            condition=["not:b2_rood_talk"]),
+    0: [{"text": "Motorcyclist Charles", "action": "EVENT", "condition": ["b2_charles", "unova_version:" + _v], "event": {
+        "lines": ["I'm a heartbreaker... My name... Charles. Hey! If you're a Trainer, how about a %s?" % kind],
+        "flag": "b2_drift_charles", "daily": True,
+        "battle": _b2(_tid, dialogue={"player_won": ["Charles: Schooled when I meant to teach! Still, you've got potential. "
+                                                     "For more %ss, try the Pokemon World Tournament." % kind]}),
+        "done": ["Charles: Riding my bike, becoming the wind... That suits a bad boy like me."]}}
+        for _v, _tid, kind in (("BLACK_2", 366, "Triple Battle"), ("WHITE_2", 367, "Rotation Battle"))],
+    9: _say("Man by the bridge", "Isn't our drawbridge something? Raised up, it looks like a Charizard. We call it the Charizard Bridge!"),
+    17: _say("Woman by the hotel", "The Elite Four are so tough! You can't even challenge them without eight Badges."),
+    18: _say("Old man by the water", "Want to swap an item in your Bag? Press SELECT... Doesn't that jingle take you back?"),
+    10: _say("Man on the bridge", "Team Plasma stole my Pokemon once. Well, they gave it back later!"),
+    12: _say("Hiker's Pokemon", "Roggenrola: Rokorroook!"),
+    16: _say("Trainer in the square", "I'll train my Pokemon so they never have to feel the sting of losing!"),
+    11: _say("Surfer by the shore", "Whoa, dude! A Pokemon with Surf can catch a wave!"),
+    14: _say("Boy by the Center", "I used to see the Cold Storage every day... and I've already forgotten what it looked like."),
+    13: _say("Girl by the hotel", "A Pokemon of thunder and one of wind ran wild, till a Pokemon of the earth punished them. I love that story!"),
+    15: _say("Man in the square", "Across the ocean, all over the world, there are so many different Pokemon!"),
+    8: _say("Sailor on the pier", "There are ex-Team Plasma people up on the hill... I hope they're not up to anything."),
+    19: _say("Man by the river", "Bridges connect lands. Trading and battling connect people. So Pokemon are bridges too!"),
+    7: _ball("Poke Ball by the stone bridge", "CALCIUM", "b2_drift_calcium", name="a Calcium"),
+}
+DRIFT_SIGNS = {1: ["DRIFTVEIL DRAWBRIDGE"], 2: ["Welcome to Driftveil City!"], 3: ["DRIFTVEIL CITY", "A City of Billowing Sails"],
+               4: ["DRIFTVEIL MARKET"], 5: ["DRIFTVEIL CITY POKEMON GYM", "Leader: Clay", "The Underground Boss"],
+               26: ["CLAY TUNNEL AHEAD"]}
+DRIFT_SCENES = [
+    # arriving off the drawbridge (the game's trigger: x 61, rows 46-50): a Grunt pressing an ex-member to rejoin; Hugh
+    {"trigger": {"zone": [61, 46, 61, 50]}, "condition": ["not:b2_drift_arrival"], "flag": "b2_drift_arrival",
+     "cast": [{"sheet": "b2_c293.png", "from": [58, 47], "face": "down",
+               "lines": ["Team Plasma: C'mon! Let's go steal Pokemon together, like old times!"], "stay": True},
+              {"sheet": "b2_c98.png", "from": [58, 49], "face": "up",
+               "lines": ["???: I can't. I learned the hard way that stealing is wrong.",
+                         "Ex-Team Plasma: ...And my lord N would be sad."], "stay": True},
+              {"as": 0, "lines": ["Team Plasma: N? Team Plasma's king? He's a traitor! He disappeared and left us when we needed him!"]},
+              {"sheet": "b2_hugh.png", "from": [64, 48], "to": "player",
+               "lines": ["{rival_name}: Hey! Start talking, you Team Plasma trash!"], "stay": True},
+              {"as": 0, "lines": ["Team Plasma: Oww... You'll pay for that! ...Oh, right. I'm not supposed to make trouble. Next time!"],
+               "leave": [44, 46]},
+              {"as": 3, "lines": ["{rival_name}: You're not getting away!"], "leave": [44, 48]},
+              {"as": 1, "lines": ["Ex-Team Plasma: I'm all right! Two years ago Team Plasma split: those who followed Lord N, who "
+                                  "only wanted to save Pokemon, and those who followed Ghetsis, who wanted to rule the world.",
+                                  "Ex-Team Plasma: If you want to understand us, come to our house on the hill, north of the Gym."],
+               "leave": [37, 14]}]},
+    # Rood outside the base (the game's trigger: x 34, rows 13-15): a test battle, then in with Hugh
+    {"trigger": {"zone": [34, 13, 34, 15]}, "condition": ["b2_drift_arrival", "not:b2_rood_battled"], "flag": "b2_rood_battled",
+     "who": "Rood", "lines": ["Rood: Oh? So you want to know about Team Plasma? If you'd come inside, I'd like to see what kind of "
+                              "person you are first. In a Pokemon battle, if you'll allow it."],
+     "then": "talk"},
+    {"trigger": {"zone": [34, 13, 34, 15]}, "condition": ["b2_rood_battled", "not:b2_rood_talk"], "flag": "b2_rood_talk",
+     "cast": [{"sheet": "b2_c191.png", "from": [36, 13],
+               "lines": ["Rood: Forgive me for testing you. Being former members of Team Plasma, we have to be careful."],
+               "stay": True},
+              {"sheet": "b2_hugh.png", "from": [30, 14], "to": "player",
+               "lines": ["{rival_name}: The guy got away! ...You lot are Team Plasma too, right? What makes you any different?!"],
+               "stay": True},
+              {"as": 0, "lines": ["Rood: Former members. Since what happened two years ago we've cared for Pokemon who lost their "
+                                  "Trainers, to make up for what we did."]},
+              {"as": 1, "lines": ["{rival_name}: Five years ago Team Plasma stole my little sister's Purrloin. Where is it?!"]},
+              {"as": 0, "lines": ["Rood: It isn't here. I expect Team Plasma is still using it. My deepest apologies..."]},
+              {"as": 1, "lines": ["{rival_name}: Apologising won't bring her Pokemon back! I'm going to the Gym. I'll get stronger and "
+                                  "crush every last one of them!"], "leave": [52, 17]},
+              {"as": 0, "lines": ["Rood: Team Plasma made Trainers like him suffer... How foolish we were.",
+                                  "Rood: {player_name}, I have a favour to ask. Inside, there's a Pokemon I'd like you to look after: "
+                                  "Zorua, who travelled with my lord N."], "leave": [37, 12]}]},
+    # Clay and Hugh outside the Gym after the Quake Badge: the World Tournament
+    {"trigger": "enter", "condition": ["b2_quake_badge", "not:b2_drift_clay_out"], "flag": "b2_drift_clay_out",
+     "cast": [{"sheet": "b2_c227.png", "from": [52, 18], "face": "down", "stay": True,
+               "lines": ["Clay: Oh, so you two squirts know each other? Ya both ain't bad, so I wanna show ya somethin'."]},
+              {"sheet": "b2_hugh.png", "from": [50, 19], "to": "player", "stay": True,
+               "lines": ["{rival_name}: Wait. Clay... why have you forgiven Team Plasma?"]},
+              {"as": 0, "lines": ["Clay: There's always room for folks to grow and change. And if ya only chase what ya think is right, "
+                                  "ya end up throwin' out every other thought. That's mighty dangerous."]},
+              {"as": 1, "lines": ["{rival_name}: Hmph. One of those grown-up compromises? Whatever! I'm fighting Team Plasma!"]},
+              {"as": 0, "lines": ["Clay: Ever heard of the Pokemon World Tournament? Trainers from all over the world come to see who's "
+                                  "toughest! I'll be waitin' for ya at the south end of town!"], "leave": [17, 58]},
+              {"as": 1, "lines": ["{rival_name}: A tournament to find the strongest? Right on! Time for some special training!"],
+               "leave": [17, 58]}]},
+]
+DRIFTVEIL = town(
+    96, DRIFT_PEOPLE, DRIFT_SIGNS,
+    {98: ("gym", "gym_lobby"), 99: ("center", "center"), 100: ("house", "chateau"), 101: ("house", "grand"),
+     102: ("house", "luxury"), 103: ("house", "continental"), 104: ("house", "rood"), 105: ("house", "market"),
+     106: ("gate", "pwt_gate")},
+    rooms=DRIFT_ROOMS,
+    hidden={"73,52": "ULTRA_BALL", "8,15": "RARE_BONE"},
+    edges={"<": ("UNOVA_ROUTE_6", [(0, y) for y in range(20, 23)]), ">": ("DRIFTVEIL_DRAWBRIDGE", [(86, y) for y in range(47, 50)])},
+    scenes=DRIFT_SCENES, title="Driftveil City")
+for _y in range(0, 32):   # (the block north-east of the city isn't part of it: the file's picture leaves it empty)
+    DRIFTVEIL["art"][_y] = DRIFTVEIL["art"][_y][:63] + "c" * (len(DRIFTVEIL["art"][_y]) - 63)
+DRIFTVEIL["edge_to"] = {"86,%d" % y: [44, 44 + (y - 47) * 3] for y in range(47, 50)}
+
+# --- the Driftveil Drawbridge (253): Ducklett and feathers under the bird shadows (the file's "rustle" slots, read as the
+# bridge's flying shadows: src/world/phenomena.py); the Youngster who'd love to see a Charizard; the runner from Skyarrow.
+DRAWBRIDGE = route(
+    253, {0: _say("Man at the east end", "Bird Pokemon fly over the bridge. Their feathers drift down here, and sometimes when "
+                                         "you go to pick one up, you meet a Pokemon!"),
+          1: _say("Woman on the bridge", "Driftveil's famous for its drawbridge, the PWT... and Charles the heartbreaker."),
+          2: {"text": "Youngster on the bridge", "action": "EVENT", "event": {
+              "lines": ["They call this the Charizard Bridge, because raised up it looks like a Charizard. ...But I've never seen one."],
+              "requires": ["party_has:6"], "fail": ["If only I could see a real Charizard..."],
+              "gift_item": {"HEAL_POWDER": 1}, "flag": "b2_drawbridge_charizard",
+              "done": ["I wonder if the people who built this bridge had Charizard with them."]}},
+          3: {"text": "Runner on the bridge", "action": "EVENT", "event": {"world": "unova_story", "runner": "b2_drawbridge_runner"}}},
+    {}, exits={"<": ("DRIFTVEIL_CITY", [(43, y) for y in range(44, 51)]), ">": ("UNOVA_ROUTE_5", [(212, y) for y in range(44, 51)])},
+    title="Driftveil Drawbridge")
+DRAWBRIDGE["edge_to"] = dict({"43,%d" % y: [85, 47 + min(2, (y - 44) // 3)] for y in range(44, 51)},
+                             **{"212,%d" % y: [10, 15 + min(2, (y - 44) // 3)] for y in range(44, 51)})
+ROUTE_5["edge_to"] = dict(ROUTE_5.get("edge_to") or {}, **{"9,%d" % y: [211, 45 + (y - 15) * 2] for y in range(15, 18)})
+
+
 MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": FLOCCESY, "UNOVA_ROUTE_20": ROUTE_20,
         "FLOCCESY_RANCH_OUTSIDE": RANCH_OUTSIDE, "FLOCCESY_RANCH": RANCH, "PLEDGE_GROVE": PLEDGE_GROVE,
         "VIRBANK_CITY": VIRBANK, "VIRBANK_COMPLEX_OUTSIDE": COMPLEX_OUTSIDE, "VIRBANK_COMPLEX": COMPLEX, "POKESTAR_STUDIOS": POKESTAR,
@@ -3723,4 +4175,4 @@ MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": 
         "UNOVA_ROUTE_4": ROUTE_4, "DESERT_RESORT_ENTRANCE": DESERT_ENTRANCE, "DESERT_RESORT": DESERT_RESORT,
         "RELIC_CASTLE": RELIC_CASTLE, "JOIN_AVENUE": JOIN_AVENUE,
         "NIMBASA_CITY": NIMBASA, "UNOVA_ROUTE_16": ROUTE_16, "LOSTLORN_FOREST": LOSTLORN, "UNOVA_ROUTE_5": ROUTE_5,
-        "ANVILLE_TOWN": ANVILLE}
+        "ANVILLE_TOWN": ANVILLE, "DRIFTVEIL_CITY": DRIFTVEIL, "DRIFTVEIL_DRAWBRIDGE": DRAWBRIDGE}

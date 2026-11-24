@@ -99,6 +99,48 @@
    523
   ]
  },
+ "158": {
+  "b2_id": 158,
+  "class": "LEADER",
+  "held_items": {
+   "530": "SITRUS_BERRY"
+  },
+  "levels": [
+   31,
+   31,
+   33
+  ],
+  "movesets": {
+   "28": [
+    "BULLDOZE",
+    "CRUSH-CLAW",
+    "ROLLOUT",
+    "FURY-CUTTER"
+   ],
+   "530": [
+    "BULLDOZE",
+    "METAL-CLAW",
+    "SLASH",
+    "ROCK-SLIDE"
+   ],
+   "552": [
+    "BULLDOZE",
+    "CRUNCH",
+    "SAND-TOMB",
+    "TORMENT"
+   ]
+  },
+  "name": "Leader Clay",
+  "rewards": {
+   "balls": 4
+  },
+  "sprite": "b2_clay.png",
+  "team": [
+   552,
+   28,
+   530
+  ]
+ },
  "207": {
   "b2_id": 207,
   "class": "BEAUTY",
@@ -150,6 +192,136 @@
    239
   ]
  },
+ "256": {
+  "b2_id": 256,
+  "class": "MUSICIAN",
+  "levels": [
+   25
+  ],
+  "name": "Musician Preston",
+  "rewards": {
+   "balls": 2
+  },
+  "sprite": "b2_musician.png",
+  "team": [
+   556
+  ]
+ },
+ "319": {
+  "b2_id": 319,
+  "class": "WORKER",
+  "levels": [
+   31
+  ],
+  "name": "Worker Maynard",
+  "rewards": {
+   "balls": 2
+  },
+  "sprite": "b2_worker.png",
+  "team": [
+   529
+  ]
+ },
+ "320": {
+  "b2_id": 320,
+  "class": "WORKER",
+  "levels": [
+   30,
+   30
+  ],
+  "name": "Worker Pasqual",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "b2_worker.png",
+  "team": [
+   529,
+   343
+  ]
+ },
+ "321": {
+  "b2_id": 321,
+  "class": "WORKER",
+  "levels": [
+   30,
+   30
+  ],
+  "name": "Worker Tibor",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "b2_worker.png",
+  "team": [
+   551,
+   529
+  ]
+ },
+ "322": {
+  "b2_id": 322,
+  "class": "WORKER",
+  "levels": [
+   30,
+   30
+  ],
+  "name": "Worker Niel",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "b2_worker.png",
+  "team": [
+   343,
+   551
+  ]
+ },
+ "323": {
+  "b2_id": 323,
+  "class": "WORKER",
+  "levels": [
+   29,
+   29,
+   29
+  ],
+  "name": "Worker Tavarius",
+  "rewards": {
+   "balls": 4
+  },
+  "sprite": "b2_worker.png",
+  "team": [
+   529,
+   551,
+   343
+  ]
+ },
+ "324": {
+  "b2_id": 324,
+  "class": "WORKER",
+  "levels": [
+   31
+  ],
+  "name": "Worker Noel",
+  "rewards": {
+   "balls": 2
+  },
+  "sprite": "b2_worker.png",
+  "team": [
+   343
+  ]
+ },
+ "325": {
+  "b2_id": 325,
+  "class": "WORKER",
+  "levels": [
+   31
+  ],
+  "name": "Worker Friedrich",
+  "rewards": {
+   "balls": 2
+  },
+  "sprite": "b2_worker.png",
+  "team": [
+   551
+  ]
+ },
  "339": {
   "b2_id": 339,
   "battle_options": {
@@ -192,6 +364,23 @@
    564,
    561,
    566
+  ]
+ },
+ "346": {
+  "b2_id": 346,
+  "class": "TRAINER",
+  "levels": [
+   27,
+   27
+  ],
+  "name": "Pokemon Trainer Rood",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "trainer.png",
+  "team": [
+   507,
+   528
   ]
  },
  "359": {
@@ -309,6 +498,50 @@
   "team": [
    499,
    511
+  ]
+ },
+ "366": {
+  "b2_id": 366,
+  "battle_options": {
+   "double": true
+  },
+  "class": "MOTORCYCLIST",
+  "levels": [
+   26,
+   26,
+   26
+  ],
+  "name": "Motorcyclist Charles",
+  "rewards": {
+   "balls": 4
+  },
+  "sprite": "b2_motorcyclist.png",
+  "team": [
+   564,
+   561,
+   566
+  ]
+ },
+ "367": {
+  "b2_id": 367,
+  "battle_options": {
+   "double": true
+  },
+  "class": "MOTORCYCLIST",
+  "levels": [
+   26,
+   26,
+   26
+  ],
+  "name": "Motorcyclist Charles",
+  "rewards": {
+   "balls": 4
+  },
+  "sprite": "b2_motorcyclist.png",
+  "team": [
+   561,
+   564,
+   566
   ]
  },
  "47": {

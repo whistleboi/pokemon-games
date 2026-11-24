@@ -24,13 +24,18 @@ PLACES = {"ASPERTIA_CITY": 427, "UNOVA_ROUTE_19": 437, "UNOVA_ROUTE_20": 446, "F
           "FLOCCESY_RANCH": 445, "VIRBANK_CITY": 448, "VIRBANK_COMPLEX_OUTSIDE": 456, "VIRBANK_COMPLEX": 457,
           "CASTELIA_SEWERS": 495, "CASTELIA_EMPTY_LOT": 500,
           "UNOVA_ROUTE_4": 326, "DESERT_RESORT_ENTRANCE": 157, "DESERT_RESORT": 158, "RELIC_CASTLE": 160,   # (batch 3b, 11-21)
-          "UNOVA_ROUTE_16": 383, "LOSTLORN_FOREST": 385, "UNOVA_ROUTE_5": 329}   # (batch 4a, 11-23)
+          "UNOVA_ROUTE_16": 383, "LOSTLORN_FOREST": 385, "UNOVA_ROUTE_5": 329,   # (batch 4a, 11-23)
+          "DRIFTVEIL_DRAWBRIDGE": 253}   # (batch 5a, 11-24: its "rustle" slots are the bridge's bird shadows)
 P = os.path.join(GAME, "assets", "unova_area_data.json")
 NL = "\r\n"
 
 
 def _block(text, key, indent):
     pat = NL + " " * indent + json.dumps(key) + ": "
+    if pat not in text:   # (a few areas sit deeper in the file: Skyarrow Bridge, the Driftveil Drawbridge)
+        import re
+        hit = re.search(re.escape(NL) + r"( +)" + re.escape(json.dumps(key) + ": "), text)
+        pat = NL + hit.group(1) + json.dumps(key) + ": "
     i = text.index(pat) + len(NL)
     j = i + len(pat) - len(NL)
     opener = text[j]

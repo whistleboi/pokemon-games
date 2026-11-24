@@ -4,7 +4,9 @@ Now and then as you walk a place whose "wild_tables" have them (src/world/wild_t
 rustles, or a spot of water ripples. Step into the rustling grass (or surf onto the ripple) and its own Pokemon jumps out:
 the "rustle" / "ripple" slots (Audino, Dunsparce, Emolga...). Fish into the ripple and the "fish_ripple" slots bite. Walk
 well away, or change floor, and it stops. The grass shakes in Platinum's own frames (the Poke Radar's), the water rings.
-Dust clouds (caves) and flying shadows (bridges) come with their places, from the same tables."""
+Dust clouds (caves) and flying shadows (bridges) come with their places, from the same tables.
+Flying shadows (11-24, the Driftveil Drawbridge): a place with "rustle" slots and no tall grass at all is a bridge: a bird's
+shadow crosses its deck instead; step on it and a feather drifts down (one of the seven Wings), or its Pokemon swoops in."""
 import random
 
 import pygame
@@ -21,9 +23,26 @@ def _state(ds):
     return st
 
 
+WINGS = ["HEALTH_WING", "MUSCLE_WING", "RESIST_WING", "GENIUS_WING", "CLEVER_WING", "SWIFT_WING"]   # (Pretty Wing: waits for the item, Main inbox clean-main-unova-air-balloon)
+
+
+def _bridge(ds):
+    """A bridge: "rustle" slots and not one tile of tall grass on the floor (the Driftveil Drawbridge)."""
+    f = ds.run.floor
+    key = ("_phenom_bridge", id(f))
+    if getattr(ds, "_phenom_bridge_key", None) != key:
+        from src.dungeon import core
+        ds._phenom_bridge_key = key
+        ds._phenom_bridge_is = not any(f.tile(x, y) == core.GRASS for y in range(f.h) for x in range(f.w))
+    return ds._phenom_bridge_is
+
+
 def _kinds(ds):
     from src.world import wild_tables as wt
-    return [k for k in ("rustle", "ripple") if wt.has(ds.area_data, k)]
+    out = [k for k in ("rustle", "ripple") if wt.has(ds.area_data, k)]
+    if "rustle" in out and _bridge(ds):
+        out[out.index("rustle")] = "shadow"
+    return out
 
 
 def active(ds):
@@ -44,7 +63,7 @@ def _start(ds, rng):
     rng.shuffle(kinds)
     dark = ds._dark_tiles() if hasattr(ds, "_dark_tiles") else set()
     for kind in kinds:
-        want = (core.GRASS,) if kind == "rustle" else (core.WATER, core.SURF)
+        want = (core.GRASS,) if kind == "rustle" else (core.FLOOR,) if kind == "shadow" else (core.WATER, core.SURF)
         spots = [(x, y) for y in range(py - FAR, py + FAR + 1) for x in range(px - FAR, px + FAR + 1)
                  if NEAR <= abs(x - px) + abs(y - py) <= FAR and f.inside(x, y) and f.tile(x, y) in want
                  and (x, y) not in dark and not f.occupied(x, y)]
@@ -77,6 +96,15 @@ def on_step(ds, rng=None):
 
 def _jump_out(ds, t, kind):
     from src.dungeon.core import Mover
+    if kind == "shadow":   # (a bird's shadow: half the time a feather drifts down, else the bird itself - Black 2's bridges)
+        if random.random() < 0.5:
+            wing = random.choice(WINGS)
+            story = ds.game.story_manager
+            story.inventory[wing] = story.inventory.get(wing, 0) + 1
+            if hasattr(ds, "flash"):
+                ds.flash("A feather drifted down! You found a %s!" % wing.replace("_", " ").title(), 150)
+            return False
+        kind = "rustle"
     ds._phenom_kind = kind
     try:
         p = ds._from_wild_tables(random.Random())
@@ -106,7 +134,14 @@ def draw(ds, screen, at):
     spot, kind = active(ds)
     if spot:
         r = at(*spot)
-        if kind == "rustle":
+        if kind == "shadow":   # (a bird's shadow gliding over the deck)
+            sway = int(r.w * 0.25 * __import__("math").sin(ms / 300.0))
+            sh = pygame.Surface((int(r.w * 1.4), int(r.h * 0.6)), pygame.SRCALPHA)
+            pygame.draw.ellipse(sh, (0, 0, 0, 90), sh.get_rect())
+            wing = sh.get_rect()
+            pygame.draw.polygon(sh, (0, 0, 0, 90), [(0, wing.h // 2), (wing.w // 2, 0), (wing.w, wing.h // 2), (wing.w // 2, wing.h)])
+            screen.blit(sh, sh.get_rect(center=(r.centerx + sway, r.centery)))
+        elif kind == "rustle":
             from src.world import poke_radar
             fr = poke_radar._frames("shake", (r.w, r.h))
             if fr:

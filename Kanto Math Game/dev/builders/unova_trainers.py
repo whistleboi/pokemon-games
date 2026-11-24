@@ -42,12 +42,15 @@ TEAMS = [207, 208, 209, 153,                     # Elesa's Beauties, Elesa
          47, 803, 10, 804, 138, 805, 136, 806,   # the Ferris wheel's trainers (Nate: spring-winter; Rosa: spring-winter)
          732, 733, 360, 361, 362, 363, 364, 365,  # Ingo, Emmet; Nate and Rosa as partners (by your starter)
          359, 751, 588, 589, 590,                # the Plasma Grunts at Big Stadium; Hugh (by your starter)
-         339, 340]                               # Charles at the drawbridge (Black 2: Rotation, White 2: Triple)
+         339, 340,                               # Charles at the drawbridge (Black 2: Rotation, White 2: Triple)
+         256,                                    # (batch 5a, 11-24) Musician Preston on Route 5 (missed in 4a)
+         346, 366, 367, 158,                     # Rood; Charles in Driftveil (Black 2: Triple, White 2: Rotation); Clay
+         319, 320, 321, 322, 323, 324, 325]      # Clay's Workers
 # Battle pictures where the class slug isn't the file's name (a/0/7/1 slots matched by eye, 11-23; a class without its own
 # Black 2 picture keeps the same class from Platinum, never another class's look)
 BY_CLASS = {0: "b2_nate.png", 1: "b2_rosa.png", 90: "pt_cyclist_m.png", 91: "pt_cyclist_f.png", 33: "pt_artist.png",
             187: "b2_plasma_grunt_m.png", 188: "b2_plasma_grunt_f.png"}
-BY_NAME = {"Elesa": "b2_elesa.png", "Emmet": "b2_emmet.png", "Ingo": "b2_ingo.png", "Hugh": "hugh.png"}
+BY_NAME = {"Elesa": "b2_elesa.png", "Clay": "b2_clay.png", "Emmet": "b2_emmet.png", "Ingo": "b2_ingo.png", "Hugh": "hugh.png"}
 TEAMS_OUT = os.path.join(HERE, "town_maps", "unova_teams.json")
 
 

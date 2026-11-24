@@ -15,8 +15,8 @@ import random
 
 START_PROPS = [59, 1, 8, 76, 48, 70]   # (zone 606's lines: Top Hat, Blue Barrette, Square Glasses, Maraca, Umber Belt, Tie)
 FAN_STEPS = [0, 20, 50, 100, 200, 400, 700, 1100, 1600, 2400]   # (Black 2's 0 / 100 / 250 ... 12,000, x 0.2: Jordan 11-24)
-SPECIAL = {24, 55, 67, 82, 95, 96, 98, 99}   # (given by people, not fans: Toy Cake, Crown, Tiara, Winner's Belt and the Opelucid
-#  gentleman's four. The Electric Guitar comes from a fan: Black and White's Musician Preston isn't on Black 2's Route 5)
+SPECIAL = {24, 55, 67, 82, 84, 95, 96, 98, 99}   # (given by people, not fans: Toy Cake, Crown, Tiara, Winner's Belt, the Electric
+#  Guitar (Musician Preston, Route 5) and the Opelucid gentleman's four)
 TOY_CAKE, CROWN, WINNERS_BELT = 24, 55, 82
 _DATA = None
 
@@ -97,6 +97,13 @@ def event(state, ev, lines, show):
     from src.states.overworld.common import _say_then, _resolve_lines
     _show = show
     show = lambda ls: _show(_resolve_lines(game, list(ls)))   # (names in the lines: {player_name})
+    if ev.get("give_prop") is not None:   # (a Prop from someone: Route 5's Musician Preston, his Electric Guitar)
+        pid = int(ev["give_prop"])
+        give_prop(game, pid)
+        if ev.get("flag"):
+            f[ev["flag"]] = True
+        show(list(lines or []) + ["{player_name} received the %s!" % prop_name(pid)])
+        return
     if ev.get("case"):
         if not f.get("b2_props"):
             f["b2_props"] = list(START_PROPS)
