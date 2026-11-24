@@ -1947,10 +1947,9 @@ _wh = _tm["ROCKET_WAREHOUSE"]
 check(len(_dolls) == 14 and sorted(_lo.get("look_only", [])) == ["10,0", "9,0"] and any("Magnetic Waves" in " ".join(x) for x in _wh.get("signs", [])),
       f"Sevii: Lorelei's Pokemon dolls (FireRed's 14; the two on the top shelf look-only, out of reach); the Rocket Warehouse's PC report ({len(_dolls)})")
 # Copycat: the Magnet Train Pass first (HGSS), then Mimic for a Poke Doll (FireRed), bought on Celadon 4F for $1000
-_, _clk = _atT("CELADON_CITY", "dept_4", "Clerk")
-story.money = 1500; story.inventory.pop("POKE_DOLL", None)
-_teachT(_clk["event"], [25])
-check(story.inventory.get("POKE_DOLL") == 1 and story.money == 500, f"Celadon Dept. Store 4F: a Poke Doll for $1000 ({story.inventory.get('POKE_DOLL')}, {story.money})")
+_, _clk = _atT("CELADON_CITY", "dept_4", "Clerk")   # (11-24: FireRed's 4F shelf - the Poke Doll, the stones, the Linking Cord)
+check(_clk.get("action") == "SHOP" and "POKE_DOLL" in (_clk.get("stock") or []), f"Celadon Dept. Store 4F: the clerk's shelf has the Poke Doll ({_clk.get('stock')})")
+story.inventory["POKE_DOLL"] = 1   # (bought there: the doll for Copycat below)
 # (11-23, K2: FireRed's walk-in lift in the Dept. Store - in at 3F's lift door, the panel, ride to 5F, out on 5F by its lift door)
 _ce = open_map("CELADON_CITY", "KANTO_ROUTE_7")
 _ce._go("dept_3", ""); frames(2)
