@@ -421,6 +421,7 @@
       {"mission": "orre_m1", "title": "Dust and Diesel", "say": "The Outskirt Stand sits alone in the desert, an old train turned diner. A young rider at the far end has been watching the door since you came in."},
       {"mission": "orre_m2", "title": "The Sack on the Road", "say": "Two men in odd clothes passed this way with a sack that moved. They were heading for Phenac City, and so are you."},
       {"mission": "orre_m2b", "title": "Eyes That See Shadows", "say": "The girl from the sack sees something in certain Pokemon that nobody else can: a dark glow, like smoke. Phenac's mayor ought to hear about it."},
+      {"mission": "orre_m2b2", "title": "A Jacket You Know", "say": "Someone in Phenac is wearing a Team Snagem jacket. Not long ago, you wore one just like it."},
       {"mission": "orre_m2c", "title": "An Empty Belt", "say": "A Snag Machine on your arm, and not one Poke Ball to throw. The bartender back at the Outskirt Stand keeps a box under the counter."},
       {"mission": "orre_m2d", "title": "Trouble at the Mayor's", "say": "Shouting, from the direction of the mayor's house. Something's wrong."},
       {"mission": "orre_m3", "title": "Three at the Gates", "say": "Strangers in matching outfits stand at every road out of Phenac, and each one keeps a Pokemon with that same dark glow."}
@@ -430,7 +431,9 @@
     ]},
     {"title": "The Pyrite Badge", "chapters": [
       {"mission": "orre_m4", "title": "A Town Without Law", "say": "Pyrite Town: no sheriff worth the name, and dark Pokemon passed hand to hand in the duel square. Someone called Cail knows where they come from."},
+      {"mission": "orre_m4a", "title": "Duking's Windmill", "say": "Duking's house stands under the great windmill at the edge of Pyrite. Something about the sails looks wrong today."},
       {"mission": "orre_m4b", "title": "The Stolen Gear", "say": "The windmill has stopped and the Colosseum has gone dark. A missing gear, a thief called Silva, and a building site out past the bridge."},
+      {"mission": "orre_m4b2", "title": "The Gear for Duking", "say": "The Gear is heavy in your bag, and Pyrite's Colosseum is still dark. Duking has been pacing his front room all day."},
       {"mission": "orre_m4c", "title": "Lights On at the Colosseum", "say": "The windmill turns again. Pyrite's Colosseum is lit, and its Leader is waiting at the end of four rounds."}
     ]},
     {"title": "The Man with the Music", "chapters": [
