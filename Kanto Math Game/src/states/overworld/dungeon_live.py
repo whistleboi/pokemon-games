@@ -277,6 +277,7 @@ class RouteLive:
         _radar.draw(self, screen, at)
         _dexnav.draw(self, screen, at)
         _phen.draw(self, screen, at)
+        __import__("src.world.ambush", fromlist=["draw"]).draw(self, screen, at)   # (ambush spots, 11-24)
         for ex, ey in emotes:
             r = at(int(round(ex)), int(round(ey)))
             theme.shadow_text(screen, "!", fonts["label"], r.centerx - 4, r.y - 34, color=(230, 60, 50))
