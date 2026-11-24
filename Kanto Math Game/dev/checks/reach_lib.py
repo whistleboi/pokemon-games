@@ -58,7 +58,72 @@ def links(area):
             out.append(tgt)
     if not _menu_targets(area):   # (a place with no menu buttons at all: its walked map's own ways out - Orre's Pyrite Building
         out += [t for t in _walk_exits(area, gated=True) if t not in out]   # lift to The Under, 11-23. Where a place still has menu buttons,
-    return out   # those carry its story gates; its map's barred ways aren't read here)
+    out += [t for t in _rides(area, st) if t not in out]   # those carry its story gates; its map's barred ways aren't read here)
+    for o in (a.get("route_menu") or []) + (a.get("explore_options") or []):   # (a menu EVENT that sails you: Hoenn's Sailors and
+        ev = o.get("event") if isinstance(o.get("event"), dict) else {}             #  Ferry attendant, once their EXITs went; 11-23)
+        if o.get("action") != "EVENT" or not ev.get("travel") or not _flag_ok(o.get("flag_condition")):
+            continue
+        cond = o.get("condition")
+        if cond and not (st._check_route_condition(cond, False, o) if hasattr(st, "_check_route_condition") else _cond_ok(st, cond)):
+            continue
+        out += [t for t in _travel_to(area, ev["travel"]) if t not in out]
+    return out
+
+
+def _travel_to(area, to):
+    """Where an event's "travel" goes: a place, or "@ferry" - each port of the area's own "ferry" map (the S.S. Tidal)."""
+    if to == "@ferry":
+        return [t for t in ((PROG.get(area) or {}).get("ferry") or {}).values() if t in PROG and t != area]
+    return [to] if to in PROG else []
+
+
+def _cond_ok(st, cond):
+    """A walked map's condition: a flag, "not:flag", a list of them, or a menu condition the game itself checks."""
+    if not cond:
+        return True
+    if isinstance(cond, list):
+        return all(_cond_ok(st, c) for c in cond)
+    if isinstance(cond, str) and cond.startswith("not:"):
+        return not story.story_flags.get(cond[4:])
+    if isinstance(cond, str) and cond in story.story_flags:
+        return bool(story.story_flags.get(cond))
+    for f in ("_check_menu_condition", "_check_route_condition"):
+        fn = getattr(st, f, None)
+        if fn is not None:
+            try:
+                return bool(fn(cond) if f == "_check_menu_condition" else fn(cond, False, {}))
+            except Exception:
+                pass
+    return bool(story.story_flags.get(cond)) if isinstance(cond, str) else False
+
+
+def _rides(area, st):
+    """The places a walked map's people take you (Unova's cleanup, 11-23): a person whose event has "travel" (ships, ferries,
+    trains: Pop Roxie, the Liberty Garden sailor) or "travel_choices" (each with its own "requires"), shown now. Scenes
+    (one-off story rides) aren't counted; "@ferry" is each port of the area's own "ferry" map."""
+    _walk_exits(area)   # (loads the maps)
+    m = _WALK["maps"].get(area) or {}
+    out = []
+    for part in [m] + list(m.get("floors") or []) + list((m.get("rooms") or {}).values()):
+        people = []
+        for pp in (part or {}).get("people") or [] if isinstance(part, dict) else []:
+            if isinstance(pp, list):   # (one spot, several people by flag: a list of them, or {"any": [...]})
+                people += [x for x in pp if isinstance(x, dict)]
+            else:
+                people += (pp.get("any") or []) if isinstance(pp, dict) and "any" in pp else [pp]
+        for pp in people:
+            if not isinstance(pp, dict) or "trigger" in pp or not _cond_ok(st, pp.get("condition")):
+                continue
+            ev = pp.get("event") or {}
+            if not isinstance(ev, dict):
+                continue
+            to = ev.get("travel")
+            if isinstance(to, str):
+                out += _travel_to(area, to)
+            for ch in ev.get("travel_choices") or []:
+                if ch.get("to") in PROG and _cond_ok(st, ch.get("requires")):
+                    out.append(ch["to"])
+    return out
 
 
 def _menu_targets(area):

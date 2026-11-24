@@ -789,10 +789,13 @@ class Run:
             self.enter_floor(len(self.floors))
         self.enter_floor(index)
         floor = self.floors[index]
-        m = floor.mover_at(x, y) if land else None
-        if m is not None and m.kind == "wild" and getattr(m, "size", 1) == 1:
-            # (a wild Pokemon on the landing spot steps aside: you always come down on the very spot, as in FireRed. It made
-            #  Icefall Cave's thin-ice check land you a tile off now and then: the wild ones are placed at random; 11-18)
+        for _ in range(len(floor.movers) if land else 0):
+            # (every wild Pokemon on the landing spot steps aside: you always come down on the very spot, as in FireRed. It made
+            #  Icefall Cave's thin-ice check land you a tile off now and then: the wild ones are placed at random; 11-18;
+            #  two on the one spot, 11-23)
+            m = floor.mover_at(x, y)
+            if m is None or m.kind != "wild" or getattr(m, "size", 1) != 1:
+                break
             aside = next(((x + dx, y + dy) for dx, dy in DIRS if floor.walkable(x + dx, y + dy)
                           and not floor.occupied(x + dx, y + dy)), None)
             if aside is None:

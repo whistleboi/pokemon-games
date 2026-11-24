@@ -62,7 +62,26 @@ bbg.folder = _folder; bbg._INDEX.clear()
 real = [r for r in ("KANTO", "JOHTO", "HOENN", "SINNOH", "UNOVA", "ORANGE", "ORRE") if bbg.index(g, r)]
 print("   regions with their own index now:", real or "none yet")
 
-print("4) a battle loads one by path")
+print("4) event Leaders and trainers in a Gym's room (Orange 11-23)")
+from src.states.battle import TrainerBattleState as _TBS
+bbg.folder = lambda game, region: os.path.join(tmp, str(region).upper()); bbg._INDEX.clear()
+_seen = []
+_pick = bbg.pick
+bbg.pick = lambda *a, **k: (_seen.append(k) or _pick(*a, **dict(k, water=False, now=noon)))
+story.current_area_key = "VIOLET_CITY"
+_g0 = getattr(g, "walk_town_room", None)
+g.walk_town_room = None
+_seen.clear(); _TBS(g, [mk(19)], trainer_class="GYM_LEADER", trainer_name="Falkner", area_name="VIOLET_CITY", trainer_img_name="falkner")
+check(_seen and _seen[0].get("leader"), f"a Leader met through an event asks for the Leader's picture ({_seen[:1]})")
+_seen.clear(); _TBS(g, [mk(19)], trainer_class="YOUNGSTER", trainer_name="Joey", area_name="VIOLET_CITY", trainer_img_name="youngster")
+check(_seen and not _seen[0].get("gym") and not _seen[0].get("leader"), f"an ordinary trainer outside: the trainer picture ({_seen[:1]})")
+g.walk_town_room = ("VIOLET_CITY", "gym")
+_seen.clear(); _TBS(g, [mk(19)], trainer_class="BIRD_KEEPER", trainer_name="Rod", area_name="VIOLET_CITY", trainer_img_name="bird_keeper")
+check(_seen and _seen[0].get("gym"), f"a trainer inside the Gym's room: the Gym's picture ({_seen[:1]})")
+g.walk_town_room = _g0
+bbg.pick = _pick; bbg.folder = _folder; bbg._INDEX.clear()
+
+print("5) a battle loads one by path")
 from src.states.battle import TrainerBattleState
 p = os.path.join(d, "gym.png")
 b = TrainerBattleState(g, [mk(19)], trainer_class="YOUNGSTER", trainer_name="Joey", area_name=story.current_area_key, background_image=p)
