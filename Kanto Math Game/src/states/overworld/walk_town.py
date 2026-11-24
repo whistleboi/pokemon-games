@@ -413,10 +413,12 @@ class WalkTownState(TownWalkUps, CityState):
             if not got:
                 continue
             species, owner = got
-            spot = next(((home[0] + dx, home[1] + dy) for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))
-                         if 0 <= home[0] + dx < self.w and 0 <= home[1] + dy < self.h
-                         and self.rows[home[1] + dy][home[0] + dx] == "." and grid[home[1] + dy][home[0] + dx] not in "_()"
-                         and (home[0] + dx, home[1] + dy) not in taken), None)
+            _free = lambda t: (0 <= t[0] < self.w and 0 <= t[1] < self.h and self.rows[t[1]][t[0]] == "."
+                               and grid[t[1]][t[0]] not in "_()" and t not in taken and t not in self.people)
+            _me = getattr(self, "player", None)
+            spot = (partners.pick_spot(home, _free, _me) if _me else   # (never the owner's last side you can reach)
+                    next((t for t in ((home[0] + 1, home[1]), (home[0] - 1, home[1]), (home[0], home[1] + 1), (home[0], home[1] - 1))
+                          if _free(t)), None))
             if spot is None:
                 continue
             taken.add(spot)
@@ -2935,7 +2937,49 @@ class WalkTownState(TownWalkUps, CityState):
         hop = guide.map_hop(game, list(ways))
         if not hop or hop == self.area_key or hop not in ways:
             return None
-        return (ways[hop], self._exit_label(hop))
+        return (self._ways_on(hop, ways[hop], mission), self._exit_label(hop))
+
+    def _ways_on(self, hop, tiles, mission):
+        """Of several ways out to the next place, the ones that come out in the part of it that leads on (11-24, Hoenn:
+        Fortree's tree-top walkways come down by five ladders into four parts of the town, and only one part has the way
+        east). Ways out to a town pair up with its ways back here in reading order, as _arrive does; the part you land in
+        is flooded over its plain ground. All of them when that can't be told."""
+        from src.world import guide
+        mine = sorted((t for r, t in tiles if r is None), key=lambda t: (t[1], t[0]))
+        if len(mine) < 2:
+            return tiles
+        goal = guide.mission_target(self.game, mission)
+        path = guide.path_to(self.game, hop, goal) if goal and goal != hop else None
+        nxt = path[1] if path and len(path) > 1 else None
+        other = story_map(self.game, hop) if nxt else None
+        if not isinstance(other, dict) or other.get("floors") or not other.get("art"):
+            return tiles
+        art, ex = other["art"], other.get("exits") or {}
+        back = sorted(((x, y) for y, row in enumerate(art) for x, c in enumerate(row) if ex.get(c) == self.area_key), key=lambda t: (t[1], t[0]))
+        if len(back) != len(mine):
+            return tiles
+        H, W = len(art), len(art[0])
+        plain = lambda t: 0 <= t[0] < W and 0 <= t[1] < H and art[t[1]][t[0]] == "."
+        good = set()
+        for i, t in enumerate(mine):
+            bx, by = back[i]
+            land = next(((bx + dx, by + dy) for dx, dy in ((0, 1), (0, -1), (-1, 0), (1, 0)) if plain((bx + dx, by + dy))), None)
+            if land is None:
+                return tiles
+            seen, q = {land}, deque([land])
+            hit = False
+            while q and not hit:
+                x, y = q.popleft()
+                for n in ((x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)):
+                    if 0 <= n[0] < W and 0 <= n[1] < H and ex.get(art[n[1]][n[0]]) == nxt:
+                        hit = True
+                        break
+                    if n not in seen and plain(n):
+                        seen.add(n)
+                        q.append(n)
+            if hit:
+                good.add((None, t))
+        return good or tiles
 
     def _guide_walk(self, goals):
         """The shortest walk from where you stand to one of goals ({(room, tile)}), over this place's rooms: through
@@ -3003,11 +3047,14 @@ class WalkTownState(TownWalkUps, CityState):
                 to = inside.get("%d,%d" % t)
                 return ((to, arrive(to, "OUT:%d,%d" % t)), "door") if to in rooms else None
             if t in part["pads"]:
+                if (t in busy) if room == here else (t in closed(room)):   # (someone stands on it: no way through it - Lavaridge Gym's
+                    return None                                          #  trainers on its sand pits, 11-24)
                 to, x, y = part["pads"][t]
                 to = room if to == "" else to
                 return ((to, (x, y)), "pad") if to == room or to in rooms else None
             return None
 
+        from src.dungeon.art import LEDGES as _LEDGES
         _coc = {}
         cocoons = lambda room: _coc[room] if room in _coc else _coc.setdefault(room, self._guide_cocoons(room))
         start = (here, tuple(self.player))
@@ -3044,6 +3091,12 @@ class WalkTownState(TownWalkUps, CityState):
                     if dest[1] is not None and dest not in prev:
                         prev[dest] = (cur, (n, kind))
                         q.append(dest)
+                    continue
+                if 0 <= n[1] < len(grid) and 0 <= n[0] < len(grid[0]) and _LEDGES.get(grid[n[1]][n[0]]) == (dx, dy):
+                    over = (n[0] + dx, n[1] + dy)   # (a ledge from its high side: hop over it, as the walker does - Lavaridge Gym, 11-24)
+                    if free(room, over) and over not in part["doors"] and (room, over) not in prev:
+                        prev[(room, over)] = (cur, None)
+                        q.append((room, over))
                     continue
                 if n not in part["exits"] and n not in part["doors"] and free(room, n):
                     if grid[n[1]][n[0]] in "3456":   # (a spin tile: it carries you its way till something stops you, or a stop tile does)
