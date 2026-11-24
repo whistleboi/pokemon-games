@@ -650,7 +650,7 @@ class TownStory:
                   "then Route 22 to Viridian City. Go now, or whenever you like!"],
     }
 
-    # Both titles: Professor Ivy invites the Champion of Kanto and Johto to the Orange Islands.
+    # The Kanto title: Professor Ivy invites the new Champion to the Orange Islands (the blimp needs only beat_champion).
     ORANGE_INVITE = ["...A letter has arrived from Professor Ivy of Valencia Island!",
                      "\"Kanto's new Champion! The Orange Islands have their own League, the Orange Crew.",
                      "If you'd like to start a new journey, I'll have a partner waiting for you.\"",
