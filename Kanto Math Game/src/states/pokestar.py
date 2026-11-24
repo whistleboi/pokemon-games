@@ -168,6 +168,8 @@ class MovieState(GameState):
         gain = {"good": 2, "odd": 1, "bad": 0}[self.ending]
         story.story_flags["pokestar_rank"] = min(STAR_MAX, before + gain)
         story.story_flags["pokestar_films"] = int(story.story_flags.get("pokestar_films", 0) or 0) + 1
+        from src.world import feats as _feats
+        _feats.note(story, "films")   # (a Feat: movies shot at Pokestar Studios)
         if self.ending == "good":
             story.story_flags["pokestar_happy_" + self.script["key"]] = True
             self.gift = FAN_GIFTS[min(len(FAN_GIFTS) - 1, rank(story) // 2)]

@@ -419,6 +419,96 @@ jm = [m["id"] for m in g.loader.area_data["JOURNAL_MISSIONS"] if m["id"].startsw
 check(jm.index("orre_m16") < jm.index("orre_m17") < jm.index("orre_m17b") < jm.index("orre_m17c") < jm.index("orre_m18"),
       "the Orre Colosseum, the Key Lair's door, the System Lever, Gorigan, then Realgam")
 
+
+# ---- R2 (11-23): the tournaments on their walked arenas (src/world/orre_tournament.py; orre_story.py _tournament) ----
+from src.pokemon.data import Pokemon as _TP
+from src.world import levels as _tlv, orre_tournament as _ot
+
+
+def _team(lv, ids=(248, 6, 9)):
+    out = []
+    for pid in ids:
+        p = _TP(g.loader.fetch_specific(pid), g.assets, size_mult=2.5)
+        _tlv.set_team([p], [lv], exact=True)
+        p.heal_full()
+        out.append(p)
+    story.player_team = out
+
+
+def _drive(n=10, mg=None):
+    """Play on; a minigame is won or lost as mg says (a list, first to last; then won)."""
+    for _ in range(n):
+        play(4000)
+        st = g.current_state
+        if hasattr(st, "on_done") and not hasattr(st, "math_ui"):
+            st.on_done(mg.pop(0) if mg else True)
+
+
+def _lobby(area):
+    lob, desk, arena = _TOURS[area][:3]
+    t = town(area, "OUTSKIRT_STAND")
+    if lob:
+        door = next(tuple(int(v) for v in k.split(",")) for k, r in (story_map_of(area).get("inside") or {}).items() if r == lob)
+        t._go(lob, "OUT:%d,%d" % door)
+    else:
+        pass
+    frames(2)
+    return g.current_state
+
+
+def story_map_of(area):
+    return _json.load(open("assets/town_maps.json", encoding="utf-8"))[area]
+
+
+_TOURS = {"PYRITE_TOWN": ("gym", (7, 5), "arena"), "UNDER_COLOSSEUM": (None, (10, 4), "gym"),
+          "PHENAC_CITY": ("gym", (7, 5), "arena"), "ORRE_COLOSSEUM": ("gym", (7, 5), "arena")}
+
+print("R2) Every tournament walked: the desk takes you in, round 1 walks in; a loss heals you and starts it over")
+_keep = (list(story.player_team), dict(F), {k_: list(v_) for k_, v_ in story.badges.items()})
+for area in ("PYRITE_TOWN", "UNDER_COLOSSEUM", "PHENAC_CITY", "ORRE_COLOSSEUM"):
+    gym = SP[area]["gym"]
+    F.update({gym["requirements"]["flag"]: True})
+    story.badges["ORRE"] = ["PYRITE", "UNDER", "PHENAC", "ORRE"][:int(gym["requirements"].get("badges", 0))]
+    for k_ in [k_ for k_ in F if k_.startswith((f"gym_progress_{area}", "orre_tourney"))]:
+        F.pop(k_, None)
+    w = _TP(g.loader.fetch_specific(129), g.assets, size_mult=2.5)
+    _tlv.set_team([w], [2], exact=True); w.heal_full(); w.moves = ["SPLASH"]
+    story.player_team = [w]
+    t = _lobby(area)
+    said.clear()
+    meet(t, "Receptionist")
+    _drive(3)
+    st = g.current_state
+    lob = _TOURS[area][0]
+    check(any("Round 1!" in s_ for s_ in said) and any("Bad luck!" in s_ for s_ in said),
+          f"{area}: signed up, round 1 walked in; lost, the receptionist sends you back ({[s_ for s_ in said if 'Round' in s_ or 'Bad luck' in s_][:2]})")
+    check(not F.get(f"orre_tourney_{area}") and F.get(f"gym_progress_{area}", 0) == 0 and story.player_team[0].current_hp > 0,
+          f"{area}: healed, and the tournament starts over")
+    if lob:
+        check(getattr(st, "room", None) == lob, f"{area}: back in the lobby ({getattr(st, 'room', None)})")
+story.player_team, _f, story.badges = _keep[0], _keep[1], _keep[2]
+F.clear(); F.update(_f)
+_tm = story_map_of("ORRE_COLOSSEUM")
+check(_tm["rooms"]["gym"]["roofs"]["_picture"]["f"].endswith("103_sand.png") and story_map_of("PHENAC_CITY")["rooms"]["gym"]["roofs"]["_picture"]["f"].endswith("103_blue.png"),
+      "the Orre Colosseum's lobby in sand, Phenac Stadium's in blue (Jordan's OK)")
+_rg = story_map_of("REALGAM_TOWER")["rooms"]["colosseum"]
+_ppl = [p_ for p_ in _rg["people"] if isinstance(p_, dict)]
+check(any(p_.get("text") == "Realgam Colosseum desk" and "xd_colosseum" in p_["event"] for p_ in _ppl)
+      and any((p_.get("event") or {}).get("referee") and (p_.get("event") or {}).get("signup") for p_ in _ppl),
+      "Realgam's tower top: XD's Realgam Colosseum desk (its own flag) and the host who starts Evice's run")
+_rr = _rg["people"]
+_xd = next(p_ for p_ in _ppl if p_.get("text") == "Realgam Colosseum desk")["event"]["xd_colosseum"]
+check(len(_xd["rounds"]) == 4 and all(len(r_) == 4 for r_ in _xd["rounds"]) and max(max(b_["levels"]) for r_ in _xd["rounds"] for b_ in r_) == 40,
+      "XD's Realgam Colosseum: four rounds of four, Lv 40 as the disc")
+import os as _os
+check(_os.path.isfile("assets/battle_bg/ORRE/index.json") and _os.path.isfile("assets/battle_bg/ORRE/pyritecol.png"),
+      "Orre's battle backgrounds from its source game (assets/battle_bg/ORRE)")
+from src.world import battle_bg as _bb
+story.current_area_key = "PYRITE_TOWN"
+check(str(_bb.pick(g, "PYRITE_TOWN", trainer=True, gym=True) or "").endswith("pyritecol.png")
+      and str(_bb.pick(g, "OUTSKIRT_STAND", trainer=True) or "").replace("_eve", "").replace("_night", "").endswith("sand.png"),
+      "a tournament battle in Pyrite: the Colosseum's own background; out in the desert: the sand")
+
 print("FAILURES:", len(fails))
 for f_ in fails:
     print("  ", f_)

@@ -369,6 +369,35 @@ jm = [m["id"] for m in g.loader.area_data["JOURNAL_MISSIONS"] if m["id"].startsw
 check(jm.index("orre_m7c") < jm.index("orre_m8") < jm.index("orre_m8b") < jm.index("orre_m8c") < jm.index("orre_m8d") < jm.index("orre_m9"),
       "the steps in order: Elevator Key, the Under, Silva, Venus, after Venus, Under Colosseum")
 
+print("7) R1 (11-23): the walked way into the Lab - the Far Station's stairs")
+_saved = {k: F.get(k) for k in ("orre_subway_bomb", "cleared_the_under", "orre_venus_station")}
+_badges = list(story.badges.get("ORRE", []))
+F.update({"orre_subway_bomb": True, "cleared_the_under": True, "orre_venus_station": True})
+story.badges["ORRE"] = [b_ for b_ in _badges if b_ != "UNDER"]
+p = route("THE_UNDER", "PYRITE_BUILDING", floor=12)
+check("SHADOW_PKMN_LAB" in p.run.floor.exits.values(), "the Far Station has a way out to the Lab")
+_said = []
+p.say = lambda lines, *a, **k: _said.extend(lines if isinstance(lines, list) else [lines])
+p._try_exit("SHADOW_PKMN_LAB"); frames(3)
+check(getattr(g.current_state, "area_key", None) == "THE_UNDER" and any("Under Badge" in s_ for s_ in _said),
+      f"the stairs wait for the Under Badge ({_said[:1]})")
+story.badges["ORRE"] = _badges + ([] if "UNDER" in _badges else ["UNDER"])
+p = route("THE_UNDER", "PYRITE_BUILDING", floor=12)
+p._try_exit("SHADOW_PKMN_LAB")
+for _ in range(400):
+    st = g.current_state
+    if getattr(st, "area_key", None) == "SHADOW_PKMN_LAB" and hasattr(st, "run"):
+        break
+    st.update(); st.draw()
+st = g.current_state
+lab_exit = [xy for xy, v in st.run.floor.exits.items() if v == "THE_UNDER"] if hasattr(st, "run") else []
+check(getattr(st, "area_key", None) == "SHADOW_PKMN_LAB" and st.run.index == 0 and lab_exit
+      and abs(st.run.player[0] - lab_exit[0][0]) + abs(st.run.player[1] - lab_exit[0][1]) <= 1,
+      "up the stairs: the Lab's yard, beside the way back")
+p = route("THE_UNDER", "SHADOW_PKMN_LAB")
+check(p.run.index == 12, "and back down: the Far Station")
+F.update(_saved)
+
 print("FAILURES:", len(fails))
 for f_ in fails:
     print("  ", f_)

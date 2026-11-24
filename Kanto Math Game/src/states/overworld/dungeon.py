@@ -901,6 +901,8 @@ class DungeonState(RouteLive, OverworldBattles, PlayState):
             self.recipe = dict(self.recipe, fog=story.inventory.get("HM_DEFOG", 0) <= 0)
         if (self.recipe.get("art") or {}).get("fog_floors") is not None:   # (fog on some floors only: the map's "fog_floors")
             self.recipe = dict(self.recipe, fog_floors=list(self.recipe["art"]["fog_floors"]))
+        if (self.recipe.get("art") or {}).get("fog_box"):   # (fog on part of a map only: "fog_box" [[x0, y0, x1, y1], ...])
+            self.recipe = dict(self.recipe, fog_box=[list(b) for b in self.recipe["art"]["fog_box"]])
         game.dungeon_state = self
 
         self.exit_items = {}  # target area -> its route_menu entry (for the sign's name and its locks)

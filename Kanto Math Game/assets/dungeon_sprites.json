@@ -145,6 +145,755 @@
     "MT_SILVER:TM116": {
       "item": "POKE_BALL"
     },
+    "NIMBASA_CITY:Lady Colette": {"sheet": "b2_c303.png"},
+    "ANVILLE_TOWN:Boy": {"sheet": "b2_c29.png"},
+    "ANVILLE_TOWN:Boy by the fence": {"sheet": "b2_c28.png"},
+    "ANVILLE_TOWN:Collector": {"sheet": "b2_c27.png"},
+    "ANVILLE_TOWN:Depot Agent": {"sheet": "b2_c68.png"},
+    "ANVILLE_TOWN:Depot Agent on the bridge": {"sheet": "b2_c68.png"},
+    "ANVILLE_TOWN:Flautist": {"sheet": "b2_c16.png"},
+    "ANVILLE_TOWN:Girl": {"sheet": "b2_c52.png"},
+    "ANVILLE_TOWN:Girl on the platform": {"sheet": "b2_c155.png"},
+    "ANVILLE_TOWN:Hiker": {"sheet": "b2_c64.png"},
+    "ANVILLE_TOWN:Lady by the tracks": {"sheet": "b2_c20.png"},
+    "ANVILLE_TOWN:Little boy": {"sheet": "b2_c48.png"},
+    "ANVILLE_TOWN:Man": {"sheet": "b2_c31.png"},
+    "ANVILLE_TOWN:Man at the table": {"sheet": "b2_c317.png"},
+    "ANVILLE_TOWN:Man by the shelf": {"sheet": "b2_c25.png"},
+    "ANVILLE_TOWN:Man with a camera": {"sheet": "b2_c21.png"},
+    "ANVILLE_TOWN:Nursery Aide": {"sheet": "b2_c23.png"},
+    "ANVILLE_TOWN:Old man": {"sheet": "b2_c8.png"},
+    "ANVILLE_TOWN:Pansage": {"sheet": "b2_c309.png"},
+    "ANVILLE_TOWN:Rich Boy": {"sheet": "b2_c13.png"},
+    "ANVILLE_TOWN:Traveller with a pack": {"sheet": "b2_c12.png"},
+    "ANVILLE_TOWN:Woman": {"sheet": "b2_c22.png"},
+    "ANVILLE_TOWN:Woman by the window": {"sheet": "b2_c15.png"},
+    "ANVILLE_TOWN:Worker on the bridge": {"sheet": "b2_c149.png"},
+    "ASPERTIA_CITY:Bianca": {"sheet": "b2_bianca.png"},
+    "ASPERTIA_CITY:Boy at the school door": {"sheet": "b2_c11.png"},
+    "ASPERTIA_CITY:Boy by the Outlook road": {"sheet": "b2_c14.png"},
+    "ASPERTIA_CITY:Boy by the bed": {"sheet": "b2_c10.png"},
+    "ASPERTIA_CITY:Boy on the east side": {"sheet": "b2_c24.png"},
+    "ASPERTIA_CITY:Boy upstairs": {"sheet": "b2_c8.png"},
+    "ASPERTIA_CITY:Cheren": {"sheet": "b2_cheren.png"},
+    "ASPERTIA_CITY:Clerk": {"sheet": "b2_c81.png"},
+    "ASPERTIA_CITY:Clyde": {"sheet": "b2_c187.png"},
+    "ASPERTIA_CITY:Gate guard": {"sheet": "b2_c76.png"},
+    "ASPERTIA_CITY:Girl by the hedges": {"sheet": "b2_c28.png"},
+    "ASPERTIA_CITY:Girl by the house": {"sheet": "b2_c20.png"},
+    "ASPERTIA_CITY:Girl by the window": {"sheet": "b2_c16.png"},
+    "ASPERTIA_CITY:Girl in the gate": {"sheet": "b2_c18.png"},
+    "ASPERTIA_CITY:Girl on the east side": {"sheet": "b2_c15.png"},
+    "ASPERTIA_CITY:Girl upstairs": {"sheet": "b2_c22.png"},
+    "ASPERTIA_CITY:Girl with a Lillipup": {"sheet": "b2_c15.png"},
+    "ASPERTIA_CITY:Girl with a Lillipup ": {"sheet": "b2_c15.png"},
+    "ASPERTIA_CITY:Gym": {"sheet": "b2_cheren.png"},
+    "ASPERTIA_CITY:Lass Serena": {"sheet": "b2_c15.png"},
+    "ASPERTIA_CITY:Lillipup": {"sheet": "b2_c306.png"},
+    "ASPERTIA_CITY:Man by the counter": {"sheet": "b2_c25.png"},
+    "ASPERTIA_CITY:Man in Hugh's house": {"sheet": "b2_c46.png"},
+    "ASPERTIA_CITY:Mom": {"sheet": "b2_mom.png"},
+    "ASPERTIA_CITY:Mom ": {"sheet": "b2_mom.png"},
+    "ASPERTIA_CITY:Mr. Medal  ": {"sheet": "b2_c360.png"},
+    "ASPERTIA_CITY:Old man": {"sheet": "b2_c28.png"},
+    "ASPERTIA_CITY:Old woman": {"sheet": "b2_c29.png"},
+    "ASPERTIA_CITY:Poke Ball by the pond": {"sheet": "b2_item_ball.png"},
+    "ASPERTIA_CITY:Pok\u00e9mon Center": {"sheet": "b2_c78.png"},
+    "ASPERTIA_CITY:Purrloin": {"sheet": "b2_c308.png"},
+    "ASPERTIA_CITY:Shop": {"sheet": "b2_c82.png"},
+    "ASPERTIA_CITY:Student": {"sheet": "b2_c11.png"},
+    "ASPERTIA_CITY:Student at the back": {"sheet": "b2_c11.png"},
+    "ASPERTIA_CITY:Student by the desks": {"sheet": "b2_c12.png"},
+    "ASPERTIA_CITY:Teacher": {"sheet": "b2_c22.png"},
+    "ASPERTIA_CITY:Trainer by the door": {"sheet": "b2_c77.png"},
+    "ASPERTIA_CITY:Woman at the PC counter": {"sheet": "b2_c79.png"},
+    "ASPERTIA_CITY:Woman by the PC": {"sheet": "b2_c21.png"},
+    "ASPERTIA_CITY:Woman by the west road": {"sheet": "b2_c21.png"},
+    "ASPERTIA_CITY:Woman by the window": {"sheet": "b2_c21.png"},
+    "ASPERTIA_CITY:Woman upstairs": {"sheet": "b2_c23.png"},
+    "ASPERTIA_CITY:Youngster Pedro": {"sheet": "b2_c11.png"},
+    "ASPERTIA_CITY:{rival_name}'s mom": {"sheet": "b2_c23.png"},
+    "ASPERTIA_CITY:{rival_name}'s sister": {"sheet": "b2_c9.png"},
+    "CASTELIA_CITY:Ace Trainer by the window": {"sheet": "b2_c31.png"},
+    "CASTELIA_CITY:Ace Trainer by the window ": {"sheet": "b2_c31.png"},
+    "CASTELIA_CITY:Ace Trainer by the window  ": {"sheet": "b2_c31.png"},
+    "CASTELIA_CITY:Ace Trainer by the window   ": {"sheet": "b2_c31.png"},
+    "CASTELIA_CITY:Amanita": {"sheet": "b2_c16.png"},
+    "CASTELIA_CITY:Art lover": {"sheet": "b2_c18.png"},
+    "CASTELIA_CITY:Audino": {"sheet": "b2_c312.png"},
+    "CASTELIA_CITY:Badge expert": {"sheet": "b2_c64.png"},
+    "CASTELIA_CITY:Battle Company clerk": {"sheet": "b2_c52.png"},
+    "CASTELIA_CITY:Boy": {"sheet": "b2_c19.png"},
+    "CASTELIA_CITY:Boy by the window": {"sheet": "b2_c12.png"},
+    "CASTELIA_CITY:Boy in the line": {"sheet": "b2_c53.png"},
+    "CASTELIA_CITY:Boy on the pier": {"sheet": "b2_c11.png"},
+    "CASTELIA_CITY:Boy with a Roggenrola": {"sheet": "b2_c11.png"},
+    "CASTELIA_CITY:Boy with questions": {"sheet": "b2_c77.png"},
+    "CASTELIA_CITY:Burgh": {"sheet": "b2_c225.png"},
+    "CASTELIA_CITY:Cafe manager": {"sheet": "b2_c42.png"},
+    "CASTELIA_CITY:Casteliacone seller": {"sheet": "b2_c43.png"},
+    "CASTELIA_CITY:Clerk ": {"sheet": "b2_c82.png"},
+    "CASTELIA_CITY:Clerk  ": {"sheet": "b2_c81.png"},
+    "CASTELIA_CITY:Clerk 47F": {"sheet": "b2_c52.png"},
+    "CASTELIA_CITY:Clerk 47F ": {"sheet": "b2_c53.png"},
+    "CASTELIA_CITY:Clerk Britney": {"sheet": "b2_c53.png"},
+    "CASTELIA_CITY:Clerk Clemens": {"sheet": "b2_c52.png"},
+    "CASTELIA_CITY:Clerk Gilligan": {"sheet": "b2_c52.png"},
+    "CASTELIA_CITY:Clerk Warren": {"sheet": "b2_c52.png"},
+    "CASTELIA_CITY:Clerk by the bay": {"sheet": "b2_c52.png"},
+    "CASTELIA_CITY:Clerk by the desk": {"sheet": "b2_c52.png"},
+    "CASTELIA_CITY:Clerk by the desk ": {"sheet": "b2_c52.png"},
+    "CASTELIA_CITY:Clerk by the lift": {"sheet": "b2_c45.png"},
+    "CASTELIA_CITY:Clerk by the railing": {"sheet": "b2_c53.png"},
+    "CASTELIA_CITY:Clerk by the window": {"sheet": "b2_c52.png"},
+    "CASTELIA_CITY:Clerk going home": {"sheet": "b2_c52.png"},
+    "CASTELIA_CITY:Clerk in the cafe": {"sheet": "b2_c52.png"},
+    "CASTELIA_CITY:Clerk in the line": {"sheet": "b2_c52.png"},
+    "CASTELIA_CITY:Clerk looking out to sea": {"sheet": "b2_c52.png"},
+    "CASTELIA_CITY:Clerk on Gym Street": {"sheet": "b2_c52.png"},
+    "CASTELIA_CITY:Clerk on her break": {"sheet": "b2_c53.png"},
+    "CASTELIA_CITY:Clerk on the corner": {"sheet": "b2_c52.png"},
+    "CASTELIA_CITY:Clerk thinking": {"sheet": "b2_c53.png"},
+    "CASTELIA_CITY:Clerk with a coffee": {"sheet": "b2_c53.png"},
+    "CASTELIA_CITY:Clyde": {"sheet": "b2_c187.png"},
+    "CASTELIA_CITY:Colress": {"sheet": "b2_c250.png"},
+    "CASTELIA_CITY:Curator": {"sheet": "b2_c45.png"},
+    "CASTELIA_CITY:Curious man": {"sheet": "b2_c20.png"},
+    "CASTELIA_CITY:Dancer": {"sheet": "b2_c61.png"},
+    "CASTELIA_CITY:Dancer ": {"sheet": "b2_c61.png"},
+    "CASTELIA_CITY:Dancer at the party": {"sheet": "b2_c55.png"},
+    "CASTELIA_CITY:Developer": {"sheet": "b2_c73.png"},
+    "CASTELIA_CITY:Feeling Reader": {"sheet": "b2_c27.png"},
+    "CASTELIA_CITY:Fennel": {"sheet": "b2_c74.png"},
+    "CASTELIA_CITY:Fennel's assistant": {"sheet": "b2_c53.png"},
+    "CASTELIA_CITY:Game Director": {"sheet": "b2_c73.png"},
+    "CASTELIA_CITY:Gate guard": {"sheet": "b2_c76.png"},
+    "CASTELIA_CITY:Gate receptionist": {"sheet": "b2_c76.png"},
+    "CASTELIA_CITY:Gesundheit": {"sheet": "b2_c309.png"},
+    "CASTELIA_CITY:Girl": {"sheet": "b2_c31.png"},
+    "CASTELIA_CITY:Girl at the party": {"sheet": "b2_c16.png"},
+    "CASTELIA_CITY:Girl by the Patrat": {"sheet": "b2_c21.png"},
+    "CASTELIA_CITY:Girl by the lift": {"sheet": "b2_c13.png"},
+    "CASTELIA_CITY:Girl in the line": {"sheet": "b2_c31.png"},
+    "CASTELIA_CITY:Girl on the pier": {"sheet": "b2_c17.png"},
+    "CASTELIA_CITY:Girl with Potions": {"sheet": "b2_c31.png"},
+    "CASTELIA_CITY:Graphic Designer": {"sheet": "b2_c19.png"},
+    "CASTELIA_CITY:Guard": {"sheet": "b2_c72.png"},
+    "CASTELIA_CITY:Guest": {"sheet": "b2_c20.png"},
+    "CASTELIA_CITY:Guest ": {"sheet": "b2_c25.png"},
+    "CASTELIA_CITY:Guest  ": {"sheet": "b2_c37.png"},
+    "CASTELIA_CITY:Guest   ": {"sheet": "b2_c47.png"},
+    "CASTELIA_CITY:Guest    ": {"sheet": "b2_c13.png"},
+    "CASTELIA_CITY:Guest     ": {"sheet": "b2_c36.png"},
+    "CASTELIA_CITY:Guest      ": {"sheet": "b2_c31.png"},
+    "CASTELIA_CITY:Guitarist": {"sheet": "b2_c296.png"},
+    "CASTELIA_CITY:Guitarist in the cafe": {"sheet": "b2_c152.png"},
+    "CASTELIA_CITY:Gym": {"sheet": "b2_c225.png"},
+    "CASTELIA_CITY:Harlequin": {"sheet": "b2_c54.png"},
+    "CASTELIA_CITY:Harlequin ": {"sheet": "b2_c54.png"},
+    "CASTELIA_CITY:Harlequin  ": {"sheet": "b2_c54.png"},
+    "CASTELIA_CITY:Harlequin Anders": {"sheet": "b2_c54.png"},
+    "CASTELIA_CITY:Harlequin Clarence": {"sheet": "b2_c54.png"},
+    "CASTELIA_CITY:Harlequin Gary": {"sheet": "b2_c54.png"},
+    "CASTELIA_CITY:Harlequin at the desks": {"sheet": "b2_c54.png"},
+    "CASTELIA_CITY:Harlequin at the desks ": {"sheet": "b2_c54.png"},
+    "CASTELIA_CITY:Harlequin in the Medal Office": {"sheet": "b2_c54.png"},
+    "CASTELIA_CITY:Harlequin in the Medal Office ": {"sheet": "b2_c54.png"},
+    "CASTELIA_CITY:Harlequin in the gate": {"sheet": "b2_c54.png"},
+    "CASTELIA_CITY:Harlequin in the gate ": {"sheet": "b2_c54.png"},
+    "CASTELIA_CITY:Harlequin in the lobby": {"sheet": "b2_c54.png"},
+    "CASTELIA_CITY:Harlequin in the lobby ": {"sheet": "b2_c54.png"},
+    "CASTELIA_CITY:Hiker by the window": {"sheet": "b2_c64.png"},
+    "CASTELIA_CITY:Hiker in the line": {"sheet": "b2_c64.png"},
+    "CASTELIA_CITY:His Pokemon": {"sheet": "b2_c130.png"},
+    "CASTELIA_CITY:Iris": {"sheet": "b2_c355.png"},
+    "CASTELIA_CITY:Iris ": {"sheet": "b2_c355.png"},
+    "CASTELIA_CITY:Janitor": {"sheet": "b2_c69.png"},
+    "CASTELIA_CITY:Laughing man": {"sheet": "b2_c64.png"},
+    "CASTELIA_CITY:Liberty Garden sailor": {"sheet": "b2_c71.png"},
+    "CASTELIA_CITY:Lift guard": {"sheet": "b2_c83.png"},
+    "CASTELIA_CITY:Man by the door": {"sheet": "b2_c28.png"},
+    "CASTELIA_CITY:Man by the dumpsters": {"sheet": "b2_c83.png"},
+    "CASTELIA_CITY:Man by the lift": {"sheet": "b2_c83.png"},
+    "CASTELIA_CITY:Man by the rail": {"sheet": "b2_c21.png"},
+    "CASTELIA_CITY:Man by the stairs": {"sheet": "b2_c21.png"},
+    "CASTELIA_CITY:Man by the steps": {"sheet": "b2_c52.png"},
+    "CASTELIA_CITY:Man on the pier": {"sheet": "b2_c61.png"},
+    "CASTELIA_CITY:Man on the street": {"sheet": "b2_c31.png"},
+    "CASTELIA_CITY:Man on the street ": {"sheet": "b2_c31.png"},
+    "CASTELIA_CITY:Man scared of heights": {"sheet": "b2_c25.png"},
+    "CASTELIA_CITY:Medal Rally boy": {"sheet": "b2_c12.png"},
+    "CASTELIA_CITY:Medal fan": {"sheet": "b2_c53.png"},
+    "CASTELIA_CITY:Medal fan ": {"sheet": "b2_c69.png"},
+    "CASTELIA_CITY:Medal fan  ": {"sheet": "b2_c44.png"},
+    "CASTELIA_CITY:Morimoto": {"sheet": "b2_c18.png"},
+    "CASTELIA_CITY:Mr. Medal": {"sheet": "b2_c360.png"},
+    "CASTELIA_CITY:Mr. Medal ": {"sheet": "b2_c360.png"},
+    "CASTELIA_CITY:Name Rater": {"sheet": "b2_c28.png"},
+    "CASTELIA_CITY:Nishino": {"sheet": "b2_c25.png"},
+    "CASTELIA_CITY:Nurse by the PC": {"sheet": "b2_c60.png"},
+    "CASTELIA_CITY:Old man": {"sheet": "b2_c28.png"},
+    "CASTELIA_CITY:Old man by the fountain": {"sheet": "b2_c28.png"},
+    "CASTELIA_CITY:Old man on the pier": {"sheet": "b2_c32.png"},
+    "CASTELIA_CITY:Painter": {"sheet": "b2_c83.png"},
+    "CASTELIA_CITY:Party host": {"sheet": "b2_c44.png"},
+    "CASTELIA_CITY:Passerby Analytics leader": {"sheet": "b2_c73.png"},
+    "CASTELIA_CITY:Patrat": {"sheet": "b2_c128.png"},
+    "CASTELIA_CITY:Planner": {"sheet": "b2_c22.png"},
+    "CASTELIA_CITY:Poke Ball at the pier's end": {"sheet": "b2_item_ball.png"},
+    "CASTELIA_CITY:Poke Ball by the desks": {"sheet": "b2_item_ball.png"},
+    "CASTELIA_CITY:Poke Ball by the server": {"sheet": "b2_item_ball.png"},
+    "CASTELIA_CITY:Poke Ball by the window": {"sheet": "b2_item_ball.png"},
+    "CASTELIA_CITY:Poke Ball in the corner": {"sheet": "b2_item_ball.png"},
+    "CASTELIA_CITY:Pokemon": {"sheet": "b2_c307.png"},
+    "CASTELIA_CITY:Pokemon ": {"sheet": "b2_c305.png"},
+    "CASTELIA_CITY:Pokemon  ": {"sheet": "b2_c307.png"},
+    "CASTELIA_CITY:Pokemon fanatic": {"sheet": "b2_c73.png"},
+    "CASTELIA_CITY:Pokemon groomer": {"sheet": "b2_c64.png"},
+    "CASTELIA_CITY:Pok\u00e9mon Center": {"sheet": "b2_c78.png"},
+    "CASTELIA_CITY:Pop Roxie": {"sheet": "b2_c359.png"},
+    "CASTELIA_CITY:Pop Roxie ": {"sheet": "b2_c359.png"},
+    "CASTELIA_CITY:President": {"sheet": "b2_c69.png"},
+    "CASTELIA_CITY:Programmer": {"sheet": "b2_c73.png"},
+    "CASTELIA_CITY:Receptionist": {"sheet": "b2_c76.png"},
+    "CASTELIA_CITY:Receptionist ": {"sheet": "b2_c20.png"},
+    "CASTELIA_CITY:Receptionist  ": {"sheet": "b2_c76.png"},
+    "CASTELIA_CITY:Receptionist   ": {"sheet": "b2_c76.png"},
+    "CASTELIA_CITY:Regular": {"sheet": "b2_c83.png"},
+    "CASTELIA_CITY:Roggenrola": {"sheet": "b2_c325.png"},
+    "CASTELIA_CITY:Royal Unova attendant": {"sheet": "b2_c76.png"},
+    "CASTELIA_CITY:Sewer worker": {"sheet": "b2_c67.png"},
+    "CASTELIA_CITY:Ship attendant": {"sheet": "b2_c76.png"},
+    "CASTELIA_CITY:Shop": {"sheet": "b2_c79.png"},
+    "CASTELIA_CITY:Sound Designer": {"sheet": "b2_c18.png"},
+    "CASTELIA_CITY:Staff": {"sheet": "b2_c19.png"},
+    "CASTELIA_CITY:Staff ": {"sheet": "b2_c21.png"},
+    "CASTELIA_CITY:Statistician": {"sheet": "b2_c22.png"},
+    "CASTELIA_CITY:Statistician ": {"sheet": "b2_c19.png"},
+    "CASTELIA_CITY:Statistician  ": {"sheet": "b2_c11.png"},
+    "CASTELIA_CITY:Statistician   ": {"sheet": "b2_c17.png"},
+    "CASTELIA_CITY:Tired clerk": {"sheet": "b2_c53.png"},
+    "CASTELIA_CITY:Tired traveller": {"sheet": "b2_c22.png"},
+    "CASTELIA_CITY:Trainer by the Gym": {"sheet": "b2_c32.png"},
+    "CASTELIA_CITY:Visitor": {"sheet": "b2_c52.png"},
+    "CASTELIA_CITY:Woman at the party": {"sheet": "b2_c22.png"},
+    "CASTELIA_CITY:Woman at the party ": {"sheet": "b2_c22.png"},
+    "CASTELIA_CITY:Woman by the desk": {"sheet": "b2_c23.png"},
+    "CASTELIA_CITY:Woman by the door": {"sheet": "b2_c77.png"},
+    "CASTELIA_CITY:Woman by the gate": {"sheet": "b2_c52.png"},
+    "CASTELIA_CITY:Woman by the water": {"sheet": "b2_c44.png"},
+    "CASTELIA_CITY:Woman by the window ": {"sheet": "b2_c314.png"},
+    "CASTELIA_CITY:Woman in the cafe": {"sheet": "b2_c33.png"},
+    "CASTELIA_CITY:Woman in the gate": {"sheet": "b2_c53.png"},
+    "CASTELIA_CITY:Woman in the lobby": {"sheet": "b2_c53.png"},
+    "CASTELIA_CITY:Woman with a Palpitoad": {"sheet": "b2_c53.png"},
+    "CASTELIA_CITY:Worker by the bridge": {"sheet": "b2_c67.png"},
+    "CASTELIA_EMPTY_LOT:Man in the lot": {"sheet": "b2_c32.png"},
+    "CASTELIA_EMPTY_LOT:Poke Ball in the park": {"sheet": "b2_item_ball.png"},
+    "CASTELIA_SEWERS:Dancer Jean-Paul": {"sheet": "b2_c55.png"},
+    "CASTELIA_SEWERS:Guitarist Tina": {"sheet": "b2_c297.png"},
+    "CASTELIA_SEWERS:Guitarist Tina ": {"sheet": "b2_c297.png"},
+    "CASTELIA_SEWERS:Man in the tunnel": {"sheet": "b2_c52.png"},
+    "CASTELIA_SEWERS:Plasma Grunt": {"sheet": "b2_c293.png"},
+    "CASTELIA_SEWERS:Plasma Grunt ": {"sheet": "b2_c293.png"},
+    "CASTELIA_SEWERS:Poke Ball by the Doctor": {"sheet": "b2_item_ball.png"},
+    "CASTELIA_SEWERS:Poke Ball by the Grunts": {"sheet": "b2_item_ball.png"},
+    "CASTELIA_SEWERS:Poke Ball by the gate": {"sheet": "b2_item_ball.png"},
+    "CASTELIA_SEWERS:Poke Ball by the north stairs": {"sheet": "b2_item_ball.png"},
+    "CASTELIA_SEWERS:Poke Ball by the south-west stairs": {"sheet": "b2_item_ball.png"},
+    "CASTELIA_SEWERS:Poke Ball by the trucks": {"sheet": "b2_item_ball.png"},
+    "CASTELIA_SEWERS:Poke Ball in the far south": {"sheet": "b2_item_ball.png"},
+    "CASTELIA_SEWERS:Poke Ball in the south": {"sheet": "b2_item_ball.png"},
+    "CASTELIA_SEWERS:Poke Ball in the west channel": {"sheet": "b2_item_ball.png"},
+    "CASTELIA_SEWERS:Poke Ball on the island": {"sheet": "b2_item_ball.png"},
+    "CASTELIA_SEWERS:Poke Ball past the Scientist": {"sheet": "b2_item_ball.png"},
+    "CASTELIA_SEWERS:Roughneck Ricky": {"sheet": "b2_c61.png"},
+    "CASTELIA_SEWERS:Scientist": {"sheet": "b2_c73.png"},
+    "CASTELIA_SEWERS:Scientist ": {"sheet": "b2_c74.png"},
+    "CASTELIA_SEWERS:Worker by the channel": {"sheet": "b2_c19.png"},
+    "CASTELIA_SEWERS:Worker by the channel ": {"sheet": "b2_c19.png"},
+    "CASTELIA_SEWERS:{rival_name}": {"sheet": "b2_hugh.png"},
+    "DESERT_RESORT:Backpacker who wants water": {"sheet": "b2_c48.png"},
+    "DESERT_RESORT:Hiker in the dunes": {"sheet": "b2_c46.png"},
+    "DESERT_RESORT:Nurse Mariah": {"sheet": "b2_c51.png"},
+    "DESERT_RESORT:Nurse Mariah ": {"sheet": "b2_c51.png"},
+    "DESERT_RESORT:Poke Ball by the castle": {"sheet": "b2_item_ball.png"},
+    "DESERT_RESORT:Poke Ball by the rocks": {"sheet": "b2_item_ball.png"},
+    "DESERT_RESORT:Poke Ball in the east": {"sheet": "b2_item_ball.png"},
+    "DESERT_RESORT:Poke Ball in the north-west": {"sheet": "b2_item_ball.png"},
+    "DESERT_RESORT:Poke Ball in the sand": {"sheet": "b2_item_ball.png"},
+    "DESERT_RESORT:Poke Ball in the south": {"sheet": "b2_item_ball.png"},
+    "DESERT_RESORT:Poke Ball in the south-west": {"sheet": "b2_item_ball.png"},
+    "DESERT_RESORT:Poke Ball near the nurse": {"sheet": "b2_item_ball.png"},
+    "DESERT_RESORT:Pokemon Ranger in the sand": {"sheet": "b2_c83.png"},
+    "DESERT_RESORT:Treasure hunter": {"sheet": "b2_c36.png"},
+    "DESERT_RESORT_ENTRANCE:Backpacker by the gate": {"sheet": "b2_c12.png"},
+    "DESERT_RESORT_ENTRANCE:Gate guard": {"sheet": "b2_c76.png"},
+    "DESERT_RESORT_ENTRANCE:Hiker by the gate": {"sheet": "b2_c24.png"},
+    "DESERT_RESORT_ENTRANCE:School Kid in the gate": {"sheet": "b2_c12.png"},
+    "FLOCCESY_RANCH:Dunsparce in the grotto": {"pokemon": 206},
+    "FLOCCESY_RANCH:Herdier": {"sheet": "b2_c307.png"},
+    "FLOCCESY_RANCH:Herdier ": {"sheet": "b2_c307.png"},
+    "FLOCCESY_RANCH:Herdier in the grotto": {"pokemon": 507},
+    "FLOCCESY_RANCH:Mareep": {"sheet": "b2_c363.png"},
+    "FLOCCESY_RANCH:Mareep ": {"sheet": "b2_c363.png"},
+    "FLOCCESY_RANCH:Mareep  ": {"sheet": "b2_c363.png"},
+    "FLOCCESY_RANCH:Mareep   ": {"sheet": "b2_c363.png"},
+    "FLOCCESY_RANCH:Mareep    ": {"sheet": "b2_c363.png"},
+    "FLOCCESY_RANCH:Marill in the grotto": {"pokemon": 183},
+    "FLOCCESY_RANCH:Owner's wife": {"sheet": "b2_c35.png"},
+    "FLOCCESY_RANCH:Poke Ball between the pastures": {"sheet": "b2_item_ball.png"},
+    "FLOCCESY_RANCH:Poke Ball in the clearing": {"sheet": "b2_item_ball.png"},
+    "FLOCCESY_RANCH:Poke Ball in the forest": {"sheet": "b2_item_ball.png"},
+    "FLOCCESY_RANCH:Poke Ball south of the youngster": {"sheet": "b2_item_ball.png"},
+    "FLOCCESY_RANCH:Ranch owner": {"sheet": "b2_c34.png"},
+    "FLOCCESY_RANCH:Something in the grass": {"sheet": "b2_none.png"},
+    "FLOCCESY_RANCH:{rival_name}": {"sheet": "b2_hugh.png"},
+    "FLOCCESY_TOWN:Alder": {"sheet": "b2_c97.png"},
+    "FLOCCESY_TOWN:Alder   ": {"sheet": "b2_c97.png"},
+    "FLOCCESY_TOWN:Boy by Alder's house": {"sheet": "b2_c28.png"},
+    "FLOCCESY_TOWN:Boy by the PCs": {"sheet": "b2_c77.png"},
+    "FLOCCESY_TOWN:Boy by the bed": {"sheet": "b2_c25.png"},
+    "FLOCCESY_TOWN:Boy on the path": {"sheet": "b2_c10.png"},
+    "FLOCCESY_TOWN:Cassie": {"sheet": "b2_c16.png"},
+    "FLOCCESY_TOWN:Clerk ": {"sheet": "b2_c82.png"},
+    "FLOCCESY_TOWN:Girl at the PC": {"sheet": "b2_c16.png"},
+    "FLOCCESY_TOWN:Girl by the steps": {"sheet": "b2_c22.png"},
+    "FLOCCESY_TOWN:Lillipup": {"sheet": "b2_c306.png"},
+    "FLOCCESY_TOWN:Man by the clock": {"sheet": "b2_c10.png"},
+    "FLOCCESY_TOWN:Man by the door": {"sheet": "b2_c19.png"},
+    "FLOCCESY_TOWN:Man by the window": {"sheet": "b2_c27.png"},
+    "FLOCCESY_TOWN:Mr. Medal ": {"sheet": "b2_c360.png"},
+    "FLOCCESY_TOWN:Old man": {"sheet": "b2_c8.png"},
+    "FLOCCESY_TOWN:Patrat": {"sheet": "b2_c128.png"},
+    "FLOCCESY_TOWN:Patrat's owner": {"sheet": "b2_c28.png"},
+    "FLOCCESY_TOWN:Poke Ball west of Alder's house": {"sheet": "b2_item_ball.png"},
+    "FLOCCESY_TOWN:Pok\u00e9mon Center": {"sheet": "b2_c78.png"},
+    "FLOCCESY_TOWN:Seymour": {"sheet": "b2_c12.png"},
+    "FLOCCESY_TOWN:Shop": {"sheet": "b2_c79.png"},
+    "FLOCCESY_TOWN:Woman by the Center": {"sheet": "b2_c14.png"},
+    "FLOCCESY_TOWN:Woman by the counter": {"sheet": "b2_c77.png"},
+    "FLOCCESY_TOWN:Woman by the table": {"sheet": "b2_c23.png"},
+    "FLOCCESY_TOWN:Woman by the tower": {"sheet": "b2_c24.png"},
+    "JOIN_AVENUE:Assistant Future": {"sheet": "b2_c53.png"},
+    "JOIN_AVENUE:Assistant Future ": {"sheet": "b2_c53.png"},
+    "JOIN_AVENUE:Assistant Jacci": {"sheet": "b2_c53.png"},
+    "JOIN_AVENUE:Assistant Jacci ": {"sheet": "b2_c53.png"},
+    "JOIN_AVENUE:Join Avenue owner": {"sheet": "b2_c52.png"},
+    "JOIN_AVENUE:Owner in the office": {"sheet": "b2_c52.png"},
+    "JOIN_AVENUE:Receptionist": {"sheet": "b2_c76.png"},
+    "JOIN_AVENUE:Shopkeeper on lot 1": {"sheet": "b2_c24.png"},
+    "JOIN_AVENUE:Shopkeeper on lot 2": {"sheet": "b2_c22.png"},
+    "JOIN_AVENUE:Shopkeeper on lot 3": {"sheet": "b2_c33.png"},
+    "JOIN_AVENUE:Shopkeeper on lot 4": {"sheet": "b2_c26.png"},
+    "JOIN_AVENUE:Shopkeeper on lot 5": {"sheet": "b2_c44.png"},
+    "JOIN_AVENUE:Shopkeeper on lot 6": {"sheet": "b2_c96.png"},
+    "JOIN_AVENUE:Shopkeeper on lot 7": {"sheet": "b2_c58.png"},
+    "JOIN_AVENUE:Shopkeeper on lot 8": {"sheet": "b2_c65.png"},
+    "JOIN_AVENUE:Visitor 1 antique": {"sheet": "b2_c44.png"},
+    "JOIN_AVENUE:Visitor 1 cafe": {"sheet": "b2_c65.png"},
+    "JOIN_AVENUE:Visitor 1 dojo": {"sheet": "b2_c46.png"},
+    "JOIN_AVENUE:Visitor 1 florist": {"sheet": "b2_c22.png"},
+    "JOIN_AVENUE:Visitor 1 market": {"sheet": "b2_c52.png"},
+    "JOIN_AVENUE:Visitor 1 nursery": {"sheet": "b2_c33.png"},
+    "JOIN_AVENUE:Visitor 1 raffle": {"sheet": "b2_c58.png"},
+    "JOIN_AVENUE:Visitor 1 salon": {"sheet": "b2_c96.png"},
+    "JOIN_AVENUE:Visitor 2 antique": {"sheet": "b2_c44.png"},
+    "JOIN_AVENUE:Visitor 2 cafe": {"sheet": "b2_c65.png"},
+    "JOIN_AVENUE:Visitor 2 dojo": {"sheet": "b2_c46.png"},
+    "JOIN_AVENUE:Visitor 2 florist": {"sheet": "b2_c22.png"},
+    "JOIN_AVENUE:Visitor 2 market": {"sheet": "b2_c52.png"},
+    "JOIN_AVENUE:Visitor 2 nursery": {"sheet": "b2_c33.png"},
+    "JOIN_AVENUE:Visitor 2 raffle": {"sheet": "b2_c58.png"},
+    "JOIN_AVENUE:Visitor 2 salon": {"sheet": "b2_c96.png"},
+    "JOIN_AVENUE:Visitor 3 antique": {"sheet": "b2_c44.png"},
+    "JOIN_AVENUE:Visitor 3 cafe": {"sheet": "b2_c65.png"},
+    "JOIN_AVENUE:Visitor 3 dojo": {"sheet": "b2_c46.png"},
+    "JOIN_AVENUE:Visitor 3 florist": {"sheet": "b2_c22.png"},
+    "JOIN_AVENUE:Visitor 3 market": {"sheet": "b2_c52.png"},
+    "JOIN_AVENUE:Visitor 3 nursery": {"sheet": "b2_c33.png"},
+    "JOIN_AVENUE:Visitor 3 raffle": {"sheet": "b2_c58.png"},
+    "JOIN_AVENUE:Visitor 3 salon": {"sheet": "b2_c96.png"},
+    "LIBERTY_GARDEN:Boy in the trees": {"sheet": "b2_c72.png"},
+    "LIBERTY_GARDEN:Girl by the dock": {"sheet": "b2_c48.png"},
+    "LIBERTY_GARDEN:Liberty Garden sailor": {"sheet": "b2_c71.png"},
+    "LIBERTY_GARDEN:Man on the path": {"sheet": "b2_c8.png"},
+    "LIBERTY_GARDEN:Man on the south walk": {"sheet": "b2_c83.png"},
+    "LIBERTY_GARDEN:Man on the south walk ": {"sheet": "b2_c83.png"},
+    "LIBERTY_GARDEN:Victini": {"sheet": "b2_victini.png"},
+    "LIBERTY_GARDEN:Woman by the lighthouse": {"sheet": "b2_c29.png"},
+    "LIBERTY_GARDEN:Woman on the east walk": {"sheet": "b2_c22.png"},
+    "LOSTLORN_FOREST:Combee in the grotto": {"pokemon": 415},
+    "LOSTLORN_FOREST:Heracross in the grotto": {"pokemon": 214},
+    "LOSTLORN_FOREST:Leavanny in the grotto": {"pokemon": 542},
+    "LOSTLORN_FOREST:Odd Backpacker": {"sheet": "b2_c48.png"},
+    "LOSTLORN_FOREST:Pinsir in the grotto": {"pokemon": 127},
+    "LOSTLORN_FOREST:Poke Ball by the north stump": {"sheet": "b2_item_ball.png"},
+    "LOSTLORN_FOREST:Poke Ball in the clearing": {"sheet": "b2_item_ball.png"},
+    "LOSTLORN_FOREST:Poke Ball in the dark grass": {"sheet": "b2_c216.png"},
+    "LOSTLORN_FOREST:Poke Ball in the stump": {"sheet": "b2_c210.png"},
+    "LOSTLORN_FOREST:Something in the grass": {"sheet": "b2_none.png"},
+    "NIMBASA_CITY:Ace Trainer": {"sheet": "b2_c30.png"},
+    "NIMBASA_CITY:Ace Trainer upstairs": {"sheet": "b2_c30.png"},
+    "NIMBASA_CITY:Athlete in the plaza": {"sheet": "b2_c59.png"},
+    "NIMBASA_CITY:Audino": {"sheet": "b2_c312.png"},
+    "NIMBASA_CITY:Backpacker in the plaza": {"sheet": "b2_c49.png"},
+    "NIMBASA_CITY:Beauty Ampere": {"sheet": "b2_c303.png"},
+    "NIMBASA_CITY:Beauty December": {"sheet": "b2_c303.png"},
+    "NIMBASA_CITY:Beauty Fleming": {"sheet": "b2_c303.png"},
+    "NIMBASA_CITY:Beauty Nikola": {"sheet": "b2_c303.png"},
+    "NIMBASA_CITY:Boy by the bench": {"sheet": "b2_c8.png"},
+    "NIMBASA_CITY:Boy by the cars": {"sheet": "b2_c11.png"},
+    "NIMBASA_CITY:Boy by the rides": {"sheet": "b2_c14.png"},
+    "NIMBASA_CITY:Boy by the sofa": {"sheet": "b2_c70.png"},
+    "NIMBASA_CITY:Boy in the lobby": {"sheet": "b2_c30.png"},
+    "NIMBASA_CITY:Boy in the plaza": {"sheet": "b2_c9.png"},
+    "NIMBASA_CITY:Boy in the stands": {"sheet": "b2_c11.png"},
+    "NIMBASA_CITY:Boy on a date": {"sheet": "b2_c56.png"},
+    "NIMBASA_CITY:Cheerer": {"sheet": "b2_c55.png"},
+    "NIMBASA_CITY:Clerk ": {"sheet": "b2_c82.png"},
+    "NIMBASA_CITY:Clerk  ": {"sheet": "b2_c81.png"},
+    "NIMBASA_CITY:Clerk Augustin": {"sheet": "b2_c52.png"},
+    "NIMBASA_CITY:Clerk Trisha": {"sheet": "b2_c53.png"},
+    "NIMBASA_CITY:Clown": {"sheet": "b2_c314.png"},
+    "NIMBASA_CITY:Dancer Dirk": {"sheet": "b2_c55.png"},
+    "NIMBASA_CITY:Depot Agent": {"sheet": "b2_c68.png"},
+    "NIMBASA_CITY:Depot Agent ": {"sheet": "b2_c68.png"},
+    "NIMBASA_CITY:Depot Agent by the stairs": {"sheet": "b2_c68.png"},
+    "NIMBASA_CITY:Fan": {"sheet": "b2_c72.png"},
+    "NIMBASA_CITY:Fan ": {"sheet": "b2_c72.png"},
+    "NIMBASA_CITY:Fan  ": {"sheet": "b2_c72.png"},
+    "NIMBASA_CITY:Fan   ": {"sheet": "b2_c72.png"},
+    "NIMBASA_CITY:Fan  by the court": {"sheet": "b2_c22.png"},
+    "NIMBASA_CITY:Fan  in the stands": {"sheet": "b2_c20.png"},
+    "NIMBASA_CITY:Fan by the court": {"sheet": "b2_c61.png"},
+    "NIMBASA_CITY:Fan by the field door": {"sheet": "b2_c162.png"},
+    "NIMBASA_CITY:Fan in the stands": {"sheet": "b2_c22.png"},
+    "NIMBASA_CITY:Gentleman by the counter": {"sheet": "b2_c44.png"},
+    "NIMBASA_CITY:Girl by the cars": {"sheet": "b2_c21.png"},
+    "NIMBASA_CITY:Girl by the coaster": {"sheet": "b2_c17.png"},
+    "NIMBASA_CITY:Girl by the rides": {"sheet": "b2_c27.png"},
+    "NIMBASA_CITY:Girl in the Institute": {"sheet": "b2_c31.png"},
+    "NIMBASA_CITY:Girl in the house": {"sheet": "b2_c131.png"},
+    "NIMBASA_CITY:Girl in the stands": {"sheet": "b2_c23.png"},
+    "NIMBASA_CITY:Girl on a date": {"sheet": "b2_c22.png"},
+    "NIMBASA_CITY:Girl upstairs": {"sheet": "b2_c21.png"},
+    "NIMBASA_CITY:Girl with Minccino": {"sheet": "b2_c17.png"},
+    "NIMBASA_CITY:Guide at the entrance": {"sheet": "b2_c187.png"},
+    "NIMBASA_CITY:Guitarist January": {"sheet": "b2_c295.png"},
+    "NIMBASA_CITY:Gym": {"sheet": "b2_c226.png"},
+    "NIMBASA_CITY:Gym guide": {"sheet": "b2_c187.png"},
+    "NIMBASA_CITY:Gym guide outside": {"sheet": "b2_c187.png"},
+    "NIMBASA_CITY:Hiker Andy": {"sheet": "b2_c64.png"},
+    "NIMBASA_CITY:Infielder in the gate": {"sheet": "b2_c57.png"},
+    "NIMBASA_CITY:Interviewer": {"sheet": "b2_c10.png"},
+    "NIMBASA_CITY:Kid by the court door": {"sheet": "b2_c162.png"},
+    "NIMBASA_CITY:Kid by the field door": {"sheet": "b2_c11.png"},
+    "NIMBASA_CITY:Kid in the stands": {"sheet": "b2_c65.png"},
+    "NIMBASA_CITY:Lass Persephone": {"sheet": "b2_c15.png"},
+    "NIMBASA_CITY:Little girl": {"sheet": "b2_c16.png"},
+    "NIMBASA_CITY:Man at the board": {"sheet": "b2_c76.png"},
+    "NIMBASA_CITY:Man by the avenue": {"sheet": "b2_c25.png"},
+    "NIMBASA_CITY:Man by the door": {"sheet": "b2_c77.png"},
+    "NIMBASA_CITY:Man by the map": {"sheet": "b2_c46.png"},
+    "NIMBASA_CITY:Man by the window": {"sheet": "b2_c313.png"},
+    "NIMBASA_CITY:Man in the house": {"sheet": "b2_c31.png"},
+    "NIMBASA_CITY:Man in the lobby": {"sheet": "b2_c53.png"},
+    "NIMBASA_CITY:Man in the stands": {"sheet": "b2_c64.png"},
+    "NIMBASA_CITY:Man upstairs": {"sheet": "b2_c28.png"},
+    "NIMBASA_CITY:Minccino": {"sheet": "b2_c130.png"},
+    "NIMBASA_CITY:Mr. Medal": {"sheet": "b2_c360.png"},
+    "NIMBASA_CITY:Nate": {"sheet": "b2_nate.png"},
+    "NIMBASA_CITY:Nurse in the plaza": {"sheet": "b2_c61.png"},
+    "NIMBASA_CITY:Nursery Aide June": {"sheet": "b2_c23.png"},
+    "NIMBASA_CITY:Old man in the house": {"sheet": "b2_c26.png"},
+    "NIMBASA_CITY:Pansear": {"sheet": "b2_c310.png"},
+    "NIMBASA_CITY:Plasma Grunt": {"sheet": "b2_c293.png"},
+    "NIMBASA_CITY:Plasma Grunt ": {"sheet": "b2_c293.png"},
+    "NIMBASA_CITY:Plasma Grunt  ": {"sheet": "b2_c294.png"},
+    "NIMBASA_CITY:Plasma Grunt   ": {"sheet": "b2_c293.png"},
+    "NIMBASA_CITY:Poke Ball by the rides": {"sheet": "b2_item_ball.png"},
+    "NIMBASA_CITY:Pok\u00e9mon Center": {"sheet": "b2_c78.png"},
+    "NIMBASA_CITY:Psychic in the house": {"sheet": "b2_c30.png"},
+    "NIMBASA_CITY:Rail fan": {"sheet": "b2_c75.png"},
+    "NIMBASA_CITY:Rail fan's friend": {"sheet": "b2_c76.png"},
+    "NIMBASA_CITY:Ranger in the gate": {"sheet": "b2_c36.png"},
+    "NIMBASA_CITY:Receptionist": {"sheet": "b2_c76.png"},
+    "NIMBASA_CITY:Receptionist ": {"sheet": "b2_c83.png"},
+    "NIMBASA_CITY:Rosa": {"sheet": "b2_rosa.png"},
+    "NIMBASA_CITY:Shop": {"sheet": "b2_c79.png"},
+    "NIMBASA_CITY:Singer in the plaza": {"sheet": "b2_c54.png"},
+    "NIMBASA_CITY:Socialite upstairs": {"sheet": "b2_c17.png"},
+    "NIMBASA_CITY:Something dropped": {"sheet": "b2_item_ball.png"},
+    "NIMBASA_CITY:Subway Boss Emmet": {"sheet": "b2_c107.png"},
+    "NIMBASA_CITY:Subway Boss Ingo": {"sheet": "b2_c207.png"},
+    "NIMBASA_CITY:Trainer at the PC": {"sheet": "b2_c34.png"},
+    "NIMBASA_CITY:Trainer resting": {"sheet": "b2_c162.png"},
+    "NIMBASA_CITY:Usher": {"sheet": "b2_c76.png"},
+    "NIMBASA_CITY:Woman at the back": {"sheet": "b2_c303.png"},
+    "NIMBASA_CITY:Woman by the Gym": {"sheet": "b2_c54.png"},
+    "NIMBASA_CITY:Woman by the Institute": {"sheet": "b2_c31.png"},
+    "NIMBASA_CITY:Woman by the bench": {"sheet": "b2_c60.png"},
+    "NIMBASA_CITY:Woman by the door": {"sheet": "b2_c77.png"},
+    "NIMBASA_CITY:Woman by the window": {"sheet": "b2_c45.png"},
+    "NIMBASA_CITY:Woman in the gate": {"sheet": "b2_c31.png"},
+    "NIMBASA_CITY:Woman in the house": {"sheet": "b2_c31.png"},
+    "NIMBASA_CITY:Woman in the plaza": {"sheet": "b2_c26.png"},
+    "NIMBASA_CITY:Woman in the stands": {"sheet": "b2_c17.png"},
+    "NIMBASA_CITY:Woman of mystery": {"sheet": "b2_c73.png"},
+    "NIMBASA_CITY:Woman upstairs": {"sheet": "b2_c45.png"},
+    "NIMBASA_CITY:{rival_name}": {"sheet": "b2_hugh.png"},
+    "POKESTAR_STUDIOS:Actor rehearsing": {"sheet": "b2_c18.png"},
+    "POKESTAR_STUDIOS:Actress": {"sheet": "b2_c53.png"},
+    "POKESTAR_STUDIOS:Actress by the props": {"sheet": "b2_c24.png"},
+    "POKESTAR_STUDIOS:Assistant director": {"sheet": "b2_c358.png"},
+    "POKESTAR_STUDIOS:Boy by the posters": {"sheet": "b2_c54.png"},
+    "POKESTAR_STUDIOS:Boy dreaming big": {"sheet": "b2_c8.png"},
+    "POKESTAR_STUDIOS:Boy with a Stunfisk": {"sheet": "b2_c13.png"},
+    "POKESTAR_STUDIOS:Cameraman": {"sheet": "b2_c24.png"},
+    "POKESTAR_STUDIOS:Child actress": {"sheet": "b2_c62.png"},
+    "POKESTAR_STUDIOS:Director by the bridge": {"sheet": "b2_c346.png"},
+    "POKESTAR_STUDIOS:Director by the set": {"sheet": "b2_c346.png"},
+    "POKESTAR_STUDIOS:Director looking up": {"sheet": "b2_c346.png"},
+    "POKESTAR_STUDIOS:Director on set": {"sheet": "b2_c18.png"},
+    "POKESTAR_STUDIOS:Dressing room guard": {"sheet": "b2_c72.png"},
+    "POKESTAR_STUDIOS:Effects specialist": {"sheet": "b2_c24.png"},
+    "POKESTAR_STUDIOS:Fan in the lobby": {"sheet": "b2_c48.png"},
+    "POKESTAR_STUDIOS:Girl by the posters": {"sheet": "b2_c9.png"},
+    "POKESTAR_STUDIOS:Girl by the screens": {"sheet": "b2_c15.png"},
+    "POKESTAR_STUDIOS:Girl with a Lillipup": {"sheet": "b2_c22.png"},
+    "POKESTAR_STUDIOS:Guard by the back": {"sheet": "b2_c72.png"},
+    "POKESTAR_STUDIOS:Her manager": {"sheet": "b2_c9.png"},
+    "POKESTAR_STUDIOS:Lillipup on set": {"sheet": "b2_c306.png"},
+    "POKESTAR_STUDIOS:Man by the portraits": {"sheet": "b2_c28.png"},
+    "POKESTAR_STUDIOS:Old woman": {"sheet": "b2_c69.png"},
+    "POKESTAR_STUDIOS:Policeman": {"sheet": "b2_c60.png"},
+    "POKESTAR_STUDIOS:Portrait seller": {"sheet": "b2_c303.png"},
+    "POKESTAR_STUDIOS:Prop maker": {"sheet": "b2_c24.png"},
+    "POKESTAR_STUDIOS:Receptionist": {"sheet": "b2_c346.png"},
+    "POKESTAR_STUDIOS:Rookie AD": {"sheet": "b2_c24.png"},
+    "POKESTAR_STUDIOS:Rookie AD ": {"sheet": "b2_c25.png"},
+    "POKESTAR_STUDIOS:Screenwriter": {"sheet": "b2_c20.png"},
+    "POKESTAR_STUDIOS:Sound engineer ": {"sheet": "b2_c346.png"},
+    "POKESTAR_STUDIOS:Studio guide": {"sheet": "b2_c20.png"},
+    "POKESTAR_STUDIOS:Stunfisk": {"sheet": "b2_c320.png"},
+    "POKESTAR_STUDIOS:Suit actor": {"sheet": "b2_c162.png"},
+    "POKESTAR_STUDIOS:Suit actor ": {"sheet": "b2_c163.png"},
+    "POKESTAR_STUDIOS:Theater attendant": {"sheet": "b2_c76.png"},
+    "POKESTAR_STUDIOS:Woman by the screens": {"sheet": "b2_c22.png"},
+    "POKESTAR_STUDIOS:Woman by the trailer": {"sheet": "b2_c26.png"},
+    "POKESTAR_STUDIOS:Woman in the lobby": {"sheet": "b2_c22.png"},
+    "POKESTAR_STUDIOS:Woman waiting": {"sheet": "b2_c24.png"},
+    "RELIC_CASTLE:Hiker in the ruins": {"sheet": "b2_c73.png"},
+    "RELIC_CASTLE:Poke Ball in the sand": {"sheet": "b2_item_ball.png"},
+    "RELIC_CASTLE:Psychic Dua": {"sheet": "b2_c184.png"},
+    "RELIC_CASTLE:Psychic Low": {"sheet": "b2_c183.png"},
+    "ROYAL_UNOVA:Ace Trainer Henry": {"sheet": "b2_c30.png"},
+    "ROYAL_UNOVA:Ace Trainer Henry ": {"sheet": "b2_c30.png"},
+    "ROYAL_UNOVA:Ace Trainer Mariana": {"sheet": "b2_c31.png"},
+    "ROYAL_UNOVA:Ace Trainer Mariana ": {"sheet": "b2_c31.png"},
+    "ROYAL_UNOVA:Backer in cabin 22": {"sheet": "b2_c59.png"},
+    "ROYAL_UNOVA:Boy in the corridor": {"sheet": "b2_c11.png"},
+    "ROYAL_UNOVA:Clerk Chaz": {"sheet": "b2_c52.png"},
+    "ROYAL_UNOVA:Clerk Chaz ": {"sheet": "b2_c52.png"},
+    "ROYAL_UNOVA:Gentleman Robert": {"sheet": "b2_c44.png"},
+    "ROYAL_UNOVA:Gentleman Robert ": {"sheet": "b2_c44.png"},
+    "ROYAL_UNOVA:Gentleman in cabin 11": {"sheet": "b2_c44.png"},
+    "ROYAL_UNOVA:Girl by the port cabins": {"sheet": "b2_c16.png"},
+    "ROYAL_UNOVA:Girl in the corridor": {"sheet": "b2_c14.png"},
+    "ROYAL_UNOVA:Lady Elizandra": {"sheet": "b2_c22.png"},
+    "ROYAL_UNOVA:Lady Elizandra ": {"sheet": "b2_c22.png"},
+    "ROYAL_UNOVA:Lady in cabin 15": {"sheet": "b2_c22.png"},
+    "ROYAL_UNOVA:Lass Sibyl": {"sheet": "b2_c15.png"},
+    "ROYAL_UNOVA:Lass Sibyl ": {"sheet": "b2_c15.png"},
+    "ROYAL_UNOVA:Maid Tanya": {"sheet": "b2_c65.png"},
+    "ROYAL_UNOVA:Maid Tanya ": {"sheet": "b2_c65.png"},
+    "ROYAL_UNOVA:Man in the hall": {"sheet": "b2_c18.png"},
+    "ROYAL_UNOVA:Passenger in Abe's cabin": {"sheet": "b2_c11.png"},
+    "ROYAL_UNOVA:Passenger in Brad's cabin": {"sheet": "b2_c58.png"},
+    "ROYAL_UNOVA:Passenger in Cassandra's cabin": {"sheet": "b2_c96.png"},
+    "ROYAL_UNOVA:Passenger in Chaz's cabin": {"sheet": "b2_c52.png"},
+    "ROYAL_UNOVA:Passenger in Elizandra's cabin": {"sheet": "b2_c22.png"},
+    "ROYAL_UNOVA:Passenger in Henry's cabin": {"sheet": "b2_c30.png"},
+    "ROYAL_UNOVA:Passenger in Mariana's cabin": {"sheet": "b2_c31.png"},
+    "ROYAL_UNOVA:Passenger in Robert's cabin": {"sheet": "b2_c44.png"},
+    "ROYAL_UNOVA:Passenger in Sibyl's cabin": {"sheet": "b2_c15.png"},
+    "ROYAL_UNOVA:Rich Boy Brad": {"sheet": "b2_c58.png"},
+    "ROYAL_UNOVA:Rich Boy Brad ": {"sheet": "b2_c58.png"},
+    "ROYAL_UNOVA:Rich Boy in cabin 16": {"sheet": "b2_c58.png"},
+    "ROYAL_UNOVA:Sailor at the deck stairs": {"sheet": "b2_c75.png"},
+    "ROYAL_UNOVA:Sailor by the stairs": {"sheet": "b2_c75.png"},
+    "ROYAL_UNOVA:Sailor in the west hall": {"sheet": "b2_c75.png"},
+    "ROYAL_UNOVA:Sailor to port": {"sheet": "b2_c75.png"},
+    "ROYAL_UNOVA:Sailor to starboard": {"sheet": "b2_c75.png"},
+    "ROYAL_UNOVA:Sailor's boy": {"sheet": "b2_c10.png"},
+    "ROYAL_UNOVA:Socialite Cassandra": {"sheet": "b2_c96.png"},
+    "ROYAL_UNOVA:Socialite Cassandra ": {"sheet": "b2_c96.png"},
+    "ROYAL_UNOVA:Socialite in cabin 10": {"sheet": "b2_c96.png"},
+    "ROYAL_UNOVA:Youngster Abe": {"sheet": "b2_c11.png"},
+    "ROYAL_UNOVA:Youngster Abe ": {"sheet": "b2_c11.png"},
+    "UNOVA_ROUTE_16:Man with an umbrella": {"sheet": "b2_c21.png"},
+    "UNOVA_ROUTE_16:Poke Ball in the grove": {"sheet": "b2_item_ball.png"},
+    "UNOVA_ROUTE_16:Poke Ball past the boulder": {"sheet": "b2_item_ball.png"},
+    "UNOVA_ROUTE_16:Roughneck by the machine": {"sheet": "b2_c84.png"},
+    "UNOVA_ROUTE_16:Woman in the gate": {"sheet": "b2_c61.png"},
+    "UNOVA_ROUTE_19:Alder": {"sheet": "b2_c97.png"},
+    "UNOVA_ROUTE_19:Bianca": {"sheet": "b2_bianca.png"},
+    "UNOVA_ROUTE_19:Boy at the stairs": {"sheet": "b2_c11.png"},
+    "UNOVA_ROUTE_19:Boy in the grass": {"sheet": "b2_c15.png"},
+    "UNOVA_ROUTE_19:Poke Ball by the pond": {"sheet": "b2_item_ball.png"},
+    "UNOVA_ROUTE_19:Poke Ball in the grass": {"sheet": "b2_item_ball.png"},
+    "UNOVA_ROUTE_19:Poke Ball on the north path": {"sheet": "b2_item_ball.png"},
+    "UNOVA_ROUTE_19:Youngster by the ledge": {"sheet": "b2_c11.png"},
+    "UNOVA_ROUTE_20:Hiker Jerome": {"sheet": "b2_c64.png"},
+    "UNOVA_ROUTE_20:Hiker Jerome ": {"sheet": "b2_c64.png"},
+    "UNOVA_ROUTE_20:Man by the sign": {"sheet": "b2_c14.png"},
+    "UNOVA_ROUTE_20:Plasma Grunt": {"sheet": "b2_c294.png"},
+    "UNOVA_ROUTE_20:Poke Ball by the nursery aide": {"sheet": "b2_item_ball.png"},
+    "UNOVA_ROUTE_20:Poke Ball by the preschoolers": {"sheet": "b2_c210.png"},
+    "UNOVA_ROUTE_20:Poke Ball in the dark grass": {"sheet": "b2_c216.png"},
+    "UNOVA_ROUTE_20:Poke Ball north of the lass": {"sheet": "b2_item_ball.png"},
+    "UNOVA_ROUTE_20:Twin Lily": {"sheet": "b2_c9.png"},
+    "UNOVA_ROUTE_4:Ace Trainer in the house": {"sheet": "b2_c31.png"},
+    "UNOVA_ROUTE_4:Ace Trainer's brother": {"sheet": "b2_c30.png"},
+    "UNOVA_ROUTE_4:Biker upstairs": {"sheet": "b2_c72.png"},
+    "UNOVA_ROUTE_4:Black Belt upstairs": {"sheet": "b2_c46.png"},
+    "UNOVA_ROUTE_4:Boy in the empty house": {"sheet": "b2_c10.png"},
+    "UNOVA_ROUTE_4:Braviary": {"sheet": "b2_c4712.png"},
+    "UNOVA_ROUTE_4:Colress": {"sheet": "b2_c250.png"},
+    "UNOVA_ROUTE_4:Crustle 0": {"sheet": "b2_c326.png"},
+    "UNOVA_ROUTE_4:Crustle 1": {"sheet": "b2_c326.png"},
+    "UNOVA_ROUTE_4:Crustle 10": {"sheet": "b2_c326.png"},
+    "UNOVA_ROUTE_4:Crustle 2": {"sheet": "b2_c326.png"},
+    "UNOVA_ROUTE_4:Crustle 3": {"sheet": "b2_c326.png"},
+    "UNOVA_ROUTE_4:Crustle 4": {"sheet": "b2_c326.png"},
+    "UNOVA_ROUTE_4:Crustle 5": {"sheet": "b2_c326.png"},
+    "UNOVA_ROUTE_4:Crustle 6": {"sheet": "b2_c326.png"},
+    "UNOVA_ROUTE_4:Crustle 7": {"sheet": "b2_c326.png"},
+    "UNOVA_ROUTE_4:Crustle 8": {"sheet": "b2_c326.png"},
+    "UNOVA_ROUTE_4:Crustle 9": {"sheet": "b2_c326.png"},
+    "UNOVA_ROUTE_4:Girl in the sand": {"sheet": "b2_c22.png"},
+    "UNOVA_ROUTE_4:Girl upstairs": {"sheet": "b2_c16.png"},
+    "UNOVA_ROUTE_4:Herdier": {"sheet": "b2_c325.png"},
+    "UNOVA_ROUTE_4:Lass who wants Cottonee": {"sheet": "b2_c15.png"},
+    "UNOVA_ROUTE_4:Lillipup": {"sheet": "b2_c306.png"},
+    "UNOVA_ROUTE_4:Maid who imitates cries": {"sheet": "b2_c43.png"},
+    "UNOVA_ROUTE_4:Man by the TV": {"sheet": "b2_c155.png"},
+    "UNOVA_ROUTE_4:Man by the gate": {"sheet": "b2_c64.png"},
+    "UNOVA_ROUTE_4:Man in the empty house": {"sheet": "b2_c44.png"},
+    "UNOVA_ROUTE_4:Man upstairs": {"sheet": "b2_c25.png"},
+    "UNOVA_ROUTE_4:Mandibuzz": {"sheet": "b2_c348.png"},
+    "UNOVA_ROUTE_4:Mareep in the rest house": {"sheet": "b2_c131.png"},
+    "UNOVA_ROUTE_4:Poke Ball by the TV": {"sheet": "b2_item_ball.png"},
+    "UNOVA_ROUTE_4:Poke Ball by the road": {"sheet": "b2_item_ball.png"},
+    "UNOVA_ROUTE_4:Poke Ball by the water": {"sheet": "b2_item_ball.png"},
+    "UNOVA_ROUTE_4:Poke Ball in the expansion area": {"sheet": "b2_item_ball.png"},
+    "UNOVA_ROUTE_4:Poke Ball in the sand": {"sheet": "b2_item_ball.png"},
+    "UNOVA_ROUTE_4:Vending machine": {"sheet": "b2_none.png"},
+    "UNOVA_ROUTE_4:Woman by the road": {"sheet": "b2_c19.png"},
+    "UNOVA_ROUTE_4:Woman in the empty house": {"sheet": "b2_c20.png"},
+    "UNOVA_ROUTE_4:Woman in the rest house": {"sheet": "b2_c27.png"},
+    "UNOVA_ROUTE_4:Woman upstairs": {"sheet": "b2_c27.png"},
+    "UNOVA_ROUTE_4:Woman upstairs ": {"sheet": "b2_c28.png"},
+    "UNOVA_ROUTE_4:Worker by the boulders": {"sheet": "b2_c67.png"},
+    "UNOVA_ROUTE_4:Worker by the boulders ": {"sheet": "b2_c67.png"},
+    "UNOVA_ROUTE_5:Ace Trainer in the crowd": {"sheet": "b2_c30.png"},
+    "UNOVA_ROUTE_5:Berry seller": {"sheet": "b2_cheren.png"},
+    "UNOVA_ROUTE_5:Clown by the trailer": {"sheet": "b2_c21.png"},
+    "UNOVA_ROUTE_5:Foongus in the grotto": {"pokemon": 590},
+    "UNOVA_ROUTE_5:Girl by the trailer": {"sheet": "b2_c14.png"},
+    "UNOVA_ROUTE_5:Girl watching": {"sheet": "b2_c19.png"},
+    "UNOVA_ROUTE_5:Liepard in the grotto": {"pokemon": 510},
+    "UNOVA_ROUTE_5:Maid in the trailer": {"sheet": "b2_c65.png"},
+    "UNOVA_ROUTE_5:Man watching": {"sheet": "b2_c56.png"},
+    "UNOVA_ROUTE_5:Minccino in the grotto": {"pokemon": 572},
+    "UNOVA_ROUTE_5:Motorcyclist Charles": {"sheet": "b2_c62.png"},
+    "UNOVA_ROUTE_5:Performer 10": {"sheet": "b2_c22.png"},
+    "UNOVA_ROUTE_5:Performer 11": {"sheet": "b2_c49.png"},
+    "UNOVA_ROUTE_5:Performer 12": {"sheet": "b2_c48.png"},
+    "UNOVA_ROUTE_5:Performer 13": {"sheet": "b2_c48.png"},
+    "UNOVA_ROUTE_5:Performer 14": {"sheet": "b2_c64.png"},
+    "UNOVA_ROUTE_5:Performer 15": {"sheet": "b2_c22.png"},
+    "UNOVA_ROUTE_5:Performer 16": {"sheet": "b2_c35.png"},
+    "UNOVA_ROUTE_5:Performer 17": {"sheet": "b2_c48.png"},
+    "UNOVA_ROUTE_5:Poke Ball behind the fence": {"sheet": "b2_item_ball.png"},
+    "UNOVA_ROUTE_5:Poke Ball in the clearing": {"sheet": "b2_item_ball.png"},
+    "UNOVA_ROUTE_5:Poke Ball on the ledge": {"sheet": "b2_item_ball.png"},
+    "UNOVA_ROUTE_5:Ranger by the gate": {"sheet": "b2_c35.png"},
+    "UNOVA_ROUTE_5:Something in the grass": {"sheet": "b2_none.png"},
+    "VIRBANK_CITY:Audino": {"sheet": "b2_c312.png"},
+    "VIRBANK_CITY:Boy by the door": {"sheet": "b2_c77.png"},
+    "VIRBANK_CITY:Boy by the door ": {"sheet": "b2_c77.png"},
+    "VIRBANK_CITY:Boy in the house": {"sheet": "b2_c28.png"},
+    "VIRBANK_CITY:Boy on the bridge": {"sheet": "b2_c11.png"},
+    "VIRBANK_CITY:Clerk ": {"sheet": "b2_c82.png"},
+    "VIRBANK_CITY:Clerk  ": {"sheet": "b2_c81.png"},
+    "VIRBANK_CITY:Clyde": {"sheet": "b2_c187.png"},
+    "VIRBANK_CITY:Gate attendant": {"sheet": "b2_c76.png"},
+    "VIRBANK_CITY:Girl in the gate": {"sheet": "b2_c15.png"},
+    "VIRBANK_CITY:Girl with questions": {"sheet": "b2_c9.png"},
+    "VIRBANK_CITY:Guitarist Billy Jo": {"sheet": "b2_c297.png"},
+    "VIRBANK_CITY:Guitarist by the steps": {"sheet": "b2_c297.png"},
+    "VIRBANK_CITY:Gym": {"sheet": "b2_c295.png"},
+    "VIRBANK_CITY:Little boy": {"sheet": "b2_c8.png"},
+    "VIRBANK_CITY:Little girl": {"sheet": "b2_c9.png"},
+    "VIRBANK_CITY:Little girl ": {"sheet": "b2_c9.png"},
+    "VIRBANK_CITY:Man at the PC": {"sheet": "b2_c34.png"},
+    "VIRBANK_CITY:Man at the pier's end": {"sheet": "b2_c20.png"},
+    "VIRBANK_CITY:Man by the door": {"sheet": "b2_c70.png"},
+    "VIRBANK_CITY:Man in the gate": {"sheet": "b2_c30.png"},
+    "VIRBANK_CITY:Mr. Medal": {"sheet": "b2_c360.png"},
+    "VIRBANK_CITY:Nursery Aide": {"sheet": "b2_c23.png"},
+    "VIRBANK_CITY:Nursery Aide ": {"sheet": "b2_c23.png"},
+    "VIRBANK_CITY:Old man by the stairs": {"sheet": "b2_c28.png"},
+    "VIRBANK_CITY:Old woman": {"sheet": "b2_c29.png"},
+    "VIRBANK_CITY:Old woman on the bench": {"sheet": "b2_c33.png"},
+    "VIRBANK_CITY:Plasma Grunt": {"sheet": "b2_c293.png"},
+    "VIRBANK_CITY:Plasma Grunt ": {"sheet": "b2_c294.png"},
+    "VIRBANK_CITY:Plasma Grunt  ": {"sheet": "b2_c293.png"},
+    "VIRBANK_CITY:Poke Ball in the house": {"sheet": "b2_item_ball.png"},
+    "VIRBANK_CITY:Pokestar guard": {"sheet": "b2_c358.png"},
+    "VIRBANK_CITY:Pok\u00e9mon Center": {"sheet": "b2_c78.png"},
+    "VIRBANK_CITY:Pop Roxie": {"sheet": "b2_c359.png"},
+    "VIRBANK_CITY:Pop Roxie ": {"sheet": "b2_c359.png"},
+    "VIRBANK_CITY:Roughneck Nicky": {"sheet": "b2_c372.png"},
+    "VIRBANK_CITY:Roughneck by the Gym": {"sheet": "b2_c61.png"},
+    "VIRBANK_CITY:Roxie": {"sheet": "b2_c224.png"},
+    "VIRBANK_CITY:Roxie ": {"sheet": "b2_c295.png"},
+    "VIRBANK_CITY:Sailor at the counter": {"sheet": "b2_c359.png"},
+    "VIRBANK_CITY:Sailor by the door": {"sheet": "b2_c10.png"},
+    "VIRBANK_CITY:Sailor on the pier": {"sheet": "b2_c20.png"},
+    "VIRBANK_CITY:Shop": {"sheet": "b2_c79.png"},
+    "VIRBANK_CITY:Sound engineer": {"sheet": "b2_c55.png"},
+    "VIRBANK_CITY:Watchog": {"sheet": "b2_c305.png"},
+    "VIRBANK_CITY:Woman by the railing": {"sheet": "b2_c22.png"},
+    "VIRBANK_CITY:Woman by the sofa": {"sheet": "b2_c14.png"},
+    "VIRBANK_CITY:Woman by the table": {"sheet": "b2_c8.png"},
+    "VIRBANK_CITY:Woman in the gate": {"sheet": "b2_c54.png"},
+    "VIRBANK_CITY:Woman with a Watchog": {"sheet": "b2_c22.png"},
+    "VIRBANK_CITY:Woman with an Audino": {"sheet": "b2_c47.png"},
+    "VIRBANK_CITY:Worker by the counter": {"sheet": "b2_c155.png"},
+    "VIRBANK_CITY:Worker by the window": {"sheet": "b2_c155.png"},
+    "VIRBANK_CITY:Worker on the walkway": {"sheet": "b2_c155.png"},
+    "VIRBANK_CITY:{rival_name}": {"sheet": "b2_hugh.png"},
+    "VIRBANK_CITY:{rival_name} ": {"sheet": "b2_hugh.png"},
+    "VIRBANK_COMPLEX:Foreman": {"sheet": "b2_c25.png"},
+    "VIRBANK_COMPLEX:Foreman ": {"sheet": "b2_c25.png"},
+    "VIRBANK_COMPLEX:Foreman  ": {"sheet": "b2_c25.png"},
+    "VIRBANK_COMPLEX:Girl in the south": {"sheet": "b2_c22.png"},
+    "VIRBANK_COMPLEX:Girl in the south ": {"sheet": "b2_c22.png"},
+    "VIRBANK_COMPLEX:Poke Ball by the south-east tanks": {"sheet": "b2_item_ball.png"},
+    "VIRBANK_COMPLEX:Poke Ball past the small tree": {"sheet": "b2_item_ball.png"},
+    "VIRBANK_COMPLEX:Scientist by the tower": {"sheet": "b2_c73.png"},
+    "VIRBANK_COMPLEX:Worker Isaac": {"sheet": "b2_c155.png"},
+    "VIRBANK_COMPLEX:Worker Isaac ": {"sheet": "b2_c155.png"},
+    "VIRBANK_COMPLEX:Worker Mitchell": {"sheet": "b2_c155.png"},
+    "VIRBANK_COMPLEX:Worker Mitchell ": {"sheet": "b2_c155.png"},
+    "VIRBANK_COMPLEX:Worker Nathan": {"sheet": "b2_c155.png"},
+    "VIRBANK_COMPLEX:Worker Nathan ": {"sheet": "b2_c155.png"},
+    "VIRBANK_COMPLEX_OUTSIDE:Poke Ball behind the Roughneck": {"sheet": "b2_item_ball.png"},
+    "VIRBANK_COMPLEX_OUTSIDE:Poke Ball in the grass": {"sheet": "b2_item_ball.png"},
+    "VIRBANK_COMPLEX_OUTSIDE:Roughneck by the crane": {"sheet": "b2_c61.png"},
     "HOENN_ROUTE_104:Berry-growing sister": {
       "sheet": "em_14.png"
     },
@@ -538,131 +1287,381 @@
     "FORTREE_CITY_UPPER:Aarune": {
       "sheet": "em_83.png"
     },
-    "ROCKET_WAREHOUSE:UNLOCK THE DOORS": {"pic": "dungeon/characters/fr_prop_pc.png"},
-    "SEVAULT_CANYON:OPEN THE CHAMBERS": {"pic": "dungeon/characters/fr_prop_pc.png"},
-    "POWER_PLANT:Trader": {"sheet": "fr_22.png"},
-    "CERULEAN_CITY:Search the Gym's Pool": {"item": "POKE_BALL"},
-    "UNDERGROUND_PATH:Talk to Fossil Maniac": {"sheet": "fr_56.png"},
-    "KANTO_ROUTE_12:TM098": {"item": "POKE_BALL"},
-    "KANTO_ROUTE_15:TM050": {"item": "POKE_BALL"},
-    "KANTO_ROUTE_24:TM240": {"item": "POKE_BALL"},
-    "KANTO_ROUTE_25:TM292": {"item": "POKE_BALL"},
-    "KANTO_ROUTE_4:TM172": {"item": "POKE_BALL"},
-    "KANTO_ROUTE_9:TM027": {"item": "POKE_BALL"},
-    "KANTO_SS_ANNE:TM058": {"item": "POKE_BALL"},
-    "KANTO_SS_ANNE:TM085": {"item": "POKE_BALL"},
-    "MT_MOON:TM056": {"item": "POKE_BALL"},
-    "MT_MOON:TM018": {"item": "POKE_BALL"},
-    "POKEMON_MANSION:TM168": {"item": "POKE_BALL"},
-    "POKEMON_MANSION:TM143": {"item": "POKE_BALL"},
-    "POWER_PLANT:TM007": {"item": "POKE_BALL"},
-    "POWER_PLANT:TM166": {"item": "POKE_BALL"},
-    "ROCKET_HIDEOUT:TM087": {"item": "POKE_BALL"},
-    "ROCKET_HIDEOUT:TM273": {"item": "POKE_BALL"},
-    "ROCKET_HIDEOUT:TM299": {"item": "POKE_BALL"},
-    "ROCKET_WAREHOUSE:TM208": {"item": "POKE_BALL"},
-    "SAFARI_ZONE:TM049": {"item": "POKE_BALL"},
-    "SAFARI_ZONE:TM239": {"item": "POKE_BALL"},
-    "SAFARI_ZONE:TM275": {"item": "POKE_BALL"},
-    "SILPH_CITY:TM276": {"item": "POKE_BALL"},
-    "SILPH_CITY:TM192": {"item": "POKE_BALL"},
-    "SILPH_CITY:TM064": {"item": "POKE_BALL"},
-    "VICTORY_ROAD:TM078": {"item": "POKE_BALL"},
-    "VICTORY_ROAD:TM241": {"item": "POKE_BALL"},
-    "VICTORY_ROAD:TM051": {"item": "POKE_BALL"},
-    "VICTORY_ROAD:TM157": {"item": "POKE_BALL"},
-    "KANTO_POKEMON_TOWER:CONFRONT GHOST": {"draw": "ghost"},
-    "NAVEL_ROCK:SAIL HOME": {"sheet": "fr_62.png"},
-    "SILPH_CITY:Silph scientist": {"sheet": "fr_55.png"},
-    "KANTO_ROUTE_23:BOULDER BADGE GUARD": {"sheet": "fr_60.png"},
-    "PALLET_TOWN:Last Bulbasaur Ball": {"item": "POKE_BALL"},
-    "PALLET_TOWN:Last Squirtle Ball": {"item": "POKE_BALL"},
-    "PALLET_TOWN:Last Charmander Ball": {"item": "POKE_BALL"},
-    "FOUR_ISLAND:Doll 1": {"sheet": "fr_131.png"},
-    "FOUR_ISLAND:Doll 12": {"sheet": "fr_114.png"},
-    "FOUR_ISLAND:Doll 13": {"sheet": "fr_133.png"},
-    "FOUR_ISLAND:Doll 2": {"sheet": "fr_126.png"},
-    "FOUR_ISLAND:Doll 3": {"sheet": "fr_120.png"},
-    "FOUR_ISLAND:Doll 4": {"sheet": "fr_128.png"},
-    "FOUR_ISLAND:Doll 5": {"sheet": "fr_129.png"},
-    "FOUR_ISLAND:Doll 6": {"sheet": "fr_121.png"},
-    "FOUR_ISLAND:Doll 7": {"sheet": "fr_125.png"},
-    "FOUR_ISLAND:Doll 8": {"sheet": "fr_117.png"},
-    "FOUR_ISLAND:Doll 9": {"sheet": "fr_115.png"},
-    "FOUR_ISLAND:Doll 10": {"sheet": "fr_122.png"},
-    "FOUR_ISLAND:Doll 11": {"sheet": "fr_123.png"},
-    "FOUR_ISLAND:Doll 14": {"sheet": "fr_107.png"},
-    "CERULEAN_CITY:Slowbro ": {"sheet": "fr_129.png"},
-    "CERULEAN_CITY:Trainer ": {"sheet": "fr_22.png"},
-    "TRAINER_TOWER:Albert": {"sheet": "fr_41.png"},
-    "TRAINER_TOWER:Alberto": {"sheet": "fr_62.png"},
-    "TRAINER_TOWER:Alek": {"sheet": "fr_25.png"},
-    "TRAINER_TOWER:Allyson": {"sheet": "fr_42.png"},
-    "TRAINER_TOWER:Anne": {"sheet": "fr_42.png"},
-    "TRAINER_TOWER:Axe": {"sheet": "fr_44.png"},
-    "TRAINER_TOWER:Balding man": {"sheet": "fr_30.png"},
-    "TRAINER_TOWER:Ben": {"sheet": "fr_26.png"},
-    "TRAINER_TOWER:Braden": {"sheet": "fr_43.png"},
-    "TRAINER_TOWER:Brandon": {"sheet": "fr_20.png"},
-    "TRAINER_TOWER:Brennan": {"sheet": "fr_62.png"},
-    "TRAINER_TOWER:CLERK": {"sheet": "fr_66.png"},
-    "TRAINER_TOWER:Camden": {"sheet": "fr_30.png"},
-    "TRAINER_TOWER:Camryn": {"sheet": "fr_40.png"},
-    "TRAINER_TOWER:Carl": {"sheet": "fr_42.png"},
-    "TRAINER_TOWER:Charlotte": {"sheet": "fr_28.png"},
-    "TRAINER_TOWER:Chelsea": {"sheet": "fr_40.png"},
-    "TRAINER_TOWER:Cole": {"sheet": "fr_18.png"},
-    "TRAINER_TOWER:Cooltrainer": {"sheet": "fr_42.png"},
-    "TRAINER_TOWER:Emanuel": {"sheet": "fr_61.png"},
-    "TRAINER_TOWER:Emy": {"sheet": "fr_29.png"},
-    "TRAINER_TOWER:Ernest": {"sheet": "fr_53.png"},
-    "TRAINER_TOWER:Flint": {"sheet": "fr_30.png"},
-    "TRAINER_TOWER:Gabriel": {"sheet": "fr_53.png"},
-    "TRAINER_TOWER:Geb": {"sheet": "fr_25.png"},
-    "TRAINER_TOWER:Haley": {"sheet": "fr_54.png"},
-    "TRAINER_TOWER:Isac": {"sheet": "fr_41.png"},
-    "TRAINER_TOWER:Jac": {"sheet": "fr_52.png"},
-    "TRAINER_TOWER:Jarrett": {"sheet": "fr_26.png"},
-    "TRAINER_TOWER:Jen": {"sheet": "fr_17.png"},
-    "TRAINER_TOWER:Jo": {"sheet": "fr_24.png"},
-    "TRAINER_TOWER:Joey": {"sheet": "fr_39.png"},
-    "TRAINER_TOWER:Jordy": {"sheet": "fr_53.png"},
-    "TRAINER_TOWER:Jos": {"sheet": "fr_41.png"},
-    "TRAINER_TOWER:Kaden": {"sheet": "fr_57.png"},
-    "TRAINER_TOWER:Kat": {"sheet": "fr_44.png"},
-    "TRAINER_TOWER:Kathleen": {"sheet": "fr_42.png"},
-    "TRAINER_TOWER:Kati": {"sheet": "fr_29.png"},
-    "TRAINER_TOWER:Kipp": {"sheet": "fr_36.png"},
-    "TRAINER_TOWER:Kira": {"sheet": "fr_17.png"},
-    "TRAINER_TOWER:Leah": {"sheet": "fr_17.png"},
-    "TRAINER_TOWER:Lily": {"sheet": "fr_28.png"},
-    "TRAINER_TOWER:Lisa": {"sheet": "fr_17.png"},
-    "TRAINER_TOWER:Lorenzo": {"sheet": "fr_41.png"},
-    "TRAINER_TOWER:Mag": {"sheet": "fr_42.png"},
-    "TRAINER_TOWER:Maura": {"sheet": "fr_29.png"},
-    "TRAINER_TOWER:Megan": {"sheet": "fr_42.png"},
-    "TRAINER_TOWER:Mikaela": {"sheet": "fr_22.png"},
-    "TRAINER_TOWER:Mike": {"sheet": "fr_56.png"},
-    "TRAINER_TOWER:Mily": {"sheet": "fr_23.png"},
-    "TRAINER_TOWER:NURSE": {"sheet": "fr_64.png"},
-    "TRAINER_TOWER:Natalia": {"sheet": "fr_28.png"},
-    "TRAINER_TOWER:Nia": {"sheet": "fr_41.png"},
-    "TRAINER_TOWER:Nicolas": {"sheet": "fr_54.png"},
-    "TRAINER_TOWER:OWNER": {"sheet": "fr_70.png"},
-    "TRAINER_TOWER:Owen": {"sheet": "fr_55.png"},
-    "TRAINER_TOWER:Priscilla": {"sheet": "fr_37.png"},
-    "TRAINER_TOWER:RECEPTIONIST": {"sheet": "fr_66.png"},
-    "TRAINER_TOWER:Rebecca": {"sheet": "fr_24.png"},
-    "TRAINER_TOWER:Ren": {"sheet": "fr_36.png"},
-    "TRAINER_TOWER:Rene": {"sheet": "fr_54.png"},
-    "TRAINER_TOWER:Ric": {"sheet": "fr_24.png"},
-    "TRAINER_TOWER:Shania": {"sheet": "fr_44.png"},
-    "TRAINER_TOWER:Trenton": {"sheet": "fr_39.png"},
-    "TRAINER_TOWER:Zackery": {"sheet": "fr_55.png"},
-    "FLOCCESY_TOWN:Mr. Medal": {"sheet": "b2_c360.png"},
-    "JOIN_AVENUE:Visitor 1": {"sheet": "b2_c31.png"},
-    "JOIN_AVENUE:Visitor 2": {"sheet": "b2_c30.png"},
-    "JOIN_AVENUE:Visitor 3": {"sheet": "b2_c27.png"},
+    "ROCKET_WAREHOUSE:UNLOCK THE DOORS": {
+      "pic": "dungeon/characters/fr_prop_pc.png"
+    },
+    "SEVAULT_CANYON:OPEN THE CHAMBERS": {
+      "pic": "dungeon/characters/fr_prop_pc.png"
+    },
+    "POWER_PLANT:Trader": {
+      "sheet": "fr_22.png"
+    },
+    "CERULEAN_CITY:Search the Gym's Pool": {
+      "item": "POKE_BALL"
+    },
+    "UNDERGROUND_PATH:Talk to Fossil Maniac": {
+      "sheet": "fr_56.png"
+    },
+    "KANTO_ROUTE_12:TM098": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_ROUTE_15:TM050": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_ROUTE_24:TM240": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_ROUTE_25:TM292": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_ROUTE_4:TM172": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_ROUTE_9:TM027": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_SS_ANNE:TM058": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_SS_ANNE:TM085": {
+      "item": "POKE_BALL"
+    },
+    "MT_MOON:TM056": {
+      "item": "POKE_BALL"
+    },
+    "MT_MOON:TM018": {
+      "item": "POKE_BALL"
+    },
+    "POKEMON_MANSION:TM168": {
+      "item": "POKE_BALL"
+    },
+    "POKEMON_MANSION:TM143": {
+      "item": "POKE_BALL"
+    },
+    "POWER_PLANT:TM007": {
+      "item": "POKE_BALL"
+    },
+    "POWER_PLANT:TM166": {
+      "item": "POKE_BALL"
+    },
+    "ROCKET_HIDEOUT:TM087": {
+      "item": "POKE_BALL"
+    },
+    "ROCKET_HIDEOUT:TM273": {
+      "item": "POKE_BALL"
+    },
+    "ROCKET_HIDEOUT:TM299": {
+      "item": "POKE_BALL"
+    },
+    "ROCKET_WAREHOUSE:TM208": {
+      "item": "POKE_BALL"
+    },
+    "SAFARI_ZONE:TM049": {
+      "item": "POKE_BALL"
+    },
+    "SAFARI_ZONE:TM239": {
+      "item": "POKE_BALL"
+    },
+    "SAFARI_ZONE:TM275": {
+      "item": "POKE_BALL"
+    },
+    "SILPH_CITY:TM276": {
+      "item": "POKE_BALL"
+    },
+    "SILPH_CITY:TM192": {
+      "item": "POKE_BALL"
+    },
+    "SILPH_CITY:TM064": {
+      "item": "POKE_BALL"
+    },
+    "VICTORY_ROAD:TM078": {
+      "item": "POKE_BALL"
+    },
+    "VICTORY_ROAD:TM241": {
+      "item": "POKE_BALL"
+    },
+    "VICTORY_ROAD:TM051": {
+      "item": "POKE_BALL"
+    },
+    "VICTORY_ROAD:TM157": {
+      "item": "POKE_BALL"
+    },
+    "KANTO_POKEMON_TOWER:CONFRONT GHOST": {
+      "draw": "ghost"
+    },
+    "NAVEL_ROCK:SAIL HOME": {
+      "sheet": "fr_62.png"
+    },
+    "SILPH_CITY:Silph scientist": {
+      "sheet": "fr_55.png"
+    },
+    "KANTO_ROUTE_23:BOULDER BADGE GUARD": {
+      "sheet": "fr_60.png"
+    },
+    "PALLET_TOWN:Last Bulbasaur Ball": {
+      "item": "POKE_BALL"
+    },
+    "PALLET_TOWN:Last Squirtle Ball": {
+      "item": "POKE_BALL"
+    },
+    "PALLET_TOWN:Last Charmander Ball": {
+      "item": "POKE_BALL"
+    },
+    "FOUR_ISLAND:Doll 1": {
+      "sheet": "fr_131.png"
+    },
+    "FOUR_ISLAND:Doll 12": {
+      "sheet": "fr_114.png"
+    },
+    "FOUR_ISLAND:Doll 13": {
+      "sheet": "fr_133.png"
+    },
+    "FOUR_ISLAND:Doll 2": {
+      "sheet": "fr_126.png"
+    },
+    "FOUR_ISLAND:Doll 3": {
+      "sheet": "fr_120.png"
+    },
+    "FOUR_ISLAND:Doll 4": {
+      "sheet": "fr_128.png"
+    },
+    "FOUR_ISLAND:Doll 5": {
+      "sheet": "fr_129.png"
+    },
+    "FOUR_ISLAND:Doll 6": {
+      "sheet": "fr_121.png"
+    },
+    "FOUR_ISLAND:Doll 7": {
+      "sheet": "fr_125.png"
+    },
+    "FOUR_ISLAND:Doll 8": {
+      "sheet": "fr_117.png"
+    },
+    "FOUR_ISLAND:Doll 9": {
+      "sheet": "fr_115.png"
+    },
+    "FOUR_ISLAND:Doll 10": {
+      "sheet": "fr_122.png"
+    },
+    "FOUR_ISLAND:Doll 11": {
+      "sheet": "fr_123.png"
+    },
+    "FOUR_ISLAND:Doll 14": {
+      "sheet": "fr_107.png"
+    },
+    "CERULEAN_CITY:Slowbro ": {
+      "sheet": "fr_129.png"
+    },
+    "CERULEAN_CITY:Trainer ": {
+      "sheet": "fr_22.png"
+    },
+    "TRAINER_TOWER:Albert": {
+      "sheet": "fr_41.png"
+    },
+    "TRAINER_TOWER:Alberto": {
+      "sheet": "fr_62.png"
+    },
+    "TRAINER_TOWER:Alek": {
+      "sheet": "fr_25.png"
+    },
+    "TRAINER_TOWER:Allyson": {
+      "sheet": "fr_42.png"
+    },
+    "TRAINER_TOWER:Anne": {
+      "sheet": "fr_42.png"
+    },
+    "TRAINER_TOWER:Axe": {
+      "sheet": "fr_44.png"
+    },
+    "TRAINER_TOWER:Balding man": {
+      "sheet": "fr_30.png"
+    },
+    "TRAINER_TOWER:Ben": {
+      "sheet": "fr_26.png"
+    },
+    "TRAINER_TOWER:Braden": {
+      "sheet": "fr_43.png"
+    },
+    "TRAINER_TOWER:Brandon": {
+      "sheet": "fr_20.png"
+    },
+    "TRAINER_TOWER:Brennan": {
+      "sheet": "fr_62.png"
+    },
+    "TRAINER_TOWER:CLERK": {
+      "sheet": "fr_66.png"
+    },
+    "TRAINER_TOWER:Camden": {
+      "sheet": "fr_30.png"
+    },
+    "TRAINER_TOWER:Camryn": {
+      "sheet": "fr_40.png"
+    },
+    "TRAINER_TOWER:Carl": {
+      "sheet": "fr_42.png"
+    },
+    "TRAINER_TOWER:Charlotte": {
+      "sheet": "fr_28.png"
+    },
+    "TRAINER_TOWER:Chelsea": {
+      "sheet": "fr_40.png"
+    },
+    "TRAINER_TOWER:Cole": {
+      "sheet": "fr_18.png"
+    },
+    "TRAINER_TOWER:Cooltrainer": {
+      "sheet": "fr_42.png"
+    },
+    "TRAINER_TOWER:Emanuel": {
+      "sheet": "fr_61.png"
+    },
+    "TRAINER_TOWER:Emy": {
+      "sheet": "fr_29.png"
+    },
+    "TRAINER_TOWER:Ernest": {
+      "sheet": "fr_53.png"
+    },
+    "TRAINER_TOWER:Flint": {
+      "sheet": "fr_30.png"
+    },
+    "TRAINER_TOWER:Gabriel": {
+      "sheet": "fr_53.png"
+    },
+    "TRAINER_TOWER:Geb": {
+      "sheet": "fr_25.png"
+    },
+    "TRAINER_TOWER:Haley": {
+      "sheet": "fr_54.png"
+    },
+    "TRAINER_TOWER:Isac": {
+      "sheet": "fr_41.png"
+    },
+    "TRAINER_TOWER:Jac": {
+      "sheet": "fr_52.png"
+    },
+    "TRAINER_TOWER:Jarrett": {
+      "sheet": "fr_26.png"
+    },
+    "TRAINER_TOWER:Jen": {
+      "sheet": "fr_17.png"
+    },
+    "TRAINER_TOWER:Jo": {
+      "sheet": "fr_24.png"
+    },
+    "TRAINER_TOWER:Joey": {
+      "sheet": "fr_39.png"
+    },
+    "TRAINER_TOWER:Jordy": {
+      "sheet": "fr_53.png"
+    },
+    "TRAINER_TOWER:Jos": {
+      "sheet": "fr_41.png"
+    },
+    "TRAINER_TOWER:Kaden": {
+      "sheet": "fr_57.png"
+    },
+    "TRAINER_TOWER:Kat": {
+      "sheet": "fr_44.png"
+    },
+    "TRAINER_TOWER:Kathleen": {
+      "sheet": "fr_42.png"
+    },
+    "TRAINER_TOWER:Kati": {
+      "sheet": "fr_29.png"
+    },
+    "TRAINER_TOWER:Kipp": {
+      "sheet": "fr_36.png"
+    },
+    "TRAINER_TOWER:Kira": {
+      "sheet": "fr_17.png"
+    },
+    "TRAINER_TOWER:Leah": {
+      "sheet": "fr_17.png"
+    },
+    "TRAINER_TOWER:Lily": {
+      "sheet": "fr_28.png"
+    },
+    "TRAINER_TOWER:Lisa": {
+      "sheet": "fr_17.png"
+    },
+    "TRAINER_TOWER:Lorenzo": {
+      "sheet": "fr_41.png"
+    },
+    "TRAINER_TOWER:Mag": {
+      "sheet": "fr_42.png"
+    },
+    "TRAINER_TOWER:Maura": {
+      "sheet": "fr_29.png"
+    },
+    "TRAINER_TOWER:Megan": {
+      "sheet": "fr_42.png"
+    },
+    "TRAINER_TOWER:Mikaela": {
+      "sheet": "fr_22.png"
+    },
+    "TRAINER_TOWER:Mike": {
+      "sheet": "fr_56.png"
+    },
+    "TRAINER_TOWER:Mily": {
+      "sheet": "fr_23.png"
+    },
+    "TRAINER_TOWER:NURSE": {
+      "sheet": "fr_64.png"
+    },
+    "TRAINER_TOWER:Natalia": {
+      "sheet": "fr_28.png"
+    },
+    "TRAINER_TOWER:Nia": {
+      "sheet": "fr_41.png"
+    },
+    "TRAINER_TOWER:Nicolas": {
+      "sheet": "fr_54.png"
+    },
+    "TRAINER_TOWER:OWNER": {
+      "sheet": "fr_70.png"
+    },
+    "TRAINER_TOWER:Owen": {
+      "sheet": "fr_55.png"
+    },
+    "TRAINER_TOWER:Priscilla": {
+      "sheet": "fr_37.png"
+    },
+    "TRAINER_TOWER:RECEPTIONIST": {
+      "sheet": "fr_66.png"
+    },
+    "TRAINER_TOWER:Rebecca": {
+      "sheet": "fr_24.png"
+    },
+    "TRAINER_TOWER:Ren": {
+      "sheet": "fr_36.png"
+    },
+    "TRAINER_TOWER:Rene": {
+      "sheet": "fr_54.png"
+    },
+    "TRAINER_TOWER:Ric": {
+      "sheet": "fr_24.png"
+    },
+    "TRAINER_TOWER:Shania": {
+      "sheet": "fr_44.png"
+    },
+    "TRAINER_TOWER:Trenton": {
+      "sheet": "fr_39.png"
+    },
+    "TRAINER_TOWER:Zackery": {
+      "sheet": "fr_55.png"
+    },
+    "FLOCCESY_TOWN:Mr. Medal": {
+      "sheet": "b2_c360.png"
+    },
+    "JOIN_AVENUE:Visitor 1": {
+      "sheet": "b2_c31.png"
+    },
+    "JOIN_AVENUE:Visitor 2": {
+      "sheet": "b2_c30.png"
+    },
+    "JOIN_AVENUE:Visitor 3": {
+      "sheet": "b2_c27.png"
+    },
     "JOHTO_VICTORY_ROAD:MAX ELIXIR": {
       "item": "POKE_BALL"
     },
@@ -810,577 +1809,18 @@
     "SINNOH_BATTLE_FRONTIER:Angler": {
       "sheet": "hg_fishing.png"
     },
-    "ASPERTIA_CITY:Bianca": {"sheet": "b2_bianca.png"},
-    "ASPERTIA_CITY:Boy at the school door": {"sheet": "b2_c11.png"},
-    "ASPERTIA_CITY:Boy by the Outlook road": {"sheet": "b2_c14.png"},
-    "ASPERTIA_CITY:Boy by the bed": {"sheet": "b2_c10.png"},
-    "ASPERTIA_CITY:Boy on the east side": {"sheet": "b2_c24.png"},
-    "ASPERTIA_CITY:Boy upstairs": {"sheet": "b2_c8.png"},
-    "ASPERTIA_CITY:Cheren": {"sheet": "b2_cheren.png"},
-    "ASPERTIA_CITY:Clerk": {"sheet": "b2_c81.png"},
-    "ASPERTIA_CITY:Clyde": {"sheet": "b2_c187.png"},
-    "ASPERTIA_CITY:Gate guard": {"sheet": "b2_c76.png"},
-    "ASPERTIA_CITY:Girl by the hedges": {"sheet": "b2_c28.png"},
-    "ASPERTIA_CITY:Girl by the house": {"sheet": "b2_c20.png"},
-    "ASPERTIA_CITY:Girl by the window": {"sheet": "b2_c16.png"},
-    "ASPERTIA_CITY:Girl in the gate": {"sheet": "b2_c18.png"},
-    "ASPERTIA_CITY:Girl on the east side": {"sheet": "b2_c15.png"},
-    "ASPERTIA_CITY:Girl upstairs": {"sheet": "b2_c22.png"},
-    "ASPERTIA_CITY:Girl with a Lillipup": {"sheet": "b2_c15.png"},
-    "ASPERTIA_CITY:Girl with a Lillipup ": {"sheet": "b2_c15.png"},
-    "ASPERTIA_CITY:Gym": {"sheet": "b2_cheren.png"},
-    "ASPERTIA_CITY:Lass Serena": {"sheet": "b2_c15.png"},
-    "ASPERTIA_CITY:Lillipup": {"sheet": "b2_c306.png"},
-    "ASPERTIA_CITY:Man by the counter": {"sheet": "b2_c25.png"},
-    "ASPERTIA_CITY:Man in Hugh's house": {"sheet": "b2_c46.png"},
-    "ASPERTIA_CITY:Mom": {"sheet": "b2_mom.png"},
-    "ASPERTIA_CITY:Mom ": {"sheet": "b2_mom.png"},
-    "ASPERTIA_CITY:Mr. Medal  ": {"sheet": "b2_c360.png"},
-    "ASPERTIA_CITY:Old man": {"sheet": "b2_c28.png"},
-    "ASPERTIA_CITY:Old woman": {"sheet": "b2_c29.png"},
-    "ASPERTIA_CITY:Poke Ball by the pond": {"sheet": "b2_item_ball.png"},
-    "ASPERTIA_CITY:Pok\u00e9mon Center": {"sheet": "b2_c78.png"},
-    "ASPERTIA_CITY:Purrloin": {"sheet": "b2_c308.png"},
-    "ASPERTIA_CITY:Shop": {"sheet": "b2_c82.png"},
-    "ASPERTIA_CITY:Student": {"sheet": "b2_c11.png"},
-    "ASPERTIA_CITY:Student at the back": {"sheet": "b2_c11.png"},
-    "ASPERTIA_CITY:Student by the desks": {"sheet": "b2_c12.png"},
-    "ASPERTIA_CITY:Teacher": {"sheet": "b2_c22.png"},
-    "ASPERTIA_CITY:Trainer by the door": {"sheet": "b2_c77.png"},
-    "ASPERTIA_CITY:Woman at the PC counter": {"sheet": "b2_c79.png"},
-    "ASPERTIA_CITY:Woman by the PC": {"sheet": "b2_c21.png"},
-    "ASPERTIA_CITY:Woman by the west road": {"sheet": "b2_c21.png"},
-    "ASPERTIA_CITY:Woman by the window": {"sheet": "b2_c21.png"},
-    "ASPERTIA_CITY:Woman upstairs": {"sheet": "b2_c23.png"},
-    "ASPERTIA_CITY:Youngster Pedro": {"sheet": "b2_c11.png"},
-    "ASPERTIA_CITY:{rival_name}'s mom": {"sheet": "b2_c23.png"},
-    "ASPERTIA_CITY:{rival_name}'s sister": {"sheet": "b2_c9.png"},
-    "CASTELIA_CITY:Ace Trainer by the window": {"sheet": "b2_c31.png"},
-    "CASTELIA_CITY:Ace Trainer by the window ": {"sheet": "b2_c31.png"},
-    "CASTELIA_CITY:Ace Trainer by the window  ": {"sheet": "b2_c31.png"},
-    "CASTELIA_CITY:Ace Trainer by the window   ": {"sheet": "b2_c31.png"},
-    "CASTELIA_CITY:Amanita": {"sheet": "b2_c16.png"},
-    "CASTELIA_CITY:Art lover": {"sheet": "b2_c18.png"},
-    "CASTELIA_CITY:Audino": {"sheet": "b2_c312.png"},
-    "CASTELIA_CITY:Badge expert": {"sheet": "b2_c64.png"},
-    "CASTELIA_CITY:Battle Company clerk": {"sheet": "b2_c52.png"},
-    "CASTELIA_CITY:Boy": {"sheet": "b2_c19.png"},
-    "CASTELIA_CITY:Boy by the window": {"sheet": "b2_c12.png"},
-    "CASTELIA_CITY:Boy in the line": {"sheet": "b2_c53.png"},
-    "CASTELIA_CITY:Boy on the pier": {"sheet": "b2_c11.png"},
-    "CASTELIA_CITY:Boy with a Roggenrola": {"sheet": "b2_c11.png"},
-    "CASTELIA_CITY:Boy with questions": {"sheet": "b2_c77.png"},
-    "CASTELIA_CITY:Burgh": {"sheet": "b2_c225.png"},
-    "CASTELIA_CITY:Cafe manager": {"sheet": "b2_c42.png"},
-    "CASTELIA_CITY:Casteliacone seller": {"sheet": "b2_c43.png"},
-    "CASTELIA_CITY:Clerk ": {"sheet": "b2_c82.png"},
-    "CASTELIA_CITY:Clerk  ": {"sheet": "b2_c81.png"},
-    "CASTELIA_CITY:Clerk 47F": {"sheet": "b2_c52.png"},
-    "CASTELIA_CITY:Clerk 47F ": {"sheet": "b2_c53.png"},
-    "CASTELIA_CITY:Clerk Britney": {"sheet": "b2_c53.png"},
-    "CASTELIA_CITY:Clerk Clemens": {"sheet": "b2_c52.png"},
-    "CASTELIA_CITY:Clerk Gilligan": {"sheet": "b2_c52.png"},
-    "CASTELIA_CITY:Clerk Warren": {"sheet": "b2_c52.png"},
-    "CASTELIA_CITY:Clerk by the bay": {"sheet": "b2_c52.png"},
-    "CASTELIA_CITY:Clerk by the desk": {"sheet": "b2_c52.png"},
-    "CASTELIA_CITY:Clerk by the desk ": {"sheet": "b2_c52.png"},
-    "CASTELIA_CITY:Clerk by the lift": {"sheet": "b2_c45.png"},
-    "CASTELIA_CITY:Clerk by the railing": {"sheet": "b2_c53.png"},
-    "CASTELIA_CITY:Clerk by the window": {"sheet": "b2_c52.png"},
-    "CASTELIA_CITY:Clerk going home": {"sheet": "b2_c52.png"},
-    "CASTELIA_CITY:Clerk in the cafe": {"sheet": "b2_c52.png"},
-    "CASTELIA_CITY:Clerk in the line": {"sheet": "b2_c52.png"},
-    "CASTELIA_CITY:Clerk looking out to sea": {"sheet": "b2_c52.png"},
-    "CASTELIA_CITY:Clerk on Gym Street": {"sheet": "b2_c52.png"},
-    "CASTELIA_CITY:Clerk on her break": {"sheet": "b2_c53.png"},
-    "CASTELIA_CITY:Clerk on the corner": {"sheet": "b2_c52.png"},
-    "CASTELIA_CITY:Clerk thinking": {"sheet": "b2_c53.png"},
-    "CASTELIA_CITY:Clerk with a coffee": {"sheet": "b2_c53.png"},
-    "CASTELIA_CITY:Clyde": {"sheet": "b2_c187.png"},
-    "CASTELIA_CITY:Colress": {"sheet": "b2_c250.png"},
-    "CASTELIA_CITY:Curator": {"sheet": "b2_c45.png"},
-    "CASTELIA_CITY:Curious man": {"sheet": "b2_c20.png"},
-    "CASTELIA_CITY:Dancer": {"sheet": "b2_c61.png"},
-    "CASTELIA_CITY:Dancer ": {"sheet": "b2_c61.png"},
-    "CASTELIA_CITY:Dancer at the party": {"sheet": "b2_c55.png"},
-    "CASTELIA_CITY:Developer": {"sheet": "b2_c73.png"},
-    "CASTELIA_CITY:Feeling Reader": {"sheet": "b2_c27.png"},
-    "CASTELIA_CITY:Fennel": {"sheet": "b2_c74.png"},
-    "CASTELIA_CITY:Fennel's assistant": {"sheet": "b2_c53.png"},
-    "CASTELIA_CITY:Game Director": {"sheet": "b2_c73.png"},
-    "CASTELIA_CITY:Gate guard": {"sheet": "b2_c76.png"},
-    "CASTELIA_CITY:Gate receptionist": {"sheet": "b2_c76.png"},
-    "CASTELIA_CITY:Gesundheit": {"sheet": "b2_c309.png"},
-    "CASTELIA_CITY:Girl": {"sheet": "b2_c31.png"},
-    "CASTELIA_CITY:Girl at the party": {"sheet": "b2_c16.png"},
-    "CASTELIA_CITY:Girl by the Patrat": {"sheet": "b2_c21.png"},
-    "CASTELIA_CITY:Girl by the lift": {"sheet": "b2_c13.png"},
-    "CASTELIA_CITY:Girl in the line": {"sheet": "b2_c31.png"},
-    "CASTELIA_CITY:Girl on the pier": {"sheet": "b2_c17.png"},
-    "CASTELIA_CITY:Girl with Potions": {"sheet": "b2_c31.png"},
-    "CASTELIA_CITY:Graphic Designer": {"sheet": "b2_c19.png"},
-    "CASTELIA_CITY:Guard": {"sheet": "b2_c72.png"},
-    "CASTELIA_CITY:Guest": {"sheet": "b2_c20.png"},
-    "CASTELIA_CITY:Guest ": {"sheet": "b2_c25.png"},
-    "CASTELIA_CITY:Guest  ": {"sheet": "b2_c37.png"},
-    "CASTELIA_CITY:Guest   ": {"sheet": "b2_c47.png"},
-    "CASTELIA_CITY:Guest    ": {"sheet": "b2_c13.png"},
-    "CASTELIA_CITY:Guest     ": {"sheet": "b2_c36.png"},
-    "CASTELIA_CITY:Guest      ": {"sheet": "b2_c31.png"},
-    "CASTELIA_CITY:Guitarist": {"sheet": "b2_c296.png"},
-    "CASTELIA_CITY:Guitarist in the cafe": {"sheet": "b2_c152.png"},
-    "CASTELIA_CITY:Gym": {"sheet": "b2_c225.png"},
-    "CASTELIA_CITY:Harlequin": {"sheet": "b2_c54.png"},
-    "CASTELIA_CITY:Harlequin ": {"sheet": "b2_c54.png"},
-    "CASTELIA_CITY:Harlequin  ": {"sheet": "b2_c54.png"},
-    "CASTELIA_CITY:Harlequin Anders": {"sheet": "b2_c54.png"},
-    "CASTELIA_CITY:Harlequin Clarence": {"sheet": "b2_c54.png"},
-    "CASTELIA_CITY:Harlequin Gary": {"sheet": "b2_c54.png"},
-    "CASTELIA_CITY:Harlequin at the desks": {"sheet": "b2_c54.png"},
-    "CASTELIA_CITY:Harlequin at the desks ": {"sheet": "b2_c54.png"},
-    "CASTELIA_CITY:Harlequin in the Medal Office": {"sheet": "b2_c54.png"},
-    "CASTELIA_CITY:Harlequin in the Medal Office ": {"sheet": "b2_c54.png"},
-    "CASTELIA_CITY:Harlequin in the gate": {"sheet": "b2_c54.png"},
-    "CASTELIA_CITY:Harlequin in the gate ": {"sheet": "b2_c54.png"},
-    "CASTELIA_CITY:Harlequin in the lobby": {"sheet": "b2_c54.png"},
-    "CASTELIA_CITY:Harlequin in the lobby ": {"sheet": "b2_c54.png"},
-    "CASTELIA_CITY:Hiker by the window": {"sheet": "b2_c64.png"},
-    "CASTELIA_CITY:Hiker in the line": {"sheet": "b2_c64.png"},
-    "CASTELIA_CITY:His Pokemon": {"sheet": "b2_c130.png"},
-    "CASTELIA_CITY:Iris": {"sheet": "b2_c355.png"},
-    "CASTELIA_CITY:Iris ": {"sheet": "b2_c355.png"},
-    "CASTELIA_CITY:Janitor": {"sheet": "b2_c69.png"},
-    "CASTELIA_CITY:Laughing man": {"sheet": "b2_c64.png"},
-    "CASTELIA_CITY:Liberty Garden sailor": {"sheet": "b2_c71.png"},
-    "CASTELIA_CITY:Lift guard": {"sheet": "b2_c83.png"},
-    "CASTELIA_CITY:Man by the door": {"sheet": "b2_c28.png"},
-    "CASTELIA_CITY:Man by the dumpsters": {"sheet": "b2_c83.png"},
-    "CASTELIA_CITY:Man by the lift": {"sheet": "b2_c83.png"},
-    "CASTELIA_CITY:Man by the rail": {"sheet": "b2_c21.png"},
-    "CASTELIA_CITY:Man by the stairs": {"sheet": "b2_c21.png"},
-    "CASTELIA_CITY:Man by the steps": {"sheet": "b2_c52.png"},
-    "CASTELIA_CITY:Man on the pier": {"sheet": "b2_c61.png"},
-    "CASTELIA_CITY:Man on the street": {"sheet": "b2_c31.png"},
-    "CASTELIA_CITY:Man on the street ": {"sheet": "b2_c31.png"},
-    "CASTELIA_CITY:Man scared of heights": {"sheet": "b2_c25.png"},
-    "CASTELIA_CITY:Medal Rally boy": {"sheet": "b2_c12.png"},
-    "CASTELIA_CITY:Medal fan": {"sheet": "b2_c53.png"},
-    "CASTELIA_CITY:Medal fan ": {"sheet": "b2_c69.png"},
-    "CASTELIA_CITY:Medal fan  ": {"sheet": "b2_c44.png"},
-    "CASTELIA_CITY:Morimoto": {"sheet": "b2_c18.png"},
-    "CASTELIA_CITY:Mr. Medal": {"sheet": "b2_c360.png"},
-    "CASTELIA_CITY:Mr. Medal ": {"sheet": "b2_c360.png"},
-    "CASTELIA_CITY:Name Rater": {"sheet": "b2_c28.png"},
-    "CASTELIA_CITY:Nishino": {"sheet": "b2_c25.png"},
-    "CASTELIA_CITY:Nurse by the PC": {"sheet": "b2_c60.png"},
-    "CASTELIA_CITY:Old man": {"sheet": "b2_c28.png"},
-    "CASTELIA_CITY:Old man by the fountain": {"sheet": "b2_c28.png"},
-    "CASTELIA_CITY:Old man on the pier": {"sheet": "b2_c32.png"},
-    "CASTELIA_CITY:Painter": {"sheet": "b2_c83.png"},
-    "CASTELIA_CITY:Party host": {"sheet": "b2_c44.png"},
-    "CASTELIA_CITY:Passerby Analytics leader": {"sheet": "b2_c73.png"},
-    "CASTELIA_CITY:Patrat": {"sheet": "b2_c128.png"},
-    "CASTELIA_CITY:Planner": {"sheet": "b2_c22.png"},
-    "CASTELIA_CITY:Poke Ball at the pier's end": {"sheet": "b2_item_ball.png"},
-    "CASTELIA_CITY:Poke Ball by the desks": {"sheet": "b2_item_ball.png"},
-    "CASTELIA_CITY:Poke Ball by the server": {"sheet": "b2_item_ball.png"},
-    "CASTELIA_CITY:Poke Ball by the window": {"sheet": "b2_item_ball.png"},
-    "CASTELIA_CITY:Poke Ball in the corner": {"sheet": "b2_item_ball.png"},
-    "CASTELIA_CITY:Pokemon": {"sheet": "b2_c307.png"},
-    "CASTELIA_CITY:Pokemon ": {"sheet": "b2_c305.png"},
-    "CASTELIA_CITY:Pokemon  ": {"sheet": "b2_c307.png"},
-    "CASTELIA_CITY:Pokemon fanatic": {"sheet": "b2_c73.png"},
-    "CASTELIA_CITY:Pokemon groomer": {"sheet": "b2_c64.png"},
-    "CASTELIA_CITY:Pok\u00e9mon Center": {"sheet": "b2_c78.png"},
-    "CASTELIA_CITY:Pop Roxie": {"sheet": "b2_c359.png"},
-    "CASTELIA_CITY:Pop Roxie ": {"sheet": "b2_c359.png"},
-    "CASTELIA_CITY:President": {"sheet": "b2_c69.png"},
-    "CASTELIA_CITY:Programmer": {"sheet": "b2_c73.png"},
-    "CASTELIA_CITY:Receptionist": {"sheet": "b2_c76.png"},
-    "CASTELIA_CITY:Receptionist ": {"sheet": "b2_c20.png"},
-    "CASTELIA_CITY:Receptionist  ": {"sheet": "b2_c76.png"},
-    "CASTELIA_CITY:Receptionist   ": {"sheet": "b2_c76.png"},
-    "CASTELIA_CITY:Regular": {"sheet": "b2_c83.png"},
-    "CASTELIA_CITY:Roggenrola": {"sheet": "b2_c325.png"},
-    "CASTELIA_CITY:Royal Unova attendant": {"sheet": "b2_c76.png"},
-    "CASTELIA_CITY:Sewer worker": {"sheet": "b2_c67.png"},
-    "CASTELIA_CITY:Ship attendant": {"sheet": "b2_c76.png"},
-    "CASTELIA_CITY:Shop": {"sheet": "b2_c79.png"},
-    "CASTELIA_CITY:Sound Designer": {"sheet": "b2_c18.png"},
-    "CASTELIA_CITY:Staff": {"sheet": "b2_c19.png"},
-    "CASTELIA_CITY:Staff ": {"sheet": "b2_c21.png"},
-    "CASTELIA_CITY:Statistician": {"sheet": "b2_c22.png"},
-    "CASTELIA_CITY:Statistician ": {"sheet": "b2_c19.png"},
-    "CASTELIA_CITY:Statistician  ": {"sheet": "b2_c11.png"},
-    "CASTELIA_CITY:Statistician   ": {"sheet": "b2_c17.png"},
-    "CASTELIA_CITY:Tired clerk": {"sheet": "b2_c53.png"},
-    "CASTELIA_CITY:Tired traveller": {"sheet": "b2_c22.png"},
-    "CASTELIA_CITY:Trainer by the Gym": {"sheet": "b2_c32.png"},
-    "CASTELIA_CITY:Visitor": {"sheet": "b2_c52.png"},
-    "CASTELIA_CITY:Woman at the party": {"sheet": "b2_c22.png"},
-    "CASTELIA_CITY:Woman at the party ": {"sheet": "b2_c22.png"},
-    "CASTELIA_CITY:Woman by the desk": {"sheet": "b2_c23.png"},
-    "CASTELIA_CITY:Woman by the door": {"sheet": "b2_c77.png"},
-    "CASTELIA_CITY:Woman by the gate": {"sheet": "b2_c52.png"},
-    "CASTELIA_CITY:Woman by the water": {"sheet": "b2_c44.png"},
-    "CASTELIA_CITY:Woman by the window ": {"sheet": "b2_c314.png"},
-    "CASTELIA_CITY:Woman in the cafe": {"sheet": "b2_c33.png"},
-    "CASTELIA_CITY:Woman in the gate": {"sheet": "b2_c53.png"},
-    "CASTELIA_CITY:Woman in the lobby": {"sheet": "b2_c53.png"},
-    "CASTELIA_CITY:Woman with a Palpitoad": {"sheet": "b2_c53.png"},
-    "CASTELIA_CITY:Worker by the bridge": {"sheet": "b2_c67.png"},
-    "CASTELIA_EMPTY_LOT:Man in the lot": {"sheet": "b2_c32.png"},
-    "CASTELIA_EMPTY_LOT:Poke Ball in the park": {"sheet": "b2_item_ball.png"},
-    "CASTELIA_SEWERS:Dancer Jean-Paul": {"sheet": "b2_c55.png"},
-    "CASTELIA_SEWERS:Guitarist Tina": {"sheet": "b2_c297.png"},
-    "CASTELIA_SEWERS:Guitarist Tina ": {"sheet": "b2_c297.png"},
-    "CASTELIA_SEWERS:Man in the tunnel": {"sheet": "b2_c52.png"},
-    "CASTELIA_SEWERS:Plasma Grunt": {"sheet": "b2_c293.png"},
-    "CASTELIA_SEWERS:Plasma Grunt ": {"sheet": "b2_c293.png"},
-    "CASTELIA_SEWERS:Poke Ball by the Doctor": {"sheet": "b2_item_ball.png"},
-    "CASTELIA_SEWERS:Poke Ball by the Grunts": {"sheet": "b2_item_ball.png"},
-    "CASTELIA_SEWERS:Poke Ball by the gate": {"sheet": "b2_item_ball.png"},
-    "CASTELIA_SEWERS:Poke Ball by the north stairs": {"sheet": "b2_item_ball.png"},
-    "CASTELIA_SEWERS:Poke Ball by the south-west stairs": {"sheet": "b2_item_ball.png"},
-    "CASTELIA_SEWERS:Poke Ball by the trucks": {"sheet": "b2_item_ball.png"},
-    "CASTELIA_SEWERS:Poke Ball in the far south": {"sheet": "b2_item_ball.png"},
-    "CASTELIA_SEWERS:Poke Ball in the south": {"sheet": "b2_item_ball.png"},
-    "CASTELIA_SEWERS:Poke Ball in the west channel": {"sheet": "b2_item_ball.png"},
-    "CASTELIA_SEWERS:Poke Ball on the island": {"sheet": "b2_item_ball.png"},
-    "CASTELIA_SEWERS:Poke Ball past the Scientist": {"sheet": "b2_item_ball.png"},
-    "CASTELIA_SEWERS:Roughneck Ricky": {"sheet": "b2_c61.png"},
-    "CASTELIA_SEWERS:Scientist": {"sheet": "b2_c73.png"},
-    "CASTELIA_SEWERS:Scientist ": {"sheet": "b2_c74.png"},
-    "CASTELIA_SEWERS:Worker by the channel": {"sheet": "b2_c19.png"},
-    "CASTELIA_SEWERS:Worker by the channel ": {"sheet": "b2_c19.png"},
-    "CASTELIA_SEWERS:{rival_name}": {"sheet": "b2_hugh.png"},
-    "DESERT_RESORT:Backpacker who wants water": {"sheet": "b2_c48.png"},
-    "DESERT_RESORT:Hiker in the dunes": {"sheet": "b2_c46.png"},
-    "DESERT_RESORT:Nurse Mariah": {"sheet": "b2_c51.png"},
-    "DESERT_RESORT:Nurse Mariah ": {"sheet": "b2_c51.png"},
-    "DESERT_RESORT:Poke Ball by the castle": {"sheet": "b2_item_ball.png"},
-    "DESERT_RESORT:Poke Ball by the rocks": {"sheet": "b2_item_ball.png"},
-    "DESERT_RESORT:Poke Ball in the east": {"sheet": "b2_item_ball.png"},
-    "DESERT_RESORT:Poke Ball in the north-west": {"sheet": "b2_item_ball.png"},
-    "DESERT_RESORT:Poke Ball in the sand": {"sheet": "b2_item_ball.png"},
-    "DESERT_RESORT:Poke Ball in the south": {"sheet": "b2_item_ball.png"},
-    "DESERT_RESORT:Poke Ball in the south-west": {"sheet": "b2_item_ball.png"},
-    "DESERT_RESORT:Poke Ball near the nurse": {"sheet": "b2_item_ball.png"},
-    "DESERT_RESORT:Pokemon Ranger in the sand": {"sheet": "b2_c83.png"},
-    "DESERT_RESORT:Treasure hunter": {"sheet": "b2_c36.png"},
-    "DESERT_RESORT_ENTRANCE:Backpacker by the gate": {"sheet": "b2_c12.png"},
-    "DESERT_RESORT_ENTRANCE:Gate guard": {"sheet": "b2_c76.png"},
-    "DESERT_RESORT_ENTRANCE:Hiker by the gate": {"sheet": "b2_c24.png"},
-    "DESERT_RESORT_ENTRANCE:School Kid in the gate": {"sheet": "b2_c12.png"},
-    "FLOCCESY_RANCH:Herdier": {"sheet": "b2_c307.png"},
-    "FLOCCESY_RANCH:Herdier ": {"sheet": "b2_c307.png"},
-    "FLOCCESY_RANCH:Mareep": {"sheet": "b2_c363.png"},
-    "FLOCCESY_RANCH:Mareep ": {"sheet": "b2_c363.png"},
-    "FLOCCESY_RANCH:Mareep  ": {"sheet": "b2_c363.png"},
-    "FLOCCESY_RANCH:Mareep   ": {"sheet": "b2_c363.png"},
-    "FLOCCESY_RANCH:Mareep    ": {"sheet": "b2_c363.png"},
-    "FLOCCESY_RANCH:Owner's wife": {"sheet": "b2_c35.png"},
-    "FLOCCESY_RANCH:Poke Ball between the pastures": {"sheet": "b2_item_ball.png"},
-    "FLOCCESY_RANCH:Poke Ball in the forest": {"sheet": "b2_item_ball.png"},
-    "FLOCCESY_RANCH:Poke Ball south of the youngster": {"sheet": "b2_item_ball.png"},
-    "FLOCCESY_RANCH:Ranch owner": {"sheet": "b2_c34.png"},
-    "FLOCCESY_RANCH:{rival_name}": {"sheet": "b2_hugh.png"},
-    "FLOCCESY_TOWN:Alder": {"sheet": "b2_c97.png"},
-    "FLOCCESY_TOWN:Alder   ": {"sheet": "b2_c97.png"},
-    "FLOCCESY_TOWN:Boy by Alder's house": {"sheet": "b2_c28.png"},
-    "FLOCCESY_TOWN:Boy by the PCs": {"sheet": "b2_c77.png"},
-    "FLOCCESY_TOWN:Boy by the bed": {"sheet": "b2_c25.png"},
-    "FLOCCESY_TOWN:Boy on the path": {"sheet": "b2_c10.png"},
-    "FLOCCESY_TOWN:Cassie": {"sheet": "b2_c16.png"},
-    "FLOCCESY_TOWN:Clerk ": {"sheet": "b2_c82.png"},
-    "FLOCCESY_TOWN:Girl at the PC": {"sheet": "b2_c16.png"},
-    "FLOCCESY_TOWN:Girl by the steps": {"sheet": "b2_c22.png"},
-    "FLOCCESY_TOWN:Lillipup": {"sheet": "b2_c306.png"},
-    "FLOCCESY_TOWN:Man by the clock": {"sheet": "b2_c10.png"},
-    "FLOCCESY_TOWN:Man by the door": {"sheet": "b2_c19.png"},
-    "FLOCCESY_TOWN:Man by the window": {"sheet": "b2_c27.png"},
-    "FLOCCESY_TOWN:Mr. Medal ": {"sheet": "b2_c360.png"},
-    "FLOCCESY_TOWN:Old man": {"sheet": "b2_c8.png"},
-    "FLOCCESY_TOWN:Patrat": {"sheet": "b2_c128.png"},
-    "FLOCCESY_TOWN:Patrat's owner": {"sheet": "b2_c28.png"},
-    "FLOCCESY_TOWN:Poke Ball west of Alder's house": {"sheet": "b2_item_ball.png"},
-    "FLOCCESY_TOWN:Pok\u00e9mon Center": {"sheet": "b2_c78.png"},
-    "FLOCCESY_TOWN:Seymour": {"sheet": "b2_c12.png"},
-    "FLOCCESY_TOWN:Shop": {"sheet": "b2_c79.png"},
-    "FLOCCESY_TOWN:Woman by the Center": {"sheet": "b2_c14.png"},
-    "FLOCCESY_TOWN:Woman by the counter": {"sheet": "b2_c77.png"},
-    "FLOCCESY_TOWN:Woman by the table": {"sheet": "b2_c23.png"},
-    "FLOCCESY_TOWN:Woman by the tower": {"sheet": "b2_c24.png"},
-    "JOIN_AVENUE:Assistant Future": {"sheet": "b2_c53.png"},
-    "JOIN_AVENUE:Assistant Future ": {"sheet": "b2_c53.png"},
-    "JOIN_AVENUE:Assistant Jacci": {"sheet": "b2_c53.png"},
-    "JOIN_AVENUE:Assistant Jacci ": {"sheet": "b2_c53.png"},
-    "JOIN_AVENUE:Join Avenue owner": {"sheet": "b2_c52.png"},
-    "JOIN_AVENUE:Owner in the office": {"sheet": "b2_c52.png"},
-    "JOIN_AVENUE:Receptionist": {"sheet": "b2_c76.png"},
-    "JOIN_AVENUE:Shopkeeper on lot 1": {"sheet": "b2_c24.png"},
-    "JOIN_AVENUE:Shopkeeper on lot 2": {"sheet": "b2_c22.png"},
-    "JOIN_AVENUE:Shopkeeper on lot 3": {"sheet": "b2_c33.png"},
-    "JOIN_AVENUE:Shopkeeper on lot 4": {"sheet": "b2_c26.png"},
-    "JOIN_AVENUE:Shopkeeper on lot 5": {"sheet": "b2_c44.png"},
-    "JOIN_AVENUE:Shopkeeper on lot 6": {"sheet": "b2_c96.png"},
-    "JOIN_AVENUE:Shopkeeper on lot 7": {"sheet": "b2_c58.png"},
-    "JOIN_AVENUE:Shopkeeper on lot 8": {"sheet": "b2_c65.png"},
-    "JOIN_AVENUE:Visitor 1 antique": {"sheet": "b2_c44.png"},
-    "JOIN_AVENUE:Visitor 1 cafe": {"sheet": "b2_c65.png"},
-    "JOIN_AVENUE:Visitor 1 dojo": {"sheet": "b2_c46.png"},
-    "JOIN_AVENUE:Visitor 1 florist": {"sheet": "b2_c22.png"},
-    "JOIN_AVENUE:Visitor 1 market": {"sheet": "b2_c52.png"},
-    "JOIN_AVENUE:Visitor 1 nursery": {"sheet": "b2_c33.png"},
-    "JOIN_AVENUE:Visitor 1 raffle": {"sheet": "b2_c58.png"},
-    "JOIN_AVENUE:Visitor 1 salon": {"sheet": "b2_c96.png"},
-    "JOIN_AVENUE:Visitor 2 antique": {"sheet": "b2_c44.png"},
-    "JOIN_AVENUE:Visitor 2 cafe": {"sheet": "b2_c65.png"},
-    "JOIN_AVENUE:Visitor 2 dojo": {"sheet": "b2_c46.png"},
-    "JOIN_AVENUE:Visitor 2 florist": {"sheet": "b2_c22.png"},
-    "JOIN_AVENUE:Visitor 2 market": {"sheet": "b2_c52.png"},
-    "JOIN_AVENUE:Visitor 2 nursery": {"sheet": "b2_c33.png"},
-    "JOIN_AVENUE:Visitor 2 raffle": {"sheet": "b2_c58.png"},
-    "JOIN_AVENUE:Visitor 2 salon": {"sheet": "b2_c96.png"},
-    "JOIN_AVENUE:Visitor 3 antique": {"sheet": "b2_c44.png"},
-    "JOIN_AVENUE:Visitor 3 cafe": {"sheet": "b2_c65.png"},
-    "JOIN_AVENUE:Visitor 3 dojo": {"sheet": "b2_c46.png"},
-    "JOIN_AVENUE:Visitor 3 florist": {"sheet": "b2_c22.png"},
-    "JOIN_AVENUE:Visitor 3 market": {"sheet": "b2_c52.png"},
-    "JOIN_AVENUE:Visitor 3 nursery": {"sheet": "b2_c33.png"},
-    "JOIN_AVENUE:Visitor 3 raffle": {"sheet": "b2_c58.png"},
-    "JOIN_AVENUE:Visitor 3 salon": {"sheet": "b2_c96.png"},
-    "LIBERTY_GARDEN:Boy in the trees": {"sheet": "b2_c72.png"},
-    "LIBERTY_GARDEN:Girl by the dock": {"sheet": "b2_c48.png"},
-    "LIBERTY_GARDEN:Liberty Garden sailor": {"sheet": "b2_c71.png"},
-    "LIBERTY_GARDEN:Man on the path": {"sheet": "b2_c8.png"},
-    "LIBERTY_GARDEN:Man on the south walk": {"sheet": "b2_c83.png"},
-    "LIBERTY_GARDEN:Man on the south walk ": {"sheet": "b2_c83.png"},
-    "LIBERTY_GARDEN:Victini": {"sheet": "b2_victini.png"},
-    "LIBERTY_GARDEN:Woman by the lighthouse": {"sheet": "b2_c29.png"},
-    "LIBERTY_GARDEN:Woman on the east walk": {"sheet": "b2_c22.png"},
-    "POKESTAR_STUDIOS:Actor rehearsing": {"sheet": "b2_c18.png"},
-    "POKESTAR_STUDIOS:Actress": {"sheet": "b2_c53.png"},
-    "POKESTAR_STUDIOS:Actress by the props": {"sheet": "b2_c24.png"},
-    "POKESTAR_STUDIOS:Assistant director": {"sheet": "b2_c358.png"},
-    "POKESTAR_STUDIOS:Boy by the posters": {"sheet": "b2_c54.png"},
-    "POKESTAR_STUDIOS:Boy dreaming big": {"sheet": "b2_c8.png"},
-    "POKESTAR_STUDIOS:Boy with a Stunfisk": {"sheet": "b2_c13.png"},
-    "POKESTAR_STUDIOS:Cameraman": {"sheet": "b2_c24.png"},
-    "POKESTAR_STUDIOS:Child actress": {"sheet": "b2_c62.png"},
-    "POKESTAR_STUDIOS:Director by the bridge": {"sheet": "b2_c346.png"},
-    "POKESTAR_STUDIOS:Director by the set": {"sheet": "b2_c346.png"},
-    "POKESTAR_STUDIOS:Director looking up": {"sheet": "b2_c346.png"},
-    "POKESTAR_STUDIOS:Director on set": {"sheet": "b2_c18.png"},
-    "POKESTAR_STUDIOS:Dressing room guard": {"sheet": "b2_c72.png"},
-    "POKESTAR_STUDIOS:Effects specialist": {"sheet": "b2_c24.png"},
-    "POKESTAR_STUDIOS:Fan in the lobby": {"sheet": "b2_c48.png"},
-    "POKESTAR_STUDIOS:Girl by the posters": {"sheet": "b2_c9.png"},
-    "POKESTAR_STUDIOS:Girl by the screens": {"sheet": "b2_c15.png"},
-    "POKESTAR_STUDIOS:Girl with a Lillipup": {"sheet": "b2_c22.png"},
-    "POKESTAR_STUDIOS:Guard by the back": {"sheet": "b2_c72.png"},
-    "POKESTAR_STUDIOS:Her manager": {"sheet": "b2_c9.png"},
-    "POKESTAR_STUDIOS:Lillipup on set": {"sheet": "b2_c306.png"},
-    "POKESTAR_STUDIOS:Man by the portraits": {"sheet": "b2_c28.png"},
-    "POKESTAR_STUDIOS:Old woman": {"sheet": "b2_c69.png"},
-    "POKESTAR_STUDIOS:Policeman": {"sheet": "b2_c60.png"},
-    "POKESTAR_STUDIOS:Portrait seller": {"sheet": "b2_c303.png"},
-    "POKESTAR_STUDIOS:Prop maker": {"sheet": "b2_c24.png"},
-    "POKESTAR_STUDIOS:Receptionist": {"sheet": "b2_c346.png"},
-    "POKESTAR_STUDIOS:Rookie AD": {"sheet": "b2_c24.png"},
-    "POKESTAR_STUDIOS:Rookie AD ": {"sheet": "b2_c25.png"},
-    "POKESTAR_STUDIOS:Screenwriter": {"sheet": "b2_c20.png"},
-    "POKESTAR_STUDIOS:Sound engineer ": {"sheet": "b2_c346.png"},
-    "POKESTAR_STUDIOS:Studio guide": {"sheet": "b2_c20.png"},
-    "POKESTAR_STUDIOS:Stunfisk": {"sheet": "b2_c320.png"},
-    "POKESTAR_STUDIOS:Suit actor": {"sheet": "b2_c162.png"},
-    "POKESTAR_STUDIOS:Suit actor ": {"sheet": "b2_c163.png"},
-    "POKESTAR_STUDIOS:Theater attendant": {"sheet": "b2_c76.png"},
-    "POKESTAR_STUDIOS:Woman by the screens": {"sheet": "b2_c22.png"},
-    "POKESTAR_STUDIOS:Woman by the trailer": {"sheet": "b2_c26.png"},
-    "POKESTAR_STUDIOS:Woman in the lobby": {"sheet": "b2_c22.png"},
-    "POKESTAR_STUDIOS:Woman waiting": {"sheet": "b2_c24.png"},
-    "RELIC_CASTLE:Hiker in the ruins": {"sheet": "b2_c73.png"},
-    "RELIC_CASTLE:Poke Ball in the sand": {"sheet": "b2_item_ball.png"},
-    "RELIC_CASTLE:Psychic Dua": {"sheet": "b2_c184.png"},
-    "RELIC_CASTLE:Psychic Low": {"sheet": "b2_c183.png"},
-    "ROYAL_UNOVA:Ace Trainer Henry": {"sheet": "b2_c30.png"},
-    "ROYAL_UNOVA:Ace Trainer Henry ": {"sheet": "b2_c30.png"},
-    "ROYAL_UNOVA:Ace Trainer Mariana": {"sheet": "b2_c31.png"},
-    "ROYAL_UNOVA:Ace Trainer Mariana ": {"sheet": "b2_c31.png"},
-    "ROYAL_UNOVA:Backer in cabin 22": {"sheet": "b2_c59.png"},
-    "ROYAL_UNOVA:Boy in the corridor": {"sheet": "b2_c11.png"},
-    "ROYAL_UNOVA:Clerk Chaz": {"sheet": "b2_c52.png"},
-    "ROYAL_UNOVA:Clerk Chaz ": {"sheet": "b2_c52.png"},
-    "ROYAL_UNOVA:Gentleman Robert": {"sheet": "b2_c44.png"},
-    "ROYAL_UNOVA:Gentleman Robert ": {"sheet": "b2_c44.png"},
-    "ROYAL_UNOVA:Gentleman in cabin 11": {"sheet": "b2_c44.png"},
-    "ROYAL_UNOVA:Girl by the port cabins": {"sheet": "b2_c16.png"},
-    "ROYAL_UNOVA:Girl in the corridor": {"sheet": "b2_c14.png"},
-    "ROYAL_UNOVA:Lady Elizandra": {"sheet": "b2_c22.png"},
-    "ROYAL_UNOVA:Lady Elizandra ": {"sheet": "b2_c22.png"},
-    "ROYAL_UNOVA:Lady in cabin 15": {"sheet": "b2_c22.png"},
-    "ROYAL_UNOVA:Lass Sibyl": {"sheet": "b2_c15.png"},
-    "ROYAL_UNOVA:Lass Sibyl ": {"sheet": "b2_c15.png"},
-    "ROYAL_UNOVA:Maid Tanya": {"sheet": "b2_c65.png"},
-    "ROYAL_UNOVA:Maid Tanya ": {"sheet": "b2_c65.png"},
-    "ROYAL_UNOVA:Man in the hall": {"sheet": "b2_c18.png"},
-    "ROYAL_UNOVA:Passenger in Abe's cabin": {"sheet": "b2_c11.png"},
-    "ROYAL_UNOVA:Passenger in Brad's cabin": {"sheet": "b2_c58.png"},
-    "ROYAL_UNOVA:Passenger in Cassandra's cabin": {"sheet": "b2_c96.png"},
-    "ROYAL_UNOVA:Passenger in Chaz's cabin": {"sheet": "b2_c52.png"},
-    "ROYAL_UNOVA:Passenger in Elizandra's cabin": {"sheet": "b2_c22.png"},
-    "ROYAL_UNOVA:Passenger in Henry's cabin": {"sheet": "b2_c30.png"},
-    "ROYAL_UNOVA:Passenger in Mariana's cabin": {"sheet": "b2_c31.png"},
-    "ROYAL_UNOVA:Passenger in Robert's cabin": {"sheet": "b2_c44.png"},
-    "ROYAL_UNOVA:Passenger in Sibyl's cabin": {"sheet": "b2_c15.png"},
-    "ROYAL_UNOVA:Rich Boy Brad": {"sheet": "b2_c58.png"},
-    "ROYAL_UNOVA:Rich Boy Brad ": {"sheet": "b2_c58.png"},
-    "ROYAL_UNOVA:Rich Boy in cabin 16": {"sheet": "b2_c58.png"},
-    "ROYAL_UNOVA:Sailor at the deck stairs": {"sheet": "b2_c75.png"},
-    "ROYAL_UNOVA:Sailor by the stairs": {"sheet": "b2_c75.png"},
-    "ROYAL_UNOVA:Sailor in the west hall": {"sheet": "b2_c75.png"},
-    "ROYAL_UNOVA:Sailor to port": {"sheet": "b2_c75.png"},
-    "ROYAL_UNOVA:Sailor to starboard": {"sheet": "b2_c75.png"},
-    "ROYAL_UNOVA:Sailor's boy": {"sheet": "b2_c10.png"},
-    "ROYAL_UNOVA:Socialite Cassandra": {"sheet": "b2_c96.png"},
-    "ROYAL_UNOVA:Socialite Cassandra ": {"sheet": "b2_c96.png"},
-    "ROYAL_UNOVA:Socialite in cabin 10": {"sheet": "b2_c96.png"},
-    "ROYAL_UNOVA:Youngster Abe": {"sheet": "b2_c11.png"},
-    "ROYAL_UNOVA:Youngster Abe ": {"sheet": "b2_c11.png"},
-    "UNOVA_ROUTE_19:Alder": {"sheet": "b2_c97.png"},
-    "UNOVA_ROUTE_19:Bianca": {"sheet": "b2_bianca.png"},
-    "UNOVA_ROUTE_19:Boy at the stairs": {"sheet": "b2_c11.png"},
-    "UNOVA_ROUTE_19:Boy in the grass": {"sheet": "b2_c15.png"},
-    "UNOVA_ROUTE_19:Poke Ball by the pond": {"sheet": "b2_item_ball.png"},
-    "UNOVA_ROUTE_19:Poke Ball in the grass": {"sheet": "b2_item_ball.png"},
-    "UNOVA_ROUTE_19:Poke Ball on the north path": {"sheet": "b2_item_ball.png"},
-    "UNOVA_ROUTE_19:Youngster by the ledge": {"sheet": "b2_c11.png"},
-    "UNOVA_ROUTE_20:Hiker Jerome": {"sheet": "b2_c64.png"},
-    "UNOVA_ROUTE_20:Hiker Jerome ": {"sheet": "b2_c64.png"},
-    "UNOVA_ROUTE_20:Man by the sign": {"sheet": "b2_c14.png"},
-    "UNOVA_ROUTE_20:Plasma Grunt": {"sheet": "b2_c294.png"},
-    "UNOVA_ROUTE_20:Poke Ball by the nursery aide": {"sheet": "b2_item_ball.png"},
-    "UNOVA_ROUTE_20:Poke Ball by the preschoolers": {"sheet": "b2_c210.png"},
-    "UNOVA_ROUTE_20:Poke Ball in the dark grass": {"sheet": "b2_c216.png"},
-    "UNOVA_ROUTE_20:Poke Ball north of the lass": {"sheet": "b2_item_ball.png"},
-    "UNOVA_ROUTE_20:Twin Lily": {"sheet": "b2_c9.png"},
-    "UNOVA_ROUTE_4:Ace Trainer in the house": {"sheet": "b2_c31.png"},
-    "UNOVA_ROUTE_4:Ace Trainer's brother": {"sheet": "b2_c30.png"},
-    "UNOVA_ROUTE_4:Biker upstairs": {"sheet": "b2_c72.png"},
-    "UNOVA_ROUTE_4:Black Belt upstairs": {"sheet": "b2_c46.png"},
-    "UNOVA_ROUTE_4:Boy in the empty house": {"sheet": "b2_c10.png"},
-    "UNOVA_ROUTE_4:Braviary": {"sheet": "b2_c4712.png"},
-    "UNOVA_ROUTE_4:Colress": {"sheet": "b2_c250.png"},
-    "UNOVA_ROUTE_4:Crustle 0": {"sheet": "b2_c326.png"},
-    "UNOVA_ROUTE_4:Crustle 1": {"sheet": "b2_c326.png"},
-    "UNOVA_ROUTE_4:Crustle 10": {"sheet": "b2_c326.png"},
-    "UNOVA_ROUTE_4:Crustle 2": {"sheet": "b2_c326.png"},
-    "UNOVA_ROUTE_4:Crustle 3": {"sheet": "b2_c326.png"},
-    "UNOVA_ROUTE_4:Crustle 4": {"sheet": "b2_c326.png"},
-    "UNOVA_ROUTE_4:Crustle 5": {"sheet": "b2_c326.png"},
-    "UNOVA_ROUTE_4:Crustle 6": {"sheet": "b2_c326.png"},
-    "UNOVA_ROUTE_4:Crustle 7": {"sheet": "b2_c326.png"},
-    "UNOVA_ROUTE_4:Crustle 8": {"sheet": "b2_c326.png"},
-    "UNOVA_ROUTE_4:Crustle 9": {"sheet": "b2_c326.png"},
-    "UNOVA_ROUTE_4:Girl in the sand": {"sheet": "b2_c22.png"},
-    "UNOVA_ROUTE_4:Girl upstairs": {"sheet": "b2_c16.png"},
-    "UNOVA_ROUTE_4:Herdier": {"sheet": "b2_c325.png"},
-    "UNOVA_ROUTE_4:Lass who wants Cottonee": {"sheet": "b2_c15.png"},
-    "UNOVA_ROUTE_4:Lillipup": {"sheet": "b2_c306.png"},
-    "UNOVA_ROUTE_4:Maid who imitates cries": {"sheet": "b2_c43.png"},
-    "UNOVA_ROUTE_4:Man by the TV": {"sheet": "b2_c155.png"},
-    "UNOVA_ROUTE_4:Man by the gate": {"sheet": "b2_c64.png"},
-    "UNOVA_ROUTE_4:Man in the empty house": {"sheet": "b2_c44.png"},
-    "UNOVA_ROUTE_4:Man upstairs": {"sheet": "b2_c25.png"},
-    "UNOVA_ROUTE_4:Mandibuzz": {"sheet": "b2_c348.png"},
-    "UNOVA_ROUTE_4:Mareep in the rest house": {"sheet": "b2_c131.png"},
-    "UNOVA_ROUTE_4:Poke Ball by the TV": {"sheet": "b2_item_ball.png"},
-    "UNOVA_ROUTE_4:Poke Ball by the road": {"sheet": "b2_item_ball.png"},
-    "UNOVA_ROUTE_4:Poke Ball by the water": {"sheet": "b2_item_ball.png"},
-    "UNOVA_ROUTE_4:Poke Ball in the expansion area": {"sheet": "b2_item_ball.png"},
-    "UNOVA_ROUTE_4:Poke Ball in the sand": {"sheet": "b2_item_ball.png"},
-    "UNOVA_ROUTE_4:Vending machine": {"sheet": "b2_none.png"},
-    "UNOVA_ROUTE_4:Woman by the road": {"sheet": "b2_c19.png"},
-    "UNOVA_ROUTE_4:Woman in the empty house": {"sheet": "b2_c20.png"},
-    "UNOVA_ROUTE_4:Woman in the rest house": {"sheet": "b2_c27.png"},
-    "UNOVA_ROUTE_4:Woman upstairs": {"sheet": "b2_c27.png"},
-    "UNOVA_ROUTE_4:Woman upstairs ": {"sheet": "b2_c28.png"},
-    "UNOVA_ROUTE_4:Worker by the boulders": {"sheet": "b2_c67.png"},
-    "UNOVA_ROUTE_4:Worker by the boulders ": {"sheet": "b2_c67.png"},
-    "VIRBANK_CITY:Audino": {"sheet": "b2_c312.png"},
-    "VIRBANK_CITY:Boy by the door": {"sheet": "b2_c77.png"},
-    "VIRBANK_CITY:Boy by the door ": {"sheet": "b2_c77.png"},
-    "VIRBANK_CITY:Boy in the house": {"sheet": "b2_c28.png"},
-    "VIRBANK_CITY:Boy on the bridge": {"sheet": "b2_c11.png"},
-    "VIRBANK_CITY:Clerk ": {"sheet": "b2_c82.png"},
-    "VIRBANK_CITY:Clerk  ": {"sheet": "b2_c81.png"},
-    "VIRBANK_CITY:Clyde": {"sheet": "b2_c187.png"},
-    "VIRBANK_CITY:Gate attendant": {"sheet": "b2_c76.png"},
-    "VIRBANK_CITY:Girl in the gate": {"sheet": "b2_c15.png"},
-    "VIRBANK_CITY:Girl with questions": {"sheet": "b2_c9.png"},
-    "VIRBANK_CITY:Guitarist Billy Jo": {"sheet": "b2_c297.png"},
-    "VIRBANK_CITY:Guitarist by the steps": {"sheet": "b2_c297.png"},
-    "VIRBANK_CITY:Gym": {"sheet": "b2_c295.png"},
-    "VIRBANK_CITY:Little boy": {"sheet": "b2_c8.png"},
-    "VIRBANK_CITY:Little girl": {"sheet": "b2_c9.png"},
-    "VIRBANK_CITY:Little girl ": {"sheet": "b2_c9.png"},
-    "VIRBANK_CITY:Man at the PC": {"sheet": "b2_c34.png"},
-    "VIRBANK_CITY:Man at the pier's end": {"sheet": "b2_c20.png"},
-    "VIRBANK_CITY:Man by the door": {"sheet": "b2_c70.png"},
-    "VIRBANK_CITY:Man in the gate": {"sheet": "b2_c30.png"},
-    "VIRBANK_CITY:Mr. Medal": {"sheet": "b2_c360.png"},
-    "VIRBANK_CITY:Nursery Aide": {"sheet": "b2_c23.png"},
-    "VIRBANK_CITY:Nursery Aide ": {"sheet": "b2_c23.png"},
-    "VIRBANK_CITY:Old man by the stairs": {"sheet": "b2_c28.png"},
-    "VIRBANK_CITY:Old woman": {"sheet": "b2_c29.png"},
-    "VIRBANK_CITY:Old woman on the bench": {"sheet": "b2_c33.png"},
-    "VIRBANK_CITY:Plasma Grunt": {"sheet": "b2_c293.png"},
-    "VIRBANK_CITY:Plasma Grunt ": {"sheet": "b2_c294.png"},
-    "VIRBANK_CITY:Plasma Grunt  ": {"sheet": "b2_c293.png"},
-    "VIRBANK_CITY:Poke Ball in the house": {"sheet": "b2_item_ball.png"},
-    "VIRBANK_CITY:Pokestar guard": {"sheet": "b2_c358.png"},
-    "VIRBANK_CITY:Pok\u00e9mon Center": {"sheet": "b2_c78.png"},
-    "VIRBANK_CITY:Pop Roxie": {"sheet": "b2_c359.png"},
-    "VIRBANK_CITY:Pop Roxie ": {"sheet": "b2_c359.png"},
-    "VIRBANK_CITY:Roughneck Nicky": {"sheet": "b2_c372.png"},
-    "VIRBANK_CITY:Roughneck by the Gym": {"sheet": "b2_c61.png"},
-    "VIRBANK_CITY:Roxie": {"sheet": "b2_c224.png"},
-    "VIRBANK_CITY:Roxie ": {"sheet": "b2_c295.png"},
-    "VIRBANK_CITY:Sailor at the counter": {"sheet": "b2_c359.png"},
-    "VIRBANK_CITY:Sailor by the door": {"sheet": "b2_c10.png"},
-    "VIRBANK_CITY:Sailor on the pier": {"sheet": "b2_c20.png"},
-    "VIRBANK_CITY:Shop": {"sheet": "b2_c79.png"},
-    "VIRBANK_CITY:Sound engineer": {"sheet": "b2_c55.png"},
-    "VIRBANK_CITY:Watchog": {"sheet": "b2_c305.png"},
-    "VIRBANK_CITY:Woman by the railing": {"sheet": "b2_c22.png"},
-    "VIRBANK_CITY:Woman by the sofa": {"sheet": "b2_c14.png"},
-    "VIRBANK_CITY:Woman by the table": {"sheet": "b2_c8.png"},
-    "VIRBANK_CITY:Woman in the gate": {"sheet": "b2_c54.png"},
-    "VIRBANK_CITY:Woman with a Watchog": {"sheet": "b2_c22.png"},
-    "VIRBANK_CITY:Woman with an Audino": {"sheet": "b2_c47.png"},
-    "VIRBANK_CITY:Worker by the counter": {"sheet": "b2_c155.png"},
-    "VIRBANK_CITY:Worker by the window": {"sheet": "b2_c155.png"},
-    "VIRBANK_CITY:Worker on the walkway": {"sheet": "b2_c155.png"},
-    "VIRBANK_CITY:{rival_name}": {"sheet": "b2_hugh.png"},
-    "VIRBANK_CITY:{rival_name} ": {"sheet": "b2_hugh.png"},
-    "VIRBANK_COMPLEX:Foreman": {"sheet": "b2_c25.png"},
-    "VIRBANK_COMPLEX:Foreman ": {"sheet": "b2_c25.png"},
-    "VIRBANK_COMPLEX:Foreman  ": {"sheet": "b2_c25.png"},
-    "VIRBANK_COMPLEX:Girl in the south": {"sheet": "b2_c22.png"},
-    "VIRBANK_COMPLEX:Girl in the south ": {"sheet": "b2_c22.png"},
-    "VIRBANK_COMPLEX:Poke Ball by the south-east tanks": {"sheet": "b2_item_ball.png"},
-    "VIRBANK_COMPLEX:Poke Ball past the small tree": {"sheet": "b2_item_ball.png"},
-    "VIRBANK_COMPLEX:Scientist by the tower": {"sheet": "b2_c73.png"},
-    "VIRBANK_COMPLEX:Worker Isaac": {"sheet": "b2_c155.png"},
-    "VIRBANK_COMPLEX:Worker Isaac ": {"sheet": "b2_c155.png"},
-    "VIRBANK_COMPLEX:Worker Mitchell": {"sheet": "b2_c155.png"},
-    "VIRBANK_COMPLEX:Worker Mitchell ": {"sheet": "b2_c155.png"},
-    "VIRBANK_COMPLEX:Worker Nathan": {"sheet": "b2_c155.png"},
-    "VIRBANK_COMPLEX:Worker Nathan ": {"sheet": "b2_c155.png"},
-    "VIRBANK_COMPLEX_OUTSIDE:Poke Ball behind the Roughneck": {"sheet": "b2_item_ball.png"},
-    "VIRBANK_COMPLEX_OUTSIDE:Poke Ball in the grass": {"sheet": "b2_item_ball.png"},
-    "VIRBANK_COMPLEX_OUTSIDE:Roughneck by the crane": {"sheet": "b2_c61.png"},
+    "ASPERTIA_CITY:Pokémon Center": {
+      "sheet": "b2_c78.png"
+    },
+    "CASTELIA_CITY:Pokémon Center": {
+      "sheet": "b2_c78.png"
+    },
+    "FLOCCESY_TOWN:Pokémon Center": {
+      "sheet": "b2_c78.png"
+    },
+    "VIRBANK_CITY:Pokémon Center": {
+      "sheet": "b2_c78.png"
+    },
     "ORRE_DESERT:SNAG SHADOW POKEMON": {
       "sheet": "orre_trainer_cipher_grunt.png"
     },
@@ -2557,9 +2997,6 @@
     "SUNYSHORE_CITY:Heal": {
       "sheet": "pt_pcwoman1.png"
     },
-    "PHENAC_CITY:Meet Rui": {
-      "sheet": "orre_partner_rui.png"
-    },
     "OUTSKIRT_STAND:Rider Willie": {
       "sheet": "orre_trainer_rider_willie.png"
     },
@@ -2662,17 +3099,14 @@
     "PHENAC_CITY:Phenac Stadium": {
       "sheet": "orre_npc_hoenn_03.png"
     },
-    "PHENAC_CITY:Trouble at the Fountain": {
-      "sheet": "orre_trainer_cipher_grunt.png"
+    "PHENAC_CITY:Healing machine": {
+      "sheet": "orre_healing_balls_3.png"
     },
     "PHENAC_CITY:Pokemon Center": {
       "sheet": "orre_npc_16.png"
     },
     "PHENAC_CITY:Poke Mart": {
       "sheet": "orre_npc_15.png"
-    },
-    "OUTSKIRT_STAND:CHALLENGE WILLIE": {
-      "sheet": "orre_trainer_rider_willie.png"
     },
     "OUTSKIRT_STAND:Pokemon Center": {
       "sheet": "orre_healing_balls_3.png"
@@ -14855,6 +15289,384 @@
     },
     "PYRITE_TOWN:HM Fly": {
       "item": "HM_FLY"
+    },
+    "SINNOH_ROUTE_210:Cynthia": {
+      "sheet": "pt_champion.png"
+    },
+    "ETERNA_CITY:Cynthia ": {
+      "sheet": "pt_champion.png"
+    },
+    "VALOR_LAKEFRONT:Cynthia": {
+      "sheet": "pt_champion.png"
+    },
+    "ETERNA_CITY:Cynthia": {
+      "sheet": "pt_champion.png"
+    },
+    "JUBILIFE_CITY:TV staff  ": {
+      "sheet": "pt_woman6.png"
+    },
+    "JUBILIFE_CITY:TV president": {
+      "sheet": "pt_middleman2.png"
+    },
+    "JUBILIFE_CITY:Programmer": {
+      "sheet": "pt_woman1.png"
+    },
+    "JUBILIFE_CITY:Technician": {
+      "sheet": "pt_workman.png"
+    },
+    "JUBILIFE_CITY:Fisher fan": {
+      "sheet": "pt_fishing.png"
+    },
+    "JUBILIFE_CITY:Catcher fan": {
+      "sheet": "pt_woman3.png"
+    },
+    "JUBILIFE_CITY:Big fan": {
+      "sheet": "pt_bigman.png"
+    },
+    "JUBILIFE_CITY:Technician ": {
+      "sheet": "pt_workman.png"
+    },
+    "JUBILIFE_CITY:Ranking girl": {
+      "sheet": "pt_girl2.png"
+    },
+    "JUBILIFE_CITY:Ranking boy": {
+      "sheet": "pt_boy2.png"
+    },
+    "JUBILIFE_CITY:Clown": {
+      "sheet": "pt_clown.png"
+    },
+    "JUBILIFE_CITY:Clown ": {
+      "sheet": "pt_clown.png"
+    },
+    "JUBILIFE_CITY:Clown  ": {
+      "sheet": "pt_clown.png"
+    },
+    "JUBILIFE_CITY:Pokétch President": {
+      "sheet": "pt_middleman2.png"
+    },
+    "SINNOH_ROUTE_205:Little girl": {
+      "sheet": "pt_babygirl1.png"
+    },
+    "SANDGEM_TOWN:Wi-Fi Club": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "SANDGEM_TOWN:Union Room": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "SANDGEM_TOWN:Colosseum": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "SANDGEM_TOWN:Plaza guide": {
+      "sheet": "pt_wifisf.png"
+    },
+    "SANDGEM_TOWN:Wi-Fi Plaza": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "SANDGEM_TOWN:Link desk": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "JUBILIFE_CITY:Wi-Fi Club": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "JUBILIFE_CITY:Union Room": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "JUBILIFE_CITY:Colosseum": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "JUBILIFE_CITY:Plaza guide": {
+      "sheet": "pt_wifisf.png"
+    },
+    "JUBILIFE_CITY:Wi-Fi Plaza": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "JUBILIFE_CITY:Link desk": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "OREBURGH_CITY:Wi-Fi Club": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "OREBURGH_CITY:Union Room": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "OREBURGH_CITY:Colosseum": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "OREBURGH_CITY:Plaza guide": {
+      "sheet": "pt_wifisf.png"
+    },
+    "OREBURGH_CITY:Wi-Fi Plaza": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "OREBURGH_CITY:Link desk": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "FLOAROMA_TOWN:Wi-Fi Club": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "FLOAROMA_TOWN:Union Room": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "FLOAROMA_TOWN:Colosseum": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "FLOAROMA_TOWN:Plaza guide": {
+      "sheet": "pt_wifisf.png"
+    },
+    "FLOAROMA_TOWN:Wi-Fi Plaza": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "FLOAROMA_TOWN:Link desk": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "ETERNA_CITY:Wi-Fi Club": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "ETERNA_CITY:Union Room": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "ETERNA_CITY:Colosseum": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "ETERNA_CITY:Plaza guide": {
+      "sheet": "pt_wifisf.png"
+    },
+    "ETERNA_CITY:Wi-Fi Plaza": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "ETERNA_CITY:Link desk": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "HEARTHOME_CITY:Wi-Fi Club": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "HEARTHOME_CITY:Union Room": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "HEARTHOME_CITY:Colosseum": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "HEARTHOME_CITY:Plaza guide": {
+      "sheet": "pt_wifisf.png"
+    },
+    "HEARTHOME_CITY:Wi-Fi Plaza": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "HEARTHOME_CITY:Link desk": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "SOLACEON_TOWN:Wi-Fi Club": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "SOLACEON_TOWN:Union Room": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "SOLACEON_TOWN:Colosseum": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "SOLACEON_TOWN:Plaza guide": {
+      "sheet": "pt_wifisf.png"
+    },
+    "SOLACEON_TOWN:Wi-Fi Plaza": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "SOLACEON_TOWN:Link desk": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "VEILSTONE_CITY:Wi-Fi Club": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "VEILSTONE_CITY:Union Room": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "VEILSTONE_CITY:Colosseum": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "VEILSTONE_CITY:Plaza guide": {
+      "sheet": "pt_wifisf.png"
+    },
+    "VEILSTONE_CITY:Wi-Fi Plaza": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "VEILSTONE_CITY:Link desk": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "PASTORIA_CITY:Wi-Fi Club": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "PASTORIA_CITY:Union Room": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "PASTORIA_CITY:Colosseum": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "PASTORIA_CITY:Plaza guide": {
+      "sheet": "pt_wifisf.png"
+    },
+    "PASTORIA_CITY:Wi-Fi Plaza": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "PASTORIA_CITY:Link desk": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "CELESTIC_TOWN:Wi-Fi Club": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "CELESTIC_TOWN:Union Room": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "CELESTIC_TOWN:Colosseum": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "CELESTIC_TOWN:Plaza guide": {
+      "sheet": "pt_wifisf.png"
+    },
+    "CELESTIC_TOWN:Wi-Fi Plaza": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "CELESTIC_TOWN:Link desk": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "CANALAVE_CITY:Wi-Fi Club": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "CANALAVE_CITY:Union Room": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "CANALAVE_CITY:Colosseum": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "CANALAVE_CITY:Plaza guide": {
+      "sheet": "pt_wifisf.png"
+    },
+    "CANALAVE_CITY:Wi-Fi Plaza": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "CANALAVE_CITY:Link desk": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "SNOWPOINT_CITY:Wi-Fi Club": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "SNOWPOINT_CITY:Union Room": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "SNOWPOINT_CITY:Colosseum": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "SNOWPOINT_CITY:Plaza guide": {
+      "sheet": "pt_wifisf.png"
+    },
+    "SNOWPOINT_CITY:Wi-Fi Plaza": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "SNOWPOINT_CITY:Link desk": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "SUNYSHORE_CITY:Wi-Fi Club": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "SUNYSHORE_CITY:Union Room": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "SUNYSHORE_CITY:Colosseum": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "SUNYSHORE_CITY:Plaza guide": {
+      "sheet": "pt_wifisf.png"
+    },
+    "SUNYSHORE_CITY:Wi-Fi Plaza": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "SUNYSHORE_CITY:Link desk": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "SINNOH_POKEMON_LEAGUE:Wi-Fi Club": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "SINNOH_POKEMON_LEAGUE:Union Room": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "SINNOH_POKEMON_LEAGUE:Colosseum": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "SINNOH_POKEMON_LEAGUE:Plaza guide": {
+      "sheet": "pt_wifisf.png"
+    },
+    "SINNOH_POKEMON_LEAGUE:Wi-Fi Plaza": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "SINNOH_POKEMON_LEAGUE:Link desk": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "FIGHT_AREA:Wi-Fi Club": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "FIGHT_AREA:Union Room": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "FIGHT_AREA:Colosseum": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "FIGHT_AREA:Plaza guide": {
+      "sheet": "pt_wifisf.png"
+    },
+    "FIGHT_AREA:Wi-Fi Plaza": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "FIGHT_AREA:Link desk": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "SURVIVAL_AREA:Wi-Fi Club": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "SURVIVAL_AREA:Union Room": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "SURVIVAL_AREA:Colosseum": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "SURVIVAL_AREA:Plaza guide": {
+      "sheet": "pt_wifisf.png"
+    },
+    "SURVIVAL_AREA:Wi-Fi Plaza": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "SURVIVAL_AREA:Link desk": {
+      "sheet": "pt_pcwoman2.png"
+    },
+    "OLD_CHATEAU:Encounter Rotom": {
+      "pic": "dungeon/effects/rotom_tv.png"
+    },
+    "HEARTHOME_CITY:Gym guide": {
+      "sheet": "pt_sunglasses.png"
+    },
+    "OREBURGH_GATE:TM192": {
+      "item": "POKE_BALL"
+    },
+    "OREBURGH_GATE:EARTH PLATE": {
+      "item": "POKE_BALL"
+    },
+    "OREBURGH_GATE:TM058": {
+      "item": "POKE_BALL"
+    },
+    "OREBURGH_GATE:TM291": {
+      "item": "POKE_BALL"
+    },
+    "OREBURGH_GATE:BIG PEARL": {
+      "item": "POKE_BALL"
+    },
+    "OREBURGH_GATE:Cyclist": {
+      "sheet": "pt_cyclew.png"
+    },
+    "ETERNA_FOREST_OUTSKIRTS:TM070": {
+      "item": "POKE_BALL"
+    },
+    "ETERNA_FOREST_OUTSKIRTS:SILVER POWDER": {
+      "item": "POKE_BALL"
+    },
+    "ETERNA_FOREST_OUTSKIRTS:Woman": {
+      "sheet": "pt_woman1.png"
     }
   },
   "townsperson": "NPC 17.png",
@@ -14881,14 +15693,72 @@
     "brendan": "em_0.png",
     "may": "em_89.png"
   },
-  "trainers_UNOVA": {"youngster.png": "b2_c11.png", "lass.png": "b2_c15.png", "hiker.png": "b2_c64.png", "twins.png": "b2_c9.png", "preschooler_m.png": "b2_c153.png", "preschooler_f.png": "b2_c154.png", "nursery_aide.png": "b2_c23.png", "janitor.png": "b2_c69.png", "hugh.png": "b2_hugh.png", "cheren.png": "b2_cheren.png", "plasma_grunt.png": "b2_c293.png", "b2_plasma_grunt_m.png": "b2_c293.png", "b2_plasma_grunt_f.png": "b2_c294.png", "b2_worker.png": "b2_c155.png", "b2_roughneck.png": "b2_c372.png", "b2_guitarist.png": "b2_c297.png", "b2_doctor.png": "b2_c50.png", "b2_scientist_m.png": "b2_c73.png", "b2_scientist_f.png": "b2_c74.png", "b2_dancer.png": "b2_c55.png", "b2_harlequin.png": "b2_c54.png", "b2_burgh.png": "b2_c225.png", "b2_colress.png": "b2_c250.png"},
+  "trainers_UNOVA": {
+    "youngster.png": "b2_c11.png",
+    "lass.png": "b2_c15.png",
+    "hiker.png": "b2_c64.png",
+    "twins.png": "b2_c9.png",
+    "preschooler_m.png": "b2_c153.png",
+    "preschooler_f.png": "b2_c154.png",
+    "nursery_aide.png": "b2_c23.png",
+    "janitor.png": "b2_c69.png",
+    "hugh.png": "b2_hugh.png",
+    "cheren.png": "b2_cheren.png",
+    "plasma_grunt.png": "b2_c293.png",
+    "b2_plasma_grunt_m.png": "b2_c293.png",
+    "b2_plasma_grunt_f.png": "b2_c294.png",
+    "b2_worker.png": "b2_c155.png",
+    "b2_roughneck.png": "b2_c372.png",
+    "b2_guitarist.png": "b2_c297.png",
+    "b2_doctor.png": "b2_c50.png",
+    "b2_scientist_m.png": "b2_c73.png",
+    "b2_scientist_f.png": "b2_c74.png",
+    "b2_dancer.png": "b2_c55.png",
+    "b2_harlequin.png": "b2_c54.png",
+    "b2_burgh.png": "b2_c225.png",
+    "b2_colress.png": "b2_c250.png"
+  },
   "player_extra": {
     "_about": "Your trainer's own extra overworld sheets, by character (4 x 4 like a walking sheet, rows down/left/right/up; or {file, cols, rows}: a strip of frames). bike: riding (columns: still, pedal, still, pedal); surf: sitting on your Pokemon; fish: casting (4 frames a way); field: using a field move (Strength, Rock Smash); dive: swimming underwater; run: running. Anyone without one keeps the walking sheet (and the drawn Bicycle). vsseeker / vsseeker_bike: holding up the VS Seeker (FireRed's own frames for Red and Leaf, 11-19; \"scale\": 2, FireRed's pixels beside Journeys' walking sheets). Not used yet: capback (the cap turned backwards).",
-    "nate": {"run": "b2_nate_run.png"},
-    "rosa": {"run": "b2_rosa_run.png"},
-    "wes": {"bike": "orre_wes_bike.png", "surf": "orre_wes_surf.png", "run": "orre_wes_run.png"},
-    "red": {"vsseeker": {"file": "fr_red_vsseeker.png", "cols": 9, "rows": 1, "scale": 2}, "vsseeker_bike": {"file": "fr_red_vsseeker_bike.png", "cols": 6, "rows": 1, "scale": 2}},
-    "leaf": {"vsseeker": {"file": "fr_leaf_vsseeker.png", "cols": 9, "rows": 1, "scale": 2}, "vsseeker_bike": {"file": "fr_leaf_vsseeker_bike.png", "cols": 6, "rows": 1, "scale": 2}},
+    "nate": {
+      "run": "b2_nate_run.png"
+    },
+    "rosa": {
+      "run": "b2_rosa_run.png"
+    },
+    "wes": {
+      "bike": "orre_wes_bike.png",
+      "surf": "orre_wes_surf.png",
+      "run": "orre_wes_run.png"
+    },
+    "red": {
+      "vsseeker": {
+        "file": "fr_red_vsseeker.png",
+        "cols": 9,
+        "rows": 1,
+        "scale": 2
+      },
+      "vsseeker_bike": {
+        "file": "fr_red_vsseeker_bike.png",
+        "cols": 6,
+        "rows": 1,
+        "scale": 2
+      }
+    },
+    "leaf": {
+      "vsseeker": {
+        "file": "fr_leaf_vsseeker.png",
+        "cols": 9,
+        "rows": 1,
+        "scale": 2
+      },
+      "vsseeker_bike": {
+        "file": "fr_leaf_vsseeker_bike.png",
+        "cols": 6,
+        "rows": 1,
+        "scale": 2
+      }
+    },
     "ash": {
       "bike": "ash_oi_bike.png",
       "surf": "ash_oi_surf.png",
@@ -15259,7 +16129,71 @@
   },
   "region_followers": {
     "_about": "A region's own overworld sheets for its Pokemon (assets/dungeon/characters), by follower sheet name (species, species_form, form id), used before assets/dungeon/followers while you're in that region; anywhere else they're the fallback for a form the follower sheets lack (Jordan 11-23: a game-built region's own sheets first, followers as fallback; a form only one region drew follows you everywhere with that region's sheet). dungeon.region_sheet_paths.",
-    "ORANGE": {"1": "oi_114.png", "100": "oi_178.png", "101": "oi_124.png", "106": "oi_129.png", "110": "oi_180.png", "111_pinkan": "oi_165.png", "112": "oi_164.png", "120": "oi_173.png", "122": "oi_145.png", "123": "oi_166.png", "128": "oi_174.png", "129": "oi_140.png", "131": "oi_134.png", "140": "oi_131.png", "143": "oi_170.png", "144": "oi_112.png", "145": "oi_181.png", "146": "oi_146.png", "149": "oi_121.png", "16": "oi_155.png", "20_valencia": "oi_162.png", "249": "oi_138.png", "25": "oi_156.png", "26": "oi_161.png", "29": "oi_149.png", "30": "oi_151.png", "32": "oi_150.png", "33": "oi_152.png", "34_pinkan": "oi_148.png", "36": "oi_117.png", "39": "oi_130.png", "43": "oi_153.png", "45": "oi_177.png", "48": "oi_175.png", "50": "oi_119.png", "51": "oi_123.png", "54": "oi_160.png", "55": "oi_126.png", "56": "oi_144.png", "6": "oi_116.png", "60": "oi_157.png", "62": "oi_159.png", "63": "oi_111.png", "67": "oi_139.png", "7": "oi_172.png", "71": "oi_176.png", "8": "oi_179.png", "81": "oi_142.png", "82": "oi_143.png", "84": "oi_120.png", "88": "oi_127.png", "89": "oi_147.png", "9": "oi_113.png", "90": "oi_168.png", "92": "oi_125.png", "95": "oi_154.png", "96": "oi_122.png", "98": "oi_133.png", "99": "oi_132.png"},
-    "UNOVA": {"494": "b2_victini.png", "628": "b2_c4712.png", "630": "b2_c348.png"}
+    "ORANGE": {
+      "1": "oi_114.png",
+      "100": "oi_178.png",
+      "101": "oi_124.png",
+      "106": "oi_129.png",
+      "110": "oi_180.png",
+      "111_pinkan": "oi_165.png",
+      "112": "oi_164.png",
+      "120": "oi_173.png",
+      "122": "oi_145.png",
+      "123": "oi_166.png",
+      "128": "oi_174.png",
+      "129": "oi_140.png",
+      "131": "oi_134.png",
+      "140": "oi_131.png",
+      "143": "oi_170.png",
+      "144": "oi_112.png",
+      "145": "oi_181.png",
+      "146": "oi_146.png",
+      "149": "oi_121.png",
+      "16": "oi_155.png",
+      "20_valencia": "oi_162.png",
+      "249": "oi_138.png",
+      "25": "oi_156.png",
+      "26": "oi_161.png",
+      "29": "oi_149.png",
+      "30": "oi_151.png",
+      "32": "oi_150.png",
+      "33": "oi_152.png",
+      "34_pinkan": "oi_148.png",
+      "36": "oi_117.png",
+      "39": "oi_130.png",
+      "43": "oi_153.png",
+      "45": "oi_177.png",
+      "48": "oi_175.png",
+      "50": "oi_119.png",
+      "51": "oi_123.png",
+      "54": "oi_160.png",
+      "55": "oi_126.png",
+      "56": "oi_144.png",
+      "6": "oi_116.png",
+      "60": "oi_157.png",
+      "62": "oi_159.png",
+      "63": "oi_111.png",
+      "67": "oi_139.png",
+      "7": "oi_172.png",
+      "71": "oi_176.png",
+      "8": "oi_179.png",
+      "81": "oi_142.png",
+      "82": "oi_143.png",
+      "84": "oi_120.png",
+      "88": "oi_127.png",
+      "89": "oi_147.png",
+      "9": "oi_113.png",
+      "90": "oi_168.png",
+      "92": "oi_125.png",
+      "95": "oi_154.png",
+      "96": "oi_122.png",
+      "98": "oi_133.png",
+      "99": "oi_132.png"
+    },
+    "UNOVA": {
+      "494": "b2_victini.png",
+      "628": "b2_c4712.png",
+      "630": "b2_c348.png"
+    }
   }
 }

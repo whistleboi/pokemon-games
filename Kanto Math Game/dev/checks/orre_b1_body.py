@@ -293,6 +293,81 @@ t = town("PYRITE_TOWN", "PHENAC_CITY")
 check(t._check_menu_condition(cave["condition"]), "Pyrite Cave still open")
 check(not any((tuple(tl) in t.barred) for tl in ((32, 40), (33, 40))), "the hideout's door open")
 
+
+# ---- R2 (11-23): the tournaments on their walked arenas (src/world/orre_tournament.py; orre_story.py _tournament) ----
+from src.pokemon.data import Pokemon as _TP
+from src.world import levels as _tlv, orre_tournament as _ot
+
+
+def _team(lv, ids=(248, 6, 9)):
+    out = []
+    for pid in ids:
+        p = _TP(g.loader.fetch_specific(pid), g.assets, size_mult=2.5)
+        _tlv.set_team([p], [lv], exact=True)
+        p.heal_full()
+        out.append(p)
+    story.player_team = out
+
+
+def _drive(n=10, mg=None, area=None, referee=None):
+    """Play on; a minigame is won or lost as mg says (a list, first to last; then won); after a lost one, ask the referee
+    for another go, as a player would."""
+    for _ in range(n):
+        play(4000)
+        st = g.current_state
+        if hasattr(st, "on_done") and not hasattr(st, "math_ui"):
+            st.on_done(mg.pop(0) if mg else True)
+        elif area and referee and story.story_flags.get(f"orre_tourney_retry_{area}"):
+            _note(st)
+            _heard.extend(said + ["(asked the referee again)"])
+            meet(st, referee)
+    _heard.extend(said)
+
+
+def _lobby(area):
+    lob, desk, arena = _TOURS[area][:3]
+    t = town(area, "OUTSKIRT_STAND")
+    if lob:
+        door = next(tuple(int(v) for v in k.split(",")) for k, r in (story_map_of(area).get("inside") or {}).items() if r == lob)
+        t._go(lob, "OUT:%d,%d" % door)
+    else:
+        pass
+    frames(2)
+    return g.current_state
+
+
+def story_map_of(area):
+    return _json.load(open("assets/town_maps.json", encoding="utf-8"))[area]
+
+
+_TOURS = {"PYRITE_TOWN": ("gym", (7, 5), "arena"), "UNDER_COLOSSEUM": (None, (10, 4), "gym"),
+          "PHENAC_CITY": ("gym", (7, 5), "arena"), "ORRE_COLOSSEUM": ("gym", (7, 5), "arena")}
+
+print("R2) The Pyrite Colosseum, walked: four rounds, the math game before the final (lost once, tried again), the badge")
+_heard = []
+_team(100)
+F = story.story_flags   # (the suite swaps in fresh flags on the way: use today's)
+F["orre_power_on"] = True
+_had = list(story.badges.get("ORRE", []))
+story.badges["ORRE"] = [b_ for b_ in _had if b_ != "PYRITE"]
+for k_ in [k_ for k_ in F if k_.startswith(("gym_progress_PYRITE", "gym_challenge_done_PYRITE", "orre_tourney"))]:
+    F.pop(k_, None)
+t = _lobby("PYRITE_TOWN")
+check(any(isinstance(o, dict) and o.get("text") == "Receptionist" for o in t.people.values()), "a receptionist at the lobby counter")
+said.clear()
+meet(t, "Receptionist")
+st = g.current_state
+check(getattr(st, "room", None) == "arena" or F.get("gym_progress_PYRITE_TOWN", 0) > 0, "signed up: taken into the arena")
+check(any("Round 1!" in s_ for s_ in said), f"the referee calls round 1 and its opponent walks in ({[s_ for s_ in said if 'Round' in s_][:2]})")
+said_before = list(said)
+_drive(10, mg=[False], area="PYRITE_TOWN", referee="Pyrite Colosseum")
+_heard = said_before + _heard
+check(any("Before the final, a challenge" in s_ for s_ in _heard), "the math game comes just before the final")
+check("(asked the referee again)" in _heard and F.get("gym_progress_PYRITE_TOWN", 0) >= 3, "lost the math game: the referee offers it again; the rounds won stay won")
+check("PYRITE" in story.badges.get("ORRE", []) and not F.get("orre_tourney_PYRITE_TOWN"), f"won the final: the Pyrite Badge, the run over ({story.badges.get('ORRE')})")
+check(len({s_ for s_ in _heard if "takes the field" in s_}) >= 4, f"four opponents walked in, one by one {sorted({s_ for s_ in _heard if 'takes the field' in s_})}")
+story.badges["ORRE"] = sorted(set(_had) | {"PYRITE"}, key=lambda b_: ["PYRITE", "UNDER", "PHENAC", "ORRE"].index(b_))
+
 print("##### orre_b1:", len(fails), "failures")
 for f in fails:
     print("  -", f)

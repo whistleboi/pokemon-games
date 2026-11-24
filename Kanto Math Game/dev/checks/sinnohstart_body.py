@@ -1,3 +1,4 @@
+import json
 
 # Sinnoh follows Brilliant Diamond / Shining Pearl (Jordan, 10-26; teams from Serebii PokéEarth's area
 # pages): the Lake Verity opening, Barry's battles, the lakes after Byron, the Galactic Key, the
@@ -129,7 +130,8 @@ check(not any(o.get("target") == "barry_victory_road" for o in prog["VICTORY_ROA
       "no rival battle in Victory Road")
 
 print("4) Cynthia in Eterna; Byron doesn't need Iron Island")
-check(any(o.get("target") == "cynthia_hm" for o in prog["ETERNA_CITY"]["explore_options"])
+_etm = json.load(open("assets/town_maps.json", encoding="utf-8"))["ETERNA_CITY"]   # (11-24: on the map, outside the Galactic building)
+check(any(isinstance(o, dict) and (o.get("event") or {}).get("flag") == "received_hm_cut" for o in _etm["people"])
       and not any(o.get("target") == "cynthia_hm" for o in prog["HEARTHOME_CITY"]["explore_options"]), "HM Cut from Cynthia in Eterna")
 check(prog["CANALAVE_CITY"]["gym"]["requirements"].get("badges") == 5, "Byron: 5 badges, no Iron Island lock")
 

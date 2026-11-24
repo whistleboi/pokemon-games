@@ -25,6 +25,8 @@ def looks():
                 for o in (p if isinstance(p, list) else [p]):
                     if isinstance(o, dict) and str(o.get("_look", "")).startswith("sheet:"):
                         out[f"{key}:{o['text']}"] = {"sheet": o["_look"][6:]}
+                    elif isinstance(o, dict) and str(o.get("_look", "")).startswith("pokemon:"):   # (a Pokemon: its follower sheet; the grottoes, 11-23)
+                        out[f"{key}:{o['text']}"] = {"pokemon": int(o["_look"][8:])}
     return out
 
 
