@@ -8,7 +8,9 @@ transition art (assets/transitions, from its Graphics/Transitions):
   on it, VS, a flash);
 - Team Rocket: their R.
 
-Game.change_state puts this in front of a wild battle or a trainer's intro (see wants_transition)."""
+Game.change_state puts this in front of a wild battle or a trainer's intro (see wants_transition), and (11-24)
+in front of a battle fought on the map (OVERWORLD style). In a walked region the intro is that region's own
+game's (src/vfx/canon_intros.py: FireRed, Emerald, HGSS, Platinum, Orre's Essentials); elsewhere, the ones here."""
 import math
 import os
 import random
@@ -35,7 +37,8 @@ def image(game, name):
 
 
 def wants_transition(game, new_state):
-    """A wild battle or a trainer's intro, entered from outside a battle."""
+    """A wild battle or a trainer's intro, entered from outside a battle; or a battle on the map (OVERWORLD style:
+    entered straight from the map, its .overworld set). Once only: back from the Bag is no new intro."""
     if not getattr(game, "battle_transitions", True):
         return False
     from src.states.battle import TrainerBattleState, WildBattleState, TrainerIntroState
@@ -44,7 +47,10 @@ def wants_transition(game, new_state):
         return False
     if isinstance(cur, (TrainerBattleState, TrainerIntroState, BattleTransitionState)):
         return False
-    return isinstance(new_state, (WildBattleState, TrainerIntroState))
+    if getattr(new_state, "_intro_played", False):
+        return False
+    on_map = isinstance(new_state, TrainerBattleState) and getattr(new_state, "overworld", None) is not None
+    return on_map or isinstance(new_state, (WildBattleState, TrainerIntroState))
 
 
 def style_for(target):
@@ -71,10 +77,23 @@ class BattleTransitionState(GameState):
     def __init__(self, game, target, style=None):
         super().__init__(game)
         self.target = target
-        self.style = style or style_for(target)
+        for st in (target, getattr(target, "next_state", None)):   # (its intro is played: never again)
+            if st is not None:
+                st._intro_played = True
         self.snapshot = game.screen.copy()
         self.t = 0
-        self.length = self.LENGTH.get(self.style, 22)
+        self.canon = None
+        if style is None:   # (a walked region: its own game's intro, picked as that game picks it)
+            from src.vfx import canon_intros
+            try:
+                plan = canon_intros.pick(game, target)
+                self.canon = canon_intros.Intro(game, self.snapshot, plan) if plan else None
+            except Exception:
+                import traceback
+                traceback.print_exc()
+                self.canon = None
+        self.style = "canon" if self.canon else (style or style_for(target))
+        self.length = self.canon.length if self.canon else self.LENGTH.get(self.style, 22)
         w, h = game.width, game.height
         self.masks = []
         if self.style in ("rule", "hexa"):
@@ -120,6 +139,9 @@ class BattleTransitionState(GameState):
         screen = self.game.screen
         w, h = self.game.width, self.game.height
         k = min(1.0, self.t / self.length)
+        if self.canon is not None:
+            self.canon.draw(screen, self.t)
+            return
         screen.blit(self.snapshot, (0, 0))
         if self.t < 4:  # a flash or two first, as in the games
             if self.t % 2 == 0:

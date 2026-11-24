@@ -477,6 +477,7 @@ class RouteActions:
             self.game.story_manager.current_area_key,
             background_image=bg_file
         )
+        battle_state.fished = True   # (hooked: the battle intros count it as on the water, src/vfx/canon_intros.py)
         battle_state.play_state_data = {
             "balls_left": self.balls_left,
             "current_streak": self.current_streak,
