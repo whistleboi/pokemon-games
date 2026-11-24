@@ -352384,7 +352384,7 @@
      "cccccccccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccccccccccc",
      "c1.......cccccccccccccccccccccc.....cc",
-     "c........ccccccccccccccccccccccX...Ncc",
+     "c..............................X...Ncc",
      "c......X.cccccccccccccccccccccc......c",
      "c.....ccccccccccccccccccccccccccc....c",
      "c..Nc.ccccccccccccccccccccccccccc.X..c",
@@ -354179,7 +354179,7 @@
      "cc..............c...................ccc............ccc",
      "cccccccc.ccccccccccccccccccccc.c.ccccccccccccccccccccc",
      "cccccccc.ccccccccccccccccccccccccccccccccccccccccccccc",
-     "cc.cc...c.cccc..c.cccc.c....cc...cccc.ccccccccc^cccc.c",
+     "cc.cc.....cccc..c.cccc.c....cc...cccc.ccccccccc^cccc.c",
      "c...............c......ccc..cc....ccc..........N.....c",
      "c...............c......ccc.ccc.....cc...N............c",
      "c..ccc..........c...................c............cc.cc",
@@ -362096,14 +362096,14 @@
      "cccc.cccccccc.ccccccccccccccccc",
      "cccc..c11c..c.ccccccccccccccccc",
      "cccc......N.c.ccccccccccccccccc",
-     "cccccccccc..ccccccccccccccccccc",
-     "cccccccccc.cccccccccccccccccccc",
+     "cccccccccc1.ccccccccccccccccccc",
+     "cccccccccc1cccccccccccccccccccc",
      "ccccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccccccc",
      "ccccccccccXcccccccccc....c^cc.c",
-     "cccccccccc..ccccccccc.......c.c",
+     "cccccccccc11ccccccccc.......c.c",
      "cccccccccc..ccccccccc.........c",
      "cccccccccc..ccccccc1c.........c",
      "cccc.....c........<...........c",
@@ -362176,6 +362176,26 @@
       1,
       2,
       19
+     ],
+     "10,15": [
+      0,
+      10,
+      8
+     ],
+     "10,8": [
+      0,
+      10,
+      15
+     ],
+     "10,9": [
+      0,
+      11,
+      15
+     ],
+     "11,15": [
+      0,
+      10,
+      9
      ]
     },
     "parts": true,
