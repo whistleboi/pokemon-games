@@ -119,6 +119,19 @@ def event(state, ev, lines, show):
         return
     if ev.get("tm_lady"):   # (batch 6b: Mistralton's TM fan: an HP Up at 10, 20, 35, 50 and 70 TMs, one more for all 95)
         return _tm_lady(state, story, show)
+    if ev.get("daily_gift"):   # (batch 7b: Route 13's treasure hunter: one of his finds a day, the same all day)
+        import datetime
+        import random
+        d = ev["daily_gift"]
+        today = datetime.date.today().isoformat()
+        if story.story_flags.get(d["key"]) == today:
+            show(d.get("done") or ["Come back tomorrow!"])
+            return
+        item = random.Random(d["key"] + "@" + today).choice(d["items"])
+        story.story_flags[d["key"]] = today
+        story.inventory[item] = story.inventory.get(item, 0) + 1
+        show(list(lines or []) + ["You received a %s!" % item.replace("_", " ").title()])
+        return
     if ev.get("dex_register"):   # (batch 6b: Route 7's old man shows you Tornadus and Thundurus, then Landorus)
         for sp in ev["dex_register"]:
             state.game.data.mark_seen(int(sp))

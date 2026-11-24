@@ -1935,7 +1935,7 @@
       "id": "sevii_m7",
       "type": "SIDE",
       "title": "Unown of Tanoby",
-      "description": "The seven Tanoby chambers hold Unown of every shape. Catch all 28 to fill the Unown Report!",
+      "description": "The seven Tanoby chambers are full of Unown, in every shape there is. The Unown Report has room for all 28.",
       "condition": {
         "item": "UNOWN_REPORT",
         "flag": "met_celio",
@@ -1950,7 +1950,7 @@
       "id": "sevii_m8",
       "type": "SIDE",
       "title": "The Flame of Mt. Ember",
-      "description": "Moltres nests at the top of Mt. Ember on One Island. Climb to the summit and face it!",
+      "description": "Something burns at the top of Mt. Ember on One Island. The climb is long, and whatever nests up there won't welcome company.",
       "condition": {
         "flag": ["met_celio"],
         "required_region": "KANTO"
@@ -1986,7 +1986,7 @@
       "id": "sevii_m11",
       "type": "SIDE",
       "title": "The Birth Island Mystery",
-      "description": "A Pokemon from space was seen on Birth Island. Take the Seagallop there and find it!",
+      "description": "Sailors talk about a Pokemon that fell from space onto Birth Island. The Seagallop can take you there.",
       "condition": {"flag": ["met_celio", "beat_champion"], "required_region": "KANTO", "item": "AURORA_TICKET"},
       "reward": "Deoxys",
       "region": "KANTO",
