@@ -30,7 +30,7 @@ KINDS = {   # kind: (shop name, the dream, goods by shop rank: rank 1 first, eac
                 ["RED_SHARD", "BLUE_SHARD", "YELLOW_SHARD", "GREEN_SHARD", "FIRE_STONE", "WATER_STONE", "THUNDER_STONE",
                  "LEAF_STONE", "MOON_STONE", "SUN_STONE"]),
     "raffle": ("Raffle Shop", "I want to run a raffle where anyone can win something great!",
-               ["POKE_BALL", "GREAT_BALL", "NET_BALL", "DUSK_BALL", "QUICK_BALL", "TIMER_BALL", "HEAL_BALL", "ULTRA_BALL",
+               ["POKE_BALLS", "GREAT_BALL", "NET_BALL", "DUSK_BALL", "QUICK_BALL", "TIMER_BALL", "HEAL_BALL", "ULTRA_BALL",
                 "REPEAT_BALL", "LUXURY_BALL"]),
     "salon": ("Beauty Salon", "I want to groom Pokemon until they shine!",
               ["SHOAL_SALT", "SHOAL_SHELL", "HEART_SCALE", "PEARL", "BIG_PEARL", "STARDUST", "STAR_PIECE", "NUGGET",

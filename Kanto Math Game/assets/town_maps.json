@@ -416400,7 +416400,7 @@
     },
     "people": [
      {
-      "text": "Man in Hugh's house",
+      "text": "Man in {rival_name}'s house",
       "action": "EVENT",
       "event": {
        "lines": [
@@ -508938,7 +508938,7 @@
       "action": "EVENT",
       "event": {
        "lines": [
-        "The Basic Badge makes Pokemon up to Lv. 20 obey. Each Badge raises it by ten!"
+        "Without a Badge, Pokemon up to Lv. 20 obey you. Each Badge raises it by ten!"
        ]
       },
       "_look": "sheet:b2_c64.png"
@@ -793126,7 +793126,8 @@
     "action": "EVENT",
     "event": {
      "lines": [
-      "Hey! Since you're here, I'll tell you a secret. ...Please keep it from Elesa, OK?"
+      "Hey! Since you're here, I'll tell you a secret. ...Please keep it from Elesa, OK?",
+      "Skyla says Elesa's Gym is way too bright for her! Shhh!"
      ]
     },
     "_look": "sheet:b2_c12.png"
@@ -804813,7 +804814,8 @@
        "action": "EVENT",
        "event": {
         "lines": [
-         "Hey! Since you're here, I'll tell you a secret. ...Please keep it from Elesa, OK?"
+         "Hey! Since you're here, I'll tell you a secret. ...Please keep it from Elesa, OK?",
+         "Skyla says Elesa's Gym is way too bright for her! Shhh!"
         ]
        },
        "_look": "sheet:b2_c12.png"
@@ -820104,7 +820106,7 @@
    "cccccccccccc.ccccccc.ccccccccccc",
    "ccccccccccc..ccccccc..cccccccccc",
    "cccccccccc...c.....c...ccccccccc",
-   "cccccccccc...c..N..c...ccccccccc",
+   "cccccccccc...c.....c...ccccccccc",
    "ccccccccc....c.....c....cccccccc",
    "ccccccccc....c.....cccvvcccccccc",
    "ccccccccc....c.....ccc..cccccccc",
@@ -821253,38 +821255,7 @@
    "_shadows": true
   },
   "signs": [],
-  "people": [
-   {
-    "text": "The Black Fog",
-    "action": "BOSS",
-    "color": "PURPLE",
-    "_look": "mon:93",
-    "condition": [
-     "not:black_fog_banished_celestial_tower"
-    ],
-    "boss": {
-     "id": 10501,
-     "name": "Black Fog",
-     "level": 36,
-     "no_catch": true,
-     "victory_flag": "black_fog_banished_celestial_tower",
-     "lines": [
-      "The air turns ice-cold. A black fog pours across the roof...",
-      "Two huge eyes open in the dark. A giant Haunter rises: the Black Fog!",
-      "Long ago people worshipped it as a god. It feeds on dreams. Don't let it get yours!"
-     ],
-     "won": [
-      "The Black Fog is too proud to ever be caught.",
-      "It Self-Destructs in a burst of black mist... and is gone.",
-      "But a cold whisper lingers: it will rise again in another haunted place."
-     ],
-     "rewards": {
-      "balls": 10,
-      "RARE_CANDY": 3
-     }
-    }
-   }
-  ],
+  "people": [],
   "hidden": {
    "10,13": "GHOST_GEM"
   },
@@ -824220,7 +824191,7 @@
       "event": {
        "lines": [
         "Hmm! You spoke to me... You're quite a Trainer. I like you! Take this TM!",
-        "{player_name} received TM57 Charge Beam!"
+        "{player_name} received TM023 Charge Beam!"
        ],
        "gift_item": {
         "TM023": 1
@@ -834923,7 +834894,7 @@
      "event": {
       "lines": [
        "You've seen every Pokemon in Reversal Mountain? Amazing! Take this!",
-       "{player_name} received TM54 False Swipe!"
+       "{player_name} received TM057 False Swipe!"
       ],
       "gift_item": {
        "TM057": 1
@@ -844084,7 +844055,7 @@
         "event": {
          "lines": [
           "You've seen every Pokemon in Reversal Mountain? Amazing! Take this!",
-          "{player_name} received TM54 False Swipe!"
+          "{player_name} received TM057 False Swipe!"
          ],
          "gift_item": {
           "TM057": 1
@@ -891720,7 +891691,7 @@
       "action": "EVENT",
       "event": {
        "lines": [
-        "The monster from the big hole is really a Pokemon, right?"
+        "Mom says if I stay out after dark, the monster from the big hole will come for me..."
        ]
       },
       "_look": "sheet:b2_c22.png"

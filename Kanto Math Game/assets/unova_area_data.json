@@ -8721,7 +8721,7 @@
             "player_won": [
               "Roxie: Sigh! What are you doing losing, Roxie?! Well... I guess that means you're strong!",
               "Roxie: I gave it everything, and I feel refreshed! Here: the Toxic Badge!",
-              "Roxie: Two Badges! Pokemon up to Lv. 30 will listen to you now, even traded ones.",
+              "Roxie: Two Badges! Pokemon up to Lv. 40 will listen to you now, even traded ones.",
               "Roxie: And TM045 Venoshock! It does double damage if the target's already poisoned. Almost too much punch!"
             ],
             "player_lost": [
@@ -9429,7 +9429,7 @@
             ],
             "player_won": [
               "Burgh: Oh hoo... You're very strong indeed! Here, the Insect Badge. It suits you!",
-              "Burgh: With three Badges, Pokemon up to Lv. 40 will obey you, even traded ones.",
+              "Burgh: With three Badges, Pokemon up to Lv. 50 will obey you, even traded ones.",
               "Burgh: And take TM015 Struggle Bug, too. It lowers the Sp. Atk of whatever it hits. The little things count!"
             ],
             "player_lost": [
@@ -9786,7 +9786,7 @@
             "player_won": [
               "Skyla: You're an amazing Trainer. For the first time in about two years, my Pokemon and I fought with our full strength!",
               "{player_name} received the Jet Badge from Skyla!",
-              "Skyla: Wow, hot stuff! With that many Badges, Pokemon up to Lv 70 will obey you.",
+              "Skyla: Wow, hot stuff! With that many Badges, Pokemon up to Lv 80 will obey you.",
               "Skyla: And take this TM, Acrobatics, so you'll always remember this battle!"
             ],
             "player_lost": [
@@ -9976,14 +9976,6 @@
         {
           "text": "Route 13",
           "target_area": "UNOVA_ROUTE_13"
-        },
-        {
-          "text": "Giant Chasm",
-          "target_area": "GIANT_CHASM"
-        },
-        {
-          "text": "Route 11",
-          "target_area": "UNOVA_ROUTE_11"
         }
       ]
     },
@@ -10001,10 +9993,6 @@
           "text": "Route 14",
           "target_area": "UNOVA_ROUTE_14",
           "condition": "beat_unova_champion"
-        },
-        {
-          "text": "Route 21",
-          "target_area": "UNOVA_ROUTE_21"
         },
         {
           "text": "Reversal Mountain",
@@ -10238,7 +10226,7 @@
             "player_won": [
               "Drayden: Wonderful. Battles are about meeting our challenges together, with others.",
               "{player_name} received the Legend Badge from Drayden!",
-              "Drayden: With seven badges, Pokemon up to Lv 80 will obey you.",
+              "Drayden: With seven badges, Pokemon up to Lv 90 will obey you.",
               "Drayden: And take this TM: Dragon Tail. It sends the foe's Pokemon back and drags out another.",
               "Drayden: Professor Juniper asked me to tell you about the dragons. Please wait outside."
             ],
@@ -21697,7 +21685,35 @@
       "battle_type": "indoor",
       "min_rounds": 1,
       "trainer_pool": [],
-      "route_menu": [],
+      "route_menu": [
+        {
+          "text": "THE BLACK FOG",
+          "action": "BOSS",
+          "color": "PURPLE",
+          "flag_condition": "not black_fog_banished_celestial_tower",
+          "boss": {
+            "id": 10501,
+            "name": "Black Fog",
+            "level": 36,
+            "no_catch": true,
+            "victory_flag": "black_fog_banished_celestial_tower",
+            "lines": [
+              "The air turns ice-cold. A black fog pours between the graves...",
+              "Two huge eyes open in the dark. A giant Haunter rises: the Black Fog!",
+              "Long ago people worshipped it as a god. It feeds on dreams. Don't let it get yours!"
+            ],
+            "won": [
+              "The Black Fog is too proud to ever be caught.",
+              "It Self-Destructs in a burst of black mist... and is gone.",
+              "But a cold whisper lingers: it will rise again in another haunted place."
+            ],
+            "rewards": {
+              "balls": 10,
+              "RARE_CANDY": 3
+            }
+          }
+        }
+      ],
       "wild_pool_percentages": "UNOVA_CELESTIAL_TOWER_PERCENTAGES"
     },
     "CELESTIAL_TOWER_2F": {
@@ -22544,7 +22560,7 @@
         ], "next_area": "UNDELLA_TOWN"},
         "POKESTAR_STUDIOS": {
           "area_type": "town",
-          "route_name": "PokéStar Studios",
+          "route_name": "Pokéstar Studios",
           "region": "UNOVA",
           "has_gym": false,
           "trainer_encounter_rate": 0,
