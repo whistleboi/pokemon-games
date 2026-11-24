@@ -561,7 +561,7 @@
 
             "region": "JOHTO",
 
-            "backgrounds": {"gym": "violet_city_gym.png", "battle": "battle_gym_violet.png"},
+            "backgrounds": {"gym": "violet_city_gym.png"},
 
             "next_area": "JOHTO_ROUTE_31",
 
@@ -714,7 +714,7 @@
 
             "region": "JOHTO",
 
-            "backgrounds": {"gym": "azalea_gym.png", "battle": "battle_gym_azalea.png"},
+            "backgrounds": {"gym": "azalea_gym.png"},
 
             "has_gym": true,
 
@@ -930,7 +930,6 @@
 
             "wild_pool_percentages": "JOHTO_BUG_CONTEST_PERCENTAGES",
 
-            "backgrounds": {"battle": "national_park.png"},
 
             "trainer_encounter_rate": 0,
 
@@ -975,7 +974,6 @@
             "wild_pool_percentages": "JOHTO_NATIONAL_PARK_DAY_PERCENTAGES",
             "day_pool_percentages": "JOHTO_NATIONAL_PARK_DAY_PERCENTAGES",
             "night_pool_percentages": "JOHTO_NATIONAL_PARK_NIGHT_PERCENTAGES",
-            "backgrounds": {"battle": "national_park.png"},
             "has_gym": false,
             "min_rounds": 0,
             "trainer_pool": [
@@ -2787,7 +2785,6 @@
         
             "wild_pool_percentages": "JOHTO_LAKE_OF_RAGE_PERCENTAGES",
         
-            "backgrounds": {"battle": "battle_lake_rage.png"},
         
             "area_boss": {"id": 130, "name": "Red Gyarados", "is_shiny": true, "victory_flag": "defeated_red_gyarados"},
         
@@ -3065,7 +3062,6 @@
 
             "wild_pool_percentages": "JOHTO_UNION_CAVE_DAY_PERCENTAGES",
 
-            "backgrounds": {"battle": "battle_union_cave.png"},
 
             "min_rounds": 2,
 
@@ -3159,7 +3155,6 @@
         
             "min_rounds": 2,
         
-            "backgrounds": {"battle": "battle_dark_cave.png"},
         
             "trainer_pool": [
         
@@ -3231,7 +3226,6 @@
         
             "min_rounds": 2,
         
-            "backgrounds": {"battle": "battle_slowpoke_well.png"},
         
             "trainer_pool": [
         
@@ -3297,7 +3291,6 @@
         
             "min_rounds": 2,
         
-            "backgrounds": {"battle": ["battle_forest1.png", "battle_forest2.png", "battle_forest3.png"]},
         
             "trainer_pool": [
         
@@ -3365,7 +3358,6 @@
         
             "min_rounds": 2,
         
-            "backgrounds": {"battle": "battle_sprout_tower.png"},
         
             "trainer_pool": [
         
@@ -3431,7 +3423,6 @@
         
             "min_rounds": 2,
         
-            "backgrounds": {"battle": "battle_burned_tower.png"},
         
             "area_boss": {"id": 245, "name": "Suicune"},
         
@@ -3493,7 +3484,6 @@
         
             "min_rounds": 2,
         
-            "backgrounds": {"battle": "battle_bell_tower.png"},
         
             "area_boss": {"id": 250, "level": 60, "name": "Ho-Oh", "victory_flag": "caught_ho_oh"},
         
@@ -3561,7 +3551,6 @@
         
             "min_rounds": 2,
         
-            "backgrounds": {"battle": "battle_mt_mortar.png"},
         
             "trainer_pool": [
         
@@ -3665,7 +3654,6 @@
         
             "min_rounds": 2,
         
-            "backgrounds": {"battle": "battle_ice_path.png"},
         
             "trainer_pool": [
         
@@ -3733,7 +3721,6 @@
         
             "min_rounds": 4,
         
-            "backgrounds": {"battle": "battle_whirl_islands.png"},
         
             "area_boss": {"id": 249, "level": 60, "name": "Lugia", "victory_flag": "caught_lugia"},
         
@@ -4007,7 +3994,6 @@
 
             "min_rounds": 0,
 
-            "backgrounds": {"battle": "battle_ecruteak_dance.png"},
 
             "route_menu": [
 
