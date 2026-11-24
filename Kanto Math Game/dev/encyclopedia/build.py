@@ -91,27 +91,108 @@ def mon_cell(r):
     return f'<span class="mon">{icon("p", r["icon"])}{mon_link(r["id"], r["name"])}</span>{tags}'
 
 
-def wild_table(rows, caption, water=False):
+# ---------------------------------------------------------------- the story level cap (src/world/levels.py)
+_LV = open(os.path.join(F.ROOT, "src", "world", "levels.py"), encoding="utf-8").read()
+GYM_ACE = eval(re.search(r'"KANTO": (\[[\d, ]+\])', _LV).group(1))
+CHAMP_ACE = int(re.search(r'CHAMPION_ACE = \{"KANTO": (\d+)', _LV).group(1))
+CAP_OVER = int(re.search(r"CAP_OVER_ACE = (\d+)", _LV).group(1))
+LIFT_BELOW = int(re.search(r"CAP_LIFT_BELOW = (\d+)", _LV).group(1))
+LIFT_ABOVE = int(re.search(r"CAP_LIFT_ABOVE = (\d+)", _LV).group(1))
+REMATCH_FLOOR = int(re.search(r'LEAGUE_REMATCH_FLOOR = \{"KANTO": (\d+)', _LV).group(1))
+CAP = {"badges": 0, "post": False}   # set as the parts go, by {{badges:N}} / {{badges:post}}
+
+
+def story_ace(badges):
+    """levels.story_ace: the next Leader's ace (never lower than an earlier one), the Champion's with all eight."""
+    return max(GYM_ACE[:badges + 1]) if badges < len(GYM_ACE) else CHAMP_ACE
+
+
+def cap_band(f):
+    """levels.capped_band: once your lead has reached the ace, the place's wild Pokemon come at ace-3..ace+1 (not where
+    the place's own level is already above that)."""
+    if CAP["post"]:
+        return None
+    ace = story_ace(CAP["badges"])
+    if f["level"] > ace + LIFT_ABOVE:
+        return None
+    return ace - LIFT_BELOW, ace + LIFT_ABOVE
+
+
+RODS = {"Old Rod": 5, "Good Rod": 10, "Super Rod": 15}
+
+
+def at_cap(r, band, fixed_land):
+    if not band or (fixed_land and r["how"] not in RODS and r["how"] != "Surfing"):
+        return "—"
+    lo, hi = band
+    need = RODS.get(r["how"])
+    if need:
+        lo, hi = max(lo, need), max(hi, need)
+    return f"{lo}" if lo == hi else f"{lo}–{hi}"
+
+
+def cap_html():
+    if CAP["post"]:
+        return ('<div class="note cap"><b>Level cap: your team.</b> After the title the cap follows your own team: it\'s your '
+                f'highest level, and never below Lv {REMATCH_FLOOR}. Wild Pokémon rise to your team\'s level (its average, '
+                'your lowest Pokémon left out) wherever that\'s above the place\'s own. Legendary Pokémon stay at Lv 70, and '
+                'trainers keep their own levels.</div>')
+    n = CAP["badges"]
+    ace = story_ace(n)
+    who = (f"your {['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth'][n]} badge" if n < 8
+           else "the Champion")
+    return (f'<div class="note cap"><b>Level cap: Lv {ace + CAP_OVER}</b> until {who}. Your Pokémon stop gaining Exp. there, '
+            f'and Rare Candies stop working. The next Leader\'s best Pokémon is Lv {ace}. Once your lead Pokémon reaches '
+            f'Lv {ace}, wild Pokémon in places below that level come at Lv {ace - LIFT_BELOW}–{ace + LIFT_ABOVE}: '
+            'the "At the cap" column in the tables. Trainers keep their own levels.</div>')
+
+
+def captable_html():
+    """The cap for each badge count, with the Leader usually next (levels.GYM_ORDER) and his best Pokemon."""
+    order = re.findall(r'"([A-Z_]+)"', re.search(r'"KANTO": \[([^\]]+)\]', _LV[_LV.index("GYM_ORDER"):]).group(1))
+    rows = []
+    for n in range(9):
+        ace = story_ace(n)
+        if n < 8:
+            leader = ((F.PLACES.get(order[n]) or {}).get("gym") or {}).get("leader") or {}
+            nxt = f"{leader.get('name', '?')} ({FACTS[order[n]]['name'] if order[n] in FACTS else order[n].title()})"
+        else:
+            nxt = "the Elite Four and the Champion"
+        rows.append(f"<tr><td>{n}</td><td><b>Lv {ace + CAP_OVER}</b></td><td>{esc(nxt)}</td><td>Lv {ace}</td>"
+                    f"<td>Lv {ace - LIFT_BELOW}–{ace + LIFT_ABOVE}</td></tr>")
+    rows.append(f"<tr><td>Champion</td><td><b>Your team</b></td><td>the post-game</td><td>—</td><td>your team's level</td></tr>")
+    return ('<div class="frame captab"><table><caption>The story level cap</caption><thead><tr><th>Badges</th><th>Cap</th>'
+            '<th>Next (usual order)</th><th>Their best</th><th>Wild at the cap</th></tr></thead>'
+            f'<tbody>{"".join(rows)}</tbody></table></div>')
+
+
+def wild_table(rows, caption, water=False, band=None, fixed_land=False):
     if not rows:
         return ""
+    cap_col = band is not None
     body = "".join(f'<tr><td>{mon_cell(r)}</td><td><span class="how">{esc(r["how"])}</span></td><td>{lv(r)}</td>'
-                   f'<td class="rate">{rate(r["rate"])}</td></tr>' for r in rows)
+                   + (f'<td>{at_cap(r, band, fixed_land)}</td>' if cap_col else "")
+                   + f'<td class="rate">{rate(r["rate"])}</td></tr>' for r in rows)
     return (f'<div class="frame{" water" if water else ""}"><table><caption>{esc(caption)}</caption>'
-            '<thead><tr><th>Pokémon</th><th>How</th><th>Levels</th><th>Rate</th></tr></thead>'
+            '<thead><tr><th>Pokémon</th><th>How</th><th>Levels</th>' + ("<th>At the cap</th>" if cap_col else "")
+            + '<th>Rate</th></tr></thead>'
             f'<tbody>{body}</tbody></table></div>')
 
 
 def wild_html(f):
     w = f["wild"]
     out = []
+    band = cap_band(f)
+    fixed = any("wild_levels" in n for n in w.get("notes", []))
     if w["land"]:
-        out.append(wild_table(w["land"], "Available Pokémon"))
+        out.append(wild_table(w["land"], "Available Pokémon", band=band, fixed_land=fixed))
     for z in w["zones"]:
-        out.append(wild_table(z["rows"], f"Available Pokémon: {z['zone']}"))
+        out.append(wild_table(z["rows"], f"Available Pokémon: {z['zone']}", band=band, fixed_land=fixed))
     if w["trees"]:
-        out.append(wild_table(w["trees"], "Headbutt trees"))
+        out.append(wild_table(w["trees"], "Headbutt trees", band=band, fixed_land=fixed))
     if w["water"]:
-        out.append(wild_table(w["water"], "On the water" if (w["land"] or w["zones"]) else "Available Pokémon (water)", water=True))
+        out.append(wild_table(w["water"], "On the water" if (w["land"] or w["zones"]) else "Available Pokémon (water)", water=True,
+                              band=band, fixed_land=fixed))
     return "".join(out)
 
 
@@ -240,7 +321,8 @@ def trainers_html(f, room=None):
         w = "" if t["where"] in ("on the map", "outside") else t["where"]
         rows.append(f'<tr><td><b>{esc(trainer_name(t))}</b></td>' + (f'<td>{esc(w)}</td>' if show else "")
                     + f'<td>{team_html(t["team"])}</td></tr>')
-    cap = "Trainers" + (f": {esc(room)}" if room else "")
+    town = (F.PLACES.get(f["key"]) or {}).get("area_type") == "town"
+    cap = "Trainers" + (f": {esc(room)}" if room else "") + f'<span class="style">{"battle screen" if town else "on the map"}</span>'
     return (f'<div class="frame"><table><caption>{cap}</caption><thead><tr><th>Trainer</th>' + ("<th>Where</th>" if show else "")
             + f'<th>Pokémon</th></tr></thead><tbody>{"".join(rows)}</tbody></table></div>')
 
@@ -288,7 +370,8 @@ def battle_html(f, name, note=None, pick=None):
     rw = reward_words(t)
     rw_html = f'<div class="small">Rewards: {esc(rw)}</div>' if rw else ""
     note_html = f'<div class="small">{note}</div>' if note else ""
-    return (f'<div class="battle"><div><div class="who">{esc(who)}</div><div class="small">{esc(class_word(t.get("class")))}</div>'
+    return (f'<div class="battle"><div><div class="who">{esc(who)}</div><div class="small">{esc(class_word(t.get("class")))}'
+            ' · battle screen</div>'
             f'{rw_html}</div><div class="teams">{teams}{note_html}</div></div>')
 
 
@@ -411,6 +494,13 @@ def fill(text):
             return journal_html(arg)
         if kind == "mart":
             return f'<div class="grid">{mart_html()}</div>'
+        if kind == "badges":
+            CAP.update(post=(arg == "post"), badges=8 if arg == "post" else int(arg))
+            return ""
+        if kind == "cap":
+            return cap_html()
+        if kind == "captable":
+            return f'<div class="grid">{captable_html()}</div>'
         if kind == "prizes":
             return f'<div class="grid">{prizes_html()}</div>'
         raise SystemExit(f"unknown marker {kind}")

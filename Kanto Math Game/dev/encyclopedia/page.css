@@ -80,3 +80,6 @@ a.x { color: inherit; text-decoration: none; border-bottom: 1px dotted var(--mut
 a.x:hover, a.x:focus-visible { color: var(--accent); }
 .idx td { vertical-align: top; }
 .idx .places a { white-space: nowrap; }
+caption .style { float: right; font-weight: 600; letter-spacing: .04em; opacity: .85; text-transform: none; }
+.note.cap { border-left-color: var(--gold); }
+.captab td:first-child { white-space: nowrap; }
