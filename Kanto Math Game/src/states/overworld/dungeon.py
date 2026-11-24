@@ -4686,6 +4686,8 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
             got = self._sprite(("pic", spec["pic"]), _make)
             if got is not None:
                 return got
+        if spec.get("draw") == "none":  # (a spot to look at, not a person: a bookshelf, a bell heard on the trail - nothing drawn; 11-23)
+            return self._sprite("no_figure", lambda: pygame.Surface((1, 1), pygame.SRCALPHA))
         if spec.get("draw") == "ghost":  # (the Tower's unknown spirit: nobody can tell what it is yet)
             return self._sprite("ghost_figure", ghost_figure)
         if spec.get("draw") == "terminal":  # (a computer you use: New Mauville's security check)
