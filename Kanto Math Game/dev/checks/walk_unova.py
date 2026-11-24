@@ -8,7 +8,7 @@ seen = report("start", S, set())
 steps = [("TRIO", {}, "TRIO"), ("BASIC", {"b2_pop_roxie_back": True}, "BASIC"),   # (Pop Roxie back at Virbank's terminal: his ship to Castelia)
          ("Castelia sewers", {"plasma_castelia_cleared": True, "b2_castelia_arrived": True}, None),   # (and his ship back)
          ("INSECT", {}, "INSECT"), ("BOLT", {}, "BOLT"), ("Relic Castle", {"plasma_relic_castle_cleared": True}, None),
-         ("QUAKE", {}, "QUAKE"), ("JET", {}, "JET"), ("Dragonspiral", {"plasma_dragonspiral_cleared": True}, None),
+         ("QUAKE", {}, "QUAKE"), ("JET", {"b2_jet_badge": True, "b2_lucky_egg": True}, "JET"), ("Dragonspiral", {"plasma_dragonspiral_cleared": True}, None),
          ("FREEZE", {}, "FREEZE"), ("LEGEND", {}, "LEGEND"), ("champion", {"beat_unova_champion": True}, None)]
 for title, flags, b in steps:
     story.story_flags.update(flags)
@@ -56,8 +56,9 @@ story.story_flags.update(saved)
 story.story_flags["beat_unova_champion"] = False
 B2_EARLY = ["VIRBANK_CITY", "VIRBANK_COMPLEX", "UNOVA_ROUTE_20", "FLOCCESY_RANCH", "FLOCCESY_TOWN", "UNOVA_ROUTE_19", "ASPERTIA_CITY",
             "RELIC_PASSAGE", "TUBELINE_BRIDGE", "LENTIMAS_TOWN", "REVERSAL_MOUNTAIN", "STRANGE_HOUSE",
-            "PWT", "PLASMA_FRIGATE", "RELIC_PASSAGE_MIDDLE", "RELIC_PASSAGE_NORTH", "RELIC_CASTLE_DEPTHS"]   # (batch 5b, 11-24)
-B2_POST = ["HUMILAU_CITY", "UNDELLA_BAY", "SEASIDE_CAVE", "NATURE_PRESERVE", "MARVELOUS_BRIDGE", "VILLAGE_BRIDGE",
+            "PWT", "PLASMA_FRIGATE", "RELIC_PASSAGE_MIDDLE", "RELIC_PASSAGE_NORTH", "RELIC_CASTLE_DEPTHS",   # (batch 5b, 11-24)
+            "VILLAGE_BRIDGE"]   # (11-24: on Black 2's story road, Route 12 to Route 11)
+B2_POST = ["HUMILAU_CITY", "UNDELLA_BAY", "SEASIDE_CAVE", "NATURE_PRESERVE", "MARVELOUS_BRIDGE",
            "CHALLENGERS_CAVE", "CLAY_TUNNEL"]
 expansion_check("unova b2w2 side areas", B2_EARLY, S)
 gate_check("unova post-game side areas", B2_POST, S, "beat_unova_champion")
