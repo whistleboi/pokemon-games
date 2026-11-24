@@ -206810,6 +206810,730 @@
        ]
       }
      }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        8,
+        6
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:8:6"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        11,
+        6
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:11:6"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        21,
+        6
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:21:6"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        3,
+        9
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:3:9"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        9,
+        9
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:9:9"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        9
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:13:9"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        9
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:16:9"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        18,
+        9
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:18:9"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        23,
+        10
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:23:10"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        4,
+        11
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:4:11"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        7,
+        11
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:7:11"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        11
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:20:11"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        3,
+        13
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:3:13"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        7,
+        13
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:7:13"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        21,
+        15
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:21:15"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        3,
+        16
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:3:16"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        8,
+        16
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:8:16"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        16
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:20:16"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        3,
+        19
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:3:19"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        8,
+        19
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:8:19"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        21,
+        19
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:21:19"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        4,
+        21
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:4:21"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        21,
+        23
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:21:23"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        15,
+        25
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:15:25"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        19,
+        25
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:19:25"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        23,
+        26
+       ]
+      ],
+      "look": "sheet:pt_sandbag.png",
+      "until": {
+       "condition": "world:veilstone_gym:nobag:23:26"
+      },
+      "on_bump": {
+       "event": {
+        "world": "veilstone_gym",
+        "push": true
+       }
+      },
+      "lines": [
+       "A heavy punching bag. Give it a good hit!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        3,
+        20
+       ]
+      ],
+      "look": "sheet:pt_tires.png",
+      "until": {
+       "condition": "world:veilstone_gym:nostack:0"
+      },
+      "lines": [
+       "A tall stack of tires. A punching bag could knock it over."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        8,
+        9
+       ]
+      ],
+      "look": "sheet:pt_tires.png",
+      "until": {
+       "condition": "world:veilstone_gym:nostack:1"
+      },
+      "lines": [
+       "A tall stack of tires. A punching bag could knock it over."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        8,
+        11
+       ]
+      ],
+      "look": "sheet:pt_tires.png",
+      "until": {
+       "condition": "world:veilstone_gym:nostack:2"
+      },
+      "lines": [
+       "A tall stack of tires. A punching bag could knock it over."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        8,
+        13
+       ]
+      ],
+      "look": "sheet:pt_tires.png",
+      "until": {
+       "condition": "world:veilstone_gym:nostack:3"
+      },
+      "lines": [
+       "A tall stack of tires. A punching bag could knock it over."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        12,
+        6
+       ]
+      ],
+      "look": "sheet:pt_tires.png",
+      "until": {
+       "condition": "world:veilstone_gym:nostack:4"
+      },
+      "lines": [
+       "A tall stack of tires. A punching bag could knock it over."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        12,
+        9
+       ]
+      ],
+      "look": "sheet:pt_tires.png",
+      "until": {
+       "condition": "world:veilstone_gym:nostack:5"
+      },
+      "lines": [
+       "A tall stack of tires. A punching bag could knock it over."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        19,
+        9
+       ]
+      ],
+      "look": "sheet:pt_tires.png",
+      "until": {
+       "condition": "world:veilstone_gym:nostack:6"
+      },
+      "lines": [
+       "A tall stack of tires. A punching bag could knock it over."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        10
+       ]
+      ],
+      "look": "sheet:pt_tires.png",
+      "until": {
+       "condition": "world:veilstone_gym:nostack:7"
+      },
+      "lines": [
+       "A tall stack of tires. A punching bag could knock it over."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        25
+       ]
+      ],
+      "look": "sheet:pt_tires.png",
+      "until": {
+       "condition": "world:veilstone_gym:nostack:8"
+      },
+      "lines": [
+       "A tall stack of tires. A punching bag could knock it over."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        22,
+        6
+       ]
+      ],
+      "look": "sheet:pt_tires.png",
+      "until": {
+       "condition": "world:veilstone_gym:nostack:9"
+      },
+      "lines": [
+       "A tall stack of tires. A punching bag could knock it over."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        23,
+        27
+       ]
+      ],
+      "look": "sheet:pt_tires.png",
+      "until": {
+       "condition": "world:veilstone_gym:nostack:10"
+      },
+      "lines": [
+       "A tall stack of tires. A punching bag could knock it over."
+      ]
+     }
+    ],
+    "scenes": [
+     {
+      "trigger": "enter",
+      "every": true,
+      "cast": [],
+      "event": {
+       "world": "veilstone_gym",
+       "reset": true
+      }
+     }
     ]
    },
    "house_0401": {

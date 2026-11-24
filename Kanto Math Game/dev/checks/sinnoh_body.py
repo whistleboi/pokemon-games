@@ -1075,5 +1075,40 @@ check(_title == "Veilstone Dept. Store 1F" and _shop and "POKE_BALLS" in _shop a
       f"Veilstone Dept. Store: 1F's ball counter sells balls, the lift's attendant takes you to 3F's TM Corner ({_title}, {_shop and _shop[:3]}, {t.room})")
 story.story_flags.clear(); story.story_flags.update(_sv)
 
+# ---- S4 (11-24): Veilstone Gym's punching bags, Platinum's rules (src/world/veilstone_gym.py, s_s4_veilstone_gym.py)
+from src.world import veilstone_gym as _vg
+_sv = dict(story.story_flags)
+t = town("VEILSTONE_CITY", "SINNOH_ROUTE_214")
+t._go("gym", "OUT:12,35"); frames(t, 5); _drive(t, 200, lambda: not t._busy())   # (its "enter" scene sets the bags up)
+_start = (8, 6) in t.barred and (12, 6) in t.barred   # (a bag, and the tire stack east of it)
+
+
+def _hit(bag, d):
+    """Stand beside the bag (room tile) and walk into it; wait for the slide."""
+    t.player = t.anim_from = (bag[0] - d[0], bag[1] - d[1]); t.anim = 0; t.walk_goal = None
+    t.step(*d)
+    _drive(t, 300, lambda: not getattr(t, "_vg_anim", None) and not t._busy())
+
+
+_hit((8, 6), (1, 0))
+_one = (11, 6) in t.barred and (12, 6) not in t.barred and (8, 6) not in t.barred
+# the rest of a way to Maylene (s_s4_veilstone_gym.explore found it; zone tiles less 1 row): 11 more hits
+for _b, _d in [((15, 25), (1, 0)), ((3, 9), (0, 1)), ((3, 13), (1, 0)), ((8, 19), (0, -1)), ((8, 16), (-1, 0)), ((3, 16), (0, 1)),
+               ((4, 21), (0, -1)), ((4, 11), (1, 0)), ((20, 16), (0, -1)), ((16, 9), (-1, 0)), ((13, 9), (-1, 0))]:
+    _hit(_b, _d)
+_seen, _todo = {(12, 29)}, [(12, 29)]
+while _todo:
+    _x, _y = _todo.pop()
+    for _dx, _dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+        _n = (_x + _dx, _y + _dy)
+        if _n not in _seen and 0 <= _n[1] < t.h and 0 <= _n[0] < t.w and t.rows[_n[1]][_n[0]] == "." and _n not in t.barred:
+            _seen.add(_n); _todo.append(_n)
+_reach = any((12 + _dx, 3 + _dy) in _seen for _dx, _dy in ((1, 0), (-1, 0), (0, 1), (0, -1)))
+t._go("gym", "OUT:12,35"); frames(t, 5); _drive(t, 200, lambda: not t._busy())   # (its "enter" scene sets the bags up)
+_back = (8, 6) in t.barred and (12, 6) in t.barred
+check(_start and _one and _reach and _back,
+      f"Veilstone Gym: a bag hit east slides to its stop and knocks the tires over; twelve hits open the way to Maylene; coming back in sets them up again ({_start}, {_one}, {_reach}, {_back})")
+story.story_flags.clear(); story.story_flags.update(_sv)
+
 g.walk_towns = False
 print(f"##### {fails} failures")
