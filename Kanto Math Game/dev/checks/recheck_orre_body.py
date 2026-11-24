@@ -76,7 +76,10 @@ def opts(area):
     return [o.get("text") for o in (a.get("route_menu") or []) + (a.get("explore_options") or [])]
 
 
-for area, text in (("OUTSKIRT_STAND", "CHALLENGE WILLIE"), ("GATEON_PORT", "Professor Krane's Lab"),
+import json as _json
+_willie = _json.dumps(_json.load(open("assets/town_maps.json", encoding="utf-8"))["OUTSKIRT_STAND"])
+check("Rider Willie" in _willie, "OUTSKIRT_STAND: Rider Willie (in the diner, on the walked map)")   # (11-23: his old menu button is gone)
+for area, text in (("GATEON_PORT", "Professor Krane's Lab"),
                    ("MT_BATTLE", "DAKIM ATTACKS MT. BATTLE"), ("SHADOW_PKMN_LAB", "SHADOW POKEMON LAB: EIN"),
                    ("PHENAC_CITY", "PHENAC STADIUM: SNATTLE"), ("RELIC_FOREST", "HO-OH AT THE RELIC STONE"),
                    ("PYRITE_CAVE", "PYRITE CAVE: MIROR B."), ("SNAGEM_HIDEOUT", "SNAGEM HIDEOUT: GONZAP")):
@@ -114,10 +117,15 @@ story.story_flags["got_snag_machine"] = True   # (Snag menus open once Phenac's 
 story.current_area_key = "ORRE_DESERT"
 for s_ in orre["ORRE_DESERT"]["shadow_pool"]:
     story.story_flags[s_["flag"]] = True
+g.dungeon_routes = True   # (R1, 11-23: on the walked desert, as a player meets them - not the old route menu)
+story.last_area_key = "OUTSKIRT_STAND"
 st = PlayState(g)
 g.change_state(st)
-st.show_progression_menu()
-btns = [b.text for b in st.route_buttons]
-check("SNAG AGAIN" in btns and "SNAG SHADOW POKEMON" not in btns, f"area cleared: SNAG AGAIN for another copy {btns}")
+for _ in range(3):
+    g.current_state.update()
+st = g.current_state
+btns = [i.get("text") for i in getattr(st, "placed", [])]
+check(type(st).__name__ == "DungeonState" and "SNAG AGAIN" in btns and "SNAG SHADOW POKEMON" not in btns,
+      f"area cleared: SNAG AGAIN stands on the walked desert for another copy {btns}")
 
 print(f"\n{'ALL PASS' if not fails else str(fails) + ' FAIL(S)'}")

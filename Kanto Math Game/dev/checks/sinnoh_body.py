@@ -133,8 +133,12 @@ r = route("SINNOH_ROUTE_203", "OREBURGH_GATE")
 check(r.run.player[0] >= 50, f"Route 203: out of the Gate by the cave mouth {r.run.player}")
 r = route("OREBURGH_GATE", "SINNOH_ROUTE_203")
 f = r.run.floor
-check(isinstance(r, DungeonState) and (f.w, f.h) == (30, 27) and r.run.player[0] <= 4 and set(f.exits.values()) == {"SINNOH_ROUTE_203", "OREBURGH_CITY"},
+check(isinstance(r, DungeonState) and (f.w, f.h) == (30, 27) and r.run.player[0] <= 4 and set(f.exits.values()) - {"STAIRS"} == {"SINNOH_ROUTE_203", "OREBURGH_CITY"},
       f"Oreburgh Gate: 30 x 27; in from Route 203 at the west mouth {r.run.player}; Oreburgh east")
+_st = next((t for t, v in f.exits.items() if v == "STAIRS"), None)   # (11-23 S2: Platinum's B1F, down the stairs at 1F (18,3))
+if _st:
+    r._warp(1, 1, 1); frames(r, 2)
+check(_st == (18, 3) and r.run.index == 1 and r.run.n_floors == 2, f"Oreburgh Gate: the stairs down to B1F ({_st}, floor {r.run.index} of {r.run.n_floors})")
 r = route("OREBURGH_GATE", "OREBURGH_CITY")
 check(r.run.player[0] >= 25, f"Oreburgh Gate: in from Oreburgh at the east mouth {r.run.player}")
 
@@ -478,8 +482,15 @@ check(len(_ps) == 4 and all(not r.run.floor.walkable(*t) for t in _ps) and _cel 
       f"Route 210: without the Fen Badge four Psyduck fill the path north, and Celestic can't be reached from Solaceon")
 frames(r, 3)
 story.badges["SINNOH"] = ["COAL", "FOREST", "RELIC", "COBBLE", "FEN", "MINE"]
+r, _ps1 = _blocked("SINNOH_ROUTE_210", "SOLACEON_TOWN", "psyduck")
+story.inventory["SECRET_POTION"] = 1   # (11-23 S3, Jordan: Platinum's rule - Cynthia's SecretPotion cures them, not the Fen Badge)
 r, _ps2 = _blocked("SINNOH_ROUTE_210", "SOLACEON_TOWN", "psyduck")
-check(not _ps2, f"Route 210: with the Fen Badge the Psyduck are gone ({story.badges['SINNOH']})")
+story.inventory.pop("SECRET_POTION", None)
+check(_ps1 and not _ps2, f"Route 210: the Psyduck stay till you have the SecretPotion, then they're gone ({len(_ps1)} -> {len(_ps2)})")
+_vl = _tm["VALOR_LAKEFRONT"]
+_cyv = [p for f in (_vl.get("floors") or [_vl]) for p in f.get("people") or [] if isinstance(p, dict) and p.get("text") == "Cynthia"]
+check(_cyv and _cyv[0]["event"].get("gift_item") == {"SECRET_POTION": 1} and "has_fen_badge" in _cyv[0]["condition"],
+      "Valor Lakefront: Cynthia gives the SecretPotion after the Fen Badge")
 story.story_flags.pop("windworks_cleared", None)
 story.inventory["HM_SURF"] = 0                                     # (you have no Surf this early: the river can't take you round them)
 r, _gr = _blocked("SINNOH_ROUTE_205", "FLOAROMA_TOWN")
@@ -491,11 +502,12 @@ story.story_flags["windworks_cleared"] = True
 r, _gr2 = _blocked("SINNOH_ROUTE_205", "FLOAROMA_TOWN")
 check(not _gr2 and "SINNOH_ROUTE_205" in [o.get("target_area") for o in _prog["FLOAROMA_TOWN"]["travel_options"] if not o.get("condition")],
       "Route 205: once the Windworks is cleared the grunts are gone (and Floaroma's own way onto the route is open from the start)")
-story.defeated_trainers.pop("FLOAROMA_MEADOW", None)
+story.inventory.pop("WORKS_KEY", None)
 r, _wg = _blocked("VALLEY_WINDWORKS", "SINNOH_ROUTE_205")
-story.defeated_trainers["FLOAROMA_MEADOW"] = set(range(len(_prog["FLOAROMA_MEADOW"]["trainer_pool"])))
+story.inventory["WORKS_KEY"] = 1   # (11-23, S2: Platinum's rule - the door opens with the Works Key, the Meadow's second grunt's)
 r, _wg2 = _blocked("VALLEY_WINDWORKS", "SINNOH_ROUTE_205")
-check(len(_wg) == 1 and not _wg2, "Valley Windworks: a grunt stands at the door until the Meadow's grunts are beaten (the Works Key)")
+story.inventory.pop("WORKS_KEY", None)
+check(len(_wg) == 1 and not _wg2, "Valley Windworks: the door is shut until you have the Works Key")
 story.inventory["BICYCLE"] = 0
 r, _bk = _blocked("SINNOH_ROUTE_206", "ETERNA_CITY")
 story.inventory["BICYCLE"] = 1
@@ -530,9 +542,11 @@ check(_slow == _dmod.STEP_FRAMES * 2 and r.anim == _dmod.STEP_FRAMES and sum(row
       f"Route 217: a step into deep snow takes twice as long ({_slow} frames against {r.anim}); {sum(row.count('8') for row in _g)} tiles of it")
 story.inventory["HM_DEFOG"] = 0
 r = route("LOST_TOWER", "SINNOH_ROUTE_209")
+r._warp(4, 1, 1); frames(r, 3)   # (5F: the fog is on 3F-5F only, Platinum's zone weather - checked floor by floor in S3's part)
 _fog1 = bool(r.run.fog)
 story.inventory["HM_DEFOG"] = 1
 r = route("LOST_TOWER", "SINNOH_ROUTE_209")
+r._warp(4, 1, 1); frames(r, 3)
 check(_fog1 and not r.run.fog and _tm["TURNBACK_CAVE"].get("fog") == "defog", "Lost Tower: thick fog until you have Defog (Turnback Cave the same)")
 story.inventory["BICYCLE"] = 0
 r = route("SINNOH_ROUTE_228", "SINNOH_ROUTE_226")
@@ -670,6 +684,304 @@ _d = next(tuple(int(v) for v in d.split(",")) for d, n in _tm["OREBURGH_CITY"]["
 t._go(None, "OUT:%d,%d" % next(tuple(int(v) for v in d.split(",")) for d, n in _tm["OREBURGH_CITY"]["inside"].items() if n == "gym"))
 _enter_door(t, _d)
 check(t.room == "center" and [str(o.get("action")).upper() for o in t.people.values()].count("HEAL") == 1, f"Oreburgh's Pokemon Center: the nurse inside heals ({t.room})")
+
+# ---- S1 (11-23): Platinum's two opening gates (sinnoh_map_tools/s_s1_gates.py; found by sgates.py)
+def _drive(st, n=900, done=None):
+    """Frames with every line tapped through, till the scene is over (or done() says so)."""
+    for _ in range(n):
+        cur = g.current_state
+        if done and done():
+            return True
+        if getattr(cur, "npc_active", False):
+            cur.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=(640, 600))])
+        box = getattr(cur, "dialogue_box", None)
+        if box is not None and getattr(box, "visible", False):
+            box.advance()
+        cur.update(); cur.draw()
+    return bool(done and done())
+
+
+_sv = dict(story.story_flags)
+for _k in ("received_starter_sinnoh", "sinnoh_visited_rival_home"):
+    story.story_flags.pop(_k, None)
+t = town("TWINLEAF_TOWN", "TWINLEAF_TOWN")
+t.player = t.anim_from = (15, 4); t.anim = 0; t.walk_goal = None
+t.step(0, -1); t.anim = 0
+_hit = _drive(t, 30, lambda: t.scenes.busy())
+_drive(t, 900, lambda: not t.scenes.busy())
+check(_hit and tuple(t.player)[1] >= 4, f"Twinleaf: before you've been to your friend's house, a neighbour calls you back from the north way out (scene {_hit}, you at {t.player})")
+_enter_door(t, (9, 11))
+_mom = next((s for s, o in t.people.items() if "House" in str(o.get("text"))), None)
+if _mom:
+    t._talk(_mom); _drive(t, 200, lambda: not getattr(t, "npc_active", False))
+check(t.room == "rival" and story.story_flags.get("sinnoh_visited_rival_home"), f"Twinleaf: your friend's mom, in his house, sends you after him ({t.room}, {_mom})")
+t = town("TWINLEAF_TOWN", "TWINLEAF_TOWN")
+t.player = t.anim_from = (15, 4); t.anim = 0; t.walk_goal = None
+t.step(0, -1); t.anim = 0
+_drive(t, 30)
+check(not t.scenes.busy() and tuple(t.player) == (15, 3), f"Twinleaf: after that, the way north is open ({t.player})")
+story.story_flags.clear(); story.story_flags.update(_sv)
+
+for _k in ("rowan_assistant_balls", "sinnoh_route202_lesson"):
+    story.story_flags.pop(_k, None)
+story.story_flags["received_pokedex_sinnoh"] = True
+r = route("SINNOH_ROUTE_202", "SANDGEM_TOWN")
+_balls = story.balls_left
+r.run.floor.movers = [m for m in r.run.floor.movers if m.kind != "wild"]
+r.run.player = (21, 27); frames(r, 2)
+r.run.player = (20, 27)
+_hit = _drive(r, 60, lambda: r._scene_run is not None and r._scene_run.busy())
+_drive(r, 2000, lambda: story.story_flags.get("rowan_assistant_balls") and not (r._scene_run and r._scene_run.busy()))
+check(_hit and story.story_flags.get("rowan_assistant_balls") and story.balls_left >= _balls + 5,
+      f"Route 202: Dawn catches up, shows you how to catch, and gives you 5 Poke Balls (scene {_hit}, balls {_balls} -> {story.balls_left})")
+story.story_flags.clear(); story.story_flags.update(_sv)
+
+# ---- S2 (11-23): the Windworks chain and Jubilife's Pokétch campaign, as Platinum has them (s_s2_windworks.py, s_s2_jubilife.py)
+from src.states.systems.pick_list import PickListState as _PLS
+_sv = dict(story.story_flags); _inv = dict(story.inventory)
+for _k in ("sinnoh_r205_girl", "windworks_cleared", "got_poketch", "sinnoh_coupon_1", "sinnoh_coupon_2", "sinnoh_coupon_3"):
+    story.story_flags.pop(_k, None)
+story.inventory.pop("WORKS_KEY", None)
+for _b in [b for b in story.badges.get("SINNOH", [])]:
+    pass
+_badges = list(story.badges.get("SINNOH", []))
+t = town("FLOAROMA_TOWN", "SINNOH_ROUTE_204")
+check((2, 3) in t.barred and (3, 3) in t.barred, f"Floaroma: two grunts stand in the Meadow's way in before you've met the girl on Route 205 ({sorted(t.barred)[:2]})")
+r = route("SINNOH_ROUTE_205", "FLOAROMA_TOWN")
+_girl = next((m for m in r.run.floor.movers if m.kind == "figure" and str((m.payload or {}).get("text")) == "Little girl"), None) if hasattr(r, "run") else None
+if _girl is not None:
+    r._use_figure(_girl); _drive(r, 300, lambda: not (getattr(r, "dialogue_box", None) and r.dialogue_box.visible))
+check(_girl is not None and story.story_flags.get("sinnoh_r205_girl"), f"Route 205: the girl whose papa is trapped in the Windworks asks for help ({_girl is not None})")
+t = town("FLOAROMA_TOWN", "SINNOH_ROUTE_204")
+check((2, 3) not in t.barred, "Floaroma: then the grunts have gone into the Meadow")
+_mg = __import__("json").load(open("assets/sinnoh_area_data.json", encoding="utf-8"))["STORY_PROGRESSION"]["FLOAROMA_MEADOW"]["trainer_pool"]
+check(_mg[-1].get("rewards", {}).get("WORKS_KEY") == 1, "Floaroma Meadow: the second grunt gives the Works Key")
+r = route("VALLEY_WINDWORKS", "SINNOH_ROUTE_205")
+_door = next((b for f in (_tm["VALLEY_WINDWORKS"].get("floors") or [_tm["VALLEY_WINDWORKS"]]) for b in f.get("barred") or [] if b.get("item") == "WORKS_KEY"), None)
+check(_door is not None, "Valley Windworks: its door opens with the Works Key")
+
+_r205 = _tm["SINNOH_ROUTE_205"]; _et = _tm["ETERNA_CITY"]
+_at = lambda m, x, y: m["exits"].get(m["art"][y][x])
+check(_at(_r205, 22, 0) == "ETERNA_FOREST_OUTSKIRTS" and _at(_r205, 14, 5) == "ETERNA_FOREST" and _at(_et, 0, 20) == "ETERNA_FOREST_OUTSKIRTS"
+      and _at(_et, 3, 12) == "ETERNA_FOREST", "Eterna Forest's outskirts (Platinum's D03): Route 205's north edge and Eterna's west edge lead there, the forest's doors into the forest")
+r = route("ETERNA_FOREST_OUTSKIRTS", "SINNOH_ROUTE_205")
+_o = r.run.floor
+check(isinstance(r, DungeonState) and set(_o.exits.values()) >= {"SINNOH_ROUTE_205", "ETERNA_CITY"}, f"the outskirts: walked, ways out to Route 205 and Eterna ({set(_o.exits.values())})")
+
+t = town("JUBILIFE_CITY", "SINNOH_ROUTE_202")   # (11-23 S2: Jubilife TV's 3F doorways, s_s2_tv.py)
+_tvb = []
+for _ch, _want in (("<", "tv_4f"), (">", "tv_groups"), ("u", "tv_records")):
+    t._go("house_0201_3f", None); frames(t, 2)
+    _sp = next(((x, y) for y, r in enumerate(_tm["JUBILIFE_CITY"]["rooms"]["house_0201_3f"]["art"]) for x, c in enumerate(r) if c == _ch), None)
+    _nb = next(((x + dx, y + dy) for x, y in [_sp] for dx, dy in ((0, 1), (1, 0), (-1, 0), (0, -1)) if t._open((x + dx, y + dy)) and (x + dx, y + dy) != _sp), None) if _sp else None
+    if _nb:
+        t.player = t.anim_from = _nb; t.anim = 0; t.walk_goal = None
+        t.step(_sp[0] - _nb[0], _sp[1] - _nb[1]); t.anim = 0; frames(t, 3)
+    _tvb.append((_ch, t.room == _want, len(t.people)))
+check(all(ok and n for _c, ok, n in _tvb), f"Jubilife TV 3F: each doorway leads to its room, people there ({_tvb})")
+
+story.badges["SINNOH"] = []
+t = town("JUBILIFE_CITY", "SINNOH_ROUTE_202")
+_cl = {xy: o for xy, o in t._people().items() if str(o.get("text", "")).startswith("Clown")}
+check(len(_cl) == 3, f"Jubilife: three Pokétch campaign clowns on Platinum's spots ({sorted(_cl)})")
+_xy = sorted(_cl)[0]
+_got = []
+for _ans in (1, 0):   # (wrong first: no Coupon; then right)
+    t._talk(_xy)
+    _drive(t, 200, lambda: isinstance(g.current_state, _PLS))
+    if isinstance(g.current_state, _PLS):
+        g.current_state.pick(_ans)
+    _drive(t, 200, lambda: not getattr(t, "npc_active", False) and g.current_state is t)
+    _got.append(bool(story.story_flags.get(_cl[_xy]["event"]["quiz_flag"])))
+check(_got == [False, True], f"Jubilife: a clown's Coupon only for the right answer (wrong, then right: {_got})")
+t.player = t.anim_from = (61, 22); t.anim = 0; t.walk_goal = None
+t.step(-1, 0); t.anim = 0
+_hit = _drive(t, 40, lambda: t.scenes.busy())
+_drive(t, 900, lambda: not t.scenes.busy())
+check(_hit and t.player[0] >= 59, f"Jubilife: without a Pokétch, Looker stops you at the way east ({_hit}, {t.player})")
+t.player = t.anim_from = (26, 44); t.anim = 0; t.walk_goal = None
+t.step(1, 0); t.anim = 0
+_hit = _drive(t, 40, lambda: t.scenes.busy())
+_drive(t, 900, lambda: not t.scenes.busy())
+check(_hit and t.player[0] >= 28, f"Jubilife: no Badge yet, so the guide turns you back from the Global Terminal ({_hit}, {t.player})")
+_d = next(tuple(int(v) for v in d.split(",")) for d, n in _tm["JUBILIFE_CITY"]["inside"].items() if n == "poketch")
+_enter_door(t, _d)
+_pres = next((s for s, o in t.people.items() if str(o.get("text")) == "Pokétch Company"), None)
+if _pres:
+    t._talk(_pres); _drive(t, 200, lambda: not getattr(t, "npc_active", False))
+_early = bool(story.story_flags.get("got_poketch"))
+story.story_flags.update({"sinnoh_coupon_1": True, "sinnoh_coupon_2": True, "sinnoh_coupon_3": True})
+if _pres:
+    t._talk(_pres); _drive(t, 200, lambda: not getattr(t, "npc_active", False))
+check(_pres and not _early and story.story_flags.get("got_poketch"), f"the Pokétch Company: the Pokétch only for all three Coupons (before {_early}, after {story.story_flags.get('got_poketch')})")
+story.story_flags.clear(); story.story_flags.update(_sv); story.inventory.clear(); story.inventory.update(_inv); story.badges["SINNOH"] = _badges
+
+# ---- S3 (11-23): Cynthia's Egg in Eterna (s_s3_eterna.py; Platinum's C04 script 27)
+_sv = dict(story.story_flags); _team = list(story.player_team)
+# (11-24: first Platinum's Cynthia outside the Galactic building, on Cut: she finishes the side mission "Cynthia's Gift")
+story.story_flags.pop("received_hm_cut", None); story.story_flags.pop("galactic_eterna_cleared", None)
+_fb = list(story.badges.get("SINNOH", []))
+story.badges["SINNOH"] = sorted(set(_fb) | {"COAL", "FOREST"})
+t = town("ETERNA_CITY", "SINNOH_ROUTE_211")
+_cc = next((s for s, o in t._people().items() if str(o.get("text")) == "Cynthia "), None)
+if _cc:
+    t._talk(_cc); _drive(t, 300, lambda: not getattr(t, "npc_active", False))
+check(_cc == (51, 8) and story.story_flags.get("received_hm_cut"),
+      f"Eterna: with the Forest Badge, Cynthia outside the Galactic building talks about Cut (\"Cynthia's Gift\" done) ({_cc})")
+story.badges["SINNOH"] = _fb
+story.story_flags["galactic_eterna_cleared"] = True; story.story_flags.pop("sinnoh_cynthia_egg", None)
+t = town("ETERNA_CITY", "SINNOH_ROUTE_211")
+check((53, 29) in t.barred, "Eterna: after the Galactic building, a stop across the street east until Cynthia's Egg")
+_cy = next((s for s, o in t._people().items() if str(o.get("text")) == "Cynthia"), None)
+_n = len(story.player_team)
+if _cy:
+    t._talk(_cy); _drive(t, 300, lambda: not getattr(t, "npc_active", False))
+_egg = len(story.player_team) == _n + 1 and getattr(story.player_team[-1], "is_egg", False) and story.player_team[-1].id == 175
+t = town("ETERNA_CITY", "SINNOH_ROUTE_211")
+check(_cy and _egg and story.story_flags.get("sinnoh_cynthia_egg") and (53, 29) not in t.barred,
+      f"Eterna: Cynthia gives the Togepi Egg, then the way east is open ({_cy}, egg {_egg})")
+story.story_flags.clear(); story.story_flags.update(_sv); story.player_team = _team
+
+# ---- S3 (11-23): Eterna Gym's flower clock, Platinum's own walk tables (s_s3_eterna_gym.py)
+_sv = dict(story.story_flags)
+_cf = ["gym_trainer_ETERNA_CITY_1", "gym_trainer_ETERNA_CITY_2", "gym_trainer_ETERNA_CITY_3"]
+for _k in _cf:
+    story.story_flags.pop(_k, None)
+_open = []
+for _n in range(3):
+    t = town("ETERNA_CITY", "SINNOH_ROUTE_206")
+    t._go("gym", None); frames(t, 25)
+    _open.append(((11, 15) in t.barred, (20, 19) in t.barred))
+    story.story_flags[_cf[_n]] = True
+check(_open == [(True, True), (False, True), (True, False)],
+      f"Eterna Gym: the clock's hands move with each trainer beaten - (11,15) shut, open, shut; the east fountain row shut, shut, open ({_open})")
+story.story_flags.clear(); story.story_flags.update(_sv)
+
+# ---- S3 (11-23): Hearthome Gym, Platinum's rooms; a question from our maths engine picks the door (s_s3_hearthome_gym.py)
+from src.world import hearthome_gym as _hg
+_sv = dict(story.story_flags)
+for _k in [k for k in story.story_flags if k.startswith("gym_trainer_HEARTHOME") or k.startswith("hearthome_gym_door")] + ["sinnoh_beat_fantina"]:
+    story.story_flags.pop(_k, None)
+
+
+def _hg_walk(t, at, d):
+    """Stand at, then walk one step that way (a door: into the next room). Waits for anything still playing first."""
+    _drive(t, 120, lambda: not (getattr(t, "scenes", None) and t.scenes.busy()) and not getattr(t, "npc_active", False))
+    was = t.room
+    t.player = t.anim_from = at; t.anim = 0; t.walk_goal = None
+    t.step(*d)
+    _drive(t, 120, lambda: t.room != was)
+
+
+def _hg_answer(t, right):
+    _drive(t, 300, lambda: isinstance(g.current_state, _PLS))
+    if not isinstance(g.current_state, _PLS):
+        return None
+    n = len(g.current_state.choices)
+    k = _hg.LAST["right"] if right else (_hg.LAST["right"] + 1) % n
+    g.current_state.pick(k)
+    _drive(t, 300, lambda: g.current_state is t and not getattr(t, "npc_active", False))
+    return k
+
+
+t = town("HEARTHOME_CITY", "SINNOH_ROUTE_208")
+t._go("gym", None); frames(t, 10)
+check(t.room == "gym" and (11, 3) in t.barred and "ROOM:gym_1" in t.exits.values(),
+      f"Hearthome Gym: the lobby, one door on, its warp panel shut till Fantina is beaten ({t.room}, {sorted(t.exits.values())})")
+_hg_walk(t, (4, 3), (0, -1))
+_in1 = t.room
+_k = _hg_answer(t, True)
+_door = sorted(xy for xy, v in t.exits.items() if v == "ROOM:gym_2")[_k] if _k is not None else None
+check(_in1 == "gym_1" and _k is not None and _door not in t.barred and all(d in t.barred for d in t.exits if t.exits[d] == "ROOM:gym_2" and d != _door),
+      f"Hearthome Gym room 1: a sum as you come in; the right answer opens its door, the others stay shut ({_in1}, door {_door}, {_hg.LAST.get('problem')})")
+_hg_walk(t, (_door[0], _door[1] + 1), (0, -1)) if _door else None
+_in2 = t.room
+_kw = _hg_answer(t, False)
+check(_in2 == "gym_2" and _kw is not None and t.room == "gym",
+      f"Hearthome Gym room 2: a wrong answer walks you through the wrong door, back to the lobby ({_in2} -> {t.room})")
+t._go("gym_2", "ROOM:gym_1"); frames(t, 5)
+_k2 = _hg_answer(t, True)
+_door2 = sorted(xy for xy, v in t.exits.items() if v == "ROOM:gym_3")[_k2] if _k2 is not None else None
+_hg_walk(t, (_door2[0], _door2[1] + 1), (0, -1)) if _door2 else None
+check(t.room == "gym_3" and "Gym" in t.town_map["rooms"]["gym_3"]["people"] and (8, 9) in t.barred,
+      f"Hearthome Gym: the right door in room 2 leads to Fantina; the way to the warp panel shut till she's beaten ({t.room})")
+story.story_flags["sinnoh_beat_fantina"] = True
+t._go("gym_3", "ROOM:gym_2"); frames(t, 25)
+check((8, 9) not in t.barred, "Hearthome Gym: beaten, Fantina's warp panel takes you back to the lobby")
+story.story_flags.clear(); story.story_flags.update(_sv)
+
+# ---- S3 (11-23): the Lost Tower's fog on 3F-5F only, as Platinum's zone weather (s_s3_lost_tower.py)
+_inv = dict(story.inventory)
+story.inventory.pop("HM_DEFOG", None)
+r = route("LOST_TOWER", "SINNOH_ROUTE_209")
+_fog = []
+for _i in range(5):
+    if r.run.index != _i:
+        r._warp(_i, 1, 1); frames(r, 3)
+    _fog.append(bool(r.run.fog))
+story.inventory["HM_DEFOG"] = 1
+r = route("LOST_TOWER", "SINNOH_ROUTE_209")
+r._warp(4, 1, 1); frames(r, 3)
+check(_fog == [False, False, True, True, True] and not r.run.fog,
+      f"Lost Tower: fog on 3F-5F only, as Platinum; gone once you have Defog ({_fog}, with Defog 5F: {r.run.fog})")
+story.inventory.clear(); story.inventory.update(_inv)
+
+# ---- S3 (11-23): the Old Chateau's ghosts and its one Dread Plate (s_s3_old_chateau.py)
+from src.world import old_chateau as _oc
+_roll = _oc.condition
+_oc.condition = lambda story, arg: True   # (the ghosts come now and then: here, every time)
+_seen = []
+for _fl in (3, 0):
+    r = route("OLD_CHATEAU", "ETERNA_FOREST")
+    r._warp(_fl, 1, 1); r._scene_key = None
+    _was = _drive(r, 200, lambda: r._scene_run is not None and r._scene_run.busy() and r._scene_run.actors)
+    _done = _drive(r, 900, lambda: not (r._scene_run and r._scene_run.busy()))
+    _seen.append((_fl, bool(_was), bool(_done), r.run.index))
+_oc.condition = _roll
+_dp = [o for o in __import__("json").load(open("assets/sinnoh_area_data.json", encoding="utf-8"))["STORY_PROGRESSION"]["OLD_CHATEAU"]["route_menu"]
+       if str(o.get("text")).strip() == "DREAD PLATE"]
+check(all(w and d and i == fl for fl, w, d, i in _seen) and len(_dp) == 1,
+      f"Old Chateau: the ghost girl drifts through Bedroom 4 and the butler through the dining hall, then are gone; one Dread Plate ({_seen}, {len(_dp)})")
+
+# ---- S3 (11-24): Cynthia gives the Old Charm on Route 210, past the Psyduck (s_s3_old_charm.py)
+_sv = dict(story.story_flags); _inv = dict(story.inventory)
+story.story_flags.pop("got_old_charm_r210", None); story.inventory.pop("OLD_CHARM", None)
+r = route("SINNOH_ROUTE_210", "SOLACEON_TOWN")
+_none = next((m for m in r.run.floor.movers if m.kind == "figure" and str((m.payload or {}).get("text")) == "Cynthia"), None)
+story.inventory["SECRET_POTION"] = 1
+r = route("SINNOH_ROUTE_210", "SOLACEON_TOWN")
+_cy = next((m for m in r.run.floor.movers if m.kind == "figure" and str((m.payload or {}).get("text")) == "Cynthia"), None)
+if _cy is not None:
+    r._use_figure(_cy); _drive(r, 300, lambda: not (getattr(r, "dialogue_box", None) and r.dialogue_box.visible))
+check(_none is None and _cy is not None and (_cy.x, _cy.y) == (81, 71) and story.inventory.get("OLD_CHARM") and story.story_flags.get("got_old_charm_r210"),
+      f"Route 210: past the Psyduck, Cynthia gives the Old Charm once you have the SecretPotion ({_none is None}, {(getattr(_cy, 'x', None), getattr(_cy, 'y', None))})")
+story.story_flags.clear(); story.story_flags.update(_sv); story.inventory.clear(); story.inventory.update(_inv)
+
+# ---- S3 (11-24): fog and darkness by Platinum's zone weather (s_s3_fog.py)
+_inv = dict(story.inventory)
+for _k in ("HM_DEFOG", "HM_FLASH"):
+    story.inventory.pop(_k, None)
+r = route("SINNOH_ROUTE_210", "SOLACEON_TOWN")
+r.run.player = (80, 100); r.run.reveal()
+_r210 = (r.run.visible(80, 110), r.run.visible(20, 10))   # (the south half clear, the north half R210B in fog)
+_cor = []
+r = route("MT_CORONET_BASE", "SINNOH_ROUTE_207")
+for _i in (0, 8):
+    if r.run.index != _i:
+        r._warp(_i, 1, 1); frames(r, 3)
+    _cor.append(bool(r.run.fog))
+_way = []
+r = route("WAYWARD_CAVE", "SINNOH_ROUTE_206")
+for _i in (0, 1):
+    if r.run.index != _i:
+        r._warp(_i, 1, 1); frames(r, 3)
+    _way.append(bool(r.run.fog))
+story.inventory["HM_DEFOG"] = 1; story.inventory["HM_FLASH"] = 1
+r = route("SINNOH_ROUTE_210", "SOLACEON_TOWN")
+_lift = not r.run.fog
+check(_r210 == (True, False) and _cor == [False, True] and _way == [True, False] and _lift,
+      f"Fog as Platinum's weather: Route 210's north half, Mt. Coronet's D05R0113, Wayward Cave 1F dark; Defog clears ({_r210}, {_cor}, {_way}, {_lift})")
+story.inventory.clear(); story.inventory.update(_inv)
 
 g.walk_towns = False
 print(f"##### {fails} failures")

@@ -281,10 +281,10 @@
   ],
   "SINNOH": [
     {"title": "Twinleaf Beginnings", "chapters": [
-      {"mission": "sinnoh_m1", "title": "A Fateful Encounter", "say": "{rival_name} can't sit still. There's a lake west of town, and a story about what lives in it. Something is waiting in the grass on the way."},
+      {"mission": "sinnoh_m1", "title": "A Fateful Encounter", "say": "{rival_name} came by looking for you, then dashed home. Go and see him first. He can't sit still: there's a lake west of town, and a story about what lives in it."},
       {"mission": "sinnoh_m1b", "title": "The First Battle", "say": "The Starly are gone and a new partner stands beside you. Back home, {rival_name} is already itching to test theirs."},
       {"mission": "sinnoh_m1c", "title": "The Professor's Lab", "say": "The old man at the lake watched everything. In Sandgem Town, he has been expecting you."},
-      {"mission": "sinnoh_m1d", "title": "The Big City", "say": "Route 202 runs north to Jubilife City, the biggest city in Sinnoh. Everyone there seems to be in a hurry."},
+      {"mission": "sinnoh_m1d", "title": "The Big City", "say": "Route 202 runs north to Jubilife City, the biggest city in Sinnoh. The Professor's assistant is somewhere on the route, waiting to show you something."},
       {"mission": "sinnoh_m1e", "title": "Through Oreburgh Gate", "say": "East of Jubilife, the road climbs into a cave. {rival_name} has gone on ahead... and won't stop talking about the Gym."}
     ]},
     {"title": "The Coal Badge", "chapters": [
