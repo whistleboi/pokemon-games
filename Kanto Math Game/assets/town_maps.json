@@ -45866,6 +45866,7 @@
   }
  },
  "DARK_CAVE": {
+  "smash_wild": true,
   "theme": "cave",
   "buildings": {},
   "floors": [
@@ -49051,8 +49052,12 @@
       "move": "HEADBUTT",
       "like": "HEADBUTT"
      },
+     "flag": "ilex_headbutt_tutor",
      "fail": [
       "Hmm, none of your Pokemon can learn Headbutt. Too bad!"
+     ],
+     "done": [
+      "Shake a tree with Headbutt and see what falls out!"
      ]
     }
    },
@@ -88903,6 +88908,7 @@
   ]
  },
  "JOHTO_CLIFF_CAVE": {
+  "smash_wild": true,
   "theme": "cave",
   "buildings": {},
   "floors": [
@@ -594631,6 +594637,7 @@
   ]
  },
  "JOHTO_VICTORY_ROAD": {
+  "smash_wild": true,
   "theme": "cave",
   "buildings": {},
   "floors": [

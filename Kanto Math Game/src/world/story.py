@@ -1460,12 +1460,10 @@ class StoryManager:
             ],
             "JOHTO": [
                 ("ZEPHYR", "JOHTO_MAP"),
-                ("HIVE", "OLD_ROD"),
                 ("PLAIN", "SQUIRT_BOTTLE"),
-                ("FOG", "SUPER_ROD"),
-                ("FOG", "AMULET_COIN"),      # (Morty's; Chuck gives the Rock Smasher, Pryce the Ice Melter)
+                ("FOG", "SUPER_ROD"),   # (HGSS gives it in Kanto, on Route 12; Johto's Bag is its own, so Morty's here. The Old Rod: Route 32's fisherman)
+                ("FOG", "AMULET_COIN"),      # (Morty's; Chuck gives the Rock Smasher)
                 ("STORMBADGE", "ROCK_SMASHER"),
-                ("GLACIER", "ICE_MELTER"),
                 ("RISING", "MT_SILVER_MAP"),
             ],
             "HOENN": [
