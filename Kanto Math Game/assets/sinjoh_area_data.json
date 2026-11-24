@@ -179,7 +179,7 @@
       "id": "sinjoh_m1",
       "type": "SIDE",
       "title": "The Sinjoh Ruins",
-      "description": "Bring Arceus to the Ruins of Alph. The Unown may take you somewhere far away.",
+      "description": "Arceus stirs near the Ruins of Alph. The Unown there may take the two of you somewhere very far away.",
       "condition": {
         "flag": "beat_sinnoh_champion",
         "flag_not": "sinjoh_rite_done",

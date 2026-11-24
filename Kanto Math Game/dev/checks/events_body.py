@@ -35,8 +35,13 @@ missing = [k for k in story_events.EVENTS if k not in where and k not in _scene_
 check(not missing, f"every event has a button: missing {missing}")
 
 
+exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())   # (11-24: a walked place's events run from its map)
+story.player_team = [mk(25)]
+
+
 def make_state(area):
     story.current_area_key = area
+    g.walk_town_pos = g.walk_town_exit = g.walk_town_room = None
     if prog[area].get("area_type") == "town":
         s = CityState(g)
         g.states["city"] = s
@@ -45,6 +50,19 @@ def make_state(area):
         g.states["play"] = s
     g.current_state = s
     return s
+
+
+def _people_everywhere(s):
+    """Every person's options on a walked town's map and in its rooms, whatever their conditions."""
+    m = s.town_map
+    for part in [m] + list((m.get("rooms") or {}).values()):
+        pp = part.get("people") or {}
+        for o in (pp.values() if isinstance(pp, dict) else pp):
+            if not isinstance(o, dict):
+                continue
+            yield o
+            for x in o.get("any") or []:
+                yield x
 
 
 def shown(s):
@@ -71,6 +89,17 @@ for key, ev in story_events.EVENTS.items():
         story.story_flags.pop(flag, None)
     team_before = len(story.player_team) + sum(1 for p in story.pc_pokemon if p)
     s = make_state(area)
+    if isinstance(s, _WL_WTS) and key not in _scene_events:   # (walked: someone on the map leads to it - by the option's
+        from src.states.overworld.walk_town import option_kind as _ok   #  words, or a door of its kind - or the arrival does)
+        _opts = [o for o in (prog[area].get("explore_options") or []) if o.get("target") == key]
+        _texts = {o.get("text") for o in _people_everywhere(s)}
+        _kinds = set(s.town_map.get("doors", {}).values()) if isinstance(s.town_map.get("doors"), dict) else set(s.doors.values())
+        _arr = prog[area].get("on_enter_event")
+        _arr = _arr if isinstance(_arr, list) else [_arr] if _arr else []
+        _on = (any(o.get("text") in _texts or _ok(o) in _kinds | set(s.doors.values()) for o in _opts)
+              or any(o.get("target") == key for o in _people_everywhere(s)) or any(e.get("event") == key for e in _arr),
+              )
+        check(_on, f"{key} @ {area}: someone (or a door) on the walked map leads to it")
     try:
         s.story_event(key)
     except Exception as e:

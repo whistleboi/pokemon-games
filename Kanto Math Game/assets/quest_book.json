@@ -399,7 +399,11 @@
       {"mission": "b2_m33", "title": "Over the Mountain", "say": "Twist Mountain has caved in, and the road to Opelucid is gone. Skyla's plane is fuelled and waiting. All that's missing is a professor lost somewhere in Celestial Tower."}
     ]},
     {"title": "The Road to Opelucid", "chapters": [
-      {"mission": "b2_m34", "title": "The Smouldering Mountain", "say": "Professor Juniper has a question that only Opelucid's Gym Leader can answer, and the only road east runs through Reversal Mountain. The rock there is warm to the touch. Bianca has already gone in, chasing a rumour."}
+      {"mission": "b2_m34", "title": "The Smouldering Mountain", "say": "Professor Juniper has a question that only Opelucid's Gym Leader can answer, and the only road east runs through Reversal Mountain. The rock there is warm to the touch. Bianca has already gone in, chasing a rumour."},
+      {"mission": "b2_m35", "title": "The Town with Walls", "say": "North from Undella, then west along the cliffs. Lacunosa is ringed by a high wall, and the people there lock their doors before dark.", "done": "b2_lacunosa_juniper"},
+      {"mission": "b2_m35", "title": "A Story for Nightfall", "say": "The professor has gone on ahead. An old woman in town remembers why the walls were built, if anyone will listen.", "when": "b2_lacunosa_juniper", "done": "b2_lacunosa_tale"},
+      {"mission": "b2_m35", "title": "Ambush at the West Gate", "say": "Something is waiting by the west gate, and it isn't the creature from the story. {rival_name} has seen it too.", "when": "b2_lacunosa_tale"},
+      {"mission": "b2_m36", "title": "West to Opelucid", "say": "The road to Opelucid runs west over Route 12 and across a long wooden bridge. Its Gym Leader has the answers the professor is after."}
     ]}
   ],
   "ORRE": [
@@ -426,7 +430,7 @@
     {"title": "The Agate Badge", "chapters": [
       {"mission": "orre_m6", "title": "The Village in the Trees", "say": "Agate Village is green, quiet, and old. Rui's grandparents live there, and a fortune-teller saw trouble heading their way."},
       {"mission": "orre_m6b", "title": "Into the Relic Cave", "say": "Footprints lead into the Relic Cave, and an old man went in after them alone."},
-      {"mission": "orre_m6c", "title": "The Hall of Light", "say": "Agate has a Gym, and two Leaders who battle side by side. Its hall is a puzzle of light before it is a battle."}
+      {"mission": "orre_m6c", "title": "The Number Gardens", "say": "Agate has a Gym, and two Leaders who battle side by side. Its gardens are a puzzle of numbers before they are a battle."}
     ]},
     {"title": "Beneath Pyrite", "chapters": [
       {"mission": "orre_m7", "title": "Smoke on Mt. Battle", "say": "Something is wrong on the mountain next to Agate. Trainers are coming down beaten and shaking."},

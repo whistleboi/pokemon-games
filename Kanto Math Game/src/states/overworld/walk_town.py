@@ -256,8 +256,16 @@ class WalkTownState(TownWalkUps, CityState):
         _inv = self.game.story_manager.inventory
         from src.world.hms import usable as _usable
         self._cleared = "".join(c for c, item in (("2", "HM_CUT"), ("0", "HM_ROCK_SMASH"), ("7", "BICYCLE")) if _usable(self.game.story_manager, item))
+        # (a map with "smash_wild": its cracked rocks stay till you break each one by walking into it, and some hide a wild
+        #  Pokemon - HGSS's Cianwood, as the routes' dungeon._smash; Johto 11-24)
+        self._smash_map = bool(m.get("smash_wild")) and "0" in self._cleared
+        _broken = self._smashed_here() if self._smash_map else set()
         for _c in self._cleared:
+            if _c == "0" and self._smash_map:
+                continue
             grid = [row.replace(_c, ".") for row in grid]
+        if _broken:
+            grid = ["".join("." if (x, y) in _broken else c for x, c in enumerate(row)) for y, row in enumerate(grid)]
         self.h, self.w = len(grid), len(grid[0])
         self.grid = grid  # (kept for its ledges: hopped over one way, as on the routes)
         kinds = m.get("buildings", {})
@@ -326,6 +334,8 @@ class WalkTownState(TownWalkUps, CityState):
             self.rows[y] = self.rows[y][:x] + "." + self.rows[y][x + 1:]
         cache = self.game.__dict__.setdefault("_walk_town_imgs", {})
         _ck = self.area_key + ("|" + self._cleared if self._cleared else "")  # (redrawn once a tree is cut or a rock broken)
+        if getattr(self, "_smash_map", False):
+            _ck += "|smash:" + ",".join(f"{x}.{y}" for x, y in sorted(self._smashed_here()))
         if getattr(self, "room", None):
             _ck += "|room:" + self.room  # (a room inside one of its buildings: its own picture)
         _pic = (m.get("roofs") or {}).get("_picture")
@@ -421,9 +431,8 @@ class WalkTownState(TownWalkUps, CityState):
             _free = lambda t: (0 <= t[0] < self.w and 0 <= t[1] < self.h and self.rows[t[1]][t[0]] == "."
                                and grid[t[1]][t[0]] not in "_()" and t not in taken and t not in self.people)
             _me = getattr(self, "player", None)
-            spot = (partners.pick_spot(home, _free, _me) if _me else   # (never the owner's last side you can reach)
-                    next((t for t in ((home[0] + 1, home[1]), (home[0] - 1, home[1]), (home[0], home[1] + 1), (home[0], home[1] - 1))
-                          if _free(t)), None))
+            spot = partners.pick_spot(home, _free, _me)   # (always: never the owner's last open side - after a battle the room is
+                                                          #  rebuilt before you're placed, and Erika's Vileplume took her one side; Kanto 11-24)
             if spot is None:
                 continue
             taken.add(spot)
@@ -1169,6 +1178,9 @@ class WalkTownState(TownWalkUps, CityState):
                 over = (to[0] + dx, to[1] + dy)
                 if self._open(over) and over not in self.doors and over not in self.signs:
                     to = over
+        if grid and 0 <= to[0] < self.w and 0 <= to[1] < self.h and grid[to[1]][to[0]] == "0" and getattr(self, "_smash_map", False):
+            self.walk_goal = None   # (a cracked rock on a "smash_wild" map: your Pokemon breaks it; a wild Pokemon may jump out)
+            return self._town_smash(tuple(to))
         if grid and 0 <= to[0] < self.w and 0 <= to[1] < self.h and grid[to[1]][to[0]] in "207":
             self.walk_goal = None
             return self.flash({"2": "A small tree is in the way. CUT could cut it down!", "0": "A cracked rock is in the way. ROCK SMASH could break it!",
@@ -1563,6 +1575,46 @@ class WalkTownState(TownWalkUps, CityState):
         return bool(cells) and sum(c in art.SEA_CHARS for c in cells) * 2 > len(cells)
 
     GRASS_RATE = 0.1   # (a town's tall grass: about one step in ten, like a route's)
+
+    SMASH_WILD = 0.4   # (as the routes: how often a broken rock hides a wild Pokemon)
+
+    def _smashed_here(self):
+        """The cracked rocks broken on this map (or room) this visit."""
+        return self.__dict__.setdefault("_town_smashed", {}).setdefault((self.area_key, getattr(self, "room", None)), set())
+
+    def _town_smash(self, t):
+        """Walked into a cracked rock with Rock Smash: it breaks; now and then a wild Pokemon from the area's Rock Smash
+        table jumps out ("rock_smash_pool_percentages"). True if a battle starts."""
+        import random
+        from src.utils import Utils
+        from src.world import levels, feats as _feats
+        from src.pokemon.data import Pokemon
+        self._smashed_here().add(tuple(t))
+        m = self.town_map["rooms"][self.room] if getattr(self, "room", None) else self.town_map
+        self._from_art(m)
+        data = self.game.loader.area_data
+        name = (data.get("STORY_PROGRESSION", {}).get(self.area_key) or {}).get("rock_smash_pool_percentages")
+        pool = data.get(name) if name else None
+        if not isinstance(pool, dict) or not pool or random.random() >= self.SMASH_WILD:
+            self.flash("Your Pokemon used Rock Smash! The rock crumbled away.", 90)
+            return False
+        raw = self.game.loader.fetch_specific(int(Utils.weighted_random_choice(pool)))
+        if not raw:
+            self.flash("Your Pokemon used Rock Smash! The rock crumbled away.", 90)
+            return False
+        mon = Pokemon(raw, self.game.assets, size_mult=3.125)
+        levels.set_wild(self.game, mon, self.area_key)
+        self.game.data.mark_seen(mon.id)
+        _feats.note(self.game.story_manager, "finds")
+        _feats.note(self.game.story_manager, "smash")
+        self.flash(f"Your Pokemon used Rock Smash! A wild {mon.display_name.upper()} jumped out!", 90)
+        self.anim = 0
+        self._remember()
+        from src.states.battle import WildBattleState
+        battle = WildBattleState(self.game, mon, self.area_key)
+        battle.back_to_town = True
+        self.game.change_state(battle)
+        return True
 
     def _room_wild(self, to):
         """A room with wild Pokemon on its floor (its "wild": {"pool": the area data's table, "rate", "when": a condition}):
@@ -2401,12 +2453,12 @@ class WalkTownState(TownWalkUps, CityState):
     # Where a place has Black 2's models exported (assets/b2_3d/<zone>.npz: kanto_handoff/unova_map_tools/export3d.py) and the
     # card can draw them (src/dungeon/live3d.py), the map is drawn every frame from Black 2's own camera for it, following
     # you: perspective, buildings turning as you pass, the avenue's camera swinging round its centre. People are drawn into
-    # the same scene. Off ("live3d": False on the game), headless, or with no card: the baked picture.
+    # the same scene. The DS regions are 3D only (Jordan 11-24; their flat pictures are gone): headless (the checks), with no
+    # card and no bundled Mesa (live3d._mesa), or game.live3d False (a checks-only switch), the map's plain tile drawing.
     def _live(self):
         """(scene, the place's camera data from its map) here, or None."""
-        from src.core import settings as _settings
-        if getattr(self.game, "live3d", True) is False or not _settings.get(self.game.story_manager, "live3d"):
-            return None   # (Options, SCREEN & SOUND: 3D camera Flat)
+        if getattr(self.game, "live3d", True) is False:   # (a checks-only switch; Jordan 11-24: the DS regions are 3D only, no Options choice)
+            return None
         tm = getattr(self, "town_map", None)
         m = ((tm.get("rooms") or {}).get(self.room) if getattr(self, "room", None) else tm) if isinstance(tm, dict) else None
         roofs = (m or {}).get("roofs") or {}

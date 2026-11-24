@@ -465,6 +465,37 @@ _up = town("UNDERGROUND_PATH", "KANTO_ROUTE_5")
 _up._get_callback_for_option({"action": "NPC", "target": "stoneman"})()
 _m = list(getattr(getattr(_up, "npc_dialogue", None), "text_lines", None) or getattr(_up, "npc_messages", None) or [])
 check(not any("fossil lab" in str(l) for l in _m) and _m, f"the Underground Path's Fossil Maniac doesn't call it the fossil lab ({_m[:1]})")
+print("\n== Pokemon Tower's Black Fog on the walked tower (11-24 cleanup: was a menu-stairs ambush)")
+_bf = lambda fl: next((m for m in fl.movers if m.kind == "figure" and isinstance(m.payload, dict) and m.payload.get("text") == "THE BLACK FOG"), None)
+story.story_flags["tower_ghost_defeated"] = True
+story.story_flags.pop("black_fog_banished_kanto_pokemon_tower", None)
+story.inventory["SILPH_SCOPE"] = 1   # (it shows with the Silph Scope; the game hands the Scope back by itself once the ghost is beaten)
+p = route("KANTO_POKEMON_TOWER", "LAVENDER_TOWN", floor=3)
+_m = _bf(p.run.floor)
+check(_m is not None and (_m.x, _m.y) == (11, 3), f"with the Scope it haunts 4F's top hall ({_m and (_m.x, _m.y)})")
+ace()
+_w = meet(p, "THE BLACK FOG") or []
+check(any("giant Haunter rises" in str(l) for l in _w) and story.story_flags.get("black_fog_banished_kanto_pokemon_tower"),
+      f"walking up to it starts the Black Fog's battle, and beating it banishes it ({[l for l in _w if 'Black Fog' in str(l)][:1]})")
+p = route("KANTO_POKEMON_TOWER", "LAVENDER_TOWN", floor=3)
+check(_bf(p.run.floor) is None, "...after which 4F is clear")
+print("\n== Professor Oak's GS Ball errand after the Kanto title (11-24, a Journal Journey)")
+for _f in ("oak_gs_errand", "got_gs_ball_ivy"):
+    story.story_flags.pop(_f, None)
+story.story_flags["beat_champion"] = True
+for _f in ("kanto_lab_intro", "received_starter_kanto", "kanto_rival_left_lab", "got_oak_potions", "received_pokedex_kanto",
+           "got_oaks_parcel", "kanto_rival_pokedex"):   # (the lab's early scenes, long done by the title)
+    story.story_flags[_f] = True
+said.clear()
+_t = town("PALLET_TOWN", "KANTO_ROUTE_1", room="lab"); play(n=1500, until=lambda: story.story_flags.get("oak_gs_errand")); play()
+check(story.story_flags.get("oak_gs_errand") and any("Professor Ivy" in str(l) for l in said),
+      f"walking into the lab, Oak asks you to fetch Professor Ivy's Poke Ball from the Orange Islands ({[l for l in said if 'Ivy' in str(l)][:1]})")
+said.clear()
+_t = town("PALLET_TOWN", "KANTO_ROUTE_1", room="lab"); play()
+check(not any("Professor Ivy" in str(l) for l in said), "...and only once")
+from src.states.game_corner import prizes_here as _ph
+story.current_area_key = "TWO_ISLAND"
+check(_ph(story) == [], "Two Island's Joyful Game Corner has no prize list of its own (FireRed: its games give Berries), not Celadon's")
 story.inventory.clear(); story.inventory.update(_inv0)
 
 story.story_flags.clear(); story.story_flags.update(_flags0)

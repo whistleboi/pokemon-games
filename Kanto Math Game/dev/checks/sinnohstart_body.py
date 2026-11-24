@@ -17,6 +17,7 @@ def check(c, m):
 
 
 g.data.save = lambda *a, **k: None
+exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())   # (Sinnoh is walked: city() / route() open the maps, 11-24)
 said = []
 
 
@@ -35,9 +36,11 @@ flags = story.story_flags
 def city(area):
     story.current_area_key = area
     said.clear()
+    g.walk_town_pos = g.walk_town_exit = g.walk_town_room = None
     s = CityState(g)
     g.states["city"] = s
     g.change_state(s)
+    _arrive()
     return s
 
 
@@ -47,7 +50,15 @@ def route(area):
     s = PlayState(g)
     g.states["play"] = s
     g.change_state(s)
+    _arrive()
     return s
+
+
+def _arrive():
+    """On the walked map: what arrival says and does, played out up to a battle or a screen (11-24)."""
+    walk_said.clear()
+    walk_play(fight=False, off_map=True)
+    said.extend(walk_said)
 
 
 def battle_team(state):
@@ -92,8 +103,8 @@ check(isinstance(b, WildBattleState) and b.opponent_pokemon.id == 396 and b.oppo
 b.trigger_outro(win=True)
 check(flags.get("sinnoh_starly_driven_off"), "beating it ends the scene")
 r = route("LAKE_VERITY")
-check(isinstance(g.current_state, AreaTransitionState) and g.current_state.next_area_key == "TWINLEAF_TOWN",
-      "then straight home to Twinleaf")
+# (walked, 11-24: the menu sent you straight home; on the map you walk back by the Lakefront and Route 201 yourself)
+check(walked(g.current_state) and "VERITY_LAKEFRONT" in walk_ways(r), f"then home to Twinleaf: the way back by Verity Lakefront is open ({type(g.current_state).__name__})")
 c = city("TWINLEAF_TOWN")
 check(battle_team(g.current_state) == [(390, 5)], "Barry's first battle: Chimchar Lv 5 against Turtwig")
 flags["defeated_rival_sinnoh_starter"] = True
@@ -104,6 +115,7 @@ check(flags.get("received_pokedex_sinnoh") and story.catch_unlocked("SINNOH"), "
 
 print("3) Barry's battles (Serebii)")
 r = route("SINNOH_ROUTE_203")
+walk_meet(r, "{rival_name}", fight=False)   # (Barry waits on the map: walk up to him)
 check(battle_team(g.current_state) == [(396, 7), (390, 9)], f"Route 203: Starly 7, Chimchar 9 {battle_team(g.current_state)}")
 for area in ("ETERNA_CITY", "VEILSTONE_CITY"):
     ev = prog[area].get("on_enter_event") or {}

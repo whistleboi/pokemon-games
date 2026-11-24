@@ -39,6 +39,10 @@ LEFT_OUT = {
 # Open items already on the Journal plan (ROADMAP_JOURNAL): listed so the check stays green until they're done; a NEW
 # one fails. Remove an entry when it is fixed.
 KNOWN = set()   # (Unova's b2_m23 / b2_m29 "Hugh" fixed on region/unova 4392cd97, 11-24)
+KNOWN_SIDE = {(r, i) for r, ids in {   # (SIDE lines sent to their regions 11-24; take each out when its region's fix is on main)
+    "HOENN": ["hoenn_s3", "hoenn_s4", "hoenn_s5", "hoenn_s7", "hoenn_s11", "hoenn_s14", "hoenn_s22", "hoenn_s25", "hoenn_s28"],
+    "UNOVA": ["unova_s9", "unova_s12", "unova_s15", "unova_s16", "unova_s17", "unova_s19", "unova_s21"],
+    "ORRE": ["orre_s1", "orre_s2", "orre_s2a"]}.items() for i in ids}
 NOT_YET = set()   # (walked regions with no book yet; Orre's came 11-24, J5)
 OWN_FORMS = {"ORANGE", "SINNOH", "ALOLA", "GALAR", "PALDEA", "HISUI"}
 RIVALS = {"KANTO": ["Blue", "Gary"], "JOHTO": ["Silver"], "HOENN": ["Brendan", "May"], "SINNOH": ["Barry"],
@@ -69,6 +73,24 @@ for r in regions:
     check(not stale, f"{r}: the left-out list names only real MAIN missions ({stale})")
     why = [c["title"] for c in chs if re.search(r"\b(because|so that|in order to)\b", str(c.get("say", "")), re.I)]
     check(not why, f"{r}: no page spells out why ({why})")
+    # (J2, 11-24: the Journal's own voice - no orders shouted at the player, no "you need to", no manual-style openers)
+    loud = [c["title"] for c in chs if "!" in str(c.get("say", "")) + str(c.get("title", ""))]
+    check(not loud, f"{r}: no page or chapter title shouts with '!' ({loud})")
+    need = [c["title"] for c in chs if re.search(r"\b(you need|you must|need to|make sure|don't forget)\b", str(c.get("say", "")), re.I)]
+    check(not need, f"{r}: no page tells the player what they must do ({need})")
+    order = [c["title"] for c in chs if re.match(r"(Defeat|Beat|Go to|Head to|Talk to|Visit|Travel to|Catch|Win|Return to|Bring|Challenge)\b",
+                                                   str(c.get("say", "")))]
+    check(not order, f"{r}: no page opens with an order ({order})")
+    # (J2 11-24: the SIDE tab shows a SIDE mission's own words - no '!' and no order to open with)
+    sides = [i for i, m in missions.items() if region_of(m) == r and str(m.get("type", "")).upper() != "MAIN"
+             and not (m.get("region_species") or m.get("kanto_species"))]
+    loud_side = sorted(i for i in sides if (r, i) not in KNOWN_SIDE and (
+        "!" in str(missions[i].get("description") or missions[i].get("desc") or "")
+        or re.match(r"(Defeat|Beat|Go to|Head to|Talk to|Visit|Travel to|Catch|Win|Return to|Bring|Challenge|Explore|Battle|Climb)\b",
+                    str(missions[i].get("description") or missions[i].get("desc") or ""))))
+    check(not loud_side, f"{r}: SIDE missions in the Journal's voice ({loud_side})")
+    for k in sorted(x for x in KNOWN_SIDE if x[0] == r):
+        print(f"   open  {k[1]}: SIDE line waits on {r.title()}'s card clean-{r.lower()}-journal-side-wording")
     names = RIVALS.get(r, [])
     if names:
         pat = re.compile(r"(?<!Mt\. )\b(" + "|".join(names) + r")\b(?! (League|Wing|Cave|Trophy))")   # (not Mt. Silver)
@@ -107,5 +129,31 @@ for r in regions:
                     and a.get("safari_game"))
     if safari:
         check(any(f.get("count") == "safari" for f in fl), f"{r}: has a Safari Feat (Safari Game at {safari})")
+
+# (J7, 11-24: every SIDE mission can be found and finished - its target is a real place, and it ends: a done flag
+#  something in the game sets (data or code), a badge, an Unown goal, or a "_not" condition that stops it showing)
+print("Every SIDE mission can be found and finished")
+import glob as _glob
+_blob = json.dumps(g.loader.area_data) + open("assets/town_maps.json", encoding="utf-8").read() + "".join(
+    open(_f, encoding="utf-8", errors="ignore").read() for _f in _glob.glob("src/**/*.py", recursive=True))
+KNOWN_SIDE_END = {"hoenn_s5", "hoenn_s29"}  # (card clean-hoenn-journal-side-finish)
+_bad_t, _bad_f = [], []
+for i, m in missions.items():
+    if str(m.get("type", "")).upper() == "MAIN" or region_of(m) not in regions or m.get("region_species") or m.get("kanto_species"):
+        continue
+    if i in KNOWN_SIDE_END:
+        print(f"   open  {i}: can't finish yet (its region's card)")
+        continue
+    if m.get("target") and m["target"] not in prog:
+        _bad_t.append(i)
+    fl = m.get("completed_flag")
+    fl = fl if isinstance(fl, list) else ([fl] if fl else [])
+    unset = [x for x in fl if not (x.startswith(("visited_", "beat_", "received_", "feat_", "forms_complete_")) or x.endswith("_boss_defeated"))
+             and _blob.count('"%s"' % x) + _blob.count("'%s'" % x) < 2]
+    ends = fl or m.get("completed_badge") or m.get("unown_forms") or any(k.endswith("_not") or k == "item" for k in (m.get("condition") or {}))   # (an item asked for is used up: fossils)
+    if unset or not ends:
+        _bad_f.append(i)
+check(not _bad_t, f"every SIDE mission's target is a real place ({_bad_t})")
+check(not _bad_f, f"every SIDE mission can finish: its done flag is set somewhere, or it stops showing ({_bad_f})")
 
 print(f"##### {fails} failures")

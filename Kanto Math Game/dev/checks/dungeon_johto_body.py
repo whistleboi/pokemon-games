@@ -915,6 +915,50 @@ for _ak, _pool in (("DARK_CAVE", "JOHTO_DARK_CAVE_ROCK_SMASH_PERCENTAGES"), ("JO
     finally:
         _type.SMASH_WILD = _old_sw
     _sm[_ak] = (len(_cr), _got, _want, _cr[:1] and _p.run.floor.decor.get(_cr[0]) is None)
+# Celebi's way (Dev Map clean-johto-journal-gs-ball-kurt): the GS Ball shown to Kurt in his walked house sets kurt_examined_gs_ball
+_fl1 = dict(story.story_flags)
+story.story_flags.update({"slowpoke_well_cleared": True, "got_fast_ball_kurt": True, "visited_AZALEA_TOWN": True})
+story.story_flags.pop("kurt_examined_gs_ball", None)
+story.inventory["GS_BALL"] = 1
+g.walk_town_pos = g.walk_town_room = None
+story.current_area_key, story.last_area_key = "AZALEA_TOWN", "JOHTO_ROUTE_33"
+_az = _CS(g); g.change_state(_az); _tap_through(_az)
+_kroom = _in_and_talk(_az, "kurt")
+_tap_through(_az)
+check(_kroom == "kurt" and story.story_flags.get("kurt_examined_gs_ball") and story.inventory.get("GS_BALL") == 1,
+      "Kurt, in his own house, looks at the GS Ball (kurt_examined_gs_ball) and hands it back: Celebi's shrine can open")
+story.story_flags = _fl1
+story.inventory.pop("GS_BALL", None)
+g.walk_town_pos = g.walk_town_room = None
+# the Journal's two Unown side missions end (Dev Map clean-johto-journal-unown-missions)
+_fl2, _inv2, _pc2, _tm2 = dict(story.story_flags), dict(story.inventory), list(story.pc_pokemon), list(story.player_team)
+story.current_area_key = "RUINS_OF_ALPH"
+story.story_flags["visited_RUINS_OF_ALPH"] = True
+story.story_flags.pop("got_unown_report", None); story.story_flags.pop("unown_merged", None)
+story.inventory.pop("UNOWN_REPORT", None)
+story.pc_pokemon = [p for p in story.pc_pokemon if p and p.id != 201]
+story.player_team = [p for p in story.player_team if p and p.id != 201] or [mk(4)]
+_ids = lambda: {m["id"] for m in story.get_active_missions()}
+_c1_open = "johto_c1" in _ids() and "johto_s1" in _ids()
+story.sync_key_items()   # (the Report on your first visit, as before - and now its flag)
+_s1_done = story.story_flags.get("got_unown_report") and "johto_s1" not in _ids()
+for _f in "abcde":
+    _u = mk(201); _u.form = _f; story.pc_pokemon.append(_u)
+_c1_done = "johto_c1" not in _ids()
+check(_c1_open and _s1_done and _c1_done,
+      f"the Journal's Unown missions end: 'Ruins of Alph' once the Unown Report is yours ({_s1_done}), "
+      f"'Unown Researcher' with five Unown forms ({_c1_open}, {_c1_done})")
+story.story_flags, story.inventory, story.pc_pokemon, story.player_team = _fl2, _inv2, _pc2, _tm2
+# the Silver League Plateau's one way out (Dev Map clean-johto-main-plateau-victory-road-exit): back down Victory Road
+story.current_area_key, story.last_area_key = "SILVER_LEAGUE_PLATEAU", "JOHTO_VICTORY_ROAD"
+_pl = _CS(g); g.change_state(_pl); _tap_through(_pl)
+_pl_opt = _pl._travel_option("JOHTO_VICTORY_ROAD") if hasattr(_pl, "_travel_option") else None
+check("JOHTO_VICTORY_ROAD" in set(getattr(_pl, "exits", {}).values()) and _pl_opt is not None and _pl._shown(_pl_opt),
+      "the Silver League Plateau: its exit down to Victory Road lets you leave")
+g.walk_town_pos = g.walk_town_room = None
+_tm_all = g.loader.town_maps if hasattr(g.loader, "town_maps") else __import__("json").load(open("assets/town_maps.json", encoding="utf-8"))
+check(_tm_all["CIANWOOD_CITY"].get("smash_wild") is True,
+      "Cianwood's rocks hide Pokemon too (its map's smash_wild: walk_town breaks them one at a time; check town_smash)")
 check(all(n and got and got <= want and gone for n, got, want, gone in _sm.values()),
       f"Rock Smash finds Pokemon (HGSS): Dark Cave, Cliff Cave, Victory Road break one rock at a time and some hide the area's own "
       f"Rock Smash Pokemon: {_sm}")

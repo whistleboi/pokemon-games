@@ -24,17 +24,18 @@ g.data.save = lambda *a, **k: None
 story.inventory.update({"TOWN_MAP": 1, "HM_FLY": 1})
 
 print("1) MENU grid")
-story.current_area_key = "VIRIDIAN_CITY"
+exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())   # (Viridian and Route 1 are walked: their maps' MENU, 11-24)
+story.enter_region("KANTO")
 story.inventory["HM_FLY"] = 1   # (Kanto's Fly needs FireRed's Thunder Badge too, 11-16: the test save gets both)
 if "THUNDER" not in story.badges.setdefault("KANTO", []):
     story.badges["KANTO"].append("THUNDER")
-city = ow.CityState(g)
-g.change_state(city)
+city = walk_town("VIRIDIAN_CITY", "KANTO_ROUTE_1")
+check(walked(city), "Viridian on its map")
 shot("city")
 check([b.text for b in city.hud_buttons] == ["MENU"], "one MENU button on the town screen")
 city.hud_buttons[0].callback()
 grid = g.current_state
-check(isinstance(grid, MenuGridState) and {"BAG", "PC", "SAVE", "OPTIONS", "MAP", "FLY"} <= {t.label for t in grid.tiles},
+check(hasattr(grid, "tiles") and {"BAG", "PC", "SAVE", "OPTIONS", "MAP", "FLY"} <= {t.label for t in grid.tiles},
       f"grid tiles: {[t.label for t in grid.tiles]}")
 shot("menu_grid")
 bag_tile = next(t for t in grid.tiles if t.label == "BAG")
@@ -44,10 +45,8 @@ shot("bag")
 g.change_state(grid)
 grid.close()
 check(g.current_state is city, "CLOSE goes back")
-story.current_area_key = "KANTO_ROUTE_1"
-ps = ow.PlayState(g)
-g.change_state(ps)
-check([b.text for b in ps.hud_buttons] == ["MENU"], "and on routes")
+ps = walk_route("KANTO_ROUTE_1", "PALLET_TOWN")
+check(walked(ps) and [b.text for b in ps.hud_buttons] == ["MENU"], "and on routes")
 shot("route")
 
 print("2) battle")

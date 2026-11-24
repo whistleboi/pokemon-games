@@ -18,8 +18,14 @@ prog = data["STORY_PROGRESSION"]
 flags = story.story_flags
 
 
+exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())   # (11-24: a walked town's links are its map's own exits)
+
+
 def links(area):
     a = prog[area]
+    mapped = walk_map_exits(area)
+    if mapped is not None and a.get("area_type") == "town":
+        return mapped
     return {o.get("target_area") or o.get("target") for o in (a.get("travel_options") or []) + (a.get("route_menu") or [])
             + (a.get("explore_options") or []) if o.get("action") in (None, "EXIT", "TRAVEL")}
 
@@ -79,8 +85,11 @@ for a, b in (("KANTO_ROUTE_19", "FUCHSIA_CITY"), ("CERULEAN_CITY", "CERULEAN_CAV
              ("HOENN_ROUTE_123", "HOENN_ROUTE_118"), ("JOHTO_ROUTE_46", "JOHTO_ROUTE_45"), ("SEVAULT_CANYON", "TANOBY_RUINS")):
     check(b in links(a), f"{a} -> {b}")
 check("MAUVILLE_CITY" not in links("HOENN_ROUTE_120"), "Route 120 no longer reaches Mauville")
-vr = prog["MT_SILVER_CITY"]["on_enter_event"]
-vr = (vr if isinstance(vr, list) else [vr])[0]["trainer"]
+# (Silver now stands in Victory Road itself, one of its trainers (Johto's walked rebuild): walk in and find him there)
+vr = next(t for t in prog["JOHTO_VICTORY_ROAD"]["trainer_pool"] if t["name"] == "{rival_name}")
+_vrd = walk_route("JOHTO_VICTORY_ROAD", "MT_SILVER_CITY")
+check(any(m.kind == "trainer" and m.payload[1].get("name") == "{rival_name}" for i in range(_vrd.run.n_floors) for m in _vrd.run.made(i).movers),
+      "Silver stands on Victory Road's walked map")
 check(vr["levels"] == [36, 38, 37, 37, 37, 40] and vr["team_choice"]["158"] == [215, 42, 82, 93, 64, 154],
       "Silver at Victory Road: HGSS team and levels (Serebii kanto/4th/victoryroad)")
 check(pool("KANTO_ROUTE_11") == {21, 23, 27, 96} and 122 not in pool("KANTO_ROUTE_2")

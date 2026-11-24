@@ -7,12 +7,13 @@ def check(c, m):
     print(("   ok  " if c else "   FAIL ") + m); fails += 0 if c else 1
 def tap(st, pos):
     st.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=pos)])
-story.current_area_key = "PALLET_TOWN"
+exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())   # (Pallet is walked: the menus open from its map, 11-24)
+story.enter_region("KANTO")
 a, b, c = mk(6), mk(25), mk(1)
 story.player_team = [a, b, c]
 story.pc_pokemon[:] = [None] * 300
 story.pc_pokemon[0] = mk(16)
-city = CityState(g); g.change_state(city)
+city = walk_town("PALLET_TOWN", "KANTO_ROUTE_1", play=False)
 
 print("PC (menu redesign): taps on the new layout move Pokemon as before")
 pc = PCState(g, city); g.change_state(pc)
@@ -193,8 +194,11 @@ check(_again == ["town"], "...then the town's music comes back")
 
 print("10-26 batch: Fly, gym MENU, keyboard, PC names, Hoenn opening, ribbons")
 from src.states import overworld as ow
-gl = ow.GymLobbyState(g, city); g.change_state(gl)
-check([b.text for b in gl.hud_buttons] == ["MENU"] and [b.text for b in gl.menu_entries][:2] == ["BAG", "POKEMON"],
+gl = walk_town("PEWTER_CITY", "KANTO_ROUTE_2", room="gym")   # (walked: inside Brock's Gym)
+_hm = None
+if [b.text for b in gl.hud_buttons] == ["MENU"]:
+    gl.hud_buttons[0].callback(); _hm = g.current_state
+check(getattr(gl, "room", None) == "gym" and _hm is not None and {"BAG", "POKEMON"} <= {t.label for t in getattr(_hm, "tiles", [])},
       "Gyms have the MENU (Bag, Pokemon...)")
 g.change_state(city)
 check(not any(t[2] in ("PC", "SAVE", "LOAD") for t in g.keyboard._targets()), "arrow keys skip the old hidden buttons")

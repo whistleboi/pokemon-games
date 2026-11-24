@@ -39,6 +39,7 @@
   "FLOCCESY_TOWN": "sw_t_06",
   "GUIDANCE_CHAMBER": "d_02",
   "JOIN_AVENUE": "rezo_rizo",
+  "LACUNOSA_TOWN": "t_04",
   "LENTIMAS_TOWN": "sw_t_07",
   "LIBERTY_GARDEN": {
    "AUTUMN": "r_d_au",
@@ -71,6 +72,24 @@
    "SPRING": "r_d_sp",
    "SUMMER": "r_d_su",
    "WINTER": "r_d_wi"
+  },
+  "UNDELLA_BAY": {
+   "AUTUMN": "r_e_au",
+   "SPRING": "r_e_sp",
+   "SUMMER": "r_e_su",
+   "WINTER": "r_e_wi"
+  },
+  "UNDELLA_TOWN": {
+   "AUTUMN": "t_05_au",
+   "SPRING": "t_05_sp",
+   "SUMMER": "t_05_su",
+   "WINTER": "t_05_wi"
+  },
+  "UNOVA_ROUTE_13": {
+   "AUTUMN": "r_e_au",
+   "SPRING": "r_e_sp",
+   "SUMMER": "r_e_su",
+   "WINTER": "r_e_wi"
   },
   "UNOVA_ROUTE_16": {
    "AUTUMN": "r_c_au",
@@ -148,6 +167,7 @@
   "DRIFTVEIL_CITY:gym_lobby": "ground_gym_01",
   "FLOCCESY_RANCH:grotto": "kemonomichi",
   "FLOCCESY_TOWN:center": "pokecen",
+  "LACUNOSA_TOWN:center": "pokecen",
   "LENTIMAS_TOWN:center": "pokecen",
   "LIBERTY_GARDEN:lighthouse": "d_03",
   "LIBERTY_GARDEN:victini_room": "d_03",
@@ -172,6 +192,10 @@
   "NIMBASA_CITY:subway_stop": "gear_station",
   "PWT:lobby": "wbt_lobby",
   "PWT:stadium": "wbt_ground",
+  "UNDELLA_TOWN:center": "pokecen",
+  "UNDELLA_TOWN:gate": "gate",
+  "UNOVA_ROUTE_13:grotto": "kemonomichi",
+  "UNOVA_ROUTE_13:grotto2": "kemonomichi",
   "UNOVA_ROUTE_16:bridge_gate": "gate",
   "UNOVA_ROUTE_5:grotto": "kemonomichi",
   "UNOVA_ROUTE_6:grotto": "kemonomichi",

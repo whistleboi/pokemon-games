@@ -112,10 +112,9 @@ class GameCornerState(GameState):
         self.phase = "START"
 
         has_case = self.game.story_manager.inventory.get("COIN_CASE", 0) > 0
-        if has_case:
+        if has_case:   # (PokeMath Infinite is a button on the menu: no YES/NO first every visit - the encyclopedia, 11-24)
             lines = ["Is that a Coin Case? That means you have money!",
-                     "Come on in, kid, have fun!",
-                     "Would you like to play PokeMath Infinite?"]
+                     "Come on in, kid, have fun!"]
         else:
             lines = ["This place is too dangerous for kids.",
                      "Come back when you have a COIN CASE!"]
@@ -126,7 +125,7 @@ class GameCornerState(GameState):
             lines,
             game.assets.fonts["med"],
             visible=True,
-            callback=self.go_back if not has_case else None
+            callback=self.go_back if not has_case else self.show_main_menu
         )
 
         self.btn_yes = Button((0, 0, 0, 0), "YES", game.assets.fonts["small"],
@@ -424,18 +423,13 @@ class GameCornerState(GameState):
         self.dialogue_box.update()
 
         # ARCHITECT: Only show Yes/No buttons when the question is actually reached in the dialogue
-        if self.phase == "START":
-            # Start dialogue has 3 lines; the question is the 3rd line (index 2)
-            if self.dialogue_box.current_line == 2 and self.dialogue_box.is_waiting_for_click:
-                self.btn_yes.set_visibility(True)
-                self.btn_no.set_visibility(True)
-        elif self.phase == "STAIRS_PROMPT":
+        if self.phase == "STAIRS_PROMPT":
             # Stairs prompt has 2 lines; the question is the 2nd line (index 1)
             if self.dialogue_box.current_line == 1 and self.dialogue_box.is_waiting_for_click:
                 self.btn_yes.set_visibility(True)
                 self.btn_no.set_visibility(True)
 
-        if self.phase == "START" or self.phase == "STAIRS_PROMPT":
+        if self.phase == "STAIRS_PROMPT":
             box = self.dialogue_box.rect
             self.btn_yes.rect = pygame.Rect(box.right - 280, box.bottom - 80, 120, 60)
             self.btn_no.rect = pygame.Rect(box.right - 140, box.bottom - 80, 120, 60)

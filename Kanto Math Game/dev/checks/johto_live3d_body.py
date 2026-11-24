@@ -210,10 +210,10 @@ t = town("CIANWOOD_CITY", "gym")
 check(t._live() and t._live_key[2].endswith("T24GYM0101_off.png") and not getattr(t, "_pic_play", None), "...come back later: stopped at once, nothing played again")
 story.story_flags.pop("cianwood_gym_waterfall_off", None)
 
-print("5) the flat pictures stay when the live camera is off")
+print("5) the checks-only switch off: New Bark still loads and draws (its flat picture is gone, Jordan 11-24: 3D only)")
 g.live3d = False
-t = town("NEW_BARK_TOWN")
-check(not t._live(), "3D camera Flat: New Bark draws its baked picture")
+t = town("NEW_BARK_TOWN"); t.draw()
+check(not t._live(), "live camera switched off: New Bark draws its plain tiles, no crash")
 g.live3d = True
 
 print(f"##### {len(fails)} failures")

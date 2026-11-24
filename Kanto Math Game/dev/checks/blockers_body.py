@@ -11,16 +11,6 @@ def check(ok, msg):
     fails += 0 if ok else 1
 
 
-def city_options(area, kind):
-    story.current_area_key = area
-    c = CityState(g); g.change_state(c)
-    if kind == "travel_options":
-        c.open_travel_menu()  # tags each option TRAVEL, as a tap on TRAVEL does
-    else:
-        c.open_explore_menu()
-    return [b.text for b in c.hover_buttons]
-
-
 def route_buttons(area):
     story.current_area_key = area
     p = PlayState(g); g.change_state(p)
@@ -28,13 +18,20 @@ def route_buttons(area):
     return [b.text for b in p.route_buttons]
 
 
-# Sinnoh: the Galactic Key (a Bag item from Jupiter) opens the HQ.
+# Sinnoh: the Galactic Key (a Bag item from Jupiter) opens the HQ. Veilstone is walked (legacy menu clear, Step 5, 11-24):
+# walk to the HQ's door with and without the key.
+exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())
+story.enter_region("SINNOH")
 story.inventory.pop("GALACTIC_KEY", None)
-check("Team Galactic HQ" not in city_options("VEILSTONE_CITY", "travel_options"), "Veilstone: no HQ travel without the key")
-check("Team Galactic HQ" not in city_options("VEILSTONE_CITY", "explore_options"), "Veilstone: no HQ explore without the key")
+t = walk_town("VEILSTONE_CITY", "SINNOH_ROUTE_215")
+check("TEAM_GALACTIC_HQ" in walk_exits(t), "Veilstone's map has a way into the HQ")
+walk_out(t, "TEAM_GALACTIC_HQ")
+check(story.current_area_key == "VEILSTONE_CITY", "Veilstone: the HQ stays shut without the key")
 story.inventory["GALACTIC_KEY"] = 1
-check("Team Galactic HQ" in city_options("VEILSTONE_CITY", "travel_options"), "Veilstone: HQ travel with the key")
-check("Team Galactic HQ" in city_options("VEILSTONE_CITY", "explore_options"), "Veilstone: HQ explore with the key")  # (travel buttons: the place's name)
+t = walk_town("VEILSTONE_CITY", "SINNOH_ROUTE_215")
+walk_out(t, "TEAM_GALACTIC_HQ")
+check(story.current_area_key == "TEAM_GALACTIC_HQ", f"Veilstone: in to the HQ with the key ({story.current_area_key})")
+g.walk_towns = g.dungeon_routes = False   # (Galar below is a menu region: its route menu)
 
 # Unova: N at Icirrus no longer brings a Lv 70 Zekrom to a badge-6 fight.
 ev = g.loader.area_data["STORY_PROGRESSION"]["ICIRRUS_CITY"]["on_enter_event"]

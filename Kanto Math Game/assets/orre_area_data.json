@@ -3394,6 +3394,34 @@
             "world": "orre_gym",
             "rematch": true
           }
+        },
+        {
+          "text": "Move Tutor",
+          "action": "EVENT",
+          "color": "GOLD",
+          "condition": "orre_part2",
+          "event": {
+            "lines": [
+              "Move Tutor: Ho, a trainer! I've taught moves round Orre for years. These days I write them onto TMs, too.",
+              "Move Tutor: Teach one now, or buy the TM and teach it whenever you like."
+            ],
+            "tutor": {
+              "choices": [
+                "BODY-SLAM",
+                "DOUBLE-EDGE",
+                "SEISMIC-TOSS",
+                "MIMIC",
+                "DREAM-EATER",
+                "THUNDER-WAVE",
+                "SWORDS-DANCE",
+                "NIGHTMARE",
+                "SELF-DESTRUCT",
+                "SKY-ATTACK",
+                "SUBSTITUTE",
+                "ICY-WIND"
+              ]
+            }
+          }
         }
       ],
       "travel_options": [
