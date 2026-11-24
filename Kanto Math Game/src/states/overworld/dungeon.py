@@ -168,6 +168,9 @@ def follower_names(game, pokemon):
         own = next((int(k) for k, m in fm.items() if int(m.get("id", 0)) == raw
                     and str(m.get("form", "")).lower() == form), None)
     names = [FORM_SHEETS[own]] if own in FORM_SHEETS else []
+    variant = str(((getattr(pokemon, "_form_state", None) or {}).get("form")) or "").lower()
+    if form in ("mega", "gmax") and variant in ("pinkan", "valencia"):   # (a Mega Pinkan: 15_pinkan_mega, Jordan 11-23)
+        names.append(f"{species}_{variant}_{form}")
     if form != "normal":
         names.append(f"{species}_{form}")
     if own:
