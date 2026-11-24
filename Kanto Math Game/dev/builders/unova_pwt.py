@@ -65,6 +65,9 @@ TOURNAMENTS = [   # key, name, desk (left / right), roster, level, BP (single, d
 ]
 
 
+ROTOM_FORMS = {1: "heat", 2: "wash", 3: "frost", 4: "fan", 5: "mow"}   # (11-24: Rotom's appliance by name; the game
+FORMED = {479}   #  maps names to its forms. Other species' form values are stray (an Ampharos set's 5): 0)
+
 def _sets(r, narc):
     sp_mv_it = (r.text(nds5.SYSTEXT, 403), r.text(nds5.SYSTEXT, 64))
     mv, it = sp_mv_it
@@ -75,7 +78,7 @@ def _sets(r, narc):
             continue
         out[str(i)] = {"species": s, "moves": [mv[m].upper().replace(" ", "-") for m in (m1, m2, m3, m4) if m],
                        "item": it[item].upper().replace(" ", "_").replace("É", "E").replace("'", "") if item else None,
-                       "nature": nature, "form": form}
+                       "nature": nature, "form": ROTOM_FORMS.get(form, form) if s == 479 else (form if s in FORMED else 0)}
     return out
 
 

@@ -38,6 +38,7 @@
   },
   "FLOCCESY_TOWN": "sw_t_06",
   "GUIDANCE_CHAMBER": "d_02",
+  "HUMILAU_CITY": "sw_c_14",
   "JOIN_AVENUE": "rezo_rizo",
   "LACUNOSA_TOWN": "t_04",
   "LENTIMAS_TOWN": "sw_t_07",
@@ -48,6 +49,7 @@
    "WINTER": "r_d_wi"
   },
   "LOSTLORN_FOREST": "d_06",
+  "MARINE_TUBE": "sw_h_06",
   "MISTRALTON_CAVE": "d_02",
   "MISTRALTON_CAVE_2F": "d_02",
   "MISTRALTON_CITY": "c_06",
@@ -67,6 +69,8 @@
   "REVERSAL_MOUNTAIN_INSIDE": "sw_d_24_b",
   "REVERSAL_MOUNTAIN_SOUTH": "sw_d_24_b",
   "ROYAL_UNOVA": "pleasure_boat",
+  "SEASIDE_CAVE": "d_02",
+  "SEASIDE_CAVE_B1F": "d_02",
   "STRANGE_HOUSE": "sw_d_25",
   "TWIST_MOUNTAIN_ENTRANCE": {
    "AUTUMN": "r_d_au",
@@ -122,6 +126,18 @@
    "SUMMER": "sw_r_19_su",
    "WINTER": "sw_r_19_wi"
   },
+  "UNOVA_ROUTE_21": {
+   "AUTUMN": "sw_r_22_au",
+   "SPRING": "sw_r_22_sp",
+   "SUMMER": "sw_r_22_su",
+   "WINTER": "sw_r_22_wi"
+  },
+  "UNOVA_ROUTE_22": {
+   "AUTUMN": "sw_r_22_au",
+   "SPRING": "sw_r_22_sp",
+   "SUMMER": "sw_r_22_su",
+   "WINTER": "sw_r_22_wi"
+  },
   "UNOVA_ROUTE_4": {
    "AUTUMN": "r_c_au",
    "SPRING": "r_c_sp",
@@ -141,6 +157,12 @@
    "WINTER": "r_d_wi"
   },
   "UNOVA_ROUTE_7": {
+   "AUTUMN": "r_d_au",
+   "SPRING": "r_d_sp",
+   "SUMMER": "r_d_su",
+   "WINTER": "r_d_wi"
+  },
+  "UNOVA_ROUTE_9": {
    "AUTUMN": "r_d_au",
    "SPRING": "r_d_sp",
    "SUMMER": "r_d_su",
@@ -181,6 +203,9 @@
   "DRIFTVEIL_CITY:gym_lobby": "ground_gym_01",
   "FLOCCESY_RANCH:grotto": "kemonomichi",
   "FLOCCESY_TOWN:center": "pokecen",
+  "HUMILAU_CITY:center": "pokecen",
+  "HUMILAU_CITY:gym": "water_gym_01",
+  "HUMILAU_CITY:tube": "gate",
   "LACUNOSA_TOWN:center": "pokecen",
   "LENTIMAS_TOWN:center": "pokecen",
   "LIBERTY_GARDEN:lighthouse": "d_03",
@@ -212,6 +237,7 @@
   "PWT:stadium": "wbt_ground",
   "UNDELLA_TOWN:center": "pokecen",
   "UNDELLA_TOWN:gate": "gate",
+  "UNDELLA_TOWN:tube": "gate",
   "UNOVA_ROUTE_13:grotto": "kemonomichi",
   "UNOVA_ROUTE_13:grotto2": "kemonomichi",
   "UNOVA_ROUTE_16:bridge_gate": "gate",
@@ -219,6 +245,9 @@
   "UNOVA_ROUTE_6:grotto": "kemonomichi",
   "UNOVA_ROUTE_6:grotto2": "kemonomichi",
   "UNOVA_ROUTE_7:grotto": "kemonomichi",
+  "UNOVA_ROUTE_9:gate_w": "gate",
+  "UNOVA_ROUTE_9:mall": "fs",
+  "UNOVA_ROUTE_9:stockroom": "fs",
   "VILLAGE_BRIDGE:gate_e": "gate",
   "VILLAGE_BRIDGE:gate_w": "gate",
   "VIRBANK_CITY:center": "pokecen",

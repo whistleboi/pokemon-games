@@ -278,7 +278,7 @@
       "battle_type": "indoor",
       "wild_pool_percentages": null,
       "min_rounds": 0,
-      "trainer_pool": [{"name": "Aroma Lady Carnation", "class": "BEAUTY", "sprite": "beauty.png", "team": [465, 189, 272, 71], "rewards": {"balls": 5}}, {"name": "Rich Boy Antoin", "class": "RICH_BOY", "sprite": "richboy.png", "team": [169, 452, 110, 89], "rewards": {"balls": 5}}, {"name": "Fairy Tale Girl Josephine", "class": "LASS", "sprite": "lass.png", "team": [547, 40, 685, 210], "rewards": {"balls": 5}}, {"name": "Poke Maniac Kelvin", "class": "PKMN_TRAINER", "sprite": "acetrainer_f.png", "team": [464, 34, 473, 450], "rewards": {"balls": 5}}, {"name": "Bug Maniac Felix", "class": "PKMN_TRAINER", "sprite": "bug_catcher.png", "team": [212, 596, 214, 127], "rewards": {"balls": 5}}],
+      "trainer_pool": [{"name": "Aroma Lady Carnation", "class": "BEAUTY", "sprite": "em_tp_22.png", "team": [465, 189, 272, 71], "rewards": {"balls": 5}}, {"name": "Rich Boy Antoin", "class": "RICH_BOY", "sprite": "em_tp_23.png", "team": [169, 452, 110, 89], "rewards": {"balls": 5}}, {"name": "Fairy Tale Girl Josephine", "class": "LASS", "sprite": "em_tp_77.png", "team": [547, 40, 685, 210], "rewards": {"balls": 5}}, {"name": "Poke Maniac Kelvin", "class": "PKMN_TRAINER", "sprite": "em_tp_20.png", "team": [464, 34, 473, 450], "rewards": {"balls": 5}}, {"name": "Bug Maniac Felix", "class": "PKMN_TRAINER", "sprite": "em_tp_3.png", "team": [212, 596, 214, 127], "rewards": {"balls": 5}}],
       "route_menu": [
         {"text": "Game Corner clerk", "action": "GAME_CORNER"},
         {"text": "Tower attendant", "action": "FRONTIER", "facility": "tower"},
@@ -302,7 +302,7 @@
         {"text": "Maison regular", "action": "EVENT", "event": {"lines": ["Every battle's a single battle here. Your whole team gets healed in between."]}},
         {"text": "Maison spectator", "action": "EVENT", "event": {"lines": ["I just come to watch. The battle room's through the door behind the counter."]}},
         {"text": "FISH", "action": "FISH", "condition": "can_fish"},
-        {"text": "Wally", "action": "EVENT", "event": {"lines": ["Wally: {player_name}! I've been training here ever since the League. This Frontier's amazing!", "Wally: The Battle Maison's right here, too. But first... battle me!"], "flag": "battle_resort_wally", "battle": {"name": "Pokémon Trainer Wally", "class": "PKMN_TRAINER", "sprite": "wally.png", "team": [334, 301, 407, 462, 475], "levels": [64, 64, 64, 64, 66], "is_boss_battle": true, "rewards": {"balls": 10}, "dialogue": {"player_won": ["Wally: Well fought! I'll get even stronger, you'll see!"]}}, "done": ["Wally: I'm taking on the Battle Maison next. Let's both keep winning!"]}},
+        {"text": "Wally", "action": "EVENT", "event": {"lines": ["Wally: {player_name}! I've been training here ever since the League. This Frontier's amazing!", "Wally: The Battle Maison's right here, too. But first... battle me!"], "flag": "battle_resort_wally", "battle": {"name": "Pokémon Trainer Wally", "class": "PKMN_TRAINER", "sprite": "em_tp_70.png", "team": [334, 301, 407, 462, 475], "levels": [64, 64, 64, 64, 66], "is_boss_battle": true, "rewards": {"balls": 10}, "dialogue": {"player_won": ["Wally: Well fought! I'll get even stronger, you'll see!"]}}, "done": ["Wally: I'm taking on the Battle Maison next. Let's both keep winning!"]}},
         {"text": "The Judge", "action": "EVENT", "event": {"lines": ["Judge: They call me the Judge. I can see a Pokemon's potential for greatness.", "Judge: Let me take a look at your first Pokemon..."], "judge": true}},
         {"text": "POKeMON DAY CARE ANNEX", "door": "annex", "action": "DAYCARE"},
         {"text": "Lady in a jam", "door": "annex", "action": "EVENT", "event": {"lines": ["Lady: Oh, how embarrassing... I'm $100 short. Could you possibly lend it to me?", "Lady: You're too kind! Here, take this as a token of my thanks."], "pay": 100, "gift_item": {"TM286": 1}, "flag": "got_tm87_annex", "fail": ["Lady: Oh, you don't have $100 either? How awful for us both..."], "done": ["Lady: I'll pay you back one day. Probably."]}},
@@ -400,7 +400,7 @@
         {
           "name": "Gentleman Tucker",
           "class": "GENTLEMAN",
-          "sprite": "gentleman.png",
+          "sprite": "em_tp_35.png",
           "team": [
             78,
             523
@@ -412,7 +412,7 @@
         {
           "name": "Rich Boy Garret",
           "class": "RICH_BOY",
-          "sprite": "richboy.png",
+          "sprite": "em_tp_23.png",
           "team": [676],
           "levels": [51],
           "rewards": {
@@ -422,7 +422,7 @@
         {
           "battle_options": {"double": true}, "name": "Young Couple Lea & Jed",
           "class": "TWINS",
-          "sprite": "twins.png",
+          "sprite": "em_tp_78.png",
           "team": [
             241,
             128
@@ -434,7 +434,7 @@
         {
           "name": "Poke Fan Colton",
           "class": "POKEFAN",
-          "sprite": "pokefan_f.png",
+          "sprite": "em_tp_51.png",
           "team": [
             301,
             301,
@@ -447,7 +447,7 @@
         {
           "name": "Lady Anette",
           "class": "BEAUTY",
-          "sprite": "beauty.png",
+          "sprite": "em_tp_22.png",
           "team": [
             53
           ],
@@ -458,7 +458,7 @@
         {
           "name": "Gentleman Thomas",
           "class": "GENTLEMAN",
-          "sprite": "gentleman.png",
+          "sprite": "em_tp_35.png",
           "team": [
             628
           ],
@@ -628,7 +628,7 @@
       "region": "HOENN",
       "backgrounds": { "pokecenter": "petalburg_center.png", "pokemart": "petalburg_mart.png", "gym": "petalburg_gym.png" },
       "has_gym": true,
-      "gym": {"requirements": {"badges": 4, "fail_text": ["Dad: So you want to battle me? Earn four badges first.", "Then we'll see how strong you've become!"]}, "trainers": [{"name": "Ace Trainer Randall", "class": "ACE_TRAINER", "sprite": "acetrainer_m.png", "team": [301], "levels": [28], "rewards": {"balls": 2}}, {"name": "Ace Trainer Mary", "class": "ACE_TRAINER", "sprite": "acetrainer_f.png", "team": [301], "levels": [28], "rewards": {"balls": 2}}], "leader": {"name": "Norman", "class": "GYM_LEADER", "sprite": "norman.png", "team": [289, 288, 289], "levels": [28, 28, 30], "badge_reward": "BALANCE", "rewards": {"balls": 5, "TM257": 1}, "dialogue": {"intro": ["Dad: So you really did earn four badges, {player_name}. I'm proud of you. But in this Gym I'm not your father, I'm its Leader, and I won't go easy on you!"], "player_won": ["Dad: ...I lost to my own child. You've grown so strong, {player_name}. I couldn't be prouder.", "Dad: Take the Balance Badge. You earned it!"], "player_lost": ["Dad: Don't hang your head, {player_name}. Train hard and come back. Your dad will be right here waiting."]}, "victory_flag": "badge_balance_earned", "team_moves": [["RETALIATE", "YAWN", "FEINT-ATTACK", "ENCORE"], ["ENCORE", "FEINT-ATTACK", "RETALIATE", "FURY-SWIPES"], ["RETALIATE", "FEINT-ATTACK", "SWAGGER", "CHIP-AWAY"]]}},
+      "gym": {"requirements": {"badges": 4, "fail_text": ["Dad: So you want to battle me? Earn four badges first.", "Then we'll see how strong you've become!"]}, "trainers": [{"name": "Ace Trainer Randall", "class": "ACE_TRAINER", "sprite": "em_tp_3.png", "team": [301], "levels": [28], "rewards": {"balls": 2}}, {"name": "Ace Trainer Mary", "class": "ACE_TRAINER", "sprite": "em_tp_20.png", "team": [301], "levels": [28], "rewards": {"balls": 2}}], "leader": {"name": "Norman", "class": "GYM_LEADER", "sprite": "em_tp_44.png", "team": [289, 288, 289], "levels": [28, 28, 30], "badge_reward": "BALANCE", "rewards": {"balls": 5, "TM257": 1}, "dialogue": {"intro": ["Dad: So you really did earn four badges, {player_name}. I'm proud of you. But in this Gym I'm not your father, I'm its Leader, and I won't go easy on you!"], "player_won": ["Dad: ...I lost to my own child. You've grown so strong, {player_name}. I couldn't be prouder.", "Dad: Take the Balance Badge. You earned it!"], "player_lost": ["Dad: Don't hang your head, {player_name}. Train hard and come back. Your dad will be right here waiting."]}, "victory_flag": "badge_balance_earned", "team_moves": [["RETALIATE", "YAWN", "FEINT-ATTACK", "ENCORE"], ["ENCORE", "FEINT-ATTACK", "RETALIATE", "FURY-SWIPES"], ["RETALIATE", "FEINT-ATTACK", "SWAGGER", "CHIP-AWAY"]]}},
       "travel_options": [
         { "text": "Route 102", "target_area": "HOENN_ROUTE_102" },
         { "text": "Route 104", "target_area": "HOENN_ROUTE_104" }
@@ -639,7 +639,7 @@
         {"text": "Gym", "action": "GYM"},
         {"text": "Talk to Dad", "action": "NPC", "target": "norman_petalburg", "flag_condition": "not helped_wally", "look": "em_129.png"},
         {"text": "Battle Courtney", "action": "EVENT", "color": "GOLD", "flag_condition": "not delta_courtney_petalburg", "event": {"lines": ["Courtney: The meteor... we have to know what's coming. Battle me!"], "flag": "delta_courtney_petalburg", "battle": {"name": "Magma Admin Courtney", "class": "TEAM_MAGMA", "sprite": "courtney.png", "team": [323], "levels": [53], "is_boss_battle": true, "rewards": {"balls": 10}, "dialogue": {"player_won": ["Magma Admin Courtney: Well fought!"]}}}, "condition": ["beat_hoenn_champion", "delta_started"]},
-        {"text": "Battle Matt", "action": "EVENT", "color": "GOLD", "flag_condition": "not delta_matt_petalburg", "event": {"lines": ["Matt: The meteor... we have to know what's coming. Battle me!"], "flag": "delta_matt_petalburg", "battle": {"name": "Aqua Admin Matt", "class": "TEAM_AQUA", "sprite": "matt.png", "team": [319], "levels": [53], "is_boss_battle": true, "rewards": {"balls": 10}, "dialogue": {"player_won": ["Aqua Admin Matt: Well fought!"]}}}, "condition": ["beat_hoenn_champion", "delta_started"]}
+        {"text": "Battle Matt", "action": "EVENT", "color": "GOLD", "flag_condition": "not delta_matt_petalburg", "event": {"lines": ["Matt: The meteor... we have to know what's coming. Battle me!"], "flag": "delta_matt_petalburg", "battle": {"name": "Aqua Admin Matt", "class": "TEAM_AQUA", "sprite": "em_tp_10.png", "team": [319], "levels": [53], "is_boss_battle": true, "rewards": {"balls": 10}, "dialogue": {"player_won": ["Aqua Admin Matt: Well fought!"]}}}, "condition": ["beat_hoenn_champion", "delta_started"]}
       ],
       "next_area": "HOENN_ROUTE_104",
       "on_enter_event": {"type": "event", "event": "norman_wally", "condition": "received_pokedex_hoenn", "flag_check": "helped_wally"}
@@ -650,7 +650,7 @@
       "region": "HOENN",
       "backgrounds": { "pokecenter": "rustboro_center.png", "pokemart": "rustboro_mart.png", "gym": "rustboro_gym.png" },
       "has_gym": true,
-      "gym": {"trainers": [{"name": "Youngster Josh", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [74], "rewards": {"balls": 2}}, {"name": "Hiker Marc", "class": "HIKER", "sprite": "hiker.png", "team": [74, 299], "rewards": {"balls": 2}}], "leader": {"name": "Roxanne", "class": "GYM_LEADER", "sprite": "roxanne.png", "team": [74, 299], "levels": [12, 14], "badge_reward": "STONE", "rewards": {"balls": 5, "TM036": 1}, "dialogue": {"intro": ["Roxanne: Welcome to the Rustboro City Gym! I'm Roxanne, the Rock-type Gym Leader."], "player_won": ["Your strategy was flawless!"], "player_lost": ["Don't worry, you'll get it next time."]}, "victory_flag": "badge_stone_earned", "movesets": {"74": ["TACKLE", "DEFENSE-CURL", "ROCK-THROW", "ROCK-TOMB"], "299": ["BLOCK", "HARDEN", "TACKLE", "ROCK-TOMB"]}}},
+      "gym": {"trainers": [{"name": "Youngster Josh", "class": "YOUNGSTER", "sprite": "em_tp_53.png", "team": [74], "rewards": {"balls": 2}}, {"name": "Hiker Marc", "class": "HIKER", "sprite": "em_tp_0.png", "team": [74, 299], "rewards": {"balls": 2}}], "leader": {"name": "Roxanne", "class": "GYM_LEADER", "sprite": "em_tp_40.png", "team": [74, 299], "levels": [12, 14], "badge_reward": "STONE", "rewards": {"balls": 5, "TM036": 1}, "dialogue": {"intro": ["Roxanne: Welcome to the Rustboro City Gym! I'm Roxanne, the Rock-type Gym Leader."], "player_won": ["Your strategy was flawless!"], "player_lost": ["Don't worry, you'll get it next time."]}, "victory_flag": "badge_stone_earned", "movesets": {"74": ["TACKLE", "DEFENSE-CURL", "ROCK-THROW", "ROCK-TOMB"], "299": ["BLOCK", "HARDEN", "TACKLE", "ROCK-TOMB"]}}},
       "travel_options": [
         { "text": "Route 104", "target_area": "HOENN_ROUTE_104" },
         { "text": "Route 115", "target_area": "HOENN_ROUTE_115" },
@@ -672,7 +672,7 @@
       "region": "HOENN",
       "backgrounds": { "pokecenter": "dewford_center.png", "pokemart": "dewford_mart.png", "gym": "dewford_gym.png" },
       "has_gym": true,
-      "gym": {"trainers": [{"name": "Blackbelt Koichi", "class": "BLACKBELT", "sprite": "blackbelt.png", "team": [66], "rewards": {"balls": 2}}], "leader": {"name": "Brawly", "class": "GYM_LEADER", "sprite": "brawly.png", "team": [66, 296], "levels": [14, 16], "badge_reward": "KNUCKLE", "rewards": {"balls": 5, "RARE_CANDY": 3, "TM064": 1}, "dialogue": {"intro": ["Brawly: Welcome to the Dewford Town Gym! I'm Brawly, the Fighting-type Gym Leader."], "player_won": ["You're a real wave!"], "player_lost": ["Don't worry, you'll get it next time."]}, "victory_flag": "badge_knuckle_earned", "movesets": {"66": ["KARATE-CHOP", "LOW-KICK", "SEISMIC-TOSS", "BULK-UP"], "296": ["ARM-THRUST", "VITAL-THROW", "REVERSAL", "BULK-UP"]}}, "requirements": {"badges": 1, "fail_text": ["Brawly is only accepting challengers with 1 Hoenn badge.", "Come back after you've beaten the earlier Gyms!"]}},
+      "gym": {"trainers": [{"name": "Blackbelt Koichi", "class": "BLACKBELT", "sprite": "em_tp_11.png", "team": [66], "rewards": {"balls": 2}}], "leader": {"name": "Brawly", "class": "GYM_LEADER", "sprite": "em_tp_41.png", "team": [66, 296], "levels": [14, 16], "badge_reward": "KNUCKLE", "rewards": {"balls": 5, "RARE_CANDY": 3, "TM064": 1}, "dialogue": {"intro": ["Brawly: Welcome to the Dewford Town Gym! I'm Brawly, the Fighting-type Gym Leader."], "player_won": ["You're a real wave!"], "player_lost": ["Don't worry, you'll get it next time."]}, "victory_flag": "badge_knuckle_earned", "movesets": {"66": ["KARATE-CHOP", "LOW-KICK", "SEISMIC-TOSS", "BULK-UP"], "296": ["ARM-THRUST", "VITAL-THROW", "REVERSAL", "BULK-UP"]}}, "requirements": {"badges": 1, "fail_text": ["Brawly is only accepting challengers with 1 Hoenn badge.", "Come back after you've beaten the earlier Gyms!"]}},
       "travel_options": [
         {"text": "Route 106", "target_area": "HOENN_ROUTE_106"},
         {"text": "Route 107", "target_area": "HOENN_ROUTE_107", "condition": "has_item:HM_SURF"},
@@ -735,7 +735,7 @@
       "region": "HOENN",
       "backgrounds": { "pokecenter": "mauville_center.png", "pokemart": "mauville_mart.png", "gym": "mauville_gym.png" },
       "has_gym": true,
-      "gym": {"trainers": [{"name": "Guitarist Kirk", "class": "GUITARIST", "sprite": "guitarist.png", "team": [309], "rewards": {"balls": 2}}], "leader": {"name": "Wattson", "class": "GYM_LEADER", "sprite": "wattson.png", "team": [81, 100, 82], "levels": [19, 19, 21], "badge_reward": "DYNAMO", "rewards": {"balls": 5, "TM048": 1}, "dialogue": {"intro": ["Wattson: Welcome to the Mauville City Gym! I'm Wattson, the Electric-type Gym Leader."], "player_won": ["Shocking performance!"], "player_lost": ["Don't worry, you'll get it next time."]}, "victory_flag": "badge_dynamo_earned", "movesets": {"81": ["THUNDER-SHOCK", "SUPERSONIC", "SONICBOOM", "THUNDER-WAVE"], "100": ["ROLLOUT", "SPARK", "SONICBOOM", "SELF-DESTRUCT"], "82": ["SHOCK-WAVE", "SUPERSONIC", "SONICBOOM", "THUNDER-WAVE"]}}, "requirements": {"badges": 2, "fail_text": ["Wattson is only accepting challengers with 2 Hoenn badges.", "Come back after you've beaten the earlier Gyms!"], "flags": ["defeated_wally_mauville"]}},
+      "gym": {"trainers": [{"name": "Guitarist Kirk", "class": "GUITARIST", "sprite": "em_tp_27.png", "team": [309], "rewards": {"balls": 2}}], "leader": {"name": "Wattson", "class": "GYM_LEADER", "sprite": "em_tp_42.png", "team": [81, 100, 82], "levels": [19, 19, 21], "badge_reward": "DYNAMO", "rewards": {"balls": 5, "TM048": 1}, "dialogue": {"intro": ["Wattson: Welcome to the Mauville City Gym! I'm Wattson, the Electric-type Gym Leader."], "player_won": ["Shocking performance!"], "player_lost": ["Don't worry, you'll get it next time."]}, "victory_flag": "badge_dynamo_earned", "movesets": {"81": ["THUNDER-SHOCK", "SUPERSONIC", "SONICBOOM", "THUNDER-WAVE"], "100": ["ROLLOUT", "SPARK", "SONICBOOM", "SELF-DESTRUCT"], "82": ["SHOCK-WAVE", "SUPERSONIC", "SONICBOOM", "THUNDER-WAVE"]}}, "requirements": {"badges": 2, "fail_text": ["Wattson is only accepting challengers with 2 Hoenn badges.", "Come back after you've beaten the earlier Gyms!"], "flags": ["defeated_wally_mauville"]}},
       "travel_options": [
         {"text": "Route 110", "target_area": "HOENN_ROUTE_110"},
         {"text": "Route 111", "target_area": "HOENN_ROUTE_111", "condition": "has_item:HM_ROCK_SMASH"},
@@ -798,7 +798,7 @@
       "region": "HOENN",
       "backgrounds": { "pokecenter": "lavaridge_center.png", "pokemart": "lavaridge_mart.png", "gym": "lavaridge_gym.png" },
       "has_gym": true,
-      "gym": {"trainers": [{"name": "Kindler Jeff", "class": "KINDLER", "sprite": "kindler.png", "team": [322], "rewards": {"balls": 2}}], "leader": {"name": "Flannery", "class": "GYM_LEADER", "sprite": "flannery.png", "team": [218, 322, 324], "levels": [26, 26, 28], "badge_reward": "HEAT", "rewards": {"balls": 5, "RARE_CANDY": 3, "ROOT_FOSSIL": 1, "TM157": 1}, "dialogue": {"intro": ["Flannery: Welcome to the Lavaridge Town Gym! I'm Flannery, the Fire-type Gym Leader."], "player_won": ["You're too hot to handle!", "Take this Root Fossil too. The fossil lab in Rustboro City can revive it!"], "player_lost": ["Don't worry, you'll get it next time."]}, "victory_flag": "badge_heat_earned", "movesets": {"218": ["OVERHEAT", "SMOG", "LIGHT-SCREEN", "SUNNY-DAY"], "324": ["OVERHEAT", "SUNNY-DAY", "BODY-SLAM", "ATTRACT"]}}, "requirements": {"badges": 3, "fail_text": ["Flannery is only accepting challengers with 3 Hoenn badges.", "Come back after you've beaten the earlier Gyms!"]}},
+      "gym": {"trainers": [{"name": "Kindler Jeff", "class": "KINDLER", "sprite": "em_tp_28.png", "team": [322], "rewards": {"balls": 2}}], "leader": {"name": "Flannery", "class": "GYM_LEADER", "sprite": "em_tp_43.png", "team": [218, 322, 324], "levels": [26, 26, 28], "badge_reward": "HEAT", "rewards": {"balls": 5, "RARE_CANDY": 3, "ROOT_FOSSIL": 1, "TM157": 1}, "dialogue": {"intro": ["Flannery: Welcome to the Lavaridge Town Gym! I'm Flannery, the Fire-type Gym Leader."], "player_won": ["You're too hot to handle!", "Take this Root Fossil too. The fossil lab in Rustboro City can revive it!"], "player_lost": ["Don't worry, you'll get it next time."]}, "victory_flag": "badge_heat_earned", "movesets": {"218": ["OVERHEAT", "SMOG", "LIGHT-SCREEN", "SUNNY-DAY"], "324": ["OVERHEAT", "SUNNY-DAY", "BODY-SLAM", "ATTRACT"]}}, "requirements": {"badges": 3, "fail_text": ["Flannery is only accepting challengers with 3 Hoenn badges.", "Come back after you've beaten the earlier Gyms!"]}},
       "travel_options": [
         { "text": "Route 112", "target_area": "HOENN_ROUTE_112" }
       ],
@@ -826,7 +826,7 @@
       "region": "HOENN",
       "backgrounds": { "pokecenter": "fortree_center.png", "pokemart": "fortree_mart.png", "gym": "fortree_gym.png" },
       "has_gym": true,
-      "gym": {"trainers": [{"name": "Bird Keeper Jared", "class": "BIRD_KEEPER", "sprite": "bird_keeper.png", "team": [333], "rewards": {"balls": 2}}], "leader": {"name": "Winona", "class": "GYM_LEADER", "sprite": "winona.png", "team": [277, 279, 227, 334], "levels": [33, 33, 33, 35], "badge_reward": "FEATHER", "rewards": {"balls": 5, "RARE_CANDY": 3, "TM268": 1}, "dialogue": {"intro": ["Winona: Welcome to the Fortree City Gym! I'm Winona, the Flying-type Gym Leader."], "player_won": ["You soared above me!"], "player_lost": ["Don't worry, you'll get it next time."]}, "victory_flag": "badge_feather_earned", "movesets": {"277": ["QUICK-ATTACK", "AERIAL-ACE", "DOUBLE-TEAM", "ENDEAVOR"], "279": ["WATER-GUN", "SUPERSONIC", "PROTECT", "AERIAL-ACE"], "227": ["SAND-ATTACK", "FURY-ATTACK", "STEEL-WING", "AERIAL-ACE"], "334": ["EARTHQUAKE", "DRAGONBREATH", "DRAGON-DANCE", "AERIAL-ACE"]}}, "requirements": {"badges": 5, "fail_text": ["Something invisible is blocking the Gym door!", "Winona needs 5 Hoenn badges, and you'll need a way to see what's in the way.", "Steven was heading east to Route 120..."], "flags": ["got_starter_mega_stone"]}},
+      "gym": {"trainers": [{"name": "Bird Keeper Jared", "class": "BIRD_KEEPER", "sprite": "em_tp_4.png", "team": [333], "rewards": {"balls": 2}}], "leader": {"name": "Winona", "class": "GYM_LEADER", "sprite": "em_tp_45.png", "team": [277, 279, 227, 334], "levels": [33, 33, 33, 35], "badge_reward": "FEATHER", "rewards": {"balls": 5, "RARE_CANDY": 3, "TM268": 1}, "dialogue": {"intro": ["Winona: Welcome to the Fortree City Gym! I'm Winona, the Flying-type Gym Leader."], "player_won": ["You soared above me!"], "player_lost": ["Don't worry, you'll get it next time."]}, "victory_flag": "badge_feather_earned", "movesets": {"277": ["QUICK-ATTACK", "AERIAL-ACE", "DOUBLE-TEAM", "ENDEAVOR"], "279": ["WATER-GUN", "SUPERSONIC", "PROTECT", "AERIAL-ACE"], "227": ["SAND-ATTACK", "FURY-ATTACK", "STEEL-WING", "AERIAL-ACE"], "334": ["EARTHQUAKE", "DRAGONBREATH", "DRAGON-DANCE", "AERIAL-ACE"]}}, "requirements": {"badges": 5, "fail_text": ["Something invisible is blocking the Gym door!", "Winona needs 5 Hoenn badges, and you'll need a way to see what's in the way.", "Steven was heading east to Route 120..."], "flags": ["got_starter_mega_stone"]}},
       "travel_options": [
         {"text": "Up to the treetops", "target_area": "FORTREE_CITY_UPPER"},
         {"text": "Route 119", "target_area": "HOENN_ROUTE_119"},
@@ -876,7 +876,7 @@
       "region": "HOENN",
       "backgrounds": { "pokecenter": "mossdeep_center.png", "pokemart": "mossdeep_mart.png", "gym": "mossdeep_gym.png" },
       "has_gym": true,
-      "gym": {"trainers": [{"name": "Psychic Preston", "class": "PSYCHIC", "sprite": "psychic.png", "team": [307, 308], "rewards": {"balls": 2}}], "leader": {"battle_options": {"double": true}, "name": "Tate & Liza", "class": "GYM_LEADER", "sprite": "tate_liza.png", "team": [337, 338], "levels": [45, 45], "badge_reward": "MIND", "rewards": {"balls": 5, "TM129": 1}, "dialogue": {"intro": ["Tate & Liza: Welcome to the Mossdeep City Gym! We're the Psychic-type Gym Leaders."], "player_won": ["Your mind is sharp!"], "player_lost": ["Don't worry, you'll get it next time."]}, "victory_flag": "badge_mind_earned", "movesets": {"337": ["LIGHT-SCREEN", "PSYCHIC", "HYPNOSIS", "CALM-MIND"], "338": ["SUNNY-DAY", "SOLAR-BEAM", "PSYCHIC", "FLAMETHROWER"]}}, "requirements": {"badges": 6, "fail_text": ["Tate & Liza is only accepting challengers with 6 Hoenn badges.", "Come back after you've beaten the earlier Gyms!"]}},
+      "gym": {"trainers": [{"name": "Psychic Preston", "class": "PSYCHIC", "sprite": "em_tp_33.png", "team": [307, 308], "rewards": {"balls": 2}}], "leader": {"battle_options": {"double": true}, "name": "Tate & Liza", "class": "GYM_LEADER", "sprite": "tate_liza.png", "team": [337, 338], "levels": [45, 45], "badge_reward": "MIND", "rewards": {"balls": 5, "TM129": 1}, "dialogue": {"intro": ["Tate & Liza: Welcome to the Mossdeep City Gym! We're the Psychic-type Gym Leaders."], "player_won": ["Your mind is sharp!"], "player_lost": ["Don't worry, you'll get it next time."]}, "victory_flag": "badge_mind_earned", "movesets": {"337": ["LIGHT-SCREEN", "PSYCHIC", "HYPNOSIS", "CALM-MIND"], "338": ["SUNNY-DAY", "SOLAR-BEAM", "PSYCHIC", "FLAMETHROWER"]}}, "requirements": {"badges": 6, "fail_text": ["Tate & Liza is only accepting challengers with 6 Hoenn badges.", "Come back after you've beaten the earlier Gyms!"]}},
       "travel_options": [
         {"text": "Route 124", "target_area": "HOENN_ROUTE_124"},
         {"text": "Route 125", "target_area": "HOENN_ROUTE_125"},
@@ -889,7 +889,7 @@
         {"text": "Shop", "action": "SHOP"},
         {"text": "Gym", "action": "GYM"},
         {"text": "Battle Courtney", "action": "EVENT", "color": "GOLD", "flag_condition": "not delta_courtney_mossdeep", "event": {"lines": ["Courtney: The meteor... we have to know what's coming. Battle me!"], "flag": "delta_courtney_mossdeep", "battle": {"name": "Magma Admin Courtney", "class": "TEAM_MAGMA", "sprite": "courtney.png", "team": [323], "levels": [55], "is_boss_battle": true, "rewards": {"balls": 10}, "dialogue": {"player_won": ["Magma Admin Courtney: Well fought!"]}}}, "condition": ["beat_hoenn_champion", "h4_rustboro_city_delta_grunt_1", "h4_rustboro_city_delta_grunt_2", "h4_rustboro_city_delta_grunt_3"]},
-        {"text": "Battle Matt", "action": "EVENT", "color": "GOLD", "flag_condition": "not delta_matt_mossdeep", "event": {"lines": ["Matt: The meteor... we have to know what's coming. Battle me!"], "flag": "delta_matt_mossdeep", "battle": {"name": "Aqua Admin Matt", "class": "TEAM_AQUA", "sprite": "matt.png", "team": [319], "levels": [55], "is_boss_battle": true, "rewards": {"balls": 10}, "dialogue": {"player_won": ["Aqua Admin Matt: Well fought!"]}}}, "condition": ["beat_hoenn_champion", "h4_rustboro_city_delta_grunt_1", "h4_rustboro_city_delta_grunt_2", "h4_rustboro_city_delta_grunt_3"]}
+        {"text": "Battle Matt", "action": "EVENT", "color": "GOLD", "flag_condition": "not delta_matt_mossdeep", "event": {"lines": ["Matt: The meteor... we have to know what's coming. Battle me!"], "flag": "delta_matt_mossdeep", "battle": {"name": "Aqua Admin Matt", "class": "TEAM_AQUA", "sprite": "em_tp_10.png", "team": [319], "levels": [55], "is_boss_battle": true, "rewards": {"balls": 10}, "dialogue": {"player_won": ["Aqua Admin Matt: Well fought!"]}}}, "condition": ["beat_hoenn_champion", "h4_rustboro_city_delta_grunt_1", "h4_rustboro_city_delta_grunt_2", "h4_rustboro_city_delta_grunt_3"]}
       ],
       "next_area": "HOENN_ROUTE_124",
       "on_enter_event": null
@@ -900,7 +900,7 @@
       "region": "HOENN",
       "backgrounds": { "pokecenter": "sootopolis_center.png", "pokemart": "sootopolis_mart.png", "gym": "sootopolis_gym.png" },
       "has_gym": true,
-      "gym": {"trainers": [{"name": "Swimmer Katie", "class": "SWIMMER", "sprite": "swimmer_f.png", "team": [118], "rewards": {"balls": 2}}], "leader": {"name": "Wallace", "class": "GYM_LEADER", "sprite": "wallace.png", "team": [370, 340, 364, 119, 350], "levels": [44, 44, 44, 44, 46], "badge_reward": "RAIN", "rewards": {"balls": 5, "EON_TICKET": 1, "CLAW_FOSSIL": 1, "HM_WATERFALL": 1}, "dialogue": {"intro": ["Wallace: Welcome to the Sootopolis City Gym! I'm Wallace, the Water-type Gym Leader."], "player_won": ["The tides have turned in your favor!", "Take this Claw Fossil too. The fossil lab in Rustboro City can revive it!"], "player_lost": ["Don't worry, you'll get it next time."]}, "victory_flag": "badge_rain_earned", "movesets": {"370": ["FLAIL", "ATTRACT", "SWEET-KISS", "WATER-PULSE"], "340": ["AMNESIA", "RAIN-DANCE", "EARTHQUAKE", "WATER-PULSE"], "364": ["ENCORE", "BODY-SLAM", "AURORA-BEAM", "WATER-PULSE"], "119": ["HORN-DRILL", "FURY-ATTACK", "RAIN-DANCE", "WATER-PULSE"], "350": ["RECOVER", "TWISTER", "ICE-BEAM", "WATER-PULSE"]}}, "requirements": {"badges": 7, "fail_text": ["The Gym is empty. Wallace has gone to the Cave of Origin...", "Hoenn needs you to stop Primal {legend} first!"], "flag": "cave_of_origin_cleared"}},
+      "gym": {"trainers": [{"name": "Swimmer Katie", "class": "SWIMMER", "sprite": "em_tp_66.png", "team": [118], "rewards": {"balls": 2}}], "leader": {"name": "Wallace", "class": "GYM_LEADER", "sprite": "em_tp_54.png", "team": [370, 340, 364, 119, 350], "levels": [44, 44, 44, 44, 46], "badge_reward": "RAIN", "rewards": {"balls": 5, "EON_TICKET": 1, "CLAW_FOSSIL": 1, "HM_WATERFALL": 1}, "dialogue": {"intro": ["Wallace: Welcome to the Sootopolis City Gym! I'm Wallace, the Water-type Gym Leader."], "player_won": ["The tides have turned in your favor!", "Take this Claw Fossil too. The fossil lab in Rustboro City can revive it!"], "player_lost": ["Don't worry, you'll get it next time."]}, "victory_flag": "badge_rain_earned", "movesets": {"370": ["FLAIL", "ATTRACT", "SWEET-KISS", "WATER-PULSE"], "340": ["AMNESIA", "RAIN-DANCE", "EARTHQUAKE", "WATER-PULSE"], "364": ["ENCORE", "BODY-SLAM", "AURORA-BEAM", "WATER-PULSE"], "119": ["HORN-DRILL", "FURY-ATTACK", "RAIN-DANCE", "WATER-PULSE"], "350": ["RECOVER", "TWISTER", "ICE-BEAM", "WATER-PULSE"]}}, "requirements": {"badges": 7, "fail_text": ["The Gym is empty. Wallace has gone to the Cave of Origin...", "Hoenn needs you to stop Primal {legend} first!"], "flag": "cave_of_origin_cleared"}},
       "travel_options": [
         { "text": "Route 126", "target_area": "HOENN_ROUTE_126" },
         { "text": "Cave of Origin", "target_area": "HOENN_CAVE_OF_ORIGIN" }
@@ -937,7 +937,7 @@
         "gym": ["hoenn_elite_sidney.png", "hoenn_elite_phoebe.png", "hoenn_elite_glacia.png", "hoenn_elite_drake.png", "hoenn_champion.png"]
       },
       "has_gym": true,
-      "gym": {"trainers": [{"name": "Sidney", "class": "ELITE_FOUR", "sprite": "sidney.png", "team": [262, 275, 332, 319, 359], "levels": [50, 50, 50, 50, 52], "rewards": {"balls": 15}, "movesets": {"262": ["CRUNCH", "TAKE-DOWN", "SAND-ATTACK", "ROAR"], "332": ["FEINT-ATTACK", "NEEDLE-ARM", "COTTON-SPORE", "LEECH-SEED"], "275": ["FAKE-OUT", "EXTRASENSORY", "DOUBLE-TEAM", "SWAGGER"], "319": ["SURF", "CRUNCH", "SLASH", "SWAGGER"], "359": ["SWORDS-DANCE", "SLASH", "AERIAL-ACE", "SNATCH"]}, "rematch": {"team": [559, 275, 319, 571, 630, 359], "levels": [70, 70, 70, 70, 70, 72]}}, {"name": "Phoebe", "class": "ELITE_FOUR", "sprite": "phoebe.png", "team": [356, 354, 302, 354, 477], "levels": [51, 51, 51, 51, 53], "rewards": {"balls": 15}, "movesets": {"356": ["SHADOW-PUNCH", "CONFUSE-RAY", "CURSE", "PROTECT"], "354": ["SHADOW-BALL", "GRUDGE", "WILL-O-WISP", "FEINT-ATTACK"], "302": ["SHADOW-BALL", "DOUBLE-TEAM", "NIGHT-SHADE", "FEINT-ATTACK"]}, "rematch": {"team": [354, 429, 426, 609, 477, 302], "levels": [71, 71, 71, 71, 71, 73]}}, {"name": "Glacia", "class": "ELITE_FOUR", "sprite": "glacia.png", "team": [362, 478, 362, 478, 365], "levels": [52, 52, 52, 52, 54], "rewards": {"balls": 15}, "movesets": {"362": ["LIGHT-SCREEN", "CRUNCH", "ICY-WIND", "ICE-BEAM"], "365": ["SURF", "BODY-SLAM", "ICE-BEAM", "SHEER-COLD"]}, "rematch": {"team": [460, 614, 478, 584, 365, 362], "levels": [72, 72, 72, 72, 72, 74]}}, {"name": "Drake", "class": "ELITE_FOUR", "sprite": "drake.png", "team": [334, 330, 230, 330, 373], "levels": [53, 53, 53, 53, 55], "rewards": {"balls": 15}, "movesets": {"334": ["DOUBLE-EDGE", "DRAGONBREATH", "DRAGON-DANCE", "AERIAL-ACE"], "330": ["FLAMETHROWER", "CRUNCH", "DRAGONBREATH", "EARTHQUAKE"], "373": ["FLAMETHROWER", "DRAGON-CLAW", "ROCK-SLIDE", "CRUNCH"]}, "rematch": {"team": [334, 691, 230, 330, 612, 373], "levels": [73, 73, 73, 73, 73, 75]}}], "leader": {"name": "Steven", "class": "CHAMPION", "sprite": "steven.png", "team": [227, 344, 306, 346, 348, 376], "levels": [57, 57, 57, 57, 57, 59], "rewards": {"balls": 25, "NATIONAL_DEX": 1}, "victory_flag": "beat_hoenn_champion", "mega": 376, "dialogue": {"intro": ["Steven: I knew you'd make it here. Now show me everything you've got!", "Let's see if your bond with your Pokemon outshines my Mega Metagross!"], "player_won": ["Congratulations! You are the new Hoenn Champion!"], "player_lost": ["A fine battle. Come back stronger, my friend."]}, "movesets": {"227": ["TOXIC", "AERIAL-ACE", "SPIKES", "STEEL-WING"], "346": ["GIGA-DRAIN", "ANCIENT-POWER", "INGRAIN", "CONFUSE-RAY"], "344": ["REFLECT", "LIGHT-SCREEN", "ANCIENT-POWER", "EARTHQUAKE"], "348": ["WATER-PULSE", "ANCIENT-POWER", "AERIAL-ACE", "SLASH"], "306": ["THUNDER", "EARTHQUAKE", "SOLAR-BEAM", "DRAGON-CLAW"], "376": ["EARTHQUAKE", "PSYCHIC", "METEOR-MASH", "SHADOW-BALL"]}, "rematch": {"team": [227, 344, 703, 142, 306, 376], "levels": [77, 77, 77, 77, 77, 79]}}, "requirements": {"badges": 8, "fail_text": ["The guards at the Pokemon League stop you.", "Only Trainers with all 8 Hoenn Badges who made it through Victory Road may enter!"], "flags": ["defeated_wally_victory"]}},
+      "gym": {"trainers": [{"name": "Sidney", "class": "ELITE_FOUR", "sprite": "em_tp_36.png", "team": [262, 275, 332, 319, 359], "levels": [50, 50, 50, 50, 52], "rewards": {"balls": 15}, "movesets": {"262": ["CRUNCH", "TAKE-DOWN", "SAND-ATTACK", "ROAR"], "332": ["FEINT-ATTACK", "NEEDLE-ARM", "COTTON-SPORE", "LEECH-SEED"], "275": ["FAKE-OUT", "EXTRASENSORY", "DOUBLE-TEAM", "SWAGGER"], "319": ["SURF", "CRUNCH", "SLASH", "SWAGGER"], "359": ["SWORDS-DANCE", "SLASH", "AERIAL-ACE", "SNATCH"]}, "rematch": {"team": [559, 275, 319, 571, 630, 359], "levels": [70, 70, 70, 70, 70, 72]}}, {"name": "Phoebe", "class": "ELITE_FOUR", "sprite": "em_tp_37.png", "team": [356, 354, 302, 354, 477], "levels": [51, 51, 51, 51, 53], "rewards": {"balls": 15}, "movesets": {"356": ["SHADOW-PUNCH", "CONFUSE-RAY", "CURSE", "PROTECT"], "354": ["SHADOW-BALL", "GRUDGE", "WILL-O-WISP", "FEINT-ATTACK"], "302": ["SHADOW-BALL", "DOUBLE-TEAM", "NIGHT-SHADE", "FEINT-ATTACK"]}, "rematch": {"team": [354, 429, 426, 609, 477, 302], "levels": [71, 71, 71, 71, 71, 73]}}, {"name": "Glacia", "class": "ELITE_FOUR", "sprite": "em_tp_38.png", "team": [362, 478, 362, 478, 365], "levels": [52, 52, 52, 52, 54], "rewards": {"balls": 15}, "movesets": {"362": ["LIGHT-SCREEN", "CRUNCH", "ICY-WIND", "ICE-BEAM"], "365": ["SURF", "BODY-SLAM", "ICE-BEAM", "SHEER-COLD"]}, "rematch": {"team": [460, 614, 478, 584, 365, 362], "levels": [72, 72, 72, 72, 72, 74]}}, {"name": "Drake", "class": "ELITE_FOUR", "sprite": "em_tp_39.png", "team": [334, 330, 230, 330, 373], "levels": [53, 53, 53, 53, 55], "rewards": {"balls": 15}, "movesets": {"334": ["DOUBLE-EDGE", "DRAGONBREATH", "DRAGON-DANCE", "AERIAL-ACE"], "330": ["FLAMETHROWER", "CRUNCH", "DRAGONBREATH", "EARTHQUAKE"], "373": ["FLAMETHROWER", "DRAGON-CLAW", "ROCK-SLIDE", "CRUNCH"]}, "rematch": {"team": [334, 691, 230, 330, 612, 373], "levels": [73, 73, 73, 73, 73, 75]}}], "leader": {"name": "Steven", "class": "CHAMPION", "sprite": "steven.png", "team": [227, 344, 306, 346, 348, 376], "levels": [57, 57, 57, 57, 57, 59], "rewards": {"balls": 25, "NATIONAL_DEX": 1}, "victory_flag": "beat_hoenn_champion", "mega": 376, "dialogue": {"intro": ["Steven: I knew you'd make it here. Now show me everything you've got!", "Let's see if your bond with your Pokemon outshines my Mega Metagross!"], "player_won": ["Congratulations! You are the new Hoenn Champion!"], "player_lost": ["A fine battle. Come back stronger, my friend."]}, "movesets": {"227": ["TOXIC", "AERIAL-ACE", "SPIKES", "STEEL-WING"], "346": ["GIGA-DRAIN", "ANCIENT-POWER", "INGRAIN", "CONFUSE-RAY"], "344": ["REFLECT", "LIGHT-SCREEN", "ANCIENT-POWER", "EARTHQUAKE"], "348": ["WATER-PULSE", "ANCIENT-POWER", "AERIAL-ACE", "SLASH"], "306": ["THUNDER", "EARTHQUAKE", "SOLAR-BEAM", "DRAGON-CLAW"], "376": ["EARTHQUAKE", "PSYCHIC", "METEOR-MASH", "SHADOW-BALL"]}, "rematch": {"team": [227, 344, 703, 142, 306, 376], "levels": [77, 77, 77, 77, 77, 79]}}, "requirements": {"badges": 8, "fail_text": ["The guards at the Pokemon League stop you.", "Only Trainers with all 8 Hoenn Badges who made it through Victory Road may enter!"], "flags": ["defeated_wally_victory"]}},
       "travel_options": [
         { "text": "Victory Road", "target_area": "HOENN_VICTORY_ROAD" },
         { "text": "Route 128", "target_area": "HOENN_ROUTE_128" }
@@ -956,7 +956,7 @@
         { "rematch": {"source": "Emerald", "tiers": [{"team": [262], "levels": [27]}, {"team": [277, 262], "levels": [28, 30]}, {"team": [277, 264, 262], "levels": [31, 29, 33]}, {"team": [277, 264, 262], "levels": [34, 32, 36]}], "needs": {"badges": 5}},
           "name": "Youngster Calvin",
           "class": "YOUNGSTER",
-          "sprite": "youngster.png",
+          "sprite": "em_tp_53.png",
           "team": [261],
           "rewards": { "balls": 2 },
           "dialogue": {
@@ -968,7 +968,7 @@
         {
           "name": "Lass Tiana",
           "class": "LASS",
-          "sprite": "lass.png",
+          "sprite": "em_tp_77.png",
           "team": [263],
           "rewards": { "balls": 2 },
           "dialogue": {
@@ -980,7 +980,7 @@
         {
           "name": "Bug Catcher Rick",
           "class": "BUG_CATCHER",
-          "sprite": "bug_catcher.png",
+          "sprite": "em_tp_73.png",
           "team": [265, 265],
           "rewards": { "balls": 2 },
           "dialogue": {
@@ -1012,14 +1012,14 @@
         {
           "name": "Youngster Allen",
           "class": "YOUNGSTER",
-          "sprite": "youngster.png",
+          "sprite": "em_tp_53.png",
           "team": [261, 276],
           "rewards": { "balls": 2 }
         },
         {
           "name": "Lass Katie",
           "class": "LASS",
-          "sprite": "lass.png",
+          "sprite": "em_tp_77.png",
           "team": [270, 273],
           "rewards": { "balls": 2 }
         }
@@ -1045,21 +1045,21 @@
         {
           "name": "Youngster Timmy",
           "class": "YOUNGSTER",
-          "sprite": "youngster.png",
+          "sprite": "em_tp_53.png",
           "team": [261, 263],
           "rewards": { "balls": 2 }
         },
         {
           "name": "Lass Natalie",
           "class": "LASS",
-          "sprite": "lass.png",
+          "sprite": "em_tp_77.png",
           "team": [263, 276],
           "rewards": { "balls": 2 }
         },
         {
           "name": "Fisherman Andrew",
           "class": "FISHERMAN",
-          "sprite": "fisherman.png",
+          "sprite": "em_tp_55.png",
           "team": [129, 129, 118],
           "rewards": { "balls": 3 }
         }
@@ -1090,7 +1090,7 @@
         { "rematch": {"source": "Emerald", "tiers": [{"team": [264], "levels": [27]}, {"team": [264], "levels": [30]}, {"team": [264], "levels": [33]}, {"team": [264], "levels": [36], "team_moves": [["WITHDRAW", "FURY-SWIPES", "MUD-SPORT", "ODOR-SLEUTH"]]}], "needs": {"badges": 5}},
           "name": "Lady Cindy",
           "class": "LASS",
-          "sprite": "beauty.png",
+          "sprite": "em_tp_21.png",
           "team": [263],
           "rewards": { "balls": 5, "NUGGET": 1 },
           "is_boss_battle": true
@@ -1098,7 +1098,7 @@
         { "rematch": {"source": "Emerald", "tiers": [{"team": [264], "levels": [27]}, {"team": [264], "levels": [30]}, {"team": [264], "levels": [33]}, {"team": [264], "levels": [36], "team_moves": [["WITHDRAW", "FURY-SWIPES", "MUD-SPORT", "ODOR-SLEUTH"]]}], "needs": {"badges": 5}},
           "name": "Rich Boy Winston",
           "class": "YOUNGSTER",
-          "sprite": "richboy.png",
+          "sprite": "em_tp_23.png",
           "team": [263],
           "rewards": { "balls": 5, "NUGGET": 1 },
           "is_boss_battle": true
@@ -1106,7 +1106,7 @@
         {
           "name": "Fisherman Ivan",
           "class": "FISHERMAN",
-          "sprite": "fisherman.png",
+          "sprite": "em_tp_55.png",
           "team": [118, 118, 129],
           "rewards": { "balls": 3 }
         }
@@ -1136,7 +1136,7 @@
         {
           "name": "Swimmer Luis",
           "class": "SWIMMER",
-          "sprite": "swimmer_m.png",
+          "sprite": "em_tp_7.png",
           "team": [318],
           "levels": [27],
           "rewards": { "balls": 2 }
@@ -1144,22 +1144,22 @@
         {
           "name": "Swimmer Dominik",
           "class": "SWIMMER",
-          "sprite": "swimmer_m.png",
+          "sprite": "em_tp_7.png",
           "team": [318],
           "rewards": { "balls": 2 }
         },
         {
           "name": "Swimmer Beverly",
           "class": "SWIMMER",
-          "sprite": "swimmer_f.png",
+          "sprite": "em_tp_66.png",
           "team": [320, 184],
           "levels": [25, 25],
           "rewards": { "balls": 2 }
         },
-        {"name": "Ruin Maniac Foster", "class": "RUIN_MANIAC", "sprite": "ruinmaniac.png", "team": [299], "levels": [27], "rewards": {"balls": 3}},
-        {"name": "Swimmer Dawn", "class": "SWIMMER", "sprite": "swimmer_f.png", "team": [184], "levels": [27], "rewards": {"balls": 3}},
-        {"name": "Triathlete Vin", "class": "TRIATHLETE", "sprite": "triathlete_m.png", "team": [320, 363], "levels": [25, 25], "rewards": {"balls": 3}},
-        {"name": "Swimmer Austin", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [278, 279], "levels": [24, 26], "rewards": {"balls": 3}}
+        {"name": "Ruin Maniac Foster", "class": "RUIN_MANIAC", "sprite": "em_tp_16.png", "team": [299], "levels": [27], "rewards": {"balls": 3}},
+        {"name": "Swimmer Dawn", "class": "SWIMMER", "sprite": "em_tp_66.png", "team": [184], "levels": [27], "rewards": {"balls": 3}},
+        {"name": "Triathlete Vin", "class": "TRIATHLETE", "sprite": "em_tp_58.png", "team": [320, 363], "levels": [25, 25], "rewards": {"balls": 3}},
+        {"name": "Swimmer Austin", "class": "SWIMMER", "sprite": "em_tp_7.png", "team": [278, 279], "levels": [24, 26], "rewards": {"balls": 3}}
       ],
       "route_menu": [
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle"},
@@ -1181,7 +1181,7 @@
         { "rematch": {"source": "Emerald", "tiers": [{"team": [72, 130, 130], "levels": [24, 27, 27]}, {"team": [130, 318, 72, 130], "levels": [29, 26, 26, 29]}, {"team": [130, 318, 73, 130], "levels": [31, 30, 30, 31]}, {"team": [130, 319, 130, 73], "levels": [33, 33, 33, 35]}], "needs": {"badges": 5}},
           "name": "Fisherman Elliot",
           "class": "FISHERMAN",
-          "sprite": "fisherman.png",
+          "sprite": "em_tp_55.png",
           "team": [129, 72],
           "levels": [10, 12],
           "rewards": { "balls": 3 }
@@ -1189,7 +1189,7 @@
         {
           "name": "Swimmer Nicole",
           "class": "SWIMMER",
-          "sprite": "swimmer_f.png",
+          "sprite": "em_tp_66.png",
           "team": [118],
           "levels": [27],
           "rewards": { "balls": 2 },
@@ -1203,8 +1203,8 @@
           "rewards": { "balls": 3 },
           "villain": "grunt"
         },
-        {"name": "Swimmer Douglas", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [130], "levels": [27], "rewards": {"balls": 3}},
-        {"name": "Triathlete Caleb", "class": "TRIATHLETE", "sprite": "triathlete_m.png", "team": [320], "levels": [27], "rewards": {"balls": 3}}
+        {"name": "Swimmer Douglas", "class": "SWIMMER", "sprite": "em_tp_7.png", "team": [130], "levels": [27], "rewards": {"balls": 3}},
+        {"name": "Triathlete Caleb", "class": "TRIATHLETE", "sprite": "em_tp_58.png", "team": [320], "levels": [27], "rewards": {"balls": 3}}
       ],
       "route_menu": [
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers" },
@@ -1231,7 +1231,7 @@
         {
           "name": "Swimmer Denise",
           "class": "SWIMMER",
-          "sprite": "swimmer_f.png",
+          "sprite": "em_tp_66.png",
           "team": [118, 320],
           "levels": [25, 25],
           "rewards": { "balls": 2 }
@@ -1239,7 +1239,7 @@
         { "rematch": {"source": "Emerald", "tiers": [{"team": [319], "levels": [30]}, {"team": [319], "levels": [33]}, {"team": [120, 319], "levels": [34, 36]}, {"team": [121, 319], "levels": [37, 39]}], "needs": {"badges": 5}},
           "name": "Swimmer Tony",
           "class": "SWIMMER",
-          "sprite": "swimmer_m.png",
+          "sprite": "em_tp_7.png",
           "team": [72],
           "levels": [27],
           "rewards": { "balls": 2 }
@@ -1247,15 +1247,15 @@
         {
           "name": "Swimmer Darrin",
           "class": "SWIMMER",
-          "sprite": "swimmer_m.png",
+          "sprite": "em_tp_7.png",
           "team": [339],
           "levels": [27],
           "rewards": { "balls": 3 }
         },
-        {"name": "Swimmer Beth", "class": "SWIMMER", "sprite": "swimmer_f.png", "team": [279], "levels": [27], "rewards": {"balls": 3}},
-        {"name": "Sis & Bro Lisa & Ray", "class": "SWIMMER", "sprite": "swimmer_f.png", "team": [118, 341], "levels": [27, 26], "rewards": {"balls": 3}, "battle_options": {"double": true}},
-        {"name": "Scuba Diver Keaton", "class": "PKMN_TRAINER", "sprite": "acetrainer_m.png", "team": [320, 321], "levels": [38, 40], "rewards": {"balls": 3}},
-        {"name": "Free Diver Hollie", "class": "PKMN_TRAINER", "sprite": "acetrainer_m.png", "team": [171], "levels": [41], "rewards": {"balls": 3}}
+        {"name": "Swimmer Beth", "class": "SWIMMER", "sprite": "em_tp_66.png", "team": [279], "levels": [27], "rewards": {"balls": 3}},
+        {"name": "Sis & Bro Lisa & Ray", "class": "SWIMMER", "sprite": "em_tp_80.png", "team": [118, 341], "levels": [27, 26], "rewards": {"balls": 3}, "battle_options": {"double": true}},
+        {"name": "Scuba Diver Keaton", "class": "PKMN_TRAINER", "sprite": "em_tp_3.png", "team": [320, 321], "levels": [38, 40], "rewards": {"balls": 3}},
+        {"name": "Free Diver Hollie", "class": "PKMN_TRAINER", "sprite": "em_tp_3.png", "team": [171], "levels": [41], "rewards": {"balls": 3}}
       ],
       "route_menu": [
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle" },
@@ -1276,7 +1276,7 @@
         {
           "name": "Swimmer Matthew",
           "class": "SWIMMER",
-          "sprite": "swimmer_m.png",
+          "sprite": "em_tp_7.png",
           "team": [271],
           "levels": [27],
           "rewards": { "balls": 2 }
@@ -1284,15 +1284,15 @@
         {
           "name": "Swimmer Jerome",
           "class": "SWIMMER",
-          "sprite": "swimmer_m.png",
+          "sprite": "em_tp_7.png",
           "team": [72, 279],
           "levels": [25, 25],
           "rewards": { "balls": 3 }
         },
-        {"name": "Swimmer Missy", "class": "SWIMMER", "sprite": "swimmer_f.png", "team": [278, 339, 320], "levels": [24, 24, 24], "rewards": {"balls": 3}},
-        {"name": "Swimmer Tara", "class": "SWIMMER", "sprite": "swimmer_f.png", "team": [320], "levels": [27], "rewards": {"balls": 3}},
-        {"name": "Ace Trainer Constance", "class": "COOLTRAINER", "sprite": "acetrainer_f.png", "team": [336, 277], "levels": [26, 28], "rewards": {"balls": 3}},
-        {"name": "Ace Trainer Neville", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "team": [335, 286], "levels": [26, 28], "rewards": {"balls": 3}}
+        {"name": "Swimmer Missy", "class": "SWIMMER", "sprite": "em_tp_66.png", "team": [278, 339, 320], "levels": [24, 24, 24], "rewards": {"balls": 3}},
+        {"name": "Swimmer Tara", "class": "SWIMMER", "sprite": "em_tp_66.png", "team": [320], "levels": [27], "rewards": {"balls": 3}},
+        {"name": "Ace Trainer Constance", "class": "COOLTRAINER", "sprite": "em_tp_20.png", "team": [336, 277], "levels": [26, 28], "rewards": {"balls": 3}},
+        {"name": "Ace Trainer Neville", "class": "COOLTRAINER", "sprite": "em_tp_3.png", "team": [335, 286], "levels": [26, 28], "rewards": {"balls": 3}}
       ],
       "route_menu": [
         {"text": "STAR PIECE", "action": "EVENT", "found": true, "flag_condition": "not got_star_piece_108", "event": {"lines": ["A Star Piece, washed up on the rocks!"], "gift_item": {"STAR_PIECE": 1}, "flag": "got_star_piece_108"}},
@@ -1315,7 +1315,7 @@
         {
           "name": "Sailor Huey",
           "class": "SAILOR",
-          "sprite": "sailor.png",
+          "sprite": "em_tp_68.png",
           "team": [66],
           "levels": [15],
           "rewards": { "balls": 3 }
@@ -1323,7 +1323,7 @@
         { "rematch": {"source": "Emerald", "tiers": [{"team": [264], "levels": [27], "team_moves": [["SAND-ATTACK", "PIN-MISSILE", "TAIL-WHIP", "SURF"]]}, {"team": [264], "levels": [30], "team_moves": [["SAND-ATTACK", "PIN-MISSILE", "TAIL-WHIP", "SURF"]]}, {"team": [264], "levels": [33], "team_moves": [["SAND-ATTACK", "PIN-MISSILE", "TAIL-WHIP", "SURF"]]}, {"team": [264], "levels": [36], "team_moves": [["SAND-ATTACK", "PIN-MISSILE", "TAIL-WHIP", "SURF"]]}], "needs": {"badges": 5}},
           "name": "Tuber Ricky",
           "class": "YOUNGSTER",
-          "sprite": "youngster.png",
+          "sprite": "em_tp_19.png",
           "team": [263],
           "levels": [14],
           "rewards": { "balls": 2 }
@@ -1331,7 +1331,7 @@
         { "rematch": {"source": "Emerald", "tiers": [{"team": [183, 183], "levels": [26, 26]}, {"team": [183, 183], "levels": [29, 29]}, {"team": [183, 183], "levels": [32, 32]}, {"team": [184, 184], "levels": [35, 35]}], "needs": {"badges": 5}},
           "name": "Tuber Lola",
           "class": "LASS",
-          "sprite": "lass.png",
+          "sprite": "em_tp_18.png",
           "team": [298],
           "levels": [14],
           "rewards": { "balls": 2 }
@@ -1359,8 +1359,8 @@
       "min_rounds": 2,
       "trainer_pool": [
         { "rematch": {"source": "Emerald", "tiers": [{"team": [271, 274], "levels": [26, 26]}, {"team": [271, 274], "levels": [29, 29]}, {"team": [271, 274], "levels": [32, 32]}, {"team": [272, 275], "levels": [35, 35]}], "needs": {"badges": 5}},"name": "Biker Edwin", "class": "BIKER", "sprite": "biker.png", "team": [309, 310], "rewards": {"balls": 3}},
-        {"name": "Triathlete Alyssa", "class": "TRIATHLETE", "sprite": "triathlete_f.png", "team": [118], "rewards": {"balls": 3}},
-        {"name": "Triathlete Dylan", "class": "TRIATHLETE", "sprite": "triathlete_m.png", "team": [118], "rewards": {"balls": 3}},
+        {"name": "Triathlete Alyssa", "class": "TRIATHLETE", "sprite": "em_tp_57.png", "team": [118], "rewards": {"balls": 3}},
+        {"name": "Triathlete Dylan", "class": "TRIATHLETE", "sprite": "em_tp_58.png", "team": [118], "rewards": {"balls": 3}},
         {"name": "{rival_name}", "class": "RIVAL", "sprite": "{rival_character}", "is_boss_battle": true, "team": [320, 285, 256], "rewards": {"balls": 10}, "victory_flag": "defeated_rival_110", "dialogue": {"intro": ["{rival_name}: {player_name}! Let's see how much you've grown!"], "player_won": ["{rival_name}: You beat me again! Mauville City is just up ahead."], "player_lost": ["{rival_name}: Ha! Better luck next time!"]}, "movesets": {"320": ["WATER-GUN", "ROLLOUT", "WHIRLPOOL", "ASTONISH"], "285": ["STUN-SPORE", "LEECH-SEED", "MEGA-DRAIN", "HEADBUTT"], "256": ["SAND-ATTACK", "PECK", "DOUBLE-KICK", "FLAME-CHARGE"], "218": ["EMBER", "ROCK-THROW", "HARDEN", "INCINERATE"], "259": ["MUD-SLAP", "FORESIGHT", "MUD-BOMB", "BIDE"], "253": ["QUICK-ATTACK", "MEGA-DRAIN", "FURY-CUTTER", "PURSUIT"]}, "team_choice": {"252": [320, 285, 256], "255": [285, 218, 259], "258": [218, 320, 253]}, "levels": [18, 18, 20]}
       ],
       "route_menu": [{"text": "MANECTITE", "action": "EVENT", "flag_condition": "not got_manectite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the MANECTITE!"], "gift_item": {"MANECTITE": 1}, "flag": "got_manectite"}},
@@ -1396,9 +1396,9 @@
       "wild_pool_percentages": "NO_WILD_INDOORS_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {"name": "Lass Sally", "class": "LASS", "sprite": "lass.png", "team": [316], "levels": [16], "rewards": {"balls": 3}},
-        {"name": "Battle Girl Cora", "class": "COOLTRAINER", "sprite": "acetrainer_f.png", "team": [307], "levels": [17], "rewards": {"balls": 3}},
-        {"name": "Youngster Eddie", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [290, 74], "levels": [14, 14], "rewards": {"balls": 3}}
+        {"name": "Lass Sally", "class": "LASS", "sprite": "em_tp_77.png", "team": [316], "levels": [16], "rewards": {"balls": 3}},
+        {"name": "Battle Girl Cora", "class": "COOLTRAINER", "sprite": "em_tp_64.png", "team": [307], "levels": [17], "rewards": {"balls": 3}},
+        {"name": "Youngster Eddie", "class": "YOUNGSTER", "sprite": "em_tp_53.png", "team": [290, 74], "levels": [14, 14], "rewards": {"balls": 3}}
       ],
       "route_menu": [
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers"},
@@ -1418,10 +1418,10 @@
       "wild_pool_percentages": "NO_WILD_INDOORS_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {"name": "Black Belt Yuji", "class": "BLACKBELT", "sprite": "blackbelt.png", "team": [296, 66], "levels": [16, 18], "rewards": {"balls": 3}},
+        {"name": "Black Belt Yuji", "class": "BLACKBELT", "sprite": "em_tp_11.png", "team": [296, 66], "levels": [16, 18], "rewards": {"balls": 3}},
         {"name": "Schoolkid Georgie", "class": "SCHOOL_KID", "sprite": "school_kid_f.png", "team": [285, 267], "levels": [16, 16], "rewards": {"balls": 3}},
-        {"name": "Pokémon Ranger Sebastian", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "team": [331, 304], "levels": [16, 18], "rewards": {"balls": 3}},
-        {"name": "Pokémon Ranger Sophia", "class": "COOLTRAINER", "sprite": "acetrainer_f.png", "team": [333, 315], "levels": [17, 17], "rewards": {"balls": 3}}
+        {"name": "Pokémon Ranger Sebastian", "class": "COOLTRAINER", "sprite": "em_tp_74.png", "team": [331, 304], "levels": [16, 18], "rewards": {"balls": 3}},
+        {"name": "Pokémon Ranger Sophia", "class": "COOLTRAINER", "sprite": "em_tp_75.png", "team": [333, 315], "levels": [17, 17], "rewards": {"balls": 3}}
       ],
       "route_menu": [
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers"},
@@ -1441,9 +1441,9 @@
       "wild_pool_percentages": "NO_WILD_INDOORS_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {"name": "Lass Robin", "class": "LASS", "sprite": "lass.png", "team": [43, 118], "levels": [16, 18], "rewards": {"balls": 3}},
-        {"name": "Ace Duo Pike & Shiel", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "team": [318, 322], "levels": [21, 21], "rewards": {"balls": 3}, "battle_options": {"double": true}},
-        {"name": "Schoolkid Ted", "class": "SCHOOL_KID", "sprite": "school_kid_m.png", "team": [280], "levels": [19], "rewards": {"balls": 3}}
+        {"name": "Lass Robin", "class": "LASS", "sprite": "em_tp_77.png", "team": [43, 118], "levels": [16, 18], "rewards": {"balls": 3}},
+        {"name": "Ace Duo Pike & Shiel", "class": "COOLTRAINER", "sprite": "em_tp_3.png", "team": [318, 322], "levels": [21, 21], "rewards": {"balls": 3}, "battle_options": {"double": true}},
+        {"name": "Schoolkid Ted", "class": "SCHOOL_KID", "sprite": "em_tp_48.png", "team": [280], "levels": [19], "rewards": {"balls": 3}}
       ],
       "route_menu": [
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers"},
@@ -1518,14 +1518,14 @@
         {
           "name": "Picnicker Irene",
           "class": "PICNIKER",
-          "sprite": "picknicker.png",
+          "sprite": "em_tp_30.png",
           "team": [333, 333],
           "rewards": { "balls": 2 }
         },
         { "rematch": {"source": "Emerald", "tiers": [{"team": [309, 320, 296], "levels": [26, 26, 26]}, {"team": [310, 320, 296], "levels": [29, 29, 29]}, {"team": [310, 320, 296], "levels": [32, 32, 32]}, {"team": [310, 320, 297], "levels": [35, 35, 35]}], "needs": {"badges": 5}},
           "name": "Cooltrainer Wilton",
           "class": "COOLTRAINER",
-          "sprite": "acetrainer_m.png",
+          "sprite": "em_tp_3.png",
           "team": [309, 310, 311],
           "rewards": { "balls": 5 },
           "is_boss_battle": true
@@ -1556,21 +1556,21 @@
         { "rematch": {"source": "Emerald", "tiers": [{"team": [74, 74, 74, 75], "levels": [24, 24, 24, 24]}, {"team": [74, 74, 75, 75], "levels": [27, 27, 27, 27]}, {"team": [74, 75, 75, 75], "levels": [30, 30, 30, 30]}, {"team": [75, 75, 75, 76], "levels": [33, 33, 33, 33]}], "needs": {"badges": 5}},
           "name": "Hiker Trent",
           "class": "HIKER",
-          "sprite": "hiker.png",
+          "sprite": "em_tp_0.png",
           "team": [74, 74, 322],
           "rewards": { "balls": 2 }
         },
         {
           "name": "Team Magma Grunt",
           "class": "TEAM_MAGMA",
-          "sprite": "magma_grunt.png",
+          "sprite": "em_tp_1.png",
           "team": [261, 322],
           "rewards": { "balls": 3 }
         },
         {
           "name": "Team Aqua Grunt",
           "class": "TEAM_AQUA",
-          "sprite": "aqua_grunt.png",
+          "sprite": "em_tp_1.png",
           "team": [261, 318],
           "rewards": { "balls": 3 }
         }
@@ -1600,28 +1600,28 @@
         {
           "name": "Ninja Boy Takashi",
           "class": "NINJA_BOY",
-          "sprite": "ninja_boy.png",
+          "sprite": "em_tp_63.png",
           "team": [327, 327],
           "rewards": { "balls": 2 }
         },
         { "rematch": {"source": "Emerald", "tiers": [{"team": [322], "levels": [29], "team_moves": [["EMBER", "TACKLE", "MAGNITUDE", "SUNNY-DAY"]]}, {"team": [322], "levels": [32], "team_moves": [["EMBER", "TAKE-DOWN", "MAGNITUDE", "SUNNY-DAY"]]}, {"team": [315, 322], "levels": [34, 34], "team_moves": [["LEECH-SEED", "MEGA-DRAIN", "GRASS-WHISTLE", "SUNNY-DAY"], ["FLAMETHROWER", "TAKE-DOWN", "MAGNITUDE", "SUNNY-DAY"]]}, {"team": [315, 323], "levels": [37, 37], "team_moves": [["LEECH-SEED", "GIGA-DRAIN", "SOLAR-BEAM", "SUNNY-DAY"], ["FLAMETHROWER", "TAKE-DOWN", "EARTHQUAKE", "SUNNY-DAY"]]}], "needs": {"badges": 5}},
           "name": "Parasol Lady Madeline",
           "class": "LASS",
-          "sprite": "beauty.png",
+          "sprite": "em_tp_65.png",
           "team": [322, 323],
           "rewards": { "balls": 2 }
         },
         {
           "name": "Youngster Neal",
           "class": "YOUNGSTER",
-          "sprite": "youngster.png",
+          "sprite": "em_tp_53.png",
           "team": [328, 328],
           "rewards": { "balls": 2 }
         },
         {
           "name": "Ninja Boy Lung",
           "class": "NINJA_BOY",
-          "sprite": "ninja_boy.png",
+          "sprite": "em_tp_63.png",
           "team": [110, 110],
           "rewards": { "balls": 3 }
         }
@@ -1648,14 +1648,14 @@
         {
           "name": "Hiker Lucas",
           "class": "HIKER",
-          "sprite": "hiker.png",
+          "sprite": "em_tp_0.png",
           "team": [74, 75],
           "rewards": { "balls": 2 }
         },
         { "rematch": {"source": "Emerald", "tiers": [{"team": [305], "levels": [27]}, {"team": [305, 111], "levels": [29, 29]}, {"team": [305, 111], "levels": [32, 32]}, {"team": [306, 112], "levels": [35, 35]}], "needs": {"badges": 5}},
           "name": "Pokemaniac Steve",
           "class": "POKEMANIAC",
-          "sprite": "supernerd.png",
+          "sprite": "em_tp_25.png",
           "team": [304, 305],
           "rewards": { "balls": 5 },
           "is_boss_battle": true
@@ -1688,21 +1688,21 @@
         { "rematch": {"source": "Emerald", "tiers": [{"team": [67], "levels": [27]}, {"team": [66, 67], "levels": [29, 29]}, {"team": [66, 67, 67], "levels": [31, 31, 31]}, {"team": [66, 67, 67, 68], "levels": [33, 33, 33, 33]}], "needs": {"badges": 5}},
           "name": "Black Belt Nob",
           "class": "BLACKBELT",
-          "sprite": "blackbelt.png",
+          "sprite": "em_tp_11.png",
           "team": [66, 66],
           "rewards": { "balls": 3 }
         },
         {
           "name": "Battle Girl Cyndy",
           "class": "COOLTRAINER",
-          "sprite": "acetrainer_f.png",
+          "sprite": "em_tp_64.png",
           "team": [296, 296, 297],
           "rewards": { "balls": 3 }
         },
         {
           "name": "Collector Hector",
           "class": "POKEMANIAC",
-          "sprite": "supernerd.png",
+          "sprite": "em_tp_5.png",
           "team": [337, 338],
           "rewards": { "balls": 5 }
         }
@@ -1728,28 +1728,28 @@
         {
           "name": "Bug Catcher Jose",
           "class": "BUG_CATCHER",
-          "sprite": "bug_catcher.png",
+          "sprite": "em_tp_73.png",
           "team": [265, 265, 266],
           "rewards": { "balls": 2 }
         },
         {
           "name": "Lass Janice",
           "class": "LASS",
-          "sprite": "lass.png",
+          "sprite": "em_tp_77.png",
           "team": [285, 285],
           "rewards": { "balls": 2 }
         },
         { "rematch": {"source": "Emerald", "tiers": [{"team": [280, 307], "levels": [26, 26]}, {"team": [281, 307], "levels": [29, 29]}, {"team": [281, 308], "levels": [32, 32]}, {"team": [281, 354, 308], "levels": [34, 34, 34]}], "needs": {"badges": 5}},
           "name": "School Kid Jerry",
           "class": "SCHOOL_KID",
-          "sprite": "school_kid_m.png",
+          "sprite": "em_tp_48.png",
           "team": [290, 291],
           "rewards": { "balls": 3 }
         },
         {
           "name": "Hiker Clark",
           "class": "HIKER",
-          "sprite": "hiker.png",
+          "sprite": "em_tp_0.png",
           "team": [74, 74, 299],
           "rewards": { "balls": 2 }
         }
@@ -1775,28 +1775,28 @@
         {
           "name": "Triathlete Dylan",
           "class": "TRIATHLETE",
-          "sprite": "triathlete_m.png",
+          "sprite": "em_tp_58.png",
           "team": [118],
           "rewards": { "balls": 2 }
         },
         { "rematch": {"source": "Emerald", "tiers": [{"team": [263, 296], "levels": [28, 30], "team_moves": [["GROWL", "TAIL-WHIP", "HEADBUTT", "ODOR-SLEUTH"], ["TACKLE", "FOCUS-ENERGY", "ARM-THRUST"]]}, {"team": [263, 296], "levels": [31, 33], "team_moves": [["GROWL", "TAIL-WHIP", "HEADBUTT", "ODOR-SLEUTH"], ["TACKLE", "FOCUS-ENERGY", "ARM-THRUST"]]}, {"team": [264, 296], "levels": [34, 36], "team_moves": [["GROWL", "TAIL-WHIP", "HEADBUTT", "ODOR-SLEUTH"], ["TACKLE", "FOCUS-ENERGY", "ARM-THRUST"]]}, {"team": [264, 297], "levels": [36, 38], "team_moves": [["GROWL", "TAIL-WHIP", "HEADBUTT", "ODOR-SLEUTH"], ["TACKLE", "FOCUS-ENERGY", "ARM-THRUST"]]}], "needs": {"badges": 5}},
           "battle_options": {"double": true}, "name": "Sr. and Jr. Anna & Meg",
           "class": "TWINS",
-          "sprite": "twins.png",
+          "sprite": "em_tp_50.png",
           "team": [315, 315],
           "rewards": { "balls": 5 }
         },
         { "rematch": {"source": "Emerald", "tiers": [{"team": [294, 264, 304, 262, 277, 296], "levels": [22, 22, 22, 22, 22, 22]}, {"team": [294, 264, 304, 262, 277, 297], "levels": [25, 25, 25, 25, 25, 25]}, {"team": [294, 264, 304, 262, 277, 297], "levels": [28, 28, 28, 28, 28, 28]}, {"team": [294, 264, 305, 262, 277, 297], "levels": [31, 31, 31, 31, 31, 31]}], "needs": {"badges": 5}},
           "name": "Pokémon Breeder Isaac",
           "class": "COOLTRAINER",
-          "sprite": "acetrainer_m.png",
+          "sprite": "em_tp_32.png",
           "team": [263, 278, 285],
           "rewards": { "balls": 4 }
         },
         { "rematch": {"source": "Emerald", "tiers": [{"team": [84], "levels": [28]}, {"team": [84], "levels": [31]}, {"team": [85], "levels": [34]}, {"team": [85], "levels": [37]}], "needs": {"badges": 5}},
           "name": "Triathlete Maria",
           "class": "TRIATHLETE",
-          "sprite": "triathlete_f.png",
+          "sprite": "em_tp_59.png",
           "team": [118],
           "rewards": { "balls": 2 }
         }
@@ -1823,21 +1823,21 @@
         {
           "name": "Fisherman Barny",
           "class": "FISHERMAN",
-          "sprite": "fisherman.png",
+          "sprite": "em_tp_55.png",
           "team": [118, 118, 129],
           "rewards": { "balls": 3 }
         },
         {
           "name": "Bird Keeper Perry",
           "class": "BIRD_KEEPER",
-          "sprite": "bird_keeper.png",
+          "sprite": "em_tp_4.png",
           "team": [17, 22],
           "rewards": { "balls": 3 }
         },
         { "rematch": {"source": "Emerald", "tiers": [{"team": [81, 293, 81], "levels": [25, 25, 25]}, {"team": [81, 294, 81], "levels": [28, 28, 28]}, {"team": [82, 294, 82], "levels": [31, 31, 31]}, {"team": [82, 295, 82], "levels": [34, 34, 34]}], "needs": {"badges": 5}},
           "name": "Guitarist Dalton",
           "class": "GUITARIST",
-          "sprite": "guitarist.png",
+          "sprite": "em_tp_27.png",
           "team": [309, 310],
           "rewards": { "balls": 4 }
         }
@@ -1862,28 +1862,28 @@
         {
           "name": "Ninja Boy Takashi",
           "class": "NINJA_BOY",
-          "sprite": "ninja_boy.png",
+          "sprite": "em_tp_63.png",
           "team": [352, 290, 41],
           "rewards": { "balls": 3 }
         },
         {
           "name": "Bird Keeper Phil",
           "class": "BIRD_KEEPER",
-          "sprite": "bird_keeper.png",
+          "sprite": "em_tp_4.png",
           "team": [164, 277],
           "rewards": { "balls": 3 }
         },
         { "rematch": {"source": "Emerald", "tiers": [{"team": [44, 315], "levels": [30, 30]}, {"team": [44, 315], "levels": [33, 33]}, {"team": [44, 315], "levels": [36, 36]}, {"team": [182, 315], "levels": [39, 39]}], "needs": {"badges": 5}},
           "name": "Pokémon Ranger Catherine",
           "class": "COOLTRAINER",
-          "sprite": "acetrainer_f.png",
+          "sprite": "em_tp_75.png",
           "team": [285, 286, 315],
           "rewards": { "balls": 5 }
         },
         {
           "name": "Ninja Boy Hideo",
           "class": "NINJA_BOY",
-          "sprite": "ninja_boy.png",
+          "sprite": "em_tp_63.png",
           "team": [109, 110],
           "rewards": { "balls": 3 }
         }
@@ -1913,21 +1913,21 @@
         { "rematch": {"source": "Emerald", "tiers": [{"team": [177, 333], "levels": [32, 32]}, {"team": [177, 334], "levels": [35, 35]}, {"team": [177, 334], "levels": [38, 38]}, {"team": [334, 178], "levels": [41, 41]}], "needs": {"badges": 5}},
           "name": "Bird Keeper Robert",
           "class": "BIRD_KEEPER",
-          "sprite": "bird_keeper.png",
+          "sprite": "em_tp_4.png",
           "team": [333, 333, 277],
           "rewards": { "balls": 3 }
         },
         {
           "name": "Parasol Lady Angelica",
           "class": "LASS",
-          "sprite": "beauty.png",
+          "sprite": "em_tp_65.png",
           "team": [118, 119],
           "rewards": { "balls": 2 }
         },
         {
           "name": "Cooltrainer Jennifer",
           "class": "COOLTRAINER",
-          "sprite": "acetrainer_f.png",
+          "sprite": "em_tp_20.png",
           "team": [307, 308, 315],
           "rewards": { "balls": 5 }
         },
@@ -1965,21 +1965,21 @@
         {
           "name": "Hex Maniac Tammy",
           "class": "PSYCHIC",
-          "sprite": "channeler.png",
+          "sprite": "em_tp_14.png",
           "team": [353, 355],
           "rewards": { "balls": 5 }
         },
         { "rematch": {"source": "Emerald", "tiers": [{"team": [352, 336], "levels": [35, 35], "team_moves": [["BIND", "LICK", "FURY-SWIPES"], ["POISON-TAIL", "SCREECH", "GLARE", "CRUNCH"]]}, {"team": [352, 336], "levels": [38, 38], "team_moves": [["BIND", "LICK", "FURY-SWIPES"], ["POISON-TAIL", "SCREECH", "GLARE", "CRUNCH"]]}, {"team": [352, 336], "levels": [41, 41], "team_moves": [["BIND", "LICK", "FURY-SWIPES"], ["POISON-TAIL", "SCREECH", "GLARE", "CRUNCH"]]}, {"team": [352, 336], "levels": [44, 44], "team_moves": [["BIND", "LICK", "FURY-SWIPES"], ["POISON-TAIL", "SCREECH", "GLARE", "CRUNCH"]]}], "needs": {"badges": 5}},
           "name": "Beauty Jessica",
           "class": "BEAUTY",
-          "sprite": "beauty.png",
+          "sprite": "em_tp_22.png",
           "team": [352, 352],
           "rewards": { "balls": 3 }
         },
         { "rematch": {"source": "Emerald", "tiers": [{"team": [310], "levels": [34]}, {"team": [264, 310], "levels": [36, 36], "team_moves": [["HEADBUTT", "SAND-ATTACK", "ODOR-SLEUTH", "FURY-SWIPES"], ["QUICK-ATTACK", "SPARK", "ODOR-SLEUTH", "ROAR"]]}, {"team": [264, 310], "levels": [39, 39], "team_moves": [["HEADBUTT", "SAND-ATTACK", "ODOR-SLEUTH", "FURY-SWIPES"], ["QUICK-ATTACK", "SPARK", "ODOR-SLEUTH"]]}, {"team": [264, 55, 310], "levels": [41, 41, 41], "team_moves": [["HEADBUTT", "SAND-ATTACK", "ODOR-SLEUTH", "FURY-SWIPES"], ["FURY-SWIPES", "DISABLE", "CONFUSION", "PSYCH-UP"], ["QUICK-ATTACK", "SPARK", "ODOR-SLEUTH", "ROAR"]]}], "needs": {"badges": 5}},
           "name": "Gentleman Walter",
           "class": "GENTLEMAN",
-          "sprite": "gentleman.png",
+          "sprite": "em_tp_35.png",
           "team": [310, 310],
           "rewards": { "balls": 5 }
         }
@@ -2022,7 +2022,7 @@
         { "rematch": {"source": "Emerald", "tiers": [{"team": [64, 338], "levels": [33, 33]}, {"team": [64, 338], "levels": [38, 38]}, {"team": [64, 338], "levels": [41, 41]}, {"team": [338, 65], "levels": [45, 45]}], "needs": {"badges": 5}},
           "name": "Psychic Cameron",
           "class": "PSYCHIC",
-          "sprite": "supernerd.png",
+          "sprite": "em_tp_33.png",
           "team": [64, 338],
           "levels": [34, 36],
           "rewards": { "balls": 4 }
@@ -2030,7 +2030,7 @@
         {
           "name": "Cooltrainer Wendy",
           "class": "COOLTRAINER",
-          "sprite": "acetrainer_f.png",
+          "sprite": "em_tp_20.png",
           "team": [254, 257, 260],
           "rewards": { "balls": 10, "RARE_CANDY": 1 },
           "is_boss_battle": true
@@ -2062,21 +2062,21 @@
         {
           "name": "Swimmer Grace",
           "class": "SWIMMER",
-          "sprite": "swimmer_f.png",
+          "sprite": "em_tp_66.png",
           "team": [318],
           "rewards": { "balls": 2 }
         },
         {
           "name": "Swimmer Roland",
           "class": "SWIMMER",
-          "sprite": "swimmer_m.png",
+          "sprite": "em_tp_7.png",
           "team": [319],
           "rewards": { "balls": 2 }
         },
         { "rematch": {"source": "Emerald", "tiers": [{"team": [320], "levels": [38]}, {"team": [320], "levels": [41]}, {"team": [120, 320], "levels": [43, 43]}, {"team": [370, 320, 121], "levels": [45, 45, 45]}], "needs": {"badges": 5}},
           "name": "Swimmer Jenny",
           "class": "SWIMMER",
-          "sprite": "swimmer_f.png",
+          "sprite": "em_tp_66.png",
           "team": [118, 120, 170],
           "rewards": { "balls": 3 }
         }
@@ -2102,14 +2102,14 @@
         { "rematch": {"source": "Emerald", "tiers": [{"team": [278, 72, 67], "levels": [36, 36, 36]}, {"team": [279, 72, 67], "levels": [39, 39, 39]}, {"team": [279, 72, 67], "levels": [42, 42, 42]}, {"team": [279, 67, 73], "levels": [45, 45, 45]}], "needs": {"badges": 5}},
           "name": "Swimmer Ernest",
           "class": "SWIMMER",
-          "sprite": "swimmer_m.png",
+          "sprite": "em_tp_7.png",
           "team": [121],
           "rewards": { "balls": 2 }
         },
         {
           "name": "Swimmer Nance",
           "class": "SWIMMER",
-          "sprite": "swimmer_f.png",
+          "sprite": "em_tp_66.png",
           "team": [121, 319],
           "rewards": { "balls": 2 }
         }
@@ -2133,21 +2133,21 @@
         {
           "name": "Swimmer Barry",
           "class": "SWIMMER",
-          "sprite": "swimmer_m.png",
+          "sprite": "em_tp_7.png",
           "team": [130, 319],
           "rewards": { "balls": 3 }
         },
         {
           "name": "Swimmer Nikki",
           "class": "SWIMMER",
-          "sprite": "swimmer_f.png",
+          "sprite": "em_tp_66.png",
           "team": [119, 170],
           "rewards": { "balls": 2 }
         },
         { "rematch": {"source": "Emerald", "tiers": [{"team": [120, 120], "levels": [37, 37]}, {"team": [278, 120, 120], "levels": [39, 39, 39]}, {"team": [279, 120, 120], "levels": [41, 41, 41]}, {"team": [279, 121, 121], "levels": [43, 43, 43]}], "needs": {"badges": 5}},
           "name": "Swimmer Pablo",
           "class": "SWIMMER",
-          "sprite": "swimmer_m.png",
+          "sprite": "em_tp_7.png",
           "team": [73, 318],
           "rewards": { "balls": 2 }
         }
@@ -2171,14 +2171,14 @@
         {
           "name": "Bird Keeper Beck",
           "class": "BIRD_KEEPER",
-          "sprite": "bird_keeper.png",
+          "sprite": "em_tp_4.png",
           "team": [227],
           "rewards": { "balls": 3 }
         },
         {
           "name": "Fisherman Henry",
           "class": "FISHERMAN",
-          "sprite": "fisherman.png",
+          "sprite": "em_tp_55.png",
           "team": [130, 130],
           "rewards": { "balls": 3 }
         }
@@ -2203,7 +2203,7 @@
         { "rematch": {"source": "Emerald", "tiers": [{"team": [120], "levels": [39]}, {"team": [120], "levels": [42]}, {"team": [121], "levels": [45]}, {"team": [121], "levels": [48]}], "needs": {"badges": 5}},
           "name": "Swimmer Isaiah",
           "class": "SWIMMER",
-          "sprite": "swimmer_m.png",
+          "sprite": "em_tp_7.png",
           "team": [72, 73],
           "rewards": { "balls": 2 }
         },
@@ -2246,14 +2246,14 @@
         {
           "name": "Swimmer Reed",
           "class": "SWIMMER",
-          "sprite": "swimmer_m.png",
+          "sprite": "em_tp_7.png",
           "team": [319],
           "rewards": { "balls": 2 }
         },
         {
           "name": "Swimmer Tisha",
           "class": "SWIMMER",
-          "sprite": "swimmer_f.png",
+          "sprite": "em_tp_66.png",
           "team": [319, 121],
           "rewards": { "balls": 2 }
         }
@@ -2276,21 +2276,21 @@
         {
           "name": "Swimmer Rodney",
           "class": "SWIMMER",
-          "sprite": "swimmer_m.png",
+          "sprite": "em_tp_7.png",
           "team": [130],
           "rewards": { "balls": 2 }
         },
         {
           "name": "Swimmer Katie",
           "class": "SWIMMER",
-          "sprite": "swimmer_f.png",
+          "sprite": "em_tp_66.png",
           "team": [121, 319],
           "rewards": { "balls": 2 }
         },
         {
           "name": "Swimmer Santiago",
           "class": "SWIMMER",
-          "sprite": "swimmer_m.png",
+          "sprite": "em_tp_7.png",
           "team": [73, 318],
           "rewards": { "balls": 3 }
         }
@@ -2313,28 +2313,28 @@
         {
           "name": "Swimmer Richard",
           "class": "SWIMMER",
-          "sprite": "swimmer_m.png",
+          "sprite": "em_tp_7.png",
           "team": [130, 319],
           "rewards": { "balls": 3 }
         },
         {
           "name": "Swimmer Kara",
           "class": "SWIMMER",
-          "sprite": "swimmer_f.png",
+          "sprite": "em_tp_66.png",
           "team": [121, 319],
           "rewards": { "balls": 2 }
         },
         {
           "name": "Swimmer Herman",
           "class": "SWIMMER",
-          "sprite": "swimmer_m.png",
+          "sprite": "em_tp_7.png",
           "team": [130, 130, 319],
           "rewards": { "balls": 4 }
         }
       ],
       "route_menu": [{"text": "SKY PILLAR", "action": "EXIT", "target_area": "HOENN_SKY_PILLAR", "condition": ["can_exit", "beat_hoenn_champion", "delta_wallace_131"]},
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers"},
-        {"text": "BATTLE WALLACE", "action": "EVENT", "flag_condition": "not delta_wallace_131", "condition": ["beat_hoenn_champion", "delta_courtney_mossdeep", "delta_matt_mossdeep"], "event": {"lines": ["Wallace: Our legends are stirring. Let me see your resolve!"], "flag": "delta_wallace_131", "battle": {"name": "Sootopolitan Wallace", "class": "CHAMPION", "sprite": "wallace.png", "team": [321, 73, 272, 340, 130, 350], "levels": [55, 55, 55, 55, 55, 57], "is_boss_battle": true, "rewards": {"balls": 10}, "dialogue": {"player_won": ["Sootopolitan Wallace: Well fought!"]}}}},
+        {"text": "BATTLE WALLACE", "action": "EVENT", "flag_condition": "not delta_wallace_131", "condition": ["beat_hoenn_champion", "delta_courtney_mossdeep", "delta_matt_mossdeep"], "event": {"lines": ["Wallace: Our legends are stirring. Let me see your resolve!"], "flag": "delta_wallace_131", "battle": {"name": "Sootopolitan Wallace", "class": "CHAMPION", "sprite": "em_tp_54.png", "team": [321, 73, 272, 340, 130, 350], "levels": [55, 55, 55, 55, 55, 57], "is_boss_battle": true, "rewards": {"balls": 10}, "dialogue": {"player_won": ["Sootopolitan Wallace: Well fought!"]}}}},
         {"text": "ROUTE 130", "action": "EXIT", "target_area": "HOENN_ROUTE_130", "condition": "can_exit"},
         {"text": "PACIFIDLOG TOWN", "action": "EXIT", "target_area": "PACIFIDLOG_TOWN", "condition": "can_exit"}
       ],
@@ -2351,7 +2351,7 @@
         {
           "name": "Swimmer Gilbert",
           "class": "SWIMMER",
-          "sprite": "swimmer_m.png",
+          "sprite": "em_tp_7.png",
           "team": [319, 130],
           "rewards": { "balls": 3 }
         }
@@ -2376,21 +2376,21 @@
         {
           "name": "Swimmer Beck",
           "class": "SWIMMER",
-          "sprite": "swimmer_m.png",
+          "sprite": "em_tp_7.png",
           "team": [319],
           "rewards": { "balls": 2 }
         },
         {
           "name": "Swimmer Mollie",
           "class": "SWIMMER",
-          "sprite": "swimmer_f.png",
+          "sprite": "em_tp_66.png",
           "team": [121, 319],
           "rewards": { "balls": 2 }
         },
         {
           "name": "Swimmer Warren",
           "class": "SWIMMER",
-          "sprite": "swimmer_m.png",
+          "sprite": "em_tp_7.png",
           "team": [130, 319],
           "rewards": { "balls": 3 }
         }
@@ -2416,14 +2416,14 @@
         {
           "name": "Swimmer Laurel",
           "class": "SWIMMER",
-          "sprite": "swimmer_f.png",
+          "sprite": "em_tp_66.png",
           "team": [119, 121],
           "rewards": { "balls": 2 }
         },
         {
           "name": "Swimmer Jack",
           "class": "SWIMMER",
-          "sprite": "swimmer_m.png",
+          "sprite": "em_tp_7.png",
           "team": [130, 319],
           "rewards": { "balls": 3 }
         }
@@ -2446,8 +2446,8 @@
       "wild_pool_percentages": "HOENN_PETALBURG_WOODS_PERCENTAGES",
       "min_rounds": 3,
       "trainer_pool": [
-        {"name": "Bug Catcher Lyle", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", "team": [265, 265, 265], "rewards": {"balls": 2}},
-        { "rematch": {"source": "Emerald", "tiers": [{"team": [291], "levels": [27]}, {"team": [269, 291], "levels": [29, 29]}, {"team": [283, 269, 291], "levels": [31, 31, 31]}, {"team": [283, 291, 269, 291], "levels": [33, 33, 33, 33]}], "needs": {"badges": 5}},"name": "Bug Catcher James", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", "team": [265, 267], "rewards": {"balls": 2}},
+        {"name": "Bug Catcher Lyle", "class": "BUG_CATCHER", "sprite": "em_tp_73.png", "team": [265, 265, 265], "rewards": {"balls": 2}},
+        { "rematch": {"source": "Emerald", "tiers": [{"team": [291], "levels": [27]}, {"team": [269, 291], "levels": [29, 29]}, {"team": [283, 269, 291], "levels": [31, 31, 31]}, {"team": [283, 291, 269, 291], "levels": [33, 33, 33, 33]}], "needs": {"badges": 5}},"name": "Bug Catcher James", "class": "BUG_CATCHER", "sprite": "em_tp_73.png", "team": [265, 267], "rewards": {"balls": 2}},
         {"name": "Team Aqua Grunt", "class": "ROCKET", "sprite": "aqua_grunt.png", "team": [261], "rewards": {"balls": 5}, "is_boss_battle": true, "victory_flag": "woods_boss_defeated", "villain": "grunt", "levels": [9], "dialogue": {"player_won": "hoenn_woods_won"}}
       ],
       "route_menu": [{"text": "SCIZORITE", "action": "EVENT", "flag_condition": "not got_scizorite", "condition": "cave_of_origin_cleared", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the SCIZORITE!"], "gift_item": {"SCIZORITE": 1}, "flag": "got_scizorite"}},
@@ -2466,7 +2466,7 @@
       "battle_type": "cave",
       "wild_pool_percentages": "HOENN_RUSTURF_TUNNEL_PERCENTAGES", "rock_smash_pool_percentages": "HOENN_RUSTURF_TUNNEL_ROCK_SMASH_PERCENTAGES",
       "min_rounds": 2,
-      "trainer_pool": [{"name": "Team Magma Grunt", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [261], "levels": [13], "rewards": {"balls": 3}, "is_boss_battle": true, "victory_flag": "rusturf_rescued", "dialogue": {"player_won": "hoenn_rusturf_won"}, "villain": "grunt"}, {"name": "Hiker Mike", "class": "HIKER", "sprite": "hiker.png", "team": [74, 66], "levels": [16, 16], "rewards": {"balls": 3}}],
+      "trainer_pool": [{"name": "Team Magma Grunt", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [261], "levels": [13], "rewards": {"balls": 3}, "is_boss_battle": true, "victory_flag": "rusturf_rescued", "dialogue": {"player_won": "hoenn_rusturf_won"}, "villain": "grunt"}, {"name": "Hiker Mike", "class": "HIKER", "sprite": "em_tp_0.png", "team": [74, 66], "levels": [16, 16], "rewards": {"balls": 3}}],
       "route_menu": [{"text": "AGGRONITE", "action": "EVENT", "flag_condition": "not got_aggronite", "condition": "rusturf_rescued", "event": {"lines": ["Wanda's boyfriend: Now the tunnel's clear, I can dig in peace. Look what turned up! You should have it."], "gift_item": {"AGGRONITE": 1}, "flag": "got_aggronite"}},
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers" },
         { "text": "ROUTE 116", "action": "EXIT", "target_area": "HOENN_ROUTE_116", "condition": "can_exit" },
@@ -2490,8 +2490,8 @@
       "wild_pool_percentages": "HOENN_GRANITE_CAVE_PERCENTAGES", "rock_smash_pool_percentages": "HOENN_GRANITE_CAVE_ROCK_SMASH_PERCENTAGES",
       "min_rounds": 3,
       "trainer_pool": [
-        {"name": "Picknicker Martha", "class": "PICNIKER", "sprite": "picknicker.png", "team": [304], "rewards": {"balls": 3}},
-        {"name": "Hiker Lucas", "class": "HIKER", "sprite": "hiker.png", "team": [74, 299], "rewards": {"balls": 3}}
+        {"name": "Picknicker Martha", "class": "PICNIKER", "sprite": "em_tp_30.png", "team": [304], "rewards": {"balls": 3}},
+        {"name": "Hiker Lucas", "class": "HIKER", "sprite": "em_tp_0.png", "team": [74, 299], "rewards": {"balls": 3}}
       ],
       "route_menu": [
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers"},
@@ -2513,13 +2513,13 @@
       "wild_pool_percentages": "HOENN_METEOR_FALLS_PERCENTAGES", "surf_pool_percentages": "HOENN_METEOR_FALLS_SURF_PERCENTAGES",
       "min_rounds": 4,
       "trainer_pool": [
-        {"name": "Team Magma Grunt", "class": "TEAM_MAGMA", "sprite": "magma_grunt.png", "team": [262, 322, 109], "levels": [23, 23, 23], "rewards": {"balls": 3}},
-        {"name": "Team Aqua Grunt", "class": "TEAM_AQUA", "sprite": "aqua_grunt.png", "team": [262, 318, 88], "levels": [23, 23, 23], "rewards": {"balls": 3}},
+        {"name": "Team Magma Grunt", "class": "TEAM_MAGMA", "sprite": "em_tp_1.png", "team": [262, 322, 109], "levels": [23, 23, 23], "rewards": {"balls": 3}},
+        {"name": "Team Aqua Grunt", "class": "TEAM_AQUA", "sprite": "em_tp_1.png", "team": [262, 318, 88], "levels": [23, 23, 23], "rewards": {"balls": 3}},
         {"name": "Admin Tabitha", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [262, 322], "rewards": {"balls": 10}, "is_boss_battle": true, "victory_flag": "meteor_falls_cleared", "villain": "admin_a", "team_by_version": {"OMEGA_RUBY": [262, 322], "ALPHA_SAPPHIRE": [262, 318]}, "levels": [23, 23]},
-        { "rematch": {"source": "Emerald", "tiers": [{"team": [308, 297], "levels": [43, 43], "team_moves": [["PSYCHIC", "FIRE-PUNCH", "PSYCH-UP", "PROTECT"], ["FOCUS-PUNCH", "ROCK-TOMB", "REST", "BELLY-DRUM"]]}, {"team": [308, 297], "levels": [46, 46], "team_moves": [["PSYCHIC", "FIRE-PUNCH", "PSYCH-UP", "PROTECT"], ["FOCUS-PUNCH", "ROCK-TOMB", "REST", "BELLY-DRUM"]]}, {"team": [308, 297], "levels": [49, 49], "team_moves": [["PSYCHIC", "FIRE-PUNCH", "PSYCH-UP", "PROTECT"], ["FOCUS-PUNCH", "ROCK-TOMB", "REST", "BELLY-DRUM"]]}, {"team": [308, 297], "levels": [52, 52], "team_moves": [["PSYCHIC", "FIRE-PUNCH", "PSYCH-UP", "PROTECT"], ["FOCUS-PUNCH", "ROCK-TOMB", "REST", "BELLY-DRUM"]]}], "needs": {"badges": 5}},"battle_options": {"double": true}, "name": "Old Couple John & Jay", "class": "COOLTRAINER", "sprite": "oldman.png", "team": [308, 297], "levels": [47, 47], "rewards": {"balls": 10}},
-        { "rematch": {"source": "Emerald", "tiers": [{"team": [334, 334], "levels": [41, 41]}, {"team": [334, 334], "levels": [44, 44]}, {"team": [371, 334, 334], "levels": [46, 46, 46]}, {"team": [334, 334, 372], "levels": [49, 49, 49]}], "needs": {"badges": 5}},"name": "Dragon Tamer Nicolas", "class": "PKMN_TRAINER", "sprite": "acetrainer_m.png", "team": [330], "levels": [47], "rewards": {"balls": 3}},
-        {"name": "Battle Girl Tess", "class": "COOLTRAINER", "sprite": "acetrainer_f.png", "team": [620], "levels": [46], "rewards": {"balls": 3}},
-        {"name": "Dragon Tamer Dray", "class": "PKMN_TRAINER", "sprite": "acetrainer_m.png", "team": [334], "levels": [47], "rewards": {"balls": 3}}
+        { "rematch": {"source": "Emerald", "tiers": [{"team": [308, 297], "levels": [43, 43], "team_moves": [["PSYCHIC", "FIRE-PUNCH", "PSYCH-UP", "PROTECT"], ["FOCUS-PUNCH", "ROCK-TOMB", "REST", "BELLY-DRUM"]]}, {"team": [308, 297], "levels": [46, 46], "team_moves": [["PSYCHIC", "FIRE-PUNCH", "PSYCH-UP", "PROTECT"], ["FOCUS-PUNCH", "ROCK-TOMB", "REST", "BELLY-DRUM"]]}, {"team": [308, 297], "levels": [49, 49], "team_moves": [["PSYCHIC", "FIRE-PUNCH", "PSYCH-UP", "PROTECT"], ["FOCUS-PUNCH", "ROCK-TOMB", "REST", "BELLY-DRUM"]]}, {"team": [308, 297], "levels": [52, 52], "team_moves": [["PSYCHIC", "FIRE-PUNCH", "PSYCH-UP", "PROTECT"], ["FOCUS-PUNCH", "ROCK-TOMB", "REST", "BELLY-DRUM"]]}], "needs": {"badges": 5}},"battle_options": {"double": true}, "name": "Old Couple John & Jay", "class": "COOLTRAINER", "sprite": "em_tp_79.png", "team": [308, 297], "levels": [47, 47], "rewards": {"balls": 10}},
+        { "rematch": {"source": "Emerald", "tiers": [{"team": [334, 334], "levels": [41, 41]}, {"team": [334, 334], "levels": [44, 44]}, {"team": [371, 334, 334], "levels": [46, 46, 46]}, {"team": [334, 334, 372], "levels": [49, 49, 49]}], "needs": {"badges": 5}},"name": "Dragon Tamer Nicolas", "class": "PKMN_TRAINER", "sprite": "em_tp_62.png", "team": [330], "levels": [47], "rewards": {"balls": 3}},
+        {"name": "Battle Girl Tess", "class": "COOLTRAINER", "sprite": "em_tp_20.png", "team": [620], "levels": [46], "rewards": {"balls": 3}},
+        {"name": "Dragon Tamer Dray", "class": "PKMN_TRAINER", "sprite": "em_tp_3.png", "team": [334], "levels": [47], "rewards": {"balls": 3}}
       ],
       "route_menu": [{"text": "AERODACTYLITE", "action": "EVENT", "flag_condition": "not got_aerodactylite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the AERODACTYLITE!"], "gift_item": {"AERODACTYLITE": 1}, "flag": "got_aerodactylite"}}, {"text": "AN OLD WOMAN", "action": "EVENT", "flag_condition": "not got_salamencite", "event": {"lines": ["An old woman: My granddaughter loves this stone. I think you should have it.", "You found the SALAMENCITE!"], "gift_item": {"SALAMENCITE": 1}, "flag": "got_salamencite"}},
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers" },
@@ -2543,7 +2543,7 @@
         {
           "name": "Hiker Eric",
           "class": "HIKER",
-          "sprite": "hiker.png",
+          "sprite": "em_tp_0.png",
           "team": [74, 74, 322],
           "rewards": { "balls": 3 }
         },
@@ -2558,7 +2558,7 @@
         { "rematch": {"source": "Emerald", "tiers": [{"team": [285, 44, 333], "levels": [25, 25, 25]}, {"team": [286, 44, 333], "levels": [28, 28, 28]}, {"team": [286, 44, 333], "levels": [31, 31, 31]}, {"team": [286, 45, 334], "levels": [40, 40, 40]}], "needs": {"badges": 5}},
           "name": "Picnicker Diana",
           "class": "PICNIKER",
-          "sprite": "picknicker.png",
+          "sprite": "em_tp_30.png",
           "team": [187, 188],
           "rewards": { "balls": 3 }
         }
@@ -2587,14 +2587,14 @@
         {
           "name": "Kindler Bernie",
           "class": "KINDLER",
-          "sprite": "kindler.png",
+          "sprite": "em_tp_28.png",
           "team": [322, 218],
           "rewards": { "balls": 3 }
         },
         {
           "name": "Battle Girl Cyndy",
           "class": "COOLTRAINER",
-          "sprite": "acetrainer_f.png",
+          "sprite": "em_tp_64.png",
           "team": [296],
           "rewards": { "balls": 3 }
         }
@@ -2617,8 +2617,8 @@
       "min_rounds": 3,
       "trainer_pool": [
         {"name": "Team Admin", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [109, 322], "rewards": {"balls": 5}, "is_boss_battle": true, "villain": "admin_a", "team_by_version": {"OMEGA_RUBY": [109, 322], "ALPHA_SAPPHIRE": [88, 318]}, "levels": [24, 24]},
-        {"name": "Team Magma Grunt", "class": "TEAM_MAGMA", "sprite": "magma_grunt.png", "team": [261, 109], "levels": [22, 22], "rewards": {"balls": 3}},
-        {"name": "Team Aqua Grunt", "class": "TEAM_AQUA", "sprite": "aqua_grunt.png", "team": [261, 88], "levels": [22, 22], "rewards": {"balls": 3}},
+        {"name": "Team Magma Grunt", "class": "TEAM_MAGMA", "sprite": "em_tp_1.png", "team": [261, 109], "levels": [22, 22], "rewards": {"balls": 3}},
+        {"name": "Team Aqua Grunt", "class": "TEAM_AQUA", "sprite": "em_tp_1.png", "team": [261, 88], "levels": [22, 22], "rewards": {"balls": 3}},
         {"name": "Team Leader", "class": "BOSS", "sprite": "maxie.png", "is_boss_battle": true, "team": [262, 42, 323], "rewards": {"balls": 15, "RARE_CANDY": 2}, "victory_flag": "mt_chimney_boss_defeated", "dialogue": {"intro": ["{leader}: The Meteorite's power will help {team} {goal}!", "You won't stand in our way, child!"], "player_won": ["{leader}: Hmph. Keep the Meteorite, then.", "There are other ways to awaken {legend}..."]}, "villain": "leader", "leader_mega": false, "levels": [25, 25, 27]}
       ],
       "route_menu": [
@@ -2676,7 +2676,7 @@
         {
           "name": "Tuber Charlie",
           "class": "YOUNGSTER",
-          "sprite": "youngster.png",
+          "sprite": "em_tp_19.png",
           "team": [183],
           "levels": [26],
           "rewards": { "balls": 3 },
@@ -2685,7 +2685,7 @@
         { "rematch": {"source": "Emerald", "tiers": [{"team": [320, 116], "levels": [34, 34]}, {"team": [370, 320, 117], "levels": [36, 36, 36]}, {"team": [370, 320, 117], "levels": [38, 38, 38]}, {"team": [370, 321, 230], "levels": [40, 40, 40]}], "needs": {"badges": 5}},
           "name": "Beauty Thalia",
           "class": "BEAUTY",
-          "sprite": "beauty.png",
+          "sprite": "em_tp_22.png",
           "team": [320, 116],
           "levels": [25, 25],
           "rewards": { "balls": 3 }
@@ -2693,15 +2693,15 @@
         {
           "name": "Sailor Duncan",
           "class": "SAILOR",
-          "sprite": "sailor.png",
+          "sprite": "em_tp_68.png",
           "team": [363, 67],
           "levels": [25, 25],
           "rewards": { "balls": 5 }
         },
-        {"name": "Youngster Demetrius", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [263, 309], "levels": [25, 25], "rewards": {"balls": 3}, "dialogue": {"intro": ["Whoa! You found my hiding spot! You're not my mom, are you?"], "player_won": ["I ran off after my mom got mad. Don't tell her I'm here!"]}},
-        {"name": "Ruin Maniac Garrison", "class": "RUIN_MANIAC", "sprite": "ruinmaniac.png", "team": [28], "levels": [26], "rewards": {"balls": 3}, "dialogue": {"intro": ["A Trainer's real treasures are strength and kindness!"], "player_won": ["Somewhere on this ship, I saw something shining in a cabin."]}},
-        {"name": "Tuber Jani", "class": "LASS", "sprite": "lass.png", "team": [183], "levels": [26], "rewards": {"balls": 3}, "dialogue": {"intro": ["I can't swim very well, but I'm great at battling!"], "player_won": ["Walking around this ship barefoot is kind of icky."]}, "spot_name": "Swimmer Jani"},
-        { "rematch": {"source": "Emerald", "tiers": [{"team": [313, 314], "levels": [30, 30]}, {"team": [313, 314], "levels": [33, 33]}, {"team": [313, 314], "levels": [36, 36]}, {"team": [313, 314], "levels": [39, 39]}], "needs": {"badges": 5}},"name": "Young Couple Kira & Dan", "class": "TWINS", "sprite": "twins.png", "team": [313, 314], "levels": [25, 25], "rewards": {"balls": 3}, "battle_options": {"double": true}}
+        {"name": "Youngster Demetrius", "class": "YOUNGSTER", "sprite": "em_tp_53.png", "team": [263, 309], "levels": [25, 25], "rewards": {"balls": 3}, "dialogue": {"intro": ["Whoa! You found my hiding spot! You're not my mom, are you?"], "player_won": ["I ran off after my mom got mad. Don't tell her I'm here!"]}},
+        {"name": "Ruin Maniac Garrison", "class": "RUIN_MANIAC", "sprite": "em_tp_16.png", "team": [28], "levels": [26], "rewards": {"balls": 3}, "dialogue": {"intro": ["A Trainer's real treasures are strength and kindness!"], "player_won": ["Somewhere on this ship, I saw something shining in a cabin."]}},
+        {"name": "Tuber Jani", "class": "LASS", "sprite": "em_tp_18.png", "team": [183], "levels": [26], "rewards": {"balls": 3}, "dialogue": {"intro": ["I can't swim very well, but I'm great at battling!"], "player_won": ["Walking around this ship barefoot is kind of icky."]}, "spot_name": "Swimmer Jani"},
+        { "rematch": {"source": "Emerald", "tiers": [{"team": [313, 314], "levels": [30, 30]}, {"team": [313, 314], "levels": [33, 33]}, {"team": [313, 314], "levels": [36, 36]}, {"team": [313, 314], "levels": [39, 39]}], "needs": {"badges": 5}},"name": "Young Couple Kira & Dan", "class": "TWINS", "sprite": "em_tp_78.png", "team": [313, 314], "levels": [25, 25], "rewards": {"balls": 3}, "battle_options": {"double": true}}
       ],
       "route_menu": [
         {"text": "ESCAPE ROPE", "action": "EVENT", "found": true, "flag_condition": "not got_escape_rope_ship", "event": {"lines": ["An Escape Rope, left in a flooded cabin."], "gift_item": {"ESCAPE_ROPE": 1}, "flag": "got_escape_rope_ship"}},
@@ -2768,14 +2768,14 @@
         {
           "name": "Swimmer Roland",
           "class": "SWIMMER",
-          "sprite": "swimmer_m.png",
+          "sprite": "em_tp_7.png",
           "team": [319],
           "rewards": { "balls": 2 }
         },
         {
           "name": "Swimmer Beverly",
           "class": "SWIMMER",
-          "sprite": "swimmer_f.png",
+          "sprite": "em_tp_66.png",
           "team": [121],
           "rewards": { "balls": 2 }
         }
@@ -2878,7 +2878,7 @@
       "wild_pool_percentages": "HOENN_MT_PYRE_PERCENTAGES",
       "min_rounds": 3,
       "trainer_pool": [
-        {"name": "Hex Maniac Leah", "class": "PSYCHIC", "sprite": "channeler.png", "team": [353, 355], "rewards": {"balls": 3}},
+        {"name": "Hex Maniac Leah", "class": "PSYCHIC", "sprite": "em_tp_14.png", "team": [353, 355], "rewards": {"balls": 3}},
         {"name": "Team Magma Grunt", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [109], "levels": [36], "rewards": {"balls": 3}, "villain": "grunt"},
         {"name": "Team Grunt (summit path)", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [88], "levels": [36], "rewards": {"balls": 3}, "villain": "grunt"},
         {"name": "Team Grunt (summit stairs)", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [262, 42], "rewards": {"balls": 3}, "villain": "grunt"},
@@ -2898,10 +2898,10 @@
       "wild_pool_percentages": "HOENN_VICTORY_ROAD_PERCENTAGES", "surf_pool_percentages": "HOENN_VICTORY_ROAD_SURF_PERCENTAGES",
       "min_rounds": 5,
       "trainer_pool": [
-        {"name": "Wally", "class": "RIVAL", "sprite": "wally.png", "is_boss_battle": true, "team": [334, 301, 315, 82, 475], "rewards": {"balls": 15, "RARE_CANDY": 3, "DAWN_STONE": 1}, "victory_flag": "defeated_wally_victory", "dialogue": {"intro": ["I've come this far with my Pokémon!"], "player_won": ["You're truly a math master."], "player_lost": ["I won't give up!"]}, "mega": 475, "movesets": {"334": ["AERIAL-ACE", "SAFEGUARD", "DRAGON-PULSE", "COTTON-GUARD"], "301": ["SING", "DISARMING-VOICE", "CHARM", "FEINT-ATTACK"], "315": ["SYNTHESIS", "LEECH-SEED", "PETAL-BLIZZARD", "TOXIC"], "82": ["SCREECH", "DISCHARGE", "TRI-ATTACK", "FLASH-CANNON"], "475": ["PSYCHO-CUT", "CLOSE-COMBAT", "SLASH", "SWORDS-DANCE"]}, "levels": [46, 46, 46, 46, 48]},
-        {"name": "Ace Trainer Vito", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "team": [101, 555, 317], "levels": [44, 44, 44], "rewards": {"balls": 5}},
-        {"name": "Cooltrainer Hope", "class": "COOLTRAINER", "sprite": "acetrainer_f.png", "team": [130, 230], "rewards": {"balls": 5}},
-        {"name": "Cooltrainer Albert", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "team": [306, 311], "rewards": {"balls": 5}}
+        {"name": "Wally", "class": "RIVAL", "sprite": "em_tp_70.png", "is_boss_battle": true, "team": [334, 301, 315, 82, 475], "rewards": {"balls": 15, "RARE_CANDY": 3, "DAWN_STONE": 1}, "victory_flag": "defeated_wally_victory", "dialogue": {"intro": ["I've come this far with my Pokémon!"], "player_won": ["You're truly a math master."], "player_lost": ["I won't give up!"]}, "mega": 475, "movesets": {"334": ["AERIAL-ACE", "SAFEGUARD", "DRAGON-PULSE", "COTTON-GUARD"], "301": ["SING", "DISARMING-VOICE", "CHARM", "FEINT-ATTACK"], "315": ["SYNTHESIS", "LEECH-SEED", "PETAL-BLIZZARD", "TOXIC"], "82": ["SCREECH", "DISCHARGE", "TRI-ATTACK", "FLASH-CANNON"], "475": ["PSYCHO-CUT", "CLOSE-COMBAT", "SLASH", "SWORDS-DANCE"]}, "levels": [46, 46, 46, 46, 48]},
+        {"name": "Ace Trainer Vito", "class": "COOLTRAINER", "sprite": "em_tp_3.png", "team": [101, 555, 317], "levels": [44, 44, 44], "rewards": {"balls": 5}},
+        {"name": "Cooltrainer Hope", "class": "COOLTRAINER", "sprite": "em_tp_20.png", "team": [130, 230], "rewards": {"balls": 5}},
+        {"name": "Cooltrainer Albert", "class": "COOLTRAINER", "sprite": "em_tp_3.png", "team": [306, 311], "rewards": {"balls": 5}}
       ],
       "route_menu": [
         { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers" },
@@ -3037,7 +3037,7 @@
     {"id": "hoenn_m1b", "type": "MAIN", "title": "Birch's Thanks", "description": "Professor Birch wants to thank you at his lab in Littleroot Town.", "condition": {"required_region": "HOENN", "flag": "hoenn_birch_rescued", "flag_not": "hoenn_birch_thanked"}, "completed_flag": "hoenn_birch_thanked", "target": "LITTLEROOT_TOWN"},
     {"id": "hoenn_m2", "type": "MAIN", "title": "Rival Showdown", "description": "Professor Birch's kid, {rival_name}, is on Route 103, north of Oldale Town. Go and say hello!", "condition": {"required_region": "HOENN", "flag": "hoenn_birch_thanked", "flag_not": "hoenn_rival_103"}, "completed_flag": "hoenn_rival_103", "target": "HOENN_ROUTE_103"},
     {"id": "hoenn_m2b", "type": "MAIN", "title": "A Pokédex", "description": "Head back to Birch's lab in Littleroot Town. He has something for you after that battle!", "condition": {"required_region": "HOENN", "flag": "hoenn_rival_103", "flag_not": "received_pokedex_hoenn"}, "completed_flag": "received_pokedex_hoenn", "target": "LITTLEROOT_TOWN", "reward": "Pokédex + 10 Poké Balls"},
-    {"id": "hoenn_m2c", "type": "MAIN", "title": "Visit Dad", "description": "Your dad, Norman, is the Gym Leader of Petalburg City, west past Route 102. Go and see him!", "condition": {"required_region": "HOENN", "flag": "received_pokedex_hoenn", "flag_not": "helped_wally"}, "completed_flag": "helped_wally", "target": "PETALBURG_CITY"},
+    {"id": "hoenn_m2c", "type": "MAIN", "title": "Dad's Gym", "description": "Your dad, Norman, is the Gym Leader of Petalburg City, west past Route 102. Go and see him!", "condition": {"required_region": "HOENN", "flag": "received_pokedex_hoenn", "flag_not": "helped_wally"}, "completed_flag": "helped_wally", "target": "PETALBURG_CITY"},
     {"id": "hoenn_m2d", "type": "MAIN", "title": "Trouble in the Woods", "description": "A {team} grunt is bothering a researcher in Petalburg Woods, on the way to Rustboro City. Stop them!", "condition": {"required_region": "HOENN", "flag": "helped_wally", "region_badges_less": 1, "flag_not": "woods_boss_defeated"}, "completed_flag": "woods_boss_defeated", "target": "HOENN_PETALBURG_WOODS", "reward": "Lucky Egg"},
     {"id": "hoenn_m3", "type": "MAIN", "title": "Stone Badge", "description": "Head through Petalburg Woods to Rustboro City and defeat Roxanne at the Gym.", "condition": {"required_region": "HOENN", "region_badges_less": 1, "flag": "woods_boss_defeated"}, "completed_flag": "badge_stone_earned", "target": "RUSTBORO_CITY", "reward": "Stone Badge", "steps": [{"area": "HOENN_PETALBURG_WOODS", "floor": 0, "at": [14, 5], "label": "Route 104", "when": "woods_boss_defeated", "done": "route104_grunt_report"}]},
     {
@@ -3260,7 +3260,8 @@
       "title": "Delta Episode",
       "description": "A meteoroid is heading for Hoenn! Find Zinnia at the Sky Pillar.",
       "condition": { "required_region": "HOENN", "flag": "beat_hoenn_champion", "flag_not": "delta_zinnia_defeated" },
-      "completed_flag": "delta_zinnia_defeated"
+      "completed_flag": "delta_zinnia_defeated",
+      "steps": [{"area": "HOENN_ROUTE_127", "floor": 0, "at": [20, 79], "label": "To Route 128", "done": "delta_wallace_131", "when": "delta_matt_mossdeep"}, {"area": "HOENN_ROUTE_128", "floor": 0, "at": [32, 39], "label": "To Route 129", "done": "delta_wallace_131", "when": "delta_matt_mossdeep"}, {"area": "HOENN_ROUTE_129", "floor": 0, "at": [0, 5], "label": "To Route 130", "done": "delta_wallace_131", "when": "delta_matt_mossdeep"}, {"area": "HOENN_ROUTE_130", "floor": 0, "at": [0, 5], "label": "To Route 131", "done": "delta_wallace_131", "when": "delta_matt_mossdeep"}, {"area": "HOENN_ROUTE_131", "floor": 0, "at": [37, 6], "label": "Wallace", "done": "delta_wallace_131", "when": "delta_matt_mossdeep"}, {"area": "HOENN_ROUTE_127", "floor": 0, "at": [20, 79], "label": "To Route 128", "done": "delta_zinnia_defeated", "when": "delta_wallace_131"}, {"area": "HOENN_ROUTE_128", "floor": 0, "at": [32, 39], "label": "To Route 129", "done": "delta_zinnia_defeated", "when": "delta_wallace_131"}, {"area": "HOENN_ROUTE_129", "floor": 0, "at": [0, 5], "label": "To Route 130", "done": "delta_zinnia_defeated", "when": "delta_wallace_131"}, {"area": "HOENN_ROUTE_130", "floor": 0, "at": [0, 5], "label": "To Route 131", "done": "delta_zinnia_defeated", "when": "delta_wallace_131"}, {"area": "HOENN_ROUTE_131", "floor": 0, "at": [36, 6], "label": "Sky Pillar", "done": "delta_zinnia_defeated", "when": "delta_wallace_131"}, {"area": "HOENN_SKY_PILLAR", "floor": 7, "at": [14, 10], "label": "Zinnia", "done": "delta_zinnia_defeated", "when": "delta_wallace_131"}]
     },
     {
       "id": "hoenn_d2",
@@ -3302,19 +3303,20 @@
       "id": "hoenn_s3",
       "type": "SIDE",
       "title": "Abandoned Ship Mystery",
-      "description": "Explore the haunted Abandoned Ship on Route 108 and find the Scanner.",
+      "description": "The Abandoned Ship on Route 108 creaks with every wave. Somewhere below deck lies a Scanner nobody came back for.",
       "condition": { "required_region": "HOENN", "visited": "HOENN_ABANDONED_SHIP", "flag_not": "abandoned_ship_cleared" },
       "completed_flag": "abandoned_ship_cleared",
       "reward": "DeepSeaScale/Tooth"
     },
-    {"id": "hoenn_s4", "type": "SIDE", "title": "Shoal Cave", "description": "Beat every trainer in Shoal Cave, north of Route 125 off Mossdeep City.", "condition": {"required_region": "HOENN", "visited": "HOENN_SHOAL_CAVE", "flag_not": "shoal_cave_cleared"}, "completed_flag": "shoal_cave_cleared", "target": "HOENN_SHOAL_CAVE"},
+    {"id": "hoenn_s4", "type": "SIDE", "title": "Shoal Cave", "description": "Shoal Cave, north of Route 125 off Mossdeep, floods and drains with the tide. Trainers wait in every dry corner.", "condition": {"required_region": "HOENN", "visited": "HOENN_SHOAL_CAVE", "flag_not": "shoal_cave_cleared"}, "completed_flag": "shoal_cave_cleared", "target": "HOENN_SHOAL_CAVE"},
     {
       "id": "hoenn_s5",
       "type": "SIDE",
       "title": "Safari Zone Adventure",
-      "description": "Catch rare Pokémon in the Hoenn Safari Zone near Lilycove City.",
+      "description": "The Safari Zone near Lilycove is home to Pokémon found nowhere else in Hoenn.",
       "condition": { "required_region": "HOENN", "visited": "HOENN_SAFARI_ZONE" },
-      "reward": "Safari Balls + rare catches"
+      "reward": "Safari Balls + rare catches",
+      "completed_flag": "feat_hoenn_safari_1"
     },
     {
       "id": "hoenn_s6",
@@ -3329,7 +3331,7 @@
       "id": "hoenn_s7",
       "type": "SIDE",
       "title": "Contest Master",
-      "description": "Win Master Rank in all five contest categories and fill the Lilycove Museum with paintings.",
+      "description": "Lilycove's Museum has five empty frames, one for each contest category. A Master Rank win in each would fill them.",
       "condition": { "required_region": "HOENN", "visited": "LILYCOVE_CITY" },
       "reward": "Rare Candies, Pokéblocks and $10000",
       "completed_flag": "contest_master"
@@ -3354,10 +3356,10 @@
       "target": "HOENN_METEOR_FALLS"
     },
     {"id": "hoenn_s10", "type": "SIDE", "title": "Meet the Neighbors", "description": "Say hello to the family next door in Littleroot Town.", "condition": {"required_region": "HOENN", "visited": "LITTLEROOT_TOWN"}, "completed_flag": "hoenn_met_neighbor", "target": "LITTLEROOT_TOWN"},
-    {"id": "hoenn_s11", "type": "SIDE", "title": "Free Sample", "description": "The Poké Mart in Oldale Town is giving away free Potions!", "condition": {"required_region": "HOENN", "visited": "OLDALE_TOWN"}, "completed_flag": "oldale_free_potions", "target": "OLDALE_TOWN", "reward": "10 Potions"},
+    {"id": "hoenn_s11", "type": "SIDE", "title": "Free Sample", "description": "The Poké Mart in Oldale Town is handing out free Potions to new Trainers.", "condition": {"required_region": "HOENN", "visited": "OLDALE_TOWN"}, "completed_flag": "oldale_free_potions", "target": "OLDALE_TOWN", "reward": "10 Potions"},
     {"id": "hoenn_s12", "type": "SIDE", "title": "Rydel's Cycles", "description": "Rydel gives a bike to new riders at his shop in Mauville City.", "condition": {"required_region": "HOENN", "visited": "MAUVILLE_CITY"}, "completed_flag": "got_bike_hoenn", "target": "MAUVILLE_CITY", "reward": "Bicycle"},
     {"id": "hoenn_s13", "type": "SIDE", "title": "The Rival's Gift", "description": "{rival_name} has something for you on Route 112, by the Fiery Path.", "condition": {"required_region": "HOENN", "visited": "HOENN_ROUTE_112"}, "completed_flag": "got_strength_hoenn", "target": "HOENN_ROUTE_112", "reward": "HM Strength"},
-    {"id": "hoenn_s14", "type": "SIDE", "title": "Cozmo's Thanks", "description": "Professor Cozmo is safe! Visit him in Fallarbor Town.", "condition": {"required_region": "HOENN", "flag": "meteor_falls_cleared"}, "completed_flag": "cozmo_thanked", "target": "FALLARBOR_TOWN"},
+    {"id": "hoenn_s14", "type": "SIDE", "title": "Cozmo's Thanks", "description": "Professor Cozmo is home safe in Fallarbor Town, and he hasn't forgotten who helped him.", "condition": {"required_region": "HOENN", "flag": "meteor_falls_cleared"}, "completed_flag": "cozmo_thanked", "target": "FALLARBOR_TOWN"},
     {"id": "hoenn_s15", "type": "SIDE", "title": "A Pokémon of the Weather", "description": "The Weather Institute's scientists want to thank you.", "condition": {"required_region": "HOENN", "flag": "weather_institute_cleared"}, "completed_flag": "got_castform", "target": "HOENN_WEATHER_INSTITUTE", "reward": "Castform"},
     {"id": "hoenn_s16", "type": "SIDE", "title": "Regirock", "description": "The Desert Ruins on Route 111 have opened. Something old waits inside.", "condition": {"required_region": "HOENN", "flag": "regi_trio_awakened"}, "completed_flag": "defeated_regirock", "target": "HOENN_ROUTE_111", "reward": "Regirock"},
     {"id": "hoenn_s17", "type": "SIDE", "title": "Regice", "description": "The Island Cave on Route 105 has opened. It's freezing inside.", "condition": {"required_region": "HOENN", "flag": "regi_trio_awakened"}, "completed_flag": "defeated_regice", "target": "HOENN_ROUTE_105", "reward": "Regice"},
@@ -3365,13 +3367,13 @@
     {"id": "hoenn_s19", "type": "SIDE", "title": "Regigigas", "description": "All three Regi have answered. Their leader stirs in the Island Cave on Route 105.", "condition": {"required_region": "HOENN", "flag": ["defeated_regirock", "defeated_regice", "defeated_registeel"]}, "completed_flag": "island_cave_regigigas", "target": "HOENN_ROUTE_105", "reward": "Regigigas"},
     {"id": "hoenn_s20", "type": "SIDE", "title": "The Invisible Pokémon", "description": "Something invisible blocks Route 120. The Devon Scope can show it.", "condition": {"required_region": "HOENN", "item": "DEVON_SCOPE"}, "completed_flag": "route120_kecleon", "target": "HOENN_ROUTE_120", "reward": "Kecleon"},
     {"id": "hoenn_s21", "type": "SIDE", "title": "New Mauville", "description": "Wattson wants the security check run in New Mauville, under Route 110.", "condition": {"required_region": "HOENN", "flag": "wattson_new_mauville_asked"}, "completed_flag": "new_mauville_cleared", "target": "HOENN_NEW_MAUVILLE"},
-    {"id": "hoenn_s22", "type": "SIDE", "title": "Mt. Pyre's Summit", "description": "Beat the trainers on Mt. Pyre, all the way to the summit.", "condition": {"required_region": "HOENN", "visited": "HOENN_MT_PYRE"}, "completed_flag": "mt_pyre_cleared", "target": "HOENN_MT_PYRE"},
+    {"id": "hoenn_s22", "type": "SIDE", "title": "Mt. Pyre's Summit", "description": "Trainers line the path up Mt. Pyre, all the way to the misty summit.", "condition": {"required_region": "HOENN", "visited": "HOENN_MT_PYRE"}, "completed_flag": "mt_pyre_cleared", "target": "HOENN_MT_PYRE"},
     {"id": "hoenn_s23", "type": "SIDE", "title": "The Black Fog", "description": "A strange fog hangs over Mt. Pyre. Find what's inside it.", "condition": {"required_region": "HOENN", "visited": "HOENN_MT_PYRE"}, "completed_flag": "black_fog_banished_hoenn_mt_pyre", "target": "HOENN_MT_PYRE"},
     {"id": "hoenn_s24", "type": "SIDE", "title": "The Other Hideout", "description": "The other team has a hideout too. Clear it out.", "condition": {"required_region": "HOENN", "visited": "HOENN_MAGMA_HIDEOUT"}, "completed_flag": "magma_hideout_cleared", "target": "HOENN_MAGMA_HIDEOUT"},
-    {"id": "hoenn_s25", "type": "SIDE", "title": "The S.S. Tidal", "description": "Battle the trainers in the cabins of the S.S. Tidal.", "condition": {"required_region": "HOENN", "visited": "HOENN_SS_TIDAL"}, "completed_flag": "ss_tidal_cleared", "target": "HOENN_SS_TIDAL"},
+    {"id": "hoenn_s25", "type": "SIDE", "title": "The S.S. Tidal", "description": "The S.S. Tidal's cabins are full of Trainers with time to kill.", "condition": {"required_region": "HOENN", "visited": "HOENN_SS_TIDAL"}, "completed_flag": "ss_tidal_cleared", "target": "HOENN_SS_TIDAL"},
     {"id": "hoenn_s26", "type": "SIDE", "title": "Southern Island", "description": "A Pokémon of legend rests on Southern Island.", "condition": {"required_region": "HOENN", "visited": "HOENN_SOUTHERN_ISLAND"}, "completed_flag": "southern_island_eon_caught", "target": "HOENN_SOUTHERN_ISLAND"},
     {"id": "hoenn_s27", "type": "SIDE", "title": "Wally at the Battle Frontier", "description": "Wally is training at the Battle Frontier, by the Battle Maison.", "condition": {"required_region": "HOENN", "visited": "HOENN_BATTLE_FRONTIER", "flag": "beat_hoenn_champion"}, "completed_flag": "battle_resort_wally", "target": "HOENN_BATTLE_FRONTIER"},
-    {"id": "hoenn_s28", "type": "SIDE", "title": "The Battle Frontier", "description": "Win a streak at each of the seven facilities, then beat its Frontier Brain.", "condition": {"required_region": "HOENN", "visited": "HOENN_BATTLE_FRONTIER"}, "completed_flag": "hoenn_battle_frontier_cleared", "target": "HOENN_BATTLE_FRONTIER"},
+    {"id": "hoenn_s28", "type": "SIDE", "title": "The Battle Frontier", "description": "Seven facilities, seven Frontier Brains. Each Brain only shows up for a Trainer on a long winning streak.", "condition": {"required_region": "HOENN", "visited": "HOENN_BATTLE_FRONTIER"}, "completed_flag": "hoenn_battle_frontier_cleared", "target": "HOENN_BATTLE_FRONTIER"},
     {"id": "hoenn_s29", "type": "SIDE", "title": "Sea Mauville", "description": "Two Pokémon of legend have been seen in the Abandoned Ship's storeroom.", "condition": {"required_region": "HOENN", "flag": ["beat_hoenn_champion"]}, "completed_flag": ["sea_mauville_lugia", "sea_mauville_ho_oh"], "target": "HOENN_ABANDONED_SHIP", "reward": "Lugia and Ho-Oh"},
     {"id": "hoenn_s30", "type": "SIDE", "title": "Soaring in the Sky", "description": "Play the Eon Flute and fly high over Hoenn. Legends wait in the sky.", "condition": {"required_region": "HOENN", "item": "EON_FLUTE"}, "completed_flag": ["soaring_dialga", "soaring_palkia", "soaring_giratina", "soaring_tornadus", "soaring_thundurus", "soaring_landorus"], "target": "HOENN_SOARING_IN_THE_SKY"},
     {"id": "hoenn_s31", "type": "SIDE", "title": "The Scorched Slab", "description": "Deep in the Scorched Slab, something burns hot.", "condition": {"required_region": "HOENN", "flag": "beat_hoenn_champion"}, "completed_flag": "scorched_slab_heatran", "target": "HOENN_SCORCHED_SLAB", "reward": "Heatran"},

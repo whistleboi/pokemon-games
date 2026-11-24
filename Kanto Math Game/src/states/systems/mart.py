@@ -94,6 +94,9 @@ class PokeMartState(GameState):
         if story.is_region_champion(story.get_current_region()):
             badges = 8
         items = itemlib.standard_stock(badges)
+        if story.get_current_region() == "ORRE" and not story.story_flags.get("got_snag_machine"):
+            items = [i for i in items if i != "POKE_BALLS" and not i.endswith("_BALL")]   # (Orre, 11-24: "nobody sells Poke Balls" -
+            #  the bartender's five are your first; on the shelves once you have the Snag Machine)
         if badges >= 2:
             items.append("EVERSTONE")
         from src.pokemon import tms, zpower

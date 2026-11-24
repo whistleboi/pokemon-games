@@ -1106,7 +1106,7 @@ def wander(st, m, stay=True):
             hit = _nearest(st, tiles, prev2)
         if hit is None:
             continue
-        score = (0 if named else 1, cls, len(hit[1]))
+        score = (0 if named else 1, cls + (0.5 if key[0] == "X" else 0), len(hit[1]))
         if best is None or score < best[0]:
             best = (score, key, hit[0], words)
     if best is None:   # nothing new here: on to somewhere in this place that still has something

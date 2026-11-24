@@ -38,8 +38,9 @@ GYM_ORDER = {
                "ALFORNADA", "GLASEADO"],
     # The Orange Islands (the anime's Orange League): post-game, after the Kanto and Johto titles.
     "ORANGE": ["MIKAN_ISLAND", "NAVEL_ISLAND", "TROVITA_ISLAND", "KUMQUAT_ISLAND"],
-    # Orre (a full region since 10-27): its four tournaments give the badges.
-    "ORRE": ["PYRITE_TOWN", "UNDER_COLOSSEUM", "PHENAC_CITY", "ORRE_COLOSSEUM"],
+    # Orre (story rework 11-24): eight Gyms - Misty, Duking, Blaine & Erika, Pryce, then Jasmine, Norman, Drake, Birch.
+    "ORRE": ["PHENAC_CITY", "PYRITE_TOWN", "AGATE_VILLAGE", "SNAGEM_HIDEOUT", "GATEON_PORT", "XD_CIPHER_KEY_LAIR",
+             "XD_CITADARK_ISLE", "REALGAM_TOWER"],
 }
 # Ace level of each gym, then (Elite Four first, last) and the Champion's ace.
 # Jordan (10-29): every region uses the CANON levels of its own game, since each region is a fresh
@@ -57,16 +58,16 @@ GYM_ACE = {
     "ALOLA": [10, 16, 28, 44, 54], "GALAR": [20, 24, 27, 36, 38, 42, 46, 48],
     "PALDEA": [15, 17, 24, 30, 36, 42, 45, 48],
     "ORANGE": [22, 35, 40, 46],   # (11-17: 5.7's Orange Crew, Cissy 22, Danny 35, Rudy 40, Luana 46)
-    "ORRE": [16, 26, 36, 46],
+    "ORRE": [14, 21, 24, 29, 41, 45, 48, 50],   # (11-24: the eight Leaders' aces in orre_area_data.json)
 }
 ELITE_FOUR = {"KANTO": (54, 60), "JOHTO": (42, 47), "HOENN": (52, 55), "SINNOH": (57, 63),
               "UNOVA": (58, 58), "KALOS": (65, 65), "ALOLA": (55, 57), "GALAR": (56, 56),
-              "PALDEA": (58, 61)}
+              "PALDEA": (58, 61), "ORRE": (54, 60)}   # (Orre 11-24: Justy 54 ... Vander 60)
 # Unova's Champion battle uses Black 2/White 2's Champion levels (Iris, 57-59): Alder's Black/White
 # battle only happens after the story.
 CHAMPION_ACE = {"KANTO": 63, "JOHTO": 50, "HOENN": 59, "SINNOH": 66, "UNOVA": 59, "KALOS": 68,
                 "ALOLA": 58, "GALAR": 65, "PALDEA": 62,
-                "ORANGE": 52, "ORRE": 60}   # (Orange 11-17: 5.7's Drake, Dragonite 52)
+                "ORANGE": 52, "ORRE": 63}   # (Orange 11-17: 5.7's Drake, Dragonite 52)
 # Once Drake is beaten, the Orange Gyms can be battled again; until 11-23 each Gym team was lifted so its ace was Drake's
 # made-up rematch ace (Champion + 10). Now (Jordan 11-23, main step M5) they rise by canon_league_boost, as every rematch
 # without the games' own team does.

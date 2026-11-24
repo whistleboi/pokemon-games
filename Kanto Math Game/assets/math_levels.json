@@ -71,7 +71,7 @@
     }
   ],
   "auto": {
-    "_comment": "GLOBAL uses total badges across all regions (8 per region, 9 regions = 72 max).",
+    "_comment": "GLOBAL uses total badges across all regions (8 a region; the new-game list has 11 regions, so the top steps come late).",
     "GLOBAL": [[0, 2], [4, 3], [8, 4], [12, 5], [20, 6], [28, 7], [40, 8]],
     "KANTO": [[0, 2], [4, 3]],
     "JOHTO": [[0, 4], [3, 5], [6, 6]],

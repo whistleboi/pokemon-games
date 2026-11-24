@@ -38,6 +38,22 @@ def find(name):
     return out
 
 
+import json as _rj
+_PREV = {}
+for _pr in _rj.load(open("assets/pokemon_levels.json", encoding="utf-8"))["pairs"]:
+    _x, _y = (int(v) for v in _pr.split(">"))
+    _PREV.setdefault(_y, _x)
+
+
+def _line(pid):
+    """The first stage of a Pokemon's evolution line (a Shadow id stays itself)."""
+    seen = set()
+    while pid in _PREV and pid not in seen:
+        seen.add(pid)
+        pid = _PREV[pid]
+    return pid
+
+
 print("2) the bosses' teams from the games")
 for name, team in (("Cipher Admin Dakim", [229, 330, 205, 340, 344]), ("Cipher Admin Ein", [310, 121, 112, 279, 169]),
                    ("Cipher Admin Venus", [350, 182, 26, 40, 200]), ("Cipher Head Evice", [9399, 373, 68, 212, 289, 199]),
@@ -46,7 +62,9 @@ for name, team in (("Cipher Admin Dakim", [229, 330, 205, 340, 344]), ("Cipher A
                    ("Cipher Admin Miror B.", [348, 272, 272, 55, 294]), ("Cipher Nascour", [9431, 282, 178, 356, 365, 257]),
                    ("Cipher Admin Snattle", [375, 195, 212, 9422, 351, 9335]), ("Cipher Admin Ardos", [9403, 65, 230, 214, 9338, 9343]),
                    ("Cipher Admin Eldes", [291, 9412, 9430, 330, 9327, 9342]), ("Snagem Head Gonzap", [101, 274, 45, 340, 227])):
-    t = [x for x in find(name) if x["team"] == team]  # (Dakim, Ein and Snattle also have earlier story battles; Lovrina: her Cipher Lab
+    t = [x for x in find(name) if len(x["team"]) == len(team) and all(_line(a_) == _line(b_) for a_, b_ in zip(x["team"], team))]
+    # (11-24, L1: each Pokemon at the stage its level fits - Flygon at Lv 34 is a Trapinch - so the game's team is matched
+    #  line by line, by evolution family. Dakim, Ein and Snattle also have earlier story battles; Lovrina: her Cipher Lab
     #  battle from the XD disc since batch 5a - her later team comes with Citadark, batch 8)
     check(t and len(t[0]["levels"]) == len(team), f"{name}")
 gv = next(o for o in orre["XD_CITADARK_ISLE"]["route_menu"] if "GREEVIL" in o["text"])

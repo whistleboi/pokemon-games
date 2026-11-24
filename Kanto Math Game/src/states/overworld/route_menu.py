@@ -477,7 +477,9 @@ class RouteMenu:
         if condition == "shadows_left":  # Orre: a Shadow Pokemon here not yet snagged
             return self._next_shadow() is not None
         if condition == "shadows_cleared":  # every Shadow Pokemon here snagged: Cipher's stragglers
-            return bool(self.area_data.get("shadow_pool")) and self._next_shadow() is None
+            _fl = self.game.story_manager.story_flags   # (11-24: something to bring back - a Shadow of this list that isn't only its own
+            return (any(not s_.get("event_only") or _fl.get(s_["flag"]) for s_ in self.area_data.get("shadow_pool") or [])   # trainer's,
+                    and self._next_shadow() is None)   # or one you've snagged already: farming, Jordan 11-24)
 
         if condition == "boss_available":
             is_defeated = self._check_route_condition("boss_defeated", trainers_left)

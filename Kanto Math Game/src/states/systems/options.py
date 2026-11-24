@@ -181,9 +181,8 @@ class OptionsState(GameState):
     def _level_note(self, entry):
         if entry["key"] != "AUTO":
             return entry["desc"]
-        story, math = self.story, self.game.math
-        region = story.get_current_region()
-        return f"Grows with you (now {math.level_by_id[math.auto_level(region, len(story.badges.get(region, [])))]['name'].title()})"
+        story, math = self.story, self.game.math   # (the level AUTO really gives: all regions' badges together, as get_math_level)
+        return f"Grows with you (now {math.level_by_id[math.resolve_level('AUTO', 'GLOBAL', story.get_total_badges())]['name'].title()})"
 
     def _draw_levels(self, screen, accent):
         f = self.f

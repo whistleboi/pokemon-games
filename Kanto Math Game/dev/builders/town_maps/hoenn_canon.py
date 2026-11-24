@@ -721,6 +721,33 @@ def _hideout_one_horde(maps):
     f["trainer_spots"] = names[:k] + names[k + 1:]
 
 
+def _frontier_slots(maps):
+    """Clean-up (11-24, Dev Map clean-hoenn-encyclopedia-frontier-game-corner): the Battle Frontier's secret Game Corner is a
+    room of a route map, where a slot machine is a "slot" tile (dungeon.py _beside("decor:slot")); its machines (Emerald's
+    Mauville Game Corner rows, two wide, rows 6-8) were plain wall."""
+    room = ((maps.get("HOENN_BATTLE_FRONTIER") or {}).get("rooms") or {}).get("secret_corner")
+    if not room:
+        return
+    dec = dict(room.get("decor") or {})
+    for x0 in (2, 7, 14, 18):
+        for x in (x0, x0 + 1):
+            for y in (6, 7, 8):
+                if room["art"][y][x] == "c":
+                    dec[f"{x},{y}"] = "slot"
+    room["decor"] = dec
+
+
+def _wallace_131(maps):
+    """Clean-up (11-24, Dev Map clean-hoenn-delta-run-stuck): in the Delta Episode Wallace waits by Sky Pillar's door
+    (ORAS), not wherever the route had room for him - he was set down in sea pockets you couldn't surf to. His spot: beside
+    the door (36, 6), talked to from the water below him."""
+    m = maps.get("HOENN_ROUTE_131")
+    f = ((m or {}).get("floors") or [m])[0] if m else None
+    if not f or "BATTLE WALLACE" in (f.get("people") or []):
+        return
+    _F._put(f, "N", "people", [[37, 6, "BATTLE WALLACE"]])
+
+
 def _part(m, floor, room):
     if room:
         return m["rooms"][room]
@@ -808,6 +835,8 @@ def apply(maps):
     _steven_meteor_falls(maps)
     _ship_legends(maps)
     _hideout_one_horde(maps)
+    _frontier_slots(maps)
+    _wallace_131(maps)
     _h7(maps)
     for key, floor, room, x, y, who in PEOPLE:
         m = maps.get(key)
