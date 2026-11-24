@@ -76,6 +76,15 @@
     ]
   },
   "figures": {
+    "CAVE_POKE_SPOT:CIPHER STRAGGLER": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "OASIS_POKE_SPOT:CIPHER STRAGGLER": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
+    "ORRE_POKE_SPOTS:CIPHER STRAGGLER": {
+      "sheet": "orre_trainer_cipher_grunt.png"
+    },
     "HOENN_METEOR_FALLS:Steven": {"sheet": "em_134.png"},
     "HOENN_ROUTE_112:Cable Car attendant": {"sheet": "em_45.png"},
     "HOENN_MT_CHIMNEY:Cable Car attendant": {"sheet": "em_45.png"},

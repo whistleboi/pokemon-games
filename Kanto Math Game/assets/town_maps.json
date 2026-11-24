@@ -353266,14 +353266,14 @@
      "cccccccccccccccc",
      "cccccccccccccccc",
      "cccc.cc.cc.ccccc",
-     "ccc...N....c.ccc",
+     "ccc........c.ccc",
      "c.............cc",
      "cc.............c",
      "cc.............c",
-     "cc.....c.......c",
+     "ccN....c..N....c",
      "cc............cc",
      "ccc..N..N.....cc",
-     "ccc....N...N.ccc",
+     "ccc....N..N..ccc",
      "ccc........ccccc",
      "ccc.cc...ccccccc",
      "cccccc...cc.cccc",
@@ -353290,6 +353290,7 @@
     "links": {},
     "parts": true,
     "people": [
+     "CIPHER STRAGGLER",
      "WANDERER MIROR B.",
      "SNAG SHADOW POKEMON",
      "SNAG AGAIN",
@@ -353392,7 +353393,8 @@
    "SNAG SHADOW POKEMON": 0,
    "SNAG AGAIN": 0,
    "MIROR B. AT THE CAVE": 0,
-   "WANDERER MIROR B.": 0
+   "WANDERER MIROR B.": 0,
+   "CIPHER STRAGGLER": 0
   },
   "theme": "tunnel"
  },
@@ -353405,12 +353407,12 @@
      "cccc.cc.cc.ccccc",
      "ccc........c.ccc",
      "c.............cc",
-     "cc........N....c",
      "cc.............c",
+     "cc.........N...c",
      "cc.....c.......c",
-     "cc............cc",
-     "ccc........N..cc",
-     "ccc..N..N....ccc",
+     "cc.N..........cc",
+     "ccc.N..N......cc",
+     "ccc.....N....ccc",
      "ccc........ccccc",
      "ccc.cc...ccccccc",
      "cccccc...cc.cccc",
@@ -353427,6 +353429,7 @@
     "links": {},
     "parts": true,
     "people": [
+     "CIPHER STRAGGLER",
      "WANDERER MIROR B.",
      "REPORTER POFTY",
      "DUKING AT THE ROCK",
@@ -353474,7 +353477,8 @@
   "figure_floors": {
    "DUKING AT THE ROCK": 0,
    "REPORTER POFTY": 0,
-   "WANDERER MIROR B.": 0
+   "WANDERER MIROR B.": 0,
+   "CIPHER STRAGGLER": 0
   },
   "theme": "tunnel"
  },
@@ -353486,16 +353490,16 @@
      "cccccccccccccccccc",
      "ccccccc..ccccccccc",
      "cccccc....cc..cccc",
-     "cccc........c.cccc",
+     "cccc...N....c.cccc",
      "ccc...........cccc",
-     "ccc...N........ccc",
+     "ccc.....N......ccc",
      "cc.............ccc",
      "ccc............ccc",
      "cc......c......ccc",
-     "cc.....N.........c",
+     "cc...............c",
      "c........N.....ccc",
      "ccc.............cc",
-     "ccccc........ccccc",
+     "ccccc.....N..ccccc",
      "cccc.........ccccc",
      "ccccccc.....cccccc",
      "ccccccc...cccccccc",
@@ -353511,8 +353515,8 @@
     "links": {},
     "parts": true,
     "people": [
+     "CIPHER STRAGGLER",
      "WANDERER MIROR B.",
-     "DUKING AT THE OASIS",
      {
       "text": "Snack tray",
       "action": "EVENT",
@@ -353521,7 +353525,8 @@
        "snack_tray": true,
        "lines": []
       }
-     }
+     },
+     "DUKING AT THE OASIS"
     ],
     "trainer_spots": [],
     "roofs": {
@@ -353556,7 +353561,8 @@
   ],
   "figure_floors": {
    "DUKING AT THE OASIS": 0,
-   "WANDERER MIROR B.": 0
+   "WANDERER MIROR B.": 0,
+   "CIPHER STRAGGLER": 0
   },
   "theme": "tunnel"
  },

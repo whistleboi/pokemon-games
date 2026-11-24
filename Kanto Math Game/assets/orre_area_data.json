@@ -644,6 +644,15 @@
           "condition": "miror_b_here"
         },
         {
+          "text": "CIPHER STRAGGLER",
+          "action": "EVENT",
+          "color": "GOLD",
+          "condition": "world:orre_farm:here",
+          "event": {
+            "world": "orre_farm"
+          }
+        },
+        {
           "text": "Desert Trail",
           "action": "EXIT",
           "target_area": "ORRE_DESERT",
@@ -2140,6 +2149,15 @@
             ]
           },
           "condition": "miror_b_here"
+        },
+        {
+          "text": "CIPHER STRAGGLER",
+          "action": "EVENT",
+          "color": "GOLD",
+          "condition": "world:orre_farm:here",
+          "event": {
+            "world": "orre_farm"
+          }
         },
         {
           "text": "Pyrite Town",
@@ -4497,6 +4515,15 @@
             ]
           },
           "condition": "miror_b_here"
+        },
+        {
+          "text": "CIPHER STRAGGLER",
+          "action": "EVENT",
+          "color": "GOLD",
+          "condition": "world:orre_farm:here",
+          "event": {
+            "world": "orre_farm"
+          }
         },
         {
           "text": "Agate Village",
