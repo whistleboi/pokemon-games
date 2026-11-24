@@ -91,6 +91,25 @@ def partner_for(game, area, opt):
     return (name, got[0]) if name else None
 
 
+def pick_spot(home, free, start=None):
+    """Where a partner stands beside home: one of its four sides that free(t) allows, never the owner's last side you can
+    walk up to (11-24, Hoenn: Maxie at the Space Center and Tate in Mossdeep Gym each had one open side, and their
+    partner took it - no battle). A side that is a dead end (nothing free round it but the owner) is taken first; a side
+    you could walk up by only if another such side stays open. None: nowhere it can stand without shutting the owner in.
+    (start: unused, kept for callers.)"""
+    hx, hy = home
+    sides = [(hx + 1, hy), (hx - 1, hy), (hx, hy + 1), (hx, hy - 1)]
+    cands = [t for t in sides if free(t)]
+    if not cands:
+        return None
+    around = lambda t: [n for n in ((t[0] + 1, t[1]), (t[0] - 1, t[1]), (t[0], t[1] + 1), (t[0], t[1] - 1))
+                        if n != tuple(home) and free(n)]
+    nook = [t for t in cands if not around(t)]
+    if nook:
+        return nook[0]
+    return cands[0] if len(cands) >= 2 else None
+
+
 def line(owner, species):
     """What you're told when you talk to the partner (our own words)."""
     who = owner.split(" (")[0]

@@ -1341,9 +1341,9 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
             got = partners.partner_for(self.game, self.area_data, info)
             if not got:
                 continue
-            spot = next(((m.x + dx, m.y + dy) for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))
-                         if f.walkable(m.x + dx, m.y + dy) and not f.occupied(m.x + dx, m.y + dy)
-                         and f.tile(m.x + dx, m.y + dy) != core.SURF and (m.x + dx, m.y + dy) != tuple(self.run.player)), None)
+            _free = lambda t: (0 <= t[0] < f.w and 0 <= t[1] < f.h and f.walkable(*t) and not f.occupied(*t)
+                               and f.tile(*t) != core.SURF and t != tuple(self.run.player))
+            spot = partners.pick_spot((m.x, m.y), _free, self.run.player)   # (never the owner's last side you can reach)
             if spot is None:
                 continue
             species, owner = got
@@ -5991,6 +5991,33 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
                 return None
             return next(((x + dx, y + dy) for dx, dy in core.DIRS if floors[i].decor.get((x + dx, y + dy)) == "statue"), None)
 
+        _diver = story.inventory.get("HM_DIVE", 0) > 0 or story.inventory.get("SCUBA_GEAR", 0) > 0
+        dives = {}   # (a node reached by Dive or by coming up: (the tile you do it on, "Dive" / "Surface"); 11-24, Hoenn)
+        _lay = self.run.recipe.get("layout") or []
+        lay = lambda j: _lay[j] if j < len(_lay) and isinstance(_lay[j], dict) else {}   # (the Dive keys live in the recipe's layout, as dive_here reads them)
+
+        def dive_to(i, x, y):
+            """Down from deep sea at (x, y), or up from the seabed's sunlit floor: (floor, x, y) where you come out, as
+            dive_here / surface_here put you. None: no Dive here."""
+            plan = lay(i)
+            up_free = plan.get("surface") is not None and not lay(plan["surface"]).get("dive_links") if plan.get("surface") is not None and 0 <= plan["surface"] < len(_lay) else False
+            if not _diver or ((x, y) not in (getattr(floors[i], "deep", None) or ()) and not up_free):
+                return None   # (Dive only on deep sea; up from a seabed's sunlit floor - or anywhere with open sea above, on a seabed without links, as surface_here)
+            if plan.get("dive") is not None and not plan.get("dive_at") and 0 <= plan["dive"] < len(floors):
+                to, below = plan["dive"], floors[plan["dive"]]
+                spot = (x, y)
+                if plan.get("dive_links"):
+                    spot = self._linked_spot(plan["dive_links"], "up", "down", (x, y),
+                                             lambda a, b: (a, b) in below.deep and below.walkable(a, b))
+                return (to, *spot) if spot and below.walkable(*spot) else None
+            if plan.get("surface") is not None and 0 <= plan["surface"] < len(floors):
+                to, above = plan["surface"], floors[plan["surface"]]
+                links = lay(to).get("dive_links")
+                spot = self._linked_spot(links, "down", "up", (x, y), lambda a, b: (a, b) in above.deep and above.tile(a, b) == core.SURF
+                                         and (a, b) not in above.exits) if links else (x, y)
+                return (to, *spot) if spot and above.tile(*spot) == core.SURF and spot not in above.exits else None
+            return None
+
         first = (*start, frozenset())
         prev, q, passed = {first: None}, deque([first]), set()
         while q:
@@ -6007,6 +6034,13 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
                     t2 = (x + dx, y + dy)
                     if t2 in thin[i][1] and 0 <= to < len(floors) and floors[to].walkable(*t2):
                         nxt.append((to, t2[0], t2[1], tog))
+            if not through and _diver:   # (Dive down from deep sea, or up from the seabed's sunlit floor)
+                d2 = dive_to(i, x, y)
+                if d2 is not None:
+                    n2 = (*d2, tog)
+                    if n2 not in prev:
+                        dives[n2] = ((x, y), "Dive" if lay(i).get("dive") is not None else "Surface")
+                        nxt.append(n2)
             if not through and panels[i]:   # (a lift panel beside you: ride to any floor it serves, onto the car's spot there)
                 for dx, dy in core.DIRS:
                     for f2, x2, y2, lab in panels[i].get((x + dx, y + dy), ()):
@@ -6067,6 +6101,8 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
                 return (spot, "Switch") if a[0] == self.run.index else None
             if a in passed and prev.get(b) == a:
                 return ((a[1], a[2]), "To " + self._floor_name(b[0]) if b[0] != a[0] else "Warp") if a[0] == self.run.index else None
+            if b[0] != a[0] and dives.get(b) and prev.get(b) == a:   # (Dive / come up: the tile to do it on)
+                return (dives[b][0], dives[b][1]) if a[0] == self.run.index else None
             if b[0] != a[0] and a not in passed and rides.get(b) and prev.get(b) == a:   # (a lift ride: its panel, and the floor to pick)
                 if a[0] != self.run.index:
                     return None
