@@ -6,6 +6,11 @@
   "CASTELIA_CITY": "c_03",
   "CASTELIA_EMPTY_LOT": "c_03",
   "CASTELIA_SEWERS": "sw_d_gesui",
+  "CELESTIAL_TOWER": "d_05",
+  "CELESTIAL_TOWER_2F": "d_05",
+  "CELESTIAL_TOWER_3F": "d_05",
+  "CELESTIAL_TOWER_4F": "d_05",
+  "CELESTIAL_TOWER_ROOF": "d_05",
   "CHARGESTONE_CAVE": "d_02",
   "CHARGESTONE_CAVE_B1F": "d_02",
   "CHARGESTONE_CAVE_B2F": "d_02",
@@ -43,6 +48,7 @@
   "LOSTLORN_FOREST": "d_06",
   "MISTRALTON_CAVE": "d_02",
   "MISTRALTON_CAVE_2F": "d_02",
+  "MISTRALTON_CITY": "c_06",
   "NIMBASA_CITY": "c_04",
   "PLASMA_FRIGATE": "sw_d_27_f_ajito",
   "PLEDGE_GROVE": "d_01",
@@ -54,6 +60,12 @@
   "RELIC_PASSAGE_MIDDLE": "d_02",
   "RELIC_PASSAGE_NORTH": "d_02",
   "ROYAL_UNOVA": "pleasure_boat",
+  "TWIST_MOUNTAIN_ENTRANCE": {
+   "AUTUMN": "r_d_au",
+   "SPRING": "r_d_sp",
+   "SUMMER": "r_d_su",
+   "WINTER": "r_d_wi"
+  },
   "UNOVA_ROUTE_16": {
    "AUTUMN": "r_c_au",
    "SPRING": "r_c_sp",
@@ -85,6 +97,12 @@
    "WINTER": "r_c_wi"
   },
   "UNOVA_ROUTE_6": {
+   "AUTUMN": "r_d_au",
+   "SPRING": "r_d_sp",
+   "SUMMER": "r_d_su",
+   "WINTER": "r_d_wi"
+  },
+  "UNOVA_ROUTE_7": {
    "AUTUMN": "r_d_au",
    "SPRING": "r_d_sp",
    "SUMMER": "r_d_su",
@@ -127,6 +145,8 @@
   "LIBERTY_GARDEN:lighthouse": "d_03",
   "LIBERTY_GARDEN:victini_room": "d_03",
   "LOSTLORN_FOREST:grotto": "kemonomichi",
+  "MISTRALTON_CITY:center": "pokecen",
+  "MISTRALTON_CITY:gym": "flight_gym_01",
   "NIMBASA_CITY:car": "battle_subway",
   "NIMBASA_CITY:center": "pokecen",
   "NIMBASA_CITY:gate_e": "gate",
@@ -149,6 +169,7 @@
   "UNOVA_ROUTE_5:grotto": "kemonomichi",
   "UNOVA_ROUTE_6:grotto": "kemonomichi",
   "UNOVA_ROUTE_6:grotto2": "kemonomichi",
+  "UNOVA_ROUTE_7:grotto": "kemonomichi",
   "VIRBANK_CITY:center": "pokecen",
   "VIRBANK_CITY:gate_n": "gate",
   "VIRBANK_CITY:gate_w": "gate",

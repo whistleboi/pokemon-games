@@ -111,6 +111,7 @@
       [1, {"money": 3000}],
       [3, {"tm": "TM185", "items": {"ULTRA_BALL": 5}}],
       [5, {"tm": "TM346", "money": 10000}]]},
+    {"id": "safari", "name": "Safari Explorer", "count": "safari", "desc": "Catch Pokemon in the Safari Zone west of Cianwood with Safari Balls.", "tiers": [[5, {"money": 3000}], [15, {"tm": "TM084", "items": {"ULTRA_BALL": 5}}], [30, {"items": {"RARE_CANDY": 5}, "money": 5000}]]},
     {"id": "evolved", "name": "Evolution Fan", "count": "evolved", "desc": "Watch your Pokemon evolve.", "tiers": [
       [5, {"items": {"SUN_STONE": 1}}],
       [20, {"tm": "TM079", "items": {"KINGS_ROCK": 1}}],
@@ -205,6 +206,7 @@
     {"id": "smash", "name": "Rock Breaker", "count": "smash", "desc": "Find wild Pokemon hiding in rocks with Rock Smash.", "tiers": [[3, {"items": {"DUSK_BALL": 5}}], [10, {"tm": "TM179"}], [25, {"tm": "TM121", "money": 5000}]]},
     {"id": "berry_picks", "name": "Berry Picker", "count": "berry_picks", "desc": "Pick Berries from the trees along Sinnoh's routes. They grow back every day.", "tiers": [[10, {"items": {"SUPER_REPEL": 5}}], [50, {"tm": "TM194", "money": 3000}], [150, {"tm": "TM131", "money": 5000}]]},
     {"id": "poffins", "name": "Poffin Chef", "count": "poffins", "desc": "Cook Poffins at the Poffin House in Hearthome City.", "tiers": [[1, {"money": 2000}], [10, {"tm": "TM037", "money": 2000}], [30, {"tm": "TM127", "money": 5000}]]},
+    {"id": "safari", "name": "Safari Explorer", "count": "safari", "desc": "Catch Pokemon in Pastoria's Great Marsh with Safari Balls.", "tiers": [[5, {"money": 3000}], [15, {"tm": "TM084", "items": {"ULTRA_BALL": 5}}], [30, {"items": {"RARE_CANDY": 5}, "money": 5000}]]},
     {"id": "evolved", "name": "Evolution Fan", "count": "evolved", "desc": "Watch your Pokemon evolve.", "tiers": [[5, {"items": {"WATER_STONE": 1}}], [20, {"tm": "TM162", "items": {"DAWN_STONE": 1, "DUSK_STONE": 1}}], [50, {"tm": "TM147", "items": {"SHINY_STONE": 1, "MOON_STONE": 1}}]]},
     {"id": "stones", "name": "Stone Collector", "count": "evo_items", "desc": "Evolve Pokemon with evolution stones and other items.", "tiers": [[1, {"money": 2000}], [4, {"tm": "TM255", "items": {"SUN_STONE": 1}}], [8, {"tm": "TM062", "money": 5000}]]},
     {"id": "caught", "name": "Pokemon Catcher", "count": "caught", "desc": "Catch wild Pokemon, any kind, as many as you like.", "tiers": [[25, {"items": {"GREAT_BALL": 10}}], [100, {"tm": "TM063", "items": {"ULTRA_BALL": 10}}], [250, {"tm": "TM330", "money": 10000}]]}

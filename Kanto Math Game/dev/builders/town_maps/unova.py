@@ -4708,6 +4708,292 @@ for _m, _z, _came, _door in (
     _arrive(_m, _z, _came, _door)   # (1F <-> B1F's two other stairs land at the north ones, till the walker finds its door)
 
 
+# ======================================================================================================== batch 6b (11-24)
+# Mistralton City (107: Skyla's Gym 108, the Pokemon Center 109, the runway kids' house 110, the Cargo Service 111, the TM
+# fan's house 112), Route 7 (337: the trade house 343, the rest house 344, Hidden Grotto 5), Celestial Tower (338 1F, 339
+# 2F, 340 3F, 341 4F, 342 the roof: each its own place, the spiral ramps' ends its stairs), Twist Mountain's mouth (198:
+# Marshal; the inside after the Champion). Story flags: visited_MISTRALTON_CITY -> b2_mist_juniper (Juniper's Master
+# Ball; Skyla) -> b2_jet_badge -> b2_lucky_egg (Juniper in Celestial Tower) -> b2_lentimas_flight (the Cargo Service:
+# Skyla flies you, Juniper and Bianca to Lentimas Town). Side: b2_runway_secret (the kids' treasure, TM40 Aerial Ace),
+# b2_celestial_bell, b2_r7_mom_call, b2_twist_marshal.
+MIST_SCENES = [
+    {"trigger": {"zone": [36, 45, 40, 45]}, "condition": ["not:b2_mist_juniper"], "flag": "b2_mist_juniper",
+     "cast": [{"sheet": "b2_juniper.png", "from": [26, 41], "to": "player", "stay": True, "lines": [
+         "Professor Juniper: Hi there, {player_name}! It's nice to finally talk to you in person! I'm Professor Juniper!",
+         "Professor Juniper: You took the Pokedex and came all this way with your partners... Let me see how you're doing!",
+         "Professor Juniper: Wonderful! Thank you! This is a token of my gratitude.",
+         "{player_name} received a Master Ball!",
+         "Professor Juniper: The Master Ball can catch any Pokemon without fail. Journeys are about meeting Pokemon. "
+         "Don't let a chance get away!"]},
+              {"sheet": "b2_c228.png", "from": [25, 41], "to": "player", "stay": True, "lines": [
+                  "???: Professor Juniperrrrr!", "Professor Juniper: Why, if it isn't Skyla! She's Mistralton's Gym Leader.",
+                  "Skyla: Why so surprised, Professor? You asked for a lift in my plane over Twist Mountain, since you can't "
+                  "reach Opelucid City on foot."]},
+              {"as": 0, "lines": ["Professor Juniper: Aha ha! You're right. But first, I'd like a look at Celestial Tower. "
+                                  "Do you mind waiting till I'm through? See you, {player_name}!"], "leave": [44, 34]},
+              {"as": 1, "lines": ["Skyla: Honestly! Is she laid back, or just not paying attention? The apple sure doesn't "
+                                  "fall far from the tree.",
+                                  "Skyla: So, what's next? Coming to my Gym? Or following the professor to Celestial Tower to "
+                                  "train? As long as I get to battle a strong Trainer, I'm fine either way!"],
+               "leave": [14, 13]}],
+     "event": {"gift_item": {"MASTER_BALL": 1}}},
+]
+OUTSIDE.update({108: 107, 109: 107, 110: 107, 111: 107, 112: 107})
+MIST_GYM = room(108, {
+    3: {"text": "Gym", "action": "GYM", "_look": "sheet:b2_c228.png"},
+    5: _gift("Gym guide", ["Ow... Oh, I'm sorry! Let me apologize with this Fresh Water. Take it, please!"], "FRESH_WATER",
+             "b2_clyde_mistralton", ["This Gym is a wind tunnel! When the propellers at the back spin up fast, you'll be "
+                                     "blown right back to the door. Hide behind a wall and wait for the wind to stop.",
+                                     "Flying-types have more weaknesses than you'd think: Rock-, Electric- and Ice-type moves!"]),
+    **{n: _b2_battle(name, tid, "gym_trainer_MISTRALTON_CITY_%d" % (k + 1), lines, ["%s: You're a high flyer!" % name], done)
+       for k, (n, tid, name, lines, done) in enumerate((
+           (6, 332, "Pilot Elron", ["Pilot Elron: The wind in here is nothing! Let's battle!"], ["Pilot Elron: Skyla flies higher than anyone."]),
+           (4, 152, "Pilot Chase", ["Pilot Chase: Clear for takeoff!"], ["Pilot Chase: You got through the gusts. Nice!"]),
+           (2, 151, "Pilot Ewing", ["Pilot Ewing: Flying-types rule the skies!"], ["Pilot Ewing: You'll need more than tailwind to beat Skyla."]),
+           (0, 149, "Pilot Flynn", ["Pilot Flynn: Turbulence ahead!"], ["Pilot Flynn: Smooth landing. Skyla's waiting."]),
+           (1, 150, "Pilot Winslow", ["Pilot Winslow: You made it this far against the wind? Let's see!"], ["Pilot Winslow: Ready for the Leader!"])))},
+}, {(13, 45): ["MISTRALTON GYM", "Leader: Skyla", "The Highflying Girl"], (9, 45): ["MISTRALTON GYM", "Leader: Skyla"]}, (14, 12))
+MIST_GYM["title"] = "Mistralton Gym"
+MIST_CENTER = room(109, {
+    0: {"text": "Pokémon Center", "action": "HEAL"}, 2: {"text": "Shop", "action": "SHOP"},
+    3: _say("Clerk ", "Specialty Poke Balls are over here!"), 4: _say("Clerk  ", "The counter on the left sells everyday items."),
+    6: {"text": "Mr. Medal", "action": "EVENT", "event": {"medal_rally": True}},
+    8: _say("Pilot by the counter", "The Entralink... Some say it's the source of Unova's special powers. Still a mystery!"),
+    9: _say("Ducklett", "Ducklett: Kwack!"),
+    10: _say("Woman with a Litwick", "After a battle I feel a bit burned out. But as long as my Litwick's with me, I'm OK!"),
+}, {}, (44, 48))
+MIST_CENTER["title"] = "Pokémon Center"
+MIST_KIDS = room(110, {
+    0: _say("Girl by the window", "Why are there gardens all around the runway? So the vegetables fly off fresh!"),
+    1: _say("Ducklett ", "Ducklett: Kwa!"),
+    2: _say("Boy by the table", "Woooosh! The wind blows really hard in Skyla's Gym!"),
+    3: [_say("Runway kid", "If you have a Badge from Mistralton, I'll tell you something cool!", condition=["not:b2_jet_badge"]),
+        {"text": "Runway kid ", "action": "EVENT", "condition": ["b2_jet_badge"], "event": {
+            "lines": ["Wow! A Jet Badge! OK, here's something cool: we left our treasure at the edge of the runway!"],
+            "flag": "b2_runway_secret", "done": ["Our treasure's at the south end of the runway!"]}}],
+}, {}, (40, 39))
+MIST_KIDS["title"] = "House"
+MIST_CARGO = room(111, {
+    1: [_say("Receptionist", "This is Mistralton Cargo Service: 'Deliver a lot of cargo quickly!'",
+             "We carry passengers now too, but that's up to the Gym Leader.", condition=["not:b2_lentimas_flight"]),
+        {"text": "Receptionist ", "action": "EVENT", "condition": ["b2_lentimas_flight"], "event": {
+            "lines": ["Mistralton Cargo Service! Would you like to fly to Lentimas Town? Please board, and Skyla will take you."],
+            "travel": "LENTIMAS_TOWN"}}],
+    4: [_say("Skyla", "Skyla: Professor Juniper is at Celestial Tower, at the end of Route 7. Could you go and get her? "
+                      "I've got to finish the flight preparations!",
+             condition=["b2_jet_badge", "not:b2_lucky_egg", "not:b2_lentimas_flight"]),
+        {"text": "Skyla ", "action": "EVENT", "_look": "sheet:b2_c228.png",
+         "condition": ["b2_jet_badge", "b2_lucky_egg", "not:b2_lentimas_flight"], "event": {
+             "lines": ["Skyla: Looks like the professor's done with her research. Ready to hop aboard my plane?",
+                       "Professor Juniper: Hi there! Sorry to keep you waiting. Let's give Skyla a chance to show off her "
+                       "piloting! Please take us to Lentimas Town!",
+                       "Bianca: Waaaaait! You guys! Wait, wait, wait! Hff... I want to fly too! I want to do some research "
+                       "on Reversal Mountain!",
+                       "Professor Juniper: Bianca! You're turning into a real researcher! OK, everyone, off to Lentimas Town!",
+                       "Skyla: Hee-hee! Everyone's here! Time to fly the Unova skies!"],
+             "flag": "b2_lentimas_flight", "travel": "LENTIMAS_TOWN"}}],
+    2: _say("Professor Juniper", "Professor Juniper: Celestial Tower was fascinating! Shall we fly?",
+            condition=["b2_jet_badge", "b2_lucky_egg", "not:b2_lentimas_flight"]),
+    6: _say("Maid", "Bring me Sweet Hearts and I'll trade you a Heart Scale! ...Do you have any? Oh well!"),
+    7: {"text": "Worker loading cargo", "action": "EVENT", "event": {"world": "unova_story", "party_type": {
+        "types": ["FLYING", "PSYCHIC"], "flag": "b2_cargo_net_balls", "gift": {"NET_BALL": 5},
+        "fail": ["These boxes are so heavy... If only I had a Flying- or Psychic-type Pokemon to help me lift them!"],
+        "done": ["Thanks to you, the cargo's all loaded!"]},
+        "lines": ["Hey! Is that a Flying-type? ...Or a Psychic-type? Could it help me lift these boxes?",
+                  "Up they go! Thanks a lot! Here, take these!", "You received 5 Net Balls!"]}},
+    8: _say("Worker by the crates", "Mistralton's vegetables fly all over the world from here!"),
+    10: _say("Worker at the back", "Skyla's grandfather was a legendary pilot. She's even better than he was!"),
+}, {}, (28, 39))
+MIST_CARGO["title"] = "Mistralton Cargo Service"
+MIST_TM_HOUSE = room(112, {
+    0: {"text": "TM fan", "action": "EVENT", "event": {"world": "unova_story", "tm_lady": True}},
+    1: _say("Girl in the TM house", "You can trade Sweet Hearts for Heart Scales. Or show off your Pokemon to a lady in "
+                                    "Driftveil for one!"),
+}, {}, (54, 51))
+MIST_TM_HOUSE["title"] = "House"
+MIST_TM_HOUSE["hidden"] = {"1,8": "IRON"}
+MISTRALTON = town(
+    107, {5: _ball("Poke Ball by the greenhouse", "TM278", "b2_mist_tm58", name="TM58 Sky Drop"),
+          6: _ball("Poke Ball by the south gardens", "MAX_REPEL", "b2_mist_max_repel", name="a Max Repel"),
+          0: {"text": "The runway kids' treasure", "action": "EVENT", "condition": ["b2_runway_secret", "not:b2_runway_tm40"],
+              "_look": "sheet:b2_item_ball.png", "event": {
+                  "lines": ["Oh! You found our treasure!", "Just kidding! Our Ducklett already knows Aerial Ace. So you can have "
+                            "this TM!", "{player_name} received TM40 Aerial Ace!",
+                            "Aerial Ace always hits its target! We hope it comes in handy!"],
+                  "gift_item": {"TM027": 1}, "flag": "b2_runway_tm40"}},
+          7: _say("Pokemon Breeder by the runway", "Mulch makes Berries grow! I'd pay well for it... if you ever have some to spare."),
+          12: _say("Pilot on the runway", "Mistralton's planes take passengers now. Not everyone's Pokemon can use Fly!"),
+          9: _say("Pokemon Ranger", "Fly is an amazing move! Even a teeny Pokemon can carry a person!"),
+          13: _say("Girl by the hangar", "That Skyla... She's even better than her grandpa, and he was a legendary pilot!"),
+          15: _say("Worker in the gardens", "Mistralton was a desolate patch of land. People and Pokemon built it together."),
+          14: _say("Worker by the runway", "Planes need a runway to fly, but Pokemon don't need a thing! Planes carry more, though."),
+          10: _say("Woman by the Center", "Team Plasma stole Pokemon like Purrloin from people. That's unforgivable!"),
+          16: _say("Gardener", "Vegetables grown in the wild are the best. Sometimes the Pokemon eat them first..."),
+          17: _say("Woman by the greenhouse", "Vegetables grown in a greenhouse are the best! All the goodness goes into them."),
+          11: _say("Boy by the Cargo Service", "Hey! Since you're here, I'll tell you a secret. ...Please keep it from Elesa, OK?")},
+    {1: ["MISTRALTON CITY", "Strewn with Windblown Leaves"], 2: ["MISTRALTON CARGO SERVICE", "Our slogan is 'Quick and Safe!'"],
+     3: ["MISTRALTON CITY POKEMON GYM", "Leader: Skyla", "The Highflying Girl"]},
+    {108: ("gym", "gym"), 109: ("center", "center"), 110: ("house", "house_kids"), 111: ("house", "cargo"), 112: ("house", "house_tm")},
+    {"gym": MIST_GYM, "center": MIST_CENTER, "house_kids": MIST_KIDS, "cargo": MIST_CARGO, "house_tm": MIST_TM_HOUSE},
+    edges={"^": ("UNOVA_ROUTE_7", [(x, 32) for x in range(51, 56)]), "v": ("CHARGESTONE_CAVE", [(39, 55)])},
+    hidden={"14,29": "FLYING_GEM"},
+    scenes=MIST_SCENES, title="Mistralton City")
+_wall(MISTRALTON, 32, 0, 63, 31)    # (the block north-east of the city is Route 7's: the file's picture leaves it empty)
+_wall(MISTRALTON, 32, 64, 63, 95)   # (and the block south-east)
+MISTRALTON["edge_to"] = {"%d,32" % x: [x - 32, 62] for x in range(51, 56)}
+
+# ---------------------------------------------------------------------------------------------------------------- Route 7
+OUTSIDE.update({343: 337, 344: 337})
+R7_HOUSE_W = room(343, {
+    0: {"text": "Hiker who wants Emolga", "action": "EVENT", "event": {
+        "lines": ["Kid! Have you caught an Emolga? Would you trade it for my Gigalith?",
+                  "OK! Let's start our Pokemon trade!"],
+        "trade": {"want": 587, "give": 526, "item": "LEPPA_BERRY"}, "flag": "b2_r7_trade",
+        "fail": ["Hey! Come on now! I want to trade for an Emolga... Come back with one!"],
+        "done": ["Oh! What a cute Pokemon! Please cherish Gigalith, too."]}},
+    1: _say("Ace Trainer in the house", "Trading Pokemon lets you get to know other Trainers!"),
+    2: _say("Petilil", "Petilil: Peti peti!"), 3: _say("Cottonee", "Cottonee: Cotttooon!"),
+}, {}, (6, 36))
+R7_HOUSE_W["title"] = "House"
+R7_HOUSE_E = room(344, {
+    0: {"text": "Girl by the TV", "action": "EVENT", "event": {"heal": True, "lines": [
+        "Oh, dear. Your team seems a bit sluggish. Rest for just a moment!", "...", "Your Pokemon were fully healed!"]}},
+    1: {"text": "Old farmer", "action": "EVENT", "event": {"world": "unova_story", "dex_register": [641, 642, 645],
+        "lines": ["In Unova there's Thundurus, who brings thunder, and Tornadus, who brings wind and rain. They ruin the crops I "
+                  "work so hard to raise.",
+                  "Long ago, right around here, a certain Pokemon taught those two a lesson. For about 30 years they kept quiet.",
+                  "I'll show you. This is Tornadus. And this is Thundurus!",
+                  "And the one who quieted them is Landorus. Feast your eyes! There's a shrine to it somewhere on Route 14.",
+                  "Tornadus, Thundurus and Landorus were registered in the Pokedex!"]}},
+    2: _say("Old woman", "Walking on the raised walkways is more tiring than you think, isn't it?"),
+    3: _say("Woman by the window", "I saw them! They looked different from the old stories, but it must have been them!"),
+}, {}, (34, 18))
+R7_HOUSE_E["title"] = "Rest House"
+TORNADUS = {"text": "Tornadus", "action": "BOSS", "color": "RED", "_look": "mon:641",
+            "condition": ["beat_unova_champion", "not:UNOVA_ROUTE_7_boss_defeated"],
+            "boss": {"id": 641, "name": "Tornadus", "level": 40, "victory_flag": "UNOVA_ROUTE_7_boss_defeated",
+                     "lines": ["A fierce wind tears across the route!", "Tornadus swoops down out of the storm!"]}}
+ROUTE_7 = route(
+    337, {9: _ball("Poke Ball by the south walkway", "ZINC", "b2_r7_zinc", name="a Zinc"),
+          10: _ball("Poke Ball on the east walkway", "TM105", "b2_r7_tm81", name="TM81 X-Scissor"),
+          11: _ball("Poke Ball in the west grass", "LEAF_STONE", "b2_r7_leaf_stone", name="a Leaf Stone"),
+          12: _ball("Poke Ball by the walkway", "ELIXIR", "b2_r7_elixir", name="an Elixir"),
+          16: _say("Hiker on the walkway", "If you stand still on the raised walkway, you'll fall off! ...Just kidding.")},
+    {1: ["ROUTE 7"], 2: ["CELESTIAL TOWER", "A place of rest for innocent spirits"],
+     3: ["TRAINER TIPS", "When your Pokemon is weaker than its opponent, it gets more Exp. Points from the battle."]},
+    exits={"v": ("MISTRALTON_CITY", [(x, 63) for x in range(17, 26)]), "^": ("TWIST_MOUNTAIN_ENTRANCE", [(x, 0) for x in range(40, 56)]),
+           "n": ("CELESTIAL_TOWER", [(11, 8)])},
+    trainers={0: ("Lass Flo", 5), 1: ("Pokemon Breeder Marcus", 2), 2: ("Preschooler Greg", 2), 3: ("Preschooler Chrissy", 3),
+              4: ("Twins Sola & Ana", 4), 6: ("Harlequin Pat", 1), 7: ("Harlequin Ian", 1), 8: ("Nursery Aide Hollie", 3),
+              13: ("Youngster Cody", 1)},
+    hidden={"14,2": "TINY_MUSHROOM", "32,19": "REVIVE"},
+    scenes=[{"trigger": {"zone": [40, 19, 40, 21]}, "condition": ["not:b2_r7_mom_call"], "flag": "b2_r7_mom_call",
+             "cast": [], "call": ["The Xtransceiver is ringing! {player_name} picked it up.",
+                                  "Mom: Hi, sweetie! Did you know I used to work at the reception of Pokemon Centers?",
+                                  "Mom: That's why I know: if your Pokemon are hurt, take them to a Center right away! "
+                                  "Take care!"]}],
+    rooms={"house_w": R7_HOUSE_W, "house_e": R7_HOUSE_E, "grotto": grotto_room(5, (9, 33))},
+    inside={"6,36": "house_w", "34,18": "house_e", "9,33": "grotto"},
+    extra_people=[(30, 22, TORNADUS)], title="Route 7")
+_doors(ROUTE_7, ROUTE_7["inside"])
+_wall(ROUTE_7, 32, 32, 63, 63)   # (Mistralton's block: the file's picture leaves it empty here)
+ROUTE_7["edge_to"] = dict({"%d,63" % x: [min(max(x + 32, 51), 55), 33] for x in range(17, 26)},
+                          **{"%d,0" % x: [min(max(x - 32, 12), 19), 30] for x in range(40, 56)})
+
+# ------------------------------------------------------------------------------------------------------- Twist Mountain
+TWIST_MOUTH = route(
+    198, {0: _say("Marshal", "Marshal: I'm Marshal, one of the Elite Four! I can't let you into Twist Mountain. The inside "
+                             "collapsed, and you can't get through!", condition=["not:beat_unova_champion"])},
+    {1: ["TWIST MOUNTAIN", "Watch out for wild Pokemon."]},
+    exits={"v": ("UNOVA_ROUTE_7", [(x, 31) for x in range(12, 20)]), "^": ("TWIST_MOUNTAIN", [(12, 10)])},
+    scenes=[{"who": "Marshal", "trigger": {"zone": [10, 11, 23, 12]}, "condition": ["not:beat_unova_champion", "not:b2_twist_marshal"],
+             "flag": "b2_twist_marshal", "approach": True, "lines": [
+                 "Marshal: I'm Marshal, one of the Elite Four! You look like a Trainer with potential, but I can't let you "
+                 "into Twist Mountain. The inside collapsed!",
+                 "Marshal: You can't get through to Icirrus City, or across to Opelucid. Go and challenge Mistralton's Gym!"]}],
+    title="Twist Mountain")
+TWIST_MOUTH["edge_to"] = {"%d,31" % x: [x + 32, 1] for x in range(12, 20)}
+TWIST_MOUTH["barred"] = [{"tiles": [[12, 10]], "until": {"flag_condition": "beat_unova_champion"}, "look": "unseen",
+                          "lines": ["Marshal: The inside collapsed! It's not safe to go in right now."]}]
+TWIST_MOUTH["gated_exits"] = {"TWIST_MOUNTAIN": ["beat_unova_champion"]}
+
+# ------------------------------------------------------------------------------------------------------ Celestial Tower
+# Five places: 1F (338) to 4F (341) and the roof (342). The file's stair warps sit off the walk grid (the floors are spiral
+# ramps), so each floor's way up and way down are the ends of its two ramps as the floor's picture shows them.
+BLACK_FOG = {"text": "The Black Fog", "action": "BOSS", "color": "PURPLE", "_look": "mon:93",
+             "condition": ["not:black_fog_banished_celestial_tower"],
+             "boss": {"id": 10501, "name": "Black Fog", "level": 36, "no_catch": True,
+                      "victory_flag": "black_fog_banished_celestial_tower",
+                      "lines": ["The air turns ice-cold. A black fog pours across the roof...",
+                                "Two huge eyes open in the dark. A giant Haunter rises: the Black Fog!",
+                                "Long ago people worshipped it as a god. It feeds on dreams. Don't let it get yours!"],
+                      "won": ["The Black Fog is too proud to ever be caught.",
+                              "It Self-Destructs in a burst of black mist... and is gone.",
+                              "But a cold whisper lingers: it will rise again in another haunted place."],
+                      "rewards": {"balls": 10, "RARE_CANDY": 3}}}   # (the menu era's own boss, kept: on the roof now)
+CT_1F = route(
+    338, {0: [{"text": "Professor Juniper", "action": "EVENT", "condition": ["not:b2_jet_badge", "not:b2_lucky_egg"],
+               "_look": "sheet:b2_juniper.png", "event": {
+                   "lines": ["Professor Juniper: Hi there! How were things with Skyla? You haven't got the Badge yet? Then I'll "
+                             "keep up my field work till the plane's ready. Oh! Why don't you try this?",
+                             "{player_name} received a Lucky Egg!",
+                             "Professor Juniper: A Pokemon holding a Lucky Egg gets more Exp. Points in battle. Strong "
+                             "Pokemon make it easier to fill your Pokedex!"],
+                   "gift_item": {"LUCKY_EGG": 1}, "flag": "b2_lucky_egg"}},
+              {"text": "Professor Juniper ", "action": "EVENT", "condition": ["b2_jet_badge", "not:b2_lucky_egg"],
+               "_look": "sheet:b2_juniper.png", "event": {
+                   "lines": ["Professor Juniper: Oh, right! How were things with Skyla? You won the Jet Badge! Then the plane "
+                             "must be ready! Thanks for coming to get me. Take this as thanks!",
+                             "{player_name} received a Lucky Egg!",
+                             "Professor Juniper: OK! I'll be waiting for you at the Cargo Service in Mistralton!"],
+                   "gift_item": {"LUCKY_EGG": 1}, "flag": "b2_lucky_egg"}},
+              _say("Professor Juniper  ", "Professor Juniper: Celestial Tower is a giant memorial. Did the Ghost- and "
+                                          "Psychic-types gather because it was built, or was it built where they lived?",
+                   condition=["b2_lucky_egg", "not:b2_jet_badge"])],
+          1: _say("Woman by the door", "This is Celestial Tower, where Pokemon are laid to rest..."),
+          2: _say("Man by the stairs", "There's a big bell at the very top. They say ringing it pleases the spirits."),
+          3: _say("Psychic by the graves", "...")},
+    {}, exits={"v": ("UNOVA_ROUTE_7", [(10, 23), (11, 23), (12, 23)]), "^": ("CELESTIAL_TOWER_2F", [(8, 1), (9, 1), (10, 1)])},
+    title="Celestial Tower")
+CT_2F = route(
+    339, {0: _ball("Poke Ball by the west graves", "HYPER_POTION", "b2_ct_hyper_potion", name="a Hyper Potion"),
+          1: _ball("Poke Ball by the east graves", "TM107", "b2_ct_tm61", name="TM61 Will-O-Wisp"),
+          2: _say("Woman by the graves", "Thanks to my Litwick's light, I can find my way!"),
+          3: _say("Boy by the graves", "All I wanted was to raise the same Pokemon he did, and battle together...")},
+    {}, exits={"v": ("CELESTIAL_TOWER", [(9, 19), (10, 19), (11, 19), (12, 19)]),
+               "^": ("CELESTIAL_TOWER_3F", [(12, 1), (13, 1), (14, 1)])},
+    trainers={4: ("Psychic Joyce", 3), 5: ("Pokéfan Jude", 4)}, title="Celestial Tower")
+CT_3F = route(
+    340, {0: _ball("Poke Ball by the graves", "REVIVE", "b2_ct_revive", name="a Revive"),
+          1: _say("Woman by the ramp", "Not hearing the bell means no happily ever after for that couple...")},
+    {}, exits={"v": ("CELESTIAL_TOWER_2F", [(5, 16), (6, 16), (7, 16)]), "^": ("CELESTIAL_TOWER_4F", [(9, 1), (10, 1), (11, 1), (12, 1)])},
+    trainers={2: ("Psychic Micki", 1), 3: ("Psychic Bryce", 3), 4: ("Pokéfan Georgia", 2), 5: ("Nurse Dixie", 1)},
+    title="Celestial Tower")
+CT_4F = route(
+    341, {0: _ball("Poke Ball by the west graves", "PP_UP", "b2_ct_pp_up", name="a PP Up"),
+          1: _ball("Poke Ball by the east graves", "TM061", "b2_ct_tm65", name="TM65 Shadow Claw"),
+          2: _say("Man by the ramp", "We were only thinking of ourselves, weren't we? Not of the Pokemon at our sides.")},
+    {}, exits={"v": ("CELESTIAL_TOWER_3F", [(7, 15), (8, 15), (9, 15), (10, 15)]), "^": ("CELESTIAL_TOWER_ROOF", [(9, 1), (10, 1), (11, 1), (12, 1)])},
+    trainers={3: ("Socialite Grace", 2), 4: ("Gentleman Daniel", 2), 5: ("Psychic Sarah", 2)}, title="Celestial Tower")
+CT_ROOF = route(
+    342, {}, {}, exits={"v": ("CELESTIAL_TOWER_4F", [(22, 14), (23, 14)])},
+    hidden={"10,13": "GHOST_GEM"}, extra_people=[(16, 12, BLACK_FOG)], title="Celestial Tower")
+for _m in (CT_1F, CT_2F, CT_3F, CT_4F):   # (Black 2's camera 33 looks along the inside walls; seen from it, or from our live camera,
+    _m["roofs"].pop("_cam", None)        #  the floor's lost: drawn top-down instead, the floor's own picture with its graves
+    _m.pop("cameras", None)              #  and ramps. Their live 3D files aren't kept, 11-24)
+CT_ROOF["sign_events"] = {"16,10": {"text": "The bell", "action": "EVENT", "event": {
+    "lines": ["It's Celestial Tower's bell.", "{player_name} rang the bell...", "The sound of the bell reverberates through the area..."],
+    "flag": "b2_celestial_bell"}}}
+for _m, _z, _came, _door in (
+        (CT_1F, 338, "UNOVA_ROUTE_7", (11, 23)), (CT_1F, 338, "CELESTIAL_TOWER_2F", (9, 1)),
+        (CT_2F, 339, "CELESTIAL_TOWER", (10, 19)), (CT_2F, 339, "CELESTIAL_TOWER_3F", (13, 1)),
+        (CT_3F, 340, "CELESTIAL_TOWER_2F", (6, 16)), (CT_3F, 340, "CELESTIAL_TOWER_4F", (10, 1)),
+        (CT_4F, 341, "CELESTIAL_TOWER_3F", (8, 15)), (CT_4F, 341, "CELESTIAL_TOWER_ROOF", (10, 1)),
+        (CT_ROOF, 342, "CELESTIAL_TOWER_4F", (22, 14)), (ROUTE_7, 337, "CELESTIAL_TOWER", (11, 8)),
+        (CHARGE_1F, 195, "MISTRALTON_CITY", (73, 5))):
+    _arrive(_m, _z, _came, _door)
+
+
 MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": FLOCCESY, "UNOVA_ROUTE_20": ROUTE_20,
         "FLOCCESY_RANCH_OUTSIDE": RANCH_OUTSIDE, "FLOCCESY_RANCH": RANCH, "PLEDGE_GROVE": PLEDGE_GROVE,
         "VIRBANK_CITY": VIRBANK, "VIRBANK_COMPLEX_OUTSIDE": COMPLEX_OUTSIDE, "VIRBANK_COMPLEX": COMPLEX, "POKESTAR_STUDIOS": POKESTAR,
@@ -4722,4 +5008,7 @@ MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": 
         "RELIC_PASSAGE": RP_SOUTH, "RELIC_CASTLE_DEPTHS": DEPTHS,
         "UNOVA_ROUTE_6": ROUTE_6, "CHARGESTONE_CAVE_ENTRANCE": CHARGE_ENTRANCE, "CHARGESTONE_CAVE": CHARGE_1F,   # (batch 6a)
         "CHARGESTONE_CAVE_B1F": CHARGE_B1F, "CHARGESTONE_CAVE_B2F": CHARGE_B2F, "MISTRALTON_CAVE": MISTRAL_1F,
-        "MISTRALTON_CAVE_2F": MISTRAL_2F, "GUIDANCE_CHAMBER": GUIDANCE}
+        "MISTRALTON_CAVE_2F": MISTRAL_2F, "GUIDANCE_CHAMBER": GUIDANCE,
+        "MISTRALTON_CITY": MISTRALTON, "UNOVA_ROUTE_7": ROUTE_7, "TWIST_MOUNTAIN_ENTRANCE": TWIST_MOUTH,   # (batch 6b)
+        "CELESTIAL_TOWER": CT_1F, "CELESTIAL_TOWER_2F": CT_2F, "CELESTIAL_TOWER_3F": CT_3F, "CELESTIAL_TOWER_4F": CT_4F,
+        "CELESTIAL_TOWER_ROOF": CT_ROOF}
