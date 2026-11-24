@@ -2922,6 +2922,8 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         else:
             self.say([f"That's not it! {name} ran away!"])
 
+    DARK_DOUBLE = 0.1   # (how often a dark-grass meeting is two wild Pokemon: about 1 in 10, Gen 5; an area may set "dark_double_rate")
+
     def _battle_wild(self, mover):
         from src.states.battle import WildBattleState
         self.pending = ("wild", mover)
@@ -2945,6 +2947,18 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
                 from src.states.battle_wild_double import WildDoubleBattleState
                 battle = WildDoubleBattleState(self.game, [mover.payload, other], self.area_key,
                                                partner=walk_partners.battle_partner(wp),
+                                               background_image=self._get_battle_background_for_area())
+                battle.play_state_data = self._play_data()
+                pygame.event.clear()
+                self.game.change_state(battle)
+                return
+        if (mover.x, mover.y) in self._dark_tiles() and random.random() < float(self.area_data.get("dark_double_rate", self.DARK_DOUBLE)):
+            # (dark grass: now and then two wild Pokemon at once, a wild double battle - Gen 5; Unova 11-24. A ball can be
+            #  thrown only once one of them is down, as in the games: battle_wild_double.py)
+            other = self._make_wild(random.Random(), (mover.x, mover.y))
+            if other is not None:
+                from src.states.battle_wild_double import WildDoubleBattleState
+                battle = WildDoubleBattleState(self.game, [mover.payload, other], self.area_key,
                                                background_image=self._get_battle_background_for_area())
                 battle.play_state_data = self._play_data()
                 pygame.event.clear()
