@@ -214,12 +214,13 @@ check(all(t.get("stays_beaten") for t in POOL), "every climber stays beaten till
 spots = {t["spot_name"] for t in POOL}
 check(spots == {f"Area {a} Trainer {k}" for a in range(1, 11) for k in range(1, 11)}, "ten spots in each of the ten areas")
 lv = lambda n: max(POOL[idx[n]]["levels"])
-check(lv("Beauty Miru") == 34 and lv("Area Leader Vander") == 38 and lv("Area Leader Eldof") == 40 and lv("Area Leader Taria") == 41
-      and lv("Area Leader Boyden") == 41 and lv("Cooltrainer Roze") == 42 and lv("Researcher Hombol") == 42 and lv("Mt. Battle Master Battlus") == 70,
-      "XD's Areas 1-4 raised to fit after Agate (Lv 34-42); Areas 5-10 keep the disc's levels")
+check(lv("Beauty Miru") == 25 and lv("Area Leader Vander") == 28 and lv("Area Leader Eldof") == 29 and lv("Area Leader Taria") == 30
+      and lv("Area Leader Boyden") == 30 and lv("Cooltrainer Roze") == 31 and lv("Researcher Hombol") == 31 and lv("Mt. Battle Master Battlus") == 50,
+      "Mt. Battle's climb fits its story stage (L1 11-24, orre_levels: Lv 25-31 after Agate, Battlus 50)")
 check(POOL[idx["Mt. Battle Master Battlus"]].get("victory_flag") == "mt_battle_battlus", "Battlus, the 100th, marks the climb done")
 dak = next(o for o in SPM["route_menu"] if o["text"] == "DAKIM ATTACKS MT. BATTLE")["event"]["battle"]
-check(dak["team"][0] == 9397 and dak["levels"][0] == 40 and dak["team"][1:] == [375, 259, 76, 323], "Dakim: Shadow Entei 40, Metang, Marshtomp, Golem, Camerupt")
+check(dak["team"][0] == 9397 and dak["levels"][0] == 26 and dak["team"][1:] == [375, 259, 75, 322],
+      "Dakim: Shadow Entei 26, Metang, Marshtomp, Graveler, Numel (stage levels, L1 11-24)")
 
 print("2) Before Dakim: Cipher holds Area 1")
 p = route("MT_BATTLE", "AGATE_VILLAGE", floor=2)
