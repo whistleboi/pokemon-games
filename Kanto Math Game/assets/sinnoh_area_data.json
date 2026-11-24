@@ -114,8 +114,8 @@
       "The portal to another dimension tears open behind Cyrus...",
       "He steps through — and vanishes."
     ],
-    "sinnoh_mars_intro": ["Mars: You again? I'm Commander Mars of Team Galactic.", "Cyrus-sama's vision will not be stopped by a child!"],
-    "sinnoh_mars_won": ["Mars: How... how can you be so strong?", "This isn't over. Cyrus-sama will see this through!"],
+    "sinnoh_mars_intro": ["Mars: That face...! It brings back bad memories. The Valley Windworks! I caught a whole lot of trouble for that.", "Mars: The Pokemon of this lake is ours now. And you? You're about to get stomped!"],
+    "sinnoh_mars_won": ["Mars: I lost again... First the Windworks, and now Lake Verity. ...Calm down, Mars.", "Mars: Team! We're pulling out! The boss is waiting!"],
     "sinnoh_jupiter_intro": ["Jupiter: Commander Jupiter, at your service — to stop you.", "Lake Acuity is ours. The Galactic Plan is unstoppable."],
     "sinnoh_saturn_intro": ["Saturn: I am Commander Saturn.", "Your interference at the lakes ends here."],
     "sinnoh_cynthia_victory_road": [
@@ -1607,9 +1607,9 @@
         "starter_event": {"walk_up": {"look": "sheet:pt_doctor.png", "with": "sheet:pt_heroine.png", "flag": "sinnoh_rowan_walked_up", "lines": ["Professor Rowan walks over and picks up his briefcase.", "Professor Rowan: ...Hm."]}, "lines": ["{rival_name}: Did you see the red Gyarados on TV? There must be a Pokémon like that in our lake too!", "At Lake Verity you find Professor Rowan and his assistant. They leave in a hurry, forgetting a briefcase.", "Suddenly, wild STARLY swoop down from the trees!", "{rival_name}: The briefcase! There are Poké Balls inside... pick one, quick!"], "boss": {"id": 396, "name": "Starly", "level": 2, "exact_level": true, "no_catch": true, "victory_flag": "sinnoh_starly_driven_off", "lines": ["The wild STARLY dives at you!"], "won": ["The STARLY flew off!", "Professor Rowan comes back for his briefcase: 'You used my Pokémon?... Hm.'", "Professor Rowan: 'Come and see me at my lab in Sandgem Town.'", "{rival_name}: Phew! Let's head home first. I want a battle!"]}, "return_to": "TWINLEAF_TOWN", "return_until": "defeated_rival_sinnoh_starter"},
         "trainer_pool": [
             {"name": "Galactic Grunt", "class": "GALACTIC", "team": [453], "rewards": {"balls": 3}, "dialogue": {"intro": ["Nobody gets near the lake!"], "player_won": ["Commander Mars will stop you!"]}, "levels": [37], "sprite": "pt_galactic_grunt_m.png", "spot_name": "Galactic Grunt 1", "when_flags": ["galactic_lake_valor_cleared"], "gone_flags": ["galactic_lake_verity_cleared"]},
-            {"name": "Galactic Grunt", "class": "GALACTIC", "team": [434, 228], "rewards": {"balls": 3}, "dialogue": {"intro": ["Nobody gets near the lake!"], "player_won": ["Commander Mars will stop you!"]}, "levels": [35, 35], "sprite": "pt_galactic_grunt_m.png", "spot_name": "Galactic Grunt 2", "when_flags": ["galactic_lake_valor_cleared"], "gone_flags": ["galactic_lake_verity_cleared"]},
+            {"name": "Galactic Grunt", "class": "GALACTIC", "team": [453, 431, 434, 228], "rewards": {"balls": 3}, "dialogue": {"intro": ["Nobody gets near the lake!"], "player_won": ["Commander Mars will stop you!"]}, "levels": [33, 33, 33, 33], "sprite": "pt_galactic_grunt_m.png", "spot_name": "Galactic Grunt 2", "when_flags": ["galactic_lake_valor_cleared"], "gone_flags": ["galactic_lake_verity_cleared"]},
             {"name": "Galactic Grunt", "class": "GALACTIC", "team": [431, 42, 198], "rewards": {"balls": 3}, "dialogue": {"intro": ["Nobody gets near the lake!"], "player_won": ["Commander Mars will stop you!"]}, "levels": [33, 33, 36], "sprite": "pt_galactic_grunt_f.png", "spot_name": "Galactic Grunt 3", "when_flags": ["galactic_lake_valor_cleared"], "gone_flags": ["galactic_lake_verity_cleared"]},
-            {"name": "Galactic Grunt", "class": "GALACTIC", "team": [228, 431], "rewards": {"balls": 3}, "dialogue": {"intro": ["Nobody gets near the lake!"], "player_won": ["Commander Mars will stop you!"]}, "levels": [34, 36], "sprite": "pt_galactic_grunt_f.png", "spot_name": "Galactic Grunt 4", "when_flags": ["galactic_lake_valor_cleared"], "gone_flags": ["galactic_lake_verity_cleared"]}
+            {"name": "Galactic Grunt", "class": "GALACTIC", "team": [431, 198], "rewards": {"balls": 3}, "dialogue": {"intro": ["Nobody gets near the lake!"], "player_won": ["Commander Mars will stop you!"]}, "levels": [35, 35], "sprite": "pt_galactic_grunt_f.png", "spot_name": "Galactic Grunt 4", "when_flags": ["galactic_lake_valor_cleared"], "gone_flags": ["galactic_lake_verity_cleared"]}
         ],
         "wild_levels": {"land": [2, 4]},
         "radar_pool_percentages": "LAKE_VERITY_RADAR_PERCENTAGES"
@@ -1631,7 +1631,7 @@
             {"text": "TM166", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm166_lake_valor_d28r0102_53_46", "event": {"lines": ["A TM (Thunder), lying among the rocks."], "gift_item": {"TM166": 1}, "flag": "got_tm166_lake_valor_d28r0102_53_46"}}
         ],
         "area_boss": {"id": 482, "level": 50, "name": "Azelf", "victory_flag": "LAKE_VALOR_boss_defeated"},
-        "trainer_pool": [],
+        "trainer_pool": [{"name": "Galactic Grunt", "class": "GALACTIC", "team": [228, 42], "rewards": {"balls": 3}, "dialogue": {"intro": ["You're too late! The lake's already been dealt with!"], "player_won": ["Commander Saturn is in the cavern. He'll finish you!"]}, "levels": [32, 30], "sprite": "pt_galactic_grunt_m.png", "spot_name": "Galactic Grunt 1", "when_flags": ["canalave_library_meeting"], "gone_flags": ["galactic_lake_valor_cleared"]}, {"name": "Galactic Grunt", "class": "GALACTIC", "team": [42], "rewards": {"balls": 3}, "dialogue": {"intro": ["You're too late! The lake's already been dealt with!"], "player_won": ["Commander Saturn is in the cavern. He'll finish you!"]}, "levels": [37], "sprite": "pt_galactic_grunt_m.png", "spot_name": "Galactic Grunt 2", "when_flags": ["canalave_library_meeting"], "gone_flags": ["galactic_lake_valor_cleared"]}],
         "wild_levels": {"land": [34, 36]},
         "radar_pool_percentages": "LAKE_VALOR_RADAR_PERCENTAGES"
     },
@@ -3642,26 +3642,28 @@
       "id": "sinnoh_m10b",
       "type": "MAIN",
       "title": "Explosion at Lake Valor",
-      "description": "A blast shook Lake Valor! Fly to Pastoria or Veilstone and hurry to the lake. Saturn is there.",
+      "description": "A blast shook Lake Valor! The lake has been drained, and Team Galactic are everywhere. Fly to Pastoria or Veilstone, hurry to the lake and find Saturn in the cavern on its island.",
       "condition": {
         "required_region": "SINNOH",
         "flag": "canalave_library_meeting",
         "flag_not": "galactic_lake_valor_cleared"
       },
       "target": "LAKE_VALOR",
+      "steps": [{"area": "LAKE_VALOR", "floor": 0, "at": [32, 32], "label": "Valor Cavern", "done": "galactic_lake_valor_cleared"}],
       "completed_flag": "galactic_lake_valor_cleared"
     },
     {
       "id": "sinnoh_m10c",
       "type": "MAIN",
       "title": "Mars at Lake Verity",
-      "description": "Team Galactic is at Lake Verity too, near Twinleaf. Stop Commander Mars.",
+      "description": "Team Galactic is at Lake Verity too, near Twinleaf, and Dawn couldn't stop them. Get past the grunts and beat Commander Mars at the lake's edge.",
       "condition": {
         "required_region": "SINNOH",
         "flag": "galactic_lake_valor_cleared",
         "flag_not": "galactic_lake_verity_cleared"
       },
       "target": "LAKE_VERITY",
+      "steps": [{"area": "LAKE_VERITY", "floor": 0, "at": [47, 24], "label": "Mars", "done": "galactic_lake_verity_cleared"}],
       "completed_flag": "galactic_lake_verity_cleared"
     },
     {

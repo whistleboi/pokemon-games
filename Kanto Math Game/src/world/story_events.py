@@ -229,20 +229,21 @@ EVENTS = {
         "lines": ["sinnoh_mars_intro"], "requires": ["galactic_lake_valor_cleared"],
         "fail": ["Team Galactic grunts block the way to the lake."], "flag": "galactic_lake_verity_cleared",
         "battle": {"name": "Commander Mars", "class": "COMMANDER", "sprite": "mars.png", "team": [42, 436, 432],
-                   "levels": [37, 37, 39],
+                   "levels": [38, 38, 40],   # (Platinum's trainer 405)
                    "is_boss_battle": True, "dialogue": {"player_won": ["sinnoh_mars_won"]}}},
     # BDSP (Serebii's lake pages): Saturn has already taken Azelf but battles you in Valor Cavern;
     # Jupiter has taken Uxie and beaten your rival, and doesn't battle. The Galactic Key is in the
     # Veilstone warehouse underpass.
-    "saturn_lake_valor": {
-        "lines": ["Lake Valor has been drained. Only a muddy crater is left.",
-                  "Deep in Valor Cavern, Commander Saturn turns around.",
-                  "Saturn: You're too late. Azelf is already ours. But since you came all this way..."],
+    "saturn_lake_valor": {   # (Platinum's Saturn in Valor Cavern, D28R0103 (14,19): trainer 408, lines lightly shortened; 11-24)
+        "lines": ["Saturn: The mission is proceeding without a hitch. The boss should be pleased.",
+                  "Saturn: I recognize your face. You're the child who raided our building in Eterna! Jupiter should be ashamed.",
+                  "Saturn: But anything and anyone that opposes Team Galactic must be crushed!"],
         "requires": ["canalave_library_meeting"], "flag": "galactic_lake_valor_cleared",
-        "battle": {"name": "Commander Saturn", "class": "COMMANDER", "sprite": "saturn.png", "team": [64, 436, 454],
-                   "levels": [35, 35, 37], "is_boss_battle": True,
-                   "dialogue": {"player_won": ["Saturn: Well fought. But Azelf is already ours.",
-                                               "Saturn: Mars went to Lake Verity. Hurry, if you think it matters."]}}},
+        "battle": {"name": "Commander Saturn", "class": "COMMANDER", "sprite": "saturn.png", "team": [42, 436, 454],
+                   "levels": [38, 38, 40], "is_boss_battle": True,
+                   "dialogue": {"player_won": ["Saturn: Gah! Even I, a Commander, only managed to buy us time? But that's fine.",
+                                               "Saturn: A child like you will never stem the flow of time. With the lake Pokemon's power we'll make a new universe!",
+                                               "Saturn: By now, Mars should have captured the Pokemon of Lake Verity..."]}}},
     "jupiter_lake_acuity": {
         "lines": ["{rival_name} is slumped by the shore of Lake Acuity.",
                   "{rival_name}: Sorry... Commander Jupiter took Uxie. I couldn't stop her.",

@@ -76,6 +76,8 @@
     ]
   },
   "figures": {
+    "LAKE_VERITY:Confront Galactic at the Lake": {"sheet": "pt_gkanbu1.png"},
+    "LAKE_VALOR:Confront Saturn at the Lake": {"sheet": "pt_gkanbu2.png"},
     "SINNOH_ROUTE_208:Berry Master": {"sheet": "pt_oldman2.png"},
     "ANVILLE_TOWN:Boy": {"sheet": "b2_c29.png"},
     "ANVILLE_TOWN:Boy by the fence": {"sheet": "b2_c28.png"},
