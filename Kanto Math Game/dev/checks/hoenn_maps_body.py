@@ -3117,6 +3117,10 @@ check(_sw5.get("condition") == "met_steven" and (_sw5.get("event") or {}).get("g
 from src.world.story import StoryManager as _SM5
 import inspect as _insp5
 check('("BALANCE_BADGE", "AMULET_COIN")' not in _insp5.getsource(_SM5), "no Amulet Coin with the Balance Badge: only Mom's, after Norman (ORAS)")
+_sc5 = next((sc for sc in _tm2["SLATEPORT_CITY"].get("scenes", []) if sc.get("flag") == "slateport_sub_stolen"), {})
+_gb5 = [((c.get("event") or {}).get("battle") or {}) for c in _sc5.get("cast", []) if (c.get("event") or {}).get("battle")]
+check([b.get("team_by_version", {}).get("OMEGA_RUBY") for b in _gb5] == [[262], [322, 42]] and [b.get("levels") for b in _gb5] == [[36], [34, 34]],
+      f"Slateport: two grunts hold you up while the sub is stolen, ORAS's teams by version ({[b.get('name') for b in _gb5]})")
 story.story_flags.clear(); story.story_flags.update(_f5b)
 story.inventory.clear(); story.inventory.update(_i5b)
 

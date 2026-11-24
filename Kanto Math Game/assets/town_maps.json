@@ -104138,12 +104138,56 @@
         "sprite": "aqua_grunt.png",
         "villain": "grunt",
         "team": [
-         261,
-         41
+         262
         ],
         "levels": [
-         35,
-         35
+         36
+        ],
+        "rewards": {
+         "balls": 3
+        },
+        "dialogue": {
+         "player_won": [
+          "Grunt: Hmph. My partner will deal with you!"
+         ]
+        },
+        "team_by_version": {
+         "OMEGA_RUBY": [
+          262
+         ],
+         "ALPHA_SAPPHIRE": [
+          262
+         ]
+        }
+       }
+      }
+     },
+     {
+      "sheet": "@grunt",
+      "from": [
+       28,
+       12
+      ],
+      "to": "player",
+      "leave": "back",
+      "lines": [
+       "Grunt: And me! You're not getting past either of us!"
+      ],
+      "event": {
+       "lines": [],
+       "flag": "slateport_sub_grunt_2",
+       "battle": {
+        "name": "Team Grunt (harbour 2)",
+        "class": "ROCKET",
+        "sprite": "aqua_grunt.png",
+        "villain": "grunt",
+        "team": [
+         322,
+         42
+        ],
+        "levels": [
+         34,
+         34
         ],
         "rewards": {
          "balls": 3
@@ -104151,6 +104195,16 @@
         "dialogue": {
          "player_won": [
           "Grunt: Too late! The sub's already gone!"
+         ]
+        },
+        "team_by_version": {
+         "OMEGA_RUBY": [
+          322,
+          42
+         ],
+         "ALPHA_SAPPHIRE": [
+          318,
+          42
          ]
         }
        }

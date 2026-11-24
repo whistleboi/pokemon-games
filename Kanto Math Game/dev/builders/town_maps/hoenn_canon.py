@@ -181,6 +181,28 @@ LISTS = [
 ]
 
 
+def _slateport_sub(maps):
+    """H5 (ORAS): two grunts hold you up at Slateport's harbour while the sub is stolen - Mightyena Lv 36, then Numel /
+    Carvanha with Golbat Lv 34, by version (hoenn.py applies "team_by_version" to a villain's battle)."""
+    m = maps.get("SLATEPORT_CITY")
+    for sc in (m or {}).get("scenes") or []:
+        cast = sc.get("cast") or []
+        g = next((c for c in cast if ((c.get("event") or {}).get("battle") or {}).get("name") == "Team Grunt (harbour)"), None)
+        if g is None or len(cast) > 2:
+            continue
+        b = g["event"]["battle"]
+        b.update(team=[262], levels=[36], team_by_version={"OMEGA_RUBY": [262], "ALPHA_SAPPHIRE": [262]})
+        import copy
+        g2 = copy.deepcopy(g)
+        g2["lines"] = ["Grunt: And me! You're not getting past either of us!"]
+        g2["event"]["flag"] = "slateport_sub_grunt_2"
+        g2["event"]["battle"].update(name="Team Grunt (harbour 2)", team=[322, 42], levels=[34, 34],
+                                     team_by_version={"OMEGA_RUBY": [322, 42], "ALPHA_SAPPHIRE": [318, 42]})
+        g2["event"]["battle"]["dialogue"] = {"player_won": ["Grunt: Too late! The sub's already gone!"]}
+        b["dialogue"] = {"player_won": ["Grunt: Hmph. My partner will deal with you!"]}
+        cast.append(g2)
+
+
 def _part(m, floor, room):
     if room:
         return m["rooms"][room]
@@ -196,6 +218,7 @@ def _at(part, x, y):
 
 
 def apply(maps):
+    _slateport_sub(maps)
     for key, floor, room, x, y, who in PEOPLE:
         m = maps.get(key)
         if m:
