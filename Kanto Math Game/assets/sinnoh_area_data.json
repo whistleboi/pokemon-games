@@ -1848,13 +1848,11 @@
             {"name": "Galactic Grunt", "class": "GALACTIC", "team": [453, 434, 431], "rewards": {"balls": 3}, "dialogue": {"intro": ["Team Galactic will make a new world!"], "player_won": ["Our boss will still win in the end!"]}, "levels": [38, 38, 38], "sprite": "pt_galactic_grunt_f.png", "spot_name": "Galactic Grunt 7"},
             {"name": "Galactic Grunt", "class": "GALACTIC", "team": [434], "rewards": {"balls": 3}, "dialogue": {"intro": ["You broke in here? Bold!"], "player_won": ["How did a kid get this far?"]}, "levels": [41], "sprite": "pt_galactic_grunt_m.png", "spot_name": "Galactic Grunt 8"},
             {"name": "Scientist Fredrick", "class": "SCIENTIST", "sprite": "pt_scientist.png", "team": [281, 64], "levels": [40, 40], "rewards": {"balls": 2}},
-            {"name": "Scientist Darrius", "class": "SCIENTIST", "sprite": "pt_scientist.png", "team": [233], "levels": [42], "rewards": {"balls": 2}},
-            {"name": "Commander Saturn", "class": "GALACTIC", "sprite": "saturn.png", "is_boss_battle": true, "team": [454, 436, 454], "rewards": {"balls": 10}, "dialogue": {"intro": ["I'm Commander Saturn. Defeating me is impossible."], "player_won": ["...I underestimated you."], "player_lost": ["As expected. You're nothing."]}},
-            {"name": "Cyrus", "class": "GALACTIC", "sprite": "cyrus.png", "is_boss_battle": true, "team": [430, 130, 461], "rewards": {"balls": 15, "MASTER_BALL": 1}, "dialogue": {"intro": ["You made it this far. Then let me show you the meaninglessness of your world."], "player_won": ["...Take it. The lake guardians await you."], "player_lost": ["A new universe begins. One without imperfect beings like you."]}}
+            {"name": "Scientist Darrius", "class": "SCIENTIST", "sprite": "pt_scientist.png", "team": [233], "levels": [42], "rewards": {"balls": 2}}
         ],
         "route_menu": [
             {"text": "Galactic Warehouse", "action": "EXIT", "target_area": "GALACTIC_WAREHOUSE", "condition": "can_exit", "color": "RED"},
-            {"text": "BATTLE GALACTIC", "action": "GALACTIC_GAUNTLET", "flag_condition": "not galactic_hq_cleared", "color": "GOLD"},
+            {"text": "Cyrus", "action": "NPC", "target": "cyrus_hq", "flag_condition": "not sinnoh_hq_cyrus_beaten", "color": "GOLD"}, {"text": "Commander Saturn", "action": "NPC", "target": "saturn_hq", "color": "GOLD"}, {"text": "Galactic machine", "action": "NPC", "target": "hq_trio_machine", "color": "GOLD"},
             {"text": "Veilstone City", "action": "EXIT", "target_area": "VEILSTONE_CITY", "condition": "can_exit", "color": "RED"},
             {"text": "TM299", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_tm299_team_galactic_hq_d26r0101_52_14", "event": {"lines": ["A TM (Snatch), lying among the rocks."], "gift_item": {"TM299": 1}, "flag": "got_tm299_team_galactic_hq_d26r0101_52_14"}},
             {"text": "DUBIOUS DISC", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_dubious_disc_team_galactic_hq_d26r0101_16_6", "event": {"lines": ["A Dubious Disc, in a dark corner."], "gift_item": {"DUBIOUS_DISC": 1}, "flag": "got_dubious_disc_team_galactic_hq_d26r0101_16_6"}},
@@ -3714,13 +3712,14 @@
       "id": "sinnoh_m11",
       "type": "MAIN",
       "title": "Raid Team Galactic HQ",
-      "description": "Team Galactic took all three lake Pokémon to Veilstone. Find the Galactic Key in the Warehouse Underpass and break into their HQ.",
+      "description": "Team Galactic took all three lake Pokémon to Veilstone. Looker is at the Galactic Warehouse with a Storage Key: take the underpass, find the Galactic Key, and break into their HQ to face Cyrus and set the lake Pokémon free.",
       "condition": {
         "required_region": "SINNOH",
         "flag": "galactic_lake_acuity_cleared",
         "flag_not": "galactic_hq_cleared"
       },
       "target": "VEILSTONE_CITY",
+      "steps": [{"area": "GALACTIC_WAREHOUSE", "floor": 0, "at": [12, 7], "label": "Looker", "done": "sinnoh_storage_door_open"}, {"area": "GALACTIC_WAREHOUSE", "floor": 1, "at": [20, 4], "label": "Galactic Key", "done": "got_galactic_key_galactic_warehouse_d26r0106_20_5"}, {"area": "TEAM_GALACTIC_HQ", "floor": 3, "at": [8, 7], "label": "Cyrus", "done": "sinnoh_hq_cyrus_beaten"}, {"area": "TEAM_GALACTIC_HQ", "floor": 5, "at": [8, 5], "label": "Saturn", "done": "sinnoh_hq_saturn_beaten"}, {"area": "TEAM_GALACTIC_HQ", "floor": 5, "at": [8, 6], "label": "Machine", "done": "galactic_hq_cleared"}],
       "completed_flag": "galactic_hq_cleared"
     },
     {
