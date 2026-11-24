@@ -915,5 +915,22 @@ check(_fog == [False, False, True, True, True] and not r.run.fog,
       f"Lost Tower: fog on 3F-5F only, as Platinum; gone once you have Defog ({_fog}, with Defog 5F: {r.run.fog})")
 story.inventory.clear(); story.inventory.update(_inv)
 
+# ---- S3 (11-23): the Old Chateau's ghosts and its one Dread Plate (s_s3_old_chateau.py)
+from src.world import old_chateau as _oc
+_roll = _oc.condition
+_oc.condition = lambda story, arg: True   # (the ghosts come now and then: here, every time)
+_seen = []
+for _fl in (3, 0):
+    r = route("OLD_CHATEAU", "ETERNA_FOREST")
+    r._warp(_fl, 1, 1); r._scene_key = None
+    _was = _drive(r, 200, lambda: r._scene_run is not None and r._scene_run.busy() and r._scene_run.actors)
+    _done = _drive(r, 900, lambda: not (r._scene_run and r._scene_run.busy()))
+    _seen.append((_fl, bool(_was), bool(_done), r.run.index))
+_oc.condition = _roll
+_dp = [o for o in __import__("json").load(open("assets/sinnoh_area_data.json", encoding="utf-8"))["STORY_PROGRESSION"]["OLD_CHATEAU"]["route_menu"]
+       if str(o.get("text")).strip() == "DREAD PLATE"]
+check(all(w and d and i == fl for fl, w, d, i in _seen) and len(_dp) == 1,
+      f"Old Chateau: the ghost girl drifts through Bedroom 4 and the butler through the dining hall, then are gone; one Dread Plate ({_seen}, {len(_dp)})")
+
 g.walk_towns = False
 print(f"##### {fails} failures")

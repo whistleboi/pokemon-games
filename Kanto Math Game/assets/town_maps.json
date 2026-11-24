@@ -271419,6 +271419,37 @@
     "people": [
      "RARE CANDY",
      "BIG PEARL"
+    ],
+    "scenes": [
+     {
+      "trigger": "enter",
+      "every": true,
+      "condition": "world:old_chateau:25",
+      "cast": [
+       {
+        "sheet": "pt_waiter.png",
+        "from": [
+         9,
+         3
+        ],
+        "path": [
+         [
+          20,
+          3
+         ]
+        ],
+        "fly": true,
+        "face": "r",
+        "wait": 10,
+        "leave_path": [
+         [
+          33,
+          3
+         ]
+        ]
+       }
+      ]
+     }
     ]
    },
    {
@@ -272035,7 +272066,45 @@
        128
       ]
      }
-    }
+    },
+    "scenes": [
+     {
+      "trigger": "enter",
+      "every": true,
+      "condition": "world:old_chateau:35",
+      "cast": [
+       {
+        "sheet": "pt_girl1.png",
+        "from": [
+         15,
+         3
+        ],
+        "path": [
+         [
+          15,
+          3
+         ]
+        ],
+        "face": "l",
+        "wait": 45,
+        "leave_path": [
+         [
+          15,
+          4
+         ],
+         [
+          15,
+          5
+         ],
+         [
+          14,
+          5
+         ]
+        ]
+       }
+      ]
+     }
+    ]
    },
    {
     "art": [
@@ -272681,7 +272750,7 @@
      "ccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc",
      "cmmmmcccm..Nm.ccccccccmcc",
-     "cmmccccc.N....ccccccccmcc",
+     "cmmccccc......ccccccccmcc",
      "cmmccccc......ccccccccmcc",
      "cmmccccc.m....ccccccccccc",
      "cmmccccc...1..cmccccccccc",
@@ -273119,8 +273188,7 @@
      }
     },
     "people": [
-     "Encounter Rotom",
-     "DREAD PLATE "
+     "Encounter Rotom"
     ]
    },
    {
@@ -273715,7 +273783,6 @@
    "BIG PEARL": 0,
    "OLD GATEAU": 4,
    "DREAD PLATE": 5,
-   "DREAD PLATE ": 6,
    "TM103": 8
   },
   "theme": "tower"
