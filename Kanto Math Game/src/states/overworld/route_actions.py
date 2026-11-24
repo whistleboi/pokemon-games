@@ -178,6 +178,7 @@ class RouteActions:
                       ("The sunlight is extremely harsh all over Hoenn..." if v["crisis_weather"] == "SUN"
                        else "A heavy rain is pouring down all over Hoenn..."),
                       f"Steven: The Cave of Origin! We have to stop {v['legend']}!"]
+            flags["seafloor_awakening_seen"] = True   # (as the floor's own scene sets it: the Orb's spot is done - 11-24)
         elif event == "leader_orb":
             lines += [f"{v['leader']}: I was wrong. Primal {v['legend']}'s power was never ours to control.",
                       f"Take the {v['orb']}. You've earned it far more than I have."]

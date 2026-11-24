@@ -132883,7 +132883,8 @@
       "W-what are you doing here? This is none of your business! Go wherever you like!"
      ]
     },
-    "_look": "@grunt"
+    "_look": "@grunt",
+    "condition": "not:beat_hoenn_champion"
    },
    "TINY MUSHROOM",
    "X DEFENSE",
