@@ -175,6 +175,16 @@ def main():
                     pygame.image.save(recolour_sheet(sheet, colour_map(a, b)),
                                       os.path.join(OUT, sub, f"{dex}_{form}_{big}.png"))
                     made += 1
+            if big != "mega":
+                continue
+            # (and its Mega battle sprites, front / back, normal / shiny: src/pokemon/forms.py apply_form)
+            for sub, cols in (("", ""), ("back", ""), ("shiny", "shiny"), (os.path.join("back", "shiny"), "shiny")):
+                art = os.path.join(SPRITES, "mega", sub, f"{dex}_mega.png")
+                a, b = os.path.join(SPRITES, cols, f"{dex}.png"), os.path.join(SPRITES, cols, f"{fid}.png")
+                if os.path.exists(art) and os.path.exists(a) and os.path.exists(b):
+                    pygame.image.save(recolour_sheet(art, colour_map(a, b)),
+                                      os.path.join(SPRITES, "mega", sub, f"{dex}_{form}_mega.png"))
+                    made += 1
     for name, (a, b) in SHINY_ONLY.items():   # (a form sheet whose pack had no shiny: its shiny battle colours)
         a, b = os.path.join(SPRITES, a), os.path.join(SPRITES, b)
         if os.path.exists(os.path.join(OUT, name + ".png")) and os.path.exists(a) and os.path.exists(b):
