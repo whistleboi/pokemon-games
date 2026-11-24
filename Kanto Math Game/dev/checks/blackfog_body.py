@@ -61,5 +61,7 @@ for key in HAUNTS:
           f"{key}: Lv {b.opponent_pokemon.level} Black Fog, can't be caught, gone once beaten{' (walked up to)' if key in WALKED else ''}")
     if key in WALKED and ok:
         story.story_flags[flag] = True
+        import datetime as _dt   # (no 10% return today: black_fog.maybe_return, once a day per place)
+        story.story_flags[f"black_fog_back_{key}"] = _dt.date.today().isoformat()
         check(walk_who(walk_route(key, None), "THE BLACK FOG") is None, f"...{key}: gone from the map once beaten")
 print("FAILURES:", fails)
