@@ -24,7 +24,7 @@ steps = [
     ("RELIC (Fantina, 4+ badges)", {}, "RELIC"),
     ("Iron Island", {"visited_IRON_ISLAND": True, "got_hm_strength_iron_island": True}, None),   # (Riley's Strength, Jordan 11-24)
     ("MINE (Byron)", {}, "MINE"),
-    ("ICICLE (Candice)", {}, "ICICLE"),
+    ("ICICLE (Candice)", {"got_hm_rock_climb_sinnoh_route_217_r217_8_49": True}, "ICICLE"),   # (Rock Climb: Route 217's ball)
     ("Galactic HQ", {"galactic_hq_cleared": True}, None),
     ("Spear Pillar", {"spear_pillar_resolved": True, "SPEAR_PILLAR_boss_defeated": True}, None),
     ("BEACON (Volkner)", {}, "BEACON"),
@@ -35,7 +35,7 @@ for title, flags, b in steps:
     if flags.get("got_hm_surf_celestic"):
         story.inventory["HM_SURF"] = 1   # (the Elder's gift, not a badge's)
     for _f, _hm in (("got_hm_rock_smash_oreburgh_gate", "HM_ROCK_SMASH"), ("received_hm_cut", "HM_CUT"),
-                    ("got_hm_defog_solaceon_ruins_d07r0116_6_7", "HM_DEFOG")):   # (Platinum's givers, not the badges: 11-24 cleanup)
+                    ("got_hm_defog_solaceon_ruins_d07r0116_6_7", "HM_DEFOG"), ("got_hm_rock_climb_sinnoh_route_217_r217_8_49", "HM_ROCK_CLIMB")):   # (Platinum's givers, not the badges: 11-24 cleanup)
         if flags.get(_f):
             story.inventory[_hm] = 1
     if flags.get("got_hm_strength_iron_island"):

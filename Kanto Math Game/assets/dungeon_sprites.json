@@ -76,6 +76,7 @@
     ]
   },
   "figures": {
+    "SNOWPOINT_CITY:Maylene": {"sheet": "pt_leader4.png"},
     "LAKE_VALOR:Confront Saturn at the Lake": {"sheet": "pt_gkanbu2.png"},
     "LAKE_VERITY:Confront Galactic at the Lake": {"sheet": "pt_gkanbu1.png"},
     "REALGAM_TOWER:GYM LEADER BIRCH": {"sheet": "orre_trainer_leader_birch.png"},

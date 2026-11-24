@@ -213737,7 +213737,8 @@
      }
     ]
    }
-  ]
+  ],
+  "rock_climb": true
  },
  "PASTORIA_CITY": {
   "art": [
@@ -230371,7 +230372,7 @@
      "cczmmcmmNcmcm..cc",
      "c....cmmmcmc....c",
      "c....zccmccz....c",
-     "c..N............c",
+     "c..N...N........c",
      "c...............c",
      "c.........N.....c",
      "ccc...........ccc",
@@ -230745,6 +230746,34 @@
         "So many Ice types around here. Do they live in the Temple too?"
        ]
       }
+     },
+     {
+      "text": "Maylene",
+      "action": "EVENT",
+      "any": [
+       {
+        "condition": [
+         "not:has_icicle_badge"
+        ],
+        "event": {
+         "lines": [
+          "Maylene: Brrr... Oh, hi, {player_name}! Taking the Gym challenge? I'm staying put till I warm up first.",
+          "Maylene: Candice uses Ice-type Pokemon. I really admire her - she's so studious. She practiced against me to learn about the Fighting type."
+         ]
+        }
+       },
+       {
+        "condition": [
+         "has_icicle_badge"
+        ],
+        "event": {
+         "lines": [
+          "Maylene: Oh! That's the Icicle Badge! You beat Candice. With that Badge, you can use the hidden move Rock Climb, can't you?",
+          "Maylene: Rock-type and Fighting-type Pokemon can learn Rock Climb, I think."
+         ]
+        }
+       }
+      ]
      },
      {
       "text": "Psyduck",
@@ -231809,6 +231838,370 @@
         "Hey, Champ-to-be! Slide fast enough to smash the snowballs. Fire melts Ice!"
        ]
       }
+     }
+    ],
+    "slide_ice": true,
+    "barred": [
+     {
+      "tiles": [
+       [
+        12,
+        17
+       ]
+      ],
+      "look": "ow:pt:freezes",
+      "until": {
+       "flag_condition": "snowpoint_gym_snowball_12_17"
+      },
+      "smash": "snowpoint_gym_snowball_12_17",
+      "lines": [
+       "A big snowball. Walking into it won't move it - slide into it across the ice!"
+      ],
+      "smashed": [
+       "You slid into the snowball and crushed it!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        10,
+        20
+       ]
+      ],
+      "look": "ow:pt:freezes",
+      "until": {
+       "flag_condition": "snowpoint_gym_snowball_10_20"
+      },
+      "smash": "snowpoint_gym_snowball_10_20",
+      "lines": [
+       "A big snowball. Walking into it won't move it - slide into it across the ice!"
+      ],
+      "smashed": [
+       "You slid into the snowball and crushed it!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        17,
+        18
+       ]
+      ],
+      "look": "ow:pt:freezes",
+      "until": {
+       "flag_condition": "snowpoint_gym_snowball_17_18"
+      },
+      "smash": "snowpoint_gym_snowball_17_18",
+      "lines": [
+       "A big snowball. Walking into it won't move it - slide into it across the ice!"
+      ],
+      "smashed": [
+       "You slid into the snowball and crushed it!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        11,
+        15
+       ]
+      ],
+      "look": "ow:pt:freezes",
+      "until": {
+       "flag_condition": "snowpoint_gym_snowball_11_15"
+      },
+      "smash": "snowpoint_gym_snowball_11_15",
+      "lines": [
+       "A big snowball. Walking into it won't move it - slide into it across the ice!"
+      ],
+      "smashed": [
+       "You slid into the snowball and crushed it!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        11,
+        13
+       ]
+      ],
+      "look": "ow:pt:freezes",
+      "until": {
+       "flag_condition": "snowpoint_gym_snowball_11_13"
+      },
+      "smash": "snowpoint_gym_snowball_11_13",
+      "lines": [
+       "A big snowball. Walking into it won't move it - slide into it across the ice!"
+      ],
+      "smashed": [
+       "You slid into the snowball and crushed it!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        11,
+        10
+       ]
+      ],
+      "look": "ow:pt:freezes",
+      "until": {
+       "flag_condition": "snowpoint_gym_snowball_11_10"
+      },
+      "smash": "snowpoint_gym_snowball_11_10",
+      "lines": [
+       "A big snowball. Walking into it won't move it - slide into it across the ice!"
+      ],
+      "smashed": [
+       "You slid into the snowball and crushed it!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        11,
+        7
+       ]
+      ],
+      "look": "ow:pt:freezes",
+      "until": {
+       "flag_condition": "snowpoint_gym_snowball_11_7"
+      },
+      "smash": "snowpoint_gym_snowball_11_7",
+      "lines": [
+       "A big snowball. Walking into it won't move it - slide into it across the ice!"
+      ],
+      "smashed": [
+       "You slid into the snowball and crushed it!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        7
+       ]
+      ],
+      "look": "ow:pt:freezes",
+      "until": {
+       "flag_condition": "snowpoint_gym_snowball_13_7"
+      },
+      "smash": "snowpoint_gym_snowball_13_7",
+      "lines": [
+       "A big snowball. Walking into it won't move it - slide into it across the ice!"
+      ],
+      "smashed": [
+       "You slid into the snowball and crushed it!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        10,
+        7
+       ]
+      ],
+      "look": "ow:pt:freezes",
+      "until": {
+       "flag_condition": "snowpoint_gym_snowball_10_7"
+      },
+      "smash": "snowpoint_gym_snowball_10_7",
+      "lines": [
+       "A big snowball. Walking into it won't move it - slide into it across the ice!"
+      ],
+      "smashed": [
+       "You slid into the snowball and crushed it!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        12,
+        7
+       ]
+      ],
+      "look": "ow:pt:freezes",
+      "until": {
+       "flag_condition": "snowpoint_gym_snowball_12_7"
+      },
+      "smash": "snowpoint_gym_snowball_12_7",
+      "lines": [
+       "A big snowball. Walking into it won't move it - slide into it across the ice!"
+      ],
+      "smashed": [
+       "You slid into the snowball and crushed it!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        9,
+        3
+       ]
+      ],
+      "look": "ow:pt:freezes",
+      "until": {
+       "flag_condition": "snowpoint_gym_snowball_9_3"
+      },
+      "smash": "snowpoint_gym_snowball_9_3",
+      "lines": [
+       "A big snowball. Walking into it won't move it - slide into it across the ice!"
+      ],
+      "smashed": [
+       "You slid into the snowball and crushed it!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        3
+       ]
+      ],
+      "look": "ow:pt:freezes",
+      "until": {
+       "flag_condition": "snowpoint_gym_snowball_13_3"
+      },
+      "smash": "snowpoint_gym_snowball_13_3",
+      "lines": [
+       "A big snowball. Walking into it won't move it - slide into it across the ice!"
+      ],
+      "smashed": [
+       "You slid into the snowball and crushed it!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        10,
+        14
+       ]
+      ],
+      "look": "ow:pt:freezes",
+      "until": {
+       "flag_condition": "snowpoint_gym_snowball_10_14"
+      },
+      "smash": "snowpoint_gym_snowball_10_14",
+      "lines": [
+       "A big snowball. Walking into it won't move it - slide into it across the ice!"
+      ],
+      "smashed": [
+       "You slid into the snowball and crushed it!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        17,
+        16
+       ]
+      ],
+      "look": "ow:pt:freezes",
+      "until": {
+       "flag_condition": "snowpoint_gym_snowball_17_16"
+      },
+      "smash": "snowpoint_gym_snowball_17_16",
+      "lines": [
+       "A big snowball. Walking into it won't move it - slide into it across the ice!"
+      ],
+      "smashed": [
+       "You slid into the snowball and crushed it!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        17,
+        17
+       ]
+      ],
+      "look": "ow:pt:freezes",
+      "until": {
+       "flag_condition": "snowpoint_gym_snowball_17_17"
+      },
+      "smash": "snowpoint_gym_snowball_17_17",
+      "lines": [
+       "A big snowball. Walking into it won't move it - slide into it across the ice!"
+      ],
+      "smashed": [
+       "You slid into the snowball and crushed it!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        17,
+        19
+       ]
+      ],
+      "look": "ow:pt:freezes",
+      "until": {
+       "flag_condition": "snowpoint_gym_snowball_17_19"
+      },
+      "smash": "snowpoint_gym_snowball_17_19",
+      "lines": [
+       "A big snowball. Walking into it won't move it - slide into it across the ice!"
+      ],
+      "smashed": [
+       "You slid into the snowball and crushed it!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        12,
+        20
+       ]
+      ],
+      "look": "ow:pt:freezes",
+      "until": {
+       "flag_condition": "snowpoint_gym_snowball_12_20"
+      },
+      "smash": "snowpoint_gym_snowball_12_20",
+      "lines": [
+       "A big snowball. Walking into it won't move it - slide into it across the ice!"
+      ],
+      "smashed": [
+       "You slid into the snowball and crushed it!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        9,
+        7
+       ]
+      ],
+      "look": "ow:pt:freezes",
+      "until": {
+       "flag_condition": "snowpoint_gym_snowball_9_7"
+      },
+      "smash": "snowpoint_gym_snowball_9_7",
+      "lines": [
+       "A big snowball. Walking into it won't move it - slide into it across the ice!"
+      ],
+      "smashed": [
+       "You slid into the snowball and crushed it!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        22
+       ]
+      ],
+      "look": "ow:pt:freezes",
+      "until": {
+       "flag_condition": "snowpoint_gym_snowball_20_22"
+      },
+      "smash": "snowpoint_gym_snowball_20_22",
+      "lines": [
+       "A big snowball. Walking into it won't move it - slide into it across the ice!"
+      ],
+      "smashed": [
+       "You slid into the snowball and crushed it!"
+      ]
      }
     ]
    },
@@ -235357,7 +235750,8 @@
   "hidden": {
    "23,23": "CARBOS",
    "57,56": "ZAP_PLATE"
-  }
+  },
+  "rock_climb": true
  },
  "SINNOH_POKEMON_LEAGUE": {
   "art": [
@@ -251944,7 +252338,8 @@
    "IRON",
    "TIMER BALL",
    "REVIVE"
-  ]
+  ],
+  "rock_climb": true
  },
  "SINNOH_ROUTE_208": {
   "art": [
@@ -252719,7 +253114,8 @@
   },
   "inside": {
    "53,12": "house_0101"
-  }
+  },
+  "rock_climb": true
  },
  "SINNOH_ROUTE_209": {
   "art": [
@@ -256218,7 +256614,8 @@
     95,
     31
    ]
-  ]
+  ],
+  "rock_climb": true
  },
  "SINNOH_ROUTE_211": {
   "art": [
@@ -256330,7 +256727,8 @@
    },
    "TM087",
    "CARBOS"
-  ]
+  ],
+  "rock_climb": true
  },
  "SINNOH_ROUTE_212": {
   "art": [
@@ -262812,7 +263210,8 @@
      }
     ]
    }
-  ]
+  ],
+  "rock_climb": true
  },
  "VALOR_LAKEFRONT": {
   "art": [
@@ -266572,7 +266971,8 @@
      }
     ]
    }
-  ]
+  ],
+  "rock_climb": true
  },
  "SINNOH_ROUTE_214": {
   "art": [
@@ -269799,7 +270199,8 @@
   },
   "inside": {
    "15,14": "house_0101"
-  }
+  },
+  "rock_climb": true
  },
  "SINNOH_ROUTE_217": {
   "art": [
@@ -271163,7 +271564,14 @@
       210,
       220
      ],
-     "_things": {}
+     "_things": {},
+     "_picture": {
+      "f": "pt_ground/R217R0101.png",
+      "at": [
+       0,
+       1
+      ]
+     }
     },
     "title": "House",
     "people": [
@@ -271221,7 +271629,14 @@
       210,
       220
      ],
-     "_things": {}
+     "_things": {},
+     "_picture": {
+      "f": "pt_ground/R217R0201.png",
+      "at": [
+       0,
+       1
+      ]
+     }
     },
     "title": "House",
     "people": [
@@ -271230,7 +271645,15 @@
       "action": "EVENT",
       "event": {
        "lines": [
-        "...A visitor... How rare... Thank you for coming..."
+        "...A person...? ...A rare sight... ...Thank you for visiting... ...A gift...",
+        "You received a Spell Tag!"
+       ],
+       "gift_item": {
+        "SPELL_TAG": 1
+       },
+       "flag": "got_spell_tag_route_217",
+       "done": [
+        "...The Spell Tag... It intensifies Ghost-type moves... May it serve you well..."
        ]
       }
      }
@@ -271240,7 +271663,39 @@
   "inside": {
    "5,55": "house_0101",
    "28,29": "house_0201"
-  }
+  },
+  "scenes": [
+   {
+    "trigger": {
+     "zone": [
+      14,
+      120,
+      15,
+      120
+     ]
+    },
+    "condition": [
+     "has_mine_badge"
+    ],
+    "flag": "sinnoh_r217_maylene",
+    "cast": [
+     {
+      "sheet": "pt_leader4.png",
+      "from": [
+       17,
+       126
+      ],
+      "to": "player",
+      "lines": [
+       "Maylene: Oh, {player_name}! Are you on your way to Snowpoint City? That's where I'm going, too.",
+       "Maylene: I could Fly there, but I'm walking for my training. I'm used to the cold - I always go barefoot and lightly dressed.",
+       "Maylene: ...Achoo! Oh, that was nothing. Really, I'm not cold at all. I'll be going now. Take care!"
+      ],
+      "leave": "back"
+     }
+    ]
+   }
+  ]
  },
  "ACUITY_LAKEFRONT": {
   "art": [
@@ -272997,7 +273452,46 @@
   "people": [
    "ULTRA BALL",
    "REAPER CLOTH"
-  ]
+  ],
+  "scenes": [
+   {
+    "trigger": {
+     "zone": [
+      12,
+      34,
+      13,
+      34
+     ]
+    },
+    "condition": [
+     "not:has_icicle_badge"
+    ],
+    "flag": "sinnoh_acuity_barry",
+    "cast": [
+     {
+      "sheet": "pt_rivel.png",
+      "from": [
+       12,
+       27
+      ],
+      "face": "d",
+      "lines": [
+       "{rival_name}: Hey, {player_name}! You finally come along now? Slooow! Way too slow!",
+       "{rival_name}: See how the rocks are all lumpy here? You can't climb those until you get the Snowpoint Gym Badge.",
+       "{rival_name}: Anyway, I'm off. Team Galactic! I'm coming for you!"
+      ],
+      "path": [
+       [
+        12,
+        26
+       ]
+      ],
+      "gone": true
+     }
+    ]
+   }
+  ],
+  "rock_climb": true
  },
  "SINNOH_ROUTE_218": {
   "art": [
@@ -279029,7 +279523,8 @@
   },
   "inside": {
    "9,48": "house_0101"
-  }
+  },
+  "rock_climb": true
  },
  "SINNOH_ROUTE_226": {
   "art": [
@@ -279344,7 +279839,8 @@
   },
   "inside": {
    "67,19": "house_0101"
-  }
+  },
+  "rock_climb": true
  },
  "SINNOH_ROUTE_227": {
   "art": [
@@ -279723,7 +280219,8 @@
   },
   "inside": {
    "4,46": "house_0101"
-  }
+  },
+  "rock_climb": true
  },
  "SINNOH_ROUTE_228": {
   "art": [
