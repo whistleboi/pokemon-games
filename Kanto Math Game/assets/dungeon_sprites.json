@@ -112,6 +112,7 @@
     "ORRE_BATTLE_FRONTIER:RECORD BOARD": {
       "sheet": "orre_signs.png"
     },
+    "LAKE_ACUITY:Confront Jupiter at the Lake": {"sheet": "pt_gkanbu3.png"},
     "ORRE_NEW_ISLAND:BLASTOISE CLONE": {"pokemon": 9},
     "ORRE_NEW_ISLAND:CHARIZARD CLONE": {"pokemon": 6},
     "ORRE_NEW_ISLAND:VENUSAUR CLONE": {"pokemon": 3},
