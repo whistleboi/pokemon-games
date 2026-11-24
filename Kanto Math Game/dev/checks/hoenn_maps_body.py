@@ -1274,13 +1274,14 @@ _near = lambda f, x, y: any((f, x + dx, y + dy) in _seen for dx, dy in ((1, 0), 
 check(_near(2, 23, 10) and _near(1, 15, 9), "The hideout: from the cave mouth, down the stairs and through the warp panels to the leader's room and the Admin")
 st.run.enter_floor(1); frames(2)
 _calm(st)
+_mb0 = story.inventory.get("MASTER_BALL", 0)   # (one may be in the Bag already: count the new one)
 _mb = next(m for m in st.run.floor.movers if isinstance(m.payload, dict) and m.payload.get("text") == "MASTER BALL")
 st._use_figure(_mb); tap(st)
 _el = next(m for m in st.run.floor.movers if isinstance(m.payload, dict) and m.payload.get("text") == "POKE BALL")
 st.dialogue_box.visible = False
 st._use_figure(_el)
 said = _play(st, 300)
-check(story.inventory.get("MASTER_BALL") == 1 and "<WildBattleState>" in said,
+check(story.inventory.get("MASTER_BALL", 0) == _mb0 + 1 and "<WildBattleState>" in said,
       f"The hideout: the leader's room's Poke Balls: the Master Ball, and an Electrode in disguise {story.inventory.get('MASTER_BALL')} {str(said)[-160:]}")
 g.change_state(st)
 # the sub room: five Grunts rush you (ORAS's horde battle), one battle with their five Poochyena
@@ -2479,19 +2480,30 @@ _a24 = _tm24["HOENN_SKY_PILLAR"]["floors"][3]["art"]
 _crt = {tuple(int(v) for v in s.split(",")) for s in _cr["tiles"]}
 _step24 = next(((x + dx, y + dy), (-dx, -dy)) for (x, y) in sorted(_crt) for dx, dy in ((0, 1), (1, 0), (0, -1), (-1, 0))
                if 0 <= y + dy < len(_a24) and 0 <= x + dx < len(_a24[0]) and _a24[y + dy][x + dx] == "." and (x + dx, y + dy) not in _crt)
+# (11-24, Emerald's Mach Bike: only speed carries you over - two steps in a row one way; from a stop, or on foot, you fall)
+_free = lambda x, y: 0 <= y < len(_a24) and 0 <= x < len(_a24[0]) and _a24[y][x] == "." and (x, y) not in _crt
+_run24 = next(((x + 2 * dx, y + 2 * dy), (-dx, -dy)) for (x, y) in sorted(_crt) for dx, dy in ((0, 1), (1, 0), (0, -1), (-1, 0))
+              if _free(x + dx, y + dy) and _free(x + 2 * dx, y + 2 * dy))
 _res24 = {}
-for _bike in (False, True):
+for _bike, _from, _n in ((False, _step24[0], 1), (True, _step24[0], 1), (True, _run24[0], 2)):
     if _bike:
         story.inventory["BICYCLE"] = 1
     else:
         story.inventory.pop("BICYCLE", None)
     st = open_map("HOENN_SKY_PILLAR", "HOENN_ROUTE_131")
-    st.run.jump_floor(3, _step24[0]); _calm(st); st.anim = 0
-    st.step(*_step24[1])
-    _said = _play(st, 300)
-    _res24[_bike] = (st.run.index, any("crumbled" in x for x in _said))
-check(_cr["to"] == 2 and _res24[False] == (2, True) and _res24[True] == (3, False),
-      f"Sky Pillar: a cracked floor drops you to the floor below on foot; on the Bicycle you're over it ({_res24})")
+    st.run.jump_floor(3, _from); _calm(st); st.anim = 0
+    _said = []
+    for _k in range(_n):
+        st.step(*(_step24[1] if _n == 1 else _run24[1]))
+        _said += _play(st, 300)
+    _res24[(_bike, _n)] = (st.run.index, any("crumbled" in x for x in _said))
+check(_cr["to"] == 2 and _res24[(False, 1)] == (2, True) and _res24[(True, 1)] == (2, True) and _res24[(True, 2)] == (3, False),
+      f"Sky Pillar: a cracked floor drops you to the floor below on foot or from a stop; riding at speed you're over it ({_res24})")
+story.story_flags["delta_wallace_131"] = True
+st = open_map("HOENN_SKY_PILLAR", "HOENN_ROUTE_131")
+_way24 = st._guide_route((st.run.index, *st.run.player), (7, 14, 10), "x")
+story.inventory.pop("BICYCLE", None)
+check(_way24 is not None, f"Sky Pillar: the Journal's marker leads to the top on the Bicycle - through 4F's cracks to 3F's pocket and back up, as Emerald's ({_way24})")
 story.story_flags.update({"beat_hoenn_champion": True, "delta_zinnia_defeated": True})
 st = open_map("HOENN_SKY_PILLAR", "HOENN_ROUTE_131")
 st.run.jump_floor(7, (16, 15))
@@ -2836,6 +2848,12 @@ if _ti is not None and _si is not None:
     _clerk = next((m for m in st.run.floor.movers if isinstance(m.payload, dict) and m.payload.get("text") == "Game Corner clerk"), None)
 check(_ok and _clerk is not None and _clerk.payload.get("action") == "GAME_CORNER",
       f"Battle Frontier: the Battle Tower's lift goes down to a floor that isn't on any sign - a secret Game Corner ({_ti}, {_si}, {_ok}, {_rooms[:3]})")
+_slots = [t for t, v in st.run.floor.decor.items() if v == "slot"] if _ok else []
+if _slots:   # (11-24, clean-hoenn-encyclopedia-frontier-game-corner: its machines are walked up to)
+    _sx, _sy = min(_slots, key=lambda t: (t[1], t[0]))
+    st.run.player = (_sx, _sy - 1) if st.run.floor.walkable(_sx, _sy - 1) else (_sx, _sy + 3); st.anim = 0
+_act = st._act_here() if _slots else None
+check(len(_slots) >= 24 and _act and _act[0] == "PLAY SLOTS", f"...its slot machines are walked up to and played ({len(_slots)} machine tiles, {_act and _act[0]})")
 from src.states import game_corner as _gcs
 _ak = story.current_area_key; story.current_area_key = "HOENN_BATTLE_FRONTIER"
 check(any(p[1] == "LEFTOVERS" for p in _gcs.prizes_here(story)), "...with prizes of its own")
