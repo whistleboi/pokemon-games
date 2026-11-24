@@ -108957,7 +108957,15 @@
       "action": "EVENT",
       "event": {
        "lines": [
-        "You need a Coin Case to play. Keep your Coins safe in it!"
+        "You need a Coin Case to play. Here, I've got a spare one!",
+        "Keep your Coins safe in it!"
+       ],
+       "gift_item": {
+        "COIN_CASE": 1
+       },
+       "flag": "got_coin_case_hoenn",
+       "done": [
+        "Coin Case man: Keep your Coins safe in that Coin Case!"
        ]
       }
      },

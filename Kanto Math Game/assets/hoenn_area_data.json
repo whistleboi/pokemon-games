@@ -2745,10 +2745,7 @@
       ],
       "next_area": "HOENN_ROUTE_121",
       "safari_game": {"balls": 30, "steps": 500},
-      "region": "HOENN",
-      "horde_pool_percentages": "HOENN_SAFARI_ZONE_HORDE_PERCENTAGES",
-      "horde_rate": 0.1,
-      "horde_levels": [15, 15]
+      "region": "HOENN"
     },
     "HOENN_SHOAL_CAVE": { "dexnav_pool_percentages": "HOENN_SHOAL_CAVE_DEXNAV_PERCENTAGES", "cleared_flag": "shoal_cave_cleared",
       "area_type": "dungeon",
