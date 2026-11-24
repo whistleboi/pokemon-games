@@ -49,6 +49,11 @@ for arc in sb:
             jn_ = JournalState(g, city); g.change_state(jn_); jn_.draw()
             pygame.image.save(g.screen, os.path.join(S, "quest_book_sinnoh_story.png"))
             g.change_state(city)
+        if ch.get("steps") is not None:   # (a chapter over some of a mission's way-points: the Elder's Surf, 11-24)
+            for i in ch["steps"]:
+                done_(m["steps"][i]["done"])
+            n_s += 1
+            continue
         for f in story.mission_flags(m):
             flags[f] = True
         if m["id"] in SBADGE:
