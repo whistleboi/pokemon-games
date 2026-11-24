@@ -253,8 +253,8 @@
       {"mission": "hoenn_m10", "title": "Father and Child", "say": "Four badges. Now there's only one Gym in Hoenn that really matters: your dad's."}
     ]},
     {"title": "The Feather Badge", "chapters": [
+      {"mission": "hoenn_m11", "title": "A Stone That Shines", "say": "Wally's father has something for you back in Petalburg. Past it, Steven waits on Route 118, turning a strange stone over in his hand. It seems to shine from the inside."},
       {"mission": "hoenn_m12", "title": "The Weather Institute", "say": "Researchers on Route 119 study storms and sunshine. Today, someone has locked them inside."},
-      {"mission": "hoenn_m11", "title": "A Stone That Shines", "say": "Steven is waiting on Route 118. He wants to show you a power hidden inside certain stones."},
       {"mission": "hoenn_m14", "title": "Steven's Gift", "say": "Something invisible is blocking the way to Fortree's Gym. Steven might have a way to see it."},
       {"mission": "hoenn_m13", "title": "Wings Over Fortree", "say": "Fortree City is built in the treetops, and its Gym Leader flies higher than anyone."}
     ]},
