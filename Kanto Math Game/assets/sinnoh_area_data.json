@@ -3699,7 +3699,7 @@
       "id": "sinnoh_m10d",
       "type": "MAIN",
       "title": "Lake Acuity",
-      "description": "Lake Acuity lies past the lumpy rocks at Acuity Lakefront, west of Snowpoint. Climb them with Rock Climb - the HM lies in the snow on Route 217. Barry went on ahead to face Jupiter alone.",
+      "description": "Lake Acuity lies past the lumpy rocks at Acuity Lakefront, west of Snowpoint. Climb them with Rock Climb - the HM lies in the snow on Route 217. {rival_name} went on ahead to face Jupiter alone.",
       "condition": {
         "required_region": "SINNOH",
         "badges_min": 7,
