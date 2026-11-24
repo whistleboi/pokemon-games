@@ -42,7 +42,6 @@ KNOWN = set()   # (Unova's b2_m23 / b2_m29 "Hugh" fixed on region/unova 4392cd97
 KNOWN_SIDE = {(r, i) for r, ids in {   # (SIDE lines sent to their regions 11-24; take each out when its region's fix is on main)
     "JOHTO": ["johto_c1", "johto_s_oddegg", "sinjoh_m1"],   # (done on region/johto b3c7c9b4)
     "HOENN": ["hoenn_s3", "hoenn_s4", "hoenn_s5", "hoenn_s7", "hoenn_s11", "hoenn_s14", "hoenn_s22", "hoenn_s25", "hoenn_s28"],
-    "SINNOH": ["sinnoh_s8"],
     "UNOVA": ["unova_s9", "unova_s12", "unova_s15", "unova_s16", "unova_s17", "unova_s19", "unova_s21"],
     "ORRE": ["orre_s1", "orre_s2", "orre_s2a"]}.items() for i in ids}
 NOT_YET = set()   # (walked regions with no book yet; Orre's came 11-24, J5)

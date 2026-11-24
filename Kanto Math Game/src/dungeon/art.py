@@ -1102,12 +1102,13 @@ def overhead(o, tile):
         o = dict(o, f=_version_file(o))   # (a picture of its own for each version: the Cave of Origin's crystals)
         key = ("top", o["f"])
         if key not in _PT:
-            base = _tiles_dir()
-            _PT[key] = pygame.image.load(os.path.join(base, o["f"]))
+            path = os.path.join(_tiles_dir(), o["f"])
+            _PT[key] = pygame.image.load(path) if os.path.exists(path) else None   # (none: a DS map's dropped flat top, 11-24)
         w, h = o["size"]
         px = int(o.get("px", 16))   # (as the ground picture's "px")
         part = pygame.Surface((w * px, h * px), pygame.SRCALPHA)
-        part.blit(_PT[key], (-o["at"][0] * px, -o["at"][1] * px))
+        if _PT[key] is not None:
+            part.blit(_PT[key], (-o["at"][0] * px, -o["at"][1] * px))
         return (part if tile == px else pygame.transform.scale(part, (w * tile, h * tile))), (0, 0)
     x, y, w, h = o["rect"]
     if o.get("kind") in ("case_top", "case", "window", "emblem", "goods"):  # a room's fitting you walk behind (a prize case's top shelf)
@@ -1302,9 +1303,12 @@ def _picture(spec, w, h, tile):
         f = _version_file(spec)
         key = ("pic", f)
         if key not in _PT:
-            base = _tiles_dir()
-            _PT[key] = pygame.image.load(os.path.join(base, f))
+            path = os.path.join(_tiles_dir(), f)
+            # (none: a DS map whose flat picture was dropped, drawn by its 3D scene - Jordan 11-24, live3d.scene_of)
+            _PT[key] = pygame.image.load(path) if os.path.exists(path) else None
         img = _PT[key]
+        if img is None:
+            return None
         px = int(spec.get("px", 16))   # (its pixels a tile: 16 for the GBA games, 32 for a fan tileset's picture, Johto's Gen 4 set)
         part = pygame.Surface((w * px, h * px))
         part.fill((16, 16, 24))
