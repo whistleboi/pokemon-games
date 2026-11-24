@@ -5895,13 +5895,20 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         else:
             goal, best = guide.goal_area(self.game), None
             for t in sorted(outs):
-                path = [t] if t == goal else guide.path_to(self.game, t, goal)
+                path = [t] if t == goal else guide.path_to(self.game, t, goal, came=self.area_key)
                 if path and (best is None or (len(path), t == came) < best[0]):
                     best = ((len(path), t == came), t)
             if best is None:
                 return None
             hop = best[1]
             tiles = outs[hop]
+        groups = guide.place_groups(self.game, hop)   # (the next place in parts: the ways out that land in the part that leads on -
+        goal = guide.goal_area(self.game)              #  Hoenn's Routes 129-131, two seas each; 11-24)
+        path = guide.path_to(self.game, hop, goal, came=self.area_key) if groups and goal and goal != hop else None
+        nxt = path[1] if path and len(path) > 1 else None
+        _good = guide.good_ways(self.game, self.area_key, [(x, y) for f_, x, y in tiles if f_ == 0], hop, nxt) if nxt else None
+        if _good:
+            tiles = [t for t in tiles if t[0] != 0 or (t[1], t[2]) in _good]
         return self._guide_route(start, frozenset(tiles), self._exit_label(hop))
 
     def _guide_route(self, start, goals, label):
@@ -5934,7 +5941,36 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         key = (start, goal, tuple(sorted(k for k, v in story.inventory.items() if v)), len(story.story_flags), sum(1 for v in story.story_flags.values() if v))
         if getattr(self, "_step_key", None) != key:
             self._step_key, self._step_hit = key, self._guide_route(start, goal, step.get("label") or "Here")
+            if self._step_hit is None:   # (the step is in a part of this place you can't reach from here: out, and round to a
+                self._step_hit = self._guide_round(start, goal)   #  way in that reaches it - Team Galactic HQ's front door; 11-24)
         return self._step_hit
+
+    def _guide_round(self, start, goal):
+        """(tile, label): the way out of this place toward a way back in that reaches goal ((floor, x, y)), when goal can't be
+        reached from where you stand (a place in parts: Team Galactic HQ's warehouse side and its front door). None: no such way."""
+        from src.world import guide
+        prog = self.game.loader.area_data.get("STORY_PROGRESSION", {})
+        run = self.run
+        there = self._step_route(goal, frozenset(), None, reach=True, loose=True)
+        ins = {run.made(i).exits.get((x, y)) for i, x, y in there}
+        ins = {t for t in ins if isinstance(t, str) and t in prog and t != self.area_key}
+        if not ins:
+            return None
+        reach = self._step_route(start, frozenset(), None, reach=True, loose=True)
+        outs = {}
+        for i, x, y in reach:
+            t = run.made(i).exits.get((x, y))
+            if isinstance(t, str) and t in prog and t != self.area_key and (i, x, y) != start:
+                outs.setdefault(t, set()).add((i, x, y))
+        best = None
+        for o in sorted(outs):
+            for a in sorted(ins):
+                path = [o] if o == a else guide.path_to(self.game, o, a, avoid={self.area_key})
+                if path and (best is None or len(path) < best[0]):
+                    best = (len(path), o)
+        if best is None:
+            return None
+        return self._guide_route(start, frozenset(outs[best[1]]), self._exit_label(best[1]))
 
     def _height_edge(self, a, b, index=None):
         """True when a -> b climbs or drops between two of a floor's levels the way the Gen 3 games forbid (11-23, FireRed's
