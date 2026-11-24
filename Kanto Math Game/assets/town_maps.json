@@ -97389,8 +97389,8 @@
      "c.....nn.....c"
     ],
     "exits": {
-     "n": "OUT:6,16",
-     "<": "ROOM:center_2"
+     "<": "ROOM:center_2",
+     "n": "OUT:6,16"
     },
     "buildings": {},
     "roofs": {
@@ -98281,13 +98281,13 @@
      "c.....nn.....c"
     ],
     "exits": {
-     "n": "OUT:20,16",
-     "<": "ROOM:center_2"
+     "<": "ROOM:center_2",
+     "n": "OUT:20,16"
     },
     "buildings": {},
     "roofs": {
      "_picture": {
-      "f": "em_ground/8_4.png",
+      "f": "em_ground/2_2.png",
       "at": [
        0,
        0
@@ -98364,7 +98364,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "em_top/8_4.png",
+      "f": "em_top/2_2.png",
       "at": [
        0,
        0
@@ -98397,7 +98397,7 @@
     "buildings": {},
     "roofs": {
      "_picture": {
-      "f": "em_ground/8_5.png",
+      "f": "em_ground/2_3.png",
       "at": [
        0,
        0
@@ -98465,7 +98465,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "em_top/8_5.png",
+      "f": "em_top/2_3.png",
       "at": [
        0,
        0
@@ -98496,7 +98496,7 @@
     "buildings": {},
     "roofs": {
      "_picture": {
-      "f": "em_ground/8_6.png",
+      "f": "em_ground/2_4.png",
       "at": [
        0,
        0
@@ -98556,7 +98556,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "em_top/8_6.png",
+      "f": "em_top/2_4.png",
       "at": [
        0,
        0
@@ -100891,13 +100891,13 @@
      "c.....nn.....c"
     ],
     "exits": {
-     "n": "OUT:16,38",
-     "<": "ROOM:center_2"
+     "<": "ROOM:center_2",
+     "n": "OUT:16,38"
     },
     "buildings": {},
     "roofs": {
      "_picture": {
-      "f": "em_ground/11_5.png",
+      "f": "em_ground/2_2.png",
       "at": [
        0,
        0
@@ -100961,7 +100961,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "em_top/11_5.png",
+      "f": "em_top/2_2.png",
       "at": [
        0,
        0
@@ -100994,7 +100994,7 @@
     "buildings": {},
     "roofs": {
      "_picture": {
-      "f": "em_ground/11_6.png",
+      "f": "em_ground/2_3.png",
       "at": [
        0,
        0
@@ -101062,7 +101062,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "em_top/11_6.png",
+      "f": "em_top/2_3.png",
       "at": [
        0,
        0
@@ -101093,7 +101093,7 @@
     "buildings": {},
     "roofs": {
      "_picture": {
-      "f": "em_ground/11_7.png",
+      "f": "em_ground/2_4.png",
       "at": [
        0,
        0
@@ -101157,7 +101157,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "em_top/11_7.png",
+      "f": "em_top/2_4.png",
       "at": [
        0,
        0
@@ -103194,13 +103194,13 @@
      "c.....nn.....c"
     ],
     "exits": {
-     "n": "OUT:2,10",
-     "<": "ROOM:center_2"
+     "<": "ROOM:center_2",
+     "n": "OUT:2,10"
     },
     "buildings": {},
     "roofs": {
      "_picture": {
-      "f": "em_ground/3_1.png",
+      "f": "em_ground/2_2.png",
       "at": [
        0,
        0
@@ -103251,7 +103251,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "em_top/3_1.png",
+      "f": "em_top/2_2.png",
       "at": [
        0,
        0
@@ -103284,7 +103284,7 @@
     "buildings": {},
     "roofs": {
      "_picture": {
-      "f": "em_ground/3_2.png",
+      "f": "em_ground/2_3.png",
       "at": [
        0,
        0
@@ -103352,7 +103352,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "em_top/3_2.png",
+      "f": "em_top/2_3.png",
       "at": [
        0,
        0
@@ -104515,24 +104515,24 @@
    "ccccooooo=ccAcc===============X====ooocc",
    "ccccooooo=ccDcc!====X==============ooocc",
    "ccccooooo==N=============N=======Noooocc",
-   "ccccooooo=============X====X======oooccc",
+   "ccccooooo==================X======oooccc",
    "cccoooooo=========================oooccc",
    "cccoooooo.=======.=====..=========oocccc",
-   "cccccoooo.====..=.=X===..====!=.=ooocccc",
+   "cccccoooo.====..=.=====..====!=.=ooocccc",
    "cccccoooo.====..===============.=ooooocc",
    "ccccccoooo==.==================.=ooooccc",
-   "cc~~ccoooo==.====X======X========ooooccc",
+   "cc~~ccoooo==.====X===============ooooccc",
    "cccc~oooooo=========....========oooooocc",
    "cccccoooooo=======.=N..N=====.==oooooocc",
    "ccccccooooo=======.==========.==oooooccc",
-   "ccccccoooooo.==X=============.oooooooccc",
+   "ccccccoooooo.================.oooooooccc",
    "cccccooooooo.===..=====.NN====oooooocccc",
    "cccccoooooooo===..=====.X=.==ooooooocccc",
    "cccccoooooooo=============.==ooooooooccc",
    "cccccccooooooooo==========.ooooooooooccc",
    "cccccccooooooooo===========oooooooooo~c~",
    "ccccccccoooooooo=========ooooooooooo~ccc",
-   "ccccccccooooooooooo====ooooooooooooocccc",
+   "ccccccccooooooooooo==N=ooooooooooooocccc",
    "cccccccooooooooooooooooooooooooooooocccc",
    "cccccccooooooooooooooooooooooooooocccccc",
    "cccc~c~ooooooooooooooooooooooooooocccccc",
@@ -104547,14 +104547,14 @@
    "cccccccccoooXooooooooooooooooooooocccccc",
    "cccccccccooooooooooooooooooooooooocccccc",
    "cccccooooooooooooooooooooooooooooccccccc",
-   "cccccooooooooooooooooooooXoooooooccccccc",
+   "cccccooooooooooooooooooooooooooooccccccc",
    "ccccoooo==oooooooooooooooooooooccccccccc",
    "ccccooo=XXoooooooooooooooooooooccccccccc",
    "ccooooo===ooooooooooooooooo==ooocccccccc",
    "woccooo==ooooooooooooooooo===ooocccccccc",
    "woccoooooooooooooooooooooo====oooccccccc",
    "woooooooooooooooooooooooo=====oooccccccc",
-   "woooooooooooooooooooooooo==N==oooocccccc",
+   "woooooooooooooooooooooooo=====oooocccccc",
    "woooooooooooooooooooooooo====ooooocccccc",
    "wooooooooooooooooooooooooooooooooccccccc",
    "wooooooooooooooooooooooooooooooooccccccc",
@@ -104631,6 +104631,17 @@
     }
    },
    {
+    "text": "Mr. Briney",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Mr. Briney: Ahoy! Peeko and I tie up here when we bring folk to Slateport.",
+      "Mr. Briney: Fine sailing weather today, isn't it? Peeko loves a day at the beach!"
+     ]
+    },
+    "condition": "met_steven"
+   },
+   {
     "text": "Watchful mom",
     "action": "EVENT",
     "event": {
@@ -104638,8 +104649,7 @@
       "Little kids dart around so fast. You can't take your eyes off them for a second!"
      ]
     }
-   },
-   "SODA POP"
+   }
   ],
   "signs": [
    [
@@ -104654,17 +104664,12 @@
   "trainer_spots": [
    "Tuber Ricky",
    "Tuber Lola",
-   "Sailor Dwayne",
    "Young Couple Mel & Paul",
-   "Beauty Johanna",
    "Sailor Huey",
-   "Street Thug Blair",
-   "Delinquent Destinee",
    "Swimmer Grace",
    "Tuber Carmen",
    "Tuber Gwen",
    "Sailor Edmond",
-   "Tuber Simon",
    "Swimmer ♀ Alice",
    "Swimmer ♂ David",
    "Fisherman Carter",
@@ -104887,31 +104892,6 @@
     "d": "r",
     "s": 5
    },
-   "25,39": {
-    "m": "look",
-    "d": "ul",
-    "s": 5
-   },
-   "15,17": {
-    "m": "face",
-    "d": "d",
-    "s": 1
-   },
-   "24,13": {
-    "m": "face",
-    "d": "l",
-    "s": 6
-   },
-   "19,10": {
-    "m": "face",
-    "d": "d",
-    "s": 3
-   },
-   "22,7": {
-    "m": "march",
-    "d": "l",
-    "s": 4
-   },
    "29,32": {
     "m": "look",
     "d": "du",
@@ -104977,6 +104957,147 @@
     ]
    }
   ],
+  "rooms": {
+   "seashore_house": {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     ".cc...Nc....cc.",
+     "..X............",
+     "cc.ccc..ccc..cc",
+     "..........X....",
+     "cc.ccc..ccc..cc",
+     "....X.......X..",
+     "cc...........cc",
+     "......nn......X"
+    ],
+    "exits": {
+     "n": "OUT:12,5"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/28_0.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     [
+      {
+       "text": "Mr. Sea",
+       "action": "EVENT",
+       "condition": {
+        "any": [
+         "not:seashore_beat_simon",
+         "not:seashore_beat_destinee",
+         "not:seashore_beat_blair",
+         "not:seashore_beat_johanna",
+         "not:seashore_beat_dwayne"
+        ]
+       },
+       "event": {
+        "lines": [
+         "Mr. Sea: I own this Seashore House, but you can call me Mr. Sea! Nothing beats a red-hot battle.",
+         "Mr. Sea: Beat every Trainer in here and I'll give you something ice-cold to drink!"
+        ]
+       }
+      },
+      {
+       "text": "Mr. Sea",
+       "action": "EVENT",
+       "condition": [
+        "seashore_beat_simon",
+        "seashore_beat_destinee",
+        "seashore_beat_blair",
+        "seashore_beat_johanna",
+        "seashore_beat_dwayne"
+       ],
+       "flag_condition": "not seashore_soda_pop",
+       "event": {
+        "lines": [
+         "Mr. Sea: You beat them all! Those battles were scorching hot!",
+         "Mr. Sea: Here, cool off with these. Six bottles of Soda Pop!"
+        ],
+        "gift_item": {
+         "SODA_POP": 6
+        },
+        "flag": "seashore_soda_pop"
+       }
+      },
+      {
+       "text": "Mr. Sea",
+       "action": "SHOP",
+       "stock": [
+        "SODA_POP"
+       ],
+       "condition": "seashore_soda_pop"
+      }
+     ]
+    ],
+    "moves": {
+     "6,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "2,3": {
+      "m": "face",
+      "d": "d",
+      "s": 2
+     },
+     "10,5": {
+      "m": "look",
+      "d": "lr",
+      "s": 2
+     },
+     "4,7": {
+      "m": "face",
+      "d": "d",
+      "s": 2
+     },
+     "12,7": {
+      "m": "face",
+      "d": "l",
+      "s": 2
+     },
+     "14,9": {
+      "m": "face",
+      "d": "l",
+      "s": 2
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/28_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       15,
+       10
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Seashore House",
+    "trainer_spots": [
+     "Sailor Dwayne",
+     "Beauty Johanna",
+     "Delinquent Destinee",
+     "Street Thug Blair",
+     "Tuber Simon"
+    ]
+   }
+  },
+  "inside": {
+   "12,5": "seashore_house"
+  },
   "hidden": {
    "16,23": "REVIVE",
    "28,20": "ETHER",
@@ -105970,13 +106091,13 @@
      "c.....nn.....c"
     ],
     "exits": {
-     "n": "OUT:19,19",
-     "<": "ROOM:center_2"
+     "<": "ROOM:center_2",
+     "n": "OUT:19,19"
     },
     "buildings": {},
     "roofs": {
      "_picture": {
-      "f": "em_ground/9_11.png",
+      "f": "em_ground/2_2.png",
       "at": [
        0,
        0
@@ -106023,7 +106144,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "em_top/9_11.png",
+      "f": "em_top/2_2.png",
       "at": [
        0,
        0
@@ -106056,7 +106177,7 @@
     "buildings": {},
     "roofs": {
      "_picture": {
-      "f": "em_ground/9_12.png",
+      "f": "em_ground/2_3.png",
       "at": [
        0,
        0
@@ -106124,7 +106245,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "em_top/9_12.png",
+      "f": "em_top/2_3.png",
       "at": [
        0,
        0
@@ -106155,7 +106276,7 @@
     "buildings": {},
     "roofs": {
      "_picture": {
-      "f": "em_ground/9_13.png",
+      "f": "em_ground/2_4.png",
       "at": [
        0,
        0
@@ -106202,7 +106323,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "em_top/9_13.png",
+      "f": "em_top/2_4.png",
       "at": [
        0,
        0
@@ -106756,16 +106877,16 @@
      "ccccccccccc......ccccccccccccccccccccooo",
      "ccccccccccc......ccccccccccccccccccccooo",
      "cccccccccc.......ccccccccccccccccccccooo",
+     "cccccccccc.....N.ccccccccccccccccccccooo",
      "cccccccccc.......ccccccccccccccccccccooo",
      "cccccccccc.......ccccccccccccccccccccooo",
      "cccccccccc.......ccccccccccccccccccccooo",
-     "cccccccccc.......ccccccccccccccccccccooo",
-     "cccc.ccc.........ccc~cc~~~ccc~~ccccccooo",
+     "cccc.ccc..N......ccc~cc~~~ccc~~ccccccooo",
      "cccc.............ccccccccccccccccccccooo",
      "cccc..........ccccccc11cccccccccccccc..o",
      "cccc..........ccccccc..cccccccccccccccco",
      "cccc..........c.cc.c.........N...Xccccco",
-     "cccc.........!c1cc1c....cccccc...cccccco",
+     "cccc.........!BDBBDB....cccccc...cccccco",
      "ccc!.............c.....cccccccc..cccccco",
      "ccc..............c....ccccccccccccccccco",
      "ccc.....ccXc...cccccccccccccccccccccccco",
@@ -106818,7 +106939,7 @@
      "cccccccc.ccncc~~ccc~ccccooooooc\"\".\"\"\"\"cc",
      "....ccc.!....c~~ccc~ccccooooooc\"\"\"\"\"\".cc",
      "<.............cccccccccccc..cc\"\"\"\"\"\"\"\"cc",
-     "<......................\"\".\"\"\"\"N\".X.\"\"\"cc",
+     "<.............N........\"\".\"\"\"\"N\".X.\"\"\"cc",
      "<.........N....N..N.....X\".\".\"\"\"\"\"\"\".!cc",
      "<.....................\"...\".\"\"...\"\"\"..cc",
      "cccccc......ccccccccccccccccccc....ccccc",
@@ -106831,17 +106952,17 @@
      "ccccccc!...co~.............ooocooooooocc",
      "ccccccc....co~ooo.oooo.ooooooo~ooooooccc",
      "ccccccc....cooooocoooocooooooooooooooccc",
-     "ccccccc....cooooo~oooo~ooooooooooooooocc",
-     "cccccccN.NNcoooooooooooooo.ooo.ooooooocc",
+     "ccccccc.N..cooooo~oooo~ooooooooooooooocc",
+     "cccccccNNNNcoooooooooooooo.ooo.ooooooocc",
      "ccccccc....coooooooooooooooooooooooooocc",
      "ccccccc....ccccccccc~oooooooooooooooo.cc",
      "ccccccc........cccccccccccccccccccccccoo",
      "cccccccc.......c.cc.ccccccccccccccccccoo",
-     "cccccccc......!c1cc1ccccccccccccccccccoo",
+     "cccccccc......!ADAADAcccccccccccccccccoo",
      "cccccccc..........c..ccc~~~~cc~~~~ccccoo",
-     "cccccccc..........c....c...cccccccccccoo",
+     "cccccccc.........Nc....c...cccccccccccoo",
      "cccccccc..........c........c11ccccccccoo",
-     "cccccccc..........c............cccccccoo",
+     "cccccccc..........c........N...cccccccoo",
      "cccccccc.\"\"\"\".....cccccc........!..cccoo",
      "ccccccccc\"\"\"\"\"......!..c...........cccoo",
      "ccccccccc.\"\"\"\"\"........c..........ccccoo",
@@ -106856,7 +106977,10 @@
      "<": "HOENN_ROUTE_103",
      "n": "HOENN_TRICK_HOUSE"
     },
-    "buildings": {},
+    "buildings": {
+     "A": "house",
+     "B": "house"
+    },
     "roofs": {
      "_picture": {
       "f": "em_ground/0_25.png",
@@ -106869,13 +106993,53 @@
      "_buildings_in_picture": true
     },
     "people": [
+     {
+      "text": "Boy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Wouldn't it be great to zoom down the Cycling Road at full speed?"
+       ]
+      }
+     },
+     {
+      "text": "Old man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Two roads, one up above and one down below. One for people, one for Pokémon. Maybe that's how it should be."
+       ]
+      }
+     },
      "MANECTITE",
      "REPEAT BALL",
      "HEAL BALL",
+     {
+      "text": "Strolling lady",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I don't have a Bike, so I'm taking a nice slow walk along the low road."
+       ]
+      }
+     },
      "DIRE HIT",
      "RARE CANDY",
      "ELIXIR",
      "Berry Trees",
+     {
+      "text": "Silent grunt",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "...Hmph. Keep walking, kid."
+       ]
+      },
+      "condition": [
+       "oceanic_museum_cleared",
+       "not:mt_chimney_boss_defeated"
+      ]
+     },
      {
       "text": "Grunt",
       "action": "EVENT",
@@ -106889,6 +107053,19 @@
        "not:mt_chimney_boss_defeated"
       ],
       "_look": "@grunt"
+     },
+     {
+      "text": "Rowdy grunt",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I can't wait to get to Slateport and stir up some trouble!"
+       ]
+      },
+      "condition": [
+       "oceanic_museum_cleared",
+       "not:mt_chimney_boss_defeated"
+      ]
      },
      {
       "text": "Nervous grunt",
@@ -106917,6 +107094,24 @@
        "not:mt_chimney_boss_defeated"
       ],
       "_look": "@grunt_f"
+     },
+     {
+      "text": "Undecided camper",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Race along the Cycling Road straight to Mauville, or stroll the low road under it? I can't decide!"
+       ]
+      }
+     },
+     {
+      "text": "Cycling Road judge",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "This is the Seaside Cycling Road! Ride from Slateport to Mauville as fast as you can, and try not to bump into anyone."
+       ]
+      }
      }
     ],
     "signs": [
@@ -106992,26 +107187,6 @@
       1,
       29,
       91
-     ],
-     "15,16": [
-      0,
-      18,
-      16
-     ],
-     "18,16": [
-      0,
-      15,
-      16
-     ],
-     "16,88": [
-      0,
-      19,
-      88
-     ],
-     "19,88": [
-      0,
-      16,
-      88
      ]
     },
     "edge_to": {
@@ -107230,6 +107405,12 @@
       ]
      }
     ],
+    "inside": {
+     "16,88": "cycling_gate_south",
+     "19,88": "cycling_gate_south",
+     "15,16": "cycling_gate_north",
+     "18,16": "cycling_gate_north"
+    },
     "hidden": {
      "37,67": "FULL_HEAL",
      "33,45": "GREAT_BALL",
@@ -107263,7 +107444,7 @@
      "cccccccccccccccccccccccccc...ccccccccccc",
      "cccccccccccccccccccccccccc...ccccccccccc",
      "cccccccccccccccccccccccccc...ccccccccccc",
-     "cccccccccccccccccccccccccc...ccccccccccc",
+     "cccccccccccccccccccccccccc.N.ccccccccccc",
      "cccccccccccccccccccccccccc...ccccccccccc",
      "cccccccccccccccccccccccccc...ccccccccccc",
      "cccccccccccccccccccccccccc...ccccccccccc",
@@ -107296,7 +107477,7 @@
      "cccccccc.............ccccccccccccccccccc",
      "cccccccc.............ccccccccccccccccccc",
      "cccccccc.............ccccccccccccccccccc",
-     "cccccccc.............ccccccccccccccccccc",
+     "cccccccc.N...........ccccccccccccccccccc",
      "cccccccccccccccc...ccccccccccccccccccccc",
      "cccccccccccccccc...ccccccccccccccccccccc",
      "cccccccccccccccc...ccccccccccccccccccccc",
@@ -107318,7 +107499,7 @@
      "cccccccccccccccc...ccccccccccccccccccccc",
      "cccccccccccccc................cccccccccc",
      "cccccccccccccc................cccccccccc",
-     "ccccccccccccccccccccccccccc...cccccccccc",
+     "ccccccccccccccccccccccccccc..Ncccccccccc",
      "ccccccccccccccccccccccccccc...cccccccccc",
      "ccccccccccccccccccccccccccc...cccccccccc",
      "ccccccccccccccccccccccccccc...cccccccccc",
@@ -107380,7 +107561,36 @@
       91
      ]
     },
-    "parts": true
+    "parts": true,
+    "people": [
+     {
+      "text": "Long-haired rider",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "See how my hair streams out behind me when I ride? I grew it long just for that!"
+       ]
+      }
+     },
+     {
+      "text": "Bike fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Hey, that Bike's from Rydel's shop, isn't it? His name's right there on the frame!"
+       ]
+      }
+     },
+     {
+      "text": "Trick rider",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Learn a few Bike tricks and riding gets even more fun. Some places you can only reach with the right moves!"
+       ]
+      }
+     }
+    ]
    }
   ],
   "floor_names": [
@@ -107392,6 +107602,126 @@
    "{rival_name}": 0,
    "Triathlete Alyssa": 0,
    "Triathlete Dylan": 0
+  },
+  "rooms": {
+   "cycling_gate_south": {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     ".....mcNccm....",
+     ".....cmmmmc....",
+     "...............",
+     "cnn...cccc..wwc"
+    ],
+    "exits": {
+     "n": "OUT:16,88",
+     "w": "OUT:19,88"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/29_11.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Cycling Road attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "On the Cycling Road you can ride as fast as you like. It's a great feeling... just try not to crash into anyone!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "7,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/29_11.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       15,
+       6
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Cycling Road gate"
+   },
+   "cycling_gate_north": {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     ".....mcNccm....",
+     ".....cmmmmc....",
+     "...............",
+     "cnn...cccc..wwc"
+    ],
+    "exits": {
+     "n": "OUT:15,16",
+     "w": "OUT:18,16"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/29_12.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Cycling Road guide",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Cycling Road runs all the way to Slateport. Ride fast, but watch out for other riders!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "7,2": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/29_12.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       15,
+       6
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Cycling Road gate"
+   }
   }
  },
  "MAUVILLE_CITY": {
@@ -107746,13 +108076,13 @@
      "c.N...nn.....c"
     ],
     "exits": {
-     "n": "OUT:22,5",
-     "<": "ROOM:center_2"
+     "<": "ROOM:center_2",
+     "n": "OUT:22,5"
     },
     "buildings": {},
     "roofs": {
      "_picture": {
-      "f": "em_ground/10_5.png",
+      "f": "em_ground/2_2.png",
       "at": [
        0,
        0
@@ -107816,7 +108146,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "em_top/10_5.png",
+      "f": "em_top/2_2.png",
       "at": [
        0,
        0
@@ -107849,7 +108179,7 @@
     "buildings": {},
     "roofs": {
      "_picture": {
-      "f": "em_ground/10_6.png",
+      "f": "em_ground/2_3.png",
       "at": [
        0,
        0
@@ -107930,7 +108260,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "em_top/10_6.png",
+      "f": "em_top/2_3.png",
       "at": [
        0,
        0
@@ -107961,7 +108291,7 @@
     "buildings": {},
     "roofs": {
      "_picture": {
-      "f": "em_ground/10_7.png",
+      "f": "em_ground/2_4.png",
       "at": [
        0,
        0
@@ -108008,7 +108338,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "em_top/10_7.png",
+      "f": "em_top/2_4.png",
       "at": [
        0,
        0
@@ -109571,13 +109901,13 @@
      "c.....nn.....c"
     ],
     "exits": {
-     "n": "OUT:16,3",
-     "<": "ROOM:center_2"
+     "<": "ROOM:center_2",
+     "n": "OUT:16,3"
     },
     "buildings": {},
     "roofs": {
      "_picture": {
-      "f": "em_ground/6_4.png",
+      "f": "em_ground/2_2.png",
       "at": [
        0,
        0
@@ -109641,7 +109971,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "em_top/6_4.png",
+      "f": "em_top/2_2.png",
       "at": [
        0,
        0
@@ -109674,7 +110004,7 @@
     "buildings": {},
     "roofs": {
      "_picture": {
-      "f": "em_ground/6_5.png",
+      "f": "em_ground/2_3.png",
       "at": [
        0,
        0
@@ -109742,7 +110072,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "em_top/6_5.png",
+      "f": "em_top/2_3.png",
       "at": [
        0,
        0
@@ -109773,7 +110103,7 @@
     "buildings": {},
     "roofs": {
      "_picture": {
-      "f": "em_ground/6_3.png",
+      "f": "em_ground/2_4.png",
       "at": [
        0,
        0
@@ -109833,7 +110163,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "em_top/6_3.png",
+      "f": "em_top/2_4.png",
       "at": [
        0,
        0
@@ -112056,13 +112386,13 @@
      "c.....nn.....c"
     ],
     "exits": {
-     "n": "OUT:14,7",
-     "<": "ROOM:center_2"
+     "<": "ROOM:center_2",
+     "n": "OUT:14,7"
     },
     "buildings": {},
     "roofs": {
      "_picture": {
-      "f": "em_ground/5_4.png",
+      "f": "em_ground/2_2.png",
       "at": [
        0,
        0
@@ -112123,7 +112453,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "em_top/5_4.png",
+      "f": "em_top/2_2.png",
       "at": [
        0,
        0
@@ -112156,7 +112486,7 @@
     "buildings": {},
     "roofs": {
      "_picture": {
-      "f": "em_ground/5_5.png",
+      "f": "em_ground/2_3.png",
       "at": [
        0,
        0
@@ -112224,7 +112554,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "em_top/5_5.png",
+      "f": "em_top/2_3.png",
       "at": [
        0,
        0
@@ -112255,7 +112585,7 @@
     "buildings": {},
     "roofs": {
      "_picture": {
-      "f": "em_ground/5_0.png",
+      "f": "em_ground/2_4.png",
       "at": [
        0,
        0
@@ -112319,7 +112649,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "em_top/5_0.png",
+      "f": "em_top/2_4.png",
       "at": [
        0,
        0
@@ -113883,14 +114213,26 @@
     "condition": "not:mt_chimney_boss_defeated",
     "_look": "@grunt"
    },
-   {
-    "text": "Lava Cookie lady",
-    "action": "SHOP",
-    "stock": [
-     "LAVA_COOKIE"
-    ],
-    "_look": "em_30.png"
-   },
+   [
+    {
+     "text": "Worried grunt",
+     "action": "EVENT",
+     "event": {
+      "lines": [
+       "If they make more land, where will all the Water Pokémon live?"
+      ]
+     },
+     "condition": "not:mt_chimney_boss_defeated"
+    },
+    {
+     "text": "Lava Cookie lady",
+     "action": "SHOP",
+     "stock": [
+      "LAVA_COOKIE"
+     ],
+     "condition": "mt_chimney_boss_defeated"
+    }
+   ],
    {
     "text": "Busy grunt",
     "action": "EVENT",
@@ -114452,11 +114794,12 @@
      "..............",
      "c<........Ncc.",
      "...........cc.",
-     "c.....nn...N.c"
+     "c.....ww...N.c"
     ],
     "exits": {
+     "<": "ROOM:center_2",
      "n": "OUT:9,2",
-     "<": "ROOM:center_2"
+     "w": "OUT:9,6"
     },
     "buildings": {},
     "roofs": {
@@ -114554,7 +114897,7 @@
     "buildings": {},
     "roofs": {
      "_picture": {
-      "f": "em_ground/4_6.png",
+      "f": "em_ground/2_3.png",
       "at": [
        0,
        0
@@ -114622,7 +114965,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "em_top/4_6.png",
+      "f": "em_top/2_3.png",
       "at": [
        0,
        0
@@ -114653,7 +114996,7 @@
     "buildings": {},
     "roofs": {
      "_picture": {
-      "f": "em_ground/4_4.png",
+      "f": "em_ground/2_4.png",
       "at": [
        0,
        0
@@ -114700,7 +115043,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "em_top/4_4.png",
+      "f": "em_top/2_4.png",
       "at": [
        0,
        0
@@ -116075,13 +116418,13 @@
      "c.....nn.....c"
     ],
     "exits": {
-     "n": "OUT:5,6",
-     "<": "ROOM:center_2"
+     "<": "ROOM:center_2",
+     "n": "OUT:5,6"
     },
     "buildings": {},
     "roofs": {
      "_picture": {
-      "f": "em_ground/12_2.png",
+      "f": "em_ground/2_2.png",
       "at": [
        0,
        0
@@ -116141,7 +116484,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "em_top/12_2.png",
+      "f": "em_top/2_2.png",
       "at": [
        0,
        0
@@ -116174,7 +116517,7 @@
     "buildings": {},
     "roofs": {
      "_picture": {
-      "f": "em_ground/12_3.png",
+      "f": "em_ground/2_3.png",
       "at": [
        0,
        0
@@ -116242,7 +116585,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "em_top/12_3.png",
+      "f": "em_top/2_3.png",
       "at": [
        0,
        0
@@ -116273,7 +116616,7 @@
     "buildings": {},
     "roofs": {
      "_picture": {
-      "f": "em_ground/12_4.png",
+      "f": "em_ground/2_4.png",
       "at": [
        0,
        0
@@ -116337,7 +116680,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "em_top/12_4.png",
+      "f": "em_top/2_4.png",
       "at": [
        0,
        0
@@ -118982,6 +119325,109 @@
     ]
    }
   ],
+  "rooms": {
+   "safari_gate": {
+    "art": [
+     "cccccccccccccccccc",
+     "ccccccccccccccc!cc",
+     "......mcNcNm......",
+     "......cmmmmc......",
+     "..................",
+     "c.nn...cccc.......",
+     "cccccccccccc......",
+     "cccccccccccc....mc",
+     "ccccccccccccc...mc",
+     "cccccccccccc....mN",
+     "cccccccccccc....mc",
+     "cccccccccccc....cc",
+     "cccccccccccc......",
+     "ccccccccccccc.<<.c"
+    ],
+    "exits": {
+     "n": "HOENN_SAFARI_ZONE",
+     "<": "OUT:37,5"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/23_0.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Safari clerk",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Safari Zone is a nature park. Please enjoy it, and be kind to the Pokémon living there!"
+       ]
+      }
+     },
+     {
+      "text": "Safari attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to the Safari Zone! Each visit you get 30 Safari Balls and 500 steps. Catch what you can!"
+       ]
+      }
+     },
+     {
+      "text": "Safari guide",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "In the Safari Zone you'll meet Pokémon that are rare anywhere else in Hoenn, living wild out in nature."
+       ]
+      }
+     }
+    ],
+    "signs": [
+     [
+      "Safari Zone tip: you can only catch with your Safari Balls in here. Make every throw count!"
+     ]
+    ],
+    "moves": {
+     "10,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "8,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "17,9": {
+      "m": "face",
+      "d": "l"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/23_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       18,
+       14
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Safari Zone gate"
+   }
+  },
+  "inside": {
+   "37,5": "safari_gate"
+  },
   "hidden": {
    "23,10": "HP_UP",
    "72,5": "FULL_HEAL",
@@ -122856,13 +123302,13 @@
      "c.....nn...N.c"
     ],
     "exits": {
-     "n": "OUT:24,14",
-     "<": "ROOM:center_2"
+     "<": "ROOM:center_2",
+     "n": "OUT:24,14"
     },
     "buildings": {},
     "roofs": {
      "_picture": {
-      "f": "em_ground/13_6.png",
+      "f": "em_ground/2_2.png",
       "at": [
        0,
        0
@@ -122909,7 +123355,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "em_top/13_6.png",
+      "f": "em_top/2_2.png",
       "at": [
        0,
        0
@@ -122942,7 +123388,7 @@
     "buildings": {},
     "roofs": {
      "_picture": {
-      "f": "em_ground/13_7.png",
+      "f": "em_ground/2_3.png",
       "at": [
        0,
        0
@@ -123010,7 +123456,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "em_top/13_7.png",
+      "f": "em_top/2_3.png",
       "at": [
        0,
        0
@@ -126158,13 +126604,13 @@
      "c.....nn.....c"
     ],
     "exits": {
-     "n": "OUT:28,16",
-     "<": "ROOM:center_2"
+     "<": "ROOM:center_2",
+     "n": "OUT:28,16"
     },
     "buildings": {},
     "roofs": {
      "_picture": {
-      "f": "em_ground/14_3.png",
+      "f": "em_ground/2_2.png",
       "at": [
        0,
        0
@@ -126211,7 +126657,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "em_top/14_3.png",
+      "f": "em_top/2_2.png",
       "at": [
        0,
        0
@@ -126244,7 +126690,7 @@
     "buildings": {},
     "roofs": {
      "_picture": {
-      "f": "em_ground/14_4.png",
+      "f": "em_ground/2_3.png",
       "at": [
        0,
        0
@@ -126329,7 +126775,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "em_top/14_4.png",
+      "f": "em_top/2_3.png",
       "at": [
        0,
        0
@@ -126360,7 +126806,7 @@
     "buildings": {},
     "roofs": {
      "_picture": {
-      "f": "em_ground/14_5.png",
+      "f": "em_ground/2_4.png",
       "at": [
        0,
        0
@@ -126428,7 +126874,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "em_top/14_5.png",
+      "f": "em_top/2_4.png",
       "at": [
        0,
        0
@@ -132865,13 +133311,13 @@
      "c.....nn....Nc"
     ],
     "exits": {
-     "n": "OUT:8,15",
-     "<": "ROOM:center_2"
+     "<": "ROOM:center_2",
+     "n": "OUT:8,15"
     },
     "buildings": {},
     "roofs": {
      "_picture": {
-      "f": "em_ground/7_0.png",
+      "f": "em_ground/2_2.png",
       "at": [
        0,
        0
@@ -132951,7 +133397,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "em_top/7_0.png",
+      "f": "em_top/2_2.png",
       "at": [
        0,
        0
@@ -132984,7 +133430,7 @@
     "buildings": {},
     "roofs": {
      "_picture": {
-      "f": "em_ground/7_1.png",
+      "f": "em_ground/2_3.png",
       "at": [
        0,
        0
@@ -133052,7 +133498,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "em_top/7_1.png",
+      "f": "em_top/2_3.png",
       "at": [
        0,
        0
@@ -133964,13 +134410,13 @@
      "c.....nn.....c"
     ],
     "exits": {
-     "n": "OUT:43,31",
-     "<": "ROOM:center_2"
+     "<": "ROOM:center_2",
+     "n": "OUT:43,31"
     },
     "buildings": {},
     "roofs": {
      "_picture": {
-      "f": "em_ground/15_2.png",
+      "f": "em_ground/2_2.png",
       "at": [
        0,
        0
@@ -134042,7 +134488,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "em_top/15_2.png",
+      "f": "em_top/2_2.png",
       "at": [
        0,
        0
@@ -134075,7 +134521,7 @@
     "buildings": {},
     "roofs": {
      "_picture": {
-      "f": "em_ground/15_3.png",
+      "f": "em_ground/2_3.png",
       "at": [
        0,
        0
@@ -134143,7 +134589,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "em_top/15_3.png",
+      "f": "em_top/2_3.png",
       "at": [
        0,
        0
@@ -134174,7 +134620,7 @@
     "buildings": {},
     "roofs": {
      "_picture": {
-      "f": "em_ground/15_4.png",
+      "f": "em_ground/2_4.png",
       "at": [
        0,
        0
@@ -134221,7 +134667,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "em_top/15_4.png",
+      "f": "em_top/2_4.png",
       "at": [
        0,
        0
@@ -135831,13 +136277,13 @@
      "c.....nn.....c"
     ],
     "exits": {
-     "n": "OUT:27,48",
-     "<": "ROOM:center_2"
+     "<": "ROOM:center_2",
+     "n": "OUT:27,48"
     },
     "buildings": {},
     "roofs": {
      "_picture": {
-      "f": "em_ground/16_12.png",
+      "f": "em_ground/2_2.png",
       "at": [
        0,
        0
@@ -135898,7 +136344,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "em_top/16_12.png",
+      "f": "em_top/2_2.png",
       "at": [
        0,
        0
@@ -135931,7 +136377,7 @@
     "buildings": {},
     "roofs": {
      "_picture": {
-      "f": "em_ground/16_13.png",
+      "f": "em_ground/2_3.png",
       "at": [
        0,
        0
@@ -135999,7 +136445,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "em_top/16_13.png",
+      "f": "em_top/2_3.png",
       "at": [
        0,
        0
@@ -141203,7 +141649,7 @@
     "art": [
      "cccccccccccccccc",
      "ccccccccccccc1cc",
-     "..........N.....",
+     "..N....N..N.....",
      "................",
      "................",
      "..Nccc....cc.cc.",
@@ -141228,6 +141674,24 @@
      "_buildings_in_picture": true
     },
     "people": [
+     {
+      "text": "Launch engineer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "A rocket launch has to be perfect. Not even the tiniest mistake is allowed!"
+       ]
+      }
+     },
+     {
+      "text": "Launch scientist",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The next rocket launch is coming up soon! Every launch so far has gone up safely."
+       ]
+      }
+     },
      {
       "text": "Rocket fan",
       "action": "EVENT",
@@ -141339,7 +141803,7 @@
      "................",
      ".....N..........",
      "..cc.cc.cc.cc...",
-     ".N.........N....",
+     "NN.........N....",
      ".X.............."
     ],
     "exits": {},
@@ -141373,6 +141837,19 @@
         "Mossdeep is mostly sunny with steady winds. Perfect for launching rockets."
        ]
       }
+     },
+     {
+      "text": "Fuel thief grunt",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Grunt: We came all this way for the rocket fuel, and you get in our way again!"
+       ]
+      },
+      "condition": [
+       "badge_mind_earned",
+       "not:space_center_cleared"
+      ]
      },
      {
       "text": "Steven ",
@@ -147174,7 +147651,7 @@
     "buildings": {},
     "roofs": {
      "_picture": {
-      "f": "em_ground/26_53.png",
+      "f": "em_ground/2_2.png",
       "at": [
        0,
        0
@@ -147190,7 +147667,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "em_top/26_53.png",
+      "f": "em_top/2_2.png",
       "at": [
        0,
        0
@@ -147221,7 +147698,7 @@
     "buildings": {},
     "roofs": {
      "_picture": {
-      "f": "em_ground/26_55.png",
+      "f": "em_ground/2_4.png",
       "at": [
        0,
        0
@@ -147236,7 +147713,7 @@
     "overheads": [
      {
       "kind": "picture",
-      "f": "em_top/26_55.png",
+      "f": "em_top/2_4.png",
       "at": [
        0,
        0
