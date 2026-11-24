@@ -1467,4 +1467,30 @@ _bad = _osm.report(_oi.ORANGE)
 _n = sum(1 for _ in _osm.every_scene(_oi.ORANGE))
 check(not _bad, f"the moves of {_n} scenes, as the game routes them: no swimmer or walker on rock, shore or wall, none short of its stop ({_bad[:3]})")
 
+print("24) 5.7's own battle backgrounds (11-23, Dev Map clean-orange-main-battle-backgrounds; oi_battle_bg.py)")
+from src.world import battle_bg as _bbg
+import datetime as _dt
+_bbg._INDEX.clear()
+_ix = _bbg.index(g, "ORANGE") or {}
+_okeys = [k for k, a in _area.items() if isinstance(a, dict) and a.get("region") == "ORANGE"]
+check(_ix and not [k for k in _okeys if k not in _ix.get("areas", {})],
+      f"every Orange area ({len(_okeys)}) has 5.7's pictures ({[k for k in _okeys if k not in (_ix.get('areas') or {})][:4]})")
+_used = {v for e in (_ix.get("areas") or {}).values() for v in ([e] if isinstance(e, str) else e.values())}
+_miss = [v for v in _used | set((_ix.get("terrain") or {}).values())
+         if not os.path.isfile(os.path.join(_bbg.folder(g, "ORANGE"), v))]
+check(not _miss, f"all {len(_used)} pictures it names are there ({_miss})")
+_bn = lambda p: os.path.basename(p) if p else None
+_noon = _dt.datetime(2026, 1, 1, 12)
+check(_bn(_bbg.pick(g, "MIKAN_ISLAND", trainer=True, gym=True, leader=True, water=False, now=_noon)) == "leader.png",
+      "Cissy in the Gym hall: 5.7's Leader picture")
+check(_bn(_bbg.pick(g, "PUMMELO_ISLAND", trainer=True, gym=True, leader=True, water=False, now=_noon)) == "champion.png",
+      "Drake in the Stadium: 5.7's Champion picture")
+check(_bn(_bbg.pick(g, "ORANGE_ROUTE_57", water=False, now=_noon)) == "grass.png"
+      and _bn(_bbg.pick(g, "ORANGE_ROUTE_57", water=True, now=_noon)) == "water.png",
+      "Route 57: grass for its grass, water on the sea")
+check(_bn(_bbg.pick(g, "CRYSTAL_CAVE", water=False, now=_noon)) == "cave.png"
+      and _bn(_bbg.pick(g, "CRYSTAL_CAVE", water=True, now=_noon)) == "pond.png", "the Crystal Cave: cave, pond on its water")
+check(_bn(_bbg.pick(g, "TROVITOPOLIS_SEWERS", trainer=True, water=False, now=_noon)) == "indoor_2.png",
+      "the Trovitopolis Sewers: the indoor scene 5.7's map sets")
+
 print(f"##### {len(fails)} failures")
