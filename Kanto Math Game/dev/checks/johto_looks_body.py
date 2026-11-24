@@ -169,8 +169,7 @@ for k, v in sorted(stock.items()):
     print(f"   {k}: {len(v)}: {', '.join(map(str, v[:8]))}{' ...' if len(v) > 8 else ''}")
 check(not stock, f"every Johto person or thing on a map has its own look: SoulSilver's sprite, an item, a Pokemon, or none for a spot to look at ({sum(len(v) for v in stock.values())} drawn as the stock townsperson)")
 
-print("
-5) battle portraits: SoulSilver's own (assets/sprites/trainers/ss_*.png, johto_map_tools/j_trainer_pics.py); Gym Leaders and the rival keep theirs")
+print("\n5) battle portraits: SoulSilver's own (assets/sprites/trainers/ss_*.png, johto_map_tools/j_trainer_pics.py); Gym Leaders and the rival keep theirs")
 _bp = collections.Counter()
 def _walk_tr(o):
     if isinstance(o, dict):
