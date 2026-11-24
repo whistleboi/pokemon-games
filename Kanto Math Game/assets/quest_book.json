@@ -389,6 +389,10 @@
     ]},
     {"title": "The Plasma Frigate", "chapters": [
       {"mission": "b2_m29", "title": "Aboard the Plasma Frigate", "say": "Grunts in black are running for the pier, where a ship with no flag waits. Hugh is already gone after them. Whoever is on that deck has been expecting company."}
+    ]},
+    {"title": "The Cold Snap", "chapters": [
+      {"mission": "b2_m30", "title": "The Cold Snap", "say": "Somewhere near Lacunosa Town the air froze solid for a moment, colder than any winter. It happened at Castelia too, and Driftveil. Cheren is waiting at the Season Research Lab, and he doesn't like what the numbers say."},
+      {"mission": "b2_m31", "title": "The Charged Stones", "say": "Stones hang in the air in Chargestone Cave, humming with power. Someone's voice echoes across the bridge and is gone. Mistralton's runway is on the far side."}
     ]}
   ]
 }

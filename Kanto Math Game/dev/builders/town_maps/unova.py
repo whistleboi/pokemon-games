@@ -4141,11 +4141,12 @@ DRIFTVEIL = town(
      106: ("gate", "pwt_gate")},
     rooms=DRIFT_ROOMS,
     hidden={"73,52": "ULTRA_BALL", "8,15": "RARE_BONE"},
-    edges={"<": ("UNOVA_ROUTE_6", [(0, y) for y in range(20, 23)]), ">": ("DRIFTVEIL_DRAWBRIDGE", [(86, y) for y in range(47, 50)])},
+    edges={"<": ("UNOVA_ROUTE_6", [(0, y) for y in range(20, 24)]), ">": ("DRIFTVEIL_DRAWBRIDGE", [(86, y) for y in range(47, 50)])},
     scenes=DRIFT_SCENES, title="Driftveil City")
 for _y in range(0, 32):   # (the block north-east of the city isn't part of it: the file's picture leaves it empty)
     DRIFTVEIL["art"][_y] = DRIFTVEIL["art"][_y][:63] + "c" * (len(DRIFTVEIL["art"][_y]) - 63)
-DRIFTVEIL["edge_to"] = {"86,%d" % y: [44, 44 + (y - 47) * 3] for y in range(47, 50)}
+DRIFTVEIL["edge_to"] = dict({"86,%d" % y: [44, 44 + (y - 47) * 3] for y in range(47, 50)},
+                           **{"0,%d" % y: [62, y + 32] for y in range(20, 24)})   # (Route 6, batch 6a: its east end, rows 52-55)
 
 # --- the Driftveil Drawbridge (253): Ducklett and feathers under the bird shadows (the file's "rustle" slots, read as the
 # bridge's flying shadows: src/world/phenomena.py); the Youngster who'd love to see a Charizard; the runner from Skyarrow.
@@ -4468,6 +4469,245 @@ for _k, _t in (("hall_w", _RC_HALL), ("hall_e", _RC_HALL), ("east", _RC_HALL), (
     DEPTHS["rooms"][_k]["wild_tables"] = _t
 
 
+# ======================================================================================================== batch 6a (11-24)
+# Route 6 (331: the Season Research Lab 332, the rest house 336, two Hidden Grottoes), Mistralton Cave (333 1F, 334 2F,
+# 335 the Guidance Chamber: Cobalion after the Champion), Chargestone Cave (194 its mouth on the world map, 195 1F,
+# 196 B1F, 197 B2F: the floating stones you push). Each cave floor is its own place (its own trainers and wild table), as
+# the Relic Passage's chambers. Mistralton Cave is dark till Flash. Story flags: b2_frigate_done -> b2_r6_cheren (Cheren
+# outside the lab) -> b2_r6_surf (HM03 Surf, in the lab) ; b2_r6_cobalion (Cobalion on the west bridge, Rood) ;
+# b2_charge_bianca (Bianca at Chargestone's mouth: push the stones) ; b2_charge_voice (N's voice by the bridge) ->
+# visited_MISTRALTON_CITY (batch 6b).
+
+
+def _arrive(m, z, came, door):
+    """In from another place by a door inside the map (not on its edge): set down on the walkable tile beside that door
+    (the map's "arrive" {place: [x, y]}). The walker only finds its own way in at a map edge (edge_to): Main's inbox
+    clean-main-unova-door-arrival."""
+    rows = GEO[str(z)]["rows"]
+    x, y = door
+    for dx, dy in ((0, 1), (1, 0), (-1, 0), (0, -1), (1, 1), (-1, 1), (1, -1), (-1, -1)):
+        tx, ty = x + dx, y + dy
+        if 0 <= ty < len(rows) and 0 <= tx < len(rows[0]) and rows[ty][tx] in '."' and m["art"][ty][tx] in '."':
+            m.setdefault("arrive", {})[came] = [tx, ty]
+            return
+
+
+# ---------------------------------------------------------------------------------------------------------------- Route 6
+R6_COBALION = {
+    "trigger": {"zone": [6, 13, 8, 13]}, "condition": ["not:b2_r6_cobalion"], "flag": "b2_r6_cobalion",
+    "cast": [{"sheet": "mon:638", "from": [7, 9], "to": [7, 12], "lines": ["Kawbraa!"], "stay": True},
+             {"sheet": "b2_c191.png", "from": [10, 13], "to": "player", "lines": ["Rood: That Pokemon...?"], "stay": True},
+             {"sheet": "b2_c28.png", "from": [12, 11], "to": "player", "stay": True, "lines": [
+                 "Elderly Man: It's the legendary Pokemon, Cobalion! I told you the story the other day, didn't I?",
+                 "Elderly Man: They say Cobalion, Virizion and Terrakion fought people to protect Pokemon from a war those "
+                 "people started.",
+                 "Elderly Man: But why show itself to people now? Is it watching over Unova after Team Plasma's trouble two "
+                 "years ago? Or does it sense something new...?"]},
+             {"as": 0, "lines": ["Cobalion leapt back up the cliff and was gone!"], "leave": [7, 3]},
+             {"as": 1, "lines": ["Rood: Unforgivable... Ghetsis's reach grows ever wider.",
+                                 "Rood: Did Cobalion appear to you by chance, or to ask you for help? I can't hear the hearts of "
+                                 "Pokemon the way Lord N can.",
+                                 "Rood: But if you can befriend Cobalion, it will be a great ally on your journey."],
+              "leave": [12, 20]},
+             {"as": 2, "lines": ["Elderly Man: People, Pokemon, every living thing... It's best when we all trust one another."],
+              "leave": [23, 11]}]}
+R6_CHEREN = {
+    "trigger": {"zone": [42, 19, 42, 23]}, "condition": ["b2_frigate_done", "not:b2_r6_cheren"], "flag": "b2_r6_cheren",
+    "cast": [{"sheet": "b2_cheren.png", "from": [39, 21], "to": "player", "lines": [
+        "Cheren: Oh, {player_name}. Can you come with me for a moment? It's about the weather. Inside the lab."],
+        "leave": [39, 18]}]}
+OUTSIDE.update({332: 331, 336: 331})
+R6_LAB = room(332, {
+    0: {"text": "Cheren", "action": "EVENT", "condition": ["b2_frigate_done", "not:b2_r6_surf"], "_look": "sheet:b2_cheren.png",
+        "event": {"lines": ["Cheren: Nobody's talking about it, but the records show a sudden drop in temperature near "
+                            "Lacunosa Town. Only for a moment... but down to minus 58 degrees!",
+                            "Cheren: The same thing happened around Castelia City and Driftveil City.",
+                            "Cheren: And then that business with Team Plasma! This needs looking into before it gets worse. "
+                            "...I hate cold weather, though.",
+                            "Cheren: Take this. It's a Hidden Machine with Surf. Please look around different places and see "
+                            "what's going on.",
+                            "{player_name} received HM03 Surf!",
+                            "Cheren: Teach it to a Pokemon and you can travel across water. Sorry to slow you down. Be careful!"],
+                  "gift_item": {"HM_SURF": 1}, "flag": "b2_r6_surf"}},
+    1: _say("Scientist by the door", "This is the Season Research Lab. Twist Mountain, past Mistralton, gets snow in some "
+                                    "seasons."),
+    3: _say("Scientist by the cases", "Some Pokemon change how they look with the seasons. Could that count as a kind of "
+                                     "evolution?"),
+    4: {"text": "Scientist with the Deerling", "action": "EVENT", "event": {
+        "lines": ["You can see Deerling from all four seasons here. We're sort of the Deerling experts.",
+                  "We found a rather rare Deerling. Will you raise it for us?",
+                  "Here you are! Take good care of it! Its Ability is Serene Grace: it doubles the chance of a move's extra effect."],
+        "gift_pokemon": 585, "gift_level": 30, "flag": "b2_r6_deerling",
+        "done": ["How's the Deerling doing? Its coat changes with the seasons, you know."]}},
+    8: _say("Scientist at the glass", "A machine keeps the temperature and humidity just right in the case beside me.",
+            "The plants inside change with the season, the same as outside."),
+    9: _say("Parasol Lady", "Here's a Pokemon weather forecast! Rain Dance or Drizzle makes it rain: Water-type moves get "
+                            "50 percent stronger, and Thunder and Hurricane never miss.",
+            "Sunny Day or Drought brings out the sun: Fire-type moves get stronger, and SolarBeam needs no charging!"),
+    2: _say("Deerling", "Deerling: Dreee!"), 5: _say("Deerling ", "Deerling: Dreee! Dree dree!"),
+    6: _say("Deerling  ", "Deerling: Dreen! Droooon!"), 7: _say("Deerling   ", "Deerling: Droon..."),
+}, {}, (39, 17))
+R6_LAB["title"] = "Season Research Lab"
+R6_HOUSE = room(336, {
+    0: {"text": "Woman by the table", "action": "EVENT", "event": {"heal": True, "lines": [
+        "Oh, dear! Your Pokemon look tired. Rest here a little while.", "...", "Good! Your Pokemon look full of energy!"]}},
+    1: _gift("Girl in the rest house", ["Here, have this!", "{player_name} received a Shiny Stone!"], "SHINY_STONE",
+             "b2_r6_shiny_stone", ["Know what? When I gave my Minccino a Shiny Stone, it evolved into a different Pokemon!"]),
+    2: [_say("Old man in the rest house", "Maybe I should go to Celestial Tower on Route 7.",
+             "I have to ring the bell for my Cottonee...", condition=["unova_version:BLACK_2"]),
+        _say("Old man in the rest house ", "Maybe I should go to Celestial Tower on Route 7.",
+             "I have to ring the bell for my Petilil...", condition=["unova_version:WHITE_2"])],
+}, {}, (20, 9))
+R6_HOUSE["title"] = "Rest House"
+ROUTE_6 = route(
+    331, {11: _ball("Poke Ball by the lab's fence", "MOON_STONE", "b2_r6_moon_stone", name="a Moon Stone"),
+          12: _ball("Poke Ball by the east river", "ELIXIR", "b2_r6_elixir", name="an Elixir"),
+          13: _ball("Poke Ball on the west bank", "ULTRA_BALL", "b2_r6_ultra", name="an Ultra Ball"),
+          14: _ball("Poke Ball north of the lab", "TM043", "b2_r6_tm56", name="TM56 Fling"),
+          15: _ball("Poke Ball by the south bridge", "HEART_SCALE", "b2_r6_heart_scale", name="a Heart Scale"),
+          16: _ball("Poke Ball across the river", "PP_UP", "b2_r6_pp_up", name="a PP Up"),
+          20: _say("Girl on the path", "Water Absorb and Dry Skin: Pokemon with those Abilities love Water-type moves and rain!",
+                   "Aspertia's Gym Leader knows all about Abilities. Ask him on the Xtransceiver!"),
+          21: _say("Hiker by the house", "Chargestone Cave is great! The Ferroseed I met in there were adorable!")},
+    {1: ["ROUTE 6", "Driftveil City - Chargestone Cave"], 2: ["TRAINER TIPS", "Register a Key Item and use it with one button!"],
+     3: ["SEASON RESEARCH LAB", "Researching the year's seasons."]},
+    exits={"^": ("CHARGESTONE_CAVE_ENTRANCE", [(x, 0) for x in list(range(4, 12)) + list(range(16, 22))]),
+           ">": ("DRIFTVEIL_CITY", [(63, y) for y in range(50, 56)]),
+           "n": ("MISTRALTON_CAVE", [(60, 9), (60, 10)])},
+    trainers={0: ("Pokemon Breeder April", 2), 1: ("Parasol Lady Nicole", 3), 2: ("School Kid Mara", 3),
+              3: ("Scientist Jacques", 4), 4: ("Scientist Marissa", 3), 5: ("Parasol Lady Tihana", 1),
+              6: ("School Kid Alvin", 4), 7: ("Pokemon Ranger Richard", 6)},
+    hidden={"40,26": "TINY_MUSHROOM", "57,21": "BIG_MUSHROOM", "5,7": "PROTEIN"},
+    scenes=[R6_COBALION, R6_CHEREN],
+    rooms={"lab": R6_LAB, "house": R6_HOUSE, "grotto": grotto_room(3, (37, 39)), "grotto2": grotto_room(4, (57, 7))},
+    inside={"39,17": "lab", "20,9": "house", "37,39": "grotto", "57,7": "grotto2"},
+    title="Route 6")
+_doors(ROUTE_6, ROUTE_6["inside"])
+_wall(ROUTE_6, 0, 32, 31, 63)   # (the block south-west of the route isn't part of it: the file's picture leaves it empty)
+ROUTE_6["edge_to"] = dict({"%d,0" % x: [min(max(x, 6), 8), 31] for x in range(4, 12)},
+                          **{"%d,0" % x: [min(max(x, 16), 18), 31] for x in range(16, 22)},
+                          **{"63,%d" % y: [0, min(max(y - 32, 20), 23)] for y in range(50, 56)})
+
+# ------------------------------------------------------------------------------------------------- Chargestone Cave
+CHARGE_ENTRANCE = route(194, {}, {1: ["CHARGESTONE CAVE", "Route 6 - Mistralton City"]},
+                        exits={"v": ("UNOVA_ROUTE_6", [(x, 31) for x in (6, 7, 8, 16, 17, 18)]),
+                               "^": ("CHARGESTONE_CAVE", [(11, 19)])},
+                        title="Chargestone Cave")
+CHARGE_ENTRANCE["edge_to"] = {"%d,31" % x: [x, 1] for x in (6, 7, 8, 16, 17, 18)}
+CHARGE_1F = route(
+    195, {0: _ball("Poke Ball in the north room", "HYPER_POTION", "b2_cc_hyper_potion", name="a Hyper Potion"),
+          1: _ball("Poke Ball south of Ronald", "MAX_REPEL", "b2_cc_max_repel", name="a Max Repel"),
+          2: _ball("Poke Ball by the first stone", "FULL_HEAL", "b2_cc_full_heal", name="a Full Heal"),
+          8: _ball("Poke Ball by Hiker Otto", "CARBOS", "b2_cc_carbos", name="a Carbos"),
+          9: _ball("Poke Ball past Corky", "MAGNET", "b2_cc_magnet", name="a Magnet"),
+          15: _say("Lady admiring the stones", "What beautiful stones! Wouldn't they look lovely on the walls of my room?")},
+    {},
+    exits={"v": ("CHARGESTONE_CAVE_ENTRANCE", [(5, 60)]), "^": ("MISTRALTON_CITY", [(73, 5)]),
+           "<": ("CHARGESTONE_CAVE_B1F", [(53, 5), (20, 42), (64, 50)])},
+    trainers={3: ("Scientist Ronald", 1), 4: ("Guitarist Anna", 4), 5: ("Ace Trainer Corky", 4), 6: ("Ace Trainer Mary", 1),
+              7: ("Pokemon Ranger Louis", 4), 10: ("Hiker Otto", 4)},
+    hidden={"10,11": "YELLOW_SHARD", "41,21": "HYPER_POTION", "23,54": "CARBOS"},
+    scenes=[{"trigger": {"zone": [6, 50, 9, 50]}, "condition": ["not:b2_charge_bianca"], "flag": "b2_charge_bianca",
+             "cast": [{"sheet": "b2_bianca.png", "from": [7, 45], "to": "player", "leave": [7, 44], "lines": [
+                 "Bianca: Heeey! Hi there! Did you know? If you push the floating stones, they move!",
+                 "Bianca: This place is full of electricity Pokemon love. The charge jumps from stone to stone, and that's "
+                 "why they float! You can't push all of them, though.",
+                 "Bianca: Oh, that's right! I came here to research something! Be seeing you!"]}]},
+            {"trigger": {"zone": [45, 41, 45, 42]}, "condition": ["not:b2_charge_voice"], "flag": "b2_charge_voice",
+             "cast": [], "call": ["(A voice echoes from across the bridge...)",
+                                  "...Chargestone Cave. I really like it here. Formulas express the forces behind "
+                                  "electricity, and the bond between people and Pokemon. This is my ideal place.",
+                                  "...I have to go. I have to go to save Pokemon, and to protect the very friend I have "
+                                  "to stop!",
+                                  "(Whoever it was, they'd already gone.)"]}],
+    title="Chargestone Cave")
+CHARGE_B1F = route(
+    196, {3: _ball("Poke Ball west of the blue rocks", "REVIVE", "b2_cc_revive", name="a Revive"),
+          4: _ball("Poke Ball on the east ledge", "IRON", "b2_cc_iron", name="an Iron"),
+          0: _say("Bianca", "Bianca: I'm here at Professor Juniper's request, researching a Pokemon called Tynamo!",
+                  "Bianca: But there aren't many of them, and they don't look very strong..."),
+          1: _gift("Nugget Boy", ["Nugget Man: Hi! I'm the Nugget Man!", "Nugget Boy: And I'm the Nugget Boy!",
+                                  "Nugget Boy: Glad you showed up! Here, take this!", "{player_name} received a Big Nugget!"],
+                   "BIG_NUGGET", "b2_cc_big_nugget", ["Nugget Boy: Nuggetaboutit!"]),
+          2: _gift("Nugget Man", ["Nugget Man: I want to give you this, too!", "{player_name} received a Nugget!",
+                                  "Nugget Man: That's a Nugget! How'd it get so golden without deep-frying? Trade secret!"],
+                   "NUGGET", "b2_cc_nugget", ["Nugget Man: Nuggetaboutit!"])},
+    {},
+    exits={"^": ("CHARGESTONE_CAVE", [(39, 5), (9, 42), (47, 50)]), "v": ("CHARGESTONE_CAVE_B2F", [(27, 8)])},
+    trainers={5: ("Pokemon Ranger Briana", 1), 6: ("Scientist Lumi", 1), 7: ("Doctor Kit", 1)},
+    hidden={"28,40": "ULTRA_BALL"}, title="Chargestone Cave")
+CHARGE_B2F = route(
+    197, {0: _ball("Poke Ball north of Shaye", "THUNDER_STONE", "b2_cc_thunder_stone", name="a Thunder Stone"),
+          1: _ball("Poke Ball south of Beverly", "ESCAPE_ROPE", "b2_cc_escape_rope", name="an Escape Rope"),
+          2: _ball("Poke Ball on the lower level", "METAL_COAT", "b2_cc_metal_coat", name="a Metal Coat")},
+    {}, exits={"^": ("CHARGESTONE_CAVE_B1F", [(9, 7)])},
+    trainers={3: ("Hiker Jeremy", 5), 4: ("Ace Trainer Vicki", 5), 5: ("Guitarist Beverly", 5), 6: ("Ace Trainer Shaye", 1)},
+    hidden={"20,34": "ELECTRIC_GEM"}, title="Chargestone Cave")
+# (the floating stones stay where Black 2 stands them, as the map's own models: the file's walk grid has rock all round each
+#  one, and none of them stands in the way, so the cave is crossed without pushing; pushing them: unova_check/DECISIONS.md)
+# (the floors' stairs pair up by reading order on both sides, as the file pairs them: 1F (53, 5) / (20, 42) / (64, 50)
+#  <-> B1F (39, 5) / (9, 42) / (47, 50); the walker sets you down beside the matching door)
+
+# ------------------------------------------------------------------------------------------------- Mistralton Cave
+COBALION = {"text": "Cobalion", "action": "BOSS", "color": "RED", "_look": "mon:638",
+            "condition": ["beat_unova_champion", "not:MISTRALTON_CAVE_boss_defeated"],
+            "boss": {"id": 638, "name": "Cobalion", "level": 45, "victory_flag": "MISTRALTON_CAVE_boss_defeated",
+                     "lines": ["Cobalion stands its ground, watching you closely...", "Kawbraa!"]}}
+MISTRAL_1F = route(
+    333, {5: _ball("Poke Ball north of the entrance", "YELLOW_SHARD", "b2_mc_yellow_shard", name="a Yellow Shard"),
+          6: _ball("Poke Ball in the north-east corner", "DUSK_BALL", "b2_mc_dusk_ball", name="a Dusk Ball"),
+          7: _say("Worker by the tunnel", "This is Clay Tunnel. We're still digging it, so you can't go through yet!",
+                  "I heard there was a legendary Pokemon in Mistralton Cave...", condition=["not:beat_unova_champion"])},
+    {}, exits={"<": ("UNOVA_ROUTE_6", [(1, 6)]), "^": ("MISTRALTON_CAVE_2F", [(13, 16)])},
+    trainers={3: ("Hiker Jebediah", 4), 4: ("Hiker Shelby", 5)},
+    hidden={"5,9": "SUPER_REPEL"}, title="Mistralton Cave")
+MISTRAL_2F = route(
+    334, {5: _ball("Poke Ball by the south wall", "HYPER_POTION", "b2_mc_hyper_potion", name="a Hyper Potion"),
+          6: _ball("Poke Ball on the north ledge", "BLUE_SHARD", "b2_mc_blue_shard", name="a Blue Shard")},
+    {}, exits={"v": ("MISTRALTON_CAVE", [(4, 20)]), "^": ("GUIDANCE_CHAMBER", [(17, 12), (18, 12), (19, 12)])},
+    trainers={3: ("Ace Trainer Geoff", 4), 4: ("Ace Trainer Belle", 4)},
+    hidden={"19,27": "GREEN_SHARD", "5,9": "ULTRA_BALL"}, title="Mistralton Cave")
+GUIDANCE = route(
+    335, {3: _ball("Poke Ball in the north-east corner", "TM086", "b2_gc_tm80", name="TM80 Rock Slide"),
+          4: _ball("Poke Ball on the rock platform", "ESCAPE_ROPE", "b2_gc_escape_rope", name="an Escape Rope"),
+          2: [_say("Old man in the chamber", "I've been searching for the legendary Pokemon Cobalion for decades...",
+                   "Long ago, Cobalion, Terrakion and Virizion saved Pokemon from a fire started by a war between people.",
+                   "Ever since, they've kept away from humans. I wonder if it still hates us...",
+                   condition=["not:MISTRALTON_CAVE_boss_defeated"]),
+              _say("Old man in the chamber ", "You met Cobalion! Now I understand. You showed it that people and Pokemon can "
+                                              "understand one another.",
+                   "Every living thing must accept and trust each other. That's the best way to see the world.",
+                   condition=["MISTRALTON_CAVE_boss_defeated"])]},
+    {}, exits={"v": ("MISTRALTON_CAVE_2F", [(16, 27)])},
+    hidden={"3,26": "FULL_HEAL", "6,11": "DRAGON_GEM"}, extra_people=[(14, 9, COBALION)], title="Guidance Chamber")
+# Black 2's boulders: push one into its hole and walk across. Our walk grid has the holes as rock, so each boulder waits
+# on its hole (as the Relic Passage's, 5b), and Strength's push (the slide puzzle) opens the way. The holes: the rock
+# tiles that join two parts of the floor, beside the boulder the walkthrough pushes there (checked on the camera
+# picture's black holes). 1F: (3, 15) -> (5, 17), the
+# way south; (15, 26) -> (18, 25), past Hiker Shelby; (9, 8) stays where it stands (Black 2's shortcut: not needed).
+# 2F: (14, 17) -> (14, 18); (25, 15) -> (22, 17), the way to the Guidance Chamber; (9, 24) stays. Chamber: (15, 15) ->
+# (15, 16); (12, 20) -> (15, 21).
+for _m, _bs in ((MISTRAL_1F, ((5, 17), (9, 8), (18, 25))), (MISTRAL_2F, ((9, 24), (14, 18), (22, 17))),
+                (GUIDANCE, ((15, 21), (15, 16)))):
+    for _x, _y in _bs:
+        _put_char(_m, _x, _y, "b")
+    _m["dark"] = {"radius": [3]}   # (dark till Flash: the route walker's fog; a light round you in the town walker)
+_put_char(MISTRAL_1F, 26, 25, ">")   # (Clay Tunnel's door: still being dug till the Champion, its Worker in front; the tunnel itself
+MISTRAL_1F["exits"][">"] = "CLAY_TUNNEL"   #  is batch 11/13, the menu-era place till then)
+MISTRAL_1F["gated_exits"] = {"CLAY_TUNNEL": ["beat_unova_champion"]}
+MISTRAL_1F["barred"] = [{"tiles": [[26, 25]], "until": {"flag_condition": "beat_unova_champion"}, "look": "unseen",
+                         "lines": ["Worker: This is Clay Tunnel. We're still digging it, so you can't go through yet!"]}]
+for _m, _z, _came, _door in (
+        (CHARGE_ENTRANCE, 194, "CHARGESTONE_CAVE", (11, 19)), (CHARGE_1F, 195, "CHARGESTONE_CAVE_ENTRANCE", (5, 60)),
+        (CHARGE_1F, 195, "CHARGESTONE_CAVE_B1F", (53, 5)), (CHARGE_1F, 195, "MISTRALTON_CITY", (73, 5)),
+        (CHARGE_B1F, 196, "CHARGESTONE_CAVE", (39, 5)), (CHARGE_B1F, 196, "CHARGESTONE_CAVE_B2F", (27, 8)),
+        (CHARGE_B2F, 197, "CHARGESTONE_CAVE_B1F", (9, 7)), (MISTRAL_1F, 333, "UNOVA_ROUTE_6", (1, 6)),
+        (MISTRAL_1F, 333, "MISTRALTON_CAVE_2F", (13, 16)), (MISTRAL_2F, 334, "MISTRALTON_CAVE", (4, 20)),
+        (MISTRAL_2F, 334, "GUIDANCE_CHAMBER", (18, 12)), (GUIDANCE, 335, "MISTRALTON_CAVE_2F", (16, 27)),
+        (ROUTE_6, 331, "MISTRALTON_CAVE", (60, 10))):
+    _arrive(_m, _z, _came, _door)   # (1F <-> B1F's two other stairs land at the north ones, till the walker finds its door)
+
+
 MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": FLOCCESY, "UNOVA_ROUTE_20": ROUTE_20,
         "FLOCCESY_RANCH_OUTSIDE": RANCH_OUTSIDE, "FLOCCESY_RANCH": RANCH, "PLEDGE_GROVE": PLEDGE_GROVE,
         "VIRBANK_CITY": VIRBANK, "VIRBANK_COMPLEX_OUTSIDE": COMPLEX_OUTSIDE, "VIRBANK_COMPLEX": COMPLEX, "POKESTAR_STUDIOS": POKESTAR,
@@ -4479,4 +4719,7 @@ MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": 
         "NIMBASA_CITY": NIMBASA, "UNOVA_ROUTE_16": ROUTE_16, "LOSTLORN_FOREST": LOSTLORN, "UNOVA_ROUTE_5": ROUTE_5,
         "ANVILLE_TOWN": ANVILLE, "DRIFTVEIL_CITY": DRIFTVEIL, "DRIFTVEIL_DRAWBRIDGE": DRAWBRIDGE,
         "PWT": PWT_GROUNDS, "PLASMA_FRIGATE": FRIGATE, "RELIC_PASSAGE_NORTH": RP_NORTH, "RELIC_PASSAGE_MIDDLE": RP_MIDDLE,
-        "RELIC_PASSAGE": RP_SOUTH, "RELIC_CASTLE_DEPTHS": DEPTHS}
+        "RELIC_PASSAGE": RP_SOUTH, "RELIC_CASTLE_DEPTHS": DEPTHS,
+        "UNOVA_ROUTE_6": ROUTE_6, "CHARGESTONE_CAVE_ENTRANCE": CHARGE_ENTRANCE, "CHARGESTONE_CAVE": CHARGE_1F,   # (batch 6a)
+        "CHARGESTONE_CAVE_B1F": CHARGE_B1F, "CHARGESTONE_CAVE_B2F": CHARGE_B2F, "MISTRALTON_CAVE": MISTRAL_1F,
+        "MISTRALTON_CAVE_2F": MISTRAL_2F, "GUIDANCE_CHAMBER": GUIDANCE}

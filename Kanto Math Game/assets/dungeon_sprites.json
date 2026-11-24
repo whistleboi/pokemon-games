@@ -76,255 +76,6 @@
     ]
   },
   "figures": {
-    "IRON_ISLAND:Byron": {"sheet": "pt_leader7.png"},
-    "IRON_ISLAND:Riley": {"sheet": "pt_seven2.png"},
-    "VALOR_LAKEFRONT:Suite guest": {"sheet": "pt_woman2.png"},
-    "SINNOH_ROUTE_213:Dr. Footstep": {"sheet": "pt_oldman1.png"},
-    "SINNOH_ROUTE_213:Gentleman": {"sheet": "pt_gentleman.png"},
-    "SINNOH_ROUTE_213:Man": {"sheet": "pt_man1.png"},
-    "PASTORIA_CITY:Woman ": {"sheet": "pt_woman2.png"},
-    "PASTORIA_CITY:Cowgirl": {"sheet": "pt_cowgirl.png"},
-    "PASTORIA_CITY:Receptionist": {"sheet": "pt_woman6.png"},
-    "PASTORIA_CITY:Scarf man": {"sheet": "pt_middleman1.png"},
-    "PASTORIA_CITY:Boy": {"sheet": "pt_boy1.png"},
-    "PASTORIA_CITY:Old man": {"sheet": "pt_oldman1.png"},
-    "CELESTIC_TOWN:Cyrus": {"sheet": "pt_gingaboss.png"},
-    "CELESTIC_TOWN:Elder": {"sheet": "pt_oldwoman1.png"},
-    "CELESTIC_TOWN:Cynthia": {"sheet": "pt_champion.png"},
-    "CELESTIC_TOWN:Galactic Grunt": {"sheet": "pt_gingam.png"},
-    "VALOR_LAKEFRONT:Galactic Grunt": {"sheet": "pt_gingam.png"},
-    "SINNOH_ROUTE_213:Galactic Grunt": {"sheet": "pt_gingam.png"},
-    "PASTORIA_CITY:Barry": {"sheet": "pt_rivel.png"},
-    "PASTORIA_CITY:Crasher Wake": {"sheet": "pt_leader3.png"},
-    "PASTORIA_CITY:Galactic Grunt": {"sheet": "pt_gingam.png"},
-    "HOENN_MAGMA_HIDEOUT:MAX ELIXIR far side": {
-      "item": "MAX_ELIXIR"
-    },
-    "HOENN_MAGMA_HIDEOUT:PP MAX side room": {
-      "item": "PP_MAX"
-    },
-    "HOENN_ROUTE_107:SUPER REPEL beach": {
-      "item": "SUPER_REPEL"
-    },
-    "HOENN_ROUTE_111:STARDUST south": {
-      "item": "STARDUST"
-    },
-    "HOENN_ROUTE_123:PP UP east": {
-      "item": "PP_UP"
-    },
-    "HOENN_ROUTE_134:HEART SCALE islet": {
-      "item": "HEART_SCALE"
-    },
-    "HOENN_GRANITE_CAVE:REPEL north side": {
-      "item": "REPEL"
-    },
-    "HOENN_GRANITE_CAVE:RARE CANDY north side": {
-      "item": "RARE_CANDY"
-    },
-    "HOENN_GRANITE_CAVE:TM061 SHADOW CLAW": {
-      "item": "TM061"
-    },
-    "HOENN_GRANITE_CAVE:ESCAPE ROPE by the Hiker": {
-      "item": "ESCAPE_ROPE"
-    },
-    "HOENN_JAGGED_PASS:FULL HEAL slope": {
-      "item": "FULL_HEAL"
-    },
-    "HOENN_SHOAL_CAVE:SHOAL SALT": {
-      "item": "SHOAL_SALT"
-    },
-    "HOENN_SHOAL_CAVE:SHOAL SALT ": {
-      "item": "SHOAL_SALT"
-    },
-    "HOENN_SHOAL_CAVE:SHOAL SHELL": {
-      "item": "SHOAL_SHELL"
-    },
-    "HOENN_SHOAL_CAVE:SHOAL SHELL ": {
-      "item": "SHOAL_SHELL"
-    },
-    "HOENN_SHOAL_CAVE:SHOAL SHELL  ": {
-      "item": "SHOAL_SHELL"
-    },
-    "HOENN_SHOAL_CAVE:SHOAL SHELL   ": {
-      "item": "SHOAL_SHELL"
-    },
-    "HOENN_MT_PYRE:Keeper": {
-      "sheet": "em_20.png"
-    },
-    "HOENN_SS_TIDAL:Cleanup brother": {
-      "sheet": "em_49.png"
-    },
-    "HOENN_SS_TIDAL:Cleanup brother ": {
-      "sheet": "em_49.png"
-    },
-    "SLATEPORT_CITY:Name Rater": {
-      "sheet": "em_21.png"
-    },
-    "LILYCOVE_CITY:Berry gentleman": {
-      "sheet": "em_21.png"
-    },
-    "HOENN_ROUTE_123:Magikarp fan": {
-      "sheet": "em_9.png"
-    },
-    "LILYCOVE_CITY:The Collector": {
-      "sheet": "em_39.png"
-    },
-    "MAUVILLE_CITY:Collector": {
-      "sheet": "em_39.png"
-    },
-    "GALACTIC_WAREHOUSE:Looker": {"sheet": "pt_icpo.png"},
-    "VEILSTONE_CITY:Dawn": {"sheet": "pt_heroine.png"},
-    "VEILSTONE_CITY:Galactic Grunt ": {"sheet": "pt_gingam.png"},
-    "VEILSTONE_CITY:Galactic Grunt": {"sheet": "pt_gingam.png"},
-    "VEILSTONE_CITY:Gentleman": {"sheet": "pt_gentleman.png"},
-    "VEILSTONE_CITY:Lady ": {"sheet": "pt_lady.png"},
-    "VEILSTONE_CITY:Candy seller": {"sheet": "pt_shopw1.png"},
-    "VEILSTONE_CITY:Berry seller": {"sheet": "pt_shopw1.png"},
-    "VEILSTONE_CITY:Gardener": {"sheet": "pt_woman6.png"},
-    "VEILSTONE_CITY:Poffin seller": {"sheet": "pt_shopw1.png"},
-    "VEILSTONE_CITY:Cookie seller": {"sheet": "pt_shopw1.png"},
-    "VEILSTONE_CITY:Lift attendant": {"sheet": "pt_woman6.png"},
-    "VEILSTONE_CITY:Strongman ": {"sheet": "pt_bigman.png"},
-    "VEILSTONE_CITY:Strongman": {"sheet": "pt_bigman.png"},
-    "VEILSTONE_CITY:Regular": {"sheet": "pt_middlewoman2.png"},
-    "VEILSTONE_CITY:Thirsty boy": {"sheet": "pt_boy3.png"},
-    "VEILSTONE_CITY:Gamer boy": {"sheet": "pt_boy1.png"},
-    "VEILSTONE_CITY:Doll clerk": {"sheet": "pt_shopm1.png"},
-    "VEILSTONE_CITY:Goods clerk": {"sheet": "pt_shopw1.png"},
-    "VEILSTONE_CITY:Mother": {"sheet": "pt_middlewoman1.png"},
-    "VEILSTONE_CITY:Little boy": {"sheet": "pt_babyboy1.png"},
-    "VEILSTONE_CITY:Woman": {"sheet": "pt_woman1.png"},
-    "VEILSTONE_CITY:Big TM clerk": {"sheet": "pt_shopm1.png"},
-    "VEILSTONE_CITY:TM clerk": {"sheet": "pt_shopw1.png"},
-    "VEILSTONE_CITY:Little girl": {"sheet": "pt_babygirl1.png"},
-    "VEILSTONE_CITY:Boy ": {"sheet": "pt_boy3.png"},
-    "VEILSTONE_CITY:Vitamin clerk": {"sheet": "pt_shopw1.png"},
-    "VEILSTONE_CITY:Battle item clerk": {"sheet": "pt_shopw1.png"},
-    "VEILSTONE_CITY:Floor guide": {"sheet": "pt_woman6.png"},
-    "VEILSTONE_CITY:Promo clerk": {"sheet": "pt_shopm1.png"},
-    "VEILSTONE_CITY:Boy": {"sheet": "pt_boy3.png"},
-    "VEILSTONE_CITY:Medicine clerk": {"sheet": "pt_shopw1.png"},
-    "VEILSTONE_CITY:Ball clerk": {"sheet": "pt_shopm1.png"},
-    "VEILSTONE_CITY:Kind lady": {"sheet": "pt_lady.png"},
-    "VEILSTONE_CITY:Lady shopper": {"sheet": "pt_gorggeousw.png"},
-    "VEILSTONE_CITY:Shopper": {"sheet": "pt_middleman2.png"},
-    "VEILSTONE_CITY:Receptionist": {"sheet": "pt_woman6.png"},
-    "HEARTHOME_CITY:Old lady": {"sheet": "pt_oldwoman2.png"},
-    "HEARTHOME_CITY:Grandpa": {"sheet": "pt_oldman2.png"},
-    "HEARTHOME_CITY:Grandma": {"sheet": "pt_oldwoman1.png"},
-    "HEARTHOME_CITY:Kind grandpa": {"sheet": "pt_oldman1.png"},
-    "HEARTHOME_CITY:Hotel guest": {"sheet": "pt_woman3.png"},
-    "HEARTHOME_CITY:Cool fan": {"sheet": "pt_fighter.png"},
-    "HEARTHOME_CITY:Acting coach": {"sheet": "pt_woman2.png"},
-    "HEARTHOME_CITY:Dance coach": {"sheet": "pt_idol.png"},
-    "HEARTHOME_CITY:Visual coach": {"sheet": "pt_mount.png"},
-    "ETERNA_CITY:Battle fan": {"sheet": "pt_boy1.png"},
-    "SINNOH_ROUTE_206:Gardener girl": {"sheet": "pt_girl2.png"},
-    "SINNOH_ROUTE_206:Cyclist ": {"sheet": "pt_shopm1.png"},
-    "SINNOH_ROUTE_206:Cyclist": {"sheet": "pt_shopm1.png"},
-    "ETERNA_CITY:Fossil boy": {"sheet": "pt_boy3.png"},
-    "ETERNA_CITY:Underground Man": {"sheet": "pt_oldman1.png"},
-    "ETERNA_CITY:Museum worker": {"sheet": "pt_assistantm.png"},
-    "ETERNA_CITY:Digging boy": {"sheet": "pt_boy2.png"},
-    "ETERNA_CITY:Cyclist ": {"sheet": "pt_shopm1.png"},
-    "ETERNA_CITY:Cyclist": {"sheet": "pt_shopm1.png"},
-    "HEARTHOME_CITY:Poffin fan": {"sheet": "pt_cowgirl.png"},
-    "HEARTHOME_CITY:Traveler": {"sheet": "pt_bigman.png"},
-    "HEARTHOME_CITY:Curious girl": {"sheet": "pt_girl2.png"},
-    "HEARTHOME_CITY:Gate visitor": {"sheet": "pt_man1.png"},
-    "HOENN_ROUTE_109:Mr. Briney": {
-      "sheet": "em_21.png"
-    },
-    "HOENN_ROUTE_110:Undecided camper": {
-      "sheet": "em_31.png"
-    },
-    "HOENN_ROUTE_110:Trick rider": {
-      "sheet": "em_56.png"
-    },
-    "HOENN_ROUTE_110:Strolling lady": {
-      "sheet": "em_22.png"
-    },
-    "HOENN_ROUTE_110:Bike fan": {
-      "sheet": "em_56.png"
-    },
-    "HOENN_ROUTE_110:Old man": {
-      "sheet": "em_21.png"
-    },
-    "HOENN_ROUTE_110:Long-haired rider": {
-      "sheet": "em_57.png"
-    },
-    "HOENN_ROUTE_110:Boy": {
-      "sheet": "em_13.png"
-    },
-    "HOENN_ROUTE_110:Cycling Road judge": {
-      "sheet": "em_56.png"
-    },
-    "HOENN_ROUTE_110:Rowdy grunt": {
-      "sheet": "@grunt"
-    },
-    "HOENN_ROUTE_110:Silent grunt": {
-      "sheet": "@grunt"
-    },
-    "HOENN_SPACE_CENTER:Launch scientist": {
-      "sheet": "em_46.png"
-    },
-    "HOENN_SPACE_CENTER:Launch engineer": {
-      "sheet": "em_46.png"
-    },
-    "HOENN_SPACE_CENTER:Fuel thief grunt": {
-      "sheet": "@grunt"
-    },
-    "HOENN_MT_CHIMNEY:Worried grunt": {
-      "sheet": "@other_grunt"
-    },
-    "HOENN_ROUTE_109:Mr. Sea": {
-      "sheet": "em_25.png"
-    },
-    "HOENN_ROUTE_110:Cycling Road attendant": {
-      "sheet": "em_83.png"
-    },
-    "HOENN_ROUTE_110:Cycling Road guide": {
-      "sheet": "em_83.png"
-    },
-    "HOENN_ROUTE_121:Safari attendant": {
-      "sheet": "em_31.png"
-    },
-    "HOENN_ROUTE_121:Safari clerk": {
-      "sheet": "em_31.png"
-    },
-    "HOENN_ROUTE_121:Safari guide": {
-      "sheet": "em_32.png"
-    },
-    "AGATE_VILLAGE:Agate Gym": {
-      "sheet": "orre_trainer_leader_erika.png"
-    },
-    "AGATE_VILLAGE:Blaine": {
-      "sheet": "orre_trainer_leader_blaine.png"
-    },
-    "SNAGEM_HIDEOUT:GYM LEADER PRYCE": {
-      "sheet": "orre_trainer_leader_pryce.png"
-    },
-    "GATEON_PORT:Old man": {
-      "sheet": "orre_npc_10.png"
-    },
-    "GATEON_PORT:Old woman": {
-      "sheet": "orre_npc_11.png"
-    },
-    "GATEON_PORT:Lighthouse keeper": {
-      "sheet": "orre_npc_15.png"
-    },
-    "GATEON_PORT:Gym Leader Jasmine": {
-      "sheet": "orre_trainer_leader_jasmine.png"
-    },
-    "GATEON_PORT:Lighthouse Electabuzz": {
-      "pokemon": 125
-    },
-    "GATEON_PORT:Lighthouse Electrode": {
-      "pokemon": 101
-    },
-    "GATEON_PORT:Lighthouse Ampharos": {
-      "pokemon": 181
-    },
     "ANVILLE_TOWN:Boy": {"sheet": "b2_c29.png"},
     "ANVILLE_TOWN:Boy by the fence": {"sheet": "b2_c28.png"},
     "ANVILLE_TOWN:Collector": {"sheet": "b2_c27.png"},
@@ -592,6 +343,20 @@
     "CASTELIA_SEWERS:Worker by the channel": {"sheet": "b2_c19.png"},
     "CASTELIA_SEWERS:Worker by the channel ": {"sheet": "b2_c19.png"},
     "CASTELIA_SEWERS:{rival_name}": {"sheet": "b2_hugh.png"},
+    "CHARGESTONE_CAVE:Lady admiring the stones": {"sheet": "b2_c17.png"},
+    "CHARGESTONE_CAVE:Poke Ball by Hiker Otto": {"sheet": "b2_item_ball.png"},
+    "CHARGESTONE_CAVE:Poke Ball by the first stone": {"sheet": "b2_item_ball.png"},
+    "CHARGESTONE_CAVE:Poke Ball in the north room": {"sheet": "b2_item_ball.png"},
+    "CHARGESTONE_CAVE:Poke Ball past Corky": {"sheet": "b2_item_ball.png"},
+    "CHARGESTONE_CAVE:Poke Ball south of Ronald": {"sheet": "b2_item_ball.png"},
+    "CHARGESTONE_CAVE_B1F:Bianca": {"sheet": "b2_bianca.png"},
+    "CHARGESTONE_CAVE_B1F:Nugget Boy": {"sheet": "b2_c11.png"},
+    "CHARGESTONE_CAVE_B1F:Nugget Man": {"sheet": "b2_c24.png"},
+    "CHARGESTONE_CAVE_B1F:Poke Ball on the east ledge": {"sheet": "b2_item_ball.png"},
+    "CHARGESTONE_CAVE_B1F:Poke Ball west of the blue rocks": {"sheet": "b2_item_ball.png"},
+    "CHARGESTONE_CAVE_B2F:Poke Ball north of Shaye": {"sheet": "b2_item_ball.png"},
+    "CHARGESTONE_CAVE_B2F:Poke Ball on the lower level": {"sheet": "b2_item_ball.png"},
+    "CHARGESTONE_CAVE_B2F:Poke Ball south of Beverly": {"sheet": "b2_item_ball.png"},
     "DESERT_RESORT:Backpacker who wants water": {"sheet": "b2_c48.png"},
     "DESERT_RESORT:Hiker in the dunes": {"sheet": "b2_c46.png"},
     "DESERT_RESORT:Nurse Mariah": {"sheet": "b2_c51.png"},
@@ -756,6 +521,10 @@
     "FLOCCESY_TOWN:Woman by the counter": {"sheet": "b2_c77.png"},
     "FLOCCESY_TOWN:Woman by the table": {"sheet": "b2_c23.png"},
     "FLOCCESY_TOWN:Woman by the tower": {"sheet": "b2_c24.png"},
+    "GUIDANCE_CHAMBER:Old man in the chamber": {"sheet": "b2_c28.png"},
+    "GUIDANCE_CHAMBER:Old man in the chamber ": {"sheet": "b2_c28.png"},
+    "GUIDANCE_CHAMBER:Poke Ball in the north-east corner": {"sheet": "b2_item_ball.png"},
+    "GUIDANCE_CHAMBER:Poke Ball on the rock platform": {"sheet": "b2_item_ball.png"},
     "JOIN_AVENUE:Assistant Future": {"sheet": "b2_c53.png"},
     "JOIN_AVENUE:Assistant Future ": {"sheet": "b2_c53.png"},
     "JOIN_AVENUE:Assistant Jacci": {"sheet": "b2_c53.png"},
@@ -814,6 +583,11 @@
     "LOSTLORN_FOREST:Poke Ball in the dark grass": {"sheet": "b2_c216.png"},
     "LOSTLORN_FOREST:Poke Ball in the stump": {"sheet": "b2_c210.png"},
     "LOSTLORN_FOREST:Something in the grass": {"sheet": "b2_none.png"},
+    "MISTRALTON_CAVE:Poke Ball in the north-east corner": {"sheet": "b2_item_ball.png"},
+    "MISTRALTON_CAVE:Poke Ball north of the entrance": {"sheet": "b2_item_ball.png"},
+    "MISTRALTON_CAVE:Worker by the tunnel": {"sheet": "b2_c32.png"},
+    "MISTRALTON_CAVE_2F:Poke Ball by the south wall": {"sheet": "b2_item_ball.png"},
+    "MISTRALTON_CAVE_2F:Poke Ball on the north ledge": {"sheet": "b2_item_ball.png"},
     "NIMBASA_CITY:Ace Trainer": {"sheet": "b2_c30.png"},
     "NIMBASA_CITY:Ace Trainer Charlie ": {"sheet": "b2_c30.png"},
     "NIMBASA_CITY:Ace Trainer Charlie  ": {"sheet": "b2_c30.png"},
@@ -1540,6 +1314,34 @@
     "UNOVA_ROUTE_5:Poke Ball on the ledge": {"sheet": "b2_item_ball.png"},
     "UNOVA_ROUTE_5:Ranger by the gate": {"sheet": "b2_c35.png"},
     "UNOVA_ROUTE_5:Something in the grass": {"sheet": "b2_none.png"},
+    "UNOVA_ROUTE_6:Cheren": {"sheet": "b2_cheren.png"},
+    "UNOVA_ROUTE_6:Deerling": {"sheet": "b2_c219.png"},
+    "UNOVA_ROUTE_6:Deerling ": {"sheet": "b2_c217.png"},
+    "UNOVA_ROUTE_6:Deerling  ": {"sheet": "b2_c220.png"},
+    "UNOVA_ROUTE_6:Deerling   ": {"sheet": "b2_c218.png"},
+    "UNOVA_ROUTE_6:Dunsparce in the grotto": {"pokemon": 206},
+    "UNOVA_ROUTE_6:Foongus in the grotto": {"pokemon": 590},
+    "UNOVA_ROUTE_6:Girl in the rest house": {"sheet": "b2_c9.png"},
+    "UNOVA_ROUTE_6:Girl on the path": {"sheet": "b2_c22.png"},
+    "UNOVA_ROUTE_6:Hiker by the house": {"sheet": "b2_c64.png"},
+    "UNOVA_ROUTE_6:Nosepass in the grotto": {"pokemon": 299},
+    "UNOVA_ROUTE_6:Old man in the rest house": {"sheet": "b2_c28.png"},
+    "UNOVA_ROUTE_6:Old man in the rest house ": {"sheet": "b2_c28.png"},
+    "UNOVA_ROUTE_6:Parasol Lady": {"sheet": "b2_c84.png"},
+    "UNOVA_ROUTE_6:Poke Ball across the river": {"sheet": "b2_item_ball.png"},
+    "UNOVA_ROUTE_6:Poke Ball by the east river": {"sheet": "b2_item_ball.png"},
+    "UNOVA_ROUTE_6:Poke Ball by the lab's fence": {"sheet": "b2_item_ball.png"},
+    "UNOVA_ROUTE_6:Poke Ball by the south bridge": {"sheet": "b2_item_ball.png"},
+    "UNOVA_ROUTE_6:Poke Ball in the clearing": {"sheet": "b2_item_ball.png"},
+    "UNOVA_ROUTE_6:Poke Ball north of the lab": {"sheet": "b2_item_ball.png"},
+    "UNOVA_ROUTE_6:Poke Ball on the west bank": {"sheet": "b2_c210.png"},
+    "UNOVA_ROUTE_6:Scientist at the glass": {"sheet": "b2_c73.png"},
+    "UNOVA_ROUTE_6:Scientist by the cases": {"sheet": "b2_c73.png"},
+    "UNOVA_ROUTE_6:Scientist by the door": {"sheet": "b2_c73.png"},
+    "UNOVA_ROUTE_6:Scientist with the Deerling": {"sheet": "b2_c74.png"},
+    "UNOVA_ROUTE_6:Something in the grass": {"sheet": "b2_none.png"},
+    "UNOVA_ROUTE_6:Woman by the table": {"sheet": "b2_c26.png"},
+    "UNOVA_ROUTE_6:Woobat in the grotto": {"pokemon": 527},
     "VIRBANK_CITY:Audino": {"sheet": "b2_c312.png"},
     "VIRBANK_CITY:Boy by the door": {"sheet": "b2_c77.png"},
     "VIRBANK_CITY:Boy by the door ": {"sheet": "b2_c77.png"},
@@ -1613,6 +1415,255 @@
     "VIRBANK_COMPLEX_OUTSIDE:Poke Ball behind the Roughneck": {"sheet": "b2_item_ball.png"},
     "VIRBANK_COMPLEX_OUTSIDE:Poke Ball in the grass": {"sheet": "b2_item_ball.png"},
     "VIRBANK_COMPLEX_OUTSIDE:Roughneck by the crane": {"sheet": "b2_c61.png"},
+    "IRON_ISLAND:Byron": {"sheet": "pt_leader7.png"},
+    "IRON_ISLAND:Riley": {"sheet": "pt_seven2.png"},
+    "VALOR_LAKEFRONT:Suite guest": {"sheet": "pt_woman2.png"},
+    "SINNOH_ROUTE_213:Dr. Footstep": {"sheet": "pt_oldman1.png"},
+    "SINNOH_ROUTE_213:Gentleman": {"sheet": "pt_gentleman.png"},
+    "SINNOH_ROUTE_213:Man": {"sheet": "pt_man1.png"},
+    "PASTORIA_CITY:Woman ": {"sheet": "pt_woman2.png"},
+    "PASTORIA_CITY:Cowgirl": {"sheet": "pt_cowgirl.png"},
+    "PASTORIA_CITY:Receptionist": {"sheet": "pt_woman6.png"},
+    "PASTORIA_CITY:Scarf man": {"sheet": "pt_middleman1.png"},
+    "PASTORIA_CITY:Boy": {"sheet": "pt_boy1.png"},
+    "PASTORIA_CITY:Old man": {"sheet": "pt_oldman1.png"},
+    "CELESTIC_TOWN:Cyrus": {"sheet": "pt_gingaboss.png"},
+    "CELESTIC_TOWN:Elder": {"sheet": "pt_oldwoman1.png"},
+    "CELESTIC_TOWN:Cynthia": {"sheet": "pt_champion.png"},
+    "CELESTIC_TOWN:Galactic Grunt": {"sheet": "pt_gingam.png"},
+    "VALOR_LAKEFRONT:Galactic Grunt": {"sheet": "pt_gingam.png"},
+    "SINNOH_ROUTE_213:Galactic Grunt": {"sheet": "pt_gingam.png"},
+    "PASTORIA_CITY:Barry": {"sheet": "pt_rivel.png"},
+    "PASTORIA_CITY:Crasher Wake": {"sheet": "pt_leader3.png"},
+    "PASTORIA_CITY:Galactic Grunt": {"sheet": "pt_gingam.png"},
+    "HOENN_MAGMA_HIDEOUT:MAX ELIXIR far side": {
+      "item": "MAX_ELIXIR"
+    },
+    "HOENN_MAGMA_HIDEOUT:PP MAX side room": {
+      "item": "PP_MAX"
+    },
+    "HOENN_ROUTE_107:SUPER REPEL beach": {
+      "item": "SUPER_REPEL"
+    },
+    "HOENN_ROUTE_111:STARDUST south": {
+      "item": "STARDUST"
+    },
+    "HOENN_ROUTE_123:PP UP east": {
+      "item": "PP_UP"
+    },
+    "HOENN_ROUTE_134:HEART SCALE islet": {
+      "item": "HEART_SCALE"
+    },
+    "HOENN_GRANITE_CAVE:REPEL north side": {
+      "item": "REPEL"
+    },
+    "HOENN_GRANITE_CAVE:RARE CANDY north side": {
+      "item": "RARE_CANDY"
+    },
+    "HOENN_GRANITE_CAVE:TM061 SHADOW CLAW": {
+      "item": "TM061"
+    },
+    "HOENN_GRANITE_CAVE:ESCAPE ROPE by the Hiker": {
+      "item": "ESCAPE_ROPE"
+    },
+    "HOENN_JAGGED_PASS:FULL HEAL slope": {
+      "item": "FULL_HEAL"
+    },
+    "HOENN_SHOAL_CAVE:SHOAL SALT": {
+      "item": "SHOAL_SALT"
+    },
+    "HOENN_SHOAL_CAVE:SHOAL SALT ": {
+      "item": "SHOAL_SALT"
+    },
+    "HOENN_SHOAL_CAVE:SHOAL SHELL": {
+      "item": "SHOAL_SHELL"
+    },
+    "HOENN_SHOAL_CAVE:SHOAL SHELL ": {
+      "item": "SHOAL_SHELL"
+    },
+    "HOENN_SHOAL_CAVE:SHOAL SHELL  ": {
+      "item": "SHOAL_SHELL"
+    },
+    "HOENN_SHOAL_CAVE:SHOAL SHELL   ": {
+      "item": "SHOAL_SHELL"
+    },
+    "HOENN_MT_PYRE:Keeper": {
+      "sheet": "em_20.png"
+    },
+    "HOENN_SS_TIDAL:Cleanup brother": {
+      "sheet": "em_49.png"
+    },
+    "HOENN_SS_TIDAL:Cleanup brother ": {
+      "sheet": "em_49.png"
+    },
+    "SLATEPORT_CITY:Name Rater": {
+      "sheet": "em_21.png"
+    },
+    "LILYCOVE_CITY:Berry gentleman": {
+      "sheet": "em_21.png"
+    },
+    "HOENN_ROUTE_123:Magikarp fan": {
+      "sheet": "em_9.png"
+    },
+    "LILYCOVE_CITY:The Collector": {
+      "sheet": "em_39.png"
+    },
+    "MAUVILLE_CITY:Collector": {
+      "sheet": "em_39.png"
+    },
+    "GALACTIC_WAREHOUSE:Looker": {"sheet": "pt_icpo.png"},
+    "VEILSTONE_CITY:Dawn": {"sheet": "pt_heroine.png"},
+    "VEILSTONE_CITY:Galactic Grunt ": {"sheet": "pt_gingam.png"},
+    "VEILSTONE_CITY:Galactic Grunt": {"sheet": "pt_gingam.png"},
+    "VEILSTONE_CITY:Gentleman": {"sheet": "pt_gentleman.png"},
+    "VEILSTONE_CITY:Lady ": {"sheet": "pt_lady.png"},
+    "VEILSTONE_CITY:Candy seller": {"sheet": "pt_shopw1.png"},
+    "VEILSTONE_CITY:Berry seller": {"sheet": "pt_shopw1.png"},
+    "VEILSTONE_CITY:Gardener": {"sheet": "pt_woman6.png"},
+    "VEILSTONE_CITY:Poffin seller": {"sheet": "pt_shopw1.png"},
+    "VEILSTONE_CITY:Cookie seller": {"sheet": "pt_shopw1.png"},
+    "VEILSTONE_CITY:Lift attendant": {"sheet": "pt_woman6.png"},
+    "VEILSTONE_CITY:Strongman ": {"sheet": "pt_bigman.png"},
+    "VEILSTONE_CITY:Strongman": {"sheet": "pt_bigman.png"},
+    "VEILSTONE_CITY:Regular": {"sheet": "pt_middlewoman2.png"},
+    "VEILSTONE_CITY:Thirsty boy": {"sheet": "pt_boy3.png"},
+    "VEILSTONE_CITY:Gamer boy": {"sheet": "pt_boy1.png"},
+    "VEILSTONE_CITY:Doll clerk": {"sheet": "pt_shopm1.png"},
+    "VEILSTONE_CITY:Goods clerk": {"sheet": "pt_shopw1.png"},
+    "VEILSTONE_CITY:Mother": {"sheet": "pt_middlewoman1.png"},
+    "VEILSTONE_CITY:Little boy": {"sheet": "pt_babyboy1.png"},
+    "VEILSTONE_CITY:Woman": {"sheet": "pt_woman1.png"},
+    "VEILSTONE_CITY:Big TM clerk": {"sheet": "pt_shopm1.png"},
+    "VEILSTONE_CITY:TM clerk": {"sheet": "pt_shopw1.png"},
+    "VEILSTONE_CITY:Little girl": {"sheet": "pt_babygirl1.png"},
+    "VEILSTONE_CITY:Boy ": {"sheet": "pt_boy3.png"},
+    "VEILSTONE_CITY:Vitamin clerk": {"sheet": "pt_shopw1.png"},
+    "VEILSTONE_CITY:Battle item clerk": {"sheet": "pt_shopw1.png"},
+    "VEILSTONE_CITY:Floor guide": {"sheet": "pt_woman6.png"},
+    "VEILSTONE_CITY:Promo clerk": {"sheet": "pt_shopm1.png"},
+    "VEILSTONE_CITY:Boy": {"sheet": "pt_boy3.png"},
+    "VEILSTONE_CITY:Medicine clerk": {"sheet": "pt_shopw1.png"},
+    "VEILSTONE_CITY:Ball clerk": {"sheet": "pt_shopm1.png"},
+    "VEILSTONE_CITY:Kind lady": {"sheet": "pt_lady.png"},
+    "VEILSTONE_CITY:Lady shopper": {"sheet": "pt_gorggeousw.png"},
+    "VEILSTONE_CITY:Shopper": {"sheet": "pt_middleman2.png"},
+    "VEILSTONE_CITY:Receptionist": {"sheet": "pt_woman6.png"},
+    "HEARTHOME_CITY:Old lady": {"sheet": "pt_oldwoman2.png"},
+    "HEARTHOME_CITY:Grandpa": {"sheet": "pt_oldman2.png"},
+    "HEARTHOME_CITY:Grandma": {"sheet": "pt_oldwoman1.png"},
+    "HEARTHOME_CITY:Kind grandpa": {"sheet": "pt_oldman1.png"},
+    "HEARTHOME_CITY:Hotel guest": {"sheet": "pt_woman3.png"},
+    "HEARTHOME_CITY:Cool fan": {"sheet": "pt_fighter.png"},
+    "HEARTHOME_CITY:Acting coach": {"sheet": "pt_woman2.png"},
+    "HEARTHOME_CITY:Dance coach": {"sheet": "pt_idol.png"},
+    "HEARTHOME_CITY:Visual coach": {"sheet": "pt_mount.png"},
+    "ETERNA_CITY:Battle fan": {"sheet": "pt_boy1.png"},
+    "SINNOH_ROUTE_206:Gardener girl": {"sheet": "pt_girl2.png"},
+    "SINNOH_ROUTE_206:Cyclist ": {"sheet": "pt_shopm1.png"},
+    "SINNOH_ROUTE_206:Cyclist": {"sheet": "pt_shopm1.png"},
+    "ETERNA_CITY:Fossil boy": {"sheet": "pt_boy3.png"},
+    "ETERNA_CITY:Underground Man": {"sheet": "pt_oldman1.png"},
+    "ETERNA_CITY:Museum worker": {"sheet": "pt_assistantm.png"},
+    "ETERNA_CITY:Digging boy": {"sheet": "pt_boy2.png"},
+    "ETERNA_CITY:Cyclist ": {"sheet": "pt_shopm1.png"},
+    "ETERNA_CITY:Cyclist": {"sheet": "pt_shopm1.png"},
+    "HEARTHOME_CITY:Poffin fan": {"sheet": "pt_cowgirl.png"},
+    "HEARTHOME_CITY:Traveler": {"sheet": "pt_bigman.png"},
+    "HEARTHOME_CITY:Curious girl": {"sheet": "pt_girl2.png"},
+    "HEARTHOME_CITY:Gate visitor": {"sheet": "pt_man1.png"},
+    "HOENN_ROUTE_109:Mr. Briney": {
+      "sheet": "em_21.png"
+    },
+    "HOENN_ROUTE_110:Undecided camper": {
+      "sheet": "em_31.png"
+    },
+    "HOENN_ROUTE_110:Trick rider": {
+      "sheet": "em_56.png"
+    },
+    "HOENN_ROUTE_110:Strolling lady": {
+      "sheet": "em_22.png"
+    },
+    "HOENN_ROUTE_110:Bike fan": {
+      "sheet": "em_56.png"
+    },
+    "HOENN_ROUTE_110:Old man": {
+      "sheet": "em_21.png"
+    },
+    "HOENN_ROUTE_110:Long-haired rider": {
+      "sheet": "em_57.png"
+    },
+    "HOENN_ROUTE_110:Boy": {
+      "sheet": "em_13.png"
+    },
+    "HOENN_ROUTE_110:Cycling Road judge": {
+      "sheet": "em_56.png"
+    },
+    "HOENN_ROUTE_110:Rowdy grunt": {
+      "sheet": "@grunt"
+    },
+    "HOENN_ROUTE_110:Silent grunt": {
+      "sheet": "@grunt"
+    },
+    "HOENN_SPACE_CENTER:Launch scientist": {
+      "sheet": "em_46.png"
+    },
+    "HOENN_SPACE_CENTER:Launch engineer": {
+      "sheet": "em_46.png"
+    },
+    "HOENN_SPACE_CENTER:Fuel thief grunt": {
+      "sheet": "@grunt"
+    },
+    "HOENN_MT_CHIMNEY:Worried grunt": {
+      "sheet": "@other_grunt"
+    },
+    "HOENN_ROUTE_109:Mr. Sea": {
+      "sheet": "em_25.png"
+    },
+    "HOENN_ROUTE_110:Cycling Road attendant": {
+      "sheet": "em_83.png"
+    },
+    "HOENN_ROUTE_110:Cycling Road guide": {
+      "sheet": "em_83.png"
+    },
+    "HOENN_ROUTE_121:Safari attendant": {
+      "sheet": "em_31.png"
+    },
+    "HOENN_ROUTE_121:Safari clerk": {
+      "sheet": "em_31.png"
+    },
+    "HOENN_ROUTE_121:Safari guide": {
+      "sheet": "em_32.png"
+    },
+    "AGATE_VILLAGE:Agate Gym": {
+      "sheet": "orre_trainer_leader_erika.png"
+    },
+    "AGATE_VILLAGE:Blaine": {
+      "sheet": "orre_trainer_leader_blaine.png"
+    },
+    "SNAGEM_HIDEOUT:GYM LEADER PRYCE": {
+      "sheet": "orre_trainer_leader_pryce.png"
+    },
+    "GATEON_PORT:Old man": {
+      "sheet": "orre_npc_10.png"
+    },
+    "GATEON_PORT:Old woman": {
+      "sheet": "orre_npc_11.png"
+    },
+    "GATEON_PORT:Lighthouse keeper": {
+      "sheet": "orre_npc_15.png"
+    },
+    "GATEON_PORT:Gym Leader Jasmine": {
+      "sheet": "orre_trainer_leader_jasmine.png"
+    },
+    "GATEON_PORT:Lighthouse Electabuzz": {
+      "pokemon": 125
+    },
+    "GATEON_PORT:Lighthouse Electrode": {
+      "pokemon": 101
+    },
+    "GATEON_PORT:Lighthouse Ampharos": {
+      "pokemon": 181
+    },
     "UNOVA_ROUTE_5:Man watching": {"sheet": "b2_c56.png"},
     "DRAGONS_DEN:BATTLE CLAIR": {
       "sheet": "hg_gsleader8.png"
