@@ -22,7 +22,7 @@ except Exception:
     FOSSILS = {}
 FOSSIL_REGION = {138: "KANTO", 140: "KANTO", 142: "KANTO", 345: "HOENN", 347: "HOENN"}
 ROAMERS = {"JOHTO": [243, 244]}
-CODE_GIFTS = {"KANTO": {106: "Dojo (town_kanto.visit_dojo)", 107: "Dojo (town_kanto.visit_dojo)"}, "JOHTO": {133: "Bill's Eevee (town_johto.py)"}, "HOENN": {380: "Soaring: Latias", 381: "Soaring: Latios"}}   # (gifts written in code)
+CODE_GIFTS = {"KANTO": {106: "Dojo (town_kanto.visit_dojo)", 107: "Dojo (town_kanto.visit_dojo)"}, "JOHTO": {133: "Bill's Eevee (town_johto.py)", 152: "Elm, after the title: the two you didn't pick (town_story.visit_prof_elm)", 155: "Elm, after the title (the two you didn't pick)", 158: "Elm, after the title (the two you didn't pick)"}, "HOENN": {380: "Soaring: Latias", 381: "Soaring: Latios"}}   # (gifts written in code)
 from src.world import story_events as _se
 SE = _se.EVENTS
 
