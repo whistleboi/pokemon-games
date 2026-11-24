@@ -600,6 +600,8 @@ def d_step(st, p, d, through=False):
             return to, False
         if through and dec.startswith("whirl:") and story.inventory.get("HM_WHIRLPOOL", 0) > 0:   # (Johto: calmed by walking into it)
             return to, False
+        if through and dec.startswith("crack:") and __import__("src.world.hms", fromlist=["field"]).field(story, "HM_ROCK_SMASH"):
+            return to, False   # (a cracked rock on a map whose rocks hide Pokemon - "smash_wild": broken by walking into it)
         return None
     m = f.mover_at(*to)
     if m is not None and not (through and m.kind == "trainer"):
@@ -924,6 +926,8 @@ def things(st):
                 out_.append((1, ("B", t), [t], "a boulder (Strength)", None))
             elif dec.startswith("whirl:") and story.inventory.get("HM_WHIRLPOOL", 0) > 0:
                 out_.append((1, ("B", t), [t], "a whirlpool (Whirlpool)", None))
+            elif dec.startswith("crack:") and __import__("src.world.hms", fromlist=["field"]).field(story, "HM_ROCK_SMASH"):
+                out_.append((1, ("B", t), [t], "a cracked rock (Rock Smash)", None))
             elif dec == "statue" and (st._here_art() or {}).get("switch"):
                 out_.append((1, ("Z", t), [t], "a statue's switch", None))
             elif dec == "secret" and "%d,%d" % tuple(t) in ((st._here_art() or {}).get("secret_switches") or {}):
@@ -2051,35 +2055,33 @@ shot("END_" + ENDED.replace(" ", "_"))
 # own way-points: area, floor / room, tile), is set down in the nearest town (Fly), and then plays it the way it plays the
 # story: the marker, real steps, every trainer and battle fought. A job that doesn't end with its flag is a finding (POST).
 POST_JOBS = [   # (id, what, where it starts (Fly), steps, the flag that says it's done)
-    ("post_moltres", "Moltres on Mt. Silver", "MT_SILVER_CITY",
-     [{"area": "MT_SILVER", "floor": 3, "at": [10, 9], "label": "Moltres", "done": "mt_silver_moltres_defeated"}], "mt_silver_moltres_defeated"),
-    ("post_gs_ball", "The GS Ball (Goldenrod's Center, for the Champion)", "GOLDENROD_CITY",
-     [{"area": "GOLDENROD_CITY", "room": "center", "at": [5, 18], "label": "Center attendant", "done": "got_gs_ball_johto"}], "got_gs_ball_johto"),
-    ("post_kurt", "Kurt looks at the GS Ball", "AZALEA_TOWN",
-     [{"area": "AZALEA_TOWN", "room": "kurt", "at": [4, 6], "label": "Kurt", "done": "kurt_examined_gs_ball"}], "kurt_examined_gs_ball"),
-    ("post_celebi", "Celebi at Ilex Forest's shrine", "AZALEA_TOWN",
-     [{"area": "ILEX_FOREST", "floor": 0, "at": [13, 77], "label": "The shrine", "done": "ILEX_FOREST_boss_defeated"}], "ILEX_FOREST_boss_defeated"),
-    ("post_hooh", "Ho-Oh on the Bell Tower roof (Rainbow Wing)", "ECRUTEAK_CITY",
-     [{"area": "BELL_TOWER", "floor": 10, "at": [5, 6], "label": "Ho-Oh", "done": "caught_ho_oh"}], "caught_ho_oh"),
-    ("post_kimono", "The Kimono Girls (the Tidal Bell)", "ECRUTEAK_CITY",
-     [{"area": "ECRUTEAK_DANCE_THEATER", "floor": 0, "at": [12, 3], "label": "Kimono Girls", "done": "kimono_girls_defeated"}], "kimono_girls_defeated"),
-    ("post_silver_wing", "The Silver Wing (the Radio Director, on the Observation Deck)", "GOLDENROD_CITY",
-     [{"area": "RADIO_TOWER", "floor": 5, "at": [10, 14], "label": "The Director", "done": "has_item:SILVER_WING"}], "item:SILVER_WING"),
-    ("post_lugia", "Lugia in the Whirl Islands (Silver Wing + Tidal Bell)", "CIANWOOD_CITY",
-     [{"area": "JOHTO_ROUTE_41", "floor": 0, "at": [45, 21], "label": "The north-east island", "done": "visited_WHIRL_ISLANDS"},   # (of the four islands only
-      {"area": "WHIRL_ISLANDS", "floor": 4, "at": [16, 17], "label": "Lugia", "done": "caught_lugia"}], "caught_lugia"),     #  this one leads down to Lugia, as SoulSilver)
-    ("post_groudon", "Groudon in the Embedded Tower (SoulSilver's)", "CIANWOOD_CITY",
-     [{"area": "JOHTO_EMBEDDED_TOWER", "floor": 0, "at": [8, 7], "label": "Groudon", "done": "JOHTO_EMBEDDED_TOWER_boss_defeated"}], "JOHTO_EMBEDDED_TOWER_boss_defeated"),
-    ("post_kyogre", "Kyogre in the Embedded Tower (HeartGold's, after the title)", "CIANWOOD_CITY",
-     [{"area": "JOHTO_EMBEDDED_TOWER", "floor": 0, "at": [6, 8], "label": "Kyogre", "done": "embedded_kyogre_defeated"}], "embedded_kyogre_defeated"),
-    ("post_rayquaza", "Rayquaza in the Embedded Tower (after both)", "CIANWOOD_CITY",
-     [{"area": "JOHTO_EMBEDDED_TOWER", "floor": 0, "at": [10, 8], "label": "Rayquaza", "done": "embedded_rayquaza_defeated"}], "embedded_rayquaza_defeated"),
-    ("post_clair", "Clair and Lance in the Dragon's Den, with the rival", "BLACKTHORN_CITY",
-     [{"area": "DRAGONS_DEN", "floor": 1, "at": [15, 15], "label": "Clair", "done": "dragons_den_clair"},
-      {"area": "DRAGONS_DEN", "floor": 1, "at": [32, 49], "label": "Lance", "done": "dragons_den_lance"}], "dragons_den_lance"),
-    ("post_safari", "The Safari Zone (Route 48's gate)", "CIANWOOD_CITY",
-     [{"area": "SAFARI_ZONE_GATE", "room": "gate", "at": [5, 7], "label": "Into the Safari Zone", "done": "visited_JOHTO_SAFARI_ZONE"},
-      {"area": "JOHTO_SAFARI_ZONE", "label": "The Safari Zone", "done": "visited_JOHTO_SAFARI_ZONE"}], "visited_JOHTO_SAFARI_ZONE"),
+    ("delta_mom", "Mom's news of the meteor (the Delta Episode starts)", "LITTLEROOT_TOWN",
+     [{"area": "LITTLEROOT_TOWN", "room": "home", "at": [2, 6], "label": "Mom", "done": "delta_started"}], "delta_started"),
+    ("delta_petalburg", "Courtney and Matt in Petalburg", "PETALBURG_CITY",
+     [{"area": "PETALBURG_CITY", "at": [23, 19], "label": "Courtney", "done": "delta_courtney_petalburg"},
+      {"area": "PETALBURG_CITY", "at": [13, 22], "label": "Matt", "done": "delta_matt_petalburg"}], "delta_matt_petalburg"),
+    ("delta_granite", "Zinnia in Granite Cave", "DEWFORD_TOWN",
+     [{"area": "HOENN_GRANITE_CAVE", "floor": 0, "at": [4, 8], "label": "Zinnia", "done": "delta_zinnia_granite"}], "delta_zinnia_granite"),
+    ("delta_devon", "The grunts outside Devon (Rustboro)", "RUSTBORO_CITY",
+     [{"area": "RUSTBORO_CITY", "at": [9, 16], "label": "Grunt", "done": "h4_rustboro_city_delta_grunt_1"},
+      {"area": "RUSTBORO_CITY", "at": [14, 16], "label": "Grunt", "done": "h4_rustboro_city_delta_grunt_2"},
+      {"area": "RUSTBORO_CITY", "at": [11, 18], "label": "Grunt", "done": "h4_rustboro_city_delta_grunt_3"}], "h4_rustboro_city_delta_grunt_3"),
+    ("delta_mossdeep", "Courtney and Matt in Mossdeep", "MOSSDEEP_CITY",
+     [{"area": "MOSSDEEP_CITY", "at": [62, 17], "label": "Courtney", "done": "delta_courtney_mossdeep"},
+      {"area": "MOSSDEEP_CITY", "at": [68, 17], "label": "Matt", "done": "delta_matt_mossdeep"}], "delta_matt_mossdeep"),
+    ("delta_wallace", "Wallace by Sky Pillar (Route 131)", "PACIFIDLOG_TOWN",
+     [{"area": "HOENN_ROUTE_131", "floor": 0, "at": [37, 35], "label": "Wallace", "done": "delta_wallace_131"}], "delta_wallace_131"),
+    ("delta_zinnia", "Zinnia atop Sky Pillar", "PACIFIDLOG_TOWN",
+     [{"area": "HOENN_SKY_PILLAR", "floor": 7, "at": [14, 10], "label": "Zinnia", "done": "delta_zinnia_defeated"}], "delta_zinnia_defeated"),
+    ("delta_rayquaza", "Rayquaza called down", "PACIFIDLOG_TOWN",
+     [{"area": "HOENN_SKY_PILLAR", "floor": 7, "at": [14, 7], "label": "Rayquaza", "done": "rayquaza_awakened"}], "rayquaza_awakened"),
+    ("delta_space", "Into space on Rayquaza", "PACIFIDLOG_TOWN",
+     [{"area": "HOENN_SKY_PILLAR", "floor": 7, "at": [15, 9], "label": "Rayquaza", "done": "delta_episode_cleared"}], "delta_episode_cleared"),
+    ("post_steven", "Steven in Meteor Falls' hidden room (Emerald)", "FALLARBOR_TOWN",
+     [{"area": "HOENN_METEOR_FALLS", "floor": 4, "at": [19, 3], "label": "Steven", "done": "meteor_falls_steven_beaten"}], "meteor_falls_steven_beaten"),
+    ("post_ship", "Lugia and Ho-Oh in the Abandoned Ship's storeroom", "SLATEPORT_CITY",
+     [{"area": "HOENN_ABANDONED_SHIP", "floor": 8, "at": [3, 3], "label": "Lugia", "done": "sea_mauville_lugia"},
+      {"area": "HOENN_ABANDONED_SHIP", "floor": 8, "at": [5, 3], "label": "Ho-Oh", "done": "sea_mauville_ho_oh"}], "sea_mauville_ho_oh"),
 ]
 POST = []
 
@@ -2100,7 +2102,7 @@ if ENDED == "CHAMPION" and os.environ.get("KPT_POST", "0") != "0":
     _missions = g.loader.area_data.setdefault("JOURNAL_MISSIONS", [])
     for _id, _what, _fly, _steps, _flag in POST_JOBS:
         _t0, _b0, _f0 = time.time(), STATE["battles"], len(FIND)
-        _m = {"id": _id, "type": "MAIN", "text": _what, "desc": "After the title: " + _what, "condition": {"required_region": "JOHTO", "flag": ["beat_johto_champion"]},
+        _m = {"id": _id, "type": "MAIN", "text": _what, "desc": "After the title: " + _what, "condition": {"required_region": "HOENN", "flag": ["beat_hoenn_champion"]},
               "completed_flag": (_flag if not _flag.startswith("item:") else "post_done_" + _id), "steps": _steps}
         _missions.append(_m); MISSIONS[_id] = _m
         GOAL = _flag
@@ -2125,29 +2127,28 @@ if ENDED == "CHAMPION" and os.environ.get("KPT_POST", "0") != "0":
             FIND.append({"kind": "POST", "mission": _id, "where": here(), "what": f"{_what}: not done ({_how})", "extra": None})
             shot("POST_" + _id)
         out(f"  after the title: {_what}: {'DONE' if _ok else 'NOT DONE'} ({_how}; {POST[-1]['battles']} battles, {POST[-1]['s']} s, at {here()})")
-    GOAL = "defeated_red"
+    GOAL = CHAMPION_FLAG
     TIME_LIMIT = (time.time() - T0) + 600   # (the tour's own time)
 
 # ---------------------------------------------------------------- the tour: the paths the story never walks (11-19, ROADMAP_KANTO)
 # After the title, with what the run has collected: each leg walked over the maps by the same rules (head_for: the maps'
 # own ways out, real steps, trainers fought, boulders pushed). A leg that doesn't get there is a finding (TOUR).
-TOUR_LEGS = [("CIANWOOD_CITY", "CLIFF_EDGE_GATE", "Cianwood into the Cliff Edge Gate"),
-             ("CLIFF_EDGE_GATE", "JOHTO_ROUTE_47", "the Cliff Edge Gate down to Route 47"),
-             ("JOHTO_ROUTE_47", "JOHTO_ROUTE_48", "Route 47 up to Route 48"),
-             ("JOHTO_ROUTE_48", "SAFARI_ZONE_GATE", "Route 48 to the Safari Zone Gate"),
-             ("JOHTO_ROUTE_47", "JOHTO_CLIFF_CAVE", "Route 47 into Cliff Cave"),
-             ("JOHTO_ROUTE_47", "JOHTO_EMBEDDED_TOWER", "Route 47 to the Embedded Tower (Rock Climb, after the title)"),
-             ("CIANWOOD_CITY", "WHIRL_ISLANDS", "Cianwood by sea to the Whirl Islands"),
-             ("OLIVINE_CITY", "FRONTIER_ACCESS", "Olivine down Route 40 to Frontier Access"),
-             ("FRONTIER_ACCESS", "JOHTO_BATTLE_FRONTIER", "Frontier Access into the Battle Frontier"),
-             ("VIOLET_CITY", "RUINS_OF_ALPH", "Violet to the Ruins of Alph"),
-             ("JOHTO_ROUTE_31", "DARK_CAVE", "Route 31 into Dark Cave"),
-             ("DARK_CAVE", "JOHTO_ROUTE_45", "through Dark Cave out to Route 45"),
-             ("BLACKTHORN_CITY", "JOHTO_ROUTE_46", "Blackthorn down Routes 45 and 46"),
-             ("JOHTO_ROUTE_46", "JOHTO_ROUTE_29", "Route 46 down to Route 29"),
-             ("JOHTO_ROUTE_42", "MT_MORTAR", "Route 42 into Mt. Mortar"),
-             ("GOLDENROD_CITY", "NATIONAL_PARK", "Goldenrod up Route 35 to the National Park"),
-             ("OLIVINE_CITY", "VERMILLION_CITY", "Olivine by the S.S. Aqua to Vermilion")]
+TOUR_LEGS = [("FALLARBOR_TOWN", "HOENN_METEOR_FALLS", "Fallarbor down Route 114 into Meteor Falls"),
+             ("HOENN_METEOR_FALLS", "HOENN_ROUTE_115", "through Meteor Falls out to Route 115"),
+             ("HOENN_ROUTE_115", "RUSTBORO_CITY", "Route 115 down to Rustboro"),
+             ("VERDANTURF_TOWN", "HOENN_RUSTURF_TUNNEL", "Verdanturf into Rusturf Tunnel"),
+             ("HOENN_ROUTE_111", "HOENN_DESERT_RUINS", "Route 111's desert to the Desert Ruins"),
+             ("HOENN_ROUTE_111", "HOENN_MIRAGE_TOWER", "Route 111's desert to the Mirage Tower"),
+             ("HOENN_JAGGED_PASS", "HOENN_MAGMA_HIDEOUT", "Jagged Pass into the Magma Hideout (after the title)"),
+             ("HOENN_ROUTE_120", "HOENN_SCORCHED_SLAB", "Route 120 to the Scorched Slab"),
+             ("HOENN_ROUTE_120", "HOENN_ANCIENT_TOMB", "Route 120 to the Ancient Tomb"),
+             ("LILYCOVE_CITY", "HOENN_SAFARI_ZONE", "Lilycove up Route 121 into the Safari Zone"),
+             ("HOENN_ROUTE_125", "HOENN_SHOAL_CAVE", "Route 125 into Shoal Cave"),
+             ("HOENN_ROUTE_105", "HOENN_ISLAND_CAVE", "Route 105 to the Island Cave"),
+             ("HOENN_ROUTE_108", "HOENN_ABANDONED_SHIP", "Route 108 to the Abandoned Ship"),
+             ("PACIFIDLOG_TOWN", "HOENN_ROUTE_134", "Pacifidlog along Routes 132-134"),
+             ("HOENN_ROUTE_134", "HOENN_SEALED_CHAMBER", "Route 134 down to the Sealed Chamber"),
+             ("SLATEPORT_CITY", "HOENN_BATTLE_FRONTIER", "Slateport by the S.S. Tidal to the Battle Frontier")]
 TOUR = []
 if ENDED == "CHAMPION" and os.environ.get("KPT_TOUR", "0") != "0":
     story.inventory.setdefault("BICYCLE", 1)

@@ -129822,7 +129822,80 @@
      60
     ]
    }
-  ]
+  ],
+  "rooms": {
+   "cable_car": {
+    "art": [
+     "ccccccccccccc",
+     "ccccccccccccc",
+     "ccccccccccccc",
+     "ccccccccccccc",
+     "cccccc.cccccc",
+     "cccccc.cccccc",
+     "cccccc.cccccc",
+     ".......N....c",
+     "............c",
+     "............c",
+     ".............",
+     "......nn....."
+    ],
+    "exits": {
+     "n": "OUT:28,27"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/19_0.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Cable Car attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome! The Cable Car takes you up to Mt. Chimney's peak. Step aboard at the end of the way!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "7,7": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/19_0.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       12
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Cable Car station",
+    "decor": {
+     "6,4": "door:cablecar"
+    }
+   }
+  },
+  "inside": {
+   "28,27": "cable_car",
+   "29,27": "cable_car"
+  }
  },
  "HOENN_FIERY_PATH": {
   "art": [
@@ -131434,7 +131507,7 @@
     "art": [
      "cccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccccccccc",
+     "cccc1ccccccccccccccccccccccccc",
      "c......ccc1ccccccccccccccccccc",
      "c.N.N1.c.....oooooccccccccc.cc",
      "c......c.....ooooocccccccccN.c",
@@ -131632,7 +131705,10 @@
        42
       ]
      }
-    ]
+    ],
+    "inside": {
+     "4,2": "steven_cave"
+    }
    },
    {
     "art": [
@@ -131907,6 +131983,115 @@
    "Team Aqua Grunt": 0,
    "Team Magma Grunt": 0,
    "Old Couple John & Jay": 1
+  },
+  "rooms": {
+   "steven_cave": {
+    "art": [
+     "cccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccNcccccccccc",
+     "ccccccccccccccccccc.cccccccccc",
+     "ccccccccccccccccccc.cccccccccc",
+     "ccccccccccccccccccc.cccccccccc",
+     "cccccccccc...c......cccccccccc",
+     "ccccccccccc..c..c.........cccc",
+     "cccccccccc....c...cccccccccccc",
+     "cccccccccc..c....ccccccccccccc",
+     "cccccccccc.......ccccccccccccc",
+     "ccccccccccccccc..ccccccccccccc",
+     "cccccccccccccccc.ccccccccccccc",
+     "cccccccccccccccc...ccccccccccc",
+     "ccccccccccccccccc..cccc.cccccc",
+     "ccccccccccccccccc..cccc.cccccc",
+     "ccc....cccccccccc..cccc.cccccc",
+     "ccc....cccccccccc..cccc.cccccc",
+     "ccc.cc.cccccccccc.c.....cccccc",
+     "ccc.c..ccccccccc...cc...cccccc",
+     "cccc...ccccccc.....c..cccccccc",
+     "cccccc.ccccccc....c..ccccccccc",
+     "cccccc.ccccccc......cccccccccc",
+     "cccccc.ccccccc...ccccccccccccc",
+     "cccccc.........c.ccccccccccccc",
+     "ccccccc....c..cc.ccccccccccccc",
+     "ccccccccc........ccccccccccccc",
+     "ccccccccc...c.cccccccccccccccc",
+     "ccccccccc.n...cccccccccccccccc",
+     "cccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccc"
+    ],
+    "exits": {
+     "n": "OUT:4,2"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/24_107.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Steven",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Steven: Oh, wow, {player_name}. I'm amazed you knew where to find me.",
+        "Steven: We battled side by side at the Mossdeep Space Center, and you became the Champion.",
+        "Steven: Now I want to see how strong you've grown. Shall we?"
+       ],
+       "flag": "meteor_falls_steven_beaten",
+       "battle": {
+        "name": "Steven",
+        "class": "CHAMPION",
+        "sprite": "steven.png",
+        "team": [
+         227,
+         344,
+         306,
+         346,
+         348,
+         376
+        ],
+        "levels": [
+         77,
+         75,
+         76,
+         76,
+         76,
+         78
+        ],
+        "rewards": {
+         "balls": 5
+        },
+        "dialogue": {
+         "player_won": [
+          "Steven: I see... You really are the Champion.",
+          "Steven: I'll keep travelling, looking for rare stones. Until we meet again!"
+         ]
+        }
+       }
+      },
+      "condition": [
+       "beat_hoenn_champion",
+       "not:meteor_falls_steven_beaten"
+      ]
+     }
+    ],
+    "moves": {
+     "19,3": {
+      "m": "face",
+      "d": "u"
+     }
+    },
+    "theme": "room",
+    "title": "Meteor Falls hidden room"
+   }
   }
  },
  "HOENN_ROUTE_115": {
@@ -132446,6 +132631,79 @@
     ]
    }
   ],
+  "rooms": {
+   "cable_car": {
+    "art": [
+     "ccccccccccccc",
+     "ccccccccccccc",
+     "ccccccccccccc",
+     "ccccccccccccc",
+     "cccccc.cccccc",
+     "cccccc.cccccc",
+     "cccccc.cccccc",
+     ".......N....c",
+     "............c",
+     "............c",
+     ".............",
+     "......nn....."
+    ],
+    "exits": {
+     "n": "OUT:17,36"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/19_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     {
+      "text": "Cable Car attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome! The Cable Car takes you down to Route 112. Step aboard at the end of the way!"
+       ]
+      }
+     }
+    ],
+    "moves": {
+     "7,7": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/19_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       12
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Cable Car station",
+    "decor": {
+     "6,4": "door:cablecar"
+    }
+   }
+  },
+  "inside": {
+   "17,36": "cable_car",
+   "18,36": "cable_car"
+  },
   "hidden": {
    "23,15": "ZINC",
    "26,15": "PROTEIN"
@@ -155447,7 +155705,7 @@
      "cccccccccccccccccccccccccccccc.........n.ccccc",
      "cccccccccccccccccccccccccccccc...ccccccccccccc",
      "cccccccccccccccccccccccccccccc...ccccccccccccc",
-     "cccccccccccccccccccccccccccccc...ccccccccccccc",
+     "cccccccccccccccccccccccccccccc..Nccccccccccccc",
      "cccccccccccccccccccccccccccccc.X.ccccccccccccc",
      "cccccccccccccccccccccccccccccc...ccccccccccccc",
      "cccccccccccccccccccccccccccccc...ccccccccccccc",
@@ -155562,6 +155820,17 @@
      }
     },
     "people": [
+     {
+      "text": "Wally ",
+      "action": "EVENT",
+      "condition": "defeated_wally_victory",
+      "event": {
+       "lines": [
+        "Wally: {player_name}... I'm not giving up. I'll keep training until I can beat you!",
+        "Wally: Go on. The Pokemon League is waiting for you!"
+       ]
+      }
+     },
      "MAX ELIXIR",
      "TM105 X-SCISSOR",
      "FULL HEAL",
@@ -161546,7 +161815,7 @@
      "ccccccccc",
      "ccccccccc",
      "cNNN..NNc",
-     "cN.....Nc",
+     "cN.N.N.Nc",
      "c...N...c",
      "cN.....Nc",
      "cNN...NNc",
@@ -161572,6 +161841,8 @@
      "BIG NUGGET   ",
      "BIG NUGGET    ",
      "BIG NUGGET     ",
+     "LUGIA",
+     "HO-OH",
      "BIG NUGGET      ",
      "TM135 ICE BEAM",
      "BIG NUGGET       ",
@@ -161895,7 +162166,9 @@
    "Youngster Demetrius": 2,
    "Ruin Maniac Garrison": 3,
    "Swimmer Jani": 3,
-   "Sailor Duncan": 5
+   "Sailor Duncan": 5,
+   "LUGIA": 8,
+   "HO-OH": 8
   }
  },
  "HOENN_OCEANIC_MUSEUM": {

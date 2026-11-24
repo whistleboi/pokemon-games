@@ -76,6 +76,17 @@
     ]
   },
   "figures": {
+    "HOENN_METEOR_FALLS:Steven": {"sheet": "em_134.png"},
+    "HOENN_ROUTE_112:Cable Car attendant": {"sheet": "em_45.png"},
+    "HOENN_MT_CHIMNEY:Cable Car attendant": {"sheet": "em_45.png"},
+    "HOENN_BATTLE_FRONTIER:Dome attendant": {"sheet": "em_85.png"},
+    "HOENN_BATTLE_FRONTIER:Palace attendant": {"sheet": "em_85.png"},
+    "HOENN_BATTLE_FRONTIER:Pyramid attendant": {"sheet": "em_85.png"},
+    "HOENN_BATTLE_FRONTIER:Arena attendant": {"sheet": "em_85.png"},
+    "HOENN_BATTLE_FRONTIER:Factory attendant": {"sheet": "em_85.png"},
+    "HOENN_BATTLE_FRONTIER:Exchange clerk": {"sheet": "em_85.png"},
+    "MAUVILLE_CITY:Mirror shop owner": {"sheet": "em_83.png"},
+    "HOENN_VICTORY_ROAD:Wally ": {"sheet": "em_135.png"},
     "ANVILLE_TOWN:Boy": {"sheet": "b2_c29.png"},
     "ANVILLE_TOWN:Boy by the fence": {"sheet": "b2_c28.png"},
     "ANVILLE_TOWN:Collector": {"sheet": "b2_c27.png"},
