@@ -5104,6 +5104,11 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
             if m.kind in ("wild", "walkup"):   # (walkup: drawn in by Honey or a swarm - wild_walkup.py: it hops out, faints, fades)
                 img = self._icon(m.payload, TILE, flip=(m.x < self.run.player[0]), facing=getattr(m, "facing", None))
                 _lift, _alpha = (self._wu_lift(m), getattr(m, "_wu_alpha", 255)) if m.kind == "walkup" else (0, 255)
+                if m.kind == "walkup" and getattr(m, "_wu_off", None):   # (lunging or knocked back in the swarm's battle)
+                    r = r.move(*m._wu_off)
+                    if getattr(m, "_wu_flash", False):
+                        from src.vfx.map_attacks import white
+                        img = white(img)
                 if _alpha <= 0:
                     continue
                 if _alpha < 255:
@@ -5211,6 +5216,11 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
             way = (look[0] - tx, look[1] - ty)
             way = (max(-1, min(1, way[0])), 0) if way[0] else (0, max(-1, min(1, way[1])) or 1)
             img = self._icon(lead, TILE, flip=(self.run.player[0] > tx), facing=way)
+            if getattr(self, "_lead_off", None) and self.mode == "SWARM":   # (its lunge or recoil in the swarm's battle)
+                r = r.move(*self._lead_off)
+                if getattr(self, "_lead_flash", False) and img is not None:
+                    from src.vfx.map_attacks import white
+                    img = white(img)
             _trail[len(drawn)] = (self.partner_from, self.partner)
             drawn.append((r.bottom, img, img.get_rect(midbottom=(r.centerx, r.bottom - 2))))
         for _ci, _who in enumerate(self._companions() if me is not None and not self._backdrop and not surfing else ()):

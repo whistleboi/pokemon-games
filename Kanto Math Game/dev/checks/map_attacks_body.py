@@ -1,0 +1,118 @@
+# Attacks on the map (Jordan 11-24, region/systems; src/vfx/map_attacks.py): lunges for physical moves, beams for
+# special ones, rings for status moves, each type with the game's own move-animation sprites, sized by the move's power;
+# played in OVERWORLD-style battles and the swarm's battle on the map. A real battle played through its answers.
+#   bash dev/checks/run.sh map_attacks
+exec(open("dev/checks/dungeon_lib.py", encoding="utf-8").read())
+from src.vfx import map_attacks as ma
+g.dungeon_routes = True
+
+print("1) every type has its sprites, from the game's own move-animation sheets")
+for typ in ma.SPRITES:
+    got = [len(ma.sprites(g.assets.assets_dir, typ, k)) for k in range(3)]
+    check(all(got), f"{typ}: beam {got[0]}, hit {got[1]}, bits {got[2]} cells")
+check(set(ma.SPRITES) == set(ma.COLORS) and len(ma.SPRITES) == 18, "all 18 types")
+
+print("2) the move decides the look: physical lunge, special beam, status ring; power sets the size")
+r1, r2 = pygame.Rect(100, 100, 56, 56), pygame.Rect(220, 100, 56, 56)
+mk_atk = lambda name: ma.MapAttack(g, ma.move_for(g, name), lambda: r1, lambda: r2)
+tomb, bolt, growl = mk_atk("ROCK-TOMB"), mk_atk("THUNDERBOLT"), mk_atk("GROWL")
+check((tomb.kind, tomb.type, bolt.kind, bolt.type, growl.kind) == ("PHYSICAL", "ROCK", "SPECIAL", "ELECTRIC", "STATUS"),
+      f"Rock Tomb a Rock lunge, Thunderbolt an Electric beam, Growl a ring ({tomb.kind} {tomb.type}, {bolt.kind} {bolt.type}, {growl.kind})")
+check([ma.tier(p) for p in (40, 60, 90, 120)] == [0, 1, 2, 3], "power tiers: up to 40, 75, 100, more")
+
+
+def peak(atk, who):
+    best = 0
+    while atk.t < atk.length:
+        atk.update()
+        dx, dy = atk.offset(who)
+        best = max(best, abs(dx) + abs(dy))
+    return best
+
+
+tackle, quake = mk_atk("TACKLE"), mk_atk("EARTHQUAKE")
+lean = []
+t = mk_atk("TACKLE")
+for _ in range(int(t.length * 0.2)):
+    t.update()
+    lean.append(t.offset("user")[0])
+check(min(lean) < 0, f"a lunge winds up first: leans back away from the target ({min(lean)} px)")
+rt, rq = peak(mk_atk("TACKLE"), "target"), peak(mk_atk("EARTHQUAKE"), "target")
+check(0 < rt < rq, f"the target is knocked back, more by a stronger move (Tackle {rt} px, Earthquake {rq} px)")
+check(peak(mk_atk("TACKLE"), "user") > 50, "the attacker dashes over to the target")
+check(peak(mk_atk("GROWL"), "target") == 0, "a status move moves no one")
+q = mk_atk("THUNDER")
+shook = flashed = False
+while q.t < q.length:
+    q.update()
+    shook = shook or q.shake() > 0
+    flashed = flashed or q.flashing()
+check(shook and flashed and not any(mk_atk("TACKLE").shake() for _ in range(1)), "the strongest shake the screen; the one hit flashes white")
+small, big = mk_atk("EMBER"), mk_atk("FLAMETHROWER")
+for a in (small, big):
+    while not a.hitting():
+        a.update()
+    a.update()
+check(0 < len(small.parts) < len(big.parts), f"a stronger move throws more of its sprites ({len(small.parts)} vs {len(big.parts)})")
+surf = pygame.Surface((400, 300), pygame.SRCALPHA)
+for name in ("ROCK-TOMB", "THUNDERBOLT", "GROWL", "SWORDS-DANCE"):
+    a = mk_atk(name)
+    while not a.done:
+        a.update()
+        a.draw(surf)
+check(True, "every kind draws to the end without a hitch")
+sd = ma.MapAttack(g, ma.move_for(g, "SWORDS-DANCE"), lambda: r1, lambda: r2, self_target=True)
+check(sd.target() is r1, "a move on the user (Swords Dance) plays on the user")
+
+print("3) a real map battle (OVERWORLD style): a right answer plays the move on the map, and the battle waits for it")
+from src.states.battle import TrainerBattleState
+story.battle_style = "OVERWORLD"
+p = kanto("KANTO_ROUTE_3", came="PEWTER_CITY")
+ow = mk(6)
+ow.level = 100
+ow.moves = ["FLAMETHROWER", "AIR-SLASH"]
+ow.heal_full()
+story.player_team = [ow]
+tr = next((m for f in p.run.floors for m in f.movers if m.kind == "trainer"), None)
+p._battle_trainer(tr)
+while p.dialogue_box.visible:
+    p.dialogue_box.advance()
+    p.update()
+b = g.current_state
+check(isinstance(b, TrainerBattleState) and b.overworld is not None, "the trainer battle is on the map")
+seen, held, kinds = set(), 0, []
+for _k in range(8000):   # (as dungeon's fight(): each turn Flamethrower and the right answer; tap the text on)
+    if g.current_state is not b:
+        break
+    if b.phase == "SWITCH_PROMPT" and b.btn_no.visible and b.btn_no.callback:
+        b.btn_no.callback()
+    elif b.phase == "MENU" and not b.dialogue_box.visible:
+        b.open_move_menu()
+        b.choose_move("FLAMETHROWER")
+        b.math_ui.on_click(b.options.index(b.correct_ans))
+    elif b.dialogue_box.visible:
+        b.dialogue_box.is_finished = True
+        if b.phase in ("OUTRO", "VICTORY_TEXT", "REWARD_TEXT"):
+            b.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=(640, 600))])
+        elif not getattr(b, "_move_seq", None):
+            _cb = b.dialogue_box.callback
+            if _cb:
+                b.dialogue_box.callback = None
+                _cb()
+            else:
+                b.dialogue_box.advance()
+    b.feedback_timer = 0
+    if g.current_state is b:
+        atk = b.overworld.atk
+        if atk is not None:
+            seen.add(id(atk))
+            kinds.append((atk.kind, atk.type))
+            if getattr(b, "_move_seq", None) and b._move_seq.get("stage") == "move":
+                held += 1
+        b.update()
+        b.draw()
+check(len(seen) >= 1 and ("SPECIAL", "FIRE") in kinds, f"Flamethrower played as a Fire beam on the map ({len(seen)} moves, {sorted(set(kinds))[:4]})")
+check(held > 10, f"...and the battle waited on it before the HP bar dropped ({held} frames)")
+story.battle_style = "TRADITIONAL"
+
+print(f"##### {fails} failures")

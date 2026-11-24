@@ -326,6 +326,7 @@ class OverworldView:
         self.shots = []   # attacks flying: [from side, colour, frames gone]
         self.last = {}    # each side's HP last frame (a drop: a hit landed)
         self.anim_seen = None
+        self.atk = None   # the move playing: src/vfx/map_attacks.py (a lunge, a beam, a ring)
 
     @staticmethod
     def _line_up(play, mover):
@@ -428,6 +429,56 @@ class OverworldView:
             self.shots.append(["me" if side == "player" else "foe", TYPE_COLOR.get(kind, (255, 255, 255)), 0])
         self.anim_seen = now
 
+    # ---------------------------------------------------------------- a move, played on the map (src/vfx/map_attacks.py)
+    def attack(self, battle, mv):
+        """Start the move mv ({"name", "side", "user", "target"}) as the map's own attack."""
+        from src.vfx import map_attacks
+        info = map_attacks.move_for(self.play.game, mv.get("name"))
+        user, target = mv.get("user"), mv.get("target")
+        if getattr(battle, "is_doubles", False):
+            def rect(mon):
+                return lambda: (self._double_rects(battle).get(id(mon)) or (None,))[0] or self.catch_points()[0]
+        else:
+            def rect(mon):
+                mine = mv.get("side") == "player" if mon is user else mv.get("side") != "player"
+                return lambda: self.catch_points()[0 if mine else 1]
+        self_target = str(info.get("target") or "").startswith("user") or user is target
+        self.atk = map_attacks.MapAttack(self.play.game, info, rect(user), rect(target), self_target=self_target)
+        self.atk_ids = (id(user), id(target))
+        self.shots = []
+
+    def attacking(self):
+        """A move still playing (and moving on a frame: the battle waits on this)."""
+        if self.atk is None:
+            return False
+        self.atk.update()
+        if self.atk.done:
+            self.atk = None
+            return False
+        return True
+
+    def _role(self, mon):
+        """"user" / "target" in the move playing, or None."""
+        if self.atk is None or mon is None:
+            return None
+        u, t = self.atk_ids
+        return "user" if id(mon) == u else "target" if id(mon) == t else None
+
+    def _moved(self, rect, mon, img):
+        """Where a battler is drawn now (its lunge or recoil), and its picture (white as it's hit)."""
+        role = self._role(mon)
+        if role is None:
+            return rect, img
+        dx, dy = self.atk.offset(role)
+        s = self.atk.shake()
+        if s:
+            import random
+            dx, dy = dx + random.randint(-s, s), dy + random.randint(-s, s)
+        if role == "target" and self.atk.flashing() and img is not None:
+            from src.vfx.map_attacks import white
+            img = white(img)
+        return rect.move(dx, dy), img
+
     def _draw_map(self, screen):
         self.play._focus = self.focus
         self.play.draw_backdrop(screen)
@@ -449,13 +500,17 @@ class OverworldView:
                 and (kept or not (fainting == "opponent" or foe.current_hp <= 0 and battle.opponent_hp <= 0)):
             img = play._icon(foe, TILE + 8, facing=self._face(self.spot, self.mine))
             if img is not None:
-                screen.blit(img, img.get_rect(midbottom=(fr.centerx, fr.bottom + 4)))
+                at, img = self._moved(fr, foe, img)
+                screen.blit(img, img.get_rect(midbottom=(at.centerx, at.bottom + 4)))
             self._hp_bar(screen, foe.display_name.upper(), battle.opponent_hp, battle.opp_max_hp, foe.level, fr, False)
         if me is not None and battle.phase != "PLAYER_SUMMON" and not (fainting == "player" or me.current_hp <= 0 and battle.player_hp <= 0):
             img = play._icon(me, TILE + 8, flip=self.spot[0] > self.mine[0], facing=self._face(self.mine, self.spot))
             if img is not None:
-                screen.blit(img, img.get_rect(midbottom=(mr.centerx, mr.bottom + 4)))
+                at, img = self._moved(mr, me, img)
+                screen.blit(img, img.get_rect(midbottom=(at.centerx, at.bottom + 4)))
             self._hp_bar(screen, me.display_name.upper(), battle.player_hp, battle.player_max_hp, me.level, mr, True)
+        if self.atk is not None:   # (the move: its beam, its type's sprites)
+            self.atk.draw(screen)
         for s in self.shots:  # an attack: an orb of the attacker's type's colour, flying across
             a, b = (mr.center, fr.center) if s[0] == "me" else (fr.center, mr.center)
             k = min(1.0, s[2] / self.SHOT)
@@ -516,7 +571,8 @@ class OverworldView:
                 continue
             img = play._icon(mon, TILE + 8, flip=mine and self.spot[0] > self.mine[0], facing=my_face if mine else foe_face)
             if img is not None:
-                screen.blit(img, img.get_rect(midbottom=(r.centerx, r.bottom + 4)))
+                at, img = self._moved(r, mon, img)
+                screen.blit(img, img.get_rect(midbottom=(at.centerx, at.bottom + 4)))
             if mon.current_hp > 0:   # (a small bar on the map; the names and HP in the battle's own boxes, below)
                 bar = pygame.Rect(0, 0, TILE - 4, 8)
                 bar.midbottom = (r.centerx, r.top - 12)
@@ -528,6 +584,8 @@ class OverworldView:
                 pygame.draw.rect(screen, col, (bar.x, bar.y, int(bar.w * k), bar.h), border_radius=3)
                 if mine:
                     pygame.draw.rect(screen, (120, 200, 255), bar.inflate(4, 4), 2, border_radius=4)
+        if self.atk is not None:   # (the move: its beam, its type's sprites)
+            self.atk.draw(screen)
         for s in self.shots:
             if s[0] not in spots or s[3] not in spots:
                 s[2] = self.SHOT + 1
