@@ -319929,7 +319929,7 @@
    {
     "text": "Gate lady",
     "action": "EVENT",
-    "condition": "xd_bonsly_found",
+    "condition": "xd_exol_beaten",
     "event": {
      "stages": [
       {
@@ -321516,7 +321516,7 @@
        },
        "condition": {
         "any": [
-         "not:xd_bonsly_found",
+         "not:xd_exol_beaten",
          "orre_snattle_phenac"
         ]
        },
@@ -322282,7 +322282,7 @@
       "text": "Mayor's secretary",
       "action": "EVENT",
       "condition": [
-       "xd_bonsly_found",
+       "xd_exol_beaten",
        "not:orre_snattle_phenac"
       ],
       "flag_condition": "not xd_secretary",
@@ -322642,7 +322642,7 @@
        "stages": [
         {
          "requires": [
-          "xd_bonsly_found",
+          "xd_exol_beaten",
           "not:xd_music_disc"
          ],
          "flag": "xd_music_disc",

@@ -744,13 +744,13 @@ def _xd5b(maps):
 
 
 # ================================================================== batch 6: Phenac in Cipher's hands; the Outskirt Stand (BATCH_6.md)
-# XD part 4 with Wes, after the S.S. Libra: Cipher's peons wear the townsfolk's faces. The gate lady's Battle CDs; the Music Disc
+# XD part 4 with Wes, after ONBS (S4: the S.S. Libra optional): Cipher's peons wear the townsfolk's faces. The gate lady's Battle CDs; the Music Disc
 # for the mayor's secretary (a peon) and Es Cade's note to Justy (Jordan 11-21: Es Cade "missing", no Trest); the six Justy
 # impersonators (the Hexagon Brothers) with their CDs; Ertlig on the way to the stadium; the stadium's ambush and Snattle's
 # lackey. XD part 5: Miror B., Hordel's Shadow Togepi and Willie at the Outskirt Stand. XD's teams +28 (Snattle's ace 56).
-TAKEOVER = ["xd_bonsly_found", "not:orre_snattle_phenac"]
+TAKEOVER = ["xd_exol_beaten", "not:orre_snattle_phenac"]   # (S4, 11-24: from Exol's defeat - the S.S. Libra is optional)
 MUSIC_MAN = {"text": "Music lover", "action": "EVENT", "event": {"stages": [
-    {"requires": ["xd_bonsly_found", "not:xd_music_disc"], "flag": "xd_music_disc", "gift_item": {"MUSIC_DISC": 1},
+    {"requires": ["xd_exol_beaten", "not:xd_music_disc"], "flag": "xd_music_disc", "gift_item": {"MUSIC_DISC": 1},
      "lines": ["Music lover: The mayor's secretary wants music? Here, take this Music Disc. Phenac's been so quiet lately."]}],
     "done": ["Music lover: Music makes everything better. Even whatever's going on in this town."]}}
 SECRETARY = {"text": "Mayor's secretary", "action": "EVENT", "condition": TAKEOVER, "flag_condition": "not xd_secretary",
@@ -765,7 +765,7 @@ SECRETARY = {"text": "Mayor's secretary", "action": "EVENT", "condition": TAKEOV
                   "battle": T("xd:Story:91", dialogue={"player_won": ["Cipher Peon Pellim: My disguise... Fenton, get the kid!"]})}]}}
 FENTON = _fight("Cipher Peon Fenton", "xd:Story:92", "xd_fenton", "Cipher Peon Fenton: Nobody leaves the mayor's house!",
                 "Cipher Peon Fenton: Ugh. The Justys will get you!", condition=["xd_secretary", "not:orre_snattle_phenac"])
-GATE_LADY = {"text": "Gate lady", "action": "EVENT", "condition": "xd_bonsly_found", "event": {"stages": [
+GATE_LADY = {"text": "Gate lady", "action": "EVENT", "condition": "xd_exol_beaten", "event": {"stages": [
     {"requires": ["not:xd_gate_cds"], "flag": "xd_gate_cds", "gift_item": {"BATTLE_CD_01": 1, "BATTLE_CD_07": 1, "BATTLE_CD_20": 1},
      "lines": ["Gate lady: Welcome to Phenac! Everything is perfectly normal here. Have some Battle CDs. Go to Realgam Tower and play them!",
                "You got Battle CDs 01, 07 and 20!"]}],

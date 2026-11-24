@@ -596,5 +596,41 @@ for _f in ("orre_part2", "xd_gorigan_beaten", "xd_greevil_beaten", _mg.done_flag
     story.story_flags.pop(_f, None)
 story.badges["ORRE"] = _saved_badges
 
+# ---- the story rework S4 (11-24): XD's main line - ONBS after Nett's data (the Poke Spots optional), Cipher's Phenac after
+# Exol (the S.S. Libra optional), XD's end in the Journal's main story; S3's badge gates evaluated, not just written
+_SP = _json.load(open("assets/orre_area_data.json", encoding="utf-8"))["STORY_PROGRESSION"]
+_JM = {m["id"]: m for m in _json.load(open("assets/orre_area_data.json", encoding="utf-8"))["JOURNAL_MISSIONS"]}
+story.story_flags.update(orre_part2=True, xd_nett_rom=True)
+for _f in ("xd_miror_cave", "xd_bonsly_found", "xd_exol_beaten"):
+    story.story_flags.pop(_f, None)
+r = route("XD_ONBS", "PYRITE_TOWN")
+_ob = [o.get("text") for o in r._figure_items()]
+_obtr = [i for i, tr in enumerate(_SP["XD_ONBS"]["trainer_pool"]) if story.trainer_on_map("XD_ONBS", i, tr)]
+check("BATTLE CIPHER CMDR EXOL" in _ob and len(_obtr) == len(_SP["XD_ONBS"]["trainer_pool"]),
+      f"S4: ONBS - Exol and his peons are there on Nett's data alone, without the Cave Poke Spot's Miror B. ({len(_obtr)} peons)")
+story.story_flags["xd_exol_beaten"] = True
+t = town("PHENAC_CITY", "ORRE_DESERT")
+_ph = [p.get("text") for p in t.people.values() if isinstance(p, dict)]
+_pre = [i for i, tr in enumerate(_SP["PRESTIGE_PRECEPT_CENTER"]["trainer_pool"]) if story.trainer_on_map("PRESTIGE_PRECEPT_CENTER", i, tr)]
+_stad = t._check_menu_condition(next(o for o in _SP["PHENAC_CITY"]["explore_options"] if o.get("text") == "Phenac Stadium").get("condition"))
+check("Gate lady" in _ph and len(_pre) == len(_SP["PRESTIGE_PRECEPT_CENTER"]["trainer_pool"]) and not _stad,
+      f"S4: Cipher's Phenac once Exol is beaten, without the S.S. Libra - the gate lady, the Pre Gym's peons, the Stadium shut")
+_types = {k: _JM[k]["type"] for k in ("orre_m11c", "orre_m12b", "orre_s5", "orre_s5b", "orre_m12", "orre_m13")}
+check(_types == {"orre_m11c": "SIDE", "orre_m12b": "SIDE", "orre_s5": "MAIN", "orre_s5b": "MAIN", "orre_m12": "MAIN", "orre_m13": "MAIN"}
+      and _JM["orre_m12"]["condition"]["flag"] == "xd_nett_rom" and _JM["orre_m13"]["condition"]["flag"] == "xd_exol_beaten",
+      f"S4: the Journal - the Poke Spots and the Libra side trips, XD's end main story {_types}")
+t = town("GATEON_PORT", "POKEMON_HQ_LAB")
+_cl = {o["text"]: o.get("condition") for o in _SP["GATEON_PORT"]["travel_options"]}
+story.story_flags.update(xd_machine_part_given=True, xd_master_ball=True)
+story.badges["ORRE"] = ["PHENAC", "PYRITE", "AGATE", "SNAGEM"]
+_g0 = (t._check_menu_condition(_cl["Cipher Lab"]), t._check_menu_condition(_cl["Citadark Isle"]))
+story.badges["ORRE"] += ["GATEON", "KEY_LAIR"]
+_g1 = (t._check_menu_condition(_cl["Cipher Lab"]), t._check_menu_condition(_cl["Citadark Isle"]))
+check(_g0 == (False, False) and _g1 == (True, True),
+      f"S3/S4: Gateon's boats - the Cipher Lab and Citadark shut without the Gateon / Key Lair Badges, open with them ({_g0}, {_g1})")
+for _f in ("orre_part2", "xd_nett_rom", "xd_exol_beaten", "xd_machine_part_given", "xd_master_ball"):
+    story.story_flags.pop(_f, None)
+story.badges["ORRE"] = _saved_badges
+
 g.walk_towns = False
 print(f"##### {fails} failures")

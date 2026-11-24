@@ -219,7 +219,7 @@
           "color": "GOLD",
           "condition": {
             "any": [
-              "not:xd_bonsly_found",
+              "not:xd_exol_beaten",
               "orre_snattle_phenac"
             ]
           }
@@ -13040,7 +13040,7 @@
           },
           "music": "orre/cipher_battle",
           "when_flags": [
-            "xd_miror_cave"
+            "xd_nett_rom"
           ]
         },
         {
@@ -13080,7 +13080,7 @@
           },
           "music": "orre/cipher_battle",
           "when_flags": [
-            "xd_miror_cave"
+            "xd_nett_rom"
           ]
         },
         {
@@ -13127,7 +13127,7 @@
           },
           "music": "orre/cipher_battle",
           "when_flags": [
-            "xd_miror_cave"
+            "xd_nett_rom"
           ]
         },
         {
@@ -13169,7 +13169,7 @@
           },
           "music": "orre/cipher_battle",
           "when_flags": [
-            "xd_miror_cave"
+            "xd_nett_rom"
           ]
         },
         {
@@ -13216,7 +13216,7 @@
           },
           "music": "orre/cipher_battle",
           "when_flags": [
-            "xd_miror_cave"
+            "xd_nett_rom"
           ]
         },
         {
@@ -13258,7 +13258,7 @@
           },
           "music": "orre/cipher_battle",
           "when_flags": [
-            "xd_miror_cave"
+            "xd_nett_rom"
           ]
         },
         {
@@ -13305,7 +13305,7 @@
           },
           "music": "orre/cipher_battle",
           "when_flags": [
-            "xd_miror_cave"
+            "xd_nett_rom"
           ]
         },
         {
@@ -13353,7 +13353,7 @@
           },
           "music": "orre/cipher_battle",
           "when_flags": [
-            "xd_miror_cave"
+            "xd_nett_rom"
           ]
         },
         {
@@ -13401,7 +13401,7 @@
           },
           "music": "orre/cipher_battle",
           "when_flags": [
-            "xd_miror_cave"
+            "xd_nett_rom"
           ]
         },
         {
@@ -13456,7 +13456,7 @@
           ],
           "music": "orre/cipher_battle",
           "when_flags": [
-            "xd_miror_cave"
+            "xd_nett_rom"
           ]
         }
       ],
@@ -13552,7 +13552,7 @@
               }
             }
           },
-          "condition": "xd_miror_cave",
+          "condition": "xd_nett_rom",
           "flag_condition": "not xd_exol_beaten"
         },
         {
@@ -13698,7 +13698,7 @@
               "ETHER": 1
             }
           },
-          "condition": "xd_miror_cave"
+          "condition": "xd_nett_rom"
         },
         {
           "text": "HP UP",
@@ -13714,7 +13714,7 @@
               "HP_UP": 1
             }
           },
-          "condition": "xd_miror_cave"
+          "condition": "xd_nett_rom"
         },
         {
           "text": "REVIVE",
@@ -13860,7 +13860,7 @@
           },
           "music": "orre/cipher_battle",
           "when_flags": [
-            "xd_bonsly_found"
+            "xd_exol_beaten"
           ]
         },
         {
@@ -13918,7 +13918,7 @@
           },
           "music": "orre/cipher_battle",
           "when_flags": [
-            "xd_bonsly_found"
+            "xd_exol_beaten"
           ]
         },
         {
@@ -13961,7 +13961,7 @@
           },
           "music": "orre/cipher_battle",
           "when_flags": [
-            "xd_bonsly_found"
+            "xd_exol_beaten"
           ]
         },
         {
@@ -14009,7 +14009,7 @@
           ],
           "music": "orre/cipher_battle",
           "when_flags": [
-            "xd_bonsly_found"
+            "xd_exol_beaten"
           ]
         },
         {
@@ -14050,7 +14050,7 @@
           },
           "music": "orre/cipher_battle",
           "when_flags": [
-            "xd_bonsly_found"
+            "xd_exol_beaten"
           ]
         },
         {
@@ -14093,7 +14093,7 @@
           },
           "music": "orre/cipher_battle",
           "when_flags": [
-            "xd_bonsly_found"
+            "xd_exol_beaten"
           ]
         }
       ],
@@ -14228,7 +14228,7 @@
           "flag_condition": "not orre_pregym_botan",
           "condition": {
             "any": [
-              "not:xd_bonsly_found",
+              "not:xd_exol_beaten",
               "orre_snattle_phenac"
             ]
           }
@@ -14278,7 +14278,7 @@
           "flag_condition": "not orre_pregym_liqui",
           "condition": {
             "any": [
-              "not:xd_bonsly_found",
+              "not:xd_exol_beaten",
               "orre_snattle_phenac"
             ]
           }
@@ -14328,7 +14328,7 @@
           "flag_condition": "not orre_pregym_dugo",
           "condition": {
             "any": [
-              "not:xd_bonsly_found",
+              "not:xd_exol_beaten",
               "orre_snattle_phenac"
             ]
           }
@@ -14378,7 +14378,7 @@
           "flag_condition": "not orre_pregym_gwin",
           "condition": {
             "any": [
-              "not:xd_bonsly_found",
+              "not:xd_exol_beaten",
               "orre_snattle_phenac"
             ]
           }
@@ -14457,7 +14457,7 @@
                 "requires": [
                   "orre_under_colosseum_won",
                   "not:orre_justy_col",
-                  "not:xd_bonsly_found"
+                  "not:xd_exol_beaten"
                 ],
                 "flag": "orre_justy_col",
                 "lines": [
@@ -14535,7 +14535,7 @@
               {
                 "requires": [
                   "not:orre_under_colosseum_won",
-                  "not:xd_bonsly_found"
+                  "not:xd_exol_beaten"
                 ],
                 "lines": [
                   "Justy: I'm Justy, the Pre Gym's leader. Come back once you've won the Under Colosseum, and I'll battle you myself."
@@ -14548,7 +14548,7 @@
           },
           "condition": {
             "any": [
-              "not:xd_bonsly_found",
+              "not:xd_exol_beaten",
               "orre_snattle_phenac"
             ]
           }
@@ -14618,7 +14618,7 @@
             }
           },
           "condition": [
-            "xd_bonsly_found",
+            "xd_exol_beaten",
             "not:orre_snattle_phenac"
           ],
           "flag_condition": "not xd_fostin"
@@ -22696,10 +22696,10 @@
     {"id": "orre_m10d", "type": "MAIN", "title": "The Gateon Lighthouse", "description": "Gateon's bridges are down again. Jasmine keeps a Gym in the lighthouse on the islands: get past its three guardians, climb to the roof and win the Gateon Badge!", "condition": {"required_region": "ORRE", "flag": "xd_gateon_bridges", "region_badges_less": 5}, "region": "ORRE", "completed_badge": "GATEON", "target": "GATEON_PORT", "reward": "Gateon Badge"},
     {"id": "orre_m11", "type": "MAIN", "title": "Lovrina's Cipher Lab", "description": "Datan traced Cipher's car to the old Shadow Pokemon Lab, reopened as the Cipher Lab. Rescue Professor Krane and beat Cipher Admin Lovrina!", "condition": {"required_region": "ORRE", "flag": "xd_machine_part_given", "flag_not": "xd_lovrina_beaten"}, "region": "ORRE", "completed_flag": "xd_lovrina_beaten", "target": "XD_CIPHER_LAB"},
     {"id": "orre_m11b", "type": "MAIN", "title": "Data for Nett", "description": "Professor Krane is home. Take his research data to Nett at the ONBS building in Pyrite Town.", "condition": {"required_region": "ORRE", "flag": "xd_lovrina_beaten", "flag_not": ["xd_nett_rom", "xd_exol_beaten"]}, "region": "ORRE", "completed_flag": "xd_nett_rom", "target": "PYRITE_TOWN"},
-    {"id": "orre_m11c", "type": "MAIN", "title": "Duking's Poke Spots", "description": "Duking has found Poke Spots, where wild Pokemon appear. Meet him at the Rock Poke Spot off the Desert Trail, then the Oasis and the Cave.", "condition": {"required_region": "ORRE", "flag": "xd_nett_rom", "flag_not": ["xd_miror_cave", "xd_exol_beaten"]}, "region": "ORRE", "completed_flag": "xd_miror_cave", "target": "ORRE_POKE_SPOTS"},
-    {"id": "orre_m12", "type": "MAIN", "title": "The ONBS Building", "description": "Cipher took over Orre's TV station in Pyrite Town! Battle Commander Exol and get it back.", "condition": {"required_region": "ORRE", "flag": "xd_miror_cave", "flag_not": "xd_exol_beaten"}, "region": "ORRE", "completed_flag": "xd_exol_beaten", "target": "XD_ONBS"},
-    {"id": "orre_m12b", "type": "MAIN", "title": "The S.S. Libra", "description": "Cipher took the S.S. Libra, and a little girl's Bonsly was aboard. The ship lies in the deep sand: Gateon's Parts Shop may know how to cross it.", "condition": {"required_region": "ORRE", "flag": "xd_exol_beaten", "flag_not": ["xd_bonsly_found", "orre_snattle_phenac"]}, "region": "ORRE", "completed_flag": "xd_bonsly_found", "target": "SS_LIBRA"},
-    {"id": "orre_m13", "type": "MAIN", "title": "Cipher's Phenac", "description": "Cipher is wearing Phenac's faces. Get the mayor's secretary some music, unmask the fake Justys, clear the Pre Gym, then face Cipher Admin Snattle at Phenac Stadium.", "condition": {"required_region": "ORRE", "flag": ["xd_exol_beaten", "xd_bonsly_found"], "flag_not": "orre_snattle_phenac"}, "region": "ORRE", "completed_flag": "orre_snattle_phenac", "target": "PHENAC_CITY"},
+    {"id": "orre_m11c", "type": "SIDE", "title": "Duking's Poke Spots", "description": "Duking has found Poke Spots, where wild Pokemon appear. Meet him at the Rock Poke Spot off the Desert Trail, then the Oasis and the Cave - Miror B. was seen out there.", "condition": {"required_region": "ORRE", "flag": "xd_nett_rom", "flag_not": ["xd_miror_cave"]}, "region": "ORRE", "completed_flag": "xd_miror_cave", "target": "ORRE_POKE_SPOTS"},
+    {"id": "orre_m12", "type": "MAIN", "title": "The ONBS Building", "description": "Nett's data shows it: Cipher took over Orre's TV station, the ONBS building in Pyrite Town! Battle Commander Exol and get it back.", "condition": {"required_region": "ORRE", "flag": "xd_nett_rom", "flag_not": "xd_exol_beaten"}, "region": "ORRE", "completed_flag": "xd_exol_beaten", "target": "XD_ONBS"},
+    {"id": "orre_m12b", "type": "SIDE", "title": "The S.S. Libra", "description": "Cipher took the S.S. Libra, and a little girl's Bonsly was aboard. The ship lies in the deep sand: Gateon's Parts Shop may know how to cross it.", "condition": {"required_region": "ORRE", "flag": "xd_exol_beaten", "flag_not": ["xd_bonsly_found"]}, "region": "ORRE", "completed_flag": "xd_bonsly_found", "target": "SS_LIBRA"},
+    {"id": "orre_m13", "type": "MAIN", "title": "Cipher's Phenac", "description": "Cipher is wearing Phenac's faces. Get the mayor's secretary some music, unmask the fake Justys, clear the Pre Gym, then face Cipher Admin Snattle at Phenac Stadium.", "condition": {"required_region": "ORRE", "flag": "xd_exol_beaten", "flag_not": "orre_snattle_phenac"}, "region": "ORRE", "completed_flag": "orre_snattle_phenac", "target": "PHENAC_CITY"},
     {"id": "orre_m13b", "type": "MAIN", "title": "Free Phenac's People", "description": "Snattle dropped the Pre Gym's Elevator Key. Free the townsfolk Cipher locked in its basement.", "condition": {"required_region": "ORRE", "flag": "orre_snattle_phenac", "flag_not": ["xd_pregym_freed", "beat_gonzap"]}, "region": "ORRE", "completed_flag": "xd_pregym_freed", "target": "PRESTIGE_PRECEPT_CENTER"},
     {"id": "orre_m14", "type": "MAIN", "title": "Phenac Stadium", "description": "Phenac Stadium's tournament is open to snaggers: four rounds, then the Gym Leader, Misty. Win the Phenac Badge!", "condition": {"required_region": "ORRE", "flag": "got_snag_machine", "region_badges_less": 1}, "region": "ORRE", "completed_badge": "PHENAC", "target": "PHENAC_CITY", "reward": "Phenac Badge"},
     {"id": "orre_m14b", "type": "MAIN", "title": "A Runaway at the Outskirt Stand", "description": "Someone who fled Cipher is waiting at the Outskirt Stand. Miror B. may be about, too.", "condition": {"required_region": "ORRE", "flag_not": ["xd_hordel", "beat_gonzap"], "flag": "xd_pregym_freed"}, "region": "ORRE", "completed_flag": "xd_hordel", "target": "OUTSKIRT_STAND"},
@@ -22720,8 +22720,8 @@
     {"id": "orre_s2a", "type": "SIDE", "title": "Mt. Battle's 100", "description": "Mt. Battle, near Agate Village: ten areas, ten trainers in each. Climb them all and beat Mt. Battle Master Battlus! Rest at the top of each area to start from the next one.", "condition": {"required_region": "ORRE", "flag": "orre_time_flute", "flag_not": "mt_battle_battlus"}, "region": "ORRE", "completed_flag": "mt_battle_battlus", "target": "MT_BATTLE", "reward": "Battle practice"},
     {"id": "orre_s3", "type": "SIDE", "title": "The Wishing Star", "description": "Cipher's files mention a wishing star near Agate's Relic Stone. Look in the Relic Forest.", "condition": {"required_region": "ORRE", "flag": "orre_part2", "flag_not": "orre_jirachi_caught"}, "region": "ORRE", "completed_flag": "orre_jirachi_caught", "target": "RELIC_FOREST", "reward": "Jirachi"},
     {"id": "orre_s4", "type": "SIDE", "title": "Ho-Oh's Blessing", "description": "Purify every Shadow Pokémon at the Relic Stone. Then a rainbow Pokémon may appear in the Relic Forest.", "condition": {"required_region": "ORRE", "flag": "orre_all_purified", "flag_not": "orre_ho_oh_caught"}, "region": "ORRE", "completed_flag": "orre_ho_oh_caught", "target": "RELIC_FOREST", "reward": "Ho-Oh"},
-    {"id": "orre_s5", "type": "SIDE", "title": "Gale of Darkness", "description": "Cipher is back under Grand Master Greevil, on Citadark Isle. Professor Krane has something for you first - visit the HQ Lab, then take the Robo Kyogre from Gateon Port.", "condition": {"required_region": "ORRE", "flag": "xd_gorigan_beaten", "flag_not": ["xd_greevil_beaten", "xd_master_ball"]}, "region": "ORRE", "completed_flag": "xd_master_ball", "target": "POKEMON_HQ_LAB", "reward": "Master Ball"},
-    {"id": "orre_s5b", "type": "SIDE", "title": "Citadark Isle", "description": "Climb Greevil's island: the fortress, the volcano's platforms, the hook hall, the Dome. XD001 waits at the top.", "condition": {"required_region": "ORRE", "flag": "xd_master_ball", "flag_not": "xd_greevil_beaten"}, "region": "ORRE", "completed_flag": "xd_greevil_beaten", "target": "XD_CITADARK_ISLE", "reward": "Every Shadow Pokemon"},
+    {"id": "orre_s5", "type": "MAIN", "title": "Gale of Darkness", "description": "Cipher is back under Grand Master Greevil, on Citadark Isle. Professor Krane has something for you first - visit the HQ Lab, then take the Robo Kyogre from Gateon Port.", "condition": {"required_region": "ORRE", "flag": "xd_gorigan_beaten", "flag_not": ["xd_greevil_beaten", "xd_master_ball"]}, "region": "ORRE", "completed_flag": "xd_master_ball", "target": "POKEMON_HQ_LAB", "reward": "Master Ball"},
+    {"id": "orre_s5b", "type": "MAIN", "title": "Citadark Isle", "description": "Climb Greevil's island: the fortress, the volcano's platforms, the hook hall, the Dome. XD001 waits at the top.", "condition": {"required_region": "ORRE", "flag": "xd_master_ball", "flag_not": "xd_greevil_beaten"}, "region": "ORRE", "completed_flag": "xd_greevil_beaten", "target": "XD_CITADARK_ISLE", "reward": "Every Shadow Pokemon"},
     {"id": "orre_s6", "type": "SIDE", "title": "Eagun's Challenge", "description": "Eagun wants a word with you outside the Pokemon HQ Lab.", "condition": {"required_region": "ORRE", "flag": "xd_greevil_beaten", "flag_not": "xd_eagun_lab"}, "region": "ORRE", "completed_flag": "xd_eagun_lab", "target": "POKEMON_HQ_LAB"},
     {"id": "orre_s6b", "type": "SIDE", "title": "The Orre Colosseum", "description": "Seven rounds of four battles at the Orre Colosseum, healed between battles. Each round's winner gets a TM.", "condition": {"required_region": "ORRE", "flag": "xd_eagun_lab", "flag_not": "xd_colo_all"}, "region": "ORRE", "completed_flag": "xd_colo_all", "target": "ORRE_COLOSSEUM", "reward": "TM Dragon Claw"},
     {"id": "orre_s6c", "type": "SIDE", "title": "XD001's Heart", "description": "XD001's heart is shut tight. Fill all nine sets of the HQ Lab's Purify Chamber at Max Tempo - four in each ring, each strong against the next - then put XD001 in.", "condition": {"required_region": "ORRE", "flag": "snagged_shadow_lugia", "flag_not": "xd_lugia_purified"}, "region": "ORRE", "completed_flag": "xd_lugia_purified", "target": "POKEMON_HQ_LAB"},
