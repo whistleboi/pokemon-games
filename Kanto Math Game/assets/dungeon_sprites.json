@@ -76,6 +76,117 @@
     ]
   },
   "figures": {
+    "ORRE_BATTLE_FRONTIER:Ace Trainer": {
+      "sheet": "orre_trainer_ace_trainer.png"
+    },
+    "ORRE_BATTLE_FRONTIER:Cooltrainer": {
+      "sheet": "orre_trainer_cooltrainer_f.png"
+    },
+    "ORRE_BATTLE_FRONTIER:NURSE (FRONTIER)": {
+      "sheet": "orre_npc_16.png"
+    },
+    "ORRE_BATTLE_FRONTIER:BP EXCHANGE": {
+      "sheet": "orre_npc_19.png"
+    },
+    "ORRE_BATTLE_FRONTIER:BP EXCHANGE (TMS)": {
+      "sheet": "orre_npc_19.png"
+    },
+    "ORRE_BATTLE_FRONTIER:NURSE (TOWER)": {
+      "sheet": "orre_npc_16.png"
+    },
+    "ORRE_BATTLE_FRONTIER:ENDLESS CHALLENGE": {
+      "sheet": "orre_npc_23.png"
+    },
+    "ORRE_BATTLE_FRONTIER:2-ON-2 CHALLENGE": {
+      "sheet": "orre_npc_23.png"
+    },
+    "ORRE_BATTLE_FRONTIER:LITTLE CUP CHALLENGE": {
+      "sheet": "orre_npc_23.png"
+    },
+    "ORRE_BATTLE_FRONTIER:LITTLE CUP SELLER": {
+      "sheet": "orre_npc_15.png"
+    },
+    "ORRE_BATTLE_FRONTIER:MOVE TUTOR (TOWER)": {
+      "sheet": "orre_npc_06.png"
+    },
+    "ORRE_BATTLE_FRONTIER:RECORD BOARD": {
+      "sheet": "orre_signs.png"
+    },
+    "LAKE_ACUITY:Confront Jupiter at the Lake": {"sheet": "pt_gkanbu3.png"},
+    "ORRE_NEW_ISLAND:BLASTOISE CLONE": {"pokemon": 9},
+    "ORRE_NEW_ISLAND:CHARIZARD CLONE": {"pokemon": 6},
+    "ORRE_NEW_ISLAND:VENUSAUR CLONE": {"pokemon": 3},
+    "REALGAM_TOWER:Mr. Fuji": {
+      "sheet": "orre_npc_18.png"
+    },
+    "REALGAM_TOWER:Sky Pillar": {
+      "sheet": "orre_pokemon_abra_line.png"
+    },
+    "REALGAM_TOWER:Birth Island": {
+      "sheet": "orre_pokemon_abra_line.png"
+    },
+    "REALGAM_TOWER:New Island": {
+      "sheet": "orre_pokemon_abra_line.png"
+    },
+    "REALGAM_TOWER:Lake of Rage": {
+      "sheet": "orre_pokemon_abra_line.png"
+    },
+    "REALGAM_TOWER:POKE FLUTE": {"item": "POKE_FLUTE"},
+    "ORRE_SKY_PILLAR:Back to Mr. Fuji's": {
+      "sheet": "orre_pokemon_abra_line.png"
+    },
+    "ORRE_SKY_PILLAR:RAYQUAZA": {"pokemon": 384},
+    "ORRE_BIRTH_ISLAND:Back to Mr. Fuji's": {
+      "sheet": "orre_pokemon_abra_line.png"
+    },
+    "ORRE_BIRTH_ISLAND:DEOXYS": {"pokemon": 386},
+    "ORRE_NEW_ISLAND:Back to Mr. Fuji's": {
+      "sheet": "orre_pokemon_abra_line.png"
+    },
+    "ORRE_NEW_ISLAND:MEWTWO": {
+      "sheet": "orre_pokemon_battle_armor_mewtwo.png"
+    },
+    "ORRE_LAKE_OF_RAGE:Back to Mr. Fuji's": {
+      "sheet": "orre_pokemon_abra_line.png"
+    },
+    "ORRE_LAKE_OF_RAGE:RED GYARADOS": {"pokemon": 130},
+    "AGATE_VILLAGE:GYM LEADERS BLAINE & ERIKA": {"sheet": "orre_trainer_leader_erika.png"},
+    "PYRITE_TOWN:GYM LEADER DUKING": {"sheet": "orre_npc_duking.png"},
+    "PHENAC_CITY:GYM LEADER MISTY": {"sheet": "orre_trainer_leader_misty.png"},
+    "XD_CITADARK_ISLE:GYM LEADER DRAKE (REMATCH)": {
+      "sheet": "orre_trainer_leader_drake.png"
+    },
+    "AGATE_VILLAGE:Marine Cave": {
+      "sheet": "orre_pokemon_abra_line.png"
+    },
+    "MARINE_CAVE:Back to Agate": {
+      "sheet": "orre_pokemon_abra_line.png"
+    },
+    "MARINE_CAVE:TEAM AQUA LEADER ARCHIE": {
+      "sheet": "orre_trainer_teamaqua_boss.png"
+    },
+    "MARINE_CAVE:KYOGRE": {"pokemon": 382},
+    "CONSTRUCTION_LOT:HEALING MACHINE (TOWER)": {
+      "sheet": "orre_healing_balls_3.png"
+    },
+    "CONSTRUCTION_LOT:TEAM ROCKET JESSIE & JAMES": {
+      "sheet": "orre_trainer_jessie.png"
+    },
+    "CONSTRUCTION_LOT:TEAM LEADERS ARCHIE & MAXIE": {
+      "sheet": "orre_trainer_teamaqua_boss.png"
+    },
+    "CONSTRUCTION_LOT:BOSS GIOVANNI": {
+      "sheet": "orre_trainer_rocketboss.png"
+    },
+    "CONSTRUCTION_LOT:ARMOURED MEWTWO": {
+      "sheet": "orre_pokemon_battle_armor_mewtwo.png"
+    },
+    "XD_CITADARK_ISLE:FULL RESTORES (TERRA)": {"item": "FULL_RESTORE"},
+    "XD_CITADARK_ISLE:ELIXIRS (TERRA)": {"item": "ELIXIR"},
+    "XD_CITADARK_ISLE:TEAM MAGMA LEADER MAXIE": {
+      "sheet": "orre_trainer_team_mahma_boss.png"
+    },
+    "XD_CITADARK_ISLE:GROUDON": {"pokemon": 383},
     "ANVILLE_TOWN:Boy": {"sheet": "b2_c29.png"},
     "ANVILLE_TOWN:Boy by the fence": {"sheet": "b2_c28.png"},
     "ANVILLE_TOWN:Collector": {"sheet": "b2_c27.png"},
@@ -3178,18 +3289,6 @@
     },
     "SINNOH_BATTLE_FRONTIER:Angler": {
       "sheet": "hg_fishing.png"
-    },
-    "ASPERTIA_CITY:Pokémon Center": {
-      "sheet": "b2_c78.png"
-    },
-    "CASTELIA_CITY:Pokémon Center": {
-      "sheet": "b2_c78.png"
-    },
-    "FLOCCESY_TOWN:Pokémon Center": {
-      "sheet": "b2_c78.png"
-    },
-    "VIRBANK_CITY:Pokémon Center": {
-      "sheet": "b2_c78.png"
     },
     "ORRE_DESERT:SNAG SHADOW POKEMON": {
       "sheet": "orre_trainer_cipher_grunt.png"

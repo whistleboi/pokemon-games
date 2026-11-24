@@ -1447,5 +1447,34 @@ check(_may and _bar and _wall and _climb and len(_mp) == 1,
 story.story_flags.clear(); story.story_flags.update(_sv); story.badges["SINNOH"] = _bv
 story.inventory.clear(); story.inventory.update(_iv)
 
+# ---- S5 (11-24): Lake Acuity as Platinum's - Barry has just lost to Jupiter as you arrive; she leaves for the Veilstone HQ, he swears to get stronger
+_sv, _bv = dict(story.story_flags), list(story.badges.get("SINNOH", []))
+story.badges["SINNOH"] = ["COAL", "FOREST", "COBBLE", "FEN", "RELIC", "MINE", "ICICLE"]
+story.story_flags.pop("galactic_lake_acuity_cleared", None)
+r = route("LAKE_ACUITY", "ACUITY_LAKEFRONT")
+for _q in range(1500):
+    if getattr(r, "dialogue_box", None) and r.dialogue_box.visible:
+        r.dialogue_box.advance()
+    frames(r)
+    if story.story_flags.get("galactic_lake_acuity_cleared"):
+        break
+_done = bool(story.story_flags.get("galactic_lake_acuity_cleared"))
+r = route("LAKE_ACUITY", "ACUITY_LAKEFRONT"); frames(r, 5)
+_jgone = not any(m.kind == "figure" and str((m.payload or {}).get("text")) == "Confront Jupiter at the Lake" for m in r.run.floor.movers)
+check(_done and _jgone, f"Lake Acuity: Platinum's scene plays as you arrive with the Icicle Badge (Barry beaten, Jupiter off to Veilstone), then she's gone ({_done}, {_jgone})")
+story.story_flags.clear(); story.story_flags.update(_sv); story.badges["SINNOH"] = _bv
+
+# ---- 11-24 (hub cleanup): Veilstone's Game Corner machines are played by walking up to them, as Goldenrod's
+_iv = dict(story.inventory)
+t = town("VEILSTONE_CITY", None); frames(t, 3)
+t._go("game_corner", "OUT:34,47"); frames(t, 5); _drive(t, 200, lambda: not t._busy())
+_mach = [(x, y) for x in (7, 8, 12, 13) for y in range(4, 9) if t._game_machine((x, y))]
+story.inventory["COIN_CASE"] = 1
+t.player = t.anim_from = (6, 6); t.anim = 0; t.walk_goal = None; t.step(1, 0)
+frames(t, 3)
+_play = "Voltorb" in type(g.current_state).__name__
+check(len(_mach) == 20 and _play, f"Veilstone Game Corner: its 20 slot machine tiles are machines you walk up to and play ({len(_mach)}, {_play}, {type(g.current_state).__name__})")
+story.inventory.clear(); story.inventory.update(_iv)
+
 g.walk_towns = False
 print(f"##### {fails} failures")

@@ -309,6 +309,16 @@
             }
           },
           "condition": "xd_st_egrog"
+        },
+        {
+          "text": "GYM LEADER MISTY",
+          "action": "EVENT",
+          "color": "GOLD",
+          "condition": "beat_orre_champion",
+          "event": {
+            "world": "orre_gym",
+            "rematch": true
+          }
         }
       ],
       "travel_options": [
@@ -510,6 +520,61 @@
             "player_lost": [
               "Misty: Too wet behind the ears! Come back when you've dried off."
             ]
+          },
+          "orre_rematch": {
+            "team": [
+              351,
+              272,
+              260,
+              145,
+              245,
+              121
+            ],
+            "levels": [
+              60,
+              60,
+              61,
+              61,
+              62,
+              62
+            ],
+            "team_moves": [
+              [
+                "FIRE-BLAST",
+                "BLIZZARD",
+                "HYDRO-PUMP",
+                "WEATHER-BALL"
+              ],
+              [
+                "FAKE-OUT",
+                "RAIN-DANCE",
+                "BUBBLE-BEAM"
+              ],
+              [
+                "ENDEAVOR",
+                "SCREECH",
+                "MUDDY-WATER",
+                "AMNESIA"
+              ],
+              [
+                "DETECT",
+                "THUNDER",
+                "RAIN-DANCE",
+                "DRILL-PECK"
+              ],
+              [
+                "MIRROR-COAT",
+                "SURF",
+                "EXTRASENSORY",
+                "CRUNCH"
+              ],
+              [
+                "COSMIC-POWER",
+                "RAPID-SPIN",
+                "SWIFT",
+                "LIGHT-SCREEN"
+              ]
+            ]
           }
         },
         "requirements": {
@@ -619,6 +684,16 @@
               "Clear them out and Agate Village will want to meet you."
             ]
           }
+        },
+        {
+          "text": "GYM LEADER DUKING",
+          "action": "EVENT",
+          "color": "GOLD",
+          "condition": "beat_orre_champion",
+          "event": {
+            "world": "orre_gym",
+            "rematch": true
+          }
         }
       ],
       "travel_options": [
@@ -683,6 +758,12 @@
               "met_agate_elder"
             ]
           }
+        },
+        {
+          "text": "Battle Frontier",
+          "door": "cycle",
+          "target_area": "ORRE_BATTLE_FRONTIER",
+          "condition": "beat_orre_champion"
         }
       ],
       "next_area": "PHENAC_CITY",
@@ -853,6 +934,62 @@
             "player_lost": [
               "Duking: Not bad, kid. Train up and come see me again."
             ]
+          },
+          "orre_rematch": {
+            "team": [
+              68,
+              286,
+              68,
+              214,
+              68,
+              308
+            ],
+            "levels": [
+              61,
+              61,
+              62,
+              62,
+              63,
+              63
+            ],
+            "team_moves": [
+              [
+                "CROSS-CHOP",
+                "DYNAMIC-PUNCH",
+                "SEISMIC-TOSS",
+                "BULK-UP"
+              ],
+              [
+                "FOCUS-PUNCH",
+                "DYNAMIC-PUNCH",
+                "BRICK-BREAK",
+                "COUNTER"
+              ],
+              [
+                "CROSS-CHOP",
+                "DYNAMIC-PUNCH",
+                "SEISMIC-TOSS",
+                "BULK-UP"
+              ],
+              [
+                "MEGAHORN",
+                "SWORDS-DANCE",
+                "THRASH",
+                "PIN-MISSILE"
+              ],
+              [
+                "CROSS-CHOP",
+                "DYNAMIC-PUNCH",
+                "SEISMIC-TOSS",
+                "BULK-UP"
+              ],
+              [
+                "COUNTER",
+                "RECOVER",
+                "PSYCH-UP",
+                "HIGH-JUMP-KICK"
+              ]
+            ]
           }
         },
         "requirements": {
@@ -877,15 +1014,288 @@
           "color": "GOLD",
           "flag_condition": "not orre_got_gear",
           "condition": "orre_power_out",
-          "event": {"flag": "orre_got_gear", "gift_item": {"GEAR": 1},
-                    "lines": ["Silva is gone, but something heavy is wedged against the fence...", "You found the GEAR!",
-                              "Rui: This must be the windmill's missing gear! Let's take it back to Pyrite."]}
+          "event": {
+            "flag": "orre_got_gear",
+            "gift_item": {
+              "GEAR": 1
+            },
+            "lines": [
+              "Silva is gone, but something heavy is wedged against the fence...",
+              "You found the GEAR!",
+              "Rui: This must be the windmill's missing gear! Let's take it back to Pyrite."
+            ]
+          }
+        },
+        {
+          "text": "HEALING MACHINE (TOWER)",
+          "action": "EVENT",
+          "color": "GOLD",
+          "condition": "beat_orre_champion",
+          "event": {
+            "lines": [
+              "Team Rocket's healing machine. Your Pokemon are fully healed!"
+            ],
+            "heal": true
+          }
+        },
+        {
+          "text": "TEAM ROCKET JESSIE & JAMES",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_rocket_jj",
+          "event": {
+            "flag": "orre_rocket_jj",
+            "lines": [
+              "Jessie: Prepare for trouble - in Orre, of all places!",
+              "James: Make it double! We came here for a quiet life!",
+              "Meowth: Dat's right! ...But since ya barged in, it's battle time!"
+            ],
+            "battle": {
+              "name": "Team Rocket Jessie & James",
+              "class": "ROCKET",
+              "sprite": "orre_jessie_james.png",
+              "team": [
+                24,
+                110,
+                71,
+                52
+              ],
+              "levels": [
+                57,
+                57,
+                58,
+                58
+              ],
+              "team_moves": [
+                [
+                  "HAZE",
+                  "SLUDGE-BOMB",
+                  "SWALLOW",
+                  "SPIT-UP"
+                ],
+                [
+                  "MEMENTO",
+                  "EXPLOSION",
+                  "TOXIC",
+                  "SLUDGE-BOMB"
+                ],
+                [
+                  "LEAF-BLADE",
+                  "SWEET-SCENT",
+                  "SLEEP-POWDER",
+                  "RAZOR-LEAF"
+                ],
+                [
+                  "SLASH",
+                  "SCREECH",
+                  "FURY-SWIPES",
+                  "TAUNT"
+                ]
+              ],
+              "double": true,
+              "rewards": {
+                "balls": 3
+              },
+              "is_boss_battle": true,
+              "dialogue": {
+                "player_won": [
+                  "Jessie & James: We're blasting off agaaain...! The boss is upstairs, twerp!"
+                ]
+              }
+            }
+          },
+          "condition": "beat_orre_champion"
+        },
+        {
+          "text": "TEAM LEADERS ARCHIE & MAXIE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_rocket_alliance",
+          "event": {
+            "flag": "orre_rocket_alliance",
+            "lines": [
+              "Archie: Well, well. Orre's new Champion. Team Aqua and Team Magma work with Giovanni now.",
+              "Maxie: Together we'll make Orre's land and sea ours. You won't stand in the way!"
+            ],
+            "battle": {
+              "name": "Team Leaders Archie & Maxie",
+              "class": "TEAM_LEADER",
+              "sprite": "orre_archie.png",
+              "team": [
+                319,
+                130,
+                365,
+                323,
+                229,
+                6
+              ],
+              "levels": [
+                59,
+                60,
+                61,
+                59,
+                60,
+                61
+              ],
+              "team_moves": [
+                [
+                  "TAKE-DOWN",
+                  "AGILITY",
+                  "CRUNCH",
+                  "SWAGGER"
+                ],
+                [
+                  "HYPER-BEAM",
+                  "THRASH",
+                  "HYDRO-PUMP",
+                  "DRAGON-DANCE"
+                ],
+                [
+                  "BLIZZARD",
+                  "SURF",
+                  "BODY-SLAM",
+                  "ENCORE"
+                ],
+                [
+                  "EARTHQUAKE",
+                  "YAWN",
+                  "TAKE-DOWN",
+                  "CURSE"
+                ],
+                [
+                  "CRUNCH",
+                  "FLAMETHROWER",
+                  "TORMENT",
+                  "BEAT-UP"
+                ],
+                [
+                  "FIRE-SPIN",
+                  "SCARY-FACE",
+                  "FLAMETHROWER",
+                  "SLASH"
+                ]
+              ],
+              "double": true,
+              "rewards": {
+                "balls": 3
+              },
+              "is_boss_battle": true,
+              "dialogue": {
+                "player_won": [
+                  "Maxie: Hmph... Archie, the plan. Fall back to the caves!"
+                ]
+              }
+            }
+          },
+          "condition": "orre_rocket_jj"
+        },
+        {
+          "text": "BOSS GIOVANNI",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_rocket_done",
+          "event": {
+            "flag": "orre_rocket_done",
+            "lines": [
+              "Giovanni: You must be out of your mind to chase us here.",
+              "Giovanni: Orre's Shadow Pokemon gave me an idea. My ultimate Pokemon, in armour... Let me show you!"
+            ],
+            "battle": {
+              "name": "Boss Giovanni",
+              "class": "ROCKET_BOSS",
+              "sprite": "orre_giovanni.png",
+              "team": [
+                115,
+                232,
+                351,
+                344,
+                142,
+                34
+              ],
+              "levels": [
+                61,
+                61,
+                62,
+                62,
+                63,
+                63
+              ],
+              "team_moves": [
+                [
+                  "OUTRAGE",
+                  "REVERSAL",
+                  "ENDURE",
+                  "CRUNCH"
+                ],
+                [
+                  "EARTHQUAKE",
+                  "SCARY-FACE",
+                  "SLAM",
+                  "KNOCK-OFF"
+                ],
+                [
+                  "FIRE-BLAST",
+                  "BLIZZARD",
+                  "HYDRO-PUMP",
+                  "WEATHER-BALL"
+                ],
+                [
+                  "EXPLOSION",
+                  "SANDSTORM",
+                  "SELF-DESTRUCT",
+                  "EXTRASENSORY"
+                ],
+                [
+                  "HYPER-BEAM",
+                  "AGILITY",
+                  "TAKE-DOWN",
+                  "CRUNCH"
+                ],
+                [
+                  "HELPING-HAND",
+                  "FLATTER",
+                  "MEGAHORN",
+                  "FOCUS-ENERGY"
+                ]
+              ],
+              "double": true,
+              "rewards": {
+                "balls": 3
+              },
+              "is_boss_battle": true,
+              "dialogue": {
+                "player_won": [
+                  "Giovanni: ...Impossible. Fine - Team Rocket won't trouble Orre again."
+                ]
+              }
+            }
+          },
+          "condition": "orre_rocket_alliance"
+        },
+        {
+          "text": "ARMOURED MEWTWO",
+          "action": "EVENT",
+          "color": "GOLD",
+          "condition": "orre_rocket_done",
+          "flag_condition": "not orre_mewtwo_fled",
+          "event": {
+            "flag": "orre_mewtwo_fled",
+            "lines": [
+              "Mewtwo: You humans... using Pokemon as tools for battle...",
+              "Mewtwo: I have had enough of this.",
+              "Mewtwo tears free of its armour and teleports away!",
+              "Giovanni: That can't be! My ultimate Pokemon...!",
+              "Archie and Maxie are gone too. Rumour says Maxie went under Citadark, and Archie to a sea cave near Agate."
+            ]
+          }
         },
         {
           "text": "Pyrite Town",
           "action": "EXIT",
           "target_area": "PYRITE_TOWN",
-          "condition": ["can_exit"],
+          "condition": [
+            "can_exit"
+          ],
           "color": "RED"
         }
       ],
@@ -2854,6 +3264,62 @@
             "player_lost": [
               "Blaine: Burned out already? Come back with a hotter team!"
             ]
+          },
+          "orre_rematch": {
+            "team": [
+              103,
+              146,
+              3,
+              244,
+              351,
+              250
+            ],
+            "levels": [
+              62,
+              62,
+              63,
+              63,
+              64,
+              64
+            ],
+            "team_moves": [
+              [
+                "BULLET-SEED",
+                "EXTRASENSORY",
+                "UPROAR",
+                "SYNTHESIS"
+              ],
+              [
+                "ENDURE",
+                "SUNNY-DAY",
+                "HEAT-WAVE",
+                "ANCIENT-POWER"
+              ],
+              [
+                "SOLAR-BEAM",
+                "SYNTHESIS",
+                "SWEET-SCENT",
+                "TAKE-DOWN"
+              ],
+              [
+                "SWAGGER",
+                "EXTRASENSORY",
+                "CRUNCH",
+                "SCARY-FACE"
+              ],
+              [
+                "FIRE-BLAST",
+                "BLIZZARD",
+                "HYDRO-PUMP",
+                "WEATHER-BALL"
+              ],
+              [
+                "SUNNY-DAY",
+                "RECOVER",
+                "EXTRASENSORY",
+                "CALM-MIND"
+              ]
+            ]
           }
         },
         "requirements": {
@@ -2918,6 +3384,16 @@
               "orre_dakim_mt_battle"
             ]
           }
+        },
+        {
+          "text": "GYM LEADERS BLAINE & ERIKA",
+          "action": "EVENT",
+          "color": "GOLD",
+          "condition": "beat_orre_champion",
+          "event": {
+            "world": "orre_gym",
+            "rematch": true
+          }
         }
       ],
       "travel_options": [
@@ -2953,9 +3429,528 @@
               "orre_dakim_mt_battle"
             ]
           }
+        },
+        {
+          "text": "Marine Cave",
+          "door": "alakazam",
+          "target_area": "MARINE_CAVE",
+          "condition": "orre_rocket_done"
         }
       ],
       "next_area": "PYRITE_CAVE"
+    },
+    "MARINE_CAVE": {
+      "area_type": "dungeon",
+      "route_name": "Marine Cave",
+      "region": "ORRE",
+      "level": 58,
+      "battle_type": "field",
+      "min_rounds": 0,
+      "trainer_pool": [
+        {
+          "name": "Team Aqua Grunt",
+          "class": "AQUA_GRUNT",
+          "sprite": "orre_aqua_grunt_m.png",
+          "team": [
+            319,
+            262,
+            368,
+            367
+          ],
+          "levels": [
+            57,
+            57,
+            58,
+            58
+          ],
+          "team_moves": [
+            [
+              "TAKE-DOWN",
+              "AGILITY",
+              "CRUNCH",
+              "SWAGGER"
+            ],
+            [
+              "TAKE-DOWN",
+              "YAWN",
+              "TAUNT",
+              "SCARY-FACE"
+            ],
+            [
+              "HYDRO-PUMP",
+              "PSYCHIC",
+              "BATON-PASS",
+              "DIVE"
+            ],
+            [
+              "HYDRO-PUMP",
+              "CRUNCH",
+              "BATON-PASS",
+              "DIVE"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 3
+          }
+        },
+        {
+          "name": "Team Aqua Grunt Mira",
+          "class": "AQUA_GRUNT",
+          "sprite": "orre_aqua_grunt_f.png",
+          "team": [
+            73,
+            262,
+            186,
+            342
+          ],
+          "levels": [
+            57,
+            57,
+            58,
+            58
+          ],
+          "team_moves": [
+            [
+              "SURF",
+              "ACID-ARMOR",
+              "BUBBLE-BEAM",
+              "SCREECH"
+            ],
+            [
+              "TAKE-DOWN",
+              "YAWN",
+              "TAUNT",
+              "SCARY-FACE"
+            ],
+            [
+              "BOUNCE",
+              "RAIN-DANCE",
+              "BELLY-DRUM",
+              "HYDRO-PUMP"
+            ],
+            [
+              "ENDEAVOR",
+              "CRABHAMMER",
+              "CRUNCH",
+              "SWORDS-DANCE"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 3
+          }
+        }
+      ],
+      "route_menu": [
+        {
+          "text": "TEAM AQUA LEADER ARCHIE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_archie_marine",
+          "event": {
+            "flag": "orre_archie_marine",
+            "lines": [
+              "Archie: You are too late! Kyogre's heart will be ours - the sea's ultimate weapon!"
+            ],
+            "battle": {
+              "name": "Team Aqua Leader Archie",
+              "class": "TEAM_LEADER",
+              "sprite": "orre_archie.png",
+              "team": [
+                130,
+                262,
+                195,
+                319,
+                365,
+                171
+              ],
+              "levels": [
+                61,
+                62,
+                62,
+                63,
+                64,
+                65
+              ],
+              "team_moves": [
+                [
+                  "HYPER-BEAM",
+                  "THRASH",
+                  "HYDRO-PUMP",
+                  "DRAGON-DANCE"
+                ],
+                [
+                  "TAKE-DOWN",
+                  "YAWN",
+                  "TAUNT",
+                  "SCARY-FACE"
+                ],
+                [
+                  "EARTHQUAKE",
+                  "TOXIC",
+                  "AMNESIA",
+                  "MUDDY-WATER"
+                ],
+                [
+                  "TAKE-DOWN",
+                  "AGILITY",
+                  "CRUNCH",
+                  "SWAGGER"
+                ],
+                [
+                  "HAIL",
+                  "BLIZZARD",
+                  "SURF",
+                  "BODY-SLAM"
+                ],
+                [
+                  "HYDRO-PUMP",
+                  "TAKE-DOWN",
+                  "FLAIL",
+                  "CHARGE"
+                ]
+              ],
+              "double": true,
+              "rewards": {
+                "balls": 3
+              },
+              "is_boss_battle": true,
+              "dialogue": {
+                "player_won": [
+                  "Archie: Gah! The sea doesn't want me... Kyogre's waking. You deal with it!"
+                ]
+              }
+            }
+          },
+          "condition": "orre_rocket_done"
+        },
+        {
+          "text": "KYOGRE",
+          "action": "BOSS",
+          "color": "GOLD",
+          "condition": "orre_archie_marine",
+          "flag_condition": "not orre_kyogre_done",
+          "boss": {
+            "id": 382,
+            "name": "Kyogre",
+            "level": 70,
+            "victory_flag": "orre_kyogre_done",
+            "lines": [
+              "The water swells... Kyogre rises from the deep!"
+            ]
+          }
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Back to Agate",
+          "door": "alakazam",
+          "target_area": "AGATE_VILLAGE"
+        }
+      ],
+      "next_area": "AGATE_VILLAGE"
+    },
+    "ORRE_SKY_PILLAR": {
+      "area_type": "dungeon",
+      "route_name": "Sky Pillar",
+      "region": "ORRE",
+      "level": 60,
+      "battle_type": "field",
+      "min_rounds": 0,
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "RAYQUAZA",
+          "action": "BOSS",
+          "color": "GOLD",
+          "condition": "beat_orre_champion",
+          "flag_condition": "not orre_rayquaza_done",
+          "boss": {
+            "id": 384,
+            "name": "Rayquaza",
+            "level": 70,
+            "victory_flag": "orre_rayquaza_done",
+            "lines": [
+              "Rayquaza coils at the top of the pillar... It roars at the sky!"
+            ]
+          }
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Back to Mr. Fuji's",
+          "door": "fuji",
+          "target_area": "REALGAM_TOWER"
+        }
+      ],
+      "next_area": "REALGAM_TOWER"
+    },
+    "ORRE_BIRTH_ISLAND": {
+      "area_type": "dungeon",
+      "route_name": "Birth Island",
+      "region": "ORRE",
+      "level": 60,
+      "battle_type": "field",
+      "min_rounds": 0,
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "DEOXYS",
+          "action": "BOSS",
+          "color": "GOLD",
+          "condition": "beat_orre_champion",
+          "flag_condition": "not orre_deoxys_done",
+          "boss": {
+            "id": 386,
+            "name": "Deoxys",
+            "level": 70,
+            "victory_flag": "orre_deoxys_done",
+            "lines": [
+              "The triangle glows... Something from space takes shape!"
+            ]
+          }
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Back to Mr. Fuji's",
+          "door": "fuji",
+          "target_area": "REALGAM_TOWER"
+        }
+      ],
+      "next_area": "REALGAM_TOWER"
+    },
+    "ORRE_NEW_ISLAND": {
+      "area_type": "dungeon",
+      "route_name": "New Island",
+      "region": "ORRE",
+      "level": 60,
+      "battle_type": "field",
+      "min_rounds": 0,
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "MEWTWO",
+          "action": "BOSS",
+          "color": "GOLD",
+          "condition": "orre_mewtwo_fled",
+          "flag_condition": "not orre_mewtwo_done",
+          "boss": {
+            "id": 150,
+            "name": "Mewtwo",
+            "level": 70,
+            "victory_flag": "orre_mewtwo_done",
+            "lines": [
+              "Mewtwo: So you followed me all the way here, human...",
+              "Mewtwo: You will regret it."
+            ]
+          }
+        },
+        {
+          "text": "VENUSAUR CLONE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_clone_venusaur",
+          "event": {
+            "flag": "orre_clone_venusaur",
+            "gift_pokemon": 3,
+            "gift_level": 50,
+            "lines": [
+              "A Venusaur clone sleeps in the glass pod... It wakes, and looks at you.",
+              "Venusaur joined your team!"
+            ]
+          }
+        },
+        {
+          "text": "CHARIZARD CLONE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_clone_charizard",
+          "event": {
+            "flag": "orre_clone_charizard",
+            "gift_pokemon": 6,
+            "gift_level": 50,
+            "lines": [
+              "A Charizard clone sleeps in the glass pod... It wakes, and looks at you.",
+              "Charizard joined your team!"
+            ]
+          }
+        },
+        {
+          "text": "BLASTOISE CLONE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_clone_blastoise",
+          "event": {
+            "flag": "orre_clone_blastoise",
+            "gift_pokemon": 9,
+            "gift_level": 50,
+            "lines": [
+              "A Blastoise clone sleeps in the glass pod... It wakes, and looks at you.",
+              "Blastoise joined your team!"
+            ]
+          }
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Back to Mr. Fuji's",
+          "door": "fuji",
+          "target_area": "REALGAM_TOWER"
+        }
+      ],
+      "next_area": "REALGAM_TOWER"
+    },
+    "ORRE_LAKE_OF_RAGE": {
+      "area_type": "dungeon",
+      "route_name": "Lake of Rage",
+      "region": "ORRE",
+      "level": 58,
+      "battle_type": "field",
+      "min_rounds": 0,
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "RED GYARADOS",
+          "action": "BOSS",
+          "color": "GOLD",
+          "condition": "beat_orre_champion",
+          "flag_condition": "not orre_red_gyarados_done",
+          "boss": {
+            "id": 130,
+            "name": "Red Gyarados",
+            "level": 60,
+            "victory_flag": "orre_red_gyarados_done",
+            "lines": [
+              "The lake churns... a red Gyarados rises, furious!"
+            ],
+            "is_shiny": true
+          }
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Back to Mr. Fuji's",
+          "door": "fuji",
+          "target_area": "REALGAM_TOWER"
+        }
+      ],
+      "next_area": "REALGAM_TOWER"
+    },
+    "ORRE_BATTLE_FRONTIER": {
+      "area_type": "dungeon",
+      "route_name": "Battle Frontier",
+      "region": "ORRE",
+      "level": 50,
+      "battle_type": "indoor",
+      "min_rounds": 0,
+      "trainer_pool": [],
+      "next_area": "REALGAM_TOWER",
+      "route_menu": [
+        {
+          "text": "Ace Trainer",
+          "action": "EVENT",
+          "event": {
+            "lines": [
+              "Ace Trainer: Which challenge first? The endless one is a good start - its trainers aren't too tough at first."
+            ]
+          }
+        },
+        {
+          "text": "Cooltrainer",
+          "action": "EVENT",
+          "event": {
+            "lines": [
+              "Cooltrainer: My Magcargo's Pokedex says it's so hot water boils off it. It still hates Water moves, though."
+            ]
+          }
+        },
+        {
+          "text": "NURSE (FRONTIER)",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Welcome to the Pokemon Center! Your Pokemon are fully healed. We hope to see you again!"
+            ],
+            "heal": true
+          }
+        },
+        {
+          "text": "BP EXCHANGE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "world": "orre_frontier",
+            "bp_shop": "emerald"
+          }
+        },
+        {
+          "text": "BP EXCHANGE (TMS)",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "world": "orre_frontier",
+            "bp_shop": "orre_tms"
+          }
+        },
+        {
+          "text": "NURSE (TOWER)",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "lines": [
+              "Your Pokemon are fully healed. Good luck in the tower!"
+            ],
+            "heal": true
+          }
+        },
+        {
+          "text": "ENDLESS CHALLENGE",
+          "action": "FRONTIER",
+          "color": "GOLD",
+          "facility": "otower"
+        },
+        {
+          "text": "2-ON-2 CHALLENGE",
+          "action": "FRONTIER",
+          "color": "GOLD",
+          "facility": "otower2"
+        },
+        {
+          "text": "LITTLE CUP CHALLENGE",
+          "action": "FRONTIER",
+          "color": "GOLD",
+          "facility": "olc"
+        },
+        {
+          "text": "LITTLE CUP SELLER",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "world": "orre_frontier",
+            "lc_shop": true
+          }
+        },
+        {
+          "text": "MOVE TUTOR (TOWER)",
+          "action": "EVENT",
+          "color": "GOLD",
+          "event": {
+            "world": "orre_frontier",
+            "bp_shop": "orre_tms"
+          }
+        },
+        {
+          "text": "RECORD BOARD",
+          "action": "EVENT",
+          "event": {
+            "world": "orre_frontier",
+            "records": true
+          }
+        }
+      ]
     },
     "RELIC_CAVE": {
       "area_type": "dungeon",
@@ -11058,6 +12053,62 @@
             "player_lost": [
               "Jasmine: The light stays on for you. Come back when you're ready."
             ]
+          },
+          "orre_rematch": {
+            "team": [
+              208,
+              227,
+              385,
+              376,
+              82,
+              101
+            ],
+            "levels": [
+              64,
+              64,
+              65,
+              65,
+              66,
+              66
+            ],
+            "team_moves": [
+              [
+                "DOUBLE-EDGE",
+                "IRON-TAIL",
+                "DIG",
+                "SANDSTORM"
+              ],
+              [
+                "IRON-DEFENSE",
+                "SPIKES",
+                "METAL-SOUND",
+                "DRILL-PECK"
+              ],
+              [
+                "REST",
+                "METEOR-MASH",
+                "PSYCHIC",
+                "SWIFT"
+              ],
+              [
+                "IRON-DEFENSE",
+                "METEOR-MASH",
+                "SCARY-FACE",
+                "PSYCHIC"
+              ],
+              [
+                "ZAP-CANNON",
+                "LOCK-ON",
+                "LIGHT-SCREEN",
+                "METAL-SOUND"
+              ],
+              [
+                "MIRROR-COAT",
+                "EXPLOSION",
+                "LIGHT-SCREEN",
+                "SELF-DESTRUCT"
+              ]
+            ]
           }
         },
         "requirements": {
@@ -14762,6 +15813,61 @@
             "player_lost": [
               "Pryce: The cold is patient. Come back when you are ready."
             ]
+          },
+          "orre_rematch": {
+            "team": [
+              351,
+              144,
+              221,
+              362,
+              378,
+              38
+            ],
+            "levels": [
+              63,
+              63,
+              64,
+              64,
+              65,
+              65
+            ],
+            "team_moves": [
+              [
+                "FIRE-BLAST",
+                "BLIZZARD",
+                "HYDRO-PUMP",
+                "WEATHER-BALL"
+              ],
+              [
+                "HAZE",
+                "ICE-BEAM",
+                "ANCIENT-POWER",
+                "AGILITY"
+              ],
+              [
+                "BLIZZARD",
+                "EARTHQUAKE",
+                "TAKE-DOWN",
+                "AMNESIA"
+              ],
+              [
+                "CRUNCH",
+                "WEATHER-BALL",
+                "BITE",
+                "ICY-WIND"
+              ],
+              [
+                "LOCK-ON",
+                "SUPERPOWER",
+                "BLIZZARD",
+                "AMNESIA"
+              ],
+              [
+                "QUICK-ATTACK",
+                "FLAMETHROWER",
+                "TAIL-WHIP"
+              ]
+            ]
           }
         },
         "requirements": {
@@ -15338,7 +16444,12 @@
           "text": "GYM LEADER PRYCE",
           "action": "EVENT",
           "color": "GOLD",
-          "condition": "not:orre_part2",
+          "condition": {
+            "any": [
+              "not:orre_part2",
+              "beat_orre_champion"
+            ]
+          },
           "event": {
             "world": "orre_gym"
           }
@@ -15950,6 +17061,62 @@
             ],
             "player_lost": [
               "Norman: Strength is more than power. Think about that, and come back."
+            ]
+          },
+          "orre_rematch": {
+            "team": [
+              128,
+              115,
+              143,
+              242,
+              289,
+              113
+            ],
+            "levels": [
+              65,
+              65,
+              66,
+              66,
+              67,
+              67
+            ],
+            "team_moves": [
+              [
+                "DOUBLE-EDGE",
+                "THRASH",
+                "SWAGGER",
+                "REST"
+              ],
+              [
+                "OUTRAGE",
+                "REVERSAL",
+                "ENDURE",
+                "CRUNCH"
+              ],
+              [
+                "BELLY-DRUM",
+                "AMNESIA",
+                "BODY-SLAM",
+                "CRUNCH"
+              ],
+              [
+                "SOFT-BOILED",
+                "DOUBLE-EDGE",
+                "LIGHT-SCREEN",
+                "HELPING-HAND"
+              ],
+              [
+                "MEGA-KICK",
+                "FLAIL",
+                "COUNTER",
+                "COVET"
+              ],
+              [
+                "SOFT-BOILED",
+                "DOUBLE-EDGE",
+                "LIGHT-SCREEN",
+                "HELPING-HAND"
+              ]
             ]
           }
         },
@@ -18003,6 +19170,60 @@
             "player_lost": [
               "Birch: The weather turned against you. Study the sky and come back!"
             ]
+          },
+          "orre_rematch": {
+            "team": [
+              351,
+              351,
+              225,
+              245,
+              80,
+              154
+            ],
+            "levels": [
+              68,
+              68,
+              69,
+              69,
+              70,
+              70
+            ],
+            "team_moves": [
+              [
+                "FIRE-BLAST",
+                "BLIZZARD",
+                "HYDRO-PUMP",
+                "WEATHER-BALL"
+              ],
+              [
+                "FIRE-BLAST",
+                "BLIZZARD",
+                "HYDRO-PUMP",
+                "WEATHER-BALL"
+              ],
+              [
+                "DRILL-PECK",
+                "PRESENT"
+              ],
+              [
+                "RAIN-DANCE",
+                "MIRROR-COAT",
+                "SURF",
+                "EXTRASENSORY"
+              ],
+              [
+                "RAIN-DANCE",
+                "PSYCH-UP",
+                "PSYCHIC",
+                "SURF"
+              ],
+              [
+                "SOLAR-BEAM",
+                "GIGA-DRAIN",
+                "SAFEGUARD",
+                "BODY-SLAM"
+              ]
+            ]
           }
         },
         "requirements": {
@@ -18049,6 +19270,31 @@
             "world": "orre_gym",
             "gym": "gym_birch"
           }
+        },
+        {
+          "text": "Mr. Fuji",
+          "action": "EVENT",
+          "event": {
+            "lines": [
+              "Mr. Fuji: Hello, friend. I'm a friend of Eagun's from Agate - he told me everything about you, Champion.",
+              "Mr. Fuji: My Alakazam can sense where rare Pokemon gather. It will take you there, if you like."
+            ]
+          }
+        },
+        {
+          "text": "POKE FLUTE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_poke_flute",
+          "event": {
+            "flag": "orre_poke_flute",
+            "gift_item": {
+              "POKE_FLUTE": 1
+            },
+            "lines": [
+              "Mr. Fuji left something on the table... the POKE FLUTE!"
+            ]
+          }
         }
       ],
       "travel_options": [
@@ -18067,6 +19313,39 @@
           "door": "realgam",
           "target_area": "DEEP_COLOSSEUM",
           "condition": "orre_part2"
+        },
+        {
+          "text": "Sky Pillar",
+          "door": "fuji",
+          "target_area": "ORRE_SKY_PILLAR",
+          "condition": "beat_orre_champion"
+        },
+        {
+          "text": "Birth Island",
+          "door": "fuji",
+          "target_area": "ORRE_BIRTH_ISLAND",
+          "condition": "beat_orre_champion"
+        },
+        {
+          "text": "New Island",
+          "door": "fuji",
+          "target_area": "ORRE_NEW_ISLAND",
+          "condition": [
+            "beat_orre_champion",
+            "orre_mewtwo_fled"
+          ]
+        },
+        {
+          "text": "Lake of Rage",
+          "door": "fuji",
+          "target_area": "ORRE_LAKE_OF_RAGE",
+          "condition": "beat_orre_champion"
+        },
+        {
+          "text": "Battle Frontier",
+          "door": "cycle",
+          "target_area": "ORRE_BATTLE_FRONTIER",
+          "condition": "beat_orre_champion"
         }
       ],
       "next_area": "PHENAC_CITY",
@@ -20260,6 +21539,62 @@
             "player_lost": [
               "Drake: The dragons are not done with you. Come back."
             ]
+          },
+          "orre_rematch": {
+            "team": [
+              384,
+              373,
+              130,
+              330,
+              230,
+              149
+            ],
+            "levels": [
+              66,
+              66,
+              67,
+              67,
+              68,
+              68
+            ],
+            "team_moves": [
+              [
+                "FLY",
+                "REST",
+                "HYPER-VOICE",
+                "EXTREME-SPEED"
+              ],
+              [
+                "FLAMETHROWER",
+                "FOCUS-ENERGY",
+                "DRAGON-CLAW",
+                "CRUNCH"
+              ],
+              [
+                "HYPER-BEAM",
+                "THRASH",
+                "HYDRO-PUMP",
+                "DRAGON-DANCE"
+              ],
+              [
+                "UPROAR",
+                "EARTHQUAKE",
+                "SANDSTORM",
+                "SCREECH"
+              ],
+              [
+                "RAIN-DANCE",
+                "DRAGON-DANCE",
+                "HYDRO-PUMP",
+                "WATER-PULSE"
+              ],
+              [
+                "DRAGON-DANCE",
+                "RAIN-DANCE",
+                "SAFEGUARD",
+                "OUTRAGE"
+              ]
+            ]
           }
         },
         "requirements": {
@@ -21651,6 +22986,104 @@
             "balls": 2
           },
           "music": "orre/cipher_battle"
+        },
+        {
+          "name": "Team Magma Grunt",
+          "class": "MAGMA_GRUNT",
+          "sprite": "orre_magma_grunt_m.png",
+          "team": [
+            262,
+            324,
+            169,
+            126
+          ],
+          "levels": [
+            57,
+            57,
+            58,
+            58
+          ],
+          "team_moves": [
+            [
+              "TAKE-DOWN",
+              "YAWN",
+              "TAUNT",
+              "SCARY-FACE"
+            ],
+            [
+              "AMNESIA",
+              "HEAT-WAVE",
+              "CURSE",
+              "FLAMETHROWER"
+            ],
+            [
+              "CONFUSE-RAY",
+              "HAZE",
+              "BITE",
+              "AIR-CUTTER"
+            ],
+            [
+              "FIRE-BLAST",
+              "SUNNY-DAY",
+              "FLAMETHROWER",
+              "LOW-KICK"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 3
+          },
+          "when_flags": [
+            "orre_rocket_done"
+          ]
+        },
+        {
+          "name": "Team Magma Grunt Sola",
+          "class": "MAGMA_GRUNT",
+          "sprite": "orre_magma_grunt_f.png",
+          "team": [
+            262,
+            38,
+            157,
+            275
+          ],
+          "levels": [
+            57,
+            57,
+            58,
+            58
+          ],
+          "team_moves": [
+            [
+              "TAKE-DOWN",
+              "YAWN",
+              "TAUNT",
+              "SCARY-FACE"
+            ],
+            [
+              "QUICK-ATTACK",
+              "FLAMETHROWER",
+              "TAIL-WHIP"
+            ],
+            [
+              "FLAMETHROWER",
+              "SWIFT",
+              "DEFENSE-CURL",
+              "FLAME-WHEEL"
+            ],
+            [
+              "LEAF-BLADE",
+              "AIR-CUTTER",
+              "SUNNY-DAY"
+            ]
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 3
+          },
+          "when_flags": [
+            "orre_rocket_done"
+          ]
         }
       ],
       "route_menu": [
@@ -22399,6 +23832,16 @@
           }
         },
         {
+          "text": "GYM LEADER DRAKE (REMATCH)",
+          "action": "EVENT",
+          "color": "GOLD",
+          "condition": "beat_orre_champion",
+          "event": {
+            "world": "orre_gym",
+            "rematch": true
+          }
+        },
+        {
           "text": "CIPHER ADMIN ELDES",
           "action": "EVENT",
           "color": "GOLD",
@@ -22810,6 +24253,136 @@
             "can_exit"
           ],
           "color": "RED"
+        },
+        {
+          "text": "FULL RESTORES (TERRA)",
+          "action": "EVENT",
+          "color": "GOLD",
+          "condition": "orre_rocket_done",
+          "flag_condition": "not orre_terra_fr",
+          "event": {
+            "flag": "orre_terra_fr",
+            "gift_item": {
+              "FULL_RESTORE": 10
+            },
+            "lines": [
+              "10 Full Restores!"
+            ]
+          }
+        },
+        {
+          "text": "ELIXIRS (TERRA)",
+          "action": "EVENT",
+          "color": "GOLD",
+          "condition": "orre_rocket_done",
+          "flag_condition": "not orre_terra_elixir",
+          "event": {
+            "flag": "orre_terra_elixir",
+            "gift_item": {
+              "ELIXIR": 10
+            },
+            "lines": [
+              "10 Elixirs!"
+            ]
+          }
+        },
+        {
+          "text": "TEAM MAGMA LEADER MAXIE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_maxie_terra",
+          "event": {
+            "flag": "orre_maxie_terra",
+            "lines": [
+              "Maxie: You are too late. Groudon sleeps here - and the land will be mine to shape!"
+            ],
+            "battle": {
+              "name": "Team Magma Leader Maxie",
+              "class": "TEAM_LEADER",
+              "sprite": "orre_maxie.png",
+              "team": [
+                6,
+                59,
+                94,
+                229,
+                359,
+                323
+              ],
+              "levels": [
+                61,
+                62,
+                62,
+                63,
+                64,
+                65
+              ],
+              "team_moves": [
+                [
+                  "FIRE-SPIN",
+                  "SCARY-FACE",
+                  "FLAMETHROWER",
+                  "SLASH"
+                ],
+                [
+                  "FLAMETHROWER",
+                  "HOWL",
+                  "HELPING-HAND",
+                  "EXTREME-SPEED"
+                ],
+                [
+                  "DREAM-EATER",
+                  "DESTINY-BOND",
+                  "SHADOW-BALL",
+                  "NIGHT-SHADE"
+                ],
+                [
+                  "CRUNCH",
+                  "FLAMETHROWER",
+                  "TORMENT",
+                  "BEAT-UP"
+                ],
+                [
+                  "PERISH-SONG",
+                  "FUTURE-SIGHT",
+                  "SWORDS-DANCE",
+                  "FOCUS-ENERGY"
+                ],
+                [
+                  "EARTHQUAKE",
+                  "YAWN",
+                  "TAKE-DOWN",
+                  "CURSE"
+                ]
+              ],
+              "double": true,
+              "rewards": {
+                "balls": 3
+              },
+              "is_boss_battle": true,
+              "dialogue": {
+                "player_won": [
+                  "Maxie: ...Groudon stirs. Even I can't hold it now. Do what you will."
+                ]
+              }
+            }
+          },
+          "condition": "orre_rocket_done"
+        },
+        {
+          "text": "GROUDON",
+          "action": "BOSS",
+          "color": "GOLD",
+          "condition": "orre_maxie_terra",
+          "flag_condition": "not orre_groudon_done",
+          "boss": {
+            "id": 383,
+            "name": "Groudon",
+            "level": 70,
+            "victory_flag": "orre_groudon_done",
+            "lines": [
+              "The ground shakes... Groudon wakes, burning with anger!"
+            ]
+          }
         }
       ],
       "next_area": "GATEON_PORT",
@@ -23112,6 +24685,8 @@
     {"id": "orre_m17", "type": "MAIN", "title": "Cipher Key Lair", "description": "Cipher has a base in Gateon Port, the Key Lair. Get past the thug at its door.", "condition": {"required_region": "ORRE", "flag_not": ["xd_lair_guards", "xd_gorigan_beaten"], "flag": "orre_colosseum_won"}, "region": "ORRE", "completed_flag": "xd_lair_guards", "target": "XD_CIPHER_KEY_LAIR"},
     {"id": "orre_m17b", "type": "MAIN", "title": "The System Lever", "description": "Through the maze and the crate rooms: take the System Lever from its table, then put it in the Control Room's panel.", "condition": {"required_region": "ORRE", "flag": "xd_lair_guards", "flag_not": ["xd_lair_voltage", "xd_gorigan_beaten"]}, "region": "ORRE", "completed_flag": "xd_lair_voltage", "target": "XD_CIPHER_KEY_LAIR"},
     {"id": "orre_m17c", "type": "MAIN", "title": "Cipher Admin Gorigan", "description": "The power's up. Beat Smarton, then climb to Gorigan's hall and beat him to learn where Cipher's leader is.", "condition": {"required_region": "ORRE", "flag": "xd_lair_voltage", "flag_not": "xd_gorigan_beaten"}, "region": "ORRE", "completed_flag": "xd_gorigan_beaten", "target": "XD_CIPHER_KEY_LAIR"},
+    {"id": "orre_s5", "type": "MAIN", "title": "Gale of Darkness", "description": "Cipher is back under Grand Master Greevil, on Citadark Isle. Professor Krane has something for you first - visit the HQ Lab, then take the Robo Kyogre from Gateon Port.", "condition": {"required_region": "ORRE", "flag": "xd_gorigan_beaten", "flag_not": ["xd_greevil_beaten", "xd_master_ball"]}, "region": "ORRE", "completed_flag": "xd_master_ball", "target": "POKEMON_HQ_LAB", "reward": "Master Ball"},
+    {"id": "orre_s5b", "type": "MAIN", "title": "Citadark Isle", "description": "Climb Greevil's island: the fortress, the volcano's platforms, the hook hall, the Dome. XD001 waits at the top.", "condition": {"required_region": "ORRE", "flag": "xd_master_ball", "flag_not": "xd_greevil_beaten"}, "region": "ORRE", "completed_flag": "xd_greevil_beaten", "target": "XD_CITADARK_ISLE", "reward": "Every Shadow Pokemon"},
     {"id": "orre_m17d", "type": "MAIN", "title": "Norman's Hall", "description": "With Gorigan beaten, his hall in the Key Lair has a new master: Gym Leader Norman. Win the Key Lair Badge!", "condition": {"required_region": "ORRE", "flag": "xd_gorigan_beaten", "region_badges_less": 6}, "region": "ORRE", "completed_badge": "KEY_LAIR", "target": "XD_CIPHER_KEY_LAIR", "reward": "Key Lair Badge"},
     {"id": "orre_m18", "type": "MAIN", "title": "Realgam Tower", "description": "Cipher's leader is behind Realgam Tower. Go in by the lobby's left door, cross the tower yard, and take the four coloured keys from Cipher's Admins in the Dome Halls.", "condition": {"required_region": "ORRE", "flag": "orre_data_rom_given", "flag_not": ["col_venus_realgam", "col_ein_realgam", "col_miror_realgam", "col_dakim_realgam"], "region_badges_min": 4}, "region": "ORRE", "completed_flag": ["col_venus_realgam", "col_ein_realgam", "col_miror_realgam", "col_dakim_realgam"], "target": "CIPHER_COMMAND"},
     {"id": "orre_m18b", "type": "MAIN", "title": "Inside the Tower", "description": "The four keys open the giant door. Get through the Tower Halls to the lifts at the far end.", "condition": {"required_region": "ORRE", "flag": ["col_venus_realgam", "col_ein_realgam", "col_miror_realgam", "col_dakim_realgam"], "flag_not": "col_gonzap_realgam"}, "region": "ORRE", "completed_flag": "col_gonzap_realgam", "target": "CIPHER_COMMAND"},
@@ -23125,8 +24700,6 @@
     {"id": "orre_s2a", "type": "SIDE", "title": "Mt. Battle's 100", "description": "Mt. Battle, near Agate Village: ten areas, ten trainers in each. Climb them all and beat Mt. Battle Master Battlus! Rest at the top of each area to start from the next one.", "condition": {"required_region": "ORRE", "flag": "orre_time_flute", "flag_not": "mt_battle_battlus"}, "region": "ORRE", "completed_flag": "mt_battle_battlus", "target": "MT_BATTLE", "reward": "Battle practice"},
     {"id": "orre_s3", "type": "SIDE", "title": "The Wishing Star", "description": "Cipher's files mention a wishing star near Agate's Relic Stone. Look in the Relic Forest.", "condition": {"required_region": "ORRE", "flag": "orre_part2", "flag_not": "orre_jirachi_caught"}, "region": "ORRE", "completed_flag": "orre_jirachi_caught", "target": "RELIC_FOREST", "reward": "Jirachi"},
     {"id": "orre_s4", "type": "SIDE", "title": "Ho-Oh's Blessing", "description": "Purify every Shadow Pokémon at the Relic Stone. Then a rainbow Pokémon may appear in the Relic Forest.", "condition": {"required_region": "ORRE", "flag": "orre_all_purified", "flag_not": "orre_ho_oh_caught"}, "region": "ORRE", "completed_flag": "orre_ho_oh_caught", "target": "RELIC_FOREST", "reward": "Ho-Oh"},
-    {"id": "orre_s5", "type": "MAIN", "title": "Gale of Darkness", "description": "Cipher is back under Grand Master Greevil, on Citadark Isle. Professor Krane has something for you first - visit the HQ Lab, then take the Robo Kyogre from Gateon Port.", "condition": {"required_region": "ORRE", "flag": "xd_gorigan_beaten", "flag_not": ["xd_greevil_beaten", "xd_master_ball"]}, "region": "ORRE", "completed_flag": "xd_master_ball", "target": "POKEMON_HQ_LAB", "reward": "Master Ball"},
-    {"id": "orre_s5b", "type": "MAIN", "title": "Citadark Isle", "description": "Climb Greevil's island: the fortress, the volcano's platforms, the hook hall, the Dome. XD001 waits at the top.", "condition": {"required_region": "ORRE", "flag": "xd_master_ball", "flag_not": "xd_greevil_beaten"}, "region": "ORRE", "completed_flag": "xd_greevil_beaten", "target": "XD_CITADARK_ISLE", "reward": "Every Shadow Pokemon"},
     {"id": "orre_s6", "type": "SIDE", "title": "Eagun's Challenge", "description": "Eagun wants a word with you outside the Pokemon HQ Lab.", "condition": {"required_region": "ORRE", "flag": "xd_greevil_beaten", "flag_not": "xd_eagun_lab"}, "region": "ORRE", "completed_flag": "xd_eagun_lab", "target": "POKEMON_HQ_LAB"},
     {"id": "orre_s6b", "type": "SIDE", "title": "The Orre Colosseum", "description": "Seven rounds of four battles at the Orre Colosseum, healed between battles. Each round's winner gets a TM.", "condition": {"required_region": "ORRE", "flag": "xd_eagun_lab", "flag_not": "xd_colo_all"}, "region": "ORRE", "completed_flag": "xd_colo_all", "target": "ORRE_COLOSSEUM", "reward": "TM Dragon Claw"},
     {"id": "orre_s6c", "type": "SIDE", "title": "XD001's Heart", "description": "XD001's heart is shut tight. Fill all nine sets of the HQ Lab's Purify Chamber at Max Tempo - four in each ring, each strong against the next - then put XD001 in.", "condition": {"required_region": "ORRE", "flag": "snagged_shadow_lugia", "flag_not": "xd_lugia_purified"}, "region": "ORRE", "completed_flag": "xd_lugia_purified", "target": "POKEMON_HQ_LAB"},
@@ -23134,7 +24707,12 @@
     {"id": "orre_s7", "type": "SIDE", "title": "A Rumour in Pyrite", "description": "Nett has heard something about Cail and a Shadow Pokemon. A kid in Pyrite saw it - he's hiding behind a bookcase.", "condition": {"required_region": "ORRE", "flag": "col_post_nett", "flag_not": "col_cail_post"}, "region": "ORRE", "completed_flag": "col_cail_post", "target": "PYRITE_TOWN"},
     {"id": "orre_s7b", "type": "SIDE", "title": "The Snagem Raid", "description": "Snagem is back in its desert hideout, with Shadow Pokemon you missed. Nett also mentioned Gurks, on the Junk Shop's balcony in The Under. Gonzap has something you'll want.", "condition": {"required_region": "ORRE", "flag": "col_cail_post", "flag_not": "col_gonzap_post"}, "region": "ORRE", "completed_flag": "col_gonzap_post", "target": "SNAGEM_HIDEOUT", "reward": "D-Disk"},
     {"id": "orre_s7c", "type": "SIDE", "title": "The Deep Colosseum", "description": "Slot the D-Disk into The Under's floating platform. Five rounds wait at the bottom, and the Deep King after them.", "condition": {"required_region": "ORRE", "flag": "col_gonzap_post", "flag_not": "col_deep_all"}, "region": "ORRE", "completed_flag": "col_deep_all", "target": "THE_UNDER", "reward": "TM Dragon Claw"},
-    {"id": "orre_s8", "type": "SIDE", "title": "Poke Snacks", "description": "Put Poke Snacks on a Poke Spot's tray, then go somewhere else. Your P*DA's Spot Monitor beeps when something comes to eat - fast beeps mean a rare one. No snacks, no wild Pokemon.", "condition": {"required_region": "ORRE", "flag": "xd_spot_oasis", "flag_not": "snacks_from_duking"}, "region": "ORRE", "completed_flag": "snacks_from_duking", "target": "ORRE_POKE_SPOTS"}
+    {"id": "orre_s8", "type": "SIDE", "title": "Poke Snacks", "description": "Put Poke Snacks on a Poke Spot's tray, then go somewhere else. Your P*DA's Spot Monitor beeps when something comes to eat - fast beeps mean a rare one. No snacks, no wild Pokemon.", "condition": {"required_region": "ORRE", "flag": "xd_spot_oasis", "flag_not": "snacks_from_duking"}, "region": "ORRE", "completed_flag": "snacks_from_duking", "target": "ORRE_POKE_SPOTS"},
+    {"id": "orre_s9", "type": "SIDE", "title": "Team Rocket in Orre", "description": "Champion of Orre - and still there's trouble. Team Rocket has a tower behind Pyrite's Construction Lot. Climb it and find out what Giovanni wants.", "condition": {"required_region": "ORRE", "flag": "beat_orre_champion", "flag_not": "orre_rocket_done"}, "region": "ORRE", "target": "CONSTRUCTION_LOT", "completed_flag": "orre_rocket_done"},
+    {"id": "orre_s9b", "type": "SIDE", "title": "Groudon Under Citadark", "description": "Maxie fled under Citadark Isle. A ladder on the island leads down to the Terra Cave.", "condition": {"required_region": "ORRE", "flag": "orre_rocket_done", "flag_not": "orre_groudon_done"}, "region": "ORRE", "target": "XD_CITADARK_ISLE", "completed_flag": "orre_groudon_done"},
+    {"id": "orre_s9c", "type": "SIDE", "title": "Kyogre in the Marine Cave", "description": "Archie went to a sea cave near Agate. Eagun's Alakazam can take you there.", "condition": {"required_region": "ORRE", "flag": "orre_rocket_done", "flag_not": "orre_kyogre_done"}, "region": "ORRE", "target": "AGATE_VILLAGE", "completed_flag": "orre_kyogre_done"},
+    {"id": "orre_s10", "type": "SIDE", "title": "Mr. Fuji's Alakazam", "description": "Mr. Fuji lives in Realgam's square. His Alakazam can teleport you to where rare Pokemon gather: Sky Pillar, Birth Island, the Lake of Rage - and New Island, where Mewtwo fled.", "condition": {"required_region": "ORRE", "flag": "beat_orre_champion"}, "region": "ORRE", "target": "REALGAM_TOWER", "completed_flag": ["orre_rayquaza_done", "orre_deoxys_done", "orre_mewtwo_done", "orre_red_gyarados_done"]},
+    {"id": "orre_s11", "type": "SIDE", "title": "The Battle Frontier", "description": "A Battle Frontier has opened in Orre - ride there from Realgam or Pyrite. Its Battle Tower has three endless challenges: singles, 2-on-2 and the Little Cup. Win BP and spend it at the counter.", "condition": {"required_region": "ORRE", "flag": "beat_orre_champion"}, "region": "ORRE", "target": "ORRE_BATTLE_FRONTIER", "completed_flag": "visited_ORRE_BATTLE_FRONTIER"}
   ],
   "REGION_START": {
     "ORRE": {
