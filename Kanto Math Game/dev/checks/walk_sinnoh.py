@@ -17,8 +17,12 @@ steps = [
     ("Galactic Warehouse (Dawn's tag battle, Looker)", {"sinnoh_dawn_warehouse_call": True, "sinnoh_warehouse_guards_beaten": True,
                                                        "galactic_warehouse_cleared": True}, None),   # (Platinum, S4 11-24)
     ("FEN (Wake)", {}, "FEN"),
+    ("Pastoria's bomb, the chase, Cynthia's SecretPotion", {"sinnoh_pastoria_bomb_warned": True, "sinnoh_pastoria_bomb": True,
+                                                           "sinnoh_valor_grunt_beaten": True, "sinnoh_secretpotion": True}, None),
+    ("Celestic: the Old Charm, Surf from the Elder", {"got_old_charm_r210": True, "sinnoh_celestic_grunt_beaten": True,
+                                                       "delivered_old_charm": True, "got_hm_surf_celestic": True}, None),   # (Platinum, S4 11-24)
     ("RELIC (Fantina, 4+ badges)", {}, "RELIC"),
-    ("Iron Island", {"visited_IRON_ISLAND": True}, None),
+    ("Iron Island", {"visited_IRON_ISLAND": True, "got_hm_strength_iron_island": True}, None),   # (Riley's Strength, Jordan 11-24)
     ("MINE (Byron)", {}, "MINE"),
     ("ICICLE (Candice)", {}, "ICICLE"),
     ("Galactic HQ", {"galactic_hq_cleared": True}, None),
@@ -28,6 +32,10 @@ steps = [
 ]
 for title, flags, b in steps:
     story.story_flags.update(flags)
+    if flags.get("got_hm_surf_celestic"):
+        story.inventory["HM_SURF"] = 1   # (the Elder's gift, not a badge's)
+    if flags.get("got_hm_strength_iron_island"):
+        story.inventory["HM_STRENGTH"] = 1   # (Riley's gift on Iron Island, not the Mine Badge's)
     if b:
         badge(R, b)
     seen = report(title, S, seen)

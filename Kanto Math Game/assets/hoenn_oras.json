@@ -8778,6 +8778,27 @@
   }
  },
  "FIGURES": {
+  "MAUVILLE_CITY:TM126 THUNDERBOLT": {
+   "item": "TM126"
+  },
+  "MAUVILLE_CITY:TM060 U-TURN": {
+   "item": "TM060"
+  },
+  "MAUVILLE_CITY:TM278 SKY DROP": {
+   "item": "TM278"
+  },
+  "FORTREE_CITY:TM081 GRASS KNOT": {
+   "item": "TM081"
+  },
+  "PACIFIDLOG_TOWN:TM273 FRUSTRATION": {
+   "item": "TM273"
+  },
+  "PACIFIDLOG_TOWN:TM274 RETURN": {
+   "item": "TM274"
+  },
+  "EVER_GRANDE_CITY:TM120 PSYCHIC": {
+   "item": "TM120"
+  },
   "EVER_GRANDE_CITY:TM29 PSYCHIC": {
    "item": "TM120"
   },

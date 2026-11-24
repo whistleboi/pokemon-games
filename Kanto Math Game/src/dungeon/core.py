@@ -29,6 +29,8 @@ CURRENT_TILE = None  # the tile a new wild Pokemon will stand on (out on the sea
 ENTRANCE_COUNT = 0  # how many tiles the way out you left by had (0: unknown): a wide edge maps place for place
 ENTRANCE_SPREAD = False  # the count is of buildings, not door tiles (out of one of Route 2's two gatehouses into Viridian Forest, whose gates are three tiles wide): the same way along
 ENTRANCE_INDEX = 0  # which of several ways in from the same place you came by (Route 41's four Whirl Islands caves)
+ENTRANCE_WATER = None  # did you leave by water (True) or by land (False)? None: not known. Of several floors with a way back, the
+                       # one that matches is taken (Pastoria to Route 213: the land way to its gatehouse, the sea to its sea edge)
 WALL, FLOOR, GRASS, WATER, SURF = 0, 1, 2, 3, 4  # (SURF: open sea, crossed with HM Surf)
 DIRS = ((0, -1), (1, 0), (0, 1), (-1, 0))
 STAIRS = "STAIRS"
@@ -624,8 +626,8 @@ class Run:
                 floor.movers.append(Mover("trainer", spot[0], spot[1], (idx, payload), facing))
         lo, hi = (self.recipe.get("wild") or [4, 6])[:2]
         indoors = self._indoors(index)  # (a room on a route map: nothing wild, nothing lying about. The Safari Zone's rest houses)
-        if indoors:
-            lo = hi = 0
+        if indoors and not (self.recipe.get("layout") or [])[index].get("wild_tables"):   # (unless the room has its own wild
+            lo = hi = 0                                                                    #  Pokemon: Relic Castle's Baltoy rooms)
         for _ in range(self.rng.randint(lo, hi)):  # (a drawn map is one room: away from you is enough)
             self._spawn_wild(floor, None if self.recipe.get("layout") else start_room)
         reach = distances(floor, floor.start)  # (loot lands where you can walk to it from here: never out on the water)

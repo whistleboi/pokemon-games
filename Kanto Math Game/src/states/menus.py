@@ -987,7 +987,7 @@ class StarterSelectionState(GameState):
                                            other=" and ".join(p.name for p in others) or "",
                                            rival_pick=rival_pick, friend_pick=friend_pick)
             if story.catch_unlocked(self.region):   # (no Poke Balls before the region lets you catch: Jordan, 11-15)
-                story.balls_left = max(story.balls_left, 5)
+                story.balls_left = max(story.balls_left, story.starting_balls(self.region))
         elif self.region == "JOHTO":
             rival_map = {0: 1, 1: 2, 2: 0}
             s_idx = self.selected_idx

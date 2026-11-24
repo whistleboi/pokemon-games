@@ -148130,7 +148130,21 @@
       "m": "face",
       "d": "l"
      }
-    }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/9_2.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       10
+      ]
+     }
+    ]
    },
    "maison_hall": {
     "art": [
@@ -213631,11 +213645,11 @@
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTAAAAATTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTAAAAATTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTAADDATTTTTTTTTTTTTTTTTTTTTTTTTTT",
-   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTfff....!ff..........ff............",
+   "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTfff..N.!Nf..........ff............",
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT....................ff............",
    "TTTTTTTTTTTTTTTTTTTTTTTBBBB..fff......fff.........f............>",
    "TTTTTTTTTTTTTTTTTTTTTTTBBBB....................................>",
-   "TTTTTTTTTTTTTTTTTTTTTTTBBBBff..................N......TTTTTT....",
+   "TTTTTTTTTTTTTTTTTTTTTTTBBBBff...N..............N......TTTTTT....",
    "TTTTTTTTTTTTTTTTTTTTTTTBDBBff.jjTT....................TTTTTT....",
    "TTTTTTTTTTTTTTTT...fff.....ff................ffKCCC.TTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTT.fffff......ff...............ffKCCC.TTTTTTTTTTTT",
@@ -213688,8 +213702,7 @@
   ],
   "exits": {
    ">": "SINNOH_ROUTE_213",
-   "<": "SINNOH_ROUTE_212",
-   "A": "GREAT_MARSH"
+   "<": "SINNOH_ROUTE_212"
   },
   "buildings": {
    "A": "gate",
@@ -213697,7 +213710,7 @@
    "C": "house",
    "E": "house",
    "F": "gym",
-   "G": "reminder",
+   "G": "house",
    "H": "house",
    "I": "house",
    "J": "mart",
@@ -217459,6 +217472,590 @@
        ]
       }
      }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        1,
+        34
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:high"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        1,
+        36
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:high"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        6,
+        8
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:low"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        6,
+        10
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:low"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        6,
+        25
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:high"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        6,
+        27
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:high"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        7,
+        8
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:low"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        7,
+        10
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:low"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        10,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:mid"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        10,
+        4
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:low"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        6
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:high"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        8
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:high"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        19
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:low"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        21
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:low"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        27
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:mid"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        29
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:mid"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        33
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:mid"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        35
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:mid"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:mid"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        4
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:low"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        25
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:low"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        27
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:low"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        21
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:high"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        25
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:high"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        25,
+        34
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:high"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        25,
+        36
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:pastoria_gym:is:high"
+      },
+      "lines": [
+       "The water's at the wrong height to cross here."
+      ]
+     }
+    ],
+    "scenes": [
+     {
+      "trigger": {
+       "zone": [
+        3,
+        6,
+        3,
+        6
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:pastoria_gym:not:high"
+      ],
+      "cast": [],
+      "event": {
+       "world": "pastoria_gym",
+       "press": "high"
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        3,
+        34,
+        3,
+        34
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:pastoria_gym:not:low"
+      ],
+      "cast": [],
+      "event": {
+       "world": "pastoria_gym",
+       "press": "low"
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        9,
+        14,
+        9,
+        14
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:pastoria_gym:not:low"
+      ],
+      "cast": [],
+      "event": {
+       "world": "pastoria_gym",
+       "press": "low"
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        9,
+        24,
+        9,
+        24
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:pastoria_gym:not:high"
+      ],
+      "cast": [],
+      "event": {
+       "world": "pastoria_gym",
+       "press": "high"
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        10,
+        30,
+        10,
+        30
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:pastoria_gym:not:mid"
+      ],
+      "cast": [],
+      "event": {
+       "world": "pastoria_gym",
+       "press": "mid"
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        17,
+        9,
+        17,
+        9
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:pastoria_gym:not:mid"
+      ],
+      "cast": [],
+      "event": {
+       "world": "pastoria_gym",
+       "press": "mid"
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        19,
+        13,
+        19,
+        13
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:pastoria_gym:not:mid"
+      ],
+      "cast": [],
+      "event": {
+       "world": "pastoria_gym",
+       "press": "mid"
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        19,
+        22,
+        19,
+        22
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:pastoria_gym:not:low"
+      ],
+      "cast": [],
+      "event": {
+       "world": "pastoria_gym",
+       "press": "low"
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        19,
+        24,
+        19,
+        24
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:pastoria_gym:not:mid"
+      ],
+      "cast": [],
+      "event": {
+       "world": "pastoria_gym",
+       "press": "mid"
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        23,
+        31,
+        23,
+        31
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:pastoria_gym:not:low"
+      ],
+      "cast": [],
+      "event": {
+       "world": "pastoria_gym",
+       "press": "low"
+      }
+     }
     ]
    },
    "mart": {
@@ -218793,40 +219390,6 @@
     ],
     "title": "Pokemon Center B1F"
    },
-   "reminder": {
-    "theme": "room",
-    "art": [
-     "ccccccccccc",
-     "ccccccccccc",
-     "c.....mmmmc",
-     "c.........c",
-     "c..mmN....c",
-     "c..mm.....c",
-     "c.........c",
-     "c...v.....c",
-     "ccccccccccc"
-    ],
-    "exits": {
-     "v": "OUT:25,35"
-    },
-    "buildings": {},
-    "roofs": {
-     "_floor": [
-      222,
-      206,
-      160
-     ],
-     "_wall": [
-      210,
-      210,
-      220
-     ],
-     "_things": {}
-    },
-    "people": [
-     "Move Reminder"
-    ]
-   },
    "house_0501": {
     "theme": "room",
     "art": [
@@ -219025,7 +219588,7 @@
      "ccccccccccc",
      "ccccccccccc",
      "cm...mmmmmc",
-     "cmN.......c",
+     "cmN.....N.c",
      "c......m..c",
      "c.mm......c",
      "cmmm.....mc",
@@ -219316,7 +219879,8 @@
         "I run errands for the Solaceon newspaper. They pay me in Heart Scales!"
        ]
       }
-     }
+     },
+     "Move Reminder"
     ]
    },
    "house_0601": {
@@ -219326,7 +219890,7 @@
      "ccccccccccc",
      "c..N..mmmmc",
      "c.........c",
-     "c..mm.....c",
+     "c..mmN....c",
      "c..mm...N.c",
      "c.........c",
      "c...v.....c",
@@ -219488,6 +220052,16 @@
       "event": {
        "lines": [
         "PACHIRISU: Suuu pasu!"
+       ]
+      }
+     },
+     {
+      "text": "Scarf man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Howdy, there! I give scarves to Pokemon that are worthy... for Contests, you understand.",
+        "Hmhm... Contests aren't held round here these days. Ah well! Maybe someday."
        ]
       }
      },
@@ -219684,23 +220258,299 @@
       }
      }
     ]
+   },
+   "house_0301": {
+    "theme": "room",
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "c.....mmmmc",
+     "c.........c",
+     "c..mmN....c",
+     "c..mm..N..c",
+     "c.........c",
+     "c...v.....c",
+     "ccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:25,35"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      222,
+      206,
+      160
+     ],
+     "_wall": [
+      210,
+      210,
+      220
+     ],
+     "_things": {},
+     "_picture": {
+      "f": "pt_ground/C06R0301.png",
+      "at": [
+       0,
+       1
+      ]
+     }
+    },
+    "people": [
+     {
+      "any": [
+       {
+        "text": "Boy",
+        "action": "EVENT",
+        "condition": [
+         "world:pastoria:combee_pair"
+        ],
+        "event": {
+         "lines": [
+          "Cool! A female and a male Combee. I feel giddy! Here, take this!",
+          "You received a Macho Brace!"
+         ],
+         "gift_item": {
+          "MACHO_BRACE": 1
+         },
+         "flag": "got_macho_brace_pastoria",
+         "done": [
+          "The Macho Brace makes a Pokemon slow, but it grows stronger faster. Like my dad says, no pain, no gain!"
+         ]
+        }
+       },
+       {
+        "text": "Boy",
+        "action": "EVENT",
+        "condition": [
+         "not:world:pastoria:combee_pair"
+        ],
+        "event": {
+         "lines": [
+          "Hey, have you caught both the female and male forms of Combee?",
+          "If you have, I want to see both of them together. I'll give you a Macho Brace if you do that for me!"
+         ]
+        }
+       }
+      ]
+     },
+     {
+      "text": "Old man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Pokemon Combee is quite interesting. Only the female evolves and grows strong. The male does not.",
+        "Come to think of it, my wife was awfully strong, too."
+       ]
+      }
+     }
+    ]
+   },
+   "observatory_gate": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccc",
+     "ccccccccccccc",
+     "cccccnccccccc",
+     "czmc........c",
+     "cccc........c",
+     "cccc..ccccccc",
+     "ccNm..ccccccc",
+     "cccc..ccccccc",
+     "cccc..cccc^.c",
+     "cN....cccc..c",
+     "c...........c",
+     "c....v......c",
+     "ccccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:34,9",
+     "n": "GREAT_MARSH",
+     "^": "ROOM:observatory"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      222,
+      206,
+      160
+     ],
+     "_wall": [
+      210,
+      210,
+      220
+     ],
+     "_things": {},
+     "_picture": {
+      "f": "pt_ground/C06R0101.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Receptionist",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome to the Great Marsh! Is this your first Safari Game?",
+        "When you enter the Great Marsh, you start with 30 Safari Balls. That's the only kind of Ball you're allowed to use.",
+        "The game is over when you run out of Safari Balls or have walked 500 steps. Have fun!"
+       ]
+      }
+     },
+     {
+      "text": "Cowgirl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Howdy. Playing the Safari Game? Catch five Pokemon in one game and you're a real marsh hand!"
+       ]
+      }
+     }
+    ],
+    "title": "Observatory Gate"
+   },
+   "observatory": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccc",
+     "ccccccccccccc",
+     "cjjccjjccjjcc",
+     "c.j...j...j.c",
+     "c...........c",
+     "c...N..N....c",
+     "c...........c",
+     "ccc.....cc..c",
+     "cmmmm..^cc..c",
+     "cmmN....cc..c",
+     "c....N......c",
+     "c...........c",
+     "ccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:observatory_gate"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      222,
+      206,
+      160
+     ],
+     "_wall": [
+      210,
+      210,
+      220
+     ],
+     "_things": {},
+     "_picture": {
+      "f": "pt_ground/C06R0102.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Woman ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Use a pair of binoculars to look out over the Great Marsh. You can see what kinds of Pokemon can be caught, and where."
+       ]
+      }
+     },
+     {
+      "text": "Boy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "When you're walking on the bog, you sometimes sink right in... There's something pretty cool about it, though."
+       ]
+      }
+     },
+     {
+      "text": "Man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "There are shuttle trains in the marsh called Quick Trams. Take those if you're going to a deeper area."
+       ]
+      }
+     },
+     {
+      "text": "Woman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Tell me I'm not imagining this... The Great Marsh's Pokemon seem to be different from the ones yesterday..."
+       ]
+      }
+     }
+    ],
+    "title": "Great Marsh Observatory"
    }
   },
   "inside": {
    "13,27": "gym",
    "25,44": "mart",
    "24,15": "center",
-   "25,35": "reminder",
+   "25,35": "house_0301",
    "24,24": "house_0501",
    "35,35": "house_0401",
    "48,19": "house_0601",
-   "13,44": "house_0201"
+   "13,44": "house_0201",
+   "34,9": "observatory_gate",
+   "35,9": "observatory_gate"
   },
   "parts": true,
   "hidden": {
    "7,57": "ZINC"
   },
   "people": [
+   {
+    "text": "Crasher Wake",
+    "action": "EVENT",
+    "condition": [
+     "sinnoh_pastoria_bomb_warned",
+     "not:sinnoh_pastoria_bomb"
+    ],
+    "event": {
+     "lines": [
+      "Wake: The Great Marsh is invaluable... I won't let anyone harm it."
+     ]
+    }
+   },
+   {
+    "text": "Galactic Grunt",
+    "action": "EVENT",
+    "condition": [
+     "not:has_fen_badge"
+    ],
+    "event": {
+     "lines": [
+      "Grunt: Grr... The package hasn't arrived from the Veilstone warehouse yet... I have to wait here until then?",
+      "Grunt: Oh, man, I wish I could do something that involved lots of explosives! This is going to be a smashing job for Team Galactic..."
+     ]
+    }
+   },
+   {
+    "text": "Barry",
+    "action": "EVENT",
+    "condition": [
+     "sinnoh_pastoria_bomb_warned",
+     "not:sinnoh_pastoria_bomb"
+    ],
+    "event": {
+     "lines": [
+      "{rival_name}: Hey! What am I, chopped liver? Don't forget I'm here, too!"
+     ]
+    }
+   },
    {
     "text": "Woman",
     "action": "EVENT",
@@ -219792,6 +220642,303 @@
      ]
     }
    }
+  ],
+  "scenes": [
+   {
+    "trigger": {
+     "zone": [
+      13,
+      28,
+      13,
+      28
+     ]
+    },
+    "condition": [
+     "has_fen_badge",
+     "not:sinnoh_pastoria_bomb_warned"
+    ],
+    "flag": "sinnoh_pastoria_bomb_warned",
+    "cast": [
+     {
+      "sheet": "pt_rivel.png",
+      "from": [
+       19,
+       19
+      ],
+      "to": "player",
+      "stay": true,
+      "lines": [
+       "{rival_name}: Oh, hey! You got the Gym Badge here, huh? What'd I tell you? The master is pretty awesome, hey?"
+      ]
+     },
+     {
+      "sheet": "pt_leader3.png",
+      "from": [
+       13,
+       27
+      ],
+      "to": "player",
+      "stay": true,
+      "lines": [
+       "Wake: What's this racket, then? Oh, it's you two."
+      ]
+     },
+     {
+      "as": 0,
+      "lines": [
+       "{rival_name}: Oh, Master!"
+      ]
+     },
+     {
+      "as": 1,
+      "lines": [
+       "Wake: ...Listen, kid. I know your father. I won't deny that. But I don't recall ever taking you on as an apprentice.",
+       "Wake: Besides, you two don't need me. You can become strong on your own."
+      ]
+     },
+     {
+      "as": 0,
+      "lines": [
+       "{rival_name}: It doesn't matter. I made you my master! I decided! But forget that! There's trouble brewing!",
+       "{rival_name}: There's a Team Galactic goon in front of the Observatory Gate. He said something about using a bomb!"
+      ]
+     },
+     {
+      "as": 1,
+      "lines": [
+       "Wake: WHAAAAT?! No one messes with Pastoria! Not on my watch!"
+      ],
+      "leave": [
+       35,
+       10
+      ]
+     },
+     {
+      "as": 0,
+      "lines": [
+       "{rival_name}: Hey! Master! Wait!"
+      ],
+      "leave": [
+       32,
+       14
+      ]
+     }
+    ]
+   },
+   {
+    "trigger": {
+     "zone": [
+      34,
+      10,
+      34,
+      10
+     ]
+    },
+    "condition": [
+     "sinnoh_pastoria_bomb_warned",
+     "not:sinnoh_pastoria_bomb"
+    ],
+    "flag": "sinnoh_pastoria_bomb",
+    "cast": [
+     {
+      "person": "Crasher Wake",
+      "lines": [
+       "Wake: The Great Marsh is invaluable..."
+      ]
+     },
+     {
+      "person": "Barry",
+      "lines": [
+       "{rival_name}: Hey! What am I, chopped liver? Don't forget I'm here, too!"
+      ]
+     },
+     {
+      "as": 0,
+      "lines": [
+       "Wake: So, where's this Galac..."
+      ]
+     },
+     {
+      "as": 0,
+      "lines": [
+       "DDDOOOMMM!!"
+      ],
+      "shake": 900
+     },
+     {
+      "sheet": "pt_gingam.png",
+      "from": [
+       34,
+       9
+      ],
+      "to": "player",
+      "stay": true,
+      "lines": [
+       "Grunt: Fweh! That was rough."
+      ]
+     },
+     {
+      "as": 0,
+      "lines": [
+       "Wake: YOU! What've you done?!"
+      ]
+     },
+     {
+      "as": 2,
+      "lines": [
+       "Grunt: What've I done, you're asking? Well, technically speaking, it wasn't me.",
+       "Grunt: The package that arrived, see, that was a bomb, named the Galactic Bomb. Me, I was told to push the button. So I did. 'Poink!'",
+       "Grunt: Oh, that's right! The test results need reporting! Cheerio, then! You daft codger, your mask's absurd!"
+      ],
+      "leave": [
+       63,
+       12
+      ]
+     },
+     {
+      "as": 0,
+      "lines": [
+       "Wake: You two! Do NOT follow me! Don't let anyone else in, either! There'd be big trouble if there's any of that bomb left!"
+      ],
+      "path": [
+       [
+        34,
+        9
+       ]
+      ],
+      "gone": true
+     },
+     {
+      "as": 1,
+      "lines": [
+       "{rival_name}: Hey! {player_name}! You go after that Galactic goon! I'm staying here like Master said!",
+       "{rival_name}: Gotta keep others from going in! Don't let that Galactic guy get away!"
+      ]
+     }
+    ]
+   }
+  ],
+  "barred": [
+   {
+    "tiles": [
+     [
+      13,
+      28
+     ]
+    ],
+    "look": "sheet:pt_rivel.png",
+    "face": "u",
+    "until": {
+     "flag_condition": "defeated_rival_pastoria"
+    },
+    "lines": [
+     "{rival_name}: Whoops! Hehehe! I'm not always going to plow into you every time we meet!"
+    ],
+    "on_bump": {
+     "need": "has_cobble_badge",
+     "no": [
+      "{rival_name}: Hey, {player_name}! Mr. Wake's Gym is right here! Go get your Badges first!"
+     ],
+     "event": {
+      "lines": [
+       "{rival_name}: Whoops! Hehehe! I'm not always going to plow into you every time we meet!",
+       "{rival_name}: So how's it going, {player_name}? Buffing up your Pokemon, eh? I'll test how buff and tough you are!"
+      ],
+      "battle": {
+       "name": "{rival_name}",
+       "class": "PKMN_TRAINER",
+       "sprite": "{rival_character}",
+       "team": [
+        396,
+        418,
+        315,
+        391
+       ],
+       "team_choice": {
+        "387": [
+         396,
+         418,
+         315,
+         391
+        ],
+        "390": [
+         396,
+         315,
+         77,
+         394
+        ],
+        "393": [
+         396,
+         418,
+         77,
+         388
+        ]
+       },
+       "rewards": {
+        "balls": 5
+       },
+       "victory_flag": "defeated_rival_pastoria",
+       "dialogue": {
+        "intro": [],
+        "player_won": [
+         "{rival_name}: Heh, yeah, maybe you did get a bit tougher since last time. I got beat 'cause I was careless.",
+         "{rival_name}: Oh, yeah, I joined Mr. Wake as an apprentice! Like, I want my own theme song!"
+        ],
+        "player_lost": [
+         "Lake Valor, here I come — AND I BEAT YOU!"
+        ]
+       },
+       "levels": [
+        26,
+        26,
+        27,
+        31
+       ]
+      },
+      "flag": "defeated_rival_pastoria"
+     }
+    }
+   },
+   {
+    "tiles": [
+     [
+      34,
+      10
+     ]
+    ],
+    "look": "sheet:pt_rivel.png",
+    "until_any": [
+     {
+      "flag_condition": "not sinnoh_pastoria_bomb"
+     },
+     {
+      "flag_condition": "sinnoh_valor_grunt_beaten"
+     }
+    ],
+    "lines": [
+     "{rival_name}: What's the matter?! Why aren't you gone already?! Go after that Galactic goon!"
+    ]
+   },
+   {
+    "tiles": [
+     [
+      35,
+      10
+     ]
+    ],
+    "look": "unseen",
+    "until_any": [
+     {
+      "flag_condition": "not sinnoh_pastoria_bomb"
+     },
+     {
+      "flag_condition": "sinnoh_valor_grunt_beaten"
+     }
+    ],
+    "lines": [
+     "{rival_name}: What's the matter?! Why aren't you gone already?! Go after that Galactic goon!"
+    ]
+   }
   ]
  },
  "CELESTIC_TOWN": {
@@ -219804,9 +220951,9 @@
    "c.==.........=====.......==.cccc",
    "c....................N......cccc",
    "c.........................T.cccc",
-   "c......T.ccEEEcccFFFcc.....Tcccc",
-   "c....TT..ccEEEcNcFFFcc......cccc",
-   "c....cccccc....=....cccccc..cccc",
+   "c......T.ccEEERRRFFFcc.....Tcccc",
+   "c....TT..ccEEERDRFFFcc......cccc",
+   "c....cccccc....N..N.cccccc..cccc",
    "c....c..f.c....=....cffffc..cccc",
    "c....c.cccc.........ccccfc..cccc",
    "c....c.cff.............cfc..cccc",
@@ -219841,7 +220988,8 @@
    "F": "house",
    "G": "house",
    "H": "center",
-   "I": "house"
+   "I": "house",
+   "R": "house"
   },
   "roofs": {
    "A": {
@@ -220042,7 +221190,20 @@
      ]
     }
    ],
-   "_models": true
+   "_models": true,
+   "R": {
+    "roof": [
+     128,
+     118,
+     104
+    ],
+    "wall": [
+     104,
+     96,
+     86
+    ],
+    "design": "block"
+   }
   },
   "signs": [
    [
@@ -220069,16 +221230,68 @@
      ]
     }
    },
-   "Celestic Ruins",
+   {
+    "text": "Galactic Grunt",
+    "action": "EVENT",
+    "condition": [
+     "not:sinnoh_celestic_grunt_beaten"
+    ],
+    "event": {
+     "lines": [
+      "Grunt: This town is insignificant! There's nothing of value here. It doesn't need to exist, so I'll blow it up with a Galactic Bomb!",
+      "Grunt: You dare to oppose Team Galactic? That means you're taking on the world... No, the universe, even!"
+     ],
+     "flag": "sinnoh_celestic_grunt_beaten",
+     "battle": {
+      "name": "Galactic Grunt",
+      "class": "GALACTIC_GRUNT",
+      "sprite": "pt_galactic_grunt_m.png",
+      "team": [
+       228,
+       42
+      ],
+      "levels": [
+       32,
+       30
+      ],
+      "rewards": {
+       "balls": 3
+      },
+      "dialogue": {
+       "player_won": [
+        "Grunt: Too much to handle... I can't do anything here... This place is nothing! I'll be happily rid of this place!"
+       ]
+      }
+     }
+    }
+   },
+   {
+    "text": "Cynthia",
+    "action": "EVENT",
+    "condition": [
+     "got_hm_surf_celestic",
+     "not:canalave_library_meeting"
+    ],
+    "event": {
+     "lines": [
+      "Cynthia: By the way, were the ruins fun to explore?",
+      "Cynthia: If you're interested, there is a library in Canalave City, stocked with ancient books. You can look up Sinnoh's history there."
+     ]
+    }
+   },
    "DRAGON FANG",
    {
     "text": "Old woman",
     "action": "EVENT",
     "event": {
      "lines": [
-      "You came all this way. Take your time and look at the ruins."
+      "Old woman: There's an odd spaceman in front of the ruins. There isn't anything there, but that only seemed to make him angry.",
+      "Old woman: He's saying he will blow the town up with some bomb!"
      ]
-    }
+    },
+    "condition": [
+     "not:sinnoh_celestic_grunt_beaten"
+    ]
    },
    {
     "text": "Little boy",
@@ -221460,22 +222673,76 @@
     },
     "people": [
      {
-      "text": "Glasses man",
-      "action": "EVENT",
-      "event": {
-       "lines": [
-        "Put on glasses, and the world looks different. Take them off, same thing. Deep.",
-        "Want to change how the world looks? Try these."
-       ],
-       "gift_item": {
-        "BLACK_GLASSES": 1
+      "any": [
+       {
+        "text": "Glasses man",
+        "action": "EVENT",
+        "color": "GOLD",
+        "condition": [
+         "time:day",
+         "not:got_choice_specs_celestic"
+        ],
+        "event": {
+         "lines": [
+          "Putting on a pair of glasses changes how the world looks. Taking them off changes it too. Deep, man.",
+          "So, would you like to change how the world looks to your Pokemon?",
+          "Morning is the start of a new day. Put on the Choice Specs and make it a good one!",
+          "You received the Choice Specs!"
+         ],
+         "gift_item": {
+          "CHOICE_SPECS": 1
+         },
+         "flag": "got_choice_specs_celestic"
+        }
        },
-       "flag": "got_black_glasses_celestic_town",
-       "done": [
-        "Glasses change everything. Deep, man."
-       ]
-      },
-      "color": "GOLD"
+       {
+        "text": "Glasses man",
+        "action": "EVENT",
+        "color": "GOLD",
+        "condition": [
+         "time:night",
+         "not:got_wise_glasses_celestic"
+        ],
+        "event": {
+         "lines": [
+          "Putting on a pair of glasses changes how the world looks. Taking them off changes it too. Deep, man.",
+          "So, would you like to change how the world looks to your Pokemon?",
+          "The night is for deep thinking. The Wise Glasses will help with that!",
+          "You received the Wise Glasses!"
+         ],
+         "gift_item": {
+          "WISE_GLASSES": 1
+         },
+         "flag": "got_wise_glasses_celestic"
+        }
+       },
+       {
+        "text": "Glasses man",
+        "action": "EVENT",
+        "condition": [
+         "time:day",
+         "got_choice_specs_celestic"
+        ],
+        "event": {
+         "lines": [
+          "Glasses change everything. Come back at another time of day, man."
+         ]
+        }
+       },
+       {
+        "text": "Glasses man",
+        "action": "EVENT",
+        "condition": [
+         "time:night",
+         "got_wise_glasses_celestic"
+        ],
+        "event": {
+         "lines": [
+          "Glasses change everything. Come back at another time of day, man."
+         ]
+        }
+       }
+      ]
      }
     ]
    },
@@ -221507,7 +222774,14 @@
       210,
       220
      ],
-     "_things": {}
+     "_things": {},
+     "_picture": {
+      "f": "pt_ground/T05R0301.png",
+      "at": [
+       0,
+       1
+      ]
+     }
     },
     "people": [
      {
@@ -221558,7 +222832,14 @@
       210,
       220
      ],
-     "_things": {}
+     "_things": {},
+     "_picture": {
+      "f": "pt_ground/T05R0401.png",
+      "at": [
+       0,
+       1
+      ]
+     }
     },
     "people": [
      {
@@ -221580,6 +222861,123 @@
       }
      }
     ]
+   },
+   "ruins": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "cccc...NN..cccc",
+     "ccc..........cc",
+     "cc...cc..cc..cc",
+     "c..ccc...rcc.cc",
+     "c..c.......c..c",
+     "c..c.......c..c",
+     "c..cc....ccc..c",
+     "c...cccccc...cc",
+     "cc......r...rcc",
+     "cc.........cccc",
+     "ccccc....cccccc",
+     "cccccr...cccccc",
+     "ccccccc..cccccc",
+     "ccccccc..rccccc",
+     "ccccccc...ccccc",
+     "ccccccc...ccccc",
+     "ccccccc...ccccc",
+     "ccccccc.v.ccccc",
+     "ccccccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:15,9"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      222,
+      206,
+      160
+     ],
+     "_wall": [
+      210,
+      210,
+      220
+     ],
+     "_things": {},
+     "_picture": {
+      "f": "pt_ground/T05R0501.png",
+      "at": [
+       2,
+       1
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Cyrus",
+      "action": "EVENT",
+      "condition": [
+       "delivered_old_charm",
+       "not:defeated_cyrus_celestic"
+      ],
+      "event": {
+       "lines": [
+        "Cyrus: ...Remarkable. But, Elder, your attitude told me what I needed to know.",
+        "Cyrus: If the beings of time and space are brought together, they can't be stopped...",
+        "Cyrus: ...I know you, Trainer. We've met at Mt. Coronet. Why would you want to protect this incomplete world?",
+        "Cyrus: As the boss of Team Galactic, I will show you the error of your ways."
+       ],
+       "flag": "defeated_cyrus_celestic",
+       "battle": {
+        "name": "Galactic Boss Cyrus",
+        "class": "GALACTIC_BOSS",
+        "sprite": "cyrus.png",
+        "is_boss_battle": true,
+        "team": [
+         215,
+         42,
+         198
+        ],
+        "levels": [
+         34,
+         34,
+         36
+        ],
+        "rewards": {
+         "balls": 5
+        },
+        "dialogue": {
+         "player_won": [
+          "Cyrus: ...So this is your strength. It changes nothing. Stand aside and watch as I change the world."
+         ]
+        }
+       }
+      }
+     },
+     {
+      "text": "Elder",
+      "action": "EVENT",
+      "condition": [
+       "delivered_old_charm"
+      ],
+      "event": {
+       "lines": [
+        "Elder: Such a strange, strange man. The time and space of Sinnoh are filled with the memories of countless people and Pokemon.",
+        "Elder: This is a wonderful world. What need is there to change it?",
+        "Elder: Oh, yes. I found something useful. It belonged to my granddaughter, but she doesn't use it. You should take this.",
+        "You received HM03 Surf!",
+        "Elder: If a Pokemon learns Surf, it can carry you across water and the sea. That's my thanks for your help."
+       ],
+       "gift_item": {
+        "HM_SURF": 1
+       },
+       "flag": "got_hm_surf_celestic",
+       "done": [
+        "Elder: That cave painting is preserved because we value the memories it represents: people and Pokemon, long ago."
+       ]
+      }
+     }
+    ],
+    "title": "Celestic Ruins"
    }
   },
   "inside": {
@@ -221587,8 +222985,60 @@
    "24,26": "center",
    "2,3": "house_0201",
    "25,3": "house_0301",
-   "6,26": "house_0401"
-  }
+   "6,26": "house_0401",
+   "15,9": "ruins"
+  },
+  "scenes": [
+   {
+    "trigger": {
+     "zone": [
+      11,
+      9,
+      20,
+      15
+     ]
+    },
+    "condition": [
+     "sinnoh_celestic_grunt_beaten",
+     "not:delivered_old_charm",
+     "has_item:OLD_CHARM"
+    ],
+    "flag": "delivered_old_charm",
+    "cast": [
+     {
+      "sheet": "pt_oldwoman1.png",
+      "from": [
+       14,
+       26
+      ],
+      "to": "player",
+      "stay": true,
+      "lines": [
+       "Elder: Oh, you were magnificent! As the elder of Celestic Town, I give you my thanks.",
+       "Elder: Oh? That Old Charm... May I see that, dear? ...Cynthia entrusted you with it to deliver to me? She's my granddaughter."
+      ]
+     },
+     {
+      "as": 0,
+      "lines": [
+       "You handed over the Old Charm to the Elder.",
+       "Elder: This Old Charm was made in Celestic Town long, long ago, in honor of a mythical deity said to have created Sinnoh.",
+       "Elder: Since you're in Celestic Town, why not look around inside the ruins?"
+      ],
+      "leave": [
+       15,
+       10
+      ]
+     }
+    ],
+    "event": {
+     "lines": [],
+     "take_item": {
+      "OLD_CHARM": 1
+     }
+    }
+   }
+  ]
  },
  "CANALAVE_CITY": {
   "art": [
@@ -222509,34 +223959,34 @@
    "gym": {
     "theme": "room",
     "art": [
-     "................................",
-     "................................",
-     "................................",
-     "........N.....N.N.......N.......",
-     "................................",
-     "...........................N....",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "......................N.........",
-     ".........N......................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "................................",
-     "...............N...........N....",
-     "................................",
-     "................v...............",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccc...c.................ccccc",
+     "cccccc...c.................ccccc",
+     "cccccc...c.................ccccc",
+     "cccccc...ccccccccccccccccccccccc",
+     "cccccc...........c.........ccccc",
+     "cccccc...........c.........ccccc",
+     "cccccc...........c.........ccccc",
+     "cccccc...........c.........ccccc",
+     "cccccc................N....ccccc",
+     "cccccc...N.................ccccc",
+     "cccccc...ccccccccccc.......ccccc",
+     "cccccc.............c.......ccccc",
+     "cccccc.............ccccc...ccccc",
+     "cccccc.............c...c...c...c",
+     "cccccc.............c...c...c...c",
+     "cccccc.............c...c...c...c",
+     "cccccc.............c...ccccc...c",
+     "cccccc........cN..cc.......N...c",
+     "cccccc.............c...........c",
+     "cccccc..........v..c...........c",
      "cccccccccccccccccccccccccccccccc"
     ],
     "exits": {
@@ -222573,7 +224023,7 @@
      ],
      "_models": true,
      "_picture": {
-      "f": "pt_ground/C02GYM0101.png",
+      "f": "pt_ground/C02GYM0101_f0.png",
       "at": [
        0,
        0
@@ -222581,147 +224031,6 @@
      }
     },
     "people": [
-     {
-      "text": "Worker Gerardo",
-      "action": "EVENT",
-      "event": {
-       "lines": [
-        "Worker Gerardo: Two Magnemite, double the trouble!"
-       ],
-       "battle": {
-        "name": "Worker Gerardo",
-        "class": "WORKER",
-        "sprite": "pt_worker.png",
-        "team": [
-         81,
-         81
-        ],
-        "levels": [
-         35,
-         35
-        ],
-        "rewards": {
-         "balls": 2
-        },
-        "dialogue": {
-         "player_won": [
-          "Worker Gerardo: Double the trouble for me, then."
-         ]
-        }
-       },
-       "flag": "gym_trainer_CANALAVE_CITY_6",
-       "done": [
-        "Worker Gerardo: Double the trouble for me, then."
-       ]
-      }
-     },
-     {
-      "text": "Worker Jackson",
-      "action": "EVENT",
-      "event": {
-       "lines": [
-        "Worker Jackson: Byron's Gym runs on hard work!"
-       ],
-       "battle": {
-        "name": "Worker Jackson",
-        "class": "WORKER",
-        "sprite": "pt_worker.png",
-        "team": [
-         81,
-         81,
-         81
-        ],
-        "levels": [
-         34,
-         34,
-         34
-        ],
-        "rewards": {
-         "balls": 2
-        },
-        "dialogue": {
-         "player_won": [
-          "Worker Jackson: Back to work for me..."
-         ]
-        }
-       },
-       "flag": "gym_trainer_CANALAVE_CITY_2",
-       "done": [
-        "Worker Jackson: Back to work for me..."
-       ]
-      }
-     },
-     "Gym",
-     {
-      "text": "Black Belt David",
-      "action": "EVENT",
-      "event": {
-       "lines": [
-        "Black Belt David: My Steelix will crush you!"
-       ],
-       "battle": {
-        "name": "Black Belt David",
-        "class": "BLACK_BELT",
-        "sprite": "pt_black_belt.png",
-        "team": [
-         208,
-         208
-        ],
-        "levels": [
-         35,
-         37
-        ],
-        "rewards": {
-         "balls": 2
-        },
-        "dialogue": {
-         "player_won": [
-          "Black Belt David: Steel is strong, but you're stronger."
-         ]
-        }
-       },
-       "flag": "gym_trainer_CANALAVE_CITY_1",
-       "done": [
-        "Black Belt David: Steel is strong, but you're stronger."
-       ]
-      }
-     },
-     {
-      "text": "Ace Trainer Breanna",
-      "action": "EVENT",
-      "event": {
-       "lines": [
-        "Ace Trainer Breanna: Bronzor can take any hit. Try us!"
-       ],
-       "battle": {
-        "name": "Ace Trainer Breanna",
-        "class": "ACE_TRAINER",
-        "sprite": "pt_ace_trainer_f.png",
-        "team": [
-         436,
-         436,
-         436
-        ],
-        "levels": [
-         35,
-         36,
-         38
-        ],
-        "rewards": {
-         "balls": 2
-        },
-        "dialogue": {
-         "player_won": [
-          "Ace Trainer Breanna: They took every hit... except yours."
-         ]
-        }
-       },
-       "flag": "gym_trainer_CANALAVE_CITY_7",
-       "done": [
-        "Ace Trainer Breanna: They took every hit... except yours."
-       ]
-      }
-     },
      {
       "text": "Worker Gary",
       "action": "EVENT",
@@ -222827,6 +224136,218 @@
        ]
       }
      }
+    ],
+    "title": "Canalave Gym 1F",
+    "scenes": [
+     {
+      "trigger": {
+       "zone": [
+        16,
+        9,
+        16,
+        9
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:0:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 0
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        11,
+        13,
+        11,
+        13
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:1:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 1
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        15,
+        13,
+        15,
+        13
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:2:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 2
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        19,
+        13,
+        19,
+        13
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:3:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 3
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        24,
+        13,
+        24,
+        13
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:4:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 4
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        21,
+        22,
+        21,
+        22
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:5:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 5
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        25,
+        9,
+        25,
+        9
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:6:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 6
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        25,
+        22,
+        25,
+        22
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:7:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 7
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        29,
+        22,
+        29,
+        22
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:8:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 8
+      }
+     }
+    ],
+    "landings": [
+     [
+      11,
+      13
+     ],
+     [
+      15,
+      13
+     ],
+     [
+      16,
+      9
+     ],
+     [
+      19,
+      13
+     ],
+     [
+      21,
+      22
+     ],
+     [
+      24,
+      13
+     ],
+     [
+      25,
+      9
+     ],
+     [
+      25,
+      22
+     ],
+     [
+      29,
+      22
+     ]
     ]
    },
    "center": {
@@ -226003,6 +227524,970 @@
       ]
      }
     }
+   },
+   "gym_2f": {
+    "theme": "room",
+    "buildings": {},
+    "art": [
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccc...c....N.......c........c",
+     "cccccc...c............c........c",
+     "cccccc...c............c....N...c",
+     "cccccc...c...ccccccc..c.cccc...c",
+     "cccccc...c...c.....c..c....c...c",
+     "cccccccccc...c.ccc.c..c....c...c",
+     "cccccccccc...c.ccc.c..c....c...c",
+     "cccccccccc...c.ccc.c..c....c...c",
+     "cccccc...c...ccccccccccccccccccc",
+     "cccccccccc...c...c....c........c",
+     "cccccccccc...c...c....c........c",
+     "cccccccccc...c...c....c........c",
+     "cccccccccccccccccccc..c........c",
+     "cccccccccccccccccccc..ccccccc..c",
+     "cccccccccccccccccccc.......c...c",
+     "cccccccccccccccccccc.......c...c",
+     "cccccccccccccccccccc.......c...c",
+     "c.........cccccccccccccc...c...c",
+     "c.........cccccccccc...c...c...c",
+     "c..ccccc....cccccc.....c...c...c",
+     "c......c..cccccccccc...c...c...c",
+     "c......c..cccccccccccccccccccccc",
+     "c......c..cccccccccccccccccccccc",
+     "c......c..cccccccccccccccccccccc",
+     "c......c..cccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc"
+    ],
+    "people": [
+     {
+      "text": "Worker Jackson",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Worker Jackson: Byron's Gym runs on hard work!"
+       ],
+       "battle": {
+        "name": "Worker Jackson",
+        "class": "WORKER",
+        "sprite": "pt_worker.png",
+        "team": [
+         81,
+         81,
+         81
+        ],
+        "levels": [
+         34,
+         34,
+         34
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Worker Jackson: Back to work for me..."
+         ]
+        }
+       },
+       "flag": "gym_trainer_CANALAVE_CITY_2",
+       "done": [
+        "Worker Jackson: Back to work for me..."
+       ]
+      }
+     },
+     {
+      "text": "Ace Trainer Breanna",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Ace Trainer Breanna: Bronzor can take any hit. Try us!"
+       ],
+       "battle": {
+        "name": "Ace Trainer Breanna",
+        "class": "ACE_TRAINER",
+        "sprite": "pt_ace_trainer_f.png",
+        "team": [
+         436,
+         436,
+         436
+        ],
+        "levels": [
+         35,
+         36,
+         38
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Ace Trainer Breanna: They took every hit... except yours."
+         ]
+        }
+       },
+       "flag": "gym_trainer_CANALAVE_CITY_7",
+       "done": [
+        "Ace Trainer Breanna: They took every hit... except yours."
+       ]
+      }
+     }
+    ],
+    "exits": {},
+    "title": "Canalave Gym 2F",
+    "roofs": {
+     "_picture": {
+      "f": "pt_ground/C02GYM0101_f1.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "scenes": [
+     {
+      "trigger": {
+       "zone": [
+        11,
+        13,
+        11,
+        13
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:1:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 1
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        15,
+        13,
+        15,
+        13
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:2:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 2
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        19,
+        13,
+        19,
+        13
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:3:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 3
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        24,
+        13,
+        24,
+        13
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:4:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 4
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        21,
+        22,
+        21,
+        22
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:5:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 5
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        25,
+        9,
+        25,
+        9
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:6:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 6
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        25,
+        22,
+        25,
+        22
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:7:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 7
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        29,
+        22,
+        29,
+        22
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:8:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 8
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        5,
+        26,
+        5,
+        26
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:9:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 9
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        11,
+        22,
+        11,
+        22
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:10:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 10
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        18,
+        22,
+        18,
+        22
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:10:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 10
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        29,
+        9,
+        29,
+        9
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:11:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 11
+      }
+     }
+    ],
+    "landings": [
+     [
+      5,
+      26
+     ],
+     [
+      11,
+      13
+     ],
+     [
+      11,
+      22
+     ],
+     [
+      15,
+      13
+     ],
+     [
+      18,
+      22
+     ],
+     [
+      19,
+      13
+     ],
+     [
+      21,
+      22
+     ],
+     [
+      24,
+      13
+     ],
+     [
+      25,
+      9
+     ],
+     [
+      25,
+      22
+     ],
+     [
+      29,
+      9
+     ],
+     [
+      29,
+      22
+     ]
+    ]
+   },
+   "gym_3f": {
+    "theme": "room",
+    "buildings": {},
+    "art": [
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "c..c....Nccccccc..ccccccN......c",
+     "c..c.......ccc......cc.........c",
+     "c..c.....ccccccc..cccccc.......c",
+     "c..c.....ccccc......cccc.......c",
+     "c..c..cccccccc......cccccc.ccccc",
+     "c..c..cccccccc.ccc..cccc.c.c...c",
+     "c..c..cccccccc.ccc..cccc.c.c...c",
+     "c..c..cccccccc.ccc..cccc.c.c...c",
+     "cccc..cccccccccccccccccc.c.c...c",
+     "c.......cccccccccccccc...c.c...c",
+     "c.....cccccccccccccccccc.c.c...c",
+     "c.....cccccccccccccccccc.c.c...c",
+     "c.....cccccccccccccccccccc.cc.cc",
+     "c.....cccccccccccccccccccc.cc.cc",
+     "c.....cccccccccccccccccccccccccc",
+     "cc.ccccccccccccccccccccccccccccc",
+     "cc.ccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cc.ccccccccccccccccccccccc.cc.cc",
+     "cc.ccccccccccccccccccccccc.cc.cc",
+     "c.......ccccccccccccccc.c......c",
+     "c.......ccccccccccccccc.c......c",
+     "c.........ccccccccccc...c......c",
+     "c.......ccccccccccccccc.c......c",
+     "cccccccccccccccccccccccccccccccc"
+    ],
+    "people": [
+     {
+      "text": "Worker Gerardo",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Worker Gerardo: Two Magnemite, double the trouble!"
+       ],
+       "battle": {
+        "name": "Worker Gerardo",
+        "class": "WORKER",
+        "sprite": "pt_worker.png",
+        "team": [
+         81,
+         81
+        ],
+        "levels": [
+         35,
+         35
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Worker Gerardo: Double the trouble for me, then."
+         ]
+        }
+       },
+       "flag": "gym_trainer_CANALAVE_CITY_6",
+       "done": [
+        "Worker Gerardo: Double the trouble for me, then."
+       ]
+      }
+     },
+     {
+      "text": "Black Belt David",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Black Belt David: My Steelix will crush you!"
+       ],
+       "battle": {
+        "name": "Black Belt David",
+        "class": "BLACK_BELT",
+        "sprite": "pt_black_belt.png",
+        "team": [
+         208,
+         208
+        ],
+        "levels": [
+         35,
+         37
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Black Belt David: Steel is strong, but you're stronger."
+         ]
+        }
+       },
+       "flag": "gym_trainer_CANALAVE_CITY_1",
+       "done": [
+        "Black Belt David: Steel is strong, but you're stronger."
+       ]
+      }
+     }
+    ],
+    "exits": {},
+    "title": "Canalave Gym 3F",
+    "roofs": {
+     "_picture": {
+      "f": "pt_ground/C02GYM0101_f2.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "scenes": [
+     {
+      "trigger": {
+       "zone": [
+        5,
+        26,
+        5,
+        26
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:9:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 9
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        29,
+        9,
+        29,
+        9
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:11:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 11
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        10,
+        4,
+        10,
+        4
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:12:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 12
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        14,
+        4,
+        14,
+        4
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:12:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 12
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        19,
+        4,
+        19,
+        4
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:13:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 13
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        22,
+        4,
+        22,
+        4
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:13:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 13
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        7,
+        12,
+        7,
+        12
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:14:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 14
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        22,
+        12,
+        22,
+        12
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:14:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 14
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        9,
+        26,
+        9,
+        26
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:15:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 15
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        21,
+        26,
+        21,
+        26
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:15:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 15
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        2,
+        19,
+        2,
+        19
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:16:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 16
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        2,
+        22,
+        2,
+        22
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:16:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 16
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        26,
+        16,
+        26,
+        16
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:17:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 17
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        26,
+        22,
+        26,
+        22
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:17:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 17
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        29,
+        16,
+        29,
+        16
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:18:A"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 18
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        29,
+        22,
+        29,
+        22
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:18:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 18
+      }
+     }
+    ],
+    "landings": [
+     [
+      2,
+      19
+     ],
+     [
+      2,
+      22
+     ],
+     [
+      5,
+      26
+     ],
+     [
+      7,
+      12
+     ],
+     [
+      9,
+      26
+     ],
+     [
+      10,
+      4
+     ],
+     [
+      14,
+      4
+     ],
+     [
+      19,
+      4
+     ],
+     [
+      21,
+      26
+     ],
+     [
+      22,
+      4
+     ],
+     [
+      22,
+      12
+     ],
+     [
+      26,
+      16
+     ],
+     [
+      26,
+      22
+     ],
+     [
+      29,
+      9
+     ],
+     [
+      29,
+      16
+     ],
+     [
+      29,
+      22
+     ]
+    ]
+   },
+   "gym_4f": {
+    "theme": "room",
+    "buildings": {},
+    "art": [
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "ccccccccccccccccNccccccccccc...c",
+     "ccccccccccccccc.....cccccc.....c",
+     "ccccccccccccccc...cccccccccc...c",
+     "cccccccccccccc.....cccccccccc.cc",
+     "cccccccccccccc.....cccccccccc.cc",
+     "c........ccccc.....ccccccccccccc",
+     "c........ccccc.....ccccccccccccc",
+     "c........ccccc.....ccccccccccccc",
+     "cc.ccccccccccccccccccccccccccccc",
+     "cc.ccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "cc.cccccccccccccccccccccccccc.cc",
+     "cc.cccccccccccccccccccccccccc.cc",
+     "c...cccccccccccccccccccccccc...c",
+     "c.....cccccccccccccccccccc.....c",
+     "c...cccccccccccccccccccccccc...c",
+     "cccccccccccccccccccccccccccccccc"
+    ],
+    "people": [
+     "Gym"
+    ],
+    "exits": {},
+    "title": "Canalave Gym 4F",
+    "roofs": {
+     "_picture": {
+      "f": "pt_ground/C02GYM0101_f3.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "scenes": [
+     {
+      "trigger": {
+       "zone": [
+        16,
+        9,
+        16,
+        9
+       ]
+      },
+      "every": true,
+      "condition": [
+       "world:canalave_gym:at:0:B"
+      ],
+      "cast": [],
+      "event": {
+       "world": "canalave_gym",
+       "ride": 0
+      }
+     }
+    ],
+    "landings": [
+     [
+      16,
+      9
+     ]
+    ]
    }
   },
   "inside": {
@@ -226073,6 +228558,116 @@
     }
    },
    "TM060"
+  ],
+  "scenes": [
+   {
+    "trigger": {
+     "zone": [
+      15,
+      19,
+      15,
+      22
+     ]
+    },
+    "every": true,
+    "condition": [
+     "has_relic_badge",
+     "not:defeated_rival_canalave"
+    ],
+    "flag": "sinnoh_canalave_barry_met",
+    "cast": [
+     {
+      "sheet": "pt_rivel.png",
+      "from": [
+       11,
+       20
+      ],
+      "to": "player",
+      "lines": [
+       "{rival_name}: Whoops! Hey, {player_name}! You're going to challenge the Gym Leader past here, eh?",
+       "{rival_name}: Someone should check you're ready for it! That someone is me, with my brand-new Gym Badge!"
+      ]
+     }
+    ],
+    "event": {
+     "flag": "defeated_rival_canalave",
+     "battle": {
+      "name": "{rival_name}",
+      "class": "PKMN_TRAINER",
+      "sprite": "{rival_character}",
+      "team": [
+       397,
+       418,
+       214,
+       315,
+       391
+      ],
+      "team_choice": {
+       "387": [
+        397,
+        418,
+        214,
+        315,
+        391
+       ],
+       "390": [
+        397,
+        315,
+        214,
+        77,
+        394
+       ],
+       "393": [
+        397,
+        418,
+        214,
+        77,
+        388
+       ]
+      },
+      "rewards": {
+       "balls": 5
+      },
+      "dialogue": {
+       "intro": [],
+       "player_won": [
+        "{rival_name}: Yeah, yeah, you're just a bit better than me, as usual.",
+        "{rival_name}: But I'm the one who's going to become the Champion! Anyway, go train on Iron Island. That's what I did before the Gym!"
+       ],
+       "player_lost": [
+        "FINALLY! I'm getting closer to you!"
+       ]
+      },
+      "levels": [
+       32,
+       33,
+       32,
+       34,
+       37
+      ]
+     }
+    }
+   }
+  ],
+  "barred": [
+   {
+    "tiles": [
+     [
+      5,
+      15
+     ]
+    ],
+    "look": "sheet:pt_rivel.png",
+    "face": "d",
+    "when": {
+     "condition": "has_mine_badge"
+    },
+    "item": "HM_STRENGTH",
+    "lines": [
+     "{rival_name}: Hey, you're here! Finally! Oh... you haven't been to Iron Island yet? No HM Strength?",
+     "{rival_name}: Aww, sheesh! I'll wait here for you! Hurry up and go already!"
+    ]
+   }
   ]
  },
  "SNOWPOINT_CITY": {
@@ -257552,7 +260147,7 @@
    "FFFFFF============...\"\"\"\"\"\"..\"....TTTTcccccTTTT.ffN.ff.ceeeeeeeecaaaeaaaackeeeekccoooooorroooooo",
    "FFFFFF<===========..\"\"\"\"\".===.........cccccTTTT........ckkkkeeeecaaaeaaaackeeeekccoooooorroooooo",
    "FFFFFF<===========\"\"\"\"\"\"\"==========...cccccTTTTTTTTTTTTccccccccccaaaeeeeeckeeNekccoooooorroooooo",
-   "FFFFFF===========.\"\"\"\"\"...==========..cccccTTTTTTTTTTTTcccccccccciiicccccckeeeekccoooooooorroooo",
+   "FFFFFF===========.\"\"\"\"\"...==========..cccccTTTTTTTTTTTTcccccccccciDicccccckeeeekccoooooooorroooo",
    "TTTTTT...........\"\"\"\"\"\"\"....=======...ccccck\"\"\"TT\"\"TT\"kccckkkkkaGGGGGakkkkkeeeekccoooooooorrorro",
    "TTTTTT.......\"\"\"\"\"\"\"\"\".\"..............ccccck\"\"\"TT\"\"TT\"kccckeeekaGGGGGakeekccccccccoooooooorrorro",
    "TTTTTT...\"\"\"\"\"\"\"\"\"\"\"\"\".ccccccc........ccccck\"\"\"\"\"\"\"\"\"\"kccckeeekaGGGGGakeekccccccccoooooooorroooo",
@@ -257571,7 +260166,7 @@
    "TTTTTTTTTTTTTTcccccccssssssssscccccccsccccccccccccccccccccccssssssssssssssssoooooooooooorroooooo",
    "TTTTTTTTTTTTTTcccccccsIIIIsssscccccccNccccccccccccccccccccccssssssssssssssssoooooooooooorro~~ooo",
    "TTTTTTTTTTTTTTcccccccsIIIIsssscccccccccssssssssssssssssssssssssXssssssssssssoooooooooorrooorrooo",
-   "TTTTTTTTTTTTTTcccccccsIIIIsssssssscccccssssssssssooooooooooooooooooooooooooooooooooooorroooooooo",
+   "TTTTTTTTTTTTTTcccccccsIIIIsssssssscccccssssNsssssooooooooooooooooooooooooooooooooooooorroooooooo",
    "TTTTTTTTTTTTTTcccccccsIDIIssssssssccccsssssssooooooooooooooooooooooooooooooooooooooorroorroooooo",
    "TTTTTTTTTTTTTTcccccccssss!sssssssssssssssssooooooooooooooooooooooooooooooooooooooooorroorroooooo",
    "<oTTTTTTTTTTTTcccccccssssssssssssssssssssooooooooooooocccoooooooooooooooooooooooooorrooooorroooo",
@@ -259061,6 +261656,23 @@
    "TM172",
    "TM027",
    {
+    "text": "Galactic Grunt",
+    "action": "EVENT",
+    "condition": [
+     "sinnoh_pastoria_bomb",
+     "not:sinnoh_r213_grunt_heard"
+    ],
+    "event": {
+     "lines": [
+      "Grunt: We needed the energy from the Valley Windworks to make this... Our boss, who made this, is a scientific mechanical genius!",
+      "Grunt: Graw! You were eavesdropping! I was just thinking out loud! But I'm not going to waste my energy knocking you around...",
+      "Grunt: But, boy, this Galactic Bomb packs a pretty big wallop. With this baby there's not much we can't blow up...",
+      "The Grunt ran off toward Valor Lakefront!"
+     ],
+     "flag": "sinnoh_r213_grunt_heard"
+    }
+   },
+   {
     "text": "Fisherman",
     "action": "EVENT",
     "event": {
@@ -259078,7 +261690,7 @@
     "art": [
      "ccccccccccccccccc",
      "ccccccccccccccccc",
-     "ccccccccvcccccccc",
+     "ccccccccncccccccc",
      "cz...mc..Nccccczc",
      "c.....c...ccccc.c",
      "c..N..c...ccccc.c",
@@ -259091,7 +261703,8 @@
      "ccccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:66,18"
+     "v": "OUT:66,18",
+     "n": "OUT:66,14"
     },
     "buildings": {},
     "roofs": {
@@ -259306,7 +261919,19 @@
        ]
       }
      }
-    ]
+    ],
+    "land": {
+     "66,14": [
+      66,
+      13
+     ]
+    },
+    "enter": {
+     "66,14": [
+      8,
+      3
+     ]
+    }
    },
    "house_0401": {
     "theme": "room",
@@ -259889,15 +262514,108 @@
        ]
       }
      }
-    ]
+    ],
+    "hidden": {
+     "9,5": "MAX_REVIVE"
+    }
+   },
+   "house_0201": {
+    "theme": "room",
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "cmm....mmmc",
+     "cm......mmc",
+     "c.......mmc",
+     "c....N....c",
+     "c.........c",
+     "c...v.....c",
+     "ccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:23,34"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      222,
+      206,
+      160
+     ],
+     "_wall": [
+      210,
+      210,
+      220
+     ],
+     "_things": {},
+     "_picture": {
+      "f": "pt_ground/R213R0201.png",
+      "at": [
+       0,
+       1
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Dr. Footstep",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Dr. Footstep: Pokemon are quite easy for me to read. I need only to see their footprints, and their innermost thoughts are revealed to me!",
+        "Dr. Footstep: Oh? You are skeptical? Then let me see your first Pokemon's footprints...",
+        "Dr. Footstep: Hmm... It walks close beside you, step for step. It trusts you more every day. Keep treating it kindly!"
+       ]
+      }
+     }
+    ],
+    "title": "Footprint House"
    }
   },
   "inside": {
    "66,18": "house_0301",
    "70,10": "house_0401",
    "61,5": "house_0501",
-   "72,5": "house_0601"
-  }
+   "72,5": "house_0601",
+   "23,34": "house_0201",
+   "66,14": "house_0301"
+  },
+  "scenes": [
+   {
+    "trigger": {
+     "zone": [
+      30,
+      26,
+      56,
+      40
+     ]
+    },
+    "condition": [
+     "sinnoh_r213_grunt_heard",
+     "not:sinnoh_r213_looker"
+    ],
+    "flag": "sinnoh_r213_looker",
+    "cast": [
+     {
+      "sheet": "pt_icpo.png",
+      "from": [
+       31,
+       35
+      ],
+      "to": "player",
+      "lines": [
+       "Looker: Hello, my friend! The cargo that the Team Galactic brought is worrisome, so I have come.",
+       "Looker: ...You say the cargo, it was a bomb? And there was an explosion at the Great Marsh? And you are pursuing a man with funny bowl-cut hair?",
+       "Looker: Oh, no, no, no! The man I have seen running away, he was the bearer of the bomb! Ach! Wait! Wait, I say!"
+      ],
+      "leave": [
+       56,
+       33
+      ]
+     }
+    ]
+   }
+  ]
  },
  "VALOR_LAKEFRONT": {
   "art": [
@@ -259947,7 +262665,7 @@
    "TTTTTTTccTTTTTTTTTTTTTTTTTTckkkAAAAeeeeeeecc.TTTTTTTT",
    "ccccc..cc......TTTTTTTTTT..ceNkAAAAeeeeeeecc.TTTTTTTT",
    "ccccc..//......TTTTTTTTTT../eekADAAeeeeeeecc.TTTTTTTT",
-   "TTTcc..ccccccc/cccccccccc/cceekaaaaeeeeeeecc.TTTTTTTT",
+   "TTTcc..ccccccc/cccccccccc/cceekaNaaeeeeeeecc.TTTTTTTT",
    "TTTcc..ccccccc/cccccccccc/cceNkaaaaeeeeeeecc.TTTTTTTT",
    "TTTcc........c/cccccccccc/cckkkeeeeeeeeeeecc.TTTTTTTT",
    "TTTcc........ceeeeeeeeeeeeccccccccc===cckkcc.TTTTTTTT",
@@ -259955,7 +262673,7 @@
    "TTTcccccccc/cccccccccccccccccceeeeeeeecckkcc........>",
    "Tcccccccccc/ccceeeeeaBBBBBaaa=aaaaaaaa==aa==========>",
    "TceeeaCCCCaeeeceeeeeaBBBBBaaa=aaaaaaaa==aa==========>",
-   "TceeeaCCCCaeeeceeeeeaBBDBBaaa=aaaaaaNa==aa==========>",
+   "TceeeaCCCCaeeeceeeeeaBBDBBaaa=aaaaaNNa==aa==========>",
    "TceeeaCDCCaeeeceeeeeaaaaaaaaa=aaaaaaaa==aa==========>",
    "cceeeaaaaaaeeeceeeeea!aaaaaeeceeeeeeeecckkcc........>",
    "cceeeeeaaeeeeeceeeeeeeaaaeeeeckkkkkkkkcckkcc........>",
@@ -261942,12 +264660,41 @@
     }
    },
    "IRON",
+   {
+    "text": "Suite guest",
+    "action": "EVENT",
+    "condition": [
+     "not:returned_suite_key_valor"
+    ],
+    "event": {
+     "requires": [
+      "has_item:SUITE_KEY"
+     ],
+     "fail": [
+      "What am I to do...? I've gone and dropped my Suite Key somewhere again...",
+      "The hotel people won't be happy with me... I'm sure I had it when I left the reception by Route 213..."
+     ],
+     "lines": [
+      "Oh! That's my Suite Key! You found it for me? Thank you so much!",
+      "You handed over the Suite Key.",
+      "This is a little something I found by the lake. It's yours! You received a White Flute!"
+     ],
+     "take_item": {
+      "SUITE_KEY": 1
+     },
+     "gift_item": {
+      "WHITE_FLUTE": 1
+     },
+     "flag": "returned_suite_key_valor"
+    }
+   },
    "TM270",
    {
     "text": "Cynthia",
     "action": "EVENT",
     "condition": [
      "has_fen_badge",
+     "sinnoh_valor_grunt_beaten",
      "not:sinnoh_secretpotion"
     ],
     "event": {
@@ -261963,6 +264710,40 @@
      "done": [
       "Cynthia: The Psyduck are on Route 210, north of Solaceon Town. Good luck!"
      ]
+    }
+   },
+   {
+    "text": "Galactic Grunt",
+    "action": "EVENT",
+    "condition": [
+     "sinnoh_pastoria_bomb",
+     "not:sinnoh_valor_grunt_beaten"
+    ],
+    "event": {
+     "lines": [
+      "Grunt: ...Pant...pant... Why am I running like this anyway?! That new universe our boss was talking about...",
+      "Grunt: Aww, no... You're still on my tail...? The lake's within sight... You leave me no choice... My Pokemon will KO you..."
+     ],
+     "flag": "sinnoh_valor_grunt_beaten",
+     "battle": {
+      "name": "Galactic Grunt",
+      "class": "GALACTIC_GRUNT",
+      "sprite": "pt_galactic_grunt_m.png",
+      "team": [
+       453
+      ],
+      "levels": [
+       31
+      ],
+      "rewards": {
+       "balls": 3
+      },
+      "dialogue": {
+       "player_won": [
+        "Grunt: I can't battle anymore... I'm running on fumes... I'll have to give this to the Commander..."
+       ]
+      }
+     }
     }
    }
   ],
@@ -263537,7 +266318,64 @@
    "23,54": "house_0101",
    "32,45": "house_0201",
    "7,55": "house_0301"
-  }
+  },
+  "scenes": [
+   {
+    "trigger": {
+     "zone": [
+      28,
+      46,
+      46,
+      62
+     ]
+    },
+    "condition": [
+     "sinnoh_valor_grunt_beaten",
+     "not:sinnoh_secretpotion",
+     "not:sinnoh_valor_cynthia_came"
+    ],
+    "flag": "sinnoh_valor_cynthia_came",
+    "cast": [
+     {
+      "sheet": "pt_champion.png",
+      "from": [
+       40,
+       30
+      ],
+      "to": "player",
+      "stay": true,
+      "lines": [
+       "Cynthia: Oh, hello, long time no see! How is your Pokedex filling up?",
+       "Cynthia: I came to research the folklore about the lake. They say there is an island inside the lake, and inside it a mirage of a Pokemon..."
+      ]
+     },
+     {
+      "sheet": "pt_rivel.png",
+      "from": [
+       36,
+       62
+      ],
+      "to": "player",
+      "lines": [
+       "{rival_name}: Hey, {player_name}! Where'd that Galactic goon run off to? Huh? Is this your older sister? No? Oh, OK.",
+       "{rival_name}: That explosion in the Great Marsh? It wasn't anything serious. Mr. Wake told me to tell you that.",
+       "{rival_name}: Next time I see Team Galactic, I'll teach them a lesson they won't forget! See you around!"
+      ],
+      "leave": "back"
+     },
+     {
+      "as": 0,
+      "lines": [
+       "Cynthia: He's your friend? He's more impatient than he is energetic, isn't he?"
+      ],
+      "leave": [
+       35,
+       54
+      ]
+     }
+    ]
+   }
+  ]
  },
  "SINNOH_ROUTE_214": {
   "art": [
@@ -299745,7 +302583,7 @@
      "ooocccccccccccccccccccccccckkccc",
      "oooccc..cccccccccccccccccccccccc",
      "oooccc.1ccccccccccccc+cckccccccc",
-     "oooccc..ccccccccccc...kccccccccc",
+     "oooccc..ccccccccccc..Nkccccccccc",
      "oooccc__ccccccccccc...kccccccccc",
      "oooccc..ccccccccccc===cccccccccc",
      "oooccc..ccccccccccc===cccccccccc",
@@ -299832,7 +302670,28 @@
     },
     "hidden": {
      "18,24": "STAR_PIECE"
-    }
+    },
+    "people": [
+     {
+      "text": "Riley",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "...You are? OK, you're {player_name}. I'm Riley. I'm a Trainer, and yes, it is a bit odd that I would be training here.",
+        "Anyway, it's always nice to meet another Trainer. Here, take this with you.",
+        "You received HM04 Strength!",
+        "Riley: That Hidden Machine contains the move Strength. To use it outside battle, you need the Mine Badge from Canalave's Gym."
+       ],
+       "gift_item": {
+        "HM_STRENGTH": 1
+       },
+       "flag": "got_hm_strength_iron_island",
+       "done": [
+        "Riley: Iron Island's caves are full of strong Pokemon. I come here to train with Lucario."
+       ]
+      }
+     }
+    ]
    },
    {
     "art": [
@@ -300732,7 +303591,7 @@
      "cccccccccccc",
      "cmmm...mmmcc",
      "c.........cc",
-     "c.m.....m.cc",
+     "c.m..N..m.cc",
      "c.........cc",
      "cc......m.cc",
      "cz..1.....cc",
@@ -300881,7 +303740,34 @@
        224
       ]
      }
-    }
+    },
+    "people": [
+     {
+      "text": "Byron",
+      "action": "EVENT",
+      "event": {
+       "requires": [
+        "unlocked_national_dex"
+       ],
+       "fail": [
+        "Byron: Hm? You're in training, then? You know, my son trains as hard as you do.",
+        "Byron: But I still treat him as if he were a child. It's ridiculous, really. He is a proper Gym Leader now."
+       ],
+       "lines": [
+        "Byron: Hm? You've seen Pokemon from far beyond Sinnoh, have you? Then you'll want this.",
+        "You received a Metal Coat!",
+        "Byron: There are Pokemon that evolve into the Steel type using that Metal Coat. Try it!"
+       ],
+       "gift_item": {
+        "METAL_COAT": 1
+       },
+       "flag": "got_metal_coat_iron_island",
+       "done": [
+        "Byron: There are Pokemon that evolve into the Steel type using that Metal Coat. Steel is the best, I say!"
+       ]
+      }
+     }
+    ]
    }
   ],
   "floor_names": [
@@ -300922,7 +303808,9 @@
    "Worker Noel": 6,
    "Worker Braden": 6,
    "ELIXIR": 6,
-   "TM265": 6
+   "TM265": 6,
+   "Riley": 0,
+   "Byron": 7
   },
   "roofs": {
    "A": {

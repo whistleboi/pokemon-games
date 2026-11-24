@@ -128,7 +128,7 @@ class MoveEffects:
     def grounded(self, mon):
         if mon and self.forced_grounded(mon):  # (an Iron Ball, Smack Down, Gravity, Ingrain pull it down)
             return True
-        if mon and (self.vol(mon).get("magnet_rise") or self.vol(mon).get("telekinesis")):
+        if mon and (self.vol(mon).get("magnet_rise") or self.vol(mon).get("telekinesis") or self.held(mon) == "AIR_BALLOON"):
             return False
         return bool(mon) and "FLYING" not in (mon.types or []) and self.ab(mon) != "LEVITATE"
 

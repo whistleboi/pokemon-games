@@ -107,8 +107,8 @@ STATE = {"steps": 0, "battles": 0, "frames": 0, "shots": 0, "last_map": None, "f
 #  - PT_FULL=1: the whole story from the start with no stop (the long run, for closing a batch or merging to main).
 #  Each region sets its two ends here (its generator: make_jplaythrough / make_oplaythrough / make_splaythrough) and moves
 #  them when a batch closes. Empty: from the start, to the end, as before.
-FROM = "sinnoh_m4"      # (S3's lead-in: Through Eterna Forest, the last S2 mission)
-STOP_AT = "sinnoh_m6b"  # (S4: past the Galactic Warehouse; next, South to Pastoria)
+FROM = "sinnoh_m5b"     # (S4's lead-in: On to Veilstone, the last S3 mission)
+STOP_AT = "sinnoh_m9"   # (S5 starts here: West to Canalave; S3's Hearthome Gym, m8, is checked on the way)
 SAVES = OUT + "_saves"
 PT_FULL = os.environ.get("PT_FULL") == "1"
 PT_FROM = "" if PT_FULL else os.environ.get("PT_FROM", FROM)
@@ -412,6 +412,11 @@ def settle(limit=9000):
                 _say(f"[lift: {st.title}: {next(l for l, v in st.choices if v == _lp)}]")                    #  says, 'Lift to <floor>'; 11-23)
                 st.back._lift_plan = None
                 st.pick(_lp)
+                continue
+            if isinstance(st, _PLS) and str(getattr(st, "title", "")) == str(__import__("src.world.hearthome_gym", fromlist=["LAST"]).LAST.get("problem")):
+                _hg = __import__("src.world.hearthome_gym", fromlist=["LAST"]).LAST
+                _say(f"[Hearthome Gym: {st.title} = the right door]")
+                st.pick(_hg.get("right"))
                 continue
             if isinstance(st, _PLS):   # (a list to pick from: a tutor's "who should learn it?": BACK, no thanks)
                 if str(st.title).endswith("?") and str(st.title) != str(st.title).upper() and st.choices:   # (Johto: the Elder's quiz)
@@ -1132,6 +1137,61 @@ def hit_bags(st):
     return {"hit": (bx, by - VG.OY)}
 
 
+def press_water(st):
+    """Pastoria Gym: the next water button on the way to Wake. -> what was done, or None."""
+    if not is_town(st) or st.area_key != "PASTORIA_CITY" or getattr(st, "room", None) != "gym":
+        return None
+    from src.world import pastoria_gym as PG
+    prev = flood(st)
+    D4 = ((1, 0), (-1, 0), (0, 1), (0, -1))
+    if any((13 + dx, 4 + dy) in prev for dx, dy in D4):
+        return None   # (Wake can be reached)
+    L = loc()
+    if TRIED[(L, ("WATER",))] >= 12:
+        return None
+    room = st.town_map["rooms"]["gym"]
+    art = room["art"]
+    need = {}
+    for b in room.get("barred") or []:
+        c = str((b.get("until") or {}).get("condition") or "")
+        if c.startswith("world:pastoria_gym:is:"):
+            for t in b.get("tiles", []):
+                need[tuple(t)] = c.rsplit(":", 1)[1]
+    buttons = {}
+    for s_ in room.get("scenes") or []:
+        ev = s_.get("event") or {}
+        if ev.get("world") == "pastoria_gym" and isinstance(s_.get("trigger"), dict):
+            x0, y0 = s_["trigger"]["zone"][:2]
+            buttons[(x0, y0)] = ev.get("press")
+    ok = lambda t, lv: 0 <= t[1] < len(art) and 0 <= t[0] < len(art[0]) and art[t[1]][t[0]] in ".v" and need.get(t, lv) == lv
+    start = (tuple(pos(st)), PG.level(story))
+    first = {start: None}
+    q = collections.deque([start])
+    plan = None
+    while q:
+        (x, y), lv = cur = q.popleft()
+        if abs(x - 13) + abs(y - 4) == 1:
+            plan = first[cur]
+            break
+        for dx, dy in D4:
+            n = (x + dx, y + dy)
+            if ok(n, lv):
+                nl = buttons.get(n, lv)
+                nxt = (n, nl)
+                if nxt not in first:
+                    first[nxt] = first[cur] or (n if nl != lv else None)
+                    q.append(nxt)
+    if plan is None:
+        return None
+    TRIED[(L, ("WATER",))] += 1
+    STATE["puzzles"] += 1
+    how, n = go(plan, "a water button")
+    for _ in range(120):
+        st = settle()
+    out(f"  .... [{STATE['mission']}] stepped on the water button at {plan}: the water is {PG.level(story)} now")
+    return {"button": plan}
+
+
 def talk_companions(st):
     """Someone walking with you (Lance in the Rocket hideout) with a line on this floor not heard yet (an unset flag):
     turn to them and press the action key (the game's own _talk_companion, as the key does). -> True if talked."""
@@ -1721,6 +1781,8 @@ def play_through():
         if push_drops(st) is not None:   # (the Ice Path's boulders before the marker: on B1F it points back up to 1F)
             continue
         if hit_bags(st) is not None:   # (Veilstone Gym's punching bags, Sinnoh S4)
+            continue
+        if press_water(st) is not None:   # (Pastoria Gym's water buttons, Sinnoh S4)
             continue
         if talk_companions(st):   # (Lance walking with you in the hideout: his Whirlpool line)
             continue

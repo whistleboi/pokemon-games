@@ -121,6 +121,15 @@ class StoryManager:
 
     STARTING_BALLS = 5  # a region's Bag starts with these (each region keeps its own count)
 
+    def starting_balls(self, region):
+        """The Poke Balls a region's new Bag holds: REGION_START.<region>.starting_balls, else
+        STARTING_BALLS (Orre 0: Colosseum's first five are the Outskirt Stand bartender's)."""
+        try:
+            n = self.get_region_start(region).get("starting_balls") if getattr(self, "game", None) else None
+        except Exception:   # (before the loader is attached)
+            n = None
+        return self.STARTING_BALLS if n is None else int(n)
+
     @property
     def balls_left(self):
         """Poke Balls live in the Bag (Jordan), so each region's Bag has its own count."""
@@ -147,7 +156,7 @@ class StoryManager:
         stores = self.__dict__.setdefault("region_stores", {})
         key = key or self.active_store
         if key not in stores:
-            stores[key] = {"team": [], "pc": [None] * 300, "bag": Bag({"POKE_BALLS": self.STARTING_BALLS})}
+            stores[key] = {"team": [], "pc": [None] * 300, "bag": Bag({"POKE_BALLS": self.starting_balls(key)})}
         return stores[key]
 
     def storage_region(self, region):
@@ -1802,7 +1811,7 @@ class StoryManager:
         for key, st in self.region_stores.items():
             if "POKE_BALLS" not in st["bag"]:
                 st["bag"]["POKE_BALLS"] = (int(data.get("balls_left", 5)) if key == current
-                                           else self.STARTING_BALLS)
+                                           else self.starting_balls(key))
         self._store()
 
         rid = data.get("rival_starter_id")

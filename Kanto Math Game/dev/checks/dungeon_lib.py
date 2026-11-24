@@ -6,6 +6,9 @@ from src.states.overworld.dungeon import DungeonState
 from src.dungeon import core
 from src.pokemon import catching, tms
 from src.states.battle import WildBattleState
+from src.states.overworld import wild_walkup as _wwu
+_wwu.SWARM_CALL = 0   # (no swarm Pokemon calling its friends here: today's swarm place changes by the date, and the call says a
+                      #  line before the catch screen - the walkup suite tests it; 11-24)
 
 fails = 0
 
