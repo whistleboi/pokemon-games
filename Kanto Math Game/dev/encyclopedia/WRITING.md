@@ -25,6 +25,7 @@ from the game's data (`facts.py`); the words between them are written by hand, o
   | Hoenn | Ruby/Sapphire/Emerald, Omega Ruby/Alpha Sapphire | Bulbapedia ORAS / Emerald |
   | Sinnoh | Diamond/Pearl/Platinum, Brilliant Diamond/Shining Pearl | Bulbapedia BDSP / Platinum |
   | Unova | Black/White, Black 2/White 2 | Bulbapedia B2W2 |
+  | Orre | the Orre fan game, Colosseum, XD: Gale of Darkness | Bulbapedia Colosseum / XD |
 
 - **"Ours"**: mark anything none of the region's source games have with `<span class="ours">ours</span>` (the tables do this themselves
   for Headbutt trees and later regions' Pokémon). Kanto examples: the Rocky Helmet that Headbutt needs, the Shiny Charm from
