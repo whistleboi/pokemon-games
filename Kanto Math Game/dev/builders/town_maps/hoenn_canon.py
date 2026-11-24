@@ -362,6 +362,43 @@ def _home_tv(maps):
                                    "event": {"swarm_news": "HOENN", "lines": ["The TV's on. A cooking show... Mom's favourite."]}}}
 
 
+def _emerald_paths(maps):
+    """H7 layout review (Jordan 11-24): ground you can walk in Emerald that was wall in ours.
+    - Routes 111 and 115: the mountain tops past Emerald's muddy slopes ('7': up them on the Bicycle) - "a bike path up to
+      the mountaintop";
+    - Rustboro: the path along the south-east fence, "a walk path from the route to the south": it meets Route 104's top
+      edge at x 33 (Emerald's map join), so both maps get that edge tile.
+    The tiles come from hlayout_review (Emerald open and reachable, ours wall): dev/builders/data/h7_emerald_paths.json."""
+    import os as _os
+    p = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "..", "data", "h7_emerald_paths.json")
+    tiles = json.load(open(p, encoding="utf-8"))
+    for key, spots in tiles.items():
+        m = maps.get(key)
+        if not m:
+            continue
+        part = m["floors"][0] if m.get("floors") else m
+        art = [list(r) for r in part["art"]]
+        for x, y in spots:
+            if art[y][x] == "c":
+                art[y][x] = "."
+        part["art"] = ["".join(r) for r in art]
+    for key, (x, y), ch, other, to in (("RUSTBORO_CITY", (33, 59), "v", "HOENN_ROUTE_104", (33, 0)),
+                                       ("HOENN_ROUTE_104", (33, 0), "^", "RUSTBORO_CITY", (33, 59))):
+        m = maps.get(key)
+        if not m:
+            continue
+        part = m["floors"][0] if m.get("floors") else m
+        if part.get("exits", {}).get(ch) != other:
+            print(ascii(f"  hoenn_canon: {key} has no {ch!r} exit to {other}: path link left out"))
+            continue
+        row = list(part["art"][y])
+        row[x] = ch
+        part["art"][y] = "".join(row)
+        part.setdefault("edge_to", {})[f"{x},{y}"] = list(to)
+        if key == "RUSTBORO_CITY":
+            part["split"] = True   # (the path is its own part, fenced off from the town: reached from Route 104 only, as in Emerald)
+
+
 def _part(m, floor, room):
     if room:
         return m["rooms"][room]
@@ -429,6 +466,7 @@ def apply(maps):
     _slateport_sub(maps)
     _museum_queue(maps)
     _home_tv(maps)
+    _emerald_paths(maps)
     _h7(maps)
     for key, floor, room, x, y, who in PEOPLE:
         m = maps.get(key)
