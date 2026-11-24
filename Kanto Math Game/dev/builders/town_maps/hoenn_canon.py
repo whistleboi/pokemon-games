@@ -177,7 +177,7 @@ LISTS = [
     ("HOENN_RUSTURF_TUNNEL", None, None, 23, 5, ["AGGRONITE"]),
     # Littleroot: after the Delta Episode Mom has your version's Lati stone (ORAS: Latiasite in Omega Ruby, Latiosite in
     # Alpha Sapphire; the options' hoenn_version conditions pick)
-    ("LITTLEROOT_TOWN", None, "home", 2, 6, ["Mom", "Mom's Second Stone"]),
+    ("LITTLEROOT_TOWN", None, "home", 2, 6, ["Mom's news", "Mom", "Mom's Second Stone"]),   # (H5: Mom's news starts the Delta Episode)
 ]
 
 

@@ -1440,7 +1440,8 @@ st.run.enter_floor(1); frames(2)
 _pay13 = [(m.payload[1] if isinstance(m.payload, tuple) else m.payload) for f in st.run.floors for m in f.movers if m.kind == "trainer"]
 _all13 = [t.get("name") for t in _pay13 if "beat_hoenn_champion" not in (t.get("when_flags") or [])]   # (H4: ORAS's two Delta Episode battles come after the Champion)
 _delta13 = [t.get("spot_name") for t in _pay13 if "beat_hoenn_champion" in (t.get("when_flags") or [])]
-check(_quiet and len(_all13) == 3 and len(_delta13) == (2 if story.story_flags.get("beat_hoenn_champion") else 0),
+_dneed13 = next((t.get("when_flags") for t in _pay13 if "beat_hoenn_champion" in (t.get("when_flags") or [])), None) or next((t.get("when_flags") for t in _area["HOENN_SPACE_CENTER"].get("trainer_pool", []) if "beat_hoenn_champion" in (t.get("when_flags") or [])), [])
+check(_quiet and len(_all13) == 3 and len(_delta13) == (2 if all(story.story_flags.get(f) for f in _dneed13) else 0),   # (H5: the Delta chain's own step)
       f"Space Center: Emerald's two floors; the team storms it only after the Mind Badge; ORAS's Delta Episode grunts after the Champion ({_all13}, {_delta13})")
 _r125 = _tm13["HOENN_ROUTE_125"]
 check(not _r125.get("floors") and "HOENN_SHOAL_CAVE" in _r125["exits"].values() and len(_r125.get("trainer_spots", [])) >= 3,
@@ -3121,6 +3122,30 @@ _sc5 = next((sc for sc in _tm2["SLATEPORT_CITY"].get("scenes", []) if sc.get("fl
 _gb5 = [((c.get("event") or {}).get("battle") or {}) for c in _sc5.get("cast", []) if (c.get("event") or {}).get("battle")]
 check([b.get("team_by_version", {}).get("OMEGA_RUBY") for b in _gb5] == [[262], [322, 42]] and [b.get("levels") for b in _gb5] == [[36], [34, 34]],
       f"Slateport: two grunts hold you up while the sub is stolen, ORAS's teams by version ({[b.get('name') for b in _gb5]})")
+# the Delta Episode as a chain in ORAS order (#13): each step waits for the one before; Wallace guards Sky Pillar
+_dz = next((o for o in _area["HOENN_GRANITE_CAVE"].get("route_menu", []) if o.get("text") == "BATTLE ZINNIA"), {})
+_dp = next((o for o in _area["PETALBURG_CITY"].get("explore_options", []) if o.get("text") == "Battle Courtney"), {})
+_dw = next((o for o in _area["HOENN_ROUTE_131"].get("route_menu", []) if o.get("text") == "BATTLE WALLACE"), {})
+_dsp = next((o for o in _area["HOENN_ROUTE_131"].get("route_menu", []) if o.get("text") == "SKY PILLAR"), {})
+_dh = [t.get("when_flags") for t in _area["HOENN_TEAM_HIDEOUT"].get("trainer_pool", []) if "beat_hoenn_champion" in (t.get("when_flags") or [])]
+check("delta_started" in (_dp.get("condition") or []) and "delta_matt_petalburg" in (_dz.get("condition") or [])
+      and "delta_matt_mossdeep" in (_dw.get("condition") or []) and "delta_wallace_131" in (_dsp.get("condition") or [])
+      and _dh and all("delta_courtney_mossdeep" in w for w in _dh),
+      "the Delta Episode runs in ORAS's order: home, Petalburg, Granite Cave, Rustboro, the Space Center, the hideout, Wallace, Sky Pillar")
+for _k in ("delta_started",):
+    story.story_flags.pop(_k, None)
+story.story_flags["hoenn_mom_sendoff"] = True
+st = open_map("LITTLEROOT_TOWN", "HOENN_ROUTE_101")
+st.scenes.entered = True
+story.story_flags["beat_hoenn_champion"] = True   # (set after arriving: arriving as Champion offers the next region)
+st._go("home", "OUT:5,8"); frames(2)
+said = _press(st, (2, 5), (0, 1))
+if st.hover_menu_active:
+    _mn = next((o for o in st.people[(2, 6)]["any"] if o.get("text") == "Mom's news"), None)
+    st.clear_hover_menu()
+    if _mn:
+        st._get_callback_for_option(_mn)(); said = _play(st)
+check(story.story_flags.get("delta_started") and any("meteor" in x for x in said), f"Littleroot: after the Champion, Mom's news of the meteor starts the Delta Episode ({said[:1]})")
 story.story_flags.clear(); story.story_flags.update(_f5b)
 story.inventory.clear(); story.inventory.update(_i5b)
 

@@ -8731,7 +8731,8 @@
      "oras": true,
      "condition": [
       "beat_hoenn_champion",
-      "hoenn_version:OMEGA_RUBY"
+      "hoenn_version:OMEGA_RUBY",
+      "delta_zinnia_granite"
      ],
      "flag_condition": "not h4_rustboro_city_delta_grunt_1",
      "event": {
@@ -8769,7 +8770,8 @@
      "oras": true,
      "condition": [
       "beat_hoenn_champion",
-      "hoenn_version:ALPHA_SAPPHIRE"
+      "hoenn_version:ALPHA_SAPPHIRE",
+      "delta_zinnia_granite"
      ],
      "flag_condition": "not h4_rustboro_city_delta_grunt_1",
      "event": {
@@ -8807,7 +8809,8 @@
      "oras": true,
      "condition": [
       "beat_hoenn_champion",
-      "hoenn_version:OMEGA_RUBY"
+      "hoenn_version:OMEGA_RUBY",
+      "delta_zinnia_granite"
      ],
      "flag_condition": "not h4_rustboro_city_delta_grunt_2",
      "event": {
@@ -8843,7 +8846,8 @@
      "oras": true,
      "condition": [
       "beat_hoenn_champion",
-      "hoenn_version:ALPHA_SAPPHIRE"
+      "hoenn_version:ALPHA_SAPPHIRE",
+      "delta_zinnia_granite"
      ],
      "flag_condition": "not h4_rustboro_city_delta_grunt_2",
      "event": {
@@ -8879,7 +8883,8 @@
      "oras": true,
      "condition": [
       "beat_hoenn_champion",
-      "hoenn_version:OMEGA_RUBY"
+      "hoenn_version:OMEGA_RUBY",
+      "delta_zinnia_granite"
      ],
      "flag_condition": "not h4_rustboro_city_delta_grunt_3",
      "event": {
@@ -8917,7 +8922,8 @@
      "oras": true,
      "condition": [
       "beat_hoenn_champion",
-      "hoenn_version:ALPHA_SAPPHIRE"
+      "hoenn_version:ALPHA_SAPPHIRE",
+      "delta_zinnia_granite"
      ],
      "flag_condition": "not h4_rustboro_city_delta_grunt_3",
      "event": {
