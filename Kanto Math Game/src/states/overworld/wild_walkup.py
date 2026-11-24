@@ -38,19 +38,51 @@ THROW = int(FPS * 0.9)
 
 
 class WildWalkUps:
+    # ---------------------------------------------------------------- the host: a route map (towns: TownWalkUps)
+    def _wu_run(self):
+        """The walk: .floor (tiles, movers, ways out, items), .player, .visible(x, y), .floors."""
+        return self.run
+
+    def _wu_talking(self):
+        return self.dialogue_box.visible
+
+    def _wu_say(self, lines, then=None):
+        self.say(lines, then=then)
+
+    def _wu_total(self):
+        return self.total_caught
+
+    def _wu_ball_img(self, size):
+        return self._ball_img(size)
+
+    def _wu_blackout(self):
+        self.perform_black_out()
+
+    def _wu_evolve(self):
+        self.check_for_evolution()
+
+    def _wu_keep(self, mover, ball):
+        """The swarm's last one caught: the route's own catch (party or PC, Pokedex, streak, save)."""
+        self.encounter = mover
+        self.throw_result, self._thrown_ball, self.was_shiny_override = "caught", ball, False
+        self._resolve_throw()
+
     # ---------------------------------------------------------------- where they come from and stand
-    def _wu_water(self):
-        return self.run.floor.tile(*self.run.player) == core.SURF
+    def _wu_water(self, t=None):
+        """Is t (default: where you stand) water: the sea you surf, or a pond you fish in."""
+        f = self._wu_run().floor
+        return f.tile(*(t or self._wu_run().player)) in (core.SURF, core.WATER)
 
     def _wu_free(self, t, m=None, water=False, claimed=()):
         """Can a walking-up Pokemon step onto t: the same kind of ground as you (land, or the sea you surf), nothing on it."""
-        f = self.run.floor
+        f = self._wu_run().floor
         x, y = t
-        if not (0 <= x < f.w and 0 <= y < f.h) or not f.walkable(x, y) or (f.tile(x, y) == core.SURF) != water:
+        if not (0 <= x < f.w and 0 <= y < f.h) or (f.tile(x, y) in (core.SURF, core.WATER)) != water \
+                or not (water or f.walkable(x, y)):
             return False
         if t in f.exits or t in f.items or t in f.tm_spots or t in (getattr(f, "decor", None) or {}) or t in claimed:
             return False
-        if t == tuple(self.run.player) or (getattr(self, "anim", 0) > 0 and t == tuple(getattr(self, "anim_from", ()))):
+        if t == tuple(self._wu_run().player) or (getattr(self, "anim", 0) > 0 and t == tuple(getattr(self, "anim_from", ()))):
             return False
         for o in f.movers:
             if o is m:
@@ -62,10 +94,12 @@ class WildWalkUps:
 
     def _wu_spots(self, n, water, claimed=()):
         """Up to n tiles round you to stand on: in front, to either side, behind, then the corners (not your Pokemon's)."""
-        px, py = self.run.player
+        px, py = self._wu_run().player
         fx, fy = getattr(self, "facing", (0, 1)) or (0, 1)
         ring = [(fx, fy), (fy, fx), (-fy, -fx), (-fx, -fy), (fx + fy, fy + fx), (fx - fy, fy - fx),
                 (-fx + fy, -fy + fx), (-fx - fy, -fy - fx)]
+        ring += sorted(((dx, dy) for dx in range(-2, 3) for dy in range(-2, 3) if abs(dx) + abs(dy) == 2 and abs(dx) != 1),
+                       key=lambda d: -(d[0] * fx + d[1] * fy))   # (two steps off, in front first: from the shore)
         partner = tuple(getattr(self, "partner", (px, py)) or (px, py))
         out, taken = [], set(claimed)
         for dx, dy in ring:
@@ -79,7 +113,7 @@ class WildWalkUps:
 
     def _wu_reach(self, water, depth=7):
         """{tile: steps from you} over the ground they can walk on, out to depth."""
-        start = tuple(self.run.player)
+        start = tuple(self._wu_run().player)
         seen, todo = {start: 0}, deque([start])
         while todo:
             cur = todo.popleft()
@@ -94,13 +128,13 @@ class WildWalkUps:
 
     def _wu_sources(self, n, water, rng):
         """n tiles 3 to 6 steps off where they pop out (tall grass first, then anywhere in view), spread apart."""
-        f = self.run.floor
+        f = self._wu_run().floor
         reach = self._wu_reach(water)
         far = [t for t, d in reach.items() if 3 <= d <= 6]
         if len(far) < n:
             far = [t for t, d in reach.items() if d >= 1]
         rng.shuffle(far)
-        far.sort(key=lambda t: (0 if water or f.tile(*t) == core.GRASS else 1, 0 if self.run.visible(*t) else 1))
+        far.sort(key=lambda t: (0 if water or f.tile(*t) == core.GRASS else 1, 0 if self._wu_run().visible(*t) else 1))
         picked = []
         for t in far:
             if all(abs(t[0] - o[0]) + abs(t[1] - o[1]) >= 2 for o in picked):
@@ -112,10 +146,11 @@ class WildWalkUps:
     # ---------------------------------------------------------------- walking up
     def walkup_start(self, mons, then, keep=()):
         """Bring mons to you (new map Pokemon, popping out nearby); keep: wild ones already beside you that join them (a
-        swarm's caller). Then then() - the catch screen, the swarm's battle. Returns the movers."""
-        f = self.run.floor
+        swarm's caller; on the water, they all come over the water). Then then() - the catch screen, the swarm's battle.
+        Returns the movers."""
+        f = self._wu_run().floor
         rng = random.Random()
-        water = self._wu_water()
+        water = self._wu_water((keep[0].x, keep[0].y)) if keep else self._wu_water()
         for k in keep:   # (already here: it stays where it is, turned to you)
             k.kind, k.alert = WALKUP, False
             k.motion = npc.Motion((k.x, k.y), seed=f"wu{id(k)}", facing=tuple(k.facing or (0, 1)))
@@ -177,7 +212,7 @@ class WildWalkUps:
             return
         if wu["settle"] == 0:   # (all here: they look at you, you look at the middle one)
             for m in wu["movers"]:
-                m.motion.face(self.run.player)
+                m.motion.face(self._wu_run().player)
                 m.facing = m.motion.facing
             mid = wu["movers"][len(wu["movers"]) // 2] if wu["movers"] else None
             if mid is not None:
@@ -195,7 +230,7 @@ class WildWalkUps:
             b.set_visibility(shown)
 
     def _wu_face(self, m):
-        px, py = self.run.player
+        px, py = self._wu_run().player
         dx, dy = m.x - px, m.y - py
         if dx or dy:
             self.facing = ((1 if dx > 0 else -1), 0) if abs(dx) > abs(dy) else (0, (1 if dy > 0 else -1))
@@ -215,7 +250,7 @@ class WildWalkUps:
         water = wu.get("water", False)
         self._wu = None
         leaving = getattr(self, "_wu_leavers", None) or []
-        px, py = self.run.player
+        px, py = self._wu_run().player
         reach = self._wu_reach(water, depth=9)
         for m in movers:
             if any(m is g for g in gone) or m.payload is None:
@@ -231,7 +266,7 @@ class WildWalkUps:
         self._wu_leavers = leaving
 
     def _wu_drop(self, m):
-        for fl in getattr(self.run, "floors", [self.run.floor]):
+        for fl in getattr(self._wu_run(), "floors", [self._wu_run().floor]):
             if m in fl.movers:
                 fl.movers.remove(m)
 
@@ -241,7 +276,7 @@ class WildWalkUps:
             return
         keep = []
         for m in leaving:
-            if m not in self.run.floor.movers:   # (another floor now: gone)
+            if m not in self._wu_run().floor.movers:   # (another floor now: gone)
                 self._wu_drop(m)
                 continue
             m._wu_leave += 1
@@ -251,7 +286,7 @@ class WildWalkUps:
             m.x, m.y = mo.pos
             m.facing = mo.facing
             left = LEAVE_FRAMES - m._wu_leave
-            if mo.idle() or not self.run.visible(m.x, m.y):
+            if mo.idle() or not self._wu_run().visible(m.x, m.y):
                 left = min(left, FADE)
                 m._wu_leave = max(m._wu_leave, LEAVE_FRAMES - FADE)
             m._wu_alpha = max(0, min(255, int(255 * left / FADE)))
@@ -288,24 +323,29 @@ class WildWalkUps:
         from src.world import regional_forms
         if not regional_forms.species_allowed(self.game, int(sw[1])):   # (Kanto's lock, as swarms.adjust: none of a region not played yet)
             return None
-        return (int(sw[1]), kind) if kind in ("grass", "surf") else None
+        return int(sw[1]), ("fish" if str(kind).endswith("_rod") else kind)
 
-    def swarm_call(self, mover, rng=None):
+    def swarm_call(self, mover, rng=None, how=None, first=()):
         """A wild Pokemon met on today's swarm place: now and then it is one of the swarm and calls two friends over
-        (they walk up, then the swarm's battle). True when it did."""
+        (they walk up, then the swarm's battle). how: "fish" for one on your line (it comes up out of the water you
+        cast in), else met in the grass or on the water as you surf. first: lines said before. True when it did."""
         rng = rng or random.Random()
         p = getattr(mover, "payload", None)
         sw = self._swarm_today()
-        if (sw is None or p is None or mover.kind != "wild" or int(p.id) != sw[0] or getattr(self, "contest", None)
+        if (sw is None or p is None or mover.kind != "wild" or not self._swarm_kin(int(p.id), sw[0]) or getattr(self, "contest", None)
                 or getattr(self, "safari", None) or getattr(p, "snack_visitor", None)):
             return False
-        water = self.run.floor.tile(mover.x, mover.y) == core.SURF
-        if water != (sw[1] == "surf") or water != self._wu_water():
+        water = self._wu_water((mover.x, mover.y))
+        if how == "fish":
+            if sw[1] != "fish" or not water:
+                return False
+        elif sw[1] not in ("grass", "surf") or water != (sw[1] == "surf") or water != self._wu_water():
             return False
         lead = self.lead()
         if lead is None or lead.current_hp <= 0 or rng.random() >= SWARM_CALL:
             return False
-        friends = [f for f in (self._swarm_mon(sw[0]) for _ in range(2)) if f is not None]
+        friends = [f for f in (self._swarm_mon(int(p.id)) for _ in range(2)) if f is not None]   # (its own kind: a rod's
+        #  bite can come up a stage lower than the swarm's species, at the rod's level - Violet's Barboach for Whiscash)
         if len(friends) < 2 or len(self._wu_spots(2, water, claimed={(mover.x, mover.y)})) < 2:
             return False
         self.walk_goal = None
@@ -318,8 +358,49 @@ class WildWalkUps:
         def come():
             group = self.walkup_start(friends, lambda: self._sw_begin(group), keep=[mover])
             self._wu["kind"] = "swarm"
-        self.say([f"The wild {name} called its friends!"], then=come)
+        self._wu_say(list(first) + [f"The wild {name} called its friends!"], then=come)
         return True
+
+    def swarm_from(self, mon, tile, how=None, first=()):
+        """A swarm Pokemon met off the map (a bite on your line, a step on the sea): it comes up on tile and may call its
+        friends (swarm_call). True when the swarm came; else it's gone again and the usual battle goes ahead."""
+        if mon is None or tile is None:
+            return False
+        f = self._wu_run().floor
+        m = core.Mover("wild", tile[0], tile[1], payload=mon)
+        f.movers.append(m)
+        if self.swarm_call(m, how=how, first=first):
+            return True
+        if m in f.movers:
+            f.movers.remove(m)
+        return False
+
+    # ---------------------------------------------------------------- fishing on a route map
+    _bite_ready = None
+
+    def _fish_bite(self):
+        got, self._bite_ready = self._bite_ready, None
+        return got[0] if got else super()._fish_bite()
+
+    def action_fish(self):
+        """A bite: today's swarm on the line may bring its friends up out of the water (swarm_from); else the usual
+        battle, with that very Pokemon."""
+        mon = super()._fish_bite()
+        spot = self._beside("water") if hasattr(self, "_beside") else None
+        if mon is not None and self.swarm_from(mon, spot, how="fish", first=["Oh! A bite!"]):
+            self.rounds_completed += 1
+            from src.world import feats as _feats
+            _feats.note(self.game.story_manager, "fish")
+            return
+        self._bite_ready = (mon,)
+        return super().action_fish()
+
+    def _swarm_kin(self, pid, swarm_pid):
+        """pid is the swarm's species, or in its family (the fishing code picks the stage that suits the rod's level)."""
+        if pid == swarm_pid:
+            return True
+        from src.pokemon import evolution
+        return swarm_pid in evolution._descendants(self.game, pid) or pid in evolution._descendants(self.game, swarm_pid)
 
     def _swarm_mon(self, pid):
         from src.pokemon.data import Pokemon
@@ -338,7 +419,7 @@ class WildWalkUps:
         self._sw = {"order": order, "k": 0, "phase": "TALK", "t": 0, "fx": []}
         self.mode = "SWARM"
         name = order[0].payload.display_name.upper()
-        self.say([f"A swarm of {name} surrounds you!", "Answer right to knock them out, one at a time!"], then=self._sw_ask)
+        self._wu_say([f"A swarm of {name} surrounds you!", "Answer right to knock them out, one at a time!"], then=self._sw_ask)
 
     def _sw_target(self):
         sw = self._sw
@@ -347,7 +428,7 @@ class WildWalkUps:
     def _sw_ask(self):
         sw = self._sw
         self._wu_face(self._sw_target())
-        self.problem_str, self.correct_ans, self.options = self.generate_math_set(self.total_caught, num_options=3)
+        self.problem_str, self.correct_ans, self.options = self.generate_math_set(self._wu_total(), num_options=3)
         self.math_timer = self.math_full = self.game.story_manager.timer_frames(self._math_seconds())
         sw["phase"], sw["t"] = "ASK", 0
 
@@ -387,7 +468,7 @@ class WildWalkUps:
         if not sw:
             self.mode = "MAP"
             return
-        if self.dialogue_box.visible:
+        if self._wu_talking():
             return
         sw["t"] += 1
         ph, t = sw["phase"], sw["t"]
@@ -416,7 +497,7 @@ class WildWalkUps:
                     self._sw_exp(tgt.payload, 1.0 if last else 0.5)
                 sw["k"] += 1
                 sw["phase"] = "TALK"
-                self.say(lines, then=self._sw_end if last else self._sw_ask)
+                self._wu_say(lines, then=self._sw_end if last else self._sw_ask)
         elif ph == "HURT":
             lead = sw["victim"]
             k = min(1.0, t / ORB)
@@ -429,12 +510,12 @@ class WildWalkUps:
                     lines.append(f"{lead.display_name.upper()} fainted!")
                     team_left = any(p and p.current_hp > 0 for p in self.game.story_manager.player_team)
                     if not team_left:
-                        self.say(lines + ["Your team is exhausted!", f"{self.game.player_name} whited out!"],
+                        self._wu_say(lines + ["Your team is exhausted!", f"{self.game.player_name} whited out!"],
                                  then=self._sw_whiteout)
                         return
-                    self.say(lines + ["The swarm ran off!"], then=self._sw_run_off)
+                    self._wu_say(lines + ["The swarm ran off!"], then=self._sw_run_off)
                     return
-                self.say(lines, then=self._sw_ask)
+                self._wu_say(lines, then=self._sw_ask)
         elif ph == "THROW":
             if t >= THROW:
                 self._sw_caught(tgt)
@@ -460,7 +541,7 @@ class WildWalkUps:
             lines = self._sw_exp(tgt.payload, 1.0)
             go = lambda: sw.update(phase="THROW", t=0)
             if lines:
-                self.say(lines, then=go)
+                self._wu_say(lines, then=go)
             else:
                 go()
         else:
@@ -473,17 +554,15 @@ class WildWalkUps:
         self._wu_hud(True)
         sw = self._sw
         self._sw = None
-        self.encounter = tgt
-        self.throw_result, self._thrown_ball, self.was_shiny_override = "caught", sw.get("ball"), False
         self._wu = None
-        self._resolve_throw()
+        self._wu_keep(tgt, sw.get("ball"))
 
     def _sw_end(self):
         self._wu_hud(True)
         self._sw = None
         self._wu = None
         self.mode = "MAP"
-        self.check_for_evolution()
+        self._wu_evolve()
 
     def _sw_run_off(self):
         self._wu_hud(True)
@@ -498,7 +577,7 @@ class WildWalkUps:
         self._sw = None
         self._wu = None
         self.mode = "MAP"
-        self.perform_black_out()
+        self._wu_blackout()
 
     def _sw_exp(self, foe, share):
         """Exp. for a swarm Pokemon knocked out or caught: the battle's own formula (src/states/battle.py
@@ -617,10 +696,10 @@ class WildWalkUps:
         fonts = self.game.assets.fonts
         W, H = self.game.width, self.game.height
         lead = sw.get("victim") if sw["phase"] == "HURT" else (self.lead() or (self.game.story_manager.player_team or [None])[0])
-        me_tile = tuple(self.partner) if tuple(getattr(self, "partner", self.run.player)) != tuple(self.run.player) else tuple(self.run.player)
+        me_tile = tuple(self.partner) if tuple(getattr(self, "partner", self._wu_run().player)) != tuple(self._wu_run().player) else tuple(self._wu_run().player)
         mr = at(*me_tile)
         for m in sw["order"][sw["k"]:]:   # (just the level over each: they stand side by side, the species is in the heading)
-            if m in self.run.floor.movers and getattr(m, "_wu_alpha", 255) > 0:
+            if m in self._wu_run().floor.movers and getattr(m, "_wu_alpha", 255) > 0:
                 r = at(m.x, m.y)
                 self._sw_bar(screen, r, getattr(m, "_wu_hp", 1.0), f"Lv{m.payload.level}")
         if lead is not None:
@@ -641,13 +720,13 @@ class WildWalkUps:
                                   color=(255, 140, 130), shadow=(20, 20, 30), align="center")
         elif sw["phase"] == "THROW":
             k = min(1.0, sw["t"] / THROW)
-            a, b = at(*self.run.player).center, tr.center
+            a, b = at(*self._wu_run().player).center, tr.center
             x = a[0] + (b[0] - a[0]) * min(1.0, k * 1.6)
             y = a[1] + (b[1] - a[1]) * min(1.0, k * 1.6) - math.sin(math.pi * min(1.0, k * 1.6)) * 60
             if k > 0.62:   # (in the ball, shaking: the Pokemon is in it)
                 x += math.sin(k * 40) * 5
                 tgt._wu_alpha = 0
-            ball = self._ball_img(30)
+            ball = self._wu_ball_img(30)
             screen.blit(ball, ball.get_rect(center=(int(x), int(y))))
         left = len(sw["order"]) - sw["k"]
         kind = sw["order"][-1].payload.display_name.upper()
@@ -657,7 +736,7 @@ class WildWalkUps:
         pygame.draw.rect(screen, (30, 36, 58), hr, border_radius=10)
         pygame.draw.rect(screen, theme.FIGHT, hr, 2, border_radius=10)
         screen.blit(tag, tag.get_rect(center=hr.center))
-        if self.dialogue_box.visible:
+        if self._wu_talking():
             return
         mouse = pygame.mouse.get_pos()
         if sw["phase"] == "ASK":
@@ -680,3 +759,168 @@ class WildWalkUps:
             for i, (r, (label, small, color)) in enumerate(zip(self._sw_pick_rects(), labels)):
                 theme.command_button(screen, r, label, fonts["button"], color,
                                      hover=r.collidepoint(mouse) or sw.get("pick") == i, small=fonts["caption"], sub=small)
+
+
+# ---------------------------------------------------------------- the walked towns (walk_town.py): the same, on a town's grid
+class _TownFloor:
+    """A walked town seen as the route map's floor, for the walk-up: its water ('o', the sea, '~'), its grass, its open
+    ground; doors, signs, ways out, bars and its people are in the way. movers: the walk-up's own Pokemon only."""
+
+    def __init__(self, town):
+        self.town = town
+        self.movers = town.__dict__.setdefault("_wu_movers", [])
+        self.items, self.tm_spots, self.decor = {}, {}, {}
+
+    @property
+    def w(self):
+        return self.town.w
+
+    @property
+    def h(self):
+        return self.town.h
+
+    @property
+    def exits(self):
+        t = self.town
+        return (set(t.exits) | set(t.doors) | set(t.signs) | set(getattr(t, "barred", {}) or {}) | set(t._people())
+                | {tuple(getattr(t, "partner", ()))})
+
+    def inside(self, x, y):
+        return 0 <= x < self.w and 0 <= y < self.h
+
+    def tile(self, x, y):
+        from src.dungeon import art
+        if not self.inside(x, y):
+            return core.WALL
+        t = self.town
+        row, art_c = t.rows[y][x], (getattr(t, "grid", None) or t.rows)[y][x]
+        if row == "o" or art_c == "~" or art_c in art.SEA_CHARS:
+            return core.SURF
+        if art_c == '"':
+            return core.GRASS
+        if row == "." and art_c not in "_()":
+            return core.FLOOR
+        return core.WALL
+
+    def walkable(self, x, y):
+        return self.tile(x, y) not in (core.WALL, core.WATER)
+
+    def mover_at(self, x, y):
+        return next((m for m in self.movers if (m.x, m.y) == (x, y)), None)
+
+
+class _TownRun:
+    def __init__(self, town):
+        self.town, self.floor = town, _TownFloor(town)
+        self.floors = [self.floor]
+
+    @property
+    def player(self):
+        return tuple(self.town.player)
+
+    @staticmethod
+    def visible(x, y):
+        return True
+
+    def remove(self, m):
+        if m in self.floor.movers:
+            self.floor.movers.remove(m)
+
+
+class TownWalkUps(WildWalkUps):
+    """WildWalkUps on a walked town (Vermilion's surf swarm, Violet's fishing swarm): its grid as the floor, its text box,
+    its own catch (no route catch screen in a town)."""
+    mode = "MAP"
+
+    def _wu_run(self):
+        key = (self.area_key, getattr(self, "room", None))
+        run = self.__dict__.get("_wu_town_run")
+        if run is None or run[0] != key:
+            self.__dict__["_wu_movers"] = []   # (a new place: nobody carried over)
+            run = self._wu_town_run = (key, _TownRun(self))
+        return run[1]
+
+    def _wu_talking(self):
+        return bool(self.npc_active)
+
+    def _wu_say(self, lines, then=None):
+        self.npc_say(lines, then or (lambda: None))
+
+    def _wu_total(self):
+        return getattr(self.game.loader, "total_caught", 0)
+
+    def _wu_ball_img(self, size):
+        return self._sprite(("ball", size), lambda: pygame.transform.smoothscale(self.game.assets.ball_imgs[0], (size, size)))
+
+    def _wu_blackout(self):
+        from src.states.overworld.area_transition import white_out
+        white_out(self.game)
+
+    def _wu_evolve(self):
+        from src.states.overworld.route_encounters import RouteEncounters
+        RouteEncounters.check_for_evolution(self)
+
+    def _scan_list_for_evolution(self, *a, **k):
+        from src.states.overworld.route_encounters import RouteEncounters
+        return RouteEncounters._scan_list_for_evolution(self, *a, **k)
+
+    def generate_math_set(self, score_unused=0, num_options=3):
+        return self.game.math.generate(self.game.story_manager.get_math_level(), num_options=num_options)
+
+    def _can_catch(self):
+        story = self.game.story_manager
+        return story.catch_unlocked() and catching.total_balls(story) > 0
+
+    def _wu_keep(self, mover, ball):
+        """Caught on a town's water: into the party (or the PC), the Pokedex, the counts, then the save."""
+        story, p = self.game.story_manager, mover.payload
+        self._wu_run().remove(mover)
+        self.mode = "MAP"
+        if p.cry:
+            p.cry.play()
+        p.caught_region, p.caught_level = story.get_current_region(), p.level
+        name = p.display_name.upper()
+        if len(story.player_team) < 6:
+            story.player_team.append(p)
+            lines = [f"Gotcha! {name} was caught!"]
+        else:
+            story.deposit_to_pc(p)
+            lines = [f"Gotcha! {name} was caught!", f"{name} was sent to BILL'S PC!"]
+        story.catch_counts[str(p.id)] = story.catch_counts.get(str(p.id), 0) + 1
+        lines += story.catch_milestones()
+        self.game.data.add_pokemon(p)
+        if p.is_shiny:
+            self.game.data.add_shiny()
+        catching.after_catch(self.game, p, ball)
+        self.game.update_save_data()
+        self.game.data.save()
+        self._wu_say(lines, then=self._wu_evolve)
+
+    def _wu_town_swarm(self, mon, tile, how, first=()):
+        """A town's own swarm (on its sea, on your line): as on the route maps."""
+        if getattr(self, "room", None) and how != "fish":
+            return False
+        return self.swarm_from(mon, tile, how=how, first=first)
+
+    def _wu_draw_movers(self, ox, oy, lp, drawn):
+        """The walk-up's Pokemon into the town's drawing list (bottom, image, rect)."""
+        for m in list(self._wu_run().floor.movers):
+            mo = getattr(m, "motion", None)
+            fx, fy = mo.at() if mo is not None else (m.x, m.y)
+            alpha = getattr(m, "_wu_alpha", 255)
+            if alpha <= 0:
+                continue
+            img = self._icon(m.payload, TILE_OF(self), flip=(fx < self.player[0]), facing=getattr(m, "facing", None))
+            if img is None:
+                continue
+            if alpha < 255:
+                img = img.copy()
+                img.set_alpha(alpha)
+            t = TILE_OF(self)
+            r = pygame.Rect(int(ox + fx * t), int(oy + fy * t) - lp(fx, fy), t, t)
+            drawn.append((int(oy + (fy + 1) * t), img, img.get_rect(midbottom=(r.centerx, r.bottom + 4 - self._wu_lift(m)))))
+
+
+def TILE_OF(state):
+    from src.states.overworld import dungeon
+    return dungeon.TILE

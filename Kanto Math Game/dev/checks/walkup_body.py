@@ -13,6 +13,7 @@ from src.pokemon.evolution import base_id
 SHOTS = _os.path.join(S, "walkup")
 _os.makedirs(SHOTS, exist_ok=True)
 g.dungeon_routes = True
+g.walk_towns = True   # (the walked towns too: Vermilion's and Violet's water, parts 9-10)
 story.level_cap_mode = "NONE"   # (Exp. is shown in full: no Gym-badge cap in the way)
 
 
@@ -89,10 +90,10 @@ shot("1a_honey_walking_up")
 key(pygame.K_RIGHT)
 check(p.run.player == me, "arrow keys don't walk you off while they walk up")
 check(until(p, lambda: p.mode == "CATCH", wu.WALK_LIMIT + 120), f"then the catch screen opens ({p.mode})")
-check(all(dist((m.x, m.y), me) == 1 for m in ws), f"...once all three stand round you ({[(m.x, m.y) for m in ws]}, you {me})")
+check(all(max(abs(m.x - me[0]), abs(m.y - me[1])) == 1 for m in ws), f"...once all three stand round you, sides first, then corners ({[(m.x, m.y) for m in ws]}, you {me})")
 check(len({(m.x, m.y) for m in ws}) == 3, "...each on its own tile")
 check([id(x) for x in p.p_data] == [id(m.payload) for m in ws], "the catch screen's three are the very ones that walked up")
-check(all(m.motion.facing == ((me[0] > m.x) - (me[0] < m.x), (me[1] > m.y) - (me[1] < m.y)) for m in ws),
+check(all(m.motion.facing[0] * (me[0] - m.x) + m.motion.facing[1] * (me[1] - m.y) > 0 for m in ws),
       "...and they look at you")
 # the see-through layer: the map under it
 p.draw()
@@ -394,5 +395,228 @@ p, me = swarm_route()
 m, d = chansey_beside(p, me)
 p.step(*d)
 check(p.mode == "CHOICE" and not walkers(p), f"the usual catch-or-battle choice ({p.mode})")
+
+# ---------------------------------------------------------------- 8-10) the water: fishing swarms, a town's sea, a town's line
+def swarm_day(region, area):
+    d0 = _dt.date(2026, 1, 1)
+    day = next(d0 + _dt.timedelta(days=i) for i in range(800)
+               if swarms.today(story, region, (d0 + _dt.timedelta(days=i)).isoformat())[0] == area)
+
+    class _D(_dt.date):
+        @classmethod
+        def today(cls):
+            return day
+
+    class _M:
+        date = _D
+        datetime = _dt.datetime
+        timedelta = _dt.timedelta
+    swarms.datetime = _M
+    return day
+
+
+def lines_of(st):
+    box = getattr(st, "npc_dialogue", None) if hasattr(st, "npc_active") else st.dialogue_box
+    return list(getattr(box, "text_lines", None) or []) if box is not None else []
+
+
+def talking(st):
+    return st.npc_active if hasattr(st, "npc_active") else st.dialogue_box.visible
+
+
+def read_on(st, n=600):
+    """Tap the text on to its end, as a player does (a route's box, or a town's)."""
+    seen = []
+    for _ in range(n):
+        if not talking(st):
+            break
+        for l in lines_of(st):
+            if not seen or seen[-1] != l:
+                seen.append(l)
+        if hasattr(st, "npc_active"):
+            st.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=(640, 600))])
+        else:
+            st.dialogue_box.advance()
+        frames(st)
+    return seen
+
+
+def fight_and_catch(st, tag):
+    """The swarm's battle, played: three right answers, then CATCH. Returns what was said."""
+    said = []
+    check(until(st, lambda: st.mode == "SWARM", wu.WALK_LIMIT + 200), f"{tag}: they come up round you, and the battle starts ({st.mode})")
+    if st.mode != "SWARM":
+        return said
+    sw = st._sw
+    st.draw()
+    shot(f"{tag}_battle")
+    for n in range(3):
+        said += read_on(st)
+        if not until(st, lambda: sw["phase"] in ("ASK", "PICK"), 400) or sw["phase"] == "PICK":
+            break
+        tap(st._sw_answer_rects()[st.options.index(st.correct_ans)].center)
+        until(st, lambda: talking(st) or sw["phase"] == "PICK", 400)
+    said += read_on(st)
+    check(sw["phase"] == "PICK", f"{tag}: three right answers, two faint, the last one: CATCH or FAINT")
+    last = sw["order"][-1].payload
+    tap(st._sw_pick_rects()[0].center)
+    for _ in range(900):
+        said += read_on(st, 5)
+        if st.mode == "MAP" and not talking(st) and not st._sw:
+            break
+        frames(st)
+    check(any(x is last for x in story.player_team + [q for q in story.pc_pokemon if q]), f"{tag}: CATCH: it's yours")
+    return said
+
+
+print("8) A fishing swarm on a route (SoulSilver's Qwilfish on Johto's Route 32): a bite brings its friends up out of the water")
+story.story_flags["unlocked_national_dex"] = True
+swarm_day("JOHTO", "JOHTO_ROUTE_32")
+check(swarms.today(story, "JOHTO") == ("JOHTO_ROUTE_32", 211) and swarms.kind_today(story, "JOHTO") == "fish",
+      "today Route 32's swarm is Qwilfish, on the rod")
+wu.SWARM_CALL = 1.0
+p = kanto("JOHTO_ROUTE_32", came="VIOLET_CITY")
+story.player_team[0].level = 40
+story.player_team[0].current_hp = story.player_team[0].get_max_hp()
+story.inventory["SUPER_ROD"] = 1
+f = p.run.floor
+best = None
+for y in range(1, f.h - 1):
+    for x in range(1, f.w - 1):
+        if not f.walkable(x, y) or f.tile(x, y) == core.SURF or f.occupied(x, y):
+            continue
+        for dx, dy in core.DIRS:
+            if f.tile(x + dx, y + dy) in (core.WATER, core.SURF):
+                wet = sum(1 for yy in range(y - 3, y + 4) for xx in range(x - 3, x + 4) if f.tile(xx, yy) in (core.WATER, core.SURF))
+                if best is None or wet > best[0]:
+                    best = (wet, (x, y), (dx, dy))
+check(best is not None, f"Route 32 has water to fish in ({best})")
+caller = None
+for _ in range(60):
+    if g.current_state is not p:
+        g.change_state(p)
+    p.mode, p.anim, p._sw, p._wu = "MAP", 0, None, None
+    p.dialogue_box.visible = False
+    f.movers[:] = [m for m in f.movers if m.kind not in ("wild", wu.WALKUP)]
+    p.run.player = p.partner = p.partner_from = p.anim_from = best[1]
+    p.run.reveal()
+    p.facing = best[2]
+    p.fish_here()
+    frames(p, 40)
+    if p.dialogue_box.visible and any("called its friends" in l for l in p.dialogue_box.text_lines):
+        caller = True
+        break
+check(caller, "a Qwilfish on the line calls its friends ('Oh! A bite!' then 'called its friends')")
+if caller:
+    said = read_on(p)
+    ws = walkers(p)
+    check(len(ws) == 3 and all(x.payload.id == 211 for x in ws), f"three Qwilfish come up ({len(ws)})")
+    check(all(f.tile(m.x, m.y) in (core.WATER, core.SURF) for m in ws), "...all in the water")
+    frames(p, wu.HOP + 4)
+    shot("8a_fish_swarm_coming")
+    fight_and_catch(p, "8b_fish_swarm")
+    check(p.mode == "MAP" and not walkers(p), "back to fishing, the water clear")
+story.inventory.pop("SUPER_ROD", None)
+
+
+def town(area, came):
+    story.current_area_key, story.last_area_key = area, came
+    g.walk_town_pos = None
+    t = _CS(g)
+    g.change_state(t)
+    frames(t, 2)
+    _tap_through(t)
+    return g.current_state
+
+
+print("9) A town's sea: Vermilion's Wingull swarm (SoulSilver's) calls its friends over the water as you surf")
+swarm_day("KANTO", "VERMILLION_CITY")
+check(swarms.today(story, "KANTO") == ("VERMILLION_CITY", 278), "today Vermilion's swarm is Wingull, on the sea")
+story.enter_region("KANTO")
+story.inventory["HM_SURF"] = 1
+story.player_team = [mk(7)]
+story.player_team[0].level = 40
+story.player_team[0].current_hp = story.player_team[0].get_max_hp()
+story.balls_left = 20
+t = town("VERMILLION_CITY", "KANTO_ROUTE_6")
+check(isinstance(t, _WTS), f"Vermilion is walked ({type(t).__name__})")
+sea = None
+for y in range(2, t.h - 2):
+    for x in range(2, t.w - 2):
+        if t.rows[y][x] == "o" and t.rows[y][x - 1] == "o" and sum(t.rows[y + dy][x + dx] == "o" for dx in (-1, 0, 1) for dy in (-1, 0, 1)) == 9:
+            sea = (x, y)
+            break
+    if sea:
+        break
+check(sea is not None, f"open sea in Vermilion's harbour ({sea})")
+came = False
+for _ in range(3000):
+    if g.current_state is not t:
+        g.change_state(t)
+    t.mode, t._sw, t._wu = "MAP", None, None
+    t.player, t.anim_from, t.anim, t.facing = sea, (sea[0] - 1, sea[1]), 0, (1, 0)
+    t.partner = t.partner_from = sea
+    if t._surf_wild(sea) and g.current_state is t and t.npc_active and any("called its friends" in l for l in lines_of(t)):
+        came = True
+        break
+check(came, "a step on the sea: a Wingull, and it calls its friends")
+if came:
+    read_on(t)
+    ws = list(t._wu_run().floor.movers)
+    check(len(ws) == 3 and all(x.payload.id == 278 for x in ws), f"three Wingull ({len(ws)})")
+    check(all(t._wu_run().floor.tile(m.x, m.y) == core.SURF for m in ws), "...on the water")
+    frames(t, wu.HOP + 4)
+    shot("9a_town_sea_swarm")
+    fight_and_catch(t, "9b_town_sea_swarm")
+    check(t.mode == "MAP" and not t._wu_run().floor.movers and not t._busy(), "back to surfing the harbour")
+
+print("10) A town's line: Violet City's Whiscash swarm (SoulSilver's), from the shore")
+swarm_day("JOHTO", "VIOLET_CITY")
+check(swarms.today(story, "JOHTO") == ("VIOLET_CITY", 340), "today Violet City's swarm is Whiscash, on the rod")
+story.enter_region("JOHTO")
+story.player_team = [mk(158)]
+story.player_team[0].level = 40
+story.player_team[0].current_hp = story.player_team[0].get_max_hp()
+story.inventory["SUPER_ROD"] = 1
+story.balls_left = 20
+t = town("VIOLET_CITY", "JOHTO_ROUTE_32")
+check(isinstance(t, _WTS), f"Violet City is walked ({type(t).__name__})")
+shore = None
+for y in range(1, t.h - 1):
+    for x in range(1, t.w - 1):
+        if t.rows[y][x] != "." or (x, y) in t._people():
+            continue
+        t.player = (x, y)
+        if t._fish_spot():
+            shore = (x, y)
+            break
+    if shore:
+        break
+check(shore is not None, f"a shore to fish from ({shore})")
+came = False
+for _ in range(80):
+    if g.current_state is not t:
+        g.change_state(t)
+    t.mode, t._sw, t._wu = "MAP", None, None
+    t.npc_active = False
+    t.player = t.anim_from = t.partner = t.partner_from = shore
+    t.anim = 0
+    t.fish_here()
+    frames(t, 2)
+    if t.npc_active and any("called its friends" in l for l in lines_of(t)):
+        came = True
+        break
+check(came, "a Whiscash (or a Barboach, its first stage, at the rod's level) on the line calls its friends")
+if came:
+    read_on(t)
+    ws = list(t._wu_run().floor.movers)
+    check(len(ws) == 3 and len({x.payload.id for x in ws}) == 1 and ws[0].payload.id in (339, 340),
+          f"three of a kind come up: Whiscash, or Barboach at the rod's level ({[x.payload.id for x in ws]})")
+    frames(t, wu.HOP + 4)
+    shot("10a_town_fish_swarm")
+    fight_and_catch(t, "10b_town_fish_swarm")
+    check(t.mode == "MAP" and not t._wu_run().floor.movers, "back on the shore, the water clear")
+story.inventory.pop("SUPER_ROD", None)
+swarms.datetime = _dt
 
 print(f"##### {fails} failures")
