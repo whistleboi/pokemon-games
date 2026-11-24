@@ -240,8 +240,8 @@ check(len(up) == 6 and "Rider Nelis" in up and len(lp) == 12 and "Researcher Kot
       f"The Under's 6 and the Lab's 12 ({len(up)}, {len(lp)})")
 ven = next(o for o in SP["THE_UNDER"]["route_menu"] if o["text"] == "SHUT DOWN THE UNDER")["event"]["battle"]
 ein = next(o for o in SP["SHADOW_PKMN_LAB"]["route_menu"] if o["text"] == "SHADOW POKEMON LAB: EIN")["event"]["battle"]
-check(ven["team"][0] == 9398 and ven["levels"] == [40, 45, 44, 45, 45], f"Venus: Shadow Suicune 40, then Lv 44-45 ({ven['levels']})")
-check(ein["team"][0] == 9396 and ein["levels"] == [40, 47, 46, 47, 48], f"Ein: Shadow Raikou 40, then Lv 46-48 ({ein['levels']})")
+check(ven["team"][0] == 9398 and ven["levels"] == [25, 26, 26, 26, 26], f"Venus: Shadow Suicune 25, then Lv 26 - stage levels, L1 11-24 ({ven['levels']})")
+check(ein["team"][0] == 9396 and ein["levels"] == [26, 28, 28, 28, 28], f"Ein: Shadow Raikou 26, then Lv 28 - stage levels, L1 11-24 ({ein['levels']})")
 kanto = {s["id"] for s in SP["SHADOW_PKMN_LAB"]["shadow_pool"]}
 check({9432, 9438, 9435} <= kanto, "Jordan's Shadow Bulbasaur, Charmander and Squirtle still in the Lab")
 
@@ -355,6 +355,7 @@ p = route("SHADOW_PKMN_LAB", "THE_UNDER", floor=3)
 check(p._until_met(TM["SHADOW_PKMN_LAB"]["floors"][3]["barred"][0]["until"]), "the analyzer's door opens for the three samples")
 meet(g.current_state, "CIPHER PEON SKRUB")
 check(F.get("orre_lab_skrub"), "Skrub's rematch")
+F["orre_under_colosseum_won"] = True   # (Ein waits for the Under Colosseum: story rework 11-24)
 route("SHADOW_PKMN_LAB", "THE_UNDER", floor=3)
 meet(g.current_state, "SHADOW POKEMON LAB: EIN")
 check(F.get("orre_ein_lab") and F.get("snagged_shadow_raikou"), "Ein beaten, Shadow Raikou snagged")
@@ -374,14 +375,15 @@ _saved = {k: F.get(k) for k in ("orre_subway_bomb", "cleared_the_under", "orre_v
 _badges = list(story.badges.get("ORRE", []))
 F.update({"orre_subway_bomb": True, "cleared_the_under": True, "orre_venus_station": True})
 story.badges["ORRE"] = [b_ for b_ in _badges if b_ != "UNDER"]
+_won = F.pop("orre_under_colosseum_won", None)   # (the Lab waits for the Under Colosseum now, not an Under Badge: 11-24)
 p = route("THE_UNDER", "PYRITE_BUILDING", floor=12)
 check("SHADOW_PKMN_LAB" in p.run.floor.exits.values(), "the Far Station has a way out to the Lab")
 _said = []
 p.say = lambda lines, *a, **k: _said.extend(lines if isinstance(lines, list) else [lines])
 p._try_exit("SHADOW_PKMN_LAB"); frames(3)
-check(getattr(g.current_state, "area_key", None) == "THE_UNDER" and any("Under Badge" in s_ for s_ in _said),
-      f"the stairs wait for the Under Badge ({_said[:1]})")
-story.badges["ORRE"] = _badges + ([] if "UNDER" in _badges else ["UNDER"])
+check(getattr(g.current_state, "area_key", None) == "THE_UNDER" and any("blocks the way" in s_ for s_ in _said),
+      f"the stairs wait for the Under Colosseum ({_said[:1]})")
+F["orre_under_colosseum_won"] = True
 p = route("THE_UNDER", "PYRITE_BUILDING", floor=12)
 p._try_exit("SHADOW_PKMN_LAB")
 for _ in range(400):

@@ -209,18 +209,18 @@ KL = "XD_CIPHER_KEY_LAIR"
 print("1) The Orre Colosseum: XD's own challengers, Justy the final")
 gym = SP["ORRE_COLOSSEUM"]["gym"]
 check([t["name"] for t in gym["trainers"]] == ["Hunter Greel", "Rider Herlam", "Navigator Lestor"]
-      and all(t["levels"] == [60] * 6 and t.get("double") for t in gym["trainers"]),
-      "Greel, Herlam and Lestor, six Pokemon each at Lv 60, double battles, as XD's disc has them")
+      and all(t["levels"] == [44] * 6 and t.get("double") for t in gym["trainers"]),
+      "Greel, Herlam and Lestor, six Pokemon each at Lv 44 (Part 2's stage, L1 11-24), double battles")
 ld = gym["leader"]
-check(ld["name"] == "Pre Gym Leader Justy" and max(ld["levels"]) == 62 and ld["sprite"] == "orre_justy.png" and ld.get("badge_reward") == "ORRE",
-      f"Justy the final, raised (ace {max(ld['levels'])}), his own picture, the Orre Badge")
+check(ld["name"] == "Pre Gym Leader Justy" and max(ld["levels"]) == 44 and ld["sprite"] == "orre_justy.png" and not ld.get("badge_reward"),
+      f"Justy the final (ace {max(ld['levels'])}), his own picture; a crown only, no badge (S2 11-24)")
 check(gym["requirements"].get("flag") == "beat_gonzap", "open once Gonzap's beaten")
 t = town("ORRE_COLOSSEUM", "ORRE_DESERT")
 check(isinstance(t, _WTS), "the Orre Colosseum's town loads")
 
 print("2) The Key Lair's door: Zook, then Snagem's Biden")
 gate = next(o for o in SP["GATEON_PORT"]["travel_options"] if o.get("target_area") == KL)
-check(gate.get("condition") == "has_orre_badge", "Gateon's way to the Key Lair: after the Orre Badge")
+check(gate.get("condition") == "orre_colosseum_won", "Gateon's way to the Key Lair: after the Orre Colosseum is won (S2 11-24)")
 story.badges["ORRE"].append("ORRE")
 F["has_orre_badge"] = True
 p = route(KL, "GATEON_PORT")
@@ -412,7 +412,7 @@ p = route(KL, "GATEON_PORT")
 back = next(b for b in p.run.recipe["art"]["floors"][0]["barred"] if "inside" in " ".join(b["lines"]))
 check(p._until_met(back["until"]), "the yard's back door from Gorigan's hall opens once he's beaten")
 gate = next(o for o in SP["PHENAC_CITY"]["travel_options"] if o.get("target_area") == "REALGAM_TOWER")
-check("xd_gorigan_beaten" in str(gate.get("condition")), "Realgam Tower on the map after Gorigan")
+check("orre_data_rom_given" in str(gate.get("condition")), "Realgam Tower on the map after Ein's Data ROM (Part 1's end, story rework 11-24)")
 
 print("7) The Journal")
 jm = [m["id"] for m in g.loader.area_data["JOURNAL_MISSIONS"] if m["id"].startswith("orre_m")]
@@ -468,7 +468,7 @@ _keep = (list(story.player_team), dict(F), {k_: list(v_) for k_, v_ in story.bad
 for area in ("PYRITE_TOWN", "UNDER_COLOSSEUM", "PHENAC_CITY", "ORRE_COLOSSEUM"):
     gym = SP[area]["gym"]
     F.update({gym["requirements"]["flag"]: True})
-    story.badges["ORRE"] = ["PYRITE", "UNDER", "PHENAC", "ORRE"][:int(gym["requirements"].get("badges", 0))]
+    story.badges["ORRE"] = ["PHENAC", "PYRITE", "AGATE", "SNAGEM", "GATEON"][:int(gym["requirements"].get("badges", 0))]   # (the eight Gyms' order, 11-24)
     for k_ in [k_ for k_ in F if k_.startswith((f"gym_progress_{area}", "orre_tourney"))]:
         F.pop(k_, None)
     w = _TP(g.loader.fetch_specific(129), g.assets, size_mult=2.5)
@@ -493,13 +493,12 @@ check(_tm["rooms"]["gym"]["roofs"]["_picture"]["f"].endswith("103_sand.png") and
       "the Orre Colosseum's lobby in sand, Phenac Stadium's in blue (Jordan's OK)")
 _rg = story_map_of("REALGAM_TOWER")["rooms"]["colosseum"]
 _ppl = [p_ for p_ in _rg["people"] if isinstance(p_, dict)]
-check(any(p_.get("text") == "Realgam Colosseum desk" and "xd_colosseum" in p_["event"] for p_ in _ppl)
-      and any((p_.get("event") or {}).get("referee") and (p_.get("event") or {}).get("signup") for p_ in _ppl),
-      "Realgam's tower top: XD's Realgam Colosseum desk (its own flag) and the host who starts Evice's run")
+check(any(p_.get("text") == "Realgam Colosseum desk" and "xd_colosseum" in p_["event"] for p_ in _ppl),
+      "Realgam's tower top: XD's Realgam Colosseum desk (its own flag); the League's host is orre_maps S5's")
 _rr = _rg["people"]
 _xd = next(p_ for p_ in _ppl if p_.get("text") == "Realgam Colosseum desk")["event"]["xd_colosseum"]
-check(len(_xd["rounds"]) == 4 and all(len(r_) == 4 for r_ in _xd["rounds"]) and max(max(b_["levels"]) for r_ in _xd["rounds"] for b_ in r_) == 40,
-      "XD's Realgam Colosseum: four rounds of four, Lv 40 as the disc")
+check(len(_xd["rounds"]) == 4 and all(len(r_) == 4 for r_ in _xd["rounds"]) and max(max(b_["levels"]) for r_ in _xd["rounds"] for b_ in r_) == 47,
+      "XD's Realgam Colosseum: four rounds of four, Lv 47 (Part 2's stage)")
 import os as _os
 check(_os.path.isfile("assets/battle_bg/ORRE/index.json") and _os.path.isfile("assets/battle_bg/ORRE/pyritecol.png"),
       "Orre's battle backgrounds from its source game (assets/battle_bg/ORRE)")
