@@ -187,9 +187,9 @@ def _fight(b, n=8000):
         if b.phase == "SWITCH_PROMPT" and b.btn_no.visible and b.btn_no.callback:
             b.btn_no.callback()
         elif b.phase == "MENU" and not b.dialogue_box.visible and foe is not None and id(foe) not in tried \
-                and story.inventory.get("POKE_BALL", 0) > 0:
+                and story.inventory.get(catching.POKE, 0) > 0:
             tried.add(id(foe))
-            story.selected_ball = "POKE_BALL"
+            story.selected_ball = catching.POKE
             real = catching.throw
             catching.throw = lambda *a, **k: (True, 3, False)
             b.throw_from_bag()
@@ -276,7 +276,7 @@ frames(3)
 lv = {p.id: p.level for p in story.player_team}
 check(lv == {196: 25, 197: 26}, f"Espeon Lv 25 and Umbreon Lv 26, as Colosseum gives them ({lv})")
 check(story.inventory.get("SNAG_MACHINE") and F.get("orre_opening_seen"), "the Snag Machine from the opening")
-check(story.inventory.get("POKE_BALL", 0) == 0, "no Poke Balls yet (Orre's Marts have none)")
+check(story.inventory.get(catching.POKE, 0) == 0, "no Poke Balls yet (Orre's Marts have none)")
 mv = {p.id: p.moves for p in story.player_team}
 check(mv.get(196) == ["CONFUSION", "RETURN", "REFLECT", "HELPING-HAND"] and mv.get(197, [None])[0] == "BITE", f"their moves from the disc ({mv})")
 for p in story.player_team:   # (the story's flow is under test here, not how hard its battles are)
@@ -303,7 +303,7 @@ meet(t, "Team Snagem Wakin")
 check(F.get("orre_wakin"), "Team Snagem's Wakin beaten")
 t = town("OUTSKIRT_STAND", "PHENAC_CITY")
 meet(t, "Diner")
-check(F.get("orre_got_balls") and story.inventory.get("POKE_BALL") == 5, f"the bartender's 5 Poke Balls ({story.inventory.get('POKE_BALL')})")
+check(F.get("orre_got_balls") and story.inventory.get(catching.POKE) == 5, f"the bartender's 5 Poke Balls ({story.inventory.get(catching.POKE)})")
 t = town("PHENAC_CITY", "OUTSKIRT_STAND")
 check(F.get("orre_raid_told"), "back in Phenac: trouble at the Mayor's")
 for who, flag in (("Miror B.", "orre_raid_mirorb"), ("Miror B. Peon Folly", "orre_raid_folly"), ("Miror B. Peon Trudly", "orre_raid_trudly")):

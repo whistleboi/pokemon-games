@@ -3880,9 +3880,6 @@
     "SUNYSHORE_CITY:Heal": {
       "sheet": "pt_pcwoman1.png"
     },
-    "PHENAC_CITY:Meet Rui": {
-      "sheet": "orre_partner_rui.png"
-    },
     "OUTSKIRT_STAND:Rider Willie": {
       "sheet": "orre_trainer_rider_willie.png"
     },
@@ -3985,17 +3982,14 @@
     "PHENAC_CITY:Phenac Stadium": {
       "sheet": "orre_npc_hoenn_03.png"
     },
-    "PHENAC_CITY:Trouble at the Fountain": {
-      "sheet": "orre_trainer_cipher_grunt.png"
+    "PHENAC_CITY:Healing machine": {
+      "sheet": "orre_healing_balls_3.png"
     },
     "PHENAC_CITY:Pokemon Center": {
       "sheet": "orre_npc_16.png"
     },
     "PHENAC_CITY:Poke Mart": {
       "sheet": "orre_npc_15.png"
-    },
-    "OUTSKIRT_STAND:CHALLENGE WILLIE": {
-      "sheet": "orre_trainer_rider_willie.png"
     },
     "OUTSKIRT_STAND:Pokemon Center": {
       "sheet": "orre_healing_balls_3.png"

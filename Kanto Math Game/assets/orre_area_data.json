@@ -20,41 +20,6 @@
         {
           "text": "Poke Mart",
           "action": "SHOP"
-        },
-        {
-          "text": "CHALLENGE WILLIE",
-          "action": "EVENT",
-          "color": "GOLD",
-          "flag_condition": "not orre_beat_willie",
-          "event": {
-            "lines": [
-              "Willie: Hey, you look like a trainer passing through! Let's have a quick battle at the stand."
-            ],
-            "flag": "orre_beat_willie",
-            "battle": {
-              "name": "Rider Willie",
-              "class": "PKMN_TRAINER",
-              "sprite": "orre_rider_willie.png",
-              "is_boss_battle": true,
-              "team": [
-                263
-              ],
-              "levels": [
-                14
-              ],
-              "rewards": {
-                "balls": 6
-              },
-              "dialogue": {
-                "intro": [
-                  "Willie: Hey, you look like a trainer passing through! Let's have a quick battle at the stand."
-                ],
-                "player_won": [
-                  "Willie: Whoa! You're the real thing!"
-                ]
-              }
-            }
-          }
         }
       ],
       "travel_options": [
@@ -108,17 +73,6 @@
           "action": "TRAINER",
           "condition": "has_trainers",
           "color": "GREEN"
-        },
-        {
-          "text": "RIDE THE MOTORBIKE",
-          "action": "EVENT",
-          "color": "GOLD",
-          "event": {
-            "lines": [
-              "You rev the motorbike and race across the dunes.",
-              "Sand sprays behind you. Orre has no tall grass, only desert, rock and wind."
-            ]
-          }
         },
         {
           "text": "Pyrite Town",
@@ -271,67 +225,6 @@
               "orre_snattle_phenac"
             ]
           }
-        },
-        {
-          "text": "Trouble at the Fountain",
-          "action": "EVENT",
-          "color": "GOLD",
-          "event": {
-            "lines": [
-              "Men in strange uniforms are scaring people at the fountain!",
-              "Cipher Peon: Orre belongs to Cipher! Our Shadow Pokemon can't be stopped!"
-            ],
-            "battle": {
-              "name": "Cipher Peons",
-              "class": "CIPHER_PEON",
-              "sprite": "orre_cipher_peon.png",
-              "team": [
-                261,
-                285,
-                296
-              ],
-              "levels": [
-                13,
-                14,
-                15
-              ],
-              "rewards": {
-                "balls": 10
-              },
-              "dialogue": {
-                "player_won": [
-                  "Peon: Retreat! Tell the admins a trainer with real Pokemon is here!"
-                ]
-              }
-            },
-            "flag": "phenac_cipher_beaten",
-            "done": [
-              "The fountain sparkles again. Phenac is safe, for now."
-            ]
-          }
-        },
-        {
-          "text": "Meet Rui",
-          "action": "EVENT",
-          "color": "GOLD",
-          "event": {
-            "requires": [
-              "phenac_cipher_beaten"
-            ],
-            "lines": [
-              "Rui: You beat them! Did you see that dark aura? Those were Shadow Pokemon.",
-              "Cipher closes Pokemon's hearts so they only want to fight. It's so cruel!",
-              "Team Snagem left this machine behind when Cipher took over: a Snag Machine.",
-              "With it you can catch a Shadow Pokemon from a Cipher trainer and save it!",
-              "Take Shadow Pokemon to the Relic Stone in Agate Village to open their hearts."
-            ],
-            "gift_item": {
-              "SNAG_MACHINE": 1
-            },
-            "flag": "got_snag_machine"
-          },
-          "condition": "phenac_cipher_beaten",
-          "flag_condition": "not got_snag_machine"
         },
         {
           "text": "PHENAC STADIUM: SNATTLE",
@@ -625,18 +518,6 @@
       "description": "Three Poké Spots in the desert (Rock, Oasis and Cave), where wild Pokémon come for Poké Snacks. A Munchlax turns up now and then.",
       "route_menu": [
         {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
-        {
           "text": "DUKING AT THE ROCK",
           "action": "EVENT",
           "color": "GOLD",
@@ -767,6 +648,11 @@
           "door": "cycle",
           "target_area": "THE_UNDER",
           "condition": "visited_THE_UNDER"
+        },
+        {
+          "text": "ONBS",
+          "target_area": "XD_ONBS",
+          "condition": "xd_lovrina_beaten"
         },
         {
           "text": "ONBS Building",
@@ -1730,18 +1616,6 @@
       "wild_pool_percentages": "ORRE_OASIS_POKE_SPOT_PERCENTAGES",
       "trainer_pool": [],
       "route_menu": [
-        {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
-        },
         {
           "text": "DUKING AT THE OASIS",
           "action": "EVENT",
@@ -2868,16 +2742,6 @@
             "can_exit"
           ],
           "color": "RED"
-        },
-        {
-          "text": "Agate Village",
-          "action": "EXIT",
-          "target_area": "AGATE_VILLAGE",
-          "condition": [
-            "can_exit",
-            "orre_miror_cave"
-          ],
-          "color": "RED"
         }
       ],
       "next_area": "PYRITE_TOWN"
@@ -3340,18 +3204,6 @@
             "got_snag_machine",
             "shadows_cleared"
           ]
-        },
-        {
-          "text": "CATCH WILD PKMN",
-          "action": "CATCH",
-          "condition": "has_balls",
-          "color": "BLUE"
-        },
-        {
-          "text": "BATTLE WILD PKMN",
-          "action": "BATTLE",
-          "condition": "can_battle",
-          "color": "GREEN"
         },
         {
           "text": "MIROR B. AT THE CAVE",
@@ -9817,9 +9669,9 @@
           }
         },
         {
-          "text": "Pyrite Town",
+          "text": "Pyrite Building",
           "action": "EXIT",
-          "target_area": "PYRITE_TOWN",
+          "target_area": "PYRITE_BUILDING",
           "condition": [
             "can_exit"
           ],
