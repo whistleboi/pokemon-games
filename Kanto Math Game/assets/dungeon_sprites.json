@@ -76,6 +76,43 @@
     ]
   },
   "figures": {
+    "ORRE_NEW_ISLAND:BLASTOISE CLONE": {"pokemon": 9},
+    "ORRE_NEW_ISLAND:CHARIZARD CLONE": {"pokemon": 6},
+    "ORRE_NEW_ISLAND:VENUSAUR CLONE": {"pokemon": 3},
+    "REALGAM_TOWER:Mr. Fuji": {
+      "sheet": "orre_npc_18.png"
+    },
+    "REALGAM_TOWER:Sky Pillar": {
+      "sheet": "orre_pokemon_abra_line.png"
+    },
+    "REALGAM_TOWER:Birth Island": {
+      "sheet": "orre_pokemon_abra_line.png"
+    },
+    "REALGAM_TOWER:New Island": {
+      "sheet": "orre_pokemon_abra_line.png"
+    },
+    "REALGAM_TOWER:Lake of Rage": {
+      "sheet": "orre_pokemon_abra_line.png"
+    },
+    "REALGAM_TOWER:POKE FLUTE": {"item": "POKE_FLUTE"},
+    "ORRE_SKY_PILLAR:Back to Mr. Fuji's": {
+      "sheet": "orre_pokemon_abra_line.png"
+    },
+    "ORRE_SKY_PILLAR:RAYQUAZA": {"pokemon": 384},
+    "ORRE_BIRTH_ISLAND:Back to Mr. Fuji's": {
+      "sheet": "orre_pokemon_abra_line.png"
+    },
+    "ORRE_BIRTH_ISLAND:DEOXYS": {"pokemon": 386},
+    "ORRE_NEW_ISLAND:Back to Mr. Fuji's": {
+      "sheet": "orre_pokemon_abra_line.png"
+    },
+    "ORRE_NEW_ISLAND:MEWTWO": {
+      "sheet": "orre_pokemon_battle_armor_mewtwo.png"
+    },
+    "ORRE_LAKE_OF_RAGE:Back to Mr. Fuji's": {
+      "sheet": "orre_pokemon_abra_line.png"
+    },
+    "ORRE_LAKE_OF_RAGE:RED GYARADOS": {"pokemon": 130},
     "AGATE_VILLAGE:GYM LEADERS BLAINE & ERIKA": {"sheet": "orre_trainer_leader_erika.png"},
     "PYRITE_TOWN:GYM LEADER DUKING": {"sheet": "orre_npc_duking.png"},
     "PHENAC_CITY:GYM LEADER MISTY": {"sheet": "orre_trainer_leader_misty.png"},

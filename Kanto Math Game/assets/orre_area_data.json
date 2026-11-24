@@ -3645,6 +3645,193 @@
       ],
       "next_area": "AGATE_VILLAGE"
     },
+    "ORRE_SKY_PILLAR": {
+      "area_type": "dungeon",
+      "route_name": "Sky Pillar",
+      "region": "ORRE",
+      "level": 60,
+      "battle_type": "field",
+      "min_rounds": 0,
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "RAYQUAZA",
+          "action": "BOSS",
+          "color": "GOLD",
+          "condition": "beat_orre_champion",
+          "flag_condition": "not orre_rayquaza_done",
+          "boss": {
+            "id": 384,
+            "name": "Rayquaza",
+            "level": 70,
+            "victory_flag": "orre_rayquaza_done",
+            "lines": [
+              "Rayquaza coils at the top of the pillar... It roars at the sky!"
+            ]
+          }
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Back to Mr. Fuji's",
+          "door": "fuji",
+          "target_area": "REALGAM_TOWER"
+        }
+      ],
+      "next_area": "REALGAM_TOWER"
+    },
+    "ORRE_BIRTH_ISLAND": {
+      "area_type": "dungeon",
+      "route_name": "Birth Island",
+      "region": "ORRE",
+      "level": 60,
+      "battle_type": "field",
+      "min_rounds": 0,
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "DEOXYS",
+          "action": "BOSS",
+          "color": "GOLD",
+          "condition": "beat_orre_champion",
+          "flag_condition": "not orre_deoxys_done",
+          "boss": {
+            "id": 386,
+            "name": "Deoxys",
+            "level": 70,
+            "victory_flag": "orre_deoxys_done",
+            "lines": [
+              "The triangle glows... Something from space takes shape!"
+            ]
+          }
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Back to Mr. Fuji's",
+          "door": "fuji",
+          "target_area": "REALGAM_TOWER"
+        }
+      ],
+      "next_area": "REALGAM_TOWER"
+    },
+    "ORRE_NEW_ISLAND": {
+      "area_type": "dungeon",
+      "route_name": "New Island",
+      "region": "ORRE",
+      "level": 60,
+      "battle_type": "field",
+      "min_rounds": 0,
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "MEWTWO",
+          "action": "BOSS",
+          "color": "GOLD",
+          "condition": "orre_mewtwo_fled",
+          "flag_condition": "not orre_mewtwo_done",
+          "boss": {
+            "id": 150,
+            "name": "Mewtwo",
+            "level": 70,
+            "victory_flag": "orre_mewtwo_done",
+            "lines": [
+              "Mewtwo: So you followed me all the way here, human...",
+              "Mewtwo: You will regret it."
+            ]
+          }
+        },
+        {
+          "text": "VENUSAUR CLONE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_clone_venusaur",
+          "event": {
+            "flag": "orre_clone_venusaur",
+            "gift_pokemon": 3,
+            "gift_level": 50,
+            "lines": [
+              "A Venusaur clone sleeps in the glass pod... It wakes, and looks at you.",
+              "Venusaur joined your team!"
+            ]
+          }
+        },
+        {
+          "text": "CHARIZARD CLONE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_clone_charizard",
+          "event": {
+            "flag": "orre_clone_charizard",
+            "gift_pokemon": 6,
+            "gift_level": 50,
+            "lines": [
+              "A Charizard clone sleeps in the glass pod... It wakes, and looks at you.",
+              "Charizard joined your team!"
+            ]
+          }
+        },
+        {
+          "text": "BLASTOISE CLONE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_clone_blastoise",
+          "event": {
+            "flag": "orre_clone_blastoise",
+            "gift_pokemon": 9,
+            "gift_level": 50,
+            "lines": [
+              "A Blastoise clone sleeps in the glass pod... It wakes, and looks at you.",
+              "Blastoise joined your team!"
+            ]
+          }
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Back to Mr. Fuji's",
+          "door": "fuji",
+          "target_area": "REALGAM_TOWER"
+        }
+      ],
+      "next_area": "REALGAM_TOWER"
+    },
+    "ORRE_LAKE_OF_RAGE": {
+      "area_type": "dungeon",
+      "route_name": "Lake of Rage",
+      "region": "ORRE",
+      "level": 58,
+      "battle_type": "field",
+      "min_rounds": 0,
+      "trainer_pool": [],
+      "route_menu": [
+        {
+          "text": "RED GYARADOS",
+          "action": "BOSS",
+          "color": "GOLD",
+          "condition": "beat_orre_champion",
+          "flag_condition": "not orre_red_gyarados_done",
+          "boss": {
+            "id": 130,
+            "name": "Red Gyarados",
+            "level": 60,
+            "victory_flag": "orre_red_gyarados_done",
+            "lines": [
+              "The lake churns... a red Gyarados rises, furious!"
+            ],
+            "is_shiny": true
+          }
+        }
+      ],
+      "travel_options": [
+        {
+          "text": "Back to Mr. Fuji's",
+          "door": "fuji",
+          "target_area": "REALGAM_TOWER"
+        }
+      ],
+      "next_area": "REALGAM_TOWER"
+    },
     "RELIC_CAVE": {
       "area_type": "dungeon",
       "route_name": "Relic Cave",
@@ -18963,6 +19150,31 @@
             "world": "orre_gym",
             "gym": "gym_birch"
           }
+        },
+        {
+          "text": "Mr. Fuji",
+          "action": "EVENT",
+          "event": {
+            "lines": [
+              "Mr. Fuji: Hello, friend. I'm a friend of Eagun's from Agate - he told me everything about you, Champion.",
+              "Mr. Fuji: My Alakazam can sense where rare Pokemon gather. It will take you there, if you like."
+            ]
+          }
+        },
+        {
+          "text": "POKE FLUTE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "flag_condition": "not orre_poke_flute",
+          "event": {
+            "flag": "orre_poke_flute",
+            "gift_item": {
+              "POKE_FLUTE": 1
+            },
+            "lines": [
+              "Mr. Fuji left something on the table... the POKE FLUTE!"
+            ]
+          }
         }
       ],
       "travel_options": [
@@ -18981,6 +19193,33 @@
           "door": "realgam",
           "target_area": "DEEP_COLOSSEUM",
           "condition": "orre_part2"
+        },
+        {
+          "text": "Sky Pillar",
+          "door": "fuji",
+          "target_area": "ORRE_SKY_PILLAR",
+          "condition": "beat_orre_champion"
+        },
+        {
+          "text": "Birth Island",
+          "door": "fuji",
+          "target_area": "ORRE_BIRTH_ISLAND",
+          "condition": "beat_orre_champion"
+        },
+        {
+          "text": "New Island",
+          "door": "fuji",
+          "target_area": "ORRE_NEW_ISLAND",
+          "condition": [
+            "beat_orre_champion",
+            "orre_mewtwo_fled"
+          ]
+        },
+        {
+          "text": "Lake of Rage",
+          "door": "fuji",
+          "target_area": "ORRE_LAKE_OF_RAGE",
+          "condition": "beat_orre_champion"
         }
       ],
       "next_area": "PHENAC_CITY",
@@ -24345,7 +24584,8 @@
     {"id": "orre_s8", "type": "SIDE", "title": "Poke Snacks", "description": "Put Poke Snacks on a Poke Spot's tray, then go somewhere else. Your P*DA's Spot Monitor beeps when something comes to eat - fast beeps mean a rare one. No snacks, no wild Pokemon.", "condition": {"required_region": "ORRE", "flag": "xd_spot_oasis", "flag_not": "snacks_from_duking"}, "region": "ORRE", "completed_flag": "snacks_from_duking", "target": "ORRE_POKE_SPOTS"},
     {"id": "orre_s9", "type": "SIDE", "title": "Team Rocket in Orre", "description": "Champion of Orre - and still there's trouble. Team Rocket has a tower behind Pyrite's Construction Lot. Climb it and find out what Giovanni wants.", "condition": {"required_region": "ORRE", "flag": "beat_orre_champion", "flag_not": "orre_rocket_done"}, "region": "ORRE", "target": "CONSTRUCTION_LOT", "completed_flag": "orre_rocket_done"},
     {"id": "orre_s9b", "type": "SIDE", "title": "Groudon Under Citadark", "description": "Maxie fled under Citadark Isle. A ladder on the island leads down to the Terra Cave.", "condition": {"required_region": "ORRE", "flag": "orre_rocket_done", "flag_not": "orre_groudon_done"}, "region": "ORRE", "target": "XD_CITADARK_ISLE", "completed_flag": "orre_groudon_done"},
-    {"id": "orre_s9c", "type": "SIDE", "title": "Kyogre in the Marine Cave", "description": "Archie went to a sea cave near Agate. Eagun's Alakazam can take you there.", "condition": {"required_region": "ORRE", "flag": "orre_rocket_done", "flag_not": "orre_kyogre_done"}, "region": "ORRE", "target": "AGATE_VILLAGE", "completed_flag": "orre_kyogre_done"}
+    {"id": "orre_s9c", "type": "SIDE", "title": "Kyogre in the Marine Cave", "description": "Archie went to a sea cave near Agate. Eagun's Alakazam can take you there.", "condition": {"required_region": "ORRE", "flag": "orre_rocket_done", "flag_not": "orre_kyogre_done"}, "region": "ORRE", "target": "AGATE_VILLAGE", "completed_flag": "orre_kyogre_done"},
+    {"id": "orre_s10", "type": "SIDE", "title": "Mr. Fuji's Alakazam", "description": "Mr. Fuji lives in Realgam's square. His Alakazam can teleport you to where rare Pokemon gather: Sky Pillar, Birth Island, the Lake of Rage - and New Island, where Mewtwo fled.", "condition": {"required_region": "ORRE", "flag": "beat_orre_champion"}, "region": "ORRE", "target": "REALGAM_TOWER", "completed_flag": ["orre_rayquaza_done", "orre_deoxys_done", "orre_mewtwo_done", "orre_red_gyarados_done"]}
   ],
   "REGION_START": {
     "ORRE": {

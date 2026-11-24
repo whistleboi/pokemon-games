@@ -748,6 +748,29 @@ for _f in ["orre_part2", "xd_gorigan_beaten", "beat_orre_champion"] + [k for k i
     story.story_flags.pop(_f, None)
 story.badges["ORRE"] = _saved_b2
 
+# ---- S6b (11-24): Mr. Fuji's house in Realgam; his Alakazam warps to the legends Orre can't get otherwise (Jordan's pick 9a)
+_SP = _json.load(open("assets/orre_area_data.json", encoding="utf-8"))["STORY_PROGRESSION"]
+_TMJ = _json.load(open("assets/town_maps.json", encoding="utf-8"))
+_fuji = _TMJ["REALGAM_TOWER"]["rooms"].get("fuji") or {}
+_warps = {o["text"]: o.get("condition") for o in _SP["REALGAM_TOWER"]["travel_options"] if o.get("door") == "fuji"}
+t = town("REALGAM_TOWER", "PHENAC_CITY")
+story.story_flags.pop("beat_orre_champion", None)
+_w0 = [k for k, c in _warps.items() if t._check_menu_condition(c)]
+story.story_flags["beat_orre_champion"] = True
+_w1 = [k for k, c in _warps.items() if t._check_menu_condition(c)]
+story.story_flags["orre_mewtwo_fled"] = True
+_w2 = [k for k, c in _warps.items() if t._check_menu_condition(c)]
+_legs = {}
+for _a, _who in (("ORRE_SKY_PILLAR", "RAYQUAZA"), ("ORRE_BIRTH_ISLAND", "DEOXYS"), ("ORRE_NEW_ISLAND", "MEWTWO"), ("ORRE_LAKE_OF_RAGE", "RED GYARADOS")):
+    r, _fs = _figs(_a, "REALGAM_TOWER")
+    _legs[_a] = isinstance(r, _DS) and _who in _fs
+_cl = [o.get("text") for o in _SP["ORRE_NEW_ISLAND"]["route_menu"] if "CLONE" in o.get("text", "")]
+check("door:fuji" in (_fuji.get("people") or []) and not _w0 and len(_w1) == 3 and len(_w2) == 4 and all(_legs.values()) and len(_cl) == 3,
+      f"S6b: Mr. Fuji's Alakazam after the League - Sky Pillar, Birth Island, the Lake of Rage, New Island once Mewtwo fled; "
+      f"Rayquaza, Deoxys, Mewtwo, the red Gyarados there; three clones {_legs}")
+for _f in ("beat_orre_champion", "orre_mewtwo_fled"):
+    story.story_flags.pop(_f, None)
+
 
 
 g.walk_towns = False
