@@ -186,7 +186,8 @@ def main(out):
     with open(os.path.join(out, "icons.css"), "w", encoding="utf-8", newline="\n") as fh:
         fh.write(css)
     page = open(os.path.join(HERE, "site.html"), encoding="utf-8").read()
-    page = page.replace("/*CSS*/", B.CSS).replace("/*REGIONS*/", json.dumps({"live": regions, "later": LATER}))
+    # (the icons go in the page's own style: the viewer won't apply a style the page adds after it loads, 11-24)
+    page = page.replace("/*CSS*/", B.CSS + "\n" + css).replace("/*REGIONS*/", json.dumps({"live": regions, "later": LATER}))
     with open(os.path.join(out, "index.html"), "w", encoding="utf-8", newline="\n") as fh:
         fh.write(page)
     sizes = {fn: os.path.getsize(os.path.join(out, fn)) // 1024 for fn in ("index.html", "icons.css")}

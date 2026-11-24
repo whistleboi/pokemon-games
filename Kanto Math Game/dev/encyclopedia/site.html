@@ -68,10 +68,8 @@ const ic = (id, cls = "") => `<i class="ic p${id} ${cls}" aria-hidden="true"></i
 const STAT = ["HP", "Attack", "Defense", "Sp. Atk", "Sp. Def", "Speed"];
 
 async function load() {
-  const [css, sp, ...regs] = await Promise.all([
-    fetch("icons.css").then(r => r.text()), fetch("data/species.json").then(r => r.json()),
+  const [sp, ...regs] = await Promise.all([fetch("data/species.json").then(r => r.json()),
     ...SITE.live.map(r => fetch(`data/${r.key}.json`).then(x => x.json()))]);
-  const st = document.createElement("style"); st.textContent = css; document.head.appendChild(st);
   D.sp = sp; regs.forEach(r => D.regions[r.key] = r);
   route();
 }
