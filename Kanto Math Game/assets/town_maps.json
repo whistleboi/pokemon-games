@@ -311908,7 +311908,7 @@
        "world:orre_tournament:round:3"
       ],
       "call": [
-       "Referee: The final! Phenac Stadium Champion Glais takes the field!"
+       "Referee: Round 4! Teacher Glais takes the field!"
       ],
       "cast": [
        {
@@ -311925,6 +311925,37 @@
         "stay": true,
         "lines": [
          "Welcome to the final round of the Phenac Stadium! The winner takes the Phenac Badge!"
+        ],
+        "event": {
+         "world": "orre_tournament",
+         "fight": true
+        }
+       }
+      ]
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:round:4"
+      ],
+      "call": [
+       "Referee: The final! Gym Leader Misty takes the field!"
+      ],
+      "cast": [
+       {
+        "sheet": "orre_trainer_leader_misty.png",
+        "from": [
+         3,
+         3
+        ],
+        "to": [
+         12,
+         7
+        ],
+        "face": "d",
+        "stay": true,
+        "lines": [
+         "Misty: So you're the trainer everyone in Phenac is talking about. My Water Pokemon will wash you right out of my stadium!"
         ],
         "event": {
          "world": "orre_tournament",
@@ -314339,7 +314370,7 @@
        "world:orre_tournament:round:3"
       ],
       "call": [
-       "Referee: The final! Bodybuilder Mirez takes the field!"
+       "Referee: Round 4! Bodybuilder Mirez takes the field!"
       ],
       "cast": [
        {
@@ -314356,6 +314387,37 @@
         "stay": true,
         "lines": [
          "The final round of the Pyrite Colosseum! The winner takes the Pyrite Badge!"
+        ],
+        "event": {
+         "world": "orre_tournament",
+         "fight": true
+        }
+       }
+      ]
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:round:4"
+      ],
+      "call": [
+       "Referee: The final! Gym Leader Duking takes the field!"
+      ],
+      "cast": [
+       {
+        "sheet": "orre_npc_duking.png",
+        "from": [
+         5,
+         3
+        ],
+        "to": [
+         7,
+         5
+        ],
+        "face": "d",
+        "stay": true,
+        "lines": [
+         "Duking: You won all four rounds? Then you've earned a match with me. I run this Colosseum - and I don't go easy!"
         ],
         "event": {
          "world": "orre_tournament",
@@ -315318,7 +315380,7 @@
    "B": "elder",
    "C": "mart",
    "E": "house",
-   "F": "house",
+   "F": "gym",
    "G": "house",
    "H": "relic",
    "I": "center",
@@ -316194,6 +316256,129 @@
       ]
      }
     ]
+   },
+   "gym": {
+    "theme": "room",
+    "art": [
+     "cccccccccccccccccccccccc",
+     "cccccccccccccccccccccccc",
+     "c......c.............ccc",
+     "c.c...c............c.ccc",
+     "c.c................c.ccc",
+     "cc......c............ccc",
+     "c......c.............ccc",
+     "c.....................^c",
+     "c.....c..............ccc",
+     "c.c............c...c.ccc",
+     "c.c...c............c.ccc",
+     "c........!...!.......ccc",
+     "c.....c..............ccc",
+     "cccccccccccvcccccccccccc",
+     "cccccccccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:gym_2",
+     "v": "OUT:11,22"
+    },
+    "buildings": {},
+    "people": [],
+    "signs": [
+     [
+      "AGATE GYM",
+      "Leaders: Blaine and Erika. Enlighten the eyes and you may proceed."
+     ],
+     [
+      "AGATE GYM",
+      "Leaders: Blaine and Erika. Enlighten the eyes and you may proceed."
+     ]
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "orre_ground/114.png",
+      "at": [
+       4,
+       4
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "orre_top/114.png",
+      "at": [
+       4,
+       4
+      ],
+      "size": [
+       24,
+       15
+      ]
+     }
+    ]
+   },
+   "gym_2": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccccccccc",
+     "ccccccccccccccccccccccc",
+     "ccccccc.c..Ncc..ccccccc",
+     "cccccc.........c..ccccc",
+     "cccccc...c.....c...cccc",
+     "cccc..c.....NN......ccc",
+     "ccc.................ccc",
+     "c^..................ccc",
+     "ccc...................c",
+     "cc....c..c.....c..ccc.c",
+     "cc.ccc........c.ccccccc",
+     "cc.c.c......c....cccccc",
+     "cc......c......c......c",
+     "ccccccccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:gym"
+    },
+    "buildings": {},
+    "people": [
+     "Pokemon Center",
+     "Agate Gym",
+     {
+      "text": "Blaine",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Blaine: Erika talks; I battle. Well - we both battle. Ready when she is!"
+       ]
+      }
+     }
+    ],
+    "signs": [],
+    "roofs": {
+     "_picture": {
+      "f": "orre_ground/116.png",
+      "at": [
+       3,
+       4
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "orre_top/116.png",
+      "at": [
+       3,
+       4
+      ],
+      "size": [
+       23,
+       14
+      ]
+     }
+    ]
    }
   },
   "inside": {
@@ -316201,6 +316386,7 @@
    "39,20": "elder",
    "21,21": "mart",
    "58,21": "house_centre",
+   "11,22": "gym",
    "17,26": "house_west",
    "51,30": "center"
   },
@@ -325681,7 +325867,10 @@
     },
     "parts": true,
     "people": [
-     "SNAGEM HIDEOUT: GONZAP",
+     [
+      "GYM LEADER PRYCE",
+      "SNAGEM HIDEOUT: GONZAP"
+     ],
      {
       "text": "Cipher Peon Baila",
       "action": "EVENT",
@@ -326320,7 +326509,7 @@
   "floor_names": [
    "Outside",
    "Hideout",
-   "Gonzap's Room"
+   "The Back Hall"
   ],
   "figure_floors": {
    "Team Snagem Agrev": 0,
@@ -326341,6 +326530,7 @@
    "Team Snagem Gaply": 1,
    "Team Snagem Biden": 1,
    "Team Snagem Jinok": 1,
+   "GYM LEADER PRYCE": 2,
    "SNAGEM HIDEOUT: GONZAP": 2,
    "FULL HEALS": 2
   },
@@ -335232,7 +335422,7 @@
         "face": "d",
         "stay": true,
         "lines": [
-         "Welcome to the final round of the Under Colosseum! The winner takes the Under Badge!"
+         "Welcome to the final round of the Under Colosseum! The winner takes the Under's crown!"
         ],
         "event": {
          "world": "orre_tournament",
