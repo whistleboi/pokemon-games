@@ -65,6 +65,11 @@
    "wild": "cave.png",
    "trainer": "cave.png"
   },
+  "FARAWAY_ISLAND": {
+   "wild": "long_grass.png",
+   "trainer": "plain.png",
+   "water": "building.png"
+  },
   "FIVE_ISLAND": {
    "water": "water.png",
    "trainer": "plain.png"
@@ -239,7 +244,7 @@
    "water": "water.png"
   },
   "MT_EMBER": {
-   "wild": "cave.png",
+   "wild": "grass.png",
    "trainer": "mountain.png"
   },
   "MT_MOON": {
