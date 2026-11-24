@@ -1560,5 +1560,18 @@ check(_clown["event"].get("gift_item") == {"COIN_CASE": 1} and _fl["event"].get(
       f"Veilstone's clown gives the Coin Case, Floaroma's florist the Sprayduck that waters Berry soil, Regigigas wakes only for the three Regis ({_wet}, {_asleep}, {_wakes})")
 story.story_flags.clear(); story.story_flags.update(_sv); story.inventory.clear(); story.inventory.update(_iv); story.player_team = _team
 
+# ---- 11-24 (Jordan: "from the game file"): Sinnoh's own soundtrack, Platinum's tracks (s_music.py): every track music.json
+#      names is there, and the game picks Sinnoh's own for a Sinnoh town and a wild battle
+_mj = __import__("json").load(open("assets/music/sinnoh/music.json", encoding="utf-8"))
+_names = set()
+for _v in list(_mj["areas"].values()) + list(_mj["rooms"].values()) + list(_mj["kinds"].values()):
+    _names |= set(_v.values()) if isinstance(_v, dict) else {_v}
+_missing = sorted(n for n in _names if not __import__("os").path.isfile(f"assets/music/sinnoh/{n}.ogg"))
+t = town("TWINLEAF_TOWN", None); frames(t, 3)
+_tt = g.music.region_track("town", "SINNOH") if hasattr(g, "music") else None
+_wt = g.music.region_track("wild", "SINNOH") if hasattr(g, "music") else None
+check(not _missing and len(_mj["areas"]) >= 80 and _tt and "town01" in _tt and _wt and _wt.endswith("ba_poke.ogg"),
+      f"Sinnoh's own music: {len(_names)} Platinum tracks for {len(_mj['areas'])} places and {len(_mj['rooms'])} rooms, Twinleaf's theme in Twinleaf ({_missing[:3]}, {_tt}, {_wt})")
+
 g.walk_towns = False
 print(f"##### {fails} failures")
