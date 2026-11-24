@@ -32,7 +32,7 @@ def _col_pool(game):
 
 def fein_due(game):
     flags = game.story_manager.story_flags
-    if not flags.get("beat_orre_champion") or flags.get(FEIN_FLAG) or flags.get("col_fein"):
+    if not flags.get("orre_part2") or flags.get(FEIN_FLAG) or flags.get("col_fein"):
         return False
     return all(flags.get(s.get("flag")) for s in _col_pool(game) if s.get("flag") != FEIN_FLAG)
 

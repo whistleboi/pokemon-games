@@ -449,7 +449,7 @@ class TownStory:
             return
 
         if (story.story_flags.get("received_starter_johto")
-            and story.story_flags.get("defeated_rival_johto")
+            and (story.story_flags.get("defeated_rival_johto") or story.story_flags.get("defeated_rival_cherrygrove"))
             and not story.story_flags.get("elm_silver_report")):
 
             msg = [

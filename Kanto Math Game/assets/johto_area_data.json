@@ -80,7 +80,7 @@
         "johto_elm_errand": ["Take this Egg back to Professor Elm immediately!", "That egg is a true mystery of the world!"],
         "johto_elm_congrats": ["Professor Elm: Incredible! You're the Kanto Champion!", "Oak told me all about your math-powered battles.", "I've updated your Pokédex to include Johto species.", "And I've added a Johto page to your Badge Case!", "There is a whole new world of Pokémon to discover!", "You received the NATIONAL DEX and JOHTO BADGE CASE!"],
         "kurt_intro": ["Kurt: Team Rocket has taken over the Slowpoke Well!", "They're cutting off tails to sell them for profit!", "I'm going down there to stop them myself!", "Wait... my back! Ouch ouch ouch...", "Young trainer, please! Go to the Well and stop those crooks!"],
-        "kurt_reward": ["Kurt: You did it! The Slowpoke are safe and their tails are growing back.", "Team Rocket won't be bothering Azalea Town for a while.", "Please, take this special Lure Ball I made from White Apricorns.", "You received 5 LURE BALLS!"],
+        "kurt_reward": ["Kurt: You did it! The Slowpoke are safe and their tails are growing back.", "Team Rocket won't be bothering Azalea Town for a while."],
         "bill_johto_intro": ["Hi! I'm Bill!", "I was just checking on the PC system here in Ecruteak.", "You look like a promising math trainer.", "If you're ever in Goldenrod, come visit my house!", "I have some rare Eevee eggs I'm researching."],
         "lance_mahogany_intro": ["Lance: I've tracked the source of the high-frequency signal to this shop.", "Team Rocket is hiding a massive base beneath Mahogany Town.", "They are forcing Pokémon to evolve using artificial radio waves!", "I will go ahead and scout. Follow me when you are ready!"],
         "lance_mahogany_cleared": ["Lance: Excellent work. Team Rocket's radio signal has been cut off.", "The Dragon's Den in Blackthorn is your next destination."],
@@ -90,7 +90,7 @@
         "amphy_sick": ["Amphy looks very weak...", "Its light is barely flickering."],
         "amphy_cured": ["Amphy swallowed the SECRET POTION!", "The light in its tail begins to glow brightly!", "Amphy is cured!"],
         "pharmacist_reward": ["Pharmacist: You came from Olivine for Jasmine's Amphy?", "I have just the thing. It's a very strong medicine!", "You received the SECRET POTION!"],
-        "euskine_intro": ["Euskine: I'm searching for the legendary Suicune.", "It is said to be the embodiment of the North Wind."],
+        "euskine_intro": ["Eusine: I'm searching for the legendary Suicune.", "It is said to be the embodiment of the North Wind."],
         "eusine_suicune_defeated": ["You tell Eusine about your math-powered victory over Suicune.", "Eusine: What?! You actually cornered Suicune in battle?", "I've spent years chasing its shadow, and you... you've already faced it with your math!", "I'm jealous, but also impressed. Suicune chooses only the most brilliant minds.", "I'll continue my search. We will meet again!"],
         "dragon_elder_intro": ["Elder: You must answer the test of the Dragon Den!", "Do you treat your Pokémon with love? Or as tools for math?"],
         "dragon_elder_pass": ["Elder: You have proven your compassion and math skill.", "The dragon master Clair has much to learn from you."],
@@ -348,32 +348,32 @@
             "wild_pool_percentages": null,
             "min_rounds": 0,
             "trainer_pool": [
-                {"name": "Super Nerd Shawn", "class": "SUPER_NERD", "sprite": "supernerd.png", "team": [81, 89, 81], "rewards": {"balls": 5}},
-                {"name": "Psychic Rodney", "class": "PSYCHIC", "sprite": "psychic.png", "team": [433, 97], "rewards": {"balls": 4}},
-                {"name": "Ace Trainer Shaye", "class": "ACE_TRAINER", "sprite": "acetrainer_m.png", "team": [135, 114, 128], "rewards": {"balls": 5}},
-                {"name": "Ace Trainer Carol", "class": "ACE_TRAINER", "sprite": "acetrainer_f.png", "team": [101, 121, 38], "rewards": {"balls": 5}},
-                {"name": "Beauty Cassie", "class": "BEAUTY", "sprite": "beauty.png", "team": [45, 12], "rewards": {"balls": 4}},
-                {"name": "Gentleman Edward", "class": "GENTLEMAN", "sprite": "gentleman.png", "team": [53], "rewards": {"balls": 10}, "is_boss_battle": true},
-                {"name": "Hiker Noland", "class": "HIKER", "sprite": "hiker.png", "team": [436, 76], "rewards": {"balls": 2}},
-                {"name": "Poké Maniac Morgan", "class": "POKE_MANIAC", "sprite": "poke_maniac.png", "team": [111, 112], "rewards": {"balls": 2}},
-                {"name": "Burglar Corey", "class": "BURGLAR", "sprite": "burglar.png", "team": [109, 126, 109, 109], "rewards": {"balls": 2}},
-                {"name": "Pokéfan Colin", "class": "POKEFAN", "sprite": "pokefan.png", "team": [225], "rewards": {"balls": 2}},
-                {"battle_options": {"double": true}, "name": "Twins Meg & Peg", "class": "TWINS", "sprite": "twins.png", "team": [216, 231], "rewards": {"balls": 2}},
-                {"name": "Pokéfan Georgia", "class": "POKEFAN", "sprite": "pokefan.png", "team": [161, 161, 161, 162, 161], "rewards": {"balls": 2}},
-                {"name": "Pokéfan Jeremy", "class": "POKEFAN", "sprite": "pokefan.png", "team": [52, 52, 52], "rewards": {"balls": 2}},
-                {"name": "Firebreather Lyle", "class": "FIREBREATHER", "sprite": "firebreather.png", "team": [109, 136, 109], "rewards": {"balls": 2}},
-                {"name": "Guitarist Clyde", "class": "GUITARIST", "sprite": "guitarist.png", "team": [125], "rewards": {"balls": 2}},
-                {"name": "Bug Catcher Ken", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", "team": [168, 127], "rewards": {"balls": 2}},
-                {"name": "Picnicker Debra", "class": "PICNICKER", "sprite": "picnicker.png", "team": [119], "rewards": {"balls": 2}},
-                {"name": "Sailor Jeff", "class": "SAILOR", "sprite": "sailor.png", "team": [296, 20], "rewards": {"balls": 2}},
-                {"name": "Juggler Fritz", "class": "JUGGLER", "sprite": "juggler.png", "team": [122, 126, 67], "rewards": {"balls": 2}},
-                {"name": "Fisherman Jonah", "class": "FISHERMAN", "sprite": "fisherman.png", "team": [90, 224, 223, 91], "rewards": {"balls": 2}},
-                {"name": "Sailor Garrett", "class": "SAILOR", "sprite": "sailor.png", "team": [99], "rewards": {"balls": 2}},
-                {"name": "Black Belt Wai", "class": "BLACK_BELT", "sprite": "black_belt.png", "team": [67, 67, 307], "rewards": {"balls": 2}},
-                {"name": "Sailor Kenneth", "class": "SAILOR", "sprite": "sailor.png", "team": [66, 66, 62, 66], "rewards": {"balls": 2}},
-                {"name": "School Kid Nate", "class": "SCHOOL_KID", "sprite": "school_kid.png", "team": [166, 103], "rewards": {"balls": 2}},
-                {"name": "School Kid Ricky", "class": "SCHOOL_KID", "sprite": "school_kid.png", "team": [190, 132], "rewards": {"balls": 2}},
-                {"name": "Teacher Shirley", "class": "TEACHER", "sprite": "teacher.png", "team": [441, 39], "rewards": {"balls": 2}, "victory_flag": "ss_aqua_cleared"}
+                {"name": "Super Nerd Shawn", "class": "SUPER_NERD", "sprite": "ss_super_nerd.png", "team": [81, 89, 81], "rewards": {"balls": 5}},
+                {"name": "Psychic Rodney", "class": "PSYCHIC", "sprite": "ss_psychic.png", "team": [433, 97], "rewards": {"balls": 4}},
+                {"name": "Ace Trainer Shaye", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_m.png", "team": [135, 114, 128], "rewards": {"balls": 5}},
+                {"name": "Ace Trainer Carol", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_f.png", "team": [101, 121, 38], "rewards": {"balls": 5}},
+                {"name": "Beauty Cassie", "class": "BEAUTY", "sprite": "ss_beauty.png", "team": [45, 12], "rewards": {"balls": 4}},
+                {"name": "Gentleman Edward", "class": "GENTLEMAN", "sprite": "ss_gentleman.png", "team": [53], "rewards": {"balls": 10}, "is_boss_battle": true},
+                {"name": "Hiker Noland", "class": "HIKER", "sprite": "ss_hiker.png", "team": [436, 76], "rewards": {"balls": 2}},
+                {"name": "Poké Maniac Morgan", "class": "POKE_MANIAC", "sprite": "ss_poke_maniac.png", "team": [111, 112], "rewards": {"balls": 2}},
+                {"name": "Burglar Corey", "class": "BURGLAR", "sprite": "ss_burglar.png", "team": [109, 126, 109, 109], "rewards": {"balls": 2}},
+                {"name": "Pokéfan Colin", "class": "POKEFAN", "sprite": "ss_pokefan_m.png", "team": [225], "rewards": {"balls": 2}},
+                {"battle_options": {"double": true}, "name": "Twins Meg & Peg", "class": "TWINS", "sprite": "ss_twins.png", "team": [216, 231], "rewards": {"balls": 2}},
+                {"name": "Pokéfan Georgia", "class": "POKEFAN", "sprite": "ss_pokefan_m.png", "team": [161, 161, 161, 162, 161], "rewards": {"balls": 2}},
+                {"name": "Pokéfan Jeremy", "class": "POKEFAN", "sprite": "ss_pokefan_m.png", "team": [52, 52, 52], "rewards": {"balls": 2}},
+                {"name": "Firebreather Lyle", "class": "FIREBREATHER", "sprite": "ss_firebreather.png", "team": [109, 136, 109], "rewards": {"balls": 2}},
+                {"name": "Guitarist Clyde", "class": "GUITARIST", "sprite": "ss_guitarist.png", "team": [125], "rewards": {"balls": 2}},
+                {"name": "Bug Catcher Ken", "class": "BUG_CATCHER", "sprite": "ss_bug_catcher.png", "team": [168, 127], "rewards": {"balls": 2}},
+                {"name": "Picnicker Debra", "class": "PICNICKER", "sprite": "ss_picnicker.png", "team": [119], "rewards": {"balls": 2}},
+                {"name": "Sailor Jeff", "class": "SAILOR", "sprite": "ss_sailor.png", "team": [296, 20], "rewards": {"balls": 2}},
+                {"name": "Juggler Fritz", "class": "JUGGLER", "sprite": "ss_juggler.png", "team": [122, 126, 67], "rewards": {"balls": 2}},
+                {"name": "Fisherman Jonah", "class": "FISHERMAN", "sprite": "ss_fisherman.png", "team": [90, 224, 223, 91], "rewards": {"balls": 2}},
+                {"name": "Sailor Garrett", "class": "SAILOR", "sprite": "ss_sailor.png", "team": [99], "rewards": {"balls": 2}},
+                {"name": "Black Belt Wai", "class": "BLACK_BELT", "sprite": "ss_black_belt.png", "team": [67, 67, 307], "rewards": {"balls": 2}},
+                {"name": "Sailor Kenneth", "class": "SAILOR", "sprite": "ss_sailor.png", "team": [66, 66, 62, 66], "rewards": {"balls": 2}},
+                {"name": "School Kid Nate", "class": "SCHOOL_KID", "sprite": "ss_school_kid.png", "team": [166, 103], "rewards": {"balls": 2}},
+                {"name": "School Kid Ricky", "class": "SCHOOL_KID", "sprite": "ss_school_kid.png", "team": [190, 132], "rewards": {"balls": 2}},
+                {"name": "Teacher Shirley", "class": "TEACHER", "sprite": "ss_teacher.png", "team": [441, 39], "rewards": {"balls": 2}, "victory_flag": "ss_aqua_cleared"}
             ],
             "route_menu": [
                 {"text": "BATTLE THROUGH THE CABINS", "action": "GALACTIC_GAUNTLET", "flag_condition": "not ss_aqua_cleared", "color": "GOLD"},
@@ -453,10 +453,10 @@
             "wild_pool_percentages": "JOHTO_ROUTE_47_DAY_PERCENTAGES",
             "min_rounds": 2,
             "trainer_pool": [
-                {"name": "Hiker Devin", "class": "HIKER", "sprite": "hiker.png", "team": [206, 206, 206], "rewards": {"balls": 5}},
-                {"name": "Camper Grant", "class": "CAMPER", "sprite": "camper.png", "team": [188, 183], "rewards": {"balls": 4}},
-                {"battle_options": {"double": true}, "name": "Double Team Thom & Kae", "class": "TWINS", "sprite": "twins.png", "team": [125, 126], "rewards": {"balls": 4}},
-                {"battle_options": {"double": true}, "name": "Young Couple Duff & Eda", "class": "TWINS", "sprite": "twins.png", "team": [95, 91], "rewards": {"balls": 4}}
+                {"name": "Hiker Devin", "class": "HIKER", "sprite": "ss_hiker.png", "team": [206, 206, 206], "rewards": {"balls": 5}},
+                {"name": "Camper Grant", "class": "CAMPER", "sprite": "ss_camper.png", "team": [188, 183], "rewards": {"balls": 4}},
+                {"battle_options": {"double": true}, "name": "Double Team Thom & Kae", "class": "TWINS", "sprite": "ss_twins.png", "team": [125, 126], "rewards": {"balls": 4}},
+                {"battle_options": {"double": true}, "name": "Young Couple Duff & Eda", "class": "TWINS", "sprite": "ss_twins.png", "team": [95, 91], "rewards": {"balls": 4}}
             ],
             "route_menu": [
                 {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
@@ -498,7 +498,7 @@
             "next_area": "JOHTO_ROUTE_29",
             "prof_elm_dialogue": "profile_elm",
             "silver_mom_dialogue": "silver_mom",
-            "old_on_enter_event": {"type": "trainer_battle", "trainer": {"name": "{rival_name}", "class": "PKMN_TRAINER", "sprite": "silver.png", "team": [155], "team_choice": {"152": [155], "155": [158], "158": [152]}, "rewards": {"balls": 5}, "victory_flag": "defeated_rival_newbark_ambush"}, "condition": "has_zephyr_badge", "flag_check": "defeated_rival_newbark_ambush"},
+            
             "trainer_pool": [],
             "surf_pool_percentages": "JOHTO_NEW_BARK_TOWN_SURF_PERCENTAGES",
             "can_fish": true
@@ -567,7 +567,7 @@
 
             "has_gym": true,
 
-            "gym": {"requirements": {"flag": "defeated_elder_li", "fail_text": "The Gym Leader, Falkner, is currently mediating at the top of the Sprout Tower. You must defeat Elder Li to prove your worth first!"}, "route_menu": [{"text": "EXIT TO HUB", "action": "EXIT", "target": "VIOLET_CITY", "condition": "can_exit", "color": "RED"}], "trainers": [{"name": "Bird Keeper Abe", "class": "BIRD_KEEPER", "sprite": "bird_keeper.png", "is_boss_battle": true, "team": [21], "rewards": {"balls": 2}}, {"name": "Bird Keeper Rod", "class": "BIRD_KEEPER", "sprite": "bird_keeper.png", "is_boss_battle": true, "team": [16, 16], "rewards": {"balls": 2}}], "leader": {"name": "Falkner", "class": "GYM_LEADER", "is_boss_battle": true, "sprite": "falkner.png", "team": [16, 17], "levels": [9, 13], "badge_reward": "ZEPHYR", "dialogue": {"intro": ["Welcome to the Violet City Gym! I'm Falkner, the Flying-type Gym Leader."], "player_won": ["We failed to take flight"], "player_lost": ["Don't worry, you'll get it next time."]}, "rewards": {"balls": 5, "JOHTO_MAP": 1, "TM268": 1}, "movesets": {"16": ["TACKLE", "SAND-ATTACK"], "17": ["TACKLE", "ROOST", "GUST"]}}},
+            "gym": {"requirements": {"flag": "defeated_elder_li", "fail_text": "The Gym Leader, Falkner, is currently meditating at the top of the Sprout Tower. You must defeat Elder Li to prove your worth first!"}, "route_menu": [{"text": "EXIT TO HUB", "action": "EXIT", "target": "VIOLET_CITY", "condition": "can_exit", "color": "RED"}], "trainers": [{"name": "Bird Keeper Abe", "class": "BIRD_KEEPER", "sprite": "ss_bird_keeper.png", "is_boss_battle": true, "team": [21], "rewards": {"balls": 2}}, {"name": "Bird Keeper Rod", "class": "BIRD_KEEPER", "sprite": "ss_bird_keeper.png", "is_boss_battle": true, "team": [16, 16], "rewards": {"balls": 2}}], "leader": {"name": "Falkner", "class": "GYM_LEADER", "is_boss_battle": true, "sprite": "falkner.png", "team": [16, 17], "levels": [9, 13], "badge_reward": "ZEPHYR", "dialogue": {"intro": ["Welcome to the Violet City Gym! I'm Falkner, the Flying-type Gym Leader."], "player_won": ["We failed to take flight"], "player_lost": ["Don't worry, you'll get it next time."]}, "rewards": {"balls": 5, "JOHTO_MAP": 1, "TM268": 1}, "movesets": {"16": ["TACKLE", "SAND-ATTACK"], "17": ["TACKLE", "ROOST", "GUST"]}, "rematch": {"team": [398, 164, 277, 430, 279, 18], "levels": [50, 52, 52, 54, 48, 56], "movesets": {"398": ["ATTRACT", "BRAVE-BIRD", "CLOSE-COMBAT", "U-TURN"], "164": ["ROOST", "AIR-SLASH", "SHADOW-BALL", "FEATHER-DANCE"], "277": ["FACADE", "PROTECT", "DOUBLE-TEAM", "ENDEAVOR"], "430": ["NIGHT-SLASH", "SUCKER-PUNCH", "THUNDER-WAVE", "DARK-PULSE"], "279": ["SURF", "TAILWIND", "ICE-BEAM", "HIDDEN-POWER"], "18": ["RETURN", "DOUBLE-TEAM", "SWAGGER", "ROOST"]}}}},
 
             "travel_options": [
 
@@ -692,7 +692,7 @@
 
             "trainer_pool": [
 
-                {"name": "Psychic Nathan", "class": "PSYCHIC", "sprite": "psychic.png", "team": [203], "rewards": {"balls": 2}}
+                {"name": "Psychic Nathan", "class": "PSYCHIC", "sprite": "ss_psychic.png", "team": [203], "rewards": {"balls": 2}}
 
             ],
 
@@ -718,7 +718,7 @@
 
             "has_gym": true,
 
-            "gym": {"requirements": {"flag": "slowpoke_well_cleared", "fail_text": ["Bugsy is helping Kurt protect the Slowpoke! Stop Team Rocket in the Slowpoke Well to bring him back to the Gym."]}, "trainers": [{"name": "Bug Catcher Josh", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", "team": [46], "rewards": {"balls": 2}, "is_boss_battle": true}, {"name": "Bug Catcher Benny", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", "team": [13, 14, 15], "rewards": {"balls": 2}, "is_boss_battle": true}, {"name": "Bug Catcher Al", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", "is_boss_battle": true, "team": [10, 13], "rewards": {"balls": 2}}, {"battle_options": {"double": true}, "name": "Twins Amy & Mimi", "class": "TWINS", "sprite": "twins.png", "is_boss_battle": true, "team": [167, 165], "rewards": {"balls": 2}}], "leader": {"name": "Bugsy", "class": "GYM_LEADER", "sprite": "bugsy.png", "is_boss_battle": true, "team": [11, 14, 123], "levels": [15, 15, 17], "badge_reward": "HIVE", "rewards": {"balls": 5, "RARE_CANDY": 3, "TM060": 1}, "dialogue": {"intro": ["Welcome to the Azalea Town Gym! I'm Bugsy, the Bug-type Gym Leader."], "player_won": ["You really bugged me!"], "player_lost": ["Don't worry, you'll get it next time."]}, "movesets": {"11": ["TACKLE"], "14": ["POISON-STING"], "123": ["U-TURN", "QUICK-ATTACK", "LEER", "FOCUS-ENERGY"]}}},
+            "gym": {"requirements": {"flag": "slowpoke_well_cleared", "fail_text": ["Bugsy is helping Kurt protect the Slowpoke! Stop Team Rocket in the Slowpoke Well to bring him back to the Gym."]}, "trainers": [{"name": "Bug Catcher Josh", "class": "BUG_CATCHER", "sprite": "ss_bug_catcher.png", "team": [46], "rewards": {"balls": 2}, "is_boss_battle": true}, {"name": "Bug Catcher Benny", "class": "BUG_CATCHER", "sprite": "ss_bug_catcher.png", "team": [13, 14, 15], "rewards": {"balls": 2}, "is_boss_battle": true}, {"name": "Bug Catcher Al", "class": "BUG_CATCHER", "sprite": "ss_bug_catcher.png", "is_boss_battle": true, "team": [10, 13], "rewards": {"balls": 2}}, {"battle_options": {"double": true}, "name": "Twins Amy & Mimi", "class": "TWINS", "sprite": "ss_twins.png", "is_boss_battle": true, "team": [167, 165], "rewards": {"balls": 2}}], "leader": {"name": "Bugsy", "class": "GYM_LEADER", "sprite": "bugsy.png", "is_boss_battle": true, "team": [11, 14, 123], "levels": [15, 15, 17], "badge_reward": "HIVE", "rewards": {"balls": 5, "RARE_CANDY": 3, "TM060": 1}, "dialogue": {"intro": ["Welcome to the Azalea Town Gym! I'm Bugsy, the Bug-type Gym Leader."], "player_won": ["You really bugged me!"], "player_lost": ["Don't worry, you'll get it next time."]}, "movesets": {"11": ["TACKLE"], "14": ["POISON-STING"], "123": ["U-TURN", "QUICK-ATTACK", "LEER", "FOCUS-ENERGY"]}, "rematch": {"team": [212, 292, 469, 127, 214, 416], "levels": [56, 48, 52, 55, 54, 52], "movesets": {"212": ["BULLET-PUNCH", "X-SCISSOR", "SWORDS-DANCE", "SUPERPOWER"], "292": ["TOXIC", "X-SCISSOR", "SHADOW-SNEAK", "SWAGGER"], "469": ["DETECT", "BUG-BUZZ", "AIR-SLASH", "ANCIENT-POWER"], "127": ["EARTHQUAKE", "GUILLOTINE", "X-SCISSOR", "ROCK-TOMB"], "214": ["CLOSE-COMBAT", "MEGAHORN", "STONE-EDGE", "COUNTER"], "416": ["PROTECT", "CONFUSE-RAY", "ATTACK-ORDER", "DEFEND-ORDER"]}}}},
 
             "travel_options": [
 
@@ -764,7 +764,7 @@
 
             "has_gym": true,
 
-            "gym": {"trainers": [{"name": "Lass Carrie", "class": "LASS", "sprite": "lass.png", "team": [209], "rewards": {"balls": 2}, "is_boss_battle": true}, {"name": "Beauty Bridget", "class": "BEAUTY", "sprite": "beauty.png", "team": [161, 162], "rewards": {"balls": 2}, "is_boss_battle": true}, {"name": "Lass Cathy", "class": "LASS", "sprite": "lass.png", "is_boss_battle": true, "team": [39, 39, 39], "rewards": {"balls": 2}}, {"name": "Beauty Victoria", "class": "BEAUTY", "sprite": "beauty.png", "is_boss_battle": true, "team": [161, 161, 161], "rewards": {"balls": 2}}, {"name": "Beauty Samantha", "class": "BEAUTY", "sprite": "beauty.png", "is_boss_battle": true, "team": [52, 52], "rewards": {"balls": 2}}], "leader": {"name": "Whitney", "class": "GYM_LEADER", "sprite": "whitney.png", "is_boss_battle": true, "team": [35, 241], "levels": [17, 19], "badge_reward": "PLAIN", "rewards": {"balls": 5, "SQUIRT_BOTTLE": 1, "TM240": 1}, "dialogue": {"intro": ["Welcome to the Goldenrod City Gym! I'm Whitney, the Normal-type Gym Leader."], "player_won": ["You're pretty good at this!"], "player_lost": ["Don't worry, you'll get it next time."]}, "movesets": {"35": ["MIMIC", "ENCORE", "DOUBLE-SLAP", "METRONOME"], "241": ["STOMP", "ROLLOUT", "ATTRACT", "MILK-DRINK"]}}},
+            "gym": {"trainers": [{"name": "Lass Carrie", "class": "LASS", "sprite": "ss_lass.png", "team": [209], "rewards": {"balls": 2}, "is_boss_battle": true}, {"name": "Beauty Bridget", "class": "BEAUTY", "sprite": "ss_beauty.png", "team": [161, 162], "rewards": {"balls": 2}, "is_boss_battle": true}, {"name": "Lass Cathy", "class": "LASS", "sprite": "ss_lass.png", "is_boss_battle": true, "team": [39, 39, 39], "rewards": {"balls": 2}}, {"name": "Beauty Victoria", "class": "BEAUTY", "sprite": "ss_beauty.png", "is_boss_battle": true, "team": [161, 161, 161], "rewards": {"balls": 2}}, {"name": "Beauty Samantha", "class": "BEAUTY", "sprite": "ss_beauty.png", "is_boss_battle": true, "team": [52, 52], "rewards": {"balls": 2}}], "leader": {"name": "Whitney", "class": "GYM_LEADER", "sprite": "whitney.png", "is_boss_battle": true, "team": [35, 241], "levels": [17, 19], "badge_reward": "PLAIN", "rewards": {"balls": 5, "SQUIRT_BOTTLE": 1, "TM240": 1}, "dialogue": {"intro": ["Welcome to the Goldenrod City Gym! I'm Whitney, the Normal-type Gym Leader."], "player_won": ["You're pretty good at this!"], "player_lost": ["Don't worry, you'll get it next time."]}, "movesets": {"35": ["MIMIC", "ENCORE", "DOUBLE-SLAP", "METRONOME"], "241": ["STOMP", "ROLLOUT", "ATTRACT", "MILK-DRINK"]}, "rematch": {"team": [203, 463, 400, 301, 36, 241], "levels": [52, 50, 54, 54, 52, 58], "movesets": {"203": ["PSYCHIC", "SHADOW-BALL", "CALM-MIND", "BATON-PASS"], "463": ["WRING-OUT", "FLAMETHROWER", "ICE-BEAM", "THUNDERBOLT"], "400": ["DOUBLE-TEAM", "CHARGE-BEAM", "SURF", "ICE-BEAM"], "301": ["FAKE-OUT", "ASSIST", "CALM-MIND", "BATON-PASS"], "36": ["BLIZZARD", "THUNDER", "FIRE-BLAST", "CALM-MIND"], "241": ["BODY-SLAM", "ATTRACT", "SLEEP-TALK", "REST"]}}}},
 
             "travel_options": [
 
@@ -977,10 +977,10 @@
             "has_gym": false,
             "min_rounds": 0,
             "trainer_pool": [
-                {"name": "Lass Krise", "class": "LASS", "sprite": "lass.png", "team": [43, 104], "rewards": {"balls": 2}},
-                {"name": "School Kid Jack", "class": "SCHOOL_KID", "sprite": "school_kid_m.png", "team": [43, 100], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [44, 100], "levels": [29, 17]}, {"team": [45, 101], "levels": [38, 31]}, {"team": [101, 45, 59], "levels": [43, 52, 52]}], "call": ["It's Jack! I've been studying the type chart. Battle me at the National Park!"]}},
-                {"name": "Pokefan William", "class": "POKEFAN", "sprite": "pokefan_m.png", "team": [26], "rewards": {"balls": 2}},
-                {"name": "Pokefan Beverly", "class": "POKEFAN", "sprite": "pokefan_f.png", "team": [209], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [209], "levels": [31], "gift": {"NUGGET": 1}}, {"team": [210], "levels": [43]}, {"team": [210], "levels": [53]}], "call": ["Hello, it's Beverly! My Snubbull got a gift for you. Come to the National Park!"]}}
+                {"name": "Lass Krise", "class": "LASS", "sprite": "ss_lass.png", "team": [43, 104], "rewards": {"balls": 2}},
+                {"name": "School Kid Jack", "class": "SCHOOL_KID", "sprite": "ss_school_kid.png", "team": [43, 100], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [44, 100], "levels": [29, 17]}, {"team": [45, 101], "levels": [38, 31]}, {"team": [101, 45, 59], "levels": [43, 52, 52]}], "call": ["It's Jack! I've been studying the type chart. Battle me at the National Park!"]}},
+                {"name": "Pokefan William", "class": "POKEFAN", "sprite": "ss_pokefan_m.png", "team": [26], "rewards": {"balls": 2}},
+                {"name": "Pokefan Beverly", "class": "POKEFAN", "sprite": "ss_pokefan_f.png", "team": [209], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [209], "levels": [31], "gift": {"NUGGET": 1}}, {"team": [210], "levels": [43]}, {"team": [210], "levels": [53]}], "call": ["Hello, it's Beverly! My Snubbull got a gift for you. Come to the National Park!"]}}
             ],
             "route_menu": [
                 {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
@@ -1010,7 +1010,7 @@
 
             "has_gym": true,
 
-            "gym": {"requirements": {"flag": "defeated_rival_burned_tower", "fail_text": ["Morty is at the Burned Tower, searching for the legendary Pokemon. Go and find him there first!", "(If your rival beat you there, go back in and battle him again.)"]}, "trainers": [{"name": "Sage Ping", "class": "SAGE", "sprite": "oldman.png", "is_boss_battle": true, "team": [92, 92], "rewards": {"balls": 2}}, {"name": "Sage Jeffrey", "class": "SAGE", "sprite": "oldman.png", "is_boss_battle": true, "team": [93], "rewards": {"balls": 2}}, {"name": "Medium Georgina", "class": "MEDIUM", "sprite": "medium.png", "is_boss_battle": true, "team": [92, 92, 92, 92, 92], "rewards": {"balls": 2}}, {"name": "Medium Grace", "class": "MEDIUM", "sprite": "medium.png", "is_boss_battle": true, "team": [93, 93], "rewards": {"balls": 2}}, {"name": "Medium Edith", "class": "MEDIUM", "sprite": "medium.png", "is_boss_battle": true, "team": [93], "rewards": {"balls": 2}}, {"name": "Medium Martha", "class": "MEDIUM", "sprite": "medium.png", "is_boss_battle": true, "team": [92, 93, 92], "rewards": {"balls": 2}}], "leader": {"name": "Morty", "class": "GYM_LEADER", "sprite": "morty.png", "team": [92, 93, 93, 94], "levels": [21, 21, 23, 25], "badge_reward": "FOG", "rewards": {"balls": 5, "AMULET_COIN": 1, "TM114": 1}, "is_boss_battle": true, "dialogue": {"intro": ["Welcome to the Ecruteak City Gym! I'm Morty, the Flying-type Gym Leader."], "player_won": ["You're a skilled trainer!"], "player_lost": ["Don't worry, you'll get it next time."]}, "movesets": {"92": ["LICK", "SPITE", "MEAN-LOOK", "CURSE"], "93": ["HYPNOSIS", "DREAM-EATER", "CURSE", "NIGHTMARE"], "94": ["HYPNOSIS", "SHADOW-BALL", "MEAN-LOOK", "SUCKER-PUNCH"]}}},
+            "gym": {"requirements": {"flag": "defeated_rival_burned_tower", "fail_text": ["Morty is at the Burned Tower, searching for the legendary Pokemon. Go and find him there first!", "(If your rival beat you there, go back in and battle him again.)"]}, "trainers": [{"name": "Sage Ping", "class": "SAGE", "sprite": "ss_sage.png", "is_boss_battle": true, "team": [92, 92], "rewards": {"balls": 2}}, {"name": "Sage Jeffrey", "class": "SAGE", "sprite": "ss_sage.png", "is_boss_battle": true, "team": [93], "rewards": {"balls": 2}}, {"name": "Medium Georgina", "class": "MEDIUM", "sprite": "ss_medium.png", "is_boss_battle": true, "team": [92, 92, 92, 92, 92], "rewards": {"balls": 2}}, {"name": "Medium Grace", "class": "MEDIUM", "sprite": "ss_medium.png", "is_boss_battle": true, "team": [93, 93], "rewards": {"balls": 2}}, {"name": "Medium Edith", "class": "MEDIUM", "sprite": "ss_medium.png", "is_boss_battle": true, "team": [93], "rewards": {"balls": 2}}, {"name": "Medium Martha", "class": "MEDIUM", "sprite": "ss_medium.png", "is_boss_battle": true, "team": [92, 93, 92], "rewards": {"balls": 2}}], "leader": {"name": "Morty", "class": "GYM_LEADER", "sprite": "morty.png", "team": [92, 93, 93, 94], "levels": [21, 21, 23, 25], "badge_reward": "FOG", "rewards": {"balls": 5, "AMULET_COIN": 1, "TM114": 1}, "is_boss_battle": true, "dialogue": {"intro": ["Welcome to the Ecruteak City Gym! I'm Morty, the Ghost-type Gym Leader."], "player_won": ["You're a skilled trainer!"], "player_lost": ["Don't worry, you'll get it next time."]}, "movesets": {"92": ["LICK", "SPITE", "MEAN-LOOK", "CURSE"], "93": ["HYPNOSIS", "DREAM-EATER", "CURSE", "NIGHTMARE"], "94": ["HYPNOSIS", "SHADOW-BALL", "MEAN-LOOK", "SUCKER-PUNCH"]}, "rematch": {"team": [426, 477, 302, 429, 94, 94], "levels": [52, 52, 52, 54, 57, 57], "movesets": {"426": ["DESTINY-BOND", "SUBSTITUTE", "THUNDERBOLT", "SHADOW-BALL"], "477": ["PAIN-SPLIT", "WILL-O-WISP", "SUBSTITUTE", "PAYBACK"], "302": ["SUCKER-PUNCH", "BRICK-BREAK", "ICE-PUNCH", "FAKE-OUT"], "429": ["PERISH-SONG", "MEAN-LOOK", "CONFUSE-RAY", "ASTONISH"], "94": ["SUBSTITUTE", "SHADOW-BALL", "THUNDERBOLT", "DESTINY-BOND"]}}}},
 
             "travel_options": [
 
@@ -1070,7 +1070,7 @@
 
             "has_gym": true,
 
-            "gym": {"requirements": {"flag": "ampharos_cured", "fail_text": ["Jasmine is at the Lighthouse, caring for the sick Ampharos.", "She won't leave its side until it gets medicine from Cianwood."]}, "trainers": [{"name": "Lass Connie", "class": "LASS", "sprite": "lass.png", "is_boss_battle": true, "team": [180, 54], "rewards": {"balls": 2}}, {"name": "Gentleman Preston", "class": "GENTLEMAN", "sprite": "gentleman.png", "is_boss_battle": true, "team": [179, 180], "rewards": {"balls": 2}}], "leader": {"name": "Jasmine", "class": "GYM_LEADER", "sprite": "jasmine.png", "team": [81, 81, 208], "levels": [30, 30, 35], "badge_reward": "MINERAL", "rewards": {"balls": 5, "RARE_CANDY": 3, "TM265": 1}, "is_boss_battle": true, "dialogue": {"intro": ["Welcome to the Olivine City Gym! I'm Jasmine, the Steel-type Gym Leader."], "player_won": ["You're a skilled trainer!"], "player_lost": ["Don't worry, you'll get it next time."]}, "movesets": {"81": ["THUNDERBOLT", "SONICBOOM", "SUPERSONIC", "THUNDER-WAVE"], "208": ["IRON-TAIL", "ROCK-THROW", "SANDSTORM", "SCREECH"]}}},
+            "gym": {"requirements": {"flag": "ampharos_cured", "fail_text": ["Jasmine is at the Lighthouse, caring for the sick Ampharos.", "She won't leave its side until it gets medicine from Cianwood."]}, "trainers": [], "leader": {"name": "Jasmine", "class": "GYM_LEADER", "sprite": "jasmine.png", "team": [81, 81, 208], "levels": [30, 30, 35], "badge_reward": "MINERAL", "rewards": {"balls": 5, "RARE_CANDY": 3, "TM265": 1}, "is_boss_battle": true, "dialogue": {"intro": ["Welcome to the Olivine City Gym! I'm Jasmine, the Steel-type Gym Leader."], "player_won": ["Jasmine: ...You are a better trainer than me, in both skill and kindness.", "Please take this Mineral Badge."], "player_lost": ["Don't worry, you'll get it next time."]}, "movesets": {"81": ["THUNDERBOLT", "SONICBOOM", "SUPERSONIC", "THUNDER-WAVE"], "208": ["IRON-TAIL", "ROCK-THROW", "SANDSTORM", "SCREECH"]}, "rematch": {"team": [376, 462, 227, 437, 395, 208], "levels": [52, 56, 52, 50, 52, 62], "movesets": {"376": ["METEOR-MASH", "BULLET-PUNCH", "GRAVITY", "EXPLOSION"], "462": ["ZAP-CANNON", "LOCK-ON", "MIRROR-COAT", "METAL-SOUND"], "227": ["AIR-SLASH", "SPIKES", "NIGHT-SLASH", "STEEL-WING"], "437": ["GYRO-BALL", "HYPNOSIS", "DREAM-EATER", "GRAVITY"], "395": ["HYDRO-PUMP", "BLIZZARD", "AQUA-JET", "ROAR"], "208": ["STONE-EDGE", "STEALTH-ROCK", "ROAR", "IRON-TAIL"]}}}},
 
             "travel_options": [
 
@@ -1138,7 +1138,7 @@
 
             "has_gym": true,
 
-            "gym": {"trainers": [{"name": "Blackbelt Yoshi", "class": "BLACKBELT", "sprite": "blackbelt.png", "is_boss_battle": true, "team": [106], "rewards": {"balls": 2}}, {"name": "Blackbelt Lao", "class": "BLACKBELT", "sprite": "blackbelt.png", "is_boss_battle": true, "team": [107], "rewards": {"balls": 2}}, {"name": "Black Belt Nob", "class": "BLACK_BELT", "sprite": "black_belt.png", "is_boss_battle": true, "team": [66, 67], "rewards": {"balls": 2}}, {"name": "Black Belt Lung", "class": "BLACK_BELT", "sprite": "black_belt.png", "is_boss_battle": true, "team": [56, 56, 57], "rewards": {"balls": 2}}], "leader": {"name": "Chuck", "class": "GYM_LEADER", "sprite": "chuck.png", "team": [57, 62], "levels": [29, 31], "badge_reward": "STORMBADGE", "rewards": {"balls": 5, "ROCK_SMASHER": 1, "TM192": 1}, "is_boss_battle": true, "dialogue": {"intro": ["Welcome to the Cianwood City Gym! I'm Chuck, the Fighting-type Gym Leader."], "player_won": ["You're a skilled trainer!"], "player_lost": ["Don't worry, you'll get it next time."]}, "movesets": {"57": ["LEER", "DOUBLE-TEAM", "ROCK-SLIDE", "FOCUS-PUNCH"], "62": ["HYPNOSIS", "BODY-SLAM", "SURF", "FOCUS-PUNCH"]}}},
+            "gym": {"trainers": [{"name": "Blackbelt Yoshi", "class": "BLACKBELT", "sprite": "ss_black_belt.png", "is_boss_battle": true, "team": [106], "rewards": {"balls": 2}}, {"name": "Blackbelt Lao", "class": "BLACKBELT", "sprite": "ss_black_belt.png", "is_boss_battle": true, "team": [107], "rewards": {"balls": 2}}, {"name": "Black Belt Nob", "class": "BLACK_BELT", "sprite": "ss_black_belt.png", "is_boss_battle": true, "team": [66, 67], "rewards": {"balls": 2}}, {"name": "Black Belt Lung", "class": "BLACK_BELT", "sprite": "ss_black_belt.png", "is_boss_battle": true, "team": [56, 56, 57], "rewards": {"balls": 2}}], "leader": {"name": "Chuck", "class": "GYM_LEADER", "sprite": "chuck.png", "team": [57, 62], "levels": [29, 31], "badge_reward": "STORMBADGE", "rewards": {"balls": 5, "ROCK_SMASHER": 1, "TM192": 1}, "is_boss_battle": true, "dialogue": {"intro": ["Welcome to the Cianwood City Gym! I'm Chuck, the Fighting-type Gym Leader."], "player_won": ["Chuck: WAHAHAH! You've got real power in those sums!", "I lost fair and square. Take the Storm Badge!"], "player_lost": ["Don't worry, you'll get it next time."]}, "movesets": {"57": ["LEER", "DOUBLE-TEAM", "ROCK-SLIDE", "FOCUS-PUNCH"], "62": ["HYPNOSIS", "BODY-SLAM", "SURF", "FOCUS-PUNCH"]}, "rematch": {"team": [308, 107, 106, 286, 57, 62], "levels": [54, 52, 55, 54, 56, 60], "movesets": {"308": ["HIGH-JUMP-KICK", "PSYCHO-CUT", "ATTRACT", "THUNDER-PUNCH"], "107": ["MACH-PUNCH", "SWAGGER", "FOCUS-PUNCH", "DOUBLE-TEAM"], "106": ["HIGH-JUMP-KICK", "FAKE-OUT", "BLAZE-KICK", "BULK-UP"], "286": ["SUBSTITUTE", "FOCUS-PUNCH", "DRAIN-PUNCH", "STONE-EDGE"], "57": ["CLOSE-COMBAT", "PAYBACK", "THUNDER-PUNCH", "SWAGGER"], "62": ["DOUBLE-TEAM", "WATERFALL", "FOCUS-PUNCH", "SUBSTITUTE"]}}}},
 
             "travel_options": [
 
@@ -1156,11 +1156,11 @@
 
                 {"text": "Pharmacy", "door": "pharmacy", "action": "NPC", "target": "pharmacist"},
 
-                {"text": "Talk to Euskine", "action": "NPC", "target": "euskine"},
+                {"text": "Talk to Eusine", "action": "NPC", "target": "euskine", "condition": "defeated_eusine"},
 
                 {"text": "Cliff Edge Gate", "action": "TRAVEL", "target_area": "CLIFF_EDGE_GATE", "condition": "has_ROCK_SMASHER"},
 
-                {"text": "Battle Eusine", "action": "EVENT", "color": "GOLD", "flag_condition": "not defeated_eusine", "event": {"lines": ["Eusine: I'm Eusine. I've been chasing Suicune for years.", "You've seen it too? Then show me what kind of trainer you are!"], "flag": "defeated_eusine", "battle": {"name": "Mystery Man Eusine", "class": "MYSTERY_MAN", "sprite": "eusine.png", "team": [96, 93, 101], "levels": [25, 25, 27], "is_boss_battle": true, "rewards": {"balls": 10}, "dialogue": {"player_won": ["Eusine: ...I see why Suicune keeps appearing near you."]}}}},
+                {"text": "Battle Eusine", "action": "EVENT", "color": "GOLD", "flag_condition": "not defeated_eusine", "event": {"lines": ["Eusine: I'm Eusine. I've been chasing Suicune for years.", "You've seen it too? Then show me what kind of trainer you are!"], "flag": "defeated_eusine", "battle": {"name": "Mystery Man Eusine", "class": "MYSTERY_MAN", "sprite": "ss_eusine.png", "team": [96, 93, 101], "levels": [25, 25, 27], "is_boss_battle": true, "rewards": {"balls": 10}, "dialogue": {"player_won": ["Eusine: ...I see why Suicune keeps appearing near you."]}}}},
 
                 {"text": "Kirk", "action": "EVENT", "door": "kirk", "color": "GOLD", "event": {"lines": ["A boy about your age with piercing eyes and long red hair came by... He scared me half to death!", "What if he comes back for my Pokemon? Please, will you look after my Shuckle for me? His name's Shuckie."], "gift_pokemon": 213, "gift_held": "BERRY_JUICE", "flag": "got_shuckie", "done": ["Is Shuckie well? For a Pokemon, happiness is being with someone who treats it kindly."]}},
 
@@ -1198,7 +1198,7 @@
 
             "has_gym": true,
 
-            "gym": {"requirements": {"flag": "rocket_hq_cleared", "fail_text": ["Something strange is going on in Mahogany. Pryce won't battle while Team Rocket is in town.", "Maybe the trouble at the Lake of Rage is connected..."]}, "trainers": [{"name": "Boarder Ronald", "class": "SAILOR", "sprite": "sailor.png", "is_boss_battle": true, "team": [220, 220], "rewards": {"balls": 2}}, {"name": "Skier Clarissa", "class": "LASS", "sprite": "lass.png", "is_boss_battle": true, "team": [124, 124], "rewards": {"balls": 2}}, {"name": "Skier Diana", "class": "SKIER", "sprite": "skier.png", "is_boss_battle": true, "team": [124], "rewards": {"balls": 2}}, {"name": "Boarder Patton", "class": "BOARDER", "sprite": "boarder.png", "is_boss_battle": true, "team": [220, 220], "rewards": {"balls": 2}}, {"name": "Boarder Deandre", "class": "BOARDER", "sprite": "boarder.png", "is_boss_battle": true, "team": [86, 87, 86], "rewards": {"balls": 2}}, {"name": "Boarder Gerardo", "class": "BOARDER", "sprite": "boarder.png", "is_boss_battle": true, "team": [90, 91, 86], "rewards": {"balls": 2}}, {"name": "Skier Jill", "class": "SKIER", "sprite": "skier.png", "is_boss_battle": true, "team": [87], "rewards": {"balls": 2}}], "leader": {"name": "Pryce", "class": "GYM_LEADER", "sprite": "pryce.png", "team": [86, 87, 221], "levels": [30, 32, 34], "badge_reward": "GLACIER", "rewards": {"balls": 5, "ICE_MELTER": 1, "TM046": 1}, "is_boss_battle": true, "dialogue": {"intro": ["Welcome to the Mahogany Town Gym! I'm Pryce, the Ice-type Gym Leader."], "player_won": ["Your math burned right through my defense.", "The path to Blackthorn is frozen solid. Take this.", "You received the ICE MELTER!"], "player_lost": ["Don't worry, you'll get it next time."]}, "movesets": {"86": ["ICY-WIND", "REST", "SNORE", "HAIL"], "87": ["AURORA-BEAM", "REST", "SLEEP-TALK", "ICE-SHARD"], "221": ["BLIZZARD", "ICE-FANG", "MUD-BOMB", "HAIL"]}}},
+            "gym": {"requirements": {"flag": "rocket_hq_cleared", "fail_text": ["Something strange is going on in Mahogany. Pryce won't battle while Team Rocket is in town.", "Maybe the trouble at the Lake of Rage is connected..."]}, "trainers": [{"name": "Boarder Ronald", "class": "SAILOR", "sprite": "ss_sailor.png", "is_boss_battle": true, "team": [220, 220], "rewards": {"balls": 2}}, {"name": "Skier Clarissa", "class": "LASS", "sprite": "ss_lass.png", "is_boss_battle": true, "team": [124, 124], "rewards": {"balls": 2}}, {"name": "Skier Diana", "class": "SKIER", "sprite": "ss_skier.png", "is_boss_battle": true, "team": [124], "rewards": {"balls": 2}}, {"name": "Boarder Patton", "class": "BOARDER", "sprite": "ss_boarder.png", "is_boss_battle": true, "team": [220, 220], "rewards": {"balls": 2}}, {"name": "Boarder Deandre", "class": "BOARDER", "sprite": "ss_boarder.png", "is_boss_battle": true, "team": [86, 87, 86], "rewards": {"balls": 2}}, {"name": "Boarder Gerardo", "class": "BOARDER", "sprite": "ss_boarder.png", "is_boss_battle": true, "team": [90, 91, 86], "rewards": {"balls": 2}}, {"name": "Skier Jill", "class": "SKIER", "sprite": "ss_skier.png", "is_boss_battle": true, "team": [87], "rewards": {"balls": 2}}], "leader": {"name": "Pryce", "class": "GYM_LEADER", "sprite": "pryce.png", "team": [86, 87, 221], "levels": [30, 32, 34], "badge_reward": "GLACIER", "rewards": {"balls": 5, "TM241": 1}, "is_boss_battle": true, "dialogue": {"intro": ["Welcome to the Mahogany Town Gym! I'm Pryce, the Ice-type Gym Leader."], "player_won": ["Your math burned right through my defense.", "Take the Glacier Badge, and this TM: Hail."], "player_lost": ["Don't worry, you'll get it next time."]}, "movesets": {"86": ["ICY-WIND", "REST", "SNORE", "HAIL"], "87": ["AURORA-BEAM", "REST", "SLEEP-TALK", "ICE-SHARD"], "221": ["BLIZZARD", "ICE-FANG", "MUD-BOMB", "HAIL"]}, "rematch": {"team": [460, 87, 362, 478, 365, 473], "levels": [56, 58, 52, 52, 54, 60], "movesets": {"460": ["ICE-SHARD", "WOOD-HAMMER", "EARTHQUAKE", "BLIZZARD"], "87": ["DIVE", "SHEER-COLD", "SLEEP-TALK", "REST"], "362": ["PAYBACK", "TORMENT", "ATTRACT", "BLIZZARD"], "478": ["ICE-SHARD", "CONFUSE-RAY", "ATTRACT", "BLIZZARD"], "365": ["HAIL", "BODY-SLAM", "SWAGGER", "BLIZZARD"], "473": ["EARTHQUAKE", "AVALANCHE", "STONE-EDGE", "DOUBLE-TEAM"]}}}},
 
             "travel_options": [
 
@@ -1220,7 +1220,7 @@
 
                 {"text": "Gym", "action": "GYM"},
 
-                {"text": "Talk to Lance", "action": "NPC", "target": "lance_mahogany"},
+                {"text": "Talk to Lance", "action": "NPC", "target": "lance_mahogany", "condition": "defeated_red_gyarados"},
 
                 {"action": "EVENT", "event": {"lines": ["They say a red Gyarados showed up at the Lake of Rage. Odd, when even ordinary Gyarados are rare round here..."]}, "text": "Man", "door": "radiohouse"},
 
@@ -1248,7 +1248,7 @@
 
             "has_gym": true,
 
-            "gym": {"requirements": {"badges": 7, "fail_text": ["Clair only accepts challengers who have earned seven Johto badges."]}, "trainers": [{"name": "Cooltrainer Mike", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "is_boss_battle": true, "team": [148, 148], "rewards": {"balls": 3}}, {"name": "Cooltrainer Lola", "class": "COOLTRAINER", "sprite": "acetrainer_f.png", "is_boss_battle": true, "team": [147, 147, 147], "rewards": {"balls": 3}}, {"name": "Ace Trainer Paulo", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "is_boss_battle": true, "team": [147, 117, 147], "rewards": {"balls": 2}}, {"name": "Ace Trainer Lola", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "is_boss_battle": true, "team": [147, 148], "rewards": {"balls": 2}}, {"name": "Ace Trainer Cody", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "is_boss_battle": true, "team": [116, 117], "rewards": {"balls": 2}}, {"name": "Ace Trainer Fran", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "is_boss_battle": true, "team": [117], "rewards": {"balls": 2}}, {"name": "Ace Trainer Mike", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "is_boss_battle": true, "team": [148], "rewards": {"balls": 2}}], "leader": {"name": "Clair", "class": "GYM_LEADER", "sprite": "clair.png", "team": [148, 148, 130, 230], "levels": [38, 38, 38, 41], "badge_reward": "RISING", "badge_later": "johto_beat_clair", "badge_later_lines": ["Clair: ...I still don't accept it. Go to the Dragon's Den behind this Gym.", "Clair: Pass the Elder's test at the Dragon Shrine, and then... we'll talk about the Rising Badge."], "rewards": {"balls": 5, "MT_SILVER_MAP": 1}, "is_boss_battle": true, "dialogue": {"intro": ["Welcome to the Blackthorn City Gym! I'm Clair, the Dragon-type Gym Leader."], "player_won": ["Clair: I lost? I don't believe it. There must be some mistake...", "Clair: I won't admit this. I won't give you the Rising Badge!", "Clair: ...Fine. There's a place called the Dragon's Den behind this Gym. Go to the Dragon Shrine at its heart and take the Elder's test. If you pass, I'll accept you as a Trainer worthy of the Badge."], "player_lost": ["Don't worry, you'll get it next time."]}, "movesets": {"148": ["THUNDER-WAVE", "SLAM", "AQUA-TAIL", "DRAGON-PULSE"], "130": ["BITE", "TWISTER", "DRAGON-RAGE", "DRAGON-PULSE"], "230": ["HYDRO-PUMP", "SMOKESCREEN", "HYPER-BEAM", "DRAGON-PULSE"]}}},
+            "gym": {"requirements": {"badges": 7, "fail_text": ["Clair only accepts challengers who have earned seven Johto badges."]}, "trainers": [{"name": "Ace Trainer Paulo", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_m.png", "is_boss_battle": true, "team": [147, 117, 147], "rewards": {"balls": 2}}, {"name": "Ace Trainer Lola", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_m.png", "is_boss_battle": true, "team": [147, 148], "rewards": {"balls": 2}}, {"name": "Ace Trainer Cody", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_m.png", "is_boss_battle": true, "team": [116, 117], "rewards": {"balls": 2}}, {"name": "Ace Trainer Fran", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_m.png", "is_boss_battle": true, "team": [117], "rewards": {"balls": 2}}, {"name": "Ace Trainer Mike", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_m.png", "is_boss_battle": true, "team": [148], "rewards": {"balls": 2}}], "leader": {"name": "Clair", "class": "GYM_LEADER", "sprite": "clair.png", "team": [148, 148, 130, 230], "levels": [38, 38, 38, 41], "badge_reward": "RISING", "badge_later": "johto_beat_clair", "badge_later_lines": ["Clair: ...I still don't accept it. Go to the Dragon's Den behind this Gym.", "Clair: Pass the Elder's test at the Dragon Shrine, and then... we'll talk about the Rising Badge."], "rewards": {"balls": 5, "MT_SILVER_MAP": 1}, "is_boss_battle": true, "dialogue": {"intro": ["Welcome to the Blackthorn City Gym! I'm Clair, the Dragon-type Gym Leader."], "player_won": ["Clair: I lost? I don't believe it. There must be some mistake...", "Clair: I won't admit this. I won't give you the Rising Badge!", "Clair: ...Fine. There's a place called the Dragon's Den behind this Gym. Go to the Dragon Shrine at its heart and take the Elder's test. If you pass, I'll accept you as a Trainer worthy of the Badge."], "player_lost": ["Don't worry, you'll get it next time."]}, "movesets": {"148": ["THUNDER-WAVE", "SLAM", "AQUA-TAIL", "DRAGON-PULSE"], "130": ["BITE", "TWISTER", "DRAGON-RAGE", "DRAGON-PULSE"], "230": ["HYDRO-PUMP", "SMOKESCREEN", "HYPER-BEAM", "DRAGON-PULSE"]}, "rematch": {"team": [130, 148, 142, 230, 6, 149], "levels": [56, 52, 52, 56, 52, 60], "movesets": {"130": ["DRAGON-DANCE", "EARTHQUAKE", "WATERFALL", "DRAGON-PULSE"], "148": ["THUNDER-WAVE", "DRAGON-RUSH", "THUNDERBOLT", "FLAMETHROWER"], "142": ["EARTHQUAKE", "THUNDER-FANG", "ROCK-SLIDE", "ROAR"], "230": ["YAWN", "HYDRO-PUMP", "ICE-BEAM", "DRAGON-BREATH"], "6": ["SHADOW-CLAW", "AIR-SLASH", "DRAGON-CLAW", "FIRE-FANG"], "149": ["THUNDER", "SAFEGUARD", "DRAGON-BREATH", "HYPER-BEAM"]}}}},
 
             "travel_options": [
 
@@ -1440,23 +1440,23 @@
 
             "trainer_pool": [
 
-                {"name": "Gentleman Alfred", "class": "GENTLEMAN", "sprite": "gentleman.png", "team": [164], "rewards": {"balls": 2}},
+                {"name": "Gentleman Alfred", "class": "GENTLEMAN", "sprite": "ss_gentleman.png", "team": [164], "rewards": {"balls": 2}},
 
-                {"name": "Sailor Huey", "class": "SAILOR", "sprite": "sailor.png", "team": [60, 61], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [61, 61], "levels": [34, 36]}, {"team": [61, 62], "levels": [38, 41]}, {"team": [186, 62], "levels": [48, 52]}], "call": ["Ahoy, it's Huey! My Pokemon and I are ready. Come to the Lighthouse!"]}},
+                {"name": "Sailor Huey", "class": "SAILOR", "sprite": "ss_sailor.png", "team": [60, 61], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [61, 61], "levels": [34, 36]}, {"team": [61, 62], "levels": [38, 41]}, {"team": [186, 62], "levels": [48, 52]}], "call": ["Ahoy, it's Huey! My Pokemon and I are ready. Come to the Lighthouse!"]}},
 
-                {"name": "Sailor Kent", "class": "SAILOR", "sprite": "sailor.png", "team": [98, 98], "rewards": {"balls": 2}},
+                {"name": "Sailor Kent", "class": "SAILOR", "sprite": "ss_sailor.png", "team": [98, 98], "rewards": {"balls": 2}},
 
-                {"name": "Bird Keeper Denis", "class": "BIRD_KEEPER", "sprite": "bird_keeper.png", "team": [21, 22, 21], "rewards": {"balls": 2}},
+                {"name": "Bird Keeper Denis", "class": "BIRD_KEEPER", "sprite": "ss_bird_keeper.png", "team": [21, 22, 21], "rewards": {"balls": 2}},
 
-                {"name": "Bird Keeper Theo", "class": "BIRD_KEEPER", "sprite": "bird_keeper.png", "team": [16, 16, 16, 16, 16], "rewards": {"balls": 2}},
+                {"name": "Bird Keeper Theo", "class": "BIRD_KEEPER", "sprite": "ss_bird_keeper.png", "team": [16, 16, 16, 16, 16], "rewards": {"balls": 2}},
 
-                {"name": "Lass Connie", "class": "LASS", "sprite": "lass.png", "team": [183], "rewards": {"balls": 2}},
+                {"name": "Lass Connie", "class": "LASS", "sprite": "ss_lass.png", "team": [183], "rewards": {"balls": 2}},
 
-                {"name": "Gentleman Preston", "class": "GENTLEMAN", "sprite": "gentleman.png", "team": [58, 58], "rewards": {"balls": 2}},
+                {"name": "Gentleman Preston", "class": "GENTLEMAN", "sprite": "ss_gentleman.png", "team": [58, 58], "rewards": {"balls": 2}},
 
-                {"name": "Sailor Terrell", "class": "SAILOR", "sprite": "sailor.png", "team": [61], "rewards": {"balls": 2}},
+                {"name": "Sailor Terrell", "class": "SAILOR", "sprite": "ss_sailor.png", "team": [61], "rewards": {"balls": 2}},
 
-                {"name": "Sailor Roberto", "class": "SAILOR", "sprite": "sailor.png", "team": [66, 66, 61], "rewards": {"balls": 2}}
+                {"name": "Sailor Roberto", "class": "SAILOR", "sprite": "ss_sailor.png", "team": [66, 66, 61], "rewards": {"balls": 2}}
 
             ],
 
@@ -1511,7 +1511,7 @@
                 "gym": ["battle_elite_will.png", "battle_elite_koga_johto.png", "battle_elite_bruno_johto.png", "battle_elite_karen.png", "battle_champion_johto.png"]
             },
             "has_gym": true,
-            "gym": {"trainers": [{"sprite": "will.png", "name": "Will", "class": "ELITE_FOUR", "team": [178, 124, 103, 80, 178], "levels": [40, 41, 41, 41, 42], "rematch": {"team": [437, 124, 326, 80, 282, 178], "levels": [58, 60, 59, 60, 61, 62], "movesets": {"437": ["GRAVITY", "REFLECT", "PAYBACK", "PSYCHIC"], "124": ["FAKE-TEARS", "LOVELY-KISS", "DREAM-EATER", "BLIZZARD"], "326": ["CONFUSE-RAY", "SIGNAL-BEAM", "POWER-GEM", "PSYCHIC"], "80": ["CURSE", "AMNESIA", "BODY-SLAM", "PSYCHIC"], "282": ["CALM-MIND", "CHARGE-BEAM", "FOCUS-BLAST", "PSYCHIC"], "178": ["CONFUSE-RAY", "QUICK-ATTACK", "SHADOW-BALL", "PSYCHIC"]}}, "rewards": {"balls": 15}, "is_boss_battle": true, "movesets": {"178": ["U-TURN", "ME-FIRST", "CONFUSE-RAY", "PSYCHIC"], "124": ["LOVELY-KISS", "DOUBLE-SLAP", "ICE-PUNCH", "PSYCHIC"], "103": ["REFLECT", "HYPNOSIS", "EGG-BOMB", "PSYCHIC"], "80": ["CURSE", "AMNESIA", "WATER-PULSE", "PSYCHIC"]}}, {"sprite": "koga_johto.png", "name": "Koga", "class": "ELITE_FOUR", "team": [168, 49, 89, 205, 169], "levels": [40, 41, 42, 43, 44], "rematch": {"team": [435, 454, 317, 49, 89, 169], "levels": [61, 60, 62, 63, 62, 64], "movesets": {"435": ["TOXIC", "DIG", "SUCKER-PUNCH", "EXPLOSION"], "454": ["SWAGGER", "X-SCISSOR", "CROSS-CHOP", "GUNK-SHOT"], "317": ["SLUDGE-BOMB", "AMNESIA", "PAIN-SPLIT", "YAWN"], "49": ["BATON-PASS", "DOUBLE-TEAM", "SILVER-WIND", "PSYCHIC"], "89": ["MINIMIZE", "SCREECH", "SWAGGER", "TOXIC"], "169": ["FLY", "CROSS-POISON", "MEAN-LOOK", "TOXIC"]}}, "rewards": {"balls": 15}, "is_boss_battle": true, "movesets": {"168": ["SPIDER-WEB", "BATON-PASS", "GIGA-DRAIN", "POISON-JAB"], "49": ["PSYCHIC", "GUST", "SUPERSONIC", "TOXIC"], "89": ["GUNK-SHOT", "MINIMIZE", "SCREECH", "TOXIC"], "205": ["SWIFT", "EXPLOSION", "PROTECT", "TOXIC-SPIKES"], "169": ["QUICK-ATTACK", "WING-ATTACK", "DOUBLE-TEAM", "POISON-FANG"]}}, {"sprite": "bruno.png", "name": "Bruno", "class": "ELITE_FOUR", "team": [237, 106, 107, 95, 68], "levels": [42, 42, 42, 43, 46], "rematch": {"team": [237, 106, 297, 68, 448, 107], "levels": [62, 61, 62, 64, 64, 61], "movesets": {"237": ["CLOSE-COMBAT", "EARTHQUAKE", "COUNTER", "QUICK-ATTACK"], "106": ["CLOSE-COMBAT", "BLAZE-KICK", "REVERSAL", "SWAGGER"], "297": ["BULK-UP", "LOW-KICK", "PAYBACK", "BULLET-PUNCH"], "68": ["DYNAMIC-PUNCH", "STONE-EDGE", "BULLET-PUNCH", "FORESIGHT"], "448": ["CLOSE-COMBAT", "IRON-TAIL", "COUNTER", "EXTREME-SPEED"], "107": ["CLOSE-COMBAT", "DRAIN-PUNCH", "BULLET-PUNCH", "SUBSTITUTE"]}}, "rewards": {"balls": 15}, "is_boss_battle": true, "movesets": {"237": ["DIG", "COUNTER", "TRIPLE-KICK", "QUICK-ATTACK"], "106": ["HIGH-JUMP-KICK", "BLAZE-KICK", "FOCUS-ENERGY", "SWAGGER"], "107": ["THUNDER-PUNCH", "ICE-PUNCH", "FIRE-PUNCH", "BULLET-PUNCH"], "95": ["SANDSTORM", "DRAGONBREATH", "ROCK-SLIDE", "EARTHQUAKE"], "68": ["REVENGE", "CROSS-CHOP", "ROCK-SLIDE", "FORESIGHT"]}}, {"sprite": "karen.png", "name": "Karen", "class": "ELITE_FOUR", "team": [197, 45, 198, 94, 229], "levels": [42, 42, 44, 45, 47], "rematch": {"team": [461, 442, 430, 197, 229, 359], "levels": [62, 62, 64, 64, 63, 63], "movesets": {"461": ["ICE-PUNCH", "NIGHT-SLASH", "LOW-KICK", "ICE-SHARD"], "442": ["CURSE", "CONFUSE-RAY", "PAIN-SPLIT", "SUCKER-PUNCH"], "430": ["THUNDER-WAVE", "WHIRLWIND", "DRILL-PECK", "SUCKER-PUNCH"], "197": ["CONFUSE-RAY", "CURSE", "PAYBACK", "SUCKER-PUNCH"], "229": ["NASTY-PLOT", "DARK-PULSE", "FLAMETHROWER", "SLUDGE-BOMB"], "359": ["DETECT", "PERISH-SONG", "NIGHT-SLASH", "PSYCHO-CUT"]}}, "rewards": {"balls": 15}, "victory_flag": "beat_johto_elite_four", "is_boss_battle": true, "movesets": {"197": ["DOUBLE-TEAM", "CONFUSE-RAY", "FEINT-ATTACK", "PAYBACK"], "45": ["STUN-SPORE", "PETAL-DANCE", "ACID", "MOONLIGHT"], "198": ["SUCKER-PUNCH", "FEINT-ATTACK", "PLUCK", "WHIRLWIND"], "94": ["FOCUS-BLAST", "DESTINY-BOND", "SPITE", "LICK"], "229": ["NASTY-PLOT", "DARK-PULSE", "FLAMETHROWER", "CRUNCH"]}}], "leader": {"sprite": "lance.png", "name": "Lance", "class": "CHAMPION", "team": [130, 149, 149, 142, 6, 149], "levels": [44, 49, 49, 48, 48, 50], "rematch": {"team": [373, 445, 149, 6, 334, 130], "levels": [72, 72, 75, 68, 73, 68], "movesets": {"373": ["DRAGON-CLAW", "FLAMETHROWER", "SHADOW-CLAW", "REST"], "445": ["OUTRAGE", "SWORDS-DANCE", "EARTHQUAKE", "ROAR"], "149": ["DRACO-METEOR", "SAFEGUARD", "FIRE-BLAST", "HYPER-BEAM"], "6": ["FLAMETHROWER", "HYPER-BEAM", "DRAGON-CLAW", "AIR-SLASH"], "334": ["DOUBLE-TEAM", "DRAGONBREATH", "PERISH-SONG", "HYPER-BEAM"], "130": ["DRAGON-DANCE", "WATERFALL", "ICE-FANG", "THUNDER-WAVE"]}}, "is_boss_battle": true, "rewards": {"balls": 25, "MASTER_BALL": 1}, "victory_flag": "beat_johto_champion", "movesets": {"130": ["WATERFALL", "DRAGON-PULSE", "ICE-FANG", "FLAIL"], "149": ["DRAGON-RUSH", "THUNDER-WAVE", "THUNDER", "HYPER-BEAM"], "142": ["ROCK-SLIDE", "AERIAL-ACE", "CRUNCH", "THUNDER-FANG"], "6": ["AIR-SLASH", "FIRE-FANG", "DRAGON-CLAW", "SHADOW-CLAW"]}}},
+            "gym": {"trainers": [{"sprite": "ss_will.png", "name": "Will", "class": "ELITE_FOUR", "team": [178, 124, 103, 80, 178], "levels": [40, 41, 41, 41, 42], "rematch": {"team": [437, 124, 326, 80, 282, 178], "levels": [58, 60, 59, 60, 61, 62], "movesets": {"437": ["GRAVITY", "REFLECT", "PAYBACK", "PSYCHIC"], "124": ["FAKE-TEARS", "LOVELY-KISS", "DREAM-EATER", "BLIZZARD"], "326": ["CONFUSE-RAY", "SIGNAL-BEAM", "POWER-GEM", "PSYCHIC"], "80": ["CURSE", "AMNESIA", "BODY-SLAM", "PSYCHIC"], "282": ["CALM-MIND", "CHARGE-BEAM", "FOCUS-BLAST", "PSYCHIC"], "178": ["CONFUSE-RAY", "QUICK-ATTACK", "SHADOW-BALL", "PSYCHIC"]}}, "rewards": {"balls": 15}, "is_boss_battle": true, "movesets": {"178": ["U-TURN", "ME-FIRST", "CONFUSE-RAY", "PSYCHIC"], "124": ["LOVELY-KISS", "DOUBLE-SLAP", "ICE-PUNCH", "PSYCHIC"], "103": ["REFLECT", "HYPNOSIS", "EGG-BOMB", "PSYCHIC"], "80": ["CURSE", "AMNESIA", "WATER-PULSE", "PSYCHIC"]}}, {"sprite": "ss_koga.png", "name": "Koga", "class": "ELITE_FOUR", "team": [168, 49, 89, 205, 169], "levels": [40, 41, 42, 43, 44], "rematch": {"team": [435, 454, 317, 49, 89, 169], "levels": [61, 60, 62, 63, 62, 64], "movesets": {"435": ["TOXIC", "DIG", "SUCKER-PUNCH", "EXPLOSION"], "454": ["SWAGGER", "X-SCISSOR", "CROSS-CHOP", "GUNK-SHOT"], "317": ["SLUDGE-BOMB", "AMNESIA", "PAIN-SPLIT", "YAWN"], "49": ["BATON-PASS", "DOUBLE-TEAM", "SILVER-WIND", "PSYCHIC"], "89": ["MINIMIZE", "SCREECH", "SWAGGER", "TOXIC"], "169": ["FLY", "CROSS-POISON", "MEAN-LOOK", "TOXIC"]}}, "rewards": {"balls": 15}, "is_boss_battle": true, "movesets": {"168": ["SPIDER-WEB", "BATON-PASS", "GIGA-DRAIN", "POISON-JAB"], "49": ["PSYCHIC", "GUST", "SUPERSONIC", "TOXIC"], "89": ["GUNK-SHOT", "MINIMIZE", "SCREECH", "TOXIC"], "205": ["SWIFT", "EXPLOSION", "PROTECT", "TOXIC-SPIKES"], "169": ["QUICK-ATTACK", "WING-ATTACK", "DOUBLE-TEAM", "POISON-FANG"]}}, {"sprite": "ss_bruno.png", "name": "Bruno", "class": "ELITE_FOUR", "team": [237, 106, 107, 95, 68], "levels": [42, 42, 42, 43, 46], "rematch": {"team": [237, 106, 297, 68, 448, 107], "levels": [62, 61, 62, 64, 64, 61], "movesets": {"237": ["CLOSE-COMBAT", "EARTHQUAKE", "COUNTER", "QUICK-ATTACK"], "106": ["CLOSE-COMBAT", "BLAZE-KICK", "REVERSAL", "SWAGGER"], "297": ["BULK-UP", "LOW-KICK", "PAYBACK", "BULLET-PUNCH"], "68": ["DYNAMIC-PUNCH", "STONE-EDGE", "BULLET-PUNCH", "FORESIGHT"], "448": ["CLOSE-COMBAT", "IRON-TAIL", "COUNTER", "EXTREME-SPEED"], "107": ["CLOSE-COMBAT", "DRAIN-PUNCH", "BULLET-PUNCH", "SUBSTITUTE"]}}, "rewards": {"balls": 15}, "is_boss_battle": true, "movesets": {"237": ["DIG", "COUNTER", "TRIPLE-KICK", "QUICK-ATTACK"], "106": ["HIGH-JUMP-KICK", "BLAZE-KICK", "FOCUS-ENERGY", "SWAGGER"], "107": ["THUNDER-PUNCH", "ICE-PUNCH", "FIRE-PUNCH", "BULLET-PUNCH"], "95": ["SANDSTORM", "DRAGONBREATH", "ROCK-SLIDE", "EARTHQUAKE"], "68": ["REVENGE", "CROSS-CHOP", "ROCK-SLIDE", "FORESIGHT"]}}, {"sprite": "ss_karen.png", "name": "Karen", "class": "ELITE_FOUR", "team": [197, 45, 198, 94, 229], "levels": [42, 42, 44, 45, 47], "rematch": {"team": [461, 442, 430, 197, 229, 359], "levels": [62, 62, 64, 64, 63, 63], "movesets": {"461": ["ICE-PUNCH", "NIGHT-SLASH", "LOW-KICK", "ICE-SHARD"], "442": ["CURSE", "CONFUSE-RAY", "PAIN-SPLIT", "SUCKER-PUNCH"], "430": ["THUNDER-WAVE", "WHIRLWIND", "DRILL-PECK", "SUCKER-PUNCH"], "197": ["CONFUSE-RAY", "CURSE", "PAYBACK", "SUCKER-PUNCH"], "229": ["NASTY-PLOT", "DARK-PULSE", "FLAMETHROWER", "SLUDGE-BOMB"], "359": ["DETECT", "PERISH-SONG", "NIGHT-SLASH", "PSYCHO-CUT"]}}, "rewards": {"balls": 15}, "victory_flag": "beat_johto_elite_four", "is_boss_battle": true, "movesets": {"197": ["DOUBLE-TEAM", "CONFUSE-RAY", "FEINT-ATTACK", "PAYBACK"], "45": ["STUN-SPORE", "PETAL-DANCE", "ACID", "MOONLIGHT"], "198": ["SUCKER-PUNCH", "FEINT-ATTACK", "PLUCK", "WHIRLWIND"], "94": ["FOCUS-BLAST", "DESTINY-BOND", "SPITE", "LICK"], "229": ["NASTY-PLOT", "DARK-PULSE", "FLAMETHROWER", "CRUNCH"]}}], "leader": {"sprite": "ss_lance.png", "name": "Lance", "class": "CHAMPION", "team": [130, 149, 149, 142, 6, 149], "levels": [44, 49, 49, 48, 48, 50], "rematch": {"team": [373, 445, 149, 6, 334, 130], "levels": [72, 72, 75, 68, 73, 68], "movesets": {"373": ["DRAGON-CLAW", "FLAMETHROWER", "SHADOW-CLAW", "REST"], "445": ["OUTRAGE", "SWORDS-DANCE", "EARTHQUAKE", "ROAR"], "149": ["DRACO-METEOR", "SAFEGUARD", "FIRE-BLAST", "HYPER-BEAM"], "6": ["FLAMETHROWER", "HYPER-BEAM", "DRAGON-CLAW", "AIR-SLASH"], "334": ["DOUBLE-TEAM", "DRAGONBREATH", "PERISH-SONG", "HYPER-BEAM"], "130": ["DRAGON-DANCE", "WATERFALL", "ICE-FANG", "THUNDER-WAVE"]}}, "is_boss_battle": true, "rewards": {"balls": 25, "MASTER_BALL": 1}, "victory_flag": "beat_johto_champion", "movesets": {"130": ["WATERFALL", "DRAGON-PULSE", "ICE-FANG", "FLAIL"], "149": ["DRAGON-RUSH", "THUNDER-WAVE", "THUNDER", "HYPER-BEAM"], "142": ["ROCK-SLIDE", "AERIAL-ACE", "CRUNCH", "THUNDER-FANG"], "6": ["AIR-SLASH", "FIRE-FANG", "DRAGON-CLAW", "SHADOW-CLAW"]}}},
             "travel_options": [],
             "explore_options": [
                 { "text": "Heal", "action": "HEAL" },
@@ -1557,25 +1557,25 @@
             "trainer_pool": [
 
 
-                {"sprite": "acetrainer_f.png", "name": "Ace Trainer Reena", "class": "COOLTRAINER", "team": [58, 30, 120], "rewards": {"balls": 5}, "phone": {"tiers": [{"team": [58, 30, 120], "levels": [38, 36, 38]}, {"team": [59, 31, 121], "levels": [47, 43, 47]}, {"team": [59, 31, 121], "levels": [54, 53, 56]}], "call": ["It's Reena! I'm stronger now. Rematch on Route 27?"]}},
+                {"sprite": "ss_ace_trainer_f.png", "name": "Ace Trainer Reena", "class": "COOLTRAINER", "team": [58, 30, 120], "rewards": {"balls": 5}, "phone": {"tiers": [{"team": [58, 30, 120], "levels": [38, 36, 38]}, {"team": [59, 31, 121], "levels": [47, 43, 47]}, {"team": [59, 31, 121], "levels": [54, 53, 56]}], "call": ["It's Reena! I'm stronger now. Rematch on Route 27?"]}},
 
 
-                {"sprite": "acetrainer_f.png", "name": "Ace Trainer Megan", "class": "COOLTRAINER", "team": [1, 2, 3], "rewards": {"balls": 5}},
+                {"sprite": "ss_ace_trainer_f.png", "name": "Ace Trainer Megan", "class": "COOLTRAINER", "team": [1, 2, 3], "rewards": {"balls": 5}},
 
 
-                {"sprite": "acetrainer_m.png", "name": "Ace Trainer Blake", "class": "COOLTRAINER", "team": [82, 195, 102], "rewards": {"balls": 5}},
+                {"sprite": "ss_ace_trainer_m.png", "name": "Ace Trainer Blake", "class": "COOLTRAINER", "team": [82, 195, 102], "rewards": {"balls": 5}},
 
 
-                {"sprite": "acetrainer_m.png", "name": "Ace Trainer Brian", "class": "COOLTRAINER", "team": [179], "rewards": {"balls": 5}},
+                {"sprite": "ss_ace_trainer_m.png", "name": "Ace Trainer Brian", "class": "COOLTRAINER", "team": [179], "rewards": {"balls": 5}},
 
 
-                {"sprite": "swimmer_m.png", "name": "Swimmer Glenn", "class": "SWIMMER", "team": [73, 121], "rewards": {"balls": 3}},
+                {"sprite": "ss_swimmer_m.png", "name": "Swimmer Glenn", "class": "SWIMMER", "team": [73, 121], "rewards": {"balls": 3}},
 
 
-                {"name": "Bird Keeper Jose", "class": "BIRD_KEEPER", "sprite": "bird_keeper.png", "team": [83], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [83], "levels": [44], "gift": {"STAR_PIECE": 1}}, {"team": [83, 83], "levels": [38, 45]}, {"team": [83, 83, 83], "levels": [50, 52, 53]}], "call": ["Jose here! My Farfetch'd found something sparkly for you. Route 27!"]}},
+                {"name": "Bird Keeper Jose", "class": "BIRD_KEEPER", "sprite": "ss_bird_keeper.png", "team": [83], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [83], "levels": [44], "gift": {"STAR_PIECE": 1}}, {"team": [83, 83], "levels": [38, 45]}, {"team": [83, 83, 83], "levels": [50, 52, 53]}], "call": ["Jose here! My Farfetch'd found something sparkly for you. Route 27!"]}},
 
 
-                {"name": "Psychic Eli", "class": "PSYCHIC", "sprite": "psychic.png", "team": [121, 102, 203], "rewards": {"balls": 2}}
+                {"name": "Psychic Eli", "class": "PSYCHIC", "sprite": "ss_psychic.png", "team": [121, 102, 203], "rewards": {"balls": 2}}
 
 
             ],
@@ -1660,15 +1660,15 @@
             "trainer_encounter_rate": 0.1,
             "min_rounds": 2,
             "trainer_pool": [
-                {"sprite": "fisherman.png", "name": "Kyler", "class": "FISHERMAN", "team": [130, 130], "rewards": {"balls": 3}},
-                {"sprite": "acetrainer_f.png", "name": "Reena", "class": "ACE_TRAINER", "team": [121, 134], "rewards": {"balls": 5}},
-                {"sprite": "camper.png", "name": "Josh", "class": "YOUNGSTER", "team": [25, 56], "rewards": {"balls": 3}},
-                {"name": "Fisherman Scott", "class": "FISHERMAN", "sprite": "fisherman.png", "team": [211, 211, 119], "rewards": {"balls": 2}},
-                {"name": "Psychic Vernon", "class": "PSYCHIC", "sprite": "psychic.png", "team": [196], "rewards": {"balls": 2}},
-                {"name": "Ace Trainer Joyce", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "team": [25, 9], "rewards": {"balls": 2}},
-                {"name": "Ace Trainer Gaven", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "team": [71, 99, 136], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [71, 99, 136], "levels": [34, 34, 34]}, {"team": [71, 99, 136], "levels": [38, 39, 38]}, {"team": [71, 99, 136], "levels": [52, 49, 50]}], "call": ["Gaven here. I've trained hard on Route 26. Come test my team!"]}},
-                {"name": "Ace Trainer Jake", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "team": [47, 55, 134], "rewards": {"balls": 2}},
-                {"name": "Ace Trainer Jamie", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "team": [78, 180], "rewards": {"balls": 2}}
+                {"sprite": "ss_fisherman.png", "name": "Kyler", "class": "FISHERMAN", "team": [130, 130], "rewards": {"balls": 3}},
+                {"sprite": "ss_ace_trainer_f.png", "name": "Reena", "class": "ACE_TRAINER", "team": [121, 134], "rewards": {"balls": 5}},
+                {"sprite": "ss_youngster.png", "name": "Josh", "class": "YOUNGSTER", "team": [25, 56], "rewards": {"balls": 3}},
+                {"name": "Fisherman Scott", "class": "FISHERMAN", "sprite": "ss_fisherman.png", "team": [211, 211, 119], "rewards": {"balls": 2}},
+                {"name": "Psychic Vernon", "class": "PSYCHIC", "sprite": "ss_psychic.png", "team": [196], "rewards": {"balls": 2}},
+                {"name": "Ace Trainer Joyce", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_m.png", "team": [25, 9], "rewards": {"balls": 2}},
+                {"name": "Ace Trainer Gaven", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_m.png", "team": [71, 99, 136], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [71, 99, 136], "levels": [34, 34, 34]}, {"team": [71, 99, 136], "levels": [38, 39, 38]}, {"team": [71, 99, 136], "levels": [52, 49, 50]}], "call": ["Gaven here. I've trained hard on Route 26. Come test my team!"]}},
+                {"name": "Ace Trainer Jake", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_m.png", "team": [47, 55, 134], "rewards": {"balls": 2}},
+                {"name": "Ace Trainer Jamie", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_m.png", "team": [78, 180], "rewards": {"balls": 2}}
             ],
             "route_menu": [
                 {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
@@ -1769,9 +1769,9 @@
 
             ],
 
-            "route_menu": [
+            "tree_pool": "JOHTO_ROUTE_TREE_PERCENTAGES", "route_menu": [
 
-                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE"},
 
                 {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
 
@@ -1819,13 +1819,13 @@
 
             "trainer_pool": [
 
-                {"name": "Youngster Mikey", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [19, 16], "rewards": {"balls": 2}},
+                {"name": "Youngster Mikey", "class": "YOUNGSTER", "sprite": "ss_youngster.png", "team": [19, 16], "rewards": {"balls": 2}},
 
-                {"name": "Bug Catcher Don", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", "team": [10, 10], "rewards": {"balls": 2}},
+                {"name": "Bug Catcher Don", "class": "BUG_CATCHER", "sprite": "ss_bug_catcher.png", "team": [10, 10], "rewards": {"balls": 2}},
 
-                {"name": "Lass Bud", "class": "LASS", "sprite": "lass.png", "team": [16], "rewards": {"balls": 2}},
+                {"name": "Lass Bud", "class": "LASS", "sprite": "ss_lass.png", "team": [16], "rewards": {"balls": 2}},
 
-                {"name": "Youngster Joey", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [19], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [20], "levels": [34]}, {"team": [20], "levels": [40]}, {"team": [20], "levels": [54], "gift": {"HP_UP": 1}}], "call": ["Hey, it's Joey! My Rattata's gotten way tougher. It's in the top percentage of Rattata, I swear! Come battle me on Route 30!"]}}
+                {"name": "Youngster Joey", "class": "YOUNGSTER", "sprite": "ss_youngster.png", "team": [19], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [20], "levels": [34]}, {"team": [20], "levels": [40]}, {"team": [20], "levels": [54], "gift": {"HP_UP": 1}}], "call": ["Hey, it's Joey! My Rattata's gotten way tougher. It's in the top percentage of Rattata, I swear! Come battle me on Route 30!"]}}
 
             ],
 
@@ -1889,13 +1889,13 @@
         
             "trainer_pool": [
         
-                {"name": "Bug Catcher Wade", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", "team": [10, 10, 13, 10], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [11, 12, 14, 11], "levels": [18, 29, 22, 18], "gift": {"ORAN_BERRY": 1}}, {"team": [12, 12, 15, 12], "levels": [28, 40, 37, 28], "gift": {"PECHA_BERRY": 1}}, {"team": [12, 12, 15, 12], "levels": [36, 52, 43, 36], "gift": {"SITRUS_BERRY": 1}}], "call": ["It's Wade! My bugs have been training hard on Route 31. Want to see? I've got a Berry for you too!"]}},
+                {"name": "Bug Catcher Wade", "class": "BUG_CATCHER", "sprite": "ss_bug_catcher.png", "team": [10, 10, 13, 10], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [11, 12, 14, 11], "levels": [18, 29, 22, 18], "gift": {"ORAN_BERRY": 1}}, {"team": [12, 12, 15, 12], "levels": [28, 40, 37, 28], "gift": {"PECHA_BERRY": 1}}, {"team": [12, 12, 15, 12], "levels": [36, 52, 43, 36], "gift": {"SITRUS_BERRY": 1}}], "call": ["It's Wade! My bugs have been training hard on Route 31. Want to see? I've got a Berry for you too!"]}},
         
-                {"name": "Youngster Ian", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [19], "rewards": {"balls": 2}},
+                {"name": "Youngster Ian", "class": "YOUNGSTER", "sprite": "ss_youngster.png", "team": [19], "rewards": {"balls": 2}},
         
-                {"name": "Lass Connie", "class": "LASS", "sprite": "lass.png", "team": [16, 187], "rewards": {"balls": 2}},
+                {"name": "Lass Connie", "class": "LASS", "sprite": "ss_lass.png", "team": [16, 187], "rewards": {"balls": 2}},
         
-                {"name": "Bug Catcher Anthony", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", "team": [10, 13], "rewards": {"balls": 2}}
+                {"name": "Bug Catcher Anthony", "class": "BUG_CATCHER", "sprite": "ss_bug_catcher.png", "team": [10, 13], "rewards": {"balls": 2}}
         
             ],
         
@@ -1959,21 +1959,21 @@
         
             "trainer_pool": [
         
-                {"name": "Youngster Albert", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [19, 41], "rewards": {"balls": 2}},
+                {"name": "Youngster Albert", "class": "YOUNGSTER", "sprite": "ss_youngster.png", "team": [19, 41], "rewards": {"balls": 2}},
         
-                {"name": "Picnicker Liz", "class": "PICNIKER", "sprite": "lass.png", "team": [29], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [70, 30], "levels": [35, 38]}, {"team": [70, 33, 31], "levels": [39, 38, 40]}, {"team": [71, 34, 31], "levels": [47, 58, 60]}], "call": ["Hi, it's Liz! I just had to call you! My Pokemon are so much stronger now. Battle me on Route 32?"]}},
+                {"name": "Picnicker Liz", "class": "PICNIKER", "sprite": "ss_picnicker.png", "team": [29], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [70, 30], "levels": [35, 38]}, {"team": [70, 33, 31], "levels": [39, 38, 40]}, {"team": [71, 34, 31], "levels": [47, 58, 60]}], "call": ["Hi, it's Liz! I just had to call you! My Pokemon are so much stronger now. Battle me on Route 32?"]}},
         
-                {"name": "Camper Roland", "class": "CAMPER", "sprite": "camper.png", "team": [32], "rewards": {"balls": 2}},
+                {"name": "Camper Roland", "class": "CAMPER", "sprite": "ss_camper.png", "team": [32], "rewards": {"balls": 2}},
         
-                {"name": "Fisherman Henry", "class": "FISHERMAN", "sprite": "fisherman.png", "team": [60, 60], "rewards": {"balls": 2}},
+                {"name": "Fisherman Henry", "class": "FISHERMAN", "sprite": "ss_fisherman.png", "team": [60, 60], "rewards": {"balls": 2}},
         
-                {"name": "Fisherman Justin", "class": "FISHERMAN", "sprite": "fisherman.png", "team": [129, 129, 129, 129], "rewards": {"balls": 2}},
+                {"name": "Fisherman Justin", "class": "FISHERMAN", "sprite": "ss_fisherman.png", "team": [129, 129, 129, 129], "rewards": {"balls": 2}},
         
-                {"name": "Fisherman Ralph", "class": "FISHERMAN", "sprite": "fisherman.png", "team": [118], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [119], "levels": [40]}, {"team": [211, 119], "levels": [45, 42]}, {"team": [211, 119], "levels": [53, 56]}], "call": ["Ralph here! The fish are biting and my team's in fine shape. Come test it on Route 32!"]}},
+                {"name": "Fisherman Ralph", "class": "FISHERMAN", "sprite": "ss_fisherman.png", "team": [118], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [119], "levels": [40]}, {"team": [211, 119], "levels": [45, 42]}, {"team": [211, 119], "levels": [53, 56]}], "call": ["Ralph here! The fish are biting and my team's in fine shape. Come test it on Route 32!"]}},
         
-                {"name": "Youngster Gordon", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [194], "rewards": {"balls": 2}},
+                {"name": "Youngster Gordon", "class": "YOUNGSTER", "sprite": "ss_youngster.png", "team": [194], "rewards": {"balls": 2}},
         
-                {"name": "Bird Keeper Peter", "class": "BIRD_KEEPER", "sprite": "bird_keeper.png", "team": [16, 16, 21], "rewards": {"balls": 2}}
+                {"name": "Bird Keeper Peter", "class": "BIRD_KEEPER", "sprite": "ss_bird_keeper.png", "team": [16, 16, 21], "rewards": {"balls": 2}}
         
             ],
         
@@ -2047,13 +2047,13 @@
         
             "trainer_pool": [
         
-                {"name": "Hiker Anthony", "class": "HIKER", "sprite": "hiker.png", "team": [74, 66], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [75, 67], "levels": [33, 32]}, {"team": [75, 75, 67], "levels": [37, 38, 40]}, {"team": [75, 76, 68], "levels": [41, 49, 55]}], "call": ["Anthony here! I've been climbing all day, and my Pokemon are tough as rock. Rematch on Route 33?"]}},
+                {"name": "Hiker Anthony", "class": "HIKER", "sprite": "ss_hiker.png", "team": [74, 66], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [75, 67], "levels": [33, 32]}, {"team": [75, 75, 67], "levels": [37, 38, 40]}, {"team": [75, 76, 68], "levels": [41, 49, 55]}], "call": ["Anthony here! I've been climbing all day, and my Pokemon are tough as rock. Rematch on Route 33?"]}},
         
-                {"name": "Picnicker Kim", "class": "PICNIKER", "sprite": "lass.png", "team": [187, 187], "rewards": {"balls": 2}},
+                {"name": "Picnicker Kim", "class": "PICNIKER", "sprite": "ss_picnicker.png", "team": [187, 187], "rewards": {"balls": 2}},
         
-                {"name": "Bug Catcher Al", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", "team": [10, 13, 11], "rewards": {"balls": 2}},
+                {"name": "Bug Catcher Al", "class": "BUG_CATCHER", "sprite": "ss_bug_catcher.png", "team": [10, 13, 11], "rewards": {"balls": 2}},
         
-                {"name": "Youngster Ben", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [19, 19], "rewards": {"balls": 2}}
+                {"name": "Youngster Ben", "class": "YOUNGSTER", "sprite": "ss_youngster.png", "team": [19, 19], "rewards": {"balls": 2}}
         
             ],
         
@@ -2105,23 +2105,23 @@
         
             "trainer_pool": [
         
-                {"name": "Youngster Ian", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [56, 50], "rewards": {"balls": 2}},
+                {"name": "Youngster Ian", "class": "YOUNGSTER", "sprite": "ss_youngster.png", "team": [56, 50], "rewards": {"balls": 2}},
         
-                {"name": "Picnicker Gina", "class": "PICNIKER", "sprite": "lass.png", "team": [187, 187, 1], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [187, 187, 2], "levels": [24, 24, 32]}, {"team": [188, 188, 2], "levels": [26, 26, 44], "gift": {"LEAF_STONE": 1}}, {"team": [188, 189, 3], "levels": [30, 36, 55]}], "call": ["Hi, it's Gina! My Pokemon grew so much. Battle me on Route 34? I have something for you, too!"]}},
+                {"name": "Picnicker Gina", "class": "PICNIKER", "sprite": "ss_picnicker.png", "team": [187, 187, 1], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [187, 187, 2], "levels": [24, 24, 32]}, {"team": [188, 188, 2], "levels": [26, 26, 44], "gift": {"LEAF_STONE": 1}}, {"team": [188, 189, 3], "levels": [30, 36, 55]}], "call": ["Hi, it's Gina! My Pokemon grew so much. Battle me on Route 34? I have something for you, too!"]}},
         
-                {"name": "Officer Keith", "class": "OFFICER", "sprite": "officer.png", "team": [58], "rewards": {"balls": 2}},
+                {"name": "Officer Keith", "class": "OFFICER", "sprite": "ss_policeman.png", "team": [58], "rewards": {"balls": 2}},
         
-                {"name": "Youngster Samuel", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [19, 27, 21, 21], "rewards": {"balls": 2}},
+                {"name": "Youngster Samuel", "class": "YOUNGSTER", "sprite": "ss_youngster.png", "team": [19, 27, 21, 21], "rewards": {"balls": 2}},
         
-                {"name": "Camper Todd", "class": "CAMPER", "sprite": "camper.png", "team": [54], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [74, 74, 54], "levels": [17, 17, 31]}, {"team": [74, 75, 55, 218], "levels": [23, 33, 36, 32]}, {"team": [75, 75, 219, 55], "levels": [36, 44, 54, 56]}], "call": ["It's Todd! My Pokemon and I trained in the wild. Come battle us on Route 34!"]}},
+                {"name": "Camper Todd", "class": "CAMPER", "sprite": "ss_camper.png", "team": [54], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [74, 74, 54], "levels": [17, 17, 31]}, {"team": [74, 75, 55, 218], "levels": [23, 33, 36, 32]}, {"team": [75, 75, 219, 55], "levels": [36, 44, 54, 56]}], "call": ["It's Todd! My Pokemon and I trained in the wild. Come battle us on Route 34!"]}},
         
-                {"name": "Pokéfan Brandon", "class": "POKEFAN", "sprite": "pokefan.png", "team": [209, 179], "rewards": {"balls": 2}},
+                {"name": "Pokéfan Brandon", "class": "POKEFAN", "sprite": "ss_pokefan_m.png", "team": [209, 179], "rewards": {"balls": 2}},
         
-                {"name": "Ace Trainer Irene", "class": "ACE_TRAINER", "sprite": "acetrainer_f.png", "team": [118, 119], "rewards": {"balls": 2}},
+                {"name": "Ace Trainer Irene", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_f.png", "team": [118, 119], "rewards": {"balls": 2}},
         
-                {"name": "Ace Trainer Jenn", "class": "ACE_TRAINER", "sprite": "acetrainer_f.png", "team": [120, 121], "rewards": {"balls": 2}},
+                {"name": "Ace Trainer Jenn", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_f.png", "team": [120, 121], "rewards": {"balls": 2}},
         
-                {"name": "Ace Trainer Kate", "class": "ACE_TRAINER", "sprite": "acetrainer_f.png", "team": [90, 91], "rewards": {"balls": 2, "POWER_HERB": 1}}
+                {"name": "Ace Trainer Kate", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_f.png", "team": [90, 91], "rewards": {"balls": 2, "POWER_HERB": 1}}
         
             ],
         
@@ -2181,23 +2181,23 @@
         
             "trainer_pool": [
         
-                {"name": "Picnicker Brooke", "class": "PICNIKER", "sprite": "picknicker.png", "team": [25], "rewards": {"balls": 2}},
+                {"name": "Picnicker Brooke", "class": "PICNIKER", "sprite": "ss_picnicker.png", "team": [25], "rewards": {"balls": 2}},
         
-                {"name": "Camper Ivan", "class": "CAMPER", "sprite": "camper.png", "team": [50, 41, 50], "rewards": {"balls": 2}},
+                {"name": "Camper Ivan", "class": "CAMPER", "sprite": "ss_camper.png", "team": [50, 41, 50], "rewards": {"balls": 2}},
         
-                {"name": "Bug Catcher Arnie", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", "team": [48], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [48], "levels": [36]}, {"team": [49], "levels": [43]}, {"team": [290, 49], "levels": [45, 56]}], "call": ["Arnie here! I caught a really neat bug on Route 35. Come see how strong my team's gotten!"]}},
+                {"name": "Bug Catcher Arnie", "class": "BUG_CATCHER", "sprite": "ss_bug_catcher.png", "team": [48], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [48], "levels": [36]}, {"team": [49], "levels": [43]}, {"team": [290, 49], "levels": [45, 56]}], "call": ["Arnie here! I caught a really neat bug on Route 35. Come see how strong my team's gotten!"]}},
         
-                {"name": "Firebreather Walt", "class": "FIREBREATHER", "sprite": "firebreather.png", "team": [126, 126], "rewards": {"balls": 2}},
+                {"name": "Firebreather Walt", "class": "FIREBREATHER", "sprite": "ss_firebreather.png", "team": [126, 126], "rewards": {"balls": 2}},
         
-                {"name": "Policeman Dirk", "class": "POLICEMAN", "sprite": "policeman.png", "team": [58, 58], "rewards": {"balls": 2}},
+                {"name": "Policeman Dirk", "class": "POLICEMAN", "sprite": "ss_policeman.png", "team": [58, 58], "rewards": {"balls": 2}},
         
-                {"name": "Picnicker Kim", "class": "PICNICKER", "sprite": "picnicker.png", "team": [37], "rewards": {"balls": 2}},
+                {"name": "Picnicker Kim", "class": "PICNICKER", "sprite": "ss_picnicker.png", "team": [37], "rewards": {"balls": 2}},
         
-                {"name": "Camper Elliot", "class": "CAMPER", "sprite": "camper.png", "team": [27, 183], "rewards": {"balls": 2}},
+                {"name": "Camper Elliot", "class": "CAMPER", "sprite": "ss_camper.png", "team": [27, 183], "rewards": {"balls": 2}},
         
-                {"name": "Juggler Irwin", "class": "JUGGLER", "sprite": "juggler.png", "team": [100, 100, 100, 100], "rewards": {"balls": 2}},
+                {"name": "Juggler Irwin", "class": "JUGGLER", "sprite": "ss_juggler.png", "team": [100, 100, 100, 100], "rewards": {"balls": 2}},
         
-                {"name": "Bird Keeper Bryan", "class": "BIRD_KEEPER", "sprite": "bird_keeper.png", "team": [16, 17], "rewards": {"balls": 2}}
+                {"name": "Bird Keeper Bryan", "class": "BIRD_KEEPER", "sprite": "ss_bird_keeper.png", "team": [16, 17], "rewards": {"balls": 2}}
         
             ],
         
@@ -2259,13 +2259,13 @@
         
             "trainer_pool": [
         
-                {"name": "Psychic Mark", "class": "PSYCHIC", "sprite": "psychic.png", "team": [63, 63, 64], "rewards": {"balls": 2}},
+                {"name": "Psychic Mark", "class": "PSYCHIC", "sprite": "ss_psychic.png", "team": [63, 63, 64], "rewards": {"balls": 2}},
         
-                {"name": "School Kid Alan", "class": "SCHOOL_KID", "sprite": "school_kid_m.png", "team": [114], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [114, 193], "levels": [32, 30], "gift": {"FIRE_STONE": 1}}, {"team": [178, 465, 195, 469], "levels": [32, 36, 32, 34]}, {"team": [178, 465, 195, 469], "levels": [47, 54, 47, 54]}], "call": ["It's Alan! I studied up on battling. Meet me on Route 36! Oh, and I found something for you."]}},
+                {"name": "School Kid Alan", "class": "SCHOOL_KID", "sprite": "ss_school_kid.png", "team": [114], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [114, 193], "levels": [32, 30], "gift": {"FIRE_STONE": 1}}, {"team": [178, 465, 195, 469], "levels": [32, 36, 32, 34]}, {"team": [178, 465, 195, 469], "levels": [47, 54, 47, 54]}], "call": ["It's Alan! I studied up on battling. Meet me on Route 36! Oh, and I found something for you."]}},
         
-                {"name": "Bug Catcher Ken", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", "team": [10, 11, 12], "rewards": {"balls": 2}},
+                {"name": "Bug Catcher Ken", "class": "BUG_CATCHER", "sprite": "ss_bug_catcher.png", "team": [10, 11, 12], "rewards": {"balls": 2}},
         
-                {"name": "Youngster Mikey", "class": "YOUNGSTER", "sprite": "youngster.png", "team": [19], "rewards": {"balls": 2}}
+                {"name": "Youngster Mikey", "class": "YOUNGSTER", "sprite": "ss_youngster.png", "team": [19], "rewards": {"balls": 2}}
         
             ],
         
@@ -2273,9 +2273,9 @@
         
             "min_rounds": 2,
         
-            "route_menu": [
+            "tree_pool": "JOHTO_ROUTE_TREE_PERCENTAGES", "route_menu": [
         
-                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE"},
         
                 {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
         
@@ -2327,15 +2327,15 @@
         
             "trainer_pool": [
         
-                {"name": "Psychic Greg", "class": "PSYCHIC", "sprite": "supernerd.png", "team": [96], "rewards": {"balls": 2}},
+                {"name": "Psychic Greg", "class": "PSYCHIC", "sprite": "ss_psychic.png", "team": [96], "rewards": {"balls": 2}},
         
-                {"battle_options": {"double": true}, "name": "Twins Ann & Anne", "class": "TWINS", "sprite": "twins.png", "team": [174, 174], "rewards": {"balls": 2}},
+                {"battle_options": {"double": true}, "name": "Twins Ann & Anne", "class": "TWINS", "sprite": "ss_twins.png", "team": [174, 174], "rewards": {"balls": 2}},
         
-                {"battle_options": {"double": true}, "name": "Twins Tori & Til", "class": "TWINS", "sprite": "twins.png", "team": [183, 179], "rewards": {"balls": 2}},
+                {"battle_options": {"double": true}, "name": "Twins Tori & Til", "class": "TWINS", "sprite": "ss_twins.png", "team": [183, 179], "rewards": {"balls": 2}},
         
-                {"name": "Beauty Callie", "class": "BEAUTY", "sprite": "beauty.png", "team": [36, 40], "rewards": {"balls": 2}},
+                {"name": "Beauty Callie", "class": "BEAUTY", "sprite": "ss_beauty.png", "team": [36, 40], "rewards": {"balls": 2}},
         
-                {"name": "Beauty Kassandra", "class": "BEAUTY", "sprite": "beauty.png", "team": [40, 36], "rewards": {"balls": 2}}
+                {"name": "Beauty Kassandra", "class": "BEAUTY", "sprite": "ss_beauty.png", "team": [40, 36], "rewards": {"balls": 2}}
         
             ],
         
@@ -2387,15 +2387,15 @@
             
             "trainer_pool": [
             
-                {"name": "Sailor Harry", "class": "SAILOR", "sprite": "sailor.png", "team": [194], "rewards": {"balls": 2}},
+                {"name": "Sailor Harry", "class": "SAILOR", "sprite": "ss_sailor.png", "team": [194], "rewards": {"balls": 2}},
             
-                {"name": "Lass Dana", "class": "LASS", "sprite": "lass.png", "team": [180, 54], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [180, 54], "levels": [32, 31], "gift": {"THUNDER_STONE": 1}}, {"team": [55, 181], "levels": [36, 38]}, {"team": [55, 181], "levels": [51, 54]}], "call": ["Hi, it's Dana! I've got a present for you, and my team's ready for a rematch. Route 38!"]}},
+                {"name": "Lass Dana", "class": "LASS", "sprite": "ss_lass.png", "team": [180, 54], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [180, 54], "levels": [32, 31], "gift": {"THUNDER_STONE": 1}}, {"team": [55, 181], "levels": [36, 38]}, {"team": [55, 181], "levels": [51, 54]}], "call": ["Hi, it's Dana! I've got a present for you, and my team's ready for a rematch. Route 38!"]}},
             
-                {"name": "Beauty Valerie", "class": "BEAUTY", "sprite": "beauty.png", "team": [187, 188], "rewards": {"balls": 2}},
+                {"name": "Beauty Valerie", "class": "BEAUTY", "sprite": "ss_beauty.png", "team": [187, 188], "rewards": {"balls": 2}},
             
-                {"name": "Bird Keeper Toby", "class": "BIRD_KEEPER", "sprite": "bird_keeper.png", "team": [84, 84, 84], "rewards": {"balls": 2}},
+                {"name": "Bird Keeper Toby", "class": "BIRD_KEEPER", "sprite": "ss_bird_keeper.png", "team": [84, 84, 84], "rewards": {"balls": 2}},
             
-                {"name": "School Kid Chad", "class": "SCHOOL_KID", "sprite": "school_kid_m.png", "team": [122], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [122, 81], "levels": [29, 30]}, {"team": [122, 82], "levels": [39, 38]}, {"team": [122, 82], "levels": [46, 56]}], "call": ["Chad here! I learned a new strategy in class. Let's battle on Route 38!"]}}
+                {"name": "School Kid Chad", "class": "SCHOOL_KID", "sprite": "ss_school_kid.png", "team": [122], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [122, 81], "levels": [29, 30]}, {"team": [122, 82], "levels": [39, 38]}, {"team": [122, 82], "levels": [46, 56]}], "call": ["Chad here! I learned a new strategy in class. Let's battle on Route 38!"]}}
             
             ],
             
@@ -2451,15 +2451,15 @@
         
             "trainer_pool": [
         
-                {"name": "Psychic Norman", "class": "PSYCHIC", "sprite": "supernerd.png", "team": [79, 80], "rewards": {"balls": 2}},
+                {"name": "Psychic Norman", "class": "PSYCHIC", "sprite": "ss_psychic.png", "team": [79, 80], "rewards": {"balls": 2}},
         
-                {"name": "Sailor Eugene", "class": "SAILOR", "sprite": "sailor.png", "team": [61, 20, 98], "rewards": {"balls": 2}},
+                {"name": "Sailor Eugene", "class": "SAILOR", "sprite": "ss_sailor.png", "team": [61, 20, 98], "rewards": {"balls": 2}},
         
-                {"name": "Pokefan Derek", "class": "POKEFAN", "sprite": "pokefan.png", "team": [25], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [216, 25], "levels": [24, 30], "gift": {"NUGGET": 1}}, {"team": [172, 216, 25, 216], "levels": [13, 15, 37, 29]}, {"team": [172, 216, 25, 217], "levels": [18, 22, 39, 47]}], "call": ["It's Derek! My Pikachu is the cutest ever. I found something shiny for you - come to Route 39!"]}},
+                {"name": "Pokefan Derek", "class": "POKEFAN", "sprite": "ss_pokefan_m.png", "team": [25], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [216, 25], "levels": [24, 30], "gift": {"NUGGET": 1}}, {"team": [172, 216, 25, 216], "levels": [13, 15, 37, 29]}, {"team": [172, 216, 25, 217], "levels": [18, 22, 39, 47]}], "call": ["It's Derek! My Pikachu is the cutest ever. I found something shiny for you - come to Route 39!"]}},
         
-                {"name": "Pokefan Ruth", "class": "POKEFAN", "sprite": "pokefan.png", "team": [25], "rewards": {"balls": 2}},
+                {"name": "Pokefan Ruth", "class": "POKEFAN", "sprite": "ss_pokefan_m.png", "team": [25], "rewards": {"balls": 2}},
         
-                {"name": "Psychic Nelson", "class": "PSYCHIC", "sprite": "psychic.png", "team": [79, 79], "rewards": {"balls": 2}}
+                {"name": "Psychic Nelson", "class": "PSYCHIC", "sprite": "ss_psychic.png", "team": [79, 79], "rewards": {"balls": 2}}
         
             ],
         
@@ -2525,13 +2525,13 @@
         
             "trainer_pool": [
         
-                {"name": "Swimmer Simon", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [72, 72], "rewards": {"balls": 2}},
+                {"name": "Swimmer Simon", "class": "SWIMMER", "sprite": "ss_swimmer_m.png", "team": [72, 72], "rewards": {"balls": 2}},
         
-                {"name": "Swimmer Elaine", "class": "SWIMMER", "sprite": "swimmer_f.png", "team": [120], "rewards": {"balls": 2}},
+                {"name": "Swimmer Elaine", "class": "SWIMMER", "sprite": "ss_swimmer_f.png", "team": [120], "rewards": {"balls": 2}},
         
-                {"name": "Swimmer Paula", "class": "SWIMMER", "sprite": "swimmer_f.png", "team": [120, 90], "rewards": {"balls": 2}},
+                {"name": "Swimmer Paula", "class": "SWIMMER", "sprite": "ss_swimmer_f.png", "team": [120, 90], "rewards": {"balls": 2}},
         
-                {"name": "Swimmer Randall", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [90, 8, 90], "rewards": {"balls": 2}}
+                {"name": "Swimmer Randall", "class": "SWIMMER", "sprite": "ss_swimmer_m.png", "team": [90, 8, 90], "rewards": {"balls": 2}}
         
             ],
         
@@ -2579,27 +2579,27 @@
         
             "trainer_pool": [
         
-                {"name": "Swimmer George", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [72, 72, 72, 120, 72, 223], "rewards": {"balls": 2}},
+                {"name": "Swimmer George", "class": "SWIMMER", "sprite": "ss_swimmer_m.png", "team": [72, 72, 72, 120, 72, 223], "rewards": {"balls": 2}},
         
-                {"name": "Swimmer Berke", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [211], "rewards": {"balls": 2}},
+                {"name": "Swimmer Berke", "class": "SWIMMER", "sprite": "ss_swimmer_m.png", "team": [211], "rewards": {"balls": 2}},
         
-                {"name": "Swimmer Kirk", "class": "SWIMMER", "sprite": "swimmer_m.png", "team": [130], "rewards": {"balls": 2}},
+                {"name": "Swimmer Kirk", "class": "SWIMMER", "sprite": "ss_swimmer_m.png", "team": [130], "rewards": {"balls": 2}},
         
-                {"name": "Swimmer Kaylee", "class": "SWIMMER", "sprite": "swimmer_f.png", "team": [118, 118, 119], "rewards": {"balls": 2}},
+                {"name": "Swimmer Kaylee", "class": "SWIMMER", "sprite": "ss_swimmer_f.png", "team": [118, 118, 119], "rewards": {"balls": 2}},
         
-                {"name": "Swimmer Charlie", "class": "SWIMMER", "sprite": "swimmer.png", "team": [90, 72, 73], "rewards": {"balls": 2}},
+                {"name": "Swimmer Charlie", "class": "SWIMMER", "sprite": "ss_swimmer_m.png", "team": [90, 72, 73], "rewards": {"balls": 2}},
         
-                {"name": "Swimmer Matthew", "class": "SWIMMER", "sprite": "swimmer.png", "team": [98], "rewards": {"balls": 2}},
+                {"name": "Swimmer Matthew", "class": "SWIMMER", "sprite": "ss_swimmer_m.png", "team": [98], "rewards": {"balls": 2}},
         
-                {"name": "Swimmer Ronald", "class": "SWIMMER", "sprite": "swimmer.png", "team": [130, 130], "rewards": {"balls": 2}},
+                {"name": "Swimmer Ronald", "class": "SWIMMER", "sprite": "ss_swimmer_m.png", "team": [130, 130], "rewards": {"balls": 2}},
         
-                {"name": "Swimmer Susie", "class": "SWIMMER", "sprite": "swimmer.png", "team": [54, 118], "rewards": {"balls": 2}},
+                {"name": "Swimmer Susie", "class": "SWIMMER", "sprite": "ss_swimmer_m.png", "team": [54, 118], "rewards": {"balls": 2}},
         
-                {"name": "Swimmer Denise", "class": "SWIMMER", "sprite": "swimmer.png", "team": [86], "rewards": {"balls": 2}},
+                {"name": "Swimmer Denise", "class": "SWIMMER", "sprite": "ss_swimmer_m.png", "team": [86], "rewards": {"balls": 2}},
         
-                {"name": "Swimmer Kara", "class": "SWIMMER", "sprite": "swimmer.png", "team": [120, 121], "rewards": {"balls": 2}},
+                {"name": "Swimmer Kara", "class": "SWIMMER", "sprite": "ss_swimmer_m.png", "team": [120, 121], "rewards": {"balls": 2}},
         
-                {"name": "Swimmer Wendy", "class": "SWIMMER", "sprite": "swimmer.png", "team": [116, 116], "rewards": {"balls": 2}}
+                {"name": "Swimmer Wendy", "class": "SWIMMER", "sprite": "ss_swimmer_m.png", "team": [116, 116], "rewards": {"balls": 2}}
         
             ],
         
@@ -2649,15 +2649,11 @@
         
             "trainer_pool": [
         
-                {"name": "Fisherman Chris", "class": "FISHERMAN", "sprite": "fisherman.png", "team": [211], "rewards": {"balls": 2}},
+                {"name": "Hiker Benjamin", "class": "HIKER", "sprite": "ss_hiker.png", "team": [50, 74, 51], "rewards": {"balls": 2}},
         
-                {"name": "Hiker Benjamin", "class": "HIKER", "sprite": "hiker.png", "team": [50, 74, 51], "rewards": {"balls": 2}},
+                {"name": "Poke Maniac Shane", "class": "POKEMANIAC", "sprite": "ss_poke_maniac.png", "team": [30, 33], "rewards": {"balls": 2}},
         
-                {"name": "Poke Maniac Shane", "class": "POKEMANIAC", "sprite": "supernerd.png", "team": [30, 33], "rewards": {"balls": 2}},
-        
-                {"name": "Hiker Anthony", "class": "HIKER", "sprite": "hiker.png", "team": [74, 75], "rewards": {"balls": 2}},
-        
-                {"name": "Fisherman Tully", "class": "FISHERMAN", "sprite": "fisherman.png", "team": [211], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [211], "levels": [33], "gift": {"WATER_STONE": 1}}, {"team": [118, 118, 211], "levels": [30, 30, 38]}, {"team": [119, 119, 211], "levels": [41, 50, 53]}], "call": ["Tully here! I fished up something odd for you, and my team's in top form. Route 42!"]}}
+                {"name": "Fisherman Tully", "class": "FISHERMAN", "sprite": "ss_fisherman.png", "team": [211], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [211], "levels": [33], "gift": {"WATER_STONE": 1}}, {"team": [118, 118, 211], "levels": [30, 30, 38]}, {"team": [119, 119, 211], "levels": [41, 50, 53]}], "call": ["Tully here! I fished up something odd for you, and my team's in top form. Route 42!"]}}
         
             ],
         
@@ -2723,23 +2719,21 @@
         
             "trainer_pool": [
         
-                {"name": "Picnicker Tiffany", "class": "PICNIKER", "sprite": "lass.png", "team": [35], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [35], "levels": [34], "gift": {"POKE_DOLL": 1}}, {"team": [36], "levels": [41]}, {"team": [36], "levels": [61]}], "call": ["Hi, it's Tiffany! My Clefairy's so strong now. I have a little gift for you too. Route 43!"]}},
+                {"name": "Picnicker Tiffany", "class": "PICNIKER", "sprite": "ss_picnicker.png", "team": [35], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [35], "levels": [34], "gift": {"POKE_DOLL": 1}}, {"team": [36], "levels": [41]}, {"team": [36], "levels": [61]}], "call": ["Hi, it's Tiffany! My Clefairy's so strong now. I have a little gift for you too. Route 43!"]}},
         
-                {"name": "Camper Spencer", "class": "YOUNGSTER", "sprite": "camper.png", "team": [27, 28, 41], "rewards": {"balls": 2}},
+                {"name": "Camper Spencer", "class": "YOUNGSTER", "sprite": "ss_youngster.png", "team": [27, 28, 41], "rewards": {"balls": 2}},
         
-                {"name": "Pokemaniac Brent", "class": "POKEMANIAC", "sprite": "supernerd.png", "team": [30, 33], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [30, 33, 130], "levels": [32, 34, 32]}, {"team": [130, 108, 30, 33], "levels": [41, 38, 38, 43]}, {"team": [130, 108, 31, 34], "levels": [48, 40, 58, 58]}], "call": ["It's Brent! I've added rare Pokemon to my team. Come battle me on Route 43!"]}},
+                {"name": "Pokemaniac Brent", "class": "POKEMANIAC", "sprite": "ss_poke_maniac.png", "team": [30, 33], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [30, 33, 130], "levels": [32, 34, 32]}, {"team": [130, 108, 30, 33], "levels": [41, 38, 38, 43]}, {"team": [130, 108, 31, 34], "levels": [48, 40, 58, 58]}], "call": ["It's Brent! I've added rare Pokemon to my team. Come battle me on Route 43!"]}},
         
-                {"name": "Pokemaniac Ron", "class": "POKEMANIAC", "sprite": "supernerd.png", "team": [147], "rewards": {"balls": 2}},
+                {"name": "Pokemaniac Beckett", "class": "POKEMANIAC", "sprite": "ss_poke_maniac.png", "team": [80], "rewards": {"balls": 2}},
         
-                {"name": "Pokemaniac Beckett", "class": "POKEMANIAC", "sprite": "supernerd.png", "team": [80], "rewards": {"balls": 2}},
+                {"name": "Fisherman Marvin", "class": "FISHERMAN", "sprite": "ss_fisherman.png", "team": [129, 130, 129], "rewards": {"balls": 2}},
         
-                {"name": "Fisherman Marvin", "class": "FISHERMAN", "sprite": "fisherman.png", "team": [129, 130, 129], "rewards": {"balls": 2}},
+                {"name": "Rocket Grunt Kip", "class": "ROCKET", "sprite": "ss_rocket_grunt_m.png", "team": [109, 20], "rewards": {"balls": 2}, "gone_flag": "rocket_hq_cleared", "dialogue": {"intro": ["Hold it, kid! Lena, watch this!", "One more win and you'll see I'm Executive material!"], "player_won": ["N-not in front of Lena...!"], "player_lost": ["Did you see that, Lena? Did you?"]}},
         
-                {"name": "Rocket Grunt Kip", "class": "ROCKET", "sprite": "rocket_grunt_m.png", "team": [109, 20], "rewards": {"balls": 2}, "gone_flag": "rocket_hq_cleared", "dialogue": {"intro": ["Hold it, kid! Lena, watch this!", "One more win and you'll see I'm Executive material!"], "player_won": ["N-not in front of Lena...!"], "player_lost": ["Did you see that, Lena? Did you?"]}},
+                {"name": "Rocket Grunt Lena", "class": "ROCKET", "sprite": "ss_rocket_grunt_f.png", "team": [24, 41], "rewards": {"balls": 2}, "gone_flag": "rocket_hq_cleared", "dialogue": {"intro": ["Kip has been showing off all day.", "Step aside. I'll show you how it's really done!"], "player_won": ["Fine. At least I lost with style. Unlike Kip."], "player_lost": ["See, Kip? That's how a real Rocket battles."]}},
         
-                {"name": "Rocket Grunt Lena", "class": "ROCKET", "sprite": "rocket_grunt_f.png", "team": [24, 41], "rewards": {"balls": 2}, "gone_flag": "rocket_hq_cleared", "dialogue": {"intro": ["Kip has been showing off all day.", "Step aside. I'll show you how it's really done!"], "player_won": ["Fine. At least I lost with style. Unlike Kip."], "player_lost": ["See, Kip? That's how a real Rocket battles."]}},
-        
-                {"name": "Poké Maniac Ron", "class": "POKE_MANIAC", "sprite": "poke_maniac.png", "team": [34], "rewards": {"balls": 2}}
+                {"name": "Poké Maniac Ron", "class": "POKE_MANIAC", "sprite": "ss_poke_maniac.png", "team": [34], "rewards": {"balls": 2}}
         
             ],
         
@@ -2792,17 +2786,13 @@
         
             "trainer_pool": [
         
-                {"name": "Fisherman Raymond", "class": "FISHERMAN", "sprite": "fisherman.png", "team": [129, 129, 129, 129], "rewards": {"balls": 2}},
+                {"name": "Fisherman Raymond", "class": "FISHERMAN", "sprite": "ss_fisherman.png", "team": [129, 129, 129, 129], "rewards": {"balls": 2}},
         
-                {"name": "Fisherman Andre", "class": "FISHERMAN", "sprite": "fisherman.png", "team": [130], "rewards": {"balls": 2}},
+                {"name": "Fisherman Andre", "class": "FISHERMAN", "sprite": "ss_fisherman.png", "team": [130], "rewards": {"balls": 2}},
         
-                {"name": "Cooltrainer Lois", "class": "COOLTRAINER", "sprite": "acetrainer_f.png", "team": [188, 38], "rewards": {"balls": 2}},
+                {"name": "Ace Trainer Alton", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_m.png", "team": [2, 5, 8], "rewards": {"balls": 2}},
         
-                {"name": "Cooltrainer Aaron", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "team": [2, 5, 8], "rewards": {"balls": 2}},
-        
-                {"name": "Ace Trainer Alton", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "team": [2, 5, 8], "rewards": {"balls": 2}},
-        
-                {"name": "Ace Trainer Lois", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "team": [179, 38], "rewards": {"balls": 2}}
+                {"name": "Ace Trainer Lois", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_m.png", "team": [179, 38], "rewards": {"balls": 2}}
         
             ],
         
@@ -2858,23 +2848,19 @@
 
             "trainer_pool": [
 
-                {"name": "Psychic Phil", "class": "PSYCHIC", "sprite": "psychic.png", "team": [177, 64], "rewards": {"balls": 2}},
+                {"name": "Psychic Phil", "class": "PSYCHIC", "sprite": "ss_psychic.png", "team": [177, 64], "rewards": {"balls": 2}},
 
-                {"name": "Fisherman Wilton", "class": "FISHERMAN", "sprite": "fisherman.png", "team": [118, 118, 119], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [118, 118, 119], "levels": [32, 32, 36], "gift": {"balls": 1}}, {"team": [118, 119, 119], "levels": [32, 36, 40], "gift": {"GREAT_BALL": 1}}, {"team": [119, 119, 119], "levels": [42, 46, 63], "gift": {"ULTRA_BALL": 1}}], "call": ["It's Wilton! I found a ball while fishing. Come battle me on Route 44 and it's yours!"]}},
+                {"name": "Fisherman Wilton", "class": "FISHERMAN", "sprite": "ss_fisherman.png", "team": [118, 118, 119], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [118, 118, 119], "levels": [32, 32, 36], "gift": {"balls": 1}}, {"team": [118, 119, 119], "levels": [32, 36, 40], "gift": {"GREAT_BALL": 1}}, {"team": [119, 119, 119], "levels": [42, 46, 63], "gift": {"ULTRA_BALL": 1}}], "call": ["It's Wilton! I found a ball while fishing. Come battle me on Route 44 and it's yours!"]}},
 
-                {"name": "Cooltrainer Allen", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "team": [147, 148, 6], "rewards": {"balls": 2}},
+                {"name": "Fisherman Edgar", "class": "FISHERMAN", "sprite": "ss_fisherman.png", "team": [223, 223], "rewards": {"balls": 2}},
 
-                {"name": "Cooltrainer Cybil", "class": "COOLTRAINER", "sprite": "acetrainer_f.png", "team": [124, 38, 130], "rewards": {"balls": 2}},
+                {"name": "Pokemaniac Zach", "class": "POKEMANIAC", "sprite": "ss_poke_maniac.png", "team": [111], "rewards": {"balls": 2}},
 
-                {"name": "Fisherman Edgar", "class": "FISHERMAN", "sprite": "fisherman.png", "team": [223, 223], "rewards": {"balls": 2}},
+                {"name": "Bird Keeper Vance", "class": "BIRD_KEEPER", "sprite": "ss_bird_keeper.png", "team": [163, 17], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [163, 17], "levels": [33, 32]}, {"team": [17, 18, 164], "levels": [37, 38, 42], "gift": {"CARBOS": 1}}, {"team": [18, 18, 164], "levels": [56, 44, 54]}], "call": ["Vance here! My birds are flying higher than ever. Rematch on Route 44?"]}},
 
-                {"name": "Pokemaniac Zach", "class": "POKEMANIAC", "sprite": "supernerd.png", "team": [111], "rewards": {"balls": 2}},
+                {"name": "Ace Trainer Cybil", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_m.png", "team": [179, 182], "rewards": {"balls": 2}},
 
-                {"name": "Bird Keeper Vance", "class": "BIRD_KEEPER", "sprite": "bird_keeper.png", "team": [163, 17], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [163, 17], "levels": [33, 32]}, {"team": [17, 18, 164], "levels": [37, 38, 42], "gift": {"CARBOS": 1}}, {"team": [18, 18, 164], "levels": [56, 44, 54]}], "call": ["Vance here! My birds are flying higher than ever. Rematch on Route 44?"]}},
-
-                {"name": "Ace Trainer Cybil", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "team": [179, 182], "rewards": {"balls": 2}},
-
-                {"name": "Ace Trainer Allen", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "team": [5, 81], "rewards": {"balls": 2}}
+                {"name": "Ace Trainer Allen", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_m.png", "team": [5, 81], "rewards": {"balls": 2}}
 
             ],
 
@@ -2928,23 +2914,19 @@
         
             "trainer_pool": [
         
-                {"name": "Hiker Erik", "class": "HIKER", "sprite": "hiker.png", "team": [66, 75, 66], "rewards": {"balls": 2}},
+                {"name": "Hiker Erik", "class": "HIKER", "sprite": "ss_hiker.png", "team": [66, 75, 66], "rewards": {"balls": 2}},
         
-                {"name": "Hiker Michael", "class": "HIKER", "sprite": "hiker.png", "team": [74, 75, 76], "rewards": {"balls": 2}},
+                {"name": "Hiker Michael", "class": "HIKER", "sprite": "ss_hiker.png", "team": [74, 75, 76], "rewards": {"balls": 2}},
         
-                {"name": "Hiker Parry", "class": "HIKER", "sprite": "hiker.png", "team": [95], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [95, 75], "levels": [38, 35]}, {"team": [208, 75], "levels": [41, 37], "gift": {"IRON": 1}}, {"team": [208, 76], "levels": [56, 52]}], "call": ["Parry here! I'm all fired up! Battle me on Route 45!"]}},
+                {"name": "Hiker Parry", "class": "HIKER", "sprite": "ss_hiker.png", "team": [95], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [95, 75], "levels": [38, 35]}, {"team": [208, 75], "levels": [41, 37], "gift": {"IRON": 1}}, {"team": [208, 76], "levels": [56, 52]}], "call": ["Parry here! I'm all fired up! Battle me on Route 45!"]}},
         
-                {"name": "Blackbelt Kenji", "class": "BLACKBELT", "sprite": "blackbelt.png", "team": [67], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [95, 106, 95, 67], "levels": [27, 32, 27, 32], "gift": {"PP_UP": 1}}, {"team": [95, 68, 95, 106], "levels": [30, 37, 33, 41]}, {"team": [95, 68, 95, 106], "levels": [41, 53, 49, 53]}], "call": ["Kenji here! My training's done. Come face me on Route 45!"]}},
+                {"name": "Blackbelt Kenji", "class": "BLACKBELT", "sprite": "ss_black_belt.png", "team": [67], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [95, 106, 95, 67], "levels": [27, 32, 27, 32], "gift": {"PP_UP": 1}}, {"team": [95, 68, 95, 106], "levels": [30, 37, 33, 41]}, {"team": [95, 68, 95, 106], "levels": [41, 53, 49, 53]}], "call": ["Kenji here! My training's done. Come face me on Route 45!"]}},
         
-                {"name": "Hiker Timothy", "class": "HIKER", "sprite": "hiker.png", "team": [50, 51], "rewards": {"balls": 2}},
+                {"name": "Hiker Timothy", "class": "HIKER", "sprite": "ss_hiker.png", "team": [50, 51], "rewards": {"balls": 2}},
         
-                {"name": "Cooltrainer Kelly", "class": "COOLTRAINER", "sprite": "acetrainer_f.png", "team": [183, 8, 8], "rewards": {"balls": 2}},
+                {"name": "Ace Trainer Ryan", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_m.png", "team": [18, 125], "rewards": {"balls": 2}},
         
-                {"name": "Cooltrainer Ryan", "class": "COOLTRAINER", "sprite": "acetrainer_m.png", "team": [18, 125], "rewards": {"balls": 2}},
-        
-                {"name": "Ace Trainer Ryan", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "team": [18, 125], "rewards": {"balls": 2}},
-        
-                {"name": "Ace Trainer Kelly", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "team": [183, 8, 8], "rewards": {"balls": 2}}
+                {"name": "Ace Trainer Kelly", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_m.png", "team": [183, 8, 8], "rewards": {"balls": 2}}
         
             ],
         
@@ -3010,13 +2992,13 @@
         
             "trainer_pool": [
         
-                {"name": "Hiker Bailey", "class": "HIKER", "sprite": "hiker.png", "team": [74, 74, 74, 74, 74], "rewards": {"balls": 2}},
+                {"name": "Hiker Bailey", "class": "HIKER", "sprite": "ss_hiker.png", "team": [74, 74, 74, 74, 74], "rewards": {"balls": 2}},
         
-                {"name": "Camper Ted", "class": "CAMPER", "sprite": "camper.png", "team": [56], "rewards": {"balls": 2}},
+                {"name": "Camper Ted", "class": "CAMPER", "sprite": "ss_camper.png", "team": [56], "rewards": {"balls": 2}},
         
-                {"name": "Picnicker Erin", "class": "PICNIKER", "sprite": "lass.png", "team": [77, 43], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [44, 78], "levels": [32, 41]}, {"team": [182, 192, 78], "levels": [46, 39, 48], "gift": {"CALCIUM": 1}}, {"team": [421, 192, 182, 78], "levels": [42, 46, 49, 53]}], "call": ["Hi, it's Erin! My Pokemon want a rematch. Come to Route 46!"]}},
+                {"name": "Picnicker Erin", "class": "PICNIKER", "sprite": "ss_picnicker.png", "team": [77, 43], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [44, 78], "levels": [32, 41]}, {"team": [182, 192, 78], "levels": [46, 39, 48], "gift": {"CALCIUM": 1}}, {"team": [421, 192, 182, 78], "levels": [42, 46, 49, 53]}], "call": ["Hi, it's Erin! My Pokemon want a rematch. Come to Route 46!"]}},
         
-                {"name": "Hiker Michael", "class": "HIKER", "sprite": "hiker.png", "team": [74, 75], "rewards": {"balls": 2}}
+                {"name": "Hiker Michael", "class": "HIKER", "sprite": "ss_hiker.png", "team": [74, 75], "rewards": {"balls": 2}}
         
             ],
         
@@ -3069,29 +3051,29 @@
 
             "trainer_pool": [
 
-                {"name": "Hiker Daniel", "class": "HIKER", "sprite": "hiker.png", "team": [95], "rewards": {"balls": 2}},
+                {"name": "Hiker Daniel", "class": "HIKER", "sprite": "ss_hiker.png", "team": [95], "rewards": {"balls": 2}},
 
-                {"name": "Hiker Russell", "class": "HIKER", "sprite": "hiker.png", "team": [74, 74, 74], "rewards": {"balls": 2}},
+                {"name": "Hiker Russell", "class": "HIKER", "sprite": "ss_hiker.png", "team": [74, 74, 74], "rewards": {"balls": 2}},
 
-                {"name": "Hiker Phillip", "class": "HIKER", "sprite": "hiker.png", "team": [74, 75], "rewards": {"balls": 2}},
+                {"name": "Hiker Phillip", "class": "HIKER", "sprite": "ss_hiker.png", "team": [74, 75], "rewards": {"balls": 2}},
 
-                {"name": "Firebreather Bill", "class": "FIREBREATHER", "sprite": "firebreather.png", "team": [109, 109], "rewards": {"balls": 2}},
+                {"name": "Firebreather Bill", "class": "FIREBREATHER", "sprite": "ss_firebreather.png", "team": [109, 109], "rewards": {"balls": 2}},
 
-                {"name": "Hiker Leonard", "class": "HIKER", "sprite": "hiker.png", "team": [74, 66], "rewards": {"balls": 2}},
+                {"name": "Hiker Leonard", "class": "HIKER", "sprite": "ss_hiker.png", "team": [74, 66], "rewards": {"balls": 2}},
 
-                {"name": "Firebreather Ray", "class": "FIREBREATHER", "sprite": "firebreather.png", "team": [37], "rewards": {"balls": 2}},
+                {"name": "Firebreather Ray", "class": "FIREBREATHER", "sprite": "ss_firebreather.png", "team": [37], "rewards": {"balls": 2}},
 
-                {"name": "Pokemaniac Larry", "class": "POKEMANIAC", "sprite": "pokemaniac.png", "team": [79], "rewards": {"balls": 2}},
+                {"name": "Pokemaniac Larry", "class": "POKEMANIAC", "sprite": "ss_poke_maniac.png", "team": [79], "rewards": {"balls": 2}},
 
-                {"name": "Pokemaniac Andrew", "class": "POKEMANIAC", "sprite": "pokemaniac.png", "team": [105, 105], "rewards": {"balls": 2}},
+                {"name": "Pokemaniac Andrew", "class": "POKEMANIAC", "sprite": "ss_poke_maniac.png", "team": [105, 105], "rewards": {"balls": 2}},
 
-                {"name": "Pokemaniac Calvin", "class": "POKEMANIAC", "sprite": "pokemaniac.png", "team": [115], "rewards": {"balls": 2}},
+                {"name": "Pokemaniac Calvin", "class": "POKEMANIAC", "sprite": "ss_poke_maniac.png", "team": [115], "rewards": {"balls": 2}},
 
-                {"name": "Ace Trainer Nick", "class": "ACE_TRAINER", "sprite": "acetrainer_m.png", "team": [4, 7, 1], "rewards": {"balls": 2}},
+                {"name": "Ace Trainer Nick", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_m.png", "team": [4, 7, 1], "rewards": {"balls": 2}},
 
-                {"name": "Ace Trainer Gwen", "class": "ACE_TRAINER", "sprite": "acetrainer_f.png", "team": [133, 136, 134, 135], "rewards": {"balls": 2}},
+                {"name": "Ace Trainer Gwen", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_f.png", "team": [133, 136, 134, 135], "rewards": {"balls": 2}},
 
-                {"name": "Ace Trainer Emma", "class": "ACE_TRAINER", "sprite": "acetrainer_f.png", "team": [61], "rewards": {"balls": 2}}
+                {"name": "Ace Trainer Emma", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_f.png", "team": [61], "rewards": {"balls": 2}}
 
             ],
 
@@ -3158,13 +3140,13 @@
         
             "trainer_pool": [
         
-                {"name": "Hiker Kenny", "class": "HIKER", "sprite": "hiker.png", "team": [74, 74, 75], "rewards": {"balls": 2}},
+                {"name": "Hiker Kenny", "class": "HIKER", "sprite": "ss_hiker.png", "team": [74, 74, 75], "rewards": {"balls": 2}},
         
-                {"name": "Hiker Jim", "class": "HIKER", "sprite": "hiker.png", "team": [74, 66], "rewards": {"balls": 2}},
+                {"name": "Hiker Jim", "class": "HIKER", "sprite": "ss_hiker.png", "team": [74, 66], "rewards": {"balls": 2}},
         
-                {"name": "Hiker Wayne", "class": "HIKER", "sprite": "hiker.png", "team": [74, 74], "rewards": {"balls": 2}},
+                {"name": "Hiker Wayne", "class": "HIKER", "sprite": "ss_hiker.png", "team": [74, 74], "rewards": {"balls": 2}},
         
-                {"name": "Hiker Anthony", "class": "HIKER", "sprite": "hiker.png", "team": [74], "rewards": {"balls": 2}}
+                {"name": "Hiker Anthony", "class": "HIKER", "sprite": "ss_hiker.png", "team": [74], "rewards": {"balls": 2}}
         
             ],
         
@@ -3229,13 +3211,13 @@
         
             "trainer_pool": [
         
-                {"name": "Rocket Grunt", "class": "ROCKET", "sprite": "rocket_grunt_m.png", "team": [19, 19], "rewards": {"balls": 2}, "dialogue": {"intro": ["Cutting off tails? It's just business!", "Team Rocket is back!"], "player_won": ["Ouch! My business plan!"], "player_lost": ["Hand over your PKMN!"]}},
+                {"name": "Rocket Grunt", "class": "ROCKET", "sprite": "ss_rocket_grunt_m.png", "team": [19, 19], "rewards": {"balls": 2}, "dialogue": {"intro": ["Cutting off tails? It's just business!", "Team Rocket is back!"], "player_won": ["Ouch! My business plan!"], "player_lost": ["Hand over your PKMN!"]}},
         
-                {"name": "Rocket Grunt", "class": "ROCKET", "sprite": "rocket_grunt_f.png", "team": [19, 41, 41], "rewards": {"balls": 2}, "dialogue": {"intro": ["You're meddling in things you don't understand!", "Don't get in our way!"], "player_won": ["I'll tell the boss about you!"], "player_lost": ["Too easy!"]}},
+                {"name": "Rocket Grunt", "class": "ROCKET", "sprite": "ss_rocket_grunt_f.png", "team": [19, 41, 41], "rewards": {"balls": 2}, "dialogue": {"intro": ["You're meddling in things you don't understand!", "Don't get in our way!"], "player_won": ["I'll tell the boss about you!"], "player_lost": ["Too easy!"]}},
         
-                {"name": "Rocket Grunt", "class": "ROCKET", "sprite": "rocket_grunt_m.png", "team": [41, 23], "rewards": {"balls": 2}, "dialogue": {"intro": ["I'm the strongest grunt in the well!", "Prepare for trouble!"], "player_won": ["I failed the team..."], "player_lost": ["Back to the surface with you!"]}},
+                {"name": "Rocket Grunt", "class": "ROCKET", "sprite": "ss_rocket_grunt_m.png", "team": [41, 23], "rewards": {"balls": 2}, "dialogue": {"intro": ["I'm the strongest grunt in the well!", "Prepare for trouble!"], "player_won": ["I failed the team..."], "player_lost": ["Back to the surface with you!"]}},
         
-                {"name": "Executive Proton", "class": "ROCKET", "sprite": "proton.png", "team": [41, 109], "rewards": {"balls": 5, "RARE_CANDY": 1}, "victory_flag": "slowpoke_well_cleared", "dialogue": {"intro": ["I am Proton, the scariest of the Rocket Executives!", "You think your math can stop us?", "I'll show you the true meaning of pain!"], "player_won": ["Grr... we don't need these tails anyway!", "Team Rocket will return!"], "player_lost": ["Ha! Your math skills are as weak as these Slowpoke!"]}}
+                {"name": "Executive Proton", "class": "ROCKET", "sprite": "ss_proton.png", "team": [41, 109], "rewards": {"balls": 5, "RARE_CANDY": 1}, "victory_flag": "slowpoke_well_cleared", "dialogue": {"intro": ["I am Proton, the scariest of the Rocket Executives!", "You think your math can stop us?", "I'll show you the true meaning of pain!"], "player_won": ["Grr... we don't need these tails anyway!", "Team Rocket will return!"], "player_lost": ["Ha! Your math skills are as weak as these Slowpoke!"]}}
         
             ],
         
@@ -3294,17 +3276,11 @@
         
             "trainer_pool": [
         
-                {"name": "Bug Catcher Wayne", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", "team": [165, 165, 167], "rewards": {"balls": 3}, "dialogue": {"intro": ["The trees are so thick here!", "My bugs love the shade!"], "player_won": ["Lost in the woods..."], "player_lost": ["My bugs are the masters of this forest!"]}},
-        
-                {"name": "Bug Catcher Al", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", "team": [10, 11], "rewards": {"balls": 2}},
-        
-                {"name": "Bug Catcher Benny", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", "team": [13, 14], "rewards": {"balls": 2}},
-        
-                {"name": "Bug Catcher Josh", "class": "BUG_CATCHER", "sprite": "bug_catcher.png", "team": [46], "rewards": {"balls": 2}}
+                {"name": "Bug Catcher Wayne", "class": "BUG_CATCHER", "sprite": "ss_bug_catcher.png", "team": [165, 165, 167], "rewards": {"balls": 3}, "dialogue": {"intro": ["The trees are so thick here!", "My bugs love the shade!"], "player_won": ["Lost in the woods..."], "player_lost": ["My bugs are the masters of this forest!"]}}
         
             ],
         
-            "route_menu": [
+            "tree_pool": "JOHTO_FOREST_TREE_PERCENTAGES", "has_trees": true, "route_menu": [
         
                 {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         
@@ -3361,19 +3337,19 @@
         
             "trainer_pool": [
         
-                {"name": "Sage Chow", "class": "SAGE", "sprite": "sage.png", "team": [69, 69, 69], "rewards": {"balls": 3}},
+                {"name": "Sage Chow", "class": "SAGE", "sprite": "ss_sage.png", "team": [69, 69, 69], "rewards": {"balls": 3}},
         
-                {"name": "Sage Edmond", "class": "SAGE", "sprite": "sage2.png", "team": [69, 69, 69], "rewards": {"balls": 3}},
+                {"name": "Sage Edmond", "class": "SAGE", "sprite": "ss_sage.png", "team": [69, 69, 69], "rewards": {"balls": 3}},
         
-                {"name": "Sage Jin", "class": "SAGE", "sprite": "sage.png", "team": [69], "rewards": {"balls": 3}},
+                {"name": "Sage Jin", "class": "SAGE", "sprite": "ss_sage.png", "team": [69], "rewards": {"balls": 3}},
         
-                {"name": "Sage Neal", "class": "SAGE", "sprite": "sage2.png", "team": [69], "rewards": {"balls": 3}},
+                {"name": "Sage Neal", "class": "SAGE", "sprite": "ss_sage.png", "team": [69], "rewards": {"balls": 3}},
         
-                {"name": "Sage Troy", "class": "SAGE", "sprite": "sage.png", "team": [69, 163], "rewards": {"balls": 3}},
+                {"name": "Sage Troy", "class": "SAGE", "sprite": "ss_sage.png", "team": [69, 163], "rewards": {"balls": 3}},
         
-                {"name": "Elder Li", "class": "SAGE", "sprite": "elder.png", "team": [69, 69, 163], "rewards": {"balls": 5, "LEAF_STONE": 1, "HM_FLASH": 1}, "victory_flag": "defeated_elder_li", "dialogue": {"intro": ["You have done well to reach the top.", "Let us see if you have the soul of a true trainer!"], "player_won": ["Incredible. The pillar shakes in resonance with your math skill!", "Take this. It will evolve a Weepinbell into a powerful Victreebel.", "You received the LEAF_STONE!", "And this HM is the move I spoke of. Flash lights up the darkest caves, once the Zephyr Badge is yours.", "You received HM FLASH!"], "player_lost": ["You must study the ways of the Sprout more deeply."]}},
+                {"name": "Elder Li", "class": "SAGE", "sprite": "ss_elder.png", "team": [69, 69, 163], "rewards": {"balls": 5, "LEAF_STONE": 1, "HM_FLASH": 1}, "victory_flag": "defeated_elder_li", "dialogue": {"intro": ["You have done well to reach the top.", "Let us see if you have the soul of a true trainer!"], "player_won": ["Incredible. The pillar shakes in resonance with your math skill!", "Take this. It will evolve a Weepinbell into a powerful Victreebel.", "You received the LEAF_STONE!", "And this HM is the move I spoke of. Flash lights up the darkest caves, once the Zephyr Badge is yours.", "You received HM FLASH!"], "player_lost": ["You must study the ways of the Sprout more deeply."]}},
         
-                {"name": "Sage Nico", "class": "SAGE", "sprite": "sage.png", "team": [69, 69, 69], "rewards": {"balls": 2}}
+                {"name": "Sage Nico", "class": "SAGE", "sprite": "ss_sage.png", "team": [69, 69, 69], "rewards": {"balls": 2}}
         
             ],
         
@@ -3428,13 +3404,9 @@
         
             "trainer_pool": [
         
-                {"name": "Firebreather Dick", "class": "FIREBREATHER", "sprite": "firebreather.png", "team": [109, 109, 58], "rewards": {"balls": 2}},
+                {"name": "Firebreather Ned", "class": "FIREBREATHER", "sprite": "ss_firebreather.png", "team": [109, 58, 109], "rewards": {"balls": 2}},
         
-                {"name": "Firebreather Ned", "class": "FIREBREATHER", "sprite": "firebreather.png", "team": [109, 58, 109], "rewards": {"balls": 2}},
-        
-                {"name": "Firebreather Burt", "class": "FIREBREATHER", "sprite": "firebreather.png", "team": [109, 58], "rewards": {"balls": 2}},
-        
-                {"name": "Firebreather Richard", "class": "FIREBREATHER", "sprite": "firebreather.png", "team": [5], "rewards": {"balls": 2}}
+                {"name": "Firebreather Richard", "class": "FIREBREATHER", "sprite": "ss_firebreather.png", "team": [5], "rewards": {"balls": 2}}
         
             ],
         
@@ -3448,7 +3420,7 @@
         
                 {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
         
-                {"text": "ENCOUNTER SUICUNE", "action": "BOSS", "condition": "boss_available", "flag_condition": "johto_beasts_fled", "color": "CYAN"},
+                {"text": "ENCOUNTER SUICUNE", "action": "BOSS", "condition": "boss_available", "flag_condition": "johto_beasts_fled", "color": "CYAN", "before_trainers": true},
         
                 {"text": "THE BLACK FOG", "action": "BOSS", "color": "PURPLE", "flag_condition": "not black_fog_banished_burned_tower", "boss": {"id": 10501, "name": "Black Fog", "level": 26, "no_catch": true, "victory_flag": "black_fog_banished_burned_tower", "lines": ["The air turns ice-cold. A black fog pours across the floor...", "Two huge eyes open in the dark. A giant Haunter rises: the Black Fog!", "Long ago people worshipped it as a god. It feeds on dreams. Don't let it get yours!"], "won": ["The Black Fog is too proud to ever be caught.", "It Self-Destructs in a burst of black mist... and is gone.", "But a cold whisper lingers: it will rise again in another haunted place."], "rewards": {"balls": 10, "RARE_CANDY": 3}}},
         
@@ -3554,19 +3526,13 @@
         
             "trainer_pool": [
         
-                {"name": "Super Nerd Markus", "class": "SUPER_NERD", "sprite": "supernerd.png", "team": [79], "rewards": {"balls": 2}},
+                {"name": "Super Nerd Markus", "class": "SUPER_NERD", "sprite": "ss_super_nerd.png", "team": [79], "rewards": {"balls": 2}},
         
-                {"name": "Blackbelt Yoshi", "class": "BLACKBELT", "sprite": "blackbelt.png", "team": [66, 67], "rewards": {"balls": 2}},
+                {"name": "Karate King Kiyo", "class": "BLACKBELT", "sprite": "ss_black_belt.png", "team": [106, 107], "rewards": {"balls": 5, "POKEMON_236": 1}, "victory_flag": "defeated_karate_king", "levels": [34, 34]},
         
-                {"name": "Hiker Erik", "class": "HIKER", "sprite": "hiker.png", "team": [74, 75], "rewards": {"balls": 2}},
+                {"name": "Poké Maniac Harrison", "class": "POKE_MANIAC", "sprite": "ss_poke_maniac.png", "team": [34, 31], "rewards": {"balls": 2}},
         
-                {"name": "Hiker Michael", "class": "HIKER", "sprite": "hiker.png", "team": [74, 74], "rewards": {"balls": 2}},
-        
-                {"name": "Karate King Kiyo", "class": "BLACKBELT", "sprite": "blackbelt.png", "team": [106, 107], "rewards": {"balls": 5, "POKEMON_236": 1}, "victory_flag": "defeated_karate_king"},
-        
-                {"name": "Poké Maniac Harrison", "class": "POKE_MANIAC", "sprite": "poke_maniac.png", "team": [34, 31], "rewards": {"balls": 2}},
-        
-                {"name": "Super Nerd Hugh", "class": "SUPER_NERD", "sprite": "super_nerd.png", "team": [117], "rewards": {"balls": 2}}
+                {"name": "Super Nerd Hugh", "class": "SUPER_NERD", "sprite": "ss_super_nerd.png", "team": [117], "rewards": {"balls": 2}}
         
             ],
         
@@ -3657,13 +3623,7 @@
         
             "trainer_pool": [
         
-                {"name": "Boarder Ronald", "class": "SAILOR", "sprite": "sailor.png", "team": [220, 220, 221], "rewards": {"balls": 2}},
-        
-                {"name": "Skier Clarissa", "class": "LASS", "sprite": "lass.png", "team": [124], "rewards": {"balls": 2}},
-        
-                {"name": "Skier Jill", "class": "LASS", "sprite": "lass.png", "team": [124, 124], "rewards": {"balls": 2}},
-        
-                {"name": "Boarder Ronald", "class": "SAILOR", "sprite": "sailor.png", "team": [220], "rewards": {"balls": 2}}
+                
         
             ],
         
@@ -3792,27 +3752,27 @@
         
             "trainer_pool": [
         
-                {"name": "Rocket Grunt", "spot_name": "Rocket Grunt B1F", "class": "ROCKET", "sprite": "rocket_grunt_m.png", "team": [19, 19, 19, 19], "rewards": {"balls": 2}},
+                {"name": "Rocket Grunt", "spot_name": "Rocket Grunt B1F", "class": "ROCKET", "sprite": "ss_rocket_grunt_m.png", "team": [19, 19, 19, 19], "rewards": {"balls": 2}},
         
-                {"name": "Rocket Grunt", "spot_name": "Rocket Grunt B2F", "class": "ROCKET", "sprite": "rocket_grunt_f.png", "team": [48, 48], "rewards": {"balls": 2}},
+                {"name": "Rocket Grunt", "spot_name": "Rocket Grunt B2F", "class": "ROCKET", "sprite": "ss_rocket_grunt_f.png", "team": [48, 48], "rewards": {"balls": 2}},
         
-                {"name": "Rocket Grunt", "spot_name": "Rocket Grunt B3F", "class": "ROCKET", "sprite": "rocket_grunt_m.png", "team": [42], "rewards": {"balls": 2}},
+                {"name": "Rocket Grunt", "spot_name": "Rocket Grunt B3F", "class": "ROCKET", "sprite": "ss_rocket_grunt_m.png", "team": [42], "rewards": {"balls": 2}},
         
-                {"name": "Executive Petrel", "class": "ROCKET", "sprite": "petrel.png", "team": [41, 20, 109], "levels": [22, 24, 22], "is_boss_battle": true, "rewards": {"balls": 8}, "dialogue": {"intro": ["Petrel: Hah! Fooled you. I'm no Giovanni, but I'm still an Executive of Team Rocket!"], "player_won": ["Petrel: Fine. The password? Go figure it out yourself!"]}},
+                {"name": "Executive Petrel", "class": "ROCKET", "sprite": "ss_petrel.png", "team": [41, 20, 109], "levels": [22, 24, 22], "is_boss_battle": true, "rewards": {"balls": 8}, "dialogue": {"intro": ["Petrel: Hah! Fooled you. I'm no Giovanni, but I'm still an Executive of Team Rocket!"], "player_won": ["Petrel: Fine. The password? Go figure it out yourself!"]}},
         
-                {"name": "Executive Ariana", "class": "ROCKET", "sprite": "ariana.png", "team": [24, 44, 198], "rewards": {"balls": 5, "RARE_CANDY": 1}, "battle_options": {"double": true, "partner": {"name": "Lance", "class": "CHAMPION", "sprite": "lance.png", "team": [149], "levels": [40]}, "second_trainer": {"name": "Rocket Grunt", "class": "ROCKET", "sprite": "rocket_grunt_m.png", "team": [96, 88], "levels": [18, 20], "rewards": {"balls": 2}}}, "victory_flag": "rocket_hq_cleared", "levels": [25, 25, 27], "is_boss_battle": true},
+                {"name": "Executive Ariana", "class": "ROCKET", "sprite": "ss_ariana.png", "team": [24, 44, 198], "rewards": {"balls": 5, "RARE_CANDY": 1}, "battle_options": {"double": true, "partner": {"name": "Lance", "class": "CHAMPION", "sprite": "ss_lance.png", "team": [149], "levels": [40]}, "second_trainer": {"name": "Rocket Grunt", "class": "ROCKET", "sprite": "ss_rocket_grunt_m.png", "team": [96, 88], "levels": [18, 20], "rewards": {"balls": 2}}}, "victory_flag": "rocket_hq_cleared", "levels": [25, 25, 27], "is_boss_battle": true},
         
-                {"name": "Scientist Gregg", "class": "SCIENTIST", "sprite": "scientist.png", "team": [81, 81, 81], "rewards": {"balls": 2}},
+                {"name": "Scientist Gregg", "class": "SCIENTIST", "sprite": "ss_scientist.png", "team": [81, 81, 81], "rewards": {"balls": 2}},
         
-                {"name": "Team Rocket Grunt", "class": "TEAM_ROCKET", "sprite": "team_rocket.png", "team": [19, 41, 19], "rewards": {"balls": 2}, "victory_flag": "hq_password_1", "dialogue": {"player_won": ["Rocket Grunt: Argh... Fine! The first password to the boss's office is SLOWPOKETAIL. Happy now?"]}},
+                {"name": "Team Rocket Grunt", "class": "TEAM_ROCKET", "sprite": "ss_rocket_grunt_m.png", "team": [19, 41, 19], "rewards": {"balls": 2}, "victory_flag": "hq_password_1", "dialogue": {"player_won": ["Rocket Grunt: Argh... Fine! The first password to the boss's office is SLOWPOKETAIL. Happy now?"]}},
         
-                {"name": "Scientist Ross", "class": "SCIENTIST", "sprite": "scientist.png", "team": [109, 109], "rewards": {"balls": 2}},
+                {"name": "Scientist Ross", "class": "SCIENTIST", "sprite": "ss_scientist.png", "team": [109, 109], "rewards": {"balls": 2}},
         
-                {"name": "Scientist Mitch", "class": "SCIENTIST", "sprite": "scientist.png", "team": [132], "rewards": {"balls": 2}},
+                {"name": "Scientist Mitch", "class": "SCIENTIST", "sprite": "ss_scientist.png", "team": [132], "rewards": {"balls": 2}},
         
-                {"name": "Team Rocket Grunt", "class": "TEAM_ROCKET", "sprite": "team_rocket.png", "team": [20], "rewards": {"balls": 2}, "spot_name": "Team Rocket Grunt 2", "victory_flag": "hq_password_2", "dialogue": {"player_won": ["Rocket Grunt: You won't get past the office anyway! ...The second password? RATICATE TAIL. Ugh!"]}},
+                {"name": "Team Rocket Grunt", "class": "TEAM_ROCKET", "sprite": "ss_rocket_grunt_m.png", "team": [20], "rewards": {"balls": 2}, "spot_name": "Team Rocket Grunt 2", "victory_flag": "hq_password_2", "dialogue": {"player_won": ["Rocket Grunt: You won't get past the office anyway! ...The second password? RATICATE TAIL. Ugh!"]}},
         
-                {"name": "Team Rocket Grunt", "class": "TEAM_ROCKET", "sprite": "team_rocket.png", "team": [23, 44], "rewards": {"balls": 2}, "spot_name": "Team Rocket Grunt 3"}
+                {"name": "Team Rocket Grunt", "class": "TEAM_ROCKET", "sprite": "ss_rocket_grunt_m.png", "team": [23, 44], "rewards": {"balls": 2}, "spot_name": "Team Rocket Grunt 3"}
         
             ],
         
@@ -3860,31 +3820,31 @@
 
             "trainer_pool": [
 
-                {"name": "Super Nerd Teru", "class": "SUPER_NERD", "sprite": "supernerd.png", "team": [81, 100, 81, 81], "rewards": {"balls": 2}},
+                {"name": "Super Nerd Teru", "class": "SUPER_NERD", "sprite": "ss_super_nerd.png", "team": [81, 100, 81, 81], "rewards": {"balls": 2}},
 
-                {"name": "Burglar Duncan", "class": "BURGLAR", "sprite": "firebreather.png", "team": [109, 126, 109], "rewards": {"balls": 2}},
+                {"name": "Burglar Duncan", "class": "BURGLAR", "sprite": "ss_burglar.png", "team": [109, 126, 109], "rewards": {"balls": 2}},
 
-                {"name": "Pokemaniac Issac", "class": "POKEMANIAC", "sprite": "supernerd.png", "team": [108], "rewards": {"balls": 2}},
+                {"name": "Pokemaniac Issac", "class": "POKEMANIAC", "sprite": "ss_poke_maniac.png", "team": [108], "rewards": {"balls": 2}},
 
-                {"name": "Poké Maniac Donald", "class": "POKE_MANIAC", "sprite": "poke_maniac.png", "team": [79, 79], "rewards": {"balls": 2}},
+                {"name": "Poké Maniac Donald", "class": "POKE_MANIAC", "sprite": "ss_poke_maniac.png", "team": [79, 79], "rewards": {"balls": 2}},
 
-                {"name": "Super Nerd Eric", "class": "SUPER_NERD", "sprite": "super_nerd.png", "team": [88, 88], "rewards": {"balls": 2}},
+                {"name": "Super Nerd Eric", "class": "SUPER_NERD", "sprite": "ss_super_nerd.png", "team": [88, 88], "rewards": {"balls": 2}},
 
-                {"name": "Team Rocket Grunt", "class": "TEAM_ROCKET", "sprite": "team_rocket.png", "team": [89, 109, 19], "rewards": {"balls": 2}},
+                {"name": "Team Rocket Grunt", "class": "TEAM_ROCKET", "sprite": "ss_rocket_grunt_m.png", "team": [89, 109, 19], "rewards": {"balls": 2}},
 
-                {"name": "Team Rocket Grunt", "class": "TEAM_ROCKET", "sprite": "team_rocket.png", "team": [109, 89], "rewards": {"balls": 2}},
+                {"name": "Team Rocket Grunt", "class": "TEAM_ROCKET", "sprite": "ss_rocket_grunt_m.png", "team": [109, 89], "rewards": {"balls": 2}},
 
-                {"name": "Team Rocket Grunt", "class": "TEAM_ROCKET", "sprite": "team_rocket.png", "team": [19], "rewards": {"balls": 2}},
+                {"name": "Team Rocket Grunt", "class": "TEAM_ROCKET", "sprite": "ss_rocket_grunt_m.png", "team": [19], "rewards": {"balls": 2}},
 
-                {"name": "Team Rocket Grunt", "class": "TEAM_ROCKET", "sprite": "team_rocket.png", "team": [44, 44], "rewards": {"balls": 2}},
+                {"name": "Team Rocket Grunt", "class": "TEAM_ROCKET", "sprite": "ss_rocket_grunt_m.png", "team": [44, 44], "rewards": {"balls": 2}},
 
-                {"name": "Burglar Orson", "class": "BURGLAR", "sprite": "burglar.png", "team": [58, 109], "rewards": {"balls": 2}},
+                {"name": "Burglar Orson", "class": "BURGLAR", "sprite": "ss_burglar.png", "team": [58, 109], "rewards": {"balls": 2}},
 
-                {"name": "Team Rocket Grunt", "class": "TEAM_ROCKET", "sprite": "team_rocket.png", "team": [20, 42], "rewards": {"balls": 2}},
+                {"name": "Team Rocket Grunt", "class": "TEAM_ROCKET", "sprite": "ss_rocket_grunt_m.png", "team": [20, 42], "rewards": {"balls": 2}},
 
-                {"name": "Team Rocket Grunt", "class": "TEAM_ROCKET", "sprite": "team_rocket.png", "team": [88, 110], "rewards": {"balls": 2}},
+                {"name": "Team Rocket Grunt", "class": "TEAM_ROCKET", "sprite": "ss_rocket_grunt_m.png", "team": [88, 110], "rewards": {"balls": 2}},
 
-                {"name": "Team Rocket Grunt", "class": "TEAM_ROCKET", "sprite": "team_rocket.png", "team": [109, 109], "rewards": {"balls": 2}}
+                {"name": "Team Rocket Grunt", "class": "TEAM_ROCKET", "sprite": "ss_rocket_grunt_m.png", "team": [109, 109], "rewards": {"balls": 2}}
 
             ],
 
@@ -3934,39 +3894,38 @@
 
             "battle_type": "indoor",
 
-            "wild_pool_percentages": "JOHTO_ROCKET_HQ_PERCENTAGES",
 
             "min_rounds": 2,
 
             "trainer_pool": [
 
-                {"name": "Rocket Grunt", "spot_name": "Rocket Grunt A", "class": "ROCKET", "sprite": "rocket_grunt_m.png", "team": [19, 19, 19, 19, 19], "rewards": {"balls": 2}, "when_flags": ["radio_takeover_started"]},
+                {"name": "Rocket Grunt", "spot_name": "Rocket Grunt A", "class": "ROCKET", "sprite": "ss_rocket_grunt_m.png", "team": [19, 19, 19, 19, 19], "rewards": {"balls": 2}, "when_flags": ["radio_takeover_started"]},
 
-                {"name": "Rocket Grunt", "spot_name": "Rocket Grunt B", "class": "ROCKET", "sprite": "rocket_grunt_f.png", "team": [24], "rewards": {"balls": 2}, "when_flags": ["radio_takeover_started"]},
+                {"name": "Rocket Grunt", "spot_name": "Rocket Grunt B", "class": "ROCKET", "sprite": "ss_rocket_grunt_f.png", "team": [24], "rewards": {"balls": 2}, "when_flags": ["radio_takeover_started"]},
 
-                {"name": "Executive Petrel", "class": "ROCKET", "sprite": "petrel.png", "team": [109, 109, 109, 110, 109, 109], "rewards": {"balls": 10, "BASEMENT_KEY": 1}, "levels": [30, 30, 30, 32, 30, 30], "is_boss_battle": true, "when_flags": ["radio_takeover_started"]},
+                {"name": "Executive Petrel", "class": "ROCKET", "sprite": "ss_petrel.png", "team": [109, 109, 109, 110, 109, 109], "rewards": {"balls": 10, "BASEMENT_KEY": 1}, "levels": [30, 30, 30, 32, 30, 30], "is_boss_battle": true, "when_flags": ["radio_takeover_started"]},
 
-                {"name": "Executive Proton", "class": "ROCKET", "sprite": "proton.png", "team": [42, 110], "levels": [28, 33], "is_boss_battle": true, "rewards": {"balls": 8}, "dialogue": {"intro": ["Proton: They call me the scariest guy in Team Rocket. You're about to find out why!"], "player_won": ["Proton: Tch. Ariana and Archer will finish you."]}, "when_flags": ["radio_takeover_started"]},
+                {"name": "Executive Proton", "class": "ROCKET", "sprite": "ss_proton.png", "team": [42, 110], "levels": [28, 33], "is_boss_battle": true, "rewards": {"balls": 8}, "dialogue": {"intro": ["Proton: They call me the scariest guy in Team Rocket. You're about to find out why!"], "player_won": ["Proton: Tch. Ariana and Archer will finish you."]}, "when_flags": ["radio_takeover_started"]},
 
-                {"name": "Executive Ariana", "class": "ROCKET", "sprite": "ariana.png", "team": [24, 45, 198], "levels": [32, 32, 32], "is_boss_battle": true, "rewards": {"balls": 8}, "dialogue": {"intro": ["Ariana: You again? This time you won't walk away."], "player_won": ["Ariana: Archer... it's up to you now."]}, "when_flags": ["radio_takeover_started"]},
+                {"name": "Executive Ariana", "class": "ROCKET", "sprite": "ss_ariana.png", "team": [24, 45, 198], "levels": [32, 32, 32], "is_boss_battle": true, "rewards": {"balls": 8}, "dialogue": {"intro": ["Ariana: You again? This time you won't walk away."], "player_won": ["Ariana: Archer... it's up to you now."]}, "when_flags": ["radio_takeover_started"]},
 
-                {"name": "Executive Archer", "class": "ROCKET", "sprite": "archer.png", "team": [228, 109, 229], "levels": [35, 35, 38], "is_boss_battle": true, "rewards": {"balls": 8}, "victory_flag": "radio_tower_cleared", "dialogue": {"intro": ["Archer: So you're the one who keeps getting in our way. Giovanni will hear our broadcast. Stand aside!"], "player_won": ["Archer: ...We failed. Team Rocket is disbanding, for good this time."]}, "when_flags": ["radio_takeover_started"]},
+                {"name": "Executive Archer", "class": "ROCKET", "sprite": "ss_archer.png", "team": [228, 109, 229], "levels": [35, 35, 38], "is_boss_battle": true, "rewards": {"balls": 8}, "victory_flag": "radio_tower_cleared", "dialogue": {"intro": ["Archer: So you're the one who keeps getting in our way. Giovanni will hear our broadcast. Stand aside!"], "player_won": ["Archer: ...We failed. Team Rocket is disbanding, for good this time."]}, "when_flags": ["radio_takeover_started"]},
 
-                {"name": "Team Rocket Grunt", "class": "TEAM_ROCKET", "sprite": "team_rocket.png", "team": [41, 41], "rewards": {"balls": 2}, "when_flags": ["radio_takeover_started"]},
+                {"name": "Team Rocket Grunt", "class": "TEAM_ROCKET", "sprite": "ss_rocket_grunt_m.png", "team": [41, 41], "rewards": {"balls": 2}, "when_flags": ["radio_takeover_started"]},
 
-                {"name": "Team Rocket Grunt", "class": "TEAM_ROCKET", "sprite": "team_rocket.png", "team": [88, 88, 89], "rewards": {"balls": 2}, "when_flags": ["radio_takeover_started"]},
+                {"name": "Team Rocket Grunt", "class": "TEAM_ROCKET", "sprite": "ss_rocket_grunt_m.png", "team": [88, 88, 89], "rewards": {"balls": 2}, "when_flags": ["radio_takeover_started"]},
 
-                {"name": "Team Rocket Grunt", "class": "TEAM_ROCKET", "sprite": "team_rocket.png", "team": [109, 88, 41, 19], "rewards": {"balls": 2}, "when_flags": ["radio_takeover_started"]},
+                {"name": "Team Rocket Grunt", "class": "TEAM_ROCKET", "sprite": "ss_rocket_grunt_m.png", "team": [109, 88, 41, 19], "rewards": {"balls": 2}, "when_flags": ["radio_takeover_started"]},
 
-                {"name": "Team Rocket Grunt", "class": "TEAM_ROCKET", "sprite": "team_rocket.png", "team": [110], "rewards": {"balls": 2}, "when_flags": ["radio_takeover_started"]},
+                {"name": "Team Rocket Grunt", "class": "TEAM_ROCKET", "sprite": "ss_rocket_grunt_m.png", "team": [110], "rewards": {"balls": 2}, "when_flags": ["radio_takeover_started"]},
 
-                {"name": "Scientist Garett", "class": "SCIENTIST", "sprite": "scientist.png", "team": [81, 81, 81], "rewards": {"balls": 2}, "when_flags": ["radio_takeover_started"]},
+                {"name": "Scientist Garett", "class": "SCIENTIST", "sprite": "ss_scientist.png", "team": [81, 81, 81], "rewards": {"balls": 2}, "when_flags": ["radio_takeover_started"]},
 
-                {"name": "Team Rocket Grunt", "class": "TEAM_ROCKET", "sprite": "team_rocket.png", "team": [20, 109], "rewards": {"balls": 2}, "when_flags": ["radio_takeover_started"]},
+                {"name": "Team Rocket Grunt", "class": "TEAM_ROCKET", "sprite": "ss_rocket_grunt_m.png", "team": [20, 109], "rewards": {"balls": 2}, "when_flags": ["radio_takeover_started"]},
 
-                {"name": "Scientist Trenton", "class": "SCIENTIST", "sprite": "scientist.png", "team": [137], "rewards": {"balls": 2}, "when_flags": ["radio_takeover_started"]},
+                {"name": "Scientist Trenton", "class": "SCIENTIST", "sprite": "ss_scientist.png", "team": [137], "rewards": {"balls": 2}, "when_flags": ["radio_takeover_started"]},
 
-                {"name": "Team Rocket Grunt", "class": "TEAM_ROCKET", "sprite": "team_rocket.png", "team": [41, 42, 88], "rewards": {"balls": 2}, "when_flags": ["radio_takeover_started"]}
+                {"name": "Team Rocket Grunt", "class": "TEAM_ROCKET", "sprite": "ss_rocket_grunt_m.png", "team": [41, 42, 88], "rewards": {"balls": 2}, "when_flags": ["radio_takeover_started"]}
 
             ],
 
@@ -4005,15 +3964,15 @@
 
             "trainer_pool": [
 
-                {"name": "Kimono Girl Naoko", "class": "KIMONO_GIRL", "sprite": "kimono_girl.png", "team": [196], "rewards": {"balls": 2}, "levels": [38], "when_flags": ["badge:RISING"]},
+                {"name": "Kimono Girl Naoko", "class": "KIMONO_GIRL", "sprite": "ss_kimono_girl.png", "team": [196], "rewards": {"balls": 2}, "levels": [38], "when_flags": ["badge:RISING"]},
 
-                {"name": "Kimono Girl Sayo", "class": "KIMONO_GIRL", "sprite": "kimono_girl.png", "team": [135], "rewards": {"balls": 2}, "levels": [38], "when_flags": ["badge:RISING"]},
+                {"name": "Kimono Girl Sayo", "class": "KIMONO_GIRL", "sprite": "ss_kimono_girl.png", "team": [135], "rewards": {"balls": 2}, "levels": [38], "when_flags": ["badge:RISING"]},
 
-                {"name": "Kimono Girl Zuki", "class": "KIMONO_GIRL", "sprite": "kimono_girl.png", "team": [197], "rewards": {"balls": 2}, "levels": [38], "when_flags": ["badge:RISING"]},
+                {"name": "Kimono Girl Zuki", "class": "KIMONO_GIRL", "sprite": "ss_kimono_girl.png", "team": [197], "rewards": {"balls": 2}, "levels": [38], "when_flags": ["badge:RISING"]},
 
-                {"name": "Kimono Girl Kuni", "class": "KIMONO_GIRL", "sprite": "kimono_girl.png", "team": [134], "rewards": {"balls": 2}, "levels": [38], "when_flags": ["badge:RISING"]},
+                {"name": "Kimono Girl Kuni", "class": "KIMONO_GIRL", "sprite": "ss_kimono_girl.png", "team": [134], "rewards": {"balls": 2}, "levels": [38], "when_flags": ["badge:RISING"]},
 
-                {"name": "Kimono Girl Miki", "class": "KIMONO_GIRL", "sprite": "kimono_girl.png", "team": [136], "rewards": {"balls": 5}, "is_boss_battle": true, "dialogue": {"intro": ["I am the last of the sisters.", "Let us dance!"], "player_won": ["Incredible. You and your Pokemon move as one."]}, "levels": [38], "when_flags": ["badge:RISING"]}
+                {"name": "Kimono Girl Miki", "class": "KIMONO_GIRL", "sprite": "ss_kimono_girl.png", "team": [136], "rewards": {"balls": 5}, "is_boss_battle": true, "dialogue": {"intro": ["I am the last of the sisters.", "Let us dance!"], "player_won": ["Incredible. You and your Pokemon move as one."]}, "levels": [38], "when_flags": ["badge:RISING"]}
 
             ]
 
@@ -4153,11 +4112,11 @@
 
             "trainer_pool": [
 
-                {"name": "Ace Trainer Kobe", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "team": [148], "rewards": {"balls": 2}},
+                {"name": "Ace Trainer Kobe", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_m.png", "team": [148], "rewards": {"balls": 2}},
 
-                {"name": "Ace Trainer Piper", "class": "ACE_TRAINER", "sprite": "ace_trainer.png", "team": [116, 116, 117], "rewards": {"balls": 2}},
+                {"name": "Ace Trainer Piper", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_m.png", "team": [116, 116, 117], "rewards": {"balls": 2}},
 
-                {"battle_options": {"double": true}, "name": "Twins Clea & Gil", "class": "TWINS", "sprite": "twins.png", "team": [147, 147], "rewards": {"balls": 2}}
+                {"battle_options": {"double": true}, "name": "Twins Clea & Gil", "class": "TWINS", "sprite": "ss_twins.png", "team": [147, 147], "rewards": {"balls": 2}}
 
             ],
 
@@ -4171,7 +4130,7 @@
 
                 {"text": "BATTLE CLAIR", "action": "EVENT", "color": "GOLD", "flag_condition": "not dragons_den_clair", "condition": ["beat_johto_champion"], "event": {"lines": ["{rival_name} is training in the Dragon's Den. 'Clair and Lance want a double battle... I'm with you!'", "Clair: Two of you? Fine. Show me your dragon spirit!"], "flag": "dragons_den_clair", "battle": {"name": "Leader Clair", "class": "GYM_LEADER", "sprite": "clair.png", "team": [148, 230, 149], "levels": [52, 56, 60], "is_boss_battle": true, "rewards": {"balls": 15}, "dialogue": {"player_won": ["Clair: ...Not bad, you two.", "Lance steps forward: 'My turn.'"]}}}},
 
-                {"text": "BATTLE LANCE", "action": "EVENT", "color": "GOLD", "flag_condition": "not dragons_den_lance", "condition": ["dragons_den_clair"], "event": {"lines": ["Lance: You and {rival_name} make quite a team. Let's see it against a Champion!"], "flag": "dragons_den_lance", "battle": {"name": "Champion Lance", "class": "CHAMPION", "sprite": "lance.png", "team": [130, 6, 149], "levels": [68, 68, 75], "is_boss_battle": true, "rewards": {"balls": 15}, "dialogue": {"player_won": ["Lance: Excellent! {rival_name}, you've grown. And you, Champion, even more."]}}}},
+                {"text": "BATTLE LANCE", "action": "EVENT", "color": "GOLD", "flag_condition": "not dragons_den_lance", "condition": ["dragons_den_clair"], "event": {"lines": ["Lance: You and {rival_name} make quite a team. Let's see it against a Champion!"], "flag": "dragons_den_lance", "battle": {"name": "Champion Lance", "class": "CHAMPION", "sprite": "ss_lance.png", "team": [130, 6, 149], "levels": [68, 68, 75], "is_boss_battle": true, "rewards": {"balls": 15}, "dialogue": {"player_won": ["Lance: Excellent! {rival_name}, you've grown. And you, Champion, even more."]}}}},
 
                 {"text": "BLACKTHORN CITY", "action": "EXIT", "target_area": "BLACKTHORN_CITY", "condition": "can_exit", "color": "RED"},
 
@@ -4227,7 +4186,7 @@
         
                 {"text": "SEEK MOLTRES", "action": "BOSS", "color": "GOLD", "flag_condition": "not mt_silver_moltres_defeated", "boss": {"id": 146, "level": 50, "name": "Moltres", "victory_flag": "mt_silver_moltres_defeated", "lines": ["Heat shimmers off the rocks... Moltres blazes down!"]}, "condition": ["beat_johto_champion"]},
         
-                {"text": "CHALLENGE RED", "action": "EVENT", "color": "GOLD", "flag_condition": "not defeated_red", "event": {"lines": ["At the summit, a silent Trainer stands in the snow.", "...", "......", "Red wants to battle!"], "flag": "defeated_red", "done": ["The summit is quiet. Red has gone.", "...But you get the feeling you'll meet again."], "battle": {"name": "Red", "class": "PKMN_TRAINER", "sprite": "red.png", "team": [25, 131, 143, 3, 6, 9], "levels": [88, 80, 82, 84, 84, 84], "is_boss_battle": true, "rewards": {"balls": 30, "MASTER_BALL": 1}, "dialogue": {"player_won": ["......", "..."], "player_lost": ["......"]}}}},
+                {"text": "CHALLENGE RED", "action": "EVENT", "color": "GOLD", "flag_condition": "not defeated_red", "event": {"lines": ["At the summit, a silent Trainer stands in the snow.", "...", "......", "Red wants to battle!"], "flag": "defeated_red", "done": ["The summit is quiet. Red has gone.", "...But you get the feeling you'll meet again."], "battle": {"name": "Red", "class": "PKMN_TRAINER", "sprite": "ss_red.png", "team": [25, 196, 143, 3, 6, 9], "levels": [88, 84, 82, 84, 84, 84], "is_boss_battle": true, "rewards": {"balls": 30, "MASTER_BALL": 1}, "dialogue": {"player_won": ["......", "..."], "player_lost": ["......"]}}}},
         
                 {"text": "REAPER CLOTH", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_reaper_cloth_mt_silver_d41r0101_54_15", "event": {"lines": ["A Reaper Cloth, lying among the rocks."], "gift_item": {"REAPER_CLOTH": 1}, "flag": "got_reaper_cloth_mt_silver_d41r0101_54_15"}},
         
@@ -4271,9 +4230,9 @@
             "battle_type": "field",
             "min_rounds": 0,
             "trainer_pool": [
-                {"name": "Sage Gaku", "class": "SAGE", "sprite": "sage.png", "team": [164, 136], "levels": [32, 32], "rewards": {"balls": 3}, "dialogue": {"intro": ["Sage Gaku: Halt! We are the Wise Trio, keepers of the Bell Tower.", "Sage Gaku: Before you pass, show us your strength!"], "player_won": ["Sage Gaku: Your strength is real. But Masa and Koji will test you too."], "player_lost": ["Sage Gaku: Not yet. Train, and come back."]}},
-                {"name": "Sage Masa", "class": "SAGE", "sprite": "sage2.png", "team": [164, 135], "levels": [32, 32], "rewards": {"balls": 3}, "dialogue": {"intro": ["Sage Masa: Ho-Oh looks for a Trainer with a true heart.", "Sage Masa: Let me see the bond you share with your Pokemon!"], "player_won": ["Sage Masa: A fine bond indeed. Koji will be the last."], "player_lost": ["Sage Masa: Your heart is good, but your team is not ready."]}},
-                {"name": "Sage Koji", "class": "SAGE", "sprite": "sage.png", "team": [164, 134], "levels": [32, 32], "rewards": {"balls": 3}, "dialogue": {"intro": ["Sage Koji: I am the last of the Wise Trio.", "Sage Koji: Beat me, and the way to the Bell Tower is open!"], "player_won": ["Sage Koji: You have bested all three of us.", "Sage Koji: Go on to the Bell Tower. We will meet you inside."], "player_lost": ["Sage Koji: The way stays shut. Come back stronger."]}}
+                {"name": "Sage Gaku", "class": "SAGE", "sprite": "ss_sage.png", "team": [164, 136], "levels": [32, 32], "rewards": {"balls": 3}, "dialogue": {"intro": ["Sage Gaku: Halt! We are the Wise Trio, keepers of the Bell Tower.", "Sage Gaku: Before you pass, show us your strength!"], "player_won": ["Sage Gaku: Your strength is real. But Masa and Koji will test you too."], "player_lost": ["Sage Gaku: Not yet. Train, and come back."]}},
+                {"name": "Sage Masa", "class": "SAGE", "sprite": "ss_sage.png", "team": [164, 135], "levels": [32, 32], "rewards": {"balls": 3}, "dialogue": {"intro": ["Sage Masa: Ho-Oh looks for a Trainer with a true heart.", "Sage Masa: Let me see the bond you share with your Pokemon!"], "player_won": ["Sage Masa: A fine bond indeed. Koji will be the last."], "player_lost": ["Sage Masa: Your heart is good, but your team is not ready."]}},
+                {"name": "Sage Koji", "class": "SAGE", "sprite": "ss_sage.png", "team": [164, 134], "levels": [32, 32], "rewards": {"balls": 3}, "dialogue": {"intro": ["Sage Koji: I am the last of the Wise Trio.", "Sage Koji: Beat me, and the way to the Bell Tower is open!"], "player_won": ["Sage Koji: You have bested all three of us.", "Sage Koji: Go on to the Bell Tower. We will meet you inside."], "player_lost": ["Sage Koji: The way stays shut. Come back stronger."]}}
             ],
             "route_menu": [
                 {"text": "LISTEN TO THE BELL", "action": "EVENT", "color": "BLUE", "event": {"lines": ["Autumn leaves drift along the trail. Somewhere above, a bell rings softly..."]}},

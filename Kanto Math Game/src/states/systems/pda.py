@@ -11,11 +11,12 @@ TABS = [("journal", "JOURNAL"), ("mail", "MAIL"), ("snag", "SNAG LIST"), ("monit
 # (flag, from, subject, body) in the order they come in the story
 MAIL = [
     ("orre_kids_grid", "Megg", "You're in the Kids Grid!", "Megg here. Your P*DA number's in our address book now. We'll send anything we hear."),
+    ("orre_part2", "Professor Krane", "Please come", "It's been five years, and I need your help. Please come to the Pokemon HQ Lab at once."),   # (the time skip, story rework S1)
     ("xd_krane_taken", "Lily", "The Professor...", "Cipher took Professor Krane! Come back to the lab as soon as you can."),
     ("xd_nett_rom", "Nett", "Poke Spots", "Duking found places in the desert where wild Pokemon gather. Try the Rock Poke Spot off the Desert Trail."),
     ("xd_spot_oasis", "Duking", "Snacks", "Leave Poke Snacks on a spot's tray and something will come to eat. Your P*DA's Spot Monitor will tell you."),
-    ("beat_orre_champion", "Professor Krane", "Thank you", "Orre is safe because of you. Come by the lab - there is something I must show you."),
-    ("xd_greevil_beaten", "Eagun", "Meet me", "Wes! Meet me outside the HQ Lab. Bring your best team."),
+    ("xd_gorigan_beaten", "Professor Krane", "Thank you", "Cipher's lair is broken, thanks to you. Come by the lab - there is something I must show you."),
+    ("xd_greevil_beaten", "Eagun", "Meet me", "{player_name}! Meet me outside the HQ Lab. Bring your best team."),
     ("xd_beluh_mail", "Beluh", "Please come", "Please come to Agate Village. Something is wrong with some of our Pokemon."),
     ("xd_le_vc5", "Megg", "My Shroomish!", "My Shroomish has gone completely quiet since someone gave it a translator. Can you help?"),
     ("col_post_nett", "Nett", "A tip", "A kid in Pyrite says Cail battled someone with a Shadow Pokemon. He hides behind a bookcase."),
@@ -26,7 +27,8 @@ MAIL = [
 
 def mail(game):
     flags = game.story_manager.story_flags
-    return [(frm, sub, body) for f, frm, sub, body in MAIL if flags.get(f)]
+    from src.states.overworld.common import _fill_names   # (the player by their own name, Jordan 11-24)
+    return [(frm, sub, _fill_names(game, body)) for f, frm, sub, body in MAIL if flags.get(f)]
 
 
 def snag_list(game):

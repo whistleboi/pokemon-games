@@ -1,0 +1,23 @@
+{
+  "JOHTO_ROUTE_32:MIRACLE_SEED:outside": "After the Zephyr Badge",
+  "JOHTO_ROUTE_32:POISON_BARB:outside": "Fridays",
+  "JOHTO_ROUTE_32:LURE_BALL:Pokémon Center": "With the Apricorn Box",
+  "RUINS_OF_ALPH:HEAL_POWDER:Kabuto Room": "Behind the Kabuto chamber's wall: carry an Escape Rope",
+  "RUINS_OF_ALPH:ENERGY_POWDER:Kabuto Room": "Behind the Kabuto chamber's wall: carry an Escape Rope",
+  "RUINS_OF_ALPH:ORAN_BERRY:Kabuto Room": "Behind the Kabuto chamber's wall: carry an Escape Rope",
+  "RUINS_OF_ALPH:PECHA_BERRY:Kabuto Room": "Behind the Kabuto chamber's wall: carry an Escape Rope",
+  "RUINS_OF_ALPH:HEAL_POWDER:Aerodactyl Room": "Behind the Aerodactyl chamber's wall: carry HM Flash",
+  "RUINS_OF_ALPH:ENERGY_ROOT:Aerodactyl Room": "Behind the Aerodactyl chamber's wall: carry HM Flash",
+  "RUINS_OF_ALPH:MOON_STONE:Aerodactyl Room": "Behind the Aerodactyl chamber's wall: carry HM Flash",
+  "RUINS_OF_ALPH:SITRUS_BERRY:Aerodactyl Room": "Behind the Aerodactyl chamber's wall: carry HM Flash",
+  "RUINS_OF_ALPH:STARDUST:Omanyte Room": "Behind the Omanyte chamber's wall: carry a Water Stone",
+  "RUINS_OF_ALPH:STAR_PIECE:Omanyte Room": "Behind the Omanyte chamber's wall: carry a Water Stone",
+  "RUINS_OF_ALPH:MYSTIC_WATER:Omanyte Room": "Behind the Omanyte chamber's wall: carry a Water Stone",
+  "RUINS_OF_ALPH:LEPPA_BERRY:Omanyte Room": "Behind the Omanyte chamber's wall: carry a Water Stone",
+  "RUINS_OF_ALPH:REVIVAL_HERB:Hooh Room": "Behind the Ho-Oh chamber's wall: Ho-Oh in your party",
+  "RUINS_OF_ALPH:CHARCOAL:Hooh Room": "Behind the Ho-Oh chamber's wall: Ho-Oh in your party",
+  "RUINS_OF_ALPH:LIFE_ORB:Hooh Room": "Behind the Ho-Oh chamber's wall: Ho-Oh in your party",
+  "RUINS_OF_ALPH:LEPPA_BERRY:Hooh Room": "Behind the Ho-Oh chamber's wall: Ho-Oh in your party",
+  "JOHTO_ROUTE_33:PNK_APRICORN:outside": "With the Apricorn Box; once a day",
+  "JOHTO_ROUTE_33:BLK_APRICORN:outside": "With the Apricorn Box; once a day"
+}
