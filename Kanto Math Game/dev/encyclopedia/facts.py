@@ -123,6 +123,16 @@ for k, v in UNOVA.items():   # (Unova's own file, merged the same way)
         DATA[k] = dict(v, **DATA[k])
     elif k not in DATA:
         DATA[k] = v
+ORRE = load("orre_area_data.json")
+for k, v in ORRE.items():   # (Orre's own file, merged the same way)
+    if k == "STORY_PROGRESSION":
+        DATA[k] = dict(DATA[k], **v)
+    elif k == "JOURNAL_MISSIONS":
+        continue
+    elif isinstance(v, dict) and isinstance(DATA.get(k), dict):
+        DATA[k] = dict(v, **DATA[k])
+    elif k not in DATA:
+        DATA[k] = v
 # The game's overlays (src/core/game.py _apply_overlays: Hoenn's ORAS trainers, canon teams, items and gifts), applied the
 # same way the game does at load: the function and its file list are read from the game's own code.
 _G = open(os.path.join(ROOT, "src", "core", "game.py"), encoding="utf-8").read()
@@ -133,7 +143,7 @@ _ns["_apply_overlays"](A, DATA)
 PLACES = DATA["STORY_PROGRESSION"]
 MISSIONS = (AREA["GAME_CONFIG"]["JOURNAL_MISSIONS"] + SEVII.get("JOURNAL_MISSIONS", []) + JOHTO.get("JOURNAL_MISSIONS", [])
             + ORANGE.get("JOURNAL_MISSIONS", []) + HOENN.get("JOURNAL_MISSIONS", []) + SINNOH.get("JOURNAL_MISSIONS", [])
-            + UNOVA.get("JOURNAL_MISSIONS", []))
+            + UNOVA.get("JOURNAL_MISSIONS", []) + ORRE.get("JOURNAL_MISSIONS", []))
 
 
 def region_of(key):
@@ -149,6 +159,8 @@ def region_of(key):
         return "SINNOH"
     if key in UNOVA["STORY_PROGRESSION"]:
         return "UNOVA"
+    if key in ORRE["STORY_PROGRESSION"]:
+        return "ORRE"
     return "KANTO"
 MAPS = load("town_maps.json")
 LEVELS = load("area_levels.json")
@@ -482,6 +494,13 @@ def wild(key):
         out["tree_pool"] = tp
     if p.get("wild_tables"):
         slot_tables(p, key, out)
+    out["shadows"] = []
+    for e in p.get("shadow_pool") or []:   # (Orre: Shadow Pokemon snagged from a trainer's team, src/world/shadow.py)
+        if isinstance(e, dict) and e.get("id"):
+            sd = (DATA.get("SHADOW_DATA") or {}).get(str(e["id"])) or {}
+            out["shadows"].append({"id": e["id"], "name": fix(e.get("name") or mon_name(e["id"])), "icon": f"{base_id(e['id'])}.png",
+                                   "trainer": fix(e.get("trainer") or ""), "lv": None, "event": bool(e.get("event_only")),   # (lv: its trainer's, below)
+                                   "game": sd.get("game"), "heart": sd.get("heart")})
     out["hordes"], out["dexnav"] = [], []
     hp, hr = p.get("horde_pool_percentages"), float(p.get("horde_rate") or 0)
     if hp and DATA.get(hp) and hr > 0:
@@ -758,6 +777,13 @@ def place(key):
     facts["travel"] = deep_fix(p.get("travel_options"))
     facts["on_enter"] = deep_fix(p.get("on_enter_event"))
     facts["missions"] = [deep_fix(x) for x in MISSIONS if x.get("target") == key]
+    for r in facts["wild"].get("shadows") or []:   # (a Shadow Pokemon's level is its trainer's team's, as fought)
+        for t in facts["trainers"] + facts["battles"]:
+            if r["trainer"] and r["trainer"] in (t.get("name"), t.get("who")):
+                lv = next((m.get("lv") for m in t["team"] if m["id"] == r["id"] and m.get("lv")), None)
+                if lv:
+                    r["lv"] = lv
+                    break
     return facts
 
 
@@ -776,6 +802,10 @@ def sheet(f):
         L += [f"  {r['name']:<22} {r['how']:<10} Lv {r['lv'][0]}-{r['lv'][1]}  {r['rate']:.1f}%" for r in z["rows"]]
     if w.get("boss"):
         L.append(f"## AREA BOSS {json.dumps(w['boss'], ensure_ascii=False)}")
+    if w.get("shadows"):
+        L.append("## SHADOW POKEMON (snag from the trainer)")
+        L += [f"  {r['name']:<24} Lv {r['lv']}  from {r['trainer']}{'  (story scene)' if r['event'] else ''}  [{r['game']}]"
+              for r in w["shadows"]]
     if w["notes"]:
         L.append("## wild notes: " + "; ".join(w["notes"]))
     if f["missions"]:
@@ -847,8 +877,10 @@ def region_keys(region):
         return [k for k in MAPS if k in SINNOH["STORY_PROGRESSION"]]
     if region == "UNOVA":
         return [k for k in MAPS if k in UNOVA["STORY_PROGRESSION"]]
+    if region == "ORRE":
+        return [k for k in MAPS if k in ORRE["STORY_PROGRESSION"]]
     kanto = (set(AREA["STORY_PROGRESSION"]) - sevii - set(JOHTO["STORY_PROGRESSION"]) - set(ORANGE["STORY_PROGRESSION"])
-             - set(HOENN["STORY_PROGRESSION"]) - set(SINNOH["STORY_PROGRESSION"]) - set(UNOVA["STORY_PROGRESSION"]))
+             - set(HOENN["STORY_PROGRESSION"]) - set(SINNOH["STORY_PROGRESSION"]) - set(UNOVA["STORY_PROGRESSION"]) - set(ORRE["STORY_PROGRESSION"]))
     return [k for k in MAPS if k in kanto and (AREA["STORY_PROGRESSION"][k].get("region") in (None, "KANTO"))]
 
 
