@@ -155,7 +155,9 @@ def captable_html():
         ace = story_ace(n)
         if n < nb:
             leader = ((F.PLACES.get(order[n]) or {}).get("gym") or {}).get("leader") or {}
-            nxt = f"{leader.get('name', '?')} ({FACTS[order[n]]['name'] if order[n] in FACTS else order[n].title()})"
+            town = (FACTS[order[n]]["name"] if order[n] in FACTS
+                    else (F.PLACES.get(order[n]) or {}).get("route_name") or order[n].replace("_", " ").title())
+            nxt = f"{leader['name']} ({town})" if leader.get("name") else f"the {town} Gym"
         else:
             nxt = "the Elite Four and the Champion" if nb == 8 else "the League's champion"
         rows.append(f"<tr><td>{n}</td><td><b>Lv {ace + CAP_OVER}</b></td><td>{esc(nxt)}</td><td>Lv {ace}</td></tr>")
@@ -169,11 +171,14 @@ def wild_table(rows, caption, water=False, band=None, fixed_land=False):
     if not rows:
         return ""
     cap_col = band is not None
-    times = any(r.get("times") for r in rows)   # (HGSS's morning / day / night tables: a rate for each)
-    tt = ("Morning", "Day", "Night")
+    times = any(r.get("times") for r in rows)   # (HGSS's morning / day / night tables, or B2W2's seasons: a rate for each)
+    order = ("Morning", "Day", "Night", "Spring", "Summer", "Autumn", "Winter")
+    tt = [t for t in order if any(t in (r.get("times") or {}) for r in rows)]
 
     def rates(r):
         if times:
+            if not r.get("times"):   # (the same all year: its one rate in every season)
+                return "".join(f'<td class="rate">{rate(r["rate"])}</td>' for t in tt)
             return "".join(f'<td class="rate">{rate(r["times"][t]) if r.get("times", {}).get(t) else "—"}</td>' for t in tt)
         return f'<td class="rate">{rate(r["rate"])}</td>'
     body = "".join(f'<tr><td>{mon_cell(r)}</td><td><span class="how">{esc(r["how"])}</span></td><td>{lv(r)}</td>'
@@ -275,7 +280,8 @@ def item_rows(f, room=None):
         seen.add(key)
         place = "" if i["where"] == "outside" else i["where"]
         if i.get("hidden"):
-            how = "Hidden: step on the spot (the Itemfinder beeps near it)"
+            how = ("Hidden: step on the spot (the Dowsing Machine finds it)" if CAP["region"] == "UNOVA"
+                   else "Hidden: step on the spot (the Itemfinder beeps near it)")
         elif i.get("found"):
             how = "On the ground"
         else:
