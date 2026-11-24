@@ -127,6 +127,31 @@ ivy = next(o for o in prog["VALENCIA_ISLAND"]["explore_options"] if o["text"] ==
 check("GS_BALL" not in json.dumps(ivy) and any("GS Ball" in l for st in ivy["event"]["stages"] for l in st.get("lines", [])),
       "Professor Ivy mentions the GS Ball in a line, and gives no GS Ball (DECISIONS 11-17)")
 
+print("6b) Batch O3 (11-23): 5.7's trainer moves, the tutors' TMs")
+from src.states.overworld import common as _cm
+from src.pokemon import tutors as _tu
+_tms_tu = _tu.tutor_tms(g, "ORANGE")
+check({"TM077", "TM066", "TM086", "TM088", "TM100", "TM264", "TM103", "TM204", "TM108", "TM231", "TM232", "TM082"} <= set(_tms_tu),
+      f"the 12 Orange tutors (5.7's) each sell their TM ({sorted(_tms_tu)})")
+_cissy = prog["MIKAN_ISLAND"]["gym"]["leader"] if "leader" in prog["MIKAN_ISLAND"].get("gym", {}) else prog["MIKAN_ISLAND"]["gym"]
+_team = _cm._story_team(g, "MIKAN_ISLAND", dict(_cissy))
+check(_team and getattr(_team[0], "preset_moves", None) and "WATER-GUN" in [str(m).upper() for m in _team[0].preset_moves] + [str(m).upper() for m in getattr(_team[0], "moves", [])]
+      or bool(_cissy.get("team_moves")),
+      f"Cissy fights with 5.7's own moves ({_cissy.get('team_moves')})")
+_tm = json.load(open("assets/town_maps.json", encoding="utf-8"))
+_gul = json.dumps(_tm["BUTWAL_ISLAND"])
+check('"oi_trainer": 37' in _gul and "team_moves" in _gul, "Gulzar (a map scene's battle) fights with 5.7's moves too")
+check(sum(1 for _ in json.dumps({k: prog[k] for k in ORANGE}).split('"team_moves"')[1:]) >= 58,
+      "every Orange trainer whose 5.7 team has set moves carries them (58 in the data, 15 on the maps; oteam.py)")
+
+_shops = [(k, o.get("text"), o.get("stock")) for k in ORANGE for o in (prog[k].get("explore_options") or []) + (prog[k].get("route_menu") or [])
+          if o.get("action") == "SHOP"]
+check(len(_shops) >= 15 and all(st for _k, _t, st in _shops),
+      f"every Orange shop sells 5.7's own list, none the badge counter (Jordan 11-23; ostock.py) ({[(k, t) for k, t, st in _shops if not st]})")
+check(prog["TANGELO_ISLAND"]["explore_options"][1].get("stock", [])[:2] == ["POKE_BALLS", "POTION"] and
+      not any(str(i).startswith("TM") for k, t, st in _shops if t != "TM clerk" for i in st),
+      "Tangelo's Mart: 5.7's Poke Balls, Potions...; no TMs in an Orange Mart but Trovitopolis's TM counter")
+
 print("7) Visiting every Orange area")
 for k in ORANGE:
     story.current_area_key = k

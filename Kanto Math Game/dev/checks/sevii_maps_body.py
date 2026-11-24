@@ -271,6 +271,14 @@ _wm = _core.Mover("wild", 9, 9, None)
 _f2.movers.append(_wm)
 p.run.warp(2, 9, 9, land=True)
 check(tuple(p.run.player) == (9, 9) and (_wm.x, _wm.y) != (9, 9), f"...a wild Pokemon on the landing spot steps aside: you land on it ({p.run.player}, it's at {(_wm.x, _wm.y)})")
+_f2.movers = [m for m in _f2.movers if (m.x, m.y) != (9, 9)]   # (11-23: two on the one spot - the first stepped aside, the second stayed)
+_wa, _wb = _core.Mover("wild", 9, 9, None), _core.Mover("wild", 9, 9, None)
+_f2.movers += [_wa, _wb]
+p.run.warp(2, 9, 9, land=True)
+check(tuple(p.run.player) == (9, 9) and (9, 9) not in ((_wa.x, _wa.y), (_wb.x, _wb.y)),
+      f"...two wild Pokemon on the landing spot both step aside ({p.run.player}; {(_wa.x, _wa.y)}, {(_wb.x, _wb.y)}; "
+      f"on (9, 9): walkable {_f2.walkable(9, 9)}, exit {_f2.exits.get((9, 9))}, item {(9, 9) in _f2.items}, tm {(9, 9) in _f2.tm_spots}, "
+      f"movers {[(m.kind, m.x, m.y, getattr(m, 'size', 1)) for m in _f2.movers if abs(m.x - 9) + abs(m.y - 9) <= 2]})")
 
 # Green Path is two halves joined only through Pattern Bush (as in FireRed): each of the Bush's mouths brings you out on its own side
 for _i, _side in ((0, "west"), (5, "east")):
@@ -281,7 +289,7 @@ for _i, _side in ((0, "west"), (5, "east")):
 p = route("GREEN_PATH", "WATER_PATH")
 check(p.run.player[0] >= 60, f"Green Path from Water Path: on the east lane {p.run.player}")
 
-# Faraway Island (Emerald's: its own walls, its look from the pictures): from the boat up the cliff steps, through the grove to the forest's way in, to Mew
+# Faraway Island (Emerald's own map data and art, 11-23 - was its walls + Jordan's pictures): from the boat up the cliff steps, through the grove to the forest's way in, to Mew
 p = route("FARAWAY_ISLAND", "ONE_ISLAND")
 f0, f1 = p.run.made(0), p.run.made(1)
 _got0 = reach(f0, tuple(p.run.player))
@@ -297,8 +305,9 @@ while _todo:  # (the same walk without Surf: the ponds are in the way)
         _n = (_x + _dx, _y + _dy)
         if _n not in _land and f0.inside(*_n) and f0.walkable(*_n) and f0.tile(*_n) != core.SURF:
             _land.add(_n); _todo.append(_n)
-check((9, 16) in _land and (22, 9) not in _land and not f0.walkable(18, 13) and f0.tile(18, 10) == core.SURF,
-      "...as Emerald's own walls have it: on foot you reach the grove but not the forest's way in; the way crosses the ponds (Surf); the three trees across the lane stand")
+_pics = [((MAPS["FARAWAY_ISLAND"]["floors"][i].get("roofs") or {}).get("_picture") or {}).get("f") for i in (0, 1)]
+check((22, 8) in _land and (9, 16) in _land and _pics == ["fr_ground/26_56.png", "fr_ground/26_57.png"],
+      f"...as Emerald's own map data has it (11-23: built from Jordan's Emerald file, k_batch38): on foot, no Surf, from the pier up to the forest's way in; drawn from Emerald's own pictures ({_pics})")
 
 # Tanoby Ruins: the Unown are in the chambers, not out on the sea; each of the seven ruins leads into its own chamber
 p = route("TANOBY_RUINS", "SEVAULT_CANYON")

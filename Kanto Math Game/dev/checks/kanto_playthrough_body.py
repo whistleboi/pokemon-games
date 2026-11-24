@@ -799,6 +799,9 @@ def things(st):
             now = next(o for o in opt["any"] if st._shown(o)) if "any" in opt else opt
             if str(now.get("action") or "").upper() in BORING:
                 continue
+            _ride = (now.get("event") or {}).get("travel")   # (a ride - a ship, a ferry, a train - only toward the mission's place: else a
+            if _ride and _ride != (MISSIONS.get(STATE.get("mission")) or {}).get("target"):   # run sails off and is stranded; Unova 11-23)
+                continue
             out_.append((0, ("P", home), [spot], f"talk to {now.get('text')}", None))
         for t, kind in st.doors.items():
             room = st._room_for(t)

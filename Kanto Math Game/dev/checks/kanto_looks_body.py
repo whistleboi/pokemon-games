@@ -171,6 +171,31 @@ for k, v in sorted(stock.items()):
     print(f"   {k}: {len(v)}: {', '.join(map(str, v[:8]))}{' ...' if len(v) > 8 else ''}")
 print(f"   ({sum(len(v) for v in stock.values())} in all: listed, not failed - some are things, not people)")
 
+print("\n5) battle backgrounds: FireRed's own (assets/battle_bg/KANTO, kanto_rom_tools/fr_battle_bg.py), the way FireRed picks them")
+from src.world import battle_bg as bbg
+bbg._INDEX.clear()
+_bn = lambda p_: os.path.basename(p_) if p_ else None
+_want = [("KANTO_ROUTE_1", {}, "grass.png"), ("KANTO_ROUTE_1", {"trainer": True}, "plain.png"),
+         ("KANTO_ROUTE_19", {"water": True}, "water.png"), ("VIRIDIAN_CITY", {"water": True}, "pond.png"),
+         ("MT_MOON", {}, "cave.png"), ("SEAFOAM_ISLANDS", {"water": True}, "pond.png"),
+         ("KANTO_POKEMON_TOWER", {"trainer": True}, "indoor_1.png"), ("ROCKET_HIDEOUT", {"trainer": True}, "indoor_2.png"),
+         ("POWER_PLANT", {}, "indoor_2.png"), ("SILPH_CITY", {"trainer": True}, "building.png"),
+         ("KINDLE_ROAD", {"trainer": True}, "sand.png"), ("TANOBY_RUINS", {}, "indoor_1.png"), ("ONE_ISLAND", {"trainer": True}, "plain.png"),
+         ("PEWTER_CITY", {"trainer": True}, "plain.png"), ("PEWTER_CITY", {"trainer": True, "gym": True}, None), ("PEWTER_CITY", {"trainer": True, "gym": True, "leader": True}, None)]
+_got = [(a, kw, _bn(bbg.pick(g, a, water=kw.get("water", False), **{k: v for k, v in kw.items() if k != "water"})), w) for a, kw, w in _want]
+for a, kw, got, w in _got:
+    print(f"   {a} {kw}: {got} (FireRed's: {w or 'none - the Gym keeps its own'})")
+check(all(got == w for a, kw, got, w in _got), "each place's battles use FireRed's background for it; Pewter's Gym and Leader keep the custom ones")
+_lg = [_bn(story.get_gym_battle_background("INDIGO_PLATEAU", i, False)) for i in range(4)] + [_bn(story.get_gym_battle_background("INDIGO_PLATEAU", 4, True))]
+check(_lg == ["lorelei.png", "bruno.png", "agatha.png", "lance.png", "champion.png"], f"the League room by room: FireRed's Lorelei, Bruno, Agatha, Lance and Champion ({_lg})")
+_gy = story.get_gym_battle_background("CERULEAN_CITY", 0, True)
+check(_gy and "battle_bg" not in str(_gy), f"a Gym (Cerulean's Misty) keeps its custom background ({_gy})")
+_ix = json.load(open(os.path.join(bbg.folder(g, "KANTO"), "index.json"), encoding="utf-8"))
+_names = {v for e in _ix["areas"].values() for v in ([e] if isinstance(e, str) else [x for y in e.values() for x in (y if isinstance(y, list) else [y])])} | set(_ix["terrain"].values())
+_files = {f for f in os.listdir(bbg.folder(g, "KANTO")) if f.endswith(".png")}
+check(not (_names - _files) and not (_files - _names) and set(_ix["areas"]) >= set(KEYS),
+      f"every Kanto/Sevii place has an entry; every picture named is there and none is unused (missing {sorted(_names - _files)}, unused {sorted(_files - _names)})")
+
 print(f"##### {len(fails)} failures")
 for m in fails:
     print("   FAIL " + m)

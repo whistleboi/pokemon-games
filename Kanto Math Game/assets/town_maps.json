@@ -31440,7 +31440,7 @@
         "Take a run at the League and knock 'em out! Just watch the recoil."
        ],
        "fail": [
-        "Ace trainer: Hmm, none of your Pokemon can learn Double Edge. Come back with one that can!"
+        "Ace trainer: Hmm, none of your Pokemon can learn Double-Edge. Come back with one that can!"
        ]
       }
      },
@@ -302530,420 +302530,75 @@
   }
  },
  "FARAWAY_ISLAND": {
-  "buildings": {},
-  "floor_names": [
-   "The shore",
-   "The forest"
-  ],
-  "figure_floors": {
-   "CHALLENGE MEW": 1,
-   "FOLLOW THE PINK SHADOW": 1
-  },
   "floors": [
    {
     "art": [
-     "~cccccTTTTTTTTTTTTTTTTTTTTTTTcccc~",
-     "~cccccTTT.ooTTooo.f.TTTTTTTTTcccc~",
-     "~cccccTTTooofTooooff.TTTTTTTTcccc~",
-     "~cccccTTooo..T..ooo..TTTTTTTTcccc~",
-     "~cccccTToo.TTTTT.ooT.TTTTTTTTcccc~",
-     "~cccccTT..TTTooTT..TTTTTTTTTTcccc~",
-     "~cccccTTTTT.TooTTTTTTTTTTTTTfcccc~",
-     "~cccccTTToo.....TTTTTT11TTTT.cccc~",
-     "~cccccTTooo.TTT..TooTT..TTTT.cccc~",
-     "~ccccccToo.TTfTT.ooo....TTT..cccc~",
-     "~ccccccT..TTooT.ToooT..TTfT..cccc~",
-     "~ccccccTT...oof.T.oo..TTT.TT.cccc~",
-     "~ccccccTTTT.....TT...TTTTTTT.cccc~",
-     "~ccccccTT.TTT.T...T.TTfTT.TTTcccc~",
-     "~ccccccTT..f.T.....TTffTT.TTTcccc~",
-     "~cccccccT......TTT...f.cccccccccc~",
-     "~cccccccc.TTT.ccccTcccTcccccccccc~",
-     "~cccccccceccTTccccccccTcccccccccc~",
-     "~ccccccc===cTcccccccccccccccccccc~",
-     "~ccccccccc=cTccc====ccccccccccccc~",
-     "~cc=cccccc=cccc====cccccccccc~~~~~",
-     "~cc=cccccc=cccc=ceccccccccccc~~~~~",
-     "~cc===cccc=cccc=c=ccccccccccc~~~~~",
-     "~ccec=cccc=ccc==c=cccccccccc~~~~~~",
-     "~c==c=cccc=ccc==c=cccccccccc~~~~~~",
-     "~c==c=cccc==cc=cc=cccccccccc~~~~~~",
-     "~c==c=cccc==c==c==cccccccccc~~~~~~",
-     "~c==c=cccc==c==c==cccccccccc~~~~~~",
-     "~c==c=cccccec=cc===cccccccc~~~~~~~",
-     "~c==c==cccc===c====ccccc~~~~~~~~~~",
-     "~c==c==cccc=ccc===ccc~~~~~~~~~~~~~",
-     "~c==c===ccccc=====ccc~~~~~~~~~~~..",
-     "~c=!ccc==cc=======cc~~~~~~~~~~~c..",
-     "~c====cc==========cc~~~~~~~~~~~cTT",
-     "~c=====cccccccceeccc~~~~~~~~~~~cTT",
-     "~c==cccccccccckeekcc~~~~~~~~~~~cTT",
-     "~c=cc~~~~~~~~~keek~~~~~~~~~~~~~cTT",
-     "~c=c~~~~~~keeeeeek~~~~~~~~~~~~~cTT",
-     "~ccc~~~~~~keeeeeek~~~~~~~~~~~~~cTT",
-     "~~~~~~~~~~kkkvvkkk~~~~~~~~~~~~~cTT",
-     "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ccc",
-     "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
-     "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
-     "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
-     "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
-     "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+     "cccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccc",
+     "ccccccccccccc..ccccccccccccccccccc",
+     "ccccccccccc.c..ccccccccccccccccccc",
+     "ccccccccc.......cccccc11cccccccccc",
+     "cccccccc....ccc..c..cc..cccccccccc",
+     "cccccccc...cc.cc........cccccccccc",
+     "cccccccc..cc..c.c...c..ccccccccccc",
+     "ccccccccc.......c.....cccccccccccc",
+     "ccccccccccc.....cc...ccccccccccccc",
+     "ccccccccc.ccc.c...c.cc.ccccccccccc",
+     "ccccccccc....c.....cc..ccccccccccc",
+     "ccccccccc......ccc.....ccccccccccc",
+     "ccccccccc.ccc.cccccccccccccccccccc",
+     "ccccccccc.cccccccccccccccccccccccc",
+     "cccccccc...ccccccccccccccccccccccc",
+     "cccccccccc.ccccc....cccccccccccccc",
+     "ccc.cccccc.cccc....ccccccccccccccc",
+     "ccc.cccccc.cccc.c.cccccccccccccccc",
+     "ccc...cccc.cccc.c.cccccccccccccccc",
+     "ccc.c.cccc.ccc..c.cccccccccccccccc",
+     "cc..c.cccc.ccc..c.cccccccccccccccc",
+     "cc..c.cccc..cc.cc.cccccccccccccccc",
+     "cc..c.cccc..c..c..cccccccccccccccc",
+     "cc..c.cccc..c..c..cccccccccccccccc",
+     "cc..c.ccccc.c.cc...ccccccccccccccc",
+     "cc..c..cccc...c....ccccccccccccccc",
+     "cc..c..cccc.ccc...cccccccccccccccc",
+     "cc..c...ccccc.....ccccccccccccc~cc",
+     "cc.!ccc..cc.......cccccccccccccccc",
+     "cc....cc..........cccccccccccccccc",
+     "cc.....cccccccc..ccccccccccccccccc",
+     "cc..ccccccccccc..ccccccccccccccccc",
+     "cc.ccccccc~~~~c..ccccccccccccccccc",
+     "cc.cccccccc......ccccccccccccccccc",
+     "ccccccccccc......ccccccccccccccccc",
+     "cccccccccccccvvccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccccc"
     ],
     "exits": {
      "v": "ONE_ISLAND"
     },
-    "parts": true,
-    "overheads": [
-     {
-      "kind": "tops",
-      "rect": [
-       11,
-       3,
-       2,
-       1
-      ],
-      "of": "tree"
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/26_56.png",
+      "at": [
+       0,
+       0
+      ]
      },
-     {
-      "kind": "tops",
-      "rect": [
-       14,
-       3,
-       2,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       19,
-       3,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       10,
-       4,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       16,
-       4,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       20,
-       4,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       8,
-       5,
-       2,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       17,
-       5,
-       2,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       12,
-       7,
-       3,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       11,
-       8,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       15,
-       8,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       10,
-       9,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       16,
-       9,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       20,
-       9,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       23,
-       9,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       8,
-       10,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       22,
-       10,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       27,
-       10,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       9,
-       11,
-       2,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       17,
-       11,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       21,
-       11,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       25,
-       11,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       11,
-       12,
-       2,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       14,
-       12,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       18,
-       12,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       20,
-       12,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       28,
-       12,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       13,
-       13,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       19,
-       13,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       15,
-       14,
-       3,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       10,
-       15,
-       3,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       18,
-       15,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       22,
-       15,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       13,
-       16,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       32,
-       32,
-       2,
-       1
-      ],
-      "of": "tree"
-     }
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "The writing is too faded to read..."
+     ]
     ],
     "links": {
      "22,7": [
@@ -302957,514 +302612,67 @@
       19
      ]
     },
-    "signs": [
-     [
-      "The writing is too faded to read..."
-     ]
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/26_56.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       34,
+       46
+      ]
+     }
     ]
    },
    {
     "art": [
-     "TTTooo..\"oooo.f\"\"....ooT\"\"\"TT",
-     "TTToooTT\"oooooo\"\"TTToooT\"\"\"TT",
-     "TT.\"oo.T\".f.ooof\".TToooT\".\"TT",
-     "Too\"f\"TT.T.T.....TTT.f.T\"T.TT",
-     "Too\"\"\"T.TTTTTTTTTTTTT.TT\"\"TTT",
-     "T\".r\".TT..f.ffff....TTTT\"\"\"\"T",
-     "T\"T..TT....f...f....fTT\"\"\"\"\"T",
-     "T.T.Tf..\"\"\"\"\"\"\"\"\"\"\"\".T\"\"\"\"\"\"T",
-     "TTTTT.f\"\"\"\"\"\"\"\"\"\"\"\"\".T\"\"\"\"\"\"T",
-     "TooTT..\"\"\"\"\"\"\"r\"\"\"r\"Tf\"\"\"oo\"T",
-     "Too\"T..\"\"r\"\"\"\"\"\"\"\"\"\"T.\"\"ooo\"T",
-     "T\".\"TT.\"\"\"\"\"\"\"\"\"\"\"\"\".T\"\"oo\"\"T",
-     "T\"ooTT.\"\"\"\"\"\"\"\"\"\"\"\"\".T\"oof\"\"T",
-     "TooooT.\"\"\"\"\"\"r\"\"\"\"\".TT\"ooo\"\"T",
-     "ToooooT.\"\"\"\"\"\"\"\"\"\"\".TT\".ooo\"T",
-     "Too.oooT..\"\"\"\"\"\"\"\".TTT\"\"\"oo\"T",
-     "T.frfooTT...\"N\".f..TT\"\"\"\"\"\"\"T",
-     "Too.rooTT....N....TTT\"oo\"\"\".T",
-     "TooTf\"\"\"TT.......TTTT\"oo\"\".TT",
-     "TooT.\"\"\"TTTT11TTTToo\"\"\"\"\"\"TTT",
-     "T..TT\"\".TTTTTTTTTToo\"\"\"\"\".TTT",
-     "TTTT\"\".TTTTTTTTTTT...\"\"\".TTTT",
-     "TTT\"\"\"TTTTTTTTTTTTTTT.\".TTTTT",
-     "TTT\"\".TTTTTTTTTTTTTTTT.TTTTTT",
-     "TTT\"TTTTTTTTTTTTTTTTTTTTTTTTT",
-     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+     "ccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccc",
+     "cccccccc............ccccccccc",
+     "ccccccc..............cccccccc",
+     "ccccc................cccccccc",
+     "ccccc................cccccccc",
+     "ccccc.........c...c.ccccccccc",
+     "ccccc....c..........ccccccccc",
+     "cccccc...............cccccccc",
+     "cccccc...............cccccccc",
+     "cccccc.......c......ccccccccc",
+     "ccccccc.............ccccccccc",
+     "cccccccc...........cccccccccc",
+     "ccccccccc....N.....cccccccccc",
+     "ccccccccc....N....ccccccccccc",
+     "cccccccccc.......cccccccccccc",
+     "cccccccccccc11ccccccccccccccc",
+     "ccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccc"
     ],
     "exits": {},
-    "parts": true,
-    "overheads": [
-     {
-      "kind": "tops",
-      "rect": [
-       6,
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/26_57.png",
+      "at": [
        0,
-       2,
-       1
-      ],
-      "of": "tree"
+       0
+      ]
      },
-     {
-      "kind": "tops",
-      "rect": [
-       17,
-       0,
-       3,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       6,
-       2,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       9,
-       2,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       11,
-       2,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       17,
-       2,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       25,
-       2,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       8,
-       3,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       10,
-       3,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       12,
-       3,
-       5,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       20,
-       3,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       22,
-       3,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       26,
-       3,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       7,
-       4,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       21,
-       4,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       2,
-       5,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       5,
-       5,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       4,
-       6,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       1,
-       7,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       3,
-       7,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       20,
-       8,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       5,
-       10,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       21,
-       10,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       20,
-       12,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       6,
-       13,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       7,
-       14,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       19,
-       14,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       8,
-       15,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       18,
-       16,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       3,
-       17,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       9,
-       17,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       17,
-       17,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       27,
-       17,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       10,
-       18,
-       2,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       14,
-       18,
-       3,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       26,
-       18,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       4,
-       19,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       1,
-       20,
-       2,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       7,
-       20,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       25,
-       20,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       6,
-       21,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       18,
-       21,
-       3,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       24,
-       21,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       21,
-       22,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       23,
-       22,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       5,
-       23,
-       1,
-       1
-      ],
-      "of": "tree"
-     },
-     {
-      "kind": "tops",
-      "rect": [
-       22,
-       23,
-       1,
-       1
-      ],
-      "of": "tree"
-     }
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "FOLLOW THE PINK SHADOW",
+     "CHALLENGE MEW"
     ],
     "links": {
      "12,19": [
@@ -303478,12 +302686,38 @@
       7
      ]
     },
-    "people": [
-     "CHALLENGE MEW",
-     "FOLLOW THE PINK SHADOW"
+    "moves": {
+     "13,17": {
+      "m": "copy",
+      "v": "opposite",
+      "g": 1
+     }
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/26_57.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       29,
+       26
+      ]
+     }
     ]
    }
-  ]
+  ],
+  "floor_names": [
+   "The shore",
+   "The forest"
+  ],
+  "figure_floors": {
+   "CHALLENGE MEW": 1,
+   "FOLLOW THE PINK SHADOW": 1
+  }
  },
  "OUTSKIRT_STAND": {
   "art": [
@@ -334536,14 +333770,8 @@
   ]
  },
  "TANGELO_ISLAND": {
-  "wade": [
-   [
-    31,
-    14
-   ]
-  ],
   "art": [
-   "^o~~^^^^^^^^^o~~oo^^ooo^cccccccccccccccccccccccc",
+   "^o~~^^^^^^^^^o~~cc^^ccc^cccccccccccccccccccccccc",
    "oo~~oooooooooo~~~~ooccc..ccccccccccccccccccccccc",
    "o~~ooooooooooooo~~c..ccccccccccccccccccccccccccc",
    "o~~oooo========ooccccccccccccccccccccccccccccccc",
@@ -335083,7 +334311,33 @@
          "CHERI_BERRY",
          "CHERI_BERRY"
         ],
-        "is_boss_battle": true
+        "is_boss_battle": true,
+        "team_moves": [
+         [
+          "POISON-STING",
+          "GLARE",
+          "WRAP",
+          "BITE"
+         ],
+         [
+          "TACKLE",
+          "SMOKESCREEN",
+          "SMOG",
+          "SLUDGE"
+         ],
+         [
+          "LICK",
+          "SUPERSONIC",
+          "WRAP",
+          "STOMP"
+         ],
+         [
+          "VINE-WHIP",
+          "SLEEP-POWDER",
+          "WRAP",
+          "RAZOR-LEAF"
+         ]
+        ]
        },
        "flag": "orange_jj_tangelo",
        "lines": []
@@ -335743,7 +334997,13 @@
     "theme": "room",
     "title": "House"
    }
-  }
+  },
+  "wade": [
+   [
+    31,
+    14
+   ]
+  ]
  },
  "ORANGE_ROUTE_49": {
   "art": [
@@ -336001,7 +335261,7 @@
  },
  "ORANGE_ROUTE_50": {
   "art": [
-   "^^o~~^^^^^^^^^^^^^o~~^^o",
+   "^^o~~^^^^^^^^^^^^^o~~^oo",
    "ooo~~oooooooooooooo~~ooo",
    "oooo~~oooooooooooooo~~oo",
    "oo~~~~oooooooooooo~~~~oo",
@@ -336040,7 +335300,7 @@
    "oo~~oooooooooo~~oooooooo",
    "oo~~oooooooooo~~oooooooo",
    "o~~oooooooooo~~ooooooooo",
-   "v~~ovvvvvvvvv~~oovvvvovv"
+   "v~~ovvvvvvvvv~~ooovvooov"
   ],
   "exits": {
    "v": "TANGELO_ISLAND",
@@ -336111,24 +335371,12 @@
     12,
     0
    ],
-   "17,39": [
-    17,
-    0
-   ],
    "18,39": [
     18,
     0
    ],
    "19,39": [
     19,
-    0
-   ],
-   "20,39": [
-    20,
-    0
-   ],
-   "22,39": [
-    22,
     0
    ],
    "23,39": [
@@ -336197,10 +335445,6 @@
    ],
    "21,0": [
     21,
-    39
-   ],
-   "22,0": [
-    22,
     39
    ]
   },
@@ -336297,7 +335541,7 @@
    "ooo~~oooooooooooo~~ccccccccccccccccccccccccccccc",
    "ooo~~oooooooooooo~~ooccccccccccccccccccccccccccc",
    "oo~~oooooooooooooo~~oocccccccccccccccccccccccccc",
-   "vv~~ovvvvvvvvvvvvv~~ovoooccccccccccccccccccccccc"
+   "vv~~ovvvvvvvvvvvvv~~ovcccccccccccccccccccccccccc"
   ],
   "exits": {
    "v": "ORANGE_ROUTE_50",
@@ -337692,9 +336936,9 @@
    "<ooo~~~~~~~~oo=ccc..................c...c.==o~~c",
    "<o~~~~oo~~oooo==.cccc............cccc======ooo~~",
    "~~~~oooooooooo=====cccc.........ccc======ooooo~~",
-   "~~oooooooooooooo====ccccccccccccc=====ooooooo~~o",
-   "oooooooooooooooooo==cc=.====o~~oooooooooooo~~~~o",
-   "ooooooooooooooooooo=====vvvvv~~ovvvvvvvvvvv~~oov"
+   "~~oooooooooooooo====ccccccccccccc=====ooooooo~~c",
+   "oooooooooooooooooo==cc=.====o~~oooooooooooo~~~~c",
+   "ooooooooooooooooooo=====vvvvv~~ovvvvvvvvvvv~~ccv"
   ],
   "exits": {
    "<": "ORANGE_ROUTE_53",
@@ -339227,7 +338471,7 @@
  },
  "ORANGE_ROUTE_54": {
   "art": [
-   "^^^^^o~~^^^^^^^^^^^o~~^^",
+   "^^^^^o~~^^^^^^^^^^^o~~o^",
    "oooooo~~oooooooooooo~~oo",
    "ooooo~~oooooooooooooo~~o",
    "ooooo~~oooooooooooooo~~o",
@@ -339360,10 +338604,6 @@
    ],
    "18,0": [
     42,
-    39
-   ],
-   "22,0": [
-    46,
     39
    ],
    "23,0": [
@@ -339998,7 +339238,7 @@
        "battle": {
         "name": "Tracey",
         "class": "PKMN_TRAINER",
-        "sprite": "tracey.png",
+        "sprite": "tracey_oi.png",
         "team": [
          48,
          183
@@ -340015,7 +339255,21 @@
          "CHERI_BERRY",
          "CHERI_BERRY"
         ],
-        "is_boss_battle": true
+        "is_boss_battle": true,
+        "team_moves": [
+         [
+          "CONFUSION",
+          "SLEEP-POWDER",
+          "FORESIGHT",
+          "TACKLE"
+         ],
+         [
+          "WATER-GUN",
+          "DEFENSE-CURL",
+          "ROLLOUT",
+          "TACKLE"
+         ]
+        ]
        },
        "flag": "orange_tracey_battle_sunburst",
        "lines": [],
@@ -340317,10 +339571,10 @@
       "text": "Name Rater",
       "action": "EVENT",
       "event": {
-       "name_rater": true,
        "lines": [
         "I'm the Name Rater! Let me see one of your Pokémon. A name says everything!"
-       ]
+       ],
+       "name_rater": true
       }
      }
     ],
@@ -340671,13 +339925,13 @@
    "oooo~~oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooXoooooooooooooooooooooooooooo~~~~~~ooo>",
    "ooooo~~ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo~~o~~oo~",
    "ooooo~~oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo~~~~~",
-   "oooo~~ooooooooooooooooooooooooooooooooooooooooo~~oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo~~o",
+   "oooo~~ooooooooooooooooooooooooooooooooooooooooo~~oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo~~c",
    "oooo~~oooooooooooooooooooooooooo~~ooooooooooo~~~~~~oooooooooooooooooooooooooo===ooooooooooooooooooooooooooooooo>",
    "ooo~~ooooooooooooooooo~~oo~~oo~~~~~~ooooooooo~~oo~~ooooooooo~~oo~~oooooooooo==.==oooo~~oooooooooooooooooooooooo>",
    "ooo~~ooooooooo====oo~~~~~~~~~~~~oo~~~~oo~~oo~~oooo~~oooooo~~~~~~~~~~oooooooo====Xoo~~~~~~ooooooooooooooooooooooo",
    "oooo~~ooooooo=====oo~~oo~~oo~~oooooo~~~~~~~~~~oooo~~~~oo~~~~oo~~oo~~~~oo~~ooooooooo~~oo~~oooooooooooooooooooooo>",
    "oooo~~ooooooo==Xooo~~ooooooooooooooooo~~oo~~oooooooo~~~~~~oooooooooo~~~~~~~~oo~~oo~~oooo~~oo~~oo~~oooooooooo}{o>",
-   "ooo~~oooooooooooo~~~~ooooooooooooooooooooooooooooooooo~~oooooooooooooo~~oo~~~~~~~~~~oooo~~~~~~~~~~~~oo~~oooo]{o>",
+   "ooo~~oooooooooooo~~~~ooooooooooooooooooooooooooooooooo~~oooooooooooooo~~oo~~~~~~~~~~oooo~~~~~~~~~~~~oo~~oooo]{oo",
    "ooo~~oooXoooooo~~~~ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo~~oo~~oooooooo~~oo~~oo~~~~~~o~~oooo~",
    "oo~~ooooooooooo~~ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo~~o~~~~~~~~~",
    "oo~~oooooooooo~~ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo~~cc~~~~c",
@@ -340900,10 +340154,6 @@
    "111,27": [
     0,
     35
-   ],
-   "111,28": [
-    0,
-    36
    ]
   },
   "moves": {
@@ -341021,7 +340271,33 @@
          "CHERI_BERRY",
          "CHERI_BERRY"
         ],
-        "is_boss_battle": true
+        "is_boss_battle": true,
+        "team_moves": [
+         [
+          "POISON-STING",
+          "GLARE",
+          "WRAP",
+          "BITE"
+         ],
+         [
+          "TACKLE",
+          "SMOKESCREEN",
+          "SMOG",
+          "SLUDGE"
+         ],
+         [
+          "LICK",
+          "SUPERSONIC",
+          "WRAP",
+          "STOMP"
+         ],
+         [
+          "VINE-WHIP",
+          "SLEEP-POWDER",
+          "WRAP",
+          "RAZOR-LEAF"
+         ]
+        ]
        },
        "flag": "orange_jj_route55_battle",
        "lines": []
@@ -341085,13 +340361,13 @@
    "<o~~====ccc/ccccccccccccccccccc\"\"\"\"\"\"\"\"\"\"\"cccccccccccc=====o~~oo",
    "~~~ooo====.==cccccccccccccccccc\"\"\"\"\"\"\"\"cccccccccccccc=====ooo}[>",
    "~~~oooooo===oo~~ccccccccccccccccc\"\"\"\"cccccccccccccccc==oooooo}{>",
-   "<o[[oooooooooo~~cccccccccccccccccN\"\"\"cccccccccccccccoooooooo}[o>",
+   "oo[[oooooooooo~~cccccccccccccccccN\"\"\"cccccccccccccccoooooooo}[o>",
    "<o]{oooo[[ooo~~oocccccccccccccccccccccccccccccccccccoooooooo}{o>",
    "o[[ooooo]{ooo~~ooccccccccccccccccccccccccccccccccccc~~oo}[ooo}[>",
    "o]{ooooooooo~~oxxoccccccccccccccccccccccccccccccccco~~oo}{ooo]]>",
    "oo[{oooooo~~~~oxxoocccccccccccccccccccccccccccccooooo~~ooooo}[o>",
    "<o]{oooo~~~~ooooooocccccccccccccccccccccccooooooxxooo~~~~ooo]]o>",
-   "o~~oo~~o~~oooooooooo=cccccccccccccc=.====oooooooxxooooo~~~~oo~~o",
+   "c~~oo~~o~~oooooooooo=cccccccccccccc=.====oooooooxxooooo~~~~oo~~c",
    "~~~~~~~~~ooxxooooooo=======.==========ooooxxooooooooooooo~~~~~~~",
    "~oo~~oo~~ooxxooooxxoooooo========oooxxooooxxooxxooooxxoooxx~~oo~",
    "oooooooooooooooooxxoooooooooooooooooxxooooooooxxooooxxoooxxoooo>"
@@ -341303,10 +340579,6 @@
    "0,27": [
     111,
     19
-   ],
-   "0,30": [
-    111,
-    22
    ],
    "0,31": [
     111,
@@ -341736,8 +341008,8 @@
    "<oooooxxoooooo~~oo}[oo}[o~~oxxoooooooooooooooooooooo~~oo~~oooooooo~~oo~~ooooooov",
    "<ooo~~oooooo~~~~}[}{}[}{~~ooxxooo~~ooooooo~~oo~~oo~~~~~~~~~~oooo~~~~~~~~~~ooooov",
    "oo~~~~~~oo~~~~oo]]oo]]oo~~ooooo~~~~ooooo~~~~~~~~~~~~oo~~oo~~oooo~~oo~~oo~~ooooov",
-   "~~~~oo~~~~~~ooooooooooooo~~oo~~~~o~~oo~~~~oo~~oo~~ooooooooo~~oo~~oooooooo~~oo~~o",
-   "~~oooooo~~ooooooooooooooo~~~~~~ooo~~~~~~ooooooooooooooooooo~~~~~~oooo===o~~~~~~o",
+   "~~~~oo~~~~~~ooooooooooooo~~oo~~~~o~~oo~~~~oo~~oo~~ooooooooo~~oo~~oooooooo~~oo~~c",
+   "~~oooooo~~ooooooooooooooo~~~~~~ooo~~~~~~ooooooooooooooooooo~~~~~~oooo===o~~~~~~c",
    "<oo}[oooooooooooooooo}[oooo~~oo==ooo~~ooooooooooooooooooooooo~~ooooo====ooo~~o~~",
    "<oo}{ooo}{oooooo}[ooo}{oo==ooo===ooooooooooooooooooooooooooooooooooo=X=ooooooo~~",
    "<ooooooo]{oooooo}{ooooooo========ooooooooooooooooooooooooooooooooooooooooooooooo",
@@ -341746,7 +341018,7 @@
    "<oooo]{oooooooooooo}[oooooooooooooooooooooooooooo=======ooooooooooooooooooooooov",
    "<oooooooooooooooooo}{oooooooooooooooooooooooooooo===ccc=ooooooooooooooooooooooov",
    "<oo~~oooooo~~oooooooooooooooooooo~~ooooooo~~ooooooo=====oooooooo~~oo~~ooooooooov",
-   "o~~~~~~oo~~~~~~oooooooooooo~~oo~~~~~~ooo~~~~~~oo~~oooX=ooo~~oo~~~~~~~~~~oo~~ooov",
+   "c~~~~~~oo~~~~~~oooooooooooo~~oo~~~~~~ooo~~~~~~oo~~oooX=ooo~~oo~~~~~~~~~~oo~~ooov",
    "~~~oo~~~~~~oo~~oooooooooo~~~~~~~~oo~~o~~~~oo~~~~~~~~oooo~~~~~~~~oo~~oo~~~~~~~~ov",
    "~oooooo~~oxxoo~~oo}{oo}{o~~oo~~ooooo~~~~oooooo~~oo~~~~~~~~oo~~oooooooooo~~oo~~~~",
    "<oxxooooooxxoo~~}{]{}{]{~~oooooooooo~~oooooooooooooo~~~~oooooooooooooooooooooo~~",
@@ -342587,9 +341859,9 @@
    "<oo==ccc......ccc......ccccc==.ccN===!ccccc......ccc......cccoo>",
    "<ooo=ccc...!..ccc.....ccccc===cccc=====ccccc.....ccc..c...cccoo>",
    "<oooocc.......ccc.....ccccc=====N====.===ccc.....ccc.......ccoo>",
-   "<ooo~~c.......ccc.....cc=cc==.========N==Ncc.....ccc.......c~~oo",
-   "o~~o~~c......\"\"\"cc....cc====N===========cccc....cc\"\"\"......c~~~~",
-   "o~~~~oc...c.\"\"\"\"\"c...ccc======oooooo====ccccc...c\"\"\"\"\".c...coo~~",
+   "oooo~~c.......ccc.....cc=cc==.========N==Ncc.....ccc.......c~~oo",
+   "c~~o~~c......\"\"\"cc....cc====N===========cccc....cc\"\"\"......c~~~~",
+   "c~~~~oc...c.\"\"\"\"\"c...ccc======oooooo====ccccc...c\"\"\"\"\".c...coo~~",
    "~~o~~o====cc\"\"\"\"\"c...ccc===ooooooooooooN==c.c...c\"\"\"\"\"cc====ooo>",
    "~~oooo=====c\"\"\"\"\"\"....cc=oooooooooooooooo=c.....\"\"\"\"\"\"c=====ooo>",
    "<ooooo=====ccc\"\"\"......coooooooooooo~~ooooc......\"\"\"ccc=====ooo>",
@@ -342602,7 +341874,7 @@
    "oooooo~~ccccccccccccccccccccccoooooocccccccccccccccooooo~~~~~~~~",
    "~~oo~~~~cccccccccccccccccccc~~oo~~oo~~ccoccccccccooooooooo~~oo~~",
    "~~~~~~cccccccccccccccccccccc~~~~~~~~~~oooocccccoooooooooooooooo>",
-   "<o~~cccccccccccccccccccccccccc~~cc~~ooooooooooooooooooooooooooo>"
+   "<c~~cccccccccccccccccccccccccc~~cc~~ooooooooooooooooooooooooooo>"
   ],
   "exits": {
    "<": "ORANGE_ROUTE_56",
@@ -342706,10 +341978,6 @@
    "0,23": [
     79,
     37
-   ],
-   "0,24": [
-    79,
-    38
    ],
    "0,29": [
     79,
@@ -343312,7 +342580,7 @@
  },
  "KINNOW_ISLAND": {
   "art": [
-   "^^^^^^^^^^^oo~~^^^^^^^^^^^^o~~oo^^^^^^^^^^^^^^^ooooooooooooo",
+   "^^^^^^^^^^^cc~~^^^^^^^^^^^^o~~cc^^^^^^^^^^^^^^^ooooooooooooo",
    "ooooooooooo~~~~oooo=====oooo~~~~ooooo....ooooooccccccccccccc",
    "ooooooooooo~~ooo====.=======oo~~oooocccccccccccccccccccccccc",
    "oooooooooooo~~oo=============ooccccccccAcccccccccccccccccccc",
@@ -344311,7 +343579,7 @@
      "ooooooooo~~~~ooooooooooooo~~ooooooo~~~~~~~~~~oo~~oooooooooooooo~~~~oo~~oo~~~~~~~~~~oo~~~~~~~~oo~~ooooooooooooooooooooooo",
      "ooooooooooo~~ooooooooooooo~~ooooooooo~~oo~~oooooooooooooooooooooo~~~~~~~~~~oo~~oo~~~~~~oo~~ooooooooooooooooooooooooooooo",
      "oooooooooooo~~ooooooooooooo~~oooooooooooooooooooooooooooooooooooooo~~oo~~oooooooooo~~ooooooooooooooooooooooooooooooooooo",
-     "vvvvvvvvvvvv~~ovvvvvvvvvvvv~~oovvvvvvvvvvvvvvvvvoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+     "vvvvvvvvvvvo~~ovvvvvvvvvvvv~~ooovvvvvvvvvvvvvvvvoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
     ],
     "exits": {
      "v": "KINNOW_ISLAND",
@@ -344449,10 +343717,6 @@
       10,
       0
      ],
-     "11,39": [
-      11,
-      0
-     ],
      "15,39": [
       15,
       0
@@ -344499,10 +343763,6 @@
      ],
      "26,39": [
       26,
-      0
-     ],
-     "31,39": [
-      31,
       0
      ],
      "32,39": [
@@ -346874,7 +346134,7 @@
  },
  "NAVEL_ISLAND": {
   "art": [
-   "^^^^^^^^^^^^^=^^cccccccc^^^^^^^^cccccccccccccccc",
+   "^^^^^^^^^^^^^=^^cccccccc.^^^^^^^cccccccccccccccc",
    "oooooooooo=====.cccccccc........cccccccccccccccc",
    "oooooooooo=.cc=..ccccccc......cccccccccccccccccc",
    "oooooooooo=cc=...ccccccc.cc.....cccccccccccccccc",
@@ -346913,7 +346173,7 @@
    "<o~~~~~~oooo~~oo~~oo~~ooooooooooooooo~~ooooooooo",
    "~~~~oo~~oooo~~~~~~~~~~ooooooooooooooo~~ooooooooo",
    "~~oooooooooooo~~oo~~o~~ooooooooooooo~~oooooooooo",
-   "oooooooooooooooovvoov~~ovvvvvvvvvvvo~~vvvvvvvvvv"
+   "oooooooooooooooovvccv~~ovvvvvvvvvvvo~~vvvvvvvvvv"
   ],
   "exits": {
    "<": "ORANGE_ROUTE_58",
@@ -347108,10 +346368,6 @@
    ],
    "15,0": [
     15,
-    55
-   ],
-   "24,0": [
-    24,
     55
    ],
    "25,0": [
@@ -347643,7 +346899,10 @@
      "_buildings_in_picture": true
     },
     "people": [
-     "Trader"
+     [
+      "Trader",
+      "Trader "
+     ]
     ],
     "moves": {
      "7,4": {
@@ -347727,7 +346986,7 @@
    "oooooooooooo=.=cccccccccc...........cccccccccccccccccccc",
    "oooooooooooo===cccccccccccc..ccccccccccccccccccccccccccc",
    "ooooooooooo====.ccccccccc.......cccccccccccccccccccccccc",
-   "vvvvvvvvvvvvvcvvcccccccc.vvvvvvvcccccccccccccccccccccccc"
+   "vvvvvvvvvvvvvcvvcccccccccvvvvvvvcccccccccccccccccccccccc"
   ],
   "exits": {
    "v": "NAVEL_ISLAND"
@@ -348112,7 +347371,7 @@
  },
  "ORANGE_ROUTE_59": {
   "art": [
-   "^^^^^o~~^^^^^^^^^^^~~o^^^^^^^^^^",
+   "^^oo^o~~^^^^^^^^^^^~~o^^^^^^^^^^",
    "oooooo~~ooooooooooo~~ooooooooooo",
    "ooooooo~~ooooooooooo~~oooooooooo",
    "ooooooo~~ooooooooooo~~oooooooooo",
@@ -348177,14 +347436,6 @@
    ],
    "1,0": [
     17,
-    39
-   ],
-   "2,0": [
-    18,
-    39
-   ],
-   "3,0": [
-    19,
     39
    ],
    "4,0": [
@@ -348464,7 +347715,7 @@
    "oo~~ooooooooooooooo~~oo~~o~~oo~~ooooo~~cccccc~~cccccccccccccccccccccccco",
    "oo~~oooooooooooooo~~oooo~~~~~~~~~~oo~~ccccccccccccccccccccccccccccccccoo",
    "ooo~~ooooooooooooo~~~~oo~~oo~~oo~~~~~~ccccccccccccccccccccccccccccccccoo",
-   "vvv~~ovvvvvvvvvvvvoo~~vvoovvoovvoo~~ccccccccccccccccccccccccccccccccoooo"
+   "vvv~~ovvvvvvvvvvvvcc~~vvccvvccvvcc~~ccccccccccccccccccccccccccccccccoooo"
   ],
   "exits": {
    "^": "ORANGE_ROUTE_59",
@@ -348894,7 +348145,7 @@
  },
  "ORANGE_ROUTE_59_SOUTH": {
   "art": [
-   "^^^o~~^^^^^^^^^^^^^~~o^^^^^^^^^^",
+   "^^^o~~^^^^^^^^^^^^o~~o^^oo^^oo^^",
    "oooo~~ooooooooooooo~~ooooooooooo",
    "ooooo~~ooooooooooo~~oooooooooooo",
    "ooooo~~ooooooooooo~~oooooooooooo",
@@ -348925,7 +348176,7 @@
    "ooooo~~~~ooooooooo~~~~oooooooooo",
    "ooooo~~ooooooooooo~~oooooooooooo",
    "oooooo~~ooooooooooo~~ooooooooooo",
-   "vvvvvv~~ovvvvvvvvvv~~ovvvvvvvvvv"
+   "vvvvvv~~ovvvvvvvvvo~~ovvvvvvvvvv"
   ],
   "exits": {
    "^": "SEVEN_GRAPEFRUITS",
@@ -349013,10 +348264,6 @@
     17,
     55
    ],
-   "18,0": [
-    18,
-    55
-   ],
    "22,0": [
     22,
     55
@@ -349025,28 +348272,12 @@
     23,
     55
    ],
-   "24,0": [
-    24,
-    55
-   ],
-   "25,0": [
-    25,
-    55
-   ],
    "26,0": [
     26,
     55
    ],
    "27,0": [
     27,
-    55
-   ],
-   "28,0": [
-    28,
-    55
-   ],
-   "29,0": [
-    29,
     55
    ],
    "30,0": [
@@ -349115,10 +348346,6 @@
    ],
    "17,31": [
     33,
-    0
-   ],
-   "18,31": [
-    34,
     0
    ],
    "22,31": [
@@ -349191,7 +348418,7 @@
  },
  "MORO_ISLAND": {
   "art": [
-   "<ooooooooooooooo^^^^^^o~~^^^^^^^^^oo~~^^^^^^^^^^",
+   "<ooooooooooooooo^^^^^^o~~^^^^^^^^^cc~~^^^^^^^^^^",
    "<oooooooooooooooooooooo~~ooooooooo~~~~oooooooooo",
    "<ooooooooooooooooooooooo~~oooooooo~~oooooooocccc",
    "<ooooooooooooooooooooooo~~o=======o~~ooooccccccc",
@@ -349199,7 +348426,7 @@
    "<oooooooooooooooooooooo~~o==cc===c...ccccccccccc",
    "<oooooooooooooooooccccccccc..cNNNccccccccccccccc",
    "<oooooocccccccccccccccccccccc......ccccccccccccc",
-   ".cccccccccccccccccccccccccccc......ccccccccccccc",
+   "ccccccccccccccccccccccccccccc......ccccccccccccc",
    "ccccccccccccccccccccccccccccc......ccccccccccccc",
    "cccccccccccccccccccccccccN..........cccccccccccc",
    "ccccccccccccccccccccccccccccc.....c....ccccccccc",
@@ -349216,8 +348443,8 @@
    "<.................................cDccc...cccccc",
    "<..........................................ccccc",
    "<.................c.....ccccc.............Nccccc",
-   ".cccc..cccccc..........ccFccc....c........Nccccc",
-   ".cccccccccccccccccc.....cDcccc.........c...ccccc",
+   "ccccc..cccccc..........ccFccc....c........Nccccc",
+   "ccccccccccccccccccc.....cDcccc.........c...ccccc",
    "ccccccccccccccccccc.......................cccccc",
    "cccccccccccccccccccc............N..c.....Ncccccc",
    "cccccccccccccccccccccc....................cccccc",
@@ -350348,7 +349575,7 @@
      "ooooo~~~~oo~~oo~~oooooo~~~~~~~~oooooooooooooooooooooooooooooooo>",
      "ooooo~~oooooooooooooooooo~~oo~~oooooooooooooooooooooooooooooooo>",
      "oooo~~ooooooooooo:::::::oooooo~~ooooooooooooooooooooooooooooooo>",
-     "oooo~~oo:::::::::::::::::::ooo~~~~ooooooooooooooooooooooooooooc.",
+     "oooo~~oo:::::::::::::::::::ooo~~~~oooooooooooooooooooooooooooocc",
      "ooo~~ooo::::::::::::::::::::oooo~~~~oooooooooooooooooooooooccccc",
      "ooo~~ooo:::::::::::::::::::::ooooo~~oooooooooooooooocccccccccccc",
      "oo~~oooo:::::::::::::::::::::oooooo~~ooooooooccccccccccccccccccc",
@@ -350365,7 +349592,7 @@
      "o~~oo=!=ooooooooooo~~oo~~ooooooooooooooooc...c..c.........c....>",
      "oo~~o====oooooooo~~~~~~~~~~oooooooooooooo====cc......c.........>",
      "oo~~oo=X=oooooooo~~oo~~oo~~~~oooooooooooo=.==ccc.......Xc......>",
-     "ooo~~o===ooooooo~~ooooooooo~~oooooooooooo=====ccc\"\"\"\"..........>",
+     "ooo~~o===ooooooo~~ooooooooo~~oooooooooooo=====ccc\"\"\"\"...........",
      "o~~~~oo==ooooooo~~oooooooooo~~oooooooooooo======cc\"\"\"\"\"\"...c....",
      "o~~oooooooooooo~~ooooooooooo~~~~oooooooooo=======c\"\"\"\"\"\"\"\"\"..ccc",
      "oo~~ooooooooooo~~ooooooooooooo~~ooooooooooo=.=cc=cc\"\"\"\"\"\"\"\"\"cccc",
@@ -350463,10 +349690,6 @@
      "63,24": [
       0,
       24
-     ],
-     "63,25": [
-      0,
-      25
      ],
      "0,39": [
       0,
@@ -351613,8 +350836,8 @@
    "c~~oooooooooo~~ccccccccccccccccccccccccc",
    "~~ooooooooo~~~~oo===cccccccccccccccccccc",
    "~~ooooooooo~~oooooooooo=====cccccccccccc",
-   "o~~ooooooooo~~ooooooooooooo=====.====ccc",
-   "v~~ovvvvvvvv~~ovvvvvvvvvvvvvvvvvvvvvvooo"
+   "c~~ooooooooo~~ooooooooooooo=====.====ccc",
+   "v~~ovvvvvvvv~~ovvvvvvvvvvvvvvvvvvvvvvccc"
   ],
   "exits": {
    "^": "ORANGE_ROUTE_60",
@@ -352221,7 +351444,7 @@
  },
  "ORANGE_ROUTE_61": {
   "art": [
-   "^o~~^^^^^^^^o~~^^^^^^^^^^^^^^^^^^^^^^^ooooooooooooooooo>",
+   "^o~~^^^^^^^^o~~^^^^^^^^^^^^^^^^^^^^^^oooooooooooooooooo>",
    "oo~~ooooooooo~~oooooooooooooooooooooooooooooooooooooooo>",
    "ooo~~ooooooooo~~ooooooooooooooooooooooooooooooooooooooo>",
    "ooo~~ooooooooo~~ooooooooooooooooooooooooooooooooooooooo>",
@@ -352405,10 +351628,6 @@
    ],
    "36,0": [
     36,
-    39
-   ],
-   "37,0": [
-    37,
     39
    ],
    "55,0": [
@@ -352614,7 +351833,7 @@
    "ooooocccccccccccccccc...........cccccccccccccccc",
    "oooooccccccccccccccc..........cccccccccccccccccc",
    "oooooccccccccccccccc.........ccccccccccccccccccc",
-   "vvvvvcccccccccccccc.vvvvvvvvcccccccccccccccccccc"
+   "vvvvvcccccccccccccccvvvvvv.vcccccccccccccccccccc"
   ],
   "exits": {
    "<": "ORANGE_ROUTE_61",
@@ -352854,10 +352073,6 @@
    ],
    "25,39": [
     81,
-    0
-   ],
-   "26,39": [
-    82,
     0
    ],
    "27,39": [
@@ -353447,7 +352662,7 @@
        "battle": {
         "name": "Tracey",
         "class": "PKMN_TRAINER",
-        "sprite": "tracey.png",
+        "sprite": "tracey_oi.png",
         "team": [
          48,
          183,
@@ -353473,7 +352688,27 @@
           "Tracey: Good battle! That's step one in making Scyther stronger.",
           "Tracey: I'm off to heal up. Something tells me we'll meet again soon!"
          ]
-        }
+        },
+        "team_moves": [
+         [
+          "CONFUSION",
+          "SLEEP-POWDER",
+          "FORESIGHT",
+          "TACKLE"
+         ],
+         [
+          "WATER-GUN",
+          "DEFENSE-CURL",
+          "ROLLOUT",
+          "TACKLE"
+         ],
+         [
+          "SLASH",
+          "SWORDS-DANCE",
+          "DOUBLE-TEAM",
+          "FURY-CUTTER"
+         ]
+        ]
        },
        "flag": "orange_murcott_tracey_battle",
        "lines": []
@@ -353504,7 +352739,7 @@
  },
  "ORANGE_ROUTE_62": {
   "art": [
-   "<ooooooooooooooooooooooooooooooooooooooooooooooooooooooo^^^^^cccccccccccccc.^^^^^^.^cccccccccccccccccccc",
+   "<ooooooooooooooooooooooooooooooooooooooooooooooooooooooo^^^^^ccccccccccccccc^^^^^^c^cccccccccccccccccccc",
    "<ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooccccccccccccccc......c.cccccccccccccccccccc",
    "<o~~oooooooooooooooooooooooooooooooooooooooooooooooooooooooooccccccccccccccc........cccccccccccccccccccc",
    "~~~~~~oo~~oo~~oo~~oooooo~~oo~~oooooooooooooooooooooooooooooooccccccccccccccc........cccccccccccccccccccc",
@@ -353806,7 +353041,7 @@
  },
  "MANDARIN_SOUTH": {
   "art": [
-   "cccccccccccccccccccccccccc..^^^^^^^ccccccc^^^^^^",
+   "cccccccccccccccccccccccccc..^^^^^^^ccccccco^^^^^",
    "cccccccccccccccccccccccccc.........cccccccoooooo",
    "ccccccccccccccccccccccccccccc...ccccccccccoooooo",
    "cccccccccccccccAccccccccccccc...ccccccccccoooooo",
@@ -354023,10 +353258,6 @@
     34,
     47
    ],
-   "42,0": [
-    42,
-    47
-   ],
    "43,0": [
     43,
     47
@@ -354154,7 +353385,45 @@
           "{rival_name}: You've got two Orange Crew badges? Same as me. Rudy's Gym is next, on Trovita Island. They say the battle's on a high cliff!",
           "{rival_name}: To get there you cross to the west side of Mandarin Island South first. Smell ya later!"
          ]
-        }
+        },
+        "team_moves": [
+         [
+          "QUICK-ATTACK",
+          "DOUBLE-TEAM",
+          "REFLECT",
+          "TAKE-DOWN"
+         ],
+         [
+          "HORN-ATTACK",
+          "EARTHQUAKE",
+          "FOCUS-ENERGY",
+          "THRASH"
+         ],
+         [
+          "MEGA-PUNCH",
+          "ROCK-SMASH",
+          "DOUBLE-KICK",
+          "HYPER-BEAM"
+         ],
+         [
+          "FLAME-WHEEL",
+          "FIRE-SPIN",
+          "TAKE-DOWN",
+          "BITE"
+         ],
+         [
+          "MAGNITUDE",
+          "DEFENSE-CURL",
+          "ROLLOUT",
+          "SELF-DESTRUCT"
+         ],
+         [
+          "HYDRO-PUMP",
+          "WITHDRAW",
+          "RAPID-SPIN",
+          "BITE"
+         ]
+        ]
        },
        "flag": "orange_gary_mandarin_battle",
        "lines": []
@@ -354798,7 +354067,7 @@
    "ccccccccccccccccccccccccccc.........cccccccccc=o",
    "ccccccccccccccccccccccccccc......c..ccccccc.===o",
    "cccccccccccccccccccccccccccc.......cccccccc==ooo",
-   "ccccccccccccccccccccccccccccvvvvvvvcccccccovvvvv"
+   "ccccccccccccccccccccccccccccvvvvvvvccccccccvvvvv"
   ],
   "exits": {
    "v": "MANDARIN_SOUTH",
@@ -355007,7 +354276,33 @@
           "Jessie: No, no, no! James: We lost again?",
           "Meowth: Team Rocket's blasting off again!"
          ]
-        }
+        },
+        "team_moves": [
+         [
+          "POISON-STING",
+          "GLARE",
+          "WRAP",
+          "BITE"
+         ],
+         [
+          "TACKLE",
+          "SMOG",
+          "SMOKESCREEN",
+          "SLUDGE"
+         ],
+         [
+          "LICK",
+          "SUPERSONIC",
+          "WRAP",
+          "STOMP"
+         ],
+         [
+          "VINE-WHIP",
+          "SLEEP-POWDER",
+          "WRAP",
+          "RAZOR-LEAF"
+         ]
+        ]
        },
        "flag": "orange_route63_rocket_battle",
        "lines": []
@@ -355050,7 +354345,7 @@
    "<............................N..........cccccccc",
    "<........................................ccccccc",
    "<........c........cccccc...cc.....cc......cccccc",
-   ".ccccccccccccccccccccccc...ccccccccc...c..cccccc",
+   "cccccccccccccccccccccccc...ccccccccc...c..cccccc",
    "ccccccccccccccccccccccc.....ccccccc......ccccccc",
    "ccccccccccccccccccccBccc...cccc!cccc.....ccccccc",
    "ccccccccccccccccccccDcc....cc.....cc...ccccccccc",
@@ -355563,7 +354858,10 @@
        ]
       }
      },
-     "Trader"
+     [
+      "Trader",
+      "Trader "
+     ]
     ],
     "moves": {
      "1,2": {
@@ -355658,7 +354956,7 @@
    "ccccccccc.N............===cc=========ccccccccccccccccccccccccccc.N.......ccccccc===============cccccccccccccccc........>",
    "ccccccccc.....N.ccc....===cc===ccc======ccccccccccccccccccccccc...ooo.....====cc========ccc======ccccccccccc....!......>",
    "ccccccccccc.N..ccAcc..N.=====.=cccc=====c==cccccccccccccccccccc..ooooo.!..===========c==cccccc===cccccccccc............>",
-   "cccccccccN.....ccDcc...N========ccc==========ccccccccccccccccccN.ooooo....===========c===ccccc===ccccccccc..N..........>",
+   "cccccccccN.....ccDcc...N========ccc==========ccccccccccccccccccN.ooooo....===========c===ccccc===ccccccccc..N...........",
    "cccccccc................=====================cccccccccccccccccc..ooooo...=N====.===========ccc===ccccccc................",
    "cccccccc.....N..........=====================cccccccccccccccccc.N.ooo.N..========================ccccccc................",
    "cccccccc.cccc...........===ccccccccc=========ccccccccccccccccccc........=========cccccc=========ccccccccccc...cc....cccc",
@@ -355997,10 +355295,6 @@
    "119,8": [
     0,
     8
-   ],
-   "119,9": [
-    0,
-    9
    ],
    "12,39": [
     12,
@@ -356567,7 +355861,7 @@
    "cccccccccccccc..N.cccccccccccccccccc.....ccccccc",
    "cccccccc...........cccccccccccccccccc....ccccccc",
    "cccccccc..ccc.......!ccccccccccccccc.....ccccccc",
-   ".ccccccc.ccAcc........................N..ccccccc",
+   "cccccccc.ccAcc........................N..ccccccc",
    "<....c...ccDcc.............N.............ccccccc",
    "<........................................ccccccc",
    "<..................cccccccccccccc........ccccccc",
@@ -358615,7 +357909,7 @@
    "c~~~~~~~~ooooo==oooooooooooo======cccccc",
    "c~~oo~~ooooooooooooooooooooo======cccccc",
    "~~oooooooooooooooooooooooooo==.===cccccc",
-   "~~oooooooooooooooooooooooooo======..c..>",
+   "~~oooooooooooooooooooooooooo======..c...",
    "ooooooooooooooooooooooooooo=======c....>",
    "<oooooooooooooooooooooooooo=======.....>",
    "<ooooooooooooooooooooooooo==========...>",
@@ -358660,10 +357954,6 @@
    "Horace"
   ],
   "edge_to": {
-   "39,25": [
-    0,
-    25
-   ],
    "39,26": [
     0,
     26
@@ -358781,7 +358071,7 @@
  },
  "TROVITA_ISLAND": {
   "art": [
-   "oooooooo^o^^^~~oo^^^^^^^^o~~~~~~~~~~~~~~~~~~~~~~",
+   "oooooooo^c^^^~~cc^^^^^^^^o~~~~~~~~~~~~~~~~~~~~~~",
    "oooc.....cooo~~~~ooooooooo~~~~~~~~~~~~~~~~~~~~~~",
    "ooccoooooccoooo~coooooooocccc~~~~~~~cc~~cc~~~~~~",
    "occcooooocccoooccc~=ooo=~cccc~~~~cc~cc~~cc~~~~~~",
@@ -359213,6 +358503,26 @@
          "TWISTED_SPOON",
          "SILK_SCARF",
          "NEVER_MELT_ICE"
+        ],
+        "team_moves": [
+         [
+          "CONFUSION",
+          "LEECH-SEED",
+          "REFLECT",
+          "STUN-SPORE"
+         ],
+         [
+          "SLASH",
+          "SAND-ATTACK",
+          "POISON-STING",
+          "DIG"
+         ],
+         [
+          "AURORA-BEAM",
+          "SUPERSONIC",
+          "SURF",
+          "PROTECT"
+         ]
         ]
        },
        "done": [
@@ -359256,6 +358566,26 @@
          "POISON_BARB",
          "CHARCOAL",
          "DRAGON_FANG"
+        ],
+        "team_moves": [
+         [
+          "ACID",
+          "SLEEP-POWDER",
+          "POISON-POWDER",
+          "RAZOR-LEAF"
+         ],
+         [
+          "EMBER",
+          "STOMP",
+          "TAIL-WHIP",
+          "FIRE-SPIN"
+         ],
+         [
+          "WATER-GUN",
+          "SMOKESCREEN",
+          "LEER",
+          "TWISTER"
+         ]
         ]
        },
        "done": [
@@ -359636,7 +358966,7 @@
    "ooooooo~~ooooooooo~~oooooooooooo",
    "ooooooo~~ooooooooo~~oooooooooooo",
    "oooooo~~ooooooooo~~ooooooooooooo",
-   "vvvvvo~~vvvvvvvvv~~ooooooooooooo"
+   "vovvvo~~ovvvvvvvv~~ooooooooooooo"
   ],
   "exits": {
    "v": "TROVITA_ISLAND",
@@ -359671,10 +359001,6 @@
     8,
     0
    ],
-   "1,39": [
-    9,
-    0
-   ],
    "2,39": [
     10,
     0
@@ -359685,10 +359011,6 @@
    ],
    "4,39": [
     12,
-    0
-   ],
-   "8,39": [
-    16,
     0
    ],
    "9,39": [
@@ -360118,8 +359440,8 @@
    "cccccccccccccccccccccccccccccccccccccccccccccccccccccccc<oooooooooooooooooooooo>",
    "cccccccccccccccccccccccccccccccccccccccccccccccccccccccc<ooooooooooooooooooooo~~",
    "cccccccccccccccccccccccccccccccccccccccccccccccccccccccc<oooooooooooooooooo~~o~~",
-   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccoo~~ooooooooooooo~~~~~~o",
-   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccc~~~~ooooooooooooo~~oo~~o",
+   "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccoo~~ooooooooooooo~~~~~~c",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccc~~~~ooooooooooooo~~oo~~c",
    "cccccccccccccccccccccccccccccccccccccccccccccccccccccccc~~o~~ooooooooooo~~ooooo>",
    "cccccccccccccccccccccccccccccccccccccccccccccccccccccccc<oo~~ooooooooo~~~~ooooo>",
    "cccccccccccccccccccccccccccccccccccccccccccccccccccccccc<o~~oooooooooo~~ooooooo>",
@@ -360762,7 +360084,33 @@
           "Jessie: Not again! James: Beaten by a twerp twice in a row...",
           "Meowth: Team Rocket's blasting off again!"
          ]
-        }
+        },
+        "team_moves": [
+         [
+          "ACID",
+          "GLARE",
+          "DIG",
+          "BITE"
+         ],
+         [
+          "TACKLE",
+          "SMOG",
+          "SMOKESCREEN",
+          "SLUDGE"
+         ],
+         [
+          "LICK",
+          "SUPERSONIC",
+          "SLAM",
+          "STOMP"
+         ],
+         [
+          "RAZOR-LEAF",
+          "SLEEP-POWDER",
+          "SWORDS-DANCE",
+          "DOUBLE-EDGE"
+         ]
+        ]
        },
        "flag": "orange_route67_rocket_battle",
        "lines": []
@@ -360830,7 +360178,7 @@
    "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooXooooo~~oo~~~~~~oo~~oooooooooooooooooooooooooooooooooo=!==o~~oooo",
    "~~oooooo~~oooooo~~oooooo~~ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo~~~~~~~~oo~~~~~~~~oooo~~oo~~oo~~oo~~ooooooooooXooo===oo~~oooo",
    "~~~~oo~~~~~~oo~~~~~~oo~~~~~~oooooo~~ooooooooooooooooooooooooooooooooooooooooooooooo~~oo~~oooooo~~oo~~oooo~~~~~~~~~~~~~~oooooooooooooooooo~~ooooo",
-   "<o~~~~~~oo~~~~~~oo~~~~~~oo~~~~oo~~~~~~oo~~oo~~oooooooooo~~oooooooo~~oooooo~~oo~~oo~~oooooooooooooooo~~Xo~~o~~oo~~oo~~o~~ooooooooooooooooo~~ooooo",
+   "oo~~~~~~oo~~~~~~oo~~~~~~oo~~~~oo~~~~~~oo~~oo~~oooooooooo~~oooooooo~~oooooo~~oo~~oo~~oooooooooooooooo~~Xo~~o~~oo~~oo~~o~~ooooooooooooooooo~~ooooo",
    "<ooo~~oooooo~~oooooo~~oooooo~~~~~~oo~~~~~~~~~~~~Xo~~oo~~~~~~oooo~~~~~~oo~~~~~~~~~~~~oooooooooooooooo~~~~~~oooooooooooo~~~~oo~~oooooo~~oo~~oooooo",
    "<ooooooooooooooooooooooooooooo~~oooooo~~oo~~oo~~~~~~~~~~oo~~oooo~~oo~~~~~~oo~~oo~~oooooooooooooooooooo~~oooooooooooooooo~~~~~~~~oo~~~~~~~~oooooo",
    "<ooooooooooooooooooooooooooooooooooooooooooooooo~~oo~~ooooo~~oo~~ooooo~~oooooooooooooooooooooooooooooooooooooooooooooooooo~~oo~~~~~~oo~~oooooooo",
@@ -360966,10 +360314,6 @@
    "0,29": [
     79,
     21
-   ],
-   "0,33": [
-    79,
-    25
    ],
    "0,34": [
     79,
@@ -364703,7 +364047,33 @@
             "Jessie: Oh no, not again!",
             "Team Rocket's blasting off again!"
            ]
-          }
+          },
+          "team_moves": [
+           [
+            "ACID",
+            "GLARE",
+            "DIG",
+            "BITE"
+           ],
+           [
+            "TACKLE",
+            "SMOG",
+            "SMOKESCREEN",
+            "SLUDGE"
+           ],
+           [
+            "LICK",
+            "SUPERSONIC",
+            "SLAM",
+            "STOMP"
+           ],
+           [
+            "RAZOR-LEAF",
+            "SLEEP-POWDER",
+            "SWORDS-DANCE",
+            "DOUBLE-EDGE"
+           ]
+          ]
          },
          "flag": "orange_ascorbia_jj_battle",
          "lines": []
@@ -364770,7 +364140,21 @@
            "player_won": [
             "Cassidy: Butch, I'm counting on you!"
            ]
-          }
+          },
+          "team_moves": [
+           [
+            "TACKLE",
+            "FOCUS-ENERGY",
+            "HYPER-FANG",
+            "SUPER-FANG"
+           ],
+           [
+            "BUBBLE-BEAM",
+            "ACID",
+            "SUPERSONIC",
+            "WRAP"
+           ]
+          ]
          },
          "flag": "orange_cassidy_ascorbia",
          "lines": []
@@ -364812,7 +364196,21 @@
            "player_won": [
             "Butch: No, no, no!"
            ]
-          }
+          },
+          "team_moves": [
+           [
+            "CLAMP",
+            "PROTECT",
+            "SUPERSONIC",
+            "AURORA-BEAM"
+           ],
+           [
+            "THRASH",
+            "FOCUS-ENERGY",
+            "SEISMIC-TOSS",
+            "DYNAMIC-PUNCH"
+           ]
+          ]
          },
          "flag": "orange_wartortle_beaten",
          "lines": []
@@ -365132,7 +364530,7 @@
    "cccccccccccccccc~~oooooo===========ooo~~cccccccccccccccc~~cccccccccccccccccccccccccccnncccccccccccooooooooooooooooooooo>",
    "<......ccccccccc~~ooo=====.......X==oo~~~~cccccccccccccc~~ccccccccccccc...cccccccccc...!ccccccccccoooooooooooooooooooooo",
    "<..cc..cccccccc~~oooo====.\"\"\"\"\"\"\".==oooo~~ccccccccccccc~~cccccccccccccc.N.cccccccccc.....cccccccccoooooooooooooooooooo~~",
-   "<.........ccccc~~oooo=cc=\"\"\"\"\"\"\"\"\"====ooo~~cccccccccccc~~cccccccccccccc..................cccccccccoooooooooooooooooo~~~~",
+   "..........ccccc~~oooo=cc=\"\"\"\"\"\"\"\"\"====ooo~~cccccccccccc~~cccccccccccccc..................cccccccccoooooooooooooooooo~~~~",
    "<.........cccccoooooo=======\"\"\"\"\"\"=c===oo~~~~cc~~ccccc~~ccccccccccccccc.................ccccccccoooooooooooooooooooo~~o>",
    "<..........ccccoooooooo=======\"\"\"====.=oooo~~~~~~~~ccc~~ccccccccccccccccc...cccccc......ccccccccooooooooooooooooooo~~oo>",
    "<..........ccccooooooooooo=============oooooo~~oo~~~~cc~~ccccccccccccccccccccccccc.....cccccccccooooooooooooooooooo~~oo>",
@@ -365150,7 +364548,7 @@
    "oooooooooooooooooooooooooooooooooooooooooo~~~~o===ooo~~oo~~oooooooooooooo~~oooooo~~oo~~oo~~~~~~~~~~~~oooooooooooooooooo>",
    "oooooooooooooooooooooooooooooooooooooooooooo~~ooooo~~~~~~~~~~oo~~oo~~oo~~~~~~oo~~~~~~~~~~~~oo~~oo~~oooooooooooooooooooo>",
    "ooooooooooooooooooooooooooooooooooooooooooooo~~oo~~~~oo~~oo~~~~~~~~~~~~~~oo~~~~~~oo~~oo~~oooooooooooooooooooooooooooooo>",
-   "<oooooooooooooooooooooooooooooooooooooooooooo~~~~~~oooooooooo~~oo~~oo~~oooooo~~oooooooooooooooooooooooooooooooooooooooo>",
+   "ooooooooooooooooooooooooooooooooooooooooooooo~~~~~~oooooooooo~~oo~~oo~~oooooo~~oooooooooooooooooooooooooooooooooooooooo>",
    "<oooooooooooooooooooooooooooooooooooooooooooooo~~oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo>"
   ],
   "exits": {
@@ -365321,10 +364719,6 @@
     47,
     11
    ],
-   "0,12": [
-    47,
-    12
-   ],
    "0,13": [
     47,
     13
@@ -365344,10 +364738,6 @@
    "0,17": [
     47,
     17
-   ],
-   "0,30": [
-    47,
-    30
    ],
    "0,31": [
     47,
@@ -365606,7 +364996,15 @@
          "player_lost": [
           "Gulzar: Ha! Grass-types rule the islands!"
          ]
-        }
+        },
+        "team_moves": [
+         [
+          "SLUDGE-BOMB",
+          "SUNNY-DAY",
+          "SYNTHESIS",
+          "SOLAR-BEAM"
+         ]
+        ]
        },
        "flag": "orange_gulzar_battle",
        "lines": []
@@ -365960,10 +365358,10 @@
    "cccccccccccccccccccccccccccccccccccccccccccccccc",
    "ccccccccccccccccccccccccccccccccccccccccccc....>",
    "cccccccccccccccccccccccccccccccccccAccccccc....>",
-   "ccccccc....cEccccccccccccccccccccccDcc.......cc.",
+   "ccccccc....cEccccccccccccccccccccccDcc.......ccc",
    "cccccc....ccDcccccccccccccccccccc..............>",
    "<......cc.........ccccccccccccc................>",
-   ".cc...............ccccccGcccccc................>",
+   "ccc...............ccccccGcccccc................>",
    "<.....................ccDcc....................>",
    "<.............cccc........!...cccccc...N..ccc..>",
    "<..........N..ccBc............cCcccccc.......ccc",
@@ -365977,8 +365375,8 @@
    "ccccccc========..==========.====.============ccc",
    "ccccc=====N================.===========N=====o~~",
    "ccccc=N================================.====oo~~",
-   "ccc===.=====N====.=====.========N=========ooo~~o",
-   "ccc==============.=====N========.=======ooooo~~o",
+   "ccc===.=====N====.=====.========N=========ooo~~c",
+   "ccc==============.=====N========.=======ooooo~~c",
    "~~ooo==================.=============ooooooo~~o>",
    "~~~~oooooooooooo=================ooooooooooo~~oo",
    "oo~~ooooooooooooooooooooooooooooooooooooooo~~ooo",
@@ -366105,6 +365503,14 @@
       "oi_trainer": 439,
       "held": [
        "BLACK_BELT"
+      ],
+      "team_moves": [
+       [
+        "THUNDER-PUNCH",
+        "ICE-PUNCH",
+        "FIRE-PUNCH",
+        "SKY-UPPERCUT"
+       ]
       ]
      },
      "flag": "orange_beat_kanae",
@@ -367166,7 +366572,7 @@
    "ooooo~~ooooooooo~~oo~~oo~~~~ooccc............N............cccccc",
    "ooo~~~~ooooooooooooooooooo~~~~ccc.........................cccccc",
    "ooo~~ooo====oooooooooooooooo~~ccc.................!...cc.......>",
-   "oo~~oo===!==oooooooooooXoooooocccc...ccc...cccc................>",
+   "oo~~oo===!==oooooooooooXoooooocccc...ccc...cccc.................",
    "oo~~oo=.===ooooooooooooooooooo========ccccccccccc.....N........>",
    "ooo~~o====oooooooooooooooooooo==.=====ccccccccccc..............>",
    "ooo~~oooooooooooooooooooooooooo==N====ccccccccc................>",
@@ -367250,10 +366656,6 @@
    "63,14": [
     0,
     14
-   ],
-   "63,15": [
-    0,
-    15
    ],
    "63,16": [
     0,
@@ -368531,7 +367933,7 @@
    "cccccccooooooooooooo~~~~~~~~~~~~oo~~~~~~",
    "cccccccooooooooooo~~~~oo~~oo~~oooooo~~oo",
    "ccccccc=oooooooooo~~oooooooooooooooooooo",
-   "ccccccc=ooooooooo~~oooooooooooooooooooo<",
+   "ccccccc=ooooooooo~~ooooooooooooooooooooo",
    "ccccccc=ooooooooo~~oooooooooooooooooooo<",
    "ccccccc=oooooooooo~~ooooooooooooooooooo<",
    "ccccccc==ooooooooo~~ooooooooooooooooooo<",
@@ -368831,10 +368233,6 @@
    "39,30": [
     0,
     38
-   ],
-   "39,35": [
-    0,
-    43
    ],
    "39,36": [
     0,
@@ -369150,7 +368548,7 @@
  },
  "PUMMELO_ISLAND": {
   "art": [
-   "oooooooo^^^^^^^^^^~~oo^^^^^^^^^^^oo~~^cccccccccccccccccc",
+   "oooooooo^^^^^^^^^^~~cc^^^^^^^^^^^cc~~^cccccccccccccccccc",
    "oooooooooooooooooo~~~~oo=======oo~~~~occcccccccccccccccc",
    "oooooooooooooooooooocco==.======occccccccccccccccccccccc",
    "oooooooooooocccccccccccccc===ccccccccccccccccccccccccccc",
@@ -369192,8 +368590,8 @@
    "ooooo====ccccccccccccccccccccccccccccccc......cccccccccc",
    "~~ooooo==ccccccccccccccccccccccccccccccccccccccccccccccc",
    "~~oooooooccccccccccccccccccccccccccccccccccccccccccccccc",
-   "o~~oooooo~~ccccccccccccccccccccccccccccccccccccccccccccc",
-   "o~~~~oo~~~~occcccccccccccccccccccccccccccccccccccccccccc",
+   "c~~oooooo~~ccccccccccccccccccccccccccccccccccccccccccccc",
+   "c~~~~oo~~~~occcccccccccccccccccccccccccccccccccccccccccc",
    "<oo~~~~~~ooooooocccccccccccccccccccccccccccccccccccccccc",
    "<oooo~~ooooooooooo==cccccccccccccccccccccccccccccccccccc",
    "<oooooooooooooooooo=====c=cccccccccccccccccccccccccccccc",
@@ -369681,7 +369079,45 @@
          "player_won": [
           "{rival_name}: Ooh no, how is this possible?!"
          ]
-        }
+        },
+        "team_moves": [
+         [
+          "QUICK-ATTACK",
+          "DOUBLE-TEAM",
+          "REFLECT",
+          "TAKE-DOWN"
+         ],
+         [
+          "HORN-ATTACK",
+          "EARTHQUAKE",
+          "FOCUS-ENERGY",
+          "THRASH"
+         ],
+         [
+          "MEGA-PUNCH",
+          "ROCK-SMASH",
+          "DOUBLE-KICK",
+          "HYPER-BEAM"
+         ],
+         [
+          "FLAME-WHEEL",
+          "FIRE-BLAST",
+          "TAKE-DOWN",
+          "BITE"
+         ],
+         [
+          "MAGNITUDE",
+          "DEFENSE-CURL",
+          "ROLLOUT",
+          "EXPLOSION"
+         ],
+         [
+          "HYDRO-PUMP",
+          "WITHDRAW",
+          "RAPID-SPIN",
+          "BITE"
+         ]
+        ]
        },
        "flag": "orange_rival_pummelo",
        "lines": []
@@ -370859,7 +370295,7 @@
    "oooooooooo~~ooooooooooo~~~~oooooooooooooooooooooooooooooooooooooooooooooooooooo>",
    "oooooooooo~~ooooooooooooo~~oooooooooooooooooooooooooooooooooooooooooooooooooooo>",
    "ooooooooooo~~ooooooooooooo~~oooooooooccccccccccccccccoooooooooooooooooooooooooo>",
-   "vvvvvvvvvvo~~vvvvvvvvvvvvv~~ovoooooooccccccccccccccccoooooooooooooooooooooooooo>"
+   "vvvvvvvvvvo~~ovvvvvvvvvvvo~~ovoooooooccccccccccccccccoooooooooooooooooooooooooo>"
   ],
   "exits": {
    "v": "PUMMELO_ISLAND",
@@ -370932,10 +370368,6 @@
     17,
     0
    ],
-   "13,31": [
-    21,
-    0
-   ],
    "14,31": [
     22,
     0
@@ -370978,10 +370410,6 @@
    ],
    "24,31": [
     32,
-    0
-   ],
-   "25,31": [
-    33,
     0
    ],
    "29,31": [
@@ -371165,8 +370593,8 @@
    "<=cccc...ccccc...................ccccccccccccc=>",
    "<==ccccc2cccc.......cccc..cccccccccccccccccccco>",
    "<o=ccccc..ccc.......cccc..cccccccccccccccccccco>",
-   "oooocccc..cccc....ccccc..........cccccccccccc~~o",
-   "~~oooccc...ccc....ccccc.....ccc.cccccccc=oooo~~o",
+   "oooocccc..cccc....ccccc..........cccccccccccc~~c",
+   "~~oooccc...ccc....ccccc.....ccc.cccccccc=oooo~~c",
    "~~~~occcc..ccc...cccccc....ccBcccccc==.==ooooo~~",
    "<o~~~~ccc.........ccccc...cccDcccccc====oooooo~~",
    "<ooo~~cccc.....N...ccc..........cccc====ooooooo>",
@@ -371795,13 +371223,13 @@
    "<ooooo~~~~~~~~oo~~oooooooooo~~oo~~~~oooo",
    "<ooo~~~~oo~~ooooooooooo====ooooooo~~ooo>",
    "<ooo~~oooooooooooooooooX===oooooooo~~oo>",
-   "<oo~~oo=====oooooooooooo==ooooooooo~~~~o",
-   "<oo~~o==ccX=ooooooooooooooooooooooooo~~o",
-   "<o~~oo==!===oooooooooooooooooooooooooo~~",
+   "<oo~~oo=====oooooooooooo==ooooooooo~~~~c",
+   "<oo~~o==ccX=ooooooooooooooooooooooooo~~c",
+   "oo~~oo==!===oooooooooooooooooooooooooo~~",
    "~~~~o======ooooooooooooooooooooooooooo~~",
    "~~ooo=c==ooooooooooooooooooooooXoooooooo",
    "ooooo===oooooooooooooooooooooooooooooooo",
-   "<oooooooooooooooooo~~oooooooooooooooooo>",
+   "<oooooooooooooooooo~~ooooooooooooooooooo",
    "<oooooooooooooooo~~~~~~oo~~oooooooooooo>",
    "<oooooooXoooooooo~~oo~~~~~~~~oo~~oooooo>",
    "<ooooooooooooooo~~ooooo~~oo~~~~~~~~oooo>",
@@ -371894,10 +371322,6 @@
     47,
     16
    ],
-   "0,17": [
-    47,
-    17
-   ],
    "0,21": [
     47,
     21
@@ -371953,10 +371377,6 @@
    "39,14": [
     0,
     22
-   ],
-   "39,21": [
-    0,
-    29
    ],
    "39,22": [
     0,
@@ -372061,13 +371481,13 @@
    "occcccccc....cccccccccccc.....coooooooccccc/cccc",
    "occccccc.....cccccccccccc.....cooooooocccc...ccc",
    "<o=cccBc.....cccccccccccc.....cooooooocccc...ccc",
-   "<o=cccDc....ccccccccccccc...N.coooooooccc.....cc",
+   "oo=cccDc....ccccccccccccc...N.coooooooccc.....cc",
    "oooc................ccccc.....coooooooccc......c",
    "oooc................cccccc....coooooooc........c",
    "~~oc...N............ccccc.....coooooooc........c",
    "~~occ...........ccc.ccccc......................c",
-   "o~~c...........ccAccccccc.....................cc",
-   "o~~c...........ccDccccccc....................ccc",
+   "c~~c...........ccAccccccc.....................cc",
+   "c~~c...........ccDccccccc....................ccc",
    "<oocc...ccc.........ccccc.....coooooooc.....cccc",
    "<oo=====cc....!.....cccccccccccoooooooc.....cccc",
    "<oo======c..........cccccccccccooooooccccccccccc",
@@ -372077,7 +371497,7 @@
    "oooooo~~~~ccccccc.....ccccccc~~ooooccccccccccccc",
    "~~oo~~~~ccccccccccccccccccccc~~~~o~ccccccccccccc",
    "~~~~~~ccccccccccccccccccccccccc~~ccccccccccccccc",
-   "<o~~cccccccccccccccccccccccccccccccccccccccccccc"
+   "<c~~cccccccccccccccccccccccccccccccccccccccccccc"
   ],
   "exits": {
    "<": "ORANGE_ROUTE_74",
@@ -372164,10 +371584,6 @@
    "0,22": [
     39,
     14
-   ],
-   "0,23": [
-    39,
-    15
    ],
    "0,30": [
     39,
