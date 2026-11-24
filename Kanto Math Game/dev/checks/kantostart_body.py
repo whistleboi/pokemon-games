@@ -62,10 +62,10 @@ st = region_opening_state(g, "KANTO")
 check(isinstance(st, AreaTransitionState) and st.next_area_key == "PALLET_TOWN", "the opening goes to Pallet Town")
 c = city("PALLET_TOWN")
 check(g.current_state is c and not story.player_team, "Pallet: no starter screen yet")
-stop = [o for o in prog["PALLET_TOWN"]["travel_options"] if o.get("npc")]
-check(stop and stop[0]["text"] == "Route 1" and c._check_menu_condition("not:received_starter_kanto"),
-      "Route 1 is the stop where Oak comes running")
-check(c._get_callback_for_option(stop[0]) == c.visit_prof_oak, "picking it brings Oak")
+_tmk = __import__("json").load(open("assets/town_maps.json", encoding="utf-8"))   # (11-23, K5: the walked stop - Pallet's map scene,
+stop = [s_ for s_ in _tmk["PALLET_TOWN"].get("scenes", []) if s_.get("trigger") == {"zone": [12, 1, 13, 1]}]   # the menu's Oak button is gone)
+check(stop and stop[0].get("condition") == "not:received_starter_kanto" and stop[0]["cast"][0]["sheet"] == "fr_71.png"
+      and c._check_menu_condition("not:received_starter_kanto"), "Route 1 is the stop where Oak comes running (Pallet's north edge, FireRed's 12-13,1)")
 check(not story.catch_unlocked("KANTO"), "no catching before the Pokedex")
 lines = oak_lines(c)
 check(any("Wait" in l for l in lines) and flags.get("kanto_parcel_era"), "Oak: wait, come to my lab")

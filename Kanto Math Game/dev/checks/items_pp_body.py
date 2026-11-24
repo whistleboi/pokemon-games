@@ -247,6 +247,21 @@ import datetime as _dt
 day = 6 <= _dt.datetime.now().hour < 20
 bag.on_pokemon_select_gracidea(0)
 check((story.player_team[0].form == "sky") == day, f"Gracidea: Shaymin's Sky Forme in the daytime ({story.player_team[0].form})")
+lan = mk(645); lan.level = 50; story.player_team = [lan, mk(25)]; story.inventory["REVEAL_GLASS"] = 1
+bag = BagState(g, None); g.change_state(bag)
+check(bag.usable("REVEAL_GLASS") and bag.can_use_on("REVEAL_GLASS", lan) if hasattr(bag, "can_use_on") else bag.usable("REVEAL_GLASS"), "Reveal Glass: usable on Landorus")
+inc = lan.get_stat("attack")
+bag.on_pokemon_select_reveal_glass(0)
+t = story.player_team[0]
+check(t.form == "therian" and t.level == 50, f"Reveal Glass: Landorus to Therian Forme ({t.form}, Lv {t.level})")
+check(t.get_stat("attack") != inc, f"with the Therian Forme's stats (Attack {inc} -> {t.get_stat('attack')})")
+bag = BagState(g, None); g.change_state(bag)
+bag.on_pokemon_select_reveal_glass(0)
+check(story.player_team[0].form == "normal", f"used again: back to Incarnate ({story.player_team[0].form})")
+bag = BagState(g, None); g.change_state(bag)
+bag.on_pokemon_select_reveal_glass(1)
+check(story.player_team[1].form != "therian", "on Pikachu: no effect")
+check(g.assets.get_item_image("REVEAL_GLASS") is not None, "Reveal Glass: its icon (ORAS's Bag picture)")
 
 print("11) every item the regions hand out has a description")
 import glob, json, os, re
@@ -365,4 +380,9 @@ b.opponent_hp = b.opp_max_hp = foe.current_hp = 5000
 lines = turn(b, "LOW-KICK")
 check(b.opponent_hp < 5000 and any("LOW KICK" in l.upper() for l in lines), f"Low Kick hits in battle ({5000 - b.opponent_hp} damage)")
 
+print("13) every item table is named in items.py, so a region can ask items.known (Unova's Anville, 11-23)")
+from src.pokemon import items as _itm
+check(all(_itm.known(k) for k in ("PP_UP", "PP_MAX", "ETHER", "MAX_ETHER", "ELIXIR", "MAX_ELIXIR")), "the PP items are known")
+check(_itm.known("POTION") and _itm.known("FIRE_GEM") and not _itm.known("NOT_AN_ITEM"), "and the rest as before; a made-up name isn't")
+check("PP_UP" in _itm.PP_ITEMS, "items.PP_ITEMS is the PP items' table")
 print("##### FAILURES:", fails)

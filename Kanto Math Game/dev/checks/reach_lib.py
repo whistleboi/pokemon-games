@@ -57,7 +57,7 @@ def links(area):
                 continue
             out.append(tgt)
     if not _menu_targets(area):   # (a place with no menu buttons at all: its walked map's own ways out - Orre's Pyrite Building
-        out += [t for t in _walk_exits(area) if t not in out]   # lift to The Under, 11-23. Where a place still has menu buttons,
+        out += [t for t in _walk_exits(area, gated=True) if t not in out]   # lift to The Under, 11-23. Where a place still has menu buttons,
     return out   # those carry its story gates; its map's barred ways aren't read here)
 
 
@@ -126,9 +126,11 @@ def report(title, start, prev):
 _WALK = {}
 
 
-def _walk_exits(area):
+def _walk_exits(area, gated=False):
     """The areas a walkable map's exits name (its own and its rooms'; "ROOM:" and "OUT:" stay inside): a place rebuilt
-    walkable has no menu buttons left, so its ways out live only in assets/town_maps.json (Unova's cleanup, 11-23)."""
+    walkable has no menu buttons left, so its ways out live only in assets/town_maps.json (Unova's cleanup, 11-23).
+    gated: leave out a way out the map marks shut till its flags are set - "gated_exits": {target: [flag, "not:flag"...]}
+    (a scene turns you back there till then: Unova's Route 16 Bridge Gate lift, till the Hall of Fame; 11-23)."""
     if "maps" not in _WALK:
         try:
             import json as _json
@@ -144,6 +146,10 @@ def _walk_exits(area):
             t = t if isinstance(t, str) else (t.get("target") if isinstance(t, dict) else None)
             if t and not t.startswith(("ROOM:", "OUT:")) and t in PROG:
                 out.append(t)
+    if gated:
+        gates = m.get("gated_exits") or {}
+        ok = lambda f: (not story.story_flags.get(f[4:])) if str(f).startswith("not:") else bool(story.story_flags.get(f))
+        out = [t for t in out if all(ok(f) for f in gates.get(t, []))]
     return out
 
 

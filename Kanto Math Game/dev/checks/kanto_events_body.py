@@ -325,7 +325,8 @@ for area, came, who, want, give, nick, item in (("KANTO_ROUTE_2", "VIRIDIAN_CITY
                                                 ("KANTO_ROUTE_18", "FUCHSIA_CITY", "Trader", 55, 108, "MARC", None),
                                                 ("CINNABAR_ISLAND", "KANTO_ROUTE_21", "Old Trader", 26, 101, "ESPHERE", None),
                                                 ("CINNABAR_ISLAND", "KANTO_ROUTE_21", "Lab Trader", 48, 114, "TANGENY", "STARDUST"),
-                                                ("CINNABAR_ISLAND", "KANTO_ROUTE_21", "Young Trader", 77, 86, "SEELOR", None)):
+                                                ("CINNABAR_ISLAND", "KANTO_ROUTE_21", "Young Trader", 77, 86, "SEELOR", None),
+                                                ("POWER_PLANT", "KANTO_ROUTE_10", "Trader", 51, 82, "MAGGIE", "METAL_COAT")):   # (11-23: SoulSilver's Power Plant trade, Jordan's Gen 1 pick)
     ev = next((o for k in ("explore_options", "route_menu") for o in g.loader.area_data["STORY_PROGRESSION"][area].get(k, []) if o.get("text") == who and (o.get("event") or {}).get("trade")), None)
     fl = (ev or {}).get("event", {}).get("flag")
     if fl:
@@ -338,6 +339,32 @@ for area, came, who, want, give, nick, item in (("KANTO_ROUTE_2", "VIRIDIAN_CITY
     nm = getattr(new, "nickname", None) or getattr(new, "name", None)
     check(new is not None and want not in ids and str(nm).upper() == nick and (item is None or getattr(new, "held_item", None) == item),
           f"{area}: {who} - your #{want} for #{give} {nick}{' holding ' + item if item else ''} ({(w or [])[:1]}, {ids}, {nm}, {getattr(new, 'held_item', None)})")
+
+# SoulSilver's Volty: Lt. Surge at Saffron's Magnet Train station after the title, his Pikachu for yours (11-23)
+story.story_flags.pop("saffron_volty_trade", None); story.story_flags.pop("beat_champion", None)
+st = place("SAFFRON_CITY", "KANTO_ROUTE_5")
+_pre = [o.get("text") for o in st._door_options("station")]
+story.story_flags["beat_champion"] = True
+st = place("SAFFRON_CITY", "KANTO_ROUTE_5")
+_post = [o.get("text") for o in st._door_options("station")]
+_sv = next(o for o in st._door_options("station") if o.get("text") == "Lt. Surge")
+team(25, 25, level=20)
+said.clear()
+st._get_callback_for_option(_sv)()
+play(picks=[25, True, True], n=1500, until=lambda: story.story_flags.get("saffron_volty_trade"))
+play(n=200)
+_pk = next((p for p in story.player_team if p.id == 25 and str(getattr(p, "nickname", "")).upper() == "VOLTY"), None)
+check("Lt. Surge" not in _pre and "Lt. Surge" in _post and _pk is not None and getattr(_pk, "held_item", None) == "YELLOW_SHARD",
+      f"SAFFRON_CITY: Lt. Surge at the Magnet Train station after the title - your Pikachu for his Volty holding a Yellow Shard ({_pre}, {_post}, {said[:1]})")
+
+# SoulSilver's 9 Kanto swarms, from the start (no National Pokedex needed), the Gen 1 lock still filtering (11-23)
+from src.world import swarms as _SW
+_nd = story.story_flags.pop("unlocked_national_dex", None)
+_kt = _SW.SWARMS.get("KANTO") or {}
+_tday = _SW.today(story, "KANTO")
+if _nd: story.story_flags["unlocked_national_dex"] = _nd
+check(len(_kt) == 9 and _kt.get("KANTO_ROUTE_13") == 113 and _kt.get("VIRIDIAN_FOREST") == 401 and _tday is not None and _tday[0] in _kt,
+      f"Kanto's swarms: SoulSilver's nine, running from the start ({sorted(_kt)}, today {_tday})")
 
 print("11) The VS Seeker as FireRed plays it: the pose, the bubbles, then the message (11-19)")
 from src.world import vs_seeker as _V

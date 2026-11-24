@@ -152,7 +152,7 @@ ROUTES = [
     ("SEVAULT_CANYON", {"CANYON_ENTRANCE": (24, 80), "TANOBY_RUINS": (24, 80)}, {"CANYON_ENTRANCE", "TANOBY_RUINS"}, 7),
     ("TANOBY_RUINS", {"SEVAULT_CANYON": (144, 20)}, {"SEVAULT_CANYON"}, 4),
     ("LOST_CAVE", {"RESORT_GORGEOUS": (11, 11)}, {"RESORT_GORGEOUS"}, 2),
-    ("NAVEL_ROCK", {"ONE_ISLAND": (20, 23)}, {"ONE_ISLAND"}, 0),
+    ("NAVEL_ROCK", {"ONE_ISLAND": (17, 13)}, {"ONE_ISLAND"}, 0),   # (11-23, K2: you land in FireRed's harbour room, 2.59, and walk out onto the rock)
     ("BIRTH_ISLAND", {"ONE_ISLAND": (17, 13)}, {"ONE_ISLAND"}, 0),   # (11-17: you land in FireRed's harbour room, 2.58, and walk out onto the island)
     ("FARAWAY_ISLAND", {"ONE_ISLAND": (34, 46)}, {"ONE_ISLAND"}, 0),
 ]
@@ -313,11 +313,11 @@ check(t.doors.get((58, 7)) == "gym" and t._door_options("gym") and (58, 8) in re
 for _a in sorted(DATA):
     if _a not in MAPS or DATA[_a].get("area_type") == "town": continue
     _m = MAPS[_a]
-    _fl = _m.get("floors") or [_m]
+    _fl = (_m.get("floors") or [_m]) + [f for sm in (_m.get("story_maps") or []) for f in (sm.get("map") or {}).get("floors") or []]   # (11-23: a map's other versions too: the Trainer Tower's climbs)
     _who = lambda x: [x] if isinstance(x, str) else [y.get("text") if isinstance(y, dict) else y for y in x] if isinstance(x, list) else [x.get("text")] if isinstance(x, dict) else []   # (a rebuilt map's people: names, lists, whole options; 11-14)
     _have = {y for f in _fl + list((_m.get("rooms") or {}).values()) for x in f.get("people", []) for y in _who(x)} | ({"BOSS"} if any(f.get("boss_spot") for f in _fl) else set())
     _kinds = set((_m.get("buildings") or {}).values()) | {k for f in _fl for k in (f.get("buildings") or {}).values()}
-    _lost = [o["text"] for o in DATA[_a].get("route_menu", []) if o.get("action") in ("EVENT", "BOSS", "NPC")
+    _lost = [o["text"] for o in DATA[_a].get("route_menu", []) if o.get("action") in ("EVENT", "BOSS", "NPC") and not o.get("not_on_map")
              and o["text"] not in _have and o.get("door") not in _kinds and not (o.get("action") == "BOSS" and "BOSS" in _have)]
     check(not _lost, f"{_a}: every event and boss has someone to walk up to or a door to go through (missing: {_lost})")
 
@@ -331,7 +331,7 @@ REDRAWN = {"FOUR_ISLAND": ["3_15", "35_0", "35_1", "35_2", "35_3", "35_4", "35_5
            "DOTTED_HOLE": [f"1_{n}" for n in range(115, 121)], "GREEN_PATH": ["3_59"], "PATTERN_BUSH": ["1_121"], "OUTCAST_ISLAND": ["3_58"],
            "SEVII_ALTERING_CAVE": ["1_122"], "SEVEN_ISLAND": ["k_seven", "31_0", "31_1", "31_2", "31_3", "31_4", "31_6"],
            "CANYON_ENTRANCE": ["3_63"], "SEVAULT_CANYON": ["3_64", "2_35", "42_0"], "TANOBY_RUINS": ["3_65"] + [f"2_{n}" for n in range(27, 34)],
-           "NAVEL_ROCK": ["2_0", "2_36", "2_37", "2_38", "2_55"], "BIRTH_ISLAND": ["2_56", "2_58"]}
+           "NAVEL_ROCK": ["2_0", "2_36", "2_37", "2_38", "2_55", "2_59"], "BIRTH_ISLAND": ["2_56", "2_58"]}
 for _a, _pics in REDRAWN.items():
     _s = json.dumps(MAPS[_a])
     check(all(f"fr_ground/{_p}.png" in _s for _p in _pics), f"{_a}: drawn on FireRed's own pictures, every floor and room ({_pics})")
@@ -614,6 +614,226 @@ check(_shut and _still and story.story_flags.get("dotted_hole_open") and not str
       f"Ruin Valley: the braille door stays shut without Cut; with HM01 and the Cascade Badge it opens (FireRed) ({_shut}, {_still}, {story.story_flags.get('dotted_hole_open')})")
 story.badges.clear(); story.badges.update(_bd)
 
+# ---- the Trainer Tower, FireRed's (11-23, Kanto K2): Seven Island's door, the desk, a climb's floors, its battles, the roof
+from src.world import trainer_tower as _tt
+from src.ui import challenge_clock as _ck
+def _ttap(st, n=400):
+    for _ in range(n):
+        cs = g.current_state
+        if getattr(cs, "dialogue_box", None) is not None and getattr(cs.dialogue_box, "visible", False):
+            cs.dialogue_box.advance()
+        frames(cs)
+        if getattr(cs, "_ready", None) and cs._ready() and not getattr(cs.dialogue_box, "visible", False):
+            return
+for _k in [k for k in story.story_flags if k.startswith("tt_")] + ["challenge_clock"]:
+    story.story_flags.pop(_k, None)
+_opt = next(o for o in DATA["SEVEN_ISLAND"]["explore_options"] if o.get("text") == "Trainer Tower")
+check(_opt.get("action") == "TRAVEL" and _opt.get("target_area") == "TRAINER_TOWER" and not DATA["SEVEN_ISLAND"].get("gym"),
+      "Trainer Tower: Seven Island's door goes into the tower (no menu, no Rolf/Koji/Vera/Tower Master)")
+p = route("TRAINER_TOWER", "SEVEN_ISLAND")
+check(p.run.index == 0 and (p.run.floor.w, p.run.floor.h) == (19, 17) and p.run.n_floors == 11, f"...in at FireRed's lobby, 19 x 17; lobby, 1F-8F, roof and the lift ({p.run.player}, {p.run.n_floors})")
+_lob = {(m.payload or {}).get("text"): (m.x, m.y) for m in p.run.floor.movers if m.kind == "figure" and isinstance(m.payload, dict)}
+check(_lob.get("NURSE") == (4, 9) and _lob.get("CLERK") == (14, 9) and _lob.get("RECEPTIONIST") == (11, 7), f"...the nurse, the clerk and the receptionist on FireRed's spots ({_lob})")
+p.run.floor.movers = [m for m in p.run.floor.movers if m.kind == "figure"]
+p.run.player, p.anim = (9, 3), 0
+p.step(0, -1); _ttap(p)
+check(p.run.index == 0, f"...the stairs up wait till you sign up ({p.run.index})")
+_said = []
+_tt.event(p, {"tt": "desk"}, [], lambda l: _said.extend(l))
+for _ in range(300):
+    if type(g.current_state).__name__ == "PickListState":
+        break
+    st = g.current_state
+    if getattr(st, "dialogue_box", None) is not None and st.dialogue_box.visible:
+        st.dialogue_box.advance()
+    frames(st)
+_pk = g.current_state if type(g.current_state).__name__ == "PickListState" else None
+_rows = [c[0] for c in _pk.choices] if _pk else []
+story.player_team = [mk(4), mk(9)]
+story.player_team[0].level, story.player_team[1].level = 60, 55
+if _pk:
+    _pk.pick("SINGLE")
+for _ in range(900):
+    if type(g.current_state).__name__ in ("PlayState", "DungeonState") and getattr(g.current_state, "run", None) is not None and g.current_state._ready():
+        break
+    _st = g.current_state
+    if getattr(_st, "dialogue_box", None) is not None and getattr(_st.dialogue_box, "visible", False):
+        _st.dialogue_box.advance()
+    frames(_st)
+p = g.current_state
+check(_rows[:4] == ["Single Battle", "Double Battle", "Knockout", "Mixed"] and story.story_flags.get("tt_on") and _ck.running(story)
+      and p.run.index == 0 and tuple(p.run.player) == (9, 7),
+      f"...the receptionist: four climbs; signed up, the clock runs and you stand before the counter ({_rows}, {getattr(p.run, 'player', None)})")
+p.run.floor.movers = [m for m in p.run.floor.movers if m.kind == "figure"]
+p.run.player, p.anim = (9, 3), 0
+p.step(0, -1); _ttap(p)
+_one = {(m.payload or {}).get("text"): (m.x, m.y) for m in p.run.floor.movers if m.kind == "figure" and isinstance(m.payload, dict)}
+check(p.run.index == 1 and _one.get("Alberto") == (15, 13), f"...up to 1F: the Single climb's first trainer, Alberto, on FireRed's spot ({p.run.index}, {_one})")
+# (FireRed's trigger tile: step onto (10,13) and Alberto walks up and battles you - Jordan 11-23)
+p.run.player, p.anim = (10, 14), 0
+p.step(0, -1)
+for _ in range(400):
+    if type(g.current_state).__name__ == "TrainerIntroState":
+        break
+    _st = g.current_state
+    if getattr(_st, "dialogue_box", None) is not None and getattr(_st.dialogue_box, "visible", False):
+        _st.dialogue_box.advance()
+    frames(_st)
+_trig = g.current_state
+check(type(_trig).__name__ == "TrainerIntroState" and getattr(getattr(_trig, "next_state", None), "trainer_name", None) == "Alberto",
+      f"...step onto FireRed's trigger tile (10,13): Alberto walks up and the battle starts ({type(_trig).__name__})")
+g.change_state(p); frames(p, 2)
+# Knockout: a win and the next comes straight at you, in FireRed's order (bottom, top, right)
+_was = {k: story.story_flags.get(k) for k in ("tt_climb_SINGLE_on", "tt_climb_KNOCKOUT")}
+story.story_flags.pop("tt_climb_SINGLE_on", None); story.story_flags["tt_climb_KNOCKOUT"] = True
+_kf = _tt.floor_data(story, 1)
+_nx = _tt.after_battle(g, {"floor": 1, "kind": "KNOCKOUT", "k": 0}, True)
+if callable(_nx):
+    _nx()
+_ko = g.current_state
+check(callable(_nx) and type(_ko).__name__ == "TrainerIntroState" and getattr(_ko.next_state, "trainer_name", None) == _kf["trainers"][1]["name"]
+      and len([q for q in _ko.next_state.opponent_team if q]) == 1,
+      f"...Knockout: beat the first and the second comes straight at you, one Pokemon each ({getattr(getattr(_ko, 'next_state', None), 'trainer_name', None)})")
+for _k, _v in _was.items():
+    story.story_flags.pop(_k, None)
+    if _v: story.story_flags[_k] = _v
+story.story_flags.pop("tt_ko_1_0", None)
+g.change_state(p); frames(p, 2)
+_b = _tt._battle(g, 1, _tt.floor_data(story, 1), 0)
+_bb = getattr(_b, "battle_state", None) or getattr(_b, "next_state", None) or getattr(_b, "battle", None)
+_team = [(q.id, q.level, getattr(q, "held_item", None)) for q in getattr(_bb, "opponent_team", [])]
+check([t[:2] for t in _team] == [(160, 60), (115, 60)],
+      f"...his two (FireRed's pick for 1F: Feraligatr, Kangaskhan) at your highest level, Lv 60 ({_team})")
+_after = _tt.after_battle(g, {"floor": 1, "kind": "SINGLE", "k": 0}, True)
+p.run.floor.movers = [m for m in p.run.floor.movers if m.kind == "figure"]
+p.run.player, p.anim = (15, 7), 0
+p.step(0, -1); _ttap(p)
+check(story.story_flags.get("tt_floor_1") and p.run.index == 2, f"...beaten, 1F's stairs up open: 2F ({p.run.index}, {_after})")
+_lose = _tt.after_battle(g, {"floor": 2, "kind": "SINGLE", "k": 0}, False)
+if callable(_lose):
+    _lose()
+for _ in range(900):
+    if type(g.current_state).__name__ in ("PlayState", "DungeonState") and getattr(g.current_state, "run", None) is not None and g.current_state is not p and g.current_state._ready():
+        break
+    _st = g.current_state
+    if getattr(_st, "dialogue_box", None) is not None and getattr(_st.dialogue_box, "visible", False):
+        _st.dialogue_box.advance()
+    frames(_st)
+p = g.current_state
+check(not story.story_flags.get("tt_on") and not story.story_flags.get("tt_floor_1") and not _ck.running(story) and p.run.index == 0,
+      f"...lose a battle: the climb is over, back in the lobby ({p.run.index}, {p.run.player})")
+# the Double climb: its own floors (FireRed's Double layouts) and pairs
+story.story_flags["tt_on"] = True; story.story_flags["tt_climb_DOUBLE"] = True
+for _nm in _tt.on_climb("DOUBLE"):
+    story.story_flags["tt_here_" + _nm.strip().replace(" ", "_")] = True
+p = route("TRAINER_TOWER", "SEVEN_ISLAND")
+while len(p.run.floors) <= 1:
+    p.run.enter_floor(len(p.run.floors))
+p.run.enter_floor(1); frames(p, 2)
+_two = {(m.payload or {}).get("text"): (m.x, m.y) for m in p.run.floor.movers if m.kind == "figure" and isinstance(m.payload, dict)}
+_d = _tt._battle(g, 1, _tt.floor_data(story, 1), 0)
+check(_two.get("Jen") == (10, 12) and _two.get("Kira") == (10, 13) and "2_151" in json.dumps(MAPS["TRAINER_TOWER"]["story_maps"][0]["map"])
+      and (getattr(getattr(_d, "next_state", None), "battle_options", None) or {}).get("double"),
+      f"...the Double climb: FireRed's Double floors; Jen & Kira side by side, a double battle ({_two})")
+# the roof: the owner, the time, the prize once, the record
+for _n in range(1, 9):
+    story.story_flags[f"tt_floor_{_n}"] = True
+story.story_flags.pop("tt_climb_DOUBLE", None); story.story_flags["tt_climb_SINGLE_on"] = True
+_ck.start(story, "TRAINER TOWER")
+story.story_flags.pop("tt_prize_SINGLE", None); story.inventory.pop("UPGRADE", None)
+_ndx = story.story_flags.pop("unlocked_national_dex", None)
+_nd_regions = None
+p = route("TRAINER_TOWER", "SEVEN_ISLAND")
+while len(p.run.floors) <= 9:
+    p.run.enter_floor(len(p.run.floors))
+p.run.enter_floor(9); frames(p, 2)
+_said = []
+from src.states.systems import has_national_dex as _hnd
+_tt.event(p, {"tt": "owner"}, [], lambda l: _said.extend(l))
+check(_hnd(story) or (not story.inventory.get("UPGRADE") and not story.story_flags.get("tt_prize_SINGLE") and any("National Pokedex" in x for x in _said)),
+      f"...without the National Pokedex the owner keeps the Up-Grade for later (Jordan 11-23: none in Kanto before it) ({_said[2:4]})")
+story.story_flags["unlocked_national_dex"] = True
+story.story_flags["tt_on"] = True; story.story_flags["tt_climb_SINGLE_on"] = True; story.story_flags["tt_floor_8"] = True; _ck.start(story, "TRAINER TOWER")
+_said = []
+_tt.event(p, {"tt": "owner"}, [], lambda l: _said.extend(l))
+check(story.inventory.get("UPGRADE") == 1 and story.story_flags.get("tt_best_SINGLE") is not None and not _ck.running(story) and any("record" in x for x in _said),
+      f"...the roof: the owner stops the clock, gives the Single climb's prize (FireRed: the Up-Grade) and keeps the record ({_said[:3]})")
+_said = []
+story.story_flags["tt_on"] = True; story.story_flags["tt_climb_SINGLE_on"] = True; story.story_flags["tt_floor_8"] = True; _ck.start(story, "TRAINER TOWER")
+_tt.event(p, {"tt": "owner"}, [], lambda l: _said.extend(l))
+check(story.inventory.get("UPGRADE") == 1, f"...the prize once only ({story.inventory.get('UPGRADE')})")
+if _ndx is None: story.story_flags.pop("unlocked_national_dex", None)
+for _k in [k for k in story.story_flags if k.startswith("tt_")] + ["challenge_clock"]:
+    story.story_flags.pop(_k, None)
+
+# ---- FireRed's arrival scenes (11-23, K4): Bill walks you into One Island's Network Center; the rival on Four Island
+_af = {k: story.story_flags.pop(k, None) for k in ("one_island_bill_walk", "kanto_rival_four_island")}
+_tp = story.inventory.pop("TRI_PASS", None)
+t = town("ONE_ISLAND", "KINDLE_ROAD"); t._go("harbor", ""); frames(t, 2); t._go(None, "OUT:12,19"); frames(t, 2)
+_start = tuple(t.player)
+for _i in range(400):
+    frames(t)
+    _tap_through(t, 20)
+    if story.story_flags.get("one_island_bill_walk"): break
+frames(t, 5)
+check(story.story_flags.get("one_island_bill_walk") and getattr(t, "room", None) == "center" and tuple(t.player) == (9, 9),
+      f"One Island, first trip: out of the harbour, FireRed's Bill walks you up and into the Network Center, at FireRed's (9,9) (from {_start}: {getattr(t, 'room', None)} {tuple(t.player)})")
+t._go(None, "OUT:14,4"); g.walk_town_room = None
+t = town("FOUR_ISLAND", "ICEFALL_CAVE"); t._go("harbor", ""); frames(t, 2); t._go(None, "OUT:10,29"); frames(t, 2)
+_start = tuple(t.player)
+for _i in range(400):
+    frames(t)
+    _tap_through(t, 20)
+    if story.story_flags.get("kanto_rival_four_island") and not t.scenes.busy(): break
+check(story.story_flags.get("kanto_rival_four_island") and getattr(t, "room", None) is None and not t.scenes.busy()
+      and "Rival" not in [o.get("text") for o in t.people.values() if isinstance(o, dict)],
+      f"Four Island, first visit: out of the harbour the rival walks up from the pier, has his say and goes - once (from {_start})")
+for _k, _v in _af.items():
+    story.story_flags.pop(_k, None)
+    if _v is not None: story.story_flags[_k] = _v
+if _tp is not None: story.inventory["TRI_PASS"] = _tp
+# ---- Two Island's Joyful Game Corner (11-23, K4): FireRed's two link games, single-player, with sums
+from src.world import joyful_games as _jg
+from src.minigames import sevii as _sv
+t = town("TWO_ISLAND", "CAPE_BRINK"); t._go("gamecorner", ""); frames(t, 2)
+_att = next((o for s_, o in t._people().items() if isinstance(o, dict) and (o.get("event") or {}).get("world") == "joyful_games"), None)
+_opts = [(_att or {}).get("text"), (_att or {}).get("event")]
+story.player_team = [mk(25)]
+_said = []
+_jg.event(t, {"world": "joyful_games"}, [], lambda l: _said.extend(l))
+for _ in range(300):
+    if type(g.current_state).__name__ == "PickListState": break
+    _st = g.current_state
+    if getattr(_st, "npc_active", False): _st.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=(640, 600))])
+    elif getattr(getattr(_st, "dialogue_box", None), "visible", False): _st.dialogue_box.advance()
+    frames(_st)
+_pk = g.current_state if type(g.current_state).__name__ == "PickListState" else None
+_rows = [c[0] for c in _pk.choices] if _pk else []
+if _pk: _pk.pick("berry")
+frames(g.current_state, 5)
+_no_dodrio = any("needs a Dodrio" in x for x in _said)
+_jg.event(t, {"world": "joyful_games"}, [], lambda l: _said.extend(l))
+for _ in range(300):
+    if type(g.current_state).__name__ == "PickListState": break
+    _st = g.current_state
+    if getattr(_st, "npc_active", False): _st.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=(640, 600))])
+    elif getattr(getattr(_st, "dialogue_box", None), "visible", False): _st.dialogue_box.advance()
+    frames(_st)
+if type(g.current_state).__name__ == "PickListState": g.current_state.pick("jump")
+_game = g.current_state
+_ok = type(_game).__name__ == "PokemonJump"
+if _ok:
+    _game._play()
+    for _sw in range(4):
+        for _ in range(_game.beat + 1):
+            if _game.beat - _game.t == 2 and not _game.jumped: _game._jump()
+            _game.step()
+    while _game.phase == "PLAY": _game.step()
+    _berries = sum(story.inventory.get(b, 0) for b in ("PECHA_BERRY", "ORAN_BERRY", "SITRUS_BERRY", "LUM_BERRY"))
+    _game.on_done(True)
+    _got = sum(story.inventory.get(b, 0) for b in ("PECHA_BERRY", "ORAN_BERRY", "SITRUS_BERRY", "LUM_BERRY")) - _berries
+check(_opts[0] == "Joyful Games" and _rows == ["Pokemon Jump", "Dodrio Berry Picking"] and _no_dodrio and _ok and _got == 1,
+      f"Two Island's Joyful Game Corner: the attendant runs FireRed's two games, single-player - Dodrio Berry Picking wants a Dodrio; Pokemon Jump played, a prize Berry ({_opts}, {_rows})")
 story.inventory.clear(); story.inventory.update(_inv)
 story.story_flags.clear(); story.story_flags.update(_flags)
 g.walk_towns = False
