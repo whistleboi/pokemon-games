@@ -76,6 +76,9 @@
     ]
   },
   "figures": {
+    "DISTORTION_WORLD:Portal": {"draw": "none"},
+    "DISTORTION_WORLD:Cyrus": {"sheet": "pt_gingaboss.png"},
+    "DISTORTION_WORLD:Cynthia": {"sheet": "pt_champion.png"},
     "SPEAR_PILLAR:Confront Cyrus": {"sheet": "pt_gingaboss.png"},
     "SPEAR_PILLAR:Battle Mars and Jupiter": {"sheet": "pt_gkanbu1.png"},
     "DISTORTION_WORLD:PICK UP THE GLOWING ORB": {"item": "POKE_BALL"},
