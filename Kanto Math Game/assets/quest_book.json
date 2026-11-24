@@ -312,6 +312,7 @@
     ]},
     {"title": "The Relic Badge", "chapters": [
       {"mission": "sinnoh_m7", "title": "The Old Charm", "say": "Cynthia's grandmother lives in Celestic Town, beyond the fog. The Charm in your Bag is very old. Someone else wants it."},
+      {"mission": "sinnoh_m8", "steps": [0], "title": "The Elder's Gift", "say": "The Old Charm is home in Celestic's shrine. The town's Elder hasn't finished with you yet: she has something for a Trainer who can cross water."},
       {"mission": "sinnoh_m8", "title": "Ghosts of Hearthome", "say": "Hearthome's Gym Leader is finally home. Her Gym is dark, and the lights only come on for the right answers."}
     ]},
     {"title": "The Mine Badge", "chapters": [
