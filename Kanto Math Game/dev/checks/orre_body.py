@@ -105,6 +105,12 @@ story.story_flags["orre_beat_skrub"] = True
 said = relic_stone()
 pm = g.current_state
 check(type(pm).__name__ == "PokemonPartyMenuState", "Relic Stone: choose which Pokemon (purifying is optional)")
+sh.shadow = {"gauge": 5, "max": 100, "hidden": [], "seen": True}   # (11-24: a heart still shut - the gauge not empty)
+pm.on_select(1)
+check(story.player_team[1] is sh and any("still shut" in ln for ln in sum(said, [])), "a heart still shut: the Relic Stone waits (XD's Heart Gauge)")
+sh.shadow["gauge"] = 0
+said = relic_stone()
+pm = g.current_state
 pm.on_select(1)
 ty = story.player_team[1]
 check(ty.id == 248 and ty.level == 70 and ty.moves == ["CRUNCH", "EARTHQUAKE"] and set(ty.ivs.values()) == {31},

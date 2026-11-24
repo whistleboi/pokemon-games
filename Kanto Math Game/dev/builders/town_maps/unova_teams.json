@@ -594,6 +594,23 @@
    566
   ]
  },
+ "343": {
+  "b2_id": 343,
+  "class": "TEAM_PLASMA",
+  "levels": [
+   46,
+   46
+  ],
+  "name": "Team Plasma Grunt",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "b2_plasma_grunt_f.png",
+  "team": [
+   559,
+   510
+  ]
+ },
  "346": {
   "b2_id": 346,
   "class": "TRAINER",
@@ -609,6 +626,39 @@
   "team": [
    507,
    528
+  ]
+ },
+ "347": {
+  "b2_id": 347,
+  "class": "TEAM_PLASMA",
+  "levels": [
+   48,
+   48,
+   50
+  ],
+  "movesets": {
+   "461": [
+    "NIGHT-SLASH",
+    "SLASH",
+    "ICE-SHARD",
+    "METAL-CLAW"
+   ],
+   "615": [
+    "ICE-BEAM",
+    "LIGHT-SCREEN",
+    "SLASH",
+    "CONFUSE-RAY"
+   ]
+  },
+  "name": "Team Plasma Zinzolin",
+  "rewards": {
+   "balls": 4
+  },
+  "sprite": "team_plasma.png",
+  "team": [
+   615,
+   615,
+   461
   ]
  },
  "350": {
@@ -1231,6 +1281,116 @@
    426
   ]
  },
+ "426": {
+  "b2_id": 426,
+  "class": "TEAM_PLASMA",
+  "levels": [
+   46,
+   46
+  ],
+  "name": "Team Plasma Grunt",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "b2_plasma_grunt_m.png",
+  "team": [
+   544,
+   505
+  ]
+ },
+ "427": {
+  "b2_id": 427,
+  "class": "TEAM_PLASMA",
+  "levels": [
+   47
+  ],
+  "name": "Team Plasma Grunt",
+  "rewards": {
+   "balls": 2
+  },
+  "sprite": "b2_plasma_grunt_m.png",
+  "team": [
+   569
+  ]
+ },
+ "428": {
+  "b2_id": 428,
+  "class": "TEAM_PLASMA",
+  "levels": [
+   47
+  ],
+  "movesets": {
+   "110": [
+    "SLUDGE-BOMB",
+    "DOUBLE-HIT",
+    "EXPLOSION",
+    "HAZE"
+   ]
+  },
+  "name": "Team Plasma Grunt",
+  "rewards": {
+   "balls": 2
+  },
+  "sprite": "b2_plasma_grunt_m.png",
+  "team": [
+   110
+  ]
+ },
+ "429": {
+  "b2_id": 429,
+  "class": "TEAM_PLASMA",
+  "levels": [
+   46,
+   46
+  ],
+  "name": "Team Plasma Grunt",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "b2_plasma_grunt_m.png",
+  "team": [
+   552,
+   20
+  ]
+ },
+ "436": {
+  "b2_id": 436,
+  "class": "TEAM_PLASMA",
+  "levels": [
+   45,
+   45,
+   45
+  ],
+  "name": "Team Plasma Grunt",
+  "rewards": {
+   "balls": 4
+  },
+  "sprite": "b2_plasma_grunt_f.png",
+  "team": [
+   624,
+   624,
+   624
+  ]
+ },
+ "437": {
+  "b2_id": 437,
+  "class": "TEAM_PLASMA",
+  "levels": [
+   45,
+   45,
+   45
+  ],
+  "name": "Team Plasma Grunt",
+  "rewards": {
+   "balls": 4
+  },
+  "sprite": "b2_plasma_grunt_f.png",
+  "team": [
+   633,
+   633,
+   215
+  ]
+ },
  "47": {
   "b2_id": 47,
   "class": "LASS",
@@ -1244,6 +1404,23 @@
   "sprite": "b2_lass.png",
   "team": [
    510
+  ]
+ },
+ "500": {
+  "b2_id": 500,
+  "class": "TEAM_PLASMA",
+  "levels": [
+   46,
+   46
+  ],
+  "name": "Team Plasma Grunt",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "b2_plasma_grunt_m.png",
+  "team": [
+   505,
+   569
   ]
  },
  "515": {
@@ -1602,6 +1779,37 @@
    569
   ]
  },
+ "724": {
+  "b2_id": 724,
+  "class": "TEAM_PLASMA",
+  "levels": [
+   47,
+   47
+  ],
+  "movesets": {
+   "110": [
+    "SLUDGE-BOMB",
+    "DOUBLE-HIT",
+    "EXPLOSION",
+    "HAZE"
+   ],
+   "89": [
+    "SLUDGE-WAVE",
+    "ACID-ARMOR",
+    "SCREECH",
+    "FLING"
+   ]
+  },
+  "name": "Team Plasma Grunt",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "b2_plasma_grunt_m.png",
+  "team": [
+   110,
+   89
+  ]
+ },
  "732": {
   "b2_id": 732,
   "class": "SUBWAY_BOSS",
@@ -1645,6 +1853,157 @@
   "sprite": "b2_plasma_grunt_f.png",
   "team": [
    505
+  ]
+ },
+ "794": {
+  "b2_id": 794,
+  "class": "TRAINER",
+  "held_items": {
+   "500": "CHARCOAL",
+   "516": "MYSTIC_WATER",
+   "521": "SCOPE_LENS"
+  },
+  "levels": [
+   50,
+   48,
+   48
+  ],
+  "name": "Pokemon Trainer Rival",
+  "rewards": {
+   "balls": 4
+  },
+  "sprite": "trainer.png",
+  "team": [
+   500,
+   516,
+   521
+  ]
+ },
+ "795": {
+  "b2_id": 795,
+  "class": "TRAINER",
+  "held_items": {
+   "503": "MYSTIC_WATER",
+   "512": "MIRACLE_SEED",
+   "521": "SCOPE_LENS"
+  },
+  "levels": [
+   50,
+   48,
+   48
+  ],
+  "name": "Pokemon Trainer Rival",
+  "rewards": {
+   "balls": 4
+  },
+  "sprite": "trainer.png",
+  "team": [
+   503,
+   512,
+   521
+  ]
+ },
+ "796": {
+  "b2_id": 796,
+  "class": "TRAINER",
+  "held_items": {
+   "497": "MIRACLE_SEED",
+   "514": "CHARCOAL",
+   "521": "SCOPE_LENS"
+  },
+  "levels": [
+   50,
+   48,
+   48
+  ],
+  "name": "Pokemon Trainer Rival",
+  "rewards": {
+   "balls": 4
+  },
+  "sprite": "trainer.png",
+  "team": [
+   497,
+   514,
+   521
+  ]
+ },
+ "798": {
+  "b2_id": 798,
+  "class": "TEAM_PLASMA",
+  "levels": [
+   46,
+   46
+  ],
+  "name": "Team Plasma Grunt",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "b2_plasma_grunt_m.png",
+  "team": [
+   42,
+   452
+  ]
+ },
+ "799": {
+  "b2_id": 799,
+  "class": "TEAM_PLASMA",
+  "levels": [
+   46,
+   46
+  ],
+  "name": "Team Plasma Grunt",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "b2_plasma_grunt_f.png",
+  "team": [
+   336,
+   569
+  ]
+ },
+ "800": {
+  "b2_id": 800,
+  "class": "TEAM_PLASMA",
+  "levels": [
+   47
+  ],
+  "name": "Team Plasma Grunt",
+  "rewards": {
+   "balls": 2
+  },
+  "sprite": "b2_plasma_grunt_m.png",
+  "team": [
+   553
+  ]
+ },
+ "801": {
+  "b2_id": 801,
+  "class": "TEAM_PLASMA",
+  "levels": [
+   47
+  ],
+  "name": "Team Plasma Grunt",
+  "rewards": {
+   "balls": 2
+  },
+  "sprite": "b2_plasma_grunt_f.png",
+  "team": [
+   452
+  ]
+ },
+ "802": {
+  "b2_id": 802,
+  "class": "TEAM_PLASMA",
+  "levels": [
+   47
+  ],
+  "name": "Team Plasma Grunt",
+  "rewards": {
+   "balls": 2
+  },
+  "sprite": "b2_plasma_grunt_f.png",
+  "team": [
+   560
   ]
  },
  "803": {
@@ -1705,6 +2064,25 @@
   "sprite": "b2_guitarist.png",
   "team": [
    544
+  ]
+ },
+ "812": {
+  "b2_id": 812,
+  "class": "TEAM_PLASMA",
+  "levels": [
+   45,
+   45,
+   45
+  ],
+  "name": "Team Plasma Grunt",
+  "rewards": {
+   "balls": 4
+  },
+  "sprite": "b2_plasma_grunt_m.png",
+  "team": [
+   559,
+   552,
+   42
   ]
  }
 }

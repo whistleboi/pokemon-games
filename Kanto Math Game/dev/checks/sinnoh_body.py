@@ -1358,6 +1358,13 @@ for _ in range(120):
     g.current_state.update()
 check(not story.story_flags.get("coronet_north_side"), "Mt. Coronet: in from Route 207 (the south rooms) it isn't")
 
+# ---- (11-24, inbox clean-sinnoh-main-frontier-gen4-pokemon): Sinnoh's Frontier draws Gen IV's own Tower sets' Pokemon (HGSS = Platinum's)
+from src.world import frontier as _fr
+_ids = {i for _ in range(40) for i in _fr._team(g, [0, 1, 2, 3], 3, fac="stower")}
+_g4 = {str(i) for gg in _fr.data4(g)["groups"].values() for i in gg}
+check(_ids and all(str(i) in _g4 for i in _ids) and any(387 <= int(i) <= 493 for i in _ids),
+      f"Sinnoh's Battle Tower: its Pokemon from Gen IV's groups, Gen 4 ones among them ({len(_ids)} seen)")
+
 # ---- S5 (11-24): Route 213's gatehouse is a room again, walked through (main a91de160: arrival by land or by sea)
 story.badges["SINNOH"] = ["COAL", "FOREST", "COBBLE", "FEN", "RELIC"]
 t = town("PASTORIA_CITY", "SINNOH_ROUTE_212"); frames(t, 3); _drive(t, 200, lambda: not t._busy())

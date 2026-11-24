@@ -444,10 +444,10 @@
             },
             "dialogue": {
               "intro": [
-                "Welcome to the final round of the Phenac Stadium! The winner takes the Phenac Badge!"
+                "Round 4 of the Phenac Stadium! Beat me, and Gym Leader Misty takes the field!"
               ],
               "player_won": [
-                "You won the Phenac Stadium! Here's the Phenac Badge!"
+                "Teacher Glais: Well fought! Misty is waiting for you."
               ],
               "player_lost": [
                 "So close! Train up and enter the next tournament."
@@ -843,16 +843,15 @@
             ],
             "double": true,
             "rewards": {
-              "balls": 10,
-              "TM175": 1
+              "balls": 10
             },
             "is_boss_battle": true,
             "dialogue": {
               "intro": [
-                "The final round of the Pyrite Colosseum! The winner takes the Pyrite Badge!"
+                "Round 4 of the Pyrite Colosseum! Beat me, and Gym Leader Duking takes the field!"
               ],
               "player_won": [
-                "You won the Pyrite Colosseum! Here's the Pyrite Badge, and TM175 (TOXIC)!"
+                "Bodybuilder Mirez: You're through! Duking is waiting for you."
               ],
               "player_lost": [
                 "So close! Come back and enter again."
@@ -15770,7 +15769,7 @@
                 "lines": [
                   "The townsfolk Cipher locked up pour out of the basement, blinking at the light.",
                   "Justy: Thank you! They kept us down here while their peons wore our faces.",
-                  "Justy: The mayor? Es Cade wasn't with us... but he's been seen back in his office, not a scratch on him. Odd, isn't it?",
+                  "Justy: The mayor? He wasn't with us... but he's been seen back in his office, not a scratch on him. Odd, isn't it?",
                   "Justy: Take my P*DA number. And keep an eye on the desert - I heard shady types heading out that way."
                 ]
               }
