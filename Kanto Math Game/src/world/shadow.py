@@ -154,6 +154,16 @@ def walked(game, steps=1):
             if mon is not None and getattr(mon, "shadow", None):
                 lines += open_heart(game, mon, share)
     story.story_flags["_shadow_steps"] = n
+    from src.pokemon import breeding   # (11-24: a Shadow Pokemon left at the Day Care opens too, as in XD - OPEN_DAYCARE; quietly,
+    kept = [m for m in breeding.daycare(story).get("mons") or [] if m is not None and getattr(m, "shadow", None)]   # it isn't with you)
+    if kept:
+        d = story.story_flags.get("_shadow_dc_steps", 0) + steps
+        every, share = OPEN_DAYCARE
+        while d >= every:
+            d -= every
+            for mon in kept:
+                open_heart(game, mon, share)
+        story.story_flags["_shadow_dc_steps"] = d
     return lines
 
 
