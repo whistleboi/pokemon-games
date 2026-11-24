@@ -1417,8 +1417,8 @@ class E4Vs(G4):
             if img is not None:
                 pic = img if lit else dark
                 screen.blit(pic, pic.get_rect(center=(int(self.X(x)), int(self.Y(y)))))
-            _text(screen, "VS", int(self.Y(14)), (self.X(x + sign * 16 + sign * 40), self.Y(y - 40)), colour=(255, 232, 96),
-                  shadow=(40, 24, 8), anchor="center")
+        _text(screen, "VS", int(self.Y(14)), (self.X(128), self.Y(96)), colour=(255, 232, 96),   # (once, between them)
+              shadow=(40, 24, 8), anchor="center")
         if lit and f < 55:
             _text(screen, self.c.name.upper(), int(self.Y(14)), (self.X(168), self.Y(150)))
         if 6 <= f < 15:
