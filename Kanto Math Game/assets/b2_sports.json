@@ -1,0 +1,3164 @@
+{
+ "_about": "Nimbasa's Big Stadium and Small Court, from Black 2's file: dev/builders/unova_sports.py (batch 4c)",
+ "fields": {
+  "81": {
+   "arena": "stadium",
+   "sport": "football",
+   "athletes": [
+    {
+     "n": 3,
+     "key": "Backers Hawk & Dar",
+     "second": false
+    },
+    {
+     "n": 4,
+     "key": "Backers Cam & Abby",
+     "second": true
+    },
+    {
+     "n": 5,
+     "key": "Linebacker Dan",
+     "second": false
+    },
+    {
+     "n": 6,
+     "key": "Linebacker Bob",
+     "second": false
+    },
+    {
+     "n": 7,
+     "key": "Linebacker Jonah",
+     "second": false
+    },
+    {
+     "n": 23,
+     "key": "Backers Hawk & Dar",
+     "second": true
+    },
+    {
+     "n": 24,
+     "key": "Backers Cam & Abby",
+     "second": false
+    }
+   ]
+  },
+  "82": {
+   "arena": "stadium",
+   "sport": "baseball",
+   "athletes": [
+    {
+     "n": 0,
+     "key": "Infielder Connor",
+     "second": false
+    },
+    {
+     "n": 1,
+     "key": "Infielder Todd",
+     "second": false
+    },
+    {
+     "n": 2,
+     "key": "Backers Ami & Eira",
+     "second": false
+    },
+    {
+     "n": 3,
+     "key": "Backers Alf & Fred",
+     "second": false
+    },
+    {
+     "n": 11,
+     "key": "Backers Ami & Eira",
+     "second": true
+    },
+    {
+     "n": 14,
+     "key": "Backers Alf & Fred",
+     "second": true
+    },
+    {
+     "n": 15,
+     "key": "Infielder Alex",
+     "second": false
+    }
+   ]
+  },
+  "83": {
+   "arena": "stadium",
+   "sport": "soccer",
+   "athletes": [
+    {
+     "n": 9,
+     "key": "Striker Tony",
+     "second": false
+    },
+    {
+     "n": 10,
+     "key": "Striker Roberto",
+     "second": false
+    },
+    {
+     "n": 11,
+     "key": "Striker Marco",
+     "second": false
+    },
+    {
+     "n": 12,
+     "key": "Backers Kay & Ali",
+     "second": false
+    },
+    {
+     "n": 13,
+     "key": "Backers Les & Web",
+     "second": false
+    },
+    {
+     "n": 22,
+     "key": "Backers Kay & Ali",
+     "second": true
+    },
+    {
+     "n": 23,
+     "key": "Backers Les & Web",
+     "second": true
+    }
+   ]
+  },
+  "86": {
+   "arena": "court",
+   "sport": "tennis",
+   "athletes": [
+    {
+     "n": 0,
+     "key": "Smasher Elena",
+     "second": false
+    },
+    {
+     "n": 1,
+     "key": "Smasher Aspen",
+     "second": false
+    },
+    {
+     "n": 2,
+     "key": "Smasher Mari",
+     "second": false
+    },
+    {
+     "n": 3,
+     "key": "Backers Joe & Ross",
+     "second": false
+    },
+    {
+     "n": 4,
+     "key": "Backers Ai & Ciel",
+     "second": false
+    },
+    {
+     "n": 12,
+     "key": "Backers Joe & Ross",
+     "second": true
+    },
+    {
+     "n": 13,
+     "key": "Backers Ai & Ciel",
+     "second": true
+    }
+   ]
+  },
+  "87": {
+   "arena": "court",
+   "sport": "basketball",
+   "athletes": [
+    {
+     "n": 0,
+     "key": "Hoopster Bobby",
+     "second": false
+    },
+    {
+     "n": 1,
+     "key": "Hoopster John",
+     "second": false
+    },
+    {
+     "n": 2,
+     "key": "Hoopster Lamarcus",
+     "second": false
+    },
+    {
+     "n": 3,
+     "key": "Backers Masa & Yas",
+     "second": false
+    },
+    {
+     "n": 4,
+     "key": "Backers Kat & Phae",
+     "second": false
+    },
+    {
+     "n": 10,
+     "key": "Backers Masa & Yas",
+     "second": true
+    },
+    {
+     "n": 11,
+     "key": "Backers Kat & Phae",
+     "second": true
+    }
+   ]
+  }
+ },
+ "athletes": {
+  "Backers Hawk & Dar": {
+   "class": "Backers",
+   "sport": "football",
+   "tiers": {
+    "2": {
+     "name": "Backers Hawk & Dar",
+     "class": "BACKERS",
+     "sprite": "b2_backers_m.png",
+     "team": [
+      554,
+      554
+     ],
+     "levels": [
+      31,
+      31
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "b2_id": 21,
+     "battle_options": {
+      "double": true
+     }
+    },
+    "3": {
+     "name": "Backers Hawk & Dar",
+     "class": "BACKERS",
+     "sprite": "b2_backers_m.png",
+     "team": [
+      555,
+      555
+     ],
+     "levels": [
+      45,
+      45
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "b2_id": 73,
+     "battle_options": {
+      "double": true
+     }
+    },
+    "4": {
+     "name": "Backers Hawk & Dar",
+     "class": "BACKERS",
+     "sprite": "b2_backers_m.png",
+     "team": [
+      555,
+      555
+     ],
+     "levels": [
+      61,
+      61
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "b2_id": 74,
+     "battle_options": {
+      "double": true
+     }
+    }
+   }
+  },
+  "Backers Cam & Abby": {
+   "class": "Backers",
+   "sport": "football",
+   "tiers": {
+    "4": {
+     "name": "Backers Cam & Abby",
+     "class": "BACKERS",
+     "sprite": "b2_backers_f.png",
+     "team": [
+      539,
+      538
+     ],
+     "levels": [
+      61,
+      61
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "b2_id": 85,
+     "battle_options": {
+      "double": true
+     }
+    }
+   }
+  },
+  "Linebacker Dan": {
+   "class": "Linebacker",
+   "sport": "football",
+   "tiers": {
+    "1": {
+     "name": "Linebacker Dan",
+     "class": "LINEBACKER",
+     "sprite": "b2_linebacker.png",
+     "team": [
+      554,
+      532
+     ],
+     "levels": [
+      25,
+      25
+     ],
+     "rewards": {
+      "balls": 3,
+      "POTION": 1
+     },
+     "b2_id": 2
+    },
+    "2": {
+     "name": "Linebacker Dan",
+     "class": "LINEBACKER",
+     "sprite": "b2_linebacker.png",
+     "team": [
+      554,
+      533
+     ],
+     "levels": [
+      33,
+      33
+     ],
+     "rewards": {
+      "balls": 3,
+      "SUPER_POTION": 1
+     },
+     "b2_id": 64
+    },
+    "3": {
+     "name": "Linebacker Dan",
+     "class": "LINEBACKER",
+     "sprite": "b2_linebacker.png",
+     "team": [
+      533,
+      555
+     ],
+     "levels": [
+      47,
+      47
+     ],
+     "rewards": {
+      "balls": 3,
+      "HYPER_POTION": 1
+     },
+     "b2_id": 65
+    },
+    "4": {
+     "name": "Linebacker Dan",
+     "class": "LINEBACKER",
+     "sprite": "b2_linebacker.png",
+     "team": [
+      108,
+      555,
+      534
+     ],
+     "levels": [
+      62,
+      62,
+      62
+     ],
+     "rewards": {
+      "balls": 4,
+      "PROTEIN": 1
+     },
+     "b2_id": 66
+    }
+   }
+  },
+  "Linebacker Bob": {
+   "class": "Linebacker",
+   "sport": "football",
+   "tiers": {
+    "3": {
+     "name": "Linebacker Bob",
+     "class": "LINEBACKER",
+     "sprite": "b2_linebacker.png",
+     "team": [
+      533,
+      533
+     ],
+     "levels": [
+      47,
+      47
+     ],
+     "rewards": {
+      "balls": 3,
+      "HYPER_POTION": 1
+     },
+     "b2_id": 26
+    },
+    "4": {
+     "name": "Linebacker Bob",
+     "class": "LINEBACKER",
+     "sprite": "b2_linebacker.png",
+     "team": [
+      539,
+      538,
+      297
+     ],
+     "levels": [
+      62,
+      62,
+      62
+     ],
+     "rewards": {
+      "balls": 4,
+      "PROTEIN": 1
+     },
+     "b2_id": 67
+    },
+    "1": {
+     "name": "Linebacker Bob",
+     "class": "LINEBACKER",
+     "sprite": "b2_linebacker.png",
+     "team": [
+      532,
+      532
+     ],
+     "levels": [
+      25,
+      25
+     ],
+     "rewards": {
+      "balls": 3,
+      "POTION": 1
+     },
+     "b2_id": 227
+    },
+    "2": {
+     "name": "Linebacker Bob",
+     "class": "LINEBACKER",
+     "sprite": "b2_linebacker.png",
+     "team": [
+      533,
+      533
+     ],
+     "levels": [
+      33,
+      33
+     ],
+     "rewards": {
+      "balls": 3,
+      "SUPER_POTION": 1
+     },
+     "b2_id": 229
+    }
+   }
+  },
+  "Linebacker Jonah": {
+   "class": "Linebacker",
+   "sport": "football",
+   "tiers": {
+    "4": {
+     "name": "Linebacker Jonah",
+     "class": "LINEBACKER",
+     "sprite": "b2_linebacker.png",
+     "team": [
+      205
+     ],
+     "levels": [
+      64
+     ],
+     "rewards": {
+      "balls": 2,
+      "PROTEIN": 1
+     },
+     "b2_id": 63
+    },
+    "1": {
+     "name": "Linebacker Jonah",
+     "class": "LINEBACKER",
+     "sprite": "b2_linebacker.png",
+     "team": [
+      557
+     ],
+     "levels": [
+      26
+     ],
+     "rewards": {
+      "balls": 2,
+      "POTION": 1
+     },
+     "b2_id": 228
+    },
+    "2": {
+     "name": "Linebacker Jonah",
+     "class": "LINEBACKER",
+     "sprite": "b2_linebacker.png",
+     "team": [
+      557
+     ],
+     "levels": [
+      34
+     ],
+     "rewards": {
+      "balls": 2,
+      "SUPER_POTION": 1
+     },
+     "b2_id": 230
+    },
+    "3": {
+     "name": "Linebacker Jonah",
+     "class": "LINEBACKER",
+     "sprite": "b2_linebacker.png",
+     "team": [
+      558
+     ],
+     "levels": [
+      48
+     ],
+     "rewards": {
+      "balls": 2,
+      "HYPER_POTION": 1
+     },
+     "b2_id": 231
+    }
+   }
+  },
+  "Infielder Connor": {
+   "class": "Infielder",
+   "sport": "baseball",
+   "tiers": {
+    "3": {
+     "name": "Infielder Connor",
+     "class": "INFIELDER",
+     "sprite": "b2_infielder.png",
+     "team": [
+      552,
+      521
+     ],
+     "levels": [
+      47,
+      47
+     ],
+     "rewards": {
+      "balls": 3,
+      "HYPER_POTION": 1
+     },
+     "b2_id": 30
+    },
+    "4": {
+     "name": "Infielder Connor",
+     "class": "INFIELDER",
+     "sprite": "b2_infielder.png",
+     "team": [
+      521,
+      553
+     ],
+     "levels": [
+      63,
+      63
+     ],
+     "rewards": {
+      "balls": 3,
+      "IRON": 1
+     },
+     "b2_id": 57
+    },
+    "1": {
+     "name": "Infielder Connor",
+     "class": "INFIELDER",
+     "sprite": "b2_infielder.png",
+     "team": [
+      520,
+      551
+     ],
+     "levels": [
+      25,
+      25
+     ],
+     "rewards": {
+      "balls": 3,
+      "POTION": 1
+     },
+     "b2_id": 232
+    },
+    "2": {
+     "name": "Infielder Connor",
+     "class": "INFIELDER",
+     "sprite": "b2_infielder.png",
+     "team": [
+      551,
+      521
+     ],
+     "levels": [
+      33,
+      33
+     ],
+     "rewards": {
+      "balls": 3,
+      "SUPER_POTION": 1
+     },
+     "b2_id": 234
+    }
+   }
+  },
+  "Infielder Todd": {
+   "class": "Infielder",
+   "sport": "baseball",
+   "tiers": {
+    "4": {
+     "name": "Infielder Todd",
+     "class": "INFIELDER",
+     "sprite": "b2_infielder.png",
+     "team": [
+      104,
+      625
+     ],
+     "levels": [
+      63,
+      63
+     ],
+     "rewards": {
+      "balls": 3,
+      "IRON": 1
+     },
+     "b2_id": 53
+    },
+    "1": {
+     "name": "Infielder Todd",
+     "class": "INFIELDER",
+     "sprite": "b2_infielder.png",
+     "team": [
+      532
+     ],
+     "levels": [
+      26
+     ],
+     "rewards": {
+      "balls": 2,
+      "POTION": 1
+     },
+     "b2_id": 233
+    },
+    "2": {
+     "name": "Infielder Todd",
+     "class": "INFIELDER",
+     "sprite": "b2_infielder.png",
+     "team": [
+      533
+     ],
+     "levels": [
+      34
+     ],
+     "rewards": {
+      "balls": 2,
+      "SUPER_POTION": 1
+     },
+     "b2_id": 235
+    },
+    "3": {
+     "name": "Infielder Todd",
+     "class": "INFIELDER",
+     "sprite": "b2_infielder.png",
+     "team": [
+      533,
+      624
+     ],
+     "levels": [
+      47,
+      47
+     ],
+     "rewards": {
+      "balls": 3,
+      "HYPER_POTION": 1
+     },
+     "b2_id": 236
+    }
+   }
+  },
+  "Backers Ami & Eira": {
+   "class": "Backers",
+   "sport": "baseball",
+   "tiers": {
+    "2": {
+     "name": "Backers Ami & Eira",
+     "class": "BACKERS",
+     "sprite": "b2_backers_f.png",
+     "team": [
+      515,
+      513
+     ],
+     "levels": [
+      31,
+      31
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "b2_id": 25,
+     "battle_options": {
+      "double": true
+     }
+    },
+    "3": {
+     "name": "Backers Ami & Eira",
+     "class": "BACKERS",
+     "sprite": "b2_backers_f.png",
+     "team": [
+      516,
+      514
+     ],
+     "levels": [
+      45,
+      45
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "b2_id": 83,
+     "battle_options": {
+      "double": true
+     }
+    },
+    "4": {
+     "name": "Backers Ami & Eira",
+     "class": "BACKERS",
+     "sprite": "b2_backers_f.png",
+     "team": [
+      516,
+      514
+     ],
+     "levels": [
+      61,
+      61
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "b2_id": 84,
+     "battle_options": {
+      "double": true
+     }
+    }
+   }
+  },
+  "Backers Alf & Fred": {
+   "class": "Backers",
+   "sport": "baseball",
+   "tiers": {
+    "4": {
+     "name": "Backers Alf & Fred",
+     "class": "BACKERS",
+     "sprite": "b2_backers_m.png",
+     "team": [
+      512,
+      625
+     ],
+     "levels": [
+      61,
+      61
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "b2_id": 80,
+     "battle_options": {
+      "double": true
+     }
+    }
+   }
+  },
+  "Infielder Alex": {
+   "class": "Infielder",
+   "sport": "baseball",
+   "tiers": {
+    "1": {
+     "name": "Infielder Alex",
+     "class": "INFIELDER",
+     "sprite": "b2_infielder.png",
+     "team": [
+      513,
+      515,
+      511
+     ],
+     "levels": [
+      24,
+      24,
+      24
+     ],
+     "rewards": {
+      "balls": 4,
+      "POTION": 1
+     },
+     "b2_id": 29
+    },
+    "2": {
+     "name": "Infielder Alex",
+     "class": "INFIELDER",
+     "sprite": "b2_infielder.png",
+     "team": [
+      511,
+      513,
+      515
+     ],
+     "levels": [
+      32,
+      32,
+      32
+     ],
+     "rewards": {
+      "balls": 4,
+      "SUPER_POTION": 1
+     },
+     "b2_id": 54
+    },
+    "3": {
+     "name": "Infielder Alex",
+     "class": "INFIELDER",
+     "sprite": "b2_infielder.png",
+     "team": [
+      516,
+      512,
+      514
+     ],
+     "levels": [
+      46,
+      46,
+      46
+     ],
+     "rewards": {
+      "balls": 4,
+      "HYPER_POTION": 1
+     },
+     "b2_id": 55
+    },
+    "4": {
+     "name": "Infielder Alex",
+     "class": "INFIELDER",
+     "sprite": "b2_infielder.png",
+     "team": [
+      516,
+      512,
+      514
+     ],
+     "levels": [
+      62,
+      62,
+      62
+     ],
+     "rewards": {
+      "balls": 4,
+      "IRON": 1
+     },
+     "b2_id": 56
+    }
+   }
+  },
+  "Striker Tony": {
+   "class": "Striker",
+   "sport": "soccer",
+   "tiers": {
+    "1": {
+     "name": "Striker Tony",
+     "class": "STRIKER",
+     "sprite": "b2_striker.png",
+     "team": [
+      520
+     ],
+     "levels": [
+      26
+     ],
+     "rewards": {
+      "balls": 2,
+      "POTION": 1
+     },
+     "b2_id": 13
+    },
+    "2": {
+     "name": "Striker Tony",
+     "class": "STRIKER",
+     "sprite": "b2_striker.png",
+     "team": [
+      580
+     ],
+     "levels": [
+      34
+     ],
+     "rewards": {
+      "balls": 2,
+      "SUPER_POTION": 1
+     },
+     "b2_id": 59
+    },
+    "3": {
+     "name": "Striker Tony",
+     "class": "STRIKER",
+     "sprite": "b2_striker.png",
+     "team": [
+      581
+     ],
+     "levels": [
+      48
+     ],
+     "rewards": {
+      "balls": 2,
+      "HYPER_POTION": 1
+     },
+     "b2_id": 60
+    },
+    "4": {
+     "name": "Striker Tony",
+     "class": "STRIKER",
+     "sprite": "b2_striker.png",
+     "team": [
+      581,
+      352
+     ],
+     "levels": [
+      63,
+      63
+     ],
+     "rewards": {
+      "balls": 3,
+      "CARBOS": 1
+     },
+     "b2_id": 61
+    }
+   }
+  },
+  "Striker Roberto": {
+   "class": "Striker",
+   "sport": "soccer",
+   "tiers": {
+    "3": {
+     "name": "Striker Roberto",
+     "class": "STRIKER",
+     "sprite": "b2_striker.png",
+     "team": [
+      510
+     ],
+     "levels": [
+      48
+     ],
+     "rewards": {
+      "balls": 2,
+      "HYPER_POTION": 1
+     },
+     "b2_id": 14
+    },
+    "4": {
+     "name": "Striker Roberto",
+     "class": "STRIKER",
+     "sprite": "b2_striker.png",
+     "team": [
+      276,
+      215,
+      510
+     ],
+     "levels": [
+      62,
+      62,
+      62
+     ],
+     "rewards": {
+      "balls": 4,
+      "CARBOS": 1
+     },
+     "b2_id": 62
+    },
+    "1": {
+     "name": "Striker Roberto",
+     "class": "STRIKER",
+     "sprite": "b2_striker.png",
+     "team": [
+      510
+     ],
+     "levels": [
+      26
+     ],
+     "rewards": {
+      "balls": 2,
+      "POTION": 1
+     },
+     "b2_id": 237
+    },
+    "2": {
+     "name": "Striker Roberto",
+     "class": "STRIKER",
+     "sprite": "b2_striker.png",
+     "team": [
+      510
+     ],
+     "levels": [
+      34
+     ],
+     "rewards": {
+      "balls": 2,
+      "SUPER_POTION": 1
+     },
+     "b2_id": 239
+    }
+   }
+  },
+  "Striker Marco": {
+   "class": "Striker",
+   "sport": "soccer",
+   "tiers": {
+    "4": {
+     "name": "Striker Marco",
+     "class": "STRIKER",
+     "sprite": "b2_striker.png",
+     "team": [
+      75,
+      106
+     ],
+     "levels": [
+      63,
+      63
+     ],
+     "rewards": {
+      "balls": 3,
+      "CARBOS": 1
+     },
+     "b2_id": 58
+    },
+    "1": {
+     "name": "Striker Marco",
+     "class": "STRIKER",
+     "sprite": "b2_striker.png",
+     "team": [
+      524
+     ],
+     "levels": [
+      26
+     ],
+     "rewards": {
+      "balls": 2,
+      "POTION": 1
+     },
+     "b2_id": 238
+    },
+    "2": {
+     "name": "Striker Marco",
+     "class": "STRIKER",
+     "sprite": "b2_striker.png",
+     "team": [
+      525
+     ],
+     "levels": [
+      34
+     ],
+     "rewards": {
+      "balls": 2,
+      "SUPER_POTION": 1
+     },
+     "b2_id": 240
+    },
+    "3": {
+     "name": "Striker Marco",
+     "class": "STRIKER",
+     "sprite": "b2_striker.png",
+     "team": [
+      525,
+      525
+     ],
+     "levels": [
+      47,
+      47
+     ],
+     "rewards": {
+      "balls": 3,
+      "HYPER_POTION": 1
+     },
+     "b2_id": 241
+    }
+   }
+  },
+  "Backers Kay & Ali": {
+   "class": "Backers",
+   "sport": "soccer",
+   "tiers": {
+    "2": {
+     "name": "Backers Kay & Ali",
+     "class": "BACKERS",
+     "sprite": "b2_backers_f.png",
+     "team": [
+      580,
+      580
+     ],
+     "levels": [
+      31,
+      31
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "b2_id": 24,
+     "battle_options": {
+      "double": true
+     }
+    },
+    "3": {
+     "name": "Backers Kay & Ali",
+     "class": "BACKERS",
+     "sprite": "b2_backers_f.png",
+     "team": [
+      581,
+      581
+     ],
+     "levels": [
+      45,
+      45
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "b2_id": 81,
+     "battle_options": {
+      "double": true
+     }
+    },
+    "4": {
+     "name": "Backers Kay & Ali",
+     "class": "BACKERS",
+     "sprite": "b2_backers_f.png",
+     "team": [
+      581,
+      581
+     ],
+     "levels": [
+      61,
+      61
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "b2_id": 82,
+     "battle_options": {
+      "double": true
+     }
+    }
+   }
+  },
+  "Backers Les & Web": {
+   "class": "Backers",
+   "sport": "soccer",
+   "tiers": {
+    "4": {
+     "name": "Backers Les & Web",
+     "class": "BACKERS",
+     "sprite": "b2_backers_m.png",
+     "team": [
+      510,
+      510
+     ],
+     "levels": [
+      61,
+      61
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "b2_id": 79,
+     "battle_options": {
+      "double": true
+     }
+    }
+   }
+  },
+  "Smasher Elena": {
+   "class": "Smasher",
+   "sport": "tennis",
+   "tiers": {
+    "1": {
+     "name": "Smasher Elena",
+     "class": "SMASHER",
+     "sprite": "b2_smasher.png",
+     "team": [
+      522
+     ],
+     "levels": [
+      26
+     ],
+     "rewards": {
+      "balls": 2,
+      "POTION": 1
+     },
+     "b2_id": 1
+    },
+    "2": {
+     "name": "Smasher Elena",
+     "class": "SMASHER",
+     "sprite": "b2_smasher.png",
+     "team": [
+      523
+     ],
+     "levels": [
+      34
+     ],
+     "rewards": {
+      "balls": 2,
+      "SUPER_POTION": 1
+     },
+     "b2_id": 49
+    },
+    "3": {
+     "name": "Smasher Elena",
+     "class": "SMASHER",
+     "sprite": "b2_smasher.png",
+     "team": [
+      523
+     ],
+     "levels": [
+      48
+     ],
+     "rewards": {
+      "balls": 2,
+      "HYPER_POTION": 1
+     },
+     "b2_id": 50
+    },
+    "4": {
+     "name": "Smasher Elena",
+     "class": "SMASHER",
+     "sprite": "b2_smasher.png",
+     "team": [
+      343,
+      523
+     ],
+     "levels": [
+      63,
+      63
+     ],
+     "rewards": {
+      "balls": 3,
+      "ZINC": 1
+     },
+     "b2_id": 51
+    }
+   }
+  },
+  "Smasher Aspen": {
+   "class": "Smasher",
+   "sport": "tennis",
+   "tiers": {
+    "3": {
+     "name": "Smasher Aspen",
+     "class": "SMASHER",
+     "sprite": "b2_smasher.png",
+     "team": [
+      547,
+      549
+     ],
+     "levels": [
+      47,
+      47
+     ],
+     "rewards": {
+      "balls": 3,
+      "HYPER_POTION": 1
+     },
+     "b2_id": 3
+    },
+    "4": {
+     "name": "Smasher Aspen",
+     "class": "SMASHER",
+     "sprite": "b2_smasher.png",
+     "team": [
+      547,
+      549
+     ],
+     "levels": [
+      63,
+      63
+     ],
+     "rewards": {
+      "balls": 3,
+      "ZINC": 1
+     },
+     "b2_id": 52
+    },
+    "1": {
+     "name": "Smasher Aspen",
+     "class": "SMASHER",
+     "sprite": "b2_smasher.png",
+     "team": [
+      546,
+      548
+     ],
+     "levels": [
+      25,
+      25
+     ],
+     "rewards": {
+      "balls": 3,
+      "POTION": 1
+     },
+     "b2_id": 247
+    },
+    "2": {
+     "name": "Smasher Aspen",
+     "class": "SMASHER",
+     "sprite": "b2_smasher.png",
+     "team": [
+      547,
+      549
+     ],
+     "levels": [
+      33,
+      33
+     ],
+     "rewards": {
+      "balls": 3,
+      "SUPER_POTION": 1
+     },
+     "b2_id": 249
+    }
+   }
+  },
+  "Smasher Mari": {
+   "class": "Smasher",
+   "sport": "tennis",
+   "tiers": {
+    "4": {
+     "name": "Smasher Mari",
+     "class": "SMASHER",
+     "sprite": "b2_smasher.png",
+     "team": [
+      100,
+      593
+     ],
+     "levels": [
+      63,
+      63
+     ],
+     "rewards": {
+      "balls": 3,
+      "ZINC": 1
+     },
+     "b2_id": 48
+    },
+    "1": {
+     "name": "Smasher Mari",
+     "class": "SMASHER",
+     "sprite": "b2_smasher.png",
+     "team": [
+      183
+     ],
+     "levels": [
+      26
+     ],
+     "rewards": {
+      "balls": 2,
+      "POTION": 1
+     },
+     "b2_id": 248
+    },
+    "2": {
+     "name": "Smasher Mari",
+     "class": "SMASHER",
+     "sprite": "b2_smasher.png",
+     "team": [
+      592
+     ],
+     "levels": [
+      34
+     ],
+     "rewards": {
+      "balls": 2,
+      "SUPER_POTION": 1
+     },
+     "b2_id": 250
+    },
+    "3": {
+     "name": "Smasher Mari",
+     "class": "SMASHER",
+     "sprite": "b2_smasher.png",
+     "team": [
+      593
+     ],
+     "levels": [
+      48
+     ],
+     "rewards": {
+      "balls": 2,
+      "HYPER_POTION": 1
+     },
+     "b2_id": 251
+    }
+   }
+  },
+  "Backers Joe & Ross": {
+   "class": "Backers",
+   "sport": "tennis",
+   "tiers": {
+    "2": {
+     "name": "Backers Joe & Ross",
+     "class": "BACKERS",
+     "sprite": "b2_backers_m.png",
+     "team": [
+      523,
+      523
+     ],
+     "levels": [
+      31,
+      31
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "b2_id": 22,
+     "battle_options": {
+      "double": true
+     }
+    },
+    "3": {
+     "name": "Backers Joe & Ross",
+     "class": "BACKERS",
+     "sprite": "b2_backers_m.png",
+     "team": [
+      523,
+      523
+     ],
+     "levels": [
+      45,
+      45
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "b2_id": 75,
+     "battle_options": {
+      "double": true
+     }
+    },
+    "4": {
+     "name": "Backers Joe & Ross",
+     "class": "BACKERS",
+     "sprite": "b2_backers_m.png",
+     "team": [
+      593,
+      523
+     ],
+     "levels": [
+      61,
+      61
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "b2_id": 76,
+     "battle_options": {
+      "double": true
+     }
+    }
+   }
+  },
+  "Backers Ai & Ciel": {
+   "class": "Backers",
+   "sport": "tennis",
+   "tiers": {
+    "4": {
+     "name": "Backers Ai & Ciel",
+     "class": "BACKERS",
+     "sprite": "b2_backers_f.png",
+     "team": [
+      547,
+      549
+     ],
+     "levels": [
+      61,
+      61
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "b2_id": 86,
+     "battle_options": {
+      "double": true
+     }
+    }
+   }
+  },
+  "Hoopster Bobby": {
+   "class": "Hoopster",
+   "sport": "basketball",
+   "tiers": {
+    "1": {
+     "name": "Hoopster Bobby",
+     "class": "HOOPSTER",
+     "sprite": "b2_hoopster.png",
+     "team": [
+      544
+     ],
+     "levels": [
+      26
+     ],
+     "rewards": {
+      "balls": 2,
+      "POTION": 1
+     },
+     "b2_id": 8
+    },
+    "2": {
+     "name": "Hoopster Bobby",
+     "class": "HOOPSTER",
+     "sprite": "b2_hoopster.png",
+     "team": [
+      545
+     ],
+     "levels": [
+      34
+     ],
+     "rewards": {
+      "balls": 2,
+      "SUPER_POTION": 1
+     },
+     "b2_id": 69
+    },
+    "3": {
+     "name": "Hoopster Bobby",
+     "class": "HOOPSTER",
+     "sprite": "b2_hoopster.png",
+     "team": [
+      545
+     ],
+     "levels": [
+      48
+     ],
+     "rewards": {
+      "balls": 2,
+      "HYPER_POTION": 1
+     },
+     "b2_id": 70
+    },
+    "4": {
+     "name": "Hoopster Bobby",
+     "class": "HOOPSTER",
+     "sprite": "b2_hoopster.png",
+     "team": [
+      458,
+      545
+     ],
+     "levels": [
+      63,
+      63
+     ],
+     "rewards": {
+      "balls": 3,
+      "CALCIUM": 1
+     },
+     "b2_id": 71
+    }
+   }
+  },
+  "Hoopster John": {
+   "class": "Hoopster",
+   "sport": "basketball",
+   "tiers": {
+    "3": {
+     "name": "Hoopster John",
+     "class": "HOOPSTER",
+     "sprite": "b2_hoopster.png",
+     "team": [
+      508,
+      525
+     ],
+     "levels": [
+      47,
+      47
+     ],
+     "rewards": {
+      "balls": 3,
+      "HYPER_POTION": 1
+     },
+     "b2_id": 9
+    },
+    "4": {
+     "name": "Hoopster John",
+     "class": "HOOPSTER",
+     "sprite": "b2_hoopster.png",
+     "team": [
+      508,
+      526
+     ],
+     "levels": [
+      63,
+      63
+     ],
+     "rewards": {
+      "balls": 3,
+      "CALCIUM": 1
+     },
+     "b2_id": 72
+    },
+    "1": {
+     "name": "Hoopster John",
+     "class": "HOOPSTER",
+     "sprite": "b2_hoopster.png",
+     "team": [
+      507,
+      524
+     ],
+     "levels": [
+      25,
+      25
+     ],
+     "rewards": {
+      "balls": 3,
+      "POTION": 1
+     },
+     "b2_id": 242
+    },
+    "2": {
+     "name": "Hoopster John",
+     "class": "HOOPSTER",
+     "sprite": "b2_hoopster.png",
+     "team": [
+      508,
+      525
+     ],
+     "levels": [
+      33,
+      33
+     ],
+     "rewards": {
+      "balls": 3,
+      "SUPER_POTION": 1
+     },
+     "b2_id": 244
+    }
+   }
+  },
+  "Hoopster Lamarcus": {
+   "class": "Hoopster",
+   "sport": "basketball",
+   "tiers": {
+    "4": {
+     "name": "Hoopster Lamarcus",
+     "class": "HOOPSTER",
+     "sprite": "b2_hoopster.png",
+     "team": [
+      284,
+      626
+     ],
+     "levels": [
+      63,
+      63
+     ],
+     "rewards": {
+      "balls": 3,
+      "CALCIUM": 1
+     },
+     "b2_id": 68
+    },
+    "1": {
+     "name": "Hoopster Lamarcus",
+     "class": "HOOPSTER",
+     "sprite": "b2_hoopster.png",
+     "team": [
+      541,
+      507
+     ],
+     "levels": [
+      25,
+      25
+     ],
+     "rewards": {
+      "balls": 3,
+      "POTION": 1
+     },
+     "b2_id": 243
+    },
+    "2": {
+     "name": "Hoopster Lamarcus",
+     "class": "HOOPSTER",
+     "sprite": "b2_hoopster.png",
+     "team": [
+      542,
+      507
+     ],
+     "levels": [
+      33,
+      33
+     ],
+     "rewards": {
+      "balls": 3,
+      "SUPER_POTION": 1
+     },
+     "b2_id": 245
+    },
+    "3": {
+     "name": "Hoopster Lamarcus",
+     "class": "HOOPSTER",
+     "sprite": "b2_hoopster.png",
+     "team": [
+      542,
+      508
+     ],
+     "levels": [
+      47,
+      47
+     ],
+     "rewards": {
+      "balls": 3,
+      "HYPER_POTION": 1
+     },
+     "b2_id": 246
+    }
+   }
+  },
+  "Backers Masa & Yas": {
+   "class": "Backers",
+   "sport": "basketball",
+   "tiers": {
+    "2": {
+     "name": "Backers Masa & Yas",
+     "class": "BACKERS",
+     "sprite": "b2_backers_m.png",
+     "team": [
+      545,
+      545
+     ],
+     "levels": [
+      31,
+      31
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "b2_id": 23,
+     "battle_options": {
+      "double": true
+     }
+    },
+    "3": {
+     "name": "Backers Masa & Yas",
+     "class": "BACKERS",
+     "sprite": "b2_backers_m.png",
+     "team": [
+      545,
+      525
+     ],
+     "levels": [
+      45,
+      45
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "b2_id": 77,
+     "battle_options": {
+      "double": true
+     }
+    },
+    "4": {
+     "name": "Backers Masa & Yas",
+     "class": "BACKERS",
+     "sprite": "b2_backers_m.png",
+     "team": [
+      545,
+      526
+     ],
+     "levels": [
+      61,
+      61
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "b2_id": 78,
+     "battle_options": {
+      "double": true
+     }
+    }
+   }
+  },
+  "Backers Kat & Phae": {
+   "class": "Backers",
+   "sport": "basketball",
+   "tiers": {
+    "4": {
+     "name": "Backers Kat & Phae",
+     "class": "BACKERS",
+     "sprite": "b2_backers_f.png",
+     "team": [
+      508,
+      626
+     ],
+     "levels": [
+      61,
+      61
+     ],
+     "rewards": {
+      "balls": 3
+     },
+     "b2_id": 87,
+     "battle_options": {
+      "double": true
+     }
+    }
+   }
+  }
+ },
+ "visitors": [
+  {
+   "id": 88,
+   "slot": 0,
+   "walk": "b2_c15.png",
+   "battle": {
+    "name": "Lass Dana",
+    "class": "LASS",
+    "sprite": "b2_lass.png",
+    "team": [
+     200,
+     417,
+     301
+    ],
+    "levels": [
+     60,
+     60,
+     60
+    ],
+    "rewards": {
+     "balls": 4,
+     "ULTRA_BALL": 1
+    },
+    "b2_id": 88
+   }
+  },
+  {
+   "id": 89,
+   "slot": 1,
+   "walk": "b2_c12.png",
+   "battle": {
+    "name": "School Kid Alan",
+    "class": "SCHOOL_KID",
+    "sprite": "b2_school_kid_m.png",
+    "team": [
+     117,
+     372,
+     148
+    ],
+    "levels": [
+     60,
+     60,
+     60
+    ],
+    "rewards": {
+     "balls": 4,
+     "ULTRA_BALL": 1
+    },
+    "b2_id": 89
+   }
+  },
+  {
+   "id": 90,
+   "slot": 2,
+   "walk": "b2_c16.png",
+   "battle": {
+    "name": "School Kid Sally",
+    "class": "SCHOOL_KID",
+    "sprite": "b2_school_kid_f.png",
+    "team": [
+     370,
+     83,
+     108
+    ],
+    "levels": [
+     60,
+     60,
+     60
+    ],
+    "rewards": {
+     "balls": 4,
+     "ULTRA_BALL": 1
+    },
+    "b2_id": 90
+   }
+  },
+  {
+   "id": 91,
+   "slot": 0,
+   "walk": "b2_c31.png",
+   "battle": {
+    "name": "Ace Trainer Lucille",
+    "class": "ACE_TRAINER",
+    "sprite": "b2_ace_trainer_f.png",
+    "team": [
+     124,
+     134,
+     142
+    ],
+    "levels": [
+     63,
+     63,
+     63
+    ],
+    "rewards": {
+     "balls": 4,
+     "PP_UP": 1
+    },
+    "b2_id": 91
+   }
+  },
+  {
+   "id": 92,
+   "slot": 1,
+   "walk": "b2_c30.png",
+   "battle": {
+    "name": "Ace Trainer Charlie",
+    "class": "ACE_TRAINER",
+    "sprite": "b2_ace_trainer_m.png",
+    "team": [
+     596,
+     357,
+     473
+    ],
+    "levels": [
+     63,
+     63,
+     63
+    ],
+    "rewards": {
+     "balls": 4,
+     "PP_UP": 1
+    },
+    "b2_id": 92
+   }
+  },
+  {
+   "id": 93,
+   "slot": 2,
+   "walk": "b2_c32.png",
+   "battle": {
+    "name": "Veteran Arlen",
+    "class": "VETERAN",
+    "sprite": "b2_veteran.png",
+    "team": [
+     135,
+     28,
+     227,
+     248
+    ],
+    "levels": [
+     63,
+     63,
+     63,
+     63
+    ],
+    "rewards": {
+     "balls": 5,
+     "PP_MAX": 1
+    },
+    "b2_id": 93,
+    "movesets": {
+     "135": [
+      "SHADOW-BALL",
+      "RETURN",
+      "PIN-MISSILE",
+      "THUNDER"
+     ],
+     "28": [
+      "SLASH",
+      "EARTHQUAKE",
+      "AERIAL-ACE",
+      "TOXIC"
+     ],
+     "227": [
+      "AIR-SLASH",
+      "SLASH",
+      "NIGHT-SLASH",
+      "STEEL-WING"
+     ],
+     "248": [
+      "STONE-EDGE",
+      "PAYBACK",
+      "THUNDERBOLT",
+      "ICE-BEAM"
+     ]
+    }
+   }
+  },
+  {
+   "id": 94,
+   "slot": 0,
+   "walk": "b2_c33.png",
+   "battle": {
+    "name": "Veteran Sayuri",
+    "class": "VETERAN",
+    "sprite": "b2_veteran.png",
+    "team": [
+     369,
+     219,
+     471,
+     149
+    ],
+    "levels": [
+     63,
+     63,
+     63,
+     63
+    ],
+    "rewards": {
+     "balls": 5,
+     "PP_MAX": 1
+    },
+    "b2_id": 94,
+    "movesets": {
+     "369": [
+      "DOUBLE-EDGE",
+      "ANCIENTPOWER",
+      "WATERFALL",
+      "BLIZZARD"
+     ],
+     "219": [
+      "FIRE-BLAST",
+      "STONE-EDGE",
+      "GYRO-BALL",
+      "EARTHQUAKE"
+     ],
+     "471": [
+      "BLIZZARD",
+      "RETURN",
+      "ICE-SHARD",
+      "SHADOW-BALL"
+     ],
+     "149": [
+      "OUTRAGE",
+      "WING-ATTACK",
+      "WATERFALL",
+      "FIRE-PUNCH"
+     ]
+    }
+   }
+  },
+  {
+   "id": 95,
+   "slot": 1,
+   "walk": "b2_c34.png",
+   "battle": {
+    "name": "Pokemon Breeder Owen",
+    "class": "BREEDER",
+    "sprite": "b2_breeder.png",
+    "team": [
+     438,
+     194,
+     446,
+     27,
+     360,
+     325
+    ],
+    "levels": [
+     57,
+     57,
+     57,
+     57,
+     57,
+     57
+    ],
+    "rewards": {
+     "balls": 5,
+     "ULTRA_BALL": 1
+    },
+    "b2_id": 95
+   }
+  },
+  {
+   "id": 96,
+   "slot": 2,
+   "walk": "b2_c35.png",
+   "battle": {
+    "name": "Pokemon Breeder Brooke",
+    "class": "BREEDER",
+    "sprite": "b2_breeder.png",
+    "team": [
+     220,
+     60,
+     173,
+     443,
+     174,
+     246
+    ],
+    "levels": [
+     57,
+     57,
+     57,
+     57,
+     57,
+     57
+    ],
+    "rewards": {
+     "balls": 5,
+     "ULTRA_BALL": 1
+    },
+    "b2_id": 96
+   }
+  },
+  {
+   "id": 97,
+   "slot": 0,
+   "walk": "b2_c42.png",
+   "battle": {
+    "name": "Waiter Clint",
+    "class": "WAITER",
+    "sprite": "b2_waiter.png",
+    "team": [
+     366,
+     431,
+     521
+    ],
+    "levels": [
+     60,
+     60,
+     60
+    ],
+    "rewards": {
+     "balls": 4,
+     "MOOMOO_MILK": 1
+    },
+    "b2_id": 97
+   }
+  },
+  {
+   "id": 98,
+   "slot": 1,
+   "walk": "b2_c43.png",
+   "battle": {
+    "name": "Waitress Bonita",
+    "class": "WAITRESS",
+    "sprite": "b2_waitress.png",
+    "team": [
+     54,
+     470
+    ],
+    "levels": [
+     61,
+     61
+    ],
+    "rewards": {
+     "balls": 3,
+     "MOOMOO_MILK": 1
+    },
+    "b2_id": 98
+   }
+  },
+  {
+   "id": 99,
+   "slot": 2,
+   "walk": "b2_c73.png",
+   "battle": {
+    "name": "Scientist Simon",
+    "class": "SCIENTIST",
+    "sprite": "b2_scientist_m.png",
+    "team": [
+     434,
+     89
+    ],
+    "levels": [
+     61,
+     61
+    ],
+    "rewards": {
+     "balls": 3,
+     "ETHER": 1
+    },
+    "b2_id": 99
+   }
+  },
+  {
+   "id": 100,
+   "slot": 0,
+   "walk": "b2_c74.png",
+   "battle": {
+    "name": "Scientist Blythe",
+    "class": "SCIENTIST",
+    "sprite": "b2_scientist_f.png",
+    "team": [
+     451,
+     317
+    ],
+    "levels": [
+     61,
+     61
+    ],
+    "rewards": {
+     "balls": 3,
+     "ETHER": 1
+    },
+    "b2_id": 100
+   }
+  },
+  {
+   "id": 101,
+   "slot": 1,
+   "walk": "b2_c17.png",
+   "battle": {
+    "name": "Lady Sophie",
+    "class": "LADY",
+    "sprite": "b2_lady.png",
+    "team": [
+     314
+    ],
+    "levels": [
+     62
+    ],
+    "rewards": {
+     "balls": 2,
+     "PEARL": 1
+    },
+    "b2_id": 101
+   }
+  },
+  {
+   "id": 102,
+   "slot": 2,
+   "walk": "b2_c13.png",
+   "battle": {
+    "name": "Rich Boy Anthony",
+    "class": "RICH_BOY",
+    "sprite": "b2_rich_boy.png",
+    "team": [
+     313
+    ],
+    "levels": [
+     62
+    ],
+    "rewards": {
+     "balls": 2,
+     "STARDUST": 1
+    },
+    "b2_id": 102
+   }
+  },
+  {
+   "id": 103,
+   "slot": 0,
+   "walk": "b2_c45.png",
+   "battle": {
+    "name": "Socialite Emilia",
+    "class": "SOCIALITE",
+    "sprite": "b2_socialite.png",
+    "team": [
+     302,
+     510
+    ],
+    "levels": [
+     61,
+     61
+    ],
+    "rewards": {
+     "balls": 3,
+     "BIG_PEARL": 1
+    },
+    "b2_id": 103
+   }
+  },
+  {
+   "id": 104,
+   "slot": 1,
+   "walk": "b2_c44.png",
+   "battle": {
+    "name": "Gentleman Renaud",
+    "class": "GENTLEMAN",
+    "sprite": "b2_gentleman.png",
+    "team": [
+     199
+    ],
+    "levels": [
+     62
+    ],
+    "rewards": {
+     "balls": 2,
+     "NUGGET": 1
+    },
+    "b2_id": 104
+   }
+  },
+  {
+   "id": 105,
+   "slot": 2,
+   "walk": "b2_c46.png",
+   "battle": {
+    "name": "Black Belt Lao",
+    "class": "BLACK_BELT",
+    "sprite": "b2_black_belt.png",
+    "team": [
+     56,
+     214,
+     534
+    ],
+    "levels": [
+     61,
+     61,
+     61
+    ],
+    "rewards": {
+     "balls": 4,
+     "ENERGY_ROOT": 1
+    },
+    "b2_id": 105
+   }
+  },
+  {
+   "id": 106,
+   "slot": 0,
+   "walk": "b2_c47.png",
+   "battle": {
+    "name": "Battle Girl Janie",
+    "class": "BATTLE_GIRL",
+    "sprite": "b2_battle_girl.png",
+    "team": [
+     107
+    ],
+    "levels": [
+     63
+    ],
+    "rewards": {
+     "balls": 2,
+     "ENERGY_ROOT": 1
+    },
+    "b2_id": 106
+   }
+  },
+  {
+   "id": 107,
+   "slot": 1,
+   "walk": "b2_c24.png",
+   "battle": {
+    "name": "Pokefan Colin",
+    "class": "POK_FAN",
+    "sprite": "b2_pokefan_m.png",
+    "team": [
+     79,
+     80
+    ],
+    "levels": [
+     61,
+     61
+    ],
+    "rewards": {
+     "balls": 3,
+     "MAX_POTION": 1
+    },
+    "b2_id": 107
+   }
+  },
+  {
+   "id": 108,
+   "slot": 2,
+   "walk": "b2_c26.png",
+   "battle": {
+    "name": "Pokefan Darcy",
+    "class": "POK_FAN",
+    "sprite": "b2_pokefan_f.png",
+    "team": [
+     19,
+     161,
+     263,
+     399,
+     504
+    ],
+    "levels": [
+     58,
+     58,
+     58,
+     58,
+     58
+    ],
+    "rewards": {
+     "balls": 5,
+     "MAX_POTION": 1
+    },
+    "b2_id": 108
+   }
+  },
+  {
+   "id": 109,
+   "slot": 0,
+   "walk": "b2_c71.png",
+   "battle": {
+    "name": "Pilot Leonard",
+    "class": "PILOT",
+    "sprite": "b2_pilot.png",
+    "team": [
+     163,
+     277,
+     521
+    ],
+    "levels": [
+     60,
+     60,
+     60
+    ],
+    "rewards": {
+     "balls": 4,
+     "QUICK_BALL": 1
+    },
+    "b2_id": 109
+   }
+  },
+  {
+   "id": 110,
+   "slot": 1,
+   "walk": "b2_c155.png",
+   "battle": {
+    "name": "Worker Tyler",
+    "class": "WORKER",
+    "sprite": "b2_worker.png",
+    "team": [
+     303,
+     530
+    ],
+    "levels": [
+     61,
+     61
+    ],
+    "rewards": {
+     "balls": 3,
+     "YELLOW_SHARD": 1
+    },
+    "b2_id": 110
+   }
+  },
+  {
+   "id": 111,
+   "slot": 2,
+   "walk": "b2_c66.png",
+   "battle": {
+    "name": "Baker Lilly",
+    "class": "BAKER",
+    "sprite": "b2_baker.png",
+    "team": [
+     324,
+     241
+    ],
+    "levels": [
+     61,
+     61
+    ],
+    "rewards": {
+     "balls": 3,
+     "MOOMOO_MILK": 1
+    },
+    "b2_id": 111
+   }
+  },
+  {
+   "id": 112,
+   "slot": 0,
+   "walk": "b2_c23.png",
+   "battle": {
+    "name": "Nursery Aide Leah",
+    "class": "NURSERY_AIDE",
+    "sprite": "b2_nursery_aide.png",
+    "team": [
+     35,
+     36
+    ],
+    "levels": [
+     61,
+     61
+    ],
+    "rewards": {
+     "balls": 3,
+     "RARE_CANDY": 1
+    },
+    "b2_id": 112
+   }
+  },
+  {
+   "id": 113,
+   "slot": 1,
+   "walk": "b2_c52.png",
+   "battle": {
+    "name": "Clerk M Nelson",
+    "class": "CLERK_M",
+    "sprite": "b2_clerk_m.png",
+    "team": [
+     193,
+     166,
+     402,
+     212,
+     545
+    ],
+    "levels": [
+     58,
+     58,
+     58,
+     58,
+     58
+    ],
+    "rewards": {
+     "balls": 5,
+     "ULTRA_BALL": 1
+    },
+    "b2_id": 113
+   }
+  },
+  {
+   "id": 114,
+   "slot": 2,
+   "walk": "b2_c53.png",
+   "battle": {
+    "name": "Clerk F Wren",
+    "class": "CLERK_F",
+    "sprite": "b2_clerk_f.png",
+    "team": [
+     420,
+     192,
+     421
+    ],
+    "levels": [
+     60,
+     60,
+     60
+    ],
+    "rewards": {
+     "balls": 4,
+     "ULTRA_BALL": 1
+    },
+    "b2_id": 114
+   }
+  },
+  {
+   "id": 115,
+   "slot": 0,
+   "walk": "b2_c69.png",
+   "battle": {
+    "name": "Janitor Caleb",
+    "class": "JANITOR",
+    "sprite": "b2_janitor.png",
+    "team": [
+     109,
+     110
+    ],
+    "levels": [
+     61,
+     61
+    ],
+    "rewards": {
+     "balls": 3,
+     "GREEN_SHARD": 1
+    },
+    "b2_id": 115
+   }
+  },
+  {
+   "id": 116,
+   "slot": 1,
+   "walk": "b2_c49.png",
+   "battle": {
+    "name": "Backpacker Patty",
+    "class": "BACKPACKER",
+    "sprite": "b2_backpacker_f.png",
+    "team": [
+     136
+    ],
+    "levels": [
+     62
+    ],
+    "rewards": {
+     "balls": 2,
+     "MAX_REPEL": 1
+    },
+    "b2_id": 116
+   }
+  },
+  {
+   "id": 117,
+   "slot": 2,
+   "walk": "b2_c48.png",
+   "battle": {
+    "name": "Backpacker Alexander",
+    "class": "BACKPACKER",
+    "sprite": "b2_backpacker_m.png",
+    "team": [
+     335
+    ],
+    "levels": [
+     62
+    ],
+    "rewards": {
+     "balls": 2,
+     "MAX_REPEL": 1
+    },
+    "b2_id": 117
+   }
+  },
+  {
+   "id": 118,
+   "slot": 0,
+   "walk": "b2_c50.png",
+   "battle": {
+    "name": "Doctor Jules",
+    "class": "DOCTOR",
+    "sprite": "b2_doctor.png",
+    "team": [
+     113
+    ],
+    "levels": [
+     62
+    ],
+    "rewards": {
+     "balls": 2,
+     "MAX_REVIVE": 1
+    },
+    "b2_id": 118
+   }
+  },
+  {
+   "id": 119,
+   "slot": 1,
+   "walk": "b2_c51.png",
+   "battle": {
+    "name": "Nurse Kirsten",
+    "class": "NURSE",
+    "sprite": "b2_nurse.png",
+    "team": [
+     113
+    ],
+    "levels": [
+     62
+    ],
+    "rewards": {
+     "balls": 2,
+     "FULL_RESTORE": 1
+    },
+    "b2_id": 119
+   }
+  },
+  {
+   "id": 120,
+   "slot": 2,
+   "walk": "b2_c183.png",
+   "battle": {
+    "name": "Psychic Gerard",
+    "class": "PSYCHIC",
+    "sprite": "b2_psychic_m.png",
+    "team": [
+     203,
+     561,
+     344
+    ],
+    "levels": [
+     61,
+     61,
+     61
+    ],
+    "rewards": {
+     "balls": 4,
+     "ULTRA_BALL": 1
+    },
+    "b2_id": 120
+   }
+  },
+  {
+   "id": 121,
+   "slot": 0,
+   "walk": "b2_c184.png",
+   "battle": {
+    "name": "Psychic Madhu",
+    "class": "PSYCHIC",
+    "sprite": "b2_psychic_f.png",
+    "team": [
+     429,
+     576
+    ],
+    "levels": [
+     62,
+     62
+    ],
+    "rewards": {
+     "balls": 3,
+     "ULTRA_BALL": 1
+    },
+    "b2_id": 121
+   }
+  },
+  {
+   "id": 122,
+   "slot": 1,
+   "walk": "b2_c68.png",
+   "battle": {
+    "name": "Depot Agent Josh",
+    "class": "DEPOT_AGENT",
+    "sprite": "b2_depot_agent.png",
+    "team": [
+     50,
+     51
+    ],
+    "levels": [
+     61,
+     61
+    ],
+    "rewards": {
+     "balls": 3,
+     "ULTRA_BALL": 1
+    },
+    "b2_id": 122
+   }
+  },
+  {
+   "id": 123,
+   "slot": 2,
+   "walk": "b2_c55.png",
+   "battle": {
+    "name": "Dancer Davey",
+    "class": "DANCER",
+    "sprite": "b2_dancer.png",
+    "team": [
+     122,
+     122
+    ],
+    "levels": [
+     61,
+     61
+    ],
+    "rewards": {
+     "balls": 3,
+     "ULTRA_BALL": 1
+    },
+    "b2_id": 123
+   }
+  },
+  {
+   "id": 124,
+   "slot": 0,
+   "walk": "b2_c152.png",
+   "battle": {
+    "name": "Musician Boris",
+    "class": "MUSICIAN",
+    "sprite": "b2_musician.png",
+    "team": [
+     441,
+     40
+    ],
+    "levels": [
+     61,
+     61
+    ],
+    "rewards": {
+     "balls": 3,
+     "ULTRA_BALL": 1
+    },
+    "b2_id": 124
+   }
+  },
+  {
+   "id": 125,
+   "slot": 1,
+   "walk": "b2_c54.png",
+   "battle": {
+    "name": "Harlequin Charley",
+    "class": "HARLEQUIN",
+    "sprite": "b2_harlequin.png",
+    "team": [
+     102,
+     101
+    ],
+    "levels": [
+     61,
+     61
+    ],
+    "rewards": {
+     "balls": 3,
+     "ULTRA_BALL": 1
+    },
+    "b2_id": 125
+   }
+  },
+  {
+   "id": 126,
+   "slot": 2,
+   "walk": "b2_c28.png",
+   "battle": {
+    "name": "Artist Pierre",
+    "class": "ARTIST",
+    "sprite": "pt_artist.png",
+    "team": [
+     235
+    ],
+    "levels": [
+     62
+    ],
+    "rewards": {
+     "balls": 2,
+     "ULTRA_BALL": 1
+    },
+    "b2_id": 126,
+    "movesets": {
+     "235": [
+      "FIRE-BLAST",
+      "BLIZZARD",
+      "THUNDER",
+      "HURRICANE"
+     ]
+    }
+   }
+  },
+  {
+   "id": 127,
+   "slot": 0,
+   "walk": "b2_c72.png",
+   "battle": {
+    "name": "Policeman Jeff",
+    "class": "POLICEMAN",
+    "sprite": "b2_policeman.png",
+    "team": [
+     59,
+     620
+    ],
+    "levels": [
+     61,
+     61
+    ],
+    "rewards": {
+     "balls": 3,
+     "ULTRA_BALL": 1
+    },
+    "b2_id": 127
+   }
+  },
+  {
+   "id": 128,
+   "slot": 1,
+   "walk": "b2_c65.png",
+   "battle": {
+    "name": "Maid Alica",
+    "class": "MAID",
+    "sprite": "b2_maid.png",
+    "team": [
+     58,
+     573
+    ],
+    "levels": [
+     61,
+     61
+    ],
+    "rewards": {
+     "balls": 3,
+     "ULTRA_BALL": 1
+    },
+    "b2_id": 128
+   }
+  },
+  {
+   "id": 129,
+   "slot": 2,
+   "walk": "b2_c84.png",
+   "battle": {
+    "name": "Parasol Lady Gwyneth",
+    "class": "PARASOL_LADY",
+    "sprite": "b2_parasol_lady.png",
+    "team": [
+     351
+    ],
+    "levels": [
+     62
+    ],
+    "rewards": {
+     "balls": 2,
+     "ULTRA_BALL": 1
+    },
+    "b2_id": 129,
+    "movesets": {
+     "351": [
+      "WEATHER-BALL",
+      "SUNNY-DAY",
+      "RAIN-DANCE",
+      "HAIL"
+     ]
+    }
+   }
+  },
+  {
+   "id": 130,
+   "slot": 0,
+   "walk": "b2_c64.png",
+   "battle": {
+    "name": "Hiker Russel",
+    "class": "HIKER",
+    "sprite": "b2_hiker.png",
+    "team": [
+     74,
+     75,
+     76
+    ],
+    "levels": [
+     60,
+     60,
+     60
+    ],
+    "rewards": {
+     "balls": 4,
+     "RED_SHARD": 1
+    },
+    "b2_id": 130
+   }
+  },
+  {
+   "id": 131,
+   "slot": 1,
+   "walk": "b2_c154.png",
+   "battle": {
+    "name": "Preschooler Mia",
+    "class": "PRESCHOOLER",
+    "sprite": "b2_preschooler_f.png",
+    "team": [
+     238
+    ],
+    "levels": [
+     61
+    ],
+    "rewards": {
+     "balls": 2,
+     "POKE_DOLL": 1
+    },
+    "b2_id": 131
+   }
+  },
+  {
+   "id": 132,
+   "slot": 2,
+   "walk": "b2_c153.png",
+   "battle": {
+    "name": "Preschooler Evan",
+    "class": "PRESCHOOLER",
+    "sprite": "b2_preschooler_m.png",
+    "team": [
+     439
+    ],
+    "levels": [
+     61
+    ],
+    "rewards": {
+     "balls": 2,
+     "POKE_TOY": 1
+    },
+    "b2_id": 132
+   }
+  },
+  {
+   "id": 7,
+   "slot": 0,
+   "walk": "b2_c67.png",
+   "battle": {
+    "name": "Worker Matthew",
+    "class": "WORKER",
+    "sprite": "b2_worker.png",
+    "team": [
+     364,
+     362
+    ],
+    "levels": [
+     61,
+     61
+    ],
+    "rewards": {
+     "balls": 3,
+     "BLUE_SHARD": 1
+    },
+    "b2_id": 7
+   }
+  },
+  {
+   "id": 15,
+   "slot": 1,
+   "walk": "b2_c61.png",
+   "battle": {
+    "name": "Roughneck Fletcher",
+    "class": "ROUGHNECK",
+    "sprite": "b2_roughneck.png",
+    "team": [
+     262,
+     435,
+     342
+    ],
+    "levels": [
+     60,
+     60,
+     60
+    ],
+    "rewards": {
+     "balls": 4,
+     "DUSK_BALL": 1
+    },
+    "b2_id": 15
+   }
+  },
+  {
+   "id": 17,
+   "slot": 2,
+   "walk": "b2_c11.png",
+   "battle": {
+    "name": "Youngster Kevin",
+    "class": "YOUNGSTER",
+    "sprite": "b2_youngster.png",
+    "team": [
+     48,
+     20,
+     49
+    ],
+    "levels": [
+     60,
+     60,
+     60
+    ],
+    "rewards": {
+     "balls": 4,
+     "ULTRA_BALL": 1
+    },
+    "b2_id": 17
+   }
+  },
+  {
+   "id": 18,
+   "slot": 0,
+   "walk": "b2_c63.png",
+   "battle": {
+    "name": "Fisherman Devon",
+    "class": "FISHERMAN",
+    "sprite": "b2_fisherman.png",
+    "team": [
+     456,
+     368,
+     367,
+     457
+    ],
+    "levels": [
+     59,
+     59,
+     59,
+     59
+    ],
+    "rewards": {
+     "balls": 5,
+     "DIVE_BALL": 1
+    },
+    "b2_id": 18
+   }
+  },
+  {
+   "id": 20,
+   "slot": 1,
+   "walk": "b2_c52.png",
+   "battle": {
+    "name": "Clerk M Fredric",
+    "class": "CLERK_M",
+    "sprite": "b2_clerk_m.png",
+    "team": [
+     53,
+     430
+    ],
+    "levels": [
+     62,
+     62
+    ],
+    "rewards": {
+     "balls": 3,
+     "ULTRA_BALL": 1
+    },
+    "b2_id": 20
+   }
+  },
+  {
+   "id": 27,
+   "slot": 2,
+   "walk": "b2_c36.png",
+   "battle": {
+    "name": "Pokemon Ranger Alain",
+    "class": "RANGER",
+    "sprite": "b2_ranger_m.png",
+    "team": [
+     424,
+     455,
+     208
+    ],
+    "levels": [
+     61,
+     61,
+     61
+    ],
+    "rewards": {
+     "balls": 4,
+     "ULTRA_BALL": 1
+    },
+    "b2_id": 27
+   }
+  },
+  {
+   "id": 28,
+   "slot": 0,
+   "walk": "b2_c37.png",
+   "battle": {
+    "name": "Pokemon Ranger Heidi",
+    "class": "RANGER",
+    "sprite": "b2_ranger_f.png",
+    "team": [
+     518,
+     426,
+     197
+    ],
+    "levels": [
+     61,
+     61,
+     61
+    ],
+    "rewards": {
+     "balls": 4,
+     "ULTRA_BALL": 1
+    },
+    "b2_id": 28
+   }
+  }
+ ],
+ "schedule": {
+  "stadium": [
+   "baseball",
+   "soccer",
+   "football",
+   "baseball",
+   "soccer",
+   "football",
+   "baseball"
+  ],
+  "court": [
+   "tennis",
+   "basketball",
+   "tennis",
+   "basketball",
+   "tennis",
+   "basketball",
+   "tennis"
+  ],
+  "hours": {
+   "baseball": [
+    14,
+    17
+   ],
+   "soccer": [
+    14,
+    16
+   ],
+   "football": [
+    14,
+    16
+   ],
+   "tennis": [
+    10,
+    11
+   ],
+   "basketball": [
+    10,
+    12
+   ]
+  }
+ }
+}

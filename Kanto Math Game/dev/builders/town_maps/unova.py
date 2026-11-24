@@ -2794,6 +2794,9 @@ def _b2_battle(label, tid, flag, lines, won, done, name=None, **kw):
 NIMBASA_ROOMS = {62: "MAIN", 65: "center", 79: "stadium", 80: "stadium_stands", 84: "court", 85: "court_stands",
                  88: "house_w", 89: "house_w_2f", 94: "house_e", 95: "house_e_2f", 93: "institute", 91: "gate_w", 92: "gate_e",
                  64: "park", 63: "gym", 585: "coaster",
+                 # batch 4c: the Musical Theater, the five playing fields (reached by the lobbies' warp panels)
+                 77: "musical", 81: "field_football", 82: "field_baseball", 83: "field_soccer", 86: "court_tennis",
+                 87: "court_basketball",
                  # batch 4b: Gear Station (66), its eight platforms (67-74: the lines in the file's own order, text 76 lines 18-25),
                  # the Subway car (75) and the lines' end station (76)
                  66: "gear", 67: "plat_single", 68: "plat_double", 69: "plat_multi", 70: "plat_wifi", 71: "plat_super_single",
@@ -3295,10 +3298,237 @@ ANVILLE = town(
 ANVILLE["landings"] = [[21, 52]]   # (the station: in and out by the Brown Line only)
 
 
+# ---------------------------------------------------------------------------- batch 4c: Big Stadium and Small Court
+# (11-24, Jordan's batch 4 call "as Black 2") Each lobby's warp panel (9, 8) leads onto the day's field (src/world/
+# nimbasa_sports.py: the sport by weekday, the game hours by the real clock); each field's panel leads back. Both are
+# step-on scenes, as Black 2 picks the field by the day: the fields have no fixed door to a lobby. During a game the
+# ushers stand before the panel and the stands fill with cheering fans; in practice the athletes battle once a day,
+# their teams by your badges, and after the League three visitors a day stand on one arena's field (b2_sports.json,
+# dev/builders/unova_sports.py). Black 2's people flags: 655 = shown during a game, 666 = shown in practice.
+_SPORTS = json.load(open(os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(
+    os.path.abspath(__file__))))), "assets", "b2_sports.json"), encoding="utf-8"))
+
+
+def _sp(arena, sport):
+    return "world:nimbasa_sports:sport:%s:%s" % (arena, sport)
+
+
+def _game(arena):
+    return "world:nimbasa_sports:game:" + arena
+
+
+def _practice(arena):
+    return "world:nimbasa_sports:open:" + arena
+
+
+def _pad_scene(xy, ev_key):
+    return {"trigger": {"zone": [xy[0], xy[1], xy[0], xy[1]]}, "every": True, "cast": [],
+            "call": ["(The warp panel hums...)"], "then": "event:" + ev_key}
+
+
+_BIG = ("football", "baseball", "soccer")
+_SMALL = ("tennis", "basketball")
+_STADIUM_ATHLETE_LOOK = {"football": "b2_c59.png", "baseball": "b2_c57.png", "soccer": "b2_c58.png"}
+_COURT_ATHLETE_LOOK = {"tennis": "b2_c60.png", "basketball": "b2_c133.png"}
+_PLAYER = {"football": "Football player", "baseball": "Infielder", "soccer": "Striker", "tennis": "Smasher",
+           "basketball": "Hoopster"}
+_COPY = {"football": "a quarterback's throw", "baseball": "a pitcher's throw", "soccer": "a goalkeeper's throw"}
+STADIUM = nimbasa_room(79, {
+    0: [_say("Receptionist", "There's a %s game on in Big Stadium right now!" % s, condition=[_sp("stadium", s), _game("stadium")])
+        for s in _BIG] + [_say("Receptionist", "The %s players are practising in Big Stadium now. You can go and watch!" % s,
+                               "Step on the warp panel to go out onto the field.", condition=[_sp("stadium", s), _practice("stadium")])
+                          for s in _BIG],
+    1: _say("Boy in the lobby", "Kids really look up to athletes, you know."),
+    3: _say("Man in the lobby", "I raise the same Pokemon as my favourite athlete!"),
+    4: [_say("Kid by the panel", "When I throw a Poke Ball, I copy %s!" % _COPY[s], condition=[_sp("stadium", s), _practice("stadium")])
+        for s in _BIG],
+    2: [_say("%s with a sore hand" % _PLAYER[s], "Ha ha! I'm a %s! I hurt my hand, so no autographs today. Sorry!"
+             % _PLAYER[s].lower().replace("football player", "football player"),
+             "What does the signature on your Trainer Card look like?", _look="sheet:" + _STADIUM_ATHLETE_LOOK[s],
+             condition=[_sp("stadium", s), _practice("stadium")]) for s in _BIG],
+    5: _say("Usher", "I'm sorry. You can't go onto the field while a game is on.", condition=[_game("stadium")]),
+    6: _say("Usher ", "I'm sorry. You can't go onto the field while a game is on.", condition=[_game("stadium")]),
+    7: _say("Usher  ", "I'm sorry. You can't go onto the field while a game is on.", condition=[_game("stadium")]),
+}, {}, title="Big Stadium", scenes=[dict(_pad_scene((9, 8), "b2_field_stadium"), condition=[_practice("stadium")])])
+STADIUM_STANDS = nimbasa_room(80, {
+    0: _say("Woman in the stands", "Athletes look so cool in the middle of a game!"),
+    2: _say("Man in the stands", "You can tell how good these players are just from watching them practise."),
+    3: _say("Girl in the stands", "On the field they play for real!"),
+    7: _say("Boy in the stands", "I want to be good at sports AND Pokemon battles!", condition=[_game("stadium")]),
+    1: _say("Fan in the stands", "One ball can make people and Pokemon smile. Sports are wonderful!", condition=[_game("stadium")]),
+    5: _say("Cheering fan", "Eeee! Look this waaay!", condition=[_game("stadium")]),
+    4: _say("Cheering fan ", "There! Turn like that!", condition=[_game("stadium")]),
+    6: _say("Dizzy fan", "Watching the ball go left and right makes me woozy...", condition=[_game("stadium")]),
+}, {}, title="Big Stadium Stands")
+COURT = nimbasa_room(84, {
+    7: [_say("Receptionist ", "There's a %s match on in Small Court right now!" % s, condition=[_sp("court", s), _game("court")])
+        for s in _SMALL] + [_say("Receptionist ", "The %s players are practising in Small Court now. Come and watch!" % s,
+                                 "Step on the warp panel to go out onto the court.", condition=[_sp("court", s), _practice("court")])
+                            for s in _SMALL],
+    0: _say("Fan by the court", "We love sports. Games are great, but we enjoy watching practices too!", condition=[_practice("court")]),
+    1: _say("Fan  by the court", "New kinds of basketball and tennis, made by people and Pokemon together!", condition=[_practice("court")]),
+    2: _say("Man by the wall", "Talk to the athletes during a practice, and they might challenge you to a battle!"),
+    3: [_say("%s by the panel" % _PLAYER[s], "The top %ss are waiting on the court with their Pokemon!" % _PLAYER[s].lower(),
+             _look="sheet:" + _COURT_ATHLETE_LOOK[s], condition=[_sp("court", s), _practice("court")]) for s in _SMALL],
+    4: _say("Usher   ", "I'm sorry. You can't go onto the court while a game is on.", condition=[_game("court")]),
+    5: _say("Usher    ", "I'm sorry. You can't go onto the court while a game is on.", condition=[_game("court")]),
+    6: _say("Usher     ", "I'm sorry. You can't go onto the court while a game is on.", condition=[_game("court")]),
+}, {}, title="Small Court", scenes=[dict(_pad_scene((9, 8), "b2_field_court"), condition=[_practice("court")])])
+COURT_STANDS = nimbasa_room(85, {
+    2: _say("Man at the back", "I watch them practise quietly. I trust the athletes!"),
+    7: _say("Kid in the stands", "Wooow! Someday I want to play on that court!"),
+    0: _say("Fan  in the stands", "We love watching games, and practices too!", condition=[_game("court")]),
+    1: _say("Fan   in the stands", "New styles of sport, made by people and Pokemon... Maybe they're the future!", condition=[_game("court")]),
+    3: _say("Coach in the stands", "Hey! There! No! No, no! Yes, yes! That's it! Why don't they listen to me?!", condition=[_game("court")]),
+    4: _say("Player in the stands", "Hmm-hmm! I'll copy that play in my next game.", condition=[_game("court")]),
+    5: _say("Muscle fan", "Did you see that? What a muscle move! Good hustle!", condition=[_game("court")]),
+    6: _say("Excited fan", "This could be the game of a lifetime! I might see history made!", condition=[_game("court")]),
+}, {}, title="Small Court Stands")
+
+# The fields: the athletes (Black 2's own, by tier), the spare spots for the post-game visitors, the other players and
+# their Pokemon (lines in our words, after the zones' text 91-97). Each field's warp panel leads back to its lobby.
+_FIELD_TALK = {
+    81: {15: ("Coach on the field", "Players who score and players who help them... Picking the roles is the key to a team!"),
+         16: ("Football player", "Football's a fun sport. It's split into offence and defence."),
+         14: ("Football player ", "Those eyes... It's like he's charging straight at me!"),
+         13: ("Football player  ", "The helmet and pads weigh about 15 pounds!"),
+         12: ("Football player   ", "I built these muscles tackling Pokemon! Nothing can move me!"),
+         11: ("Football player    ", "OK! I'll defend to the end with moves like Protect and Detect!"),
+         17: ("Football player     ", "My favourite moves? Hmm... Tackle and Take Down!"),
+         18: ("Football player      ", "Reading the other side's attack and picking your next move... Battles and football share that thrill!"),
+         19: ("Football player       ", "Why is football fun? First, just watch a game without worrying about the rules!"),
+         20: ("Football player        ", "I'll guard my team with my whole body!"),
+         22: ("Quarterback", "In football the quarterback picks the plan and carries it out. Kind of like a Pokemon Trainer!"),
+         21: ("Football player         ", "You have to learn every single formation by heart!"),
+         9: ("Football player at the end", "The ball's oval and hard to throw. But once you get the hang of it, it flies!"),
+         8: ("Secret weapon", "I'm the team's secret weapon! So secret I've never played in a game..."),
+         10: ("Football player running", "Yoo-hoo! Pass me the ball!"),
+         28: ("Owner on the field", "Bodies crashing into bodies! Go, go, go! I'm the team's owner. That's what I like to see!"),
+         29: ("Pansage", "Pansage: Ook!"), 30: ("Pansear", "Pansear: Ookiii!"), 31: ("Panpour", "Panpour: Ook! Ook!")},
+    82: {13: ("Infielder", "To get good at something, you do it again, day after day after day."),
+         12: ("Infielder ", "When I was a kid, I played catch with my Pokemon!"),
+         7: ("Infielder  ", "Growing up isn't bad. Forgetting how it felt to be a kid is."),
+         8: ("Infielder   ", "I've got baseball and I've got Pokemon. How lucky am I!"),
+         9: ("Infielder    ", "If you never swing, you never hit. You won't fail... but you won't win either."),
+         10: ("Infielder     ", "I give it everything, every time. That's all I know how to do!"),
+         16: ("Infielder      ", "What I'm proudest of? My bat!"),
+         17: ("Herdier", "Herdier: Bwoof!")},
+    83: {0: None},
+    86: {8: ("Smasher", "Pokemon tennis is wonderful! You're never alone out there: your Pokemon is always with you!"),
+         9: ("Smasher ", "Tennis is rackets and balls. Nothing deep about it."),
+         10: ("Ball boy", "I'm a ball boy who collects tennis balls. You're a Trainer who collects Pokemon!"),
+         11: ("Ball boy ", "To be ball boys, we have to practise!"),
+         14: ("Lillipup", "Lillipup: Woowoof!"), 15: ("Lillipup ", "Lillipup: Yap!")},
+    87: {8: ("Hoopster", "A game can end in the blink of an eye. What matters is how hard you prepare!"),
+         9: ("Hoopster ", "I'm not playing basketball because I'm tall. Maybe I grew tall because I wanted to play so much!"),
+         12: ("Scraggy", "Scraggy: Aaagy!")},
+}
+_FIELD_TALK[83] = {
+    0: ("Goalkeeper", "Everyone makes mistakes. But a keeper can't, because a keeper can't score to make up for it.",
+        "With Pokemon, the others on your team and their Trainer can cover for you!"),
+    1: ("Striker", "A Striker and a teammate understand each other with one look. Same as a Pokemon and its Trainer!"),
+    2: ("Striker ", "Really strong Trainers do everything they can, every time!"),
+    3: ("Striker  ", "Soccer is beautiful and fun! So are Pokemon!"),
+    4: ("Striker   ", "Pokemon soccer... Poccer? No? Hmm, I'll keep thinking."),
+    5: ("Striker    ", "Pass the ball to a teammate, then move fast to get it back!"),
+    21: ("Striker running", "Run! Run! Just think about running!"),
+    24: ("Patrat", "Patrat: Squeeskwaa!"), 25: ("Patrat ", "Patrat: Meep!")}
+
+
+def _field_room(z):
+    f = _SPORTS["fields"][str(z)]
+    arena, sport = f["arena"], f["sport"]
+    people = {}
+    for a in f["athletes"]:
+        key = a["key"]
+        people[a["n"]] = {"text": key + ("" if not a["second"] else " "), "action": "EVENT",
+                          "condition": ["world:nimbasa_sports:athlete:" + key],
+                          "event": {"world": "nimbasa_sports", "athlete": key}}
+    pad = None
+    geo = GEO[str(z)]
+    for p in geo["people"]:
+        if p["code"] in (163, 164, 165):   # (Black 2's spare spots: the script dresses them as the day's visitors)
+            slot = p["code"] - 163
+            people[p["n"]] = [{"text": v["battle"]["name"] + " " * (1 + list(FIELD_NAMES).index(z)), "action": "EVENT",
+                               "_look": "sheet:" + v["walk"],
+                               "condition": ["world:nimbasa_sports:visitor:%s:%d:%d" % (arena, slot, v["id"])],
+                               "event": {"world": "nimbasa_sports", "visitor": v["id"]}}
+                              for v in _SPORTS["visitors"] if v["slot"] == slot]
+    for n, said in _FIELD_TALK.get(z, {}).items():
+        if said:
+            people[n] = _say(said[0], *said[1:])
+    m = nimbasa_room(z, people, {}, title=FIELD_NAMES[z])
+    for d in geo["doors"]:   # (its warp panel: a step-on scene back to the lobby, not a door)
+        pad = (d["x"], d["y"])
+    ch = m["art"][pad[1]][pad[0]]
+    m["art"][pad[1]] = m["art"][pad[1]][:pad[0]] + "." + m["art"][pad[1]][pad[0] + 1:]
+    m["exits"].pop(ch, None)
+    m["scenes"] = [_pad_scene(pad, "b2_field_leave_" + arena)]
+    m["landings"] = [[pad[0], pad[1] - 1]]   # (reached by the lobby's panel: nimbasa_sports puts you here)
+    return m
+
+
+FIELD_NAMES = {81: "Big Stadium: Football", 82: "Big Stadium: Baseball", 83: "Big Stadium: Soccer",
+               86: "Small Court: Tennis", 87: "Small Court: Basketball"}
+FIELD_ROOMS = {"field_football": _field_room(81), "field_baseball": _field_room(82), "field_soccer": _field_room(83),
+               "court_tennis": _field_room(86), "court_basketball": _field_room(87)}
+
+# ------------------------------------------------------------------------------------- batch 4c: the Musical Theater
+# (11-24, Jordan: "a simple show game"; Dress Up snaps each Prop to its spot, the show asks math for the spotlight, the
+# fans come about 20 shows sooner than Black 2's 120, the Toy Cake after the first show: unova_check/DECISIONS.md)
+# Zone 77: the owner greets you on your first visit and hands over the Prop Case a superstar left behind two years ago
+# (zone 606's lines: its props are the Top Hat, Blue Barrettes, Square Glasses, Maraca, Umber Belt and Tie). The middle
+# receptionist starts a Musical (src/states/musical.py); after a show your fans wait in the lobby, each with a Prop
+# (Black 2's ten fan spots, flags 622-626 / 661-665). src/world/musical.py keeps the Prop Case and the counts.
+_FANS = [1, 4, 5, 2, 3, 18, 17, 19, 20, 21]   # (the file's fan spots in the order they fill)
+MUSICAL = nimbasa_room(77, dict({
+    0: {"text": "Musical receptionist", "action": "EVENT", "event": {"world": "musical", "join": True}},
+    15: _say("Receptionist at the photos", "You can hang the photo from a Musical on the wall behind me!",
+             "The photo up there now is from the last show."),
+    16: _say("Receptionist for link shows", "This counter is for Musicals with friends far away.",
+             "It runs on link play, so it isn't open here. The middle counter's shows are always open!"),
+    11: {"text": "Theater owner", "action": "EVENT", "event": {"world": "musical", "owner": True}},
+    7: {"text": "Rival stylist", "action": "EVENT", "event": {"world": "musical", "rival": True}},
+    8: _say("Maid in the lobby", "In Dress Up, matching the show is everything!",
+            "Match it well and the audience falls for you. If you're going on stage, you have to stand out!"),
+    6: _say("Socialite in the lobby", "Every Prop has its own image: cool, cute, elegant or quirky.",
+            "Think about the look you want before you play Dress Up."),
+    14: _say("Gentleman by the stairs", "I'm not bragging, but we're rather rich. And rich people love the Musical!",
+             "Even for a man like me, the Pokemon Musical is the best entertainment there is!"),
+    12: _say("Little girl in the theater", "When there are cute Pokemon on stage, I can't look away!"),
+    13: _say("Pokefan in the lobby", "Your Pokemon are wonderful! I always watch them. Keep entertaining us!"),
+    10: _say("Man by the posters", "Long ago, people performed in this theater. One day a Pokemon wandered on stage and copied the actors.",
+             "Everyone loved it! And so the Pokemon Musical was born."),
+    9: {"text": "Woman by the posters", "action": "EVENT", "event": {
+        "lines": ["Do well in the Musical and people become your fans. They give you Props!",
+                  "I don't have any Props, so here's this instead!"],
+        "gift_item": {"TM277": 1}, "flag": "b2_musical_tm49",
+        "done": ["Echoed Voice gets stronger every turn it's used in a row. Keep at the Musical, and keep using Echoed Voice!"]}},
+    22: _say("Lady in the lobby", "It's such a treat when Trainers dress up their Pokemon this charmingly."),
+    23: _say("Usher by the seats", "The seats are through here... but I think you belong on the stage!"),
+    24: _say("Man by the posters ", "Props plus music plus dance! It's a moving spectacle!"),
+}, **{}) | {n: {"text": "Fan %d" % (k + 1), "action": "EVENT", "condition": ["world:musical:fan:%d" % k],
+                "event": {"world": "musical", "fan": k}} for k, n in enumerate(_FANS)},
+    {12: ["MUSICAL PHOTOS", "Photos of the Pokemon Musical hang here."], 14: ["MUSICAL THEATER", "Props + music + dance = a moving spectacle!"]},
+    title="Musical Theater",
+    scenes=[{"trigger": "enter", "condition": ["not:b2_prop_case"], "flag": "b2_prop_case",
+             "cast": [{"sheet": "b2_c44.png", "from": [16, 15], "to": "player", "leave": [16, 15], "lines": [
+                 "Owner: Hello! How do you do? I'm the owner of this theater!",
+                 "Ooh! You have quite an aura. Like a superstar who drew crowds here two years ago...",
+                 "That superstar left this Prop Case behind. If they come back, we'll return it in a trice.",
+                 "Until then, I see a worthy successor in you! Here, take it. Props to you!",
+                 "{player_name} received the Prop Case! The Top Hat, Blue Barrettes, Square Glasses, a Maraca, the Umber Belt "
+                 "and a Tie are inside.",
+                 "In the Musical we dress Pokemon up in Props and they dance on stage. Talk to the receptionist to join!"],
+                 "then": "event:b2_prop_case"}]}])
+MUSICAL["title"] = "Musical Theater"
+
+
 NIMBASA = town(
     62, NIMBASA_PEOPLE, NIMBASA_SIGNS,
     {65: ("center", "center"), 79: ("house", "stadium"), 84: ("house", "court"), 88: ("house", "house_w"),
-     94: ("house", "house_e"), 93: ("house", "institute"), 91: ("gate", "gate_w"), 92: ("gate", "gate_e"), 66: ("house", "gear")},
+     94: ("house", "house_e"), 93: ("house", "institute"), 91: ("gate", "gate_w"), 92: ("gate", "gate_e"), 66: ("house", "gear"),
+     77: ("house", "musical")},
     rooms={
         "center": nimbasa_room(65, {
             0: {"text": "Pokémon Center", "action": "HEAL"}, 3: {"text": "Shop", "action": "SHOP"},
@@ -3315,31 +3545,8 @@ NIMBASA = town(
             6: _say("Boy by the sofa", "The Battle Subway's trains run from Gear Station. Seven Trainers in a row!"),
             11: _say("Trainer at the PC", "I keep my best Pokemon in a Box, ready for the Subway."),
         }, {}),
-        "stadium": nimbasa_room(79, {
-            0: _say("Receptionist", "Players are practising in Big Stadium today. Games start at set times!"),
-            1: _say("Boy in the lobby", "You sure look up to athletes when you're a kid."),
-            3: _say("Man in the lobby", "I raise the same Pokemon as my favourite athlete!"),
-            2: _say("Fan by the field door", "The field's closed while they get ready. Come back for a game!"),
-            4: _say("Kid by the field door", "When I throw a Poke Ball, I copy a pitcher's throw!"),
-            5: _say("Fan", "Go, go, go!"), 6: _say("Fan ", "Woooo!"), 7: _say("Fan  ", "Let's go!"),
-        }, {}, title="Big Stadium"),
-        "stadium_stands": nimbasa_room(80, {
-            0: _say("Woman in the stands", "Professional athletes look so cool during a game!"),
-            1: _say("Boy in the stands", "I want to be good at sports AND Pokemon battles!"),
-            2: _say("Girl in the stands", "On the field they play for real!"),
-            3: _say("Man in the stands", "Just one ball can make people and Pokemon smile. Sports are wonderful!"),
-            4: _say("Fan in the stands", "Eeee! Turn this waaay!"), 5: _say("Fan  in the stands", "There! Turn like that!"),
-            6: _say("Kid in the stands", "Following the ball left and right makes me woozy."), 7: _say("Cheerer", "Yahoooo!"),
-        }, {}, title="Big Stadium Stands"),
-        "court": nimbasa_room(84, {
-            0: _say("Fan by the court", "We love sports. Games are great, but we enjoy watching practices too!"),
-            1: _say("Fan  by the court", "New styles of tennis and basketball, made by people and Pokemon together!"),
-            2: _say("Receptionist ", "Talk to the athletes during a practice and they might challenge you to a battle!"),
-            3: _say("Kid by the court door", "First-rank players wait in the court with their Pokemon!"),
-            4: _say("Fan ", "Go!"), 5: _say("Fan  ", "Nice shot!"), 6: _say("Fan   ", "Wow!"),
-            7: _say("Usher", "I'm sorry, the court is closed while the players get ready."),
-        }, {}, title="Small Court"),
-        "court_stands": nimbasa_room(85, {}, {}, title="Small Court Stands"),
+        "stadium": STADIUM, "stadium_stands": STADIUM_STANDS, "court": COURT, "court_stands": COURT_STANDS,
+        "musical": MUSICAL, **FIELD_ROOMS,
         "house_w": nimbasa_room(88, {
             0: _say("Man in the house", "With a friend, wireless battles can use the Wonder Launcher rule: items in battle!"),
             1: _say("Woman in the house", "Wonder Launcher points build up as you battle. Spend them on items!"),

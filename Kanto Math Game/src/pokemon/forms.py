@@ -41,6 +41,21 @@ def forms_for(assets, species_id):
     return all_forms(assets).get(str(species_id), [])
 
 
+# The Orange Islands' colour-only forms (Pinkan, Valencia) Mega Evolve like their species (Jordan 11-23), in their
+# own colours: sprites/pokemon/mega/<dex>_<variant>_mega.png (dev/builders/recolor_form_followers.py), else the Mega's.
+COLOUR_VARIANTS = ("pinkan", "valencia")
+
+
+def _species(pokemon):
+    """The species whose Megas a Pokemon has: a colour variant's (Pinkan Beedrill 9106 -> 15), else its own id."""
+    if getattr(pokemon, "form", "normal") in COLOUR_VARIANTS:
+        try:
+            return int(getattr(pokemon, "meta_id", None) or pokemon.id)
+        except (TypeError, ValueError):
+            pass
+    return pokemon.id
+
+
 
 
 
@@ -55,9 +70,9 @@ def has_key_stone(inventory):
 
 def player_form(assets, pokemon, inventory, form_used):
     """The form the player's Pokemon can change into right now (MEGA/PRIMAL button), or None."""
-    if form_used or is_changed(pokemon) or pokemon.form != "normal":
+    if form_used or is_changed(pokemon) or pokemon.form not in ("normal",) + COLOUR_VARIANTS:
         return None
-    for f in forms_for(assets, pokemon.id):
+    for f in forms_for(assets, _species(pokemon)):
         if f["form"] == "primal":
             if inventory.get(f["item"], 0) > 0:
                 return f
@@ -71,9 +86,9 @@ def player_form(assets, pokemon, inventory, form_used):
 
 def opponent_form(assets, pokemon, form_used):
     """Foes change form on entering battle, only when flagged (a trainer's Mega Pokemon or a Primal boss)."""
-    if form_used or is_changed(pokemon) or pokemon.form != "normal":
+    if form_used or is_changed(pokemon) or pokemon.form not in ("normal",) + COLOUR_VARIANTS:
         return None
-    for f in forms_for(assets, pokemon.id):
+    for f in forms_for(assets, _species(pokemon)):
         if f["form"] == "primal" and getattr(pokemon, "primal_ready", False):
             return f
         if f["form"] != "primal" and getattr(pokemon, "mega_ready", False):
@@ -99,13 +114,21 @@ def apply_form(assets, pokemon, form):
     pokemon._form_state = {k: getattr(pokemon, k) for k in
                            ("types", "base_stats", "display_name", "form", "image", "back_image", "sidebar_image")}
     old_name = pokemon.display_name.upper()
+    variant = pokemon.form if pokemon.form in COLOUR_VARIANTS else None
+    species = _species(pokemon)
     pokemon.types = list(form["types"])
     pokemon.base_stats = dict(form["stats"])
     pokemon.display_name = form["name"]
+    if variant and form["name"].upper().startswith("MEGA "):   # (MEGA PINKAN BEEDRILL)
+        pokemon.display_name = f"MEGA {variant.upper()} {form['name'][5:]}"
     pokemon.form = form["form"]
     for attr, sub in (("image", ""), ("back_image", "back"), ("sidebar_image", "")):
         current = getattr(pokemon, attr)
-        img = _load(assets, sub, form["sprite"], pokemon.is_shiny)
+        img = None
+        if variant:   # (its own colours; none drawn -> keep its current picture rather than the species' colours)
+            img = _load(assets, sub, f"{species}_{variant}_{form['form']}.png", pokemon.is_shiny)
+            img = img if img is not None else current
+        img = img if img is not None else _load(assets, sub, form["sprite"], pokemon.is_shiny)
         if current is not None and img is not None:
             setattr(pokemon, attr, pygame.transform.scale(img, current.get_size()))
     if form["form"] == "primal":
