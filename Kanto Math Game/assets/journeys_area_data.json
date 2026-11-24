@@ -1,0 +1,125 @@
+{
+  "JOURNAL_MISSIONS": [
+    {
+      "id": "journey_hoenn_tickets",
+      "region": "HOENN",
+      "type": "SIDE",
+      "title": "Tickets for the Champion",
+      "description": "The ferry clerk at Lilycove's harbour has been holding something for Hoenn's new Champion. Nobody will say where it leads.",
+      "condition": {
+        "required_region": "HOENN",
+        "flag": "beat_hoenn_champion",
+        "flag_not": "got_island_tickets"
+      },
+      "completed_flag": "got_island_tickets",
+      "target": "LILYCOVE_CITY"
+    },
+    {
+      "id": "journey_far_islands",
+      "region": "HOENN",
+      "type": "SIDE",
+      "title": "Islands Beyond the Map",
+      "description": "Two tickets, two specks of rock far out to sea that no chart shows. Something old waits on each, and the Lilycove ferry knows the way.",
+      "condition": {
+        "required_region": "HOENN",
+        "flag": "got_island_tickets"
+      },
+      "completed_flag": [
+        "navel_rock_lugia",
+        "navel_rock_ho_oh",
+        "birth_island_deoxys"
+      ],
+      "target": "NAVEL_ROCK"
+    },
+    {
+      "id": "journey_sinnoh_sinjoh",
+      "region": "SINNOH",
+      "type": "SIDE",
+      "title": "Where the Unown Gather",
+      "description": "An old tale tells of ruins in Johto where the Unown gather, and of the Pokemon that shaped the world. Somebody who has stood at the Spear Pillar might want to see them.",
+      "condition": {
+        "required_region": "SINNOH",
+        "flag": "beat_sinnoh_champion",
+        "flag_not": "sinjoh_rite_done"
+      },
+      "completed_flag": "sinjoh_rite_done"
+    },
+    {
+      "id": "journey_regi_giant",
+      "region": "HOENN",
+      "type": "SIDE",
+      "title": "The Giant in the Ice",
+      "description": "The writing in the Sealed Chamber speaks of a giant that once towed the land into place, asleep in a frozen temple far to the north. Its three guardians might be the only ones who can wake it.",
+      "condition": {
+        "required_region": "HOENN",
+        "flag": [
+          "beat_hoenn_champion",
+          "regi_trio_awakened"
+        ],
+        "flag_not": "SNOWPOINT_TEMPLE_boss_defeated"
+      },
+      "completed_flag": "SNOWPOINT_TEMPLE_boss_defeated"
+    },
+    {
+      "id": "journey_gs_oak",
+      "region": "KANTO",
+      "type": "SIDE",
+      "title": "A Favour for the Professor",
+      "description": "Professor Oak has been waiting for his Champion to stop by the lab. He has a favour to ask, and it means a long trip south.",
+      "condition": {
+        "required_region": "KANTO",
+        "flag": "beat_champion",
+        "flag_not": [
+          "oak_gs_errand",
+          "got_gs_ball_ivy"
+        ]
+      },
+      "completed_flag": "oak_gs_errand",
+      "target": "PALLET_TOWN"
+    },
+    {
+      "id": "journey_gs_ivy",
+      "region": "ORANGE",
+      "type": "SIDE",
+      "title": "The Ball Nobody Can Open",
+      "description": "Professor Ivy promised Professor Oak something from Valencia Island: a strange ball that no one has managed to open.",
+      "condition": {
+        "required_region": "ORANGE",
+        "flag": "oak_gs_errand",
+        "flag_not": "got_gs_ball_ivy"
+      },
+      "completed_flag": "got_gs_ball_ivy",
+      "target": "VALENCIA_ISLAND"
+    },
+    {
+      "id": "journey_gs_kurt",
+      "region": "JOHTO",
+      "type": "SIDE",
+      "title": "The GS Ball",
+      "description": "Nobody can open the GS Ball. In Azalea Town, an old craftsman who turns Apricorns into Poke Balls might know what it is.",
+      "condition": {
+        "required_region": "JOHTO",
+        "item": "GS_BALL",
+        "flag_not": "kurt_examined_gs_ball"
+      },
+      "completed_flag": "kurt_examined_gs_ball",
+      "target": "AZALEA_TOWN"
+    },
+    {
+      "id": "journey_gs_shrine",
+      "region": "JOHTO",
+      "type": "SIDE",
+      "title": "The Shrine in the Woods",
+      "description": "Kurt thinks the GS Ball belongs at the little shrine in Ilex Forest. The trees there have been very quiet lately.",
+      "condition": {
+        "required_region": "JOHTO",
+        "flag": "kurt_examined_gs_ball",
+        "item": "GS_BALL",
+        "region_badges_min": 8,
+        "flag_not": "ILEX_FOREST_boss_defeated"
+      },
+      "completed_flag": "ILEX_FOREST_boss_defeated",
+      "target": "ILEX_FOREST"
+    }
+  ]
+}
