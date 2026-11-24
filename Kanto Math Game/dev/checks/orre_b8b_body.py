@@ -573,6 +573,7 @@ gr = next(o for o in SP["XD_CITADARK_ISLE"]["route_menu"] if o["text"] == "GRAND
 b = xd_post.greevil_battle(g, gr)
 check(b["team"][1] == 277 and b["team"][0] == 9331, "Moltres snagged: Swellow stands in; Rhydon still a Shadow")
 F.pop("snagged_shadow_lugia")
+story.badges.setdefault("ORRE", []).append("CITADARK")   # (Greevil stands once Drake's Citadark Badge is won: S3 11-24)
 t = route("XD_CITADARK_ISLE", "GATEON_PORT")
 s = meet(t, "GRAND MASTER GREEVIL")
 check(s is not None and F.get("snagged_shadow_lugia"), "XD001 got away? Greevil brings it back first - snagged")

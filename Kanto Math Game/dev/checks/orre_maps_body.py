@@ -828,5 +828,18 @@ check("Move Tutor" in _TMJ["AGATE_VILLAGE"]["rooms"]["house_centre"]["people"] a
 
 
 
+# ---- R6 (11-24): the desert's sand across the track to the Snagem hideout opens as the desert's own way in does -
+# Ein's Data ROM (Pryce's ruins, Part 1) or Hordel (his hideout, Part 2); it opened on the old Phenac Badge + Hordel
+_sand = {}
+for _k, _fl in (("none", []), ("rom", ["orre_data_rom_given"]), ("hordel", ["xd_hordel"])):
+    for _f in ("orre_data_rom_given", "xd_hordel"):
+        story.story_flags.pop(_f, None)
+    story.story_flags.update({_f: True for _f in _fl})
+    _sand[_k] = len(_bars("ORRE_DESERT", "PHENAC_CITY", 0) & {(32, 25), (33, 25), (34, 25)})
+for _f in ("orre_data_rom_given", "xd_hordel"):
+    story.story_flags.pop(_f, None)
+check(_sand["none"] == 3 and _sand["rom"] == 0 and _sand["hordel"] == 0,
+      f"R6: the desert's track to the Snagem hideout - shut, then open after Ein's Data ROM (Part 1) or Hordel (Part 2) {_sand}")
+
 g.walk_towns = False
 print(f"##### {fails} failures")
