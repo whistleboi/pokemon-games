@@ -167,8 +167,9 @@ for _k in ("silph_co_cleared", "hideout_giovanni_defeated", "game_corner_cleared
     story.story_flags.pop(_k, None)
 story.defeated_trainers.pop("SILPH_CITY", None)
 _sil = kanto("SILPH_CITY", came="SAFFRON_CITY")
-check(_sil.run.n_floors == 11 and _sil._floor_name(10) == "11F" and "SAFFRON_CITY" in _sil.run.floor.exits.values(),
-      "Silph Co.: 1F (the way out) up to 11F (FireRed's floors)")
+_silf = [_sil._floor_name(i) for i in range(_sil.run.n_floors)]   # (11-23, Kanto K2: each floor's lift car is a room of its own)
+check([n for n in _silf if n != "Lift"] == [f"{i}F" for i in range(1, 12)] and _silf.count("Lift") == 11 and "SAFFRON_CITY" in _sil.run.floor.exits.values(),
+      f"Silph Co.: 1F (the way out) up to 11F (FireRed's floors), and the lift car on each ({_sil.run.n_floors} floors)")
 while _sil.run.index < 8:
     _sil._descend()
 check(any(m.kind == "figure" and m.payload.get("text") == "NURSE" for m in _sil.run.floor.movers), "a nurse on 9F (FireRed's)")
@@ -242,8 +243,8 @@ for _k in ("navel_rock_lugia", "navel_rock_ho_oh"):
     story.story_flags.pop(_k, None)
 _nr = kanto("NAVEL_ROCK", came="ONE_ISLAND")
 _where = {t: i for i in range(_nr.run.n_floors) for t in _nr.run.made(i).spots}
-check(_nr.run.n_floors == 21 and _where.get("SEEK LUGIA") == 20 and _where.get("SEEK HO-OH") == 8,  # (FireRed's own floors, 11-11: the island, the cave, the fork, the long stairs, 4 flights up to the summit, 11 down to the base)
-      f"Navel Rock: FireRed's 21 floors; Ho-Oh on the summit, Lugia in the base {_where}")
+check(_nr.run.n_floors == 22 and _nr._floor_name(21) == "Navel Rock Harbor" and _where.get("SEEK LUGIA") == 20 and _where.get("SEEK HO-OH") == 8,   # (+ the harbour room, 11-23 K2)  # (FireRed's own floors, 11-11: the island, the cave, the fork, the long stairs, 4 flights up to the summit, 11 down to the base)
+      f"Navel Rock: FireRed's 21 floors and its harbour room; Ho-Oh on the summit, Lugia in the base {_where}")
 _me = kanto("MT_EMBER", came="KINDLE_ROAD")
 check(_me.run.n_floors == 13, "Mt. Ember: FireRed's 13 floors: the mountain, the Summit Path's three, the summit, the Ruby Path's eight")
 

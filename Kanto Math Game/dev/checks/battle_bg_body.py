@@ -22,7 +22,7 @@ story.enter_region("JOHTO")
 reg = str(story.area_region("VIOLET_CITY")).upper()
 check(reg == "JOHTO", f"Violet City is in Johto ({reg})")
 d = os.path.join(tmp, reg); os.makedirs(d)
-for n in ("grass.png", "grass_night.png", "cave.png", "water.png", "r29.png", "town_w.png", "town_t.png", "gym.png", "lead.png", "e1.png", "e2.png"):
+for n in ("grass_summer.png", "grass_summer_night.png", "grass.png", "grass_night.png", "cave.png", "water.png", "r29.png", "town_w.png", "town_t.png", "gym.png", "lead.png", "e1.png", "e2.png"):
     pygame.image.save(pygame.Surface((8, 8)), os.path.join(d, n))
 json.dump({"terrain": {"grass": "grass.png", "cave": "cave.png", "water": "water.png"},
            "areas": {"JOHTO_ROUTE_29": "r29.png",
@@ -55,6 +55,10 @@ if area:
     check(name(bbg.pick(g, area, water=False, now=night)) == "grass_night.png", f"{area} at night: its night picture")
     check(name(bbg.pick(g, area, water=True, now=noon)) == "water.png", f"{area} on the water: water")
     check(bbg.pick(g, area, gym=True, water=False, now=noon) is None, "a Gym the index doesn't name: its own (None)")
+    _jul, _julnight = datetime.datetime(2026, 2, 1, 12), datetime.datetime(2026, 2, 1, 23)   # (February: Black 2's summer)
+    check(name(bbg.pick(g, area, water=False, now=_jul)) == "grass_summer.png", f"{area} in summer: its summer picture (Unova 11-24)")
+    check(name(bbg.pick(g, area, water=False, now=_julnight)) == "grass_summer_night.png", f"{area} on a summer night: both")
+    check(name(bbg.pick(g, area, water=False, now=datetime.datetime(2026, 3, 1, 12))) == "grass.png", f"{area} in autumn with no autumn picture: the plain one")
 
 print("3) no index: untouched")
 check(bbg.pick(g, "PALLET_TOWN", water=False, now=noon) is None, "Kanto (no index in the test folder): None")
@@ -79,6 +83,9 @@ g.walk_town_room = ("VIOLET_CITY", "gym")
 _seen.clear(); _TBS(g, [mk(19)], trainer_class="BIRD_KEEPER", trainer_name="Rod", area_name="VIOLET_CITY", trainer_img_name="bird_keeper")
 check(_seen and _seen[0].get("gym"), f"a trainer inside the Gym's room: the Gym's picture ({_seen[:1]})")
 g.walk_town_room = _g0
+_seen.clear(); _TBS(g, [mk(19)], trainer_class="GYM_LEADER", trainer_name="Falkner", area_name="VIOLET_CITY", trainer_img_name="falkner",
+                   battle_type="gym", is_boss_battle=True)
+check(_seen and _seen[0].get("leader") and _seen[0].get("gym"), f"a Gym Leader in the Gym (battle_type gym) asks the index for the Leader's picture ({_seen[:1]})")
 bbg.pick = _pick; bbg.folder = _folder; bbg._INDEX.clear()
 
 print("5) a battle loads one by path")

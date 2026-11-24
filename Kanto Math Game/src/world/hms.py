@@ -13,8 +13,8 @@ HM_BY_BADGE = {
               },   # (Waterfall: an item ball in the Ice Path, HGSS)
     # (Hoenn's Rock Smash, Strength and Fly are story gifts before their badges: Wally's uncle in Mauville,
     # the rival on Route 112 and on Route 119; Jordan, 11-06: one source for each key item in a region)
-    "HOENN": {"STONE": "HM_CUT", "KNUCKLE": "HM_FLASH", "BALANCE": "HM_SURF", "MIND": "HM_DIVE",
-              "RAIN": "HM_WATERFALL"},
+    "HOENN": {},   # (11-23, Jordan H5: every HM from ORAS's own giver on the maps - Cut the Cutter in Rustboro, Flash Granite
+    #              Cave's hiker, Surf Wally's father after Norman, Dive Steven in Mossdeep, Waterfall Wallace's prize)
     "SINNOH": {"COAL": "HM_ROCK_SMASH", "FOREST": "HM_CUT", "COBBLE": "HM_FLY", "FEN": "HM_DEFOG",
                "RELIC": "HM_SURF", "MINE": "HM_STRENGTH", "ICICLE": "HM_ROCK_CLIMB", "BEACON": "HM_WATERFALL"},
     # (11-20, Black 2 / White 2: every HM is a story gift - Cut from Roxie at Virbank's docks, Strength from Hugh in the
@@ -30,6 +30,7 @@ HM_BY_BADGE = {
 # charcoal maker's Cut after the Hive Badge; Jordan 11-15: "true to cannon").
 USE_BADGE = {"KANTO": {"HM_CUT": "CASCADE", "HM_FLY": "THUNDER", "HM_SURF": "SOUL", "HM_STRENGTH": "RAINBOW", "HM_FLASH": "BOULDER", "HM_ROCK_SMASH": "MARSH", "HM_WATERFALL": "VOLCANO"},   # (FireRed's own; Jordan 11-16)
              "ORRE": {"HM_FLY": "PYRITE"},   # (neither Orre game has Fly; Jordan 11-21: Fly in Orre after the first badge, HM Fly in Pyrite)
+             "HOENN": {"HM_CUT": "STONE", "HM_ROCK_SMASH": "DYNAMO", "HM_STRENGTH": "HEAT", "HM_SURF": "BALANCE", "HM_FLY": "FEATHER", "HM_DIVE": "MIND", "HM_WATERFALL": "RAIN"},   # (ORAS's own; Flash is a TM there, no badge. Jordan 11-23, Hoenn H5)
              "JOHTO": {"HM_FLASH": "ZEPHYR", "HM_CUT": "HIVE", "HM_ROCK_SMASH": "ZEPHYR", "HM_SURF": "FOG", "HM_STRENGTH": "PLAIN", "HM_FLY": "STORM", "HM_WHIRLPOOL": "GLACIER", "HM_WATERFALL": "RISING"}}   # (Surf: the Dance Theater's gentleman, HGSS)   # (Rock Smash: the man on Route 36, after Sudowoodo)
 
 
@@ -44,7 +45,7 @@ def usable(story, item):
 # Regions where EVERY map test of an HM asks for its badge too (Kanto, 11-16). Elsewhere the tests that only ever asked
 # for the item (Surf on a route, Strength, Rock Smash, Waterfall, Fly) still do, till that region's own pass.
 # Johto 11-23 (Jordan, J2 gate check: "Badges for every HM"; HGSS and Crystal both need each HM's badge on the map).
-FIELD_STRICT = {"KANTO", "ORRE", "JOHTO"}
+FIELD_STRICT = {"KANTO", "ORRE", "JOHTO", "HOENN"}   # (Hoenn 11-23, H5: ORAS needs each HM's badge on the map)
 
 # Field moves a region's game uses by the move alone, with no HM item (Orange Islands 5.7: Route L's swimmer teaches Waterfall
 # and a Pokemon that knows it climbs Butwal's falls; 11-18). {region: {our HM item: the move}}

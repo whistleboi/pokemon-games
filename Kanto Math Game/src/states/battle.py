@@ -113,7 +113,15 @@ class TrainerBattleState(ShadowBattle, GimmickEffects, AbilityEffects, MoveMecha
                 bg_raw = pygame.image.load(str(background_image)).convert()
             except Exception:
                 bg_raw = None
-        elif battle_type != "gym":   # (11-23: in a walked region, its own game's background first, the way that game picks it)
+        elif battle_type == "gym":   # (a Gym's own battles: the region's index "gym" / "leader" picture if it names one - Unova's
+            _own = _bbg.pick(self.game, area_name or self.game.story_manager.current_area_key,   # Black 2 Gyms, 11-24; else, as
+                             trainer=True, gym=True, leader=bool(is_boss_battle) or trainer_class in ("GYM_LEADER", "CHAMPION", "ELITE_FOUR"))
+            if _own:                                                                              # before, the area's own: Kanto's custom Gyms)
+                try:
+                    bg_raw = pygame.image.load(_own).convert()
+                except Exception:
+                    bg_raw = None
+        else:   # (11-23: in a walked region, its own game's background first, the way that game picks it)
             _area = area_name or self.game.story_manager.current_area_key
             _trainer = bool(trainer_sprite or trainer_img_name)
             # (Orange 11-23: a Leader or Champion met through a story event - Rudy, Danny, Drake - takes the index's
