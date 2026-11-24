@@ -949,6 +949,24 @@ check(_c1_open and _s1_done and _c1_done,
       f"the Journal's Unown missions end: 'Ruins of Alph' once the Unown Report is yours ({_s1_done}), "
       f"'Unown Researcher' with five Unown forms ({_c1_open}, {_c1_done})")
 story.story_flags, story.inventory, story.pc_pokemon, story.player_team = _fl2, _inv2, _pc2, _tm2
+# after the title, Elm gives the two starters you didn't pick (Jordan 11-24; Dev Map clean-johto-main-unpicked-starters)
+_fl3, _tm3, _pc3, _bd3 = dict(story.story_flags), list(story.player_team), list(story.pc_pokemon), {k: list(v) for k, v in story.badges.items()}
+story.story_flags.update({"beat_johto_champion": True, "got_ss_ticket_elm": True, "starter_johto": 155, "received_starter_johto": True,
+                          "got_master_ball_elm": True, "got_everstone_elm": True, "elm_received_egg": True})
+story.story_flags.pop("got_unpicked_starters_johto", None)
+story.player_team = [mk(155)]
+g.walk_town_pos = g.walk_town_room = None
+story.current_area_key, story.last_area_key = "NEW_BARK_TOWN", "JOHTO_ROUTE_29"
+_nb = _CS(g); g.change_state(_nb); _tap_through(_nb)
+_in_and_talk(_nb, "lab"); _tap_through(_nb)
+_got3 = sorted(p.id for p in story.player_team + [q for q in story.pc_pokemon if q] if p and p.id in (152, 158))
+_once = story.story_flags.get("got_unpicked_starters_johto")
+_in_and_talk(_nb, "lab"); _tap_through(_nb)
+_again = sorted(p.id for p in story.player_team + [q for q in story.pc_pokemon if q] if p and p.id in (152, 158))
+check(_got3 == [152, 158] and _once and _again == _got3 and story.is_region_champion("JOHTO"),
+      f"Johto's Champion: Elm gives the two starters you didn't pick (picked Cyndaquil: {_got3}), once ({_again})")
+story.story_flags, story.player_team, story.pc_pokemon, story.badges = _fl3, _tm3, _pc3, _bd3
+g.walk_town_pos = g.walk_town_room = None
 # Johto's Battle Frontier draws HGSS's own Tower Pokemon (Dev Map clean-johto-main-frontier-gen4-pokemon)
 from src.world import frontier as _fr
 _g4 = _fr.data4(g).get("groups") or {}

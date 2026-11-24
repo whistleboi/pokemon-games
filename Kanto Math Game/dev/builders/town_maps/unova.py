@@ -246,6 +246,20 @@ ASPERTIA_SIGNS = {14: ["ASPERTIA CITY", "Where the sky feels close."], 15: ["You
 
 # --- the opening (B2W2's, Jordan 11-19): your house, Hugh, Bianca at the Outlook, the starter, Hugh's battle, the Center,
 #     Mom and Hugh's sister at its door. Each step sets a flag the next one waits on.
+# After the title (Jordan 11-24, card clean-unova-main-unpicked-starters): Juniper visits your home, as Black 2's does after the
+# Hall of Fame, with the two starters you didn't pick (Tepig's family has no other way in), one after the other.
+_OTHER = {"495": (498, 501), "498": (495, 501), "501": (495, 498)}
+JUNIPER_STARTERS = [
+    {"text": "Professor Juniper", "action": "EVENT", "_look": "sheet:b2_juniper.png",
+     "condition": ["beat_unova_champion", "not:b2_juniper_starter_%d" % k] + (["b2_juniper_starter_1"] if k == 2 else []),
+     "event": {"lines": (["Professor Juniper: Congratulations, Champion! I came all the way to Aspertia to see you.",
+                          "Professor Juniper: You and your partner have come so far. The other two who were waiting with it "
+                          "have been waiting for a Trainer, too. Would you take them?"] if k == 1 else
+                         ["Professor Juniper: And here's the other one. Raise them both well!"]),
+               "gift_pokemon": {**{s_: o[k - 1] for s_, o in _OTHER.items()}, "default": (498, 501)[k - 1]}, "gift_level": 5, "flag": "b2_juniper_starter_%d" % k}}
+    for k in (1, 2)] + [
+    _say("Professor Juniper ", "Professor Juniper: All three Unova partners, with one Trainer! I can't wait to see what you do next.",
+         condition=["b2_juniper_starter_2"], _look="sheet:b2_juniper.png")]
 HOME_SCENES = [
     {"who": "Mom", "trigger": {"zone": [1, 7, 9, 9]}, "condition": "not:b2_mom_talk", "flag": "b2_mom_talk", "approach": True,
      "lines": ["Mom: Off out, {player_name}? Wait, you'll want to hear this first!",
@@ -337,7 +351,8 @@ GATE_SCENES = [
 ASPERTIA = town(
     427, ASPERTIA_PEOPLE, ASPERTIA_SIGNS, ASPERTIA_DOORS, rooms={
         "home": room(428, {0: [_say("Mom", "Mom: Look for a big green hat! Bianca can't be far.", flag_condition="not received_starter_unova"),
-                               _say("Mom ", "Mom: Your partner looks happy. Go on, the world's waiting!", flag_condition="received_starter_unova")]},
+                               _say("Mom ", "Mom: Your partner looks happy. Go on, the world's waiting!", flag_condition="received_starter_unova")],
+                          1: JUNIPER_STARTERS},
                      {}, (15, 57), scenes=HOME_SCENES),
         "hugh": room(429, {0: _say("{rival_name}'s mom", "{rival_name}'s mom: Honestly, I'd rather my son stayed home.",
                                    "{rival_name}'s mom: But what parent doesn't want to see their child grow?"),
@@ -6494,6 +6509,317 @@ ROUTE_21["barred"] = [{"tiles": [[32, 49]], "until": {"flag_condition": "b2_frig
 ROUTE_21["gated_exits"] = {"PLASMA_FRIGATE": ["b2_frigate2_open"]}
 
 
+# ======================================================================================================== batch 9b-2 (11-24)
+# The Giant Chasm: the outer cave (231: GIANT_CHASM; Rood's spy sends the Grunts off; the Route 23 mouth held by two Grunts
+# till the story's done), the crater forest (GIANT_CHASM_FOREST: 232, and 233 while the frigate's docked there: Rood's former
+# Plasma against the new, a double battle with Hugh), the inner cave (GIANT_CHASM_CAVE: 234; its deepest room 604: Ghetsis,
+# N on {legend}, the fused {kyurem}, Ghetsis's battle). The frigate docked in the crater (PLASMA_FRIGATE's story map while
+# b2_frigate2_done and not b2_chasm_done): the deck 562 (Hugh holds the Grunts off), the stern 554, Kyurem's room 561 (Black 2:
+# four red switches) / 564 (White 2: the Plasma Card and the password), the Control Room 555 (Colress), Ghetsis's room 557
+# (the Shadow Triad; Hugh's sister's Liepard), whose hatch lets out into the forest.
+# Flags: b2_frigate2_done -> b2_chasm_spy -> b2_chasm_rood -> b2_fk_1..4 / b2_fk_password -> b2_f3_zinzolin ->
+# b2_colress_beaten -> b2_f3_ghetsis -> b2_shadow_1..3 -> b2_liepard_back -> b2_chasm_ghetsis -> b2_kyurem_fused ->
+# b2_ghetsis_beaten -> b2_chasm_done (+ b2_opelucid_thawed: Opelucid, Routes 9 and 11 thaw; Route 23 opens).
+_F3 = ["b2_frigate2_done", "not:b2_chasm_done"]
+OUTSIDE.update({554: 562, 557: -1, 561: -1, 564: -1, 555: -1, 604: 234})
+_KYUREM_ROOM_B2 = {2: 430, 3: 431, 4: 432, 5: 433, 7: 434, 6: 435, 1: 438, 0: 439, 19: 808, 20: 810, 21: 811}
+_KYUREM_ROOM_W2 = {4: 452, 5: 453, 19: 811}
+_W2_CLUES = [(0, 445), (1, 446), (2, 447), (3, 448), (7, 449)]
+
+
+def _prize(tid, **items):
+    """A battle's own rewards plus a gift after it (an event's battle ends the event: Rood's Max Revives, Colress's Master Ball)."""
+    return {**(_b2(tid).get("rewards") or {}), **items}
+
+
+def _f3_rooms(w2):
+    kz = 564 if w2 else 561
+    stern = room(554, {0: _b2_battle("Plasma Grunt", 807, "b2_f3_g807", ["Team Plasma: Intruders at the stern!"],
+                                     ["Team Plasma: Tch!"], ["Team Plasma: The warp panel leads to the heart of the ship."]),
+                       1: _b2_battle("Plasma Grunt ", 809, "b2_f3_g809", ["Team Plasma: You won't reach Kyurem!"],
+                                     ["Team Plasma: Too strong..."], ["Team Plasma: Go on, then..."])}, {}, (32, 49))
+    stern["title"] = "Plasma Frigate"
+    stern["links"] = {"10,5": ["kyurem", 15, 22]}
+    cage = [9, 16, 18, 17] if not w2 else [11, 16, 18, 17]
+    kpeople = {8: _say("Kyurem in its cage", "Haahra...", _look="mon:646"),
+               (11 if not w2 else 9): _say("Spy", "Former Team Plasma: Remember me? I'm Rood's spy! " + (
+                   "Step on the four red switches in the pipes below to drop the barrier!" if not w2 else
+                   "You need the Plasma Card and the whole password to drop the barrier. Five Grunts each know a part."))}
+    for k, n in enumerate(cage):
+        kpeople[n] = _say("Grunt by the cage" + " " * k, ("Team Plasma: Kyurem's power will freeze all of Unova!",
+                                                          "Team Plasma: Don't come any closer to Kyurem!",
+                                                          "Team Plasma: The DNA Splicers are ready...",
+                                                          "Team Plasma: Lord Ghetsis will be pleased.")[k])
+    for k, (n, tid) in enumerate(sorted((_KYUREM_ROOM_W2 if w2 else _KYUREM_ROOM_B2).items())):
+        who = "Doctor" if tid == 811 else "Plasma Grunt"
+        kpeople[n] = _b2_battle(who + " " * (k + 2), tid, "b2_fk_t%d" % tid,
+                                ["Doctor: I treat Team Plasma's Pokemon. ...But first, a battle!"] if tid == 811 else
+                                ["Team Plasma: You won't get past the pipes!"],
+                                ["Doctor: Hm. Your Pokemon are healthy."] if tid == 811 else ["Team Plasma: Plasmaaa..."],
+                                ["Doctor: Kyurem is weakened... It isn't right."] if tid == 811 else
+                                ["Team Plasma: Kyurem is at the top of the ship."])
+    if w2:
+        kpeople[6] = {"text": "Grunt with the Plasma Card", "action": "EVENT", "event": {
+            "lines": ["Team Plasma: I have the Plasma Card! You want it, don't you? Battle me!"],
+            "battle": _b2(454), "flag": "b2_fk_card",
+            "done": ["Team Plasma: Fine, keep the card. You still need the password, and I'm not telling!"]}}
+        for k, (n, tid) in enumerate(_W2_CLUES, 1):
+            kpeople[n] = {"text": "Plasma Grunt" + " " * (k + 20), "action": "EVENT", "event": {
+                "lines": ["Team Plasma: The password? You'll have to beat it out of me!"], "battle": _b2(tid),
+                "flag": "b2_fk_clue_%d" % k,
+                "done": ["Team Plasma: Fine... part %d of the password is... (You noted it down.)" % k]}}
+    items = ({12: ("ZINC", "a Zinc"), 15: ("POWER_BELT", "a Power Belt"), 13: ("MAX_ELIXIR", "a Max Elixir"),
+              14: ("MAX_REVIVE", "a Max Revive")} if w2 else
+             {12: ("ZINC", "a Zinc"), 15: ("POWER_BAND", "a Power Band"), 13: ("MAX_ELIXIR", "a Max Elixir"),
+              14: ("MAX_REVIVE", "a Max Revive")})
+    for n, (item, name) in items.items():
+        kpeople[n] = _ball("Poke Ball in the pipes" + " " * n, item, "b2_fk_" + item.lower(), name=name)
+    k3 = room(kz, kpeople, {}, (0, 0))
+    k3["title"] = "Plasma Frigate"
+    k3["links"] = {"26,10": ["control", 7, 13], "4,10": ["ghetsis", 9, 9], "15,21": ["stern", 10, 6]}
+    need = ["b2_fk_%d" % i for i in range(1, 5)] if not w2 else ["b2_fk_password"]
+    k3["barred"] = [{"tiles": [[x, 14] for x in range(13, 18)], "until": {"condition": need}, "look": "unseen",
+                     "lines": ["Be careful! The barriers are electrified!"]},
+                    {"tiles": [[4, 10]], "until": {"flag_condition": "b2_colress_beaten"}, "look": "unseen",
+                     "lines": ["The warp panel won't work yet. Something in the Control Room is keeping it off."]}]
+    sc = []
+    if not w2:
+        sc += [{"trigger": {"zone": [x, y, x, y]}, "condition": ["not:b2_fk_%d" % i], "flag": "b2_fk_%d" % i, "cast": [],
+                "call": ["You stepped on a red switch!", "Somewhere above, a barrier switched off."]}
+               for i, (x, y) in enumerate(((8, 44), (8, 51), (22, 44), (22, 51)), 1)]
+    else:
+        clues = ["b2_fk_clue_%d" % i for i in range(1, 6)]
+        sc += [{"trigger": {"zone": [13, 15, 17, 15]}, "condition": ["not:b2_fk_card"], "every": True, "cast": [],
+                "call": ["There is a device... It seems that a card key is necessary to enter a password."], "push": [0, 1]},
+               {"trigger": {"zone": [13, 15, 17, 15]}, "condition": ["b2_fk_card", {"any": ["not:" + c for c in clues]}],
+                "every": True, "cast": [], "call": ["You don't know the whole password yet. (Five Grunts on this floor each "
+                                                    "know a part.)"], "push": [0, 1]},
+               {"trigger": {"zone": [13, 15, 17, 15]}, "condition": ["b2_fk_card"] + clues + ["not:b2_fk_password"],
+                "flag": "b2_fk_password", "cast": [], "call": ["You entered the password with the Plasma Card...",
+                                                              "You succeeded in entering the password!",
+                                                              "All barriers were deactivated, and you can proceed now."]}]
+    sc.append({"trigger": {"zone": [13, 18, 17, 18]}, "condition": ["not:b2_f3_zinzolin"], "flag": "b2_f3_zinzolin_met",
+               "cast": [{"sheet": "b2_c302.png", "from": [15, 16], "to": [15, 17], "stay": True, "lines": [
+                   "Zinzolin: How did you get in here? You won't take Kyurem from us!",
+                   "Zinzolin: You don't have the sense to know when to quit. It's an act of mercy to end this now!"]}],
+               "event": {"flag": "b2_f3_zinzolin", "battle": _b2(497, dialogue={"player_won": [
+                   "Zinzolin: Beaten again?! No matter! Team Plasma will get the last laugh!",
+                   "Zinzolin: Kyurem's cage can't be opened from here. Only the Control Room can do that..."]})}})
+    k3["scenes"] = sc
+    control = room(555, {0: {"text": "Colress", "action": "EVENT", "condition": ["not:b2_colress_beaten"], "event": {
+        "lines": ["Colress: Welcome! I was asked by an acquaintance to help with his research: to bring out the entirety of "
+                  "Pokemon's potential! I don't care what it takes!",
+                  "Colress: Bonds between Pokemon and Trainers, or Team Plasma's merciless approach... Battle me, and show me "
+                  "which is right!"],
+        "battle": _b2(344, dialogue={"player_won": [
+            "Colress: So strong! You bring out your Pokemon's power with respect and love!",
+            "Colress: Whether Team Plasma wins or you win will decide how people and Pokemon should be. Here: I've switched "
+            "on the warp panel on the west side of Kyurem's prison.",
+            "Colress: And take this. I no longer need it."]}, rewards=_prize(344, MASTER_BALL=1)),
+        "flag": "b2_colress_beaten"}}}, {}, (0, 0))
+    control["title"] = "Control Room"
+    control["links"] = {"7,14": ["kyurem", 25, 12]}
+    shadows = {n: {"text": "Shadow Triad" + " " * k, "action": "EVENT", "condition": ["b2_f3_ghetsis", "not:b2_liepard_back"],
+                   "event": {"lines": [line], "battle": _b2(tid, dialogue={"player_won": [
+                       "Shadow Triad: Even if I lose, Lord Ghetsis simply has to win..."]}),
+                       "flag": "b2_shadow_%d" % k, "done": ["Shadow Triad: We swore loyalty to Lord Ghetsis, since he saved us."]}}
+               for k, (n, tid, line) in enumerate(((1, 348, "Shadow Triad: If you want to go any further, you'll have to get "
+                                                                "past us."),
+                                                   (3, 498, "Shadow Triad: I have no problem with you, but this is for Lord "
+                                                            "Ghetsis!"),
+                                                   (5, 499, "Shadow Triad: Can you defeat all three of us?")), 1)}
+    ghetsis = room(557, {**shadows, 2: _say("Liepard", "Liepard: Grrrrrr...", condition=["not:b2_liepard_back"])}, {}, (0, 0),
+                   exits_extra={233: ("w", "GIANT_CHASM_FOREST")}, scenes=[
+        {"trigger": "enter", "condition": ["not:b2_f3_ghetsis"], "flag": "b2_f3_ghetsis",
+         "cast": [{"sheet": "b2_c301.png", "from": [11, 2], "to": [11, 4], "stay": True, "lines": [
+             "???: That blasted Colress! This is how he repays me for making him the boss of Team Plasma's science?",
+             "Ghetsis: ...How fortunate for you. Few hear one of my speeches alone.",
+             "Ghetsis: Team Plasma will take Kyurem's true power to its limit and freeze Unova. The terrified people and "
+             "Pokemon will bow... to me!",
+             "Ghetsis: Kyurem is an empty being, the remnant left when the dragon split in two. It will be the vessel into "
+             "which my desires are poured!",
+             "Shadow Triad: Lord Ghetsis. Kyurem has been transferred!",
+             "Ghetsis: The era in which I rule Unova has arrived! I'll let you take care of this!"], "leave": [11, 0]},
+                  {"sheet": "b2_hugh.png", "from": [11, 15], "to": [10, 10], "stay": True, "lines": [
+                      "{rival_name}: Wait... You're one of the Shadow Triad. Tell me about the Purrloin stolen in Aspertia!",
+                      "Shadow Triad: I stole that Pokemon five years ago in Aspertia. Now it only listens to me. Such is the "
+                      "fate of Pokemon.",
+                      "Shadow Triad: You there! I won't let you interfere with Lord Ghetsis's plans!"]}]},
+        {"trigger": {"zone": [7, 8, 15, 15]}, "condition": ["b2_shadow_1", "b2_shadow_2", "b2_shadow_3", "not:b2_liepard_back"],
+         "flag": "b2_liepard_back",
+         "cast": [{"sheet": "b2_c182.png", "from": [11, 6], "to": "player", "stay": True, "lines": [
+             "Shadow Triad: No matter. All you can do now is watch Lord Ghetsis freeze Unova solid.",
+             "Shadow Triad: I'll return this Pokemon to you. I have no further need of it."], "leave": [11, 0]},
+                  {"sheet": "b2_hugh.png", "from": [11, 15], "to": "player", "stay": True, "lines": [
+                      "{rival_name}: My sister's Pokemon... it evolved into Liepard. But now it's glaring at me... Why?!",
+                      "{rival_name}: ...{player_name}. If we let Team Plasma do what they want, there'll be more sad "
+                      "Pokemon like Purrloin and Kyurem...",
+                      "{rival_name}: Let's go. Ghetsis went to the cave on the far side of the crater!"], "leave": [11, 17]}]}])
+    ghetsis["title"] = "Plasma Frigate"
+    ghetsis["links"] = {"8,9": ["kyurem", 4, 11]}
+    ghetsis["edge_to"] = {"%d,16" % x: [49, 64] for x in range(10, 13)}   # (its hatch: out into the forest below the ship)
+    return {"stern": stern, "kyurem": k3, "control": control, "ghetsis": ghetsis}
+
+
+def _frigate3(w2):
+    m = route(562, {4: _say("{rival_name}", "{rival_name}: I'll hold these guys off! Go on, find Kyurem!"),
+                    0: _say("Plasma Grunt", "Team Plasma: The ship's been boarded?!"),
+                    1: _say("Plasma Grunt ", "Team Plasma: Get them!"), 2: _say("Plasma Grunt  ", "Team Plasma: Plasmaaa!"),
+                    3: _say("Plasma Grunt   ", "Team Plasma: Hold the line!")},
+              {}, exits={"<": ("GIANT_CHASM_FOREST", [(22, y) for y in range(29, 32)])},
+              rooms=_f3_rooms(w2), inside={"32,49": "stern"}, title="Plasma Frigate")
+    _doors(m, m["inside"])
+    m["edge_to"] = {"22,%d" % y: [41, 48] for y in range(29, 32)}
+    return m
+
+
+FRIGATE["story_maps"] = list(FRIGATE.get("story_maps") or []) + [
+    {"when": ["unova_version:WHITE_2"] + _F3, "map": _frigate3(True)}, {"when": _F3, "map": _frigate3(False)}]
+
+# ------------------------------------------------------------------------------------------------- the Giant Chasm
+CHASM = route(
+    231, {12: _ball("Poke Ball by a boulder", "STAR_PIECE", "b2_gc_star_piece", name="a Star Piece"),
+          5: _ball("Poke Ball across the water", "TM135", "b2_gc_tm13", name="TM135 Ice Beam"),
+          4: _ball("Poke Ball in the south-west", "MAX_REPEL", "b2_gc_max_repel", name="a Max Repel"),
+          7: _say("Plasma Grunt", "Team Plasma: The area past here is important! Nobody gets by!", condition=["not:b2_chasm_done"]),
+          8: _say("Plasma Grunt ", "Team Plasma: How long does 'wait till everyone arrives' mean, exactly?",
+                  condition=["not:b2_chasm_done"])},
+    {},
+    exits={">": ("UNOVA_ROUTE_22", [(62, 12)]), "<": ("UNOVA_ROUTE_23", [(1, 22)]), "^": ("GIANT_CHASM_FOREST", [(23, 50)]),
+           "v": ("UNOVA_ROUTE_13", [(23, 62)])},
+    hidden={"15,58": "STAR_PIECE", "6,6": "ULTRA_BALL", "40,7": "ICE_GEM"},
+    scenes=[{"trigger": {"zone": [60, 36, 62, 38]}, "condition": ["b2_frigate2_done", "not:b2_chasm_spy"], "flag": "b2_chasm_spy",
+             "cast": [{"sheet": "b2_plasma_grunt_m.png", "from": [60, 39], "to": "player", "stay": True,
+                       "lines": ["Team Plasma: Halt! Nobody goes past here!"]},
+                      {"sheet": "b2_hugh.png", "from": [61, 26], "to": "player", "stay": True,
+                       "lines": ["{rival_name}: Out of the way, or we'll battle our way through!"]},
+                      {"sheet": "b2_plasma_grunt_m.png", "from": [60, 46], "to": [60, 41], "stay": True, "lines": [
+                          "Team Plasma: Hey, you two! Lord Ghetsis wants everyone back at the ship, right now!",
+                          "Team Plasma: Huh? Lord Ghetsis? Then let's go!",
+                          "...The last Grunt winks. He's Rood's spy! He sent the others away."], "leave": [60, 63]},
+                      {"as": 1, "lines": ["{rival_name}: Team Plasma's ship must be in the crater. Let's go!"],
+                       "leave": [23, 50]}]}],
+    title="Giant Chasm")
+for _x, _y in ((12, 4), (39, 4), (57, 53), (5, 56)):   # (Black 2's boulders, persons 1 3 2 0: Strength)
+    _put_char(CHASM, _x, _y, "b")
+for _x, _y in ((12, 5), (12, 6), (7, 56), (8, 56)):   # (the holes the boulders at (12, 4) and (5, 56) fill: the items' pockets)
+    _put_char(CHASM, _x, _y, ".")
+CHASM["gated_exits"] = {"UNOVA_ROUTE_23": ["b2_chasm_done"]}
+CHASM["barred"] = [{"tiles": [[1, 22]], "until": {"flag_condition": "b2_chasm_done"}, "look": "unseen",
+                    "lines": ["Team Plasma: Nobody gets by!"]}]
+
+
+def _forest(z, docked):
+    if docked:
+        people = {2: _say("Rood", "Rood: We'll keep Team Plasma busy! Find Kyurem, while you can!", condition=["b2_chasm_rood"]),
+                  0: _say("Former Plasma member", "Former Team Plasma: We're done with Ghetsis!"),
+                  1: _say("Former Plasma member ", "Former Team Plasma: Pokemon aren't tools!"),
+                  3: _say("Plasma Grunt by the trees", "Team Plasma: Traitors! Every one of you!"),
+                  13: _say("Plasma Grunt by the trees ", "Team Plasma: Rood's lot are everywhere!")}
+        for k, n in enumerate((7, 8, 12, 4, 5)):
+            people[n] = _say("Plasma Grunt" + " " * k, "Team Plasma: Shut up, old man! You betrayed us!",
+                             condition=["not:b2_chasm_rood"])
+        people.update({11: _ball("Poke Ball by the pond", "MOON_STONE", "b2_gc_moon_stone", name="a Moon Stone"),
+                       9: _ball("Poke Ball by the mound", "RAZOR_CLAW", "b2_gc_razor_claw", name="a Razor Claw"),
+                       10: _ball("Poke Ball in the far corner", "STAR_PIECE", "b2_gc_star_piece_2", name="a Star Piece")})
+    else:
+        people = {7: _say("Rood", "Rood: Team Plasma is no more. We'll live with Pokemon in our own way now."),
+                  8: _say("Former Plasma member", "Former Team Plasma: We'll look after the Pokemon Team Plasma took."),
+                  9: _say("Former Plasma member ", "Former Team Plasma: Thank you, Trainer."),
+                  0: _ball("Poke Ball in the forest", "CARBOS", "b2_gc_carbos", name="a Carbos"),
+                  1: _ball("Poke Ball by the trees", "SUN_STONE", "b2_gc_sun_stone", name="a Sun Stone"),
+                  3: _ball("Poke Ball in the grass", "TM054", "b2_gc_tm03", name="TM054 Psyshock"),
+                  2: _ball("Poke Ball in the east", "PP_UP", "b2_gc_pp_up", name="a PP Up"),
+                  4: _ball("Poke Ball by the pond", "MOON_STONE", "b2_gc_moon_stone", name="a Moon Stone"),
+                  5: _ball("Poke Ball by the mound", "RAZOR_CLAW", "b2_gc_razor_claw", name="a Razor Claw"),
+                  6: _ball("Poke Ball in the far corner", "STAR_PIECE", "b2_gc_star_piece_2", name="a Star Piece")}
+    exits = {"v": ("GIANT_CHASM", [(26, 78)]), "^": ("GIANT_CHASM_CAVE", [(62, 20)])}
+    if docked:
+        exits["f"] = ("PLASMA_FRIGATE", [(42, 48)])
+    scenes = None
+    if docked:
+        scenes = [{"trigger": {"zone": [25, 71, 27, 71]}, "condition": ["b2_chasm_spy", "not:b2_chasm_rood"],
+                   "flag": "b2_chasm_rood_met",
+                   "cast": [{"sheet": "b2_c191.png", "from": [26, 65], "to": [26, 67], "stay": True, "lines": [
+                       "Rood: Members of Team Plasma! What you're doing is wrong! Pokemon aren't tools!",
+                       "Team Plasma: Shut up, old man! You betrayed us!"]},
+                            {"sheet": "b2_hugh.png", "from": [26, 69], "to": "player", "stay": True, "lines": [
+                                "{rival_name}: Team Plasma! You're the ones we're after! {player_name}, let's go!"]}],
+                   "event": {"flag": "b2_chasm_rood",
+                             "battle": _b2(797, battle_options={"double": True, "partner": _HUGH_50,
+                                                                "second_trainer": _b2(440)}, rewards=_prize(797, MAX_REVIVE=3),
+                                           dialogue={"player_won": [
+                                               "Rood: Thank you! Take these Max Revives. We'll keep the others busy: go and "
+                                               "stop Ghetsis aboard the ship!",
+                                               "{rival_name}: I'll go in first and hold them off on the deck!"]})}}]
+    if docked:
+        m = route(z, people, {}, exits=exits, title="Giant Chasm", scenes=scenes)
+    else:
+        m = route(z, people, {}, exits=exits, title="Giant Chasm", rooms={"grotto": grotto_room(9, (28, 57))},
+                  inside={"28,57": "grotto"})   # (the Hidden Grotto by the forest: the file's sign 10804)
+        _doors(m, m["inside"])
+    _put_char(m, 40, 35, ".")   # (the trees meet only at a corner here, on one flat floor: the forest's north side, Carbos, Sun Stone)
+    return m
+
+
+FOREST = _forest(232, False)
+FOREST["story_maps"] = [{"when": ["b2_frigate2_done", "not:b2_chasm_done"], "map": _forest(233, True)}]
+
+DEEP_SCENE = [
+    {"trigger": {"zone": [11, 21, 15, 22]}, "condition": ["b2_liepard_back", "not:b2_chasm_ghetsis"], "flag": "b2_chasm_ghetsis",
+     "cast": [{"sheet": "b2_c301.png", "from": [13, 14], "to": [13, 15], "stay": True, "lines": [
+         "Ghetsis: The Giant Chasm! Here Kyurem's power resonates. Here it can cover all of Unova in ice!",
+         "Ghetsis: Kyurem, come!", "Haaahraaan!",
+         "Ghetsis: That look in your eyes reminds me of something unpleasant. Kyurem! Glaciate!"]},
+              {"sheet": "b2_c164.png", "from": [12, 8], "to": [12, 14], "stay": True, "lines": [
+                  "{legend}! Stop that ice!", "Ghetsis: So you came... N!",
+                  "N: {legend} told me Kyurem is suffering! I can't allow selfish humans to make Pokemon suffer! And I like "
+                  "Unova. It's the place that taught me how to live as a human.",
+                  "Ghetsis: Excellent! {legend} can break the ice... you've saved me the trouble of searching for it!",
+                  "Ghetsis: Behold the DNA Splicers! Kyurem! Absorb {legend}! Use Absofusion!",
+                  "N: ...! Pokemon could fuse together... I never would have believed it.",
+                  "Ghetsis: Come now, Trainer. Let's see if you can stop THIS Kyurem! Catching it is impossible: my cane "
+                  "disrupts every Poke Ball.",
+                  "N: I can hear {legend}'s voice! It says they can be separated again! Please save my friend, and all of "
+                  "Unova's Pokemon and people!"]}]},
+    {"trigger": {"zone": [11, 14, 15, 23]}, "condition": ["b2_ghetsis_beaten", "not:b2_chasm_done"], "flag": "b2_chasm_done",
+     "cast": [{"sheet": "b2_c164.png", "from": [12, 14], "to": "player", "stay": True, "lines": [
+         "N: Ghetsis... Pokemon aren't tools. They're friends, who care for us as we care for them.",
+         "The Shadow Triad took Ghetsis away. Team Plasma is finished.",
+         "N: The Pokemon League... I'd like you to go there. Something important is waiting for you. Farewell!"],
+               "leave": [12, 8]},
+              {"sheet": "b2_hugh.png", "from": [13, 43], "to": "player", "stay": True, "lines": [
+                  "{rival_name}: {player_name}! Is it over? ...Team Plasma's really finished!",
+                  "{rival_name}: The ice over Opelucid must be melting now. I'll head home with Liepard. Route 23 and the "
+                  "League are out the west side of the outer cave. Go get 'em!"], "leave": [13, 43]}],
+     "event": {"flag": "b2_opelucid_thawed"}}]
+_KYUREM_FUSED = [{"text": "Kyurem" + " " * i, "action": "BOSS", "color": "RED", "_look": "sheet:" + sheet,
+                  "condition": ["b2_chasm_ghetsis", "not:b2_kyurem_fused", "unova_version:" + v],
+                  "boss": {"id": 646, "name": name, "level": 55, "no_catch": True, "victory_flag": "b2_kyurem_fused", "form": form,
+                           "lines": ["%s: Bazzakyurom!" % name], "won": ["Kyurem and {legend} were separated! Kyurem vanished..."]}}
+                 for i, (v, name, sheet, form) in enumerate((("BLACK_2", "Black Kyurem", "b2_c353.png", "black"),
+                                                       ("WHITE_2", "White Kyurem", "b2_c354.png", "white")))]   # (Main's forms, 03f70187)
+_KYUREM_FUSED.append({"text": "Kyurem  ", "action": "BOSS", "color": "RED", "_look": "mon:646",   # (after the League: Black 2's Lv 70)
+                      "condition": ["beat_unova_champion", "not:GIANT_CHASM_boss_defeated"],
+                      "boss": {"id": 646, "name": "Kyurem", "level": 70, "victory_flag": "GIANT_CHASM_boss_defeated",
+                               "lines": ["Haaahraaan! Kyurem is back in the cold of the chasm!"]}})
+DEEP = room(604, {8: _KYUREM_FUSED,
+                  0: {"text": "Ghetsis", "action": "EVENT", "condition": ["b2_kyurem_fused", "not:b2_ghetsis_beaten"],
+                      "event": {"lines": ["Ghetsis: I can't believe it! The {kyurem} I went to all the trouble of preparing! "
+                                          "First, I'll take down this disgusting Trainer!"],
+                                "battle": _b2(345, dialogue={"player_won": ["Ghetsis: Impossible! Me... the one who will "
+                                                                            "rule the world..."]}),
+                                "flag": "b2_ghetsis_beaten"}},
+                  1: _say("N", "N: Please! Save {legend}!", condition=["b2_chasm_ghetsis", "not:b2_ghetsis_beaten"])},
+            {}, (16, 1), scenes=DEEP_SCENE)
+DEEP["title"] = "Giant Chasm"
+CHASM_CAVE = route(234, {}, {}, exits={"v": ("GIANT_CHASM_FOREST", [(16, 30)])}, rooms={"deep": DEEP},
+                   inside={"16,1": "deep"}, title="Giant Chasm")
+_doors(CHASM_CAVE, CHASM_CAVE["inside"])
+ROUTE_22["gated_exits"] = {}
+ROUTE_13["gated_exits"] = {}
+
+
 MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": FLOCCESY, "UNOVA_ROUTE_20": ROUTE_20,
         "FLOCCESY_RANCH_OUTSIDE": RANCH_OUTSIDE, "FLOCCESY_RANCH": RANCH, "PLEDGE_GROVE": PLEDGE_GROVE,
         "VIRBANK_CITY": VIRBANK, "VIRBANK_COMPLEX_OUTSIDE": COMPLEX_OUTSIDE, "VIRBANK_COMPLEX": COMPLEX, "POKESTAR_STUDIOS": POKESTAR,
@@ -6519,4 +6845,5 @@ MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": 
         "OPELUCID_CITY": OPELUCID,
         "UNOVA_ROUTE_9": ROUTE_9, "MARINE_TUBE": MARINE_TUBE_MAP,   # (batch 8b)
         "HUMILAU_CITY": HUMILAU, "UNOVA_ROUTE_22": ROUTE_22, "UNOVA_ROUTE_21": ROUTE_21, "SEASIDE_CAVE": SEASIDE,   # (batch 9a)
-        "SEASIDE_CAVE_B1F": SEASIDE_B1F}
+        "SEASIDE_CAVE_B1F": SEASIDE_B1F, "GIANT_CHASM": CHASM, "GIANT_CHASM_FOREST": FOREST,
+        "GIANT_CHASM_CAVE": CHASM_CAVE}

@@ -3467,3 +3467,15 @@ check(_got10["OMEGA_RUBY"][0] == ["Team Magma Grunt"] and _got10["ALPHA_SAPPHIRE
       and all(o["story"][0] == 0 and o["story"][1] >= 6 and o["delta"] == (6, 0) for _h, o in _got10.values())
       and "Team Aqua Grunts" not in _tm["HOENN_TEAM_HIDEOUT"]["floors"][0]["trainer_spots"],
       f"Team Hideout: one Poochyena group, your version's; the story grunts give way to the Delta Episode's six ({_got10})")
+
+# 11-24: after the title the Magma Hideout's door on Jagged Pass can be reached - the lookout grunt who stood in front of it
+# for good is gone once you're Champion (the hideout is the other team's then, HOENN.md #9)
+_f12 = dict(story.story_flags); _i12 = dict(story.inventory)
+story.story_flags["beat_hoenn_champion"] = True; story.inventory["MAGMA_EMBLEM"] = 1
+story.badges.setdefault("HOENN", []).extend([b for b in ("STONE", "KNUCKLE", "DYNAMO", "HEAT", "BALANCE", "FEATHER") if b not in story.badges.get("HOENN", [])])
+st = arrive("HOENN_JAGGED_PASS", "HOENN_MT_CHIMNEY")   # (down from Mt. Chimney: its ledges go down only, as Emerald's)
+_door = [t for t, v in st.run.floor.exits.items() if v == "HOENN_MAGMA_HIDEOUT"]
+_lk = [(m.x, m.y) for m in st.run.floor.movers if isinstance(m.payload, dict) and m.payload.get("text") == "Lookout grunt"]
+_way = st._step_route((st.run.index, *st.run.player), frozenset((st.run.index, *t) for t in _door), "x")
+check(_door and not _lk and _way is not None, f"Jagged Pass: after the title the Magma Hideout's door {_door} is reached down from Mt. Chimney (lookout gone: {_lk}; first step {_way})")
+story.story_flags.clear(); story.story_flags.update(_f12); story.inventory.clear(); story.inventory.update(_i12)

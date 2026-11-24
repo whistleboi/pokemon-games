@@ -84,9 +84,59 @@ def pokedex():
                           "ik": str(m.get("item") or "").lower().replace("_", "-"),
                           "t": [t.title() for t in m.get("types") or []],
                           "s": [(m.get("stats") or {}).get(x) for x in STATS]} for m in mega[str(pid)]]
+        fl = forms_of(pid, sp, ab, ls)
+        if fl:
+            e["forms"] = fl
         if e:
             out[pid] = e
     return out, ab
+
+
+REGIONAL = {"alolan": "Alolan form", "galarian": "Galarian form", "hisuian": "Hisuian form", "paldean": "Paldean form",
+            "pinkan": "Pinkan form (Orange Islands)", "valencia": "Valencia form (Orange Islands)"}
+_MS = None
+
+
+def forms_of(pid, sp, ab, ls):
+    """A species' other forms, as the game builds them (src/pokemon/loader.fetch_specific): FORM_MAP gives the name
+    and types; pokemon_movesets.json a form's own stats/types where it has an entry ("<id>_<form>" or the form's id);
+    species_data.json its abilities; pokemon_levels.json its own learnset. Shadow and Mega forms have their own pages."""
+    global _MS
+    if _MS is None:
+        _MS = load("pokemon_movesets.json")
+    base = _MS.get(str(pid)) or {}
+    out = []
+    for fid, m in sorted(F.FORMS.items(), key=lambda kv: int(kv[0]) if kv[0].isdigit() else 0):
+        if m.get("id") != pid or m.get("form") in ("shadow", "mega", None):
+            continue
+        form = m["form"]
+        ms = _MS.get(f"{pid}_{form.lower()}") or _MS.get(str(fid)) or {}
+        types = m.get("types") or ms.get("types") or base.get("types") or []
+        nm = F.fix(m.get("name") or form.title())
+        nm = " ".join(w if w[:1].isupper() or w in ("-",) else w.capitalize() for w in nm.split(" "))
+        f = {"id": int(fid), "n": nm, "k": REGIONAL.get(form, "Other form"), "t": [t.title() for t in types]}
+        if ms.get("stats"):
+            f["s"] = [ms["stats"].get(x) for x in STATS]
+        s = sp.get(str(fid)) or {}
+        if s.get("abilities"):
+            f["ab"] = [(ab.get(a) or {}).get("name") or a.title() for a in s["abilities"]]
+        if s.get("hidden"):
+            f["hab"] = (ab.get(s["hidden"]) or {}).get("name") or s["hidden"].title()
+        if ls.get(str(fid)):
+            f["ls"] = [[int(lv), mv] for lv, mv in ls[str(fid)]]
+        pic = os.path.join(F.A, "sprites", "pokemon", f"{fid}.png")
+        if os.path.exists(pic):
+            from io import BytesIO
+            from PIL import Image
+            im = Image.open(pic).convert("RGBA")
+            box = im.getbbox()
+            if box:
+                im = im.crop(box)
+            buf = BytesIO()
+            im.save(buf, "WEBP", lossless=True, method=6)
+            f["pic"] = "data:image/webp;base64," + base64.b64encode(buf.getvalue()).decode()
+        out.append(f)
+    return out
 
 
 def movedex():

@@ -93,6 +93,7 @@ ol.chapters li, ul.sides li { margin: .6em 0; } details.howto summary { cursor: 
 .mapdot span { display: none; position: absolute; left: 16px; top: -4px; white-space: nowrap; background: #000c; color: #fff; padding: 1px 6px; border-radius: 4px; font-size: 12px; }
 .mapdot:hover span, .mapdot:focus span { display: block; }
 .tcpics { display: flex; gap: 12px; flex-wrap: wrap; align-items: flex-end; margin: 8px 0 12px; } .tcpics img { image-rendering: pixelated; max-height: 96px; }
+.forms{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;margin:8px 0}.formcard{display:flex;gap:10px;align-items:flex-start;padding:8px;border:1px solid var(--line,#8884);border-radius:8px;min-width:0}.formcard img{width:64px;height:64px;object-fit:contain;image-rendering:pixelated;flex:none}.formcard details{margin-top:4px;font-size:13px}
 </style>
 
 <header class="bar"><div class="in">
@@ -246,6 +247,16 @@ function fillMore() {
     if (e.ev) facts.push(["EV yield", esc(e.ev)]);
     let h = facts.length ? `<div class="facts">${facts.map(([a, b]) => `<div><b>${a}</b>${b}</div>`).join("")}</div>` : "";
     if (e.mega) h += `<h3>Mega Evolution</h3>` + e.mega.map(m => `<p><b>${esc(m.n)}</b> (${m.t.map(t => `<span class="type">${esc(t)}</span>`).join("")}) with the ${itemLinkIf(m.ik.replace(/-/g, "_"), m.item)}. Base stats: ${m.s.map((v, i) => `${STAT[i]} ${v}`).join(", ")}. See <a href="#mechanic-mega-evolution">Mega Evolution</a>.</p>`).join("");
+    if (e.forms) {
+      const reg = e.forms.filter(f => f.k !== "Other form"), oth = e.forms.filter(f => f.k === "Other form");
+      const card = f => `<div class="formcard">${f.pic ? `<img src="${f.pic}" alt="${esc(f.n)}" loading="lazy">` : ""}<div><b>${esc(f.n)}</b> <span class="small">${esc(f.k)}</span><div class="types">${f.t.map(t => `<span class="type">${esc(t)}</span>`).join("")}</div>`
+        + `<div class="small">${f.s ? `Base stats: ${f.s.map((v, i) => `${STAT[i]} ${v}`).join(", ")}` : `Base stats: the same as ${esc(D.sp.species[mon.dataset.id].n)}'s`}`
+        + `${f.ab ? `<br>Ability: ${esc(f.ab.join(" or "))}${f.hab ? ` (hidden: ${esc(f.hab)})` : ""}` : ""}</div>`
+        + `${f.ls ? `<details><summary>Moves it learns by level</summary>${f.ls.map(([lv, k]) => `${lv <= 1 ? "Start" : "Lv. " + lv} ${moveLink(k)}`).join(" · ")}</details>` : ""}</div></div>`;
+      if (reg.length) h += `<h3 id="regional-forms">Regional forms</h3><div class="forms">${reg.map(card).join("")}</div>`;
+      if (oth.length) h += `<h3>Other forms</h3><div class="forms">${oth.map(card).join("")}</div>`;
+      if (reg.length || oth.length) h += `<p class="small">Where a form lives in the wild is in "Where to find it" below, marked with the form's name.</p>`;
+    }
     if (e.ls) h += frame("Moves it learns by level", ["Level", "Move", "Type", "Category"], e.ls.map(([lv, k]) => `<tr><td>${lv <= 1 ? "Start" : lv}</td><td>${moveLink(k)}</td><td>${D.sp.mv[k] ? esc(D.sp.mv[k][1]) : ""}</td><td>${D.sp.mv[k] ? esc(D.sp.mv[k][2]) : ""}</td></tr>`));
     if (e.tm) h += `<h3>TMs it can learn</h3><div class="chips">${e.tm.map(tm => { const mv = (D.sp.tms[tm] || [tm])[0]; return `<a href="#move-${slug(mv)}">${esc(tm)} ${esc(D.sp.mv[mv] ? D.sp.mv[mv][0] : mv)}</a>`; }).join("")}</div>`;
     mon.innerHTML = h;

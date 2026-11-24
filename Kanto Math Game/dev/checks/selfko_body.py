@@ -116,6 +116,7 @@ check(not any("defeated" in l or "whited" in l for l in seen) and any("XP" in l 
       f"...with another Pokemon left it's a win (XP, no loss: {seen[-2:]})")
 b = fresh(me=6, lv=60, foe_lv=5)
 b.player_hp = b.player_pokemon.current_hp = 1
+b.opponent_pokemon.moves = ["TAIL-WHIP"]   # (a wild Rattata can know Quick Attack, which would knock the 1-HP attacker out first)
 story.player_team = [b.player_pokemon]
 seen = turn(b, "DOUBLE-EDGE")
 check(not any("defeated" in l or "whited" in l for l in seen) and any("catch" in l for l in seen),

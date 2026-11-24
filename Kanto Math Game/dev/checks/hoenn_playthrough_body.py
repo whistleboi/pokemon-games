@@ -2130,7 +2130,7 @@ def _the_end():   # (the goal of the job being played: _got(GOAL); the story's o
     return "CHAMPION" if _got(GOAL) else None
 
 
-if ENDED == "CHAMPION" and os.environ.get("KPT_POST", "0") != "0":
+if ENDED == "CHAMPION" and os.environ.get("KPT_POST", "1") != "0":
     story.story_flags["move_offer_johto"] = story.story_flags["move_offer_kanto"] = True   # (the title's "where next?" already asked)
     _missions = g.loader.area_data.setdefault("JOURNAL_MISSIONS", [])
     for _id, _what, _fly, _steps, _flag in POST_JOBS:
@@ -2172,7 +2172,7 @@ TOUR_LEGS = [("FALLARBOR_TOWN", "HOENN_METEOR_FALLS", "Fallarbor down Route 114 
              ("VERDANTURF_TOWN", "HOENN_RUSTURF_TUNNEL", "Verdanturf into Rusturf Tunnel"),
              ("HOENN_ROUTE_111", "HOENN_DESERT_RUINS", "Route 111's desert to the Desert Ruins"),
              ("HOENN_ROUTE_111", "HOENN_MIRAGE_TOWER", "Route 111's desert to the Mirage Tower"),
-             ("HOENN_JAGGED_PASS", "HOENN_MAGMA_HIDEOUT", "Jagged Pass into the Magma Hideout (after the title)"),
+             ("HOENN_MT_CHIMNEY", "HOENN_MAGMA_HIDEOUT", "Mt. Chimney down Jagged Pass into the Magma Hideout (after the title)"),
              ("HOENN_ROUTE_120", "HOENN_SCORCHED_SLAB", "Route 120 to the Scorched Slab"),
              ("HOENN_ROUTE_120", "HOENN_ANCIENT_TOMB", "Route 120 to the Ancient Tomb"),
              ("LILYCOVE_CITY", "HOENN_SAFARI_ZONE", "Lilycove up Route 121 into the Safari Zone"),
@@ -2180,9 +2180,11 @@ TOUR_LEGS = [("FALLARBOR_TOWN", "HOENN_METEOR_FALLS", "Fallarbor down Route 114 
              ("HOENN_ROUTE_105", "HOENN_ISLAND_CAVE", "Route 105 to the Island Cave"),
              ("HOENN_ROUTE_108", "HOENN_ABANDONED_SHIP", "Route 108 to the Abandoned Ship"),
              ("PACIFIDLOG_TOWN", "HOENN_ROUTE_134", "Pacifidlog along Routes 132-134"),
-             ("HOENN_ROUTE_133", "HOENN_SEALED_CHAMBER", "Route 133 down Route 134's currents to the Sealed Chamber")]
+             ("HOENN_ROUTE_134", "HOENN_SEALED_CHAMBER", "Route 134's currents from Route 133 to the Sealed Chamber", (78, 30))]
+# (a leg's 4th item: the tile it starts on - Route 134 as you come in off Route 133's southern stretch, the current that
+#  runs past the Sealed Chamber's calm water; 11-24)
 TOUR = []
-if ENDED == "CHAMPION" and os.environ.get("KPT_TOUR", "0") != "0":
+if ENDED == "CHAMPION" and os.environ.get("KPT_TOUR", "1") != "0":
     story.inventory.setdefault("BICYCLE", 1)
     story.inventory.setdefault("MAGMA_EMBLEM", 1); story.story_flags.setdefault("regi_trio_awakened", True)
     story.story_flags["move_offer_johto"] = story.story_flags["move_offer_kanto"] = True   # (the title's "where next?" already asked)
@@ -2190,6 +2192,8 @@ if ENDED == "CHAMPION" and os.environ.get("KPT_TOUR", "0") != "0":
         STATE["mission"] = "tour"
         try:
             put_at(_a)
+            if _at and is_dun(g.current_state):   # (a leg that starts on its own tile: Route 134 off Route 133's southern stretch)
+                g.current_state.run.player = tuple(_at[0]); g.current_state.anim = 0
             _m, _ok, _n = {"id": "tour", "type": "SIDE", "text": _what, "target": _b}, False, 0
             for _n in range(90):
                 if _b == "VERMILLION_CITY" and type(g.current_state).__name__ in ("RivalSelectionState", "IntroSpeechState", "StarterSelectionState"):

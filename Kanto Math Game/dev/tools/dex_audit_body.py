@@ -22,7 +22,7 @@ except Exception:
     FOSSILS = {}
 FOSSIL_REGION = {138: "KANTO", 140: "KANTO", 142: "KANTO", 345: "HOENN", 347: "HOENN"}
 ROAMERS = {"JOHTO": [243, 244]}
-CODE_GIFTS = {"KANTO": {106: "Dojo (town_kanto.visit_dojo)", 107: "Dojo (town_kanto.visit_dojo)"}, "JOHTO": {133: "Bill's Eevee (town_johto.py)"}, "HOENN": {380: "Soaring: Latias", 381: "Soaring: Latios"}}   # (gifts written in code)
+CODE_GIFTS = {"KANTO": {106: "Dojo (town_kanto.visit_dojo)", 107: "Dojo (town_kanto.visit_dojo)"}, "JOHTO": {133: "Bill's Eevee (town_johto.py)", 152: "Elm, after the title: the two you didn't pick (town_story.visit_prof_elm)", 155: "Elm, after the title (the two you didn't pick)", 158: "Elm, after the title (the two you didn't pick)"}, "HOENN": {380: "Soaring: Latias", 381: "Soaring: Latios"}}   # (gifts written in code)
 from src.world import story_events as _se
 SE = _se.EVENTS
 
@@ -187,8 +187,8 @@ for region in regions:
                     got.setdefault(pid, set()).add(f"floor:{k}")
     for pid in ROAMERS.get(region, []):
         got.setdefault(pid, set()).add("roamer")
-    for pid in st.get("starters", []):
-        got.setdefault(int(pid), set()).add("starter")
+    starters = [int(x) for x in st.get("starters", [])]   # (one run gets ONE starter: they're added after the closure, one pick only;
+                                                          #  Kanto 11-24 - the two you didn't pick need another source)
     daycare = any('"DAYCARE"' in json.dumps(P[k]) for k in areas)
     have_items = set()
     for k in areas:
@@ -229,6 +229,20 @@ for region in regions:
                 for p in PRE.get(pid, ()):
                     if allowed(p) and p not in reach:
                         reach.add(p); got.setdefault(p, set()).add(f"breed:{I2N.get(pid, pid)}"); changed = True
+    # (the starter you pick: one family, given after everything else - the one a run is likeliest to lack; the others need their own way)
+    left = [s for s in starters if s not in reach]
+    pick = left[0] if left else None
+    unpicked = left[1:]
+    if pick is not None:
+        reach.add(pick); got.setdefault(pick, set()).add("starter (your pick)")
+        changed = True
+        while changed:
+            changed = False
+            for pid in list(reach):
+                for t in evo_targets(pid):
+                    it = (RULES.get(f"{pid}>{t}") or {}).get("item"); it = {"UP_GRADE": "UPGRADE"}.get(it, it)
+                    if (not it or it in have_items) and allowed(t) and t not in reach:
+                        reach.add(t); got.setdefault(t, set()).add(f"evolve:{I2N.get(pid, pid)}"); changed = True
     missing = sorted(dex - reach)
     print(f"===== {region}: dex {len(dex)} ({lo}-{hi} + {len(extra)} extra), {len(areas)} areas, Day Care {daycare}: "
           f"obtainable {len(dex & reach)}, MISSING {len(missing)}")
@@ -237,7 +251,10 @@ for region in regions:
         hint = ""
         if pre:
             hint = "evolves from " + ", ".join(f"{I2N.get(p, p)}#{p}{'(have)' if p in reach else ''}" for p in sorted(pre))
-        print(f"   #{pid:<4} {I2N.get(pid, '?'):14} {hint}{'  NEEDS ' + need_item[pid] + ' (not found in this region)' if pid in need_item else ''}")
+        print(f"   #{pid:<4} {I2N.get(pid, '?'):14} {hint}{'  NEEDS ' + need_item[pid] + ' (not found in this region)' if pid in need_item else ''}"
+              f"{'  (a starter you did not pick: no other source)' if pid in unpicked else ''}")
+    if len(left) > 1:
+        print(f"   starters: {len(left)} of {len(starters)} families come only as the starter - one run gets one, so {len(left) - 1} stay out")
     print("   only by evolving/breeding (no direct source):", len([p for p in dex & reach if p not in base]))
     # (11-19: everything this region offers, not only its dex - for the canon-vs-ours comparison: <scratch>/obtainable_<REGION>.json)
     every = set(base); changed = True

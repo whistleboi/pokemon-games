@@ -392,6 +392,22 @@ class TownStory:
             self.npc_dialogue = ClassicDialogueBox(Utils.get_full_dialogue_rect(self.game), msg, self.game.assets.fonts["med"], callback=self.end_npc_interaction)
             return
 
+        if (story.get_current_region() == "JOHTO" and story.is_region_champion("JOHTO")
+                and not story.story_flags.get("got_unpicked_starters_johto")):   # (Jordan 11-24: after the title, the two starters you
+            from src.world import story_events as _se                             #  didn't pick - as HGSS's Oak / ORAS's Birch give theirs)
+            starters = [152, 155, 158]
+            sid = story.story_flags.get("starter_johto")
+            if sid not in starters:   # (an older save without the flag: the family you have)
+                fam = {152: (152, 153, 154), 155: (155, 156, 157), 158: (158, 159, 160)}
+                mine = {p.id for p in list(story.player_team) + list(story.pc_pokemon) if p}
+                sid = next((s for s in starters if mine & set(fam[s])), None)
+            story.story_flags["got_unpicked_starters_johto"] = True
+            msg = ["Professor Elm: Oh, before you go! These two have been waiting here since the day you chose your partner.",
+                   "Professor Elm: They'd love a Champion to raise them. Please, take them both!"]
+            msg += [_se.gift_pokemon(self.game, s, level=5) for s in starters if s != sid][:2]
+            self.npc_dialogue = ClassicDialogueBox(Utils.get_full_dialogue_rect(self.game), msg, self.game.assets.fonts["med"], callback=self.end_npc_interaction)
+            return
+
         if story.inventory.get("MYSTERY_EGG", 0) > 0 and not story.story_flags.get("elm_received_egg"):
             msg = [
                 "Professor Elm: Oh! This is the Egg Mr. Pokémon found!",
