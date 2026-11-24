@@ -1334,6 +1334,30 @@ check(_wait and _in and "MINE" not in _hm, f"Canalave: Barry waits at the Librar
 story.story_flags.clear(); story.story_flags.update(_sv); story.badges["SINNOH"] = _bv
 story.inventory.clear(); story.inventory.update(_iv)
 
+# ---- S5 (11-24, the Journal's full playthrough): back from Iron Island you land on Canalave's dock, not a pocket by the boats
+t = town("CANALAVE_CITY", "IRON_ISLAND"); frames(t, 3)
+_seen, _todo = {tuple(t.player)}, [tuple(t.player)]
+while _todo:
+    _c = _todo.pop()
+    for _dx, _dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+        _n = (_c[0] + _dx, _c[1] + _dy)
+        if _n not in _seen and t._open(_n) and _n not in t.exits:
+            _seen.add(_n); _todo.append(_n)
+check((7, 28) in _seen and (13, 45) not in _seen, f"Canalave: off the Iron Island boat at {t.player}, the Gym's door can be walked to ({len(_seen)} tiles open)")
+
+# ---- S5 (11-24, the Journal's split-place step): in at Mt. Coronet's Route 211 side, its north part, sets coronet_north_side
+story.story_flags.pop("coronet_north_side", None)
+r = route("MT_CORONET_BASE", "SINNOH_ROUTE_211")
+for _ in range(120):
+    g.current_state.update()
+_f7 = getattr(getattr(r, "run", None), "index", None)
+check(_f7 == 7 and story.story_flags.get("coronet_north_side"), f"Mt. Coronet: in from Route 211 you're on its north side (floor {_f7}), and it's noted (coronet_north_side: {story.story_flags.get('coronet_north_side')})")
+story.story_flags.pop("coronet_north_side", None)
+r = route("MT_CORONET_BASE", "SINNOH_ROUTE_207")
+for _ in range(120):
+    g.current_state.update()
+check(not story.story_flags.get("coronet_north_side"), "Mt. Coronet: in from Route 207 (the south rooms) it isn't")
+
 # ---- S5 (11-24): Route 213's gatehouse is a room again, walked through (main a91de160: arrival by land or by sea)
 story.badges["SINNOH"] = ["COAL", "FOREST", "COBBLE", "FEN", "RELIC"]
 t = town("PASTORIA_CITY", "SINNOH_ROUTE_212"); frames(t, 3); _drive(t, 200, lambda: not t._busy())

@@ -244612,9 +244612,9 @@
    "eaaaeeQQQQeiooooooiekRRRReaaaeTT",
    "eaaaeeQQQQeiooooooiekRRRReaaaeTT",
    "eaaae!QDQQeiooooooiekRDRReaaaeTT",
-   "eaaaeeeeeeeeu|ooooieeeeeeeNaaeTT",
-   "eaaaeeeeeeeew|ooooiaaaaaaaaaaeTT",
-   "eeeeeeeeeeee^|oooolaaaaaaaaaaeTT",
+   "eaaaeeeeeeeeuTooooieeeeeeeNaaeTT",
+   "eaaaeeeeeeeewTooooiaaaaaaaaaaeTT",
+   "eeeeeeeeeeee^ToooolaaaaaaaaaaeTT",
    "eeeeeeeee!eiooooooiaaaaaaaaaae..",
    "eeeeeeeeeeSiooooooieeeeeeeaaae..",
    "eeeeeeeeeeeiooooooieee!eeeaaae.n",
@@ -316601,6 +316601,13 @@
      "ICE HEAL",
      "ESCAPE ROPE ",
      "TM078"
+    ],
+    "scenes": [
+     {
+      "trigger": "enter",
+      "cast": [],
+      "flag": "coronet_north_side"
+     }
     ]
    },
    {

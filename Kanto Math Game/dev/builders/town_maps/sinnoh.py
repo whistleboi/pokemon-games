@@ -1359,9 +1359,9 @@ MAPS = {
             "eaaaeeQQQQeiooooooiekRRRReaaaeTT",
             "eaaaeeQQQQeiooooooiekRRRReaaaeTT",
             "eaaae!QDQQeiooooooiekRDRReaaaeTT",
-            "eaaaeeeeeeeeu|ooooieeeeeeeNaaeTT",
-            "eaaaeeeeeeeew|ooooiaaaaaaaaaaeTT",
-            "eeeeeeeeeeee^|oooolaaaaaaaaaaeTT",
+            "eaaaeeeeeeeeuTooooieeeeeeeNaaeTT",
+            "eaaaeeeeeeeewTooooiaaaaaaaaaaeTT",
+            "eeeeeeeeeeee^ToooolaaaaaaaaaaeTT",
             "eeeeeeeee!eiooooooiaaaaaaaaaae..",
             "eeeeeeeeeeSiooooooieeeeeeeaaae..",
             "eeeeeeeeeeeiooooooieee!eeeaaae.n",
@@ -5716,6 +5716,7 @@ MAPS = {
                 "roofs": {"_look": {"floor": [82, 82, 115], "wall": [57, 65, 82]}, "_picture": {"f": "pt_ground/D05R0112.png", "at": [0, 7]}},
                 "hidden": {"14,2": "RED_SHARD", "23,28": "STAR_PIECE", "15,31": "STARDUST", "4,34": "ENERGY_POWDER", "12,52": "NUGGET"},
                 "people": ["RARE CANDY", "TM282", "ICE HEAL", "ESCAPE ROPE ", "TM078"],
+                "scenes": [{"trigger": "enter", "cast": [], "flag": "coronet_north_side"}],
             },
             {
                 "art": [
