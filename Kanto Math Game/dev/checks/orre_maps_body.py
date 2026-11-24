@@ -771,6 +771,32 @@ check("door:fuji" in (_fuji.get("people") or []) and not _w0 and len(_w1) == 3 a
 for _f in ("beat_orre_champion", "orre_mewtwo_fled"):
     story.story_flags.pop(_f, None)
 
+# ---- S6c (11-24): the Battle Frontier's Battle Tower after the League - three endless streaks (Jordan's pick 10b)
+from src.world import frontier as _fr, battle_points as _bpm
+story.story_flags["beat_orre_champion"] = True
+t = town("REALGAM_TOWER", "PHENAC_CITY")
+_ride = any(o.get("target_area") == "ORRE_BATTLE_FRONTIER" for o in t._door_options("cycle"))
+r, _bf = _figs("ORRE_BATTLE_FRONTIER", "REALGAM_TOWER")
+_att = {"ENDLESS CHALLENGE", "2-ON-2 CHALLENGE", "LITTLE CUP CHALLENGE", "LITTLE CUP SELLER", "MOVE TUTOR (TOWER)", "BP EXCHANGE"} <= set(_bf)
+_t1, _t2, _t3 = (_fr.next_trainer(g, f) for f in ("otower", "otower2", "olc"))
+_shape = (len(_t1["team"]), _t1["levels"][0], len(_t2["team"]), bool(_t2.get("double")), len(_t3["team"]), _t3["levels"][0])
+_lc = _fr.lc_pool(g)
+_rules = (_fr.rule_problem(g, "otower"), bool(_fr.rule_problem(g, "otower2")) == (len([p for p in story.player_team if p]) != 2),
+          bool(_fr.rule_problem(g, "olc")))
+story.story_flags.pop("frontier_otower_wins", None); story.story_flags.pop("frontier_otower_best", None)
+_bp0 = _bpm.bp(story)
+_fr.after_battle(g, "otower", True); _fr.after_battle(g, "otower", True)
+_won2 = (_fr.wins(g, "otower"), _fr.best(g, "otower"), _bpm.bp(story) - _bp0)
+_fr.after_battle(g, "otower", False)
+_lost = (_fr.wins(g, "otower"), _fr.best(g, "otower"))
+check(_ride and _att and _shape == (3, 50, 2, True, 3, 5) and len(_lc) > 50 and 1 in _lc and 2 not in _lc and 144 not in _lc
+      and _rules[0] is None and _rules[1] and _rules[2] and _won2 == (2, 2, 2) and _lost == (0, 2),
+      f"S6c: the Battle Frontier by bike after the League - its tower's endless singles (Lv 50), 2-on-2 (doubles), Little Cup (Lv 5, "
+      f"{len(_lc)} first forms), the seller, tutor and BP counter; a streak pays BP and keeps its best {_shape} {_won2} {_lost} {_ride} {_att} {_rules}")
+for _f in ("beat_orre_champion", "frontier_otower_wins", "frontier_otower_best"):
+    story.story_flags.pop(_f, None)
+_bpm.add_bp(story, -(_bpm.bp(story) - _bp0))
+
 
 
 g.walk_towns = False

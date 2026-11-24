@@ -845276,5 +845276,274 @@
    "RED GYARADOS": 0
   },
   "theme": "tunnel"
+ },
+ "ORRE_BATTLE_FRONTIER": {
+  "floors": [
+   {
+    "art": [
+     "cccccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc",
+     "ccc..ccccccccccccccccccccccccccc",
+     "ccc..ccccccccccccccccccccccccccc",
+     "ccc..ccccccccccccccccccccccccccc",
+     "ccc..cccccccccccccc1cccccccccccc",
+     "ccc..cccccccccc..c.......c....cc",
+     "ccc..ccccccccc................cc",
+     "ccc..ccccccccc................cc",
+     "ccc..cc1cccc1c.........N......cc",
+     "<.............................cc",
+     "<.............................cc",
+     "<.............................cc",
+     "<..............................c",
+     "ccc......................ccccccc",
+     "cccc.....................ccccccc",
+     "ccccc..N...............ccccccccc",
+     "cccccc.................ccccccccc",
+     "ccccccc.....cccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccccc"
+    ],
+    "exits": {
+     "<": "REALGAM_TOWER"
+    },
+    "links": {
+     "7,9": [
+      1,
+      7,
+      9
+     ],
+     "12,9": [
+      2,
+      4,
+      8
+     ],
+     "19,5": [
+      3,
+      4,
+      13
+     ]
+    },
+    "parts": true,
+    "people": [
+     "Ace Trainer",
+     "Cooltrainer"
+    ],
+    "trainer_spots": [],
+    "roofs": {
+     "_picture": {
+      "f": "orre_ground/239.png",
+      "at": [
+       0,
+       4
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "orre_top/239.png",
+      "at": [
+       0,
+       4
+      ],
+      "size": [
+       32,
+       20
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccccccc",
+     "cccccccccccccccc",
+     "cc..cccNccc...cc",
+     "....cccmccc....c",
+     "...............c",
+     "...............c",
+     "..cc.......cc..c",
+     "..cc.......cc..c",
+     "...............c",
+     "ccccccc1cccccccc",
+     "cccccccccccccccc"
+    ],
+    "exits": {},
+    "links": {
+     "7,9": [
+      0,
+      7,
+      9
+     ]
+    },
+    "parts": true,
+    "people": [
+     "NURSE (FRONTIER)"
+    ],
+    "trainer_spots": [],
+    "roofs": {
+     "_picture": {
+      "f": "orre_ground/240.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "orre_top/240.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       16,
+       11
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccc",
+     "cccccccccccc",
+     "cccc......cc",
+     "ccNm.......c",
+     "ccmc...cmccc",
+     ".......mNccc",
+     ".cc....ccccc",
+     ".......ccccc",
+     "cccc1ccccccc",
+     "cccccccccccc"
+    ],
+    "exits": {},
+    "links": {
+     "4,8": [
+      0,
+      12,
+      9
+     ]
+    },
+    "parts": true,
+    "people": [
+     "BP EXCHANGE",
+     "BP EXCHANGE (TMS)"
+    ],
+    "trainer_spots": [],
+    "roofs": {
+     "_picture": {
+      "f": "orre_ground/241.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "orre_top/241.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       12,
+       10
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "ccccccccccccccccccccccccccccc",
+     "ccccccccccc.cccccc.cccccc.ccc",
+     "ccccccccc.....cc.....cc.....c",
+     "cccccccccccNccccccNccccccNccc",
+     "ccccccccc.....cc....NccN....c",
+     "ccccccccc.....cc.....cc.....c",
+     "ccccccccc.....cc.....cc.....c",
+     "cccccNccc......N............c",
+     "cccccmcc....................c",
+     "............................c",
+     "............................c",
+     "............................c",
+     "............................c",
+     "cccc1cccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccccc"
+    ],
+    "exits": {},
+    "links": {
+     "4,13": [
+      0,
+      19,
+      5
+     ]
+    },
+    "parts": true,
+    "people": [
+     "2-ON-2 CHALLENGE",
+     "ENDLESS CHALLENGE",
+     "LITTLE CUP CHALLENGE",
+     "RECORD BOARD",
+     "LITTLE CUP SELLER",
+     "NURSE (TOWER)",
+     "MOVE TUTOR (TOWER)"
+    ],
+    "trainer_spots": [],
+    "roofs": {
+     "_picture": {
+      "f": "orre_ground/242.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "orre_top/242.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       29,
+       15
+      ]
+     }
+    ]
+   }
+  ],
+  "floor_names": [
+   "Battle Frontier",
+   "Pokemon Center",
+   "BP Exchange",
+   "Battle Tower"
+  ],
+  "figure_floors": {
+   "Ace Trainer": 0,
+   "Cooltrainer": 0,
+   "NURSE (FRONTIER)": 1,
+   "BP EXCHANGE": 2,
+   "BP EXCHANGE (TMS)": 2,
+   "NURSE (TOWER)": 3,
+   "ENDLESS CHALLENGE": 3,
+   "2-ON-2 CHALLENGE": 3,
+   "LITTLE CUP CHALLENGE": 3,
+   "LITTLE CUP SELLER": 3,
+   "MOVE TUTOR (TOWER)": 3,
+   "RECORD BOARD": 3
+  },
+  "theme": "tunnel"
  }
 }

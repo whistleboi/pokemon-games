@@ -773,6 +773,10 @@ class RouteEncounters:
         """A Battle Frontier facility's attendant: the streak's next battle (src/world/frontier.py)."""
         from src.world import frontier
         fac = item.get("facility")
+        problem = frontier.rule_problem(self.game, fac)   # (a facility's entry rule: Orre's 2-on-2, Little Cup)
+        if problem:
+            (self.say if hasattr(self, "say") else self.show_dialogue)(problem, lambda: None)
+            return
         frontier.heal(self.game)
         info = frontier.next_trainer(self.game, fac)
 
