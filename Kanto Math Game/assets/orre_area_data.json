@@ -69,12 +69,6 @@
           ]
         },
         {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
-        },
-        {
           "text": "Pyrite Town",
           "action": "EXIT",
           "target_area": "PYRITE_TOWN",
@@ -1315,12 +1309,6 @@
           ]
         },
         {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
-        },
-        {
           "text": "Miror B. Peon Reath",
           "action": "EVENT",
           "color": "GOLD",
@@ -2386,12 +2374,6 @@
             "shadows_cleared",
             "orre_miror_cave"
           ]
-        },
-        {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
         },
         {
           "text": "Cipher Peon Mirakle B.",
@@ -8453,12 +8435,6 @@
           ]
         },
         {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
-        },
-        {
           "text": "DAKIM ATTACKS MT. BATTLE",
           "action": "EVENT",
           "color": "GOLD",
@@ -9275,12 +9251,6 @@
             "shadows_cleared",
             "cleared_the_under"
           ]
-        },
-        {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
         },
         {
           "text": "SHUT DOWN THE UNDER",
@@ -10607,12 +10577,6 @@
             "shadows_cleared",
             "orre_ein_lab"
           ]
-        },
-        {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
         },
         {
           "text": "SHADOW POKEMON LAB: EIN",
@@ -12385,12 +12349,6 @@
           ]
         },
         {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
-        },
-        {
           "text": "CIPHER PEON NAPS",
           "action": "EVENT",
           "color": "GOLD",
@@ -12839,12 +12797,6 @@
             "got_snag_machine",
             "shadows_cleared"
           ]
-        },
-        {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
         },
         {
           "text": "Gateon Port",
@@ -13431,12 +13383,6 @@
             "shadows_cleared",
             "xd_exol_beaten"
           ]
-        },
-        {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
         },
         {
           "text": "BATTLE CIPHER CMDR EXOL",
@@ -14136,12 +14082,6 @@
             "shadows_cleared",
             "orre_snattle_phenac"
           ]
-        },
-        {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
         },
         {
           "text": "COOLTRAINER BOTAN",
@@ -15295,12 +15235,6 @@
             "shadows_cleared",
             "orre_part2"
           ]
-        },
-        {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
         },
         {
           "text": "GYM LEADER PRYCE",
@@ -16665,12 +16599,6 @@
             "shadows_cleared",
             "xd_gorigan_beaten"
           ]
-        },
-        {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
         },
         {
           "text": "THUG ZOOK",
@@ -18148,12 +18076,6 @@
             "shadows_cleared",
             "orre_part2"
           ]
-        },
-        {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
         },
         {
           "text": "READ CIPHER'S FILES",
@@ -20958,12 +20880,6 @@
             "shadows_cleared",
             "xd_greevil_beaten"
           ]
-        },
-        {
-          "text": "BATTLE TRAINER",
-          "action": "TRAINER",
-          "condition": "has_trainers",
-          "color": "GREEN"
         },
         {
           "text": "NAVIGATOR AT THE DOCK",
