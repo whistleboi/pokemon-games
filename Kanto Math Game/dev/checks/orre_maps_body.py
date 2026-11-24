@@ -328,7 +328,7 @@ def _gate_room(t, room):
 
 
 _isl = {n: tuple(int(v) for v in d.split(",")) for d, n in _tm["GATEON_PORT"]["inside"].items()}
-for _f in ("xd_gateon_bridges", "beat_orre_champion"):
+for _f in ("xd_gateon_bridges", "orre_part2"):
     story.story_flags.pop(_f, None)
 t = town("GATEON_PORT", "PHENAC_CITY")
 check(len(t.barred) == 48 and path(t, tuple(t.player), _isl["lighthouse"]) is None,
@@ -341,10 +341,10 @@ check(not t.barred and all(_ok.values()) and _cyle, f"Gateon: the bridges down a
 _up = walk_to(t, _isl["lighthouse"]) and t.room == "lighthouse" and _gate_room(t, "lighthouse_2f") and _gate_room(t, "lighthouse_3f")     and _gate_room(t, "lighthouse_roof")
 _who = sorted(p.get("text") for p in t.people.values() if isinstance(p, dict) and t._shown(p)) if _up else []
 check(_up and "Bodybuilder Kilen" in _who and "Gym Leader Jasmine" not in _who,
-      f"Gateon lighthouse: up all three stairs to the roof before the title, Kilen there, no Jasmine yet ({_who})")
-story.story_flags["beat_orre_champion"] = True
+      f"Gateon lighthouse: up all three stairs to the roof (bridges down, no Gym yet), Kilen there, no Jasmine yet ({_who})")
+story.story_flags["orre_part2"] = True   # (the lighthouse Gym: Part 2, story rework S1; badge 5 in S3)
 t = town("GATEON_PORT", "PHENAC_CITY")
-if g.current_state is not t:   # (the first town after the title offers the next region: back into Gateon)
+if g.current_state is not t:
     t = town("GATEON_PORT", "PHENAC_CITY")
 _in = walk_to(t, _isl["lighthouse"]) and t.room == "lighthouse"
 _held = _in and not _gate_room(t, "lighthouse_2f")
@@ -352,8 +352,52 @@ story.story_flags.update(gateon_lh_electabuzz=True, gateon_lh_electrode=True, ga
 t = town("GATEON_PORT", "PHENAC_CITY")
 _top = walk_to(t, _isl["lighthouse"]) and _gate_room(t, "lighthouse_2f") and _gate_room(t, "lighthouse_3f") and _gate_room(t, "lighthouse_roof")
 _jas = _top and any(isinstance(p, dict) and p.get("text") == "Gym Leader Jasmine" and t._shown(p) for p in t.people.values())
-check(_held and _jas, f"Gateon lighthouse after the title: the guardian holds the stairs ({_held}); past all three, Jasmine on the roof ({_jas})")
-for _f in ("xd_gateon_bridges", "beat_orre_champion", "gateon_lh_electabuzz", "gateon_lh_electrode", "gateon_lh_ampharos"):
+check(_held and _jas, f"Gateon lighthouse in Part 2: the guardian holds the stairs ({_held}); past all three, Jasmine on the roof ({_jas})")
+for _f in ("xd_gateon_bridges", "orre_part2", "gateon_lh_electabuzz", "gateon_lh_electrode", "gateon_lh_ampharos"):
+    story.story_flags.pop(_f, None)
+
+# ---- the story rework S1 (11-24): one journey - Colosseum, Evice, "five years later", XD. Gates by part, the time skip
+_P1 = ("orre_part2", "orre_data_rom_given", "orre_ein_lab", "orre_evice_beaten")
+for _f in _P1:
+    story.story_flags.pop(_f, None)
+t = town("PHENAC_CITY", "ORRE_DESERT")
+_rides = [o.get("target_area") for o in t._door_options("cycle")]
+_pre = [o.get("target_area") for o in t._door_options("pregym")]
+check("GATEON_PORT" not in _rides and "REALGAM_TOWER" not in _rides and "PRESTIGE_PRECEPT_CENTER" in _pre,
+      f"Part 1: no Gateon (XD) by bike, no Realgam before the Data ROM, the Pre Gym open ({_rides}, {_pre})")
+story.story_flags["orre_ein_lab"] = True
+t = town("PHENAC_CITY", "ORRE_DESERT")
+check("GATEON_PORT" not in [o.get("target_area") for o in t._door_options("cycle")], "Part 1: Ein's Lab beaten - still no Gateon (XD waits for the time skip)")
+story.story_flags["orre_data_rom_given"] = True
+t = town("PHENAC_CITY", "ORRE_DESERT")
+check("REALGAM_TOWER" in [o.get("target_area") for o in t._door_options("cycle")], "Part 1: the Data ROM to Nett opens Realgam Tower (Colosseum's order)")
+_rg = _json.load(open("assets/orre_area_data.json", encoding="utf-8"))["STORY_PROGRESSION"]["REALGAM_TOWER"]["gym"]
+from src.states.overworld.area_transition import is_league as _isl_league
+check(_rg["leader"]["victory_flag"] == "orre_evice_beaten" and not _isl_league(_rg) and _rg["leader"].get("music") == "orre/evice_battle",
+      "Realgam: Evice is Cipher's boss (no League, no title), his own battle theme")
+from src.world import orre_skip as _skip
+story.story_flags["orre_evice_beaten"] = True
+t = town("REALGAM_TOWER", "PHENAC_CITY")
+_said = []
+_skip.event(t, {"world": "orre_skip"}, ["The roof of Realgam Tower falls silent."], lambda l: _said.extend(l))
+_tap_through(t, 400)
+for _ in range(60):
+    if g.current_state is not t:
+        break
+    t.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=(640, 600))]); frames(t)
+_st = g.current_state
+_tap_through(_st, 800)
+check(story.story_flags.get("orre_part2") and story.current_area_key == "POKEMON_HQ_LAB" and isinstance(_st, _WTS),
+      f"the time skip: Evice beaten -> five years later, you arrive at the HQ Lab ({story.current_area_key}, {type(_st).__name__})")
+t = town("PHENAC_CITY", "POKEMON_HQ_LAB")
+check("GATEON_PORT" in [o.get("target_area") for o in t._door_options("cycle")], "Part 2: Gateon Port by bike after the skip")
+from src.states.systems import pda as _pda
+check(any(sub == "Please come" and "five years" in body for _frm, sub, body in _pda.mail(g)), "Part 2: Krane's e-mail after the skip")
+_txt = open("assets/orre_area_data.json", encoding="utf-8").read() + open("assets/town_maps.json", encoding="utf-8").read()
+import re as _re
+check(not _re.search(r"Wes", _txt) and "beat_orre_champion" not in open("assets/town_maps.json", encoding="utf-8").read(),
+      "the player by their own name (no 'Wes' left in Orre's lines); no map waits on the old title")
+for _f in _P1:
     story.story_flags.pop(_f, None)
 
 g.walk_towns = False
