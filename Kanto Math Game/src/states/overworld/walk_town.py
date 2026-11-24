@@ -403,12 +403,12 @@ class WalkTownState(CityState):
             self.barred = {tuple(t): bar for bar in self._bar_list if not self._bar_met(bar) and self._bar_here(bar) for t in bar.get("tiles", [])}   # the Amber gone from its case)
             self.barred.update(self._rot_bars())
             self._refresh_picture()   # (and its picture: a quiz machine answered, a Cinnabar Gym gate drawn open)
-        if not getattr(self, "motions", None):
-            return
-        self._shown_homes = {h for h, o in self.people.items() if self._shown(o)}
-        shown = set(self._people())
+        motions = getattr(self, "motions", None) or {}   # (a room with nobody in it still plays its scenes: Black 2's Battle Subway
+        if motions:                                       #  car, empty till each Trainer walks in by an "enter" scene; Unova 11-23)
+            self._shown_homes = {h for h, o in self.people.items() if self._shown(o)}
+        shown = set(self._people()) if motions else set()
         _leads = None
-        for home, mo in self.motions.items():
+        for home, mo in motions.items():
             if mo.kind == "trail":   # (a Pokemon at its trainer's heels, at their side when they stop: npc.trail)
                 if _leads is None:
                     _leads = {(o.get("text") if isinstance(o, dict) else o): self.motions.get(h) for h, o in self.people.items()}
@@ -417,6 +417,8 @@ class WalkTownState(CityState):
                 continue
             if mo.pos in shown or mo.moving() or mo.path:
                 mo.tick(lambda t, mo=mo: self._npc_free(t, mo))
+        if getattr(self, "scenes", None) is None:
+            return
         self.scenes.sweep()
         if self.scenes.busy():
             self.scenes.tick()
@@ -766,6 +768,10 @@ class WalkTownState(CityState):
             else:
                 via = next((o.get("door") for o in self.area_data.get("travel_options", []) if o.get("door")
                             and (o.get("target_area") or o.get("target")) == came), None)  # (back from a place you reach through a door here: at that door: the Reception Gate's great door)
+                if via is None and came:   # (no way back from here - a one-way crossing, FireRed's Seagallop from Cinnabar to One
+                    _there = (self.game.loader.area_data.get("STORY_PROGRESSION", {}).get(came) or {})   # Island: at the kind of door
+                    via = next((o.get("door") for o in _there.get("travel_options", []) if o.get("door")   # you set off by there,
+                                and (o.get("target_area") or o.get("target")) == self.area_key), None)   # its harbour; Kanto 11-23)
                 own = [t for t, k in self.doors.items() if came and (k == via or k.upper().replace(" ", "_") in came)]
                 own = sorted(own, key=lambda t: (self.doors[t] != via, -t[1]))
                 door = (own[0] if own else None) or next((t for t, k in self.doors.items() if k == "center"), None) or \
@@ -2442,7 +2448,7 @@ class WalkTownState(CityState):
 
         def put(img, fx, fy):
             if img is not None:
-                sprites.append((img, (fx + 0.5, h(fx, fy), sc.wz(fx, fy) + 0.55), img.get_height() / TILE * LIVE_SPRITE))
+                sprites.append((img, (fx + 0.5, h(fx, fy), sc.wz(fx, fy) + 0.55), dn.live_height(img, LIVE_SPRITE)))   # (a person: one adult height, 11-23)
                 shadows.append((fx + 0.5, h(fx, fy), sc.wz(fx, fy) + 0.55))
         people = self._people()
         mos = getattr(self, "motions", {})
@@ -2473,7 +2479,7 @@ class WalkTownState(CityState):
             if pose[3] or me is None:
                 me = None
             else:
-                me = pygame.transform.smoothscale(me, (max(1, int(me.get_width() * pose[2])), max(1, int(me.get_height() * pose[2]))))
+                me = dn.same_kind(pygame.transform.smoothscale(me, (max(1, int(me.get_width() * pose[2])), max(1, int(me.get_height() * pose[2])))), me)
                 mfx, mfy = mfx + pose[0], mfy + pose[1]
         put(me, mfx, mfy)
         if lead and self.partner != self.player:

@@ -473,9 +473,18 @@
       "flag_condition": "not kanto_rival_left_lab",
       "_look": "@rival"
      },
-     "Bulbasaur's Poke Ball",
-     "Squirtle's Poke Ball",
-     "Charmander's Poke Ball",
+     [
+      "Bulbasaur's Poke Ball",
+      "Last Bulbasaur Ball"
+     ],
+     [
+      "Squirtle's Poke Ball",
+      "Last Squirtle Ball"
+     ],
+     [
+      "Charmander's Poke Ball",
+      "Last Charmander Ball"
+     ],
      {
       "text": "Visitor",
       "action": "EVENT",
@@ -984,7 +993,7 @@
      "lines": [
       "Zzz... I can't eat another bite... Zzz...",
       "...Hm? Oh! I was dreaming about a feast.",
-      "Want your Pokemon to feast on dreams too? I'll teach it Dream Eater. Just this once... yaaawn."
+      "Want your Pokemon to feast on dreams too? I'll teach it Dream Eater... yaaawn."
      ],
      "tutor": {
       "move": "DREAM-EATER",
@@ -3385,7 +3394,7 @@
       "event": {
        "lines": [
         "Whoa, a Trainer! Never throw in the towel, kid. Throw your opponent instead!",
-        "I'll teach one of your Pokemon Seismic Toss. It hits as hard as its level, every time! Only once, though."
+        "I'll teach one of your Pokemon Seismic Toss. It hits as hard as its level, every time!"
        ],
        "tutor": {
         "move": "SEISMIC-TOSS",
@@ -5208,7 +5217,7 @@
     "event": {
      "lines": [
       "Kicks? Bah! The fist is everything! That fool next to me only thinks about his feet.",
-      "Let me teach one of your Pokemon the way of the fist: Mega Punch! Just this once, mind."
+      "Let me teach one of your Pokemon the way of the fist: Mega Punch!"
      ],
      "tutor": {
       "move": "MEGA-PUNCH",
@@ -5230,7 +5239,7 @@
     "event": {
      "lines": [
       "Punches? Please! Real power comes from the legs. Ignore the guy beside me.",
-      "I'll teach one of your Pokemon the way of the kick: Mega Kick! Only the once, though."
+      "I'll teach one of your Pokemon the way of the kick: Mega Kick!"
      ],
      "tutor": {
       "move": "MEGA-KICK",
@@ -5349,7 +5358,7 @@
    "ccccccc....!cDDc.....ccDcccccDcccccc..c..ccccccc",
    "ccccccc.........................NN....c..ccccccc",
    "ccccccc.....N.........................c..ccccccc",
-   "ccccccc...............................c..ccccccc",
+   "ccccccc...................NN..........c..ccccccc",
    "ccccccccccccccccccc!cccccc2cccccccccccc..ccccccc",
    "ccccccc..................................ccccccc",
    "ccccccc..................................ccccccc",
@@ -5476,6 +5485,13 @@
      "lines": [
       "SLOWBRO is taking a nap..."
      ]
+    },
+    "condition": {
+     "any": [
+      "got_ss_ticket_bill",
+      "has_item:SS_TICKET",
+      "visited_VERMILLION_CITY"
+     ]
     }
    },
    {
@@ -5484,6 +5500,13 @@
     "event": {
      "lines": [
       "Come on, Slowbro, use Sonic Boom! ...Slowbro? Why won't you listen to me?"
+     ]
+    },
+    "condition": {
+     "any": [
+      "got_ss_ticket_bill",
+      "has_item:SS_TICKET",
+      "visited_VERMILLION_CITY"
      ]
     }
    },
@@ -5495,6 +5518,34 @@
       "I want a bright red bicycle. I'd keep it inside so it never gets dirty!"
      ]
     }
+   },
+   {
+    "text": "Slowbro ",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "SLOWBRO is taking a nap..."
+     ]
+    },
+    "condition": [
+     "not:got_ss_ticket_bill",
+     "not:has_item:SS_TICKET",
+     "not:visited_VERMILLION_CITY"
+    ]
+   },
+   {
+    "text": "Trainer ",
+    "action": "EVENT",
+    "event": {
+     "lines": [
+      "Come on, Slowbro, use Sonic Boom! ...Slowbro? Why won't you listen to me?"
+     ]
+    },
+    "condition": [
+     "not:got_ss_ticket_bill",
+     "not:has_item:SS_TICKET",
+     "not:visited_VERMILLION_CITY"
+    ]
    }
   ],
   "signs": [
@@ -5715,6 +5766,14 @@
    "30,12": {
     "m": "face",
     "d": "d"
+   },
+   "26,31": {
+    "m": "face",
+    "d": "d"
+   },
+   "27,31": {
+    "m": "face",
+    "d": "l"
    }
   },
   "scenes": [
@@ -12712,7 +12771,7 @@
       "event": {
        "lines": [
         "Rocks fall all the time in a tunnel like this. Might as well put them to work!",
-        "I'll teach one of your Pokemon Rock Slide. Just once. Scary to use it in here, though..."
+        "I'll teach one of your Pokemon Rock Slide. Scary to use it in here, though..."
        ],
        "tutor": {
         "move": "ROCK-SLIDE",
@@ -14254,8 +14313,8 @@
      "cccccccccccccccccccc..cccccc",
      "cN........X.....cccc..cccccc",
      "c...............cccc..cccccc",
-     "c...cccccc........cc..cccccc",
-     "c...cccccc........cc..c111cc",
+     "c...cccccc........cc..cAcccc",
+     "c...cccccc........cc..cDDDcc",
      "c.................cc.......c",
      "c.................cc.X.....c",
      "c............ccccccccccccccc",
@@ -14268,7 +14327,9 @@
     "exits": {
      "n": "CELADON_GAME_CORNER"
     },
-    "buildings": {},
+    "buildings": {
+     "A": "house"
+    },
     "roofs": {
      "_picture": {
       "f": "fr_ground/1_42.png",
@@ -14291,6 +14352,11 @@
      "Grunt B1F 4",
      "Grunt B1F 5"
     ],
+    "inside": {
+     "23,25": "lift_b1f",
+     "24,25": "lift_b1f",
+     "25,25": "lift_b1f"
+    },
     "links": {
      "17,2": [
       1,
@@ -14301,21 +14367,6 @@
       1,
       23,
       12
-     ],
-     "23,25": [
-      3,
-      20,
-      24
-     ],
-     "24,25": [
-      3,
-      20,
-      24
-     ],
-     "25,25": [
-      3,
-      20,
-      24
      ]
     },
     "moves": {
@@ -14328,31 +14379,6 @@
       "d": "d"
      }
     },
-    "barred": [
-     {
-      "tiles": [
-       [
-        23,
-        25
-       ],
-       [
-        24,
-        25
-       ],
-       [
-        25,
-        25
-       ]
-      ],
-      "look": "unseen",
-      "until": {
-       "item_condition": "LIFT_KEY"
-      },
-      "lines": [
-       "The elevator won't move. It needs a key..."
-      ]
-     }
-    ],
     "hidden": {
      "16,17": "PP_UP"
     },
@@ -14389,8 +14415,8 @@
      "....ccccc4.4.5..ccc....1cccccccc",
      ".ccc...c..6.3..5ccc.....cccccccc",
      "N..3...3.5..3cc.ccc.......cccccc",
-     ".cc.c.c.c.....c...........cccccc",
-     ".c....c.ccccc.c...........cc11cc",
+     ".cc.c.c.c.....c...........ccAccc",
+     ".c....c.ccccc.c...........ccDDcc",
      "..c.c5c.6...3.c................c",
      "..c.c.c5....3.c..cc............c",
      "..c.c5c...ccccc.cccccccccccccccc",
@@ -14398,7 +14424,9 @@
      "...ccccccccccccccccccccccccccccc"
     ],
     "exits": {},
-    "buildings": {},
+    "buildings": {
+     "A": "house"
+    },
     "roofs": {
      "_picture": {
       "f": "fr_ground/1_43.png",
@@ -14419,6 +14447,10 @@
     "trainer_spots": [
      "Grunt B2F"
     ],
+    "inside": {
+     "28,16": "lift_b2f",
+     "29,16": "lift_b2f"
+    },
     "links": {
      "21,2": [
       2,
@@ -14434,16 +14466,6 @@
       0,
       15,
       30
-     ],
-     "28,16": [
-      3,
-      20,
-      24
-     ],
-     "29,16": [
-      3,
-      20,
-      24
      ]
     },
     "moves": {
@@ -14464,27 +14486,6 @@
       "d": "d"
      }
     },
-    "barred": [
-     {
-      "tiles": [
-       [
-        28,
-        16
-       ],
-       [
-        29,
-        16
-       ]
-      ],
-      "look": "unseen",
-      "until": {
-       "item_condition": "LIFT_KEY"
-      },
-      "lines": [
-       "The elevator won't move. It needs a key..."
-      ]
-     }
-    ],
     "stops": [
      [
       1,
@@ -14698,13 +14699,15 @@
      "cccccccccccccccc..cccccc",
      "ccc...............cccccc",
      "c.................cccccc",
-     "c....cccccc.......cccccc",
-     "c....cNcccc.......cc11cc",
+     "c....cccccc.......ccAccc",
+     "c....cNcccc.......ccDDcc",
      "c...........cc.........c",
      "c......................c"
     ],
     "exits": {},
-    "buildings": {},
+    "buildings": {
+     "A": "house"
+    },
     "roofs": {
      "_picture": {
       "f": "fr_ground/1_45.png",
@@ -14734,21 +14737,15 @@
      "Grunt B4F 2",
      "Grunt B4F 3"
     ],
+    "inside": {
+     "20,23": "lift_b4f",
+     "21,23": "lift_b4f"
+    },
     "links": {
      "11,15": [
       2,
       15,
       18
-     ],
-     "20,23": [
-      0,
-      24,
-      26
-     ],
-     "21,23": [
-      0,
-      24,
-      26
      ]
     },
     "moves": {
@@ -14777,29 +14774,6 @@
       "d": "d"
      }
     },
-    "hidden": {
-     "22,6": "NEST_BALL",
-     "16,6": "NET_BALL"
-    },
-    "parts": true,
-    "overheads": [
-     {
-      "kind": "picture",
-      "f": "fr_top/1_45.png",
-      "at": [
-       0,
-       0
-      ],
-      "size": [
-       24,
-       26
-      ],
-      "until": {
-       "flag": "hideout_b4f_door_open",
-       "f": "fr_top/1_45_shut.png"
-      }
-     }
-    ],
     "barred": [
      {
       "tiles": [
@@ -14829,9 +14803,202 @@
        "The two Rockets standing guard must have a way to open it..."
       ]
      }
+    ],
+    "hidden": {
+     "22,6": "NEST_BALL",
+     "16,6": "NET_BALL"
+    },
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_45.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       24,
+       26
+      ],
+      "until": {
+       "flag": "hideout_b4f_door_open",
+       "f": "fr_top/1_45_shut.png"
+      }
+     }
     ]
    }
   ],
+  "rooms": {
+   "lift_b1f": {
+    "art": [
+     "ccccc",
+     "ccccc",
+     "!cccc",
+     ".....",
+     ".....",
+     ".vv..",
+     "ccccc"
+    ],
+    "exits": {
+     "v": "OUT:24,25"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_46.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "The lift's floor buttons."
+     ]
+    ],
+    "sign_events": {
+     "0,2": "HIDEOUT LIFT"
+    },
+    "land": {
+     "24,25": [
+      24,
+      24
+     ]
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_46.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       5,
+       7
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Lift"
+   },
+   "lift_b2f": {
+    "art": [
+     "ccccc",
+     "ccccc",
+     "!cccc",
+     ".....",
+     ".....",
+     ".vv..",
+     "ccccc"
+    ],
+    "exits": {
+     "v": "OUT:28,16"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_46.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "The lift's floor buttons."
+     ]
+    ],
+    "sign_events": {
+     "0,2": "HIDEOUT LIFT"
+    },
+    "land": {
+     "28,16": [
+      28,
+      15
+     ]
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_46.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       5,
+       7
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Lift"
+   },
+   "lift_b4f": {
+    "art": [
+     "ccccc",
+     "ccccc",
+     "!cccc",
+     ".....",
+     ".....",
+     ".vv..",
+     "ccccc"
+    ],
+    "exits": {
+     "v": "OUT:20,23"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_46.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "The lift's floor buttons."
+     ]
+    ],
+    "sign_events": {
+     "0,2": "HIDEOUT LIFT"
+    },
+    "land": {
+     "20,23": [
+      20,
+      22
+     ]
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_46.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       5,
+       7
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Lift"
+   }
+  },
   "theme": "ship",
   "floor_names": [
    "B1F",
@@ -14850,12 +15017,10 @@
    "Grunt B2F": 1,
    "X SPEED": 1,
    "MOON STONE": 1,
-   "TM087": 1,
    "SUPER POTION": 1,
    "Grunt B3F 1": 2,
    "Grunt B3F 2": 2,
    "RARE CANDY": 2,
-   "TM273": 2,
    "BLACK GLASSES": 2,
    "Grunt B4F 1": 3,
    "Jessie and James": 3,
@@ -14864,9 +15029,11 @@
    "LIFT KEY": 3,
    "GIOVANNI": 3,
    "SILPH SCOPE": 3,
-   "TM299": 3,
    "MAX ETHER": 3,
-   "CALCIUM": 3
+   "CALCIUM": 3,
+   "TM087": 1,
+   "TM273": 2,
+   "TM299": 3
   },
   "descend": true
  },
@@ -14876,8 +15043,8 @@
     "art": [
      "cccccccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccc!ccccc",
-     "cccccccccccccccccccccccccccccc.1cccc",
-     "cccccccccccccccccccccccccccccc..cccc",
+     "ccccccccccccccccccccccAccccccc.1cccc",
+     "ccccccccccccccccccccccDccccccc..cccc",
      "ccccccmccc..........................",
      "ccccccm.............................",
      "ccccccc.............................",
@@ -14900,7 +15067,9 @@
     "exits": {
      "n": "SAFFRON_CITY"
     },
-    "buildings": {},
+    "buildings": {
+     "A": "house"
+    },
     "roofs": {
      "_picture": {
       "f": "fr_ground/1_47.png",
@@ -14931,10 +15100,11 @@
         "Scientist: Here, take this. Silph made it - a Porygon holding it evolves into Porygon2!"
        ],
        "requires": [
-        "network_machine_fixed"
+        "network_machine_fixed",
+        "unlocked_national_dex"
        ],
        "fail": [
-        "Scientist: We're working on a way to link with faraway islands. If only the Network Machine on One Island worked..."
+        "Scientist: We're working on a part that makes Porygon even better. It needs a link to the faraway islands... and I only give it to a Trainer with the National Pokedex."
        ],
        "gift_item": {
         "UPGRADE": 1
@@ -14955,6 +15125,9 @@
     "trainer_spots": [
      "Grunt 1F"
     ],
+    "inside": {
+     "22,3": "lift_1f"
+    },
     "links": {
      "31,2": [
       1,
@@ -14994,8 +15167,8 @@
     "art": [
      "cccccccccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccccc!cccccc",
-     "cccccccccccccccccccccccccccc1.1ccccc",
-     "cccccccccccccccccccccccccccc...ccccc",
+     "ccccccccccccccccccccccAccccc1.1ccccc",
+     "ccccccccccccccccccccccDccccc...ccccc",
      "ccc.....ccNcc.cc....................",
      "...........cc.......................",
      "..1........cc..1....................",
@@ -15016,7 +15189,9 @@
      "...........ccc............cc.......c"
     ],
     "exits": {},
-    "buildings": {},
+    "buildings": {
+     "A": "house"
+    },
     "roofs": {
      "_picture": {
       "f": "fr_ground/1_48.png",
@@ -15047,6 +15222,9 @@
      "Scientist Jerry",
      "Scientist Connor"
     ],
+    "inside": {
+     "22,3": "lift_2f"
+    },
     "links": {
      "28,2": [
       2,
@@ -15158,8 +15336,8 @@
     "art": [
      "cccccccccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccccc!cccccc",
-     "cccccccccccccccccccccccccccc1.1ccccc",
-     "cccccccccccccccccccccccccccc...ccccc",
+     "ccccccccccccccccccccccAccccc1.1ccccc",
+     "ccccccccccccccccccccccDccccc...ccccc",
      "ccc.................................",
      ".................................1..",
      "....1...............................",
@@ -15180,7 +15358,9 @@
      "...................................."
     ],
     "exits": {},
-    "buildings": {},
+    "buildings": {
+     "A": "house"
+    },
     "roofs": {
      "_picture": {
       "f": "fr_ground/1_49.png",
@@ -15218,6 +15398,9 @@
      "Grunt 3F",
      "Scientist Jose"
     ],
+    "inside": {
+     "22,3": "lift_3f"
+    },
     "links": {
      "28,2": [
       1,
@@ -15364,8 +15547,8 @@
     "art": [
      "cccccccccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccccc!cccccc",
-     "cccccccccccccccccccccccccccc1.1ccccc",
-     "cccccccccccccccccccccccccccc...ccccc",
+     "ccccccccccccccccccccccAccccc1.1ccccc",
+     "ccccccccccccccccccccccDccccc...ccccc",
      ".........cc........cc...............",
      ".ccccN.c.cc..cccc..cc...............",
      ".ccccccc.cc..cccc.1cc...............",
@@ -15386,7 +15569,9 @@
      "........................ccc........."
     ],
     "exits": {},
-    "buildings": {},
+    "buildings": {
+     "A": "house"
+    },
     "roofs": {
      "_picture": {
       "f": "fr_ground/1_50.png",
@@ -15428,6 +15613,9 @@
      "Grunt 4F 1",
      "Grunt 4F 2"
     ],
+    "inside": {
+     "22,3": "lift_4f"
+    },
     "links": {
      "28,2": [
       4,
@@ -15555,8 +15743,8 @@
     "art": [
      "cccccccccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccccc!cccccc",
-     "cccccccccccccccccccccccccccc1.1ccccc",
-     "cccccccccccccccccccccccccccc...ccccc",
+     "ccccccccccccccccccccccAccccc1.1ccccc",
+     "ccccccccccccccccccccccDccccc...ccccc",
      ".......cc........ccc................",
      ".......cc........................1..",
      ".c.c.c.cc..X........................",
@@ -15577,7 +15765,9 @@
      ".......ccX............N............."
     ],
     "exits": {},
-    "buildings": {},
+    "buildings": {
+     "A": "house"
+    },
     "roofs": {
      "_picture": {
       "f": "fr_ground/1_51.png",
@@ -15640,6 +15830,9 @@
      "Juggler Dalton",
      "Grunt 5F 1"
     ],
+    "inside": {
+     "22,3": "lift_5f"
+    },
     "links": {
      "28,2": [
       3,
@@ -15812,8 +16005,8 @@
     "art": [
      "ccccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc!ccccc",
-     "cccccccccccccc1.ccccccccc.1cccc",
-     "cccccccccccccc..ccccccccc..cccc",
+     "cccccccccccccc1.ccccAcccc.1cccc",
+     "cccccccccccccc..ccccDcccc..cccc",
      ".....cc........................",
      ".....cc..............X.......1.",
      "..1..cc....ccccccccccc..ccccc..",
@@ -15831,7 +16024,9 @@
      ".....cc........................"
     ],
     "exits": {},
-    "buildings": {},
+    "buildings": {
+     "A": "house"
+    },
     "roofs": {
      "_picture": {
       "f": "fr_ground/1_52.png",
@@ -15907,6 +16102,9 @@
      "Scientist Taylor",
      "Grunt 6F 2"
     ],
+    "inside": {
+     "20,3": "lift_6f"
+    },
     "links": {
      "14,2": [
       6,
@@ -16024,8 +16222,8 @@
     "art": [
      "ccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccc!cccccccccc",
-     "ccccccccccccccccccc1.ccccc.1ccc",
-     "ccccccccccccccccccc..ccccc..ccc",
+     "ccccccccccccccccccc1.ccAcc.1ccc",
+     "ccccccccccccccccccc..ccDcc..ccc",
      ".....1cccccccX.cc..............",
      "......ccccccc..cc.......X......",
      "..Xcccccccccc..................",
@@ -16043,7 +16241,9 @@
      "....................cc........."
     ],
     "exits": {},
-    "buildings": {},
+    "buildings": {
+     "A": "house"
+    },
     "roofs": {
      "_picture": {
       "f": "fr_ground/1_53.png",
@@ -16104,6 +16304,9 @@
      "Scientist Joshua",
      "Grunt 7F 2"
     ],
+    "inside": {
+     "23,3": "lift_7f"
+    },
     "links": {
      "19,2": [
       5,
@@ -16250,8 +16453,8 @@
     "art": [
      "ccccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccc!ccc",
-     "cccccccccccccccc1.ccccccccc.1cc",
-     "cccccccccccccccc..ccccccccc..cc",
+     "cccccccccccccccc1.ccccAcccc.1cc",
+     "cccccccccccccccc..ccccDcccc..cc",
      ".....cc..X..cc.................",
      "..N..cc.....cc..............X..",
      ".ccc.cc...1.cc...cccccccccccccc",
@@ -16269,7 +16472,9 @@
      "c.............................."
     ],
     "exits": {},
-    "buildings": {},
+    "buildings": {
+     "A": "house"
+    },
     "roofs": {
      "_picture": {
       "f": "fr_ground/1_54.png",
@@ -16317,6 +16522,9 @@
      "Admin Proton",
      "Grunt 8F"
     ],
+    "inside": {
+     "22,3": "lift_8f"
+    },
     "links": {
      "16,2": [
       8,
@@ -16432,8 +16640,8 @@
     "art": [
      "ccccccccccccccccccccccccccccccc",
      "ccccccccccccccccc!ccccccccccccc",
-     "cccccccccccccccc1.1cccccccccccc",
-     "cccccccccccccccc...cccccccccccc",
+     "cccccccccccccccc1.1cccccAcccccc",
+     "cccccccccccccccc...cccccDcccccc",
      ".........1..cc.................",
      "............cc.................",
      ".Xcccccccccccc..ccccc..cccccc..",
@@ -16451,7 +16659,9 @@
      ".......cc...cc.Xcc....1cc......"
     ],
     "exits": {},
-    "buildings": {},
+    "buildings": {
+     "A": "house"
+    },
     "roofs": {
      "_picture": {
       "f": "fr_ground/1_55.png",
@@ -16481,6 +16691,9 @@
      "Scientist Ed",
      "Archer"
     ],
+    "inside": {
+     "24,3": "lift_9f"
+    },
     "links": {
      "16,2": [
       7,
@@ -16631,8 +16844,8 @@
     "art": [
      "ccccccccccccccccc",
      "ccccccc!ccccccccc",
-     "cccccc1.1cccccccc",
-     "cccccc...cccccccc",
+     "cccccc1.1ccccAccc",
+     "cccccc...ccccDccc",
      ".................",
      ".................",
      ".......ccccc..ccc",
@@ -16650,7 +16863,9 @@
      "c......cc........"
     ],
     "exits": {},
-    "buildings": {},
+    "buildings": {
+     "A": "house"
+    },
     "roofs": {
      "_picture": {
       "f": "fr_ground/1_56.png",
@@ -16690,6 +16905,9 @@
      "Scientist Travis",
      "Grunt 10F"
     ],
+    "inside": {
+     "13,3": "lift_10f"
+    },
     "links": {
      "6,2": [
       10,
@@ -16792,8 +17010,8 @@
     "art": [
      "ccccccccccccccccc",
      "cccccccc!cccccccc",
-     "ccccccc1..ccccccc",
-     "ccccccc...ccccccc",
+     "ccccccc1..cccAccc",
+     "ccccccc...cccDccc",
      "...cc............",
      "..1cc............",
      "...cccccccccccc..",
@@ -16812,7 +17030,9 @@
      "..X....X.....cc.."
     ],
     "exits": {},
-    "buildings": {},
+    "buildings": {
+     "A": "house"
+    },
     "roofs": {
      "_picture": {
       "f": "fr_ground/1_57.png",
@@ -16853,6 +17073,9 @@
      "Grunt 11F",
      "Jessie and James"
     ],
+    "inside": {
+     "13,3": "lift_11f"
+    },
     "links": {
      "7,2": [
       9,
@@ -16933,6 +17156,624 @@
     ]
    }
   ],
+  "rooms": {
+   "lift_1f": {
+    "art": [
+     "ccccc",
+     "ccccc",
+     "!cccc",
+     ".....",
+     ".....",
+     "..v..",
+     "ccccc"
+    ],
+    "exits": {
+     "v": "OUT:22,3"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_58.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "The lift's floor buttons."
+     ]
+    ],
+    "sign_events": {
+     "0,2": "SILPH LIFT"
+    },
+    "land": {
+     "22,3": [
+      22,
+      2
+     ]
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_58.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       5,
+       7
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Lift"
+   },
+   "lift_2f": {
+    "art": [
+     "ccccc",
+     "ccccc",
+     "!cccc",
+     ".....",
+     ".....",
+     "..v..",
+     "ccccc"
+    ],
+    "exits": {
+     "v": "OUT:22,3"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_58.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "The lift's floor buttons."
+     ]
+    ],
+    "sign_events": {
+     "0,2": "SILPH LIFT"
+    },
+    "land": {
+     "22,3": [
+      22,
+      2
+     ]
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_58.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       5,
+       7
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Lift"
+   },
+   "lift_3f": {
+    "art": [
+     "ccccc",
+     "ccccc",
+     "!cccc",
+     ".....",
+     ".....",
+     "..v..",
+     "ccccc"
+    ],
+    "exits": {
+     "v": "OUT:22,3"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_58.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "The lift's floor buttons."
+     ]
+    ],
+    "sign_events": {
+     "0,2": "SILPH LIFT"
+    },
+    "land": {
+     "22,3": [
+      22,
+      2
+     ]
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_58.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       5,
+       7
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Lift"
+   },
+   "lift_4f": {
+    "art": [
+     "ccccc",
+     "ccccc",
+     "!cccc",
+     ".....",
+     ".....",
+     "..v..",
+     "ccccc"
+    ],
+    "exits": {
+     "v": "OUT:22,3"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_58.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "The lift's floor buttons."
+     ]
+    ],
+    "sign_events": {
+     "0,2": "SILPH LIFT"
+    },
+    "land": {
+     "22,3": [
+      22,
+      2
+     ]
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_58.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       5,
+       7
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Lift"
+   },
+   "lift_5f": {
+    "art": [
+     "ccccc",
+     "ccccc",
+     "!cccc",
+     ".....",
+     ".....",
+     "..v..",
+     "ccccc"
+    ],
+    "exits": {
+     "v": "OUT:22,3"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_58.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "The lift's floor buttons."
+     ]
+    ],
+    "sign_events": {
+     "0,2": "SILPH LIFT"
+    },
+    "land": {
+     "22,3": [
+      22,
+      2
+     ]
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_58.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       5,
+       7
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Lift"
+   },
+   "lift_6f": {
+    "art": [
+     "ccccc",
+     "ccccc",
+     "!cccc",
+     ".....",
+     ".....",
+     "..v..",
+     "ccccc"
+    ],
+    "exits": {
+     "v": "OUT:20,3"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_58.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "The lift's floor buttons."
+     ]
+    ],
+    "sign_events": {
+     "0,2": "SILPH LIFT"
+    },
+    "land": {
+     "20,3": [
+      20,
+      2
+     ]
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_58.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       5,
+       7
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Lift"
+   },
+   "lift_7f": {
+    "art": [
+     "ccccc",
+     "ccccc",
+     "!cccc",
+     ".....",
+     ".....",
+     "..v..",
+     "ccccc"
+    ],
+    "exits": {
+     "v": "OUT:23,3"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_58.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "The lift's floor buttons."
+     ]
+    ],
+    "sign_events": {
+     "0,2": "SILPH LIFT"
+    },
+    "land": {
+     "23,3": [
+      23,
+      2
+     ]
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_58.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       5,
+       7
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Lift"
+   },
+   "lift_8f": {
+    "art": [
+     "ccccc",
+     "ccccc",
+     "!cccc",
+     ".....",
+     ".....",
+     "..v..",
+     "ccccc"
+    ],
+    "exits": {
+     "v": "OUT:22,3"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_58.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "The lift's floor buttons."
+     ]
+    ],
+    "sign_events": {
+     "0,2": "SILPH LIFT"
+    },
+    "land": {
+     "22,3": [
+      22,
+      2
+     ]
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_58.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       5,
+       7
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Lift"
+   },
+   "lift_9f": {
+    "art": [
+     "ccccc",
+     "ccccc",
+     "!cccc",
+     ".....",
+     ".....",
+     "..v..",
+     "ccccc"
+    ],
+    "exits": {
+     "v": "OUT:24,3"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_58.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "The lift's floor buttons."
+     ]
+    ],
+    "sign_events": {
+     "0,2": "SILPH LIFT"
+    },
+    "land": {
+     "24,3": [
+      24,
+      2
+     ]
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_58.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       5,
+       7
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Lift"
+   },
+   "lift_10f": {
+    "art": [
+     "ccccc",
+     "ccccc",
+     "!cccc",
+     ".....",
+     ".....",
+     "..v..",
+     "ccccc"
+    ],
+    "exits": {
+     "v": "OUT:13,3"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_58.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "The lift's floor buttons."
+     ]
+    ],
+    "sign_events": {
+     "0,2": "SILPH LIFT"
+    },
+    "land": {
+     "13,3": [
+      13,
+      2
+     ]
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_58.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       5,
+       7
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Lift"
+   },
+   "lift_11f": {
+    "art": [
+     "ccccc",
+     "ccccc",
+     "!cccc",
+     ".....",
+     ".....",
+     "..v..",
+     "ccccc"
+    ],
+    "exits": {
+     "v": "OUT:13,3"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/1_58.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "The lift's floor buttons."
+     ]
+    ],
+    "sign_events": {
+     "0,2": "SILPH LIFT"
+    },
+    "land": {
+     "13,3": [
+      13,
+      2
+     ]
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/1_58.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       5,
+       7
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Lift"
+   }
+  },
   "theme": "ship",
   "floor_names": [
    "1F",
@@ -16952,34 +17793,34 @@
    "Grunt 2F 1": 1,
    "Grunt 2F 2": 1,
    "Scientist Jerry": 1,
+   "Scientist Connor": 1,
    "TALK TO EMPLOYEE": 1,
    "Grunt 3F": 2,
    "Scientist Jose": 2,
    "HYPER POTION": 2,
-   "Scientist Taylor": 5,
+   "Scientist Rodney": 3,
    "Grunt 4F 1": 3,
    "Grunt 4F 2": 3,
    "MAX REVIVE": 3,
    "ESCAPE ROPE": 3,
    "FULL HEAL": 3,
-   "TM276": 3,
    "Scientist Beau": 4,
    "Grunt 5F 2": 4,
    "Juggler Dalton": 4,
    "Grunt 5F 1": 4,
    "PROTEIN": 4,
-   "TM192": 4,
    "CARD KEY": 4,
    "Grunt 6F 1": 5,
+   "Scientist Taylor": 5,
    "Grunt 6F 2": 5,
    "HP UP": 5,
    "X SP. ATK": 5,
    "Grunt 7F 3": 6,
    "Grunt 7F 1": 6,
    "{rival_name}": 6,
+   "Scientist Joshua": 6,
    "Grunt 7F 2": 6,
    "LAPRAS": 6,
-   "TM064": 6,
    "CALCIUM": 6,
    "Scientist Parker": 7,
    "Admin Proton": 7,
@@ -17000,9 +17841,9 @@
    "Jessie and James": 10,
    "VISIT THE PRESIDENT": 10,
    "ZINC": 10,
-   "Scientist Connor": 1,
-   "Scientist Rodney": 3,
-   "Scientist Joshua": 6,
+   "TM276": 3,
+   "TM192": 4,
+   "TM064": 6,
    "Silph scientist": 0
   }
  },
@@ -17566,7 +18407,7 @@
     "event": {
      "lines": [
       "Not many people come all the way out here! You must have Surfed across the pond.",
-      "As a reward, I'll teach Soft-Boiled to one of your Pokemon. It can heal itself, or so they say. Just the once!"
+      "As a reward, I'll teach Soft-Boiled to one of your Pokemon. It can heal itself, or so they say."
      ],
      "tutor": {
       "move": "SOFT-BOILED",
@@ -17776,7 +18617,7 @@
    "dept": {
     "art": [
      "ccccccccccccc",
-     "cccccccc!cccc",
+     "cccccc^c!cccc",
      "ccccn.....ccc",
      "cccc......ccc",
      "cccc......ccc",
@@ -17795,6 +18636,7 @@
     "exits": {
      "v": "OUT:11,14",
      "<": "OUT:15,14",
+     "^": "ROOM:lift",
      "n": "ROOM:dept_2"
     },
     "buildings": {},
@@ -17855,7 +18697,7 @@
    "dept_2": {
     "art": [
      "ccccccccccccc",
-     "cccc!cccccccc",
+     "cccc!c^cccccc",
      "cccn.....<ccc",
      "ccc.......ccc",
      "ccc.......ccc",
@@ -17871,6 +18713,7 @@
      ".......cc.cc."
     ],
     "exits": {
+     "^": "ROOM:lift",
      "n": "ROOM:dept",
      "<": "ROOM:dept_3"
     },
@@ -17968,7 +18811,7 @@
    "dept_3": {
     "art": [
      "ccccccccccccc",
-     "cccccccc!cccc",
+     "cccccc^c!cccc",
      "ccc<.....nccc",
      "ccc.......ccc",
      "ccc.......ccc",
@@ -17984,6 +18827,7 @@
      "c........N..c"
     ],
     "exits": {
+     "^": "ROOM:lift",
      "n": "ROOM:dept_2",
      "<": "ROOM:dept_4"
     },
@@ -18034,7 +18878,7 @@
       "event": {
        "lines": [
         "I work the counter here, so naturally my favourite move is Counter!",
-        "Hit back twice as hard as you got hit! I'll teach it to one of your Pokemon, one time only."
+        "Hit back twice as hard as you got hit! I'll teach it to one of your Pokemon."
        ],
        "tutor": {
         "move": "COUNTER",
@@ -18118,7 +18962,7 @@
    "dept_4": {
     "art": [
      "ccccccccccccc",
-     "cccc!cccccccc",
+     "cccc!c^cccccc",
      "cccn.....<ccc",
      "ccc.......ccc",
      "ccc.......ccc",
@@ -18134,6 +18978,7 @@
      "cccccccc.cc.."
     ],
     "exits": {
+     "^": "ROOM:lift",
      "n": "ROOM:dept_3",
      "<": "ROOM:dept_5"
     },
@@ -18230,7 +19075,7 @@
    "dept_5": {
     "art": [
      "ccccccccccccc",
-     "cccccccc!cccc",
+     "cccccc^c!cccc",
      "ccc<.....nccc",
      "ccc.......ccc",
      "ccc.......ccc",
@@ -18246,6 +19091,7 @@
      "c...........c"
     ],
     "exits": {
+     "^": "ROOM:lift",
      "n": "ROOM:dept_4",
      "<": "ROOM:dept_roof"
     },
@@ -18346,6 +19192,104 @@
     ],
     "theme": "room",
     "title": "Dept. Store 5F"
+   },
+   "lift": {
+    "art": [
+     "ccccc",
+     "ccccc",
+     "!cccc",
+     ".....",
+     ".....",
+     "..v..",
+     "ccccc"
+    ],
+    "exits": {
+     "v": "ROOM:dept"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/10_6.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "The lift's floor buttons."
+     ]
+    ],
+    "dynamic_exit": {
+     "flag": "celadon_lift_floor",
+     "rooms": [
+      "dept",
+      "dept_2",
+      "dept_3",
+      "dept_4",
+      "dept_5"
+     ],
+     "default": "dept"
+    },
+    "sign_events": {
+     "0,2": {
+      "text": "Lift panel",
+      "action": "EVENT",
+      "event": {
+       "cancel": [
+        "The lift stays where it is."
+       ],
+       "elevator": {
+        "area": "CELADON_CITY",
+        "car_flag": "celadon_lift_floor",
+        "ride": [
+         "The lift hums..."
+        ],
+        "floors": [
+         [
+          "1F",
+          "dept"
+         ],
+         [
+          "2F",
+          "dept_2"
+         ],
+         [
+          "3F",
+          "dept_3"
+         ],
+         [
+          "4F",
+          "dept_4"
+         ],
+         [
+          "5F",
+          "dept_5"
+         ]
+        ]
+       }
+      }
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/10_6.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       5,
+       7
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Lift"
    },
    "dept_roof": {
     "art": [
@@ -22495,7 +23439,7 @@
     "event": {
      "lines": [
       "Aww, I wish I were a baby Kangaskhan. I'd love to be a substitute and snuggle in that pouch...",
-      "Speaking of substitutes! I'll teach one of your Pokemon Substitute, just once. It makes a decoy of itself!"
+      "Speaking of substitutes! I'll teach one of your Pokemon Substitute. It makes a decoy of itself!"
      ],
      "tutor": {
       "move": "SUBSTITUTE",
@@ -22832,6 +23776,39 @@
       "d": "r"
      }
     },
+    "scenes": [
+     {
+      "trigger": {
+       "zone": [
+        3,
+        3,
+        5,
+        3
+       ]
+      },
+      "every": true,
+      "condition": "not:kanto_safari_paid",
+      "cast": [],
+      "event": {
+       "world": "kanto_safari"
+      },
+      "push": [
+       0,
+       1
+      ],
+      "push_unless": "kanto_safari_paid"
+     },
+     {
+      "trigger": "enter",
+      "every": true,
+      "condition": "world:kanto_safari:back",
+      "cast": [],
+      "event": {
+       "world": "kanto_safari",
+       "back": true
+      }
+     }
+    ],
     "overheads": [
      {
       "kind": "picture",
@@ -23092,7 +24069,7 @@
        "battle": {
         "name": "Tamer Edgar",
         "class": "TAMER",
-        "sprite": "tamer.png",
+        "sprite": "fr_tamer.png",
         "team": [
          24,
          28,
@@ -23129,7 +24106,7 @@
        "battle": {
         "name": "Tamer Phil",
         "class": "TAMER",
-        "sprite": "tamer.png",
+        "sprite": "fr_tamer.png",
         "team": [
          28,
          24
@@ -23164,7 +24141,7 @@
        "battle": {
         "name": "Juggler Shawn",
         "class": "JUGGLER",
-        "sprite": "juggler.png",
+        "sprite": "fr_juggler.png",
         "team": [
          96,
          97
@@ -23199,7 +24176,7 @@
        "battle": {
         "name": "Juggler Kirk",
         "class": "JUGGLER",
-        "sprite": "juggler.png",
+        "sprite": "fr_juggler.png",
         "team": [
          96,
          96,
@@ -23239,7 +24216,7 @@
        "battle": {
         "name": "Juggler Nate",
         "class": "JUGGLER",
-        "sprite": "juggler.png",
+        "sprite": "fr_juggler.png",
         "team": [
          96,
          64
@@ -23274,7 +24251,7 @@
        "battle": {
         "name": "Juggler Kayden",
         "class": "JUGGLER",
-        "sprite": "juggler.png",
+        "sprite": "fr_juggler.png",
         "team": [
          97
         ],
@@ -23827,10 +24804,10 @@
       "text": "Move Deleter",
       "action": "EVENT",
       "event": {
-       "quips": "move_deleter",
        "lines": [
         "Uh... Oh, yes, I'm the Move Deleter. I can make Pokémon forget moves. Your team looks fine as it is, though!"
-       ]
+       ],
+       "quips": "move_deleter"
       }
      }
     ],
@@ -25663,6 +26640,31 @@
        23
       ]
      }
+    ],
+    "heights": [
+     "00000000000000000000000000000000000000",
+     "00000000000000044444444440000000000000",
+     "00000000000000044444444440000000000000",
+     "00033333333333044444444440333330333000",
+     "00033333333333044444444440333333333000",
+     "00033044440440044444000000333333333000",
+     "00033044444040044444033333033333333000",
+     "00033044444440044444033333033333333000",
+     "00033044440000044444033333033333333000",
+     "00033044440044444444033333033333333000",
+     "00033044440044444444033333033333333000",
+     "00033000000044444444033333000000000000",
+     "00033333333044444444444440333333333000",
+     "00033333333044444444444440333333333000",
+     "00033333333044444444444440333333333000",
+     "00033333333044444444444440333333333000",
+     "00033333333000000000000000333333333000",
+     "00033333333333333033333333033333333000",
+     "00033333333333333033333333030333333000",
+     "00033333333333333033333333033333333000",
+     "00000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000"
     ]
    },
    {
@@ -25787,6 +26789,32 @@
        24
       ]
      }
+    ],
+    "heights": [
+     "44444444404440000000000000440000000000",
+     "44404400000000000000000000000000000000",
+     "44000000000000000000000000000000000000",
+     "43033330333333333333333333303333330000",
+     "40033333333333333333333333303333330000",
+     "43033333333333333333333333303333330000",
+     "40033333333330444444033333303333330000",
+     "40033333333330444044033333300003300000",
+     "00033333333330444004033330033333333000",
+     "40033333333330444444033330033333333000",
+     "40004444444444444444444444403333333000",
+     "40004444444444444444444444403333333000",
+     "44004444444444444444444444403333333000",
+     "04004444444444444444444444400404040000",
+     "44000000000000000000444444400444440000",
+     "44033333333333333330444444400444440000",
+     "40033333333333333330000000000444440000",
+     "00033333333333333333333333330444440044",
+     "40033333333333333333333330330444440044",
+     "40033333333333333330033333330000000004",
+     "40000000000000000000000000000000000044",
+     "40000000000000000000000004000000000044",
+     "44444000000040000000044444400000044444",
+     "44444004444444444440444444444444444044"
     ]
    },
    {
@@ -25921,6 +26949,32 @@
        24
       ]
      }
+    ],
+    "heights": [
+     "00000000000000000000000000000000000000",
+     "00000000000000000011100000000000000000",
+     "00000000000000000011100000000000000000",
+     "00004444444440000011100000333330330000",
+     "00004444444440000011100000333333030000",
+     "00004444444440011111111110333333330000",
+     "00004444444440011111111110333333330000",
+     "00004444444440044444440110000000000000",
+     "00004444400000044444440110444444440000",
+     "00004444403333044444000110444444440000",
+     "00004444403333044400330110400444440000",
+     "00004444404444044401111110033044440000",
+     "00004044444444444401111111111044440000",
+     "00004004044000044401111111111044440000",
+     "00004444444033044444444401104444440000",
+     "00000000000033044444444401104440440000",
+     "00033333333033044444444401104444440000",
+     "00033330333333000000000001100000000000",
+     "00033330333330333333330001100033333000",
+     "00033330333333333333330001100033333000",
+     "00000000000000000000000001100000000000",
+     "00000000000000000000000001100000000000",
+     "44000000000000000004400001100000000000",
+     "40440000000000004440044000000000040440"
     ]
    },
    {
@@ -26054,6 +27108,32 @@
        24
       ]
      }
+    ],
+    "heights": [
+     "00000000000000000000000000000000000000",
+     "00011104444444401111044444444444440000",
+     "00011104444444401111044444444404440000",
+     "00011104440044401111044444444440040000",
+     "00311100003300001111044444444444040000",
+     "00011111111111111111044444444004440000",
+     "00011111111111111111044000000330000000",
+     "00011111110444444444444011111111111000",
+     "03011111110440004444444011111111111000",
+     "00011111110444444444444011111111111000",
+     "00011111110444444444444011111111111000",
+     "00011111110400444444000011111111111000",
+     "00011111110033000044011111111111111000",
+     "00011111111111111044011111111111111000",
+     "00011111111111111044011111111111111000",
+     "00011111111111111044011111111111111000",
+     "00011111111111111044011111111111111000",
+     "00000000110444444444444011111111111000",
+     "00000000110444044444444440111111111000",
+     "00000000110444444444444440111000000000",
+     "00000000110444444444444440111000000000",
+     "00000000110000000000000000111000000000",
+     "00000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000"
     ]
    }
   ],
@@ -27197,7 +28277,7 @@
       "event": {
        "lines": [
         "Tch-tch-tch! That's the sound of a Metronome. It tweaks a Pokemon's brain into using a move it doesn't even know!",
-        "Fascinating, isn't it? I'll teach it to one of your Pokemon, one time only. For science!"
+        "Fascinating, isn't it? I'll teach it to one of your Pokemon. For science!"
        ],
        "tutor": {
         "move": "METRONOME",
@@ -29655,7 +30735,7 @@
    "ccc.....cccccc..cccccccccccccccccccc...cccccccccc",
    "cc.N...N.cccc......cccc.....ccccc...........ccccc",
    "c.........cc......cccc......ccccc.cc..ccc...ccN.c",
-   "c....v....c.....................c...............c",
+   "c....v...Nc.....................c...............c",
    "ccccvcvcccccccccccccccccccccccccccccccccccccccccc"
   ],
   "exits": {
@@ -29681,7 +30761,8 @@
    "MAX POTION",
    "TALK TO THE MANAGER",
    "RETURN THE MACHINE PART",
-   "TM166"
+   "TM166",
+   "Trader"
   ],
   "moves": {
    "5,11": {
@@ -30148,13 +31229,13 @@
      "ccc1.Xcccccccc.ccc..cccccccccccccccccccccccccccc",
      "cccc..ccccccN...b....ccccccccccccccccccccccccccc",
      "cccc...ccccccc..c.....cccccccccccccccccccccccccc",
-     "ccc...c.......cc.cccc..ccccccccccccccccccccccccc",
+     "ccc...c.............c..ccccccccccccccccccccccccc",
      "ccc...c.......X.....c..ccccccccccccccccccccccccc",
      "ccc...c.............c..ccccccccccccccccccccccccc",
      "cccc..c.............c..ccccccccccccccccccccccccc",
      "cccc..cccc.ccc..cc.cc..ccccccccccccccccccccccccc",
      "ccccc........c..cc.....ccccccccccccccccccccccccc",
-     "cccc..cccccc.c..ccc...cccccccccccccccccccccccccc",
+     "cccc..c....c.c..ccc...cccccccccccccccccccccccccc",
      "ccccbcc....ccc..cccccccccccccccccccccccccccccccc",
      "cccc..c....ccc..cccccccccccccccccccccccccccccccc",
      "cccc..c.........cc...ccccccccccccccccccccccccccc",
@@ -30251,7 +31332,31 @@
      "12,12": "ULTRA_BALL",
      "16,1": "FULL_RESTORE"
     },
-    "parts": true
+    "parts": true,
+    "heights": [
+     "000000000000000000000000000000000000000000000000",
+     "000000000000003003300000000000000000000000000000",
+     "000333000000003000330000000000000000000000000000",
+     "000033000000333333333000000000000000000000000000",
+     "000033300000003303333300000000000000000000000000",
+     "000333044444444444440330000000000000000000000000",
+     "000333044444444444440330000000000000000000000000",
+     "000333044444444444440330000000000000000000000000",
+     "000033044444444444440330000000000000000000000000",
+     "000033000000004400000330000000000000000000000000",
+     "000003333333304400333330000000000000000000000000",
+     "000033044440304400033300000000000000000000000000",
+     "000030044440004400000000000000000000000000000000",
+     "000033044440004400000000000000000000000000000000",
+     "000033044444444400333000000000000000000000000000",
+     "000333044444444403333000000000000000000000000000",
+     "003330000000000003033000000000000000000000000000",
+     "003300330003333333330000000000000000000000000000",
+     "000333330033300333330000000000000000000000000000",
+     "000033333333300330000000000000000000000000000000",
+     "000000003333300000000000000000000000000000000000",
+     "030333330300033033330000000000000000000000000000"
+    ]
    },
    {
     "art": [
@@ -30265,13 +31370,13 @@
      "cc......bc...c........c............c....Ncccccccccc",
      "c............c........c...........ccccccccc....cccc",
      "c1c..........c........c...........1c..1cN.......ccc",
-     "c......cccccc.cccccccc.c...........c.............cc",
+     "c......c...............c...........c.............cc",
      "cc.....c............X..c...........c.............cc",
      "cc.....cc.cccccc.......c...........c......ccccc.n.c",
      "cc...........cNccccc...c.N.........cccccccc...cncnc",
      "cc...........c.....c...c..................c......c.",
-     "ccc..........c.....c....cccccccccc........cc.......",
-     "ccc..........c.....c...........Xc.cccccc...cc......",
+     "ccc..........c.....c............cc........cc.......",
+     "ccc..........c.....c...........Xc...c..c...cc......",
      "cc....b......c.....c................1..c...c.......",
      "cc.c.....ccccc.....cccc.ccccccc.cccccccc...c.c.....",
      "cc....cccccccc...................b.........c.......",
@@ -30324,7 +31429,7 @@
       "event": {
        "lines": [
         "You made it this far! Keep that drive going all the way to the Pokemon League!",
-        "Here, take a move that charges straight ahead: Double-Edge. I'll teach it to one of your Pokemon, just once."
+        "Here, take a move that charges straight ahead: Double-Edge. I'll teach it to one of your Pokemon."
        ],
        "tutor": {
         "move": "DOUBLE-EDGE",
@@ -30478,7 +31583,31 @@
       ]
      }
     ],
-    "parts": true
+    "parts": true,
+    "heights": [
+     "000000000000000000000000000000000000000000333333333",
+     "000000000000000000000003333333333333333330033333333",
+     "000033333333333333330003333333333333333330303333333",
+     "000333333333333333333303333333333333333330033333333",
+     "000333330333333333333303333333333333333330003333333",
+     "000333333333333333333303333333333333333330003303333",
+     "000000003000003333333303333300000000333330003333333",
+     "003333333033303333333303333333333330333330000000333",
+     "033333333333303333333303333333333300000000033330000",
+     "030333333333303333333303333333333330333033333333000",
+     "033333304444444444444440333333333330333333333333300",
+     "003333304444444444444440333333333330333333333333300",
+     "003333300033300044444440333333333330333333000033330",
+     "003333333333303000004440333333333330000000033300000",
+     "003333333333303333304440333333333333333333033333303",
+     "000333333333303333304444444444440033333333003333333",
+     "000333333333303333304444444444440444044333300333333",
+     "003333333333303333304444444444444444444333303333333",
+     "003033333000003333303300000000000033333033303033333",
+     "003333000000003333333333333333333333333333303333333",
+     "000000000000000003333333333333333333333333303333333",
+     "000000000000000000000000000000000003333000003333333"
+    ]
    },
    {
     "art": [
@@ -30486,12 +31615,12 @@
      "ccccccccccccccccccccccccccccccccccccccccccccc",
      "ccccc1.ccc...............................cccc",
      "ccccc...cc...............................cccc",
-     "ccccc........cccccccccccccccc.........c..cccc",
+     "ccccc........c..............c.........c..cccc",
      "cccc...c.c...c.......X......c...b..cccc..cccc",
      "cccc.....c...c..............c......cccc..cccc",
      "cccc....cc...c...cccccccc.ccc......cccN.Xcccc",
      "ccc...cccc...c...c.................cccccccccc",
-     "cccccc....ccNc...c................1c.....cccc",
+     "ccc........cNc...c................1c.....cccc",
      "ccc........ccc...c........ccc......c.1...cccc",
      "ccc........ccc...c.........c.......c.....cccc",
      "cccc.cccc........c.............ccccc.....cccc",
@@ -30612,7 +31741,31 @@
       ]
      }
     ],
-    "parts": true
+    "parts": true,
+    "heights": [
+     "000000000000000000000003300000000003330333333",
+     "000000000000000303000000000033300000000000333",
+     "000033300300333333333333333333333333333330333",
+     "000003330033333333333333333333333333333330003",
+     "000003333333334444444444444433333333330330033",
+     "000033303033334444444444444433333333330330033",
+     "000033333033334444444444444433333333330330033",
+     "000033333033334440333333000333333333333330033",
+     "000333030033334443333333333333333333003330003",
+     "000444444443334443333333333333333330333333003",
+     "000444444443334443333333330033333333333333000",
+     "000444444443334443333333333033333330333330303",
+     "003303330444444443333333333333330330333330303",
+     "003033333444444443333333333333303333333330003",
+     "330033333333333333333333333333303330333330003",
+     "333033333333333333030330333300003330333330003",
+     "033333333333333333333333333333333330333330003",
+     "333333333333333333333333333333333333333330003",
+     "333033333333333333333333333333333330333330003",
+     "333333333333333333333333333333333330333330003",
+     "333333303330033300333303333300333330330000333",
+     "333333333333333330333333333333303333303333033"
+    ]
    }
   ],
   "theme": "cave",
@@ -30624,7 +31777,6 @@
   "figure_floors": {
    "Rolando": 0,
    "Naomi": 0,
-   "TM078": 0,
    "RARE CANDY": 0,
    "Dawson": 1,
    "Gregory": 1,
@@ -30632,8 +31784,6 @@
    "Daisuke": 1,
    "Nelson": 1,
    "GUARD SPEC.": 1,
-   "TM241": 1,
-   "TM051": 1,
    "FULL HEAL": 1,
    "Alexa": 2,
    "George": 2,
@@ -30641,6 +31791,9 @@
    "Caroline": 2,
    "Colby": 2,
    "MAX REVIVE": 2,
+   "TM078": 0,
+   "TM241": 1,
+   "TM051": 1,
    "TM157": 2
   }
  },
@@ -31653,6 +32806,31 @@
        23
       ]
      }
+    ],
+    "heights": [
+     "0000000000000000000000000000000000000000",
+     "0000000333003000000000111111111033003300",
+     "0000000333333000000000111111111033333300",
+     "0000000330033011111111111111111033333300",
+     "0030000330033011111111110444011003000000",
+     "0030333333333011111111110444011111111110",
+     "0330333300333011104444444444011111111110",
+     "0330333300333011104444444444011111111110",
+     "0330333300333011104444444444444444401110",
+     "0000333300300011104440000004440444401110",
+     "0030333301110011104440030000444444401110",
+     "0033333301110011100000033300444444401110",
+     "0033333301111111103333033300444000001110",
+     "0033333301111111103303003000444000333330",
+     "0033003301111111103333333330444033333330",
+     "0033033301110444400333333000444033333000",
+     "0033333303330444400003330000444033300000",
+     "0033333303330444444444444444444033300000",
+     "0000030003330000444444444444444033300000",
+     "0000033333333330444444444444444033300000",
+     "0000033333333330444444444444444033300000",
+     "0000033333333330000000000000000033300000",
+     "0000000000000000000000000000000000000000"
     ]
    },
    {
@@ -31840,6 +33018,31 @@
        23
       ]
      }
+    ],
+    "heights": [
+     "0000000000000000000000000000000000000000",
+     "0033333333333333003333300000000000033330",
+     "0033333333333333033333333000000033333330",
+     "0033333333333333033000033333000000033330",
+     "0033333300000300033000033333000000033330",
+     "0033333303333333333000000003000000030330",
+     "0033003300333333330000000003333333333330",
+     "0033033300033333300000000003333333333330",
+     "0033333301111100444444444444444403330000",
+     "0000000001111100444444444444444403330000",
+     "0111000000000000444444444444444403330000",
+     "0111000000000000000000000004000403330000",
+     "0111030303000000003333333304000403330000",
+     "0111033333000000003333333304444403330000",
+     "0111033333000000003333333304444403330000",
+     "0111000300011110444444033304000403330000",
+     "0111111111111110444444033304000403330000",
+     "0111111111111110444444033304444403330000",
+     "0111111111111110404444033304444403330000",
+     "0000001111111110030000033300000003330000",
+     "0000001111111111110333333300033333330000",
+     "0000001111111111110033333000033333330000",
+     "0000000000000000000000000000000000000000"
     ]
    }
   ],
@@ -32968,6 +34171,46 @@
     "d": "du"
    }
   },
+  "scenes": [
+   {
+    "trigger": {
+     "zone": [
+      10,
+      15,
+      14,
+      18
+     ]
+    },
+    "condition": "not:has_item:TRI_PASS",
+    "flag": "one_island_bill_walk",
+    "cast": [
+     {
+      "sheet": "fr_73.png",
+      "from": [
+       12,
+       16
+      ],
+      "to": "player",
+      "lines": [
+       "Bill: Here we are! This is One Island. The Sevii Islands are scattered all around here.",
+       "Bill: My friend Celio runs the Pokémon Network Center. Come on, he's expecting us!"
+      ],
+      "lead": [
+       [
+        14,
+        6,
+        []
+       ]
+      ]
+     }
+    ],
+    "room": [
+     "center",
+     9,
+     9
+    ]
+   }
+  ],
   "rooms": {
    "center": {
     "art": [
@@ -33890,6 +35133,148 @@
      140
     ]
    }
+  ],
+  "heights": [
+   "000000000000000000000000",
+   "000000000000000000000000",
+   "000000000000000000000000",
+   "000000000000000000000000",
+   "000000000000000000000000",
+   "000000000000000000000000",
+   "000000000003300000000000",
+   "000000000333333000000000",
+   "000000000033333000000000",
+   "000000000333333000000000",
+   "000000000033300000000000",
+   "000000000003330000000000",
+   "000000000003300000000000",
+   "110000000003300000000001",
+   "010000000003300000000001",
+   "010000003303333030000001",
+   "010000000333333300000001",
+   "010000003333333300000001",
+   "010033333333333331110011",
+   "010033333333333331110000",
+   "010011111111111111111100",
+   "000011111111111111111100",
+   "001111001111111111110000",
+   "001001001111111133110000",
+   "001001111111111333311100",
+   "000111111111111333311001",
+   "000111111111111333331001",
+   "001100111111111133331100",
+   "001100111111111113311100",
+   "000111111111111111111001",
+   "100111111111111111111001",
+   "110011111111111110011001",
+   "110011111111111110000001",
+   "001100111111111111100110",
+   "001100001111111111100110",
+   "000111001111111110000110",
+   "000111111111111110011110",
+   "001111111111111110010010",
+   "001111111111111110010000",
+   "000111111111111111100100",
+   "000100111111111110000100",
+   "000100111111111110010000",
+   "100111111111111001110000",
+   "001111111111100001110000",
+   "001111111110000100110000",
+   "001001111110011100110000",
+   "001001111111111000000000",
+   "001111111111111000000000",
+   "000011111111111000000000",
+   "110011111111111000000000",
+   "000111111111111000000000",
+   "000100111111133000000000",
+   "010000111133330000000000",
+   "010011111333300000000000",
+   "001001111333300000000000",
+   "001001111333300000000000",
+   "001100111333300000000000",
+   "001100111333000000000000",
+   "000010011333300300000000",
+   "000010013333303300000000",
+   "001110013333333300000000",
+   "011110013003333330000000",
+   "000000013003333000000000",
+   "000000000003333000000000",
+   "000000000003333330000000",
+   "000000000000333330000000",
+   "000000000003333330000000",
+   "000000000033330030000000",
+   "000000003333300030000000",
+   "000000003333000030000000",
+   "000000003333003303000000",
+   "000000003300003330000111",
+   "000000003300003330000111",
+   "000000003300000300000111",
+   "000000003300000300000001",
+   "000000003333000300000001",
+   "000000003333333333303100",
+   "000000003333333333333100",
+   "000000033333333333331100",
+   "000000033333300033331100",
+   "000000033333300333331100",
+   "000000033304444440311100",
+   "000000033304444440311100",
+   "000000033304444440311100",
+   "000000033304444440311001",
+   "000000033300000440311000",
+   "000000033333330440311000",
+   "000000033333330440311000",
+   "000000003333330440311000",
+   "000000003333330440311000",
+   "000000003333330440311000",
+   "000000003333330440311001",
+   "000000003333330440311100",
+   "000000003333304440311100",
+   "000000033333304440311100",
+   "000000033333304400311100",
+   "000000033333304403311001",
+   "000000033333304401111001",
+   "000000003333304401110010",
+   "000000003333304401110010",
+   "000000003333304401110010",
+   "000000003333304401110010",
+   "000000003333044403311000",
+   "000000003333044403311001",
+   "000000033333044444401100",
+   "000000033333044444401100",
+   "000000033333044444401100",
+   "000000033333000004401100",
+   "000000003333303304401100",
+   "000000003333303304401100",
+   "000000003333300004401100",
+   "000000003333333304401100",
+   "000000003333333300401100",
+   "000000003333333330401100",
+   "000000003333333330401100",
+   "000000000333333330001100",
+   "000000003333333333111100",
+   "000000003333333333111100",
+   "000000033333333333111100",
+   "100000033333333333111100",
+   "100000033333333331111001",
+   "100000003333333331111000",
+   "100000000333333311111100",
+   "100000000331111111111100",
+   "111000000111111111111100",
+   "001100111111111111001100",
+   "000000111111111111001000",
+   "310011111111111111111000",
+   "311111111111111111110010",
+   "311111111111111111110010",
+   "333111111111001111111100",
+   "333311111111001133331100",
+   "333311111111111333331100",
+   "333311111111111333331100",
+   "000311100110011133311000",
+   "000000000000000111111000",
+   "000000011001100001111000",
+   "000000011000111001100000",
+   "000000010000001110000100",
+   "000000010000000000000000"
   ]
  },
  "MT_EMBER": {
@@ -35021,7 +36406,10 @@
      "_buildings_in_picture": true
     },
     "people": [
-     "Joyful Game Corner",
+     [
+      "Joyful Games",
+      "Joyful Game Corner"
+     ],
      [
       "Lostelle's Thanks",
       "Lostelle's Dad"
@@ -35127,11 +36515,11 @@
       "text": "Move Maniac",
       "action": "EVENT",
       "event": {
-       "quips": "move_reminder",
-       "quip_as": "Move Maniac",
        "lines": [
         "I'm the Move Maniac! I know every move a Pokémon can learn."
-       ]
+       ],
+       "quips": "move_reminder",
+       "quip_as": "Move Maniac"
       }
      }
     ],
@@ -279379,7 +280767,7 @@
    "~~~~~===c.......................cEccccoooccccccc",
    "~~~~~===c...ccccc..............!cDcccc...ccccccc",
    "~~~~~===========c...ccccccccc........c...ccccccc",
-   "~~~~~===N=======c...ccHccFccc........c...ccccccc",
+   "~~~~~===========c...ccHccFccc........c...ccccccc",
    "~~~~~===========c...ccDccDccc........c...ccccccc",
    "~~~~~~~~~...~~~=c..............cc..ccc...ccccccc",
    "~~~~~~~~~.D.~~~=c..............c.........ccccccc",
@@ -279456,19 +280844,6 @@
       "Shh! Don't tell Lorelei I'm out here! She collects stuffed Pokémon dolls, did you know?"
      ]
     }
-   },
-   {
-    "text": "Rival",
-    "action": "EVENT",
-    "event": {
-     "lines": [
-      "{rival_name}: Huh? {player_name}, what are you doing all the way out here? I'm checking out the Day Care. Smell ya!"
-     ],
-     "flag": "kanto_rival_four_island"
-    },
-    "condition": [
-     "not:kanto_rival_four_island"
-    ]
    }
   ],
   "signs": [
@@ -279506,10 +280881,6 @@
     "m": "face",
     "d": "r"
    },
-   "8,25": {
-    "m": "face",
-    "d": "l"
-   },
    "5,6": {
     "m": "face",
     "d": "d"
@@ -279519,6 +280890,35 @@
     "d": "d"
    }
   },
+  "scenes": [
+   {
+    "trigger": {
+     "zone": [
+      8,
+      26,
+      12,
+      28
+     ]
+    },
+    "flag": "kanto_rival_four_island",
+    "cast": [
+     {
+      "sheet": "@rival",
+      "from": [
+       8,
+       25
+      ],
+      "to": "player",
+      "lines": [
+       "{rival_name}: Hey! {player_name}! What are you doing out here in the Sevii Islands?",
+       "{rival_name}: Quit following me around, will you? I came to see the Day Care. They say you can get Eggs there.",
+       "{rival_name}: Not that you'd know what to do with one. Smell ya later!"
+      ],
+      "leave": "back"
+     }
+    ]
+   }
+  ],
   "rooms": {
    "daycare": {
     "art": [
@@ -279780,13 +281180,13 @@
    },
    "lorelei": {
     "art": [
+     "cccccccccNN",
      "ccccccccccc",
-     "ccccccccccc",
-     "...........",
-     ".c.......cc",
-     ".....ccN.cc",
-     ".....cc....",
-     "...........",
+     "N.....NN...",
+     "Nc.......NN",
+     ".....cNN.NN",
+     "NN...cc....",
+     ".........N.",
      "....v......",
      "ccccccccccc"
     ],
@@ -279806,17 +281206,203 @@
      "_buildings_in_picture": true
     },
     "people": [
+     {
+      "text": "Doll 12",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Stuffed Pokémon dolls galore!"
+       ]
+      }
+     },
+     {
+      "text": "Doll 13",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Stuffed Pokémon dolls galore!"
+       ]
+      }
+     },
+     {
+      "text": "Doll 1",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Stuffed Pokémon dolls galore!"
+       ]
+      }
+     },
+     {
+      "text": "Doll 5",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Stuffed Pokémon dolls galore!"
+       ]
+      }
+     },
+     {
+      "text": "Doll 4",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Stuffed Pokémon dolls galore!"
+       ]
+      }
+     },
+     {
+      "text": "Doll 9",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Stuffed Pokémon dolls galore!"
+       ]
+      }
+     },
+     {
+      "text": "Doll 3",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Stuffed Pokémon dolls galore!"
+       ]
+      }
+     },
+     {
+      "text": "Doll 2",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Stuffed Pokémon dolls galore!"
+       ]
+      }
+     },
+     {
+      "text": "Doll 6",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Stuffed Pokémon dolls galore!"
+       ]
+      }
+     },
      [
       "Battle Lorelei",
       "Lorelei's House"
-     ]
+     ],
+     {
+      "text": "Doll 7",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Stuffed Pokémon dolls galore!"
+       ]
+      }
+     },
+     {
+      "text": "Doll 8",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Stuffed Pokémon dolls galore!"
+       ]
+      }
+     },
+     {
+      "text": "Doll 10",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Stuffed Pokémon dolls galore!"
+       ]
+      }
+     },
+     {
+      "text": "Doll 11",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Stuffed Pokémon dolls galore!"
+       ]
+      }
+     },
+     {
+      "text": "Doll 14",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Stuffed Pokémon dolls galore!"
+       ]
+      }
+     }
     ],
     "moves": {
+     "0,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "10,3": {
+      "m": "face",
+      "d": "d"
+     },
+     "9,3": {
+      "m": "face",
+      "d": "d"
+     },
+     "7,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "6,2": {
+      "m": "face",
+      "d": "d"
+     },
+     "6,4": {
+      "m": "face",
+      "d": "d"
+     },
+     "9,4": {
+      "m": "face",
+      "d": "d"
+     },
+     "10,4": {
+      "m": "face",
+      "d": "d"
+     },
+     "0,3": {
+      "m": "face",
+      "d": "d"
+     },
+     "0,5": {
+      "m": "face",
+      "d": "d"
+     },
+     "1,5": {
+      "m": "face",
+      "d": "d"
+     },
+     "9,0": {
+      "m": "face",
+      "d": "d"
+     },
+     "10,0": {
+      "m": "face",
+      "d": "d"
+     },
+     "9,6": {
+      "m": "face",
+      "d": "d"
+     },
      "7,4": {
       "m": "face",
       "d": "l"
      }
     },
+    "look_only": [
+     "9,0",
+     "10,0"
+    ],
     "overheads": [
      {
       "kind": "picture",
@@ -281225,7 +282811,7 @@
    "cc55cccccc66cccc...ccc.cccccc",
    "cc55.....c66.......ccc......c",
    "cc55....cc6..33c.66ccc....ccc",
-   "c.5..cc66...33.X666.cc...Nccc",
+   "c.5..cc66...33.X666.cc...N!cc",
    "c.55cc6...3633..6...cc.....Nc",
    "cc55cc6..633cc6.6..ccc......c",
    "cc554..4..44..6.6c..cccc..ccc",
@@ -281264,6 +282850,13 @@
    "PEARL",
    "UNLOCK THE DOORS",
    "BIG PEARL"
+  ],
+  "signs": [
+   [
+    "A report full of graphs and text is on the PC screen:",
+    "\"How Magnetic Waves Affect Pokémon Evolution.\"",
+    "It's too hard to understand..."
+   ]
   ],
   "trainer_spots": [
    "Gideon",
@@ -282686,6 +284279,108 @@
     ]
    }
   ],
+  "heights": [
+   "111111111111110011111111",
+   "100111001111110011111001",
+   "100111001111111111111001",
+   "111110000000000000011111",
+   "000000003333330000000111",
+   "333003000333330111100111",
+   "330003333330330311111001",
+   "333333333330333311111001",
+   "333333003330000000111001",
+   "333330003330444400111001",
+   "300333333333333330110011",
+   "300000000333333330110011",
+   "333300000333300330110011",
+   "333300000033300030110011",
+   "333333330333330330110011",
+   "033333333333333330110011",
+   "003333333333333330111001",
+   "000003333300000300111001",
+   "111103003300000303311001",
+   "111100003300000300000001",
+   "001103003333003304400111",
+   "001103333333333333330111",
+   "111103333333330033330111",
+   "111103333333330003330111",
+   "111100003300033033330111",
+   "111100133333033330000111",
+   "111100133333000000111111",
+   "111001111111100111111100",
+   "111000011111100001111100",
+   "111110011111111001110011",
+   "111111001111110011110011",
+   "111111001111110000111111",
+   "111111100111111100111001",
+   "000111100111111110011001",
+   "000000010011111110011111",
+   "000000010011111100111111",
+   "000000000111111100111111",
+   "000000000111111001111100",
+   "000000011111111001111100",
+   "000000000111111110011111",
+   "000000000111111110011111",
+   "000000011001111111001111",
+   "000000011001111111001111",
+   "000000011100111110011111",
+   "000000000100111110011111",
+   "000000000110011111100111",
+   "000000011110011111100111",
+   "000000011100111111001111",
+   "333000011100111100001111",
+   "003000000000011100111111",
+   "003333333300011110011111",
+   "000333333303311110011111",
+   "333333333303311111001111",
+   "333333333303311111001001",
+   "000000003303011111001001",
+   "000000033333311100001111",
+   "000000033333311100111111",
+   "000000033333311111001111",
+   "000000033333311111001111",
+   "000000003333311111100111",
+   "000000003333311111100111",
+   "000000003333333331100100",
+   "000000003333333331100100",
+   "000000000333333331110011",
+   "000000000333333331110011",
+   "000000000333333331110011",
+   "000000000333333333110011",
+   "000000000333333333111001",
+   "000000000000000333111001",
+   "000000000000000033111001",
+   "000000000000000033111001",
+   "000000000000000033111001",
+   "000000000333333033111001",
+   "000000000333033033110011",
+   "000000000333033333110011",
+   "000000033333033333111001",
+   "000000033333033333111001",
+   "000000033330033331110011",
+   "000000033330111111000011",
+   "000000033330111111001001",
+   "000000033000001001111001",
+   "000000033000000001111001",
+   "000000033000000111111001",
+   "000000033000000111110011",
+   "000000033000000001110011",
+   "000000033000000003100111",
+   "000000033000000003100111",
+   "000000033000000003110011",
+   "000000033000000000110011",
+   "333333333000000000100100",
+   "333333333000000000100100",
+   "333333333000000000001111",
+   "000000000000000000001111",
+   "000000000000000000111111",
+   "000000000000000000111111",
+   "000000000000000000111111",
+   "000000000000000000111100",
+   "000000000000000000111100",
+   "000000000000000000110011",
+   "000000000000000000110011"
+  ],
   "rooms": {
    "house_n": {
     "art": [
@@ -283356,6 +285051,48 @@
      40
     ]
    }
+  ],
+  "heights": [
+   "000000000000000000000000000000000000000000000000",
+   "000000000000000000000000000000000000000000000000",
+   "000000000000000000000000000000000000000000000000",
+   "000000000000000000000000000000000000000000000000",
+   "000000000000000000000000000000000000000000000000",
+   "000000000000000000333333333333333000000000000000",
+   "000000000000003333333333333333333333330000000000",
+   "000000333333333333333333333333333333333333000000",
+   "000000333333333333333333333333333333333333000000",
+   "000000333333333333330000000033333333333333333333",
+   "000000333005555555550000000055555550333333333333",
+   "000000330055555550550000000055555050033333333333",
+   "000003330055550555550000000055555550033333333333",
+   "000003330055000000000000000055055550033333000000",
+   "000003330055000005555555555555055500033333000000",
+   "000003330555500005555555555555055550033330000000",
+   "000003330555500005555555555555005550033330000000",
+   "000003330555500005500000000000055550033330000000",
+   "000003330555500005501111111110055500003330000000",
+   "000003330000005555501111111110055550003330000000",
+   "000003333333305555501100000110055055003330000000",
+   "000003333333305555501100000110055555003330000000",
+   "000000333333305500001100000110005550003330000000",
+   "000000333333305500001100000110055555003000000000",
+   "000000333333305500001100000110055555003300000000",
+   "000000300003305500003333333330055555003300000000",
+   "000000330003305500003333333330000550003300000000",
+   "000000330003305555555503330555555555503300000000",
+   "000000030003300555555503330555555555503300000000",
+   "000000330003330555555503330555555555503300000000",
+   "000000330003330555555503330000000000000330000000",
+   "000000330000330000000003333333333033333330300000",
+   "000000330000333333000003333333333033333333330000",
+   "000003330000333333000003333333333033303333330000",
+   "000003330000333333000000000333333033000003300000",
+   "000000000000000000000000000333333033000000000000",
+   "000000000000000000000000000333333033000000000000",
+   "000000000000000000000000000000000000000000000000",
+   "000000000000000000000000000000000000000000000000",
+   "000000000000000000000000000000000000000000000000"
   ]
  },
  "DOTTED_HOLE": {
@@ -284483,7 +286220,49 @@
   "hidden": {
    "8,29": "RAWST_BERRY"
   },
-  "parts": true
+  "parts": true,
+  "heights": [
+   "000000033300000000000000",
+   "000000033300000000000000",
+   "000000033300000000000000",
+   "000000033300000000000000",
+   "000000033300000000000000",
+   "000003333333300000000000",
+   "000003333333300000000000",
+   "000003333330000000000000",
+   "000003333300000000000000",
+   "000003333300000000000000",
+   "000003333305555550000000",
+   "000003333305555550000000",
+   "000003333305555550000000",
+   "000003333300005550000000",
+   "000003333333305550000000",
+   "000003333333305550000000",
+   "000000555555555550000000",
+   "000000000055555550000000",
+   "000000000055555550000000",
+   "000055000000000000000000",
+   "000055000003333330000000",
+   "000055555503333330000000",
+   "000055555503333330000000",
+   "000055500003333330000000",
+   "000055503333333330000000",
+   "000055503333305555000000",
+   "000055503333300555000000",
+   "000055503333305555550000",
+   "000055503333305555550333",
+   "000055555033300005550333",
+   "000055555033333305550000",
+   "000055555033333305555550",
+   "000000000000000000555550",
+   "000333330000000000000000",
+   "000333300000000000000000",
+   "000000000000000000000000",
+   "000000000000000000000000",
+   "000000000000000000000000",
+   "000000000000000000000000",
+   "000000000000000000000000"
+  ]
  },
  "SEVAULT_CANYON": {
   "art": [
@@ -284781,6 +286560,88 @@
      80
     ]
    }
+  ],
+  "heights": [
+   "000000000000000000000000",
+   "000000000000000000000000",
+   "000000000000000000000000",
+   "000000000000000000000000",
+   "000000000333333333300000",
+   "000000000333333333300000",
+   "000000000330000003300000",
+   "000000000333333303300000",
+   "330333330000033003300000",
+   "330333333333333003300000",
+   "330033033333333003300000",
+   "333333000000333003300000",
+   "000000000000000003300000",
+   "000000000000003333300000",
+   "000000000000003333300000",
+   "000000000000000330000000",
+   "000000000000000330000000",
+   "000000050000000330000000",
+   "000000055500033330000000",
+   "000000055555033330000000",
+   "000000055555000330000000",
+   "000000055555550330000000",
+   "000000055555550333000000",
+   "000000055555550333000000",
+   "000000005503333330000000",
+   "000000000000033330000000",
+   "000033333330033330000000",
+   "000333333330033300000000",
+   "000333333330033300000000",
+   "003330033000033300000000",
+   "003330033000033300000000",
+   "003330033333333300000000",
+   "003330033300003300000000",
+   "003330033300003300000000",
+   "003330033300003300000000",
+   "003330033300003300000000",
+   "003330033300033300000000",
+   "003330033333333300000000",
+   "003330033333333300000000",
+   "003330000000000000000000",
+   "000333300000000333300000",
+   "000333333333333333300000",
+   "000033333333333333300000",
+   "000000033330030030000000",
+   "000000033330030030000000",
+   "000000033330003300300000",
+   "000000033330003300300000",
+   "000000033333333333330000",
+   "000000000033000300000000",
+   "000000000033000000000000",
+   "000000000333000000000000",
+   "000000000333000000000000",
+   "000000003333300000000000",
+   "000000003333300000000000",
+   "000000003333300000000000",
+   "000000033333300000000000",
+   "000000033333300000000000",
+   "000000033333300000000000",
+   "000000003333300000000000",
+   "000000003333300000000000",
+   "000000000333300000000000",
+   "000000000333300000000000",
+   "000000000333333330000000",
+   "000000000333333330000000",
+   "000000000003333330000000",
+   "000000000000333330000000",
+   "000000000000333330000000",
+   "000000000000333330000000",
+   "000000000000033000000000",
+   "100000000000033300000000",
+   "100000000000033300000000",
+   "111100000000033300000000",
+   "111100000000033330000000",
+   "111100000000003330000001",
+   "111100000000000330000001",
+   "001111000000000330000011",
+   "001111000000000330000111",
+   "111111110000000330000111",
+   "111001111000000330000100",
+   "111001111000000330001100"
   ]
  },
  "TANOBY_RUINS": {
@@ -286109,18 +287970,18 @@
      "~~~~~~~~...~~~~~~~~~",
      "~~~~~~~~...~~~~~~~~~",
      "~~~~~~~~...~~~~~~~~~",
-     "~~~~~~~~.v.~~~~~~~~~",
-     "~~~~~~ccccccc~~~~~~~",
+     "~~~~~~~~.D.~~~~~~~~~",
+     "~~~~~~cccAccc~~~~~~~",
      "~~~~~~~ccccc~~~~~~~~",
      "~~~~~~~ccccc~~~~~~~~",
      "~~~~~~~~~~~~~~~~~~~~",
      "~~~~~~~~~~~~~~~~~~~~",
      "~~~~~~~~~~~~~~~~~~~~"
     ],
-    "exits": {
-     "v": "ONE_ISLAND"
+    "exits": {},
+    "buildings": {
+     "A": "house"
     },
-    "buildings": {},
     "roofs": {
      "_picture": {
       "f": "fr_ground/2_0.png",
@@ -286131,6 +287992,9 @@
      },
      "_signs_in_picture": true,
      "_buildings_in_picture": true
+    },
+    "inside": {
+     "9,16": "harbor"
     },
     "links": {
      "9,8": [
@@ -287066,6 +288930,58 @@
     ]
    }
   ],
+  "rooms": {
+   "harbor": {
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccncccccccc",
+     ".................",
+     "ccccccc...ccccccc",
+     "~~~~~~c.v.c~~~~~~",
+     "~~~~~~ccNcc~~~~~~",
+     "~~~~~~~~~~~~~~~~~",
+     "~~~~~~~~~~~~~~~~~",
+     "~~~~~~~~~~~~~~~~~",
+     "~~~~~~~~~~~~~~~~~",
+     "~~~~~~~~~~~~~~~~~",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "n": "OUT:9,16",
+     "v": "ONE_ISLAND"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/2_59.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "SAIL HOME"
+    ],
+    "moves": {
+     "8,6": {
+      "m": "face",
+      "d": "u"
+     }
+    },
+    "land": {
+     "9,16": [
+      9,
+      15
+     ]
+    },
+    "theme": "room",
+    "title": "Navel Rock Harbor"
+   }
+  },
   "theme": "cave",
   "floor_names": [
    "Navel Rock",
@@ -287218,6 +289134,12 @@
       "m": "face",
       "d": "u"
      }
+    },
+    "land": {
+     "15,24": [
+      15,
+      23
+     ]
     },
     "theme": "room",
     "title": "Birth Island Harbor"
@@ -557046,5 +558968,4929 @@
    "ULTRA BALL": 2,
    "TM094": 2
   }
+ },
+ "TRAINER_TOWER": {
+  "floors": [
+   {
+    "art": [
+     "ccccccccccccccccccc",
+     "ccccccccccccccccccc",
+     "ccccccc..1ccccccccc",
+     "ccccccc...ccccccccc",
+     "ccccccc.....ccccccc",
+     "cccccccmm.mmccccccc",
+     "ccccccccm.mcccccccc",
+     "ccccccccm.mNccccccc",
+     "cmccccccm.mcccccccc",
+     "cmccNccmc.mmccNcccc",
+     "cmmmmmmm!..mmmmcmcm",
+     "...................",
+     "..N................",
+     "............N......",
+     "...................",
+     "c.c.c....n....c.c.c",
+     "ccccccccccccccccccc"
+    ],
+    "exits": {
+     "n": "SEVEN_ISLAND"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/2_10.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "RECEPTIONIST",
+     "NURSE",
+     "CLERK",
+     {
+      "text": "Balding man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Gasp, gasp... Never mind battling! These stairs... They're tougher than any battle!"
+       ]
+      }
+     },
+     {
+      "text": "Cooltrainer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I'm here to see how good I am. I wonder what kinds of Trainers are waiting for me... It's nerve-racking!"
+       ]
+      }
+     }
+    ],
+    "signs": [
+     [
+      "TRAINER TOWER",
+      "Climb to the top! The owner is waiting on the roof."
+     ]
+    ],
+    "links": {
+     "9,2": [
+      1,
+      4,
+      6
+     ]
+    },
+    "moves": {
+     "12,13": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       1,
+       1
+      ]
+     },
+     "2,12": {
+      "m": "look",
+      "d": "udlr"
+     },
+     "4,9": {
+      "m": "face",
+      "d": "d"
+     },
+     "14,9": {
+      "m": "face",
+      "d": "d"
+     },
+     "11,7": {
+      "m": "face",
+      "d": "l"
+     }
+    },
+    "pool": "NO_WILD_INDOORS_PERCENTAGES",
+    "theme": "room",
+    "barred": [
+     {
+      "tiles": [
+       [
+        9,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "tt_on"
+      },
+      "lines": [
+       "Receptionist: Please sign up at the counter before you go up!"
+      ]
+     }
+    ],
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/2_10.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       19,
+       17
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccc1.ccccccccc1.c",
+     "cccc..ccccccccc..c",
+     "cc....ccccccc....c",
+     "cc......ccc......c",
+     "cc.c.....c.....c.c",
+     "cc.c.....c.....c.c",
+     "cc.c.....c.....c.c",
+     "cc.............N.c",
+     "cc.c.....c.....c.c",
+     "cc.c.....c.....c.c",
+     "cc.c.....c.....c.c"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/2_1.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Alberto"
+    ],
+    "links": {
+     "15,6": [
+      2,
+      4,
+      6
+     ],
+     "4,6": [
+      0,
+      9,
+      2
+     ]
+    },
+    "moves": {
+     "15,13": {
+      "m": "face",
+      "d": "l"
+     }
+    },
+    "pool": "NO_WILD_INDOORS_PERCENTAGES",
+    "theme": "room",
+    "scenes": [
+     {
+      "who": "Alberto",
+      "trigger": {
+       "zone": [
+        10,
+        13,
+        10,
+        13
+       ]
+      },
+      "approach": true,
+      "then": "talk",
+      "every": true,
+      "condition": "not:tt_floor_1"
+     }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        15,
+        6
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "tt_floor_1"
+      },
+      "lines": [
+       "The way up is blocked... Beat this floor's Trainers first!"
+      ]
+     }
+    ],
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/2_1.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       18,
+       17
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccc1.ccccccccc1.c",
+     "cccc..ccccccccc..c",
+     "cc....ccccccc....c",
+     "cc......ccc......c",
+     "cc.c.....c.....c.c",
+     "cc.c.....c.....c.c",
+     "cc.c.....c.....c.c",
+     "cc.............N.c",
+     "cc.c.....c.....c.c",
+     "cc.c.....c.....c.c",
+     "cc.c.....c.....c.c"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/2_2.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Brandon"
+    ],
+    "links": {
+     "15,6": [
+      3,
+      4,
+      6
+     ],
+     "4,6": [
+      1,
+      15,
+      6
+     ]
+    },
+    "moves": {
+     "15,13": {
+      "m": "face",
+      "d": "l"
+     }
+    },
+    "pool": "NO_WILD_INDOORS_PERCENTAGES",
+    "theme": "room",
+    "scenes": [
+     {
+      "who": "Brandon",
+      "trigger": {
+       "zone": [
+        10,
+        13,
+        10,
+        13
+       ]
+      },
+      "approach": true,
+      "then": "talk",
+      "every": true,
+      "condition": "not:tt_floor_2"
+     }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        15,
+        6
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "tt_floor_2"
+      },
+      "lines": [
+       "The way up is blocked... Beat this floor's Trainers first!"
+      ]
+     }
+    ],
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/2_2.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       18,
+       17
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccc1.ccccccccc1.c",
+     "cccc..ccccccccc..c",
+     "cc....ccccccc....c",
+     "cc......ccc......c",
+     "cc.c.....c.....c.c",
+     "cc.c.....c.....c.c",
+     "cc.c.....c.....c.c",
+     "cc.............N.c",
+     "cc.c.....c.....c.c",
+     "cc.c.....c.....c.c",
+     "cc.c.....c.....c.c"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/2_3.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Jarrett"
+    ],
+    "links": {
+     "15,6": [
+      4,
+      4,
+      6
+     ],
+     "4,6": [
+      2,
+      15,
+      6
+     ]
+    },
+    "moves": {
+     "15,13": {
+      "m": "face",
+      "d": "l"
+     }
+    },
+    "pool": "NO_WILD_INDOORS_PERCENTAGES",
+    "theme": "room",
+    "scenes": [
+     {
+      "who": "Jarrett",
+      "trigger": {
+       "zone": [
+        10,
+        13,
+        10,
+        13
+       ]
+      },
+      "approach": true,
+      "then": "talk",
+      "every": true,
+      "condition": "not:tt_floor_3"
+     }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        15,
+        6
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "tt_floor_3"
+      },
+      "lines": [
+       "The way up is blocked... Beat this floor's Trainers first!"
+      ]
+     }
+    ],
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/2_3.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       18,
+       17
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccc1.ccccccccc1.c",
+     "cccc..ccccccccc..c",
+     "cc....ccccccc....c",
+     "cc......ccc......c",
+     "cc.c.....c.....c.c",
+     "cc.c.....c.....c.c",
+     "cc.c.....c.....c.c",
+     "cc.............N.c",
+     "cc.c.....c.....c.c",
+     "cc.c.....c.....c.c",
+     "cc.c.....c.....c.c"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/2_4.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Cole"
+    ],
+    "links": {
+     "15,6": [
+      5,
+      4,
+      6
+     ],
+     "4,6": [
+      3,
+      15,
+      6
+     ]
+    },
+    "moves": {
+     "15,13": {
+      "m": "face",
+      "d": "l"
+     }
+    },
+    "pool": "NO_WILD_INDOORS_PERCENTAGES",
+    "theme": "room",
+    "scenes": [
+     {
+      "who": "Cole",
+      "trigger": {
+       "zone": [
+        10,
+        13,
+        10,
+        13
+       ]
+      },
+      "approach": true,
+      "then": "talk",
+      "every": true,
+      "condition": "not:tt_floor_4"
+     }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        15,
+        6
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "tt_floor_4"
+      },
+      "lines": [
+       "The way up is blocked... Beat this floor's Trainers first!"
+      ]
+     }
+    ],
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/2_4.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       18,
+       17
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccc1.ccccccccc1.c",
+     "cccc..ccccccccc..c",
+     "cc....ccccccc....c",
+     "cc......ccc......c",
+     "cc.c.....c.....c.c",
+     "cc.c.....c.....c.c",
+     "cc.c.....c.....c.c",
+     "cc.............N.c",
+     "cc.c.....c.....c.c",
+     "cc.c.....c.....c.c",
+     "cc.c.....c.....c.c"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/2_5.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Joey"
+    ],
+    "links": {
+     "15,6": [
+      6,
+      4,
+      6
+     ],
+     "4,6": [
+      4,
+      15,
+      6
+     ]
+    },
+    "moves": {
+     "15,13": {
+      "m": "face",
+      "d": "l"
+     }
+    },
+    "pool": "NO_WILD_INDOORS_PERCENTAGES",
+    "theme": "room",
+    "scenes": [
+     {
+      "who": "Joey",
+      "trigger": {
+       "zone": [
+        10,
+        13,
+        10,
+        13
+       ]
+      },
+      "approach": true,
+      "then": "talk",
+      "every": true,
+      "condition": "not:tt_floor_5"
+     }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        15,
+        6
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "tt_floor_5"
+      },
+      "lines": [
+       "The way up is blocked... Beat this floor's Trainers first!"
+      ]
+     }
+    ],
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/2_5.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       18,
+       17
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccc1.ccccccccc1.c",
+     "cccc..ccccccccc..c",
+     "cc....ccccccc....c",
+     "cc......ccc......c",
+     "cc.c.....c.....c.c",
+     "cc.c.....c.....c.c",
+     "cc.c.....c.....c.c",
+     "cc.............N.c",
+     "cc.c.....c.....c.c",
+     "cc.c.....c.....c.c",
+     "cc.c.....c.....c.c"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/2_6.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Braden"
+    ],
+    "links": {
+     "15,6": [
+      7,
+      4,
+      6
+     ],
+     "4,6": [
+      5,
+      15,
+      6
+     ]
+    },
+    "moves": {
+     "15,13": {
+      "m": "face",
+      "d": "l"
+     }
+    },
+    "pool": "NO_WILD_INDOORS_PERCENTAGES",
+    "theme": "room",
+    "scenes": [
+     {
+      "who": "Braden",
+      "trigger": {
+       "zone": [
+        10,
+        13,
+        10,
+        13
+       ]
+      },
+      "approach": true,
+      "then": "talk",
+      "every": true,
+      "condition": "not:tt_floor_6"
+     }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        15,
+        6
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "tt_floor_6"
+      },
+      "lines": [
+       "The way up is blocked... Beat this floor's Trainers first!"
+      ]
+     }
+    ],
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/2_6.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       18,
+       17
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccc1.ccccccccc1.c",
+     "cccc..ccccccccc..c",
+     "cc....ccccccc....c",
+     "cc......ccc......c",
+     "cc.c.....c.....c.c",
+     "cc.c.....c.....c.c",
+     "cc.c.....c.....c.c",
+     "cc.............N.c",
+     "cc.c.....c.....c.c",
+     "cc.c.....c.....c.c",
+     "cc.c.....c.....c.c"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/2_7.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Jac"
+    ],
+    "links": {
+     "15,6": [
+      8,
+      4,
+      6
+     ],
+     "4,6": [
+      6,
+      15,
+      6
+     ]
+    },
+    "moves": {
+     "15,13": {
+      "m": "face",
+      "d": "l"
+     }
+    },
+    "pool": "NO_WILD_INDOORS_PERCENTAGES",
+    "theme": "room",
+    "scenes": [
+     {
+      "who": "Jac",
+      "trigger": {
+       "zone": [
+        10,
+        13,
+        10,
+        13
+       ]
+      },
+      "approach": true,
+      "then": "talk",
+      "every": true,
+      "condition": "not:tt_floor_7"
+     }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        15,
+        6
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "tt_floor_7"
+      },
+      "lines": [
+       "The way up is blocked... Beat this floor's Trainers first!"
+      ]
+     }
+    ],
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/2_7.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       18,
+       17
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccc1.ccccccccc1.c",
+     "cccc..ccccccccc..c",
+     "cc....ccccccc....c",
+     "cc......ccc......c",
+     "cc.c.....c.....c.c",
+     "cc.c.....c.....c.c",
+     "cc.c.....c.....c.c",
+     "cc.............N.c",
+     "cc.c.....c.....c.c",
+     "cc.c.....c.....c.c",
+     "cc.c.....c.....c.c"
+    ],
+    "exits": {},
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/2_8.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Lily"
+    ],
+    "links": {
+     "15,6": [
+      9,
+      4,
+      6
+     ],
+     "4,6": [
+      7,
+      15,
+      6
+     ]
+    },
+    "moves": {
+     "15,13": {
+      "m": "face",
+      "d": "l"
+     }
+    },
+    "pool": "NO_WILD_INDOORS_PERCENTAGES",
+    "theme": "room",
+    "scenes": [
+     {
+      "who": "Lily",
+      "trigger": {
+       "zone": [
+        10,
+        13,
+        10,
+        13
+       ]
+      },
+      "approach": true,
+      "then": "talk",
+      "every": true,
+      "condition": "not:tt_floor_8"
+     }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        15,
+        6
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "tt_floor_8"
+      },
+      "lines": [
+       "The way up is blocked... Beat this floor's Trainers first!"
+      ]
+     }
+    ],
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/2_8.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       18,
+       17
+      ]
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccccccccccAcccc",
+     "cccccccccccccDcccc",
+     "cccc1.cccccc....cc",
+     "cccc.....N......cc",
+     "cc..............cc",
+     "ccc............ccc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc"
+    ],
+    "exits": {},
+    "buildings": {
+     "A": "house"
+    },
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/2_9.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "OWNER"
+    ],
+    "inside": {
+     "13,5": "lift"
+    },
+    "links": {
+     "4,6": [
+      8,
+      15,
+      6
+     ]
+    },
+    "moves": {
+     "9,7": {
+      "m": "face",
+      "d": "d"
+     }
+    },
+    "pool": "NO_WILD_INDOORS_PERCENTAGES",
+    "theme": "room",
+    "parts": true,
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/2_9.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       18,
+       16
+      ]
+     }
+    ]
+   }
+  ],
+  "rooms": {
+   "lift": {
+    "art": [
+     "ccccc",
+     "ccccc",
+     "!cccc",
+     ".....",
+     ".....",
+     "..v..",
+     "ccccc"
+    ],
+    "exits": {
+     "v": "OUT:13,5"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "fr_ground/2_11.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "signs": [
+     [
+      "The lift's floor buttons."
+     ]
+    ],
+    "sign_events": {
+     "0,2": "TOWER LIFT"
+    },
+    "land": {
+     "13,5": [
+      13,
+      4
+     ]
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "fr_top/2_11.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       5,
+       7
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Lift"
+   }
+  },
+  "floor_names": [
+   "Lobby",
+   "1F",
+   "2F",
+   "3F",
+   "4F",
+   "5F",
+   "6F",
+   "7F",
+   "8F",
+   "Roof"
+  ],
+  "figure_floors": {
+   "RECEPTIONIST": 0,
+   "NURSE": 0,
+   "CLERK": 0,
+   "Alberto": 1,
+   "Brandon": 2,
+   "Jarrett": 3,
+   "Cole": 4,
+   "Joey": 5,
+   "Braden": 6,
+   "Jac": 7,
+   "Lily": 8,
+   "OWNER": 9
+  },
+  "story_maps": [
+   {
+    "when": [
+     "tt_climb_DOUBLE"
+    ],
+    "map": {
+     "floors": [
+      {
+       "art": [
+        "ccccccccccccccccccc",
+        "ccccccccccccccccccc",
+        "ccccccc..1ccccccccc",
+        "ccccccc...ccccccccc",
+        "ccccccc.....ccccccc",
+        "cccccccmm.mmccccccc",
+        "ccccccccm.mcccccccc",
+        "ccccccccm.mNccccccc",
+        "cmccccccm.mcccccccc",
+        "cmccNccmc.mmccNcccc",
+        "cmmmmmmm!..mmmmcmcm",
+        "...................",
+        "..N................",
+        "............N......",
+        "...................",
+        "c.c.c....n....c.c.c",
+        "ccccccccccccccccccc"
+       ],
+       "exits": {
+        "n": "SEVEN_ISLAND"
+       },
+       "buildings": {},
+       "roofs": {
+        "_picture": {
+         "f": "fr_ground/2_10.png",
+         "at": [
+          0,
+          0
+         ]
+        },
+        "_signs_in_picture": true,
+        "_buildings_in_picture": true
+       },
+       "people": [
+        "RECEPTIONIST",
+        "NURSE",
+        "CLERK",
+        {
+         "text": "Balding man",
+         "action": "EVENT",
+         "event": {
+          "lines": [
+           "Gasp, gasp... Never mind battling! These stairs... They're tougher than any battle!"
+          ]
+         }
+        },
+        {
+         "text": "Cooltrainer",
+         "action": "EVENT",
+         "event": {
+          "lines": [
+           "I'm here to see how good I am. I wonder what kinds of Trainers are waiting for me... It's nerve-racking!"
+          ]
+         }
+        }
+       ],
+       "signs": [
+        [
+         "TRAINER TOWER",
+         "Climb to the top! The owner is waiting on the roof."
+        ]
+       ],
+       "links": {
+        "9,2": [
+         1,
+         4,
+         6
+        ]
+       },
+       "moves": {
+        "12,13": {
+         "m": "wander",
+         "d": "udlr",
+         "r": [
+          1,
+          1
+         ]
+        },
+        "2,12": {
+         "m": "look",
+         "d": "udlr"
+        },
+        "4,9": {
+         "m": "face",
+         "d": "d"
+        },
+        "14,9": {
+         "m": "face",
+         "d": "d"
+        },
+        "11,7": {
+         "m": "face",
+         "d": "l"
+        }
+       },
+       "pool": "NO_WILD_INDOORS_PERCENTAGES",
+       "theme": "room",
+       "barred": [
+        {
+         "tiles": [
+          [
+           9,
+           2
+          ]
+         ],
+         "look": "unseen",
+         "until": {
+          "flag_condition": "tt_on"
+         },
+         "lines": [
+          "Receptionist: Please sign up at the counter before you go up!"
+         ]
+        }
+       ],
+       "parts": true,
+       "overheads": [
+        {
+         "kind": "picture",
+         "f": "fr_top/2_10.png",
+         "at": [
+          0,
+          0
+         ],
+         "size": [
+          19,
+          17
+         ]
+        }
+       ]
+      },
+      {
+       "art": [
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccc1.ccccccccc1.c",
+        "cccc..ccccccccc..c",
+        "cc....ccccccc....c",
+        "cc......ccc......c",
+        "cc..c....c....c..c",
+        "cc..ccccccccccc..c",
+        "cc........N......c",
+        "cc........N......c",
+        "cc..ccccccccccc..c",
+        "cc..c....c....c..c",
+        "cc.......c.......c"
+       ],
+       "exits": {},
+       "buildings": {},
+       "roofs": {
+        "_picture": {
+         "f": "fr_ground/2_151.png",
+         "at": [
+          0,
+          0
+         ]
+        },
+        "_signs_in_picture": true,
+        "_buildings_in_picture": true
+       },
+       "people": [
+        "Jen",
+        "Kira"
+       ],
+       "links": {
+        "15,6": [
+         2,
+         4,
+         6
+        ],
+        "4,6": [
+         0,
+         9,
+         2
+        ]
+       },
+       "pool": "NO_WILD_INDOORS_PERCENTAGES",
+       "theme": "room",
+       "scenes": [
+        {
+         "who": "Jen",
+         "trigger": {
+          "zone": [
+           9,
+           12,
+           9,
+           12
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_1"
+        },
+        {
+         "who": "Jen",
+         "trigger": {
+          "zone": [
+           9,
+           13,
+           9,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_1"
+        }
+       ],
+       "barred": [
+        {
+         "tiles": [
+          [
+           15,
+           6
+          ]
+         ],
+         "look": "unseen",
+         "until": {
+          "flag_condition": "tt_floor_1"
+         },
+         "lines": [
+          "The way up is blocked... Beat this floor's Trainers first!"
+         ]
+        }
+       ],
+       "parts": true,
+       "overheads": [
+        {
+         "kind": "picture",
+         "f": "fr_top/2_151.png",
+         "at": [
+          0,
+          0
+         ],
+         "size": [
+          18,
+          17
+         ]
+        }
+       ],
+       "moves": {
+        "10,12": {
+         "m": "face",
+         "d": "l"
+        },
+        "10,13": {
+         "m": "face",
+         "d": "l"
+        }
+       }
+      },
+      {
+       "art": [
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccc1.ccccccccc1.c",
+        "cccc..ccccccccc..c",
+        "cc....ccccccc....c",
+        "cc......ccc......c",
+        "cc..c....c....c..c",
+        "cc..ccccccccccc..c",
+        "cc........N......c",
+        "cc........N......c",
+        "cc..ccccccccccc..c",
+        "cc..c....c....c..c",
+        "cc.......c.......c"
+       ],
+       "exits": {},
+       "buildings": {},
+       "roofs": {
+        "_picture": {
+         "f": "fr_ground/2_152.png",
+         "at": [
+          0,
+          0
+         ]
+        },
+        "_signs_in_picture": true,
+        "_buildings_in_picture": true
+       },
+       "people": [
+        "Jo",
+        "Haley"
+       ],
+       "links": {
+        "15,6": [
+         3,
+         4,
+         6
+        ],
+        "4,6": [
+         1,
+         15,
+         6
+        ]
+       },
+       "pool": "NO_WILD_INDOORS_PERCENTAGES",
+       "theme": "room",
+       "scenes": [
+        {
+         "who": "Jo",
+         "trigger": {
+          "zone": [
+           9,
+           12,
+           9,
+           12
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_2"
+        },
+        {
+         "who": "Jo",
+         "trigger": {
+          "zone": [
+           9,
+           13,
+           9,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_2"
+        }
+       ],
+       "barred": [
+        {
+         "tiles": [
+          [
+           15,
+           6
+          ]
+         ],
+         "look": "unseen",
+         "until": {
+          "flag_condition": "tt_floor_2"
+         },
+         "lines": [
+          "The way up is blocked... Beat this floor's Trainers first!"
+         ]
+        }
+       ],
+       "parts": true,
+       "overheads": [
+        {
+         "kind": "picture",
+         "f": "fr_top/2_152.png",
+         "at": [
+          0,
+          0
+         ],
+         "size": [
+          18,
+          17
+         ]
+        }
+       ],
+       "moves": {
+        "10,12": {
+         "m": "face",
+         "d": "l"
+        },
+        "10,13": {
+         "m": "face",
+         "d": "l"
+        }
+       }
+      },
+      {
+       "art": [
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccc1.ccccccccc1.c",
+        "cccc..ccccccccc..c",
+        "cc....ccccccc....c",
+        "cc......ccc......c",
+        "cc..c....c....c..c",
+        "cc..ccccccccccc..c",
+        "cc........N......c",
+        "cc........N......c",
+        "cc..ccccccccccc..c",
+        "cc..c....c....c..c",
+        "cc.......c.......c"
+       ],
+       "exits": {},
+       "buildings": {},
+       "roofs": {
+        "_picture": {
+         "f": "fr_ground/2_153.png",
+         "at": [
+          0,
+          0
+         ]
+        },
+        "_signs_in_picture": true,
+        "_buildings_in_picture": true
+       },
+       "people": [
+        "Ric",
+        "Rene"
+       ],
+       "links": {
+        "15,6": [
+         4,
+         4,
+         6
+        ],
+        "4,6": [
+         2,
+         15,
+         6
+        ]
+       },
+       "pool": "NO_WILD_INDOORS_PERCENTAGES",
+       "theme": "room",
+       "scenes": [
+        {
+         "who": "Ric",
+         "trigger": {
+          "zone": [
+           9,
+           12,
+           9,
+           12
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_3"
+        },
+        {
+         "who": "Ric",
+         "trigger": {
+          "zone": [
+           9,
+           13,
+           9,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_3"
+        }
+       ],
+       "barred": [
+        {
+         "tiles": [
+          [
+           15,
+           6
+          ]
+         ],
+         "look": "unseen",
+         "until": {
+          "flag_condition": "tt_floor_3"
+         },
+         "lines": [
+          "The way up is blocked... Beat this floor's Trainers first!"
+         ]
+        }
+       ],
+       "parts": true,
+       "overheads": [
+        {
+         "kind": "picture",
+         "f": "fr_top/2_153.png",
+         "at": [
+          0,
+          0
+         ],
+         "size": [
+          18,
+          17
+         ]
+        }
+       ],
+       "moves": {
+        "10,12": {
+         "m": "face",
+         "d": "l"
+        },
+        "10,13": {
+         "m": "face",
+         "d": "l"
+        }
+       }
+      },
+      {
+       "art": [
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccc1.ccccccccc1.c",
+        "cccc..ccccccccc..c",
+        "cc....ccccccc....c",
+        "cc......ccc......c",
+        "cc..c....c....c..c",
+        "cc..ccccccccccc..c",
+        "cc........N......c",
+        "cc........N......c",
+        "cc..ccccccccccc..c",
+        "cc..c....c....c..c",
+        "cc.......c.......c"
+       ],
+       "exits": {},
+       "buildings": {},
+       "roofs": {
+        "_picture": {
+         "f": "fr_ground/2_154.png",
+         "at": [
+          0,
+          0
+         ]
+        },
+        "_signs_in_picture": true,
+        "_buildings_in_picture": true
+       },
+       "people": [
+        "Isac",
+        "Mag"
+       ],
+       "links": {
+        "15,6": [
+         5,
+         4,
+         6
+        ],
+        "4,6": [
+         3,
+         15,
+         6
+        ]
+       },
+       "pool": "NO_WILD_INDOORS_PERCENTAGES",
+       "theme": "room",
+       "scenes": [
+        {
+         "who": "Isac",
+         "trigger": {
+          "zone": [
+           9,
+           12,
+           9,
+           12
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_4"
+        },
+        {
+         "who": "Isac",
+         "trigger": {
+          "zone": [
+           9,
+           13,
+           9,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_4"
+        }
+       ],
+       "barred": [
+        {
+         "tiles": [
+          [
+           15,
+           6
+          ]
+         ],
+         "look": "unseen",
+         "until": {
+          "flag_condition": "tt_floor_4"
+         },
+         "lines": [
+          "The way up is blocked... Beat this floor's Trainers first!"
+         ]
+        }
+       ],
+       "parts": true,
+       "overheads": [
+        {
+         "kind": "picture",
+         "f": "fr_top/2_154.png",
+         "at": [
+          0,
+          0
+         ],
+         "size": [
+          18,
+          17
+         ]
+        }
+       ],
+       "moves": {
+        "10,12": {
+         "m": "face",
+         "d": "l"
+        },
+        "10,13": {
+         "m": "face",
+         "d": "l"
+        }
+       }
+      },
+      {
+       "art": [
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccc1.ccccccccc1.c",
+        "cccc..ccccccccc..c",
+        "cc....ccccccc....c",
+        "cc......ccc......c",
+        "cc..c....c....c..c",
+        "cc..ccccccccccc..c",
+        "cc........N......c",
+        "cc........N......c",
+        "cc..ccccccccccc..c",
+        "cc..c....c....c..c",
+        "cc.......c.......c"
+       ],
+       "exits": {},
+       "buildings": {},
+       "roofs": {
+        "_picture": {
+         "f": "fr_ground/2_155.png",
+         "at": [
+          0,
+          0
+         ]
+        },
+        "_signs_in_picture": true,
+        "_buildings_in_picture": true
+       },
+       "people": [
+        "Jos",
+        "Anne"
+       ],
+       "links": {
+        "15,6": [
+         6,
+         4,
+         6
+        ],
+        "4,6": [
+         4,
+         15,
+         6
+        ]
+       },
+       "pool": "NO_WILD_INDOORS_PERCENTAGES",
+       "theme": "room",
+       "scenes": [
+        {
+         "who": "Jos",
+         "trigger": {
+          "zone": [
+           9,
+           12,
+           9,
+           12
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_5"
+        },
+        {
+         "who": "Jos",
+         "trigger": {
+          "zone": [
+           9,
+           13,
+           9,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_5"
+        }
+       ],
+       "barred": [
+        {
+         "tiles": [
+          [
+           15,
+           6
+          ]
+         ],
+         "look": "unseen",
+         "until": {
+          "flag_condition": "tt_floor_5"
+         },
+         "lines": [
+          "The way up is blocked... Beat this floor's Trainers first!"
+         ]
+        }
+       ],
+       "parts": true,
+       "overheads": [
+        {
+         "kind": "picture",
+         "f": "fr_top/2_155.png",
+         "at": [
+          0,
+          0
+         ],
+         "size": [
+          18,
+          17
+         ]
+        }
+       ],
+       "moves": {
+        "10,12": {
+         "m": "face",
+         "d": "l"
+        },
+        "10,13": {
+         "m": "face",
+         "d": "l"
+        }
+       }
+      },
+      {
+       "art": [
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccc1.ccccccccc1.c",
+        "cccc..ccccccccc..c",
+        "cc....ccccccc....c",
+        "cc......ccc......c",
+        "cc..c....c....c..c",
+        "cc..ccccccccccc..c",
+        "cc........N......c",
+        "cc........N......c",
+        "cc..ccccccccccc..c",
+        "cc..c....c....c..c",
+        "cc.......c.......c"
+       ],
+       "exits": {},
+       "buildings": {},
+       "roofs": {
+        "_picture": {
+         "f": "fr_ground/2_156.png",
+         "at": [
+          0,
+          0
+         ]
+        },
+        "_signs_in_picture": true,
+        "_buildings_in_picture": true
+       },
+       "people": [
+        "Emy",
+        "Alek"
+       ],
+       "links": {
+        "15,6": [
+         7,
+         4,
+         6
+        ],
+        "4,6": [
+         5,
+         15,
+         6
+        ]
+       },
+       "pool": "NO_WILD_INDOORS_PERCENTAGES",
+       "theme": "room",
+       "scenes": [
+        {
+         "who": "Emy",
+         "trigger": {
+          "zone": [
+           9,
+           12,
+           9,
+           12
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_6"
+        },
+        {
+         "who": "Emy",
+         "trigger": {
+          "zone": [
+           9,
+           13,
+           9,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_6"
+        }
+       ],
+       "barred": [
+        {
+         "tiles": [
+          [
+           15,
+           6
+          ]
+         ],
+         "look": "unseen",
+         "until": {
+          "flag_condition": "tt_floor_6"
+         },
+         "lines": [
+          "The way up is blocked... Beat this floor's Trainers first!"
+         ]
+        }
+       ],
+       "parts": true,
+       "overheads": [
+        {
+         "kind": "picture",
+         "f": "fr_top/2_156.png",
+         "at": [
+          0,
+          0
+         ],
+         "size": [
+          18,
+          17
+         ]
+        }
+       ],
+       "moves": {
+        "10,12": {
+         "m": "face",
+         "d": "l"
+        },
+        "10,13": {
+         "m": "face",
+         "d": "l"
+        }
+       }
+      },
+      {
+       "art": [
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccc1.ccccccccc1.c",
+        "cccc..ccccccccc..c",
+        "cc....ccccccc....c",
+        "cc......ccc......c",
+        "cc..c....c....c..c",
+        "cc..ccccccccccc..c",
+        "cc........N......c",
+        "cc........N......c",
+        "cc..ccccccccccc..c",
+        "cc..c....c....c..c",
+        "cc.......c.......c"
+       ],
+       "exits": {},
+       "buildings": {},
+       "roofs": {
+        "_picture": {
+         "f": "fr_ground/2_157.png",
+         "at": [
+          0,
+          0
+         ]
+        },
+        "_signs_in_picture": true,
+        "_buildings_in_picture": true
+       },
+       "people": [
+        "Axe",
+        "Ren"
+       ],
+       "links": {
+        "15,6": [
+         8,
+         4,
+         6
+        ],
+        "4,6": [
+         6,
+         15,
+         6
+        ]
+       },
+       "pool": "NO_WILD_INDOORS_PERCENTAGES",
+       "theme": "room",
+       "scenes": [
+        {
+         "who": "Axe",
+         "trigger": {
+          "zone": [
+           9,
+           12,
+           9,
+           12
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_7"
+        },
+        {
+         "who": "Axe",
+         "trigger": {
+          "zone": [
+           9,
+           13,
+           9,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_7"
+        }
+       ],
+       "barred": [
+        {
+         "tiles": [
+          [
+           15,
+           6
+          ]
+         ],
+         "look": "unseen",
+         "until": {
+          "flag_condition": "tt_floor_7"
+         },
+         "lines": [
+          "The way up is blocked... Beat this floor's Trainers first!"
+         ]
+        }
+       ],
+       "parts": true,
+       "overheads": [
+        {
+         "kind": "picture",
+         "f": "fr_top/2_157.png",
+         "at": [
+          0,
+          0
+         ],
+         "size": [
+          18,
+          17
+         ]
+        }
+       ],
+       "moves": {
+        "10,12": {
+         "m": "face",
+         "d": "l"
+        },
+        "10,13": {
+         "m": "face",
+         "d": "l"
+        }
+       }
+      },
+      {
+       "art": [
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccc1.ccccccccc1.c",
+        "cccc..ccccccccc..c",
+        "cc....ccccccc....c",
+        "cc......ccc......c",
+        "cc..c....c....c..c",
+        "cc..ccccccccccc..c",
+        "cc........N......c",
+        "cc........N......c",
+        "cc..ccccccccccc..c",
+        "cc..c....c....c..c",
+        "cc.......c.......c"
+       ],
+       "exits": {},
+       "buildings": {},
+       "roofs": {
+        "_picture": {
+         "f": "fr_ground/2_158.png",
+         "at": [
+          0,
+          0
+         ]
+        },
+        "_signs_in_picture": true,
+        "_buildings_in_picture": true
+       },
+       "people": [
+        "Geb",
+        "Megan"
+       ],
+       "links": {
+        "15,6": [
+         9,
+         4,
+         6
+        ],
+        "4,6": [
+         7,
+         15,
+         6
+        ]
+       },
+       "pool": "NO_WILD_INDOORS_PERCENTAGES",
+       "theme": "room",
+       "scenes": [
+        {
+         "who": "Geb",
+         "trigger": {
+          "zone": [
+           9,
+           12,
+           9,
+           12
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_8"
+        },
+        {
+         "who": "Geb",
+         "trigger": {
+          "zone": [
+           9,
+           13,
+           9,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_8"
+        }
+       ],
+       "barred": [
+        {
+         "tiles": [
+          [
+           15,
+           6
+          ]
+         ],
+         "look": "unseen",
+         "until": {
+          "flag_condition": "tt_floor_8"
+         },
+         "lines": [
+          "The way up is blocked... Beat this floor's Trainers first!"
+         ]
+        }
+       ],
+       "parts": true,
+       "overheads": [
+        {
+         "kind": "picture",
+         "f": "fr_top/2_158.png",
+         "at": [
+          0,
+          0
+         ],
+         "size": [
+          18,
+          17
+         ]
+        }
+       ],
+       "moves": {
+        "10,12": {
+         "m": "face",
+         "d": "l"
+        },
+        "10,13": {
+         "m": "face",
+         "d": "l"
+        }
+       }
+      },
+      {
+       "art": [
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccAcccc",
+        "cccccccccccccDcccc",
+        "cccc1.cccccc....cc",
+        "cccc.....N......cc",
+        "cc..............cc",
+        "ccc............ccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc"
+       ],
+       "exits": {},
+       "buildings": {
+        "A": "house"
+       },
+       "roofs": {
+        "_picture": {
+         "f": "fr_ground/2_9.png",
+         "at": [
+          0,
+          0
+         ]
+        },
+        "_signs_in_picture": true,
+        "_buildings_in_picture": true
+       },
+       "people": [
+        "OWNER"
+       ],
+       "inside": {
+        "13,5": "lift"
+       },
+       "links": {
+        "4,6": [
+         8,
+         15,
+         6
+        ]
+       },
+       "moves": {
+        "9,7": {
+         "m": "face",
+         "d": "d"
+        }
+       },
+       "pool": "NO_WILD_INDOORS_PERCENTAGES",
+       "theme": "room",
+       "parts": true,
+       "overheads": [
+        {
+         "kind": "picture",
+         "f": "fr_top/2_9.png",
+         "at": [
+          0,
+          0
+         ],
+         "size": [
+          18,
+          16
+         ]
+        }
+       ]
+      }
+     ],
+     "rooms": {
+      "lift": {
+       "art": [
+        "ccccc",
+        "ccccc",
+        "!cccc",
+        ".....",
+        ".....",
+        "..v..",
+        "ccccc"
+       ],
+       "exits": {
+        "v": "OUT:13,5"
+       },
+       "buildings": {},
+       "roofs": {
+        "_picture": {
+         "f": "fr_ground/2_11.png",
+         "at": [
+          0,
+          0
+         ]
+        },
+        "_signs_in_picture": true,
+        "_buildings_in_picture": true
+       },
+       "signs": [
+        [
+         "The lift's floor buttons."
+        ]
+       ],
+       "sign_events": {
+        "0,2": "TOWER LIFT"
+       },
+       "land": {
+        "13,5": [
+         13,
+         4
+        ]
+       },
+       "overheads": [
+        {
+         "kind": "picture",
+         "f": "fr_top/2_11.png",
+         "at": [
+          0,
+          0
+         ],
+         "size": [
+          5,
+          7
+         ]
+        }
+       ],
+       "theme": "room",
+       "title": "Lift"
+      }
+     },
+     "floor_names": [
+      "Lobby",
+      "1F",
+      "2F",
+      "3F",
+      "4F",
+      "5F",
+      "6F",
+      "7F",
+      "8F",
+      "Roof"
+     ],
+     "figure_floors": {
+      "RECEPTIONIST": 0,
+      "NURSE": 0,
+      "CLERK": 0,
+      "Jen": 1,
+      "Kira": 1,
+      "Jo": 2,
+      "Haley": 2,
+      "Ric": 3,
+      "Rene": 3,
+      "Isac": 4,
+      "Mag": 4,
+      "Jos": 5,
+      "Anne": 5,
+      "Emy": 6,
+      "Alek": 6,
+      "Axe": 7,
+      "Ren": 7,
+      "Geb": 8,
+      "Megan": 8,
+      "OWNER": 9
+     }
+    }
+   },
+   {
+    "when": [
+     "tt_climb_KNOCKOUT"
+    ],
+    "map": {
+     "floors": [
+      {
+       "art": [
+        "ccccccccccccccccccc",
+        "ccccccccccccccccccc",
+        "ccccccc..1ccccccccc",
+        "ccccccc...ccccccccc",
+        "ccccccc.....ccccccc",
+        "cccccccmm.mmccccccc",
+        "ccccccccm.mcccccccc",
+        "ccccccccm.mNccccccc",
+        "cmccccccm.mcccccccc",
+        "cmccNccmc.mmccNcccc",
+        "cmmmmmmm!..mmmmcmcm",
+        "...................",
+        "..N................",
+        "............N......",
+        "...................",
+        "c.c.c....n....c.c.c",
+        "ccccccccccccccccccc"
+       ],
+       "exits": {
+        "n": "SEVEN_ISLAND"
+       },
+       "buildings": {},
+       "roofs": {
+        "_picture": {
+         "f": "fr_ground/2_10.png",
+         "at": [
+          0,
+          0
+         ]
+        },
+        "_signs_in_picture": true,
+        "_buildings_in_picture": true
+       },
+       "people": [
+        "RECEPTIONIST",
+        "NURSE",
+        "CLERK",
+        {
+         "text": "Balding man",
+         "action": "EVENT",
+         "event": {
+          "lines": [
+           "Gasp, gasp... Never mind battling! These stairs... They're tougher than any battle!"
+          ]
+         }
+        },
+        {
+         "text": "Cooltrainer",
+         "action": "EVENT",
+         "event": {
+          "lines": [
+           "I'm here to see how good I am. I wonder what kinds of Trainers are waiting for me... It's nerve-racking!"
+          ]
+         }
+        }
+       ],
+       "signs": [
+        [
+         "TRAINER TOWER",
+         "Climb to the top! The owner is waiting on the roof."
+        ]
+       ],
+       "links": {
+        "9,2": [
+         1,
+         4,
+         6
+        ]
+       },
+       "moves": {
+        "12,13": {
+         "m": "wander",
+         "d": "udlr",
+         "r": [
+          1,
+          1
+         ]
+        },
+        "2,12": {
+         "m": "look",
+         "d": "udlr"
+        },
+        "4,9": {
+         "m": "face",
+         "d": "d"
+        },
+        "14,9": {
+         "m": "face",
+         "d": "d"
+        },
+        "11,7": {
+         "m": "face",
+         "d": "l"
+        }
+       },
+       "pool": "NO_WILD_INDOORS_PERCENTAGES",
+       "theme": "room",
+       "barred": [
+        {
+         "tiles": [
+          [
+           9,
+           2
+          ]
+         ],
+         "look": "unseen",
+         "until": {
+          "flag_condition": "tt_on"
+         },
+         "lines": [
+          "Receptionist: Please sign up at the counter before you go up!"
+         ]
+        }
+       ],
+       "parts": true,
+       "overheads": [
+        {
+         "kind": "picture",
+         "f": "fr_top/2_10.png",
+         "at": [
+          0,
+          0
+         ],
+         "size": [
+          19,
+          17
+         ]
+        }
+       ]
+      },
+      {
+       "art": [
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccc1.ccccccccc1.c",
+        "cccc..ccccccccc..c",
+        "cc....ccccccc....c",
+        "cc......ccc......c",
+        "cc.cc....cN...cc.c",
+        "cc.......c.......c",
+        "ccc.cccccc..ccc..c",
+        "cc............Nc.c",
+        "ccc.cccccc..ccc..c",
+        "cc.......c.......c",
+        "cc.cc....cN...cc.c"
+       ],
+       "exits": {},
+       "buildings": {},
+       "roofs": {
+        "_picture": {
+         "f": "fr_ground/2_161.png",
+         "at": [
+          0,
+          0
+         ]
+        },
+        "_signs_in_picture": true,
+        "_buildings_in_picture": true
+       },
+       "people": [
+        "Ernest",
+        "Gabriel",
+        "Jordy"
+       ],
+       "links": {
+        "15,6": [
+         2,
+         4,
+         6
+        ],
+        "4,6": [
+         0,
+         9,
+         2
+        ]
+       },
+       "moves": {
+        "10,16": {
+         "m": "face",
+         "d": "u"
+        },
+        "10,10": {
+         "m": "face",
+         "d": "d"
+        },
+        "14,13": {
+         "m": "face",
+         "d": "l"
+        }
+       },
+       "pool": "NO_WILD_INDOORS_PERCENTAGES",
+       "theme": "room",
+       "scenes": [
+        {
+         "who": "Jordy",
+         "trigger": {
+          "zone": [
+           10,
+           13,
+           10,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_1"
+        }
+       ],
+       "barred": [
+        {
+         "tiles": [
+          [
+           15,
+           6
+          ]
+         ],
+         "look": "unseen",
+         "until": {
+          "flag_condition": "tt_floor_1"
+         },
+         "lines": [
+          "The way up is blocked... Beat this floor's Trainers first!"
+         ]
+        }
+       ],
+       "parts": true,
+       "overheads": [
+        {
+         "kind": "picture",
+         "f": "fr_top/2_161.png",
+         "at": [
+          0,
+          0
+         ],
+         "size": [
+          18,
+          17
+         ]
+        }
+       ]
+      },
+      {
+       "art": [
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccc1.ccccccccc1.c",
+        "cccc..ccccccccc..c",
+        "cc....ccccccc....c",
+        "cc......ccc......c",
+        "cc.cc....cN...cc.c",
+        "cc.......c.......c",
+        "ccc.cccccc..ccc..c",
+        "cc............Nc.c",
+        "ccc.cccccc..ccc..c",
+        "cc.......c.......c",
+        "cc.cc....cN...cc.c"
+       ],
+       "exits": {},
+       "buildings": {},
+       "roofs": {
+        "_picture": {
+         "f": "fr_ground/2_162.png",
+         "at": [
+          0,
+          0
+         ]
+        },
+        "_signs_in_picture": true,
+        "_buildings_in_picture": true
+       },
+       "people": [
+        "Rebecca",
+        "Nicolas",
+        "Mike"
+       ],
+       "links": {
+        "15,6": [
+         3,
+         4,
+         6
+        ],
+        "4,6": [
+         1,
+         15,
+         6
+        ]
+       },
+       "moves": {
+        "10,16": {
+         "m": "face",
+         "d": "u"
+        },
+        "10,10": {
+         "m": "face",
+         "d": "d"
+        },
+        "14,13": {
+         "m": "face",
+         "d": "l"
+        }
+       },
+       "pool": "NO_WILD_INDOORS_PERCENTAGES",
+       "theme": "room",
+       "scenes": [
+        {
+         "who": "Mike",
+         "trigger": {
+          "zone": [
+           10,
+           13,
+           10,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_2"
+        }
+       ],
+       "barred": [
+        {
+         "tiles": [
+          [
+           15,
+           6
+          ]
+         ],
+         "look": "unseen",
+         "until": {
+          "flag_condition": "tt_floor_2"
+         },
+         "lines": [
+          "The way up is blocked... Beat this floor's Trainers first!"
+         ]
+        }
+       ],
+       "parts": true,
+       "overheads": [
+        {
+         "kind": "picture",
+         "f": "fr_top/2_162.png",
+         "at": [
+          0,
+          0
+         ],
+         "size": [
+          18,
+          17
+         ]
+        }
+       ]
+      },
+      {
+       "art": [
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccc1.ccccccccc1.c",
+        "cccc..ccccccccc..c",
+        "cc....ccccccc....c",
+        "cc......ccc......c",
+        "cc.cc....cN...cc.c",
+        "cc.......c.......c",
+        "ccc.cccccc..ccc..c",
+        "cc............Nc.c",
+        "ccc.cccccc..ccc..c",
+        "cc.......c.......c",
+        "cc.cc....cN...cc.c"
+       ],
+       "exits": {},
+       "buildings": {},
+       "roofs": {
+        "_picture": {
+         "f": "fr_ground/2_163.png",
+         "at": [
+          0,
+          0
+         ]
+        },
+        "_signs_in_picture": true,
+        "_buildings_in_picture": true
+       },
+       "people": [
+        "Natalia",
+        "Kathleen",
+        "Camryn"
+       ],
+       "links": {
+        "15,6": [
+         4,
+         4,
+         6
+        ],
+        "4,6": [
+         2,
+         15,
+         6
+        ]
+       },
+       "moves": {
+        "10,16": {
+         "m": "face",
+         "d": "u"
+        },
+        "10,10": {
+         "m": "face",
+         "d": "d"
+        },
+        "14,13": {
+         "m": "face",
+         "d": "l"
+        }
+       },
+       "pool": "NO_WILD_INDOORS_PERCENTAGES",
+       "theme": "room",
+       "scenes": [
+        {
+         "who": "Camryn",
+         "trigger": {
+          "zone": [
+           10,
+           13,
+           10,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_3"
+        }
+       ],
+       "barred": [
+        {
+         "tiles": [
+          [
+           15,
+           6
+          ]
+         ],
+         "look": "unseen",
+         "until": {
+          "flag_condition": "tt_floor_3"
+         },
+         "lines": [
+          "The way up is blocked... Beat this floor's Trainers first!"
+         ]
+        }
+       ],
+       "parts": true,
+       "overheads": [
+        {
+         "kind": "picture",
+         "f": "fr_top/2_163.png",
+         "at": [
+          0,
+          0
+         ],
+         "size": [
+          18,
+          17
+         ]
+        }
+       ]
+      },
+      {
+       "art": [
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccc1.ccccccccc1.c",
+        "cccc..ccccccccc..c",
+        "cc....ccccccc....c",
+        "cc......ccc......c",
+        "cc.cc....cN...cc.c",
+        "cc.......c.......c",
+        "ccc.cccccc..ccc..c",
+        "cc............Nc.c",
+        "ccc.cccccc..ccc..c",
+        "cc.......c.......c",
+        "cc.cc....cN...cc.c"
+       ],
+       "exits": {},
+       "buildings": {},
+       "roofs": {
+        "_picture": {
+         "f": "fr_ground/2_164.png",
+         "at": [
+          0,
+          0
+         ]
+        },
+        "_signs_in_picture": true,
+        "_buildings_in_picture": true
+       },
+       "people": [
+        "Kaden",
+        "Emanuel",
+        "Brennan"
+       ],
+       "links": {
+        "15,6": [
+         5,
+         4,
+         6
+        ],
+        "4,6": [
+         3,
+         15,
+         6
+        ]
+       },
+       "moves": {
+        "10,16": {
+         "m": "face",
+         "d": "u"
+        },
+        "10,10": {
+         "m": "face",
+         "d": "d"
+        },
+        "14,13": {
+         "m": "face",
+         "d": "l"
+        }
+       },
+       "pool": "NO_WILD_INDOORS_PERCENTAGES",
+       "theme": "room",
+       "scenes": [
+        {
+         "who": "Brennan",
+         "trigger": {
+          "zone": [
+           10,
+           13,
+           10,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_4"
+        }
+       ],
+       "barred": [
+        {
+         "tiles": [
+          [
+           15,
+           6
+          ]
+         ],
+         "look": "unseen",
+         "until": {
+          "flag_condition": "tt_floor_4"
+         },
+         "lines": [
+          "The way up is blocked... Beat this floor's Trainers first!"
+         ]
+        }
+       ],
+       "parts": true,
+       "overheads": [
+        {
+         "kind": "picture",
+         "f": "fr_top/2_164.png",
+         "at": [
+          0,
+          0
+         ],
+         "size": [
+          18,
+          17
+         ]
+        }
+       ]
+      },
+      {
+       "art": [
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccc1.ccccccccc1.c",
+        "cccc..ccccccccc..c",
+        "cc....ccccccc....c",
+        "cc......ccc......c",
+        "cc.cc....cN...cc.c",
+        "cc.......c.......c",
+        "ccc.cccccc..ccc..c",
+        "cc............Nc.c",
+        "ccc.cccccc..ccc..c",
+        "cc.......c.......c",
+        "cc.cc....cN...cc.c"
+       ],
+       "exits": {},
+       "buildings": {},
+       "roofs": {
+        "_picture": {
+         "f": "fr_ground/2_165.png",
+         "at": [
+          0,
+          0
+         ]
+        },
+        "_signs_in_picture": true,
+        "_buildings_in_picture": true
+       },
+       "people": [
+        "Mikaela",
+        "Flint",
+        "Maura"
+       ],
+       "links": {
+        "15,6": [
+         6,
+         4,
+         6
+        ],
+        "4,6": [
+         4,
+         15,
+         6
+        ]
+       },
+       "moves": {
+        "10,16": {
+         "m": "face",
+         "d": "u"
+        },
+        "10,10": {
+         "m": "face",
+         "d": "d"
+        },
+        "14,13": {
+         "m": "face",
+         "d": "l"
+        }
+       },
+       "pool": "NO_WILD_INDOORS_PERCENTAGES",
+       "theme": "room",
+       "scenes": [
+        {
+         "who": "Maura",
+         "trigger": {
+          "zone": [
+           10,
+           13,
+           10,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_5"
+        }
+       ],
+       "barred": [
+        {
+         "tiles": [
+          [
+           15,
+           6
+          ]
+         ],
+         "look": "unseen",
+         "until": {
+          "flag_condition": "tt_floor_5"
+         },
+         "lines": [
+          "The way up is blocked... Beat this floor's Trainers first!"
+         ]
+        }
+       ],
+       "parts": true,
+       "overheads": [
+        {
+         "kind": "picture",
+         "f": "fr_top/2_165.png",
+         "at": [
+          0,
+          0
+         ],
+         "size": [
+          18,
+          17
+         ]
+        }
+       ]
+      },
+      {
+       "art": [
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccc1.ccccccccc1.c",
+        "cccc..ccccccccc..c",
+        "cc....ccccccc....c",
+        "cc......ccc......c",
+        "cc.cc....cN...cc.c",
+        "cc.......c.......c",
+        "ccc.cccccc..ccc..c",
+        "cc............Nc.c",
+        "ccc.cccccc..ccc..c",
+        "cc.......c.......c",
+        "cc.cc....cN...cc.c"
+       ],
+       "exits": {},
+       "buildings": {},
+       "roofs": {
+        "_picture": {
+         "f": "fr_ground/2_166.png",
+         "at": [
+          0,
+          0
+         ]
+        },
+        "_signs_in_picture": true,
+        "_buildings_in_picture": true
+       },
+       "people": [
+        "Camden",
+        "Zackery",
+        "Ben"
+       ],
+       "links": {
+        "15,6": [
+         7,
+         4,
+         6
+        ],
+        "4,6": [
+         5,
+         15,
+         6
+        ]
+       },
+       "moves": {
+        "10,16": {
+         "m": "face",
+         "d": "u"
+        },
+        "10,10": {
+         "m": "face",
+         "d": "d"
+        },
+        "14,13": {
+         "m": "face",
+         "d": "l"
+        }
+       },
+       "pool": "NO_WILD_INDOORS_PERCENTAGES",
+       "theme": "room",
+       "scenes": [
+        {
+         "who": "Ben",
+         "trigger": {
+          "zone": [
+           10,
+           13,
+           10,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_6"
+        }
+       ],
+       "barred": [
+        {
+         "tiles": [
+          [
+           15,
+           6
+          ]
+         ],
+         "look": "unseen",
+         "until": {
+          "flag_condition": "tt_floor_6"
+         },
+         "lines": [
+          "The way up is blocked... Beat this floor's Trainers first!"
+         ]
+        }
+       ],
+       "parts": true,
+       "overheads": [
+        {
+         "kind": "picture",
+         "f": "fr_top/2_166.png",
+         "at": [
+          0,
+          0
+         ],
+         "size": [
+          18,
+          17
+         ]
+        }
+       ]
+      },
+      {
+       "art": [
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccc1.ccccccccc1.c",
+        "cccc..ccccccccc..c",
+        "cc....ccccccc....c",
+        "cc......ccc......c",
+        "cc.cc....cN...cc.c",
+        "cc.......c.......c",
+        "ccc.cccccc..ccc..c",
+        "cc............Nc.c",
+        "ccc.cccccc..ccc..c",
+        "cc.......c.......c",
+        "cc.cc....cN...cc.c"
+       ],
+       "exits": {},
+       "buildings": {},
+       "roofs": {
+        "_picture": {
+         "f": "fr_ground/2_167.png",
+         "at": [
+          0,
+          0
+         ]
+        },
+        "_signs_in_picture": true,
+        "_buildings_in_picture": true
+       },
+       "people": [
+        "Charlotte",
+        "Shania",
+        "Priscilla"
+       ],
+       "links": {
+        "15,6": [
+         8,
+         4,
+         6
+        ],
+        "4,6": [
+         6,
+         15,
+         6
+        ]
+       },
+       "moves": {
+        "10,16": {
+         "m": "face",
+         "d": "u"
+        },
+        "10,10": {
+         "m": "face",
+         "d": "d"
+        },
+        "14,13": {
+         "m": "face",
+         "d": "l"
+        }
+       },
+       "pool": "NO_WILD_INDOORS_PERCENTAGES",
+       "theme": "room",
+       "scenes": [
+        {
+         "who": "Priscilla",
+         "trigger": {
+          "zone": [
+           10,
+           13,
+           10,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_7"
+        }
+       ],
+       "barred": [
+        {
+         "tiles": [
+          [
+           15,
+           6
+          ]
+         ],
+         "look": "unseen",
+         "until": {
+          "flag_condition": "tt_floor_7"
+         },
+         "lines": [
+          "The way up is blocked... Beat this floor's Trainers first!"
+         ]
+        }
+       ],
+       "parts": true,
+       "overheads": [
+        {
+         "kind": "picture",
+         "f": "fr_top/2_167.png",
+         "at": [
+          0,
+          0
+         ],
+         "size": [
+          18,
+          17
+         ]
+        }
+       ]
+      },
+      {
+       "art": [
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccc1.ccccccccc1.c",
+        "cccc..ccccccccc..c",
+        "cc....ccccccc....c",
+        "cc......ccc......c",
+        "cc.cc....cN...cc.c",
+        "cc.......c.......c",
+        "ccc.cccccc..ccc..c",
+        "cc............Nc.c",
+        "ccc.cccccc..ccc..c",
+        "cc.......c.......c",
+        "cc.cc....cN...cc.c"
+       ],
+       "exits": {},
+       "buildings": {},
+       "roofs": {
+        "_picture": {
+         "f": "fr_ground/2_168.png",
+         "at": [
+          0,
+          0
+         ]
+        },
+        "_signs_in_picture": true,
+        "_buildings_in_picture": true
+       },
+       "people": [
+        "Trenton",
+        "Albert",
+        "Chelsea"
+       ],
+       "links": {
+        "15,6": [
+         9,
+         4,
+         6
+        ],
+        "4,6": [
+         7,
+         15,
+         6
+        ]
+       },
+       "moves": {
+        "10,16": {
+         "m": "face",
+         "d": "u"
+        },
+        "10,10": {
+         "m": "face",
+         "d": "d"
+        },
+        "14,13": {
+         "m": "face",
+         "d": "l"
+        }
+       },
+       "pool": "NO_WILD_INDOORS_PERCENTAGES",
+       "theme": "room",
+       "scenes": [
+        {
+         "who": "Chelsea",
+         "trigger": {
+          "zone": [
+           10,
+           13,
+           10,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_8"
+        }
+       ],
+       "barred": [
+        {
+         "tiles": [
+          [
+           15,
+           6
+          ]
+         ],
+         "look": "unseen",
+         "until": {
+          "flag_condition": "tt_floor_8"
+         },
+         "lines": [
+          "The way up is blocked... Beat this floor's Trainers first!"
+         ]
+        }
+       ],
+       "parts": true,
+       "overheads": [
+        {
+         "kind": "picture",
+         "f": "fr_top/2_168.png",
+         "at": [
+          0,
+          0
+         ],
+         "size": [
+          18,
+          17
+         ]
+        }
+       ]
+      },
+      {
+       "art": [
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccAcccc",
+        "cccccccccccccDcccc",
+        "cccc1.cccccc....cc",
+        "cccc.....N......cc",
+        "cc..............cc",
+        "ccc............ccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc"
+       ],
+       "exits": {},
+       "buildings": {
+        "A": "house"
+       },
+       "roofs": {
+        "_picture": {
+         "f": "fr_ground/2_9.png",
+         "at": [
+          0,
+          0
+         ]
+        },
+        "_signs_in_picture": true,
+        "_buildings_in_picture": true
+       },
+       "people": [
+        "OWNER"
+       ],
+       "inside": {
+        "13,5": "lift"
+       },
+       "links": {
+        "4,6": [
+         8,
+         15,
+         6
+        ]
+       },
+       "moves": {
+        "9,7": {
+         "m": "face",
+         "d": "d"
+        }
+       },
+       "pool": "NO_WILD_INDOORS_PERCENTAGES",
+       "theme": "room",
+       "parts": true,
+       "overheads": [
+        {
+         "kind": "picture",
+         "f": "fr_top/2_9.png",
+         "at": [
+          0,
+          0
+         ],
+         "size": [
+          18,
+          16
+         ]
+        }
+       ]
+      }
+     ],
+     "rooms": {
+      "lift": {
+       "art": [
+        "ccccc",
+        "ccccc",
+        "!cccc",
+        ".....",
+        ".....",
+        "..v..",
+        "ccccc"
+       ],
+       "exits": {
+        "v": "OUT:13,5"
+       },
+       "buildings": {},
+       "roofs": {
+        "_picture": {
+         "f": "fr_ground/2_11.png",
+         "at": [
+          0,
+          0
+         ]
+        },
+        "_signs_in_picture": true,
+        "_buildings_in_picture": true
+       },
+       "signs": [
+        [
+         "The lift's floor buttons."
+        ]
+       ],
+       "sign_events": {
+        "0,2": "TOWER LIFT"
+       },
+       "land": {
+        "13,5": [
+         13,
+         4
+        ]
+       },
+       "overheads": [
+        {
+         "kind": "picture",
+         "f": "fr_top/2_11.png",
+         "at": [
+          0,
+          0
+         ],
+         "size": [
+          5,
+          7
+         ]
+        }
+       ],
+       "theme": "room",
+       "title": "Lift"
+      }
+     },
+     "floor_names": [
+      "Lobby",
+      "1F",
+      "2F",
+      "3F",
+      "4F",
+      "5F",
+      "6F",
+      "7F",
+      "8F",
+      "Roof"
+     ],
+     "figure_floors": {
+      "RECEPTIONIST": 0,
+      "NURSE": 0,
+      "CLERK": 0,
+      "Ernest": 1,
+      "Gabriel": 1,
+      "Jordy": 1,
+      "Rebecca": 2,
+      "Nicolas": 2,
+      "Mike": 2,
+      "Natalia": 3,
+      "Kathleen": 3,
+      "Camryn": 3,
+      "Kaden": 4,
+      "Emanuel": 4,
+      "Brennan": 4,
+      "Mikaela": 5,
+      "Flint": 5,
+      "Maura": 5,
+      "Camden": 6,
+      "Zackery": 6,
+      "Ben": 6,
+      "Charlotte": 7,
+      "Shania": 7,
+      "Priscilla": 7,
+      "Trenton": 8,
+      "Albert": 8,
+      "Chelsea": 8,
+      "OWNER": 9
+     }
+    }
+   },
+   {
+    "when": [
+     "tt_climb_MIXED"
+    ],
+    "map": {
+     "floors": [
+      {
+       "art": [
+        "ccccccccccccccccccc",
+        "ccccccccccccccccccc",
+        "ccccccc..1ccccccccc",
+        "ccccccc...ccccccccc",
+        "ccccccc.....ccccccc",
+        "cccccccmm.mmccccccc",
+        "ccccccccm.mcccccccc",
+        "ccccccccm.mNccccccc",
+        "cmccccccm.mcccccccc",
+        "cmccNccmc.mmccNcccc",
+        "cmmmmmmm!..mmmmcmcm",
+        "...................",
+        "..N................",
+        "............N......",
+        "...................",
+        "c.c.c....n....c.c.c",
+        "ccccccccccccccccccc"
+       ],
+       "exits": {
+        "n": "SEVEN_ISLAND"
+       },
+       "buildings": {},
+       "roofs": {
+        "_picture": {
+         "f": "fr_ground/2_10.png",
+         "at": [
+          0,
+          0
+         ]
+        },
+        "_signs_in_picture": true,
+        "_buildings_in_picture": true
+       },
+       "people": [
+        "RECEPTIONIST",
+        "NURSE",
+        "CLERK",
+        {
+         "text": "Balding man",
+         "action": "EVENT",
+         "event": {
+          "lines": [
+           "Gasp, gasp... Never mind battling! These stairs... They're tougher than any battle!"
+          ]
+         }
+        },
+        {
+         "text": "Cooltrainer",
+         "action": "EVENT",
+         "event": {
+          "lines": [
+           "I'm here to see how good I am. I wonder what kinds of Trainers are waiting for me... It's nerve-racking!"
+          ]
+         }
+        }
+       ],
+       "signs": [
+        [
+         "TRAINER TOWER",
+         "Climb to the top! The owner is waiting on the roof."
+        ]
+       ],
+       "links": {
+        "9,2": [
+         1,
+         4,
+         6
+        ]
+       },
+       "moves": {
+        "12,13": {
+         "m": "wander",
+         "d": "udlr",
+         "r": [
+          1,
+          1
+         ]
+        },
+        "2,12": {
+         "m": "look",
+         "d": "udlr"
+        },
+        "4,9": {
+         "m": "face",
+         "d": "d"
+        },
+        "14,9": {
+         "m": "face",
+         "d": "d"
+        },
+        "11,7": {
+         "m": "face",
+         "d": "l"
+        }
+       },
+       "pool": "NO_WILD_INDOORS_PERCENTAGES",
+       "theme": "room",
+       "barred": [
+        {
+         "tiles": [
+          [
+           9,
+           2
+          ]
+         ],
+         "look": "unseen",
+         "until": {
+          "flag_condition": "tt_on"
+         },
+         "lines": [
+          "Receptionist: Please sign up at the counter before you go up!"
+         ]
+        }
+       ],
+       "parts": true,
+       "overheads": [
+        {
+         "kind": "picture",
+         "f": "fr_top/2_10.png",
+         "at": [
+          0,
+          0
+         ],
+         "size": [
+          19,
+          17
+         ]
+        }
+       ]
+      },
+      {
+       "art": [
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccc1.ccccccccc1.c",
+        "cccc..ccccccccc..c",
+        "cc....ccccccc....c",
+        "cc......ccc......c",
+        "cc.c.....c.....c.c",
+        "cc.c.....c.....c.c",
+        "cc.c.....c.....c.c",
+        "cc.............N.c",
+        "cc.c.....c.....c.c",
+        "cc.c.....c.....c.c",
+        "cc.c.....c.....c.c"
+       ],
+       "exits": {},
+       "buildings": {},
+       "roofs": {
+        "_picture": {
+         "f": "fr_ground/2_1.png",
+         "at": [
+          0,
+          0
+         ]
+        },
+        "_signs_in_picture": true,
+        "_buildings_in_picture": true
+       },
+       "people": [
+        "Allyson"
+       ],
+       "links": {
+        "15,6": [
+         2,
+         4,
+         6
+        ],
+        "4,6": [
+         0,
+         9,
+         2
+        ]
+       },
+       "moves": {
+        "15,13": {
+         "m": "face",
+         "d": "l"
+        }
+       },
+       "pool": "NO_WILD_INDOORS_PERCENTAGES",
+       "theme": "room",
+       "scenes": [
+        {
+         "who": "Allyson",
+         "trigger": {
+          "zone": [
+           10,
+           13,
+           10,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_1"
+        }
+       ],
+       "barred": [
+        {
+         "tiles": [
+          [
+           15,
+           6
+          ]
+         ],
+         "look": "unseen",
+         "until": {
+          "flag_condition": "tt_floor_1"
+         },
+         "lines": [
+          "The way up is blocked... Beat this floor's Trainers first!"
+         ]
+        }
+       ],
+       "parts": true,
+       "overheads": [
+        {
+         "kind": "picture",
+         "f": "fr_top/2_1.png",
+         "at": [
+          0,
+          0
+         ],
+         "size": [
+          18,
+          17
+         ]
+        }
+       ]
+      },
+      {
+       "art": [
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccc1.ccccccccc1.c",
+        "cccc..ccccccccc..c",
+        "cc....ccccccc....c",
+        "cc......ccc......c",
+        "cc.c.....c.....c.c",
+        "cc.c.....c.....c.c",
+        "cc.c.....c.....c.c",
+        "cc.............N.c",
+        "cc.c.....c.....c.c",
+        "cc.c.....c.....c.c",
+        "cc.c.....c.....c.c"
+       ],
+       "exits": {},
+       "buildings": {},
+       "roofs": {
+        "_picture": {
+         "f": "fr_ground/2_2.png",
+         "at": [
+          0,
+          0
+         ]
+        },
+        "_signs_in_picture": true,
+        "_buildings_in_picture": true
+       },
+       "people": [
+        "Lorenzo"
+       ],
+       "links": {
+        "15,6": [
+         3,
+         4,
+         6
+        ],
+        "4,6": [
+         1,
+         15,
+         6
+        ]
+       },
+       "moves": {
+        "15,13": {
+         "m": "face",
+         "d": "l"
+        }
+       },
+       "pool": "NO_WILD_INDOORS_PERCENTAGES",
+       "theme": "room",
+       "scenes": [
+        {
+         "who": "Lorenzo",
+         "trigger": {
+          "zone": [
+           10,
+           13,
+           10,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_2"
+        }
+       ],
+       "barred": [
+        {
+         "tiles": [
+          [
+           15,
+           6
+          ]
+         ],
+         "look": "unseen",
+         "until": {
+          "flag_condition": "tt_floor_2"
+         },
+         "lines": [
+          "The way up is blocked... Beat this floor's Trainers first!"
+         ]
+        }
+       ],
+       "parts": true,
+       "overheads": [
+        {
+         "kind": "picture",
+         "f": "fr_top/2_2.png",
+         "at": [
+          0,
+          0
+         ],
+         "size": [
+          18,
+          17
+         ]
+        }
+       ]
+      },
+      {
+       "art": [
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccc1.ccccccccc1.c",
+        "cccc..ccccccccc..c",
+        "cc....ccccccc....c",
+        "cc......ccc......c",
+        "cc.c.....c.....c.c",
+        "cc.c.....c.....c.c",
+        "cc.c.....c.....c.c",
+        "cc.............N.c",
+        "cc.c.....c.....c.c",
+        "cc.c.....c.....c.c",
+        "cc.c.....c.....c.c"
+       ],
+       "exits": {},
+       "buildings": {},
+       "roofs": {
+        "_picture": {
+         "f": "fr_ground/2_3.png",
+         "at": [
+          0,
+          0
+         ]
+        },
+        "_signs_in_picture": true,
+        "_buildings_in_picture": true
+       },
+       "people": [
+        "Owen"
+       ],
+       "links": {
+        "15,6": [
+         4,
+         4,
+         6
+        ],
+        "4,6": [
+         2,
+         15,
+         6
+        ]
+       },
+       "moves": {
+        "15,13": {
+         "m": "face",
+         "d": "l"
+        }
+       },
+       "pool": "NO_WILD_INDOORS_PERCENTAGES",
+       "theme": "room",
+       "scenes": [
+        {
+         "who": "Owen",
+         "trigger": {
+          "zone": [
+           10,
+           13,
+           10,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_3"
+        }
+       ],
+       "barred": [
+        {
+         "tiles": [
+          [
+           15,
+           6
+          ]
+         ],
+         "look": "unseen",
+         "until": {
+          "flag_condition": "tt_floor_3"
+         },
+         "lines": [
+          "The way up is blocked... Beat this floor's Trainers first!"
+         ]
+        }
+       ],
+       "parts": true,
+       "overheads": [
+        {
+         "kind": "picture",
+         "f": "fr_top/2_3.png",
+         "at": [
+          0,
+          0
+         ],
+         "size": [
+          18,
+          17
+         ]
+        }
+       ]
+      },
+      {
+       "art": [
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccc1.ccccccccc1.c",
+        "cccc..ccccccccc..c",
+        "cc....ccccccc....c",
+        "cc......ccc......c",
+        "cc..c....c....c..c",
+        "cc..ccccccccccc..c",
+        "cc........N......c",
+        "cc........N......c",
+        "cc..ccccccccccc..c",
+        "cc..c....c....c..c",
+        "cc.......c.......c"
+       ],
+       "exits": {},
+       "buildings": {},
+       "roofs": {
+        "_picture": {
+         "f": "fr_ground/2_154.png",
+         "at": [
+          0,
+          0
+         ]
+        },
+        "_signs_in_picture": true,
+        "_buildings_in_picture": true
+       },
+       "people": [
+        "Geb",
+        "Megan"
+       ],
+       "links": {
+        "15,6": [
+         5,
+         4,
+         6
+        ],
+        "4,6": [
+         3,
+         15,
+         6
+        ]
+       },
+       "pool": "NO_WILD_INDOORS_PERCENTAGES",
+       "theme": "room",
+       "scenes": [
+        {
+         "who": "Geb",
+         "trigger": {
+          "zone": [
+           9,
+           12,
+           9,
+           12
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_4"
+        },
+        {
+         "who": "Geb",
+         "trigger": {
+          "zone": [
+           9,
+           13,
+           9,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_4"
+        }
+       ],
+       "barred": [
+        {
+         "tiles": [
+          [
+           15,
+           6
+          ]
+         ],
+         "look": "unseen",
+         "until": {
+          "flag_condition": "tt_floor_4"
+         },
+         "lines": [
+          "The way up is blocked... Beat this floor's Trainers first!"
+         ]
+        }
+       ],
+       "parts": true,
+       "overheads": [
+        {
+         "kind": "picture",
+         "f": "fr_top/2_154.png",
+         "at": [
+          0,
+          0
+         ],
+         "size": [
+          18,
+          17
+         ]
+        }
+       ],
+       "moves": {
+        "10,12": {
+         "m": "face",
+         "d": "l"
+        },
+        "10,13": {
+         "m": "face",
+         "d": "l"
+        }
+       }
+      },
+      {
+       "art": [
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccc1.ccccccccc1.c",
+        "cccc..ccccccccc..c",
+        "cc....ccccccc....c",
+        "cc......ccc......c",
+        "cc..c....c....c..c",
+        "cc..ccccccccccc..c",
+        "cc........N......c",
+        "cc........N......c",
+        "cc..ccccccccccc..c",
+        "cc..c....c....c..c",
+        "cc.......c.......c"
+       ],
+       "exits": {},
+       "buildings": {},
+       "roofs": {
+        "_picture": {
+         "f": "fr_ground/2_155.png",
+         "at": [
+          0,
+          0
+         ]
+        },
+        "_signs_in_picture": true,
+        "_buildings_in_picture": true
+       },
+       "people": [
+        "Kat",
+        "Kipp"
+       ],
+       "links": {
+        "15,6": [
+         6,
+         4,
+         6
+        ],
+        "4,6": [
+         4,
+         15,
+         6
+        ]
+       },
+       "pool": "NO_WILD_INDOORS_PERCENTAGES",
+       "theme": "room",
+       "scenes": [
+        {
+         "who": "Kat",
+         "trigger": {
+          "zone": [
+           9,
+           12,
+           9,
+           12
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_5"
+        },
+        {
+         "who": "Kat",
+         "trigger": {
+          "zone": [
+           9,
+           13,
+           9,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_5"
+        }
+       ],
+       "barred": [
+        {
+         "tiles": [
+          [
+           15,
+           6
+          ]
+         ],
+         "look": "unseen",
+         "until": {
+          "flag_condition": "tt_floor_5"
+         },
+         "lines": [
+          "The way up is blocked... Beat this floor's Trainers first!"
+         ]
+        }
+       ],
+       "parts": true,
+       "overheads": [
+        {
+         "kind": "picture",
+         "f": "fr_top/2_155.png",
+         "at": [
+          0,
+          0
+         ],
+         "size": [
+          18,
+          17
+         ]
+        }
+       ],
+       "moves": {
+        "10,12": {
+         "m": "face",
+         "d": "l"
+        },
+        "10,13": {
+         "m": "face",
+         "d": "l"
+        }
+       }
+      },
+      {
+       "art": [
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccc1.ccccccccc1.c",
+        "cccc..ccccccccc..c",
+        "cc....ccccccc....c",
+        "cc......ccc......c",
+        "cc.cc....cN...cc.c",
+        "cc.......c.......c",
+        "ccc.cccccc..ccc..c",
+        "cc............Nc.c",
+        "ccc.cccccc..ccc..c",
+        "cc.......c.......c",
+        "cc.cc....cN...cc.c"
+       ],
+       "exits": {},
+       "buildings": {},
+       "roofs": {
+        "_picture": {
+         "f": "fr_ground/2_166.png",
+         "at": [
+          0,
+          0
+         ]
+        },
+        "_signs_in_picture": true,
+        "_buildings_in_picture": true
+       },
+       "people": [
+        "Trenton",
+        "Albert",
+        "Chelsea"
+       ],
+       "links": {
+        "15,6": [
+         7,
+         4,
+         6
+        ],
+        "4,6": [
+         5,
+         15,
+         6
+        ]
+       },
+       "moves": {
+        "10,16": {
+         "m": "face",
+         "d": "u"
+        },
+        "10,10": {
+         "m": "face",
+         "d": "d"
+        },
+        "14,13": {
+         "m": "face",
+         "d": "l"
+        }
+       },
+       "pool": "NO_WILD_INDOORS_PERCENTAGES",
+       "theme": "room",
+       "scenes": [
+        {
+         "who": "Chelsea",
+         "trigger": {
+          "zone": [
+           10,
+           13,
+           10,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_6"
+        }
+       ],
+       "barred": [
+        {
+         "tiles": [
+          [
+           15,
+           6
+          ]
+         ],
+         "look": "unseen",
+         "until": {
+          "flag_condition": "tt_floor_6"
+         },
+         "lines": [
+          "The way up is blocked... Beat this floor's Trainers first!"
+         ]
+        }
+       ],
+       "parts": true,
+       "overheads": [
+        {
+         "kind": "picture",
+         "f": "fr_top/2_166.png",
+         "at": [
+          0,
+          0
+         ],
+         "size": [
+          18,
+          17
+         ]
+        }
+       ]
+      },
+      {
+       "art": [
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccc1.ccccccccc1.c",
+        "cccc..ccccccccc..c",
+        "cc....ccccccc....c",
+        "cc......ccc......c",
+        "cc..c....c....c..c",
+        "cc..ccccccccccc..c",
+        "cc........N......c",
+        "cc........N......c",
+        "cc..ccccccccccc..c",
+        "cc..c....c....c..c",
+        "cc.......c.......c"
+       ],
+       "exits": {},
+       "buildings": {},
+       "roofs": {
+        "_picture": {
+         "f": "fr_ground/2_157.png",
+         "at": [
+          0,
+          0
+         ]
+        },
+        "_signs_in_picture": true,
+        "_buildings_in_picture": true
+       },
+       "people": [
+        "Ric",
+        "Rene"
+       ],
+       "links": {
+        "15,6": [
+         8,
+         4,
+         6
+        ],
+        "4,6": [
+         6,
+         15,
+         6
+        ]
+       },
+       "pool": "NO_WILD_INDOORS_PERCENTAGES",
+       "theme": "room",
+       "scenes": [
+        {
+         "who": "Ric",
+         "trigger": {
+          "zone": [
+           9,
+           12,
+           9,
+           12
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_7"
+        },
+        {
+         "who": "Ric",
+         "trigger": {
+          "zone": [
+           9,
+           13,
+           9,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_7"
+        }
+       ],
+       "barred": [
+        {
+         "tiles": [
+          [
+           15,
+           6
+          ]
+         ],
+         "look": "unseen",
+         "until": {
+          "flag_condition": "tt_floor_7"
+         },
+         "lines": [
+          "The way up is blocked... Beat this floor's Trainers first!"
+         ]
+        }
+       ],
+       "parts": true,
+       "overheads": [
+        {
+         "kind": "picture",
+         "f": "fr_top/2_157.png",
+         "at": [
+          0,
+          0
+         ],
+         "size": [
+          18,
+          17
+         ]
+        }
+       ],
+       "moves": {
+        "10,12": {
+         "m": "face",
+         "d": "l"
+        },
+        "10,13": {
+         "m": "face",
+         "d": "l"
+        }
+       }
+      },
+      {
+       "art": [
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccc1.ccccccccc1.c",
+        "cccc..ccccccccc..c",
+        "cc....ccccccc....c",
+        "cc......ccc......c",
+        "cc.cc....cN...cc.c",
+        "cc.......c.......c",
+        "ccc.cccccc..ccc..c",
+        "cc............Nc.c",
+        "ccc.cccccc..ccc..c",
+        "cc.......c.......c",
+        "cc.cc....cN...cc.c"
+       ],
+       "exits": {},
+       "buildings": {},
+       "roofs": {
+        "_picture": {
+         "f": "fr_ground/2_168.png",
+         "at": [
+          0,
+          0
+         ]
+        },
+        "_signs_in_picture": true,
+        "_buildings_in_picture": true
+       },
+       "people": [
+        "Rebecca",
+        "Nicolas",
+        "Mike"
+       ],
+       "links": {
+        "15,6": [
+         9,
+         4,
+         6
+        ],
+        "4,6": [
+         7,
+         15,
+         6
+        ]
+       },
+       "moves": {
+        "10,16": {
+         "m": "face",
+         "d": "u"
+        },
+        "10,10": {
+         "m": "face",
+         "d": "d"
+        },
+        "14,13": {
+         "m": "face",
+         "d": "l"
+        }
+       },
+       "pool": "NO_WILD_INDOORS_PERCENTAGES",
+       "theme": "room",
+       "scenes": [
+        {
+         "who": "Mike",
+         "trigger": {
+          "zone": [
+           10,
+           13,
+           10,
+           13
+          ]
+         },
+         "approach": true,
+         "then": "talk",
+         "every": true,
+         "condition": "not:tt_floor_8"
+        }
+       ],
+       "barred": [
+        {
+         "tiles": [
+          [
+           15,
+           6
+          ]
+         ],
+         "look": "unseen",
+         "until": {
+          "flag_condition": "tt_floor_8"
+         },
+         "lines": [
+          "The way up is blocked... Beat this floor's Trainers first!"
+         ]
+        }
+       ],
+       "parts": true,
+       "overheads": [
+        {
+         "kind": "picture",
+         "f": "fr_top/2_168.png",
+         "at": [
+          0,
+          0
+         ],
+         "size": [
+          18,
+          17
+         ]
+        }
+       ]
+      },
+      {
+       "art": [
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccAcccc",
+        "cccccccccccccDcccc",
+        "cccc1.cccccc....cc",
+        "cccc.....N......cc",
+        "cc..............cc",
+        "ccc............ccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc",
+        "cccccccccccccccccc"
+       ],
+       "exits": {},
+       "buildings": {
+        "A": "house"
+       },
+       "roofs": {
+        "_picture": {
+         "f": "fr_ground/2_9.png",
+         "at": [
+          0,
+          0
+         ]
+        },
+        "_signs_in_picture": true,
+        "_buildings_in_picture": true
+       },
+       "people": [
+        "OWNER"
+       ],
+       "inside": {
+        "13,5": "lift"
+       },
+       "links": {
+        "4,6": [
+         8,
+         15,
+         6
+        ]
+       },
+       "moves": {
+        "9,7": {
+         "m": "face",
+         "d": "d"
+        }
+       },
+       "pool": "NO_WILD_INDOORS_PERCENTAGES",
+       "theme": "room",
+       "parts": true,
+       "overheads": [
+        {
+         "kind": "picture",
+         "f": "fr_top/2_9.png",
+         "at": [
+          0,
+          0
+         ],
+         "size": [
+          18,
+          16
+         ]
+        }
+       ]
+      }
+     ],
+     "rooms": {
+      "lift": {
+       "art": [
+        "ccccc",
+        "ccccc",
+        "!cccc",
+        ".....",
+        ".....",
+        "..v..",
+        "ccccc"
+       ],
+       "exits": {
+        "v": "OUT:13,5"
+       },
+       "buildings": {},
+       "roofs": {
+        "_picture": {
+         "f": "fr_ground/2_11.png",
+         "at": [
+          0,
+          0
+         ]
+        },
+        "_signs_in_picture": true,
+        "_buildings_in_picture": true
+       },
+       "signs": [
+        [
+         "The lift's floor buttons."
+        ]
+       ],
+       "sign_events": {
+        "0,2": "TOWER LIFT"
+       },
+       "land": {
+        "13,5": [
+         13,
+         4
+        ]
+       },
+       "overheads": [
+        {
+         "kind": "picture",
+         "f": "fr_top/2_11.png",
+         "at": [
+          0,
+          0
+         ],
+         "size": [
+          5,
+          7
+         ]
+        }
+       ],
+       "theme": "room",
+       "title": "Lift"
+      }
+     },
+     "floor_names": [
+      "Lobby",
+      "1F",
+      "2F",
+      "3F",
+      "4F",
+      "5F",
+      "6F",
+      "7F",
+      "8F",
+      "Roof"
+     ],
+     "figure_floors": {
+      "RECEPTIONIST": 0,
+      "NURSE": 0,
+      "CLERK": 0,
+      "Allyson": 1,
+      "Lorenzo": 2,
+      "Owen": 3,
+      "Geb": 4,
+      "Megan": 4,
+      "Kat": 5,
+      "Kipp": 5,
+      "Trenton": 6,
+      "Albert": 6,
+      "Chelsea": 6,
+      "Ric": 7,
+      "Rene": 7,
+      "Rebecca": 8,
+      "Nicolas": 8,
+      "Mike": 8,
+      "OWNER": 9
+     }
+    }
+   }
+  ]
  }
 }

@@ -178,7 +178,8 @@ class RouteLive:
 
         def put(img, fx, fy, lift=0.0):
             if img is not None:
-                sprites.append((img, (fx + 0.5, h(fx, fy) + lift, sc.wz(fx, fy) + 0.55), img.get_height() / TILE * LIVE_SPRITE))
+                from src.states.overworld.dungeon import live_height
+                sprites.append((img, (fx + 0.5, h(fx, fy) + lift, sc.wz(fx, fy) + 0.55), live_height(img, LIVE_SPRITE)))   # (a person: one adult height, 11-23)
                 shadows.append((fx + 0.5, h(fx, fy), sc.wz(fx, fy) + 0.55))
         for (x, y), key in f.items.items():   # (an item lying about)
             if (x, y) in f.seen:
