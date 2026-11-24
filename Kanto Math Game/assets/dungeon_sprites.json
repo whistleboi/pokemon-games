@@ -2091,7 +2091,7 @@
     "ROCKET_HIDEOUT:TM299": {
       "item": "POKE_BALL"
     },
-    "ROCKET_WAREHOUSE:TM208": {
+    "ROCKET_WAREHOUSE:TM148": {
       "item": "POKE_BALL"
     },
     "SAFARI_ZONE:TM049": {
@@ -16405,6 +16405,93 @@
     },
     "ETERNA_FOREST_OUTSKIRTS:Woman": {
       "sheet": "pt_woman1.png"
+    },
+    "HOENN_TRICK_HOUSE:Trick Master": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_1:Trick Master": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_1:LAVA COOKIE": {
+      "item": "LAVA_COOKIE"
+    },
+    "HOENN_TRICK_HOUSE_1:LAVA COOKIE ": {
+      "item": "LAVA_COOKIE"
+    },
+    "HOENN_TRICK_HOUSE_2:Trick Master": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_2:RAGE CANDY BAR": {
+      "item": "RAGECANDYBAR"
+    },
+    "HOENN_TRICK_HOUSE_2:RAGE CANDY BAR ": {
+      "item": "RAGECANDYBAR"
+    },
+    "HOENN_TRICK_HOUSE_2:Mechadoll 3": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_3:Trick Master": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_3:LUMIOSE GALETTE": {
+      "item": "LUMIOSE_GALETTE"
+    },
+    "HOENN_TRICK_HOUSE_3:LUMIOSE GALETTE ": {
+      "item": "LUMIOSE_GALETTE"
+    },
+    "HOENN_TRICK_HOUSE_3:Mechadoll 3": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_4:Trick Master": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_4:CASTELIACONE": {
+      "item": "CASTELIACONE"
+    },
+    "HOENN_TRICK_HOUSE_4:CASTELIACONE ": {
+      "item": "CASTELIACONE"
+    },
+    "HOENN_TRICK_HOUSE_4:Mechadoll 3": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_5:Trick Master": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_5:OLD GATEAU": {
+      "item": "OLD_GATEAU"
+    },
+    "HOENN_TRICK_HOUSE_5:OLD GATEAU ": {
+      "item": "OLD_GATEAU"
+    },
+    "HOENN_TRICK_HOUSE_5:Mechadoll 3": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_5:Mechadoll 1": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_5:Mechadoll 2": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_5:Mechadoll 4": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_5:Mechadoll 5": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_6:Trick Master": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_6:SHALOUR SABLE": {
+      "item": "SHALOUR_SABLE"
+    },
+    "HOENN_TRICK_HOUSE_6:SHALOUR SABLE ": {
+      "item": "SHALOUR_SABLE"
+    },
+    "HOENN_TRICK_HOUSE_6:Mechadoll 3": {
+      "sheet": "em_19.png"
+    },
+    "HOENN_TRICK_HOUSE_1:EXPERT BELT": {
+      "item": "EXPERT_BELT"
     }
   },
   "townsperson": "NPC 17.png",
@@ -16774,6 +16861,47 @@
     "fr_leader_giovanni.png": "fr_87.png"
   },
   "trainers_JOHTO": {
+    "ss_ace_trainer_f.png": "hg_gswoman3.png",
+    "ss_ace_trainer_m.png": "hg_gsman3.png",
+    "ss_archer.png": "trchar030.png",
+    "ss_ariana.png": "hg_rkanbuw.png",
+    "ss_beauty.png": "hg_gswoman2.png",
+    "ss_bird_keeper.png": "hg_gsman2.png",
+    "ss_black_belt.png": "hg_gsfighter.png",
+    "ss_bug_catcher.png": "hg_gsboy3.png",
+    "ss_burglar.png": "hg_thief.png",
+    "ss_camper.png": "hg_campboy.png",
+    "ss_elder.png": "hg_chourou.png",
+    "ss_eusine.png": "hg_minaki.png",
+    "ss_firebreather.png": "hg_fire.png",
+    "ss_fisherman.png": "hg_fishing.png",
+    "ss_gentleman.png": "hg_gsgentleman.png",
+    "ss_guitarist.png": "hg_gsman2.png",
+    "ss_hiker.png": "hg_mount.png",
+    "ss_juggler.png": "hg_juggrer.png",
+    "ss_kimono_girl.png": "hg_dancer.png",
+    "ss_lass.png": "hg_picnicgirl.png",
+    "ss_petrel.png": "hg_rkanbum.png",
+    "ss_picnicker.png": "hg_picnicgirl.png",
+    "ss_poke_maniac.png": "hg_mania.png",
+    "ss_pokefan_f.png": "hg_middlewoman1.png",
+    "ss_pokefan_m.png": "hg_gsmiddleman1.png",
+    "ss_policeman.png": "hg_policeman.png",
+    "ss_proton.png": "trchar027.png",
+    "ss_psychic.png": "hg_mystery.png",
+    "ss_red.png": "hg_red.png",
+    "ss_rocket_grunt_f.png": "trchar025.png",
+    "ss_rocket_grunt_m.png": "hg_rocketm.png",
+    "ss_sage.png": "hg_bozu.png",
+    "ss_sailor.png": "hg_seaman.png",
+    "ss_school_kid.png": "hg_gsboy1.png",
+    "ss_scientist.png": "hg_assistantm.png",
+    "ss_super_nerd.png": "hg_mania.png",
+    "ss_swimmer_f.png": "hg_gsswimmerw.png",
+    "ss_swimmer_m.png": "hg_gsswimmerw.png",
+    "ss_teacher.png": "hg_middlewoman1.png",
+    "ss_twins.png": "hg_gsbabygirl1.png",
+    "ss_youngster.png": "hg_gsboy2.png",
     "kimono_girl.png": "hg_dancer.png",
     "guitarist.png": "hg_gsman2.png",
     "black_belt.png": "hg_gsfighter.png",

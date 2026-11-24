@@ -436,7 +436,7 @@ def with_rooms(m):
         return m
     floors = [dict(f) for f in m["floors"]] if m.get("floors") else [
         {k: m[k] for k in ("art", "exits", "signs", "people", "trainer_spots", "links", "overheads", "parts", "boss_spot", "inside", "stops",
-                           "barred", "moves", "scenes", "berry_soil", "sign_scenes", "edge_to", "dive", "surface", "pool", "hidden", "cycling", "downhill", "heights") if k in m}]   # (the map's own floor keeps everything of its own: who's in the way, how people move)
+                           "barred", "moves", "scenes", "berry_soil", "sign_scenes", "edge_to", "dive", "dive_links", "surface", "pool", "hidden", "cycling", "downhill", "heights") if k in m}]   # (the map's own floor keeps everything of its own: who's in the way, how people move)
     n0 = len(floors)
     names = list(m.get("floor_names") or [""] * n0)
     where, doors = {}, {}
@@ -506,7 +506,7 @@ def art_recipe(m):
         out["legend"] = {}
         for i, p in enumerate(parts):  # (each floor's own legend, under its own keys)
             out["layout"][i] = {"map": p["layout"][0]["map"], "legend": p["legend"]}
-            for k in ("dive", "dive_at", "surface", "pool", "exit_order", "indoors"):  # (Dive: the seabed floor under this one, the surface over it, its own wild Pokemon)
+            for k in ("dive", "dive_at", "dive_links", "surface", "pool", "exit_order", "indoors"):  # (Dive: the seabed floor under this one, the surface over it, its own wild Pokemon)
                 if m["floors"][i].get(k) is not None:
                     out["layout"][i][k] = m["floors"][i][k]
         out["floors"] = len(parts)
@@ -591,6 +591,9 @@ def art_recipe(m):
                 ch = chr(0x2C00 + "[]{}".index(c))
                 legend[ch] = {"surf": True, "current": list(_art.CURRENTS[c])}
                 out.append(ch)
+            elif c == ":" and m.get("surface") is not None:  # on a seabed: its sunlit floor, where you can come up (dive_links)
+                legend["\u2c11"] = {"deep": True}
+                out.append("\u2c11")
             elif c == ":":  # deep sea: Surf, and Dive
                 legend["\u2c10"] = {"surf": True, "deep": True}
                 out.append("\u2c10")
@@ -1708,7 +1711,7 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         plan = self._plan()
         if plan.get("dive") is not None and self.run.player in getattr(self.run.floor, "deep", ()):
             return "DIVE", self.dive_here
-        if plan.get("surface") is not None:
+        if plan.get("surface") is not None and (not getattr(self.run.floor, "deep", None) or self.run.player in self.run.floor.deep):   # (a seabed with sunlit tiles: up from those only)
             return "SURFACE", self.surface_here
         if self._beside("decor:slot"):
             return "PLAY SLOTS", self.play_slots
@@ -1788,6 +1791,12 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         plan = self._plan()
         to, spot = plan["dive"], tuple(plan.get("dive_at") or self.run.player)   # (dive_at: you swim through to a spot of its own: the Abandoned Ship's flooded cabin, to its hidden floor)
         below = self.run.made(to)
+        if plan.get("dive_links") and not plan.get("dive_at"):   # (a seabed of its own size: this dark patch leads to its own sunlit patch below)
+            spot = self._linked_spot(plan["dive_links"], "up", "down", self.run.player,
+                                     lambda x, y: (x, y) in below.deep and below.walkable(x, y) and not below.mover_at(x, y))
+            if spot is None:
+                self.flash("There's rock right under you here.", 100)
+                return
         if plan.get("dive_at") and below.mover_at(*spot):   # (someone's on the spot you come up on: the nearest free one)
             near = sorted(((x, y) for y in range(spot[1] - 2, spot[1] + 3) for x in range(spot[0] - 2, spot[0] + 3)
                            if below.walkable(x, y) and not below.mover_at(x, y)),
@@ -1808,7 +1817,12 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
             return
         to, spot = self._plan()["surface"], self.run.player
         above = self.run.made(to)
-        if above.tile(*spot) != core.SURF or above.mover_at(*spot) or spot in above.exits:
+        links = (self.run.recipe.get("layout") or [{}])[to].get("dive_links")
+        if links:   # (a seabed of its own size: up from a sunlit tile only, to the matching place in its own dark patch above)
+            spot = None if spot not in self.run.floor.deep else self._linked_spot(
+                links, "down", "up", spot, lambda x, y: (x, y) in above.deep and above.tile(x, y) == core.SURF
+                and not above.mover_at(x, y) and (x, y) not in above.exits)
+        if spot is None or above.tile(*spot) != core.SURF or above.mover_at(*spot) or spot in above.exits:
             self.flash("There's no open water above you here.", 100)
             return
         self.walk_goal = self.sliding = None
@@ -1816,6 +1830,20 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         self.partner = self.partner_from = spot
         self._floor_surf = None
         self.flash("You came up to the surface!", 110)
+
+    @staticmethod
+    def _linked_spot(links, a, b, here, ok):
+        """A floor's "dive_links" [{"up": [x0, y0, x1, y1], "down": [...]}]: the link whose `a` rectangle holds here; its
+        tile at the same place across the `b` rectangle, or the nearest there that ok(x, y) allows. None: no link, no tile."""
+        for lk in links:
+            x0, y0, x1, y1 = lk[a]
+            if x0 <= here[0] <= x1 and y0 <= here[1] <= y1:
+                X0, Y0, X1, Y1 = lk[b]
+                tx = X0 + int((here[0] - x0 + 0.5) * (X1 - X0 + 1) / (x1 - x0 + 1))
+                ty = Y0 + int((here[1] - y0 + 0.5) * (Y1 - Y0 + 1) / (y1 - y0 + 1))
+                got = [(x, y) for y in range(Y0, Y1 + 1) for x in range(X0, X1 + 1) if ok(x, y)]
+                return min(got, key=lambda t: (abs(t[0] - tx) + abs(t[1] - ty), t[1], t[0])) if got else None
+        return None
 
     # ---------------------------------------------------------------- the Game Corner
     def _clerk(self):
