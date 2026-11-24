@@ -322503,7 +322503,7 @@
      "c1.cccc-....+ccccm......-ccccm..mm..mcc.m...m.cccc+..cc",
      "c..cccc......cccc........cccc........cc.......cccc...cc",
      "c........X.....cc1.........cc........cc.m...m.cc.....cc",
-     "c.........X....cc..........cc...X....cc.............1cc",
+     "c..............cc..........cc........cc.............1cc",
      "ccccccccccccccccccccccccccccc........cc..............cc",
      "ccccccccccccccccccccccccccccc........cccccccccccccccccc",
      "ccccccccccccccccccccccccccccc........cccccccccccccccccc",
@@ -322526,8 +322526,6 @@
     "parts": true,
     "trainer_spots": [
      "Galactic Grunt 2",
-     "Commander Saturn",
-     "Cyrus",
      "Galactic Grunt 3",
      "Galactic Grunt 4"
     ],
