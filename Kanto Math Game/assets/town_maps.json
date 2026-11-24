@@ -418673,7 +418673,7 @@
      "c..ccccccccc..ccccccccccccc",
      "c..ccccNcccc..ccccccccccccc",
      "c..ccccmccNm..ccccccccccccc",
-     "c....N........ccccccccccccc",
+     "c..N.N........ccccccccccccc",
      "c.............ccccccccccccc",
      "c..........cccccccccccccccc",
      "cc.N......ccccccccccccccccc",
@@ -419484,6 +419484,15 @@
        ]
       },
       "_look": "sheet:b2_c25.png"
+     },
+     {
+      "text": "Medal Box painter",
+      "action": "EVENT",
+      "event": {
+       "world": "unova_story",
+       "medal_paint": true
+      },
+      "_look": "sheet:b2_c34.png"
      },
      {
       "text": "Mr. Medal  ",
@@ -428643,7 +428652,7 @@
      "c..ccccccccc..ccccccccccccc",
      "c..ccccNcccc..ccccccccccccc",
      "c..ccccmcc.c..ccccccccccccc",
-     "c....N...N....ccccccccccccc",
+     "c..N.N...N....ccccccccccccc",
      "c.............ccccccccccccc",
      "c..........cccccccccccccccc",
      "cc..N.....ccccccccccccccccc",
@@ -429434,6 +429443,15 @@
       "text": "Pokémon Center",
       "action": "HEAL",
       "_look": "sheet:b2_c78.png"
+     },
+     {
+      "text": "Medal Box painter",
+      "action": "EVENT",
+      "event": {
+       "world": "unova_story",
+       "medal_paint": true
+      },
+      "_look": "sheet:b2_c34.png"
      },
      {
       "text": "Mr. Medal ",
@@ -795642,7 +795660,7 @@
      "c..cc.ccc.cc..ccccccccccccc",
      "c..ccc.N.ccc..ccccccccccccc",
      "c..ccccmcc.c..ccccccccccccc",
-     "c........N....ccccccccccccc",
+     "c..N.....N....ccccccccccccc",
      "c.............ccccccccccccc",
      "c..........cccccccccccccccc",
      "cc.NN.....ccc.ccccccccccccc",
@@ -796443,6 +796461,15 @@
       "text": "Pokémon Center",
       "action": "HEAL",
       "_look": "sheet:b2_c78.png"
+     },
+     {
+      "text": "Medal Box painter",
+      "action": "EVENT",
+      "event": {
+       "world": "unova_story",
+       "medal_paint": true
+      },
+      "_look": "sheet:b2_c34.png"
      },
      {
       "text": "Woman with a Litwick",
@@ -807330,7 +807357,7 @@
         "c..cc.ccc.cc..ccccccccccccc",
         "c..ccc.N.ccc..ccccccccccccc",
         "c..ccccmcc.c..ccccccccccccc",
-        "c........N....ccccccccccccc",
+        "c..N.....N....ccccccccccccc",
         "c.............ccccccccccccc",
         "c..........cccccccccccccccc",
         "cc.NN.....ccc.ccccccccccccc",
@@ -808131,6 +808158,15 @@
          "text": "Pokémon Center",
          "action": "HEAL",
          "_look": "sheet:b2_c78.png"
+        },
+        {
+         "text": "Medal Box painter",
+         "action": "EVENT",
+         "event": {
+          "world": "unova_story",
+          "medal_paint": true
+         },
+         "_look": "sheet:b2_c34.png"
         },
         {
          "text": "Woman with a Litwick",
@@ -823014,7 +823050,7 @@
      "c..cc.ccc.cc..ccccccccccccc",
      "c..ccc.N.ccc..ccccccccccccc",
      "c..ccccmcc.c..ccccccccccccc",
-     "c........N....ccccccccccccc",
+     "c..N.....N....ccccccccccccc",
      "c.............ccccccccccccc",
      "c..N.......cccccccccccccccc",
      "cc........ccc.ccccccccccccc",
@@ -823815,6 +823851,15 @@
       "text": "Pokémon Center",
       "action": "HEAL",
       "_look": "sheet:b2_c78.png"
+     },
+     {
+      "text": "Medal Box painter",
+      "action": "EVENT",
+      "event": {
+       "world": "unova_story",
+       "medal_paint": true
+      },
+      "_look": "sheet:b2_c34.png"
      },
      {
       "text": "Hiker in the Center",
@@ -861605,7 +861650,7 @@
      "c..cc.ccc.cc..ccccccccccccc",
      "c..ccc.N.ccc..ccccccccccccc",
      "c..ccccmcc.c..ccccccccccccc",
-     "c.............ccccccccccccc",
+     "c..N..........ccccccccccccc",
      "cN............ccccccccccccc",
      "c..........cccccccccccccccc",
      "cc.......Nccc.ccccccccccccc",
@@ -862406,6 +862451,15 @@
       "text": "Pokémon Center",
       "action": "HEAL",
       "_look": "sheet:b2_c78.png"
+     },
+     {
+      "text": "Medal Box painter",
+      "action": "EVENT",
+      "event": {
+       "world": "unova_story",
+       "medal_paint": true
+      },
+      "_look": "sheet:b2_c34.png"
      },
      {
       "text": "Woman by the PC",
@@ -890532,7 +890586,7 @@
      "c..cc.ccc.cc..ccccccccccccc",
      "c..ccc.N.ccc..ccccccccccccc",
      "c..ccccmcc.c..ccccccccccccc",
-     "c.............ccccccccccccc",
+     "c..N..........ccccccccccccc",
      "c.............ccccccccccccc",
      "c..........cccccccccccccccc",
      "cc.N......ccc.ccccccccccccc",
@@ -891333,6 +891387,15 @@
       "text": "Pokémon Center",
       "action": "HEAL",
       "_look": "sheet:b2_c78.png"
+     },
+     {
+      "text": "Medal Box painter",
+      "action": "EVENT",
+      "event": {
+       "world": "unova_story",
+       "medal_paint": true
+      },
+      "_look": "sheet:b2_c34.png"
      },
      {
       "text": "Psychic by the PC",
@@ -916482,7 +916545,7 @@
      "c..cc.ccc.cc..ccccccccccccc",
      "c..ccc.N.ccc..ccccccccccccc",
      "c..ccccmcc.c..ccccccccccccc",
-     "c........N....ccccccccccccc",
+     "c..N.....N....ccccccccccccc",
      "c.............ccccccccccccc",
      "c..........cccccccccccccccc",
      "cc.NN.....ccc.ccccccccccccc",
@@ -917296,6 +917359,15 @@
       "text": "Pokémon Center",
       "action": "HEAL",
       "_look": "sheet:b2_c78.png"
+     },
+     {
+      "text": "Medal Box painter",
+      "action": "EVENT",
+      "event": {
+       "world": "unova_story",
+       "medal_paint": true
+      },
+      "_look": "sheet:b2_c34.png"
      },
      [
       {
@@ -918689,62 +918761,57 @@
     },
     "people": [
      {
-      "text": "Boy",
+      "text": "Mimic girl",
       "action": "EVENT",
       "event": {
-       "lines": [
-        "I want to cherish my originality."
-       ]
+       "world": "unova_story",
+       "mimic": "girl"
       },
       "_look": "sheet:b2_c34.png"
      },
      {
-      "text": "Mimic girl",
+      "text": "Galvantula",
       "action": "EVENT",
       "event": {
        "lines": [
-        "Mimicking is fun! My friends love to copy me. Can you tell who's mimicking?"
+        "Galvantula: Bzzz... Zzz..."
        ]
       },
       "_look": "sheet:b2_c317.png"
      },
      {
-      "text": "Klang",
+      "text": "Boy by the stairs",
       "action": "EVENT",
       "event": {
-       "lines": [
-        "Klang: Klang!"
-       ]
+       "world": "unova_story",
+       "mimic": 0
       },
       "_look": "sheet:b2_c8.png"
      },
      {
-      "text": "Eelektross",
+      "text": "Girl at the west",
       "action": "EVENT",
       "event": {
-       "lines": [
-        "Eelektross: Eelek!"
-       ]
+       "world": "unova_story",
+       "mimic": 1
       },
       "_look": "sheet:b2_c9.png"
      },
      {
-      "text": "Swoobat",
+      "text": "Girl at the east",
       "action": "EVENT",
       "event": {
-       "lines": [
-        "Swoobat: Swoobat!"
-       ]
+       "world": "unova_story",
+       "mimic": 3
       },
       "_look": "sheet:b2_c9.png"
      },
      {
-      "text": "Azumarill",
+      "text": "Boy at the south",
       "action": "EVENT",
       "event": {
-       "lines": [
-        "Azumarill: Azu!"
-       ]
+       "world": "unova_story",
+       "mimic": 2
       },
       "_look": "sheet:b2_c8.png"
      }
@@ -929004,7 +929071,7 @@
         "c..cc.ccc.cc..ccccccccccccc",
         "c..ccc.N.ccc..ccccccccccccc",
         "c..ccccmcc.c..ccccccccccccc",
-        "c........N....ccccccccccccc",
+        "c..N.....N....ccccccccccccc",
         "c.............ccccccccccccc",
         "c..........cccccccccccccccc",
         "cc.NN.....ccc.ccccccccccccc",
@@ -929818,6 +929885,15 @@
          "text": "Pokémon Center",
          "action": "HEAL",
          "_look": "sheet:b2_c78.png"
+        },
+        {
+         "text": "Medal Box painter",
+         "action": "EVENT",
+         "event": {
+          "world": "unova_story",
+          "medal_paint": true
+         },
+         "_look": "sheet:b2_c34.png"
         },
         [
          {
@@ -931211,62 +931287,57 @@
        },
        "people": [
         {
-         "text": "Boy",
+         "text": "Mimic girl",
          "action": "EVENT",
          "event": {
-          "lines": [
-           "I want to cherish my originality."
-          ]
+          "world": "unova_story",
+          "mimic": "girl"
          },
          "_look": "sheet:b2_c34.png"
         },
         {
-         "text": "Mimic girl",
+         "text": "Galvantula",
          "action": "EVENT",
          "event": {
           "lines": [
-           "Mimicking is fun! My friends love to copy me. Can you tell who's mimicking?"
+           "Galvantula: Bzzz... Zzz..."
           ]
          },
          "_look": "sheet:b2_c317.png"
         },
         {
-         "text": "Klang",
+         "text": "Boy by the stairs",
          "action": "EVENT",
          "event": {
-          "lines": [
-           "Klang: Klang!"
-          ]
+          "world": "unova_story",
+          "mimic": 0
          },
          "_look": "sheet:b2_c8.png"
         },
         {
-         "text": "Eelektross",
+         "text": "Girl at the west",
          "action": "EVENT",
          "event": {
-          "lines": [
-           "Eelektross: Eelek!"
-          ]
+          "world": "unova_story",
+          "mimic": 1
          },
          "_look": "sheet:b2_c9.png"
         },
         {
-         "text": "Swoobat",
+         "text": "Girl at the east",
          "action": "EVENT",
          "event": {
-          "lines": [
-           "Swoobat: Swoobat!"
-          ]
+          "world": "unova_story",
+          "mimic": 3
          },
          "_look": "sheet:b2_c9.png"
         },
         {
-         "text": "Azumarill",
+         "text": "Boy at the south",
          "action": "EVENT",
          "event": {
-          "lines": [
-           "Azumarill: Azu!"
-          ]
+          "world": "unova_story",
+          "mimic": 2
          },
          "_look": "sheet:b2_c8.png"
         }
@@ -941659,7 +941730,7 @@
         "c..cc.ccc.cc..ccccccccccccc",
         "c..ccc.N.ccc..ccccccccccccc",
         "c..ccccmcc.c..ccccccccccccc",
-        "c........N....ccccccccccccc",
+        "c..N.....N....ccccccccccccc",
         "c.............ccccccccccccc",
         "c..........cccccccccccccccc",
         "cc.NN.....ccc.ccccccccccccc",
@@ -942473,6 +942544,15 @@
          "text": "Pokémon Center",
          "action": "HEAL",
          "_look": "sheet:b2_c78.png"
+        },
+        {
+         "text": "Medal Box painter",
+         "action": "EVENT",
+         "event": {
+          "world": "unova_story",
+          "medal_paint": true
+         },
+         "_look": "sheet:b2_c34.png"
         },
         [
          {
@@ -943866,62 +943946,57 @@
        },
        "people": [
         {
-         "text": "Boy",
+         "text": "Mimic girl",
          "action": "EVENT",
          "event": {
-          "lines": [
-           "I want to cherish my originality."
-          ]
+          "world": "unova_story",
+          "mimic": "girl"
          },
          "_look": "sheet:b2_c34.png"
         },
         {
-         "text": "Mimic girl",
+         "text": "Galvantula",
          "action": "EVENT",
          "event": {
           "lines": [
-           "Mimicking is fun! My friends love to copy me. Can you tell who's mimicking?"
+           "Galvantula: Bzzz... Zzz..."
           ]
          },
          "_look": "sheet:b2_c317.png"
         },
         {
-         "text": "Klang",
+         "text": "Boy by the stairs",
          "action": "EVENT",
          "event": {
-          "lines": [
-           "Klang: Klang!"
-          ]
+          "world": "unova_story",
+          "mimic": 0
          },
          "_look": "sheet:b2_c8.png"
         },
         {
-         "text": "Eelektross",
+         "text": "Girl at the west",
          "action": "EVENT",
          "event": {
-          "lines": [
-           "Eelektross: Eelek!"
-          ]
+          "world": "unova_story",
+          "mimic": 1
          },
          "_look": "sheet:b2_c9.png"
         },
         {
-         "text": "Swoobat",
+         "text": "Girl at the east",
          "action": "EVENT",
          "event": {
-          "lines": [
-           "Swoobat: Swoobat!"
-          ]
+          "world": "unova_story",
+          "mimic": 3
          },
          "_look": "sheet:b2_c9.png"
         },
         {
-         "text": "Azumarill",
+         "text": "Boy at the south",
          "action": "EVENT",
          "event": {
-          "lines": [
-           "Azumarill: Azu!"
-          ]
+          "world": "unova_story",
+          "mimic": 2
          },
          "_look": "sheet:b2_c8.png"
         }
@@ -953960,7 +954035,7 @@
         "c..cc.ccc.cc..ccccccccccccc",
         "c..ccc.N.ccc..ccccccccccccc",
         "c..ccccmcc.c..ccccccccccccc",
-        "c........N....ccccccccccccc",
+        "c..N.....N....ccccccccccccc",
         "c.............ccccccccccccc",
         "c..........cccccccccccccccc",
         "cc.NN.....ccc.ccccccccccccc",
@@ -954774,6 +954849,15 @@
          "text": "Pokémon Center",
          "action": "HEAL",
          "_look": "sheet:b2_c78.png"
+        },
+        {
+         "text": "Medal Box painter",
+         "action": "EVENT",
+         "event": {
+          "world": "unova_story",
+          "medal_paint": true
+         },
+         "_look": "sheet:b2_c34.png"
         },
         [
          {
@@ -956167,62 +956251,57 @@
        },
        "people": [
         {
-         "text": "Boy",
+         "text": "Mimic girl",
          "action": "EVENT",
          "event": {
-          "lines": [
-           "I want to cherish my originality."
-          ]
+          "world": "unova_story",
+          "mimic": "girl"
          },
          "_look": "sheet:b2_c34.png"
         },
         {
-         "text": "Mimic girl",
+         "text": "Galvantula",
          "action": "EVENT",
          "event": {
           "lines": [
-           "Mimicking is fun! My friends love to copy me. Can you tell who's mimicking?"
+           "Galvantula: Bzzz... Zzz..."
           ]
          },
          "_look": "sheet:b2_c317.png"
         },
         {
-         "text": "Klang",
+         "text": "Boy by the stairs",
          "action": "EVENT",
          "event": {
-          "lines": [
-           "Klang: Klang!"
-          ]
+          "world": "unova_story",
+          "mimic": 0
          },
          "_look": "sheet:b2_c8.png"
         },
         {
-         "text": "Eelektross",
+         "text": "Girl at the west",
          "action": "EVENT",
          "event": {
-          "lines": [
-           "Eelektross: Eelek!"
-          ]
+          "world": "unova_story",
+          "mimic": 1
          },
          "_look": "sheet:b2_c9.png"
         },
         {
-         "text": "Swoobat",
+         "text": "Girl at the east",
          "action": "EVENT",
          "event": {
-          "lines": [
-           "Swoobat: Swoobat!"
-          ]
+          "world": "unova_story",
+          "mimic": 3
          },
          "_look": "sheet:b2_c9.png"
         },
         {
-         "text": "Azumarill",
+         "text": "Boy at the south",
          "action": "EVENT",
          "event": {
-          "lines": [
-           "Azumarill: Azu!"
-          ]
+          "world": "unova_story",
+          "mimic": 2
          },
          "_look": "sheet:b2_c8.png"
         }
