@@ -330055,28 +330055,55 @@
        ]
       }
      },
-     {
-      "text": "Realgam Tower: Cipher's Colosseum",
-      "action": "EVENT",
-      "event": {
-       "world": "orre_tournament",
-       "referee": true,
-       "signup": {
-        "arena": "colosseum",
-        "at": [
-         5,
-         10
-        ],
-        "lines": [
-         "Host: Welcome to Cipher's Colosseum! Take your place. Here they come!"
-        ],
-        "champion": [
-         "Host: The champion of Cipher's Colosseum! Come back once the Gym battles start again."
-        ]
-       }
+     [
+      {
+       "text": "Realgam Tower: Cipher's Colosseum",
+       "action": "EVENT",
+       "event": {
+        "world": "orre_tournament",
+        "referee": true,
+        "signup": {
+         "arena": "colosseum",
+         "at": [
+          5,
+          10
+         ],
+         "lines": [
+          "Host: Welcome to Cipher's Colosseum! Take your place. Here they come!"
+         ],
+         "champion": [
+          "Host: The champion of Cipher's Colosseum! Come back once the Gym battles start again."
+         ]
+        }
+       },
+       "condition": "not:orre_part2",
+       "color": "GOLD"
       },
-      "color": "GOLD"
-     },
+      {
+       "text": "Realgam Tower: Orre League",
+       "action": "EVENT",
+       "event": {
+        "world": "orre_tournament",
+        "referee": true,
+        "signup": {
+         "arena": "colosseum",
+         "at": [
+          5,
+          10
+         ],
+         "lines": [
+          "Host: Welcome to the Orre League! Four of Orre's strongest, one after another - then the Champion.",
+          "Host: No rest between battles, and no turning back. Take your place!"
+         ],
+         "champion": [
+          "Host: Our Champion! The Elite Four are always glad of a rematch."
+         ]
+        }
+       },
+       "condition": "orre_part2",
+       "color": "GOLD"
+      }
+     ],
      "GYM LEADER BIRCH"
     ],
     "signs": [],
@@ -330109,7 +330136,8 @@
      {
       "trigger": "enter",
       "condition": [
-       "world:orre_tournament:round:0"
+       "world:orre_tournament:round:0",
+       "world:orre_skip:part1"
       ],
       "call": [
        "Referee: Round 1! Bodybuilder Jomas takes the field!"
@@ -330140,7 +330168,8 @@
      {
       "trigger": "enter",
       "condition": [
-       "world:orre_tournament:round:1"
+       "world:orre_tournament:round:1",
+       "world:orre_skip:part1"
       ],
       "call": [
        "Referee: Round 2! Rider Delan takes the field!"
@@ -330171,7 +330200,8 @@
      {
       "trigger": "enter",
       "condition": [
-       "world:orre_tournament:round:2"
+       "world:orre_tournament:round:2",
+       "world:orre_skip:part1"
       ],
       "call": [
        "Referee: Round 3! Cipher Peon Nella takes the field!"
@@ -330202,7 +330232,8 @@
      {
       "trigger": "enter",
       "condition": [
-       "world:orre_tournament:round:3"
+       "world:orre_tournament:round:3",
+       "world:orre_skip:part1"
       ],
       "call": [
        "Referee: Round 4! Cipher Peon Ston takes the field!"
@@ -330233,7 +330264,8 @@
      {
       "trigger": "enter",
       "condition": [
-       "world:orre_tournament:round:4"
+       "world:orre_tournament:round:4",
+       "world:orre_skip:part1"
       ],
       "call": [
        "Referee: Round 5! Cipher Nascour takes the field!"
@@ -330264,7 +330296,8 @@
      {
       "trigger": "enter",
       "condition": [
-       "world:orre_tournament:round:5"
+       "world:orre_tournament:round:5",
+       "world:orre_skip:part1"
       ],
       "call": [
        "Referee: The final! Cipher Head Evice takes the field!"
@@ -330284,6 +330317,166 @@
         "stay": true,
         "lines": [
          "The floor of the arena splits open. Up rises... Phenac's mayor, Es Cade?!"
+        ],
+        "event": {
+         "world": "orre_tournament",
+         "fight": true
+        }
+       }
+      ]
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:round:0",
+       "world:orre_skip:part2"
+      ],
+      "call": [
+       "Host: Elite Four battle 1! Elite Four Justy takes the field!"
+      ],
+      "cast": [
+       {
+        "sheet": "orre_trainer_ace_trainer.png",
+        "from": [
+         5,
+         3
+        ],
+        "to": [
+         5,
+         7
+        ],
+        "face": "d",
+        "stay": true,
+        "lines": [
+         "Justy: The Pre Gym taught you your first steps. Now I teach you your last lesson before the Champion. Begin!"
+        ],
+        "event": {
+         "world": "orre_tournament",
+         "fight": true
+        }
+       }
+      ]
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:round:1",
+       "world:orre_skip:part2"
+      ],
+      "call": [
+       "Host: Elite Four battle 2! Elite Four Eagun takes the field!"
+      ],
+      "cast": [
+       {
+        "sheet": "orre_trainer_fun_old_man.png",
+        "from": [
+         5,
+         3
+        ],
+        "to": [
+         5,
+         7
+        ],
+        "face": "d",
+        "stay": true,
+        "lines": [
+         "Eagun: Rui sends her love - and so do my Pikachu. Old as I am, Orre's League asked for me. Let's see how you've grown!"
+        ],
+        "event": {
+         "world": "orre_tournament",
+         "fight": true
+        }
+       }
+      ]
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:round:2",
+       "world:orre_skip:part2"
+      ],
+      "call": [
+       "Host: Elite Four battle 3! Elite Four Miror B. takes the field!"
+      ],
+      "cast": [
+       {
+        "sheet": "orre_trainer_ace_trainer.png",
+        "from": [
+         5,
+         3
+        ],
+        "to": [
+         5,
+         7
+        ],
+        "face": "d",
+        "stay": true,
+        "lines": [
+         "Miror B.: No more Shadow Pokemon for me, baby! Just my Ludicolo, dancing for the League. Let's groove!"
+        ],
+        "event": {
+         "world": "orre_tournament",
+         "fight": true
+        }
+       }
+      ]
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:round:3",
+       "world:orre_skip:part2"
+      ],
+      "call": [
+       "Host: Elite Four battle 4! Elite Four Vander takes the field!"
+      ],
+      "cast": [
+       {
+        "sheet": "trchar007.png",
+        "from": [
+         5,
+         3
+        ],
+        "to": [
+         5,
+         7
+        ],
+        "face": "d",
+        "stay": true,
+        "lines": [
+         "Vander: I keep the peak of Mt. Battle. Today the peak comes to you. Show me everything!"
+        ],
+        "event": {
+         "world": "orre_tournament",
+         "fight": true
+        }
+       }
+      ]
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:round:4",
+       "world:orre_skip:part2"
+      ],
+      "call": [
+       "Host: The Champion of Orre! Champion Eldes takes the field!"
+      ],
+      "cast": [
+       {
+        "sheet": "orre_trainer_cipher_grunt.png",
+        "from": [
+         5,
+         3
+        ],
+        "to": [
+         5,
+         7
+        ],
+        "face": "d",
+        "stay": true,
+        "lines": [
+         "Eldes: I was Greevil's son, and Cipher's admin. I left all that behind to guard Orre instead. Now - the last battle. Come!"
         ],
         "event": {
          "world": "orre_tournament",
@@ -330333,7 +330526,8 @@
      {
       "trigger": "enter",
       "condition": [
-       "world:orre_tournament:won"
+       "world:orre_tournament:won",
+       "world:orre_skip:part1"
       ],
       "cast": [],
       "call": [
@@ -330341,6 +330535,22 @@
       ],
       "event": {
        "world": "orre_skip"
+      }
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "world:orre_tournament:won",
+       "world:orre_skip:part2"
+      ],
+      "cast": [],
+      "call": [
+       "Host: Ladies and gentlemen... the new Champion of Orre, {player_name}!",
+       "The whole tower roars!"
+      ],
+      "event": {
+       "world": "orre_tournament",
+       "done": true
       }
      }
     ]

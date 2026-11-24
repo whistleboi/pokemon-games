@@ -17520,6 +17520,403 @@
       ]
     },
     "REALGAM_TOWER": {
+      "gym_when": [
+        {
+          "flags": [
+            "orre_part2"
+          ],
+          "use": "gym_league"
+        }
+      ],
+      "gym_league": {
+        "trainers": [
+          {
+            "name": "Elite Four Justy",
+            "class": "ELITE_FOUR",
+            "sprite": "orre_justy.png",
+            "is_boss_battle": true,
+            "team": [
+              207,
+              28,
+              299,
+              184,
+              332
+            ],
+            "levels": [
+              52,
+              52,
+              53,
+              53,
+              54
+            ],
+            "team_moves": [
+              [
+                "DIG",
+                "AERIAL-ACE",
+                "SANDSTORM",
+                "DOUBLE-TEAM"
+              ],
+              [
+                "SLASH",
+                "DIG",
+                "SANDSTORM",
+                "DOUBLE-TEAM"
+              ],
+              [
+                "ROCK-SLIDE",
+                "THUNDER-WAVE",
+                "DOUBLE-TEAM",
+                "SPARK"
+              ],
+              [
+                "SURF",
+                "RETURN",
+                "LIGHT-SCREEN",
+                "DOUBLE-TEAM"
+              ],
+              [
+                "SANDSTORM",
+                "INGRAIN",
+                "COTTON-SPORE",
+                "PIN-MISSILE"
+              ]
+            ],
+            "team_items": [
+              "QUICK_CLAW",
+              "SOFT_SAND",
+              "HARD_STONE",
+              "LEFTOVERS",
+              "MIRACLE_SEED"
+            ],
+            "double": true,
+            "rewards": {
+              "balls": 15
+            },
+            "dialogue": {
+              "intro": [
+                "Justy: The Pre Gym taught you your first steps. Now I teach you your last lesson before the Champion. Begin!"
+              ],
+              "player_won": [
+                "Justy: Perfect form. Go on - three more wait above."
+              ],
+              "player_lost": [
+                "Justy: Back to basics, then. The Pre Gym is always open."
+              ]
+            }
+          },
+          {
+            "name": "Elite Four Eagun",
+            "class": "ELITE_FOUR",
+            "sprite": "orre_fun_old_man.png",
+            "is_boss_battle": true,
+            "team": [
+              25,
+              26,
+              25,
+              26,
+              26
+            ],
+            "levels": [
+              54,
+              55,
+              55,
+              56,
+              56
+            ],
+            "team_moves": [
+              [
+                "THUNDERBOLT",
+                "QUICK-ATTACK",
+                "THUNDER-WAVE",
+                "RAIN-DANCE"
+              ],
+              [
+                "THUNDER",
+                "BRICK-BREAK",
+                "COUNTER",
+                "RAIN-DANCE"
+              ],
+              [
+                "THUNDER",
+                "THUNDER-WAVE",
+                "AGILITY",
+                "QUICK-ATTACK"
+              ],
+              [
+                "THUNDERBOLT",
+                "BRICK-BREAK",
+                "COUNTER",
+                "THUNDER-WAVE"
+              ],
+              [
+                "THUNDER",
+                "RAIN-DANCE",
+                "BRICK-BREAK",
+                "QUICK-ATTACK"
+              ]
+            ],
+            "team_items": [
+              "LIGHT_BALL",
+              "MAGNET",
+              "LIGHT_BALL",
+              "QUICK_CLAW",
+              "LEFTOVERS"
+            ],
+            "double": true,
+            "rewards": {
+              "balls": 15
+            },
+            "dialogue": {
+              "intro": [
+                "Eagun: Rui sends her love - and so do my Pikachu. Old as I am, Orre's League asked for me. Let's see how you've grown!"
+              ],
+              "player_won": [
+                "Eagun: Hah! Five years, and still you surprise me. Go on up, {player_name}."
+              ],
+              "player_lost": [
+                "Eagun: A little slow today, eh? Come back and try an old man again."
+              ]
+            }
+          },
+          {
+            "name": "Elite Four Miror B.",
+            "class": "ELITE_FOUR",
+            "sprite": "orre_trainer_miror_b.png",
+            "is_boss_battle": true,
+            "team": [
+              272,
+              272,
+              272,
+              272,
+              149
+            ],
+            "levels": [
+              56,
+              57,
+              57,
+              58,
+              58
+            ],
+            "team_moves": [
+              [
+                "RAIN-DANCE",
+                "GIGA-DRAIN",
+                "HYDRO-PUMP",
+                "FAKE-OUT"
+              ],
+              [
+                "RAIN-DANCE",
+                "GIGA-DRAIN",
+                "HYDRO-PUMP",
+                "COUNTER"
+              ],
+              [
+                "RAIN-DANCE",
+                "GIGA-DRAIN",
+                "WATERFALL",
+                "BRICK-BREAK"
+              ],
+              [
+                "RAIN-DANCE",
+                "FIRE-PUNCH",
+                "ICE-PUNCH",
+                "THUNDER-PUNCH"
+              ],
+              [
+                "DRAGON-DANCE",
+                "EARTHQUAKE",
+                "HYPER-BEAM",
+                "RAIN-DANCE"
+              ]
+            ],
+            "team_items": [
+              "LEFTOVERS",
+              "MYSTIC_WATER",
+              "LUM_BERRY",
+              "QUICK_CLAW",
+              "DRAGON_FANG"
+            ],
+            "double": true,
+            "rewards": {
+              "balls": 15
+            },
+            "dialogue": {
+              "intro": [
+                "Miror B.: No more Shadow Pokemon for me, baby! Just my Ludicolo, dancing for the League. Let's groove!"
+              ],
+              "player_won": [
+                "Miror B.: Oh no, no, no! ...Fine. You've got rhythm, kid. Go on up!"
+              ],
+              "player_lost": [
+                "Miror B.: Hah! Ludicolo dance wins again! Come back when you can keep the beat."
+              ]
+            }
+          },
+          {
+            "name": "Elite Four Vander",
+            "class": "ELITE_FOUR",
+            "sprite": "blackbelt.png",
+            "is_boss_battle": true,
+            "team": [
+              242,
+              230,
+              376,
+              373,
+              248
+            ],
+            "levels": [
+              58,
+              58,
+              59,
+              59,
+              60
+            ],
+            "team_moves": [
+              [
+                "SOFT-BOILED",
+                "SEISMIC-TOSS",
+                "TOXIC",
+                "LIGHT-SCREEN"
+              ],
+              [
+                "SURF",
+                "DRAGON-BREATH",
+                "AGILITY",
+                "HYDRO-PUMP"
+              ],
+              [
+                "METEOR-MASH",
+                "EARTHQUAKE",
+                "PSYCHIC",
+                "AGILITY"
+              ],
+              [
+                "DRAGON-CLAW",
+                "FLAMETHROWER",
+                "CRUNCH",
+                "FLY"
+              ],
+              [
+                "ROCK-SLIDE",
+                "EARTHQUAKE",
+                "CRUNCH",
+                "DRAGON-DANCE"
+              ]
+            ],
+            "team_items": [
+              "LEFTOVERS",
+              "DRAGON_FANG",
+              "QUICK_CLAW",
+              "LUM_BERRY",
+              "SITRUS_BERRY"
+            ],
+            "double": true,
+            "rewards": {
+              "balls": 15
+            },
+            "dialogue": {
+              "intro": [
+                "Vander: I keep the peak of Mt. Battle. Today the peak comes to you. Show me everything!"
+              ],
+              "player_won": [
+                "Vander: ...That is a climber's strength. The Champion waits beyond this door."
+              ],
+              "player_lost": [
+                "Vander: The mountain is still taller than you. Train, and climb again."
+              ]
+            }
+          }
+        ],
+        "leader": {
+          "name": "Champion Eldes",
+          "class": "CHAMPION",
+          "sprite": "orre_cipher_peon.png",
+          "is_boss_battle": true,
+          "team": [
+            128,
+            143,
+            94,
+            376,
+            380,
+            381
+          ],
+          "levels": [
+            59,
+            60,
+            61,
+            61,
+            62,
+            63
+          ],
+          "team_moves": [
+            [
+              "RETURN",
+              "EARTHQUAKE",
+              "IRON-TAIL",
+              "TAKE-DOWN"
+            ],
+            [
+              "BODY-SLAM",
+              "EARTHQUAKE",
+              "SHADOW-BALL",
+              "REST"
+            ],
+            [
+              "PSYCHIC",
+              "FIRE-PUNCH",
+              "ICE-PUNCH",
+              "THUNDERBOLT"
+            ],
+            [
+              "EARTHQUAKE",
+              "METEOR-MASH",
+              "SHADOW-BALL",
+              "PROTECT"
+            ],
+            [
+              "PSYCHIC",
+              "DRAGON-CLAW",
+              "WATERFALL",
+              "THUNDERBOLT"
+            ],
+            [
+              "PSYCHIC",
+              "DRAGON-CLAW",
+              "ICE-BEAM",
+              "THUNDERBOLT"
+            ]
+          ],
+          "team_items": [
+            "CHOICE_BAND",
+            "LEFTOVERS",
+            "LAX_INCENSE",
+            "QUICK_CLAW",
+            "SCOPE_LENS",
+            "BRIGHTPOWDER"
+          ],
+          "double": true,
+          "rewards": {
+            "balls": 15
+          },
+          "dialogue": {
+            "intro": [
+              "Eldes: I was Greevil's son, and Cipher's admin. I left all that behind to guard Orre instead. Now - the last battle. Come!"
+            ],
+            "player_won": [
+              "Eldes: ...It's over. You are Orre's Champion, {player_name}. Your name goes into the Hall of Fame."
+            ],
+            "player_lost": [
+              "Eldes: Not yet. Orre needs a stronger Champion than that."
+            ]
+          }
+        },
+        "rematch_heal": true,
+        "requirements": {
+          "badges": 8,
+          "flag": "orre_part2",
+          "fail_text": "Host: The Orre League's Elite Four take on trainers with all eight badges."
+        }
+      },
       "gym_birch": {
         "trainers": [],
         "leader": {
@@ -17631,7 +18028,14 @@
         {
           "text": "Realgam Tower: Cipher's Colosseum",
           "action": "GYM",
-          "color": "GOLD"
+          "color": "GOLD",
+          "condition": "not:orre_part2"
+        },
+        {
+          "text": "Realgam Tower: Orre League",
+          "action": "GYM",
+          "color": "GOLD",
+          "condition": "orre_part2"
         },
         {
           "text": "GYM LEADER BIRCH",
@@ -22714,6 +23118,7 @@
     {"id": "orre_m18c", "type": "MAIN", "title": "Cipher's Colosseum", "description": "Ride the lift to the roof. Four matches, then Nascour, then Cipher's leader - and no healing in between. Stock up first!", "condition": {"required_region": "ORRE", "flag": "col_gonzap_realgam", "flag_not": "orre_evice_beaten"}, "region": "ORRE", "completed_flag": "orre_evice_beaten", "target": "REALGAM_TOWER", "reward": "Five years later..."},
     {"id": "orre_m19", "type": "MAIN", "title": "An Ancient Force", "description": "At the top of Citadark's Dome, Gym Leader Drake stands before Greevil's arena. Beat him for the Citadark Badge - only then will Greevil face you.", "condition": {"required_region": "ORRE", "flag": "xd_eldes_beaten", "region_badges_less": 7}, "region": "ORRE", "completed_badge": "CITADARK", "target": "XD_CITADARK_ISLE", "reward": "Citadark Badge"},
     {"id": "orre_m20", "type": "MAIN", "title": "The Colosseum in the Sky", "description": "Cipher is finished. Professor Birch waits in Realgam Tower's Colosseum in the sky - he's its Gym Leader! Win the eighth badge, the Realgam Badge.", "condition": {"required_region": "ORRE", "flag": "xd_greevil_beaten", "region_badges_less": 8}, "region": "ORRE", "completed_badge": "REALGAM", "target": "REALGAM_TOWER", "reward": "Realgam Badge"},
+    {"id": "orre_m21", "type": "MAIN", "title": "The Orre League", "description": "Eight badges! Realgam's Colosseum in the sky hosts the Orre League now: the Elite Four - Justy, Eagun, Miror B. and Vander - one after another, then the Champion, Eldes. Sign up with the host!", "condition": {"required_region": "ORRE", "region_badges_min": 8, "flag_not": "beat_orre_champion"}, "region": "ORRE", "target": "REALGAM_TOWER", "completed_flag": "beat_orre_champion"},
     {"id": "orre_s1", "type": "SIDE", "title": "Professor Krane's Eevee", "description": "Professor Krane works at the Pokémon HQ Lab in Gateon Port. Pay him a visit!", "condition": {"required_region": "ORRE", "visited": "GATEON_PORT", "flag_not": "got_krane_eevee"}, "region": "ORRE", "completed_flag": "got_krane_eevee", "target": "GATEON_PORT"},
     {"id": "orre_s1b", "type": "SIDE", "title": "Ein's Data ROM", "description": "Ein left a Data ROM on his desk. Take it to Nett at the Kids Grid in The Under.", "condition": {"required_region": "ORRE", "flag": "orre_data_rom", "flag_not": "orre_data_rom_given"}, "region": "ORRE", "completed_flag": "orre_data_rom_given", "target": "THE_UNDER"},
     {"id": "orre_s2", "type": "SIDE", "title": "Mt. Battle", "description": "After the title, Vander waits at the very top of Mt. Battle, past Battlus in Area 10. Climb up and face him!", "condition": {"required_region": "ORRE", "flag": ["beat_orre_champion", "mt_battle_battlus"], "flag_not": "mt_battle_master_beaten"}, "region": "ORRE", "completed_flag": "mt_battle_master_beaten", "target": "MT_BATTLE", "reward": "Battle practice"},

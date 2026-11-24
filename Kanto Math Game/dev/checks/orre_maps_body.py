@@ -261,7 +261,8 @@ for _key in _dung:
     check(_ok and not _bad, f"{_key}: {run.n_floors} floors, in from {_came} on open floor, every passage lands on open floor {_bad[:3]}")
 t = town("UNDER_COLOSSEUM", "THE_UNDER")
 _d = next(tuple(int(v) for v in d.split(",")) for d in _tm["UNDER_COLOSSEUM"]["inside"])
-_host = lambda st_: any(isinstance(o, dict) and (o.get("event") or {}).get("referee") for o in st_.people.values())   # (R2: the arena's host is the tournament's referee)
+_host = lambda st_: any(isinstance(q, dict) and (q.get("event") or {}).get("referee")   # (S5: the host's spot holds Part 1's and
+                        for o in st_.people.values() for q in ((o.get("any") or [o]) if isinstance(o, dict) else []))   #  Part 2's)   # (R2: the arena's host is the tournament's referee)
 _in = walk_to(t, _d) and t.room == "gym" and _host(t)
 _mat = next((k for k, v in t.exits.items() if v.startswith("OUT:")), None)
 _out = _mat is not None and walk_to(t, _mat) and t.room is None
@@ -631,6 +632,47 @@ check(_g0 == (False, False) and _g1 == (True, True),
 for _f in ("orre_part2", "xd_nett_rom", "xd_exol_beaten", "xd_machine_part_given", "xd_master_ball"):
     story.story_flags.pop(_f, None)
 story.badges["ORRE"] = _saved_badges
+
+# ---- the story rework S5 (11-24): the Orre League in Realgam's Colosseum in the sky - Part 1 Evice's run, Part 2 the League
+# (src/world/gym_swaps.py); the Elite Four Justy, Eagun, Miror B., Vander and Champion Eldes at Kanto's levels
+from src.world import gym_swaps as _gs
+from src.states.overworld.gym_lobby import GymLobbyState as _GLS
+_SP = _json.load(open("assets/orre_area_data.json", encoding="utf-8"))["STORY_PROGRESSION"]
+_TMJ = _json.load(open("assets/town_maps.json", encoding="utf-8"))
+_lg = _SP["REALGAM_TOWER"]["gym_league"]
+_lgr = _lg["trainers"] + [_lg["leader"]]
+check([t["name"] for t in _lgr] == ["Elite Four Justy", "Elite Four Eagun", "Elite Four Miror B.", "Elite Four Vander", "Champion Eldes"]
+      and [max(t["levels"]) for t in _lgr] == [54, 56, 58, 60, 63] and [t["class"] for t in _lgr] == ["ELITE_FOUR"] * 4 + ["CHAMPION"]
+      and all(_OL.stage(p, lv) == p and p <= 386 for t in _lgr for p, lv in zip(t["team"], t["levels"]))
+      and all(m in _mv for t in _lgr for mm in t["team_moves"] for m in mm) and _lg["requirements"]["badges"] == 8,
+      "S5: the League - Justy, Eagun, Miror B., Vander, then Champion Eldes; Kanto's levels (54/56/58/60, 63), fit species, real moves")
+story.story_flags.pop("orre_part2", None)
+_gs.apply(g)
+_p1 = (g.loader.area_data["STORY_PROGRESSION"]["REALGAM_TOWER"]["gym"]["leader"]["name"])
+story.story_flags["orre_part2"] = True
+_gs.apply(g)
+_p2 = (g.loader.area_data["STORY_PROGRESSION"]["REALGAM_TOWER"]["gym"]["leader"]["name"])
+story.story_flags["col_gonzap_realgam"] = True
+story.badges["ORRE"] = ["PHENAC", "PYRITE", "AGATE", "SNAGEM", "GATEON", "KEY_LAIR", "CITADARK"]
+t = town("REALGAM_TOWER", "PHENAC_CITY")
+_shut = t.gym_closed()
+story.badges["ORRE"] += ["REALGAM"]
+_open = t.gym_closed()
+_lob = _GLS(g, t)
+check("Evice" in _p1 and _p2 == "Champion Eldes" and _shut and not _open and _lob.is_league
+      and [x.get("name") for x in _lob.gauntlet][-1] == "Champion Eldes" and _lob.next_opponent.get("name") == "Elite Four Justy",
+      f"S5: Realgam's Gym is Evice's run in Part 1 and the League in Part 2 ({_p1} / {_p2}); shut till 8 badges; the League's run starts with Justy")
+_ar = _TMJ["REALGAM_TOWER"]["rooms"]["colosseum"]
+_lsc = [sc for sc in _ar.get("scenes") or [] if "world:orre_skip:part2" in (sc.get("condition") or [])]
+_host = [p for p in _ar["people"] if isinstance(p, list) and any(isinstance(q, dict) and q.get("text") == "Realgam Tower: Orre League" for q in p)]
+_jm = {m["id"]: m for m in _json.load(open("assets/orre_area_data.json", encoding="utf-8"))["JOURNAL_MISSIONS"]}
+check(len(_lsc) == 6 and _host and _jm.get("orre_m21", {}).get("completed_flag") == "beat_orre_champion",
+      f"S5: the sky arena - the League's host, five walk-ins and the Champion's crowd ({len(_lsc)} scenes); the Journal's League step")
+for _f in ("orre_part2", "col_gonzap_realgam"):
+    story.story_flags.pop(_f, None)
+_gs.apply(g)
+story.badges["ORRE"] = _saved_badges
+
 
 g.walk_towns = False
 print(f"##### {fails} failures")

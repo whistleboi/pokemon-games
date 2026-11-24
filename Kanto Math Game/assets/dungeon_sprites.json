@@ -76,6 +76,9 @@
     ]
   },
   "figures": {
+    "REALGAM_TOWER:Realgam Tower: Orre League": {
+      "sheet": "orre_npc_15.png"
+    },
     "REALGAM_TOWER:GYM LEADER BIRCH": {"sheet": "orre_trainer_leader_birch.png"},
     "XD_CIPHER_KEY_LAIR:GYM LEADER NORMAN": {"sheet": "orre_trainer_leader_norman.png"},
     "XD_CITADARK_ISLE:GYM LEADER DRAKE": {"sheet": "orre_trainer_leader_drake.png"},
