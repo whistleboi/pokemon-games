@@ -4,6 +4,7 @@ curves and the formula stay true to the games."""
 import json
 import os
 
+EXP_MODE = 1.0   # Options > Difficulty: 1.3 in EXP Mode (settings.DIFFICULTY_EXP; set by settings.apply), 1 as the games give it
 XP_BOOST = 1  # every XP gain is multiplied by this (the games' own numbers are 1x; 3 until 11-01, 2 until
               # 11-07: the level cap still came too quickly, Jordan)
 
@@ -48,4 +49,4 @@ def battle_xp(base_yield, foe_level, my_level, trainer=False):
     a = 1.5 if trainer else 1.0
     L, Lp = max(1, foe_level), max(1, my_level)
     xp = (a * max(1, base_yield) * L / 5) * ((2 * L + 10) / (L + Lp + 10)) ** 2.5 + 1
-    return max(1, int(xp * XP_BOOST))
+    return max(1, int(xp * XP_BOOST * EXP_MODE))

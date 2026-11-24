@@ -160,6 +160,7 @@ _area = _json.load(open("assets/orre_area_data.json", encoding="utf-8"))["STORY_
 _orre = [k for k in _tm if _area.get(k, {}).get("region") == "ORRE" and "__" not in k and _area[k].get("area_type") == "town"
          and any(v == "cycle" for v in _tm[k].get("buildings", {}).values())]
 check(len(_orre) >= 8, f"Orre's walked towns with a motorbike: {_orre}")
+story.story_flags["xd_gateon_bridges"] = True   # (Gateon's island doors: over the bridges Makan fixes - shut before, checked below)
 for _key in _orre:
     _m = _tm[_key]
     _tv = [o for o in _area[_key].get("travel_options", []) if o.get("door") == "cycle"]
@@ -317,6 +318,43 @@ _have = {k: [p if isinstance(p, str) else p.get("text") for f in _tm[k]["floors"
 check("REST IN THE BED" in _have["SS_LIBRA"] and "BONSLY" in _have["SS_LIBRA"] and "BONSLY'S GIRL" in _have["XD_ONBS"]
       and "F-DISK" in _have["MT_BATTLE"] and sum(1 for p in _have["SHADOW_PKMN_LAB"] if str(p).startswith("DNA SAMPLE")) == 3,
       "the S.S. Libra's bed and Bonsly, Bonsly's girl at ONBS, the F-Disk on Mt. Battle, the lab's three DNA samples stand on the maps")
+
+
+# ---- Gateon's islands (11-24): six movable bridges, raised till Makan; Cyle on the north island; up the lighthouse to the
+# roof (Kilen); after the title its three guardians hold the stairs, and Jasmine waits on the roof
+def _gate_room(t, room):
+    _st = next((k for k, v in t.exits.items() if v == "ROOM:" + room), None)
+    return _st is not None and walk_to(t, _st) and t.room == room
+
+
+_isl = {n: tuple(int(v) for v in d.split(",")) for d, n in _tm["GATEON_PORT"]["inside"].items()}
+for _f in ("xd_gateon_bridges", "beat_orre_champion"):
+    story.story_flags.pop(_f, None)
+t = town("GATEON_PORT", "PHENAC_CITY")
+check(len(t.barred) == 48 and path(t, tuple(t.player), _isl["lighthouse"]) is None,
+      f"Gateon: the six bridges raised before Makan ({len(t.barred)} tiles), no way to the lighthouse")
+story.story_flags["xd_gateon_bridges"] = True
+t = town("GATEON_PORT", "PHENAC_CITY")
+_ok = {n: path(t, tuple(t.player), d) is not None for n, d in _isl.items() if n in ("house_north", "house_island", "lighthouse")}
+_cyle = any(isinstance(p, dict) and p.get("text") == "Casual Guy Cyle" for p in t.people.values())
+check(not t.barred and all(_ok.values()) and _cyle, f"Gateon: the bridges down after Makan - the islands reached {_ok}; Cyle on the north island {_cyle}")
+_up = walk_to(t, _isl["lighthouse"]) and t.room == "lighthouse" and _gate_room(t, "lighthouse_2f") and _gate_room(t, "lighthouse_3f")     and _gate_room(t, "lighthouse_roof")
+_who = sorted(p.get("text") for p in t.people.values() if isinstance(p, dict) and t._shown(p)) if _up else []
+check(_up and "Bodybuilder Kilen" in _who and "Gym Leader Jasmine" not in _who,
+      f"Gateon lighthouse: up all three stairs to the roof before the title, Kilen there, no Jasmine yet ({_who})")
+story.story_flags["beat_orre_champion"] = True
+t = town("GATEON_PORT", "PHENAC_CITY")
+if g.current_state is not t:   # (the first town after the title offers the next region: back into Gateon)
+    t = town("GATEON_PORT", "PHENAC_CITY")
+_in = walk_to(t, _isl["lighthouse"]) and t.room == "lighthouse"
+_held = _in and not _gate_room(t, "lighthouse_2f")
+story.story_flags.update(gateon_lh_electabuzz=True, gateon_lh_electrode=True, gateon_lh_ampharos=True)
+t = town("GATEON_PORT", "PHENAC_CITY")
+_top = walk_to(t, _isl["lighthouse"]) and _gate_room(t, "lighthouse_2f") and _gate_room(t, "lighthouse_3f") and _gate_room(t, "lighthouse_roof")
+_jas = _top and any(isinstance(p, dict) and p.get("text") == "Gym Leader Jasmine" and t._shown(p) for p in t.people.values())
+check(_held and _jas, f"Gateon lighthouse after the title: the guardian holds the stairs ({_held}); past all three, Jasmine on the roof ({_jas})")
+for _f in ("xd_gateon_bridges", "beat_orre_champion", "gateon_lh_electabuzz", "gateon_lh_electrode", "gateon_lh_ampharos"):
+    story.story_flags.pop(_f, None)
 
 g.walk_towns = False
 print(f"##### {fails} failures")

@@ -13,8 +13,9 @@ for key, (team, lv, floor) in JJ.items():
     check(len(t) == 1 and t[0].get("team") == team and t[0].get("levels") == lv, f"{key}: Jessie & James {team} Lv {lv[0]} ({[(x.get('team'), x.get('levels')) for x in t]})")
     fl = _tm[key]["floors"][floor]
     check("Jessie and James" in (fl.get("trainer_spots") or []), f"{key}: they stand on the map (floor {floor})")
-vg = _area["VIRIDIAN_CITY"]["gym"]["pre_battle_event"]["trainer"]
-check(vg.get("levels") == [6, 6], f"Viridian ambush: low levels for a first visit ({vg.get('team')}, {vg.get('levels')})")
+vg = next(o for o in _area["VIRIDIAN_CITY"]["explore_options"] if o.get("text") == "Jessie and James")["event"]["battle"]
+check(vg.get("levels") == [6, 6] and "pre_battle_event" not in _area["VIRIDIAN_CITY"]["gym"],
+      f"Viridian: their battle by the Gym (a side mission, 11-24), Lv 6; no battle forced at the Gym's door ({vg.get('team')}, {vg.get('levels')})")
 import pygame as _pg
 _jj = _pg.image.load("assets/sprites/trainers/jessie_james.png")
 check(_jj.get_size() == (128, 128), "their battle sprite: the whole pair (Orre 2.1.1's, not cut off)")
@@ -24,28 +25,38 @@ vf = {x.get("spot_name"): x for x in _area["VIRIDIAN_FOREST"]["trainer_pool"] if
 check(vf.get("Lass VF", {}).get("team") == [29, 32] and vf.get("Bug Catcher VF", {}).get("team") == [10, 10], "the Lass (Nidoran pair) and the Bug Catcher (two Caterpie)")
 check({"Lass VF", "Bug Catcher VF"} <= set(_tm["VIRIDIAN_FOREST"].get("trainer_spots") or []), "both on the forest's map")
 
-print("3) Viridian: the Journal sends you to the Gym, and Jessie & James jump you there")
+print("3) Viridian: Jessie & James by the locked Gym - a side mission once you can catch (11-24, Jordan: too hard that early)")
 story.badges["KANTO"] = []
 story.starting_region = "KANTO"
-story.story_flags.update({"received_pokedex_kanto": True, "received_starter_kanto": True})
+story.story_flags.update({"received_starter_kanto": True})
+story.story_flags.pop("received_pokedex_kanto", None)
 story.story_flags.pop("viridian_rocket_defeated", None)
 story.current_area_key = "VIRIDIAN_CITY"
-_m = [m.get("id") for m in story.get_active_missions() if m.get("type") == "MAIN"]
-check(_m and _m[0] == "m1", f"the Journal's main task: Investigation at Viridian ({_m[:3]})")
 v = open_map("VIRIDIAN_CITY", "KANTO_ROUTE_1")
-v.player = (36, 11); v.anim = 0; v.facing = (0, -1)
-walk(v, "u")
-st = g.current_state
-check(isinstance(st, (TrainerIntroState, TrainerBattleState)), f"walking into the locked Gym starts their battle ({type(st).__name__})")
-story.story_flags["viridian_rocket_defeated"] = True
+_jj = lambda st: {o.get("text"): p for p, o in st._people().items() if o.get("text") in ("Jessie and James", "Jessie", "Meowth")}
+_ms = lambda: {m.get("id"): m.get("type") for m in story.get_active_missions()}
+check(not _jj(v) and "m1" not in _ms(), f"before the Pokedex: nobody by the Gym, no mission ({_jj(v)})")
+story.story_flags["received_pokedex_kanto"] = True
 v = open_map("VIRIDIAN_CITY", "KANTO_ROUTE_1")
+check(_jj(v) == {"Jessie and James": (38, 10), "Jessie": (39, 10), "Meowth": (40, 10)} and _ms().get("m1") == "SIDE"
+      and "m1" not in [m.get("id") for m in story.get_active_missions() if m.get("type") == "MAIN"],
+      f"with the Pokedex: James, Jessie and Meowth wait beside the Gym's door; the Journal lists it as a side mission ({_jj(v)}, {_ms().get('m1')})")
 v.player = (36, 11); v.anim = 0; v.facing = (0, -1)
-said.clear()
 walk(v, "u")
 play(lambda: not g.current_state._busy(), 300)
-check(isinstance(g.current_state, _WTS) and tuple(g.current_state.player) == (36, 11), "after that the doors are just locked again")
-_m = [m.get("id") for m in story.get_active_missions() if m.get("type") == "MAIN"]
-check("m1" not in _m, f"...and the Journal moves on ({_m[:2]})")
+check(isinstance(g.current_state, _WTS) and tuple(g.current_state.player) == (36, 11), "walking into the locked door: no ambush, just locked")
+story.badges["KANTO"] = ["BOULDER"]
+v = open_map("VIRIDIAN_CITY", "KANTO_ROUTE_1")
+check(_ms().get("m1") == "SIDE" and "Jessie and James" in _jj(v), "after the Boulder Badge they're still there, the side mission still open")
+v.player = (38, 11); v.anim = 0; v.facing = (0, -1)
+v._talk((38, 10))
+play(lambda: isinstance(g.current_state, (TrainerIntroState, TrainerBattleState)), 600)
+st = g.current_state
+check(isinstance(st, (TrainerIntroState, TrainerBattleState)), f"talk to James: their battle ({type(st).__name__})")
+story.story_flags["viridian_rocket_defeated"] = True
+v = open_map("VIRIDIAN_CITY", "KANTO_ROUTE_1")
+check(not _jj(v) and "m1" not in _ms(), f"beaten: they're gone, and so is the side mission ({_jj(v)})")
+story.badges["KANTO"] = []
 
 print("4) Route 19: Yellow's Summer Beach House, on the sand below the ledges")
 r19 = _tm["KANTO_ROUTE_19"]

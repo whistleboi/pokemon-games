@@ -335,11 +335,7 @@ play(lambda: any("Daisy" in s for s in said) and not g.current_state._busy(), 60
 check(any("Daisy: Hi there" in s for s in said), f"Daisy, next door, at FireRed's spot {daisy} ({said[:1]})")
 
 # ---- Viridian: the Gym's doors stay locked till the other seven badges; inside, FireRed's spin maze; the Center
-# (first, Jordan's own: Jessie & James jump you at the locked doors on your first look; yellow_kanto plays it through)
-v = open_map("VIRIDIAN_CITY", "KANTO_ROUTE_1")
-v.player = (36, 11); v.anim = 0; v.facing = (0, -1)
-walk(v, "u")
-check(isinstance(g.current_state, (TrainerIntroState, TrainerBattleState)), f"Viridian Gym: Jessie & James jump you at its locked doors ({type(g.current_state).__name__})")
+# (11-24, Jordan: Jessie & James no longer jump you at the doors - they wait beside them, a side mission; yellow_kanto plays it)
 story.story_flags["viridian_rocket_defeated"] = True
 v = open_map("VIRIDIAN_CITY", "KANTO_ROUTE_1")
 v.player = (36, 11); v.anim = 0; v.facing = (0, -1)

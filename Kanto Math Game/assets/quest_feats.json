@@ -224,6 +224,7 @@
     {"id": "evolved", "name": "Evolution Fan", "count": "evolved", "desc": "Watch your Pokemon evolve.", "tiers": [[5, {"items": {"WATER_STONE": 1}}], [20, {"tm": "TM162", "items": {"DUSK_STONE": 1, "SHINY_STONE": 1}}], [50, {"tm": "TM100", "items": {"DAWN_STONE": 1, "MOON_STONE": 1}}]]},
     {"id": "stones", "name": "Stone Collector", "count": "evo_items", "desc": "Evolve Pokemon with evolution stones and other items.", "tiers": [[1, {"money": 2000}], [4, {"tm": "TM331", "items": {"SUN_STONE": 1}}], [8, {"tm": "TM252", "money": 5000}]]},
     {"id": "caught", "name": "Pokemon Catcher", "count": "caught", "desc": "Catch wild Pokemon, any kind, as many as you like.", "tiers": [[25, {"items": {"GREAT_BALL": 10}}], [100, {"tm": "TM248", "items": {"ULTRA_BALL": 10}}], [250, {"tm": "TM330", "money": 10000}]]},
+    {"id": "musicals", "name": "Musical Star", "count": "musicals", "desc": "Perform in the Pokemon Musical at Nimbasa City's Musical Theater.", "tiers": [[1, {"money": 2000}], [10, {"money": 4000}], [25, {"money": 8000, "items": {"RARE_CANDY": 2}}]]},
     {"id": "subway", "name": "Subway Regular", "count": "subway", "desc": "Win Battle Subway battles in a row on any line from Gear Station: your best streak counts.", "tiers": [[7, {"money": 3000}], [21, {"items": {"RARE_CANDY": 2}}], [49, {"money": 10000, "items": {"MAX_REVIVE": 2}}]]}
   ]
 }
