@@ -1,3 +1,4 @@
+# (Legacy menu clear, Step 5, 11-24: stays on the menus - every place here is in a menu region (Kalos).)
 
 # Lumiose City's neighbourhoods (Jordan, 10-26): a hub with districts that are their own small
 # areas, each with something to do.

@@ -29,10 +29,12 @@ def lineup(b):
     return [(p.id, p.level) for p in b.opponent_team]
 
 
+exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())   # (Orange and Kanto are walked: played on their maps, 11-24)
+
+
 def travel_texts(area):
-    story.current_area_key = area
-    c = ow.CityState(g)
-    return [o["text"] for o in prog[area].get("travel_options", []) if c._check_menu_condition(o.get("condition"))]
+    """The ways on from the town's walked map that open now (its exits, its harbour's boats and the blimp)."""
+    return walk_travel(area)
 
 
 print("1) A full region (the Pokemon Orange hack, 10-27)")
@@ -54,7 +56,7 @@ story.badges = {"KANTO": ["x"] * 8, "JOHTO": []}
 story.current_area_key = "VERMILLION_CITY"
 story.starting_region = "KANTO"
 check("Blimp to the Orange Islands" in travel_texts("VERMILLION_CITY"), "Kanto Champion: a Rocket Blimp flies to Orange (Jordan 11-17; was the S.S. Anne)")
-pick = RegionSelectionState(g, mode="move", return_state=ow.CityState(g))
+pick = RegionSelectionState(g, mode="move", return_state=walk_town("VERMILLION_CITY", "KANTO_ROUTE_6"))
 check("ORANGE" in pick.regions and pick._travel_only("ORANGE"), "Mom's picker sends a Kanto player to the blimp")
 story.story_flags = {}
 check("Blimp to the Orange Islands" not in travel_texts("VERMILLION_CITY"), "no title: no voyage")
@@ -65,34 +67,34 @@ story.player_team = [mk(6)]
 story.enter_region("ORANGE")
 for area, kind, want in (("MIKAN_ISLAND", "cissy", [(117, 20), (9, 22)]),
                          ("KUMQUAT_ISLAND", "luana", [(105, 46), (65, 46)])):
-    story.current_area_key = area
     story.badges["ORANGE"] = ["CORAL_EYE", "SEA_RUBY", "SPIKE_SHELL"][:0 if area == "MIKAN_ISLAND" else 3]
     story.story_flags[f"gym_progress_{area}"] = len(prog[area]["gym"]["trainers"])
     story.story_flags[f"gym_challenge_done_{area}"] = True  # (the Gym challenge minigame: won)
-    lobby = ow.GymLobbyState(g, None)
-    g.change_state(lobby)
-    lobby.challenge_gym()
+    _ldr = str((prog[area]["gym"].get("leader") or {}).get("name") or "")   # (the Gym's leader: a GYM option, or a walked
+    _GYM = lambda o: str(o.get("action") or "").upper() == "GYM" or str(o.get("text") or "").strip() == _ldr   # Gym's own battle)
+    t = walk_town(area, None)
+    walk_meet(t, _GYM, fight=False)   # (into the Gym, up to the Leader)
     pz = g.current_state
     if isinstance(pz, gp.GymPuzzleState):
         check(pz.kind == kind, f"{area}: {kind} challenge first")
         while not pz.finished:
             pz.answer(next(i for i, o in enumerate(pz.options) if o[1]))
-        lobby = ow.GymLobbyState(g, None)
-        g.change_state(lobby)
-        lobby.challenge_gym()
-    got = lineup(battle_of(g.current_state))
-    check([p for p, _ in got] == [p for p, _ in want], f"leader: {got}")
+        pz.on_done(pz.solved) if hasattr(pz, "on_done") else None
+        t = walk_town(area, None)
+        walk_meet(t, _GYM, fight=False)
+    b = battle_of(g.current_state)
+    got = lineup(b) if hasattr(b, "opponent_team") else None
+    check(got and [p for p, _ in got] == [p for p, _ in want], f"leader: {got} ({type(g.current_state).__name__})")
 
 print("4) Drake and the Orange League")
 story.badges["ORANGE"] = ["CORAL_EYE", "SEA_RUBY", "SPIKE_SHELL", "JADE_STAR"]
-story.current_area_key = "PUMMELO_ISLAND"
 story.story_flags["gym_progress_PUMMELO_ISLAND"] = 0
-lobby = ow.GymLobbyState(g, None)
-g.change_state(lobby)
-check(lobby.is_league, f"Pummelo is a league: {lobby.status_text}")
-lobby.challenge_gym()
+t = walk_town("PUMMELO_ISLAND", None)
+check("league" in (t.town_map.get("rooms") or {}), "Pummelo is a league: the stadium's league room")
+walk_meet(t, lambda o: o.get("text") == "Drake" and str(o.get("action") or "").upper() != "LEAGUE")   # (5.7: meet him in the Palace first)
+walk_meet(t, lambda o: o.get("text") == "Drake" and str(o.get("action") or "").upper() == "LEAGUE", fight=False)   # (up to Drake in the stadium)
 b = battle_of(g.current_state)
-check([p for p, _ in lineup(b)] == [132, 95, 94, 3, 125, 149], f"Drake, 5.7's team (batch 20, 11-18): {lineup(b)}")
+check(hasattr(b, "opponent_team") and [p for p, _ in lineup(b)] == [132, 95, 94, 3, 125, 149], f"Drake, 5.7's team (batch 20, 11-18): {lineup(b)}")
 check(prog["PUMMELO_ISLAND"]["gym"]["leader"]["levels"][-1] == 52 and levels.CHAMPION_ACE["ORANGE"] == 52, "Drake's ace Lv 52 (5.7's, 11-17)")
 rival = [e["trainer"] for k in ORANGE for e in (prog[k].get("on_enter_event") or []) if isinstance(e, dict)
          and e["trainer"].get("name") == "{rival_name}"]
@@ -100,11 +102,13 @@ check(not any(k in ("TANGELO_JUNGLE",) for k in ORANGE if any(e.get("trainer", {
       f"no rival Cross in the areas rebuilt from 5.7 (DECISIONS 11-17; {len(rival)} menu-era battles left in areas not rebuilt yet)")
 
 print("5) Region rules")
-c = ow.CityState(g)
+c = walk_town("MIKAN_ISLAND", None)
 bc = BadgeCaseState(g, c)
 check("ORANGE" in bc.unlocked_regions and len(bc.badge_sprites["ORANGE"]) == 5, "badge case: 5 Orange badges")
-story.current_area_key = "MIKAN_ISLAND"
-items = PokeMartState(g, None)._shop_items()
+walk_meet(walk_town("MIKAN_ISLAND", None), lambda o: str(o.get("action") or "").upper() == "SHOP", play=False)
+walk_frames(2)
+check(isinstance(g.current_state, PokeMartState), f"Mikan's Mart counter opens the shop ({type(g.current_state).__name__})")
+items = g.current_state._shop_items()
 check("RARE_CANDY" not in items, "island mart: no Rare Candy")
 
 print("6) Special islands")
@@ -121,8 +125,7 @@ check(sum(1 for s in _pk if 9101 <= int(s) <= 9135) == 35, "our 35 Pinkan forms 
 check("SHAMOUTI_SHRINE" not in prog and all(prog[k]["area_boss"]["level"] == 50 and prog[k]["area_boss"]["catchable"]
                                              for k in ("FIRE_ISLAND", "LIGHTNING_ISLAND", "ICE_ISLAND")),
       "5.7's three islands, each with its legendary bird (Lv 50, catchable) after the story; no menu shrine")
-story.current_area_key = "VALENCIA_ISLAND"
-cs = ow.CityState(g)
+cs = walk_town("VALENCIA_ISLAND", None)
 ivy = next(o for o in prog["VALENCIA_ISLAND"]["explore_options"] if o["text"] == "Professor Ivy")   # (11-17, 5.7: Ivy mentions the GS Ball; no item)
 check("GS_BALL" not in json.dumps(ivy) and any("GS Ball" in l for st in ivy["event"]["stages"] for l in st.get("lines", [])),
       "Professor Ivy mentions the GS Ball in a line, and gives no GS Ball (DECISIONS 11-17)")
