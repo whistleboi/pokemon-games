@@ -4,7 +4,8 @@ import os
 import pygame
 
 DEFAULTS = {"math_timer": "NORMAL", "text_speed": 3, "auto_text": 2, "move_anims": True, "battle_intros": True, "screen_fade": True,
-            "music": 5, "sfx": 5, "live3d": True}
+            "music": 5, "sfx": 5, "live3d": True, "difficulty": "NORMAL"}
+DIFFICULTY_EXP = {"NORMAL": 1.0, "EXP": 1.3}   # (Jordan 11-24: EXP Mode, an easy mode - 30% more Exp. from every battle)
 
 
 def get(story, key):
@@ -21,6 +22,8 @@ def apply(game):
     from src.ui import dialogue
     story = game.story_manager
     dialogue.TEXT_SPEED = get(story, "text_speed")
+    from src.pokemon import growth
+    growth.EXP_MODE = DIFFICULTY_EXP.get(get(story, "difficulty"), 1.0)
     config.AUDIO_LEVELS.update(music=get(story, "music"), sfx=get(story, "sfx"))
     game.FADE_FRAMES = 6 if get(story, "screen_fade") else 0
     game.battle_transitions = get(story, "battle_intros") and os.environ.get("SDL_VIDEODRIVER") != "dummy"

@@ -2786,8 +2786,8 @@ class WalkTownState(TownWalkUps, CityState):
                 out.append((t, None, "out"))
             elif target.startswith("ROOM:"):
                 to = None if target[5:] == "MAIN" else target[5:]
-                if to is None or to in rooms:
-                    out.append((t, to, "stairs"))
+                if to is None or to in rooms:   # (ROOM:MAIN is the building's front door back to the town: "Way out", Unova 11-24)
+                    out.append((t, to, "out" if to is None else "stairs"))
         dyn = (rooms.get(room) or {}).get("dynamic_exit") if room else None
         if dyn:   # (a lift car leads to every floor it serves: its attendant takes you there)
             mat = next((t for t, target in part["exits"].items() if str(target).startswith("ROOM:")), None)
@@ -2922,7 +2922,7 @@ class WalkTownState(TownWalkUps, CityState):
                     return ((None, arrive(None, target)), "out")
                 if target.startswith("ROOM:"):
                     to = None if target[5:] == "MAIN" else target[5:]
-                    return ((to, arrive(to, "ROOM:" + (room or "MAIN"))), "stairs") if to is None or to in rooms else None
+                    return ((to, arrive(to, "ROOM:" + (room or "MAIN"))), "out" if to is None else "stairs") if to is None or to in rooms else None
                 return None
             if room is None and t in part["doors"]:
                 to = inside.get("%d,%d" % t)
