@@ -812,6 +812,8 @@ def things(st):
             out_.append((1, ("S", t), [t], "a sign / machine", None))
         for t in (getattr(st, "links", None) or {}):
             out_.append((1, ("W", t), [t], "a warp pad", None))
+        for (t, _way), (to, _xy) in (st._guide_cocoons(getattr(st, "room", None)) if hasattr(st, "_guide_cocoons") else {}).items():
+            out_.append((1, ("C", t, _way), [t], "a cocoon (its thread carries you on)", (area, "room:" + to if to else "outside")))   # (Castelia Gym; Unova 11-24)
         for tg, tiles in _stretches(st.exits):
             if tg.startswith("OUT:"):
                 out_.append((1, ("X", tg, tiles[0]), tiles, "the way out of the building", (area, "outside")))
