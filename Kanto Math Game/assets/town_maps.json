@@ -69585,7 +69585,15 @@
       "when": [
        {
         "flag": "cianwood_gym_waterfall_off",
-        "f": "ss_ground/T24GYM0101_off.png"
+        "f": "ss_ground/T24GYM0101_off.png",
+        "play": [
+         "ss_ground/T24GYM0101_w1.png",
+         "ss_ground/T24GYM0101_w2.png",
+         "ss_ground/T24GYM0101_w3.png",
+         "ss_ground/T24GYM0101_w4.png",
+         "ss_ground/T24GYM0101_w5.png"
+        ],
+        "secs": 2.0
        }
       ]
      },
