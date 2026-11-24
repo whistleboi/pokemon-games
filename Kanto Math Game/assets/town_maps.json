@@ -195006,7 +195006,7 @@
     "art": [
      "cccccccccccccccccccccc",
      "cccccccccccccccccccccc",
-     "cccccccccccccccccc.ccc",
+     "cccccccccccccccccc^ccc",
      "cz..................zc",
      "c....................c",
      "ccccccccccc..........c",
@@ -195020,7 +195020,8 @@
      "cccccccccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:46,38"
+     "v": "OUT:46,38",
+     "^": "ROOM:hotel_lift"
     },
     "buildings": {},
     "roofs": {
@@ -195420,7 +195421,8 @@
        ]
       }
      }
-    ]
+    ],
+    "title": "Pokemon Hotel 1F"
    },
    "house_1201": {
     "theme": "room",
@@ -195999,7 +196001,7 @@
     "art": [
      "cccccccccccccccccccccc",
      "cccccccccccccccccccccc",
-     "cccccccccccccccccc.ccc",
+     "cccccccccccccccccc^ccc",
      "czN.................zc",
      "c....................c",
      "ccccccccccc..........c",
@@ -196013,7 +196015,8 @@
      "cccccccccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:38,25"
+     "v": "OUT:38,25",
+     "^": "ROOM:flats_lift"
     },
     "buildings": {},
     "roofs": {
@@ -198294,7 +198297,1130 @@
       }
      }
     ],
-    "title": "Route 212 Gate"
+    "title": "Route 212 Gate",
+    "barred": [
+     {
+      "tiles": [
+       [
+        5,
+        12
+       ]
+      ],
+      "look": "sheet:pt_reporter.png",
+      "until": {
+       "flag_condition": "visited_PASTORIA_CITY"
+      },
+      "lines": [
+       "Reporter: Sorry, the gate's closed for a while. We're filming for TV!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        4,
+        12
+       ]
+      ],
+      "look": "sheet:pt_cameraman.png",
+      "until": {
+       "flag_condition": "visited_PASTORIA_CITY"
+      },
+      "lines": [
+       "Cameraman: Quiet on the set! Come back once we're done here."
+      ]
+     }
+    ]
+   },
+   "hotel_lift": {
+    "theme": "room",
+    "art": [
+     "ccccccc",
+     "ccccccc",
+     "c.....c",
+     "c.....c",
+     "c.....c",
+     "c..v..c",
+     "ccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:house_0101"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      156,
+      82,
+      16
+     ],
+     "_wall": [
+      213,
+      222,
+      230
+     ],
+     "_things": {
+      "0,1": [
+       96,
+       96,
+       96
+      ],
+      "1,1": [
+       160,
+       128,
+       96
+      ],
+      "2,1": [
+       160,
+       128,
+       96
+      ],
+      "3,1": [
+       160,
+       128,
+       96
+      ],
+      "4,1": [
+       160,
+       128,
+       96
+      ],
+      "5,1": [
+       160,
+       128,
+       96
+      ],
+      "6,1": [
+       96,
+       96,
+       96
+      ],
+      "0,2": [
+       96,
+       96,
+       96
+      ],
+      "6,2": [
+       96,
+       96,
+       96
+      ],
+      "0,3": [
+       96,
+       96,
+       96
+      ],
+      "6,3": [
+       96,
+       96,
+       96
+      ],
+      "0,4": [
+       96,
+       96,
+       96
+      ],
+      "6,4": [
+       96,
+       96,
+       96
+      ],
+      "0,5": [
+       96,
+       96,
+       96
+      ],
+      "6,5": [
+       96,
+       96,
+       96
+      ]
+     },
+     "_picture": {
+      "f": "pt_ground/C05R0103.png",
+      "at": [
+       0,
+       1
+      ]
+     }
+    },
+    "title": "Pokemon Hotel Lift",
+    "dynamic_exit": {
+     "flag": "hearthome_hotel_lift",
+     "rooms": [
+      "house_0101",
+      "house_0102"
+     ],
+     "default": "house_0101"
+    },
+    "scenes": [
+     {
+      "trigger": "enter",
+      "every": true,
+      "cast": [],
+      "event": {
+       "elevator": {
+        "area": "HEARTHOME_CITY",
+        "car_flag": "hearthome_hotel_lift",
+        "ride": [
+         "The lift hums..."
+        ],
+        "floors": [
+         [
+          "1F",
+          "house_0101"
+         ],
+         [
+          "2F",
+          "house_0102"
+         ]
+        ]
+       },
+       "cancel": [
+        "The lift stays where it is."
+       ]
+      }
+     }
+    ]
+   },
+   "house_0102": {
+    "theme": "room",
+    "art": [
+     "cccccccccccccccccccccc",
+     "cccccccccccccccccccccc",
+     "cccccccccccccccccc^ccc",
+     "c.....cmm..mmmccz...zc",
+     "c.....c.......cc.....c",
+     "c.....c.......cc.....c",
+     "c....................c",
+     "c.........N..........c",
+     "c.m......mmN..cc.....c",
+     "c........mm...cc.....c",
+     "c.m...........cc.....c",
+     "c.............cc.....c",
+     "c.............cc.....c",
+     "cccccccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:hotel_lift"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      246,
+      156,
+      115
+     ],
+     "_wall": [
+      106,
+      106,
+      114
+     ],
+     "_things": {
+      "1,2": [
+       96,
+       64,
+       64
+      ],
+      "2,2": [
+       96,
+       64,
+       64
+      ],
+      "3,2": [
+       96,
+       64,
+       64
+      ],
+      "4,2": [
+       96,
+       64,
+       64
+      ],
+      "5,2": [
+       96,
+       64,
+       64
+      ],
+      "6,2": [
+       64,
+       64,
+       64
+      ],
+      "7,2": [
+       96,
+       64,
+       64
+      ],
+      "8,2": [
+       96,
+       64,
+       64
+      ],
+      "9,2": [
+       96,
+       64,
+       64
+      ],
+      "10,2": [
+       96,
+       64,
+       64
+      ],
+      "11,2": [
+       96,
+       64,
+       64
+      ],
+      "12,2": [
+       96,
+       64,
+       64
+      ],
+      "13,2": [
+       96,
+       64,
+       64
+      ],
+      "14,2": [
+       64,
+       64,
+       64
+      ],
+      "15,2": [
+       64,
+       64,
+       64
+      ],
+      "16,2": [
+       64,
+       64,
+       64
+      ],
+      "17,2": [
+       64,
+       32,
+       32
+      ],
+      "19,2": [
+       64,
+       32,
+       32
+      ],
+      "20,2": [
+       64,
+       64,
+       64
+      ],
+      "6,3": [
+       192,
+       192,
+       192
+      ],
+      "7,3": [
+       96,
+       128,
+       160
+      ],
+      "8,3": [
+       96,
+       128,
+       160
+      ],
+      "11,3": [
+       192,
+       192,
+       224
+      ],
+      "12,3": [
+       192,
+       192,
+       224
+      ],
+      "13,3": [
+       128,
+       128,
+       160
+      ],
+      "14,3": [
+       192,
+       192,
+       192
+      ],
+      "15,3": [
+       192,
+       192,
+       192
+      ],
+      "6,4": [
+       192,
+       192,
+       192
+      ],
+      "14,4": [
+       192,
+       192,
+       192
+      ],
+      "15,4": [
+       192,
+       192,
+       192
+      ],
+      "6,5": [
+       224,
+       192,
+       160
+      ],
+      "14,5": [
+       224,
+       192,
+       160
+      ],
+      "15,5": [
+       160,
+       192,
+       192
+      ],
+      "2,8": [
+       192,
+       160,
+       192
+      ],
+      "9,8": [
+       255,
+       224,
+       96
+      ],
+      "10,8": [
+       255,
+       192,
+       96
+      ],
+      "15,8": [
+       128,
+       128,
+       160
+      ],
+      "9,9": [
+       255,
+       192,
+       96
+      ],
+      "10,9": [
+       224,
+       192,
+       96
+      ],
+      "14,9": [
+       224,
+       160,
+       128
+      ],
+      "15,9": [
+       160,
+       160,
+       160
+      ],
+      "2,10": [
+       224,
+       224,
+       224
+      ],
+      "14,10": [
+       192,
+       192,
+       192
+      ],
+      "15,10": [
+       192,
+       192,
+       192
+      ],
+      "14,11": [
+       192,
+       192,
+       192
+      ],
+      "15,11": [
+       192,
+       192,
+       192
+      ],
+      "14,12": [
+       192,
+       192,
+       192
+      ],
+      "15,12": [
+       192,
+       192,
+       192
+      ]
+     },
+     "_kinds": {
+      "2,8": "bed",
+      "2,10": "bed",
+      "7,3": "tv",
+      "8,3": "tv",
+      "11,3": "fridge",
+      "12,3": "sink",
+      "13,3": "sink",
+      "9,8": "table",
+      "10,8": "table",
+      "9,9": "table",
+      "10,9": "table"
+     },
+     "_objects": [
+      {
+       "k": "bed",
+       "r": [
+        2,
+        8,
+        1,
+        3
+       ]
+      },
+      {
+       "k": "tv",
+       "r": [
+        7,
+        3,
+        2,
+        1
+       ]
+      },
+      {
+       "k": "fridge",
+       "r": [
+        11,
+        3,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "sink",
+       "r": [
+        12,
+        3,
+        2,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        9,
+        8,
+        2,
+        2
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        16,
+        3,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        20,
+        3,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/C05R0102.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Clefairy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Clefairy: Pippi!"
+       ]
+      }
+     },
+     {
+      "text": "Hotel guest",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I got this Shell Bell on vacation, but I already had one. Would you take it?",
+        "You received a Shell Bell!"
+       ],
+       "gift_item": {
+        "SHELL_BELL": 1
+       },
+       "flag": "got_shell_bell_hearthome_hotel",
+       "done": [
+        "A Shell Bell's chime soothes a Pokemon. Mine likes it, anyway."
+       ]
+      }
+     }
+    ],
+    "title": "Pokemon Hotel 2F"
+   },
+   "flats_lift": {
+    "theme": "room",
+    "art": [
+     "ccccccc",
+     "ccccccc",
+     "c.....c",
+     "c.....c",
+     "c.....c",
+     "c..v..c",
+     "ccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:house_0801"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      156,
+      82,
+      16
+     ],
+     "_wall": [
+      213,
+      222,
+      230
+     ],
+     "_things": {
+      "0,1": [
+       96,
+       96,
+       96
+      ],
+      "1,1": [
+       160,
+       128,
+       96
+      ],
+      "2,1": [
+       160,
+       128,
+       96
+      ],
+      "3,1": [
+       160,
+       128,
+       96
+      ],
+      "4,1": [
+       160,
+       128,
+       96
+      ],
+      "5,1": [
+       160,
+       128,
+       96
+      ],
+      "6,1": [
+       96,
+       96,
+       96
+      ],
+      "0,2": [
+       96,
+       96,
+       96
+      ],
+      "6,2": [
+       96,
+       96,
+       96
+      ],
+      "0,3": [
+       96,
+       96,
+       96
+      ],
+      "6,3": [
+       96,
+       96,
+       96
+      ],
+      "0,4": [
+       96,
+       96,
+       96
+      ],
+      "6,4": [
+       96,
+       96,
+       96
+      ],
+      "0,5": [
+       96,
+       96,
+       96
+      ],
+      "6,5": [
+       96,
+       96,
+       96
+      ]
+     },
+     "_picture": {
+      "f": "pt_ground/C05R0803.png",
+      "at": [
+       0,
+       1
+      ]
+     }
+    },
+    "title": "Lift",
+    "dynamic_exit": {
+     "flag": "hearthome_flats_lift",
+     "rooms": [
+      "house_0801",
+      "house_0802"
+     ],
+     "default": "house_0801"
+    },
+    "scenes": [
+     {
+      "trigger": "enter",
+      "every": true,
+      "cast": [],
+      "event": {
+       "elevator": {
+        "area": "HEARTHOME_CITY",
+        "car_flag": "hearthome_flats_lift",
+        "ride": [
+         "The lift hums..."
+        ],
+        "floors": [
+         [
+          "1F",
+          "house_0801"
+         ],
+         [
+          "2F",
+          "house_0802"
+         ]
+        ]
+       },
+       "cancel": [
+        "The lift stays where it is."
+       ]
+      }
+     }
+    ]
+   },
+   "house_0802": {
+    "theme": "room",
+    "art": [
+     "cccccccccccccccccccccc",
+     "cccccccccccccccccccccc",
+     "cccccccccccccccccc^ccc",
+     "c.....cmm..mmmccz...zc",
+     "c.....c.....N.cc.....c",
+     "c..N..c.......cc.....c",
+     "c....................c",
+     "c....................c",
+     "c.m.....NmmN..cc.....c",
+     "c........mm...cc.....c",
+     "c.m...........cc.....c",
+     "c.............cc.....c",
+     "c.............cc.....c",
+     "cccccccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:flats_lift"
+    },
+    "buildings": {},
+    "roofs": {
+     "_floor": [
+      246,
+      156,
+      115
+     ],
+     "_wall": [
+      106,
+      106,
+      114
+     ],
+     "_things": {
+      "1,2": [
+       96,
+       64,
+       64
+      ],
+      "2,2": [
+       96,
+       64,
+       64
+      ],
+      "3,2": [
+       96,
+       64,
+       64
+      ],
+      "4,2": [
+       96,
+       64,
+       64
+      ],
+      "5,2": [
+       96,
+       64,
+       64
+      ],
+      "6,2": [
+       64,
+       64,
+       64
+      ],
+      "7,2": [
+       96,
+       64,
+       64
+      ],
+      "8,2": [
+       96,
+       64,
+       64
+      ],
+      "9,2": [
+       96,
+       64,
+       64
+      ],
+      "10,2": [
+       96,
+       64,
+       64
+      ],
+      "11,2": [
+       96,
+       64,
+       64
+      ],
+      "12,2": [
+       96,
+       64,
+       64
+      ],
+      "13,2": [
+       96,
+       64,
+       64
+      ],
+      "14,2": [
+       64,
+       64,
+       64
+      ],
+      "15,2": [
+       64,
+       64,
+       64
+      ],
+      "16,2": [
+       64,
+       64,
+       64
+      ],
+      "17,2": [
+       64,
+       32,
+       32
+      ],
+      "19,2": [
+       64,
+       32,
+       32
+      ],
+      "20,2": [
+       64,
+       64,
+       64
+      ],
+      "6,3": [
+       192,
+       192,
+       192
+      ],
+      "7,3": [
+       96,
+       128,
+       160
+      ],
+      "8,3": [
+       96,
+       128,
+       160
+      ],
+      "11,3": [
+       192,
+       192,
+       224
+      ],
+      "12,3": [
+       192,
+       192,
+       224
+      ],
+      "13,3": [
+       128,
+       128,
+       160
+      ],
+      "14,3": [
+       192,
+       192,
+       192
+      ],
+      "15,3": [
+       192,
+       192,
+       192
+      ],
+      "6,4": [
+       192,
+       192,
+       192
+      ],
+      "14,4": [
+       192,
+       192,
+       192
+      ],
+      "15,4": [
+       192,
+       192,
+       192
+      ],
+      "6,5": [
+       224,
+       192,
+       160
+      ],
+      "14,5": [
+       224,
+       192,
+       160
+      ],
+      "15,5": [
+       160,
+       192,
+       192
+      ],
+      "2,8": [
+       192,
+       160,
+       192
+      ],
+      "9,8": [
+       255,
+       224,
+       96
+      ],
+      "10,8": [
+       255,
+       192,
+       96
+      ],
+      "15,8": [
+       128,
+       128,
+       160
+      ],
+      "9,9": [
+       255,
+       192,
+       96
+      ],
+      "10,9": [
+       224,
+       192,
+       96
+      ],
+      "14,9": [
+       224,
+       160,
+       128
+      ],
+      "15,9": [
+       160,
+       160,
+       160
+      ],
+      "2,10": [
+       224,
+       224,
+       224
+      ],
+      "14,10": [
+       192,
+       192,
+       192
+      ],
+      "15,10": [
+       192,
+       192,
+       192
+      ],
+      "14,11": [
+       192,
+       192,
+       192
+      ],
+      "15,11": [
+       192,
+       192,
+       192
+      ],
+      "14,12": [
+       192,
+       192,
+       192
+      ],
+      "15,12": [
+       192,
+       192,
+       192
+      ]
+     },
+     "_kinds": {
+      "2,8": "bed",
+      "2,10": "bed",
+      "7,3": "tv",
+      "8,3": "tv",
+      "11,3": "fridge",
+      "12,3": "sink",
+      "13,3": "sink",
+      "9,8": "table",
+      "10,8": "table",
+      "9,9": "table",
+      "10,9": "table"
+     },
+     "_objects": [
+      {
+       "k": "bed",
+       "r": [
+        2,
+        8,
+        1,
+        3
+       ]
+      },
+      {
+       "k": "tv",
+       "r": [
+        7,
+        3,
+        2,
+        1
+       ]
+      },
+      {
+       "k": "fridge",
+       "r": [
+        11,
+        3,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "sink",
+       "r": [
+        12,
+        3,
+        2,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        9,
+        8,
+        2,
+        2
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        16,
+        3,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        20,
+        3,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/C05R0802.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Grandma",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "They call Hearthome friendly to kids. I say it's friendly to everyone, Pokemon too."
+       ]
+      }
+     },
+     {
+      "text": "Old lady",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "No stairs in this house! A lift is easier, and the little Pokemon can get about too."
+       ]
+      }
+     },
+     {
+      "text": "Kind grandpa",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Some folks are kind hoping for kindness back. Where's the harm in that?"
+       ]
+      }
+     },
+     {
+      "text": "Grandpa",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My grandchildren all want Pokemon of their own. It'll be a handful, but a happy one."
+       ]
+      }
+     }
+    ]
    }
   },
   "inside": {

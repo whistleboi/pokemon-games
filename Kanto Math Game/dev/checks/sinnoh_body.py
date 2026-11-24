@@ -1009,5 +1009,38 @@ t._go("underground_man", "OUT:54,18"); frames(t, 3)
 check(t.room == "underground_man" and len(t._people()) == 4, f"Eterna: the Underground Man's house, his visitors inside ({t.room}, {len(t._people())})")
 story.story_flags.clear(); story.story_flags.update(_sv)
 
+# ---- S3 (11-24): the Pokemon Hotel's lift to its 2F (the Shell Bell), Route 212's gate held by the TV crew till Pastoria
+_sv = dict(story.story_flags); _inv = dict(story.inventory)
+for _k in ("hearthome_hotel_lift", "got_shell_bell_hearthome_hotel", "visited_PASTORIA_CITY"):
+    story.story_flags.pop(_k, None)
+story.inventory.pop("SHELL_BELL", None)
+t = town("HEARTHOME_CITY", "SINNOH_ROUTE_208")
+t._go("house_0101", "OUT:46,38"); frames(t, 3)
+_up = next(k for k, v in t.exits.items() if v == "ROOM:hotel_lift")
+t.player = t.anim_from = (_up[0], _up[1] + 1); t.anim = 0; t.walk_goal = None
+t.step(0, -1)
+_drive(t, 300, lambda: isinstance(g.current_state, _PLS))
+_asked = isinstance(g.current_state, _PLS)
+if _asked:
+    g.current_state.pick("house_0102")
+_drive(t, 300, lambda: g.current_state is t and not getattr(t, "npc_active", False))
+_out = next((k for k, v in t.exits.items() if str(v).startswith("ROOM:")), None) if t.room == "hotel_lift" else None   # (the car's door: it opens on the floor it's at)
+if _out:
+    _drive(t, 200, lambda: not (getattr(t, "scenes", None) and t.scenes.busy()) and not getattr(t, "npc_active", False))
+    t.player = t.anim_from = (_out[0], _out[1] - 1); t.anim = 0; t.step(0, 1)
+    _drive(t, 120, lambda: t.room == "house_0102")
+_guest = next((s for s, o in t._people().items() if str(o.get("text")) == "Hotel guest"), None) if t.room == "house_0102" else None
+if _guest:
+    t._talk(_guest); _drive(t, 300, lambda: not getattr(t, "npc_active", False))
+check(_asked and t.room == "house_0102" and story.inventory.get("SHELL_BELL"),
+      f"Pokemon Hotel: into the lift from 1F, up to 2F, and the guest there gives a Shell Bell ({_asked}, {t.room}, {story.inventory.get('SHELL_BELL')})")
+t = town("HEARTHOME_CITY", "SINNOH_ROUTE_208")
+t._go("gate_212", "OUT:10,57"); frames(t, 3)
+_shut = (5, 12) in t.barred
+story.story_flags["visited_PASTORIA_CITY"] = True
+t._go("gate_212", "OUT:10,57"); frames(t, 25)
+check(_shut and (5, 12) not in t.barred, f"Route 212's gate: the TV crew stand in the way out till you've been to Pastoria City ({_shut})")
+story.story_flags.clear(); story.story_flags.update(_sv); story.inventory.clear(); story.inventory.update(_inv)
+
 g.walk_towns = False
 print(f"##### {fails} failures")

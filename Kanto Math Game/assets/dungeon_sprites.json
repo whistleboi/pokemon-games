@@ -76,6 +76,11 @@
     ]
   },
   "figures": {
+    "HEARTHOME_CITY:Old lady": {"sheet": "pt_oldwoman2.png"},
+    "HEARTHOME_CITY:Grandpa": {"sheet": "pt_oldman2.png"},
+    "HEARTHOME_CITY:Grandma": {"sheet": "pt_oldwoman1.png"},
+    "HEARTHOME_CITY:Kind grandpa": {"sheet": "pt_oldman1.png"},
+    "HEARTHOME_CITY:Hotel guest": {"sheet": "pt_woman3.png"},
     "HEARTHOME_CITY:Cool fan": {"sheet": "pt_fighter.png"},
     "HEARTHOME_CITY:Acting coach": {"sheet": "pt_woman2.png"},
     "HEARTHOME_CITY:Dance coach": {"sheet": "pt_idol.png"},
