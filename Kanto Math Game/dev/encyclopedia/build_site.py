@@ -99,6 +99,34 @@ def item_desc(key):
     return F.fix(d).replace("Pokemon", "Pokémon")
 
 
+EDGES = {"^": "N", "v": "S", "<": "W", ">": "E"}   # (a map's edge exits; town_maps "exits")
+OTHER = {"n": "Entrance", "w": "By water", "u": "Stairs", "d": "Stairs"}
+
+
+def connections(k, f):
+    """The places next door: by the map's edges (north / south / west / east, the map and its floors), then the other
+    ways (a cave mouth or a door "n", the water "w", stairs, a building's letter), then the area's travel options
+    (ferries, Fly spots...)."""
+    m = F.MAPS.get(k) or {}
+    out = {"N": [], "S": [], "W": [], "E": [], "other": []}
+    seen = {k}
+    for ex in [m.get("exits") or {}] + [fl.get("exits") or {} for fl in m.get("floors") or [] if isinstance(fl, dict)]:
+        for sym, v in ex.items():
+            if not isinstance(v, str) or v not in B.FACTS or v in seen:
+                continue
+            seen.add(v)
+            if sym in EDGES:
+                out[EDGES[sym]].append(v)
+            else:
+                out["other"].append([OTHER.get(sym, "Door"), v])
+    for t in f.get("travel") or []:
+        v = t.get("target_area") if isinstance(t, dict) else None
+        if isinstance(v, str) and v in B.FACTS and v not in seen:
+            seen.add(v)
+            out["other"].append(["Travel", v])
+    return out
+
+
 def build_region(region, title):
     pdir, files = B.prepare(region)
     site_ids = {k: place_route(k) for k in B.PLACE_ID}
@@ -126,11 +154,7 @@ def build_region(region, title):
         f = B.FACTS[k]
         if k not in places:   # (no written section: the data's own tables)
             places[k] = {"html": f"<h2>{B.esc(f['name'])}</h2>" + B.fill(f"{{{{tables:{k}}}}}{{{{trainers:{k}}}}}"), "part": None}
-        exits = []
-        for v in list((f.get("exits") or {}).values()) + [t.get("target_area") for t in (f.get("travel") or []) if isinstance(t, dict)]:
-            if isinstance(v, str) and v in B.FACTS and v != k and v not in exits:
-                exits.append(v)
-        places[k].update(name=f["name"], exits=exits, level=f["level"], sevii=k in F.SEVII["STORY_PROGRESSION"])
+        places[k].update(name=f["name"], conn=connections(k, f), level=f["level"], sevii=k in F.SEVII["STORY_PROGRESSION"])
 
     # where each Pokemon and item turns up, and who uses each Pokemon
     mons, items, trainers = {}, {}, {}
@@ -167,6 +191,39 @@ def build_region(region, title):
             "trainers": trainers, "order": sorted(places, key=lambda k: (first_part.get(k, 99), list(B.FACTS).index(k)))}
 
 
+MAPDATA = {}   # (the map pictures, as data: URIs in data/<region>-maps.json: loaded when a place page first opens)
+
+
+def map_pictures(out, key):
+    """The area's map as the game draws it: its ground picture with the top layer (trees, roofs) over it, one image per
+    floor for caves and buildings (town_maps "_picture" + "overheads", 16-pixel tiles). Returns [{"src", "label"}]."""
+    from PIL import Image
+    m = F.MAPS.get(key) or {}
+    tiles = os.path.join(F.A, "tiles")
+    names = m.get("floor_names") or []
+    layers = [(m, "")] + [(fl, F.fix(names[i]) if i < len(names) and names[i] else f"Floor {i + 1}")
+                          for i, fl in enumerate(m.get("floors") or []) if isinstance(fl, dict)]
+    pics = []
+    for i, (lay, label) in enumerate(layers):
+        pic = ((lay.get("roofs") or {}).get("_picture") or {})
+        if not pic.get("f") or not os.path.exists(os.path.join(tiles, pic["f"])):
+            continue
+        im = Image.open(os.path.join(tiles, pic["f"])).convert("RGBA")
+        for o in lay.get("overheads") or []:
+            if isinstance(o, dict) and o.get("kind") == "picture" and os.path.exists(os.path.join(tiles, o.get("f", ""))):
+                top = Image.open(os.path.join(tiles, o["f"])).convert("RGBA")
+                x, y = (int(v) * 16 for v in (o.get("at") or [0, 0]))
+                im.alpha_composite(top, (x, y))
+        name = f"maps/{slug(key)}{'-' + str(i) if i else ''}.png"
+        import base64
+        from io import BytesIO
+        buf = BytesIO()
+        im.convert("RGB").quantize(256).save(buf, "PNG", optimize=True)
+        MAPDATA[name] = "data:image/png;base64," + base64.b64encode(buf.getvalue()).decode()
+        pics.append({"src": name, "label": label, "w": im.width, "h": im.height})
+    return pics
+
+
 MOVES = json.load(open(os.path.join(F.A, "moves.json"), encoding="utf-8"))
 
 
@@ -175,6 +232,11 @@ def main(out):
     regions = []
     for key, title, src in REGIONS:
         data = build_region(key, title)
+        for k, p in data["places"].items():
+            p["maps"] = map_pictures(out, k)
+        with open(os.path.join(out, "data", f"{key}-maps.json"), "w", encoding="utf-8", newline="\n") as fh:
+            json.dump(MAPDATA, fh, separators=(",", ":"))
+        MAPDATA.clear()
         data["src"] = src
         with open(os.path.join(out, "data", f"{key}.json"), "w", encoding="utf-8", newline="\n") as fh:
             json.dump(data, fh, ensure_ascii=False, separators=(",", ":"))
