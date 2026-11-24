@@ -882,12 +882,6 @@
 
             "extra_stock": [
 
-                {"item": "TM068"},
-
-                {"item": "TM067"},
-
-                {"item": "TM069"},
-
                 {"item": "TM007"},
 
                 {"item": "TM057"},
@@ -1246,7 +1240,7 @@
 
             "has_gym": true,
 
-            "gym": {"requirements": {"badges": 7, "fail_text": ["Clair only accepts challengers who have earned seven Johto badges."]}, "trainers": [{"name": "Ace Trainer Paulo", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_m.png", "is_boss_battle": true, "team": [147, 117, 147], "rewards": {"balls": 2}}, {"name": "Ace Trainer Lola", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_m.png", "is_boss_battle": true, "team": [147, 148], "rewards": {"balls": 2}}, {"name": "Ace Trainer Cody", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_m.png", "is_boss_battle": true, "team": [116, 117], "rewards": {"balls": 2}}, {"name": "Ace Trainer Fran", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_m.png", "is_boss_battle": true, "team": [117], "rewards": {"balls": 2}}, {"name": "Ace Trainer Mike", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_m.png", "is_boss_battle": true, "team": [148], "rewards": {"balls": 2}}], "leader": {"name": "Clair", "class": "GYM_LEADER", "sprite": "clair.png", "team": [148, 148, 130, 230], "levels": [38, 38, 38, 41], "badge_reward": "RISING", "badge_later": "johto_beat_clair", "badge_later_lines": ["Clair: ...I still don't accept it. Go to the Dragon's Den behind this Gym.", "Clair: Pass the Elder's test at the Dragon Shrine, and then... we'll talk about the Rising Badge."], "rewards": {"balls": 5, "MT_SILVER_MAP": 1}, "is_boss_battle": true, "dialogue": {"intro": ["Welcome to the Blackthorn City Gym! I'm Clair, the Dragon-type Gym Leader."], "player_won": ["Clair: I lost? I don't believe it. There must be some mistake...", "Clair: I won't admit this. I won't give you the Rising Badge!", "Clair: ...Fine. There's a place called the Dragon's Den behind this Gym. Go to the Dragon Shrine at its heart and take the Elder's test. If you pass, I'll accept you as a Trainer worthy of the Badge."], "player_lost": ["Don't worry, you'll get it next time."]}, "movesets": {"148": ["THUNDER-WAVE", "SLAM", "AQUA-TAIL", "DRAGON-PULSE"], "130": ["BITE", "TWISTER", "DRAGON-RAGE", "DRAGON-PULSE"], "230": ["HYDRO-PUMP", "SMOKESCREEN", "HYPER-BEAM", "DRAGON-PULSE"]}, "rematch": {"team": [130, 148, 142, 230, 6, 149], "levels": [56, 52, 52, 56, 52, 60], "movesets": {"130": ["DRAGON-DANCE", "EARTHQUAKE", "WATERFALL", "DRAGON-PULSE"], "148": ["THUNDER-WAVE", "DRAGON-RUSH", "THUNDERBOLT", "FLAMETHROWER"], "142": ["EARTHQUAKE", "THUNDER-FANG", "ROCK-SLIDE", "ROAR"], "230": ["YAWN", "HYDRO-PUMP", "ICE-BEAM", "DRAGON-BREATH"], "6": ["SHADOW-CLAW", "AIR-SLASH", "DRAGON-CLAW", "FIRE-FANG"], "149": ["THUNDER", "SAFEGUARD", "DRAGON-BREATH", "HYPER-BEAM"]}}}},
+            "gym": {"requirements": {"badges": 7, "fail_text": ["Clair only accepts challengers who have earned seven Johto badges."]}, "trainers": [{"name": "Ace Trainer Paulo", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_m.png", "is_boss_battle": true, "team": [147, 117, 147], "rewards": {"balls": 2}}, {"name": "Ace Trainer Lola", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_m.png", "is_boss_battle": true, "team": [147, 148], "rewards": {"balls": 2}}, {"name": "Ace Trainer Cody", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_m.png", "is_boss_battle": true, "team": [116, 117], "rewards": {"balls": 2}}, {"name": "Ace Trainer Fran", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_m.png", "is_boss_battle": true, "team": [117], "rewards": {"balls": 2}}, {"name": "Ace Trainer Mike", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_m.png", "is_boss_battle": true, "team": [148], "rewards": {"balls": 2}}], "leader": {"name": "Clair", "class": "GYM_LEADER", "sprite": "clair.png", "team": [148, 148, 130, 230], "levels": [38, 38, 38, 41], "badge_reward": "RISING", "badge_later": "johto_beat_clair", "badge_later_lines": ["Clair: ...I still don't accept it. Go to the Dragon's Den behind this Gym.", "Clair: Pass the Elder's test at the Dragon Shrine, and then... we'll talk about the Rising Badge."], "rewards": {"balls": 5, "MT_SILVER_MAP": 1, "TM115": 1}, "is_boss_battle": true, "dialogue": {"intro": ["Welcome to the Blackthorn City Gym! I'm Clair, the Dragon-type Gym Leader."], "player_won": ["Clair: I lost? I don't believe it. There must be some mistake...", "Clair: I won't admit this. I won't give you the Rising Badge!", "Clair: ...Fine. There's a place called the Dragon's Den behind this Gym. Go to the Dragon Shrine at its heart and take the Elder's test. If you pass, I'll accept you as a Trainer worthy of the Badge."], "player_lost": ["Don't worry, you'll get it next time."]}, "movesets": {"148": ["THUNDER-WAVE", "SLAM", "AQUA-TAIL", "DRAGON-PULSE"], "130": ["BITE", "TWISTER", "DRAGON-RAGE", "DRAGON-PULSE"], "230": ["HYDRO-PUMP", "SMOKESCREEN", "HYPER-BEAM", "DRAGON-PULSE"]}, "rematch": {"team": [130, 148, 142, 230, 6, 149], "levels": [56, 52, 52, 56, 52, 60], "movesets": {"130": ["DRAGON-DANCE", "EARTHQUAKE", "WATERFALL", "DRAGON-PULSE"], "148": ["THUNDER-WAVE", "DRAGON-RUSH", "THUNDERBOLT", "FLAMETHROWER"], "142": ["EARTHQUAKE", "THUNDER-FANG", "ROCK-SLIDE", "ROAR"], "230": ["YAWN", "HYDRO-PUMP", "ICE-BEAM", "DRAGON-BREATH"], "6": ["SHADOW-CLAW", "AIR-SLASH", "DRAGON-CLAW", "FIRE-FANG"], "149": ["THUNDER", "SAFEGUARD", "DRAGON-BREATH", "HYPER-BEAM"]}}}},
 
             "travel_options": [
 
@@ -1594,7 +1588,7 @@
                 {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
 
 
-                {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE"},
+                {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": {"any": ["can_headbutt", "ilex_headbutt_tutor"]}, "color": "ORANGE"},
 
 
                 {"text": "TOHJO FALLS", "action": "EXIT", "target": "TOHJO_FALLS", "condition": ["can_exit"], "color": "RED"},
@@ -1673,7 +1667,7 @@
                 {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"},
                 {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
                 {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
-                {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE"},
+                {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": {"any": ["can_headbutt", "ilex_headbutt_tutor"]}, "color": "ORANGE"},
                 {"text": "RECEPTION GATE", "action": "EXIT", "target": "POKEMON_LEAGUE_GATE", "condition": ["can_exit"], "color": "RED"},
                 {"text": "ROUTE 27", "action": "EXIT", "target": "KANTO_ROUTE_27", "condition": ["can_exit"], "color": "RED"},
                 {"text": "DESTINY KNOT", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_destiny_knot_kanto_route_26_r26_14_26", "event": {"lines": ["A Destiny Knot, lying in the grass."], "gift_item": {"DESTINY_KNOT": 1}, "flag": "got_destiny_knot_kanto_route_26_r26_14_26"}},
@@ -1769,7 +1763,7 @@
 
             "tree_pool": "JOHTO_ROUTE_TREE_PERCENTAGES", "route_menu": [
 
-                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE"},
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": {"any": ["can_headbutt", "ilex_headbutt_tutor"]}, "color": "ORANGE"},
 
                 {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
 
@@ -1835,7 +1829,7 @@
 
                 {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
 
-                {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE"},
+                {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": {"any": ["can_headbutt", "ilex_headbutt_tutor"]}, "color": "ORANGE"},
 
                 {"text": "Cherrygrove City", "action": "EXIT", "target_area": "CHERRYGROVE_CITY", "condition": "can_exit", "color": "RED"},
 
@@ -1905,7 +1899,7 @@
         
                 {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
         
-                {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE"},
+                {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": {"any": ["can_headbutt", "ilex_headbutt_tutor"]}, "color": "ORANGE"},
         
                 {"text": "Route 30", "action": "EXIT", "target_area": "JOHTO_ROUTE_30", "condition": "can_exit", "color": "RED"},
         
@@ -1987,7 +1981,7 @@
         
                 {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
         
-                {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE"},
+                {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": {"any": ["can_headbutt", "ilex_headbutt_tutor"]}, "color": "ORANGE"},
         
                 {"text": "Ruins of Alph", "action": "EXIT", "target_area": "RUINS_OF_ALPH", "condition": "can_exit", "color": "RED"},
         
@@ -2061,7 +2055,7 @@
         
                 {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
         
-                {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE"},
+                {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": {"any": ["can_headbutt", "ilex_headbutt_tutor"]}, "color": "ORANGE"},
         
                 {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
         
@@ -2129,7 +2123,7 @@
         
                 {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
         
-                {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE"},
+                {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": {"any": ["can_headbutt", "ilex_headbutt_tutor"]}, "color": "ORANGE"},
         
                 {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
         
@@ -2273,7 +2267,7 @@
         
             "tree_pool": "JOHTO_ROUTE_TREE_PERCENTAGES", "route_menu": [
         
-                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE"},
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": {"any": ["can_headbutt", "ilex_headbutt_tutor"]}, "color": "ORANGE"},
         
                 {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
         
@@ -2345,7 +2339,7 @@
         
                 {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
         
-                {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE"},
+                {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": {"any": ["can_headbutt", "ilex_headbutt_tutor"]}, "color": "ORANGE"},
         
                 {"text": "Route 36", "action": "EXIT", "target_area": "JOHTO_ROUTE_36", "condition": "can_exit", "color": "RED"},
         
@@ -2405,7 +2399,7 @@
             
                 {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
             
-                {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE"},
+                {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": {"any": ["can_headbutt", "ilex_headbutt_tutor"]}, "color": "ORANGE"},
             
                 {"text": "Ecruteak City", "action": "EXIT", "target_area": "ECRUTEAK_CITY", "condition": "can_exit", "color": "RED"},
             
@@ -2469,7 +2463,7 @@
         
                 {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
         
-                {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE"},
+                {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": {"any": ["can_headbutt", "ilex_headbutt_tutor"]}, "color": "ORANGE"},
         
                 {"text": "Route 38", "action": "EXIT", "target_area": "JOHTO_ROUTE_38", "condition": "can_exit", "color": "RED"},
         
@@ -2663,7 +2657,7 @@
         
                 {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN"},
         
-                {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE"},
+                {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": {"any": ["can_headbutt", "ilex_headbutt_tutor"]}, "color": "ORANGE"},
         
                 {"text": "FISH", "action": "FISH", "condition": "can_fish", "color": "ORANGE"},
         
@@ -2743,7 +2737,7 @@
         
                 {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
         
-                {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE"},
+                {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": {"any": ["can_headbutt", "ilex_headbutt_tutor"]}, "color": "ORANGE"},
         
                 {"text": "Mahogany Town", "action": "EXIT", "target_area": "MAHOGANY_TOWN", "condition": "can_exit", "color": "RED"},
         
@@ -3008,7 +3002,7 @@
         
                 {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
         
-                {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE"},
+                {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": {"any": ["can_headbutt", "ilex_headbutt_tutor"]}, "color": "ORANGE"},
         
                 {"text": "Dark Cave", "action": "EXIT", "target_area": "DARK_CAVE", "condition": "can_exit", "color": "RED"},
         
@@ -3286,7 +3280,7 @@
         
                 {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
         
-                {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE"},
+                {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": {"any": ["can_headbutt", "ilex_headbutt_tutor"]}, "color": "ORANGE"},
         
                 {"text": "CHALLENGE CELEBI", "action": "BOSS", "condition": ["has_8_johto_badges", "has_item:GS_BALL", "kurt_examined_gs_ball", "boss_not_defeated"], "color": "GOLD"},
         
