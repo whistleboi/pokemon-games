@@ -225,6 +225,17 @@ def build_region(region, title):
 
     # where each Pokemon and item turns up, and who uses each Pokemon
     mons, items, trainers = {}, {}, {}
+    # the professor's first Pokemon (REGION_START: the region's starters, where they're given, at what level)
+    rs = (F.DATA.get("REGION_START") or {}).get(region.upper()) or {}
+    sts = [int(x) for x in rs.get("starters") or []]
+    for pid in sts:
+        lv = (rs.get("starter_levels") or {}).get(str(pid)) or rs.get("starter_level") or 5   # (Pokemon's own default: Lv. 5)
+        others = [F.mon_name(x) for x in sts if x != pid]
+        prof = rs.get("professor") or "the professor"
+        how = (f"Joins you at the start, together with {' and '.join(others)}" if rs.get("partners_join")
+               else f"Gift from {prof} at the start: pick one of {({2: "two", 3: "three"}).get(len(sts), len(sts))} (the others are {' and '.join(others)})")
+        mons.setdefault(F.base_id(pid), {"wild": [], "used": []}).setdefault("gift", []).append(
+            {"p": rs.get("starter_area") or rs.get("start_area"), "how": how, "lv": str(lv)})
     for k, f in B.FACTS.items():
         w = f["wild"]
         for r in w["land"] + w["water"] + w["trees"] + [dict(r, zone=z["zone"]) for z in w["zones"] for r in z["rows"]]:
