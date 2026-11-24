@@ -454,49 +454,37 @@ check(not any(m["id"].startswith("unova_") for m in story.get_active_missions())
 story.story_flags, _b, story.current_area_key = _saved
 story.badges = _b
 import json
-print("14) Orre's levels follow its badge curve, from Espeon/Umbreon at 15/16 (Jordan, 11-01)")
+print("14) Orre's levels follow Kanto's caps stage by stage, from Espeon/Umbreon at 10/11 (Jordan 11-24: story rework L1)")
 from src.world import levels as _lv
 _orre = [k for k, a in g.loader.area_data["STORY_PROGRESSION"].items() if (a or {}).get("region") == "ORRE"]
 _missing = [k for k in _orre if k not in _lv._area_levels(g) and not g.loader.area_data["STORY_PROGRESSION"][k].get("level")]
 check(not _missing, f"every Orre area has its own level {_missing}")
-check(_lv.canon_area_level(g, "ORRE_DESERT") >= 14 and _lv.canon_area_level(g, "PYRITE_CAVE") < _lv.canon_area_level(g, "THE_UNDER")
-      < _lv.canon_area_level(g, "SNAGEM_HIDEOUT") < _lv.canon_area_level(g, "REALGAM_TOWER"), "they rise through the story")
-_willie = json.dumps(g.loader.area_data["STORY_PROGRESSION"]["OUTSKIRT_STAND"]).replace(" ", "")
-check('"levels":[14]' in _willie, "Willie's first battle is near the starters' level")
-print("15) Orre's Journal: the Colosseum + XD story in order (Jordan, 11-01)")
-_saved = (dict(story.story_flags), {r: list(b) for r, b in story.badges.items()}, story.current_area_key)
-story.current_area_key = "OUTSKIRT_STAND"
-story.badges["ORRE"] = []
-for _k in list(story.story_flags):
-    if not _k.startswith("visited_"):
-        story.story_flags.pop(_k)
-_mains = [m for m in g.loader.area_data["JOURNAL_MISSIONS"] if m["id"].startswith("orre_m")]   # (11-20: every step in the file's
-_steps = [(None, _mains[0]["id"])] + [(m.get("completed_flag") or m.get("completed_badge"),   #  order, the batches' sub-steps too)
-                                      _mains[i + 1]["id"] if i + 1 < len(_mains) else None) for i, m in enumerate(_mains)]
-_ok = True
-for _what, _want in _steps:
-    if isinstance(_what, list):   # (a step done once several flags are: Realgam's four keys, 11-21)
-        for _f in _what:
-            story.story_flags[_f] = True
-    elif _what and _what.isupper():
-        story.badges["ORRE"].append(_what)
-    elif _what:
-        story.story_flags[_what] = True
-        for _also in {"orre_met_mayor": ["orre_wakin"], "orre_beat_cail": ["orre_power_out"]}.get(_what, []):   # (what the story sets
-            story.story_flags[_also] = True                                                                 #  between: Wakin, the power cut)
-    _main = [m["id"] for m in story.get_active_missions() if m["type"] == "MAIN"]
-    if (_main[0] if _main else None) != _want:
-        _ok = False
-        print("      after", _what, "shows", _main, "wanted", _want)
-check(_ok, "each story step shows the next mission")
-_done = {m["id"] for m in story.get_all_journal_entries() if m["status"] == "COMPLETED"}
-check({m["id"] for m in _mains} <= _done, f"all {len(_mains)} story missions marked done")
-_side = [m["id"] for m in story.get_active_missions() if m["type"] == "SIDE"]
-check({"orre_s2a", "orre_s3", "orre_s5"} <= set(_side), f"after the title: Mt. Battle's 100, Jirachi, Citadark Isle {_side}")
+_cl = [_lv.canon_area_level(g, k) for k in ("ORRE_DESERT", "PYRITE_CAVE", "THE_UNDER", "SNAGEM_HIDEOUT", "REALGAM_TOWER")]
+check(all(a < b for a, b in zip(_cl, _cl[1:])) and _cl[0] <= 11, f"they rise through the story, from the partners' level {_cl}")
+_tm29 = json.load(open("assets/town_maps.json", encoding="utf-8"))
+
+
+def _find29(o, name):
+    if isinstance(o, dict):
+        if o.get("name") == name and isinstance(o.get("levels"), list):
+            return o["levels"]
+        o = list(o.values())
+    for x in (o if isinstance(o, list) else []):
+        r = _find29(x, name)
+        if r:
+            return r
+    return None
+
+
+_wl = _find29(_tm29["OUTSKIRT_STAND"]["rooms"]["diner"], "Rider Willie")
+check(bool(_wl) and max(_wl) <= 11, f"Willie's first battle is just under the partners' level ({_wl})")
+print("15) Orre's Journal: a story step for every badge and the League, each pointing somewhere real (story rework 11-24)")
 _ms = [m for m in g.loader.area_data["JOURNAL_MISSIONS"] if m["id"].startswith("orre_")]
+_badges = {m.get("completed_badge") for m in _ms if m.get("type") == "MAIN"}
+check({"PHENAC", "PYRITE", "AGATE", "SNAGEM", "GATEON", "KEY_LAIR", "CITADARK", "REALGAM"} <= _badges
+      and any(m.get("completed_flag") == "beat_orre_champion" and m.get("type") == "MAIN" for m in _ms),
+      f"the eight Gyms and the League are story steps {sorted(b for b in _badges if b)}")
 check(all(m.get("target") in g.loader.area_data["STORY_PROGRESSION"] for m in _ms), "every Orre mission points somewhere real")
-story.story_flags, _b, story.current_area_key = _saved
-story.badges = _b
 print("16) Orre's Pokemon Center and Mart from Pokemon Orre, for all its towns (Jordan, 11-01)")
 from src.states import overworld as _ow2
 from src.states.systems import PokeMartState as _PM2

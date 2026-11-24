@@ -74,7 +74,7 @@ EVENTS = {
     "b2_grunt_tm": {"gift_item": {"TM273": 1}, "flag": "b2_grunt_tm273"},   # (B2W2's TM21 Frustration, thrown by the Grunt)
     "b2_seymour": {"flag": "b2_seymour_battled", "battle": {
         "name": "School Kid Seymour", "class": "SCHOOL_KID", "sprite": "school_kid_m.png", "team": [515], "level": 9,
-        "team_choice": {"495": [515], "498": [511], "501": [513]},   # (the monkey strong against yours)
+        "team_choice": {"495": [515], "498": [511], "501": [513]},   # (the monkey weak to yours, as B2W2 has it)
         "rewards": {"balls": 2},
         "dialogue": {"player_won": ["Boy: You really are tough!"], "player_lost": ["Boy: I did it! Did you see, Alder?"]}}},
     "b2_cassie": {"flag": "b2_cassie_battled", "battle": {

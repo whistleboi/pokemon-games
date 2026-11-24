@@ -70,6 +70,17 @@ PARTNERS = {
              "end_exits": [], "end_flag": "b2_sewer_plasma_battled",
              "farewell": [], "gift": {},
              "wait": ["{rival_name}: Stepping out for a minute? I'll wait here. Don't be long!"]},
+    # (Black 2 / White 2, 11-24: Bianca through Reversal Mountain's main chamber, from where she meets you to the Undella room;
+    # her team at Reversal Mountain is her usual three, by your starter's type as her other battles: Musharna and the starter
+    # strong against yours. She heals your team after every battle and battles wild Pokemon beside you.)
+    "bianca": {"name": "Bianca", "area": "REVERSAL_MOUNTAIN_INSIDE", "figure": "Bianca", "sheet": "b2_bianca.png", "sprite": "bianca.png",
+               "team": [518, 500], "levels": [36, 36], "team_choice": {"495": [518, 500], "498": [518, 503], "501": [518, 497]},
+               "join": ["Bianca: Let's go through together! I'll keep our Pokemon healed!",
+                        "Bianca joined you! She'll battle wild Pokemon beside you and heal your team after every battle."],
+               "chat": ["Bianca: Ooh, it's so warm in here! Do you think Heatran's close?"],
+               "end_exits": [], "end_flag": "b2_reversal_bianca_bye",
+               "farewell": [], "gift": {},
+               "wait": ["Bianca: Taking a break? I'll wait right here!"]},
 }
 BY_FIGURE = {(p["area"], p["figure"]): k for k, p in PARTNERS.items()}
 

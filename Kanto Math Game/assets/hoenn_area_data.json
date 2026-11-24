@@ -3122,25 +3122,25 @@
       "reward": "Balance Badge"
     },
     {
-      "id": "hoenn_m12",
-      "type": "MAIN",
-      "title": "Weather Institute",
-      "description": "{team} has taken over the Weather Institute on Route 119!",
-      "condition": { "required_region": "HOENN", "flag": "badge_balance_earned", "flag_not": "weather_institute_cleared" },
-      "completed_flag": "weather_institute_cleared",
-      "reward": "Castform",
-      "steps": [{"area": "PETALBURG_CITY", "room": "wally_home", "at": [3, 4], "label": "Wally's father", "done": "got_surf_hoenn"}]
-    },
-    {
       "id": "hoenn_m11",
       "type": "MAIN",
       "title": "Mega Evolution",
       "description": "Steven is waiting on Route 118. He has something to show you on Southern Island.",
-      "condition": { "required_region": "HOENN", "flag": ["badge_balance_earned", "weather_institute_cleared"], "flag_not": "got_mega_bracelet" },
+      "condition": { "required_region": "HOENN", "flag": "badge_balance_earned", "flag_not": "got_mega_bracelet" },
       "completed_flag": "got_mega_bracelet",
       "reward": "Mega Bracelet + {eon}",
       "steps": [{"area": "PETALBURG_CITY", "room": "wally_home", "at": [3, 4], "label": "Wally's father", "done": "got_surf_hoenn"}],
       "target": "HOENN_ROUTE_118"
+    },
+    {
+      "id": "hoenn_m12",
+      "type": "MAIN",
+      "title": "Weather Institute",
+      "description": "{team} has taken over the Weather Institute on Route 119!",
+      "condition": { "required_region": "HOENN", "flag": ["badge_balance_earned", "got_mega_bracelet"], "flag_not": "weather_institute_cleared" },
+      "completed_flag": "weather_institute_cleared",
+      "reward": "Castform",
+      "steps": [{"area": "PETALBURG_CITY", "room": "wally_home", "at": [3, 4], "label": "Wally's father", "done": "got_surf_hoenn"}]
     },
     {
       "id": "hoenn_m14",
