@@ -114,8 +114,17 @@ class TrainerBattleState(ShadowBattle, GimmickEffects, AbilityEffects, MoveMecha
             except Exception:
                 bg_raw = None
         elif battle_type != "gym":   # (11-23: in a walked region, its own game's background first, the way that game picks it)
-            _own = _bbg.pick(self.game, area_name or self.game.story_manager.current_area_key,
-                             trainer=bool(trainer_sprite or trainer_img_name))
+            _area = area_name or self.game.story_manager.current_area_key
+            _trainer = bool(trainer_sprite or trainer_img_name)
+            # (Orange 11-23: a Leader or Champion met through a story event - Rudy, Danny, Drake - takes the index's
+            #  "leader"; a trainer inside a Gym's room, its "gym"; neither named there: the area's trainer picture)
+            _lead = trainer_class in ("GYM_LEADER", "CHAMPION", "ELITE_FOUR") or bool(self.battle_options.get("leader"))
+            _here = getattr(self.game, "current_state", None)
+            _in_gym = str(getattr(_here, "room", None) or (getattr(self.game, "walk_town_room", None) or (None, None))[-1] or "") == "gym"
+            _own = None
+            if _lead or _in_gym:
+                _own = _bbg.pick(self.game, _area, trainer=_trainer, gym=True, leader=_lead)
+            _own = _own or _bbg.pick(self.game, _area, trainer=_trainer)
             if _own:
                 try:
                     bg_raw = pygame.image.load(_own).convert()

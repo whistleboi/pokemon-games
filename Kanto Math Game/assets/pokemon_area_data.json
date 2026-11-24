@@ -2619,8 +2619,7 @@
       "backgrounds": {
         "pokecenter": "pokecenter.png",
         "pokemart": "pokemart.png",
-        "gym": "cinnabar_city_gym.png",
-        "battle": "battle_gym_cinnabar.png"
+        "gym": "cinnabar_city_gym.png"
       },
       "has_gym": true,
       "gym": {"requirements": {"flag": "got_secret_key", "fail_text": "The Gym door is locked. The key must be somewhere in the old Pokemon Mansion..."}, "trainers": [{"name": "Burglar Quinn", "is_boss_battle": true, "class": "BURGLAR", "sprite": "fr_burglar.png", "team": [58, 37, 38], "levels": [36, 36, 36], "rewards": {"balls": 2}, "dialogue": {"intro": ["I'm hot stuff!"], "player_won": ["Burned out!"], "player_lost": ["Too hot to handle!"]}}, {"name": "Super Nerd Erik", "is_boss_battle": true, "class": "SUPER_NERD", "sprite": "fr_super_nerd.png", "team": [37, 37, 38], "levels": [36, 36, 36], "rewards": {"balls": 2}, "dialogue": {"intro": ["I solved the puzzle!"], "player_won": ["My calculations were wrong!"], "player_lost": ["Q.E.D.!"]}}, {"name": "Super Nerd Avery", "is_boss_battle": true, "class": "SUPER_NERD", "sprite": "fr_super_nerd.png", "team": [77, 4, 37, 58], "levels": [34, 34, 34, 34], "rewards": {"balls": 2}, "dialogue": {"intro": ["Fire is pure chemistry!"], "player_won": ["The reaction fizzled..."], "player_lost": ["Combustion complete!"]}}, {"name": "Burglar Ramon", "is_boss_battle": true, "class": "BURGLAR", "sprite": "fr_burglar.png", "team": [77], "levels": [41], "rewards": {"balls": 2}, "dialogue": {"intro": ["I was just looking around. Honest!"], "player_won": ["Caught red-handed!"], "player_lost": ["Finders keepers!"]}}, {"name": "Super Nerd Derek", "is_boss_battle": true, "class": "SUPER_NERD", "sprite": "fr_super_nerd.png", "team": [78], "levels": [41], "rewards": {"balls": 2}, "dialogue": {"intro": ["Quick! What's the hottest type?"], "player_won": ["You knew the answer!"], "player_lost": ["Wrong answer!"]}}, {"name": "Burglar Dusty", "is_boss_battle": true, "class": "BURGLAR", "sprite": "fr_burglar.png", "team": [37, 58], "levels": [37, 37], "rewards": {"balls": 2}, "dialogue": {"intro": ["The doors here open for the clever."], "player_won": ["Locked out..."], "player_lost": ["The door stays shut!"]}}, {"name": "Super Nerd Zac", "is_boss_battle": true, "class": "SUPER_NERD", "sprite": "fr_super_nerd.png", "team": [58, 37], "levels": [37, 37], "rewards": {"balls": 2}, "dialogue": {"intro": ["Blaine's next. Are you ready for the heat?"], "player_won": ["You're ready."], "player_lost": ["Not yet you aren't!"]}}], "leader": {"name": "Blaine", "class": "GYM_LEADER", "is_boss_battle": true, "sprite": "blaine.png", "team": [58, 77, 78, 59], "levels": [42, 40, 42, 47], "badge_reward": "VOLCANO", "dialogue": {"intro": ["Welcome to my Gym! Let's see if you can handle the fire!"], "player_won": ["Not bad, but you'll need more than that to get through the heat!", "Take this Volcano Badge.", "Bill is waiting at the harbor. He wants to take you to One Island, in the Sevii Islands.", "They say a legendary bird of fire nests at the top of Mt. Ember on One Island!"], "player_lost": ["You got burned!"]}, "rewards": {"balls": 10, "RARE_CANDY": 1, "VOLCANO_PASS": 1, "TM141": 1}, "movesets": {"58": ["BITE", "ROAR", "TAKE-DOWN", "FIRE-BLAST"], "77": ["STOMP", "BOUNCE", "FIRE-SPIN", "FIRE-BLAST"], "78": ["STOMP", "BOUNCE", "FIRE-SPIN", "FIRE-BLAST"], "59": ["BITE", "ROAR", "TAKE-DOWN", "FIRE-BLAST"]}}},
@@ -3031,8 +3030,7 @@
       "trainer_encounter_rate": 0.1,
       "min_rounds": 2,
       "backgrounds": {
-        "battle": "battle_gym_vermillion.png"
-      },
+        },
       "trainer_pool": [],
       "route_menu": [
         {"text": "MAX POTION", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_maxpotion_pplant", "event": {"lines": ["A Max Potion, by the old machines."], "gift_item": {"MAX_POTION": 1}, "flag": "got_maxpotion_pplant"}},
@@ -4018,8 +4016,7 @@
       "route_name": "Seafoam Islands",
       "battle_type": "cave",
       "backgrounds": {
-        "battle": "battle_seafoam_islands.png"
-      },
+        },
       "wild_pool_percentages": "SEAFOAM_ISLANDS_PERCENTAGES",
       "alt_forms": { "enabled": true, "weights": { "79_galarian": 0.01, "80_galarian": 0.01, "37_alolan": 0.01, "38_alolan": 0.01 } },
       "area_boss": {

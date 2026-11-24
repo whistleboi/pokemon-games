@@ -271,6 +271,14 @@ _wm = _core.Mover("wild", 9, 9, None)
 _f2.movers.append(_wm)
 p.run.warp(2, 9, 9, land=True)
 check(tuple(p.run.player) == (9, 9) and (_wm.x, _wm.y) != (9, 9), f"...a wild Pokemon on the landing spot steps aside: you land on it ({p.run.player}, it's at {(_wm.x, _wm.y)})")
+_f2.movers = [m for m in _f2.movers if (m.x, m.y) != (9, 9)]   # (11-23: two on the one spot - the first stepped aside, the second stayed)
+_wa, _wb = _core.Mover("wild", 9, 9, None), _core.Mover("wild", 9, 9, None)
+_f2.movers += [_wa, _wb]
+p.run.warp(2, 9, 9, land=True)
+check(tuple(p.run.player) == (9, 9) and (9, 9) not in ((_wa.x, _wa.y), (_wb.x, _wb.y)),
+      f"...two wild Pokemon on the landing spot both step aside ({p.run.player}; {(_wa.x, _wa.y)}, {(_wb.x, _wb.y)}; "
+      f"on (9, 9): walkable {_f2.walkable(9, 9)}, exit {_f2.exits.get((9, 9))}, item {(9, 9) in _f2.items}, tm {(9, 9) in _f2.tm_spots}, "
+      f"movers {[(m.kind, m.x, m.y, getattr(m, 'size', 1)) for m in _f2.movers if abs(m.x - 9) + abs(m.y - 9) <= 2]})")
 
 # Green Path is two halves joined only through Pattern Bush (as in FireRed): each of the Bush's mouths brings you out on its own side
 for _i, _side in ((0, "west"), (5, "east")):

@@ -13,7 +13,7 @@ that region's game file on its own branch):
 How a battle's background is found (pick):
   - the area's entry, by the kind of battle: on the water "water" first; a Gym trainer "gym", its Leader "leader" (else
     "gym"); the Elite Four "elite" by their place in the League (else "leader"); a trainer "trainer" (else "wild"); wild
-    "wild"; a plain string for all;
+    "wild"; a plain string for every battle but a Gym / League one (those look only at their own keys);
   - else the region's "terrain" by how the area looks (its battle_type: grass, cave, water, sand, inside, snow...);
   - time of day as the games do: a picture "<name>_eve.png" / "<name>_night.png" beside the chosen one is used in the
     evening / at night (assets.time_of_day: eve 5-8pm, night 8pm-6am);
@@ -79,7 +79,7 @@ def pick(game, area_key, *, trainer=False, gym=False, leader=False, elite_index=
     entry = (ix.get("areas") or {}).get(area_key)
     name = None
     if isinstance(entry, str):
-        name = entry
+        name = None if (gym or leader or elite_index is not None) else entry
     elif isinstance(entry, dict):
         order = []
         if water:
@@ -93,7 +93,8 @@ def pick(game, area_key, *, trainer=False, gym=False, leader=False, elite_index=
             order += ["leader", "gym"]
         elif gym:
             order += ["gym"]
-        order += (["trainer", "wild"] if trainer else ["wild"])
+        if not (gym or leader or elite_index is not None):   # (a Gym / League battle looks only at its own keys: Kanto 11-23)
+            order += (["trainer", "wild"] if trainer else ["wild"])
         name = name or next((entry[k] for k in order if isinstance(entry.get(k), str)), None)
     if not name and not (gym or leader or elite_index is not None):   # (a Gym the index doesn't name keeps its own)
         area = (game.loader.area_data.get("STORY_PROGRESSION", {}) or {}).get(area_key) or {}

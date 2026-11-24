@@ -523,6 +523,17 @@ class Run:
     def floor(self):
         return self.floors[self.index]
 
+    @property
+    def fog(self):
+        """Fog on this floor: the place's fog, only on its "fog_floors" when the recipe lists them (Platinum's Lost Tower:
+        3F-5F, the zones whose weather is fog; 11-23)."""
+        ff = (self.recipe or {}).get("fog_floors")
+        return self._fog and (ff is None or self.index in ff)
+
+    @fog.setter
+    def fog(self, on):
+        self._fog = on
+
     @staticmethod
     def _ladder(floor, kind, nth=0):
         """The nth STAIRS (or STAIRS_UP) tile of a floor in reading order (else the first): ladders pair up
@@ -778,10 +789,13 @@ class Run:
             self.enter_floor(len(self.floors))
         self.enter_floor(index)
         floor = self.floors[index]
-        m = floor.mover_at(x, y) if land else None
-        if m is not None and m.kind == "wild" and getattr(m, "size", 1) == 1:
-            # (a wild Pokemon on the landing spot steps aside: you always come down on the very spot, as in FireRed. It made
-            #  Icefall Cave's thin-ice check land you a tile off now and then: the wild ones are placed at random; 11-18)
+        for _ in range(len(floor.movers) if land else 0):
+            # (every wild Pokemon on the landing spot steps aside: you always come down on the very spot, as in FireRed. It made
+            #  Icefall Cave's thin-ice check land you a tile off now and then: the wild ones are placed at random; 11-18;
+            #  two on the one spot, 11-23)
+            m = floor.mover_at(x, y)
+            if m is None or m.kind != "wild" or getattr(m, "size", 1) != 1:
+                break
             aside = next(((x + dx, y + dy) for dx, dy in DIRS if floor.walkable(x + dx, y + dy)
                           and not floor.occupied(x + dx, y + dy)), None)
             if aside is None:

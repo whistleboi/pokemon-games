@@ -2889,13 +2889,15 @@ class WalkTownState(CityState):
                 n = (x + dx, y + dy)
                 if (room, n) in goals:
                     found = (room, n)
-                    prev[found] = (cur, None)
+                    if found not in prev:   # (the goal already reached, the start itself included: a second link would loop - Unova 11-23)
+                        prev[found] = (cur, None)
                     break
                 if 0 <= n[1] < len(grid) and 0 <= n[0] < len(grid[0]) and grid[n[1]][n[0]] == "m":   # (someone behind a counter: talked to across it)
                     over = next(((room, (n[0] + k * dx, n[1] + k * dy)) for k in (1, 2) if (room, (n[0] + k * dx, n[1] + k * dy)) in goals), None)
                     if over:
                         found = over
-                        prev[found] = (cur, None)
+                        if found not in prev:
+                            prev[found] = (cur, None)
                         break
                 on = beyond(room, n)
                 if on is not None:
@@ -2929,7 +2931,9 @@ class WalkTownState(CityState):
         if found is None:
             return None
         first, node = None, found
-        while prev[node] is not None:
+        for _ in range(len(prev) + 1):   # (bounded: back-links can never spin forever)
+            if prev.get(node) is None:
+                break
             node, via = prev[node]
             if via is not None:
                 first = via
