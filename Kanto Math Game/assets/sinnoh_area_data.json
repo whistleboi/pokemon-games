@@ -3678,7 +3678,10 @@
         "flag": "galactic_lake_verity_cleared",
         "visited_not": "SNOWPOINT_CITY"
       },
-      "target": "SNOWPOINT_CITY"
+      "target": "SNOWPOINT_CITY",
+      "steps": [
+        {"area": "SINNOH_ROUTE_211", "at": [28, 20], "label": "Mt. Coronet", "done": "coronet_north_side"}
+      ]
     },
     {
       "id": "sinnoh_m12b",
@@ -3707,7 +3710,7 @@
         "flag_not": "galactic_lake_acuity_cleared"
       },
       "target": "LAKE_ACUITY",
-      "steps": [{"area": "LAKE_ACUITY", "floor": 0, "at": [8, 38], "label": "Jupiter", "done": "galactic_lake_acuity_cleared"}, {"area": "SINNOH_ROUTE_217", "at": [8, 49], "label": "HM Rock Climb", "done": "got_hm_rock_climb_sinnoh_route_217_r217_8_49"}],
+      "steps": [{"area": "SINNOH_ROUTE_217", "at": [8, 49], "label": "HM Rock Climb", "done": "got_hm_rock_climb_sinnoh_route_217_r217_8_49"}, {"area": "LAKE_ACUITY", "floor": 0, "at": [8, 38], "label": "Jupiter", "done": "galactic_lake_acuity_cleared"}],
       "completed_flag": "galactic_lake_acuity_cleared"
     },
     {
