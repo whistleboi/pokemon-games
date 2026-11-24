@@ -158351,7 +158351,7 @@
        "swarm_news": true
       }
      },
-     "Talk to Dawn/Lucas",
+     "Talk to Dawn",
      {
       "text": "Grandpa",
       "action": "EVENT",
@@ -180536,7 +180536,7 @@
    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
    "TTTTTTfffffffff..............fTT",
    "TTnnTTf.........ffffffffffff.fTT",
-   "ff...N..ffffffffffffffffffff.fTT",
+   "ff......ffffffffffffffffffff.fTT",
    "ffffffffffffffffffffffffffff.fTT",
    "ffffffffffffffffffffffffffff.fTT",
    "ffffffffffNfffffffffffffffff.fTT",
@@ -180902,7 +180902,6 @@
    "_models": true
   },
   "people": [
-   "Drive off Galactic Grunt",
    {
     "text": "Girl",
     "action": "EVENT",
@@ -190247,12 +190246,16 @@
      "lines": [
       "Cynthia: You look like a capable trainer.",
       "Cynthia: Team Galactic has been cutting down trees and blocking roads around here.",
-      "Cynthia: Your Forest Badge lets your Pokemon use Cut outside of battle. Small trees won't stop you now."
+      "Cynthia: Take this. It's Cut: with the Forest Badge your Pokemon can use it outside battle.",
+      "You received HM01 Cut!"
      ],
      "flag": "received_hm_cut",
      "done": [
       "Cynthia: Good luck with Team Galactic."
-     ]
+     ],
+     "gift_item": {
+      "HM_CUT": 1
+     }
     }
    },
    {
@@ -193250,7 +193253,7 @@
       "action": "EVENT",
       "event": {
        "lines": [
-        "Poffins help in the Visual part. I should learn to cook them!"
+        "Treats raise your Pokemon's condition, and the Judges look at that first!"
        ]
       }
      },
@@ -193259,7 +193262,7 @@
       "action": "EVENT",
       "event": {
        "lines": [
-        "A Contest has three parts: Visual, Dance and Acting! Dohoho!"
+        "A Contest has two parts: the Judges size up your Pokemon's condition, then it makes five appeals! Dohoho!"
        ]
       }
      },
@@ -194164,7 +194167,7 @@
       "action": "EVENT",
       "event": {
        "lines": [
-        "For the Visual round, dress your Pokemon up nicely with Accessories."
+        "The first round is condition. Feed your Pokemon treats that suit the contest!"
        ]
       }
      },
@@ -194173,7 +194176,7 @@
       "action": "EVENT",
       "event": {
        "lines": [
-        "In the Dance round, your Pokemon must copy the lead dancer's moves exactly."
+        "Five appeals in the second round. Use the same move twice in a row and the Judges get bored!"
        ]
       }
      },
@@ -194182,7 +194185,7 @@
       "action": "EVENT",
       "event": {
        "lines": [
-        "For the Acting round, the right moves at the right time win the Judges over."
+        "Answer the Judges' sums quickly and your appeal shines even brighter."
        ]
       }
      },
@@ -197472,7 +197475,8 @@
        ]
       }
      }
-    ]
+    ],
+    "title": "Pokemon Fan Club"
    },
    "house_0801": {
     "theme": "room",
@@ -220641,7 +220645,7 @@
     "action": "EVENT",
     "event": {
      "lines": [
-      "I can't use Surf until I beat the Gym Leader here."
+      "They say the Elder in Celestic Town knows the secret of Surf. I'd love to ride the waves out of here someday."
      ]
     }
    },
@@ -252603,13 +252607,38 @@
     "title": "Berry Master's House",
     "people": [
      {
-      "text": "Mulch book",
+      "text": "Berry Master",
       "action": "EVENT",
-      "no_tag": true,
       "event": {
        "lines": [
-        "A book: a Berry-grower's guide to Mulch. Damp Mulch keeps soil wet longer."
-       ]
+        "Everyone calls me the Berry Master. I hand out Berries every day, so people learn how wonderful they are.",
+        "You deserve one!"
+       ],
+       "daily_gift": {
+        "key": "r208_berry_master_day",
+        "items": [
+         "CHERI_BERRY",
+         "CHESTO_BERRY",
+         "PECHA_BERRY",
+         "RAWST_BERRY",
+         "ASPEAR_BERRY",
+         "LEPPA_BERRY",
+         "ORAN_BERRY",
+         "PERSIM_BERRY",
+         "LUM_BERRY",
+         "SITRUS_BERRY",
+         "POMEG_BERRY",
+         "KELPSY_BERRY",
+         "QUALOT_BERRY",
+         "HONDEW_BERRY",
+         "GREPA_BERRY",
+         "TAMATO_BERRY"
+        ],
+        "count": 2,
+        "wait": [
+         "Berries are gifts of nature. Come back tomorrow and I'll have more for you."
+        ]
+       }
       }
      },
      {
@@ -252617,7 +252646,8 @@
       "action": "EVENT",
       "event": {
        "lines": [
-        "Growing Berries? Mulch helps the soil. It's good fertilizer."
+        "Growing Berries? Mulch helps the soil. It's good fertilizer.",
+        "A book: a Berry-grower's guide to Mulch. Damp Mulch keeps soil wet longer."
        ]
       }
      },
@@ -288000,11 +288030,12 @@
      "BLUE SHARD",
      "REVIVE",
      {
-      "text": "Owner",
+      "text": "Clefairy's owner",
       "action": "EVENT",
       "event": {
        "lines": [
-        "Why would anyone take our Pokemon? Thank you for coming!"
+        "What is it with this Team Galactic? Why would anyone take our Pokemon?",
+        "I got my Clefairy back, and it's all thanks to you!"
        ]
       }
      }
@@ -310479,8 +310510,20 @@
     "action": "EVENT",
     "event": {
      "lines": [
-      "I found this on a Safari Game. I don't collect them, so it's yours."
-     ]
+      "I picked this up during a Safari Game. I don't collect Shards, so you can have it."
+     ],
+     "daily_gift": {
+      "key": "great_marsh_shard_day",
+      "items": [
+       "RED_SHARD",
+       "BLUE_SHARD",
+       "YELLOW_SHARD",
+       "GREEN_SHARD"
+      ],
+      "wait": [
+       "Do those Shards turn into something good if you collect them? I'll try finding more tomorrow."
+      ]
+     }
     }
    }
   ]

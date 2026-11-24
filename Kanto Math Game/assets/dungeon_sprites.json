@@ -76,6 +76,7 @@
     ]
   },
   "figures": {
+    "SINNOH_ROUTE_208:Berry Master": {"sheet": "pt_oldman2.png"},
     "IRON_ISLAND:Byron": {"sheet": "pt_leader7.png"},
     "IRON_ISLAND:Riley": {"sheet": "pt_seven2.png"},
     "VALOR_LAKEFRONT:Suite guest": {"sheet": "pt_woman2.png"},
@@ -14583,7 +14584,7 @@
     "ETERNA_GALACTIC_BUILDING:Clefairy": {
       "pokemon": 35
     },
-    "ETERNA_GALACTIC_BUILDING:Owner": {
+    "ETERNA_GALACTIC_BUILDING:Clefairy's owner": {
       "sheet": "pt_middleman1.png"
     },
     "ETERNA_GALACTIC_BUILDING:Buneary": {
