@@ -413,8 +413,56 @@ _mv = _json.load(open("assets/moves.json", encoding="utf-8"))
 _bad = [(l, m) for _k, _b, _n, l in _chain for mm in _SP[_k]["gym"]["leader"]["team_moves"] for m in mm if m not in _mv]
 _gen = [(l, i) for _k, _b, _n, l in _chain for i in _SP[_k]["gym"]["leader"]["team"] if i > 386]
 check(not _bad and not _gen, f"S2: the Leaders' moves are real and their Pokemon Gen 3 or earlier {_bad[:3]} {_gen[:3]}")
+# S2b (Jordan 11-24): Kanto's level caps at each badge (FireRed's 14, 21, 24, 29); the Under Colosseum between badges 3 and 4;
+# no Pokemon under its species' min level, rounds below their Leader
+_minlv = _json.load(open("assets/pokemon_levels.json", encoding="utf-8"))["min_level"]
+_aces = [max(_SP[_k]["gym"]["leader"]["levels"]) for _k, _b, _n, _l in _chain]
+_tops = {k: (max(max(t["levels"]) for t in _SP[k]["gym"]["trainers"]) if _SP[k]["gym"]["trainers"] else 0,
+             max(_SP[k]["gym"]["leader"]["levels"])) for k in ("PHENAC_CITY", "PYRITE_TOWN", "UNDER_COLOSSEUM")}
+_young = [(t["name"], p, lv) for k in ("PHENAC_CITY", "PYRITE_TOWN", "AGATE_VILLAGE", "UNDER_COLOSSEUM", "SNAGEM_HIDEOUT")
+          for t in _SP[k]["gym"]["trainers"] + [_SP[k]["gym"]["leader"]] for p, lv in zip(t["team"], t["levels"])
+          if _minlv.get(str(p), 1) > lv]
+check(_aces == [14, 21, 24, 29] and all(a < b for a, b in _tops.values()) and 24 < _tops["UNDER_COLOSSEUM"][1] <= 29 and not _young,
+      f"S2b: Part 1 at Kanto's caps - Leaders' best {_aces}, rounds under their final {_tops}, too young {_young[:3]}")
+# L1 (Jordan 11-24): all of Orre at Kanto's caps, stage by stage (dev/builders/town_maps/orre_levels.py): each group's best
+# under its cap, the story's bosses rising in order, nobody under its form's min level, the partners at Lv 10 / 11
+import sys as _sys
+_sys.path.insert(0, "dev/builders/town_maps")
+import orre_levels as _OL
+_TMJ = _json.load(open("assets/town_maps.json", encoding="utf-8"))
+_all = []
+for _a, _v in _SP.items():
+    if isinstance(_v, dict):
+        _all += [(_a, b, _OL.group(_a, gg, w)) for b, gg, w in _OL.battles(_v, _a)]
+        if _a in _TMJ:
+            _all += [(_a, b, _OL.group(_a, gg, w)) for b, gg, w in _OL.battles(_TMJ[_a], _a)]
+_CAP = {"p1": 37, "mtb": 50, "p2": 48, "eagun": 50, "ag": 55, "post": 63}
+_over = [(a, b.get("name"), max(b.get("levels") or [b.get("level")])) for a, b, gr in _all
+         if b.get("name") not in _OL.SKIP_NAMES and max(b.get("levels") or [b.get("level")]) > _CAP[gr]]
+_young2 = [(a, b.get("name"), p, lv) for a, b, gr in _all if isinstance(b.get("team"), list)
+           for p, lv in zip(b["team"], b.get("levels") or []) if isinstance(p, int) and p < 2000 and _minlv.get(str(p), 1) > lv
+           and b.get("name") not in _OL.SKIP_NAMES]
+
+
+def _ace(area, name):
+    return max((max(b["levels"]) for a, b, gr in _all if a == area and b.get("name") == name and b.get("levels")), default=None)
+
+
+_order = [("Willie", _ace("OUTSKIRT_STAND", "Rider Willie") and min(max(b["levels"]) for a, b, gr in _all if b.get("name") == "Rider Willie")),
+          ("Misty", 14), ("Duking", 21), ("Miror B.", _ace("PYRITE_CAVE", "Cipher Admin Miror B.")), ("Skrub", _ace("RELIC_CAVE", "Cipher Peon Skrub")),
+          ("Blaine + Erika", 24), ("Dakim", _ace("MT_BATTLE", "Cipher Admin Dakim")), ("Venus", _ace("THE_UNDER", "Cipher Admin Venus")),
+          ("Carben", max(_SP["UNDER_COLOSSEUM"]["gym"]["leader"]["levels"])), ("Ein", _ace("SHADOW_PKMN_LAB", "Cipher Admin Ein")),
+          ("Pryce", 29), ("Nascour", max(_SP["REALGAM_TOWER"]["gym"]["trainers"][-1]["levels"])),
+          ("Evice", max(_SP["REALGAM_TOWER"]["gym"]["leader"]["levels"])), ("Exol", _ace("XD_ONBS", "Cipher Cmdr Exol")),
+          ("Gonzap", _ace("SNAGEM_HIDEOUT", "Snagem Head Gonzap") and max(max(b["levels"]) for a, b, gr in _all if b.get("name") == "Snagem Head Gonzap" and gr == "p2")),
+          ("Greevil", max(max(b["levels"]) for a, b, gr in _all if b.get("name") == "Grand Master Greevil" and gr == "p2"))]
+_lv = [x for _n, x in _order]
+_rs = _json.load(open("assets/orre_area_data.json", encoding="utf-8"))["REGION_START"]["ORRE"]["starter_levels"]
+check(not _over and not _young2 and None not in _lv and all(a <= b for a, b in zip(_lv, _lv[1:])) and _lv[12] == 37
+      and _rs == {"196": 10, "197": 11},
+      f"L1: Orre at Kanto's caps - over a cap {_over[:3]}, too young {_young2[:3]}, bosses in order {_order}, partners {_rs}")
 t = town("AGATE_VILLAGE", "PYRITE_TOWN")
-_gd = next(tuple(int(v) for v in d.split(",")) for d, n in _tm["AGATE_VILLAGE"]["inside"].items() if n == "gym")
+_gd =next(tuple(int(v) for v in d.split(",")) for d, n in _tm["AGATE_VILLAGE"]["inside"].items() if n == "gym")
 _in = walk_to(t, _gd) and t.room == "gym"
 _deep = _in and (lambda st: (lambda e: e is not None and walk_to(st, e) and st.room == "gym_2")(next((k for k, v in st.exits.items() if v == "ROOM:gym_2"), None)))(t)
 _lead = _deep and any(isinstance(o, dict) and o.get("action") == "GYM" for o in t.people.values())

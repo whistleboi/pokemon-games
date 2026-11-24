@@ -26,11 +26,23 @@ def load(name):
         return json.load(f)
 
 
+# Hoenn's two stories (src/world/hoenn.py VERSIONS): Omega Ruby first, then Alpha Sapphire, as the game's own neutral words do.
+VERSION_WORDS = {"team": "Team Magma/Aqua", "team_short": "Magma/Aqua", "leader": "Maxie/Archie", "legend": "Groudon/Kyogre",
+                 "other_legend": "Kyogre/Groudon", "orb": "Red/Blue Orb", "other_orb": "Blue/Red Orb", "eon": "Latios/Latias",
+                 "goal": "expand the land/sea", "admin": "Tabitha/Shelly", "other_team": "Team Aqua/Magma",
+                 "other_team_short": "Aqua/Magma", "other_leader": "Archie/Maxie", "other_admin": "Shelly/Tabitha"}
+VILLAIN_NAMES = {"grunt": "Team Magma/Aqua Grunt", "admin_a": "Magma/Aqua Admin Tabitha/Shelly",
+                 "admin_b": "Magma/Aqua Admin Courtney/Matt", "leader": "Magma/Aqua Leader Maxie/Archie"}
+VERSION_SWAP = {318: 322, 319: 323, 322: 318, 323: 319}   # (Carvanha / Sharpedo for Aqua, Numel / Camerupt for Magma)
+
+
 def fix(s):
     """The data's text, readable: the broken e-acute and the plain 'Pokemon' words with their accent."""
     if not isinstance(s, str):
         return s
     s = s.replace("Ã©", "é").replace("�", "é")
+    for t, w in VERSION_WORDS.items():   # (Hoenn's text names both versions: src/world/hoenn.py fills one in when you choose)
+        s = s.replace("{" + t + "}", w)
     s = re.sub(r"\bPoke(?=mon|\s?Ball|dex|\s?Mart|\s?Doll|\s?Flute|\s?Center|$|\b)", "Poké", s)
     s = re.sub(r"\bPOKE(?=MON|\s?BALL|DEX|\s?MART)", "POKÉ", s)
     return s
@@ -76,8 +88,26 @@ for k, v in ORANGE.items():   # (the Orange Islands' own file, merged the same w
         DATA[k] = dict(v, **DATA[k])
     elif k not in DATA:
         DATA[k] = v
+HOENN = load("hoenn_area_data.json")
+for k, v in HOENN.items():   # (Hoenn's own file, merged the same way)
+    if k == "STORY_PROGRESSION":
+        DATA[k] = dict(DATA[k], **v)
+    elif k == "JOURNAL_MISSIONS":
+        continue
+    elif isinstance(v, dict) and isinstance(DATA.get(k), dict):
+        DATA[k] = dict(v, **DATA[k])
+    elif k not in DATA:
+        DATA[k] = v
+# The game's overlays (src/core/game.py _apply_overlays: Hoenn's ORAS trainers, canon teams, items and gifts), applied the
+# same way the game does at load: the function and its file list are read from the game's own code.
+_G = open(os.path.join(ROOT, "src", "core", "game.py"), encoding="utf-8").read()
+_ns = {"os": os, "json": json}
+exec(re.search(r"^OVERLAYS = .*$", _G, re.M).group(0), _ns)
+exec(re.search(r"^def _apply_overlays\(.*?(?=^\S)", _G, re.M | re.S).group(0), _ns)
+_ns["_apply_overlays"](A, DATA)
 PLACES = DATA["STORY_PROGRESSION"]
-MISSIONS = AREA["GAME_CONFIG"]["JOURNAL_MISSIONS"] + SEVII.get("JOURNAL_MISSIONS", []) + JOHTO.get("JOURNAL_MISSIONS", []) + ORANGE.get("JOURNAL_MISSIONS", [])
+MISSIONS = (AREA["GAME_CONFIG"]["JOURNAL_MISSIONS"] + SEVII.get("JOURNAL_MISSIONS", []) + JOHTO.get("JOURNAL_MISSIONS", [])
+            + ORANGE.get("JOURNAL_MISSIONS", []) + HOENN.get("JOURNAL_MISSIONS", []))
 
 
 def region_of(key):
@@ -87,6 +117,8 @@ def region_of(key):
         return "JOHTO"
     if key in ORANGE["STORY_PROGRESSION"]:
         return "ORANGE"
+    if key in HOENN["STORY_PROGRESSION"]:
+        return "HOENN"
     return "KANTO"
 MAPS = load("town_maps.json")
 LEVELS = load("area_levels.json")
@@ -252,7 +284,7 @@ def later(r, region):
         return FORM_HOME[r["form"]]
     n = int(pid)
     native = next((reg for top, reg in REGION_OF_DEX if n <= top), None)
-    if native in (None, "KANTO") or (native == "JOHTO" and region in ("SEVII", "JOHTO", "ORANGE")):
+    if native in (None, "KANTO") or (native == "JOHTO" and region in ("SEVII", "JOHTO", "ORANGE", "HOENN")) or (native == "HOENN" and region == "HOENN"):
         return None
     return native
 
@@ -382,13 +414,30 @@ def wild(key):
                 r["ours"] = region_of(key) == "SEVII"   # (Orange: unknown whether the fan game has them, so no tag)   # (HGSS has Headbutt trees, in Johto and Kanto; not on the Sevii Islands)
                 out["trees"].append(r)
         out["tree_pool"] = tp
+    out["hordes"], out["dexnav"] = [], []
+    hp, hr = p.get("horde_pool_percentages"), float(p.get("horde_rate") or 0)
+    if hp and DATA.get(hp) and hr > 0:
+        # (src/world/hordes.py: that share of the wild battles here are five at once; a key "41+41+41+42+42" names a mixed five)
+        hlv = p.get("horde_levels") or list(band)
+        for k, v in sorted(pct(DATA[hp]).items(), key=lambda kv: -kv[1]):
+            ids = [int(x) for x in str(k).split("+") if x]
+            out["hordes"].append({"id": ids[0], "ids": ids, "how": "Horde", "lv": list(hlv), "rate": v, "share": hr})
+    for kind, pkey in (("land", "dexnav_pool_percentages"), ("surf", "dexnav_surf_pool_percentages")):
+        dp = p.get(pkey)
+        if dp and DATA.get(dp):
+            # (src/world/dexnav.py: with the DexNav, #1-386 after Groudon / Kyogre, later ones after the title)
+            for r in rows_of(DATA[dp], "DexNav" + (" (water)" if kind == "surf" else ""), band):
+                r["dex_when"] = "title" if r["id"] > 386 else "origin"
+                out["dexnav"].append(r)
     region = region_of(key)
-    for r in out["land"] + out["water"] + out["trees"] + [r for z in out["zones"] for r in z["rows"]]:
+    for r in out["land"] + out["water"] + out["trees"] + out["hordes"] + out["dexnav"] + [r for z in out["zones"] for r in z["rows"]]:
         r["name"] = mon_name(r["id"]) if not r.get("form") else f"{FORM_WORD.get(r['form'], r['form'].title())} {mon_name(r['id'])}"
         r["icon"] = f"{base_id(r['id'])}.png"
         w8 = later(r, region)
         if w8:
             r["after"] = w8
+    for r in out["dexnav"]:
+        r.pop("after", None)   # (the DexNav's own gate is the story, not a region visited: its table says when)
     boss = p.get("area_boss")
     if boss:
         out["boss"] = deep_fix(boss)
@@ -417,6 +466,8 @@ def resolve(entry, by):
 
 def gifts_in(person, where, out):
     ev = person.get("event") or {}
+    if not isinstance(ev, dict):
+        ev = {}   # (a named event: Hoenn's "world" hooks and the like, run by code)
     gi = ev.get("gift_item") or {}
     for k, q in gi.items():
         out.append({"item": k, "name": item_name(k), "sprite": item_sprite(k), "qty": q, "where": where,
@@ -465,9 +516,34 @@ def team(t, where):
 
 
 def _team(t, where):
-    return {"name": (fix(t.get("name")) or "").strip(), "class": t.get("class"), "where": where, "sprite": t.get("sprite"),
-            "team": [{"id": pid, "name": mon_name(pid), "icon": f"{base_id(pid)}.png", "lv": lv}
-                     for pid, lv in zip(t.get("team") or [], t.get("levels") or [None] * len(t.get("team") or []))],
+    role = t.get("villain") or next(iter((t.get("villain_by_version") or {}).values()), None)
+    villain = role in VILLAIN_NAMES   # (Hoenn: the chosen version's team, admins and Pokemon, src/world/hoenn.py _villain)
+
+    def version_team(key, swap):
+        """The team as src/world/hoenn.py _villain makes it for one version: the swap, then team_by_version."""
+        tm = [swap.get(p, p) for p in (t.get("team") or [])]
+        lv = list(t.get("levels") or [None] * len(tm))
+        tm = list((t.get("team_by_version") or {}).get(key) or tm)
+        lv = list((t.get("levels_by_version") or {}).get(key) or lv)
+        return tm, lv + [None] * (len(tm) - len(lv))
+
+    def mon(pid, lv):
+        return {"id": pid, "name": mon_name(pid), "icon": f"{base_id(pid)}.png", "lv": lv}
+    if villain:
+        orr, orl = version_team("OMEGA_RUBY", {322: 322, 323: 323, 318: 322, 319: 323})
+        asr, asl = version_team("ALPHA_SAPPHIRE", {322: 318, 323: 319})
+        members = []
+        for i, (pid, lv) in enumerate(zip(orr, orl)):
+            m = mon(pid, lv)
+            if i < len(asr) and asr[i] != pid:
+                m["alt"] = {"id": asr[i], "name": mon_name(asr[i]), "icon": f"{base_id(asr[i])}.png"}
+            members.append(m)
+    else:
+        members = [mon(pid, lv) for pid, lv in zip(t.get("team") or [], t.get("levels") or [None] * len(t.get("team") or []))]
+    return {"name": VILLAIN_NAMES[role] if villain else (fix(t.get("name")) or "").strip(),
+            "class": "TEAM_VILLAIN" if villain and role != "leader" else ("ROCKET_LEADER" if villain else t.get("class")),
+            "villain": role, "where": where, "sprite": t.get("sprite"),
+            "team": members,
             "rewards": {item_name(k): v for k, v in (t.get("rewards") or {}).items()},
             "reward_keys": t.get("rewards") or {}, "badge": t.get("badge_reward"), "boss": bool(t.get("is_boss_battle")),
             "dialogue": deep_fix(t.get("dialogue")), "moves": t.get("movesets")}
@@ -475,6 +551,8 @@ def _team(t, where):
 
 def battles_in(person, where, out):
     ev = person.get("event") or {}
+    if not isinstance(ev, dict):
+        ev = {}
     b = ev.get("battle")
     if b:
         t = team(b, where)
@@ -681,7 +759,10 @@ def region_keys(region):
         return [k for k in MAPS if k in JOHTO["STORY_PROGRESSION"]]
     if region == "ORANGE":
         return [k for k in MAPS if k in ORANGE["STORY_PROGRESSION"]]
-    kanto = set(AREA["STORY_PROGRESSION"]) - sevii - set(JOHTO["STORY_PROGRESSION"]) - set(ORANGE["STORY_PROGRESSION"])
+    if region == "HOENN":
+        return [k for k in MAPS if k in HOENN["STORY_PROGRESSION"]]
+    kanto = (set(AREA["STORY_PROGRESSION"]) - sevii - set(JOHTO["STORY_PROGRESSION"]) - set(ORANGE["STORY_PROGRESSION"])
+             - set(HOENN["STORY_PROGRESSION"]))
     return [k for k in MAPS if k in kanto and (AREA["STORY_PROGRESSION"][k].get("region") in (None, "KANTO"))]
 
 

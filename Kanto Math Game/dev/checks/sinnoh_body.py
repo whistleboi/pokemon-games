@@ -1305,5 +1305,41 @@ _stays = t.room == "gym_2f"   # (standing where it set you down: it doesn't carr
 check(_f1 and _up and _stays, f"Canalave Gym: the lift at (11,13) carries you from 1F up to 2F, and stays put till you step off ({_f1}, {_up}, {_stays}, {t.room}, {t.player})")
 story.story_flags.clear(); story.story_flags.update(_sv)
 
+# ---- S5 (11-24, Jordan's answers): Barry on Canalave's bridge, and at the Library door till you have Strength from Riley
+_sv, _bv, _iv = dict(story.story_flags), list(story.badges.get("SINNOH", [])), dict(story.inventory)
+story.story_flags.pop("defeated_rival_canalave", None)
+story.badges["SINNOH"] = ["COAL", "FOREST", "COBBLE", "FEN", "RELIC"]
+t = town("CANALAVE_CITY", "SINNOH_ROUTE_218"); frames(t, 3); _drive(t, 100, lambda: not t._busy())
+t.player = t.anim_from = (16, 20); t.anim = 0; t.walk_goal = None; t.step(-1, 0)   # (west over the bridge, onto x=15)
+_drive(t, 60, lambda: t._busy())
+_stopped = t._busy()
+_ad = __import__("json").load(open("assets/sinnoh_area_data.json", encoding="utf-8"))["STORY_PROGRESSION"]["CANALAVE_CITY"]
+check(_stopped and not _ad.get("on_enter_event"), f"Canalave: Barry stops you on the bridge before the Gym (Platinum's), no arrival battle ({_stopped})")
+story.story_flags["defeated_rival_canalave"] = True
+story.badges["SINNOH"] = _bv[:0] + ["COAL", "FOREST", "COBBLE", "FEN", "RELIC", "MINE"]
+story.inventory["HM_STRENGTH"] = 0
+t = town("CANALAVE_CITY", "SINNOH_ROUTE_218"); frames(t, 3)
+_wait = (5, 15) in t.barred
+story.inventory["HM_STRENGTH"] = 1
+t = town("CANALAVE_CITY", "SINNOH_ROUTE_218"); frames(t, 3)
+_in = (5, 15) not in t.barred
+_hm = __import__("src.world.hms", fromlist=["HM_BY_BADGE"]).HM_BY_BADGE["SINNOH"]
+check(_wait and _in and "MINE" not in _hm, f"Canalave: Barry waits at the Library door till you have HM Strength (Riley's, not the Mine Badge's) ({_wait}, {_in})")
+story.story_flags.clear(); story.story_flags.update(_sv); story.badges["SINNOH"] = _bv
+story.inventory.clear(); story.inventory.update(_iv)
+
+# ---- S5 (11-24): Route 213's gatehouse is a room again, walked through (main a91de160: arrival by land or by sea)
+story.badges["SINNOH"] = ["COAL", "FOREST", "COBBLE", "FEN", "RELIC"]
+t = town("PASTORIA_CITY", "SINNOH_ROUTE_212"); frames(t, 3); _drive(t, 200, lambda: not t._busy())
+t.player = t.anim_from = (62, 12); t.anim = 0; t.walk_goal = None; t.step(1, 0)   # (east on foot, out by the land way)
+_drive(t, 300, lambda: story.current_area_key == "SINNOH_ROUTE_213" and "Play" in type(g.current_state).__name__)
+r = g.current_state
+_fl = getattr(getattr(r, "run", None), "floor", None)
+_here = [str((m.payload or {}).get("text")) for m in (getattr(_fl, "movers", None) or []) if m.kind == "figure"]
+_pos = tuple(getattr(getattr(r, "run", None), "player", None) or ())
+_ok = story.current_area_key == "SINNOH_ROUTE_213" and {"Man", "Gentleman"} <= set(_here) and _fl is not None and _fl.walkable(*_pos)
+check(_ok, f"Route 213: walking out of Pastoria by land puts you in its gatehouse, on its floor, beside its two people ({story.current_area_key}, {_here}, {_pos})")
+story.badges["SINNOH"] = _bv
+
 g.walk_towns = False
 print(f"##### {fails} failures")

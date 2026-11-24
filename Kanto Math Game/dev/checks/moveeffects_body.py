@@ -276,4 +276,17 @@ check(dmg > 0, f"Beat Up hits ({lines[-1]})")
 b = fresh()
 dmg, lines, _ = use(b, "SELF-DESTRUCT")
 check(dmg > 0 and b.player_hp == 0, "Self-Destruct: a big hit, and the user faints")
+print("an Air Balloon (B2W2: Driftveil's Chateau; 11-24)")
+b = fresh()
+b.opponent_pokemon.held_item = "AIR_BALLOON"
+check(b.mv_on_entry(b.opponent_pokemon) == [f"{b._label(b.opponent_pokemon)} floats in the air with its Air Balloon!"], "it says so as its holder comes out")
+check(not b.grounded(b.opponent_pokemon), "its holder isn't on the ground (terrains, Spikes)")
+hp0 = b.opponent_hp
+dmg, lines, _ = use(b, "EARTHQUAKE")
+check(not dmg and b.opponent_hp == hp0 and any("doesn't affect" in l for l in lines) and b.opponent_pokemon.held_item == "AIR_BALLOON",
+      f"a Ground move misses it, and the balloon stays ({lines})")
+dmg, lines, _ = use(b, "TACKLE")
+check(dmg > 0 and any("Air Balloon popped" in l for l in lines) and not b.opponent_pokemon.held_item, f"any hit pops it ({lines})")
+dmg, lines, _ = use(b, "EARTHQUAKE")
+check(dmg > 0, "after that, Ground moves hit it")
 print("FAILURES:", fails)

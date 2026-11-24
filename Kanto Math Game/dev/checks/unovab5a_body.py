@@ -228,6 +228,9 @@ check(story.inventory.get("BIG_ROOT", 0) >= 1, "the Veteran's Big Root on the Co
 st = town("DRIFTVEIL_CITY", (7, 9), "luxury_23", (0, -1))
 talk(st, "Waiter on 23F")
 check(story.inventory.get("EVERSTONE", 0) >= 1, "the Waiter's Everstone on the Luxury Suites' 23F")
+st = town("DRIFTVEIL_CITY", (6, 10), "chateau_25", (0, -1))   # (his Air Balloon: a real held item since main a91de160)
+talk(st, "Gentleman on 25F")
+check(story.inventory.get("AIR_BALLOON", 0) >= 1, "the Gentleman's Air Balloon on the Chateau's 25F")
 st = town("DRIFTVEIL_CITY", (6, 10), "chateau", (0, -1))
 check("Move Tutor" in people(st), "the Red Shard tutor in the Chateau Hotel")
 tu = next(c for o in st.people.values() for c in _opts(o) if isinstance(c, dict) and c.get("text") == "Move Tutor")["event"]["tutor"]

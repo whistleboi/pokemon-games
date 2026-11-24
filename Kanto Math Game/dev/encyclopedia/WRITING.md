@@ -75,6 +75,10 @@ files' LF line endings; check the file has no NUL bytes after writing.
 
 ## Where things live (when the sheet isn't enough)
 
+- Hoenn: `assets/hoenn_area_data.json`, with `assets/hoenn_oras.json` laid over it as the game does (`src/core/game.py`
+  `_apply_overlays`; facts.py runs that same function). Both versions are written at once, Omega Ruby first
+  ("Team Magma/Aqua", "Camerupt / Sharpedo": `src/world/hoenn.py`). Brief for the part writers: `hoenn/` was written from one.
+
 - `assets/pokemon_area_data.json` (Kanto) / `assets/sevii_area_data.json`: `STORY_PROGRESSION[AREA]` (trainer_pool,
   gym, route_menu, explore_options, on_enter_event, area_boss), `GAME_CONFIG.JOURNAL_MISSIONS`, `GAME_TEXT` (what
   people with `"action": "NPC"` say).
