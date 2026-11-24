@@ -106,7 +106,39 @@ class TrainerBattleState(ShadowBattle, GimmickEffects, AbilityEffects, MoveMecha
         self.background = None
 
         bg_raw = None
-        if background_image:
+        import os as _os
+        from src.world import battle_bg as _bbg
+        if background_image and _os.path.isfile(str(background_image)):   # (a region's own game background, by path: battle_bg)
+            try:
+                bg_raw = pygame.image.load(str(background_image)).convert()
+            except Exception:
+                bg_raw = None
+        elif battle_type == "gym":   # (a Gym's own battles: the region's index "gym" / "leader" picture if it names one - Unova's
+            _own = _bbg.pick(self.game, area_name or self.game.story_manager.current_area_key,   # Black 2 Gyms, 11-24; else, as
+                             trainer=True, gym=True, leader=bool(is_boss_battle) or trainer_class in ("GYM_LEADER", "CHAMPION", "ELITE_FOUR"))
+            if _own:                                                                              # before, the area's own: Kanto's custom Gyms)
+                try:
+                    bg_raw = pygame.image.load(_own).convert()
+                except Exception:
+                    bg_raw = None
+        else:   # (11-23: in a walked region, its own game's background first, the way that game picks it)
+            _area = area_name or self.game.story_manager.current_area_key
+            _trainer = bool(trainer_sprite or trainer_img_name)
+            # (Orange 11-23: a Leader or Champion met through a story event - Rudy, Danny, Drake - takes the index's
+            #  "leader"; a trainer inside a Gym's room, its "gym"; neither named there: the area's trainer picture)
+            _lead = trainer_class in ("GYM_LEADER", "CHAMPION", "ELITE_FOUR") or bool(self.battle_options.get("leader"))
+            _here = getattr(self.game, "current_state", None)
+            _in_gym = str(getattr(_here, "room", None) or (getattr(self.game, "walk_town_room", None) or (None, None))[-1] or "") == "gym"
+            _own = None
+            if _lead or _in_gym:
+                _own = _bbg.pick(self.game, _area, trainer=_trainer, gym=True, leader=_lead)
+            _own = _own or _bbg.pick(self.game, _area, trainer=_trainer)
+            if _own:
+                try:
+                    bg_raw = pygame.image.load(_own).convert()
+                except Exception:
+                    bg_raw = None
+        if background_image and not bg_raw:
             bg_raw = self.game.assets.get_background(background_image, from_overworld=False)
             if not bg_raw and self.game.assets.generic_kind(background_image) == "battle_elite":
                 bg_raw = (self.game.assets.get_league_background(background_image)
@@ -208,6 +240,7 @@ class TrainerBattleState(ShadowBattle, GimmickEffects, AbilityEffects, MoveMecha
         self.dialogue_box = ClassicDialogueBox(
             main_rect, [""], self.game.assets.fonts["med"]
         )
+        self.dialogue_box.flush = True   # (right against the field: no sliver between them, Sinnoh 11-24)
 
         if self.check_ditto_transform():
             if self.math_ui:
@@ -2604,6 +2637,7 @@ class TrainerBattleState(ShadowBattle, GimmickEffects, AbilityEffects, MoveMecha
 
         is_summoning_enemy = (self.phase == "ENEMY_SUMMON" and self.enemy_summon_anim is not None)
         is_summoning_player = (self.phase == "PLAYER_SUMMON")
+        screen.set_clip(pygame.Rect(0, 0, self.game.width, Utils.get_full_dialogue_rect(self.game).top))   # (the field: nothing
 
         self.renderer.draw(
             screen,
@@ -2637,6 +2671,7 @@ class TrainerBattleState(ShadowBattle, GimmickEffects, AbilityEffects, MoveMecha
             self.player_summon_anim.draw(screen)
         if getattr(self, "raid_allies", None):
             self._draw_raid_allies(screen)
+        screen.set_clip(None)   # draws into or behind the text box: a back sprite sliding in stops at its top edge)
 
         self.game.ui_manager.draw(screen)
         self._snag_draw(screen)
@@ -3563,6 +3598,7 @@ class WildBattleState(TrainerBattleState):
             self._draw_catch_extras(screen, catching_now)
             return
 
+        screen.set_clip(pygame.Rect(0, 0, self.game.width, Utils.get_full_dialogue_rect(self.game).top))   # (the field, above the box)
         self.renderer.draw(
             screen,
             self.opponent_pokemon,
@@ -3590,6 +3626,7 @@ class WildBattleState(TrainerBattleState):
             self.faint_anim.draw(screen)
         if self.phase == "PLAYER_SUMMON" and getattr(self, "player_summon_anim", None):
             self.player_summon_anim.draw(screen)  # (a Pokemon sent in after a switch)
+        screen.set_clip(None)
 
         self.game.ui_manager.draw(screen)
         self._draw_catch_extras(screen, catching_now)
@@ -3680,6 +3717,7 @@ class TrainerIntroState(GameState):
             self.box_rect, [f"You are challenged by {self._foe_name()}!"] + lines,
             self.game.assets.fonts["med"], callback=self.on_dialogue_finish)
         self.dialogue_box.visible = False
+        self.dialogue_box.flush = True
 
         # The foe on its platform; you from behind, cut off by the text box (as in the games).
         self.foe_sprite = self._fit(trainer_sprite, h * 0.40)
@@ -3921,6 +3959,7 @@ class TrainerIntroState(GameState):
     def draw(self):
         screen = self.game.screen
         w = self.game.width
+        screen.set_clip(pygame.Rect(0, 0, w, self.box_rect.top))   # (the field above the box: you slide in from behind it, not under it)
         if self.battle_bg:
             screen.blit(self.battle_bg, (0, 0))
         else:
@@ -3974,7 +4013,8 @@ class TrainerIntroState(GameState):
             k = self._ease(self.my_box_in / self.BOX_IN)
             r.draw_my_box(screen, ns.player_pokemon, ns.player_hp, ns.player_max_hp, dx=(1 - k) * w * 0.5)
 
-        theme.draw_textbox(screen, self.box_rect)
+        screen.set_clip(None)
+        theme.draw_textbox(screen, self.box_rect, flush=True)
         if self.dialogue_box.visible:
             self.dialogue_box.draw(screen)
 
@@ -3990,6 +4030,7 @@ class TrainerVictoryState(GameState):
             game.assets.fonts["med"],
             callback=lambda: game.change_state(next_state)
         )
+        self.dialogue_box.flush = True
 
     def start(self):
         self.game.ui_manager.add_element(self.dialogue_box)

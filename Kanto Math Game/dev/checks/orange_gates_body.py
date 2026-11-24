@@ -18,7 +18,9 @@ def check(c, m):
 
 
 g.dungeon_routes = True; g.walk_towns = True
-_tools = os.path.normpath(os.path.join(os.getcwd(), "..", "..", "kanto_handoff", "orange_rom_tools"))
+_tools = os.environ.get("ORANGE_TOOLS") or next((os.path.join(_d, "kanto_handoff", "orange_rom_tools") for _d in
+          [os.path.abspath(os.path.join(os.getcwd(), *[".."] * _n)) for _n in range(1, 8)]
+          if os.path.isdir(os.path.join(_d, "kanto_handoff", "orange_rom_tools"))), "")   # (the first kanto_handoff above the game folder: main folder or a worktree, 11-23)
 G = json.load(open(os.path.join(_tools, "orange_gates.json"), encoding="utf-8"))
 TM = json.load(open("assets/town_maps.json", encoding="utf-8"))
 AREAS = g.loader.area_data["STORY_PROGRESSION"]

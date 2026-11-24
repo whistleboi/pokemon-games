@@ -382,6 +382,12 @@ def settle(limit=9000):
                     if g.current_state is st:
                         st.exit_gym()
                 continue
+            _lp = getattr(getattr(st, "back", None), "_lift_plan", None)
+            if isinstance(st, _PLS) and st.title == "WHICH FLOOR?" and _lp in [v for _l, v in st.choices]:   # (a lift's panel: the floor the marker
+                _say(f"[lift: {st.title}: {next(l for l, v in st.choices if v == _lp)}]")                    #  says, 'Lift to <floor>'; 11-23)
+                st.back._lift_plan = None
+                st.pick(_lp)
+                continue
             if isinstance(st, _PLS):   # (a list to pick from: a tutor's "who should learn it?": BACK, no thanks)
                 _say(f"[list: {st.title}: BACK]")
                 st.pick(None)
@@ -792,6 +798,9 @@ def things(st):
             spot = tuple(mos[home].pos) if home in mos else home
             now = next(o for o in opt["any"] if st._shown(o)) if "any" in opt else opt
             if str(now.get("action") or "").upper() in BORING:
+                continue
+            _ride = (now.get("event") or {}).get("travel")   # (a ride - a ship, a ferry, a train - only toward the mission's place: else a
+            if _ride and _ride != (MISSIONS.get(STATE.get("mission")) or {}).get("target"):   # run sails off and is stranded; Unova 11-23)
                 continue
             out_.append((0, ("P", home), [spot], f"talk to {now.get('text')}", None))
         for t, kind in st.doors.items():

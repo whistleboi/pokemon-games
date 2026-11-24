@@ -18,7 +18,10 @@ def check(c, m):
         fails.append(m)
 
 
-_tools = os.path.abspath(os.path.join(os.getcwd(), "..", "..", "kanto_handoff", "kanto_rom_tools"))
+_up = os.getcwd()   # (the handoff folder sits beside the repo; from a worktree under .claude/worktrees, further up: 11-23)
+while _up and not os.path.isdir(os.path.join(_up, "kanto_handoff")) and os.path.dirname(_up) != _up:
+    _up = os.path.dirname(_up)
+_tools = os.path.abspath(os.path.join(_up, "kanto_handoff", "kanto_rom_tools"))
 check(os.path.exists(os.path.join(_tools, "kcanon.py")) and os.path.exists(os.path.join(_tools, "canon", "fr_maps.json")),
       f"the checker and FireRed's content are in the handoff folder ({_tools}; make canon/ with kcanon_rom.py --pages)")
 sys.path.insert(0, _tools)

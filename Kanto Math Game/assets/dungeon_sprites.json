@@ -145,24 +145,520 @@
     "MT_SILVER:TM116": {
       "item": "POKE_BALL"
     },
-    "FRONTIER_ACCESS:POKE MART": {
-      "sheet": "hg_shopm1.png"
+    "HOENN_ROUTE_104:Berry-growing sister": {
+      "sheet": "em_14.png"
     },
-    "FRONTIER_ACCESS:POKEMON CENTER": {
-      "sheet": "hg_pcwoman1.png"
+    "HOENN_ROUTE_104:Littlest sister": {
+      "sheet": "em_8.png"
     },
-    "SAFARI_ZONE_GATE:Heal": {
-      "sheet": "hg_pcwoman1.png"
+    "HOENN_ROUTE_104:PRETTY PETAL FLOWER SHOP": {
+      "sheet": "em_20.png"
     },
-    "MT_SILVER_CITY:POKEMON CENTER": {
-      "sheet": "hg_pcwoman1.png"
+    "HOENN_ROUTE_111:Kind old lady": {
+      "sheet": "em_22.png"
     },
-    "OLIVINE_CITY:Shop": {
-      "sheet": "hg_shopm1.png"
+    "HOENN_ROUTE_113:Glass apprentice": {
+      "sheet": "em_5.png"
     },
-    "OLIVINE_CITY:Heal": {
-      "sheet": "hg_pcwoman1.png"
+    "HOENN_ROUTE_113:GLASS WORKSHOP": {
+      "sheet": "em_19.png"
     },
+    "HOENN_ROUTE_114:FOSSIL MANIAC'S HOUSE": {
+      "sheet": "em_5.png"
+    },
+    "HOENN_ROUTE_114:FOSSIL MANIAC": {
+      "sheet": "em_39.png"
+    },
+    "HOENN_ROUTE_114:Desert Underpass": {
+      "sheet": "em_39.png"
+    },
+    "HOENN_ROUTE_114:LANETTE'S HOUSE": {
+      "sheet": "em_20.png"
+    },
+    "HOENN_ROUTE_116:Tunnel foreman": {
+      "sheet": "em_25.png"
+    },
+    "HOENN_ROUTE_116:Tunnel worker": {
+      "sheet": "em_25.png"
+    },
+    "HOENN_ROUTE_116:Old digger": {
+      "sheet": "em_25.png"
+    },
+    "HOENN_ROUTE_117:POKéMON DAY CARE": {
+      "sheet": "em_30.png"
+    },
+    "HOENN_ROUTE_119:Wingull": {
+      "sheet": "em_211.png"
+    },
+    "HOENN_ROUTE_119:Wingull ": {
+      "sheet": "em_211.png"
+    },
+    "HOENN_ROUTE_119:REST STOP": {
+      "sheet": "em_26.png"
+    },
+    "HOENN_ROUTE_123:Berry Master": {
+      "sheet": "em_21.png"
+    },
+    "HOENN_ROUTE_123:Berry Master's wife": {
+      "sheet": "em_30.png"
+    },
+    "PETALBURG_CITY:Wally's father": {
+      "sheet": "em_25.png"
+    },
+    "PETALBURG_CITY:Wally's mother ": {
+      "sheet": "em_26.png"
+    },
+    "PETALBURG_CITY:Dreamy girl": {
+      "sheet": "em_8.png"
+    },
+    "PETALBURG_CITY:Old traveller": {
+      "sheet": "em_21.png"
+    },
+    "PETALBURG_CITY:Chatty neighbour": {
+      "sheet": "em_18.png"
+    },
+    "PETALBURG_CITY:Beaten Trainer": {
+      "sheet": "em_38.png"
+    },
+    "RUSTBORO_CITY:Devon receptionist": {
+      "sheet": "em_24.png"
+    },
+    "RUSTBORO_CITY:Shoe engineer": {
+      "sheet": "em_116.png"
+    },
+    "RUSTBORO_CITY:Devon guard": {
+      "sheet": "em_116.png"
+    },
+    "RUSTBORO_CITY:Translator researcher": {
+      "sheet": "em_46.png"
+    },
+    "RUSTBORO_CITY:Ball researcher": {
+      "sheet": "em_46.png"
+    },
+    "RUSTBORO_CITY:PokéNav engineer": {
+      "sheet": "em_46.png"
+    },
+    "RUSTBORO_CITY:Dream researcher": {
+      "sheet": "em_46.png"
+    },
+    "RUSTBORO_CITY:PokéNav designer": {
+      "sheet": "em_46.png"
+    },
+    "RUSTBORO_CITY:Devon Fossil Lab": {
+      "sheet": "em_46.png"
+    },
+    "RUSTBORO_CITY:Devon secretary": {
+      "sheet": "em_23.png"
+    },
+    "RUSTBORO_CITY:Mr. Stone": {
+      "sheet": "em_48.png"
+    },
+    "RUSTBORO_CITY:Devon Corp": {
+      "sheet": "em_48.png"
+    },
+    "RUSTBORO_CITY:Ability fan": {
+      "sheet": "em_33.png"
+    },
+    "RUSTBORO_CITY:Puzzled man": {
+      "sheet": "em_34.png"
+    },
+    "RUSTBORO_CITY:Busy mother": {
+      "sheet": "em_18.png"
+    },
+    "RUSTBORO_CITY:Doll-playing boy": {
+      "sheet": "em_19.png"
+    },
+    "RUSTBORO_CITY:Trader Ken": {
+      "sheet": "em_31.png"
+    },
+    "RUSTBORO_CITY:Wanderer": {
+      "sheet": "em_55.png"
+    },
+    "RUSTBORO_CITY:Cutter": {
+      "sheet": "em_25.png"
+    },
+    "RUSTBORO_CITY:Cutter's daughter": {
+      "sheet": "em_47.png"
+    },
+    "RUSTBORO_CITY:Proud mother": {
+      "sheet": "em_18.png"
+    },
+    "RUSTBORO_CITY:Roxanne fan": {
+      "sheet": "em_12.png"
+    },
+    "RUSTBORO_CITY:Flats caretaker": {
+      "sheet": "em_30.png"
+    },
+    "RUSTBORO_CITY:Skitty": {
+      "sheet": "em_203.png"
+    },
+    "RUSTBORO_CITY:Old Devon worker": {
+      "sheet": "em_29.png"
+    },
+    "RUSTBORO_CITY:Devon kid": {
+      "sheet": "em_5.png"
+    },
+    "RUSTBORO_CITY:Devon clerk": {
+      "sheet": "em_116.png"
+    },
+    "RUSTBORO_CITY:Gossiping woman": {
+      "sheet": "em_16.png"
+    },
+    "RUSTBORO_CITY:Nickname fan": {
+      "sheet": "em_29.png"
+    },
+    "RUSTBORO_CITY:Doubtful wife": {
+      "sheet": "em_30.png"
+    },
+    "RUSTBORO_CITY:Pekachu": {
+      "pokemon": 25
+    },
+    "DEWFORD_TOWN:Island wife": {
+      "sheet": "em_24.png"
+    },
+    "DEWFORD_TOWN:Island husband": {
+      "sheet": "em_19.png"
+    },
+    "DEWFORD_TOWN:Zigzagoon": {
+      "pokemon": 263
+    },
+    "DEWFORD_TOWN:Trendy girl": {
+      "sheet": "em_10.png"
+    },
+    "DEWFORD_TOWN:Struggling teacher": {
+      "sheet": "em_20.png"
+    },
+    "DEWFORD_TOWN:Trend student": {
+      "sheet": "em_19.png"
+    },
+    "DEWFORD_TOWN:TV watcher": {
+      "sheet": "em_21.png"
+    },
+    "DEWFORD_TOWN:Curious boy": {
+      "sheet": "em_6.png"
+    },
+    "DEWFORD_TOWN:Merch collector": {
+      "sheet": "em_11.png"
+    },
+    "DEWFORD_TOWN:Gossiping lady": {
+      "sheet": "em_38.png"
+    },
+    "DEWFORD_TOWN:Bored gentleman": {
+      "sheet": "em_37.png"
+    },
+    "DEWFORD_TOWN:Collector": {
+      "sheet": "em_39.png"
+    },
+    "DEWFORD_TOWN:Stylish Ace Trainer": {
+      "sheet": "em_33.png"
+    },
+    "DEWFORD_TOWN:Brawly fan": {
+      "sheet": "em_9.png"
+    },
+    "SLATEPORT_CITY:Muddled worker": {
+      "sheet": "em_19.png"
+    },
+    "SLATEPORT_CITY:Dock": {
+      "sheet": "em_46.png"
+    },
+    "SLATEPORT_CITY:Seasick helper": {
+      "sheet": "em_46.png"
+    },
+    "SLATEPORT_CITY:Talk to Stern": {
+      "sheet": "em_21.png"
+    },
+    "SLATEPORT_CITY:GIVE SCANNER: DEEPSEATOOTH": {
+      "sheet": "em_21.png"
+    },
+    "SLATEPORT_CITY:GIVE SCANNER: DEEPSEASCALE": {
+      "sheet": "em_21.png"
+    },
+    "SLATEPORT_CITY:Ship builder": {
+      "sheet": "em_46.png"
+    },
+    "SLATEPORT_CITY:Floating expert": {
+      "sheet": "em_46.png"
+    },
+    "SLATEPORT_CITY:Nature expert": {
+      "sheet": "em_25.png"
+    },
+    "SLATEPORT_CITY:Battle girl": {
+      "sheet": "em_14.png"
+    },
+    "MAUVILLE_CITY:Shop assistant": {
+      "sheet": "em_66.png"
+    },
+    "MAUVILLE_CITY:Bike Shop": {
+      "sheet": "em_23.png"
+    },
+    "MAUVILLE_CITY:Rock Smash Dude": {
+      "sheet": "em_46.png"
+    },
+    "MAUVILLE_CITY:Coin lady": {
+      "sheet": "em_20.png"
+    },
+    "MAUVILLE_CITY:Roulette fan": {
+      "sheet": "em_48.png"
+    },
+    "MAUVILLE_CITY:Prize clerk": {
+      "sheet": "em_45.png"
+    },
+    "MAUVILLE_CITY:Prize clerk ": {
+      "sheet": "em_45.png"
+    },
+    "MAUVILLE_CITY:Lucky girl": {
+      "sheet": "em_10.png"
+    },
+    "MAUVILLE_CITY:Coin Case man": {
+      "sheet": "em_25.png"
+    },
+    "MAUVILLE_CITY:Table watcher": {
+      "sheet": "em_29.png"
+    },
+    "MAUVILLE_CITY:Busy worker": {
+      "sheet": "em_27.png"
+    },
+    "MAUVILLE_CITY:Slots tip man": {
+      "sheet": "em_33.png"
+    },
+    "MAUVILLE_CITY:Lucky Seven fan": {
+      "sheet": "em_39.png"
+    },
+    "MAUVILLE_CITY:Slots expert": {
+      "sheet": "em_34.png"
+    },
+    "MAUVILLE_CITY:Game Corner": {
+      "sheet": "em_45.png"
+    },
+    "MAUVILLE_CITY:Shopping lady": {
+      "sheet": "em_24.png"
+    },
+    "VERDANTURF_TOWN:Wanda's boyfriend": {
+      "sheet": "em_44.png"
+    },
+    "VERDANTURF_TOWN:Wally's uncle": {
+      "sheet": "em_25.png"
+    },
+    "VERDANTURF_TOWN:Wanda's mother": {
+      "sheet": "em_18.png"
+    },
+    "VERDANTURF_TOWN:Talk to Wally": {
+      "sheet": "em_135.png"
+    },
+    "VERDANTURF_TOWN:Friendship checker": {
+      "sheet": "em_20.png"
+    },
+    "VERDANTURF_TOWN:Pikachu": {
+      "pokemon": 25
+    },
+    "VERDANTURF_TOWN:League dreamer": {
+      "sheet": "em_34.png"
+    },
+    "VERDANTURF_TOWN:League expert": {
+      "sheet": "em_34.png"
+    },
+    "LAVARIDGE_TOWN:Herb customer": {
+      "sheet": "em_21.png"
+    },
+    "LAVARIDGE_TOWN:Herb Shop": {
+      "sheet": "em_20.png"
+    },
+    "LAVARIDGE_TOWN:Old man's Charcoal": {
+      "sheet": "em_29.png"
+    },
+    "LAVARIDGE_TOWN:Old husband": {
+      "sheet": "em_29.png"
+    },
+    "LAVARIDGE_TOWN:Old-fashioned boy": {
+      "sheet": "em_5.png"
+    },
+    "LAVARIDGE_TOWN:Zigzagoon": {
+      "pokemon": 263
+    },
+    "FALLARBOR_TOWN:Cozmo's wife": {
+      "sheet": "em_20.png"
+    },
+    "FALLARBOR_TOWN:Professor Cozmo": {
+      "sheet": "em_46.png"
+    },
+    "FALLARBOR_TOWN:Talk to Cozmo": {
+      "sheet": "em_46.png"
+    },
+    "FALLARBOR_TOWN:Move Reminder": {
+      "sheet": "em_17.png"
+    },
+    "FORTREE_CITY_UPPER:Kind old woman": {
+      "sheet": "em_22.png"
+    },
+    "FORTREE_CITY_UPPER:Zigzagoon": {
+      "pokemon": 263
+    },
+    "FORTREE_CITY_UPPER:Little girl": {
+      "sheet": "em_5.png"
+    },
+    "FORTREE_CITY_UPPER:Sleepy old man": {
+      "sheet": "em_21.png"
+    },
+    "FORTREE_CITY_UPPER:The coin game": {
+      "sheet": "em_22.png"
+    },
+    "FORTREE_CITY_UPPER:Old woman": {
+      "sheet": "em_22.png"
+    },
+    "FORTREE_CITY_UPPER:Stone hunter": {
+      "sheet": "em_39.png"
+    },
+    "FORTREE_CITY_UPPER:Dex fan": {
+      "sheet": "em_38.png"
+    },
+    "FORTREE_CITY_UPPER:Friendly woman": {
+      "sheet": "em_26.png"
+    },
+    "FORTREE_CITY_UPPER:Letter Wingull": {
+      "sheet": "em_211.png"
+    },
+    "FORTREE_CITY_UPPER:Wingull's trainer": {
+      "sheet": "em_13.png"
+    },
+    "FORTREE_CITY_UPPER:Treehouse lover": {
+      "sheet": "em_18.png"
+    },
+    "FORTREE_CITY_UPPER:Zigzagoon ": {
+      "pokemon": 263
+    },
+    "FORTREE_CITY_UPPER:Nature lover": {
+      "sheet": "em_19.png"
+    },
+    "FORTREE_CITY_UPPER:Guild visitor": {
+      "sheet": "em_25.png"
+    },
+    "FORTREE_CITY_UPPER:Doll collector": {
+      "sheet": "em_14.png"
+    },
+    "FORTREE_CITY_UPPER:Aarune": {
+      "sheet": "em_83.png"
+    },
+    "ROCKET_WAREHOUSE:UNLOCK THE DOORS": {"pic": "dungeon/characters/fr_prop_pc.png"},
+    "SEVAULT_CANYON:OPEN THE CHAMBERS": {"pic": "dungeon/characters/fr_prop_pc.png"},
+    "POWER_PLANT:Trader": {"sheet": "fr_22.png"},
+    "CERULEAN_CITY:Search the Gym's Pool": {"item": "POKE_BALL"},
+    "UNDERGROUND_PATH:Talk to Fossil Maniac": {"sheet": "fr_56.png"},
+    "KANTO_ROUTE_12:TM098": {"item": "POKE_BALL"},
+    "KANTO_ROUTE_15:TM050": {"item": "POKE_BALL"},
+    "KANTO_ROUTE_24:TM240": {"item": "POKE_BALL"},
+    "KANTO_ROUTE_25:TM292": {"item": "POKE_BALL"},
+    "KANTO_ROUTE_4:TM172": {"item": "POKE_BALL"},
+    "KANTO_ROUTE_9:TM027": {"item": "POKE_BALL"},
+    "KANTO_SS_ANNE:TM058": {"item": "POKE_BALL"},
+    "KANTO_SS_ANNE:TM085": {"item": "POKE_BALL"},
+    "MT_MOON:TM056": {"item": "POKE_BALL"},
+    "MT_MOON:TM018": {"item": "POKE_BALL"},
+    "POKEMON_MANSION:TM168": {"item": "POKE_BALL"},
+    "POKEMON_MANSION:TM143": {"item": "POKE_BALL"},
+    "POWER_PLANT:TM007": {"item": "POKE_BALL"},
+    "POWER_PLANT:TM166": {"item": "POKE_BALL"},
+    "ROCKET_HIDEOUT:TM087": {"item": "POKE_BALL"},
+    "ROCKET_HIDEOUT:TM273": {"item": "POKE_BALL"},
+    "ROCKET_HIDEOUT:TM299": {"item": "POKE_BALL"},
+    "ROCKET_WAREHOUSE:TM208": {"item": "POKE_BALL"},
+    "SAFARI_ZONE:TM049": {"item": "POKE_BALL"},
+    "SAFARI_ZONE:TM239": {"item": "POKE_BALL"},
+    "SAFARI_ZONE:TM275": {"item": "POKE_BALL"},
+    "SILPH_CITY:TM276": {"item": "POKE_BALL"},
+    "SILPH_CITY:TM192": {"item": "POKE_BALL"},
+    "SILPH_CITY:TM064": {"item": "POKE_BALL"},
+    "VICTORY_ROAD:TM078": {"item": "POKE_BALL"},
+    "VICTORY_ROAD:TM241": {"item": "POKE_BALL"},
+    "VICTORY_ROAD:TM051": {"item": "POKE_BALL"},
+    "VICTORY_ROAD:TM157": {"item": "POKE_BALL"},
+    "KANTO_POKEMON_TOWER:CONFRONT GHOST": {"draw": "ghost"},
+    "NAVEL_ROCK:SAIL HOME": {"sheet": "fr_62.png"},
+    "SILPH_CITY:Silph scientist": {"sheet": "fr_55.png"},
+    "KANTO_ROUTE_23:BOULDER BADGE GUARD": {"sheet": "fr_60.png"},
+    "PALLET_TOWN:Last Bulbasaur Ball": {"item": "POKE_BALL"},
+    "PALLET_TOWN:Last Squirtle Ball": {"item": "POKE_BALL"},
+    "PALLET_TOWN:Last Charmander Ball": {"item": "POKE_BALL"},
+    "FOUR_ISLAND:Doll 1": {"sheet": "fr_131.png"},
+    "FOUR_ISLAND:Doll 12": {"sheet": "fr_114.png"},
+    "FOUR_ISLAND:Doll 13": {"sheet": "fr_133.png"},
+    "FOUR_ISLAND:Doll 2": {"sheet": "fr_126.png"},
+    "FOUR_ISLAND:Doll 3": {"sheet": "fr_120.png"},
+    "FOUR_ISLAND:Doll 4": {"sheet": "fr_128.png"},
+    "FOUR_ISLAND:Doll 5": {"sheet": "fr_129.png"},
+    "FOUR_ISLAND:Doll 6": {"sheet": "fr_121.png"},
+    "FOUR_ISLAND:Doll 7": {"sheet": "fr_125.png"},
+    "FOUR_ISLAND:Doll 8": {"sheet": "fr_117.png"},
+    "FOUR_ISLAND:Doll 9": {"sheet": "fr_115.png"},
+    "FOUR_ISLAND:Doll 10": {"sheet": "fr_122.png"},
+    "FOUR_ISLAND:Doll 11": {"sheet": "fr_123.png"},
+    "FOUR_ISLAND:Doll 14": {"sheet": "fr_107.png"},
+    "CERULEAN_CITY:Slowbro ": {"sheet": "fr_129.png"},
+    "CERULEAN_CITY:Trainer ": {"sheet": "fr_22.png"},
+    "TRAINER_TOWER:Albert": {"sheet": "fr_41.png"},
+    "TRAINER_TOWER:Alberto": {"sheet": "fr_62.png"},
+    "TRAINER_TOWER:Alek": {"sheet": "fr_25.png"},
+    "TRAINER_TOWER:Allyson": {"sheet": "fr_42.png"},
+    "TRAINER_TOWER:Anne": {"sheet": "fr_42.png"},
+    "TRAINER_TOWER:Axe": {"sheet": "fr_44.png"},
+    "TRAINER_TOWER:Balding man": {"sheet": "fr_30.png"},
+    "TRAINER_TOWER:Ben": {"sheet": "fr_26.png"},
+    "TRAINER_TOWER:Braden": {"sheet": "fr_43.png"},
+    "TRAINER_TOWER:Brandon": {"sheet": "fr_20.png"},
+    "TRAINER_TOWER:Brennan": {"sheet": "fr_62.png"},
+    "TRAINER_TOWER:CLERK": {"sheet": "fr_66.png"},
+    "TRAINER_TOWER:Camden": {"sheet": "fr_30.png"},
+    "TRAINER_TOWER:Camryn": {"sheet": "fr_40.png"},
+    "TRAINER_TOWER:Carl": {"sheet": "fr_42.png"},
+    "TRAINER_TOWER:Charlotte": {"sheet": "fr_28.png"},
+    "TRAINER_TOWER:Chelsea": {"sheet": "fr_40.png"},
+    "TRAINER_TOWER:Cole": {"sheet": "fr_18.png"},
+    "TRAINER_TOWER:Cooltrainer": {"sheet": "fr_42.png"},
+    "TRAINER_TOWER:Emanuel": {"sheet": "fr_61.png"},
+    "TRAINER_TOWER:Emy": {"sheet": "fr_29.png"},
+    "TRAINER_TOWER:Ernest": {"sheet": "fr_53.png"},
+    "TRAINER_TOWER:Flint": {"sheet": "fr_30.png"},
+    "TRAINER_TOWER:Gabriel": {"sheet": "fr_53.png"},
+    "TRAINER_TOWER:Geb": {"sheet": "fr_25.png"},
+    "TRAINER_TOWER:Haley": {"sheet": "fr_54.png"},
+    "TRAINER_TOWER:Isac": {"sheet": "fr_41.png"},
+    "TRAINER_TOWER:Jac": {"sheet": "fr_52.png"},
+    "TRAINER_TOWER:Jarrett": {"sheet": "fr_26.png"},
+    "TRAINER_TOWER:Jen": {"sheet": "fr_17.png"},
+    "TRAINER_TOWER:Jo": {"sheet": "fr_24.png"},
+    "TRAINER_TOWER:Joey": {"sheet": "fr_39.png"},
+    "TRAINER_TOWER:Jordy": {"sheet": "fr_53.png"},
+    "TRAINER_TOWER:Jos": {"sheet": "fr_41.png"},
+    "TRAINER_TOWER:Kaden": {"sheet": "fr_57.png"},
+    "TRAINER_TOWER:Kat": {"sheet": "fr_44.png"},
+    "TRAINER_TOWER:Kathleen": {"sheet": "fr_42.png"},
+    "TRAINER_TOWER:Kati": {"sheet": "fr_29.png"},
+    "TRAINER_TOWER:Kipp": {"sheet": "fr_36.png"},
+    "TRAINER_TOWER:Kira": {"sheet": "fr_17.png"},
+    "TRAINER_TOWER:Leah": {"sheet": "fr_17.png"},
+    "TRAINER_TOWER:Lily": {"sheet": "fr_28.png"},
+    "TRAINER_TOWER:Lisa": {"sheet": "fr_17.png"},
+    "TRAINER_TOWER:Lorenzo": {"sheet": "fr_41.png"},
+    "TRAINER_TOWER:Mag": {"sheet": "fr_42.png"},
+    "TRAINER_TOWER:Maura": {"sheet": "fr_29.png"},
+    "TRAINER_TOWER:Megan": {"sheet": "fr_42.png"},
+    "TRAINER_TOWER:Mikaela": {"sheet": "fr_22.png"},
+    "TRAINER_TOWER:Mike": {"sheet": "fr_56.png"},
+    "TRAINER_TOWER:Mily": {"sheet": "fr_23.png"},
+    "TRAINER_TOWER:NURSE": {"sheet": "fr_64.png"},
+    "TRAINER_TOWER:Natalia": {"sheet": "fr_28.png"},
+    "TRAINER_TOWER:Nia": {"sheet": "fr_41.png"},
+    "TRAINER_TOWER:Nicolas": {"sheet": "fr_54.png"},
+    "TRAINER_TOWER:OWNER": {"sheet": "fr_70.png"},
+    "TRAINER_TOWER:Owen": {"sheet": "fr_55.png"},
+    "TRAINER_TOWER:Priscilla": {"sheet": "fr_37.png"},
+    "TRAINER_TOWER:RECEPTIONIST": {"sheet": "fr_66.png"},
+    "TRAINER_TOWER:Rebecca": {"sheet": "fr_24.png"},
+    "TRAINER_TOWER:Ren": {"sheet": "fr_36.png"},
+    "TRAINER_TOWER:Rene": {"sheet": "fr_54.png"},
+    "TRAINER_TOWER:Ric": {"sheet": "fr_24.png"},
+    "TRAINER_TOWER:Shania": {"sheet": "fr_44.png"},
+    "TRAINER_TOWER:Trenton": {"sheet": "fr_39.png"},
+    "TRAINER_TOWER:Zackery": {"sheet": "fr_55.png"},
     "FLOCCESY_TOWN:Mr. Medal": {"sheet": "b2_c360.png"},
     "JOIN_AVENUE:Visitor 1": {"sheet": "b2_c31.png"},
     "JOIN_AVENUE:Visitor 2": {"sheet": "b2_c30.png"},
@@ -2502,6 +2998,36 @@
     "OLDALE_TOWN:Path to Route 102": {
       "sheet": "em_39.png"
     },
+    "LITTLEROOT_TOWN:Talk to Mom": {
+      "sheet": "em_215.png"
+    },
+    "LITTLEROOT_TOWN:Mom ": {
+      "sheet": "em_215.png"
+    },
+    "LITTLEROOT_TOWN:Mrs. Birch": {
+      "sheet": "em_26.png"
+    },
+    "LITTLEROOT_TOWN:{rival_name}": {
+      "sheet": "@rival"
+    },
+    "LITTLEROOT_TOWN:Professor Birch": {
+      "sheet": "em_64.png"
+    },
+    "LITTLEROOT_TOWN:Lab aide": {
+      "sheet": "em_46.png"
+    },
+    "MAUVILLE_CITY:Ultimate Move tutor": {
+      "sheet": "em_48.png"
+    },
+    "MAUVILLE_CITY:Pledge tutor": {
+      "sheet": "em_47.png"
+    },
+    "HOENN_OCEANIC_MUSEUM:Bored grunt": {
+      "sheet": "@grunt"
+    },
+    "SOOTOPOLIS_CITY:Steven": {
+      "sheet": "em_134.png"
+    },
     "LITTLEROOT_TOWN:Little girl": {
       "sheet": "em_6.png"
     },
@@ -2618,6 +3144,42 @@
     },
     "RUSTBORO_CITY:Twin girl": {
       "sheet": "em_6.png"
+    },
+    "RUSTBORO_CITY:Teacher": {
+      "sheet": "em_48.png"
+    },
+    "RUSTBORO_CITY:Student": {
+      "sheet": "em_189.png"
+    },
+    "RUSTBORO_CITY:Student ": {
+      "sheet": "em_189.png"
+    },
+    "RUSTBORO_CITY:Thinking student": {
+      "sheet": "em_15.png"
+    },
+    "RUSTBORO_CITY:Studious girl": {
+      "sheet": "em_47.png"
+    },
+    "RUSTBORO_CITY:Berry fan": {
+      "sheet": "em_38.png"
+    },
+    "SLATEPORT_CITY:Fan Club chairman": {
+      "sheet": "em_48.png"
+    },
+    "SLATEPORT_CITY:Pokémon lover": {
+      "sheet": "em_26.png"
+    },
+    "SLATEPORT_CITY:Fan Club member": {
+      "sheet": "em_19.png"
+    },
+    "SLATEPORT_CITY:Fan Club member ": {
+      "sheet": "em_6.png"
+    },
+    "SLATEPORT_CITY:Boastful fan": {
+      "sheet": "em_65.png"
+    },
+    "SLATEPORT_CITY:Big sailor": {
+      "sheet": "em_17.png"
     },
     "HOENN_ROUTE_116:Tunneler": {
       "sheet": "em_44.png"
@@ -7324,7 +7886,7 @@
       "sheet": "hg_pcwoman1.png"
     },
     "CHERRYGROVE_CITY:Shop": {
-      "sheet": "hg_shopm1.png"
+      "sheet": "hg_gsman3.png"
     },
     "CHERRYGROVE_CITY:Guide Gent": {
       "sheet": "hg_gsoldman1.png"
@@ -7372,7 +7934,7 @@
       "sheet": "hg_gsboy1.png"
     },
     "VIOLET_CITY:Shop": {
-      "sheet": "hg_shopm1.png"
+      "sheet": "hg_gsoldwoman1.png"
     },
     "JOHTO_ROUTE_32:POKEMON CENTER": {
       "sheet": "hg_pcwoman1.png"
@@ -7396,7 +7958,7 @@
       "sheet": "hg_gsboy1.png"
     },
     "AZALEA_TOWN:Shop": {
-      "sheet": "hg_shopm1.png"
+      "sheet": "hg_gsman3.png"
     },
     "AZALEA_TOWN:Visit Kurt": {
       "sheet": "hg_gantetsu.png"
@@ -7792,7 +8354,7 @@
       "sheet": "hg_pcwoman1.png"
     },
     "ECRUTEAK_CITY:Shop": {
-      "sheet": "hg_shopm1.png"
+      "sheet": "hg_gsman1.png"
     },
     "ECRUTEAK_CITY:Gym": {
       "sheet": "hg_gsleader4.png"
@@ -8299,7 +8861,7 @@
       "sheet": "hg_gsgirl1.png"
     },
     "BLACKTHORN_CITY:Shop": {
-      "sheet": "hg_shopm1.png"
+      "sheet": "hg_gsfighter.png"
     },
     "BLACKTHORN_CITY:Heal": {
       "sheet": "hg_pcwoman1.png"
@@ -14297,9 +14859,6 @@
   },
   "townsperson": "NPC 17.png",
   "players": {
-    "ethan": "hg_hero.png",
-    "lyra": "hg_heroine.png",
-    "silver": "hg_gsrivel.png",
     "lucas": "pt_hero.png",
     "dawn": "pt_heroine.png",
     "nate": "b2_nate.png",
@@ -14553,7 +15112,58 @@
   "trainers_KANTO": {
     "blue.png": "fr_72.png",
     "rival.png": "fr_72.png",
-    "professor_oak.png": "fr_71.png"
+    "professor_oak.png": "fr_71.png",
+    "fr_youngster.png": "fr_18.png",
+    "fr_bug_catcher.png": "fr_20.png",
+    "fr_lass.png": "fr_22.png",
+    "fr_sailor.png": "fr_62.png",
+    "fr_camper.png": "fr_39.png",
+    "fr_picnicker.png": "fr_40.png",
+    "fr_pokemaniac.png": "fr_52.png",
+    "fr_super_nerd.png": "fr_55.png",
+    "fr_hiker.png": "fr_56.png",
+    "fr_biker.png": "fr_53.png",
+    "fr_burglar.png": "fr_52.png",
+    "fr_engineer.png": "fr_30.png",
+    "fr_fisherman.png": "fr_57.png",
+    "fr_swimmer_m.png": "fr_43.png",
+    "fr_cue_ball.png": "fr_53.png",
+    "fr_gamer.png": "fr_32.png",
+    "fr_beauty.png": "fr_29.png",
+    "fr_swimmer_f.png": "fr_44.png",
+    "fr_psychic_m.png": "fr_41.png",
+    "fr_psychic_f.png": "fr_23.png",
+    "fr_rocker.png": "fr_26.png",
+    "fr_juggler.png": "fr_26.png",
+    "fr_tamer.png": "fr_25.png",
+    "fr_bird_keeper.png": "fr_26.png",
+    "fr_black_belt.png": "fr_54.png",
+    "fr_scientist.png": "fr_55.png",
+    "fr_team_rocket.png": "fr_49.png",
+    "fr_cooltrainer_m.png": "fr_41.png",
+    "fr_cooltrainer_f.png": "fr_42.png",
+    "fr_gentleman.png": "fr_61.png",
+    "fr_channeler.png": "fr_58.png",
+    "fr_twins.png": "fr_17.png",
+    "fr_cool_couple.png": "fr_41.png",
+    "fr_young_couple.png": "fr_29.png",
+    "fr_crush_kin.png": "fr_54.png",
+    "fr_sis_and_bro.png": "fr_44.png",
+    "fr_crush_girl.png": "fr_24.png",
+    "fr_tuber.png": "fr_37.png",
+    "fr_breeder.png": "fr_28.png",
+    "fr_ranger_m.png": "fr_39.png",
+    "fr_ranger_f.png": "fr_40.png",
+    "fr_aroma_lady.png": "fr_28.png",
+    "fr_ruin_maniac.png": "fr_56.png",
+    "fr_lady.png": "fr_28.png",
+    "fr_painter.png": "fr_22.png",
+    "fr_elite_four_lorelei.png": "fr_77.png",
+    "fr_elite_four_bruno.png": "fr_79.png",
+    "fr_elite_four_agatha.png": "fr_75.png",
+    "fr_elite_four_lance.png": "fr_74.png",
+    "fr_boss_giovanni.png": "fr_87.png",
+    "fr_leader_giovanni.png": "fr_87.png"
   },
   "trainers_JOHTO": {
     "silver.png": "hg_gsrivel.png",
@@ -14649,7 +15259,7 @@
   },
   "region_followers": {
     "_about": "A region's own overworld sheets for its Pokemon (assets/dungeon/characters), by follower sheet name (species, species_form, form id), used before assets/dungeon/followers while you're in that region; anywhere else they're the fallback for a form the follower sheets lack (Jordan 11-23: a game-built region's own sheets first, followers as fallback; a form only one region drew follows you everywhere with that region's sheet). dungeon.region_sheet_paths.",
-    "ORANGE": {"249": "oi_138.png"},
+    "ORANGE": {"1": "oi_114.png", "100": "oi_178.png", "101": "oi_124.png", "106": "oi_129.png", "110": "oi_180.png", "111_pinkan": "oi_165.png", "112": "oi_164.png", "120": "oi_173.png", "122": "oi_145.png", "123": "oi_166.png", "128": "oi_174.png", "129": "oi_140.png", "131": "oi_134.png", "140": "oi_131.png", "143": "oi_170.png", "144": "oi_112.png", "145": "oi_181.png", "146": "oi_146.png", "149": "oi_121.png", "16": "oi_155.png", "20_valencia": "oi_162.png", "249": "oi_138.png", "25": "oi_156.png", "26": "oi_161.png", "29": "oi_149.png", "30": "oi_151.png", "32": "oi_150.png", "33": "oi_152.png", "34_pinkan": "oi_148.png", "36": "oi_117.png", "39": "oi_130.png", "43": "oi_153.png", "45": "oi_177.png", "48": "oi_175.png", "50": "oi_119.png", "51": "oi_123.png", "54": "oi_160.png", "55": "oi_126.png", "56": "oi_144.png", "6": "oi_116.png", "60": "oi_157.png", "62": "oi_159.png", "63": "oi_111.png", "67": "oi_139.png", "7": "oi_172.png", "71": "oi_176.png", "8": "oi_179.png", "81": "oi_142.png", "82": "oi_143.png", "84": "oi_120.png", "88": "oi_127.png", "89": "oi_147.png", "9": "oi_113.png", "90": "oi_168.png", "92": "oi_125.png", "95": "oi_154.png", "96": "oi_122.png", "98": "oi_133.png", "99": "oi_132.png"},
     "UNOVA": {"494": "b2_victini.png", "628": "b2_c4712.png", "630": "b2_c348.png"}
   }
 }

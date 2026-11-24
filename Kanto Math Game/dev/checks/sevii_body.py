@@ -12,7 +12,7 @@ t = travel("VERMILLION_CITY")
 check("Seagallop to One Island" in t and "Seagallop to Four Island" not in t, "Vermilion: Seagallop to One Island")
 t = travel("ONE_ISLAND")
 check({"Seagallop to Two Island", "Seagallop to Three Island"} <= set(t) and "Seagallop to Four Island" not in t, f"One Island: {t}")
-check(len(SEVII) == 34, f"{len(SEVII)} Sevii areas")  # 24 + 7 (areas_09_sevii.patch) + 3 (Three Isle Port, Navel Rock, Birth Island; the empty Three Isle Path went 11-04)
+check(len(SEVII) == 35, f"{len(SEVII)} Sevii areas")  # 24 + 7 (areas_09_sevii.patch) + 3 (Three Isle Port, Navel Rock, Birth Island; the empty Three Isle Path went 11-04) + the Trainer Tower (11-23)
 bad = [(k, o.get("target_area")) for k in SEVII for o in prog[k].get("travel_options", []) + prog[k].get("route_menu", [])
        if o.get("target_area") and o["target_area"] not in prog]
 check(not bad, f"every link leads somewhere {bad}")
@@ -75,14 +75,17 @@ check("Seagallop to Seven Island" in travel("ONE_ISLAND"), "Rainbow Pass: Island
 run("FOUR_ISLAND", "Lorelei's House")
 run("ICEFALL_CAVE", "STOP TEAM ROCKET")
 check(isinstance(g.current_state, TrainerIntroState) and lineup(battle_of(g.current_state)) == [(110, 38), (24, 38), (52, 38)], "Icefall Cave: Jessie & James (in place of FireRed's Grunt)")
-check("Rocket Warehouse" not in travel("FIVE_ISLAND"), "warehouse hidden until the Sapphire is stolen")
+def _wh_open():   # (11-23, K5: the walked way in, Five Isle Meadow's road north - the menu's Five Island shortcut is gone)
+    o = opt("FIVE_ISLE_MEADOW", "ROCKET WAREHOUSE")
+    return chk(state_for("FIVE_ISLE_MEADOW"))(o.get("condition"))
+check(not _wh_open(), "warehouse hidden until the Sapphire is stolen (Five Isle Meadow's way north)")
 import json as _json
 _rv = _json.load(open("assets/town_maps.json", encoding="utf-8"))["RUIN_VALLEY"].get("barred", [])
 check(any((b.get("open_with") or {}).get("flag") == "dotted_hole_open" and "has_item:HM_CUT" in (b.get("open_with") or {}).get("condition", []) for b in _rv),
       "the Dotted Hole's door: braille outside, opened with Cut (FireRed; Jordan 11-17)")
 story.story_flags["dotted_hole_open"] = True   # (the walk itself is in sevii_maps)
 run("DOTTED_HOLE", "TAKE THE SAPPHIRE")
-check("Rocket Warehouse" in travel("FIVE_ISLAND"), "Gideon steals it: warehouse open")
+check(_wh_open(), "Gideon steals it: warehouse open (Five Isle Meadow's way north)")
 run("ROCKET_WAREHOUSE", "UNLOCK THE DOORS")
 run("ROCKET_WAREHOUSE", "CONFRONT THE ADMIN")
 from src.world import levels
@@ -100,11 +103,9 @@ run("SEVAULT_CANYON", "OPEN THE CHAMBERS")  # (the Tanoby Key cave is in Sevault
 story.balls_left = 10  # (Poke Balls are in the Bag in use now)
 st = state_for("TANOBY_RUINS")
 check(st._check_route_condition(opt("TANOBY_RUINS", "CATCH WILD PKMN")["condition"], False), "Tanoby chambers: Unown")
-story.current_area_key = "SEVEN_ISLAND"
-lobby = ow.GymLobbyState(g, None)
-g.change_state(lobby)
-lobby.challenge_gym()
-check(lineup(battle_of(g.current_state))[0] == (57, 57), "Trainer Tower floor 1")
+_ttd = _json.load(open("assets/trainer_tower.json", encoding="utf-8"))   # (11-23: FireRed's Trainer Tower, walked - sevii_maps plays it)
+check(any(o.get("target_area") == "TRAINER_TOWER" for o in g.loader.area_data["STORY_PROGRESSION"]["SEVEN_ISLAND"]["explore_options"]) and len(_ttd["climbs"]) == 4,
+      "Trainer Tower: Seven Island's door leads in; FireRed's four climbs")
 st = state_for("FARAWAY_ISLAND")
 mew = opt("FARAWAY_ISLAND", "CHALLENGE MEW")
 dex = g.data.data.setdefault("pokedex", {})

@@ -1,3 +1,4 @@
+import json
 # Battle Points (Jordan 11-22: "add battle points ... implement them for all walkable regions"): won in the battle facilities,
 # spent at their Exchange Service Corners (src/world/battle_points.py), and the held items the prize lists needed.
 #   bash dev/checks/run.sh battle_points
@@ -73,8 +74,17 @@ check(j == {"hgss_items": True, "hgss_tms": True}, f"Johto's Frontier: the two s
 story.starting_region = "HOENN"
 h = figure_shops("HOENN_BATTLE_FRONTIER")
 check(h == {"emerald": True}, f"Hoenn's Frontier: the Exchange Service Corner's clerk {h}")
-sub = [o for o in g.loader.area_data["STORY_PROGRESSION"]["BATTLE_SUBWAY"]["route_menu"] if o.get("action") == "BP_SHOP"]
-check(sorted(o["shop"] for o in sub) == ["b2w2_items", "b2w2_tms"], f"the Battle Subway's two counters {[o['shop'] for o in sub]}")
+# (11-23, Unova: the Battle Subway's counters stand in Gear Station, a room of Nimbasa's walked map, once Unova's batch 4b is
+#  in; till then, the old menu area BATTLE_SUBWAY's buttons. Whichever this build has.)
+_tmj = json.load(open("assets/town_maps.json", encoding="utf-8"))
+_gear = (((_tmj.get("maps", _tmj).get("NIMBASA_CITY") or {}).get("rooms") or {}).get("gear") or {}).get("people") or []
+_gear = _gear.values() if isinstance(_gear, dict) else _gear
+sub = [o for o in _gear if isinstance(o, dict) and o.get("action") == "BP_SHOP"]
+_where = "Gear Station's counters"
+if not sub:
+    sub = [o for o in (g.loader.area_data["STORY_PROGRESSION"].get("BATTLE_SUBWAY") or {}).get("route_menu") or [] if o.get("action") == "BP_SHOP"]
+    _where = "the old menu Battle Subway's counters"
+check(sorted(o["shop"] for o in sub) == ["b2w2_items", "b2w2_tms"], f"the Battle Subway's two counters, {_where} {[o['shop'] for o in sub]}")
 st = BPShopState(g, g.current_state, "hgss_items")
 pages = st.btn_next.visible
 st._turn(1)

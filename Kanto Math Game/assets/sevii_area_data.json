@@ -16,13 +16,13 @@
       "wild_pool_percentages": "RESORT_GORGEOUS_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [20, 18], "levels": [53, 53], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "youngster.png", "name": "Destin", "class": "YOUNGSTER", "team": [20, 17], "levels": [48, 48], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [{"team": [61, 72, 73], "levels": [48, 48, 48]}]}, "sprite": "swimmer_m.png", "name": "Toby", "class": "SWIMMER", "team": [61, 72, 73], "levels": [48, 48, 48], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [{"team": [179, 179, 180], "levels": [47, 48, 49]}]}, "sprite": "beauty.png", "name": "Gillian", "class": "LADY", "team": [179, 179, 180], "levels": [47, 48, 49], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [{"team": [187, 188], "levels": [48, 50]}]}, "sprite": "beauty.png", "name": "Jacki", "class": "LADY", "team": [187, 188], "levels": [48, 50], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [235], "levels": [54], "team_moves": [["CROSS-CHOP", "MEGAHORN", "DOUBLE-EDGE", "SELF-DESTRUCT"]], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "lass.png", "name": "Rayna", "class": "PAINTER", "team": [235], "levels": [50], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [{"team": [235], "levels": [50], "team_moves": [["DYNAMIC-PUNCH", "DIZZY-PUNCH", "FOCUS-PUNCH", "MEGA-PUNCH"]]}]}, "sprite": "lass.png", "name": "Daisy", "class": "PAINTER", "team": [235], "levels": [50], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [{"team": [235], "levels": [50], "team_moves": [["FLY", "DIG", "DIVE", "BOUNCE"]]}]}, "sprite": "lass.png", "name": "Celina", "class": "PAINTER", "team": [235], "levels": [50], "rewards": { "balls": 3 } }
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [20, 18], "levels": [53, 53], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "fr_youngster.png", "name": "Destin", "class": "YOUNGSTER", "team": [20, 17], "levels": [48, 48], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [61, 72, 73], "levels": [48, 48, 48]}]}, "sprite": "fr_swimmer_m.png", "name": "Toby", "class": "SWIMMER", "team": [61, 72, 73], "levels": [48, 48, 48], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [179, 179, 180], "levels": [47, 48, 49]}]}, "sprite": "fr_lady.png", "name": "Gillian", "class": "LADY", "team": [179, 179, 180], "levels": [47, 48, 49], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [187, 188], "levels": [48, 50]}]}, "sprite": "fr_lady.png", "name": "Jacki", "class": "LADY", "team": [187, 188], "levels": [48, 50], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [235], "levels": [54], "team_moves": [["CROSS-CHOP", "MEGAHORN", "DOUBLE-EDGE", "SELF-DESTRUCT"]], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "fr_painter.png", "name": "Rayna", "class": "PAINTER", "team": [235], "levels": [50], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [235], "levels": [50], "team_moves": [["DYNAMIC-PUNCH", "DIZZY-PUNCH", "FOCUS-PUNCH", "MEGA-PUNCH"]]}]}, "sprite": "fr_painter.png", "name": "Daisy", "class": "PAINTER", "team": [235], "levels": [50], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [235], "levels": [50], "team_moves": [["FLY", "DIG", "DIVE", "BOUNCE"]]}]}, "sprite": "fr_painter.png", "name": "Celina", "class": "PAINTER", "team": [235], "levels": [50], "rewards": { "balls": 3 } }
       ],
       "level": 55,
       "subregion": "SEVII",
@@ -84,9 +84,9 @@
       "wild_pool_percentages": "MEMORIAL_PILLAR_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [17, 18], "levels": [53, 55], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "birdkeeper.png", "name": "Milo", "class": "BIRD_KEEPER", "team": [16, 17], "levels": [47, 49], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [22, 22], "levels": [53, 55], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "birdkeeper.png", "name": "Chaz", "class": "BIRD_KEEPER", "team": [21, 22], "levels": [47, 49], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [164, 164], "levels": [53, 55], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "birdkeeper.png", "name": "Harold", "class": "BIRD_KEEPER", "team": [163, 164], "levels": [47, 49], "rewards": { "balls": 3 } }
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [17, 18], "levels": [53, 55], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "fr_bird_keeper.png", "name": "Milo", "class": "BIRD_KEEPER", "team": [16, 17], "levels": [47, 49], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [22, 22], "levels": [53, 55], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "fr_bird_keeper.png", "name": "Chaz", "class": "BIRD_KEEPER", "team": [21, 22], "levels": [47, 49], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [164, 164], "levels": [53, 55], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "fr_bird_keeper.png", "name": "Harold", "class": "BIRD_KEEPER", "team": [163, 164], "levels": [47, 49], "rewards": { "balls": 3 } }
       ],
       "level": 55, "wild_levels": {"land": [6, 16]},
       "subregion": "SEVII",
@@ -136,12 +136,12 @@
       "wild_pool_percentages": "WATER_PATH_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        { "rematch": {"source": "FireRed", "tiers": [{"team": [191, 192], "levels": [49, 49]}]}, "sprite": "beauty.png", "name": "Rose", "class": "AROMA_LADY", "team": [191, 192], "levels": [49, 49], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [{"team": [25, 25], "levels": [50, 50]}]}, "sprite": "lass.png", "name": "Miu & Mia", "class": "TWINS", "battle_options": {"double": true}, "team": [25, 25], "levels": [50, 50], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [130], "levels": [55], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "swimmer_m.png", "name": "Samir", "class": "SWIMMER", "team": [130], "levels": [50], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [{"team": [170, 171], "levels": [49, 49]}]}, "sprite": "swimmer_f.png", "name": "Denise", "class": "SWIMMER", "team": [170, 171], "levels": [49, 49], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [{"team": [100, 100, 101, 122], "levels": [46, 46, 47, 48], "team_moves": [["SWIFT", "LIGHT-SCREEN", "SPARK", "SONIC-BOOM"], ["SWIFT", "LIGHT-SCREEN", "SPARK", "SONIC-BOOM"], ["SWIFT", "SPARK", "SELF-DESTRUCT", "SONIC-BOOM"], ["PSYCHIC", "ROLE-PLAY", "REFLECT", "ENCORE"]]}]}, "sprite": "juggler.png", "name": "Edward", "class": "JUGGLER", "team": [100, 100, 101, 122], "levels": [46, 46, 47, 48], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [95, 68], "levels": [54, 54], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "hiker.png", "name": "Earl", "class": "HIKER", "team": [95, 67], "levels": [49, 49], "rewards": { "balls": 3 } }
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [191, 192], "levels": [49, 49]}]}, "sprite": "fr_aroma_lady.png", "name": "Rose", "class": "AROMA_LADY", "team": [191, 192], "levels": [49, 49], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [25, 25], "levels": [50, 50]}]}, "sprite": "fr_twins.png", "name": "Miu & Mia", "class": "TWINS", "battle_options": {"double": true}, "team": [25, 25], "levels": [50, 50], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [130], "levels": [55], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "fr_swimmer_m.png", "name": "Samir", "class": "SWIMMER", "team": [130], "levels": [50], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [170, 171], "levels": [49, 49]}]}, "sprite": "fr_swimmer_f.png", "name": "Denise", "class": "SWIMMER", "team": [170, 171], "levels": [49, 49], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [100, 100, 101, 122], "levels": [46, 46, 47, 48], "team_moves": [["SWIFT", "LIGHT-SCREEN", "SPARK", "SONIC-BOOM"], ["SWIFT", "LIGHT-SCREEN", "SPARK", "SONIC-BOOM"], ["SWIFT", "SPARK", "SELF-DESTRUCT", "SONIC-BOOM"], ["PSYCHIC", "ROLE-PLAY", "REFLECT", "ENCORE"]]}]}, "sprite": "fr_juggler.png", "name": "Edward", "class": "JUGGLER", "team": [100, 100, 101, 122], "levels": [46, 46, 47, 48], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [95, 68], "levels": [54, 54], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "fr_hiker.png", "name": "Earl", "class": "HIKER", "team": [95, 67], "levels": [49, 49], "rewards": { "balls": 3 } }
       ],
       "level": 44,
       "subregion": "SEVII",
@@ -239,11 +239,11 @@
       "wild_pool_percentages": "OUTCAST_ISLAND_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        { "rematch": {"source": "FireRed", "tiers": [{"team": [211, 211], "levels": [49, 49]}]}, "sprite": "fisherman.png", "name": "Tylor", "class": "FISHERMAN", "team": [211, 211], "levels": [49, 49], "rewards": { "balls": 3 } },
-        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET_GRUNT", "team": [89, 42, 20], "levels": [48, 48, 48], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [{"team": [99, 8], "levels": [49, 49]}]}, "sprite": "swimmer_m.png", "name": "Mymo", "class": "SWIMMER", "team": [99, 8], "levels": [49, 49], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [{"team": [61, 121], "levels": [50, 50]}]}, "sprite": "swimmer_f.png", "name": "Ava & Geb", "class": "SIS_AND_BRO", "battle_options": {"double": true}, "team": [61, 121], "levels": [50, 50], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [183], "levels": [54], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "swimmer_f.png", "name": "Nicole", "class": "SWIMMER", "team": [183], "levels": [50], "rewards": { "balls": 3 } }
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [211, 211], "levels": [49, 49]}]}, "sprite": "fr_fisherman.png", "name": "Tylor", "class": "FISHERMAN", "team": [211, 211], "levels": [49, 49], "rewards": { "balls": 3 } },
+        { "sprite": "fr_team_rocket.png", "name": "Grunt", "class": "ROCKET_GRUNT", "team": [89, 42, 20], "levels": [48, 48, 48], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [99, 8], "levels": [49, 49]}]}, "sprite": "fr_swimmer_m.png", "name": "Mymo", "class": "SWIMMER", "team": [99, 8], "levels": [49, 49], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [61, 121], "levels": [50, 50]}]}, "sprite": "fr_sis_and_bro.png", "name": "Ava & Geb", "class": "SIS_AND_BRO", "battle_options": {"double": true}, "team": [61, 121], "levels": [50, 50], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [183], "levels": [54], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "fr_swimmer_f.png", "name": "Nicole", "class": "SWIMMER", "team": [183], "levels": [50], "rewards": { "balls": 3 } }
       ],
       "level": 55,
       "subregion": "SEVII",
@@ -299,7 +299,7 @@
       "wild_pool_percentages": "GREEN_PATH_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [177, 80, 64], "levels": [52, 52, 54], "team_moves": [["PSYCHIC", "CONFUSE-RAY", "FUTURE-SIGHT", "WISH"], ["PSYCHIC", "HEADBUTT", "AMNESIA", "YAWN"], ["PSYCHIC", "FUTURE-SIGHT", "RECOVER", "REFLECT"]], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "psychic_m.png", "name": "Jaclyn", "class": "PSYCHIC", "team": [177, 80, 64], "levels": [48, 48, 49], "rewards": { "balls": 3 } }
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [177, 80, 64], "levels": [52, 52, 54], "team_moves": [["PSYCHIC", "CONFUSE-RAY", "FUTURE-SIGHT", "WISH"], ["PSYCHIC", "HEADBUTT", "AMNESIA", "YAWN"], ["PSYCHIC", "FUTURE-SIGHT", "RECOVER", "REFLECT"]], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "fr_psychic_m.png", "name": "Jaclyn", "class": "PSYCHIC", "team": [177, 80, 64], "levels": [48, 48, 49], "rewards": { "balls": 3 } }
       ],
       "level": 55,
       "subregion": "SEVII",
@@ -360,11 +360,11 @@
       "wild_pool_percentages": "CANYON_ENTRANCE_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        { "rematch": {"source": "FireRed", "tiers": [{"team": [182, 182], "levels": [50, 50]}]}, "sprite": "beauty.png", "name": "Miah", "class": "AROMA_LADY", "team": [182, 182], "levels": [50, 50], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [101, 204, 101, 204], "levels": [52, 52, 52, 52], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "juggler.png", "name": "Mason", "class": "JUGGLER", "team": [100, 204, 100, 204], "levels": [47, 47, 47, 47], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [45, 45], "levels": [55, 55], "team_moves": [["PETAL-DANCE", "MOONLIGHT", "ACID", "SLEEP-POWDER"], ["PETAL-DANCE", "MOONLIGHT", "ACID", "STUN-SPORE"]], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "ranger_m.png", "name": "Madeline", "class": "POKEMON_RANGER", "team": [44, 45], "levels": [51, 51], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [71, 71], "levels": [55, 55], "team_moves": [["RAZOR-LEAF", "ACID", "STUN-SPORE", "WRAP"], ["RAZOR-LEAF", "ACID", "SLEEP-POWDER", "SLAM"]], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "ranger_m.png", "name": "Nicolas", "class": "POKEMON_RANGER", "team": [70, 71], "levels": [51, 51], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [{"team": [55, 54], "levels": [50, 50]}]}, "sprite": "lass.png", "name": "Eve & Jon", "class": "YOUNG_COUPLE", "battle_options": {"double": true}, "team": [55, 54], "levels": [50, 50], "rewards": { "balls": 3 } }
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [182, 182], "levels": [50, 50]}]}, "sprite": "fr_aroma_lady.png", "name": "Miah", "class": "AROMA_LADY", "team": [182, 182], "levels": [50, 50], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [101, 204, 101, 204], "levels": [52, 52, 52, 52], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "fr_juggler.png", "name": "Mason", "class": "JUGGLER", "team": [100, 204, 100, 204], "levels": [47, 47, 47, 47], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [45, 45], "levels": [55, 55], "team_moves": [["PETAL-DANCE", "MOONLIGHT", "ACID", "SLEEP-POWDER"], ["PETAL-DANCE", "MOONLIGHT", "ACID", "STUN-SPORE"]], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "fr_ranger_m.png", "name": "Madeline", "class": "POKEMON_RANGER", "team": [44, 45], "levels": [51, 51], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [71, 71], "levels": [55, 55], "team_moves": [["RAZOR-LEAF", "ACID", "STUN-SPORE", "WRAP"], ["RAZOR-LEAF", "ACID", "SLEEP-POWDER", "SLAM"]], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "fr_ranger_m.png", "name": "Nicolas", "class": "POKEMON_RANGER", "team": [70, 71], "levels": [51, 51], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [55, 54], "levels": [50, 50]}]}, "sprite": "fr_young_couple.png", "name": "Eve & Jon", "class": "YOUNG_COUPLE", "battle_options": {"double": true}, "team": [55, 54], "levels": [50, 50], "rewards": { "balls": 3 } }
       ],
       "level": 41,
       "subregion": "SEVII",
@@ -525,7 +525,7 @@
       "battle_type": "ocean", "surf_pool_percentages": "TREASURE_BEACH_SURF_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        { "rematch": {"source": "FireRed", "tiers": [{"team": [86, 86, 87], "levels": [36, 36, 36]}]}, "sprite": "swimmer_f.png", "name": "Amara", "class": "SWIMMER", "team": [86, 86, 87], "levels": [36, 36, 36], "rewards": { "balls": 3 } }
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [86, 86, 87], "levels": [36, 36, 36]}]}, "sprite": "fr_swimmer_f.png", "name": "Amara", "class": "SWIMMER", "team": [86, 86, 87], "levels": [36, 36, 36], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         {
@@ -583,18 +583,18 @@
       "battle_type": "mountain", "surf_pool_percentages": "KINDLE_ROAD_SURF_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        { "rematch": {"source": "FireRed", "tiers": [{"team": [118, 118, 119, 119, 119], "levels": [33, 33, 35, 35, 35]}]}, "sprite": "fisherman.png", "name": "Tommy", "class": "FISHERMAN", "team": [118, 118, 119, 119, 119], "levels": [33, 33, 35, 35, 35], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [{"team": [117, 117], "levels": [37, 37]}]}, "sprite": "swimmer_f.png", "name": "Maria", "class": "SWIMMER", "team": [117, 117], "levels": [37, 37], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [null, null, null, {"team": [121], "levels": [50], "unlock": "beat_champion"}]}, "sprite": "swimmer_m.png", "name": "Finn", "class": "SWIMMER", "team": [121], "levels": [38], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [null, null, null, {"team": [56, 57], "levels": [50, 50], "unlock": "beat_champion"}, {"team": [57, 57], "levels": [55, 55], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "battle_girl.png", "name": "Sharon", "class": "CRUSH_GIRL", "team": [56, 57], "levels": [37, 37], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [null, null, null, {"team": [67, 67], "levels": [50, 50], "unlock": "beat_champion"}, {"team": [67, 68], "levels": [55, 55], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "blackbelt.png", "name": "Hugh", "class": "BLACKBELT", "team": [66, 67], "levels": [37, 37], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [null, null, null, {"team": [67, 67], "levels": [50, 50], "unlock": "beat_champion"}, {"team": [67, 68], "levels": [55, 55], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "blackbelt.png", "name": "Shea", "class": "BLACKBELT", "team": [66, 67], "levels": [38, 38], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [null, null, null, {"team": [67, 57], "levels": [51, 51], "unlock": "beat_champion"}, {"team": [68, 57], "levels": [56, 56], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "battle_girl.png", "name": "Mik & Kia", "class": "CRUSH_KIN", "battle_options": {"double": true}, "team": [67, 57], "levels": [39, 39], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [{"team": [90, 91, 8], "levels": [35, 35, 38]}]}, "sprite": "swimmer_m.png", "name": "Garrett", "class": "SWIMMER", "team": [90, 91, 8], "levels": [35, 35, 38], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [{"team": [33, 20, 28], "levels": [36, 36, 36]}]}, "sprite": "camper.png", "name": "Bryce", "class": "CAMPER", "team": [33, 20, 28], "levels": [36, 36, 36], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [null, null, null, {"team": [106, 107], "levels": [50, 50], "unlock": "beat_champion"}, {"team": [106, 107], "levels": [55, 55], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "battle_girl.png", "name": "Tanya", "class": "CRUSH_GIRL", "team": [106, 107], "levels": [38, 38], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [{"team": [52, 52, 25, 35], "levels": [35, 35, 35, 35]}]}, "sprite": "picnicker.png", "name": "Claire", "class": "PICNICKER", "team": [52, 52, 25, 35], "levels": [35, 35, 35, 35], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [{"team": [54, 54, 55], "levels": [35, 36, 37]}]}, "sprite": "swimmer_f.png", "name": "Abigail", "class": "SWIMMER", "team": [54, 54, 55], "levels": [35, 36, 37], "rewards": { "balls": 3 } }
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [118, 118, 119, 119, 119], "levels": [33, 33, 35, 35, 35]}]}, "sprite": "fr_fisherman.png", "name": "Tommy", "class": "FISHERMAN", "team": [118, 118, 119, 119, 119], "levels": [33, 33, 35, 35, 35], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [117, 117], "levels": [37, 37]}]}, "sprite": "fr_swimmer_f.png", "name": "Maria", "class": "SWIMMER", "team": [117, 117], "levels": [37, 37], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, {"team": [121], "levels": [50], "unlock": "beat_champion"}]}, "sprite": "fr_swimmer_m.png", "name": "Finn", "class": "SWIMMER", "team": [121], "levels": [38], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, {"team": [56, 57], "levels": [50, 50], "unlock": "beat_champion"}, {"team": [57, 57], "levels": [55, 55], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "fr_crush_girl.png", "name": "Sharon", "class": "CRUSH_GIRL", "team": [56, 57], "levels": [37, 37], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, {"team": [67, 67], "levels": [50, 50], "unlock": "beat_champion"}, {"team": [67, 68], "levels": [55, 55], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "fr_black_belt.png", "name": "Hugh", "class": "BLACKBELT", "team": [66, 67], "levels": [37, 37], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, {"team": [67, 67], "levels": [50, 50], "unlock": "beat_champion"}, {"team": [67, 68], "levels": [55, 55], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "fr_black_belt.png", "name": "Shea", "class": "BLACKBELT", "team": [66, 67], "levels": [38, 38], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, {"team": [67, 57], "levels": [51, 51], "unlock": "beat_champion"}, {"team": [68, 57], "levels": [56, 56], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "fr_crush_kin.png", "name": "Mik & Kia", "class": "CRUSH_KIN", "battle_options": {"double": true}, "team": [67, 57], "levels": [39, 39], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [90, 91, 8], "levels": [35, 35, 38]}]}, "sprite": "fr_swimmer_m.png", "name": "Garrett", "class": "SWIMMER", "team": [90, 91, 8], "levels": [35, 35, 38], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [33, 20, 28], "levels": [36, 36, 36]}]}, "sprite": "fr_camper.png", "name": "Bryce", "class": "CAMPER", "team": [33, 20, 28], "levels": [36, 36, 36], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, {"team": [106, 107], "levels": [50, 50], "unlock": "beat_champion"}, {"team": [106, 107], "levels": [55, 55], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "fr_crush_girl.png", "name": "Tanya", "class": "CRUSH_GIRL", "team": [106, 107], "levels": [38, 38], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [52, 52, 25, 35], "levels": [35, 35, 35, 35]}]}, "sprite": "fr_picnicker.png", "name": "Claire", "class": "PICNICKER", "team": [52, 52, 25, 35], "levels": [35, 35, 35, 35], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [54, 54, 55], "levels": [35, 36, 37]}]}, "sprite": "fr_swimmer_f.png", "name": "Abigail", "class": "SWIMMER", "team": [54, 54, 55], "levels": [35, 36, 37], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         {"text": "ETHER", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_ether_kindle", "event": {"lines": ["An Ether, washed up on the sand."], "gift_item": {"ETHER": 1}, "flag": "got_ether_kindle"}},
@@ -666,9 +666,9 @@
       "battle_type": "cave",
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "ranger_m.png", "name": "Logan", "class": "POKEMON_RANGER", "team": [102, 103], "levels": [37, 40], "rewards": { "balls": 3 } },
-        { "sprite": "battle_girl.png", "name": "Jocelyn", "class": "CRUSH_GIRL", "team": [107, 107], "levels": [38, 38], "rewards": { "balls": 3 } },
-        { "sprite": "ranger_m.png", "name": "Beth", "class": "POKEMON_RANGER", "team": [69, 44, 44], "levels": [38, 38, 38], "rewards": { "balls": 3 } }
+        { "sprite": "fr_ranger_m.png", "name": "Logan", "class": "POKEMON_RANGER", "team": [102, 103], "levels": [37, 40], "rewards": { "balls": 3 } },
+        { "sprite": "fr_crush_girl.png", "name": "Jocelyn", "class": "CRUSH_GIRL", "team": [107, 107], "levels": [38, 38], "rewards": { "balls": 3 } },
+        { "sprite": "fr_ranger_m.png", "name": "Beth", "class": "POKEMON_RANGER", "team": [69, 44, 44], "levels": [38, 38, 38], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         {"text": "ULTRA BALL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_ultraball_ember", "event": {"lines": ["An Ultra Ball, high on the mountain."], "gift_item": {"ULTRA_BALL": 1}, "flag": "got_ultraball_ember"}},
@@ -709,7 +709,7 @@
                 "flag": "frlg_tutor_explosion",
                 "lines": [
                   "Researcher: Using Explosion on a volcano? What a terrifying thrill!",
-                  "...Ahem. For research purposes, I can teach one of your Pokemon Explosion. Just the once!"
+                  "...Ahem. For research purposes, I can teach one of your Pokemon Explosion. Come back any time!"
                 ],
                 "tutor": {
                   "move": "EXPLOSION",
@@ -744,7 +744,7 @@
           "text": "CHASE OFF TEAM ROCKET",
           "action": "EVENT",
           "color": "GOLD",
-          "event": {"requires": ["met_ember_researchers"], "fail": ["Grunt: Beat it, kid. This dig site is off limits!"], "flag": "ember_grunt_b", "lines": ["Grunt: Get lost, kid! This dig site is Team Rocket's!"], "battle": {"name": "Grunt ", "class": "ROCKET_GRUNT", "sprite": "rocket_grunt_m.png", "team": [19, 20, 27, 28], "levels": [35, 35, 35, 35], "rewards": {"balls": 3}, "dialogue": {"player_won": ["Grunt: No way! Beaten by a kid!"]}}},
+          "event": {"requires": ["met_ember_researchers"], "fail": ["Grunt: Beat it, kid. This dig site is off limits!"], "flag": "ember_grunt_b", "lines": ["Grunt: Get lost, kid! This dig site is Team Rocket's!"], "battle": {"name": "Grunt ", "class": "ROCKET_GRUNT", "sprite": "fr_team_rocket.png", "team": [19, 20, 27, 28], "levels": [35, 35, 35, 35], "rewards": {"balls": 3}, "dialogue": {"player_won": ["Grunt: No way! Beaten by a kid!"]}}},
           "condition": "met_ember_researchers",
           "flag_condition": "not ember_grunt_b"
         },
@@ -761,7 +761,7 @@
           "condition": "can_exit",
           "color": "RED"
         },
-        {"text": "ROCKET GRUNT", "action": "EVENT", "color": "GOLD", "flag_condition": "not ember_grunt_a", "event": {"stages": [{"requires": ["not:met_ember_researchers"], "lines": ["Grunt: Dig, dig, dig! There's treasure in this mountain, I just know it!"]}, {"flag": "ember_grunt_a", "lines": ["Grunt: You've been listening in, haven't you? Snoops get squashed!"], "battle": {"name": "Grunt", "class": "ROCKET_GRUNT", "sprite": "rocket_grunt_m.png", "team": [104, 105], "levels": [37, 37], "rewards": {"balls": 3}, "dialogue": {"player_won": ["Grunt: Argh! The treasure was nearly ours!"]}}}]}},
+        {"text": "ROCKET GRUNT", "action": "EVENT", "color": "GOLD", "flag_condition": "not ember_grunt_a", "event": {"stages": [{"requires": ["not:met_ember_researchers"], "lines": ["Grunt: Dig, dig, dig! There's treasure in this mountain, I just know it!"]}, {"flag": "ember_grunt_a", "lines": ["Grunt: You've been listening in, haven't you? Snoops get squashed!"], "battle": {"name": "Grunt", "class": "ROCKET_GRUNT", "sprite": "fr_team_rocket.png", "team": [104, 105], "levels": [37, 37], "rewards": {"balls": 3}, "dialogue": {"player_won": ["Grunt: Argh! The treasure was nearly ours!"]}}}]}},
         {"text": "JESSIE AND JAMES", "action": "EVENT", "color": "GOLD", "condition": ["ember_grunt_a", "ember_grunt_b"], "flag_condition": "not sevii_ember_rocket", "event": {"lines": ["Jessie: Hold it right there! You've wrecked our dig!", "James: The treasure of this mountain belongs to Team Rocket!"], "battle": {"name": "Jessie and James", "class": "ROCKET", "sprite": "jessie_james.png", "team": [24, 110, 52], "levels": [37, 37, 37], "rewards": {"balls": 5}, "dialogue": {"player_won": ["Jessie and James: We're blasting off agaaain!"]}}, "flag": "sevii_ember_rocket"}},
         {"text": "RUBY", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_ruby_sevii", "event": {"lines": ["A red gem glitters in the dark... the Ruby!"], "gift_item": {"RUBY": 1}, "flag": "got_ruby_sevii"}}
       ],
@@ -789,6 +789,7 @@
           "text": "Shop",
           "action": "SHOP"
         },
+        {"text": "Joyful Games", "action": "EVENT", "door": "gamecorner", "color": "GOLD", "event": {"world": "joyful_games"}},
         {
           "text": "Joyful Game Corner",
           "door": "gamecorner",
@@ -989,7 +990,7 @@
           "text": "Stop the Biker Gang",
           "action": "EVENT",
           "color": "GOLD",
-          "event": {"stages": [{"flag": "three_goon_1", "lines": ["Biker: What're you looking at? Wanna make something of it?"], "battle": {"name": "Biker Goon", "class": "BIKER", "sprite": "biker.png", "team": [109, 88], "levels": [37, 37], "rewards": {"balls": 3}, "dialogue": {"player_won": ["Biker: Whoa... you're tougher than you look."]}}}, {"requires": ["three_goon_1"], "flag": "three_goon_2", "lines": ["Biker: You beat him? Fine. My turn!"], "battle": {"name": "Biker Goon", "class": "BIKER", "sprite": "biker.png", "team": [109], "levels": [38], "rewards": {"balls": 3}, "dialogue": {"player_won": ["Biker: Aww, man! Don't laugh!"]}}}, {"requires": ["three_goon_2"], "flag": "three_goon_3", "lines": ["Biker: Aren't you from Kanto? You should be on our side!"], "battle": {"name": "Biker Goon", "class": "BIKER", "sprite": "biker.png", "team": [88], "levels": [38], "rewards": {"balls": 3}, "dialogue": {"player_won": ["Biker: No way... the boss is gonna hear about this."]}}}, {"requires": ["three_goon_3"], "flag": "beat_three_island_bikers", "lines": ["Paxton: So you're the kid pushing my gang around? Nobody does that to Paxton!"], "battle": {"name": "Cue Ball Paxton", "class": "CUE_BALL", "sprite": "cueball.png", "team": [110, 89], "levels": [39, 39], "rewards": {"balls": 10}, "dialogue": {"player_won": ["Paxton: Okay, okay! We're leaving! Take your bridge back!"]}}}], "done": ["Townsfolk: The bikers are gone! You can cross Bond Bridge now."]},
+          "event": {"stages": [{"flag": "three_goon_1", "lines": ["Biker: What're you looking at? Wanna make something of it?"], "battle": {"name": "Biker Goon", "class": "BIKER", "sprite": "fr_biker.png", "team": [109, 88], "levels": [37, 37], "rewards": {"balls": 3}, "dialogue": {"player_won": ["Biker: Whoa... you're tougher than you look."]}}}, {"requires": ["three_goon_1"], "flag": "three_goon_2", "lines": ["Biker: You beat him? Fine. My turn!"], "battle": {"name": "Biker Goon", "class": "BIKER", "sprite": "fr_biker.png", "team": [109], "levels": [38], "rewards": {"balls": 3}, "dialogue": {"player_won": ["Biker: Aww, man! Don't laugh!"]}}}, {"requires": ["three_goon_2"], "flag": "three_goon_3", "lines": ["Biker: Aren't you from Kanto? You should be on our side!"], "battle": {"name": "Biker Goon", "class": "BIKER", "sprite": "fr_biker.png", "team": [88], "levels": [38], "rewards": {"balls": 3}, "dialogue": {"player_won": ["Biker: No way... the boss is gonna hear about this."]}}}, {"requires": ["three_goon_3"], "flag": "beat_three_island_bikers", "lines": ["Paxton: So you're the kid pushing my gang around? Nobody does that to Paxton!"], "battle": {"name": "Cue Ball Paxton", "class": "CUE_BALL", "sprite": "fr_cue_ball.png", "team": [110, 89], "levels": [39, 39], "rewards": {"balls": 10}, "dialogue": {"player_won": ["Paxton: Okay, okay! We're leaving! Take your bridge back!"]}}}], "done": ["Townsfolk: The bikers are gone! You can cross Bond Bridge now."]},
           "flag_condition": "not beat_three_island_bikers"
         }
       ],
@@ -1017,12 +1018,12 @@
       "battle_type": "grass", "surf_pool_percentages": "BOND_BRIDGE_SURF_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        { "rematch": {"source": "FireRed", "tiers": [{"team": [99], "levels": [38]}]}, "sprite": "swimmer_f.png", "name": "Tisha", "class": "SWIMMER", "team": [99], "levels": [38], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [null, null, null, {"team": [35, 35], "levels": [49, 49], "unlock": "beat_champion"}]}, "sprite": "lass.png", "name": "Joy & Meg", "class": "TWINS", "battle_options": {"double": true}, "team": [35, 35], "levels": [37, 37], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [{"team": [69, 70], "levels": [37, 37]}]}, "sprite": "beauty.png", "name": "Nikki", "class": "AROMA_LADY", "team": [69, 70], "levels": [37, 37], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [{"team": [1, 2, 2], "levels": [36, 36, 36]}]}, "sprite": "beauty.png", "name": "Violet", "class": "AROMA_LADY", "team": [1, 2, 2], "levels": [36, 36, 36], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [{"team": [120, 120, 98, 98], "levels": [34, 34, 34, 34]}]}, "sprite": "school_kid_f.png", "name": "Alexis", "class": "TUBER", "team": [120, 120, 98, 98], "levels": [34, 34, 34, 34], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [null, null, null, {"team": [61, 61, 61], "levels": [47, 47, 47], "unlock": "beat_champion"}]}, "sprite": "school_kid_f.png", "name": "Amira", "class": "TUBER", "team": [60, 61, 60], "levels": [34, 35, 34], "rewards": { "balls": 3 } }
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [99], "levels": [38]}]}, "sprite": "fr_swimmer_f.png", "name": "Tisha", "class": "SWIMMER", "team": [99], "levels": [38], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, {"team": [35, 35], "levels": [49, 49], "unlock": "beat_champion"}]}, "sprite": "fr_twins.png", "name": "Joy & Meg", "class": "TWINS", "battle_options": {"double": true}, "team": [35, 35], "levels": [37, 37], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [69, 70], "levels": [37, 37]}]}, "sprite": "fr_aroma_lady.png", "name": "Nikki", "class": "AROMA_LADY", "team": [69, 70], "levels": [37, 37], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [1, 2, 2], "levels": [36, 36, 36]}]}, "sprite": "fr_aroma_lady.png", "name": "Violet", "class": "AROMA_LADY", "team": [1, 2, 2], "levels": [36, 36, 36], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [120, 120, 98, 98], "levels": [34, 34, 34, 34]}]}, "sprite": "fr_tuber.png", "name": "Alexis", "class": "TUBER", "team": [120, 120, 98, 98], "levels": [34, 34, 34, 34], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, {"team": [61, 61, 61], "levels": [47, 47, 47], "unlock": "beat_champion"}]}, "sprite": "fr_tuber.png", "name": "Amira", "class": "TUBER", "team": [60, 61, 60], "levels": [34, 35, 34], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         {
@@ -1129,7 +1130,7 @@
       "level": 52,
       "subregion": "SEVII",
       "has_gym": false,
-      "explore_options": [{"text": "Heal", "action": "HEAL"}, {"text": "Shop", "action": "SHOP"}, {"text": "Pokémon Day Care", "door": "daycare", "action": "DAYCARE"}, {"text": "Lorelei's House", "door": "lorelei", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Lorelei: This is my home island. I came back to rest after the League...", "But Team Rocket is in Icefall Cave, catching Lapras to sell! Please stop them."], "flag": "met_lorelei_sevii", "done": ["Lorelei: Thank you for saving the Icefall Cave Pokemon."]}, "flag_condition": "not sevii_icefall_cleared"}, {"text": "Battle Lorelei", "door": "lorelei", "action": "EVENT", "color": "GOLD", "event": {"requires": ["sevii_icefall_cleared"], "lines": ["Lorelei: You saved the Lapras. Now, a battle, just for fun. Don't hold back!"], "battle": {"name": "Lorelei", "class": "ELITE_FOUR", "sprite": "loreli.png", "team": [87, 91, 80, 124, 131], "levels": [56, 57, 56, 58, 60], "rewards": {"balls": 15}, "dialogue": {"player_won": ["Lorelei: Still as strong as ever. Come back any time."]}, "movesets": {"87": ["SURF", "ICE-BEAM", "HAIL", "SAFEGUARD"], "91": ["SPIKES", "DIVE", "HAIL", "PROTECT"], "80": ["ICE-BEAM", "SURF", "AMNESIA", "YAWN"], "124": ["DOUBLE-SLAP", "ICE-PUNCH", "LOVELY-KISS", "ATTRACT"], "131": ["BODY-SLAM", "CONFUSE-RAY", "SURF", "ICE-BEAM"]}}, "flag": "defeated_lorelei_sevii", "done": ["Lorelei: That was a wonderful battle."]}, "condition": "sevii_icefall_cleared", "flag_condition": "not defeated_lorelei_sevii"}, {"text": "STAR PIECE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_starpiece_four", "event": {"lines": ["A Star Piece, behind the rock by the shore."], "gift_item": {"STAR_PIECE": 1}, "flag": "got_starpiece_four"}}, {"text": "STARDUST", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_stardust_four", "event": {"lines": ["A pinch of Stardust, by Lorelei's house."], "gift_item": {"STARDUST": 1}, "flag": "got_stardust_four"}}, {"text": "Body Slam Tutor", "action": "EVENT", "color": "GOLD", "event": {"stages": [{"flag": "frlg_tutor_body_slam", "lines": ["Tutor: Boing! My buddy and I are having a body slam contest. Want in?", "I'll teach one of your Pokémon Body Slam. Just the once, mind!"], "tutor": {"move": "BODY-SLAM", "like": "BODY-SLAM"}, "fail": ["Tutor: Aww, none of your Pokémon can learn Body Slam."]}, {"requires": ["frlg_tutor_body_slam"], "tutor": {"move": "BODY-SLAM", "like": "BODY-SLAM"}, "tutor_repeat": true, "done": ["Tutor: Boing! Body Slam! Nothing beats it!"]}]}}],
+      "explore_options": [{"text": "Heal", "action": "HEAL"}, {"text": "Shop", "action": "SHOP"}, {"text": "Pokémon Day Care", "door": "daycare", "action": "DAYCARE"}, {"text": "Lorelei's House", "door": "lorelei", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Lorelei: This is my home island. I came back to rest after the League...", "But Team Rocket is in Icefall Cave, catching Lapras to sell! Please stop them."], "flag": "met_lorelei_sevii", "done": ["Lorelei: Thank you for saving the Icefall Cave Pokemon."]}, "flag_condition": "not sevii_icefall_cleared"}, {"text": "Battle Lorelei", "door": "lorelei", "action": "EVENT", "color": "GOLD", "event": {"requires": ["sevii_icefall_cleared"], "lines": ["Lorelei: You saved the Lapras. Now, a battle, just for fun. Don't hold back!"], "battle": {"name": "Lorelei", "class": "ELITE_FOUR", "sprite": "fr_elite_four_lorelei.png", "team": [87, 91, 80, 124, 131], "levels": [56, 57, 56, 58, 60], "rewards": {"balls": 15}, "dialogue": {"player_won": ["Lorelei: Still as strong as ever. Come back any time."]}, "movesets": {"87": ["SURF", "ICE-BEAM", "HAIL", "SAFEGUARD"], "91": ["SPIKES", "DIVE", "HAIL", "PROTECT"], "80": ["ICE-BEAM", "SURF", "AMNESIA", "YAWN"], "124": ["DOUBLE-SLAP", "ICE-PUNCH", "LOVELY-KISS", "ATTRACT"], "131": ["BODY-SLAM", "CONFUSE-RAY", "SURF", "ICE-BEAM"]}}, "flag": "defeated_lorelei_sevii", "done": ["Lorelei: That was a wonderful battle."]}, "condition": "sevii_icefall_cleared", "flag_condition": "not defeated_lorelei_sevii"}, {"text": "STAR PIECE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_starpiece_four", "event": {"lines": ["A Star Piece, behind the rock by the shore."], "gift_item": {"STAR_PIECE": 1}, "flag": "got_starpiece_four"}}, {"text": "STARDUST", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_stardust_four", "event": {"lines": ["A pinch of Stardust, by Lorelei's house."], "gift_item": {"STARDUST": 1}, "flag": "got_stardust_four"}}, {"text": "Body Slam Tutor", "action": "EVENT", "color": "GOLD", "event": {"stages": [{"flag": "frlg_tutor_body_slam", "lines": ["Tutor: Boing! My buddy and I are having a body slam contest. Want in?", "I'll teach one of your Pokémon Body Slam. Come back any time!"], "tutor": {"move": "BODY-SLAM", "like": "BODY-SLAM"}, "fail": ["Tutor: Aww, none of your Pokémon can learn Body Slam."]}, {"requires": ["frlg_tutor_body_slam"], "tutor": {"move": "BODY-SLAM", "like": "BODY-SLAM"}, "tutor_repeat": true, "done": ["Tutor: Boing! Body Slam! Nothing beats it!"]}]}}],
       "travel_options": [
         {
           "text": "Icefall Cave",
@@ -1275,10 +1276,6 @@
         {
           "text": "Heal",
           "action": "HEAL"
-        },
-        {
-          "text": "Shop",
-          "action": "SHOP"
         }
       ],
       "travel_options": [
@@ -1289,15 +1286,6 @@
         {
           "text": "Water Labyrinth",
           "target_area": "WATER_LABYRINTH"
-        },
-        {
-          "text": "Lost Cave",
-          "target_area": "LOST_CAVE"
-        },
-        {
-          "text": "Rocket Warehouse",
-          "target_area": "ROCKET_WAREHOUSE",
-          "condition": "sapphire_stolen"
         },
         {
           "text": "Seagallop to Vermilion City",
@@ -1368,9 +1356,9 @@
       "battle_type": "grass", "surf_pool_percentages": "FIVE_ISLE_MEADOW_SURF_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET_GRUNT", "team": [19, 88, 89], "levels": [48, 48, 48], "rewards": { "balls": 3 } },
-        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET_GRUNT", "team": [23, 44, 44], "levels": [48, 48, 48], "rewards": { "balls": 3 } },
-        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET_GRUNT", "team": [109, 110], "levels": [49, 49], "rewards": { "balls": 3 } }
+        { "sprite": "fr_team_rocket.png", "name": "Grunt", "class": "ROCKET_GRUNT", "team": [19, 88, 89], "levels": [48, 48, 48], "rewards": { "balls": 3 } },
+        { "sprite": "fr_team_rocket.png", "name": "Grunt", "class": "ROCKET_GRUNT", "team": [23, 44, 44], "levels": [48, 48, 48], "rewards": { "balls": 3 } },
+        { "sprite": "fr_team_rocket.png", "name": "Grunt", "class": "ROCKET_GRUNT", "team": [109, 110], "levels": [49, 49], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
@@ -1395,7 +1383,7 @@
       "battle_type": "ocean", "surf_pool_percentages": "WATER_LABYRINTH_SURF_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [25, 35, 183], "levels": [53, 53, 53], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "pokefan_f.png", "name": "Alize", "class": "POKEMON_BREEDER", "team": [25, 35, 183], "levels": [48, 48, 48], "rewards": { "balls": 3 } }
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [25, 35, 183], "levels": [53, 53, 53], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "fr_breeder.png", "name": "Alize", "class": "POKEMON_BREEDER", "team": [25, 35, 183], "levels": [48, 48, 48], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         {
@@ -1443,10 +1431,10 @@
       "battle_type": "cave",
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "ruinmaniac.png", "name": "Lawson", "class": "RUIN_MANIAC", "team": [95, 75, 105], "levels": [47, 48, 49], "rewards": { "balls": 3 } },
-        { "sprite": "psychic_m.png", "name": "Laura", "class": "PSYCHIC", "team": [177, 177, 178], "levels": [48, 48, 49], "rewards": { "balls": 3 } }
+        { "sprite": "fr_ruin_maniac.png", "name": "Lawson", "class": "RUIN_MANIAC", "team": [95, 75, 105], "levels": [47, 48, 49], "rewards": { "balls": 3 } },
+        { "sprite": "fr_psychic_m.png", "name": "Laura", "class": "PSYCHIC", "team": [177, 177, 178], "levels": [48, 48, 49], "rewards": { "balls": 3 } }
       ],
-      "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"}, {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"}, {"text": "SEARCH THE DARK", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Something was left here in the dark..."], "gift_item": {"RARE_CANDY": 1}, "flag": "lost_cave_searched"}, "flag_condition": "not lost_cave_searched", "found": true}, {"text": "THE BLACK FOG", "action": "BOSS", "color": "PURPLE", "flag_condition": "not black_fog_banished_lost_cave", "boss": {"id": 10501, "name": "Black Fog", "level": 63, "no_catch": true, "victory_flag": "black_fog_banished_lost_cave", "lines": ["The air turns ice-cold. A black fog pours across the floor...", "Two huge eyes open in the dark. A giant Haunter rises: the Black Fog!", "Long ago people worshipped it as a god. It feeds on dreams. Don't let it get yours!"], "won": ["The Black Fog is too proud to ever be caught.", "It Self-Destructs in a burst of black mist... and is gone.", "But a cold whisper lingers: it will rise again in another haunted place."], "rewards": {"balls": 10, "RARE_CANDY": 3}}}, {"text": "Five Island", "action": "EXIT", "target_area": "FIVE_ISLAND", "condition": "can_exit", "color": "RED"}, {"text": "Resort Gorgeous", "action": "EXIT", "target_area": "RESORT_GORGEOUS", "condition": "can_exit", "color": "RED"}, {"text": "SILK SCARF", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_silkscarf_lost", "event": {"lines": ["A Silk Scarf, dropped in the dark."], "gift_item": {"SILK_SCARF": 1}, "flag": "got_silkscarf_lost"}}, {"text": "LAX INCENSE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_laxincense_lost", "event": {"lines": ["Lax Incense, its scent still faint."], "gift_item": {"LAX_INCENSE": 1}, "flag": "got_laxincense_lost"}}, {"text": "SEA INCENSE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_seaincense_lost", "event": {"lines": ["Sea Incense, smelling of the shore."], "gift_item": {"SEA_INCENSE": 1}, "flag": "got_seaincense_lost"}}, {"text": "MAX REVIVE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_maxrevive_lost", "event": {"lines": ["A Max Revive, deep in the cave."], "gift_item": {"MAX_REVIVE": 1}, "flag": "got_maxrevive_lost"}}, {"text": "LADY SELPHY", "action": "EVENT", "color": "GOLD", "flag_condition": "not rescued_selphy", "event": {"lines": ["Selphy: Oh! At last, someone! I came to see the cave and now I simply cannot find the way out.", "Selphy: But a lady never turns down a battle. Let us see what you can do!"], "battle": {"name": "Lady Selphy", "class": "LADY", "sprite": "beauty.png", "team": [53, 53], "levels": [49, 49], "rewards": {"balls": 5}, "dialogue": {"player_won": ["Selphy: How thrilling! Now, do take me home to my villa at once."]}}, "flag": "rescued_selphy"}}],
+      "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"}, {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"}, {"text": "SEARCH THE DARK", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Something was left here in the dark..."], "gift_item": {"RARE_CANDY": 1}, "flag": "lost_cave_searched"}, "flag_condition": "not lost_cave_searched", "found": true}, {"text": "THE BLACK FOG", "action": "BOSS", "color": "PURPLE", "flag_condition": "not black_fog_banished_lost_cave", "boss": {"id": 10501, "name": "Black Fog", "level": 63, "no_catch": true, "victory_flag": "black_fog_banished_lost_cave", "lines": ["The air turns ice-cold. A black fog pours across the floor...", "Two huge eyes open in the dark. A giant Haunter rises: the Black Fog!", "Long ago people worshipped it as a god. It feeds on dreams. Don't let it get yours!"], "won": ["The Black Fog is too proud to ever be caught.", "It Self-Destructs in a burst of black mist... and is gone.", "But a cold whisper lingers: it will rise again in another haunted place."], "rewards": {"balls": 10, "RARE_CANDY": 3}}}, {"text": "Five Island", "action": "EXIT", "target_area": "FIVE_ISLAND", "condition": "can_exit", "color": "RED"}, {"text": "Resort Gorgeous", "action": "EXIT", "target_area": "RESORT_GORGEOUS", "condition": "can_exit", "color": "RED"}, {"text": "SILK SCARF", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_silkscarf_lost", "event": {"lines": ["A Silk Scarf, dropped in the dark."], "gift_item": {"SILK_SCARF": 1}, "flag": "got_silkscarf_lost"}}, {"text": "LAX INCENSE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_laxincense_lost", "event": {"lines": ["Lax Incense, its scent still faint."], "gift_item": {"LAX_INCENSE": 1}, "flag": "got_laxincense_lost"}}, {"text": "SEA INCENSE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_seaincense_lost", "event": {"lines": ["Sea Incense, smelling of the shore."], "gift_item": {"SEA_INCENSE": 1}, "flag": "got_seaincense_lost"}}, {"text": "MAX REVIVE", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_maxrevive_lost", "event": {"lines": ["A Max Revive, deep in the cave."], "gift_item": {"MAX_REVIVE": 1}, "flag": "got_maxrevive_lost"}}, {"text": "LADY SELPHY", "action": "EVENT", "color": "GOLD", "flag_condition": "not rescued_selphy", "event": {"lines": ["Selphy: Oh! At last, someone! I came to see the cave and now I simply cannot find the way out.", "Selphy: But a lady never turns down a battle. Let us see what you can do!"], "battle": {"name": "Lady Selphy", "class": "LADY", "sprite": "fr_lady.png", "team": [53, 53], "levels": [49, 49], "rewards": {"balls": 5}, "dialogue": {"player_won": ["Selphy: How thrilling! Now, do take me home to my villa at once."]}}, "flag": "rescued_selphy"}}],
       "next_area": "FIVE_ISLAND"
     },
     "ROCKET_WAREHOUSE": {
@@ -1458,11 +1446,11 @@
       "battle_type": "indoor",
       "min_rounds": 0,
       "trainer_pool": [
-        { "sprite": "scientist.png", "name": "Gideon", "class": "SCIENTIST", "team": [100, 101, 81, 82, 137], "levels": [46, 46, 46, 46, 46], "rewards": { "balls": 3 } },
-        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET_GRUNT", "team": [228, 228], "levels": [49, 49], "rewards": { "balls": 3 } },
-        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET_GRUNT", "team": [66, 66, 67], "levels": [48, 48, 48], "rewards": { "balls": 3 } },
-        { "sprite": "rocket_grunt_m.png", "name": "Grunt", "class": "ROCKET_GRUNT", "team": [97, 97], "levels": [49, 49], "rewards": { "balls": 3 } },
-        {"sprite": "rocket_grunt_m.png", "name": "Admin", "class": "ROCKET_ADMIN", "team": [89, 24, 45], "levels": [52, 53, 54], "rewards": {"balls": 3}}
+        { "sprite": "fr_scientist.png", "name": "Gideon", "class": "SCIENTIST", "team": [100, 101, 81, 82, 137], "levels": [46, 46, 46, 46, 46], "rewards": { "balls": 3 } },
+        { "sprite": "fr_team_rocket.png", "name": "Grunt", "class": "ROCKET_GRUNT", "team": [228, 228], "levels": [49, 49], "rewards": { "balls": 3 } },
+        { "sprite": "fr_team_rocket.png", "name": "Grunt", "class": "ROCKET_GRUNT", "team": [66, 66, 67], "levels": [48, 48, 48], "rewards": { "balls": 3 } },
+        { "sprite": "fr_team_rocket.png", "name": "Grunt", "class": "ROCKET_GRUNT", "team": [97, 97], "levels": [49, 49], "rewards": { "balls": 3 } },
+        {"sprite": "fr_team_rocket.png", "name": "Admin", "class": "ROCKET_ADMIN", "team": [89, 24, 45], "levels": [52, 53, 54], "rewards": {"balls": 3}}
       ],
       "route_menu": [
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
@@ -1520,14 +1508,6 @@
         }
       ],
       "travel_options": [
-        {
-          "text": "Pattern Bush",
-          "target_area": "PATTERN_BUSH"
-        },
-        {
-          "text": "Ruin Valley",
-          "target_area": "RUIN_VALLEY"
-        },
         {
           "text": "Seagallop to Vermilion City",
           "door": "harbor",
@@ -1598,18 +1578,18 @@
       "battle_type": "forest",
       "min_rounds": 2,
       "trainer_pool": [
-        { "sprite": "pokefan_f.png", "name": "Allison", "class": "POKEMON_BREEDER", "team": [35, 35, 36], "levels": [48, 48, 48], "rewards": { "balls": 3 } },
-        { "sprite": "youngster.png", "name": "Nash", "class": "YOUNGSTER", "team": [70, 70, 71], "levels": [47, 47, 49], "rewards": { "balls": 3 } },
-        { "sprite": "lass.png", "name": "Joana", "class": "LASS", "team": [209], "levels": [49], "rewards": { "balls": 3 } },
-        { "sprite": "bug_catcher.png", "name": "Garret", "class": "BUG_CATCHER", "team": [214], "levels": [49], "rewards": { "balls": 3 } },
-        { "sprite": "camper.png", "name": "Riley", "class": "CAMPER", "team": [127, 214], "levels": [49, 50], "rewards": { "balls": 3 } },
-        { "sprite": "bug_catcher.png", "name": "Jonah", "class": "BUG_CATCHER", "team": [193, 15, 193, 15], "levels": [45, 45, 46, 47], "rewards": { "balls": 3 } },
-        { "sprite": "pokefan_f.png", "name": "Bethany", "class": "POKEMON_BREEDER", "team": [113], "levels": [50], "rewards": { "balls": 3 } },
-        { "sprite": "ruinmaniac.png", "name": "Layton", "class": "RUIN_MANIAC", "team": [28, 95, 28], "levels": [48, 48, 48], "rewards": { "balls": 3 } },
-        { "sprite": "youngster.png", "name": "Cordell", "class": "YOUNGSTER", "team": [83, 83], "levels": [48, 48], "rewards": { "balls": 3 } },
-        { "sprite": "lass.png", "name": "Dalia", "class": "LASS", "team": [187, 187, 188, 188], "levels": [46, 47, 47, 48], "rewards": { "balls": 3 } },
-        { "sprite": "bug_catcher.png", "name": "Vance", "class": "BUG_CATCHER", "team": [48, 49], "levels": [48, 48], "rewards": { "balls": 3 } },
-        { "sprite": "picnicker.png", "name": "Marcy", "class": "PICNICKER", "team": [46, 46, 47], "levels": [48, 48, 49], "rewards": { "balls": 3 } }
+        { "sprite": "fr_breeder.png", "name": "Allison", "class": "POKEMON_BREEDER", "team": [35, 35, 36], "levels": [48, 48, 48], "rewards": { "balls": 3 } },
+        { "sprite": "fr_youngster.png", "name": "Nash", "class": "YOUNGSTER", "team": [70, 70, 71], "levels": [47, 47, 49], "rewards": { "balls": 3 } },
+        { "sprite": "fr_lass.png", "name": "Joana", "class": "LASS", "team": [209], "levels": [49], "rewards": { "balls": 3 } },
+        { "sprite": "fr_bug_catcher.png", "name": "Garret", "class": "BUG_CATCHER", "team": [214], "levels": [49], "rewards": { "balls": 3 } },
+        { "sprite": "fr_camper.png", "name": "Riley", "class": "CAMPER", "team": [127, 214], "levels": [49, 50], "rewards": { "balls": 3 } },
+        { "sprite": "fr_bug_catcher.png", "name": "Jonah", "class": "BUG_CATCHER", "team": [193, 15, 193, 15], "levels": [45, 45, 46, 47], "rewards": { "balls": 3 } },
+        { "sprite": "fr_breeder.png", "name": "Bethany", "class": "POKEMON_BREEDER", "team": [113], "levels": [50], "rewards": { "balls": 3 } },
+        { "sprite": "fr_ruin_maniac.png", "name": "Layton", "class": "RUIN_MANIAC", "team": [28, 95, 28], "levels": [48, 48, 48], "rewards": { "balls": 3 } },
+        { "sprite": "fr_youngster.png", "name": "Cordell", "class": "YOUNGSTER", "team": [83, 83], "levels": [48, 48], "rewards": { "balls": 3 } },
+        { "sprite": "fr_lass.png", "name": "Dalia", "class": "LASS", "team": [187, 187, 188, 188], "levels": [46, 47, 47, 48], "rewards": { "balls": 3 } },
+        { "sprite": "fr_bug_catcher.png", "name": "Vance", "class": "BUG_CATCHER", "team": [48, 49], "levels": [48, 48], "rewards": { "balls": 3 } },
+        { "sprite": "fr_picnicker.png", "name": "Marcy", "class": "PICNICKER", "team": [46, 46, 47], "levels": [48, 48, 49], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         {
@@ -1651,11 +1631,11 @@
       "battle_type": "mountain", "surf_pool_percentages": "RUIN_VALLEY_SURF_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        { "rematch": {"source": "FireRed", "tiers": [{"team": [185], "levels": [50]}]}, "sprite": "hiker.png", "name": "Daryl", "class": "HIKER", "team": [185], "levels": [50], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [{"team": [75, 95, 75], "levels": [48, 48, 48]}]}, "sprite": "ruinmaniac.png", "name": "Stanly", "class": "RUIN_MANIAC", "team": [75, 95, 75], "levels": [48, 48, 48], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [{"team": [76], "levels": [50]}]}, "sprite": "ruinmaniac.png", "name": "Foster", "class": "RUIN_MANIAC", "team": [76], "levels": [50], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [67, 67], "levels": [54, 54], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "ruinmaniac.png", "name": "Larry", "class": "RUIN_MANIAC", "team": [67, 67], "levels": [49, 49], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [112, 115], "levels": [55, 55], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "pokemaniac.png", "name": "Hector", "class": "POKEMANIAC", "team": [111, 115], "levels": [49, 49], "rewards": { "balls": 3 } }
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [185], "levels": [50]}]}, "sprite": "fr_hiker.png", "name": "Daryl", "class": "HIKER", "team": [185], "levels": [50], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [75, 95, 75], "levels": [48, 48, 48]}]}, "sprite": "fr_ruin_maniac.png", "name": "Stanly", "class": "RUIN_MANIAC", "team": [75, 95, 75], "levels": [48, 48, 48], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [76], "levels": [50]}]}, "sprite": "fr_ruin_maniac.png", "name": "Foster", "class": "RUIN_MANIAC", "team": [76], "levels": [50], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [67, 67], "levels": [54, 54], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "fr_ruin_maniac.png", "name": "Larry", "class": "RUIN_MANIAC", "team": [67, 67], "levels": [49, 49], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [112, 115], "levels": [55, 55], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "fr_pokemaniac.png", "name": "Hector", "class": "POKEMANIAC", "team": [111, 115], "levels": [49, 49], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         {
@@ -1732,214 +1712,8 @@
       ],
       "next_area": "RUIN_VALLEY"
     },
-    "SEVEN_ISLAND": {
-      "area_type": "town", "can_fish": true,
-      "route_name": "Seven Island",
-      "region": "KANTO",
-      "level": 58,
-      "subregion": "SEVII",
-      "has_gym": true,
-      "explore_options": [
-        {
-          "text": "Heal",
-          "action": "HEAL"
-        },
-        {
-          "text": "Shop",
-          "action": "SHOP"
-        },
-        {
-          "text": "Trainer Tower",
-          "action": "GYM",
-          "color": "GOLD"
-        },
-        {"text": "Swords Dance Tutor", "action": "EVENT", "color": "GOLD", "event": {"stages": [{"flag": "frlg_tutor_swords_dance", "lines": ["Trainee: Hardly anyone comes out this far. Train here and you're sure to get stronger!", "Trainee: Here, let me teach one of your Pokémon Swords Dance. Only the once, though!"], "tutor": {"move": "SWORDS-DANCE", "like": "SWORDS-DANCE"}, "fail": ["Trainee: Hmm, none of your Pokémon can learn Swords Dance."]}, {"requires": ["frlg_tutor_swords_dance"], "tutor": {"move": "SWORDS-DANCE", "like": "SWORDS-DANCE"}, "tutor_repeat": true, "done": ["Trainee: Swords Dance! Sharpen up and strike hard!"]}]}},
-        {"text": "Psychic Dario", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Dario: I sense a strong will in you. Show me!"], "flag": "beat_dario_seven", "done": ["Dario: The Tower calls to the strong. Go on."], "battle": { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [203], "levels": [56], "team_moves": [["CRUNCH", "PSYBEAM", "ODOR-SLEUTH", "AGILITY"]], "unlock": "sevii_warehouse_cleared"}]},"name": "Psychic Dario", "class": "PSYCHIC", "sprite": "psychic_m.png", "team": [203], "levels": [52], "rewards": {"balls": 3}, "dialogue": {"player_won": ["Dario: My mind was clear, yet I lost..."]}}}},
-        {"text": "Psychic Rodette", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Rodette: The future I foresaw has you battling me!"], "flag": "beat_rodette_seven", "done": ["Rodette: Good luck in the Trainer Tower."], "battle": { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [177, 97, 97], "levels": [53, 53, 53], "team_moves": [["PSYCHIC", "CONFUSE-RAY", "WISH", "FUTURE-SIGHT"], ["PSYCHIC", "DISABLE", "PSYCH-UP", "FUTURE-SIGHT"], ["PSYCHIC", "HYPNOSIS", "PSYCH-UP", "FUTURE-SIGHT"]], "unlock": "sevii_warehouse_cleared"}]},"name": "Psychic Rodette", "class": "PSYCHIC", "sprite": "psychic.png", "team": [177, 96, 97], "levels": [48, 48, 50], "rewards": {"balls": 3}, "dialogue": {"player_won": ["Rodette: I didn't foresee that ending!"]}}}}
-      ],
-      "travel_options": [
-        {
-          "text": "Sevault Canyon",
-          "target_area": "SEVAULT_CANYON"
-        },
-        {
-          "text": "Tanoby Ruins",
-          "target_area": "TANOBY_RUINS"
-        },
-        {
-          "text": "Seagallop to Vermilion City",
-          "door": "harbor",
-          "long_ride": true,
-          "target_area": "VERMILLION_CITY",
-          "message": "The Seagallop Ferry speeds back to Vermilion City."
-        },
-        {
-          "text": "Seagallop to One Island",
-          "door": "harbor",
-          "target_area": "ONE_ISLAND",
-          "message": "The Seagallop Ferry speeds across the waves. Next stop: One Island!",
-          "condition": "has_item:TRI_PASS"
-        },
-        {
-          "text": "Seagallop to Two Island",
-          "door": "harbor",
-          "target_area": "TWO_ISLAND",
-          "message": "The Seagallop Ferry speeds across the waves. Next stop: Two Island!",
-          "condition": "has_item:TRI_PASS"
-        },
-        {
-          "text": "Seagallop to Three Island",
-          "door": "harbor",
-          "target_area": "THREE_ISLAND",
-          "message": "The Seagallop Ferry speeds across the waves. Next stop: Three Island!",
-          "condition": "has_item:TRI_PASS"
-        },
-        {
-          "text": "Seagallop to Four Island",
-          "door": "harbor",
-          "target_area": "FOUR_ISLAND",
-          "message": "The Seagallop Ferry speeds across the waves. Next stop: Four Island!",
-          "condition": "has_item:RAINBOW_PASS"
-        },
-        {
-          "text": "Seagallop to Five Island",
-          "door": "harbor",
-          "target_area": "FIVE_ISLAND",
-          "message": "The Seagallop Ferry speeds across the waves. Next stop: Five Island!",
-          "condition": "has_item:RAINBOW_PASS"
-        },
-        {
-          "text": "Seagallop to Six Island",
-          "door": "harbor",
-          "target_area": "SIX_ISLAND",
-          "message": "The Seagallop Ferry speeds across the waves. Next stop: Six Island!",
-          "condition": "has_item:RAINBOW_PASS"
-        },
-        {
-          "text": "Seagallop to Faraway Island",
-          "door": "harbor",
-          "target_area": "FARAWAY_ISLAND",
-          "message": "The Seagallop Ferry speeds across the waves. Next stop: Faraway Island!",
-          "condition": "has_item:OLD_SEA_MAP"
-        },
-        {"text": "Canyon Entrance", "target_area": "CANYON_ENTRANCE"}
-      ],
-      "next_area": "SEVAULT_CANYON",
-      "gym": {
-        "trainers": [
-          {
-            "name": "Expert Rolf",
-            "class": "EXPERT",
-            "sprite": "veteran.png",
-            "team": [
-              57,
-              68,
-              107
-            ],
-            "levels": [
-              57,
-              58,
-              59
-            ],
-            "rewards": {
-              "balls": 5
-            },
-            "dialogue": {
-              "intro": [
-                "Floor 1! Can you climb the whole Tower?"
-              ]
-            }
-          },
-          {
-            "name": "Black Belt Koji",
-            "class": "BLACK_BELT",
-            "sprite": "blackbelt.png",
-            "team": [
-              106,
-              237,
-              214
-            ],
-            "levels": [
-              58,
-              59,
-              60
-            ],
-            "rewards": {
-              "balls": 5
-            },
-            "dialogue": {
-              "intro": [
-                "Floor 2! My fists are ready!"
-              ]
-            }
-          },
-          {
-            "name": "Ace Trainer Vera",
-            "class": "ACE_TRAINER",
-            "sprite": "acetrainer_f.png",
-            "team": [
-              36,
-              199,
-              230
-            ],
-            "levels": [
-              59,
-              60,
-              61
-            ],
-            "rewards": {
-              "balls": 5
-            },
-            "dialogue": {
-              "intro": [
-                "Floor 3! Almost at the top!"
-              ]
-            }
-          }
-        ],
-        "leader": {
-          "name": "Tower Master",
-          "class": "TOWER_MASTER",
-          "sprite": "master.png",
-          "is_boss_battle": true,
-          "team": [
-            248,
-            227,
-            232,
-            197,
-            229,
-            149
-          ],
-          "levels": [
-            62,
-            61,
-            61,
-            61,
-            61,
-            63
-          ],
-          "rewards": {
-            "balls": 20,
-            "RARE_CANDY": 5
-          },
-          "victory_flag": "trainer_tower_cleared",
-          "dialogue": {
-            "intro": [
-              "The top floor! I am the Tower Master. Show me your best!"
-            ],
-            "player_won": [
-              "You've conquered the Trainer Tower! Climb again any time."
-            ],
-            "player_lost": [
-              "The Tower stands. Come back and try again!"
-            ]
-          }
-        },
-        "requirements": {
-          "badges": 0
-        }
-      }
-    },
+    "SEVEN_ISLAND": {"area_type": "town", "can_fish": true, "route_name": "Seven Island", "region": "KANTO", "level": 58, "subregion": "SEVII", "has_gym": false, "explore_options": [{"text": "Heal", "action": "HEAL"}, {"text": "Shop", "action": "SHOP"}, {"text": "Trainer Tower", "action": "TRAVEL", "target_area": "TRAINER_TOWER", "door": "gym"}, {"text": "Swords Dance Tutor", "action": "EVENT", "color": "GOLD", "event": {"stages": [{"flag": "frlg_tutor_swords_dance", "lines": ["Trainee: Hardly anyone comes out this far. Train here and you're sure to get stronger!", "Trainee: Here, let me teach one of your Pokémon Swords Dance. Come back any time!"], "tutor": {"move": "SWORDS-DANCE", "like": "SWORDS-DANCE"}, "fail": ["Trainee: Hmm, none of your Pokémon can learn Swords Dance."]}, {"requires": ["frlg_tutor_swords_dance"], "tutor": {"move": "SWORDS-DANCE", "like": "SWORDS-DANCE"}, "tutor_repeat": true, "done": ["Trainee: Swords Dance! Sharpen up and strike hard!"]}]}}, {"text": "Psychic Dario", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Dario: I sense a strong will in you. Show me!"], "flag": "beat_dario_seven", "done": ["Dario: The Tower calls to the strong. Go on."], "battle": {"rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [203], "levels": [56], "team_moves": [["CRUNCH", "PSYBEAM", "ODOR-SLEUTH", "AGILITY"]], "unlock": "sevii_warehouse_cleared"}]}, "name": "Psychic Dario", "class": "PSYCHIC", "sprite": "fr_psychic_m.png", "team": [203], "levels": [52], "rewards": {"balls": 3}, "dialogue": {"player_won": ["Dario: My mind was clear, yet I lost..."]}}}}, {"text": "Psychic Rodette", "action": "EVENT", "color": "GOLD", "event": {"lines": ["Rodette: The future I foresaw has you battling me!"], "flag": "beat_rodette_seven", "done": ["Rodette: Good luck in the Trainer Tower."], "battle": {"rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [177, 97, 97], "levels": [53, 53, 53], "team_moves": [["PSYCHIC", "CONFUSE-RAY", "WISH", "FUTURE-SIGHT"], ["PSYCHIC", "DISABLE", "PSYCH-UP", "FUTURE-SIGHT"], ["PSYCHIC", "HYPNOSIS", "PSYCH-UP", "FUTURE-SIGHT"]], "unlock": "sevii_warehouse_cleared"}]}, "name": "Psychic Rodette", "class": "PSYCHIC", "sprite": "fr_psychic_f.png", "team": [177, 96, 97], "levels": [48, 48, 50], "rewards": {"balls": 3}, "dialogue": {"player_won": ["Rodette: I didn't foresee that ending!"]}}}}], "travel_options": [{"text": "Seagallop to Vermilion City", "door": "harbor", "long_ride": true, "target_area": "VERMILLION_CITY", "message": "The Seagallop Ferry speeds back to Vermilion City."}, {"text": "Seagallop to One Island", "door": "harbor", "target_area": "ONE_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: One Island!", "condition": "has_item:TRI_PASS"}, {"text": "Seagallop to Two Island", "door": "harbor", "target_area": "TWO_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Two Island!", "condition": "has_item:TRI_PASS"}, {"text": "Seagallop to Three Island", "door": "harbor", "target_area": "THREE_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Three Island!", "condition": "has_item:TRI_PASS"}, {"text": "Seagallop to Four Island", "door": "harbor", "target_area": "FOUR_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Four Island!", "condition": "has_item:RAINBOW_PASS"}, {"text": "Seagallop to Five Island", "door": "harbor", "target_area": "FIVE_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Five Island!", "condition": "has_item:RAINBOW_PASS"}, {"text": "Seagallop to Six Island", "door": "harbor", "target_area": "SIX_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Six Island!", "condition": "has_item:RAINBOW_PASS"}, {"text": "Seagallop to Faraway Island", "door": "harbor", "target_area": "FARAWAY_ISLAND", "message": "The Seagallop Ferry speeds across the waves. Next stop: Faraway Island!", "condition": "has_item:OLD_SEA_MAP"}, {"text": "Canyon Entrance", "target_area": "CANYON_ENTRANCE"}], "next_area": "SEVAULT_CANYON"},
+    "TRAINER_TOWER": {"area_type": "dungeon", "route_name": "Trainer Tower", "region": "KANTO", "subregion": "SEVII", "level": 60, "pool": "NO_WILD_INDOORS_PERCENTAGES", "route_menu": [{"text": "NURSE", "action": "EVENT", "event": {"lines": ["Nurse: I'll restore your Pokemon to full health.", "Your Pokemon are all healed."], "heal": true}}, {"text": "CLERK", "action": "EVENT", "event": {"lines": ["Clerk: Welcome! How may I help you?"], "stock": ["ULTRA_BALL", "GREAT_BALL", "FULL_RESTORE", "MAX_POTION", "HYPER_POTION", "REVIVE", "FULL_HEAL", "ESCAPE_ROPE", "MAX_REPEL"]}}, {"text": "RECEPTIONIST", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "desk"}}, {"text": "OWNER", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "owner"}}, {"text": "TOWER LIFT", "action": "EVENT", "not_on_map": true, "event": {"cancel": ["The lift stays where it is."], "elevator": {"area": "TRAINER_TOWER", "ride": ["The lift hums..."], "floors": [["Lobby", 0, [17, 11]]]}}}, {"text": "Albert", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Albert"}, "condition": "tt_here_Albert"}, {"text": "Alberto", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Alberto"}, "condition": "tt_here_Alberto"}, {"text": "Alek", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Alek"}, "condition": "tt_here_Alek"}, {"text": "Allyson", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Allyson"}, "condition": "tt_here_Allyson"}, {"text": "Anne", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Anne"}, "condition": "tt_here_Anne"}, {"text": "Axe", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Axe"}, "condition": "tt_here_Axe"}, {"text": "Ben", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Ben"}, "condition": "tt_here_Ben"}, {"text": "Braden", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Braden"}, "condition": "tt_here_Braden"}, {"text": "Brandon", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Brandon"}, "condition": "tt_here_Brandon"}, {"text": "Brennan", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Brennan"}, "condition": "tt_here_Brennan"}, {"text": "Camden", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Camden"}, "condition": "tt_here_Camden"}, {"text": "Camryn", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Camryn"}, "condition": "tt_here_Camryn"}, {"text": "Charlotte", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Charlotte"}, "condition": "tt_here_Charlotte"}, {"text": "Chelsea", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Chelsea"}, "condition": "tt_here_Chelsea"}, {"text": "Cole", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Cole"}, "condition": "tt_here_Cole"}, {"text": "Emanuel", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Emanuel"}, "condition": "tt_here_Emanuel"}, {"text": "Emy", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Emy"}, "condition": "tt_here_Emy"}, {"text": "Ernest", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Ernest"}, "condition": "tt_here_Ernest"}, {"text": "Flint", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Flint"}, "condition": "tt_here_Flint"}, {"text": "Gabriel", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Gabriel"}, "condition": "tt_here_Gabriel"}, {"text": "Geb", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Geb"}, "condition": "tt_here_Geb"}, {"text": "Haley", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Haley"}, "condition": "tt_here_Haley"}, {"text": "Isac", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Isac"}, "condition": "tt_here_Isac"}, {"text": "Jac", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Jac"}, "condition": "tt_here_Jac"}, {"text": "Jarrett", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Jarrett"}, "condition": "tt_here_Jarrett"}, {"text": "Jen", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Jen"}, "condition": "tt_here_Jen"}, {"text": "Jo", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Jo"}, "condition": "tt_here_Jo"}, {"text": "Joey", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Joey"}, "condition": "tt_here_Joey"}, {"text": "Jordy", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Jordy"}, "condition": "tt_here_Jordy"}, {"text": "Jos", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Jos"}, "condition": "tt_here_Jos"}, {"text": "Kaden", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Kaden"}, "condition": "tt_here_Kaden"}, {"text": "Kat", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Kat"}, "condition": "tt_here_Kat"}, {"text": "Kathleen", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Kathleen"}, "condition": "tt_here_Kathleen"}, {"text": "Kipp", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Kipp"}, "condition": "tt_here_Kipp"}, {"text": "Kira", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Kira"}, "condition": "tt_here_Kira"}, {"text": "Lily", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Lily"}, "condition": "tt_here_Lily"}, {"text": "Lorenzo", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Lorenzo"}, "condition": "tt_here_Lorenzo"}, {"text": "Mag", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Mag"}, "condition": "tt_here_Mag"}, {"text": "Maura", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Maura"}, "condition": "tt_here_Maura"}, {"text": "Megan", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Megan"}, "condition": "tt_here_Megan"}, {"text": "Mikaela", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Mikaela"}, "condition": "tt_here_Mikaela"}, {"text": "Mike", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Mike"}, "condition": "tt_here_Mike"}, {"text": "Natalia", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Natalia"}, "condition": "tt_here_Natalia"}, {"text": "Nicolas", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Nicolas"}, "condition": "tt_here_Nicolas"}, {"text": "Owen", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Owen"}, "condition": "tt_here_Owen"}, {"text": "Priscilla", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Priscilla"}, "condition": "tt_here_Priscilla"}, {"text": "Rebecca", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Rebecca"}, "condition": "tt_here_Rebecca"}, {"text": "Ren", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Ren"}, "condition": "tt_here_Ren"}, {"text": "Rene", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Rene"}, "condition": "tt_here_Rene"}, {"text": "Ric", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Ric"}, "condition": "tt_here_Ric"}, {"text": "Shania", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Shania"}, "condition": "tt_here_Shania"}, {"text": "Trenton", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Trenton"}, "condition": "tt_here_Trenton"}, {"text": "Zackery", "action": "EVENT", "event": {"world": "trainer_tower", "tt": "trainer", "name": "Zackery"}, "condition": "tt_here_Zackery"}, {"text": "SEVEN ISLAND", "action": "EXIT", "target": "SEVEN_ISLAND", "condition": "can_exit", "color": "RED"}], "trainer_pool": [], "next_area": "SEVEN_ISLAND"},
     "SEVAULT_CANYON": {
       "area_type": "wild_route",
       "route_name": "Sevault Canyon",
@@ -1950,13 +1724,13 @@
       "battle_type": "mountain",
       "min_rounds": 2,
       "trainer_pool": [
-        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [241, 128], "levels": [57, 57], "team_moves": [["BODY-SLAM", "MILK-DRINK", "GROWL", "DEFENSE-CURL"], ["TAKE-DOWN", "SCARY-FACE", "PURSUIT", "SWAGGER"]], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "acetrainer_m.png", "name": "Lex & Nya", "class": "COOL_COUPLE", "battle_options": {"double": true}, "team": [241, 128], "levels": [52, 52], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [114, 103, 103], "levels": [53, 54, 55], "team_moves": [["SLAM", "MEGA-DRAIN", "BIND", "INGRAIN"], ["CONFUSION", "EGG-BOMB", "STUN-SPORE", "REFLECT"], ["CONFUSION", "EGG-BOMB", "SLEEP-POWDER", "STOMP"]], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "ranger_m.png", "name": "Jackson", "class": "POKEMON_RANGER", "team": [114, 102, 103], "levels": [49, 49, 49], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [113], "levels": [56], "team_moves": [["EGG-BOMB", "DEFENSE-CURL", "MINIMIZE", "SOFT-BOILED"]], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "ranger_m.png", "name": "Katelyn", "class": "POKEMON_RANGER", "team": [113], "levels": [52], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [28, 108, 217], "levels": [52, 52, 55], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "blackbelt.png", "name": "Evan", "class": "TAMER", "team": [28, 108, 217], "levels": [48, 48, 49], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [57, 237, 68], "levels": [54, 54, 54], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "battle_girl.png", "name": "Cyndy", "class": "CRUSH_GIRL", "team": [57, 237, 67], "levels": [48, 48, 48], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [112, 80, 115, 68, 217], "levels": [52, 54, 52, 52, 55], "team_moves": [["EARTHQUAKE", "HORN-DRILL", "ROCK-BLAST", "SCARY-FACE"], ["PSYCHIC", "HEADBUTT", "AMNESIA", "DISABLE"], ["DIZZY-PUNCH", "BITE", "ENDURE", "REVERSAL"], ["CROSS-CHOP", "VITAL-THROW", "REVENGE", "SEISMIC-TOSS"], ["SLASH", "SNORE", "REST"]], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "acetrainer_m.png", "name": "Leroy", "class": "COOLTRAINER", "team": [112, 80, 115, 67, 217], "levels": [47, 48, 47, 48, 50], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [53, 87, 38, 78, 203], "levels": [53, 53, 54, 54, 56], "team_moves": [["SLASH", "SCREECH", "BITE"], ["ICE-BEAM", "TAKE-DOWN", "ICY-WIND", "SHEER-COLD"], ["FLAMETHROWER", "CONFUSE-RAY", "WILL-O-WISP", "GRUDGE"], ["BOUNCE", "AGILITY", "FIRE-SPIN", "TAKE-DOWN"], ["CRUNCH", "PSYBEAM", "STOMP", "ODOR-SLEUTH"]], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "acetrainer_f.png", "name": "Michelle", "class": "COOLTRAINER", "team": [53, 87, 38, 78, 203], "levels": [47, 47, 48, 48, 50], "rewards": { "balls": 3 } }
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [241, 128], "levels": [57, 57], "team_moves": [["BODY-SLAM", "MILK-DRINK", "GROWL", "DEFENSE-CURL"], ["TAKE-DOWN", "SCARY-FACE", "PURSUIT", "SWAGGER"]], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "fr_cool_couple.png", "name": "Lex & Nya", "class": "COOL_COUPLE", "battle_options": {"double": true}, "team": [241, 128], "levels": [52, 52], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [114, 103, 103], "levels": [53, 54, 55], "team_moves": [["SLAM", "MEGA-DRAIN", "BIND", "INGRAIN"], ["CONFUSION", "EGG-BOMB", "STUN-SPORE", "REFLECT"], ["CONFUSION", "EGG-BOMB", "SLEEP-POWDER", "STOMP"]], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "fr_ranger_m.png", "name": "Jackson", "class": "POKEMON_RANGER", "team": [114, 102, 103], "levels": [49, 49, 49], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [113], "levels": [56], "team_moves": [["EGG-BOMB", "DEFENSE-CURL", "MINIMIZE", "SOFT-BOILED"]], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "fr_ranger_m.png", "name": "Katelyn", "class": "POKEMON_RANGER", "team": [113], "levels": [52], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [28, 108, 217], "levels": [52, 52, 55], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "fr_tamer.png", "name": "Evan", "class": "TAMER", "team": [28, 108, 217], "levels": [48, 48, 49], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [57, 237, 68], "levels": [54, 54, 54], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "fr_crush_girl.png", "name": "Cyndy", "class": "CRUSH_GIRL", "team": [57, 237, 67], "levels": [48, 48, 48], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [112, 80, 115, 68, 217], "levels": [52, 54, 52, 52, 55], "team_moves": [["EARTHQUAKE", "HORN-DRILL", "ROCK-BLAST", "SCARY-FACE"], ["PSYCHIC", "HEADBUTT", "AMNESIA", "DISABLE"], ["DIZZY-PUNCH", "BITE", "ENDURE", "REVERSAL"], ["CROSS-CHOP", "VITAL-THROW", "REVENGE", "SEISMIC-TOSS"], ["SLASH", "SNORE", "REST"]], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "fr_cooltrainer_m.png", "name": "Leroy", "class": "COOLTRAINER", "team": [112, 80, 115, 67, 217], "levels": [47, 48, 47, 48, 50], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [null, null, null, null, {"team": [53, 87, 38, 78, 203], "levels": [53, 53, 54, 54, 56], "team_moves": [["SLASH", "SCREECH", "BITE"], ["ICE-BEAM", "TAKE-DOWN", "ICY-WIND", "SHEER-COLD"], ["FLAMETHROWER", "CONFUSE-RAY", "WILL-O-WISP", "GRUDGE"], ["BOUNCE", "AGILITY", "FIRE-SPIN", "TAKE-DOWN"], ["CRUNCH", "PSYBEAM", "STOMP", "ODOR-SLEUTH"]], "unlock": "sevii_warehouse_cleared"}]}, "sprite": "fr_cooltrainer_f.png", "name": "Michelle", "class": "COOLTRAINER", "team": [53, 87, 38, 78, 203], "levels": [47, 47, 48, 48, 50], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
@@ -2004,10 +1778,10 @@
       "battle_type": "cave", "surf_pool_percentages": "TANOBY_RUINS_SURF_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        { "rematch": {"source": "FireRed", "tiers": [{"team": [105, 55], "levels": [49, 49]}]}, "sprite": "gentleman.png", "name": "Clifford", "class": "GENTLEMAN", "team": [105, 55], "levels": [49, 49], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [{"team": [95], "levels": [50]}]}, "sprite": "ruinmaniac.png", "name": "Brandon", "class": "RUIN_MANIAC", "team": [95], "levels": [50], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [{"team": [235], "levels": [50], "team_moves": [["FAKE-OUT", "EXTREME-SPEED", "PROTECT", "QUICK-ATTACK"]]}]}, "sprite": "lass.png", "name": "Edna", "class": "PAINTER", "team": [235], "levels": [50], "rewards": { "balls": 3 } },
-        { "rematch": {"source": "FireRed", "tiers": [{"team": [74, 75, 75], "levels": [48, 48, 48], "team_moves": [["EARTHQUAKE", "ROCK-BLAST", "ROLLOUT", "SELF-DESTRUCT"], ["EARTHQUAKE", "ROCK-BLAST", "ROCK-THROW", "SELF-DESTRUCT"], ["EARTHQUAKE", "ROCK-BLAST", "ROCK-THROW", "SELF-DESTRUCT"]]}]}, "sprite": "ruinmaniac.png", "name": "Benjamin", "class": "RUIN_MANIAC", "team": [74, 75, 75], "levels": [48, 48, 48], "rewards": { "balls": 3 } }
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [105, 55], "levels": [49, 49]}]}, "sprite": "fr_gentleman.png", "name": "Clifford", "class": "GENTLEMAN", "team": [105, 55], "levels": [49, 49], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [95], "levels": [50]}]}, "sprite": "fr_ruin_maniac.png", "name": "Brandon", "class": "RUIN_MANIAC", "team": [95], "levels": [50], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [235], "levels": [50], "team_moves": [["FAKE-OUT", "EXTREME-SPEED", "PROTECT", "QUICK-ATTACK"]]}]}, "sprite": "fr_painter.png", "name": "Edna", "class": "PAINTER", "team": [235], "levels": [50], "rewards": { "balls": 3 } },
+        { "rematch": {"source": "FireRed", "tiers": [{"team": [74, 75, 75], "levels": [48, 48, 48], "team_moves": [["EARTHQUAKE", "ROCK-BLAST", "ROLLOUT", "SELF-DESTRUCT"], ["EARTHQUAKE", "ROCK-BLAST", "ROCK-THROW", "SELF-DESTRUCT"], ["EARTHQUAKE", "ROCK-BLAST", "ROCK-THROW", "SELF-DESTRUCT"]]}]}, "sprite": "fr_ruin_maniac.png", "name": "Benjamin", "class": "RUIN_MANIAC", "team": [74, 75, 75], "levels": [48, 48, 48], "rewards": { "balls": 3 } }
       ],
       "route_menu": [
         {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": ["has_balls", "tanoby_chambers_open"], "color": "BLUE"},
@@ -2066,7 +1840,7 @@
       }
     },
         "THREE_ISLE_PORT": {"area_type": "wild_route", "route_name": "Three Isle Port", "region": "KANTO", "subregion": "SEVII", "level": 44, "battle_type": "field", "wild_pool_percentages": "THREE_ISLE_PORT_PERCENTAGES", "min_rounds": 1, "trainer_pool": [], "route_menu": [{"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "has_balls", "color": "GREEN"}, {"text": "Three Island", "action": "EXIT", "target_area": "THREE_ISLAND", "condition": "can_exit", "color": "RED"}, {"text": "PROSPECTOR", "action": "EVENT", "event": {"stages": [{"flag": "got_nugget_prospector", "gift_item": {"NUGGET": 1}, "lines": ["Prospector: Howdy! I'm digging for gold in this tunnel.", "Prospector: Look what I found! You have it, I've got plenty."]}, {"lines": ["Prospector: There's more gold in these walls, I just know it!"]}]}}], "next_area": "THREE_ISLAND"},
-        "NAVEL_ROCK": {"border": true, "fly_island": true, "fly_group": "Faraway Islands", "boat_home": {"dock": "ONE_ISLAND", "HOENN": "LILYCOVE_CITY"}, "area_type": "dungeon", "route_name": "Navel Rock", "region": "KANTO", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "SEEK LUGIA", "action": "BOSS", "color": "GOLD", "flag_condition": "not navel_rock_lugia", "boss": {"id": 249, "level": 70, "name": "Lugia", "victory_flag": "navel_rock_lugia", "lines": ["A powerful presence fills the air... Lugia appears!"]}, "condition": []}, {"text": "SEEK HO-OH", "action": "BOSS", "color": "GOLD", "flag_condition": "not navel_rock_ho_oh", "boss": {"id": 250, "level": 70, "name": "Ho-Oh", "victory_flag": "navel_rock_ho_oh", "lines": ["A powerful presence fills the air... Ho-Oh appears!"]}, "condition": []}, {"text": "SEAGALLOP TO ONE ISLAND", "action": "EXIT", "target": "ONE_ISLAND", "condition": "can_exit", "color": "RED"}], "next_area": "ONE_ISLAND", "subregion": "SEVII", "level": 60},
+        "NAVEL_ROCK": {"border": true, "fly_island": true, "fly_group": "Faraway Islands", "boat_home": {"dock": "ONE_ISLAND", "HOENN": "LILYCOVE_CITY"}, "area_type": "dungeon", "route_name": "Navel Rock", "region": "KANTO", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "SEEK LUGIA", "action": "BOSS", "color": "GOLD", "flag_condition": "not navel_rock_lugia", "boss": {"id": 249, "level": 70, "name": "Lugia", "victory_flag": "navel_rock_lugia", "lines": ["A powerful presence fills the air... Lugia appears!"]}, "condition": []}, {"text": "SEEK HO-OH", "action": "BOSS", "color": "GOLD", "flag_condition": "not navel_rock_ho_oh", "boss": {"id": 250, "level": 70, "name": "Ho-Oh", "victory_flag": "navel_rock_ho_oh", "lines": ["A powerful presence fills the air... Ho-Oh appears!"]}, "condition": []}, {"text": "SEAGALLOP TO ONE ISLAND", "action": "EXIT", "target": "ONE_ISLAND", "condition": "can_exit", "color": "RED"}, {"text": "SAIL HOME", "action": "EVENT", "event": {"stages": [{"requires": ["playing_region:HOENN"], "lines": ["Sailor: All aboard! Back to Lilycove City."], "travel": "LILYCOVE_CITY"}, {"lines": ["Sailor: All aboard! Back to One Island."], "travel": "ONE_ISLAND"}]}}], "next_area": "ONE_ISLAND", "subregion": "SEVII", "level": 60},
         "BIRTH_ISLAND": {"border": true, "fly_island": true, "fly_group": "Faraway Islands", "boat_home": {"dock": "ONE_ISLAND", "HOENN": "LILYCOVE_CITY"}, "area_type": "dungeon", "route_name": "Birth Island", "region": "KANTO", "battle_type": "cave", "min_rounds": 0, "trainer_pool": [], "route_menu": [{"text": "SEEK DEOXYS", "action": "BOSS", "color": "GOLD", "flag_condition": "not birth_island_deoxys", "boss": {"id": 386, "level": 30, "name": "Deoxys", "victory_flag": "birth_island_deoxys", "lines": ["A powerful presence fills the air... Deoxys appears!"]}, "condition": []}, {"text": "SEAGALLOP TO ONE ISLAND", "action": "EXIT", "target": "ONE_ISLAND", "condition": "can_exit", "color": "RED"}, {"text": "SAIL HOME", "action": "EVENT", "event": {"stages": [{"requires": ["playing_region:HOENN"], "lines": ["Sailor: All aboard! Back to Lilycove City."], "travel": "LILYCOVE_CITY"}, {"lines": ["Sailor: All aboard! Back to One Island."], "travel": "ONE_ISLAND"}]}}], "next_area": "ONE_ISLAND", "subregion": "SEVII", "level": 60}
     },
   "JOURNAL_MISSIONS": [
@@ -2242,9 +2016,9 @@
   "SEVII_FIVE_ISLE_MEADOW_PERCENTAGES": {"161": 30, "16": 20, "17": 15, "187": 15, "52": 10, "53": 5, "54": 3, "79": 2},
   "SEVII_WATER_LABYRINTH_PERCENTAGES": {"72": 65, "187": 30, "73": 5},
   "SEVII_LOST_CAVE_PERCENTAGES": {"93": 30, "92": 23, "41": 20, "42": 17, "198": 5, "200": 5},
-  "SEVII_PATTERN_BUSH_PERCENTAGES": {"167": 30, "14": 20, "214": 20, "10": 10, "13": 10, "11": 5, "165": 5},
+  "SEVII_PATTERN_BUSH_PERCENTAGES": {"14": 20, "214": 20, "167": 18, "165": 17, "10": 10, "13": 10, "11": 5},
   "SEVII_RUIN_VALLEY_PERCENTAGES": {"177": 25, "21": 20, "22": 10, "52": 10, "193": 10, "53": 5, "183": 5, "194": 5, "202": 5, "54": 3, "79": 2},
-  "SEVII_SEVAULT_CANYON_PERCENTAGES": {"74": 20, "231": 20, "22": 10, "52": 10, "104": 10, "105": 10, "53": 5, "95": 5, "227": 5, "246": 5},
+  "SEVII_SEVAULT_CANYON_PERCENTAGES": {"74": 20, "231": 20, "22": 13, "52": 10, "104": 10, "105": 10, "53": 5, "95": 5, "246": 5, "227": 2},
   "SEVII_TANOBY_RUINS_PERCENTAGES": {
     "201": 100
   },
@@ -2321,7 +2095,7 @@
   "SEVEN_ISLAND_OLD_ROD_PERCENTAGES": {"129": 100},
   "SEVEN_ISLAND_GOOD_ROD_PERCENTAGES": {"116": 80, "129": 20},
   "SEVEN_ISLAND_SUPER_ROD_PERCENTAGES": {"116": 40, "211": 40, "130": 15, "117": 4, "54": 1},
-  "TANOBY_RUINS_SURF_PERCENTAGES": {"72": 90, "73": 5, "226": 5},
+  "TANOBY_RUINS_SURF_PERCENTAGES": {"72": 93, "73": 5, "226": 2},
   "TANOBY_RUINS_OLD_ROD_PERCENTAGES": {"129": 100},
   "TANOBY_RUINS_GOOD_ROD_PERCENTAGES": {"98": 40, "116": 40, "129": 20},
   "TANOBY_RUINS_SUPER_ROD_PERCENTAGES": {"98": 20, "211": 20, "223": 20, "116": 19, "130": 15, "99": 2, "117": 2, "54": 1, "79": 1}
