@@ -76,6 +76,69 @@
     ]
   },
   "figures": {
+    "HOENN_ROUTE_109:Mr. Briney": {
+      "sheet": "em_21.png"
+    },
+    "HOENN_ROUTE_110:Undecided camper": {
+      "sheet": "em_31.png"
+    },
+    "HOENN_ROUTE_110:Trick rider": {
+      "sheet": "em_56.png"
+    },
+    "HOENN_ROUTE_110:Strolling lady": {
+      "sheet": "em_22.png"
+    },
+    "HOENN_ROUTE_110:Bike fan": {
+      "sheet": "em_56.png"
+    },
+    "HOENN_ROUTE_110:Old man": {
+      "sheet": "em_21.png"
+    },
+    "HOENN_ROUTE_110:Long-haired rider": {
+      "sheet": "em_57.png"
+    },
+    "HOENN_ROUTE_110:Boy": {
+      "sheet": "em_13.png"
+    },
+    "HOENN_ROUTE_110:Cycling Road judge": {
+      "sheet": "em_56.png"
+    },
+    "HOENN_ROUTE_110:Rowdy grunt": {
+      "sheet": "@grunt"
+    },
+    "HOENN_ROUTE_110:Silent grunt": {
+      "sheet": "@grunt"
+    },
+    "HOENN_SPACE_CENTER:Launch scientist": {
+      "sheet": "em_46.png"
+    },
+    "HOENN_SPACE_CENTER:Launch engineer": {
+      "sheet": "em_46.png"
+    },
+    "HOENN_SPACE_CENTER:Fuel thief grunt": {
+      "sheet": "@grunt"
+    },
+    "HOENN_MT_CHIMNEY:Worried grunt": {
+      "sheet": "@other_grunt"
+    },
+    "HOENN_ROUTE_109:Mr. Sea": {
+      "sheet": "em_25.png"
+    },
+    "HOENN_ROUTE_110:Cycling Road attendant": {
+      "sheet": "em_83.png"
+    },
+    "HOENN_ROUTE_110:Cycling Road guide": {
+      "sheet": "em_83.png"
+    },
+    "HOENN_ROUTE_121:Safari attendant": {
+      "sheet": "em_31.png"
+    },
+    "HOENN_ROUTE_121:Safari clerk": {
+      "sheet": "em_31.png"
+    },
+    "HOENN_ROUTE_121:Safari guide": {
+      "sheet": "em_32.png"
+    },
     "AGATE_VILLAGE:Agate Gym": {
       "sheet": "orre_trainer_leader_erika.png"
     },
