@@ -80,7 +80,7 @@
         "johto_elm_errand": ["Take this Egg back to Professor Elm immediately!", "That egg is a true mystery of the world!"],
         "johto_elm_congrats": ["Professor Elm: Incredible! You're the Kanto Champion!", "Oak told me all about your math-powered battles.", "I've updated your Pokédex to include Johto species.", "And I've added a Johto page to your Badge Case!", "There is a whole new world of Pokémon to discover!", "You received the NATIONAL DEX and JOHTO BADGE CASE!"],
         "kurt_intro": ["Kurt: Team Rocket has taken over the Slowpoke Well!", "They're cutting off tails to sell them for profit!", "I'm going down there to stop them myself!", "Wait... my back! Ouch ouch ouch...", "Young trainer, please! Go to the Well and stop those crooks!"],
-        "kurt_reward": ["Kurt: You did it! The Slowpoke are safe and their tails are growing back.", "Team Rocket won't be bothering Azalea Town for a while.", "Please, take this special Lure Ball I made from White Apricorns.", "You received 5 LURE BALLS!"],
+        "kurt_reward": ["Kurt: You did it! The Slowpoke are safe and their tails are growing back.", "Team Rocket won't be bothering Azalea Town for a while."],
         "bill_johto_intro": ["Hi! I'm Bill!", "I was just checking on the PC system here in Ecruteak.", "You look like a promising math trainer.", "If you're ever in Goldenrod, come visit my house!", "I have some rare Eevee eggs I'm researching."],
         "lance_mahogany_intro": ["Lance: I've tracked the source of the high-frequency signal to this shop.", "Team Rocket is hiding a massive base beneath Mahogany Town.", "They are forcing Pokémon to evolve using artificial radio waves!", "I will go ahead and scout. Follow me when you are ready!"],
         "lance_mahogany_cleared": ["Lance: Excellent work. Team Rocket's radio signal has been cut off.", "The Dragon's Den in Blackthorn is your next destination."],
@@ -90,7 +90,7 @@
         "amphy_sick": ["Amphy looks very weak...", "Its light is barely flickering."],
         "amphy_cured": ["Amphy swallowed the SECRET POTION!", "The light in its tail begins to glow brightly!", "Amphy is cured!"],
         "pharmacist_reward": ["Pharmacist: You came from Olivine for Jasmine's Amphy?", "I have just the thing. It's a very strong medicine!", "You received the SECRET POTION!"],
-        "euskine_intro": ["Euskine: I'm searching for the legendary Suicune.", "It is said to be the embodiment of the North Wind."],
+        "euskine_intro": ["Eusine: I'm searching for the legendary Suicune.", "It is said to be the embodiment of the North Wind."],
         "eusine_suicune_defeated": ["You tell Eusine about your math-powered victory over Suicune.", "Eusine: What?! You actually cornered Suicune in battle?", "I've spent years chasing its shadow, and you... you've already faced it with your math!", "I'm jealous, but also impressed. Suicune chooses only the most brilliant minds.", "I'll continue my search. We will meet again!"],
         "dragon_elder_intro": ["Elder: You must answer the test of the Dragon Den!", "Do you treat your Pokémon with love? Or as tools for math?"],
         "dragon_elder_pass": ["Elder: You have proven your compassion and math skill.", "The dragon master Clair has much to learn from you."],
@@ -498,7 +498,7 @@
             "next_area": "JOHTO_ROUTE_29",
             "prof_elm_dialogue": "profile_elm",
             "silver_mom_dialogue": "silver_mom",
-            "old_on_enter_event": {"type": "trainer_battle", "trainer": {"name": "{rival_name}", "class": "PKMN_TRAINER", "sprite": "silver.png", "team": [155], "team_choice": {"152": [155], "155": [158], "158": [152]}, "rewards": {"balls": 5}, "victory_flag": "defeated_rival_newbark_ambush"}, "condition": "has_zephyr_badge", "flag_check": "defeated_rival_newbark_ambush"},
+            
             "trainer_pool": [],
             "surf_pool_percentages": "JOHTO_NEW_BARK_TOWN_SURF_PERCENTAGES",
             "can_fish": true
@@ -567,7 +567,7 @@
 
             "has_gym": true,
 
-            "gym": {"requirements": {"flag": "defeated_elder_li", "fail_text": "The Gym Leader, Falkner, is currently mediating at the top of the Sprout Tower. You must defeat Elder Li to prove your worth first!"}, "route_menu": [{"text": "EXIT TO HUB", "action": "EXIT", "target": "VIOLET_CITY", "condition": "can_exit", "color": "RED"}], "trainers": [{"name": "Bird Keeper Abe", "class": "BIRD_KEEPER", "sprite": "ss_bird_keeper.png", "is_boss_battle": true, "team": [21], "rewards": {"balls": 2}}, {"name": "Bird Keeper Rod", "class": "BIRD_KEEPER", "sprite": "ss_bird_keeper.png", "is_boss_battle": true, "team": [16, 16], "rewards": {"balls": 2}}], "leader": {"name": "Falkner", "class": "GYM_LEADER", "is_boss_battle": true, "sprite": "falkner.png", "team": [16, 17], "levels": [9, 13], "badge_reward": "ZEPHYR", "dialogue": {"intro": ["Welcome to the Violet City Gym! I'm Falkner, the Flying-type Gym Leader."], "player_won": ["We failed to take flight"], "player_lost": ["Don't worry, you'll get it next time."]}, "rewards": {"balls": 5, "JOHTO_MAP": 1, "TM268": 1}, "movesets": {"16": ["TACKLE", "SAND-ATTACK"], "17": ["TACKLE", "ROOST", "GUST"]}, "rematch": {"team": [398, 164, 277, 430, 279, 18], "levels": [50, 52, 52, 54, 48, 56], "movesets": {"398": ["ATTRACT", "BRAVE-BIRD", "CLOSE-COMBAT", "U-TURN"], "164": ["ROOST", "AIR-SLASH", "SHADOW-BALL", "FEATHER-DANCE"], "277": ["FACADE", "PROTECT", "DOUBLE-TEAM", "ENDEAVOR"], "430": ["NIGHT-SLASH", "SUCKER-PUNCH", "THUNDER-WAVE", "DARK-PULSE"], "279": ["SURF", "TAILWIND", "ICE-BEAM", "HIDDEN-POWER"], "18": ["RETURN", "DOUBLE-TEAM", "SWAGGER", "ROOST"]}}}},
+            "gym": {"requirements": {"flag": "defeated_elder_li", "fail_text": "The Gym Leader, Falkner, is currently meditating at the top of the Sprout Tower. You must defeat Elder Li to prove your worth first!"}, "route_menu": [{"text": "EXIT TO HUB", "action": "EXIT", "target": "VIOLET_CITY", "condition": "can_exit", "color": "RED"}], "trainers": [{"name": "Bird Keeper Abe", "class": "BIRD_KEEPER", "sprite": "ss_bird_keeper.png", "is_boss_battle": true, "team": [21], "rewards": {"balls": 2}}, {"name": "Bird Keeper Rod", "class": "BIRD_KEEPER", "sprite": "ss_bird_keeper.png", "is_boss_battle": true, "team": [16, 16], "rewards": {"balls": 2}}], "leader": {"name": "Falkner", "class": "GYM_LEADER", "is_boss_battle": true, "sprite": "falkner.png", "team": [16, 17], "levels": [9, 13], "badge_reward": "ZEPHYR", "dialogue": {"intro": ["Welcome to the Violet City Gym! I'm Falkner, the Flying-type Gym Leader."], "player_won": ["We failed to take flight"], "player_lost": ["Don't worry, you'll get it next time."]}, "rewards": {"balls": 5, "JOHTO_MAP": 1, "TM268": 1}, "movesets": {"16": ["TACKLE", "SAND-ATTACK"], "17": ["TACKLE", "ROOST", "GUST"]}, "rematch": {"team": [398, 164, 277, 430, 279, 18], "levels": [50, 52, 52, 54, 48, 56], "movesets": {"398": ["ATTRACT", "BRAVE-BIRD", "CLOSE-COMBAT", "U-TURN"], "164": ["ROOST", "AIR-SLASH", "SHADOW-BALL", "FEATHER-DANCE"], "277": ["FACADE", "PROTECT", "DOUBLE-TEAM", "ENDEAVOR"], "430": ["NIGHT-SLASH", "SUCKER-PUNCH", "THUNDER-WAVE", "DARK-PULSE"], "279": ["SURF", "TAILWIND", "ICE-BEAM", "HIDDEN-POWER"], "18": ["RETURN", "DOUBLE-TEAM", "SWAGGER", "ROOST"]}}}},
 
             "travel_options": [
 
@@ -1010,7 +1010,7 @@
 
             "has_gym": true,
 
-            "gym": {"requirements": {"flag": "defeated_rival_burned_tower", "fail_text": ["Morty is at the Burned Tower, searching for the legendary Pokemon. Go and find him there first!", "(If your rival beat you there, go back in and battle him again.)"]}, "trainers": [{"name": "Sage Ping", "class": "SAGE", "sprite": "ss_sage.png", "is_boss_battle": true, "team": [92, 92], "rewards": {"balls": 2}}, {"name": "Sage Jeffrey", "class": "SAGE", "sprite": "ss_sage.png", "is_boss_battle": true, "team": [93], "rewards": {"balls": 2}}, {"name": "Medium Georgina", "class": "MEDIUM", "sprite": "ss_medium.png", "is_boss_battle": true, "team": [92, 92, 92, 92, 92], "rewards": {"balls": 2}}, {"name": "Medium Grace", "class": "MEDIUM", "sprite": "ss_medium.png", "is_boss_battle": true, "team": [93, 93], "rewards": {"balls": 2}}, {"name": "Medium Edith", "class": "MEDIUM", "sprite": "ss_medium.png", "is_boss_battle": true, "team": [93], "rewards": {"balls": 2}}, {"name": "Medium Martha", "class": "MEDIUM", "sprite": "ss_medium.png", "is_boss_battle": true, "team": [92, 93, 92], "rewards": {"balls": 2}}], "leader": {"name": "Morty", "class": "GYM_LEADER", "sprite": "morty.png", "team": [92, 93, 93, 94], "levels": [21, 21, 23, 25], "badge_reward": "FOG", "rewards": {"balls": 5, "AMULET_COIN": 1, "TM114": 1}, "is_boss_battle": true, "dialogue": {"intro": ["Welcome to the Ecruteak City Gym! I'm Morty, the Flying-type Gym Leader."], "player_won": ["You're a skilled trainer!"], "player_lost": ["Don't worry, you'll get it next time."]}, "movesets": {"92": ["LICK", "SPITE", "MEAN-LOOK", "CURSE"], "93": ["HYPNOSIS", "DREAM-EATER", "CURSE", "NIGHTMARE"], "94": ["HYPNOSIS", "SHADOW-BALL", "MEAN-LOOK", "SUCKER-PUNCH"]}, "rematch": {"team": [426, 477, 302, 429, 94, 94], "levels": [52, 52, 52, 54, 57, 57], "movesets": {"426": ["DESTINY-BOND", "SUBSTITUTE", "THUNDERBOLT", "SHADOW-BALL"], "477": ["PAIN-SPLIT", "WILL-O-WISP", "SUBSTITUTE", "PAYBACK"], "302": ["SUCKER-PUNCH", "BRICK-BREAK", "ICE-PUNCH", "FAKE-OUT"], "429": ["PERISH-SONG", "MEAN-LOOK", "CONFUSE-RAY", "ASTONISH"], "94": ["SUBSTITUTE", "SHADOW-BALL", "THUNDERBOLT", "DESTINY-BOND"]}}}},
+            "gym": {"requirements": {"flag": "defeated_rival_burned_tower", "fail_text": ["Morty is at the Burned Tower, searching for the legendary Pokemon. Go and find him there first!", "(If your rival beat you there, go back in and battle him again.)"]}, "trainers": [{"name": "Sage Ping", "class": "SAGE", "sprite": "ss_sage.png", "is_boss_battle": true, "team": [92, 92], "rewards": {"balls": 2}}, {"name": "Sage Jeffrey", "class": "SAGE", "sprite": "ss_sage.png", "is_boss_battle": true, "team": [93], "rewards": {"balls": 2}}, {"name": "Medium Georgina", "class": "MEDIUM", "sprite": "ss_medium.png", "is_boss_battle": true, "team": [92, 92, 92, 92, 92], "rewards": {"balls": 2}}, {"name": "Medium Grace", "class": "MEDIUM", "sprite": "ss_medium.png", "is_boss_battle": true, "team": [93, 93], "rewards": {"balls": 2}}, {"name": "Medium Edith", "class": "MEDIUM", "sprite": "ss_medium.png", "is_boss_battle": true, "team": [93], "rewards": {"balls": 2}}, {"name": "Medium Martha", "class": "MEDIUM", "sprite": "ss_medium.png", "is_boss_battle": true, "team": [92, 93, 92], "rewards": {"balls": 2}}], "leader": {"name": "Morty", "class": "GYM_LEADER", "sprite": "morty.png", "team": [92, 93, 93, 94], "levels": [21, 21, 23, 25], "badge_reward": "FOG", "rewards": {"balls": 5, "AMULET_COIN": 1, "TM114": 1}, "is_boss_battle": true, "dialogue": {"intro": ["Welcome to the Ecruteak City Gym! I'm Morty, the Ghost-type Gym Leader."], "player_won": ["You're a skilled trainer!"], "player_lost": ["Don't worry, you'll get it next time."]}, "movesets": {"92": ["LICK", "SPITE", "MEAN-LOOK", "CURSE"], "93": ["HYPNOSIS", "DREAM-EATER", "CURSE", "NIGHTMARE"], "94": ["HYPNOSIS", "SHADOW-BALL", "MEAN-LOOK", "SUCKER-PUNCH"]}, "rematch": {"team": [426, 477, 302, 429, 94, 94], "levels": [52, 52, 52, 54, 57, 57], "movesets": {"426": ["DESTINY-BOND", "SUBSTITUTE", "THUNDERBOLT", "SHADOW-BALL"], "477": ["PAIN-SPLIT", "WILL-O-WISP", "SUBSTITUTE", "PAYBACK"], "302": ["SUCKER-PUNCH", "BRICK-BREAK", "ICE-PUNCH", "FAKE-OUT"], "429": ["PERISH-SONG", "MEAN-LOOK", "CONFUSE-RAY", "ASTONISH"], "94": ["SUBSTITUTE", "SHADOW-BALL", "THUNDERBOLT", "DESTINY-BOND"]}}}},
 
             "travel_options": [
 
@@ -1070,7 +1070,7 @@
 
             "has_gym": true,
 
-            "gym": {"requirements": {"flag": "ampharos_cured", "fail_text": ["Jasmine is at the Lighthouse, caring for the sick Ampharos.", "She won't leave its side until it gets medicine from Cianwood."]}, "trainers": [{"name": "Lass Connie", "class": "LASS", "sprite": "ss_lass.png", "is_boss_battle": true, "team": [180, 54], "rewards": {"balls": 2}}, {"name": "Gentleman Preston", "class": "GENTLEMAN", "sprite": "ss_gentleman.png", "is_boss_battle": true, "team": [179, 180], "rewards": {"balls": 2}}], "leader": {"name": "Jasmine", "class": "GYM_LEADER", "sprite": "jasmine.png", "team": [81, 81, 208], "levels": [30, 30, 35], "badge_reward": "MINERAL", "rewards": {"balls": 5, "RARE_CANDY": 3, "TM265": 1}, "is_boss_battle": true, "dialogue": {"intro": ["Welcome to the Olivine City Gym! I'm Jasmine, the Steel-type Gym Leader."], "player_won": ["You're a skilled trainer!"], "player_lost": ["Don't worry, you'll get it next time."]}, "movesets": {"81": ["THUNDERBOLT", "SONICBOOM", "SUPERSONIC", "THUNDER-WAVE"], "208": ["IRON-TAIL", "ROCK-THROW", "SANDSTORM", "SCREECH"]}, "rematch": {"team": [376, 462, 227, 437, 395, 208], "levels": [52, 56, 52, 50, 52, 62], "movesets": {"376": ["METEOR-MASH", "BULLET-PUNCH", "GRAVITY", "EXPLOSION"], "462": ["ZAP-CANNON", "LOCK-ON", "MIRROR-COAT", "METAL-SOUND"], "227": ["AIR-SLASH", "SPIKES", "NIGHT-SLASH", "STEEL-WING"], "437": ["GYRO-BALL", "HYPNOSIS", "DREAM-EATER", "GRAVITY"], "395": ["HYDRO-PUMP", "BLIZZARD", "AQUA-JET", "ROAR"], "208": ["STONE-EDGE", "STEALTH-ROCK", "ROAR", "IRON-TAIL"]}}}},
+            "gym": {"requirements": {"flag": "ampharos_cured", "fail_text": ["Jasmine is at the Lighthouse, caring for the sick Ampharos.", "She won't leave its side until it gets medicine from Cianwood."]}, "trainers": [], "leader": {"name": "Jasmine", "class": "GYM_LEADER", "sprite": "jasmine.png", "team": [81, 81, 208], "levels": [30, 30, 35], "badge_reward": "MINERAL", "rewards": {"balls": 5, "RARE_CANDY": 3, "TM265": 1}, "is_boss_battle": true, "dialogue": {"intro": ["Welcome to the Olivine City Gym! I'm Jasmine, the Steel-type Gym Leader."], "player_won": ["Jasmine: ...You are a better trainer than me, in both skill and kindness.", "Please take this Mineral Badge."], "player_lost": ["Don't worry, you'll get it next time."]}, "movesets": {"81": ["THUNDERBOLT", "SONICBOOM", "SUPERSONIC", "THUNDER-WAVE"], "208": ["IRON-TAIL", "ROCK-THROW", "SANDSTORM", "SCREECH"]}, "rematch": {"team": [376, 462, 227, 437, 395, 208], "levels": [52, 56, 52, 50, 52, 62], "movesets": {"376": ["METEOR-MASH", "BULLET-PUNCH", "GRAVITY", "EXPLOSION"], "462": ["ZAP-CANNON", "LOCK-ON", "MIRROR-COAT", "METAL-SOUND"], "227": ["AIR-SLASH", "SPIKES", "NIGHT-SLASH", "STEEL-WING"], "437": ["GYRO-BALL", "HYPNOSIS", "DREAM-EATER", "GRAVITY"], "395": ["HYDRO-PUMP", "BLIZZARD", "AQUA-JET", "ROAR"], "208": ["STONE-EDGE", "STEALTH-ROCK", "ROAR", "IRON-TAIL"]}}}},
 
             "travel_options": [
 
@@ -1138,7 +1138,7 @@
 
             "has_gym": true,
 
-            "gym": {"trainers": [{"name": "Blackbelt Yoshi", "class": "BLACKBELT", "sprite": "ss_black_belt.png", "is_boss_battle": true, "team": [106], "rewards": {"balls": 2}}, {"name": "Blackbelt Lao", "class": "BLACKBELT", "sprite": "ss_black_belt.png", "is_boss_battle": true, "team": [107], "rewards": {"balls": 2}}, {"name": "Black Belt Nob", "class": "BLACK_BELT", "sprite": "ss_black_belt.png", "is_boss_battle": true, "team": [66, 67], "rewards": {"balls": 2}}, {"name": "Black Belt Lung", "class": "BLACK_BELT", "sprite": "ss_black_belt.png", "is_boss_battle": true, "team": [56, 56, 57], "rewards": {"balls": 2}}], "leader": {"name": "Chuck", "class": "GYM_LEADER", "sprite": "chuck.png", "team": [57, 62], "levels": [29, 31], "badge_reward": "STORMBADGE", "rewards": {"balls": 5, "ROCK_SMASHER": 1, "TM192": 1}, "is_boss_battle": true, "dialogue": {"intro": ["Welcome to the Cianwood City Gym! I'm Chuck, the Fighting-type Gym Leader."], "player_won": ["You're a skilled trainer!"], "player_lost": ["Don't worry, you'll get it next time."]}, "movesets": {"57": ["LEER", "DOUBLE-TEAM", "ROCK-SLIDE", "FOCUS-PUNCH"], "62": ["HYPNOSIS", "BODY-SLAM", "SURF", "FOCUS-PUNCH"]}, "rematch": {"team": [308, 107, 106, 286, 57, 62], "levels": [54, 52, 55, 54, 56, 60], "movesets": {"308": ["HIGH-JUMP-KICK", "PSYCHO-CUT", "ATTRACT", "THUNDER-PUNCH"], "107": ["MACH-PUNCH", "SWAGGER", "FOCUS-PUNCH", "DOUBLE-TEAM"], "106": ["HIGH-JUMP-KICK", "FAKE-OUT", "BLAZE-KICK", "BULK-UP"], "286": ["SUBSTITUTE", "FOCUS-PUNCH", "DRAIN-PUNCH", "STONE-EDGE"], "57": ["CLOSE-COMBAT", "PAYBACK", "THUNDER-PUNCH", "SWAGGER"], "62": ["DOUBLE-TEAM", "WATERFALL", "FOCUS-PUNCH", "SUBSTITUTE"]}}}},
+            "gym": {"trainers": [{"name": "Blackbelt Yoshi", "class": "BLACKBELT", "sprite": "ss_black_belt.png", "is_boss_battle": true, "team": [106], "rewards": {"balls": 2}}, {"name": "Blackbelt Lao", "class": "BLACKBELT", "sprite": "ss_black_belt.png", "is_boss_battle": true, "team": [107], "rewards": {"balls": 2}}, {"name": "Black Belt Nob", "class": "BLACK_BELT", "sprite": "ss_black_belt.png", "is_boss_battle": true, "team": [66, 67], "rewards": {"balls": 2}}, {"name": "Black Belt Lung", "class": "BLACK_BELT", "sprite": "ss_black_belt.png", "is_boss_battle": true, "team": [56, 56, 57], "rewards": {"balls": 2}}], "leader": {"name": "Chuck", "class": "GYM_LEADER", "sprite": "chuck.png", "team": [57, 62], "levels": [29, 31], "badge_reward": "STORMBADGE", "rewards": {"balls": 5, "ROCK_SMASHER": 1, "TM192": 1}, "is_boss_battle": true, "dialogue": {"intro": ["Welcome to the Cianwood City Gym! I'm Chuck, the Fighting-type Gym Leader."], "player_won": ["Chuck: WAHAHAH! You've got real power in those sums!", "I lost fair and square. Take the Storm Badge!"], "player_lost": ["Don't worry, you'll get it next time."]}, "movesets": {"57": ["LEER", "DOUBLE-TEAM", "ROCK-SLIDE", "FOCUS-PUNCH"], "62": ["HYPNOSIS", "BODY-SLAM", "SURF", "FOCUS-PUNCH"]}, "rematch": {"team": [308, 107, 106, 286, 57, 62], "levels": [54, 52, 55, 54, 56, 60], "movesets": {"308": ["HIGH-JUMP-KICK", "PSYCHO-CUT", "ATTRACT", "THUNDER-PUNCH"], "107": ["MACH-PUNCH", "SWAGGER", "FOCUS-PUNCH", "DOUBLE-TEAM"], "106": ["HIGH-JUMP-KICK", "FAKE-OUT", "BLAZE-KICK", "BULK-UP"], "286": ["SUBSTITUTE", "FOCUS-PUNCH", "DRAIN-PUNCH", "STONE-EDGE"], "57": ["CLOSE-COMBAT", "PAYBACK", "THUNDER-PUNCH", "SWAGGER"], "62": ["DOUBLE-TEAM", "WATERFALL", "FOCUS-PUNCH", "SUBSTITUTE"]}}}},
 
             "travel_options": [
 
@@ -1156,7 +1156,7 @@
 
                 {"text": "Pharmacy", "door": "pharmacy", "action": "NPC", "target": "pharmacist"},
 
-                {"text": "Talk to Euskine", "action": "NPC", "target": "euskine"},
+                {"text": "Talk to Eusine", "action": "NPC", "target": "euskine", "condition": "defeated_eusine"},
 
                 {"text": "Cliff Edge Gate", "action": "TRAVEL", "target_area": "CLIFF_EDGE_GATE", "condition": "has_ROCK_SMASHER"},
 
@@ -1198,7 +1198,7 @@
 
             "has_gym": true,
 
-            "gym": {"requirements": {"flag": "rocket_hq_cleared", "fail_text": ["Something strange is going on in Mahogany. Pryce won't battle while Team Rocket is in town.", "Maybe the trouble at the Lake of Rage is connected..."]}, "trainers": [{"name": "Boarder Ronald", "class": "SAILOR", "sprite": "ss_sailor.png", "is_boss_battle": true, "team": [220, 220], "rewards": {"balls": 2}}, {"name": "Skier Clarissa", "class": "LASS", "sprite": "ss_lass.png", "is_boss_battle": true, "team": [124, 124], "rewards": {"balls": 2}}, {"name": "Skier Diana", "class": "SKIER", "sprite": "ss_skier.png", "is_boss_battle": true, "team": [124], "rewards": {"balls": 2}}, {"name": "Boarder Patton", "class": "BOARDER", "sprite": "ss_boarder.png", "is_boss_battle": true, "team": [220, 220], "rewards": {"balls": 2}}, {"name": "Boarder Deandre", "class": "BOARDER", "sprite": "ss_boarder.png", "is_boss_battle": true, "team": [86, 87, 86], "rewards": {"balls": 2}}, {"name": "Boarder Gerardo", "class": "BOARDER", "sprite": "ss_boarder.png", "is_boss_battle": true, "team": [90, 91, 86], "rewards": {"balls": 2}}, {"name": "Skier Jill", "class": "SKIER", "sprite": "ss_skier.png", "is_boss_battle": true, "team": [87], "rewards": {"balls": 2}}], "leader": {"name": "Pryce", "class": "GYM_LEADER", "sprite": "pryce.png", "team": [86, 87, 221], "levels": [30, 32, 34], "badge_reward": "GLACIER", "rewards": {"balls": 5, "ICE_MELTER": 1, "TM046": 1}, "is_boss_battle": true, "dialogue": {"intro": ["Welcome to the Mahogany Town Gym! I'm Pryce, the Ice-type Gym Leader."], "player_won": ["Your math burned right through my defense.", "The path to Blackthorn is frozen solid. Take this.", "You received the ICE MELTER!"], "player_lost": ["Don't worry, you'll get it next time."]}, "movesets": {"86": ["ICY-WIND", "REST", "SNORE", "HAIL"], "87": ["AURORA-BEAM", "REST", "SLEEP-TALK", "ICE-SHARD"], "221": ["BLIZZARD", "ICE-FANG", "MUD-BOMB", "HAIL"]}, "rematch": {"team": [460, 87, 362, 478, 365, 473], "levels": [56, 58, 52, 52, 54, 60], "movesets": {"460": ["ICE-SHARD", "WOOD-HAMMER", "EARTHQUAKE", "BLIZZARD"], "87": ["DIVE", "SHEER-COLD", "SLEEP-TALK", "REST"], "362": ["PAYBACK", "TORMENT", "ATTRACT", "BLIZZARD"], "478": ["ICE-SHARD", "CONFUSE-RAY", "ATTRACT", "BLIZZARD"], "365": ["HAIL", "BODY-SLAM", "SWAGGER", "BLIZZARD"], "473": ["EARTHQUAKE", "AVALANCHE", "STONE-EDGE", "DOUBLE-TEAM"]}}}},
+            "gym": {"requirements": {"flag": "rocket_hq_cleared", "fail_text": ["Something strange is going on in Mahogany. Pryce won't battle while Team Rocket is in town.", "Maybe the trouble at the Lake of Rage is connected..."]}, "trainers": [{"name": "Boarder Ronald", "class": "SAILOR", "sprite": "ss_sailor.png", "is_boss_battle": true, "team": [220, 220], "rewards": {"balls": 2}}, {"name": "Skier Clarissa", "class": "LASS", "sprite": "ss_lass.png", "is_boss_battle": true, "team": [124, 124], "rewards": {"balls": 2}}, {"name": "Skier Diana", "class": "SKIER", "sprite": "ss_skier.png", "is_boss_battle": true, "team": [124], "rewards": {"balls": 2}}, {"name": "Boarder Patton", "class": "BOARDER", "sprite": "ss_boarder.png", "is_boss_battle": true, "team": [220, 220], "rewards": {"balls": 2}}, {"name": "Boarder Deandre", "class": "BOARDER", "sprite": "ss_boarder.png", "is_boss_battle": true, "team": [86, 87, 86], "rewards": {"balls": 2}}, {"name": "Boarder Gerardo", "class": "BOARDER", "sprite": "ss_boarder.png", "is_boss_battle": true, "team": [90, 91, 86], "rewards": {"balls": 2}}, {"name": "Skier Jill", "class": "SKIER", "sprite": "ss_skier.png", "is_boss_battle": true, "team": [87], "rewards": {"balls": 2}}], "leader": {"name": "Pryce", "class": "GYM_LEADER", "sprite": "pryce.png", "team": [86, 87, 221], "levels": [30, 32, 34], "badge_reward": "GLACIER", "rewards": {"balls": 5, "TM241": 1}, "is_boss_battle": true, "dialogue": {"intro": ["Welcome to the Mahogany Town Gym! I'm Pryce, the Ice-type Gym Leader."], "player_won": ["Your math burned right through my defense.", "Take the Glacier Badge, and this TM: Hail."], "player_lost": ["Don't worry, you'll get it next time."]}, "movesets": {"86": ["ICY-WIND", "REST", "SNORE", "HAIL"], "87": ["AURORA-BEAM", "REST", "SLEEP-TALK", "ICE-SHARD"], "221": ["BLIZZARD", "ICE-FANG", "MUD-BOMB", "HAIL"]}, "rematch": {"team": [460, 87, 362, 478, 365, 473], "levels": [56, 58, 52, 52, 54, 60], "movesets": {"460": ["ICE-SHARD", "WOOD-HAMMER", "EARTHQUAKE", "BLIZZARD"], "87": ["DIVE", "SHEER-COLD", "SLEEP-TALK", "REST"], "362": ["PAYBACK", "TORMENT", "ATTRACT", "BLIZZARD"], "478": ["ICE-SHARD", "CONFUSE-RAY", "ATTRACT", "BLIZZARD"], "365": ["HAIL", "BODY-SLAM", "SWAGGER", "BLIZZARD"], "473": ["EARTHQUAKE", "AVALANCHE", "STONE-EDGE", "DOUBLE-TEAM"]}}}},
 
             "travel_options": [
 
@@ -1220,7 +1220,7 @@
 
                 {"text": "Gym", "action": "GYM"},
 
-                {"text": "Talk to Lance", "action": "NPC", "target": "lance_mahogany"},
+                {"text": "Talk to Lance", "action": "NPC", "target": "lance_mahogany", "condition": "defeated_red_gyarados"},
 
                 {"action": "EVENT", "event": {"lines": ["They say a red Gyarados showed up at the Lake of Rage. Odd, when even ordinary Gyarados are rare round here..."]}, "text": "Man", "door": "radiohouse"},
 
@@ -1248,7 +1248,7 @@
 
             "has_gym": true,
 
-            "gym": {"requirements": {"badges": 7, "fail_text": ["Clair only accepts challengers who have earned seven Johto badges."]}, "trainers": [{"name": "Cooltrainer Mike", "class": "COOLTRAINER", "sprite": "ss_ace_trainer_m.png", "is_boss_battle": true, "team": [148, 148], "rewards": {"balls": 3}}, {"name": "Cooltrainer Lola", "class": "COOLTRAINER", "sprite": "ss_ace_trainer_f.png", "is_boss_battle": true, "team": [147, 147, 147], "rewards": {"balls": 3}}, {"name": "Ace Trainer Paulo", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_m.png", "is_boss_battle": true, "team": [147, 117, 147], "rewards": {"balls": 2}}, {"name": "Ace Trainer Lola", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_m.png", "is_boss_battle": true, "team": [147, 148], "rewards": {"balls": 2}}, {"name": "Ace Trainer Cody", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_m.png", "is_boss_battle": true, "team": [116, 117], "rewards": {"balls": 2}}, {"name": "Ace Trainer Fran", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_m.png", "is_boss_battle": true, "team": [117], "rewards": {"balls": 2}}, {"name": "Ace Trainer Mike", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_m.png", "is_boss_battle": true, "team": [148], "rewards": {"balls": 2}}], "leader": {"name": "Clair", "class": "GYM_LEADER", "sprite": "clair.png", "team": [148, 148, 130, 230], "levels": [38, 38, 38, 41], "badge_reward": "RISING", "badge_later": "johto_beat_clair", "badge_later_lines": ["Clair: ...I still don't accept it. Go to the Dragon's Den behind this Gym.", "Clair: Pass the Elder's test at the Dragon Shrine, and then... we'll talk about the Rising Badge."], "rewards": {"balls": 5, "MT_SILVER_MAP": 1}, "is_boss_battle": true, "dialogue": {"intro": ["Welcome to the Blackthorn City Gym! I'm Clair, the Dragon-type Gym Leader."], "player_won": ["Clair: I lost? I don't believe it. There must be some mistake...", "Clair: I won't admit this. I won't give you the Rising Badge!", "Clair: ...Fine. There's a place called the Dragon's Den behind this Gym. Go to the Dragon Shrine at its heart and take the Elder's test. If you pass, I'll accept you as a Trainer worthy of the Badge."], "player_lost": ["Don't worry, you'll get it next time."]}, "movesets": {"148": ["THUNDER-WAVE", "SLAM", "AQUA-TAIL", "DRAGON-PULSE"], "130": ["BITE", "TWISTER", "DRAGON-RAGE", "DRAGON-PULSE"], "230": ["HYDRO-PUMP", "SMOKESCREEN", "HYPER-BEAM", "DRAGON-PULSE"]}, "rematch": {"team": [130, 148, 142, 230, 6, 149], "levels": [56, 52, 52, 56, 52, 60], "movesets": {"130": ["DRAGON-DANCE", "EARTHQUAKE", "WATERFALL", "DRAGON-PULSE"], "148": ["THUNDER-WAVE", "DRAGON-RUSH", "THUNDERBOLT", "FLAMETHROWER"], "142": ["EARTHQUAKE", "THUNDER-FANG", "ROCK-SLIDE", "ROAR"], "230": ["YAWN", "HYDRO-PUMP", "ICE-BEAM", "DRAGON-BREATH"], "6": ["SHADOW-CLAW", "AIR-SLASH", "DRAGON-CLAW", "FIRE-FANG"], "149": ["THUNDER", "SAFEGUARD", "DRAGON-BREATH", "HYPER-BEAM"]}}}},
+            "gym": {"requirements": {"badges": 7, "fail_text": ["Clair only accepts challengers who have earned seven Johto badges."]}, "trainers": [{"name": "Ace Trainer Paulo", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_m.png", "is_boss_battle": true, "team": [147, 117, 147], "rewards": {"balls": 2}}, {"name": "Ace Trainer Lola", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_m.png", "is_boss_battle": true, "team": [147, 148], "rewards": {"balls": 2}}, {"name": "Ace Trainer Cody", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_m.png", "is_boss_battle": true, "team": [116, 117], "rewards": {"balls": 2}}, {"name": "Ace Trainer Fran", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_m.png", "is_boss_battle": true, "team": [117], "rewards": {"balls": 2}}, {"name": "Ace Trainer Mike", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_m.png", "is_boss_battle": true, "team": [148], "rewards": {"balls": 2}}], "leader": {"name": "Clair", "class": "GYM_LEADER", "sprite": "clair.png", "team": [148, 148, 130, 230], "levels": [38, 38, 38, 41], "badge_reward": "RISING", "badge_later": "johto_beat_clair", "badge_later_lines": ["Clair: ...I still don't accept it. Go to the Dragon's Den behind this Gym.", "Clair: Pass the Elder's test at the Dragon Shrine, and then... we'll talk about the Rising Badge."], "rewards": {"balls": 5, "MT_SILVER_MAP": 1}, "is_boss_battle": true, "dialogue": {"intro": ["Welcome to the Blackthorn City Gym! I'm Clair, the Dragon-type Gym Leader."], "player_won": ["Clair: I lost? I don't believe it. There must be some mistake...", "Clair: I won't admit this. I won't give you the Rising Badge!", "Clair: ...Fine. There's a place called the Dragon's Den behind this Gym. Go to the Dragon Shrine at its heart and take the Elder's test. If you pass, I'll accept you as a Trainer worthy of the Badge."], "player_lost": ["Don't worry, you'll get it next time."]}, "movesets": {"148": ["THUNDER-WAVE", "SLAM", "AQUA-TAIL", "DRAGON-PULSE"], "130": ["BITE", "TWISTER", "DRAGON-RAGE", "DRAGON-PULSE"], "230": ["HYDRO-PUMP", "SMOKESCREEN", "HYPER-BEAM", "DRAGON-PULSE"]}, "rematch": {"team": [130, 148, 142, 230, 6, 149], "levels": [56, 52, 52, 56, 52, 60], "movesets": {"130": ["DRAGON-DANCE", "EARTHQUAKE", "WATERFALL", "DRAGON-PULSE"], "148": ["THUNDER-WAVE", "DRAGON-RUSH", "THUNDERBOLT", "FLAMETHROWER"], "142": ["EARTHQUAKE", "THUNDER-FANG", "ROCK-SLIDE", "ROAR"], "230": ["YAWN", "HYDRO-PUMP", "ICE-BEAM", "DRAGON-BREATH"], "6": ["SHADOW-CLAW", "AIR-SLASH", "DRAGON-CLAW", "FIRE-FANG"], "149": ["THUNDER", "SAFEGUARD", "DRAGON-BREATH", "HYPER-BEAM"]}}}},
 
             "travel_options": [
 
@@ -1769,9 +1769,9 @@
 
             ],
 
-            "route_menu": [
+            "tree_pool": "JOHTO_ROUTE_TREE_PERCENTAGES", "route_menu": [
 
-                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE"},
 
                 {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
 
@@ -2273,9 +2273,9 @@
         
             "min_rounds": 2,
         
-            "route_menu": [
+            "tree_pool": "JOHTO_ROUTE_TREE_PERCENTAGES", "route_menu": [
         
-                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
+                {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"}, {"text": "HEADBUTT TREES", "action": "HEADBUTT", "condition": "can_headbutt", "color": "ORANGE"},
         
                 {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
         
@@ -2649,13 +2649,9 @@
         
             "trainer_pool": [
         
-                {"name": "Fisherman Chris", "class": "FISHERMAN", "sprite": "ss_fisherman.png", "team": [211], "rewards": {"balls": 2}},
-        
                 {"name": "Hiker Benjamin", "class": "HIKER", "sprite": "ss_hiker.png", "team": [50, 74, 51], "rewards": {"balls": 2}},
         
                 {"name": "Poke Maniac Shane", "class": "POKEMANIAC", "sprite": "ss_poke_maniac.png", "team": [30, 33], "rewards": {"balls": 2}},
-        
-                {"name": "Hiker Anthony", "class": "HIKER", "sprite": "ss_hiker.png", "team": [74, 75], "rewards": {"balls": 2}},
         
                 {"name": "Fisherman Tully", "class": "FISHERMAN", "sprite": "ss_fisherman.png", "team": [211], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [211], "levels": [33], "gift": {"WATER_STONE": 1}}, {"team": [118, 118, 211], "levels": [30, 30, 38]}, {"team": [119, 119, 211], "levels": [41, 50, 53]}], "call": ["Tully here! I fished up something odd for you, and my team's in top form. Route 42!"]}}
         
@@ -2729,8 +2725,6 @@
         
                 {"name": "Pokemaniac Brent", "class": "POKEMANIAC", "sprite": "ss_poke_maniac.png", "team": [30, 33], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [30, 33, 130], "levels": [32, 34, 32]}, {"team": [130, 108, 30, 33], "levels": [41, 38, 38, 43]}, {"team": [130, 108, 31, 34], "levels": [48, 40, 58, 58]}], "call": ["It's Brent! I've added rare Pokemon to my team. Come battle me on Route 43!"]}},
         
-                {"name": "Pokemaniac Ron", "class": "POKEMANIAC", "sprite": "ss_poke_maniac.png", "team": [147], "rewards": {"balls": 2}},
-        
                 {"name": "Pokemaniac Beckett", "class": "POKEMANIAC", "sprite": "ss_poke_maniac.png", "team": [80], "rewards": {"balls": 2}},
         
                 {"name": "Fisherman Marvin", "class": "FISHERMAN", "sprite": "ss_fisherman.png", "team": [129, 130, 129], "rewards": {"balls": 2}},
@@ -2796,10 +2790,6 @@
         
                 {"name": "Fisherman Andre", "class": "FISHERMAN", "sprite": "ss_fisherman.png", "team": [130], "rewards": {"balls": 2}},
         
-                {"name": "Cooltrainer Lois", "class": "COOLTRAINER", "sprite": "ss_ace_trainer_f.png", "team": [188, 38], "rewards": {"balls": 2}},
-        
-                {"name": "Cooltrainer Aaron", "class": "COOLTRAINER", "sprite": "ss_ace_trainer_m.png", "team": [2, 5, 8], "rewards": {"balls": 2}},
-        
                 {"name": "Ace Trainer Alton", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_m.png", "team": [2, 5, 8], "rewards": {"balls": 2}},
         
                 {"name": "Ace Trainer Lois", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_m.png", "team": [179, 38], "rewards": {"balls": 2}}
@@ -2861,10 +2851,6 @@
                 {"name": "Psychic Phil", "class": "PSYCHIC", "sprite": "ss_psychic.png", "team": [177, 64], "rewards": {"balls": 2}},
 
                 {"name": "Fisherman Wilton", "class": "FISHERMAN", "sprite": "ss_fisherman.png", "team": [118, 118, 119], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [118, 118, 119], "levels": [32, 32, 36], "gift": {"balls": 1}}, {"team": [118, 119, 119], "levels": [32, 36, 40], "gift": {"GREAT_BALL": 1}}, {"team": [119, 119, 119], "levels": [42, 46, 63], "gift": {"ULTRA_BALL": 1}}], "call": ["It's Wilton! I found a ball while fishing. Come battle me on Route 44 and it's yours!"]}},
-
-                {"name": "Cooltrainer Allen", "class": "COOLTRAINER", "sprite": "ss_ace_trainer_m.png", "team": [147, 148, 6], "rewards": {"balls": 2}},
-
-                {"name": "Cooltrainer Cybil", "class": "COOLTRAINER", "sprite": "ss_ace_trainer_f.png", "team": [124, 38, 130], "rewards": {"balls": 2}},
 
                 {"name": "Fisherman Edgar", "class": "FISHERMAN", "sprite": "ss_fisherman.png", "team": [223, 223], "rewards": {"balls": 2}},
 
@@ -2937,10 +2923,6 @@
                 {"name": "Blackbelt Kenji", "class": "BLACKBELT", "sprite": "ss_black_belt.png", "team": [67], "rewards": {"balls": 2}, "phone": {"tiers": [{"team": [95, 106, 95, 67], "levels": [27, 32, 27, 32], "gift": {"PP_UP": 1}}, {"team": [95, 68, 95, 106], "levels": [30, 37, 33, 41]}, {"team": [95, 68, 95, 106], "levels": [41, 53, 49, 53]}], "call": ["Kenji here! My training's done. Come face me on Route 45!"]}},
         
                 {"name": "Hiker Timothy", "class": "HIKER", "sprite": "ss_hiker.png", "team": [50, 51], "rewards": {"balls": 2}},
-        
-                {"name": "Cooltrainer Kelly", "class": "COOLTRAINER", "sprite": "ss_ace_trainer_f.png", "team": [183, 8, 8], "rewards": {"balls": 2}},
-        
-                {"name": "Cooltrainer Ryan", "class": "COOLTRAINER", "sprite": "ss_ace_trainer_m.png", "team": [18, 125], "rewards": {"balls": 2}},
         
                 {"name": "Ace Trainer Ryan", "class": "ACE_TRAINER", "sprite": "ss_ace_trainer_m.png", "team": [18, 125], "rewards": {"balls": 2}},
         
@@ -3294,17 +3276,11 @@
         
             "trainer_pool": [
         
-                {"name": "Bug Catcher Wayne", "class": "BUG_CATCHER", "sprite": "ss_bug_catcher.png", "team": [165, 165, 167], "rewards": {"balls": 3}, "dialogue": {"intro": ["The trees are so thick here!", "My bugs love the shade!"], "player_won": ["Lost in the woods..."], "player_lost": ["My bugs are the masters of this forest!"]}},
-        
-                {"name": "Bug Catcher Al", "class": "BUG_CATCHER", "sprite": "ss_bug_catcher.png", "team": [10, 11], "rewards": {"balls": 2}},
-        
-                {"name": "Bug Catcher Benny", "class": "BUG_CATCHER", "sprite": "ss_bug_catcher.png", "team": [13, 14], "rewards": {"balls": 2}},
-        
-                {"name": "Bug Catcher Josh", "class": "BUG_CATCHER", "sprite": "ss_bug_catcher.png", "team": [46], "rewards": {"balls": 2}}
+                {"name": "Bug Catcher Wayne", "class": "BUG_CATCHER", "sprite": "ss_bug_catcher.png", "team": [165, 165, 167], "rewards": {"balls": 3}, "dialogue": {"intro": ["The trees are so thick here!", "My bugs love the shade!"], "player_won": ["Lost in the woods..."], "player_lost": ["My bugs are the masters of this forest!"]}}
         
             ],
         
-            "route_menu": [
+            "tree_pool": "JOHTO_FOREST_TREE_PERCENTAGES", "has_trees": true, "route_menu": [
         
                 {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
         
@@ -3428,11 +3404,7 @@
         
             "trainer_pool": [
         
-                {"name": "Firebreather Dick", "class": "FIREBREATHER", "sprite": "ss_firebreather.png", "team": [109, 109, 58], "rewards": {"balls": 2}},
-        
                 {"name": "Firebreather Ned", "class": "FIREBREATHER", "sprite": "ss_firebreather.png", "team": [109, 58, 109], "rewards": {"balls": 2}},
-        
-                {"name": "Firebreather Burt", "class": "FIREBREATHER", "sprite": "ss_firebreather.png", "team": [109, 58], "rewards": {"balls": 2}},
         
                 {"name": "Firebreather Richard", "class": "FIREBREATHER", "sprite": "ss_firebreather.png", "team": [5], "rewards": {"balls": 2}}
         
@@ -3448,7 +3420,7 @@
         
                 {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
         
-                {"text": "ENCOUNTER SUICUNE", "action": "BOSS", "condition": "boss_available", "flag_condition": "johto_beasts_fled", "color": "CYAN"},
+                {"text": "ENCOUNTER SUICUNE", "action": "BOSS", "condition": "boss_available", "flag_condition": "johto_beasts_fled", "color": "CYAN", "before_trainers": true},
         
                 {"text": "THE BLACK FOG", "action": "BOSS", "color": "PURPLE", "flag_condition": "not black_fog_banished_burned_tower", "boss": {"id": 10501, "name": "Black Fog", "level": 26, "no_catch": true, "victory_flag": "black_fog_banished_burned_tower", "lines": ["The air turns ice-cold. A black fog pours across the floor...", "Two huge eyes open in the dark. A giant Haunter rises: the Black Fog!", "Long ago people worshipped it as a god. It feeds on dreams. Don't let it get yours!"], "won": ["The Black Fog is too proud to ever be caught.", "It Self-Destructs in a burst of black mist... and is gone.", "But a cold whisper lingers: it will rise again in another haunted place."], "rewards": {"balls": 10, "RARE_CANDY": 3}}},
         
@@ -3556,13 +3528,7 @@
         
                 {"name": "Super Nerd Markus", "class": "SUPER_NERD", "sprite": "ss_super_nerd.png", "team": [79], "rewards": {"balls": 2}},
         
-                {"name": "Blackbelt Yoshi", "class": "BLACKBELT", "sprite": "ss_black_belt.png", "team": [66, 67], "rewards": {"balls": 2}},
-        
-                {"name": "Hiker Erik", "class": "HIKER", "sprite": "ss_hiker.png", "team": [74, 75], "rewards": {"balls": 2}},
-        
-                {"name": "Hiker Michael", "class": "HIKER", "sprite": "ss_hiker.png", "team": [74, 74], "rewards": {"balls": 2}},
-        
-                {"name": "Karate King Kiyo", "class": "BLACKBELT", "sprite": "ss_black_belt.png", "team": [106, 107], "rewards": {"balls": 5, "POKEMON_236": 1}, "victory_flag": "defeated_karate_king"},
+                {"name": "Karate King Kiyo", "class": "BLACKBELT", "sprite": "ss_black_belt.png", "team": [106, 107], "rewards": {"balls": 5, "POKEMON_236": 1}, "victory_flag": "defeated_karate_king", "levels": [34, 34]},
         
                 {"name": "Poké Maniac Harrison", "class": "POKE_MANIAC", "sprite": "ss_poke_maniac.png", "team": [34, 31], "rewards": {"balls": 2}},
         
@@ -3657,13 +3623,7 @@
         
             "trainer_pool": [
         
-                {"name": "Boarder Ronald", "class": "SAILOR", "sprite": "ss_sailor.png", "team": [220, 220, 221], "rewards": {"balls": 2}},
-        
-                {"name": "Skier Clarissa", "class": "LASS", "sprite": "ss_lass.png", "team": [124], "rewards": {"balls": 2}},
-        
-                {"name": "Skier Jill", "class": "LASS", "sprite": "ss_lass.png", "team": [124, 124], "rewards": {"balls": 2}},
-        
-                {"name": "Boarder Ronald", "class": "SAILOR", "sprite": "ss_sailor.png", "team": [220], "rewards": {"balls": 2}}
+                
         
             ],
         
@@ -3934,7 +3894,6 @@
 
             "battle_type": "indoor",
 
-            "wild_pool_percentages": "JOHTO_ROCKET_HQ_PERCENTAGES",
 
             "min_rounds": 2,
 
@@ -4227,7 +4186,7 @@
         
                 {"text": "SEEK MOLTRES", "action": "BOSS", "color": "GOLD", "flag_condition": "not mt_silver_moltres_defeated", "boss": {"id": 146, "level": 50, "name": "Moltres", "victory_flag": "mt_silver_moltres_defeated", "lines": ["Heat shimmers off the rocks... Moltres blazes down!"]}, "condition": ["beat_johto_champion"]},
         
-                {"text": "CHALLENGE RED", "action": "EVENT", "color": "GOLD", "flag_condition": "not defeated_red", "event": {"lines": ["At the summit, a silent Trainer stands in the snow.", "...", "......", "Red wants to battle!"], "flag": "defeated_red", "done": ["The summit is quiet. Red has gone.", "...But you get the feeling you'll meet again."], "battle": {"name": "Red", "class": "PKMN_TRAINER", "sprite": "ss_red.png", "team": [25, 131, 143, 3, 6, 9], "levels": [88, 80, 82, 84, 84, 84], "is_boss_battle": true, "rewards": {"balls": 30, "MASTER_BALL": 1}, "dialogue": {"player_won": ["......", "..."], "player_lost": ["......"]}}}},
+                {"text": "CHALLENGE RED", "action": "EVENT", "color": "GOLD", "flag_condition": "not defeated_red", "event": {"lines": ["At the summit, a silent Trainer stands in the snow.", "...", "......", "Red wants to battle!"], "flag": "defeated_red", "done": ["The summit is quiet. Red has gone.", "...But you get the feeling you'll meet again."], "battle": {"name": "Red", "class": "PKMN_TRAINER", "sprite": "ss_red.png", "team": [25, 196, 143, 3, 6, 9], "levels": [88, 84, 82, 84, 84, 84], "is_boss_battle": true, "rewards": {"balls": 30, "MASTER_BALL": 1}, "dialogue": {"player_won": ["......", "..."], "player_lost": ["......"]}}}},
         
                 {"text": "REAPER CLOTH", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_reaper_cloth_mt_silver_d41r0101_54_15", "event": {"lines": ["A Reaper Cloth, lying among the rocks."], "gift_item": {"REAPER_CLOTH": 1}, "flag": "got_reaper_cloth_mt_silver_d41r0101_54_15"}},
         
