@@ -1447,5 +1447,22 @@ check(_may and _bar and _wall and _climb and len(_mp) == 1,
 story.story_flags.clear(); story.story_flags.update(_sv); story.badges["SINNOH"] = _bv
 story.inventory.clear(); story.inventory.update(_iv)
 
+# ---- S5 (11-24): Lake Acuity as Platinum's - Barry has just lost to Jupiter as you arrive; she leaves for the Veilstone HQ, he swears to get stronger
+_sv, _bv = dict(story.story_flags), list(story.badges.get("SINNOH", []))
+story.badges["SINNOH"] = ["COAL", "FOREST", "COBBLE", "FEN", "RELIC", "MINE", "ICICLE"]
+story.story_flags.pop("galactic_lake_acuity_cleared", None)
+r = route("LAKE_ACUITY", "ACUITY_LAKEFRONT")
+for _q in range(1500):
+    if getattr(r, "dialogue_box", None) and r.dialogue_box.visible:
+        r.dialogue_box.advance()
+    frames(r)
+    if story.story_flags.get("galactic_lake_acuity_cleared"):
+        break
+_done = bool(story.story_flags.get("galactic_lake_acuity_cleared"))
+r = route("LAKE_ACUITY", "ACUITY_LAKEFRONT"); frames(r, 5)
+_jgone = not any(m.kind == "figure" and str((m.payload or {}).get("text")) == "Confront Jupiter at the Lake" for m in r.run.floor.movers)
+check(_done and _jgone, f"Lake Acuity: Platinum's scene plays as you arrive with the Icicle Badge (Barry beaten, Jupiter off to Veilstone), then she's gone ({_done}, {_jgone})")
+story.story_flags.clear(); story.story_flags.update(_sv); story.badges["SINNOH"] = _bv
+
 g.walk_towns = False
 print(f"##### {fails} failures")

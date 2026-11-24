@@ -286961,7 +286961,79 @@
        6
       ]
      }
-    }
+    },
+    "scenes": [
+     {
+      "trigger": "enter",
+      "condition": [
+       "has_icicle_badge",
+       "not:galactic_lake_acuity_cleared"
+      ],
+      "flag": "galactic_lake_acuity_cleared",
+      "cast": [
+       {
+        "sheet": "pt_rivel.png",
+        "from": [
+         8,
+         39
+        ],
+        "face": "u",
+        "stay": true,
+        "lines": [
+         "{rival_name}: ...! You're not getting away with this, Team Galactic!"
+        ]
+       },
+       {
+        "person": "Confront Jupiter at the Lake",
+        "face": "d",
+        "lines": [
+         "Jupiter: Oh? Are you finished already? Your Pokemon aren't bad, but you're laughably weak.",
+         "Jupiter: You honestly thought you could save the Pokemon of the lake? Dream on, little kid.",
+         "Jupiter: Eww, it's so cold here. Let's go back to the Veilstone HQ."
+        ]
+       },
+       {
+        "person": "Confront Jupiter at the Lake",
+        "lines": [
+         "Jupiter: Oh? Don't I know you? We met in Eterna City.",
+         "Jupiter: Team Galactic is going to do something huge, for everyone's sake. So keep out of our way.",
+         "Jupiter: Don't waste your time coming to our HQ in Veilstone. Now, if you'll excuse me."
+        ],
+        "path": [
+         [
+          8,
+          40
+         ],
+         [
+          7,
+          41
+         ],
+         [
+          6,
+          42
+         ],
+         [
+          5,
+          43
+         ]
+        ],
+        "gone": true
+       },
+       {
+        "as": 0,
+        "lines": [
+         "{rival_name}: ... ...Yeah, that's right. I couldn't do anything against Team Galactic.",
+         "{rival_name}: That Pokemon called Uxie... It was suffering...",
+         "{rival_name}: I'm going to get tougher. It's not about winning or losing... It takes honest effort, and a determined heart."
+        ],
+        "leave": [
+         5,
+         43
+        ]
+       }
+      ]
+     }
+    ]
    },
    {
     "art": [

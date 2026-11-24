@@ -76,6 +76,7 @@
     ]
   },
   "figures": {
+    "LAKE_ACUITY:Confront Jupiter at the Lake": {"sheet": "pt_gkanbu3.png"},
     "SNOWPOINT_CITY:Maylene": {"sheet": "pt_leader4.png"},
     "REALGAM_TOWER:Realgam Tower: Orre League": {
       "sheet": "orre_npc_15.png"
