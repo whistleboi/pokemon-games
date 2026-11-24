@@ -263,6 +263,19 @@ check(WT.story_map(g, "OPELUCID_CITY") is WT.custom(g).get("OPELUCID_CITY"), "Op
 story.current_area_key = "GIANT_CHASM"
 check("b2_m45" in mains() and "b2_m44" not in mains(), f"the Journal: on to Victory Road ({mains()})")
 
+print("6) after the title: Juniper's two starters (Jordan 11-24)")
+flags["beat_unova_champion"] = True; flags["starter_unova"] = 495; flags["visited_ASPERTIA_CITY"] = True; flags["move_offer_unova"] = True
+for k in ("b2_juniper_starter_1", "b2_juniper_starter_2"):
+    flags.pop(k, None)
+story.player_team = story.player_team[:3]
+n0 = len(story.player_team)
+for _ in range(2):
+    st = town("ASPERTIA_CITY", (6, 6), "home")
+    talk(st, "Professor Juniper")
+got = [int(p.id) for p in story.player_team[n0:]]
+check(flags.get("b2_juniper_starter_1") and flags.get("b2_juniper_starter_2"), "Juniper gives both")
+check(sorted(got) == [498, 501], f"Snivy's Trainer gets Tepig and Oshawott ({got})")
+
 print("\n##### %d failures" % len(fails))
 for f_ in fails:
     print("  -", f_)
