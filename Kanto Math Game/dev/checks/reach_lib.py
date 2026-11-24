@@ -6,6 +6,8 @@ from src.world import hms
 g.data.save = lambda *a, **k: None
 PROG = g.loader.area_data["STORY_PROGRESSION"]
 _cache = {}
+MAPPED_LINKS = True   # (Step 2 of the legacy menu clear, 11-24: a walked place's links are its map's exits, gated as in play;
+                      #  False: the old way, its menu buttons - for a suite that still plays the menus)
 
 
 def _state(area):
@@ -28,11 +30,59 @@ def _flag_ok(fc):
     return bool(story.story_flags.get(parts[0], False))
 
 
+def _option_open(area, a, st, o, town):
+    """A menu option's own gates, as the game reads them."""
+    if not _flag_ok(o.get("flag_condition")):
+        return False
+    if town and o.get("item_condition") and story.inventory.get(o["item_condition"], 0) <= 0:
+        return False
+    cond = o.get("condition")
+    if cond and not (st._check_menu_condition(cond) if town else st._check_route_condition(cond, False, o)):
+        return False
+    return True
+
+
+def _mapped_links(area, a, st):
+    """A walked place's ways on: its map's own exits (gated as the map gates them), each opened the way the game opens it
+    (legacy menu clear, Step 2, 11-24). A town's exit goes through its matching travel option (else a TRAVEL explore
+    option), and is shut without one - walk_town._leave's "You can't go that way yet"; a route's exit through its matching
+    route_menu EXIT/TRAVEL, and is open without one, as the route walker has it. Menu buttons with no exit on the map (the
+    old town-to-town shortcuts) don't count."""
+    town = a.get("area_type") == "town"
+    out = []
+    for t in dict.fromkeys(_walk_exits(area, gated=True)):
+        if town:
+            o = next((o for o in (a.get("travel_options") or []) if (o.get("target_area") or o.get("target")) == t), None) \
+                or next((o for o in (a.get("explore_options") or []) if o.get("action") == "TRAVEL" and o.get("target_area") == t), None)
+            if o is not None and _option_open(area, a, st, o, True):
+                out.append(t)
+        else:
+            opts = [o for o in (a.get("route_menu") or []) if o.get("action") in ("EXIT", "TRAVEL")
+                    and (o.get("target") or o.get("target_area")) == t]
+            if not opts or any(_option_open(area, a, st, o, False) for o in opts):
+                out.append(t)
+    # (and the ways through a door or a person on the map rather than an exit tile: Orre's motorbike list, a harbour's boats,
+    #  the fossil maniac's back room - options with a "door", gated as in play)
+    for o in (a.get("travel_options") or []) + (a.get("explore_options") or []) + (a.get("route_menu") or []):
+        t = o.get("target_area") or (o.get("target") if o.get("action") in ("TRAVEL", "EXIT") else None)
+        if t and o.get("door") and t in PROG and t not in out and _option_open(area, a, st, o, town or o in (a.get("travel_options") or []) + (a.get("explore_options") or [])):
+            out.append(t)
+    for t, (item, region) in ITEM_TRAVEL.items():   # (a key item that takes you there from anywhere outdoors in its region)
+        if t in PROG and t not in out and story.inventory.get(item, 0) > 0 and str(a.get("region", "")).upper() == region:
+            out.append(t)
+    return out
+
+
+ITEM_TRAVEL = {"HOENN_SOARING_IN_THE_SKY": ("EON_FLUTE", "HOENN")}   # (Soaring: the Eon Flute from the Bag, ORAS - not a place's exit)
+
+
 def links(area):
     a = PROG.get(area, {})
     st = _state(area)
     out = []
-    if a.get("area_type") == "town":
+    if MAPPED_LINKS and _walk_exits(area):   # (a walked place: its map's own ways, gated as in play)
+        out = _mapped_links(area, a, st)
+    elif a.get("area_type") == "town":
         for o in (a.get("travel_options") or []) + (a.get("explore_options") or []):
             tgt = o.get("target_area") or (o.get("target") if o.get("action") in ("TRAVEL", "EXIT") else None)
             if not tgt or (o.get("action") not in (None, "TRAVEL", "EXIT") and "target_area" not in o):
@@ -56,7 +106,7 @@ def links(area):
             if cond and not st._check_route_condition(cond, False, o):
                 continue
             out.append(tgt)
-    if not _menu_targets(area):   # (a place with no menu buttons at all: its walked map's own ways out - Orre's Pyrite Building
+    if not _menu_targets(area) and not (MAPPED_LINKS and _walk_exits(area)):   # (a place with no menu buttons at all: its walked map's own ways out - Orre's Pyrite Building
         out += [t for t in _walk_exits(area, gated=True) if t not in out]   # lift to The Under, 11-23. Where a place still has menu buttons,
     out += [t for t in _rides(area, st) if t not in out]   # those carry its story gates; its map's barred ways aren't read here)
     for o in (a.get("route_menu") or []) + (a.get("explore_options") or []):   # (a menu EVENT that sails you: Hoenn's Sailors and
