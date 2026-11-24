@@ -184,6 +184,8 @@ _cr = [t for t, v in f.decor.items() if str(v).startswith("crack:")]
 check((f.w, f.h) == (32, 52) and len(_cr) >= 20 and all(not f.walkable(*t) for t in _cr) and set(f.exits.values()) == {"SINNOH_ROUTE_204"},
       f"Ravaged Path: 32 x 52; without Rock Smash its {len(_cr)} cracked rocks are in the way")
 story.inventory["HM_ROCK_SMASH"] = 1
+_rs_bv = list(story.badges.get("SINNOH", []))
+story.badges["SINNOH"] = sorted(set(story.badges.get("SINNOH", [])) | {"COAL"})   # (Platinum: Rock Smash needs the Coal Badge on the map; Jordan 11-24)
 r = route("RAVAGED_PATH", "SINNOH_ROUTE_204")
 f = r.run.floor
 check(not any(str(v).startswith("crack:") for v in f.decor.values()) and all(f.walkable(*t) for t in _cr),
@@ -197,6 +199,7 @@ while _todo:
         if _n not in _seen and 0 <= _n[0] < f.w and 0 <= _n[1] < f.h and f.walkable(*_n) and f.tiles[_n[1]][_n[0]] != core.SURF:
             _seen.add(_n); _todo.append(_n)
 check(_ex[1] in _seen, f"Ravaged Path: then its two mouths join on foot ({_ex[0]} to {_ex[1]})")
+story.badges["SINNOH"] = _rs_bv
 story.inventory["HM_ROCK_SMASH"] = _had
 
 # ---- Floaroma Town and Meadow
@@ -377,6 +380,8 @@ _trees = [(x, y) for y, row in enumerate(_tm["ETERNA_CITY"]["art"]) for x, c in 
 _gate = [p for p in _trees if p[1] == 9]
 check(len(_gate) == 3 and all(not t._open(p) for p in _gate), f"Eterna City: without Cut, three small trees shut the Galactic building's yard {_gate}")
 story.inventory["HM_CUT"] = 1
+_cut_bv = list(story.badges.get("SINNOH", []))
+story.badges["SINNOH"] = sorted(set(story.badges.get("SINNOH", [])) | {"FOREST"})   # (Platinum: Cut needs the Forest Badge on the map)
 t = town("ETERNA_CITY", None)
 check(all(t._open(p) for p in _gate), "Eterna City: with Cut the trees are gone and you can walk in")
 story.inventory["HM_CUT"] = 0
@@ -386,6 +391,7 @@ story.inventory["HM_CUT"] = 1
 r = route("SINNOH_ROUTE_212", "HEARTHOME_CITY")
 check(len(_cut) >= 8 and not any(str(v).startswith("cut:") for v in r.run.floor.decor.values()) and all(r.run.floor.walkable(*p) for p in _cut),
       f"Route 212: its {len(_cut)} small trees are in the way until you have Cut")
+story.badges["SINNOH"] = _cut_bv
 r = route("WAYWARD_CAVE", "SINNOH_ROUTE_206")
 _sl = [p for f in _tm["WAYWARD_CAVE"]["floors"] for row in f["art"] for p in row if p == "7"]
 check(len(_sl) >= 10, f"Wayward Cave: {len(_sl)} tiles of steep muddy slope need the Bicycle")
@@ -1438,7 +1444,9 @@ _drive(t, 900, lambda: story.story_flags.get("sinnoh_acuity_barry") and not t._b
 _bar = bool(story.story_flags.get("sinnoh_acuity_barry"))
 _wall = not t._open((12, 30))
 story.inventory["HM_ROCK_CLIMB"] = 1
-_climb = t._open((12, 30))
+_noclimb = not t._open((12, 30))   # (Platinum: Rock Climb needs the Icicle Badge too; Jordan 11-24)
+story.badges["SINNOH"] = story.badges["SINNOH"] + ["ICICLE"]
+_climb = t._open((12, 30)) and _noclimb
 t = town("SNOWPOINT_CITY", "SINNOH_ROUTE_217"); frames(t, 3)
 t._go("center", "OUT:27,41"); frames(t, 5); _drive(t, 200, lambda: not t._busy())
 _mp = [o for o in t.people.values() if o.get("text") == "Maylene"]
