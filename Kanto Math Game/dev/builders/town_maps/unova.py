@@ -4742,6 +4742,9 @@ MIST_GYM = room(108, {
            (1, 150, "Pilot Winslow", ["Pilot Winslow: You made it this far against the wind? Let's see!"], ["Pilot Winslow: Ready for the Leader!"])))},
 }, {(13, 45): ["MISTRALTON GYM", "Leader: Skyla", "The Highflying Girl"], (9, 45): ["MISTRALTON GYM", "Leader: Skyla"]}, (14, 12))
 MIST_GYM["title"] = "Mistralton Gym"
+MIST_GYM["gusts"] = {"from": "n", "lanes": [[1, 5, 21, 41]], "to": [11, 47],   # (the wind tunnel: the turbines at the back blow
+                     "lines": {"warn": "The turbines at the back are spinning up!",   #  toward the door; a wall upwind shelters
+                               "blown": "Whoosh! The wind blew you back to the entrance!"}}   #  you: src/world/gusts.py, main 11-24)
 MIST_CENTER = room(109, {
     0: {"text": "Pokémon Center", "action": "HEAL"}, 2: {"text": "Shop", "action": "SHOP"},
     3: _say("Clerk ", "Specialty Poke Balls are over here!"), 4: _say("Clerk  ", "The counter on the left sells everyday items."),

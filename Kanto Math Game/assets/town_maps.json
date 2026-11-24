@@ -793440,7 +793440,26 @@
       "The Highflying Girl"
      ]
     ],
-    "title": "Mistralton Gym"
+    "title": "Mistralton Gym",
+    "gusts": {
+     "from": "n",
+     "lanes": [
+      [
+       1,
+       5,
+       21,
+       41
+      ]
+     ],
+     "to": [
+      11,
+      47
+     ],
+     "lines": {
+      "warn": "The turbines at the back are spinning up!",
+      "blown": "Whoosh! The wind blew you back to the entrance!"
+     }
+    }
    },
    "center": {
     "theme": "room",

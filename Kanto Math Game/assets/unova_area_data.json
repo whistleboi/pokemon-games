@@ -7422,11 +7422,6 @@
         {
           "text": "Chargestone Cave",
           "target_area": "CHARGESTONE_CAVE"
-        },
-        {
-          "text": "Lentimas Town",
-          "target_area": "LENTIMAS_TOWN",
-          "condition": "b2_lentimas_flight"
         }
       ],
       "next_area": "UNOVA_ROUTE_7"
