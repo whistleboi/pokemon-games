@@ -485,4 +485,22 @@ _r = {"art": {"floors": [{"art": ["ooooo", "oooo>", "ooooo"], "exits": {">": "PA
 check([way_on_water(_r, i, "PASTORIA") for i in (0, 1)] == [True, False] and way_on_water(_r, 4, "PASTORIA") is None,
       "the sea edge's way is on the water, the gatehouse room's on land")
 
+print("a room with its own wild Pokemon (Relic Castle's Baltoy rooms, Black 2; 11-24)")
+from src.states.overworld.dungeon import with_rooms, art_recipe
+from src.dungeon import core as _core
+_bt = {"ALL": {"grass": [[343, 0, 100, 25, 27]]}}
+_m = with_rooms({"art": ["#####", "#.D.#", "#...#", "##v##"], "exits": {"v": "PALLET_TOWN"}, "inside": {"2,1": "baltoy"},
+                 "rooms": {"baltoy": {"art": ["#####", "#...#", "#...#", "##v##"], "exits": {"v": "OUT:2,1"}, "wild_tables": _bt},
+                           "plain": {"art": ["###", "#.#", "#v#"], "exits": {"v": "OUT:9,9"}}}})
+_lay = art_recipe(_m)["layout"]
+check(_lay[1].get("indoors") and _lay[1].get("wild_tables") == _bt and _lay[1].get("pool") is None,
+      "its floor keeps the room's own table (no 'nothing wild indoors' pool)")
+_dsx = DungeonState.__new__(DungeonState)
+_dsx.recipe = {"layout": _lay}
+_core.CURRENT_FLOOR, _was = 1, _core.CURRENT_FLOOR
+check(_dsx._floor_tables() == _bt, "in that room the wild Pokemon come from its table")
+_core.CURRENT_FLOOR = 0
+check(_dsx._floor_tables() is None, "...outside it, from the area's")
+_core.CURRENT_FLOOR = _was
+
 print(f"##### {fails} failures")

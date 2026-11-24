@@ -626,8 +626,8 @@ class Run:
                 floor.movers.append(Mover("trainer", spot[0], spot[1], (idx, payload), facing))
         lo, hi = (self.recipe.get("wild") or [4, 6])[:2]
         indoors = self._indoors(index)  # (a room on a route map: nothing wild, nothing lying about. The Safari Zone's rest houses)
-        if indoors:
-            lo = hi = 0
+        if indoors and not (self.recipe.get("layout") or [])[index].get("wild_tables"):   # (unless the room has its own wild
+            lo = hi = 0                                                                    #  Pokemon: Relic Castle's Baltoy rooms)
         for _ in range(self.rng.randint(lo, hi)):  # (a drawn map is one room: away from you is enough)
             self._spawn_wild(floor, None if self.recipe.get("layout") else start_room)
         reach = distances(floor, floor.start)  # (loot lands where you can walk to it from here: never out on the water)
