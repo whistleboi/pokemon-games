@@ -109,4 +109,4 @@ g.change_state(PokemonPartyMenuState(g, city))
 shot("party")
 cb = g.current_state.cancel_btn
 check(cb.rect.right <= g.width - 10 and g.assets.fonts["s_med"].size("CANCEL")[0] < cb.rect.w, "CANCEL fits")
-print("FAILURES:", fails)
+print(f"##### {fails} failures")

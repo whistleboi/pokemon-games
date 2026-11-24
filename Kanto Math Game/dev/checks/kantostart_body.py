@@ -238,4 +238,4 @@ check(max(az["levels"]) <= levels.gym_aces("JOHTO")[2] + 3, f"the Azalea rival's
 check(levels._area_levels(g)["JOHTO_ROUTE_36"] == 13, "Route 36 at HeartGold/SoulSilver's Lv 12-15 (canon, 10-29)")
 story.badges["JOHTO"] = []
 
-print(f"\n{'ALL PASS' if not fails else str(fails) + ' FAIL(S)'}")
+print(f"##### {fails} failures")

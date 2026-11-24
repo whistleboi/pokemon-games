@@ -561,4 +561,4 @@ story.inventory.clear(); story.inventory.update(_inv0)
 story.story_flags.clear(); story.story_flags.update(_flags0)
 story.inventory.clear(); story.inventory.update(_inv0)
 story.player_team, story.money = _team0, _money0
-print(f"FAILURES: {fails}")
+print(f"##### {fails} failures")

@@ -222,3 +222,4 @@ check(all(not _cs.is_case(k) for p in _bb.pages for k, _q in _bb.pocket_items(p)
 for _k in ("TM001", "TM002", "HM_CUT", "HELIX_FOSSIL", "FIRIUM_Z", "RED_APRICORN"):
     _inv.pop(_k, None)
 g.change_state(_city)
+print(f"##### {fails} failures")

@@ -369,6 +369,6 @@ check("PYRITE" in story.badges.get("ORRE", []) and not F.get("orre_tourney_PYRIT
 check(len({s_ for s_ in _heard if "takes the field" in s_}) >= 4, f"four opponents walked in, one by one {sorted({s_ for s_ in _heard if 'takes the field' in s_})}")
 story.badges["ORRE"] = sorted(set(_had) | {"PYRITE"}, key=lambda b_: ["PYRITE", "UNDER", "PHENAC", "ORRE"].index(b_))
 
-print("##### orre_b1:", len(fails), "failures")
+print(f"##### {len(fails)} failures")
 for f in fails:
     print("  -", f)

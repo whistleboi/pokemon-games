@@ -309,6 +309,6 @@ _snivy = d._mon_img(495, (0, 1))
 check(me is not None and _snivy is not None and _snivy.get_height() < me.get_height(),
       f"Snivy stands shorter than Nate ({getattr(_snivy, 'get_height', lambda: None)()} vs {getattr(me, 'get_height', lambda: None)()} px)")
 
-print("FAILURES:", len(fails))
+print(f"##### {len(fails)} failures")
 for f in fails:
     print("  FAIL", f)

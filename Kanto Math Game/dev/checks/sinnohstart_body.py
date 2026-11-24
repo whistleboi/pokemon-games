@@ -201,4 +201,4 @@ for f in ("sinnoh_starly_driven_off", "received_pokedex_sinnoh"):
 story._migrate_sinnoh_start()
 check(flags.get("received_pokedex_sinnoh"), "a save with a Sinnoh starter keeps catching")
 
-print(f"\n{'ALL PASS' if not fails else str(fails) + ' FAIL(S)'}")
+print(f"##### {fails} failures")

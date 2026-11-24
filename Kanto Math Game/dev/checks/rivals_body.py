@@ -45,4 +45,4 @@ check(len(xs) == 3 and len(f.rows) > f.visible_rows, f"{len(xs)} columns, {len(f
 first = f.cell_buttons[0].text
 f.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=5, pos=(600, 400))])
 check(f.first_row == 1 and f.cell_buttons[0].text != first or f.rows[1][0] == "towns", "the wheel scrolls the list")
-print("FAILURES:", fails)
+print(f"##### {fails} failures")

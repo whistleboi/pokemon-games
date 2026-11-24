@@ -365,6 +365,6 @@ print("9) The Journal")
 J = {j["id"]: j for j in g.loader.area_data.get("JOURNAL_MISSIONS", [])}
 check(all(k in J for k in ("orre_s7", "orre_s7b", "orre_s7c")), "Nett's rumour, the Snagem raid, the Deep Colosseum")
 
-print("FAILURES:", len(fails))
+print(f"##### {len(fails)} failures")
 for f in fails:
     print("  ", f)

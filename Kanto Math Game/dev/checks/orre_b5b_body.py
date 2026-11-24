@@ -360,6 +360,6 @@ if _had is None:
 else:
     F["xd_lovrina_beaten"] = _had
 
-print("FAILURES:", len(fails))
+print(f"##### {len(fails)} failures")
 for f_ in fails:
     print("  ", f_)

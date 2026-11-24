@@ -627,6 +627,6 @@ J = {j["id"]: j for j in g.loader.area_data.get("JOURNAL_MISSIONS", [])}
 check(all(k in J for k in ("orre_s6", "orre_s6b", "orre_s6c", "orre_s6d")), "Eagun, the Colosseum, XD001's heart, silent Pokemon")
 check(J["orre_s6c"]["completed_flag"] == "xd_lugia_purified", "XD001's task closes when Lugia is purified")
 
-print("FAILURES:", len(fails))
+print(f"##### {len(fails)} failures")
 for f in fails:
     print("  ", f)

@@ -632,4 +632,4 @@ check(_st["chain"] == 0 and not _st["patches"], "a step anywhere else: the chain
 check(_pr._shiny_chance(40) >= 1 / 200 and _pr._shiny_chance(0) < 1 / 4000, "shiny patches likelier with the chain (1 in 200 at 40)")
 story.repel_routes = _rep14
 story.story_flags.clear(); story.story_flags.update(_sv14)
-print(f"##### {fails} fails")
+print(f"##### {fails} failures")

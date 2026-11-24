@@ -321,4 +321,4 @@ g.current_state.on_select(3)
 check(g.current_state is city and any("Egg" in l for l in _said_nr[-1]), "an Egg can't be named yet")
 del city.show_message
 check(_nr.MAX_LEN == 12, "names up to 12 letters")
-print(f"##### menus: {fails} fails")
+print(f"##### {fails} failures")

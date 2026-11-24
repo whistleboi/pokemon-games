@@ -125,4 +125,4 @@ for pid, dex, var in ((9106, 15, "pinkan"), (9517, 130, "valencia")):
     b.draw(); pygame.image.save(g.screen, os.path.join(S, f"mega_{var}.png"))
     _forms.revert_form(me)
     check(me.form == var and _forms.player_form(g.assets, me, inv, False), f"after battle: {var} again")
-print(f"##### orangeforms: {fails} fails")
+print(f"##### {fails} failures")

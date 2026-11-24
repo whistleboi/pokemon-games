@@ -133,4 +133,4 @@ for starter in (390, 387, 393):
             r = play_eterna(team, correct)
             check(r.startswith("ok"), f"#{starter+1} {setup} correct={correct}: {r}")
             for p in team: p.heal_full()
-print("##### ", fails, "failures")
+print(f"##### {fails} failures")

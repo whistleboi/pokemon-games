@@ -303,6 +303,6 @@ check(jm["orre_m7b"]["completed_flag"] == ["orre_time_flute", "orre_f_disk"] and
       "Vander's thanks and the F-Disk are a step (R6 11-24); The Under follows it")
 check(jm["orre_s2a"]["completed_flag"] == "mt_battle_battlus", "the 100 is a side step")
 
-print("FAILURES:", len(fails))
+print(f"##### {len(fails)} failures")
 for f_ in fails:
     print("  ", f_)

@@ -335,6 +335,6 @@ left = [o.get("text") for o in t._people().values() if o.get("text") in ("Shady 
 check(not left and not story.story_flags.get("orre_phenac_folly"), f"no Folly fight, no sack, no guards ({left})")
 check(_rui.active(story), "Rui walks with them too")
 
-print("##### orre_pilot:", len(fails), "failures")
+print(f"##### {len(fails)} failures")
 for f in fails:
     print("  -", f)
