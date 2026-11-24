@@ -6,7 +6,7 @@ LIST=$C/suites.txt
 export PYTHONIOENCODING=utf-8
 
 _rows() { sed 's/\r$//; s/#.*//' "$LIST" | awk 'NF >= 2 && $1 != "alias" && $1 != "gone"'; }
-_gone() { sed 's/$//' "$LIST" | awk -v n="$1" '$1 == "gone" && $2 == n { $1 = $2 = ""; sub(/^ +/, ""); print; f = 1 } END { exit !f }'; }
+_gone() { sed 's/\r$//' "$LIST" | awk -v n="$1" '$1 == "gone" && $2 == n { $1 = $2 = ""; sub(/^ +/, ""); print; f = 1 } END { exit !f }'; }
 _has_tag() { _rows | awk -v n="$1" -v t="$2" '$1 == n { if (("," $3 ",") ~ ("," t ",")) f = 1 } END { exit !f }'; }
 _alias() { sed 's/\r$//; s/#.*//' "$LIST" | awk -v n="$1" '$1 == "alias" && $2 == n { $1 = $2 = ""; print; f = 1 } END { exit !f }'; }
 
