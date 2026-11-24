@@ -13,7 +13,8 @@ What a feat counts ("count"):
   Orre's (11-24): "snagged" (Shadow Pokemon of the region's shadow_pool snagged), "purified" (Shadow lines purified at
   least once, purified_line_<base>), "battle_cds" (XD's Battle CDs cleared);
 - counted as you play, per region (StoryManager.feat_counts {region: {kind: n}}), by note(): "trainers", "steps", "fish",
-  "finds" (Headbutt, Rock Smash), "evolved", "evo_items", "berries", "safari", any region's own event kinds.
+  "finds" (Headbutt, Rock Smash), "evolved", "evo_items", "berries", "safari", "rematches" (VS Seeker or phone rematches
+  won: dungeon.py), "swarm" (today's swarm Pokemon caught where it swarms: catching.py), any region's own event kinds.
 A tier is [goal, reward] with goal a number or "all" (the most there is: every species of the dex, every type in it);
 an optional third part is a flag an older mission paid it under (Kanto's "Catch 30..." missions: kanto_catch_30), so
 nobody is paid twice. Payouts go through pay(), called with the catch milestones (every town and catch)."""
