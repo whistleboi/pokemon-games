@@ -510,6 +510,10 @@ def wild(key):
         w8 = later(r, region)
         if w8:
             r["after"] = w8
+    own = (p.get("wild_levels") or {}).get("species") or {}   # (a Pokemon's own levels here: Valencia Park's evolved ones)
+    for r in out["land"] + [r for z in out["zones"] for r in z["rows"]]:
+        if str(r["id"]) in own:
+            r["lv"] = list(own[str(r["id"])])
     for r in out["dexnav"]:
         r.pop("after", None)   # (the DexNav's own gate is the story, not a region visited: its table says when)
     boss = p.get("area_boss")
@@ -557,21 +561,21 @@ def trainers_of(key):
     m = MAPS.get(key) or {}
     pool = p.get("trainer_pool") or []
     out = []
-    spots = [(s_, "on the map") for s_ in m.get("trainer_spots") or []]
+    spots = [(s_, "on the map", None) for s_ in m.get("trainer_spots") or []]
     names = m.get("floor_names") or []
     for i, fl in enumerate(m.get("floors") or []):
         if isinstance(fl, dict):
             nm = fix(names[i]) if i < len(names) and names[i] else f"Floor {i + 1}"
-            spots += [(s_, nm) for s_ in fl.get("trainer_spots") or []]
+            spots += [(s_, nm, f"floor_{i}") for s_ in fl.get("trainer_spots") or []]
     for rk, r in (m.get("rooms") or {}).items():
-        spots += [(s_, fix(r.get("title") or rk)) for s_ in r.get("trainer_spots") or []]
+        spots += [(s_, fix(r.get("title") or rk), rk) for s_ in r.get("trainer_spots") or []]
     used = set()
-    for spot, where in spots:   # (one pool entry per spot: four "Grunt" spots take the four Grunts, in order)
+    for spot, where, rk in spots:   # (one pool entry per spot: four "Grunt" spots take the four Grunts, in order)
         t = (next((t for t in pool if t.get("spot_name") == spot and id(t) not in used), None)
              or next((t for t in pool if t.get("name") == spot and id(t) not in used), None))
         if t:
             used.add(id(t))
-            out.append(dict(team(t, where), spot=True))
+            out.append(dict(team(t, where), spot=True, rk=rk))   # (rk: the room's own key - five rooms called "Cabin")
     gym = p.get("gym") or {}
     for t in gym.get("trainers") or []:
         out.append(team(t, "Gym"))
@@ -705,9 +709,12 @@ def place(key):
                                             "barred": deep_fix(fl.get("barred") or [])}
     for rk, r in (m.get("rooms") or {}).items():
         title = fix(r.get("title") or rk.replace("_", " ").title())
+        n_items = len(facts["items"])
         rf = {"title": title, "people": scan_map(r, by, title, facts), "signs": deep_fix(r.get("signs") or []),
               "scenes": deep_fix(r.get("scenes") or []), "barred": deep_fix(r.get("barred") or [])}
         facts["rooms"][rk] = rf
+        for it in facts["items"][n_items:]:
+            it.setdefault("rk", rk)
     # every other team in the place's data (rivals in trainer_pool / on_enter_event, scene battles), once each
     seen = {(t["name"], tuple(m["id"] for m in t["team"])) for t in facts["trainers"] + facts["battles"]}
     # a walked area's other trainer_pool trainers stand on free tiles of its map (dungeon.py: every pool trainer that
