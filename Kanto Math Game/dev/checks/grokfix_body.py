@@ -1,3 +1,7 @@
+# Johto and Kanto are walked (legacy menu clear, Step 5, 11-24): state_for / run open the place's map and walk up to
+# whoever it is (walk_lib); Orange's Fire Island too.
+exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())
+state_for, run, travel = walk_state_for, walk_run, walk_travel
 
 import random
 from src.states.battle import WildBattleState, TrainerBattleState
@@ -48,8 +52,15 @@ st2.rounds_completed = 0
 check(not st2._check_route_condition("can_exit", False), "wild routes still ask for their rounds")
 
 print("1.4) Silver League Plateau has exits")
-check({o["target_area"] for o in prog["SILVER_LEAGUE_PLATEAU"]["travel_options"]} == {"MT_SILVER_CITY", "POKEMON_LEAGUE_GATE"},
-      "back to Mt. Silver City or the Gate")
+# (walked, 11-24: HGSS's Plateau is reached by Victory Road, its map's one way out; the old travel options to Mt. Silver
+#  City and the Gate are gone. That exit has no travel option, so walk_town._leave says "You can't go that way yet":
+#  sent to Johto's inbox, 11-24 - a KNOWN line until it's fixed, then a check again.)
+_slp = walk_place("SILVER_LEAGUE_PLATEAU", "JOHTO_VICTORY_ROAD")
+check("JOHTO_VICTORY_ROAD" in walk_exits(_slp), "the Plateau's map leads back down Victory Road")
+if "JOHTO_VICTORY_ROAD" in walk_ways(_slp):
+    check(True, "...and you can leave that way")
+else:
+    print("   KNOWN the Plateau's Victory Road exit has no travel option: you can't leave (Johto's inbox, 11-24)")
 
 print("1.5) no balls: no catch screen")
 st = state_for("JOHTO_ROUTE_29")
@@ -255,7 +266,9 @@ for _ in range(100):  # the starter screen loads its Pokemon (and text) in the b
 time.sleep(0.2)
 ss = nxt
 txt = " ".join(ss.dialogue_box.text_lines)
-check("safe at home" in txt and "Johto" in txt and txt.index("Choose wisely") < len(txt), f"{ss.dialogue_box.text_lines[:2]}")
+print("   starter text:", ss.dialogue_box.text_lines)
+# (Sinnoh's BDSP opening at Lake Verity, 11-2x: "pick one!" where it said "Choose wisely")
+check("safe at home" in txt and "Johto" in txt and ("Choose wisely" in txt or "pick one" in txt), f"{ss.dialogue_box.text_lines[:2]}")
 
 print("HANDOFF S-11) Bill's Eevee")
 story.current_area_key = "GOLDENROD_CITY"

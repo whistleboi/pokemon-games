@@ -994,7 +994,7 @@ def _run_story_event(state, key, check, show):
         _say_then(state, lines, lambda: game.change_state(PikachuBeach(game, done, partner=25, team=[25])))
         return
     if ev.get("choose"):   # (pick one, kept as a story flag: {"flag", "ask", "choices": [{"text", "value"}], "done": [...]} - the Johto
-        from src.states.systems.pick_list import PickListState   #  Safari Zone's Area Setup, which of its ten layouts you walk into; 11-16)
+        from src.states.systems.pick_list import PickListState   #  Safari Zone's Area Setup, which of its twelve layouts you walk into; 11-16)
         ch = ev["choose"]
         rows = [(o["text"], o["value"]) for o in ch.get("choices", [])]
 

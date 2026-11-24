@@ -774,6 +774,7 @@ MAPS = {
     },
     # Dark Cave. From SoulSilver's own map data (zones D42R0102, D42R0101): the Violet side with Route 31's and Route 46's mouths, the Blackthorn side with Route 45's; joined by their real passage. Dark (Flash).
     "DARK_CAVE": {
+        "smash_wild": True,   # (HGSS: a broken rock may hide a wild Pokemon - the area's rock_smash pool; 11-24)
         "theme": "cave",
         "buildings": {},
         "floors": [
@@ -1536,7 +1537,7 @@ MAPS = {
         "signs": [["Ilex Forest", "So dense, sunlight barely reaches the ground."]],
         "overheads": [{"kind": "picture", "f": "ss_top/D36R0101.png", "at": [0, 0], "size": [64, 96], "px": 32}],
         "hidden": {"15,37": "ANTIDOTE", "36,26": "SUPER_POTION", "39,12": "FULL_HEAL", "33,14": "ETHER", "50,30": "TINY_MUSHROOM", "28,26": "REPEL", "10,32": "BIG_MUSHROOM", "53,48": "TINY_MUSHROOM", "42,17": "TINY_MUSHROOM"},
-        "people": ["ANTIDOTE", "X ATTACK", {"text": "Tree shaker", "action": "EVENT", "event": {"lines": ["I'm shaking trees with Headbutt. Sometimes a Pokemon falls out! Here, you try it with your Pokemon too."], "tutor": {"move": "HEADBUTT", "like": "HEADBUTT"}, "fail": ["Hmm, none of your Pokemon can learn Headbutt. Too bad!"]}}, "REVIVE", {"text": "Farfetch'd ", "action": "EVENT", "flag_condition": "not ilex_farfetchd_2", "event": {"lines": ["FARFETCH'D: Kwaa! It turns tail and heads back to the charcoal maker."], "flag": "ilex_farfetchd_2"}}, {"text": "Farfetch'd", "action": "EVENT", "flag_condition": "not ilex_farfetchd_1", "event": {"lines": ["FARFETCH'D: Kwaa! It hops off toward the charcoal maker, waving its leek."], "flag": "ilex_farfetchd_1"}}, {"text": "Charcoal apprentice", "action": "EVENT", "flag_condition": "not got_hm_cut_johto", "event": {"lines": ["Oh no... My boss's two Farfetch'd ran off, and they won't listen to me without a Badge. Could you find them in the forest?"]}}, "TM050", {"text": "Charcoal maker", "action": "EVENT", "event": {"lines": ["Have you seen our Farfetch'd? Without it we can't cut trees to make charcoal.", "Our Farfetch'd is back! You found it for us? Thank you, kid!", "Take this HM. It's Cut: it clears small trees out of your way.", "You'll need the Hive Badge from Azalea's Gym before your Pokemon will use it, though."], "gift_item": {"HM_CUT": 1}, "flag": "got_hm_cut_johto", "done": ["Teach Cut to a Pokemon and show the Hive Badge, and no small tree can stop you."], "requires": ["slowpoke_well_cleared", "ilex_farfetchd_1", "ilex_farfetchd_2"], "fail": ["Have you seen our two Farfetch'd? Without them we can't cut trees to make charcoal."]}, "color": "GOLD"}],
+        "people": ["ANTIDOTE", "X ATTACK", {"text": "Tree shaker", "action": "EVENT", "event": {"lines": ["I'm shaking trees with Headbutt. Sometimes a Pokemon falls out! Here, you try it with your Pokemon too."], "tutor": {"move": "HEADBUTT", "like": "HEADBUTT"}, "flag": "ilex_headbutt_tutor", "fail": ["Hmm, none of your Pokemon can learn Headbutt. Too bad!"], "done": ["Shake a tree with Headbutt and see what falls out!"]}}, "REVIVE", {"text": "Farfetch'd ", "action": "EVENT", "flag_condition": "not ilex_farfetchd_2", "event": {"lines": ["FARFETCH'D: Kwaa! It turns tail and heads back to the charcoal maker."], "flag": "ilex_farfetchd_2"}}, {"text": "Farfetch'd", "action": "EVENT", "flag_condition": "not ilex_farfetchd_1", "event": {"lines": ["FARFETCH'D: Kwaa! It hops off toward the charcoal maker, waving its leek."], "flag": "ilex_farfetchd_1"}}, {"text": "Charcoal apprentice", "action": "EVENT", "flag_condition": "not got_hm_cut_johto", "event": {"lines": ["Oh no... My boss's two Farfetch'd ran off, and they won't listen to me without a Badge. Could you find them in the forest?"]}}, "TM050", {"text": "Charcoal maker", "action": "EVENT", "event": {"lines": ["Have you seen our Farfetch'd? Without it we can't cut trees to make charcoal.", "Our Farfetch'd is back! You found it for us? Thank you, kid!", "Take this HM. It's Cut: it clears small trees out of your way.", "You'll need the Hive Badge from Azalea's Gym before your Pokemon will use it, though."], "gift_item": {"HM_CUT": 1}, "flag": "got_hm_cut_johto", "done": ["Teach Cut to a Pokemon and show the Hive Badge, and no small tree can stop you."], "requires": ["slowpoke_well_cleared", "ilex_farfetchd_1", "ilex_farfetchd_2"], "fail": ["Have you seen our two Farfetch'd? Without them we can't cut trees to make charcoal."]}, "color": "GOLD"}],
         "rooms": {"gate": {"title": "Gate", "theme": "room", "art": ["ccccccccccc", "ccccccccccc", "ccccccccccc", "ccccccccccc", "ccccccccccc", "ccccc^ccccc", "czz.N.N.zzc", "c.........c", "ccc.....ccc", "ccc.....ccc", "ccc.N...ccc", "ccc.....ccc", "ccc.....ccc", "ccc.....ccc", "c.........c", "czz..v..zzc", "ccccccccccc"], "exits": {"^": "JOHTO_ROUTE_34", "v": "OUT:12,17"}, "buildings": {}, "roofs": {"_things": {}, "_stairs": {"5,2": "foot"}, "_floor": [222, 206, 160], "_wall": [236, 232, 214], "_screen": True, "_picture": {"f": "ss_ground/R34R0201.png", "at": [0, 1], "px": 32}, "_buildings_in_picture": True, "_signs_in_picture": True}, "people": ["Girl", "Butterfree", "Woman"], "overheads": [{"kind": "picture", "f": "ss_top/R34R0201.png", "at": [0, 1], "size": [11, 17], "px": 32}]}},
         "inside": {"12,17": "gate", "13,17": "gate"},
     },
@@ -2798,6 +2799,7 @@ MAPS = {
     },
     # Cianwood City. From SoulSilver's own map data (zone T24, its whole 32 x 64): the beach town under the west cliff: Gym, Photo Studio, Pharmacy, Center, three houses, the drying racks, the cracked rocks up north, the Cliff Edge Gate's mouth in the rock; the sea east is Route 41.
     "CIANWOOD_CITY": {
+        "smash_wild": True,   # (HGSS: a broken rock may hide Krabby or Shuckle - the area's rock_smash pool; walk_town, 11-24)
         "art": [
             "ccccccccccccccccccccccoooooooooo",
             "ccccccccccccccccccccccoooooooooo",
@@ -6151,6 +6153,7 @@ MAPS = {
     },
     # Cliff Cave. From SoulSilver's own map data (zone D50R0101): the three levels inside the cliff, each with its own mouth onto Route 47, joined by their ladders.
     "JOHTO_CLIFF_CAVE": {
+        "smash_wild": True,   # (HGSS: a broken rock may hide a wild Pokemon - the area's rock_smash pool; 11-24)
         "theme": "cave",
         "buildings": {},
         "floors": [
@@ -8385,6 +8388,7 @@ MAPS = {
     },
     # Johto's Victory Road. From SoulSilver's own map data (zones D43R0101-03): 1F from the Reception Gate, 2F, 3F out to the Silver League's cliff foot; the rival waits on 3F where the game has him; every stair joined to its real far end.
     "JOHTO_VICTORY_ROAD": {
+        "smash_wild": True,   # (HGSS: a broken rock may hide a wild Pokemon - the area's rock_smash pool; 11-24)
         "theme": "cave",
         "buildings": {},
         "floors": [

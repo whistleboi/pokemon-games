@@ -861,7 +861,8 @@ class Soaring3DState(PlayState):
     def _land_on(self, spot):
         """Down onto a Mirage place: which legend is out, which place of its kind, today's hidden item (src/world/soaring.py)."""
         from src.world import soaring as landing
-        place = (S3.SPOT_PLACES.get(spot["area"]) or (None, None, None))[2]   # (its point on the map picture)
+        place = landing.today_place(self.game.story_manager, spot["area"]) or \
+            (S3.SPOT_PLACES.get(spot["area"]) or (None, None, None))[2]   # (today's place of its kind: each nook in turn, 11-24)
         extra = landing.on_landing(self.game.story_manager, spot["area"], place, self.rng)
         self._land(spot["area"], f"{self.eon_name} landed on {spot['name']}.{extra}")
 

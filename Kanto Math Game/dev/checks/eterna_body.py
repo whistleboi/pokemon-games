@@ -24,6 +24,10 @@ def run(b, frames=900, log=None):
     log = log if log is not None else []
     for _ in range(frames):
         st = g.current_state
+        if getattr(st, "npc_active", False):   # (the walked map's talk box: Barry's challenge, tapped through)
+            st.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=(640, 600))])
+            st.update(); st.draw()
+            continue
         box = getattr(st, "dialogue_box", None)
         if box is not None and box.visible:
             shown = tuple(box.text_lines)
@@ -65,15 +69,16 @@ def lv(pid, level, ivs=None):
 from src.states.overworld import CityState
 from collections import Counter
 story.level_cap_mode = "NONE"
+exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())   # (Hearthome is walked: Barry meets you on its map, 11-24)
+story.enter_region("SINNOH")
 
 
 def play_eterna(team, correct=True, label=""):
-    story.current_area_key = "HEARTHOME_CITY"  # Barry's first city battle (BDSP; Eterna's was removed)
     story.player_team = team
     story.story_flags.pop("defeated_rival_hearthome", None)
     story.story_flags["has_coal_badge"] = True
     story.badges["SINNOH"] = ["COAL", "FOREST"]
-    g.change_state(CityState(g))
+    walk_town("HEARTHOME_CITY", "SINNOH_ROUTE_208", play=False)  # Barry's first city battle (BDSP; Eterna's was removed)
     intro = g.current_state
     phases = Counter(); stuck = 0; last = None; questions = 0
     for frame in range(9000):
@@ -96,6 +101,10 @@ def play_eterna(team, correct=True, label=""):
                 continue
         elif not hasattr(st, "dialogue_box") and frame > 50 and not isinstance(st, type(intro)):
             break
+        if getattr(st, "npc_active", False):   # (the walked map's talk box: Barry's challenge, tapped through)
+            st.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=(640, 600))])
+            st.update(); st.draw()
+            continue
         box = getattr(st, "dialogue_box", None)
         if box is not None and box.visible:
             click(box.rect.center)
@@ -105,9 +114,12 @@ def play_eterna(team, correct=True, label=""):
         st.update()
         if isinstance(st, CityState) and frame > 50 and not isinstance(g.current_state, TrainerBattleState):
             break
+    if not questions:
+        return f"no battle ({type(g.current_state).__name__})"
     return f"ok ({type(g.current_state).__name__}, {questions} questions, won={story.story_flags.get('defeated_rival_hearthome')})"
 
 
+check(walked(walk_town("HEARTHOME_CITY", "SINNOH_ROUTE_208", play=False)), "Hearthome on its map")
 for starter in (390, 387, 393):
     for setup in ("solo", "fainted lead", "two"):
         a = lv(starter + 1, 26)

@@ -643,6 +643,18 @@ def _mauville_slots(maps):
     r["art"] = ["".join(row) for row in art]
 
 
+def _coin_case(maps):
+    """Encyclopedia (11-24): Hoenn had no Coin Case anywhere, and each region starts its own Bag, so Mauville's Game Corner
+    (and the Frontier's) turned everyone away. Emerald hands it out in Mauville; here the Game Corner's Coin Case man
+    gives one, once."""
+    r = ((maps.get("MAUVILLE_CITY") or {}).get("rooms") or {}).get("game_corner")
+    for p in (r or {}).get("people") or []:
+        if isinstance(p, dict) and p.get("text") == "Coin Case man":
+            p["event"] = {"lines": ["You need a Coin Case to play. Here, I've got a spare one!", "Keep your Coins safe in it!"],
+                          "gift_item": {"COIN_CASE": 1}, "flag": "got_coin_case_hoenn",
+                          "done": ["Coin Case man: Keep your Coins safe in that Coin Case!"]}
+
+
 def _part(m, floor, room):
     if room:
         return m["rooms"][room]
@@ -725,6 +737,7 @@ def apply(maps):
     _woods_researcher(maps)
     _drop_dupes(maps)
     _mauville_slots(maps)
+    _coin_case(maps)
     _h7(maps)
     for key, floor, room, x, y, who in PEOPLE:
         m = maps.get(key)

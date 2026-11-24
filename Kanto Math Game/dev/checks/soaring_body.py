@@ -86,9 +86,12 @@ story.current_area_key = AREA
 for k in [k for k in flags if k.startswith(("mirage_spot_", "mirage_here_"))]:
     flags.pop(k)
 st._land_on({"area": "HOENN_MIRAGE_FOREST", "name": "Mirage Forest"})
-fi = soaring.DAILY["forest"][2].index(tuple(S3.SPOT_PLACES["HOENN_MIRAGE_FOREST"][2]))
+fi = soaring.DAILY["forest"][2].index(tuple(soaring.today_place(story, "HOENN_MIRAGE_FOREST")))   # (today's place of its kind, 11-24: each nook in turn)
 check(flags.get(f"mirage_spot_forest_{fi}") and flags.get("mirage_daily_ready") is not None,
       f"landing on the Mirage Forest: its place ({fi + 1} of 8) and today's hidden item are set")
+import datetime as _dt
+check(len({soaring.today_place(story, "HOENN_MIRAGE_FOREST", _dt.date(2026, 1, 1) + _dt.timedelta(days=d)) for d in range(8)}) == 8,
+      "over eight days the Mirage Forest lands on each of its 8 places (each item nook comes round)")
 check(isinstance(g.current_state, AreaTransitionState) and g.current_state.next_area_key == "HOENN_MIRAGE_FOREST", "... and down you go")
 run_transition()
 check("HOENN_MIRAGE_ISLANDS" in S3.LAND_SPOTS and "HOENN_MIRAGE_ISLAND" not in S3.LAND_SPOTS

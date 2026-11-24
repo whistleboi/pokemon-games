@@ -13,6 +13,9 @@ def ids(lst):
     return [p.id for p in lst if p]
 
 
+exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())   # (the towns here are walked: New Bark, Olivine, 11-24)
+
+
 print("1) A Kanto game")
 story.region_stores, story.linked_regions = {}, set()
 story.starting_region = "KANTO"
@@ -64,6 +67,7 @@ city.show_message = lambda lines, callback=None: shown.append(lines)
 city._offer_move = lambda *a, **k: shown.append(["MOVE OFFER"])
 g.change_state(city)
 city.start()
+check(walked(city), "New Bark on its map")
 text = " ".join(" ".join(x) for x in shown)
 check("PCs are now linked" in text, "Professor: your PCs are linked")
 check(story.active_store == "LINKED" and story.linked_regions == {"KANTO", "JOHTO"}, "one linked storage")
@@ -145,5 +149,5 @@ story.player_team = [mk(155)]
 story.story_flags["received_starter_johto"] = True
 check(story.pending_starter() is None and "pending_starter" not in story.story_flags, "nothing pending once you have a starter")
 g.change_state(ow.CityState(g))
-check(isinstance(g.current_state, ow.CityState), "New Bark as normal afterwards")
+check(isinstance(g.current_state, ow.CityState) and walked(g.current_state), "New Bark as normal afterwards (its map)")
 print("FAILURES:", fails)

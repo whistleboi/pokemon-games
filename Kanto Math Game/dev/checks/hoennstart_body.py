@@ -14,6 +14,7 @@ def check(c, m):
 
 
 g.data.save = lambda *a, **k: None
+exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())   # (walked region: city() / route() open the maps, 11-24)
 said = []
 
 
@@ -37,12 +38,21 @@ story.balls_left = 0
 story.current_area_key = "LITTLEROOT_TOWN"
 
 
+def _arrive():
+    """On the walked map: what arrival says and does, played out up to a battle or a screen (11-24)."""
+    walk_said.clear()
+    walk_play(fight=False, off_map=True)
+    said.extend(walk_said)
+
+
 def city(area):
     story.current_area_key = area
     said.clear()
+    g.walk_town_pos = g.walk_town_exit = g.walk_town_room = None
     s = CityState(g)
     g.states["city"] = s
     g.change_state(s)
+    _arrive()
     return s
 
 
@@ -52,6 +62,7 @@ def route(area):
     s = PlayState(g)
     g.states["play"] = s
     g.change_state(s)
+    _arrive()
     return s
 
 
@@ -86,6 +97,8 @@ c.story_event("hoenn_birch_lab")
 check(story.story_flags.get("hoenn_birch_thanked") and any("Route 103" in l for l in said), "Birch: go meet my kid on Route 103")
 check(not story.catch_unlocked(), "still no catching")
 r = route("HOENN_ROUTE_103")
+if walked(g.current_state):   # (the rival waits on the walked map: walk up, 11-24)
+    walk_meet(g.current_state, "{rival_name}", fight=False)
 intro = g.current_state
 battle = intro.next_state if isinstance(intro, TrainerIntroState) else intro
 check(isinstance(battle, TrainerBattleState) and [p.id for p in battle.opponent_team] == [255]

@@ -3,7 +3,7 @@
 - Every region. You get it at the games' own spot (Kanto / Sevii: Vermilion City; Sinnoh: Route 207; Orange 5.7:
   Kinnow Island), else after your
   2nd badge in that region, the next place you arrive.
-- A Bag item, used on a route map: each trainer in view you beat today has about a 1 in 3 chance to want a rematch: they
+- A Bag item, used on a route map: each trainer in view you beat today has a 70% chance (50% in Sinnoh, as Platinum) to want a rematch: they
   come back with a "!" and battle you when you meet them. It recharges after 100 steps on the maps.
 - How strong: the games' own rematch team where we have one (a phone trainer's tiers, SoulSilver's), else the trainer's
   usual team levelled up to your badges' level. Rewards grow with the rematch's level.

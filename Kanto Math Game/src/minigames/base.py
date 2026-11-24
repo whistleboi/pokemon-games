@@ -126,7 +126,8 @@ class Minigame(GameState):
 
     @classmethod
     def title_for(cls, game):
-        """The game's name where it's played ("Taillow Flight" in Hoenn)."""
+        """The game's name where it's played: its own title, unless a game names itself by region (none does yet; PikaFly
+        is always "Pikafly")."""
         return cls.title
 
     def __init__(self, game, on_done, level=0, background=None, leader=None, team=None, partner=None, seed=None):
