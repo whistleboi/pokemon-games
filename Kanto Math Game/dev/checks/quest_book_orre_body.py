@@ -41,9 +41,7 @@ exec(open("dev/checks/walk_lib.py", encoding="utf-8").read())   # (11-24: the Jo
 city = walk_town(story.current_area_key, None, play=False)
 OBADGE = {"orre_m14": "PHENAC", "orre_m4c": "PYRITE", "orre_m6c": "AGATE", "orre_m10y": "SNAGEM", "orre_m10d": "GATEON",
           "orre_m17d": "KEY_LAIR", "orre_m19": "CITADARK", "orre_m20": "REALGAM"}
-OSCENE = {"orre_m2b": ["orre_wakin"],          # (the mayor sends you for Poke Balls)
-          "orre_m4": ["orre_power_out"],        # (Duking's windmill stops)
-          "orre_m10": ["orre_data_rom"],        # (Ein drops his Data ROM)
+OSCENE = {"orre_m10": ["orre_data_rom"],        # (Ein drops his Data ROM)
           "orre_m18c": ["orre_part2"],          # (Evice beaten: "five years later")
           }   # (Makan fixing Gateon's bridges is the first "A Machine Part" chapter's own "done")
 n_o = 0
