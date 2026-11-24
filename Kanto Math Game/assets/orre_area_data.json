@@ -18774,7 +18774,7 @@
           {
             "name": "Elite Four Eagun",
             "class": "ELITE_FOUR",
-            "sprite": "orre_fun_old_man.png",
+            "sprite": "orre_eagun.png",
             "is_boss_battle": true,
             "team": [
               25,

@@ -332744,7 +332744,7 @@
       ],
       "cast": [
        {
-        "sheet": "orre_trainer_fun_old_man.png",
+        "sheet": "orre_npc_eagun2.png",
         "from": [
          5,
          3
@@ -335665,7 +335665,7 @@
        "battle": {
         "name": "Myth Trainer Eagun",
         "class": "MYTH_TRAINER",
-        "sprite": "orre_fun_old_man.png",
+        "sprite": "orre_eagun.png",
         "team": [
          172,
          172,
