@@ -573,34 +573,24 @@ def _xd5a(maps):
 # ------------------------------------------------------------------ 11-24: Gateon's islands (XD's Bridge System) and the lighthouse Gym
 # Jordan 11-24 (review/gateon_islands_plan.png in kanto_handoff/orre_map_tools): six movable bridges, raised till Makan fixes
 # them (xd_gateon_bridges); Cyle on the north island (XD's cliff), Kilen on the lighthouse roof (XD's). The fan game's
-# lighthouse Gym kept ("keep the gym"): after the title, three guardians by each floor's stairs, then Jasmine on the roof -
-# her team the fan game's own (Lv 55 there, its rematch Lv 70 here: after the title), Gen 3 moves and items; the Mineral
-# Badge a keepsake (Orre's badges stay the four tournaments'); her prize HGSS Jasmine's TM, Iron Tail.
+# lighthouse Gym kept ("keep the gym"): three guardians by each floor's stairs, then Jasmine on the roof. S3 (11-24): it is
+# badge 5, the Gateon Badge, in Part 2 (Lv 36-41, Kanto's caps); her prize HGSS Jasmine's TM, Iron Tail.
 GATEON_BRIDGES = [(37, 22, 40, 23), (23, 22, 26, 23), (31, 18, 32, 21), (17, 18, 18, 21), (31, 25, 32, 28), (17, 28, 18, 31)]   # (towns.py "bridges")
 
 
-def _guardian(name, pid, flag):
-    return {"text": f"Lighthouse {name}", "action": "BOSS", "color": "RED", "condition": "orre_part2",   # (S3 sets the Gym's place: badge 5)
+def _guardian(name, pid, flag, level):
+    return {"text": f"Lighthouse {name}", "action": "BOSS", "color": "RED", "condition": "orre_part2",   # (S3: the Gym of badge 5)
             "flag_condition": f"not {flag}",
-            "boss": {"id": pid, "name": name, "level": 65, "victory_flag": flag,
+            "boss": {"id": pid, "name": name, "level": level, "victory_flag": flag,
                      "lines": [f"{name} crackles with stored power. It guards the stairs!"]}}
 
 
-JASMINE_TEAM = [208, 227, 212, 376, 82, 101]   # Steelix, Skarmory, Scizor, Metagross, Magneton, Electrode (the fan game's)
 JASMINE = {"text": "Gym Leader Jasmine", "action": "EVENT", "color": "GOLD", "condition": "orre_part2", "event": {"stages": [
-    {"requires": ["gateon_lh_electabuzz", "gateon_lh_electrode", "gateon_lh_ampharos"], "flag": "gateon_jasmine_beaten",
+    # (S3, 11-24: badge 5 - her team, prize and badge are GATEON_PORT's "gym" in orre_area_data.json; src/world/orre_gym.py runs
+    #  the Gym's math game, then her battle; the three guardians first, as the fan game has it)
+    {"requires": ["gateon_lh_electabuzz", "gateon_lh_electrode", "gateon_lh_ampharos"],
      "fail": ["Jasmine: The lighthouse's Pokemon guard the stairs for me. Get past all three, then we'll battle."],
-     "lines": ["Jasmine: ...You got past all three of the lighthouse's Pokemon? Then you've earned a battle.",
-               "Jasmine: I came to Orre to see its Colosseums. Steel types don't bend - let's see if you do."],
-     "battle": _battle("Gym Leader Jasmine", "LEADER", "jasmine.png", JASMINE_TEAM, [70] * 6,
-                       [["ROCK-SLIDE", "EXPLOSION", "EARTHQUAKE", "IRON-TAIL"], ["SPIKES", "DRILL-PECK", "TOXIC", "PROTECT"],
-                        ["METAL-CLAW", "SILVER-WIND", "BRICK-BREAK", "SWORDS-DANCE"], ["METEOR-MASH", "EARTHQUAKE", "EXPLOSION", "ROCK-SLIDE"],
-                        ["THUNDERBOLT", "THUNDER-WAVE", "TOXIC", "PROTECT"], ["THUNDERBOLT", "EXPLOSION", "THUNDER-WAVE", "LIGHT-SCREEN"]],
-                       team_items=["QUICK_CLAW", "LEFTOVERS", "SCOPE_LENS", "FOCUS_BAND", "LEFTOVERS", "SCOPE_LENS"],
-                       rewards={"balls": 0, "TM265": 1},
-                       dialogue={"player_won": ["Jasmine: ...You're stronger than steel. Here - the Mineral Badge.",
-                                                "Jasmine: It means nothing to Orre's League, but it means something to me. And take this TM: Iron Tail."]})}],
-    "done": ["Jasmine: The lighthouse light reaches past Citadark on a clear night. I'll keep it burning."]}}
+     "world": "orre_gym"}]}}
 KILEN_ROOF = _fight("Bodybuilder Kilen", "xd:Story:14", "xd_gateon_kilen",
                     "Bodybuilder Kilen: Up here every day while the bridge was out... and you finally climbed up. Fight!",
                     "Bodybuilder Kilen: Lost to a kid. Back to my push-ups.", condition="xd_gateon_bridges")
@@ -626,9 +616,9 @@ def _gateon_islands(maps):
                              "lines": ["The movable bridge is raised. It's been stuck like that for ages."]})
     m["barred"] = bars
     r = m["rooms"]
-    _by_text(r["lighthouse"], "Lighthouse Electabuzz", _guardian("Electabuzz", 125, "gateon_lh_electabuzz"))
-    _by_text(r["lighthouse_2f"], "Lighthouse Electrode", _guardian("Electrode", 101, "gateon_lh_electrode"))
-    _by_text(r["lighthouse_3f"], "Lighthouse Ampharos", _guardian("Ampharos", 181, "gateon_lh_ampharos"))
+    _by_text(r["lighthouse"], "Lighthouse Electabuzz", _guardian("Electabuzz", 125, "gateon_lh_electabuzz", 36))
+    _by_text(r["lighthouse_2f"], "Lighthouse Electrode", _guardian("Electrode", 101, "gateon_lh_electrode", 37))
+    _by_text(r["lighthouse_3f"], "Lighthouse Ampharos", _guardian("Ampharos", 181, "gateon_lh_ampharos", 38))
     _by_text(r["lighthouse_roof"], "Gym Leader Jasmine", JASMINE)
     _by_text(r["lighthouse_roof"], "Bodybuilder Kilen", KILEN_ROOF)
 

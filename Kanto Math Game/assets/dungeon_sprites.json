@@ -76,6 +76,15 @@
     ]
   },
   "figures": {
+    "REALGAM_TOWER:GYM LEADER BIRCH": {
+      "sheet": "orre_trainer_leader_birch.png"
+    },
+    "XD_CIPHER_KEY_LAIR:GYM LEADER NORMAN": {
+      "sheet": "orre_trainer_leader_norman.png"
+    },
+    "XD_CITADARK_ISLE:GYM LEADER DRAKE": {
+      "sheet": "orre_trainer_leader_drake.png"
+    },
     "IRON_ISLAND:Byron": {"sheet": "pt_leader7.png"},
     "IRON_ISLAND:Riley": {"sheet": "pt_seven2.png"},
     "VALOR_LAKEFRONT:Suite guest": {"sheet": "pt_woman2.png"},
@@ -17111,7 +17120,7 @@
     "orre_leader_duking.png": "orre_npc_duking.png",
     "orre_leader_blaine_erika.png": "orre_trainer_leader_erika.png",
     "orre_leader_pryce.png": "orre_trainer_leader_pryce.png",
-    "orre_leader_jasmine.png": "orre_trainer_leader_jasmine.png",
+    "orre_leader_jasmine.png": "orre_trainer_leader_jasmine.png", "orre_leader_norman.png": "orre_trainer_leader_norman.png", "orre_leader_drake.png": "orre_trainer_leader_drake.png", "orre_leader_birch.png": "orre_trainer_leader_birch.png",
     "acetrainer_m.png": "orre_trainer_ace_trainer.png",
     "beauty.png": "orre_trainer_beauty.png",
     "orre_bodybuilder.png": "orre_trainer_bodybuilder.png",

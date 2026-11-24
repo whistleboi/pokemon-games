@@ -497,7 +497,8 @@
           "double": true,
           "badge_reward": "PHENAC",
           "rewards": {
-            "balls": 5
+            "balls": 5,
+            "TM011": 1
           },
           "dialogue": {
             "intro": [
@@ -839,7 +840,8 @@
           "double": true,
           "badge_reward": "PYRITE",
           "rewards": {
-            "balls": 5
+            "balls": 5,
+            "TM064": 1
           },
           "dialogue": {
             "intro": [
@@ -2838,7 +2840,9 @@
           "double": true,
           "badge_reward": "AGATE",
           "rewards": {
-            "balls": 5
+            "balls": 5,
+            "TM168": 1,
+            "TM141": 1
           },
           "dialogue": {
             "intro": [
@@ -10968,6 +10972,100 @@
       "next_area": "THE_UNDER"
     },
     "GATEON_PORT": {
+      "gym": {
+        "trainers": [],
+        "leader": {
+          "name": "Gym Leader Jasmine",
+          "class": "GYM_LEADER",
+          "sprite": "orre_leader_jasmine.png",
+          "is_boss_battle": true,
+          "team": [
+            82,
+            101,
+            227,
+            375,
+            212,
+            208
+          ],
+          "levels": [
+            38,
+            38,
+            39,
+            39,
+            40,
+            41
+          ],
+          "team_moves": [
+            [
+              "THUNDERBOLT",
+              "TRI-ATTACK",
+              "THUNDER-WAVE",
+              "SUPERSONIC"
+            ],
+            [
+              "SHOCK-WAVE",
+              "SWIFT",
+              "LIGHT-SCREEN",
+              "SELF-DESTRUCT"
+            ],
+            [
+              "STEEL-WING",
+              "AIR-CUTTER",
+              "SPIKES",
+              "SAND-ATTACK"
+            ],
+            [
+              "METAL-CLAW",
+              "CONFUSION",
+              "SCARY-FACE",
+              "PURSUIT"
+            ],
+            [
+              "METAL-CLAW",
+              "FURY-CUTTER",
+              "QUICK-ATTACK",
+              "SWORDS-DANCE"
+            ],
+            [
+              "IRON-TAIL",
+              "ROCK-SLIDE",
+              "DIG",
+              "SCREECH"
+            ]
+          ],
+          "team_items": [
+            "MAGNET",
+            "QUICK_CLAW",
+            "LEFTOVERS",
+            "SCOPE_LENS",
+            "FOCUS_BAND",
+            "SITRUS_BERRY"
+          ],
+          "double": true,
+          "badge_reward": "GATEON",
+          "victory_flag": "gateon_jasmine_beaten",
+          "rewards": {
+            "balls": 5,
+            "TM265": 1
+          },
+          "dialogue": {
+            "intro": [
+              "Jasmine: ...You got past all three of the lighthouse's Pokemon? Then you've earned a battle. Steel doesn't bend - let's see if you do."
+            ],
+            "player_won": [
+              "Jasmine: ...You're stronger than steel. Here - the Gateon Badge. And take this TM: Iron Tail."
+            ],
+            "player_lost": [
+              "Jasmine: The light stays on for you. Come back when you're ready."
+            ]
+          }
+        },
+        "requirements": {
+          "badges": 4,
+          "flag": "orre_part2",
+          "fail_text": "Jasmine: Come back when you hold four badges."
+        }
+      },
       "area_type": "town",
       "route_name": "Gateon Port",
       "region": "ORRE",
@@ -11020,7 +11118,10 @@
           "text": "Cipher Lab",
           "door": "cycle",
           "target_area": "XD_CIPHER_LAB",
-          "condition": "xd_machine_part_given"
+          "condition": [
+            "xd_machine_part_given",
+            "has_gateon_badge"
+          ]
         },
         {
           "text": "S.S. Libra",
@@ -11038,7 +11139,10 @@
           "text": "Citadark Isle",
           "door": "harbor",
           "target_area": "XD_CITADARK_ISLE",
-          "condition": "xd_master_ball"
+          "condition": [
+            "xd_master_ball",
+            "has_key_lair_badge"
+          ]
         },
         {
           "text": "Pokemon HQ Lab",
@@ -14645,7 +14749,8 @@
           "double": true,
           "badge_reward": "SNAGEM",
           "rewards": {
-            "balls": 5
+            "balls": 5,
+            "TM143": 1
           },
           "dialogue": {
             "intro": [
@@ -15753,13 +15858,107 @@
           "victory_flag": "orre_colosseum_won"
         },
         "requirements": {
-          "badges": 4,
+          "badges": 5,
           "flag": "beat_gonzap",
           "fail_text": "The tournament isn't open to you yet. Keep following Cipher's trail!"
         }
       }
     },
     "XD_CIPHER_KEY_LAIR": {
+      "gym": {
+        "trainers": [],
+        "leader": {
+          "name": "Gym Leader Norman",
+          "class": "GYM_LEADER",
+          "sprite": "orre_leader_norman.png",
+          "is_boss_battle": true,
+          "team": [
+            113,
+            128,
+            115,
+            242,
+            143,
+            289
+          ],
+          "levels": [
+            42,
+            43,
+            43,
+            44,
+            44,
+            45
+          ],
+          "team_moves": [
+            [
+              "SOFT-BOILED",
+              "EGG-BOMB",
+              "MINIMIZE",
+              "TOXIC"
+            ],
+            [
+              "TAKE-DOWN",
+              "HORN-ATTACK",
+              "SCARY-FACE",
+              "EARTHQUAKE"
+            ],
+            [
+              "MEGA-PUNCH",
+              "BITE",
+              "FAKE-OUT",
+              "DIZZY-PUNCH"
+            ],
+            [
+              "SOFT-BOILED",
+              "EGG-BOMB",
+              "SING",
+              "TOXIC"
+            ],
+            [
+              "BODY-SLAM",
+              "REST",
+              "SNORE",
+              "YAWN"
+            ],
+            [
+              "FACADE",
+              "SLACK-OFF",
+              "FEINT-ATTACK",
+              "COUNTER"
+            ]
+          ],
+          "team_items": [
+            "LEFTOVERS",
+            "QUICK_CLAW",
+            "SILK_SCARF",
+            "LEFTOVERS",
+            "CHESTO_BERRY",
+            "SILK_SCARF"
+          ],
+          "double": true,
+          "badge_reward": "KEY_LAIR",
+          "victory_flag": "orre_norman_beaten",
+          "rewards": {
+            "balls": 5,
+            "TM025": 1
+          },
+          "dialogue": {
+            "intro": [
+              "Norman: I've heard of a kid who beats the best trainers in Orre. Cipher's gone from this hall - it's a Gym now. Show me!"
+            ],
+            "player_won": [
+              "Norman: Your battle style is anything but normal. It reminds me of my son... The Key Lair Badge is yours, and this: Facade."
+            ],
+            "player_lost": [
+              "Norman: Strength is more than power. Think about that, and come back."
+            ]
+          }
+        },
+        "requirements": {
+          "badges": 5,
+          "flag": "xd_gorigan_beaten",
+          "fail_text": "Norman: Come back with five badges."
+        }
+      },
       "area_type": "dungeon",
       "route_name": "Cipher Key Lair",
       "region": "ORRE",
@@ -17163,6 +17362,15 @@
           "condition": "xd_smarton_lair"
         },
         {
+          "text": "GYM LEADER NORMAN",
+          "action": "EVENT",
+          "color": "GOLD",
+          "condition": "xd_gorigan_beaten",
+          "event": {
+            "world": "orre_gym"
+          }
+        },
+        {
           "text": "GREEVIL'S SCREEN",
           "action": "EVENT",
           "color": "GOLD",
@@ -17312,6 +17520,100 @@
       ]
     },
     "REALGAM_TOWER": {
+      "gym_birch": {
+        "trainers": [],
+        "leader": {
+          "name": "Gym Leader Birch",
+          "class": "GYM_LEADER",
+          "sprite": "orre_leader_birch.png",
+          "is_boss_battle": true,
+          "team": [
+            351,
+            225,
+            80,
+            351,
+            351,
+            154
+          ],
+          "levels": [
+            47,
+            48,
+            48,
+            49,
+            49,
+            50
+          ],
+          "team_moves": [
+            [
+              "WEATHER-BALL",
+              "SUNNY-DAY",
+              "EMBER",
+              "HEADBUTT"
+            ],
+            [
+              "PRESENT",
+              "ICY-WIND",
+              "AERIAL-ACE",
+              "BLIZZARD"
+            ],
+            [
+              "SURF",
+              "PSYCHIC",
+              "DISABLE",
+              "HEADBUTT"
+            ],
+            [
+              "WEATHER-BALL",
+              "RAIN-DANCE",
+              "THUNDERBOLT",
+              "WATER-GUN"
+            ],
+            [
+              "WEATHER-BALL",
+              "HAIL",
+              "BLIZZARD",
+              "POWDER-SNOW"
+            ],
+            [
+              "SOLAR-BEAM",
+              "BODY-SLAM",
+              "SYNTHESIS",
+              "RAZOR-LEAF"
+            ]
+          ],
+          "team_items": [
+            "CHARCOAL",
+            "NEVER_MELT_ICE",
+            "LEFTOVERS",
+            "MYSTIC_WATER",
+            "NEVER_MELT_ICE",
+            "MIRACLE_SEED"
+          ],
+          "double": true,
+          "badge_reward": "REALGAM",
+          "victory_flag": "orre_birch_beaten",
+          "rewards": {
+            "balls": 5,
+            "TM193": 1
+          },
+          "dialogue": {
+            "intro": [
+              "Birch: With Cipher gone I can finally go back to my duty - as this Gym's Leader! Ready for the final test? Weather and all!"
+            ],
+            "player_won": [
+              "Birch: Not bad at all! You're worthy of the final badge - the Realgam Badge. With it you may challenge Orre's Elite Four. And take Weather Ball!"
+            ],
+            "player_lost": [
+              "Birch: The weather turned against you. Study the sky and come back!"
+            ]
+          }
+        },
+        "requirements": {
+          "badges": 7,
+          "flag": "xd_greevil_beaten",
+          "fail_text": "Birch: Seven badges, then the final test!"
+        }
+      },
       "area_type": "town",
       "route_name": "Realgam Tower",
       "region": "ORRE",
@@ -17330,6 +17632,19 @@
           "text": "Realgam Tower: Cipher's Colosseum",
           "action": "GYM",
           "color": "GOLD"
+        },
+        {
+          "text": "GYM LEADER BIRCH",
+          "action": "EVENT",
+          "color": "GOLD",
+          "condition": [
+            "orre_part2",
+            "xd_greevil_beaten"
+          ],
+          "event": {
+            "world": "orre_gym",
+            "gym": "gym_birch"
+          }
         }
       ],
       "travel_options": [
@@ -19455,6 +19770,100 @@
       ]
     },
     "XD_CITADARK_ISLE": {
+      "gym": {
+        "trainers": [],
+        "leader": {
+          "name": "Gym Leader Drake",
+          "class": "GYM_LEADER",
+          "sprite": "orre_leader_drake.png",
+          "is_boss_battle": true,
+          "team": [
+            372,
+            130,
+            148,
+            230,
+            372,
+            330
+          ],
+          "levels": [
+            45,
+            46,
+            46,
+            47,
+            47,
+            48
+          ],
+          "team_moves": [
+            [
+              "DRAGON-BREATH",
+              "HEADBUTT",
+              "PROTECT",
+              "SCARY-FACE"
+            ],
+            [
+              "HYDRO-PUMP",
+              "TWISTER",
+              "BITE",
+              "DRAGON-RAGE"
+            ],
+            [
+              "DRAGON-RAGE",
+              "SLAM",
+              "AGILITY",
+              "THUNDER-WAVE"
+            ],
+            [
+              "TWISTER",
+              "OCTAZOOKA",
+              "AGILITY",
+              "SMOKESCREEN"
+            ],
+            [
+              "DRAGON-CLAW",
+              "HEADBUTT",
+              "PROTECT",
+              "SCARY-FACE"
+            ],
+            [
+              "DRAGON-CLAW",
+              "EARTHQUAKE",
+              "DRAGON-BREATH",
+              "SAND-TOMB"
+            ]
+          ],
+          "team_items": [
+            "DRAGON_FANG",
+            "MYSTIC_WATER",
+            "QUICK_CLAW",
+            "LEFTOVERS",
+            "LUM_BERRY",
+            "SITRUS_BERRY"
+          ],
+          "double": true,
+          "badge_reward": "CITADARK",
+          "victory_flag": "orre_drake_beaten",
+          "rewards": {
+            "balls": 5,
+            "TM078": 1
+          },
+          "dialogue": {
+            "intro": [
+              "Drake: Impressive. You climbed all the way to Greevil's door. Before you face him... do you dare challenge an ancient force?"
+            ],
+            "player_won": [
+              "Drake: You won... Then you are ready for what waits beyond. The Citadark Badge, and Dragon Claw - take them."
+            ],
+            "player_lost": [
+              "Drake: The dragons are not done with you. Come back."
+            ]
+          }
+        },
+        "requirements": {
+          "badges": 6,
+          "flag": "xd_eldes_beaten",
+          "fail_text": "Drake: Six badges first. Then the dragons."
+        }
+      },
       "area_type": "wild_route",
       "route_name": "Citadark Isle",
       "region": "ORRE",
@@ -21577,6 +21986,15 @@
           "condition": "xd_greevil_beaten"
         },
         {
+          "text": "GYM LEADER DRAKE",
+          "action": "EVENT",
+          "color": "GOLD",
+          "condition": "not:has_citadark_badge",
+          "event": {
+            "world": "orre_gym"
+          }
+        },
+        {
           "text": "CIPHER ADMIN ELDES",
           "action": "EVENT",
           "color": "GOLD",
@@ -21977,7 +22395,8 @@
                 ]
               }
             }
-          }
+          },
+          "condition": "has_citadark_badge"
         },
         {
           "text": "Gateon Port",
@@ -22274,6 +22693,7 @@
     {"id": "orre_m10y", "type": "MAIN", "title": "The Snagem Ruins", "description": "Team Snagem's old hideout in the desert is a Gym now. Its Leader, Pryce, waits in the cold halls. Win the Snagem Badge!", "condition": {"required_region": "ORRE", "flag": "orre_data_rom_given", "region_badges_less": 4}, "region": "ORRE", "completed_badge": "SNAGEM", "target": "SNAGEM_HIDEOUT", "reward": "Snagem Badge"},
     {"id": "orre_m10b", "type": "MAIN", "title": "Trouble at the HQ Lab", "description": "Professor Krane's Pokemon HQ Lab, near Gateon Port, works on purifying Shadow Pokemon. Pay it a visit.", "condition": {"required_region": "ORRE", "flag": "orre_part2", "flag_not": ["xd_krane_taken", "xd_lovrina_beaten"]}, "region": "ORRE", "completed_flag": "xd_krane_taken", "target": "POKEMON_HQ_LAB"},
     {"id": "orre_m10c", "type": "MAIN", "title": "A Machine Part", "description": "Cipher took Professor Krane. Lily needs a Machine Part for the Purify Chamber: ask Perr at Gateon Port's Parts Shop. His dad Makan is at Kaminko's House.", "condition": {"required_region": "ORRE", "flag": "xd_krane_taken", "flag_not": ["xd_machine_part_given", "xd_lovrina_beaten"]}, "region": "ORRE", "completed_flag": "xd_machine_part_given", "target": "GATEON_PORT"},
+    {"id": "orre_m10d", "type": "MAIN", "title": "The Gateon Lighthouse", "description": "Gateon's bridges are down again. Jasmine keeps a Gym in the lighthouse on the islands: get past its three guardians, climb to the roof and win the Gateon Badge!", "condition": {"required_region": "ORRE", "flag": "xd_gateon_bridges", "region_badges_less": 5}, "region": "ORRE", "completed_badge": "GATEON", "target": "GATEON_PORT", "reward": "Gateon Badge"},
     {"id": "orre_m11", "type": "MAIN", "title": "Lovrina's Cipher Lab", "description": "Datan traced Cipher's car to the old Shadow Pokemon Lab, reopened as the Cipher Lab. Rescue Professor Krane and beat Cipher Admin Lovrina!", "condition": {"required_region": "ORRE", "flag": "xd_machine_part_given", "flag_not": "xd_lovrina_beaten"}, "region": "ORRE", "completed_flag": "xd_lovrina_beaten", "target": "XD_CIPHER_LAB"},
     {"id": "orre_m11b", "type": "MAIN", "title": "Data for Nett", "description": "Professor Krane is home. Take his research data to Nett at the ONBS building in Pyrite Town.", "condition": {"required_region": "ORRE", "flag": "xd_lovrina_beaten", "flag_not": ["xd_nett_rom", "xd_exol_beaten"]}, "region": "ORRE", "completed_flag": "xd_nett_rom", "target": "PYRITE_TOWN"},
     {"id": "orre_m11c", "type": "MAIN", "title": "Duking's Poke Spots", "description": "Duking has found Poke Spots, where wild Pokemon appear. Meet him at the Rock Poke Spot off the Desert Trail, then the Oasis and the Cave.", "condition": {"required_region": "ORRE", "flag": "xd_nett_rom", "flag_not": ["xd_miror_cave", "xd_exol_beaten"]}, "region": "ORRE", "completed_flag": "xd_miror_cave", "target": "ORRE_POKE_SPOTS"},
@@ -22288,9 +22708,12 @@
     {"id": "orre_m17", "type": "MAIN", "title": "Cipher Key Lair", "description": "Cipher has a base in Gateon Port, the Key Lair. Get past the thug at its door.", "condition": {"required_region": "ORRE", "flag_not": ["xd_lair_guards", "xd_gorigan_beaten"], "flag": "orre_colosseum_won"}, "region": "ORRE", "completed_flag": "xd_lair_guards", "target": "XD_CIPHER_KEY_LAIR"},
     {"id": "orre_m17b", "type": "MAIN", "title": "The System Lever", "description": "Through the maze and the crate rooms: take the System Lever from its table, then put it in the Control Room's panel.", "condition": {"required_region": "ORRE", "flag": "xd_lair_guards", "flag_not": ["xd_lair_voltage", "xd_gorigan_beaten"]}, "region": "ORRE", "completed_flag": "xd_lair_voltage", "target": "XD_CIPHER_KEY_LAIR"},
     {"id": "orre_m17c", "type": "MAIN", "title": "Cipher Admin Gorigan", "description": "The power's up. Beat Smarton, then climb to Gorigan's hall and beat him to learn where Cipher's leader is.", "condition": {"required_region": "ORRE", "flag": "xd_lair_voltage", "flag_not": "xd_gorigan_beaten"}, "region": "ORRE", "completed_flag": "xd_gorigan_beaten", "target": "XD_CIPHER_KEY_LAIR"},
+    {"id": "orre_m17d", "type": "MAIN", "title": "Norman's Hall", "description": "With Gorigan beaten, his hall in the Key Lair has a new master: Gym Leader Norman. Win the Key Lair Badge!", "condition": {"required_region": "ORRE", "flag": "xd_gorigan_beaten", "region_badges_less": 6}, "region": "ORRE", "completed_badge": "KEY_LAIR", "target": "XD_CIPHER_KEY_LAIR", "reward": "Key Lair Badge"},
     {"id": "orre_m18", "type": "MAIN", "title": "Realgam Tower", "description": "Cipher's leader is behind Realgam Tower. Go in by the lobby's left door, cross the tower yard, and take the four coloured keys from Cipher's Admins in the Dome Halls.", "condition": {"required_region": "ORRE", "flag": "orre_data_rom_given", "flag_not": ["col_venus_realgam", "col_ein_realgam", "col_miror_realgam", "col_dakim_realgam"], "region_badges_min": 4}, "region": "ORRE", "completed_flag": ["col_venus_realgam", "col_ein_realgam", "col_miror_realgam", "col_dakim_realgam"], "target": "CIPHER_COMMAND"},
     {"id": "orre_m18b", "type": "MAIN", "title": "Inside the Tower", "description": "The four keys open the giant door. Get through the Tower Halls to the lifts at the far end.", "condition": {"required_region": "ORRE", "flag": ["col_venus_realgam", "col_ein_realgam", "col_miror_realgam", "col_dakim_realgam"], "flag_not": "col_gonzap_realgam"}, "region": "ORRE", "completed_flag": "col_gonzap_realgam", "target": "CIPHER_COMMAND"},
     {"id": "orre_m18c", "type": "MAIN", "title": "Cipher's Colosseum", "description": "Ride the lift to the roof. Four matches, then Nascour, then Cipher's leader - and no healing in between. Stock up first!", "condition": {"required_region": "ORRE", "flag": "col_gonzap_realgam", "flag_not": "orre_evice_beaten"}, "region": "ORRE", "completed_flag": "orre_evice_beaten", "target": "REALGAM_TOWER", "reward": "Five years later..."},
+    {"id": "orre_m19", "type": "MAIN", "title": "An Ancient Force", "description": "At the top of Citadark's Dome, Gym Leader Drake stands before Greevil's arena. Beat him for the Citadark Badge - only then will Greevil face you.", "condition": {"required_region": "ORRE", "flag": "xd_eldes_beaten", "region_badges_less": 7}, "region": "ORRE", "completed_badge": "CITADARK", "target": "XD_CITADARK_ISLE", "reward": "Citadark Badge"},
+    {"id": "orre_m20", "type": "MAIN", "title": "The Colosseum in the Sky", "description": "Cipher is finished. Professor Birch waits in Realgam Tower's Colosseum in the sky - he's its Gym Leader! Win the eighth badge, the Realgam Badge.", "condition": {"required_region": "ORRE", "flag": "xd_greevil_beaten", "region_badges_less": 8}, "region": "ORRE", "completed_badge": "REALGAM", "target": "REALGAM_TOWER", "reward": "Realgam Badge"},
     {"id": "orre_s1", "type": "SIDE", "title": "Professor Krane's Eevee", "description": "Professor Krane works at the Pokémon HQ Lab in Gateon Port. Pay him a visit!", "condition": {"required_region": "ORRE", "visited": "GATEON_PORT", "flag_not": "got_krane_eevee"}, "region": "ORRE", "completed_flag": "got_krane_eevee", "target": "GATEON_PORT"},
     {"id": "orre_s1b", "type": "SIDE", "title": "Ein's Data ROM", "description": "Ein left a Data ROM on his desk. Take it to Nett at the Kids Grid in The Under.", "condition": {"required_region": "ORRE", "flag": "orre_data_rom", "flag_not": "orre_data_rom_given"}, "region": "ORRE", "completed_flag": "orre_data_rom_given", "target": "THE_UNDER"},
     {"id": "orre_s2", "type": "SIDE", "title": "Mt. Battle", "description": "After the title, Vander waits at the very top of Mt. Battle, past Battlus in Area 10. Climb up and face him!", "condition": {"required_region": "ORRE", "flag": ["beat_orre_champion", "mt_battle_battlus"], "flag_not": "mt_battle_master_beaten"}, "region": "ORRE", "completed_flag": "mt_battle_master_beaten", "target": "MT_BATTLE", "reward": "Battle practice"},

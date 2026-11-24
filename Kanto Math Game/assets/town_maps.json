@@ -327505,7 +327505,7 @@
       "boss": {
        "id": 125,
        "name": "Electabuzz",
-       "level": 65,
+       "level": 36,
        "victory_flag": "gateon_lh_electabuzz",
        "lines": [
         "Electabuzz crackles with stored power. It guards the stairs!"
@@ -327590,7 +327590,7 @@
       "boss": {
        "id": 101,
        "name": "Electrode",
-       "level": 65,
+       "level": 37,
        "victory_flag": "gateon_lh_electrode",
        "lines": [
         "Electrode crackles with stored power. It guards the stairs!"
@@ -327657,7 +327657,7 @@
       "boss": {
        "id": 181,
        "name": "Ampharos",
-       "level": 65,
+       "level": 38,
        "victory_flag": "gateon_lh_ampharos",
        "lines": [
         "Ampharos crackles with stored power. It guards the stairs!"
@@ -327731,96 +327731,11 @@
           "gateon_lh_electrode",
           "gateon_lh_ampharos"
          ],
-         "flag": "gateon_jasmine_beaten",
          "fail": [
           "Jasmine: The lighthouse's Pokemon guard the stairs for me. Get past all three, then we'll battle."
          ],
-         "lines": [
-          "Jasmine: ...You got past all three of the lighthouse's Pokemon? Then you've earned a battle.",
-          "Jasmine: I came to Orre to see its Colosseums. Steel types don't bend - let's see if you do."
-         ],
-         "battle": {
-          "name": "Gym Leader Jasmine",
-          "class": "LEADER",
-          "sprite": "jasmine.png",
-          "team": [
-           208,
-           227,
-           212,
-           376,
-           82,
-           101
-          ],
-          "levels": [
-           70,
-           70,
-           70,
-           70,
-           70,
-           70
-          ],
-          "team_moves": [
-           [
-            "ROCK-SLIDE",
-            "EXPLOSION",
-            "EARTHQUAKE",
-            "IRON-TAIL"
-           ],
-           [
-            "SPIKES",
-            "DRILL-PECK",
-            "TOXIC",
-            "PROTECT"
-           ],
-           [
-            "METAL-CLAW",
-            "SILVER-WIND",
-            "BRICK-BREAK",
-            "SWORDS-DANCE"
-           ],
-           [
-            "METEOR-MASH",
-            "EARTHQUAKE",
-            "EXPLOSION",
-            "ROCK-SLIDE"
-           ],
-           [
-            "THUNDERBOLT",
-            "THUNDER-WAVE",
-            "TOXIC",
-            "PROTECT"
-           ],
-           [
-            "THUNDERBOLT",
-            "EXPLOSION",
-            "THUNDER-WAVE",
-            "LIGHT-SCREEN"
-           ]
-          ],
-          "rewards": {
-           "balls": 0,
-           "TM265": 1
-          },
-          "double": true,
-          "team_items": [
-           "QUICK_CLAW",
-           "LEFTOVERS",
-           "SCOPE_LENS",
-           "FOCUS_BAND",
-           "LEFTOVERS",
-           "SCOPE_LENS"
-          ],
-          "dialogue": {
-           "player_won": [
-            "Jasmine: ...You're stronger than steel. Here - the Mineral Badge.",
-            "Jasmine: It means nothing to Orre's League, but it means something to me. And take this TM: Iron Tail."
-           ]
-          }
-         }
+         "world": "orre_gym"
         }
-       ],
-       "done": [
-        "Jasmine: The lighthouse light reaches past Citadark on a clear night. I'll keep it burning."
        ]
       }
      },
@@ -329201,7 +329116,7 @@
      "c...c.....c",
      "c.........c",
      "cc.......cc",
-     "ccc.....ccc",
+     "ccc..N..ccc",
      "ccccccccccc"
     ],
     "exits": {
@@ -330047,7 +329962,8 @@
        }
       },
       "color": "GOLD"
-     }
+     },
+     "GYM LEADER BIRCH"
     ],
     "signs": [],
     "roofs": {
@@ -337034,7 +336950,10 @@
     },
     "parts": true,
     "people": [
-     "BATTLE CIPHER ADMIN GORIGAN",
+     [
+      "BATTLE CIPHER ADMIN GORIGAN",
+      "GYM LEADER NORMAN"
+     ],
      "GREEVIL'S SCREEN",
      "GORIGAN'S DESK"
     ],
@@ -337110,6 +337029,7 @@
    "Cipher Peon Angic": 3,
    "Cipher R&D Acrod": 3,
    "BATTLE CIPHER ADMIN GORIGAN": 4,
+   "GYM LEADER NORMAN": 4,
    "GREEVIL'S SCREEN": 4,
    "GORIGAN'S DESK": 4
   },
@@ -338127,7 +338047,10 @@
     },
     "parts": true,
     "people": [
-     "GRAND MASTER GREEVIL"
+     [
+      "GYM LEADER DRAKE",
+      "GRAND MASTER GREEVIL"
+     ]
     ],
     "trainer_spots": [],
     "roofs": {
@@ -338224,6 +338147,7 @@
    "CIPHER ADMIN ELDES": 5,
    "Cipher R&D Kaller": 5,
    "Cipher R&D Loket": 5,
+   "GYM LEADER DRAKE": 6,
    "GRAND MASTER GREEVIL": 6
   },
   "theme": "tunnel"
