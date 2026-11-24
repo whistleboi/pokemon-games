@@ -1162,6 +1162,12 @@ def step_to_next(st, m, here_a, nxt, area, kind="words", label=None):
         elif key[0] in "BZ" and TRIED[(L, key)] < 1:
             block.append((2, len(hit[1]), key, hit[0], words))
     tag = f"toward {area}" if kind == "words" else f"the marker's way out ({nxt})"
+    if outs and STATE.get("mission") == "tour" and len({o[3] for o in outs}) > 1:
+        for _tg in [area] + list(reversed((map_path(here_a, area) or [])[2:])):
+            _k = part_way(st, _tg)
+            _hit = next((_k for c, k, tl, w, d in things(st) if k[0] == "X" and len(k) > 2 and k[1] == nxt and _k in tl), None) if _k else None
+            if _hit is not None:
+                return do(kind, _k, f"{tag}: the way out to {nxt} that leads on (walked before)", label)
     if outs and SHUT[(here_a, nxt)] < 2:
         _, _, _, key, tile, words = min(outs)
         row = do(kind, tile, f"{tag}: {words}", label)
@@ -1619,6 +1625,7 @@ if ENDED == "CHAMPION" and os.environ.get("KPT_TOUR", "1") != "0":
     story.inventory.setdefault("SHOWBOAT_PASS", 1)   # (side quests' keys the story run never fetched: Kinnow's guest, Tracey's ticket)
     story.story_flags["got_showboat_pass"] = True
     story.story_flags["orange_mystic_ticket"] = True
+    story.story_flags["orange_mayor_met"] = True   # (the Mayor's side quest: his guard lets you into the sewers once you've met him)
     for _a, _b, _what, *_at in TOUR_LEGS:
         SHUT.clear()   # (ways the game refused during the story are open after the title: forget them each leg)
         PART_TRIED.clear()
