@@ -364,10 +364,9 @@ for _k, _want in _doors.items():
 t = town("CELESTIC_TOWN", None)
 if "ruins" not in (t.town_map.get("inside") or {}).values():   # (S4 11-24: the ruins are Platinum's room now, behind their doorway; no menu person)
     _dbad.append(("CELESTIC_TOWN", "ruins", "no such door"))
-for _k, _who in (("SUNYSHORE_CITY", "Lighthouse"),):
-    t = town(_k, None)
-    if not any(o.get("text") == _who for o in t.people.values()):
-        _dbad.append((_k, _who, "nobody stands there"))
+t = town("SUNYSHORE_CITY", None)
+if "lighthouse" not in (t.town_map.get("inside") or {}).values():   # (S6 11-24: the Vista Lighthouse is Platinum's rooms now, behind its door; no menu person)
+    _dbad.append(("SUNYSHORE_CITY", "lighthouse", "no such door"))
 check(not _dbad, f"the later towns' named buildings each open their own option ({sum(len(v) for v in _doors.values())} doors) {_dbad}")
 
 # ---- the games' own paths: what stands in the way till you have the move, the special floors, the opening walk to the lake
@@ -396,7 +395,7 @@ r = route("WAYWARD_CAVE", "SINNOH_ROUTE_206")
 _sl = [p for f in _tm["WAYWARD_CAVE"]["floors"] for row in f["art"] for p in row if p == "7"]
 check(len(_sl) >= 10, f"Wayward Cave: {len(_sl)} tiles of steep muddy slope need the Bicycle")
 r = route("VICTORY_ROAD_SINNOH", "SINNOH_POKEMON_LEAGUE")
-_nb = sum(row.count("b") for f in _tm["VICTORY_ROAD_SINNOH"]["floors"] for row in f["art"])
+_nb = sum(len(f.get("boxes") or []) for f in _tm["VICTORY_ROAD_SINNOH"]["floors"])   # (S6: pushed boulders now, the floors' "boxes")
 check(_nb >= 20, f"Victory Road: {_nb} Strength boulders stand where the game has them")
 # Victory Road 2F: Platinum's bike ramps (0xD7 ridden east, 0xD8 west): a short hop in normal gear, a long jump in top gear
 # (Shift held), the only ways into the north-west pockets (the Max Elixir's room), the Full Restore's and TM71's ledges.
@@ -1365,6 +1364,63 @@ _ids = {i for _ in range(40) for i in _fr._team(g, [0, 1, 2, 3], 3, fac="stower"
 _g4 = {str(i) for gg in _fr.data4(g)["groups"].values() for i in gg}
 check(_ids and all(str(i) in _g4 for i in _ids) and any(387 <= int(i) <= 493 for i in _ids),
       f"Sinnoh's Battle Tower: its Pokemon from Gen IV's groups, Gen 4 ones among them ({len(_ids)} seen)")
+
+# ---- S6 (11-24, s_s6_sunyshore.py): Volkner at the Vista Lighthouse, then his Gym's three rooms of turning walkways
+_sv = dict(story.story_flags)
+for _k in ("volkner_returned_to_gym", "sunyshore_gym_gears"):
+    story.story_flags.pop(_k, None)
+story.story_flags["spear_pillar_resolved"] = True
+_ad = __import__("json").load(open("assets/sinnoh_area_data.json", encoding="utf-8"))["STORY_PROGRESSION"]["SUNYSHORE_CITY"]
+_req = _ad["gym"]["requirements"].get("flag") == "volkner_returned_to_gym"
+t = town("SUNYSHORE_CITY", "SINNOH_ROUTE_222"); frames(t, 3)
+_door = t._room_for((54, 54)) == "lighthouse" if hasattr(t, "_room_for") else (54, 54) in t.doors
+t._go("lighthouse_top", "ROOM:lighthouse"); frames(t, 5); _drive(t, 200, lambda: not t._busy())
+_vk = next((p_ for p_, o in t._people().items() if str(o.get("text")) == "Volkner"), None)
+if _vk is not None:
+    t.player = t.anim_from = (_vk[0], _vk[1] + 1); t.anim = 0; t.facing = (0, -1)
+    t._talk(tuple(_vk)); _drive(t, 600, lambda: not t._busy() and not getattr(t, "npc_active", False))
+_met = bool(story.story_flags.get("volkner_returned_to_gym"))
+from src.world import sunyshore_gym as _SG
+t = town("SUNYSHORE_CITY", "SINNOH_ROUTE_222"); frames(t, 3)
+t._go("gym", "OUT:13,11"); frames(t, 5); _drive(t, 200, lambda: not t._busy())
+_gap0 = (4, 8) in t.barred          # (room 1, state 0: region 2 (4,8) is turned away)
+_drive(t, 300, lambda: not t._busy() and not getattr(t, "npc_active", False) and not getattr(getattr(t, "dialogue_box", None), "visible", False))
+t.player = t.anim_from = (2, 8); t.anim = 0; t.walk_goal = None; t.step(1, 0)   # (onto the west gear's middle: a quarter turn)
+for _q in range(120):
+    g.current_state.update()
+_drive(t, 300, lambda: not t._busy())
+_st = _SG.state(story, 0)
+_gap1 = (4, 8) not in t.barred and (9, 8) in t.barred   # (state 1: region 2 (4,8) open, region 6 (9,8) turned away)
+_pic = getattr(t, "_pic_now", None)
+_gap1 = _gap1 and str(_pic).endswith("C08GYM0101_g1.png")   # (and the room's live scene is the one with the gears turned)
+_rooms = all(r in t.town_map["rooms"] for r in ("gym_2", "gym_3", "lighthouse", "lighthouse_top"))
+_vg = any((p_ if isinstance(p_, str) else p_.get("text") if isinstance(p_, dict) else None) == "Gym" for p_ in t.town_map["rooms"]["gym_3"].get("people", []))
+check(_req and _door and _met and _gap0 and _st == 1 and _gap1 and _rooms and _vg,
+      f"Sunyshore: Volkner at the Vista Lighthouse opens his Gym; its walkways turn as you step on a gear's middle, the scene with Platinum's gears turned (Platinum's) ({_req}, {_door}, {_met}, {_gap0}, {_st}, {_gap1} {_pic}, {_rooms}, {_vg})")
+story.story_flags.clear(); story.story_flags.update(_sv)
+
+# ---- S6 (11-24, s_s6_victory_road.py): Victory Road's Strength boulders pushed a tile at a time, back at their start on coming in
+_vr = _tm["VICTORY_ROAD_SINNOH"]["floors"]
+_n = (len(_vr[0].get("boxes") or []), len(_vr[4].get("boxes") or []))
+_sv, _bv = dict(story.story_flags), list(story.badges.get("SINNOH", []))
+story.badges["SINNOH"] = ["COAL", "FOREST", "COBBLE", "FEN", "RELIC", "MINE", "ICICLE", "BEACON"]
+story.inventory["HM_STRENGTH"] = 1
+story.story_flags.pop("boxes_VICTORY_ROAD_SINNOH_0", None)
+r = route("VICTORY_ROAD_SINNOH", "SINNOH_ROUTE_223")
+r.run.jump_floor(0, (19, 4)); frames(r, 3); r._place_boxes()
+_b = next((tuple(b) for b in _vr[0]["boxes"] for d in ((1, 0), (-1, 0), (0, 1), (0, -1))
+           if r.run.floor.walkable(b[0] - d[0], b[1] - d[1]) and r.run.floor.tile(b[0] + d[0], b[1] + d[1]) == 1
+           and (b[0] + d[0], b[1] + d[1]) not in r.run.floor.decor), None)
+_d = next(d for d in ((1, 0), (-1, 0), (0, 1), (0, -1)) if _b and r.run.floor.walkable(_b[0] - d[0], _b[1] - d[1])
+          and r.run.floor.tile(_b[0] + d[0], _b[1] + d[1]) == 1 and (_b[0] + d[0], _b[1] + d[1]) not in r.run.floor.decor) if _b else None
+_moved = bool(_b) and r._push_box(_b, *_d) and str(r.run.floor.decor.get((_b[0] + _d[0], _b[1] + _d[1]), "")).startswith("box:")
+story.last_area_key = "SINNOH_ROUTE_223"
+r = route("VICTORY_ROAD_SINNOH", "SINNOH_ROUTE_223")
+r.run.jump_floor(0, (19, 4)); frames(r, 3); r._place_boxes()
+_back = bool(_b) and str(r.run.floor.decor.get(_b, "")).startswith("box:")
+check(_n == (16, 10) and _moved and _back,
+      f"Victory Road: Platinum's 26 Strength boulders (2F {_n[0]}, the side room {_n[1]}) pushed a tile at a time, back at their start when you come in again ({_b}, {_d}, {_moved}, {_back})")
+story.story_flags.clear(); story.story_flags.update(_sv); story.badges["SINNOH"] = _bv
 
 # ---- S5 (11-24): Route 213's gatehouse is a room again, walked through (main a91de160: arrival by land or by sea)
 story.badges["SINNOH"] = ["COAL", "FOREST", "COBBLE", "FEN", "RELIC"]
