@@ -673,13 +673,12 @@ def flood(st, through=False, blocked=()):
     br = (getattr(st, "bridge", None) or {}) if is_town(st) else (getattr(st.run.floor, "bridge", None) or {})
     start = pos(st)
     if start in br:
-        ax = br[start] if (getattr(st, "deck", True) if is_town(st) else getattr(st.run, "deck", True)) else (br[start][1], br[start][0])
-        start = (start, ax)
+        start = (start, bool(getattr(st, "deck", True) if is_town(st) else getattr(st.run, "deck", True)))   # (on the deck or under it)
     prev, q = {start: None}, deque([start])
     while q:
         pn = q.popleft()
         p = _tile(pn)
-        mode = pn[1] if p in br and pn is not p else None
+        mode = pn[1] if p in br and pn is not p else None   # (on a bridge: True on its deck, False under it)
         for d in DIRS:
             if (p, d) in blocked:
                 continue
@@ -688,9 +687,9 @@ def flood(st, through=False, blocked=()):
             if r is None:
                 continue
             t, end = r
-            if p in br and t not in br and mode is not None and ad != mode:   # (off a bridge only the way you're crossing it)
+            if p in br and t not in br and mode is not None and (ad == br[p]) != mode:   # (off a bridge: along it from the deck, across it from under)
                 continue
-            tn = (t, (mode if p in br and mode is not None else ad)) if t in br else t
+            tn = (t, (mode if p in br and mode is not None else ad == br[t])) if t in br else t   # (onto it from off it: along it is the deck)
             if tn not in prev:
                 prev[tn] = (pn, d)
                 if not end:
@@ -779,7 +778,7 @@ def route(st, goal, through=False, blocked=(), prev=None):
     goal = tuple(goal)
     bump = None
     pad = is_town(st) and goal in (getattr(st, "links", None) or {}) and goal != pos(st)   # (a warp pad: it's stepped onto, wherever that takes you; 11-17: standing on it by coming back through its far pad isn't taking it)
-    _key = lambda t: t if t in prev else next((k for k in ((t, (0, 1)), (t, (1, 0))) if k in prev), None)
+    _key = lambda t: t if t in prev else next((k for k in ((t, True), (t, False)) if k in prev), None)
     if _key(goal) is not None and not pad:
         end = _key(goal)
     else:
