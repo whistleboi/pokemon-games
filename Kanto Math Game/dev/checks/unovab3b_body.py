@@ -23,24 +23,7 @@ for a in ("CASTELIA_CITY", "UNOVA_ROUTE_4", "DESERT_RESORT_ENTRANCE", "DESERT_RE
 said = []
 
 
-def settle(n=60):
-    for _ in range(n):
-        st = g.current_state
-        box = getattr(st, "npc_dialogue", None) if getattr(st, "npc_active", False) else getattr(st, "dialogue_box", None)
-        if box is not None and getattr(box, "visible", True):
-            for line in getattr(box, "text_lines", []) or []:
-                if not said or said[-1] != line:
-                    said.append(line)
-        db = getattr(st, "dialogue_box", None)
-        if db is not None and getattr(db, "visible", False):
-            db.advance()
-        elif getattr(st, "npc_active", False):
-            st.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=(640, 600))])
-        st.update(); st.draw()
-
-
-def heard():
-    return " ".join(said)
+exec(open("dev/checks/unova_lib.py", encoding="utf-8").read())   # (settle, heard: shared, Checks C5)
 
 
 def pick(value):

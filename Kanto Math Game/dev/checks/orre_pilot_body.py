@@ -8,10 +8,7 @@ from src.pokemon import catching
 fails = []
 
 
-def check(c, m):
-    print(("ok   " if c else "FAIL ") + m)
-    if not c:
-        fails.append(m)
+exec(open("dev/checks/orre_lib.py", encoding="utf-8").read())   # (town, _note, frames, check: shared, Checks C5)
 
 
 prog = g.loader.area_data["STORY_PROGRESSION"]
@@ -163,20 +160,6 @@ g.walk_towns = True
 said = []
 
 
-def frames(n=1):
-    for _ in range(n):
-        g.current_state.update()
-        g.current_state.draw()
-
-
-def _note(st):
-    box = getattr(st, "npc_dialogue", None) if getattr(st, "npc_active", False) else getattr(st, "dialogue_box", None)
-    if box is not None and getattr(box, "visible", True):
-        for line in getattr(box, "text_lines", []) or []:
-            if not said or said[-1] != line:
-                said.append(line)
-
-
 def _fight(b, n=8000):
     """Win the battle with right answers; a Shadow Pokemon is snagged as soon as it's out (the ball always holds)."""
     tried = set()
@@ -230,13 +213,6 @@ def play(n=3000):
             if quiet > 40:
                 return
         st.update(); st.draw()
-
-
-def town(area, came):
-    g.walk_town_pos = g.walk_town_exit = g.walk_town_room = None
-    story.current_area_key, story.last_area_key = area, came
-    t = _CS(g); g.change_state(t); frames(2); play()
-    return g.current_state
 
 
 def meet(st, text):
