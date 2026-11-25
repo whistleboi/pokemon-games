@@ -24,7 +24,7 @@ guide_exits	12	2026-11-24
 gym_tms	10	2026-11-24
 hoenn_gates	250	2026-11-24
 hoenn_looks	6	2026-11-24
-hoenn_maps	744	2026-11-24
+hoenn_maps	753	2026-11-24
 hoenn_played	19	2026-11-24
 hoenn_soaring	107	2026-11-24
 hoenn_soaring3d	65	2026-11-24
@@ -146,5 +146,6 @@ unova_music	12	2026-11-24
 unova_royal	25	2026-11-24
 unova_start	24	2026-11-24
 vsseeker	59	2026-11-24
+walk:hoenn	2	2026-11-24
 walkup	92	2026-11-24
 water_arrival	4	2026-11-24

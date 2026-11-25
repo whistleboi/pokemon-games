@@ -7852,6 +7852,39 @@
     "HOENN_BATTLE_FRONTIER:Tower attendant": {
       "sheet": "em_85.png"
     },
+    "HOENN_BATTLE_FRONTIER:News man": {
+      "sheet": "em_39.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Pokemon whisperer": {
+      "sheet": "em_12.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Old breeder": {
+      "sheet": "em_29.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Gambler": {
+      "sheet": "em_55.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Old tutor ": {
+      "sheet": "em_22.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Old tutor": {
+      "sheet": "em_22.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Skitty fan": {
+      "sheet": "em_45.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Scott": {
+      "sheet": "em_219.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Ranking Hall guide": {
+      "sheet": "em_85.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Multi attendant": {
+      "sheet": "em_85.png"
+    },
+    "HOENN_BATTLE_FRONTIER:Double attendant": {
+      "sheet": "em_85.png"
+    },
     "HOENN_BATTLE_FRONTIER:Wally": {
       "sheet": "em_135.png"
     },
