@@ -973916,13 +973916,13 @@
       "ccccccccccccccccccccccccccccccccccccccccccccc.....cccccccccccccc",
       "ccccccccccccccccccccccccccccccccccccccccccccc.cccccccccccccccccc",
       "ccccccccccccccccccccADA!ccccccBDBccc!ccCDCccc.cccccccccccccccccc",
-      "cccccccccccccccccc...N...ccccc...ccc....N..cc.cccccccccccccccccc",
+      "cccccccccccccccccc...NN..ccccc...ccc....N..cc.cccccccccccccccccc",
       "cccccccccccccccccc.......ccccc...ccc.......cc.cccccccccccccccccc",
       "cccccccccccccccccc................................cccccccccccccc",
       "cccccccccccccccccc................................cccccccccccccc",
       "cccccccccccccccccc................................cccccccccccccc",
       "cccccccccccccccccc.......c....ccccccccccccccc.....cccccccccccccc",
-      "cccccccccccccccccc.N.....c....cccccccccccccccN....cccccccccccccc",
+      "cccccccccccccccccc.......c....ccccccccccccccc.....cccccccccccccc",
       "cccccccccccccccccc.......cccccccccccccccccccc.....cccccccccccccc",
       "cccccccccccccccccc.......cccccccccccccccccccc.....cccccccccccccc",
       "cccccccccccccccccc.......cccccccccccccccEDEcc.....cccccccccccccc",
@@ -973936,18 +973936,18 @@
       "cccccccccccccccccc..cccc.cccccc.......ccccccccccc.cccccccccccccc",
       "cccccccccccccccccc..cccc.cccccc.....!.c......cccc.cccccccccccccc",
       "cccccccccccccGDGcc..cccc.cccccc.......ccc.........cccccccccccccc",
-      "ccccccccccccc................cccc...ccccc.....N...cccccccccccccc",
+      "ccccccccccccc................cccc...ccccc.........cccccccccccccc",
       "ccccccccccccc................ccc.....cccccccc.....cccccccccccccc",
       "ccccccccccccc................ccc.....cccccccc.....cccccccccccccc",
       "ccccccccccccc......ccccc.....ccc.....cccccccc.N...cccccccccccccc",
       "ccccccccccccc......ccccccccc.ccccccc.cccccccc.....cccccccccccccc",
       "ccccccccccccc......ccccccccc.ccccccc.cccccccc.....cccccccccccccc",
       "ccccccccccccc......ccccccccc.ccccccc.cccccccc.....cccccccccccccc",
-      "cccccccc!cccc......cc!cccccc.cccccccNc.cHDHc......ccccc!cccccccc",
+      "cccccccc!cccc......cc!cccccc.ccccccc.c.cHDHc......ccccc!cccccccc",
       "c..............................................................c",
       "D..............................................................D",
-      "c.............................................N.....N.......N..c",
-      "c....................................ccc...cccc.....N..........c",
+      "c...................................................N.......N..c",
+      "c....................................ccc...cccc................c",
       "c..................cccc....................cccc................c",
       "ccccccccccccccccc..cccc......ccccc............cccccccccccccccccc",
       "ccccccccccccccccccccccc..ccccccccc............cccccccccccccccccc",
@@ -978553,35 +978553,6 @@
       ]
      ],
      "people": [
-      [
-       {
-        "text": "Drayden",
-        "action": "EVENT",
-        "event": {
-         "lines": [
-          "Drayden: They're getting tougher! {player_name}, take care of the others!"
-         ]
-        },
-        "condition": [
-         "b2_opelucid_ice",
-         "not:b2_opelucid_zinzolin"
-        ],
-        "_look": "sheet:b2_c229.png"
-       },
-       {
-        "text": "Drayden ",
-        "action": "EVENT",
-        "event": {
-         "lines": [
-          "Drayden: Little by little, the ice is starting to melt. As a fellow Trainer, thank you!"
-         ]
-        },
-        "condition": [
-         "b2_opelucid_cheren"
-        ],
-        "_look": "sheet:b2_c229.png"
-       }
-      ],
       {
        "text": "Zinzolin",
        "action": "EVENT",
@@ -978637,6 +978608,35 @@
         "flag": "b2_opelucid_zinzolin"
        }
       },
+      [
+       {
+        "text": "Drayden",
+        "action": "EVENT",
+        "event": {
+         "lines": [
+          "Drayden: They're getting tougher! {player_name}, take care of the others!"
+         ]
+        },
+        "condition": [
+         "b2_opelucid_ice",
+         "not:b2_opelucid_zinzolin"
+        ],
+        "_look": "sheet:b2_c229.png"
+       },
+       {
+        "text": "Drayden ",
+        "action": "EVENT",
+        "event": {
+         "lines": [
+          "Drayden: Little by little, the ice is starting to melt. As a fellow Trainer, thank you!"
+         ]
+        },
+        "condition": [
+         "b2_opelucid_cheren"
+        ],
+        "_look": "sheet:b2_c229.png"
+       }
+      ],
       {
        "text": "Plasma Grunt ",
        "action": "EVENT",
@@ -978650,34 +978650,6 @@
         "not:b2_opelucid_zinzolin"
        ],
        "_look": "sheet:b2_c294.png"
-      },
-      [
-       {
-        "text": "Man by the Gym",
-        "action": "EVENT",
-        "event": {
-         "lines": [
-          "Gym Leader Drayden leads Opelucid as its mayor! He trains by wrestling his Pokemon."
-         ]
-        },
-        "condition": [
-         "not:b2_opelucid_frozen"
-        ],
-        "_look": "sheet:b2_c20.png"
-       }
-      ],
-      {
-       "text": "Boy",
-       "action": "EVENT",
-       "event": {
-        "lines": [
-         "My Pokemon show me affection, so I'm never lonely!"
-        ]
-       },
-       "condition": [
-        "not:b2_opelucid_frozen"
-       ],
-       "_look": "sheet:b2_c11.png"
       },
       {
        "text": "Plasma Grunt",
@@ -978717,66 +978689,6 @@
        ],
        "_look": "sheet:b2_plasma_grunt_m.png"
       },
-      [
-       {
-        "text": "Woman by the houses",
-        "action": "EVENT",
-        "event": {
-         "lines": [
-          "This city changes endlessly, and every change stays in people's memories."
-         ]
-        },
-        "condition": [
-         "unova_version:BLACK_2",
-         "not:b2_opelucid_frozen"
-        ],
-        "_look": "sheet:b2_c21.png"
-       },
-       {
-        "text": "Woman by the houses ",
-        "action": "EVENT",
-        "event": {
-         "lines": [
-          "The memories of everyone who's lived here have built up without changing much."
-         ]
-        },
-        "condition": [
-         "unova_version:WHITE_2",
-         "not:b2_opelucid_frozen"
-        ],
-        "_look": "sheet:b2_c21.png"
-       }
-      ],
-      [
-       {
-        "text": "Old man",
-        "action": "EVENT",
-        "event": {
-         "lines": [
-          "I think some things must change, no matter how much you love them!"
-         ]
-        },
-        "condition": [
-         "unova_version:BLACK_2",
-         "not:b2_opelucid_frozen"
-        ],
-        "_look": "sheet:b2_c44.png"
-       },
-       {
-        "text": "Old man ",
-        "action": "EVENT",
-        "event": {
-         "lines": [
-          "I think some things shouldn't change, even if it's inconvenient."
-         ]
-        },
-        "condition": [
-         "unova_version:WHITE_2",
-         "not:b2_opelucid_frozen"
-        ],
-        "_look": "sheet:b2_c44.png"
-       }
-      ],
       {
        "text": "Plasma Grunt",
        "action": "EVENT",
@@ -978814,32 +978726,6 @@
         "b2_opelucid_ice"
        ],
        "_look": "sheet:b2_plasma_grunt_m.png"
-      },
-      {
-       "text": "Musician",
-       "action": "EVENT",
-       "event": {
-        "lines": [
-         "Our hopes are put into this melody... I'll send them to the future."
-        ]
-       },
-       "condition": [
-        "not:b2_opelucid_frozen"
-       ],
-       "_look": "sheet:b2_c162.png"
-      },
-      {
-       "text": "Black Belt",
-       "action": "EVENT",
-       "event": {
-        "lines": [
-         "I reached heights I never could have alone, with Pokemon by my side!"
-        ]
-       },
-       "condition": [
-        "not:b2_opelucid_frozen"
-       ],
-       "_look": "sheet:b2_c46.png"
       },
       {
        "text": "Iris",
@@ -978907,19 +978793,6 @@
         },
         "flag": "b2_opelucid_shadow"
        }
-      },
-      {
-       "text": "Artist",
-       "action": "EVENT",
-       "event": {
-        "lines": [
-         "Unova's symbols are Zekrom and Reshiram. Where are they now, I wonder?"
-        ]
-       },
-       "condition": [
-        "not:b2_opelucid_frozen"
-       ],
-       "_look": "sheet:b2_c28.png"
       },
       {
        "text": "Plasma Grunt",
@@ -986535,13 +986408,13 @@
       "ccccccccccccccccccccccccccccccccccccccccccccccccc.cccccccccccccc",
       "ccccccccccccccccccccccccccccccccccccccccccccccccc.cccccccccccccc",
       "ccccccccccccccccccccADA!ccccccBDBccc!ccCDCccc.....cccccccccccccc",
-      "ccccccccccccccccccc..N..................N.........cccccccccccccc",
+      "ccccccccccccccccccc..NN.................N.........cccccccccccccc",
       "ccccccccccccccccccc...............................cccccccccccccc",
       "ccccccccccccccccccc...............................cccccccccccccc",
       "ccccccccccccccccccc.....cccccccc..................cccccccccccccc",
       "ccccccccccccccccccc.....cccccccc..................cccccccccccccc",
       "ccccccccccccccccccccccc.cccccccc........ccc.......cccccccccccccc",
-      "cccccccccccccccccccNccc.cccccccccccccccccccc.N....cccccccccccccc",
+      "ccccccccccccccccccccccc.cccccccccccccccccccc......cccccccccccccc",
       "ccccccccccccccccccccccc.cccccccccccccccccccc......cccccccccccccc",
       "ccccccccccccccccccccccc.cccccccccccccccccccc......cccccccccccccc",
       "ccccccccccccccccccc.....ccccccccccccccccEDEc......cccccccccccccc",
@@ -986555,18 +986428,18 @@
       "cccccccccccccccccc......ccccccc.......ccccccc.....cccccccccccccc",
       "cccccccccccccccccc......ccccccc.....!.ccccccc.....cccccccccccccc",
       "cccccccccccccGDGcc......ccccccc.......ccccccc.....cccccccccccccc",
-      "ccccccccccccc...........ccccccc.......ccccccc.N...cccccccccccccc",
+      "ccccccccccccc...........ccccccc.......ccccccc.....cccccccccccccc",
       "ccccccccccccc...........ccccccc.......ccccccc.....cccccccccccccc",
       "ccccccccccccc...........ccccccc.......ccccccc.....cccccccccccccc",
       "ccccccccccccc......cccccccccccccccc...ccccccc.N...cccccccccccccc",
       "ccccccccccccc......cccccccccccccccc...ccccccc.....cccccccccccccc",
       "ccccccccccccc......cccccccccccccccc...ccccccc.....cccccccccccccc",
       "ccccccccccccc......cccccccccccccccc...ccccccc.....cccccccccccccc",
-      "cccccccc!cccc......cc!ccccccccc.....N..cHDHc......ccccc!cccccccc",
+      "cccccccc!cccc......cc!ccccccccc........cHDHc......ccccc!cccccccc",
       "c..............................................................c",
       "D............cccc..............................................D",
-      "c............cccc..........cccc...............N.....N.......N..c",
-      "c............cccc..........cccc.....................N..........c",
+      "c............cccc..........cccc.....................N.......N..c",
+      "c............cccc..........cccc................................c",
       "c............cccc..........cccc................................c",
       "ccccccccccccccccc..........cccc...........cccccccccccccccccccccc",
       "ccccccccccccccccc..............................ccccccccccccccccc",
@@ -991212,35 +991085,6 @@
       ]
      ],
      "people": [
-      [
-       {
-        "text": "Drayden",
-        "action": "EVENT",
-        "event": {
-         "lines": [
-          "Drayden: They're getting tougher! {player_name}, take care of the others!"
-         ]
-        },
-        "condition": [
-         "b2_opelucid_ice",
-         "not:b2_opelucid_zinzolin"
-        ],
-        "_look": "sheet:b2_c229.png"
-       },
-       {
-        "text": "Drayden ",
-        "action": "EVENT",
-        "event": {
-         "lines": [
-          "Drayden: Little by little, the ice is starting to melt. As a fellow Trainer, thank you!"
-         ]
-        },
-        "condition": [
-         "b2_opelucid_cheren"
-        ],
-        "_look": "sheet:b2_c229.png"
-       }
-      ],
       {
        "text": "Zinzolin",
        "action": "EVENT",
@@ -991296,6 +991140,35 @@
         "flag": "b2_opelucid_zinzolin"
        }
       },
+      [
+       {
+        "text": "Drayden",
+        "action": "EVENT",
+        "event": {
+         "lines": [
+          "Drayden: They're getting tougher! {player_name}, take care of the others!"
+         ]
+        },
+        "condition": [
+         "b2_opelucid_ice",
+         "not:b2_opelucid_zinzolin"
+        ],
+        "_look": "sheet:b2_c229.png"
+       },
+       {
+        "text": "Drayden ",
+        "action": "EVENT",
+        "event": {
+         "lines": [
+          "Drayden: Little by little, the ice is starting to melt. As a fellow Trainer, thank you!"
+         ]
+        },
+        "condition": [
+         "b2_opelucid_cheren"
+        ],
+        "_look": "sheet:b2_c229.png"
+       }
+      ],
       {
        "text": "Plasma Grunt ",
        "action": "EVENT",
@@ -991309,34 +991182,6 @@
         "not:b2_opelucid_zinzolin"
        ],
        "_look": "sheet:b2_c294.png"
-      },
-      [
-       {
-        "text": "Man by the Gym",
-        "action": "EVENT",
-        "event": {
-         "lines": [
-          "Gym Leader Drayden leads Opelucid as its mayor! He trains by wrestling his Pokemon."
-         ]
-        },
-        "condition": [
-         "not:b2_opelucid_frozen"
-        ],
-        "_look": "sheet:b2_c20.png"
-       }
-      ],
-      {
-       "text": "Boy",
-       "action": "EVENT",
-       "event": {
-        "lines": [
-         "My Pokemon show me affection, so I'm never lonely!"
-        ]
-       },
-       "condition": [
-        "not:b2_opelucid_frozen"
-       ],
-       "_look": "sheet:b2_c11.png"
       },
       {
        "text": "Plasma Grunt",
@@ -991376,66 +991221,6 @@
        ],
        "_look": "sheet:b2_plasma_grunt_m.png"
       },
-      [
-       {
-        "text": "Woman by the houses",
-        "action": "EVENT",
-        "event": {
-         "lines": [
-          "This city changes endlessly, and every change stays in people's memories."
-         ]
-        },
-        "condition": [
-         "unova_version:BLACK_2",
-         "not:b2_opelucid_frozen"
-        ],
-        "_look": "sheet:b2_c21.png"
-       },
-       {
-        "text": "Woman by the houses ",
-        "action": "EVENT",
-        "event": {
-         "lines": [
-          "The memories of everyone who's lived here have built up without changing much."
-         ]
-        },
-        "condition": [
-         "unova_version:WHITE_2",
-         "not:b2_opelucid_frozen"
-        ],
-        "_look": "sheet:b2_c21.png"
-       }
-      ],
-      [
-       {
-        "text": "Old man",
-        "action": "EVENT",
-        "event": {
-         "lines": [
-          "I think some things must change, no matter how much you love them!"
-         ]
-        },
-        "condition": [
-         "unova_version:BLACK_2",
-         "not:b2_opelucid_frozen"
-        ],
-        "_look": "sheet:b2_c44.png"
-       },
-       {
-        "text": "Old man ",
-        "action": "EVENT",
-        "event": {
-         "lines": [
-          "I think some things shouldn't change, even if it's inconvenient."
-         ]
-        },
-        "condition": [
-         "unova_version:WHITE_2",
-         "not:b2_opelucid_frozen"
-        ],
-        "_look": "sheet:b2_c44.png"
-       }
-      ],
       {
        "text": "Plasma Grunt",
        "action": "EVENT",
@@ -991473,32 +991258,6 @@
         "b2_opelucid_ice"
        ],
        "_look": "sheet:b2_plasma_grunt_m.png"
-      },
-      {
-       "text": "Musician",
-       "action": "EVENT",
-       "event": {
-        "lines": [
-         "Our hopes are put into this melody... I'll send them to the future."
-        ]
-       },
-       "condition": [
-        "not:b2_opelucid_frozen"
-       ],
-       "_look": "sheet:b2_c162.png"
-      },
-      {
-       "text": "Black Belt",
-       "action": "EVENT",
-       "event": {
-        "lines": [
-         "I reached heights I never could have alone, with Pokemon by my side!"
-        ]
-       },
-       "condition": [
-        "not:b2_opelucid_frozen"
-       ],
-       "_look": "sheet:b2_c46.png"
       },
       {
        "text": "Iris",
@@ -991566,19 +991325,6 @@
         },
         "flag": "b2_opelucid_shadow"
        }
-      },
-      {
-       "text": "Artist",
-       "action": "EVENT",
-       "event": {
-        "lines": [
-         "Unova's symbols are Zekrom and Reshiram. Where are they now, I wonder?"
-        ]
-       },
-       "condition": [
-        "not:b2_opelucid_frozen"
-       ],
-       "_look": "sheet:b2_c28.png"
       },
       {
        "text": "Plasma Grunt",
