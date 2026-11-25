@@ -951165,17 +951165,40 @@
     },
     "_look": "sheet:b2_item_ball.png"
    },
-   {
-    "text": "Derleth",
-    "action": "EVENT",
-    "event": {
-     "lines": [
-      "Derleth: Fweet fweet... Fweeeeet...",
-      "Derleth: Whistle tunes and complaints about life. That's all that comes out of me. This bridge is where we complainers meet."
-     ]
+   [
+    {
+     "text": "Derleth",
+     "action": "EVENT",
+     "condition": [
+      "not:vb_music_flute"
+     ],
+     "event": {
+      "world": "unova_story",
+      "toggle": "vb_music_flute",
+      "lines": [
+       "Derleth: Fweet fweet... Fweeeeet...",
+       "Derleth: Whistle tunes and complaints about life. That's all that comes out of me. This bridge is where we complainers meet.",
+       "Derleth's part joins the music!"
+      ]
+     },
+     "_look": "sheet:b2_c150.png"
     },
-    "_look": "sheet:b2_c150.png"
-   },
+    {
+     "text": "Derleth ",
+     "action": "EVENT",
+     "condition": [
+      "vb_music_flute"
+     ],
+     "event": {
+      "world": "unova_story",
+      "toggle": "vb_music_flute",
+      "lines": [
+       "Derleth: ...Fweet. That's enough complaining for now."
+      ]
+     },
+     "_look": "sheet:b2_c150.png"
+    }
+   ],
    {
     "text": "Poke Ball by the trees",
     "action": "EVENT",
@@ -951191,17 +951214,40 @@
     },
     "_look": "sheet:b2_item_ball.png"
    },
-   {
-    "text": "Aickman",
-    "action": "EVENT",
-    "event": {
-     "lines": [
-      "Aickman: This sound! Doesn't it get to your heart?",
-      "Aickman: I know my sound doesn't fit this town. But I can't change my style."
-     ]
+   [
+    {
+     "text": "Aickman",
+     "action": "EVENT",
+     "condition": [
+      "not:vb_music_guitar"
+     ],
+     "event": {
+      "world": "unova_story",
+      "toggle": "vb_music_guitar",
+      "lines": [
+       "Aickman: This sound! Doesn't it get to your heart?",
+       "Aickman: I know my sound doesn't fit this town. But I can't change my style.",
+       "Aickman's part joins the music!"
+      ]
+     },
+     "_look": "sheet:b2_c152.png"
     },
-    "_look": "sheet:b2_c152.png"
-   },
+    {
+     "text": "Aickman ",
+     "action": "EVENT",
+     "condition": [
+      "vb_music_guitar"
+     ],
+     "event": {
+      "world": "unova_story",
+      "toggle": "vb_music_guitar",
+      "lines": [
+       "Aickman: Taking a break. Even my guitar needs to breathe."
+      ]
+     },
+     "_look": "sheet:b2_c152.png"
+    }
+   ],
    {
     "text": "Poke Ball by the court",
     "action": "EVENT",
@@ -951246,16 +951292,39 @@
     },
     "_look": "sheet:b2_c25.png"
    },
-   {
-    "text": "Koontz",
-    "action": "EVENT",
-    "event": {
-     "lines": [
-      "Koontz: Singing gives life to my spirit. Will you listen to the voice of my spirit?"
-     ]
+   [
+    {
+     "text": "Koontz",
+     "action": "EVENT",
+     "condition": [
+      "not:vb_music_enka"
+     ],
+     "event": {
+      "world": "unova_story",
+      "toggle": "vb_music_enka",
+      "lines": [
+       "Koontz: Singing gives life to my spirit. Will you listen to the voice of my spirit?",
+       "Koontz's part joins the music!"
+      ]
+     },
+     "_look": "sheet:b2_c49.png"
     },
-    "_look": "sheet:b2_c49.png"
-   },
+    {
+     "text": "Koontz ",
+     "action": "EVENT",
+     "condition": [
+      "vb_music_enka"
+     ],
+     "event": {
+      "world": "unova_story",
+      "toggle": "vb_music_enka",
+      "lines": [
+       "Koontz: My spirit rests a while."
+      ]
+     },
+     "_look": "sheet:b2_c49.png"
+    }
+   ],
    {
     "text": "Gentleman Stonewall",
     "action": "EVENT",
@@ -951342,16 +951411,39 @@
      "_look": "sheet:b2_c15.png"
     }
    ],
-   {
-    "text": "Russo",
-    "action": "EVENT",
-    "event": {
-     "lines": [
-      "Russo: La la la... Ahem! This microphone's all screwy. I can sing real good, promise!"
-     ]
+   [
+    {
+     "text": "Russo",
+     "action": "EVENT",
+     "condition": [
+      "not:vb_music_beatbox"
+     ],
+     "event": {
+      "world": "unova_story",
+      "toggle": "vb_music_beatbox",
+      "lines": [
+       "Russo: La la la... Ahem! This microphone's all screwy. I can sing real good, promise!",
+       "Russo's part joins the music!"
+      ]
+     },
+     "_look": "sheet:b2_c24.png"
     },
-    "_look": "sheet:b2_c24.png"
-   },
+    {
+     "text": "Russo ",
+     "action": "EVENT",
+     "condition": [
+      "vb_music_beatbox"
+     ],
+     "event": {
+      "world": "unova_story",
+      "toggle": "vb_music_beatbox",
+      "lines": [
+       "Russo: ...Ahem. Saving my voice."
+      ]
+     },
+     "_look": "sheet:b2_c24.png"
+    }
+   ],
    {
     "text": "Boy by the court",
     "action": "EVENT",
@@ -951460,6 +951552,20 @@
    "72,8": "BIG_MUSHROOM"
   },
   "scenes": [
+   {
+    "trigger": "enter",
+    "every": true,
+    "cast": [],
+    "event": {
+     "world": "unova_story",
+     "clear": [
+      "vb_music_flute",
+      "vb_music_guitar",
+      "vb_music_beatbox",
+      "vb_music_enka"
+     ]
+    }
+   },
    {
     "trigger": {
      "zone": [

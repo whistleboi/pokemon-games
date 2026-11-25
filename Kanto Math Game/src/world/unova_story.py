@@ -292,8 +292,8 @@ def event(state, ev, lines, show):
         return _potion_errand(story, show)
     if ev.get("medal_paint"):   # (batch 8a extras: every Center's Medal Box painter, by how many Medals you have)
         return _medal_paint(story, show)
-    if ev.get("mimic") is not None:   # (batch 8a extras: Opelucid's Mimic game, upstairs in the old Battle House)
-        return _mimic(story, ev["mimic"], show)
+    if ev.get("mimic") is not None:   # (batch 8a extras: Opelucid's Mimic game, upstairs in the old Battle House)
+        return _mimic(story, ev["mimic"], show)
     if ev.get("dex_register"):   # (batch 6b: Route 7's old man shows you Tornadus and Thundurus, then Landorus)
         for sp in ev["dex_register"]:
             state.game.data.mark_seen(int(sp))
@@ -314,6 +314,12 @@ def event(state, ev, lines, show):
         for item, n in (ev["party_type"].get("gift") or {}).items():
             story.inventory[item] = story.inventory.get(item, 0) + int(n)
         show(lines or ["Thank you!"])
+        return
+    if ev.get("clear"):   # (flags that last only while you're in a place: Village Bridge's musicians, Black 2's 0x400A-D)
+        for f in ev["clear"]:
+            state.game.story_manager.story_flags.pop(f, None)
+        if lines:
+            show(lines)
         return
     if ev.get("toggle"):
         flags = state.game.story_manager.story_flags
