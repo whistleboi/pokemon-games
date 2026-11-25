@@ -4530,7 +4530,13 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
             self.run.lead_level = next((m.level for m in self.game.story_manager.player_team if getattr(m, "current_hp", 1) > 0), None)
             from src.world import escorts as _esc
             _esc.sync(self)   # (who goes everywhere with someone: Jessie & James's Meowth, 11-19)
-            self._clear_boulders()
+            _fl = self.game.story_manager.story_flags   # (each frame only when something may have changed - a flag, the floor, the
+            _bk = (self.run.index, id(self.run.floor), len(_fl), sum(1 for _v in _fl.values() if _v),   #  map's things - else every
+                   len(self.run.floor.decor), len(self.game.story_manager.inventory))                     #  quarter second; a step
+            self.__dict__["_bk_tick"] = self.__dict__.get("_bk_tick", 0) + 1                             #  still checks every time
+            if _bk != self.__dict__.get("_bk_seen") or self._bk_tick >= 15:                               #  (the Checks branch's C4))
+                self._bk_seen, self._bk_tick = _bk, 0
+                self._clear_boulders()
             if getattr(self, "_boss_synced", None) != self.run.index:   # (up or down a floor: a beaten boss's tile there is clear too, the Tower's 6F)
                 self._boss_synced = self.run.index
                 self._sync_boss_spot()
