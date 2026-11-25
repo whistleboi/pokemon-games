@@ -2982,9 +2982,13 @@ class WalkTownState(TownWalkUps, CityState):
         Gym's mine lift, the Luxury Suites', Castelia's towers). Unova's card, 11-24: the marker saw no way through them."""
         rooms = self.town_map.get("rooms") or {}
         m = rooms.get(room) if room else self.town_map
+        from src.world import guide
         out = {}
         for k, e in ((m or {}).get("sign_events") or {}).items():
-            lift = ((e or {}).get("event") or {}).get("lift") if isinstance(e, dict) else None
+            ev = ((e or {}).get("event") or {}) if isinstance(e, dict) else {}
+            lift = ev.get("lift")
+            if lift and ev.get("requires") and not guide._ok(self.game.story_manager, ev["requires"]):
+                continue   # (a lift that won't take you yet: the League statue's, till the Elite Four are beaten - 11-25)
             if lift:
                 out[tuple(int(v) for v in k.split(","))] = [f for f in lift if f[1] != room and f[1] in rooms]
         return out
