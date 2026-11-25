@@ -80,6 +80,12 @@ NAMES = {"tower": "Battle Tower", "dome": "Battle Dome", "palace": "Battle Palac
 # under; the tower's seller has some for BP - src/world/orre_frontier.py). Emerald's Frontier trainers, Gen 3 Pokemon.
 ENDLESS = {"otower": (3, 50, False), "otower2": (2, 50, True), "olc": (3, 5, False)}   # facility: (team size, level, double)
 NAMES.update({"otower": "Battle Tower", "otower2": "Battle Tower's 2-on-2", "olc": "Battle Tower's Little Cup"})
+# Hoenn's Battle Tower, its other two rooms (Emerald's Double and Multi Battle Rooms; Jordan 11-24, questions/HOENN.md 15): no
+# Brain there in Emerald (Anabel battles in the singles room only), so an endless streak each, its best kept, as Orre's. Lv None:
+# the opponents' levels are the Frontier's usual. The Multi room: you and a partner you pick (src/world/hoenn_frontier.py)
+# against two Trainers, two Pokemon each, as Emerald's.
+ENDLESS.update({"tower_double": (4, None, True), "tower_multi": (2, None, True)})
+NAMES.update({"tower_double": "Battle Tower's Double Battle Room", "tower_multi": "Battle Tower's Multi Battle Room"})
 _LC = None
 
 
@@ -105,6 +111,10 @@ def rule_problem(game, fac):
     if fac not in ENDLESS:
         return None
     team = [p for p in game.story_manager.player_team if p is not None and not getattr(p, "is_egg", False)]
+    if fac in ("tower_double", "tower_multi") and len([p for p in team if p.current_hp > 0]) < (2 if fac == "tower_double" else 1):
+        return ["Double battles take at least two Pokemon that can battle. Heal your team or bring more, then come back."]
+    if fac == "tower_multi" and not _flags(game).get("frontier_multi_partner"):
+        return ["Please choose a partner first!"]
     if fac == "otower2" and len(team) != 2:
         return ["The 2-on-2 challenge takes exactly two Pokemon. Leave the rest in the PC, then come back."]
     if fac == "olc":
@@ -195,9 +205,18 @@ def next_trainer(game, fac):
         w = wins(game, fac)
         team = random.sample(lc_pool(game), n) if fac == "olc" else _team(game, [2, 3] if w < 10 else [3], n)
         info = {"name": f"{cls} {t['name']}", "class": cls.upper().replace(" ", "_").replace("É", "E").replace("é", "E"),
-                "sprite": t["sprite"], "team": team, "levels": [lvl] * len(team)}
+                "sprite": t["sprite"], "team": team}
+        if lvl:
+            info["levels"] = [lvl] * len(team)
         if double:
             info["double"] = True
+        if fac == "tower_multi":   # (a second Trainer beside the first, and your partner beside you: Emerald's Multi room)
+            t2 = random.choice(data(game)["trainers"])
+            c2 = t2["class"].rstrip("♂♀")
+            from src.world import hoenn_frontier
+            info["battle_options"] = {"double": True, "partner": hoenn_frontier.partner_info(game),
+                                      "second_trainer": {"name": f"{c2} {t2['name']}", "sprite": t2["sprite"], "team": _team(game, [2, 3] if w < 10 else [3], n),
+                                                         "class": c2.upper().replace(" ", "_").replace("É", "E").replace("é", "E")}}
         return info
     if brain_next(game, fac):
         title, sprite, silver, gold, _sym = BRAINS[fac]
@@ -251,6 +270,12 @@ def after_battle(game, fac, won):
     """A streak battle's end. Returns lines to show back in the lobby (or [])."""
     flags = _flags(game)
     key = f"frontier_{fac}_wins"
+    # (all-time counts and the run of wins with the Brain's battle in it: Hoenn's Ranking Hall and the lounge's gambler,
+    #  src/world/hoenn_frontier.py, 11-24)
+    flags[f"frontier_{fac}_{'won' if won else 'lost'}"] = int(flags.get(f"frontier_{fac}_{'won' if won else 'lost'}", 0) or 0) + 1
+    flags[f"frontier_{fac}_run"] = (int(flags.get(f"frontier_{fac}_run", 0) or 0) + 1) if won else 0
+    if fac not in ENDLESS:
+        flags[f"frontier_{fac}_best"] = max(int(flags.get(f"frontier_{fac}_best", 0) or 0), flags[f"frontier_{fac}_run"])
     if not won:
         w = wins(game, fac)
         flags[key] = 0

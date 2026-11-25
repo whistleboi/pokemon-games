@@ -35,6 +35,18 @@ for b, extra in [("STONE", {}), ("KNUCKLE", {}), ("DYNAMO", {}), ("HEAT", {}), (
     seen = report(f"{b} badge", S, seen)
 story.story_flags["beat_hoenn_champion"] = True
 seen = report("champion", S, seen)
+# (H8, 11-24: every Hoenn SIDE mission's target is reached by the walk after the title - the Soaring legends' own places
+#  by a Soaring landing: src/world/soaring.py LEGENDS / KIND_OF)
+story.story_flags["wattson_new_mauville_asked"] = True   # (Wattson asks you into New Mauville after the Rain Badge: hoenn_gates)
+story.inventory["EON_TICKET"] = 1   # (Wallace's prize here: the boat to Southern Island - hoenn_gates eon_ticket)
+seen = report("champion, Wattson's ask, the Eon Ticket", S, seen)
+from src.world import soaring as _soar
+_fly = set(_soar.LEGENDS) | set(_soar.KIND_OF) | {"HOENN_SOARING_IN_THE_SKY"}
+_side = [(m["id"], m.get("target")) for m in g.loader.area_data.get("JOURNAL_MISSIONS", [])
+         if str(m.get("id", "")).startswith("hoenn") and str(m.get("type")).upper() == "SIDE" and m.get("target")]
+_late = {"HOENN_MAGMA_HIDEOUT"}   # (its door wants the Magma Emblem too: expansion_check walks it below)
+_off = [(i, t) for i, t in _side if t not in seen and t not in _fly and t not in _late]
+print(("   OK" if not _off else "   FAIL"), f"every Hoenn side mission's place is reached after the title ({len(_side)} with a place; not reached: {_off})")
 print("HMs:", sorted(k for k in story.inventory if k.startswith("HM_")))
 
 # ---- areas expansion (areas_06_hoenn.patch): Gen 3 / ORAS side areas

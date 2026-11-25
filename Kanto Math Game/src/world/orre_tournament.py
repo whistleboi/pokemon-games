@@ -62,6 +62,12 @@ def event(state, ev, lines, show):
     area = story.current_area_key
     if ev.get("signup"):
         return _signup(state, ev, lines, show)
+    if ev.get("to_arena"):   # (no tournament: just through to the arena - Snattle's takeover of Phenac Stadium, XD part 4)
+        from src.states.overworld.common import _say_then
+        cfg = ev["to_arena"]
+        if cfg.get("flag"):   # (the Journal's way-point: through the desk)
+            story.story_flags[cfg["flag"]] = True
+        return _say_then(state, list(lines or []), lambda: _to_room(state, cfg["arena"], cfg["at"]))
     if ev.get("fight"):
         return _fight(state, area)
     if ev.get("referee"):

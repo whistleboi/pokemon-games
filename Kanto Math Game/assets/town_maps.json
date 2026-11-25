@@ -158962,28 +158962,28 @@
      "cccccccccccccccccccccc1ccccc",
      "cccccccc.....cc..........ccc",
      "cccccc....N......X.......ccc",
-     "ccccc...............X.N.N.cc",
+     "ccccc..N............X.N.N.cc",
      "ccccc...cccccccccccc.N....cc",
-     "ccccc.N.cccccccccccc......cc",
+     "ccccc.N.cccccccccccc...N..cc",
      "cccc....cccccccccccc.N....cc",
-     "ccc...N.cccccccccccc.....ccc",
-     "cc...............X.......ccc",
-     "cc.......................ccc",
+     "ccc...N.cccccccccccc...N.ccc",
+     "cc...............X..N....ccc",
+     "cc...........N...........ccc",
      "cc...cccccccc.Xcccccccc..ccc",
      "cc.X.cccccccc..cccccccc..ccc",
      "cc...ccoooooooooooooocc...cc",
-     "cc...ccoooooooooooooocc...cc",
-     "cc...ccoooooooooooooocc...cc",
+     "cc.N.ccoooooooooooooocc...cc",
+     "cc...ccoooooooooooooocc.N.cc",
      "cccc.ccoooooooooooooocc...cc",
-     "cccc...X..~ooooo~.........cc",
+     "cccc...X..~ooooo~......N..cc",
      "cc........coooooc.........cc",
      "cc...ccccccoooooccccccc.cccc",
      "cc...ccoooooooooooooocc.cccc",
      "cc.N.ccoooooooooooooocc...cc",
-     "cc...ccoooooooooooooocc...cc",
+     "cc...ccoooooooooooooocc.N.cc",
      "cccc.ccoooooooooooooocc...cc",
      "cccc.ccoooooooooooooocc.cccc",
-     "cc.........~ooo~........cccc",
+     "cc.....N...~ooo~........cccc",
      "cc.........coooc..........cc",
      "cccccccccccconnccccccccccccc",
      "cccccccccccccccccccccccccccc",
@@ -159043,13 +159043,23 @@
     },
     "people": [
      "ESCAPE ROPE",
+     "TM094 DARK PULSE ",
      "MAX ELIXIR",
      "NEST BALL",
      "TM094 DARK PULSE",
      "MAX REVIVE",
+     "MASTER BALL ",
      "PP MAX",
      "NUGGET ",
-     "FULL RESTORE"
+     "NEST BALL ",
+     "ESCAPE ROPE ",
+     "MAX ELIXIR ",
+     "PP MAX ",
+     "NUGGET  ",
+     "NUGGET   ",
+     "FULL RESTORE",
+     "FULL RESTORE ",
+     "MAX REVIVE "
     ]
    },
    {
@@ -165365,33 +165375,33 @@
    "cc~~ccc~ccc~cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
    "cc~c~~~~ccc~ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc~cccccccccccccccccccccccccccccccccc",
    "~c~~~ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc~ccccccccccccccccccccccccccccccccc",
-   "cc~~cc..................................ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc~cccc",
-   "cc~ccccc................................ccccccc................ccccccccccccccccccccccccccccccccc..........................cc~ccc",
+   "cc~~cc..................................ccccGcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc~cccc",
+   "cc~ccccc................................ccccDcc................ccccccccccccccccccccccccccccccccc..........................cc~ccc",
    "~~ccccc..........ccccc..................c..................ccccccccccccccccccccccccccccccccccccc................ccccc.....ccc~cc",
-   "ccccccc.........ccccccc....................................cccccccccccccccccccccccccncccccccccccc....cc....c..ccccccccc..ccccc~c",
-   "cccccccc.......ccccccccc....................................cccccccccccccccccccccccc..ccccccccccc....ccc...ccccccccccccccccccccc",
+   "ccccccc.........ccccccc....................................ccQccccccccccccccccccccccncccccccccccc....cc....c..ccccccccc..ccccc~c",
+   "cccccccc.......ccccccccc....................................cDcccccccccccccccccccccc..ccccccccccc....ccc...ccccccccccccccccccccc",
    "ccccccc......ccccccccccccc......cccccccccccccccccccccccc.......ccccccccccccccccccccc__ccccccc........ccc...ccccccccccccccccccccc",
    "ccccccc......ccccccccccccc.....ccccccccccccccccccccccccc.......ccccccccccccccccccccc...cccccccc......ccc...ccccccccccccccccccccc",
-   "cccccccc.....ccccccccccccc.....ccccccccccccccccccccccccc.......ccccccccccccccccccccc..cccccJccc......ccc...ccccccccccccccccccccc",
+   "cccccccc.....ccccccccccccc.....ccccccccccccccccccccccccc.......ccccccccccccccccccccc..cccccMccc......ccc...ccccccccccccccccccccc",
    "ccccccc......ccccccccccccc....cccccccccccccccccccccccccc.......ccccccccccccccccccccc..cccccDccc......ccc...ccccccccccccccccccccc",
-   "ccccccc......ccccccccccccc...ccccccccccccccccccccccccccc.c.....cccccccccFccccccccccc..cc!............ccc...cccccccIccccccccccccc",
+   "ccccccc......ccccccccccccc...ccccccccccccccccccccccccccc.c.....cccccccccIccccccccccc..cc!............ccc...cccccccLccccccccccccc",
    "cccccccc.....ccccccccccccc...ccccccccccccccccccccccccccc.cc....cccccc.ccDcc.cccccccc..c..............ccc...cccccccDccccccccccccc",
    "ccccccccc....ccccccccccccc...cccccccc~~~~~~~~~~~cccccccccccc...c.................ccc.c............N..ccc...c..........!..ccccccc",
    "cccccccccc...ccccccBcccccc...cccccccc~cccccccc~ccccccccccccc...ccc............cccccc.................ccc........cc.cc.....cccccc",
    "cccccccccc...c....cDc....c...ccccccc~c........c~cccccccccccc......c..!......N.cccccc.................ccc........cc.cc.....cccccc",
    "cccccccccc.....!.............ccccccccccc.......ccccccccccccc.................cccccc..................cccccccc.........N...cccccc",
-   "cccccccccc...................cccccccccccc.....cccccccccccccc................cccccc...ccccccccccccccccccccccccc.........c..cccccc",
-   "ccc.cccccc...................cccccccccc.......ccccccccccccccccc.............ccccc....ccccccccccccccccccccccccc..cc.cc..c..cccccc",
+   "cccccHcccc...................cccccccccccc.....cccccccccccccc................cccccc...ccccccccccccccccccccccccc.........c..cccccc",
+   "ccc.cDcccc...................cccccccccc.......ccccccccccccccccc.............ccccc....ccccccccccccccccccccccccc..cc.cc..c..cccccc",
    "ccc....ccc...................ccccccccc...ccc..cccccccccccccccccc............cccc.....ccccccccccccccccccccccccc..cc.cc..c..cccccc",
    "ccc....cccccccccc..........ccccccccccc..ccccc.ccccccccccccccccccccccc.......cccc....cccccccccccccccccccccccccc.........c..cccccc",
    "ccc....cccccccccc..........cccccccccc...ccccc.cccccccccccccccccccccccc......cccc...ccccccc~ccccccccccccccccccc.........c..cccccc",
    "ccc....cccccccccc..........cccccccccc...ccccc.cccccccccccccccccccccccc......cccc...ccccc~ccccccccccccc~ccccccc..cc.cc.....cccccc",
    "ccc.............................ccccc...ccccc.cccccccccccccccccccccc...............cccc~cc...........cc~cccccc..cc.cc.....cccccc",
    "ccc.............................ccccc...ccAcc.cccccccccccccccccccccccc.............ccccccc.ccccccccc.ccccccccc........cccccccccc",
-   "ccc...ccccccccccc...............cccccc...cDc..ccccccccccccccccccccKccc.............ccccccc.ccccccccc.ccccccccc........cccccccccc",
-   "ccccccccccccccccccccc........cc.cccccc...c.c..ccccccccccccccc..cccDccc.............ccccccc.ccccGcccc.ccccccccc.............ccccc",
+   "ccc...ccccccccccc...............cccccc...cDc..ccccccccccccccccccccPccc.............ccccccc.ccccccccc.ccccccccc........cccccccccc",
+   "ccccccccccccccccccccc........cc.cccccc...c.c..ccccccccccccccc..cccDccc.............ccccccc.ccccJcccc.ccccccccc.............ccccc",
    "cccccccccccccccccccccccc.....cc..cccccc.......ccccccccccccccc..!...................ccccccc.ccccDcccc.ccccccccc........cccccccccc",
-   "cccccccccccccccccccccccc.....cc..cccccc......!ccccccccccccccc....................ccccccccc...........ccccccccc........cccLcccccc",
+   "cccccccccccccccccccccccc.....cc..cccccc......!ccccccccccccccc....................ccccccccc...........ccccccccc........cccRcccccc",
    "~~~~~ccccccccccccccccccc.....cc..cccccc.......ccccccccccccccc....................ccccccccccccc...ccccccccccccc........cccDcccccc",
    "cc~~cccccccccccccccccccc.....ccccccccccc...cccccccccccccccccc...................cccccccccccc.......ccccccccccc........c....ccccc",
    "cc~~ccccccccccccccc~cccc.....ccccccccccc...cccccccccccccccccc...................ccccccccccccccc.cccccccccccccc........c....ccccc",
@@ -165404,19 +165414,19 @@
    "ccccccccc.....cccccccccc.................................................................ccccc...cccccccccccc.......cccccccccccc",
    "ccccccccc..X..cccccccccc.........N......................................................................N........X..cccccccccccc",
    "ccccccccc.....cccccccccc....................cccccc..ccc....ccc......................................X...............cccccccccccc",
-   "ccccccccc.....cc!cccccc..............N.....cccccccccccc...ccccc....ccc.c..ccccccccc.................................cccccccccccc",
-   "~~ccccc....................................cccccccccccc...cccc.....ccccc..ccccccccc.................................ccccccccc~~c",
+   "ccccccccc.....cc!cccccc..............N.....ccEccccccccc...ccOcc....ccc.c..ccccccccc.................................cccccccccccc",
+   "~~ccccc....................................ccDccccccccc...ccDc.....ccccc..ccccccccc.................................ccccccccc~~c",
    "~~ccccc..........ccccc.........cccccccccc..........................ccccc..ccccccccc........cccccccc.....cccccccc....ccccccccc~~c",
    "ccccccc.N..N..N..ccccc.........cccccccccc.................................................ccccccccc.....coooooooc...ccccccc~~ccc",
    "ccccccc..........ccccc.N...X...cccccccccc.................N...N...........................cccccccccc...ccoooooooc..cccccccc~~ccc",
    "~~ccccc.......................X..............................................ccccc.......cccccccccc.N...c...ooooc..cccccccccc~~c",
    "~~ccccc.......N...................................cccc...cccccc...cccccc..cccccccc......cccccccccc.......ccc..ooc.cccccccccccccc",
-   "~~ccccc.................c...c....................ccEccc...cMcc....cccccc..cccccccc......cccccc..............ccooo.ccccccccc~~ccc",
-   "~~ccccccccccccccccccccc.......ccccccccccccccc....ccD!!c..ccD!!c....ccccc.....ccPcc.....ccccccc..ccccccccccc.ccooo.ccccc~cc~ccccc",
+   "~~ccccc.................c...c....................ccFccc...cUcc....ccccSc..cccccccc......cccccc..............ccooo.ccccccccc~~ccc",
+   "~~ccccccccccccccccccccc.......ccccccccccccccc....ccD!!c..ccD!!c....cccDc.....ccTcc.....ccccccc..ccccccccccc.ccooo.ccccc~cc~ccccc",
    "cccccccccccccccccccccccc.....ccccccccccccccccc...............................ccDcc.....ccccccc..ccccccccccc..cooo.ccccc~~~~ccccc",
    "cccccccccccccccccccccccc.....ccccccccccccccccc....................N..N............N...ccccccccc.ccccccccccc..cooo.......~~~~~ccc",
    "~~cccccccccccccccccccccc.....ccccccccccccccccc........................................ccccccccc.ccccccccccc..ccco.ccccccc~~~~ccc",
-   "~~ccccccccccccccccccccccc...cccccccccccnccccccccccccccccccccccccccccccc................cccccccc.....cHc......ccco...cccccc~~~ccc",
+   "~~ccccccccccccccccccccccc...cccccccccccnccccccccccccccccccccccccccccccc................cccccccc.....cKc......ccco...cccccc~~~ccc",
    "~~~~~~~~cccccccccccccccc.....cccccccc.....cccccccccccccccccccccccccccccc................cccccc.....!cDc.....ccooo.....ccccc~~ccc",
    "~~~~~~~~cccccccccccccccc.....cccccccc.....cccccccccccccccccccccccccccccc...........................N....ccccooooo.ccccccccc~~ccc",
    "~cc~~~~~~~~~cccccccccccc.....cccccccc.....cccccccccccccccccccccccccccccc..ccccccccc.....................ooooooooo.ccccccccc~~ccc",
@@ -165448,9 +165458,15 @@
    "I": "house",
    "J": "house",
    "K": "house",
-   "L": "annex",
+   "L": "house",
    "M": "house",
-   "P": "maison"
+   "O": "house",
+   "P": "house",
+   "Q": "house",
+   "R": "annex",
+   "S": "house",
+   "U": "house",
+   "T": "maison"
   },
   "roofs": {
    "_picture": {
@@ -165602,13 +165618,20 @@
    "42,27": "pike",
    "19,17": "dome",
    "11,38": "factory",
+   "45,44": "lounge_news",
    "51,51": "mart",
+   "44,5": "scott",
+   "5,20": "lounge_tutors",
    "72,14": "tower",
    "95,29": "arena",
    "101,56": "palace",
    "114,14": "pyramid",
    "91,12": "ranking",
+   "60,44": "lounge_breeder",
    "66,28": "exchange",
+   "61,8": "lounge_trade",
+   "121,31": "lounge_bet",
+   "70,51": "lounge_whisper",
    "59,51": "center",
    "79,52": "maison"
   },
@@ -165744,7 +165767,7 @@
      "....m...m...m...m...m....",
      "....m...m...m...m...m....",
      "....c...c...c...c...m....",
-     "....cm.mcm.mcm.mcm.mc....",
+     "....cm.mcmNmcmNmcm.mc....",
      ".........................",
      "............N.N..........",
      ".........................",
@@ -165766,6 +165789,8 @@
      "_buildings_in_picture": true
     },
     "people": [
+     "Double attendant",
+     "Multi attendant",
      "Salon Maiden Anabel",
      "Tower attendant"
     ],
@@ -165775,6 +165800,16 @@
       11,
       9
      ]
+    },
+    "moves": {
+     "10,5": {
+      "m": "face",
+      "d": "d"
+     },
+     "14,5": {
+      "m": "face",
+      "d": "d"
+     }
     },
     "overheads": [
      {
@@ -166221,7 +166256,7 @@
      "ccc...............................................ccc",
      "ccc...........ccccc...............ccccc...........ccc",
      "ccccc.......ccccccccc...........ccccccccc.......ccccc",
-     "ccccc.......ccccccccc...........ccccccccc.......ccccc",
+     "ccccc.......ccccccccc...N.......ccccccccc.......ccccc",
      "ccccccccccccccccccccccc...nn..ccccccccccccccccccccccc"
     ],
     "exits": {
@@ -166239,6 +166274,9 @@
      "_signs_in_picture": true,
      "_buildings_in_picture": true
     },
+    "people": [
+     "Ranking Hall guide"
+    ],
     "signs": [
      [
       "BATTLE DOME, BATTLE PIKE,",
@@ -166249,6 +166287,12 @@
       "and BATTLE PYRAMID Records"
      ]
     ],
+    "moves": {
+     "24,13": {
+      "m": "face",
+      "d": "d"
+     }
+    },
     "overheads": [
      {
       "kind": "picture",
@@ -166553,6 +166597,319 @@
      "19,7": "slot",
      "19,8": "slot"
     }
+   },
+   "scott": {
+    "art": [
+     "cccccc",
+     "cccccc",
+     "......",
+     "..N...",
+     "......",
+     ".....c",
+     "......",
+     "c.nn.c"
+    ],
+    "exits": {
+     "n": "OUT:44,5"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/26_46.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Scott"
+    ],
+    "moves": {
+     "2,3": {
+      "m": "look",
+      "d": "udlr"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/26_46.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       6,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Scott's House"
+   },
+   "lounge_trade": {
+    "art": [
+     "ccccccccc",
+     "ccccccccc",
+     "ccccccccc",
+     ".........",
+     "..N......",
+     ".........",
+     ".........",
+     ".........",
+     ".........",
+     "c...n...c"
+    ],
+    "exits": {
+     "n": "OUT:61,8"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/26_48.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Skitty fan"
+    ],
+    "moves": {
+     "2,4": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "theme": "room",
+    "title": "Battle Frontier Lounge"
+   },
+   "lounge_tutors": {
+    "art": [
+     "ccccccccc",
+     "ccccccccc",
+     "ccccccccc",
+     ".........",
+     ".........",
+     "..N...N..",
+     ".........",
+     ".........",
+     ".........",
+     "c...n...c"
+    ],
+    "exits": {
+     "n": "OUT:5,20"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/26_49.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Old tutor",
+     "Old tutor "
+    ],
+    "moves": {
+     "2,5": {
+      "m": "face",
+      "d": "r"
+     },
+     "6,5": {
+      "m": "face",
+      "d": "l"
+     }
+    },
+    "theme": "room",
+    "title": "Battle Frontier Lounge"
+   },
+   "lounge_bet": {
+    "art": [
+     "ccccccccc",
+     "ccccccccc",
+     "ccccccccc",
+     ".........",
+     ".........",
+     ".........",
+     "....N....",
+     ".........",
+     ".........",
+     "c...n...c"
+    ],
+    "exits": {
+     "n": "OUT:121,31"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/26_44.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Gambler"
+    ],
+    "moves": {
+     "4,6": {
+      "m": "face",
+      "d": "u"
+     }
+    },
+    "theme": "room",
+    "title": "Battle Frontier Lounge"
+   },
+   "lounge_breeder": {
+    "art": [
+     "ccccccccc",
+     "ccccccccc",
+     "ccccccccc",
+     ".........",
+     ".........",
+     ".........",
+     "N........",
+     ".........",
+     ".........",
+     "c...n...c"
+    ],
+    "exits": {
+     "n": "OUT:60,44"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/26_41.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Old breeder"
+    ],
+    "moves": {
+     "0,6": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "theme": "room",
+    "title": "Battle Frontier Lounge"
+   },
+   "lounge_whisper": {
+    "art": [
+     "ccccccccc",
+     "ccccccccc",
+     "ccccccccc",
+     ".........",
+     ".........",
+     "....N....",
+     ".........",
+     ".........",
+     ".........",
+     "c...n...c"
+    ],
+    "exits": {
+     "n": "OUT:70,51"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/26_51.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "Pokemon whisperer"
+    ],
+    "moves": {
+     "4,5": {
+      "m": "wander",
+      "d": "udlr",
+      "r": [
+       2,
+       2
+      ]
+     }
+    },
+    "theme": "room",
+    "title": "Battle Frontier Lounge"
+   },
+   "lounge_news": {
+    "art": [
+     "ccccccccccccc",
+     "ccccccccccccc",
+     ".ccccc.ccccc.",
+     ".............",
+     "......c.N....",
+     ".............",
+     "......c......",
+     "cnn.........c"
+    ],
+    "exits": {
+     "n": "OUT:45,44"
+    },
+    "buildings": {},
+    "roofs": {
+     "_picture": {
+      "f": "em_ground/26_43.png",
+      "at": [
+       0,
+       0
+      ]
+     },
+     "_signs_in_picture": true,
+     "_buildings_in_picture": true
+    },
+    "people": [
+     "News man"
+    ],
+    "moves": {
+     "8,4": {
+      "m": "face",
+      "d": "r"
+     }
+    },
+    "overheads": [
+     {
+      "kind": "picture",
+      "f": "em_top/26_43.png",
+      "at": [
+       0,
+       0
+      ],
+      "size": [
+       13,
+       8
+      ]
+     }
+    ],
+    "theme": "room",
+    "title": "Battle Frontier Lounge"
    },
    "maison": {
     "art": [
@@ -168288,7 +168645,7 @@
      ]
     ],
     "trainer_spots": [
-     "Pokémon Ranger Sebastian",
+     "Schoolkid Paul",
      "Schoolkid Georgie",
      "Black Belt Yuji",
      "Pokémon Ranger Sophia"
@@ -168493,7 +168850,7 @@
    "Way out"
   ],
   "figure_floors": {
-   "Pokémon Ranger Sebastian": 0,
+   "Schoolkid Paul": 0,
    "Schoolkid Georgie": 0,
    "Black Belt Yuji": 0,
    "RAGE CANDY BAR": 0,
@@ -168551,9 +168908,9 @@
      ]
     ],
     "trainer_spots": [
-     "Lass Robin",
+     "Picnicker Martha",
      "Schoolkid Ted",
-     "Ace Duo Pike & Shiel"
+     "Hiker Alan"
     ],
     "links": {
      "13,1": [
@@ -168750,9 +169107,9 @@
    "Way out"
   ],
   "figure_floors": {
-   "Lass Robin": 0,
+   "Picnicker Martha": 0,
    "Schoolkid Ted": 0,
-   "Ace Duo Pike & Shiel": 0,
+   "Hiker Alan": 0,
    "LUMIOSE GALETTE": 0,
    "LUMIOSE GALETTE ": 0,
    "Mechadoll 3": 0,
@@ -346055,25 +346412,52 @@
       "action": "HEAL"
      },
      {
-      "text": "Receptionist",
-      "action": "EVENT",
-      "event": {
-       "world": "orre_tournament",
-       "signup": {
-        "arena": "arena",
-        "at": [
-         12,
-         11
+      "any": [
+       {
+        "text": "Receptionist",
+        "action": "EVENT",
+        "condition": [
+         "xd_ertlig",
+         "not:orre_snattle_phenac"
         ],
-        "lines": [
-         "Receptionist: Welcome to Phenac Stadium! You're entered. Win every round to take the title.",
-         "Receptionist: This way to the arena, please. Good luck!"
-        ],
-        "champion": [
-         "Receptionist: Our champion! Phenac Stadium is yours. Come back any time."
-        ]
+        "event": {
+         "world": "orre_tournament",
+         "to_arena": {
+          "arena": "arena",
+          "at": [
+           12,
+           11
+          ],
+          "flag": "xd_stadium_in"
+         },
+         "lines": [
+          "Receptionist: C-Cipher took over the stadium! Their boss is down in the arena...",
+          "Receptionist: Please - get them out of Phenac!"
+         ]
+        }
+       },
+       {
+        "text": "Receptionist",
+        "action": "EVENT",
+        "event": {
+         "world": "orre_tournament",
+         "signup": {
+          "arena": "arena",
+          "at": [
+           12,
+           11
+          ],
+          "lines": [
+           "Receptionist: Welcome to Phenac Stadium! You're entered. Win every round to take the title.",
+           "Receptionist: This way to the arena, please. Good luck!"
+          ],
+          "champion": [
+           "Receptionist: Our champion! Phenac Stadium is yours. Come back any time."
+          ]
+         }
+        }
        }
-      }
+      ]
      },
      "GYM LEADER MISTY"
     ],
@@ -363346,7 +363730,7 @@
      "ccc.........X.....................ccccc",
      "ccccccccccccc...ccccccccccccccccccccccc",
      "ccccccccccccc...ccccccccccccccccccccccc",
-     "c.....Nc.....N...............Xc1......c",
+     "c.....Nc.....N...............Xc1...1..c",
      "c.....................................c",
      "ccccccccccccc......cccccccccccccccccccc",
      "cccccccccccccc.cc.ccccccccccccccccccccc",
@@ -363365,9 +363749,9 @@
     },
     "links": {
      "31,17": [
-      4,
-      1,
-      2
+      7,
+      12,
+      3
      ],
      "17,27": [
       6,
@@ -363378,6 +363762,11 @@
       1,
       1,
       13
+     ],
+     "35,17": [
+      4,
+      1,
+      2
      ]
     },
     "parts": true,
@@ -363444,6 +363833,21 @@
       },
       "lines": [
        "A ladder down, roped off. Something rumbles far below."
+      ],
+      "look": "barrier"
+     },
+     {
+      "tiles": [
+       [
+        35,
+        17
+       ]
+      ],
+      "until": {
+       "flag_condition": "xd_ardos_citadark"
+      },
+      "lines": [
+       "The Dome's lift. It's locked from above."
       ],
       "look": "barrier"
      }
@@ -364063,7 +364467,7 @@
      ],
      "1,2": [
       0,
-      31,
+      35,
       17
      ]
     },
@@ -364103,6 +364507,21 @@
      }
     ],
     "barred": [
+     {
+      "tiles": [
+       [
+        1,
+        2
+       ]
+      ],
+      "until": {
+       "flag_condition": "xd_ardos_citadark"
+      },
+      "lines": [
+       "The lift down to the island. Cipher's guards are watching it."
+      ],
+      "look": "barrier"
+     },
      {
       "tiles": [
        [
