@@ -331128,9 +331128,9 @@
     "art": [
      "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccr.b..ccccccccccccccccccccccccccccccccccccccc",
-     "cc.........ccccN.b.+ccccccccccccccccccccccccccccccccccccccc",
-     "cc.N.......ccccr.b..ccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccr....ccccccccccccccccccccccccccccccccccccccc",
+     "cc.........ccccN...+ccccccccccccccccccccccccccccccccccccccc",
+     "cc.N.......ccccr....ccccccccccccccccccccccccccccccccccccccc",
      "cc...ccccc.cccccccccccccccccccccccccccccccccccccccccccccccc",
      "cc___ccccc.cccccccccccccccccccccccccccccccccccccccccccccccc",
      "cc...ccccc.cccccccccccccccccccccccccccccccccccccccccccccccc",
@@ -331141,7 +331141,7 @@
      "cc..cccccccccc___ccccccccccccccccccccccc......ccccccccccccc",
      "cc..cccccccccc...ccccccccccccccccccccccc......ccccccccccccc",
      "cc..cccccccccc......ccccccccccccccccccccrrrr..ccccccccccccc",
-     "cc..r.«.b..r.b0....+cccccccccccccccccccc...«..r.«.r.«....cc",
+     "cc..r.«....r..0....+cccccccccccccccccccc...«..r.«.r.«....cc",
      "cc..r.........r.....cccccccccccccccccccc....rr....r......cc",
      "ccccccccccccccc..ccccccccccccccccccccccc.................cc",
      "ccccccccccccccc00ccccccccccccccccccccccccccccccccccccc..Xcc",
@@ -331153,17 +331153,17 @@
      "cccccccccc..ccc..ccc..rcccccccccc___rr..ccccccccccccccccccc",
      "ccccr.......ccc..ccc..+cccccccccc.......ccccccccccccccccccc",
      "ccccX.......ccc..ccc...cccccccccc.......ccccccccccccccccccc",
-     "cccc..cccccccc.bbccc...cccccccccc.......ccccccccccccccccccc",
-     "cccc..cccccccc.b.ccc..Xcccccccccc......rccccccccccccccccccc",
-     "cccc..cccccccc..cccc...cccccccccc...cc.r.b...cccccccccccccc",
+     "cccc..cccccccc...ccc...cccccccccc.......ccccccccccccccccccc",
+     "cccc..cccccccc...ccc..Xcccccccccc......rccccccccccccccccccc",
+     "cccc..cccccccc..cccc...cccccccccc...cc.r.....cccccccccccccc",
      "cccc............cccc...cccccccccc___cc.r0.cc.cccccccccccccc",
-     "cc..bbrrr.......cccc...cccccccccc...cc..bccc.cccccccccccccc",
+     "cc....rrr.......cccc...cccccccccc...cc...ccc.cccccccccccccc",
      "cc.r.....ccccccccccc...cccccccccc...cccr.ccc.cccccccccccccc",
-     "cc..0ccc.cccccccccccr..cccccccccc...ccc.b.....ccccccccccccc",
+     "cc..0ccc.cccccccccccr..cccccccccc...ccc.......ccccccccccccc",
      "cc...ccc.ccccccccccc.r.cccccccccc...ccc..ccc..ccccccccccccc",
      "cccccccc0r...........r.cccccccccc...ccc..cccccccccccccccccc",
-     "cccccccc......Xr...r..b.......r..........cccccccccccccccccc",
-     "cccccccc........r....b.bccccc............cccccccccccccccccc",
+     "cccccccc......Xr...r..........r..........cccccccccccccccccc",
+     "cccccccc........r.......ccccc............cccccccccccccccccc",
      "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
     ],
@@ -331205,7 +331205,76 @@
      "MAX ELIXIR",
      "TM150",
      "FULL RESTORE"
-    ]
+    ],
+    "boxes": [
+     [
+      17,
+      2
+     ],
+     [
+      17,
+      3
+     ],
+     [
+      17,
+      4
+     ],
+     [
+      8,
+      15
+     ],
+     [
+      13,
+      15
+     ],
+     [
+      15,
+      27
+     ],
+     [
+      16,
+      27
+     ],
+     [
+      15,
+      28
+     ],
+     [
+      41,
+      29
+     ],
+     [
+      4,
+      31
+     ],
+     [
+      5,
+      31
+     ],
+     [
+      40,
+      31
+     ],
+     [
+      40,
+      33
+     ],
+     [
+      22,
+      36
+     ],
+     [
+      21,
+      37
+     ],
+     [
+      23,
+      37
+     ]
+    ],
+    "box_look": "boulder",
+    "box_strength": true,
+    "boxes_fresh": true
    },
    {
     "art": [
@@ -331520,13 +331589,13 @@
      "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
      "cccccrr........cccccccccccccccccccccccccccccccccccccccccccc",
      "cccccrr.....rN.cccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccrrbrrrrrrrcccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccrr.rrrrrrrcccccccccccccccccccccccccccccccccccccccccccc",
      "cccccrr.rrrrrrrooooooooooooooooorcccccccccccccccccccccccccc",
-     "cccccr...b..rNrooooooooooooooooorcccccccccccccccccccccccccc",
+     "cccccr......rNrooooooooooooooooorcccccccccccccccccccccccccc",
      "cccccr..rr....rooooooooooooooooorccoooooooo.ccccccccccccccc",
-     "cccccrrbrrrrrrrooooooooooooooooorccooooooooNccccccccccccccc",
+     "cccccrr.rrrrrrrooooooooooooooooorccooooooooNccccccccccccccc",
      "cccccr.........X....rrr....X.....ccoooooooo.ccccccccccccccc",
-     "cccccr............r.b..r.........ccoooooooo.cccrr......rccc",
+     "cccccr............r....r.........ccoooooooo.cccrr......rccc",
      "ccccc..........Xrrrr.......X.....ccoooooooo.............ccc",
      "ccccc.X.cccccccccccccccccccc..cccccoooooooo............+ccc",
      "ccccc...cccccccccccccccccccc..cccccoooooooorccc.........ccc",
@@ -331540,14 +331609,14 @@
      "ccccc.r.cc..rrrrrrrrrcc.r.r.r.r...rcr...rrcccccccccc..ccccc",
      "ccccc...cc..ccccccccccc...r.r.r.r.rcr.rrr.cc.X.........cccc",
      "cccccr.rcc..ccccccccccc.rrr.r.r.r.rcr.r.r..............cccc",
-     "ccccc.b.cc..cc............r.....r.rcr...r....X.........cccc",
+     "ccccc...cc..cc............r.....r.rcr...r....X.........cccc",
      "ccccc...cc..ccr.rrrrrrrrr.r.rrrrr.rccr.rr.ccrooooooooorcccc",
      "cccccr.rcc..ccr.........r.r.....r..rcr.rr.ccrooooooooorcccc",
-     "ccccc.b.cc.rccrrrrrrrr.rr.rrrrr.rr.rcr.rr.ccrooooooooorcccc",
+     "ccccc...cc.rccrrrrrrrr.rr.rrrrr.rr.rcr.rr.ccrooooooooorcccc",
      "ccccc...cc..cc..........r.......r..rcr.rr.ccrooooooooorcccc",
      "cccccr.rcc..ccc..ccccccccccccccccc.rcr.rr.ccrooooooooorcccc",
-     "ccccc.b.ccrbccc..ccccccccccccccccc.rcr....ccrooooooooorcccc",
-     "ccccc...cc.b.........rrrrrrrrrr.cc.rcrrrrrccrooooooooorcccc",
+     "ccccc...ccr.ccc..ccccccccccccccccc.rcr....ccrooooooooorcccc",
+     "ccccc...cc...........rrrrrrrrrr.cc.rcrrrrrccrooooooooorcccc",
      "cccccr.rccr.roooooooooooooooooo.cc.rcccccccc...........cccc",
      "ccccc...cc..roooooooooooooooooo....rrrrrrccccccccccc..ccccc",
      "ccccc.r.cc..roooooooooooooooooo.........rcc.............ccc",
@@ -331566,7 +331635,7 @@
      "cccccr....roooooooooo...........cccccc..ccccccooooooooooocc",
      "ccccc.....rooooooooooooooorcc.rrcccccc..ccccccooooooooooocc",
      "ccccc.....rooooooooooooooorcc.rrrrrrrr......ccooooooooooocc",
-     "cccccbrrcccooooooooooooooorcc.oooooooooooo..ccooooooooooocc",
+     "ccccc.rrcccooooooooooooooorcc.oooooooooooo..ccooooooooooocc",
      "ccccc...cccooooooooooooooorcc.oooooooooooo..ccooooooooooocc",
      "ccccc...cccooooooooooooooorcc.oooooooooooo..ccooooooooooocc",
      "cccccr..cccooooooooooooooorcc.oooooooooooo..ccooooooooooocc",
@@ -331631,7 +331700,52 @@
      "Ace Trainer Micah",
      "Ace Trainer Clarice",
      "Ace Trainer Arthur"
-    ]
+    ],
+    "boxes": [
+     [
+      7,
+      4
+     ],
+     [
+      9,
+      6
+     ],
+     [
+      7,
+      8
+     ],
+     [
+      20,
+      10
+     ],
+     [
+      6,
+      24
+     ],
+     [
+      6,
+      27
+     ],
+     [
+      6,
+      30
+     ],
+     [
+      11,
+      30
+     ],
+     [
+      11,
+      31
+     ],
+     [
+      5,
+      50
+     ]
+    ],
+    "box_look": "boulder",
+    "box_strength": true,
+    "boxes_fresh": true
    },
    {
     "art": [
