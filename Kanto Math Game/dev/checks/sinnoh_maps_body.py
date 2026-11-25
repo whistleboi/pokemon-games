@@ -2105,5 +2105,27 @@ check(any(isinstance(p, str) and (_opts.get(p) or {}).get("action") == "DAYCARE"
       f"Solaceon: the Day Care's counter inside its house runs the Day Care ({_dc})")
 story.story_flags.clear(); story.story_flags.update(_sv)
 
+# ---- S8 (11-25, Jordan: "Build sunny shore market"; s_s8_market.py): Sunyshore Market walked in from its door, the lady's
+#      Effort Ribbon for a Pokemon at 510 effort points; the Solaceon Ruins' last room holds a Rare Candy
+_sv, _team = dict(story.story_flags), list(story.player_team)
+_ef = mk(25); _ef.level = 50; _ef.ribbons = []; _ef.evs = {"HP": 252, "ATTACK": 252, "SPEED": 6}
+story.player_team = [_ef]
+t = town("SUNYSHORE_CITY", "SINNOH_ROUTE_222"); frames(t, 3)
+t.player = t.anim_from = (17, 27); t.anim = 0; t.walk_goal = None; t.facing = (0, -1)
+t.step(0, -1)
+_drive(t, 200, lambda: getattr(g.current_state, "room", None) == "market")
+t = g.current_state
+_inm = getattr(t, "room", None) == "market"
+_lady = next((s for s, o in t.people.items() if str(o.get("text")) == "Kind lady"), None)
+if _lady:
+    t.player = t.anim_from = (_lady[0] + 1, _lady[1]); t.anim = 0; t.facing = (-1, 0)
+    t._talk(tuple(_lady)); _drive(t, 300, lambda: not getattr(t, "npc_active", False))
+r = route("SOLACEON_RUINS", "SOLACEON_TOWN")
+r.run.jump_floor(6, (5, 4)); frames(r, 3)
+_rc = {str((m.payload or {}).get("text")) for m in r.run.floor.movers if m.kind == "figure"}
+check(_inm and _lady and "EFFORT" in _ef.ribbons and "RARE CANDY" in _rc,
+      f"Sunyshore Market walked in from its door, the Effort Ribbon for a hard-worked Pokemon; a Rare Candy in the Solaceon Ruins' last room ({_inm}, {_lady}, {_ef.ribbons}, {sorted(_rc)})")
+story.story_flags.clear(); story.story_flags.update(_sv); story.player_team = _team
+
 g.walk_towns = False
 print(f"##### {fails} failures")
