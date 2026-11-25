@@ -232,6 +232,6 @@ check(not miss, f"every battle picture ({miss})")
 blob = json.dumps(json.load(open("assets/music/unova/music.json", encoding="utf-8")))
 check("msl_field" in blob, "the theater's own music")
 
-print("\n##### %d failures" % len(fails))
 for f in fails:
     print("  -", f)
+print(f"##### {len(fails)} failures")

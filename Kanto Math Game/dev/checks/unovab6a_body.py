@@ -249,6 +249,6 @@ flags.pop("visited_MISTRALTON_CITY", None)
 main = [m["id"] for m in story.get_active_missions() if m["type"] == "MAIN"]
 check("b2_m31" in main, f"after Surf: b2_m31 ({main})")
 
-print("\n##### %d failures" % len(fails))
 for f_ in fails:
     print("  -", f_)
+print(f"##### {len(fails)} failures")

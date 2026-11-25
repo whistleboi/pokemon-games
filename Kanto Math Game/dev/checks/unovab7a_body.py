@@ -193,6 +193,6 @@ boss = next((c for o in ht["people"] for c in _opts(o) if isinstance(c, dict) an
 check(boss and boss["boss"]["id"] == 485 and "beat_unova_champion" in boss["condition"] and boss["boss"]["victory_flag"] == "reversal_heatran",
       "Heatran in its chamber after the Champion (the side quest's flag)")
 
-print("\n##### %d failures" % len(fails))
 for f_ in fails:
     print("  -", f_)
+print(f"##### {len(fails)} failures")

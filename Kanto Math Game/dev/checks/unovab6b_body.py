@@ -255,6 +255,6 @@ _sk = next(c for o in tmaps["MISTRALTON_CITY"]["rooms"]["cargo"]["people"] for c
 check(flags.get("b2_lentimas_flight") and story.current_area_key == "LENTIMAS_TOWN" and any("Bianca" in x for x in _sk["event"]["lines"]),
       f"Skyla flies you, Juniper and Bianca to Lentimas Town ({story.current_area_key})")
 
-print("\n##### %d failures" % len(fails))
 for f_ in fails:
     print("  -", f_)
+print(f"##### {len(fails)} failures")

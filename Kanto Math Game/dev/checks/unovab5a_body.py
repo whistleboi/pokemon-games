@@ -269,6 +269,6 @@ check(all(k in missions for k in ("b2_m26", "b2_m27", "b2_m28")) and missions["b
 blob = json.dumps(json.load(open("assets/music/unova/music.json", encoding="utf-8")))
 check("DRIFTVEIL_CITY" in blob and "DRIFTVEIL_DRAWBRIDGE" in blob, "Driftveil's and the bridge's own music")
 
-print("\n##### %d failures" % len(fails))
 for f in fails:
     print("  -", f)
+print(f"##### {len(fails)} failures")

@@ -186,6 +186,6 @@ check("b2_m43" in mains(), f"the Journal: the ship ({mains()})")
 flags["b2_frigate2_done"] = True
 check("b2_m44" in mains(), f"the Journal: on to the Giant Chasm ({mains()})")
 
-print("\n##### %d failures" % len(fails))
 for f_ in fails:
     print("  -", f_)
+print(f"##### {len(fails)} failures")
