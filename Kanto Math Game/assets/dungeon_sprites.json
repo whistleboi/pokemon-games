@@ -76,6 +76,10 @@
     ]
   },
   "figures": {
+    "SUNYSHORE_CITY:Julia": {"sheet": "pt_woman3.png"},
+    "SUNYSHORE_CITY:Jasmine": {"sheet": "pt_mikan.png"},
+    "SINNOH_ROUTE_221:Number man": {"sheet": "pt_oldman1.png"},
+    "SANDGEM_TOWN:Professor Rowan": {"sheet": "pt_doctor.png"},
     "ABUNDANT_SHRINE:Amoonguss in the grotto": {"pokemon": 591},
     "ABUNDANT_SHRINE:Boy at the ruins": {"sheet": "b2_c11.png"},
     "ABUNDANT_SHRINE:Bronzor in the grotto": {"pokemon": 436},
