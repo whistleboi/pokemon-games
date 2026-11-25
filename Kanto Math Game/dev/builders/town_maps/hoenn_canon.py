@@ -547,30 +547,9 @@ def _devon_chase(maps):
             sc["event"] = dict(sc.get("event") or {}, flag="heard_devon_parts_stolen")
 
 
-_HIDEOUT_DUPES = {"TM094 DARK PULSE ", "MASTER BALL ", "NUGGET  ", "NUGGET   ", "FULL RESTORE ", "MAX ELIXIR ", "ESCAPE ROPE ",
-                  "NEST BALL ", "PP MAX ", "MAX REVIVE "}
-
-
-def _hideout_dupes(maps):
-    """Clean-up (11-24, the encyclopedia's oddities): the Team Hideout's 1F held the ORAS overlay's second set of item
-    balls (both games' hideouts' items: a second Master Ball, Dark Pulse, Nuggets...). Their options are gone from
-    hoenn_oras.json (h_oddities.py); their spots go too (people go to the N tiles in reading order)."""
-    m = maps.get("HOENN_TEAM_HIDEOUT")
-    if not m or not m.get("floors"):
-        return
-    f = m["floors"][0]
-    spots = [(x, y) for y, r in enumerate(f["art"]) for x, c in enumerate(r) if c == "N"]
-    people = f.get("people") or []
-    art = [list(r) for r in f["art"]]
-    keep = []
-    for (x, y), p in zip(spots, people):
-        if isinstance(p, str) and p in _HIDEOUT_DUPES:
-            art[y][x] = "."
-            (f.get("moves") or {}).pop(f"{x},{y}", None)
-        else:
-            keep.append(p)
-    f["people"] = keep + people[len(spots):]
-    f["art"] = ["".join(r) for r in art]
+# (Team Hideout: each version its own item balls, Jordan 11-24 Q13 - Omega Ruby's 8 + the Master Ball and Nugget, Alpha
+#  Sapphire's 10, gated by "hoenn_version:" in hoenn_oras.json / hoenn_area_data.json; the 11-24 clean-up that dropped
+#  Alpha Sapphire's spots is undone)
 
 
 def _pyre_admin(maps):
@@ -836,7 +815,6 @@ def apply(maps):
     _sootopolis_wallace(maps)
     _seafloor_lookout(maps)
     _devon_chase(maps)
-    _hideout_dupes(maps)
     _pyre_admin(maps)
     _woods_researcher(maps)
     _drop_dupes(maps)

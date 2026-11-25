@@ -82,7 +82,7 @@ check(all(prog[a].get("wild_tables") for a in ("UNOVA_ROUTE_16", "LOSTLORN_FORES
 
 print("2) into Nimbasa from Join Avenue: your BW rival's meeting")
 story.region_rivals.setdefault("UNOVA", {})["friend_character"] = "cheren"
-flags["b2_colress_route4"] = True
+flags["b2_colress_route4"] = flags["b2_colress_r4"] = True   # (b2_colress_r4: what the battle sets, the missions read it since 11-24)
 st = town("NIMBASA_CITY", (46, 62), face=(0, -1))
 settle(200)
 check(flags.get("b2_nimbasa_rival") and "Cheren" in heard(), f"Cheren meets you as you arrive ({heard()[:70]})")

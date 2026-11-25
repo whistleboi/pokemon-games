@@ -2640,8 +2640,9 @@ _dock = tuple(st.run.player)
 _LOBBIES = ("tower", "dome", "palace", "pyramid", "arena", "factory", "pike")
 _brains = {r: [n.strip() for n in _bf["rooms"][r].get("people") or []] for r in _LOBBIES}
 _fa = next(o for o in _sp27["HOENN_BATTLE_FRONTIER"]["route_menu"] if o.get("text") == "Ferry attendant")
-check(_dock == (20, 68) and _brains["tower"] == ["Salon Maiden Anabel", "Tower attendant"] and _brains["factory"] == ["Factory Head Noland", "Factory attendant"]
-      and all(len(v) == 2 for v in _brains.values()) and not any(_bf["rooms"][r].get("trainer_spots") for r in _LOBBIES)
+check(_dock == (20, 68) and _brains["tower"] == ["Double attendant", "Multi attendant", "Salon Maiden Anabel", "Tower attendant"]   # (the Tower's
+      and _brains["factory"] == ["Factory Head Noland", "Factory attendant"]                                                    #  Double and Multi
+      and all(len(v) == (4 if r == "tower" else 2) for r, v in _brains.items()) and not any(_bf["rooms"][r].get("trainer_spots") for r in _LOBBIES)
       and "Nurse" in _bf["rooms"]["center"]["people"] and "Clerk" in _bf["rooms"]["mart"]["people"]
       and _fa["event"]["travel"] == "HOENN_SS_TIDAL" and set(_bf["exits"].values()) == {"HOENN_ARTISAN_CAVE"},
       f"Battle Frontier: off the ferry on the dock; each lobby's attendant and Frontier Brain (no Brain to walk up to); the Center and Mart; the Artisan Cave's mouths ({_dock}, {_brains})")
@@ -2748,7 +2749,7 @@ _bfF = json.load(open("assets/town_maps.json", encoding="utf-8"))["HOENN_BATTLE_
 _onmap = {p if isinstance(p, str) else p.get("text") for p in _bfF["people"]}
 check({"Wally", "Looker", "Custodian", "GENGARITE", "Whismur show", "Magma Grunt", "Aqua Grunt"} <= _onmap
       and {"Fairy Tale Girl Josephine", "Bug Maniac Felix"} <= set(_bfF["trainer_spots"]) and len(_bfF.get("hidden") or {}) >= 3
-      and _bfF["buildings"].get("L") == "annex" and "The Judge" in _bfF["rooms"]["center"]["people"],
+      and "annex" in _bfF["buildings"].values() and "The Judge" in _bfF["rooms"]["center"]["people"],
       "the Frontier: Wally, Looker, the custodian and his Gengarite, the Whismur show, the grunts, the five masters, the hidden items, the Day Care Annex, the Judge")
 _fo = {o.get("text"): o for o in _spF["HOENN_BATTLE_FRONTIER"]["route_menu"]}
 check(_fo["Wally"]["event"]["battle"]["team"] == [334, 301, 407, 462, 475] and _spF["HOENN_BATTLE_FRONTIER"].get("can_fish")
@@ -3497,6 +3498,93 @@ said13b = _press(st, (6, 5), (0, -1))
 check(sorted(_new13) == [252, 255] and story.story_flags.get("got_hoenn_other_starters") and not any("waiting here since" in x for x in said13b),
       f"Littleroot: after the title Birch gives a Mudkip player Treecko and Torchic, once ({_new13}, {said13[:1]})")
 story.story_flags.clear(); story.story_flags.update(_f13); story.player_team[:] = _t13; story.pc_pokemon[:] = _pc13
+
+# Jordan 11-24 (questions/HOENN.md 16, "match ORAS"): the Safari Zone's ORAS hordes are on - the Safari Game has no battles,
+# so a horde's Pokemon walks the map on its own (Doduo, Oddish, Psyduck at Lv 15; Oddish only comes that way)
+from src.world import hordes as _hz
+import random as _rz
+_sz = g.loader.area_data["STORY_PROGRESSION"]["HOENN_SAFARI_ZONE"]
+_got = [_hz.one(g, "HOENN_SAFARI_ZONE", _sz, _rz.Random(n)) for n in range(40)]
+_ids = sorted({p.id for p in _got if p}); _lvs = sorted({p.level for p in _got if p})
+check(_hz.rate(g, _sz) > 0 and _ids == [43, 54, 84] and _lvs == [15], f"Safari Zone: ORAS's hordes on, their Pokemon caught one at a time ({_ids} Lv {_lvs})")
+_sc = [t for t in g.loader.area_data["STORY_PROGRESSION"]["HOENN_SPACE_CENTER"]["trainer_pool"] if t.get("team") == [262] * 5]
+check(_sc and _sc[0]["levels"] == [25] * 5, f"Space Center: the five-Mightyena horde at ORAS's Lv 25 ({[t['levels'] for t in _sc]})")
+
+# Jordan 11-24 (HOENN.md 13): the Team Hideout's item balls, each version its own (Omega Ruby's 10, Alpha Sapphire's 10)
+_hz_ops = [o for o in g.loader.area_data["STORY_PROGRESSION"]["HOENN_TEAM_HIDEOUT"]["route_menu"] if o.get("found") and o.get("action") == "EVENT"]
+_by_v = {v: sorted((o["text"].strip() for o in _hz_ops if f"hoenn_version:{v}" in (o.get("condition") or [])), key=str) for v in ("OMEGA_RUBY", "ALPHA_SAPPHIRE")}
+_both = [o["text"] for o in _hz_ops if not any(str(c).startswith("hoenn_version:") for c in (o.get("condition") or []))]
+check(len(_by_v["OMEGA_RUBY"]) == 10 and len(_by_v["ALPHA_SAPPHIRE"]) == 10 and not _both and "MASTER BALL" in _by_v["ALPHA_SAPPHIRE"],
+      f"Team Hideout: each version its own 10 item balls ({_by_v}; in both: {_both})")
+
+# Jordan 11-24 (HOENN.md 15, "all five, plus the info people"): Emerald's Frontier people with something to do, each in their
+# own lounge (or Scott's house), behind a door that leads there; their events (src/world/hoenn_frontier.py) do their jobs
+_fm = _tm["HOENN_BATTLE_FRONTIER"]
+_fopts = {o.get("text"): o for o in _area["HOENN_BATTLE_FRONTIER"].get("route_menu") or []}
+_want = {"scott": ["Scott"], "lounge_trade": ["Skitty fan"], "lounge_tutors": ["Old tutor", "Old tutor "], "lounge_bet": ["Gambler"],
+         "lounge_breeder": ["Old breeder"], "lounge_whisper": ["Pokemon whisperer"], "lounge_news": ["News man"],
+         "ranking": ["Ranking Hall guide"], "tower": ["Double attendant", "Multi attendant"]}
+_bad = [(r, w) for r, ws in _want.items() for w in ws if r not in (_fm.get("inside") or {}).values() or w not in (_fm["rooms"][r].get("people") or []) or w not in _fopts]
+check(not _bad, f"Battle Frontier: Scott's house, six lounges and the Tower's two new counters, each person there behind a door ({_bad})")
+from src.world import hoenn_frontier as _hf, frontier as _fr, battle_points as _bpl
+class _Stub:
+    def __init__(s): s.game = g
+_said = []
+_show = lambda ls: _said.extend(ls)
+_f15 = dict(story.story_flags); _i15 = dict(story.inventory)
+story.story_flags["battle_points"] = 0
+_hf.event(_Stub(), {"scott": True}, [], _show)
+_b1 = _bpl.bp(story)
+for _x in _hf.SEVEN:
+    story.story_flags[f"frontier_{_x}_silver"] = True
+_hf.event(_Stub(), {"scott": True}, [], _show)
+check(_b1 == 1 and story.inventory.get("LANSAT_BERRY") and not story.inventory.get("STARF_BERRY") and story.story_flags.get("scott_frontier_welcome"),
+      f"Scott's house: 1 BP the first time (no Scott in ORAS's story), a Lansat Berry for seven Silver Symbols ({_b1} BP; {_said[-1:]})")
+# the gambler: 10 BP on a facility, five wins there in a row, back double; a loss there loses the bet
+story.story_flags["battle_points"] = 40
+_fac = "dome"
+story.story_flags["frontier_bet"] = None
+import random as _rb
+_rb.seed(3)
+_orig = g.change_state
+_picked = []
+def _cs(stt):
+    _picked.append(stt)
+g.change_state = _cs
+from src.states.overworld import common as _cm
+_ost = _cm._say_then
+_cm._say_then = lambda state, lines, then: then()
+try:
+    _hf.event(_Stub(), {"bet": True}, [], _show)
+    _pl = _picked[-1]
+    _bet_fac = None
+    _pl.done(10)
+except Exception as _e:
+    _said.append(f"(bet: {_e!r})")
+finally:
+    g.change_state = _orig; _cm._say_then = _ost
+_b = story.story_flags.get("frontier_bet") or {}
+for _n in range(5):
+    _fr.after_battle(g, _b.get("fac", _fac), True)
+_before = _bpl.bp(story)
+_hf.event(_Stub(), {"bet": True}, [], _show)
+check(_b.get("bp") == 10 and _bpl.bp(story) - _before == 20 and not story.story_flags.get("frontier_bet"),
+      f"Frontier lounge: the gambler takes 10 BP, and five wins in a row in his facility pay back 20 ({_b}; {_said[-2:]})")
+_ti = _fr.next_trainer(g, "tower_double")
+story.story_flags["frontier_multi_partner"] = {"i": 2, "team": [68, 297]}
+_tm2 = _fr.next_trainer(g, "tower_multi")
+_mo = _tm2.get("battle_options") or {}
+check(_ti.get("double") and len(_ti["team"]) == 4 and _mo.get("double") and _mo.get("partner", {}).get("team") == [68, 297]
+      and len(_mo.get("second_trainer", {}).get("team") or []) == 2 and len(_tm2["team"]) == 2,
+      f"Battle Tower: the Double room (4 a side, doubles) and the Multi room (you and your partner against two Trainers, two each) ({_ti.get('name')}, {_mo.get('partner', {}).get('name')})")
+_tu = [o for k, o in _fopts.items() if k.startswith("Old tutor")]
+_tmv = [m for o in _tu for m in o["event"]["tutor"]["choices"]]
+_mvs = json.load(open("assets/moves.json", encoding="utf-8"))
+check(len(_tmv) == 20 and all(m in _mvs for m in _tmv) and all(len(o["event"]["tutor"]["bp_costs"]) == 10 for o in _tu),
+      f"Frontier lounge: Emerald's two BP tutors, ten moves each from its own lists ({[m for m in _tmv if m not in _mvs]})")
+_tr = _fopts["Skitty fan"]["event"]["trade"]
+check(_tr == {"want": 300, "give": 52, "nickname": "MEOWOW"}, f"Frontier lounge: Isis trades her Meowth MEOWOW for a Skitty, as Emerald's ({_tr})")
+story.story_flags.clear(); story.story_flags.update(_f15); story.inventory.clear(); story.inventory.update(_i15)
 
 story.story_flags.clear(); story.story_flags.update(_saved)
 print(f"##### {len(fails)} failures")

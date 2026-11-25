@@ -12,7 +12,8 @@ A Pygame Pokémon game where battles are won by answering math problems. Nine re
   A region's set: `run.sh region:<lane>` (every suite that lane owns + its walk); `run.sh quick` (short suites that open
   the whole game); `run_par.sh` takes the same words and runs them side by side. Every suite has a line in
   `dev/checks/suites.txt` (name, owner lane, tags): add one for a new suite (`run.sh lint` checks).
-- Everything: `bash dev/checks/run_all.sh` (every listed suite side by side; only when asked).
+- Everything: `bash dev/checks/run_all.sh` (every listed suite, the walks and `smoke` side by side, about 20 minutes; only when asked).
+  `run.sh smoke` (or `smoke:HOENN`) is the every-region start check on its own.
 - Headless checks use `SDL_VIDEODRIVER=dummy` and `SDL_AUDIODRIVER=dummy`.
 
 ## Layout

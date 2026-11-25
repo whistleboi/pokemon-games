@@ -561,9 +561,10 @@ check("has_gateon_badge" in (_tr.get("Cipher Lab") or []) and "has_key_lair_badg
       f"S3: the Cipher Lab waits for the Gateon Badge, Citadark for the Key Lair Badge ({_tr.get('Cipher Lab')}, {_tr.get('Citadark Isle')})")
 _roof = _TMJ["GATEON_PORT"]["rooms"]["lighthouse_roof"]["people"]
 _jas = next((p for p in _roof if isinstance(p, dict) and p.get("text") == "Gym Leader Jasmine"), {})
-_gl = [p["boss"]["level"] for rn in ("lighthouse", "lighthouse_2f", "lighthouse_3f") for p in _TMJ["GATEON_PORT"]["rooms"][rn]["people"]
-       if isinstance(p, dict) and p.get("action") == "BOSS"]
-check((_jas.get("event") or {}).get("stages", [{}])[0].get("world") == "orre_gym" and _gl == [36, 37, 38],
+_gl = [p["event"]["battle"]["levels"][0] for rn in ("lighthouse", "lighthouse_2f", "lighthouse_3f")   # (R6 11-24: event battles -
+       for p in _TMJ["GATEON_PORT"]["rooms"][rn]["people"]                                          #  a BOSS person in a town room
+       if isinstance(p, dict) and str(p.get("text", "")).startswith("Lighthouse ") and (p.get("event") or {}).get("battle")]   # did nothing)
+check((_jas.get("event") or {}).get("stages", [{}])[0].get("world") == "orre_gym" and len(_gl) == 3 and all(33 <= l_ <= 40 for l_ in _gl),
       f"S3: Jasmine's roof battle is the Gym's (math game, then badge 5); the guardians Lv {_gl}")
 story.story_flags.update(orre_part2=True)
 story.badges["ORRE"] = ["PHENAC", "PYRITE", "AGATE", "SNAGEM", "GATEON"]

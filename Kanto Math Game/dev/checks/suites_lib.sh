@@ -16,6 +16,7 @@ _alias() { sed 's/\r$//; s/#.*//' "$LIST" | awk -v n="$1" '$1 == "alias" && $2 =
 #   quick          the quick set: a few short suites that open the whole game (about 2-3 minutes side by side)
 #   tag:<t>        every suite with that tag      owner:<o>  the same as region:<o> without the walk
 #   all            every suite but the long ones   an old name kept by an alias line: its new name(s)
+#   smoke          smoke_regions.py: every region starts (smoke:HOENN,KALOS just those)
 expand() {
   local w=$1 r
   case "$w" in
@@ -38,6 +39,9 @@ build() {
   local t=$1 f=$2
   if [ "${t#walk:}" != "$t" ]; then
     cat $C/harness_head.py $C/reach_lib.py $C/walk_${t#walk:}.py > "$f"
+  elif [ "$t" = smoke ] || [ "${t#smoke:}" != "$t" ]; then   # (smoke_regions.py: every region starts; smoke:<REGION> one)
+    local only=""; [ "${t#smoke:}" != "$t" ] && only=${t#smoke:}
+    printf 'import os, runpy, sys\nsys.argv = ["smoke_regions.py", os.getcwd()] + [r for r in "%s".upper().split(",") if r]\nrunpy.run_path("dev/checks/smoke_regions.py", run_name="__main__")\n' "$only" > "$f"
   elif _has_tag "$t" helpers; then
     cat $C/harness_head.py $C/sub_helpers_body.py $C/${t}_body.py > "$f"
   else
@@ -45,7 +49,11 @@ build() {
   fi
 }
 
-exists() { if [ "${1#walk:}" != "$1" ]; then [ -f "$C/walk_${1#walk:}.py" ]; else [ -f "$C/${1}_body.py" ]; fi; }
+exists() {
+  if [ "${1#walk:}" != "$1" ]; then [ -f "$C/walk_${1#walk:}.py" ]
+  elif [ "$1" = smoke ] || [ "${1#smoke:}" != "$1" ]; then [ -f "$C/smoke_regions.py" ]
+  else [ -f "$C/${1}_body.py" ]; fi
+}
 
 # count <name> <log> <exit code>: the failures in a finished suite's output.
 # FAIL lines + Tracebacks + a suite that can't start (SyntaxError); a time-out or a crash with no Traceback counts 1.

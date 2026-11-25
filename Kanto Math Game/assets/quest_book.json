@@ -433,7 +433,8 @@
     ]},
     {"title": "The Road to the League", "chapters": [
       {"mission": "b2_m45", "title": "The Last Road", "say": "The ice over Opelucid has melted. N says the League is waiting, and the only road there runs north past Route 23."},
-      {"mission": "b2_m46", "title": "The League at Last", "say": "Past the last cave, the Pokemon League stands at the top of the mountain. Four of Unova's strongest wait inside, and then its Champion."}
+      {"mission": "b2_m46", "title": "The League at Last", "say": "Past the last cave, the Pokemon League stands at the top of the mountain. Four of Unova's strongest wait inside, one in each tower, in any order you like.", "done": ["b2_e4_shauntal", "b2_e4_grimsley", "b2_e4_caitlin", "b2_e4_marshal"]},
+      {"mission": "b2_m46", "title": "Down to the Champion", "say": "All four towers are quiet now. Back in the plaza, the statue's plaque points the way down, to the Champion waiting below.", "when": ["b2_e4_shauntal", "b2_e4_grimsley", "b2_e4_caitlin", "b2_e4_marshal"]}
     ]}
   ],
   "ORRE": [

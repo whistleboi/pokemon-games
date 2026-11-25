@@ -1361,7 +1361,11 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
                 continue
             _free = lambda t: (0 <= t[0] < f.w and 0 <= t[1] < f.h and f.walkable(*t) and not f.occupied(*t)
                                and f.tile(*t) != core.SURF and t != tuple(self.run.player))
-            spot = partners.pick_spot((m.x, m.y), _free, self.run.player)   # (never the owner's last side you can reach)
+            _ground = lambda t: (0 <= t[0] < f.w and 0 <= t[1] < f.h and f.tile(*t) != core.SURF
+                                 and (f.walkable(*t) or str(f.decor.get(tuple(t), "")).startswith("barrier")
+                                      or any((o.x, o.y) == tuple(t) for o in f.movers)))   # (a barrier, a person: the way)
+            spot = partners.pick_spot((m.x, m.y), _free, self.run.player, _ground)   # (never the owner's last side you can reach,
+                                                                                     #  nor the one way into a room: Ein's Golbat)
             if spot is None:
                 continue
             species, owner = got
@@ -1987,6 +1991,12 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
             story.story_flags[flag] = self.zones[self._zone_index(index, spot[0], spot[1])]
         self._wild_spot = tuple(spot) if spot is not None else None   # (where it will stand: dark grass or not, 11-20)
         try:
+            if self.area_data.get("safari_game") and core.CURRENT_TILE not in (core.SURF, core.WATER):
+                from src.world import hordes as _hordes   # (the Safari Game has no battles: a horde's Pokemon walks the map
+                if _hordes.roll(self.game, self.area_data, rng):   # on its own, caught with Safari Balls - Hoenn Q16, 11-24)
+                    got = _hordes.one(self.game, self.area_key, self.area_data, rng)
+                    if got is not None:
+                        return got
             return self._wild_for_pool(rng)
         finally:
             if keep is not None:
@@ -6030,7 +6040,8 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         story = self.game.story_manager
         step = next((s for s in mission["steps"] if s.get("area", guide.mission_target(self.game, mission)) == self.area_key
                      and not (s.get("done") and guide._ok(story, s["done"])) and guide._ok(story, s.get("when"))), None)
-        fl = step.get("floor", 0 if self.run.n_floors == 1 else None) if step else None
+        _rooms = (self.run.recipe.get("art") or {}).get("room_floors")   # (a route with rooms: its ground is floor 0, the rooms the rest -
+        fl = step.get("floor", 0 if self.run.n_floors == 1 or _rooms else None) if step else None   #  a step with no floor is outdoors: Route 4's Colress, 11-24)
         if step and step.get("room"):  # (a room of the map, walked as a floor of its own: the S.S. Anne's Captain's cabin)
             fl = ((self.run.recipe.get("art") or {}).get("room_floors") or {}).get(step["room"])
         if fl is None or not 0 <= fl < self.run.n_floors or not step.get("at"):
