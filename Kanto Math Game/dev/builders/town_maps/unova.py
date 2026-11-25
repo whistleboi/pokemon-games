@@ -1643,7 +1643,7 @@ CASTELIA = town(
             {}, title="Cruise Dock"),
         "plaza": castelia_room(30, {1: _say("Old man by the fountain", "If you want to be strong, battle lots of Trainers, and get to know your Pokemon well!"),
                                     0: _say("Colress", "Colress: I'll be waiting on Route 4. It's just beyond here!",
-                                            condition=["b2_colress_plaza", "not:b2_colress_route4"])},
+                                            condition=["b2_colress_plaza", "not:b2_colress_r4"])},
                                {1: ["CENTRAL PLAZA", "Ahead: Route 4"]}, title="Central Plaza", scenes=[
             # (after Burgh's badge: the man in the white coat looks at your team, and names himself; Route 4 next, batch 3b)
             {"trigger": "enter", "condition": ["b2_insect_badge", "not:b2_colress_plaza"], "flag": "b2_colress_plaza",
@@ -7071,6 +7071,117 @@ VR_TUNNEL["barred"] = [{"tiles": [[9, 10]], "until": {"flag_condition": "b2_vr_h
                         "lines": ["Footsteps are running up behind you..."]}]
 
 
+# ======================================================================================================== batch 10b (11-24)
+# The Pokemon League (Black 2's zones 136-146): the forecourt 136 (its walk layer is a 64 x 64 block, the only one in the
+# file: g5map.block reads each permission section's own size now), Victory Road's last stretch 214 (on rails: its own walk
+# origin, 16 rows up) from the tunnel, the League's Center 146, the plaza 137 and the four Elite Four rooms on rails (left to
+# right: Shauntal 140, Grimsley 141, Caitlin 143, Marshal 142; any order, as Black 2), the statue that carries you down once
+# all four are beaten (its plaque: a lift), the chamber 138, Iris's temple 144 and the Hall of Fame 145.
+# Flags: b2_e4_shauntal / _grimsley / _caitlin / _marshal -> beat_unova_champion (Iris) -> b2_hall_of_fame (home to Aspertia).
+# After the title: each of the five rematches (Black 2's 143-146, Iris 536) as often as you like, at their own levels.
+OUTSIDE.update({137: 65535, 146: 136, 214: 65535, 140: -1, 141: -1, 142: -1, 143: -1, 138: -1, 144: -1, 145: -1})
+_E4 = [("Shauntal", 140, 38, 143, "b2_c93.png", [
+            "Shauntal: Oh! A challenger! I'm Shauntal of the Elite Four. I write novels about the Trainers I battle.",
+            "Shauntal: The way you and your Pokemon look at each other... There's a story there. Let me read it!"],
+        ["Shauntal: ...What a wonderful ending! I'll call this chapter 'The Trainer Who Wouldn't Give Up'."]),
+       ("Grimsley", 141, 40, 145, "b2_c94.png", [
+            "Grimsley: Welcome. I'm Grimsley of the Elite Four. A battle is a gamble: you win or you lose.",
+            "Grimsley: Let's see which way the dice fall today."],
+        ["Grimsley: Whether you win or lose, it's all down to the moment. ...This moment was yours."]),
+       ("Caitlin", 143, 41, 146, "b2_c96.png", [
+            "Caitlin: ...You woke me. I'm Caitlin of the Elite Four. I won't hold back, so neither should you.",
+            "Caitlin: Show me the power that brought you this far!"],
+        ["Caitlin: You and your Pokemon are wonderful. Like a dream..."]),
+       ("Marshal", 142, 39, 144, "b2_c95.png", [
+            "Marshal: I am Marshal of the Elite Four. My master is Alder, the former Champion.",
+            "Marshal: I'll test the strength of your bond with your Pokemon. Come!"],
+        ["Marshal: Whew! Your fighting spirit is strong. Go on, the next battle awaits."])]
+
+
+def _e4_room(name, z, first, again, sheet, intro, won):
+    flag = "b2_e4_" + name.lower()
+    people = {0: [
+        {"text": name, "action": "EVENT", "_look": "sheet:" + sheet, "condition": ["not:beat_unova_champion", "not:" + flag],
+         "event": {"lines": intro, "battle": _b2(first, dialogue={"player_won": won}), "flag": flag}},
+        _say(name + " ", "%s: You've beaten me. Go on, the other rooms and the Champion await!" % name,
+             condition=["not:beat_unova_champion", flag], _look="sheet:" + sheet),
+        {"text": name + "  ", "action": "EVENT", "_look": "sheet:" + sheet, "condition": ["beat_unova_champion"],
+         "event": {"lines": ["%s: Back again, Champion? Then let's battle at our very best!" % name],
+                   "battle": _b2(again, dialogue={"player_won": won})}}]}
+    r = room(z, people, {}, (0, 0), stairs={137: ("v", "ROOM:plaza")})
+    r["title"] = "%s's room" % name
+    return r
+
+
+_E4_FLAGS = ["b2_e4_" + n.lower() for n, *_r in _E4]
+LEAGUE_PLAZA = room(137, {}, {}, (31, 45), stairs={140: ("1", "ROOM:shauntal"), 141: ("2", "ROOM:grimsley"),
+                                                   143: ("3", "ROOM:caitlin"), 142: ("4", "ROOM:marshal")})
+LEAGUE_PLAZA["title"] = "Pokémon League"
+_put_char(LEAGUE_PLAZA, 39, 33, ".")   # (Caitlin's door sits a tile past the rail's end: the step up to it)
+LEAGUE_PLAZA["sign_events"] = {"31,44": {"text": "Statue", "action": "EVENT", "event": {
+    "lines": ["A plaque on the statue's base: 'Those who have overcome the Elite Four may step onto the platform.'"],
+    "requires": _E4_FLAGS,
+    "fail": ["The plaque reads: 'Overcome the four Elite Four, and the way to the Champion will open.'",
+             "(The four lights in the floor show who you've beaten.)"],
+    "lift": [["Down to the Champion", "chamber", 30, 84]], "ask": "THE STATUE"}}}
+LEAGUE_CHAMBER = room(138, {}, {}, (0, 0), stairs={144: ("^", "ROOM:temple")})
+LEAGUE_CHAMBER["title"] = "Pokémon League"
+LEAGUE_CHAMBER["scenes"] = [{"trigger": "enter", "condition": ["not:b2_league_chamber"], "flag": "b2_league_chamber", "cast": [],
+                             "call": ["The statue sank into the floor, carrying you down into a great hall.",
+                                      "Three flights of stairs climb to the north: the Champion's temple."]}]
+_IRIS_FIRST = _b2(341, dialogue={"player_won": [
+    "Iris: ...I lost. You're really, really strong! I'm glad it was you!",
+    "Iris: From today, you're the Champion! Come on, up the walkway behind me: to the Hall of Fame!"]})
+LEAGUE_TEMPLE = room(144, {0: [
+    {"text": "Iris", "action": "EVENT", "_look": "sheet:b2_c298.png", "condition": ["not:beat_unova_champion"],
+     "event": {"lines": ["Iris: Welcome! I'm Iris, the Champion. You beat all of the Elite Four? That's amazing!",
+                         "Iris: I'm going to battle with everything I've got. Ready? Here I come!"],
+               "battle": _IRIS_FIRST, "flag": "beat_unova_champion"}},
+    {"text": "Iris ", "action": "EVENT", "_look": "sheet:b2_c298.png", "condition": ["beat_unova_champion", "b2_hall_of_fame"],
+     "event": {"lines": ["Iris: Champion! You came to battle me again? Then I won't hold back either!"],
+               "battle": _b2(536, dialogue={"player_won": ["Iris: Wow... You're still the strongest!"]})}}]},
+    {}, (0, 0), stairs={138: ("v", "ROOM:chamber")})
+LEAGUE_TEMPLE["title"] = "Champion's temple"
+LEAGUE_TEMPLE["links"] = {"16,20": ["hof", 8, 17]}
+LEAGUE_TEMPLE["barred"] = [{"tiles": [[16, 33]], "until": {"flag_condition": "beat_unova_champion"}, "look": "unseen",
+                            "lines": ["The way behind the Champion is closed."]}]
+LEAGUE_HOF = room(145, {}, {}, (0, 0))
+LEAGUE_HOF["title"] = "Hall of Fame"
+_put_char(LEAGUE_HOF, 8, 19, "v")   # (the way back down to the temple, after the Hall of Fame: rematches)
+LEAGUE_HOF["exits"] = {"v": "ROOM:temple"}
+LEAGUE_HOF["scenes"] = [{"trigger": "enter", "condition": ["beat_unova_champion", "not:b2_hall_of_fame"], "flag": "b2_hall_of_fame",
+                         "cast": [], "call": ["Iris: This is the Hall of Fame. Your team will be recorded here forever!"],
+                         "event": {"scene": "hall_of_fame", "travel": "ASPERTIA_CITY",
+                                   "lines": ["...The new Champion headed for home."]}}]
+LEAGUE_CENTER = room(146, {0: {"text": "Pokémon Center", "action": "HEAL"}, 1: {"text": "Shop", "action": "SHOP"},
+                           2: _say("Clerk ", "Stock up! Past here there's no turning back till it's over."),
+                           7: {"text": "Mr. Medal", "action": "EVENT", "event": {"medal_rally": True}},
+                           4: _say("Ace Trainer resting", "The Elite Four can be challenged in any order. Pick your first!"),
+                           5: _say("Veteran by the window", "Iris became Champion after Alder. She's young, but she's tough.")},
+                     {}, (18, 47))
+LEAGUE_APPROACH = room(214, {}, {}, (28, 58), exits_extra={228: ("^", "VICTORY_ROAD_TUNNEL")})
+LEAGUE_APPROACH["title"] = "Victory Road"
+
+
+def _high_walk(r, y_to):
+    """A room whose walkway climbs higher than the live walker's roof cap (8 tiles): Shauntal's, Caitlin's and Marshal's stairs
+    rise about 12 (11-24). Its tiles marked as a north-south deck ("|") take the highest surface under them, not a level edge."""
+    r["art"] = [row.replace(".", "|") if y <= y_to else row for y, row in enumerate(r["art"])]
+    return r
+
+
+LEAGUE_ROOMS = {"plaza": LEAGUE_PLAZA, "chamber": LEAGUE_CHAMBER, "temple": LEAGUE_TEMPLE, "hof": LEAGUE_HOF,
+                "center": LEAGUE_CENTER, "approach": LEAGUE_APPROACH,
+                **{n.lower(): _e4_room(n, z, a, b, s, i, w) for n, z, a, b, s, i, w in _E4}}
+_high_walk(LEAGUE_ROOMS["shauntal"], 23)
+_high_walk(LEAGUE_ROOMS["caitlin"], 24)
+_high_walk(LEAGUE_ROOMS["marshal"], 24)
+LEAGUE = town(136, {0: _say("Veteran at the door", "Beyond here is the Pokemon League. Only the strongest Trainers make it this far."),
+                    1: _say("Veteran by the steps", "The Elite Four wait inside, and after them the Champion. Good luck!")},
+              {}, {137: ("house", "plaza"), 146: ("center", "center"), 214: ("gate", "approach", "VICTORY_ROAD_TUNNEL")}, LEAGUE_ROOMS,
+              title="Pokémon League")
+
+
 MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": FLOCCESY, "UNOVA_ROUTE_20": ROUTE_20,
         "FLOCCESY_RANCH_OUTSIDE": RANCH_OUTSIDE, "FLOCCESY_RANCH": RANCH, "PLEDGE_GROVE": PLEDGE_GROVE,
         "VIRBANK_CITY": VIRBANK, "VIRBANK_COMPLEX_OUTSIDE": COMPLEX_OUTSIDE, "VIRBANK_COMPLEX": COMPLEX, "POKESTAR_STUDIOS": POKESTAR,
@@ -7100,4 +7211,5 @@ MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": 
         "GIANT_CHASM_CAVE": CHASM_CAVE,
         "UNOVA_ROUTE_23": ROUTE_23, "VICTORY_ROAD_UNOVA": VR_OUTSIDE, "VICTORY_ROAD_CAVE_1F": VR_1F, "VICTORY_ROAD_GROVE": VR_GROVE,
         "VICTORY_ROAD_RIVER": VR_RIVER, "VICTORY_ROAD_CAVE_2F": VR_2F, "VICTORY_ROAD_2F_BACK": VR_2F_BACK,
-        "VICTORY_ROAD_MOUNTAINSIDE": VR_MOUNTAIN, "VICTORY_ROAD_3F": VR_3F, "VICTORY_ROAD_TUNNEL": VR_TUNNEL}   # (batch 10a)
+        "VICTORY_ROAD_MOUNTAINSIDE": VR_MOUNTAIN, "VICTORY_ROAD_3F": VR_3F, "VICTORY_ROAD_TUNNEL": VR_TUNNEL,   # (batch 10a)
+        "UNOVA_POKEMON_LEAGUE": LEAGUE}   # (batch 10b)

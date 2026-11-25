@@ -74,6 +74,274 @@
    554
   ]
  },
+ "143": {
+  "b2_id": 143,
+  "class": "ELITE_FOUR",
+  "held_items": {
+   "426": "FLYING_GEM",
+   "609": "SITRUS_BERRY"
+  },
+  "levels": [
+   72,
+   72,
+   72,
+   72,
+   72,
+   74
+  ],
+  "movesets": {
+   "426": [
+    "SHADOW-BALL",
+    "PSYCHIC",
+    "ACROBATICS",
+    "THUNDER"
+   ],
+   "429": [
+    "SHADOW-BALL",
+    "PSYCHIC",
+    "POWER-GEM",
+    "PERISH-SONG"
+   ],
+   "478": [
+    "SHADOW-BALL",
+    "PSYCHIC",
+    "BLIZZARD",
+    "ICE-SHARD"
+   ],
+   "563": [
+    "SHADOW-BALL",
+    "PSYCHIC",
+    "WILL-O-WISP",
+    "ENERGY-BALL"
+   ],
+   "609": [
+    "SHADOW-BALL",
+    "PSYCHIC",
+    "FIRE-BLAST",
+    "ENERGY-BALL"
+   ],
+   "623": [
+    "SHADOW-PUNCH",
+    "EARTHQUAKE",
+    "HAMMER-ARM",
+    "STONE-EDGE"
+   ]
+  },
+  "name": "Elite Four Shauntal",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "elite_four.png",
+  "team": [
+   563,
+   429,
+   478,
+   426,
+   623,
+   609
+  ]
+ },
+ "144": {
+  "b2_id": 144,
+  "class": "ELITE_FOUR",
+  "held_items": {
+   "534": "SITRUS_BERRY",
+   "539": "MUSCLE_BAND"
+  },
+  "levels": [
+   72,
+   72,
+   72,
+   72,
+   72,
+   74
+  ],
+  "movesets": {
+   "308": [
+    "HI-JUMP-KICK",
+    "FIRE-PUNCH",
+    "ICE-PUNCH",
+    "THUNDERPUNCH"
+   ],
+   "448": [
+    "AURA-SPHERE",
+    "DRAGON-PULSE",
+    "EXTREMESPEED",
+    "SHADOW-BALL"
+   ],
+   "534": [
+    "HAMMER-ARM",
+    "BULK-UP",
+    "STONE-EDGE",
+    "EARTHQUAKE"
+   ],
+   "538": [
+    "SUPERPOWER",
+    "EARTHQUAKE",
+    "STONE-EDGE",
+    "PAYBACK"
+   ],
+   "539": [
+    "CLOSE-COMBAT",
+    "RETALIATE",
+    "STONE-EDGE",
+    "POISON-JAB"
+   ],
+   "620": [
+    "HI-JUMP-KICK",
+    "U-TURN",
+    "ACROBATICS",
+    "FAKE-OUT"
+   ]
+  },
+  "name": "Elite Four Marshal",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "elite_four.png",
+  "team": [
+   538,
+   539,
+   308,
+   448,
+   620,
+   534
+  ]
+ },
+ "145": {
+  "b2_id": 145,
+  "class": "ELITE_FOUR",
+  "held_items": {
+   "510": "NORMAL_GEM",
+   "625": "SITRUS_BERRY"
+  },
+  "levels": [
+   72,
+   72,
+   72,
+   72,
+   72,
+   74
+  ],
+  "movesets": {
+   "229": [
+    "THUNDER-FANG",
+    "FIRE-BLAST",
+    "SLUDGE-BOMB",
+    "CRUNCH"
+   ],
+   "430": [
+    "NIGHT-SLASH",
+    "PSYCHIC",
+    "AERIAL-ACE",
+    "HAZE"
+   ],
+   "510": [
+    "SUCKER-PUNCH",
+    "FAKE-OUT",
+    "AERIAL-ACE",
+    "ATTRACT"
+   ],
+   "553": [
+    "ROCK-SLIDE",
+    "EARTHQUAKE",
+    "CRUNCH",
+    "OUTRAGE"
+   ],
+   "560": [
+    "HEAD-SMASH",
+    "CRUNCH",
+    "HI-JUMP-KICK",
+    "POISON-JAB"
+   ],
+   "625": [
+    "GUILLOTINE",
+    "NIGHT-SLASH",
+    "X-SCISSOR",
+    "AERIAL-ACE"
+   ]
+  },
+  "name": "Elite Four Grimsley",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "elite_four.png",
+  "team": [
+   510,
+   430,
+   560,
+   229,
+   553,
+   625
+  ]
+ },
+ "146": {
+  "b2_id": 146,
+  "class": "ELITE_FOUR",
+  "held_items": {
+   "376": "SITRUS_BERRY",
+   "579": "LEFTOVERS"
+  },
+  "levels": [
+   72,
+   72,
+   72,
+   72,
+   72,
+   74
+  ],
+  "movesets": {
+   "376": [
+    "ZEN-HEADBUTT",
+    "BULLET-PUNCH",
+    "EARTHQUAKE",
+    "HAMMER-ARM"
+   ],
+   "475": [
+    "CLOSE-COMBAT",
+    "LEAF-BLADE",
+    "PSYCHO-CUT",
+    "NIGHT-SLASH"
+   ],
+   "518": [
+    "CHARGE-BEAM",
+    "DREAM-EATER",
+    "YAWN",
+    "REFLECT"
+   ],
+   "561": [
+    "AIR-SLASH",
+    "PSYCHIC",
+    "FLASH-CANNON",
+    "ICE-BEAM"
+   ],
+   "576": [
+    "PSYCHIC",
+    "SHADOW-BALL",
+    "FLATTER",
+    "THUNDERBOLT"
+   ],
+   "579": [
+    "PSYCHIC",
+    "THUNDER",
+    "RECOVER",
+    "FOCUS-BLAST"
+   ]
+  },
+  "name": "Elite Four Caitlin",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "elite_four.png",
+  "team": [
+   518,
+   561,
+   475,
+   579,
+   576,
+   376
+  ]
+ },
  "148": {
   "b2_id": 148,
   "class": "LADY",
@@ -592,6 +860,73 @@
    564,
    561,
    566
+  ]
+ },
+ "341": {
+  "b2_id": 341,
+  "class": "CHAMPION",
+  "held_items": {
+   "612": "FOCUS_SASH",
+   "621": "LIFE_ORB"
+  },
+  "levels": [
+   57,
+   57,
+   57,
+   57,
+   57,
+   59
+  ],
+  "movesets": {
+   "131": [
+    "SURF",
+    "ICE-BEAM",
+    "THUNDERBOLT",
+    "SING"
+   ],
+   "306": [
+    "EARTHQUAKE",
+    "DOUBLE-EDGE",
+    "ROCK-SLIDE",
+    "AUTOTOMIZE"
+   ],
+   "567": [
+    "ACROBATICS",
+    "ROCK-SLIDE",
+    "DRAGON-CLAW",
+    "ENDEAVOR"
+   ],
+   "612": [
+    "EARTHQUAKE",
+    "X-SCISSOR",
+    "DUAL-CHOP",
+    "DRAGON-DANCE"
+   ],
+   "621": [
+    "ROCK-SLIDE",
+    "FLAMETHROWER",
+    "DRAGON-TAIL",
+    "FOCUS-BLAST"
+   ],
+   "635": [
+    "FLAMETHROWER",
+    "CHARGE-BEAM",
+    "DRAGON-PULSE",
+    "SURF"
+   ]
+  },
+  "name": "Champion Iris",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "champion.png",
+  "team": [
+   635,
+   621,
+   567,
+   306,
+   131,
+   612
   ]
  },
  "343": {
@@ -1275,6 +1610,56 @@
    505
   ]
  },
+ "38": {
+  "b2_id": 38,
+  "class": "ELITE_FOUR",
+  "held_items": {
+   "609": "SITRUS_BERRY"
+  },
+  "levels": [
+   56,
+   56,
+   56,
+   58
+  ],
+  "movesets": {
+   "426": [
+    "PSYCHIC",
+    "THUNDERBOLT",
+    "ACROBATICS",
+    "SHADOW-BALL"
+   ],
+   "563": [
+    "WILL-O-WISP",
+    "GRASS-KNOT",
+    "PSYCHIC",
+    "SHADOW-BALL"
+   ],
+   "609": [
+    "ENERGY-BALL",
+    "FIRE-BLAST",
+    "PSYCHIC",
+    "SHADOW-BALL"
+   ],
+   "623": [
+    "HEAVY-SLAM",
+    "EARTHQUAKE",
+    "BRICK-BREAK",
+    "SHADOW-PUNCH"
+   ]
+  },
+  "name": "Elite Four Shauntal",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "elite_four.png",
+  "team": [
+   563,
+   426,
+   623,
+   609
+  ]
+ },
  "381": {
   "b2_id": 381,
   "class": "VETERAN",
@@ -1404,6 +1789,56 @@
    610
   ]
  },
+ "39": {
+  "b2_id": 39,
+  "class": "ELITE_FOUR",
+  "held_items": {
+   "534": "SITRUS_BERRY"
+  },
+  "levels": [
+   56,
+   56,
+   56,
+   58
+  ],
+  "movesets": {
+   "534": [
+    "HAMMER-ARM",
+    "BULK-UP",
+    "STONE-EDGE",
+    "RETALIATE"
+   ],
+   "538": [
+    "STORM-THROW",
+    "BULLDOZE",
+    "ROCK-TOMB",
+    "PAYBACK"
+   ],
+   "539": [
+    "BRICK-BREAK",
+    "RETALIATE",
+    "ROCK-SLIDE",
+    "PAYBACK"
+   ],
+   "620": [
+    "HI-JUMP-KICK",
+    "U-TURN",
+    "BOUNCE",
+    "RETALIATE"
+   ]
+  },
+  "name": "Elite Four Marshal",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "elite_four.png",
+  "team": [
+   538,
+   539,
+   620,
+   534
+  ]
+ },
  "390": {
   "b2_id": 390,
   "class": "BACKPACKER",
@@ -1438,6 +1873,106 @@
    425,
    325,
    426
+  ]
+ },
+ "40": {
+  "b2_id": 40,
+  "class": "ELITE_FOUR",
+  "held_items": {
+   "625": "SITRUS_BERRY"
+  },
+  "levels": [
+   56,
+   56,
+   56,
+   58
+  ],
+  "movesets": {
+   "510": [
+    "NIGHT-SLASH",
+    "FAKE-OUT",
+    "AERIAL-ACE",
+    "ATTRACT"
+   ],
+   "553": [
+    "CRUNCH",
+    "DRAGON-CLAW",
+    "EARTHQUAKE",
+    "ROCK-TOMB"
+   ],
+   "560": [
+    "CRUNCH",
+    "BRICK-BREAK",
+    "POISON-JAB",
+    "ROCK-TOMB"
+   ],
+   "625": [
+    "NIGHT-SLASH",
+    "X-SCISSOR",
+    "METAL-CLAW",
+    "AERIAL-ACE"
+   ]
+  },
+  "name": "Elite Four Grimsley",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "elite_four.png",
+  "team": [
+   510,
+   560,
+   553,
+   625
+  ]
+ },
+ "41": {
+  "b2_id": 41,
+  "class": "ELITE_FOUR",
+  "held_items": {
+   "576": "SITRUS_BERRY"
+  },
+  "levels": [
+   56,
+   56,
+   56,
+   58
+  ],
+  "movesets": {
+   "518": [
+    "CHARGE-BEAM",
+    "DREAM-EATER",
+    "YAWN",
+    "REFLECT"
+   ],
+   "561": [
+    "PSYCHIC",
+    "SHADOW-BALL",
+    "ICE-BEAM",
+    "AIR-SLASH"
+   ],
+   "576": [
+    "PSYCHIC",
+    "SHADOW-BALL",
+    "THUNDERBOLT",
+    "CALM-MIND"
+   ],
+   "579": [
+    "PSYCHIC",
+    "ENERGY-BALL",
+    "FOCUS-BLAST",
+    "RECOVER"
+   ]
+  },
+  "name": "Elite Four Caitlin",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "elite_four.png",
+  "team": [
+   518,
+   579,
+   561,
+   576
   ]
  },
  "426": {
@@ -1994,6 +2529,73 @@
   "team": [
    552,
    59
+  ]
+ },
+ "536": {
+  "b2_id": 536,
+  "class": "CHAMPION",
+  "held_items": {
+   "612": "FOCUS_SASH",
+   "621": "LIFE_ORB"
+  },
+  "levels": [
+   76,
+   76,
+   76,
+   76,
+   76,
+   78
+  ],
+  "movesets": {
+   "131": [
+    "HYDRO-PUMP",
+    "BLIZZARD",
+    "THUNDER",
+    "SING"
+   ],
+   "306": [
+    "EARTHQUAKE",
+    "DOUBLE-EDGE",
+    "STONE-EDGE",
+    "AUTOTOMIZE"
+   ],
+   "567": [
+    "ACROBATICS",
+    "STONE-EDGE",
+    "DRAGON-CLAW",
+    "ENDEAVOR"
+   ],
+   "612": [
+    "EARTHQUAKE",
+    "GUILLOTINE",
+    "OUTRAGE",
+    "DRAGON-DANCE"
+   ],
+   "621": [
+    "FIRE-PUNCH",
+    "THUNDERPUNCH",
+    "OUTRAGE",
+    "FOCUS-BLAST"
+   ],
+   "635": [
+    "FIRE-BLAST",
+    "FOCUS-BLAST",
+    "DRAGON-PULSE",
+    "SURF"
+   ]
+  },
+  "name": "Champion Iris",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "champion.png",
+  "team": [
+   635,
+   621,
+   567,
+   306,
+   131,
+   612
   ]
  },
  "580": {
