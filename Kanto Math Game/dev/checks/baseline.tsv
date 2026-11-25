@@ -41,7 +41,7 @@ johto_live3d	118	2026-11-24
 johto_live3d_depth	7	2026-11-24
 johto_looks	5	2026-11-24
 johto_played	28	2026-11-24
-journal_parts	17	2026-11-25
+journal_parts	19	2026-11-25
 journal_regions	49	2026-11-24
 journal_rules	140	2026-11-24
 kanto_canon	644	2026-11-24
@@ -91,7 +91,7 @@ orre_recheck	36	2026-11-24
 orre_shadow_parity	20	2026-11-24
 orre_shadows	13	2026-11-24
 orre_story	71	2026-11-24
-partners	15	2026-11-24
+partners	17	2026-11-25
 quest_book	140	2026-11-24
 quest_book_hoenn	54	2026-11-24
 quest_book_johto	122	2026-11-24
@@ -107,6 +107,7 @@ rotom_forms	11	2026-11-24
 savename	11	2026-11-24
 savespot	9	2026-11-24
 scaling	32	2026-11-24
+scene_event	3	2026-11-25
 selfko	23	2026-11-24
 sevii_maps	259	2026-11-24
 sevii_story	40	2026-11-24
@@ -124,9 +125,11 @@ town_smash	4	2026-11-24
 townsea	37	2026-11-24
 ui	11	2026-11-24
 unova_b1	57	2026-11-24
-unova_b10a	21	2026-11-24
-unova_b10b	17	2026-11-25
+unova_b10a	21	2026-11-25
+unova_b10b	20	2026-11-25
 unova_b11a	12	2026-11-24
+unova_b11b	34	2026-11-25
+unova_b11c	14	2026-11-25
 unova_b2	62	2026-11-24
 unova_b3a	68	2026-11-24
 unova_b4a	50	2026-11-24
@@ -142,7 +145,7 @@ unova_b8a	65	2026-11-25
 unova_b8b	19	2026-11-24
 unova_b9a	27	2026-11-24
 unova_b9b	14	2026-11-24
-unova_b9c	34	2026-11-25
+unova_b9c	35	2026-11-25
 unova_grottoes	22	2026-11-24
 unova_gusts	10	2026-11-24
 unova_liberty	11	2026-11-24

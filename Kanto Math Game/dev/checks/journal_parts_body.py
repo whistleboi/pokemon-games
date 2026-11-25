@@ -121,4 +121,19 @@ check(list(lea._guide_lifts("plaza").values()) == [[["Down to the Champion", "ch
 for _f in _e4:
     story.story_flags.pop(_f, None)
 
+print("Team Galactic HQ before the Galactic Key: the marker goes by the pads to the west door, not back the way you came (Sinnoh, 11-25)")
+from src.states.overworld.dungeon import DungeonState as _DS
+guide.WALKED_REGIONS |= {"SINNOH"}
+for _f in ("galactic_lake_acuity_cleared", "sinnoh_storage_door_open"):
+    story.story_flags[_f] = True
+_m11 = next(m for m in g.loader.area_data["JOURNAL_MISSIONS"] if m["id"] == "sinnoh_m11")
+story.current_area_key, story.last_area_key = "TEAM_GALACTIC_HQ", "GALACTIC_WAREHOUSE"
+_hq = _DS(g)
+_hq.run.index, _hq.run.player = 0, (47, 3)
+check(_hq._guide_step(_m11) is None, "the HQ's own way-point (Cyrus) waits while the warehouse's Galactic Key is the step")
+_sp = _hq._guide_spot()
+check(_sp and _sp[0] != (46, 2), f"and the marker isn't the door you came in by ({_sp})")
+for _f in ("galactic_lake_acuity_cleared", "sinnoh_storage_door_open"):
+    story.story_flags.pop(_f, None)
+
 print(f"##### {fails} failures")

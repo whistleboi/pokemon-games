@@ -739,12 +739,17 @@ class Scenes:
                 if ev == "talk":
                     h.npc_run(s.get("who"))
                 elif isinstance(ev, dict) or ev.startswith("event:"):   # (a story event: a key, or written out: a battle, a gift)
-                    self.playing[1] = "pause"
-                    h.npc_event(ev if isinstance(ev, dict) else ev[6:], lambda: self._resume("after"))
+                    self.playing[1], st["ev"] = "event", ev   # (on the next frame, not from inside the closing of the lines
+                                                              #  just said: an event with words of its own lost its callback
+                                                              #  there and the scene stayed paused, you locked - Sinnoh 11-25)
             if s.get("lines"):
                 h.npc_say(list(s["lines"]), then)
             else:
                 then()
+        elif stage == "event":
+            ev = st.pop("ev")
+            self.playing[1] = "pause"
+            h.npc_event(ev if isinstance(ev, dict) else ev[6:], lambda: self._resume("after"))
         elif stage == "after":
             if (s.get("after_lines") or s.get("heal")) and not st.get("said_after"):
                 st["said_after"] = True

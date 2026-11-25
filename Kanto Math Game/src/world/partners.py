@@ -115,6 +115,8 @@ def pick_spot(home, free, start=None, ground=None):
     open_ = [t for t in cands if _joined(rim(t), g, {t, tuple(home)})]
     if len(cands) < 2:
         return None
+    if all(len(rim(t)) <= 1 for t in cands):   # (the owner in a one-tile-wide way: any side is the path to them - 11-25, Unova:
+        return None                            #  Iris's Haxorus stood in the temple's corridor in front of her; Journal PT_FULL)
     return open_[0] if open_ else None
 
 

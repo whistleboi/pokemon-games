@@ -91,6 +91,19 @@ def battle_talk(area, at, room, label, want_id, flag, frozen=None):
 
 def go(dx, dy, times=1, n=40):
     for _ in range(times):
-        g.current_state.step(dx, dy)
-        settle(n)
+        for _try in range(4):   # (a wild Pokemon met on the way isn't the suite's business: it wanders off, and the step is
+            st = g.current_state  #  taken again - the random meetings made unova_b9c and unova_b10a fail now and then, 11-25)
+            before = tuple(getattr(getattr(st, "run", None), "player", None) or getattr(st, "player", (0, 0)))
+            st.step(dx, dy)
+            settle(n)
+            st = g.current_state
+            if getattr(st, "mode", None) == "CHOICE" and getattr(st, "encounter", None) is not None:
+                mv = st.encounter
+                st.encounter, st.mode = None, "MAP"
+                if mv in st.run.floor.movers:
+                    st.run.floor.movers.remove(mv)
+                now = tuple(getattr(getattr(st, "run", None), "player", None) or (0, 0))
+                if now == before:
+                    continue
+            break
     return g.current_state
