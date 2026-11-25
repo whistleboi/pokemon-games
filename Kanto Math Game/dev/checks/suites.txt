@@ -168,7 +168,7 @@ unova_b8b              unova    story,batch
 unova_b9a              unova    story,batch
 unova_b9b              unova    story,batch
 unova_b9c              unova    story,batch
-unovab10a              unova    story,batch
+unova_b10a              unova    story,batch
 unova_start            unova    story,start
 
 # orre
@@ -265,3 +265,4 @@ alias orre orre_story
 alias shadows orre_shadows
 alias shadow_parity orre_shadow_parity
 alias recheck_orre orre_recheck
+alias unovab10a unova_b10a
