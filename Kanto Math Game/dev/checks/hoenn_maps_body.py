@@ -3521,7 +3521,7 @@ check(len(_by_v["OMEGA_RUBY"]) == 10 and len(_by_v["ALPHA_SAPPHIRE"]) == 10 and 
 # own lounge (or Scott's house), behind a door that leads there; their events (src/world/hoenn_frontier.py) do their jobs
 _fm = _tm["HOENN_BATTLE_FRONTIER"]
 _fopts = {o.get("text"): o for o in _area["HOENN_BATTLE_FRONTIER"].get("route_menu") or []}
-_want = {"scott": ["Scott"], "lounge_trade": ["Skitty fan"], "lounge_tutors": ["Old tutor", "Old tutor "], "lounge_bet": ["Gambler"],
+_want = {"scott": ["Scott"], "lounge_trade": ["Skitty fan"], "lounge_tutors": ["Cute-moves tutor", "Pretty-moves tutor"], "lounge_bet": ["Gambler"],
          "lounge_breeder": ["Old breeder"], "lounge_whisper": ["Pokemon whisperer"], "lounge_news": ["News man"],
          "ranking": ["Ranking Hall guide"], "tower": ["Double attendant", "Multi attendant"]}
 _bad = [(r, w) for r, ws in _want.items() for w in ws if r not in (_fm.get("inside") or {}).values() or w not in (_fm["rooms"][r].get("people") or []) or w not in _fopts]
@@ -3577,7 +3577,7 @@ _mo = _tm2.get("battle_options") or {}
 check(_ti.get("double") and len(_ti["team"]) == 4 and _mo.get("double") and _mo.get("partner", {}).get("team") == [68, 297]
       and len(_mo.get("second_trainer", {}).get("team") or []) == 2 and len(_tm2["team"]) == 2,
       f"Battle Tower: the Double room (4 a side, doubles) and the Multi room (you and your partner against two Trainers, two each) ({_ti.get('name')}, {_mo.get('partner', {}).get('name')})")
-_tu = [o for k, o in _fopts.items() if k.startswith("Old tutor")]
+_tu = [o for k, o in _fopts.items() if k.endswith("moves tutor")]
 _tmv = [m for o in _tu for m in o["event"]["tutor"]["choices"]]
 _mvs = json.load(open("assets/moves.json", encoding="utf-8"))
 check(len(_tmv) == 20 and all(m in _mvs for m in _tmv) and all(len(o["event"]["tutor"]["bp_costs"]) == 10 for o in _tu),
