@@ -203,6 +203,16 @@ got = [int(p.id) for p in story.player_team[n0:]]
 check(flags.get("b2_juniper_starters"), "Juniper gives both at once")
 check(sorted(got) == [498, 501], f"Snivy's Trainer gets Tepig and Oshawott ({got})")
 
+print("9) the ship's hatch: out of Ghetsis's room into the forest's far side (11-25, the Journal's PT_FULL)")
+for k in ("b2_frigate2_done",):
+    flags[k] = True
+flags.pop("b2_chasm_done", None)
+story.last_area_key = "PLASMA_FRIGATE"; story.current_area_key = "GIANT_CHASM_FOREST"; g.walk_town_pos = g.walk_town_room = None; g.arrive_floor = None
+g.arrive_edge = ("PLASMA_FRIGATE", "GIANT_CHASM_FOREST", (49, 64))
+g.change_state(PlayState(g)); settle(20)
+check(tuple(getattr(getattr(g.current_state, "run", None), "player", (0, 0))) == (49, 64),
+      f"by the hatch you land at (49, 64), on the cave's side - not at the gangway ({getattr(getattr(g.current_state, 'run', None), 'player', None)})")
+
 for f_ in fails:
     print("  -", f_)
 print(f"##### {len(fails)} failures")

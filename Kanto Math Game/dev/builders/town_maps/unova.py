@@ -6456,7 +6456,7 @@ def _f2_rooms(w2):
          "cast": [{"sheet": "b2_c182.png", "from": [10, 18], "to": "player", "stay": True,
                    "lines": ["Shadow Triad: Move.", "The Shadow Triad seized you!",
                              "...You were thrown off the ship, onto Route 21's beach!"]}],
-         "event": {"travel": "UNOVA_ROUTE_21"}}])
+         "event": {"flag": "b2_frigate2_done", "travel": "UNOVA_ROUTE_21"}}])   # (11-25: set before the ride - the travel leaves first)
     rooms["hall"] = _f2_room(558, dict([
         _GRUNT(4, 801, "b2_f2_g801", "Team Plasma: Intruders!", "Team Plasma: For now, let them through!"),
         _GRUNT(3, 800, "b2_f2_g800", "Team Plasma: Don't get in our way!", "Team Plasma: The others will stop you!"),
@@ -7195,6 +7195,8 @@ LEAGUE_PLAZA["sign_events"] = {"31,44": {"text": "Statue", "action": "EVENT", "e
     "fail": ["The plaque reads: 'Overcome the four Elite Four, and the way to the Champion will open.'",
              "(The four lights in the floor show who you've beaten.)"],
     "lift": [["Down to the Champion", "chamber", 30, 84]], "ask": "THE STATUE"}}}
+_put_char(LEAGUE_PLAZA, 31, 44, "!")   # (11-25, the Journal's PT_FULL: a sign tile, so the action key reads the statue's plaque -
+LEAGUE_PLAZA["signs"] = [["A statue of the Pokemon League."]]   #  it was a wall the walker never read, as Driftveil's lift was)
 LEAGUE_CHAMBER = room(138, {}, {}, (0, 0), stairs={144: ("^", "ROOM:temple")})
 LEAGUE_CHAMBER["title"] = "Pokémon League"
 LEAGUE_CHAMBER["scenes"] = [{"trigger": "enter", "condition": ["not:b2_league_chamber"], "flag": "b2_league_chamber", "cast": [],
@@ -7575,6 +7577,71 @@ WHITE_FOREST = town(424, {
     {"center": WF_CENTER, "house": WF_HOUSE, "lobby": WF_LOBBY}, title="White Forest")
 for _m in (BLACK_CITY, WHITE_FOREST):
     _m["gated_exits"] = {}
+
+
+# ---------------------------------------------------------------------------------------------- the towers' Areas (11b part 2)
+# Each Area's floors, room by room, from src/world/black_tower.layout() (seeded: the same every visit, so the Journal and the
+# checks agree): Black 2's own room types (lift 481 / 480, the Boss's 483 / 482, plain 493 / 492, pillars 486 / 485, Surf
+# 484 / 487), joined by their side doors (links to the next room's opposite door), the unused doors walled; trainers on the
+# room's spots, the Boss in his room, the gate trainer's room's north door barred till they're beaten; the lift panel.
+from src.world import black_tower as _BT   # noqa: E402
+
+_TOWER_LOOKS = (_BT.data().get("looks") or {})
+
+
+def _tower_rooms(t):
+    out = {}
+    d = _BT.data().get(t) or {}
+    for n in range(1, 11):
+        L = _BT.layout(t, n)
+        dd = d.get(str(n)) or {}
+        g = L["grid"]
+        gate = L["gate"]
+        for f, fl in enumerate(L["floors"]):
+            cells = fl["cells"]
+            for (r, c), ty in cells.items():
+                z = _BT.ZONES[t][ty]
+                extra = []
+                for (pf, pr, pc, s, kind, k) in L["people"]:
+                    if (pf, pr, pc) != (f, r, c):
+                        continue
+                    pool = dd.get("healers" if kind == "healer" else "trainers") or [{}]
+                    who = pool[k % len(pool)]
+                    x, y = _BT.SPOTS[ty][s]
+                    extra.append((x, y, {"text": who.get("name", "Trainer"), "action": "EVENT",
+                                         "_look": _TOWER_LOOKS.get(who.get("class"), "sheet:b2_c30.png"),
+                                         "event": {"world": "black_tower", "fight": [t, n, f, r, c, s]}}))
+                if ty == "boss":
+                    boss = dd.get("boss") or {}
+                    x, y = _BT.SPOTS["boss"][0]
+                    extra.append((x, y, {"text": boss.get("name", "Boss Trainer"), "action": "EVENT",
+                                         "_look": "sheet:b2_c304.png" if n == 10 else _TOWER_LOOKS.get("ACE_TRAINER", "sheet:b2_c30.png"),
+                                         "event": {"world": "black_tower", "boss": [t, n]}}))
+                m = room(z, {}, {10741: ["The lift."]} if ty == "lift" else {}, (0, 0), extra_people=extra)
+                nb = _BT.doors(cells, r, c, g)
+                for side, (dx, dy) in _BT.DOORS.items():
+                    if side not in nb and 0 <= dy < len(m["art"]) and 0 <= dx < len(m["art"][0]) and m["art"][dy][dx] not in "c!":
+                        _put_char(m, dx, dy, "c")
+                m["links"] = {"%d,%d" % _BT.DOORS[side]: [_BT.room_name(t, n, f, rr, cc), *_BT.ARRIVE[side]]
+                              for side, (rr, cc) in nb.items()}
+                m["landings"] = [list(_BT.ARRIVE[{"N": "S", "S": "N", "W": "E", "E": "W"}[side]]) for side in nb] +                     ([list(_BT.LIFT_AT)] if ty == "lift" else [])   # (where you come in: through a door, or off the lift)
+                if (f, r, c) == tuple(gate[:3]) and "N" in nb:
+                    m["barred"] = [{"tiles": [list(_BT.DOORS["N"])], "until": {"condition": ["world:black_tower:gate:%s:%d" % (t, n)]},
+                                    "look": "unseen", "lines": ["The door to the Boss Trainer's room is locked.",
+                                                                "Beat this Area's gate trainer to open it."]}]
+                if ty == "lift":
+                    m["sign_events"] = {"6,1": {"text": "Lift", "action": "EVENT",
+                                                "event": {"world": "black_tower", "tower_lift": [t, n, f]}}}
+                m["title"] = "%s Area %d" % ("Black Tower" if t == "BLACK" else "White Treehollow", n) + \
+                             (" (%dF)" % (f + 1) if len(L["floors"]) > 1 else "")
+                out[_BT.room_name(t, n, f, r, c)] = m
+    return out
+
+
+BLACK_CITY["rooms"].update(_tower_rooms("BLACK"))
+WHITE_FOREST["rooms"].update(_tower_rooms("WHITE"))
+
+
 
 
 MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": FLOCCESY, "UNOVA_ROUTE_20": ROUTE_20,
