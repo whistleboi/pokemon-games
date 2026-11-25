@@ -998,6 +998,87 @@ BACK = set()   # (place, thing): the ways you came in by
 TRAIL = []     # the passages you came through inside this place, last one last: the way back out of a dead end
 
 
+def _crate_path(st, goal_test, limit=200000):
+    f = st.run.floor
+    art = st._here_art()
+    links = {tuple(int(v) for v in k.split(",")) for k in (art.get("links") or {})}
+    start = frozenset(st._box_spots())
+
+    def solid(t):
+        if not (0 <= t[0] < f.w and 0 <= t[1] < f.h):
+            return True
+        if str(f.decor.get(t, "")).startswith("box:"):
+            return False
+        return f.tile(*t) != core.FLOOR or f.mover_at(*t) is not None or t in f.decor
+
+    def reach(p, bx):
+        seen, todo = {p}, [p]
+        while todo:
+            c = todo.pop()
+            for dx, dy in DIRS:
+                n = (c[0] + dx, c[1] + dy)
+                if n not in seen and n not in bx and (n in links or not solid(n)):
+                    seen.add(n)
+                    if n not in links:
+                        todo.append(n)
+        return seen
+    q, seen = deque([(tuple(st.run.player), start, [])]), set()
+    while q and len(seen) < limit:
+        p, bx, path = q.popleft()
+        r = reach(p, bx)
+        k = (min(r), bx)
+        if k in seen:
+            continue
+        seen.add(k)
+        if goal_test(r, bx):
+            return path
+        for b in bx:
+            for d in DIRS:
+                if (b[0] - d[0], b[1] - d[1]) in r:
+                    b2 = (b[0] + d[0], b[1] + d[1])
+                    if not solid(b2) and b2 not in bx and b2 not in links and b2 not in f.exits:
+                        q.append((b, frozenset((bx - {b}) | {b2}), path + [(b, d)]))
+    return None
+
+
+def solve_boxes(st):
+    """A crate floor: push a crate onto a floor switch not pressed yet, else open the way to stairs not reachable yet.
+    -> what was done, or None."""
+    if not is_dun(st) or not hasattr(st, "_box_spots") or not st._box_spots():
+        return None
+    art = st._here_art()
+    fl = story.story_flags
+    links = [tuple(int(v) for v in k.split(",")) for k in (art.get("links") or {})]
+    sws = [tuple(s["on"]) for s in art.get("box_switches") or [] if not fl.get(s.get("flag"))]
+    if sws:
+        goal = lambda r, bx: any(w in bx for w in sws)
+    else:
+        here = _crate_path(st, lambda r, bx: True, limit=1)
+        if here is None:
+            return None
+        cut = [t for t in links if _crate_path(st, lambda r, bx, t=t: t in r, limit=1) is None]
+        if not cut:
+            return None
+        goal = lambda r, bx: any(t in r for t in cut)
+    path = _crate_path(st, goal)
+    if not path:
+        return None
+    for b, (dx, dy) in path:
+        st.run.player = (b[0] - dx, b[1] - dy)
+        st.anim = 0
+        st.walk_goal = None
+        st.step(dx, dy)
+        for _ in range(4):
+            g.current_state.update()
+        settle()
+        st = g.current_state
+        if not is_dun(st):
+            break
+    STATE["puzzles"] += 1
+    _say(f"[crates: {len(path)} pushes]")
+    return {"how": "arrived", "kind": "puzzle"}
+
+
 def solve_gardens(st):
     """Orre's number garden: for each garden not in bloom, beds whose numbers make its target, walked onto one by one
     without stepping on any other bed. -> what was done, or None."""
@@ -1086,6 +1167,9 @@ def wander(st, m, stay=True):
     (stay: not the ways out to other areas). Nothing new: on to a part of this place that still has something.
     -> what was done, or None."""
     row = solve_gardens(st)
+    if row is not None:
+        return row
+    row = solve_boxes(st)
     if row is not None:
         return row
     row = search_cans(st)
