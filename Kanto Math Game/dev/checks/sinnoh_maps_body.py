@@ -2079,5 +2079,31 @@ check(_nobadge and _before == 0 and _js and _after == 1 and len(_rib) == 1 and _
 story.story_flags.clear(); story.story_flags.update(_sv); story.inventory.clear(); story.inventory.update(_iv)
 story.player_team = _team; story.badges["SINNOH"] = _bv
 
+# ---- S8 (11-25, every mechanic once): the Great Marsh's Safari Game as Platinum's - 30 Safari Balls and 500 steps a visit, a
+#      step counts down, no battling (catching only), out of steps you're back in Pastoria; the Day Care's own counter in Solaceon
+_sv = dict(story.story_flags)
+r = route("GREAT_MARSH", "PASTORIA_CITY")
+frames(r, 30)
+_drive(r, 300, lambda: not (getattr(r, "dialogue_box", None) and r.dialogue_box.visible))
+_sf = dict(getattr(r, "safari", None) or {})
+r.run.floor.movers = [m for m in r.run.floor.movers if m.kind != "wild"]
+_x, _y = r.run.player
+_mv = next(((dx, dy) for dx, dy in ((0, -1), (1, 0), (-1, 0), (0, 1)) if r.run.floor.walkable(_x + dx, _y + dy)), (0, -1))
+r.anim = 0; r.walk_goal = None
+r.step(*_mv); frames(r, 12)
+_step = dict(getattr(r, "safari", None) or {}).get("steps")
+r.encounter = None
+r._pick(1)
+_nobattle = r.mode != "BATTLE"
+r.safari["steps"] = 0
+_drive(r, 900, lambda: story.current_area_key == "PASTORIA_CITY")
+check(_sf.get("balls") == 30 and _sf.get("steps") == 500 and _step == 499 and _nobattle and story.current_area_key == "PASTORIA_CITY",
+      f"Great Marsh: the Safari Game - 30 Safari Balls and 500 steps, a step counts down, catching only, out of steps back in Pastoria ({_sf}, {_step}, {_nobattle}, {story.current_area_key})")
+_dc = __import__("json").load(open("assets/town_maps.json", encoding="utf-8"))["SOLACEON_TOWN"]["rooms"]["daycare"]["people"]
+_opts = {o.get("text"): o for o in _area["SOLACEON_TOWN"].get("explore_options", [])}
+check(any(isinstance(p, str) and (_opts.get(p) or {}).get("action") == "DAYCARE" for p in _dc),
+      f"Solaceon: the Day Care's counter inside its house runs the Day Care ({_dc})")
+story.story_flags.clear(); story.story_flags.update(_sv)
+
 g.walk_towns = False
 print(f"##### {fails} failures")
