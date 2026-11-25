@@ -330246,6 +330246,20 @@
        "It takes a Galactic Key."
       ]
      }
+    ],
+    "scenes": [
+     {
+      "trigger": {
+       "zone": [
+        39,
+        14,
+        44,
+        20
+       ]
+      },
+      "cast": [],
+      "flag": "sinnoh_hq_east_in"
+     }
     ]
    },
    {

@@ -3720,7 +3720,7 @@
         "flag_not": "galactic_hq_cleared"
       },
       "target": "VEILSTONE_CITY",
-      "steps": [{"area": "GALACTIC_WAREHOUSE", "floor": 0, "at": [12, 7], "label": "Looker", "done": "sinnoh_storage_door_open"}, {"area": "GALACTIC_WAREHOUSE", "floor": 1, "at": [20, 4], "label": "Galactic Key", "done": "got_galactic_key_galactic_warehouse_d26r0106_20_5"}, {"area": "TEAM_GALACTIC_HQ", "floor": 3, "at": [8, 7], "label": "Cyrus", "done": "sinnoh_hq_cyrus_beaten"}, {"area": "TEAM_GALACTIC_HQ", "floor": 5, "at": [8, 5], "label": "Saturn", "done": "sinnoh_hq_saturn_beaten"}, {"area": "TEAM_GALACTIC_HQ", "floor": 5, "at": [8, 6], "label": "Machine", "done": "galactic_hq_cleared"}],
+      "steps": [{"area": "GALACTIC_WAREHOUSE", "floor": 0, "at": [12, 7], "label": "Looker", "done": "sinnoh_storage_door_open"}, {"area": "GALACTIC_WAREHOUSE", "floor": 1, "at": [20, 4], "label": "Galactic Key", "done": "got_galactic_key_galactic_warehouse_d26r0106_20_5"}, {"area": "VEILSTONE_CITY", "at": [48, 13], "label": "Galactic HQ's east door", "done": "sinnoh_hq_east_in"}, {"area": "TEAM_GALACTIC_HQ", "floor": 3, "at": [8, 7], "label": "Cyrus", "done": "sinnoh_hq_cyrus_beaten"}, {"area": "TEAM_GALACTIC_HQ", "floor": 5, "at": [8, 5], "label": "Saturn", "done": "sinnoh_hq_saturn_beaten"}, {"area": "TEAM_GALACTIC_HQ", "floor": 5, "at": [8, 6], "label": "Machine", "done": "galactic_hq_cleared"}],
       "completed_flag": "galactic_hq_cleared"
     },
     {
