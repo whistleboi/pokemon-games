@@ -360,7 +360,14 @@ ASPERTIA = town(
                                    "{rival_name}'s mom: But what parent doesn't want to see their child grow?"),
                            1: _say("Man in {rival_name}'s house", "Too bad you don't have a Pokemon yet. You could see who's the better Trainer!")},
                      {}, (11, 46), stairs={430: ("^", "ROOM:hugh_2f")}),
-        "hugh_2f": room(430, {0: _say("{rival_name}'s sister", "{rival_name}'s sister: I hope you find that Bianca lady soon!"),
+        "hugh_2f": room(430, {0: [_say("{rival_name}'s sister", "{rival_name}'s sister: I hope you find that Bianca lady soon!",
+                                       condition=["not:b2_hall_of_fame"]),
+                                  {"text": "{rival_name}'s sister ", "action": "EVENT", "condition": ["b2_hall_of_fame"], "event": {
+                                      "lines": ["{rival_name}'s sister: I had a strange dream... A Zoroark on Victory Road, by a "
+                                                "cave below the two Veterans. It was waiting for someone.",
+                                                "{rival_name}'s sister: And behind it there was a ruined castle... Could you go "
+                                                "and see? I'd feel better."],
+                                      "flag": "b2_sister_dream", "done": ["{rival_name}'s sister: Did you find the Zoroark from my dream?"]}}],   # (11c)
                               1: _say("Purrloin", "Purrloin: Mew?", _look="sheet:b2_c308.png")},
                         {}, (11, 46), stairs={429: ("v", "ROOM:hugh")}),
         "house_sw": room(431, {0: _say("Old man", "Got a Pokemon with you? Then you can head out of town!"),
@@ -7106,17 +7113,17 @@ VR_MOUNTAIN = _vr(592, {6: _ball("Poke Ball below the cliff", "DRAGON_FANG", "b2
                         8: _ball("Poke Ball down the mountainside", "MAX_REVIVE", "b2_vr_max_revive", name="a Max Revive"),
                         7: _ball("Poke Ball by Black Belt Martell", "MAX_ELIXIR", "b2_vr_max_elixir", name="a Max Elixir"),
                         9: _say("Zoroark", "The Zoroark glares at you and won't move from the cave mouth.",
-                                "(It might move once you're the Champion.)", condition=["not:beat_unova_champion"])},
+                                condition=["not:b2_sister_dream"])},
                   {"v": ("VICTORY_ROAD_CAVE_2F", [(16, 47), (53, 47)]), "b": ("VICTORY_ROAD_2F_BACK", [(29, 21)]),
                    "^": ("VICTORY_ROAD_3F", [(44, 18), (26, 31)]), "t": ("VICTORY_ROAD_TUNNEL", [(33, 1)]),
-                   "z": ("CHALLENGERS_CAVE", [(35, 31)])},
+                   "z": ("N_CASTLE", [(35, 31)])},
                   trainers={0: ("Veteran Sterling", 4), 1: ("Ace Trainer Caroll", 3), 2: ("Black Belt Martell", 1),
                             3: ("Ace Trainer Elmer", 3), 4: ("Battle Girl Chalina", 3), 5: ("Veteran Portia", 5)},
                   hidden={"21,22": "RARE_CANDY", "45,23": "NORMAL_GEM"})
 # (the Zoroark's cave, 596 -> N's Castle, is batch 11's; till then its door leads to Black and White's Challenger's Cave, a menu
 #  place Black 2 has no warp to, so the post-game keeps a way there; after the League only)
-VR_MOUNTAIN["gated_exits"] = {"CHALLENGERS_CAVE": ["beat_unova_champion"]}
-VR_MOUNTAIN["barred"] = [{"tiles": [[35, 31]], "until": {"flag_condition": "beat_unova_champion"}, "look": "unseen",
+VR_MOUNTAIN["gated_exits"] = {"N_CASTLE": ["beat_unova_champion", "b2_sister_dream"]}   # (11c: Hugh's sister's dream first)
+VR_MOUNTAIN["barred"] = [{"tiles": [[35, 31]], "until": {"flag_condition": "b2_sister_dream"}, "look": "unseen",
                           "lines": ["A Zoroark is guarding the way in. It won't budge."]}]
 
 VR_3F = _vr(593, {1: _ball("Poke Ball down the stairway", "DRAGON_SCALE", "b2_vr_dragon_scale", name="a Dragon Scale")},
@@ -7189,9 +7196,8 @@ LEAGUE_PLAZA = room(137, {}, {}, (31, 45), stairs={140: ("1", "ROOM:shauntal"), 
 # (11-25, the Journal's PT_FULL: "2"-"4" aren't way-out letters to the walker - "2" is a Cut tree - so three doors did nothing)
 LEAGUE_PLAZA["title"] = "Pokémon League"
 _put_char(LEAGUE_PLAZA, 39, 33, ".")   # (Caitlin's door sits a tile past the rail's end: the step up to it)
-LEAGUE_PLAZA["sign_events"] = {"31,44": {"text": "Statue", "action": "EVENT", "event": {
-    "lines": ["A plaque on the statue's base: 'Those who have overcome the Elite Four may step onto the platform.'"],
-    "requires": _E4_FLAGS,
+LEAGUE_PLAZA["sign_events"] = {"31,44": {"text": "Statue", "action": "EVENT", "event": {   # (no "lines" before the lift: with
+    "requires": _E4_FLAGS,                                                                  #  them the ride left the game stuck in the talk - Journal PT_FULL, 11-25)
     "fail": ["The plaque reads: 'Overcome the four Elite Four, and the way to the Champion will open.'",
              "(The four lights in the floor show who you've beaten.)"],
     "lift": [["Down to the Champion", "chamber", 30, 84]], "ask": "THE STATUE"}}}
@@ -7644,6 +7650,128 @@ WHITE_FOREST["rooms"].update(_tower_rooms("WHITE"))
 
 
 
+# ======================================================================================================== batch 11c (11-25)
+# The Zoroark's cave (596, off Victory Road's mountainside) and N's Castle in ruins (273 1F, 274 N's room, 277 2F, 278 the
+# throne room), Black 2's. After the Hall of Fame, Hugh's sister dreams of a Zoroark on Victory Road (b2_sister_dream); the
+# Zoroark leads you into its cave (b2_nc_zoroark) and on to the castle: N waits on 1F (b2_nc_met), tells his story in his old
+# room (b2_nc_room), stops you on 2F (b2_nc_2f), and battles you in the throne room with Zekrom (Black 2) / Reshiram (White 2),
+# Lv 70, then gives you his dragon as the Dark Stone / Light Stone for Dragonspiral Tower (b2_n_beaten). After Kyurem's caught
+# (GIANT_CHASM_boss_defeated) he's back in the throne room once a month, his team by the season (782-785).
+# Challenger's Cave (Black and White's) is reached from inside the cave, top-left (Jordan 11-25, questions/UNOVA.md 18).
+OUTSIDE.update({273: 596, 274: -1, 277: -1, 278: -1})
+_NC_W2 = "unova_version:WHITE_2"
+_NC_B2 = "unova_version:BLACK_2"
+NC_1F = room(273, {
+    0: _say("N", "N: You came...", "N: This is Team Plasma's castle... The ruins of Ghetsis's dreams.",
+            "N: Its deepest chamber means a great deal to me. I'll face you there. Lead the way, and I'll follow.",
+            condition=["not:b2_nc_met"]),
+    1: _ball("Poke Ball on the lower walkway", "PROTEIN", "b2_nc_protein", name="a Protein"),
+    2: _ball("Poke Ball by the far stairs", "TM157", "b2_nc_tm157", name="TM157 Overheat")},
+    {}, (29, 6), stairs={274: ("^", "ROOM:nroom"), 277: ("<", "ROOM:2f")})
+NC_1F["title"] = "N's Castle 1F"
+NC_1F["scenes"] = [{"trigger": {"zone": [9, 9, 9, 11]}, "condition": ["not:b2_nc_met"], "flag": "b2_nc_met", "cast": [], "call": [
+    "N: You came...", "N: This is Team Plasma's castle. The ruins of Ghetsis's dreams...",
+    "N: The deepest chamber of this castle means something special to me. I'll face you there.",
+    "N: But rather than lead you, I'd like to follow. I want to see which path you choose. Take me to the deepest chamber!"]}]
+NC_ROOM = room(274, {0: _ball("Poke Ball in N's room", "LUXURY_BALL", "b2_nc_luxury_ball", name="a Luxury Ball")},
+               {1: ["A slightly dirty basketball. 'Harmonia' is written on it."], 2: ["A home basketball hoop, knocked over."],
+                3: ["A toy box. Its toys have spilled out."], 4: ["The rubber on these wheels has rotted away."],
+                5: ["A skateboard halfpipe, scratched here and there by Pokemon."], 6: ["An art panel with a geometric pattern."],
+                7: ["A panel with a dart stuck in it."], 8: ["A model train set. Nobody's touched it in a long time."],
+                9: ["A toy box, tipped over."]},
+               (0, 0), stairs={273: ("v", "ROOM:1f")})
+NC_ROOM["title"] = "N's Room"
+
+
+def _reachable_signs(r):
+    """Drop the signs nobody can stand beside (the file marks every tile of a big object; some sit behind others)."""
+    art = [list(row) for row in r["art"]]
+    h, w = len(art), len(art[0])
+    start = [(x, y) for y in range(h) for x in range(w) if art[y][x] in r.get("exits", {})]
+    seen, todo = set(start), list(start)
+    while todo:
+        x, y = todo.pop()
+        for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            t = (x + dx, y + dy)
+            if t not in seen and 0 <= t[1] < h and 0 <= t[0] < w and art[t[1]][t[0]] in ".1":
+                seen.add(t); todo.append(t)
+    keep, k = [], 0
+    for y in range(h):
+        for x in range(w):
+            if art[y][x] == "!":
+                if any((x + dx, y + dy) in seen for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))):
+                    keep.append(r["signs"][k])
+                else:
+                    art[y][x] = "c"
+                k += 1
+    r["art"], r["signs"] = ["".join(row) for row in art], keep
+
+
+_reachable_signs(NC_ROOM)
+NC_ROOM["scenes"] = [{"trigger": "enter", "condition": ["b2_nc_met", "not:b2_nc_room"], "flag": "b2_nc_room", "cast": [], "call": [
+    "N: This place... was my whole world.", "N: When I was little, I was left deep in a forest. The Pokemon there raised me.",
+    "N: Then one day a man came and said he was my father. That was Ghetsis.",
+    "N: He gave me the name 'Harmonia', a king's knowledge, Pokemon whose hearts were shut tight... and this room.",
+    "N: I'll be outside..."]}]
+NC_2F = room(277, {0: _say("N ", "N: I want to see things no one else can see.", condition=["b2_nc_met", "not:b2_n_beaten"])},
+             {}, (0, 0), stairs={273: ("v", "ROOM:1f"), 278: ("^", "ROOM:throne")})
+NC_2F["title"] = "N's Castle 2F"
+NC_2F["scenes"] = [{"trigger": {"zone": [30, 12, 30, 14]}, "condition": ["b2_nc_met", "not:b2_nc_2f"], "flag": "b2_nc_2f", "cast": [],
+                    "call": ["N: This is our destination... Go inside."]}]
+
+
+def _n_battle(tid, legend):
+    b = _b2(tid, name="N")
+    b["dialogue"] = {"player_won": [
+        "N: %s and I were beaten. Your feelings, your search for %s, carried you past us." % (legend, "truth" if legend == "Zekrom" else "ideals"),
+        "N: Battling you reminded me of two years ago. I think I understand you a little better now.",
+        "N: And %s... thank you for everything. From now on, use your power to help this Trainer reach their dreams." % legend,
+        "N: I'll miss you too... But I've learned so much from you. I can talk to Pokemon. I'll be the bridge between "
+        "Pokemon and people!",
+        "N: Rest well...",
+        "N: {player_name}! I entrust you with this %s! Take it to Dragonspiral Tower." % ("Dark Stone" if legend == "Zekrom" else "Light Stone"),
+        "N: As for me, I'll search for the Trainer I battled two years ago... and say thank you."]}
+    b["rewards"] = dict(b.get("rewards") or {}, **{"DARK_STONE" if legend == "Zekrom" else "LIGHT_STONE": 1})
+    return b
+
+
+def _n_scene(when, legend, tid, cry):
+    return {"trigger": {"zone": [14, 41, 18, 41]}, "condition": [when, "b2_nc_met", "not:b2_n_beaten"], "flag": "b2_n_met_throne",
+            "cast": [{"sheet": "b2_c103.png", "from": [16, 55], "to": "player", "stay": True, "lines": [
+                "N: That's the place!",
+                "N: Two years ago, for the sake of Pokemon, I put my beliefs on the line and battled a certain Trainer.",
+                "N: And I lost... But I learned something important: to change the world, you must accept different ideas.",
+                "N: I want to see if your heart is strong enough for that.",
+                "N: %s, come!" % legend, cry,
+                "N: %s wants to know what you seek, and how good a Trainer you are. Show me your determination!" % legend]}],
+            "event": {"flag": "b2_n_beaten", "battle": _n_battle(tid, legend)}}
+
+
+_N_SEASONS = (("SPRING", 782), ("SUMMER", 783), ("AUTUMN", 784), ("WINTER", 785))
+NC_THRONE = room(278, {
+    1: [_say("Zekrom", "Bazzazzazzash!", _look="mon:644", condition=[_NC_B2, "not:b2_n_beaten"]),
+        _say("Reshiram", "Preeeeaah!", _look="mon:643", condition=[_NC_W2, "not:b2_n_beaten"])],
+    2: [{"text": "N" + " " * (k + 2), "action": "EVENT", "_look": "sheet:b2_c103.png",
+         "condition": ["b2_n_beaten", "GIANT_CHASM_boss_defeated", "season:" + season], "event": {
+             "world": "unova_city", "monthly": "b2_n_month", "battle": dict(_b2(tid, name="N")),
+             "lines": ["N: How surprising... I didn't expect you here. Well, that's how you come to understand other Trainers.",
+                       "N: You're all right with a battle, aren't you?"],
+             "done": ["N: There are still many Pokemon in the world I should talk to. Come again another month."]}}
+        for k, (season, tid) in enumerate(_N_SEASONS)]},
+    {}, (0, 0), stairs={277: ("v", "ROOM:2f")})
+NC_THRONE["title"] = "N's Castle"
+NC_THRONE["scenes"] = [_n_scene(_NC_B2, "Zekrom", 5, "Zekrom: Shaaaaaak!"), _n_scene(_NC_W2, "Reshiram", 6, "Reshiram: Baaaaaaaahn!")]
+N_CAVE = route(596, {0: _say("Zoroark", "Kwaaaaan!", condition=["not:b2_nc_zoroark"])}, {},
+               exits={"v": ("VICTORY_ROAD_MOUNTAINSIDE", [(4, 23)]), "<": ("CHALLENGERS_CAVE", [(2, 2)])},
+               scenes=[{"trigger": {"zone": [2, 19, 5, 19]}, "condition": ["not:b2_nc_zoroark"], "flag": "b2_nc_zoroark", "cast": [],
+                        "call": ["Zoroark: Kwaaaaan!", "The Zoroark ran off deeper into the cave, toward a ruined building..."]}],
+               rooms={"1f": NC_1F, "nroom": NC_ROOM, "2f": NC_2F, "throne": NC_THRONE}, inside={"29,6": "1f"},
+               title="The Zoroark's Cave")
+_doors(N_CAVE, N_CAVE["inside"])
+N_CAVE["edge_to"] = {"4,23": [35, 32]}
+N_CAVE["split"] = True
+
+
 MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": FLOCCESY, "UNOVA_ROUTE_20": ROUTE_20,
         "FLOCCESY_RANCH_OUTSIDE": RANCH_OUTSIDE, "FLOCCESY_RANCH": RANCH, "PLEDGE_GROVE": PLEDGE_GROVE,
         "VIRBANK_CITY": VIRBANK, "VIRBANK_COMPLEX_OUTSIDE": COMPLEX_OUTSIDE, "VIRBANK_COMPLEX": COMPLEX, "POKESTAR_STUDIOS": POKESTAR,
@@ -7675,4 +7803,4 @@ MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": 
         "VICTORY_ROAD_RIVER": VR_RIVER, "VICTORY_ROAD_CAVE_2F": VR_2F, "VICTORY_ROAD_2F_BACK": VR_2F_BACK,
         "VICTORY_ROAD_MOUNTAINSIDE": VR_MOUNTAIN, "VICTORY_ROAD_3F": VR_3F, "VICTORY_ROAD_TUNNEL": VR_TUNNEL,   # (batch 10a)
         "UNOVA_POKEMON_LEAGUE": LEAGUE,   # (batch 10b)
-        "UNOVA_ROUTE_14": ROUTE_14, "BLACK_CITY": BLACK_CITY, "WHITE_FOREST": WHITE_FOREST, "ABUNDANT_SHRINE": SHRINE, "UNOVA_ROUTE_15": ROUTE_15, "MARVELOUS_BRIDGE": BRIDGE}   # (batch 11a)
+        "UNOVA_ROUTE_14": ROUTE_14, "N_CASTLE": N_CAVE, "BLACK_CITY": BLACK_CITY, "WHITE_FOREST": WHITE_FOREST, "ABUNDANT_SHRINE": SHRINE, "UNOVA_ROUTE_15": ROUTE_15, "MARVELOUS_BRIDGE": BRIDGE}   # (batch 11a)

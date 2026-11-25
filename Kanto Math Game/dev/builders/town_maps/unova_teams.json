@@ -2543,6 +2543,21 @@
    354
   ]
  },
+ "5": {
+  "b2_id": 5,
+  "class": "TRAINER",
+  "levels": [
+   70
+  ],
+  "name": "Pokemon Trainer N",
+  "rewards": {
+   "balls": 2
+  },
+  "sprite": "trainer.png",
+  "team": [
+   644
+  ]
+ },
  "500": {
   "b2_id": 500,
   "class": "TEAM_PLASMA",
@@ -2860,6 +2875,21 @@
   "team": [
    496,
    519
+  ]
+ },
+ "6": {
+  "b2_id": 6,
+  "class": "TRAINER",
+  "levels": [
+   70
+  ],
+  "name": "Pokemon Trainer N",
+  "rewards": {
+   "balls": 2
+  },
+  "sprite": "trainer.png",
+  "team": [
+   643
   ]
  },
  "621": {
@@ -3639,6 +3669,278 @@
   "sprite": "b2_plasma_grunt_f.png",
   "team": [
    505
+  ]
+ },
+ "782": {
+  "b2_id": 782,
+  "class": "TRAINER",
+  "held_items": {
+   "139": "DAMP_ROCK",
+   "186": "LIFE_ORB",
+   "73": "DAMP_ROCK"
+  },
+  "levels": [
+   77,
+   75,
+   75,
+   75,
+   75,
+   75
+  ],
+  "movesets": {
+   "121": [
+    "HYDRO-PUMP",
+    "THUNDER",
+    "PSYCHIC",
+    "ICE-BEAM"
+   ],
+   "139": [
+    "RAIN-DANCE",
+    "HYDRO-PUMP",
+    "ICE-BEAM",
+    "EARTH-POWER"
+   ],
+   "141": [
+    "STONE-EDGE",
+    "AQUA-JET",
+    "X-SCISSOR",
+    "LOW-KICK"
+   ],
+   "171": [
+    "THUNDER",
+    "SIGNAL-BEAM",
+    "HYDRO-PUMP",
+    "STOCKPILE"
+   ],
+   "186": [
+    "HYDRO-PUMP",
+    "FOCUS-BLAST",
+    "PSYCHIC",
+    "HYPNOSIS"
+   ],
+   "73": [
+    "RAIN-DANCE",
+    "GIGA-DRAIN",
+    "SCALD",
+    "BARRIER"
+   ]
+  },
+  "name": "Pokemon Trainer N",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "trainer.png",
+  "team": [
+   186,
+   171,
+   73,
+   139,
+   141,
+   121
+  ]
+ },
+ "783": {
+  "b2_id": 783,
+  "class": "TRAINER",
+  "held_items": {
+   "275": "HEAT_ROCK",
+   "291": "HEAT_ROCK",
+   "38": "LIFE_ORB"
+  },
+  "levels": [
+   77,
+   75,
+   75,
+   75,
+   75,
+   75
+  ],
+  "movesets": {
+   "275": [
+    "DARK-PULSE",
+    "SOLARBEAM",
+    "FOCUS-BLAST",
+    "SUNNY-DAY"
+   ],
+   "291": [
+    "SUNNY-DAY",
+    "X-SCISSOR",
+    "SOLARBEAM",
+    "PROTECT"
+   ],
+   "38": [
+    "FIRE-BLAST",
+    "SOLARBEAM",
+    "FOUL-PLAY",
+    "CONFUSE-RAY"
+   ],
+   "470": [
+    "LEAF-BLADE",
+    "X-SCISSOR",
+    "ATTRACT",
+    "IRON-TAIL"
+   ],
+   "59": [
+    "EXTREMESPEED",
+    "OVERHEAT",
+    "WILD-CHARGE",
+    "OUTRAGE"
+   ],
+   "78": [
+    "MEGAHORN",
+    "DRILL-RUN",
+    "FLARE-BLITZ",
+    "SOLARBEAM"
+   ]
+  },
+  "name": "Pokemon Trainer N",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "trainer.png",
+  "team": [
+   38,
+   59,
+   78,
+   275,
+   291,
+   470
+  ]
+ },
+ "784": {
+  "b2_id": 784,
+  "class": "TRAINER",
+  "held_items": {
+   "346": "SMOOTH_ROCK",
+   "423": "SMOOTH_ROCK",
+   "450": "LIFE_ORB"
+  },
+  "levels": [
+   77,
+   75,
+   75,
+   75,
+   75,
+   75
+  ],
+  "movesets": {
+   "212": [
+    "BULLET-PUNCH",
+    "DOUBLE-HIT",
+    "BUG-BITE",
+    "AERIAL-ACE"
+   ],
+   "346": [
+    "SANDSTORM",
+    "GIGA-DRAIN",
+    "CONFUSE-RAY",
+    "STOCKPILE"
+   ],
+   "348": [
+    "ROCK-SLIDE",
+    "X-SCISSOR",
+    "AQUA-TAIL",
+    "ROCK-POLISH"
+   ],
+   "423": [
+    "EARTH-POWER",
+    "MUDDY-WATER",
+    "ICE-BEAM",
+    "SANDSTORM"
+   ],
+   "450": [
+    "STONE-EDGE",
+    "CRUNCH",
+    "SUPERPOWER",
+    "STEALTH-ROCK"
+   ],
+   "464": [
+    "EARTHQUAKE",
+    "STONE-EDGE",
+    "FIRE-PUNCH",
+    "ICE-PUNCH"
+   ]
+  },
+  "name": "Pokemon Trainer N",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "trainer.png",
+  "team": [
+   450,
+   423,
+   346,
+   348,
+   212,
+   464
+  ]
+ },
+ "785": {
+  "b2_id": 785,
+  "class": "TRAINER",
+  "held_items": {
+   "460": "LIFE_ORB",
+   "478": "ICY_ROCK",
+   "584": "ICY_ROCK"
+  },
+  "levels": [
+   77,
+   75,
+   75,
+   75,
+   75,
+   75
+  ],
+  "movesets": {
+   "460": [
+    "BLIZZARD",
+    "WOOD-HAMMER",
+    "EARTHQUAKE",
+    "GRASSWHISTLE"
+   ],
+   "471": [
+    "BLIZZARD",
+    "SHADOW-BALL",
+    "SIGNAL-BEAM",
+    "ATTRACT"
+   ],
+   "473": [
+    "EARTHQUAKE",
+    "ICE-SHARD",
+    "BLIZZARD",
+    "STONE-EDGE"
+   ],
+   "478": [
+    "BLIZZARD",
+    "SHADOW-BALL",
+    "PSYCHIC",
+    "HAIL"
+   ],
+   "584": [
+    "BLIZZARD",
+    "FLASH-CANNON",
+    "SIGNAL-BEAM",
+    "HAIL"
+   ],
+   "91": [
+    "ICICLE-SPEAR",
+    "HYDRO-PUMP",
+    "ICE-SHARD",
+    "SHELL-SMASH"
+   ]
+  },
+  "name": "Pokemon Trainer N",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "trainer.png",
+  "team": [
+   460,
+   584,
+   91,
+   473,
+   478,
+   471
   ]
  },
  "794": {

@@ -117,6 +117,22 @@ check(flags.get("b2_e4_shauntal"), "Shauntal beaten")
 print("3) Iris")
 for k in ("b2_e4_grimsley", "b2_e4_caitlin", "b2_e4_marshal"):
     flags[k] = True
+from src.states.systems.pick_list import PickListState
+st = town("UNOVA_POKEMON_LEAGUE", (31, 45), "plaza")
+st.player = st.anim_from = (31, 45); st.facing = (0, -1); settle(2)
+st.handle_events([pygame.event.Event(pygame.KEYDOWN, key=pygame.K_SPACE, unicode=" ", mod=0)])
+settle(60)
+pl = g.current_state
+check(isinstance(pl, PickListState), f"the statue's plaque, read with the action key, offers the lift ({type(pl).__name__})")
+if isinstance(pl, PickListState):
+    pl.pick(pl.choices[0][1]); settle(200)
+check(getattr(g.current_state, "room", None) == "chamber" and not getattr(g, "transitioning", False) and not getattr(g.current_state, "npc_active", False),
+      f"down to the chamber, the game back to you (11-25, the Journal's PT_FULL: it hung) ({getattr(g.current_state, 'room', None)}, "
+      f"{getattr(g, 'transitioning', None)})")
+st = town("UNOVA_POKEMON_LEAGUE", (16, 40), "temple")
+hx = [t_ for t_, o in st.people.items() if "Haxorus" in str(o)]
+check((16, 35) not in [tuple(getattr(m, "pos", (0, 0))) for m in getattr(st, "motions", {}).values()] and st._open((16, 35)) if hasattr(st, "_open") else True,
+      "nothing stands in the temple's corridor in front of Iris (her Haxorus did: 11-25)")
 st = town("UNOVA_POKEMON_LEAGUE", (16, 35), "temple")
 ok = talk(st, "Iris")
 cur = until(BATTLES, 800)

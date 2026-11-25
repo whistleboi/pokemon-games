@@ -50,9 +50,10 @@ B2_EARLY = ["VIRBANK_CITY", "VIRBANK_COMPLEX", "UNOVA_ROUTE_20", "FLOCCESY_RANCH
             "UNDELLA_BAY",   # (batch 7b: by Surf from Undella, Cheren's HM on Route 6)
             "HUMILAU_CITY", "SEASIDE_CAVE"]   # (batch 9a: by the Marine Tube; the cave from Route 21)
 B2_POST = ["NATURE_PRESERVE", "MARVELOUS_BRIDGE",
-           "CHALLENGERS_CAVE", "CLAY_TUNNEL"]
+           "CHALLENGERS_CAVE", "CLAY_TUNNEL", "N_CASTLE"]
 expansion_check("unova b2w2 side areas", B2_EARLY, S)
 gate_check("unova post-game side areas", B2_POST, S, "beat_unova_champion")
 story.story_flags["beat_unova_champion"] = True
+story.story_flags["b2_sister_dream"] = True   # (11c: Hugh's sister's dream opens the Zoroark's cave, and Challenger's Cave inside it)
 story.story_flags["b2_chasm_done"] = True   # (the League is past the Giant Chasm's end: Route 23 opens then, 9b-2)
 expansion_check("unova post-game side areas", B2_POST, S)
