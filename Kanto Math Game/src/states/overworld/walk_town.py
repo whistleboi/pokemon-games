@@ -426,10 +426,15 @@ class WalkTownState(TownWalkUps, CityState):
         for home, opt in list(self.people.items()):
             if not isinstance(opt, dict) or opt.get("_partner_of") is not None:
                 continue
-            text = opt.get("text") or next((o.get("text") for o in opt.get("any") or [] if isinstance(o, dict)), None)
+            who = opt
+            if opt.get("any"):   # (a spot several people share by the story or the day: the one standing there now - Platinum's
+                now = next((o for o in opt["any"] if isinstance(o, dict) and self._shown(o)), None)   # Battleground, Sinnoh 11-24 -
+                if now is not None:                                                                  # with any of their own options
+                    who = {"any": [o for o in opt["any"] if isinstance(o, dict) and o.get("text") == now.get("text")]}   # that battles)
+            text = who.get("text") or next((o.get("text") for o in who.get("any") or [] if isinstance(o, dict)), None)
             if not text or str(text).strip() in followed:
                 continue
-            got = partners.partner_for(self.game, self.area_data, opt)
+            got = partners.partner_for(self.game, self.area_data, who)
             if not got:
                 continue
             species, owner = got
