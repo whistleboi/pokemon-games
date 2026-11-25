@@ -432,7 +432,8 @@
       {"mission": "b2_m44", "title": "The Deepest Room", "say": "Past the forest, a cave runs down into the crater's heart. The air there is so cold it hurts to breathe.", "when": "b2_liepard_back"}
     ]},
     {"title": "The Road to the League", "chapters": [
-      {"mission": "b2_m45", "title": "The Last Road", "say": "The ice over Opelucid has melted. N says the League is waiting, and the only road there runs north past Route 23."}
+      {"mission": "b2_m45", "title": "The Last Road", "say": "The ice over Opelucid has melted. N says the League is waiting, and the only road there runs north past Route 23."},
+      {"mission": "b2_m46", "title": "The League at Last", "say": "Past the last cave, the Pokemon League stands at the top of the mountain. Four of Unova's strongest wait inside, and then its Champion."}
     ]}
   ],
   "ORRE": [
