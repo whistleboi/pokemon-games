@@ -196,7 +196,7 @@
   "VICTORY_ROAD_RIVER": "d_champroad",
   "VICTORY_ROAD_TUNNEL": "d_champroad",
   "VICTORY_ROAD_UNOVA": "d_champroad",
-  "VILLAGE_BRIDGE": "h_04",
+  "VILLAGE_BRIDGE": "h_04_base",
   "VIRBANK_CITY": "sw_c_13",
   "VIRBANK_COMPLEX": "sw_d_23",
   "VIRBANK_COMPLEX_OUTSIDE": "sw_c_13"
@@ -221,6 +221,26 @@
   "victory_wild": "win2",
   "villain": "vs_neo_plasma",
   "wild": "vs_norapoke"
+ },
+ "layers": {
+  "h_04_base": [
+   {
+    "file": "h_04_part1",
+    "flag": "vb_music_flute"
+   },
+   {
+    "file": "h_04_part2",
+    "flag": "vb_music_guitar"
+   },
+   {
+    "file": "h_04_part3",
+    "flag": "vb_music_beatbox"
+   },
+   {
+    "file": "h_04_part4",
+    "flag": "vb_music_enka"
+   }
+  ]
  },
  "legends": {
   "377": "vs_regi",

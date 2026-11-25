@@ -13,7 +13,7 @@ catch	7	2026-11-24
 catch_date	5	2026-11-25
 doors	3	2026-11-24
 doubles	84	2026-11-24
-ds3d	12	2026-11-24
+ds3d	15	2026-11-25
 dungeon	108	2026-11-24
 dungeon_johto	171	2026-11-24
 events	159	2026-11-24
@@ -64,6 +64,7 @@ menu_screens	272	2026-11-24
 menus	85	2026-11-24
 moveeffects	60	2026-11-24
 movepool	12	2026-11-24
+music_layers	8	2026-11-25
 orange_canon	0	2026-11-24
 orange_events	45	2026-11-24
 orange_forms	38	2026-11-24

@@ -61,6 +61,7 @@ battle_intros          systems  battle,look
 medal_rally            systems  items,quick
 map_attacks            systems  world
 menu_screens           systems  ui
+music_layers           systems  sound,quick
 partners               systems  world
 walkup                 systems  world,wild
 
