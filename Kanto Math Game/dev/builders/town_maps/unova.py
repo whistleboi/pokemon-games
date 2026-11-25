@@ -6577,9 +6577,16 @@ ROUTE_21["gated_exits"] = {"PLASMA_FRIGATE": ["b2_frigate2_open"]}
 # b2_ghetsis_beaten -> b2_chasm_done (+ b2_opelucid_thawed: Opelucid, Routes 9 and 11 thaw; Route 23 opens).
 _F3 = ["b2_frigate2_done", "not:b2_chasm_done"]
 OUTSIDE.update({554: 562, 557: -1, 561: -1, 564: -1, 555: -1, 604: 234})
-_KYUREM_ROOM_B2 = {2: 430, 3: 431, 4: 432, 5: 433, 7: 434, 6: 435, 1: 438, 0: 439, 19: 808, 20: 810, 21: 811}
-_KYUREM_ROOM_W2 = {4: 452, 5: 453, 19: 811}
-_W2_CLUES = [(0, 445), (1, 446), (2, 447), (3, 448), (7, 449)]
+# (11-25, the Journal's PT_FULL + Bulbapedia: Black 2's lower deck is the PASSWORD puzzle, White 2's the WARP PANEL one -
+#  the opposite of the upper deck. 561 (Black 2) has the scripted Grunts n0-n7: the card holder is 439 (Trubbish, Zangoose);
+#  its switch crosses are sealed leftovers. 564 (White 2): the four switches sit in side pockets only its panels reach.)
+_KYUREM_ROOM_B2 = {7: 434, 6: 435, 19: 808, 20: 810, 21: 811}
+_KYUREM_ROOM_W2 = {0: 445, 1: 446, 2: 447, 3: 448, 7: 449, 4: 452, 5: 453, 6: 454, 19: 811}
+_B2_CLUES = [(1, 438), (2, 430), (3, 431), (4, 432), (5, 433)]
+_W2_SWITCHES = [((9, 16), 18), ((9, 21), 17), ((21, 16), 16), ((21, 21), 15)]   # (each lowers one row of the barrier)
+_W2_PANELS = {(7, 16): (11, 48), (23, 16): (25, 41), (23, 21): (19, 48), (7, 21): (5, 41), (5, 41): (7, 21),
+              (11, 41): (5, 54), (11, 48): (7, 16), (11, 54): (25, 54), (5, 54): (11, 41), (19, 54): (19, 41),
+              (25, 54): (11, 54), (19, 41): (19, 54), (19, 48): (23, 21), (25, 41): (23, 16)}   # (564's scripts 27-40)
 
 
 def _prize(tid, **items):
@@ -6598,7 +6605,7 @@ def _f3_rooms(w2):
     cage = [9, 16, 18, 17] if not w2 else [11, 16, 18, 17]
     kpeople = {8: _say("Kyurem in its cage", "Haahra...", _look="mon:646"),
                (11 if not w2 else 9): _say("Spy", "Former Team Plasma: Remember me? I'm Rood's spy! " + (
-                   "Step on the four red switches in the pipes below to drop the barrier!" if not w2 else
+                   "Ride the warp panels to the four switches to drop the barriers!" if w2 else
                    "You need the Plasma Card and the whole password to drop the barrier. Five Grunts each know a part."))}
     for k, n in enumerate(cage):
         kpeople[n] = _say("Grunt by the cage" + " " * k, ("Team Plasma: Kyurem's power will freeze all of Unova!",
@@ -6613,12 +6620,12 @@ def _f3_rooms(w2):
                                 ["Doctor: Hm. Your Pokemon are healthy."] if tid == 811 else ["Team Plasma: Plasmaaa..."],
                                 ["Doctor: Kyurem is weakened... It isn't right."] if tid == 811 else
                                 ["Team Plasma: Kyurem is at the top of the ship."])
-    if w2:
-        kpeople[6] = {"text": "Grunt with the Plasma Card", "action": "EVENT", "event": {
+    if not w2:
+        kpeople[0] = {"text": "Grunt with the Plasma Card", "action": "EVENT", "event": {
             "lines": ["Team Plasma: I have the Plasma Card! You want it, don't you? Battle me!"],
-            "battle": _b2(454), "flag": "b2_fk_card",
+            "battle": _b2(439), "flag": "b2_fk_card",
             "done": ["Team Plasma: Fine, keep the card. You still need the password, and I'm not telling!"]}}
-        for k, (n, tid) in enumerate(_W2_CLUES, 1):
+        for k, (n, tid) in enumerate(_B2_CLUES, 1):
             kpeople[n] = {"text": "Plasma Grunt" + " " * (k + 20), "action": "EVENT", "event": {
                 "lines": ["Team Plasma: The password? You'll have to beat it out of me!"], "battle": _b2(tid),
                 "flag": "b2_fk_clue_%d" % k,
@@ -6632,16 +6639,20 @@ def _f3_rooms(w2):
     k3 = room(kz, kpeople, {}, (0, 0))
     k3["title"] = "Plasma Frigate"
     k3["links"] = {"26,10": ["control", 7, 13], "4,10": ["ghetsis", 9, 9], "15,21": ["stern", 10, 6]}
-    need = ["b2_fk_%d" % i for i in range(1, 5)] if not w2 else ["b2_fk_password"]
+    need = ["b2_fk_%d" % i for i in range(1, 5)] if w2 else ["b2_fk_password"]
+    if w2:
+        k3["links"].update({"%d,%d" % a: ["kyurem", b[0], b[1]] for a, b in _W2_PANELS.items()})
     k3["barred"] = [{"tiles": [[x, 14] for x in range(13, 18)], "until": {"condition": need}, "look": "unseen",
                      "lines": ["Be careful! The barriers are electrified!"]},
                     {"tiles": [[4, 10]], "until": {"flag_condition": "b2_colress_beaten"}, "look": "unseen",
                      "lines": ["The warp panel won't work yet. Something in the Control Room is keeping it off."]}]
     sc = []
-    if not w2:
+    if w2:
         sc += [{"trigger": {"zone": [x, y, x, y]}, "condition": ["not:b2_fk_%d" % i], "flag": "b2_fk_%d" % i, "cast": [],
-                "call": ["You stepped on a red switch!", "Somewhere above, a barrier switched off."]}
-               for i, (x, y) in enumerate(((8, 44), (8, 51), (22, 44), (22, 51)), 1)]
+                "call": ["You stepped on a switch!", "One of the electrified barriers switched off."]}
+               for i, ((x, y), _row) in enumerate(_W2_SWITCHES, 1)]
+        k3["barred"] += [{"tiles": [[x, row] for x in range(13, 18)], "until": {"flag_condition": "b2_fk_%d" % i}, "look": "unseen",
+                          "lines": ["Be careful! The barriers are electrified!"]} for i, (_xy, row) in enumerate(_W2_SWITCHES, 1)]
     else:
         clues = ["b2_fk_clue_%d" % i for i in range(1, 6)]
         sc += [{"trigger": {"zone": [13, 15, 17, 15]}, "condition": ["not:b2_fk_card"], "every": True, "cast": [],
@@ -7173,8 +7184,9 @@ def _e4_room(name, z, first, again, sheet, intro, won):
 
 
 _E4_FLAGS = ["b2_e4_" + n.lower() for n, *_r in _E4]
-LEAGUE_PLAZA = room(137, {}, {}, (31, 45), stairs={140: ("1", "ROOM:shauntal"), 141: ("2", "ROOM:grimsley"),
-                                                   143: ("3", "ROOM:caitlin"), 142: ("4", "ROOM:marshal")})
+LEAGUE_PLAZA = room(137, {}, {}, (31, 45), stairs={140: ("1", "ROOM:shauntal"), 141: ("g", "ROOM:grimsley"),
+                                                   143: ("h", "ROOM:caitlin"), 142: ("i", "ROOM:marshal")})
+# (11-25, the Journal's PT_FULL: "2"-"4" aren't way-out letters to the walker - "2" is a Cut tree - so three doors did nothing)
 LEAGUE_PLAZA["title"] = "Pokémon League"
 _put_char(LEAGUE_PLAZA, 39, 33, ".")   # (Caitlin's door sits a tile past the rail's end: the step up to it)
 LEAGUE_PLAZA["sign_events"] = {"31,44": {"text": "Statue", "action": "EVENT", "event": {

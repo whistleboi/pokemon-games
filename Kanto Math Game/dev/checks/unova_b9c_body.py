@@ -89,11 +89,37 @@ f3b = next(sm["map"] for sm in sm3 if "unova_version:WHITE_2" not in sm["when"])
 f3w = next(sm["map"] for sm in sm3 if "unova_version:WHITE_2" in sm["when"])
 check(set(f3b["rooms"]) == {"stern", "kyurem", "control", "ghetsis"}, "the stern, Kyurem's room, the Control Room, Ghetsis's room")
 kb, kw = f3b["rooms"]["kyurem"], f3w["rooms"]["kyurem"]
-check(kb["barred"][0]["until"]["condition"] == ["b2_fk_1", "b2_fk_2", "b2_fk_3", "b2_fk_4"]
-      and len([s for s in kb["scenes"] if str(s.get("flag", "")).startswith("b2_fk_")]) == 4, "Black 2: four red switches")
-check(kw["barred"][0]["until"]["condition"] == ["b2_fk_password"]
-      and len([c for c in opts(kw) if str((c.get("event") or {}).get("flag", "")).startswith("b2_fk_clue_")]) == 5
-      and any((c.get("event") or {}).get("flag") == "b2_fk_card" for c in opts(kw)), "White 2: the Plasma Card and five clues")
+check(kw["barred"][0]["until"]["condition"] == ["b2_fk_1", "b2_fk_2", "b2_fk_3", "b2_fk_4"]
+      and len([s for s in kw["scenes"] if str(s.get("flag", "")).startswith("b2_fk_")]) == 4,
+      "White 2: four switches, each dropping a row of the barrier (11-25: the versions' puzzles were the wrong way round)")
+check(kb["barred"][0]["until"]["condition"] == ["b2_fk_password"]
+      and len([c for c in opts(kb) if str((c.get("event") or {}).get("flag", "")).startswith("b2_fk_clue_")]) == 5
+      and any((c.get("event") or {}).get("flag") == "b2_fk_card" and c["event"]["battle"]["team"][:2] for c in opts(kb)),
+      "Black 2: the Plasma Card (the Grunt with Trubbish and Zangoose) and five clues")
+
+
+def _reach(rm, start):   # (walking plus the room's warp panels: "links" to tiles in the same room)
+    a = rm["art"]
+    links = {tuple(map(int, k.split(","))): tuple(v[1:]) for k, v in (rm.get("links") or {}).items() if v[0] == "kyurem"}
+    seen, todo = {start}, [start]
+    while todo:
+        x, y = todo.pop()
+        nxt = [(x + dx, y + dy) for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))] + ([links[(x, y)]] if (x, y) in links else [])
+        for t in nxt:
+            if t not in seen and 0 <= t[1] < len(a) and 0 <= t[0] < len(a[0]) and a[t[1]][t[0]] not in "c" \
+                    and not any(list(t) in b["tiles"] for b in rm.get("barred") or []):
+                seen.add(t)
+                if a[t[1]][t[0]] != "N":
+                    todo.append(t)
+    return seen
+
+
+_rw = _reach(kw, (15, 21))
+check(all(xy in _rw for xy in ((9, 16), (9, 21), (21, 16), (21, 21))),
+      "White 2: every switch reachable from the stern's panel, by the warp panels (the Journal's PT_FULL found Black 2's sealed)")
+_rb = _reach(kb, (15, 21))
+_npos = [(x, y) for y, r in enumerate(kb["art"]) for x, c in enumerate(r) if c == "N"]
+check(sum(1 for p in _npos if p in _rb) >= 8, f"Black 2: the password Grunts can be walked to ({sum(1 for p in _npos if p in _rb)})")
 tb = [c for c in opts(kb) if (c.get("event") or {}).get("battle")]
 check(len(tb) == 11, f"Black 2's Kyurem room: its eleven trainers ({len(tb)})")
 col = next(c for c in opts(f3b["rooms"]["control"]) if c["text"] == "Colress")
@@ -134,7 +160,7 @@ settle(800)
 check(flags.get("b2_chasm_rood") and story.inventory.get("MAX_REVIVE", 0) == before + 3, "Rood's three Max Revives")
 
 print("4) aboard: Zinzolin, Colress")
-for k in ("b2_fk_1", "b2_fk_2", "b2_fk_3", "b2_fk_4"):
+for k in ("b2_fk_1", "b2_fk_2", "b2_fk_3", "b2_fk_4", "b2_fk_password"):
     flags[k] = True
 ds = walked("PLASMA_FRIGATE", (15, 20), floor=2)
 go(0, -1, 2, 60)

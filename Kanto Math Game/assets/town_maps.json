@@ -780774,17 +780774,17 @@
          "action": "EVENT",
          "event": {
           "lines": [
-           "Former Team Plasma: Remember me? I'm Rood's spy! You need the Plasma Card and the whole password to drop the barrier. Five Grunts each know a part."
+           "Former Team Plasma: Remember me? I'm Rood's spy! Ride the warp panels to the four switches to drop the barriers!"
           ]
          },
          "_look": "sheet:b2_c293.png"
         },
         {
-         "text": "Plasma Grunt                     ",
+         "text": "Plasma Grunt  ",
          "action": "EVENT",
          "event": {
           "lines": [
-           "Team Plasma: The password? You'll have to beat it out of me!"
+           "Team Plasma: You won't get past the pipes!"
           ],
           "battle": {
            "class": "TEAM_PLASMA",
@@ -780802,21 +780802,26 @@
             451,
             590,
             42
-           ]
+           ],
+           "dialogue": {
+            "player_won": [
+             "Team Plasma: Plasmaaa..."
+            ]
+           }
           },
-          "flag": "b2_fk_clue_1",
+          "flag": "b2_fk_t445",
           "done": [
-           "Team Plasma: Fine... part 1 of the password is... (You noted it down.)"
+           "Team Plasma: Kyurem is at the top of the ship."
           ]
          },
          "_look": "sheet:b2_c293.png"
         },
         {
-         "text": "Plasma Grunt                      ",
+         "text": "Plasma Grunt   ",
          "action": "EVENT",
          "event": {
           "lines": [
-           "Team Plasma: The password? You'll have to beat it out of me!"
+           "Team Plasma: You won't get past the pipes!"
           ],
           "battle": {
            "class": "TEAM_PLASMA",
@@ -780830,11 +780835,16 @@
            "sprite": "b2_plasma_grunt_m.png",
            "team": [
             553
-           ]
+           ],
+           "dialogue": {
+            "player_won": [
+             "Team Plasma: Plasmaaa..."
+            ]
+           }
           },
-          "flag": "b2_fk_clue_2",
+          "flag": "b2_fk_t446",
           "done": [
-           "Team Plasma: Fine... part 2 of the password is... (You noted it down.)"
+           "Team Plasma: Kyurem is at the top of the ship."
           ]
          },
          "_look": "sheet:b2_c293.png"
@@ -780855,11 +780865,11 @@
          "_look": "sheet:b2_item_ball.png"
         },
         {
-         "text": "Plasma Grunt                       ",
+         "text": "Plasma Grunt    ",
          "action": "EVENT",
          "event": {
           "lines": [
-           "Team Plasma: The password? You'll have to beat it out of me!"
+           "Team Plasma: You won't get past the pipes!"
           ],
           "battle": {
            "class": "TEAM_PLASMA",
@@ -780873,21 +780883,26 @@
            "sprite": "b2_plasma_grunt_m.png",
            "team": [
             560
-           ]
+           ],
+           "dialogue": {
+            "player_won": [
+             "Team Plasma: Plasmaaa..."
+            ]
+           }
           },
-          "flag": "b2_fk_clue_3",
+          "flag": "b2_fk_t447",
           "done": [
-           "Team Plasma: Fine... part 3 of the password is... (You noted it down.)"
+           "Team Plasma: Kyurem is at the top of the ship."
           ]
          },
          "_look": "sheet:b2_c293.png"
         },
         {
-         "text": "Plasma Grunt                        ",
+         "text": "Plasma Grunt     ",
          "action": "EVENT",
          "event": {
           "lines": [
-           "Team Plasma: The password? You'll have to beat it out of me!"
+           "Team Plasma: You won't get past the pipes!"
           ],
           "battle": {
            "class": "TEAM_PLASMA",
@@ -780903,11 +780918,16 @@
            "team": [
             109,
             591
-           ]
+           ],
+           "dialogue": {
+            "player_won": [
+             "Team Plasma: Plasmaaa..."
+            ]
+           }
           },
-          "flag": "b2_fk_clue_4",
+          "flag": "b2_fk_t448",
           "done": [
-           "Team Plasma: Fine... part 4 of the password is... (You noted it down.)"
+           "Team Plasma: Kyurem is at the top of the ship."
           ]
          },
          "_look": "sheet:b2_c293.png"
@@ -780928,11 +780948,11 @@
          "_look": "sheet:b2_item_ball.png"
         },
         {
-         "text": "Grunt with the Plasma Card",
+         "text": "Plasma Grunt        ",
          "action": "EVENT",
          "event": {
           "lines": [
-           "Team Plasma: I have the Plasma Card! You want it, don't you? Battle me!"
+           "Team Plasma: You won't get past the pipes!"
           ],
           "battle": {
            "class": "TEAM_PLASMA",
@@ -780948,21 +780968,26 @@
            "team": [
             568,
             335
-           ]
+           ],
+           "dialogue": {
+            "player_won": [
+             "Team Plasma: Plasmaaa..."
+            ]
+           }
           },
-          "flag": "b2_fk_card",
+          "flag": "b2_fk_t454",
           "done": [
-           "Team Plasma: Fine, keep the card. You still need the password, and I'm not telling!"
+           "Team Plasma: Kyurem is at the top of the ship."
           ]
          },
          "_look": "sheet:b2_c294.png"
         },
         {
-         "text": "Plasma Grunt                         ",
+         "text": "Plasma Grunt         ",
          "action": "EVENT",
          "event": {
           "lines": [
-           "Team Plasma: The password? You'll have to beat it out of me!"
+           "Team Plasma: You won't get past the pipes!"
           ],
           "battle": {
            "class": "TEAM_PLASMA",
@@ -780978,17 +781003,22 @@
            "team": [
             88,
             336
-           ]
+           ],
+           "dialogue": {
+            "player_won": [
+             "Team Plasma: Plasmaaa..."
+            ]
+           }
           },
-          "flag": "b2_fk_clue_5",
+          "flag": "b2_fk_t449",
           "done": [
-           "Team Plasma: Fine... part 5 of the password is... (You noted it down.)"
+           "Team Plasma: Kyurem is at the top of the ship."
           ]
          },
          "_look": "sheet:b2_c293.png"
         },
         {
-         "text": "Plasma Grunt  ",
+         "text": "Plasma Grunt      ",
          "action": "EVENT",
          "event": {
           "lines": [
@@ -781025,7 +781055,7 @@
          "_look": "sheet:b2_c294.png"
         },
         {
-         "text": "Plasma Grunt   ",
+         "text": "Plasma Grunt       ",
          "action": "EVENT",
          "event": {
           "lines": [
@@ -781058,7 +781088,7 @@
          "_look": "sheet:b2_c294.png"
         },
         {
-         "text": "Doctor    ",
+         "text": "Doctor          ",
          "action": "EVENT",
          "event": {
           "lines": [
@@ -781185,6 +781215,76 @@
          "stern",
          10,
          6
+        ],
+        "7,16": [
+         "kyurem",
+         11,
+         48
+        ],
+        "23,16": [
+         "kyurem",
+         25,
+         41
+        ],
+        "23,21": [
+         "kyurem",
+         19,
+         48
+        ],
+        "7,21": [
+         "kyurem",
+         5,
+         41
+        ],
+        "5,41": [
+         "kyurem",
+         7,
+         21
+        ],
+        "11,41": [
+         "kyurem",
+         5,
+         54
+        ],
+        "11,48": [
+         "kyurem",
+         7,
+         16
+        ],
+        "11,54": [
+         "kyurem",
+         25,
+         54
+        ],
+        "5,54": [
+         "kyurem",
+         11,
+         41
+        ],
+        "19,54": [
+         "kyurem",
+         19,
+         41
+        ],
+        "25,54": [
+         "kyurem",
+         11,
+         54
+        ],
+        "19,41": [
+         "kyurem",
+         19,
+         54
+        ],
+        "19,48": [
+         "kyurem",
+         23,
+         21
+        ],
+        "25,41": [
+         "kyurem",
+         23,
+         16
         ]
        },
        "barred": [
@@ -781213,7 +781313,10 @@
          ],
          "until": {
           "condition": [
-           "b2_fk_password"
+           "b2_fk_1",
+           "b2_fk_2",
+           "b2_fk_3",
+           "b2_fk_4"
           ]
          },
          "look": "unseen",
@@ -781235,86 +781338,207 @@
          "lines": [
           "The warp panel won't work yet. Something in the Control Room is keeping it off."
          ]
+        },
+        {
+         "tiles": [
+          [
+           13,
+           18
+          ],
+          [
+           14,
+           18
+          ],
+          [
+           15,
+           18
+          ],
+          [
+           16,
+           18
+          ],
+          [
+           17,
+           18
+          ]
+         ],
+         "until": {
+          "flag_condition": "b2_fk_1"
+         },
+         "look": "unseen",
+         "lines": [
+          "Be careful! The barriers are electrified!"
+         ]
+        },
+        {
+         "tiles": [
+          [
+           13,
+           17
+          ],
+          [
+           14,
+           17
+          ],
+          [
+           15,
+           17
+          ],
+          [
+           16,
+           17
+          ],
+          [
+           17,
+           17
+          ]
+         ],
+         "until": {
+          "flag_condition": "b2_fk_2"
+         },
+         "look": "unseen",
+         "lines": [
+          "Be careful! The barriers are electrified!"
+         ]
+        },
+        {
+         "tiles": [
+          [
+           13,
+           16
+          ],
+          [
+           14,
+           16
+          ],
+          [
+           15,
+           16
+          ],
+          [
+           16,
+           16
+          ],
+          [
+           17,
+           16
+          ]
+         ],
+         "until": {
+          "flag_condition": "b2_fk_3"
+         },
+         "look": "unseen",
+         "lines": [
+          "Be careful! The barriers are electrified!"
+         ]
+        },
+        {
+         "tiles": [
+          [
+           13,
+           15
+          ],
+          [
+           14,
+           15
+          ],
+          [
+           15,
+           15
+          ],
+          [
+           16,
+           15
+          ],
+          [
+           17,
+           15
+          ]
+         ],
+         "until": {
+          "flag_condition": "b2_fk_4"
+         },
+         "look": "unseen",
+         "lines": [
+          "Be careful! The barriers are electrified!"
+         ]
         }
        ],
        "scenes": [
         {
          "trigger": {
           "zone": [
-           13,
-           15,
-           17,
-           15
+           9,
+           16,
+           9,
+           16
           ]
          },
          "condition": [
-          "not:b2_fk_card"
+          "not:b2_fk_1"
          ],
-         "every": true,
+         "flag": "b2_fk_1",
          "cast": [],
          "call": [
-          "There is a device... It seems that a card key is necessary to enter a password."
-         ],
-         "push": [
-          0,
-          1
+          "You stepped on a switch!",
+          "One of the electrified barriers switched off."
          ]
         },
         {
          "trigger": {
           "zone": [
-           13,
-           15,
-           17,
-           15
+           9,
+           21,
+           9,
+           21
           ]
          },
          "condition": [
-          "b2_fk_card",
-          {
-           "any": [
-            "not:b2_fk_clue_1",
-            "not:b2_fk_clue_2",
-            "not:b2_fk_clue_3",
-            "not:b2_fk_clue_4",
-            "not:b2_fk_clue_5"
-           ]
-          }
+          "not:b2_fk_2"
          ],
-         "every": true,
+         "flag": "b2_fk_2",
          "cast": [],
          "call": [
-          "You don't know the whole password yet. (Five Grunts on this floor each know a part.)"
-         ],
-         "push": [
-          0,
-          1
+          "You stepped on a switch!",
+          "One of the electrified barriers switched off."
          ]
         },
         {
          "trigger": {
           "zone": [
-           13,
-           15,
-           17,
-           15
+           21,
+           16,
+           21,
+           16
           ]
          },
          "condition": [
-          "b2_fk_card",
-          "b2_fk_clue_1",
-          "b2_fk_clue_2",
-          "b2_fk_clue_3",
-          "b2_fk_clue_4",
-          "b2_fk_clue_5",
-          "not:b2_fk_password"
+          "not:b2_fk_3"
          ],
-         "flag": "b2_fk_password",
+         "flag": "b2_fk_3",
          "cast": [],
          "call": [
-          "You entered the password with the Plasma Card...",
-          "You succeeded in entering the password!",
-          "All barriers were deactivated, and you can proceed now."
+          "You stepped on a switch!",
+          "One of the electrified barriers switched off."
+         ]
+        },
+        {
+         "trigger": {
+          "zone": [
+           21,
+           21,
+           21,
+           21
+          ]
+         },
+         "condition": [
+          "not:b2_fk_4"
+         ],
+         "flag": "b2_fk_4",
+         "cast": [],
+         "call": [
+          "You stepped on a switch!",
+          "One of the electrified barriers switched off."
          ]
         },
         {
@@ -790078,17 +790302,17 @@
          "action": "EVENT",
          "event": {
           "lines": [
-           "Former Team Plasma: Remember me? I'm Rood's spy! Step on the four red switches in the pipes below to drop the barrier!"
+           "Former Team Plasma: Remember me? I'm Rood's spy! You need the Plasma Card and the whole password to drop the barrier. Five Grunts each know a part."
           ]
          },
          "_look": "sheet:b2_c293.png"
         },
         {
-         "text": "Plasma Grunt    ",
+         "text": "Plasma Grunt                      ",
          "action": "EVENT",
          "event": {
           "lines": [
-           "Team Plasma: You won't get past the pipes!"
+           "Team Plasma: The password? You'll have to beat it out of me!"
           ],
           "battle": {
            "class": "TEAM_PLASMA",
@@ -790106,26 +790330,21 @@
             451,
             590,
             42
-           ],
-           "dialogue": {
-            "player_won": [
-             "Team Plasma: Plasmaaa..."
-            ]
-           }
+           ]
           },
-          "flag": "b2_fk_t430",
+          "flag": "b2_fk_clue_2",
           "done": [
-           "Team Plasma: Kyurem is at the top of the ship."
+           "Team Plasma: Fine... part 2 of the password is... (You noted it down.)"
           ]
          },
          "_look": "sheet:b2_c293.png"
         },
         {
-         "text": "Plasma Grunt     ",
+         "text": "Plasma Grunt                       ",
          "action": "EVENT",
          "event": {
           "lines": [
-           "Team Plasma: You won't get past the pipes!"
+           "Team Plasma: The password? You'll have to beat it out of me!"
           ],
           "battle": {
            "class": "TEAM_PLASMA",
@@ -790139,16 +790358,11 @@
            "sprite": "b2_plasma_grunt_m.png",
            "team": [
             553
-           ],
-           "dialogue": {
-            "player_won": [
-             "Team Plasma: Plasmaaa..."
-            ]
-           }
+           ]
           },
-          "flag": "b2_fk_t431",
+          "flag": "b2_fk_clue_3",
           "done": [
-           "Team Plasma: Kyurem is at the top of the ship."
+           "Team Plasma: Fine... part 3 of the password is... (You noted it down.)"
           ]
          },
          "_look": "sheet:b2_c293.png"
@@ -790169,11 +790383,11 @@
          "_look": "sheet:b2_item_ball.png"
         },
         {
-         "text": "Plasma Grunt      ",
+         "text": "Plasma Grunt                        ",
          "action": "EVENT",
          "event": {
           "lines": [
-           "Team Plasma: You won't get past the pipes!"
+           "Team Plasma: The password? You'll have to beat it out of me!"
           ],
           "battle": {
            "class": "TEAM_PLASMA",
@@ -790187,26 +790401,21 @@
            "sprite": "b2_plasma_grunt_m.png",
            "team": [
             560
-           ],
-           "dialogue": {
-            "player_won": [
-             "Team Plasma: Plasmaaa..."
-            ]
-           }
+           ]
           },
-          "flag": "b2_fk_t432",
+          "flag": "b2_fk_clue_4",
           "done": [
-           "Team Plasma: Kyurem is at the top of the ship."
+           "Team Plasma: Fine... part 4 of the password is... (You noted it down.)"
           ]
          },
          "_look": "sheet:b2_c293.png"
         },
         {
-         "text": "Plasma Grunt       ",
+         "text": "Plasma Grunt                         ",
          "action": "EVENT",
          "event": {
           "lines": [
-           "Team Plasma: You won't get past the pipes!"
+           "Team Plasma: The password? You'll have to beat it out of me!"
           ],
           "battle": {
            "class": "TEAM_PLASMA",
@@ -790222,26 +790431,21 @@
            "team": [
             109,
             591
-           ],
-           "dialogue": {
-            "player_won": [
-             "Team Plasma: Plasmaaa..."
-            ]
-           }
+           ]
           },
-          "flag": "b2_fk_t433",
+          "flag": "b2_fk_clue_5",
           "done": [
-           "Team Plasma: Kyurem is at the top of the ship."
+           "Team Plasma: Fine... part 5 of the password is... (You noted it down.)"
           ]
          },
          "_look": "sheet:b2_c293.png"
         },
         {
-         "text": "Plasma Grunt  ",
+         "text": "Grunt with the Plasma Card",
          "action": "EVENT",
          "event": {
           "lines": [
-           "Team Plasma: You won't get past the pipes!"
+           "Team Plasma: I have the Plasma Card! You want it, don't you? Battle me!"
           ],
           "battle": {
            "class": "TEAM_PLASMA",
@@ -790257,22 +790461,17 @@
            "team": [
             568,
             335
-           ],
-           "dialogue": {
-            "player_won": [
-             "Team Plasma: Plasmaaa..."
-            ]
-           }
+           ]
           },
-          "flag": "b2_fk_t439",
+          "flag": "b2_fk_card",
           "done": [
-           "Team Plasma: Kyurem is at the top of the ship."
+           "Team Plasma: Fine, keep the card. You still need the password, and I'm not telling!"
           ]
          },
          "_look": "sheet:b2_c294.png"
         },
         {
-         "text": "Plasma Grunt        ",
+         "text": "Plasma Grunt  ",
          "action": "EVENT",
          "event": {
           "lines": [
@@ -790320,11 +790519,11 @@
          "_look": "sheet:b2_item_ball.png"
         },
         {
-         "text": "Plasma Grunt   ",
+         "text": "Plasma Grunt                     ",
          "action": "EVENT",
          "event": {
           "lines": [
-           "Team Plasma: You won't get past the pipes!"
+           "Team Plasma: The password? You'll have to beat it out of me!"
           ],
           "battle": {
            "class": "TEAM_PLASMA",
@@ -790338,22 +790537,17 @@
            "sprite": "b2_plasma_grunt_f.png",
            "team": [
             545
-           ],
-           "dialogue": {
-            "player_won": [
-             "Team Plasma: Plasmaaa..."
-            ]
-           }
+           ]
           },
-          "flag": "b2_fk_t438",
+          "flag": "b2_fk_clue_1",
           "done": [
-           "Team Plasma: Kyurem is at the top of the ship."
+           "Team Plasma: Fine... part 1 of the password is... (You noted it down.)"
           ]
          },
          "_look": "sheet:b2_c294.png"
         },
         {
-         "text": "Plasma Grunt         ",
+         "text": "Plasma Grunt   ",
          "action": "EVENT",
          "event": {
           "lines": [
@@ -790388,7 +790582,7 @@
          "_look": "sheet:b2_c293.png"
         },
         {
-         "text": "Plasma Grunt          ",
+         "text": "Plasma Grunt    ",
          "action": "EVENT",
          "event": {
           "lines": [
@@ -790423,7 +790617,7 @@
          "_look": "sheet:b2_c293.png"
         },
         {
-         "text": "Plasma Grunt           ",
+         "text": "Plasma Grunt     ",
          "action": "EVENT",
          "event": {
           "lines": [
@@ -790488,7 +790682,7 @@
          "_look": "sheet:b2_item_ball.png"
         },
         {
-         "text": "Doctor            ",
+         "text": "Doctor      ",
          "action": "EVENT",
          "event": {
           "lines": [
@@ -790613,10 +790807,7 @@
          ],
          "until": {
           "condition": [
-           "b2_fk_1",
-           "b2_fk_2",
-           "b2_fk_3",
-           "b2_fk_4"
+           "b2_fk_password"
           ]
          },
          "look": "unseen",
@@ -790644,77 +790835,80 @@
         {
          "trigger": {
           "zone": [
-           8,
-           44,
-           8,
-           44
+           13,
+           15,
+           17,
+           15
           ]
          },
          "condition": [
-          "not:b2_fk_1"
+          "not:b2_fk_card"
          ],
-         "flag": "b2_fk_1",
+         "every": true,
          "cast": [],
          "call": [
-          "You stepped on a red switch!",
-          "Somewhere above, a barrier switched off."
+          "There is a device... It seems that a card key is necessary to enter a password."
+         ],
+         "push": [
+          0,
+          1
          ]
         },
         {
          "trigger": {
           "zone": [
-           8,
-           51,
-           8,
-           51
+           13,
+           15,
+           17,
+           15
           ]
          },
          "condition": [
-          "not:b2_fk_2"
+          "b2_fk_card",
+          {
+           "any": [
+            "not:b2_fk_clue_1",
+            "not:b2_fk_clue_2",
+            "not:b2_fk_clue_3",
+            "not:b2_fk_clue_4",
+            "not:b2_fk_clue_5"
+           ]
+          }
          ],
-         "flag": "b2_fk_2",
+         "every": true,
          "cast": [],
          "call": [
-          "You stepped on a red switch!",
-          "Somewhere above, a barrier switched off."
+          "You don't know the whole password yet. (Five Grunts on this floor each know a part.)"
+         ],
+         "push": [
+          0,
+          1
          ]
         },
         {
          "trigger": {
           "zone": [
-           22,
-           44,
-           22,
-           44
+           13,
+           15,
+           17,
+           15
           ]
          },
          "condition": [
-          "not:b2_fk_3"
+          "b2_fk_card",
+          "b2_fk_clue_1",
+          "b2_fk_clue_2",
+          "b2_fk_clue_3",
+          "b2_fk_clue_4",
+          "b2_fk_clue_5",
+          "not:b2_fk_password"
          ],
-         "flag": "b2_fk_3",
+         "flag": "b2_fk_password",
          "cast": [],
          "call": [
-          "You stepped on a red switch!",
-          "Somewhere above, a barrier switched off."
-         ]
-        },
-        {
-         "trigger": {
-          "zone": [
-           22,
-           51,
-           22,
-           51
-          ]
-         },
-         "condition": [
-          "not:b2_fk_4"
-         ],
-         "flag": "b2_fk_4",
-         "cast": [],
-         "call": [
-          "You stepped on a red switch!",
-          "Somewhere above, a barrier switched off."
+          "You entered the password with the Plasma Card...",
+          "You succeeded in entering the password!",
+          "All barriers were deactivated, and you can proceed now."
          ]
         },
         {
@@ -1134066,7 +1134260,7 @@
      "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccc..cccccccccccccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccc.cccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccccccccccc2cccccccccccccc3cccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccgcccccccccccccchcccccccccccccccccccccccc",
      "cccccccccccccccccccccccc..ccccccccccc...cccccccccccccccccccccccc",
      "cccccccccccccccccccccccc..ccccccccccc..ccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc.ccccccccccc.cccccccccccccccccccccccccc",
@@ -1134076,7 +1134270,7 @@
      "ccccccccccccccccccccccc.................cccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc.............cccccccccccccccccccccccccc",
      "ccccccccccccccccccc1.cccc.............cccc.ccccccccccccccccccccc",
-     "ccccccccccccccccccc...ccc.....ccc.....ccc..4cccccccccccccccccccc",
+     "ccccccccccccccccccc...ccc.....ccc.....ccc..icccccccccccccccccccc",
      "cccccccccccccccccccc....c.....ccc.....c....ccccccccccccccccccccc",
      "cccccccccccccccccccccc..c.....ccc.....c..ccccccccccccccccccccccc",
      "ccccccccccccccccccccccc.c.............c.cccccccccccccccccccccccc",
@@ -1134100,10 +1134294,10 @@
      "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
     ],
     "exits": {
-     "2": "ROOM:grimsley",
-     "3": "ROOM:caitlin",
+     "g": "ROOM:grimsley",
+     "h": "ROOM:caitlin",
      "1": "ROOM:shauntal",
-     "4": "ROOM:marshal",
+     "i": "ROOM:marshal",
      "v": "OUT:31,45"
     },
     "buildings": {},
