@@ -174,7 +174,8 @@ U = [l.upper() for l in L]
 check(any("BLASTOISE USED ICE BEAM" in l for l in U), "BLASTOISE's Ice Beam went off")
 check(any(("RAICHU USED THUNDERBOLT" in l or "PIKACHU USED THUNDERBOLT" in l) for l in U), "...and its partner's Thunderbolt")
 check(any("FOE MAROWAK USED" in l for l in U), "Foe MAROWAK acted")
-check(any("FOE ALAKAZAM USED" in l for l in U) or any("FOE ALAKAZAM" in l and "FAINTED" in l for l in U), "Foe ALAKAZAM acted (or went down first)")
+check(any("FOE ALAKAZAM USED" in l for l in U) or any("FOE ALAKAZAM" in l and ("FAINTED" in l or "FROZEN SOLID" in l) for l in U),
+      "Foe ALAKAZAM acted (or went down first, or Ice Beam froze it: one time in ten)")   # (Checks 11-25: the freeze failed it at random)
 
 print("3) spread moves, Helping Hand, Follow Me: the doubles-only effects take effect")
 
