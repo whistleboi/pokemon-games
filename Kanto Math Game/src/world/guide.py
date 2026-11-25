@@ -411,6 +411,17 @@ def neighbours(game, area_key, open_only=True, came=None):
         if target and (ways is None or target in ways or opt.get("door") or opt.get("action") == "GAMECORNER") \
                 and (not open_only or (_ok(story, opt.get("condition"), area_key) and _flag_ok(story, opt.get("flag_condition")))):
             out.append(target)
+    if ways and not (area.get("travel_options") or area.get("explore_options") or area.get("route_menu")):
+        # (a walked place with no menu links at all - Unova's later routes: Route 11-13, the Marine Tube, Victory Road -
+        #  is joined by its map's own ways out, less any its map gates shut ("gated_exits": {area: [conditions]}); 11-25)
+        try:
+            from src.states.overworld.walk_town import story_map
+            gates = (story_map(game, area_key) or {}).get("gated_exits") or {}
+        except Exception:
+            gates = {}
+        for t in sorted(ways):
+            if t not in out and t in game.loader.area_data.get("STORY_PROGRESSION", {}) and (not open_only or _ok(story, gates.get(t))):
+                out.append(t)
     return out
 
 
