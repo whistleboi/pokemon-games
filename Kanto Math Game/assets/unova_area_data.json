@@ -9922,6 +9922,7 @@
       },
       "surf_pool_percentages": "VIRBANK_CITY_SURF_PERCENTAGES"
     },
+    "PAST_NUVEMA_TOWN": {"area_type": "town", "route_name": "Nuvema Town (two years ago)", "region": "UNOVA", "era": "past", "travel_options": [], "explore_options": [], "on_enter_event": null},
     "NUVEMA_TOWN": {
       "area_type": "town",
       "route_name": "Nuvema Town",

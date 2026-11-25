@@ -8430,9 +8430,12 @@ NUV_ROOMS = {
                                     "Aspertia! Here, this is the Super Rod!", "You received the Super Rod!"],
                           "gift_item": {"SUPER_ROD": 1}, "flag": "b2_nuvema_super_rod",
                           "done": ["Cedric: I made the Habitat List so people would know how many Pokemon live in each place!"]}},
-                      1: _say("Professor Juniper", "Professor Juniper: Why, hello! Thanks for coming clear out to Nuvema! Did you "
-                              "take Skyarrow Bridge and meet a lot of Pokemon?",
-                              "Professor Juniper: Check every corner of the Unova region for Pokemon! Do your best!"),
+                      1: {"text": "Professor Juniper", "action": "EVENT", "event": {   # (12c: the Memory Link, Black 2's own hook)
+                          "lines": ["Professor Juniper: Why, hello! Thanks for coming clear out to Nuvema!",
+                                    "Professor Juniper: Have you heard of the Memory Link? It lets your C-Gear remember Unova as it "
+                                    "was two years ago, the year it all began. Shall I connect it for you?",
+                                    "Your C-Gear hums... Unova, two years ago, unfolds around you!"],
+                          "flag": "unova_past", "travel": "PAST_NUVEMA_TOWN", "land": ["lab", 6, 12]}},
                       2: _say("Pokemon in the lab", "Skreet! Skreet!"), 3: _say("Pokemon by the desk", "Pfoooh!")},
                  {}, (9, 4)),
 }
@@ -8447,6 +8450,78 @@ NUVEMA["edge_to"] = {"%d,0" % x: [x + 32, 62] for x in range(18, 24)}
 for _r, _t in (("hero", "House"), ("hero_2f", "House 2F"), ("bianca", "Bianca's House"), ("bianca_2f", "Bianca's House 2F"),
                ("cheren", "Cheren's House"), ("cheren_2f", "Cheren's House 2F"), ("lab", "Juniper Pokémon Lab")):
     NUVEMA["rooms"][_r]["title"] = _t
+
+
+# ======================================================================================================== batch 12c (11-25)
+# Unova two years ago (questions/UNOVA.md 19, 20): Pokemon White's own maps (unova_geo_w1.json, the tools' --white: same zone
+# numbers as Black 2's, so the builder swaps GEO / OUTSIDE while it builds a past place). You visit as yourself, with your own
+# team (Jordan 11-25). The Memory Link: today's Juniper connects it; the past's Juniper (and, as the past grows, any Center
+# there) brings you back. Areas are "PAST_<area>" (era "past": Fly keeps the two eras apart - fly_map.fly_ok).
+# Part 2: Nuvema the day Bianca and Cheren set out (White's 389; 390 the hero's house and 391 its upstairs, 392 / 393
+# Bianca's, 394 / 395 Cheren's, 396 the lab).
+GEO_W1 = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "unova_geo_w1.json"), encoding="utf-8"))
+OUTSIDE_W1 = {390: 389, 391: -1, 392: 389, 393: -1, 394: 389, 395: -1, 396: 389}
+
+
+def _past(build):
+    """build() with Pokemon White's layout and doors in place of Black 2's (the helpers read the module's GEO / OUTSIDE)."""
+    global GEO, OUTSIDE
+    keep = GEO, OUTSIDE
+    GEO, OUTSIDE = GEO_W1, OUTSIDE_W1
+    try:
+        return build()
+    finally:
+        GEO, OUTSIDE = keep
+
+
+PAST_BACK = {"text": "Professor Juniper", "action": "EVENT", "event": {
+    "lines": ["Professor Juniper: Why, hello! Our new Trainers are just setting out today. Two years from now... well, you'd "
+              "know better than me!", "Professor Juniper: Whenever you're ready, I'll send you back to your own time.",
+              "Your C-Gear hums... You're back in Nuvema, today!"],
+    "travel": "NUVEMA_TOWN", "land": ["lab", 6, 12]}}
+
+
+def _past_nuvema():
+    rooms = {
+        "hero": room(390, {0: _say("Mother", "Mom: My child's off on a Pokemon journey today too! I wonder where they'll go, "
+                                   "and what kind of Pokemon they'll meet.")}, {}, (14, 12), stairs={391: ("^", "ROOM:hero_2f")}),
+        "hero_2f": room(391, {0: _say("Cheren", "Cheren: Would you get a move on and open the gift box already? The Pokemon are "
+                                      "just as excited to meet us!")},
+                        {}, None, stairs={390: ("v", "ROOM:hero")}),
+        "bianca": room(392, {0: _say("Bianca's Dad", "Bianca's Dad: Even if there are many things you want to do, you're only one "
+                                     "person. It's frustrating, isn't it?"),
+                             1: _say("Bianca's Mom", "Bianca's Mom: Choosing one thing means giving up something else. Of course "
+                                     "it's hard to decide.")},
+                       {}, (8, 21), stairs={393: ("^", "ROOM:bianca_2f")}),
+        "bianca_2f": room(393, {}, {}, None, stairs={392: ("v", "ROOM:bianca")}),
+        "cheren": room(394, {0: _say("Cheren's Dad", "Cheren's Dad: Traveling is great! Wherever you go, you learn something new "
+                                     "and grow up a little."),
+                             1: _say("Cheren's Mom", "Cheren's Mom: That Cheren. I'm sure he's at the laboratory. He's so... "
+                                     "conscientious.")},
+                       {}, (19, 21), stairs={395: ("^", "ROOM:cheren_2f")}),
+        "cheren_2f": room(395, {}, {}, None, stairs={394: ("v", "ROOM:cheren")}),
+        "lab": room(396, {0: PAST_BACK,
+                          1: _say("Bianca ", "Bianca: For some reason, my heart is pounding! What are we going to do first?"),
+                          2: _say("Cheren ", "Cheren: Finally, I can become a Pokemon Trainer. I'll have real battles and get "
+                                  "stronger. Wait and see!"),
+                          4: _say("Pokemon in the lab", "Skreet! Skreet!")},
+                    {}, (9, 4)),
+    }
+    m = town(389, {0: _say("Man in town", "The power of science is amazing! Now you can use infrared to do all sorts of things "
+                           "in the blink of an eye!"),
+                   1: _say("Woman in town", "Do you think traveling with Pokemon changes people?"),
+                   2: _say("Girl in town", "I've heard there are lots of Pokemon and people out in the world. Their stories get me "
+                           "so excited!")},
+             {}, {390: ("home", "hero"), 392: ("house", "bianca"), 394: ("house", "cheren"), 396: ("house", "lab")},
+             rooms, title="Nuvema Town (two years ago)")
+    for r, t in (("hero", "House"), ("hero_2f", "House 2F"), ("bianca", "Bianca's House"), ("bianca_2f", "Bianca's House 2F"),
+                 ("cheren", "Cheren's House"), ("cheren_2f", "Cheren's House 2F"), ("lab", "Juniper Pok\u00e9mon Lab")):
+        m["rooms"][r]["title"] = t
+    return m
+
+
+PAST_NUVEMA = _past(_past_nuvema)
+PAST_NUVEMA["landings"] = [[9, 5]]   # (in and out by the Memory Link, in the lab: Route 1 two years ago is a later part)
 
 # ======================================================================================================== batch 12b (11-25)
 # Black 2's north after the title (walkthrough part 19): Tubeline Bridge (254: from Route 9's gate 349 to Route 8's gate
@@ -8668,4 +8743,4 @@ MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": 
         "VICTORY_ROAD_RIVER": VR_RIVER, "VICTORY_ROAD_CAVE_2F": VR_2F, "VICTORY_ROAD_2F_BACK": VR_2F_BACK,
         "VICTORY_ROAD_MOUNTAINSIDE": VR_MOUNTAIN, "VICTORY_ROAD_3F": VR_3F, "VICTORY_ROAD_TUNNEL": VR_TUNNEL,   # (batch 10a)
         "UNOVA_POKEMON_LEAGUE": LEAGUE,   # (batch 10b)
-        "UNOVA_ROUTE_14": ROUTE_14, "N_CASTLE": N_CAVE, "SKYARROW_BRIDGE": SKYARROW, "PINWHEEL_FOREST": PINWHEEL, "PINWHEEL_FOREST_OUTSIDE": PINWHEEL_OUT, "NACRENE_CITY": NACRENE, "UNOVA_ROUTE_3": ROUTE_3, "WELLSPRING_CAVE": WELLSPRING, "WELLSPRING_CAVE_B1F": WELLSPRING_B1, "STRIATON_CITY": STRIATON, "DREAMYARD": DREAMYARD_MAP, "DREAMYARD_B1F": DREAMYARD_B1, "UNOVA_ROUTE_2": ROUTE_2, "ACCUMULA_TOWN": ACCUMULA, "UNOVA_ROUTE_1": ROUTE_1, "NUVEMA_TOWN": NUVEMA, "TUBELINE_BRIDGE": TUBELINE, "UNOVA_ROUTE_8": ROUTE_8, "MOOR_OF_ICIRRUS": MOOR, "ICIRRUS_CITY": ICIRRUS, "DRAGONSPIRAL_TOWER": DRAGONSPIRAL, "BLACK_CITY": BLACK_CITY, "WHITE_FOREST": WHITE_FOREST, "ABUNDANT_SHRINE": SHRINE, "UNOVA_ROUTE_15": ROUTE_15, "MARVELOUS_BRIDGE": BRIDGE}   # (batch 11a)
+        "UNOVA_ROUTE_14": ROUTE_14, "N_CASTLE": N_CAVE, "SKYARROW_BRIDGE": SKYARROW, "PINWHEEL_FOREST": PINWHEEL, "PINWHEEL_FOREST_OUTSIDE": PINWHEEL_OUT, "NACRENE_CITY": NACRENE, "UNOVA_ROUTE_3": ROUTE_3, "WELLSPRING_CAVE": WELLSPRING, "WELLSPRING_CAVE_B1F": WELLSPRING_B1, "STRIATON_CITY": STRIATON, "DREAMYARD": DREAMYARD_MAP, "DREAMYARD_B1F": DREAMYARD_B1, "UNOVA_ROUTE_2": ROUTE_2, "ACCUMULA_TOWN": ACCUMULA, "UNOVA_ROUTE_1": ROUTE_1, "NUVEMA_TOWN": NUVEMA, "PAST_NUVEMA_TOWN": PAST_NUVEMA, "TUBELINE_BRIDGE": TUBELINE, "UNOVA_ROUTE_8": ROUTE_8, "MOOR_OF_ICIRRUS": MOOR, "ICIRRUS_CITY": ICIRRUS, "DRAGONSPIRAL_TOWER": DRAGONSPIRAL, "BLACK_CITY": BLACK_CITY, "WHITE_FOREST": WHITE_FOREST, "ABUNDANT_SHRINE": SHRINE, "UNOVA_ROUTE_15": ROUTE_15, "MARVELOUS_BRIDGE": BRIDGE}   # (batch 11a)
