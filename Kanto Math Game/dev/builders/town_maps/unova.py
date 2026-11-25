@@ -5590,6 +5590,21 @@ VB_HOUSES = {
 for _r, _t in (("house_1", "House"), ("bakery", "Village Bridge Restaurant"), ("waders", "House"), ("house_4", "House"),
                ("house_5", "House"), ("rest", "Rest House"), ("singer", "Under the Bridge")):
     VB_HOUSES[_r]["title"] = _t
+VB_MUSIC = ["vb_music_flute", "vb_music_guitar", "vb_music_beatbox", "vb_music_enka"]
+
+
+def _vb_musician(name, flag, on, off):
+    """Village Bridge's musicians, as Black 2 (11-25: Systems' layered h_04, main 74b202a90): talk once and their part joins
+    the town's music (0xA3 n), again and it stops (0xA4 n); the flags last only while you're here (VB_ENTER clears them)."""
+    return [{"text": name, "action": "EVENT", "condition": ["not:" + flag], "event": {"world": "unova_story", "toggle": flag,
+                                                                                     "lines": on + ["%s's part joins the music!" % name]}},
+            {"text": name + " ", "action": "EVENT", "condition": [flag], "event": {"world": "unova_story", "toggle": flag,
+                                                                                   "lines": off}}]
+
+
+VB_ENTER = {"trigger": "enter", "every": True, "cast": [], "event": {"world": "unova_story", "clear": VB_MUSIC}}
+
+
 VILLAGE_BRIDGE_MAP = route(
     255, {12: _ball("Poke Ball by the river", "ULTRA_BALL", "b2_vb_ultra_ball", name="an Ultra Ball"),
           13: _ball("Poke Ball on the bank", "HEART_SCALE", "b2_vb_heart_scale", name="a Heart Scale"),
@@ -5599,12 +5614,16 @@ VILLAGE_BRIDGE_MAP = route(
           17: _ball("Poke Ball by the trees", "BLUE_SHARD", "b2_vb_blue_shard", name="a Blue Shard"),
           8: VB_STONEWALL,
           3: {"text": "Runner on the bridge", "action": "EVENT", "event": {"world": "unova_story", "runner": "b2_vb_runner"}},
-          1: _say("Derleth", "Derleth: Fweet fweet... Fweeeeet...", "Derleth: Whistle tunes and complaints about life. That's all "
-                                                                    "that comes out of me. This bridge is where we complainers meet."),
-          2: _say("Aickman", "Aickman: This sound! Doesn't it get to your heart?",
-                  "Aickman: I know my sound doesn't fit this town. But I can't change my style."),
-          0: _say("Russo", "Russo: La la la... Ahem! This microphone's all screwy. I can sing real good, promise!"),
-          11: _say("Koontz", "Koontz: Singing gives life to my spirit. Will you listen to the voice of my spirit?"),
+          1: _vb_musician("Derleth", "vb_music_flute", ["Derleth: Fweet fweet... Fweeeeet...",
+                          "Derleth: Whistle tunes and complaints about life. That's all that comes out of me. This bridge is where "
+                          "we complainers meet."], ["Derleth: ...Fweet. That's enough complaining for now."]),
+          2: _vb_musician("Aickman", "vb_music_guitar", ["Aickman: This sound! Doesn't it get to your heart?",
+                          "Aickman: I know my sound doesn't fit this town. But I can't change my style."],
+                          ["Aickman: Taking a break. Even my guitar needs to breathe."]),
+          0: _vb_musician("Russo", "vb_music_beatbox", ["Russo: La la la... Ahem! This microphone's all screwy. I can sing real "
+                          "good, promise!"], ["Russo: ...Ahem. Saving my voice."]),
+          11: _vb_musician("Koontz", "vb_music_enka", ["Koontz: Singing gives life to my spirit. Will you listen to the voice of "
+                           "my spirit?"], ["Koontz: My spirit rests a while."]),
           10: _say("Boy by the court", "My favourite thing these days is the PWT!"),
           9: _say("Hoopster fan", "Practise as if it were a real game! Play the real game as if it were practice!"),
           23: _say("Traveller", "I'll cross every bridge in Unova! Even the Marine Tube from Undella Town!"),
@@ -5625,7 +5644,7 @@ VILLAGE_BRIDGE_MAP = route(
     rooms=dict(VB_HOUSES, gate_e=R12_GATE, gate_w=R11_GATE),
     inside={"14,27": "house_1", "21,27": "bakery", "28,27": "house_4", "68,27": "waders", "76,27": "house_5", "83,27": "rest",
             "30,39": "singer", **{"93,%d" % y: "gate_e" for y in range(31, 34)}, **{"2,%d" % y: "gate_w" for y in range(31, 34)}},
-    scenes=[{"trigger": {"zone": [56, 29, 64, 29]}, "condition": ["not:b2_vb_stonewall"], "who": "Gentleman Stonewall",
+    scenes=[VB_ENTER, {"trigger": {"zone": [56, 29, 64, 29]}, "condition": ["not:b2_vb_stonewall"], "who": "Gentleman Stonewall",
              "every": True, "lines": ["Wait! You can't go any further unless you battle me! And no using Surf to get round me!"],
              "push": [0, 1]}],
     title="Village Bridge")
