@@ -345315,9 +345315,9 @@
    "cccccccccccccccccccccccccccccccccccccccccccc==========cccccccccccccccccccccccccccccccccccccccccc",
    "cccccccccccccccccccccccccccccccccccccccccccc==========cccccccccccccccccccccccccccccccccccccccccc",
    "cccccccccccccccccccccccccccccccccccccccccccc==========cccccccccccccccccccccccccccccccccccccccccc",
-   "cccccccccccccccccccccccccccccccccccccccccccc==========cccccccccccccccccccccccccccccccccccccccccc",
-   "cccccccccccccccccccccccccccccccccccccccccccc==========cccccccccccccccccccccccccccccccccccccccccc",
-   "cccccccccccccccccccccccccccccccccccccccccccc==========cccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+   "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
    "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
    "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
    "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
@@ -345344,12 +345344,11 @@
   },
   "roofs": {
    "_picture": {
-    "f": "ss_ground/D32.png",
+    "f": "pt_ground/D32.png",
     "at": [
      0,
      0
-    ],
-    "px": 32
+    ]
    },
    "_buildings_in_picture": true,
    "_signs_in_picture": true
@@ -345377,43 +345376,24 @@
     "Bright lights and big battles. Win in a row to earn Battle Points."
    ]
   ],
-  "overheads": [
-   {
-    "kind": "picture",
-    "f": "ss_top/D32.png",
-    "at": [
-     0,
-     0
-    ],
-    "size": [
-     96,
-     96
-    ],
-    "px": 32
-   }
-  ],
   "rooms": {
    "sfactory": {
     "theme": "room",
     "title": "Battle Factory",
     "art": [
-     "cmmmccmcccmcccmmccccccccccc",
-     "cmmmmmmmccmcccmmccccccccccc",
-     "cmcmmmcmmcccccccccccmcccccc",
-     "c...mmcmmmcmmcccccccmcccccc",
-     "c.......mmcmmmccmmmmcmmmccc",
-     "c........mcmmmccmmmmcmmmccc",
-     "cv.m.........mccmmmmmmmmccc",
-     "cv..m..m......Nmm..m.....cc",
-     "cv.m....m..........m....Ncc",
-     "c...m..m...mm...N.Nm.....cc",
-     "c.......m..........mm.m.ccc",
-     "cN.........mm.........N...c",
+     "ccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccc",
+     "ccccccccccccccccccccccccccc",
+     "c..............cc..c.....cc",
+     "c..................c.....cc",
+     "c...............N..c.....cc",
+     "cv.cc..cc..cc......ccNc.ccc",
+     "cv........................c",
+     "cv.cc..cc..cc.............c",
+     "c.................N......Nc",
+     "c.........................c",
+     "cN....................N...c",
      "cN.............N..........c",
-     "cccc......................c",
-     "cccccccc..................c",
-     "ccccccccc.................c",
-     "ccccccccccccc.............c",
      "ccccccccccccccccccccccccccc"
     ],
     "exits": {
@@ -345421,478 +345401,13 @@
     },
     "buildings": {},
     "roofs": {
-     "_things": {
-      "1,0": [
-       49,
-       87,
-       171
-      ],
-      "1,1": [
-       49,
-       87,
-       171
-      ],
-      "1,2": [
-       49,
-       87,
-       171
-      ],
-      "2,0": [
-       49,
-       87,
-       171
-      ],
-      "2,1": [
-       49,
-       87,
-       171
-      ],
-      "2,2": [
-       49,
-       87,
-       171
-      ],
-      "3,0": [
-       49,
-       87,
-       171
-      ],
-      "3,1": [
-       49,
-       87,
-       171
-      ],
-      "3,2": [
-       49,
-       87,
-       171
-      ],
-      "3,6": [
-       49,
-       87,
-       171
-      ],
-      "3,8": [
-       49,
-       87,
-       171
-      ],
-      "4,0": [
-       49,
-       87,
-       171
-      ],
-      "4,1": [
-       49,
-       87,
-       171
-      ],
-      "4,2": [
-       49,
-       87,
-       171
-      ],
-      "4,6": [
-       49,
-       87,
-       171
-      ],
-      "4,8": [
-       49,
-       87,
-       171
-      ],
-      "5,0": [
-       49,
-       87,
-       171
-      ],
-      "5,1": [
-       49,
-       87,
-       171
-      ],
-      "5,2": [
-       49,
-       87,
-       171
-      ],
-      "6,0": [
-       49,
-       87,
-       171
-      ],
-      "6,1": [
-       49,
-       87,
-       171
-      ],
-      "6,2": [
-       49,
-       87,
-       171
-      ],
-      "7,0": [
-       49,
-       87,
-       171
-      ],
-      "7,1": [
-       49,
-       87,
-       171
-      ],
-      "7,2": [
-       49,
-       87,
-       171
-      ],
-      "7,6": [
-       49,
-       87,
-       171
-      ],
-      "7,8": [
-       49,
-       87,
-       171
-      ],
-      "8,0": [
-       49,
-       87,
-       171
-      ],
-      "8,1": [
-       49,
-       87,
-       171
-      ],
-      "8,2": [
-       49,
-       87,
-       171
-      ],
-      "8,6": [
-       49,
-       87,
-       171
-      ],
-      "8,8": [
-       49,
-       87,
-       171
-      ],
-      "9,0": [
-       49,
-       87,
-       171
-      ],
-      "9,1": [
-       49,
-       87,
-       171
-      ],
-      "9,2": [
-       49,
-       87,
-       171
-      ],
-      "10,0": [
-       49,
-       87,
-       171
-      ],
-      "10,1": [
-       49,
-       87,
-       171
-      ],
-      "10,2": [
-       49,
-       87,
-       171
-      ],
-      "11,0": [
-       49,
-       87,
-       171
-      ],
-      "11,1": [
-       49,
-       87,
-       171
-      ],
-      "11,2": [
-       49,
-       87,
-       171
-      ],
-      "11,6": [
-       49,
-       87,
-       171
-      ],
-      "11,8": [
-       49,
-       87,
-       171
-      ],
-      "12,0": [
-       49,
-       87,
-       171
-      ],
-      "12,1": [
-       49,
-       87,
-       171
-      ],
-      "12,2": [
-       49,
-       87,
-       171
-      ],
-      "12,6": [
-       49,
-       87,
-       171
-      ],
-      "12,8": [
-       49,
-       87,
-       171
-      ],
-      "13,0": [
-       49,
-       87,
-       171
-      ],
-      "13,1": [
-       49,
-       87,
-       171
-      ],
-      "13,2": [
-       49,
-       87,
-       171
-      ],
-      "14,0": [
-       49,
-       87,
-       171
-      ],
-      "14,1": [
-       49,
-       87,
-       171
-      ],
-      "14,2": [
-       49,
-       87,
-       171
-      ],
-      "15,0": [
-       49,
-       87,
-       171
-      ],
-      "15,1": [
-       49,
-       87,
-       171
-      ],
-      "15,2": [
-       49,
-       87,
-       171
-      ],
-      "15,3": [
-       49,
-       87,
-       171
-      ],
-      "16,0": [
-       49,
-       87,
-       171
-      ],
-      "16,1": [
-       49,
-       87,
-       171
-      ],
-      "16,2": [
-       49,
-       87,
-       171
-      ],
-      "16,3": [
-       49,
-       87,
-       171
-      ],
-      "17,0": [
-       49,
-       87,
-       171
-      ],
-      "17,1": [
-       49,
-       87,
-       171
-      ],
-      "17,2": [
-       49,
-       87,
-       171
-      ],
-      "18,0": [
-       49,
-       87,
-       171
-      ],
-      "18,1": [
-       49,
-       87,
-       171
-      ],
-      "18,2": [
-       49,
-       87,
-       171
-      ],
-      "19,0": [
-       49,
-       87,
-       171
-      ],
-      "19,1": [
-       49,
-       87,
-       171
-      ],
-      "19,2": [
-       49,
-       87,
-       171
-      ],
-      "19,3": [
-       49,
-       87,
-       171
-      ],
-      "19,4": [
-       49,
-       87,
-       171
-      ],
-      "19,5": [
-       49,
-       87,
-       171
-      ],
-      "19,6": [
-       49,
-       87,
-       171
-      ],
-      "20,0": [
-       49,
-       87,
-       171
-      ],
-      "20,1": [
-       49,
-       87,
-       171
-      ],
-      "20,2": [
-       49,
-       87,
-       171
-      ],
-      "20,6": [
-       49,
-       87,
-       171
-      ],
-      "21,0": [
-       49,
-       87,
-       171
-      ],
-      "21,1": [
-       49,
-       87,
-       171
-      ],
-      "21,2": [
-       49,
-       87,
-       171
-      ],
-      "22,0": [
-       49,
-       87,
-       171
-      ],
-      "22,1": [
-       49,
-       87,
-       171
-      ],
-      "22,2": [
-       49,
-       87,
-       171
-      ],
-      "22,6": [
-       49,
-       87,
-       171
-      ],
-      "23,0": [
-       49,
-       87,
-       171
-      ],
-      "23,1": [
-       49,
-       87,
-       171
-      ],
-      "23,2": [
-       49,
-       87,
-       171
-      ]
-     },
-     "_kinds": {
-      "15,3": "tv",
-      "16,3": "tv"
-     },
-     "_floor": [
-      222,
-      206,
-      160
-     ],
-     "_wall": [
-      236,
-      232,
-      214
-     ],
-     "_screen": true,
      "_picture": {
-      "f": "ss_ground/D32R0301.png",
+      "f": "pt_ground/D32R0301.png",
       "at": [
        0,
        0
-      ],
-      "px": 32
-     },
-     "_buildings_in_picture": true,
-     "_signs_in_picture": true
+      ]
+     }
     },
     "people": [
      {
@@ -345900,16 +345415,7 @@
       "action": "EVENT",
       "event": {
        "lines": [
-        "I always pick Pokémon I've never raised before. You learn so much that way."
-       ]
-      }
-     },
-     {
-      "text": "Factory officer",
-      "action": "EVENT",
-      "event": {
-       "lines": [
-        "I hated battling some Pokémon. Then I got them on my side and they won me over!"
+        "I always pick Pokemon I've never raised before. You learn so much that way."
        ]
       }
      },
@@ -345919,7 +345425,16 @@
       "action": "EVENT",
       "event": {
        "lines": [
-        "Do you raise every kind of Pokémon? No? Here you get to try them all!"
+        "Do you raise every kind of Pokemon? No? Here you get to try them all!"
+       ]
+      }
+     },
+     {
+      "text": "Factory officer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I hated battling some Pokemon. Then I got them on my side and they won me over!"
        ]
       }
      },
@@ -345937,7 +345452,7 @@
       "action": "EVENT",
       "event": {
        "lines": [
-        "The Pokémon I rented became my favourites! But I already have six favourites!"
+        "The Pokemon I rented became my favourites! But I already have six favourites!"
        ]
       }
      },
@@ -345959,21 +345474,6 @@
        ]
       }
      }
-    ],
-    "overheads": [
-     {
-      "kind": "picture",
-      "f": "ss_top/D32R0301.png",
-      "at": [
-       0,
-       0
-      ],
-      "size": [
-       27,
-       18
-      ],
-      "px": 32
-     }
     ]
    },
    "shall": {
@@ -345983,20 +345483,16 @@
      "ccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccc",
-     "ccccccccccccccccccccccc...c",
-     "cccccccccccccccccc.ccc...Nc",
-     "cccccccccccccccccN.N......c",
-     "cccccccccccc..ccc.........c",
-     "cN.NmmNzmzN...N...........c",
+     "c...cc.cccN...ccc..ccc....c",
+     "c...................N....Nc",
+     "c.N............N..........c",
+     "c.....N........N..........c",
+     "c..N......................c",
+     "cccccccc.................vc",
+     "c.....N..................vc",
      "c........................vc",
-     "c........................vc",
-     "c........................vc",
-     "c......................N..c",
-     "cccccccm..................c",
-     "c....................cccccc",
-     "c...............ccccccccccc",
-     "c.....c........cccccccccccc",
-     "c.....c...ccccccccccccccccc",
+     "c.....c................N..c",
+     "c.....c...................c",
      "ccccccccccccccccccccccccccc"
     ],
     "exits": {
@@ -346004,71 +345500,21 @@
     },
     "buildings": {},
     "roofs": {
-     "_things": {
-      "4,2": [
-       131,
-       108,
-       94
-      ],
-      "5,2": [
-       131,
-       108,
-       94
-      ],
-      "7,7": [
-       74,
-       179,
-       246
-      ],
-      "8,2": [
-       214,
-       229,
-       224
-      ]
-     },
-     "_kinds": {
-      "4,2": "tv",
-      "5,2": "tv",
-      "8,2": "pc"
-     },
-     "_floor": [
-      222,
-      206,
-      160
-     ],
-     "_wall": [
-      236,
-      232,
-      214
-     ],
-     "_screen": true,
      "_picture": {
-      "f": "ss_ground/D32R0401.png",
+      "f": "pt_ground/D32R0401.png",
       "at": [
        0,
        0
-      ],
-      "px": 32
-     },
-     "_buildings_in_picture": true,
-     "_signs_in_picture": true
+      ]
+     }
     },
     "people": [
      {
-      "text": "Streak racer",
+      "text": "Record keeper",
       "action": "EVENT",
       "event": {
        "lines": [
-        "My friend and I race to see who gets the longest streak. Same rules for both!"
-       ]
-      }
-     },
-     {
-      "text": "Pachirisu girl",
-      "action": "EVENT",
-      "event": {
-       "lines": [
-        "My Pachirisu has even battled the Brain here! The Brain matches your level."
+        "Try the Hall with lots of different Pokemon. It all adds to your record."
        ]
       }
      },
@@ -346077,7 +345523,16 @@
       "action": "EVENT",
       "event": {
        "lines": [
-        "Any Pokémon can stand on that stage. Even your one favourite!"
+        "Any Pokemon can stand on that stage. Even your one favourite!"
+       ]
+      }
+     },
+     {
+      "text": "Streak racer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My friend and I race to see who gets the longest streak. Same rules for both!"
        ]
       }
      },
@@ -346091,11 +345546,11 @@
       }
      },
      {
-      "text": "Type thinker",
+      "text": "Pachirisu girl",
       "action": "EVENT",
       "event": {
        "lines": [
-        "Croagunk is Poison and Fighting, so it can come up as either kind."
+        "My Pachirisu has even battled the Brain here! The Brain matches your level."
        ]
       }
      },
@@ -346104,11 +345559,10 @@
       "action": "EVENT",
       "event": {
        "lines": [
-        "You can bring the same kind of Pokémon if it's a different one. Mix up its moves!"
+        "You can bring the same kind of Pokemon if it's a different one. Mix up its moves!"
        ]
       }
      },
-     "Hall attendant",
      {
       "text": "Hall Pachirisu",
       "action": "EVENT",
@@ -346119,28 +345573,23 @@
       }
      },
      {
+      "text": "Type thinker",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Croagunk is Poison and Fighting, so it can come up as either kind."
+       ]
+      }
+     },
+     "Hall attendant",
+     {
       "text": "Hall hiker",
       "action": "EVENT",
       "event": {
        "lines": [
-        "I start with the types my Pokémon dislikes. Get the tough ones out of the way!"
+        "I start with the types my Pokemon dislikes. Get the tough ones out of the way!"
        ]
       }
-     }
-    ],
-    "overheads": [
-     {
-      "kind": "picture",
-      "f": "ss_top/D32R0401.png",
-      "at": [
-       0,
-       0
-      ],
-      "size": [
-       27,
-       18
-      ],
-      "px": 32
      }
     ]
    },
@@ -346151,23 +345600,19 @@
      "ccccccccccccccccccccccc",
      "ccccccccccccccccccccccc",
      "ccccccccccccccccccccccc",
-     "ccccccccccccccccc.....c",
-     "cccccccccccccczN......c",
-     "ccccccccccccccN.....N.c",
-     "cccccccccccccc.m......c",
-     "ccccccccNmm..cccc.....c",
-     "cccccccc....Nccc.....vc",
-     "cccccccc.....c.......vc",
+     "cccccccc.cc..cc.......c",
+     "cccccccc....Nc........c",
+     "cccccccc.....cNc....N.c",
+     "cccccccc.....cccc.....c",
+     "cccccccc.N............c",
      "cccccccc.............vc",
-     "cccccccc..............c",
-     "ccccccmmN.............c",
-     "ccc...........N.c.....c",
-     "c.N............m......c",
-     "cccccc.......c........c",
-     "c............cz..cccccc",
-     "c............cccccccccc",
-     "c...j....j...cccccccccc",
-     "c............cccccccccc",
+     "ccc..N...............vc",
+     "c....................vc",
+     "cccccc................c",
+     "c.......N....cccc.....c",
+     "c............cNc......c",
+     "c.N.c....c...c........c",
+     "c............cc.......c",
      "ccccccccccccccccccccccc"
     ],
     "exits": {
@@ -346175,83 +345620,30 @@
     },
     "buildings": {},
     "roofs": {
-     "_things": {
-      "6,7": [
-       74,
-       179,
-       246
-      ],
-      "7,7": [
-       214,
-       229,
-       224
-      ],
-      "9,2": [
-       131,
-       108,
-       94
-      ],
-      "10,2": [
-       131,
-       108,
-       94
-      ],
-      "15,4": [
-       219,
-       185,
-       98
-      ],
-      "15,12": [
-       219,
-       185,
-       98
-      ]
-     },
-     "_kinds": {
-      "9,2": "tv",
-      "10,2": "tv",
-      "15,12": "table",
-      "15,4": "table",
-      "7,7": "pc"
-     },
-     "_floor": [
-      222,
-      206,
-      160
-     ],
-     "_wall": [
-      236,
-      232,
-      214
-     ],
-     "_screen": true,
      "_picture": {
-      "f": "ss_ground/D32R0501.png",
+      "f": "pt_ground/D32R0501.png",
       "at": [
        0,
        0
-      ],
-      "px": 32
-     },
-     "_buildings_in_picture": true,
-     "_signs_in_picture": true
+      ]
+     }
     },
     "people": [
-     {
-      "text": "Castle lady",
-      "action": "EVENT",
-      "event": {
-       "lines": [
-        "Stronger opponents give more points. If you win, of course."
-       ]
-      }
-     },
      {
       "text": "Scout",
       "action": "EVENT",
       "event": {
        "lines": [
         "Always check the other side's team before a battle. Don't be stingy with your points!"
+       ]
+      }
+     },
+     {
+      "text": "Castle lady",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Stronger opponents give more points. If you win, of course."
        ]
       }
      },
@@ -346301,21 +345693,6 @@
        ]
       }
      }
-    ],
-    "overheads": [
-     {
-      "kind": "picture",
-      "f": "ss_top/D32R0501.png",
-      "at": [
-       0,
-       0
-      ],
-      "size": [
-       23,
-       21
-      ],
-      "px": 32
-     }
     ]
    },
    "sarcade": {
@@ -346324,27 +345701,20 @@
     "art": [
      "ccccccccccccccccccccccc",
      "ccccccccccccccccccccccc",
-     "ccccccccccccccccccccccc",
-     "c...ccccccccccccccccccc",
-     "c......cccccccccccccccc",
-     "cv......ccccccccccccccc",
-     "cv.........cccc.ccccccc",
-     "cv..........NmN..mNmm.c",
-     "c...........Nm..mm....c",
-     "c............m..mm.N..c",
-     "ccccN.................c",
-     "cccccccN..............c",
-     "cccccccc.............mc",
-     "ccccccccccc.......m..mc",
-     "cmmccmccmccmmmm......Nc",
-     "cccmmcmmcmmccc....m..mc",
-     "cmNN..................c",
-     "c..m..........ccccccccc",
-     "c.......mmmmmmmmmmmmmmc",
-     "c..m.....cccccccccccccc",
-     "cm........ccccccccccccc",
-     "ccccccccc.............c",
-     "cccccccccc............c",
+     "ccccccccccccccc.ccccccc",
+     "c...........Nc...c.cc.c",
+     "c............c..cc....c",
+     "cv...........cN.cc....c",
+     "cv.................N..c",
+     "cv....................c",
+     "c............N.......cc",
+     "c............N....cN.cc",
+     "ccccccccccccccc.......c",
+     "cc.....N..........c..cc",
+     "c.Nc..................c",
+     "c.......ccccccccccccccc",
+     "c.NcN................Nc",
+     "cc....................c",
      "ccccccccccccccccccccccc"
     ],
     "exits": {
@@ -346352,287 +345722,40 @@
     },
     "buildings": {},
     "roofs": {
-     "_things": {
-      "1,10": [
-       222,
-       49,
-       49
-      ],
-      "1,11": [
-       222,
-       49,
-       49
-      ],
-      "1,15": [
-       222,
-       49,
-       49
-      ],
-      "2,10": [
-       222,
-       49,
-       49
-      ],
-      "3,10": [
-       222,
-       49,
-       49
-      ],
-      "3,12": [
-       222,
-       49,
-       49
-      ],
-      "3,14": [
-       222,
-       49,
-       49
-      ],
-      "4,10": [
-       222,
-       49,
-       49
-      ],
-      "5,10": [
-       222,
-       49,
-       49
-      ],
-      "6,10": [
-       222,
-       49,
-       49
-      ],
-      "7,10": [
-       222,
-       49,
-       49
-      ],
-      "8,10": [
-       222,
-       49,
-       49
-      ],
-      "8,13": [
-       222,
-       49,
-       49
-      ],
-      "9,10": [
-       222,
-       49,
-       49
-      ],
-      "9,13": [
-       222,
-       49,
-       49
-      ],
-      "10,10": [
-       222,
-       49,
-       49
-      ],
-      "10,13": [
-       222,
-       49,
-       49
-      ],
-      "11,10": [
-       222,
-       49,
-       49
-      ],
-      "11,13": [
-       222,
-       49,
-       49
-      ],
-      "12,10": [
-       222,
-       49,
-       49
-      ],
-      "12,13": [
-       222,
-       49,
-       49
-      ],
-      "13,3": [
-       222,
-       49,
-       49
-      ],
-      "13,4": [
-       222,
-       49,
-       49
-      ],
-      "13,5": [
-       222,
-       49,
-       49
-      ],
-      "13,10": [
-       222,
-       49,
-       49
-      ],
-      "13,13": [
-       222,
-       49,
-       49
-      ],
-      "14,10": [
-       222,
-       49,
-       49
-      ],
-      "14,13": [
-       222,
-       49,
-       49
-      ],
-      "15,13": [
-       222,
-       49,
-       49
-      ],
-      "16,4": [
-       222,
-       49,
-       49
-      ],
-      "16,5": [
-       74,
-       179,
-       246
-      ],
-      "16,13": [
-       222,
-       49,
-       49
-      ],
-      "17,3": [
-       222,
-       49,
-       49
-      ],
-      "17,4": [
-       222,
-       49,
-       49
-      ],
-      "17,5": [
-       214,
-       229,
-       224
-      ],
-      "17,13": [
-       222,
-       49,
-       49
-      ],
-      "18,9": [
-       222,
-       49,
-       49
-      ],
-      "18,11": [
-       222,
-       49,
-       49
-      ],
-      "18,13": [
-       222,
-       49,
-       49
-      ],
-      "19,3": [
-       131,
-       108,
-       94
-      ],
-      "19,13": [
-       222,
-       49,
-       49
-      ],
-      "20,3": [
-       131,
-       108,
-       94
-      ],
-      "20,13": [
-       222,
-       49,
-       49
-      ],
-      "21,8": [
-       222,
-       49,
-       49
-      ],
-      "21,9": [
-       222,
-       49,
-       49
-      ],
-      "21,11": [
-       222,
-       49,
-       49
-      ],
-      "21,13": [
-       222,
-       49,
-       49
-      ]
-     },
-     "_kinds": {
-      "19,3": "tv",
-      "20,3": "tv",
-      "17,5": "pc"
-     },
-     "_floor": [
-      222,
-      206,
-      160
-     ],
-     "_wall": [
-      236,
-      232,
-      214
-     ],
-     "_screen": true,
      "_picture": {
-      "f": "ss_ground/D32R0601.png",
+      "f": "pt_ground/D32R0601.png",
       "at": [
        0,
        0
-      ],
-      "px": 32
-     },
-     "_buildings_in_picture": true,
-     "_signs_in_picture": true
+      ]
+     }
     },
     "people": [
-     "Arcade attendant",
      {
-      "text": "Clever hiker",
+      "text": "Board worker",
       "action": "EVENT",
       "event": {
        "lines": [
-        "A Pokémon whose type or ability blocks a status can shrug off that square."
+        "Whoever rules the game board rules the Arcade. Sounds deep, but it's obvious!"
        ]
       }
      },
+     "Arcade attendant",
      {
       "text": "Unlucky lady",
       "action": "EVENT",
       "event": {
        "lines": [
-        "It all came down to luck... and my Pokémon got frozen."
+        "It all came down to luck... and my Pokemon got frozen."
+       ]
+      }
+     },
+     {
+      "text": "Clever hiker",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "A Pokemon whose type or ability blocks a status can shrug off that square."
        ]
       }
      },
@@ -346655,15 +345778,6 @@
       }
      },
      {
-      "text": "Arcade waitress",
-      "action": "EVENT",
-      "event": {
-       "lines": [
-        "The Brain here has quite a style. A little bump, a wiggle... please don't stare."
-       ]
-      }
-     },
-     {
       "text": "Board timer",
       "action": "EVENT",
       "event": {
@@ -346673,11 +345787,11 @@
       }
      },
      {
-      "text": "Sporting girl",
+      "text": "Arcade waitress",
       "action": "EVENT",
       "event": {
        "lines": [
-        "Don't blame the board when you lose. Win more, and it gives you better picks."
+        "The Brain here has quite a style. A little bump, a wiggle... please don't stare."
        ]
       }
      },
@@ -346698,21 +345812,15 @@
         "Leave it to fate! That's how you enjoy the Arcade!"
        ]
       }
-     }
-    ],
-    "overheads": [
+     },
      {
-      "kind": "picture",
-      "f": "ss_top/D32R0601.png",
-      "at": [
-       0,
-       0
-      ],
-      "size": [
-       23,
-       24
-      ],
-      "px": 32
+      "text": "Sporting girl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Don't blame the board when you lose. Win more, and it gives you better picks."
+       ]
+      }
      }
     ]
    },
@@ -346721,29 +345829,25 @@
     "art": [
      "ccccccccccccccc",
      "ccccccccccccccc",
-     "ccccccccccccccc",
-     "ccccccccccccccc",
-     "ccccccccccccccc",
-     "cjjjccvvvccjjjc",
-     "c.j.........j.c",
+     "ccccccvvvcccccc",
+     "c.c........Nc.c",
+     "c..N..........c",
      "c.............c",
-     "c.............c",
-     "c.............c",
+     "c...N......N..c",
      "c.............c",
      "cccc.......cccc",
-     "cccc.j...j.cccc",
+     "cccc.c...c.cccc",
      "cccc.......cccc",
      "cccc.......cccc",
      "ccccccc.ccccccc",
-     "cccccNm.mcccccc",
-     "ccccmcc.ccmcccc",
-     "ccccmcm.mcmcccc",
-     "ccccccc.ccmcccc",
-     "ccccccm.mcccccc",
+     "cccc.Nm.ccccccc",
+     "ccccc.c.ccccccc",
+     "ccccccc.ccccccc",
+     "ccccccc.ccccccc",
+     "ccccccc.ccccccc",
      "ccccccc.ccccccc",
      "cccc.......cccc",
-     "cccc.......cccc",
-     "ccccccnnncccccc",
+     "cccc..nnn..cccc",
      "ccccccccccccccc"
     ],
     "exits": {
@@ -346752,129 +345856,53 @@
     },
     "buildings": {},
     "roofs": {
-     "_things": {
-      "4,14": [
-       176,
-       182,
-       151
-      ],
-      "4,15": [
-       176,
-       182,
-       151
-      ],
-      "6,13": [
-       150,
-       150,
-       160
-      ],
-      "6,15": [
-       150,
-       150,
-       160
-      ],
-      "6,17": [
-       150,
-       150,
-       160
-      ],
-      "8,13": [
-       150,
-       150,
-       160
-      ],
-      "8,15": [
-       150,
-       150,
-       160
-      ],
-      "8,17": [
-       150,
-       150,
-       160
-      ],
-      "10,14": [
-       179,
-       184,
-       151
-      ],
-      "10,15": [
-       179,
-       184,
-       151
-      ],
-      "10,16": [
-       57,
-       172,
-       131
-      ]
-     },
-     "_kinds": {
-      "4,14": "table",
-      "4,15": "table",
-      "10,14": "table",
-      "10,15": "table",
-      "10,16": "crate"
-     },
-     "_floor": [
-      222,
-      206,
-      160
-     ],
-     "_wall": [
-      236,
-      232,
-      214
-     ],
-     "_screen": true,
      "_picture": {
-      "f": "ss_ground/D32R0101.png",
+      "f": "pt_ground/D32R0101.png",
       "at": [
        0,
-       3
-      ],
-      "px": 32
-     },
-     "_buildings_in_picture": true,
-     "_signs_in_picture": true
+       0
+      ]
+     }
     },
     "people": [
      {
-      "text": "Gate attendant",
+      "text": "Hopeful trainer",
       "action": "EVENT",
       "event": {
        "lines": [
-        "Welcome to the Battle Frontier! Five facilities and their Frontier Brains are waiting for you.",
-        "The way back to the Fight Area is down the stairs behind me."
+        "My dream is to battle Palmer in the Tower. I'm not strong enough yet!"
        ]
       }
-     }
-    ],
-    "overheads": [
+     },
      {
-      "kind": "picture",
-      "f": "ss_top/D32R0101.png",
-      "at": [
-       0,
-       3
-      ],
-      "size": [
-       15,
-       25
-      ],
-      "px": 32
-     }
+      "text": "Excited explorer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Battle Frontier's just ahead! What kind of Trainers will I meet?"
+       ]
+      }
+     },
+     {
+      "text": "Recorder fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Vs. Recorder is so handy! It shows how many Battle Points you have."
+       ]
+      }
+     },
+     {
+      "text": "Acronym man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Tower, Hall, Castle, Factory, Arcade... How do you make a word out of that?"
+       ]
+      }
+     },
+     "Gate attendant"
     ],
-    "land": {
-     "48,52": [
-      48,
-      50
-     ],
-     "49,52": [
-      49,
-      50
-     ]
-    },
     "title": "Gate"
    },
    "stower": {
@@ -347116,31 +346144,15 @@
       214
      ],
      "_picture": {
-      "f": "ss_ground/D31R0201.png",
+      "f": "pt_ground/D31R0201.png",
       "at": [
        0,
        1
-      ],
-      "px": 32
+      ]
      },
      "_buildings_in_picture": true,
      "_signs_in_picture": true
     },
-    "overheads": [
-     {
-      "kind": "picture",
-      "f": "ss_top/D31R0201.png",
-      "at": [
-       0,
-       1
-      ],
-      "size": [
-       31,
-       20
-      ],
-      "px": 32
-     }
-    ],
     "people": [
      "Tower attendant",
      {
