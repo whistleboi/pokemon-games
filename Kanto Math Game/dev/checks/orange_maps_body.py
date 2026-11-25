@@ -30,9 +30,20 @@ story.enter_region("ORANGE")
 story.story_flags.update({"received_starter_orange": True, "orange_ivy_met": True})
 
 
+_DRAWN = [0]
+
+
+def _draw_some(st, every=4):
+    """(Checks C4 card, 11-25) Draw one frame in four inside the long loops: their checks read the state, not the picture,
+    and drawing was about a third of the suite's time. A picture a check looks at is still drawn on its own frame."""
+    _DRAWN[0] += 1
+    if _DRAWN[0] % every == 0:
+        st.draw()
+
+
 def frames(n):
     for _ in range(n):
-        g.current_state.update(); g.current_state.draw()
+        g.current_state.update(); _draw_some(g.current_state)
 
 
 def tap(st, n=600):
@@ -43,7 +54,7 @@ def tap(st, n=600):
             st.dialogue_box.advance()
         else:
             return
-        st.update(); st.draw()
+        st.update(); _draw_some(st)
 
 
 def open_map(key, came):
@@ -115,7 +126,7 @@ if "VALENCIA_ISLAND" in BUILT:
         c = g.current_state
         if getattr(c, "dialogue_box", None) is not None and getattr(c.dialogue_box, "visible", False):
             c.dialogue_box.advance()
-        c.update(); c.draw()
+        c.update(); _draw_some(c)
     t = g.current_state
     check(isinstance(t, _WTS) and t.area_key == "VALENCIA_ISLAND" and t.room is None and tuple(t.player) == (24, 60),
           f"you start at Valencia's airport, where 5.7's blimp lands you ({getattr(t, 'area_key', None)}, {getattr(t, 'player', None)})")
@@ -214,7 +225,7 @@ def _play_event(key, text, pick=None, n=300):
             tap(c, 5)
         else:
             break
-        c.update(); c.draw()
+        c.update(); _draw_some(c)
     return said
 
 
@@ -392,7 +403,7 @@ def _play_scene(key, at, step, flag, came, n=4000):
             tap(c, 3)
         elif getattr(c, "dialogue_box", None) is not None and getattr(c.dialogue_box, "visible", False):
             c.dialogue_box.advance()
-        g.current_state.update(); g.current_state.draw()
+        g.current_state.update(); _draw_some(g.current_state)
         if story.story_flags.get(flag) and not getattr(g.current_state, "npc_active", False) and isinstance(g.current_state, (_WTS, DungeonState))                 and not (getattr(g.current_state, "dialogue_box", None) is not None and g.current_state.dialogue_box.visible):
             return won
     return None
@@ -433,7 +444,7 @@ def _drive(flag, n=4000):
             tap(c, 3)
         elif getattr(c, "dialogue_box", None) is not None and getattr(c.dialogue_box, "visible", False):
             c.dialogue_box.advance()
-        g.current_state.update(); g.current_state.draw()
+        g.current_state.update(); _draw_some(g.current_state)
         if story.story_flags.get(flag) and not getattr(g.current_state, "npc_active", False) and isinstance(g.current_state, (_WTS, DungeonState)) \
                 and not (getattr(g.current_state, "dialogue_box", None) is not None and g.current_state.dialogue_box.visible):
             return won
@@ -643,7 +654,7 @@ if "TROVITOPOLIS" in BUILT:
             c.pick("dept_3"); continue
         if getattr(c, "dialogue_box", None) is not None and getattr(c.dialogue_box, "visible", False):
             c.dialogue_box.advance()
-        c.update(); c.draw()
+        c.update(); _draw_some(c)
         if isinstance(g.current_state, _WTS) and getattr(g.current_state, "room", None) == "dept_3":
             break
     check(isinstance(g.current_state, _WTS) and g.current_state.room == "dept_3",
@@ -792,7 +803,7 @@ def _ride_lift(st, to):
             tap(c, 3)
         elif getattr(c, "dialogue_box", None) is not None and getattr(c.dialogue_box, "visible", False):
             c.dialogue_box.advance()
-        c.update(); c.draw()
+        c.update(); _draw_some(c)
         if car and isinstance(c, _WTS) and c.room == "lift" and story.story_flags.get("orange_kumquat_lift_floor") == to and not c.npc_active \
                 and not c._busy():
             break
