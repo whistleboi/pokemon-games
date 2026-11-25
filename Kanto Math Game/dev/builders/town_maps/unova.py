@@ -8448,6 +8448,194 @@ for _r, _t in (("hero", "House"), ("hero_2f", "House 2F"), ("bianca", "Bianca's 
                ("cheren", "Cheren's House"), ("cheren_2f", "Cheren's House 2F"), ("lab", "Juniper Pokémon Lab")):
     NUVEMA["rooms"][_r]["title"] = _t
 
+# ======================================================================================================== batch 12b (11-25)
+# Black 2's north after the title (walkthrough part 19): Tubeline Bridge (254: from Route 9's gate 349 to Route 8's gate
+# 347), Route 8 (345: the rock giver, a Hip Wader), the Moor of Icirrus (346), Icirrus City (113: the old Gym 114, the
+# Center 115 with the Ore Collector, houses 116 / 118, Aha's quiz 117, the Fan Club 119; the Shadow Triad east of the bridge -
+# Black 2's 687 single, 688 triple and 689 rotation, played as doubles here (Jordan 11-19); Twist Mountain's door 202 to the
+# menu area), Dragonspiral Tower (205 its foot; 206 the walled grounds; 207-213 the floors up to where the Dark Stone / Light
+# Stone wakes: Zekrom (Black 2) / Reshiram (White 2) Lv 70). Joins: Route 8's south road (14-19) -> Icirrus's north-east
+# opening (48-53: the crops sit 34 tiles apart); Icirrus's north road (17-22) -> the tower's foot, same x.
+OUTSIDE.update({347: 345, 114: 113, 115: 113, 116: 113, 117: 113, 118: 113, 119: 113, 206: 205,
+                207: -1, 208: -1, 209: -1, 210: -1, 211: -1, 212: -1, 213: -1})
+_SKY_RUNNER_CHAIN.append("b2_tubeline_runner")   # (Black 2's thirsty runner is on Tubeline Bridge too: flag 860)
+for _o in SKYARROW["people"]:
+    if isinstance(_o, dict) and (_o.get("event") or {}).get("runner") == "b2_sky_runner":
+        _o["event"]["chain"] = list(_SKY_RUNNER_CHAIN)
+
+TUBELINE = route(254, {
+    0: {"text": "Woman on the bridge", "action": "EVENT", "event": {
+        "world": "unova_story", "lines": ["The trains are so LOUD! 70 decibels... 80... 100... 120 decibels!"],
+        "show_ability": {"ability": "SOUNDPROOF", "flag": "b2_tl_soundproof", "gift": {},
+                         "ask": ["How can anyone stand this noise?!"],
+                         "thanks": ["Your {mon} doesn't mind the noise at all... When I speak in a low voice, I don't mind the "
+                                    "trains either. I was the one being noisy, after all. Thank you."],
+                         "done": ["When I speak in a low voice, I don't mind the train noise. Thanks to you!"]}}},
+    2: {"text": "Battle Girl on the bridge", "action": "EVENT", "event": {
+        "lines": ["Hah... hah... I tried to outrun the trains and got overheated! Here, take this, it's all about speed!",
+                  "You received TM038 Flame Charge!"], "gift_item": {"TM038": 1}, "flag": "b2_tl_tm038",
+        "done": ["Next time I'll beat that train!"]}},
+    3: {"text": "Runner on the bridge", "action": "EVENT", "event": {"world": "unova_story", "runner": "b2_tubeline_runner"}},
+    4: _say("Biker on the bridge", "We rode our motorbikes to our hearts' content... the breakneck team, Black Empoleon! Those "
+            "were the days.")},
+    {}, exits={"^": ("UNOVA_ROUTE_9", [(x, 32) for x in range(7, 25)]), "v": ("UNOVA_ROUTE_8", [(x, 159) for x in range(7, 25)])},
+    title="Tubeline Bridge")
+TUBELINE["split"] = True
+
+R8_GATE = room(347, {0: _say("Backpacker in the gate", "For someone checking out rail lines all over the world, Anville Town "
+                             "gets pretty high marks!"),
+                     2: _say("Railway fan", "Watch it! There are many kinds of railway fans: riding fans, station fans, train-car "
+                             "fans, schedule-table fans...")},
+               {}, (52, 20), exits_extra={254: (">", "TUBELINE_BRIDGE")})
+R8_GATE["title"] = "Bridge Gate"
+ROUTE_8 = route(345, {
+    0: {"text": "Parasol Lady with rocks", "action": "EVENT", "event": {
+        "lines": ["That's right. I find rocks, and then I give them to people... That's my simple life. You rock..."],
+        "gift_cycle": ["DAMP_ROCK", "HEAT_ROCK", "SMOOTH_ROCK"], "daily": True, "flag": "b2_r8_rock",
+        "done": ["Come back tomorrow. I'll have found another rock by then..."]}},
+    1: {"text": "Hip Waders fisherman", "action": "EVENT", "event": {"world": "unova_story", "daily_catch": {
+        "key": "b2_r8_waders", "species": [618, 536, 339, 340, 550], "gift": {"NET_BALL": 3, "DIVE_BALL": 2},
+        "ask": ["Hey there, Trainer! I'm a member of the Hip Waders!", "Today's Official Catch of the Day is {species}! Catch "
+                "one today and show it to me!"],
+        "won": ["Oh! A great {species}! Take these!"], "done": ["Tomorrow's a new day, with a new Catch of the Day!"]}}},
+    2: _ball("Poke Ball by the west marsh", "TM148", "b2_r8_tm148", name="TM148 Sludge Bomb"),
+    3: _ball("Poke Ball in the south pond", "BIG_PEARL", "b2_r8_big_pearl", name="a Big Pearl"),
+    4: _ball("Poke Ball on the island", "NEST_BALL", "b2_r8_nest_ball", name="a Nest Ball")},
+    {}, exits={"v": ("ICIRRUS_CITY", [(x, 31) for x in range(14, 20)]), "^": ("MOOR_OF_ICIRRUS", [(41, 5), (42, 5)])},
+    trainers={5: "Youngster Astor", 6: "Lass Mai", 7: "Parasol Lady Tyra", 8: "Fisherman Ryder", 9: "Parasol Lady Ingrid"},
+    hidden={"32,6": "MAX_REPEL", "4,27": "RARE_CANDY"},
+    rooms={"gate": R8_GATE}, inside={"52,20": "gate"}, title="Route 8")
+_doors(ROUTE_8, ROUTE_8["inside"])
+ROUTE_8["edge_to"] = dict({"%d,31" % x: [x + 34, 33] for x in range(14, 20)}, **{"41,5": [29, 48], "42,5": [30, 48]})
+
+MOOR = route(346, {
+    0: _say("Old man in the moor", "Long ago, when a war between people started a great fire in this forest, a young Pokemon was "
+            "separated from its parents.", "Cobalion, Terrakion and Virizion took care of it, and taught it all it needed to survive..."),
+    3: _ball("Poke Ball in the south-east lake", "RARE_CANDY", "b2_moor_rare_candy", name="a Rare Candy"),
+    5: _ball("Poke Ball past the boulder", "TM083", "b2_moor_tm083", name="TM083 Poison Jab"),
+    6: _ball("Poke Ball by Fisherman Arnold", "GREEN_SHARD", "b2_moor_green_shard", name="a Green Shard"),
+    7: _ball("Poke Ball in the north-east", "HEART_SCALE", "b2_moor_heart_scale", name="a Heart Scale"),
+    8: _ball("Poke Ball by Ranger Parker", "FULL_HEAL", "b2_moor_full_heal", name="a Full Heal")},
+    {}, exits={"v": ("UNOVA_ROUTE_8", [(29, 49), (30, 49)])},
+    trainers={2: "Fisherman Eustace", 4: "Pokemon Ranger Parker", 9: "Pokemon Ranger Elaine", 10: "Fisherman Arnold"},
+    hidden={"12,17": "BIG_MUSHROOM", "41,39": "DAWN_STONE", "21,46": "TINY_MUSHROOM"}, title="Moor of Icirrus")
+MOOR["split"] = True   # (the south-west lake: past the boulder)
+MOOR["edge_to"] = {"29,49": [41, 6], "30,49": [42, 6]}
+
+
+def _triad(n, label, tid, double, flag, after):
+    b = _b2(tid, dialogue={"player_won": ["Shadow Triad: ...We have seen your strength."]})
+    if double:
+        b["battle_options"] = {"double": True}
+    return {"text": label, "action": "EVENT", "_look": "sheet:b2_c182.png",
+            "condition": ["beat_unova_champion"] + (["%s" % after] if after else []) + ["not:" + flag], "event": {
+                "lines": ["Shadow Triad: You are the one who defeated Lord Ghetsis. Show us that strength once more."],
+                "battle": b, "flag": flag}}
+
+
+ICIRRUS_ROOMS = {
+    "gym": room(114, {0: _say("Woman in the old Gym", "Brycen decided to return to his acting roots. He's working hard at "
+                              "Pokestar Studios now!")}, {}, (11, 7)),
+    "center": room(115, {1: {"text": "Pokémon Center", "action": "HEAL"}, 0: {"text": "Shop", "action": "SHOP"},
+                         2: _say("Clerk ", "Specialty Poke Balls are over here!"),
+                         7: {"text": "Ore Collector", "action": "EVENT", "event": {
+                             "lines": ["I collect stones, gems and minerals. Sell them to me at the counter: I pay well for "
+                                       "Comet Shards and Pearl Strings!"]}},
+                         9: {"text": "Battle Girl in the Center", "action": "EVENT", "event": {
+                             "lines": ["You look like you train hard! Take this, it suits a fighter.", "You received a Black Belt!"],
+                             "gift_item": {"BLACK_BELT": 1}, "flag": "b2_icirrus_black_belt",
+                             "done": ["Keep training hard!"]}},
+                         10: _say("Cubchoo", "Cuuub!")},
+                    {}, (24, 35)),
+    "house_c": room(116, {0: _say("Woman in the house", "After Brycen left, challengers stopped coming to the Gym... Things around "
+                                  "you change, even if you don't."),
+                          1: _say("Cubchoo", "Chooo!"),
+                          2: _say("Girl in the house", "Hey! Brycen is a popular actor again, just like he used to be!"),
+                          3: _say("Gentleman in the house", "Reshiram and Zekrom have lived for thousands of years. They have met "
+                                  "many heroes... but the truth remains a mystery, and the world still isn't ideal.")},
+                     {}, (25, 21)),
+    "aha": room(117, {1: {"text": "Aha", "action": "EVENT", "event": {
+                          "lines": ["Aha: Do you like quiz shows? Here's today's question! ...Wye: Psst, the hint is in the name!",
+                                    "Aha: Correct! You win an Antidote!"],
+                          "gift_item": {"ANTIDOTE": 1}, "daily": True, "flag": "b2_icirrus_quiz",
+                          "done": ["Aha: That's all for today's quiz! Come back tomorrow!"]}},
+                      0: _say("Wye", "Wye: I want to be on TV soon!"), 2: _say("Ditoh", "Ditoh: Gussssssssstle!")},
+                 {}, (23, 7)),
+    "fan_club": room(119, {2: {"text": "Fan Club member", "action": "EVENT", "event": {"lines": [
+                               "Shall I check your Pokemon's mood? ...It looks very happy to be with you!"]}},
+                           0: _say("Fan Club Chairman", "Welcome to the Pokemon Fan Club! Show me a Pokemon you've raised well, and "
+                                   "I'll have something for you!"),
+                           1: _say("Munna", "Muuun!"), 3: _say("Audino", "Dii?"), 4: _say("Roggenrola", "Rola."),
+                           5: _say("Pokemon in the club", "Glibalugga!"), 6: _say("Ducklett", "Quaa!")},
+                      {}, (9, 21)),
+}
+ICIRRUS = town(
+    113, {1: _say("Man by the tower road", "Always, the tower looms over us, disdainful of the wind and snow. Perhaps it tells us "
+                  "not to forget dreams and ideals..."),
+          3: _say("Black Belt in town", "Brycen has trained in the martial arts with Ice-type Pokemon since he was a child. Now "
+                  "he's an action star!"),
+          4: _say("Singer", "Truth! Ideals! Two dragons!"), 5: _say("Singer ", "When one is divided, the world will broaden!"),
+          6: _say("Singer  ", "Fused by splicers. Divided by splicers."),
+          7: _say("Singer   ", "Truth and ideals. Move forward hand in hand!"),
+          8: _say("Parasol Lady in the wetlands", "When the wetlands freeze, it's slippery. I wonder how wetland Pokemon manage?",
+                  "If you walk in the wetlands, you might surprise wild Pokemon into popping out!"),
+          10: _triad(10, "Shadow Triad", 687, False, "b2_triad_1", None),
+          11: _triad(11, "Shadow Triad ", 688, True, "b2_triad_2", "b2_triad_1"),
+          12: _triad(12, "Shadow Triad  ", 689, True, "b2_triad_3", "b2_triad_2"),
+          15: _ball("Poke Ball past the bridge", "PP_UP", "b2_icirrus_pp_up", name="a PP Up")},
+    {}, {114: ("house", "gym"), 115: ("center", "center"), 116: ("house", "house_c"), 117: ("house", "aha"),
+         119: ("house", "fan_club"), 202: ("gate", None, "TWIST_MOUNTAIN")},
+    ICIRRUS_ROOMS,
+    edges={"^": ("DRAGONSPIRAL_TOWER", [(x, 0) for x in range(17, 23)]), ">": ("UNOVA_ROUTE_8", [(x, 32) for x in range(48, 54)])},
+    title="Icirrus City")
+_wall(ICIRRUS, 32, 0, 63, 31)   # (Route 8's corner of the canvas; the south-east house 118 and the west Max Elixir sit in parts
+#  that join only past this crop's edges: left out till Icirrus is re-cropped)
+ICIRRUS["edge_to"] = dict({"%d,0" % x: [x, 30] for x in range(17, 23)}, **{"%d,32" % x: [x - 34, 30] for x in range(48, 54)})
+ICIRRUS["gated_exits"] = {"TWIST_MOUNTAIN": ["beat_unova_champion"]}
+for _r, _t in (("gym", "Former Icirrus Gym"), ("center", "Pokémon Center"), ("house_c", "House"), ("aha", "Aha's House"),
+               ("fan_club", "Pokémon Fan Club")):
+    ICIRRUS["rooms"][_r]["title"] = _t
+
+_DT_DRAGON = [{"text": n, "action": "BOSS", "color": "RED", "_look": "mon:%d" % pid,
+               "condition": ["unova_version:" + v, "b2_n_beaten", "not:b2_dt_dragon"],
+               "boss": {"id": pid, "name": n, "level": 70, "victory_flag": "b2_dt_dragon",
+                        "lines": ["The %s in your Bag trembles... It floats up, drinking in the tower's aura, and wakes as %s!"
+                                  % (stone, n)]}}
+              for n, pid, v, stone in (("Zekrom", 644, "BLACK_2", "Dark Stone"), ("Reshiram", 643, "WHITE_2", "Light Stone"))]
+DT_FLOORS = {
+    "grounds": room(206, {0: _ball("Poke Ball in the grounds", "CARBOS", "b2_dt_carbos", name="a Carbos")}, {}, (19, 13),
+                    stairs={207: ("^", "ROOM:f1")}),
+    "f1": room(207, {}, {}, None, stairs={206: ("v", "ROOM:grounds"), 208: ("^", "ROOM:f2")}),
+    "f2": room(208, {1: _ball("Poke Ball under a column", "ELIXIR", "b2_dt_elixir", name="an Elixir"),
+                     2: _ball("Poke Ball on a broken column", "ULTRA_BALL", "b2_dt_ultra_ball", name="an Ultra Ball")},
+               {}, None, stairs={207: ("v", "ROOM:f1"), 209: ("^", "ROOM:f3")}),
+    "f3": room(209, {0: _ball("Poke Ball in the north-east", "PROTEIN", "b2_dt_protein", name="a Protein"),
+                     1: _ball("Poke Ball past the ramps", "SHINY_STONE", "b2_dt_shiny_stone", name="a Shiny Stone")},
+               {}, None, stairs={208: ("v", "ROOM:f2"), 210: ("^", "ROOM:f4")}),
+    "f4": room(210, {0: _ball("Poke Ball in a row", "ADAMANT_ORB", "b2_dt_adamant_orb", name="an Adamant Orb"),
+                     1: _ball("Poke Ball in a row ", "GRISEOUS_ORB", "b2_dt_griseous_orb", name="a Griseous Orb"),
+                     2: _ball("Poke Ball in a row  ", "LUSTROUS_ORB", "b2_dt_lustrous_orb", name="a Lustrous Orb")},
+               {}, None, stairs={209: ("v", "ROOM:f3"), 211: ("^", "ROOM:f5")}),
+    "f5": room(211, {0: _ball("Poke Ball on the outer ring", "PP_MAX", "b2_dt_pp_max", name="a PP Max"),
+                     1: _ball("Poke Ball by the column", "MAX_REVIVE", "b2_dt_max_revive", name="a Max Revive"),
+                     2: _ball("Poke Ball on the inner ring", "TM078", "b2_dt_tm078", name="TM078 Dragon Claw")},
+               {}, None, stairs={210: ("v", "ROOM:f4"), 212: ("^", "ROOM:f6")}),
+    "f6": room(212, {0: _ball("Poke Ball on the path", "COMET_SHARD", "b2_dt_comet_shard", name="a Comet Shard")},
+               {}, None, stairs={211: ("v", "ROOM:f5"), 213: ("^", "ROOM:top")}),
+    "top": room(213, {0: _DT_DRAGON}, {}, None, stairs={212: ("v", "ROOM:f6")}),
+}
+DT_FLOORS["f2"]["hidden"] = {"15,2": "RED_SHARD"}
+DT_FLOORS["top"]["hidden"] = {"22,8": "COMET_SHARD"}
+for _r, _t in (("grounds", "Dragonspiral Tower"), ("f1", "Dragonspiral Tower 1F"), ("f2", "Dragonspiral Tower 2F"),
+               ("f3", "Dragonspiral Tower 3F"), ("f4", "Dragonspiral Tower 4F"), ("f5", "Dragonspiral Tower 5F"),
+               ("f6", "Dragonspiral Tower 6F"), ("top", "Dragonspiral Tower 7F")):
+    DT_FLOORS[_r]["title"] = _t
+DRAGONSPIRAL = route(205, {},   # (the file's NeverMeltIce at (14, 19) sits in the foot's wall on our grid: left out)
+                     {}, exits={"v": ("ICIRRUS_CITY", [(x, 31) for x in range(17, 23)])},
+                     rooms=DT_FLOORS, inside={"19,13": "grounds", "20,13": "grounds"}, title="Dragonspiral Tower")
+_doors(DRAGONSPIRAL, DRAGONSPIRAL["inside"])
+DRAGONSPIRAL["edge_to"] = {"%d,31" % x: [x, 1] for x in range(17, 23)}
+
 
 MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": FLOCCESY, "UNOVA_ROUTE_20": ROUTE_20,
         "FLOCCESY_RANCH_OUTSIDE": RANCH_OUTSIDE, "FLOCCESY_RANCH": RANCH, "PLEDGE_GROVE": PLEDGE_GROVE,
@@ -8480,4 +8668,4 @@ MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": 
         "VICTORY_ROAD_RIVER": VR_RIVER, "VICTORY_ROAD_CAVE_2F": VR_2F, "VICTORY_ROAD_2F_BACK": VR_2F_BACK,
         "VICTORY_ROAD_MOUNTAINSIDE": VR_MOUNTAIN, "VICTORY_ROAD_3F": VR_3F, "VICTORY_ROAD_TUNNEL": VR_TUNNEL,   # (batch 10a)
         "UNOVA_POKEMON_LEAGUE": LEAGUE,   # (batch 10b)
-        "UNOVA_ROUTE_14": ROUTE_14, "N_CASTLE": N_CAVE, "SKYARROW_BRIDGE": SKYARROW, "PINWHEEL_FOREST": PINWHEEL, "PINWHEEL_FOREST_OUTSIDE": PINWHEEL_OUT, "NACRENE_CITY": NACRENE, "UNOVA_ROUTE_3": ROUTE_3, "WELLSPRING_CAVE": WELLSPRING, "WELLSPRING_CAVE_B1F": WELLSPRING_B1, "STRIATON_CITY": STRIATON, "DREAMYARD": DREAMYARD_MAP, "DREAMYARD_B1F": DREAMYARD_B1, "UNOVA_ROUTE_2": ROUTE_2, "ACCUMULA_TOWN": ACCUMULA, "UNOVA_ROUTE_1": ROUTE_1, "NUVEMA_TOWN": NUVEMA, "BLACK_CITY": BLACK_CITY, "WHITE_FOREST": WHITE_FOREST, "ABUNDANT_SHRINE": SHRINE, "UNOVA_ROUTE_15": ROUTE_15, "MARVELOUS_BRIDGE": BRIDGE}   # (batch 11a)
+        "UNOVA_ROUTE_14": ROUTE_14, "N_CASTLE": N_CAVE, "SKYARROW_BRIDGE": SKYARROW, "PINWHEEL_FOREST": PINWHEEL, "PINWHEEL_FOREST_OUTSIDE": PINWHEEL_OUT, "NACRENE_CITY": NACRENE, "UNOVA_ROUTE_3": ROUTE_3, "WELLSPRING_CAVE": WELLSPRING, "WELLSPRING_CAVE_B1F": WELLSPRING_B1, "STRIATON_CITY": STRIATON, "DREAMYARD": DREAMYARD_MAP, "DREAMYARD_B1F": DREAMYARD_B1, "UNOVA_ROUTE_2": ROUTE_2, "ACCUMULA_TOWN": ACCUMULA, "UNOVA_ROUTE_1": ROUTE_1, "NUVEMA_TOWN": NUVEMA, "TUBELINE_BRIDGE": TUBELINE, "UNOVA_ROUTE_8": ROUTE_8, "MOOR_OF_ICIRRUS": MOOR, "ICIRRUS_CITY": ICIRRUS, "DRAGONSPIRAL_TOWER": DRAGONSPIRAL, "BLACK_CITY": BLACK_CITY, "WHITE_FOREST": WHITE_FOREST, "ABUNDANT_SHRINE": SHRINE, "UNOVA_ROUTE_15": ROUTE_15, "MARVELOUS_BRIDGE": BRIDGE}   # (batch 11a)
