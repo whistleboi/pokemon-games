@@ -84,4 +84,25 @@ check(track("wild") == "vs_norapoke" and track("trainer") == "vs_trainer" and tr
       "wild, trainer and Gym Leader battles: Black 2's own")
 check(M.region_track("town", "KANTO") is None, "a region without its own music.json plays as before")
 
+print("6) the themes by who you battle (11-25, ROADMAP_UNOVA 'Music still to wire'; kanto_handoff/unova_map_tools/music.py)")
+class _B:   # (a battle as the music sees it)
+    def __init__(s, cls="", name="", mons=()):
+        s.trainer_class, s.trainer_name, s.opponent_team = cls, name, [type("P", (), {"id": m})() for m in mons]
+_own = lambda b, what: (M._region_own(b, what) or "").split("/")[-1]
+g.rival_name = "Hugh"
+check(_own(_B("CHAMPION", "Champion Iris"), "trainers") == "vs_iris", f"Champion Iris: her own theme ({_own(_B('CHAMPION', 'Champion Iris'), 'trainers')})")
+check(_own(_B("RIVAL", "Hugh"), "trainers") == "vs_hue", f"the rival, Hugh: his ({_own(_B('RIVAL', 'Hugh'), 'trainers')})")
+check([_own(_B("", n), "trainers") for n in ("N", "Ghetsis", "Colress", "Boss Trainer Benga", "Cynthia")]
+      == ["vs_swan_n", "vs_new_g_cis", "vs_achroma", "vs_banjirou", "vs_shirona"], "N, Ghetsis, Colress, Benga, Cynthia: each their own")
+check(_own(_B("YOUNGSTER", "Youngster Wes"), "trainers") == "", "an ordinary trainer: the usual trainer battle theme")
+check([_own(_B(c), "eyes") for c in ("DANCER", "HARLEQUIN", "PLASMA")] == ["eye_dancer", "eye_clown", "eye_neo_plasma"],
+      "eyes meet: the Dancer's, the Harlequin's and Team Plasma's own")
+check([_own(_B(mons=[m]), "legends") for m in (646, 638, 641, 377, 485, 25)] == ["vs_kyuramu", "vs_uma", "vs_rai", "vs_regi", "vs_dplegend", ""],
+      "legends: Kyurem, the Swords of Justice, the Forces of Nature, the Regi, Sinnoh's; an ordinary Pokemon none")
+M.kind = "wild"
+_vw = os.path.basename(M.region_track("victory", "UNOVA") or "")
+M.kind = "trainer"
+_vt = os.path.basename(M.region_track("victory", "UNOVA") or "")
+check(_vw == "win2.ogg" and _vt == "win1.ogg", f"after a wild battle its own fanfare, after a trainer the usual ({_vw}, {_vt})")
+
 print(f"##### {len(fails)} failures")

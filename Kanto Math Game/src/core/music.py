@@ -187,6 +187,8 @@ class MusicManager:
                     name = next(iter(name.values()), None)
         else:
             name = (table.get("kinds") or {}).get(kind)
+            if kind == "victory" and self.kind == "wild":   # (after a wild battle its own fanfare, where the region has one: B2W2's WIN2)
+                name = (table.get("kinds") or {}).get("victory_wild") or name
         path = os.path.join(getattr(self.game.assets, "assets_dir", "") or "", "music", str(region).lower(), f"{name}.ogg") if name else None
         return path if path and os.path.isfile(path) else None
 
@@ -385,6 +387,38 @@ class MusicManager:
             return "enc_female"
         return "enc_male"
 
+    def _region_own(self, battle, what):
+        """The region's own track for this battle ("<region>/<track>"), from its music.json: "legends" {dex number: track}
+        for a wild Pokemon; "trainers" {exact trainer name: track}, then kinds "rival" / "champion" for a trainer battle;
+        "eyes" {trainer class: track} for the 'eyes meet' moment. None when the region has none (11-25, Unova)."""
+        if battle is None:
+            return None
+        try:
+            region = self.game.story_manager.get_current_region()
+        except Exception:
+            return None
+        table = self.region_table(region) if region else {}
+        if not table or not table.get(what) and what != "trainers":
+            return None
+        name = None
+        if what == "legends":
+            mons = [p for p in (getattr(battle, "opponent_team", None) or []) if p is not None]
+            pid = getattr(mons[0], "id", None) if mons else None
+            name = (table.get("legends") or {}).get(str(pid)) if pid is not None else None
+        elif what == "eyes":
+            name = (table.get("eyes") or {}).get(class_key(getattr(battle, "trainer_class", "")))
+        else:
+            kinds = table.get("kinds") or {}
+            name = (table.get("trainers") or {}).get(str(getattr(battle, "trainer_name", "") or ""))
+            if not name and self.encounter_kind(battle) == "enc_rival":
+                name = kinds.get("rival")
+            if not name and getattr(battle, "trainer_class", "") == "CHAMPION":
+                name = kinds.get("champion")
+        if not name:
+            return None
+        path = os.path.join(getattr(self.game.assets, "assets_dir", "") or "", "music", str(region).lower(), f"{name}.ogg")
+        return f"{str(region).lower()}/{name}" if os.path.isfile(path) else None
+
     def _was_kanto(self):
         """True while a Kanto area theme plays (leaving it for another kind of place changes it)."""
         return bool(self.path) and os.sep + "kanto" + os.sep in self.path
@@ -407,6 +441,9 @@ class MusicManager:
         from src.states.overworld import CityState, PlayState, GymLobbyState
         from src.states.menus import MainMenuState
         if isinstance(state, WildBattleState):
+            own = self._region_own(state, "legends")
+            if own:   # (a legend's own battle theme: the region's music.json "legends" {dex number: track}; Unova 11-25)
+                return self.play_file(own)
             kind = "gym" if getattr(state, "is_boss_battle", False) else "wild"
         elif type(state).__name__ == "TrainerIntroState" and self._orre() and isinstance(getattr(state, "next_state", None), TrainerBattleState):
             return self.for_state(state.next_state)   # (Orre: XD has no "eyes meet" themes; the battle's own track starts)
@@ -414,6 +451,9 @@ class MusicManager:
             track = (getattr(state, "battle_options", None) or {}).get("music")
             if track:   # (a battle with its own theme: Willie, Miror B.)
                 return self.play_file(track)
+            own = self._region_own(state, "trainers")
+            if own:   # (the region's music.json: a trainer's own theme by name, the rival's, the Champion's; Unova 11-25)
+                return self.play_file(own)
             big = (state.battle_type == "gym" or getattr(state, "is_boss_battle", False)
                    or state.trainer_class in ("GYM_LEADER", "ELITE_FOUR", "CHAMPION"))
             kind = ("final" if state.trainer_class in ("ELITE_FOUR", "CHAMPION")
@@ -432,6 +472,9 @@ class MusicManager:
         elif type(state).__name__ == "StarterSelectionState":
             kind = "lab"
         elif type(state).__name__ == "TrainerIntroState":
+            own = self._region_own(getattr(state, "next_state", None), "eyes")
+            if own:   # (the region's own "eyes meet" theme for this class: music.json "eyes"; Unova 11-25)
+                return self.play_file(own)
             kind = self.encounter_kind(getattr(state, "next_state", None))
             if kind is None:
                 return

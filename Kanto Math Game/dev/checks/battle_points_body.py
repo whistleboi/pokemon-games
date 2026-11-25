@@ -177,7 +177,9 @@ for i in range(t.run.n_floors):
         if p.get("action") == "BP_SHOP":
             shops.add(p.get("shop"))
 check(facs == set(frontier.SINNOH_FIVE) and shops == {"plat_items", "plat_tms"}, f"the five attendants and Platinum's two stalls {sorted(facs)} {sorted(shops)}")
-check(all(live), f"every part drawn in SoulSilver's 3D (the same Frontier) {live}")
+_tmf = __import__("json").dumps(__import__("json").load(open("assets/town_maps.json", encoding="utf-8"))["SINNOH_BATTLE_FRONTIER"])
+check(all(live) and "ss_ground/" not in _tmf and "pt_ground/" in _tmf,
+      f"every part drawn in 3D with the region's own game's art - Sinnoh's Frontier Platinum's (Jordan 11-25: \"Switch to Platinum's\"), Johto's SoulSilver's {live}")
 check(not [t_ for t_, _c in bpl.SHOPS["plat_tms"][1] if t_ == "TM:U-TURN"] and len(bpl.SHOPS["plat_tms"][1]) == 15, "Platinum's TMs: HGSS's without U-turn")
 fl = story.story_flags
 for f in frontier.SINNOH_FIVE:

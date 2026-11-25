@@ -76,6 +76,12 @@
     ]
   },
   "figures": {
+    "SINNOH_BATTLE_FRONTIER:Board worker": {"sheet": "pt_workman.png"},
+    "SINNOH_BATTLE_FRONTIER:Record keeper": {"sheet": "pt_oldman1.png"},
+    "SINNOH_BATTLE_FRONTIER:Hopeful trainer": {"sheet": "pt_woman2.png"},
+    "SINNOH_BATTLE_FRONTIER:Excited explorer": {"sheet": "pt_explore.png"},
+    "SINNOH_BATTLE_FRONTIER:Acronym man": {"sheet": "pt_oldman1.png"},
+    "SINNOH_BATTLE_FRONTIER:Recorder fan": {"sheet": "pt_man1.png"},
     "SOLACEON_RUINS:RARE CANDY": {"item": "POKE_BALL"},
     "SUNYSHORE_CITY:Market sailor": {"sheet": "pt_seaman.png"},
     "SUNYSHORE_CITY:Kind lady": {"sheet": "pt_woman3.png"},

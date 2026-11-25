@@ -201,15 +201,24 @@
   "VIRBANK_COMPLEX": "sw_d_23",
   "VIRBANK_COMPLEX_OUTSIDE": "sw_c_13"
  },
+ "eyes": {
+  "DANCER": "eye_dancer",
+  "HARLEQUIN": "eye_clown",
+  "PLASMA": "eye_neo_plasma",
+  "TEAM_PLASMA": "eye_neo_plasma"
+ },
  "kinds": {
   "center": "pokecen",
+  "champion": "vs_iris",
   "evolution": "shinka",
   "final": "vs_shitenno",
   "gym": "vs_gymleader",
   "gym_lobby": "gym",
   "lab": "labo",
+  "rival": "vs_hue",
   "trainer": "vs_trainer",
   "victory": "win1",
+  "victory_wild": "win2",
   "villain": "vs_neo_plasma",
   "wild": "vs_norapoke"
  },
@@ -232,6 +241,28 @@
     "flag": "vb_music_enka"
    }
   ]
+ },
+ "legends": {
+  "377": "vs_regi",
+  "378": "vs_regi",
+  "379": "vs_regi",
+  "480": "vs_dplegend",
+  "481": "vs_dplegend",
+  "482": "vs_dplegend",
+  "483": "vs_dplegend",
+  "484": "vs_dplegend",
+  "485": "vs_dplegend",
+  "486": "vs_regi",
+  "487": "vs_dplegend",
+  "488": "vs_dplegend",
+  "638": "vs_uma",
+  "639": "vs_uma",
+  "640": "vs_uma",
+  "641": "vs_rai",
+  "642": "vs_rai",
+  "645": "vs_rai",
+  "646": "vs_kyuramu",
+  "647": "vs_uma"
  },
  "rooms": {
   "ABUNDANT_SHRINE:grotto": "kemonomichi",
@@ -312,5 +343,16 @@
   "VIRBANK_CITY:gate_w": "gate",
   "VIRBANK_CITY:gym": "poisone_gym_01",
   "VIRBANK_CITY:gym_stage": "poisone_gym_01"
+ },
+ "trainers": {
+  "Boss Trainer Benga": "vs_banjirou",
+  "Champion Iris": "vs_iris",
+  "Colress": "vs_achroma",
+  "Cynthia": "vs_shirona",
+  "Ghetsis": "vs_new_g_cis",
+  "N": "vs_swan_n",
+  "Pokemon Trainer Cynthia": "vs_shirona",
+  "Team Plasma Colress": "vs_achroma",
+  "Team Plasma Ghetsis": "vs_new_g_cis"
  }
 }
