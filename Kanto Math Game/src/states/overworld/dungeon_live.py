@@ -40,7 +40,7 @@ class RouteLive:
         self._dl_key, self._dl_got = key, None
         if getattr(self.game, "live3d", True) is False:   # (a checks-only switch; Jordan 11-24: the DS regions are 3D only, no Options choice)
             return None
-        if not pic.startswith(("b2_ground/", "ss_ground/", "pt_ground/")):   # (pt: Platinum, 11-23)
+        if not pic.startswith(("b2_ground/", "w1_ground/", "ss_ground/", "pt_ground/")):   # (pt: Platinum, 11-23; w1: Pokemon White, 11-25)
             return None
         try:   # (any trouble with the card or its libraries: the flat picture, never a crash)
             from src.dungeon import live3d
