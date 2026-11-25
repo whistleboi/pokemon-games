@@ -7079,6 +7079,13 @@ VR_2F["story_maps"] = [{"when": _W2, "map": _vr(
     trainers={6: ("Veteran Abraham", 4), 7: ("Pokemon Ranger Elle", 1), 8: ("Pokemon Ranger Eddie", 1),
               9: ("Ace Trainer Shanta", 4), 10: ("Ace Trainer Webster", 4)}, boulders=((27, 10), (33, 7)))}]
 
+# (11-25, the Journal's PT_FULL: Black 2's carved steps - walk code 0x1D, flagged as wall in the file - join a cave's two levels;
+#  the export read them as wall, so 1F's way from the entrance and 2F's stopped short. Open as steps; heights slope across them.)
+for _m, _steps in ((VR_1F, ((52, 15), (53, 15), (52, 16), (53, 16), (17, 34), (18, 34), (17, 35), (18, 35))),
+                   (VR_2F, ((27, 7), (28, 7), (27, 8), (28, 8), (31, 6), (32, 6), (31, 7), (32, 7)))):
+    for _mm in [_m] + [sm["map"] for sm in _m.get("story_maps") or []]:
+        for _x, _y in _steps:
+            _put_char(_mm, _x, _y, ".")
 VR_2F_BACK = _vr(591, {1: _ball("Poke Ball on the platform", "PP_MAX", "b2_vr_pp_max", name="a PP Max"),
                        0: _ball("Poke Ball by the pool", "RARE_CANDY", "b2_vr_rare_candy", name="a Rare Candy")},
                  {"v": ("VICTORY_ROAD_CAVE_2F", [(13, 30)]), "^": ("VICTORY_ROAD_MOUNTAINSIDE", [(24, 7)])},
