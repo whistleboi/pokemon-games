@@ -1,6 +1,7 @@
 aiswitch	11	2026-11-24
 alph	26	2026-11-24
 ambush	26	2026-11-24
+area_changes	146	2026-11-24
 battle2	14	2026-11-24
 battle_bg	25	2026-11-24
 battle_intros	81	2026-11-24
@@ -14,7 +15,7 @@ doors	3	2026-11-24
 doubles	84	2026-11-24
 ds3d	12	2026-11-24
 dungeon	108	2026-11-24
-dungeon_johto	170	2026-11-24
+dungeon_johto	171	2026-11-24
 eterna	19	2026-11-24
 events	161	2026-11-24
 exp_mode	8	2026-11-24
@@ -30,7 +31,7 @@ gusts	10	2026-11-24
 gym_tms	10	2026-11-24
 hoenn_gates	250	2026-11-24
 hoenn_looks	6	2026-11-24
-hoenn_maps	742	2026-11-24
+hoenn_maps	744	2026-11-24
 hoenn_played	19	2026-11-24
 hoennstart	22	2026-11-24
 hordes	14	2026-11-24
@@ -42,6 +43,7 @@ johto_gates	62	2026-11-24
 johto_live3d	118	2026-11-24
 johto_looks	5	2026-11-24
 johto_played	28	2026-11-24
+journal_parts	9	2026-11-24
 journal_regions	44	2026-11-24
 journal_rules	138	2026-11-24
 kanto_canon	644	2026-11-24
@@ -106,6 +108,7 @@ scaling	32	2026-11-24
 selfko	23	2026-11-24
 sevii	40	2026-11-24
 sevii_maps	259	2026-11-24
+shadow_parity	20	2026-11-24
 shadows	13	2026-11-24
 sinnoh	187	2026-11-24
 sinnoh_gates	57	2026-11-24
@@ -138,6 +141,7 @@ unovab8a	57	2026-11-24
 unovab8b	19	2026-11-24
 unovab9a	27	2026-11-24
 unovab9b	14	2026-11-24
+unovab9c	32	2026-11-24
 unovastart	24	2026-11-24
 vsseeker	59	2026-11-24
 walkup	92	2026-11-24

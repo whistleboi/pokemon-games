@@ -248,18 +248,16 @@ ASPERTIA_SIGNS = {14: ["ASPERTIA CITY", "Where the sky feels close."], 15: ["You
 #     Mom and Hugh's sister at its door. Each step sets a flag the next one waits on.
 # After the title (Jordan 11-24, card clean-unova-main-unpicked-starters): Juniper visits your home, as Black 2's does after the
 # Hall of Fame, with the two starters you didn't pick (Tepig's family has no other way in), one after the other.
-_OTHER = {"495": (498, 501), "498": (495, 501), "501": (495, 498)}
+_OTHER = {"495": [498, 501], "498": [495, 501], "501": [495, 498], "default": [498, 501]}
 JUNIPER_STARTERS = [
     {"text": "Professor Juniper", "action": "EVENT", "_look": "sheet:b2_juniper.png",
-     "condition": ["beat_unova_champion", "not:b2_juniper_starter_%d" % k] + (["b2_juniper_starter_1"] if k == 2 else []),
-     "event": {"lines": (["Professor Juniper: Congratulations, Champion! I came all the way to Aspertia to see you.",
-                          "Professor Juniper: You and your partner have come so far. The other two who were waiting with it "
-                          "have been waiting for a Trainer, too. Would you take them?"] if k == 1 else
-                         ["Professor Juniper: And here's the other one. Raise them both well!"]),
-               "gift_pokemon": {**{s_: o[k - 1] for s_, o in _OTHER.items()}, "default": (498, 501)[k - 1]}, "gift_level": 5, "flag": "b2_juniper_starter_%d" % k}}
-    for k in (1, 2)] + [
+     "condition": ["beat_unova_champion", "not:b2_juniper_starters"],
+     "event": {"lines": ["Professor Juniper: Congratulations, Champion! I came all the way to Aspertia to see you.",
+                         "Professor Juniper: You and your partner have come so far. The other two who were waiting with it "
+                         "have been waiting for a Trainer, too. Raise them both well!"],
+               "gift_pokemon": _OTHER, "gift_level": 5, "flag": "b2_juniper_starters"}},   # (both at once: the per-starter list, main 11-24)
     _say("Professor Juniper ", "Professor Juniper: All three Unova partners, with one Trainer! I can't wait to see what you do next.",
-         condition=["b2_juniper_starter_2"], _look="sheet:b2_juniper.png")]
+         condition=["b2_juniper_starters"], _look="sheet:b2_juniper.png")]
 HOME_SCENES = [
     {"who": "Mom", "trigger": {"zone": [1, 7, 9, 9]}, "condition": "not:b2_mom_talk", "flag": "b2_mom_talk", "approach": True,
      "lines": ["Mom: Off out, {player_name}? Wait, you'll want to hear this first!",

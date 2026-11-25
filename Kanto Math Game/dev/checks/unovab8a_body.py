@@ -284,6 +284,6 @@ _pt = sum(1 for v in tmaps.values() if isinstance(v, dict) for r in (v.get("room
 check(_pt >= 7, f"a Medal Box painter in every walked Center ({_pt})")
 check(HMS.HM_BY_BADGE["UNOVA"] == {"WAVE": "HM_WATERFALL"}, "Strength, Fly, Surf: story gifts only (no badge stand-ins)")
 
-print("\n##### %d failures" % len(fails))
 for f_ in fails:
     print("  -", f_)
+print(f"##### {len(fails)} failures")

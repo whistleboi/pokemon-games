@@ -307,6 +307,6 @@ for t in ("vs_wcs", "vs_rg_leader", "vs_gs_leader", "vs_rs_leader", "vs_dp_leade
 blob = json.dumps(json.load(open("assets/music/unova/music.json", encoding="utf-8")))
 check('"PWT' in blob and "RELIC_PASSAGE" in blob, "the PWT's and the Relic Passage's own music")
 
-print("\n##### %d failures" % len(fails))
 for f in fails:
     print("  -", f)
+print(f"##### {len(fails)} failures")

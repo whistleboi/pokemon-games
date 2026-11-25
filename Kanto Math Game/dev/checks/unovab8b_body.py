@@ -191,6 +191,6 @@ check(any("hour:15" in str(sc.get("condition")) for sc in mt.get("scenes") or []
 sl = [c for o in mt["people"] for c in _opts(o) if isinstance(c, dict) and c.get("event", {}).get("gift_item") == {"BLACK_SLUDGE": 1}]
 check(sl and "holding:POISON_BARB" in str(sl[0]["condition"]), "the Roxie fan: a Black Sludge for a Poison Barb holder")
 
-print("\n##### %d failures" % len(fails))
 for f_ in fails:
     print("  -", f_)
+print(f"##### {len(fails)} failures")

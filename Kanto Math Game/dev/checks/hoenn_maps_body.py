@@ -3375,8 +3375,6 @@ check(len(_pics7) >= 40 and _odd7 == {("LAVARIDGE_TOWN", "center"): "em_ground/4
       f"every Hoenn Center and Mart is Emerald's one room ({len(_pics7)}; only Lavaridge's hot-springs Center its own: {_odd7}), Lavaridge's front and back doors each lead out their own way")
 story.inventory.clear(); story.inventory.update(_inv7); story.story_flags.clear(); story.story_flags.update(_fl7)
 
-story.story_flags.clear(); story.story_flags.update(_saved)
-print(f"##### {len(fails)} failures")
 
 # H8 (Jordan 11-24, questions/HOENN.md #3): Meteor Falls' hidden room off 1F's north-west corner; Steven waits there after
 # the Champion, to battle (Emerald's team), and is gone once beaten
@@ -3499,3 +3497,6 @@ said13b = _press(st, (6, 5), (0, -1))
 check(sorted(_new13) == [252, 255] and story.story_flags.get("got_hoenn_other_starters") and not any("waiting here since" in x for x in said13b),
       f"Littleroot: after the title Birch gives a Mudkip player Treecko and Torchic, once ({_new13}, {said13[:1]})")
 story.story_flags.clear(); story.story_flags.update(_f13); story.player_team[:] = _t13; story.pc_pokemon[:] = _pc13
+
+story.story_flags.clear(); story.story_flags.update(_saved)
+print(f"##### {len(fails)} failures")
