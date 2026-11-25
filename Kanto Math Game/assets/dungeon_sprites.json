@@ -76,11 +76,6 @@
     ]
   },
   "figures": {
-    "SINNOH_POKEMON_LEAGUE:Cynthia": {"sheet": "pt_champion.png"},
-    "SINNOH_POKEMON_LEAGUE:Lucian": {"sheet": "pt_bigfour4.png"},
-    "SINNOH_POKEMON_LEAGUE:Flint": {"sheet": "pt_bigfour3.png"},
-    "SINNOH_POKEMON_LEAGUE:Bertha": {"sheet": "pt_bigfour2.png"},
-    "SINNOH_POKEMON_LEAGUE:Aaron": {"sheet": "pt_bigfour1.png"},
     "ANVILLE_TOWN:Boy": {"sheet": "b2_c29.png"},
     "ANVILLE_TOWN:Boy by the fence": {"sheet": "b2_c28.png"},
     "ANVILLE_TOWN:Collector": {"sheet": "b2_c27.png"},
@@ -1979,6 +1974,11 @@
     "VIRBANK_COMPLEX_OUTSIDE:Poke Ball behind the Roughneck": {"sheet": "b2_item_ball.png"},
     "VIRBANK_COMPLEX_OUTSIDE:Poke Ball in the grass": {"sheet": "b2_item_ball.png"},
     "VIRBANK_COMPLEX_OUTSIDE:Roughneck by the crane": {"sheet": "b2_c61.png"},
+    "SINNOH_POKEMON_LEAGUE:Cynthia": {"sheet": "pt_champion.png"},
+    "SINNOH_POKEMON_LEAGUE:Lucian": {"sheet": "pt_bigfour4.png"},
+    "SINNOH_POKEMON_LEAGUE:Flint": {"sheet": "pt_bigfour3.png"},
+    "SINNOH_POKEMON_LEAGUE:Bertha": {"sheet": "pt_bigfour2.png"},
+    "SINNOH_POKEMON_LEAGUE:Aaron": {"sheet": "pt_bigfour1.png"},
     "DISTORTION_WORLD:Portal": {"draw": "none"},
     "DISTORTION_WORLD:Cyrus": {"sheet": "pt_gingaboss.png"},
     "DISTORTION_WORLD:Cynthia": {"sheet": "pt_champion.png"},
