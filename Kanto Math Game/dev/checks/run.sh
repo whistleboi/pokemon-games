@@ -37,12 +37,12 @@ for t in "${names[@]}"; do
   s=$SECONDS
   if [ "${t#walk:}" != "$t" ]; then timeout 900 python "$f" $O > "$O/run_${t/:/_}.log" 2>&1; else timeout 1500 python "$f" $O > "$O/run_${t/:/_}.log" 2>&1; fi
   ex=$?
-  n=$(count "$t" "$O/run_${t/:/_}.log" $ex)
+  n=$(count "$t" "$O/run_${t/:/_}.log" $ex 2> "$O/note.txt")   # (its notes printed under its own line)
   total=$((total + n))
   k=$(checks "$O/run_${t/:/_}.log")
   note_time "$t" $((SECONDS - s)) "$n" "$k"
   echo "== $t: $n fails ($((SECONDS - s)) s, $k checks)"
-  base_warn "$t" "$k"
+  cat "$O/note.txt" 2>/dev/null; rm -f "$O/note.txt"; base_warn "$t" "$k"
   if [ $VERBOSE = 1 ]; then grep -v '^Sync: ' "$O/run_${t/:/_}.log"; else grep -E 'FAIL |Traceback|(Syntax|Indentation)Error' -B3 -A3 "$O/run_${t/:/_}.log" | grep -vE '^--$|##### 0 fail' | head -40; fi
 done
 echo "##### $total fails in all"
