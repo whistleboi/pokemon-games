@@ -33,6 +33,25 @@ def cleared(story, which):
     return int(((story.story_flags.get("b2_tower") or {}).get(which) or {}).get("cleared", 0) or 0)
 
 
+def event(state, ev, lines, show):
+    """{"monthly": flag, "battle": {...}, "lines": [...], "done": [...]}: a battle once a month by the real clock (N's
+    seasonal rematch in his castle, Black 2: a team that changes with the season, once a month)."""
+    import datetime
+    story = state.game.story_manager
+    if ev.get("monthly"):
+        month = datetime.date.today().strftime("%Y-%m")
+        if story.story_flags.get(ev["monthly"]) == month:
+            show(ev.get("done") or ["Come back next month."])
+            return
+        story.story_flags[ev["monthly"]] = month
+        from src.states.overworld.common import _start_event_battle, _say_then
+        info = dict(ev["battle"])
+        _say_then(state, list(ev.get("lines") or []), lambda: state.game.change_state(
+            _start_event_battle(state.game, story.current_area_key, info, None)))
+        return
+    show(lines or ["..."])
+
+
 def condition(story, arg):
     what, *rest = str(arg).split(":")
     if what == "white":

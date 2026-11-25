@@ -78,7 +78,8 @@ TEAMS = [207, 208, 209, 153,                     # Elesa's Beauties, Elesa
          445, 446, 447, 448, 449, 452, 453, 454,
          684, 685, 686,   # (batch 10a) Hugh in Victory Road's tunnel (by your starter)
          38, 40, 41, 39, 341, 143, 145, 146, 144, 536,   # (batch 10b) the Elite Four and Iris; their rematches
-         693, 694, 695, 696, 697, 698, 456]   # (batch 11a) Hugh in Undella and once a day after; Cynthia   # Black 2's Grunts and Doctor; White 2's password Grunts, the card's
+         693, 694, 695, 696, 697, 698, 456,   # (batch 11a)
+         5, 6, 782, 783, 784, 785]   # (batch 11c) N: Zekrom (Black 2) / Reshiram (White 2); his seasonal rematches. (11a) Hugh in Undella and once a day after; Cynthia   # Black 2's Grunts and Doctor; White 2's password Grunts, the card's
 # Battle pictures where the class slug isn't the file's name (a/0/7/1 slots matched by eye, 11-23; a class without its own
 # Black 2 picture keeps the same class from Platinum, never another class's look)
 BY_CLASS = {0: "b2_nate.png", 1: "b2_rosa.png", 90: "pt_cyclist_m.png", 91: "pt_cyclist_f.png", 33: "pt_artist.png",

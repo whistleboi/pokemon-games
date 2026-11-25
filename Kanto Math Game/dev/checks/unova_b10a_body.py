@@ -88,7 +88,8 @@ check(tmaps["VICTORY_ROAD_RIVER"]["trainer_spots"] != tmaps["VICTORY_ROAD_RIVER"
       "the River Valley: each version's trainers")
 check(tmaps["VICTORY_ROAD_CAVE_2F"]["edge_to"].get("57,27") == [57, 8], "doors pair up as Black 2's warps do (Cave 2F -> the River Valley)")
 mt = tmaps["VICTORY_ROAD_MOUNTAINSIDE"]
-check(mt["gated_exits"].get("CHALLENGERS_CAVE") == ["beat_unova_champion"], "the Zoroark's cave: after the League only")
+check(mt["gated_exits"].get("N_CASTLE") == ["beat_unova_champion", "b2_sister_dream"],
+      "the Zoroark's cave: after the League, once Hugh's sister has dreamed of it (11c)")
 hb = tmaps["VICTORY_ROAD_TUNNEL"]["scenes"][0]["event"]["battle"]
 check(set(hb["team_choice"]) == {"495", "498", "501"} and hb["levels"][0] == 55 and hb["rewards"].get("TM126") == 1,
       "Hugh in the tunnel: his team by your starter, Lv 55; TM126 Thunderbolt")

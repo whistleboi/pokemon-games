@@ -175,6 +175,7 @@ unova_b10a              unova    story,batch
 unova_b10b              unova    story,batch
 unova_b11a              unova    story,batch
 unova_b11b              unova    story,batch
+unova_b11c              unova    story,batch
 unova_start            unova    story,start
 
 # orre
