@@ -43,7 +43,10 @@ PLACES = {"NIMBASA_CITY": [62, 64, 63, 585], "UNOVA_ROUTE_16": [383], "LOSTLORN_
           "UNOVA_ROUTE_13": [370], "UNDELLA_BAY": [240],   # (batch 7b)
           "UNOVA_ROUTE_12": [368], "VILLAGE_BRIDGE": [255], "UNOVA_ROUTE_11": [365],   # (batch 8a)
           "UNOVA_ROUTE_9": [348],   # (batch 8b)
-          "UNOVA_ROUTE_22": [474], "UNOVA_ROUTE_21": [463], "SEASIDE_CAVE": [515], "SEASIDE_CAVE_B1F": [516]}   # (batch 9a)
+          "UNOVA_ROUTE_22": [474], "UNOVA_ROUTE_21": [463], "SEASIDE_CAVE": [515], "SEASIDE_CAVE_B1F": [516],   # (batch 9a)
+          "UNOVA_ROUTE_23": [475], "VICTORY_ROAD_CAVE_1F": [587], "VICTORY_ROAD_GROVE": [588], "VICTORY_ROAD_RIVER": [589, 595],
+          "VICTORY_ROAD_CAVE_2F": [590], "VICTORY_ROAD_MOUNTAINSIDE": [592], "VICTORY_ROAD_3F": [593]}   # (batch 10a: each version's
+          #  people share the zone's trainers; the River Valley's two versions hold different ones)
 EXTRA = {"UNOVA_ROUTE_5": [(339, "unova_version:BLACK_2"), (340, "unova_version:WHITE_2")]}   # (Charles at the drawbridge)
 CLASS_FIX = {"⒆⒇": "Pokemon", "⑮": "F", "⑭": "M"}   # (the file's PKMN glyph, female / male signs)
 # Story and Gym battles that aren't standing trainers: written to town_maps/unova_teams.json {id: entry} for unova.py's _b2(id)
@@ -71,7 +74,8 @@ TEAMS = [207, 208, 209, 153,                     # Elesa's Beauties, Elesa
          429, 428, 437,
          797, 440, 807, 809, 497, 344, 348, 498, 499, 345,   # (batch 9b-2) the Chasm: the forest's pair (with Hugh), the stern,
          430, 431, 432, 433, 434, 435, 438, 439, 808, 810, 811,   # Zinzolin, Colress, the Shadow Triad, Ghetsis; Kyurem's room:
-         445, 446, 447, 448, 449, 452, 453, 454]   # Black 2's Grunts and Doctor; White 2's password Grunts, the card's
+         445, 446, 447, 448, 449, 452, 453, 454,
+         684, 685, 686]   # (batch 10a) Hugh in Victory Road's tunnel (by your starter)   # Black 2's Grunts and Doctor; White 2's password Grunts, the card's
 # Battle pictures where the class slug isn't the file's name (a/0/7/1 slots matched by eye, 11-23; a class without its own
 # Black 2 picture keeps the same class from Platinum, never another class's look)
 BY_CLASS = {0: "b2_nate.png", 1: "b2_rosa.png", 90: "pt_cyclist_m.png", 91: "pt_cyclist_f.png", 33: "pt_artist.png",

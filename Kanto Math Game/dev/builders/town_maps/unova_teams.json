@@ -2212,6 +2212,162 @@
    522
   ]
  },
+ "684": {
+  "b2_id": 684,
+  "class": "TRAINER",
+  "held_items": {
+   "500": "CHARCOAL",
+   "516": "MYSTIC_WATER",
+   "521": "SCOPE_LENS"
+  },
+  "levels": [
+   55,
+   55,
+   55,
+   57
+  ],
+  "movesets": {
+   "500": [
+    "FLAMETHROWER",
+    "ROCK-SLIDE",
+    "BRICK-BREAK",
+    "SCALD"
+   ],
+   "516": [
+    "ROCK-SLIDE",
+    "CRUNCH",
+    "BRICK-BREAK",
+    "SURF"
+   ],
+   "521": [
+    "FACADE",
+    "AERIAL-ACE",
+    "U-TURN",
+    "SWAGGER"
+   ],
+   "626": [
+    "HEAD-CHARGE",
+    "WILD-CHARGE",
+    "MEGAHORN",
+    "EARTHQUAKE"
+   ]
+  },
+  "name": "Pokemon Trainer Rival",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "trainer.png",
+  "team": [
+   521,
+   516,
+   626,
+   500
+  ]
+ },
+ "685": {
+  "b2_id": 685,
+  "class": "TRAINER",
+  "held_items": {
+   "503": "MYSTIC_WATER",
+   "512": "MIRACLE_SEED",
+   "521": "SCOPE_LENS"
+  },
+  "levels": [
+   55,
+   55,
+   55,
+   57
+  ],
+  "movesets": {
+   "503": [
+    "SURF",
+    "X-SCISSOR",
+    "ICE-BEAM",
+    "REVENGE"
+   ],
+   "512": [
+    "ROCK-SLIDE",
+    "CRUNCH",
+    "BRICK-BREAK",
+    "ENERGY-BALL"
+   ],
+   "521": [
+    "FACADE",
+    "AERIAL-ACE",
+    "U-TURN",
+    "SWAGGER"
+   ],
+   "626": [
+    "HEAD-CHARGE",
+    "WILD-CHARGE",
+    "MEGAHORN",
+    "EARTHQUAKE"
+   ]
+  },
+  "name": "Pokemon Trainer Rival",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "trainer.png",
+  "team": [
+   521,
+   512,
+   626,
+   503
+  ]
+ },
+ "686": {
+  "b2_id": 686,
+  "class": "TRAINER",
+  "held_items": {
+   "497": "MIRACLE_SEED",
+   "514": "CHARCOAL",
+   "521": "SCOPE_LENS"
+  },
+  "levels": [
+   55,
+   55,
+   55,
+   57
+  ],
+  "movesets": {
+   "497": [
+    "GIGA-DRAIN",
+    "LEAF-BLADE",
+    "DRAGON-TAIL",
+    "COIL"
+   ],
+   "514": [
+    "ROCK-SLIDE",
+    "CRUNCH",
+    "BRICK-BREAK",
+    "FLAMETHROWER"
+   ],
+   "521": [
+    "FACADE",
+    "AERIAL-ACE",
+    "U-TURN",
+    "SWAGGER"
+   ],
+   "626": [
+    "HEAD-CHARGE",
+    "WILD-CHARGE",
+    "MEGAHORN",
+    "EARTHQUAKE"
+   ]
+  },
+  "name": "Pokemon Trainer Rival",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "trainer.png",
+  "team": [
+   521,
+   514,
+   626,
+   497
+  ]
+ },
  "701": {
   "b2_id": 701,
   "class": "TRAINER",

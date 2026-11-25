@@ -26,7 +26,7 @@ HM_BY_BADGE = {
     #  Castelia Sewers, Fly from Bianca on Route 5, Surf from Cheren on Route 6, Waterfall from N at Victory Road, Dive from
     #  Hugh in Undella after the League. Until each batch builds its gift, the badge just before stands in; Cut is the
     #  docks event (batch 2). BW's table gave Cheren's Basic Badge Strength.)
-    "UNOVA": {"WAVE": "HM_WATERFALL"},   # (11-24: Strength, Fly and Surf are their story gifts on the walked maps now; Waterfall waits for N, batch 10)
+    "UNOVA": {},   # (11-24, batch 10a: Waterfall is N's gift at Victory Road's entrance now, like the rest)
     "KALOS": {"BUG": "HM_CUT", "CLIFF": "HM_STRENGTH", "RUMBLE": "HM_SURF", "PLANT": "HM_FLY",
               "FAIRY": "HM_WATERFALL"},
 }

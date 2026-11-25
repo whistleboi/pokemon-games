@@ -1,11 +1,11 @@
 # Every check suite: name, owner (the Dev Map lane that writes and fixes it), tags. Read by run.sh / run_par.sh / run_all.sh
 # (suites_lib.sh). Checks branch, 11-24: kanto_handoff/ROADMAP_CHECKS.md.
-#   owner: main (shared engine, the hub), systems, journal, kanto (+ Sevii), johto, orange, hoenn, sinnoh, unova, orre
+#   owner: main (shared engine, the hub), checks (the Checks branch), systems, journal, kanto (+ Sevii), johto, orange, hoenn, sinnoh, unova, orre
 #   tags (comma-separated, no spaces): helpers = joined with sub_helpers_body.py; long = left out of region:/all sets
 #          (name it to run it); quick = in the quick set; topics: maps story gates start look live3d dex canon report
 #          battle items world wild ui saves journal forms sound batch menu oneoff playthrough
 #   region:<lane> runs every suite with that owner (not the long ones) + walk:<lane>.
-#   alias <old name> <new name(s)>   keeps an old suite name working after a move (none yet)
+#   alias <old name> <new name(s)>   keeps an old suite name working after a move (the C7 renames, at the end)
 # New suite: add its line here (run.sh lint lists any body without one).
 
 # main
@@ -67,6 +67,9 @@ guide_exits            journal  journal
 journal_regions        journal  journal
 journal_rules          journal  journal
 journal_parts          journal  journal
+
+# checks
+playthrough_sync       checks   playthrough   # (add quick once Sinnoh, Unova, Orange match: ROADMAP_CHECKS C6)
 quest_book             journal  journal,quick
 quest_book_hoenn       journal  journal
 quest_book_johto       journal  journal
@@ -77,9 +80,9 @@ quest_book_sinnoh      journal  journal
 # kanto
 canon_species          kanto    dex
 dungeon_kanto          kanto    maps
-ferry_landing          kanto    story
-frlg                   kanto    maps
-giant_volcano          kanto    story
+kanto_ferry_landing    kanto    story
+kanto_frlg             kanto    maps
+kanto_giant_volcano    kanto    story
 kanto_canon            kanto    report
 kanto_events           kanto    story
 kanto_gates            kanto    story,gates
@@ -87,14 +90,14 @@ kanto_looks            kanto    look
 kanto_maps             kanto    maps
 kanto_played           kanto    story
 kanto_playthrough      kanto    long,playthrough
-kantostart             kanto    story,start
-rowdy_pikachu          kanto    story
-sevii                  kanto    story,helpers
+kanto_start            kanto    story,start
+kanto_rowdy_pikachu    kanto    story
+sevii_story            kanto    story,helpers
 sevii_maps             kanto    maps
-yellow_kanto           kanto    story
+kanto_yellow           kanto    story
 
 # johto
-alph                   johto    maps
+johto_alph             johto    maps
 canon_species_johto    johto    dex
 dungeon_johto          johto    maps
 johto_canon            johto    maps,canon
@@ -104,18 +107,18 @@ johto_live3d           johto    live3d
 johto_looks            johto    look
 johto_played           johto    story
 johto_playthrough      johto    long,playthrough
-live3d_depth           johto    live3d
+johto_live3d_depth     johto    live3d
 
 # orange
 canon_species_orange   orange   dex
-orange                 orange   story
+orange_story           orange   story
 orange_canon           orange   report
 orange_events          orange   story
 orange_gates           orange   story,gates
 orange_maps            orange   maps
 orange_playthrough     orange   long,playthrough
 orange_postgame        orange   story
-orangeforms            orange   forms
+orange_forms           orange   forms
 
 # hoenn
 canon_species_hoenn    hoenn    dex
@@ -125,51 +128,52 @@ hoenn_looks            hoenn    look
 hoenn_maps             hoenn    maps
 hoenn_played           hoenn    story
 hoenn_playthrough      hoenn    long,playthrough
-hoennstart             hoenn    story,start
-soaring                hoenn    world
-soaring3d              hoenn    world
+hoenn_start            hoenn    story,start
+hoenn_soaring          hoenn    world
+hoenn_soaring3d        hoenn    world
 
 # sinnoh
-eterna                 sinnoh   story
-sinnoh                 sinnoh   maps
+sinnoh_barry           sinnoh   story
+sinnoh_maps            sinnoh   maps
 sinnoh_gates           sinnoh   story,gates
 sinnoh_live3d          sinnoh   live3d
 sinnoh_played          sinnoh   story
 sinnoh_playthrough     sinnoh   long,playthrough
-sinnohfolk             sinnoh   maps
-sinnohstart            sinnoh   story,start
+sinnoh_folk            sinnoh   maps
+sinnoh_start           sinnoh   story,start
 
 # unova
-grottoes               unova    world
-gusts                  unova    world
-liberty                unova    live3d
-live3d                 unova    live3d
-royal_unova            unova    world
+unova_grottoes         unova    world
+unova_gusts            unova    world
+unova_liberty          unova    live3d
+unova_live3d           unova    live3d
+unova_royal            unova    world
 unova_music            unova    sound
 unova_playthrough      unova    long,playthrough
-unovab1                unova    story,batch
-unovab2                unova    story,batch
-unovab3a               unova    story,batch
-unovab3b               unova    story,batch
-unovab4a               unova    story,batch
-unovab4b               unova    story,batch
-unovab4c               unova    story,batch
-unovab5a               unova    story,batch
-unovab5b               unova    story,batch
-unovab6a               unova    story,batch
-unovab6b               unova    story,batch
-unovab7a               unova    story,batch
-unovab7b               unova    story,batch
-unovab8a               unova    story,batch
-unovab8b               unova    story,batch
-unovab9a               unova    story,batch
-unovab9b               unova    story,batch
-unovab9c               unova    story,batch
-unovastart             unova    story,start
+unova_b1               unova    story,batch
+unova_b2               unova    story,batch
+unova_b3a              unova    story,batch
+unova_b3b              unova    story,batch
+unova_b4a              unova    story,batch
+unova_b4b              unova    story,batch
+unova_b4c              unova    story,batch
+unova_b5a              unova    story,batch
+unova_b5b              unova    story,batch
+unova_b6a              unova    story,batch
+unova_b6b              unova    story,batch
+unova_b7a              unova    story,batch
+unova_b7b              unova    story,batch
+unova_b8a              unova    story,batch
+unova_b8b              unova    story,batch
+unova_b9a              unova    story,batch
+unova_b9b              unova    story,batch
+unova_b9c              unova    story,batch
+unova_b10a              unova    story,batch
+unova_start            unova    story,start
 
 # orre
 canon_species_orre     orre     dex
-orre                   orre     story,helpers
+orre_story             orre     story,helpers
 orre_b1                orre     story,batch
 orre_b2                orre     story,batch
 orre_b3                orre     story,batch
@@ -186,9 +190,9 @@ orre_b8d               orre     story,batch
 orre_maps              orre     maps
 orre_pilot             orre     story,batch
 orre_playthrough       orre     long,playthrough
-recheck_orre           orre     oneoff
-shadows                orre     forms
-shadow_parity          orre     forms
+orre_recheck           orre     oneoff
+orre_shadows           orre     forms
+orre_shadow_parity     orre     forms
 
 
 
@@ -213,3 +217,52 @@ gone recheck_pkt Jordan 11-24: old menu region's data suite; smoke_regions.py an
 gone dlc Jordan 11-24: old menu region's data suite; smoke_regions.py and walk:<region> still check it starts
 gone decolore Jordan 11-24: old menu region's data suite; smoke_regions.py and walk:<region> still check it starts
 gone sinjoh Jordan 11-24: old menu region's data suite; smoke_regions.py and walk:<region> still check it starts
+
+# Old names (Checks C7, 11-24): run.sh / run_par.sh still take them
+alias unovab1 unova_b1
+alias unovab2 unova_b2
+alias unovab3a unova_b3a
+alias unovab3b unova_b3b
+alias unovab4a unova_b4a
+alias unovab4b unova_b4b
+alias unovab4c unova_b4c
+alias unovab5a unova_b5a
+alias unovab5b unova_b5b
+alias unovab6a unova_b6a
+alias unovab6b unova_b6b
+alias unovab7a unova_b7a
+alias unovab7b unova_b7b
+alias unovab8a unova_b8a
+alias unovab8b unova_b8b
+alias unovab9a unova_b9a
+alias unovab9b unova_b9b
+alias unovab9c unova_b9c
+alias unovastart unova_start
+alias live3d unova_live3d
+alias liberty unova_liberty
+alias royal_unova unova_royal
+alias grottoes unova_grottoes
+alias gusts unova_gusts
+alias frlg kanto_frlg
+alias kantostart kanto_start
+alias yellow_kanto kanto_yellow
+alias rowdy_pikachu kanto_rowdy_pikachu
+alias giant_volcano kanto_giant_volcano
+alias ferry_landing kanto_ferry_landing
+alias sevii sevii_story
+alias sinnoh sinnoh_maps
+alias sinnohfolk sinnoh_folk
+alias sinnohstart sinnoh_start
+alias eterna sinnoh_barry
+alias soaring hoenn_soaring
+alias soaring3d hoenn_soaring3d
+alias hoennstart hoenn_start
+alias alph johto_alph
+alias live3d_depth johto_live3d_depth
+alias orange orange_story
+alias orangeforms orange_forms
+alias orre orre_story
+alias shadows orre_shadows
+alias shadow_parity orre_shadow_parity
+alias recheck_orre orre_recheck
+alias unovab10a unova_b10a

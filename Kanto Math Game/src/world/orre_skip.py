@@ -37,6 +37,7 @@ def event(state, ev, lines, show):
     area = story.current_area_key
     story.story_flags.pop(orre_tournament.RUN.format(area), None)
     story.story_flags.pop(orre_tournament.FIGHT.format(area), None)
+    story.story_flags.pop(f"gym_progress_{area}", None)   # (R6 11-24: Evice's count left 6 - the League began past its last round)
     if story.story_flags.get(PART2):
         return show(lines) if lines else None
     story.story_flags[PART2] = True
