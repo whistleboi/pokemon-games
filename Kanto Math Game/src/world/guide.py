@@ -353,6 +353,13 @@ def _ok(story, cond, area=None):
         return len(story.defeated_trainers.get(area, ())) >= len(pool)
     if c.startswith("has_item:"):
         return story.inventory.get(c[9:], 0) > 0
+    if ":" in c and hasattr(story, "special_condition"):   # (the screens' own "kind:arg" conditions: Black 2 / White 2
+        try:                                                  #  ("unova_version:WHITE_2"), "world:<module>:<arg>"... - a step's
+            got = story.special_condition(c)                  #  when / done can name a version; Unova's card, 11-24)
+        except Exception:
+            got = None
+        if got is not None:
+            return bool(got)
     if c.startswith("has_") and c.endswith("_badge"):
         return story.has_badge(c[4:-6])
     if c.startswith("has_") and story.inventory.get(c[4:].upper(), 0) > 0:
