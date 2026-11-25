@@ -928,7 +928,8 @@ class DoubleBattleState(TrainerBattleState):
         if img is None:
             return None, None
         fx, fy = self._feet(side, k)
-        pad = img.get_height() - img.get_bounding_rect().bottom
+        from src.vfx.animations import _feet_pad   # (measured once a picture, as singles' sprite_rect: Checks C3, 11-24)
+        pad = _feet_pad(img)
         return img, img.get_rect(midbottom=(int(fx), int(fy + pad)))
 
     def _spot(self, mon):
