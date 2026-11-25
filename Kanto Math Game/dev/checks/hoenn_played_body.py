@@ -201,7 +201,7 @@ check(story.story_flags.get("beat_hoenn_champion") and len(_l) == 5, "...the tit
 # ================================================================================ 4. the League rematch
 print("\n4) after the title: the League rematch (ORAS's rematch teams; ORAS has no Gym Leader rematches)")
 at("champion", also=True)
-story.player_team = [ace(), ace(), ace()]
+story.player_team = [ace() for _ in range(6)]   # (a full six: three sometimes lost to Glacia's Lv 72-74 rematch team, 11-24)
 _league = _area["EVER_GRANDE_CITY"]["gym"]
 _want = [t.get("rematch") for t in _league.get("trainers", [])] + [_league["leader"].get("rematch")]
 story.story_flags["gym_progress_EVER_GRANDE_CITY"] = 0
