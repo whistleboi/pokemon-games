@@ -635,13 +635,12 @@ def flood(st, through=False, blocked=()):
     br = (getattr(st, "bridge", None) or {}) if is_town(st) else (getattr(st.run.floor, "bridge", None) or {})   # (Sinnoh: towns have them too)
     start = pos(st)
     if start in br:
-        ax = br[start] if (getattr(st, "deck", True) if is_town(st) else getattr(st.run, "deck", True)) else (br[start][1], br[start][0])
-        start = (start, ax)
+        start = (start, bool(getattr(st, "deck", True) if is_town(st) else getattr(st.run, "deck", True)))   # (on the deck or under it)
     prev, q = {start: None}, deque([start])
     while q:
         pn = q.popleft()
         p = _tile(pn)
-        mode = pn[1] if p in br and pn is not p else None
+        mode = pn[1] if p in br and pn is not p else None   # (on a bridge: True on its deck, False under it)
         for d in DIRS:
             if (p, d) in blocked:
                 continue
@@ -650,9 +649,9 @@ def flood(st, through=False, blocked=()):
             if r is None:
                 continue
             t, end = r
-            if p in br and t not in br and mode is not None and ad != mode:   # (off a bridge only the way you're crossing it)
+            if p in br and t not in br and mode is not None and (ad == br[p]) != mode:   # (off a bridge: along it from the deck, across it from under)
                 continue
-            tn = (t, (mode if p in br and mode is not None else ad)) if t in br else t
+            tn = (t, (mode if p in br and mode is not None else ad == br[t])) if t in br else t   # (onto it from off it: along it is the deck)
             if tn not in prev:
                 prev[tn] = (pn, d)
                 if not end:
@@ -1270,6 +1269,82 @@ def ride_lifts(st):
     return {"lift": plan}
 
 
+def turn_gears(st):
+    """Sunyshore Gym (Sinnoh S6, src/world/sunyshore_gym.py; 11-25): each room's walkways turn together (state 0-3) as you
+    step on a gear's middle. Where you stand and the room's state searched together, the way on (its stairs up, Volkner,
+    or back down once the badge is won); then a walk to the first gear button on it. -> what was done, or None (the way on
+    can be walked to as things stand, or there is none)."""
+    if not is_town(st) or st.area_key != "SUNYSHORE_CITY" or getattr(st, "room", None) not in ("gym", "gym_2", "gym_3"):
+        return None
+    from src.world import sunyshore_gym as SG
+    ri = ("gym", "gym_2", "gym_3").index(st.room)
+    won = "BEACON" in (story.badges.get("SINNOH") or [])
+    on = {"gym": "OUT:13,11", "gym_2": "ROOM:gym", "gym_3": "ROOM:gym_2"} if won else {"gym": "ROOM:gym_2", "gym_2": "ROOM:gym_3"}
+    if st.room in on:
+        goals = {t for t, v in st.exits.items() if v == on[st.room]}
+    else:   # (Volkner: beside him)
+        vk = next((p_ for p_, o in st._people().items() if str(o.get("text")) == "Gym"), None)
+        goals = {(vk[0] + dx, vk[1] + dy) for dx, dy in DIRS} if vk else set()
+    if not goals or goals & set(_tile(k) for k in flood(st)):
+        return None   # (walkable to now: the marker and the walk do the rest)
+    people = set(st._people())
+    gear = {}   # tile -> the region it belongs to
+    for bar in getattr(st, "_bar_list", []) or []:
+        c = str(((bar.get("until") or {}).get("condition")) or "")
+        if c.startswith("world:sunyshore_gym:open:%d:" % ri):
+            for t in bar.get("tiles", []):
+                gear[tuple(t)] = int(c.rsplit(":", 1)[1])
+    other = {t for t in getattr(st, "barred", {}) if t not in gear}
+    press = {}
+    for sc in (st.town_map["rooms"][st.room].get("scenes") or []):
+        ev, tr = sc.get("event") or {}, sc.get("trigger")
+        if isinstance(ev, dict) and ev.get("world") == "sunyshore_gym" and ev.get("press") and isinstance(tr, dict) and tr.get("zone"):
+            press[(tr["zone"][0], tr["zone"][1])] = SG.STEP[ev["press"]]
+    def ok(t, s):
+        x, y = t
+        if not (0 <= x < st.w and 0 <= y < st.h) or t in people or t in other:
+            return False
+        if t in gear and gear[t] in SG.BLOCKED[ri][s]:
+            return False
+        return st.rows[y][x] == "." or t in st.exits
+    start = (tuple(pos(st)), SG.state(story, ri))
+    first, q, plan = {start: None}, collections.deque([start]), None
+    while q:
+        cur = q.popleft()
+        (x, y), s = cur
+        if (x, y) in goals:
+            plan = first[cur]
+            break
+        for dx, dy in DIRS:
+            t = (x + dx, y + dy)
+            if not ok(t, s) or (t in st.exits and t not in goals):
+                continue
+            nxt = (t, (s + press[t]) % 4) if t in press else (t, s)
+            if nxt not in first:
+                first[nxt] = first[cur] or (t if t in press else None)
+                q.append(nxt)
+    if plan is None:
+        return None
+    L = loc()
+    key = (L, ("GEARS", SG.state(story, ri), plan))
+    if TRIED[key] >= 3:
+        return None
+    TRIED[key] += 1
+    STATE["puzzles"] += 1
+    if tuple(plan) == tuple(pos(st)):   # (on the button already: off it, and on again)
+        off = next(((plan[0] + dx, plan[1] + dy) for dx, dy in DIRS if ok((plan[0] + dx, plan[1] + dy), SG.state(story, ri))
+                    and (plan[0] + dx, plan[1] + dy) not in press), None)
+        if off is None:
+            return None
+        go(off, "off the gear")
+        settle()
+    how, n = go(plan, "a gear's button")
+    for _ in range(30):
+        st = settle()
+    out(f"  .... [{STATE['mission']}] pressed the gear at {plan} ({how}): walkways now {SG.state(story, ri)}, at {here()}")
+    return {"gear": plan}
+
+
 def talk_companions(st):
     """Someone walking with you (Lance in the Rocket hideout) with a line on this floor not heard yet (an unset flag):
     turn to them and press the action key (the game's own _talk_companion, as the key does). -> True if talked."""
@@ -1867,6 +1942,8 @@ def play_through():
             continue
         if ride_lifts(st) is not None:   # (Canalave Gym's moving platforms, Sinnoh S5)
             continue
+        if turn_gears(st) is not None:   # (Sunyshore Gym's turning walkways, Sinnoh S6)
+            continue
         if talk_companions(st):   # (Lance walking with you in the hideout: his Whirlpool line)
             continue
         spot = marker(st)
@@ -2001,7 +2078,7 @@ def _the_end():   # (the goal of the job being played: _got(GOAL); the story's o
 if ENDED == "CHAMPION" and os.environ.get("KPT_POST", "1") != "0":
     story.story_flags["move_offer_johto"] = story.story_flags["move_offer_kanto"] = True   # (the title's "where next?" already asked)
     _missions = g.loader.area_data.setdefault("JOURNAL_MISSIONS", [])
-    for _id, _what, _fly, _steps, _flag in POST_JOBS:
+    for _id, _what, _fly, _steps, _flag in []:   # (Johto's post-title jobs aren't Sinnoh's)
         _t0, _b0, _f0 = time.time(), STATE["battles"], len(FIND)
         _m = {"id": _id, "type": "MAIN", "text": _what, "desc": "After the title: " + _what, "condition": {"required_region": "JOHTO", "flag": ["beat_johto_champion"]},
               "completed_flag": (_flag if not _flag.startswith("item:") else "post_done_" + _id), "steps": _steps}
@@ -2051,6 +2128,7 @@ TOUR_LEGS = [("CIANWOOD_CITY", "CLIFF_EDGE_GATE", "Cianwood into the Cliff Edge 
              ("JOHTO_ROUTE_42", "MT_MORTAR", "Route 42 into Mt. Mortar"),
              ("GOLDENROD_CITY", "NATIONAL_PARK", "Goldenrod up Route 35 to the National Park"),
              ("OLIVINE_CITY", "VERMILLION_CITY", "Olivine by the S.S. Aqua to Vermilion")]
+TOUR_LEGS = []   # (Johto's tour legs aren't Sinnoh's)
 TOUR = []
 if ENDED == "CHAMPION" and os.environ.get("KPT_TOUR", "1") != "0":
     story.inventory.setdefault("BICYCLE", 1)
