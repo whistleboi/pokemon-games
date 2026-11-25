@@ -93,6 +93,7 @@
    "SUMMER": "t_05_su",
    "WINTER": "t_05_wi"
   },
+  "UNOVA_POKEMON_LEAGUE": "pokemon_league",
   "UNOVA_ROUTE_11": {
    "AUTUMN": "r_e_au",
    "SPRING": "r_e_sp",
@@ -252,6 +253,7 @@
   "UNDELLA_TOWN:center": "pokecen",
   "UNDELLA_TOWN:gate": "gate",
   "UNDELLA_TOWN:tube": "gate",
+  "UNOVA_POKEMON_LEAGUE:approach": "d_champroad",
   "UNOVA_ROUTE_13:grotto": "kemonomichi",
   "UNOVA_ROUTE_13:grotto2": "kemonomichi",
   "UNOVA_ROUTE_16:bridge_gate": "gate",
