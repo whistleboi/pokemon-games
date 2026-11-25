@@ -45,6 +45,8 @@ EVENTS = {
     "kanto_hall_of_fame": {"scene": "hall_of_fame", "lines": ["You returned home to share your victory!"],
                            "clear": ["hall_of_fame_due_INDIGO_PLATEAU"], "travel": "PALLET_TOWN"},
     # ---------------- Johto: the Hall of Fame at the Silver League (SoulSilver's T10R0701), after Champion Lance: home to New Bark
+    "sinnoh_rowan_tm27": {"lines": ["Rowan: Treat your Pokemon well, and it will give everything for you."],
+                          "gift_item": {"TM274": 1}, "flag": "got_tm274_sandgem"},   # (s_s8_gifts.py: Platinum's TM27 Return)
     "sinnoh_hall_of_fame": {"scene": "hall_of_fame", "lines": ["You returned home to share your victory!"],
                             "clear": ["hall_of_fame_due_SINNOH_POKEMON_LEAGUE", "turnback_giratina_done"], "travel": "TWINLEAF_TOWN"},   # (s_s6_league.py)
     "johto_hall_of_fame": {"scene": "hall_of_fame", "lines": ["You returned home to share your victory!"],

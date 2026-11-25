@@ -76,6 +76,10 @@
     ]
   },
   "figures": {
+    "SANDGEM_TOWN:Professor Rowan": {"sheet": "pt_doctor.png"},
+    "SUNYSHORE_CITY:Julia": {"sheet": "pt_woman3.png"},
+    "SUNYSHORE_CITY:Jasmine": {"sheet": "pt_mikan.png"},
+    "SINNOH_ROUTE_221:Number man": {"sheet": "pt_oldman1.png"},
     "SINNOH_BATTLE_FRONTIER:Worried camper": {"sheet": "pt_campboy.png"},
     "SINNOH_BATTLE_FRONTIER:Unlucky lady": {"sheet": "pt_ambrella.png"},
     "SINNOH_BATTLE_FRONTIER:Type thinker": {"sheet": "pt_middlewoman1.png"},

@@ -3770,7 +3770,7 @@
       "type": "MAIN",
       "title": "Victory Road",
       "description": "Surf north from Sunyshore on Route 223, climb the waterfall and cross Victory Road to the Pokémon League.",
-      "condition": {
+      "steps": [{"area": "SUNYSHORE_CITY", "at": [25, 5], "label": "Jasmine", "done": "got_hm_waterfall_sunyshore"}], "condition": {
         "required_region": "SINNOH",
         "badges_min": 8,
         "visited_not": "SINNOH_POKEMON_LEAGUE",
