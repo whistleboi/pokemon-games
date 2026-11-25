@@ -254328,7 +254328,7 @@
    "cccccccc..aaaaaaaa.||.aaaaaaaakkoooooo~||cccccccccccccccccccccoo",
    "cccccccc.!aa.......||.........kkoooooo~||cccccccccccccccccccccoo",
    "cccccccc..aa..kkkkk||kkkkkkkkkkkoooooo~||cccccccccccccccccccccoo",
-   "<........aaa..kooo~||~~~~~~~~~~~~~~~~~~||ccccj....!cccNcccccccoo",
+   "<........aaa..kooo~||~~~~~~~~~~~~~~~~~~||ccccj....!cccDcccccccoo",
    "<........aaa..kooo~;;;;;;;;;;;;;;;;;;;;;;;;;;,............ccccoo",
    "cccccccc......kooo~;;;;;;;;;;;;;;;;;;;;;;;;;;,............ccccoo",
    "cccccccccccccccooo~~~~~~~rr~~~~~~~~~~~~~~ccccj...N...cccccccccoo",
@@ -254636,7 +254636,6 @@
      ]
     }
    },
-   "Lighthouse",
    {
     "text": "Worker",
     "action": "EVENT",
@@ -255982,8 +255981,8 @@
     "art": [
      "ccccccccccccccccc",
      "ccccccccccccccccc",
-     "cccccccc.cccccccc",
-     "ccccccN....cccccc",
+     "cccccccc^cccccccc",
+     "cccccc.....cccccc",
      "ccccccN....cccccc",
      "cccccc.....cccccc",
      "ccc.cccc.cccc.ccc",
@@ -255998,7 +255997,8 @@
      "ccccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:13,11"
+     "v": "OUT:13,11",
+     "^": "ROOM:gym_2"
     },
     "buildings": {},
     "roofs": {
@@ -256219,10 +256219,24 @@
      ],
      "_models": true,
      "_picture": {
-      "f": "pt_ground/C08GYM0101.png",
+      "f": "pt_ground/C08GYM0101_g0.png",
       "at": [
        0,
        0
+      ],
+      "when": [
+       {
+        "flag": "sunyshore_gym_r0_s1",
+        "f": "pt_ground/C08GYM0101_g1.png"
+       },
+       {
+        "flag": "sunyshore_gym_r0_s2",
+        "f": "pt_ground/C08GYM0101_g2.png"
+       },
+       {
+        "flag": "sunyshore_gym_r0_s3",
+        "f": "pt_ground/C08GYM0101_g3.png"
+       }
       ]
      }
     },
@@ -256259,7 +256273,6 @@
        ]
       }
      },
-     "Gym",
      {
       "text": "Gym guide",
       "action": "EVENT",
@@ -256267,6 +256280,281 @@
        "lines": [
         "Hey, Champ-to-be! Seven Badges already? Win here and the League awaits!"
        ]
+      }
+     }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        1,
+        8
+       ],
+       [
+        2,
+        8
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:0:0"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        3,
+        6
+       ],
+       [
+        3,
+        7
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:0:1"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        4,
+        8
+       ],
+       [
+        5,
+        8
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:0:2"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        3,
+        9
+       ],
+       [
+        3,
+        10
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:0:3"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        6,
+        8
+       ],
+       [
+        7,
+        8
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:0:4"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        8,
+        6
+       ],
+       [
+        8,
+        7
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:0:5"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        9,
+        8
+       ],
+       [
+        10,
+        8
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:0:6"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        8,
+        9
+       ],
+       [
+        8,
+        10
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:0:7"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        11,
+        8
+       ],
+       [
+        12,
+        8
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:0:8"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        6
+       ],
+       [
+        13,
+        7
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:0:9"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        8
+       ],
+       [
+        15,
+        8
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:0:10"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        13,
+        9
+       ],
+       [
+        13,
+        10
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:0:11"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     }
+    ],
+    "scenes": [
+     {
+      "trigger": "enter",
+      "every": true,
+      "cast": [],
+      "event": {
+       "world": "sunyshore_gym",
+       "enter": 0
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        3,
+        8,
+        3,
+        8
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "event": {
+       "world": "sunyshore_gym",
+       "press": "normal",
+       "room": 0
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        13,
+        8,
+        13,
+        8
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "event": {
+       "world": "sunyshore_gym",
+       "press": "normal",
+       "room": 0
       }
      }
     ]
@@ -257280,6 +257568,1782 @@
       ]
      }
     }
+   },
+   "gym_2": {
+    "theme": "room",
+    "people": [
+     {
+      "text": "Poké Kid Meghan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Poké Kid Meghan: Let's see what you've got!"
+       ],
+       "battle": {
+        "name": "Poké Kid Meghan",
+        "class": "POKE_KID",
+        "sprite": "pt_poke_kid.png",
+        "team": [
+         25,
+         25,
+         25,
+         25
+        ],
+        "levels": [
+         42,
+         42,
+         42,
+         42
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Poké Kid Meghan: Shocking... You're strong."
+         ]
+        }
+       },
+       "flag": "gym_trainer_SUNYSHORE_CITY_4",
+       "done": [
+        "Poké Kid Meghan: Shocking... You're strong."
+       ]
+      }
+     },
+     {
+      "text": "School Kid Forrest",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "School Kid Forrest: Let's see what you've got!"
+       ],
+       "battle": {
+        "name": "School Kid Forrest",
+        "class": "SCHOOL_KID",
+        "sprite": "pt_school_kid_m.png",
+        "team": [
+         82
+        ],
+        "levels": [
+         47
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "School Kid Forrest: Shocking... You're strong."
+         ]
+        }
+       },
+       "flag": "gym_trainer_SUNYSHORE_CITY_2",
+       "done": [
+        "School Kid Forrest: Shocking... You're strong."
+       ]
+      }
+     },
+     {
+      "text": "Guitarist Jerry",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Guitarist Jerry: Let's see what you've got!"
+       ],
+       "battle": {
+        "name": "Guitarist Jerry",
+        "class": "GUITARIST",
+        "sprite": "pt_guitarist.png",
+        "team": [
+         81,
+         404,
+         404
+        ],
+        "levels": [
+         44,
+         44,
+         44
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Guitarist Jerry: Shocking... You're strong."
+         ]
+        }
+       },
+       "flag": "gym_trainer_SUNYSHORE_CITY_3",
+       "done": [
+        "Guitarist Jerry: Shocking... You're strong."
+       ]
+      }
+     }
+    ],
+    "art": [
+     "cccccccccccccccccc",
+     "cccccccccccccccccc",
+     "ccccccccc^cccccccc",
+     "c................c",
+     "c...........N....c",
+     "c...N............c",
+     "c...cc.cccc.ccc.cc",
+     "c...cc.cccc.ccc.cc",
+     "c.............c.cc",
+     "c...cc.cccc.ccc.cc",
+     "c...cc.cccc.ccc.cc",
+     "cc.ccc.cccc.ccN..c",
+     "cc.ccc.cccc.cc...c",
+     "cc.c.............c",
+     "cc.ccc.cccc.cc...c",
+     "cc.ccc.cccc.cc...c",
+     "c.............cccc",
+     "c.............cccc",
+     "c.............cccc",
+     "c.............cccc",
+     "c.............cccc",
+     "c........v....cccc",
+     "cccccccccccccccccc",
+     "cccccccccccccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:gym",
+     "^": "ROOM:gym_3"
+    },
+    "roofs": {
+     "_picture": {
+      "f": "pt_ground/C08GYM0102_g0.png",
+      "at": [
+       0,
+       0
+      ],
+      "when": [
+       {
+        "flag": "sunyshore_gym_r1_s1",
+        "f": "pt_ground/C08GYM0102_g1.png"
+       },
+       {
+        "flag": "sunyshore_gym_r1_s2",
+        "f": "pt_ground/C08GYM0102_g2.png"
+       },
+       {
+        "flag": "sunyshore_gym_r1_s3",
+        "f": "pt_ground/C08GYM0102_g3.png"
+       }
+      ]
+     }
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        4,
+        8
+       ],
+       [
+        5,
+        8
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:1:0"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        6,
+        6
+       ],
+       [
+        6,
+        7
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:1:1"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        7,
+        8
+       ],
+       [
+        8,
+        8
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:1:2"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        6,
+        9
+       ],
+       [
+        6,
+        10
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:1:3"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        9,
+        8
+       ],
+       [
+        10,
+        8
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:1:4"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        11,
+        6
+       ],
+       [
+        11,
+        7
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:1:5"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        12,
+        8
+       ],
+       [
+        13,
+        8
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:1:6"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        11,
+        9
+       ],
+       [
+        11,
+        10
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:1:7"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        15,
+        6
+       ],
+       [
+        15,
+        7
+       ],
+       [
+        15,
+        8
+       ],
+       [
+        15,
+        9
+       ],
+       [
+        15,
+        10
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:1:8"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        2,
+        11
+       ],
+       [
+        2,
+        12
+       ],
+       [
+        2,
+        13
+       ],
+       [
+        2,
+        14
+       ],
+       [
+        2,
+        15
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:1:9"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        4,
+        13
+       ],
+       [
+        5,
+        13
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:1:10"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        6,
+        11
+       ],
+       [
+        6,
+        12
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:1:11"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        7,
+        13
+       ],
+       [
+        8,
+        13
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:1:12"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        6,
+        14
+       ],
+       [
+        6,
+        15
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:1:13"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        9,
+        13
+       ],
+       [
+        10,
+        13
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:1:14"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        11,
+        11
+       ],
+       [
+        11,
+        12
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:1:15"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        12,
+        13
+       ],
+       [
+        13,
+        13
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:1:16"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        11,
+        14
+       ],
+       [
+        11,
+        15
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:1:17"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     }
+    ],
+    "scenes": [
+     {
+      "trigger": "enter",
+      "every": true,
+      "cast": [],
+      "event": {
+       "world": "sunyshore_gym",
+       "enter": 1
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        6,
+        13,
+        6,
+        13
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "event": {
+       "world": "sunyshore_gym",
+       "press": "normal",
+       "room": 1
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        6,
+        8,
+        6,
+        8
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "event": {
+       "world": "sunyshore_gym",
+       "press": "reverse",
+       "room": 1
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        11,
+        8,
+        11,
+        8
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "event": {
+       "world": "sunyshore_gym",
+       "press": "reverse",
+       "room": 1
+      }
+     }
+    ],
+    "buildings": {}
+   },
+   "gym_3": {
+    "theme": "room",
+    "people": [
+     {
+      "text": "Guitarist Preston",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Guitarist Preston: Let's see what you've got!"
+       ],
+       "battle": {
+        "name": "Guitarist Preston",
+        "class": "GUITARIST",
+        "sprite": "pt_guitarist.png",
+        "team": [
+         404,
+         404
+        ],
+        "levels": [
+         45,
+         45
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Guitarist Preston: Shocking... You're strong."
+         ]
+        }
+       },
+       "flag": "gym_trainer_SUNYSHORE_CITY_6",
+       "done": [
+        "Guitarist Preston: Shocking... You're strong."
+       ]
+      }
+     },
+     "Gym",
+     {
+      "text": "Ace Trainer Zachery",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Ace Trainer Zachery: Let's see what you've got!"
+       ],
+       "battle": {
+        "name": "Ace Trainer Zachery",
+        "class": "ACE_TRAINER",
+        "sprite": "pt_ace_trainer_m.png",
+        "team": [
+         125,
+         82
+        ],
+        "levels": [
+         47,
+         48
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Ace Trainer Zachery: Shocking... You're strong."
+         ]
+        }
+       },
+       "flag": "gym_trainer_SUNYSHORE_CITY_8",
+       "done": [
+        "Ace Trainer Zachery: Shocking... You're strong."
+       ]
+      }
+     },
+     {
+      "text": "Ace Trainer Destiny",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Ace Trainer Destiny: Let's see what you've got!"
+       ],
+       "battle": {
+        "name": "Ace Trainer Destiny",
+        "class": "ACE_TRAINER",
+        "sprite": "pt_ace_trainer_f.png",
+        "team": [
+         125,
+         26
+        ],
+        "levels": [
+         47,
+         48
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Ace Trainer Destiny: Shocking... You're strong."
+         ]
+        }
+       },
+       "flag": "gym_trainer_SUNYSHORE_CITY_5",
+       "done": [
+        "Ace Trainer Destiny: Shocking... You're strong."
+       ]
+      }
+     },
+     {
+      "text": "Guitarist Lonnie",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Guitarist Lonnie: Let's see what you've got!"
+       ],
+       "battle": {
+        "name": "Guitarist Lonnie",
+        "class": "GUITARIST",
+        "sprite": "pt_guitarist.png",
+        "team": [
+         26
+        ],
+        "levels": [
+         47
+        ],
+        "rewards": {
+         "balls": 2
+        },
+        "dialogue": {
+         "player_won": [
+          "Guitarist Lonnie: Shocking... You're strong."
+         ]
+        }
+       },
+       "flag": "gym_trainer_SUNYSHORE_CITY_7",
+       "done": [
+        "Guitarist Lonnie: Shocking... You're strong."
+       ]
+      }
+     }
+    ],
+    "art": [
+     "ccccccccccccccccccccccc",
+     "ccccccccccccccccccccccc",
+     "ccccccccccccccccccccccc",
+     "c..N.......N..........c",
+     "c.....................c",
+     "c.....................c",
+     "c...cc.cccc.cccc.cc...c",
+     "c...cc.cccc.cccc.cc...c",
+     "c.....................c",
+     "c...cc.cccc.cccc.cc...c",
+     "c...cc.cccc.cccc.cc..Nc",
+     "cc.ccc.cccc.cccc.ccc.cc",
+     "cc.ccc.cccc.cccc.ccc.cc",
+     "cc.c...............c.cc",
+     "cc.ccc.cccc.cccc.ccc.cc",
+     "cc.ccc.cccc.cccc.ccc.cc",
+     "cc.ccc.cccc.cccc.ccc.cc",
+     "cc.ccc.cccc.cccc.ccc.cc",
+     "cc.c...............c.cc",
+     "cc.ccc.cccc.cccc.ccc.cc",
+     "cc.ccc.cccc.cccc.ccc.cc",
+     "c.......cc............c",
+     "c.......cc............c",
+     "c...N...cc......N.....c",
+     "c.......cc............c",
+     "c.......cc.v..........c",
+     "ccccccccccccccccccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:gym_2"
+    },
+    "roofs": {
+     "_picture": {
+      "f": "pt_ground/C08GYM0103_g0.png",
+      "at": [
+       0,
+       0
+      ],
+      "when": [
+       {
+        "flag": "sunyshore_gym_r2_s1",
+        "f": "pt_ground/C08GYM0103_g1.png"
+       },
+       {
+        "flag": "sunyshore_gym_r2_s2",
+        "f": "pt_ground/C08GYM0103_g2.png"
+       },
+       {
+        "flag": "sunyshore_gym_r2_s3",
+        "f": "pt_ground/C08GYM0103_g3.png"
+       }
+      ]
+     }
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        4,
+        8
+       ],
+       [
+        5,
+        8
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:2:0"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        6,
+        6
+       ],
+       [
+        6,
+        7
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:2:1"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        7,
+        8
+       ],
+       [
+        8,
+        8
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:2:2"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        6,
+        9
+       ],
+       [
+        6,
+        10
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:2:3"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        9,
+        8
+       ],
+       [
+        10,
+        8
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:2:4"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        11,
+        6
+       ],
+       [
+        11,
+        7
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:2:5"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        12,
+        8
+       ],
+       [
+        13,
+        8
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:2:6"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        11,
+        9
+       ],
+       [
+        11,
+        10
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:2:7"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        8
+       ],
+       [
+        15,
+        8
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:2:8"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        6
+       ],
+       [
+        16,
+        7
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:2:9"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        17,
+        8
+       ],
+       [
+        18,
+        8
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:2:10"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        9
+       ],
+       [
+        16,
+        10
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:2:11"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        2,
+        11
+       ],
+       [
+        2,
+        12
+       ],
+       [
+        2,
+        13
+       ],
+       [
+        2,
+        14
+       ],
+       [
+        2,
+        15
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:2:12"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        4,
+        13
+       ],
+       [
+        5,
+        13
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:2:13"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        6,
+        11
+       ],
+       [
+        6,
+        12
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:2:14"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        7,
+        13
+       ],
+       [
+        8,
+        13
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:2:15"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        6,
+        14
+       ],
+       [
+        6,
+        15
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:2:16"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        9,
+        13
+       ],
+       [
+        10,
+        13
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:2:17"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        11,
+        11
+       ],
+       [
+        11,
+        12
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:2:18"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        12,
+        13
+       ],
+       [
+        13,
+        13
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:2:19"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        11,
+        14
+       ],
+       [
+        11,
+        15
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:2:20"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        13
+       ],
+       [
+        15,
+        13
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:2:21"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        11
+       ],
+       [
+        16,
+        12
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:2:22"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        17,
+        13
+       ],
+       [
+        18,
+        13
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:2:23"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        14
+       ],
+       [
+        16,
+        15
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:2:24"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        11
+       ],
+       [
+        20,
+        12
+       ],
+       [
+        20,
+        13
+       ],
+       [
+        20,
+        14
+       ],
+       [
+        20,
+        15
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:2:25"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        2,
+        16
+       ],
+       [
+        2,
+        17
+       ],
+       [
+        2,
+        18
+       ],
+       [
+        2,
+        19
+       ],
+       [
+        2,
+        20
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:2:26"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        4,
+        18
+       ],
+       [
+        5,
+        18
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:2:27"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        6,
+        16
+       ],
+       [
+        6,
+        17
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:2:28"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        7,
+        18
+       ],
+       [
+        8,
+        18
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:2:29"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        6,
+        19
+       ],
+       [
+        6,
+        20
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:2:30"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        9,
+        18
+       ],
+       [
+        10,
+        18
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:2:31"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        11,
+        16
+       ],
+       [
+        11,
+        17
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:2:32"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        12,
+        18
+       ],
+       [
+        13,
+        18
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:2:33"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        11,
+        19
+       ],
+       [
+        11,
+        20
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:2:34"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        14,
+        18
+       ],
+       [
+        15,
+        18
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:2:35"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        16
+       ],
+       [
+        16,
+        17
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:2:36"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        17,
+        18
+       ],
+       [
+        18,
+        18
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:2:37"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        16,
+        19
+       ],
+       [
+        16,
+        20
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:2:38"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        20,
+        16
+       ],
+       [
+        20,
+        17
+       ],
+       [
+        20,
+        18
+       ],
+       [
+        20,
+        19
+       ],
+       [
+        20,
+        20
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:sunyshore_gym:open:2:39"
+      },
+      "lines": [
+       "That part of the walkway has turned away. There's nothing to stand on."
+      ]
+     }
+    ],
+    "scenes": [
+     {
+      "trigger": "enter",
+      "every": true,
+      "cast": [],
+      "event": {
+       "world": "sunyshore_gym",
+       "enter": 2
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        6,
+        8,
+        6,
+        8
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "event": {
+       "world": "sunyshore_gym",
+       "press": "normal",
+       "room": 2
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        16,
+        13,
+        16,
+        13
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "event": {
+       "world": "sunyshore_gym",
+       "press": "normal",
+       "room": 2
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        6,
+        18,
+        6,
+        18
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "event": {
+       "world": "sunyshore_gym",
+       "press": "double",
+       "room": 2
+      }
+     },
+     {
+      "trigger": {
+       "zone": [
+        16,
+        18,
+        16,
+        18
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "event": {
+       "world": "sunyshore_gym",
+       "press": "double",
+       "room": 2
+      }
+     }
+    ],
+    "buildings": {}
+   },
+   "lighthouse": {
+    "theme": "room",
+    "art": [
+     "ccccccc",
+     "ccccccc",
+     "ccccccc",
+     "c..^..c",
+     "c.....c",
+     "c.....c",
+     "c..v..c",
+     "ccccccc"
+    ],
+    "exits": {
+     "v": "OUT:54,54",
+     "^": "ROOM:lighthouse_top"
+    },
+    "roofs": {
+     "_picture": {
+      "f": "pt_ground/C08R0802.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [],
+    "title": "Vista Lighthouse"
+   },
+   "lighthouse_top": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccc",
+     "ccccccccccccc",
+     "ccccccccccccc",
+     "cc....c.NN.cc",
+     "cc....N....cc",
+     "c...........c",
+     "c...ccccc...c",
+     "c...ccccc...c",
+     "c...ccccc...c",
+     "c...ccvcc...c",
+     "c...........c",
+     "cc.........cc",
+     "ccccccccccccc",
+     "ccccccccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:lighthouse"
+    },
+    "roofs": {
+     "_picture": {
+      "f": "pt_ground/C08R0801.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     {
+      "text": "Youngster",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Youngster: I love how far you can see from up here!",
+        "Youngster: I'm going to go that far away with my Pokemon one day!"
+       ]
+      }
+     },
+     {
+      "text": "Sailor",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Sailor: The Vista Lighthouse stands for safety and protection to us Sailors."
+       ]
+      }
+     },
+     {
+      "text": "Volkner",
+      "action": "EVENT",
+      "flag_condition": "not volkner_returned_to_gym",
+      "event": {
+       "lines": [
+        "Volkner: ... ... ...So, you're the latest challenger up against the Sunyshore Gym...",
+        "Volkner: All right, I've decided. If you turn out to be weak, I'm going to challenge the Pokemon League myself.",
+        "Volkner: I'm done renovating the Gym. More than anything, I want battles that thrill me again.",
+        "Volkner: As the toughest Gym Leader in Sinnoh, I'll unleash everything in my arsenal on you. See you at the Gym.",
+        "Volkner went back to the Gym."
+       ],
+       "flag": "volkner_returned_to_gym"
+      }
+     }
+    ],
+    "title": "Vista Lighthouse, the top"
    }
   },
   "inside": {
@@ -257289,7 +259353,8 @@
    "51,7": "house_0201",
    "13,32": "house_0301",
    "43,7": "house_0401",
-   "56,35": "house_0701"
+   "56,35": "house_0701",
+   "54,54": "lighthouse"
   },
   "parts": true,
   "hidden": {
@@ -258630,7 +260695,7 @@
     "art": [
      "ccmmccccmccccccccccmmc",
      "ccmmcccc.cccccmccccccc",
-     "cccccccc.cc.cccccccccc",
+     "cccccccc.cc^cccccccccc",
      "c........j...j.......c",
      "c....................c",
      "c....................c",
@@ -258647,7 +260712,8 @@
      "cccccccccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:15,15"
+     "v": "OUT:15,15",
+     "^": "ROOM:lift_aaron"
     },
     "buildings": {},
     "roofs": {
@@ -259152,6 +261218,721 @@
         "Slow or not, however many tries it takes, I'll beat the Elite Four!"
        ]
       }
+     }
+    ],
+    "title": "Pokemon League"
+   },
+   "lift_aaron": {
+    "theme": "room",
+    "art": [
+     "ccccccccc",
+     "ccccccccc",
+     "cccc^cccc",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c...v...c",
+     "ccccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:house_0101",
+     "^": "ROOM:league_aaron"
+    },
+    "people": [],
+    "roofs": {
+     "_picture": {
+      "f": "pt_ground/C10R0102.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "title": "The lift to Aaron's room"
+   },
+   "league_aaron": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cccccccc^cccccccc",
+     "cccc............c",
+     "cccc.........c.cc",
+     "ccc.....N....c.cc",
+     "cc...........c.cc",
+     "c............c.cc",
+     "c............c.cc",
+     "ccc.............c",
+     "cccc............c",
+     "cccc............c",
+     "ccccccccvcccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:lift_aaron",
+     "^": "ROOM:lift_bertha"
+    },
+    "people": [
+     {
+      "text": "Aaron",
+      "action": "LEAGUE",
+      "index": 0,
+      "lines": [
+       "Aaron: I'm Aaron of the Elite Four. I love Bug Pokemon - beautiful and tough. Let me show you how strong they are!"
+      ]
+     }
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "pt_ground/C10R0103.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "title": "Aaron's room",
+    "barred": [
+     {
+      "tiles": [
+       [
+        8,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "league_won_SINNOH_POKEMON_LEAGUE_1"
+      },
+      "lines": [
+       "The door won't open.",
+       "Win this room's battle first!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        8,
+        12
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "beat_sinnoh_champion"
+      },
+      "lines": [
+       "The door has shut behind you. There's no going back now."
+      ]
+     }
+    ]
+   },
+   "lift_bertha": {
+    "theme": "room",
+    "art": [
+     "ccccccccc",
+     "ccccccccc",
+     "cccc^cccc",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c...v...c",
+     "ccccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:league_aaron",
+     "^": "ROOM:league_bertha"
+    },
+    "people": [],
+    "roofs": {
+     "_picture": {
+      "f": "pt_ground/C10R0104.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "title": "The lift to Bertha's room"
+   },
+   "league_bertha": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cccccccc^cccccccc",
+     "ccccc.......ccccc",
+     "ccccc.......ccccc",
+     "ccccc...N...ccccc",
+     "ccccc.......ccccc",
+     "ccccc.........ccc",
+     "ccccc.........ccc",
+     "cccc.........cccc",
+     "ccccc........cccc",
+     "ccccc........cccc",
+     "ccccccccvcccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:lift_bertha",
+     "^": "ROOM:lift_flint"
+    },
+    "people": [
+     {
+      "text": "Bertha",
+      "action": "LEAGUE",
+      "index": 1,
+      "lines": [
+       "Bertha: Welcome, youngster. I'm Bertha of the Elite Four. My Ground Pokemon and I will show you a thing or two."
+      ]
+     }
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "pt_ground/C10R0105.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "title": "Bertha's room",
+    "barred": [
+     {
+      "tiles": [
+       [
+        8,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "league_won_SINNOH_POKEMON_LEAGUE_2"
+      },
+      "lines": [
+       "The door won't open.",
+       "Win this room's battle first!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        8,
+        12
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "beat_sinnoh_champion"
+      },
+      "lines": [
+       "The door has shut behind you. There's no going back now."
+      ]
+     }
+    ]
+   },
+   "lift_flint": {
+    "theme": "room",
+    "art": [
+     "ccccccccc",
+     "ccccccccc",
+     "cccc^cccc",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c...v...c",
+     "ccccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:league_bertha",
+     "^": "ROOM:league_flint"
+    },
+    "people": [],
+    "roofs": {
+     "_picture": {
+      "f": "pt_ground/C10R0106.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "title": "The lift to Flint's room"
+   },
+   "league_flint": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cccccccc^cccccccc",
+     "ccccc.......ccccc",
+     "ccccc.......ccccc",
+     "ccccc...N...ccccc",
+     "ccccc.......ccccc",
+     "ccccc.......ccccc",
+     "ccccc.......ccccc",
+     "ccccc.......ccccc",
+     "ccccc.......ccccc",
+     "ccccc.......ccccc",
+     "ccccccccvcccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:lift_flint",
+     "^": "ROOM:lift_lucian"
+    },
+    "people": [
+     {
+      "text": "Flint",
+      "action": "LEAGUE",
+      "index": 2,
+      "lines": [
+       "Flint: I'm Flint of the Elite Four! My Fire Pokemon burn hot. Let's see if your passion can match it!"
+      ]
+     }
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "pt_ground/C10R0107.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "title": "Flint's room",
+    "barred": [
+     {
+      "tiles": [
+       [
+        8,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "league_won_SINNOH_POKEMON_LEAGUE_3"
+      },
+      "lines": [
+       "The door won't open.",
+       "Win this room's battle first!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        8,
+        12
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "beat_sinnoh_champion"
+      },
+      "lines": [
+       "The door has shut behind you. There's no going back now."
+      ]
+     }
+    ]
+   },
+   "lift_lucian": {
+    "theme": "room",
+    "art": [
+     "ccccccccc",
+     "ccccccccc",
+     "cccc^cccc",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c...v...c",
+     "ccccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:league_flint",
+     "^": "ROOM:league_lucian"
+    },
+    "people": [],
+    "roofs": {
+     "_picture": {
+      "f": "pt_ground/C10R0108.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "title": "The lift to Lucian's room"
+   },
+   "league_lucian": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cccccccc^cccccccc",
+     "c...............c",
+     "c..c.........c..c",
+     "c..c....N....c..c",
+     "c...............c",
+     "c...............c",
+     "c...............c",
+     "c..c.........c..c",
+     "c..c.........c..c",
+     "c...............c",
+     "ccccccccvcccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:lift_lucian",
+     "^": "ROOM:lift_cynthia"
+    },
+    "people": [
+     {
+      "text": "Lucian",
+      "action": "LEAGUE",
+      "index": 3,
+      "lines": [
+       "Lucian: ...I am Lucian of the Elite Four. I was reading. Let us see if your strength is worth closing the book for."
+      ]
+     }
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "pt_ground/C10R0109.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "title": "Lucian's room",
+    "barred": [
+     {
+      "tiles": [
+       [
+        8,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "league_won_SINNOH_POKEMON_LEAGUE_4"
+      },
+      "lines": [
+       "The door won't open.",
+       "Win this room's battle first!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        8,
+        12
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "beat_sinnoh_champion"
+      },
+      "lines": [
+       "The door has shut behind you. There's no going back now."
+      ]
+     }
+    ]
+   },
+   "lift_cynthia": {
+    "theme": "room",
+    "art": [
+     "ccccccccc",
+     "ccccccccc",
+     "cccc^cccc",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c...v...c",
+     "ccccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:league_lucian",
+     "^": "ROOM:league_cynthia"
+    },
+    "people": [],
+    "roofs": {
+     "_picture": {
+      "f": "pt_ground/C10R0110.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "title": "The lift to the Champion's room"
+   },
+   "league_cynthia": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cccccccc^cccccccc",
+     "c...............c",
+     "c...............c",
+     "c...............c",
+     "c...............c",
+     "c...............c",
+     "c...............c",
+     "c.cc.........cc.c",
+     "c.cc.........cc.c",
+     "c.cc....N....cc.c",
+     "c...............c",
+     "c...............c",
+     "c...............c",
+     "c.cc.........cc.c",
+     "c.cc.........cc.c",
+     "c.cc.........cc.c",
+     "c.......v.......c",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:lift_cynthia",
+     "^": "ROOM:league_hall"
+    },
+    "people": [
+     {
+      "text": "Cynthia",
+      "action": "LEAGUE",
+      "index": 4,
+      "lines": [
+       "Cynthia: I'm Cynthia, the Champion. Even I feel it - you and your Pokemon have come this far together. As the Champion, I accept your challenge!"
+      ]
+     }
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "pt_ground/C10R0111.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "title": "The Champion's room",
+    "barred": [
+     {
+      "tiles": [
+       [
+        8,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "hall_of_fame_due_SINNOH_POKEMON_LEAGUE"
+      },
+      "lines": [
+       "The door won't open.",
+       "Only the League's Champion may go through."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        8,
+        18
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "beat_sinnoh_champion"
+      },
+      "lines": [
+       "The door has shut behind you. There's no going back now."
+      ]
+     }
+    ],
+    "scenes": [
+     {
+      "trigger": "enter",
+      "condition": "hall_of_fame_due_SINNOH_POKEMON_LEAGUE",
+      "every": true,
+      "cast": [
+       {
+        "sheet": "pt_doctor.png",
+        "from": [
+         8,
+         17
+        ],
+        "to": "player",
+        "lines": [
+         "Professor Rowan: So. You've done it. You've become the Champion.",
+         "Professor Rowan: You and your Pokemon trusted each other the whole way. That is what made you strong."
+        ],
+        "leave": "back"
+       },
+       {
+        "person": "Cynthia",
+        "lines": [
+         "Cynthia: Come with me. There's somewhere a new Champion has to go."
+        ]
+       }
+      ],
+      "room": [
+       "league_hall",
+       5,
+       21
+      ]
+     }
+    ]
+   },
+   "league_hall": {
+    "theme": "room",
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccccc^ccccc",
+     "c.........c",
+     "c.........c",
+     "c.........c",
+     "c.c.....c.c",
+     "c.c.....c.c",
+     "c.........c",
+     "c.........c",
+     "c.........c",
+     "c.........c",
+     "c.c.....c.c",
+     "c.c.....c.c",
+     "c.........c",
+     "c.........c",
+     "c.........c",
+     "c.........c",
+     "c.c.....c.c",
+     "c.c.....c.c",
+     "c.........c",
+     "c.........c",
+     "c.........c",
+     "c....v....c",
+     "ccccccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:league_cynthia",
+     "^": "ROOM:hall_of_fame"
+    },
+    "people": [],
+    "roofs": {
+     "_picture": {
+      "f": "pt_ground/C10R0112.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "title": "The hall to the Hall of Fame"
+   },
+   "hall_of_fame": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "c......ccc......c",
+     "c......ccc......c",
+     "c...............c",
+     "c..c.....N...c..c",
+     "c..c.........c..c",
+     "c...............c",
+     "c...............c",
+     "c...............c",
+     "c...............c",
+     "c..c.........c..c",
+     "c..c.........c..c",
+     "c...............c",
+     "c.......v.......c",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:league_hall"
+    },
+    "people": [
+     {
+      "text": "Cynthia",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Cynthia: Your team's place in the Hall of Fame is yours forever. Well done, Champion."
+       ]
+      }
+     }
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "pt_ground/C10R0113.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "title": "Hall of Fame",
+    "scenes": [
+     {
+      "who": "Cynthia",
+      "trigger": "enter",
+      "condition": "hall_of_fame_due_SINNOH_POKEMON_LEAGUE",
+      "every": true,
+      "lines": [
+       "Cynthia: This is the Hall of Fame. Every Champion of the Pokemon League is honoured here.",
+       "Cynthia: The Pokemon who fought beside you today will be recorded with you.",
+       "{player_name}'s team was entered in the Hall of Fame!"
+      ],
+      "then": "event:sinnoh_hall_of_fame",
+      "after": "stay"
      }
     ]
    }
@@ -329063,9 +331844,9 @@
     "art": [
      "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccr.b..ccccccccccccccccccccccccccccccccccccccc",
-     "cc.........ccccN.b.+ccccccccccccccccccccccccccccccccccccccc",
-     "cc.N.......ccccr.b..ccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccr....ccccccccccccccccccccccccccccccccccccccc",
+     "cc.........ccccN...+ccccccccccccccccccccccccccccccccccccccc",
+     "cc.N.......ccccr....ccccccccccccccccccccccccccccccccccccccc",
      "cc...ccccc.cccccccccccccccccccccccccccccccccccccccccccccccc",
      "cc___ccccc.cccccccccccccccccccccccccccccccccccccccccccccccc",
      "cc...ccccc.cccccccccccccccccccccccccccccccccccccccccccccccc",
@@ -329076,7 +331857,7 @@
      "cc..cccccccccc___ccccccccccccccccccccccc......ccccccccccccc",
      "cc..cccccccccc...ccccccccccccccccccccccc......ccccccccccccc",
      "cc..cccccccccc......ccccccccccccccccccccrrrr..ccccccccccccc",
-     "cc..r.«.b..r.b0....+cccccccccccccccccccc...«..r.«.r.«....cc",
+     "cc..r.«....r..0....+cccccccccccccccccccc...«..r.«.r.«....cc",
      "cc..r.........r.....cccccccccccccccccccc....rr....r......cc",
      "ccccccccccccccc..ccccccccccccccccccccccc.................cc",
      "ccccccccccccccc00ccccccccccccccccccccccccccccccccccccc..Xcc",
@@ -329088,17 +331869,17 @@
      "cccccccccc..ccc..ccc..rcccccccccc___rr..ccccccccccccccccccc",
      "ccccr.......ccc..ccc..+cccccccccc.......ccccccccccccccccccc",
      "ccccX.......ccc..ccc...cccccccccc.......ccccccccccccccccccc",
-     "cccc..cccccccc.bbccc...cccccccccc.......ccccccccccccccccccc",
-     "cccc..cccccccc.b.ccc..Xcccccccccc......rccccccccccccccccccc",
-     "cccc..cccccccc..cccc...cccccccccc...cc.r.b...cccccccccccccc",
+     "cccc..cccccccc...ccc...cccccccccc.......ccccccccccccccccccc",
+     "cccc..cccccccc...ccc..Xcccccccccc......rccccccccccccccccccc",
+     "cccc..cccccccc..cccc...cccccccccc...cc.r.....cccccccccccccc",
      "cccc............cccc...cccccccccc___cc.r0.cc.cccccccccccccc",
-     "cc..bbrrr.......cccc...cccccccccc...cc..bccc.cccccccccccccc",
+     "cc....rrr.......cccc...cccccccccc...cc...ccc.cccccccccccccc",
      "cc.r.....ccccccccccc...cccccccccc...cccr.ccc.cccccccccccccc",
-     "cc..0ccc.cccccccccccr..cccccccccc...ccc.b.....ccccccccccccc",
+     "cc..0ccc.cccccccccccr..cccccccccc...ccc.......ccccccccccccc",
      "cc...ccc.ccccccccccc.r.cccccccccc...ccc..ccc..ccccccccccccc",
      "cccccccc0r...........r.cccccccccc...ccc..cccccccccccccccccc",
-     "cccccccc......Xr...r..b.......r..........cccccccccccccccccc",
-     "cccccccc........r....b.bccccc............cccccccccccccccccc",
+     "cccccccc......Xr...r..........r..........cccccccccccccccccc",
+     "cccccccc........r.......ccccc............cccccccccccccccccc",
      "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
     ],
@@ -329140,7 +331921,76 @@
      "MAX ELIXIR",
      "TM150",
      "FULL RESTORE"
-    ]
+    ],
+    "boxes": [
+     [
+      17,
+      2
+     ],
+     [
+      17,
+      3
+     ],
+     [
+      17,
+      4
+     ],
+     [
+      8,
+      15
+     ],
+     [
+      13,
+      15
+     ],
+     [
+      15,
+      27
+     ],
+     [
+      16,
+      27
+     ],
+     [
+      15,
+      28
+     ],
+     [
+      41,
+      29
+     ],
+     [
+      4,
+      31
+     ],
+     [
+      5,
+      31
+     ],
+     [
+      40,
+      31
+     ],
+     [
+      40,
+      33
+     ],
+     [
+      22,
+      36
+     ],
+     [
+      21,
+      37
+     ],
+     [
+      23,
+      37
+     ]
+    ],
+    "box_look": "boulder",
+    "box_strength": true,
+    "boxes_fresh": true
    },
    {
     "art": [
@@ -329455,13 +332305,13 @@
      "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
      "cccccrr........cccccccccccccccccccccccccccccccccccccccccccc",
      "cccccrr.....rN.cccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccrrbrrrrrrrcccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccrr.rrrrrrrcccccccccccccccccccccccccccccccccccccccccccc",
      "cccccrr.rrrrrrrooooooooooooooooorcccccccccccccccccccccccccc",
-     "cccccr...b..rNrooooooooooooooooorcccccccccccccccccccccccccc",
+     "cccccr......rNrooooooooooooooooorcccccccccccccccccccccccccc",
      "cccccr..rr....rooooooooooooooooorccoooooooo.ccccccccccccccc",
-     "cccccrrbrrrrrrrooooooooooooooooorccooooooooNccccccccccccccc",
+     "cccccrr.rrrrrrrooooooooooooooooorccooooooooNccccccccccccccc",
      "cccccr.........X....rrr....X.....ccoooooooo.ccccccccccccccc",
-     "cccccr............r.b..r.........ccoooooooo.cccrr......rccc",
+     "cccccr............r....r.........ccoooooooo.cccrr......rccc",
      "ccccc..........Xrrrr.......X.....ccoooooooo.............ccc",
      "ccccc.X.cccccccccccccccccccc..cccccoooooooo............+ccc",
      "ccccc...cccccccccccccccccccc..cccccoooooooorccc.........ccc",
@@ -329475,14 +332325,14 @@
      "ccccc.r.cc..rrrrrrrrrcc.r.r.r.r...rcr...rrcccccccccc..ccccc",
      "ccccc...cc..ccccccccccc...r.r.r.r.rcr.rrr.cc.X.........cccc",
      "cccccr.rcc..ccccccccccc.rrr.r.r.r.rcr.r.r..............cccc",
-     "ccccc.b.cc..cc............r.....r.rcr...r....X.........cccc",
+     "ccccc...cc..cc............r.....r.rcr...r....X.........cccc",
      "ccccc...cc..ccr.rrrrrrrrr.r.rrrrr.rccr.rr.ccrooooooooorcccc",
      "cccccr.rcc..ccr.........r.r.....r..rcr.rr.ccrooooooooorcccc",
-     "ccccc.b.cc.rccrrrrrrrr.rr.rrrrr.rr.rcr.rr.ccrooooooooorcccc",
+     "ccccc...cc.rccrrrrrrrr.rr.rrrrr.rr.rcr.rr.ccrooooooooorcccc",
      "ccccc...cc..cc..........r.......r..rcr.rr.ccrooooooooorcccc",
      "cccccr.rcc..ccc..ccccccccccccccccc.rcr.rr.ccrooooooooorcccc",
-     "ccccc.b.ccrbccc..ccccccccccccccccc.rcr....ccrooooooooorcccc",
-     "ccccc...cc.b.........rrrrrrrrrr.cc.rcrrrrrccrooooooooorcccc",
+     "ccccc...ccr.ccc..ccccccccccccccccc.rcr....ccrooooooooorcccc",
+     "ccccc...cc...........rrrrrrrrrr.cc.rcrrrrrccrooooooooorcccc",
      "cccccr.rccr.roooooooooooooooooo.cc.rcccccccc...........cccc",
      "ccccc...cc..roooooooooooooooooo....rrrrrrccccccccccc..ccccc",
      "ccccc.r.cc..roooooooooooooooooo.........rcc.............ccc",
@@ -329501,7 +332351,7 @@
      "cccccr....roooooooooo...........cccccc..ccccccooooooooooocc",
      "ccccc.....rooooooooooooooorcc.rrcccccc..ccccccooooooooooocc",
      "ccccc.....rooooooooooooooorcc.rrrrrrrr......ccooooooooooocc",
-     "cccccbrrcccooooooooooooooorcc.oooooooooooo..ccooooooooooocc",
+     "ccccc.rrcccooooooooooooooorcc.oooooooooooo..ccooooooooooocc",
      "ccccc...cccooooooooooooooorcc.oooooooooooo..ccooooooooooocc",
      "ccccc...cccooooooooooooooorcc.oooooooooooo..ccooooooooooocc",
      "cccccr..cccooooooooooooooorcc.oooooooooooo..ccooooooooooocc",
@@ -329566,7 +332416,52 @@
      "Ace Trainer Micah",
      "Ace Trainer Clarice",
      "Ace Trainer Arthur"
-    ]
+    ],
+    "boxes": [
+     [
+      7,
+      4
+     ],
+     [
+      9,
+      6
+     ],
+     [
+      7,
+      8
+     ],
+     [
+      20,
+      10
+     ],
+     [
+      6,
+      24
+     ],
+     [
+      6,
+      27
+     ],
+     [
+      6,
+      30
+     ],
+     [
+      11,
+      30
+     ],
+     [
+      11,
+      31
+     ],
+     [
+      5,
+      50
+     ]
+    ],
+    "box_look": "boulder",
+    "box_strength": true,
+    "boxes_fresh": true
    },
    {
     "art": [
