@@ -94,8 +94,13 @@ sp = _r.Random(d["key"] + "@" + datetime.date.today().isoformat()).choice(d["spe
 flags.pop(d["key"], None)
 unova_story.event(st, wad["event"], [], lambda ls: said.extend(ls))
 check("Catch of the Day" in heard(), "the Hip Waders: today's Catch of the Day")
-story.player_team.append(mk(sp))
+_old = mk(sp); _old.caught_date = "2026-01-01"   # (11-25: Black 2 wants it caught today - the catch date, main 063d99274)
+story.player_team.append(_old)
 n0 = story.inventory.get("NET_BALL", 0)
+said.clear(); unova_story.event(st, wad["event"], [], lambda ls: said.extend(ls))
+check(story.inventory.get("NET_BALL", 0) == n0, f"the Hip Waders: one caught another day doesn't count ({heard()[:60]})")
+story.player_team.remove(_old)
+story.player_team.append(mk(sp))
 said.clear(); unova_story.event(st, wad["event"], [], lambda ls: said.extend(ls))
 check(story.inventory.get("NET_BALL", 0) == n0 + 3, f"the Hip Waders: show today's {sp} for the gift ({heard()[:80]})")
 
@@ -191,7 +196,7 @@ check(flags.get("b2_medal_box_paint") == "copper", f"the painter: half the Medal
 _pt = sum(1 for v in tmaps.values() if isinstance(v, dict) for r in (v.get("rooms") or {}).values()
           for o in r.get("people", []) if isinstance(o, dict) and o.get("text") == "Medal Box painter")
 check(_pt >= 7, f"a Medal Box painter in every walked Center ({_pt})")
-check(HMS.HM_BY_BADGE["UNOVA"] == {"WAVE": "HM_WATERFALL"}, "Strength, Fly, Surf: story gifts only (no badge stand-ins)")
+check(HMS.HM_BY_BADGE["UNOVA"] == {}, "Strength, Fly, Surf, Waterfall: story gifts only, no badge stand-ins (Waterfall from N, batch 10a)")
 
 for f_ in fails:
     print("  -", f_)

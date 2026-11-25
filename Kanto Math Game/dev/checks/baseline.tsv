@@ -10,6 +10,7 @@ canon_species_hoenn	17	2026-11-24
 canon_species_johto	9	2026-11-24
 canon_species_orange	7	2026-11-24
 catch	7	2026-11-24
+catch_date	5	2026-11-25
 doors	3	2026-11-24
 doubles	84	2026-11-24
 ds3d	12	2026-11-24
@@ -111,7 +112,7 @@ sinnoh_barry	19	2026-11-24
 sinnoh_folk	74	2026-11-24
 sinnoh_gates	77	2026-11-24
 sinnoh_live3d	1416	2026-11-24
-sinnoh_maps	205	2026-11-25
+sinnoh_maps	206	2026-11-25
 sinnoh_played	17	2026-11-24
 sinnoh_start	41	2026-11-24
 slots	28	2026-11-24
@@ -135,7 +136,7 @@ unova_b6a	66	2026-11-24
 unova_b6b	52	2026-11-24
 unova_b7a	35	2026-11-24
 unova_b7b	22	2026-11-24
-unova_b8a	57	2026-11-24
+unova_b8a	58	2026-11-25
 unova_b8b	19	2026-11-24
 unova_b9a	27	2026-11-24
 unova_b9b	14	2026-11-24
