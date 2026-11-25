@@ -1,7 +1,8 @@
 """Sunyshore Gym's turning walkways (Sinnoh S6, 11-24; Platinum's: pret pokeplatinum gym_features.c, SunyshoreGym_*).
 
 Three rooms (our gym, gym_2, gym_3), each with gear-shaped walkways that all turn together: one rotation state per room,
-0 to 3, starting at 0 as you come into the room (Platinum's InitPersistedMapFeaturesForSunyshoreGym). Stepping onto a
+0 to 3, starting at 0 (Platinum's InitPersistedMapFeaturesForSunyshoreGym) and kept as you left it when you
+come back (flag sunyshore_gym_kept). Stepping onto a
 gear's middle presses its button: normal (+1, a quarter turn), reverse (-1) or double (+2). In each state some of the
 room's arm regions are turned away - those tiles are gaps you can't walk on (SunyshoreGym_DynamicMapFeaturesCheckCollision);
 every other tile as the room's walk grid has it.
@@ -13,6 +14,7 @@ Looks (Jordan 11-24: "use the real game"): each room has four live 3D scenes, on
 turned to it (pexport3d.py's C08GYM010<r>_g<s>); the room's picture follows flag sunyshore_gym_r<room>_s<state> (set here,
 one at a time), and a press plays the region's own screen wipe while the scene changes (src/vfx/area_changes.py)."""
 FLAG = "sunyshore_gym_gears"
+KEPT = "sunyshore_gym_kept"   # (each room's turn as you left it: [room 0, 1, 2])
 STEP = {"normal": 1, "reverse": -1, "double": 2}
 # (Platinum's sSunyshoreCollisionLists: for each room and state, the regions turned away)
 BLOCKED = [
@@ -60,11 +62,15 @@ def _reopen(state_):
 
 def event(state_, ev, lines, show):
     story = state_.game.story_manager
-    if "enter" in ev:   # (into a room: its walkways as they start)
+    if "enter" in ev:   # (into a room: its walkways as you left them, else as they start)
         r = int(ev["enter"])
         v = story.story_flags.get(FLAG)
         if not (isinstance(v, list) and v and v[0] == r):
-            story.story_flags[FLAG] = [r, 0]
+            kept = list(story.story_flags.get(KEPT) or [0, 0, 0])   # (11-25: each room keeps its turn. Reset to the start on
+            if isinstance(v, list) and len(v) == 2 and v[0] in (0, 1, 2):   #  every way in, the first room trapped you at its
+                kept[v[0]] = v[1]                                   #  top coming back down from Volkner - its walkway down
+            story.story_flags[KEPT] = kept                          #  turned away and no gear in reach; the full playthrough)
+            story.story_flags[FLAG] = [r, kept[r] if 0 <= r < len(kept) else 0]
         _show(story, r)
         _reopen(state_)
         return

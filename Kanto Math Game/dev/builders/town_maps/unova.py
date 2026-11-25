@@ -141,6 +141,8 @@ def _no_drops(z, rows, exit_chars):
 
 
 MEDAL_PAINTER = {"text": "Medal Box painter", "action": "EVENT", "event": {"world": "unova_story", "medal_paint": True}}
+MR_MEDAL = {"text": "Mr. Medal  ", "action": "EVENT", "condition": ["b2_gym_open"], "event": {"medal_rally": True},
+            "_look": "sheet:b2_c360.png"}
 
 
 def room(z, people, signs, out_door, stairs=None, exits_extra=None, scenes=None, extra_people=()):
@@ -149,6 +151,8 @@ def room(z, people, signs, out_door, stairs=None, exits_extra=None, scenes=None,
     for _p in GEO[str(z)]["people"]:   # (every Pokemon Center's Medal Box painter, Black 2's script 2109: one place for all, 11-24)
         if _p.get("script") == 2109 and _p["n"] not in people:
             people = {**people, _p["n"]: MEDAL_PAINTER}
+        if _p.get("script") == 10638 and _p["n"] not in people:   # (and Mr. Medal, Black 2's script 10638, in every Center: the
+            people = {**people, _p["n"]: MR_MEDAL}                 #  Medal Rally's 92 Medals, main 488e9dbf0; 11-25)
     rows, ppl, sg, doors = _place(z, people, signs, extra_people)
     exits = {}
     for d in doors:
@@ -356,7 +360,14 @@ ASPERTIA = town(
                                    "{rival_name}'s mom: But what parent doesn't want to see their child grow?"),
                            1: _say("Man in {rival_name}'s house", "Too bad you don't have a Pokemon yet. You could see who's the better Trainer!")},
                      {}, (11, 46), stairs={430: ("^", "ROOM:hugh_2f")}),
-        "hugh_2f": room(430, {0: _say("{rival_name}'s sister", "{rival_name}'s sister: I hope you find that Bianca lady soon!"),
+        "hugh_2f": room(430, {0: [_say("{rival_name}'s sister", "{rival_name}'s sister: I hope you find that Bianca lady soon!",
+                                       condition=["not:b2_hall_of_fame"]),
+                                  {"text": "{rival_name}'s sister ", "action": "EVENT", "condition": ["b2_hall_of_fame"], "event": {
+                                      "lines": ["{rival_name}'s sister: I had a strange dream... A Zoroark on Victory Road, by a "
+                                                "cave below the two Veterans. It was waiting for someone.",
+                                                "{rival_name}'s sister: And behind it there was a ruined castle... Could you go "
+                                                "and see? I'd feel better."],
+                                      "flag": "b2_sister_dream", "done": ["{rival_name}'s sister: Did you find the Zoroark from my dream?"]}}],   # (11c)
                               1: _say("Purrloin", "Purrloin: Mew?", _look="sheet:b2_c308.png")},
                         {}, (11, 46), stairs={429: ("v", "ROOM:hugh")}),
         "house_sw": room(431, {0: _say("Old man", "Got a Pokemon with you? Then you can head out of town!"),
@@ -1643,7 +1654,7 @@ CASTELIA = town(
             {}, title="Cruise Dock"),
         "plaza": castelia_room(30, {1: _say("Old man by the fountain", "If you want to be strong, battle lots of Trainers, and get to know your Pokemon well!"),
                                     0: _say("Colress", "Colress: I'll be waiting on Route 4. It's just beyond here!",
-                                            condition=["b2_colress_plaza", "not:b2_colress_route4"])},
+                                            condition=["b2_colress_plaza", "not:b2_colress_r4"])},
                                {1: ["CENTRAL PLAZA", "Ahead: Route 4"]}, title="Central Plaza", scenes=[
             # (after Burgh's badge: the man in the white coat looks at your team, and names himself; Route 4 next, batch 3b)
             {"trigger": "enter", "condition": ["b2_insect_badge", "not:b2_colress_plaza"], "flag": "b2_colress_plaza",
@@ -3945,6 +3956,12 @@ DRIFT_ROOMS = {
             _say("Rood", "Rood: My lord N understands the hearts of Pokemon. People's hearts... he's still learning.",
                  "Rood: I hope he finds what he wants to do, out there with the legendary Pokemon.", condition=["b2_drift_zorua"])],
         2: _say("Ex-Plasma by the window", "Team Plasma was built by a man named Ghetsis to take over Unova. N was the boy he raised to do it."),
+        12: {"text": "{rival_name}", "action": "EVENT", "condition": ["b2_undella_hugh"],   # (after the title, once a day: 11a)
+             "event": {"lines": ["{rival_name}: You came! Let's battle, Champion: I've been training!"], "daily": True,
+                       "flag": "b2_hugh_today", "done": ["{rival_name}: Same time tomorrow, OK?"],
+                       "battle": dict(_b2(696), name="{rival_name}", sprite="hugh.png", **{"class": "PKMN_TRAINER"},
+                                      team_choice={s: _TEAMS[str(t)]["team"] for s, t in zip(("495", "498", "501"), (696, 697, 698))},
+                                      dialogue={"player_won": ["{rival_name}: Not yet... Same time tomorrow!"]})}},
         3: _say("Ex-Plasma by the window ", "Trainers battle to understand their Pokemon, not to hurt them. I hope N knows that now."),
         5: _say("Ex-Plasma at the table", "N was an orphan. He lived in the woods with Darmanitan and Zorua before Ghetsis took him in."),
         8: _say("Ex-Plasma by the shelves", "We look after the Pokemon whose Trainers we can't find. It's a small way to make up for what we did."),
@@ -4056,7 +4073,7 @@ DRIFT_GYM = drift_room(97, dict({
 }) | {n: _b2_battle(name, tid, "gym_trainer_DRIFTVEIL_CITY_%d" % (k + 1), _WORKER_LINES[n][0], ["%s: You're tough!" % name],
                      _WORKER_LINES[n][1])
        for k, (n, (tid, name)) in enumerate(sorted(_WORKER_SPOTS.items()))},
-    {}, title="Driftveil Gym", scenes=_BELT_SCENES + [
+    {(11, 85): ["The lift up to the Gym's entrance."]}, title="Driftveil Gym", scenes=_BELT_SCENES + [   # (a sign tile: 11-24)
         {"trigger": "enter", "condition": ["not:b2_drift_gym_down"], "flag": "b2_drift_gym_down", "cast": [],
          "call": ["Conveyor belts run from platform to platform, down in the dark."]}])
 for _x, _y in _BELT_TILES:   # (the belt ends: a step off the platform's edge)
@@ -4073,7 +4090,8 @@ DRIFT_ROOMS["gym"] = DRIFT_GYM
 DRIFT_ROOMS["gym_lobby"] = drift_room(98, {
     0: _say("Guide in the lobby", "Welcome to the Driftveil Gym! Take the lift down to the Gym floor."),
 }, {(4, 8): ["DRIFTVEIL GYM", "Leader: Clay", "Certified Trainers: {player_name}"],
-    (10, 8): ["DRIFTVEIL GYM", "Leader: Clay", "Certified Trainers: {player_name}"]}, title="Driftveil Gym")
+    (10, 8): ["DRIFTVEIL GYM", "Leader: Clay", "Certified Trainers: {player_name}"],
+    (8, 3): ["The lift down to the Gym floor."]}, title="Driftveil Gym")   # (a sign tile, so the lift's panel reads: 11-24)
 DRIFT_ROOMS["gym_lobby"]["scenes"] = list(DRIFT_ROOMS["gym_lobby"].get("scenes") or []) + [   # (the Journal's way-points:
     {"trigger": "enter", "condition": ["not:b2_drift_gym_in"], "flag": "b2_drift_gym_in", "cast": [],   #  in, then down; 11-24)
      "call": ["The Gym is a mine. A lift at the back goes down into it."]}]
@@ -5316,8 +5334,21 @@ UNDELLA = town(
      "house": room(415, {1: _say("Woman in the house", "I wonder why only the father of The Riches stayed here..."),
                          2: _say("Boy in the house", "The shops on Join Avenue are run by amazing Trainers. I'm getting excited!")},
                    {}, (24, 9)),
-     "villa": room(416, {1: _say("Cynthia", "Cynthia: I'm staying at my friend's villa to research the Abyssal Ruins. "
-                                            "Let's battle someday, Trainer.", condition=["beat_unova_champion"])}, {}, (41, 9)),
+     "villa": room(416, {1: [   # (Cynthia: before the title her research; after it a battle, then once a day in spring - 11a)
+         _say("Cynthia", "Cynthia: I'm staying at my friend's villa to research the Abyssal Ruins. Let's battle someday, Trainer.",
+              condition=["not:beat_unova_champion"]),
+         {"text": "Cynthia ", "action": "EVENT", "condition": ["beat_unova_champion", "not:b2_cynthia_beaten"],
+          "event": {"lines": ["Cynthia: So you're Unova's new Champion. I'm Cynthia, Champion of Sinnoh.",
+                              "Cynthia: I'd like to see your strength for myself. Shall we?"],
+                    "battle": _b2(456, dialogue={"player_won": ["Cynthia: Wonderful! You and your Pokemon are truly in tune.",
+                                                                "Cynthia: In spring I'm here every day. Come and battle again!"]}),
+                    "flag": "b2_cynthia_beaten"}},
+         {"text": "Cynthia  ", "action": "EVENT", "condition": ["b2_cynthia_beaten", "season:spring"],
+          "event": {"lines": ["Cynthia: Spring by the sea... Shall we battle today too?"], "daily": True, "flag": "b2_cynthia_today",
+                    "battle": _b2(456, dialogue={"player_won": ["Cynthia: Thank you. Let's battle again tomorrow."]}),
+                    "done": ["Cynthia: That was a wonderful battle. Let's do it again tomorrow."]}},
+         _say("Cynthia   ", "Cynthia: In spring I'll be here every day. The rest of the year the ruins keep me busy.",
+              condition=["b2_cynthia_beaten", "not:season:spring"])]}, {}, (41, 9)),
      "gate": UNDELLA_GATE, "tube": UNDELLA_TUBE},
     edges={">": ("UNDELLA_BAY", [(63, y) for y in range(16, 25)]), "<": ("REVERSAL_MOUNTAIN_INSIDE", [(5, 11)]),
            "v": ("UNOVA_ROUTE_14", [(x, 31) for x in range(11, 53)])},
@@ -5566,6 +5597,21 @@ VB_HOUSES = {
 for _r, _t in (("house_1", "House"), ("bakery", "Village Bridge Restaurant"), ("waders", "House"), ("house_4", "House"),
                ("house_5", "House"), ("rest", "Rest House"), ("singer", "Under the Bridge")):
     VB_HOUSES[_r]["title"] = _t
+VB_MUSIC = ["vb_music_flute", "vb_music_guitar", "vb_music_beatbox", "vb_music_enka"]
+
+
+def _vb_musician(name, flag, on, off):
+    """Village Bridge's musicians, as Black 2 (11-25: Systems' layered h_04, main 74b202a90): talk once and their part joins
+    the town's music (0xA3 n), again and it stops (0xA4 n); the flags last only while you're here (VB_ENTER clears them)."""
+    return [{"text": name, "action": "EVENT", "condition": ["not:" + flag], "event": {"world": "unova_story", "toggle": flag,
+                                                                                     "lines": on + ["%s's part joins the music!" % name]}},
+            {"text": name + " ", "action": "EVENT", "condition": [flag], "event": {"world": "unova_story", "toggle": flag,
+                                                                                   "lines": off}}]
+
+
+VB_ENTER = {"trigger": "enter", "every": True, "cast": [], "event": {"world": "unova_story", "clear": VB_MUSIC}}
+
+
 VILLAGE_BRIDGE_MAP = route(
     255, {12: _ball("Poke Ball by the river", "ULTRA_BALL", "b2_vb_ultra_ball", name="an Ultra Ball"),
           13: _ball("Poke Ball on the bank", "HEART_SCALE", "b2_vb_heart_scale", name="a Heart Scale"),
@@ -5575,12 +5621,16 @@ VILLAGE_BRIDGE_MAP = route(
           17: _ball("Poke Ball by the trees", "BLUE_SHARD", "b2_vb_blue_shard", name="a Blue Shard"),
           8: VB_STONEWALL,
           3: {"text": "Runner on the bridge", "action": "EVENT", "event": {"world": "unova_story", "runner": "b2_vb_runner"}},
-          1: _say("Derleth", "Derleth: Fweet fweet... Fweeeeet...", "Derleth: Whistle tunes and complaints about life. That's all "
-                                                                    "that comes out of me. This bridge is where we complainers meet."),
-          2: _say("Aickman", "Aickman: This sound! Doesn't it get to your heart?",
-                  "Aickman: I know my sound doesn't fit this town. But I can't change my style."),
-          0: _say("Russo", "Russo: La la la... Ahem! This microphone's all screwy. I can sing real good, promise!"),
-          11: _say("Koontz", "Koontz: Singing gives life to my spirit. Will you listen to the voice of my spirit?"),
+          1: _vb_musician("Derleth", "vb_music_flute", ["Derleth: Fweet fweet... Fweeeeet...",
+                          "Derleth: Whistle tunes and complaints about life. That's all that comes out of me. This bridge is where "
+                          "we complainers meet."], ["Derleth: ...Fweet. That's enough complaining for now."]),
+          2: _vb_musician("Aickman", "vb_music_guitar", ["Aickman: This sound! Doesn't it get to your heart?",
+                          "Aickman: I know my sound doesn't fit this town. But I can't change my style."],
+                          ["Aickman: Taking a break. Even my guitar needs to breathe."]),
+          0: _vb_musician("Russo", "vb_music_beatbox", ["Russo: La la la... Ahem! This microphone's all screwy. I can sing real "
+                          "good, promise!"], ["Russo: ...Ahem. Saving my voice."]),
+          11: _vb_musician("Koontz", "vb_music_enka", ["Koontz: Singing gives life to my spirit. Will you listen to the voice of "
+                           "my spirit?"], ["Koontz: My spirit rests a while."]),
           10: _say("Boy by the court", "My favourite thing these days is the PWT!"),
           9: _say("Hoopster fan", "Practise as if it were a real game! Play the real game as if it were practice!"),
           23: _say("Traveller", "I'll cross every bridge in Unova! Even the Marine Tube from Undella Town!"),
@@ -5601,7 +5651,7 @@ VILLAGE_BRIDGE_MAP = route(
     rooms=dict(VB_HOUSES, gate_e=R12_GATE, gate_w=R11_GATE),
     inside={"14,27": "house_1", "21,27": "bakery", "28,27": "house_4", "68,27": "waders", "76,27": "house_5", "83,27": "rest",
             "30,39": "singer", **{"93,%d" % y: "gate_e" for y in range(31, 34)}, **{"2,%d" % y: "gate_w" for y in range(31, 34)}},
-    scenes=[{"trigger": {"zone": [56, 29, 64, 29]}, "condition": ["not:b2_vb_stonewall"], "who": "Gentleman Stonewall",
+    scenes=[VB_ENTER, {"trigger": {"zone": [56, 29, 64, 29]}, "condition": ["not:b2_vb_stonewall"], "who": "Gentleman Stonewall",
              "every": True, "lines": ["Wait! You can't go any further unless you battle me! And no using Surf to get round me!"],
              "push": [0, 1]}],
     title="Village Bridge")
@@ -5939,9 +5989,18 @@ OPE_DOORS = {121: ("gym", "gym"), 122: ("center", "center"), 123: ("house", "dra
 
 
 def _opelucid(z, frozen=False):
-    people = {**OPE_PEOPLE, **OPE_FROZEN_PEOPLE} if frozen else dict(OPE_PEOPLE)
+    def _thawed_only(v):   # (someone who never shows while the city's frozen)
+        return all("not:b2_opelucid_frozen" in (o.get("condition") or []) for o in (v if isinstance(v, list) else [v]))
+    # (11-25, the Journal's PT_FULL: the frozen city's woman and a Plasma Grunt share a tile (20,32) in the file, one person a
+    #  tile: the frozen map leaves out who's hidden there anyway.)
+    people = {**{k: v for k, v in OPE_PEOPLE.items() if not _thawed_only(v)}, **OPE_FROZEN_PEOPLE} if frozen else dict(OPE_PEOPLE)
+    # (and Drayden: the file stands him in the Gym's doorway (21,16), which the door then took, so everyone after him in reading
+    #  order wore the next one's options. He stands just outside it, beside the door.)
+    _dray = [dict(o, _look="sheet:b2_c229.png") for o in OPE_FROZEN_PEOPLE[0]]
+    if frozen:
+        people.pop(0)
     m = town(z, people, OPE_SIGNS, OPE_DOORS, OPE_ROOMS,
-             extra_people=[(60, 47, OPE_SHADOW)] if frozen else [],
+             extra_people=[(60, 47, OPE_SHADOW), (22, 17, _dray)] if frozen else [],
              scenes=OPE_FROZEN_SCENES if frozen else [OPE_IRIS, OPE_LEAD], title="Opelucid City")
     return m
 
@@ -6404,7 +6463,7 @@ def _f2_rooms(w2):
          "cast": [{"sheet": "b2_c182.png", "from": [10, 18], "to": "player", "stay": True,
                    "lines": ["Shadow Triad: Move.", "The Shadow Triad seized you!",
                              "...You were thrown off the ship, onto Route 21's beach!"]}],
-         "event": {"travel": "UNOVA_ROUTE_21"}}])
+         "event": {"flag": "b2_frigate2_done", "travel": "UNOVA_ROUTE_21"}}])   # (11-25: set before the ride - the travel leaves first)
     rooms["hall"] = _f2_room(558, dict([
         _GRUNT(4, 801, "b2_f2_g801", "Team Plasma: Intruders!", "Team Plasma: For now, let them through!"),
         _GRUNT(3, 800, "b2_f2_g800", "Team Plasma: Don't get in our way!", "Team Plasma: The others will stop you!"),
@@ -6525,9 +6584,16 @@ ROUTE_21["gated_exits"] = {"PLASMA_FRIGATE": ["b2_frigate2_open"]}
 # b2_ghetsis_beaten -> b2_chasm_done (+ b2_opelucid_thawed: Opelucid, Routes 9 and 11 thaw; Route 23 opens).
 _F3 = ["b2_frigate2_done", "not:b2_chasm_done"]
 OUTSIDE.update({554: 562, 557: -1, 561: -1, 564: -1, 555: -1, 604: 234})
-_KYUREM_ROOM_B2 = {2: 430, 3: 431, 4: 432, 5: 433, 7: 434, 6: 435, 1: 438, 0: 439, 19: 808, 20: 810, 21: 811}
-_KYUREM_ROOM_W2 = {4: 452, 5: 453, 19: 811}
-_W2_CLUES = [(0, 445), (1, 446), (2, 447), (3, 448), (7, 449)]
+# (11-25, the Journal's PT_FULL + Bulbapedia: Black 2's lower deck is the PASSWORD puzzle, White 2's the WARP PANEL one -
+#  the opposite of the upper deck. 561 (Black 2) has the scripted Grunts n0-n7: the card holder is 439 (Trubbish, Zangoose);
+#  its switch crosses are sealed leftovers. 564 (White 2): the four switches sit in side pockets only its panels reach.)
+_KYUREM_ROOM_B2 = {7: 434, 6: 435, 19: 808, 20: 810, 21: 811}
+_KYUREM_ROOM_W2 = {0: 445, 1: 446, 2: 447, 3: 448, 7: 449, 4: 452, 5: 453, 6: 454, 19: 811}
+_B2_CLUES = [(1, 438), (2, 430), (3, 431), (4, 432), (5, 433)]
+_W2_SWITCHES = [((9, 16), 18), ((9, 21), 17), ((21, 16), 16), ((21, 21), 15)]   # (each lowers one row of the barrier)
+_W2_PANELS = {(7, 16): (11, 48), (23, 16): (25, 41), (23, 21): (19, 48), (7, 21): (5, 41), (5, 41): (7, 21),
+              (11, 41): (5, 54), (11, 48): (7, 16), (11, 54): (25, 54), (5, 54): (11, 41), (19, 54): (19, 41),
+              (25, 54): (11, 54), (19, 41): (19, 54), (19, 48): (23, 21), (25, 41): (23, 16)}   # (564's scripts 27-40)
 
 
 def _prize(tid, **items):
@@ -6546,7 +6612,7 @@ def _f3_rooms(w2):
     cage = [9, 16, 18, 17] if not w2 else [11, 16, 18, 17]
     kpeople = {8: _say("Kyurem in its cage", "Haahra...", _look="mon:646"),
                (11 if not w2 else 9): _say("Spy", "Former Team Plasma: Remember me? I'm Rood's spy! " + (
-                   "Step on the four red switches in the pipes below to drop the barrier!" if not w2 else
+                   "Ride the warp panels to the four switches to drop the barriers!" if w2 else
                    "You need the Plasma Card and the whole password to drop the barrier. Five Grunts each know a part."))}
     for k, n in enumerate(cage):
         kpeople[n] = _say("Grunt by the cage" + " " * k, ("Team Plasma: Kyurem's power will freeze all of Unova!",
@@ -6561,12 +6627,12 @@ def _f3_rooms(w2):
                                 ["Doctor: Hm. Your Pokemon are healthy."] if tid == 811 else ["Team Plasma: Plasmaaa..."],
                                 ["Doctor: Kyurem is weakened... It isn't right."] if tid == 811 else
                                 ["Team Plasma: Kyurem is at the top of the ship."])
-    if w2:
-        kpeople[6] = {"text": "Grunt with the Plasma Card", "action": "EVENT", "event": {
+    if not w2:
+        kpeople[0] = {"text": "Grunt with the Plasma Card", "action": "EVENT", "event": {
             "lines": ["Team Plasma: I have the Plasma Card! You want it, don't you? Battle me!"],
-            "battle": _b2(454), "flag": "b2_fk_card",
+            "battle": _b2(439), "flag": "b2_fk_card",
             "done": ["Team Plasma: Fine, keep the card. You still need the password, and I'm not telling!"]}}
-        for k, (n, tid) in enumerate(_W2_CLUES, 1):
+        for k, (n, tid) in enumerate(_B2_CLUES, 1):
             kpeople[n] = {"text": "Plasma Grunt" + " " * (k + 20), "action": "EVENT", "event": {
                 "lines": ["Team Plasma: The password? You'll have to beat it out of me!"], "battle": _b2(tid),
                 "flag": "b2_fk_clue_%d" % k,
@@ -6580,16 +6646,20 @@ def _f3_rooms(w2):
     k3 = room(kz, kpeople, {}, (0, 0))
     k3["title"] = "Plasma Frigate"
     k3["links"] = {"26,10": ["control", 7, 13], "4,10": ["ghetsis", 9, 9], "15,21": ["stern", 10, 6]}
-    need = ["b2_fk_%d" % i for i in range(1, 5)] if not w2 else ["b2_fk_password"]
+    need = ["b2_fk_%d" % i for i in range(1, 5)] if w2 else ["b2_fk_password"]
+    if w2:
+        k3["links"].update({"%d,%d" % a: ["kyurem", b[0], b[1]] for a, b in _W2_PANELS.items()})
     k3["barred"] = [{"tiles": [[x, 14] for x in range(13, 18)], "until": {"condition": need}, "look": "unseen",
                      "lines": ["Be careful! The barriers are electrified!"]},
                     {"tiles": [[4, 10]], "until": {"flag_condition": "b2_colress_beaten"}, "look": "unseen",
                      "lines": ["The warp panel won't work yet. Something in the Control Room is keeping it off."]}]
     sc = []
-    if not w2:
+    if w2:
         sc += [{"trigger": {"zone": [x, y, x, y]}, "condition": ["not:b2_fk_%d" % i], "flag": "b2_fk_%d" % i, "cast": [],
-                "call": ["You stepped on a red switch!", "Somewhere above, a barrier switched off."]}
-               for i, (x, y) in enumerate(((8, 44), (8, 51), (22, 44), (22, 51)), 1)]
+                "call": ["You stepped on a switch!", "One of the electrified barriers switched off."]}
+               for i, ((x, y), _row) in enumerate(_W2_SWITCHES, 1)]
+        k3["barred"] += [{"tiles": [[x, row] for x in range(13, 18)], "until": {"flag_condition": "b2_fk_%d" % i}, "look": "unseen",
+                          "lines": ["Be careful! The barriers are electrified!"]} for i, (_xy, row) in enumerate(_W2_SWITCHES, 1)]
     else:
         clues = ["b2_fk_clue_%d" % i for i in range(1, 6)]
         sc += [{"trigger": {"zone": [13, 15, 17, 15]}, "condition": ["not:b2_fk_card"], "every": True, "cast": [],
@@ -7027,6 +7097,13 @@ VR_2F["story_maps"] = [{"when": _W2, "map": _vr(
     trainers={6: ("Veteran Abraham", 4), 7: ("Pokemon Ranger Elle", 1), 8: ("Pokemon Ranger Eddie", 1),
               9: ("Ace Trainer Shanta", 4), 10: ("Ace Trainer Webster", 4)}, boulders=((27, 10), (33, 7)))}]
 
+# (11-25, the Journal's PT_FULL: Black 2's carved steps - walk code 0x1D, flagged as wall in the file - join a cave's two levels;
+#  the export read them as wall, so 1F's way from the entrance and 2F's stopped short. Open as steps; heights slope across them.)
+for _m, _steps in ((VR_1F, ((52, 15), (53, 15), (52, 16), (53, 16), (17, 34), (18, 34), (17, 35), (18, 35))),
+                   (VR_2F, ((27, 7), (28, 7), (27, 8), (28, 8), (31, 6), (32, 6), (31, 7), (32, 7)))):
+    for _mm in [_m] + [sm["map"] for sm in _m.get("story_maps") or []]:
+        for _x, _y in _steps:
+            _put_char(_mm, _x, _y, ".")
 VR_2F_BACK = _vr(591, {1: _ball("Poke Ball on the platform", "PP_MAX", "b2_vr_pp_max", name="a PP Max"),
                        0: _ball("Poke Ball by the pool", "RARE_CANDY", "b2_vr_rare_candy", name="a Rare Candy")},
                  {"v": ("VICTORY_ROAD_CAVE_2F", [(13, 30)]), "^": ("VICTORY_ROAD_MOUNTAINSIDE", [(24, 7)])},
@@ -7036,17 +7113,17 @@ VR_MOUNTAIN = _vr(592, {6: _ball("Poke Ball below the cliff", "DRAGON_FANG", "b2
                         8: _ball("Poke Ball down the mountainside", "MAX_REVIVE", "b2_vr_max_revive", name="a Max Revive"),
                         7: _ball("Poke Ball by Black Belt Martell", "MAX_ELIXIR", "b2_vr_max_elixir", name="a Max Elixir"),
                         9: _say("Zoroark", "The Zoroark glares at you and won't move from the cave mouth.",
-                                "(It might move once you're the Champion.)", condition=["not:beat_unova_champion"])},
+                                condition=["not:b2_sister_dream"])},
                   {"v": ("VICTORY_ROAD_CAVE_2F", [(16, 47), (53, 47)]), "b": ("VICTORY_ROAD_2F_BACK", [(29, 21)]),
                    "^": ("VICTORY_ROAD_3F", [(44, 18), (26, 31)]), "t": ("VICTORY_ROAD_TUNNEL", [(33, 1)]),
-                   "z": ("CHALLENGERS_CAVE", [(35, 31)])},
+                   "z": ("N_CASTLE", [(35, 31)])},
                   trainers={0: ("Veteran Sterling", 4), 1: ("Ace Trainer Caroll", 3), 2: ("Black Belt Martell", 1),
                             3: ("Ace Trainer Elmer", 3), 4: ("Battle Girl Chalina", 3), 5: ("Veteran Portia", 5)},
                   hidden={"21,22": "RARE_CANDY", "45,23": "NORMAL_GEM"})
 # (the Zoroark's cave, 596 -> N's Castle, is batch 11's; till then its door leads to Black and White's Challenger's Cave, a menu
 #  place Black 2 has no warp to, so the post-game keeps a way there; after the League only)
-VR_MOUNTAIN["gated_exits"] = {"CHALLENGERS_CAVE": ["beat_unova_champion"]}
-VR_MOUNTAIN["barred"] = [{"tiles": [[35, 31]], "until": {"flag_condition": "beat_unova_champion"}, "look": "unseen",
+VR_MOUNTAIN["gated_exits"] = {"N_CASTLE": ["beat_unova_champion", "b2_sister_dream"]}   # (11c: Hugh's sister's dream first)
+VR_MOUNTAIN["barred"] = [{"tiles": [[35, 31]], "until": {"flag_condition": "b2_sister_dream"}, "look": "unseen",
                           "lines": ["A Zoroark is guarding the way in. It won't budge."]}]
 
 VR_3F = _vr(593, {1: _ball("Poke Ball down the stairway", "DRAGON_SCALE", "b2_vr_dragon_scale", name="a Dragon Scale")},
@@ -7069,6 +7146,630 @@ VR_TUNNEL = _vr(228, {}, {"v": ("VICTORY_ROAD_MOUNTAINSIDE", [(22, 13)]), "^": (
                          "event": {"flag": "b2_vr_hugh", "battle": _HUGH_55}}])
 VR_TUNNEL["barred"] = [{"tiles": [[9, 10]], "until": {"flag_condition": "b2_vr_hugh"}, "look": "unseen",
                         "lines": ["Footsteps are running up behind you..."]}]
+
+
+# ======================================================================================================== batch 10b (11-24)
+# The Pokemon League (Black 2's zones 136-146): the forecourt 136 (its walk layer is a 64 x 64 block, the only one in the
+# file: g5map.block reads each permission section's own size now), Victory Road's last stretch 214 (on rails: its own walk
+# origin, 16 rows up) from the tunnel, the League's Center 146, the plaza 137 and the four Elite Four rooms on rails (left to
+# right: Shauntal 140, Grimsley 141, Caitlin 143, Marshal 142; any order, as Black 2), the statue that carries you down once
+# all four are beaten (its plaque: a lift), the chamber 138, Iris's temple 144 and the Hall of Fame 145.
+# Flags: b2_e4_shauntal / _grimsley / _caitlin / _marshal -> beat_unova_champion (Iris) -> b2_hall_of_fame (home to Aspertia).
+# After the title: each of the five rematches (Black 2's 143-146, Iris 536) as often as you like, at their own levels.
+OUTSIDE.update({137: 65535, 146: 136, 214: 65535, 140: -1, 141: -1, 142: -1, 143: -1, 138: -1, 144: -1, 145: -1})
+_E4 = [("Shauntal", 140, 38, 143, "b2_c93.png", [
+            "Shauntal: Oh! A challenger! I'm Shauntal of the Elite Four. I write novels about the Trainers I battle.",
+            "Shauntal: The way you and your Pokemon look at each other... There's a story there. Let me read it!"],
+        ["Shauntal: ...What a wonderful ending! I'll call this chapter 'The Trainer Who Wouldn't Give Up'."]),
+       ("Grimsley", 141, 40, 145, "b2_c94.png", [
+            "Grimsley: Welcome. I'm Grimsley of the Elite Four. A battle is a gamble: you win or you lose.",
+            "Grimsley: Let's see which way the dice fall today."],
+        ["Grimsley: Whether you win or lose, it's all down to the moment. ...This moment was yours."]),
+       ("Caitlin", 143, 41, 146, "b2_c96.png", [
+            "Caitlin: ...You woke me. I'm Caitlin of the Elite Four. I won't hold back, so neither should you.",
+            "Caitlin: Show me the power that brought you this far!"],
+        ["Caitlin: You and your Pokemon are wonderful. Like a dream..."]),
+       ("Marshal", 142, 39, 144, "b2_c95.png", [
+            "Marshal: I am Marshal of the Elite Four. My master is Alder, the former Champion.",
+            "Marshal: I'll test the strength of your bond with your Pokemon. Come!"],
+        ["Marshal: Whew! Your fighting spirit is strong. Go on, the next battle awaits."])]
+
+
+def _e4_room(name, z, first, again, sheet, intro, won):
+    flag = "b2_e4_" + name.lower()
+    people = {0: [
+        {"text": name, "action": "EVENT", "_look": "sheet:" + sheet, "condition": ["not:beat_unova_champion", "not:" + flag],
+         "event": {"lines": intro, "battle": _b2(first, dialogue={"player_won": won}), "flag": flag}},
+        _say(name + " ", "%s: You've beaten me. Go on, the other rooms and the Champion await!" % name,
+             condition=["not:beat_unova_champion", flag], _look="sheet:" + sheet),
+        {"text": name + "  ", "action": "EVENT", "_look": "sheet:" + sheet, "condition": ["beat_unova_champion"],
+         "event": {"lines": ["%s: Back again, Champion? Then let's battle at our very best!" % name],
+                   "battle": _b2(again, dialogue={"player_won": won})}}]}
+    r = room(z, people, {}, (0, 0), stairs={137: ("v", "ROOM:plaza")})
+    r["title"] = "%s's room" % name
+    return r
+
+
+_E4_FLAGS = ["b2_e4_" + n.lower() for n, *_r in _E4]
+LEAGUE_PLAZA = room(137, {}, {}, (31, 45), stairs={140: ("1", "ROOM:shauntal"), 141: ("g", "ROOM:grimsley"),
+                                                   143: ("h", "ROOM:caitlin"), 142: ("i", "ROOM:marshal")})
+# (11-25, the Journal's PT_FULL: "2"-"4" aren't way-out letters to the walker - "2" is a Cut tree - so three doors did nothing)
+LEAGUE_PLAZA["title"] = "Pokémon League"
+_put_char(LEAGUE_PLAZA, 39, 33, ".")   # (Caitlin's door sits a tile past the rail's end: the step up to it)
+LEAGUE_PLAZA["sign_events"] = {"31,44": {"text": "Statue", "action": "EVENT", "event": {   # (no "lines" before the lift: with
+    "requires": _E4_FLAGS,                                                                  #  them the ride left the game stuck in the talk - Journal PT_FULL, 11-25)
+    "fail": ["The plaque reads: 'Overcome the four Elite Four, and the way to the Champion will open.'",
+             "(The four lights in the floor show who you've beaten.)"],
+    "lift": [["Down to the Champion", "chamber", 30, 84]], "ask": "THE STATUE"}}}
+_put_char(LEAGUE_PLAZA, 31, 44, "!")   # (11-25, the Journal's PT_FULL: a sign tile, so the action key reads the statue's plaque -
+LEAGUE_PLAZA["signs"] = [["A statue of the Pokemon League."]]   #  it was a wall the walker never read, as Driftveil's lift was)
+LEAGUE_CHAMBER = room(138, {}, {}, (0, 0), stairs={144: ("^", "ROOM:temple")})
+LEAGUE_CHAMBER["title"] = "Pokémon League"
+LEAGUE_CHAMBER["scenes"] = [{"trigger": "enter", "condition": ["not:b2_league_chamber"], "flag": "b2_league_chamber", "cast": [],
+                             "call": ["The statue sank into the floor, carrying you down into a great hall.",
+                                      "Three flights of stairs climb to the north: the Champion's temple."]}]
+_IRIS_FIRST = _b2(341, dialogue={"player_won": [
+    "Iris: ...I lost. You're really, really strong! I'm glad it was you!",
+    "Iris: From today, you're the Champion! Come on, up the walkway behind me: to the Hall of Fame!"]})
+LEAGUE_TEMPLE = room(144, {0: [
+    {"text": "Iris", "action": "EVENT", "_look": "sheet:b2_c298.png", "condition": ["not:beat_unova_champion"],
+     "event": {"lines": ["Iris: Welcome! I'm Iris, the Champion. You beat all of the Elite Four? That's amazing!",
+                         "Iris: I'm going to battle with everything I've got. Ready? Here I come!"],
+               "battle": _IRIS_FIRST, "flag": "beat_unova_champion"}},
+    {"text": "Iris ", "action": "EVENT", "_look": "sheet:b2_c298.png", "condition": ["beat_unova_champion", "b2_hall_of_fame"],
+     "event": {"lines": ["Iris: Champion! You came to battle me again? Then I won't hold back either!"],
+               "battle": _b2(536, dialogue={"player_won": ["Iris: Wow... You're still the strongest!"]})}}]},
+    {}, (0, 0), stairs={138: ("v", "ROOM:chamber")})
+LEAGUE_TEMPLE["title"] = "Champion's temple"
+LEAGUE_TEMPLE["links"] = {"16,20": ["hof", 8, 17]}
+LEAGUE_TEMPLE["barred"] = [{"tiles": [[16, 33]], "until": {"flag_condition": "beat_unova_champion"}, "look": "unseen",
+                            "lines": ["The way behind the Champion is closed."]}]
+LEAGUE_HOF = room(145, {}, {}, (0, 0))
+LEAGUE_HOF["title"] = "Hall of Fame"
+_put_char(LEAGUE_HOF, 8, 19, "v")   # (the way back down to the temple, after the Hall of Fame: rematches)
+LEAGUE_HOF["exits"] = {"v": "ROOM:temple"}
+LEAGUE_HOF["scenes"] = [{"trigger": "enter", "condition": ["beat_unova_champion", "not:b2_hall_of_fame"], "flag": "b2_hall_of_fame",
+                         "cast": [], "call": ["Iris: This is the Hall of Fame. Your team will be recorded here forever!"],
+                         "event": {"scene": "hall_of_fame", "travel": "ASPERTIA_CITY",
+                                   "lines": ["...The new Champion headed for home."]}}]
+LEAGUE_CENTER = room(146, {0: {"text": "Pokémon Center", "action": "HEAL"}, 1: {"text": "Shop", "action": "SHOP"},
+                           2: _say("Clerk ", "Stock up! Past here there's no turning back till it's over."),
+                           7: {"text": "Mr. Medal", "action": "EVENT", "event": {"medal_rally": True}},
+                           4: _say("Ace Trainer resting", "The Elite Four can be challenged in any order. Pick your first!"),
+                           5: _say("Veteran by the window", "Iris became Champion after Alder. She's young, but she's tough.")},
+                     {}, (18, 47))
+LEAGUE_APPROACH = room(214, {}, {}, (28, 58), exits_extra={228: ("^", "VICTORY_ROAD_TUNNEL")})
+LEAGUE_APPROACH["title"] = "Victory Road"
+
+
+def _high_walk(r, y_to):
+    """A room whose walkway climbs higher than the live walker's roof cap (8 tiles): Shauntal's, Caitlin's and Marshal's stairs
+    rise about 12 (11-24). Its tiles marked as a north-south deck ("|") take the highest surface under them, not a level edge."""
+    r["art"] = [row.replace(".", "|") if y <= y_to else row for y, row in enumerate(r["art"])]
+    return r
+
+
+LEAGUE_ROOMS = {"plaza": LEAGUE_PLAZA, "chamber": LEAGUE_CHAMBER, "temple": LEAGUE_TEMPLE, "hof": LEAGUE_HOF,
+                "center": LEAGUE_CENTER, "approach": LEAGUE_APPROACH,
+                **{n.lower(): _e4_room(n, z, a, b, s, i, w) for n, z, a, b, s, i, w in _E4}}
+_high_walk(LEAGUE_ROOMS["shauntal"], 23)
+_high_walk(LEAGUE_ROOMS["caitlin"], 24)
+_high_walk(LEAGUE_ROOMS["marshal"], 24)
+LEAGUE = town(136, {0: _say("Veteran at the door", "Beyond here is the Pokemon League. Only the strongest Trainers make it this far."),
+                    1: _say("Veteran by the steps", "The Elite Four wait inside, and after them the Champion. Good luck!")},
+              {}, {137: ("house", "plaza"), 146: ("center", "center"), 214: ("gate", "approach", "VICTORY_ROAD_TUNNEL")}, LEAGUE_ROOMS,
+              title="Pokémon League")
+
+
+# ======================================================================================================== batch 11a (11-24)
+# The post-game east (Jordan 11-24: 11a / 11b / 11c): Route 14 (374: south of Undella, its Black Gate 375 to Black City /
+# White Forest, 11b's), the Abundant Shrine (376, its house 377; Landorus after the League, the Reveal Glass), Route 15 (378:
+# its Black Gate 379, the Poke Transfer Lab 381 as a building only (Jordan), the trailer 382 with the Rotom-for-Ditto trade),
+# Marvelous Bridge (263: its two Bridge Gates, 380 to Route 15 and Route 16's 384; Cresselia with the Lunar Wing; the
+# Magikarp salesman), and Undella after the title: Hugh by the gate (HM06 Dive, a battle; then once a day at the old Plasma
+# base in Driftveil), Cynthia in the villa (a battle; then once a day in spring).
+OUTSIDE.update({375: 374, 376: -1, 377: 376, 378: -1, 379: 378, 381: 378, 382: 378, 380: 263})
+_CITY = lambda white: "WHITE_FOREST" if white else "BLACK_CITY"   # (11b: whichever stands now, src/world/unova_city.py: they swap after each League win)
+
+
+def _black_gate(z, out_door, city_zone, city, side):
+    r = room(z, {0: _say("Gate guard", "Ahead is %s. It's a place that never stays the same for long." % (
+                     "White Forest" if city == "WHITE_FOREST" else "Black City")),
+                 2: _say("Traveller in the gate", "Black City and White Forest... I hear people only ever find one of them."),
+                 1: _say("Backpacker in the gate", "Route 15's cliffs are steep. Mind your step!")},
+             {}, out_door, exits_extra={city_zone: (side, city)})
+    r["title"] = "Black Gate"
+    return r
+
+
+def _route14(w2):
+    m = route(
+        374, {8: _ball("Poke Ball on the beach", "BIG_PEARL", "b2_r14_big_pearl", name="a Big Pearl"),
+              9: _ball("Poke Ball up the waterfall", "HEART_SCALE", "b2_r14_heart_scale", name="a Heart Scale"),
+              11: _ball("Poke Ball by Black Belt Jay", "NUGGET", "b2_r14_nugget", name="a Nugget"),
+              10: _ball("Poke Ball past the ledge", "MAX_POTION", "b2_r14_max_potion", name="a Max Potion")},
+        {},
+        exits={"^": ("UNDELLA_TOWN", [(x, 0) for x in range(43, 85)]), "s": ("ABUNDANT_SHRINE", [(5, 37), (6, 37)])},
+        trainers={0: ("Battle Girl Glinda", 4), 1: ("Fisherman Sid", 1), 2: ("Black Belt Jay", 3), 3: ("Gentleman Sheldon", 4),
+                  4: ("Socialite Marian", 5), 5: ("Ace Trainer Kipp", 2), 6: ("Ace Trainer Junko", 4), 7: ("Backpacker Reece", 3)},
+        hidden={"46,24": "NUGGET", "31,42": "PROTEIN"},
+        rooms={"gate": _black_gate(375, (19, 56), 0, _CITY(w2), "s")}, inside={"19,56": "gate"}, title="Route 14")
+    _doors(m, m["inside"])
+    m["edge_to"] = {"%d,0" % x: [x - 32, 30] for x in range(43, 85)}
+    m["split"] = True
+    m["gated_exits"] = {_CITY(w2): ["beat_unova_champion"]}   # (the cities: after the Hall of Fame, as Black 2)
+    return m
+
+
+ROUTE_14 = _route14(False)
+ROUTE_14["story_maps"] = [{"when": ["world:unova_city:white"], "map": _route14(True)}]   # (11b: the city standing now)
+UNDELLA["edge_to"] = dict(UNDELLA.get("edge_to") or {}, **{"%d,31" % x: [x + 32, 1] for x in range(11, 53)})
+
+# --- the Abundant Shrine: Landorus after the title (the menu place's, Lv 70; Black 2 has it only from the Dream Radar, and every
+# species is caught in one playthrough: Jordan 11-20), the old man and the Reveal Glass once you have a Landorus
+SHRINE = route(
+    376, {4: _ball("Poke Ball by the shrine", "HEAL_BALL", "b2_as_heal_ball", name="a Heal Ball"),
+          0: _ball("Poke Ball in the grass", "RARE_CANDY", "b2_as_rare_candy", name="a Rare Candy"),
+          3: _ball("Poke Ball by the pond", "SHINY_STONE", "b2_as_shiny_stone", name="a Shiny Stone"),
+          1: _ball("Poke Ball in the trees", "TM161", "b2_as_tm92", name="TM161 Trick Room"),
+          2: _ball("Poke Ball by the ruins", "MAX_REVIVE", "b2_as_max_revive", name="a Max Revive"),
+          11: [{"text": "Landorus", "action": "BOSS", "color": "RED", "_look": "mon:645",
+                "condition": ["beat_unova_champion", "not:ABUNDANT_SHRINE_boss_defeated"],
+                "boss": {"id": 645, "name": "Landorus", "level": 70, "victory_flag": "ABUNDANT_SHRINE_boss_defeated",
+                         "lines": ["The shrine shook... and Landorus, the Guardian of the Fields, came down!"]}},
+               {"text": "Old man at the shrine", "action": "EVENT", "_look": "sheet:b2_c28.png",
+                "condition": ["party_has:645", "not:b2_reveal_glass"],
+                "event": {"lines": ["Old man: Landorus... It's been so long. Tornadus and Thundurus ran wild, and Landorus "
+                                    "calmed them. That's why the land here was so fertile.",
+                                    "Old man: Take this mirror. It shows the truth: the true forms of those three.",
+                                    "{player_name} received the Reveal Glass!"],
+                          "gift_item": {"REVEAL_GLASS": 1}, "flag": "b2_reveal_glass"}}],
+          10: _say("Woman by the shrine", "There used to be a village here. Only the shrine is left now."),
+          12: _say("Boy at the ruins", "Grandpa says the shrine is for the god of the harvest!", condition=["not:beat_unova_champion"]),
+          13: _say("Girl at the ruins", "The pond here never dries up, even in summer.", condition=["not:beat_unova_champion"]),
+          14: _say("Kid at the ruins", "Let's play hide-and-seek in the ruins!", condition=["not:beat_unova_champion"])},
+    {},
+    exits={"v": ("UNOVA_ROUTE_14", [(50, 54), (51, 54)])},
+    trainers={5: ("Youngster Jaye", 1), 6: ("Lass Lurleen", 2), 7: ("Twins Rae & Ula", 2), 9: ("Youngster Wes", 2)},
+    hidden={"47,22": "PP_MAX", "14,23": "BIG_MUSHROOM", "50,35": "TINY_MUSHROOM", "25,51": "CALCIUM"},
+    rooms={"house": room(377, {0: _say("Woman in the house", "Long ago, a village stood by the shrine. My family is all that's "
+                                                         "left of it. We still look after the shrine.")}, {}, (36, 46)),
+           "grotto": grotto_room(12, (47, 29)), "grotto2": grotto_room(13, (35, 9))},
+    inside={"36,46": "house", "47,29": "grotto", "35,9": "grotto2"}, title="Abundant Shrine")
+_doors(SHRINE, SHRINE["inside"])
+SHRINE["split"] = True
+
+
+# --- Route 15 and Marvelous Bridge
+def _route15(w2):
+    trailer = room(382, {0: {"text": "Woman in the trailer", "action": "EVENT", "event": {
+        "lines": ["I'll trade you my Rotom for a Ditto. Ditto's so mysterious, isn't it?"],
+        "trade": {"want": 132, "give": 479, "level": 30},
+        "done": ["How's Rotom doing? Take it to Shopping Mall Nine: it likes the appliances there."]}}}, {}, (15, 15))
+    trailer["title"] = "Trailer"
+    lab = room(381, {0: _say("Scientist at the machine", "Welcome to the Poke Transfer Lab! We study how Pokemon move between "
+                                                         "regions."),
+                     3: _say("Scientist at the desk", "The machine is still being tuned. Professor Park says it will be "
+                                                      "marvelous when it works!"),
+                     2: _say("Scientist by the shelves", "Pokemon from far away... I'd love to see them here someday."),
+                     1: _say("Scientist by the window", "Route 15's cliffs keep visitors away, which is good for our research.")},
+               {}, (32, 9))
+    lab["title"] = "Poke Transfer Lab"
+    m = route(
+        378, {3: _ball("Poke Ball up the stairs", "MAX_POTION", "b2_r15_max_potion", name="a Max Potion"),
+              2: _ball("Poke Ball behind the boulder", "TM149", "b2_r15_tm26", name="TM149 Earthquake")},
+        {},
+        exits={"<": ("MARVELOUS_BRIDGE", [(7, 19), (7, 20)])},
+        trainers={4: ("Pokéfan Elliot", 2), 5: ("Scientist Marie", 4), 6: ("Pokéfan Lydia", 3), 7: ("Backpacker Talon", 5),
+                  8: ("Backpacker Corin", 1)},
+        hidden={"43,5": "ULTRA_BALL", "31,25": "HP_UP"},
+        rooms={"lab": lab, "trailer": trailer, "gate": _black_gate(379, (57, 11), 0, _CITY(w2), ">")},
+        inside={"32,9": "lab", "15,15": "trailer", "57,10": "gate", "57,11": "gate", "57,12": "gate"}, title="Route 15")
+    _doors(m, m["inside"])
+    for _x, _y in ((44, 21), (52, 24)):   # (Black 2's boulders: Strength)
+        _put_char(m, _x, _y, "b")
+    _put_char(m, 56, 26, ".")   # (the gap the boulder at the stairs' foot fills: TM149's ledge)
+    m["split"] = True
+    m["gated_exits"] = {_CITY(w2): ["beat_unova_champion"]}   # (the city between the gates: after the Hall of Fame, as Black 2)
+    return m
+
+
+ROUTE_15 = _route15(False)
+ROUTE_15["story_maps"] = [{"when": ["world:unova_city:white"], "map": _route15(True)}]
+
+BRIDGE_GATE_E = room(380, {2: _say("Pokemon in the gate", "Kyuu!"),
+                           1: _say("Veteran in the gate", "Marvelous Bridge was built to join Route 15 and Route 16. Truly marvelous!"),
+                           0: _say("Scientist in the gate", "Some bird Pokemon drop feathers on the bridge. Collect them!")},
+                     {}, (161, 31), exits_extra={378: (">", "UNOVA_ROUTE_15")})
+BRIDGE_GATE_E["title"] = "Bridge Gate"
+BRIDGE = route(
+    263, {0: {"text": "Magikarp salesman", "action": "EVENT", "event": {
+              "lines": ["Hey, kid! Wanna buy a Magikarp? It's only $500! It's a steal!"],
+              "pay": 500, "gift_pokemon": 129, "gift_level": 20, "flag": "b2_mb_magikarp",
+              "done": ["Magikarp's a fine Pokemon, I tell you! Give it time!"]}},
+          1: _say("Girl on the bridge", "The sea looks so far down from here!"),
+          4: _say("Girl by the archway", "When the moon's out, something shines under the eastern arch...")},
+    {},
+    exits={"<": ("UNOVA_ROUTE_16", [(14, 31)])},
+    scenes=[{"trigger": {"zone": [128, 31, 128, 36]}, "condition": ["has_item:LUNAR_WING", "not:b2_mb_cresselia"],
+             "flag": "b2_mb_cresselia_seen", "cast": [],
+             "call": ["The Lunar Wing began to shine! You held it up high...",
+                      "Something swooped down out of the sky!"],
+             "event": {"flag": "b2_mb_cresselia_out"}}],
+    extra_people=[(112, 33, {"text": "Cresselia", "action": "BOSS", "color": "RED", "_look": "mon:488",
+                             "condition": ["b2_mb_cresselia_out", "not:b2_mb_cresselia"],
+                             "boss": {"id": 488, "name": "Cresselia", "level": 68, "victory_flag": "b2_mb_cresselia",
+                                      "lines": ["Cresselia shone like the crescent moon!"]}})],
+    rooms={"gate_e": BRIDGE_GATE_E}, inside={"161,31": "gate_e"}, title="Marvelous Bridge")
+_doors(BRIDGE, BRIDGE["inside"])
+BRIDGE["gated_exits"] = {"UNOVA_ROUTE_16": ["beat_unova_champion"]}
+for _y in range(31, 37):   # (the three towers' A-frames and cables over the deck: Black 2's heights there are the steel overhead,
+    for _x in range(len(BRIDGE["art"][_y])):   #  ~8 over the deck's 11.65, so live 3D read them as drops and cut the middle span
+        if BRIDGE["art"][_y][_x] == "." and GEO["263"]["lift"][_y][_x] > 13.5:   #  off; the road runs under them: a deck tile,
+            _put_char(BRIDGE, _x, _y, ";")   #  never a drop - 11-24)
+
+# --- Undella after the title: Hugh by the gate (HM06 Dive), Cynthia in the villa; Hugh once a day at the Plasma base after
+_HUGH_UNDELLA = dict(_b2(693), name="{rival_name}", **{"class": "PKMN_TRAINER"}, sprite="hugh.png",
+                     team_choice={s: _TEAMS[str(t)]["team"] for s, t in zip(("495", "498", "501"), (693, 694, 695))},
+                     rewards=_prize(693, HM_DIVE=1),
+                     dialogue={"player_won": ["{rival_name}: You really are the Champion. ...I'll get stronger. Count on it!",
+                                              "{rival_name}: Here: HM06, Dive. With it you can explore the bottom of the sea.",
+                                              "{rival_name}: I'll be training at the old Plasma base in Driftveil. Come battle me "
+                                              "any time: once a day!"]})
+UNDELLA["scenes"] = list(UNDELLA.get("scenes") or []) + [
+    {"trigger": "enter", "condition": ["beat_unova_champion", "b2_hall_of_fame", "not:b2_undella_hugh"], "flag": "b2_undella_hugh_met",
+     "cast": [{"sheet": "b2_hugh.png", "from": [48, 8], "to": "player", "stay": True, "lines": [
+         "{rival_name}: {player_name}! Champion! My sister and her Liepard say thanks, again.",
+         "{rival_name}: There's something I want to give you. But first... battle me, Champion!"]}],
+     "event": {"flag": "b2_undella_hugh", "battle": _HUGH_UNDELLA}}]
+
+
+# ======================================================================================================== batch 11b (11-25)
+# Black City (0: its Pokemon Center 1, the house 2, the Market 5, the Black Tower 479) and White Forest (424: its Center 425,
+# the house 426, White Treehollow 478), both from Black 2's file. They stand between Route 14's and Route 15's Black Gates;
+# which one stands is src/world/unova_city.py (your version's first, then they swap after each League win, Jordan 11-19).
+# People's words change as you clear the tower's Areas (Black 2's three stages: before Area 5, from Area 5, all ten).
+# The Market's four stores open after Areas 2, 5, 8 and 10, one item a day each (a weekday item and a weekend one).
+OUTSIDE.update({1: 0, 2: 0, 5: 0, 479: 0, 425: 424, 426: 424, 478: 424})
+WEEKDAY, WEEKEND = "weekday:mon,tue,wed,thu,fri", "weekday:sat,sun"
+
+
+def _staged(name, tower, *stages):
+    """Someone whose words follow the tower: 3 stages (before Area 5, from 5, all 10) or 2 (before all 10, then)."""
+    cuts = [(None, 5), (5, 10), (10, None)] if len(stages) == 3 else [(None, 10), (10, None)] if len(stages) == 2 else [(None, None)]
+    out = []
+    for k, (lines, (lo, hi)) in enumerate(zip(stages, cuts)):
+        cond = ([] if lo is None else ["world:unova_city:cleared:%s:%d" % (tower, lo)]) + \
+               ([] if hi is None else ["not:world:unova_city:cleared:%s:%d" % (tower, hi)])
+        out.append(_say(name + " " * k, *([lines] if isinstance(lines, str) else lines), **({"condition": cond} if cond else {})))
+    return out if len(out) > 1 else out[0]
+
+
+def _store(name, tower, need, key, weekday, weekend):
+    """A Market store: open once the tower's Area `need` is cleared; one item a day, the weekday's or the weekend's."""
+    out = [_say(name, "This counter isn't open yet. Come back after you've done well in the %s!" % (
+                "Black Tower" if tower == "BLACK" else "White Treehollow"),
+                condition=["not:world:unova_city:cleared:%s:%d" % (tower, need)])]
+    for k, ((item, label, price), when) in enumerate(((weekday, WEEKDAY), (weekend, WEEKEND))):
+        out.append({"text": name + " " * (k + 1), "action": "EVENT",
+                    "condition": ["world:unova_city:cleared:%s:%d" % (tower, need), when], "event": {
+                        "lines": ["Today's special: %s for $%d!" % (label, price)], "pay": price, "gift_item": {item: 1},
+                        "daily": True, "flag": key, "fail": ["Oh! You don't have enough money for that."],
+                        "done": ["Sorry, that's today's only one! Come back tomorrow!"]}})
+    return out
+
+
+def _lobby(z, tower, desk, *people):
+    """A tower's lobby: the receptionist starts a challenge (src/world/black_tower.py), two Trainers who talk of it."""
+    r = room(z, {0: {"text": "Receptionist", "action": "EVENT", "event": {"world": "black_tower", "desk": tower}},
+                 **dict(people)}, {}, desk)
+    r["title"] = "Black Tower" if tower == "BLACK" else "White Treehollow"
+    return r
+
+
+BC_CENTER = room(1, {4: {"text": "Pokémon Center", "action": "HEAL"}, 1: {"text": "Shop", "action": "SHOP"},
+                     2: _say("Clerk ", "Specialty Poke Balls are over here!"),
+                     3: _say("Clerk  ", "The counter on the left sells everyday items."),
+                     7: _say("Woman by the PC", "Have you heard? There are keys that switch things between black and white...")},
+                 {}, (42, 37))
+BC_HOUSE = room(2, {0: _say("Man", "Making money's fine! Just make it the honest way."),
+                    1: _say("Woman", "How far would you go to get what you want?")}, {}, (42, 46))
+BC_MARKET = room(5, {
+    2: _store("Shopkeeper", "BLACK", 2, "b2_bc_store_1", ("THUNDER_STONE", "a Thunderstone", 10000), ("PROTECTOR", "a Protector", 10000)),
+    0: _store("Shopkeeper ", "BLACK", 5, "b2_bc_store_2", ("FIRE_STONE", "a Fire Stone", 20000), ("METAL_COAT", "a Metal Coat", 20000)),
+    3: _store("Shopkeeper  ", "BLACK", 8, "b2_bc_store_3", ("DUSK_STONE", "a Dusk Stone", 40000), ("UPGRADE", "an Up-Grade", 40000)),
+    1: _store("Shopkeeper   ", "BLACK", 10, "b2_bc_store_4", ("DAWN_STONE", "a Dawn Stone", 60000), ("DUBIOUS_DISC", "a Dubious Disc", 60000)),
+    4: _staged("Black City's boss", "BLACK",
+               "Welcome to Black City, the city of dreams and greed! And I'm its boss, the greediest of all!",
+               "You've climbed right up the Black Tower! I like ambitious people.",
+               "Trainers like you make me look small! But my greed has no end. That's why I'm the boss!"),
+    5: _say("Shopper", "Expensive doesn't mean good. Shop smart, or you'll get burned!"),
+    6: _say("Shopper ", "I want to get strong so I can make more money!"),
+    7: _say("Shopper  ", "Money can't buy everything. But it buys almost everything!"),
+    8: _say("Shopper   ", "If you're just like everyone else, you're not thinking for yourself!"),
+    9: _say("Shopper    ", "Isn't there a job that pays more for the same work?"),
+    10: _say("Trainer in the Market", "How strong could this Pokemon get? Strength is a kind of worth, right?"),
+    11: _say("Woman in the Market", "Everything I want is right here! If only I had the money!"),
+    12: _say("Man in the Market", "Did people build cities just to get what they want?")}, {}, (27, 42))
+BC_MARKET["title"] = "Black City Market"
+BC_LOBBY = _lobby(479, "BLACK", (28, 17),
+                  (1, _staged("Researcher", "BLACK", "The Black Tower, Unova's Challenge... it seems to pierce the sky.",
+                              "They say Area 6 is so high you can't see it from the ground. How high can it be?",
+                              "You cleared the very top? You really are above the clouds!")),
+                  (2, _staged("Psychic", "BLACK", "I feel a power I've never felt before... I can't stop trembling!",
+                              "It's getting stronger! What secret does this tower hide?",
+                              "Now I know! The power I felt was your potential!")),
+                  (3, _say("Trainer in the lobby", "Benga is Alder's grandson? Maybe Alder in Floccesy Town would train me too!",
+                           condition=["b2_bt_benga"])))
+BLACK_CITY = town(0, {
+    0: _staged("Dave", "BLACK", "Dave: People who've got it going on get what they want! Just get it honestly.",
+               "Dave: There's a shop here for people who've got it going on. New items just came in!",
+               "Dave: Thugs used to hang around here after money. I ran them off! Black City's peace is thanks to me!"),
+    1: _staged("Karenna", "BLACK", "Karenna: I heard strong Trainers train around here, so I came too! Let's both do our best!",
+               "Karenna: You're {player_name}? I hear you've climbed far up the Black Tower! I won't lose either!",
+               "Karenna: You cleared the Black Tower! Everyone's talking about you, and the shops have new items!"),
+    2: _staged("Ken", "BLACK", "Ken: Trainers come from all over to take on the Black Tower. Bring your best Pokemon!",
+               "Ken: You're climbing the Black Tower? The higher the Area, the odder the Trainers. Aim for the top!",
+               "Ken: You beat the Black Tower! I tried again and again, then gave up. You really believe in your Pokemon."),
+    3: _staged("Marie", "BLACK", "Marie: I'm writing my thesis on city Pokemon, and how they cheer up tired city folk!",
+               "Marie: My research is done! Time with Pokemon is the best cure for stress, even in a big city."),
+    4: _staged("Piper", "BLACK", "Piper: I got a job at one of Black City's top companies! I'll work hard and rise to the top!",
+               "Piper: I can't take it... Mistakes at work, and I got dumped. I want to run off to White Forest and rest.",
+               "Piper: I fixed a big problem at work and everyone praised me! I'm glad I stuck with it."),
+    5: _staged("Collin", "BLACK", "Collin: The thing I want is never in stock! They say it's coming soon, but I can't wait!",
+               "Collin: The shop got something new! Still not what I want, though...",
+               "Collin: They finally have it! ...What is it? That's my business!"),
+    6: _say("Eliza", "Eliza: I came here to get rich and famous! I'll clear the Black Tower faster than anyone!"),
+    7: _staged("Emi", "BLACK", "Emi: Between part-time shifts I win prize money in the Black Tower. Can't do that in White Forest!",
+               "Emi: You've gone far up the Black Tower? I can't get past the first Area! The money's still good.",
+               "Emi: I've never stayed anywhere this long. Maybe it's time to move on... to White Forest, maybe.")},
+    {5: ["BLACK CITY", "Prosperous and Vibrant"]},
+    {1: ("center", "center"), 2: ("house", "house"), 5: ("house", "market"), 479: ("house", "lobby"),
+     375: ("gate", None, "UNOVA_ROUTE_14"), 379: ("gate", None, "UNOVA_ROUTE_15")},
+    {"center": BC_CENTER, "house": BC_HOUSE, "market": BC_MARKET, "lobby": BC_LOBBY}, title="Black City")
+
+WF_CENTER = room(425, {4: {"text": "Pokémon Center", "action": "HEAL"}, 1: {"text": "Shop", "action": "SHOP"},
+                       2: _say("Clerk ", "Specialty Poke Balls are over here!"),
+                       3: _say("Clerk  ", "The counter on the left sells everyday items."),
+                       7: _say("Man by the PC", "Do you like nature left wild, or nature shaped to please people?")},
+                   {}, (45, 36))
+WF_HOUSE = room(426, {
+    0: _staged("Forest elder", "WHITE", "Ho! Hoo! Welcome to White Forest, where people, Pokemon and nature live as one!",
+               "Ho! Hoo! You've heard the White Treehollow's voice. Its true voice waits at the very bottom!",
+               "Ho! Hoo! Hoo! You heard the heart of the White Treehollow! No, don't tell me. I'll go and hear it myself!"),
+    1: _say("Girl", "Build too many tall buildings and the sky gets small. You can't even see the sun!"),
+    2: _say("Boy", "I live out here with Pokemon so I can learn how they feel."),
+    3: _say("Woman", "Once you've had a meal of Berries, you won't crave anything else!")}, {}, (18, 46))
+WF_LOBBY = _lobby(478, "WHITE", (29, 19),
+                  (1, _staged("Trainer by the door", "WHITE", "I was so close, then I lost! I should have found the Nurse first.",
+                              "You've cleared Area 5 already? I'll catch up soon!",
+                              "You finished every Area? I can't believe it... Congratulations!")),
+                  (2, _staged("Explorer", "WHITE", "What's at the bottom of the White Treehollow? I'll be the first to find out!",
+                              "I finally reached Area 3! ...You cleared Area 5? There's always someone ahead of me...",
+                              "I cleared that dangerous Area 5! ...You reached the bottom? Someday I'll see it too.")),
+                  (3, _say("Trainer in the lobby", "Benga is Alder's grandson? Maybe Alder in Floccesy Town would train me too!",
+                           condition=["b2_bt_benga"])))
+_WF_CRIES = ["Muwaaaan!", "Squee?", "Lill lill...", "Pololo.", "Fooo!", "Lola rolaa."]
+WHITE_FOREST = town(424, {
+    0: _staged("Silvia", "WHITE", "Silvia: Ommm... Oh! I was sunbathing and my mind went blank. Want to 'om' with me?",
+               "Silvia: Did you see? The lazy shop owner finally put out new items!",
+               "Silvia: Watching Pokemon play makes me so happy. I hope tomorrow's just as nice."),
+    2: _staged("Robbie", "WHITE", "Robbie: My big brother runs a shop, but he can't be bothered to put out new stock. Check back later!",
+               "Robbie: My brother finally put new items in his shop! He can do anything when he tries!",
+               "Robbie: My brother keeps adding new stock! He says {player_name}, the best in the White Treehollow, inspired him!"),
+    10: _staged("Ryder", "WHITE", "Ryder: Someone named {player_name} is beating everyone in the White Treehollow. Is that you?",
+                "Ryder: You're {player_name}? The best in the White Treehollow! Give me some tips sometime!"),
+    3: _staged("Carlos", "WHITE", "Carlos: In White Forest we share the Berries we gather. I picked extra for the elders.",
+               "Carlos: Berries every day make me miss city food. Maybe it's time for a food quest!",
+               "Carlos: The shop has much better stock now. The shopkeeper says he won't lose to {player_name}!"),
+    4: _staged("Gene", "WHITE", "Gene: A hollow opened in the white tree! We locals will be the first to reach the bottom!",
+               "Gene: {player_name}! I hear you went really deep into the hollow! Reach the bottom for me!",
+               "Gene: On behalf of the whole forest, congratulations on beating the White Treehollow!"),
+    5: _staged("Miho", "WHITE", "Miho: I'm so bored! There's nothing to do here! I miss the city lights!",
+               "Miho: My skin's so smooth since I moved here! Must be all the fresh Berries!",
+               "Miho: Lying in a meadow watching the sun set... the simple things are the most fun here."),
+    6: _say("Grace", "Grace: So you're {player_name}! My grandson talks about you all the time. You're quite a cutie!",
+            condition=["world:unova_city:cleared:WHITE:10"]),
+    1: _say("Pokemon by the tree", _WF_CRIES[0]), 7: _say("Pokemon in the grass", _WF_CRIES[1]),
+    9: _say("Pokemon by the pond", _WF_CRIES[2]), 12: _say("Pokemon by the path", _WF_CRIES[3]),
+    11: _say("Pokemon in the trees", _WF_CRIES[4]), 8: _say("Pokemon by the hollow", _WF_CRIES[5]),
+    13: _store("Shopkeeper", "WHITE", 2, "b2_wf_store_1", ("LEAF_STONE", "a Leaf Stone", 10000), ("DEEP_SEA_TOOTH", "a DeepSeaTooth", 10000)),
+    14: _store("Shopkeeper ", "WHITE", 5, "b2_wf_store_2", ("WATER_STONE", "a Water Stone", 20000), ("DEEP_SEA_SCALE", "a DeepSeaScale", 20000)),
+    15: _store("Shopkeeper  ", "WHITE", 8, "b2_wf_store_3", ("SHINY_STONE", "a Shiny Stone", 40000), ("DRAGON_SCALE", "a Dragon Scale", 40000)),
+    16: _store("Shopkeeper   ", "WHITE", 10, "b2_wf_store_4", ("OVAL_STONE", "an Oval Stone", 60000), ("KINGS_ROCK", "a King's Rock", 60000))},
+    {4: ["WHITE FOREST", "People and Nature in Harmony"]},
+    {425: ("center", "center"), 426: ("house", "house"), 478: ("house", "lobby"),
+     375: ("gate", None, "UNOVA_ROUTE_14"), 379: ("gate", None, "UNOVA_ROUTE_15")},
+    {"center": WF_CENTER, "house": WF_HOUSE, "lobby": WF_LOBBY}, title="White Forest")
+for _m in (BLACK_CITY, WHITE_FOREST):
+    _m["gated_exits"] = {}
+
+
+# ---------------------------------------------------------------------------------------------- the towers' Areas (11b part 2)
+# Each Area's floors, room by room, from src/world/black_tower.layout() (seeded: the same every visit, so the Journal and the
+# checks agree): Black 2's own room types (lift 481 / 480, the Boss's 483 / 482, plain 493 / 492, pillars 486 / 485, Surf
+# 484 / 487), joined by their side doors (links to the next room's opposite door), the unused doors walled; trainers on the
+# room's spots, the Boss in his room, the gate trainer's room's north door barred till they're beaten; the lift panel.
+from src.world import black_tower as _BT   # noqa: E402
+
+_TOWER_LOOKS = (_BT.data().get("looks") or {})
+
+
+def _tower_rooms(t):
+    out = {}
+    d = _BT.data().get(t) or {}
+    for n in range(1, 11):
+        L = _BT.layout(t, n)
+        dd = d.get(str(n)) or {}
+        g = L["grid"]
+        gate = L["gate"]
+        for f, fl in enumerate(L["floors"]):
+            cells = fl["cells"]
+            for (r, c), ty in cells.items():
+                z = _BT.ZONES[t][ty]
+                extra = []
+                for (pf, pr, pc, s, kind, k) in L["people"]:
+                    if (pf, pr, pc) != (f, r, c):
+                        continue
+                    pool = dd.get("healers" if kind == "healer" else "trainers") or [{}]
+                    who = pool[k % len(pool)]
+                    x, y = _BT.SPOTS[ty][s]
+                    extra.append((x, y, {"text": who.get("name", "Trainer"), "action": "EVENT",
+                                         "_look": _TOWER_LOOKS.get(who.get("class"), "sheet:b2_c30.png"),
+                                         "event": {"world": "black_tower", "fight": [t, n, f, r, c, s]}}))
+                if ty == "boss":
+                    boss = dd.get("boss") or {}
+                    x, y = _BT.SPOTS["boss"][0]
+                    extra.append((x, y, {"text": boss.get("name", "Boss Trainer"), "action": "EVENT",
+                                         "_look": "sheet:b2_c304.png" if n == 10 else _TOWER_LOOKS.get("ACE_TRAINER", "sheet:b2_c30.png"),
+                                         "event": {"world": "black_tower", "boss": [t, n]}}))
+                m = room(z, {}, {10741: ["The lift."]} if ty == "lift" else {}, (0, 0), extra_people=extra)
+                nb = _BT.doors(cells, r, c, g)
+                for side, (dx, dy) in _BT.DOORS.items():
+                    if side not in nb and 0 <= dy < len(m["art"]) and 0 <= dx < len(m["art"][0]) and m["art"][dy][dx] not in "c!":
+                        _put_char(m, dx, dy, "c")
+                m["links"] = {"%d,%d" % _BT.DOORS[side]: [_BT.room_name(t, n, f, rr, cc), *_BT.ARRIVE[side]]
+                              for side, (rr, cc) in nb.items()}
+                m["landings"] = [list(_BT.ARRIVE[{"N": "S", "S": "N", "W": "E", "E": "W"}[side]]) for side in nb] +                     ([list(_BT.LIFT_AT)] if ty == "lift" else [])   # (where you come in: through a door, or off the lift)
+                if (f, r, c) == tuple(gate[:3]) and "N" in nb:
+                    m["barred"] = [{"tiles": [list(_BT.DOORS["N"])], "until": {"condition": ["world:black_tower:gate:%s:%d" % (t, n)]},
+                                    "look": "unseen", "lines": ["The door to the Boss Trainer's room is locked.",
+                                                                "Beat this Area's gate trainer to open it."]}]
+                if ty == "lift":
+                    m["sign_events"] = {"6,1": {"text": "Lift", "action": "EVENT",
+                                                "event": {"world": "black_tower", "tower_lift": [t, n, f]}}}
+                m["title"] = "%s Area %d" % ("Black Tower" if t == "BLACK" else "White Treehollow", n) + \
+                             (" (%dF)" % (f + 1) if len(L["floors"]) > 1 else "")
+                out[_BT.room_name(t, n, f, r, c)] = m
+    return out
+
+
+BLACK_CITY["rooms"].update(_tower_rooms("BLACK"))
+WHITE_FOREST["rooms"].update(_tower_rooms("WHITE"))
+
+
+
+
+# ======================================================================================================== batch 11c (11-25)
+# The Zoroark's cave (596, off Victory Road's mountainside) and N's Castle in ruins (273 1F, 274 N's room, 277 2F, 278 the
+# throne room), Black 2's. After the Hall of Fame, Hugh's sister dreams of a Zoroark on Victory Road (b2_sister_dream); the
+# Zoroark leads you into its cave (b2_nc_zoroark) and on to the castle: N waits on 1F (b2_nc_met), tells his story in his old
+# room (b2_nc_room), stops you on 2F (b2_nc_2f), and battles you in the throne room with Zekrom (Black 2) / Reshiram (White 2),
+# Lv 70, then gives you his dragon as the Dark Stone / Light Stone for Dragonspiral Tower (b2_n_beaten). After Kyurem's caught
+# (GIANT_CHASM_boss_defeated) he's back in the throne room once a month, his team by the season (782-785).
+# Challenger's Cave (Black and White's) is reached from inside the cave, top-left (Jordan 11-25, questions/UNOVA.md 18).
+OUTSIDE.update({273: 596, 274: -1, 277: -1, 278: -1})
+_NC_W2 = "unova_version:WHITE_2"
+_NC_B2 = "unova_version:BLACK_2"
+NC_1F = room(273, {
+    0: _say("N", "N: You came...", "N: This is Team Plasma's castle... The ruins of Ghetsis's dreams.",
+            "N: Its deepest chamber means a great deal to me. I'll face you there. Lead the way, and I'll follow.",
+            condition=["not:b2_nc_met"]),
+    1: _ball("Poke Ball on the lower walkway", "PROTEIN", "b2_nc_protein", name="a Protein"),
+    2: _ball("Poke Ball by the far stairs", "TM157", "b2_nc_tm157", name="TM157 Overheat")},
+    {}, (29, 6), stairs={274: ("^", "ROOM:nroom"), 277: ("<", "ROOM:2f")})
+NC_1F["title"] = "N's Castle 1F"
+NC_1F["scenes"] = [{"trigger": {"zone": [9, 9, 9, 11]}, "condition": ["not:b2_nc_met"], "flag": "b2_nc_met", "cast": [], "call": [
+    "N: You came...", "N: This is Team Plasma's castle. The ruins of Ghetsis's dreams...",
+    "N: The deepest chamber of this castle means something special to me. I'll face you there.",
+    "N: But rather than lead you, I'd like to follow. I want to see which path you choose. Take me to the deepest chamber!"]}]
+NC_ROOM = room(274, {0: _ball("Poke Ball in N's room", "LUXURY_BALL", "b2_nc_luxury_ball", name="a Luxury Ball")},
+               {1: ["A slightly dirty basketball. 'Harmonia' is written on it."], 2: ["A home basketball hoop, knocked over."],
+                3: ["A toy box. Its toys have spilled out."], 4: ["The rubber on these wheels has rotted away."],
+                5: ["A skateboard halfpipe, scratched here and there by Pokemon."], 6: ["An art panel with a geometric pattern."],
+                7: ["A panel with a dart stuck in it."], 8: ["A model train set. Nobody's touched it in a long time."],
+                9: ["A toy box, tipped over."]},
+               (0, 0), stairs={273: ("v", "ROOM:1f")})
+NC_ROOM["title"] = "N's Room"
+
+
+def _reachable_signs(r):
+    """Drop the signs nobody can stand beside (the file marks every tile of a big object; some sit behind others)."""
+    art = [list(row) for row in r["art"]]
+    h, w = len(art), len(art[0])
+    start = [(x, y) for y in range(h) for x in range(w) if art[y][x] in r.get("exits", {})]
+    seen, todo = set(start), list(start)
+    while todo:
+        x, y = todo.pop()
+        for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            t = (x + dx, y + dy)
+            if t not in seen and 0 <= t[1] < h and 0 <= t[0] < w and art[t[1]][t[0]] in ".1":
+                seen.add(t); todo.append(t)
+    keep, k = [], 0
+    for y in range(h):
+        for x in range(w):
+            if art[y][x] == "!":
+                if any((x + dx, y + dy) in seen for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))):
+                    keep.append(r["signs"][k])
+                else:
+                    art[y][x] = "c"
+                k += 1
+    r["art"], r["signs"] = ["".join(row) for row in art], keep
+
+
+_reachable_signs(NC_ROOM)
+NC_ROOM["scenes"] = [{"trigger": "enter", "condition": ["b2_nc_met", "not:b2_nc_room"], "flag": "b2_nc_room", "cast": [], "call": [
+    "N: This place... was my whole world.", "N: When I was little, I was left deep in a forest. The Pokemon there raised me.",
+    "N: Then one day a man came and said he was my father. That was Ghetsis.",
+    "N: He gave me the name 'Harmonia', a king's knowledge, Pokemon whose hearts were shut tight... and this room.",
+    "N: I'll be outside..."]}]
+NC_2F = room(277, {0: _say("N ", "N: I want to see things no one else can see.", condition=["b2_nc_met", "not:b2_n_beaten"])},
+             {}, (0, 0), stairs={273: ("v", "ROOM:1f"), 278: ("^", "ROOM:throne")})
+NC_2F["title"] = "N's Castle 2F"
+NC_2F["scenes"] = [{"trigger": {"zone": [30, 12, 30, 14]}, "condition": ["b2_nc_met", "not:b2_nc_2f"], "flag": "b2_nc_2f", "cast": [],
+                    "call": ["N: This is our destination... Go inside."]}]
+
+
+def _n_battle(tid, legend):
+    b = _b2(tid, name="N")
+    b["dialogue"] = {"player_won": [
+        "N: %s and I were beaten. Your feelings, your search for %s, carried you past us." % (legend, "truth" if legend == "Zekrom" else "ideals"),
+        "N: Battling you reminded me of two years ago. I think I understand you a little better now.",
+        "N: And %s... thank you for everything. From now on, use your power to help this Trainer reach their dreams." % legend,
+        "N: I'll miss you too... But I've learned so much from you. I can talk to Pokemon. I'll be the bridge between "
+        "Pokemon and people!",
+        "N: Rest well...",
+        "N: {player_name}! I entrust you with this %s! Take it to Dragonspiral Tower." % ("Dark Stone" if legend == "Zekrom" else "Light Stone"),
+        "N: As for me, I'll search for the Trainer I battled two years ago... and say thank you."]}
+    b["rewards"] = dict(b.get("rewards") or {}, **{"DARK_STONE" if legend == "Zekrom" else "LIGHT_STONE": 1})
+    return b
+
+
+def _n_scene(when, legend, tid, cry):
+    return {"trigger": {"zone": [14, 41, 18, 41]}, "condition": [when, "b2_nc_met", "not:b2_n_beaten"], "flag": "b2_n_met_throne",
+            "cast": [{"sheet": "b2_c103.png", "from": [16, 55], "to": "player", "stay": True, "lines": [
+                "N: That's the place!",
+                "N: Two years ago, for the sake of Pokemon, I put my beliefs on the line and battled a certain Trainer.",
+                "N: And I lost... But I learned something important: to change the world, you must accept different ideas.",
+                "N: I want to see if your heart is strong enough for that.",
+                "N: %s, come!" % legend, cry,
+                "N: %s wants to know what you seek, and how good a Trainer you are. Show me your determination!" % legend]}],
+            "event": {"flag": "b2_n_beaten", "battle": _n_battle(tid, legend)}}
+
+
+_N_SEASONS = (("SPRING", 782), ("SUMMER", 783), ("AUTUMN", 784), ("WINTER", 785))
+NC_THRONE = room(278, {
+    1: [_say("Zekrom", "Bazzazzazzash!", _look="mon:644", condition=[_NC_B2, "not:b2_n_beaten"]),
+        _say("Reshiram", "Preeeeaah!", _look="mon:643", condition=[_NC_W2, "not:b2_n_beaten"])],
+    2: [{"text": "N" + " " * (k + 2), "action": "EVENT", "_look": "sheet:b2_c103.png",
+         "condition": ["b2_n_beaten", "GIANT_CHASM_boss_defeated", "season:" + season], "event": {
+             "world": "unova_city", "monthly": "b2_n_month", "battle": dict(_b2(tid, name="N")),
+             "lines": ["N: How surprising... I didn't expect you here. Well, that's how you come to understand other Trainers.",
+                       "N: You're all right with a battle, aren't you?"],
+             "done": ["N: There are still many Pokemon in the world I should talk to. Come again another month."]}}
+        for k, (season, tid) in enumerate(_N_SEASONS)]},
+    {}, (0, 0), stairs={277: ("v", "ROOM:2f")})
+NC_THRONE["title"] = "N's Castle"
+NC_THRONE["scenes"] = [_n_scene(_NC_B2, "Zekrom", 5, "Zekrom: Shaaaaaak!"), _n_scene(_NC_W2, "Reshiram", 6, "Reshiram: Baaaaaaaahn!")]
+N_CAVE = route(596, {0: _say("Zoroark", "Kwaaaaan!", condition=["not:b2_nc_zoroark"])}, {},
+               exits={"v": ("VICTORY_ROAD_MOUNTAINSIDE", [(4, 23)]), "<": ("CHALLENGERS_CAVE", [(2, 2)])},
+               scenes=[{"trigger": {"zone": [2, 19, 5, 19]}, "condition": ["not:b2_nc_zoroark"], "flag": "b2_nc_zoroark", "cast": [],
+                        "call": ["Zoroark: Kwaaaaan!", "The Zoroark ran off deeper into the cave, toward a ruined building..."]}],
+               rooms={"1f": NC_1F, "nroom": NC_ROOM, "2f": NC_2F, "throne": NC_THRONE}, inside={"29,6": "1f"},
+               title="The Zoroark's Cave")
+_doors(N_CAVE, N_CAVE["inside"])
+N_CAVE["edge_to"] = {"4,23": [35, 32]}
+N_CAVE["split"] = True
 
 
 MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": FLOCCESY, "UNOVA_ROUTE_20": ROUTE_20,
@@ -7100,4 +7801,6 @@ MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": 
         "GIANT_CHASM_CAVE": CHASM_CAVE,
         "UNOVA_ROUTE_23": ROUTE_23, "VICTORY_ROAD_UNOVA": VR_OUTSIDE, "VICTORY_ROAD_CAVE_1F": VR_1F, "VICTORY_ROAD_GROVE": VR_GROVE,
         "VICTORY_ROAD_RIVER": VR_RIVER, "VICTORY_ROAD_CAVE_2F": VR_2F, "VICTORY_ROAD_2F_BACK": VR_2F_BACK,
-        "VICTORY_ROAD_MOUNTAINSIDE": VR_MOUNTAIN, "VICTORY_ROAD_3F": VR_3F, "VICTORY_ROAD_TUNNEL": VR_TUNNEL}   # (batch 10a)
+        "VICTORY_ROAD_MOUNTAINSIDE": VR_MOUNTAIN, "VICTORY_ROAD_3F": VR_3F, "VICTORY_ROAD_TUNNEL": VR_TUNNEL,   # (batch 10a)
+        "UNOVA_POKEMON_LEAGUE": LEAGUE,   # (batch 10b)
+        "UNOVA_ROUTE_14": ROUTE_14, "N_CASTLE": N_CAVE, "BLACK_CITY": BLACK_CITY, "WHITE_FOREST": WHITE_FOREST, "ABUNDANT_SHRINE": SHRINE, "UNOVA_ROUTE_15": ROUTE_15, "MARVELOUS_BRIDGE": BRIDGE}   # (batch 11a)

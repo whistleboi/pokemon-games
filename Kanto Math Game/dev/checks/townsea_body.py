@@ -38,6 +38,7 @@ for _f in glob.glob(os.path.join("assets", "*_area_data.json")):
         if isinstance(_v, dict):
             _types[_k] = _v.get("area_type")
 story.story_flags["hoenn_version"] = "OMEGA_RUBY"
+story.story_flags["helped_wally"] = True   # (past Norman and Wally's catch: its scene plays on entering Petalburg (11-25 its event no longer drops))
 _tm = json.load(open(os.path.join("assets", "town_maps.json"), encoding="utf-8"))
 
 print("1) the map data: every town's own sea is Surf water")

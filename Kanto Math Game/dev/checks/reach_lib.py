@@ -255,6 +255,11 @@ def _walk_exits(area, gated=False):
         except (OSError, ValueError):
             _WALK["maps"] = {}
     m = _WALK["maps"].get(area) or {}
+    from src.states.overworld import walk_town as _wt   # (the map it's walked on now: a "story_maps" one whose flags hold, as
+    for _sw in m.get("story_maps") or []:              #  the game's walk_town.story_map - Unova's Black Gates lead to whichever
+        if isinstance(_sw.get("map"), dict) and _wt._flags_hold(g, _sw.get("when")) and not _sw.get("via"):   # city stands, 11-25)
+            m = dict(_sw["map"], gated_exits=_sw["map"].get("gated_exits", m.get("gated_exits")))
+            break
     out = []
     for part in [m] + list(m.get("floors") or []) + list((m.get("rooms") or {}).values()):
         ex = (part or {}).get("exits") if isinstance(part, dict) else None

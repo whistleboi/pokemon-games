@@ -97,8 +97,16 @@ def reachable(key, m):
     starts = starts + [(x, y - 1) for x, y in map(tuple, m.get("back_doors", []))]  # (a yard reached only through a house's back door: Fuchsia's pond)
     starts = starts + [tuple(t) for t in m.get("landings", [])]  # (a spot reached only by falling through a hole above: Mt. Pyre)
     seen, todo = set(starts), list(starts)
+    _here = str(key).split("__")[-1]
+    scene_pads = {(s["trigger"]["zone"][0], s["trigger"]["zone"][1]): (s["room"][1], s["room"][2])   # (a tile whose scene moves you
+                  for s in m.get("scenes") or [] if isinstance(s.get("trigger"), dict) and len(s["trigger"].get("zone") or []) == 4   #  to another spot of
+                  and s["trigger"]["zone"][:2] == s["trigger"]["zone"][2:] and isinstance(s.get("room"), list)                       #  this same room: Amity
+                  and len(s["room"]) == 3 and s["room"][0] == _here}                                                             #  Square's hut pads, Sinnoh 11-25)
     while todo:
         x, y = todo.pop()
+        if (x, y) in scene_pads and scene_pads[(x, y)] not in seen:
+            seen.add(scene_pads[(x, y)])
+            todo.append(scene_pads[(x, y)])
         pad = (m.get("links") or {}).get(f"{x},{y}")  # (a warp pad on this same map: on to its far pad)
         if pad and not isinstance(pad[0], str) and (pad[1], pad[2]) not in seen and not m.get("floors"):  # (a pad into another room: that room is checked on its own)
             seen.add((pad[1], pad[2]))

@@ -90,7 +90,7 @@ def _tm_lady(state, story, show):
 
 def _daily_catch(state, story, d, show):
     """Today's species (the same all day, from the place's water); one of it in your party earns the gift, once a day. (Black 2
-    also wants it caught that same day; our Pokemon keep no catch date, so any of that species counts.)"""
+    also wants it caught that same day: p.caught_today(), the catch date each Pokemon keeps; a Pokemon from an older save has none.)"""
     import datetime
     import random
     from src.minigames.base import species_name
@@ -101,7 +101,8 @@ def _daily_catch(state, story, d, show):
     if flags.get(d["key"]) == today:
         show(d.get("done") or ["Come back tomorrow!"])
         return
-    if not any(p and not getattr(p, "is_egg", False) and getattr(p, "id", None) == sp for p in story.player_team):
+    if not any(p and not getattr(p, "is_egg", False) and getattr(p, "id", None) == sp
+               and getattr(p, "caught_today", lambda: False)() for p in story.player_team):
         show([line.replace("{species}", name) for line in d["ask"]])
         return
     flags[d["key"]] = today
@@ -291,8 +292,8 @@ def event(state, ev, lines, show):
         return _potion_errand(story, show)
     if ev.get("medal_paint"):   # (batch 8a extras: every Center's Medal Box painter, by how many Medals you have)
         return _medal_paint(story, show)
-    if ev.get("mimic") is not None:   # (batch 8a extras: Opelucid's Mimic game, upstairs in the old Battle House)
-        return _mimic(story, ev["mimic"], show)
+    if ev.get("mimic") is not None:   # (batch 8a extras: Opelucid's Mimic game, upstairs in the old Battle House)
+        return _mimic(story, ev["mimic"], show)
     if ev.get("dex_register"):   # (batch 6b: Route 7's old man shows you Tornadus and Thundurus, then Landorus)
         for sp in ev["dex_register"]:
             state.game.data.mark_seen(int(sp))
@@ -313,6 +314,12 @@ def event(state, ev, lines, show):
         for item, n in (ev["party_type"].get("gift") or {}).items():
             story.inventory[item] = story.inventory.get(item, 0) + int(n)
         show(lines or ["Thank you!"])
+        return
+    if ev.get("clear"):   # (flags that last only while you're in a place: Village Bridge's musicians, Black 2's 0x400A-D)
+        for f in ev["clear"]:
+            state.game.story_manager.story_flags.pop(f, None)
+        if lines:
+            show(lines)
         return
     if ev.get("toggle"):
         flags = state.game.story_manager.story_flags

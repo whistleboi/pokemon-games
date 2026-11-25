@@ -18,8 +18,8 @@ def ned_awards_super_rod():
             for v in o.values(): yield from walk(v)
         elif isinstance(o, list):
             for v in o: yield from walk(v)
-    neds = list(walk(json.loads(raw)))   # (two Fishermen Ned now: Route 12's and the one with the rod)
-    assert any(n["rewards"].get("SUPER_ROD") == 1 for n in neds)
+    # (11-24: as FireRed, the Super Rod is the Fishing Guru's younger brother's gift in his Route 12 house, on the house)
+    assert '"gift_item": {"SUPER_ROD": 1}, "flag": "got_super_rod_kanto"' in raw
 
 def battle(team, foes):
     from src.states.battle import TrainerBattleState
@@ -66,12 +66,11 @@ def status_cured_on_blackout_and_full_heal():
 
 @test
 def koffing_weezing_wild():
-    for k in ("POWER_PLANT", "KANTO_ROUTE_17"):
-        pct = AREA[k + "_PERCENTAGES"]
-        assert "109" in pct and "110" not in pct and sum(pct.values()) == 100, k
+    # (11-24: wild tables are FireRed's now - the Power Plant and Route 17 have no Koffing; Weezing is wild only in
+    #  the Pokemon Mansion, as in FireRed)
     import json as _j
     raw = _j.load(open("assets/pokemon_area_data.json"))
-    assert not [k for k, v in raw.items() if k.endswith("PERCENTAGES") and isinstance(v, dict) and "110" in v]
+    assert [k for k, v in raw.items() if k.endswith("PERCENTAGES") and isinstance(v, dict) and "110" in v] == ["POKEMON_MANSION_PERCENTAGES"]
     from src.pokemon import evolution as E
     assert 110 in [t for _, t, _ in E.evolution_options(G, mk(G, 109, 40))]  # Weezing only by evolving
     assert mk(G, 109, 25).types and mk(G, 110, 26).types
@@ -242,21 +241,8 @@ def guaranteed_old_rod_and_route10_fish():
     acts = [o.get("action") for o in AREA["STORY_PROGRESSION"]["KANTO_ROUTE_10"]["route_menu"]]
     assert "FISH" in acts
 
-@test
-def early_area_gates():
-    from src.states.overworld import CityState, PlayState
-    st = G.story_manager; st.story_flags = {}; st.inventory = {}
-    st.current_area_key = "KANTO_ROUTE_16"; p16 = PlayState(G); p16.rounds_completed = 99
-    st.inventory["BICYCLE"] = 1  # FRLG: the Route 16 Snorlax blocks Cycling Road
-    road = [o for o in AREA["STORY_PROGRESSION"]["KANTO_ROUTE_16"]["route_menu"] if o.get("target") == "KANTO_ROUTE_17"][0]
-    assert not p16._check_route_condition(road["condition"], False, road)
-    st.story_flags["KANTO_ROUTE_16_boss_defeated"] = True
-    assert p16._check_route_condition(road["condition"], False, road)
-    st.current_area_key = "KANTO_ROUTE_10"; p = PlayState(G); p.rounds_completed = 99
-    pp = [o for o in AREA["STORY_PROGRESSION"]["KANTO_ROUTE_10"]["route_menu"] if o.get("target") == "POWER_PLANT"][0]
-    assert not p._check_route_condition(pp["condition"], False, pp)
-    st.inventory["HM_SURF"] = 1  # (the Surf Board was retired for HM Surf)
-    assert p._check_route_condition(pp["condition"], False, pp)
+# (early_area_gates removed 11-24: the route menus it read are walked maps now; Snorlax and the Surf gate are
+#  checked by the walked-map suites)
 
 @test
 def kanto_mart_stock():
@@ -356,7 +342,7 @@ def _fresh_story(start):
 def rival_per_region_fresh_and_multi_region():
     old = G.story_manager
     try:
-        canon = {"KANTO": "BLUE", "JOHTO": "SILVER", "HOENN": "MAY", "SINNOH": "BARRY", "UNOVA": "CHEREN",
+        canon = {"KANTO": "BLUE", "JOHTO": "SILVER", "HOENN": "MAY", "SINNOH": "BARRY", "UNOVA": "HUGH",   # (Black 2's rival: Jordan 11-19)
                  "KALOS": "SERENA", "ALOLA": "HAU", "GALAR": "HOP", "PALDEA": "NEMONA"}
         G.player_character = "red"
         for region, name in canon.items():           # fresh start in each region

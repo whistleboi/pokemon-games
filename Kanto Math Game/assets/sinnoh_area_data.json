@@ -1507,7 +1507,7 @@
         "travel_options": [
             {"text": "Route 218", "target_area": "SINNOH_ROUTE_218"},
             {"text": "Iron Island", "target_area": "IRON_ISLAND"},
-            {"text": "Fullmoon Island", "target_area": "FULLMOON_ISLAND", "condition": "beat_sinnoh_champion"},
+            {"text": "Fullmoon Island", "target_area": "FULLMOON_ISLAND", "condition": "canalave_dream_seen"},
             {"text": "Newmoon Island", "target_area": "NEWMOON_ISLAND", "condition": "beat_sinnoh_champion", "item_condition": "MEMBER_CARD"}
         ],
         "explore_options": [
@@ -2876,10 +2876,10 @@
         "route_menu": [
             {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
             {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
-            {"text": "Enter the Distortion", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD"},
+            {"text": "Giratina", "action": "BOSS", "color": "GOLD", "condition": ["world:turnback_cave:giratina"], "boss": {"id": 487, "level": 47, "name": "Giratina", "victory_flag": "turnback_giratina_done", "lines": ["Giratina, the Pokemon of the other side, looms over the pedestal!"]}},
             {"text": "Sendoff Spring", "action": "EXIT", "target_area": "SENDOFF_SPRING", "condition": "can_exit", "color": "RED"}
         ],
-        "area_boss": {"id": 487, "level": 70, "name": "Giratina", "victory_flag": "TURNBACK_CAVE_boss_defeated"},
+        "area_boss": {"id": 487, "level": 47, "name": "Giratina", "victory_flag": "turnback_giratina_done"},
         "next_area": "SINNOH_ROUTE_214",
         "night_pool_percentages": "SINNOH_TURNBACK_CAVE_NIGHT_PERCENTAGES",
         "wild_levels": {"land": [44, 66]},
@@ -2915,7 +2915,7 @@
             {"text": "Buck", "action": "NPC", "target": "walk_buck", "flag_condition": "not walk_buck_done", "color": "GOLD"},
             {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
             {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
-            {"text": "Face Heatran", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD"},
+            {"text": "Face Heatran", "action": "BOSS", "condition": ["boss_not_defeated", "stark_charon_arrested", "battleground_buck_talked", "battleground_heard_legend"], "color": "GOLD"},
             {"text": "Route 227", "action": "EXIT", "target_area": "SINNOH_ROUTE_227", "condition": "can_exit", "color": "RED"},
             {"text": "LIFE ORB", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_life_orb_stark_mountain_d16_4_24", "event": {"lines": ["A Life Orb, lying among the rocks."], "gift_item": {"LIFE_ORB": 1}, "flag": "got_life_orb_stark_mountain_d16_4_24"}},
             {"text": "MAX ELIXIR", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_max_elixir_stark_mountain_d16_26_8", "event": {"lines": ["A Max Elixir, in a dark corner."], "gift_item": {"MAX_ELIXIR": 1}, "flag": "got_max_elixir_stark_mountain_d16_26_8"}},
@@ -2932,7 +2932,7 @@
             {"text": "NUGGET", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_nugget_stark_mountain_d16r0102_92_3", "event": {"lines": ["A Nugget, lying among the rocks."], "gift_item": {"NUGGET": 1}, "flag": "got_nugget_stark_mountain_d16r0102_92_3"}},
             {"text": "ULTRA BALL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_ultra_ball_stark_mountain_d16r0102_38_44", "event": {"lines": ["An Ultra Ball, in a dark corner."], "gift_item": {"ULTRA_BALL": 1}, "flag": "got_ultra_ball_stark_mountain_d16r0102_38_44"}}
         ],
-        "area_boss": {"id": 485, "level": 70, "name": "Heatran", "victory_flag": "STARK_MOUNTAIN_boss_defeated"},
+        "area_boss": {"id": 485, "level": 50, "name": "Heatran", "victory_flag": "STARK_MOUNTAIN_boss_defeated"},
         "next_area": "SUNYSHORE_CITY",
         "night_pool_percentages": "SINNOH_STARK_MOUNTAIN_NIGHT_PERCENTAGES",
         "wild_levels": {"land": [22, 58]},
@@ -3720,7 +3720,7 @@
         "flag_not": "galactic_hq_cleared"
       },
       "target": "VEILSTONE_CITY",
-      "steps": [{"area": "GALACTIC_WAREHOUSE", "floor": 0, "at": [12, 7], "label": "Looker", "done": "sinnoh_storage_door_open"}, {"area": "GALACTIC_WAREHOUSE", "floor": 1, "at": [20, 4], "label": "Galactic Key", "done": "got_galactic_key_galactic_warehouse_d26r0106_20_5"}, {"area": "TEAM_GALACTIC_HQ", "floor": 3, "at": [8, 7], "label": "Cyrus", "done": "sinnoh_hq_cyrus_beaten"}, {"area": "TEAM_GALACTIC_HQ", "floor": 5, "at": [8, 5], "label": "Saturn", "done": "sinnoh_hq_saturn_beaten"}, {"area": "TEAM_GALACTIC_HQ", "floor": 5, "at": [8, 6], "label": "Machine", "done": "galactic_hq_cleared"}],
+      "steps": [{"area": "GALACTIC_WAREHOUSE", "floor": 0, "at": [12, 7], "label": "Looker", "done": "sinnoh_storage_door_open"}, {"area": "GALACTIC_WAREHOUSE", "floor": 1, "at": [20, 4], "label": "Galactic Key", "done": "got_galactic_key_galactic_warehouse_d26r0106_20_5"}, {"area": "VEILSTONE_CITY", "at": [48, 13], "label": "Galactic HQ's east door", "done": "sinnoh_hq_east_in"}, {"area": "TEAM_GALACTIC_HQ", "floor": 3, "at": [8, 7], "label": "Cyrus", "done": "sinnoh_hq_cyrus_beaten"}, {"area": "TEAM_GALACTIC_HQ", "floor": 5, "at": [8, 5], "label": "Saturn", "done": "sinnoh_hq_saturn_beaten"}, {"area": "TEAM_GALACTIC_HQ", "floor": 5, "at": [8, 6], "label": "Machine", "done": "galactic_hq_cleared"}],
       "completed_flag": "galactic_hq_cleared"
     },
     {
@@ -3762,7 +3762,7 @@
         "flag": "spear_pillar_resolved",
         "visited": "SUNYSHORE_CITY"
       },
-      "target": "SUNYSHORE_CITY", "steps": [{"area": "SUNYSHORE_CITY", "room": "lighthouse_top", "at": [6, 4], "label": "Volkner", "done": "volkner_returned_to_gym"}],
+      "target": "SUNYSHORE_CITY", "steps": [{"area": "SUNYSHORE_CITY", "room": "lighthouse_top", "at": [6, 4], "label": "Volkner", "done": "volkner_returned_to_gym"}, {"area": "SUNYSHORE_CITY", "room": "gym_3", "at": [11, 3], "label": "Volkner", "done": "has_beacon_badge"}],
       "reward": "Beacon Badge"
     },
     {
@@ -3770,7 +3770,7 @@
       "type": "MAIN",
       "title": "Victory Road",
       "description": "Surf north from Sunyshore on Route 223, climb the waterfall and cross Victory Road to the Pokémon League.",
-      "condition": {
+      "steps": [{"area": "SUNYSHORE_CITY", "at": [25, 5], "label": "Jasmine", "done": "got_hm_waterfall_sunyshore"}], "condition": {
         "required_region": "SINNOH",
         "badges_min": 8,
         "visited_not": "SINNOH_POKEMON_LEAGUE",
@@ -3789,7 +3789,7 @@
         "visited": "SINNOH_POKEMON_LEAGUE",
         "flag_not": "beat_sinnoh_champion"
       },
-      "target": "SINNOH_POKEMON_LEAGUE", "steps": [{"area": "SINNOH_POKEMON_LEAGUE", "room": "league_aaron", "at": [8, 5], "label": "Aaron", "done": "league_won_SINNOH_POKEMON_LEAGUE_1"}, {"area": "SINNOH_POKEMON_LEAGUE", "room": "league_bertha", "at": [8, 5], "label": "Bertha", "done": "league_won_SINNOH_POKEMON_LEAGUE_2"}, {"area": "SINNOH_POKEMON_LEAGUE", "room": "league_flint", "at": [8, 5], "label": "Flint", "done": "league_won_SINNOH_POKEMON_LEAGUE_3"}, {"area": "SINNOH_POKEMON_LEAGUE", "room": "league_lucian", "at": [8, 5], "label": "Lucian", "done": "league_won_SINNOH_POKEMON_LEAGUE_4"}, {"area": "SINNOH_POKEMON_LEAGUE", "room": "league_cynthia", "at": [8, 11], "label": "Cynthia", "done": "beat_sinnoh_champion"}],
+      "target": "SINNOH_POKEMON_LEAGUE", "steps": [{"area": "VICTORY_ROAD_SINNOH", "floor": 1, "at": [34, 4], "label": "Victory Road", "done": "victory_road_sinnoh_north"}, {"area": "SINNOH_POKEMON_LEAGUE", "room": "league_aaron", "at": [8, 5], "label": "Aaron", "done": "league_won_SINNOH_POKEMON_LEAGUE_1"}, {"area": "SINNOH_POKEMON_LEAGUE", "room": "league_bertha", "at": [8, 5], "label": "Bertha", "done": "league_won_SINNOH_POKEMON_LEAGUE_2"}, {"area": "SINNOH_POKEMON_LEAGUE", "room": "league_flint", "at": [8, 5], "label": "Flint", "done": "league_won_SINNOH_POKEMON_LEAGUE_3"}, {"area": "SINNOH_POKEMON_LEAGUE", "room": "league_lucian", "at": [8, 5], "label": "Lucian", "done": "league_won_SINNOH_POKEMON_LEAGUE_4"}, {"area": "SINNOH_POKEMON_LEAGUE", "room": "league_cynthia", "at": [8, 11], "label": "Cynthia", "done": "beat_sinnoh_champion"}],
       "completed_flag": "beat_sinnoh_champion",
       "reward": "Sinnoh Champion"
     },
@@ -4010,7 +4010,7 @@
         "flag_not": "STARK_MOUNTAIN_boss_defeated"
       },
       "target": "STARK_MOUNTAIN",
-      "completed_flag": "STARK_MOUNTAIN_boss_defeated",
+      "steps": [{"area": "FIGHT_AREA", "at": [47, 10], "label": "Barry", "done": "fight_area_tag_won"}, {"area": "SINNOH_ROUTE_227", "at": [22, 19], "label": "Buck", "done": "r227_buck_patrol"}, {"area": "STARK_MOUNTAIN", "floor": 1, "at": [16, 26], "label": "Mars", "done": "stark_mars_beaten"}, {"area": "STARK_MOUNTAIN", "floor": 1, "at": [17, 26], "label": "Jupiter", "done": "stark_jupiter_beaten"}, {"area": "STARK_MOUNTAIN", "floor": 3, "at": [5, 9], "label": "Charon", "done": "stark_charon_arrested"}, {"area": "SURVIVAL_AREA", "room": "house_0101", "at": [10, 7], "label": "Buck", "done": "battleground_buck_talked"}, {"area": "SURVIVAL_AREA", "room": "house_0101", "at": [11, 7], "label": "Buck's grandfather", "done": "battleground_heard_legend"}, {"area": "STARK_MOUNTAIN", "floor": 3, "at": [5, 4], "label": "Heatran", "done": "STARK_MOUNTAIN_boss_defeated"}], "completed_flag": "STARK_MOUNTAIN_boss_defeated",
       "reward": "Heatran"
     },
     {
@@ -4126,7 +4126,7 @@
   },
   "SINNOH_VALLEY_WINDWORKS_PERCENTAGES": {"422": 45, "418": 25, "403": 20, "417": 10},
   "SINNOH_STARK_MOUNTAIN_PERCENTAGES": {"219": 20, "112": 17, "75": 15, "110": 13, "42": 10, "323": 7, "22": 7, "111": 3, "218": 3, "227": 2, "322": 2, "109": 2},
-  "SINNOH_TURNBACK_CAVE_PERCENTAGES": {"75": 35, "400": 30, "397": 20, "433": 10, "356": 5},
+  "SINNOH_TURNBACK_CAVE_PERCENTAGES": {"42": 25, "93": 25, "437": 25, "436": 5, "92": 8, "355": 6, "358": 6},
   "SINNOH_FULLMOON_ISLAND_PERCENTAGES": {"35": 40, "433": 35, "436": 25},
   "SINNOH_FLOWER_PARADISE_PERCENTAGES": {"420": 35, "315": 35, "415": 30},
   "SINNOH_ETERNA_FOREST_DAY_PERCENTAGES": {"406": 40, "427": 24, "265": 10, "399": 10, "266": 5, "268": 5, "92": 4, "267": 1, "269": 1},
@@ -4150,7 +4150,7 @@
   "SINNOH_ROUTE_214_DAY_PERCENTAGES": {"190": 39, "402": 10, "234": 32, "447": 19},
   "SINNOH_ROUTE_214_NIGHT_PERCENTAGES": {"75": 25, "228": 25, "74": 20, "111": 20, "41": 10},
   "SINNOH_TURNBACK_CAVE_DAY_PERCENTAGES": {"436": 37, "42": 31, "355": 8, "356": 24},
-  "SINNOH_TURNBACK_CAVE_NIGHT_PERCENTAGES": {"400": 30, "75": 25, "356": 15, "42": 10, "397": 10, "433": 10},
+  "SINNOH_TURNBACK_CAVE_NIGHT_PERCENTAGES": {"42": 25, "93": 25, "437": 20, "436": 5, "92": 10, "355": 10, "358": 5},
   "SINNOH_FLOWER_PARADISE_DAY_PERCENTAGES": {"420": 43, "315": 21, "415": 36},
   "SINNOH_FLOWER_PARADISE_NIGHT_PERCENTAGES": {"420": 17, "315": 68, "415": 15},
   "OBSIDIAN_FIELDLANDS_PERCENTAGES": {"399": 11, "133": 6, "425": 5, "41": 5, "439": 4, "396": 4, "122": 4, "397": 4, "426": 4, "405": 3, "401": 3, "265": 2, "404": 2, "390": 2, "391": 2, "77": 2, "74": 2, "42": 2, "403": 2, "418": 2, "427": 1, "63": 1, "402": 1, "266": 1, "54": 1, "267": 1, "46": 1, "64": 1, "400": 1, "412": 1, "190": 1, "234": 1, "172": 1, "268": 1, "422": 1, "423": 1, "25": 1, "66": 1, "75": 1, "215": 1, "414": 1, "415": 1, "440": 1, "446": 1, "461": 1, "93": 1, "94": 1, "95": 1, "108": 1, "208": 1, "217": 1, "269": 1, "413": 1, "454": 1, "463": 1, "470": 1, "700": 1, "129": 1, "201": 1, "55": 1, "78": 1, "123": 1, "420": 1, "130": 1, "26": 1, "47": 1, "65": 1, "67": 1, "76": 1, "113": 1, "143": 1, "169": 1, "2044": 1, "214": 1, "242": 1, "363": 1, "364": 1, "392": 1, "398": 1, "419": 1, "421": 1, "428": 1, "441": 1, "468": 1, "2048": 1, "2049": 1, "899": 1, "900": 1, "406": 4, "155": 1, "501": 1, "722": 1},

@@ -463,6 +463,10 @@ def with_rooms(m):
         art = [list(r) for r in room["art"]]
         links = {k: [where[v[0]], v[1], v[2]] for k, v in (room.get("links") or {}).items()
                  if isinstance(v, list) and v and isinstance(v[0], str) and v[0] in where}   # (a pad to another room: its floor)
+        for k in links:   # (its tile a passage, as the mats below: the walk only takes a link from a "1" - the docked Plasma
+            lx, ly = (int(v) for v in k.split(","))   #  Frigate's stern pad to Kyurem's room did nothing; Journal, 11-25)
+            if 0 <= ly < len(art) and 0 <= lx < len(art[ly]) and art[ly][lx] == ".":
+                art[ly][lx] = "1"
         mats = {}
         land, enter, keep = room.get("land") or {}, room.get("enter") or {}, {}
         # (Kanto's gatehouses: a mat that is a real way out to the next area stays one; "land" {door: where you stand
@@ -1042,6 +1046,10 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
             p2, f = tuple(at_edge[2]), self.run.floor
             own = [e for e, v in f.exits.items() if v == entrance]
             t = min(own, key=lambda e: abs(e[0] - p2[0]) + abs(e[1] - p2[1])) if own else None  # (its partner, or the nearest to it)
+            if f.walkable(*p2) and p2 not in f.exits and (t is None or abs(t[0] - p2[0]) + abs(t[1] - p2[1]) > 2):
+                # (a landing inside the map, far from any way back there: you stand on it - the docked Plasma Frigate's hatch
+                #  out of Ghetsis's room into the Giant Chasm's forest, (49, 64), not its gangway; Journal PT_FULL, 11-25)
+                self.run.player, t = p2, None
             if t is not None:
                 step = (1, 0) if t[0] == 0 else (-1, 0) if t[0] == f.w - 1 else (0, 1) if t[1] == 0 else (0, -1)
                 inn = (t[0] + step[0], t[1] + step[1])
@@ -1361,7 +1369,11 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
                 continue
             _free = lambda t: (0 <= t[0] < f.w and 0 <= t[1] < f.h and f.walkable(*t) and not f.occupied(*t)
                                and f.tile(*t) != core.SURF and t != tuple(self.run.player))
-            spot = partners.pick_spot((m.x, m.y), _free, self.run.player)   # (never the owner's last side you can reach)
+            _ground = lambda t: (0 <= t[0] < f.w and 0 <= t[1] < f.h and f.tile(*t) != core.SURF
+                                 and (f.walkable(*t) or str(f.decor.get(tuple(t), "")).startswith("barrier")
+                                      or any((o.x, o.y) == tuple(t) for o in f.movers)))   # (a barrier, a person: the way)
+            spot = partners.pick_spot((m.x, m.y), _free, self.run.player, _ground)   # (never the owner's last side you can reach,
+                                                                                     #  nor the one way into a room: Ein's Golbat)
             if spot is None:
                 continue
             species, owner = got
@@ -1987,6 +1999,12 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
             story.story_flags[flag] = self.zones[self._zone_index(index, spot[0], spot[1])]
         self._wild_spot = tuple(spot) if spot is not None else None   # (where it will stand: dark grass or not, 11-20)
         try:
+            if self.area_data.get("safari_game") and core.CURRENT_TILE not in (core.SURF, core.WATER):
+                from src.world import hordes as _hordes   # (the Safari Game has no battles: a horde's Pokemon walks the map
+                if _hordes.roll(self.game, self.area_data, rng):   # on its own, caught with Safari Balls - Hoenn Q16, 11-24)
+                    got = _hordes.one(self.game, self.area_key, self.area_data, rng)
+                    if got is not None:
+                        return got
             return self._wild_for_pool(rng)
         finally:
             if keep is not None:
@@ -2456,6 +2474,13 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
             elif kind == "warp":  # a passage to another floor (a map's "links")
                 self.walk_goal = None
                 _i, _x, _y = (int(v) for v in ev[1].split(":")[1:4])
+                _ww = (self.recipe.get("art") or {}).get("warp_world") if isinstance(self.recipe.get("art"), dict) else None
+                if _ww:   # (a place whose passages lead somewhere new each time: its region module picks - src/world/<warp_world>.py
+                    _to = __import__("importlib").import_module("src.world." + str(_ww)).warp(   # warp(state, door, (floor, x, y))
+                        self, tuple(self.run.player), (_i, _x, _y))                              # -> (floor, x, y[, lines said on arrival]);
+                    if _to:                                                                      # Platinum's Turnback Cave, Sinnoh 11-24)
+                        _i, _x, _y = _to[:3]
+                        self._warp_say = list(_to[3]) if len(_to) > 3 and _to[3] else None
                 if self._canon_changes():   # (as the games: the door's, panel's, hole's or stairs' fade, no words)
                     _ac = __import__("src.vfx.area_changes", fromlist=["change"])
                     _fall = ev[1].endswith(":fall")
@@ -2565,6 +2590,10 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         self._reset_trail()
         self.banner = 120
         self._floor_sign(index != _was)
+        _say = getattr(self, "_warp_say", None)   # (what a warp_world module said comes with the passage: a pillar's carving)
+        if _say:
+            self._warp_say = None
+            self.say(_say)
 
     def _ascend(self):
         self._set_zone(self.run.index - 1)
@@ -5990,6 +6019,20 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
                 return None
             hop = best[1]
             tiles = outs[hop]
+        _step = guide.current_step(self.game, mission) if mission else None   # (the next place's way-point on one of its floors:
+        if _step and _step.get("area") == hop and isinstance(_step.get("floor"), int) and len(tiles) > 1:   # the ways out here that
+            try:                                                                    #  land on that floor, as leaving picks it - Team
+                _all = (recipe_for(self.game, hop).get("exit_floors_all") or {}).get(self.area_key) or []   # Galactic HQ's west door
+            except Exception:                                                       #  into the warehouse's key side; Sinnoh 11-25)
+                _all = []
+            if len(_all) > 1:
+                def _lands(t):
+                    same = [e for e, v in run.made(t[0]).exits.items() if v == hop]
+                    if (t[1], t[2]) not in same:
+                        return None
+                    return _all[min(same.index((t[1], t[2])) * len(_all) // len(same), len(_all) - 1)]
+                _on = [t for t in tiles if _lands(t) == _step["floor"]]
+                tiles = _on or tiles
         groups = guide.place_groups(self.game, hop)   # (the next place in parts: the ways out that land in the part that leads on -
         goal = guide.goal_area(self.game)              #  Hoenn's Routes 129-131, two seas each; 11-24)
         path = guide.path_to(self.game, hop, goal, came=self.area_key) if groups and goal and goal != hop else None
@@ -6019,7 +6062,11 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         story = self.game.story_manager
         step = next((s for s in mission["steps"] if s.get("area", guide.mission_target(self.game, mission)) == self.area_key
                      and not (s.get("done") and guide._ok(story, s["done"])) and guide._ok(story, s.get("when"))), None)
-        fl = step.get("floor", 0 if self.run.n_floors == 1 else None) if step else None
+        _cur = guide.current_step(self.game, mission)   # (an earlier way-point elsewhere not done yet: that one first - Team Galactic
+        if step is not None and _cur is not None and _cur is not step and _cur.get("area", guide.mission_target(self.game, mission)) != self.area_key                 and not (_cur.get("done") and _cur.get("done") == step.get("done")):   # (one leg under one flag: any of its places - Hoenn's sail to Sky Pillar, 11-25)
+            return None                                  #  HQ's Cyrus waits till the warehouse's Galactic Key; Sinnoh 11-25)
+        _rooms = (self.run.recipe.get("art") or {}).get("room_floors")   # (a route with rooms: its ground is floor 0, the rooms the rest -
+        fl = step.get("floor", 0 if self.run.n_floors == 1 or _rooms else None) if step else None   #  a step with no floor is outdoors: Route 4's Colress, 11-24)
         if step and step.get("room"):  # (a room of the map, walked as a floor of its own: the S.S. Anne's Captain's cabin)
             fl = ((self.run.recipe.get("art") or {}).get("room_floors") or {}).get(step["room"])
         if fl is None or not 0 <= fl < self.run.n_floors or not step.get("at"):
@@ -6114,6 +6161,11 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
             plan, shut, gone, wait, turn = plan_of(i), set(), set(), {}, []
             pushed = {sw["flag"]: sw for sw in plan.get("boulder_switches") or []}
             for bar in plan.get("barred", []):
+                if bar.get("when") and not self.npc_shown(bar["when"]):   # (a bar only while its "when" holds, as the walk
+                    continue                                                #  reads it: Route 21's "the ship has flown away"; 11-25)
+                if bar.get("when") and not (bar.get("until") or bar.get("item") or bar.get("flag")):
+                    shut.update(tuple(t) for t in bar.get("tiles", []))
+                    continue
                 u = bar.get("until") if isinstance(bar.get("until"), dict) else {}
                 fc = str(u.get("flag_condition") or "").split()
                 if len(u) == 1 and fc and fc[-1] in flips:  # (a gate a statue switch swings: shut or open by how the switch stands)

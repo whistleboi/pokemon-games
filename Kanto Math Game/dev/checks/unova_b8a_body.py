@@ -94,10 +94,33 @@ sp = _r.Random(d["key"] + "@" + datetime.date.today().isoformat()).choice(d["spe
 flags.pop(d["key"], None)
 unova_story.event(st, wad["event"], [], lambda ls: said.extend(ls))
 check("Catch of the Day" in heard(), "the Hip Waders: today's Catch of the Day")
-story.player_team.append(mk(sp))
+_old = mk(sp); _old.caught_date = "2026-01-01"   # (11-25: Black 2 wants it caught today - the catch date, main 063d99274)
+story.player_team.append(_old)
 n0 = story.inventory.get("NET_BALL", 0)
 said.clear(); unova_story.event(st, wad["event"], [], lambda ls: said.extend(ls))
+check(story.inventory.get("NET_BALL", 0) == n0, f"the Hip Waders: one caught another day doesn't count ({heard()[:60]})")
+story.player_team.remove(_old)
+story.player_team.append(mk(sp))
+said.clear(); unova_story.event(st, wad["event"], [], lambda ls: said.extend(ls))
 check(story.inventory.get("NET_BALL", 0) == n0 + 3, f"the Hip Waders: show today's {sp} for the gift ({heard()[:80]})")
+
+_mus = {c["text"].strip(): c for o in vb["people"] for c in _opts(o) if isinstance(c, dict) and (c.get("event") or {}).get("toggle")}
+check(sorted({k: c["event"]["toggle"] for k, c in _mus.items()}.items()) == [("Aickman", "vb_music_guitar"), ("Derleth", "vb_music_flute"),
+      ("Koontz", "vb_music_enka"), ("Russo", "vb_music_beatbox")], f"the four musicians each play a part of the music ({sorted(_mus)})")
+st = walked("VILLAGE_BRIDGE", (14, 30))
+_on = [c for o in vb["people"] for c in _opts(o) if isinstance(c, dict) and c.get("text") == "Derleth"][0]
+_off = [c for o in vb["people"] for c in _opts(o) if isinstance(c, dict) and c.get("text") == "Derleth "][0]
+unova_story.event(st, _on["event"], _on["event"]["lines"], lambda ls: None)
+_a = bool(flags.get("vb_music_flute"))
+unova_story.event(st, _off["event"], _off["event"]["lines"], lambda ls: None)
+check(_a and not flags.get("vb_music_flute"), "Derleth's flute joins the music, and stops when you talk again (Black 2's 0xA3 / 0xA4)")
+flags["vb_music_enka"] = True
+st = walked("VILLAGE_BRIDGE", (14, 30)); settle(30)
+check(not flags.get("vb_music_enka"), "the musicians' parts last only while you're on the bridge (cleared on arriving, as Black 2's 0x400A-D)")
+from src.core import music as _MU
+_lay = (_MU._region_music("UNOVA") or {}).get("layers", {}) if hasattr(_MU, "_region_music") else json.load(open("assets/music/unova/music.json", encoding="utf-8")).get("layers", {})
+check(sorted(l["flag"] for l in _lay.get("h_04_base", [])) == sorted(["vb_music_flute", "vb_music_guitar", "vb_music_beatbox", "vb_music_enka"]),
+      "...and those four flags are the music's layers (Systems, main 74b202a90)")
 
 print("4) Route 11: Virizion")
 r11 = tmaps["UNOVA_ROUTE_11"]
@@ -148,6 +171,10 @@ check(flags.get("b2_opelucid_ice") and "DNA Splicers" in heard(), "the ice won't
 fz = ope["story_maps"][1]["map"]
 grunts = [c for o in fz["people"] for c in _opts(o) if isinstance(c, dict) and str(c.get("event", {}).get("flag", "")).startswith("b2_ope_grunt")]
 check(len(grunts) == 3 and all(c.get("condition") == ["b2_opelucid_ice"] for c in grunts), "three Grunts to drive out")
+_on = {o.get("event", {}).get("flag") for o in town("OPELUCID_CITY", (34, 33)).people.values()
+       for o in o.get("any", [o]) if isinstance(o.get("event"), dict)}
+check({"b2_ope_grunt_1", "b2_ope_grunt_2", "b2_ope_grunt_3", "b2_opelucid_zinzolin"} <= _on,
+      f"...all three stand in the frozen city, and Zinzolin (11-25: the file's Drayden on the Gym's door cost one; {sorted(f for f in _on if f)})")
 for k in (1, 2, 3):
     flags["b2_ope_grunt_%d" % k] = True
 zin = [c for o in fz["people"] for c in _opts(o) if isinstance(c, dict) and c.get("text") == "Zinzolin"]
@@ -166,6 +193,9 @@ check(flags.get("b2_opelucid_shadow"), "the Shadow Triad beaten")
 settle(1500)   # (Cheren's call plays as soon as the battle's over: you're by the gate, in its zone)
 check(flags.get("b2_opelucid_cheren") and "Humilau" in heard(), f"Cheren's call: Team Plasma is near Humilau ({where()})")
 check("b2_m39" in mains(), f"the Journal: to Humilau ({mains()})")
+st = town("OPELUCID_CITY", (63, 47), "gate_e")   # (11-25, the Journal's PT_FULL: the old menu's "Route 11 after the Champion" shut it)
+check(getattr(st, "room", None) == "gate_e" and st._shown(st._travel_option("UNOVA_ROUTE_11") or {"condition": "never"}),
+      "frozen, the east gate still leads on to Route 11 (the way to Humilau: Route 11, Village Bridge, Route 12, Lacunosa, Undella)")
 
 print("7) White 2")
 flags["unova_version"] = "WHITE_2"
@@ -191,7 +221,13 @@ check(flags.get("b2_medal_box_paint") == "copper", f"the painter: half the Medal
 _pt = sum(1 for v in tmaps.values() if isinstance(v, dict) for r in (v.get("rooms") or {}).values()
           for o in r.get("people", []) if isinstance(o, dict) and o.get("text") == "Medal Box painter")
 check(_pt >= 7, f"a Medal Box painter in every walked Center ({_pt})")
-check(HMS.HM_BY_BADGE["UNOVA"] == {"WAVE": "HM_WATERFALL"}, "Strength, Fly, Surf: story gifts only (no badge stand-ins)")
+_ctr = [(k, rn) for k, v in tmaps.items() if isinstance(v, dict) and k in SP for rn, r in (v.get("rooms") or {}).items()
+        if any(isinstance(o, dict) and o.get("text") == "Pokémon Center" for o in r.get("people", []))]
+_no_mm = [c for c in _ctr if not any(isinstance(q, dict) and str(q.get("text", "")).startswith("Mr. Medal")
+                                     and (q.get("event") or {}).get("medal_rally")
+                                     for o in tmaps[c[0]]["rooms"][c[1]].get("people", []) for q in (o if isinstance(o, list) else [o]))]
+check(len(_ctr) >= 10 and not _no_mm, f"Mr. Medal in every walked Center, as Black 2 (11-25: {len(_ctr)} Centers, without: {_no_mm})")
+check(HMS.HM_BY_BADGE["UNOVA"] == {}, "Strength, Fly, Surf, Waterfall: story gifts only, no badge stand-ins (Waterfall from N, batch 10a)")
 
 for f_ in fails:
     print("  -", f_)

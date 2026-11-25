@@ -136,6 +136,21 @@ st = town("DRIFTVEIL_CITY", (52, 18), face=(0, -1))
 check("Worker by the Gym" not in people(st), "after Rood's talk the Gym's door is clear")
 st = town("DRIFTVEIL_CITY", (7, 10), "gym_lobby", (0, -1))
 check("8,3" in (st.town_map["rooms"]["gym_lobby"].get("sign_events") or {}), "the entrance's lift goes down to the Gym")
+check((8, 3) in st.signs and (11, 85) in [tuple(int(v) for v in k.split(",")) for k in st.town_map["rooms"]["gym"].get("sign_events") or {}]
+      and st.town_map["rooms"]["gym"]["art"][85][11] == "!",
+      "both lift panels are sign tiles, so facing one and pressing the action key reads it (Journal PT_FULL, 11-24)")
+import pygame
+from src.states.systems.pick_list import PickListState
+st = town("DRIFTVEIL_CITY", (8, 4), "gym_lobby", (0, -1))   # (face the panel and press the action key, as a player does)
+st.handle_events([pygame.event.Event(pygame.KEYDOWN, key=pygame.K_SPACE, unicode=" ", mod=0)])
+settle(200)
+pl = g.current_state
+check(isinstance(pl, PickListState), f"pressing the action key at the lobby's lift asks which floor ({type(pl).__name__})")
+if isinstance(pl, PickListState):
+    pl.pick(next(v for _l, v in pl.choices if v[1] == "gym"))
+settle(300)
+check(getattr(g.current_state, "room", None) == "gym" and tuple(getattr(g.current_state, "player", ())) == (10, 86),
+      f"down in the Gym, by the lift ({getattr(g.current_state, 'room', None)}, {getattr(g.current_state, 'player', None)})")
 for k in list(flags):
     if k.startswith("b2_dgym_lit_"):
         flags.pop(k)

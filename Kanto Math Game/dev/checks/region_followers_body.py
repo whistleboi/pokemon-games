@@ -52,15 +52,15 @@ check(first(["494"]) == "494.png", f"Victini in Kanto: the follower sheet ({firs
 
 print("3) a form only one region drew follows you anywhere with that region's sheet")
 _saved = dict(own.get("ORANGE") or {})
-own.setdefault("ORANGE", {})["249_shadow"] = "oi_138.png"   # (as if Orange had drawn a Shadow Lugia: no follower sheet has one)
+own.setdefault("ORANGE", {})["249_onlyorange"] = "oi_138.png"   # (as if Orange had drawn a form no follower sheet has: 11-24 Shadow Lugia got one)
 go("UNOVA")
-got = first(["249_shadow", "249"])
+got = first(["249_onlyorange", "249"])
 check(got == "oi_138.png", f"that form in Unova keeps Orange's sheet, not the plain Lugia ({got})")
 go("ORANGE")
-check(first(["249_shadow", "249"]) == "oi_138.png", "and in Orange too")
+check(first(["249_onlyorange", "249"]) == "oi_138.png", "and in Orange too")
 own["ORANGE"] = _saved
 go("UNOVA")
-check(first(["249_shadow", "249"]) == "249.png", "with no region's sheet for the form: the plain species' follower sheet")
+check(first(["249_onlyorange", "249"]) == "249.png", "with no region's sheet for the form: the plain species' follower sheet")
 
 print("4) shiny: the shiny follower sheet before a region's (theirs have no shiny colours)")
 go("ORANGE")

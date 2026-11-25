@@ -66,6 +66,16 @@ PILOT["CANALAVE_CITY"] = tuple(n for n in (_TM["CANALAVE_CITY"].get("rooms") or 
 ROUTES += tuple(k for k in ("IRON_ISLAND",) if k not in ROUTES)
 # S5 (11-24): Snowpoint and its rooms (its Gym's ice is flat: one level)
 PILOT["SNOWPOINT_CITY"] = tuple(n for n in (_TM["SNOWPOINT_CITY"].get("rooms") or {}) if ("SNOWPOINT_CITY", n) not in FLAT)
+# S7 (11-24): the post-game - the Fight Area, Survival and Resort Areas with every room (the Battleground, the Ribbon
+# Syndicate's lift and spa), Stark Mountain, Turnback Cave's rooms, Routes 224-230
+for _k in ("FIGHT_AREA", "SURVIVAL_AREA", "RESORT_AREA"):
+    PILOT[_k] = tuple(n for n in (_TM[_k].get("rooms") or {}) if (_k, n) not in FLAT)
+ROUTES += tuple(k for k in ("STARK_MOUNTAIN", "TURNBACK_CAVE", "SINNOH_ROUTE_224", "SINNOH_ROUTE_225", "SINNOH_ROUTE_226",
+                            "SINNOH_ROUTE_227", "SINNOH_ROUTE_228", "SINNOH_ROUTE_229", "SINNOH_ROUTE_230") if k not in ROUTES)
+KNOWN_JUMPS[("SINNOH_ROUTE_224", 0)] = ({((x, y), (x + dx, y + dy)) for x in range(38, 58) for y in range(0, 8) for dx, dy in ((1, 0), (0, 1))},
+                                        "the sea by the way out to Flower Paradise: Platinum's plates read its water at two heights; surfing")
+KNOWN_JUMPS[("SINNOH_ROUTE_224", 0)][0].update({((x, 84), (x, 85)) for x in (11, 13, 14, 15)})   # (and a staircase: both walkable in Platinum, plates 4 then 1)
+KNOWN_JUMPS[("SINNOH_ROUTE_228", 0)] = ({((21, 85), (21, 86)), ((22, 85), (22, 86))}, "a slope: both tiles walkable in Platinum, its plates 3 then 1")
 
 
 def settle(n=60):
@@ -217,7 +227,7 @@ for key in ROUTES:
         if jump and _known and set(jump) <= _known[0]:
             print(f"   known {key} floor {i}: {len(jump)} steps jump a level - {_known[1]} (ROADMAP_SINNOH S3)")
         else:
-            check(not jump, f"{key} floor {i}: no step jumps a level ({jump[:3]})")
+            check(not jump, f"{key} floor {i}: no step jumps a level ({sorted(set(jump) - (_known[0] if _known else set()))[:6]}, {len(jump)} in all)")
         pygame.image.save(pygame.display.get_surface(), f"{S}/sinnoh_live3d_{key}_{i}.png")
 
 print("4b) S3: Eterna Gym's flower clock, live in each of its five states (the hands are Platinum's own models, turned)")

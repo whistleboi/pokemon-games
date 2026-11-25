@@ -1656,6 +1656,7 @@ class StoryManager:
             "status": getattr(p, "status", None), "sleep_turns": getattr(p, "sleep_turns", 0),
             "hp": p.current_hp, "hp_real": True, "stage": p.stage, "gmax": p.gmax_factor,
             "caught_region": getattr(p, "caught_region", None), "caught_level": getattr(p, "caught_level", None),
+            "caught_date": getattr(p, "caught_date", None),   # (the day it was caught: "YYYY-MM-DD", None before 11-25)
             "condition": p.condition, "sheen": p.sheen, "ribbons": p.ribbons, "evs": dict(getattr(p, "evs", None) or {}),
             "ability_slot": getattr(p, "ability_slot", 0), "gender": getattr(p, "gender", "?"),
             "is_egg": bool(getattr(p, "is_egg", False)), "egg_steps": getattr(p, "egg_steps", 0),
@@ -1682,6 +1683,7 @@ class StoryManager:
         pokemon.gmax_factor = p_data.get("gmax", form == "gmax")
         pokemon.caught_region = p_data.get("caught_region")
         pokemon.caught_level = p_data.get("caught_level")
+        pokemon.caught_date = p_data.get("caught_date")   # (an older save's Pokemon: none)
         if "ability_slot" in p_data:  # (older saves: the slot rolled when it loads, then kept)
             pokemon.ability_slot = p_data["ability_slot"]
         if p_data.get("gender", "?") != "?":

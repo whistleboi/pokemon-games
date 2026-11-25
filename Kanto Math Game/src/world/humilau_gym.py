@@ -48,6 +48,8 @@ def condition(story, arg):
             return False
         t = where(i, e)
         return story.story_flags.get(ARRIVED) != [t[0], t[1]]
+    if what == "rode":   # (pad i has carried you to its B end and waits there: the Journal's way-points, 11-25)
+        return end(story, int(rest[0])) == "B"
     return False
 
 

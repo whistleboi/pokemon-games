@@ -74,6 +74,274 @@
    554
   ]
  },
+ "143": {
+  "b2_id": 143,
+  "class": "ELITE_FOUR",
+  "held_items": {
+   "426": "FLYING_GEM",
+   "609": "SITRUS_BERRY"
+  },
+  "levels": [
+   72,
+   72,
+   72,
+   72,
+   72,
+   74
+  ],
+  "movesets": {
+   "426": [
+    "SHADOW-BALL",
+    "PSYCHIC",
+    "ACROBATICS",
+    "THUNDER"
+   ],
+   "429": [
+    "SHADOW-BALL",
+    "PSYCHIC",
+    "POWER-GEM",
+    "PERISH-SONG"
+   ],
+   "478": [
+    "SHADOW-BALL",
+    "PSYCHIC",
+    "BLIZZARD",
+    "ICE-SHARD"
+   ],
+   "563": [
+    "SHADOW-BALL",
+    "PSYCHIC",
+    "WILL-O-WISP",
+    "ENERGY-BALL"
+   ],
+   "609": [
+    "SHADOW-BALL",
+    "PSYCHIC",
+    "FIRE-BLAST",
+    "ENERGY-BALL"
+   ],
+   "623": [
+    "SHADOW-PUNCH",
+    "EARTHQUAKE",
+    "HAMMER-ARM",
+    "STONE-EDGE"
+   ]
+  },
+  "name": "Elite Four Shauntal",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "elite_four.png",
+  "team": [
+   563,
+   429,
+   478,
+   426,
+   623,
+   609
+  ]
+ },
+ "144": {
+  "b2_id": 144,
+  "class": "ELITE_FOUR",
+  "held_items": {
+   "534": "SITRUS_BERRY",
+   "539": "MUSCLE_BAND"
+  },
+  "levels": [
+   72,
+   72,
+   72,
+   72,
+   72,
+   74
+  ],
+  "movesets": {
+   "308": [
+    "HI-JUMP-KICK",
+    "FIRE-PUNCH",
+    "ICE-PUNCH",
+    "THUNDERPUNCH"
+   ],
+   "448": [
+    "AURA-SPHERE",
+    "DRAGON-PULSE",
+    "EXTREMESPEED",
+    "SHADOW-BALL"
+   ],
+   "534": [
+    "HAMMER-ARM",
+    "BULK-UP",
+    "STONE-EDGE",
+    "EARTHQUAKE"
+   ],
+   "538": [
+    "SUPERPOWER",
+    "EARTHQUAKE",
+    "STONE-EDGE",
+    "PAYBACK"
+   ],
+   "539": [
+    "CLOSE-COMBAT",
+    "RETALIATE",
+    "STONE-EDGE",
+    "POISON-JAB"
+   ],
+   "620": [
+    "HI-JUMP-KICK",
+    "U-TURN",
+    "ACROBATICS",
+    "FAKE-OUT"
+   ]
+  },
+  "name": "Elite Four Marshal",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "elite_four.png",
+  "team": [
+   538,
+   539,
+   308,
+   448,
+   620,
+   534
+  ]
+ },
+ "145": {
+  "b2_id": 145,
+  "class": "ELITE_FOUR",
+  "held_items": {
+   "510": "NORMAL_GEM",
+   "625": "SITRUS_BERRY"
+  },
+  "levels": [
+   72,
+   72,
+   72,
+   72,
+   72,
+   74
+  ],
+  "movesets": {
+   "229": [
+    "THUNDER-FANG",
+    "FIRE-BLAST",
+    "SLUDGE-BOMB",
+    "CRUNCH"
+   ],
+   "430": [
+    "NIGHT-SLASH",
+    "PSYCHIC",
+    "AERIAL-ACE",
+    "HAZE"
+   ],
+   "510": [
+    "SUCKER-PUNCH",
+    "FAKE-OUT",
+    "AERIAL-ACE",
+    "ATTRACT"
+   ],
+   "553": [
+    "ROCK-SLIDE",
+    "EARTHQUAKE",
+    "CRUNCH",
+    "OUTRAGE"
+   ],
+   "560": [
+    "HEAD-SMASH",
+    "CRUNCH",
+    "HI-JUMP-KICK",
+    "POISON-JAB"
+   ],
+   "625": [
+    "GUILLOTINE",
+    "NIGHT-SLASH",
+    "X-SCISSOR",
+    "AERIAL-ACE"
+   ]
+  },
+  "name": "Elite Four Grimsley",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "elite_four.png",
+  "team": [
+   510,
+   430,
+   560,
+   229,
+   553,
+   625
+  ]
+ },
+ "146": {
+  "b2_id": 146,
+  "class": "ELITE_FOUR",
+  "held_items": {
+   "376": "SITRUS_BERRY",
+   "579": "LEFTOVERS"
+  },
+  "levels": [
+   72,
+   72,
+   72,
+   72,
+   72,
+   74
+  ],
+  "movesets": {
+   "376": [
+    "ZEN-HEADBUTT",
+    "BULLET-PUNCH",
+    "EARTHQUAKE",
+    "HAMMER-ARM"
+   ],
+   "475": [
+    "CLOSE-COMBAT",
+    "LEAF-BLADE",
+    "PSYCHO-CUT",
+    "NIGHT-SLASH"
+   ],
+   "518": [
+    "CHARGE-BEAM",
+    "DREAM-EATER",
+    "YAWN",
+    "REFLECT"
+   ],
+   "561": [
+    "AIR-SLASH",
+    "PSYCHIC",
+    "FLASH-CANNON",
+    "ICE-BEAM"
+   ],
+   "576": [
+    "PSYCHIC",
+    "SHADOW-BALL",
+    "FLATTER",
+    "THUNDERBOLT"
+   ],
+   "579": [
+    "PSYCHIC",
+    "THUNDER",
+    "RECOVER",
+    "FOCUS-BLAST"
+   ]
+  },
+  "name": "Elite Four Caitlin",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "elite_four.png",
+  "team": [
+   518,
+   561,
+   475,
+   579,
+   576,
+   376
+  ]
+ },
  "148": {
   "b2_id": 148,
   "class": "LADY",
@@ -592,6 +860,73 @@
    564,
    561,
    566
+  ]
+ },
+ "341": {
+  "b2_id": 341,
+  "class": "CHAMPION",
+  "held_items": {
+   "612": "FOCUS_SASH",
+   "621": "LIFE_ORB"
+  },
+  "levels": [
+   57,
+   57,
+   57,
+   57,
+   57,
+   59
+  ],
+  "movesets": {
+   "131": [
+    "SURF",
+    "ICE-BEAM",
+    "THUNDERBOLT",
+    "SING"
+   ],
+   "306": [
+    "EARTHQUAKE",
+    "DOUBLE-EDGE",
+    "ROCK-SLIDE",
+    "AUTOTOMIZE"
+   ],
+   "567": [
+    "ACROBATICS",
+    "ROCK-SLIDE",
+    "DRAGON-CLAW",
+    "ENDEAVOR"
+   ],
+   "612": [
+    "EARTHQUAKE",
+    "X-SCISSOR",
+    "DUAL-CHOP",
+    "DRAGON-DANCE"
+   ],
+   "621": [
+    "ROCK-SLIDE",
+    "FLAMETHROWER",
+    "DRAGON-TAIL",
+    "FOCUS-BLAST"
+   ],
+   "635": [
+    "FLAMETHROWER",
+    "CHARGE-BEAM",
+    "DRAGON-PULSE",
+    "SURF"
+   ]
+  },
+  "name": "Champion Iris",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "champion.png",
+  "team": [
+   635,
+   621,
+   567,
+   306,
+   131,
+   612
   ]
  },
  "343": {
@@ -1275,6 +1610,56 @@
    505
   ]
  },
+ "38": {
+  "b2_id": 38,
+  "class": "ELITE_FOUR",
+  "held_items": {
+   "609": "SITRUS_BERRY"
+  },
+  "levels": [
+   56,
+   56,
+   56,
+   58
+  ],
+  "movesets": {
+   "426": [
+    "PSYCHIC",
+    "THUNDERBOLT",
+    "ACROBATICS",
+    "SHADOW-BALL"
+   ],
+   "563": [
+    "WILL-O-WISP",
+    "GRASS-KNOT",
+    "PSYCHIC",
+    "SHADOW-BALL"
+   ],
+   "609": [
+    "ENERGY-BALL",
+    "FIRE-BLAST",
+    "PSYCHIC",
+    "SHADOW-BALL"
+   ],
+   "623": [
+    "HEAVY-SLAM",
+    "EARTHQUAKE",
+    "BRICK-BREAK",
+    "SHADOW-PUNCH"
+   ]
+  },
+  "name": "Elite Four Shauntal",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "elite_four.png",
+  "team": [
+   563,
+   426,
+   623,
+   609
+  ]
+ },
  "381": {
   "b2_id": 381,
   "class": "VETERAN",
@@ -1404,6 +1789,56 @@
    610
   ]
  },
+ "39": {
+  "b2_id": 39,
+  "class": "ELITE_FOUR",
+  "held_items": {
+   "534": "SITRUS_BERRY"
+  },
+  "levels": [
+   56,
+   56,
+   56,
+   58
+  ],
+  "movesets": {
+   "534": [
+    "HAMMER-ARM",
+    "BULK-UP",
+    "STONE-EDGE",
+    "RETALIATE"
+   ],
+   "538": [
+    "STORM-THROW",
+    "BULLDOZE",
+    "ROCK-TOMB",
+    "PAYBACK"
+   ],
+   "539": [
+    "BRICK-BREAK",
+    "RETALIATE",
+    "ROCK-SLIDE",
+    "PAYBACK"
+   ],
+   "620": [
+    "HI-JUMP-KICK",
+    "U-TURN",
+    "BOUNCE",
+    "RETALIATE"
+   ]
+  },
+  "name": "Elite Four Marshal",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "elite_four.png",
+  "team": [
+   538,
+   539,
+   620,
+   534
+  ]
+ },
  "390": {
   "b2_id": 390,
   "class": "BACKPACKER",
@@ -1438,6 +1873,106 @@
    425,
    325,
    426
+  ]
+ },
+ "40": {
+  "b2_id": 40,
+  "class": "ELITE_FOUR",
+  "held_items": {
+   "625": "SITRUS_BERRY"
+  },
+  "levels": [
+   56,
+   56,
+   56,
+   58
+  ],
+  "movesets": {
+   "510": [
+    "NIGHT-SLASH",
+    "FAKE-OUT",
+    "AERIAL-ACE",
+    "ATTRACT"
+   ],
+   "553": [
+    "CRUNCH",
+    "DRAGON-CLAW",
+    "EARTHQUAKE",
+    "ROCK-TOMB"
+   ],
+   "560": [
+    "CRUNCH",
+    "BRICK-BREAK",
+    "POISON-JAB",
+    "ROCK-TOMB"
+   ],
+   "625": [
+    "NIGHT-SLASH",
+    "X-SCISSOR",
+    "METAL-CLAW",
+    "AERIAL-ACE"
+   ]
+  },
+  "name": "Elite Four Grimsley",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "elite_four.png",
+  "team": [
+   510,
+   560,
+   553,
+   625
+  ]
+ },
+ "41": {
+  "b2_id": 41,
+  "class": "ELITE_FOUR",
+  "held_items": {
+   "576": "SITRUS_BERRY"
+  },
+  "levels": [
+   56,
+   56,
+   56,
+   58
+  ],
+  "movesets": {
+   "518": [
+    "CHARGE-BEAM",
+    "DREAM-EATER",
+    "YAWN",
+    "REFLECT"
+   ],
+   "561": [
+    "PSYCHIC",
+    "SHADOW-BALL",
+    "ICE-BEAM",
+    "AIR-SLASH"
+   ],
+   "576": [
+    "PSYCHIC",
+    "SHADOW-BALL",
+    "THUNDERBOLT",
+    "CALM-MIND"
+   ],
+   "579": [
+    "PSYCHIC",
+    "ENERGY-BALL",
+    "FOCUS-BLAST",
+    "RECOVER"
+   ]
+  },
+  "name": "Elite Four Caitlin",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "elite_four.png",
+  "team": [
+   518,
+   579,
+   561,
+   576
   ]
  },
  "426": {
@@ -1831,6 +2366,69 @@
    335
   ]
  },
+ "456": {
+  "b2_id": 456,
+  "class": "TRAINER",
+  "levels": [
+   76,
+   76,
+   76,
+   76,
+   76,
+   78
+  ],
+  "movesets": {
+   "350": [
+    "BLIZZARD",
+    "HYDRO-PUMP",
+    "ATTRACT",
+    "REST"
+   ],
+   "442": [
+    "SHADOW-BALL",
+    "DOUBLE-TEAM",
+    "DREAM-EATER",
+    "HYPNOSIS"
+   ],
+   "445": [
+    "DRAGON-RUSH",
+    "EARTHQUAKE",
+    "STONE-EDGE",
+    "FIRE-BLAST"
+   ],
+   "448": [
+    "EXTREMESPEED",
+    "CLOSE-COMBAT",
+    "FLASH-CANNON",
+    "PSYCHIC"
+   ],
+   "468": [
+    "EXTREMESPEED",
+    "AURA-SPHERE",
+    "AIR-SLASH",
+    "THUNDER-WAVE"
+   ],
+   "471": [
+    "ICE-BEAM",
+    "SHADOW-BALL",
+    "SIGNAL-BEAM",
+    "BARRIER"
+   ]
+  },
+  "name": "Pokemon Trainer Cynthia",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "trainer.png",
+  "team": [
+   442,
+   350,
+   468,
+   448,
+   471,
+   445
+  ]
+ },
  "47": {
   "b2_id": 47,
   "class": "LASS",
@@ -1945,6 +2543,21 @@
    354
   ]
  },
+ "5": {
+  "b2_id": 5,
+  "class": "TRAINER",
+  "levels": [
+   70
+  ],
+  "name": "Pokemon Trainer N",
+  "rewards": {
+   "balls": 2
+  },
+  "sprite": "trainer.png",
+  "team": [
+   644
+  ]
+ },
  "500": {
   "b2_id": 500,
   "class": "TEAM_PLASMA",
@@ -1994,6 +2607,73 @@
   "team": [
    552,
    59
+  ]
+ },
+ "536": {
+  "b2_id": 536,
+  "class": "CHAMPION",
+  "held_items": {
+   "612": "FOCUS_SASH",
+   "621": "LIFE_ORB"
+  },
+  "levels": [
+   76,
+   76,
+   76,
+   76,
+   76,
+   78
+  ],
+  "movesets": {
+   "131": [
+    "HYDRO-PUMP",
+    "BLIZZARD",
+    "THUNDER",
+    "SING"
+   ],
+   "306": [
+    "EARTHQUAKE",
+    "DOUBLE-EDGE",
+    "STONE-EDGE",
+    "AUTOTOMIZE"
+   ],
+   "567": [
+    "ACROBATICS",
+    "STONE-EDGE",
+    "DRAGON-CLAW",
+    "ENDEAVOR"
+   ],
+   "612": [
+    "EARTHQUAKE",
+    "GUILLOTINE",
+    "OUTRAGE",
+    "DRAGON-DANCE"
+   ],
+   "621": [
+    "FIRE-PUNCH",
+    "THUNDERPUNCH",
+    "OUTRAGE",
+    "FOCUS-BLAST"
+   ],
+   "635": [
+    "FIRE-BLAST",
+    "FOCUS-BLAST",
+    "DRAGON-PULSE",
+    "SURF"
+   ]
+  },
+  "name": "Champion Iris",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "champion.png",
+  "team": [
+   635,
+   621,
+   567,
+   306,
+   131,
+   612
   ]
  },
  "580": {
@@ -2197,6 +2877,21 @@
    519
   ]
  },
+ "6": {
+  "b2_id": 6,
+  "class": "TRAINER",
+  "levels": [
+   70
+  ],
+  "name": "Pokemon Trainer N",
+  "rewards": {
+   "balls": 2
+  },
+  "sprite": "trainer.png",
+  "team": [
+   643
+  ]
+ },
  "621": {
   "b2_id": 621,
   "class": "RICH_BOY",
@@ -2365,6 +3060,432 @@
    521,
    514,
    626,
+   497
+  ]
+ },
+ "693": {
+  "b2_id": 693,
+  "class": "TRAINER",
+  "held_items": {
+   "330": "DRAGON_FANG",
+   "500": "CHARCOAL",
+   "516": "MYSTIC_WATER",
+   "521": "SCOPE_LENS",
+   "604": "LEFTOVERS",
+   "626": "MUSCLE_BAND"
+  },
+  "levels": [
+   62,
+   62,
+   62,
+   62,
+   62,
+   64
+  ],
+  "movesets": {
+   "330": [
+    "EARTHQUAKE",
+    "FIRE-BLAST",
+    "DRAGON-CLAW",
+    "STONE-EDGE"
+   ],
+   "500": [
+    "FIRE-BLAST",
+    "HEAD-SMASH",
+    "HAMMER-ARM",
+    "SCALD"
+   ],
+   "516": [
+    "ROCK-SLIDE",
+    "CRUNCH",
+    "BRICK-BREAK",
+    "SURF"
+   ],
+   "521": [
+    "FACADE",
+    "AERIAL-ACE",
+    "U-TURN",
+    "SWAGGER"
+   ],
+   "604": [
+    "WILD-CHARGE",
+    "FLAMETHROWER",
+    "DRAGON-CLAW",
+    "CRUNCH"
+   ],
+   "626": [
+    "HEAD-CHARGE",
+    "WILD-CHARGE",
+    "MEGAHORN",
+    "EARTHQUAKE"
+   ]
+  },
+  "name": "Pokemon Trainer Rival",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "trainer.png",
+  "team": [
+   521,
+   516,
+   626,
+   330,
+   604,
+   500
+  ]
+ },
+ "694": {
+  "b2_id": 694,
+  "class": "TRAINER",
+  "held_items": {
+   "330": "DRAGON_FANG",
+   "503": "MYSTIC_WATER",
+   "512": "MIRACLE_SEED",
+   "521": "SCOPE_LENS",
+   "604": "LEFTOVERS",
+   "626": "MUSCLE_BAND"
+  },
+  "levels": [
+   62,
+   62,
+   62,
+   62,
+   62,
+   64
+  ],
+  "movesets": {
+   "330": [
+    "EARTHQUAKE",
+    "FIRE-BLAST",
+    "DRAGON-CLAW",
+    "STONE-EDGE"
+   ],
+   "503": [
+    "HYDRO-PUMP",
+    "MEGAHORN",
+    "ICE-BEAM",
+    "GRASS-KNOT"
+   ],
+   "512": [
+    "ROCK-SLIDE",
+    "CRUNCH",
+    "BRICK-BREAK",
+    "ENERGY-BALL"
+   ],
+   "521": [
+    "FACADE",
+    "AERIAL-ACE",
+    "U-TURN",
+    "SWAGGER"
+   ],
+   "604": [
+    "WILD-CHARGE",
+    "FLAMETHROWER",
+    "DRAGON-CLAW",
+    "CRUNCH"
+   ],
+   "626": [
+    "HEAD-CHARGE",
+    "WILD-CHARGE",
+    "MEGAHORN",
+    "EARTHQUAKE"
+   ]
+  },
+  "name": "Pokemon Trainer Rival",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "trainer.png",
+  "team": [
+   521,
+   512,
+   626,
+   330,
+   604,
+   503
+  ]
+ },
+ "695": {
+  "b2_id": 695,
+  "class": "TRAINER",
+  "held_items": {
+   "330": "DRAGON_FANG",
+   "497": "MIRACLE_SEED",
+   "514": "CHARCOAL",
+   "521": "SCOPE_LENS",
+   "604": "LEFTOVERS",
+   "626": "MUSCLE_BAND"
+  },
+  "levels": [
+   62,
+   62,
+   62,
+   62,
+   62,
+   64
+  ],
+  "movesets": {
+   "330": [
+    "EARTHQUAKE",
+    "FIRE-BLAST",
+    "DRAGON-CLAW",
+    "STONE-EDGE"
+   ],
+   "497": [
+    "LEAF-STORM",
+    "LEAF-BLADE",
+    "DRAGON-TAIL",
+    "COIL"
+   ],
+   "514": [
+    "ROCK-SLIDE",
+    "CRUNCH",
+    "BRICK-BREAK",
+    "FLAMETHROWER"
+   ],
+   "521": [
+    "FACADE",
+    "AERIAL-ACE",
+    "U-TURN",
+    "SWAGGER"
+   ],
+   "604": [
+    "WILD-CHARGE",
+    "FLAMETHROWER",
+    "DRAGON-CLAW",
+    "CRUNCH"
+   ],
+   "626": [
+    "HEAD-CHARGE",
+    "WILD-CHARGE",
+    "MEGAHORN",
+    "EARTHQUAKE"
+   ]
+  },
+  "name": "Pokemon Trainer Rival",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "trainer.png",
+  "team": [
+   521,
+   514,
+   626,
+   330,
+   604,
+   497
+  ]
+ },
+ "696": {
+  "b2_id": 696,
+  "class": "TRAINER",
+  "held_items": {
+   "330": "DRAGON_GEM",
+   "500": "FOCUS_SASH",
+   "516": "SALAC_BERRY",
+   "521": "SCOPE_LENS",
+   "604": "LEFTOVERS",
+   "626": "MUSCLE_BAND"
+  },
+  "levels": [
+   65,
+   65,
+   65,
+   65,
+   65,
+   67
+  ],
+  "movesets": {
+   "330": [
+    "EARTHQUAKE",
+    "FIRE-BLAST",
+    "DRACO-METEOR",
+    "STONE-EDGE"
+   ],
+   "500": [
+    "FIRE-BLAST",
+    "HEAD-SMASH",
+    "HAMMER-ARM",
+    "SCALD"
+   ],
+   "516": [
+    "ROCK-SLIDE",
+    "FOCUS-BLAST",
+    "ACROBATICS",
+    "SURF"
+   ],
+   "521": [
+    "GIGA-IMPACT",
+    "AERIAL-ACE",
+    "U-TURN",
+    "SWAGGER"
+   ],
+   "604": [
+    "WILD-CHARGE",
+    "FLAMETHROWER",
+    "DRAGON-CLAW",
+    "CRUNCH"
+   ],
+   "626": [
+    "HEAD-CHARGE",
+    "WILD-CHARGE",
+    "MEGAHORN",
+    "EARTHQUAKE"
+   ]
+  },
+  "name": "Pokemon Trainer Rival",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "trainer.png",
+  "team": [
+   521,
+   516,
+   626,
+   330,
+   604,
+   500
+  ]
+ },
+ "697": {
+  "b2_id": 697,
+  "class": "TRAINER",
+  "held_items": {
+   "330": "DRAGON_GEM",
+   "503": "FOCUS_SASH",
+   "512": "SALAC_BERRY",
+   "521": "SCOPE_LENS",
+   "604": "LEFTOVERS",
+   "626": "MUSCLE_BAND"
+  },
+  "levels": [
+   65,
+   65,
+   65,
+   65,
+   65,
+   67
+  ],
+  "movesets": {
+   "330": [
+    "EARTHQUAKE",
+    "FIRE-BLAST",
+    "DRACO-METEOR",
+    "STONE-EDGE"
+   ],
+   "503": [
+    "HYDRO-PUMP",
+    "MEGAHORN",
+    "ICE-BEAM",
+    "GRASS-KNOT"
+   ],
+   "512": [
+    "ROCK-SLIDE",
+    "FOCUS-BLAST",
+    "ACROBATICS",
+    "ENERGY-BALL"
+   ],
+   "521": [
+    "GIGA-IMPACT",
+    "AERIAL-ACE",
+    "U-TURN",
+    "SWAGGER"
+   ],
+   "604": [
+    "WILD-CHARGE",
+    "FLAMETHROWER",
+    "DRAGON-CLAW",
+    "CRUNCH"
+   ],
+   "626": [
+    "HEAD-CHARGE",
+    "WILD-CHARGE",
+    "MEGAHORN",
+    "EARTHQUAKE"
+   ]
+  },
+  "name": "Pokemon Trainer Rival",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "trainer.png",
+  "team": [
+   521,
+   512,
+   626,
+   330,
+   604,
+   503
+  ]
+ },
+ "698": {
+  "b2_id": 698,
+  "class": "TRAINER",
+  "held_items": {
+   "330": "DRAGON_GEM",
+   "497": "FOCUS_SASH",
+   "514": "SALAC_BERRY",
+   "521": "SCOPE_LENS",
+   "604": "LEFTOVERS",
+   "626": "MUSCLE_BAND"
+  },
+  "levels": [
+   65,
+   65,
+   65,
+   65,
+   65,
+   67
+  ],
+  "movesets": {
+   "330": [
+    "EARTHQUAKE",
+    "FIRE-BLAST",
+    "DRACO-METEOR",
+    "STONE-EDGE"
+   ],
+   "497": [
+    "LEAF-STORM",
+    "LEAF-BLADE",
+    "DRAGON-TAIL",
+    "COIL"
+   ],
+   "514": [
+    "ROCK-SLIDE",
+    "FOCUS-BLAST",
+    "ACROBATICS",
+    "FLAMETHROWER"
+   ],
+   "521": [
+    "GIGA-IMPACT",
+    "AERIAL-ACE",
+    "U-TURN",
+    "SWAGGER"
+   ],
+   "604": [
+    "WILD-CHARGE",
+    "FLAMETHROWER",
+    "DRAGON-CLAW",
+    "CRUNCH"
+   ],
+   "626": [
+    "HEAD-CHARGE",
+    "WILD-CHARGE",
+    "MEGAHORN",
+    "EARTHQUAKE"
+   ]
+  },
+  "name": "Pokemon Trainer Rival",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "trainer.png",
+  "team": [
+   521,
+   514,
+   626,
+   330,
+   604,
    497
   ]
  },
@@ -2548,6 +3669,278 @@
   "sprite": "b2_plasma_grunt_f.png",
   "team": [
    505
+  ]
+ },
+ "782": {
+  "b2_id": 782,
+  "class": "TRAINER",
+  "held_items": {
+   "139": "DAMP_ROCK",
+   "186": "LIFE_ORB",
+   "73": "DAMP_ROCK"
+  },
+  "levels": [
+   77,
+   75,
+   75,
+   75,
+   75,
+   75
+  ],
+  "movesets": {
+   "121": [
+    "HYDRO-PUMP",
+    "THUNDER",
+    "PSYCHIC",
+    "ICE-BEAM"
+   ],
+   "139": [
+    "RAIN-DANCE",
+    "HYDRO-PUMP",
+    "ICE-BEAM",
+    "EARTH-POWER"
+   ],
+   "141": [
+    "STONE-EDGE",
+    "AQUA-JET",
+    "X-SCISSOR",
+    "LOW-KICK"
+   ],
+   "171": [
+    "THUNDER",
+    "SIGNAL-BEAM",
+    "HYDRO-PUMP",
+    "STOCKPILE"
+   ],
+   "186": [
+    "HYDRO-PUMP",
+    "FOCUS-BLAST",
+    "PSYCHIC",
+    "HYPNOSIS"
+   ],
+   "73": [
+    "RAIN-DANCE",
+    "GIGA-DRAIN",
+    "SCALD",
+    "BARRIER"
+   ]
+  },
+  "name": "Pokemon Trainer N",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "trainer.png",
+  "team": [
+   186,
+   171,
+   73,
+   139,
+   141,
+   121
+  ]
+ },
+ "783": {
+  "b2_id": 783,
+  "class": "TRAINER",
+  "held_items": {
+   "275": "HEAT_ROCK",
+   "291": "HEAT_ROCK",
+   "38": "LIFE_ORB"
+  },
+  "levels": [
+   77,
+   75,
+   75,
+   75,
+   75,
+   75
+  ],
+  "movesets": {
+   "275": [
+    "DARK-PULSE",
+    "SOLARBEAM",
+    "FOCUS-BLAST",
+    "SUNNY-DAY"
+   ],
+   "291": [
+    "SUNNY-DAY",
+    "X-SCISSOR",
+    "SOLARBEAM",
+    "PROTECT"
+   ],
+   "38": [
+    "FIRE-BLAST",
+    "SOLARBEAM",
+    "FOUL-PLAY",
+    "CONFUSE-RAY"
+   ],
+   "470": [
+    "LEAF-BLADE",
+    "X-SCISSOR",
+    "ATTRACT",
+    "IRON-TAIL"
+   ],
+   "59": [
+    "EXTREMESPEED",
+    "OVERHEAT",
+    "WILD-CHARGE",
+    "OUTRAGE"
+   ],
+   "78": [
+    "MEGAHORN",
+    "DRILL-RUN",
+    "FLARE-BLITZ",
+    "SOLARBEAM"
+   ]
+  },
+  "name": "Pokemon Trainer N",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "trainer.png",
+  "team": [
+   38,
+   59,
+   78,
+   275,
+   291,
+   470
+  ]
+ },
+ "784": {
+  "b2_id": 784,
+  "class": "TRAINER",
+  "held_items": {
+   "346": "SMOOTH_ROCK",
+   "423": "SMOOTH_ROCK",
+   "450": "LIFE_ORB"
+  },
+  "levels": [
+   77,
+   75,
+   75,
+   75,
+   75,
+   75
+  ],
+  "movesets": {
+   "212": [
+    "BULLET-PUNCH",
+    "DOUBLE-HIT",
+    "BUG-BITE",
+    "AERIAL-ACE"
+   ],
+   "346": [
+    "SANDSTORM",
+    "GIGA-DRAIN",
+    "CONFUSE-RAY",
+    "STOCKPILE"
+   ],
+   "348": [
+    "ROCK-SLIDE",
+    "X-SCISSOR",
+    "AQUA-TAIL",
+    "ROCK-POLISH"
+   ],
+   "423": [
+    "EARTH-POWER",
+    "MUDDY-WATER",
+    "ICE-BEAM",
+    "SANDSTORM"
+   ],
+   "450": [
+    "STONE-EDGE",
+    "CRUNCH",
+    "SUPERPOWER",
+    "STEALTH-ROCK"
+   ],
+   "464": [
+    "EARTHQUAKE",
+    "STONE-EDGE",
+    "FIRE-PUNCH",
+    "ICE-PUNCH"
+   ]
+  },
+  "name": "Pokemon Trainer N",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "trainer.png",
+  "team": [
+   450,
+   423,
+   346,
+   348,
+   212,
+   464
+  ]
+ },
+ "785": {
+  "b2_id": 785,
+  "class": "TRAINER",
+  "held_items": {
+   "460": "LIFE_ORB",
+   "478": "ICY_ROCK",
+   "584": "ICY_ROCK"
+  },
+  "levels": [
+   77,
+   75,
+   75,
+   75,
+   75,
+   75
+  ],
+  "movesets": {
+   "460": [
+    "BLIZZARD",
+    "WOOD-HAMMER",
+    "EARTHQUAKE",
+    "GRASSWHISTLE"
+   ],
+   "471": [
+    "BLIZZARD",
+    "SHADOW-BALL",
+    "SIGNAL-BEAM",
+    "ATTRACT"
+   ],
+   "473": [
+    "EARTHQUAKE",
+    "ICE-SHARD",
+    "BLIZZARD",
+    "STONE-EDGE"
+   ],
+   "478": [
+    "BLIZZARD",
+    "SHADOW-BALL",
+    "PSYCHIC",
+    "HAIL"
+   ],
+   "584": [
+    "BLIZZARD",
+    "FLASH-CANNON",
+    "SIGNAL-BEAM",
+    "HAIL"
+   ],
+   "91": [
+    "ICICLE-SPEAR",
+    "HYDRO-PUMP",
+    "ICE-SHARD",
+    "SHELL-SMASH"
+   ]
+  },
+  "name": "Pokemon Trainer N",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "trainer.png",
+  "team": [
+   460,
+   584,
+   91,
+   473,
+   478,
+   471
   ]
  },
  "794": {

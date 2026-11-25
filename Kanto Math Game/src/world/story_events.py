@@ -45,8 +45,11 @@ EVENTS = {
     "kanto_hall_of_fame": {"scene": "hall_of_fame", "lines": ["You returned home to share your victory!"],
                            "clear": ["hall_of_fame_due_INDIGO_PLATEAU"], "travel": "PALLET_TOWN"},
     # ---------------- Johto: the Hall of Fame at the Silver League (SoulSilver's T10R0701), after Champion Lance: home to New Bark
+    "sinnoh_rowan_tm27": {"lines": ["Rowan: Hm! Before you go - take this. Return grows stronger the more your Pokemon trusts you.",
+                                    "Rowan: Treat your Pokemon well, and it will give everything for you."],
+                          "gift_item": {"TM274": 1}, "flag": "got_tm274_sandgem"},   # (s_s8_gifts.py: Platinum's TM27 Return)
     "sinnoh_hall_of_fame": {"scene": "hall_of_fame", "lines": ["You returned home to share your victory!"],
-                            "clear": ["hall_of_fame_due_SINNOH_POKEMON_LEAGUE"], "travel": "TWINLEAF_TOWN"},   # (s_s6_league.py)
+                            "clear": ["hall_of_fame_due_SINNOH_POKEMON_LEAGUE", "turnback_giratina_done"], "travel": "TWINLEAF_TOWN"},   # (s_s6_league.py)
     "johto_hall_of_fame": {"scene": "hall_of_fame", "lines": ["You returned home to share your victory!"],
                            "clear": ["hall_of_fame_due_SILVER_LEAGUE_PLATEAU"], "travel": "NEW_BARK_TOWN"},
     # ---------------- Johto (HGSS's opening and early story, Jordan 11-15: "ensure the johto region starts the same as the games")

@@ -7221,6 +7221,7 @@
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_team_hideout_1",
+     "condition": ["hoenn_version:OMEGA_RUBY"],
      "event": {
       "lines": [
        "You found a Full Restore!"
@@ -7237,6 +7238,7 @@
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_team_hideout_2",
+     "condition": ["hoenn_version:OMEGA_RUBY"],
      "event": {
       "lines": [
        "You found a Max Elixir!"
@@ -7253,6 +7255,7 @@
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_team_hideout_3",
+     "condition": ["hoenn_version:OMEGA_RUBY"],
      "event": {
       "lines": [
        "You found a Escape Rope!"
@@ -7269,6 +7272,7 @@
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_team_hideout_4",
+     "condition": ["hoenn_version:OMEGA_RUBY"],
      "event": {
       "lines": [
        "You found a Nest Ball!"
@@ -7285,6 +7289,7 @@
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_team_hideout_5",
+     "condition": ["hoenn_version:OMEGA_RUBY"],
      "event": {
       "lines": [
        "You found a TM094 DARK PULSE!"
@@ -7301,6 +7306,7 @@
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_team_hideout_6",
+     "condition": ["hoenn_version:OMEGA_RUBY"],
      "event": {
       "lines": [
        "You found a Nugget!"
@@ -7317,6 +7323,7 @@
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_team_hideout_7",
+     "condition": ["hoenn_version:OMEGA_RUBY"],
      "event": {
       "lines": [
        "You found a Pp Max!"
@@ -7333,6 +7340,7 @@
      "found": true,
      "oras": true,
      "flag_condition": "not oras_hoenn_team_hideout_8",
+     "condition": ["hoenn_version:OMEGA_RUBY"],
      "event": {
       "lines": [
        "You found a Max Revive!"
@@ -7342,6 +7350,196 @@
       },
       "flag": "oras_hoenn_team_hideout_8"
      }
+    },
+    {
+     "text": "NUGGET  ",
+     "action": "EVENT",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_team_hideout_9",
+     "event": {
+      "lines": [
+       "You found a Nugget!"
+      ],
+      "gift_item": {
+       "NUGGET": 1
+      },
+      "flag": "oras_hoenn_team_hideout_9"
+     },
+     "condition": [
+      "hoenn_version:ALPHA_SAPPHIRE"
+     ]
+    },
+    {
+     "text": "FULL RESTORE ",
+     "action": "EVENT",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_team_hideout_10",
+     "event": {
+      "lines": [
+       "You found a Full Restore!"
+      ],
+      "gift_item": {
+       "FULL_RESTORE": 1
+      },
+      "flag": "oras_hoenn_team_hideout_10"
+     },
+     "condition": [
+      "hoenn_version:ALPHA_SAPPHIRE"
+     ]
+    },
+    {
+     "text": "MAX ELIXIR ",
+     "action": "EVENT",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_team_hideout_11",
+     "event": {
+      "lines": [
+       "You found a Max Elixir!"
+      ],
+      "gift_item": {
+       "MAX_ELIXIR": 1
+      },
+      "flag": "oras_hoenn_team_hideout_11"
+     },
+     "condition": [
+      "hoenn_version:ALPHA_SAPPHIRE"
+     ]
+    },
+    {
+     "text": "ESCAPE ROPE ",
+     "action": "EVENT",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_team_hideout_12",
+     "event": {
+      "lines": [
+       "You found a Escape Rope!"
+      ],
+      "gift_item": {
+       "ESCAPE_ROPE": 1
+      },
+      "flag": "oras_hoenn_team_hideout_12"
+     },
+     "condition": [
+      "hoenn_version:ALPHA_SAPPHIRE"
+     ]
+    },
+    {
+     "text": "NEST BALL ",
+     "action": "EVENT",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_team_hideout_13",
+     "event": {
+      "lines": [
+       "You found a Nest Ball!"
+      ],
+      "gift_item": {
+       "NEST_BALL": 1
+      },
+      "flag": "oras_hoenn_team_hideout_13"
+     },
+     "condition": [
+      "hoenn_version:ALPHA_SAPPHIRE"
+     ]
+    },
+    {
+     "text": "TM094 DARK PULSE ",
+     "action": "EVENT",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_team_hideout_14",
+     "event": {
+      "lines": [
+       "You found a TM094 DARK PULSE!"
+      ],
+      "gift_item": {
+       "TM094": 1
+      },
+      "flag": "oras_hoenn_team_hideout_14"
+     },
+     "condition": [
+      "hoenn_version:ALPHA_SAPPHIRE"
+     ]
+    },
+    {
+     "text": "NUGGET   ",
+     "action": "EVENT",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_team_hideout_15",
+     "event": {
+      "lines": [
+       "You found a Nugget!"
+      ],
+      "gift_item": {
+       "NUGGET": 1
+      },
+      "flag": "oras_hoenn_team_hideout_15"
+     },
+     "condition": [
+      "hoenn_version:ALPHA_SAPPHIRE"
+     ]
+    },
+    {
+     "text": "MASTER BALL ",
+     "action": "EVENT",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_team_hideout_16",
+     "event": {
+      "lines": [
+       "You found a Master Ball!"
+      ],
+      "gift_item": {
+       "MASTER_BALL": 1
+      },
+      "flag": "oras_hoenn_team_hideout_16"
+     },
+     "condition": [
+      "hoenn_version:ALPHA_SAPPHIRE"
+     ]
+    },
+    {
+     "text": "PP MAX ",
+     "action": "EVENT",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_team_hideout_17",
+     "event": {
+      "lines": [
+       "You found a Pp Max!"
+      ],
+      "gift_item": {
+       "PP_MAX": 1
+      },
+      "flag": "oras_hoenn_team_hideout_17"
+     },
+     "condition": [
+      "hoenn_version:ALPHA_SAPPHIRE"
+     ]
+    },
+    {
+     "text": "MAX REVIVE ",
+     "action": "EVENT",
+     "found": true,
+     "oras": true,
+     "flag_condition": "not oras_hoenn_team_hideout_18",
+     "event": {
+      "lines": [
+       "You found a Max Revive!"
+      ],
+      "gift_item": {
+       "MAX_REVIVE": 1
+      },
+      "flag": "oras_hoenn_team_hideout_18"
+     },
+     "condition": [
+      "hoenn_version:ALPHA_SAPPHIRE"
+     ]
     }
    ]
   },

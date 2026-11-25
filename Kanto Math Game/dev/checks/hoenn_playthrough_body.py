@@ -635,13 +635,12 @@ def flood(st, through=False, blocked=()):
     br = {} if is_town(st) else (getattr(st.run.floor, "bridge", None) or {})
     start = pos(st)
     if start in br:
-        ax = br[start] if getattr(st.run, "deck", True) else (br[start][1], br[start][0])
-        start = (start, ax)
+        start = (start, bool(getattr(st.run, "deck", True)))   # (on the deck or under it)
     prev, q = {start: None}, deque([start])
     while q:
         pn = q.popleft()
         p = _tile(pn)
-        mode = pn[1] if p in br and pn is not p else None
+        mode = pn[1] if p in br and pn is not p else None   # (on a bridge: True on its deck, False under it)
         for d in DIRS:
             if (p, d) in blocked:
                 continue
@@ -650,9 +649,9 @@ def flood(st, through=False, blocked=()):
             if r is None:
                 continue
             t, end = r
-            if p in br and t not in br and mode is not None and ad != mode:   # (off a bridge only the way you're crossing it)
+            if p in br and t not in br and mode is not None and (ad == br[p]) != mode:   # (off a bridge: along it from the deck, across it from under)
                 continue
-            tn = (t, (mode if p in br and mode is not None else ad)) if t in br else t
+            tn = (t, (mode if p in br and mode is not None else ad == br[t])) if t in br else t   # (onto it from off it: along it is the deck)
             if tn not in prev:
                 prev[tn] = (pn, d)
                 if not end:
@@ -2098,11 +2097,13 @@ POST_JOBS = [   # (id, what, where it starts (Fly), steps, the flag that says it
     # (Sky Pillar's stretch of sea is reached as in Emerald's maps: Mossdeep, Route 127, Route 128, then a Dive on Route
     #  129 up into its north sea and west along Routes 130-131 - Route 131's south half, off Pacifidlog, doesn't join it; 11-24.
     #  Wallace's job sails it; the jobs after him start at Sky Pillar's door and climb it)
+    # (11-25: each leg its own "done" - the next route's visited flag, cleared as the job starts - since main's marker (J7,
+    #  c188181b9) waits on an earlier way-point that isn't done: five sharing delta_wallace_131 kept it on Route 127's)
     ("delta_wallace", "Wallace by Sky Pillar (Route 131)", "MOSSDEEP_CITY",
-     [{"area": "HOENN_ROUTE_127", "floor": 0, "at": [20, 79], "label": "To Route 128", "done": "delta_wallace_131"},
-      {"area": "HOENN_ROUTE_128", "floor": 0, "at": [32, 39], "label": "To Route 129", "done": "delta_wallace_131"},
-      {"area": "HOENN_ROUTE_129", "floor": 0, "at": [0, 5], "label": "To Route 130", "done": "delta_wallace_131"},
-      {"area": "HOENN_ROUTE_130", "floor": 0, "at": [0, 5], "label": "To Route 131", "done": "delta_wallace_131"},
+     [{"area": "HOENN_ROUTE_127", "floor": 0, "at": [20, 79], "label": "To Route 128", "done": "visited_HOENN_ROUTE_128"},
+      {"area": "HOENN_ROUTE_128", "floor": 0, "at": [32, 39], "label": "To Route 129", "done": "visited_HOENN_ROUTE_129"},
+      {"area": "HOENN_ROUTE_129", "floor": 0, "at": [0, 5], "label": "To Route 130", "done": "visited_HOENN_ROUTE_130"},
+      {"area": "HOENN_ROUTE_130", "floor": 0, "at": [0, 5], "label": "To Route 131", "done": "visited_HOENN_ROUTE_131"},
       {"area": "HOENN_ROUTE_131", "floor": 0, "at": [37, 6], "label": "Wallace", "done": "delta_wallace_131"}], "delta_wallace_131"),
     ("delta_zinnia", "Zinnia atop Sky Pillar", "HOENN_SKY_PILLAR",
      [{"area": "HOENN_SKY_PILLAR", "floor": 7, "at": [14, 10], "label": "Zinnia", "done": "delta_zinnia_defeated"}], "delta_zinnia_defeated"),
@@ -2113,7 +2114,8 @@ POST_JOBS = [   # (id, what, where it starts (Fly), steps, the flag that says it
     ("post_steven", "Steven in Meteor Falls' hidden room (Emerald)", "FALLARBOR_TOWN",
      [{"area": "HOENN_METEOR_FALLS", "floor": 4, "at": [19, 3], "label": "Steven", "done": "meteor_falls_steven_beaten"}], "meteor_falls_steven_beaten"),
     ("post_ship", "Lugia and Ho-Oh in the Abandoned Ship's storeroom", "SLATEPORT_CITY",
-     [{"area": "HOENN_ABANDONED_SHIP", "floor": 8, "at": [3, 3], "label": "Lugia", "done": "sea_mauville_lugia"},
+     [{"area": "HOENN_ABANDONED_SHIP", "floor": 4, "at": [0, 6], "label": "Storage Key", "done": "got_storage_key_ship"},   # (the storeroom's key first, 11-24)
+      {"area": "HOENN_ABANDONED_SHIP", "floor": 8, "at": [3, 3], "label": "Lugia", "done": "sea_mauville_lugia"},
       {"area": "HOENN_ABANDONED_SHIP", "floor": 8, "at": [5, 3], "label": "Ho-Oh", "done": "sea_mauville_ho_oh"}], "sea_mauville_ho_oh"),
 ]
 POST = []
@@ -2143,6 +2145,9 @@ if ENDED == "CHAMPION" and os.environ.get("KPT_POST", "1") != "0":
         _how = "?"
         try:
             if not _got(_flag):
+                for _s in _steps:
+                    if str(_s.get("done", "")).startswith("visited_"):
+                        story.story_flags.pop(_s["done"], None)
                 put_at(_fly)
                 _how = play_through()
             else:

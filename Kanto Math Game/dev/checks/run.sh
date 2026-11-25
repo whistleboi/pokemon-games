@@ -13,6 +13,7 @@
 cd "$(dirname "$0")/../.." || exit 1
 . dev/checks/suites_lib.sh
 mkdir -p "$O"
+RUN=$O/run_$$   # (this run's own folder: two runs at once in one checkout don't share files; 11-25)
 VERBOSE=0
 total=0
 case "$1" in
@@ -32,18 +33,20 @@ done
 for t in "${names[@]}"; do
   why=$(_gone "$t") && { echo "== $t: taken out ($why)"; continue; }
   exists "$t" || { echo "== $t: no such suite (dev/checks/${t}_body.py)"; total=$((total + 1)); continue; }
-  f=$O/check_${t/:/_}.py
+  mkdir -p "$RUN"; f=$RUN/check_${t/:/_}.py; L=$RUN/${t/:/_}.log
   build "$t" "$f"
   s=$SECONDS
-  if [ "${t#walk:}" != "$t" ]; then timeout 900 python "$f" $O > "$O/run_${t/:/_}.log" 2>&1; else timeout 1500 python "$f" $O > "$O/run_${t/:/_}.log" 2>&1; fi
+  if [ "${t#walk:}" != "$t" ]; then timeout 900 python "$f" $O > "$L" 2>&1; else timeout 1500 python "$f" $O > "$L" 2>&1; fi   # (scratch stays $O: the playthroughs keep their saves there)
   ex=$?
-  n=$(count "$t" "$O/run_${t/:/_}.log" $ex)
+  n=$(count "$t" "$L" $ex 2> "$RUN/note.txt")   # (its notes printed under its own line)
   total=$((total + n))
-  k=$(checks "$O/run_${t/:/_}.log")
+  k=$(checks "$L")
   note_time "$t" $((SECONDS - s)) "$n" "$k"
   echo "== $t: $n fails ($((SECONDS - s)) s, $k checks)"
-  base_warn "$t" "$k"
-  if [ $VERBOSE = 1 ]; then grep -v '^Sync: ' "$O/run_${t/:/_}.log"; else grep -E 'FAIL |Traceback|(Syntax|Indentation)Error' -B3 -A3 "$O/run_${t/:/_}.log" | grep -vE '^--$|##### 0 fail' | head -40; fi
+  cat "$RUN/note.txt" 2>/dev/null; base_warn "$t" "$k"
+  if [ $VERBOSE = 1 ]; then grep -v '^Sync: ' "$L"; else grep -E 'FAIL |Traceback|(Syntax|Indentation)Error' -B3 -A3 "$L" | grep -vE '^--$|##### 0 fail' | head -40; fi
+  cp "$L" "$O/run_${t/:/_}.log"   # (the whole output, where it always was)
 done
+rm -rf "$RUN"
 echo "##### $total fails in all"
 [ $total = 0 ]

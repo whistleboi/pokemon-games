@@ -47,7 +47,37 @@ def build(johto_maps):
     # the Exchange Service Corner's stalls: Platinum's lists (HGSS's without U-turn)
     e["people"] = [dict(p, shop={"hgss_items": "plat_items", "hgss_tms": "plat_tms"}.get(p.get("shop"), p.get("shop")))
                    if isinstance(p, dict) else p for p in (e.get("people") or [])]
+    art = [list(r) for r in e["art"]]   # (the road south of the gate, SoulSilver's way on to Frontier Access: a dead end here,
+    for y in (79, 80, 81):              #  and Platinum's plaza has no ground under it)
+        for x in range(44, 54):
+            if art[y][x] == "=":
+                art[y][x] = "c"
+    e["art"] = ["".join(r) for r in art]
+    for o in [e] + list(rooms.values()):   # (11-25, Jordan: "Switch to Platinum's" - drawn with Platinum's own models, the same
+        _platinum(o)                     #  zones as SoulSilver's; kanto_handoff/sinnoh_map_tools/pexport3d.py -> assets/pt_3d)
+    from .sinnoh_frontier_rooms import ROOMS as _PT   # (the gate and the four facilities: Platinum's own rooms - walk grid,
+    for name, pr in _PT.items():                    #  doors, attendant, townsfolk; s_s8_frontier_rooms.py. Johto's were
+        r = rooms[name]                             #  drawn to SoulSilver's tilted room pictures)
+        r["art"], r["people"] = list(pr["art"]), copy.deepcopy(pr["people"])
+        r["roofs"] = {"_picture": {"f": f"pt_ground/{pr['zone']}.png", "at": [0, 0]}}
+        r.pop("overheads", None)
+        r.pop("land", None)
     return e
+
+
+def _platinum(o):
+    """A part's look: Platinum's scene for its zone (pt_ground/<zone>, the same crop), SoulSilver's flat overheads gone, and
+    no "_screen" (that marks SoulSilver's room pictures)."""
+    rf = o.get("roofs") if isinstance(o.get("roofs"), dict) else None
+    pic = (rf or {}).get("_picture")
+    if isinstance(pic, dict) and str(pic.get("f", "")).startswith("ss_ground/"):
+        pic["f"] = "pt_ground/" + pic["f"].split("/", 1)[1]
+        pic.pop("px", None)
+        rf.pop("_screen", None)
+    if o.get("overheads"):
+        o["overheads"] = [h for h in o["overheads"] if not str(h.get("f", "")).startswith("ss_top/")]
+        if not o["overheads"]:
+            o.pop("overheads")
 
 
 def apply(maps):

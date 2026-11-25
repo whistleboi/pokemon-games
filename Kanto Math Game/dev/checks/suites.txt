@@ -36,6 +36,7 @@ region_dex             main     story
 region_followers       main     world
 rivals                 main     story
 room_light             main     world
+scene_event            main     world,quick
 rotom_forms            main     battle
 savename               main     ui,quick
 savespot               main     world
@@ -56,9 +57,12 @@ ambush                 systems  world,wild
 area_changes           systems  world
 battle_bg              systems  battle,look
 ds3d                   systems  world,live3d
+catch_date             systems  saves,quick
 battle_intros          systems  battle,look
+medal_rally            systems  items,quick
 map_attacks            systems  world
 menu_screens           systems  ui
+music_layers           systems  sound,quick
 partners               systems  world
 walkup                 systems  world,wild
 
@@ -169,6 +173,10 @@ unova_b9a              unova    story,batch
 unova_b9b              unova    story,batch
 unova_b9c              unova    story,batch
 unova_b10a              unova    story,batch
+unova_b10b              unova    story,batch
+unova_b11a              unova    story,batch
+unova_b11b              unova    story,batch
+unova_b11c              unova    story,batch
 unova_start            unova    story,start
 
 # orre

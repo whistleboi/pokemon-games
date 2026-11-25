@@ -83,7 +83,8 @@ def current_step(game, mission):
     return None
 
 
-WALKED_REGIONS = {"KANTO", "ORANGE", "JOHTO", "HOENN"}  # (Orange: 11-17, its walked maps from 5.7, batch by batch; Johto: 11-22, after its playthrough passed, Jordan: "Yes, add Johto"; Hoenn: 11-24, its playthrough Littleroot to Steven passed with 0 stuck points - Dev Map M6) (regions whose Journal is led over the walked maps' own ways out, not the old menus' jumps: each joins after its own scripted playthrough)
+WALKED_REGIONS = {"KANTO", "ORANGE", "JOHTO", "HOENN", "ORRE", "UNOVA", "SINNOH"}  # (Sinnoh: 11-25, its full playthrough Twinleaf to Cynthia passed with 0 stuck, 0 skips on main 8e3ee2763 - Journal J3; Unova: 11-25, its full playthrough Aspertia to Iris and the Hall of Fame passed with 0 stuck points on main 5c7fe040 - Journal J4; Orre: 11-24, its playthrough to the Champion passed with 0 stuck points, main 3a633ad5d - Journal J5; Orange: 11-17, its walked maps from 5.7, batch by batch; Johto: 11-22, after its playthrough passed, Jordan: "Yes, add Johto"; Hoenn: 11-24, its playthrough Littleroot to Steven passed with 0 stuck points - Dev Map M6) (regions whose Journal is led over the walked maps' own ways out, not the old menus' jumps: each joins after its own scripted playthrough)
+PEOPLE_LINKS = {"UNOVA"}  # (regions whose walked maps' people with a "travel" count as ways in the Journal's plan: Unova, built map-first; 11-25)
 _WAYS = {}
 
 
@@ -411,6 +412,32 @@ def neighbours(game, area_key, open_only=True, came=None):
         if target and (ways is None or target in ways or opt.get("door") or opt.get("action") == "GAMECORNER") \
                 and (not open_only or (_ok(story, opt.get("condition"), area_key) and _flag_ok(story, opt.get("flag_condition")))):
             out.append(target)
+    if ways is not None and str(story.area_region(area_key)).upper() in PEOPLE_LINKS:
+        # (a walked map's people who take you somewhere - Virbank's ship to Castelia, Black 2: "travel" in their event - as
+        #  ways on, when they show; 11-25, the Journal led nowhere from Aspertia after the title)
+        try:
+            from src.states.overworld.walk_town import story_map
+            sm = story_map(game, area_key) or {}
+        except Exception:
+            sm = {}
+        prog = game.loader.area_data.get("STORY_PROGRESSION", {})
+        for part in [sm] + list((sm.get("rooms") or {}).values()):
+            for who in (part.get("people") or []) if isinstance(part, dict) else []:
+                for o in (who if isinstance(who, list) else [who]):
+                    t = ((o.get("event") or {}).get("travel")) if isinstance(o, dict) else None
+                    if isinstance(t, str) and t in prog and t != area_key and t not in out                             and (not open_only or _ok(story, o.get("condition"), area_key)):
+                        out.append(t)
+    if ways and not (area.get("travel_options") or area.get("explore_options") or area.get("route_menu")):
+        # (a walked place with no menu links at all - Unova's later routes: Route 11-13, the Marine Tube, Victory Road -
+        #  is joined by its map's own ways out, less any its map gates shut ("gated_exits": {area: [conditions]}); 11-25)
+        try:
+            from src.states.overworld.walk_town import story_map
+            gates = (story_map(game, area_key) or {}).get("gated_exits") or {}
+        except Exception:
+            gates = {}
+        for t in sorted(ways):
+            if t not in out and t in game.loader.area_data.get("STORY_PROGRESSION", {}) and (not open_only or _ok(story, gates.get(t))):
+                out.append(t)
     return out
 
 

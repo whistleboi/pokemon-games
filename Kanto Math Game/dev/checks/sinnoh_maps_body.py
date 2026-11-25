@@ -667,8 +667,8 @@ for _key in [k for k, v in _tm.items() if v.get("rooms") and _area.get(k, {}).ge
     for _d, _name in _m["inside"].items():
         _door = tuple(int(v) for v in _d.split(","))
         t = town(_key, _area[_key]["travel_options"][0]["target_area"] if _area[_key].get("travel_options") else _key)
-        if not t._open((_door[0], _door[1] + 1)):
-            continue  # (a door you reach from another side: not this check's business)
+        if not t._open((_door[0], _door[1] + 1)) or _door in getattr(t, "barred", {}):
+            continue  # (a door you reach from another side, or one the story keeps shut - the Battleground: its own check)
         _enter_door(t, _door)
         _want = len(_m["rooms"][_name].get("people", []))
         _own = [o for o in t.people.values() if not (isinstance(o, dict) and o.get("_partner_of"))]   # (main 11-24: a leader's partner Pokemon beside them)
@@ -1367,7 +1367,7 @@ check(_ids and all(str(i) in _g4 for i in _ids) and any(387 <= int(i) <= 493 for
 
 # ---- S6 (11-24, s_s6_sunyshore.py): Volkner at the Vista Lighthouse, then his Gym's three rooms of turning walkways
 _sv = dict(story.story_flags)
-for _k in ("volkner_returned_to_gym", "sunyshore_gym_gears"):
+for _k in ("volkner_returned_to_gym", "sunyshore_gym_gears", "sunyshore_gym_kept"):
     story.story_flags.pop(_k, None)
 story.story_flags["spear_pillar_resolved"] = True
 _ad = __import__("json").load(open("assets/sinnoh_area_data.json", encoding="utf-8"))["STORY_PROGRESSION"]["SUNYSHORE_CITY"]
@@ -1397,6 +1397,12 @@ _rooms = all(r in t.town_map["rooms"] for r in ("gym_2", "gym_3", "lighthouse", 
 _vg = any((p_ if isinstance(p_, str) else p_.get("text") if isinstance(p_, dict) else None) == "Gym" for p_ in t.town_map["rooms"]["gym_3"].get("people", []))
 check(_req and _door and _met and _gap0 and _st == 1 and _gap1 and _rooms and _vg,
       f"Sunyshore: Volkner at the Vista Lighthouse opens his Gym; its walkways turn as you step on a gear's middle, the scene with Platinum's gears turned (Platinum's) ({_req}, {_door}, {_met}, {_gap0}, {_st}, {_gap1} {_pic}, {_rooms}, {_vg})")
+t._go("gym_2", "ROOM:gym"); frames(t, 5); _drive(t, 200, lambda: not t._busy())
+_up = _SG.state(story, 1)
+t._go("gym", "ROOM:gym_2"); frames(t, 5); _drive(t, 200, lambda: not t._busy())
+_down = _SG.state(story, 0)
+check(_up == 0 and _down == 1 and (4, 8) not in t.barred,
+      f"Sunyshore Gym: a room keeps its walkways as you left them - up the stairs and back down, the first room still turned (11-25: reset, its top was a trap coming back from Volkner) ({_up}, {_down})")
 story.story_flags.clear(); story.story_flags.update(_sv)
 
 # ---- S6 (11-24, s_s6_victory_road.py): Victory Road's Strength boulders pushed a tile at a time, back at their start on coming in
@@ -1738,6 +1744,394 @@ _tt = g.music.region_track("town", "SINNOH") if hasattr(g, "music") else None
 _wt = g.music.region_track("wild", "SINNOH") if hasattr(g, "music") else None
 check(not _missing and len(_mj["areas"]) >= 80 and _tt and "town01" in _tt and _wt and _wt.endswith("ba_poke.ogg"),
       f"Sinnoh's own music: {len(_names)} Platinum tracks for {len(_mj['areas'])} places and {len(_mj['rooms'])} rooms, Twinleaf's theme in Twinleaf ({_missing[:3]}, {_tt}, {_wt})")
+
+# ---- S7a (11-24, s_s7_fight_area.py): the Fight Area as Platinum's - Barry drags you to the Frontier gate, a Multi Battle
+#      with him against Flint and Volkner (Platinum's teams), then Buck
+_sv, _team = dict(story.story_flags), list(story.player_team)
+for _k in [k for k in story.story_flags if k.startswith(("fight_area_", "stark_", "r227_", "battleground_"))]:
+    story.story_flags.pop(_k)
+story.story_flags["beat_sinnoh_champion"] = True
+story.player_team = [mk(392)]; story.player_team[0].level = 70
+t = town("FIGHT_AREA", "SNOWPOINT_CITY"); frames(t, 3)
+_fa = {str(o.get("text")): s for s, o in t._people().items()}
+_gate = _fa.get("Flint") == (46, 8) and _fa.get("Volkner") == (47, 8)
+_tag = _drive(t, 3000, lambda: "Battle" in type(g.current_state).__name__)
+_b = g.current_state
+_opts = getattr(_b, "battle_options", None) or {}
+_pt = [getattr(p_, "id", None) for p_ in (getattr(_b, "partner_team", None) or [])]
+_foes = [getattr(p_, "id", None) for p_ in (getattr(_b, "opponent_team", None) or [])]
+from src.states.overworld.common import _region_starter_id as _rsi
+_bc = {"393": 389, "387": 392, "390": 395}.get(str(_rsi(g)), 389)   # (his last: the starter strong against yours)
+_multi = _tag and getattr(_b, "partner_name", None) == "Barry" and str(getattr(_b, "foe2_name", "")) == "Flint" and _pt[-1:] == [_bc] \
+    and _foes == [405, 135, 466, 229, 136, 467]
+story.story_flags["fight_area_tag_won"] = True
+t = town("FIGHT_AREA", "SNOWPOINT_CITY"); frames(t, 3)
+_fa2 = {str(o.get("text")) for o in t._people().values()}
+_after = "Flint" not in _fa2 and "Volkner" not in _fa2 and "Barry" not in _fa2 and "Buck" in _fa2
+check(_gate and _multi and _after,
+      f"Fight Area: Barry leads you to Flint and Volkner at the Frontier gate; a Multi Battle beside him (his ace the starter strong against yours) against Platinum's teams; then Buck ({_gate}, {_tag}, {getattr(_b, 'partner_name', None)}, {getattr(_b, 'foe2_name', None)}, {_pt}, {_foes}, {_after})")
+
+# ---- S7a (11-24, s_s7_stark.py): Route 227 and Stark Mountain as Platinum's - Mars then Jupiter on 1F, Platinum's Strength
+#      boulders, Charon arrested by Looker in Heatran's room; Heatran only once the Battleground's legend is heard
+_sm = _tm["STARK_MOUNTAIN"]["floors"]
+_nb = (len(_sm[1].get("boxes") or []), len(_sm[2].get("boxes") or []))
+_r227 = {str(p_.get("text")) for p_ in _tm["SINNOH_ROUTE_227"]["people"] if isinstance(p_, dict)}
+r = route("STARK_MOUNTAIN", "SINNOH_ROUTE_227")
+story.player_team = [mk(392)]; story.player_team[0].level = 70
+r.run.jump_floor(1, (16, 28)); frames(r, 3)
+_f1 = set(_figs(r))
+_mars = _hq_battle(r, "Mars")
+_mt = [getattr(p_, "id", None) for p_ in (getattr(g.current_state, "opponent_team", None) or [])]
+story.story_flags["stark_mars_beaten"] = True
+r = route("STARK_MOUNTAIN", "SINNOH_ROUTE_227")
+r.run.jump_floor(1, (16, 28)); frames(r, 3)
+_jup = _hq_battle(r, "Jupiter")
+_jt = [getattr(p_, "id", None) for p_ in (getattr(g.current_state, "opponent_team", None) or [])]
+story.story_flags["stark_jupiter_beaten"] = True
+r = route("STARK_MOUNTAIN", "SINNOH_ROUTE_227")
+r.run.jump_floor(1, (16, 28)); frames(r, 3)
+_gone = not ({"Mars", "Jupiter", "Charon"} & set(_figs(r)))
+r.run.jump_floor(3, (5, 14)); frames(r, 3)
+_f3 = set(_figs(r))
+_arrest = _drive(r, 3000, lambda: story.story_flags.get("stark_charon_arrested"))
+_drive(r, 600, lambda: not (r._scene_run and r._scene_run.busy()))
+r = route("STARK_MOUNTAIN", "SINNOH_ROUTE_227")
+r.run.jump_floor(3, (5, 14)); frames(r, 3)
+_f3b = set(_figs(r))
+story.story_flags["battleground_buck_talked"] = story.story_flags["battleground_heard_legend"] = True
+r = route("STARK_MOUNTAIN", "SINNOH_ROUTE_227")
+r.run.jump_floor(3, (5, 14)); frames(r, 3)
+_f3c = set(_figs(r))
+_lv = _tm and __import__("json").load(open("assets/sinnoh_area_data.json", encoding="utf-8"))["STORY_PROGRESSION"]["STARK_MOUNTAIN"]["area_boss"]["level"]
+check(_nb == (7, 3) and {"Crasher Wake", "Barry", "Buck"} <= _r227 and {"Mars", "Charon"} <= _f1 and _mars and _mt == [437, 42, 432]
+      and _jup and _jt == [437, 42, 435] and _gone and {"Charon", "Stranger"} <= _f3 and _arrest and "Charon" not in _f3b
+      and "Face Heatran" not in _f3b and "Face Heatran" in _f3c and _lv == 50,
+      f"Stark Mountain: Platinum's boulders {_nb}; Wake, Barry and Buck on Route 227; Mars then Jupiter on 1F (their teams), gone after; Looker arrests Charon; Heatran (Lv {_lv}) once you've heard the legend ({_r227}, {_f1}, {_mars} {_mt}, {_jup} {_jt}, {_gone}, {_f3}, {_arrest}, {_f3b}, {_f3c})")
+
+# ---- S7a (11-24, s_s7_survival.py, src/world/battleground.py): the Battleground opens after Charon's arrest; four of
+#      Platinum's thirteen stand there each day, each battled once a day with Platinum's rematch team
+from src.world import battleground as _BG
+story.story_flags.pop("stark_charon_arrested", None)
+t = town("SURVIVAL_AREA", "SINNOH_ROUTE_226"); frames(t, 3)
+_locked = (12, 17) in t.barred
+story.story_flags["stark_charon_arrested"] = True
+t = town("SURVIVAL_AREA", "SINNOH_ROUTE_226"); frames(t, 3)
+_open = (12, 17) not in t.barred
+t._go("house_0101", "OUT:12,17"); frames(t, 5)
+_today = _BG.picks()
+_shown = {}
+for _s, _o in t.people.items():
+    for _c in (_o.get("any") or [_o]):
+        if t._shown(_c):
+            _shown[str(_c.get("text"))] = _s
+            break
+_want = {"roark": "Roark", "gardenia": "Gardenia", "maylene": "Maylene", "wake": "Crasher Wake", "fantina": "Fantina", "byron": "Byron",
+         "candice": "Candice", "volkner": "Volkner", "cheryl": "Cheryl", "riley": "Riley", "marley": "Marley", "mira": "Mira", "buck": "Buck"}
+_four = [_want[k] for k in _today]
+_here = all(n in _shown for n in _four) and len([n for n in _shown if n in _want.values()]) == 4 + (1 if "Buck" not in _four else 0)
+_who = _four[0]
+_ts = _shown.get(_who)
+_fought = False
+if _ts:
+    t.player = t.anim_from = (_ts[0], _ts[1] + 1); t.anim = 0; t.facing = (0, -1)
+    t._talk(tuple(_ts)); _fought = _drive(t, 600, lambda: "Battle" in type(g.current_state).__name__)
+_ft = [getattr(p_, "id", None) for p_ in (getattr(g.current_state, "opponent_team", None) or [])]
+_owners = []
+for _s, _o in t.people.items():
+    if _o.get("_partner_of") is not None and t._shown(_o):
+        _lead = t.people.get(_o["_partner_of"]) or {}
+        _now = next((c for c in (_lead.get("any") or [_lead]) if t._shown(c)), {})
+        _owners.append((str(_o.get("text")), str(_now.get("text"))))
+_mons = sorted(_owners)
+_stray = [m for m, o in _owners if o not in _four + ["Buck"]]
+check(_locked and _open and _here and _fought and len(_ft) == 5 and not _stray,
+      f"Survival Area: the Battleground locked till Charon's arrest; inside, today's four ({_four}) at Platinum's spots, {_who} battles with Platinum's rematch team ({_locked}, {_open}, {sorted(_shown)}, {_fought}, {_ft}, their Pokemon {_mons})")
+_days = {tuple(_BG.picks(__import__("datetime").date(2026, 11, d))) for d in range(1, 29)}
+check(len(_days) >= 10 and all(len(p_) == 4 for p_ in _days), f"Battleground: who stands there changes day by day ({len(_days)} different line-ups in 28 days)")
+story.story_flags.clear(); story.story_flags.update(_sv); story.player_team = _team
+
+# ---- S7b (11-24, s_s7_turnback.py, src/world/turnback_cave.py): Turnback Cave as Platinum's - each door picks the next room
+#      as you go (one in four the next pillar room), the door you came by leads out, the room after the third pillar room is
+#      Giratina's; there Giratina if you fought it in the Distortion World and didn't catch it, else the item for the rooms taken
+from src.world import turnback_cave as _TC
+_sv, _iv = dict(story.story_flags), dict(story.inventory)
+for _k in ("turnback", "turnback_giratina_done"):
+    story.story_flags.pop(_k, None)
+story.story_flags["TURNBACK_CAVE_boss_defeated"] = True
+story.inventory["HM_ROCK_SMASH"] = 1
+def _tb_step(r, d):
+    _drive(r, 200, lambda: not (getattr(r, "dialogue_box", None) and r.dialogue_box.visible) and not getattr(r, "_busy", lambda: False)())
+    r.walk_goal = None
+    r.step(*d)
+    _drive(r, 300, lambda: not (getattr(r, "dialogue_box", None) and r.dialogue_box.visible))
+    for _q in range(60):
+        g.current_state.update()
+    return (r.run.index, tuple(r.run.player))
+r = route("TURNBACK_CAVE", "SENDOFF_SPRING")
+r.run.jump_floor(0, (21, 8)); frames(r, 3)
+_in = _tb_step(r, (0, -1))                                  # (the entrance's door: the first room)
+_ww = (r.recipe.get("art") or {}).get("warp_world")
+_seq = []
+_rolls = iter([0.1, 0.9, 0.1, 0.1])                          # (pillar, rock room, pillar, pillar)
+_TC.RNG.random = lambda: next(_rolls, 0.9)
+r.run.player = (11, 2); frames(r, 2)
+_seq.append(_tb_step(r, (0, -1)))                           # (north: pillar room 1, in at its south door)
+_p1 = dict(story.story_flags.get("turnback") or {})
+r.run.player = (19, 11); frames(r, 2)
+_seq.append(_tb_step(r, (1, 0)))                            # (east: a rock room, in at its west door)
+r.run.player = (11, 2); frames(r, 2)
+_seq.append(_tb_step(r, (0, -1)))                           # (pillar 2)
+r.run.player = (11, 2); frames(r, 2)
+_seq.append(_tb_step(r, (0, -1)))                           # (pillar 3)
+r.run.player = (11, 2); frames(r, 2)
+_seq.append(_tb_step(r, (0, -1)))                           # (after the third pillar: Giratina's room)
+_end = dict(story.story_flags.get("turnback") or {})
+_gfig = {str((m.payload or {}).get("text")) for m in r.run.floor.movers if m.kind == "figure"}
+r.run.player = (11, 19); frames(r, 2)
+_back = _tb_step(r, (0, 1))                                 # (out of Giratina's room: back at the entrance)
+_near = lambda a, b: abs(a[0] - b[0]) + abs(a[1] - b[1]) <= 1
+_ok_path = (_in[0] == 1 and [s[0] for s in _seq] == [2, _seq[1][0], 2, 2, 3] and 4 <= _seq[1][0] <= 9
+            and _near(_seq[0][1], (11, 20)) and _near(_seq[1][1], (2, 11)) and _p1.get("pillars") == 1 and _end.get("pillars") == 3
+            and "Giratina" in _gfig and _back[0] == 0)
+# the door you came in by leads straight back out
+_TC.RNG.random = lambda: 0.9
+r = route("TURNBACK_CAVE", "SENDOFF_SPRING")
+r.run.jump_floor(0, (21, 8)); frames(r, 3)
+_tb_step(r, (0, -1))
+r.run.player = (11, 2); frames(r, 2)
+_a = _tb_step(r, (0, -1))
+r.run.player = (11, 19); frames(r, 2)
+_b = _tb_step(r, (0, 1))                                    # (back through the south door you came in by)
+# caught it: an item on the pedestal instead, by the rooms taken
+story.story_flags["turnback_giratina_done"] = True
+r = route("TURNBACK_CAVE", "SENDOFF_SPRING")
+story.story_flags["turnback"] = {"pillars": 3, "rooms": 2, "came": [11, 20]}
+r.run.jump_floor(2, (11, 3)); frames(r, 2)
+r.run.player = (11, 2); frames(r, 2)
+_tb_step(r, (0, -1))
+_ifig = {str((m.payload or {}).get("text")) for m in r.run.floor.movers if m.kind == "figure"}
+_im = next((m for m in r.run.floor.movers if m.kind == "figure" and str((m.payload or {}).get("text")) == "Item"), None)
+_rc = story.inventory.get("REAPER_CLOTH", 0)
+if _im is not None:
+    r.run.player = (_im.x, _im.y + 1); r._use_figure(_im); _drive(r, 300, lambda: not r.dialogue_box.visible)
+    r._use_figure(_im); _drive(r, 300, lambda: not r.dialogue_box.visible)
+_got = story.inventory.get("REAPER_CLOTH", 0) - _rc
+check(_ww == "turnback_cave" and _ok_path and 4 <= _a[0] <= 9 and _b[0] == 0 and r.run.index == 3 and "Item" in _ifig and "Giratina" not in _ifig and _got == 1
+      and _TC.item_for(4) == "RARE_BONE" and _TC.item_for(3) == "REAPER_CLOTH" and _TC.item_for(20) == "STARDUST",
+      f"Turnback Cave: doors pick the next room as Platinum's - three pillar rooms then Giratina's, the way you came leads out; Giratina there, else the item ({_in}, {_seq}, {_p1}, {_end.get('rooms')}, {_gfig}, {_back}, {_a}, {_b}, {r.run.index}, {_ifig}, {_got})")
+import random as _rnd
+_TC.RNG = _rnd.Random()
+story.story_flags.clear(); story.story_flags.update(_sv); story.inventory.clear(); story.inventory.update(_iv)
+
+# ---- S7b (11-24, s_s7_resort.py, src/world/ribbon_syndicate.py; Jordan: "Build it as Platinum"): the Ribbon Syndicate -
+#      members only (ten kinds of Ribbon on your party), the lift to the spa (friendlier, once a day), the shop's Ribbons
+from src.world import ribbon_syndicate as _RS
+_sv, _team, _money = dict(story.story_flags), list(story.player_team), story.money
+story.story_flags.pop("syndicate_spa_day", None)
+_m = mk(25); _m.level = 50; _m.ribbons = []; _m.friendship = 100
+story.player_team = [_m]
+t = town("RESORT_AREA", "SINNOH_ROUTE_229"); frames(t, 3)
+t._go("house_0101", "OUT:24,5"); frames(t, 5)
+_shut = (14, 13) in t.barred
+_m.ribbons = [f"{c}_{r}" for c in ("COOL", "BEAUTY", "CUTE", "SMART", "TOUGH") for r in ("NORMAL", "GREAT")]
+t = town("RESORT_AREA", "SINNOH_ROUTE_229"); frames(t, 3)
+t._go("house_0101", "OUT:24,5"); frames(t, 5)
+_in = (14, 13) not in t.barred and _RS.condition(story, "member")
+_lift = "syndicate_lift" in t.town_map["rooms"] and t.town_map["rooms"]["syndicate_lift"].get("dynamic_exit", {}).get("rooms") == ["house_0101", "house_0102"]
+t._go("house_0102", "ROOM:syndicate_lift"); frames(t, 5)
+_spa = next((s for s, o in t.people.items() if str(o.get("text")) == "Spa attendant"), None)
+_f0 = _m.friendship
+if _spa:
+    t.player = t.anim_from = (_spa[0], _spa[1] + 1); t.anim = 0; t.facing = (0, -1)
+    t._talk(tuple(_spa)); _drive(t, 300, lambda: not getattr(t, "npc_active", False))
+_f1 = story.player_team[0].friendship
+if _spa:
+    t._talk(tuple(_spa)); _drive(t, 300, lambda: not getattr(t, "npc_active", False))
+_f2 = story.player_team[0].friendship
+story.money = 20000
+_lines = []
+_RS.event(t, {"buy": "GORGEOUS"}, [], lambda l: _lines.extend(l))
+_RS.event(t, {"buy": "ROYAL"}, [], lambda l: _lines.extend(l))
+_bought = "GORGEOUS" in story.player_team[0].ribbons and "ROYAL" not in story.player_team[0].ribbons and story.money == 10000
+from src.pokemon.contest import ribbon_label as _rl
+check(_shut and _in and _lift and _spa and _f1 > _f0 and _f2 == _f1 and _bought and _rl("GORGEOUS_ROYAL") == "Gorgeous Royal Ribbon",
+      f"Ribbon Syndicate: members only (ten kinds of Ribbon), the lift to the spa, its treatment once a day, the shop's Ribbons ({_shut}, {_in}, {_lift}, {_spa}, {_f0}->{_f1}->{_f2}, {_bought}, {_lines[-1:]})")
+story.player_team = _team; story.money = _money
+
+# ---- S7b (11-24, s_s7_rotom.py, src/world/rotom_room.py): Rotom's room behind 1F of the Galactic Eterna Building, open once
+#      you're Champion; its five appliances change a Rotom's form, and the same one brings it back
+_r = mk(479); _r.level = 40
+story.player_team = [_r]
+story.story_flags.pop("beat_sinnoh_champion", None)
+r = route("ETERNA_GALACTIC_BUILDING", "ETERNA_CITY")
+story.player_team = [_r]
+r.run.jump_floor(0, (2, 3)); frames(r, 3)
+_lock = str(r.run.floor.decor.get((2, 2), "")).startswith("barrier:")
+story.story_flags["beat_sinnoh_champion"] = True
+r = route("ETERNA_GALACTIC_BUILDING", "ETERNA_CITY")
+story.player_team = [_r]
+r.run.jump_floor(0, (2, 3)); frames(r, 3)
+_open = not str(r.run.floor.decor.get((2, 2), "")).startswith("barrier:")
+r.run.jump_floor(4, (7, 10)); frames(r, 3)
+_ap = {str((m.payload or {}).get("text")): m for m in r.run.floor.movers if m.kind == "figure"}
+_wm = _ap.get("Washing machine")
+if _wm is not None:
+    r.run.player = (_wm.x, _wm.y + 1); r._use_figure(_wm); _drive(r, 300, lambda: not r.dialogue_box.visible)
+_wash = story._pokemon_record(story.player_team[0]).get("form")
+_mv = list(getattr(story.player_team[0], "moves", []) or [])
+if _wm is not None:
+    _wm2 = next((m for m in r.run.floor.movers if m.kind == "figure" and str((m.payload or {}).get("text")) == "Washing machine"), _wm)
+    r._use_figure(_wm2); _drive(r, 300, lambda: not r.dialogue_box.visible)
+_back = story._pokemon_record(story.player_team[0]).get("form")
+check(_lock and _open and len(_ap) == 5 and _wash == "wash" and "HYDRO-PUMP" in _mv and _back == "normal",
+      f"Rotom's room: shut till you're Champion, then five appliances; the washer makes Rotom Wash Rotom (Hydro Pump), again brings it back ({_lock}, {_open}, {sorted(_ap)}, {_wash}, {_mv}, {_back})")
+story.player_team = _team
+
+story.story_flags.clear(); story.story_flags.update(_sv)
+
+# ---- S8 (11-24, s_s8_canalave_dream.py): the sailor's son in Canalave - his nightmare after the title, the Lunar Wing wakes him
+_sv, _iv, _team = dict(story.story_flags), dict(story.inventory), list(story.player_team)
+for _k in ("canalave_dream_seen", "canalave_dream_woke"):
+    story.story_flags.pop(_k, None)
+story.story_flags["beat_sinnoh_champion"] = True
+story.inventory.pop("LUNAR_WING", None)
+t = town("CANALAVE_CITY", "SINNOH_ROUTE_218"); frames(t, 3)
+t._go("house_0501", "OUT:7,44"); frames(t, 3)
+def _boy(t):
+    return next((s for s, o in t.people.items() if any(str(c.get("text")) == "Little boy" for c in (o.get("any") or [o]))), None)
+_b = _boy(t)
+if _b:
+    t.player = t.anim_from = (_b[0], _b[1] + 1); t.anim = 0; t.facing = (0, -1)
+    t._talk(tuple(_b)); _drive(t, 300, lambda: not getattr(t, "npc_active", False))
+_seen = bool(story.story_flags.get("canalave_dream_seen"))
+story.inventory["LUNAR_WING"] = 1
+t = town("CANALAVE_CITY", "SINNOH_ROUTE_218"); frames(t, 3)
+t._go("house_0501", "OUT:7,44"); frames(t, 3)
+_b = _boy(t)
+if _b:
+    t.player = t.anim_from = (_b[0], _b[1] + 1); t.anim = 0; t.facing = (0, -1)
+    t._talk(tuple(_b)); _drive(t, 300, lambda: not getattr(t, "npc_active", False))
+check(_b is not None and _seen and story.story_flags.get("canalave_dream_woke"),
+      f"Canalave: the sailor's son is caught in a nightmare after the title; seeing him opens the Fullmoon boat, the Lunar Wing wakes him ({_b}, {_seen}, {story.story_flags.get('canalave_dream_woke')})")
+story.story_flags.clear(); story.story_flags.update(_sv); story.inventory.clear(); story.inventory.update(_iv)
+
+# ---- S8 (11-24, s_s8_amity.py): Amity Square walked - Platinum's pads take you hut to hut, its four item balls, the tidy man
+_pk = mk(25); _pk.level = 30
+story.player_team = [_pk]
+t = town("HEARTHOME_CITY", "SINNOH_ROUTE_208"); frames(t, 3)
+t._go("amity", "OUT:10,11"); frames(t, 3)
+t.player = t.anim_from = (3, 3); t.anim = 0; t.walk_goal = None
+t.step(0, -1)
+_drive(t, 200, lambda: getattr(g.current_state, "room", None) == "amity_square")
+t = g.current_state
+_in = getattr(t, "room", None) == "amity_square"
+_items = sorted(str(o.get("text")) for o in t.people.values() if (o.get("event") or {}).get("gift_item"))
+t.player = t.anim_from = (17, 16); t.anim = 0; t.walk_goal = None
+t.step(0, 1)   # (onto the pad at (17,17): to the hut at (35,15))
+_drive(t, 600, lambda: tuple(getattr(g.current_state, "player", (0, 0))) == (35, 16))
+_pad = tuple(getattr(g.current_state, "player", (0, 0)))
+check(_in and len(_items) == 4 and _pad == (35, 16),
+      f"Amity Square: in with a Pikachu leading, Platinum's four item balls, a pad takes you from one hut to another ({_in}, {_items}, {_pad})")
+story.player_team = _team
+
+# ---- S8 (11-25, s_s8_gifts.py, src/world/sinnoh_gifts.py): Platinum's givers - Jasmine's Waterfall after the Beacon Badge (not
+#      the badge itself), Julia's Ribbon of the day, the Footprint Ribbon, the Route 221 number man, Rowan's TM27 Return
+from src.world import sinnoh_gifts as _SGf, hms as _hm
+_sv, _iv, _team, _bv = dict(story.story_flags), dict(story.inventory), list(story.player_team), list(story.badges.get("SINNOH", []))
+def _talk_to(t, name):
+    _s = next((s for s, o in t.people.items() if any(str(c.get("text")) == name and t._shown(c) for c in (o.get("any") or [o]))), None)
+    if _s:
+        t.player = t.anim_from = (_s[0], _s[1] + 1); t.anim = 0; t.facing = (0, -1)
+        t._talk(tuple(_s)); _drive(t, 400, lambda: not getattr(t, "npc_active", False))
+    return _s
+_nobadge = "HM_WATERFALL" not in (_hm.HM_BY_BADGE.get("SINNOH") or {}).values()
+story.inventory.pop("HM_WATERFALL", None)
+story.badges["SINNOH"] = ["COAL", "FOREST", "COBBLE", "FEN", "RELIC", "MINE", "ICICLE"]
+t = town("SUNYSHORE_CITY", "SINNOH_ROUTE_222"); frames(t, 3)
+_talk_to(t, "Jasmine")
+_before = story.inventory.get("HM_WATERFALL", 0)
+story.badges["SINNOH"] = ["COAL", "FOREST", "COBBLE", "FEN", "RELIC", "MINE", "ICICLE", "BEACON"]
+t = town("SUNYSHORE_CITY", "SINNOH_ROUTE_222"); frames(t, 3)
+_js = _talk_to(t, "Jasmine")
+_after = story.inventory.get("HM_WATERFALL", 0)
+_m = mk(25); _m.level = 30; _m.ribbons = []; _m.friendship = 255
+story.player_team = [_m]
+story.story_flags.pop("sinnoh_julia_day", None)
+t = town("SUNYSHORE_CITY", "SINNOH_ROUTE_222"); frames(t, 3)
+t._go("house_0201", "OUT:0,0"); frames(t, 3)
+_talk_to(t, "Julia")
+_rib = list(_m.ribbons)
+_lines = []
+class _St:
+    game = g
+_SGf.event(_St(), {"footstep": True}, [], lambda l: _lines.extend(l))
+_foot = "FOOTPRINT" in _m.ribbons
+_m.level = _SGf.todays_level()
+story.story_flags.pop("sinnoh_route221_level_day", None)
+_belts_before = sum(story.inventory.get(b, 0) for b in _SGf.BELTS)
+_SGf.event(_St(), {"level_man": True}, [], lambda l: _lines.extend(l))
+_belt = sum(story.inventory.get(b, 0) for b in _SGf.BELTS) - _belts_before
+story.story_flags["received_pokedex_sinnoh"] = True
+story.story_flags.pop("got_tm274_sandgem", None)
+t = town("SANDGEM_TOWN", "SINNOH_ROUTE_201"); frames(t, 3)
+t._go("lab", "OUT:0,0"); frames(t, 3)
+_dr = next((x, y) for y, row in enumerate(t.town_map["rooms"]["lab"]["art"]) for x, c in enumerate(row) if c == "v")
+t.player = t.anim_from = (_dr[0], _dr[1] - 3); t.anim = 0; t.walk_goal = None
+t.step(0, 1)   # (heading for the door: Rowan comes over)
+_drive(t, 1500, lambda: story.inventory.get("TM274", 0) > 0 and not t.scenes.busy())
+_tm = story.inventory.get("TM274", 0)
+check(_nobadge and _before == 0 and _js and _after == 1 and len(_rib) == 1 and _foot and _belt == 1 and _tm == 1,
+      f"Platinum's givers: Jasmine's Waterfall only after the Beacon Badge, Julia's Ribbon of the day, the Footprint Ribbon, the Route 221 number man's belt, Rowan's TM27 ({_nobadge}, {_before}->{_after}, {_rib}, {_foot}, {_belt}, {_tm})")
+story.story_flags.clear(); story.story_flags.update(_sv); story.inventory.clear(); story.inventory.update(_iv)
+story.player_team = _team; story.badges["SINNOH"] = _bv
+
+# ---- S8 (11-25, every mechanic once): the Great Marsh's Safari Game as Platinum's - 30 Safari Balls and 500 steps a visit, a
+#      step counts down, no battling (catching only), out of steps you're back in Pastoria; the Day Care's own counter in Solaceon
+_sv = dict(story.story_flags)
+r = route("GREAT_MARSH", "PASTORIA_CITY")
+frames(r, 30)
+_drive(r, 300, lambda: not (getattr(r, "dialogue_box", None) and r.dialogue_box.visible))
+_sf = dict(getattr(r, "safari", None) or {})
+r.run.floor.movers = [m for m in r.run.floor.movers if m.kind != "wild"]
+_x, _y = r.run.player
+_mv = next(((dx, dy) for dx, dy in ((0, -1), (1, 0), (-1, 0), (0, 1)) if r.run.floor.walkable(_x + dx, _y + dy)), (0, -1))
+r.anim = 0; r.walk_goal = None
+r.step(*_mv); frames(r, 12)
+_step = dict(getattr(r, "safari", None) or {}).get("steps")
+r.encounter = None
+r._pick(1)
+_nobattle = r.mode != "BATTLE"
+r.safari["steps"] = 0
+_drive(r, 900, lambda: story.current_area_key == "PASTORIA_CITY")
+check(_sf.get("balls") == 30 and _sf.get("steps") == 500 and _step == 499 and _nobattle and story.current_area_key == "PASTORIA_CITY",
+      f"Great Marsh: the Safari Game - 30 Safari Balls and 500 steps, a step counts down, catching only, out of steps back in Pastoria ({_sf}, {_step}, {_nobattle}, {story.current_area_key})")
+_dc = __import__("json").load(open("assets/town_maps.json", encoding="utf-8"))["SOLACEON_TOWN"]["rooms"]["daycare"]["people"]
+_opts = {o.get("text"): o for o in _area["SOLACEON_TOWN"].get("explore_options", [])}
+check(any(isinstance(p, str) and (_opts.get(p) or {}).get("action") == "DAYCARE" for p in _dc),
+      f"Solaceon: the Day Care's counter inside its house runs the Day Care ({_dc})")
+story.story_flags.clear(); story.story_flags.update(_sv)
+
+# ---- S8 (11-25, Jordan: "Build sunny shore market"; s_s8_market.py): Sunyshore Market walked in from its door, the lady's
+#      Effort Ribbon for a Pokemon at 510 effort points; the Solaceon Ruins' last room holds a Rare Candy
+_sv, _team = dict(story.story_flags), list(story.player_team)
+_ef = mk(25); _ef.level = 50; _ef.ribbons = []; _ef.evs = {"HP": 252, "ATTACK": 252, "SPEED": 6}
+story.player_team = [_ef]
+t = town("SUNYSHORE_CITY", "SINNOH_ROUTE_222"); frames(t, 3)
+t.player = t.anim_from = (17, 27); t.anim = 0; t.walk_goal = None; t.facing = (0, -1)
+t.step(0, -1)
+_drive(t, 200, lambda: getattr(g.current_state, "room", None) == "market")
+t = g.current_state
+_inm = getattr(t, "room", None) == "market"
+_lady = next((s for s, o in t.people.items() if str(o.get("text")) == "Kind lady"), None)
+if _lady:
+    t.player = t.anim_from = (_lady[0] + 1, _lady[1]); t.anim = 0; t.facing = (-1, 0)
+    t._talk(tuple(_lady)); _drive(t, 300, lambda: not getattr(t, "npc_active", False))
+r = route("SOLACEON_RUINS", "SOLACEON_TOWN")
+r.run.jump_floor(6, (5, 4)); frames(r, 3)
+_rc = {str((m.payload or {}).get("text")) for m in r.run.floor.movers if m.kind == "figure"}
+check(_inm and _lady and "EFFORT" in _ef.ribbons and "RARE CANDY" in _rc,
+      f"Sunyshore Market walked in from its door, the Effort Ribbon for a hard-worked Pokemon; a Rare Candy in the Solaceon Ruins' last room ({_inm}, {_lady}, {_ef.ribbons}, {sorted(_rc)})")
+story.story_flags.clear(); story.story_flags.update(_sv); story.player_team = _team
 
 g.walk_towns = False
 print(f"##### {fails} failures")

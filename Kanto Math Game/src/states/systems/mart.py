@@ -520,6 +520,11 @@ class PokeMartState(GameState):
                 self._show([f"You can't carry more than {story.MAX_ITEMS} of those!"])
                 return
             story.money -= total
+            from src.world import feats as _feats
+            _feats.note(story, "purchases")   # (Black 2's shopping Medals, 11-25: purchases and money spent)
+            _feats.note(story, "spent", int(total))
+            if item == "POKE_BALLS" and qty >= 2:
+                _feats.note(story, "premier")
             if self.game.assets.heal_sfx:
                 self.game.assets.heal_sfx.play()
             lines = [f"You bought {self._name(item, qty)} for ${total:,}!", f"You have ${story.money:,} left."]

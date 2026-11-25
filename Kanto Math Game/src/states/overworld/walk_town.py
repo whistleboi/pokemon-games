@@ -426,17 +426,23 @@ class WalkTownState(TownWalkUps, CityState):
         for home, opt in list(self.people.items()):
             if not isinstance(opt, dict) or opt.get("_partner_of") is not None:
                 continue
-            text = opt.get("text") or next((o.get("text") for o in opt.get("any") or [] if isinstance(o, dict)), None)
+            who = opt
+            if opt.get("any"):   # (a spot several people share by the story or the day: the one standing there now - Platinum's
+                now = next((o for o in opt["any"] if isinstance(o, dict) and self._shown(o)), None)   # Battleground, Sinnoh 11-24 -
+                if now is not None:                                                                  # with any of their own options
+                    who = {"any": [o for o in opt["any"] if isinstance(o, dict) and o.get("text") == now.get("text")]}   # that battles)
+            text = who.get("text") or next((o.get("text") for o in who.get("any") or [] if isinstance(o, dict)), None)
             if not text or str(text).strip() in followed:
                 continue
-            got = partners.partner_for(self.game, self.area_data, opt)
+            got = partners.partner_for(self.game, self.area_data, who)
             if not got:
                 continue
             species, owner = got
             _free = lambda t: (0 <= t[0] < self.w and 0 <= t[1] < self.h and self.rows[t[1]][t[0]] == "."
                                and grid[t[1]][t[0]] not in "_()" and t not in taken and t not in self.people)
             _me = getattr(self, "player", None)
-            spot = partners.pick_spot(home, _free, _me)   # (always: never the owner's last open side - after a battle the room is
+            _ground = lambda t: (0 <= t[0] < self.w and 0 <= t[1] < self.h and (self.rows[t[1]][t[0]] == "." or t in self.exits))
+            spot = partners.pick_spot(home, _free, _me, _ground)   # (always: never the owner's last open side - after a battle the room is
                                                           #  rebuilt before you're placed, and Erika's Vileplume took her one side; Kanto 11-24)
             if spot is None:
                 continue
@@ -1402,6 +1408,8 @@ class WalkTownState(TownWalkUps, CityState):
         story.last_center = story.current_area_key
         for p in story.player_team:
             p.heal_full()
+        from src.world import feats as _feats
+        _feats.note(story, "heals")   # (a rest at a Center: Black 2's Pokemon Center Fan Medal, 11-25)
         if hasattr(self.game, "music"):
             self.game.music.jingle("pokemon_healed")
         self.show_message(["Welcome to the Pokémon Center!", "We've restored your team to full health."])
@@ -2947,6 +2955,57 @@ class WalkTownState(TownWalkUps, CityState):
                 out[((int(x), int(y)), way)] = (to, (int(c[1]), int(c[2])))
         return out
 
+    def _guide_rides(self, room):
+        """({tile: [(condition, landing)]}, {tile: flag}) for a room's rides and switches told as its scenes: step on the tile and
+        "you" are carried to the path's end (Nimbasa's roller coaster cars, each by its switch flag); a switch scene runs an
+        event that flips a flag ({"toggle": flag}). Unova's card, 11-24: the marker found no way to the coaster's back room."""
+        rooms = self.town_map.get("rooms") or {}
+        m = rooms.get(room) if room else self.town_map
+        rides, switches = {}, {}
+        from src.world import story_events
+        for sc in (m or {}).get("scenes") or []:
+            trig = sc.get("trigger") if isinstance(sc, dict) else None
+            z = (trig.get("zone") if isinstance(trig, dict) else None) or []
+            if len(z) != 4 or z[0] != z[2] or z[1] != z[3] or not sc.get("every"):
+                continue
+            tile = (int(z[0]), int(z[1]))
+            you = next((c["you"] for c in sc.get("cast") or [] if isinstance(c, dict) and c.get("you")), None)
+            if you:
+                rides.setdefault(tile, []).append((sc.get("condition") or [], tuple(you[-1])))
+            then = str(sc.get("then") or "")
+            if then.startswith("event:"):
+                ev = story_events.EVENTS.get(then[6:]) or {}
+                if ev.get("toggle"):
+                    switches[tile] = ev["toggle"]
+        return rides, switches
+
+    def _guide_lifts(self, room):
+        """{tile: [[floor label, room, x, y], ...]} for a room's lift panels (a sign whose event is {"lift": [...]}: Driftveil
+        Gym's mine lift, the Luxury Suites', Castelia's towers). Unova's card, 11-24: the marker saw no way through them."""
+        rooms = self.town_map.get("rooms") or {}
+        m = rooms.get(room) if room else self.town_map
+        from src.world import guide
+        out = {}
+        for k, e in ((m or {}).get("sign_events") or {}).items():
+            ev = ((e or {}).get("event") or {}) if isinstance(e, dict) else {}
+            lift = ev.get("lift")
+            if lift and ev.get("requires") and not guide._ok(self.game.story_manager, ev["requires"]):
+                continue   # (a lift that won't take you yet: the League statue's, till the Elite Four are beaten - 11-25)
+            if lift:
+                out[tuple(int(v) for v in k.split(","))] = [f for f in lift if f[1] != room and f[1] in rooms]
+        return out
+
+    def _ride_ok(self, cond, tog):
+        """A ride's condition as the flags stand with the switches in tog flipped."""
+        flags = self.game.story_manager.story_flags
+        for c in (cond if isinstance(cond, (list, tuple)) else [cond]):
+            c = str(c)
+            neg = c.startswith("not:")
+            f = c[4:] if neg else c
+            if (bool(flags.get(f)) ^ (f in tog)) == neg:
+                return False
+        return True
+
     def _guide_passages(self, room):
         """[(tile, the room it leads to (None: outside), what kind)] for a room's doors, mats, stairs, pads and cocoons."""
         part, out = self._guide_part(room), []
@@ -2974,6 +3033,8 @@ class WalkTownState(TownWalkUps, CityState):
         for t, (to, _x, _y) in part["pads"].items():
             if to in rooms:
                 out.append((t, to, "pad"))
+        for t, floors in self._guide_lifts(room).items():   # (a lift panel: every floor it serves)
+            out += [(t, f[1], "lift") for f in floors]
         return out
 
     def _guide_rooms(self):
@@ -3081,7 +3142,7 @@ class WalkTownState(TownWalkUps, CityState):
                 good.add((None, t))
         return good or tiles
 
-    def _guide_walk(self, goals):
+    def _guide_walk(self, goals, tog=frozenset(), frm=None):
         """The shortest walk from where you stand to one of goals ({(room, tile)}), over this place's rooms: through
         doors, mats, stairs and pads, round whoever and whatever stands in the way now. -> (the goal reached, the first
         door / mat / stairs / pad on the way and its kind, or None when the goal is in this room), or None: no way."""
@@ -3158,7 +3219,11 @@ class WalkTownState(TownWalkUps, CityState):
         from src.dungeon.art import LEDGES as _LEDGES
         _coc = {}
         cocoons = lambda room: _coc[room] if room in _coc else _coc.setdefault(room, self._guide_cocoons(room))
-        start = (here, tuple(self.player))
+        _rid = {}
+        rides = lambda room: _rid[room] if room in _rid else _rid.setdefault(room, self._guide_rides(room)[0])
+        _lif = {}
+        lifts = lambda room: _lif[room] if room in _lif else _lif.setdefault(room, self._guide_lifts(room))
+        start = frm or (here, tuple(self.player))   # (frm: walked on from a switch just pressed - the coaster's cars go one way)
         prev, q = {start: None}, deque([start])
         found = None
         while q and found is None:
@@ -3185,6 +3250,23 @@ class WalkTownState(TownWalkUps, CityState):
                     if coc not in prev:
                         prev[coc] = (cur, (n, "cocoon"))
                         q.append(coc)
+                    continue
+                _rd = rides(room).get(n)   # (onto a ride's tile: it carries you to its landing, as its switch stands - Nimbasa's coaster)
+                if _rd:
+                    _land = next((l for c, l in _rd if self._ride_ok(c, tog)), None)
+                    if _land is not None:
+                        dest = (room, _land)
+                        if dest not in prev:
+                            prev[dest] = (cur, (n, "car"))
+                            q.append(dest)
+                        continue
+                _lf = lifts(room).get(n)   # (a lift panel: read it and pick a floor - Driftveil Gym's mine lift, 11-24)
+                if _lf is not None:
+                    for f in _lf:
+                        dest = (f[1], (int(f[2]), int(f[3])))
+                        if dest not in prev:
+                            prev[dest] = (cur, (n, "lift", f))
+                            q.append(dest)
                     continue
                 on = beyond(room, n)
                 if on is not None:
@@ -3243,14 +3325,34 @@ class WalkTownState(TownWalkUps, CityState):
         goals = {(r, live(tuple(t)) if r == here else tuple(t)) for r, t in goals}
         px, py = self.player
         near = lambda t: (abs(t[0] - px) + abs(t[1] - py), t)
-        names = {"out": "Way out", "stairs": "Stairs", "pad": "Warp", "door": "Here", "cocoon": "Cocoon"}
+        names = {"out": "Way out", "stairs": "Stairs", "pad": "Warp", "door": "Here", "cocoon": "Cocoon", "car": "Ride", "lift": "Lift"}
         if (here, tuple(self.player)) in goals:
             return (tuple(self.player), label)
         hit = self._guide_walk(goals)
+        if not hit:   # (no way as the switches stand: the switch, or two, whose flip opens one - Nimbasa's coaster, 11-24)
+            sw = {}
+            for r in [here] + [r for r in (self.town_map.get("rooms") or {}) if r != here]:
+                for t, f in self._guide_rides(r)[1].items():
+                    sw.setdefault(f, (r, t))
+            if sw:   # (a search over the switches' states and where you stand: each switch you can reach from there, as they
+                from collections import deque as _dq   #  stand, flips one flag and leaves you on it; the first switch on the
+                first_of, q2 = {(frozenset(), None): None}, _dq([(frozenset(), None)])   #  shortest run of presses that opens a way)
+                while q2 and len(first_of) < 400:
+                    T, at = q2.popleft()
+                    if T and self._guide_walk(goals, T, at):
+                        return self._guide_toward({sw[first_of[(T, at)]]}, "Switch")
+                    for f, spot in sw.items():
+                        S2 = (T ^ {f}, spot)
+                        if S2 not in first_of and spot != at and self._guide_walk({spot}, T, at):
+                            first_of[S2] = first_of[(T, at)] or f
+                            q2.append(S2)
         if hit:
             (room, tile), first = hit
             if first is None:
                 return (tile, label)
+            if first[1] == "lift":   # (the floor to pick: the runner's panel reads it, as a dungeon lift's - _lift_plan)
+                self._lift_plan = first[2]
+                return (first[0], "Lift to " + str(first[2][0]))
             if first[0] == tuple(self.player):   # (you're standing on the pad to take: step off it, then back on)
                 off = next(((px + dx, py + dy) for dx, dy in DIRS if self._open((px + dx, py + dy)) and (px + dx, py + dy) not in self.exits
                             and (px + dx, py + dy) not in getattr(self, "links", {})), None)

@@ -399,6 +399,17 @@ for _area, _m in _all.items():
         _near = lambda T, S: any((T[0] + dx, T[1] + dy) in S for dx, dy in _N)
         _lost += [(_area, _rn, k, e) for k, es in (("exit", t.exits), ("door", t.doors), ("person", t.people)) for e in es if _near(e, _b) and not _near(e, _a)]
 check(not _lost, f"blocking the drops cuts nobody and no way out off ({_lost[:4]})")
+t = place("MARVELOUS_BRIDGE")
+if t._live():   # (11-24: the towers' steel over the deck read as drops and cut the middle span off; each end still reached its own way out)
+    _seen, _todo = {(14, 32)}, [(14, 32)]
+    while _todo:
+        _x, _y = _todo.pop()
+        for _dx, _dy in ((0, 1), (0, -1), (1, 0), (-1, 0)):
+            _q = (_x + _dx, _y + _dy)
+            if _q not in _seen and t._open(_q) and _q not in t.doors and not t._level_edge((_x, _y), _q):
+                _seen.add(_q); _todo.append(_q)
+    check(any((161 + _dx, 31 + _dy) in _seen for _dx, _dy in ((0, 1), (-1, 0), (1, 0))) and (112, 32) in _seen,
+          "Marvelous Bridge: across the whole deck from Route 16's gate to the Bridge Gate, under the towers (live 3D)")
 t = place("ASPERTIA_CITY", None, (3, 8))
 check(any(t._open(q) for q in ((4, 6),)) and not t._level_edge((10, 21), (11, 21)), "Aspertia: the way up to the Outlook (and Bianca) stays open")
 

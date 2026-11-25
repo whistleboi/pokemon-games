@@ -136,6 +136,7 @@ class MusicManager:
         self.jingle_channel = None  # a fanfare playing over the paused music
         self.pending = None   # what to play once the victory jingle ends
         self.hof_until = 0    # (after a Champion win the Hall of Fame theme holds off the area music till then)
+        self.layers = []      # [(channel, sound, flag)]: a track's extra parts playing in step with it (layered())
 
     def tracks(self, kind, region=None):
         files = getattr(self.game.assets, "sound_map", {})
@@ -186,6 +187,8 @@ class MusicManager:
                     name = next(iter(name.values()), None)
         else:
             name = (table.get("kinds") or {}).get(kind)
+            if kind == "victory" and self.kind == "wild":   # (after a wild battle its own fanfare, where the region has one: B2W2's WIN2)
+                name = (table.get("kinds") or {}).get("victory_wild") or name
         path = os.path.join(getattr(self.game.assets, "assets_dir", "") or "", "music", str(region).lower(), f"{name}.ogg") if name else None
         return path if path and os.path.isfile(path) else None
 
@@ -228,6 +231,7 @@ class MusicManager:
         if not pygame.mixer.get_init() or not os.path.isfile(path) or (path == self.path and pygame.mixer.music.get_busy()):
             return
         try:
+            self._layers_stop()
             pygame.mixer.music.load(path)
             pygame.mixer.music.set_volume(music_volume())
             pygame.mixer.music.play(-1 if loop else 0)
@@ -261,14 +265,53 @@ class MusicManager:
                 return
             path = os.path.join(self.game.assets.sounds_dir, random.choice(choices))
         try:
+            self._layers_stop()
             pygame.mixer.music.load(path)
             pygame.mixer.music.set_volume(music_volume())
             pygame.mixer.music.play(0 if kind == "victory" else -1)
             pygame.mixer.music.set_endevent(self._end_event())
             self.kind = kind
             self.path = path
+            self._layers_start(region, path)
         except Exception as e:
             print(f"Music: couldn't play {path}: {e}")
+
+    # ---- layered tracks (11-25, Unova's Village Bridge: Black 2 adds a musician's instruments to the place's music as you
+    # meet each one). music.json "layers": {"<base track>": [{"file": "<part track>", "flag": "<story flag>"}, ...]}: the
+    # base plays as usual; each part (the same length, rendered from the same sequence: kanto_handoff/unova_map_tools/
+    # music.py LAYERS) loops on a channel of its own, started with it, heard once its flag is set.
+    LAYER_CHANNELS = (14, 15, 13, 12, 11, 10)
+
+    def _layers_start(self, region, path):
+        table = self.region_table(region) if region else {}
+        parts = (table.get("layers") or {}).get(os.path.splitext(os.path.basename(path))[0]) if table else None
+        if not parts:
+            return
+        if pygame.mixer.get_num_channels() < max(self.LAYER_CHANNELS) + 1:
+            pygame.mixer.set_num_channels(max(self.LAYER_CHANNELS) + 1)
+        folder = os.path.dirname(path)
+        for ch_id, part in zip(self.LAYER_CHANNELS, parts):
+            f = os.path.join(folder, str(part.get("file")) + ".ogg")
+            if not os.path.isfile(f):
+                continue
+            try:
+                snd = pygame.mixer.Sound(f)
+                ch = pygame.mixer.Channel(ch_id)
+                ch.play(snd, loops=-1)
+                self.layers.append((ch, snd, part.get("flag")))
+            except Exception as e:
+                print(f"Music: couldn't play the part {f}: {e}")
+        self._layers_volume()
+
+    def _layers_volume(self):
+        flags = getattr(getattr(self.game, "story_manager", None), "story_flags", {}) or {}
+        for ch, _snd, flag in self.layers:
+            ch.set_volume(music_volume() if (not flag or flags.get(flag)) else 0.0)
+
+    def _layers_stop(self):
+        for ch, _snd, _flag in self.layers:
+            ch.stop()
+        self.layers = []
 
     # ---- jingles
     def cue(self, text):
@@ -292,6 +335,8 @@ class MusicManager:
         if self.jingle_channel and self.jingle_channel.get_busy():
             self.jingle_channel.stop()
         pygame.mixer.music.pause()
+        for ch, _snd, _flag in self.layers:
+            ch.pause()
         sound.set_volume(music_volume())
         self.jingle_channel = sound.play()
 
@@ -311,7 +356,11 @@ class MusicManager:
         if self.jingle_channel is not None and not self.jingle_channel.get_busy():
             self.jingle_channel = None
             pygame.mixer.music.unpause()
+            for ch, _snd, _flag in self.layers:
+                ch.unpause()
         self._place_tick = getattr(self, "_place_tick", 0) + 1
+        if self.layers and self._place_tick % 10 == 0:
+            self._layers_volume()   # (a musician met: their part comes in)
         if self.kind in ("town", "route") and self._place_tick % 20 == 0 and self.jingle_channel is None:
             try:   # (a region with its own soundtrack: in or out of a room, or a new season, changes the track)
                 region = self.game.story_manager.get_current_region()
@@ -338,6 +387,38 @@ class MusicManager:
             return "enc_female"
         return "enc_male"
 
+    def _region_own(self, battle, what):
+        """The region's own track for this battle ("<region>/<track>"), from its music.json: "legends" {dex number: track}
+        for a wild Pokemon; "trainers" {exact trainer name: track}, then kinds "rival" / "champion" for a trainer battle;
+        "eyes" {trainer class: track} for the 'eyes meet' moment. None when the region has none (11-25, Unova)."""
+        if battle is None:
+            return None
+        try:
+            region = self.game.story_manager.get_current_region()
+        except Exception:
+            return None
+        table = self.region_table(region) if region else {}
+        if not table or not table.get(what) and what != "trainers":
+            return None
+        name = None
+        if what == "legends":
+            mons = [p for p in (getattr(battle, "opponent_team", None) or []) if p is not None]
+            pid = getattr(mons[0], "id", None) if mons else None
+            name = (table.get("legends") or {}).get(str(pid)) if pid is not None else None
+        elif what == "eyes":
+            name = (table.get("eyes") or {}).get(class_key(getattr(battle, "trainer_class", "")))
+        else:
+            kinds = table.get("kinds") or {}
+            name = (table.get("trainers") or {}).get(str(getattr(battle, "trainer_name", "") or ""))
+            if not name and self.encounter_kind(battle) == "enc_rival":
+                name = kinds.get("rival")
+            if not name and getattr(battle, "trainer_class", "") == "CHAMPION":
+                name = kinds.get("champion")
+        if not name:
+            return None
+        path = os.path.join(getattr(self.game.assets, "assets_dir", "") or "", "music", str(region).lower(), f"{name}.ogg")
+        return f"{str(region).lower()}/{name}" if os.path.isfile(path) else None
+
     def _was_kanto(self):
         """True while a Kanto area theme plays (leaving it for another kind of place changes it)."""
         return bool(self.path) and os.sep + "kanto" + os.sep in self.path
@@ -360,6 +441,9 @@ class MusicManager:
         from src.states.overworld import CityState, PlayState, GymLobbyState
         from src.states.menus import MainMenuState
         if isinstance(state, WildBattleState):
+            own = self._region_own(state, "legends")
+            if own:   # (a legend's own battle theme: the region's music.json "legends" {dex number: track}; Unova 11-25)
+                return self.play_file(own)
             kind = "gym" if getattr(state, "is_boss_battle", False) else "wild"
         elif type(state).__name__ == "TrainerIntroState" and self._orre() and isinstance(getattr(state, "next_state", None), TrainerBattleState):
             return self.for_state(state.next_state)   # (Orre: XD has no "eyes meet" themes; the battle's own track starts)
@@ -367,6 +451,9 @@ class MusicManager:
             track = (getattr(state, "battle_options", None) or {}).get("music")
             if track:   # (a battle with its own theme: Willie, Miror B.)
                 return self.play_file(track)
+            own = self._region_own(state, "trainers")
+            if own:   # (the region's music.json: a trainer's own theme by name, the rival's, the Champion's; Unova 11-25)
+                return self.play_file(own)
             big = (state.battle_type == "gym" or getattr(state, "is_boss_battle", False)
                    or state.trainer_class in ("GYM_LEADER", "ELITE_FOUR", "CHAMPION"))
             kind = ("final" if state.trainer_class in ("ELITE_FOUR", "CHAMPION")
@@ -385,6 +472,9 @@ class MusicManager:
         elif type(state).__name__ == "StarterSelectionState":
             kind = "lab"
         elif type(state).__name__ == "TrainerIntroState":
+            own = self._region_own(getattr(state, "next_state", None), "eyes")
+            if own:   # (the region's own "eyes meet" theme for this class: music.json "eyes"; Unova 11-25)
+                return self.play_file(own)
             kind = self.encounter_kind(getattr(state, "next_state", None))
             if kind is None:
                 return
