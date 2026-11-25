@@ -709468,6 +709468,17 @@
         "zoom": 0.9
        }
       ]
+     },
+     {
+      "trigger": "enter",
+      "condition": [
+       "not:b2_drift_gym_down"
+      ],
+      "flag": "b2_drift_gym_down",
+      "cast": [],
+      "call": [
+       "Conveyor belts run from platform to platform, down in the dark."
+      ]
      }
     ],
     "title": "Driftveil Gym",
@@ -711489,6 +711500,19 @@
      ]
     ],
     "title": "Driftveil Gym",
+    "scenes": [
+     {
+      "trigger": "enter",
+      "condition": [
+       "not:b2_drift_gym_in"
+      ],
+      "flag": "b2_drift_gym_in",
+      "cast": [],
+      "call": [
+       "The Gym is a mine. A lift at the back goes down into it."
+      ]
+     }
+    ],
     "sign_events": {
      "8,3": {
       "text": "Lift",

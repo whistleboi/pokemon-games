@@ -4056,7 +4056,9 @@ DRIFT_GYM = drift_room(97, dict({
 }) | {n: _b2_battle(name, tid, "gym_trainer_DRIFTVEIL_CITY_%d" % (k + 1), _WORKER_LINES[n][0], ["%s: You're tough!" % name],
                      _WORKER_LINES[n][1])
        for k, (n, (tid, name)) in enumerate(sorted(_WORKER_SPOTS.items()))},
-    {}, title="Driftveil Gym", scenes=_BELT_SCENES)
+    {}, title="Driftveil Gym", scenes=_BELT_SCENES + [
+        {"trigger": "enter", "condition": ["not:b2_drift_gym_down"], "flag": "b2_drift_gym_down", "cast": [],
+         "call": ["Conveyor belts run from platform to platform, down in the dark."]}])
 for _x, _y in _BELT_TILES:   # (the belt ends: a step off the platform's edge)
     DRIFT_GYM["art"][_y] = DRIFT_GYM["art"][_y][:_x] + "." + DRIFT_GYM["art"][_y][_x + 1:]
 DRIFT_GYM["dark"] = {"flags": [], "radius": [2.0],   # (each platform's spotlight reaches a little past its edges: its belt ends)
@@ -4072,6 +4074,9 @@ DRIFT_ROOMS["gym_lobby"] = drift_room(98, {
     0: _say("Guide in the lobby", "Welcome to the Driftveil Gym! Take the lift down to the Gym floor."),
 }, {(4, 8): ["DRIFTVEIL GYM", "Leader: Clay", "Certified Trainers: {player_name}"],
     (10, 8): ["DRIFTVEIL GYM", "Leader: Clay", "Certified Trainers: {player_name}"]}, title="Driftveil Gym")
+DRIFT_ROOMS["gym_lobby"]["scenes"] = list(DRIFT_ROOMS["gym_lobby"].get("scenes") or []) + [   # (the Journal's way-points:
+    {"trigger": "enter", "condition": ["not:b2_drift_gym_in"], "flag": "b2_drift_gym_in", "cast": [],   #  in, then down; 11-24)
+     "call": ["The Gym is a mine. A lift at the back goes down into it."]}]
 DRIFT_ROOMS["gym_lobby"]["sign_events"] = {"8,3": {"text": "Lift", "action": "EVENT", "event": {"lift": [
     ["Gym entrance", "gym_lobby", 7, 4], ["Down in the Gym", "gym", 10, 86]]}}}
 
