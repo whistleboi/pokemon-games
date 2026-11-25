@@ -27,7 +27,7 @@ esac
 names=()
 for w in "$@"; do
   if [ "$w" = "-v" ]; then VERBOSE=1; continue; fi
-  while read -r t; do [ -n "$t" ] && names+=("$t"); done < <(expand "$w")
+  while read -r t; do [ -n "$t" ] && [[ " ${names[*]} " != *" $t "* ]] && names+=("$t"); done < <(expand "$w")   # (once each)
 done
 for t in "${names[@]}"; do
   why=$(_gone "$t") && { echo "== $t: taken out ($why)"; continue; }

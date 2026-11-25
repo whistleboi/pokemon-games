@@ -97,9 +97,12 @@ class BattleRenderer:
         else:
             pts = [(x + cut, y), (x + w, y), (x + w, y + h), (x + cut, y + h), (x, y + h // 2)]
         shadow = [(px + 6, py + 6) for px, py in pts]
-        sh = pygame.Surface(screen.get_size(), pygame.SRCALPHA)
-        pygame.draw.polygon(sh, (0, 0, 0, 90), shadow)
-        screen.blit(sh, (0, 0))
+        # (the shadow on a surface just its own size, not the whole screen's: the same pixels, drawn many times
+        #  faster - Checks C4, 11-24: the full-screen one was most of a battle frame's time)
+        sx, sy = min(p[0] for p in shadow), min(p[1] for p in shadow)
+        sh = pygame.Surface((max(p[0] for p in shadow) - sx + 1, max(p[1] for p in shadow) - sy + 1), pygame.SRCALPHA)
+        pygame.draw.polygon(sh, (0, 0, 0, 90), [(px - sx, py - sy) for px, py in shadow])
+        screen.blit(sh, (sx, sy))
         pygame.draw.polygon(screen, theme.INFOBOX, pts)
         band = pygame.Rect(x + (cut if slant == "left" else 8), y + h - 14, w - cut - 8, 8)
         pygame.draw.rect(screen, theme.INFOBOX_ACCENT, band, border_radius=4)
