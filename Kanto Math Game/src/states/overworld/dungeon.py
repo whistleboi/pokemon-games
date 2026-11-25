@@ -2456,6 +2456,13 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
             elif kind == "warp":  # a passage to another floor (a map's "links")
                 self.walk_goal = None
                 _i, _x, _y = (int(v) for v in ev[1].split(":")[1:4])
+                _ww = (self.recipe.get("art") or {}).get("warp_world") if isinstance(self.recipe.get("art"), dict) else None
+                if _ww:   # (a place whose passages lead somewhere new each time: its region module picks - src/world/<warp_world>.py
+                    _to = __import__("importlib").import_module("src.world." + str(_ww)).warp(   # warp(state, door, (floor, x, y))
+                        self, tuple(self.run.player), (_i, _x, _y))                              # -> (floor, x, y[, lines said on arrival]);
+                    if _to:                                                                      # Platinum's Turnback Cave, Sinnoh 11-24)
+                        _i, _x, _y = _to[:3]
+                        self._warp_say = list(_to[3]) if len(_to) > 3 and _to[3] else None
                 if self._canon_changes():   # (as the games: the door's, panel's, hole's or stairs' fade, no words)
                     _ac = __import__("src.vfx.area_changes", fromlist=["change"])
                     _fall = ev[1].endswith(":fall")
@@ -2565,6 +2572,10 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         self._reset_trail()
         self.banner = 120
         self._floor_sign(index != _was)
+        _say = getattr(self, "_warp_say", None)   # (what a warp_world module said comes with the passage: a pillar's carving)
+        if _say:
+            self._warp_say = None
+            self.say(_say)
 
     def _ascend(self):
         self._set_zone(self.run.index - 1)
