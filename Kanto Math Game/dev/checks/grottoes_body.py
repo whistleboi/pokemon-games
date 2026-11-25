@@ -23,20 +23,7 @@ flags["visited_FLOCCESY_RANCH"] = True
 said = []
 
 
-def settle(n=60):
-    for _ in range(n):
-        st = g.current_state
-        box = getattr(st, "npc_dialogue", None) if getattr(st, "npc_active", False) else getattr(st, "dialogue_box", None)
-        if box is not None and getattr(box, "visible", True):
-            for line in getattr(box, "text_lines", []) or []:
-                if not said or said[-1] != line:
-                    said.append(line)
-        db = getattr(st, "dialogue_box", None)
-        if db is not None and getattr(db, "visible", False):
-            db.advance()
-        elif getattr(st, "npc_active", False):
-            st.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=(640, 600))])
-        st.update(); st.draw()
+exec(open("dev/checks/unova_lib.py", encoding="utf-8").read())   # (settle, heard: shared, Checks C5)
 
 
 def walk_route(area, at=None, floor=0):
@@ -74,10 +61,6 @@ def use(t, text):
         return False
     said.clear(); t._use_figure(m); settle(30)
     return True
-
-
-def heard():
-    return " ".join(said)
 
 
 print("1) the data: 20 grottoes from the game file, Floccesy Ranch's as Bulbapedia has it")
