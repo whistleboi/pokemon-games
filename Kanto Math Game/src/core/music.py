@@ -136,6 +136,7 @@ class MusicManager:
         self.jingle_channel = None  # a fanfare playing over the paused music
         self.pending = None   # what to play once the victory jingle ends
         self.hof_until = 0    # (after a Champion win the Hall of Fame theme holds off the area music till then)
+        self.layers = []      # [(channel, sound, flag)]: a track's extra parts playing in step with it (layered())
 
     def tracks(self, kind, region=None):
         files = getattr(self.game.assets, "sound_map", {})
@@ -230,6 +231,7 @@ class MusicManager:
         if not pygame.mixer.get_init() or not os.path.isfile(path) or (path == self.path and pygame.mixer.music.get_busy()):
             return
         try:
+            self._layers_stop()
             pygame.mixer.music.load(path)
             pygame.mixer.music.set_volume(music_volume())
             pygame.mixer.music.play(-1 if loop else 0)
@@ -263,14 +265,53 @@ class MusicManager:
                 return
             path = os.path.join(self.game.assets.sounds_dir, random.choice(choices))
         try:
+            self._layers_stop()
             pygame.mixer.music.load(path)
             pygame.mixer.music.set_volume(music_volume())
             pygame.mixer.music.play(0 if kind == "victory" else -1)
             pygame.mixer.music.set_endevent(self._end_event())
             self.kind = kind
             self.path = path
+            self._layers_start(region, path)
         except Exception as e:
             print(f"Music: couldn't play {path}: {e}")
+
+    # ---- layered tracks (11-25, Unova's Village Bridge: Black 2 adds a musician's instruments to the place's music as you
+    # meet each one). music.json "layers": {"<base track>": [{"file": "<part track>", "flag": "<story flag>"}, ...]}: the
+    # base plays as usual; each part (the same length, rendered from the same sequence: kanto_handoff/unova_map_tools/
+    # music.py LAYERS) loops on a channel of its own, started with it, heard once its flag is set.
+    LAYER_CHANNELS = (14, 15, 13, 12, 11, 10)
+
+    def _layers_start(self, region, path):
+        table = self.region_table(region) if region else {}
+        parts = (table.get("layers") or {}).get(os.path.splitext(os.path.basename(path))[0]) if table else None
+        if not parts:
+            return
+        if pygame.mixer.get_num_channels() < max(self.LAYER_CHANNELS) + 1:
+            pygame.mixer.set_num_channels(max(self.LAYER_CHANNELS) + 1)
+        folder = os.path.dirname(path)
+        for ch_id, part in zip(self.LAYER_CHANNELS, parts):
+            f = os.path.join(folder, str(part.get("file")) + ".ogg")
+            if not os.path.isfile(f):
+                continue
+            try:
+                snd = pygame.mixer.Sound(f)
+                ch = pygame.mixer.Channel(ch_id)
+                ch.play(snd, loops=-1)
+                self.layers.append((ch, snd, part.get("flag")))
+            except Exception as e:
+                print(f"Music: couldn't play the part {f}: {e}")
+        self._layers_volume()
+
+    def _layers_volume(self):
+        flags = getattr(getattr(self.game, "story_manager", None), "story_flags", {}) or {}
+        for ch, _snd, flag in self.layers:
+            ch.set_volume(music_volume() if (not flag or flags.get(flag)) else 0.0)
+
+    def _layers_stop(self):
+        for ch, _snd, _flag in self.layers:
+            ch.stop()
+        self.layers = []
 
     # ---- jingles
     def cue(self, text):
@@ -294,6 +335,8 @@ class MusicManager:
         if self.jingle_channel and self.jingle_channel.get_busy():
             self.jingle_channel.stop()
         pygame.mixer.music.pause()
+        for ch, _snd, _flag in self.layers:
+            ch.pause()
         sound.set_volume(music_volume())
         self.jingle_channel = sound.play()
 
@@ -313,7 +356,11 @@ class MusicManager:
         if self.jingle_channel is not None and not self.jingle_channel.get_busy():
             self.jingle_channel = None
             pygame.mixer.music.unpause()
+            for ch, _snd, _flag in self.layers:
+                ch.unpause()
         self._place_tick = getattr(self, "_place_tick", 0) + 1
+        if self.layers and self._place_tick % 10 == 0:
+            self._layers_volume()   # (a musician met: their part comes in)
         if self.kind in ("town", "route") and self._place_tick % 20 == 0 and self.jingle_channel is None:
             try:   # (a region with its own soundtrack: in or out of a room, or a new season, changes the track)
                 region = self.game.story_manager.get_current_region()
