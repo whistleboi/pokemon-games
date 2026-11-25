@@ -2113,7 +2113,8 @@ POST_JOBS = [   # (id, what, where it starts (Fly), steps, the flag that says it
     ("post_steven", "Steven in Meteor Falls' hidden room (Emerald)", "FALLARBOR_TOWN",
      [{"area": "HOENN_METEOR_FALLS", "floor": 4, "at": [19, 3], "label": "Steven", "done": "meteor_falls_steven_beaten"}], "meteor_falls_steven_beaten"),
     ("post_ship", "Lugia and Ho-Oh in the Abandoned Ship's storeroom", "SLATEPORT_CITY",
-     [{"area": "HOENN_ABANDONED_SHIP", "floor": 8, "at": [3, 3], "label": "Lugia", "done": "sea_mauville_lugia"},
+     [{"area": "HOENN_ABANDONED_SHIP", "floor": 4, "at": [0, 6], "label": "Storage Key", "done": "got_storage_key_ship"},   # (the storeroom's key first, 11-24)
+      {"area": "HOENN_ABANDONED_SHIP", "floor": 8, "at": [3, 3], "label": "Lugia", "done": "sea_mauville_lugia"},
       {"area": "HOENN_ABANDONED_SHIP", "floor": 8, "at": [5, 3], "label": "Ho-Oh", "done": "sea_mauville_ho_oh"}], "sea_mauville_ho_oh"),
 ]
 POST = []
