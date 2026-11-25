@@ -1398,7 +1398,7 @@
       "trainer_pool": [
         {"name": "Lass Sally", "class": "LASS", "sprite": "em_tp_77.png", "team": [316], "levels": [16], "rewards": {"balls": 3}},
         {"name": "Battle Girl Cora", "class": "COOLTRAINER", "sprite": "em_tp_64.png", "team": [307], "levels": [17], "rewards": {"balls": 3}},
-        {"name": "Youngster Eddie", "class": "YOUNGSTER", "sprite": "em_tp_53.png", "team": [290, 74], "levels": [14, 14], "rewards": {"balls": 3}}
+        {"name": "Youngster Eddie", "class": "YOUNGSTER", "sprite": "em_tp_53.png", "team": [263, 263], "levels": [14, 16], "rewards": {"balls": 3}}
       ],
       "route_menu": [
         {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers"},
@@ -1420,7 +1420,7 @@
       "trainer_pool": [
         {"name": "Black Belt Yuji", "class": "BLACKBELT", "sprite": "em_tp_11.png", "team": [296, 66], "levels": [16, 18], "rewards": {"balls": 3}},
         {"name": "Schoolkid Georgie", "class": "SCHOOL_KID", "sprite": "school_kid_f.png", "team": [285, 267], "levels": [16, 16], "rewards": {"balls": 3}},
-        {"name": "Pokémon Ranger Sebastian", "class": "COOLTRAINER", "sprite": "em_tp_74.png", "team": [331, 304], "levels": [16, 18], "rewards": {"balls": 3}},
+        {"name": "Schoolkid Paul", "class": "SCHOOL_KID", "sprite": "em_tp_48.png", "team": [322, 43, 278], "levels": [15, 15, 15], "rewards": {"balls": 3}},
         {"name": "Pokémon Ranger Sophia", "class": "COOLTRAINER", "sprite": "em_tp_75.png", "team": [333, 315], "levels": [17, 17], "rewards": {"balls": 3}}
       ],
       "route_menu": [
@@ -1441,8 +1441,8 @@
       "wild_pool_percentages": "NO_WILD_INDOORS_PERCENTAGES",
       "min_rounds": 2,
       "trainer_pool": [
-        {"name": "Lass Robin", "class": "LASS", "sprite": "em_tp_77.png", "team": [43, 118], "levels": [16, 18], "rewards": {"balls": 3}},
-        {"name": "Ace Duo Pike & Shiel", "class": "COOLTRAINER", "sprite": "em_tp_3.png", "team": [318, 322], "levels": [21, 21], "rewards": {"balls": 3}, "battle_options": {"double": true}},
+        {"name": "Picnicker Martha", "class": "PICNICKER", "sprite": "em_tp_30.png", "team": [300, 333], "levels": [23, 23], "rewards": {"balls": 3}},
+        {"name": "Hiker Alan", "class": "HIKER", "sprite": "em_tp_0.png", "team": [74, 299, 75], "levels": [22, 22, 22], "rewards": {"balls": 3}},
         {"name": "Schoolkid Ted", "class": "SCHOOL_KID", "sprite": "em_tp_48.png", "team": [280], "levels": [19], "rewards": {"balls": 3}}
       ],
       "route_menu": [
@@ -2745,6 +2745,9 @@
       "route_name": "Safari Zone",
       "battle_type": "grass",
       "wild_pool_percentages": "HOENN_SAFARI_ZONE_PERCENTAGES",
+      "horde_pool_percentages": "HOENN_SAFARI_ZONE_HORDE_PERCENTAGES",
+      "horde_rate": 0.1,
+      "horde_levels": [15, 15],
       "surf_pool_percentages": "HOENN_SAFARI_ZONE_SURF_PERCENTAGES",
       "rock_smash_pool_percentages": "HOENN_SAFARI_ZONE_ROCK_SMASH_PERCENTAGES",
       "can_fish": true,
@@ -2981,7 +2984,7 @@
       "battle_type": "indoor",
       "backgrounds": {  },
       "min_rounds": 0,
-      "trainer_pool": [{"name": "Team Magma Grunt", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [262, 42], "rewards": {"balls": 3}, "dialogue": {"intro": ["Grunt: The rocket fuel is ours! Stand aside!"], "player_won": ["Grunt: No way!"], "player_lost": ["Grunt: {team} rules!"]}, "when_flags": ["badge_mind_earned"], "villain": "grunt"}, {"name": "Magma Admin Tabitha", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [323, 42, 262], "rewards": {"balls": 5}, "dialogue": {"intro": ["Admin: Hehehe! With this fuel, nothing can stop {team} now!"], "player_won": ["Admin: {leader} won't be happy..."], "player_lost": ["Admin: Hehehe!"]}, "when_flags": ["badge_mind_earned"], "villain": "admin_a"}, {"name": "Magma Leader Maxie", "class": "ROCKET_LEADER", "sprite": "maxie.png", "team": [262, 42, 323], "rewards": {"balls": 10, "RARE_CANDY": 2}, "is_boss_battle": true, "battle_options": {"double": true, "partner": {"name": "Steven", "class": "CHAMPION", "sprite": "steven.png", "team": [375, 227, 306], "levels": [42, 43, 44]}, "second_trainer": {"name": "Tabitha", "villain": "admin_a", "villain_by_version": {"OMEGA_RUBY": "admin_a", "ALPHA_SAPPHIRE": "admin_b"}, "team": [323, 262, 42], "levels": [36, 38, 40], "rewards": {"balls": 3}}}, "victory_flag": "space_center_cleared", "dialogue": {"intro": ["{leader}: {team} needs the Space Center's power. Stand aside!"], "player_won": ["{leader}: You're tougher than you look..."]}, "when_flags": ["badge_mind_earned"], "villain": "leader", "movesets": {"262": ["SAND-ATTACK", "BITE", "ODOR-SLEUTH", "ROAR"], "42": ["SUPERSONIC", "ASTONISH", "BITE", "WING-ATTACK"], "323": ["TACKLE", "FOCUS-ENERGY", "EMBER", "MAGNITUDE"]}}, {"name": "Team Magma Grunt", "spot_name": "Team Grunts (Delta)", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [262, 262, 262, 262, 262], "levels": [38, 38, 38, 38, 38], "rewards": {"balls": 3}, "villain": "grunt", "team_by_version": {"OMEGA_RUBY": [262, 262, 262, 262, 262], "ALPHA_SAPPHIRE": [262, 262, 262, 262, 262]}, "when_flags": ["beat_hoenn_champion", "h4_rustboro_city_delta_grunt_1", "h4_rustboro_city_delta_grunt_2", "h4_rustboro_city_delta_grunt_3"]}, {"name": "Team Magma Grunt", "spot_name": "Team Grunt (Delta 2F)", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [323, 262, 110], "levels": [55, 51, 51], "rewards": {"balls": 5}, "villain": "grunt", "team_by_version": {"OMEGA_RUBY": [323, 262, 110], "ALPHA_SAPPHIRE": [319, 262, 89]}, "when_flags": ["beat_hoenn_champion", "h4_rustboro_city_delta_grunt_1", "h4_rustboro_city_delta_grunt_2", "h4_rustboro_city_delta_grunt_3"]}],
+      "trainer_pool": [{"name": "Team Magma Grunt", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [262, 42], "rewards": {"balls": 3}, "dialogue": {"intro": ["Grunt: The rocket fuel is ours! Stand aside!"], "player_won": ["Grunt: No way!"], "player_lost": ["Grunt: {team} rules!"]}, "when_flags": ["badge_mind_earned"], "villain": "grunt"}, {"name": "Magma Admin Tabitha", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [323, 42, 262], "rewards": {"balls": 5}, "dialogue": {"intro": ["Admin: Hehehe! With this fuel, nothing can stop {team} now!"], "player_won": ["Admin: {leader} won't be happy..."], "player_lost": ["Admin: Hehehe!"]}, "when_flags": ["badge_mind_earned"], "villain": "admin_a"}, {"name": "Magma Leader Maxie", "class": "ROCKET_LEADER", "sprite": "maxie.png", "team": [262, 42, 323], "rewards": {"balls": 10, "RARE_CANDY": 2}, "is_boss_battle": true, "battle_options": {"double": true, "partner": {"name": "Steven", "class": "CHAMPION", "sprite": "steven.png", "team": [375, 227, 306], "levels": [42, 43, 44]}, "second_trainer": {"name": "Tabitha", "villain": "admin_a", "villain_by_version": {"OMEGA_RUBY": "admin_a", "ALPHA_SAPPHIRE": "admin_b"}, "team": [323, 262, 42], "levels": [36, 38, 40], "rewards": {"balls": 3}}}, "victory_flag": "space_center_cleared", "dialogue": {"intro": ["{leader}: {team} needs the Space Center's power. Stand aside!"], "player_won": ["{leader}: You're tougher than you look..."]}, "when_flags": ["badge_mind_earned"], "villain": "leader", "movesets": {"262": ["SAND-ATTACK", "BITE", "ODOR-SLEUTH", "ROAR"], "42": ["SUPERSONIC", "ASTONISH", "BITE", "WING-ATTACK"], "323": ["TACKLE", "FOCUS-ENERGY", "EMBER", "MAGNITUDE"]}}, {"name": "Team Magma Grunt", "spot_name": "Team Grunts (Delta)", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [262, 262, 262, 262, 262], "levels": [25, 25, 25, 25, 25], "rewards": {"balls": 3}, "villain": "grunt", "team_by_version": {"OMEGA_RUBY": [262, 262, 262, 262, 262], "ALPHA_SAPPHIRE": [262, 262, 262, 262, 262]}, "when_flags": ["beat_hoenn_champion", "h4_rustboro_city_delta_grunt_1", "h4_rustboro_city_delta_grunt_2", "h4_rustboro_city_delta_grunt_3"]}, {"name": "Team Magma Grunt", "spot_name": "Team Grunt (Delta 2F)", "class": "ROCKET", "sprite": "magma_grunt.png", "team": [323, 262, 110], "levels": [55, 51, 51], "rewards": {"balls": 5}, "villain": "grunt", "team_by_version": {"OMEGA_RUBY": [323, 262, 110], "ALPHA_SAPPHIRE": [319, 262, 89]}, "when_flags": ["beat_hoenn_champion", "h4_rustboro_city_delta_grunt_1", "h4_rustboro_city_delta_grunt_2", "h4_rustboro_city_delta_grunt_3"]}],
       "route_menu": [
         { "text": "STOP TEAM MAGMA", "action": "TRAINER", "condition": "has_trainers" },
         { "text": "MOSSDEEP CITY", "action": "EXIT", "target_area": "MOSSDEEP_CITY", "condition": "can_exit" }
@@ -3010,8 +3013,8 @@
       ],
       "route_menu": [
         {"text": "SHARPEDONITE", "action": "EVENT", "flag_condition": "not got_sharpedonite", "event": {"lines": ["Something glints on the ground... It's a Mega Stone!", "You found the SHARPEDONITE!"], "gift_item": {"SHARPEDONITE": 1}, "flag": "got_sharpedonite"}},
-        {"text": "MASTER BALL", "action": "EVENT", "found": true, "flag_condition": "not got_master_ball_hideout", "event": {"lines": ["A Poké Ball lies in the leader's room... It's the Master Ball!"], "gift_item": {"MASTER_BALL": 1}, "flag": "got_master_ball_hideout"}},
-        {"text": "NUGGET", "action": "EVENT", "found": true, "flag_condition": "not got_nugget_hideout", "event": {"lines": ["There's a Nugget in this Poké Ball!"], "gift_item": {"NUGGET": 1}, "flag": "got_nugget_hideout"}},
+        {"text": "MASTER BALL", "action": "EVENT", "found": true, "flag_condition": "not got_master_ball_hideout", "condition": ["hoenn_version:OMEGA_RUBY"], "event": {"lines": ["A Poké Ball lies in the leader's room... It's the Master Ball!"], "gift_item": {"MASTER_BALL": 1}, "flag": "got_master_ball_hideout"}},
+        {"text": "NUGGET", "action": "EVENT", "found": true, "flag_condition": "not got_nugget_hideout", "condition": ["hoenn_version:OMEGA_RUBY"], "event": {"lines": ["There's a Nugget in this Poké Ball!"], "gift_item": {"NUGGET": 1}, "flag": "got_nugget_hideout"}},
         {"text": "POKE BALL", "action": "BOSS", "found": true, "flag_condition": "not hideout_electrode_1", "boss": {"id": 101, "name": "Electrode", "level": 34, "victory_flag": "hideout_electrode_1", "lines": ["It's a Poké Ball... no! It's an Electrode in disguise!"]}},
         {"text": "POKE BALL ", "action": "BOSS", "found": true, "flag_condition": "not hideout_electrode_2", "boss": {"id": 101, "name": "Electrode", "level": 34, "victory_flag": "hideout_electrode_2", "lines": ["It's a Poké Ball... no! It's an Electrode in disguise!"]}},
         {"text": "RAID THE HIDEOUT", "action": "TRAINER", "condition": "has_trainers"},
@@ -3710,7 +3713,7 @@
   "HOENN_JAGGED_PASS_HORDE_PERCENTAGES": {"66": 65, "325": 35},
   "HOENN_FIERY_PATH_HORDE_PERCENTAGES": {"322": 60, "109": 35, "218": 5},
   "HOENN_NEW_MAUVILLE_HORDE_PERCENTAGES": {"100": 65, "81": 35},
-  "HOENN_SAFARI_ZONE_HORDE_PERCENTAGES": {"43": 33, "54": 33, "84": 33},
+  "HOENN_SAFARI_ZONE_HORDE_PERCENTAGES": {"84": 60, "43": 35, "54": 5},
   "HOENN_SHOAL_CAVE_HORDE_PERCENTAGES": {"41": 54, "363": 45, "361": 1},
   "HOENN_SEAFLOOR_CAVERN_HORDE_PERCENTAGES": {"41": 100},
   "HOENN_CAVE_OF_ORIGIN_HORDE_PERCENTAGES": {"41": 100},

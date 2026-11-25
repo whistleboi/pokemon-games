@@ -1987,6 +1987,12 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
             story.story_flags[flag] = self.zones[self._zone_index(index, spot[0], spot[1])]
         self._wild_spot = tuple(spot) if spot is not None else None   # (where it will stand: dark grass or not, 11-20)
         try:
+            if self.area_data.get("safari_game") and core.CURRENT_TILE not in (core.SURF, core.WATER):
+                from src.world import hordes as _hordes   # (the Safari Game has no battles: a horde's Pokemon walks the map
+                if _hordes.roll(self.game, self.area_data, rng):   # on its own, caught with Safari Balls - Hoenn Q16, 11-24)
+                    got = _hordes.one(self.game, self.area_key, self.area_data, rng)
+                    if got is not None:
+                        return got
             return self._wild_for_pool(rng)
         finally:
             if keep is not None:

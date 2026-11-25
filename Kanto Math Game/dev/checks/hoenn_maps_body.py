@@ -3498,5 +3498,23 @@ check(sorted(_new13) == [252, 255] and story.story_flags.get("got_hoenn_other_st
       f"Littleroot: after the title Birch gives a Mudkip player Treecko and Torchic, once ({_new13}, {said13[:1]})")
 story.story_flags.clear(); story.story_flags.update(_f13); story.player_team[:] = _t13; story.pc_pokemon[:] = _pc13
 
+# Jordan 11-24 (questions/HOENN.md 16, "match ORAS"): the Safari Zone's ORAS hordes are on - the Safari Game has no battles,
+# so a horde's Pokemon walks the map on its own (Doduo, Oddish, Psyduck at Lv 15; Oddish only comes that way)
+from src.world import hordes as _hz
+import random as _rz
+_sz = g.loader.area_data["STORY_PROGRESSION"]["HOENN_SAFARI_ZONE"]
+_got = [_hz.one(g, "HOENN_SAFARI_ZONE", _sz, _rz.Random(n)) for n in range(40)]
+_ids = sorted({p.id for p in _got if p}); _lvs = sorted({p.level for p in _got if p})
+check(_hz.rate(g, _sz) > 0 and _ids == [43, 54, 84] and _lvs == [15], f"Safari Zone: ORAS's hordes on, their Pokemon caught one at a time ({_ids} Lv {_lvs})")
+_sc = [t for t in g.loader.area_data["STORY_PROGRESSION"]["HOENN_SPACE_CENTER"]["trainer_pool"] if t.get("team") == [262] * 5]
+check(_sc and _sc[0]["levels"] == [25] * 5, f"Space Center: the five-Mightyena horde at ORAS's Lv 25 ({[t['levels'] for t in _sc]})")
+
+# Jordan 11-24 (HOENN.md 13): the Team Hideout's item balls, each version its own (Omega Ruby's 10, Alpha Sapphire's 10)
+_hz_ops = [o for o in g.loader.area_data["STORY_PROGRESSION"]["HOENN_TEAM_HIDEOUT"]["route_menu"] if o.get("found") and o.get("action") == "EVENT"]
+_by_v = {v: sorted((o["text"].strip() for o in _hz_ops if f"hoenn_version:{v}" in (o.get("condition") or [])), key=str) for v in ("OMEGA_RUBY", "ALPHA_SAPPHIRE")}
+_both = [o["text"] for o in _hz_ops if not any(str(c).startswith("hoenn_version:") for c in (o.get("condition") or []))]
+check(len(_by_v["OMEGA_RUBY"]) == 10 and len(_by_v["ALPHA_SAPPHIRE"]) == 10 and not _both and "MASTER BALL" in _by_v["ALPHA_SAPPHIRE"],
+      f"Team Hideout: each version its own 10 item balls ({_by_v}; in both: {_both})")
+
 story.story_flags.clear(); story.story_flags.update(_saved)
 print(f"##### {len(fails)} failures")

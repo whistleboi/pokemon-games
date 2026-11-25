@@ -158962,28 +158962,28 @@
      "cccccccccccccccccccccc1ccccc",
      "cccccccc.....cc..........ccc",
      "cccccc....N......X.......ccc",
-     "ccccc...............X.N.N.cc",
+     "ccccc..N............X.N.N.cc",
      "ccccc...cccccccccccc.N....cc",
-     "ccccc.N.cccccccccccc......cc",
+     "ccccc.N.cccccccccccc...N..cc",
      "cccc....cccccccccccc.N....cc",
-     "ccc...N.cccccccccccc.....ccc",
-     "cc...............X.......ccc",
-     "cc.......................ccc",
+     "ccc...N.cccccccccccc...N.ccc",
+     "cc...............X..N....ccc",
+     "cc...........N...........ccc",
      "cc...cccccccc.Xcccccccc..ccc",
      "cc.X.cccccccc..cccccccc..ccc",
      "cc...ccoooooooooooooocc...cc",
-     "cc...ccoooooooooooooocc...cc",
-     "cc...ccoooooooooooooocc...cc",
+     "cc.N.ccoooooooooooooocc...cc",
+     "cc...ccoooooooooooooocc.N.cc",
      "cccc.ccoooooooooooooocc...cc",
-     "cccc...X..~ooooo~.........cc",
+     "cccc...X..~ooooo~......N..cc",
      "cc........coooooc.........cc",
      "cc...ccccccoooooccccccc.cccc",
      "cc...ccoooooooooooooocc.cccc",
      "cc.N.ccoooooooooooooocc...cc",
-     "cc...ccoooooooooooooocc...cc",
+     "cc...ccoooooooooooooocc.N.cc",
      "cccc.ccoooooooooooooocc...cc",
      "cccc.ccoooooooooooooocc.cccc",
-     "cc.........~ooo~........cccc",
+     "cc.....N...~ooo~........cccc",
      "cc.........coooc..........cc",
      "cccccccccccconnccccccccccccc",
      "cccccccccccccccccccccccccccc",
@@ -159043,13 +159043,23 @@
     },
     "people": [
      "ESCAPE ROPE",
+     "TM094 DARK PULSE ",
      "MAX ELIXIR",
      "NEST BALL",
      "TM094 DARK PULSE",
      "MAX REVIVE",
+     "MASTER BALL ",
      "PP MAX",
      "NUGGET ",
-     "FULL RESTORE"
+     "NEST BALL ",
+     "ESCAPE ROPE ",
+     "MAX ELIXIR ",
+     "PP MAX ",
+     "NUGGET  ",
+     "NUGGET   ",
+     "FULL RESTORE",
+     "FULL RESTORE ",
+     "MAX REVIVE "
     ]
    },
    {
@@ -168288,7 +168298,7 @@
      ]
     ],
     "trainer_spots": [
-     "Pokémon Ranger Sebastian",
+     "Schoolkid Paul",
      "Schoolkid Georgie",
      "Black Belt Yuji",
      "Pokémon Ranger Sophia"
@@ -168493,7 +168503,7 @@
    "Way out"
   ],
   "figure_floors": {
-   "Pokémon Ranger Sebastian": 0,
+   "Schoolkid Paul": 0,
    "Schoolkid Georgie": 0,
    "Black Belt Yuji": 0,
    "RAGE CANDY BAR": 0,
@@ -168551,9 +168561,9 @@
      ]
     ],
     "trainer_spots": [
-     "Lass Robin",
+     "Picnicker Martha",
      "Schoolkid Ted",
-     "Ace Duo Pike & Shiel"
+     "Hiker Alan"
     ],
     "links": {
      "13,1": [
@@ -168750,9 +168760,9 @@
    "Way out"
   ],
   "figure_floors": {
-   "Lass Robin": 0,
+   "Picnicker Martha": 0,
    "Schoolkid Ted": 0,
-   "Ace Duo Pike & Shiel": 0,
+   "Hiker Alan": 0,
    "LUMIOSE GALETTE": 0,
    "LUMIOSE GALETTE ": 0,
    "Mechadoll 3": 0,
