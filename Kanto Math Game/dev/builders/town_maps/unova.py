@@ -141,6 +141,8 @@ def _no_drops(z, rows, exit_chars):
 
 
 MEDAL_PAINTER = {"text": "Medal Box painter", "action": "EVENT", "event": {"world": "unova_story", "medal_paint": True}}
+MR_MEDAL = {"text": "Mr. Medal  ", "action": "EVENT", "condition": ["b2_gym_open"], "event": {"medal_rally": True},
+            "_look": "sheet:b2_c360.png"}
 
 
 def room(z, people, signs, out_door, stairs=None, exits_extra=None, scenes=None, extra_people=()):
@@ -149,6 +151,8 @@ def room(z, people, signs, out_door, stairs=None, exits_extra=None, scenes=None,
     for _p in GEO[str(z)]["people"]:   # (every Pokemon Center's Medal Box painter, Black 2's script 2109: one place for all, 11-24)
         if _p.get("script") == 2109 and _p["n"] not in people:
             people = {**people, _p["n"]: MEDAL_PAINTER}
+        if _p.get("script") == 10638 and _p["n"] not in people:   # (and Mr. Medal, Black 2's script 10638, in every Center: the
+            people = {**people, _p["n"]: MR_MEDAL}                 #  Medal Rally's 92 Medals, main 488e9dbf0; 11-25)
     rows, ppl, sg, doors = _place(z, people, signs, extra_people)
     exits = {}
     for d in doors:

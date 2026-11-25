@@ -196,6 +196,12 @@ check(flags.get("b2_medal_box_paint") == "copper", f"the painter: half the Medal
 _pt = sum(1 for v in tmaps.values() if isinstance(v, dict) for r in (v.get("rooms") or {}).values()
           for o in r.get("people", []) if isinstance(o, dict) and o.get("text") == "Medal Box painter")
 check(_pt >= 7, f"a Medal Box painter in every walked Center ({_pt})")
+_ctr = [(k, rn) for k, v in tmaps.items() if isinstance(v, dict) and k in SP for rn, r in (v.get("rooms") or {}).items()
+        if any(isinstance(o, dict) and o.get("text") == "Pokémon Center" for o in r.get("people", []))]
+_no_mm = [c for c in _ctr if not any(isinstance(q, dict) and str(q.get("text", "")).startswith("Mr. Medal")
+                                     and (q.get("event") or {}).get("medal_rally")
+                                     for o in tmaps[c[0]]["rooms"][c[1]].get("people", []) for q in (o if isinstance(o, list) else [o]))]
+check(len(_ctr) >= 10 and not _no_mm, f"Mr. Medal in every walked Center, as Black 2 (11-25: {len(_ctr)} Centers, without: {_no_mm})")
 check(HMS.HM_BY_BADGE["UNOVA"] == {}, "Strength, Fly, Surf, Waterfall: story gifts only, no badge stand-ins (Waterfall from N, batch 10a)")
 
 for f_ in fails:

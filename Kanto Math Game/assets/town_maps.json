@@ -843883,7 +843883,7 @@
      "c..cc.ccc.cc..ccccccccccccc",
      "c..ccc.N.ccc..ccccccccccccc",
      "c..ccccmcc.c..ccccccccccccc",
-     "c..N.....N....ccccccccccccc",
+     "c..N.N...N....ccccccccccccc",
      "c.............ccccccccccccc",
      "c..........cccccccccccccccc",
      "cc.NN.....ccc.ccccccccccccc",
@@ -844693,6 +844693,17 @@
        "medal_paint": true
       },
       "_look": "sheet:b2_c34.png"
+     },
+     {
+      "text": "Mr. Medal  ",
+      "action": "EVENT",
+      "condition": [
+       "b2_gym_open"
+      ],
+      "event": {
+       "medal_rally": true
+      },
+      "_look": "sheet:b2_c360.png"
      },
      {
       "text": "Woman with a Litwick",
@@ -855599,7 +855610,7 @@
         "c..cc.ccc.cc..ccccccccccccc",
         "c..ccc.N.ccc..ccccccccccccc",
         "c..ccccmcc.c..ccccccccccccc",
-        "c..N.....N....ccccccccccccc",
+        "c..N.N...N....ccccccccccccc",
         "c.............ccccccccccccc",
         "c..........cccccccccccccccc",
         "cc.NN.....ccc.ccccccccccccc",
@@ -856409,6 +856420,17 @@
           "medal_paint": true
          },
          "_look": "sheet:b2_c34.png"
+        },
+        {
+         "text": "Mr. Medal  ",
+         "action": "EVENT",
+         "condition": [
+          "b2_gym_open"
+         ],
+         "event": {
+          "medal_rally": true
+         },
+         "_look": "sheet:b2_c360.png"
         },
         {
          "text": "Woman with a Litwick",
@@ -871311,7 +871333,7 @@
      "c..cc.ccc.cc..ccccccccccccc",
      "c..ccc.N.ccc..ccccccccccccc",
      "c..ccccmcc.c..ccccccccccccc",
-     "c..N.....N....ccccccccccccc",
+     "c..N.N...N....ccccccccccccc",
      "c.............ccccccccccccc",
      "c..N.......cccccccccccccccc",
      "cc........ccc.ccccccccccccc",
@@ -872121,6 +872143,17 @@
        "medal_paint": true
       },
       "_look": "sheet:b2_c34.png"
+     },
+     {
+      "text": "Mr. Medal  ",
+      "action": "EVENT",
+      "condition": [
+       "b2_gym_open"
+      ],
+      "event": {
+       "medal_rally": true
+      },
+      "_look": "sheet:b2_c360.png"
      },
      {
       "text": "Hiker in the Center",
@@ -909913,7 +909946,7 @@
      "c..cc.ccc.cc..ccccccccccccc",
      "c..ccc.N.ccc..ccccccccccccc",
      "c..ccccmcc.c..ccccccccccccc",
-     "c..N..........ccccccccccccc",
+     "c..N.N........ccccccccccccc",
      "cN............ccccccccccccc",
      "c..........cccccccccccccccc",
      "cc.......Nccc.ccccccccccccc",
@@ -910723,6 +910756,17 @@
        "medal_paint": true
       },
       "_look": "sheet:b2_c34.png"
+     },
+     {
+      "text": "Mr. Medal  ",
+      "action": "EVENT",
+      "condition": [
+       "b2_gym_open"
+      ],
+      "event": {
+       "medal_rally": true
+      },
+      "_look": "sheet:b2_c360.png"
      },
      {
       "text": "Woman by the PC",
@@ -940120,7 +940164,7 @@
      "c..cc.ccc.cc..ccccccccccccc",
      "c..ccc.N.ccc..ccccccccccccc",
      "c..ccccmcc.c..ccccccccccccc",
-     "c..N..........ccccccccccccc",
+     "c..N.N........ccccccccccccc",
      "c.............ccccccccccccc",
      "c..........cccccccccccccccc",
      "cc.N......ccc.ccccccccccccc",
@@ -940930,6 +940974,17 @@
        "medal_paint": true
       },
       "_look": "sheet:b2_c34.png"
+     },
+     {
+      "text": "Mr. Medal  ",
+      "action": "EVENT",
+      "condition": [
+       "b2_gym_open"
+      ],
+      "event": {
+       "medal_rally": true
+      },
+      "_look": "sheet:b2_c360.png"
      },
      {
       "text": "Psychic by the PC",
@@ -968923,7 +968978,7 @@
      "c..cc.ccc.cc..ccccccccccccc",
      "c..ccc.N.ccc..ccccccccccccc",
      "c..ccccmcc.c..ccccccccccccc",
-     "c..N.....N....ccccccccccccc",
+     "c..N.N...N....ccccccccccccc",
      "c.............ccccccccccccc",
      "c..........cccccccccccccccc",
      "cc.NN.....ccc.ccccccccccccc",
@@ -969746,6 +969801,17 @@
        "medal_paint": true
       },
       "_look": "sheet:b2_c34.png"
+     },
+     {
+      "text": "Mr. Medal  ",
+      "action": "EVENT",
+      "condition": [
+       "b2_gym_open"
+      ],
+      "event": {
+       "medal_rally": true
+      },
+      "_look": "sheet:b2_c360.png"
      },
      [
       {
@@ -981322,7 +981388,7 @@
         "c..cc.ccc.cc..ccccccccccccc",
         "c..ccc.N.ccc..ccccccccccccc",
         "c..ccccmcc.c..ccccccccccccc",
-        "c..N.....N....ccccccccccccc",
+        "c..N.N...N....ccccccccccccc",
         "c.............ccccccccccccc",
         "c..........cccccccccccccccc",
         "cc.NN.....ccc.ccccccccccccc",
@@ -982145,6 +982211,17 @@
           "medal_paint": true
          },
          "_look": "sheet:b2_c34.png"
+        },
+        {
+         "text": "Mr. Medal  ",
+         "action": "EVENT",
+         "condition": [
+          "b2_gym_open"
+         ],
+         "event": {
+          "medal_rally": true
+         },
+         "_look": "sheet:b2_c360.png"
         },
         [
          {
@@ -993854,7 +993931,7 @@
         "c..cc.ccc.cc..ccccccccccccc",
         "c..ccc.N.ccc..ccccccccccccc",
         "c..ccccmcc.c..ccccccccccccc",
-        "c..N.....N....ccccccccccccc",
+        "c..N.N...N....ccccccccccccc",
         "c.............ccccccccccccc",
         "c..........cccccccccccccccc",
         "cc.NN.....ccc.ccccccccccccc",
@@ -994677,6 +994754,17 @@
           "medal_paint": true
          },
          "_look": "sheet:b2_c34.png"
+        },
+        {
+         "text": "Mr. Medal  ",
+         "action": "EVENT",
+         "condition": [
+          "b2_gym_open"
+         ],
+         "event": {
+          "medal_rally": true
+         },
+         "_look": "sheet:b2_c360.png"
         },
         [
          {
@@ -1006159,7 +1006247,7 @@
         "c..cc.ccc.cc..ccccccccccccc",
         "c..ccc.N.ccc..ccccccccccccc",
         "c..ccccmcc.c..ccccccccccccc",
-        "c..N.....N....ccccccccccccc",
+        "c..N.N...N....ccccccccccccc",
         "c.............ccccccccccccc",
         "c..........cccccccccccccccc",
         "cc.NN.....ccc.ccccccccccccc",
@@ -1006982,6 +1007070,17 @@
           "medal_paint": true
          },
          "_look": "sheet:b2_c34.png"
+        },
+        {
+         "text": "Mr. Medal  ",
+         "action": "EVENT",
+         "condition": [
+          "b2_gym_open"
+         ],
+         "event": {
+          "medal_rally": true
+         },
+         "_look": "sheet:b2_c360.png"
         },
         [
          {
@@ -1034632,7 +1034731,7 @@
      "c..cc.ccc.cc..ccccccccccccc",
      "c..ccc.N.ccc..ccccccccccccc",
      "c..ccccmcc.c..ccccccccccccc",
-     "c..N.....N....ccccccccccccc",
+     "c..N.N...N....ccccccccccccc",
      "c.............ccccccccccccc",
      "c..........cccccccccccccccc",
      "cc..N.....ccc.ccccccccccccc",
@@ -1035442,6 +1035541,17 @@
        "medal_paint": true
       },
       "_look": "sheet:b2_c34.png"
+     },
+     {
+      "text": "Mr. Medal  ",
+      "action": "EVENT",
+      "condition": [
+       "b2_gym_open"
+      ],
+      "event": {
+       "medal_rally": true
+      },
+      "_look": "sheet:b2_c360.png"
      },
      {
       "text": "Man by the counter",
@@ -1099085,7 +1099195,7 @@
      "c..cc.ccc.cc.cccccccccccccc",
      "c..ccc.N.ccc..ccccccccccccc",
      "c...cccmcc..N.ccccccccccccc",
-     "c..N..........ccccccccccccc",
+     "c..N.N........ccccccccccccc",
      "c.............ccccccccccccc",
      "c..........cccccccccccccccc",
      "c.........ccc.ccccccccccccc",
@@ -1099631,6 +1099741,17 @@
        "medal_paint": true
       },
       "_look": "sheet:b2_c34.png"
+     },
+     {
+      "text": "Mr. Medal  ",
+      "action": "EVENT",
+      "condition": [
+       "b2_gym_open"
+      ],
+      "event": {
+       "medal_rally": true
+      },
+      "_look": "sheet:b2_c360.png"
      },
      {
       "text": "Ace Trainer resting",
@@ -1148714,7 +1148835,7 @@
      "c..cc.ccc.cc.cccccccccccccc",
      "c..ccc.N.ccc..ccccccccccccc",
      "c...cccmcc..N.ccccccccccccc",
-     "c..N..........ccccccccccccc",
+     "c..N.N........ccccccccccccc",
      "c.............ccccccccccccc",
      "c..........cccccccccccccccc",
      "c.........ccc.ccccccccccccc",
@@ -1149260,6 +1149381,17 @@
        "medal_paint": true
       },
       "_look": "sheet:b2_c34.png"
+     },
+     {
+      "text": "Mr. Medal  ",
+      "action": "EVENT",
+      "condition": [
+       "b2_gym_open"
+      ],
+      "event": {
+       "medal_rally": true
+      },
+      "_look": "sheet:b2_c360.png"
      },
      {
       "text": "Veteran by the window",
