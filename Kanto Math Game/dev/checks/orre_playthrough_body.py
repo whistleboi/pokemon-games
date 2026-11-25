@@ -1041,6 +1041,98 @@ def _crate_path(st, goal_test, limit=200000):
     return None
 
 
+def _ride_list(st):
+    """[(stand, (dx, dy), land)]: stand on stand, step (dx, dy), and the ride sets you down at land."""
+    f = st.run.floor
+    art = st._here_art()
+    out = []
+    ok = lambda t: 0 <= t[0] < f.w and 0 <= t[1] < f.h and f.walkable(*t)
+    for pl in art.get("platforms") or []:
+        track = [tuple(t) for t in pl["track"]]
+        for e, far in ((track[0], track[-1]), (track[-1], track[0])):
+            off = next(((far[0] + dx, far[1] + dy) for dx, dy in DIRS if (far[0] + dx, far[1] + dy) not in track
+                        and ok((far[0] + dx, far[1] + dy))), None)
+            if off is None:
+                continue
+            for dx, dy in DIRS:
+                n = (e[0] - dx, e[1] - dy)
+                if n not in track and ok(n):
+                    out.append((n, (dx, dy), off))
+    pads = [(tuple(h["a"]), tuple(h["b"])) for h in art.get("hooks") or []]
+    pads += [(b, a) for a, b in list(pads)]
+    pads += [(tuple(w["at"]), tuple(w["to"])) for w in art.get("warps") or []]
+    for p, land in pads:
+        for dx, dy in DIRS:
+            n = (p[0] - dx, p[1] - dy)
+            if ok(n):
+                out.append((n, (dx, dy), land))
+    return out
+
+
+def _ride_region(st, start, rides):
+    f = st.run.floor
+    trig = {(r[0][0] + r[1][0], r[0][1] + r[1][1]) for r in rides}
+    seen, todo = {start}, [start]
+    while todo:
+        c = todo.pop()
+        for dx, dy in DIRS:
+            n = (c[0] + dx, c[1] + dy)
+            if n in seen or n in trig or not (0 <= n[0] < f.w and 0 <= n[1] < f.h) or not f.walkable(*n):
+                continue
+            if f.mover_at(*n) is not None or n in f.exits:
+                continue
+            seen.add(n)
+            todo.append(n)
+    return seen
+
+
+def solve_rides(st):
+    """A floor crossed by rides: stairs or people not reached on foot -> the first ride on the way to a part not seen yet.
+    -> what was done, or None."""
+    if not is_dun(st) or not hasattr(st, "_ride_from_tile"):
+        return None
+    art = st._here_art()
+    if not (art.get("platforms") or art.get("hooks") or art.get("warps")):
+        return None
+    f = st.run.floor
+    rides = _ride_list(st)
+    if not rides:
+        return None
+    links = [tuple(int(v) for v in k.split(",")) for k in (art.get("links") or {})]
+    want = links + [(m.x, m.y) for m in f.movers if m.kind in ("figure", "trainer")]
+    near = lambda t, reg: t in reg or any((t[0] + dx, t[1] + dy) in reg for dx, dy in DIRS)
+    seen = STATE.setdefault("ride_seen", set())
+    key0 = (story.current_area_key, st.run.index, len(story.story_flags))
+    here = _ride_region(st, tuple(st.run.player), rides)
+    seen.add(key0 + (min(here),))
+    q, done = deque([(here, None)]), {min(here)}
+    while q:
+        reg, first = q.popleft()
+        if first is not None and key0 + (min(reg),) not in seen and any(near(t, reg) and not near(t, here) for t in want):
+            stand, (dx, dy), land = first
+            if tuple(st.run.player) != stand:
+                st.run.player = stand
+            st.anim = 0
+            st.walk_goal = None
+            st.facing = (dx, dy)
+            st.step(dx, dy)
+            for _ in range(900):
+                g.current_state.update()
+                if not getattr(g.current_state, "_ride", None) and not getattr(g.current_state, "anim", 0):
+                    break
+            settle()
+            STATE["puzzles"] += 1
+            _say(f"[ride: from {stand} to {land}]")
+            return {"how": "arrived", "kind": "puzzle"}
+        for r in rides:
+            if r[0] in reg:
+                nxt = _ride_region(st, r[2], rides) | {r[2]}
+                if min(nxt) not in done:
+                    done.add(min(nxt))
+                    q.append((nxt, first or r))
+    return None
+
+
 def solve_boxes(st):
     """A crate floor: push a crate onto a floor switch not pressed yet, else open the way to stairs not reachable yet.
     -> what was done, or None."""
@@ -1170,6 +1262,9 @@ def wander(st, m, stay=True):
     if row is not None:
         return row
     row = solve_boxes(st)
+    if row is not None:
+        return row
+    row = solve_rides(st)
     if row is not None:
         return row
     row = search_cans(st)

@@ -436,7 +436,8 @@ class WalkTownState(TownWalkUps, CityState):
             _free = lambda t: (0 <= t[0] < self.w and 0 <= t[1] < self.h and self.rows[t[1]][t[0]] == "."
                                and grid[t[1]][t[0]] not in "_()" and t not in taken and t not in self.people)
             _me = getattr(self, "player", None)
-            spot = partners.pick_spot(home, _free, _me)   # (always: never the owner's last open side - after a battle the room is
+            _ground = lambda t: (0 <= t[0] < self.w and 0 <= t[1] < self.h and (self.rows[t[1]][t[0]] == "." or t in self.exits))
+            spot = partners.pick_spot(home, _free, _me, _ground)   # (always: never the owner's last open side - after a battle the room is
                                                           #  rebuilt before you're placed, and Erika's Vileplume took her one side; Kanto 11-24)
             if spot is None:
                 continue

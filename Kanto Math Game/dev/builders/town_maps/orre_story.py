@@ -1361,6 +1361,13 @@ def _tournament(maps):
                            "lines": [f"Receptionist: Welcome to {name}! You're entered. Win every round to take the title.",
                                      "Receptionist: This way to the arena, please. Good luck!"],
                            "champion": [f"Receptionist: Our champion! {name} is yours. Come back any time."]}}}})
+            if area == "PHENAC_CITY":   # (XD part 4, R6 11-24: Cipher holds the stadium - the desk lets you through to Snattle;
+                _set_people(lob, {desk: {"any": [   #  the arena was walked into only by signing up, so nobody reached him)
+                    {"text": "Receptionist", "action": "EVENT", "condition": ["xd_ertlig", "not:orre_snattle_phenac"],
+                     "event": {"world": "orre_tournament", "to_arena": {"arena": arena, "at": list(me), "flag": "xd_stadium_in"},
+                               "lines": ["Receptionist: C-Cipher took over the stadium! Their boss is down in the arena...",
+                                         "Receptionist: Please - get them out of Phenac!"]}},
+                    _people_at(lob)[desk]]}})
         back = [door[0], door[1]]
         scenes = list(ar.get("scenes") or [])
         # (S5, 11-24: Realgam's arena holds Evice's run in Part 1 and the Orre League in Part 2 - src/world/gym_swaps.py - each
