@@ -205,7 +205,7 @@ def write(out):
 PLACES_W1 = {"PAST_UNOVA_ROUTE_1": [317], "PAST_UNOVA_ROUTE_2": [319], "PAST_DREAMYARD": [152], "PAST_DREAMYARD_B1F": [153],
              "PAST_UNOVA_ROUTE_3": [321], "PAST_WELLSPRING_CAVE_B1F": [325], "PAST_PINWHEEL_FOREST_OUTSIDE": [154],
              "PAST_PINWHEEL_FOREST": [155]}
-TEAMS_W1 = [9, 10, 21]   # (the Striaton Gym's Waiter Maxwell and Waitress Tia)
+TEAMS_W1 = [9, 10, 21, 196, 198]   # (the Striaton Gym's Waiter Maxwell and Waitress Tia)
 
 if __name__ == "__main__":
     import nds5

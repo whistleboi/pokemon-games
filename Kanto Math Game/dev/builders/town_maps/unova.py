@@ -8943,6 +8943,186 @@ for _x in range(13, 18):
 _st["edge_to"].update({"%d,0" % x: [x + 64, 30] for x in range(13, 18)})
 _st["gated_exits"] = {"PAST_UNOVA_ROUTE_3": ["past_badge_trio"]}   # (BW: the man on the north road wants a Gym Badge first)
 
+CAS_PEOPLE = {
+    251: {0: _say("Person in the gate 1", "Hello! If you cross the Skyarrow Bridge from here, you'll reach Castelia City."),
+         2: _say("Person in the gate 2", "There are people who are obsessed with certain items. They'll even buy your items for a lot of money! You might even be able to sell items you can't use to these people, so maybe you...")},
+    252: {0: _say("Person in the gate 1", 'Hello! If you cross the Skyarrow Bridge from this side, you will reach Pinwheel Forest and Nacrene City.'),
+         1: _say("Person in the gate 2", "I walked so far! My legs are sore! ...Um, you don't have to look.")},
+    28: {0: _say("Person on the avenue 1", "Hey there, Trainer! Are your Pokemon healthy? Being healthy's the best, because when you're healthy, you can do anything!"),
+         1: _say("Person on the avenue 2", "...Grumble, grumble, grumble. Should I change my Pokemon's moves, or should I change my Pokemon? Grumble, grumble..."),
+         2: _say("Person on the avenue 3", "Busy, busy! After I eat breakfast, I have to think about lunch. After eating lunch, I worry about dinner. Every day's the same. What a busy life!"),
+         3: _say("Person on the avenue 4", 'When work\'s finally over... When my thrown Poke Ball rocks three times and I hear that great "click"... My life is full of things that give me joy!'),
+         4: _say("Person on the avenue 5", "I'm a battling Clerk ! ...But my Pokemon are weak."),
+         6: _say("Person on the avenue 6", 'My favorite way to spend my lunch break is watching ships at the dock.'),
+         7: _say("Person on the avenue 7", 'At the Battle Company, we welcome Trainers who are proud of their skills.'),
+         9: _say("Person on the avenue 8", "Next time, I'll do it! Next time, I want to eat a Casteliacone for sure!")},
+    30: {0: _say("Person in the plaza 1", 'Hey, Trainer! Show me your paces! Give me a whirl!'),
+         3: _say("Person in the plaza 2", 'Landscapes with people... Landscapes with Pokemon... Each has power and beauty, compelling me to draw them both. Oh, my studio is down Mode Street a bit.')},
+    31: {0: _say("Person on Gym Street 1", 'What Gym Leaders test is the strength of the bond between the challenger and his or her Pokemon!'),
+         1: _say("Person on Gym Street 2", "Before challenging the Gym, you'll want to be sure you have enough Potions."),
+         8: _say("Person on Gym Street 3", "Being a Pokemon Trainer doesn't necessarily make someone stronger. But everyone can love their Pokemon and enjoy playing together."),
+         9: _say("Person on Gym Street 4", "I have six Poke Balls in my Bag! But, really, what I want is Great Balls and Ultra Balls! You can't buy them at the Poke Mart until you've collected Badges, though."),
+         10: _say("Person on Gym Street 5", 'My Pokemon is soooo cute! It always makes me feel better when I come home!')},
+    32: {0: _say("Person on Route 4 Street 1", 'In Nimbasa City, where I work, I went to see a musical. Have you heard about it? The Pokemon Musical? Pokemon get all dressed up and dance to the music!'),
+         1: _say("Person on Route 4 Street 2", 'Pokemon Trainers on Route 4 show combinations with Pokemon even during road construction!')},
+    33: {0: _say("Person on Mode Street 1", "We sell Castelia City's famous Casteliacone here! But the owner closes the shop for the winter! Please come again when it gets warm!")},
+    35: {},
+    36: {0: _say("Person on Liberty Pier 1", "Hahaha! Strength is not in the size of a body. It's in the size of the heart!"),
+         1: _say("Person on Liberty Pier 2", "Aren't Pokemon great? Even if they're fightin' someone bigger than them, up and at 'em they go!"),
+         2: _say("Person on Liberty Pier 3", 'Your timing is perfect. The ship is about to leave. Please get aboard ship and wait.')},
+    37: {0: _say("Person on Unity Pier 1", 'Both Pokemon and people will meet their destined partner someday! I believe it because my sister who got married said so!')},
+    38: {0: _say("Person on Prime Pier 1", "When someone is getting under your skin and you want to yell at them, scream at the ocean! ...When you're alone, of course."),
+         1: _say("Person on Prime Pier 2", 'That black boat... What could it be?')},
+    39: {},
+    41: {0: _say("Person in the Center 1", "I want to know everyone's favorite kind of Pokemon!"),
+         1: _say("Person in the Center 2", "When you're tired, take a rest! It's the same for people and Pokemon."),
+         10: _say("Person in the Center 3", 'Wanna recover Pokemon? Oh, soooooorry!')},
+}
+
+
+# ---- 12c, part 5 (11-25): Skyarrow Bridge (249, rails: White's rail table found at 0x0209E03E) and Castelia City two years
+# ago: the avenue (28) and its streets and piers (30-39) through Black 2's own Castelia wiring (castelia_room, the avenue's
+# mouths) with White's grids - they're Black 2's own - and past names; the Center (41), the bridge gate (252), and Burgh's
+# Gym (29: White's honeycomb - its honey walls, walked through in the game, are opened wherever they'd shut a cell's people
+# off). Burgh battles with Black 2's team (he's Castelia's Leader in Black 2 too); the Insect Badge a keepsake. The office
+# buildings, Thumb Pier and Route 4's gate stay shut for a later part. People: White's own lines (CAS_PEOPLE, generated from
+# unova_check/b12c5_lines.txt).
+OUTSIDE_W1.update({251: 249})
+PAST_CAS_ROOMS = {30: "plaza", 31: "gym_street", 32: "route4_street", 33: "mode_street", 34: "castelia_street",
+                  35: "narrow_street", 36: "liberty_pier", 37: "unity_pier", 38: "prime_pier", 39: "cruise_dock", 41: "center",
+                  29: "gym", 252: "bridge_gate"}
+PAST_CAS_AREAS = {249: "PAST_SKYARROW_BRIDGE"}
+
+
+def _open_honey(m, inside=(1, 1, 47, 45)):
+    """The honey walls of White's Bug Gym: walked through in the game, so a wall that shuts people off is opened (the
+    shortest way through wall tiles inside the gym's footprint, from what the door reaches)."""
+    import collections
+    art = [list(r) for r in m["art"]]
+    h, w = len(art), len(art[0])
+    walk = set('.N"')
+    ex = set(m.get("exits") or {})
+    start = [(x, y) for y in range(h) for x in range(w) if art[y][x] in ex]
+
+    def reach():
+        seen, q = set(start), collections.deque(start)
+        while q:
+            x, y = q.popleft()
+            for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                n = (x + dx, y + dy)
+                if 0 <= n[0] < w and 0 <= n[1] < h and n not in seen and art[n[1]][n[0]] in walk:
+                    seen.add(n)
+                    q.append(n)
+        return seen
+    for _ in range(20):
+        seen = reach()
+        cut = [(x, y) for y in range(h) for x in range(w) if art[y][x] == "N"
+               and not any((x + dx, y + dy) in seen for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)))]
+        if not cut:
+            break
+        x0, y0, x1, y1 = inside
+        prev, q, hit = {cut[0]: None}, collections.deque([cut[0]]), None
+        while q and not hit:
+            x, y = q.popleft()
+            for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                n = (x + dx, y + dy)
+                if n in prev or not (x0 <= n[0] <= x1 and y0 <= n[1] <= y1):
+                    continue
+                prev[n] = (x, y)
+                if n in seen:
+                    hit = n
+                    break
+                q.append(n)
+        t = prev.get(hit)
+        while t and t != cut[0]:
+            if art[t[1]][t[0]] == "c":
+                art[t[1]][t[0]] = "."
+            t = prev[t]
+    m["art"] = ["".join(r) for r in art]
+
+
+def _past_castelia():
+    global CASTELIA_ROOMS, CASTELIA_AREAS
+    keep = CASTELIA_ROOMS, CASTELIA_AREAS
+    CASTELIA_ROOMS, CASTELIA_AREAS = PAST_CAS_ROOMS, PAST_CAS_AREAS
+    try:
+        edges, to = {}, {}
+        rows28 = GEO["28"]["rows"]
+        ok = lambda x, y: 0 <= y < len(rows28) and 0 <= x < len(rows28[y]) and rows28[y][x] == "."
+        touch = lambda b: any(ok(x + dx, y + dy) for x, y in b for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)))
+        for d in GEO["28"]["doors"]:
+            t = _castelia_target(d)
+            if not t or d["to"] in (41, 42, 44):
+                continue
+            ch = to.get(t) or "ghijklqtyz<>"[len(to)]
+            to[t] = ch
+            box = [(d["x"] + k, d["y"] + j) for k in range(d["w"]) for j in range(d["h"])]
+            if not touch(box):
+                for n in range(1, 4):
+                    mv = next((m_ for m_ in ([(x - n, y) for x, y in box], [(x + n, y) for x, y in box], [(x, y - n) for x, y in box],
+                                             [(x, y + n) for x, y in box]) if touch(m_)), None)
+                    if mv:
+                        box = mv
+                        break
+            edges.setdefault(ch, (t, []))[1].extend(box)
+        names = {30: "Castelia plaza", 31: "Gym Street", 32: "Route 4 Street", 33: "Mode Street", 34: "Castelia Street",
+                 35: "Narrow Street", 36: "Liberty Pier", 37: "Unity Pier", 38: "Prime Pier", 39: "Cruise Dock"}
+        rooms = {PAST_CAS_ROOMS[z]: castelia_room(z, CAS_PEOPLE.get(z, {}), {}, title=t) for z, t in names.items()}
+        rooms["center"] = castelia_room(41, {6: {"text": "Pokémon Center", "action": "HEAL"}, **CAS_PEOPLE.get(41, {})}, {},
+                                        extra_people=[(2, 13, PAST_HOME)], title="Pokémon Center")
+        rooms["bridge_gate"] = castelia_room(252, CAS_PEOPLE.get(252, {}), {}, title="Bridge Gate")
+        gym = castelia_room(29, {
+            9: [{"text": "Burgh", "action": "EVENT", "condition": ["not:past_badge_insect"], "event": {
+                    "lines": ["Burgh: My bug Pokemon are scurrying with excitement about getting to battle you. Let's get straight to it!"],
+                    "battle": {"name": "Burgh", "class": "GYM_LEADER", "sprite": "b2_burgh.png", "team": [541, 557, 542],
+                               "levels": [22, 22, 24], "rewards": {"balls": 4},
+                               "dialogue": {"player_won": ["Burgh: Losing to you doesn't bug me, you're a-MAZ-ingly strong! "
+                                                           "Here: the Insect Badge!"]}},
+                    "flag": "past_badge_insect"}},
+                _say("Burgh ", "Burgh: It's the little things that count! Struggle Bug lowers the target's Sp. Atk, you know.",
+                     condition=["past_badge_insect"])],
+            10: _say("Gym guide", "The theme of this Gym is walking through walls! These funny honey walls may look impassable, "
+                     "but if you try hard, it'll work out."),
+            11: {"text": "Harlequin Louis", "action": "EVENT", "condition": ["not:w1_gym_louis"], "event": {
+                "lines": ["Bug Gym Trainers like to be bugged!"], "battle": _w1(198), "flag": "w1_gym_louis"}},
+            12: {"text": "Harlequin Jack", "action": "EVENT", "condition": ["not:w1_gym_jack"], "event": {
+                "lines": ["Hiding makes battle instincts dull, you know."], "battle": _w1(196), "flag": "w1_gym_jack"}}},
+            {}, title="Castelia Gym")
+        _open_honey(gym)
+        rooms["gym"] = gym
+        cas = town(28, CAS_PEOPLE.get(28, {}), {}, {41: ("center", "center")}, rooms=rooms, edges=edges, split=True,
+                   title="Castelia City (two years ago)")
+        art = [list(r) for r in cas["art"]]
+        _thin(art, set(to.values()))
+        for y, r in enumerate(art):
+            for x, c in enumerate(r):
+                if c == "D" and not any(art[y + dy][x + dx] in ".N" for dx, dy in ((0, 1), (0, -1), (1, 0), (-1, 0))
+                                        if 0 <= y + dy < len(art) and 0 <= x + dx < len(r)):
+                    if y + 1 < len(art) and art[y + 1][x] == "c":
+                        art[y + 1][x] = "."
+        cas["art"] = ["".join(r) for r in art]
+
+        gate = room(251, CAS_PEOPLE.get(251, {}), {}, (89, 273), exits_extra={250: ("<", "PAST_PINWHEEL_FOREST")})
+        gate["title"] = "Bridge Gate"
+        sky = route(249, {}, {}, exits={"^": ("PAST_CASTELIA_CITY", [(112, y) for y in range(11, 16)])},
+                    rooms={"gate": gate}, inside={"%d,273" % x: "gate" for x in range(89, 96)}, title="Skyarrow Bridge (two years ago)")
+        _doors(sky, sky["inside"])
+        for y in range(274, 278):
+            for x in range(112, 116):
+                if sky["art"][y][x] == ".":
+                    _put_char(sky, x, y, "|")
+        sky["split"] = True
+        return {"castelia": cas, "sky": sky}
+    finally:
+        CASTELIA_ROOMS, CASTELIA_AREAS = keep
+
+
+PAST_C = _past(_past_castelia)
+_pw = PAST_M["pw"]
+_pw["exits"]["^"] = "PAST_SKYARROW_BRIDGE"
+for _x in range(72, 76):
+    _put_char(_pw, _x, 23, "^")
+
 # ======================================================================================================== batch 12b (11-25)
 # Black 2's north after the title (walkthrough part 19): Tubeline Bridge (254: from Route 9's gate 349 to Route 8's gate
 # 347), Route 8 (345: the rock giver, a Hip Wader), the Moor of Icirrus (346), Icirrus City (113: the old Gym 114, the
@@ -9163,4 +9343,4 @@ MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": 
         "VICTORY_ROAD_RIVER": VR_RIVER, "VICTORY_ROAD_CAVE_2F": VR_2F, "VICTORY_ROAD_2F_BACK": VR_2F_BACK,
         "VICTORY_ROAD_MOUNTAINSIDE": VR_MOUNTAIN, "VICTORY_ROAD_3F": VR_3F, "VICTORY_ROAD_TUNNEL": VR_TUNNEL,   # (batch 10a)
         "UNOVA_POKEMON_LEAGUE": LEAGUE,   # (batch 10b)
-        "UNOVA_ROUTE_14": ROUTE_14, "N_CASTLE": N_CAVE, "SKYARROW_BRIDGE": SKYARROW, "PINWHEEL_FOREST": PINWHEEL, "PINWHEEL_FOREST_OUTSIDE": PINWHEEL_OUT, "NACRENE_CITY": NACRENE, "UNOVA_ROUTE_3": ROUTE_3, "WELLSPRING_CAVE": WELLSPRING, "WELLSPRING_CAVE_B1F": WELLSPRING_B1, "STRIATON_CITY": STRIATON, "DREAMYARD": DREAMYARD_MAP, "DREAMYARD_B1F": DREAMYARD_B1, "UNOVA_ROUTE_2": ROUTE_2, "ACCUMULA_TOWN": ACCUMULA, "UNOVA_ROUTE_1": ROUTE_1, "NUVEMA_TOWN": NUVEMA, "PAST_NUVEMA_TOWN": PAST_NUVEMA, "PAST_UNOVA_ROUTE_1": PAST_W["route1"], "PAST_ACCUMULA_TOWN": PAST_W["accumula"], "PAST_UNOVA_ROUTE_2": PAST_W["route2"], "PAST_STRIATON_CITY": PAST_W["striaton"], "PAST_DREAMYARD": PAST_W["dreamyard"], "PAST_DREAMYARD_B1F": PAST_W["dreamyard_b1"], "PAST_UNOVA_ROUTE_3": PAST_M["route3"], "PAST_WELLSPRING_CAVE": PAST_M["ws"], "PAST_WELLSPRING_CAVE_B1F": PAST_M["ws1"], "PAST_NACRENE_CITY": PAST_M["nacrene"], "PAST_PINWHEEL_FOREST_OUTSIDE": PAST_M["pwo"], "PAST_PINWHEEL_FOREST": PAST_M["pw"], "TUBELINE_BRIDGE": TUBELINE, "UNOVA_ROUTE_8": ROUTE_8, "MOOR_OF_ICIRRUS": MOOR, "ICIRRUS_CITY": ICIRRUS, "DRAGONSPIRAL_TOWER": DRAGONSPIRAL, "BLACK_CITY": BLACK_CITY, "WHITE_FOREST": WHITE_FOREST, "ABUNDANT_SHRINE": SHRINE, "UNOVA_ROUTE_15": ROUTE_15, "MARVELOUS_BRIDGE": BRIDGE}   # (batch 11a)
+        "UNOVA_ROUTE_14": ROUTE_14, "N_CASTLE": N_CAVE, "SKYARROW_BRIDGE": SKYARROW, "PINWHEEL_FOREST": PINWHEEL, "PINWHEEL_FOREST_OUTSIDE": PINWHEEL_OUT, "NACRENE_CITY": NACRENE, "UNOVA_ROUTE_3": ROUTE_3, "WELLSPRING_CAVE": WELLSPRING, "WELLSPRING_CAVE_B1F": WELLSPRING_B1, "STRIATON_CITY": STRIATON, "DREAMYARD": DREAMYARD_MAP, "DREAMYARD_B1F": DREAMYARD_B1, "UNOVA_ROUTE_2": ROUTE_2, "ACCUMULA_TOWN": ACCUMULA, "UNOVA_ROUTE_1": ROUTE_1, "NUVEMA_TOWN": NUVEMA, "PAST_NUVEMA_TOWN": PAST_NUVEMA, "PAST_UNOVA_ROUTE_1": PAST_W["route1"], "PAST_ACCUMULA_TOWN": PAST_W["accumula"], "PAST_UNOVA_ROUTE_2": PAST_W["route2"], "PAST_STRIATON_CITY": PAST_W["striaton"], "PAST_DREAMYARD": PAST_W["dreamyard"], "PAST_DREAMYARD_B1F": PAST_W["dreamyard_b1"], "PAST_UNOVA_ROUTE_3": PAST_M["route3"], "PAST_WELLSPRING_CAVE": PAST_M["ws"], "PAST_WELLSPRING_CAVE_B1F": PAST_M["ws1"], "PAST_NACRENE_CITY": PAST_M["nacrene"], "PAST_PINWHEEL_FOREST_OUTSIDE": PAST_M["pwo"], "PAST_PINWHEEL_FOREST": PAST_M["pw"], "PAST_CASTELIA_CITY": PAST_C["castelia"], "PAST_SKYARROW_BRIDGE": PAST_C["sky"], "TUBELINE_BRIDGE": TUBELINE, "UNOVA_ROUTE_8": ROUTE_8, "MOOR_OF_ICIRRUS": MOOR, "ICIRRUS_CITY": ICIRRUS, "DRAGONSPIRAL_TOWER": DRAGONSPIRAL, "BLACK_CITY": BLACK_CITY, "WHITE_FOREST": WHITE_FOREST, "ABUNDANT_SHRINE": SHRINE, "UNOVA_ROUTE_15": ROUTE_15, "MARVELOUS_BRIDGE": BRIDGE}   # (batch 11a)

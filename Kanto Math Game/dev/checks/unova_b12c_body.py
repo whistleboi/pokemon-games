@@ -121,6 +121,28 @@ if type(cur).__name__ in ("TrainerIntroState", "TrainerBattleState", "GymBattleS
 settle(300)
 check(flags.get("past_badge_basic"), "the Basic Badge, a keepsake")
 
+print("9) Skyarrow Bridge and Castelia, two years ago")
+sky, cas = tmaps["PAST_SKYARROW_BRIDGE"], tmaps["PAST_CASTELIA_CITY"]
+check(tmaps["PAST_PINWHEEL_FOREST"]["exits"].get("^") == "PAST_SKYARROW_BRIDGE"
+      and sky["rooms"]["gate"]["exits"].get("<") == "PAST_PINWHEEL_FOREST" and sky["exits"].get("^") == "PAST_CASTELIA_CITY",
+      "Pinwheel Forest -> the bridge's gate -> Skyarrow Bridge -> Castelia")
+check(any(v == "PAST_SKYARROW_BRIDGE" for v in cas["rooms"]["bridge_gate"]["exits"].values()),
+      "Castelia's bridge gate leads back onto the bridge")
+check({"plaza", "gym_street", "prime_pier", "center", "gym"} <= set(cas["rooms"]) and str(sky["roofs"]["_picture"]["f"]).startswith("w1_ground/"),
+      "the avenue's streets and piers, the Center, the Gym; White's maps")
+
+print("10) Burgh and the Insect Badge")
+flags.pop("past_badge_insect", None)
+st = town("PAST_CASTELIA_CITY", (17, 4), "gym")
+talk(st, "Burgh")
+cur = until(("TrainerIntroState", "TrainerBattleState", "GymBattleState", "BattleState"), 800)
+t = team_of(cur)
+check(t == [(541, 22), (557, 22), (542, 24)], f"Burgh battles with Black 2's team ({t})")
+if type(cur).__name__ in ("TrainerIntroState", "TrainerBattleState", "GymBattleState", "BattleState"):
+    win(cur)
+settle(300)
+check(flags.get("past_badge_insect"), "the Insect Badge, a keepsake")
+
 for f_ in fails:
     print("  -", f_)
 print(f"##### {len(fails)} failures")
