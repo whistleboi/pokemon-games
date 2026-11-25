@@ -180009,9 +180009,6 @@
       ],
       "flag": "got_tm274_sandgem_scene",
       "approach": true,
-      "lines": [
-       "Rowan: Hm! Before you go - take this. Return grows stronger the more your Pokemon trusts you."
-      ],
       "then": "event:sinnoh_rowan_tm27",
       "after": "home"
      }
@@ -263712,6 +263709,32 @@
   "parts": true,
   "hidden": {
    "10,36": "SKY_PLATE"
+  },
+  "edge_to": {
+   "18,53": [
+    12,
+    77
+   ],
+   "19,53": [
+    13,
+    77
+   ],
+   "20,53": [
+    14,
+    77
+   ],
+   "21,37": [
+    32,
+    3
+   ],
+   "21,38": [
+    32,
+    4
+   ],
+   "21,39": [
+    32,
+    5
+   ]
   }
  },
  "FIGHT_AREA": {
@@ -336556,7 +336579,47 @@
      "MAX REPEL",
      "RARE CANDY",
      "TM276"
-    ]
+    ],
+    "scenes": [
+     {
+      "trigger": {
+       "zone": [
+        33,
+        2,
+        39,
+        8
+       ]
+      },
+      "cast": [],
+      "flag": "victory_road_sinnoh_north"
+     }
+    ],
+    "edge_to": {
+     "12,77": [
+      18,
+      53
+     ],
+     "13,77": [
+      19,
+      53
+     ],
+     "14,77": [
+      20,
+      53
+     ],
+     "32,3": [
+      21,
+      37
+     ],
+     "32,4": [
+      21,
+      38
+     ],
+     "32,5": [
+      21,
+      39
+     ]
+    }
    },
    {
     "art": [
