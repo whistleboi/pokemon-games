@@ -10630,6 +10630,8 @@
       "on_enter_event": null,
       "bw_chapter": true
     },
+    "PAST_CASTELIA_CITY": {"area_type": "town", "route_name": "Castelia City (two years ago)", "region": "UNOVA", "era": "past", "on_enter_event": null, "travel_options": [], "explore_options": []},
+    "PAST_SKYARROW_BRIDGE": {"area_type": "dungeon", "route_name": "Skyarrow Bridge (two years ago)", "region": "UNOVA", "era": "past", "on_enter_event": null, "battle_type": "cave", "min_rounds": 1, "trainer_pool": [], "route_menu": []},
     "CASTELIA_CITY": {
       "area_type": "town",
       "route_name": "Castelia City",

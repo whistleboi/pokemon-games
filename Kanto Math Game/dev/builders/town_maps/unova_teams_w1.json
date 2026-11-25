@@ -16,6 +16,40 @@
    509
   ]
  },
+ "196": {
+  "b2_id": 196,
+  "class": "HARLEQUIN",
+  "levels": [
+   20,
+   20
+  ],
+  "name": "Harlequin Jack",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "b2_harlequin.png",
+  "team": [
+   540,
+   543
+  ]
+ },
+ "198": {
+  "b2_id": 198,
+  "class": "HARLEQUIN",
+  "levels": [
+   20,
+   20
+  ],
+  "name": "Harlequin Louis",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "b2_harlequin.png",
+  "team": [
+   543,
+   540
+  ]
+ },
  "21": {
   "b2_id": 21,
   "class": "LEADER",
