@@ -166,8 +166,8 @@ SORTED = {
     "C04|trigger, script 23": ("not a gate", "a hint about Cycling Road once you have the Bicycle"),
     "C04|trigger, script 27": ("E1", "Cynthia stops you leaving Eterna east until you take her gift (Cut)"),
     "C04R0201|person, script 2 (sprite 124)": ("kept", "a Galactic Building grunt who only talks; ours puts trainers on its floors"),
-    "C04R0201|person, script 6 (sprite 262)": ("waits", "the Secret Key door to Rotom's room: post-game (S8)"),
-    "C04R0205": ("waits", "Rotom's room and its appliances: post-game (S8)"),
+    "C04R0201|person, script 6 (sprite 262)": ("PG3", "the door to Rotom's room: Platinum's Secret Key is an event item, so ours opens once you're Champion (BDSP's rule; S7b)"),
+    "C04R0205": ("kept", "Rotom's appliances: Platinum's also want the Secret Key; ours work for anyone in the room (S7b, rotom_room.py)"),
     "C04R0401": ("C1", "Cycling Road: only on a Bicycle"),
     "R206R0101": ("C1", "Cycling Road's gate"),
     # Floaroma / Route 205 / Windworks
@@ -187,12 +187,12 @@ SORTED = {
     "D26R0106": ("H1", "Galactic HQ doors: the Galactic Key"),
     "D26R0107": ("H2", "the lake trio's machine until the HQ is cleared"),
     # Canalave / lakes
-    "C02|on-load": ("waits", "the sailor's son's house (Darkrai, Newmoon): post-game (S8)"),
-    "C02|person": ("waits", "the boat to Fullmoon / Newmoon Island (Lunar Wing): S8"),
+    "C02|on-load": ("kept", "the sailor Eldritch's own house after Darkrai (the Member Card, an event item): Newmoon stays shut, as Platinum without the card"),
+    "C02|person": ("PG4", "the sailor sails to Fullmoon Island once you've seen his son's nightmare (S8, s_s8_canalave_dream.py)"),
     "C02GYM0101": ("not a gate", "the Gym guide's advice"),
-    "C02R0501": ("waits", "the Lunar Wing house: S8"),
-    "D15": ("waits", "Fullmoon Island: S8"),
-    "D30": ("waits", "Newmoon Island: S8"),
+    "C02R0501": ("PG4", "the sailor's house: the boy's nightmare, the Lunar Wing wakes him (S8)"),
+    "D15": ("not a gate", "Fullmoon Island's sailor asks if you're ready to sail back (Platinum's Cresselia then roams; ours stays a battle there - no roaming legends yet)"),
+    "D30": ("kept", "Newmoon Island's sailor: reached only with the Member Card, an event item, as Platinum"),
     "L02|trigger": ("L2", "Valor Lakefront to Route 222 waits on Spear Pillar"),
     "L02|person": ("L1", "the way to Lake Valor until the Canalave Library meeting"),
     "D27R0101": ("kept", "Rowan at low-water Lake Verity; ours: Rowan and Dawn at Lake Verity's Galactic scene (L3)"),
@@ -203,21 +203,21 @@ SORTED = {
     "D05R0114": ("M1", "Spear Pillar's stops"),
     "D05R0116": ("M1", "Spear Pillar's scene"),
     "C08": ("not a gate", "Jasmine's talk at Sunyshore"),
-    "C10R0101": ("waits", "Barry at the League's door: S6 (the League's walked rooms)"),
+    "C10R0101": ("kept", "Barry's battle at the League's door stays the arrival battle on the League's map (Jordan 11-24: 'He's fine where he's at')"),
     "R224": ("M2", "Victory Road to Route 224: after the Champion"),
     # the rest
     "D01R0102": ("not a gate", "Roark's Rock Smash show in the Oreburgh Mine"),
-    "D10R0101": ("waits", "Pal Park: post-game (S8)"),
-    "D11R0101": ("waits", "Amity Square's stroll with a Pokémon: not walked yet (S7 extras)"),
-    "D16R0102": ("waits", "Stark Mountain with Buck: post-game (S8)"),
-    "D31": ("waits", "the Battle Park: S8"),
-    "C11": ("waits", "the Fight Area's blockers: post-game (S8)"),
+    "D10R0101": ("kept", "Pal Park's Catching Show brings Pokemon over from a GBA cartridge: nothing to bring here"),
+    "D11R0101": ("PG6", "Amity Square: only Platinum's listed Pokemon may stroll in with you (S8, s_s8_amity.py)"),
+    "D16R0102": ("PG5", "Stark Mountain: Buck walks with you (walk_partners), Mars and Jupiter hold 1F till beaten (S7a)"),
+    "D31": ("not a gate", "the Battle Park's 'Thud!' scene after Stark Mountain (DP's park; ours is the Battle Frontier built from HGSS)"),
+    "C11": ("PG1", "the Fight Area: Flint and Volkner hold the Frontier gate till your Multi Battle beside Barry (S7a)"),
     "W230": ("M3", "Route 230: Surf"),
     "R212AR0103": ("kept", "the Pokémon Mansion's statue: 'please don't touch' only"),
     "R218": ("not a gate", "the Pikachu trainer on Route 218 (a trainer, no stop)"),
-    "T06": ("waits", "the Survival Area's house (Charon arrested): post-game (S8)"),
-    "T07": ("waits", "the Resort Area's villa: post-game (S8)"),
-    "T07R0201": ("waits", "the Villa's furniture and visitors: post-game (S8)"),
+    "T06": ("PG2", "the Survival Area: Buck's Battleground locked till Charon's arrest (S7a)"),
+    "T07": ("kept", "the Resort Area's Villa: parked (Jordan 11-24: 'Park it for later')"),
+    "T07R0201": ("kept", "the Villa's furniture and visitors: parked (Jordan 11-24)"),
     "UG": ("kept", "the Underground: parked (long-term add-ins)"),
 }
 
@@ -444,6 +444,58 @@ def _m3():
 
 title("M3", "Route 230: Surf to cross it")
 guarded("M3", _m3)
+
+# ---- S8 (11-24): the post-game's gates, built in S7 and S8
+title("PG1", "the Fight Area: Flint and Volkner hold the Frontier gate till your Multi Battle beside Barry")
+guarded("PG1", lambda: (at(late=True, badges=8, flags=["beat_sinnoh_champion"]),
+                        cross("PG1", "BEFORE", "FIGHT_AREA", (46, 8), (46, 9), False, what="not battled"),
+                        at(late=True, badges=8, flags=["beat_sinnoh_champion", "fight_area_tag_won"]),
+                        cross("PG1", "AFTER", "FIGHT_AREA", (46, 8), (46, 9), True, what="Flint and Volkner beaten")))
+
+title("PG2", "the Survival Area: Buck's Battleground locked till Charon's arrest at Stark Mountain")
+guarded("PG2", lambda: (at(late=True, badges=8, flags=["beat_sinnoh_champion"]),
+                        cross("PG2", "BEFORE", "SURVIVAL_AREA", (12, 17), (12, 18), False, what="Charon not arrested"),
+                        at(late=True, badges=8, flags=["beat_sinnoh_champion", "stark_charon_arrested"]),
+                        cross("PG2", "AFTER", "SURVIVAL_AREA", (12, 17), (12, 18), True, what="Charon arrested")))
+
+title("PG3", "the Galactic Eterna Building: Rotom's room shut till you're Champion")
+guarded("PG3", lambda: (at(late=True, badges=8),
+                        cross("PG3", "BEFORE", "ETERNA_GALACTIC_BUILDING", (2, 2), (2, 3), False, floor=0, what="not Champion"),
+                        at(late=True, badges=8, flags=["beat_sinnoh_champion"]),
+                        cross("PG3", "AFTER", "ETERNA_GALACTIC_BUILDING", (2, 2), (2, 3), True, floor=0, what="Champion")))
+
+
+def _pg4():
+    _opt = next(o for o in _area["CANALAVE_CITY"].get("travel_options", []) if o.get("target_area") == "FULLMOON_ISLAND")
+    at(late=True, badges=8, flags=["beat_sinnoh_champion"])
+    st = town("CANALAVE_CITY", "CANALAVE_CITY")
+    side("PG4", "BEFORE", not st._check_menu_condition(_opt.get("condition")), "the boat to Fullmoon Island before the boy's nightmare is seen", "event")
+    at(late=True, badges=8, flags=["beat_sinnoh_champion", "canalave_dream_seen"])
+    st = town("CANALAVE_CITY", "CANALAVE_CITY")
+    side("PG4", "AFTER", bool(st._check_menu_condition(_opt.get("condition"))), "the boat to Fullmoon Island once you've seen him", "event")
+
+
+title("PG4", "Canalave: the sailor sails to Fullmoon Island once you've seen his son's nightmare")
+guarded("PG4", _pg4)
+
+title("PG5", "Stark Mountain: Mars and Jupiter hold 1F till both are beaten")
+guarded("PG5", lambda: (at(late=True, badges=8, flags=["beat_sinnoh_champion"]),
+                        cross("PG5", "BEFORE", "STARK_MOUNTAIN", (16, 26), (16, 27), False, floor=1, what="not fought"),
+                        at(late=True, badges=8, flags=["beat_sinnoh_champion", "stark_mars_beaten", "stark_jupiter_beaten"]),
+                        cross("PG5", "AFTER", "STARK_MOUNTAIN", (16, 26), (16, 27), True, floor=1, what="both beaten")))
+
+
+def _pg6():
+    at(late=True, badges=8, flags=["defeated_rival_hearthome"])   # (Barry's Hearthome battle as you arrive: done)
+    cross("PG6", "BEFORE", "HEARTHOME_CITY", (3, 2), (3, 3), False, room="amity", what="a Mewtwo first in the party")
+    at(late=True, badges=8, flags=["defeated_rival_hearthome"])
+    _pk = Pokemon(g.loader.fetch_specific(25), g.assets, size_mult=2.5); _pk.level = 30
+    story.player_team = [_pk, ace()]
+    cross("PG6", "AFTER", "HEARTHOME_CITY", (3, 2), (3, 3), True, room="amity", what="a Pikachu first in the party")
+
+
+title("PG6", "Hearthome: Amity Square lets in only Platinum's listed Pokemon")
+guarded("PG6", _pg6)
 
 _missing = [] if _ONLY else sorted(TESTED - {r[0] for r in RESULTS})
 check(not _missing, f"every gate Part 1 points to is met in Part 2 (missing: {_missing})")

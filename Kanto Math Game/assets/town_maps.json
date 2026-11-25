@@ -214294,8 +214294,8 @@
     "art": [
      "ccccccc",
      "ccccccc",
-     "cccvccc",
-     "c..NN.c",
+     "ccc^ccc",
+     "c...N.c",
      "cc...cc",
      "cz...zc",
      "c.....c",
@@ -214308,7 +214308,8 @@
      "ccccccc"
     ],
     "exits": {
-     "v": "OUT:10,11"
+     "v": "OUT:10,11",
+     "^": "ROOM:amity_square"
     },
     "buildings": {},
     "roofs": {
@@ -214404,15 +214405,16 @@
     },
     "people": [
      {
-      "text": "Square guide",
+      "text": "Gate receptionist",
       "action": "EVENT",
       "event": {
        "lines": [
-        "In Amity Square, you can stroll with a cute Pokemon."
+        "Receptionist: I'm sorry, only certain Pokemon may stroll in Amity Square.",
+        "Receptionist: Pikachu, Clefairy, Psyduck, Pachirisu, Drifloon, Buneary, Happiny, and Turtwig, Chimchar and Piplup and their evolutions. With the National Pokedex, Jigglypuff, Torchic, Skitty and Shroomish too.",
+        "Receptionist: Put one first in your party and it may walk with you here."
        ]
       }
      },
-     "Amity Square",
      {
       "text": "Pikachu",
       "action": "EVENT",
@@ -214431,7 +214433,25 @@
        ]
       }
      }
-    ]
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        3,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:amity_square:ok"
+      },
+      "lines": [
+       "Receptionist: I'm sorry, only certain Pokemon may stroll in Amity Square."
+      ]
+     }
+    ],
+    "title": "Amity Square Gate"
    },
    "contest": {
     "theme": "room",
@@ -215772,7 +215792,7 @@
     "art": [
      "ccccccc",
      "ccccccc",
-     "cccvccc",
+     "ccc^ccc",
      "c...N.c",
      "cc...cc",
      "cz...zc",
@@ -215786,7 +215806,8 @@
      "ccccccc"
     ],
     "exits": {
-     "v": "OUT:52,11"
+     "v": "OUT:52,11",
+     "^": "ROOM:amity_square"
     },
     "buildings": {},
     "roofs": {
@@ -215881,7 +215902,17 @@
      }
     },
     "people": [
-     "Amity Square",
+     {
+      "text": "Gate receptionist",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Receptionist: I'm sorry, only certain Pokemon may stroll in Amity Square.",
+        "Receptionist: Pikachu, Clefairy, Psyduck, Pachirisu, Drifloon, Buneary, Happiny, and Turtwig, Chimchar and Piplup and their evolutions. With the National Pokedex, Jigglypuff, Torchic, Skitty and Shroomish too.",
+        "Receptionist: Put one first in your party and it may walk with you here."
+       ]
+      }
+     },
      {
       "text": "Upset man",
       "action": "EVENT",
@@ -215891,14 +215922,32 @@
        ]
       }
      }
-    ]
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        3,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:amity_square:ok"
+      },
+      "lines": [
+       "Receptionist: I'm sorry, only certain Pokemon may stroll in Amity Square."
+      ]
+     }
+    ],
+    "title": "Amity Square Gate"
    },
    "amity_4": {
     "theme": "room",
     "art": [
      "ccccccc",
      "ccccccc",
-     "cccvccc",
+     "ccc^ccc",
      "c...N.c",
      "cc...cc",
      "cz...zc",
@@ -215912,7 +215961,8 @@
      "ccccccc"
     ],
     "exits": {
-     "v": "OUT:53,11"
+     "v": "OUT:53,11",
+     "^": "ROOM:amity_square"
     },
     "buildings": {},
     "roofs": {
@@ -216007,8 +216057,36 @@
      }
     },
     "people": [
-     "Amity Square"
-    ]
+     {
+      "text": "Gate receptionist",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Receptionist: I'm sorry, only certain Pokemon may stroll in Amity Square.",
+        "Receptionist: Pikachu, Clefairy, Psyduck, Pachirisu, Drifloon, Buneary, Happiny, and Turtwig, Chimchar and Piplup and their evolutions. With the National Pokedex, Jigglypuff, Torchic, Skitty and Shroomish too.",
+        "Receptionist: Put one first in your party and it may walk with you here."
+       ]
+      }
+     }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        3,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:amity_square:ok"
+      },
+      "lines": [
+       "Receptionist: I'm sorry, only certain Pokemon may stroll in Amity Square."
+      ]
+     }
+    ],
+    "title": "Amity Square Gate"
    },
    "center": {
     "theme": "room",
@@ -222470,6 +222548,803 @@
       }
      }
     ]
+   },
+   "amity_square": {
+    "theme": "room",
+    "title": "Amity Square",
+    "art": [
+     "....c........cc....cccccc.................ccc........cccc.c..ccc",
+     "....c........cc....cccccc.................ccc........cccc.c..ccc",
+     "....c........cc....cccccc.................ccc........cccc.c..ccc",
+     "....ccccccccccc....cccccc.................ccc........cccc.c..ccc",
+     "ccccccccccccc.c....cccccc.................ccc........cccc.c..ccc",
+     "ccccccccccccc.c....cccccc.................ccc........cccc.c..ccc",
+     "ccccccccccccc.c....cccccc...cccccccccccccccccccccccc.cccc.c..ccc",
+     "ccccccc.ccccc.ccccccccccc...cccccccccccccccc.......c.cccc.c..ccc",
+     "......c.ccccc.......ccccc...cc.c...c.c..cccccccccccc.cccc.c..ccc",
+     "......c.cccccccccccccccccccccc.c...c....cN.c.c...ccc.cccc.c..ccc",
+     "......c.ccccccccccccccccc...cc.cc.cc...ccc...c...ccc.cccc.c..ccc",
+     "......c.ccc..c...c.c..ccc...cc.........ccc...cc.cccc.cccc.c..ccc",
+     "......c.ccc..c...c...ccccc.ccc......NN..c.........cc.cccc.c..ccc",
+     "......c.ccc..cc.cc..Nccc.....cccccccccccc.........cc.cccc.c..ccc",
+     "......c.ccc...........cc.....cccccccccccccccccc...cc.cccc.c..ccc",
+     "......c.ccccccccccccccccccccccccccccccccccccccc...cc.cccc.c..ccc",
+     "......c.cccccccccccccccccccccccccc...cccccccccc...cc.cccc.c..ccc",
+     "......c.c...c..c...ccc..cccccccccc...ccc...cccc...cc.cccc.cccccc",
+     "......c.cc.....c...ccc..ccccccccccc.cccc...cccc...cc.ccccc...ccc",
+     "......c.cc.....cc.cccccccc............ccc.ccccc...cc.ccccc...ccc",
+     "......c.c...........cccccc...........Nc.....ccc...cc.cccccc.cccc",
+     "ccccccc.cccc...ccccccccccc...cccccccccc.....ccc...cc.cccc.....cc",
+     "cccccccccc.....cccccccc...........c..ccccccccccc..cc.cccc.....cc",
+     "cccccccccc.....c......c......cccc...cc.......cc...cccccccccccccc",
+     "cccccccccc.c...ccccccccc.....c..c...ccccccccccc...c...cc.......c",
+     "ccc......c...................c..c...........ccc...cccccc.......c",
+     "ccc......c...................cccc.......NN..ccc...c...cc.......c",
+     "ccc......c..cccc..cccccc....................ccc...c...cc.......c",
+     "ccc......c..c..c..cccccc....................ccc...cc.ccc.......c",
+     "ccc......c..c..c..cc..c........c............ccc........c.......c",
+     "ccc......c..cccc..ccc.........cccc..........cccNN......c.......c",
+     "ccc......c...c....ccc.........cccc..........ccc........c.......c",
+     "ccc......c........cc........................ccc...c..c.ccccccccc",
+     "ccc......c......NN..........................ccccccc..ccccccccccc",
+     "ccc......c..cc..............................ccccccc...cccccccccc",
+     "ccc......c..cc............ccc...............cc...cc...cccccccccc",
+     "ccc......c..cc..cccc......cNc............c..cc...cc...cccccccccc",
+     "ccc......c..cc..cccc......c.................ccc.ccc...cccccccccc",
+     "ccc......c..cc............c.................c.....c...cccccccccc",
+     "ccc......c..cc..............c...............c.....c...cccccccccc",
+     "ccc......c..................c...............c.....c...cccccccccc",
+     "cccccccccc................c.cc..............c.....c...cccccccccc",
+     "ccccccccccc..c............c..c..............cN....cc..cccccccccc",
+     "cccccccccc................cc.c.......ccc....cccccccc..cccccccccc",
+     "cccccccccc.................ccc.......c.c....ccccccc...cccccccccc",
+     "cccccccccccc.c.......................c.c....ccccccc.cccccccccccc",
+     "ccccccccccNc.c.......................c.c..ccccccccc.cNcccccccccc",
+     "cccccccccccc.c....cccc.cccccccccc.cccc.c..c..cccccc.cccccccccccc",
+     "ccccccccc....c....c..c.c........c.c....c..c..cccccc....ccccccccc",
+     "ccccccccc....c....cccccccccccccccccccccc..c..cccccc....ccccccccc",
+     "ccccccccc....ccc..........................c..cccccc....ccccccccc",
+     "ccccccccc.vv.ccc..........................c..cccccc.ww.ccccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:amity",
+     "w": "ROOM:amity_3"
+    },
+    "buildings": {},
+    "people": [
+     {
+      "text": "an Amulet Coin",
+      "action": "EVENT",
+      "color": "GOLD",
+      "found": true,
+      "flag_condition": "not got_amulet_coin_amity_square",
+      "event": {
+       "lines": [
+        "You found an Amulet Coin!"
+       ],
+       "gift_item": {
+        "AMULET_COIN": 1
+       },
+       "flag": "got_amulet_coin_amity_square"
+      }
+     },
+     {
+      "text": "Happiny woman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I bring my Happiny here every day. It can run around without a care in the world."
+       ]
+      }
+     },
+     {
+      "text": "Happiny",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Happiny looks a little sleepy."
+       ]
+      }
+     },
+     {
+      "text": "Tidy man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I love this square, so I keep it neat and tidy. I find all sorts of things while I'm at it.",
+        "Here, I found this today. Take it!"
+       ],
+       "daily_gift": {
+        "key": "amity_square_berry",
+        "items": [
+         "MAGOST_BERRY",
+         "CORNN_BERRY",
+         "RABUTA_BERRY",
+         "NOMEL_BERRY",
+         "SPELON_BERRY",
+         "PAMTRE_BERRY",
+         "WATMEL_BERRY",
+         "DURIN_BERRY",
+         "BELUE_BERRY"
+        ],
+        "wait": [
+         "That's all I found today. Come back tomorrow - who knows what I'll turn up!"
+        ]
+       }
+      }
+     },
+     {
+      "text": "TM45",
+      "action": "EVENT",
+      "color": "GOLD",
+      "found": true,
+      "flag_condition": "not got_tm45_amity_square",
+      "event": {
+       "lines": [
+        "You found TM45!"
+       ],
+       "gift_item": {
+        "TM45": 1
+       },
+       "flag": "got_tm45_amity_square"
+      }
+     },
+     {
+      "text": "Drifloon man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My Drifloon floats along wherever I go. It's always tugging me somewhere new!"
+       ]
+      }
+     },
+     {
+      "text": "Drifloon",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "DRIFLOON: Foon!"
+       ]
+      }
+     },
+     {
+      "text": "Clefairy girl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Talk to your Pokemon! Sometimes it finds things lying around."
+       ]
+      }
+     },
+     {
+      "text": "Clefairy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Clefairy is holding something shiny in its hands..."
+       ]
+      }
+     },
+     {
+      "text": "Pikachu ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "PIKACHU: Pika pika!"
+       ]
+      }
+     },
+     {
+      "text": "Pikachu fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My Pikachu follows me everywhere I go! It's just the two of us! Wahaha!"
+       ]
+      }
+     },
+     {
+      "text": "TM43",
+      "action": "EVENT",
+      "color": "GOLD",
+      "found": true,
+      "flag_condition": "not got_tm43_amity_square",
+      "event": {
+       "lines": [
+        "You found TM43!"
+       ],
+       "gift_item": {
+        "TM43": 1
+       },
+       "flag": "got_tm43_amity_square"
+      }
+     },
+     {
+      "text": "the Spooky Plate",
+      "action": "EVENT",
+      "color": "GOLD",
+      "found": true,
+      "flag_condition": "not got_spooky_plate_amity_square",
+      "event": {
+       "lines": [
+        "You found the Spooky Plate!"
+       ],
+       "gift_item": {
+        "SPOOKY_PLATE": 1
+       },
+       "flag": "got_spooky_plate_amity_square"
+      }
+     },
+     {
+      "text": "Receptionist",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Your Pokemon looks so happy walking beside you! Please enjoy the square together."
+       ]
+      }
+     },
+     {
+      "text": "Receptionist ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Your Pokemon looks so happy walking beside you! Please enjoy the square together."
+       ]
+      }
+     }
+    ],
+    "scenes": [
+     {
+      "trigger": {
+       "zone": [
+        17,
+        17,
+        17,
+        17
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       35,
+       16
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        16,
+        18,
+        16,
+        18
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       35,
+       16
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        18,
+        18,
+        18,
+        18
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       35,
+       16
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        35,
+        16,
+        35,
+        16
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       17,
+       17
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        34,
+        17,
+        34,
+        17
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       17,
+       17
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        36,
+        17,
+        36,
+        17
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       17,
+       17
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        52,
+        26,
+        52,
+        26
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       47,
+       9
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        51,
+        27,
+        51,
+        27
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       33,
+       8
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        53,
+        27,
+        53,
+        27
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       15,
+       11
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        47,
+        9,
+        47,
+        9
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       52,
+       26
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        46,
+        10,
+        46,
+        10
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       15,
+       11
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        48,
+        10,
+        48,
+        10
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       33,
+       8
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        15,
+        11,
+        15,
+        11
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       52,
+       26
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        14,
+        12,
+        14,
+        12
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       26,
+       10
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        16,
+        12,
+        16,
+        12
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       41,
+       17
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        33,
+        8,
+        33,
+        8
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       52,
+       26
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        32,
+        9,
+        32,
+        9
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       41,
+       17
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        34,
+        9,
+        34,
+        9
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       26,
+       10
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        26,
+        10,
+        26,
+        10
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       47,
+       9
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        25,
+        11,
+        25,
+        11
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       47,
+       35
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        27,
+        11,
+        27,
+        11
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       15,
+       11
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        41,
+        17,
+        41,
+        17
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       47,
+       9
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        40,
+        18,
+        40,
+        18
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       33,
+       8
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        42,
+        18,
+        42,
+        18
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       47,
+       35
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        47,
+        35,
+        47,
+        35
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       52,
+       26
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        46,
+        36,
+        46,
+        36
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       15,
+       11
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        48,
+        36,
+        48,
+        36
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       33,
+       8
+      ]
+     }
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "pt_ground/D11R0101.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    }
    }
   },
   "inside": {
@@ -248978,8 +249853,8 @@
      "ccccccccccc",
      "ccccccccccc",
      "cmmm...mmmc",
-     "c.........c",
-     "c.m.....m.c",
+     "c.......N.c",
+     "c.m..N..m.c",
      "c.........c",
      "cc......m.c",
      "cz..v.....c",
@@ -249175,7 +250050,107 @@
        1
       ]
      }
-    }
+    },
+    "people": [
+     [
+      {
+       "text": "Mother",
+       "action": "EVENT",
+       "condition": "not:beat_sinnoh_champion",
+       "event": {
+        "lines": [
+         "Our boy has so much energy! ...That's the best way to be."
+        ]
+       }
+      },
+      {
+       "text": "Mother",
+       "action": "EVENT",
+       "condition": [
+        "beat_sinnoh_champion",
+        "not:canalave_dream_woke"
+       ],
+       "event": {
+        "lines": [
+         "Our boy fell asleep and won't wake... It's an endless nightmare.",
+         "It's happened in Canalave before. People who never woke up again...",
+         "My husband says a feather from Fullmoon Island can chase the dark away. He sails from the harbor."
+        ]
+       }
+      },
+      {
+       "text": "Mother",
+       "action": "EVENT",
+       "condition": "canalave_dream_woke",
+       "event": {
+        "lines": [
+         "Thank you! We can never thank you enough, but thank you!"
+        ]
+       }
+      }
+     ],
+     [
+      {
+       "text": "Little boy",
+       "action": "EVENT",
+       "condition": "not:beat_sinnoh_champion",
+       "event": {
+        "lines": [
+         "I'm going to be a sailor like my dad! The sea doesn't scare him one bit!",
+         "...But a Gym Leader would be cool too. Byron's so strong!"
+        ]
+       }
+      },
+      {
+       "text": "Little boy",
+       "action": "EVENT",
+       "condition": [
+        "beat_sinnoh_champion",
+        "not:canalave_dream_woke",
+        "has_item:LUNAR_WING"
+       ],
+       "event": {
+        "lines": [
+         "The little boy is tossing and turning in his sleep...",
+         "The Lunar Wing began to glow softly...",
+         "The boy's face became calm and peaceful!",
+         "Little boy: ...Mom? Dad? I had a scary dream. A dark place, and a dark Pokemon...",
+         "Little boy: But I could hear your voices the whole time. I'm not scared now!"
+        ],
+        "flag": "canalave_dream_woke"
+       }
+      },
+      {
+       "text": "Little boy",
+       "action": "EVENT",
+       "condition": [
+        "beat_sinnoh_champion",
+        "not:canalave_dream_woke",
+        "not:has_item:LUNAR_WING"
+       ],
+       "event": {
+        "lines": [
+         "The little boy is tossing and turning in his sleep. He won't wake up...",
+         "He seems to be having a terrible nightmare."
+        ],
+        "flag": "canalave_dream_seen",
+        "done": [
+         "The little boy is still trapped in his nightmare..."
+        ]
+       }
+      },
+      {
+       "text": "Little boy",
+       "action": "EVENT",
+       "condition": "canalave_dream_woke",
+       "event": {
+        "lines": [
+         "I had the worst dream, but it's over! When I grow up, I'll sail to Fullmoon Island myself!"
+        ]
+       }
+      }
+     ]
+    ]
    },
    "gym_2f": {
     "theme": "room",

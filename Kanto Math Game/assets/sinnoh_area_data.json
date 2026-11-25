@@ -1507,7 +1507,7 @@
         "travel_options": [
             {"text": "Route 218", "target_area": "SINNOH_ROUTE_218"},
             {"text": "Iron Island", "target_area": "IRON_ISLAND"},
-            {"text": "Fullmoon Island", "target_area": "FULLMOON_ISLAND", "condition": "beat_sinnoh_champion"},
+            {"text": "Fullmoon Island", "target_area": "FULLMOON_ISLAND", "condition": "canalave_dream_seen"},
             {"text": "Newmoon Island", "target_area": "NEWMOON_ISLAND", "condition": "beat_sinnoh_champion", "item_condition": "MEMBER_CARD"}
         ],
         "explore_options": [
