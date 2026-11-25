@@ -2097,11 +2097,13 @@ POST_JOBS = [   # (id, what, where it starts (Fly), steps, the flag that says it
     # (Sky Pillar's stretch of sea is reached as in Emerald's maps: Mossdeep, Route 127, Route 128, then a Dive on Route
     #  129 up into its north sea and west along Routes 130-131 - Route 131's south half, off Pacifidlog, doesn't join it; 11-24.
     #  Wallace's job sails it; the jobs after him start at Sky Pillar's door and climb it)
+    # (11-25: each leg its own "done" - the next route's visited flag, cleared as the job starts - since main's marker (J7,
+    #  c188181b9) waits on an earlier way-point that isn't done: five sharing delta_wallace_131 kept it on Route 127's)
     ("delta_wallace", "Wallace by Sky Pillar (Route 131)", "MOSSDEEP_CITY",
-     [{"area": "HOENN_ROUTE_127", "floor": 0, "at": [20, 79], "label": "To Route 128", "done": "delta_wallace_131"},
-      {"area": "HOENN_ROUTE_128", "floor": 0, "at": [32, 39], "label": "To Route 129", "done": "delta_wallace_131"},
-      {"area": "HOENN_ROUTE_129", "floor": 0, "at": [0, 5], "label": "To Route 130", "done": "delta_wallace_131"},
-      {"area": "HOENN_ROUTE_130", "floor": 0, "at": [0, 5], "label": "To Route 131", "done": "delta_wallace_131"},
+     [{"area": "HOENN_ROUTE_127", "floor": 0, "at": [20, 79], "label": "To Route 128", "done": "visited_HOENN_ROUTE_128"},
+      {"area": "HOENN_ROUTE_128", "floor": 0, "at": [32, 39], "label": "To Route 129", "done": "visited_HOENN_ROUTE_129"},
+      {"area": "HOENN_ROUTE_129", "floor": 0, "at": [0, 5], "label": "To Route 130", "done": "visited_HOENN_ROUTE_130"},
+      {"area": "HOENN_ROUTE_130", "floor": 0, "at": [0, 5], "label": "To Route 131", "done": "visited_HOENN_ROUTE_131"},
       {"area": "HOENN_ROUTE_131", "floor": 0, "at": [37, 6], "label": "Wallace", "done": "delta_wallace_131"}], "delta_wallace_131"),
     ("delta_zinnia", "Zinnia atop Sky Pillar", "HOENN_SKY_PILLAR",
      [{"area": "HOENN_SKY_PILLAR", "floor": 7, "at": [14, 10], "label": "Zinnia", "done": "delta_zinnia_defeated"}], "delta_zinnia_defeated"),
@@ -2143,6 +2145,9 @@ if ENDED == "CHAMPION" and os.environ.get("KPT_POST", "1") != "0":
         _how = "?"
         try:
             if not _got(_flag):
+                for _s in _steps:
+                    if str(_s.get("done", "")).startswith("visited_"):
+                        story.story_flags.pop(_s["done"], None)
                 put_at(_fly)
                 _how = play_through()
             else:
