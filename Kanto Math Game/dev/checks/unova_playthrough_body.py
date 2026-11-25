@@ -369,6 +369,9 @@ def _pick_hover(st):
 HOVER = {}
 
 
+STEP_GUST_FRAMES = 6   # (a step's frames, src/states/overworld/dungeon.py STEP_FRAMES)
+
+
 def settle(limit=9000):
     """Run the game, tapping through what's said and winning what's fought, till it waits for you on a map."""
     calm = odd = 0
@@ -794,12 +797,113 @@ def route(st, goal, through=False, blocked=(), prev=None):
     return steps
 
 
+def _gust_safe(st, gc, t):
+    from src.world import gusts as _gu
+    return not _gu.in_lane(gc, t) or _gu.sheltered(st, gc, t)
+
+
+def _gust_wait(st, path, k):
+    """Before step k of path in a windy room: wait while it blows you along, then on a safe tile till the calm left is
+    enough to reach the next safe tile on the path (Mistralton Gym's turbines, src/world/gusts.py)."""
+    from src.world import gusts as _gu
+    gc = _gu._cfg(st)
+    if not gc:
+        return
+    every, warn, blow = int(gc.get("every", 300)), int(gc.get("warn", 90)), int(gc.get("blow", 40))
+    cells = [w for _d, w in path[k:] if w is not None]
+    need = next((i + 1 for i, w in enumerate(cells) if _gust_safe(st, gc, w)), len(cells))
+    for _ in range(every * 3):
+        if g.current_state is not st:
+            return
+        sliding = getattr(st, "_gust_slide", False) or st.anim > 0
+        left = every - blow - warn - getattr(st, "_gust_t", 0) % max(1, every)
+        if not sliding and (not _gu.in_lane(gc, cells[0] if cells else pos(st)) or
+                            (_gu.phase(st) == "calm" and left > (need + 2) * (STEP_GUST_FRAMES + 2))):
+            return
+        if not sliding and not _gust_safe(st, gc, pos(st)):
+            return   # (caught in the open: go on, the next shelter is the nearest safety)
+        st.update(); st.draw(); STATE["frames"] += 1
+
+
+_GUST_IN = {"on": False}
+
+
+def _gust_chain(st, goal):
+    """Shelter to shelter (Mistralton Gym): the safe tiles to stop at on the way to goal, each hop short enough to walk
+    in one calm between gusts. [] when goal is one hop away (or the room has no wind); None when no chain is found."""
+    from src.world import gusts as _gu
+    gc = _gu._cfg(st)
+    if not gc:
+        return []
+    every, warn, blow = int(gc.get("every", 300)), int(gc.get("warn", 90)), int(gc.get("blow", 40))
+    H = max(4, (every - warn - blow) // (STEP_GUST_FRAMES + 2) - 3)
+    ppl = set(st._people())
+
+    def opn(t):
+        x, y = t
+        return 0 <= y < st.h and 0 <= x < st.w and st.rows[y][x] == "." and t not in ppl and t not in st.exits
+
+    def hop_from(s):
+        seen, frontier, got = {s: 0}, [s], {}
+        while frontier:
+            nxt = []
+            for x, y in frontier:
+                for dx, dy in ((0, 1), (0, -1), (1, 0), (-1, 0)):
+                    q = (x + dx, y + dy)
+                    if q == goal:
+                        got[goal] = seen[(x, y)] + 1
+                    if q in seen or not opn(q) or seen[(x, y)] + 1 > H:
+                        continue
+                    seen[q] = seen[(x, y)] + 1
+                    nxt.append(q)
+                    if _gust_safe(st, gc, q):
+                        got[q] = seen[q]
+            frontier = nxt
+        return got
+    start = pos(st)
+    prev, frontier = {start: None}, [start]
+    while frontier and goal not in prev:
+        nxt = []
+        for s in frontier:
+            for q in hop_from(s):
+                if q not in prev:
+                    prev[q] = s
+                    nxt.append(q)
+        frontier = nxt
+    if goal not in prev:
+        return None
+    chain, t = [], goal
+    while t != start:
+        chain.append(t)
+        t = prev[t]
+    chain.reverse()
+    return chain[:-1]
+
+
+def _gust_hops(goal, why):
+    """Walk shelter to shelter toward goal in a windy room, then let go() take the last hop."""
+    for _try in range(80):
+        st = settle()
+        if not is_map(st) or not getattr(st, "gusts", None):
+            return
+        chain = _gust_chain(st, goal)
+        if not chain:
+            return
+        _GUST_IN["on"] = True
+        try:
+            go(chain[0], why + " (shelter to shelter)")
+        finally:
+            _GUST_IN["on"] = False
+
+
 def go(goal, why=""):
     """Walk to goal with real steps and walk into / onto it. -> (how it ended, steps walked):
     "arrived" (stood on it or walked into it), "left" (the walk onto it took you somewhere else: a way out),
     "moved" (something on the way took you elsewhere), "nopath", "gaveup"."""
     L0, n, blocked, fails, replans = loc(), 0, set(), collections.Counter(), 0
     goal = tuple(goal)
+    if getattr(g.current_state, "gusts", None) and not _GUST_IN["on"]:
+        _gust_hops(goal, why)   # (Mistralton Gym: shelter to shelter first)
     while True:
         st = settle()
         if not is_map(st) or loc() != L0:
@@ -816,6 +920,11 @@ def go(goal, why=""):
             st = g.current_state
             if not is_map(st):
                 st = settle()
+            if getattr(st, "gusts", None):
+                _gust_wait(st, path, k)
+                if g.current_state is not st or pos(st) != (path[k - 1][1] if k else pos(st)) and k:
+                    redo = True   # (blown off the path: plan again from where the wind left you)
+                    break
             before, w0, s0 = pos(st), world(), len(said)
             try:
                 st.facing = d
