@@ -36,6 +36,7 @@ region_dex             main     story
 region_followers       main     world
 rivals                 main     story
 room_light             main     world
+scene_event            main     world,quick
 rotom_forms            main     battle
 savename               main     ui,quick
 savespot               main     world
