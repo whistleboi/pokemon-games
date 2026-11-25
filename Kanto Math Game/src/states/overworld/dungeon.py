@@ -1361,7 +1361,11 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
                 continue
             _free = lambda t: (0 <= t[0] < f.w and 0 <= t[1] < f.h and f.walkable(*t) and not f.occupied(*t)
                                and f.tile(*t) != core.SURF and t != tuple(self.run.player))
-            spot = partners.pick_spot((m.x, m.y), _free, self.run.player)   # (never the owner's last side you can reach)
+            _ground = lambda t: (0 <= t[0] < f.w and 0 <= t[1] < f.h and f.tile(*t) != core.SURF
+                                 and (f.walkable(*t) or str(f.decor.get(tuple(t), "")).startswith("barrier")
+                                      or any((o.x, o.y) == tuple(t) for o in f.movers)))   # (a barrier, a person: the way)
+            spot = partners.pick_spot((m.x, m.y), _free, self.run.player, _ground)   # (never the owner's last side you can reach,
+                                                                                     #  nor the one way into a room: Ein's Golbat)
             if spot is None:
                 continue
             species, owner = got
