@@ -2366,6 +2366,69 @@
    335
   ]
  },
+ "456": {
+  "b2_id": 456,
+  "class": "TRAINER",
+  "levels": [
+   76,
+   76,
+   76,
+   76,
+   76,
+   78
+  ],
+  "movesets": {
+   "350": [
+    "BLIZZARD",
+    "HYDRO-PUMP",
+    "ATTRACT",
+    "REST"
+   ],
+   "442": [
+    "SHADOW-BALL",
+    "DOUBLE-TEAM",
+    "DREAM-EATER",
+    "HYPNOSIS"
+   ],
+   "445": [
+    "DRAGON-RUSH",
+    "EARTHQUAKE",
+    "STONE-EDGE",
+    "FIRE-BLAST"
+   ],
+   "448": [
+    "EXTREMESPEED",
+    "CLOSE-COMBAT",
+    "FLASH-CANNON",
+    "PSYCHIC"
+   ],
+   "468": [
+    "EXTREMESPEED",
+    "AURA-SPHERE",
+    "AIR-SLASH",
+    "THUNDER-WAVE"
+   ],
+   "471": [
+    "ICE-BEAM",
+    "SHADOW-BALL",
+    "SIGNAL-BEAM",
+    "BARRIER"
+   ]
+  },
+  "name": "Pokemon Trainer Cynthia",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "trainer.png",
+  "team": [
+   442,
+   350,
+   468,
+   448,
+   471,
+   445
+  ]
+ },
  "47": {
   "b2_id": 47,
   "class": "LASS",
@@ -2967,6 +3030,432 @@
    521,
    514,
    626,
+   497
+  ]
+ },
+ "693": {
+  "b2_id": 693,
+  "class": "TRAINER",
+  "held_items": {
+   "330": "DRAGON_FANG",
+   "500": "CHARCOAL",
+   "516": "MYSTIC_WATER",
+   "521": "SCOPE_LENS",
+   "604": "LEFTOVERS",
+   "626": "MUSCLE_BAND"
+  },
+  "levels": [
+   62,
+   62,
+   62,
+   62,
+   62,
+   64
+  ],
+  "movesets": {
+   "330": [
+    "EARTHQUAKE",
+    "FIRE-BLAST",
+    "DRAGON-CLAW",
+    "STONE-EDGE"
+   ],
+   "500": [
+    "FIRE-BLAST",
+    "HEAD-SMASH",
+    "HAMMER-ARM",
+    "SCALD"
+   ],
+   "516": [
+    "ROCK-SLIDE",
+    "CRUNCH",
+    "BRICK-BREAK",
+    "SURF"
+   ],
+   "521": [
+    "FACADE",
+    "AERIAL-ACE",
+    "U-TURN",
+    "SWAGGER"
+   ],
+   "604": [
+    "WILD-CHARGE",
+    "FLAMETHROWER",
+    "DRAGON-CLAW",
+    "CRUNCH"
+   ],
+   "626": [
+    "HEAD-CHARGE",
+    "WILD-CHARGE",
+    "MEGAHORN",
+    "EARTHQUAKE"
+   ]
+  },
+  "name": "Pokemon Trainer Rival",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "trainer.png",
+  "team": [
+   521,
+   516,
+   626,
+   330,
+   604,
+   500
+  ]
+ },
+ "694": {
+  "b2_id": 694,
+  "class": "TRAINER",
+  "held_items": {
+   "330": "DRAGON_FANG",
+   "503": "MYSTIC_WATER",
+   "512": "MIRACLE_SEED",
+   "521": "SCOPE_LENS",
+   "604": "LEFTOVERS",
+   "626": "MUSCLE_BAND"
+  },
+  "levels": [
+   62,
+   62,
+   62,
+   62,
+   62,
+   64
+  ],
+  "movesets": {
+   "330": [
+    "EARTHQUAKE",
+    "FIRE-BLAST",
+    "DRAGON-CLAW",
+    "STONE-EDGE"
+   ],
+   "503": [
+    "HYDRO-PUMP",
+    "MEGAHORN",
+    "ICE-BEAM",
+    "GRASS-KNOT"
+   ],
+   "512": [
+    "ROCK-SLIDE",
+    "CRUNCH",
+    "BRICK-BREAK",
+    "ENERGY-BALL"
+   ],
+   "521": [
+    "FACADE",
+    "AERIAL-ACE",
+    "U-TURN",
+    "SWAGGER"
+   ],
+   "604": [
+    "WILD-CHARGE",
+    "FLAMETHROWER",
+    "DRAGON-CLAW",
+    "CRUNCH"
+   ],
+   "626": [
+    "HEAD-CHARGE",
+    "WILD-CHARGE",
+    "MEGAHORN",
+    "EARTHQUAKE"
+   ]
+  },
+  "name": "Pokemon Trainer Rival",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "trainer.png",
+  "team": [
+   521,
+   512,
+   626,
+   330,
+   604,
+   503
+  ]
+ },
+ "695": {
+  "b2_id": 695,
+  "class": "TRAINER",
+  "held_items": {
+   "330": "DRAGON_FANG",
+   "497": "MIRACLE_SEED",
+   "514": "CHARCOAL",
+   "521": "SCOPE_LENS",
+   "604": "LEFTOVERS",
+   "626": "MUSCLE_BAND"
+  },
+  "levels": [
+   62,
+   62,
+   62,
+   62,
+   62,
+   64
+  ],
+  "movesets": {
+   "330": [
+    "EARTHQUAKE",
+    "FIRE-BLAST",
+    "DRAGON-CLAW",
+    "STONE-EDGE"
+   ],
+   "497": [
+    "LEAF-STORM",
+    "LEAF-BLADE",
+    "DRAGON-TAIL",
+    "COIL"
+   ],
+   "514": [
+    "ROCK-SLIDE",
+    "CRUNCH",
+    "BRICK-BREAK",
+    "FLAMETHROWER"
+   ],
+   "521": [
+    "FACADE",
+    "AERIAL-ACE",
+    "U-TURN",
+    "SWAGGER"
+   ],
+   "604": [
+    "WILD-CHARGE",
+    "FLAMETHROWER",
+    "DRAGON-CLAW",
+    "CRUNCH"
+   ],
+   "626": [
+    "HEAD-CHARGE",
+    "WILD-CHARGE",
+    "MEGAHORN",
+    "EARTHQUAKE"
+   ]
+  },
+  "name": "Pokemon Trainer Rival",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "trainer.png",
+  "team": [
+   521,
+   514,
+   626,
+   330,
+   604,
+   497
+  ]
+ },
+ "696": {
+  "b2_id": 696,
+  "class": "TRAINER",
+  "held_items": {
+   "330": "DRAGON_GEM",
+   "500": "FOCUS_SASH",
+   "516": "SALAC_BERRY",
+   "521": "SCOPE_LENS",
+   "604": "LEFTOVERS",
+   "626": "MUSCLE_BAND"
+  },
+  "levels": [
+   65,
+   65,
+   65,
+   65,
+   65,
+   67
+  ],
+  "movesets": {
+   "330": [
+    "EARTHQUAKE",
+    "FIRE-BLAST",
+    "DRACO-METEOR",
+    "STONE-EDGE"
+   ],
+   "500": [
+    "FIRE-BLAST",
+    "HEAD-SMASH",
+    "HAMMER-ARM",
+    "SCALD"
+   ],
+   "516": [
+    "ROCK-SLIDE",
+    "FOCUS-BLAST",
+    "ACROBATICS",
+    "SURF"
+   ],
+   "521": [
+    "GIGA-IMPACT",
+    "AERIAL-ACE",
+    "U-TURN",
+    "SWAGGER"
+   ],
+   "604": [
+    "WILD-CHARGE",
+    "FLAMETHROWER",
+    "DRAGON-CLAW",
+    "CRUNCH"
+   ],
+   "626": [
+    "HEAD-CHARGE",
+    "WILD-CHARGE",
+    "MEGAHORN",
+    "EARTHQUAKE"
+   ]
+  },
+  "name": "Pokemon Trainer Rival",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "trainer.png",
+  "team": [
+   521,
+   516,
+   626,
+   330,
+   604,
+   500
+  ]
+ },
+ "697": {
+  "b2_id": 697,
+  "class": "TRAINER",
+  "held_items": {
+   "330": "DRAGON_GEM",
+   "503": "FOCUS_SASH",
+   "512": "SALAC_BERRY",
+   "521": "SCOPE_LENS",
+   "604": "LEFTOVERS",
+   "626": "MUSCLE_BAND"
+  },
+  "levels": [
+   65,
+   65,
+   65,
+   65,
+   65,
+   67
+  ],
+  "movesets": {
+   "330": [
+    "EARTHQUAKE",
+    "FIRE-BLAST",
+    "DRACO-METEOR",
+    "STONE-EDGE"
+   ],
+   "503": [
+    "HYDRO-PUMP",
+    "MEGAHORN",
+    "ICE-BEAM",
+    "GRASS-KNOT"
+   ],
+   "512": [
+    "ROCK-SLIDE",
+    "FOCUS-BLAST",
+    "ACROBATICS",
+    "ENERGY-BALL"
+   ],
+   "521": [
+    "GIGA-IMPACT",
+    "AERIAL-ACE",
+    "U-TURN",
+    "SWAGGER"
+   ],
+   "604": [
+    "WILD-CHARGE",
+    "FLAMETHROWER",
+    "DRAGON-CLAW",
+    "CRUNCH"
+   ],
+   "626": [
+    "HEAD-CHARGE",
+    "WILD-CHARGE",
+    "MEGAHORN",
+    "EARTHQUAKE"
+   ]
+  },
+  "name": "Pokemon Trainer Rival",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "trainer.png",
+  "team": [
+   521,
+   512,
+   626,
+   330,
+   604,
+   503
+  ]
+ },
+ "698": {
+  "b2_id": 698,
+  "class": "TRAINER",
+  "held_items": {
+   "330": "DRAGON_GEM",
+   "497": "FOCUS_SASH",
+   "514": "SALAC_BERRY",
+   "521": "SCOPE_LENS",
+   "604": "LEFTOVERS",
+   "626": "MUSCLE_BAND"
+  },
+  "levels": [
+   65,
+   65,
+   65,
+   65,
+   65,
+   67
+  ],
+  "movesets": {
+   "330": [
+    "EARTHQUAKE",
+    "FIRE-BLAST",
+    "DRACO-METEOR",
+    "STONE-EDGE"
+   ],
+   "497": [
+    "LEAF-STORM",
+    "LEAF-BLADE",
+    "DRAGON-TAIL",
+    "COIL"
+   ],
+   "514": [
+    "ROCK-SLIDE",
+    "FOCUS-BLAST",
+    "ACROBATICS",
+    "FLAMETHROWER"
+   ],
+   "521": [
+    "GIGA-IMPACT",
+    "AERIAL-ACE",
+    "U-TURN",
+    "SWAGGER"
+   ],
+   "604": [
+    "WILD-CHARGE",
+    "FLAMETHROWER",
+    "DRAGON-CLAW",
+    "CRUNCH"
+   ],
+   "626": [
+    "HEAD-CHARGE",
+    "WILD-CHARGE",
+    "MEGAHORN",
+    "EARTHQUAKE"
+   ]
+  },
+  "name": "Pokemon Trainer Rival",
+  "rewards": {
+   "balls": 5
+  },
+  "sprite": "trainer.png",
+  "team": [
+   521,
+   514,
+   626,
+   330,
+   604,
    497
   ]
  },
