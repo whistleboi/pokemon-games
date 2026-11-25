@@ -54,6 +54,42 @@ story.current_area_key = "PAST_NUVEMA_TOWN"
 check(not fly_ok(g, "ASPERTIA_CITY"), "the past: no flying out to today")
 story.current_area_key = "NUVEMA_TOWN"
 
+print("4) the past from Nuvema to Striaton")
+T = {k: tmaps[k] for k in ("PAST_NUVEMA_TOWN", "PAST_UNOVA_ROUTE_1", "PAST_ACCUMULA_TOWN", "PAST_UNOVA_ROUTE_2", "PAST_STRIATON_CITY",
+                           "PAST_DREAMYARD", "PAST_DREAMYARD_B1F")}
+check(T["PAST_NUVEMA_TOWN"]["exits"].get("^") == "PAST_UNOVA_ROUTE_1"
+      and set(T["PAST_UNOVA_ROUTE_1"]["exits"].values()) == {"PAST_ACCUMULA_TOWN", "PAST_NUVEMA_TOWN"}
+      and T["PAST_ACCUMULA_TOWN"]["rooms"]["gate_w"]["exits"].get("<") == "PAST_UNOVA_ROUTE_2"
+      and set(T["PAST_UNOVA_ROUTE_2"]["exits"].values()) == {"PAST_STRIATON_CITY", "PAST_ACCUMULA_TOWN"}
+      and {"PAST_UNOVA_ROUTE_2", "PAST_DREAMYARD"} <= set(T["PAST_STRIATON_CITY"]["exits"].values()),
+      "Nuvema -> Route 1 -> Accumula -> its gate -> Route 2 -> Striaton -> the Dreamyard, all two years ago")
+check(all(str(m["roofs"]["_picture"]["f"]).startswith("w1_ground/") and SP[k].get("era") == "past" for k, m in T.items()),
+      "every one drawn from White's maps, an area of the past")
+for k in ("PAST_UNOVA_ROUTE_1", "PAST_UNOVA_ROUTE_2", "PAST_DREAMYARD", "PAST_DREAMYARD_B1F"):
+    pool = {t["name"] for t in SP[k]["trainer_pool"]}
+    check(SP[k].get("wild_tables") and set(T[k].get("trainer_spots", [])) == pool, f"{k}: White's wild tables and trainers ({len(pool)})")
+gyms = T["PAST_STRIATON_CITY"]["rooms"]["gym"]
+check(len(gyms.get("barred") or []) == 3 and len(gyms.get("scenes") or []) == 9, "the Gym: three curtains, three switches before each")
+
+print("5) the Trio Badge")
+flags["starter_unova"] = 495
+story.inventory["VS_SEEKER"] = 1   # (else the first trainer talk hands you one instead)
+flags.pop("past_badge_trio", None)
+st = town("PAST_STRIATON_CITY", (12, 5), "gym")
+talk(st, "Chili")
+cur = until(("TrainerIntroState", "TrainerBattleState", "GymBattleState", "BattleState"), 800)
+t = team_of(cur)
+check(t[:1] == [(631, 65)], f"Snivy first: Chili steps up, with Black 2's team ({t})")
+if type(cur).__name__ in ("TrainerIntroState", "TrainerBattleState", "GymBattleState", "BattleState"):
+    win(cur)
+settle(300)
+check(flags.get("past_badge_trio"), "the Trio Badge, a keepsake")
+
+print("6) back from any Center two years ago")
+st = town("PAST_STRIATON_CITY", (6, 17), "center")
+talk(st, "Trainer with a C-Gear"); settle(400)
+check(story.current_area_key == "NUVEMA_TOWN", f"the C-Gear's Memory Link takes you home ({story.current_area_key})")
+
 for f_ in fails:
     print("  -", f_)
 print(f"##### {len(fails)} failures")

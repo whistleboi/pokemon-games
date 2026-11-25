@@ -46,6 +46,9 @@ PLACES = {"ASPERTIA_CITY": 427, "UNOVA_ROUTE_19": 437, "UNOVA_ROUTE_20": 446, "F
           "PINWHEEL_FOREST": 155, "PINWHEEL_FOREST_OUTSIDE": 154, "UNOVA_ROUTE_3": 321, "WELLSPRING_CAVE": 324,
           "WELLSPRING_CAVE_B1F": 325, "DREAMYARD": 152, "DREAMYARD_B1F": 153, "UNOVA_ROUTE_2": 319, "UNOVA_ROUTE_1": 317, "STRIATON_CITY": 6, "NUVEMA_TOWN": 389, "UNOVA_ROUTE_8": 345, "MOOR_OF_ICIRRUS": 346, "ICIRRUS_CITY": 113, "DRAGONSPIRAL_TOWER": 205,   # (batch 12a)
           "UNOVA_ROUTE_14": 374, "ABUNDANT_SHRINE": 376, "UNOVA_ROUTE_15": 378, "MARVELOUS_BRIDGE": 263}   # (batch 11a)   # (batch 7a: both versions' chambers share the tables)
+# Unova two years ago (batch 12c, 11-25): run with --white to read Pokemon White's own tables into the past's areas.
+PLACES_W1 = {"PAST_UNOVA_ROUTE_1": 317, "PAST_UNOVA_ROUTE_2": 319, "PAST_STRIATON_CITY": 6, "PAST_DREAMYARD": 152,
+             "PAST_DREAMYARD_B1F": 153, "PAST_NUVEMA_TOWN": 389}
 P = os.path.join(GAME, "assets", "unova_area_data.json")
 NL = "\r\n"
 
@@ -120,16 +123,17 @@ def main():
     import uwild
     import nds5
     Z = g5map.Zones()
-    ZW = g5map.Zones(nds5.W2)   # (White 2's file: its Pokemon go in the same tables, 11-20)
+    white = nds5.GAME == "W1"
+    ZW = None if white else g5map.Zones(nds5.W2)   # (White 2's file: its Pokemon go in the same tables, 11-20; not for the past)
     raw = open(P, encoding="utf-8", newline="").read()
     data = json.loads(raw)
     sp = data["STORY_PROGRESSION"]
-    for area, zid in PLACES.items():
+    for area, zid in (PLACES_W1 if white else PLACES).items():
         t = uwild.tables(Z, zid)
         a = sp[area]
         if not t:
             continue
-        t = merged(t, uwild.tables(ZW, zid))
+        t = merged(t, uwild.tables(ZW, zid)) if ZW else t
         a["wild_tables"] = t
         a.pop("wild_tables_by_version", None)
 

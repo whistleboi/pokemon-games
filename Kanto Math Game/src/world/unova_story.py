@@ -36,6 +36,14 @@ def condition(story, arg):
         want = arg.split(":", 1)[1].upper().replace("_", "-")
         return any(p and not getattr(p, "is_egg", False) and str(getattr(p, "ability", "") or "").upper().replace("_", "-") == want
                    for p in story.player_team)
+    if arg.startswith("starter:"):   # (your first partner in Unova was this species, or its line: "starter:495" Snivy -
+        want = int(arg.split(":", 1)[1])   #  Striaton's brother whose type beats it steps up, as Black / White; 12c, 11-25)
+        sid = story.story_flags.get("starter_unova") or (story.player_team[0].id if story.player_team else None)
+        try:
+            sid = int(sid)
+        except (TypeError, ValueError):
+            return False
+        return want <= sid <= want + 2
     if arg == "female_player":
         return female(story)
     if arg == "male_player":
