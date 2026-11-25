@@ -40,6 +40,13 @@ def partner_people(t):
     return {spot: o for spot, o in t.people.items() if isinstance(o, dict) and o.get("_partner_of") is not None}
 
 
+# (11-25, Unova: Iris at the end of the League temple's one-tile corridor - her Haxorus stood in it, in front of her)
+_corr = {(5, y) for y in range(0, 10)}   # (a corridor running north-south, x = 5; the owner at its north end, (5, 0))
+check(partners.pick_spot((5, 0), lambda t: t in _corr and t != (5, 0)) is None, "the owner at the end of a one-tile corridor: no partner (it would block the way)")
+_hall = {(x, y) for x in range(3, 8) for y in range(0, 6)}
+check(partners.pick_spot((5, 2), lambda t: t in _hall and t != (5, 2)) is not None, "...but in an open room: a partner beside them")
+
+
 print("2) in the towns' rooms: Pewter Gym, the Indigo Plateau's League rooms")
 story.enter_region("KANTO")
 t = town("PEWTER_CITY", "KANTO_ROUTE_2")
