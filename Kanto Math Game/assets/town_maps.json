@@ -260695,7 +260695,7 @@
     "art": [
      "ccmmccccmccccccccccmmc",
      "ccmmcccc.cccccmccccccc",
-     "cccccccc.cc.cccccccccc",
+     "cccccccc.cc^cccccccccc",
      "c........j...j.......c",
      "c....................c",
      "c....................c",
@@ -260712,7 +260712,8 @@
      "cccccccccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:15,15"
+     "v": "OUT:15,15",
+     "^": "ROOM:lift_aaron"
     },
     "buildings": {},
     "roofs": {
@@ -261217,6 +261218,721 @@
         "Slow or not, however many tries it takes, I'll beat the Elite Four!"
        ]
       }
+     }
+    ],
+    "title": "Pokemon League"
+   },
+   "lift_aaron": {
+    "theme": "room",
+    "art": [
+     "ccccccccc",
+     "ccccccccc",
+     "cccc^cccc",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c...v...c",
+     "ccccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:house_0101",
+     "^": "ROOM:league_aaron"
+    },
+    "people": [],
+    "roofs": {
+     "_picture": {
+      "f": "pt_ground/C10R0102.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "title": "The lift to Aaron's room"
+   },
+   "league_aaron": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cccccccc^cccccccc",
+     "cccc............c",
+     "cccc.........c.cc",
+     "ccc.....N....c.cc",
+     "cc...........c.cc",
+     "c............c.cc",
+     "c............c.cc",
+     "ccc.............c",
+     "cccc............c",
+     "cccc............c",
+     "ccccccccvcccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:lift_aaron",
+     "^": "ROOM:lift_bertha"
+    },
+    "people": [
+     {
+      "text": "Aaron",
+      "action": "LEAGUE",
+      "index": 0,
+      "lines": [
+       "Aaron: I'm Aaron of the Elite Four. I love Bug Pokemon - beautiful and tough. Let me show you how strong they are!"
+      ]
+     }
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "pt_ground/C10R0103.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "title": "Aaron's room",
+    "barred": [
+     {
+      "tiles": [
+       [
+        8,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "league_won_SINNOH_POKEMON_LEAGUE_1"
+      },
+      "lines": [
+       "The door won't open.",
+       "Win this room's battle first!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        8,
+        12
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "beat_sinnoh_champion"
+      },
+      "lines": [
+       "The door has shut behind you. There's no going back now."
+      ]
+     }
+    ]
+   },
+   "lift_bertha": {
+    "theme": "room",
+    "art": [
+     "ccccccccc",
+     "ccccccccc",
+     "cccc^cccc",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c...v...c",
+     "ccccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:league_aaron",
+     "^": "ROOM:league_bertha"
+    },
+    "people": [],
+    "roofs": {
+     "_picture": {
+      "f": "pt_ground/C10R0104.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "title": "The lift to Bertha's room"
+   },
+   "league_bertha": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cccccccc^cccccccc",
+     "ccccc.......ccccc",
+     "ccccc.......ccccc",
+     "ccccc...N...ccccc",
+     "ccccc.......ccccc",
+     "ccccc.........ccc",
+     "ccccc.........ccc",
+     "cccc.........cccc",
+     "ccccc........cccc",
+     "ccccc........cccc",
+     "ccccccccvcccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:lift_bertha",
+     "^": "ROOM:lift_flint"
+    },
+    "people": [
+     {
+      "text": "Bertha",
+      "action": "LEAGUE",
+      "index": 1,
+      "lines": [
+       "Bertha: Welcome, youngster. I'm Bertha of the Elite Four. My Ground Pokemon and I will show you a thing or two."
+      ]
+     }
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "pt_ground/C10R0105.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "title": "Bertha's room",
+    "barred": [
+     {
+      "tiles": [
+       [
+        8,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "league_won_SINNOH_POKEMON_LEAGUE_2"
+      },
+      "lines": [
+       "The door won't open.",
+       "Win this room's battle first!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        8,
+        12
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "beat_sinnoh_champion"
+      },
+      "lines": [
+       "The door has shut behind you. There's no going back now."
+      ]
+     }
+    ]
+   },
+   "lift_flint": {
+    "theme": "room",
+    "art": [
+     "ccccccccc",
+     "ccccccccc",
+     "cccc^cccc",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c...v...c",
+     "ccccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:league_bertha",
+     "^": "ROOM:league_flint"
+    },
+    "people": [],
+    "roofs": {
+     "_picture": {
+      "f": "pt_ground/C10R0106.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "title": "The lift to Flint's room"
+   },
+   "league_flint": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cccccccc^cccccccc",
+     "ccccc.......ccccc",
+     "ccccc.......ccccc",
+     "ccccc...N...ccccc",
+     "ccccc.......ccccc",
+     "ccccc.......ccccc",
+     "ccccc.......ccccc",
+     "ccccc.......ccccc",
+     "ccccc.......ccccc",
+     "ccccc.......ccccc",
+     "ccccccccvcccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:lift_flint",
+     "^": "ROOM:lift_lucian"
+    },
+    "people": [
+     {
+      "text": "Flint",
+      "action": "LEAGUE",
+      "index": 2,
+      "lines": [
+       "Flint: I'm Flint of the Elite Four! My Fire Pokemon burn hot. Let's see if your passion can match it!"
+      ]
+     }
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "pt_ground/C10R0107.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "title": "Flint's room",
+    "barred": [
+     {
+      "tiles": [
+       [
+        8,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "league_won_SINNOH_POKEMON_LEAGUE_3"
+      },
+      "lines": [
+       "The door won't open.",
+       "Win this room's battle first!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        8,
+        12
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "beat_sinnoh_champion"
+      },
+      "lines": [
+       "The door has shut behind you. There's no going back now."
+      ]
+     }
+    ]
+   },
+   "lift_lucian": {
+    "theme": "room",
+    "art": [
+     "ccccccccc",
+     "ccccccccc",
+     "cccc^cccc",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c...v...c",
+     "ccccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:league_flint",
+     "^": "ROOM:league_lucian"
+    },
+    "people": [],
+    "roofs": {
+     "_picture": {
+      "f": "pt_ground/C10R0108.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "title": "The lift to Lucian's room"
+   },
+   "league_lucian": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cccccccc^cccccccc",
+     "c...............c",
+     "c..c.........c..c",
+     "c..c....N....c..c",
+     "c...............c",
+     "c...............c",
+     "c...............c",
+     "c..c.........c..c",
+     "c..c.........c..c",
+     "c...............c",
+     "ccccccccvcccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:lift_lucian",
+     "^": "ROOM:lift_cynthia"
+    },
+    "people": [
+     {
+      "text": "Lucian",
+      "action": "LEAGUE",
+      "index": 3,
+      "lines": [
+       "Lucian: ...I am Lucian of the Elite Four. I was reading. Let us see if your strength is worth closing the book for."
+      ]
+     }
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "pt_ground/C10R0109.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "title": "Lucian's room",
+    "barred": [
+     {
+      "tiles": [
+       [
+        8,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "league_won_SINNOH_POKEMON_LEAGUE_4"
+      },
+      "lines": [
+       "The door won't open.",
+       "Win this room's battle first!"
+      ]
+     },
+     {
+      "tiles": [
+       [
+        8,
+        12
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "beat_sinnoh_champion"
+      },
+      "lines": [
+       "The door has shut behind you. There's no going back now."
+      ]
+     }
+    ]
+   },
+   "lift_cynthia": {
+    "theme": "room",
+    "art": [
+     "ccccccccc",
+     "ccccccccc",
+     "cccc^cccc",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c.......c",
+     "c...v...c",
+     "ccccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:league_lucian",
+     "^": "ROOM:league_cynthia"
+    },
+    "people": [],
+    "roofs": {
+     "_picture": {
+      "f": "pt_ground/C10R0110.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "title": "The lift to the Champion's room"
+   },
+   "league_cynthia": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "cccccccc^cccccccc",
+     "c...............c",
+     "c...............c",
+     "c...............c",
+     "c...............c",
+     "c...............c",
+     "c...............c",
+     "c.cc.........cc.c",
+     "c.cc.........cc.c",
+     "c.cc....N....cc.c",
+     "c...............c",
+     "c...............c",
+     "c...............c",
+     "c.cc.........cc.c",
+     "c.cc.........cc.c",
+     "c.cc.........cc.c",
+     "c.......v.......c",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:lift_cynthia",
+     "^": "ROOM:league_hall"
+    },
+    "people": [
+     {
+      "text": "Cynthia",
+      "action": "LEAGUE",
+      "index": 4,
+      "lines": [
+       "Cynthia: I'm Cynthia, the Champion. Even I feel it - you and your Pokemon have come this far together. As the Champion, I accept your challenge!"
+      ]
+     }
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "pt_ground/C10R0111.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "title": "The Champion's room",
+    "barred": [
+     {
+      "tiles": [
+       [
+        8,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "hall_of_fame_due_SINNOH_POKEMON_LEAGUE"
+      },
+      "lines": [
+       "The door won't open.",
+       "Only the League's Champion may go through."
+      ]
+     },
+     {
+      "tiles": [
+       [
+        8,
+        18
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "beat_sinnoh_champion"
+      },
+      "lines": [
+       "The door has shut behind you. There's no going back now."
+      ]
+     }
+    ],
+    "scenes": [
+     {
+      "trigger": "enter",
+      "condition": "hall_of_fame_due_SINNOH_POKEMON_LEAGUE",
+      "every": true,
+      "cast": [
+       {
+        "sheet": "pt_doctor.png",
+        "from": [
+         8,
+         17
+        ],
+        "to": "player",
+        "lines": [
+         "Professor Rowan: So. You've done it. You've become the Champion.",
+         "Professor Rowan: You and your Pokemon trusted each other the whole way. That is what made you strong."
+        ],
+        "leave": "back"
+       },
+       {
+        "person": "Cynthia",
+        "lines": [
+         "Cynthia: Come with me. There's somewhere a new Champion has to go."
+        ]
+       }
+      ],
+      "room": [
+       "league_hall",
+       5,
+       21
+      ]
+     }
+    ]
+   },
+   "league_hall": {
+    "theme": "room",
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccccc^ccccc",
+     "c.........c",
+     "c.........c",
+     "c.........c",
+     "c.c.....c.c",
+     "c.c.....c.c",
+     "c.........c",
+     "c.........c",
+     "c.........c",
+     "c.........c",
+     "c.c.....c.c",
+     "c.c.....c.c",
+     "c.........c",
+     "c.........c",
+     "c.........c",
+     "c.........c",
+     "c.c.....c.c",
+     "c.c.....c.c",
+     "c.........c",
+     "c.........c",
+     "c.........c",
+     "c....v....c",
+     "ccccccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:league_cynthia",
+     "^": "ROOM:hall_of_fame"
+    },
+    "people": [],
+    "roofs": {
+     "_picture": {
+      "f": "pt_ground/C10R0112.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "title": "The hall to the Hall of Fame"
+   },
+   "hall_of_fame": {
+    "theme": "room",
+    "art": [
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "ccccccccccccccccc",
+     "c......ccc......c",
+     "c......ccc......c",
+     "c...............c",
+     "c..c.....N...c..c",
+     "c..c.........c..c",
+     "c...............c",
+     "c...............c",
+     "c...............c",
+     "c...............c",
+     "c..c.........c..c",
+     "c..c.........c..c",
+     "c...............c",
+     "c.......v.......c",
+     "ccccccccccccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:league_hall"
+    },
+    "people": [
+     {
+      "text": "Cynthia",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Cynthia: Your team's place in the Hall of Fame is yours forever. Well done, Champion."
+       ]
+      }
+     }
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "pt_ground/C10R0113.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "title": "Hall of Fame",
+    "scenes": [
+     {
+      "who": "Cynthia",
+      "trigger": "enter",
+      "condition": "hall_of_fame_due_SINNOH_POKEMON_LEAGUE",
+      "every": true,
+      "lines": [
+       "Cynthia: This is the Hall of Fame. Every Champion of the Pokemon League is honoured here.",
+       "Cynthia: The Pokemon who fought beside you today will be recorded with you.",
+       "{player_name}'s team was entered in the Hall of Fame!"
+      ],
+      "then": "event:sinnoh_hall_of_fame",
+      "after": "stay"
      }
     ]
    }
@@ -331128,9 +331844,9 @@
     "art": [
      "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccccccccccccr.b..ccccccccccccccccccccccccccccccccccccccc",
-     "cc.........ccccN.b.+ccccccccccccccccccccccccccccccccccccccc",
-     "cc.N.......ccccr.b..ccccccccccccccccccccccccccccccccccccccc",
+     "cccccccccccccccr....ccccccccccccccccccccccccccccccccccccccc",
+     "cc.........ccccN...+ccccccccccccccccccccccccccccccccccccccc",
+     "cc.N.......ccccr....ccccccccccccccccccccccccccccccccccccccc",
      "cc...ccccc.cccccccccccccccccccccccccccccccccccccccccccccccc",
      "cc___ccccc.cccccccccccccccccccccccccccccccccccccccccccccccc",
      "cc...ccccc.cccccccccccccccccccccccccccccccccccccccccccccccc",
@@ -331141,7 +331857,7 @@
      "cc..cccccccccc___ccccccccccccccccccccccc......ccccccccccccc",
      "cc..cccccccccc...ccccccccccccccccccccccc......ccccccccccccc",
      "cc..cccccccccc......ccccccccccccccccccccrrrr..ccccccccccccc",
-     "cc..r.«.b..r.b0....+cccccccccccccccccccc...«..r.«.r.«....cc",
+     "cc..r.«....r..0....+cccccccccccccccccccc...«..r.«.r.«....cc",
      "cc..r.........r.....cccccccccccccccccccc....rr....r......cc",
      "ccccccccccccccc..ccccccccccccccccccccccc.................cc",
      "ccccccccccccccc00ccccccccccccccccccccccccccccccccccccc..Xcc",
@@ -331153,17 +331869,17 @@
      "cccccccccc..ccc..ccc..rcccccccccc___rr..ccccccccccccccccccc",
      "ccccr.......ccc..ccc..+cccccccccc.......ccccccccccccccccccc",
      "ccccX.......ccc..ccc...cccccccccc.......ccccccccccccccccccc",
-     "cccc..cccccccc.bbccc...cccccccccc.......ccccccccccccccccccc",
-     "cccc..cccccccc.b.ccc..Xcccccccccc......rccccccccccccccccccc",
-     "cccc..cccccccc..cccc...cccccccccc...cc.r.b...cccccccccccccc",
+     "cccc..cccccccc...ccc...cccccccccc.......ccccccccccccccccccc",
+     "cccc..cccccccc...ccc..Xcccccccccc......rccccccccccccccccccc",
+     "cccc..cccccccc..cccc...cccccccccc...cc.r.....cccccccccccccc",
      "cccc............cccc...cccccccccc___cc.r0.cc.cccccccccccccc",
-     "cc..bbrrr.......cccc...cccccccccc...cc..bccc.cccccccccccccc",
+     "cc....rrr.......cccc...cccccccccc...cc...ccc.cccccccccccccc",
      "cc.r.....ccccccccccc...cccccccccc...cccr.ccc.cccccccccccccc",
-     "cc..0ccc.cccccccccccr..cccccccccc...ccc.b.....ccccccccccccc",
+     "cc..0ccc.cccccccccccr..cccccccccc...ccc.......ccccccccccccc",
      "cc...ccc.ccccccccccc.r.cccccccccc...ccc..ccc..ccccccccccccc",
      "cccccccc0r...........r.cccccccccc...ccc..cccccccccccccccccc",
-     "cccccccc......Xr...r..b.......r..........cccccccccccccccccc",
-     "cccccccc........r....b.bccccc............cccccccccccccccccc",
+     "cccccccc......Xr...r..........r..........cccccccccccccccccc",
+     "cccccccc........r.......ccccc............cccccccccccccccccc",
      "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
     ],
@@ -331205,7 +331921,76 @@
      "MAX ELIXIR",
      "TM150",
      "FULL RESTORE"
-    ]
+    ],
+    "boxes": [
+     [
+      17,
+      2
+     ],
+     [
+      17,
+      3
+     ],
+     [
+      17,
+      4
+     ],
+     [
+      8,
+      15
+     ],
+     [
+      13,
+      15
+     ],
+     [
+      15,
+      27
+     ],
+     [
+      16,
+      27
+     ],
+     [
+      15,
+      28
+     ],
+     [
+      41,
+      29
+     ],
+     [
+      4,
+      31
+     ],
+     [
+      5,
+      31
+     ],
+     [
+      40,
+      31
+     ],
+     [
+      40,
+      33
+     ],
+     [
+      22,
+      36
+     ],
+     [
+      21,
+      37
+     ],
+     [
+      23,
+      37
+     ]
+    ],
+    "box_look": "boulder",
+    "box_strength": true,
+    "boxes_fresh": true
    },
    {
     "art": [
@@ -331520,13 +332305,13 @@
      "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
      "cccccrr........cccccccccccccccccccccccccccccccccccccccccccc",
      "cccccrr.....rN.cccccccccccccccccccccccccccccccccccccccccccc",
-     "cccccrrbrrrrrrrcccccccccccccccccccccccccccccccccccccccccccc",
+     "cccccrr.rrrrrrrcccccccccccccccccccccccccccccccccccccccccccc",
      "cccccrr.rrrrrrrooooooooooooooooorcccccccccccccccccccccccccc",
-     "cccccr...b..rNrooooooooooooooooorcccccccccccccccccccccccccc",
+     "cccccr......rNrooooooooooooooooorcccccccccccccccccccccccccc",
      "cccccr..rr....rooooooooooooooooorccoooooooo.ccccccccccccccc",
-     "cccccrrbrrrrrrrooooooooooooooooorccooooooooNccccccccccccccc",
+     "cccccrr.rrrrrrrooooooooooooooooorccooooooooNccccccccccccccc",
      "cccccr.........X....rrr....X.....ccoooooooo.ccccccccccccccc",
-     "cccccr............r.b..r.........ccoooooooo.cccrr......rccc",
+     "cccccr............r....r.........ccoooooooo.cccrr......rccc",
      "ccccc..........Xrrrr.......X.....ccoooooooo.............ccc",
      "ccccc.X.cccccccccccccccccccc..cccccoooooooo............+ccc",
      "ccccc...cccccccccccccccccccc..cccccoooooooorccc.........ccc",
@@ -331540,14 +332325,14 @@
      "ccccc.r.cc..rrrrrrrrrcc.r.r.r.r...rcr...rrcccccccccc..ccccc",
      "ccccc...cc..ccccccccccc...r.r.r.r.rcr.rrr.cc.X.........cccc",
      "cccccr.rcc..ccccccccccc.rrr.r.r.r.rcr.r.r..............cccc",
-     "ccccc.b.cc..cc............r.....r.rcr...r....X.........cccc",
+     "ccccc...cc..cc............r.....r.rcr...r....X.........cccc",
      "ccccc...cc..ccr.rrrrrrrrr.r.rrrrr.rccr.rr.ccrooooooooorcccc",
      "cccccr.rcc..ccr.........r.r.....r..rcr.rr.ccrooooooooorcccc",
-     "ccccc.b.cc.rccrrrrrrrr.rr.rrrrr.rr.rcr.rr.ccrooooooooorcccc",
+     "ccccc...cc.rccrrrrrrrr.rr.rrrrr.rr.rcr.rr.ccrooooooooorcccc",
      "ccccc...cc..cc..........r.......r..rcr.rr.ccrooooooooorcccc",
      "cccccr.rcc..ccc..ccccccccccccccccc.rcr.rr.ccrooooooooorcccc",
-     "ccccc.b.ccrbccc..ccccccccccccccccc.rcr....ccrooooooooorcccc",
-     "ccccc...cc.b.........rrrrrrrrrr.cc.rcrrrrrccrooooooooorcccc",
+     "ccccc...ccr.ccc..ccccccccccccccccc.rcr....ccrooooooooorcccc",
+     "ccccc...cc...........rrrrrrrrrr.cc.rcrrrrrccrooooooooorcccc",
      "cccccr.rccr.roooooooooooooooooo.cc.rcccccccc...........cccc",
      "ccccc...cc..roooooooooooooooooo....rrrrrrccccccccccc..ccccc",
      "ccccc.r.cc..roooooooooooooooooo.........rcc.............ccc",
@@ -331566,7 +332351,7 @@
      "cccccr....roooooooooo...........cccccc..ccccccooooooooooocc",
      "ccccc.....rooooooooooooooorcc.rrcccccc..ccccccooooooooooocc",
      "ccccc.....rooooooooooooooorcc.rrrrrrrr......ccooooooooooocc",
-     "cccccbrrcccooooooooooooooorcc.oooooooooooo..ccooooooooooocc",
+     "ccccc.rrcccooooooooooooooorcc.oooooooooooo..ccooooooooooocc",
      "ccccc...cccooooooooooooooorcc.oooooooooooo..ccooooooooooocc",
      "ccccc...cccooooooooooooooorcc.oooooooooooo..ccooooooooooocc",
      "cccccr..cccooooooooooooooorcc.oooooooooooo..ccooooooooooocc",
@@ -331631,7 +332416,52 @@
      "Ace Trainer Micah",
      "Ace Trainer Clarice",
      "Ace Trainer Arthur"
-    ]
+    ],
+    "boxes": [
+     [
+      7,
+      4
+     ],
+     [
+      9,
+      6
+     ],
+     [
+      7,
+      8
+     ],
+     [
+      20,
+      10
+     ],
+     [
+      6,
+      24
+     ],
+     [
+      6,
+      27
+     ],
+     [
+      6,
+      30
+     ],
+     [
+      11,
+      30
+     ],
+     [
+      11,
+      31
+     ],
+     [
+      5,
+      50
+     ]
+    ],
+    "box_look": "boulder",
+    "box_strength": true,
+    "boxes_fresh": true
    },
    {
     "art": [
