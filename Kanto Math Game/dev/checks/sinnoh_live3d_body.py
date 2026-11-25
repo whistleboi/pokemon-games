@@ -249,6 +249,33 @@ for k, v in _had.items():
     else:
         story.story_flags[k] = v
 
+print("4c) S6: Sunyshore Gym's walkways, live in each room's four states (Platinum's own gear props, turned)")
+_had = story.story_flags.get("sunyshore_gym_gears")
+story.story_flags["volkner_returned_to_gym"] = True
+from src.dungeon import art as _art
+for r, (room, zone) in enumerate((("gym", "C08GYM0101"), ("gym_2", "C08GYM0102"), ("gym_3", "C08GYM0103"))):
+    for s in range(4):
+        story.story_flags["sunyshore_gym_gears"] = [r, s]
+        for _r in range(3):
+            for _k in range(4):
+                story.story_flags.pop(f"sunyshore_gym_r{_r}_s{_k}", None)
+        story.story_flags[f"sunyshore_gym_r{r}_s{s}"] = True
+        t = town("SUNYSHORE_CITY", room)
+        if getattr(t, "room", None) != room:
+            check(False, f"{room} state {s}: the room could not be entered by the check"); continue
+        pic = _art._version_file(_TM["SUNYSHORE_CITY"]["rooms"][room]["roofs"]["_picture"]) or ""
+        lv = t._live()
+        check(bool(lv) and pic.endswith(f"{zone}_g{s}.png"), f"{room} state {s}: live, on its own scene ({pic})")
+        if not lv:
+            continue
+        sc = lv[0]
+        opens = {(x, y) for y in range(t.h) for x in range(t.w) if t._open((x, y))}
+        check(not sc.holes([(x, int(round(sc.wz(x, y)))) for x, y in opens]), f"{room} state {s}: floor under every tile you can walk ({len(opens)})")
+        settle(2)
+        pygame.image.save(pygame.display.get_surface(), f"{S}/sinnoh_live3d_sunyshore_{room}_g{s}.png")
+if _had is None:
+    story.story_flags.pop("sunyshore_gym_gears", None)
+
 print("5) the checks-only switch off: Twinleaf still loads and draws")
 g.live3d = False
 t = town("TWINLEAF_TOWN"); t.draw()
