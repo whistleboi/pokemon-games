@@ -649,11 +649,26 @@ def prop(game, name):
     return _SCENES[key]
 
 
-def scene(game, zone):
+def season_file(game, zone, season=None):
+    """Black 2's season colours (11-25, Unova's roadmap): an outdoor zone's own texture set for the season
+    (kanto_handoff/unova_map_tools/export3d.py --season: <zone>_summer / _autumn / _winter.npz; spring is the plain file).
+    The path for today's season (seasons.current_season), else None (no seasonal set: the plain scene)."""
+    from src.world import seasons
+    s = str(season or seasons.current_season()).lower()
+    if s == "spring":
+        return None
+    path = os.path.join(game.assets.assets_dir or "assets", "b2_3d", "%d_%s.npz" % (int(zone), s))
+    return path if os.path.exists(path) else None
+
+
+def scene(game, zone, season=None):
     key = int(zone)
-    if key not in _SCENES:
-        _SCENES[key] = Scene(os.path.join(game.assets.assets_dir or "assets", "b2_3d", "%d.npz" % key)) if has_scene(game, key) else None
-    return _SCENES[key]
+    own = season_file(game, key, season)
+    ck = (key, own) if own else key
+    if ck not in _SCENES:
+        _SCENES[ck] = Scene(own) if own else (Scene(os.path.join(game.assets.assets_dir or "assets", "b2_3d", "%d.npz" % key))
+                                              if has_scene(game, key) else None)
+    return _SCENES[ck]
 
 
 def scene_of(game, pic, at=None, screen=False):

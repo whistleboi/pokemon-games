@@ -128,4 +128,11 @@ else:
                 _bad.append(f"{_key} ({type(_e).__name__}: {str(_e)[:60]})")
         print(f"    {_reg}: {_n - len(_bad)} of {_n} maps live")
         check(not _bad, f"{_reg}: every map live in 3D {_bad[:40]}")
+print("6) Unova's season colours (11-25): summer and autumn scenes where Black 2 has its own texture set; winter waits")
+from src.world import seasons as _seasons
+_sf = {s: _l3.season_file(g, 427, s) for s in ("SPRING", "SUMMER", "AUTUMN", "WINTER")}
+check(_sf["SPRING"] is None and _sf["SUMMER"] and _sf["AUTUMN"], f"Aspertia: summer and autumn scenes of their own, spring the plain one ({ {k: bool(v) for k, v in _sf.items()} })")
+check(_l3.season_file(g, 28, "AUTUMN") is None, "Castelia: no autumn set of its own (Black 2 has one set): the plain scene")
+_n = len([f for f in _os.listdir("assets/b2_3d") if f.endswith(("_summer.npz", "_autumn.npz"))])
+check(_n >= 150, f"{_n} summer and autumn scenes")
 print(f"##### {fails} failures")
