@@ -1983,5 +1983,50 @@ story.player_team = _team
 
 story.story_flags.clear(); story.story_flags.update(_sv)
 
+# ---- S8 (11-24, s_s8_canalave_dream.py): the sailor's son in Canalave - his nightmare after the title, the Lunar Wing wakes him
+_sv, _iv, _team = dict(story.story_flags), dict(story.inventory), list(story.player_team)
+for _k in ("canalave_dream_seen", "canalave_dream_woke"):
+    story.story_flags.pop(_k, None)
+story.story_flags["beat_sinnoh_champion"] = True
+story.inventory.pop("LUNAR_WING", None)
+t = town("CANALAVE_CITY", "SINNOH_ROUTE_218"); frames(t, 3)
+t._go("house_0501", "OUT:7,44"); frames(t, 3)
+def _boy(t):
+    return next((s for s, o in t.people.items() if any(str(c.get("text")) == "Little boy" for c in (o.get("any") or [o]))), None)
+_b = _boy(t)
+if _b:
+    t.player = t.anim_from = (_b[0], _b[1] + 1); t.anim = 0; t.facing = (0, -1)
+    t._talk(tuple(_b)); _drive(t, 300, lambda: not getattr(t, "npc_active", False))
+_seen = bool(story.story_flags.get("canalave_dream_seen"))
+story.inventory["LUNAR_WING"] = 1
+t = town("CANALAVE_CITY", "SINNOH_ROUTE_218"); frames(t, 3)
+t._go("house_0501", "OUT:7,44"); frames(t, 3)
+_b = _boy(t)
+if _b:
+    t.player = t.anim_from = (_b[0], _b[1] + 1); t.anim = 0; t.facing = (0, -1)
+    t._talk(tuple(_b)); _drive(t, 300, lambda: not getattr(t, "npc_active", False))
+check(_b is not None and _seen and story.story_flags.get("canalave_dream_woke"),
+      f"Canalave: the sailor's son is caught in a nightmare after the title; seeing him opens the Fullmoon boat, the Lunar Wing wakes him ({_b}, {_seen}, {story.story_flags.get('canalave_dream_woke')})")
+story.story_flags.clear(); story.story_flags.update(_sv); story.inventory.clear(); story.inventory.update(_iv)
+
+# ---- S8 (11-24, s_s8_amity.py): Amity Square walked - Platinum's pads take you hut to hut, its four item balls, the tidy man
+_pk = mk(25); _pk.level = 30
+story.player_team = [_pk]
+t = town("HEARTHOME_CITY", "SINNOH_ROUTE_208"); frames(t, 3)
+t._go("amity", "OUT:10,11"); frames(t, 3)
+t.player = t.anim_from = (3, 3); t.anim = 0; t.walk_goal = None
+t.step(0, -1)
+_drive(t, 200, lambda: getattr(g.current_state, "room", None) == "amity_square")
+t = g.current_state
+_in = getattr(t, "room", None) == "amity_square"
+_items = sorted(str(o.get("text")) for o in t.people.values() if (o.get("event") or {}).get("gift_item"))
+t.player = t.anim_from = (17, 16); t.anim = 0; t.walk_goal = None
+t.step(0, 1)   # (onto the pad at (17,17): to the hut at (35,15))
+_drive(t, 600, lambda: tuple(getattr(g.current_state, "player", (0, 0))) == (35, 16))
+_pad = tuple(getattr(g.current_state, "player", (0, 0)))
+check(_in and len(_items) == 4 and _pad == (35, 16),
+      f"Amity Square: in with a Pikachu leading, Platinum's four item balls, a pad takes you from one hut to another ({_in}, {_items}, {_pad})")
+story.player_team = _team
+
 g.walk_towns = False
 print(f"##### {fails} failures")
