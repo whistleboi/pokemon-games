@@ -779,10 +779,11 @@ def route(st, goal, through=False, blocked=(), prev=None):
     goal = tuple(goal)
     bump = None
     pad = is_town(st) and goal in (getattr(st, "links", None) or {}) and goal != pos(st)   # (a warp pad: it's stepped onto, wherever that takes you; 11-17: standing on it by coming back through its far pad isn't taking it)
-    if goal in prev and not pad:
-        end = goal
+    _key = lambda t: t if t in prev else next((k for k in ((t, (0, 1)), (t, (1, 0))) if k in prev), None)
+    if _key(goal) is not None and not pad:
+        end = _key(goal)
     else:
-        c = [(s, d) for s, d in stands(st, goal) if s in prev and (s, d) not in blocked]
+        c = [(_key(s), d) for s, d in stands(st, goal) if _key(s) is not None and (s, d) not in blocked]
         if not c:
             return None
         end, bump = min(c, key=lambda sd: _len(prev, sd[0]))

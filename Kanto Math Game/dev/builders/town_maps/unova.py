@@ -7079,6 +7079,13 @@ VR_2F["story_maps"] = [{"when": _W2, "map": _vr(
     trainers={6: ("Veteran Abraham", 4), 7: ("Pokemon Ranger Elle", 1), 8: ("Pokemon Ranger Eddie", 1),
               9: ("Ace Trainer Shanta", 4), 10: ("Ace Trainer Webster", 4)}, boulders=((27, 10), (33, 7)))}]
 
+# (11-25, the Journal's PT_FULL: Black 2's carved steps - walk code 0x1D, flagged as wall in the file - join a cave's two levels;
+#  the export read them as wall, so 1F's way from the entrance and 2F's stopped short. Open as steps; heights slope across them.)
+for _m, _steps in ((VR_1F, ((52, 15), (53, 15), (52, 16), (53, 16), (17, 34), (18, 34), (17, 35), (18, 35))),
+                   (VR_2F, ((27, 7), (28, 7), (27, 8), (28, 8), (31, 6), (32, 6), (31, 7), (32, 7)))):
+    for _mm in [_m] + [sm["map"] for sm in _m.get("story_maps") or []]:
+        for _x, _y in _steps:
+            _put_char(_mm, _x, _y, ".")
 VR_2F_BACK = _vr(591, {1: _ball("Poke Ball on the platform", "PP_MAX", "b2_vr_pp_max", name="a PP Max"),
                        0: _ball("Poke Ball by the pool", "RARE_CANDY", "b2_vr_rare_candy", name="a Rare Candy")},
                  {"v": ("VICTORY_ROAD_CAVE_2F", [(13, 30)]), "^": ("VICTORY_ROAD_MOUNTAINSIDE", [(24, 7)])},
@@ -7242,7 +7249,7 @@ LEAGUE = town(136, {0: _say("Veteran at the door", "Beyond here is the Pokemon L
 # Magikarp salesman), and Undella after the title: Hugh by the gate (HM06 Dive, a battle; then once a day at the old Plasma
 # base in Driftveil), Cynthia in the villa (a battle; then once a day in spring).
 OUTSIDE.update({375: 374, 376: -1, 377: 376, 378: -1, 379: 378, 381: 378, 382: 378, 380: 263})
-_CITY = lambda w2: "WHITE_FOREST" if w2 else "BLACK_CITY"
+_CITY = lambda white: "WHITE_FOREST" if white else "BLACK_CITY"   # (11b: whichever stands now, src/world/unova_city.py: they swap after each League win)
 
 
 def _black_gate(z, out_door, city_zone, city, side):
@@ -7275,7 +7282,7 @@ def _route14(w2):
 
 
 ROUTE_14 = _route14(False)
-ROUTE_14["story_maps"] = [{"when": ["unova_version:WHITE_2"], "map": _route14(True)}]
+ROUTE_14["story_maps"] = [{"when": ["world:unova_city:white"], "map": _route14(True)}]   # (11b: the city standing now)
 UNDELLA["edge_to"] = dict(UNDELLA.get("edge_to") or {}, **{"%d,31" % x: [x + 32, 1] for x in range(11, 53)})
 
 # --- the Abundant Shrine: Landorus after the title (the menu place's, Lv 70; Black 2 has it only from the Dream Radar, and every
@@ -7336,19 +7343,19 @@ def _route15(w2):
         trainers={4: ("Pokéfan Elliot", 2), 5: ("Scientist Marie", 4), 6: ("Pokéfan Lydia", 3), 7: ("Backpacker Talon", 5),
                   8: ("Backpacker Corin", 1)},
         hidden={"43,5": "ULTRA_BALL", "31,25": "HP_UP"},
-        rooms={"lab": lab, "trailer": trailer, "gate": _black_gate(379, (57, 11), 0, _CITY(not w2), ">")},
+        rooms={"lab": lab, "trailer": trailer, "gate": _black_gate(379, (57, 11), 0, _CITY(w2), ">")},
         inside={"32,9": "lab", "15,15": "trailer", "57,10": "gate", "57,11": "gate", "57,12": "gate"}, title="Route 15")
     _doors(m, m["inside"])
     for _x, _y in ((44, 21), (52, 24)):   # (Black 2's boulders: Strength)
         _put_char(m, _x, _y, "b")
     _put_char(m, 56, 26, ".")   # (the gap the boulder at the stairs' foot fills: TM149's ledge)
     m["split"] = True
-    m["gated_exits"] = {_CITY(not w2): ["black_tower_cleared"] if not w2 else ["beat_unova_champion"]}   # (11b: the swap)
+    m["gated_exits"] = {_CITY(w2): ["beat_unova_champion"]}   # (the city between the gates: after the Hall of Fame, as Black 2)
     return m
 
 
 ROUTE_15 = _route15(False)
-ROUTE_15["story_maps"] = [{"when": ["unova_version:WHITE_2"], "map": _route15(True)}]
+ROUTE_15["story_maps"] = [{"when": ["world:unova_city:white"], "map": _route15(True)}]
 
 BRIDGE_GATE_E = room(380, {2: _say("Pokemon in the gate", "Kyuu!"),
                            1: _say("Veteran in the gate", "Marvelous Bridge was built to join Route 15 and Route 16. Truly marvelous!"),
@@ -7397,6 +7404,167 @@ UNDELLA["scenes"] = list(UNDELLA.get("scenes") or []) + [
      "event": {"flag": "b2_undella_hugh", "battle": _HUGH_UNDELLA}}]
 
 
+# ======================================================================================================== batch 11b (11-25)
+# Black City (0: its Pokemon Center 1, the house 2, the Market 5, the Black Tower 479) and White Forest (424: its Center 425,
+# the house 426, White Treehollow 478), both from Black 2's file. They stand between Route 14's and Route 15's Black Gates;
+# which one stands is src/world/unova_city.py (your version's first, then they swap after each League win, Jordan 11-19).
+# People's words change as you clear the tower's Areas (Black 2's three stages: before Area 5, from Area 5, all ten).
+# The Market's four stores open after Areas 2, 5, 8 and 10, one item a day each (a weekday item and a weekend one).
+OUTSIDE.update({1: 0, 2: 0, 5: 0, 479: 0, 425: 424, 426: 424, 478: 424})
+WEEKDAY, WEEKEND = "weekday:mon,tue,wed,thu,fri", "weekday:sat,sun"
+
+
+def _staged(name, tower, *stages):
+    """Someone whose words follow the tower: 3 stages (before Area 5, from 5, all 10) or 2 (before all 10, then)."""
+    cuts = [(None, 5), (5, 10), (10, None)] if len(stages) == 3 else [(None, 10), (10, None)] if len(stages) == 2 else [(None, None)]
+    out = []
+    for k, (lines, (lo, hi)) in enumerate(zip(stages, cuts)):
+        cond = ([] if lo is None else ["world:unova_city:cleared:%s:%d" % (tower, lo)]) + \
+               ([] if hi is None else ["not:world:unova_city:cleared:%s:%d" % (tower, hi)])
+        out.append(_say(name + " " * k, *([lines] if isinstance(lines, str) else lines), **({"condition": cond} if cond else {})))
+    return out if len(out) > 1 else out[0]
+
+
+def _store(name, tower, need, key, weekday, weekend):
+    """A Market store: open once the tower's Area `need` is cleared; one item a day, the weekday's or the weekend's."""
+    out = [_say(name, "This counter isn't open yet. Come back after you've done well in the %s!" % (
+                "Black Tower" if tower == "BLACK" else "White Treehollow"),
+                condition=["not:world:unova_city:cleared:%s:%d" % (tower, need)])]
+    for k, ((item, label, price), when) in enumerate(((weekday, WEEKDAY), (weekend, WEEKEND))):
+        out.append({"text": name + " " * (k + 1), "action": "EVENT",
+                    "condition": ["world:unova_city:cleared:%s:%d" % (tower, need), when], "event": {
+                        "lines": ["Today's special: %s for $%d!" % (label, price)], "pay": price, "gift_item": {item: 1},
+                        "daily": True, "flag": key, "fail": ["Oh! You don't have enough money for that."],
+                        "done": ["Sorry, that's today's only one! Come back tomorrow!"]}})
+    return out
+
+
+def _lobby(z, tower, desk, *people):
+    """A tower's lobby: the receptionist starts a challenge (src/world/black_tower.py), two Trainers who talk of it."""
+    r = room(z, {0: {"text": "Receptionist", "action": "EVENT", "event": {"world": "black_tower", "desk": tower}},
+                 **dict(people)}, {}, desk)
+    r["title"] = "Black Tower" if tower == "BLACK" else "White Treehollow"
+    return r
+
+
+BC_CENTER = room(1, {4: {"text": "Pokémon Center", "action": "HEAL"}, 1: {"text": "Shop", "action": "SHOP"},
+                     2: _say("Clerk ", "Specialty Poke Balls are over here!"),
+                     3: _say("Clerk  ", "The counter on the left sells everyday items."),
+                     7: _say("Woman by the PC", "Have you heard? There are keys that switch things between black and white...")},
+                 {}, (42, 37))
+BC_HOUSE = room(2, {0: _say("Man", "Making money's fine! Just make it the honest way."),
+                    1: _say("Woman", "How far would you go to get what you want?")}, {}, (42, 46))
+BC_MARKET = room(5, {
+    2: _store("Shopkeeper", "BLACK", 2, "b2_bc_store_1", ("THUNDER_STONE", "a Thunderstone", 10000), ("PROTECTOR", "a Protector", 10000)),
+    0: _store("Shopkeeper ", "BLACK", 5, "b2_bc_store_2", ("FIRE_STONE", "a Fire Stone", 20000), ("METAL_COAT", "a Metal Coat", 20000)),
+    3: _store("Shopkeeper  ", "BLACK", 8, "b2_bc_store_3", ("DUSK_STONE", "a Dusk Stone", 40000), ("UPGRADE", "an Up-Grade", 40000)),
+    1: _store("Shopkeeper   ", "BLACK", 10, "b2_bc_store_4", ("DAWN_STONE", "a Dawn Stone", 60000), ("DUBIOUS_DISC", "a Dubious Disc", 60000)),
+    4: _staged("Black City's boss", "BLACK",
+               "Welcome to Black City, the city of dreams and greed! And I'm its boss, the greediest of all!",
+               "You've climbed right up the Black Tower! I like ambitious people.",
+               "Trainers like you make me look small! But my greed has no end. That's why I'm the boss!"),
+    5: _say("Shopper", "Expensive doesn't mean good. Shop smart, or you'll get burned!"),
+    6: _say("Shopper ", "I want to get strong so I can make more money!"),
+    7: _say("Shopper  ", "Money can't buy everything. But it buys almost everything!"),
+    8: _say("Shopper   ", "If you're just like everyone else, you're not thinking for yourself!"),
+    9: _say("Shopper    ", "Isn't there a job that pays more for the same work?"),
+    10: _say("Trainer in the Market", "How strong could this Pokemon get? Strength is a kind of worth, right?"),
+    11: _say("Woman in the Market", "Everything I want is right here! If only I had the money!"),
+    12: _say("Man in the Market", "Did people build cities just to get what they want?")}, {}, (27, 42))
+BC_MARKET["title"] = "Black City Market"
+BC_LOBBY = _lobby(479, "BLACK", (28, 17),
+                  (1, _staged("Researcher", "BLACK", "The Black Tower, Unova's Challenge... it seems to pierce the sky.",
+                              "They say Area 6 is so high you can't see it from the ground. How high can it be?",
+                              "You cleared the very top? You really are above the clouds!")),
+                  (2, _staged("Psychic", "BLACK", "I feel a power I've never felt before... I can't stop trembling!",
+                              "It's getting stronger! What secret does this tower hide?",
+                              "Now I know! The power I felt was your potential!")),
+                  (3, _say("Trainer in the lobby", "Benga is Alder's grandson? Maybe Alder in Floccesy Town would train me too!",
+                           condition=["b2_bt_benga"])))
+BLACK_CITY = town(0, {
+    0: _staged("Dave", "BLACK", "Dave: People who've got it going on get what they want! Just get it honestly.",
+               "Dave: There's a shop here for people who've got it going on. New items just came in!",
+               "Dave: Thugs used to hang around here after money. I ran them off! Black City's peace is thanks to me!"),
+    1: _staged("Karenna", "BLACK", "Karenna: I heard strong Trainers train around here, so I came too! Let's both do our best!",
+               "Karenna: You're {player_name}? I hear you've climbed far up the Black Tower! I won't lose either!",
+               "Karenna: You cleared the Black Tower! Everyone's talking about you, and the shops have new items!"),
+    2: _staged("Ken", "BLACK", "Ken: Trainers come from all over to take on the Black Tower. Bring your best Pokemon!",
+               "Ken: You're climbing the Black Tower? The higher the Area, the odder the Trainers. Aim for the top!",
+               "Ken: You beat the Black Tower! I tried again and again, then gave up. You really believe in your Pokemon."),
+    3: _staged("Marie", "BLACK", "Marie: I'm writing my thesis on city Pokemon, and how they cheer up tired city folk!",
+               "Marie: My research is done! Time with Pokemon is the best cure for stress, even in a big city."),
+    4: _staged("Piper", "BLACK", "Piper: I got a job at one of Black City's top companies! I'll work hard and rise to the top!",
+               "Piper: I can't take it... Mistakes at work, and I got dumped. I want to run off to White Forest and rest.",
+               "Piper: I fixed a big problem at work and everyone praised me! I'm glad I stuck with it."),
+    5: _staged("Collin", "BLACK", "Collin: The thing I want is never in stock! They say it's coming soon, but I can't wait!",
+               "Collin: The shop got something new! Still not what I want, though...",
+               "Collin: They finally have it! ...What is it? That's my business!"),
+    6: _say("Eliza", "Eliza: I came here to get rich and famous! I'll clear the Black Tower faster than anyone!"),
+    7: _staged("Emi", "BLACK", "Emi: Between part-time shifts I win prize money in the Black Tower. Can't do that in White Forest!",
+               "Emi: You've gone far up the Black Tower? I can't get past the first Area! The money's still good.",
+               "Emi: I've never stayed anywhere this long. Maybe it's time to move on... to White Forest, maybe.")},
+    {5: ["BLACK CITY", "Prosperous and Vibrant"]},
+    {1: ("center", "center"), 2: ("house", "house"), 5: ("house", "market"), 479: ("house", "lobby"),
+     375: ("gate", None, "UNOVA_ROUTE_14"), 379: ("gate", None, "UNOVA_ROUTE_15")},
+    {"center": BC_CENTER, "house": BC_HOUSE, "market": BC_MARKET, "lobby": BC_LOBBY}, title="Black City")
+
+WF_CENTER = room(425, {4: {"text": "Pokémon Center", "action": "HEAL"}, 1: {"text": "Shop", "action": "SHOP"},
+                       2: _say("Clerk ", "Specialty Poke Balls are over here!"),
+                       3: _say("Clerk  ", "The counter on the left sells everyday items."),
+                       7: _say("Man by the PC", "Do you like nature left wild, or nature shaped to please people?")},
+                   {}, (45, 36))
+WF_HOUSE = room(426, {
+    0: _staged("Forest elder", "WHITE", "Ho! Hoo! Welcome to White Forest, where people, Pokemon and nature live as one!",
+               "Ho! Hoo! You've heard the White Treehollow's voice. Its true voice waits at the very bottom!",
+               "Ho! Hoo! Hoo! You heard the heart of the White Treehollow! No, don't tell me. I'll go and hear it myself!"),
+    1: _say("Girl", "Build too many tall buildings and the sky gets small. You can't even see the sun!"),
+    2: _say("Boy", "I live out here with Pokemon so I can learn how they feel."),
+    3: _say("Woman", "Once you've had a meal of Berries, you won't crave anything else!")}, {}, (18, 46))
+WF_LOBBY = _lobby(478, "WHITE", (29, 19),
+                  (1, _staged("Trainer by the door", "WHITE", "I was so close, then I lost! I should have found the Nurse first.",
+                              "You've cleared Area 5 already? I'll catch up soon!",
+                              "You finished every Area? I can't believe it... Congratulations!")),
+                  (2, _staged("Explorer", "WHITE", "What's at the bottom of the White Treehollow? I'll be the first to find out!",
+                              "I finally reached Area 3! ...You cleared Area 5? There's always someone ahead of me...",
+                              "I cleared that dangerous Area 5! ...You reached the bottom? Someday I'll see it too.")),
+                  (3, _say("Trainer in the lobby", "Benga is Alder's grandson? Maybe Alder in Floccesy Town would train me too!",
+                           condition=["b2_bt_benga"])))
+_WF_CRIES = ["Muwaaaan!", "Squee?", "Lill lill...", "Pololo.", "Fooo!", "Lola rolaa."]
+WHITE_FOREST = town(424, {
+    0: _staged("Silvia", "WHITE", "Silvia: Ommm... Oh! I was sunbathing and my mind went blank. Want to 'om' with me?",
+               "Silvia: Did you see? The lazy shop owner finally put out new items!",
+               "Silvia: Watching Pokemon play makes me so happy. I hope tomorrow's just as nice."),
+    2: _staged("Robbie", "WHITE", "Robbie: My big brother runs a shop, but he can't be bothered to put out new stock. Check back later!",
+               "Robbie: My brother finally put new items in his shop! He can do anything when he tries!",
+               "Robbie: My brother keeps adding new stock! He says {player_name}, the best in the White Treehollow, inspired him!"),
+    10: _staged("Ryder", "WHITE", "Ryder: Someone named {player_name} is beating everyone in the White Treehollow. Is that you?",
+                "Ryder: You're {player_name}? The best in the White Treehollow! Give me some tips sometime!"),
+    3: _staged("Carlos", "WHITE", "Carlos: In White Forest we share the Berries we gather. I picked extra for the elders.",
+               "Carlos: Berries every day make me miss city food. Maybe it's time for a food quest!",
+               "Carlos: The shop has much better stock now. The shopkeeper says he won't lose to {player_name}!"),
+    4: _staged("Gene", "WHITE", "Gene: A hollow opened in the white tree! We locals will be the first to reach the bottom!",
+               "Gene: {player_name}! I hear you went really deep into the hollow! Reach the bottom for me!",
+               "Gene: On behalf of the whole forest, congratulations on beating the White Treehollow!"),
+    5: _staged("Miho", "WHITE", "Miho: I'm so bored! There's nothing to do here! I miss the city lights!",
+               "Miho: My skin's so smooth since I moved here! Must be all the fresh Berries!",
+               "Miho: Lying in a meadow watching the sun set... the simple things are the most fun here."),
+    6: _say("Grace", "Grace: So you're {player_name}! My grandson talks about you all the time. You're quite a cutie!",
+            condition=["world:unova_city:cleared:WHITE:10"]),
+    1: _say("Pokemon by the tree", _WF_CRIES[0]), 7: _say("Pokemon in the grass", _WF_CRIES[1]),
+    9: _say("Pokemon by the pond", _WF_CRIES[2]), 12: _say("Pokemon by the path", _WF_CRIES[3]),
+    11: _say("Pokemon in the trees", _WF_CRIES[4]), 8: _say("Pokemon by the hollow", _WF_CRIES[5]),
+    13: _store("Shopkeeper", "WHITE", 2, "b2_wf_store_1", ("LEAF_STONE", "a Leaf Stone", 10000), ("DEEP_SEA_TOOTH", "a DeepSeaTooth", 10000)),
+    14: _store("Shopkeeper ", "WHITE", 5, "b2_wf_store_2", ("WATER_STONE", "a Water Stone", 20000), ("DEEP_SEA_SCALE", "a DeepSeaScale", 20000)),
+    15: _store("Shopkeeper  ", "WHITE", 8, "b2_wf_store_3", ("SHINY_STONE", "a Shiny Stone", 40000), ("DRAGON_SCALE", "a Dragon Scale", 40000)),
+    16: _store("Shopkeeper   ", "WHITE", 10, "b2_wf_store_4", ("OVAL_STONE", "an Oval Stone", 60000), ("KINGS_ROCK", "a King's Rock", 60000))},
+    {4: ["WHITE FOREST", "People and Nature in Harmony"]},
+    {425: ("center", "center"), 426: ("house", "house"), 478: ("house", "lobby"),
+     375: ("gate", None, "UNOVA_ROUTE_14"), 379: ("gate", None, "UNOVA_ROUTE_15")},
+    {"center": WF_CENTER, "house": WF_HOUSE, "lobby": WF_LOBBY}, title="White Forest")
+for _m in (BLACK_CITY, WHITE_FOREST):
+    _m["gated_exits"] = {}
+
+
 MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": FLOCCESY, "UNOVA_ROUTE_20": ROUTE_20,
         "FLOCCESY_RANCH_OUTSIDE": RANCH_OUTSIDE, "FLOCCESY_RANCH": RANCH, "PLEDGE_GROVE": PLEDGE_GROVE,
         "VIRBANK_CITY": VIRBANK, "VIRBANK_COMPLEX_OUTSIDE": COMPLEX_OUTSIDE, "VIRBANK_COMPLEX": COMPLEX, "POKESTAR_STUDIOS": POKESTAR,
@@ -7428,4 +7596,4 @@ MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": 
         "VICTORY_ROAD_RIVER": VR_RIVER, "VICTORY_ROAD_CAVE_2F": VR_2F, "VICTORY_ROAD_2F_BACK": VR_2F_BACK,
         "VICTORY_ROAD_MOUNTAINSIDE": VR_MOUNTAIN, "VICTORY_ROAD_3F": VR_3F, "VICTORY_ROAD_TUNNEL": VR_TUNNEL,   # (batch 10a)
         "UNOVA_POKEMON_LEAGUE": LEAGUE,   # (batch 10b)
-        "UNOVA_ROUTE_14": ROUTE_14, "ABUNDANT_SHRINE": SHRINE, "UNOVA_ROUTE_15": ROUTE_15, "MARVELOUS_BRIDGE": BRIDGE}   # (batch 11a)
+        "UNOVA_ROUTE_14": ROUTE_14, "BLACK_CITY": BLACK_CITY, "WHITE_FOREST": WHITE_FOREST, "ABUNDANT_SHRINE": SHRINE, "UNOVA_ROUTE_15": ROUTE_15, "MARVELOUS_BRIDGE": BRIDGE}   # (batch 11a)

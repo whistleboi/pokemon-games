@@ -76,9 +76,9 @@ r14, r15, br, sh = tmaps["UNOVA_ROUTE_14"], tmaps["UNOVA_ROUTE_15"], tmaps["MARV
 check(set(r14["exits"].values()) >= {"UNDELLA_TOWN", "ABUNDANT_SHRINE"} and len(r14["trainer_spots"]) == 8, "Route 14: Undella, the Abundant Shrine, its eight trainers")
 check("BLACK_CITY" in r14["rooms"]["gate"]["exits"].values()
       and "WHITE_FOREST" in r14["story_maps"][0]["map"]["rooms"]["gate"]["exits"].values(),
-      "Route 14's Black Gate: Black City in Black 2, White Forest in White 2")
+      "Route 14's Black Gate: to the city standing now (11b: Black City, White Forest after a second League win)")
 check({"lab", "trailer", "gate"} <= set(r15["rooms"]) and "MARVELOUS_BRIDGE" in r15["exits"].values()
-      and "WHITE_FOREST" in r15["rooms"]["gate"]["exits"].values() and "BLACK_CITY" in r15["story_maps"][0]["map"]["rooms"]["gate"]["exits"].values(),
+      and "BLACK_CITY" in r15["rooms"]["gate"]["exits"].values() and "WHITE_FOREST" in r15["story_maps"][0]["map"]["rooms"]["gate"]["exits"].values(),
       "Route 15: the Transfer Lab, the trailer, its Black Gate, the way to Marvelous Bridge")
 tr = next(c for c in opts(r15["rooms"]["trailer"]) if (c.get("event") or {}).get("trade"))
 check(tr["event"]["trade"]["want"] == 132 and tr["event"]["trade"]["give"] == 479, "the trailer: her Rotom for a Ditto")
