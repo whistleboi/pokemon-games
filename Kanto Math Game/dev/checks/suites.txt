@@ -1,6 +1,6 @@
 # Every check suite: name, owner (the Dev Map lane that writes and fixes it), tags. Read by run.sh / run_par.sh / run_all.sh
 # (suites_lib.sh). Checks branch, 11-24: kanto_handoff/ROADMAP_CHECKS.md.
-#   owner: main (shared engine, the hub), systems, journal, kanto (+ Sevii), johto, orange, hoenn, sinnoh, unova, orre
+#   owner: main (shared engine, the hub), checks (the Checks branch), systems, journal, kanto (+ Sevii), johto, orange, hoenn, sinnoh, unova, orre
 #   tags (comma-separated, no spaces): helpers = joined with sub_helpers_body.py; long = left out of region:/all sets
 #          (name it to run it); quick = in the quick set; topics: maps story gates start look live3d dex canon report
 #          battle items world wild ui saves journal forms sound batch menu oneoff playthrough
@@ -67,6 +67,9 @@ guide_exits            journal  journal
 journal_regions        journal  journal
 journal_rules          journal  journal
 journal_parts          journal  journal
+
+# checks
+playthrough_sync       checks   playthrough   # (add quick once Sinnoh, Unova, Orange match: ROADMAP_CHECKS C6)
 quest_book             journal  journal,quick
 quest_book_hoenn       journal  journal
 quest_book_johto       journal  journal
