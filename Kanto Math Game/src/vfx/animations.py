@@ -115,11 +115,28 @@ def feet_spot(game, side):
     return game.width * FOE_FEET[0], game.height * FOE_FEET[1]
 
 
+import weakref as _weakref
+_FEET = _weakref.WeakKeyDictionary()   # (a picture's empty rows under its feet, measured once: it was measured every frame - the
+                                       #  Checks branch's C4 profile, 85 s of a played check; 11-24)
+
+
+def _feet_pad(img):
+    try:
+        got = _FEET.get(img)
+        if got is not None and got[0] == img.get_size():
+            return got[1]
+        pad = img.get_height() - img.get_bounding_rect().bottom
+        _FEET[img] = (img.get_size(), pad)
+        return pad
+    except TypeError:   # (a surface that can't be remembered: measured each time, as before)
+        return img.get_height() - img.get_bounding_rect().bottom
+
+
 def sprite_rect(game, img, side):
     """The rect a battle sprite is drawn in: its visible feet (not the image's empty bottom rows)
     on the side's spot."""
     fx, fy = feet_spot(game, side)
-    pad = img.get_height() - img.get_bounding_rect().bottom
+    pad = _feet_pad(img)
     return img.get_rect(midbottom=(int(fx), int(fy + pad)))
 
 

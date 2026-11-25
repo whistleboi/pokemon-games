@@ -249,6 +249,8 @@ class WalkTownState(TownWalkUps, CityState):
         if self.sign is not False:
             self.banner = 0
 
+    TOWN_PICTURES = 2   # (how many drawn town / room pictures are kept: two, a town and one of its rooms - phones' memory)
+
     def _from_art(self, m):
         from src.dungeon import art
         grid = m["art"]
@@ -342,8 +344,11 @@ class WalkTownState(TownWalkUps, CityState):
         if _pic and (_pic.get("until") or _pic.get("when") or _pic.get("by_version")):
             _ck += "|pic:" + art._version_file(_pic)  # (a picture that changes with a flag: Mauville Gym's barriers, flipped by its switches)
         if _ck not in cache:
-            cache.clear()
+            while len(cache) >= self.TOWN_PICTURES:   # (the oldest goes: a town and the building you're in stay drawn, so in and back
+                cache.pop(next(iter(cache)))           #  out doesn't redraw the whole town; the Checks branch's C4, 11-24)
             cache[_ck] = art.surface(grid, kinds, TILE, m.get("roofs"), m.get("theme"))
+        else:
+            cache[_ck] = cache.pop(_ck)   # (now the newest)
         self.map_img = cache[_ck]
         self.overheads = [(o, *art.overhead(o, TILE)) for o in m.get("overheads", [])]
         self._pic_now = art._version_file(_pic) if _pic else None
