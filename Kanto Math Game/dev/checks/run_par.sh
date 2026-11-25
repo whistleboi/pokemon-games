@@ -33,12 +33,12 @@ total=0
 for t in "${ran[@]}"; do
   n=${t/:/_}; log=$O/par_$n.log
   ex=$(grep '^exit ' "$log" | tail -1 | cut -d' ' -f2); secs=$(grep '^secs ' "$log" | tail -1 | cut -d' ' -f2)
-  c=$(count "$t" "$log" "$ex")
+  c=$(count "$t" "$log" "$ex" 2> "$O/note_$n.txt")   # (its notes printed under its own line)
   total=$((total + c))
   k=$(checks "$log")
   note_time "$t" "$secs" "$c" "$k"
   echo "== $n: $c fails ($secs s, $k checks)"
-  base_warn "$t" "$k"
+  cat "$O/note_$n.txt" 2>/dev/null; rm -f "$O/note_$n.txt"; base_warn "$t" "$k"
   grep -E 'FAIL |Traceback|(Syntax|Indentation)Error' -B2 -A6 "$log" | grep -vE '^--$|##### 0 fail|^Sync: |^(exit|secs) ' | head -40
 done
 echo "##### $total fails in all"
