@@ -463,6 +463,10 @@ def with_rooms(m):
         art = [list(r) for r in room["art"]]
         links = {k: [where[v[0]], v[1], v[2]] for k, v in (room.get("links") or {}).items()
                  if isinstance(v, list) and v and isinstance(v[0], str) and v[0] in where}   # (a pad to another room: its floor)
+        for k in links:   # (its tile a passage, as the mats below: the walk only takes a link from a "1" - the docked Plasma
+            lx, ly = (int(v) for v in k.split(","))   #  Frigate's stern pad to Kyurem's room did nothing; Journal, 11-25)
+            if 0 <= ly < len(art) and 0 <= lx < len(art[ly]) and art[ly][lx] == ".":
+                art[ly][lx] = "1"
         mats = {}
         land, enter, keep = room.get("land") or {}, room.get("enter") or {}, {}
         # (Kanto's gatehouses: a mat that is a real way out to the next area stays one; "land" {door: where you stand
