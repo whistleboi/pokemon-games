@@ -349,4 +349,4 @@ cs.draw()
 check(getattr(cs, "room", None) == "hills", f"through the door by the Mart: into Mauville Hills ({type(cs).__name__}, {getattr(cs, 'room', None)})")
 shot("mauville_hills")
 
-print(f"##### {len(fails)} fail")
+print(f"##### {len(fails)} failures")

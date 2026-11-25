@@ -26,37 +26,7 @@ tmaps = json.load(open("assets/town_maps.json", encoding="utf-8"))
 from src.world import musical as M, nimbasa_sports as NS
 
 
-def settle(n=60):
-    for _ in range(n):
-        st = g.current_state
-        box = getattr(st, "npc_dialogue", None) if getattr(st, "npc_active", False) else getattr(st, "dialogue_box", None)
-        if box is not None and getattr(box, "visible", True):
-            for line in getattr(box, "text_lines", []) or []:
-                if not said or said[-1] != line:
-                    said.append(line)
-        db = getattr(st, "dialogue_box", None)
-        if db is not None and getattr(db, "visible", False):
-            db.advance()
-        elif getattr(st, "npc_active", False):
-            st.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=(640, 600))])
-        st.update(); st.draw()
-
-
-def heard():
-    return " ".join(said)
-
-
-def town(area, at, room=None, face=(0, 1)):
-    story.current_area_key = area
-    g.walk_town_pos = (area, tuple(at), face)
-    g.walk_town_room = (area, room) if room else None
-    said.clear()
-    g.change_state(CityState(g)); settle(30)
-    return g.current_state
-
-
-def _opts(o):
-    return o.get("any") if isinstance(o, dict) and "any" in o else o if isinstance(o, list) else [o]
+exec(open("dev/checks/unova_lib.py", encoding="utf-8").read())   # (settle, heard, town, until, _opts: shared, Checks C5)
 
 
 def people(st):
@@ -75,14 +45,6 @@ def talk(st, label):
         return False
     said.clear(); st._talk(spot); settle(40)
     return True
-
-
-def until(names, n=600):
-    for _ in range(n):
-        if type(g.current_state).__name__ in names:
-            return g.current_state
-        settle(1)
-    return g.current_state
 
 
 print("1) the Musical's data: Black 2's Props, stages and songs")
@@ -232,6 +194,6 @@ check(not miss, f"every battle picture ({miss})")
 blob = json.dumps(json.load(open("assets/music/unova/music.json", encoding="utf-8")))
 check("msl_field" in blob, "the theater's own music")
 
-print("\n##### %d failures" % len(fails))
 for f in fails:
     print("  -", f)
+print(f"##### {len(fails)} failures")

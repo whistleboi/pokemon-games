@@ -256,4 +256,4 @@ _first_ready = int(next(iter(story.story_flags["vs_ready"][_ma])))
 story.mark_trainer_defeated(_ma, _first_ready)
 check(not vs_seeker.is_ready(story, _ma, _first_ready) and (story.story_flags.get("vs_stage") or {}).get(f"{_ma}|{_first_ready}") is not None,
       "beating one (on the map or from the menu) counts the rematch: its stage is recorded, it waits again")
-print("FAILURES:", fails)
+print(f"##### {fails} failures")

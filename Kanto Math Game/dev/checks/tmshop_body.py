@@ -79,4 +79,4 @@ check(m.btn_tm_sort not in g.ui_manager.elements and m._shelf_top() == m.panel.y
 m.tm_sort = "POWER"; m._label_tm_bar()
 m2 = PokeMartState(g, city)
 check(m2.tm_sort == "POWER", "the sort is kept for the next Mart visit")
-print("FAILURES:", fails)
+print(f"##### {fails} failures")

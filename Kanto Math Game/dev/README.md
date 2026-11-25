@@ -22,7 +22,9 @@ Nothing here is loaded by the game. Rules for map work and which checks to run: 
 Each suite is `harness_head.py` + `<name>_body.py` (a few also `sub_helpers_body.py`), run headless.
 `bash dev/checks/run.sh <suite> ... walk:<region>` runs some; `run.sh region:<lane>` a region's set, `run.sh quick` the
 quick set, `run_par.sh` the same side by side; `run_all.sh` runs everything. `suites.txt` lists every suite with its
-owner (the Dev Map lane) and tags; `suites_lib.sh` is the runners' shared code. Plan and timings:
+owner (the Dev Map lane) and tags; `suites_lib.sh` is the runners' shared code. Helpers several suites share live in
+`<name>_lib.py` (dungeon, walk, reach, quest_book, canon_species, orre, unova, events, looks), each exec'd by its
+suites; `share_helpers.py` moves word-for-word copies into one (Checks C5). Plan and timings:
 `kanto_handoff/ROADMAP_CHECKS.md`.
 
 | Kind | Suites |

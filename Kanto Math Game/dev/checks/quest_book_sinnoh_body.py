@@ -83,8 +83,14 @@ bp = feats.value(story, next(f for f in ft["SINNOH"] if f["id"] == "berry_picks"
 check(bp >= 4, f"Berries picked from the walked patches count ({bp} from 4 patches at {bk})")
 g.change_state(city)
 feats.note(story, "smash", 3)
+_hh = walk_town("HEARTHOME_CITY", None, play=False)   # (Hearthome's Contest Hall: the contest screen Hoenn's uses, 11-24)
+_cb = _hh._get_callback_for_option(_hh._door_options("contest")[0])
+_cb()
+check(type(g.current_state).__name__ == "ContestHallState", "Hearthome's Contest Hall door opens the Contest Hall")
+g.change_state(city)
+feats.note(story, "contests"); feats.note(story, "contest_wins")   # (contest.py notes both at a show's end)
 feats.pay(story)   # (the route screen pays too, on the way)
-for fid in ("poffins", "smash", "berry_picks"):
+for fid in ("poffins", "smash", "berry_picks", "contests", "contest_wins"):
     f_ = next(f for f in ft["SINNOH"] if f["id"] == fid)
     check(flags.get(feats.tier_flag("SINNOH", f_, 0)), f"Sinnoh: {f_['name']} Bronze paid")
 jn.set_tab("FEATS"); jn.draw()

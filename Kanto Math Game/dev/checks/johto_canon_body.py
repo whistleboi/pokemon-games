@@ -1137,3 +1137,4 @@ check(not _stale, f"no TM looks left under numbers no option has ({_stale[:6]})"
 
 if fails:
     print("FAILS:", len(fails))
+print(f"##### {len(fails)} failures")

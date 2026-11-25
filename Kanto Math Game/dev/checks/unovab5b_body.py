@@ -31,33 +31,7 @@ prog = json.load(open("assets/unova_area_data.json", encoding="utf-8"))
 SP = prog["STORY_PROGRESSION"]
 
 
-def settle(n=60):
-    for _ in range(n):
-        st = g.current_state
-        box = getattr(st, "npc_dialogue", None) if getattr(st, "npc_active", False) else getattr(st, "dialogue_box", None)
-        if box is not None and getattr(box, "visible", True):
-            for line in getattr(box, "text_lines", []) or []:
-                if not said or said[-1] != line:
-                    said.append(line)
-        db = getattr(st, "dialogue_box", None)
-        if db is not None and getattr(db, "visible", False):
-            db.advance()
-        elif getattr(st, "npc_active", False):
-            st.handle_events([pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=(640, 600))])
-        st.update(); st.draw()
-
-
-def heard():
-    return " ".join(said)
-
-
-def town(area, at, room=None, face=(0, 1)):
-    story.current_area_key = area
-    g.walk_town_pos = (area, tuple(at), face)
-    g.walk_town_room = (area, room) if room else None
-    said.clear()
-    g.change_state(CityState(g)); settle(30)
-    return g.current_state
+exec(open("dev/checks/unova_lib.py", encoding="utf-8").read())   # (settle, heard, town, until, _opts, team_of: shared, Checks C5)
 
 
 def walked(area, at):
@@ -66,10 +40,6 @@ def walked(area, at):
     said.clear()
     g.change_state(PlayState(g)); settle(30)
     return g.current_state
-
-
-def _opts(o):
-    return o.get("any") if isinstance(o, dict) and "any" in o else o if isinstance(o, list) else [o]
 
 
 def people(st):
@@ -93,14 +63,6 @@ def talk(st, label):
 BATTLES = ("TrainerIntroState", "TrainerBattleState", "DoubleBattleState")
 
 
-def until(names, n=600):
-    for _ in range(n):
-        if type(g.current_state).__name__ in names:
-            return g.current_state
-        settle(1)
-    return g.current_state
-
-
 def win(b, won=True):
     """Stand in for a battle: past the opening words, won (or lost), back to the map."""
     from src.states.battle import TrainerIntroState
@@ -116,11 +78,6 @@ def win(b, won=True):
             break
         settle(1)
     settle(60)
-
-
-def team_of(b):
-    b = getattr(b, "next_state", None) or b
-    return [(int(getattr(p, "id", 0)), int(getattr(p, "level", 0))) for p in (getattr(b, "opponent_team", None) or [])]
 
 
 print("1) the places: the PWT and its rooms, the Frigate's deck, the Relic Passage's chambers, Relic Castle's lowest floor")
@@ -307,6 +264,6 @@ for t in ("vs_wcs", "vs_rg_leader", "vs_gs_leader", "vs_rs_leader", "vs_dp_leade
 blob = json.dumps(json.load(open("assets/music/unova/music.json", encoding="utf-8")))
 check('"PWT' in blob and "RELIC_PASSAGE" in blob, "the PWT's and the Relic Passage's own music")
 
-print("\n##### %d failures" % len(fails))
 for f in fails:
     print("  -", f)
+print(f"##### {len(fails)} failures")

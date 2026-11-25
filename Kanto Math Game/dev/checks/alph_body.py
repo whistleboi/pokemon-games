@@ -127,4 +127,4 @@ check(need == {"kabuto": "has_escape_rope", "aerodactyl": "has_item:HM_FLASH", "
       f"Escape Rope, Flash, a Water Stone, Ho-Oh ({need})")
 story.story_flags.pop("alph_kabuto_wall", None)
 
-print(f"##### FAILURES: {len(fails)}")
+print(f"##### {len(fails)} failures")

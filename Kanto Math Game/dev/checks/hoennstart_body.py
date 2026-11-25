@@ -157,4 +157,4 @@ s2.game = g
 s2.story_flags = {"received_starter_hoenn": True}
 s2._migrate_hoenn_start()
 check(all(s2.story_flags.get(f) for f in StoryManager.HOENN_START_FLAGS), "Pokedex, rival and Birch count as done")
-print("FAILURES:", fails)
+print(f"##### {fails} failures")

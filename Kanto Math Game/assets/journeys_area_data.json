@@ -78,6 +78,21 @@
       "target": "PALLET_TOWN"
     },
     {
+      "id": "journey_gs_to_orange",
+      "region": "KANTO",
+      "type": "SIDE",
+      "title": "South by Blimp",
+      "description": "Professor Ivy lives far to the south, on Valencia Island. A Rocket Blimp flies there from Vermilion City's harbour.",
+      "condition": {
+        "required_region": "KANTO",
+        "flag": "oak_gs_errand",
+        "flag_not": "got_gs_ball_ivy",
+        "visited_not": "VALENCIA_ISLAND"
+      },
+      "completed_flag": "visited_VALENCIA_ISLAND",
+      "target": "VERMILLION_CITY"
+    },
+    {
       "id": "journey_gs_ivy",
       "region": "ORANGE",
       "type": "SIDE",
@@ -93,6 +108,35 @@
       },
       "completed_flag": "got_gs_ball_ivy",
       "target": "VALENCIA_ISLAND"
+    },
+    {
+      "id": "journey_gs_to_johto",
+      "region": "ORANGE",
+      "type": "SIDE",
+      "title": "A Craftsman in Johto",
+      "description": "Nobody in the Orange Islands can open the GS Ball. An old Ball-maker in Johto's Azalea Town might. The blimp on Valencia flies back to Kanto, and Kanto's roads lead on to Johto.",
+      "condition": {
+        "required_region": "ORANGE",
+        "item": "GS_BALL",
+        "flag_not": "kurt_examined_gs_ball"
+      },
+      "completed_flag": "kurt_examined_gs_ball",
+      "target": "VALENCIA_ISLAND"
+    },
+    {
+      "id": "journey_gs_to_azalea",
+      "region": "KANTO",
+      "type": "SIDE",
+      "title": "The Road to Azalea",
+      "description": "The GS Ball is still shut tight. West of Viridian, past the League's gate, a road runs into Johto; Azalea Town lies beyond.",
+      "condition": {
+        "required_region": "KANTO",
+        "item": "GS_BALL",
+        "flag": "beat_champion",
+        "flag_not": "kurt_examined_gs_ball"
+      },
+      "completed_flag": "kurt_examined_gs_ball",
+      "target": "AZALEA_TOWN"
     },
     {
       "id": "journey_gs_kurt",

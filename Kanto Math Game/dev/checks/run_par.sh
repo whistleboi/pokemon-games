@@ -11,7 +11,7 @@ mkdir -p "$O"
 JOBS=${JOBS:-8}
 names=()
 for w in "$@"; do
-  while read -r t; do [ -n "$t" ] && names+=("$t"); done < <(expand "$w")
+  while read -r t; do [ -n "$t" ] && [[ " ${names[*]} " != *" $t "* ]] && names+=("$t"); done < <(expand "$w")   # (once each)
 done
 one() {   # one <name>: run it into its log, its time and exit code on the last two lines
   local t=$1 n=${1/:/_} s=$SECONDS lim=2400
@@ -38,6 +38,7 @@ for t in "${ran[@]}"; do
   k=$(checks "$log")
   note_time "$t" "$secs" "$c" "$k"
   echo "== $n: $c fails ($secs s, $k checks)"
+  base_warn "$t" "$k"
   grep -E 'FAIL |Traceback|(Syntax|Indentation)Error' -B2 -A6 "$log" | grep -vE '^--$|##### 0 fail|^Sync: |^(exit|secs) ' | head -40
 done
 echo "##### $total fails in all"

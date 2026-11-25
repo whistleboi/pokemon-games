@@ -88,4 +88,4 @@ check(story.player_team[0].id == 154 and story.player_team[1].id == 9406,
       f"only the chosen one purified (and evolved): {[p.name for p in story.player_team]}")
 check(any("MEGANIUM" in l for l in shown[-1]), f"purify message: {shown[-1]}")
 
-print(f"##### shadows: {fails} fails")
+print(f"##### {fails} failures")

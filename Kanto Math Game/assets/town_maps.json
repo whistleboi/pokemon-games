@@ -417883,44 +417883,33 @@
        "_look": "sheet:b2_juniper.png",
        "condition": [
         "beat_unova_champion",
-        "not:b2_juniper_starter_1"
+        "not:b2_juniper_starters"
        ],
        "event": {
         "lines": [
          "Professor Juniper: Congratulations, Champion! I came all the way to Aspertia to see you.",
-         "Professor Juniper: You and your partner have come so far. The other two who were waiting with it have been waiting for a Trainer, too. Would you take them?"
+         "Professor Juniper: You and your partner have come so far. The other two who were waiting with it have been waiting for a Trainer, too. Raise them both well!"
         ],
         "gift_pokemon": {
-         "495": 498,
-         "498": 495,
-         "501": 495,
-         "default": 498
+         "495": [
+          498,
+          501
+         ],
+         "498": [
+          495,
+          501
+         ],
+         "501": [
+          495,
+          498
+         ],
+         "default": [
+          498,
+          501
+         ]
         },
         "gift_level": 5,
-        "flag": "b2_juniper_starter_1"
-       }
-      },
-      {
-       "text": "Professor Juniper",
-       "action": "EVENT",
-       "_look": "sheet:b2_juniper.png",
-       "condition": [
-        "beat_unova_champion",
-        "not:b2_juniper_starter_2",
-        "b2_juniper_starter_1"
-       ],
-       "event": {
-        "lines": [
-         "Professor Juniper: And here's the other one. Raise them both well!"
-        ],
-        "gift_pokemon": {
-         "495": 501,
-         "498": 501,
-         "501": 498,
-         "default": 501
-        },
-        "gift_level": 5,
-        "flag": "b2_juniper_starter_2"
+        "flag": "b2_juniper_starters"
        }
       },
       {
@@ -417932,7 +417921,7 @@
         ]
        },
        "condition": [
-        "b2_juniper_starter_2"
+        "b2_juniper_starters"
        ],
        "_look": "sheet:b2_juniper.png"
       }

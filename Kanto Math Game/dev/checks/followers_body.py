@@ -111,4 +111,4 @@ finally:
     pygame.image.load = _load
 
 print(f"   ({checked} FORM_MAP forms checked; still needing art: {len(set(gaps))})")
-print("FAILURES:", fails)
+print(f"##### {fails} failures")

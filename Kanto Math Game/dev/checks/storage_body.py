@@ -150,4 +150,4 @@ story.story_flags["received_starter_johto"] = True
 check(story.pending_starter() is None and "pending_starter" not in story.story_flags, "nothing pending once you have a starter")
 g.change_state(ow.CityState(g))
 check(isinstance(g.current_state, ow.CityState) and walked(g.current_state), "New Bark as normal afterwards (its map)")
-print("FAILURES:", fails)
+print(f"##### {fails} failures")

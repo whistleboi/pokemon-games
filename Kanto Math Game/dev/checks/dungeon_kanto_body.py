@@ -21,6 +21,17 @@ def _reach_of(f, start):
 
 
 _prog = g.loader.area_data["STORY_PROGRESSION"]
+
+
+def _way_in(a, p):
+    """A walked map with no menu exits (Unova's, cleared on purpose 11-23): in by its own first way out to another place,
+    as a player arrives, not at the map's middle (which can be a pocket reached only from one side)."""
+    if p is None or not isinstance(p, DungeonState) or [i for i in _prog[a].get("route_menu", []) if i.get("action") in ("EXIT", "TRAVEL")]:
+        return p
+    to = next((v for v in p.run.floor.exits.values() if isinstance(v, str) and v in _prog and v != a), None)
+    return kanto(a, came=to) if to else p
+
+
 _kanto = [k for k in _dg.recipes(g) if k in _prog and _prog[k].get("area_type") != "town"
           and k not in ("DEFAULT",) and not k.startswith("_")]
 _bad = []
@@ -28,6 +39,7 @@ for _a in _kanto:
     try:
         _p = kanto(_a, came=next(iter([i.get("target") or i.get("target_area") for i in _prog[_a].get("route_menu", [])
                                        if i.get("action") in ("EXIT", "TRAVEL")] or [None])))
+        _p = _way_in(_a, _p)
         if not isinstance(_p, DungeonState):
             _bad.append((_a, "not a map"))
             continue
@@ -37,7 +49,7 @@ for _a in _kanto:
         for _i in range(_p.run.n_floors):
             _f = _p.run.floor
             _reach = _reach_of(_f, _p.run.player)
-            if (_i < len(_art_floors) and _art_floors[_i].get("parts")) or (_dg.recipe_for(g, _a).get("art") or {}).get("parts"):  # (in parts: each from its own ladder)
+            if (_i < len(_art_floors) and _art_floors[_i].get("parts")) or (_dg.recipe_for(g, _a).get("art") or {}).get("parts")                     or (_dg.recipe_for(g, _a).get("art") or {}).get("split"):  # (in parts: each from its own ladder; "split": each from its own way out, as below)
                 for _t in list(_f.exits):
                     _reach = {**_reach, **_reach_of(_f, _t)}
             for _t in (_art_floors[_i].get("landings") or [] if _i < len(_art_floors) else []):  # (where you land, falling through a hole above: Mt. Pyre)
@@ -68,7 +80,7 @@ _bad = []
 for _a in _all:
     try:
         story.badges.setdefault(str(_prog[_a].get("region") or "KANTO").upper(), [])
-        _p = kanto(_a, came=None)
+        _p = _way_in(_a, kanto(_a, came=None))
         if _a == "HOENN_SOARING_IN_THE_SKY" and type(_p).__name__ == "Soaring3DState":
             continue  # (the flight, not a map: its own suite, soaring3d)
         if not isinstance(_p, DungeonState):

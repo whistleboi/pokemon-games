@@ -157,6 +157,10 @@ _p._battle_trainer(_t)
 while _p.dialogue_box.visible:
     _p.dialogue_box.advance()
     _p.update()
+for _ in range(600):   # (the region's battle intro plays first: Systems 11-24, as tms_hazards)
+    if getattr(g.current_state, "overworld", None) is not None:
+        break
+    g.current_state.update()
 _ob = g.current_state
 VIEW = getattr(_ob, "overworld", None)
 check(VIEW is not None, "an OVERWORLD battle's map view to draw the sweep on")
@@ -928,17 +932,22 @@ def gifts(area, region):
     return out
 
 
-check({"FLAME_ORB", "TOXIC_ORB"} <= set(gifts("REVERSAL_MOUNTAIN", "unova")) and "FLAME_ORB" in gifts("ULAULA_MEADOW", "alola")
+import json as _json   # (Unova's Reversal Mountain is walked: its Orbs are item balls, Black 2's Toxic Orb, White 2's Flame Orb; 11-24)
+_rmi = _json.load(open("assets/town_maps.json", encoding="utf-8"))["REVERSAL_MOUNTAIN_INSIDE"]
+_rm_balls = [o for m in [_rmi] + [sm["map"] for sm in _rmi.get("story_maps") or []] for r in (m.get("rooms") or {}).values()
+             for p in r.get("people") or [] for o in (p if isinstance(p, list) else [p])
+             if isinstance(o, dict) and set(((o.get("event") or {}).get("gift_item") or {})) & {"FLAME_ORB", "TOXIC_ORB"}]
+check({"FLAME_ORB", "TOXIC_ORB"} <= {k for o in _rm_balls for k in o["event"]["gift_item"]} and "FLAME_ORB" in gifts("ULAULA_MEADOW", "alola")
       and "TOXIC_ORB" in gifts("RESOLUTION_CAVE", "alola") and {"FLAME_ORB", "TOXIC_ORB"} <= set(gifts("WYNDON", "galar"))
       and {e["item"] for e in _d["paldea"]["LEVINCIA"]["extra_stock"]} == {"FLAME_ORB", "TOXIC_ORB"},
       "Flame / Toxic Orb: Reversal Mountain, Ula'ula Meadow, Resolution Cave, Wyndon Stadium, Levincia's shop")
 check({"WELLSPRING_MASK", "HEARTHFLAME_MASK", "CORNERSTONE_MASK"} <= set(gifts("KITAKAMI", "paldea")),
       "Ogerpon's three masks: given at Kitakami once Ogerpon is met")
 from src.states.overworld import common as _common
-ev = next(o["event"] for o in _d["unova"]["REVERSAL_MOUNTAIN"]["route_menu"] if "orbs" in str(o.get("flag_condition")))
-story.inventory.pop("FLAME_ORB", None)
+story.inventory.pop("FLAME_ORB", None); story.inventory.pop("TOXIC_ORB", None)
 _shown = []
-_common._run_story_event(g.current_state, ev, lambda c: True, lambda lines, *a, **k: _shown.extend(lines))
-check(story.inventory.get("FLAME_ORB") == 1 and story.inventory.get("TOXIC_ORB", 0) >= 1, f"...the Reversal Mountain search gives both ({_shown[-2:]})")
+for _o in _rm_balls:
+    _common._run_story_event(g.current_state, _o["event"], lambda c: True, lambda lines, *a, **k: _shown.extend(lines))
+check(story.inventory.get("FLAME_ORB") == 1 and story.inventory.get("TOXIC_ORB", 0) >= 1, f"...Reversal Mountain's two balls give them ({_shown[-2:]})")
 
 print(f"##### {fails} failures")
