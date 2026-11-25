@@ -8523,6 +8523,238 @@ def _past_nuvema():
 PAST_NUVEMA = _past(_past_nuvema)
 PAST_NUVEMA["landings"] = [[9, 5]]   # (in and out by the Memory Link, in the lab: Route 1 two years ago is a later part)
 
+# ---- 12c, part 3 (11-25): two years ago from Nuvema to Striaton, on White's maps (their grids are Black 2's own except
+# Striaton's Gym, so 12a's joins carry over): Route 1 (317; its gate 318 - the far side "nothing of interest", shut), Accumula
+# (397; 398-405, its gate 320), Route 2 (319), Striaton (6; 7 the Gym - the brothers' restaurant two years on - 8 the
+# Center, 9 / 10 Fennel's, 11-14 houses, 15 the Trainers' School), the Dreamyard (152; 153 its basement). BW's own people,
+# items, hidden items, trainers and wild tables (unova_trainers / unova_wild --white). The Gym: the three curtains open by
+# their switches; the brother whose type beats your first partner battles you - Black 2's team for him (Jordan 11-25: Black
+# 2's data where it has it) - and the Trio Badge is a keepsake (flag past_badge_trio). Each past Center has someone with a
+# C-Gear who sends you back to today. Left for later parts: BW's story scenes (Team Plasma's speech in Accumula, N, Cheren and
+# Bianca's battles, Fennel's Dream Mist and the Munna).
+OUTSIDE_W1.update({318: 317, 320: 397, 398: 397, 399: 397, 400: -1, 401: 397, 402: -1, 403: 397, 404: -1, 405: 397,
+                   7: 6, 8: 6, 9: 6, 10: -1, 11: 6, 12: -1, 13: 6, 14: -1, 15: 6})
+_TEAMS_W1 = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "unova_teams_w1.json"), encoding="utf-8"))
+
+
+def _w1(tid, **over):
+    """A battle from Pokemon White's own trainer table (unova_trainers.py --white writes unova_teams_w1.json)."""
+    t = {k: v for k, v in _TEAMS_W1[str(tid)].items() if k != "b2_id"}
+    t.update(over)
+    return t
+
+
+PAST_HOME = {"text": "Trainer with a C-Gear", "action": "EVENT", "event": {
+    "lines": ["Your C-Gear's Memory Link is still connected. Go back to your own time?",
+              "Your C-Gear hums... You're back in Nuvema, today!"], "travel": "NUVEMA_TOWN", "land": ["lab", 6, 12]}}
+
+
+def _pball(label, item, flag, name):
+    return _ball(label, item, "w1_" + flag, name=name)
+
+
+def _past_center(z, out_door, nurse, extra):
+    return room(z, {nurse: {"text": "Pokémon Center", "action": "HEAL"}, **extra}, {}, out_door, extra_people=[(2, 13, PAST_HOME)])
+
+
+def _past_west():
+    out = {}
+    out["route1"] = route(317, {
+        1: _say("Man by the grass", "Wild Pokemon hide in the tall grass. Walk in it when you want to battle or catch them!"),
+        8: _pball("Poke Ball across the water", "MAX_ETHER", "r1_max_ether", "a Max Ether"),
+        9: _pball("Poke Ball on the south side", "PEARL", "r1_pearl", "a Pearl")},
+        {}, exits={"^": ("PAST_ACCUMULA_TOWN", [(x, 0) for x in range(52, 58)]), "v": ("PAST_NUVEMA_TOWN", [(x, 63) for x in range(50, 56)])},
+        trainers={5: "Pokemon Ranger Brenda", 6: "Fisherman Sean", 7: "Pokemon Ranger Claude"},
+        hidden={"24,84": "BIG_MUSHROOM"},
+        rooms={"gate": room(318, {0: _say("Gate guard", "There's nothing of interest beyond here, and the bulletin board's gone "
+                                          "pitch black. Kind of refreshing, isn't it?"),
+                                  1: _say("Backpacker in the gate", "Wasting money is bad, but wasting time is worse! Some things "
+                                          "can only be done now!")}, {}, (6, 75))},
+        inside={"6,75": "gate", "6,76": "gate", "6,77": "gate"}, title="Route 1 (two years ago)")
+    _doors(out["route1"], out["route1"]["inside"])
+    for box in ((0, 0, 31, 31), (32, 64, 63, 95)):
+        _wall(out["route1"], *box)
+    out["route1"]["edge_to"] = dict({"%d,0" % x: [x - 32, 30] for x in range(52, 58)}, **{"%d,63" % x: [x - 32, 1] for x in range(50, 56)})
+    out["route1"]["rooms"]["gate"]["title"] = "Route Gate"
+
+    acc_rooms = {
+        "gate_w": room(320, {0: _say("Woman in the gate", "Watching the bulletin board change is so soothing!"),
+                             1: _say("Gate guard", "Good afternoon, Trainer! This is a gate for travelers!")},
+                       {}, (0, 7), exits_extra={319: ("<", "PAST_UNOVA_ROUTE_2")}),
+        "center": _past_center(398, (28, 17), 5, {1: {"text": "Shop", "action": "SHOP"},
+                                               3: _say("Woman by the PC", "Be sure to save before you take a break!")}),
+        "house_w": room(399, {0: _say("Woman in the house", "When your Pokemon's HP goes down, take them to a Pokemon Center."),
+                              1: _say("Lady in the house", "How many Poke Balls do you have? Buy some at a Pokemon Center's shop!"),
+                              2: _say("Kid in the house", "Oh! Your Pokemon! You're so lucky. I want to be a Trainer too!")},
+                        {}, (3, 20), stairs={400: ("^", "ROOM:house_w_2f")}),
+        "house_w_2f": room(400, {0: _say("Woman upstairs", "Different ideas cause disputes... different ideas expand the world... "
+                                         "I guess they're both right."),
+                                 1: _say("Man upstairs", "We've just gotten married. Men and women are so different, aren't they?")},
+                           {}, None, stairs={399: ("v", "ROOM:house_w")}),
+        "house_n": room(401, {0: _say("Woman in the house", "On Route 2, many Trainers train their Pokemon by battling!"),
+                              1: _say("Girl in the house", "Guess what I know! Pokemon can remember up to four moves at a time!")},
+                        {}, (17, 6), stairs={402: ("^", "ROOM:house_n_2f")}),
+        "house_n_2f": room(402, {0: _say("Woman upstairs", "Weak Pokemon, strong Pokemon, cool and cute Pokemon... so many to meet!"),
+                                 1: _say("Man upstairs", "Wow, that Bag stores anything! Why not carry lots of Potions?")},
+                           {}, None, stairs={401: ("v", "ROOM:house_n")}),
+        "house_nw": room(403, {0: _say("Woman in the house", "Get strong and you move forward. Move forward and you get stronger!"),
+                               2: _say("Man in the house", "Pokemon will be strong if you train them. Love is what's important!")},
+                         {}, (9, 6), stairs={404: ("^", "ROOM:house_nw_2f")}),
+        "house_nw_2f": room(404, {0: _say("Pokemon upstairs", "Skree skree!")}, {}, None, stairs={403: ("v", "ROOM:house_nw")}),
+        "music": room(405, {0: _say("Lady at the piano", "Shall I play my favourite tune? Hee hee! Please listen."),
+                            2: _say("Drummer", "My! Heart! As long as my heart beats! I will keep! On! Drumming!!"),
+                            1: _say("Pokemon by the drums", "Chip kwip!")}, {}, (26, 8)),
+    }
+    acc = town(397, {0: _say("Man on the hill", "Beautiful scenery and relaxing sounds... I sure do love this place."),
+                     1: _say("Woman in town", "What's this? You and your Pokemon somehow resemble each other!"),
+                     2: _say("Lady in town", "Pokemon do everything they can for people, and people treat them with love."),
+                     3: _say("Gentleman in town", "Let me give you the benefit of my experience: you can take six Pokemon with you!"),
+                     28: _say("Girl by the grass", "Some wild Pokemon jump out and attack... but you can make friends with them!")},
+               {}, {398: ("center", "center"), 399: ("house", "house_w"), 401: ("house", "house_n"), 403: ("house", "house_nw"),
+                    405: ("house", "music"), 320: ("gate", "gate_w", "PAST_UNOVA_ROUTE_2")},
+               acc_rooms, edges={"v": ("PAST_UNOVA_ROUTE_1", [(x, 31) for x in range(20, 26)])}, title="Accumula Town (two years ago)")
+    acc["edge_to"] = {"%d,31" % x: [x + 32, 1] for x in range(20, 26)}
+    for r, t in (("gate_w", "Accumula Gate"), ("center", "Pokémon Center"), ("house_w", "House"), ("house_w_2f", "House 2F"),
+                 ("house_n", "House"), ("house_n_2f", "House 2F"), ("house_nw", "House"), ("house_nw_2f", "House 2F"), ("music", "House")):
+        acc["rooms"][r]["title"] = t
+    out["accumula"] = acc
+
+    r2 = route(319, {0: _say("Youngster on the road", "When your Pokemon are worn out, walk on the road! Wild Pokemon only "
+                             "appear in the tall grass!"),
+                     1: _say("Lass on the road", "Battles between Trainers are serious affairs you can't run from!"),
+                     6: _pball("Poke Ball by the trees", "SUPER_POTION", "r2_super_potion", "a Super Potion"),
+                     7: _pball("Poke Ball in the grass", "balls", "r2_poke_ball", "a Poke Ball"),
+                     8: _pball("Poke Ball behind the boulder", "RARE_CANDY", "r2_rare_candy", "a Rare Candy"),
+                     9: _pball("Poke Ball by the path", "POTION", "r2_potion", "a Potion"),
+                     12: _pball("Poke Ball on the hill", "GREAT_BALL", "r2_great_ball", "a Great Ball"),
+                     13: _pball("Poke Ball by the gate", "POTION", "r2_potion_2", "a Potion")},
+               {}, exits={"^": ("PAST_STRIATON_CITY", [(x, 0) for x in range(48, 54)]), "v": ("PAST_ACCUMULA_TOWN", [(25, y) for y in range(39, 42)])},
+               trainers={3: ("Youngster Jimmy", 1), 4: ("Lass Mali", 1), 5: ("Youngster Roland", 1)}, title="Route 2 (two years ago)")
+    _wall(r2, 32, 32, 63, 63)
+    _put_char(r2, 14, 46, "b")
+    r2["edge_to"] = {"%d,0" % x: [x, 30] for x in range(48, 54)}
+    out["route2"] = r2
+
+    curtains = {16: "w1_gym_curtain_1", 26: "w1_gym_curtain_2", 36: "w1_gym_curtain_3"}
+    gym_scenes = [{"trigger": {"zone": [x, row, x, row]}, "condition": ["not:" + flag], "flag": flag, "cast": [],
+                   "call": ["Click! A switch... The curtain ahead swings open!"]}
+                  for row, flag in curtains.items() for x in (9, 12, 15)]
+
+    def brother(who, tid, starter, sheet):
+        return {"text": who, "action": "EVENT", "_look": "sheet:" + sheet,
+                "condition": ["world:unova_story:starter:%d" % starter, "not:past_badge_trio"], "event": {
+                    "lines": ["%s: Welcome to the Striaton City Gym! I'm %s, and I'll be your opponent!" % (who, who)],
+                    "battle": dict(_b2(tid, sprite="trio_cilan_chili_cress.png",
+                                       dialogue={"player_won": ["%s: You're the real thing! Take this: the Trio Badge!" % who]}),
+                                   **{"class": "GYM_LEADER"}),
+                    "flag": "past_badge_trio"}}
+
+    brothers = [brother("Chili", 494, 495, "w1_c179.png"), brother("Cress", 495, 498, "w1_c178.png"),   # (Fire against Snivy,
+                brother("Cilan", 496, 501, "w1_c85.png"),                                               #  Water against Tepig, Grass
+                dict(brother("Cilan", 496, 0, "w1_c85.png"), condition=["not:past_badge_trio"] + ["not:world:unova_story:starter:%d" % n for n in (495, 498, 501)]),       #  against Oshawott; else Cilan)
+                _say("Cilan ", "Cilan: That Trio Badge is a keepsake of our battle. Come back two years on - we'll have a restaurant!",
+                     _look="sheet:w1_c85.png", condition=["past_badge_trio"])]
+
+    gym = room(7, {0: _say("Gym guide", "In this Gym you step on switches to open the curtains. Choose wisely!",
+                           "I hope you'll always remember the moment you received this Gym Badge."),
+                   3: brothers,   # (White stands all three on one spot, the one who battles you shown)
+                   7: {"text": "Waiter Maxwell", "action": "EVENT", "condition": ["not:w1_gym_maxwell"], "event": {
+                       "lines": ["Our menu is suited to each Trainer!"], "battle": _w1(9), "flag": "w1_gym_maxwell"}},
+                   8: {"text": "Waitress Tia", "action": "EVENT", "condition": ["not:w1_gym_tia"], "event": {
+                       "lines": ["Please enjoy your battle!"], "battle": _w1(10), "flag": "w1_gym_tia"}},
+                   9: _say("Waitress", "Welcome! We're very proud of our menu, which we adjust to suit each Trainer!")},
+               {}, (52, 10), scenes=gym_scenes)
+    gym["barred"] = [{"tiles": [[x, row - 3] for x in range(9, 16)] + [[x, row - 2] for x in range(9, 16)], "until": {"condition": [flag]},
+                      "lines": ["A curtain blocks the way. Maybe a switch opens it?"]} for row, flag in curtains.items()]
+    st_rooms = {
+        "gym": gym,
+        "center": _past_center(8, (45, 11), 1, {0: {"text": "Shop", "action": "SHOP"},
+                                             2: _say("Man by the counter", "The more Gym Badges you win, the more you can buy at a shop!"),
+                                             3: _say("Woman by the PC", "More Pokemon means fewer lost battles, and more fun with the Pokedex!")}),
+        "fennel": room(9, {0: _say("Man in the house", "After a battle my Pokemon evolved and changed its appearance!"),
+                           1: _say("Woman in the house", "Some evolve and some don't... Pokemon are mysterious."),
+                           2: _say("Kid in the house", "She may not look it, but Fennel is a great scientist!")},
+                       {}, (53, 18), stairs={10: ("^", "ROOM:fennel_2f")}),
+        "fennel_2f": room(10, {0: _say("Fennel", "Fennel: Did Juniper ask you to complete the Pokedex? I'm researching dreams! The "
+                                       "Munna in the Dreamyard give off Dream Mist..."),
+                               1: _say("Amanita", "Amanita: I maintain the Pokemon Storage System. Do you know about the Battle Box?")},
+                          {}, None, stairs={9: ("v", "ROOM:fennel")}),
+        "house_se": room(11, {0: _say("Lady in the house", "My husband and I are compatible... because he can't beat me in battle!"),
+                              1: _say("Gentleman in the house", "Our relationship began with Pokemon battles. I never defeated her!")},
+                         {}, (53, 23), stairs={12: ("^", "ROOM:house_se_2f")}),
+        "house_se_2f": room(12, {0: _say("Man upstairs", "I went abroad to have Pokemon battles!"),
+                                 1: _say("Gentleman upstairs", "Give a Pokemon a nickname and you grow attached to it."),
+                                 2: _say("Nursery Aide upstairs", "Hi, traveling Trainer! Your family must be talking about you right now!")},
+                            {}, None, stairs={11: ("v", "ROOM:house_se")}),
+        "house_s": room(13, {0: _say("Boy in the house", "Lately I have a favourite model: Elesa! Her Pokemon are strong, too!"),
+                             1: _say("Woman in the house", "You can tell how strong Trainers are by their Gym Badges!"),
+                             2: _say("Man in the house", "The GTS links the world from the second floor of a Pokemon Center!")},
+                        {}, (38, 22), stairs={14: ("^", "ROOM:house_s_2f")}),
+        "house_s_2f": room(14, {0: _say("Girl upstairs", "Training six Pokemon at once is hard, so some Trainers focus on three."),
+                                1: _say("Pokemon upstairs", "Skreee!"), 2: _say("Pokemon by the bed", "Fwee lee lee..."),
+                                3: _say("Man upstairs", "I've trained only Fire types... They had no chance against Water types!")},
+                           {}, None, stairs={13: ("v", "ROOM:house_s")}),
+        "school": room(15, {0: _say("Teacher", "This Trainers' School exists for Trainers who want to know more about Pokemon!"),
+                            1: _say("Ace Trainer in class", "Some moves can only be taught with TMs, and TMs can be used over and over."),
+                            3: _say("Girl in class", "Abilities have all sorts of effects, many of them in battle!"),
+                            4: _say("Boy in class", "You can stop a Pokemon's evolution by pressing B while it's evolving!")},
+                       {}, (38, 10)),
+    }
+    st = town(6, {0: _say("Hiker by the fountain", "No matter how often I challenge the Gym Leader, he always uses Pokemon I don't like..."),
+                  1: _say("Boy in the garden", "A move of the user's own type gets stronger! The Gym Leader told me!"),
+                  2: _say("Gentleman by the path", "At the old factory site, the Dreamyard, there's a Pokemon that can make dreams appear!"),
+                  3: _say("Woman by the trees", "A TM can teach a move instantly, over and over, to different Pokemon!"),
+                  4: _say("Girl by the school", "I studied at the Trainers' School when I was a beginner, too."),
+                  5: _say("Woman by the houses", "Some Trainers train in the Dreamyard. You might find something there..."),
+                  11: _say("Girl by the gate", "Grass types are weak against Fire, Water against Grass, Fire against Water!"),
+                  13: _pball("Poke Ball in the garden", "X_SPEED", "st_x_speed", "an X Speed"),
+                  14: _pball("Poke Ball by the south path", "GREAT_BALL", "st_great_ball", "a Great Ball")},
+              {}, {7: ("house", "gym"), 8: ("center", "center"), 9: ("house", "fennel"), 11: ("house", "house_se"),
+                   13: ("house", "house_s"), 15: ("house", "school")},
+              st_rooms,
+              edges={"v": ("PAST_UNOVA_ROUTE_2", [(x, 31) for x in range(48, 54)]),
+                     "d": ("PAST_DREAMYARD", [(69, y) for y in range(4, 8)])},
+              hidden={"8,3": "BALM_MUSHROOM", "26,6": "ZINC"}, title="Striaton City (two years ago)")
+    st["edge_to"] = dict({"%d,31" % x: [x, 1] for x in range(48, 54)}, **{"69,%d" % y: [9, 26 + y - 4] for y in range(4, 8)})
+    # (the north road to Route 3 two years ago: a later part; BW's man there wants a Gym Badge first)
+    for r, t in (("gym", "Striaton Gym"), ("center", "Pokémon Center"), ("fennel", "House"), ("fennel_2f", "Fennel's Lab"),
+                 ("house_se", "House"), ("house_se_2f", "House 2F"), ("house_s", "House"), ("house_s_2f", "House 2F"),
+                 ("school", "Trainers' School")):
+        st["rooms"][r]["title"] = t
+    out["striaton"] = st
+
+    dy = route(152, {4: _pball("Poke Ball by the fence", "REPEL", "dy_repel", "a Repel"),
+                     5: _pball("Poke Ball in the grass", "POTION", "dy_potion", "a Potion"),
+                     6: _pball("Poke Ball by the ruins", "PARALYZE_HEAL", "dy_paralyze_heal", "a Paralyze Heal"),
+                     14: _pball("Poke Ball in the old factory", "REVIVE", "dy_revive", "a Revive"),
+                     15: _pball("Poke Ball by the stairs", "balls", "dy_poke_ball", "a Poke Ball"),
+                     16: _pball("Poke Ball in the north", "HYPER_POTION", "dy_hyper_potion", "a Hyper Potion"),
+                     22: _pball("Poke Ball by the furnace", "X_DEFENSE", "dy_x_defense", "an X Defense")},
+               {}, exits={"<": ("PAST_STRIATON_CITY", [(8, y) for y in range(26, 30)]),
+                          "b": ("PAST_DREAMYARD_B1F", [(x, y + k) for (x, y) in _DY_B1 for k in range(3)])},
+               trainers={9: "Youngster Joey", 10: "Lass Eri"}, hidden={"19,45": "MAX_POTION", "41,16": "ULTRA_BALL"},
+               title="Dreamyard (two years ago)")
+    dy["split"] = True
+    dy["edge_to"] = dict(DREAMYARD_MAP["edge_to"], **{"8,%d" % y: [68, 4 + y - 26] for y in range(26, 30)})
+    out["dreamyard"] = dy
+    dy1 = route(153, {8: _pball("Poke Ball in the basement", "TM270", "dy_tm270", "TM270 Dream Eater"),
+                      9: _pball("Poke Ball by the machines", "TWISTED_SPOON", "dy_twisted_spoon", "a Twisted Spoon")},
+                {}, exits={"^": ("PAST_DREAMYARD", [(26, 3), (3, 20), (26, 27)])},
+                trainers={1: "Scientist Markus", 2: "Psychic Rudolf", 3: "Scientist Kathrine", 4: "Scientist Chan",
+                          5: "Psychic Tommy", 6: "Psychic Future", 7: "Scientist Luke"},
+                hidden={"24,8": "AWAKENING", "8,23": "AWAKENING", "8,12": "AWAKENING"}, title="Dreamyard B1F (two years ago)")
+    dy1["split"] = True
+    dy1["edge_to"] = dict(DREAMYARD_B1["edge_to"])
+    out["dreamyard_b1"] = dy1
+    return out
+
+
+PAST_W = _past(_past_west)
+PAST_NUVEMA["exits"]["^"] = "PAST_UNOVA_ROUTE_1"
+for _x in range(18, 24):
+    _put_char(PAST_NUVEMA, _x, 0, "^")
+PAST_NUVEMA["edge_to"] = {"%d,0" % x: [x + 32, 62] for x in range(18, 24)}
+
 # ======================================================================================================== batch 12b (11-25)
 # Black 2's north after the title (walkthrough part 19): Tubeline Bridge (254: from Route 9's gate 349 to Route 8's gate
 # 347), Route 8 (345: the rock giver, a Hip Wader), the Moor of Icirrus (346), Icirrus City (113: the old Gym 114, the
@@ -8743,4 +8975,4 @@ MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": 
         "VICTORY_ROAD_RIVER": VR_RIVER, "VICTORY_ROAD_CAVE_2F": VR_2F, "VICTORY_ROAD_2F_BACK": VR_2F_BACK,
         "VICTORY_ROAD_MOUNTAINSIDE": VR_MOUNTAIN, "VICTORY_ROAD_3F": VR_3F, "VICTORY_ROAD_TUNNEL": VR_TUNNEL,   # (batch 10a)
         "UNOVA_POKEMON_LEAGUE": LEAGUE,   # (batch 10b)
-        "UNOVA_ROUTE_14": ROUTE_14, "N_CASTLE": N_CAVE, "SKYARROW_BRIDGE": SKYARROW, "PINWHEEL_FOREST": PINWHEEL, "PINWHEEL_FOREST_OUTSIDE": PINWHEEL_OUT, "NACRENE_CITY": NACRENE, "UNOVA_ROUTE_3": ROUTE_3, "WELLSPRING_CAVE": WELLSPRING, "WELLSPRING_CAVE_B1F": WELLSPRING_B1, "STRIATON_CITY": STRIATON, "DREAMYARD": DREAMYARD_MAP, "DREAMYARD_B1F": DREAMYARD_B1, "UNOVA_ROUTE_2": ROUTE_2, "ACCUMULA_TOWN": ACCUMULA, "UNOVA_ROUTE_1": ROUTE_1, "NUVEMA_TOWN": NUVEMA, "PAST_NUVEMA_TOWN": PAST_NUVEMA, "TUBELINE_BRIDGE": TUBELINE, "UNOVA_ROUTE_8": ROUTE_8, "MOOR_OF_ICIRRUS": MOOR, "ICIRRUS_CITY": ICIRRUS, "DRAGONSPIRAL_TOWER": DRAGONSPIRAL, "BLACK_CITY": BLACK_CITY, "WHITE_FOREST": WHITE_FOREST, "ABUNDANT_SHRINE": SHRINE, "UNOVA_ROUTE_15": ROUTE_15, "MARVELOUS_BRIDGE": BRIDGE}   # (batch 11a)
+        "UNOVA_ROUTE_14": ROUTE_14, "N_CASTLE": N_CAVE, "SKYARROW_BRIDGE": SKYARROW, "PINWHEEL_FOREST": PINWHEEL, "PINWHEEL_FOREST_OUTSIDE": PINWHEEL_OUT, "NACRENE_CITY": NACRENE, "UNOVA_ROUTE_3": ROUTE_3, "WELLSPRING_CAVE": WELLSPRING, "WELLSPRING_CAVE_B1F": WELLSPRING_B1, "STRIATON_CITY": STRIATON, "DREAMYARD": DREAMYARD_MAP, "DREAMYARD_B1F": DREAMYARD_B1, "UNOVA_ROUTE_2": ROUTE_2, "ACCUMULA_TOWN": ACCUMULA, "UNOVA_ROUTE_1": ROUTE_1, "NUVEMA_TOWN": NUVEMA, "PAST_NUVEMA_TOWN": PAST_NUVEMA, "PAST_UNOVA_ROUTE_1": PAST_W["route1"], "PAST_ACCUMULA_TOWN": PAST_W["accumula"], "PAST_UNOVA_ROUTE_2": PAST_W["route2"], "PAST_STRIATON_CITY": PAST_W["striaton"], "PAST_DREAMYARD": PAST_W["dreamyard"], "PAST_DREAMYARD_B1F": PAST_W["dreamyard_b1"], "TUBELINE_BRIDGE": TUBELINE, "UNOVA_ROUTE_8": ROUTE_8, "MOOR_OF_ICIRRUS": MOOR, "ICIRRUS_CITY": ICIRRUS, "DRAGONSPIRAL_TOWER": DRAGONSPIRAL, "BLACK_CITY": BLACK_CITY, "WHITE_FOREST": WHITE_FOREST, "ABUNDANT_SHRINE": SHRINE, "UNOVA_ROUTE_15": ROUTE_15, "MARVELOUS_BRIDGE": BRIDGE}   # (batch 11a)

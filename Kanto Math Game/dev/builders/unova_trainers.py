@@ -115,10 +115,10 @@ def entry(r, tid, when=None):
     e = {"name": f"{cls} {name}", "class": slug.upper(), "sprite": pic,
          "team": [m["id"] for m in t["mons"]], "levels": [m["level"] for m in t["mons"]],
          "rewards": {"balls": max(1, min(5, len(t["mons"]) + 1))}, "b2_id": tid}
-    names = utrainers._text(r, 403)
+    names = utrainers._text(r, __import__("nds5").P["MOVES"])
     if any(m["moves"] for m in t["mons"]):
         e["movesets"] = {str(m["id"]): [names[x].upper().replace(" ", "-") for x in m["moves"]] for m in t["mons"] if m["moves"]}
-    items = utrainers._text(r, 64)
+    items = utrainers._text(r, __import__("nds5").P["ITEMS"])
     held = {str(m["id"]): items[m["item"]].upper().replace(" ", "_") for m in t["mons"] if m["item"]}
     if held:
         e["held_items"] = held
@@ -200,8 +200,17 @@ def write(out):
     open(P, "w", encoding="utf-8", newline="").write(text)
 
 
+# Unova two years ago (batch 12c, 11-25): --white reads Pokemon White's own trainers into the past's areas, and its story /
+# Gym battles into town_maps/unova_teams_w1.json (the builder's _w1(id)).
+PLACES_W1 = {"PAST_UNOVA_ROUTE_1": [317], "PAST_UNOVA_ROUTE_2": [319], "PAST_DREAMYARD": [152], "PAST_DREAMYARD_B1F": [153]}
+TEAMS_W1 = [9, 10]   # (the Striaton Gym's Waiter Maxwell and Waitress Tia)
+
 if __name__ == "__main__":
+    import nds5
     Z = g5map.Zones()
+    if nds5.GAME == "W1":
+        PLACES, TEAMS, PAIRS = PLACES_W1, TEAMS_W1, {}
+        TEAMS_OUT = os.path.join(HERE, "town_maps", "unova_teams_w1.json")
     out = pair_up(Z.r, pools(Z))
     for area, pool in out.items():
         print(area, [(t["name"], t["levels"], "double" if t.get("battle_options") else "") for t in pool])
