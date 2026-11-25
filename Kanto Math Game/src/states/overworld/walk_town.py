@@ -1408,6 +1408,8 @@ class WalkTownState(TownWalkUps, CityState):
         story.last_center = story.current_area_key
         for p in story.player_team:
             p.heal_full()
+        from src.world import feats as _feats
+        _feats.note(story, "heals")   # (a rest at a Center: Black 2's Pokemon Center Fan Medal, 11-25)
         if hasattr(self.game, "music"):
             self.game.music.jingle("pokemon_healed")
         self.show_message(["Welcome to the Pokémon Center!", "We've restored your team to full health."])

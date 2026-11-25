@@ -58,6 +58,7 @@ battle_bg              systems  battle,look
 ds3d                   systems  world,live3d
 catch_date             systems  saves,quick
 battle_intros          systems  battle,look
+medal_rally            systems  items,quick
 map_attacks            systems  world
 menu_screens           systems  ui
 partners               systems  world
