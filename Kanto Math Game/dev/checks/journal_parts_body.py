@@ -108,4 +108,17 @@ _hit = lux._guide_toward({("luxury_23", (3, 4))}, "Up top")
 check(_hit and (getattr(lux, "_lift_plan", None) or [None, None])[1] == "luxury_23",
       f"the Luxury Suites: the lift, to 23F ({_hit})")
 
+lea = walk_town("UNOVA_POKEMON_LEAGUE", None, room="plaza", play=False)
+_e4 = ("b2_e4_shauntal", "b2_e4_grimsley", "b2_e4_caitlin", "b2_e4_marshal")
+for _f in _e4:
+    story.story_flags.pop(_f, None)
+check(not lea._guide_lifts("plaza"), "the League statue's lift is no way yet with the Elite Four unbeaten (its 'requires')")
+for _f in _e4:
+    story.story_flags[_f] = True
+lea._guide_parts = {}
+check(list(lea._guide_lifts("plaza").values()) == [[["Down to the Champion", "chamber", 30, 84]]],
+      "with all four beaten, it goes down to the Champion")
+for _f in _e4:
+    story.story_flags.pop(_f, None)
+
 print(f"##### {fails} failures")
