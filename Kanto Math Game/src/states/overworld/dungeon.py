@@ -6019,6 +6019,20 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
                 return None
             hop = best[1]
             tiles = outs[hop]
+        _step = guide.current_step(self.game, mission) if mission else None   # (the next place's way-point on one of its floors:
+        if _step and _step.get("area") == hop and isinstance(_step.get("floor"), int) and len(tiles) > 1:   # the ways out here that
+            try:                                                                    #  land on that floor, as leaving picks it - Team
+                _all = (recipe_for(self.game, hop).get("exit_floors_all") or {}).get(self.area_key) or []   # Galactic HQ's west door
+            except Exception:                                                       #  into the warehouse's key side; Sinnoh 11-25)
+                _all = []
+            if len(_all) > 1:
+                def _lands(t):
+                    same = [e for e, v in run.made(t[0]).exits.items() if v == hop]
+                    if (t[1], t[2]) not in same:
+                        return None
+                    return _all[min(same.index((t[1], t[2])) * len(_all) // len(same), len(_all) - 1)]
+                _on = [t for t in tiles if _lands(t) == _step["floor"]]
+                tiles = _on or tiles
         groups = guide.place_groups(self.game, hop)   # (the next place in parts: the ways out that land in the part that leads on -
         goal = guide.goal_area(self.game)              #  Hoenn's Routes 129-131, two seas each; 11-24)
         path = guide.path_to(self.game, hop, goal, came=self.area_key) if groups and goal and goal != hop else None
@@ -6048,6 +6062,9 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         story = self.game.story_manager
         step = next((s for s in mission["steps"] if s.get("area", guide.mission_target(self.game, mission)) == self.area_key
                      and not (s.get("done") and guide._ok(story, s["done"])) and guide._ok(story, s.get("when"))), None)
+        _cur = guide.current_step(self.game, mission)   # (an earlier way-point elsewhere not done yet: that one first - Team Galactic
+        if step is not None and _cur is not None and _cur is not step and _cur.get("area", guide.mission_target(self.game, mission)) != self.area_key:
+            return None                                  #  HQ's Cyrus waits till the warehouse's Galactic Key; Sinnoh 11-25)
         _rooms = (self.run.recipe.get("art") or {}).get("room_floors")   # (a route with rooms: its ground is floor 0, the rooms the rest -
         fl = step.get("floor", 0 if self.run.n_floors == 1 or _rooms else None) if step else None   #  a step with no floor is outdoors: Route 4's Colress, 11-24)
         if step and step.get("room"):  # (a room of the map, walked as a floor of its own: the S.S. Anne's Captain's cabin)
