@@ -63,4 +63,15 @@ kept = city._ways_on("SINNOH_ROUTE_213", tiles, fake)
 guide.mission_target = _mt
 check(0 < len(kept) < len(tiles), f"out of Pastoria toward Valor Lakefront, the marker keeps {len(kept)} of {len(tiles)} ways out to Route 213")
 
+print("A way-point step with no floor, on a route with rooms, means the route's ground (Unova's Route 4, 11-24)")
+guide.WALKED_REGIONS |= {"UNOVA"}
+from src.states.overworld.dungeon import DungeonState
+story.current_area_key = "UNOVA_ROUTE_4"
+_m = dict(g.loader.area_data and next(m for m in g.loader.area_data["JOURNAL_MISSIONS"] if m["id"] == "b2_m19"))
+for _v, _at in (("BLACK_2", (45, 104)), ("WHITE_2", (21, 98))):
+    story.story_flags["unova_version"] = _v
+    _ds = DungeonState(g)
+    _hit = _ds._guide_step(_m)
+    check(_hit is not None, f"{_v}: the marker leads to Colress's step on Route 4 ({_hit}, his spot {_at})")
+
 print(f"##### {fails} failures")
