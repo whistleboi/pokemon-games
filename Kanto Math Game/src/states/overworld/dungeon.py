@@ -1046,6 +1046,10 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
             p2, f = tuple(at_edge[2]), self.run.floor
             own = [e for e, v in f.exits.items() if v == entrance]
             t = min(own, key=lambda e: abs(e[0] - p2[0]) + abs(e[1] - p2[1])) if own else None  # (its partner, or the nearest to it)
+            if f.walkable(*p2) and p2 not in f.exits and (t is None or abs(t[0] - p2[0]) + abs(t[1] - p2[1]) > 2):
+                # (a landing inside the map, far from any way back there: you stand on it - the docked Plasma Frigate's hatch
+                #  out of Ghetsis's room into the Giant Chasm's forest, (49, 64), not its gangway; Journal PT_FULL, 11-25)
+                self.run.player, t = p2, None
             if t is not None:
                 step = (1, 0) if t[0] == 0 else (-1, 0) if t[0] == f.w - 1 else (0, 1) if t[1] == 0 else (0, -1)
                 inn = (t[0] + step[0], t[1] + step[1])
