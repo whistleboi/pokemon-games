@@ -1844,5 +1844,144 @@ _days = {tuple(_BG.picks(__import__("datetime").date(2026, 11, d))) for d in ran
 check(len(_days) >= 10 and all(len(p_) == 4 for p_ in _days), f"Battleground: who stands there changes day by day ({len(_days)} different line-ups in 28 days)")
 story.story_flags.clear(); story.story_flags.update(_sv); story.player_team = _team
 
+# ---- S7b (11-24, s_s7_turnback.py, src/world/turnback_cave.py): Turnback Cave as Platinum's - each door picks the next room
+#      as you go (one in four the next pillar room), the door you came by leads out, the room after the third pillar room is
+#      Giratina's; there Giratina if you fought it in the Distortion World and didn't catch it, else the item for the rooms taken
+from src.world import turnback_cave as _TC
+_sv, _iv = dict(story.story_flags), dict(story.inventory)
+for _k in ("turnback", "turnback_giratina_done"):
+    story.story_flags.pop(_k, None)
+story.story_flags["TURNBACK_CAVE_boss_defeated"] = True
+story.inventory["HM_ROCK_SMASH"] = 1
+def _tb_step(r, d):
+    _drive(r, 200, lambda: not (getattr(r, "dialogue_box", None) and r.dialogue_box.visible) and not getattr(r, "_busy", lambda: False)())
+    r.walk_goal = None
+    r.step(*d)
+    _drive(r, 300, lambda: not (getattr(r, "dialogue_box", None) and r.dialogue_box.visible))
+    for _q in range(60):
+        g.current_state.update()
+    return (r.run.index, tuple(r.run.player))
+r = route("TURNBACK_CAVE", "SENDOFF_SPRING")
+r.run.jump_floor(0, (21, 8)); frames(r, 3)
+_in = _tb_step(r, (0, -1))                                  # (the entrance's door: the first room)
+_ww = (r.recipe.get("art") or {}).get("warp_world")
+_seq = []
+_rolls = iter([0.1, 0.9, 0.1, 0.1])                          # (pillar, rock room, pillar, pillar)
+_TC.RNG.random = lambda: next(_rolls, 0.9)
+r.run.player = (11, 2); frames(r, 2)
+_seq.append(_tb_step(r, (0, -1)))                           # (north: pillar room 1, in at its south door)
+_p1 = dict(story.story_flags.get("turnback") or {})
+r.run.player = (19, 11); frames(r, 2)
+_seq.append(_tb_step(r, (1, 0)))                            # (east: a rock room, in at its west door)
+r.run.player = (11, 2); frames(r, 2)
+_seq.append(_tb_step(r, (0, -1)))                           # (pillar 2)
+r.run.player = (11, 2); frames(r, 2)
+_seq.append(_tb_step(r, (0, -1)))                           # (pillar 3)
+r.run.player = (11, 2); frames(r, 2)
+_seq.append(_tb_step(r, (0, -1)))                           # (after the third pillar: Giratina's room)
+_end = dict(story.story_flags.get("turnback") or {})
+_gfig = {str((m.payload or {}).get("text")) for m in r.run.floor.movers if m.kind == "figure"}
+r.run.player = (11, 19); frames(r, 2)
+_back = _tb_step(r, (0, 1))                                 # (out of Giratina's room: back at the entrance)
+_near = lambda a, b: abs(a[0] - b[0]) + abs(a[1] - b[1]) <= 1
+_ok_path = (_in[0] == 1 and [s[0] for s in _seq] == [2, _seq[1][0], 2, 2, 3] and 4 <= _seq[1][0] <= 9
+            and _near(_seq[0][1], (11, 20)) and _near(_seq[1][1], (2, 11)) and _p1.get("pillars") == 1 and _end.get("pillars") == 3
+            and "Giratina" in _gfig and _back[0] == 0)
+# the door you came in by leads straight back out
+_TC.RNG.random = lambda: 0.9
+r = route("TURNBACK_CAVE", "SENDOFF_SPRING")
+r.run.jump_floor(0, (21, 8)); frames(r, 3)
+_tb_step(r, (0, -1))
+r.run.player = (11, 2); frames(r, 2)
+_a = _tb_step(r, (0, -1))
+r.run.player = (11, 19); frames(r, 2)
+_b = _tb_step(r, (0, 1))                                    # (back through the south door you came in by)
+# caught it: an item on the pedestal instead, by the rooms taken
+story.story_flags["turnback_giratina_done"] = True
+r = route("TURNBACK_CAVE", "SENDOFF_SPRING")
+story.story_flags["turnback"] = {"pillars": 3, "rooms": 2, "came": [11, 20]}
+r.run.jump_floor(2, (11, 3)); frames(r, 2)
+r.run.player = (11, 2); frames(r, 2)
+_tb_step(r, (0, -1))
+_ifig = {str((m.payload or {}).get("text")) for m in r.run.floor.movers if m.kind == "figure"}
+_im = next((m for m in r.run.floor.movers if m.kind == "figure" and str((m.payload or {}).get("text")) == "Item"), None)
+_rc = story.inventory.get("REAPER_CLOTH", 0)
+if _im is not None:
+    r.run.player = (_im.x, _im.y + 1); r._use_figure(_im); _drive(r, 300, lambda: not r.dialogue_box.visible)
+    r._use_figure(_im); _drive(r, 300, lambda: not r.dialogue_box.visible)
+_got = story.inventory.get("REAPER_CLOTH", 0) - _rc
+check(_ww == "turnback_cave" and _ok_path and 4 <= _a[0] <= 9 and _b[0] == 0 and r.run.index == 3 and "Item" in _ifig and "Giratina" not in _ifig and _got == 1
+      and _TC.item_for(4) == "RARE_BONE" and _TC.item_for(3) == "REAPER_CLOTH" and _TC.item_for(20) == "STARDUST",
+      f"Turnback Cave: doors pick the next room as Platinum's - three pillar rooms then Giratina's, the way you came leads out; Giratina there, else the item ({_in}, {_seq}, {_p1}, {_end.get('rooms')}, {_gfig}, {_back}, {_a}, {_b}, {r.run.index}, {_ifig}, {_got})")
+import random as _rnd
+_TC.RNG = _rnd.Random()
+story.story_flags.clear(); story.story_flags.update(_sv); story.inventory.clear(); story.inventory.update(_iv)
+
+# ---- S7b (11-24, s_s7_resort.py, src/world/ribbon_syndicate.py; Jordan: "Build it as Platinum"): the Ribbon Syndicate -
+#      members only (ten kinds of Ribbon on your party), the lift to the spa (friendlier, once a day), the shop's Ribbons
+from src.world import ribbon_syndicate as _RS
+_sv, _team, _money = dict(story.story_flags), list(story.player_team), story.money
+story.story_flags.pop("syndicate_spa_day", None)
+_m = mk(25); _m.level = 50; _m.ribbons = []; _m.friendship = 100
+story.player_team = [_m]
+t = town("RESORT_AREA", "SINNOH_ROUTE_229"); frames(t, 3)
+t._go("house_0101", "OUT:24,5"); frames(t, 5)
+_shut = (14, 13) in t.barred
+_m.ribbons = [f"{c}_{r}" for c in ("COOL", "BEAUTY", "CUTE", "SMART", "TOUGH") for r in ("NORMAL", "GREAT")]
+t = town("RESORT_AREA", "SINNOH_ROUTE_229"); frames(t, 3)
+t._go("house_0101", "OUT:24,5"); frames(t, 5)
+_in = (14, 13) not in t.barred and _RS.condition(story, "member")
+_lift = "syndicate_lift" in t.town_map["rooms"] and t.town_map["rooms"]["syndicate_lift"].get("dynamic_exit", {}).get("rooms") == ["house_0101", "house_0102"]
+t._go("house_0102", "ROOM:syndicate_lift"); frames(t, 5)
+_spa = next((s for s, o in t.people.items() if str(o.get("text")) == "Spa attendant"), None)
+_f0 = _m.friendship
+if _spa:
+    t.player = t.anim_from = (_spa[0], _spa[1] + 1); t.anim = 0; t.facing = (0, -1)
+    t._talk(tuple(_spa)); _drive(t, 300, lambda: not getattr(t, "npc_active", False))
+_f1 = story.player_team[0].friendship
+if _spa:
+    t._talk(tuple(_spa)); _drive(t, 300, lambda: not getattr(t, "npc_active", False))
+_f2 = story.player_team[0].friendship
+story.money = 20000
+_lines = []
+_RS.event(t, {"buy": "GORGEOUS"}, [], lambda l: _lines.extend(l))
+_RS.event(t, {"buy": "ROYAL"}, [], lambda l: _lines.extend(l))
+_bought = "GORGEOUS" in story.player_team[0].ribbons and "ROYAL" not in story.player_team[0].ribbons and story.money == 10000
+from src.pokemon.contest import ribbon_label as _rl
+check(_shut and _in and _lift and _spa and _f1 > _f0 and _f2 == _f1 and _bought and _rl("GORGEOUS_ROYAL") == "Gorgeous Royal Ribbon",
+      f"Ribbon Syndicate: members only (ten kinds of Ribbon), the lift to the spa, its treatment once a day, the shop's Ribbons ({_shut}, {_in}, {_lift}, {_spa}, {_f0}->{_f1}->{_f2}, {_bought}, {_lines[-1:]})")
+story.player_team = _team; story.money = _money
+
+# ---- S7b (11-24, s_s7_rotom.py, src/world/rotom_room.py): Rotom's room behind 1F of the Galactic Eterna Building, open once
+#      you're Champion; its five appliances change a Rotom's form, and the same one brings it back
+_r = mk(479); _r.level = 40
+story.player_team = [_r]
+story.story_flags.pop("beat_sinnoh_champion", None)
+r = route("ETERNA_GALACTIC_BUILDING", "ETERNA_CITY")
+story.player_team = [_r]
+r.run.jump_floor(0, (2, 3)); frames(r, 3)
+_lock = str(r.run.floor.decor.get((2, 2), "")).startswith("barrier:")
+story.story_flags["beat_sinnoh_champion"] = True
+r = route("ETERNA_GALACTIC_BUILDING", "ETERNA_CITY")
+story.player_team = [_r]
+r.run.jump_floor(0, (2, 3)); frames(r, 3)
+_open = not str(r.run.floor.decor.get((2, 2), "")).startswith("barrier:")
+r.run.jump_floor(4, (7, 10)); frames(r, 3)
+_ap = {str((m.payload or {}).get("text")): m for m in r.run.floor.movers if m.kind == "figure"}
+_wm = _ap.get("Washing machine")
+if _wm is not None:
+    r.run.player = (_wm.x, _wm.y + 1); r._use_figure(_wm); _drive(r, 300, lambda: not r.dialogue_box.visible)
+_wash = story._pokemon_record(story.player_team[0]).get("form")
+_mv = list(getattr(story.player_team[0], "moves", []) or [])
+if _wm is not None:
+    _wm2 = next((m for m in r.run.floor.movers if m.kind == "figure" and str((m.payload or {}).get("text")) == "Washing machine"), _wm)
+    r._use_figure(_wm2); _drive(r, 300, lambda: not r.dialogue_box.visible)
+_back = story._pokemon_record(story.player_team[0]).get("form")
+check(_lock and _open and len(_ap) == 5 and _wash == "wash" and "HYDRO-PUMP" in _mv and _back == "normal",
+      f"Rotom's room: shut till you're Champion, then five appliances; the washer makes Rotom Wash Rotom (Hydro Pump), again brings it back ({_lock}, {_open}, {sorted(_ap)}, {_wash}, {_mv}, {_back})")
+story.player_team = _team
+
+story.story_flags.clear(); story.story_flags.update(_sv)
+
 g.walk_towns = False
 print(f"##### {fails} failures")

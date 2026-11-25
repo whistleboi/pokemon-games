@@ -266580,7 +266580,14 @@
       210,
       220
      ],
-     "_things": {}
+     "_things": {},
+     "_picture": {
+      "f": "pt_ground/T06R0101.png",
+      "at": [
+       0,
+       1
+      ]
+     }
     },
     "people": [
      [
@@ -269128,7 +269135,7 @@
     "art": [
      "cccccccccccccccccccccccccccccc",
      "cccccccccccccccccccccccccccccc",
-     "ccccc.cccccccccccccccccccccccc",
+     "ccccc^cccccccccccccccccccccccc",
      "czzj...jzz.ccccccccc...mmmmmmc",
      "c..........ccccccccc.........c",
      "c..........ccccmcccc...N.....c",
@@ -269140,12 +269147,13 @@
      "c.......c.N..j...j...cccccc..c",
      "c..mmm..c............cccccc..c",
      "c..mmmN.c....c...c...cccccc..c",
-     "c..mmm..c....j...j...........c",
+     "c..mmm..c....jN..j...........c",
      "c.......c......v.............c",
      "cccccccccccccccccccccccccccccc"
     ],
     "exits": {
-     "v": "OUT:24,5"
+     "v": "OUT:24,5",
+     "^": "ROOM:syndicate_lift"
     },
     "buildings": {},
     "roofs": {
@@ -269713,10 +269721,13 @@
       "text": "Boutique clerk",
       "action": "EVENT",
       "event": {
+       "world": "ribbon_syndicate",
+       "shop": true,
        "lines": [
-        "Welcome! Only the finest people shop here."
+        "Clerk: Welcome. May I interest you in a Ribbon? Ours are specially imported - you'll find them nowhere else."
        ]
-      }
+      },
+      "condition": "world:ribbon_syndicate:member"
      },
      {
       "text": "Psyduck",
@@ -269744,6 +269755,91 @@
         "I want to be a woman worthy of walking with Pokemon."
        ]
       }
+     },
+     [
+      {
+       "text": "Greeter",
+       "action": "EVENT",
+       "event": {
+        "lines": [
+         "Greeter: Welcome back, {player_name}. Please enjoy the finest the Ribbon Syndicate offers."
+        ]
+       },
+       "condition": "world:ribbon_syndicate:member"
+      },
+      {
+       "text": "Greeter",
+       "action": "EVENT",
+       "event": {
+        "lines": [
+         "Greeter: Welcome to the Ribbon Syndicate. I'm afraid this is a members-only club.",
+         "Greeter: Members bring at least ten kinds of Ribbon on the Pokemon with them. Do come back when you have!"
+        ]
+       },
+       "condition": "not:world:ribbon_syndicate:member"
+      }
+     ]
+    ],
+    "title": "Ribbon Syndicate",
+    "barred": [
+     {
+      "tiles": [
+       [
+        9,
+        13
+       ],
+       [
+        10,
+        13
+       ],
+       [
+        11,
+        13
+       ],
+       [
+        12,
+        13
+       ],
+       [
+        14,
+        13
+       ],
+       [
+        15,
+        13
+       ],
+       [
+        16,
+        13
+       ],
+       [
+        18,
+        13
+       ],
+       [
+        19,
+        13
+       ],
+       [
+        20,
+        13
+       ],
+       [
+        27,
+        13
+       ],
+       [
+        28,
+        13
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:ribbon_syndicate:member"
+      },
+      "lines": [
+       "Greeter: I'm sorry, the club is for members only."
+      ]
      }
     ]
    },
@@ -270133,6 +270229,694 @@
       }
      }
     ]
+   },
+   "syndicate_lift": {
+    "theme": "room",
+    "art": [
+     "ccccccc",
+     "ccccccc",
+     "c.....c",
+     "c.....c",
+     "c.....c",
+     "c..v..c",
+     "ccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:house_0101"
+    },
+    "buildings": {},
+    "title": "Ribbon Syndicate Lift",
+    "people": [],
+    "roofs": {
+     "_picture": {
+      "f": "pt_ground/T07R0103.png",
+      "at": [
+       0,
+       1
+      ]
+     }
+    },
+    "dynamic_exit": {
+     "flag": "resort_syndicate_lift",
+     "rooms": [
+      "house_0101",
+      "house_0102"
+     ],
+     "default": "house_0101"
+    },
+    "scenes": [
+     {
+      "trigger": "enter",
+      "every": true,
+      "cast": [],
+      "event": {
+       "elevator": {
+        "area": "RESORT_AREA",
+        "car_flag": "resort_syndicate_lift",
+        "ride": [
+         "The lift hums..."
+        ],
+        "floors": [
+         [
+          "1F",
+          "house_0101"
+         ],
+         [
+          "2F",
+          "house_0102"
+         ]
+        ]
+       },
+       "cancel": [
+        "The lift stays where it is."
+       ]
+      }
+     }
+    ]
+   },
+   "house_0102": {
+    "theme": "room",
+    "art": [
+     "cccccccccccccccccccccccccccccc",
+     "cccccccccccccccccccccccccccccc",
+     "ccccc^cccccccccccccccccccccccc",
+     "c.cc...cccc..cccccc...cccccc.c",
+     "c..............cc.......cc...c",
+     "c...........N...N............c",
+     "c............................c",
+     "cccc...cccc.N................c",
+     "cccc...cccc..................c",
+     "cccc...cccc..................c",
+     "cc.......cc..................c",
+     "c...ccc...c..................c",
+     "c...ccc...c.....N............c",
+     "c.........c..................c",
+     "c.........c..................c",
+     "c.........c..................c",
+     "cccccccccccccccccccccccccccccc"
+    ],
+    "exits": {
+     "^": "ROOM:syndicate_lift"
+    },
+    "buildings": {},
+    "title": "Ribbon Syndicate 2F",
+    "people": [
+     {
+      "text": "Spa attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Attendant: Welcome to our spa. A treatment will leave your Pokemon feeling closer to you."
+       ],
+       "salon": {
+        "key": "syndicate_spa_day",
+        "gain": 5,
+        "said": "Attendant: ...And there we are. {mon} looks so relaxed! It seems fonder of you already.",
+        "again": [
+         "Attendant: One treatment a day is quite enough. Please come back tomorrow."
+        ]
+       }
+      }
+     },
+     {
+      "text": "Spa staff",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Our clients and their Pokemon never see one another here. Everyone can truly relax."
+       ]
+      }
+     },
+     {
+      "text": "Spa staff ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Our service is very exclusive. We take only five members a day."
+       ]
+      }
+     },
+     {
+      "text": "Spa staff  ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Members say their Pokemon grow ever so much closer to them after a visit."
+       ]
+      }
+     }
+    ],
+    "roofs": {
+     "_floor": [
+      238,
+      222,
+      180
+     ],
+     "_wall": [
+      106,
+      106,
+      114
+     ],
+     "_things": {
+      "5,1": [
+       64,
+       64,
+       64
+      ],
+      "1,2": [
+       96,
+       96,
+       64
+      ],
+      "2,2": [
+       96,
+       96,
+       64
+      ],
+      "3,2": [
+       96,
+       96,
+       64
+      ],
+      "4,2": [
+       64,
+       32,
+       32
+      ],
+      "6,2": [
+       64,
+       32,
+       32
+      ],
+      "7,2": [
+       96,
+       96,
+       64
+      ],
+      "8,2": [
+       96,
+       96,
+       64
+      ],
+      "9,2": [
+       96,
+       96,
+       64
+      ],
+      "10,2": [
+       96,
+       96,
+       64
+      ],
+      "11,2": [
+       96,
+       96,
+       64
+      ],
+      "12,2": [
+       96,
+       96,
+       64
+      ],
+      "13,2": [
+       96,
+       96,
+       64
+      ],
+      "14,2": [
+       96,
+       96,
+       64
+      ],
+      "15,2": [
+       96,
+       96,
+       64
+      ],
+      "16,2": [
+       96,
+       96,
+       64
+      ],
+      "17,2": [
+       96,
+       96,
+       64
+      ],
+      "18,2": [
+       96,
+       96,
+       64
+      ],
+      "19,2": [
+       96,
+       96,
+       64
+      ],
+      "20,2": [
+       96,
+       96,
+       64
+      ],
+      "21,2": [
+       96,
+       96,
+       64
+      ],
+      "22,2": [
+       96,
+       96,
+       64
+      ],
+      "23,2": [
+       96,
+       96,
+       64
+      ],
+      "24,2": [
+       96,
+       96,
+       64
+      ],
+      "25,2": [
+       96,
+       96,
+       64
+      ],
+      "26,2": [
+       96,
+       96,
+       64
+      ],
+      "27,2": [
+       96,
+       96,
+       64
+      ],
+      "28,2": [
+       96,
+       96,
+       64
+      ],
+      "11,3": [
+       224,
+       32,
+       32
+      ],
+      "19,3": [
+       224,
+       32,
+       32
+      ],
+      "23,3": [
+       128,
+       96,
+       64
+      ],
+      "24,3": [
+       96,
+       128,
+       96
+      ],
+      "25,3": [
+       128,
+       96,
+       64
+      ],
+      "26,3": [
+       96,
+       128,
+       96
+      ],
+      "27,3": [
+       128,
+       96,
+       64
+      ],
+      "28,3": [
+       96,
+       128,
+       96
+      ],
+      "11,4": [
+       224,
+       32,
+       32
+      ],
+      "19,4": [
+       224,
+       32,
+       32
+      ],
+      "11,5": [
+       224,
+       32,
+       32
+      ],
+      "12,5": [
+       224,
+       32,
+       32
+      ],
+      "13,5": [
+       224,
+       32,
+       32
+      ],
+      "14,5": [
+       224,
+       32,
+       32
+      ],
+      "15,5": [
+       255,
+       160,
+       128
+      ],
+      "16,5": [
+       224,
+       32,
+       32
+      ],
+      "17,5": [
+       224,
+       32,
+       32
+      ],
+      "18,5": [
+       224,
+       32,
+       32
+      ],
+      "19,5": [
+       224,
+       32,
+       32
+      ],
+      "21,8": [
+       96,
+       255,
+       255
+      ],
+      "22,8": [
+       32,
+       255,
+       255
+      ],
+      "23,8": [
+       32,
+       255,
+       255
+      ],
+      "24,8": [
+       96,
+       255,
+       255
+      ],
+      "25,8": [
+       32,
+       255,
+       255
+      ],
+      "26,8": [
+       32,
+       255,
+       255
+      ],
+      "1,9": [
+       64,
+       32,
+       32
+      ],
+      "2,9": [
+       64,
+       32,
+       32
+      ],
+      "3,9": [
+       64,
+       32,
+       32
+      ],
+      "7,9": [
+       64,
+       32,
+       32
+      ],
+      "21,9": [
+       128,
+       255,
+       255
+      ],
+      "26,9": [
+       96,
+       255,
+       255
+      ],
+      "2,10": [
+       128,
+       96,
+       64
+      ],
+      "3,10": [
+       96,
+       128,
+       96
+      ],
+      "21,10": [
+       32,
+       255,
+       255
+      ],
+      "26,10": [
+       32,
+       255,
+       255
+      ],
+      "21,11": [
+       160,
+       255,
+       255
+      ],
+      "26,11": [
+       128,
+       255,
+       255
+      ],
+      "3,12": [
+       255,
+       192,
+       96
+      ],
+      "4,12": [
+       255,
+       192,
+       96
+      ],
+      "5,12": [
+       224,
+       192,
+       96
+      ],
+      "21,12": [
+       32,
+       255,
+       255
+      ],
+      "26,12": [
+       32,
+       255,
+       255
+      ],
+      "3,13": [
+       255,
+       224,
+       96
+      ],
+      "4,13": [
+       255,
+       224,
+       96
+      ],
+      "5,13": [
+       255,
+       192,
+       96
+      ],
+      "21,13": [
+       96,
+       255,
+       255
+      ],
+      "22,13": [
+       32,
+       255,
+       255
+      ],
+      "23,13": [
+       32,
+       255,
+       255
+      ],
+      "24,13": [
+       96,
+       255,
+       255
+      ],
+      "25,13": [
+       32,
+       255,
+       255
+      ],
+      "26,13": [
+       32,
+       255,
+       255
+      ],
+      "3,14": [
+       255,
+       224,
+       96
+      ],
+      "4,14": [
+       255,
+       224,
+       96
+      ],
+      "5,14": [
+       255,
+       192,
+       96
+      ]
+     },
+     "_kinds": {
+      "27,3": "shelf",
+      "28,3": "shelf",
+      "25,3": "shelf",
+      "26,3": "shelf",
+      "23,3": "shelf",
+      "24,3": "shelf",
+      "2,10": "shelf",
+      "3,10": "shelf",
+      "3,12": "table",
+      "4,12": "table",
+      "5,12": "table",
+      "3,13": "table",
+      "4,13": "table",
+      "5,13": "table",
+      "3,14": "table",
+      "4,14": "table",
+      "5,14": "table"
+     },
+     "_objects": [
+      {
+       "k": "shelf",
+       "r": [
+        27,
+        3,
+        2,
+        1
+       ]
+      },
+      {
+       "k": "shelf",
+       "r": [
+        25,
+        3,
+        2,
+        1
+       ]
+      },
+      {
+       "k": "shelf",
+       "r": [
+        23,
+        3,
+        2,
+        1
+       ]
+      },
+      {
+       "k": "shelf",
+       "r": [
+        2,
+        10,
+        2,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        7,
+        10,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        1,
+        10,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "table",
+       "r": [
+        3,
+        12,
+        3,
+        3
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        8,
+        3,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        9,
+        3,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        2,
+        3,
+        1,
+        1
+       ]
+      },
+      {
+       "k": "plant",
+       "r": [
+        1,
+        3,
+        1,
+        1
+       ]
+      }
+     ],
+     "_picture": {
+      "f": "pt_ground/T07R0102.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    }
    }
   },
   "inside": {
@@ -315824,7 +316608,7 @@
     "art": [
      "ccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccc",
-     "cc.cccccccccccccccccccccc",
+     "cc1cccccccccccccccccccccc",
      "c...ccccccccccccccccccccc",
      "c...ccccccccccccccccccccc",
      "c.ccccccccccccccccccccccc",
@@ -316261,7 +317045,31 @@
        32
       ]
      }
-    }
+    },
+    "links": {
+     "2,2": [
+      4,
+      7,
+      10
+     ]
+    },
+    "barred": [
+     {
+      "tiles": [
+       [
+        2,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "flag_condition": "beat_sinnoh_champion"
+      },
+      "lines": [
+       "The door is locked tight. It won't budge."
+      ]
+     }
+    ]
    },
    {
     "art": [
@@ -317775,13 +318583,120 @@
     "trainer_spots": [
      "Commander Jupiter"
     ]
+   },
+   {
+    "art": [
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "ccccccccccccccc",
+     "ccccc...ccccccc",
+     "ccc.........ccc",
+     "c............!c",
+     "cc..N.N.N.N.N.c",
+     "cc............c",
+     "cc............c",
+     "c.........c!c.c",
+     "cc............c",
+     "ccc....1.....cc",
+     "ccccccccccccccc"
+    ],
+    "parts": true,
+    "links": {
+     "7,11": [
+      0,
+      2,
+      3
+     ]
+    },
+    "signs": [
+     [
+      "An old notebook. Its pages read:",
+      "'The day I found my lost toy robot, a Pokemon leapt out of its motor.'",
+      "'It floated in the air, crackling, and came right up to me. It only wanted to be friends.'",
+      "'I named this wondrous Pokemon Rotom.'"
+     ],
+     [
+      "A mysterious notebook. There's no telling how old it is.",
+      "'Rotom can slip inside a motor and take control of it. Its body changes to suit the machine.'",
+      "'I gathered five machines to see each change for myself.'"
+     ]
+    ],
+    "people": [
+     {
+      "text": "Microwave",
+      "action": "EVENT",
+      "event": {
+       "world": "rotom_room",
+       "form": "heat"
+      }
+     },
+     {
+      "text": "Electric fan",
+      "action": "EVENT",
+      "event": {
+       "world": "rotom_room",
+       "form": "fan"
+      }
+     },
+     {
+      "text": "Refrigerator",
+      "action": "EVENT",
+      "event": {
+       "world": "rotom_room",
+       "form": "frost"
+      }
+     },
+     {
+      "text": "Washing machine",
+      "action": "EVENT",
+      "event": {
+       "world": "rotom_room",
+       "form": "wash"
+      }
+     },
+     {
+      "text": "Lawn mower",
+      "action": "EVENT",
+      "event": {
+       "world": "rotom_room",
+       "form": "mow"
+      }
+     }
+    ],
+    "roofs": {
+     "_look": {
+      "floor": [
+       189,
+       139,
+       90
+      ],
+      "wall": [
+       189,
+       139,
+       90
+      ],
+      "top": [
+       16,
+       16,
+       24
+      ]
+     },
+     "_picture": {
+      "f": "pt_ground/C04R0205.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    }
    }
   ],
   "floor_names": [
    "1F",
    "2F",
    "3F",
-   "4F"
+   "4F",
+   "Rotom's room"
   ],
   "figure_floors": {
    "Scientist Travon": 2,
@@ -334613,7 +335528,7 @@
      "ccccccccc\"\"\"\"cccccccccc/cccccccffffcccc",
      "ccccccccc\"\"\"\"cccccccccc/cccccccffffcccc",
      "ccccccc\"\"\"\"cccccccccccc/cccccccccffffcc",
-     "ccccccc\"\"\"\"cccccccccc+c/cccccccccffffcc",
+     "ccccccc\"\"\"\"cccccccccc1c/cccccccccffffcc",
      "ccccc\"\"\"\"ccccccccffffffffffccccccccffcc",
      "ccccc\"\"\"\"ccccccccffffffffffccccccccffcc",
      "ccccc\"\"\"\"ccccccooooooooooooooccccccffcc",
@@ -334682,6 +335597,13 @@
        9
       ]
      }
+    },
+    "links": {
+     "21,7": [
+      1,
+      11,
+      15
+     ]
     }
    },
    {
@@ -334702,7 +335624,7 @@
      "cc..cc..cjjjjjc..cc..cc",
      "cc..cc..cjjjjjc..cc..cc",
      "cc..cc...........cc..cc",
-     "cc..cc.....-.....cc..cc",
+     "cc..cc.....1.....cc..cc",
      "cc..ccccccccccccccc..cc",
      "cc..ccccccccccccccc..cc",
      "cc...................cc",
@@ -334713,24 +335635,29 @@
     "parts": true,
     "links": {
      "11,1": [
-      1,
-      11,
-      20
+      0,
+      21,
+      8
      ],
      "20,11": [
-      1,
-      2,
-      11
+      0,
+      21,
+      8
      ],
      "11,20": [
-      1,
-      11,
-      1
+      0,
+      21,
+      8
      ],
      "2,11": [
-      1,
-      20,
-      11
+      0,
+      21,
+      8
+     ],
+     "11,16": [
+      0,
+      21,
+      8
      ]
     },
     "roofs": {
@@ -334765,17 +335692,622 @@
      ],
      "_models": true
     }
+   },
+   {
+    "art": [
+     "cccccccccc...cccccccccc",
+     "cccccccccc.1.cccccccccc",
+     "cc...................cc",
+     "cc...................cc",
+     "cc...................cc",
+     "cc...................cc",
+     "cc...................cc",
+     "cc...................cc",
+     "cc......ccccccc......cc",
+     "cc......ccccccc......cc",
+     "........ccccccc........",
+     "..1.....ccc.ccc.....1..",
+     "........ccccccc........",
+     "cc......ccccccc......cc",
+     "cc......ccccccc......cc",
+     "cc...................cc",
+     "cc...................cc",
+     "cc...................cc",
+     "cc...................cc",
+     "cc...................cc",
+     "cc.........1.........cc",
+     "cccccccccc...cccccccccc",
+     "cccccccccc...cccccccccc"
+    ],
+    "parts": true,
+    "links": {
+     "11,1": [
+      0,
+      21,
+      8
+     ],
+     "20,11": [
+      0,
+      21,
+      8
+     ],
+     "11,20": [
+      0,
+      21,
+      8
+     ],
+     "2,11": [
+      0,
+      21,
+      8
+     ]
+    },
+    "roofs": {
+     "_bridge": "wood",
+     "_look": {
+      "floor": [
+       98,
+       115,
+       98
+      ],
+      "wall": [
+       138,
+       115,
+       73
+      ]
+     },
+     "_picture": {
+      "f": "pt_ground/D17R0103.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    }
+   },
+   {
+    "art": [
+     "cccccccccc...cccccccccc",
+     "cccccccccc.1.cccccccccc",
+     "cc...................cc",
+     "cc.ccccccc...ccccccc.cc",
+     "cc.ccccccc...ccccccc.cc",
+     "cc.cc.............cc.cc",
+     "cc.cc..ccccccccc..cc.cc",
+     "cc.cc..ccccccccc..cc.cc",
+     "cc.cc..ccccccccc..cc.cc",
+     "cc.cc..ccccccccc..cc.cc",
+     ".......ccccccccc.......",
+     "..1....ccccccccc....1..",
+     ".......ccccccccc.......",
+     "cc.cc..c...N...c..cc.cc",
+     "cc.cc..c...c...c..cc.cc",
+     "cc.cc..c...N...c..cc.cc",
+     "cc.cc..ccc...ccc..cc.cc",
+     "cc.cc.............cc.cc",
+     "cc.ccccccc...ccccccc.cc",
+     "cc.ccccccc...ccccccc.cc",
+     "cc.........1.........cc",
+     "cccccccccc...cccccccccc",
+     "cccccccccc...cccccccccc"
+    ],
+    "parts": true,
+    "links": {
+     "11,1": [
+      0,
+      21,
+      8
+     ],
+     "20,11": [
+      0,
+      21,
+      8
+     ],
+     "11,20": [
+      0,
+      21,
+      8
+     ],
+     "2,11": [
+      0,
+      21,
+      8
+     ]
+    },
+    "roofs": {
+     "_bridge": "wood",
+     "_look": {
+      "floor": [
+       98,
+       115,
+       98
+      ],
+      "wall": [
+       138,
+       115,
+       73
+      ]
+     },
+     "_picture": {
+      "f": "pt_ground/D17R0104.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    },
+    "people": [
+     "Giratina",
+     {
+      "text": "Item",
+      "action": "EVENT",
+      "condition": [
+       "world:turnback_cave:item"
+      ],
+      "event": {
+       "world": "turnback_cave",
+       "item": true,
+       "lines": [
+        "Something lies on the pedestal."
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "art": [
+     "cccccccccc...cccccccccc",
+     "cccccccccc.1.cccccccccc",
+     "cc...................cc",
+     "cc...................cc",
+     "cc...................cc",
+     "cc.........0.........cc",
+     "cc........0.0........cc",
+     "cc.......0...0.......cc",
+     "cc......cc...cc......cc",
+     "cc......cc...cc......cc",
+     ".......................",
+     "..1........0........1..",
+     ".......................",
+     "cc......cc...cc......cc",
+     "cc......cc...cc......cc",
+     "cc.......0...0.......cc",
+     "cc........0.0........cc",
+     "cc.........0.........cc",
+     "cc...................cc",
+     "cc...................cc",
+     "cc.........1.........cc",
+     "cccccccccc...cccccccccc",
+     "cccccccccc...cccccccccc"
+    ],
+    "parts": true,
+    "links": {
+     "11,1": [
+      0,
+      21,
+      8
+     ],
+     "20,11": [
+      0,
+      21,
+      8
+     ],
+     "11,20": [
+      0,
+      21,
+      8
+     ],
+     "2,11": [
+      0,
+      21,
+      8
+     ]
+    },
+    "roofs": {
+     "_bridge": "wood",
+     "_look": {
+      "floor": [
+       98,
+       115,
+       98
+      ],
+      "wall": [
+       138,
+       115,
+       73
+      ]
+     },
+     "_picture": {
+      "f": "pt_ground/D17R0105.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    }
+   },
+   {
+    "art": [
+     "cccccccccc...cccccccccc",
+     "cccccccccc.1.cccccccccc",
+     "cc...................cc",
+     "cc...................cc",
+     "cc...................cc",
+     "cc...................cc",
+     "cc...................cc",
+     "cc...................cc",
+     "cc......cc...cc......cc",
+     "cc.....0cc...cc0.....cc",
+     "......0.........0......",
+     "..1..0.....0.....0..1..",
+     "......0.........0......",
+     "cc.....0cc...cc0.....cc",
+     "cc......cc...cc......cc",
+     "cc...................cc",
+     "cc...................cc",
+     "cc...................cc",
+     "cc...................cc",
+     "cc...................cc",
+     "cc.........1.........cc",
+     "cccccccccc...cccccccccc",
+     "cccccccccc...cccccccccc"
+    ],
+    "parts": true,
+    "links": {
+     "11,1": [
+      0,
+      21,
+      8
+     ],
+     "20,11": [
+      0,
+      21,
+      8
+     ],
+     "11,20": [
+      0,
+      21,
+      8
+     ],
+     "2,11": [
+      0,
+      21,
+      8
+     ]
+    },
+    "roofs": {
+     "_bridge": "wood",
+     "_look": {
+      "floor": [
+       98,
+       115,
+       98
+      ],
+      "wall": [
+       138,
+       115,
+       73
+      ]
+     },
+     "_picture": {
+      "f": "pt_ground/D17R0106.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    }
+   },
+   {
+    "art": [
+     "cccccccccc...cccccccccc",
+     "cccccccccc.1.cccccccccc",
+     "cc...................cc",
+     "cc...................cc",
+     "cc...................cc",
+     "cc...................cc",
+     "cc...................cc",
+     "cc...................cc",
+     "cc0.....cc...cc......cc",
+     "cc.0....cc...cc0.....cc",
+     "....0...cc...cc.0......",
+     "..1..0..cc.0.cc..0..1..",
+     "......0.cc...cc...0....",
+     "cc.....0cc...cc....0.cc",
+     "cc......cc...cc.....0cc",
+     "cc...................cc",
+     "cc...................cc",
+     "cc...................cc",
+     "cc...................cc",
+     "cc...................cc",
+     "cc.........1.........cc",
+     "cccccccccc...cccccccccc",
+     "cccccccccc...cccccccccc"
+    ],
+    "parts": true,
+    "links": {
+     "11,1": [
+      0,
+      21,
+      8
+     ],
+     "20,11": [
+      0,
+      21,
+      8
+     ],
+     "11,20": [
+      0,
+      21,
+      8
+     ],
+     "2,11": [
+      0,
+      21,
+      8
+     ]
+    },
+    "roofs": {
+     "_bridge": "wood",
+     "_look": {
+      "floor": [
+       98,
+       115,
+       98
+      ],
+      "wall": [
+       138,
+       115,
+       73
+      ]
+     },
+     "_picture": {
+      "f": "pt_ground/D17R0107.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    }
+   },
+   {
+    "art": [
+     "cccccccccc...cccccccccc",
+     "cccccccccc.1.cccccccccc",
+     "cc...................cc",
+     "cc...................cc",
+     "cc...................cc",
+     "cc...................cc",
+     "cc...................cc",
+     "cc...................cc",
+     "cc......cc...cc.....0cc",
+     "cc.....0cc...cc....0.cc",
+     "......0.cc...cc...0....",
+     "..1..0..cc.0.cc..0..1..",
+     "....0...cc...cc.0......",
+     "cc.0....cc...cc0.....cc",
+     "cc0.....cc...cc......cc",
+     "cc...................cc",
+     "cc...................cc",
+     "cc...................cc",
+     "cc...................cc",
+     "cc...................cc",
+     "cc.........1.........cc",
+     "cccccccccc...cccccccccc",
+     "cccccccccc...cccccccccc"
+    ],
+    "parts": true,
+    "links": {
+     "11,1": [
+      0,
+      21,
+      8
+     ],
+     "20,11": [
+      0,
+      21,
+      8
+     ],
+     "11,20": [
+      0,
+      21,
+      8
+     ],
+     "2,11": [
+      0,
+      21,
+      8
+     ]
+    },
+    "roofs": {
+     "_bridge": "wood",
+     "_look": {
+      "floor": [
+       98,
+       115,
+       98
+      ],
+      "wall": [
+       138,
+       115,
+       73
+      ]
+     },
+     "_picture": {
+      "f": "pt_ground/D17R0108.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    }
+   },
+   {
+    "art": [
+     "cccccccccc...cccccccccc",
+     "cccccccccc.1.cccccccccc",
+     "cc......0............cc",
+     "cc.......0...........cc",
+     "cc........0..........cc",
+     "cc.........0.........cc",
+     "cc..........0........cc",
+     "cc...........0.......cc",
+     "cc......ccccccc......cc",
+     "cc......ccccccc......cc",
+     ".......................",
+     "..1........0........1..",
+     ".......................",
+     "cc......ccccccc......cc",
+     "cc......ccccccc......cc",
+     "cc.......0...........cc",
+     "cc........0..........cc",
+     "cc.........0.........cc",
+     "cc..........0........cc",
+     "cc...........0.......cc",
+     "cc.........1..0......cc",
+     "cccccccccc...cccccccccc",
+     "cccccccccc...cccccccccc"
+    ],
+    "parts": true,
+    "links": {
+     "11,1": [
+      0,
+      21,
+      8
+     ],
+     "20,11": [
+      0,
+      21,
+      8
+     ],
+     "11,20": [
+      0,
+      21,
+      8
+     ],
+     "2,11": [
+      0,
+      21,
+      8
+     ]
+    },
+    "roofs": {
+     "_bridge": "wood",
+     "_look": {
+      "floor": [
+       98,
+       115,
+       98
+      ],
+      "wall": [
+       138,
+       115,
+       73
+      ]
+     },
+     "_picture": {
+      "f": "pt_ground/D17R0109.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    }
+   },
+   {
+    "art": [
+     "cccccccccc...cccccccccc",
+     "cccccccccc.1.cccccccccc",
+     "cc............0......cc",
+     "cc...........0.......cc",
+     "cc..........0........cc",
+     "cc.........0.........cc",
+     "cc........0..........cc",
+     "cc.......0...........cc",
+     "cc......ccccccc......cc",
+     "cc......ccccccc......cc",
+     ".......................",
+     "..1........0........1..",
+     ".......................",
+     "cc......ccccccc......cc",
+     "cc......ccccccc......cc",
+     "cc...........0.......cc",
+     "cc..........0........cc",
+     "cc.........0.........cc",
+     "cc........0..........cc",
+     "cc.......0...........cc",
+     "cc......0..1.........cc",
+     "cccccccccc...cccccccccc",
+     "cccccccccc...cccccccccc"
+    ],
+    "parts": true,
+    "links": {
+     "11,1": [
+      0,
+      21,
+      8
+     ],
+     "20,11": [
+      0,
+      21,
+      8
+     ],
+     "11,20": [
+      0,
+      21,
+      8
+     ],
+     "2,11": [
+      0,
+      21,
+      8
+     ]
+    },
+    "roofs": {
+     "_bridge": "wood",
+     "_look": {
+      "floor": [
+       98,
+       115,
+       98
+      ],
+      "wall": [
+       138,
+       115,
+       73
+      ]
+     },
+     "_picture": {
+      "f": "pt_ground/D17R0110.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    }
    }
   ],
   "floor_names": [
    "Entrance",
-   "The pillar rooms"
+   "A room",
+   "A pillar room",
+   "Giratina's room",
+   "A room",
+   "A room",
+   "A room",
+   "A room",
+   "A room",
+   "A room"
   ],
   "fog": "defog",
   "roofs": {
    "_bridge": "wood"
   },
-  "theme": "cave"
+  "theme": "cave",
+  "warp_world": "turnback_cave",
+  "figure_floors": {
+   "Giratina": 3
+  }
  },
  "STARK_MOUNTAIN": {
   "floors": [
