@@ -5,7 +5,7 @@
 #      eight among them) loads, and set down in Twinleaf, every Sinnoh place it had been to is still reachable through today's
 #      gates (Platinum's HM badges, 11-24, included)
 #   2. every Gym: walked into, then its Leader fought turn by turn: the badge and the Leader's own TM
-#   3. the Elite Four and Cynthia room by room, and 4. Cynthia's rematch: wait on S6 (the League's walked rooms) - said, not failed
+#   3. the Elite Four and Cynthia room by room, and 4. the League rematch with Platinum's rematch teams (S6c's walked League)
 #        bash dev/checks/run.sh sinnoh_played
 import json, os, copy
 _src = open("dev/checks/sinnoh_playthrough_body.py", encoding="utf-8").read()
@@ -207,7 +207,63 @@ for _town, _came, _badge in GYMS:
           f"{'the ' + _badge.title() + ' Badge' if _done else 'NO badge'} and {_got or 'no TM'} (wants {_tm})")
 
 # ================================================================================ 3-4. the League and Cynthia's rematch
-print("\n3) the Elite Four and Cynthia room by room, 4) Cynthia's rematch")
-print("   --   wait on S6: the League's walked rooms aren't built yet (ROADMAP_SINNOH); her rematch teams are in the area data")
+print("\n3) the Elite Four and Cynthia, room by room (battles fought turn by turn; S6c's walked League, s_s6_league.py)")
+LK = "SINNOH_POKEMON_LEAGUE"
+story.badges["SINNOH"] = [b for _t, _c, b in GYMS]
+story.story_flags["visited_" + LK] = True
+story.story_flags["defeated_rival_victory_road"] = True   # (Barry's battle at the League's door: its own check)
+for _k in [k for k in story.story_flags if LK in k and k != "visited_" + LK] + ["beat_sinnoh_elite_four", "beat_sinnoh_champion"]:
+    story.story_flags.pop(_k, None)
+story.player_team = [ace(), ace()]
+LEAGUE = (("league_aaron", "Aaron"), ("league_bertha", "Bertha"), ("league_flint", "Flint"), ("league_lucian", "Lucian"), ("league_cynthia", "Cynthia"))
+v = walk_town(LK, "VICTORY_ROAD_SINNOH")
+for _i, (_room, _who) in enumerate(LEAGUE, 1):
+    v = g.current_state
+    if not isinstance(v, _WTS):
+        check(False, f"{_who}: not on the League's map ({type(v).__name__})"); break
+    v._go(_room, ""); settle(); v = g.current_state
+    for _p in story.player_team:
+        _p.heal_full()
+    FOUGHT.clear()
+    if _who not in people(v):
+        check(False, f"{_who}: not in the room {_room} ({sorted(str(k) for k in people(v))})"); break
+    talk_to(v, people(v)[_who]); lobby_run()
+    _flag = "beat_sinnoh_champion" if _i == 5 else f"league_won_{LK}_{_i}"
+    _ok = bool(FOUGHT) and not str(FOUGHT[0][0]).endswith("(UNFINISHED)") and story.story_flags.get(_flag)
+    check(_ok, f"{_who}: fought and beaten turn by turn ({[(f[0], f[1]) for f in FOUGHT][:1]}; {_flag}: {story.story_flags.get(_flag)})")
+    if not _ok:
+        break
+_v = g.current_state
+check(story.story_flags.get("beat_sinnoh_champion") and (story.story_flags.get(f"hall_of_fame_due_{LK}") or getattr(_v, "room", None) == "hall_of_fame"
+                                                        or story.current_area_key == "TWINLEAF_TOWN"),
+      f"...the title: Cynthia beaten, then on to the Hall of Fame ({type(_v).__name__}, {getattr(_v, 'room', None)}, {story.current_area_key})")
+
+print("\n4) after the title: the League rematch (Platinum's rematch teams)")
+story.story_flags["beat_sinnoh_champion"] = True
+story.story_flags.pop(f"hall_of_fame_due_{LK}", None)
+story.player_team = [ace(), ace(), ace()]
+_league = AREAS[LK]["gym"]
+_want = [t.get("rematch") for t in _league.get("trainers", [])] + [_league["leader"].get("rematch")]
+story.story_flags[f"gym_progress_{LK}"] = 5
+for _i in range(1, 5):
+    story.story_flags[f"league_won_{LK}_{_i}"] = True
+v = walk_town(LK, "VICTORY_ROAD_SINNOH")
+_rm = []
+for _i, (_room, _who) in enumerate(LEAGUE):
+    v = g.current_state
+    if not isinstance(v, _WTS) or v.area_key != LK:
+        v = walk_town(LK, "VICTORY_ROAD_SINNOH")
+    if not isinstance(v, _WTS):
+        break
+    v._go(_room, ""); settle(); v = g.current_state
+    for _p in story.player_team:
+        _p.heal_full()
+    FOUGHT.clear()
+    if _who in people(v):
+        talk_to(v, people(v)[_who]); lobby_run()
+    _rm.append(FOUGHT[0] if FOUGHT else (_who, None, None))
+_match = [bool(w) and f[2] == w.get("team") for f, w in zip(_rm, _want)]
+check(len(_rm) == 5 and all(_match) and not any(str(f[0]).endswith("(UNFINISHED)") for f in _rm),
+      f"the League rematch: all five fought again with Platinum's rematch teams ({[(f[0], f[1]) for f in _rm]}; as the data: {_match})")
 
 print(f"##### {len(fails)} failures")
