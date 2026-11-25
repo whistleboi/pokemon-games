@@ -65,6 +65,15 @@ def event(state_, ev, lines, show):
         show([f"...Today's number is {n}! And your {hit.display_name} is Lv. {n}! Well, I'll be!",
               f"You received a {it.replace('_', ' ').title()}!"])
         return
+    if ev.get("effort"):   # (Sunyshore Market's lady: a lead Pokemon at the full 510 effort points gets the Effort Ribbon, once)
+        evs = sum(int(v or 0) for v in (getattr(lead, "evs", None) or {}).values()) if lead is not None else 0
+        if lead is not None and evs >= 510 and "EFFORT" not in (getattr(lead, "ribbons", None) or []):
+            lead.ribbons.append("EFFORT")
+            show((lines or []) + [f"Oh? Your {lead.display_name}... It's worked so very hard, hasn't it? This is for all that effort.",
+                                  f"{lead.display_name} received the {_label('EFFORT')}!"])
+            return
+        show(lines or ["..."])
+        return
     if ev.get("footstep"):
         if lead is not None and int(getattr(lead, "friendship", 0) or 0) >= 255 and "FOOTPRINT" not in (getattr(lead, "ribbons", None) or []):
             lead.ribbons.append("FOOTPRINT")

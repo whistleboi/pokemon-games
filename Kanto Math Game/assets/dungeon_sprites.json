@@ -76,6 +76,11 @@
     ]
   },
   "figures": {
+    "SOLACEON_RUINS:RARE CANDY": {"item": "POKE_BALL"},
+    "SUNYSHORE_CITY:Market sailor": {"sheet": "pt_seaman.png"},
+    "SUNYSHORE_CITY:Kind lady": {"sheet": "pt_woman3.png"},
+    "SUNYSHORE_CITY:Market shopper": {"sheet": "pt_man2.png"},
+    "SUNYSHORE_CITY:Seal merchant": {"sheet": "pt_mystery.png"},
     "SUNYSHORE_CITY:Julia": {"sheet": "pt_woman3.png"},
     "SUNYSHORE_CITY:Jasmine": {"sheet": "pt_mikan.png"},
     "SINNOH_ROUTE_221:Number man": {"sheet": "pt_oldman1.png"},
