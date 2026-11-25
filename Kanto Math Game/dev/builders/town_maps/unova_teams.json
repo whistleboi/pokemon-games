@@ -3195,6 +3195,111 @@
    497
   ]
  },
+ "687": {
+  "b2_id": 687,
+  "class": "TEAM_PLASMA",
+  "levels": [
+   65,
+   65,
+   67
+  ],
+  "movesets": {
+   "359": [
+    "SUCKER-PUNCH",
+    "PSYCHO-CUT",
+    "X-SCISSOR",
+    "AERIAL-ACE"
+   ],
+   "625": [
+    "NIGHT-SLASH",
+    "X-SCISSOR",
+    "GUILLOTINE",
+    "SWORDS-DANCE"
+   ]
+  },
+  "name": "Team Plasma Shadow",
+  "rewards": {
+   "balls": 4
+  },
+  "sprite": "team_plasma.png",
+  "team": [
+   625,
+   625,
+   359
+  ]
+ },
+ "688": {
+  "b2_id": 688,
+  "battle_options": {
+   "double": true
+  },
+  "class": "TEAM_PLASMA",
+  "levels": [
+   65,
+   67,
+   65
+  ],
+  "movesets": {
+   "617": [
+    "BUG-BUZZ",
+    "GIGA-DRAIN",
+    "FOCUS-BLAST",
+    "SLUDGE-BOMB"
+   ],
+   "625": [
+    "NIGHT-SLASH",
+    "X-SCISSOR",
+    "GUILLOTINE",
+    "SWORDS-DANCE"
+   ]
+  },
+  "name": "Team Plasma Shadow",
+  "rewards": {
+   "balls": 4
+  },
+  "sprite": "team_plasma.png",
+  "team": [
+   625,
+   617,
+   625
+  ]
+ },
+ "689": {
+  "b2_id": 689,
+  "battle_options": {
+   "double": true
+  },
+  "class": "TEAM_PLASMA",
+  "levels": [
+   67,
+   65,
+   65
+  ],
+  "movesets": {
+   "354": [
+    "SHADOW-CLAW",
+    "SUCKER-PUNCH",
+    "PSYCHIC",
+    "WILL-O-WISP"
+   ],
+   "625": [
+    "NIGHT-SLASH",
+    "X-SCISSOR",
+    "GUILLOTINE",
+    "SWORDS-DANCE"
+   ]
+  },
+  "name": "Team Plasma Shadow",
+  "rewards": {
+   "balls": 4
+  },
+  "sprite": "team_plasma.png",
+  "team": [
+   354,
+   625,
+   625
+  ]
+ },
  "693": {
   "b2_id": 693,
   "class": "TRAINER",

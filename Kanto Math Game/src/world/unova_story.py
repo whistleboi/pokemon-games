@@ -296,7 +296,7 @@ def event(state, ev, lines, show):
         for item, n in (sa.get("gift") or {}).items():
             story.inventory[item] = story.inventory.get(item, 0) + int(n)
         show([l.replace("{mon}", mon.display_name) for l in sa.get("thanks") or []]
-             + ["You received %s!" % ", ".join(k.replace("_", " ").title() for k in (sa.get("gift") or {}))])
+             + (["You received %s!" % ", ".join(k.replace("_", " ").title() for k in sa["gift"])] if sa.get("gift") else []))
         return
     if ev.get("starter_quiz"):   # (batch 12a: Accumula's quiz on your first partner's height - a Gem of its type, once)
         sq = ev["starter_quiz"]

@@ -44,7 +44,7 @@ PLACES = {"ASPERTIA_CITY": 427, "UNOVA_ROUTE_19": 437, "UNOVA_ROUTE_20": 446, "F
           "VICTORY_ROAD_3F": 593, "VICTORY_ROAD_TUNNEL": 228,   # (batch 10a)
           "N_CASTLE": 596,   # (batch 11c: the Zoroark's cave; the castle has no wild Pokemon)
           "PINWHEEL_FOREST": 155, "PINWHEEL_FOREST_OUTSIDE": 154, "UNOVA_ROUTE_3": 321, "WELLSPRING_CAVE": 324,
-          "WELLSPRING_CAVE_B1F": 325, "DREAMYARD": 152, "DREAMYARD_B1F": 153, "UNOVA_ROUTE_2": 319, "UNOVA_ROUTE_1": 317, "STRIATON_CITY": 6, "NUVEMA_TOWN": 389,   # (batch 12a)
+          "WELLSPRING_CAVE_B1F": 325, "DREAMYARD": 152, "DREAMYARD_B1F": 153, "UNOVA_ROUTE_2": 319, "UNOVA_ROUTE_1": 317, "STRIATON_CITY": 6, "NUVEMA_TOWN": 389, "UNOVA_ROUTE_8": 345, "MOOR_OF_ICIRRUS": 346, "ICIRRUS_CITY": 113, "DRAGONSPIRAL_TOWER": 205,   # (batch 12a)
           "UNOVA_ROUTE_14": 374, "ABUNDANT_SHRINE": 376, "UNOVA_ROUTE_15": 378, "MARVELOUS_BRIDGE": 263}   # (batch 11a)   # (batch 7a: both versions' chambers share the tables)
 P = os.path.join(GAME, "assets", "unova_area_data.json")
 NL = "\r\n"
