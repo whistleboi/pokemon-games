@@ -121,11 +121,13 @@ def apply(maps):
     for y in range(AT[1], AT[1] + 5):
         for x in range(AT[0], AT[0] + 5):
             rows[y][x] = "c"
+    used = {c for r in rows for c in r} | set(m.get("buildings") or {})   # (a letter of its own: the map's letters follow its doors,
+    mark = next(c for c in "PQRSTUVWXYZ" if c not in used)                 #  and Emerald's lounges have doors since 11-24)
     rows[DOOR[1]][DOOR[0]] = "D"
-    rows[DOOR[1] - 1][DOOR[0]] = "P"
+    rows[DOOR[1] - 1][DOOR[0]] = mark
     assert rows[DOOR[1] + 1][DOOR[0]] == ".", "the Maison's door opens onto the path"
     m["art"] = ["".join(r) for r in rows]
-    m["buildings"] = dict(m.get("buildings") or {}, P="maison")
+    m["buildings"] = dict(m.get("buildings") or {}, **{mark: "maison"})
     m["inside"] = dict(m.get("inside") or {}, **{f"{DOOR[0]},{DOOR[1]}": "maison"})
     g, t = _picture()
     m["roofs"] = dict(m["roofs"], _picture=dict(m["roofs"]["_picture"], f=g))
@@ -153,7 +155,7 @@ RESORT_PEOPLE = [("Wally", (82, 53)), ("Looker", (100, 57)), ("Custodian", (112,
 MASTERS = [("Fairy Tale Girl Josephine", (100, 41)), ("Rich Boy Antoin", (113, 41)), ("Aroma Lady Carnation", (11, 41)),
            ("Poke Maniac Kelvin", (27, 47)), ("Bug Maniac Felix", (31, 47))]
 HIDDEN = {(24, 66): "MAX_ETHER", (93, 34): "BIG_PEARL", (117, 33): "FULL_RESTORE"}
-ANNEX = "L"   # (the free lounge door at 89,31: the Day Care Annex)
+ANNEX_DOOR = (121, 31)   # (the Day Care Annex: the lounge at this door - its building's letter is looked up, 11-24)
 
 
 def _spot(rows, want, taken):
@@ -207,7 +209,9 @@ def resort(maps):
             moves[f"{x},{y}"] = {"m": "look", "d": "udlr"}
     m["moves"] = moves
     m["hidden"] = dict(m.get("hidden") or {}, **{f"{x},{y}": it for (x, y), it in HIDDEN.items() if m["art"][y][x] in ".!"})
-    m["buildings"] = dict(m.get("buildings") or {}, **{ANNEX: "annex"})
+    _annex = m["art"][ANNEX_DOOR[1] - 1][ANNEX_DOOR[0]]
+    if _annex in (m.get("buildings") or {}):
+        m["buildings"] = dict(m["buildings"], **{_annex: "annex"})
     m["rooms"]["center"]["people"] = list(m["rooms"]["center"].get("people") or []) + ["The Judge"]
     art = [list(r) for r in m["rooms"]["center"]["art"]]
     art[4][12] = "N"   # (the Judge: in the Center's corner, as ORAS's)

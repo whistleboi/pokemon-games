@@ -328,7 +328,18 @@
           "action": "EXIT",
           "target_area": "HOENN_ARTISAN_CAVE",
           "condition": "can_exit"
-        }
+        },
+        {"text": "Double attendant", "action": "FRONTIER", "facility": "tower_double"},
+        {"text": "Multi attendant", "action": "EVENT", "event": {"world": "hoenn_frontier", "multi": true}},
+        {"text": "Scott", "action": "EVENT", "event": {"world": "hoenn_frontier", "scott": true}},
+        {"text": "Gambler", "action": "EVENT", "event": {"world": "hoenn_frontier", "bet": true}},
+        {"text": "News man", "action": "EVENT", "event": {"world": "hoenn_frontier", "news": true, "lines": ["News man: Howdy! When it comes to news about the Battle Frontier, I'm number one."]}},
+        {"text": "Ranking Hall guide", "action": "EVENT", "event": {"world": "hoenn_frontier", "records": true, "lines": ["Guide: This is the Ranking Hall, where the Frontier remembers its greatest Trainers. Your records:"]}},
+        {"text": "Skitty fan", "action": "EVENT", "event": {"lines": ["Isis: My Pokemon is a Meowth. It's quite cute and rather nice... but I'd love a Skitty!", "Isis: Would you trade me a Skitty for my Meowth?"], "trade": {"want": 300, "give": 52, "nickname": "MEOWOW"}, "fail": ["Isis: Oh, you don't have a Skitty? Please come and visit me if you find one!"], "done": ["Isis: A Skitty is so much cuter than I imagined. I'm delighted! How is my Meowth?"]}},
+        {"text": "Old tutor", "action": "EVENT", "event": {"lines": ["Tutor: Buhahaha! You couldn't tell from looking now, but I used to be one tough Trainer.", "Tutor: I'll teach your Pokemon a move, for Battle Points. Which one?"], "tutor": {"move": "SOFT-BOILED", "choices": ["SOFT-BOILED", "SEISMIC-TOSS", "DREAM-EATER", "MEGA-PUNCH", "MEGA-KICK", "BODY-SLAM", "ROCK-SLIDE", "COUNTER", "THUNDER-WAVE", "SWORDS-DANCE"], "bp_costs": {"SOFT-BOILED": 16, "SEISMIC-TOSS": 24, "DREAM-EATER": 24, "MEGA-PUNCH": 24, "MEGA-KICK": 48, "BODY-SLAM": 48, "ROCK-SLIDE": 48, "COUNTER": 48, "THUNDER-WAVE": 48, "SWORDS-DANCE": 48}}}},
+        {"text": "Old tutor ", "action": "EVENT", "event": {"lines": ["Tutor: Ihihihi! It's hard to see now, but I used to be a fantastic Trainer.", "Tutor: I'll teach your Pokemon a move, for Battle Points. Which one?"], "tutor": {"move": "DEFENSE-CURL", "choices": ["DEFENSE-CURL", "SNORE", "MUD-SLAP", "SWIFT", "ICY-WIND", "ENDURE", "PSYCH-UP", "ICE-PUNCH", "THUNDER-PUNCH", "FIRE-PUNCH"], "bp_costs": {"DEFENSE-CURL": 16, "SNORE": 24, "MUD-SLAP": 24, "SWIFT": 24, "ICY-WIND": 48, "ENDURE": 48, "PSYCH-UP": 48, "ICE-PUNCH": 48, "THUNDER-PUNCH": 48, "FIRE-PUNCH": 48}}}},
+        {"text": "Old breeder", "action": "EVENT", "event": {"lines": ["Breeder: For seventy years I have raised Pokemon! Let me have a look at your first Pokemon..."], "judge": true}},
+        {"text": "Pokemon whisperer", "action": "EVENT", "event": {"lines": ["Girl: Ehehe! I can tell what Pokemon are thinking! Let me see your first Pokemon..."], "friend_check": true}}
       ],
       "next_area": "HOENN_SS_TIDAL"
     },
