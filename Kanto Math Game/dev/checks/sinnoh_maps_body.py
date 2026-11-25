@@ -667,8 +667,8 @@ for _key in [k for k, v in _tm.items() if v.get("rooms") and _area.get(k, {}).ge
     for _d, _name in _m["inside"].items():
         _door = tuple(int(v) for v in _d.split(","))
         t = town(_key, _area[_key]["travel_options"][0]["target_area"] if _area[_key].get("travel_options") else _key)
-        if not t._open((_door[0], _door[1] + 1)):
-            continue  # (a door you reach from another side: not this check's business)
+        if not t._open((_door[0], _door[1] + 1)) or _door in getattr(t, "barred", {}):
+            continue  # (a door you reach from another side, or one the story keeps shut - the Battleground: its own check)
         _enter_door(t, _door)
         _want = len(_m["rooms"][_name].get("people", []))
         _own = [o for o in t.people.values() if not (isinstance(o, dict) and o.get("_partner_of"))]   # (main 11-24: a leader's partner Pokemon beside them)
@@ -1738,6 +1738,111 @@ _tt = g.music.region_track("town", "SINNOH") if hasattr(g, "music") else None
 _wt = g.music.region_track("wild", "SINNOH") if hasattr(g, "music") else None
 check(not _missing and len(_mj["areas"]) >= 80 and _tt and "town01" in _tt and _wt and _wt.endswith("ba_poke.ogg"),
       f"Sinnoh's own music: {len(_names)} Platinum tracks for {len(_mj['areas'])} places and {len(_mj['rooms'])} rooms, Twinleaf's theme in Twinleaf ({_missing[:3]}, {_tt}, {_wt})")
+
+# ---- S7a (11-24, s_s7_fight_area.py): the Fight Area as Platinum's - Barry drags you to the Frontier gate, a Multi Battle
+#      with him against Flint and Volkner (Platinum's teams), then Buck
+_sv, _team = dict(story.story_flags), list(story.player_team)
+for _k in [k for k in story.story_flags if k.startswith(("fight_area_", "stark_", "r227_", "battleground_"))]:
+    story.story_flags.pop(_k)
+story.story_flags["beat_sinnoh_champion"] = True
+story.player_team = [mk(392)]; story.player_team[0].level = 70
+t = town("FIGHT_AREA", "SNOWPOINT_CITY"); frames(t, 3)
+_fa = {str(o.get("text")): s for s, o in t._people().items()}
+_gate = _fa.get("Flint") == (46, 8) and _fa.get("Volkner") == (47, 8)
+_tag = _drive(t, 3000, lambda: "Battle" in type(g.current_state).__name__)
+_b = g.current_state
+_opts = getattr(_b, "battle_options", None) or {}
+_pt = [getattr(p_, "id", None) for p_ in (getattr(_b, "partner_team", None) or [])]
+_foes = [getattr(p_, "id", None) for p_ in (getattr(_b, "opponent_team", None) or [])]
+from src.states.overworld.common import _region_starter_id as _rsi
+_bc = {"393": 389, "387": 392, "390": 395}.get(str(_rsi(g)), 389)   # (his last: the starter strong against yours)
+_multi = _tag and getattr(_b, "partner_name", None) == "Barry" and str(getattr(_b, "foe2_name", "")) == "Flint" and _pt[-1:] == [_bc] \
+    and _foes == [405, 135, 466, 229, 136, 467]
+story.story_flags["fight_area_tag_won"] = True
+t = town("FIGHT_AREA", "SNOWPOINT_CITY"); frames(t, 3)
+_fa2 = {str(o.get("text")) for o in t._people().values()}
+_after = "Flint" not in _fa2 and "Volkner" not in _fa2 and "Barry" not in _fa2 and "Buck" in _fa2
+check(_gate and _multi and _after,
+      f"Fight Area: Barry leads you to Flint and Volkner at the Frontier gate; a Multi Battle beside him (his ace the starter strong against yours) against Platinum's teams; then Buck ({_gate}, {_tag}, {getattr(_b, 'partner_name', None)}, {getattr(_b, 'foe2_name', None)}, {_pt}, {_foes}, {_after})")
+
+# ---- S7a (11-24, s_s7_stark.py): Route 227 and Stark Mountain as Platinum's - Mars then Jupiter on 1F, Platinum's Strength
+#      boulders, Charon arrested by Looker in Heatran's room; Heatran only once the Battleground's legend is heard
+_sm = _tm["STARK_MOUNTAIN"]["floors"]
+_nb = (len(_sm[1].get("boxes") or []), len(_sm[2].get("boxes") or []))
+_r227 = {str(p_.get("text")) for p_ in _tm["SINNOH_ROUTE_227"]["people"] if isinstance(p_, dict)}
+r = route("STARK_MOUNTAIN", "SINNOH_ROUTE_227")
+story.player_team = [mk(392)]; story.player_team[0].level = 70
+r.run.jump_floor(1, (16, 28)); frames(r, 3)
+_f1 = set(_figs(r))
+_mars = _hq_battle(r, "Mars")
+_mt = [getattr(p_, "id", None) for p_ in (getattr(g.current_state, "opponent_team", None) or [])]
+story.story_flags["stark_mars_beaten"] = True
+r = route("STARK_MOUNTAIN", "SINNOH_ROUTE_227")
+r.run.jump_floor(1, (16, 28)); frames(r, 3)
+_jup = _hq_battle(r, "Jupiter")
+_jt = [getattr(p_, "id", None) for p_ in (getattr(g.current_state, "opponent_team", None) or [])]
+story.story_flags["stark_jupiter_beaten"] = True
+r = route("STARK_MOUNTAIN", "SINNOH_ROUTE_227")
+r.run.jump_floor(1, (16, 28)); frames(r, 3)
+_gone = not ({"Mars", "Jupiter", "Charon"} & set(_figs(r)))
+r.run.jump_floor(3, (5, 14)); frames(r, 3)
+_f3 = set(_figs(r))
+_arrest = _drive(r, 3000, lambda: story.story_flags.get("stark_charon_arrested"))
+_drive(r, 600, lambda: not (r._scene_run and r._scene_run.busy()))
+r = route("STARK_MOUNTAIN", "SINNOH_ROUTE_227")
+r.run.jump_floor(3, (5, 14)); frames(r, 3)
+_f3b = set(_figs(r))
+story.story_flags["battleground_buck_talked"] = story.story_flags["battleground_heard_legend"] = True
+r = route("STARK_MOUNTAIN", "SINNOH_ROUTE_227")
+r.run.jump_floor(3, (5, 14)); frames(r, 3)
+_f3c = set(_figs(r))
+_lv = _tm and __import__("json").load(open("assets/sinnoh_area_data.json", encoding="utf-8"))["STORY_PROGRESSION"]["STARK_MOUNTAIN"]["area_boss"]["level"]
+check(_nb == (7, 3) and {"Crasher Wake", "Barry", "Buck"} <= _r227 and {"Mars", "Charon"} <= _f1 and _mars and _mt == [437, 42, 432]
+      and _jup and _jt == [437, 42, 435] and _gone and {"Charon", "Stranger"} <= _f3 and _arrest and "Charon" not in _f3b
+      and "Face Heatran" not in _f3b and "Face Heatran" in _f3c and _lv == 50,
+      f"Stark Mountain: Platinum's boulders {_nb}; Wake, Barry and Buck on Route 227; Mars then Jupiter on 1F (their teams), gone after; Looker arrests Charon; Heatran (Lv {_lv}) once you've heard the legend ({_r227}, {_f1}, {_mars} {_mt}, {_jup} {_jt}, {_gone}, {_f3}, {_arrest}, {_f3b}, {_f3c})")
+
+# ---- S7a (11-24, s_s7_survival.py, src/world/battleground.py): the Battleground opens after Charon's arrest; four of
+#      Platinum's thirteen stand there each day, each battled once a day with Platinum's rematch team
+from src.world import battleground as _BG
+story.story_flags.pop("stark_charon_arrested", None)
+t = town("SURVIVAL_AREA", "SINNOH_ROUTE_226"); frames(t, 3)
+_locked = (12, 17) in t.barred
+story.story_flags["stark_charon_arrested"] = True
+t = town("SURVIVAL_AREA", "SINNOH_ROUTE_226"); frames(t, 3)
+_open = (12, 17) not in t.barred
+t._go("house_0101", "OUT:12,17"); frames(t, 5)
+_today = _BG.picks()
+_shown = {}
+for _s, _o in t.people.items():
+    for _c in (_o.get("any") or [_o]):
+        if t._shown(_c):
+            _shown[str(_c.get("text"))] = _s
+            break
+_want = {"roark": "Roark", "gardenia": "Gardenia", "maylene": "Maylene", "wake": "Crasher Wake", "fantina": "Fantina", "byron": "Byron",
+         "candice": "Candice", "volkner": "Volkner", "cheryl": "Cheryl", "riley": "Riley", "marley": "Marley", "mira": "Mira", "buck": "Buck"}
+_four = [_want[k] for k in _today]
+_here = all(n in _shown for n in _four) and len([n for n in _shown if n in _want.values()]) == 4 + (1 if "Buck" not in _four else 0)
+_who = _four[0]
+_ts = _shown.get(_who)
+_fought = False
+if _ts:
+    t.player = t.anim_from = (_ts[0], _ts[1] + 1); t.anim = 0; t.facing = (0, -1)
+    t._talk(tuple(_ts)); _fought = _drive(t, 600, lambda: "Battle" in type(g.current_state).__name__)
+_ft = [getattr(p_, "id", None) for p_ in (getattr(g.current_state, "opponent_team", None) or [])]
+_owners = []
+for _s, _o in t.people.items():
+    if _o.get("_partner_of") is not None and t._shown(_o):
+        _lead = t.people.get(_o["_partner_of"]) or {}
+        _now = next((c for c in (_lead.get("any") or [_lead]) if t._shown(c)), {})
+        _owners.append((str(_o.get("text")), str(_now.get("text"))))
+_mons = sorted(_owners)
+_stray = [m for m, o in _owners if o not in _four + ["Buck"]]
+check(_locked and _open and _here and _fought and len(_ft) == 5 and not _stray,
+      f"Survival Area: the Battleground locked till Charon's arrest; inside, today's four ({_four}) at Platinum's spots, {_who} battles with Platinum's rematch team ({_locked}, {_open}, {sorted(_shown)}, {_fought}, {_ft}, their Pokemon {_mons})")
+_days = {tuple(_BG.picks(__import__("datetime").date(2026, 11, d))) for d in range(1, 29)}
+check(len(_days) >= 10 and all(len(p_) == 4 for p_ in _days), f"Battleground: who stands there changes day by day ({len(_days)} different line-ups in 28 days)")
+story.story_flags.clear(); story.story_flags.update(_sv); story.player_team = _team
 
 g.walk_towns = False
 print(f"##### {fails} failures")

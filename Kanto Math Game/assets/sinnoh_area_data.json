@@ -2915,7 +2915,7 @@
             {"text": "Buck", "action": "NPC", "target": "walk_buck", "flag_condition": "not walk_buck_done", "color": "GOLD"},
             {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
             {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
-            {"text": "Face Heatran", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD"},
+            {"text": "Face Heatran", "action": "BOSS", "condition": ["boss_not_defeated", "stark_charon_arrested", "battleground_buck_talked", "battleground_heard_legend"], "color": "GOLD"},
             {"text": "Route 227", "action": "EXIT", "target_area": "SINNOH_ROUTE_227", "condition": "can_exit", "color": "RED"},
             {"text": "LIFE ORB", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_life_orb_stark_mountain_d16_4_24", "event": {"lines": ["A Life Orb, lying among the rocks."], "gift_item": {"LIFE_ORB": 1}, "flag": "got_life_orb_stark_mountain_d16_4_24"}},
             {"text": "MAX ELIXIR", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_max_elixir_stark_mountain_d16_26_8", "event": {"lines": ["A Max Elixir, in a dark corner."], "gift_item": {"MAX_ELIXIR": 1}, "flag": "got_max_elixir_stark_mountain_d16_26_8"}},
@@ -2932,7 +2932,7 @@
             {"text": "NUGGET", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_nugget_stark_mountain_d16r0102_92_3", "event": {"lines": ["A Nugget, lying among the rocks."], "gift_item": {"NUGGET": 1}, "flag": "got_nugget_stark_mountain_d16r0102_92_3"}},
             {"text": "ULTRA BALL", "action": "EVENT", "color": "GOLD", "found": true, "flag_condition": "not got_ultra_ball_stark_mountain_d16r0102_38_44", "event": {"lines": ["An Ultra Ball, in a dark corner."], "gift_item": {"ULTRA_BALL": 1}, "flag": "got_ultra_ball_stark_mountain_d16r0102_38_44"}}
         ],
-        "area_boss": {"id": 485, "level": 70, "name": "Heatran", "victory_flag": "STARK_MOUNTAIN_boss_defeated"},
+        "area_boss": {"id": 485, "level": 50, "name": "Heatran", "victory_flag": "STARK_MOUNTAIN_boss_defeated"},
         "next_area": "SUNYSHORE_CITY",
         "night_pool_percentages": "SINNOH_STARK_MOUNTAIN_NIGHT_PERCENTAGES",
         "wild_levels": {"land": [22, 58]},
@@ -4010,7 +4010,7 @@
         "flag_not": "STARK_MOUNTAIN_boss_defeated"
       },
       "target": "STARK_MOUNTAIN",
-      "completed_flag": "STARK_MOUNTAIN_boss_defeated",
+      "steps": [{"area": "FIGHT_AREA", "at": [47, 10], "label": "Barry", "done": "fight_area_tag_won"}, {"area": "SINNOH_ROUTE_227", "at": [22, 19], "label": "Buck", "done": "r227_buck_patrol"}, {"area": "STARK_MOUNTAIN", "floor": 1, "at": [16, 26], "label": "Mars", "done": "stark_mars_beaten"}, {"area": "STARK_MOUNTAIN", "floor": 1, "at": [17, 26], "label": "Jupiter", "done": "stark_jupiter_beaten"}, {"area": "STARK_MOUNTAIN", "floor": 3, "at": [5, 9], "label": "Charon", "done": "stark_charon_arrested"}, {"area": "SURVIVAL_AREA", "room": "house_0101", "at": [10, 7], "label": "Buck", "done": "battleground_buck_talked"}, {"area": "SURVIVAL_AREA", "room": "house_0101", "at": [11, 7], "label": "Buck's grandfather", "done": "battleground_heard_legend"}, {"area": "STARK_MOUNTAIN", "floor": 3, "at": [5, 4], "label": "Heatran", "done": "STARK_MOUNTAIN_boss_defeated"}], "completed_flag": "STARK_MOUNTAIN_boss_defeated",
       "reward": "Heatran"
     },
     {

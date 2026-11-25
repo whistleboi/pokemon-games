@@ -261956,17 +261956,17 @@
    "TTTTTTTTTTTTTTTTTTTTTADDATTTTTTTTTTTTTTTTTT~gggggg~rTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTeeee......TTTTTTTTTTTTTTTTkkggggggkkTTTTTTTTTTTT",
    "TTTTTTTTTTTTTTTTeeeeN.....TTTTTTTTTTTTTTTTe=ggnngg=eTTTTTTTTTTTT",
-   "~~~~~~~TTTTTTTTTeBBB......TTTTTTTTTTTTeeeee===..===eeeTTTTTTTTTT",
+   "~~~~~~~TTTTTTTTTeBBB......TTTTTTTTTTTTeeeee===NN===eeeTTTTTTTTTT",
    "~~~~~~~TTTTTTTTTeBBB......TTTTTTTTTTTTeeeee========eeeTTTTTTTTTT",
-   "ooooooooooooooookBBBeeeeeeeeTTTTTTTTeCCCCCeee====eeeeeeeTTTTTTTT",
-   "ooooooo~~~~~~~~okEEEkeeeeeeeTTTTTTTTeCCCCCeee====eeFFFFeTTTTTTTT",
-   "ooooooo~~~~~~~~okEEEkeeeeeeGGGkkkkkkeCCCCCeee====eNFFFFeTTTTTTTT",
-   "ooooooo~~~~~~~~okEEEkNNeeeeGGGkTTTTkeCCDCCeee====eeFDFFeTTTTTTTT",
+   "ooooooooooooooookBBBeeeeeeeeTTTTTTTTeCCCCCeee====NeeeeeeTTTTTTTT",
+   "ooooooo~~~~~~~~okEEEkeeeeeeeTTTTTTTTeCCCCCeNe====NeFFFFeTTTTTTTT",
+   "ooooooo~~~~~~~~okEEEkeeeeeeGGGkkkkkkeCCCCCeNe====NNFFFFeTTTTTTTT",
+   "ooooooo~~~~~~~~okEEEkNNeeeeGGGkTTTTkeCCDCCeeN====eeFDFFeTTTTTTTT",
    "ooooooooooooooookHHHkeeeIIIGGGk....keeeeeeeee====eeeeeee..TTTTTT",
    "oooooooo~~~~~~~~kHHHkeeeIIIJJJeeeeeee=====N============e..TTTTTT",
    "oooooooo~~~~~~~~kHHHkeeeIIIJJJeeeeNee==================e.......>",
    "oooooooo~~~~~~~~kkkkkeeee!eJJJeeeeeee==eeeeeeeeeeNeeeeee.......>",
-   "oooooooo~;;;;;;;=======================eNeeeeeeeeeeeeeee.......>",
+   "oooooooo~;;;;;;;====N==================eNeeeeeeeeeeeeeee.......>",
    "oooooooo~;;;;;;;=======================eeeeTTTLLLk..eeee.......>",
    "oooooooo~~~~~~~~kKKKkkkkkkkkkkkkeeeeeeeeeeeTTTLLLk..eeee..TTTT.>",
    "oooooooo~~~~~~~~kKKKMMMeeOOOeeekeeeeeeeeeTTTTTLLLk........TTTT.>",
@@ -264177,6 +264177,81 @@
     "color": "GOLD"
    },
    {
+    "text": "Flint",
+    "condition": "not:fight_area_tag_won",
+    "event": {
+     "lines": [
+      "Flint: Sorry, kid. Nobody gets into the Frontier on our watch unless they've shown us something."
+     ]
+    },
+    "action": "EVENT"
+   },
+   {
+    "text": "Volkner",
+    "condition": "not:fight_area_tag_won",
+    "event": {
+     "lines": [
+      "Volkner: ...Don't look at me. This was Flint's idea."
+     ]
+    },
+    "action": "EVENT"
+   },
+   {
+    "text": "Buck",
+    "condition": [
+     "fight_area_tag_won",
+     "not:fight_area_buck_met"
+    ],
+    "event": {
+     "lines": [
+      "Buck: Yo! That battle was something else! I'm Buck. I train up at the Survival Area and Stark Mountain, north of here.",
+      "Buck: Drop by sometime, hey? See you!"
+     ],
+     "flag": "fight_area_buck_met"
+    },
+    "action": "EVENT"
+   },
+   {
+    "text": "Onlooker",
+    "condition": "not:fight_area_tag_won",
+    "event": {
+     "lines": [
+      "I've got to see this - an Elite Four member and a Gym Leader, battling side by side!"
+     ]
+    },
+    "action": "EVENT"
+   },
+   {
+    "text": "Fan",
+    "condition": "not:fight_area_tag_won",
+    "event": {
+     "lines": [
+      "An Elite Four member and a Gym Leader as a team? Now that's a pairing!"
+     ]
+    },
+    "action": "EVENT"
+   },
+   {
+    "text": "Onlooker ",
+    "condition": "not:fight_area_tag_won",
+    "event": {
+     "lines": [
+      "Living right by the Frontier has its perks. I get to watch the best Trainers battle!"
+     ]
+    },
+    "action": "EVENT"
+   },
+   {
+    "text": "Little girl ",
+    "condition": "not:fight_area_tag_won",
+    "event": {
+     "lines": [
+      "Are Flint and Volkner really friends? All they do is squabble!"
+     ]
+    },
+    "action": "EVENT"
+   },
+   {
     "text": "Man ",
     "action": "EVENT",
     "event": {
@@ -264202,6 +264277,16 @@
       "The Battle Frontier teaches you which moves work with which Pokemon."
      ]
     }
+   },
+   {
+    "text": "Black Belt  ",
+    "condition": "not:fight_area_tag_won",
+    "event": {
+     "lines": [
+      "Two against two takes real thinking. It's the Trainer's skill that shows."
+     ]
+    },
+    "action": "EVENT"
    },
    {
     "text": "Little girl",
@@ -264231,6 +264316,222 @@
     }
    },
    {
+    "text": "Barry",
+    "condition": [
+     "beat_sinnoh_champion",
+     "not:fight_area_tag_won"
+    ],
+    "event": {
+     "lines": [
+      "Flint: This is the Battle Frontier. We're not letting just anyone wander in, kid.",
+      "Volkner: ...You beat the League, didn't you? Then show us. You and your loud friend, against the two of us.",
+      "Barry: A Multi Battle? With an Elite Four member AND a Gym Leader? We'll whoop 'em! Let's go, {player_name}!"
+     ],
+     "flag": "fight_area_tag_won",
+     "battle": {
+      "name": "Volkner",
+      "class": "GYM_LEADER",
+      "sprite": "volkner.png",
+      "team": [
+       405,
+       135,
+       466
+      ],
+      "levels": [
+       56,
+       56,
+       58
+      ],
+      "movesets": {
+       "405": [
+        "ICE-FANG",
+        "THUNDER-FANG",
+        "CRUNCH",
+        "FIRE-FANG"
+       ],
+       "135": [
+        "PIN-MISSILE",
+        "CHARGE-BEAM",
+        "DOUBLE-KICK",
+        "QUICK-ATTACK"
+       ],
+       "466": [
+        "THUNDER-PUNCH",
+        "FIRE-PUNCH",
+        "BRICK-BREAK",
+        "GIGA-IMPACT"
+       ]
+      },
+      "is_boss_battle": true,
+      "rewards": {
+       "balls": 5
+      },
+      "battle_options": {
+       "double": true,
+       "heal_after": true,
+       "partner": {
+        "who": "barry",
+        "name": "Barry",
+        "class": "PKMN_TRAINER",
+        "sprite": "barry.png",
+        "team": [
+         398,
+         419,
+         214,
+         78,
+         143,
+         389
+        ],
+        "team_choice": {
+         "393": [
+          398,
+          419,
+          214,
+          78,
+          143,
+          389
+         ],
+         "387": [
+          398,
+          419,
+          214,
+          407,
+          143,
+          392
+         ],
+         "390": [
+          398,
+          407,
+          214,
+          78,
+          143,
+          395
+         ]
+        },
+        "levels": [
+         53,
+         52,
+         53,
+         52,
+         54,
+         56
+        ],
+        "movesets": {
+         "398": [
+          "CLOSE-COMBAT",
+          "AERIAL-ACE",
+          "STEEL-WING",
+          "U-TURN"
+         ],
+         "419": [
+          "AQUA-JET",
+          "CRUNCH",
+          "ICE-FANG",
+          "BRICK-BREAK"
+         ],
+         "214": [
+          "CLOSE-COMBAT",
+          "ROCK-SLIDE",
+          "NIGHT-SLASH",
+          "AERIAL-ACE"
+         ],
+         "78": [
+          "FIRE-BLAST",
+          "SUNNY-DAY",
+          "BOUNCE",
+          "WILL-O-WISP"
+         ],
+         "143": [
+          "BODY-SLAM",
+          "CRUNCH",
+          "EARTHQUAKE",
+          "REST"
+         ],
+         "389": [
+          "LEAF-STORM",
+          "EARTHQUAKE",
+          "CRUNCH",
+          "SYNTHESIS"
+         ],
+         "407": [
+          "POISON-JAB",
+          "GIGA-DRAIN",
+          "SHADOW-BALL",
+          "GRASS-WHISTLE"
+         ],
+         "392": [
+          "FLAMETHROWER",
+          "FOCUS-BLAST",
+          "SHADOW-CLAW",
+          "AERIAL-ACE"
+         ],
+         "395": [
+          "BRINE",
+          "AERIAL-ACE",
+          "METAL-CLAW",
+          "SHADOW-CLAW"
+         ]
+        }
+       },
+       "second_trainer": {
+        "name": "Flint",
+        "class": "ELITE_FOUR",
+        "sprite": "flint.png",
+        "team": [
+         229,
+         136,
+         467
+        ],
+        "levels": [
+         56,
+         56,
+         58
+        ],
+        "movesets": {
+         "229": [
+          "FLAMETHROWER",
+          "SLUDGE-BOMB",
+          "DARK-PULSE",
+          "SUNNY-DAY"
+         ],
+         "136": [
+          "OVERHEAT",
+          "GIGA-IMPACT",
+          "QUICK-ATTACK",
+          "WILL-O-WISP"
+         ],
+         "467": [
+          "FLAMETHROWER",
+          "THUNDERBOLT",
+          "SOLAR-BEAM",
+          "HYPER-BEAM"
+         ]
+        },
+        "rewards": {
+         "balls": 3
+        }
+       }
+      },
+      "dialogue": {
+       "player_won": [
+        "Flint: Now THAT was hot! You two burned right through us!",
+        "Volkner: ...That's the most fun I've had in ages. Go on, the Frontier's yours.",
+        "Flint and Volkner headed off together, still arguing.",
+        "Palmer: Ha ha! What a battle! Barry, you were great out there!",
+        "Barry: D-Dad?! ...{player_name}, this is my dad, Palmer. He runs the Battle Tower. He's a Frontier Brain!",
+        "Palmer: Every place in the Frontier has its own rules. Try them all - I'll be waiting at the top!",
+        "Palmer went into the Battle Frontier.",
+        "Barry: My dad's the reason I became a Trainer. One day I'm going to beat him. You'll see!"
+       ],
+       "player_lost": [
+        "Flint: Not hot enough yet! Come back when you're really fired up."
+       ]
+      }
+     }
+    },
+    "action": "EVENT"
+   },
+   {
     "text": "Black Belt",
     "action": "EVENT",
     "event": {
@@ -264257,6 +264558,51 @@
      ]
     }
    }
+  ],
+  "scenes": [
+   {
+    "who": "Barry",
+    "trigger": "enter",
+    "condition": [
+     "beat_sinnoh_champion",
+     "not:fight_area_tag_won"
+    ],
+    "flag": "fight_area_barry_led",
+    "approach": true,
+    "lines": [
+     "Barry: {player_name}! There you are! Perfect timing - come with me, quick!"
+    ],
+    "lead": [
+     [
+      47,
+      10,
+      [
+       "Barry: These two won't let me into the Battle Frontier! They say I'm not tough enough!"
+      ]
+     ]
+    ],
+    "then": "talk",
+    "after": "stay"
+   },
+   {
+    "who": "Buck",
+    "trigger": {
+     "zone": [
+      40,
+      8,
+      55,
+      14
+     ]
+    },
+    "condition": [
+     "fight_area_tag_won",
+     "not:fight_area_buck_met"
+    ],
+    "flag": "fight_area_buck_met",
+    "approach": true,
+    "then": "talk",
+    "after": "leave"
+   }
   ]
  },
  "SURVIVAL_AREA": {
@@ -264279,7 +264625,7 @@
    "<........TTTCJTTTTBBBBEEEE..cccc",
    "<........TTTC.TTTTBBBBEEEE.....>",
    "TT....!..TTTDTTTTTBDBBEDEE.N...>",
-   "TT.............................>",
+   "TT.........NN..................>",
    "TTTT..........................TT",
    "TTTT........N.................TT",
    "TTTTTT__________TT............TT",
@@ -265853,11 +266199,11 @@
      "ccccccccccccc",
      "cc........mmc",
      "cc..........c",
+     "cc.........Nc",
      "cc..........c",
-     "cc..........c",
-     "cc.c...cc...c",
-     "c......cc..Nc",
-     "c..c........c",
+     "cc.c...ccN..c",
+     "c.....Ncc.NNc",
+     "c.Nc........c",
      "c...........c",
      "c..c.c.v.c..c",
      "ccccccccccccc"
@@ -265880,16 +266226,1087 @@
      "_things": {}
     },
     "people": [
+     [
+      {
+       "text": "Riley",
+       "action": "EVENT",
+       "condition": [
+        "stark_charon_arrested",
+        "world:battleground:riley"
+       ],
+       "event": {
+        "lines": [
+         "Riley: Lucario sensed you coming. Let's battle!"
+        ],
+        "daily": true,
+        "flag": "battleground_riley",
+        "done": [
+         "Riley: Same time tomorrow? I'll be here if the day says so."
+        ],
+        "battle": {
+         "name": "Riley",
+         "class": "PKMN_TRAINER",
+         "sprite": "riley.png",
+         "team": [
+          359,
+          217,
+          376,
+          373,
+          448
+         ],
+         "levels": [
+          61,
+          61,
+          62,
+          63,
+          65
+         ],
+         "movesets": {
+          "359": [
+           "PSYCHO-CUT",
+           "NIGHT-SLASH",
+           "SWORDS-DANCE",
+           "QUICK-ATTACK"
+          ],
+          "217": [
+           "AVALANCHE",
+           "SLASH",
+           "AERIAL-ACE",
+           "SHADOW-CLAW"
+          ],
+          "376": [
+           "METEOR-MASH",
+           "ZEN-HEADBUTT",
+           "HAMMER-ARM",
+           "BULLET-PUNCH"
+          ],
+          "373": [
+           "DRAGON-CLAW",
+           "CRUNCH",
+           "FIRE-FANG",
+           "THUNDER-FANG"
+          ],
+          "448": [
+           "EXTREME-SPEED",
+           "CLOSE-COMBAT",
+           "BONE-RUSH",
+           "BLAZE-KICK"
+          ]
+         },
+         "rewards": {
+          "balls": 5
+         },
+         "dialogue": {
+          "player_won": [
+           "Riley: Your aura is strong."
+          ],
+          "player_lost": [
+           "Riley: Come back and try again tomorrow!"
+          ]
+         }
+        }
+       }
+      },
+      {
+       "text": "Marley",
+       "action": "EVENT",
+       "condition": [
+        "stark_charon_arrested",
+        "world:battleground:marley"
+       ],
+       "event": {
+        "lines": [
+         "Marley: ...You. Battle. Now."
+        ],
+        "daily": true,
+        "flag": "battleground_marley",
+        "done": [
+         "Marley: Same time tomorrow? I'll be here if the day says so."
+        ],
+        "battle": {
+         "name": "Marley",
+         "class": "PKMN_TRAINER",
+         "sprite": "marley.png",
+         "team": [
+          291,
+          101,
+          169,
+          461,
+          59
+         ],
+         "levels": [
+          61,
+          61,
+          62,
+          63,
+          65
+         ],
+         "movesets": {
+          "291": [
+           "X-SCISSOR",
+           "AERIAL-ACE",
+           "SWORDS-DANCE",
+           "SLASH"
+          ],
+          "101": [
+           "HYPER-BEAM",
+           "THUNDER",
+           "THUNDER-WAVE",
+           "DOUBLE-TEAM"
+          ],
+          "169": [
+           "AIR-SLASH",
+           "POISON-FANG",
+           "CONFUSE-RAY",
+           "DOUBLE-TEAM"
+          ],
+          "461": [
+           "ICE-SHARD",
+           "NIGHT-SLASH",
+           "ICE-PUNCH",
+           "AERIAL-ACE"
+          ],
+          "59": [
+           "EXTREME-SPEED",
+           "FLARE-BLITZ",
+           "CRUNCH",
+           "THUNDER-FANG"
+          ]
+         },
+         "rewards": {
+          "balls": 5
+         },
+         "dialogue": {
+          "player_won": [
+           "Marley: ...You're still strong."
+          ],
+          "player_lost": [
+           "Marley: Come back and try again tomorrow!"
+          ]
+         }
+        }
+       }
+      },
+      {
+       "text": "Mira",
+       "action": "EVENT",
+       "condition": [
+        "stark_charon_arrested",
+        "world:battleground:mira"
+       ],
+       "event": {
+        "lines": [
+         "Mira: Mira got strong! Now Mira wants to battle you!"
+        ],
+        "daily": true,
+        "flag": "battleground_mira",
+        "done": [
+         "Mira: Same time tomorrow? I'll be here if the day says so."
+        ],
+        "battle": {
+         "name": "Mira",
+         "class": "PKMN_TRAINER",
+         "sprite": "mira.png",
+         "team": [
+          474,
+          94,
+          462,
+          468,
+          65
+         ],
+         "levels": [
+          61,
+          61,
+          62,
+          63,
+          65
+         ],
+         "movesets": {
+          "474": [
+           "TRI-ATTACK",
+           "PSYCHIC",
+           "THUNDERBOLT",
+           "DARK-PULSE"
+          ],
+          "94": [
+           "SHADOW-BALL",
+           "PSYCHIC",
+           "SLUDGE-BOMB",
+           "ENERGY-BALL"
+          ],
+          "462": [
+           "THUNDER",
+           "FLASH-CANNON",
+           "THUNDER-WAVE",
+           "HYPER-BEAM"
+          ],
+          "468": [
+           "EXTREME-SPEED",
+           "AIR-SLASH",
+           "AURA-SPHERE",
+           "PSYCHIC"
+          ],
+          "65": [
+           "PSYCHIC",
+           "FOCUS-BLAST",
+           "CALM-MIND",
+           "HYPER-BEAM"
+          ]
+         },
+         "rewards": {
+          "balls": 5
+         },
+         "dialogue": {
+          "player_won": [
+           "Mira: Mira lost... Mira will train more!"
+          ],
+          "player_lost": [
+           "Mira: Come back and try again tomorrow!"
+          ]
+         }
+        }
+       }
+      },
+      {
+       "text": "Buck",
+       "action": "EVENT",
+       "condition": [
+        "stark_charon_arrested",
+        "world:battleground:buck"
+       ],
+       "event": {
+        "lines": [
+         "Buck: Yo! A real battle in my own place! This! Let's go!"
+        ],
+        "daily": true,
+        "flag": "battleground_buck",
+        "done": [
+         "Buck: Same time tomorrow? I'll be here if the day says so."
+        ],
+        "battle": {
+         "name": "Buck",
+         "class": "PKMN_TRAINER",
+         "sprite": "buck.png",
+         "team": [
+          213,
+          197,
+          324,
+          477,
+          344
+         ],
+         "levels": [
+          61,
+          62,
+          61,
+          63,
+          65
+         ],
+         "movesets": {
+          "213": [
+           "REST",
+           "TOXIC",
+           "PROTECT",
+           "SANDSTORM"
+          ],
+          "197": [
+           "DARK-PULSE",
+           "PSYCHIC",
+           "CONFUSE-RAY",
+           "DOUBLE-TEAM"
+          ],
+          "324": [
+           "EARTHQUAKE",
+           "WILL-O-WISP",
+           "ERUPTION",
+           "PROTECT"
+          ],
+          "477": [
+           "FIRE-PUNCH",
+           "ICE-PUNCH",
+           "THUNDER-PUNCH",
+           "SHADOW-BALL"
+          ],
+          "344": [
+           "EARTH-POWER",
+           "PSYCHIC",
+           "ANCIENT-POWER",
+           "CALM-MIND"
+          ]
+         },
+         "rewards": {
+          "balls": 5
+         },
+         "dialogue": {
+          "player_won": [
+           "Buck: Whoa, you're tough! This was great!"
+          ],
+          "player_lost": [
+           "Buck: Come back and try again tomorrow!"
+          ]
+         }
+        }
+       }
+      }
+     ],
+     [
+      {
+       "text": "Candice",
+       "action": "EVENT",
+       "condition": [
+        "stark_charon_arrested",
+        "world:battleground:candice"
+       ],
+       "event": {
+        "lines": [
+         "Candice: Focus! My Ice Pokemon are as cool as ever!"
+        ],
+        "daily": true,
+        "flag": "battleground_candice",
+        "done": [
+         "Candice: Same time tomorrow? I'll be here if the day says so."
+        ],
+        "battle": {
+         "name": "Candice",
+         "class": "GYM_LEADER",
+         "sprite": "candice.png",
+         "team": [
+          461,
+          473,
+          460,
+          478,
+          471
+         ],
+         "levels": [
+          62,
+          61,
+          61,
+          63,
+          65
+         ],
+         "movesets": {
+          "461": [
+           "AVALANCHE",
+           "SLASH",
+           "FEINT-ATTACK",
+           "TAUNT"
+          ],
+          "473": [
+           "AVALANCHE",
+           "ANCIENT-POWER",
+           "EARTHQUAKE",
+           "HAIL"
+          ],
+          "460": [
+           "AVALANCHE",
+           "WOOD-HAMMER",
+           "GRASS-WHISTLE",
+           "INGRAIN"
+          ],
+          "478": [
+           "BLIZZARD",
+           "CONFUSE-RAY",
+           "OMINOUS-WIND",
+           "HAIL"
+          ],
+          "471": [
+           "BLIZZARD",
+           "MIRROR-COAT",
+           "SHADOW-BALL",
+           "WATER-PULSE"
+          ]
+         },
+         "rewards": {
+          "balls": 5
+         },
+         "dialogue": {
+          "player_won": [
+           "Candice: You melted us. Focus, Candice..."
+          ],
+          "player_lost": [
+           "Candice: Come back and try again tomorrow!"
+          ]
+         }
+        }
+       }
+      },
+      {
+       "text": "Volkner",
+       "action": "EVENT",
+       "condition": [
+        "stark_charon_arrested",
+        "world:battleground:volkner"
+       ],
+       "event": {
+        "lines": [
+         "Volkner: ...You're here. Good. I wanted a real battle."
+        ],
+        "daily": true,
+        "flag": "battleground_volkner",
+        "done": [
+         "Volkner: Same time tomorrow? I'll be here if the day says so."
+        ],
+        "battle": {
+         "name": "Volkner",
+         "class": "GYM_LEADER",
+         "sprite": "volkner.png",
+         "team": [
+          135,
+          26,
+          405,
+          171,
+          466
+         ],
+         "levels": [
+          61,
+          61,
+          62,
+          63,
+          65
+         ],
+         "movesets": {
+          "135": [
+           "PIN-MISSILE",
+           "CHARGE-BEAM",
+           "DOUBLE-KICK",
+           "QUICK-ATTACK"
+          ],
+          "26": [
+           "CHARGE-BEAM",
+           "BRICK-BREAK",
+           "THUNDER-WAVE",
+           "LIGHT-SCREEN"
+          ],
+          "405": [
+           "ICE-FANG",
+           "THUNDER-FANG",
+           "CRUNCH",
+           "FIRE-FANG"
+          ],
+          "171": [
+           "DISCHARGE",
+           "SIGNAL-BEAM",
+           "SURF",
+           "ICE-BEAM"
+          ],
+          "466": [
+           "THUNDER-PUNCH",
+           "FIRE-PUNCH",
+           "BRICK-BREAK",
+           "GIGA-IMPACT"
+          ]
+         },
+         "rewards": {
+          "balls": 5
+         },
+         "dialogue": {
+          "player_won": [
+           "Volkner: ...That one I'll remember."
+          ],
+          "player_lost": [
+           "Volkner: Come back and try again tomorrow!"
+          ]
+         }
+        }
+       }
+      },
+      {
+       "text": "Cheryl",
+       "action": "EVENT",
+       "condition": [
+        "stark_charon_arrested",
+        "world:battleground:cheryl"
+       ],
+       "event": {
+        "lines": [
+         "Cheryl: This time I'm not walking beside you - I'm battling you!"
+        ],
+        "daily": true,
+        "flag": "battleground_cheryl",
+        "done": [
+         "Cheryl: Same time tomorrow? I'll be here if the day says so."
+        ],
+        "battle": {
+         "name": "Cheryl",
+         "class": "PKMN_TRAINER",
+         "sprite": "cheryl.png",
+         "team": [
+          202,
+          426,
+          297,
+          321,
+          242
+         ],
+         "levels": [
+          61,
+          61,
+          62,
+          63,
+          65
+         ],
+         "movesets": {
+          "202": [
+           "COUNTER",
+           "MIRROR-COAT",
+           "SAFEGUARD",
+           "ENCORE"
+          ],
+          "426": [
+           "TOXIC",
+           "OMINOUS-WIND",
+           "FLY",
+           "PROTECT"
+          ],
+          "297": [
+           "CLOSE-COMBAT",
+           "EARTHQUAKE",
+           "BULLET-PUNCH",
+           "STONE-EDGE"
+          ],
+          "321": [
+           "WATER-SPOUT",
+           "BRINE",
+           "EARTHQUAKE",
+           "AVALANCHE"
+          ],
+          "242": [
+           "SOFT-BOILED",
+           "COUNTER",
+           "PSYCHIC",
+           "TOXIC"
+          ]
+         },
+         "rewards": {
+          "balls": 5
+         },
+         "dialogue": {
+          "player_won": [
+           "Cheryl: Oh my. You were so strong!"
+          ],
+          "player_lost": [
+           "Cheryl: Come back and try again tomorrow!"
+          ]
+         }
+        }
+       }
+      }
+     ],
+     [
+      {
+       "text": "Crasher Wake",
+       "action": "EVENT",
+       "condition": [
+        "stark_charon_arrested",
+        "world:battleground:wake"
+       ],
+       "event": {
+        "lines": [
+         "Crasher Wake: Wahahah! Here comes a tidal wave!"
+        ],
+        "daily": true,
+        "flag": "battleground_wake",
+        "done": [
+         "Crasher Wake: Same time tomorrow? I'll be here if the day says so."
+        ],
+        "battle": {
+         "name": "Crasher Wake",
+         "class": "GYM_LEADER",
+         "sprite": "crasher_wake.png",
+         "team": [
+          319,
+          195,
+          130,
+          419,
+          272
+         ],
+         "levels": [
+          61,
+          61,
+          62,
+          63,
+          65
+         ],
+         "movesets": {
+          "319": [
+           "AQUA-JET",
+           "NIGHT-SLASH",
+           "SLASH",
+           "ENDURE"
+          ],
+          "195": [
+           "EARTHQUAKE",
+           "STONE-EDGE",
+           "YAWN",
+           "SURF"
+          ],
+          "130": [
+           "AQUA-TAIL",
+           "AVALANCHE",
+           "BITE",
+           "GIGA-IMPACT"
+          ],
+          "419": [
+           "BRINE",
+           "ICE-FANG",
+           "CRUNCH",
+           "AQUA-JET"
+          ],
+          "272": [
+           "SURF",
+           "ICE-BEAM",
+           "ENERGY-BALL",
+           "FOCUS-BLAST"
+          ]
+         },
+         "rewards": {
+          "balls": 5
+         },
+         "dialogue": {
+          "player_won": [
+           "Crasher Wake: Washed up! Wahahah!"
+          ],
+          "player_lost": [
+           "Crasher Wake: Come back and try again tomorrow!"
+          ]
+         }
+        }
+       }
+      },
+      {
+       "text": "Fantina",
+       "action": "EVENT",
+       "condition": [
+        "stark_charon_arrested",
+        "world:battleground:fantina"
+       ],
+       "event": {
+        "lines": [
+         "Fantina: My Ghost Pokemon want to dance with you again!"
+        ],
+        "daily": true,
+        "flag": "battleground_fantina",
+        "done": [
+         "Fantina: Same time tomorrow? I'll be here if the day says so."
+        ],
+        "battle": {
+         "name": "Fantina",
+         "class": "GYM_LEADER",
+         "sprite": "fantina.png",
+         "team": [
+          354,
+          426,
+          477,
+          429,
+          94
+         ],
+         "levels": [
+          61,
+          61,
+          62,
+          63,
+          65
+         ],
+         "movesets": {
+          "354": [
+           "SHADOW-CLAW",
+           "FEINT-ATTACK",
+           "THUNDERBOLT",
+           "WILL-O-WISP"
+          ],
+          "426": [
+           "OMINOUS-WIND",
+           "PSYCHIC",
+           "SILVER-WIND",
+           "BATON-PASS"
+          ],
+          "477": [
+           "ROCK-SLIDE",
+           "SHADOW-PUNCH",
+           "DOUBLE-TEAM",
+           "PROTECT"
+          ],
+          "429": [
+           "SHADOW-BALL",
+           "PSYCHIC",
+           "MAGICAL-LEAF",
+           "THUNDERBOLT"
+          ],
+          "94": [
+           "SHADOW-BALL",
+           "PSYCHIC",
+           "FOCUS-BLAST",
+           "THUNDER"
+          ]
+         },
+         "rewards": {
+          "balls": 5
+         },
+         "dialogue": {
+          "player_won": [
+           "Fantina: Magnifique! You are still the best."
+          ],
+          "player_lost": [
+           "Fantina: Come back and try again tomorrow!"
+          ]
+         }
+        }
+       }
+      },
+      {
+       "text": "Byron",
+       "action": "EVENT",
+       "condition": [
+        "stark_charon_arrested",
+        "world:battleground:byron"
+       ],
+       "event": {
+        "lines": [
+         "Byron: Steel never rusts, and neither do I! Bwahahah!"
+        ],
+        "daily": true,
+        "flag": "battleground_byron",
+        "done": [
+         "Byron: Same time tomorrow? I'll be here if the day says so."
+        ],
+        "battle": {
+         "name": "Byron",
+         "class": "GYM_LEADER",
+         "sprite": "byron.png",
+         "team": [
+          227,
+          208,
+          462,
+          411,
+          306
+         ],
+         "levels": [
+          61,
+          61,
+          62,
+          63,
+          65
+         ],
+         "movesets": {
+          "227": [
+           "NIGHT-SLASH",
+           "DRILL-PECK",
+           "ROCK-TOMB",
+           "STEALTH-ROCK"
+          ],
+          "208": [
+           "GYRO-BALL",
+           "ICE-FANG",
+           "DRAGON-BREATH",
+           "SANDSTORM"
+          ],
+          "462": [
+           "FLASH-CANNON",
+           "THUNDERBOLT",
+           "SUPERSONIC",
+           "THUNDER-WAVE"
+          ],
+          "411": [
+           "METAL-BURST",
+           "ANCIENT-POWER",
+           "IRON-DEFENSE",
+           "REST"
+          ],
+          "306": [
+           "METAL-BURST",
+           "STONE-EDGE",
+           "EARTHQUAKE",
+           "AVALANCHE"
+          ]
+         },
+         "rewards": {
+          "balls": 5
+         },
+         "dialogue": {
+          "player_won": [
+           "Byron: Bwahah... My steel bent this time."
+          ],
+          "player_lost": [
+           "Byron: Come back and try again tomorrow!"
+          ]
+         }
+        }
+       }
+      }
+     ],
      {
-      "text": "Storyteller ",
+      "text": "Buck",
       "action": "EVENT",
       "event": {
        "lines": [
-        "Stark Mountain dates from when Sinnoh was made. Fire has flowed there ever since."
+        "Buck: This place is only for the toughest Trainers. You're meant to come with a Gym Leader's word - but you're special!",
+        "Buck: Gym Leaders and strong Trainers come here to battle. Four of them each day - who shows up changes day by day.",
+        "Buck: Did Grandpa tell you about Stark Mountain yet? You should hear it!"
+       ],
+       "flag": "battleground_buck_talked",
+       "done": [
+        "Buck: Four tough Trainers a day, right here! Who'll it be tomorrow?"
        ]
       }
-     }
-    ]
+     },
+     {
+      "text": "Buck's grandfather",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Grandfather: Welcome to the Battleground. Let me tell you about Stark Mountain.",
+        "Grandfather: When Sinnoh was made, the land was joined by fire. Stark Mountain is where that fire still burns.",
+        "Grandfather: Deep inside sleeps a Pokemon born of the magma. The Magma Stone keeps it at rest.",
+        "Grandfather: It's said that one who hears this legend and goes to the mountain may meet it... Heh heh."
+       ],
+       "flag": "battleground_heard_legend",
+       "done": [
+        "Grandfather: Welcome to the Battleground. Make yourself at home, as always."
+       ]
+      }
+     },
+     [
+      {
+       "text": "Roark",
+       "action": "EVENT",
+       "condition": [
+        "stark_charon_arrested",
+        "world:battleground:roark"
+       ],
+       "event": {
+        "lines": [
+         "Roark: My rocks have only gotten harder. Let's see yours!"
+        ],
+        "daily": true,
+        "flag": "battleground_roark",
+        "done": [
+         "Roark: Same time tomorrow? I'll be here if the day says so."
+        ],
+        "battle": {
+         "name": "Roark",
+         "class": "GYM_LEADER",
+         "sprite": "roark.png",
+         "team": [
+          142,
+          476,
+          76,
+          409,
+          248
+         ],
+         "levels": [
+          62,
+          61,
+          61,
+          63,
+          65
+         ],
+         "movesets": {
+          "142": [
+           "STONE-EDGE",
+           "AERIAL-ACE",
+           "EARTHQUAKE",
+           "DRAGON-CLAW"
+          ],
+          "476": [
+           "EARTH-POWER",
+           "STEALTH-ROCK",
+           "DISCHARGE",
+           "STONE-EDGE"
+          ],
+          "76": [
+           "STONE-EDGE",
+           "EARTHQUAKE",
+           "BRICK-BREAK",
+           "FLAMETHROWER"
+          ],
+          "409": [
+           "HEAD-SMASH",
+           "ZEN-HEADBUTT",
+           "AVALANCHE",
+           "EARTHQUAKE"
+          ],
+          "248": [
+           "STONE-EDGE",
+           "CRUNCH",
+           "AERIAL-ACE",
+           "FIRE-FANG"
+          ]
+         },
+         "rewards": {
+          "balls": 5
+         },
+         "dialogue": {
+          "player_won": [
+           "Roark: Crushed... You really are the Champion."
+          ],
+          "player_lost": [
+           "Roark: Come back and try again tomorrow!"
+          ]
+         }
+        }
+       }
+      },
+      {
+       "text": "Gardenia",
+       "action": "EVENT",
+       "condition": [
+        "stark_charon_arrested",
+        "world:battleground:gardenia"
+       ],
+       "event": {
+        "lines": [
+         "Gardenia: My Grass Pokemon have been growing all this time!"
+        ],
+        "daily": true,
+        "flag": "battleground_gardenia",
+        "done": [
+         "Gardenia: Same time tomorrow? I'll be here if the day says so."
+        ],
+        "battle": {
+         "name": "Gardenia",
+         "class": "GYM_LEADER",
+         "sprite": "gardenia.png",
+         "team": [
+          189,
+          421,
+          182,
+          389,
+          407
+         ],
+         "levels": [
+          61,
+          62,
+          61,
+          63,
+          65
+         ],
+         "movesets": {
+          "189": [
+           "SILVER-WIND",
+           "TOXIC",
+           "SUNNY-DAY",
+           "BOUNCE"
+          ],
+          "421": [
+           "SOLAR-BEAM",
+           "TOXIC",
+           "SUNNY-DAY",
+           "LEECH-SEED"
+          ],
+          "182": [
+           "DRAIN-PUNCH",
+           "GIGA-DRAIN",
+           "INGRAIN",
+           "SUNNY-DAY"
+          ],
+          "389": [
+           "WOOD-HAMMER",
+           "CRUNCH",
+           "EARTHQUAKE",
+           "STONE-EDGE"
+          ],
+          "407": [
+           "SHADOW-BALL",
+           "LEAF-STORM",
+           "SLUDGE-BOMB",
+           "HYPER-BEAM"
+          ]
+         },
+         "rewards": {
+          "balls": 5
+         },
+         "dialogue": {
+          "player_won": [
+           "Gardenia: Wilted... but in a good way!"
+          ],
+          "player_lost": [
+           "Gardenia: Come back and try again tomorrow!"
+          ]
+         }
+        }
+       }
+      },
+      {
+       "text": "Maylene",
+       "action": "EVENT",
+       "condition": [
+        "stark_charon_arrested",
+        "world:battleground:maylene"
+       ],
+       "event": {
+        "lines": [
+         "Maylene: I've trained every day since our last battle. Ready?"
+        ],
+        "daily": true,
+        "flag": "battleground_maylene",
+        "done": [
+         "Maylene: Same time tomorrow? I'll be here if the day says so."
+        ],
+        "battle": {
+         "name": "Maylene",
+         "class": "GYM_LEADER",
+         "sprite": "maylene.png",
+         "team": [
+          237,
+          308,
+          286,
+          68,
+          448
+         ],
+         "levels": [
+          62,
+          63,
+          62,
+          64,
+          66
+         ],
+         "movesets": {
+          "237": [
+           "TRIPLE-KICK",
+           "AERIAL-ACE",
+           "QUICK-ATTACK",
+           "FAKE-OUT"
+          ],
+          "308": [
+           "FIRE-PUNCH",
+           "ICE-PUNCH",
+           "THUNDER-PUNCH",
+           "HIGH-JUMP-KICK"
+          ],
+          "286": [
+           "STONE-EDGE",
+           "SPORE",
+           "MACH-PUNCH",
+           "SEED-BOMB"
+          ],
+          "68": [
+           "CROSS-CHOP",
+           "ROCK-CLIMB",
+           "EARTHQUAKE",
+           "STONE-EDGE"
+          ],
+          "448": [
+           "DRAIN-PUNCH",
+           "CLOSE-COMBAT",
+           "EXTREME-SPEED",
+           "BONE-RUSH"
+          ]
+         },
+         "rewards": {
+          "balls": 5
+         },
+         "dialogue": {
+          "player_won": [
+           "Maylene: I still have so far to go..."
+          ],
+          "player_lost": [
+           "Maylene: Come back and try again tomorrow!"
+          ]
+         }
+        }
+       }
+      }
+     ]
+    ],
+    "title": "Battleground"
    },
    "house_0201": {
     "theme": "room",
@@ -266531,6 +267948,166 @@
      ]
     }
    },
+   [
+    {
+     "text": "Barry",
+     "action": "EVENT",
+     "condition": [
+      "stark_charon_arrested",
+      "world:battleground:weekend"
+     ],
+     "event": {
+      "lines": [
+       "Barry: Hey! It's the weekend, so we battle! That's the rule - I just made it up! Ready?"
+      ],
+      "daily": true,
+      "flag": "battleground_barry",
+      "done": [
+       "Barry: We already battled today! Come back tomorrow - if it's still the weekend!"
+      ],
+      "battle": {
+       "name": "Barry",
+       "class": "PKMN_TRAINER",
+       "sprite": "barry.png",
+       "team": [
+        398,
+        419,
+        214,
+        78,
+        143,
+        389
+       ],
+       "team_choice": {
+        "393": [
+         398,
+         419,
+         214,
+         78,
+         143,
+         389
+        ],
+        "387": [
+         398,
+         419,
+         214,
+         407,
+         143,
+         392
+        ],
+        "390": [
+         398,
+         407,
+         214,
+         78,
+         143,
+         395
+        ]
+       },
+       "levels": [
+        61,
+        59,
+        61,
+        59,
+        63,
+        65
+       ],
+       "movesets": {
+        "398": [
+         "CLOSE-COMBAT",
+         "AERIAL-ACE",
+         "STEEL-WING",
+         "U-TURN"
+        ],
+        "419": [
+         "AQUA-JET",
+         "CRUNCH",
+         "ICE-FANG",
+         "BRICK-BREAK"
+        ],
+        "214": [
+         "MEGAHORN",
+         "CLOSE-COMBAT",
+         "NIGHT-SLASH",
+         "ROCK-SLIDE"
+        ],
+        "78": [
+         "FIRE-BLAST",
+         "SUNNY-DAY",
+         "BOUNCE",
+         "WILL-O-WISP"
+        ],
+        "143": [
+         "BODY-SLAM",
+         "CRUNCH",
+         "EARTHQUAKE",
+         "REST"
+        ],
+        "389": [
+         "LEAF-STORM",
+         "EARTHQUAKE",
+         "CRUNCH",
+         "LEECH-SEED"
+        ],
+        "407": [
+         "POISON-JAB",
+         "GIGA-DRAIN",
+         "SHADOW-BALL",
+         "GRASS-WHISTLE"
+        ],
+        "392": [
+         "FLAMETHROWER",
+         "FOCUS-BLAST",
+         "SHADOW-CLAW",
+         "AERIAL-ACE"
+        ],
+        "395": [
+         "HYDRO-PUMP",
+         "METAL-CLAW",
+         "DRILL-PECK",
+         "SHADOW-CLAW"
+        ]
+       },
+       "rewards": {
+        "balls": 5
+       },
+       "dialogue": {
+        "player_won": [
+         "Barry: Argh! I'll beat you next weekend! I'll fine you if I don't!"
+        ],
+        "player_lost": [
+         "Barry: Yes! I won! Hey, don't go easy on me next time, OK?"
+        ]
+       }
+      }
+     }
+    },
+    {
+     "text": "Barry",
+     "action": "EVENT",
+     "condition": [
+      "stark_charon_arrested",
+      "world:battleground:weekday"
+     ],
+     "event": {
+      "lines": [
+       "Barry: I'm racking up wins at the Battle Tower all week! Come back on the weekend and we'll battle - every Saturday and Sunday!"
+      ]
+     }
+    }
+   ],
+   {
+    "text": "Buck",
+    "action": "EVENT",
+    "condition": [
+     "stark_charon_arrested",
+     "not:battleground_buck_talked"
+    ],
+    "event": {
+     "lines": [
+      "Buck: Yo, it's you! This here - it's my place! The Battleground! Come on in, hey?"
+     ]
+    }
+   },
    {
     "text": "Girl",
     "action": "EVENT",
@@ -266557,6 +268134,23 @@
       "I'm taking the Frontier challenges to win some prints."
      ]
     }
+   }
+  ],
+  "barred": [
+   {
+    "tiles": [
+     [
+      12,
+      17
+     ]
+    ],
+    "look": "unseen",
+    "until": {
+     "flag_condition": "stark_charon_arrested"
+    },
+    "lines": [
+     "The door is locked. A note says: 'Gone to Stark Mountain. - Buck'"
+    ]
    }
   ]
  },
@@ -304600,7 +306194,7 @@
    "cccccccccc_______ccc...ccccccccc",
    "cccccccccc.......ccc...ccccccccc",
    "cccccccccc....,..ccc...ccccccccc",
-   "ccccccccccc/cc|ccccck..ccccccccc",
+   "ccccccccccc/cc|ccccck.Nccccccccc",
    "ccccccccccc/cc|ccccc...ccccccccc",
    "ccccccccccc/cc|ccccc..,ccccccccc",
    "ccccccccccc/cc|ccccccc|ccccccccc",
@@ -304630,7 +306224,7 @@
    "cccADAAcccccc==ccccccccccccccccc",
    "ccc....cccccc==ccccccccccccccccc",
    "ccc............ccc...k.......k..",
-   ".k.............ccc....k.7.......",
+   ".kNN...........ccc....k.7.......",
    ".......cccc____ccc....ccc.......",
    "k...___cccc....ccc....ccc____...",
    ".......cccc....k....X.ccc.......",
@@ -304731,8 +306325,50 @@
   },
   "people": [
    "YELLOW SHARD",
+   {
+    "text": "Buck",
+    "condition": [
+     "beat_sinnoh_champion",
+     "not:stark_charon_arrested"
+    ],
+    "event": {
+     "lines": [
+      "Buck: Hey! You're the Trainer from the Fight Area! Listen - spacemen types have been creeping around Stark Mountain.",
+      "Buck: There's a Magma Stone inside that keeps something asleep. I'm supposed to guard it, but my team's beat.",
+      "Buck: Patrol the mountain for me? You're in charge! I'll catch up once my Pokemon are rested."
+     ],
+     "flag": "r227_buck_patrol"
+    },
+    "action": "EVENT"
+   },
    "CHARCOAL",
-   "ZINC"
+   "ZINC",
+   {
+    "text": "Crasher Wake",
+    "condition": [
+     "beat_sinnoh_champion",
+     "not:r227_wake_barry"
+    ],
+    "event": {
+     "lines": [
+      "Crasher Wake: Wahahah! Look at you! You've become one tough Trainer!"
+     ]
+    },
+    "action": "EVENT"
+   },
+   {
+    "text": "Barry",
+    "condition": [
+     "beat_sinnoh_champion",
+     "not:r227_wake_barry"
+    ],
+    "event": {
+     "lines": [
+      "Barry: Master Wake, please! Make me your apprentice!"
+     ]
+    },
+    "action": "EVENT"
+   }
   ],
   "rooms": {
    "house_0101": {
@@ -304957,7 +306593,52 @@
   "inside": {
    "4,46": "house_0101"
   },
-  "rock_climb": true
+  "rock_climb": true,
+  "scenes": [
+   {
+    "who": "Crasher Wake",
+    "trigger": {
+     "zone": [
+      0,
+      47,
+      12,
+      53
+     ]
+    },
+    "condition": [
+     "beat_sinnoh_champion",
+     "not:r227_wake_barry"
+    ],
+    "flag": "r227_wake_barry",
+    "approach": true,
+    "lines": [
+     "Crasher Wake: Wahahah! Look at you! You've become one tough Trainer!",
+     "Barry: Master Wake! Please, make me your apprentice! I need it to get into the Battlefield club!",
+     "Crasher Wake: I never said I'd take an apprentice! And I'm no master! ...Hmph. Stark Mountain's up ahead.",
+     "Crasher Wake: The Pokemon there are fierce. Make sure your team's ready before you go in. Wahahah!",
+     "Crasher Wake ran off. Barry chased after him, still shouting 'Master!'"
+    ]
+   },
+   {
+    "who": "Buck",
+    "trigger": {
+     "zone": [
+      18,
+      17,
+      26,
+      23
+     ]
+    },
+    "condition": [
+     "beat_sinnoh_champion",
+     "not:r227_buck_patrol"
+    ],
+    "flag": "r227_buck_patrol_seen",
+    "approach": true,
+    "then": "talk",
+    "after": "stay"
+   }
+  ]
  },
  "SINNOH_ROUTE_228": {
   "art": [
@@ -332746,8 +334427,8 @@
      "ccccccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccccccc",
      "ccccccccccccc+ccccccccccckccccc",
-     "ccccc.....c!...k.cccccckcNccccc",
-     "ccccc.cc==c......cccccc.=.ccccc",
+     "cccccN....c!..Nk.cccccckcNccccc",
+     "cccccNcc==c..N...cccccc.=.ccccc",
      "ccccc.c.==....ccccccccc.=.ccccc",
      "ccccc.cAAAAAAAc.........=.ccccc",
      "ccccc.cAAAAAAAc.ccccccccc.ccccc",
@@ -332808,8 +334489,87 @@
      "Dragon Tamer Darien"
     ],
     "people": [
+     {
+      "text": "Galactic Grunt",
+      "condition": [
+       "beat_sinnoh_champion",
+       "not:stark_jupiter_beaten"
+      ],
+      "event": {
+       "lines": [
+        "Grunt: Charon's our boss now that Cyrus is gone. ...Think he'll be any good at it?"
+       ]
+      },
+      "action": "EVENT"
+     },
+     {
+      "text": "Looker",
+      "condition": [
+       "stark_charon_arrested",
+       "not:stark_looker_outside"
+      ],
+      "event": {
+       "lines": [
+        "Looker: Thank you, my friend! I've been following Charon for a long time - he ran Team Galactic's dirty work.",
+        "Looker: With him under arrest, Team Galactic is finished. Sinnoh can rest easy.",
+        "Looker: Now I must go. Duty calls me elsewhere! Farewell!"
+       ],
+       "flag": "stark_looker_outside"
+      },
+      "action": "EVENT"
+     },
      "MAX ELIXIR",
+     {
+      "text": "Galactic Grunt ",
+      "condition": [
+       "beat_sinnoh_champion",
+       "not:stark_jupiter_beaten"
+      ],
+      "event": {
+       "lines": [
+        "Grunt: Doesn't matter. Orders are orders. Let's get inside before someone sees us."
+       ]
+      },
+      "action": "EVENT"
+     },
+     {
+      "text": "Buck",
+      "condition": [
+       "stark_charon_arrested",
+       "not:stark_buck_outside"
+      ],
+      "event": {
+       "lines": [
+        "Buck: I put the Magma Stone back where it belongs. Whatever's sleeping in there can stay asleep. Thanks, hey!",
+        "Buck: Come by my place in the Survival Area. It's the house by the Pokemon Center - you'll be welcome!"
+       ],
+       "flag": "stark_buck_outside"
+      },
+      "action": "EVENT"
+     },
      "LIFE ORB"
+    ],
+    "scenes": [
+     {
+      "who": "Galactic Grunt",
+      "trigger": {
+       "zone": [
+        3,
+        3,
+        17,
+        16
+       ]
+      },
+      "condition": [
+       "beat_sinnoh_champion",
+       "not:stark_jupiter_beaten"
+      ],
+      "flag": "stark_grunts_overheard",
+      "lines": [
+       "Grunt: Charon's our boss now that Cyrus is gone. ...Think he'll be any good at it?",
+       "Grunt: Doesn't matter. Charon wants the Magma Stone. Let's get inside!"
+      ]
+     }
     ]
    },
    {
@@ -332823,24 +334583,24 @@
      "ccNc.ccccc.ccccccc..c.c.ccccccccc",
      "cc.c.c..............cNc.c..cccccc",
      "cc.c.ccccccccccc.cc.c.c.c..c.cccc",
-     "cc.c..........b.......c.c....cccc",
+     "cc.c..................c.c....cccc",
      "cc.ccccc.cccccccccccccc.c..c.cccc",
      "cc.....0...r............c..c.cccc",
      "cccc.cccccccc.cccccc.cccc..c.cccc",
-     "ccc...............r....b...c.cccc",
+     "ccc...............r........c.cccc",
      "cccccccccccccccccccccccccccc.cccc",
-     "ccccrr....rr..brrr....b.r....cccc",
-     "ccccrrr....r...r.r....b...r..cccc",
-     "cccc....r..b........r.b.r....cccc",
+     "ccccrr....rr...rrr......r....cccc",
+     "ccccrrr....r...r.r........r..cccc",
+     "cccc....r...........r...r....cccc",
      "cccc.ccccccccccc.ccccccccccc.cccc",
      "cccc.ccccccccccc.ccccccccccc.cccc",
      "cccc.ccccccccccc.ccccccccccc.cccc",
      "cccc.ccccccccccc.ccccccccccc.cccc",
      "cccc.ccccccccccc.cccccccccc...ccc",
      "ccccNccccccccccc.ccccccccccc.cccc",
-     "ccccccccccc...........cccc.....cc",
+     "ccccccccccc....NNN....cccc.....cc",
      "ccccccccccc..rr.......cccc...N.cc",
-     "ccccccccccc..rr.......ccccccccccc",
+     "ccccccccccc..rr.NN....ccccccccccc",
      "ccccccccccc...........ccccccccccc",
      "cccccccccccrrrr.......ccccccccccc",
      "cccccccccccrr...-.....ccccccccccc",
@@ -332877,8 +334637,238 @@
      "FULL HEAL",
      "FULL RESTORE",
      "ESCAPE ROPE",
-     "PP UP"
-    ]
+     {
+      "text": "Galactic Grunt",
+      "condition": "not:stark_jupiter_beaten",
+      "event": {
+       "lines": [
+        "Grunt: Charon's in charge now!"
+       ]
+      },
+      "action": "EVENT"
+     },
+     {
+      "text": "Charon",
+      "condition": "not:stark_jupiter_beaten",
+      "event": {
+       "lines": [
+        "Charon: Mars, Jupiter - deal with this child. I have a Magma Stone to find."
+       ]
+      },
+      "action": "EVENT"
+     },
+     {
+      "text": "Galactic Grunt ",
+      "condition": "not:stark_jupiter_beaten",
+      "event": {
+       "lines": [
+        "Grunt: Get lost, kid!"
+       ]
+      },
+      "action": "EVENT"
+     },
+     "PP UP",
+     {
+      "text": "Mars",
+      "condition": "not:stark_mars_beaten",
+      "event": {
+       "lines": [
+        "Mars: You! What happened to Cyrus? You were there at the Spear Pillar!",
+        "Mars: ...Another world? Don't be ridiculous. I'll get the truth out of you!"
+       ],
+       "flag": "stark_mars_beaten",
+       "battle": {
+        "name": "Commander Mars",
+        "class": "COMMANDER",
+        "sprite": "mars.png",
+        "team": [
+         437,
+         42,
+         432
+        ],
+        "levels": [
+         58,
+         58,
+         60
+        ],
+        "movesets": {
+         "437": [
+          "GYRO-BALL",
+          "EXTRASENSORY",
+          "LIGHT-SCREEN",
+          "CONFUSE-RAY"
+         ],
+         "42": [
+          "AIR-CUTTER",
+          "BITE",
+          "POISON-FANG",
+          "CONFUSE-RAY"
+         ],
+         "432": [
+          "SLASH",
+          "SHADOW-CLAW",
+          "AERIAL-ACE",
+          "HYPNOSIS"
+         ]
+        },
+        "is_boss_battle": true,
+        "rewards": {
+         "balls": 5
+        },
+        "dialogue": {
+         "intro": [
+          "Mars: Where is Cyrus?!"
+         ],
+         "player_won": [
+          "Mars: ...So it's true. He's really gone.",
+          "Jupiter: My turn, then."
+         ],
+         "player_lost": [
+          "Mars: Hmph. Is that all?"
+         ]
+        }
+       }
+      },
+      "action": "EVENT"
+     },
+     {
+      "text": "Jupiter",
+      "condition": [
+       "stark_mars_beaten",
+       "not:stark_jupiter_beaten"
+      ],
+      "event": {
+       "lines": [
+        "Jupiter: You beat Mars. Let's see you beat me too."
+       ],
+       "flag": "stark_jupiter_beaten",
+       "battle": {
+        "name": "Commander Jupiter",
+        "class": "COMMANDER",
+        "sprite": "jupiter.png",
+        "team": [
+         437,
+         42,
+         435
+        ],
+        "levels": [
+         58,
+         58,
+         60
+        ],
+        "movesets": {
+         "437": [
+          "GYRO-BALL",
+          "EXTRASENSORY",
+          "ROCK-SLIDE",
+          "REFLECT"
+         ],
+         "42": [
+          "SLUDGE-BOMB",
+          "AIR-CUTTER",
+          "GIGA-DRAIN",
+          "MEAN-LOOK"
+         ],
+         "435": [
+          "NIGHT-SLASH",
+          "POISON-JAB",
+          "FLAMETHROWER",
+          "SMOKESCREEN"
+         ]
+        },
+        "is_boss_battle": true,
+        "rewards": {
+         "balls": 5
+        },
+        "dialogue": {
+         "intro": [
+          "Jupiter: Without Cyrus, none of this is any fun."
+         ],
+         "player_won": [
+          "Jupiter: ...Yeah. I'm done. Team Galactic isn't the same without Cyrus.",
+          "Mars: Me too. I'm quitting. Let's go find this Distortion World of yours, Jupiter.",
+          "Charon: Quit if you like. I have no use for you. You two - come with me!",
+          "Charon hurried deeper into the mountain with his grunts. Mars and Jupiter left."
+         ],
+         "player_lost": [
+          "Jupiter: Hmph. Is that all?"
+         ]
+        }
+       }
+      },
+      "action": "EVENT"
+     }
+    ],
+    "scenes": [
+     {
+      "who": "Mars",
+      "trigger": {
+       "zone": [
+        11,
+        24,
+        21,
+        29
+       ]
+      },
+      "condition": "not:stark_mars_beaten",
+      "flag": "stark_mars_beaten_seen",
+      "approach": true,
+      "then": "talk",
+      "after": "stay"
+     },
+     {
+      "who": "Jupiter",
+      "trigger": {
+       "zone": [
+        11,
+        24,
+        21,
+        29
+       ]
+      },
+      "condition": [
+       "stark_mars_beaten",
+       "not:stark_jupiter_beaten"
+      ],
+      "every": true,
+      "approach": true,
+      "then": "talk",
+      "after": "stay"
+     }
+    ],
+    "boxes": [
+     [
+      14,
+      9
+     ],
+     [
+      23,
+      13
+     ],
+     [
+      14,
+      15
+     ],
+     [
+      22,
+      15
+     ],
+     [
+      22,
+      16
+     ],
+     [
+      11,
+      17
+     ],
+     [
+      22,
+      17
+     ]
+    ],
+    "box_look": "boulder",
+    "box_strength": true,
+    "boxes_fresh": true
    },
    {
     "art": [
@@ -332894,7 +334884,7 @@
      "cc..cccccccccccccccccc.ccccccccccccccccccccccc.cccc/cccccccccccccc.cccccccccccccccccc/cccccccc",
      "cc..ccccccrrrr...ccccc.ccccccccccccccccccccccc.ccc.......rrrrX..............r.........cccccccc",
      "cc..ccccccrrrr...ccccc.ccccccccccccccccccccccc.ccc.X.X...rrr........ccccccccccccccccc.cccccccc",
-     "cc..ccccccrrrr...cc.........b...................ccrr.cccccccccccccX.ccccccccccccccccc.cccccccc",
+     "cc..ccccccrrrr...cc.............................ccrr.cccccccccccccX.ccccccccccccccccc.cccccccc",
      "cc..ccccccrrrr...cccccccccccccccccccccccccccccccccrr.ccccccccccccc..ccccccccccccccccc.cccccccc",
      "cc..cccccc.......ccccccccccccccccccccccccccccccccc...ccccccccccccc..ccccccccccccccccc.cccccccc",
      "cc..cccccc..............................0............ccccccccccccc..cccc..............cccccccc",
@@ -332912,7 +334902,7 @@
      "cccccccccccccccccccccccccccccccccccccccc/ccccccccc...cccccc...................cccccc..cccccccc",
      "cccccccccccccccccccccccccccccccccccccccc/ccccccccc...cccccc.cccccccc/cccccccc.cccccc..cccccccc",
      "cccccccccccccccccccccccccccccccccccccccc/ccccccccc...cccccc.cccccccc/cccccccc.........cccccccc",
-     "cccccccc...........b................r.....0.......r..cccccc.cccccccc/cccccccc.cccccc..cccccccc",
+     "cccccccc............................r.....0.......r..cccccc.cccccccc/cccccccc.cccccc..cccccccc",
      "cccccccc.....cccccccccccccccc.ccccccc/cccccc.ccc.ccc.cccccc.cccccccc/cccccccc.cccccc.rcccccccc",
      "ccccccccrr...cccccccccccccccc.ccccccc/cccccc.ccc.ccc.cccccc.cccccccc/cccccccc.cccccc..cccccccc",
      "ccccccccrr...cccccccccccccccc.ccccccc/cccccc.ccc.ccc.cccccc.cccccccc/cccccccc.cccccc..cccccccc",
@@ -332934,7 +334924,7 @@
      "cccccccccccccccccccc..ccccccc.cccccc..cccccc.cccNccc.cccccc.cccccccc.cccccccc.ccccccr.cccccccc",
      "cccccccccccccccccccc..ccccccc.cccccc..cccccc.ccccccc.cccccc.cccccccc.cccccccc.cccccc..cccccccc",
      "cccccccccccccccccccc..ccccccc.ccccccc/cccccc.ccccccc.cccccc.cccccccc.cccccccc.cccccc..cccccccc",
-     "cccccccc.....ccccccc..ccccccc.ccccccc/cccccc.cccccccbcccccc.cccccccc.cccccccc.cccccc..cccccccc",
+     "cccccccc.....ccccccc..ccccccc.ccccccc/cccccc.ccccccc.cccccc.cccccccc.cccccccc.cccccc..cccccccc",
      "cccccccc.ccc.ccccccc..........ccccccc/cccccc...X.....cccccc0cccccccc.cccccccc.cccccc..cccccccc",
      "cccccccc.c.c.ccccccc..ccccccc.ccccccc/cccccc.........cccccc.cccccccc.cccccccc.cccccc..cccccccc",
      "cccccccc.c.c.ccccccc..ccccccc.ccccccc/cccccc.........cccccc.ccccccccNcccccccc.cccccc..cccccccc",
@@ -333031,7 +335021,24 @@
      "Psychic Sterling",
      "Psychic Chelsey",
      "Ace Trainer Kassandra"
-    ]
+    ],
+    "boxes": [
+     [
+      28,
+      12
+     ],
+     [
+      19,
+      30
+     ],
+     [
+      52,
+      52
+     ]
+    ],
+    "box_look": "boulder",
+    "box_strength": true,
+    "boxes_fresh": true
    },
    {
     "art": [
@@ -333039,24 +335046,74 @@
      "ccccccccccc",
      "cccccrccccc",
      "ccccr.rcccc",
-     "cccr...rccc",
+     "cccr.N.rccc",
      "ccr.....rcc",
      "ccr..b..rcc",
      "ccr.....rcc",
      "cc.r...r.cc",
-     "cc..r.r..cc",
-     "cc.......cc",
+     "cc..rNr..cc",
+     "cc..N.N..cc",
      "cc.....N0cc",
      "cc.r...r.cc",
      "ccr.....rcc",
-     "cccc...cccc",
+     "ccccN..cccc",
      "cccc.-.cccc",
      "ccccccccccc",
      "ccccccccccc"
     ],
     "parts": true,
     "people": [
-     "Face Heatran"
+     "Face Heatran",
+     {
+      "text": "Charon",
+      "condition": "not:stark_charon_arrested",
+      "event": {
+       "lines": [
+        "Charon: The Magma Stone is mine!"
+       ]
+      },
+      "action": "EVENT"
+     },
+     {
+      "text": "Galactic Grunt",
+      "condition": "not:stark_charon_arrested",
+      "event": {
+       "lines": [
+        "Grunt: Back off!"
+       ]
+      },
+      "action": "EVENT"
+     },
+     {
+      "text": "Galactic Grunt ",
+      "condition": "not:stark_charon_arrested",
+      "event": {
+       "lines": [
+        "Grunt: Back off!"
+       ]
+      },
+      "action": "EVENT"
+     },
+     {
+      "text": "Stranger",
+      "condition": "not:stark_charon_arrested",
+      "event": {
+       "lines": [
+        "..."
+       ]
+      },
+      "action": "EVENT"
+     },
+     {
+      "text": "Buck",
+      "condition": "not:stark_charon_arrested",
+      "event": {
+       "lines": [
+        "Buck: That old guy's got the Magma Stone!"
+       ]
+      },
+      "action": "EVENT"
+     }
     ],
     "theme": "cave",
     "roofs": {
@@ -333079,7 +335136,35 @@
        2
       ]
      }
-    }
+    },
+    "scenes": [
+     {
+      "who": "Charon",
+      "trigger": {
+       "zone": [
+        2,
+        11,
+        8,
+        15
+       ]
+      },
+      "condition": "not:stark_charon_arrested",
+      "flag": "stark_charon_arrested",
+      "lines": [
+       "Charon: Mars and Jupiter quit on me. No matter. With the Magma Stone, the Pokemon sleeping here is mine to command.",
+       "Charon: Its power will control the volcano's eruptions - and the whole world will pay me for it!",
+       "Charon: Ah, the meddling child. Too late! The Magma Stone is in my hands!",
+       "Stranger: Croagunk, go! Grab that stone!",
+       "Croagunk snatched the Magma Stone away from Charon!",
+       "Charon: What?! Who are you?!",
+       "Looker: Looker, of the International Police! Charon, you are under arrest for Team Galactic's crimes!",
+       "Charon: I-I had nothing to do with any of that! I'm a simple scientist!",
+       "Looker: Tell it to the judge. You two grunts - run along while you can!",
+       "The grunts fled. Looker led Charon away.",
+       "Buck: Whoa... Hey, I'll put the Magma Stone back. Meet you outside!"
+      ]
+     }
+    ]
    }
   ],
   "floor_names": [
