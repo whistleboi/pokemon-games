@@ -46,7 +46,9 @@ PLACES = {"NIMBASA_CITY": [62, 64, 63, 585], "UNOVA_ROUTE_16": [383], "LOSTLORN_
           "UNOVA_ROUTE_22": [474], "UNOVA_ROUTE_21": [463], "SEASIDE_CAVE": [515], "SEASIDE_CAVE_B1F": [516],   # (batch 9a)
           "UNOVA_ROUTE_23": [475], "VICTORY_ROAD_CAVE_1F": [587], "VICTORY_ROAD_GROVE": [588], "VICTORY_ROAD_RIVER": [589, 595],
           "VICTORY_ROAD_CAVE_2F": [590], "VICTORY_ROAD_MOUNTAINSIDE": [592], "VICTORY_ROAD_3F": [593],
-          "UNOVA_ROUTE_14": [374], "ABUNDANT_SHRINE": [376], "UNOVA_ROUTE_15": [378]}   # (batch 10a: each version's
+          "UNOVA_ROUTE_14": [374], "ABUNDANT_SHRINE": [376], "UNOVA_ROUTE_15": [378],
+          "PINWHEEL_FOREST": [155], "PINWHEEL_FOREST_OUTSIDE": [154], "UNOVA_ROUTE_3": [321], "WELLSPRING_CAVE": [324],
+          "WELLSPRING_CAVE_B1F": [325]}   # (batch 10a: each version's
           #  people share the zone's trainers; the River Valley's two versions hold different ones)
 EXTRA = {"UNOVA_ROUTE_5": [(339, "unova_version:BLACK_2"), (340, "unova_version:WHITE_2")]}   # (Charles at the drawbridge)
 CLASS_FIX = {"⒆⒇": "Pokemon", "⑮": "F", "⑭": "M"}   # (the file's PKMN glyph, female / male signs)
@@ -144,6 +146,25 @@ def pools(Z):
     return out
 
 
+# Black 2's tag battles (batch 12a, 11-25): two trainers who battle you (and the partner walking with you) together - the
+# lead's pool entry carries the second as "second_trainer" and the pair's own flag; the second trainer drops out of the pool.
+PAIRS = {"PINWHEEL_FOREST": [(790, 791, "b2_pw_pair_1"), (793, 792, "b2_pw_pair_2")]}
+
+
+def pair_up(r, out):
+    for area, pairs in PAIRS.items():
+        pool = out.get(area) or []
+        for lead, second, flag in pairs:
+            a = next((t for t in pool if t.get("b2_id") == lead), None)
+            b = next((t for t in pool if t.get("b2_id") == second), None)
+            if a is None or b is None:
+                continue
+            a["battle_options"] = {"double": True, "second_trainer": {k: v for k, v in b.items() if k != "b2_id"}}
+            a["victory_flag"] = flag
+            pool.remove(b)
+    return out
+
+
 def write(out):
     text = open(P, encoding="utf-8", newline="").read()
     nl = "\r\n" if "\r\n" in text else "\n"
@@ -179,7 +200,7 @@ def write(out):
 
 if __name__ == "__main__":
     Z = g5map.Zones()
-    out = pools(Z)
+    out = pair_up(Z.r, pools(Z))
     for area, pool in out.items():
         print(area, [(t["name"], t["levels"], "double" if t.get("battle_options") else "") for t in pool])
     if "--write" in sys.argv:
