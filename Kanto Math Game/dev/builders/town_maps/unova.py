@@ -5959,9 +5959,18 @@ OPE_DOORS = {121: ("gym", "gym"), 122: ("center", "center"), 123: ("house", "dra
 
 
 def _opelucid(z, frozen=False):
-    people = {**OPE_PEOPLE, **OPE_FROZEN_PEOPLE} if frozen else dict(OPE_PEOPLE)
+    def _thawed_only(v):   # (someone who never shows while the city's frozen)
+        return all("not:b2_opelucid_frozen" in (o.get("condition") or []) for o in (v if isinstance(v, list) else [v]))
+    # (11-25, the Journal's PT_FULL: the frozen city's woman and a Plasma Grunt share a tile (20,32) in the file, one person a
+    #  tile: the frozen map leaves out who's hidden there anyway.)
+    people = {**{k: v for k, v in OPE_PEOPLE.items() if not _thawed_only(v)}, **OPE_FROZEN_PEOPLE} if frozen else dict(OPE_PEOPLE)
+    # (and Drayden: the file stands him in the Gym's doorway (21,16), which the door then took, so everyone after him in reading
+    #  order wore the next one's options. He stands just outside it, beside the door.)
+    _dray = [dict(o, _look="sheet:b2_c229.png") for o in OPE_FROZEN_PEOPLE[0]]
+    if frozen:
+        people.pop(0)
     m = town(z, people, OPE_SIGNS, OPE_DOORS, OPE_ROOMS,
-             extra_people=[(60, 47, OPE_SHADOW)] if frozen else [],
+             extra_people=[(60, 47, OPE_SHADOW), (22, 17, _dray)] if frozen else [],
              scenes=OPE_FROZEN_SCENES if frozen else [OPE_IRIS, OPE_LEAD], title="Opelucid City")
     return m
 

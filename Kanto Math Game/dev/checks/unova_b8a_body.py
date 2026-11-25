@@ -191,7 +191,7 @@ check(flags.get("b2_medal_box_paint") == "copper", f"the painter: half the Medal
 _pt = sum(1 for v in tmaps.values() if isinstance(v, dict) for r in (v.get("rooms") or {}).values()
           for o in r.get("people", []) if isinstance(o, dict) and o.get("text") == "Medal Box painter")
 check(_pt >= 7, f"a Medal Box painter in every walked Center ({_pt})")
-check(HMS.HM_BY_BADGE["UNOVA"] == {"WAVE": "HM_WATERFALL"}, "Strength, Fly, Surf: story gifts only (no badge stand-ins)")
+check(HMS.HM_BY_BADGE["UNOVA"] == {}, "Strength, Fly, Surf, Waterfall: story gifts only, no badge stand-ins (Waterfall from N, batch 10a)")
 
 for f_ in fails:
     print("  -", f_)
