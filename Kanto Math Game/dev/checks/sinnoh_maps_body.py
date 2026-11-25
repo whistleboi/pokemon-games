@@ -1367,7 +1367,7 @@ check(_ids and all(str(i) in _g4 for i in _ids) and any(387 <= int(i) <= 493 for
 
 # ---- S6 (11-24, s_s6_sunyshore.py): Volkner at the Vista Lighthouse, then his Gym's three rooms of turning walkways
 _sv = dict(story.story_flags)
-for _k in ("volkner_returned_to_gym", "sunyshore_gym_gears"):
+for _k in ("volkner_returned_to_gym", "sunyshore_gym_gears", "sunyshore_gym_kept"):
     story.story_flags.pop(_k, None)
 story.story_flags["spear_pillar_resolved"] = True
 _ad = __import__("json").load(open("assets/sinnoh_area_data.json", encoding="utf-8"))["STORY_PROGRESSION"]["SUNYSHORE_CITY"]
@@ -1397,6 +1397,12 @@ _rooms = all(r in t.town_map["rooms"] for r in ("gym_2", "gym_3", "lighthouse", 
 _vg = any((p_ if isinstance(p_, str) else p_.get("text") if isinstance(p_, dict) else None) == "Gym" for p_ in t.town_map["rooms"]["gym_3"].get("people", []))
 check(_req and _door and _met and _gap0 and _st == 1 and _gap1 and _rooms and _vg,
       f"Sunyshore: Volkner at the Vista Lighthouse opens his Gym; its walkways turn as you step on a gear's middle, the scene with Platinum's gears turned (Platinum's) ({_req}, {_door}, {_met}, {_gap0}, {_st}, {_gap1} {_pic}, {_rooms}, {_vg})")
+t._go("gym_2", "ROOM:gym"); frames(t, 5); _drive(t, 200, lambda: not t._busy())
+_up = _SG.state(story, 1)
+t._go("gym", "ROOM:gym_2"); frames(t, 5); _drive(t, 200, lambda: not t._busy())
+_down = _SG.state(story, 0)
+check(_up == 0 and _down == 1 and (4, 8) not in t.barred,
+      f"Sunyshore Gym: a room keeps its walkways as you left them - up the stairs and back down, the first room still turned (11-25: reset, its top was a trap coming back from Volkner) ({_up}, {_down})")
 story.story_flags.clear(); story.story_flags.update(_sv)
 
 # ---- S6 (11-24, s_s6_victory_road.py): Victory Road's Strength boulders pushed a tile at a time, back at their start on coming in
