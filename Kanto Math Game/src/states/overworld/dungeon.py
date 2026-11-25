@@ -6063,7 +6063,7 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         step = next((s for s in mission["steps"] if s.get("area", guide.mission_target(self.game, mission)) == self.area_key
                      and not (s.get("done") and guide._ok(story, s["done"])) and guide._ok(story, s.get("when"))), None)
         _cur = guide.current_step(self.game, mission)   # (an earlier way-point elsewhere not done yet: that one first - Team Galactic
-        if step is not None and _cur is not None and _cur is not step and _cur.get("area", guide.mission_target(self.game, mission)) != self.area_key:
+        if step is not None and _cur is not None and _cur is not step and _cur.get("area", guide.mission_target(self.game, mission)) != self.area_key                 and not (_cur.get("done") and _cur.get("done") == step.get("done")):   # (one leg under one flag: any of its places - Hoenn's sail to Sky Pillar, 11-25)
             return None                                  #  HQ's Cyrus waits till the warehouse's Galactic Key; Sinnoh 11-25)
         _rooms = (self.run.recipe.get("art") or {}).get("room_floors")   # (a route with rooms: its ground is floor 0, the rooms the rest -
         fl = step.get("floor", 0 if self.run.n_floors == 1 or _rooms else None) if step else None   #  a step with no floor is outdoors: Route 4's Colress, 11-24)
