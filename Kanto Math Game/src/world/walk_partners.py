@@ -48,7 +48,7 @@ PARTNERS = {
                       "Buck joined you! He'll heal your team after every battle."],
              "chat": ["Buck: It's hot in here! Good for training, though."],
              "end_exits": [], "end_floor": 3, "end_flag": None,
-             "farewell": ["Buck: Whatever's in there is too much for me. I'll wait here. Go on!"],
+             "farewell": ["Buck: The air's different up ahead... Galactic's in there, I can feel it. Let's go!"],
              "gift": {}, "wait": ["Buck: Off already? I'll wait here."]},
     "marley": {"name": "Marley", "area": "VICTORY_ROAD_SINNOH", "figure": "Marley", "sheet": "pt_seven3.png", "sprite": "marley.png",
                "team": [59], "levels": [59],   # Arcanine
