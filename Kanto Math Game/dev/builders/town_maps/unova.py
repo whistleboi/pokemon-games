@@ -3945,6 +3945,12 @@ DRIFT_ROOMS = {
             _say("Rood", "Rood: My lord N understands the hearts of Pokemon. People's hearts... he's still learning.",
                  "Rood: I hope he finds what he wants to do, out there with the legendary Pokemon.", condition=["b2_drift_zorua"])],
         2: _say("Ex-Plasma by the window", "Team Plasma was built by a man named Ghetsis to take over Unova. N was the boy he raised to do it."),
+        12: {"text": "{rival_name}", "action": "EVENT", "condition": ["b2_undella_hugh"],   # (after the title, once a day: 11a)
+             "event": {"lines": ["{rival_name}: You came! Let's battle, Champion: I've been training!"], "daily": True,
+                       "flag": "b2_hugh_today", "done": ["{rival_name}: Same time tomorrow, OK?"],
+                       "battle": dict(_b2(696), name="{rival_name}", sprite="hugh.png", **{"class": "PKMN_TRAINER"},
+                                      team_choice={s: _TEAMS[str(t)]["team"] for s, t in zip(("495", "498", "501"), (696, 697, 698))},
+                                      dialogue={"player_won": ["{rival_name}: Not yet... Same time tomorrow!"]})}},
         3: _say("Ex-Plasma by the window ", "Trainers battle to understand their Pokemon, not to hurt them. I hope N knows that now."),
         5: _say("Ex-Plasma at the table", "N was an orphan. He lived in the woods with Darmanitan and Zorua before Ghetsis took him in."),
         8: _say("Ex-Plasma by the shelves", "We look after the Pokemon whose Trainers we can't find. It's a small way to make up for what we did."),
@@ -4056,7 +4062,7 @@ DRIFT_GYM = drift_room(97, dict({
 }) | {n: _b2_battle(name, tid, "gym_trainer_DRIFTVEIL_CITY_%d" % (k + 1), _WORKER_LINES[n][0], ["%s: You're tough!" % name],
                      _WORKER_LINES[n][1])
        for k, (n, (tid, name)) in enumerate(sorted(_WORKER_SPOTS.items()))},
-    {}, title="Driftveil Gym", scenes=_BELT_SCENES + [
+    {(11, 85): ["The lift up to the Gym's entrance."]}, title="Driftveil Gym", scenes=_BELT_SCENES + [   # (a sign tile: 11-24)
         {"trigger": "enter", "condition": ["not:b2_drift_gym_down"], "flag": "b2_drift_gym_down", "cast": [],
          "call": ["Conveyor belts run from platform to platform, down in the dark."]}])
 for _x, _y in _BELT_TILES:   # (the belt ends: a step off the platform's edge)
@@ -4073,7 +4079,8 @@ DRIFT_ROOMS["gym"] = DRIFT_GYM
 DRIFT_ROOMS["gym_lobby"] = drift_room(98, {
     0: _say("Guide in the lobby", "Welcome to the Driftveil Gym! Take the lift down to the Gym floor."),
 }, {(4, 8): ["DRIFTVEIL GYM", "Leader: Clay", "Certified Trainers: {player_name}"],
-    (10, 8): ["DRIFTVEIL GYM", "Leader: Clay", "Certified Trainers: {player_name}"]}, title="Driftveil Gym")
+    (10, 8): ["DRIFTVEIL GYM", "Leader: Clay", "Certified Trainers: {player_name}"],
+    (8, 3): ["The lift down to the Gym floor."]}, title="Driftveil Gym")   # (a sign tile, so the lift's panel reads: 11-24)
 DRIFT_ROOMS["gym_lobby"]["scenes"] = list(DRIFT_ROOMS["gym_lobby"].get("scenes") or []) + [   # (the Journal's way-points:
     {"trigger": "enter", "condition": ["not:b2_drift_gym_in"], "flag": "b2_drift_gym_in", "cast": [],   #  in, then down; 11-24)
      "call": ["The Gym is a mine. A lift at the back goes down into it."]}]
@@ -5316,8 +5323,21 @@ UNDELLA = town(
      "house": room(415, {1: _say("Woman in the house", "I wonder why only the father of The Riches stayed here..."),
                          2: _say("Boy in the house", "The shops on Join Avenue are run by amazing Trainers. I'm getting excited!")},
                    {}, (24, 9)),
-     "villa": room(416, {1: _say("Cynthia", "Cynthia: I'm staying at my friend's villa to research the Abyssal Ruins. "
-                                            "Let's battle someday, Trainer.", condition=["beat_unova_champion"])}, {}, (41, 9)),
+     "villa": room(416, {1: [   # (Cynthia: before the title her research; after it a battle, then once a day in spring - 11a)
+         _say("Cynthia", "Cynthia: I'm staying at my friend's villa to research the Abyssal Ruins. Let's battle someday, Trainer.",
+              condition=["not:beat_unova_champion"]),
+         {"text": "Cynthia ", "action": "EVENT", "condition": ["beat_unova_champion", "not:b2_cynthia_beaten"],
+          "event": {"lines": ["Cynthia: So you're Unova's new Champion. I'm Cynthia, Champion of Sinnoh.",
+                              "Cynthia: I'd like to see your strength for myself. Shall we?"],
+                    "battle": _b2(456, dialogue={"player_won": ["Cynthia: Wonderful! You and your Pokemon are truly in tune.",
+                                                                "Cynthia: In spring I'm here every day. Come and battle again!"]}),
+                    "flag": "b2_cynthia_beaten"}},
+         {"text": "Cynthia  ", "action": "EVENT", "condition": ["b2_cynthia_beaten", "season:spring"],
+          "event": {"lines": ["Cynthia: Spring by the sea... Shall we battle today too?"], "daily": True, "flag": "b2_cynthia_today",
+                    "battle": _b2(456, dialogue={"player_won": ["Cynthia: Thank you. Let's battle again tomorrow."]}),
+                    "done": ["Cynthia: That was a wonderful battle. Let's do it again tomorrow."]}},
+         _say("Cynthia   ", "Cynthia: In spring I'll be here every day. The rest of the year the ruins keep me busy.",
+              condition=["b2_cynthia_beaten", "not:season:spring"])]}, {}, (41, 9)),
      "gate": UNDELLA_GATE, "tube": UNDELLA_TUBE},
     edges={">": ("UNDELLA_BAY", [(63, y) for y in range(16, 25)]), "<": ("REVERSAL_MOUNTAIN_INSIDE", [(5, 11)]),
            "v": ("UNOVA_ROUTE_14", [(x, 31) for x in range(11, 53)])},
@@ -7182,6 +7202,169 @@ LEAGUE = town(136, {0: _say("Veteran at the door", "Beyond here is the Pokemon L
               title="Pokémon League")
 
 
+# ======================================================================================================== batch 11a (11-24)
+# The post-game east (Jordan 11-24: 11a / 11b / 11c): Route 14 (374: south of Undella, its Black Gate 375 to Black City /
+# White Forest, 11b's), the Abundant Shrine (376, its house 377; Landorus after the League, the Reveal Glass), Route 15 (378:
+# its Black Gate 379, the Poke Transfer Lab 381 as a building only (Jordan), the trailer 382 with the Rotom-for-Ditto trade),
+# Marvelous Bridge (263: its two Bridge Gates, 380 to Route 15 and Route 16's 384; Cresselia with the Lunar Wing; the
+# Magikarp salesman), and Undella after the title: Hugh by the gate (HM06 Dive, a battle; then once a day at the old Plasma
+# base in Driftveil), Cynthia in the villa (a battle; then once a day in spring).
+OUTSIDE.update({375: 374, 376: -1, 377: 376, 378: -1, 379: 378, 381: 378, 382: 378, 380: 263})
+_CITY = lambda w2: "WHITE_FOREST" if w2 else "BLACK_CITY"
+
+
+def _black_gate(z, out_door, city_zone, city, side):
+    r = room(z, {0: _say("Gate guard", "Ahead is %s. It's a place that never stays the same for long." % (
+                     "White Forest" if city == "WHITE_FOREST" else "Black City")),
+                 2: _say("Traveller in the gate", "Black City and White Forest... I hear people only ever find one of them."),
+                 1: _say("Backpacker in the gate", "Route 15's cliffs are steep. Mind your step!")},
+             {}, out_door, exits_extra={city_zone: (side, city)})
+    r["title"] = "Black Gate"
+    return r
+
+
+def _route14(w2):
+    m = route(
+        374, {8: _ball("Poke Ball on the beach", "BIG_PEARL", "b2_r14_big_pearl", name="a Big Pearl"),
+              9: _ball("Poke Ball up the waterfall", "HEART_SCALE", "b2_r14_heart_scale", name="a Heart Scale"),
+              11: _ball("Poke Ball by Black Belt Jay", "NUGGET", "b2_r14_nugget", name="a Nugget"),
+              10: _ball("Poke Ball past the ledge", "MAX_POTION", "b2_r14_max_potion", name="a Max Potion")},
+        {},
+        exits={"^": ("UNDELLA_TOWN", [(x, 0) for x in range(43, 85)]), "s": ("ABUNDANT_SHRINE", [(5, 37), (6, 37)])},
+        trainers={0: ("Battle Girl Glinda", 4), 1: ("Fisherman Sid", 1), 2: ("Black Belt Jay", 3), 3: ("Gentleman Sheldon", 4),
+                  4: ("Socialite Marian", 5), 5: ("Ace Trainer Kipp", 2), 6: ("Ace Trainer Junko", 4), 7: ("Backpacker Reece", 3)},
+        hidden={"46,24": "NUGGET", "31,42": "PROTEIN"},
+        rooms={"gate": _black_gate(375, (19, 56), 0, _CITY(w2), "s")}, inside={"19,56": "gate"}, title="Route 14")
+    _doors(m, m["inside"])
+    m["edge_to"] = {"%d,0" % x: [x - 32, 30] for x in range(43, 85)}
+    m["split"] = True
+    m["gated_exits"] = {_CITY(w2): ["beat_unova_champion"]}   # (the cities: after the Hall of Fame, as Black 2)
+    return m
+
+
+ROUTE_14 = _route14(False)
+ROUTE_14["story_maps"] = [{"when": ["unova_version:WHITE_2"], "map": _route14(True)}]
+UNDELLA["edge_to"] = dict(UNDELLA.get("edge_to") or {}, **{"%d,31" % x: [x + 32, 1] for x in range(11, 53)})
+
+# --- the Abundant Shrine: Landorus after the title (the menu place's, Lv 70; Black 2 has it only from the Dream Radar, and every
+# species is caught in one playthrough: Jordan 11-20), the old man and the Reveal Glass once you have a Landorus
+SHRINE = route(
+    376, {4: _ball("Poke Ball by the shrine", "HEAL_BALL", "b2_as_heal_ball", name="a Heal Ball"),
+          0: _ball("Poke Ball in the grass", "RARE_CANDY", "b2_as_rare_candy", name="a Rare Candy"),
+          3: _ball("Poke Ball by the pond", "SHINY_STONE", "b2_as_shiny_stone", name="a Shiny Stone"),
+          1: _ball("Poke Ball in the trees", "TM161", "b2_as_tm92", name="TM161 Trick Room"),
+          2: _ball("Poke Ball by the ruins", "MAX_REVIVE", "b2_as_max_revive", name="a Max Revive"),
+          11: [{"text": "Landorus", "action": "BOSS", "color": "RED", "_look": "mon:645",
+                "condition": ["beat_unova_champion", "not:ABUNDANT_SHRINE_boss_defeated"],
+                "boss": {"id": 645, "name": "Landorus", "level": 70, "victory_flag": "ABUNDANT_SHRINE_boss_defeated",
+                         "lines": ["The shrine shook... and Landorus, the Guardian of the Fields, came down!"]}},
+               {"text": "Old man at the shrine", "action": "EVENT", "_look": "sheet:b2_c28.png",
+                "condition": ["party_has:645", "not:b2_reveal_glass"],
+                "event": {"lines": ["Old man: Landorus... It's been so long. Tornadus and Thundurus ran wild, and Landorus "
+                                    "calmed them. That's why the land here was so fertile.",
+                                    "Old man: Take this mirror. It shows the truth: the true forms of those three.",
+                                    "{player_name} received the Reveal Glass!"],
+                          "gift_item": {"REVEAL_GLASS": 1}, "flag": "b2_reveal_glass"}}],
+          10: _say("Woman by the shrine", "There used to be a village here. Only the shrine is left now."),
+          12: _say("Boy at the ruins", "Grandpa says the shrine is for the god of the harvest!", condition=["not:beat_unova_champion"]),
+          13: _say("Girl at the ruins", "The pond here never dries up, even in summer.", condition=["not:beat_unova_champion"]),
+          14: _say("Kid at the ruins", "Let's play hide-and-seek in the ruins!", condition=["not:beat_unova_champion"])},
+    {},
+    exits={"v": ("UNOVA_ROUTE_14", [(50, 54), (51, 54)])},
+    trainers={5: ("Youngster Jaye", 1), 6: ("Lass Lurleen", 2), 7: ("Twins Rae & Ula", 2), 9: ("Youngster Wes", 2)},
+    hidden={"47,22": "PP_MAX", "14,23": "BIG_MUSHROOM", "50,35": "TINY_MUSHROOM", "25,51": "CALCIUM"},
+    rooms={"house": room(377, {0: _say("Woman in the house", "Long ago, a village stood by the shrine. My family is all that's "
+                                                         "left of it. We still look after the shrine.")}, {}, (36, 46)),
+           "grotto": grotto_room(12, (47, 29)), "grotto2": grotto_room(13, (35, 9))},
+    inside={"36,46": "house", "47,29": "grotto", "35,9": "grotto2"}, title="Abundant Shrine")
+_doors(SHRINE, SHRINE["inside"])
+SHRINE["split"] = True
+
+
+# --- Route 15 and Marvelous Bridge
+def _route15(w2):
+    trailer = room(382, {0: {"text": "Woman in the trailer", "action": "EVENT", "event": {
+        "lines": ["I'll trade you my Rotom for a Ditto. Ditto's so mysterious, isn't it?"],
+        "trade": {"want": 132, "give": 479, "level": 30},
+        "done": ["How's Rotom doing? Take it to Shopping Mall Nine: it likes the appliances there."]}}}, {}, (15, 15))
+    trailer["title"] = "Trailer"
+    lab = room(381, {0: _say("Scientist at the machine", "Welcome to the Poke Transfer Lab! We study how Pokemon move between "
+                                                         "regions."),
+                     3: _say("Scientist at the desk", "The machine is still being tuned. Professor Park says it will be "
+                                                      "marvelous when it works!"),
+                     2: _say("Scientist by the shelves", "Pokemon from far away... I'd love to see them here someday."),
+                     1: _say("Scientist by the window", "Route 15's cliffs keep visitors away, which is good for our research.")},
+               {}, (32, 9))
+    lab["title"] = "Poke Transfer Lab"
+    m = route(
+        378, {3: _ball("Poke Ball up the stairs", "MAX_POTION", "b2_r15_max_potion", name="a Max Potion"),
+              2: _ball("Poke Ball behind the boulder", "TM149", "b2_r15_tm26", name="TM149 Earthquake")},
+        {},
+        exits={"<": ("MARVELOUS_BRIDGE", [(7, 19), (7, 20)])},
+        trainers={4: ("Pokéfan Elliot", 2), 5: ("Scientist Marie", 4), 6: ("Pokéfan Lydia", 3), 7: ("Backpacker Talon", 5),
+                  8: ("Backpacker Corin", 1)},
+        hidden={"43,5": "ULTRA_BALL", "31,25": "HP_UP"},
+        rooms={"lab": lab, "trailer": trailer, "gate": _black_gate(379, (57, 11), 0, _CITY(not w2), ">")},
+        inside={"32,9": "lab", "15,15": "trailer", "57,10": "gate", "57,11": "gate", "57,12": "gate"}, title="Route 15")
+    _doors(m, m["inside"])
+    for _x, _y in ((44, 21), (52, 24)):   # (Black 2's boulders: Strength)
+        _put_char(m, _x, _y, "b")
+    _put_char(m, 56, 26, ".")   # (the gap the boulder at the stairs' foot fills: TM149's ledge)
+    m["split"] = True
+    m["gated_exits"] = {_CITY(not w2): ["black_tower_cleared"] if not w2 else ["beat_unova_champion"]}   # (11b: the swap)
+    return m
+
+
+ROUTE_15 = _route15(False)
+ROUTE_15["story_maps"] = [{"when": ["unova_version:WHITE_2"], "map": _route15(True)}]
+
+BRIDGE_GATE_E = room(380, {2: _say("Pokemon in the gate", "Kyuu!"),
+                           1: _say("Veteran in the gate", "Marvelous Bridge was built to join Route 15 and Route 16. Truly marvelous!"),
+                           0: _say("Scientist in the gate", "Some bird Pokemon drop feathers on the bridge. Collect them!")},
+                     {}, (161, 31), exits_extra={378: (">", "UNOVA_ROUTE_15")})
+BRIDGE_GATE_E["title"] = "Bridge Gate"
+BRIDGE = route(
+    263, {0: {"text": "Magikarp salesman", "action": "EVENT", "event": {
+              "lines": ["Hey, kid! Wanna buy a Magikarp? It's only $500! It's a steal!"],
+              "pay": 500, "gift_pokemon": 129, "gift_level": 20, "flag": "b2_mb_magikarp",
+              "done": ["Magikarp's a fine Pokemon, I tell you! Give it time!"]}},
+          1: _say("Girl on the bridge", "The sea looks so far down from here!"),
+          4: _say("Girl by the archway", "When the moon's out, something shines under the eastern arch...")},
+    {},
+    exits={"<": ("UNOVA_ROUTE_16", [(14, 31)])},
+    scenes=[{"trigger": {"zone": [128, 31, 128, 36]}, "condition": ["has_item:LUNAR_WING", "not:b2_mb_cresselia"],
+             "flag": "b2_mb_cresselia_seen", "cast": [],
+             "call": ["The Lunar Wing began to shine! You held it up high...",
+                      "Something swooped down out of the sky!"],
+             "event": {"flag": "b2_mb_cresselia_out"}}],
+    extra_people=[(112, 33, {"text": "Cresselia", "action": "BOSS", "color": "RED", "_look": "mon:488",
+                             "condition": ["b2_mb_cresselia_out", "not:b2_mb_cresselia"],
+                             "boss": {"id": 488, "name": "Cresselia", "level": 68, "victory_flag": "b2_mb_cresselia",
+                                      "lines": ["Cresselia shone like the crescent moon!"]}})],
+    rooms={"gate_e": BRIDGE_GATE_E}, inside={"161,31": "gate_e"}, title="Marvelous Bridge")
+_doors(BRIDGE, BRIDGE["inside"])
+BRIDGE["gated_exits"] = {"UNOVA_ROUTE_16": ["beat_unova_champion"]}
+for _y in range(31, 37):   # (the three towers' A-frames and cables over the deck: Black 2's heights there are the steel overhead,
+    for _x in range(len(BRIDGE["art"][_y])):   #  ~8 over the deck's 11.65, so live 3D read them as drops and cut the middle span
+        if BRIDGE["art"][_y][_x] == "." and GEO["263"]["lift"][_y][_x] > 13.5:   #  off; the road runs under them: a deck tile,
+            _put_char(BRIDGE, _x, _y, ";")   #  never a drop - 11-24)
+
+# --- Undella after the title: Hugh by the gate (HM06 Dive), Cynthia in the villa; Hugh once a day at the Plasma base after
+_HUGH_UNDELLA = dict(_b2(693), name="{rival_name}", **{"class": "PKMN_TRAINER"}, sprite="hugh.png",
+                     team_choice={s: _TEAMS[str(t)]["team"] for s, t in zip(("495", "498", "501"), (693, 694, 695))},
+                     rewards=_prize(693, HM_DIVE=1),
+                     dialogue={"player_won": ["{rival_name}: You really are the Champion. ...I'll get stronger. Count on it!",
+                                              "{rival_name}: Here: HM06, Dive. With it you can explore the bottom of the sea.",
+                                              "{rival_name}: I'll be training at the old Plasma base in Driftveil. Come battle me "
+                                              "any time: once a day!"]})
+UNDELLA["scenes"] = list(UNDELLA.get("scenes") or []) + [
+    {"trigger": "enter", "condition": ["beat_unova_champion", "b2_hall_of_fame", "not:b2_undella_hugh"], "flag": "b2_undella_hugh_met",
+     "cast": [{"sheet": "b2_hugh.png", "from": [48, 8], "to": "player", "stay": True, "lines": [
+         "{rival_name}: {player_name}! Champion! My sister and her Liepard say thanks, again.",
+         "{rival_name}: There's something I want to give you. But first... battle me, Champion!"]}],
+     "event": {"flag": "b2_undella_hugh", "battle": _HUGH_UNDELLA}}]
+
+
 MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": FLOCCESY, "UNOVA_ROUTE_20": ROUTE_20,
         "FLOCCESY_RANCH_OUTSIDE": RANCH_OUTSIDE, "FLOCCESY_RANCH": RANCH, "PLEDGE_GROVE": PLEDGE_GROVE,
         "VIRBANK_CITY": VIRBANK, "VIRBANK_COMPLEX_OUTSIDE": COMPLEX_OUTSIDE, "VIRBANK_COMPLEX": COMPLEX, "POKESTAR_STUDIOS": POKESTAR,
@@ -7212,4 +7395,5 @@ MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": 
         "UNOVA_ROUTE_23": ROUTE_23, "VICTORY_ROAD_UNOVA": VR_OUTSIDE, "VICTORY_ROAD_CAVE_1F": VR_1F, "VICTORY_ROAD_GROVE": VR_GROVE,
         "VICTORY_ROAD_RIVER": VR_RIVER, "VICTORY_ROAD_CAVE_2F": VR_2F, "VICTORY_ROAD_2F_BACK": VR_2F_BACK,
         "VICTORY_ROAD_MOUNTAINSIDE": VR_MOUNTAIN, "VICTORY_ROAD_3F": VR_3F, "VICTORY_ROAD_TUNNEL": VR_TUNNEL,   # (batch 10a)
-        "UNOVA_POKEMON_LEAGUE": LEAGUE}   # (batch 10b)
+        "UNOVA_POKEMON_LEAGUE": LEAGUE,   # (batch 10b)
+        "UNOVA_ROUTE_14": ROUTE_14, "ABUNDANT_SHRINE": SHRINE, "UNOVA_ROUTE_15": ROUTE_15, "MARVELOUS_BRIDGE": BRIDGE}   # (batch 11a)
