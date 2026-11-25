@@ -876,7 +876,7 @@ CELL_SIZED = {"b2_item_ball.png"}
 # people. A person-shaped frame from a known set is scaled so its set's adult comes out PERSON_H pixels tall (children stay
 # shorter, a big man taller); anything else - Pokemon, items, a set not listed - keeps the whole-number scale.
 PERSON_H = 72   # (Jordan's pick: about 1.3 tiles; SoulSilver's and Platinum's people at exactly 3x)
-SET_ADULT = (("hg_", 24), ("pt_", 24), ("b2_", 28), ("fr_", 20), ("em_", 20), ("oi_", 20), ("trchar", 40), ("NPC ", 40), ("orre_", 40))
+SET_ADULT = (("hg_", 24), ("pt_", 24), ("b2_", 28), ("w1_", 28), ("fr_", 20), ("em_", 20), ("oi_", 20), ("trchar", 40), ("NPC ", 40), ("orre_", 40))
 
 
 # Live 3D (11-23, Johto: people stood 1.5x too tall in 3D once they were 72 px on the map): the 3D view sizes a figure by its

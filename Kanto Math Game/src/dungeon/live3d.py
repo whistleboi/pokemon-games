@@ -118,8 +118,9 @@ def _context():
     return _CTX["ctx"]
 
 
-def has_scene(game, zone):
-    return os.path.exists(os.path.join(game.assets.assets_dir or "assets", "b2_3d", "%d.npz" % int(zone)))
+def has_scene(game, zone, kind="b2"):
+    """kind: "b2" Black 2's scenes (assets/b2_3d), "w1" Pokemon White's - Unova two years ago, the Memory Link (assets/w1_3d, 11-25)."""
+    return os.path.exists(os.path.join(game.assets.assets_dir or "assets", kind + "_3d", "%d.npz" % int(zone)))
 
 
 def _water(rgba, verts):
@@ -649,7 +650,7 @@ def prop(game, name):
     return _SCENES[key]
 
 
-def season_file(game, zone, season=None):
+def season_file(game, zone, season=None, kind="b2"):
     """Black 2's season colours (11-25, Unova's roadmap): an outdoor zone's own texture set for the season
     (kanto_handoff/unova_map_tools/export3d.py --season: <zone>_summer / _autumn / _winter.npz; spring is the plain file).
     The path for today's season (seasons.current_season), else None (no seasonal set: the plain scene)."""
@@ -657,17 +658,19 @@ def season_file(game, zone, season=None):
     s = str(season or seasons.current_season()).lower()
     if s == "spring":
         return None
-    path = os.path.join(game.assets.assets_dir or "assets", "b2_3d", "%d_%s.npz" % (int(zone), s))
+    path = os.path.join(game.assets.assets_dir or "assets", kind + "_3d", "%d_%s.npz" % (int(zone), s))
     return path if os.path.exists(path) else None
 
 
-def scene(game, zone, season=None):
+def scene(game, zone, season=None, kind="b2"):
     key = int(zone)
-    own = season_file(game, key, season)
+    own = season_file(game, key, season, kind)
     ck = (key, own) if own else key
+    if kind != "b2":   # (White's zone numbers are Black 2's own: kept apart)
+        ck = (kind, ck)
     if ck not in _SCENES:
-        _SCENES[ck] = Scene(own) if own else (Scene(os.path.join(game.assets.assets_dir or "assets", "b2_3d", "%d.npz" % key))
-                                              if has_scene(game, key) else None)
+        _SCENES[ck] = Scene(own) if own else (Scene(os.path.join(game.assets.assets_dir or "assets", kind + "_3d", "%d.npz" % key))
+                                              if has_scene(game, key, kind) else None)
     return _SCENES[ck]
 
 
@@ -678,8 +681,9 @@ def scene_of(game, pic, at=None, screen=False):
     kanto_handoff/sinnoh_map_tools/pexport3d.py, the same format), moved by the map's crop of its zone ("at")."""
     pic = str(pic or "")
     name = os.path.splitext(os.path.basename(pic))[0]
-    if pic.startswith("b2_ground/") and name.isdigit():
-        return scene(game, int(name)) if has_scene(game, int(name)) else None
+    if pic.startswith(("b2_ground/", "w1_ground/")) and name.isdigit():   # (w1: Pokemon White's, Unova two years ago; 11-25)
+        kind = pic[:2]
+        return scene(game, int(name), kind=kind) if has_scene(game, int(name), kind) else None
     if pic.startswith(("ss_ground/", "pt_ground/")) and name:
         at = "grid" if screen else (int(at[0]), int(at[1])) if at else (0, 0)   # (screen: a room whose grid was moved, Scene.wz)
         kind = pic[:2]   # ("ss" SoulSilver, "pt" Platinum: the same DS format)

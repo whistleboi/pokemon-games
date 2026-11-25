@@ -2491,7 +2491,7 @@ class WalkTownState(TownWalkUps, CityState):
         if getattr(self, "_live_key", None) == key:
             return self._live_got
         self._live_key, self._live_got = key, None
-        if not pic.startswith(("b2_ground/", "ss_ground/", "pt_ground/")):   # (pt: Platinum, 11-23)
+        if not pic.startswith(("b2_ground/", "w1_ground/", "ss_ground/", "pt_ground/")):   # (pt: Platinum, 11-23; w1: Pokemon White, 11-25)
             return None
         try:   # (any trouble with the card or its libraries: the baked picture, never a crash)
             from src.dungeon import live3d

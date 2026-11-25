@@ -28,6 +28,9 @@ def fly_ok(game, key):
     """Can Fly take you there (Jordan 11-17, set during Orange; every region 11-18): a place with a Pokemon Center, or
     the region's home town (every game lets you fly home), or a Fly island (Navel Rock, Birth Island)."""
     data = (game.loader.area_data.get("STORY_PROGRESSION", {}) or {}).get(key) or {}
+    here = (game.loader.area_data.get("STORY_PROGRESSION", {}) or {}).get(game.story_manager.current_area_key) or {}
+    if (data.get("era") or "") != (here.get("era") or ""):   # (Unova two years ago, the Memory Link: Fly stays in the era you're
+        return False                                        #  in - you go back the way you came; 11-25)
     if data.get("fly_island"):
         return True
     region = str(data.get("region") or "KANTO").upper()
