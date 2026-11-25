@@ -153,6 +153,10 @@ check(flags.get("b2_opelucid_ice") and "DNA Splicers" in heard(), "the ice won't
 fz = ope["story_maps"][1]["map"]
 grunts = [c for o in fz["people"] for c in _opts(o) if isinstance(c, dict) and str(c.get("event", {}).get("flag", "")).startswith("b2_ope_grunt")]
 check(len(grunts) == 3 and all(c.get("condition") == ["b2_opelucid_ice"] for c in grunts), "three Grunts to drive out")
+_on = {o.get("event", {}).get("flag") for o in town("OPELUCID_CITY", (34, 33)).people.values()
+       for o in o.get("any", [o]) if isinstance(o.get("event"), dict)}
+check({"b2_ope_grunt_1", "b2_ope_grunt_2", "b2_ope_grunt_3", "b2_opelucid_zinzolin"} <= _on,
+      f"...all three stand in the frozen city, and Zinzolin (11-25: the file's Drayden on the Gym's door cost one; {sorted(f for f in _on if f)})")
 for k in (1, 2, 3):
     flags["b2_ope_grunt_%d" % k] = True
 zin = [c for o in fz["people"] for c in _opts(o) if isinstance(c, dict) and c.get("text") == "Zinzolin"]
@@ -171,6 +175,9 @@ check(flags.get("b2_opelucid_shadow"), "the Shadow Triad beaten")
 settle(1500)   # (Cheren's call plays as soon as the battle's over: you're by the gate, in its zone)
 check(flags.get("b2_opelucid_cheren") and "Humilau" in heard(), f"Cheren's call: Team Plasma is near Humilau ({where()})")
 check("b2_m39" in mains(), f"the Journal: to Humilau ({mains()})")
+st = town("OPELUCID_CITY", (63, 47), "gate_e")   # (11-25, the Journal's PT_FULL: the old menu's "Route 11 after the Champion" shut it)
+check(getattr(st, "room", None) == "gate_e" and st._shown(st._travel_option("UNOVA_ROUTE_11") or {"condition": "never"}),
+      "frozen, the east gate still leads on to Route 11 (the way to Humilau: Route 11, Village Bridge, Route 12, Lacunosa, Undella)")
 
 print("7) White 2")
 flags["unova_version"] = "WHITE_2"

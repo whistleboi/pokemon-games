@@ -901,6 +901,7 @@ def go(goal, why=""):
     "arrived" (stood on it or walked into it), "left" (the walk onto it took you somewhere else: a way out),
     "moved" (something on the way took you elsewhere), "nopath", "gaveup"."""
     L0, n, blocked, fails, replans = loc(), 0, set(), collections.Counter(), 0
+    waited = False
     goal = tuple(goal)
     if getattr(g.current_state, "gusts", None) and not _GUST_IN["on"]:
         _gust_hops(goal, why)   # (Mistralton Gym: shelter to shelter first)
@@ -912,6 +913,14 @@ def go(goal, why=""):
         if path is None:
             path = route(st, goal, True, blocked)
         if path is None:
+            if not waited:   # (a pad, a lift, a scene about to carry you: let it, then plan from where it leaves you)
+                waited = True
+                for _w in range(60):
+                    if not is_map(g.current_state):
+                        break
+                    g.current_state.update(); g.current_state.draw(); STATE["frames"] += 1
+                settle()
+                continue
             return "nopath", n
         if not path:
             return "arrived", n
