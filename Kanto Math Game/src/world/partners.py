@@ -91,7 +91,7 @@ def partner_for(game, area, opt):
     return (name, got[0]) if name else None
 
 
-def pick_spot(home, free, start=None):
+def pick_spot(home, free, start=None, ground=None):
     """Where a partner stands beside home: one of its four sides that free(t) allows, never the owner's last side you can
     walk up to (11-24, Hoenn: Maxie at the Space Center and Tate in Mossdeep Gym each had one open side, and their
     partner took it - no battle). A side that is a dead end (nothing free round it but the owner) is taken first; a side
@@ -107,7 +107,31 @@ def pick_spot(home, free, start=None):
     nook = [t for t in cands if not around(t)]
     if nook:
         return nook[0]
-    return cands[0] if len(cands) >= 2 else None
+    # never a tile the way into a room runs through (11-24, Orre: Ein's Golbat stood in the one gap into his room in the
+    # Shadow Lab, and nobody could reach Ein): the tiles round it must still join up without it
+    # (ground: any tile the way could run over - a shut door or a barrier, someone standing there - else free)
+    g = ground or free
+    rim = lambda t: [n for n in ((t[0] + 1, t[1]), (t[0] - 1, t[1]), (t[0], t[1] + 1), (t[0], t[1] - 1)) if n != tuple(home) and g(n)]
+    open_ = [t for t in cands if _joined(rim(t), g, {t, tuple(home)})]
+    if len(cands) < 2:
+        return None
+    return open_[0] if open_ else None
+
+
+def _joined(tiles, free, shut, limit=900):
+    """True when every tile of tiles can reach the others over free tiles, never through shut (a search of up to limit
+    tiles; a bigger open space counts as joined)."""
+    if len(tiles) < 2:
+        return True
+    want, seen, todo = set(tiles[1:]), {tiles[0]}, [tiles[0]]
+    while todo and want and len(seen) < limit:
+        x, y = todo.pop()
+        for n in ((x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)):
+            if n not in seen and n not in shut and free(n):
+                seen.add(n)
+                want.discard(n)
+                todo.append(n)
+    return not want or len(seen) >= limit
 
 
 def line(owner, species):

@@ -82,12 +82,23 @@ co = walk_town("NIMBASA_CITY", None, room="coaster", play=False)
 _rides, _sw = co._guide_rides("coaster")
 for _f in _sw.values():
     story.story_flags.pop(_f, None)
-co.player = (30, 41)
+co.player = (14, 44)
 check(co._guide_walk({("coaster", (28, 5))}) is None, "Nimbasa's coaster: with the switches as they start, no walk reaches its back room")
-_hit = co._guide_toward({("coaster", (28, 5))}, "Elesa")
-check(_hit and _hit[1] == "Switch" and _hit[0] in _sw, f"so the marker points at the switch to press first ({_hit})")
-check(any(co._guide_walk({("coaster", (28, 5))}, frozenset(c)) for n in range(1, 4) for c in itertools.combinations(sorted(set(_sw.values())), n)),
-      "and some run of switches lets the cars carry you there")
+_seen = []
+for _i in range(30):   # (follow the marker from the entrance: ride where it says Ride, press where it says Switch)
+    _hit = co._guide_toward({("coaster", (28, 5))}, "Elesa")
+    if not _hit or _hit[1] == "Elesa":
+        break
+    _seen.append(_hit[1])
+    if _hit[1] == "Ride":
+        co.player = next(l for c, l in _rides[_hit[0]] if co._ride_ok(c, frozenset()))
+    elif _hit[1] == "Switch":
+        co.player = _hit[0]
+        story.story_flags[_sw[_hit[0]]] = not story.story_flags.get(_sw[_hit[0]])
+    else:
+        co.player = _hit[0]
+check(_hit and _hit[1] == "Elesa" and "Switch" in _seen and "Ride" in _seen,
+      f"from the entrance, the marker's rides and switches lead to the back room ({_seen}, then {_hit})")
 lob = walk_town("DRIFTVEIL_CITY", None, room="gym_lobby", play=False)
 _hit = lob._guide_toward({("gym", (10, 87))}, "Clay")
 check(_hit and _hit[1].startswith("Lift to") and (getattr(lob, "_lift_plan", None) or [None, None])[1] == "gym",
