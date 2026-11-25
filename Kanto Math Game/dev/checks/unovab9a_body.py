@@ -202,6 +202,6 @@ check(any(b.get("until", {}).get("flag_condition") == "b2_seaside_rocky" for b i
 flags["b2_seaside_crustle"] = True
 check("b2_m43" in mains(), f"the Journal: the ship off Route 21 ({mains()})")
 
-print("\n##### %d failures" % len(fails))
 for f_ in fails:
     print("  -", f_)
+print(f"##### {len(fails)} failures")

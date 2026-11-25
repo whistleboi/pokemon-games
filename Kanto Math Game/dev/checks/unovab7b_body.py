@@ -176,6 +176,6 @@ jel = [c for o in tmaps["UNDELLA_BAY"]["people"] for c in _opts(o) if isinstance
 check(len(jel) == 2 and {tuple(c["condition"]) for c in jel} == {("weekday:mon", "unova_version:BLACK_2"), ("weekday:thu", "unova_version:WHITE_2")},
       "the bay's Jellicent: Mondays in Black 2, Thursdays in White 2")
 
-print("\n##### %d failures" % len(fails))
 for f_ in fails:
     print("  -", f_)
+print(f"##### {len(fails)} failures")

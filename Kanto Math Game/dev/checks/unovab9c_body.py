@@ -274,6 +274,6 @@ got = [int(p.id) for p in story.player_team[n0:]]
 check(flags.get("b2_juniper_starters"), "Juniper gives both at once")
 check(sorted(got) == [498, 501], f"Snivy's Trainer gets Tepig and Oshawott ({got})")
 
-print("\n##### %d failures" % len(fails))
 for f_ in fails:
     print("  -", f_)
+print(f"##### {len(fails)} failures")
