@@ -1,7 +1,7 @@
 # Unova batch 10a (11-24): Route 23 (its houses, the boulders, the fake items), Victory Road's entrance (N's HM05 Waterfall,
 # the Badge Check Gate, the Center) and its caves in both versions' people, doors paired as Black 2's warps, Hugh in the
 # tunnel (TM126 Thunderbolt).
-#   bash dev/checks/run.sh unovab10a
+#   bash dev/checks/run.sh unova_b10a
 import json
 from src.states.overworld import CityState, PlayState
 from src.states.overworld import walk_town as WT
