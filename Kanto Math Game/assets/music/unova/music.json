@@ -141,6 +141,7 @@
    "SUMMER": "sw_r_22_su",
    "WINTER": "sw_r_22_wi"
   },
+  "UNOVA_ROUTE_23": "sw_r_23",
   "UNOVA_ROUTE_4": {
    "AUTUMN": "r_c_au",
    "SPRING": "r_c_sp",
@@ -171,6 +172,15 @@
    "SUMMER": "r_d_su",
    "WINTER": "r_d_wi"
   },
+  "VICTORY_ROAD_2F_BACK": "d_champroad",
+  "VICTORY_ROAD_3F": "d_champroad",
+  "VICTORY_ROAD_CAVE_1F": "d_champroad",
+  "VICTORY_ROAD_CAVE_2F": "d_champroad",
+  "VICTORY_ROAD_GROVE": "d_champroad",
+  "VICTORY_ROAD_MOUNTAINSIDE": "d_champroad",
+  "VICTORY_ROAD_RIVER": "d_champroad",
+  "VICTORY_ROAD_TUNNEL": "d_champroad",
+  "VICTORY_ROAD_UNOVA": "d_champroad",
   "VILLAGE_BRIDGE": "h_04",
   "VIRBANK_CITY": "sw_c_13",
   "VIRBANK_COMPLEX": "sw_d_23",
@@ -245,6 +255,7 @@
   "UNOVA_ROUTE_13:grotto": "kemonomichi",
   "UNOVA_ROUTE_13:grotto2": "kemonomichi",
   "UNOVA_ROUTE_16:bridge_gate": "gate",
+  "UNOVA_ROUTE_23:grotto": "kemonomichi",
   "UNOVA_ROUTE_5:grotto": "kemonomichi",
   "UNOVA_ROUTE_6:grotto": "kemonomichi",
   "UNOVA_ROUTE_6:grotto2": "kemonomichi",

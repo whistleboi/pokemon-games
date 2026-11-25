@@ -38,7 +38,10 @@ PLACES = {"ASPERTIA_CITY": 427, "UNOVA_ROUTE_19": 437, "UNOVA_ROUTE_20": 446, "F
           "UNOVA_ROUTE_12": 368, "VILLAGE_BRIDGE": 255, "UNOVA_ROUTE_11": 365,   # (batch 8a)
           "UNOVA_ROUTE_9": 348,   # (batch 8b)
           "HUMILAU_CITY": 465, "UNOVA_ROUTE_22": 474, "UNOVA_ROUTE_21": 463, "SEASIDE_CAVE": 515, "SEASIDE_CAVE_B1F": 516,   # (batch 9a)
-          "GIANT_CHASM": 231, "GIANT_CHASM_FOREST": 232, "GIANT_CHASM_CAVE": 234}   # (batch 9b-2)   # (batch 7a: both versions' chambers share the tables)
+          "GIANT_CHASM": 231, "GIANT_CHASM_FOREST": 232, "GIANT_CHASM_CAVE": 234,   # (batch 9b-2)
+          "UNOVA_ROUTE_23": 475, "VICTORY_ROAD_UNOVA": 573, "VICTORY_ROAD_CAVE_1F": 587, "VICTORY_ROAD_GROVE": 588,
+          "VICTORY_ROAD_RIVER": 589, "VICTORY_ROAD_CAVE_2F": 590, "VICTORY_ROAD_2F_BACK": 591, "VICTORY_ROAD_MOUNTAINSIDE": 592,
+          "VICTORY_ROAD_3F": 593, "VICTORY_ROAD_TUNNEL": 228}   # (batch 10a)   # (batch 7a: both versions' chambers share the tables)
 P = os.path.join(GAME, "assets", "unova_area_data.json")
 NL = "\r\n"
 

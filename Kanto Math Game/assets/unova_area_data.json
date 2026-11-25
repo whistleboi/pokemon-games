@@ -2,6 +2,70 @@
   "UNOVA_OLD_ROD_POOL_PERCENTAGES": {"550": 40, "118": 30, "129": 30},
   "UNOVA_GOOD_ROD_POOL_PERCENTAGES": {"550": 35, "118": 25, "592": 25, "339": 15},
   "UNOVA_SUPER_ROD_POOL_PERCENTAGES": {"550": 25, "592": 25, "594": 15, "119": 15, "223": 10, "90": 10},
+  "VICTORY_ROAD_TUNNEL_PERCENTAGES": {
+    "525": 100
+  },
+  "VICTORY_ROAD_3F_PERCENTAGES": {
+    "621": 80,
+    "634": 20
+  },
+  "VICTORY_ROAD_MOUNTAINSIDE_PERCENTAGES": {
+    "533": 70,
+    "538": 30
+  },
+  "VICTORY_ROAD_2F_BACK_SUPER_ROD_PERCENTAGES": {
+    "60": 70,
+    "550": 30
+  },
+  "VICTORY_ROAD_2F_BACK_SURF_PERCENTAGES": {
+    "550": 70,
+    "183": 30
+  },
+  "VICTORY_ROAD_2F_BACK_PERCENTAGES": {
+    "525": 80,
+    "95": 20
+  },
+  "VICTORY_ROAD_CAVE_2F_PERCENTAGES": {
+    "525": 80,
+    "95": 20
+  },
+  "VICTORY_ROAD_RIVER_SUPER_ROD_PERCENTAGES": {
+    "60": 70,
+    "550": 30
+  },
+  "VICTORY_ROAD_RIVER_SURF_PERCENTAGES": {
+    "550": 70,
+    "418": 30
+  },
+  "VICTORY_ROAD_RIVER_PERCENTAGES": {
+    "520": 80,
+    "334": 20
+  },
+  "VICTORY_ROAD_GROVE_PERCENTAGES": {
+    "546": 35,
+    "548": 35,
+    "315": 30
+  },
+  "VICTORY_ROAD_CAVE_1F_SUPER_ROD_PERCENTAGES": {
+    "60": 70,
+    "550": 30
+  },
+  "VICTORY_ROAD_CAVE_1F_SURF_PERCENTAGES": {
+    "550": 70,
+    "183": 30
+  },
+  "VICTORY_ROAD_CAVE_1F_PERCENTAGES": {
+    "354": 70,
+    "623": 30
+  },
+  "UNOVA_ROUTE_23_SUPER_ROD_PERCENTAGES": {
+    "60": 70,
+    "550": 30
+  },
+  "UNOVA_ROUTE_23_SURF_PERCENTAGES": {
+    "550": 70,
+    "418": 30
+  },
   "GIANT_CHASM_CAVE_SUPER_ROD_PERCENTAGES": {
     "60": 70,
     "550": 30
@@ -750,12 +814,12 @@
         {
           "text": "Victory Road",
           "action": "EXIT",
-          "target_area": "VICTORY_ROAD_UNOVA",
+          "target_area": "VICTORY_ROAD_MOUNTAINSIDE",
           "condition": "can_exit",
           "color": "RED"
         }
       ],
-      "next_area": "VICTORY_ROAD_UNOVA"
+      "next_area": "VICTORY_ROAD_MOUNTAINSIDE"
     },
     "VILLAGE_BRIDGE": {
       "area_type": "wild_route",
@@ -15714,50 +15778,3171 @@
       ],
       "route_menu": [{"text": "BATTLE PLASMA SAGE", "action": "TRAINER", "condition": "has_trainers", "color": "GOLD"}, {"text": "CONFRONT N", "action": "EVENT", "color": "GOLD", "flag_condition": "not defeated_n_castle", "event": {"requires": ["beat_alder", "plasma_sages_defeated"], "fail": ["The Seven Sages block the way to N's throne room. Defeat the Plasma Sages first!"], "lines": ["N: {player_name}. You became Champion. But my castle stands.", "Zekrom answers to me — the hero of ideals.", "Face me. And if your truth is real — prove it here."], "battle": {"name": "N", "class": "PKMN_TRAINER", "sprite": "n.png", "team": [644, 584, 565, 601, 571, 598], "rewards": {"balls": 10}, "is_boss_battle": true, "dialogue": {"player_won": ["N: You won. Your truth... it burned through everything I prepared.", "Maybe... ideals and truth don't have to be enemies.", "I need time. Time to understand what I missed."], "player_lost": ["N: Ideals that are unwavering — that is what wins.", "Pokémon liberation will come to Unova."]}}, "flag": "defeated_n_castle"}}, {"text": "STOP GHETSIS", "action": "EVENT", "color": "GOLD", "flag_condition": "not beat_unova_champion", "event": {"requires": ["defeated_n_castle"], "fail": ["N is still waiting in his throne room."], "lines": ["Ghetsis: Hahaha. So N lost to a child.", "No matter. N was never the point.", "I will take that Legendary Pokémon — and with it, I will rule this world!", "No one can stop me now. ABSOLUTELY NO ONE!"], "battle": {"name": "Ghetsis", "class": "ROCKET_LEADER", "sprite": "ghetsis.png", "team": [563, 626, 537, 625, 604, 635], "rewards": {"balls": 15, "MASTER_BALL": 1}, "is_boss_battle": true, "dialogue": {"player_won": ["Ghetsis: Im...possible. A child...defeated me?!", "Looker: Stand down, Ghetsis. International Police — it's over.", "You received the MASTER BALL!"], "player_lost": ["Ghetsis: Pathetic. Not even worthy of witnessing my new world."]}, "movesets": {"563": ["SHADOW-BALL", "PROTECT", "PSYCHIC", "TOXIC"], "626": ["HEAD-CHARGE", "WILD-CHARGE", "EARTHQUAKE", "POISON-JAB"], "537": ["MUDDY-WATER", "RAIN-DANCE", "EARTHQUAKE", "SLUDGE-WAVE"], "625": ["NIGHT-SLASH", "STONE-EDGE", "X-SCISSOR", "METAL-BURST"], "604": ["WILD-CHARGE", "FLAMETHROWER", "ACROBATICS", "CRUNCH"], "635": ["DRAGON-PULSE", "FIRE-BLAST", "SURF", "FOCUS-BLAST"]}}, "flag": "beat_unova_champion"}}, {"text": "Pokémon League", "action": "EXIT", "target_area": "UNOVA_POKEMON_LEAGUE", "condition": "can_exit", "color": "RED"}]
     },
-    "VICTORY_ROAD_UNOVA": {
+    "VICTORY_ROAD_UNOVA": {"area_type": "dungeon", "route_name": "Victory Road", "region": "UNOVA", "battle_type": "cave", "wild_pool_percentages": "UNOVA_VICTORY_ROAD_PERCENTAGES", "min_rounds": 3, "backgrounds": {"main": "victory_road_unova.png", "battle": "battle_victory_road_unova.png"}, "trainer_pool": [], "route_menu": []},
+    "VICTORY_ROAD_CAVE_1F": {
       "area_type": "dungeon",
-      "route_name": "Victory Road",
+      "route_name": "Victory Road Cave 1F",
       "region": "UNOVA",
       "battle_type": "cave",
-      "wild_pool_percentages": "UNOVA_VICTORY_ROAD_PERCENTAGES",
-      "min_rounds": 3,
-      "backgrounds": { "main": "victory_road_unova.png", "battle": "battle_victory_road_unova.png" },
+      "wild_pool_percentages": "VICTORY_ROAD_CAVE_1F_PERCENTAGES",
+      "min_rounds": 1,
+      "backgrounds": {
+        "main": "victory_road_unova.png",
+        "battle": "battle_victory_road_unova.png"
+      },
       "trainer_pool": [
+        {
+          "name": "Veteran Claude",
+          "class": "VETERAN",
+          "sprite": "b2_veteran.png",
+          "team": [
+            628,
+            565
+          ],
+          "levels": [
+            55,
+            55
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 614,
+          "movesets": {
+            "628": [
+              "CRUSH-CLAW",
+              "SUPERPOWER",
+              "ROCK-SLIDE",
+              "U-TURN"
+            ],
+            "565": [
+              "AQUA-TAIL",
+              "SMACK-DOWN",
+              "ICE-BEAM",
+              "SHELL-SMASH"
+            ]
+          }
+        },
+        {
+          "name": "Veteran Cecile",
+          "class": "VETERAN",
+          "sprite": "b2_veteran.png",
+          "team": [
+            630,
+            567
+          ],
+          "levels": [
+            55,
+            55
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 615,
+          "movesets": {
+            "630": [
+              "PUNISHMENT",
+              "BONE-RUSH",
+              "SWAGGER",
+              "U-TURN"
+            ],
+            "567": [
+              "ACROBATICS",
+              "U-TURN",
+              "CRUNCH",
+              "SANDSTORM"
+            ]
+          }
+        },
+        {
+          "name": "Ace Trainer Billy",
+          "class": "ACE_TRAINER",
+          "sprite": "ace_trainer.png",
+          "team": [
+            623,
+            561
+          ],
+          "levels": [
+            55,
+            55
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 594,
+          "movesets": {
+            "623": [
+              "SHADOW-PUNCH",
+              "HEAVY-SLAM",
+              "MEGA-PUNCH",
+              "BULLDOZE"
+            ],
+            "561": [
+              "AIR-SLASH",
+              "PSYCHIC",
+              "ICE-BEAM",
+              "COSMIC-POWER"
+            ]
+          }
+        },
+        {
+          "name": "Ace Trainer Jamie",
+          "class": "ACE_TRAINER",
+          "sprite": "ace_trainer.png",
+          "team": [
+            426,
+            344
+          ],
+          "levels": [
+            55,
+            55
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 596,
+          "movesets": {
+            "426": [
+              "SHADOW-BALL",
+              "PAYBACK",
+              "BATON-PASS",
+              "STOCKPILE"
+            ],
+            "344": [
+              "EARTH-POWER",
+              "PSYCHIC",
+              "SHADOW-BALL",
+              "COSMIC-POWER"
+            ]
+          }
+        },
+        {
+          "name": "Psychic Alia",
+          "class": "PSYCHIC",
+          "sprite": "b2_psychic_f.png",
+          "team": [
+            608,
+            518
+          ],
+          "levels": [
+            54,
+            54
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 595,
+          "movesets": {
+            "608": [
+              "SHADOW-BALL",
+              "FLAME-BURST",
+              "PSYCHIC",
+              "CONFUSE-RAY"
+            ],
+            "518": [
+              "PSYCHIC",
+              "CHARGE-BEAM",
+              "SHADOW-BALL",
+              "CALM-MIND"
+            ]
+          }
+        },
+        {
+          "name": "Psychic Al",
+          "class": "PSYCHIC",
+          "sprite": "b2_psychic_m.png",
+          "team": [
+            375,
+            563
+          ],
+          "levels": [
+            54,
+            54
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 597,
+          "movesets": {
+            "375": [
+              "PSYCHIC",
+              "METEOR-MASH",
+              "BRICK-BREAK",
+              "AGILITY"
+            ],
+            "563": [
+              "SHADOW-BALL",
+              "GRASS-KNOT",
+              "PSYCHIC",
+              "CALM-MIND"
+            ]
+          }
+        }
+      ],
+      "route_menu": [],
+      "wild_tables": {
+        "ALL": {
+          "grass": [
+            [
+              354,
+              0,
+              20,
+              47,
+              47
+            ],
+            [
+              354,
+              0,
+              20,
+              47,
+              47
+            ],
+            [
+              354,
+              0,
+              10,
+              48,
+              48
+            ],
+            [
+              623,
+              0,
+              10,
+              48,
+              48
+            ],
+            [
+              354,
+              0,
+              10,
+              49,
+              49
+            ],
+            [
+              623,
+              0,
+              10,
+              49,
+              49
+            ],
+            [
+              354,
+              0,
+              5,
+              50,
+              50
+            ],
+            [
+              623,
+              0,
+              5,
+              50,
+              50
+            ],
+            [
+              354,
+              0,
+              4,
+              50,
+              50
+            ],
+            [
+              623,
+              0,
+              4,
+              50,
+              50
+            ],
+            [
+              354,
+              0,
+              1,
+              50,
+              50
+            ],
+            [
+              623,
+              0,
+              1,
+              50,
+              50
+            ]
+          ],
+          "surf": [
+            [
+              550,
+              0,
+              60,
+              35,
+              50
+            ],
+            [
+              183,
+              0,
+              30,
+              35,
+              50
+            ],
+            [
+              550,
+              0,
+              5,
+              40,
+              50
+            ],
+            [
+              550,
+              0,
+              4,
+              40,
+              50
+            ],
+            [
+              550,
+              0,
+              1,
+              40,
+              50
+            ]
+          ],
+          "ripple": [
+            [
+              183,
+              0,
+              60,
+              35,
+              50
+            ],
+            [
+              550,
+              1,
+              30,
+              35,
+              50
+            ],
+            [
+              550,
+              1,
+              5,
+              40,
+              50
+            ],
+            [
+              184,
+              0,
+              4,
+              40,
+              50
+            ],
+            [
+              184,
+              0,
+              1,
+              40,
+              50
+            ]
+          ],
+          "fish": [
+            [
+              60,
+              0,
+              60,
+              40,
+              55
+            ],
+            [
+              550,
+              0,
+              30,
+              40,
+              55
+            ],
+            [
+              60,
+              0,
+              5,
+              50,
+              55
+            ],
+            [
+              60,
+              0,
+              4,
+              50,
+              55
+            ],
+            [
+              60,
+              0,
+              1,
+              50,
+              55
+            ]
+          ],
+          "fish_ripple": [
+            [
+              61,
+              0,
+              60,
+              40,
+              60
+            ],
+            [
+              550,
+              1,
+              30,
+              40,
+              60
+            ],
+            [
+              61,
+              0,
+              5,
+              50,
+              60
+            ],
+            [
+              62,
+              0,
+              4,
+              50,
+              60
+            ],
+            [
+              62,
+              0,
+              1,
+              50,
+              60
+            ]
+          ]
+        }
+      },
+      "wild_levels": {
+        "land": [
+          47,
+          50
+        ]
+      },
+      "surf_pool_percentages": "VICTORY_ROAD_CAVE_1F_SURF_PERCENTAGES"
+    },
+    "VICTORY_ROAD_GROVE": {
+      "area_type": "dungeon",
+      "route_name": "Victory Road Grove",
+      "region": "UNOVA",
+      "battle_type": "grass",
+      "wild_pool_percentages": "VICTORY_ROAD_GROVE_PERCENTAGES",
+      "min_rounds": 1,
+      "backgrounds": {
+        "main": "victory_road_unova.png",
+        "battle": "battle_victory_road_unova.png"
+      },
+      "trainer_pool": [
+        {
+          "name": "Ace Trainer Beckett",
+          "class": "ACE_TRAINER",
+          "sprite": "ace_trainer.png",
+          "team": [
+            547,
+            521
+          ],
+          "levels": [
+            55,
+            55
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 598,
+          "movesets": {
+            "547": [
+              "GIGA-DRAIN",
+              "TAILWIND",
+              "POISONPOWDER",
+              "U-TURN"
+            ],
+            "521": [
+              "AIR-SLASH",
+              "QUICK-ATTACK",
+              "ROOST",
+              "FEATHERDANCE"
+            ]
+          }
+        },
+        {
+          "name": "Ace Trainer Shelly",
+          "class": "ACE_TRAINER",
+          "sprite": "ace_trainer.png",
+          "team": [
+            528,
+            549
+          ],
+          "levels": [
+            55,
+            55
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 599,
+          "movesets": {
+            "528": [
+              "PSYCHIC",
+              "ACROBATICS",
+              "ENERGY-BALL",
+              "U-TURN"
+            ],
+            "549": [
+              "PETAL-DANCE",
+              "QUIVER-DANCE",
+              "TEETER-DANCE",
+              "SYNTHESIS"
+            ]
+          }
+        },
+        {
+          "name": "Ace Trainer Chandra",
+          "class": "ACE_TRAINER",
+          "sprite": "ace_trainer.png",
+          "team": [
+            555,
+            465
+          ],
+          "levels": [
+            55,
+            55
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 611,
+          "movesets": {
+            "555": [
+              "FLARE-BLITZ",
+              "SUPERPOWER",
+              "THRASH",
+              "ROCK-SLIDE"
+            ],
+            "465": [
+              "POWER-WHIP",
+              "BRICK-BREAK",
+              "SLUDGE-BOMB",
+              "ROCK-TOMB"
+            ]
+          }
+        }
+      ],
+      "route_menu": [],
+      "wild_tables": {
+        "ALL": {
+          "grass": [
+            [
+              546,
+              0,
+              10.0,
+              47,
+              47
+            ],
+            [
+              548,
+              0,
+              10.0,
+              47,
+              47
+            ],
+            [
+              546,
+              0,
+              10.0,
+              47,
+              47
+            ],
+            [
+              548,
+              0,
+              10.0,
+              47,
+              47
+            ],
+            [
+              546,
+              0,
+              5.0,
+              48,
+              48
+            ],
+            [
+              548,
+              0,
+              5.0,
+              48,
+              48
+            ],
+            [
+              315,
+              0,
+              10,
+              48,
+              48
+            ],
+            [
+              546,
+              0,
+              5.0,
+              49,
+              49
+            ],
+            [
+              548,
+              0,
+              5.0,
+              49,
+              49
+            ],
+            [
+              315,
+              0,
+              10,
+              49,
+              49
+            ],
+            [
+              546,
+              0,
+              2.5,
+              50,
+              50
+            ],
+            [
+              548,
+              0,
+              2.5,
+              50,
+              50
+            ],
+            [
+              315,
+              0,
+              5,
+              50,
+              50
+            ],
+            [
+              546,
+              0,
+              2.0,
+              50,
+              50
+            ],
+            [
+              548,
+              0,
+              2.0,
+              50,
+              50
+            ],
+            [
+              315,
+              0,
+              4,
+              50,
+              50
+            ],
+            [
+              546,
+              0,
+              0.5,
+              50,
+              50
+            ],
+            [
+              548,
+              0,
+              0.5,
+              50,
+              50
+            ],
+            [
+              315,
+              0,
+              1,
+              50,
+              50
+            ]
+          ],
+          "dark": [
+            [
+              546,
+              0,
+              10.0,
+              52,
+              52
+            ],
+            [
+              548,
+              0,
+              10.0,
+              52,
+              52
+            ],
+            [
+              546,
+              0,
+              10.0,
+              52,
+              52
+            ],
+            [
+              548,
+              0,
+              10.0,
+              52,
+              52
+            ],
+            [
+              546,
+              0,
+              5.0,
+              53,
+              53
+            ],
+            [
+              548,
+              0,
+              5.0,
+              53,
+              53
+            ],
+            [
+              315,
+              0,
+              10,
+              53,
+              53
+            ],
+            [
+              546,
+              0,
+              5.0,
+              54,
+              54
+            ],
+            [
+              548,
+              0,
+              5.0,
+              54,
+              54
+            ],
+            [
+              315,
+              0,
+              10,
+              54,
+              54
+            ],
+            [
+              546,
+              0,
+              2.5,
+              55,
+              55
+            ],
+            [
+              548,
+              0,
+              2.5,
+              55,
+              55
+            ],
+            [
+              315,
+              0,
+              5,
+              55,
+              55
+            ],
+            [
+              546,
+              0,
+              2.0,
+              55,
+              55
+            ],
+            [
+              548,
+              0,
+              2.0,
+              55,
+              55
+            ],
+            [
+              315,
+              0,
+              4,
+              55,
+              55
+            ],
+            [
+              546,
+              0,
+              0.5,
+              55,
+              55
+            ],
+            [
+              548,
+              0,
+              0.5,
+              55,
+              55
+            ],
+            [
+              315,
+              0,
+              1,
+              55,
+              55
+            ]
+          ],
+          "rustle": [
+            [
+              531,
+              0,
+              20,
+              47,
+              47
+            ],
+            [
+              531,
+              0,
+              20,
+              47,
+              47
+            ],
+            [
+              531,
+              0,
+              10,
+              48,
+              48
+            ],
+            [
+              531,
+              0,
+              10,
+              48,
+              48
+            ],
+            [
+              206,
+              0,
+              10,
+              49,
+              49
+            ],
+            [
+              531,
+              0,
+              10,
+              49,
+              49
+            ],
+            [
+              531,
+              0,
+              5,
+              50,
+              50
+            ],
+            [
+              531,
+              0,
+              5,
+              50,
+              50
+            ],
+            [
+              547,
+              0,
+              2.0,
+              50,
+              50
+            ],
+            [
+              549,
+              0,
+              2.0,
+              50,
+              50
+            ],
+            [
+              407,
+              0,
+              4,
+              50,
+              50
+            ],
+            [
+              547,
+              0,
+              0.5,
+              50,
+              50
+            ],
+            [
+              549,
+              0,
+              0.5,
+              50,
+              50
+            ],
+            [
+              407,
+              0,
+              1,
+              50,
+              50
+            ]
+          ]
+        }
+      },
+      "wild_levels": {
+        "land": [
+          47,
+          50
+        ]
+      }
+    },
+    "VICTORY_ROAD_RIVER": {
+      "area_type": "dungeon",
+      "route_name": "Victory Road River Valley",
+      "region": "UNOVA",
+      "battle_type": "grass",
+      "wild_pool_percentages": "VICTORY_ROAD_RIVER_PERCENTAGES",
+      "min_rounds": 1,
+      "backgrounds": {
+        "main": "victory_road_unova.png",
+        "battle": "battle_victory_road_unova.png"
+      },
+      "trainer_pool": [
+        {
+          "name": "Backpacker Mae",
+          "class": "BACKPACKER",
+          "sprite": "b2_backpacker_f.png",
+          "team": [
+            586
+          ],
+          "levels": [
+            54
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 613
+        },
+        {
+          "name": "Doctor Logan",
+          "class": "DOCTOR",
+          "sprite": "b2_doctor.png",
+          "team": [
+            36
+          ],
+          "levels": [
+            54
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 601
+        },
+        {
+          "name": "Ace Trainer Shelly",
+          "class": "ACE_TRAINER",
+          "sprite": "ace_trainer.png",
+          "team": [
+            528,
+            549
+          ],
+          "levels": [
+            55,
+            55
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 599,
+          "movesets": {
+            "528": [
+              "PSYCHIC",
+              "ACROBATICS",
+              "ENERGY-BALL",
+              "U-TURN"
+            ],
+            "549": [
+              "PETAL-DANCE",
+              "QUIVER-DANCE",
+              "TEETER-DANCE",
+              "SYNTHESIS"
+            ]
+          }
+        },
+        {
+          "name": "Ace Trainer Beckett",
+          "class": "ACE_TRAINER",
+          "sprite": "ace_trainer.png",
+          "team": [
+            547,
+            521
+          ],
+          "levels": [
+            55,
+            55
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 598,
+          "movesets": {
+            "547": [
+              "GIGA-DRAIN",
+              "TAILWIND",
+              "POISONPOWDER",
+              "U-TURN"
+            ],
+            "521": [
+              "AIR-SLASH",
+              "QUICK-ATTACK",
+              "ROOST",
+              "FEATHERDANCE"
+            ]
+          }
+        },
+        {
+          "name": "Veteran Cathy",
+          "class": "VETERAN",
+          "sprite": "b2_veteran.png",
+          "team": [
+            561,
+            169
+          ],
+          "levels": [
+            55,
+            55
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 600,
+          "movesets": {
+            "561": [
+              "PSYCHIC",
+              "AIR-SLASH",
+              "CHARGE-BEAM",
+              "HYPNOSIS"
+            ],
+            "169": [
+              "AIR-SLASH",
+              "POISON-FANG",
+              "SHADOW-BALL",
+              "X-SCISSOR"
+            ]
+          }
+        },
+        {
+          "name": "Ace Trainer Pierce",
+          "class": "ACE_TRAINER",
+          "sprite": "ace_trainer.png",
+          "team": [
+            581,
+            181
+          ],
+          "levels": [
+            55,
+            55
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 610,
+          "movesets": {
+            "581": [
+              "BRAVE-BIRD",
+              "SCALD",
+              "ROOST",
+              "RAIN-DANCE"
+            ],
+            "181": [
+              "THUNDER",
+              "BULLDOZE",
+              "BRICK-BREAK",
+              "COTTON-GUARD"
+            ]
+          }
+        },
+        {
+          "name": "Ace Trainer Chandra",
+          "class": "ACE_TRAINER",
+          "sprite": "ace_trainer.png",
+          "team": [
+            555,
+            465
+          ],
+          "levels": [
+            55,
+            55
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 611,
+          "movesets": {
+            "555": [
+              "FLARE-BLITZ",
+              "SUPERPOWER",
+              "THRASH",
+              "ROCK-SLIDE"
+            ],
+            "465": [
+              "POWER-WHIP",
+              "BRICK-BREAK",
+              "SLUDGE-BOMB",
+              "ROCK-TOMB"
+            ]
+          }
+        }
+      ],
+      "route_menu": [],
+      "wild_tables": {
+        "ALL": {
+          "grass": [
+            [
+              520,
+              0,
+              20,
+              47,
+              47
+            ],
+            [
+              520,
+              0,
+              20,
+              47,
+              47
+            ],
+            [
+              520,
+              0,
+              10,
+              48,
+              48
+            ],
+            [
+              520,
+              0,
+              10,
+              48,
+              48
+            ],
+            [
+              520,
+              0,
+              10,
+              49,
+              49
+            ],
+            [
+              334,
+              0,
+              10,
+              49,
+              49
+            ],
+            [
+              520,
+              0,
+              5,
+              50,
+              50
+            ],
+            [
+              334,
+              0,
+              5,
+              50,
+              50
+            ],
+            [
+              520,
+              0,
+              4,
+              50,
+              50
+            ],
+            [
+              334,
+              0,
+              4,
+              50,
+              50
+            ],
+            [
+              520,
+              0,
+              1,
+              50,
+              50
+            ],
+            [
+              334,
+              0,
+              1,
+              50,
+              50
+            ]
+          ],
+          "dark": [
+            [
+              520,
+              0,
+              20,
+              52,
+              52
+            ],
+            [
+              520,
+              0,
+              20,
+              52,
+              52
+            ],
+            [
+              520,
+              0,
+              10,
+              53,
+              53
+            ],
+            [
+              520,
+              0,
+              10,
+              53,
+              53
+            ],
+            [
+              520,
+              0,
+              10,
+              54,
+              54
+            ],
+            [
+              334,
+              0,
+              10,
+              54,
+              54
+            ],
+            [
+              520,
+              0,
+              5,
+              55,
+              55
+            ],
+            [
+              334,
+              0,
+              5,
+              55,
+              55
+            ],
+            [
+              520,
+              0,
+              4,
+              55,
+              55
+            ],
+            [
+              334,
+              0,
+              4,
+              55,
+              55
+            ],
+            [
+              520,
+              0,
+              1,
+              55,
+              55
+            ],
+            [
+              334,
+              0,
+              1,
+              55,
+              55
+            ]
+          ],
+          "rustle": [
+            [
+              531,
+              0,
+              20,
+              47,
+              47
+            ],
+            [
+              531,
+              0,
+              20,
+              47,
+              47
+            ],
+            [
+              531,
+              0,
+              10,
+              48,
+              48
+            ],
+            [
+              531,
+              0,
+              10,
+              48,
+              48
+            ],
+            [
+              206,
+              0,
+              10,
+              49,
+              49
+            ],
+            [
+              531,
+              0,
+              10,
+              49,
+              49
+            ],
+            [
+              531,
+              0,
+              5,
+              50,
+              50
+            ],
+            [
+              531,
+              0,
+              5,
+              50,
+              50
+            ],
+            [
+              531,
+              0,
+              4,
+              50,
+              50
+            ],
+            [
+              521,
+              0,
+              4,
+              50,
+              50
+            ],
+            [
+              531,
+              0,
+              1,
+              50,
+              50
+            ],
+            [
+              521,
+              0,
+              1,
+              50,
+              50
+            ]
+          ],
+          "surf": [
+            [
+              550,
+              0,
+              60,
+              35,
+              50
+            ],
+            [
+              418,
+              0,
+              30,
+              35,
+              50
+            ],
+            [
+              550,
+              0,
+              5,
+              40,
+              50
+            ],
+            [
+              550,
+              0,
+              4,
+              40,
+              50
+            ],
+            [
+              550,
+              0,
+              1,
+              40,
+              50
+            ]
+          ],
+          "ripple": [
+            [
+              418,
+              0,
+              60,
+              35,
+              50
+            ],
+            [
+              550,
+              1,
+              30,
+              35,
+              50
+            ],
+            [
+              419,
+              0,
+              5,
+              40,
+              50
+            ],
+            [
+              419,
+              0,
+              4,
+              40,
+              50
+            ],
+            [
+              419,
+              0,
+              1,
+              40,
+              50
+            ]
+          ],
+          "fish": [
+            [
+              60,
+              0,
+              60,
+              40,
+              60
+            ],
+            [
+              550,
+              0,
+              30,
+              40,
+              60
+            ],
+            [
+              60,
+              0,
+              5,
+              50,
+              70
+            ],
+            [
+              60,
+              0,
+              4,
+              50,
+              70
+            ],
+            [
+              60,
+              0,
+              1,
+              50,
+              70
+            ]
+          ],
+          "fish_ripple": [
+            [
+              61,
+              0,
+              60,
+              40,
+              60
+            ],
+            [
+              550,
+              1,
+              30,
+              40,
+              60
+            ],
+            [
+              61,
+              0,
+              5,
+              50,
+              70
+            ],
+            [
+              186,
+              0,
+              4,
+              50,
+              70
+            ],
+            [
+              186,
+              0,
+              1,
+              50,
+              70
+            ]
+          ]
+        }
+      },
+      "wild_levels": {
+        "land": [
+          47,
+          50
+        ]
+      },
+      "surf_pool_percentages": "VICTORY_ROAD_RIVER_SURF_PERCENTAGES"
+    },
+    "VICTORY_ROAD_CAVE_2F": {
+      "area_type": "dungeon",
+      "route_name": "Victory Road Cave 2F",
+      "region": "UNOVA",
+      "battle_type": "cave",
+      "wild_pool_percentages": "VICTORY_ROAD_CAVE_2F_PERCENTAGES",
+      "min_rounds": 1,
+      "backgrounds": {
+        "main": "victory_road_unova.png",
+        "battle": "battle_victory_road_unova.png"
+      },
+      "trainer_pool": [
+        {
+          "name": "Ace Trainer Webster",
+          "class": "ACE_TRAINER",
+          "sprite": "ace_trainer.png",
+          "team": [
+            632,
+            598
+          ],
+          "levels": [
+            55,
+            55
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 602,
+          "movesets": {
+            "632": [
+              "IRON-HEAD",
+              "BUG-BITE",
+              "CRUNCH",
+              "SHADOW-CLAW"
+            ],
+            "598": [
+              "IRON-HEAD",
+              "POWER-WHIP",
+              "PAYBACK",
+              "INGRAIN"
+            ]
+          }
+        },
         {
           "name": "Ace Trainer Shanta",
           "class": "ACE_TRAINER",
-          "sprite": "acetrainer_f.png",
-          "is_boss_battle": true,
-          "team": [612, 576],
-          "rewards": { "balls": 5 }
+          "sprite": "ace_trainer.png",
+          "team": [
+            631,
+            596
+          ],
+          "levels": [
+            55,
+            55
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 603,
+          "movesets": {
+            "631": [
+              "FLAME-BURST",
+              "SLASH",
+              "BUG-BITE",
+              "ROCK-TOMB"
+            ],
+            "596": [
+              "CHARGE-BEAM",
+              "SIGNAL-BEAM",
+              "SLASH",
+              "THUNDER-WAVE"
+            ]
+          }
         },
         {
-          "name": "Ace Trainer Rick",
-          "class": "ACE_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "is_boss_battle": true,
-          "team": [625, 637],
-          "rewards": { "balls": 5 }
+          "name": "Veteran Abraham",
+          "class": "VETERAN",
+          "sprite": "b2_veteran.png",
+          "team": [
+            526,
+            227
+          ],
+          "levels": [
+            55,
+            55
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 657,
+          "movesets": {
+            "526": [
+              "ROCK-BLAST",
+              "BULLDOZE",
+              "FLASH-CANNON",
+              "SANDSTORM"
+            ],
+            "227": [
+              "STEEL-WING",
+              "NIGHT-SLASH",
+              "X-SCISSOR",
+              "SWORDS-DANCE"
+            ]
+          }
+        },
+        {
+          "name": "Pokemon Ranger Elle",
+          "class": "RANGER",
+          "sprite": "ranger.png",
+          "team": [
+            126,
+            323
+          ],
+          "levels": [
+            54,
+            54
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 659,
+          "movesets": {
+            "126": [
+              "FLAMETHROWER",
+              "BRICK-BREAK",
+              "WILL-O-WISP",
+              "FAINT-ATTACK"
+            ],
+            "323": [
+              "LAVA-PLUME",
+              "ROCK-SLIDE",
+              "EARTHQUAKE",
+              "WILL-O-WISP"
+            ]
+          }
+        },
+        {
+          "name": "Pokemon Ranger Eddie",
+          "class": "RANGER",
+          "sprite": "ranger.png",
+          "team": [
+            125,
+            476
+          ],
+          "levels": [
+            54,
+            54
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 658,
+          "movesets": {
+            "125": [
+              "THUNDERBOLT",
+              "LOW-KICK",
+              "THUNDER-WAVE",
+              "FACADE"
+            ],
+            "476": [
+              "FLASH-CANNON",
+              "DISCHARGE",
+              "THUNDER-WAVE",
+              "POWER-GEM"
+            ]
+          }
         }
       ],
-      "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN" },
+      "route_menu": [],
+      "wild_tables": {
+        "ALL": {
+          "grass": [
+            [
+              525,
+              0,
+              20,
+              41,
+              41
+            ],
+            [
+              525,
+              0,
+              20,
+              41,
+              41
+            ],
+            [
+              525,
+              0,
+              10,
+              42,
+              42
+            ],
+            [
+              525,
+              0,
+              10,
+              42,
+              42
+            ],
+            [
+              525,
+              0,
+              10,
+              43,
+              43
+            ],
+            [
+              95,
+              0,
+              10,
+              43,
+              43
+            ],
+            [
+              525,
+              0,
+              5,
+              44,
+              44
+            ],
+            [
+              95,
+              0,
+              5,
+              44,
+              44
+            ],
+            [
+              525,
+              0,
+              4,
+              44,
+              44
+            ],
+            [
+              95,
+              0,
+              4,
+              44,
+              44
+            ],
+            [
+              525,
+              0,
+              1,
+              44,
+              44
+            ],
+            [
+              95,
+              0,
+              1,
+              44,
+              44
+            ]
+          ],
+          "rustle": [
+            [
+              530,
+              0,
+              20,
+              41,
+              41
+            ],
+            [
+              95,
+              0,
+              20,
+              41,
+              41
+            ],
+            [
+              530,
+              0,
+              10,
+              42,
+              42
+            ],
+            [
+              530,
+              0,
+              10,
+              42,
+              42
+            ],
+            [
+              530,
+              0,
+              10,
+              43,
+              43
+            ],
+            [
+              530,
+              0,
+              10,
+              43,
+              43
+            ],
+            [
+              530,
+              0,
+              5,
+              44,
+              44
+            ],
+            [
+              530,
+              0,
+              5,
+              44,
+              44
+            ],
+            [
+              530,
+              0,
+              4,
+              44,
+              44
+            ],
+            [
+              530,
+              0,
+              4,
+              44,
+              44
+            ],
+            [
+              530,
+              0,
+              1,
+              44,
+              44
+            ],
+            [
+              530,
+              0,
+              1,
+              44,
+              44
+            ]
+          ]
+        }
+      },
+      "wild_levels": {
+        "land": [
+          41,
+          44
+        ]
+      }
+    },
+    "VICTORY_ROAD_2F_BACK": {
+      "area_type": "dungeon",
+      "route_name": "Victory Road Cave 2F Back",
+      "region": "UNOVA",
+      "battle_type": "cave",
+      "wild_pool_percentages": "VICTORY_ROAD_2F_BACK_PERCENTAGES",
+      "min_rounds": 1,
+      "backgrounds": {
+        "main": "victory_road_unova.png",
+        "battle": "battle_victory_road_unova.png"
+      },
+      "trainer_pool": [],
+      "route_menu": [],
+      "wild_tables": {
+        "ALL": {
+          "grass": [
+            [
+              525,
+              0,
+              20,
+              47,
+              47
+            ],
+            [
+              525,
+              0,
+              20,
+              47,
+              47
+            ],
+            [
+              525,
+              0,
+              10,
+              48,
+              48
+            ],
+            [
+              525,
+              0,
+              10,
+              48,
+              48
+            ],
+            [
+              525,
+              0,
+              10,
+              49,
+              49
+            ],
+            [
+              95,
+              0,
+              10,
+              49,
+              49
+            ],
+            [
+              525,
+              0,
+              5,
+              50,
+              50
+            ],
+            [
+              95,
+              0,
+              5,
+              50,
+              50
+            ],
+            [
+              525,
+              0,
+              4,
+              50,
+              50
+            ],
+            [
+              95,
+              0,
+              4,
+              50,
+              50
+            ],
+            [
+              525,
+              0,
+              1,
+              50,
+              50
+            ],
+            [
+              95,
+              0,
+              1,
+              50,
+              50
+            ]
+          ],
+          "rustle": [
+            [
+              530,
+              0,
+              20,
+              47,
+              47
+            ],
+            [
+              95,
+              0,
+              20,
+              47,
+              47
+            ],
+            [
+              530,
+              0,
+              10,
+              48,
+              48
+            ],
+            [
+              530,
+              0,
+              10,
+              48,
+              48
+            ],
+            [
+              530,
+              0,
+              10,
+              49,
+              49
+            ],
+            [
+              530,
+              0,
+              10,
+              49,
+              49
+            ],
+            [
+              530,
+              0,
+              5,
+              50,
+              50
+            ],
+            [
+              530,
+              0,
+              5,
+              50,
+              50
+            ],
+            [
+              530,
+              0,
+              4,
+              50,
+              50
+            ],
+            [
+              530,
+              0,
+              4,
+              50,
+              50
+            ],
+            [
+              530,
+              0,
+              1,
+              50,
+              50
+            ],
+            [
+              530,
+              0,
+              1,
+              50,
+              50
+            ]
+          ],
+          "surf": [
+            [
+              550,
+              0,
+              60,
+              35,
+              50
+            ],
+            [
+              183,
+              0,
+              30,
+              35,
+              50
+            ],
+            [
+              550,
+              0,
+              5,
+              40,
+              50
+            ],
+            [
+              550,
+              0,
+              4,
+              40,
+              50
+            ],
+            [
+              550,
+              0,
+              1,
+              40,
+              50
+            ]
+          ],
+          "ripple": [
+            [
+              183,
+              0,
+              60,
+              35,
+              60
+            ],
+            [
+              550,
+              1,
+              30,
+              35,
+              60
+            ],
+            [
+              550,
+              1,
+              5,
+              40,
+              70
+            ],
+            [
+              184,
+              0,
+              4,
+              40,
+              70
+            ],
+            [
+              184,
+              0,
+              1,
+              40,
+              70
+            ]
+          ],
+          "fish": [
+            [
+              60,
+              0,
+              60,
+              40,
+              60
+            ],
+            [
+              550,
+              0,
+              30,
+              40,
+              60
+            ],
+            [
+              60,
+              0,
+              5,
+              50,
+              70
+            ],
+            [
+              60,
+              0,
+              4,
+              50,
+              70
+            ],
+            [
+              60,
+              0,
+              1,
+              50,
+              70
+            ]
+          ],
+          "fish_ripple": [
+            [
+              61,
+              0,
+              60,
+              40,
+              60
+            ],
+            [
+              550,
+              1,
+              30,
+              40,
+              60
+            ],
+            [
+              61,
+              0,
+              5,
+              50,
+              70
+            ],
+            [
+              62,
+              0,
+              4,
+              50,
+              70
+            ],
+            [
+              62,
+              0,
+              1,
+              50,
+              70
+            ]
+          ]
+        }
+      },
+      "wild_levels": {
+        "land": [
+          47,
+          50
+        ]
+      },
+      "surf_pool_percentages": "VICTORY_ROAD_2F_BACK_SURF_PERCENTAGES"
+    },
+    "VICTORY_ROAD_MOUNTAINSIDE": {
+      "area_type": "dungeon",
+      "route_name": "Victory Road Mountainside",
+      "region": "UNOVA",
+      "battle_type": "mountain",
+      "wild_pool_percentages": "VICTORY_ROAD_MOUNTAINSIDE_PERCENTAGES",
+      "min_rounds": 1,
+      "backgrounds": {
+        "main": "victory_road_unova.png",
+        "battle": "battle_victory_road_unova.png"
+      },
+      "trainer_pool": [
         {
-          "text": "Final Rival Battle",
-          "action": "NPC",
-          "target": "cheren_victory_road",
-          "flag_condition": "not defeated_rival_victory_road",
-          "color": "GOLD"
+          "name": "Veteran Sterling",
+          "class": "VETERAN",
+          "sprite": "b2_veteran.png",
+          "team": [
+            614,
+            538,
+            623
+          ],
+          "levels": [
+            54,
+            54,
+            54
+          ],
+          "rewards": {
+            "balls": 4
+          },
+          "b2_id": 604,
+          "movesets": {
+            "614": [
+              "ICICLE-CRASH",
+              "SLASH",
+              "BRINE",
+              "BRICK-BREAK"
+            ],
+            "538": [
+              "CIRCLE-THROW",
+              "ROCK-SLIDE",
+              "BODY-SLAM",
+              "BULK-UP"
+            ],
+            "623": [
+              "EARTHQUAKE",
+              "IRON-DEFENSE",
+              "MEGA-PUNCH",
+              "SHADOW-PUNCH"
+            ]
+          }
         },
-        { "text": "Encounter Terrakion", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD" },
-        { "text": "Route 10", "action": "EXIT", "target_area": "UNOVA_ROUTE_10", "condition": "can_exit", "color": "RED" },
-        { "text": "Pokémon League", "action": "EXIT", "target_area": "UNOVA_POKEMON_LEAGUE", "condition": "can_exit", "color": "RED" },
-        { "text": "ROUTE 23", "action": "EXIT", "target_area": "UNOVA_ROUTE_23", "condition": "can_exit", "color": "RED" },
-        {"text": "Challenger's Cave", "action": "EXIT", "target_area": "CHALLENGERS_CAVE", "condition": ["can_exit", "beat_unova_champion"], "color": "RED"}
+        {
+          "name": "Ace Trainer Caroll",
+          "class": "ACE_TRAINER",
+          "sprite": "ace_trainer.png",
+          "team": [
+            611,
+            584
+          ],
+          "levels": [
+            55,
+            55
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 606,
+          "movesets": {
+            "611": [
+              "DUAL-CHOP",
+              "SLASH",
+              "ROCK-SMASH",
+              "DRAGON-DANCE"
+            ],
+            "584": [
+              "ICE-BEAM",
+              "FLASH-CANNON",
+              "ICICLE-SPEAR",
+              "ACID-ARMOR"
+            ]
+          }
+        },
+        {
+          "name": "Black Belt Martell",
+          "class": "BLACK_BELT",
+          "sprite": "b2_black_belt.png",
+          "team": [
+            127,
+            214
+          ],
+          "levels": [
+            54,
+            54
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 607,
+          "movesets": {
+            "127": [
+              "X-SCISSOR",
+              "SUPERPOWER",
+              "BULLDOZE",
+              "THRASH"
+            ],
+            "214": [
+              "MEGAHORN",
+              "CLOSE-COMBAT",
+              "ROCK-SLIDE",
+              "AERIAL-ACE"
+            ]
+          }
+        },
+        {
+          "name": "Ace Trainer Elmer",
+          "class": "ACE_TRAINER",
+          "sprite": "ace_trainer.png",
+          "team": [
+            634,
+            604
+          ],
+          "levels": [
+            55,
+            55
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 608,
+          "movesets": {
+            "634": [
+              "DRAGON-PULSE",
+              "BODY-SLAM",
+              "THIEF",
+              "TORMENT"
+            ],
+            "604": [
+              "WILD-CHARGE",
+              "FLAMETHROWER",
+              "CRUNCH",
+              "CRUSH-CLAW"
+            ]
+          }
+        },
+        {
+          "name": "Battle Girl Chalina",
+          "class": "BATTLE_GIRL",
+          "sprite": "b2_battle_girl.png",
+          "team": [
+            538,
+            539
+          ],
+          "levels": [
+            54,
+            54
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 609,
+          "movesets": {
+            "538": [
+              "CIRCLE-THROW",
+              "FACADE",
+              "ROCK-TOMB",
+              "ENDURE"
+            ],
+            "539": [
+              "LOW-SWEEP",
+              "RETALIATE",
+              "PAYBACK",
+              "ENDURE"
+            ]
+          }
+        },
+        {
+          "name": "Veteran Portia",
+          "class": "VETERAN",
+          "sprite": "b2_veteran.png",
+          "team": [
+            523,
+            539,
+            121
+          ],
+          "levels": [
+            54,
+            54,
+            54
+          ],
+          "rewards": {
+            "balls": 4
+          },
+          "b2_id": 605,
+          "movesets": {
+            "523": [
+              "DISCHARGE",
+              "FLAME-CHARGE",
+              "STOMP",
+              "PURSUIT"
+            ],
+            "539": [
+              "BRICK-BREAK",
+              "ROCK-TOMB",
+              "RETALIATE",
+              "BULK-UP"
+            ],
+            "121": [
+              "SURF",
+              "PSYSHOCK",
+              "FLASH-CANNON",
+              "GRASS-KNOT"
+            ]
+          }
+        }
       ],
-      "area_boss": { "id": 639, "level": 42, "name": "Terrakion", "victory_flag": "VICTORY_ROAD_UNOVA_boss_defeated" }
+      "route_menu": [],
+      "wild_tables": {
+        "ALL": {
+          "grass": [
+            [
+              533,
+              0,
+              20,
+              47,
+              47
+            ],
+            [
+              533,
+              0,
+              20,
+              47,
+              47
+            ],
+            [
+              533,
+              0,
+              10,
+              48,
+              48
+            ],
+            [
+              538,
+              0,
+              10,
+              48,
+              48
+            ],
+            [
+              533,
+              0,
+              10,
+              49,
+              49
+            ],
+            [
+              538,
+              0,
+              10,
+              49,
+              49
+            ],
+            [
+              533,
+              0,
+              5,
+              50,
+              50
+            ],
+            [
+              538,
+              0,
+              5,
+              50,
+              50
+            ],
+            [
+              533,
+              0,
+              4,
+              50,
+              50
+            ],
+            [
+              538,
+              0,
+              4,
+              50,
+              50
+            ],
+            [
+              533,
+              0,
+              1,
+              50,
+              50
+            ],
+            [
+              538,
+              0,
+              1,
+              50,
+              50
+            ]
+          ],
+          "dark": [
+            [
+              533,
+              0,
+              20,
+              52,
+              52
+            ],
+            [
+              533,
+              0,
+              20,
+              52,
+              52
+            ],
+            [
+              533,
+              0,
+              10,
+              53,
+              53
+            ],
+            [
+              538,
+              0,
+              10,
+              53,
+              53
+            ],
+            [
+              533,
+              0,
+              10,
+              54,
+              54
+            ],
+            [
+              538,
+              0,
+              10,
+              54,
+              54
+            ],
+            [
+              533,
+              0,
+              5,
+              55,
+              55
+            ],
+            [
+              538,
+              0,
+              5,
+              55,
+              55
+            ],
+            [
+              533,
+              0,
+              4,
+              55,
+              55
+            ],
+            [
+              538,
+              0,
+              4,
+              55,
+              55
+            ],
+            [
+              533,
+              0,
+              1,
+              55,
+              55
+            ],
+            [
+              538,
+              0,
+              1,
+              55,
+              55
+            ]
+          ],
+          "rustle": [
+            [
+              531,
+              0,
+              20,
+              47,
+              47
+            ],
+            [
+              531,
+              0,
+              20,
+              47,
+              47
+            ],
+            [
+              531,
+              0,
+              10,
+              48,
+              48
+            ],
+            [
+              531,
+              0,
+              10,
+              48,
+              48
+            ],
+            [
+              531,
+              0,
+              10,
+              49,
+              49
+            ],
+            [
+              531,
+              0,
+              10,
+              49,
+              49
+            ],
+            [
+              531,
+              0,
+              5,
+              50,
+              50
+            ],
+            [
+              531,
+              0,
+              5,
+              50,
+              50
+            ],
+            [
+              531,
+              0,
+              4,
+              50,
+              50
+            ],
+            [
+              539,
+              0,
+              4,
+              50,
+              50
+            ],
+            [
+              531,
+              0,
+              1,
+              50,
+              50
+            ],
+            [
+              539,
+              0,
+              1,
+              50,
+              50
+            ]
+          ]
+        }
+      },
+      "wild_levels": {
+        "land": [
+          47,
+          50
+        ]
+      }
+    },
+    "VICTORY_ROAD_3F": {
+      "area_type": "dungeon",
+      "route_name": "Victory Road Cave 3F",
+      "region": "UNOVA",
+      "battle_type": "cave",
+      "wild_pool_percentages": "VICTORY_ROAD_3F_PERCENTAGES",
+      "min_rounds": 1,
+      "backgrounds": {
+        "main": "victory_road_unova.png",
+        "battle": "battle_victory_road_unova.png"
+      },
+      "trainer_pool": [
+        {
+          "name": "Veteran Hugo",
+          "class": "VETERAN",
+          "sprite": "b2_veteran.png",
+          "team": [
+            611,
+            634,
+            330
+          ],
+          "levels": [
+            54,
+            54,
+            54
+          ],
+          "rewards": {
+            "balls": 4
+          },
+          "b2_id": 612,
+          "movesets": {
+            "611": [
+              "DRAGON-DANCE",
+              "DRAGON-CLAW",
+              "X-SCISSOR",
+              "SHADOW-CLAW"
+            ],
+            "634": [
+              "SCARY-FACE",
+              "CRUNCH",
+              "BODY-SLAM",
+              "DRAGON-RUSH"
+            ],
+            "330": [
+              "DRAGON-CLAW",
+              "BULLDOZE",
+              "FLAMETHROWER",
+              "ROCK-SLIDE"
+            ]
+          }
+        }
+      ],
+      "route_menu": [],
+      "wild_tables": {
+        "ALL": {
+          "grass": [
+            [
+              621,
+              0,
+              20,
+              47,
+              47
+            ],
+            [
+              621,
+              0,
+              20,
+              47,
+              47
+            ],
+            [
+              621,
+              0,
+              10,
+              48,
+              48
+            ],
+            [
+              621,
+              0,
+              10,
+              48,
+              48
+            ],
+            [
+              621,
+              0,
+              10,
+              49,
+              49
+            ],
+            [
+              634,
+              0,
+              10,
+              49,
+              49
+            ],
+            [
+              621,
+              0,
+              5,
+              50,
+              50
+            ],
+            [
+              634,
+              0,
+              5,
+              50,
+              50
+            ],
+            [
+              621,
+              0,
+              4,
+              50,
+              50
+            ],
+            [
+              634,
+              0,
+              4,
+              50,
+              50
+            ],
+            [
+              621,
+              0,
+              1,
+              50,
+              50
+            ],
+            [
+              634,
+              0,
+              1,
+              50,
+              50
+            ]
+          ],
+          "rustle": [
+            [
+              530,
+              0,
+              20,
+              47,
+              47
+            ],
+            [
+              95,
+              0,
+              20,
+              47,
+              47
+            ],
+            [
+              530,
+              0,
+              10,
+              48,
+              48
+            ],
+            [
+              530,
+              0,
+              10,
+              48,
+              48
+            ],
+            [
+              530,
+              0,
+              10,
+              49,
+              49
+            ],
+            [
+              530,
+              0,
+              10,
+              49,
+              49
+            ],
+            [
+              530,
+              0,
+              5,
+              50,
+              50
+            ],
+            [
+              530,
+              0,
+              5,
+              50,
+              50
+            ],
+            [
+              530,
+              0,
+              4,
+              50,
+              50
+            ],
+            [
+              530,
+              0,
+              4,
+              50,
+              50
+            ],
+            [
+              530,
+              0,
+              1,
+              50,
+              50
+            ],
+            [
+              530,
+              0,
+              1,
+              50,
+              50
+            ]
+          ]
+        }
+      },
+      "wild_levels": {
+        "land": [
+          47,
+          50
+        ]
+      }
+    },
+    "VICTORY_ROAD_TUNNEL": {
+      "area_type": "dungeon",
+      "route_name": "Victory Road Tunnel",
+      "region": "UNOVA",
+      "battle_type": "cave",
+      "wild_pool_percentages": "VICTORY_ROAD_TUNNEL_PERCENTAGES",
+      "min_rounds": 1,
+      "backgrounds": {
+        "main": "victory_road_unova.png",
+        "battle": "battle_victory_road_unova.png"
+      },
+      "trainer_pool": [],
+      "route_menu": [],
+      "wild_tables": {
+        "ALL": {
+          "grass": [
+            [
+              525,
+              0,
+              20,
+              47,
+              47
+            ],
+            [
+              525,
+              0,
+              20,
+              47,
+              47
+            ],
+            [
+              525,
+              0,
+              10,
+              48,
+              48
+            ],
+            [
+              525,
+              0,
+              10,
+              48,
+              48
+            ],
+            [
+              525,
+              0,
+              10,
+              49,
+              49
+            ],
+            [
+              525,
+              0,
+              10,
+              49,
+              49
+            ],
+            [
+              525,
+              0,
+              5,
+              50,
+              50
+            ],
+            [
+              525,
+              0,
+              5,
+              50,
+              50
+            ],
+            [
+              525,
+              0,
+              4,
+              50,
+              50
+            ],
+            [
+              525,
+              0,
+              4,
+              50,
+              50
+            ],
+            [
+              525,
+              0,
+              1,
+              50,
+              50
+            ],
+            [
+              525,
+              0,
+              1,
+              50,
+              50
+            ]
+          ],
+          "rustle": [
+            [
+              530,
+              0,
+              20,
+              47,
+              47
+            ],
+            [
+              530,
+              0,
+              20,
+              47,
+              47
+            ],
+            [
+              530,
+              0,
+              10,
+              48,
+              48
+            ],
+            [
+              530,
+              0,
+              10,
+              48,
+              48
+            ],
+            [
+              530,
+              0,
+              10,
+              49,
+              49
+            ],
+            [
+              530,
+              0,
+              10,
+              49,
+              49
+            ],
+            [
+              530,
+              0,
+              5,
+              50,
+              50
+            ],
+            [
+              530,
+              0,
+              5,
+              50,
+              50
+            ],
+            [
+              530,
+              0,
+              4,
+              50,
+              50
+            ],
+            [
+              530,
+              0,
+              4,
+              50,
+              50
+            ],
+            [
+              530,
+              0,
+              1,
+              50,
+              50
+            ],
+            [
+              530,
+              0,
+              1,
+              50,
+              50
+            ]
+          ]
+        }
+      },
+      "wild_levels": {
+        "land": [
+          47,
+          50
+        ]
+      }
     },
     "UNITY_TOWER": {
       "area_type": "dungeon",
@@ -24488,22 +27673,694 @@
       "min_rounds": 2,
       "trainer_pool": [
         {
-          "name": "Veteran Claude",
+          "name": "Pokemon Ranger Lena",
+          "class": "RANGER",
+          "sprite": "ranger.png",
+          "team": [
+            419,
+            448
+          ],
+          "levels": [
+            53,
+            53
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 483
+        },
+        {
+          "name": "Hiker Doug",
+          "class": "HIKER",
+          "sprite": "b2_hiker.png",
+          "team": [
+            525,
+            306
+          ],
+          "levels": [
+            53,
+            53
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 476
+        },
+        {
+          "name": "Ace Trainer Tom",
           "class": "ACE_TRAINER",
-          "sprite": "acetrainer_m.png",
-          "is_boss_battle": true,
-          "team": [612, 625, 537],
-          "rewards": { "balls": 5 }
+          "sprite": "ace_trainer.png",
+          "team": [
+            126,
+            473
+          ],
+          "levels": [
+            54,
+            54
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 485
+        },
+        {
+          "name": "Ace Trainer Miki",
+          "class": "ACE_TRAINER",
+          "sprite": "ace_trainer.png",
+          "team": [
+            545,
+            59
+          ],
+          "levels": [
+            54,
+            54
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 486
+        },
+        {
+          "name": "Black Belt Benjamin",
+          "class": "BLACK_BELT",
+          "sprite": "b2_black_belt.png",
+          "team": [
+            533,
+            560
+          ],
+          "levels": [
+            53,
+            53
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 481
+        },
+        {
+          "name": "Battle Girl Tiffany",
+          "class": "BATTLE_GIRL",
+          "sprite": "b2_battle_girl.png",
+          "team": [
+            533,
+            620
+          ],
+          "levels": [
+            53,
+            53
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 482
+        },
+        {
+          "name": "Ace Trainer Juliet",
+          "class": "ACE_TRAINER",
+          "sprite": "ace_trainer.png",
+          "team": [
+            581,
+            596
+          ],
+          "levels": [
+            53,
+            53
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 479
+        },
+        {
+          "name": "Hiker Don",
+          "class": "HIKER",
+          "sprite": "b2_hiker.png",
+          "team": [
+            221,
+            476
+          ],
+          "levels": [
+            51,
+            51
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 475
+        },
+        {
+          "name": "Black Belt Luke",
+          "class": "BLACK_BELT",
+          "sprite": "b2_black_belt.png",
+          "team": [
+            539
+          ],
+          "levels": [
+            53
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 477
+        },
+        {
+          "name": "Ace Trainer Grant",
+          "class": "ACE_TRAINER",
+          "sprite": "ace_trainer.png",
+          "team": [
+            587,
+            593
+          ],
+          "levels": [
+            53,
+            53
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 480
+        },
+        {
+          "name": "Battle Girl Brenda",
+          "class": "BATTLE_GIRL",
+          "sprite": "b2_battle_girl.png",
+          "team": [
+            538
+          ],
+          "levels": [
+            53
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 478
+        },
+        {
+          "name": "Pokemon Ranger Steve",
+          "class": "RANGER",
+          "sprite": "ranger.png",
+          "team": [
+            618,
+            591
+          ],
+          "levels": [
+            52,
+            52
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 484
         }
       ],
-      "route_menu": [
-        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
-        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
-        {"text": "BATTLE TRAINER", "action": "TRAINER", "condition": "has_trainers", "color": "GREEN"},
-        {"text": "Victory Road", "action": "EXIT", "target_area": "VICTORY_ROAD_UNOVA", "condition": "can_exit", "color": "RED"},
-        {"text": "GIANT CHASM", "action": "EXIT", "target": "GIANT_CHASM", "condition": ["can_exit", "beat_unova_champion"], "color": "RED"}
-      ],
-      "next_area": "VICTORY_ROAD_UNOVA"
+      "route_menu": [],
+      "wild_tables": {
+        "ALL": {
+          "grass": [
+            [
+              626,
+              0,
+              20,
+              49,
+              49
+            ],
+            [
+              539,
+              0,
+              10.0,
+              48,
+              48
+            ],
+            [
+              538,
+              0,
+              10.0,
+              48,
+              48
+            ],
+            [
+              207,
+              0,
+              10,
+              49,
+              49
+            ],
+            [
+              619,
+              0,
+              10,
+              48,
+              48
+            ],
+            [
+              591,
+              0,
+              10,
+              49,
+              49
+            ],
+            [
+              55,
+              0,
+              10,
+              50,
+              50
+            ],
+            [
+              619,
+              0,
+              5,
+              48,
+              48
+            ],
+            [
+              539,
+              0,
+              2.5,
+              49,
+              49
+            ],
+            [
+              538,
+              0,
+              2.5,
+              49,
+              49
+            ],
+            [
+              629,
+              0,
+              2.0,
+              47,
+              47
+            ],
+            [
+              627,
+              0,
+              2.0,
+              47,
+              47
+            ],
+            [
+              626,
+              0,
+              4,
+              51,
+              51
+            ],
+            [
+              629,
+              0,
+              0.5,
+              47,
+              47
+            ],
+            [
+              627,
+              0,
+              0.5,
+              47,
+              47
+            ],
+            [
+              626,
+              0,
+              1,
+              51,
+              51
+            ]
+          ],
+          "dark": [
+            [
+              626,
+              0,
+              20,
+              54,
+              54
+            ],
+            [
+              539,
+              0,
+              10.0,
+              53,
+              53
+            ],
+            [
+              538,
+              0,
+              10.0,
+              53,
+              53
+            ],
+            [
+              207,
+              0,
+              10,
+              54,
+              54
+            ],
+            [
+              620,
+              0,
+              10,
+              53,
+              53
+            ],
+            [
+              591,
+              0,
+              10,
+              54,
+              54
+            ],
+            [
+              55,
+              0,
+              10,
+              55,
+              55
+            ],
+            [
+              620,
+              0,
+              5,
+              53,
+              53
+            ],
+            [
+              539,
+              0,
+              2.5,
+              54,
+              54
+            ],
+            [
+              538,
+              0,
+              2.5,
+              54,
+              54
+            ],
+            [
+              629,
+              0,
+              2.0,
+              52,
+              52
+            ],
+            [
+              627,
+              0,
+              2.0,
+              52,
+              52
+            ],
+            [
+              626,
+              0,
+              4,
+              56,
+              56
+            ],
+            [
+              629,
+              0,
+              0.5,
+              52,
+              52
+            ],
+            [
+              627,
+              0,
+              0.5,
+              52,
+              52
+            ],
+            [
+              626,
+              0,
+              1,
+              56,
+              56
+            ]
+          ],
+          "rustle": [
+            [
+              531,
+              0,
+              20,
+              48,
+              48
+            ],
+            [
+              531,
+              0,
+              20,
+              48,
+              48
+            ],
+            [
+              587,
+              0,
+              10,
+              49,
+              49
+            ],
+            [
+              531,
+              0,
+              10,
+              49,
+              49
+            ],
+            [
+              531,
+              0,
+              10,
+              50,
+              50
+            ],
+            [
+              531,
+              0,
+              10,
+              50,
+              50
+            ],
+            [
+              531,
+              0,
+              5,
+              51,
+              51
+            ],
+            [
+              531,
+              0,
+              5,
+              51,
+              51
+            ],
+            [
+              472,
+              0,
+              4,
+              51,
+              51
+            ],
+            [
+              538,
+              0,
+              2.0,
+              51,
+              51
+            ],
+            [
+              539,
+              0,
+              2.0,
+              51,
+              51
+            ],
+            [
+              472,
+              0,
+              1,
+              51,
+              51
+            ],
+            [
+              538,
+              0,
+              0.5,
+              51,
+              51
+            ],
+            [
+              539,
+              0,
+              0.5,
+              51,
+              51
+            ]
+          ],
+          "surf": [
+            [
+              550,
+              0,
+              60,
+              40,
+              55
+            ],
+            [
+              418,
+              0,
+              30,
+              40,
+              55
+            ],
+            [
+              550,
+              0,
+              5,
+              45,
+              55
+            ],
+            [
+              550,
+              0,
+              4,
+              45,
+              55
+            ],
+            [
+              550,
+              0,
+              1,
+              45,
+              55
+            ]
+          ],
+          "ripple": [
+            [
+              418,
+              0,
+              60,
+              40,
+              55
+            ],
+            [
+              550,
+              1,
+              30,
+              40,
+              55
+            ],
+            [
+              419,
+              0,
+              5,
+              45,
+              55
+            ],
+            [
+              419,
+              0,
+              4,
+              45,
+              55
+            ],
+            [
+              419,
+              0,
+              1,
+              45,
+              55
+            ]
+          ],
+          "fish": [
+            [
+              60,
+              0,
+              60,
+              40,
+              60
+            ],
+            [
+              550,
+              0,
+              30,
+              40,
+              60
+            ],
+            [
+              60,
+              0,
+              5,
+              50,
+              70
+            ],
+            [
+              60,
+              0,
+              4,
+              50,
+              70
+            ],
+            [
+              60,
+              0,
+              1,
+              50,
+              70
+            ]
+          ],
+          "fish_ripple": [
+            [
+              61,
+              0,
+              60,
+              40,
+              60
+            ],
+            [
+              550,
+              1,
+              30,
+              40,
+              60
+            ],
+            [
+              61,
+              0,
+              5,
+              50,
+              70
+            ],
+            [
+              62,
+              0,
+              4,
+              50,
+              70
+            ],
+            [
+              62,
+              0,
+              1,
+              50,
+              70
+            ]
+          ]
+        }
+      },
+      "wild_levels": {
+        "land": [
+          47,
+          51
+        ]
+      },
+      "surf_pool_percentages": "UNOVA_ROUTE_23_SURF_PERCENTAGES"
     },
     "CELESTIAL_TOWER": {
       "area_type": "dungeon",
@@ -25481,16 +29338,16 @@
     {"id": "b2_m16", "type": "MAIN", "title": "Into the Sewers", "description": "{rival_name} ran into the Castelia Sewers from Thumb Pier. Follow him, then climb the north stairs after Team Plasma.", "condition": {"required_region": "UNOVA", "flag": "b2_thumb_scene", "flag_not": "b2_sewers_done"}, "completed_flag": "b2_sewers_done", "target": "CASTELIA_SEWERS"},
     {"id": "b2_m17", "type": "MAIN", "title": "Burgh's Gym", "description": "Burgh is back at the Castelia Gym on Gym Street. Find your way through the cocoons to him.", "condition": {"required_region": "UNOVA", "flag": "b2_sewers_done", "flag_not": "b2_insect_badge"}, "completed_badge": "INSECT", "completed_flag": "b2_insect_badge", "target": "CASTELIA_CITY", "reward": "Insect Badge"},
     {"id": "b2_m18", "type": "MAIN", "title": "The Man in the White Coat", "description": "With Burgh's badge in hand, head for Central Plaza, the heart of Castelia, on the way to Route 4.", "condition": {"required_region": "UNOVA", "flag": "b2_insect_badge", "flag_not": "b2_colress_plaza"}, "completed_flag": "b2_colress_plaza", "target": "CASTELIA_CITY"},
-    {"id": "b2_m19", "type": "MAIN", "title": "Colress Waits", "description": "Colress wants to test his theory in a battle. He's waiting on Route 4, north through Castelia's gate.", "condition": {"required_region": "UNOVA", "flag": "b2_colress_plaza", "flag_not": "b2_colress_route4"}, "completed_flag": "b2_colress_route4", "target": "UNOVA_ROUTE_4"},
+    {"id": "b2_m19", "type": "MAIN", "title": "Colress Waits", "description": "Colress wants to test his theory in a battle. He's waiting on Route 4, north through Castelia's gate.", "condition": {"required_region": "UNOVA", "flag": "b2_colress_plaza", "flag_not": "b2_colress_route4"}, "completed_flag": "b2_colress_route4", "target": "UNOVA_ROUTE_4", "steps": [{"area": "UNOVA_ROUTE_4", "at": [21, 98], "label": "Colress", "done": "b2_colress_route4", "when": "unova_version:WHITE_2"}, {"area": "UNOVA_ROUTE_4", "at": [45, 104], "label": "Colress", "done": "b2_colress_route4", "when": "not:unova_version:WHITE_2"}]},
     {"id": "b2_m20", "type": "MAIN", "title": "The City of Lights", "description": "Nimbasa City is north through Join Avenue. Its Gym Leader, Elesa, is a famous model. Find the Gym in the amusement park, east of the city.", "condition": {"required_region": "UNOVA", "flag": "b2_colress_route4", "flag_not": "b2_nimbasa_gym_out"}, "completed_flag": "b2_nimbasa_gym_out", "target": "NIMBASA_CITY", "steps": [{"area": "NIMBASA_CITY", "room": "park", "at": [71, 12], "label": "The Gym", "done": "b2_nimbasa_gym_out"}]},
-    {"id": "b2_m21", "type": "MAIN", "title": "The Leader Is Out", "description": "Elesa isn't at her Gym. The guide says she went to the roller coaster building by the park's entrance.", "condition": {"required_region": "UNOVA", "flag": "b2_nimbasa_gym_out", "flag_not": "b2_elesa_coaster"}, "completed_flag": "b2_elesa_coaster", "target": "NIMBASA_CITY"},
+    {"id": "b2_m21", "type": "MAIN", "title": "The Leader Is Out", "description": "Elesa isn't at her Gym. The guide says she went to the roller coaster building by the park's entrance.", "condition": {"required_region": "UNOVA", "flag": "b2_nimbasa_gym_out", "flag_not": "b2_elesa_coaster"}, "completed_flag": "b2_elesa_coaster", "target": "NIMBASA_CITY", "steps": [{"area": "NIMBASA_CITY", "room": "coaster", "at": [28, 5], "label": "The roller coaster's back room", "done": "b2_elesa_coaster"}]},
     {"id": "b2_m22", "type": "MAIN", "title": "Elesa's Runway", "description": "Elesa is back at the Nimbasa Gym, east of the Ferris wheel. Beat the Trainers on the catwalk, then Elesa.", "condition": {"required_region": "UNOVA", "flag": "b2_elesa_coaster", "flag_not": "b2_bolt_badge"}, "completed_badge": "BOLT", "completed_flag": "b2_bolt_badge", "target": "NIMBASA_CITY"},
     {"id": "b2_m23", "type": "MAIN", "title": "Trouble at Big Stadium", "description": "{rival_name} is shouting at Team Plasma outside Big Stadium, in the west of Nimbasa. He could use some help.", "condition": {"required_region": "UNOVA", "flag": "b2_bolt_badge", "flag_not": "b2_nimbasa_plasma"}, "completed_flag": "b2_nimbasa_plasma", "target": "NIMBASA_CITY"},
     {"id": "b2_m24", "type": "MAIN", "title": "West to Route 5", "description": "The road to Driftveil runs west through Nimbasa's gate, along Route 5 to the drawbridge.", "condition": {"required_region": "UNOVA", "flag": "b2_nimbasa_plasma", "flag_not": "b2_charles"}, "completed_flag": "b2_charles", "target": "UNOVA_ROUTE_5"},
     {"id": "b2_m25", "type": "MAIN", "title": "Over the Drawbridge", "description": "With the drawbridge lowered, Driftveil City waits on the far side of the river, and its Gym Leader Clay with it.", "condition": {"required_region": "UNOVA", "flag": "b2_charles", "flag_not": "visited_DRIFTVEIL_CITY"}, "completed_flag": "visited_DRIFTVEIL_CITY", "target": "DRIFTVEIL_CITY"},
     {"id": "b2_m26", "type": "MAIN", "title": "Team Plasma, Old and New", "description": "A former member of Team Plasma said their old base is on the hill north of the Gym. What are they up to?", "condition": {"required_region": "UNOVA", "flag": "visited_DRIFTVEIL_CITY", "flag_not": "b2_rood_talk"}, "completed_flag": "b2_rood_talk", "target": "DRIFTVEIL_CITY", "steps": [{"area": "DRIFTVEIL_CITY", "at": [37, 13], "label": "The house on the hill", "done": "b2_rood_talk"}]},
-    {"id": "b2_m27", "type": "MAIN", "title": "Down the Mine", "description": "Clay's Gym is a dark mine. Ride the conveyor belts from platform to platform and find the Underground Boss.", "condition": {"required_region": "UNOVA", "flag": "b2_rood_talk", "flag_not": "b2_quake_badge"}, "completed_badge": "QUAKE", "completed_flag": "b2_quake_badge", "target": "DRIFTVEIL_CITY"},
-    {"id": "b2_m28", "type": "MAIN", "title": "The World Tournament", "description": "Clay invited you to the Pokemon World Tournament, south of Driftveil. Trainers from all over the world compete there.", "condition": {"required_region": "UNOVA", "flag": "b2_quake_badge", "flag_not": "b2_pwt_driftveil_won"}, "completed_flag": "b2_pwt_driftveil_won", "target": "DRIFTVEIL_CITY"},
+    {"id": "b2_m27", "type": "MAIN", "title": "Down the Mine", "description": "Clay's Gym is a dark mine. Ride the conveyor belts from platform to platform and find the Underground Boss.", "condition": {"required_region": "UNOVA", "flag": "b2_rood_talk", "flag_not": "b2_quake_badge"}, "completed_badge": "QUAKE", "completed_flag": "b2_quake_badge", "target": "DRIFTVEIL_CITY", "steps": [{"area": "DRIFTVEIL_CITY", "at": [52, 16], "label": "Clay's Gym", "done": "b2_drift_gym_in"}, {"area": "DRIFTVEIL_CITY", "room": "gym_lobby", "at": [8, 4], "label": "The lift down", "done": "b2_drift_gym_down"}]},
+    {"id": "b2_m28", "type": "MAIN", "title": "The World Tournament", "description": "Clay invited you to the Pokemon World Tournament, south of Driftveil. Trainers from all over the world compete there.", "condition": {"required_region": "UNOVA", "flag": "b2_quake_badge", "flag_not": "b2_pwt_driftveil_won"}, "completed_flag": "b2_pwt_driftveil_won", "target": "DRIFTVEIL_CITY", "steps": [{"area": "DRIFTVEIL_CITY", "at": [16, 59], "label": "The World Tournament", "done": "b2_pwt_arrived"}, {"area": "PWT", "at": [37, 17], "label": "The tournament hall", "done": "b2_pwt_lobby"}, {"area": "PWT", "room": "lobby", "at": [15, 7], "label": "The stadium doors", "done": "b2_pwt_driftveil_won"}]},
     {"id": "b2_m29", "type": "MAIN", "title": "Aboard the Plasma Frigate", "description": "Team Plasma Grunts ran past the World Tournament to a ship at the pier. {rival_name}'s gone after them. Follow him!", "condition": {"required_region": "UNOVA", "flag": "b2_pwt_driftveil_won", "flag_not": "b2_frigate_done"}, "completed_flag": "b2_frigate_done", "target": "PWT", "steps": [{"area": "PWT", "at": [37, 45], "label": "The ship at the pier", "done": "b2_frigate_done"}]},
     {"id": "b2_m30", "type": "MAIN", "title": "The Cold Snap", "description": "Cheren went ahead to Route 6. Something about the weather has him worried. Find him at the Season Research Lab.", "condition": {"required_region": "UNOVA", "flag": "b2_frigate_done", "flag_not": "b2_r6_surf"}, "completed_flag": "b2_r6_surf", "target": "UNOVA_ROUTE_6", "steps": [{"area": "UNOVA_ROUTE_6", "at": [39, 17], "label": "The Season Research Lab", "done": "b2_r6_surf"}]},
     {"id": "b2_m31", "type": "MAIN", "title": "The Charged Stones", "description": "Chargestone Cave's floating stones crackle with power. Mistralton City and its Gym lie on the far side.", "condition": {"required_region": "UNOVA", "flag": "b2_r6_surf", "flag_not": "visited_MISTRALTON_CITY"}, "completed_flag": "visited_MISTRALTON_CITY", "target": "CHARGESTONE_CAVE"},
@@ -25507,7 +29364,8 @@
     {"id": "b2_m42", "type": "MAIN", "title": "The Sturdy Boulder", "description": "Colress saw something in Seaside Cave, south of Humilau on Route 21, that reminded him of Route 4. His machine might wake it.", "condition": {"required_region": "UNOVA", "flag": "b2_colress_mchn", "flag_not": "b2_seaside_crustle"}, "completed_flag": "b2_seaside_crustle", "target": "SEASIDE_CAVE"},
     {"id": "b2_m43", "type": "MAIN", "title": "The Ship off Route 21", "description": "Beyond the cave, the Plasma Frigate lies at anchor by the cliffs.", "condition": {"required_region": "UNOVA", "flag": "b2_seaside_crustle", "flag_not": "b2_frigate2_done"}, "completed_flag": "b2_frigate2_done", "target": "UNOVA_ROUTE_21"},
     {"id": "b2_m44", "type": "MAIN", "title": "Into the Giant Chasm", "description": "The Plasma Frigate flew toward the Giant Chasm, where Lacunosa's monster sleeps. Cheren says the way in is from Route 22.", "condition": {"required_region": "UNOVA", "flag": "b2_frigate2_done", "flag_not": "b2_chasm_done"}, "completed_flag": "b2_chasm_done", "target": "GIANT_CHASM"},
-    {"id": "b2_m45", "type": "MAIN", "title": "Victory Road", "description": "Team Plasma is finished and Opelucid has thawed. N asked you to go to the Pokemon League: Route 23 leaves the Giant Chasm to the west.", "condition": {"required_region": "UNOVA", "flag": "b2_chasm_done", "flag_not": "beat_unova_champion"}, "completed_flag": "beat_unova_champion", "target": "UNOVA_ROUTE_23"},
+    {"id": "b2_m45", "type": "MAIN", "title": "Victory Road", "description": "Team Plasma is finished and Opelucid has thawed. N asked you to go to the Pokemon League: Route 23 leaves the Giant Chasm to the west, and Victory Road climbs to the League.", "condition": {"required_region": "UNOVA", "flag": "b2_chasm_done", "flag_not": "b2_vr_hugh"}, "completed_flag": "b2_vr_hugh", "target": "VICTORY_ROAD_UNOVA"},
+    {"id": "b2_m46", "type": "MAIN", "title": "The Pokemon League", "description": "Past Victory Road's last tunnel stands the Pokemon League. Four of the Elite Four wait, then the Champion.", "condition": {"required_region": "UNOVA", "flag": "b2_vr_hugh", "flag_not": "beat_unova_champion"}, "completed_flag": "beat_unova_champion", "target": "UNOVA_POKEMON_LEAGUE"},
     {"id": "unova_m2", "type": "MAIN", "title": "Team Plasma's Speech", "description": "Follow Route 1 north to Accumula Town. A group called Team Plasma is giving a speech in the square. Go and listen.", "condition": {"required_region": "UNOVA", "flag": "defeated_rival_nuvema", "flag_not": ["heard_n_accumula", "b2_mom_talk"]}, "completed_flag": "heard_n_accumula", "target": "ACCUMULA_TOWN"},
     {"id": "unova_m3", "type": "MAIN", "title": "A Stranger Named N", "description": "On Route 2 you'll meet Alder, and a strange young man named N who says he can hear Pokémon talk. He wants to battle!", "condition": {"required_region": "UNOVA", "flag": "heard_n_accumula", "flag_not": ["defeated_n_route2", "b2_mom_talk"], "region_badges_less": 1}, "completed_flag": "defeated_n_route2", "target": "UNOVA_ROUTE_2"},
     {"id": "unova_m4", "type": "MAIN", "title": "A Gift in the Dreamyard", "description": "A researcher named Fennel is at the Dreamyard, next to Striaton City. She has a Pokémon that's strong against the Striaton Gym.", "condition": {"required_region": "UNOVA", "flag": "defeated_n_route2", "flag_not": ["got_elemental_monkey", "b2_mom_talk"], "region_badges_less": 1}, "completed_flag": "got_elemental_monkey", "target": "DREAMYARD", "reward": "Pansage, Pansear or Panpour"},
@@ -25654,7 +29512,17 @@
     "183": 10,
     "225": 5
   },
-  "UNOVA_ROUTE_23_PERCENTAGES": {"626": 25, "539": 12, "619": 15, "207": 10, "591": 10, "55": 10, "629": 2, "538": 12, "627": 2, "620": 5, "531": 5, "587": 4, "472": 2},
+  "UNOVA_ROUTE_23_PERCENTAGES": {
+    "626": 25,
+    "619": 15,
+    "539": 12,
+    "538": 12,
+    "207": 10,
+    "591": 10,
+    "55": 10,
+    "629": 2,
+    "627": 2
+  },
   "UNOVA_DREAMYARD_PERCENTAGES": {"504": 40, "509": 40, "517": 20, "505": 5, "510": 5, "20": 3, "166": 3, "168": 3, "402": 3, "49": 3, "531": 5, "518": 1},
   "UNOVA_WELLSPRING_CAVE_PERCENTAGES": {"524": 50, "527": 50, "529": 5},
   "UNOVA_PINWHEEL_FOREST_PERCENTAGES": {"535": 20, "519": 22, "532": 10, "539": 2, "538": 2, "546": 9, "540": 18, "543": 8, "548": 9, "531": 5, "541": 5, "544": 3, "520": 3, "511": 2, "513": 2, "515": 2, "547": 1, "549": 1},

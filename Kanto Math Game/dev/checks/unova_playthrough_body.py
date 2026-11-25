@@ -635,6 +635,8 @@ def d_step(st, p, d, through=False):
             return to, False
         if through and dec.startswith("whirl:") and story.inventory.get("HM_WHIRLPOOL", 0) > 0:   # (Johto: calmed by walking into it)
             return to, False
+        if through and dec.startswith("crack:") and __import__("src.world.hms", fromlist=["field"]).field(story, "HM_ROCK_SMASH"):
+            return to, False   # (a cracked rock on a map whose rocks hide Pokemon - "smash_wild": broken by walking into it)
         return None
     m = f.mover_at(*to)
     if m is not None and not (through and m.kind == "trainer"):
@@ -888,6 +890,8 @@ def things(st):
             now = next(o for o in opt["any"] if st._shown(o)) if "any" in opt else opt
             if str(now.get("action") or "").upper() in BORING or (now.get("event") or {}).get("name_rater") or (now.get("event") or {}).get("tutor"):
                 continue
+            if isinstance(now.get("event"), dict) and now["event"].get("stock"):   # (a shop made as an event - a store counter, a vending machine, a stall: a
+                continue                                # shop screen the run can't leave, like the SHOP clerks; Sinnoh 11-24)
             _ride = (now.get("event") or {}).get("travel")   # (a ride - a ship, a ferry, a train - only toward the mission's place: else a
             if _ride and _ride != (MISSIONS.get(STATE.get("mission")) or {}).get("target"):   # run sails off and is stranded; Unova 11-23)
                 continue
@@ -904,6 +908,8 @@ def things(st):
                 out_.append((1, ("S", t), [t], "a switch to press", None))
         for t in (getattr(st, "links", None) or {}):
             out_.append((1, ("W", t), [t], "a warp pad", None))
+        for (t, _way), (to, _xy) in (st._guide_cocoons(getattr(st, "room", None)) if hasattr(st, "_guide_cocoons") else {}).items():
+            out_.append((1, ("C", t, _way), [t], "a cocoon (its thread carries you on)", (area, "room:" + to if to else "outside")))   # (Castelia Gym; Unova 11-24)
         for tg, tiles in _stretches(st.exits):
             if tg.startswith("OUT:"):
                 out_.append((1, ("X", tg, tiles[0]), tiles, "the way out of the building", (area, "outside")))
@@ -919,6 +925,8 @@ def things(st):
         for m in f.movers:
             if m.kind == "figure" and isinstance(m.payload, dict):
                 if str(m.payload.get("action") or "").upper() in BORING:
+                    continue
+                if isinstance(m.payload.get("event"), dict) and m.payload["event"].get("stock"):   # (a shop made as an event, as above)
                     continue
                 out_.append((0, ("F", (m.x, m.y), str(m.payload.get("text"))), [(m.x, m.y)], f"walk up to {m.payload.get('text')}", None))
         rest, ways = {}, {}
@@ -952,6 +960,8 @@ def things(st):
                 out_.append((1, ("B", t), [t], "a boulder (Strength)", None))
             elif dec.startswith("whirl:") and story.inventory.get("HM_WHIRLPOOL", 0) > 0:
                 out_.append((1, ("B", t), [t], "a whirlpool (Whirlpool)", None))
+            elif dec.startswith("crack:") and __import__("src.world.hms", fromlist=["field"]).field(story, "HM_ROCK_SMASH"):
+                out_.append((1, ("B", t), [t], "a cracked rock (Rock Smash)", None))
             elif dec == "statue" and (st._here_art() or {}).get("switch"):
                 out_.append((1, ("Z", t), [t], "a statue's switch", None))
             elif dec == "secret" and "%d,%d" % tuple(t) in ((st._here_art() or {}).get("secret_switches") or {}):

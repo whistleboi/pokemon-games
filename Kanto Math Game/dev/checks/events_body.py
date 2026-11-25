@@ -31,7 +31,10 @@ import json as _json, re as _re   # (a story scene on a walked map runs its even
 _scene_events = set(_re.findall(r'"then": "event:([a-z0-9_]+)"', open("assets/town_maps.json", encoding="utf-8").read()))
 from src.world import mystery_dungeon as _md   # (and the scenes laid over the maps in code: the Giant Volcano's walk)
 _scene_events |= set(_re.findall(r'"then": "event:([a-z0-9_]+)"', _json.dumps(_md.CAST)))
-missing = [k for k in story_events.EVENTS if k not in where and k not in _scene_events]
+# (events parked until the batch that walks their place, by Jordan: Black and White's Cheren at Victory Road waits for
+#  Unova's batch 12, the "two years ago" chapter; Unova 11-24, questions/UNOVA.md 14)
+PARKED = {"cheren_victory_road": "Unova batch 12"}
+missing = [k for k in story_events.EVENTS if k not in where and k not in _scene_events and k not in PARKED]
 check(not missing, f"every event has a button: missing {missing}")
 
 
