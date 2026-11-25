@@ -255937,7 +255937,7 @@
    "ccccccccccccccccccccc.....!.....ccccj==jccc||~oo~~~~~~oooo~roooo",
    "ccccccccccccccccccccc...........cccci==iccc||~oo~~~~~~oo~roooooo",
    "ccccccccccccccccccccc...........cccci==iccc||~oo~~~~~~oo~roooooo",
-   "ccccccccccccccccc..cc...........cccci==iccc||~oo~~~~~~oooo~roooo",
+   "cccccccccccccccccDDcc...........cccci==iccc||~oo~~~~~~oooo~roooo",
    "ccccccccccccccc.!...................=..=ko~||~oo~~~~~~oooo~roooo",
    "ccccccccccccaaaaaaaaaaaa.kkkkkkkkkkkkkkkko~||~oooooooooooo~roooo",
    "ccccccccccccaaaaaaaaaaaa.koooooooooooooooo~||~oooooooooooo~roooo",
@@ -261036,6 +261036,80 @@
      }
     ],
     "title": "Vista Lighthouse, the top"
+   },
+   "market": {
+    "theme": "room",
+    "title": "Sunyshore Market",
+    "art": [
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccccccccccc",
+     "ccc....cccc",
+     "c.cc...c.cc",
+     "cNc....c.cc",
+     "c.c....c.cc",
+     "c.c.......c",
+     "c....N.c..c",
+     "c.Nc...cN.c",
+     "c..c...c..c",
+     "cc.c....ccc",
+     "cccc.v....c",
+     "ccccccccccc"
+    ],
+    "exits": {
+     "v": "OUT:17,26"
+    },
+    "buildings": {},
+    "people": [
+     {
+      "text": "Seal merchant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Seal merchant: Ah, a moment of your time! I'd show you my Seals...",
+        "Seal merchant: ...but I've sold every last one today. Do come back another time!"
+       ]
+      }
+     },
+     {
+      "text": "Market shopper",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I came for the Seals, but there's nothing I want today. Maybe tomorrow!"
+       ]
+      }
+     },
+     {
+      "text": "Kind lady",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Oh? Show me your Pokemon. I can tell how hard one has worked."
+       ],
+       "world": "sinnoh_gifts",
+       "effort": true
+      }
+     },
+     {
+      "text": "Market sailor",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Sunyshore Market is famous for its Seals. Sailors bring them in from all over."
+       ]
+      }
+     }
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "pt_ground/C08R0101.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    }
    }
   },
   "inside": {
@@ -261046,7 +261120,9 @@
    "13,32": "house_0301",
    "43,7": "house_0401",
    "56,35": "house_0701",
-   "54,54": "lighthouse"
+   "54,54": "lighthouse",
+   "17,26": "market",
+   "18,26": "market"
   },
   "parts": true,
   "hidden": {
@@ -326062,7 +326138,7 @@
      "cc.......cc",
      "cc......-cc",
      "cc.......cc",
-     "cc.......cc",
+     "cc...N...cc",
      "cc.......cc",
      "cc..N.N..cc",
      "cc.......cc",
@@ -326105,6 +326181,22 @@
      "_models": true
     },
     "people": [
+     {
+      "text": "RARE CANDY",
+      "action": "EVENT",
+      "color": "GOLD",
+      "found": true,
+      "flag_condition": "not got_rare_candy_solaceon_ruins_final",
+      "event": {
+       "lines": [
+        "A Rare Candy, left in the ruins' last room."
+       ],
+       "gift_item": {
+        "RARE_CANDY": 1
+       },
+       "flag": "got_rare_candy_solaceon_ruins_final"
+      }
+     },
      "NUGGET",
      "HM DEFOG",
      "MIND PLATE",
