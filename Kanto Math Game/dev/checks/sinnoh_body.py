@@ -395,7 +395,7 @@ r = route("WAYWARD_CAVE", "SINNOH_ROUTE_206")
 _sl = [p for f in _tm["WAYWARD_CAVE"]["floors"] for row in f["art"] for p in row if p == "7"]
 check(len(_sl) >= 10, f"Wayward Cave: {len(_sl)} tiles of steep muddy slope need the Bicycle")
 r = route("VICTORY_ROAD_SINNOH", "SINNOH_POKEMON_LEAGUE")
-_nb = sum(row.count("b") for f in _tm["VICTORY_ROAD_SINNOH"]["floors"] for row in f["art"])
+_nb = sum(len(f.get("boxes") or []) for f in _tm["VICTORY_ROAD_SINNOH"]["floors"])   # (S6: pushed boulders now, the floors' "boxes")
 check(_nb >= 20, f"Victory Road: {_nb} Strength boulders stand where the game has them")
 # Victory Road 2F: Platinum's bike ramps (0xD7 ridden east, 0xD8 west): a short hop in normal gear, a long jump in top gear
 # (Shift held), the only ways into the north-west pockets (the Max Elixir's room), the Full Restore's and TM71's ledges.
@@ -1398,6 +1398,29 @@ _vg = any((p_ if isinstance(p_, str) else p_.get("text") if isinstance(p_, dict)
 check(_req and _door and _met and _gap0 and _st == 1 and _gap1 and _rooms and _vg,
       f"Sunyshore: Volkner at the Vista Lighthouse opens his Gym; its walkways turn as you step on a gear's middle, the scene with Platinum's gears turned (Platinum's) ({_req}, {_door}, {_met}, {_gap0}, {_st}, {_gap1} {_pic}, {_rooms}, {_vg})")
 story.story_flags.clear(); story.story_flags.update(_sv)
+
+# ---- S6 (11-24, s_s6_victory_road.py): Victory Road's Strength boulders pushed a tile at a time, back at their start on coming in
+_vr = _tm["VICTORY_ROAD_SINNOH"]["floors"]
+_n = (len(_vr[0].get("boxes") or []), len(_vr[4].get("boxes") or []))
+_sv, _bv = dict(story.story_flags), list(story.badges.get("SINNOH", []))
+story.badges["SINNOH"] = ["COAL", "FOREST", "COBBLE", "FEN", "RELIC", "MINE", "ICICLE", "BEACON"]
+story.inventory["HM_STRENGTH"] = 1
+story.story_flags.pop("boxes_VICTORY_ROAD_SINNOH_0", None)
+r = route("VICTORY_ROAD_SINNOH", "SINNOH_ROUTE_223")
+r.run.jump_floor(0, (19, 4)); frames(r, 3); r._place_boxes()
+_b = next((tuple(b) for b in _vr[0]["boxes"] for d in ((1, 0), (-1, 0), (0, 1), (0, -1))
+           if r.run.floor.walkable(b[0] - d[0], b[1] - d[1]) and r.run.floor.tile(b[0] + d[0], b[1] + d[1]) == 1
+           and (b[0] + d[0], b[1] + d[1]) not in r.run.floor.decor), None)
+_d = next(d for d in ((1, 0), (-1, 0), (0, 1), (0, -1)) if _b and r.run.floor.walkable(_b[0] - d[0], _b[1] - d[1])
+          and r.run.floor.tile(_b[0] + d[0], _b[1] + d[1]) == 1 and (_b[0] + d[0], _b[1] + d[1]) not in r.run.floor.decor) if _b else None
+_moved = bool(_b) and r._push_box(_b, *_d) and str(r.run.floor.decor.get((_b[0] + _d[0], _b[1] + _d[1]), "")).startswith("box:")
+story.last_area_key = "SINNOH_ROUTE_223"
+r = route("VICTORY_ROAD_SINNOH", "SINNOH_ROUTE_223")
+r.run.jump_floor(0, (19, 4)); frames(r, 3); r._place_boxes()
+_back = bool(_b) and str(r.run.floor.decor.get(_b, "")).startswith("box:")
+check(_n == (16, 10) and _moved and _back,
+      f"Victory Road: Platinum's 26 Strength boulders (2F {_n[0]}, the side room {_n[1]}) pushed a tile at a time, back at their start when you come in again ({_b}, {_d}, {_moved}, {_back})")
+story.story_flags.clear(); story.story_flags.update(_sv); story.badges["SINNOH"] = _bv
 
 # ---- S5 (11-24): Route 213's gatehouse is a room again, walked through (main a91de160: arrival by land or by sea)
 story.badges["SINNOH"] = ["COAL", "FOREST", "COBBLE", "FEN", "RELIC"]

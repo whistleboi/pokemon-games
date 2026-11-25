@@ -923,6 +923,10 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         if getattr(story, "last_area_key", None) in _ferry:   # (a ferry: the port you boarded at, so its sailor still knows where you're bound after a reload; a loaded save: none)
             story.story_flags[f"ferry_from_{self.area_key}"] = story.last_area_key
         self.recipe = recipe_for(game, self.area_key)
+        if getattr(story, "last_area_key", None) != self.area_key:   # (a floor's "boxes_fresh": its pushed boulders back where they
+            for _i, _f in enumerate((self.recipe.get("art") or {}).get("floors") or []):   # started each time you come into the place,
+                if _f.get("boxes_fresh"):                                               # as Platinum's Strength boulders; Sinnoh 11-24)
+                    story.story_flags.pop(f"boxes_{self.area_key}_{_i}", None)
         _hms = __import__("src.world.hms", fromlist=["usable"])
         if self.recipe.get("dark") and (_hms.usable(story, "HM_FLASH") or _hms.by_move(story, "HM_FLASH")):  # (Flash lights a dark cave:
             self.recipe = dict(self.recipe, fog=False, dark_radius=None)                                     #  the HM, or the TM's move in Gen 5+)

@@ -3789,7 +3789,7 @@
         "visited": "SINNOH_POKEMON_LEAGUE",
         "flag_not": "beat_sinnoh_champion"
       },
-      "target": "SINNOH_POKEMON_LEAGUE",
+      "target": "SINNOH_POKEMON_LEAGUE", "steps": [{"area": "SINNOH_POKEMON_LEAGUE", "room": "league_aaron", "at": [8, 5], "label": "Aaron", "done": "league_won_SINNOH_POKEMON_LEAGUE_1"}, {"area": "SINNOH_POKEMON_LEAGUE", "room": "league_bertha", "at": [8, 5], "label": "Bertha", "done": "league_won_SINNOH_POKEMON_LEAGUE_2"}, {"area": "SINNOH_POKEMON_LEAGUE", "room": "league_flint", "at": [8, 5], "label": "Flint", "done": "league_won_SINNOH_POKEMON_LEAGUE_3"}, {"area": "SINNOH_POKEMON_LEAGUE", "room": "league_lucian", "at": [8, 5], "label": "Lucian", "done": "league_won_SINNOH_POKEMON_LEAGUE_4"}, {"area": "SINNOH_POKEMON_LEAGUE", "room": "league_cynthia", "at": [8, 11], "label": "Cynthia", "done": "beat_sinnoh_champion"}],
       "completed_flag": "beat_sinnoh_champion",
       "reward": "Sinnoh Champion"
     },
