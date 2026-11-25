@@ -48,7 +48,9 @@ PLACES = {"ASPERTIA_CITY": 427, "UNOVA_ROUTE_19": 437, "UNOVA_ROUTE_20": 446, "F
           "UNOVA_ROUTE_14": 374, "ABUNDANT_SHRINE": 376, "UNOVA_ROUTE_15": 378, "MARVELOUS_BRIDGE": 263}   # (batch 11a)   # (batch 7a: both versions' chambers share the tables)
 # Unova two years ago (batch 12c, 11-25): run with --white to read Pokemon White's own tables into the past's areas.
 PLACES_W1 = {"PAST_UNOVA_ROUTE_1": 317, "PAST_UNOVA_ROUTE_2": 319, "PAST_STRIATON_CITY": 6, "PAST_DREAMYARD": 152,
-             "PAST_DREAMYARD_B1F": 153, "PAST_NUVEMA_TOWN": 389}
+             "PAST_DREAMYARD_B1F": 153, "PAST_NUVEMA_TOWN": 389,
+             "PAST_UNOVA_ROUTE_3": 321, "PAST_WELLSPRING_CAVE": 324, "PAST_WELLSPRING_CAVE_B1F": 325,
+             "PAST_PINWHEEL_FOREST_OUTSIDE": 154, "PAST_PINWHEEL_FOREST": 155}
 P = os.path.join(GAME, "assets", "unova_area_data.json")
 NL = "\r\n"
 

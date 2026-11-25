@@ -90,6 +90,37 @@ st = town("PAST_STRIATON_CITY", (6, 17), "center")
 talk(st, "Trainer with a C-Gear"); settle(400)
 check(story.current_area_key == "NUVEMA_TOWN", f"the C-Gear's Memory Link takes you home ({story.current_area_key})")
 
+print("7) Route 3 to Pinwheel Forest, two years ago")
+T2 = {k: tmaps[k] for k in ("PAST_UNOVA_ROUTE_3", "PAST_WELLSPRING_CAVE", "PAST_WELLSPRING_CAVE_B1F", "PAST_NACRENE_CITY",
+                            "PAST_PINWHEEL_FOREST_OUTSIDE", "PAST_PINWHEEL_FOREST")}
+check(tmaps["PAST_STRIATON_CITY"]["exits"].get("^") == "PAST_UNOVA_ROUTE_3"
+      and tmaps["PAST_STRIATON_CITY"]["gated_exits"].get("PAST_UNOVA_ROUTE_3") == ["past_badge_trio"],
+      "Striaton's north road to Route 3, once you hold the Trio Badge")
+check(set(T2["PAST_UNOVA_ROUTE_3"]["exits"].values()) == {"PAST_NACRENE_CITY", "PAST_STRIATON_CITY", "PAST_WELLSPRING_CAVE"}
+      and T2["PAST_NACRENE_CITY"]["exits"].get("<") == "PAST_PINWHEEL_FOREST_OUTSIDE"
+      and "PAST_UNOVA_ROUTE_3" in T2["PAST_NACRENE_CITY"]["exits"].values()
+      and set(T2["PAST_PINWHEEL_FOREST_OUTSIDE"]["exits"].values()) == {"PAST_PINWHEEL_FOREST", "PAST_NACRENE_CITY"},
+      "Route 3 -> Nacrene -> Pinwheel Forest; Wellspring Cave off Route 3")
+for k in ("PAST_UNOVA_ROUTE_3", "PAST_WELLSPRING_CAVE_B1F", "PAST_PINWHEEL_FOREST_OUTSIDE", "PAST_PINWHEEL_FOREST"):
+    pool = {t["name"] for t in SP[k]["trainer_pool"]}
+    check(SP[k].get("wild_tables") and set(T2[k].get("trainer_spots", [])) == pool, f"{k}: White's wild tables and trainers ({len(pool)})")
+
+print("8) Lenora and the Basic Badge")
+nac = T2["PAST_NACRENE_CITY"]["rooms"]
+check(nac["gym"].get("barred") and nac["gym"]["barred"][0]["until"]["condition"] == ["w1_nacrene_book"],
+      "the library's stairs wait for the librarian's book riddle")
+flags.pop("past_badge_basic", None)
+flags["w1_nacrene_book"] = True
+st = town("PAST_NACRENE_CITY", (5, 12), "office")
+talk(st, "Lenora")
+cur = until(("TrainerIntroState", "TrainerBattleState", "GymBattleState", "BattleState"), 800)
+t = team_of(cur)
+check(t == [(507, 18), (505, 20)], f"Lenora battles with White's own team ({t})")
+if type(cur).__name__ in ("TrainerIntroState", "TrainerBattleState", "GymBattleState", "BattleState"):
+    win(cur)
+settle(300)
+check(flags.get("past_badge_basic"), "the Basic Badge, a keepsake")
+
 for f_ in fails:
     print("  -", f_)
 print(f"##### {len(fails)} failures")

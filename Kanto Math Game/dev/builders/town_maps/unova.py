@@ -8755,6 +8755,194 @@ for _x in range(18, 24):
     _put_char(PAST_NUVEMA, _x, 0, "^")
 PAST_NUVEMA["edge_to"] = {"%d,0" % x: [x + 32, 62] for x in range(18, 24)}
 
+# ---- 12c, part 4 (11-25): the past's Route 3 (321; 322 the preschool, 323 the Day Care), Wellspring Cave (324 / 325),
+# Nacrene (16; 17 the Museum, 18 the Gym in its library - White's own room: the librarian's book riddle opens the way up -
+# 19 Lenora's office, where she battles you with White's team (Black 2 has none for her: Jordan's "else BW's"), the Basic
+# Badge a keepsake; 20 the Center, 21-26 houses and the cafe, 27 the gate) and Pinwheel Forest (154 / 155, 156 Rumination
+# Field). Striaton's north road opens onto Route 3 with the Trio Badge (BW: the man there wants a badge). Pinwheel's way to
+# Skyarrow Bridge waits for White's rail table.
+OUTSIDE_W1.update({322: 321, 323: 321, 17: 16, 18: -1, 19: -1, 20: 16, 21: 16, 22: 16, 23: 16, 24: 16, 25: 16, 26: 16,
+                   27: 16, 156: 155})
+
+
+def _past_mid():
+    out = {}
+    r3 = route(321, {
+        0: {"text": "Day-Care Man", "action": "DAYCARE"},
+        1: _say("Kid by the playground", "It's hard to win a Double Battle if one Pokemon faints."),
+        2: _say("Kid by the path", "Maybe I could have won if I'd used a Potion at some point?"),
+        3: _say("Nursery Aide by the path", "Battling is popular at this Day Care. Go in the playground and you'll be pestered into it!"),
+        28: _say("Kid by the preschool", "Sometimes they let us play with Pokemon!"),
+        17: _pball("Poke Ball in the west grass", "REPEL", "r3_repel", "a Repel"),
+        18: _pball("Poke Ball by the pond", "FULL_HEAL", "r3_full_heal", "a Full Heal"),
+        19: _pball("Poke Ball by the trees", "GREAT_BALL", "r3_great_ball", "a Great Ball"),
+        25: _pball("Poke Ball by the cave", "MAX_ETHER", "r3_max_ether", "a Max Ether"),
+        26: _pball("Poke Ball on the ledge", "HP_UP", "r3_hp_up", "an HP Up"),
+        29: _pball("Poke Ball in the south", "SUPER_POTION", "r3_super_potion", "a Super Potion"),
+        30: _pball("Poke Ball by the bridge", "ANTIDOTE", "r3_antidote", "an Antidote"),
+        31: _pball("Poke Ball in the dark grass", "AWAKENING", "r3_awakening", "an Awakening")},
+        {}, exits={"<": ("PAST_NACRENE_CITY", [(6, y) for y in range(54, 57)]), ">": ("PAST_STRIATON_CITY", [(x, 31) for x in range(77, 82)]),
+                   "n": ("PAST_WELLSPRING_CAVE", [(7, 10), (7, 11)])},
+        trainers={9: "Nursery Aide Autumn", 10: "Preschooler Wendy", 11: "Preschooler Tully", 12: "Preschooler Doyle",
+                  13: "Pokemon Breeder Adelaide", 14: "School Kid Al", 15: "School Kid Marsha", 16: "School Kid Edgar",
+                  20: "Pokemon Breeder Galen", 27: "School Kid Gina"},
+        hidden={"53,14": "ULTRA_BALL", "58,45": "RARE_CANDY", "18,34": "RARE_CANDY"},
+        rooms={"preschool": room(322, {0: _say("Day-Care couple's daughter", "I'm the daughter of the couple running the Day Care "
+                                               "next door! Parents and daughter, all bringing up youngsters!"),
+                                       1: _say("Preschooler", "Yeah! Yeah!"),
+                                       2: _say("Preschooler ", "Rrrraaaaar! I'll run! You gonna chase me?"),
+                                       4: _say("Preschooler  ", "Seriously. Guys are all just little boys.")}, {}, (68, 11)),
+               "daycare": room(323, {0: {"text": "Day-Care Lady", "action": "DAYCARE"},
+                                     1: _say("Man in the Day Care", "Pokemon in the Day Care learn new moves. Only four fit, so careful!")},
+                               {}, (77, 11))},
+        inside={"68,11": "preschool", "77,11": "daycare"}, title="Route 3 (two years ago)")
+    _doors(r3, r3["inside"])
+    _wall(r3, 64, 32, 95, 63)
+    r3["split"] = True
+    r3["edge_to"] = {"%d,31" % x: [x - 64, 1] for x in range(77, 82)}
+    for r, t in (("preschool", "Preschool"), ("daycare", "Pokémon Day Care")):
+        r3["rooms"][r]["title"] = t
+    out["route3"] = r3
+
+    out["ws"] = route(324, {1: _pball("Poke Ball in the cave", "ESCAPE_ROPE", "ws_escape_rope", "an Escape Rope"),
+                            6: _pball("Poke Ball by the water", "ELIXIR", "ws_elixir", "an Elixir"),
+                            7: _pball("Poke Ball on the ledge", "TM018", "ws_tm018", "TM018 Thief")},
+                      {}, exits={"v": ("PAST_UNOVA_ROUTE_3", [(30, 5), (31, 5)]), "b": ("PAST_WELLSPRING_CAVE_B1F", [(27, 23)])},
+                      hidden={"20,11": "PP_UP", "23,12": "FULL_HEAL"}, title="Wellspring Cave (two years ago)")
+    out["ws1"] = route(325, {0: _pball("Poke Ball on the north ledge", "TM158", "ws_tm158", "TM158 Focus Blast"),
+                             1: _pball("Poke Ball by the spring", "MYSTIC_WATER", "ws_mystic_water", "a Mystic Water"),
+                             2: _pball("Poke Ball in the south", "TM039", "ws_tm039", "TM039 Low Sweep"),
+                             4: _pball("Poke Ball in the deep", "DIVE_BALL", "ws_dive_ball", "a Dive Ball")},
+                       {}, exits={"^": ("PAST_WELLSPRING_CAVE", [(2, 58)])},
+                       trainers={3: "Black Belt Edward", 5: "Battle Girl Xiao", 6: "Battle Girl Maggie"},
+                       hidden={"22,4": "MAX_ELIXIR", "23,55": "MAX_POTION", "25,41": "REVIVE", "12,26": "HYPER_POTION"},
+                       title="Wellspring Cave B1F (two years ago)")
+
+    gym = room(18, {0: {"text": "Librarian", "action": "EVENT", "event": {
+                        "lines": ["...Hmhm. Oh! Did you find the memo? What does it say? \"Flame burns inside its body, and it gives off "
+                                  "smoke from its head while it runs.\"", "That's exactly how a locomotive looks! Here's the book... "
+                                  "and look: behind it, the stairs to the Gym Leader!"],
+                        "flag": "w1_nacrene_book", "done": ["Lenora's waiting upstairs. Good luck!"]}},
+                    1: _say("Gym guide", "All Trainers in this Gym use Normal types. Just between you and me: Fighting types show "
+                            "their strength here!"),
+                    2: _say("Girl reading", "Looking for a book? \"Nice to Meet You, Pokemon\" is on a shelf near the entrance.")},
+               {}, None, stairs={17: ("v", "ROOM:museum"), 19: ("^", "ROOM:office")})
+    gym["barred"] = [{"tiles": [[11, 9], [12, 10]], "until": {"condition": ["w1_nacrene_book"]},
+                      "lines": ["A bookshelf blocks the stairs. The librarian might know the right book."]}]
+    office = room(19, {0: [{"text": "Lenora", "action": "EVENT", "condition": ["not:past_badge_basic"], "event": {
+                               "lines": ["Lenora: Welcome! The director of the Nacrene Museum and the Nacrene Gym's Leader is me, Lenora!",
+                                         "Lenora: Well then, challenger, let me research how you battle with the Pokemon you've raised!"],
+                               "battle": dict(_w1(21, dialogue={"player_won": [
+                                   "Lenora: Your fighting style is so enchanting. You're worthy of this Basic Badge!"]}), **{"class": "GYM_LEADER"}),
+                               "flag": "past_badge_basic"}},
+                           _say("Lenora ", "Lenora: Some problems you can't solve even if you think about them your whole life. "
+                                "That's why my curiosity won't keep quiet!", condition=["past_badge_basic"])]},
+                  {}, None, stairs={18: ("v", "ROOM:gym")})
+    rooms = {
+        "museum": room(17, {0: _say("Museum receptionist", "Welcome to the Nacrene Museum!"),
+                            1: _say("Museum receptionist ", "You can get to the Pokemon Gym by going to the back of the museum!"),
+                            2: _say("Hawes", "Hawes: At the end of the Gym, a very strong and kind Gym Leader is waiting. She happens "
+                                    "to be my wife!"),
+                            3: _say("Scientist by the meteorite", "Perhaps there's a Pokemon that came from space with this meteorite."),
+                            4: _say("Man in the museum", "Rare Pokemon from around the world... Museums are packed with adventure!"),
+                            5: _say("Girl in the museum", "The Gym Leader here studies Fossils and ancient artifacts.")},
+                       {}, (36, 5), stairs={18: ("^", "ROOM:gym")}),
+        "gym": gym, "office": office,
+        "center": _past_center(20, (29, 21), 0, {2: _say("Lass in the Center", "Audino jumps out of rustling grass, and gives lots of "
+                                                         "Exp. Points!"),
+                                                 3: _say("Hiker in the Center", "The Fossils in the museum came from Twist Mountain. "
+                                                         "Clay donated them!"),
+                                                 9: _say("Boy by the PC", "Choose HELP at a Center's PC and you learn so much!")}),
+        "house_ne": room(22, {0: _say("Guitarist", "I play the guitar and battle every day, 'cause I enjoy it!"),
+                              1: _say("Kid in the house", "Even the same kind of Pokemon can have different natures!"),
+                              2: _say("Poet", "I am a poet... People dream when sleeping, but if a Pokemon dreams...")}, {}, (52, 6)),
+        "house_se": room(23, {0: _say("Pokemon in the house", "Pwoof..."),
+                              2: _say("Woman with a Pokemon", "Oh my, what a lovely Trainer! Your Pokemon seems very friendly toward you!"),
+                              3: _say("Boy in the house", "Traded Pokemon grow fast, but without enough Badges they may not listen!")},
+                         {}, (43, 18)),
+        "house_sw": room(24, {0: _say("Black Belt", "Wireless trades let us swap Pokemon with people far away!"),
+                              1: _say("Black Belt ", "I traded a Pokemon holding an item! It's like a present!"),
+                              2: _say("Boy by the counter", "Dire Hit? In Unova it's called Dire Hit. ...Critical hits are powerful!")},
+                         {}, (21, 18)),
+        "studio": room(25, {0: _say("Boy in the studio", "Burgh's an artist, and the Gym Leader in Castelia City. We want to be like him!"),
+                            1: _say("Artist in the studio", "Burgh used this warehouse until two years ago! He comes back with artist's block."),
+                            2: _say("Ace Trainer in the studio", "Lots of items work when Pokemon hold them. Go find them!")}, {}, (13, 21)),
+        "cafe": room(26, {0: _say("Waitress", "Welcome to Cafe Warehouse, a stylish cafe in a rural area!"),
+                          1: _say("Man at a table", "The Battle Box at the Pokemon Center is a useful thing, I hear."),
+                          2: _say("Woman at a table", "It doesn't matter that the cafe's in a place nobody knows."),
+                          4: _say("Girl at a table", "The Striaton Gym Leaders are a great triplet combo!")}, {}, (16, 8)),   # (White's kitchen waitress stands out of reach)
+        "gate_e": room(27, {0: _say("Gate guard", "Hello, Trainer! Potions are important for a trip!"),
+                            2: _say("Lass in the gate", "I should have bought more Poke Balls! I missed the one I wanted!")},
+                       {}, (63, 22), exits_extra={321: (">", "PAST_UNOVA_ROUTE_3")}),
+    }
+    nac = town(16, {0: _say("Accordionist", "How do you like the sound of accordions?"),
+                    1: _say("Old man on the tracks", "Nacrene is highly fashionable! And if you're a bit ordinary, that's cool here too."),
+                    2: _say("Woman by the storehouses", "These old storehouses were abandoned, until young artists made them studios."),
+                    3: _say("Girl by the cafe", "That warehouse... They're selling something good inside."),
+                    4: _say("Man by the warehouse", "It's just an old warehouse, but so popular! Makes me rethink what things are worth.")},
+               {}, {17: ("house", "museum"), 20: ("center", "center"), 22: ("house", "house_ne"), 23: ("house", "house_se"),
+                    24: ("house", "house_sw"), 25: ("house", "studio"), 26: ("house", "cafe"), 27: ("gate", "gate_e", "PAST_UNOVA_ROUTE_3")},
+               rooms, edges={"<": ("PAST_PINWHEEL_FOREST_OUTSIDE", [(0, y) for y in (10, 12, 13, 14, 15)])},
+               hidden={"1,25": "REVIVE", "24,8": "ULTRA_BALL"}, title="Nacrene City (two years ago)")
+    nac["edge_to"] = {"0,%d" % y: [30, y] for y in (10, 12, 13, 14, 15)}
+    for r, t in (("museum", "Nacrene Museum"), ("gym", "Nacrene Gym"), ("office", "Lenora's Office"), ("center", "Pokémon Center"),
+                 ("house_ne", "House"), ("house_se", "House"), ("house_sw", "House"), ("studio", "Warehouse Studio"),
+                 ("cafe", "Cafe Warehouse"), ("gate_e", "Nacrene Gate")):
+        nac["rooms"][r]["title"] = t
+    out["nacrene"] = nac
+
+    pwo = route(154, {0: _say("Lass by the path", "Go straight and it doesn't take long. Go the wrong way and it's a maze."),
+                      4: _pball("Poke Ball by the puddles", "NET_BALL", "pwo_net_ball", "a Net Ball"),
+                      5: _pball("Poke Ball on the tracks", "ANTIDOTE", "pwo_antidote", "an Antidote"),
+                      6: _pball("Poke Ball in the south", "SUPER_POTION", "pwo_super_potion", "a Super Potion"),
+                      7: _pball("Poke Ball by the fence", "GREAT_BALL", "pwo_great_ball", "a Great Ball"),
+                      13: _pball("Poke Ball by the west fence", "ETHER", "pwo_ether", "an Ether")},
+                {}, exits={"<": ("PAST_PINWHEEL_FOREST", [(8, y) for y in range(12, 16)]),
+                           ">": ("PAST_NACRENE_CITY", [(31, y) for y in (10, 12, 13, 14, 15)])},
+                trainers={2: "Youngster Zachary", 3: "Youngster Keita", 8: "Preschooler Homer", 9: "Preschooler Juliet",
+                          10: "Battle Girl Lee", 12: "Nurse Shery", 14: "Black Belt Kentaro"},
+                hidden={"27,6": "SUPER_POTION", "21,59": "ANTIDOTE", "52,44": "ETHER", "14,43": "TINY_MUSHROOM"},
+                title="Pinwheel Forest (two years ago)")
+    for box in ((32, 0, 63, 31), (38, 63, 63, 63)):
+        _wall(pwo, *box)
+    pwo["split"] = True
+    pwo["edge_to"] = {"31,%d" % y: [1, y] for y in (10, 12, 13, 14, 15)}
+    out["pwo"] = pwo
+
+    pw = route(155, {0: _say("Runner in the forest", "I run every day! My goal is to be Unova's marathon champion!"),
+                     1: _say("Worker in the forest", "The trees cut on this forest road go from Driftveil City out to the world."),
+                     2: _say("Scientist in the forest", "Have you heard of phytoncides? They say that's why forests feel good!"),
+                     28: _pball("Poke Ball by the stream", "PARALYZE_HEAL", "pw_paralyze_heal", "a Paralyze Heal"),
+                     29: _pball("Poke Ball in the north woods", "TM081", "pw_tm081", "TM081 Grass Knot"),
+                     30: _pball("Poke Ball in the west woods", "BIG_ROOT", "pw_big_root", "a Big Root"),
+                     31: _pball("Poke Ball in the far east", "TM168", "pw_tm168", "TM168 Solar Beam"),
+                     36: _pball("Poke Ball in the south woods", "SILVER_POWDER", "pw_silver_powder", "a Silver Powder"),
+                     38: _pball("Poke Ball by the east path", "HYPER_POTION", "pw_hyper_potion", "a Hyper Potion"),
+                     39: _pball("Poke Ball in the middle", "MIRACLE_SEED", "pw_miracle_seed", "a Miracle Seed"),
+                     46: _pball("Poke Ball by the south path", "SUPER_POTION", "pw_super_potion", "a Super Potion"),
+                     47: _pball("Poke Ball by the bridge", "ANTIDOTE", "pw_antidote", "an Antidote")},
+               {}, exits={">": ("PAST_PINWHEEL_FOREST_OUTSIDE", [(86, y) for y in range(73, 78)])},
+               trainers={6: "Twins Mayo & May", 7: "Twins Mayo & May", 8: "Lass Eva", 9: "Pokemon Ranger Miguel",
+                         10: "Pokemon Ranger Forrest", 11: "Pokemon Ranger Irene", 12: "Pokemon Ranger Audra",
+                         13: "School Kid Sammy", 14: "School Kid Millie", 15: "Youngster Nicholas"},
+               hidden={"88,55": "RARE_CANDY", "14,56": "TINY_MUSHROOM", "35,80": "TINY_MUSHROOM"},
+               rooms={"field": room(156, {}, {}, (107, 27))}, inside={"107,27": "field", "108,27": "field"},
+               title="Pinwheel Forest (two years ago)")
+    _doors(pw, pw["inside"])
+    pw["split"] = True
+    pw["rooms"]["field"]["title"] = "Rumination Field"
+    out["pw"] = pw
+    return out
+
+
+PAST_M = _past(_past_mid)
+_st = PAST_W["striaton"]
+_st["exits"]["^"] = "PAST_UNOVA_ROUTE_3"
+for _x in range(13, 18):
+    _put_char(_st, _x, 0, "^")
+_st["edge_to"].update({"%d,0" % x: [x + 64, 30] for x in range(13, 18)})
+_st["gated_exits"] = {"PAST_UNOVA_ROUTE_3": ["past_badge_trio"]}   # (BW: the man on the north road wants a Gym Badge first)
+
 # ======================================================================================================== batch 12b (11-25)
 # Black 2's north after the title (walkthrough part 19): Tubeline Bridge (254: from Route 9's gate 349 to Route 8's gate
 # 347), Route 8 (345: the rock giver, a Hip Wader), the Moor of Icirrus (346), Icirrus City (113: the old Gym 114, the
@@ -8975,4 +9163,4 @@ MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": 
         "VICTORY_ROAD_RIVER": VR_RIVER, "VICTORY_ROAD_CAVE_2F": VR_2F, "VICTORY_ROAD_2F_BACK": VR_2F_BACK,
         "VICTORY_ROAD_MOUNTAINSIDE": VR_MOUNTAIN, "VICTORY_ROAD_3F": VR_3F, "VICTORY_ROAD_TUNNEL": VR_TUNNEL,   # (batch 10a)
         "UNOVA_POKEMON_LEAGUE": LEAGUE,   # (batch 10b)
-        "UNOVA_ROUTE_14": ROUTE_14, "N_CASTLE": N_CAVE, "SKYARROW_BRIDGE": SKYARROW, "PINWHEEL_FOREST": PINWHEEL, "PINWHEEL_FOREST_OUTSIDE": PINWHEEL_OUT, "NACRENE_CITY": NACRENE, "UNOVA_ROUTE_3": ROUTE_3, "WELLSPRING_CAVE": WELLSPRING, "WELLSPRING_CAVE_B1F": WELLSPRING_B1, "STRIATON_CITY": STRIATON, "DREAMYARD": DREAMYARD_MAP, "DREAMYARD_B1F": DREAMYARD_B1, "UNOVA_ROUTE_2": ROUTE_2, "ACCUMULA_TOWN": ACCUMULA, "UNOVA_ROUTE_1": ROUTE_1, "NUVEMA_TOWN": NUVEMA, "PAST_NUVEMA_TOWN": PAST_NUVEMA, "PAST_UNOVA_ROUTE_1": PAST_W["route1"], "PAST_ACCUMULA_TOWN": PAST_W["accumula"], "PAST_UNOVA_ROUTE_2": PAST_W["route2"], "PAST_STRIATON_CITY": PAST_W["striaton"], "PAST_DREAMYARD": PAST_W["dreamyard"], "PAST_DREAMYARD_B1F": PAST_W["dreamyard_b1"], "TUBELINE_BRIDGE": TUBELINE, "UNOVA_ROUTE_8": ROUTE_8, "MOOR_OF_ICIRRUS": MOOR, "ICIRRUS_CITY": ICIRRUS, "DRAGONSPIRAL_TOWER": DRAGONSPIRAL, "BLACK_CITY": BLACK_CITY, "WHITE_FOREST": WHITE_FOREST, "ABUNDANT_SHRINE": SHRINE, "UNOVA_ROUTE_15": ROUTE_15, "MARVELOUS_BRIDGE": BRIDGE}   # (batch 11a)
+        "UNOVA_ROUTE_14": ROUTE_14, "N_CASTLE": N_CAVE, "SKYARROW_BRIDGE": SKYARROW, "PINWHEEL_FOREST": PINWHEEL, "PINWHEEL_FOREST_OUTSIDE": PINWHEEL_OUT, "NACRENE_CITY": NACRENE, "UNOVA_ROUTE_3": ROUTE_3, "WELLSPRING_CAVE": WELLSPRING, "WELLSPRING_CAVE_B1F": WELLSPRING_B1, "STRIATON_CITY": STRIATON, "DREAMYARD": DREAMYARD_MAP, "DREAMYARD_B1F": DREAMYARD_B1, "UNOVA_ROUTE_2": ROUTE_2, "ACCUMULA_TOWN": ACCUMULA, "UNOVA_ROUTE_1": ROUTE_1, "NUVEMA_TOWN": NUVEMA, "PAST_NUVEMA_TOWN": PAST_NUVEMA, "PAST_UNOVA_ROUTE_1": PAST_W["route1"], "PAST_ACCUMULA_TOWN": PAST_W["accumula"], "PAST_UNOVA_ROUTE_2": PAST_W["route2"], "PAST_STRIATON_CITY": PAST_W["striaton"], "PAST_DREAMYARD": PAST_W["dreamyard"], "PAST_DREAMYARD_B1F": PAST_W["dreamyard_b1"], "PAST_UNOVA_ROUTE_3": PAST_M["route3"], "PAST_WELLSPRING_CAVE": PAST_M["ws"], "PAST_WELLSPRING_CAVE_B1F": PAST_M["ws1"], "PAST_NACRENE_CITY": PAST_M["nacrene"], "PAST_PINWHEEL_FOREST_OUTSIDE": PAST_M["pwo"], "PAST_PINWHEEL_FOREST": PAST_M["pw"], "TUBELINE_BRIDGE": TUBELINE, "UNOVA_ROUTE_8": ROUTE_8, "MOOR_OF_ICIRRUS": MOOR, "ICIRRUS_CITY": ICIRRUS, "DRAGONSPIRAL_TOWER": DRAGONSPIRAL, "BLACK_CITY": BLACK_CITY, "WHITE_FOREST": WHITE_FOREST, "ABUNDANT_SHRINE": SHRINE, "UNOVA_ROUTE_15": ROUTE_15, "MARVELOUS_BRIDGE": BRIDGE}   # (batch 11a)

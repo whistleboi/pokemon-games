@@ -16,6 +16,37 @@
    509
   ]
  },
+ "21": {
+  "b2_id": 21,
+  "class": "LEADER",
+  "levels": [
+   18,
+   20
+  ],
+  "movesets": {
+   "505": [
+    "LEER",
+    "CRUNCH",
+    "RETALIATE",
+    "HYPNOSIS"
+   ],
+   "507": [
+    "TAKE-DOWN",
+    "BITE",
+    "RETALIATE",
+    "LEER"
+   ]
+  },
+  "name": "Leader Lenora",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "leader.png",
+  "team": [
+   507,
+   505
+  ]
+ },
  "9": {
   "b2_id": 9,
   "class": "WAITER",
