@@ -154,4 +154,12 @@ for i, m in missions.items():
 check(not _bad_t, f"every SIDE mission's target is a real place ({_bad_t})")
 check(not _bad_f, f"every SIDE mission can finish: its done flag is set somewhere, or it stops showing ({_bad_f})")
 
+print("A step's when / done can name a version (Unova's card, 11-24)")
+_st = g.story_manager
+_old = _st.story_flags.get("unova_version")
+_st.story_flags["unova_version"] = "WHITE_2"
+check(guide._ok(_st, "unova_version:WHITE_2") and not guide._ok(_st, "unova_version:BLACK_2"), "guide._ok reads unova_version:<V>")
+check(guide._ok(_st, ["unova_version:WHITE_2", "not:unova_version:BLACK_2"]), "and inside lists and not:")
+_st.story_flags["unova_version"] = _old
+
 print(f"##### {fails} failures")
