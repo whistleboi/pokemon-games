@@ -3130,7 +3130,7 @@ class WalkTownState(TownWalkUps, CityState):
                 good.add((None, t))
         return good or tiles
 
-    def _guide_walk(self, goals, tog=frozenset()):
+    def _guide_walk(self, goals, tog=frozenset(), frm=None):
         """The shortest walk from where you stand to one of goals ({(room, tile)}), over this place's rooms: through
         doors, mats, stairs and pads, round whoever and whatever stands in the way now. -> (the goal reached, the first
         door / mat / stairs / pad on the way and its kind, or None when the goal is in this room), or None: no way."""
@@ -3211,7 +3211,7 @@ class WalkTownState(TownWalkUps, CityState):
         rides = lambda room: _rid[room] if room in _rid else _rid.setdefault(room, self._guide_rides(room)[0])
         _lif = {}
         lifts = lambda room: _lif[room] if room in _lif else _lif.setdefault(room, self._guide_lifts(room))
-        start = (here, tuple(self.player))
+        start = frm or (here, tuple(self.player))   # (frm: walked on from a switch just pressed - the coaster's cars go one way)
         prev, q = {start: None}, deque([start])
         found = None
         while q and found is None:
@@ -3322,18 +3322,18 @@ class WalkTownState(TownWalkUps, CityState):
             for r in [here] + [r for r in (self.town_map.get("rooms") or {}) if r != here]:
                 for t, f in self._guide_rides(r)[1].items():
                     sw.setdefault(f, (r, t))
-            if sw:   # (a search over the switches' states: each one you can reach as they stand flips one flag; the first
-                from collections import deque as _dq   #  switch on the shortest run of presses that opens a way)
-                first_of, q2 = {frozenset(): None}, _dq([frozenset()])
-                while q2:
-                    T = q2.popleft()
-                    if T and self._guide_walk(goals, T):
-                        return self._guide_toward({sw[first_of[T]]}, "Switch")
+            if sw:   # (a search over the switches' states and where you stand: each switch you can reach from there, as they
+                from collections import deque as _dq   #  stand, flips one flag and leaves you on it; the first switch on the
+                first_of, q2 = {(frozenset(), None): None}, _dq([(frozenset(), None)])   #  shortest run of presses that opens a way)
+                while q2 and len(first_of) < 400:
+                    T, at = q2.popleft()
+                    if T and self._guide_walk(goals, T, at):
+                        return self._guide_toward({sw[first_of[(T, at)]]}, "Switch")
                     for f, spot in sw.items():
-                        T2 = T ^ {f}
-                        if T2 not in first_of and self._guide_walk({spot}, T):
-                            first_of[T2] = first_of[T] or f
-                            q2.append(T2)
+                        S2 = (T ^ {f}, spot)
+                        if S2 not in first_of and spot != at and self._guide_walk({spot}, T, at):
+                            first_of[S2] = first_of[(T, at)] or f
+                            q2.append(S2)
         if hit:
             (room, tile), first = hit
             if first is None:
