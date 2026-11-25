@@ -2,6 +2,7 @@
 #   bash dev/checks/run.sh journal_parts
 # assets/journal_parts.json (dev/builders/journal_parts_body.py: the walker's own reach, per HM that changes a place) tells
 # the marker which ways out of a place join which; the planner then never sends you in by a part that can't lead on.
+import itertools
 from src.world import guide
 from src.states.overworld import CityState
 fails = 0
@@ -73,5 +74,27 @@ for _v, _at in (("BLACK_2", (45, 104)), ("WHITE_2", (21, 98))):
     _ds = DungeonState(g)
     _hit = _ds._guide_step(_m)
     check(_hit is not None, f"{_v}: the marker leads to Colress's step on Route 4 ({_hit}, his spot {_at})")
+
+
+print("Rides and lifts in a town's rooms (Unova's card, 11-24)")
+story.story_flags.pop("unova_version", None)
+co = walk_town("NIMBASA_CITY", None, room="coaster", play=False)
+_rides, _sw = co._guide_rides("coaster")
+for _f in _sw.values():
+    story.story_flags.pop(_f, None)
+co.player = (30, 41)
+check(co._guide_walk({("coaster", (28, 5))}) is None, "Nimbasa's coaster: with the switches as they start, no walk reaches its back room")
+_hit = co._guide_toward({("coaster", (28, 5))}, "Elesa")
+check(_hit and _hit[1] == "Switch" and _hit[0] in _sw, f"so the marker points at the switch to press first ({_hit})")
+check(any(co._guide_walk({("coaster", (28, 5))}, frozenset(c)) for n in range(1, 4) for c in itertools.combinations(sorted(set(_sw.values())), n)),
+      "and some run of switches lets the cars carry you there")
+lob = walk_town("DRIFTVEIL_CITY", None, room="gym_lobby", play=False)
+_hit = lob._guide_toward({("gym", (10, 87))}, "Clay")
+check(_hit and _hit[1].startswith("Lift to") and (getattr(lob, "_lift_plan", None) or [None, None])[1] == "gym",
+      f"Driftveil Gym's lobby: the marker leads to the lift and picks the Gym floor ({_hit}, {getattr(lob, '_lift_plan', None)})")
+lux = walk_town("DRIFTVEIL_CITY", None, room="luxury", play=False)
+_hit = lux._guide_toward({("luxury_23", (3, 4))}, "Up top")
+check(_hit and (getattr(lux, "_lift_plan", None) or [None, None])[1] == "luxury_23",
+      f"the Luxury Suites: the lift, to 23F ({_hit})")
 
 print(f"##### {fails} failures")
