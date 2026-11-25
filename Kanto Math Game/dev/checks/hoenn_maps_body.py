@@ -12,8 +12,10 @@ from src.states.menus import StarterSelectionState as _SSS
 fails = []
 import os as _os
 # (11-23, speed: half the suite's time went into drawing every frame - nothing here reads the screen but the pictures.
-#  Draw one frame in DRAW_EVERY, and always while someone talks; HM_DRAW_EVERY=1 draws them all, as before.)
-DRAW_EVERY = max(1, int(_os.environ.get("HM_DRAW_EVERY", "4")))
+#  Draw one frame in DRAW_EVERY, and always while someone talks; HM_DRAW_EVERY=1 draws them all, as before.
+#  11-25, the Checks branch's profile: no check here reads the screen between those, so the default draws only while
+#  someone talks, on frames()'s last frame and where a check draws for itself (the deck pictures): 157 s -> 109 s.)
+DRAW_EVERY = max(1, int(_os.environ.get("HM_DRAW_EVERY", "1000000")))
 _drawn = [0]
 
 
