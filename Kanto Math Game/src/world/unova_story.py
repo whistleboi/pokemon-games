@@ -90,7 +90,7 @@ def _tm_lady(state, story, show):
 
 def _daily_catch(state, story, d, show):
     """Today's species (the same all day, from the place's water); one of it in your party earns the gift, once a day. (Black 2
-    also wants it caught that same day; our Pokemon keep no catch date, so any of that species counts.)"""
+    also wants it caught that same day: p.caught_today(), the catch date each Pokemon keeps; a Pokemon from an older save has none.)"""
     import datetime
     import random
     from src.minigames.base import species_name
@@ -101,7 +101,8 @@ def _daily_catch(state, story, d, show):
     if flags.get(d["key"]) == today:
         show(d.get("done") or ["Come back tomorrow!"])
         return
-    if not any(p and not getattr(p, "is_egg", False) and getattr(p, "id", None) == sp for p in story.player_team):
+    if not any(p and not getattr(p, "is_egg", False) and getattr(p, "id", None) == sp
+               and getattr(p, "caught_today", lambda: False)() for p in story.player_team):
         show([line.replace("{species}", name) for line in d["ask"]])
         return
     flags[d["key"]] = today
