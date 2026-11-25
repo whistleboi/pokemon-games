@@ -6140,6 +6140,11 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
             plan, shut, gone, wait, turn = plan_of(i), set(), set(), {}, []
             pushed = {sw["flag"]: sw for sw in plan.get("boulder_switches") or []}
             for bar in plan.get("barred", []):
+                if bar.get("when") and not self.npc_shown(bar["when"]):   # (a bar only while its "when" holds, as the walk
+                    continue                                                #  reads it: Route 21's "the ship has flown away"; 11-25)
+                if bar.get("when") and not (bar.get("until") or bar.get("item") or bar.get("flag")):
+                    shut.update(tuple(t) for t in bar.get("tiles", []))
+                    continue
                 u = bar.get("until") if isinstance(bar.get("until"), dict) else {}
                 fc = str(u.get("flag_condition") or "").split()
                 if len(u) == 1 and fc and fc[-1] in flips:  # (a gate a statue switch swings: shut or open by how the switch stands)
