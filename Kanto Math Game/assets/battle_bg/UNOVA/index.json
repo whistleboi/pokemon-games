@@ -1,6 +1,7 @@
 {
  "areas": {
   "ABUNDANT_SHRINE": "bg00.png",
+  "ACCUMULA_TOWN": "bg02.png",
   "ANVILLE_TOWN": "bg01.png",
   "ASPERTIA_CITY": {
    "gym": "bg03.png",
@@ -28,6 +29,8 @@
   "CHARGESTONE_CAVE_ENTRANCE": "bg07.png",
   "DESERT_RESORT": "bg10.png",
   "DESERT_RESORT_ENTRANCE": "bg10.png",
+  "DREAMYARD": "bg00.png",
+  "DREAMYARD_B1F": "bg09.png",
   "DRIFTVEIL_CITY": {
    "gym": "bg09.png",
    "leader": "bg09.png",
@@ -70,6 +73,7 @@
    "trainer": "bg02.png",
    "wild": "bg02.png"
   },
+  "NUVEMA_TOWN": "bg02.png",
   "N_CASTLE": "bg04.png",
   "OPELUCID_CITY": {
    "gym": "bg09.png",
@@ -97,10 +101,12 @@
   "SEASIDE_CAVE_B1F": "bg05.png",
   "SKYARROW_BRIDGE": "bg02.png",
   "STRANGE_HOUSE": "bg09.png",
+  "STRIATON_CITY": "bg02.png",
   "TWIST_MOUNTAIN_ENTRANCE": "bg07.png",
   "UNDELLA_BAY": "bg08.png",
   "UNDELLA_TOWN": "bg02.png",
   "UNOVA_POKEMON_LEAGUE": "bg07.png",
+  "UNOVA_ROUTE_1": "bg00.png",
   "UNOVA_ROUTE_11": "bg00.png",
   "UNOVA_ROUTE_12": "bg00.png",
   "UNOVA_ROUTE_13": "bg00.png",
@@ -108,6 +114,7 @@
   "UNOVA_ROUTE_15": "bg02.png",
   "UNOVA_ROUTE_16": "bg00.png",
   "UNOVA_ROUTE_19": "bg01.png",
+  "UNOVA_ROUTE_2": "bg00.png",
   "UNOVA_ROUTE_20": "bg01.png",
   "UNOVA_ROUTE_21": "bg08.png",
   "UNOVA_ROUTE_22": "bg00.png",

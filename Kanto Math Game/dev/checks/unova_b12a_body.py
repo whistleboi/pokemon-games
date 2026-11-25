@@ -26,6 +26,7 @@ tmaps = json.load(open("assets/town_maps.json", encoding="utf-8"))
 prog = json.load(open("assets/unova_area_data.json", encoding="utf-8"))
 SP = prog["STORY_PROGRESSION"]
 exec(open("dev/checks/unova_lib.py", encoding="utf-8").read())
+BATTLES = ("TrainerIntroState", "TrainerBattleState", "DoubleBattleState", "GymBattleState", "BattleState")
 
 print("1) the places and how they join")
 sky, pw, pwo = tmaps["SKYARROW_BRIDGE"], tmaps["PINWHEEL_FOREST"], tmaps["PINWHEEL_FOREST_OUTSIDE"]
@@ -107,6 +108,77 @@ check(hanky[0]["ready"] == ["weekday:sun"] and "GRUBBY_HANKY" in hanky[0]["gift_
 print("6) Route 3's Day Care")
 dc = [o for p in r3["rooms"]["daycare"]["people"] + r3["people"] for o in (p if isinstance(p, list) else [p]) if o.get("action") == "DAYCARE"]
 check(len(dc) == 2, "the Day-Care Lady inside and the Day-Care Man outside")
+
+print("7) the second half: Striaton, the Dreamyard, Route 2, Accumula, Route 1, Nuvema")
+st_, dy, dy1 = tmaps["STRIATON_CITY"], tmaps["DREAMYARD"], tmaps["DREAMYARD_B1F"]
+r2, acc, r1, nuv = tmaps["UNOVA_ROUTE_2"], tmaps["ACCUMULA_TOWN"], tmaps["UNOVA_ROUTE_1"], tmaps["NUVEMA_TOWN"]
+check(r3["edge_to"].get("79,31") == [15, 1] and st_["edge_to"].get("15,0") == [79, 30], "Route 3 and Striaton's north road meet tile for tile")
+check({"UNOVA_ROUTE_3", "UNOVA_ROUTE_2", "DREAMYARD"} <= set(st_["exits"].values())
+      and {"restaurant", "center", "school"} <= set(st_["rooms"]), "Striaton: Route 3, Route 2, the Dreamyard; the restaurant, Center, school")
+check(set(dy["exits"].values()) == {"STRIATON_CITY", "DREAMYARD_B1F"} and set(dy1["exits"].values()) == {"DREAMYARD"}
+      and len([k for k, v in dy["edge_to"].items() if v in ([25, 3], [4, 20], [25, 27])]) == 9,
+      "the Dreamyard's three stairways each lead to their own spot in the basement")
+check(set(r2["exits"].values()) == {"STRIATON_CITY", "ACCUMULA_TOWN"} and "grotto" in r2["rooms"], "Route 2: Striaton, Accumula's gate; a Hidden Grotto")
+check(acc["rooms"]["gate_w"]["exits"].get("<") == "UNOVA_ROUTE_2" and acc["exits"].get("v") == "UNOVA_ROUTE_1",
+      "Accumula: its gate west to Route 2, south to Route 1")
+check(set(r1["exits"].values()) == {"ACCUMULA_TOWN", "NUVEMA_TOWN"} and r1["rooms"]["gate"]["exits"].get("<") == "UNOVA_ROUTE_17",
+      "Route 1: Accumula, Nuvema; its gate to Route 17")
+check(nuv["exits"].get("^") == "UNOVA_ROUTE_1" and {"hero", "hero_2f", "bianca", "cheren", "lab"} <= set(nuv["rooms"]),
+      "Nuvema: the hero's house, Bianca's and Cheren's, Juniper's lab")
+for k in ("DREAMYARD", "DREAMYARD_B1F", "UNOVA_ROUTE_2", "UNOVA_ROUTE_1"):
+    pool = {t["name"] for t in SP[k]["trainer_pool"]}
+    check(SP[k].get("wild_tables") and set(tmaps[k].get("trainer_spots", [])) == pool, f"{k}: Black 2's wild tables and trainers ({len(pool)})")
+lati = [o for p in dy["people"] for o in (p if isinstance(p, list) else [p]) if o.get("action") == "BOSS"]
+check(sorted((o["boss"]["id"], o["boss"]["level"]) for o in lati) == [(380, 68), (381, 68)],
+      "the Dreamyard's walkway: Latios (Black 2) / Latias (White 2), Lv 68")
+
+print("8) the restaurant's Multi Battle")
+flags.pop("b2_striaton_multi", None)
+for k in [k for k in flags if k.startswith("b2_striaton_multi@")]:
+    flags.pop(k)
+st = town("STRIATON_CITY", (10, 17), "restaurant")
+talk(st, "Cilan")
+cur = until(BATTLES, 800)
+t = team_of(cur)
+opts = getattr(getattr(cur, "next_state", None) or cur, "battle_options", None) or {}
+check(type(cur).__name__ in BATTLES and t[:3] == [(631, 65), (555, 65), (514, 67)], f"Cilan teams up with you against Chili and Cress ({t})")
+if type(cur).__name__ in BATTLES:
+    win(cur)
+settle(300)
+check(any(k.startswith("b2_striaton_multi@") for k in flags), "once a day")
+
+print("9) Accumula's people")
+from src.pokemon.data import Pokemon as _P
+keep = list(story.player_team)
+story.player_team = [_P(g.loader.fetch_specific(595), g.assets)] + keep[:1]   # (Joltik: 0.1 m)
+dolls = story.inventory.get("POKE_DOLL", 0)
+st = town("ACCUMULA_TOWN", (8, 25))
+talk(st, "Youngster on the lower level"); settle(200)
+check(story.inventory.get("POKE_DOLL", 0) == dolls + 1, "the tiny-Pokemon fan: a Poke Doll for your Joltik")
+flags["starter_unova"] = 501
+gems = story.inventory.get("WATER_GEM", 0)
+flags.pop("b2_acc_quiz", None)
+st = town("ACCUMULA_TOWN", (6, 6), "house_nw_2f")
+talk(st, "Girl with a Pokedex"); settle(200)
+check(story.inventory.get("WATER_GEM", 0) == gems + 1, "the first-partner quiz: Oshawott's height, a Water Gem")
+rock = _P(g.loader.fetch_specific(76), g.assets); rock.ability_override = "SOLID-ROCK"
+story.player_team = [rock] + keep[:1]
+stones = story.inventory.get("DAWN_STONE", 0)
+flags.pop("b2_r2_solid_rock", None)
+ds = walked("UNOVA_ROUTE_2", (60, 11))
+lady = next((m for m in ds.run.floor.movers if m.kind == "figure" and isinstance(m.payload, dict) and m.payload.get("text") == "Lady on the hill"), None)
+if lady:
+    ds._get_route_callback(lady.payload)(); settle(200)
+check(lady is not None and story.inventory.get("DAWN_STONE", 0) == stones + 1, "Route 2's Lady: a Pokemon with Solid Rock, a Dawn Stone")
+story.player_team = keep
+
+print("10) Nuvema")
+juice = story.inventory.get("BERRY_JUICE", 0)
+st = town("NUVEMA_TOWN", (5, 9), "cheren")
+talk(st, "Cheren's Dad"); settle(200)
+check(story.inventory.get("BERRY_JUICE", 0) == juice + 1, "Cheren's father thanks his son's first Gym challenger with a Berry Juice")
+lab = {o.get("text") for p in nuv["rooms"]["lab"]["people"] for o in (p if isinstance(p, list) else [p])}
+check({"Cedric Juniper", "Professor Juniper"} <= lab, "Juniper's lab: Cedric (the Super Rod) and the Professor")
 
 for f_ in fails:
     print("  -", f_)

@@ -48,7 +48,8 @@ PLACES = {"NIMBASA_CITY": [62, 64, 63, 585], "UNOVA_ROUTE_16": [383], "LOSTLORN_
           "VICTORY_ROAD_CAVE_2F": [590], "VICTORY_ROAD_MOUNTAINSIDE": [592], "VICTORY_ROAD_3F": [593],
           "UNOVA_ROUTE_14": [374], "ABUNDANT_SHRINE": [376], "UNOVA_ROUTE_15": [378],
           "PINWHEEL_FOREST": [155], "PINWHEEL_FOREST_OUTSIDE": [154], "UNOVA_ROUTE_3": [321], "WELLSPRING_CAVE": [324],
-          "WELLSPRING_CAVE_B1F": [325]}   # (batch 10a: each version's
+          "WELLSPRING_CAVE_B1F": [325],
+          "DREAMYARD": [152], "DREAMYARD_B1F": [153], "UNOVA_ROUTE_2": [319], "UNOVA_ROUTE_1": [317]}   # (batch 10a: each version's
           #  people share the zone's trainers; the River Valley's two versions hold different ones)
 EXTRA = {"UNOVA_ROUTE_5": [(339, "unova_version:BLACK_2"), (340, "unova_version:WHITE_2")]}   # (Charles at the drawbridge)
 CLASS_FIX = {"⒆⒇": "Pokemon", "⑮": "F", "⑭": "M"}   # (the file's PKMN glyph, female / male signs)
@@ -81,7 +82,7 @@ TEAMS = [207, 208, 209, 153,                     # Elesa's Beauties, Elesa
          684, 685, 686,   # (batch 10a) Hugh in Victory Road's tunnel (by your starter)
          38, 40, 41, 39, 341, 143, 145, 146, 144, 536,   # (batch 10b) the Elite Four and Iris; their rematches
          693, 694, 695, 696, 697, 698, 456,   # (batch 11a)
-         5, 6, 782, 783, 784, 785]   # (batch 11c) N: Zekrom (Black 2) / Reshiram (White 2); his seasonal rematches. (11a) Hugh in Undella and once a day after; Cynthia   # Black 2's Grunts and Doctor; White 2's password Grunts, the card's
+         5, 6, 782, 783, 784, 785, 494, 495, 496]   # (batch 12a) Chili, Cress, Cilan: the Striaton Restaurant's daily Multi Battle;   # (batch 11c) N: Zekrom (Black 2) / Reshiram (White 2); his seasonal rematches. (11a) Hugh in Undella and once a day after; Cynthia   # Black 2's Grunts and Doctor; White 2's password Grunts, the card's
 # Battle pictures where the class slug isn't the file's name (a/0/7/1 slots matched by eye, 11-23; a class without its own
 # Black 2 picture keeps the same class from Platinum, never another class's look)
 BY_CLASS = {0: "b2_nate.png", 1: "b2_rosa.png", 90: "pt_cyclist_m.png", 91: "pt_cyclist_f.png", 33: "pt_artist.png",

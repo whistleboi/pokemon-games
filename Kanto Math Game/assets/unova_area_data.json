@@ -2,6 +2,63 @@
   "UNOVA_OLD_ROD_POOL_PERCENTAGES": {"550": 40, "118": 30, "129": 30},
   "UNOVA_GOOD_ROD_POOL_PERCENTAGES": {"550": 35, "118": 25, "592": 25, "339": 15},
   "UNOVA_SUPER_ROD_POOL_PERCENTAGES": {"550": 25, "592": 25, "594": 15, "119": 15, "223": 10, "90": 10},
+  "STRIATON_CITY_SUPER_ROD_PERCENTAGES": {
+    "118": 70,
+    "550": 30
+  },
+  "STRIATON_CITY_SURF_PERCENTAGES": {
+    "550": 70,
+    "341": 30
+  },
+  "UNOVA_ROUTE_1_SUPER_ROD_PERCENTAGES": {
+    "550": 95,
+    "349": 5
+  },
+  "UNOVA_ROUTE_1_SURF_PERCENTAGES": {
+    "550": 100
+  },
+  "WELLSPRING_CAVE_B1F_SUPER_ROD_PERCENTAGES": {
+    "60": 70,
+    "550": 30
+  },
+  "WELLSPRING_CAVE_B1F_SURF_PERCENTAGES": {
+    "550": 100
+  },
+  "WELLSPRING_CAVE_B1F_PERCENTAGES": {
+    "525": 50,
+    "527": 50
+  },
+  "WELLSPRING_CAVE_SUPER_ROD_PERCENTAGES": {
+    "60": 70,
+    "550": 30
+  },
+  "WELLSPRING_CAVE_SURF_PERCENTAGES": {
+    "550": 100
+  },
+  "UNOVA_ROUTE_3_SUPER_ROD_PERCENTAGES": {
+    "118": 70,
+    "550": 30
+  },
+  "UNOVA_ROUTE_3_SURF_PERCENTAGES": {
+    "550": 70,
+    "341": 30
+  },
+  "PINWHEEL_FOREST_OUTSIDE_PERCENTAGES": {
+    "533": 40,
+    "536": 25,
+    "454": 10,
+    "193": 10,
+    "539": 8,
+    "538": 8
+  },
+  "PINWHEEL_FOREST_SUPER_ROD_PERCENTAGES": {
+    "118": 70,
+    "550": 30
+  },
+  "PINWHEEL_FOREST_SURF_PERCENTAGES": {
+    "550": 70,
+    "183": 30
+  },
   "WELLSPRING_CAVE_B1F_SUPER_ROD_PERCENTAGES": {
     "60": 70,
     "550": 30
@@ -9852,38 +9909,81 @@
       "area_type": "town",
       "route_name": "Nuvema Town",
       "region": "UNOVA",
-      "backgrounds": { "main": "nuvema_town.png", "mom": "nuvema_mom.png", "lab": "juniper_lab.png" },
+      "backgrounds": {
+        "mom": "nuvema_mom.png",
+        "lab": "juniper_lab.png"
+      },
       "has_gym": false,
       "travel_options": [
-        {"text": "Route 1", "target_area": "UNOVA_ROUTE_1"},
-        {"text": "Entralink", "target_area": "ENTRALINK", "condition": "beat_alder"}
+        {
+          "text": "Route 1",
+          "target_area": "UNOVA_ROUTE_1"
+        },
+        {
+          "text": "Entralink",
+          "target_area": "ENTRALINK",
+          "condition": "beat_alder"
+        }
       ],
       "explore_options": [
-        { "text": "Visit Mom", "action": "NPC", "target": "mom" },
-        { "text": "Visit Professor Juniper", "action": "NPC", "target": "unova_juniper_intro" },
-        { "text": "Visit {rival_name}'s House", "action": "NPC", "target": "unova_cheren_house" }
+        {
+          "text": "Visit Mom",
+          "action": "NPC",
+          "target": "mom"
+        },
+        {
+          "text": "Visit Professor Juniper",
+          "action": "NPC",
+          "target": "unova_juniper_intro"
+        },
+        {
+          "text": "Visit {rival_name}'s House",
+          "action": "NPC",
+          "target": "unova_cheren_house"
+        }
       ],
       "next_area": "UNOVA_ROUTE_1",
-      "on_enter_event": [
-        {"type": "trainer_battle", "trainer": {"name": "{rival_name}", "class": "PKMN_TRAINER", "sprite": "{rival_character}", "team": [498], "team_choice": {"495": [498], "498": [501], "501": [495]}, "rewards": {"balls": 5}, "victory_flag": "defeated_rival_nuvema", "dialogue": {"intro": ["Hey {player_name}! I opened Juniper's case! My Pokémon is ready — are you?"], "player_won": ["Tch. You already beat me. Fine. I'll catch up."], "player_lost": ["Ha! I'm the stronger trainer already. Now let's go see the Professor."]}, "by_character": {"cheren": {"team_choice": {"495": [498], "498": [501], "501": [495]}}, "bianca": {"team_choice": {"495": [501], "498": [495], "501": [498]}}}}, "flag_check": "defeated_rival_nuvema", "condition": "has_unova_starter"},
-        {"type": "trainer_battle", "trainer": {"who": "bianca", "class": "PKMN_TRAINER", "team": [508, 514, 518, 620, 609, 503], "team_choice": {"495": [508, 514, 518, 620, 609, 503], "498": [508, 516, 518, 620, 609, 497], "501": [508, 512, 518, 620, 609, 500]}, "levels": [63, 63, 63, 63, 63, 65], "is_boss_battle": true, "rewards": {"balls": 5}, "dialogue": {"intro": ["Bianca: Welcome home, Champion! I've been training the whole time. Battle me!"], "player_won": ["Bianca: Hehe, you're still the best!"], "player_lost": ["Better luck next time!"]}}, "condition": "beat_alder", "flag_check": "defeated_bianca_postgame"}
-      ]
+      "on_enter_event": null
     },
     "ACCUMULA_TOWN": {
       "area_type": "town",
       "route_name": "Accumula Town",
       "region": "UNOVA",
-      "backgrounds": { "main": "accumula_town.png", "pokecenter": "accumula_center.png" },
+      "backgrounds": {
+        "pokecenter": "accumula_center.png"
+      },
       "has_gym": false,
       "travel_options": [
-        { "text": "Route 1", "target_area": "UNOVA_ROUTE_1" },
-        { "text": "Route 2", "target_area": "UNOVA_ROUTE_2" }
+        {
+          "text": "Route 1",
+          "target_area": "UNOVA_ROUTE_1"
+        },
+        {
+          "text": "Route 2",
+          "target_area": "UNOVA_ROUTE_2"
+        }
       ],
       "explore_options": [
-        { "text": "Pokémon Center", "action": "HEAL" },
-        { "text": "Shop", "action": "SHOP" },
-        { "text": "Team Plasma Rally", "action": "NPC", "target": "n_accumula_speech", "flag_condition": "not heard_n_accumula" },
-        { "text": "Talk to Looker", "action": "NPC", "target": "looker_intro", "flag_condition": "not met_looker" }
+        {
+          "text": "Pokémon Center",
+          "action": "HEAL"
+        },
+        {
+          "text": "Shop",
+          "action": "SHOP"
+        },
+        {
+          "text": "Team Plasma Rally",
+          "action": "NPC",
+          "target": "n_accumula_speech",
+          "flag_condition": "not heard_n_accumula"
+        },
+        {
+          "text": "Talk to Looker",
+          "action": "NPC",
+          "target": "looker_intro",
+          "flag_condition": "not met_looker"
+        }
       ],
       "next_area": "UNOVA_ROUTE_2",
       "on_enter_event": null
@@ -9893,7 +9993,6 @@
       "route_name": "Striaton City",
       "region": "UNOVA",
       "backgrounds": {
-        "main": "striaton_city.png",
         "pokecenter": "striaton_center.png",
         "gym": "striaton_gym.png"
       },
@@ -10002,53 +10101,161 @@
         }
       ],
       "next_area": "UNOVA_ROUTE_3",
-      "on_enter_event": {
-        "type": "trainer_battle",
-        "trainer": {
-          "who": "cheren",
-          "class": "PKMN_TRAINER",
-          "team": [
-            498,
-            509
-          ],
-          "team_choice": {
-            "495": [
-              498,
-              509
+      "on_enter_event": null,
+      "bw_chapter": true,
+      "wild_tables": {
+        "ALL": {
+          "surf": [
+            [
+              550,
+              0,
+              60,
+              45,
+              60
             ],
-            "498": [
-              501,
-              509
+            [
+              341,
+              0,
+              30,
+              45,
+              60
             ],
-            "501": [
-              495,
-              509
+            [
+              550,
+              0,
+              5,
+              50,
+              60
+            ],
+            [
+              550,
+              0,
+              4,
+              50,
+              60
+            ],
+            [
+              550,
+              0,
+              1,
+              50,
+              60
             ]
-          },
-          "levels": [
-            8,
-            8
           ],
-          "is_boss_battle": true,
-          "rewards": {
-            "balls": 5
-          },
-          "dialogue": {
-            "intro": [
-              "Cheren: Before the Gym, let's see how our Pokémon have grown."
+          "ripple": [
+            [
+              550,
+              1,
+              60,
+              45,
+              60
             ],
-            "player_won": [
-              "Cheren: I see. I need to think this through."
+            [
+              550,
+              1,
+              30,
+              45,
+              60
             ],
-            "player_lost": [
-              "Better luck next time!"
+            [
+              342,
+              0,
+              5,
+              50,
+              60
+            ],
+            [
+              342,
+              0,
+              4,
+              50,
+              60
+            ],
+            [
+              342,
+              0,
+              1,
+              50,
+              60
             ]
-          }
-        },
-        "condition": "not:has_trio_badge",
-        "flag_check": "defeated_cheren_striaton"
+          ],
+          "fish": [
+            [
+              118,
+              0,
+              60,
+              40,
+              60
+            ],
+            [
+              550,
+              0,
+              30,
+              40,
+              60
+            ],
+            [
+              118,
+              0,
+              5,
+              50,
+              70
+            ],
+            [
+              118,
+              0,
+              4,
+              50,
+              70
+            ],
+            [
+              118,
+              0,
+              1,
+              50,
+              70
+            ]
+          ],
+          "fish_ripple": [
+            [
+              118,
+              0,
+              60,
+              40,
+              60
+            ],
+            [
+              550,
+              1,
+              30,
+              40,
+              60
+            ],
+            [
+              119,
+              0,
+              5,
+              50,
+              70
+            ],
+            [
+              119,
+              0,
+              4,
+              50,
+              70
+            ],
+            [
+              119,
+              0,
+              1,
+              50,
+              70
+            ]
+          ]
+        }
       },
-      "bw_chapter": true
+      "surf_pool_percentages": "STRIATON_CITY_SURF_PERCENTAGES"
     },
     "NACRENE_CITY": {
       "area_type": "town",
@@ -10153,72 +10360,7 @@
         }
       ],
       "next_area": "PINWHEEL_FOREST",
-      "on_enter_event": [
-        {
-          "type": "trainer_battle",
-          "trainer": {
-            "name": "Team Plasma Grunt",
-            "class": "PLASMA",
-            "sprite": "plasma_grunt.png",
-            "team": [
-              509,
-              504
-            ],
-            "rewards": {
-              "balls": 3
-            },
-            "victory_flag": "plasma_nacrene_cleared",
-            "dialogue": {
-              "intro": [
-                "We have the Dragon Skull! Team Plasma's plan is unstoppable!"
-              ],
-              "player_won": [
-                "The skull... we've lost it. Lord Ghetsis will be furious!"
-              ],
-              "player_lost": [
-                "Team Plasma serves a higher justice than your victories!"
-              ]
-            }
-          },
-          "condition": "has_trio_badge",
-          "flag_check": "plasma_nacrene_cleared"
-        },
-        {
-          "type": "trainer_battle",
-          "trainer": {
-            "name": "N",
-            "class": "PKMN_TRAINER",
-            "sprite": "n.png",
-            "team": [
-              519,
-              535,
-              532
-            ],
-            "levels": [
-              13,
-              13,
-              13
-            ],
-            "is_boss_battle": true,
-            "rewards": {
-              "balls": 5
-            },
-            "dialogue": {
-              "intro": [
-                "N: Your Pokémon... I want to hear them speak. Battle me."
-              ],
-              "player_won": [
-                "N: They said they like you. How strange."
-              ]
-            }
-          },
-          "condition": [
-            "has_trio_badge",
-            "not:has_basic_badge"
-          ],
-          "flag_check": "defeated_n_nacrene"
-        }
-      ],
+      "on_enter_event": null,
       "bw_chapter": true
     },
     "CASTELIA_CITY": {
@@ -11231,6 +11373,178 @@
         {"text": "Challenge Iris", "action": "EVENT", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not b2w2_iris", "event": {"lines": ["Iris: I'm Iris! Alder said someday I'd be Champion. Show me your strength!"], "flag": "b2w2_iris", "battle": {"name": "Champion Iris", "class": "GYM_LEADER", "sprite": "iris.png", "team": [635, 621, 567, 306, 131, 612], "levels": [57, 57, 57, 57, 57, 59], "is_boss_battle": true, "rewards": {"balls": 15, "RARE_CANDY": 1}, "dialogue": {"player_won": ["Iris: Wow! You're incredible!"]}}}}
       ]
     },
+    "DREAMYARD_B1F": {
+      "area_type": "dungeon",
+      "route_name": "Dreamyard B1F",
+      "region": "UNOVA",
+      "battle_type": "grass",
+      "wild_pool_percentages": "DREAMYARD_B1F_PERCENTAGES",
+      "min_rounds": 1,
+      "backgrounds": {
+        "main": "dreamyard.png"
+      },
+      "trainer_pool": [
+        {
+          "name": "Scientist Athena",
+          "class": "SCIENTIST",
+          "sprite": "b2_scientist_f.png",
+          "team": [
+            92,
+            435
+          ],
+          "levels": [
+            63,
+            63
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 743
+        },
+        {
+          "name": "Scientist Franklin",
+          "class": "SCIENTIST",
+          "sprite": "b2_scientist_m.png",
+          "team": [
+            600,
+            137
+          ],
+          "levels": [
+            63,
+            63
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 744
+        },
+        {
+          "name": "Psychic Olesia",
+          "class": "PSYCHIC",
+          "sprite": "b2_psychic_f.png",
+          "team": [
+            433,
+            122
+          ],
+          "levels": [
+            62,
+            62
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 741
+        },
+        {
+          "name": "Psychic Nandor",
+          "class": "PSYCHIC",
+          "sprite": "b2_psychic_m.png",
+          "team": [
+            97,
+            356
+          ],
+          "levels": [
+            62,
+            62
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 742
+        }
+      ],
+      "route_menu": [],
+      "wild_tables": {
+        "ALL": {
+          "dark": [
+            [
+              20,
+              0,
+              20,
+              64,
+              64
+            ],
+            [
+              42,
+              0,
+              20,
+              64,
+              64
+            ],
+            [
+              505,
+              0,
+              10,
+              65,
+              65
+            ],
+            [
+              39,
+              0,
+              10,
+              65,
+              65
+            ],
+            [
+              517,
+              0,
+              10,
+              65,
+              65
+            ],
+            [
+              517,
+              0,
+              10,
+              66,
+              66
+            ],
+            [
+              510,
+              0,
+              5,
+              65,
+              65
+            ],
+            [
+              510,
+              0,
+              5,
+              66,
+              66
+            ],
+            [
+              20,
+              0,
+              4,
+              67,
+              67
+            ],
+            [
+              42,
+              0,
+              4,
+              67,
+              67
+            ],
+            [
+              20,
+              0,
+              1,
+              67,
+              67
+            ],
+            [
+              42,
+              0,
+              1,
+              67,
+              67
+            ]
+          ]
+        }
+      }
+    },
     "DREAMYARD": {
       "area_type": "dungeon",
       "route_name": "Dreamyard",
@@ -11238,14 +11552,372 @@
       "battle_type": "grass",
       "wild_pool_percentages": "UNOVA_DREAMYARD_PERCENTAGES",
       "min_rounds": 2,
-      "backgrounds": { "main": "dreamyard.png" },
+      "backgrounds": {
+        "main": "dreamyard.png"
+      },
       "route_menu": [
-        {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
-        {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
-        {"text": "Find Elemental Monkey", "action": "NPC", "target": "dreamyard_monkey", "flag_condition": "not got_elemental_monkey", "color": "GOLD"},
-        {"text": "SEEK LATIAS", "action": "BOSS", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not dreamyard_latias", "boss": {"id": 380, "name": "Latias", "victory_flag": "dreamyard_latias", "lines": ["Latias appears!"]}},
-        {"text": "SEEK LATIOS", "action": "BOSS", "color": "GOLD", "condition": "beat_alder", "flag_condition": "not dreamyard_latios", "boss": {"id": 381, "level": 68, "name": "Latios", "victory_flag": "dreamyard_latios", "lines": ["Latios appears!"]}},
-        {"text": "Striaton City", "action": "EXIT", "target_area": "STRIATON_CITY", "condition": "can_exit", "color": "RED"}
+        {
+          "text": "Find Elemental Monkey",
+          "action": "NPC",
+          "target": "dreamyard_monkey",
+          "flag_condition": "not got_elemental_monkey"
+        },
+        {
+          "text": "SEEK LATIAS",
+          "action": "BOSS",
+          "condition": "beat_alder",
+          "flag_condition": "not dreamyard_latias",
+          "boss": {
+            "id": 380,
+            "name": "Latias",
+            "victory_flag": "dreamyard_latias",
+            "lines": [
+              "Latias appears!"
+            ]
+          }
+        },
+        {
+          "text": "SEEK LATIOS",
+          "action": "BOSS",
+          "condition": "beat_alder",
+          "flag_condition": "not dreamyard_latios",
+          "boss": {
+            "id": 381,
+            "level": 68,
+            "name": "Latios",
+            "victory_flag": "dreamyard_latios",
+            "lines": [
+              "Latios appears!"
+            ]
+          }
+        },
+        {
+          "text": "Striaton City",
+          "action": "EXIT",
+          "target_area": "STRIATON_CITY",
+          "condition": "can_exit"
+        }
+      ],
+      "wild_tables": {
+        "ALL": {
+          "grass": [
+            [
+              505,
+              0,
+              20,
+              56,
+              56
+            ],
+            [
+              510,
+              0,
+              20,
+              56,
+              56
+            ],
+            [
+              20,
+              0,
+              10,
+              57,
+              57
+            ],
+            [
+              39,
+              0,
+              10,
+              57,
+              57
+            ],
+            [
+              517,
+              0,
+              10,
+              57,
+              57
+            ],
+            [
+              517,
+              0,
+              10,
+              58,
+              58
+            ],
+            [
+              42,
+              0,
+              5,
+              57,
+              57
+            ],
+            [
+              42,
+              0,
+              5,
+              58,
+              58
+            ],
+            [
+              505,
+              0,
+              4,
+              59,
+              59
+            ],
+            [
+              510,
+              0,
+              4,
+              59,
+              59
+            ],
+            [
+              505,
+              0,
+              1,
+              59,
+              59
+            ],
+            [
+              510,
+              0,
+              1,
+              59,
+              59
+            ]
+          ],
+          "dark": [
+            [
+              505,
+              0,
+              20,
+              64,
+              64
+            ],
+            [
+              510,
+              0,
+              20,
+              64,
+              64
+            ],
+            [
+              20,
+              0,
+              10,
+              65,
+              65
+            ],
+            [
+              39,
+              0,
+              10,
+              65,
+              65
+            ],
+            [
+              517,
+              0,
+              10,
+              65,
+              65
+            ],
+            [
+              517,
+              0,
+              10,
+              66,
+              66
+            ],
+            [
+              42,
+              0,
+              5,
+              65,
+              65
+            ],
+            [
+              42,
+              0,
+              5,
+              66,
+              66
+            ],
+            [
+              505,
+              0,
+              4,
+              67,
+              67
+            ],
+            [
+              510,
+              0,
+              4,
+              67,
+              67
+            ],
+            [
+              505,
+              0,
+              1,
+              67,
+              67
+            ],
+            [
+              510,
+              0,
+              1,
+              67,
+              67
+            ]
+          ],
+          "rustle": [
+            [
+              531,
+              0,
+              20,
+              56,
+              56
+            ],
+            [
+              531,
+              0,
+              20,
+              56,
+              56
+            ],
+            [
+              531,
+              0,
+              10,
+              57,
+              57
+            ],
+            [
+              206,
+              0,
+              10,
+              57,
+              57
+            ],
+            [
+              531,
+              0,
+              10,
+              58,
+              58
+            ],
+            [
+              531,
+              0,
+              10,
+              58,
+              58
+            ],
+            [
+              531,
+              0,
+              5,
+              59,
+              59
+            ],
+            [
+              40,
+              0,
+              5,
+              59,
+              59
+            ],
+            [
+              169,
+              0,
+              4,
+              59,
+              59
+            ],
+            [
+              518,
+              0,
+              4,
+              59,
+              59
+            ],
+            [
+              169,
+              0,
+              1,
+              59,
+              59
+            ],
+            [
+              518,
+              0,
+              1,
+              59,
+              59
+            ]
+          ]
+        }
+      },
+      "wild_levels": {
+        "land": [
+          56,
+          59
+        ]
+      },
+      "trainer_pool": [
+        {
+          "name": "School Kid William",
+          "class": "SCHOOL_KID",
+          "sprite": "school_kid.png",
+          "team": [
+            285,
+            465
+          ],
+          "levels": [
+            63,
+            63
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 739
+        },
+        {
+          "name": "School Kid Rita",
+          "class": "SCHOOL_KID",
+          "sprite": "school_kid.png",
+          "team": [
+            174,
+            463
+          ],
+          "levels": [
+            63,
+            63
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 740
+        },
+        {
+          "name": "Youngster Keita",
+          "class": "YOUNGSTER",
+          "sprite": "b2_youngster.png",
+          "team": [
+            287,
+            289
+          ],
+          "levels": [
+            63,
+            63
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 593
+        }
       ]
     },
     "WELLSPRING_CAVE_B1F": {
@@ -22052,28 +22724,570 @@
       "min_rounds": 2,
       "trainer_pool": [
         {
-          "name": "Youngster Yancy",
-          "class": "YOUNGSTER",
-          "sprite": "youngster.png",
-          "team": [504],
-          "rewards": { "balls": 2 }
+          "name": "Backpacker Jill",
+          "class": "BACKPACKER",
+          "sprite": "b2_backpacker_f.png",
+          "team": [
+            138,
+            347,
+            410,
+            567
+          ],
+          "levels": [
+            62,
+            62,
+            62,
+            62
+          ],
+          "rewards": {
+            "balls": 5
+          },
+          "b2_id": 406
+        },
+        {
+          "name": "Backpacker Shane",
+          "class": "BACKPACKER",
+          "sprite": "b2_backpacker_m.png",
+          "team": [
+            140,
+            345,
+            408,
+            565
+          ],
+          "levels": [
+            62,
+            62,
+            62,
+            62
+          ],
+          "rewards": {
+            "balls": 5
+          },
+          "b2_id": 405
+        },
+        {
+          "name": "Pokemon Ranger Audra",
+          "class": "RANGER",
+          "sprite": "ranger.png",
+          "team": [
+            40,
+            203,
+            45
+          ],
+          "levels": [
+            64,
+            64,
+            64
+          ],
+          "rewards": {
+            "balls": 4
+          },
+          "b2_id": 410
+        },
+        {
+          "name": "Pokemon Ranger Rick",
+          "class": "RANGER",
+          "sprite": "ranger.png",
+          "team": [
+            288,
+            234,
+            71
+          ],
+          "levels": [
+            64,
+            64,
+            64
+          ],
+          "rewards": {
+            "balls": 4
+          },
+          "b2_id": 409
+        },
+        {
+          "name": "Ace Trainer Sean",
+          "class": "ACE_TRAINER",
+          "sprite": "ace_trainer.png",
+          "team": [
+            632,
+            196,
+            430
+          ],
+          "levels": [
+            66,
+            66,
+            66
+          ],
+          "rewards": {
+            "balls": 4
+          },
+          "b2_id": 411
+        },
+        {
+          "name": "Ace Trainer Cheyenne",
+          "class": "ACE_TRAINER",
+          "sprite": "ace_trainer.png",
+          "team": [
+            631,
+            197,
+            429
+          ],
+          "levels": [
+            66,
+            66,
+            66
+          ],
+          "rewards": {
+            "balls": 4
+          },
+          "b2_id": 412
         }
       ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-        { "text": "Nuvema Town", "action": "EXIT", "target_area": "NUVEMA_TOWN", "condition": "can_exit", "color": "RED" },
-        { "text": "Accumula Town", "action": "EXIT", "target_area": "ACCUMULA_TOWN", "condition": "can_exit", "color": "RED" },
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "can_battle"
+        },
+        {
+          "text": "Nuvema Town",
+          "action": "EXIT",
+          "target_area": "NUVEMA_TOWN",
+          "condition": "can_exit"
+        },
+        {
+          "text": "Accumula Town",
+          "action": "EXIT",
+          "target_area": "ACCUMULA_TOWN",
+          "condition": "can_exit"
+        },
         {
           "text": "ROUTE 17",
           "action": "EXIT",
           "target_area": "UNOVA_ROUTE_17",
-          "condition": ["can_exit", "has_item:HM_SURF"],
-          "color": "RED"
+          "condition": [
+            "can_exit",
+            "has_item:HM_SURF"
+          ]
         }
       ],
-      "next_area": "ACCUMULA_TOWN"
+      "next_area": "ACCUMULA_TOWN",
+      "wild_tables": {
+        "ALL": {
+          "grass": [
+            [
+              505,
+              0,
+              20,
+              56,
+              56
+            ],
+            [
+              507,
+              0,
+              20,
+              56,
+              56
+            ],
+            [
+              39,
+              0,
+              10,
+              57,
+              57
+            ],
+            [
+              507,
+              0,
+              10,
+              57,
+              57
+            ],
+            [
+              505,
+              0,
+              10,
+              58,
+              58
+            ],
+            [
+              507,
+              0,
+              10,
+              58,
+              58
+            ],
+            [
+              505,
+              0,
+              5,
+              59,
+              59
+            ],
+            [
+              507,
+              0,
+              5,
+              59,
+              59
+            ],
+            [
+              505,
+              0,
+              4,
+              59,
+              59
+            ],
+            [
+              507,
+              0,
+              4,
+              59,
+              59
+            ],
+            [
+              505,
+              0,
+              1,
+              59,
+              59
+            ],
+            [
+              507,
+              0,
+              1,
+              59,
+              59
+            ]
+          ],
+          "dark": [
+            [
+              505,
+              0,
+              20,
+              64,
+              64
+            ],
+            [
+              507,
+              0,
+              20,
+              64,
+              64
+            ],
+            [
+              39,
+              0,
+              10,
+              65,
+              65
+            ],
+            [
+              507,
+              0,
+              10,
+              65,
+              65
+            ],
+            [
+              505,
+              0,
+              10,
+              66,
+              66
+            ],
+            [
+              560,
+              0,
+              10,
+              66,
+              66
+            ],
+            [
+              505,
+              0,
+              5,
+              67,
+              67
+            ],
+            [
+              507,
+              0,
+              5,
+              67,
+              67
+            ],
+            [
+              505,
+              0,
+              4,
+              67,
+              67
+            ],
+            [
+              507,
+              0,
+              4,
+              67,
+              67
+            ],
+            [
+              505,
+              0,
+              1,
+              67,
+              67
+            ],
+            [
+              560,
+              0,
+              1,
+              67,
+              67
+            ]
+          ],
+          "rustle": [
+            [
+              531,
+              0,
+              20,
+              56,
+              56
+            ],
+            [
+              531,
+              0,
+              20,
+              56,
+              56
+            ],
+            [
+              531,
+              0,
+              10,
+              57,
+              57
+            ],
+            [
+              206,
+              0,
+              10,
+              57,
+              57
+            ],
+            [
+              531,
+              0,
+              10,
+              58,
+              58
+            ],
+            [
+              531,
+              0,
+              10,
+              58,
+              58
+            ],
+            [
+              531,
+              0,
+              5,
+              59,
+              59
+            ],
+            [
+              531,
+              0,
+              5,
+              59,
+              59
+            ],
+            [
+              508,
+              0,
+              4,
+              59,
+              59
+            ],
+            [
+              40,
+              0,
+              4,
+              59,
+              59
+            ],
+            [
+              508,
+              0,
+              1,
+              59,
+              59
+            ],
+            [
+              40,
+              0,
+              1,
+              59,
+              59
+            ]
+          ],
+          "surf": [
+            [
+              550,
+              0,
+              60,
+              45,
+              60
+            ],
+            [
+              550,
+              0,
+              30,
+              45,
+              60
+            ],
+            [
+              550,
+              0,
+              5,
+              50,
+              60
+            ],
+            [
+              550,
+              0,
+              4,
+              50,
+              60
+            ],
+            [
+              550,
+              0,
+              1,
+              50,
+              60
+            ]
+          ],
+          "ripple": [
+            [
+              550,
+              1,
+              60,
+              45,
+              60
+            ],
+            [
+              550,
+              1,
+              30,
+              45,
+              60
+            ],
+            [
+              550,
+              1,
+              5,
+              50,
+              60
+            ],
+            [
+              550,
+              1,
+              4,
+              50,
+              60
+            ],
+            [
+              550,
+              1,
+              1,
+              50,
+              60
+            ]
+          ],
+          "fish": [
+            [
+              550,
+              0,
+              60,
+              40,
+              60
+            ],
+            [
+              550,
+              0,
+              30,
+              40,
+              60
+            ],
+            [
+              550,
+              0,
+              5,
+              50,
+              70
+            ],
+            [
+              349,
+              0,
+              4,
+              50,
+              70
+            ],
+            [
+              349,
+              0,
+              1,
+              50,
+              70
+            ]
+          ],
+          "fish_ripple": [
+            [
+              349,
+              0,
+              60,
+              40,
+              60
+            ],
+            [
+              550,
+              1,
+              30,
+              40,
+              60
+            ],
+            [
+              349,
+              0,
+              5,
+              50,
+              70
+            ],
+            [
+              350,
+              0,
+              4,
+              50,
+              70
+            ],
+            [
+              350,
+              0,
+              1,
+              50,
+              70
+            ]
+          ]
+        }
+      },
+      "wild_levels": {
+        "land": [
+          56,
+          59
+        ]
+      },
+      "surf_pool_percentages": "UNOVA_ROUTE_1_SURF_PERCENTAGES"
     },
     "UNOVA_ROUTE_2": {
       "area_type": "wild_route",
@@ -22084,31 +23298,407 @@
       "min_rounds": 2,
       "trainer_pool": [
         {
-          "name": "Youngster Dale",
+          "name": "Veteran Rayne",
+          "class": "VETERAN",
+          "sprite": "b2_veteran.png",
+          "team": [
+            284,
+            148,
+            80,
+            462
+          ],
+          "levels": [
+            66,
+            66,
+            66,
+            66
+          ],
+          "rewards": {
+            "balls": 5
+          },
+          "b2_id": 404,
+          "movesets": {
+            "284": [
+              "HYDRO-PUMP",
+              "BUG-BUZZ",
+              "ICE-BEAM",
+              "RAIN-DANCE"
+            ],
+            "148": [
+              "SURF",
+              "THUNDER",
+              "DRAGON-RUSH",
+              "DRAGON-DANCE"
+            ],
+            "80": [
+              "PSYSHOCK",
+              "SURF",
+              "GRASS-KNOT",
+              "RAIN-DANCE"
+            ],
+            "462": [
+              "THUNDER",
+              "FLASH-CANNON",
+              "EXPLOSION",
+              "THUNDER-WAVE"
+            ]
+          }
+        },
+        {
+          "name": "Youngster Jimmy",
           "class": "YOUNGSTER",
-          "sprite": "youngster.png",
-          "team": [504, 506],
-          "rewards": { "balls": 2 }
+          "sprite": "b2_youngster.png",
+          "team": [
+            19,
+            161,
+            263,
+            399,
+            505
+          ],
+          "levels": [
+            61,
+            61,
+            61,
+            61,
+            61
+          ],
+          "rewards": {
+            "balls": 5
+          },
+          "b2_id": 401
+        },
+        {
+          "name": "Lass Henrietta",
+          "class": "LASS",
+          "sprite": "b2_lass.png",
+          "team": [
+            12,
+            314,
+            267,
+            413,
+            542
+          ],
+          "levels": [
+            61,
+            61,
+            61,
+            61,
+            61
+          ],
+          "rewards": {
+            "balls": 5
+          },
+          "b2_id": 408
         },
         {
           "name": "Lass Mali",
           "class": "LASS",
-          "sprite": "lass.png",
-          "team": [509, 511],
-          "rewards": { "balls": 2 }
+          "sprite": "b2_lass.png",
+          "team": [
+            16,
+            163,
+            276,
+            396,
+            521
+          ],
+          "levels": [
+            61,
+            61,
+            61,
+            61,
+            61
+          ],
+          "rewards": {
+            "balls": 5
+          },
+          "b2_id": 402
+        },
+        {
+          "name": "Youngster Mikey",
+          "class": "YOUNGSTER",
+          "sprite": "b2_youngster.png",
+          "team": [
+            15,
+            313,
+            269,
+            414,
+            545
+          ],
+          "levels": [
+            61,
+            61,
+            61,
+            61,
+            61
+          ],
+          "rewards": {
+            "balls": 5
+          },
+          "b2_id": 407
+        },
+        {
+          "name": "Veteran Oriana",
+          "class": "VETERAN",
+          "sprite": "b2_veteran.png",
+          "team": [
+            413,
+            219,
+            295,
+            189
+          ],
+          "levels": [
+            66,
+            66,
+            66,
+            66
+          ],
+          "rewards": {
+            "balls": 5
+          },
+          "b2_id": 403,
+          "movesets": {
+            "413": [
+              "BUG-BITE",
+              "ROCK-BLAST",
+              "EARTHQUAKE",
+              "SUNNY-DAY"
+            ],
+            "219": [
+              "FIRE-BLAST",
+              "SOLARBEAM",
+              "ANCIENTPOWER",
+              "SHELL-SMASH"
+            ],
+            "295": [
+              "FIRE-BLAST",
+              "HYPER-VOICE",
+              "EARTHQUAKE",
+              "SUNNY-DAY"
+            ],
+            "189": [
+              "SOLARBEAM",
+              "ACROBATICS",
+              "LEECH-SEED",
+              "MEMENTO"
+            ]
+          }
         }
       ],
       "route_menu": [
-        { "text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE" },
-        { "text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN" },
-        { "text": "BATTLE TRAINER", "action": "TRAINER", "condition": "can_battle", "color": "GREEN" },
-        { "text": "Meet Alder", "action": "NPC", "target": "alder_route2", "flag_condition": "not met_alder", "color": "GOLD" },
-        { "text": "Battle N (Route 2)", "action": "NPC", "target": "n_route2_battle", "flag_condition": "not defeated_n_route2", "color": "GOLD" },
-        { "text": "Accumula Town", "action": "EXIT", "target_area": "ACCUMULA_TOWN", "condition": "can_exit", "color": "RED" },
-        { "text": "Striaton City", "action": "EXIT", "target_area": "STRIATON_CITY", "condition": "can_exit", "color": "RED" }
+        {
+          "text": "BATTLE TRAINER",
+          "action": "TRAINER",
+          "condition": "can_battle"
+        },
+        {
+          "text": "Meet Alder",
+          "action": "NPC",
+          "target": "alder_route2",
+          "flag_condition": "not met_alder"
+        },
+        {
+          "text": "Battle N (Route 2)",
+          "action": "NPC",
+          "target": "n_route2_battle",
+          "flag_condition": "not defeated_n_route2"
+        },
+        {
+          "text": "Accumula Town",
+          "action": "EXIT",
+          "target_area": "ACCUMULA_TOWN",
+          "condition": "can_exit"
+        },
+        {
+          "text": "Striaton City",
+          "action": "EXIT",
+          "target_area": "STRIATON_CITY",
+          "condition": "can_exit"
+        }
       ],
       "next_area": "STRIATON_CITY",
-        "on_enter_event": {"type": "trainer_battle", "trainer": {"who": "bianca", "class": "PKMN_TRAINER", "team": [506, 501], "team_choice": {"495": [506, 501], "498": [506, 495], "501": [506, 498]}, "levels": [6, 7], "is_boss_battle": true, "rewards": {"balls": 5}, "dialogue": {"intro": ["Bianca: Wait for meee! Let's battle, okay?"], "player_won": ["Bianca: Aww, I lost! You're really good!"], "player_lost": ["Better luck next time!"]}}, "condition": "badges_less: 1", "flag_check": "defeated_bianca_route2"}
+      "on_enter_event": null,
+      "wild_tables": {
+        "ALL": {
+          "grass": [
+            [
+              505,
+              0,
+              20,
+              56,
+              56
+            ],
+            [
+              507,
+              0,
+              20,
+              56,
+              56
+            ],
+            [
+              39,
+              0,
+              10,
+              57,
+              57
+            ],
+            [
+              108,
+              0,
+              10,
+              58,
+              58
+            ],
+            [
+              510,
+              0,
+              10,
+              57,
+              57
+            ],
+            [
+              510,
+              0,
+              10,
+              58,
+              58
+            ],
+            [
+              505,
+              0,
+              5,
+              59,
+              59
+            ],
+            [
+              507,
+              0,
+              5,
+              59,
+              59
+            ],
+            [
+              505,
+              0,
+              4,
+              59,
+              59
+            ],
+            [
+              507,
+              0,
+              4,
+              59,
+              59
+            ],
+            [
+              505,
+              0,
+              1,
+              59,
+              59
+            ],
+            [
+              507,
+              0,
+              1,
+              59,
+              59
+            ]
+          ],
+          "rustle": [
+            [
+              531,
+              0,
+              20,
+              56,
+              56
+            ],
+            [
+              531,
+              0,
+              20,
+              56,
+              56
+            ],
+            [
+              531,
+              0,
+              10,
+              57,
+              57
+            ],
+            [
+              206,
+              0,
+              10,
+              57,
+              57
+            ],
+            [
+              531,
+              0,
+              10,
+              58,
+              58
+            ],
+            [
+              531,
+              0,
+              10,
+              58,
+              58
+            ],
+            [
+              531,
+              0,
+              5,
+              59,
+              59
+            ],
+            [
+              463,
+              0,
+              5,
+              59,
+              59
+            ],
+            [
+              508,
+              0,
+              4,
+              59,
+              59
+            ],
+            [
+              40,
+              0,
+              4,
+              59,
+              59
+            ],
+            [
+              508,
+              0,
+              1,
+              59,
+              59
+            ],
+            [
+              40,
+              0,
+              1,
+              59,
+              59
+            ]
+          ]
+        }
+      },
+      "wild_levels": {
+        "land": [
+          56,
+          59
+        ]
+      }
     },
     "UNOVA_ROUTE_3": {
       "area_type": "wild_route",
@@ -22344,55 +23934,7 @@
         }
       ],
       "next_area": "NACRENE_CITY",
-      "on_enter_event": {
-        "type": "trainer_battle",
-        "trainer": {
-          "who": "cheren",
-          "class": "PKMN_TRAINER",
-          "team": [
-            498,
-            509
-          ],
-          "team_choice": {
-            "495": [
-              498,
-              509
-            ],
-            "498": [
-              501,
-              509
-            ],
-            "501": [
-              495,
-              509
-            ]
-          },
-          "levels": [
-            14,
-            12
-          ],
-          "is_boss_battle": true,
-          "rewards": {
-            "balls": 5
-          },
-          "dialogue": {
-            "intro": [
-              "Cheren: I've been training. Battle me!"
-            ],
-            "player_won": [
-              "Cheren: Hmm. Still not enough."
-            ],
-            "player_lost": [
-              "Better luck next time!"
-            ]
-          }
-        },
-        "condition": [
-          "has_trio_badge",
-          "not:has_basic_badge"
-        ],
-        "flag_check": "defeated_cheren_route3"
-      },
+      "on_enter_event": null,
       "wild_tables": {
         "ALL": {
           "grass": [
@@ -33592,8 +35134,18 @@
     {"id": "b2_s_n_castle", "type": "SIDE", "title": "N's Castle", "description": "Hugh's sister had a strange dream about a castle and a Pokemon that looked like a man. Victory Road's mountainside hides a cave nobody mentions.", "condition": {"required_region": "UNOVA", "flag": "b2_hall_of_fame", "flag_not": "b2_n_beaten"}, "completed_flag": "b2_n_beaten", "target": "N_CASTLE", "steps": [{"area": "ASPERTIA_CITY", "room": "hugh_2f", "at": [4, 12], "label": "Hugh's sister", "done": "b2_sister_dream"}, {"area": "N_CASTLE", "at": [3, 19], "label": "The cave", "done": "b2_nc_zoroark"}, {"area": "N_CASTLE", "room": "1f", "at": [9, 10], "label": "N's Castle", "done": "b2_nc_met"}, {"area": "N_CASTLE", "room": "2f", "at": [30, 13], "label": "Upstairs", "done": "b2_nc_2f"}, {"area": "N_CASTLE", "room": "throne", "at": [16, 41], "label": "The throne room", "done": "b2_n_beaten"}]},
     {"id": "b2_s_cresselia", "type": "SIDE", "title": "The Lunar Wing", "description": "The girl in the Strange House asked for her wing to go home. Take the Lunar Wing to Marvelous Bridge and walk under its eastern arch.", "condition": {"required_region": "UNOVA", "flag": "b2_sh_lunar_wing", "flag_not": "b2_mb_cresselia"}, "completed_flag": "b2_mb_cresselia", "target": "MARVELOUS_BRIDGE"}
   ],
-  "UNOVA_ROUTE_1_PERCENTAGES": {"504": 50, "506": 50, "507": 5, "505": 5, "559": 5, "531": 5},
-  "UNOVA_ROUTE_2_PERCENTAGES": {"504": 40, "506": 40, "509": 20, "531": 5},
+  "UNOVA_ROUTE_1_PERCENTAGES": {
+    "507": 50,
+    "505": 40,
+    "39": 10
+  },
+  "UNOVA_ROUTE_2_PERCENTAGES": {
+    "505": 30,
+    "507": 30,
+    "510": 20,
+    "39": 10,
+    "108": 10
+  },
   "UNOVA_ROUTE_3_PERCENTAGES": {
     "520": 30,
     "505": 20,
@@ -33720,7 +35272,14 @@
     "629": 2,
     "627": 2
   },
-  "UNOVA_DREAMYARD_PERCENTAGES": {"504": 40, "509": 40, "517": 20, "505": 5, "510": 5, "20": 3, "166": 3, "168": 3, "402": 3, "49": 3, "531": 5, "518": 1},
+  "UNOVA_DREAMYARD_PERCENTAGES": {
+    "505": 25,
+    "510": 25,
+    "517": 20,
+    "20": 10,
+    "39": 10,
+    "42": 10
+  },
   "UNOVA_WELLSPRING_CAVE_PERCENTAGES": {
     "525": 50,
     "527": 50

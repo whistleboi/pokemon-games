@@ -221,6 +221,20 @@ def _potion_errand(story, show):
           "This isn't much, but please take it.", "You received %s!" % ("an Energy Root" if gift == "ENERGY_ROOT" else "an Energy Powder")])
 
 
+def _dex_info(game):
+    """assets/dex_info.json (height m, weight kg...), loaded once (the same cache as catching.weight)."""
+    info = getattr(game, "_dex_info", None)
+    if info is None:
+        import json, os
+        try:
+            with open(os.path.join(game.assets.assets_dir, "dex_info.json"), encoding="utf-8") as f:
+                info = json.load(f)
+        except OSError:
+            info = {}
+        game._dex_info = info
+    return info
+
+
 def event(state, ev, lines, show):
     """{"toggle": flag}: flip a flag (the roller coaster's switches: each press changes a car's route).
     {"move_lady": true}: Driftveil Luxury Suites' lady: show her a Pokemon that knows today's move, a Heart Scale (once a day).
@@ -245,6 +259,65 @@ def event(state, ev, lines, show):
         story.inventory["HEART_SCALE"] = story.inventory.get("HEART_SCALE", 0) + 1
         show(["Oh my! Your %s can use %s! You taught it just for me? How touching!" % (knows.display_name, name),
               "Please accept this small token of my thanks. You received a Heart Scale!"])
+        return
+    if ev.get("show_size"):   # (batch 12a: Accumula's fans of tiny and huge Pokemon - show one with you, a gift once a day)
+        import datetime
+        sz = ev["show_size"]
+        today = datetime.date.today().isoformat()
+        if story.story_flags.get(sz["flag"]) == today:
+            show(sz.get("done") or ["Show me another one tomorrow!"])
+            return
+        info = _dex_info(state.game)
+        tall = lambda p: float((info.get(str(int(p.id))) or {}).get("height") or 0)
+        fits = lambda h: h > 0 and ((h <= float(sz["max"])) if "max" in sz else (h >= float(sz.get("min", 99))))
+        mon = next((p for p in story.player_team if p and fits(tall(p))), None)
+        if mon is None:
+            show(list(lines or []) + list(sz.get("ask") or []))
+            return
+        story.story_flags[sz["flag"]] = today
+        for item, n in (sz.get("gift") or {}).items():
+            story.inventory[item] = story.inventory.get(item, 0) + int(n)
+        show([l.replace("{mon}", mon.display_name) for l in sz.get("thanks") or []]
+             + ["You received %s!" % ", ".join(k.replace("_", " ").title() for k in (sz.get("gift") or {}))])
+        return
+    if ev.get("show_ability"):   # (batch 12a: Route 2's Lady wants a Pokemon with Solid Rock - a Dawn Stone, once)
+        sa = ev["show_ability"]
+        if story.story_flags.get(sa["flag"]):
+            show(sa.get("done") or ["What is this feeling coursing through my veins?"])
+            return
+        from src.pokemon import abilities as _ab
+        want = str(sa["ability"]).upper().replace("-", "_").replace(" ", "_")
+        norm = lambda k: str(k or "").upper().replace("-", "_").replace(" ", "_")
+        mon = next((p for p in story.player_team if p and norm(_ab.ability(state.game, p)) == want), None)
+        if mon is None:
+            show(list(lines or []) + list(sa.get("ask") or []))
+            return
+        story.story_flags[sa["flag"]] = True
+        for item, n in (sa.get("gift") or {}).items():
+            story.inventory[item] = story.inventory.get(item, 0) + int(n)
+        show([l.replace("{mon}", mon.display_name) for l in sa.get("thanks") or []]
+             + ["You received %s!" % ", ".join(k.replace("_", " ").title() for k in (sa.get("gift") or {}))])
+        return
+    if ev.get("starter_quiz"):   # (batch 12a: Accumula's quiz on your first partner's height - a Gem of its type, once)
+        sq = ev["starter_quiz"]
+        if story.story_flags.get(sq["flag"]):
+            show(sq.get("done") or ["You really know your first partner!"])
+            return
+        from src.states.overworld.common import _region_starter_id
+        sid = _region_starter_id(state.game)
+        raw = state.game.loader.fetch_specific(int(sid)) if sid else None
+        types = [str(t).upper() for t in ((raw or {}).get("types") or [])]
+        gem = next((g for t, g in (("GRASS", "GRASS_GEM"), ("FIRE", "FIRE_GEM"), ("WATER", "WATER_GEM")) if t in types), None)
+        h = (_dex_info(state.game).get(str(int(sid))) or {}).get("height") if sid else None
+        if not gem or not h:
+            show(["Which Pokemon did you pick as your first partner? ...Hmm, I don't know that one!"])
+            return
+        name = str((raw or {}).get("name", "")).replace("-", " ").title()
+        story.story_flags[sq["flag"]] = True
+        story.inventory[gem] = story.inventory.get(gem, 0) + 1
+        show(list(lines or []) + ["Your first partner was %s? All righty, a quiz! How tall is %s?" % (name, name),
+                                  "You answered: %.1f m. ...Correct! You really know your partner!" % float(h),
+                                  "You received a %s!" % gem.replace("_", " ").title()])
         return
     if ev.get("fossil_choice"):   # (batch 12a: Lenora in the Nacrene Museum - pick the Cover Fossil or the Plume Fossil, once)
         fc = ev["fossil_choice"]

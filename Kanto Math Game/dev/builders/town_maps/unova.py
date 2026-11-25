@@ -7836,8 +7836,12 @@ PINWHEEL = route(155, {
     5: _ball("Poke Ball in the far east", "TM168", "b2_pw_tm168", name="TM168 Solar Beam"),
     6: _ball("Poke Ball by the south path", "MAX_REPEL", "b2_pw_max_repel", name="a Max Repel"),
     22: _ball("Poke Ball in the middle", "PP_MAX", "b2_pw_pp_max", name="a PP Max"),
-    23: _say("Researcher in the forest", "Hi, Trainer. If you have a Pokedex, could you tell me about the Pokemon that live in "
-             "Pinwheel Forest?", "Tell me when you've met every Pokemon in Pinwheel Forest."),
+    23: [{"text": "Researcher in the forest", "action": "EVENT", "condition": ["habitat:PINWHEEL_FOREST"], "event": {
+             "lines": ["Perfect! Your Habitat List for Pinwheel Forest is full! This is my thanks!", "You received 5 Nest Balls!"],
+             "gift_item": {"NEST_BALL": 5}, "flag": "b2_pw_habitat",
+             "done": ["Finding the Pokemon that can only be found in the rustling grass is really amazing!"]}},
+         _say("Researcher in the forest ", "Hi, Trainer. If you have a Pokedex, could you show me your Habitat List?",
+              "Tell me when you've met every Pokemon in Pinwheel Forest.", condition=["not:habitat:PINWHEEL_FOREST"])],
     24: _say("Boy in the forest", "The legendary Pokemon... Is it true it was really beyond here?"),
     29: _say("Runner in the forest", "I'm going to do a lap around Unova clockwise from Nimbasa City without healing my Pokemon!",
              "It's the Unova Spartan Marathon, and next time, I'm going to race!"),
@@ -8041,8 +8045,12 @@ ROUTE_3 = route(321, {
              "The old guy next door said he didn't know when they'd find another Egg... But I really want to see one!"),
     18: _say("Kid watching the cyclists", "Go! Go! People who ride Bicycles are so cool!"),
     19: _say("Kid by the preschool", "Sometimes they let my big brother play together with Pokemon, too!"),
-    25: _say("School Kid with a notebook", "Hey! If you fill up your Pokedex's list of Route 3's Pokemon, tell me!",
-             "I want to see them all: the ones in the tall grass, the ones you fish for, and the ones on the water!")},
+    25: [{"text": "School Kid with a notebook", "action": "EVENT", "condition": ["habitat:UNOVA_ROUTE_3"], "event": {
+             "lines": ["I never knew there were this many Pokemon on Route 3! I'm so moved, I'll give you this!",
+                       "You received 5 Dive Balls!"], "gift_item": {"DIVE_BALL": 5}, "flag": "b2_r3_habitat",
+             "done": ["Pokemon Trainers sure are good at meeting Pokemon."]}},
+         _say("School Kid with a notebook ", "Hey! Show me your Habitat List when Route 3's is full!",
+              "The ones in the tall grass, the ones you fish for, and the ones on the water!", condition=["not:habitat:UNOVA_ROUTE_3"])]},
     {}, exits={"<": ("NACRENE_CITY", [(6, y) for y in range(54, 57)]), ">": ("STRIATON_CITY", [(x, 31) for x in range(77, 82)]),
                "n": ("WELLSPRING_CAVE", [(7, 10), (7, 11)])},
     trainers={1: "School Kid Marsha", 2: "Fisherman Bruce", 3: ("Fisherman Mack", 6), 4: ("Preschooler Buster", 2),
@@ -8084,6 +8092,362 @@ WELLSPRING_B1 = route(325, {0: _ball("Poke Ball in the deep", "PROTECTOR", "b2_w
                       trainers={4: "Battle Girl Xiao", 5: "Black Belt Edward", 6: "Black Belt Thomas", 7: ("Veteran Shaun", 6)},
                       hidden={"26,42": "CARBOS", "22,5": "MAX_REVIVE", "10,11": "ULTRA_BALL"}, title="Wellspring Cave B1F")
 
+# ---- 12a, second half (11-25): Striaton City (6; rooms 7-15), the Dreamyard (152; its basement 153 is DREAMYARD_B1F), Route 2
+# (319; Accumula's gate 320), Accumula Town (397; 398-405), Route 1 (317; the gate 318 to Route 17), Nuvema Town (389; 390-396).
+# Black 2 after the title: the restaurant's brothers - one teams up with you against the other two, once a day; Latios
+# (Black 2) / Latias (White 2) Lv 68 at the Dreamyard walkway's east end, its Soul Dew left behind; Accumula's fans of tiny
+# and huge Pokemon (a gift a day), the piano Lady's Kricketot-then-Whismur Metronome, the first-partner quiz's Gem, the
+# Ambipom / Alakazam trades; Route 2's Solid Rock Lady (a Dawn Stone); the hero's house (their mother heals you, the old
+# King's Rock), Bianca's and Cheren's parents, Juniper's lab (Cedric's Super Rod). Canvas joins (each map's own grid):
+# Route 3 (77-81, 31) -> Striaton (x - 64, 1); Striaton's south (48-53) -> Route 2's north, same x; Accumula's south (20-25)
+# -> Route 1's north (x + 32); Route 1's south (50-55) -> Nuvema's north (x - 32).
+OUTSIDE.update({7: 6, 8: 6, 9: 6, 10: -1, 11: 6, 12: -1, 13: 6, 14: -1, 15: 6,
+                398: 397, 399: 397, 400: -1, 401: 397, 402: -1, 403: 397, 404: -1, 405: 397, 320: 397,
+                318: 317, 390: 389, 391: -1, 392: 389, 393: -1, 394: 389, 395: -1, 396: 389})
+ROUTE_3["edge_to"] = {"%d,31" % x: [x - 64, 1] for x in range(77, 82)}
+
+_BRO = {"Cilan": 496, "Chili": 494, "Cress": 495}
+_BRO_WON = {"Cilan": "Battling together with you helped me find new potential in myself. Team up with me again tomorrow!",
+            "Chili": "Eeeooow! You're intense! Battling together with you got me all fired up, man! Come battle again!",
+            "Cress": "If I team up with you, our onslaught is like a torrent. Let's battle together again tomorrow!"}
+
+
+def _brother(label, who):
+    """One of the restaurant's brothers: he teams up with you against the other two (Black 2's Multi Battle, once a day)."""
+    a, b = [k for k in _BRO if k != who]
+    mate = _b2(_BRO[who], sprite="trio_cilan_chili_cress.png")
+    mate = {k: mate[k] for k in ("name", "class", "sprite", "team", "levels") if k in mate}
+    return {"text": label, "action": "EVENT", "event": {
+        "lines": ["%s: Welcome to the Striaton Restaurant! Shall we team up? %s and %s will take us on!" % (who, a, b)],
+        "battle": _b2(_BRO[a], sprite="trio_cilan_chili_cress.png",
+                      battle_options={"double": True, "partner": mate, "second_trainer": _b2(_BRO[b], sprite="trio_cilan_chili_cress.png")},
+                      dialogue={"player_won": ["%s: %s" % (who, _BRO_WON[who])], "player_lost": ["%s: Let's try again tomorrow!" % who]}),
+        "daily": True, "flag": "b2_striaton_multi",
+        "done": ["%s: That was a great battle! Come back tomorrow and we'll do it again." % who]}}
+
+
+STRIATON_ROOMS = {
+    "restaurant": room(7, {0: _say("Show host", "You want to see the show again? There are lots of preparations to make, so come back "
+                                   "tomorrow!"),
+                           4: _say("Watchog", "Tch-hooog!"), 5: _say("Watchog ", "Waaatch!"),
+                           6: _say("Waitress", "Welcome! This is a lively restaurant where you can enjoy a show!"),
+                           7: _say("Woman at a table", "Oh? This show doesn't feature Patrat..."),
+                           8: _say("Nursery Aide at a table", "Striaton's triplets make a fantastic combination! Cilan picks the "
+                                   "finest leaves, Cress brings the finest water, and Chili cooks it all!"),
+                           9: _brother("Cress", "Cress"), 10: _brother("Chili", "Chili"), 11: _brother("Cilan", "Cilan"),
+                           12: {"text": "Waiter with water", "action": "EVENT", "event": {
+                               "lines": ["Hello! I'm giving out water!", "You received a Fresh Water!"],
+                               "gift_item": {"FRESH_WATER": 1}, "daily": True, "flag": "b2_striaton_water",
+                               "done": ["Come back tomorrow for more water!"]}}},
+                      {}, (52, 10)),
+    "center": room(8, {1: {"text": "Pokémon Center", "action": "HEAL"}, 0: {"text": "Shop", "action": "SHOP"},
+                       5: {"text": "TM Department", "action": "EVENT", "event": {
+                           "lines": ["Welcome to the TM Department! Calm Mind and Bulk Up today."], "stock": ["TM129", "TM064"]}},
+                       8: _say("Woman by the desk", "Do you know about Gracidea flowers? Since early times in Sinnoh, people "
+                               "gave a bouquet of them to show their appreciation."),
+                       9: _say("Man in the Center", "If I were a Gym Leader, I wouldn't have quit... I would've felt like it was a waste."),
+                       10: _say("Girl by the PC", "Having a lot of Pokemon makes looking at the Pokedex or the PC Box so much fun!")},
+                   {}, (45, 11)),
+    "house_e": room(9, {0: _say("Woman in the house", "It must have taken a lot of resolve for Cilan, Chili and Cress to "
+                                "resign as Gym Leaders and go retrain themselves."),
+                        1: _say("School Kid", "Fennel left for Castelia City. What's so great about the city, anyway?"),
+                        2: _say("Man in the house", "I hear some people have felt the presence of a mysterious Pokemon in the "
+                                "Dreamyard lately!")},
+                    {}, (53, 18), stairs={10: ("^", "ROOM:house_e_2f")}),
+    "house_e_2f": room(10, {0: _ball("Poke Ball by the desk", "UP_GRADE", "b2_striaton_up_grade", name="an Up-Grade"),
+                            1: _say("Woman upstairs", "Bill, Lanette, Bebe and Amanita. They're all admins of the Pokemon Storage System."),
+                            2: _say("Nursery Aide upstairs", "I don't really know what it means, but the current C-Gear is version 3.0."),
+                            3: _say("Herdier", "Gwoorf!")},
+                       {}, None, stairs={9: ("v", "ROOM:house_e")}),
+    "house_se": room(11, {0: _say("Gentleman", "Whatever your age, you can battle if you have Pokemon by your side."),
+                          1: _say("Lady", "After many battles, you understand things more deeply. I know exactly what my husband "
+                                  "is thinking!")},
+                     {}, (53, 23), stairs={12: ("^", "ROOM:house_se_2f")}),
+    "house_se_2f": room(12, {0: _say("Nursery Aide upstairs", "Does your family call you often on the Xtransceiver, or wait "
+                                     "for you to call?"),
+                             1: _say("Gentleman upstairs", "I like to give all my Pokemon nicknames that end with \"-ington\"!"),
+                             2: _say("Man upstairs", "I plan on going abroad again for some Pokemon battling. In other regions "
+                                     "you discover a lot about things you took for granted.")},
+                        {}, None, stairs={11: ("v", "ROOM:house_se")}),
+    "house_s": room(13, {0: _say("Youngster", "There's a model I've been a fan of for years: Elesa! You've battled her? You're "
+                                 "really something!"),
+                         1: _say("Woman in the house", "Eight Gym Badges?! I wonder what separates two Trainers who both have eight..."),
+                         2: _say("Man in the house", "The GTS links the world from a Pokemon Center! And Driftveil City has the "
+                                 "Pokemon World Tournament!"),
+                         3: _say("Girl in the house", "Let's play Pokemon rock-paper-scissors! ...Waaaah! I lost!")},
+                    {}, (38, 22), stairs={14: ("^", "ROOM:house_s_2f")}),
+    "house_s_2f": room(14, {0: _say("Man upstairs", "I've trained only Fire-type Pokemon, 'cause they're my favourites! Covering "
+                                    "their weaknesses is half the fun."),
+                            1: _say("Girl upstairs", "Sometimes I pick an interesting Pokemon from my PC Box to raise. There's so "
+                                    "much you never know until you raise one."),
+                            2: _say("Pokemon upstairs", "Skreee!"), 3: _say("Pokemon by the bed", "Fwee lee lee...")},
+                       {}, None, stairs={13: ("v", "ROOM:house_s")}),
+    "school": room(15, {1: _say("Teacher", "We opened more Trainers' Schools for everyone who wants to know more about Pokemon!"),
+                        2: _say("Girl in class", "Some Abilities work outside battle too. Suction Cups or Sticky Hold up front "
+                                "makes fish bite more often!"),
+                        3: _say("Boy in class", "The Wide Lens adds 10% accuracy. The Zoom Lens adds 20%, but only if its holder "
+                                "moves after the target.")},
+                   {}, (38, 10)),
+}
+STRIATON = town(
+    6, {1: _say("Girl by the school", "When I explain to someone what I learned at school, I feel more connected to people!"),
+        2: _ball("Poke Ball in the garden", "YELLOW_SHARD", "b2_striaton_yellow_shard", name="a Yellow Shard"),
+        3: _ball("Poke Ball by the south path", "TIMER_BALL", "b2_striaton_timer_ball", name="a Timer Ball"),
+        **{n: _say("Stunfisk" + " " * (n - 4), "Unn unnn?!", condition=["season:summer", "time:night"]) for n in range(4, 12)},
+        12: _say("Gentleman in the garden", "Well, I'll be! Eight Gym Badges! They shine so brightly, it's like you're gleaming too!"),
+        13: _say("Hiker by the fountain", "I never beat the Striaton Gym Leaders... But I'll get so strong, they'll want to challenge me!"),
+        14: _say("Girl by the gate", "Grass-type Pokemon are weak against Fire-type moves. That's why Cilan has trouble beating Chili!"),
+        15: _say("Gentleman by the path", "From the factory's busy days, many dreams still linger in the Dreamyard. A Pokemon led "
+                 "there by them may be somewhere about."),
+        17: _say("Woman by the trees", "TMs can be used over and over, right? I tried so many different things!"),
+        18: _say("Nursery Aide", "Oh my, your Medal Box! Treasure every day, and don't pass a day the same way twice!"),
+        19: _say("Woman by the houses", "The Gym is gone, but the Dreamyard still bustles with Trainers looking to improve!"),
+        20: _say("Man by the pond", "The hot thing is Striaton's Stunfisk nights! A huge school gathers here on summer nights."),
+        21: _say("Boy by the school", "A move of its own type gets stronger, and a Gem of that type makes it stronger still!"),
+        22: _ball("Poke Ball by the west pond", "MAX_ELIXIR", "b2_striaton_max_elixir", name="a Max Elixir"),
+        23: _say("Waiter outside", "This is a delicious restaurant where you can also enjoy Pokemon battles!")},
+    {}, {7: ("house", "restaurant"), 8: ("center", "center"), 9: ("house", "house_e"), 11: ("house", "house_se"),
+         13: ("house", "house_s"), 15: ("house", "school")},
+    STRIATON_ROOMS,
+    edges={"^": ("UNOVA_ROUTE_3", [(x, 0) for x in range(13, 18)]), "v": ("UNOVA_ROUTE_2", [(x, 31) for x in range(48, 54)]),
+           "d": ("DREAMYARD", [(69, y) for y in range(4, 8)])},
+    hidden={"18,4": "PP_UP", "10,26": "FULL_RESTORE"}, title="Striaton City")
+STRIATON["edge_to"] = dict({"%d,0" % x: [x + 64, 30] for x in range(13, 18)}, **{"%d,31" % x: [x, 1] for x in range(48, 54)},
+                           **{"69,%d" % y: [9, 26 + y - 4] for y in range(4, 8)})
+for _r, _t in (("restaurant", "Striaton Restaurant"), ("center", "Pokémon Center"), ("house_e", "House"), ("house_e_2f", "House 2F"),
+               ("house_se", "House"), ("house_se_2f", "House 2F"), ("house_s", "House"), ("house_s_2f", "House 2F"),
+               ("school", "Trainers' School")):
+    STRIATON["rooms"][_r]["title"] = _t
+
+LATI = [{"text": n, "action": "BOSS", "color": "RED", "_look": "mon:%d" % pid, "condition": ["unova_version:" + v, "not:b2_dy_lati"],
+         "boss": {"id": pid, "name": n, "level": 68, "victory_flag": "b2_dy_lati",
+                  "lines": ["The Pokemon that kept flying past swoops down onto the walkway! %s attacks!" % n]}}
+        for n, pid, v in (("Latios", 381, "BLACK_2"), ("Latias", 380, "WHITE_2"))]
+_DY_B1 = {(52, 11): (25, 3), (20, 38): (4, 20), (52, 46): (25, 27)}   # (a door here -> beside its stairway down there)
+DREAMYARD_MAP = route(152, {
+    2: _ball("Poke Ball by the stairway", "TM270", "b2_dy_tm270", name="TM270 Dream Eater"),
+    3: _ball("Poke Ball in the south-west", "ULTRA_BALL", "b2_dy_ultra_ball", name="an Ultra Ball"),
+    4: _ball("Poke Ball by the east wall", "MOON_STONE", "b2_dy_moon_stone", name="a Moon Stone"),
+    5: _ball("Poke Ball in the west ruins", "RARE_CANDY", "b2_dy_rare_candy", name="a Rare Candy"),
+    6: _ball("Poke Ball by the furnace", "REAPER_CLOTH", "b2_dy_reaper_cloth", name="a Reaper Cloth"),
+    11: dict(_ball("Something shining on the walkway", "SOUL_DEW", "b2_dy_soul_dew", name="a Soul Dew"), condition=["b2_dy_lati"])},
+    {}, exits={"<": ("STRIATON_CITY", [(8, y) for y in range(26, 30)]),
+               "b": ("DREAMYARD_B1F", [(x, y + k) for (x, y) in _DY_B1 for k in range(3)])},
+    trainers={8: "School Kid William", 9: "School Kid Rita", 10: "Youngster Keita"},
+    extra_people=[(56, 10, LATI)],
+    hidden={"35,44": "PP_UP"}, title="Dreamyard")
+DREAMYARD_MAP["split"] = True   # (three parts, joined through the basement)
+DREAMYARD_MAP["edge_to"] = dict({"8,%d" % y: [68, 4 + y - 26] for y in range(26, 30)},
+                                **{"%d,%d" % (x, y + k): list(_DY_B1[(x, y)]) for (x, y) in _DY_B1 for k in range(3)})
+DREAMYARD_B1 = route(153, {
+    0: _ball("Poke Ball in the north", "IRON", "b2_dy_iron", name="an Iron"),
+    1: _ball("Poke Ball in the south-west", "DAWN_STONE", "b2_dy_dawn_stone", name="a Dawn Stone"),
+    2: _ball("Poke Ball on the east side", "HP_UP", "b2_dy_hp_up", name="an HP Up")},
+    {}, exits={"^": ("DREAMYARD", [(26, 3), (3, 20), (26, 27)])},
+    trainers={3: "Scientist Athena", 4: "Scientist Franklin", 5: "Psychic Olesia", 6: "Psychic Nandor"},
+    hidden={"12,3": "PSYCHIC_GEM"}, title="Dreamyard B1F")
+DREAMYARD_B1["split"] = True   # (parts reached each by its own stairway from above)
+DREAMYARD_B1["edge_to"] = {"26,3": [53, 12], "3,20": [19, 39], "26,27": [53, 47]}
+
+ROUTE_2 = route(319, {
+    6: _say("Youngster on the path", "You know the guy at the ledge on Route 19? He's my rival!"),
+    7: _say("Youngster by the grass", "My Pokemon aren't feeling well, so I'm keeping out of the tall grass. ...Oh, you have eight "
+            "Badges! I'm so embarrassed!"),
+    8: _say("Lass on the path", "Battles between Trainers are serious! You can't run away in front of your beloved Pokemon!"),
+    9: {"text": "Lady on the hill", "action": "EVENT", "event": {
+        "world": "unova_story", "lines": ["What could be the perfect instrument for me? I want an impact as strong as a Pokemon "
+                                          "with Solid Rock!"],
+        "show_ability": {"ability": "SOLID_ROCK", "flag": "b2_r2_solid_rock", "gift": {"DAWN_STONE": 1},
+                         "ask": ["If you have a Pokemon with Solid Rock, please show it to me!"],
+                         "thanks": ["Th-that {mon}... That Ability is Solid Rock! It rocks! Hard rock?! Take this as thanks!"],
+                         "done": ["What is this feeling coursing through my veins?"]}}},
+    12: _ball("Poke Ball on the hill", "FULL_HEAL", "b2_r2_full_heal", name="a Full Heal"),
+    13: _ball("Poke Ball in the grass", "ULTRA_BALL", "b2_r2_ultra_ball", name="an Ultra Ball"),
+    14: _ball("Poke Ball behind the boulder", "CALCIUM", "b2_r2_calcium", name="a Calcium"),
+    15: _ball("Poke Ball in the clearing", "CARBOS", "b2_r2_carbos", name="a Carbos"),
+    16: _ball("Poke Ball on the hilltop", "REPEAT_BALL", "b2_r2_repeat_ball", name="a Repeat Ball"),
+    17: _ball("Poke Ball by Veteran Oriana", "MAX_REVIVE", "b2_r2_max_revive", name="a Max Revive")},
+    {}, exits={"^": ("STRIATON_CITY", [(x, 0) for x in range(48, 54)]), "v": ("ACCUMULA_TOWN", [(25, y) for y in range(39, 42)])},
+    trainers={2: ("Veteran Rayne", 4), 3: ("Youngster Jimmy", 5), 4: ("Lass Henrietta", 5), 5: ("Lass Mali", 5),
+              10: ("Youngster Mikey", 5), 11: ("Veteran Oriana", 4)},
+    hidden={"39,18": "MAX_REVIVE", "23,11": "PP_MAX"},
+    rooms={"grotto": grotto_room(18, (15, 25))}, inside={"15,25": "grotto"}, title="Route 2")
+_doors(ROUTE_2, ROUTE_2["inside"])
+_wall(ROUTE_2, 32, 32, 63, 63)   # (the canvas's empty quarter)
+_put_char(ROUTE_2, 14, 46, "b")   # (the Strength boulder in front of the Calcium's nook; the walk data has it as wall)
+ROUTE_2["edge_to"] = {"%d,0" % x: [x, 30] for x in range(48, 54)}
+
+ACC_ROOMS = {
+    "gate_w": room(320, {0: _say("Gate guard", "Good afternoon! The electric bulletin board shows mass outbreaks too. Be sure to check it!"),
+                         1: _say("Woman in the gate", "I love imagining what letter will show next on the electric bulletin board!")},
+                   {}, (0, 7), exits_extra={319: ("<", "UNOVA_ROUTE_2")}),
+    "center": room(398, {2: {"text": "Pokémon Center", "action": "HEAL"}, 1: {"text": "Shop", "action": "SHOP"},
+                         3: _say("Clerk ", "Specialty Poke Balls are over here!"),
+                         8: _say("Woman by the PC", "I'm looking over my PC Boxes and remembering my journey so far..."),
+                         9: _say("Lass in the Center", "Oh wow! A Pokedex! How full is your Habitat List?")},
+                    {}, (28, 17)),
+    "house_w": room(399, {0: _say("Woman in the house", "Which Pokemon should hold what item... There's no right answer, but I like "
+                                  "thinking it over."),
+                          1: [{"text": "Lass with an Ambipom", "action": "EVENT", "condition": ["not:b2_acc_trade_1"], "event": {
+                                  "lines": ["My Ambipom knows Nasty Plot! Would you trade me your Excadrill for it?",
+                                            "Pokemon trade! Off they go, and back they come!"],
+                                  "trade": {"want": 530, "give": 424}, "flag": "b2_acc_trade_1",
+                                  "fail": ["I'd love an Excadrill. Come back with one!"]}},
+                              {"text": "Lass with an Alakazam", "action": "EVENT", "condition": ["b2_acc_trade_1"], "event": {
+                                  "lines": ["The Excadrill I got from you has become really strong! Would you trade your "
+                                            "Hippowdon for my Alakazam now?", "Pokemon trade! Off they go, and back they come!"],
+                                  "trade": {"want": 450, "give": 65}, "flag": "b2_acc_trade_2",
+                                  "fail": ["I'd love a Hippowdon next. Come back with one!"],
+                                  "done": ["Thanks for both trades! They're doing great with me!"]}}],
+                          2: _say("Boy in the house", "I'm a Pokemon Trainer now! Just like the Trainer from Nuvema I met two years ago!"),
+                          3: _say("Pansage", "Paaan!"),
+                          4: _say("Man in the house", "You Trainers should always keep a smile on your face! Your Pokemon can tell.")},
+                     {}, (3, 20), stairs={400: ("^", "ROOM:house_w_2f")}),
+    "house_w_2f": room(400, {0: _say("Woman upstairs", "When you can't find common ground, it's time for a Pokemon battle! But my "
+                                     "husband might be taking it easy on me..."),
+                             1: _say("Man upstairs", "Even the same kind of Pokemon each has its own Nature and strengths."),
+                             2: _say("Girl upstairs", "Sometimes you fight others because they're different. Sometimes you like "
+                                     "them because they're different!")},
+                        {}, None, stairs={399: ("v", "ROOM:house_w")}),
+    "house_n": room(401, {0: _say("Woman in the house", "Join Avenue... I wonder what it's like now. And what's playing at Pokestar Studios?"),
+                          1: _say("Man in the house", "The triplets from Striaton often head over to Route 2. They're really tough!"),
+                          2: _say("Kid in the house", "Guess what I know! Pokemon can only know four moves at one time!")},
+                     {}, (17, 6), stairs={402: ("^", "ROOM:house_n_2f")}),
+    "house_n_2f": room(402, {0: _say("Herdier", "Woo uff!"),
+                             1: _say("Woman upstairs", "Your Pokedex is full of weak Pokemon, strong Pokemon, cool and cute Pokemon..."),
+                             2: _say("Girl upstairs", "The moment my Lillipup evolved into Herdier, my eyes started watering..."),
+                             3: {"text": "Young man upstairs", "action": "EVENT", "event": {
+                                 "lines": ["Here, I found this growing out back. Take it!", "You received a BalmMushroom!"],
+                                 "gift_item": {"BALM_MUSHROOM": 1}, "flag": "b2_acc_balm",
+                                 "done": ["Mushrooms like that fetch a good price, you know."]}}},
+                        {}, None, stairs={401: ("v", "ROOM:house_n")}),
+    "house_nw": room(403, {0: _say("Man in the house", "Trainers raise Pokemon. Pokemon make Trainers strong. It's always been that way."),
+                           1: _say("Woman in the house", "In good times and bad, Pokemon stay by your side. What more do you need?"),
+                           2: _say("Boy in the house", "People here look up to the hero and Pokemon that founded Unova. Team Plasma "
+                                   "tried to use that!"),
+                           3: _say("Roggenrola", "Ro gro!")},
+                      {}, (9, 6), stairs={404: ("^", "ROOM:house_nw_2f")}),
+    "house_nw_2f": room(404, {0: {"text": "Man by the stairs", "action": "EVENT", "event": {
+                                  "lines": ["You're on a journey? Then you'll want plenty of these!", "You received 10 Poke Balls!"],
+                                  "gift_item": {"balls": 10}, "flag": "b2_acc_balls",
+                                  "done": ["Catch lots of Pokemon with those!"]}},
+                              1: {"text": "Girl with a Pokedex", "action": "EVENT", "event": {
+                                  "world": "unova_story", "lines": ["Looking at the Pokedex is fun! Pokemon can be a lot bigger or "
+                                                                    "smaller than you imagine!"],
+                                  "starter_quiz": {"flag": "b2_acc_quiz"}}},
+                              3: _say("Pokemon upstairs", "Skree skree!")},
+                         {}, None, stairs={403: ("v", "ROOM:house_nw")}),
+    "music": room(405, {0: {"text": "Lady at the piano", "action": "EVENT", "event": {
+                            "lines": ["Playing the piano isn't much fun lately... Maybe I need to hear a cry with a wonderful melody."],
+                            "stages": [{"ready": ["party_has:401"], "flag": "b2_acc_kricketot",
+                                        "lines": ["Oh, that Kricketot's cry! My mood is lifting a little... Is there another cry "
+                                                  "like an instrument?"]},
+                                       {"ready": ["b2_acc_kricketot", "party_has:293"], "flag": "b2_acc_metronome",
+                                        "gift_item": {"METRONOME": 1},
+                                        "lines": ["Whismur's cry! That's it! I'm out of my slump! Please, take this!",
+                                                  "You received a Metronome!"]}],
+                            "then": {"lines": ["Shall I play a song I like for you? ...A cry like an instrument would help "
+                                               "my imagination: a Kricketot, then a Whismur, perhaps?"]}}},
+                        1: _say("Drummer", "My! Heart! As long as my heart beats! I will keep! On! Drumming!!"),
+                        2: _say("Pokemon by the drums", "Chip kwip!")},
+                   {}, (26, 8)),
+}
+ACCUMULA = town(
+    397, {0: {"text": "Youngster on the lower level", "action": "EVENT", "event": {
+              "world": "unova_story", "lines": ["I like little tiny things. Pokemon 8 inches (20 cm) tall or less are the most "
+                                                "interesting!"],
+              "show_size": {"max": 0.2, "flag": "b2_acc_tiny", "gift": {"POKE_DOLL": 1},
+                            "ask": ["Will you show me a tiny Pokemon?"],
+                            "thanks": ["Wow! {mon} is so tiny! I wonder what the world looks like to it! Here, thanks!"],
+                            "done": ["Thanks for showing me a tiny Pokemon! Show me one again tomorrow!"]}}},
+          6: {"text": "Lass at the top of the stairs", "action": "EVENT", "event": {
+              "world": "unova_story", "lines": ["I love high places and really big things! Pokemon over 17 feet (5.2 m) tall!"],
+              "show_size": {"min": 5.2, "flag": "b2_acc_huge", "gift": {"FLUFFY_TAIL": 1},
+                            "ask": ["C'mon! If you have a big Pokemon, show it to me!"],
+                            "thanks": ["Wow! {mon} is sooooo big! Riding on top of it would be so much fun! Here, thanks!"],
+                            "done": ["Big thanks for showing me a big Pokemon! Show me one tomorrow, too!"]}}},
+          1: _say("Woman in town", "You and your Pokemon somehow resemble one another! That comes from all your time together."),
+          2: _say("Man on the hill", "Do you like Pokemon? Yes, you have Pokemon with you, so I'm sure you do!"),
+          3: _say("Girl with an Audino", "See my Audino? She popped out of the swaying tall grass just to meet me!"),
+          4: _say("Audino", "Di chee!"),
+          5: _say("Lady on the hill", "Now, I wonder who was the first person in the world to get along with Pokemon..."),
+          9: _say("Lady by the steps", "My cute little Foongus looks just like a Poke Ball!")},
+    {}, {398: ("center", "center"), 399: ("house", "house_w"), 401: ("house", "house_n"), 403: ("house", "house_nw"),
+         405: ("house", "music"), 320: ("gate", "gate_w", "UNOVA_ROUTE_2")},
+    ACC_ROOMS, edges={"v": ("UNOVA_ROUTE_1", [(x, 31) for x in range(20, 26)])},
+    hidden={"8,20": "MAX_REPEL"}, title="Accumula Town")
+ACCUMULA["edge_to"] = {"%d,31" % x: [x + 32, 1] for x in range(20, 26)}
+for _r, _t in (("gate_w", "Accumula Gate"), ("center", "Pokémon Center"), ("house_w", "House"), ("house_w_2f", "House 2F"),
+               ("house_n", "House"), ("house_n_2f", "House 2F"), ("house_nw", "House"), ("house_nw_2f", "House 2F"),
+               ("music", "House")):
+    ACCUMULA["rooms"][_r]["title"] = _t
+
+R1_GATE = room(318, {0: _say("Gate guard", "This electric bulletin board has been pitch black for a really long time."),
+                     1: _say("Backpacker in the gate", "One thing I learned on my travels: home is a really nice place, too!"),
+                     2: _say("Ace Trainer in the gate", "My Pokemon just love to battle! I'm worn out... so I'm resting here.")},
+               {}, (6, 75), exits_extra={423: ("<", "UNOVA_ROUTE_17")})
+R1_GATE["title"] = "Route Gate"
+ROUTE_1 = route(317, {
+    6: _ball("Poke Ball on the south side", "PRISM_SCALE", "b2_r1_prism_scale", name="a Prism Scale"),
+    7: _ball("Poke Ball across the water", "FULL_RESTORE", "b2_r1_full_restore", name="a Full Restore"),
+    8: _say("Man by the grass", "Two years ago, a Trainer from Nuvema saved Unova from Team Plasma! I'm the one who told them wild "
+            "Pokemon hide in the tall grass."),
+    9: _say("Fisherman", "I'd like to land all of the Pokemon beyond here, too!"),
+    10: {"text": "Girl in the grass", "action": "EVENT", "event": {
+        "lines": ["Here! A Potion, for your journey!", "You received a Potion!"], "gift_item": {"POTION": 1}, "flag": "b2_r1_potion",
+        "done": ["Wild Pokemon hide in the tall grass. Be careful!"]}}},
+    {}, exits={"^": ("ACCUMULA_TOWN", [(x, 0) for x in range(52, 58)]), "v": ("NUVEMA_TOWN", [(x, 63) for x in range(50, 56)])},
+    trainers={0: ("Backpacker Jill", 4), 1: ("Backpacker Shane", 4), 2: "Pokemon Ranger Audra", 3: "Pokemon Ranger Rick",
+              4: "Ace Trainer Sean", 5: "Ace Trainer Cheyenne"},
+    hidden={"57,30": "ULTRA_BALL", "18,69": "PROTEIN"},
+    rooms={"gate": R1_GATE}, inside={"6,75": "gate", "6,76": "gate", "6,77": "gate"}, title="Route 1")
+_doors(ROUTE_1, ROUTE_1["inside"])
+for _box in ((0, 0, 31, 31), (32, 64, 63, 95)):   # (an empty quarter; Nuvema's own on the canvas)
+    _wall(ROUTE_1, *_box)
+ROUTE_1["edge_to"] = dict({"%d,0" % x: [x - 32, 30] for x in range(52, 58)}, **{"%d,63" % x: [x - 32, 1] for x in range(50, 56)})
+
+NUV_ROOMS = {
+    "hero": room(390, {0: {"text": "Mother of the hero", "action": "HEAL"}}, {}, (14, 12), stairs={391: ("^", "ROOM:hero_2f")}),
+    "hero_2f": room(391, {5: _ball("Old King's Rock by the bed", "KINGS_ROCK", "b2_nuvema_kings_rock", name="an old King's Rock")},
+                    {}, None, stairs={390: ("v", "ROOM:hero")}),
+    "bianca": room(392, {0: _say("Bianca's Mom", "Bianca's Mom: Oh! So you also have a Pokedex from Professor Juniper! That daughter "
+                                 "of mine looks at hers every chance she gets!"),
+                         1: _say("Bianca's Dad", "Bianca's Dad: So you're on a Pokemon journey too! I'm sure your parents miss you, "
+                                 "but they're proud.")},
+                    {}, (8, 21), stairs={393: ("^", "ROOM:bianca_2f")}),
+    "bianca_2f": room(393, {}, {}, None, stairs={392: ("v", "ROOM:bianca")}),
+    "cheren": room(394, {0: _say("Cheren's Mom", "Cheren's Mom: Oh my... You have a Pokedex too! Everyone grows up like this now, "
+                                 "don't they?"),
+                         1: {"text": "Cheren's Dad", "action": "EVENT", "event": {
+                             "lines": ["Cheren's Dad: You were my son's first Gym challenger? Thank you! Here, a little gift.",
+                                       "You received a Berry Juice!"],
+                             "gift_item": {"BERRY_JUICE": 1}, "flag": "b2_nuvema_berry_juice",
+                             "done": ["Cheren's Dad: That boy of mine, a Gym Leader! Imagine that."]}}},
+                    {}, (19, 21), stairs={395: ("^", "ROOM:cheren_2f")}),
+    "cheren_2f": room(395, {}, {}, None, stairs={394: ("v", "ROOM:cheren")}),
+    "lab": room(396, {0: {"text": "Cedric Juniper", "action": "EVENT", "event": {
+                          "lines": ["Cedric: Hey, {player_name}! Oh, that's right! I completely forgot to give this to you in "
+                                    "Aspertia! Here, this is the Super Rod!", "You received the Super Rod!"],
+                          "gift_item": {"SUPER_ROD": 1}, "flag": "b2_nuvema_super_rod",
+                          "done": ["Cedric: I made the Habitat List so people would know how many Pokemon live in each place!"]}},
+                      1: _say("Professor Juniper", "Professor Juniper: Why, hello! Thanks for coming clear out to Nuvema! Did you "
+                              "take Skyarrow Bridge and meet a lot of Pokemon?",
+                              "Professor Juniper: Check every corner of the Unova region for Pokemon! Do your best!"),
+                      2: _say("Pokemon in the lab", "Skreet! Skreet!"), 3: _say("Pokemon by the desk", "Pfoooh!")},
+                 {}, (9, 4)),
+}
+NUVEMA = town(
+    389, {0: _say("Woman in town", "Do you think traveling with Pokemon changes people? Thinking about many things makes a difference!"),
+          1: _say("Girl in town", "On my next birthday, Professor Juniper is giving me a Pokemon! Maybe I'll be a professor, or a Champion!"),
+          2: _say("Man in town", "The power of science is amazing! Trades and battles, all in the blink of an eye!")},
+    {}, {390: ("home", "hero"), 392: ("house", "bianca"), 394: ("house", "cheren"), 396: ("house", "lab")},
+    NUV_ROOMS, edges={"^": ("UNOVA_ROUTE_1", [(x, 0) for x in range(18, 24)])},
+    hidden={"9,14": "ZINC"}, title="Nuvema Town")
+NUVEMA["edge_to"] = {"%d,0" % x: [x + 32, 62] for x in range(18, 24)}
+for _r, _t in (("hero", "House"), ("hero_2f", "House 2F"), ("bianca", "Bianca's House"), ("bianca_2f", "Bianca's House 2F"),
+               ("cheren", "Cheren's House"), ("cheren_2f", "Cheren's House 2F"), ("lab", "Juniper Pokémon Lab")):
+    NUVEMA["rooms"][_r]["title"] = _t
+
 
 MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": FLOCCESY, "UNOVA_ROUTE_20": ROUTE_20,
         "FLOCCESY_RANCH_OUTSIDE": RANCH_OUTSIDE, "FLOCCESY_RANCH": RANCH, "PLEDGE_GROVE": PLEDGE_GROVE,
@@ -8116,4 +8480,4 @@ MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": 
         "VICTORY_ROAD_RIVER": VR_RIVER, "VICTORY_ROAD_CAVE_2F": VR_2F, "VICTORY_ROAD_2F_BACK": VR_2F_BACK,
         "VICTORY_ROAD_MOUNTAINSIDE": VR_MOUNTAIN, "VICTORY_ROAD_3F": VR_3F, "VICTORY_ROAD_TUNNEL": VR_TUNNEL,   # (batch 10a)
         "UNOVA_POKEMON_LEAGUE": LEAGUE,   # (batch 10b)
-        "UNOVA_ROUTE_14": ROUTE_14, "N_CASTLE": N_CAVE, "SKYARROW_BRIDGE": SKYARROW, "PINWHEEL_FOREST": PINWHEEL, "PINWHEEL_FOREST_OUTSIDE": PINWHEEL_OUT, "NACRENE_CITY": NACRENE, "UNOVA_ROUTE_3": ROUTE_3, "WELLSPRING_CAVE": WELLSPRING, "WELLSPRING_CAVE_B1F": WELLSPRING_B1, "BLACK_CITY": BLACK_CITY, "WHITE_FOREST": WHITE_FOREST, "ABUNDANT_SHRINE": SHRINE, "UNOVA_ROUTE_15": ROUTE_15, "MARVELOUS_BRIDGE": BRIDGE}   # (batch 11a)
+        "UNOVA_ROUTE_14": ROUTE_14, "N_CASTLE": N_CAVE, "SKYARROW_BRIDGE": SKYARROW, "PINWHEEL_FOREST": PINWHEEL, "PINWHEEL_FOREST_OUTSIDE": PINWHEEL_OUT, "NACRENE_CITY": NACRENE, "UNOVA_ROUTE_3": ROUTE_3, "WELLSPRING_CAVE": WELLSPRING, "WELLSPRING_CAVE_B1F": WELLSPRING_B1, "STRIATON_CITY": STRIATON, "DREAMYARD": DREAMYARD_MAP, "DREAMYARD_B1F": DREAMYARD_B1, "UNOVA_ROUTE_2": ROUTE_2, "ACCUMULA_TOWN": ACCUMULA, "UNOVA_ROUTE_1": ROUTE_1, "NUVEMA_TOWN": NUVEMA, "BLACK_CITY": BLACK_CITY, "WHITE_FOREST": WHITE_FOREST, "ABUNDANT_SHRINE": SHRINE, "UNOVA_ROUTE_15": ROUTE_15, "MARVELOUS_BRIDGE": BRIDGE}   # (batch 11a)
