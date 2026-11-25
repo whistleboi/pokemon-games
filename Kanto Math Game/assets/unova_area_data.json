@@ -2,6 +2,63 @@
   "UNOVA_OLD_ROD_POOL_PERCENTAGES": {"550": 40, "118": 30, "129": 30},
   "UNOVA_GOOD_ROD_POOL_PERCENTAGES": {"550": 35, "118": 25, "592": 25, "339": 15},
   "UNOVA_SUPER_ROD_POOL_PERCENTAGES": {"550": 25, "592": 25, "594": 15, "119": 15, "223": 10, "90": 10},
+  "PAST_PINWHEEL_FOREST_SUPER_ROD_PERCENTAGES": {
+    "118": 70,
+    "550": 30
+  },
+  "PAST_PINWHEEL_FOREST_SURF_PERCENTAGES": {
+    "550": 100
+  },
+  "PAST_PINWHEEL_FOREST_PERCENTAGES": {
+    "548": 35,
+    "540": 35,
+    "519": 15,
+    "543": 15
+  },
+  "PAST_PINWHEEL_FOREST_OUTSIDE_PERCENTAGES": {
+    "535": 40,
+    "519": 30,
+    "532": 20,
+    "538": 10
+  },
+  "PAST_WELLSPRING_CAVE_B1F_SUPER_ROD_PERCENTAGES": {
+    "60": 65,
+    "550": 30,
+    "61": 5
+  },
+  "PAST_WELLSPRING_CAVE_B1F_SURF_PERCENTAGES": {
+    "550": 100
+  },
+  "PAST_WELLSPRING_CAVE_B1F_PERCENTAGES": {
+    "524": 50,
+    "527": 50
+  },
+  "PAST_WELLSPRING_CAVE_SUPER_ROD_PERCENTAGES": {
+    "60": 65,
+    "550": 30,
+    "61": 5
+  },
+  "PAST_WELLSPRING_CAVE_SURF_PERCENTAGES": {
+    "550": 100
+  },
+  "PAST_WELLSPRING_CAVE_PERCENTAGES": {
+    "524": 50,
+    "527": 50
+  },
+  "PAST_UNOVA_ROUTE_3_SUPER_ROD_PERCENTAGES": {
+    "118": 70,
+    "550": 30
+  },
+  "PAST_UNOVA_ROUTE_3_SURF_PERCENTAGES": {
+    "550": 100
+  },
+  "PAST_UNOVA_ROUTE_3_PERCENTAGES": {
+    "519": 40,
+    "504": 20,
+    "522": 20,
+    "506": 10,
+    "509": 10
+  },
   "PAST_DREAMYARD_PERCENTAGES": {
     "504": 40,
     "509": 40,
@@ -10466,6 +10523,7 @@
       },
       "surf_pool_percentages": "STRIATON_CITY_SURF_PERCENTAGES"
     },
+    "PAST_NACRENE_CITY": {"area_type": "town", "route_name": "Nacrene City (two years ago)", "region": "UNOVA", "era": "past", "on_enter_event": null, "travel_options": [], "explore_options": []},
     "NACRENE_CITY": {
       "area_type": "town",
       "route_name": "Nacrene City",
@@ -13572,6 +13630,406 @@
         }
       ]
     },
+    "PAST_WELLSPRING_CAVE_B1F": {
+      "area_type": "dungeon",
+      "route_name": "Wellspring Cave B1F (two years ago)",
+      "region": "UNOVA",
+      "era": "past",
+      "on_enter_event": null,
+      "battle_type": "cave",
+      "wild_pool_percentages": "PAST_WELLSPRING_CAVE_B1F_PERCENTAGES",
+      "min_rounds": 1,
+      "trainer_pool": [
+        {
+          "name": "Black Belt Edward",
+          "class": "BLACK_BELT",
+          "sprite": "b2_black_belt.png",
+          "team": [
+            559,
+            538,
+            539
+          ],
+          "levels": [
+            34,
+            34,
+            34
+          ],
+          "rewards": {
+            "balls": 4
+          },
+          "b2_id": 252
+        },
+        {
+          "name": "Battle Girl Xiao",
+          "class": "BATTLE_GIRL",
+          "sprite": "b2_battle_girl.png",
+          "team": [
+            533,
+            538
+          ],
+          "levels": [
+            35,
+            35
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 254
+        },
+        {
+          "name": "Battle Girl Maggie",
+          "class": "BATTLE_GIRL",
+          "sprite": "b2_battle_girl.png",
+          "team": [
+            533,
+            539
+          ],
+          "levels": [
+            35,
+            35
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 253
+        }
+      ],
+      "route_menu": [],
+      "backgrounds": {
+        "battle": "battle_wellspring_cave.png"
+      },
+      "wild_tables": {
+        "ALL": {
+          "grass": [
+            [
+              524,
+              0,
+              20,
+              10,
+              10
+            ],
+            [
+              527,
+              0,
+              20,
+              10,
+              10
+            ],
+            [
+              524,
+              0,
+              10,
+              11,
+              11
+            ],
+            [
+              527,
+              0,
+              10,
+              11,
+              11
+            ],
+            [
+              524,
+              0,
+              10,
+              11,
+              11
+            ],
+            [
+              527,
+              0,
+              10,
+              11,
+              11
+            ],
+            [
+              524,
+              0,
+              5,
+              12,
+              12
+            ],
+            [
+              527,
+              0,
+              5,
+              12,
+              12
+            ],
+            [
+              524,
+              0,
+              4,
+              13,
+              13
+            ],
+            [
+              527,
+              0,
+              4,
+              13,
+              13
+            ],
+            [
+              524,
+              0,
+              1,
+              13,
+              13
+            ],
+            [
+              527,
+              0,
+              1,
+              13,
+              13
+            ]
+          ],
+          "rustle": [
+            [
+              529,
+              0,
+              20,
+              10,
+              10
+            ],
+            [
+              529,
+              0,
+              20,
+              10,
+              10
+            ],
+            [
+              529,
+              0,
+              10,
+              11,
+              11
+            ],
+            [
+              529,
+              0,
+              10,
+              11,
+              11
+            ],
+            [
+              529,
+              0,
+              10,
+              12,
+              12
+            ],
+            [
+              529,
+              0,
+              10,
+              12,
+              12
+            ],
+            [
+              529,
+              0,
+              5,
+              13,
+              13
+            ],
+            [
+              529,
+              0,
+              5,
+              13,
+              13
+            ],
+            [
+              529,
+              0,
+              4,
+              13,
+              13
+            ],
+            [
+              529,
+              0,
+              4,
+              13,
+              13
+            ],
+            [
+              529,
+              0,
+              1,
+              13,
+              13
+            ],
+            [
+              529,
+              0,
+              1,
+              13,
+              13
+            ]
+          ],
+          "surf": [
+            [
+              550,
+              1,
+              60,
+              5,
+              15
+            ],
+            [
+              550,
+              1,
+              30,
+              5,
+              15
+            ],
+            [
+              550,
+              1,
+              5,
+              5,
+              15
+            ],
+            [
+              550,
+              1,
+              4,
+              5,
+              15
+            ],
+            [
+              550,
+              1,
+              1,
+              5,
+              15
+            ]
+          ],
+          "ripple": [
+            [
+              550,
+              0,
+              60,
+              5,
+              20
+            ],
+            [
+              550,
+              0,
+              30,
+              5,
+              20
+            ],
+            [
+              550,
+              0,
+              5,
+              5,
+              20
+            ],
+            [
+              550,
+              0,
+              4,
+              5,
+              20
+            ],
+            [
+              550,
+              0,
+              1,
+              5,
+              20
+            ]
+          ],
+          "fish": [
+            [
+              60,
+              0,
+              60,
+              35,
+              55
+            ],
+            [
+              550,
+              1,
+              30,
+              35,
+              55
+            ],
+            [
+              61,
+              0,
+              5,
+              35,
+              55
+            ],
+            [
+              60,
+              0,
+              4,
+              35,
+              55
+            ],
+            [
+              60,
+              0,
+              1,
+              35,
+              55
+            ]
+          ],
+          "fish_ripple": [
+            [
+              61,
+              0,
+              60,
+              35,
+              60
+            ],
+            [
+              550,
+              0,
+              30,
+              35,
+              60
+            ],
+            [
+              61,
+              0,
+              5,
+              35,
+              60
+            ],
+            [
+              62,
+              0,
+              4,
+              35,
+              60
+            ],
+            [
+              62,
+              0,
+              1,
+              35,
+              60
+            ]
+          ]
+        }
+      },
+      "wild_levels": {
+        "land": [
+          10,
+          13
+        ]
+      },
+      "surf_pool_percentages": "PAST_WELLSPRING_CAVE_B1F_SURF_PERCENTAGES"
+    },
     "WELLSPRING_CAVE_B1F": {
       "area_type": "dungeon",
       "route_name": "Wellspring Cave B1F",
@@ -14037,6 +14495,352 @@
       },
       "surf_pool_percentages": "WELLSPRING_CAVE_B1F_SURF_PERCENTAGES"
     },
+    "PAST_WELLSPRING_CAVE": {
+      "area_type": "dungeon",
+      "route_name": "Wellspring Cave (two years ago)",
+      "region": "UNOVA",
+      "era": "past",
+      "on_enter_event": null,
+      "battle_type": "cave",
+      "wild_pool_percentages": "PAST_WELLSPRING_CAVE_PERCENTAGES",
+      "min_rounds": 1,
+      "trainer_pool": [],
+      "route_menu": [],
+      "backgrounds": {
+        "battle": "battle_wellspring_cave.png"
+      },
+      "wild_tables": {
+        "ALL": {
+          "grass": [
+            [
+              524,
+              0,
+              20,
+              10,
+              10
+            ],
+            [
+              527,
+              0,
+              20,
+              10,
+              10
+            ],
+            [
+              524,
+              0,
+              10,
+              11,
+              11
+            ],
+            [
+              527,
+              0,
+              10,
+              11,
+              11
+            ],
+            [
+              524,
+              0,
+              10,
+              11,
+              11
+            ],
+            [
+              527,
+              0,
+              10,
+              11,
+              11
+            ],
+            [
+              524,
+              0,
+              5,
+              12,
+              12
+            ],
+            [
+              527,
+              0,
+              5,
+              12,
+              12
+            ],
+            [
+              524,
+              0,
+              4,
+              13,
+              13
+            ],
+            [
+              527,
+              0,
+              4,
+              13,
+              13
+            ],
+            [
+              524,
+              0,
+              1,
+              13,
+              13
+            ],
+            [
+              527,
+              0,
+              1,
+              13,
+              13
+            ]
+          ],
+          "rustle": [
+            [
+              529,
+              0,
+              20,
+              10,
+              10
+            ],
+            [
+              529,
+              0,
+              20,
+              10,
+              10
+            ],
+            [
+              529,
+              0,
+              10,
+              11,
+              11
+            ],
+            [
+              529,
+              0,
+              10,
+              11,
+              11
+            ],
+            [
+              529,
+              0,
+              10,
+              12,
+              12
+            ],
+            [
+              529,
+              0,
+              10,
+              12,
+              12
+            ],
+            [
+              529,
+              0,
+              5,
+              13,
+              13
+            ],
+            [
+              529,
+              0,
+              5,
+              13,
+              13
+            ],
+            [
+              529,
+              0,
+              4,
+              13,
+              13
+            ],
+            [
+              529,
+              0,
+              4,
+              13,
+              13
+            ],
+            [
+              529,
+              0,
+              1,
+              13,
+              13
+            ],
+            [
+              529,
+              0,
+              1,
+              13,
+              13
+            ]
+          ],
+          "surf": [
+            [
+              550,
+              1,
+              60,
+              5,
+              15
+            ],
+            [
+              550,
+              1,
+              30,
+              5,
+              15
+            ],
+            [
+              550,
+              1,
+              5,
+              5,
+              15
+            ],
+            [
+              550,
+              1,
+              4,
+              5,
+              15
+            ],
+            [
+              550,
+              1,
+              1,
+              5,
+              15
+            ]
+          ],
+          "ripple": [
+            [
+              550,
+              0,
+              60,
+              5,
+              20
+            ],
+            [
+              550,
+              0,
+              30,
+              5,
+              20
+            ],
+            [
+              550,
+              0,
+              5,
+              5,
+              20
+            ],
+            [
+              550,
+              0,
+              4,
+              5,
+              20
+            ],
+            [
+              550,
+              0,
+              1,
+              5,
+              20
+            ]
+          ],
+          "fish": [
+            [
+              60,
+              0,
+              60,
+              35,
+              55
+            ],
+            [
+              550,
+              1,
+              30,
+              35,
+              55
+            ],
+            [
+              61,
+              0,
+              5,
+              35,
+              55
+            ],
+            [
+              60,
+              0,
+              4,
+              35,
+              55
+            ],
+            [
+              60,
+              0,
+              1,
+              35,
+              55
+            ]
+          ],
+          "fish_ripple": [
+            [
+              61,
+              0,
+              60,
+              35,
+              60
+            ],
+            [
+              550,
+              0,
+              30,
+              35,
+              60
+            ],
+            [
+              61,
+              0,
+              5,
+              35,
+              60
+            ],
+            [
+              62,
+              0,
+              4,
+              35,
+              60
+            ],
+            [
+              62,
+              0,
+              1,
+              35,
+              60
+            ]
+          ]
+        }
+      },
+      "wild_levels": {
+        "land": [
+          10,
+          13
+        ]
+      },
+      "surf_pool_percentages": "PAST_WELLSPRING_CAVE_SURF_PERCENTAGES"
+    },
     "WELLSPRING_CAVE": {
       "area_type": "dungeon",
       "route_name": "Wellspring Cave",
@@ -14426,6 +15230,403 @@
         ]
       },
       "surf_pool_percentages": "WELLSPRING_CAVE_SURF_PERCENTAGES"
+    },
+    "PAST_PINWHEEL_FOREST_OUTSIDE": {
+      "area_type": "dungeon",
+      "route_name": "Pinwheel Forest (two years ago)",
+      "region": "UNOVA",
+      "era": "past",
+      "on_enter_event": null,
+      "battle_type": "forest",
+      "wild_pool_percentages": "PAST_PINWHEEL_FOREST_OUTSIDE_PERCENTAGES",
+      "min_rounds": 1,
+      "trainer_pool": [
+        {
+          "name": "Youngster Zachary",
+          "class": "YOUNGSTER",
+          "sprite": "b2_youngster.png",
+          "team": [
+            543,
+            506
+          ],
+          "levels": [
+            14,
+            14
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 144
+        },
+        {
+          "name": "Youngster Keita",
+          "class": "YOUNGSTER",
+          "sprite": "b2_youngster.png",
+          "team": [
+            535,
+            535,
+            535
+          ],
+          "levels": [
+            13,
+            13,
+            13
+          ],
+          "rewards": {
+            "balls": 4
+          },
+          "b2_id": 145
+        },
+        {
+          "name": "Preschooler Homer",
+          "class": "PRESCHOOLER",
+          "sprite": "preschooler.png",
+          "team": [
+            524
+          ],
+          "levels": [
+            14
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 502
+        },
+        {
+          "name": "Preschooler Juliet",
+          "class": "PRESCHOOLER",
+          "sprite": "preschooler.png",
+          "team": [
+            546,
+            548
+          ],
+          "levels": [
+            13,
+            13
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 501
+        },
+        {
+          "name": "Battle Girl Lee",
+          "class": "BATTLE_GIRL",
+          "sprite": "b2_battle_girl.png",
+          "team": [
+            532
+          ],
+          "levels": [
+            16
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 160
+        },
+        {
+          "name": "Nurse Shery",
+          "class": "NURSE",
+          "sprite": "b2_nurse.png",
+          "team": [
+            517
+          ],
+          "levels": [
+            15
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 546
+        },
+        {
+          "name": "Black Belt Kentaro",
+          "class": "BLACK_BELT",
+          "sprite": "b2_black_belt.png",
+          "team": [
+            532
+          ],
+          "levels": [
+            16
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 111
+        }
+      ],
+      "route_menu": [],
+      "backgrounds": {
+        "battle": "battle_pinwheel_forest.png"
+      },
+      "wild_tables": {
+        "ALL": {
+          "grass": [
+            [
+              535,
+              0,
+              20,
+              12,
+              12
+            ],
+            [
+              519,
+              0,
+              20,
+              12,
+              12
+            ],
+            [
+              535,
+              0,
+              10,
+              13,
+              13
+            ],
+            [
+              519,
+              0,
+              10,
+              13,
+              13
+            ],
+            [
+              532,
+              0,
+              10,
+              13,
+              13
+            ],
+            [
+              532,
+              0,
+              10,
+              14,
+              14
+            ],
+            [
+              535,
+              0,
+              5,
+              14,
+              14
+            ],
+            [
+              538,
+              0,
+              5,
+              12,
+              12
+            ],
+            [
+              535,
+              0,
+              4,
+              15,
+              15
+            ],
+            [
+              538,
+              0,
+              4,
+              15,
+              15
+            ],
+            [
+              535,
+              0,
+              1,
+              15,
+              15
+            ],
+            [
+              538,
+              0,
+              1,
+              15,
+              15
+            ]
+          ],
+          "dark": [
+            [
+              535,
+              0,
+              20,
+              14,
+              14
+            ],
+            [
+              519,
+              0,
+              20,
+              14,
+              14
+            ],
+            [
+              535,
+              0,
+              10,
+              15,
+              15
+            ],
+            [
+              519,
+              0,
+              10,
+              15,
+              15
+            ],
+            [
+              532,
+              0,
+              10,
+              15,
+              15
+            ],
+            [
+              532,
+              0,
+              10,
+              16,
+              16
+            ],
+            [
+              535,
+              0,
+              5,
+              16,
+              16
+            ],
+            [
+              538,
+              0,
+              5,
+              14,
+              14
+            ],
+            [
+              535,
+              0,
+              4,
+              17,
+              17
+            ],
+            [
+              538,
+              0,
+              4,
+              17,
+              17
+            ],
+            [
+              535,
+              0,
+              1,
+              17,
+              17
+            ],
+            [
+              538,
+              0,
+              1,
+              17,
+              17
+            ]
+          ],
+          "rustle": [
+            [
+              531,
+              0,
+              20,
+              12,
+              12
+            ],
+            [
+              531,
+              0,
+              20,
+              12,
+              12
+            ],
+            [
+              531,
+              0,
+              10,
+              13,
+              13
+            ],
+            [
+              531,
+              0,
+              10,
+              13,
+              13
+            ],
+            [
+              531,
+              0,
+              10,
+              14,
+              14
+            ],
+            [
+              531,
+              0,
+              10,
+              15,
+              15
+            ],
+            [
+              531,
+              0,
+              5,
+              15,
+              15
+            ],
+            [
+              531,
+              0,
+              5,
+              15,
+              15
+            ],
+            [
+              531,
+              0,
+              4,
+              15,
+              15
+            ],
+            [
+              539,
+              0,
+              4,
+              15,
+              15
+            ],
+            [
+              531,
+              0,
+              1,
+              15,
+              15
+            ],
+            [
+              539,
+              0,
+              1,
+              15,
+              15
+            ]
+          ]
+        }
+      },
+      "wild_levels": {
+        "land": [
+          12,
+          15
+        ]
+      }
     },
     "PINWHEEL_FOREST_OUTSIDE": {
       "area_type": "dungeon",
@@ -14892,6 +16093,587 @@
           57
         ]
       }
+    },
+    "PAST_PINWHEEL_FOREST": {
+      "area_type": "dungeon",
+      "route_name": "Pinwheel Forest (two years ago)",
+      "region": "UNOVA",
+      "era": "past",
+      "on_enter_event": null,
+      "battle_type": "grass",
+      "wild_pool_percentages": "PAST_PINWHEEL_FOREST_PERCENTAGES",
+      "min_rounds": 1,
+      "trainer_pool": [
+        {
+          "name": "Twins Mayo & May",
+          "class": "TWINS",
+          "sprite": "twins.png",
+          "team": [
+            540,
+            540
+          ],
+          "levels": [
+            16,
+            16
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 32,
+          "battle_options": {
+            "double": true
+          }
+        },
+        {
+          "name": "Lass Eva",
+          "class": "LASS",
+          "sprite": "b2_lass.png",
+          "team": [
+            527,
+            527,
+            527
+          ],
+          "levels": [
+            15,
+            15,
+            15
+          ],
+          "rewards": {
+            "balls": 4
+          },
+          "b2_id": 34
+        },
+        {
+          "name": "Pokemon Ranger Miguel",
+          "class": "RANGER",
+          "sprite": "ranger.png",
+          "team": [
+            513
+          ],
+          "levels": [
+            18
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 28
+        },
+        {
+          "name": "Pokemon Ranger Forrest",
+          "class": "RANGER",
+          "sprite": "ranger.png",
+          "team": [
+            507
+          ],
+          "levels": [
+            18
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 26
+        },
+        {
+          "name": "Pokemon Ranger Irene",
+          "class": "RANGER",
+          "sprite": "ranger.png",
+          "team": [
+            515
+          ],
+          "levels": [
+            18
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 27
+        },
+        {
+          "name": "Pokemon Ranger Audra",
+          "class": "RANGER",
+          "sprite": "ranger.png",
+          "team": [
+            511
+          ],
+          "levels": [
+            18
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 29
+        },
+        {
+          "name": "School Kid Sammy",
+          "class": "SCHOOL_KID",
+          "sprite": "school_kid.png",
+          "team": [
+            517
+          ],
+          "levels": [
+            17
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 30
+        },
+        {
+          "name": "School Kid Millie",
+          "class": "SCHOOL_KID",
+          "sprite": "school_kid.png",
+          "team": [
+            519,
+            509
+          ],
+          "levels": [
+            16,
+            16
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 31
+        },
+        {
+          "name": "Youngster Nicholas",
+          "class": "YOUNGSTER",
+          "sprite": "b2_youngster.png",
+          "team": [
+            543,
+            532
+          ],
+          "levels": [
+            16,
+            16
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 33
+        }
+      ],
+      "route_menu": [],
+      "backgrounds": {
+        "battle": "battle_pinwheel_forest.png"
+      },
+      "wild_tables": {
+        "ALL": {
+          "grass": [
+            [
+              548,
+              0,
+              20,
+              14,
+              14
+            ],
+            [
+              540,
+              0,
+              20,
+              14,
+              14
+            ],
+            [
+              548,
+              0,
+              10,
+              15,
+              15
+            ],
+            [
+              540,
+              0,
+              10,
+              15,
+              15
+            ],
+            [
+              519,
+              0,
+              10,
+              15,
+              15
+            ],
+            [
+              543,
+              0,
+              10,
+              15,
+              15
+            ],
+            [
+              519,
+              0,
+              5,
+              16,
+              16
+            ],
+            [
+              543,
+              0,
+              5,
+              16,
+              16
+            ],
+            [
+              548,
+              0,
+              4,
+              16,
+              16
+            ],
+            [
+              540,
+              0,
+              4,
+              16,
+              16
+            ],
+            [
+              548,
+              0,
+              1,
+              17,
+              17
+            ],
+            [
+              540,
+              0,
+              1,
+              17,
+              17
+            ]
+          ],
+          "dark": [
+            [
+              548,
+              0,
+              20,
+              22,
+              22
+            ],
+            [
+              541,
+              0,
+              20,
+              22,
+              22
+            ],
+            [
+              548,
+              0,
+              10,
+              23,
+              23
+            ],
+            [
+              541,
+              0,
+              10,
+              23,
+              23
+            ],
+            [
+              520,
+              0,
+              10,
+              23,
+              23
+            ],
+            [
+              544,
+              0,
+              10,
+              23,
+              23
+            ],
+            [
+              520,
+              0,
+              5,
+              24,
+              24
+            ],
+            [
+              544,
+              0,
+              5,
+              24,
+              24
+            ],
+            [
+              548,
+              0,
+              4,
+              24,
+              24
+            ],
+            [
+              541,
+              0,
+              4,
+              24,
+              24
+            ],
+            [
+              548,
+              0,
+              1,
+              25,
+              25
+            ],
+            [
+              541,
+              0,
+              1,
+              25,
+              25
+            ]
+          ],
+          "rustle": [
+            [
+              531,
+              0,
+              20,
+              14,
+              14
+            ],
+            [
+              531,
+              0,
+              20,
+              15,
+              15
+            ],
+            [
+              511,
+              0,
+              10,
+              15,
+              15
+            ],
+            [
+              513,
+              0,
+              10,
+              15,
+              15
+            ],
+            [
+              515,
+              0,
+              10,
+              15,
+              15
+            ],
+            [
+              531,
+              0,
+              10,
+              17,
+              17
+            ],
+            [
+              531,
+              0,
+              5,
+              17,
+              17
+            ],
+            [
+              531,
+              0,
+              5,
+              17,
+              17
+            ],
+            [
+              531,
+              0,
+              4,
+              17,
+              17
+            ],
+            [
+              549,
+              0,
+              4,
+              17,
+              17
+            ],
+            [
+              531,
+              0,
+              1,
+              17,
+              17
+            ],
+            [
+              549,
+              0,
+              1,
+              17,
+              17
+            ]
+          ],
+          "surf": [
+            [
+              550,
+              1,
+              60,
+              5,
+              20
+            ],
+            [
+              550,
+              1,
+              30,
+              5,
+              20
+            ],
+            [
+              550,
+              1,
+              5,
+              5,
+              20
+            ],
+            [
+              550,
+              1,
+              4,
+              5,
+              20
+            ],
+            [
+              550,
+              1,
+              1,
+              5,
+              20
+            ]
+          ],
+          "ripple": [
+            [
+              550,
+              0,
+              60,
+              5,
+              20
+            ],
+            [
+              550,
+              0,
+              30,
+              5,
+              20
+            ],
+            [
+              550,
+              0,
+              5,
+              5,
+              20
+            ],
+            [
+              550,
+              0,
+              4,
+              5,
+              20
+            ],
+            [
+              550,
+              0,
+              1,
+              5,
+              20
+            ]
+          ],
+          "fish": [
+            [
+              118,
+              0,
+              60,
+              35,
+              55
+            ],
+            [
+              550,
+              1,
+              30,
+              35,
+              55
+            ],
+            [
+              118,
+              0,
+              5,
+              35,
+              55
+            ],
+            [
+              118,
+              0,
+              4,
+              35,
+              55
+            ],
+            [
+              118,
+              0,
+              1,
+              35,
+              55
+            ]
+          ],
+          "fish_ripple": [
+            [
+              118,
+              0,
+              60,
+              35,
+              60
+            ],
+            [
+              550,
+              0,
+              30,
+              35,
+              60
+            ],
+            [
+              119,
+              0,
+              5,
+              35,
+              70
+            ],
+            [
+              119,
+              0,
+              4,
+              45,
+              70
+            ],
+            [
+              119,
+              0,
+              1,
+              45,
+              70
+            ]
+          ]
+        }
+      },
+      "wild_levels": {
+        "land": [
+          14,
+          17
+        ]
+      },
+      "surf_pool_percentages": "PAST_PINWHEEL_FOREST_SURF_PERCENTAGES"
     },
     "PINWHEEL_FOREST": {
       "area_type": "dungeon",
@@ -27910,6 +29692,600 @@
           59
         ]
       }
+    },
+    "PAST_UNOVA_ROUTE_3": {
+      "area_type": "wild_route",
+      "route_name": "Route 3 (two years ago)",
+      "region": "UNOVA",
+      "era": "past",
+      "on_enter_event": null,
+      "battle_type": "grass",
+      "wild_pool_percentages": "PAST_UNOVA_ROUTE_3_PERCENTAGES",
+      "min_rounds": 1,
+      "trainer_pool": [
+        {
+          "name": "Nursery Aide Autumn",
+          "class": "NURSERY_AIDE",
+          "sprite": "b2_nursery_aide.png",
+          "team": [
+            506,
+            517
+          ],
+          "levels": [
+            10,
+            10
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 14
+        },
+        {
+          "name": "Preschooler Wendy",
+          "class": "PRESCHOOLER",
+          "sprite": "preschooler.png",
+          "team": [
+            513
+          ],
+          "levels": [
+            10
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 15
+        },
+        {
+          "name": "Preschooler Tully",
+          "class": "PRESCHOOLER",
+          "sprite": "preschooler.png",
+          "team": [
+            511
+          ],
+          "levels": [
+            10
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 17
+        },
+        {
+          "name": "Preschooler Doyle",
+          "class": "PRESCHOOLER",
+          "sprite": "preschooler.png",
+          "team": [
+            515
+          ],
+          "levels": [
+            10
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 16
+        },
+        {
+          "name": "Pokemon Breeder Adelaide",
+          "class": "BREEDER",
+          "sprite": "b2_breeder.png",
+          "team": [
+            504,
+            506,
+            519
+          ],
+          "levels": [
+            9,
+            9,
+            9
+          ],
+          "rewards": {
+            "balls": 4
+          },
+          "b2_id": 20
+        },
+        {
+          "name": "School Kid Al",
+          "class": "SCHOOL_KID",
+          "sprite": "school_kid.png",
+          "team": [
+            522
+          ],
+          "levels": [
+            13
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 3
+        },
+        {
+          "name": "School Kid Marsha",
+          "class": "SCHOOL_KID",
+          "sprite": "school_kid.png",
+          "team": [
+            527
+          ],
+          "levels": [
+            13
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 4
+        },
+        {
+          "name": "School Kid Edgar",
+          "class": "SCHOOL_KID",
+          "sprite": "school_kid.png",
+          "team": [
+            519,
+            524
+          ],
+          "levels": [
+            12,
+            12
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 84
+        },
+        {
+          "name": "Pokemon Breeder Galen",
+          "class": "BREEDER",
+          "sprite": "b2_breeder.png",
+          "team": [
+            512,
+            514,
+            516
+          ],
+          "levels": [
+            32,
+            32,
+            32
+          ],
+          "rewards": {
+            "balls": 4
+          },
+          "b2_id": 19
+        },
+        {
+          "name": "School Kid Gina",
+          "class": "SCHOOL_KID",
+          "sprite": "school_kid.png",
+          "team": [
+            504,
+            509
+          ],
+          "levels": [
+            12,
+            12
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 292
+        }
+      ],
+      "route_menu": [],
+      "wild_tables": {
+        "ALL": {
+          "grass": [
+            [
+              504,
+              0,
+              20,
+              8,
+              8
+            ],
+            [
+              519,
+              0,
+              20,
+              8,
+              8
+            ],
+            [
+              522,
+              0,
+              10,
+              8,
+              8
+            ],
+            [
+              519,
+              0,
+              10,
+              9,
+              9
+            ],
+            [
+              506,
+              0,
+              10,
+              9,
+              9
+            ],
+            [
+              509,
+              0,
+              10,
+              9,
+              9
+            ],
+            [
+              522,
+              0,
+              5,
+              9,
+              9
+            ],
+            [
+              519,
+              0,
+              5,
+              10,
+              10
+            ],
+            [
+              522,
+              0,
+              4,
+              10,
+              10
+            ],
+            [
+              519,
+              0,
+              4,
+              11,
+              11
+            ],
+            [
+              522,
+              0,
+              1,
+              11,
+              11
+            ],
+            [
+              519,
+              0,
+              1,
+              11,
+              11
+            ]
+          ],
+          "dark": [
+            [
+              504,
+              0,
+              20,
+              10,
+              10
+            ],
+            [
+              519,
+              0,
+              20,
+              10,
+              10
+            ],
+            [
+              522,
+              0,
+              10,
+              10,
+              10
+            ],
+            [
+              519,
+              0,
+              10,
+              11,
+              11
+            ],
+            [
+              506,
+              0,
+              10,
+              11,
+              11
+            ],
+            [
+              509,
+              0,
+              10,
+              11,
+              11
+            ],
+            [
+              522,
+              0,
+              5,
+              11,
+              11
+            ],
+            [
+              519,
+              0,
+              5,
+              12,
+              12
+            ],
+            [
+              522,
+              0,
+              4,
+              12,
+              12
+            ],
+            [
+              519,
+              0,
+              4,
+              13,
+              13
+            ],
+            [
+              522,
+              0,
+              1,
+              13,
+              13
+            ],
+            [
+              519,
+              0,
+              1,
+              13,
+              13
+            ]
+          ],
+          "rustle": [
+            [
+              531,
+              0,
+              20,
+              8,
+              8
+            ],
+            [
+              531,
+              0,
+              20,
+              8,
+              8
+            ],
+            [
+              531,
+              0,
+              10,
+              9,
+              9
+            ],
+            [
+              531,
+              0,
+              10,
+              9,
+              9
+            ],
+            [
+              531,
+              0,
+              10,
+              10,
+              10
+            ],
+            [
+              531,
+              0,
+              10,
+              11,
+              11
+            ],
+            [
+              531,
+              0,
+              5,
+              11,
+              11
+            ],
+            [
+              531,
+              0,
+              5,
+              11,
+              11
+            ],
+            [
+              531,
+              0,
+              4,
+              11,
+              11
+            ],
+            [
+              531,
+              0,
+              4,
+              11,
+              11
+            ],
+            [
+              531,
+              0,
+              1,
+              11,
+              11
+            ],
+            [
+              531,
+              0,
+              1,
+              11,
+              11
+            ]
+          ],
+          "surf": [
+            [
+              550,
+              1,
+              60,
+              5,
+              15
+            ],
+            [
+              550,
+              1,
+              30,
+              5,
+              15
+            ],
+            [
+              550,
+              1,
+              5,
+              5,
+              15
+            ],
+            [
+              550,
+              1,
+              4,
+              5,
+              15
+            ],
+            [
+              550,
+              1,
+              1,
+              5,
+              15
+            ]
+          ],
+          "ripple": [
+            [
+              550,
+              0,
+              60,
+              5,
+              20
+            ],
+            [
+              550,
+              0,
+              30,
+              5,
+              20
+            ],
+            [
+              550,
+              0,
+              5,
+              5,
+              20
+            ],
+            [
+              550,
+              0,
+              4,
+              5,
+              20
+            ],
+            [
+              550,
+              0,
+              1,
+              5,
+              20
+            ]
+          ],
+          "fish": [
+            [
+              118,
+              0,
+              60,
+              35,
+              55
+            ],
+            [
+              550,
+              1,
+              30,
+              35,
+              55
+            ],
+            [
+              118,
+              0,
+              5,
+              35,
+              55
+            ],
+            [
+              118,
+              0,
+              4,
+              35,
+              55
+            ],
+            [
+              118,
+              0,
+              1,
+              35,
+              55
+            ]
+          ],
+          "fish_ripple": [
+            [
+              118,
+              0,
+              60,
+              35,
+              60
+            ],
+            [
+              550,
+              0,
+              30,
+              35,
+              60
+            ],
+            [
+              119,
+              0,
+              5,
+              35,
+              70
+            ],
+            [
+              119,
+              0,
+              4,
+              45,
+              70
+            ],
+            [
+              119,
+              0,
+              1,
+              45,
+              70
+            ]
+          ]
+        }
+      },
+      "wild_levels": {
+        "land": [
+          8,
+          11
+        ]
+      },
+      "surf_pool_percentages": "PAST_UNOVA_ROUTE_3_SURF_PERCENTAGES"
     },
     "UNOVA_ROUTE_3": {
       "area_type": "wild_route",

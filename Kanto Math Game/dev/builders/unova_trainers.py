@@ -202,8 +202,10 @@ def write(out):
 
 # Unova two years ago (batch 12c, 11-25): --white reads Pokemon White's own trainers into the past's areas, and its story /
 # Gym battles into town_maps/unova_teams_w1.json (the builder's _w1(id)).
-PLACES_W1 = {"PAST_UNOVA_ROUTE_1": [317], "PAST_UNOVA_ROUTE_2": [319], "PAST_DREAMYARD": [152], "PAST_DREAMYARD_B1F": [153]}
-TEAMS_W1 = [9, 10]   # (the Striaton Gym's Waiter Maxwell and Waitress Tia)
+PLACES_W1 = {"PAST_UNOVA_ROUTE_1": [317], "PAST_UNOVA_ROUTE_2": [319], "PAST_DREAMYARD": [152], "PAST_DREAMYARD_B1F": [153],
+             "PAST_UNOVA_ROUTE_3": [321], "PAST_WELLSPRING_CAVE_B1F": [325], "PAST_PINWHEEL_FOREST_OUTSIDE": [154],
+             "PAST_PINWHEEL_FOREST": [155]}
+TEAMS_W1 = [9, 10, 21]   # (the Striaton Gym's Waiter Maxwell and Waitress Tia)
 
 if __name__ == "__main__":
     import nds5
