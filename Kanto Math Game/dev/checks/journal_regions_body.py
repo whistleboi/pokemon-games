@@ -95,6 +95,11 @@ story.tracked_mission = "journey_gs_oak"
 check(guide.goal_area(g) == "PALLET_TOWN", f"the marker points at Pallet Town ({guide.goal_area(g)})")
 flags["oak_gs_errand"] = True
 check("journey_gs_oak" not in side(), "Oak's part done once he asks")
+flags.pop("visited_VALENCIA_ISLAND", None)
+check("journey_gs_to_orange" in side(), "SIDE in Kanto then: south by blimp")
+story.tracked_mission = "journey_gs_to_orange"
+check(guide.goal_area(g) == "VERMILLION_CITY", f"the marker points at Vermilion's harbour ({guide.goal_area(g)})")
+story.tracked_mission = None
 at("VALENCIA_ISLAND")
 flags.pop("orange_ivy_thanks", None)
 check("journey_gs_ivy" not in side(), "not before Orange's 'Get Well Soon' step (Ivy can't hand it over yet)")
@@ -102,6 +107,13 @@ flags["orange_ivy_thanks"] = True
 check("journey_gs_ivy" in side(), "SIDE on Valencia: Professor Ivy's ball")
 flags["got_gs_ball_ivy"] = True; story.inventory["GS_BALL"] = 1
 check("journey_gs_ivy" not in side(), "Ivy's part done with the GS Ball in the Bag")
+check("journey_gs_to_johto" in side(), "SIDE on Valencia then: a craftsman in Johto")
+at("PALLET_TOWN")
+check("journey_gs_to_azalea" in side() and "journey_gs_to_orange" not in side(), "back in Kanto with the ball: the road to Azalea")
+story.tracked_mission = "journey_gs_to_azalea"
+_p = guide.path_to(g, "PALLET_TOWN", "AZALEA_TOWN")
+check(_p and _p[-1] == "AZALEA_TOWN", f"and the marker has a way there over Kanto's and Johto's roads ({_p})")
+story.tracked_mission = None
 at("AZALEA_TOWN")
 check("journey_gs_kurt" in side() and "journey_gs_shrine" not in side(), "SIDE in Johto: Kurt first")
 flags["kurt_examined_gs_ball"] = True
