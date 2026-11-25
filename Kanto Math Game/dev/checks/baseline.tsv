@@ -123,12 +123,13 @@ ui	11	2026-11-24
 unova_b1	57	2026-11-24
 unova_b10a	21	2026-11-24
 unova_b10b	16	2026-11-24
+unova_b11a	12	2026-11-24
 unova_b2	62	2026-11-24
 unova_b3a	68	2026-11-24
 unova_b4a	50	2026-11-24
 unova_b4b	57	2026-11-24
 unova_b4c	45	2026-11-24
-unova_b5a	40	2026-11-24
+unova_b5a	43	2026-11-24
 unova_b5b	68	2026-11-24
 unova_b6a	66	2026-11-24
 unova_b6b	52	2026-11-24
@@ -148,5 +149,6 @@ unova_royal	25	2026-11-24
 unova_start	24	2026-11-24
 vsseeker	59	2026-11-24
 walk:hoenn	2	2026-11-24
+walk:unova	12	2026-11-24
 walkup	92	2026-11-24
 water_arrival	4	2026-11-24
