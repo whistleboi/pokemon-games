@@ -68,6 +68,7 @@ BATTLE = {
     # Run from a wild Pokemon for sure (FireRed's Poke Doll, ORAS's Poke Toy, Gen 3's Fluffy Tail)
     "POKE_TOY": {"flee": True, "price": 1000, "text": "A toy on a stick. Use it in a battle with a wild Pokemon to get away for sure."},
     "POKE_DOLL": {"flee": True, "price": 1000, "text": "A cute doll. Use it against a wild Pokemon to get away for sure. Saffron's Copycat would love one, too."},   # (FireRed: Celadon Dept. Store 4F)
+    "GRUBBY_HANKY": {"price": 0, "text": "A grubby handkerchief left at Nacrene's Cafe Warehouse. Its owner comes in on Thursdays."},   # (B2W2, 11-25)
     "FLUFFY_TAIL": {"flee": True, "price": 1000, "text": "A fluffy tail toy. Use it in a battle with a wild Pokemon to get away for sure."},
     "YELLOW_FLUTE": {"cure_vol": "confused", "keep": True, "price": 300, "text": "A yellow glass flute. In battle, its tune snaps a Pokemon out of confusion."},
     "RED_FLUTE": {"cure_vol": "infatuated", "keep": True, "price": 200, "text": "A red glass flute. In battle, its tune snaps a Pokemon out of infatuation."},

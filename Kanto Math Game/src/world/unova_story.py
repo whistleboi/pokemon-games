@@ -246,8 +246,39 @@ def event(state, ev, lines, show):
         show(["Oh my! Your %s can use %s! You taught it just for me? How touching!" % (knows.display_name, name),
               "Please accept this small token of my thanks. You received a Heart Scale!"])
         return
+    if ev.get("fossil_choice"):   # (batch 12a: Lenora in the Nacrene Museum - pick the Cover Fossil or the Plume Fossil, once)
+        fc = ev["fossil_choice"]
+        if story.story_flags.get(fc["flag"]):
+            show(fc.get("done") or ["Lenora: Take good care of that Fossil! The front desk can restore it."])
+            return
+        from src.states.systems.pick_list import PickListState
+        from src.states.overworld.common import _say_then
+        rows = [(c.replace("_", " ").title(), c) for c in fc["choices"]]
+
+        def pick(item):
+            if item is None:
+                show(["Lenora: Take your time. They'll be here."])
+                return
+            story.story_flags[fc["flag"]] = item
+            story.inventory[item] = story.inventory.get(item, 0) + 1
+            show(["You received the %s!" % item.replace("_", " ").title()] + list(fc.get("after") or []))
+        _say_then(state, list(lines or []), lambda: state.game.change_state(
+            PickListState(state.game, state, fc.get("ask") or "WHICH FOSSIL?", rows, pick)))
+        return
     if ev.get("runner"):
         flag = ev["runner"]
+        chain = ev.get("chain") or []   # (Skyarrow Bridge, his first and last bridge: once he's had water on every bridge
+        if chain and story.story_flags.get(flag) and all(story.story_flags.get(f) for f in chain):   # after it, his thanks)
+            if story.story_flags.get(flag + "_thanks"):
+                show(["I ran across every bridge in Unova, thanks to you! I'm back where I started!"])
+                return
+            story.story_flags[flag + "_thanks"] = True
+            for item, n in (ev.get("reward") or {}).items():
+                story.inventory[item] = story.inventory.get(item, 0) + int(n)
+            show(["You! You kept me going across every bridge in Unova! Please, take these!",
+                  "You received %s!" % " and ".join("%d %s" % (int(n), item.replace("_", " ").title())
+                                                    for item, n in (ev.get("reward") or {}).items())])
+            return
         if story.story_flags.get(flag):
             show(["Refreshed! 100% rehydrated! I'll dash to the next bridge!"])
             return

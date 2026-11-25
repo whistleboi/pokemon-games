@@ -93,6 +93,17 @@ PARTNERS = {
                 "farewell": ["Cynthia: The legend of Giratina is all but forgotten. It told of a world on the other side of ours... this world.",
                              "Cynthia: Why is Giratina here, all alone? ...We don't need to stay together now. Let's each look for the way down."],
                 "gift": {}, "wait": ["Cynthia: I'll wait here for you."]},
+    # (Unova batch 12a, 11-25: Black 2's Pinwheel Forest after the title - Cheren walks the trail with you while you look for
+    #  Team Plasma; the two pairs of trainers there battle you both; he leaves once the second pair is beaten)
+    "cheren_pinwheel": {"name": "Cheren", "area": "PINWHEEL_FOREST", "figure": "Cheren", "sheet": "b2_cheren.png", "sprite": "cheren.png",
+                        "team": [508, 505, 573], "levels": [67, 65, 65],   # (Black 2's trainer 632: Stoutland, Watchog, Cinccino)
+                        "join": ["Cheren: {player_name}! I heard Team Plasma was seen in this forest.",
+                                 "Cheren: Will you help me look? Let's go together. I'll keep your team healthy.",
+                                 "Cheren joined you! He'll heal your team after every battle."],
+                        "chat": ["Cheren: Stay alert. If Team Plasma's here, they won't be easy to spot."],
+                        "end_exits": [], "end_flag": "b2_pw_pair_2",
+                        "farewell": [], "gift": {},
+                        "wait": ["Cheren: Heading back? I'll keep looking around here."]},
 }
 BY_FIGURE = {(p["area"], p["figure"]): k for k, p in PARTNERS.items()}
 
@@ -181,6 +192,6 @@ def trainer_options(story, opts):
         return opts
     out = dict(opts or {})
     out["heal_after"] = True
-    if out.get("double") and not out.get("partner") and not out.get("second_trainer"):
+    if out.get("double") and not out.get("partner"):   # (a pair of two trainers too: Black 2's tag battles, 11-25)
         out["partner"] = battle_partner(key)
     return out
