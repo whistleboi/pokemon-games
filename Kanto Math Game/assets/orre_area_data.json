@@ -19203,7 +19203,8 @@
             "player_lost": [
               "Eldes: Not yet. Orre needs a stronger Champion than that."
             ]
-          }
+          },
+          "victory_flag": "beat_orre_champion"
         },
         "rematch_heal": true,
         "requirements": {
