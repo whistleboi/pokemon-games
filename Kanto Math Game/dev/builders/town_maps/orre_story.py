@@ -606,10 +606,15 @@ GATEON_BRIDGES = [(37, 22, 40, 23), (23, 22, 26, 23), (31, 18, 32, 21), (17, 18,
 
 
 def _guardian(name, pid, flag, level):
-    return {"text": f"Lighthouse {name}", "action": "BOSS", "color": "RED", "condition": "orre_part2",   # (S3: the Gym of badge 5)
+    # (R6 11-24: an event battle, the way a town room fights - a BOSS person in a town room did nothing when walked up to; the
+    #  Journal's playthrough and a player both stopped at the first guardian)
+    return {"text": f"Lighthouse {name}", "action": "EVENT", "color": "RED", "condition": "orre_part2",   # (S3: the Gym of badge 5)
             "flag_condition": f"not {flag}",
-            "boss": {"id": pid, "name": name, "level": level, "victory_flag": flag,
-                     "lines": [f"{name} crackles with stored power. It guards the stairs!"]}}
+            "event": {"flag": flag, "lines": [f"{name} crackles with stored power. It guards the stairs!"],
+                      "battle": {"name": f"Lighthouse {name}", "class": "POKEMON", "sprite": None, "team": [pid], "levels": [level],
+                                 "double": False, "rewards": {"balls": 0},
+                                 "dialogue": {"player_won": [f"{name} backs away from the stairs."],
+                                              "player_lost": [f"{name} still guards the stairs."]}}}}
 
 
 JASMINE = {"text": "Gym Leader Jasmine", "action": "EVENT", "color": "GOLD", "condition": "orre_part2", "event": {"stages": [

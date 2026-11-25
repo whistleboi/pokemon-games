@@ -112,8 +112,9 @@ def _signup(state, ev, lines, show):
     waiting = story.story_flags.get(RUN.format(area)) and story.story_flags.get(RETRY.format(area))
     if waiting:   # (the math game before the final is waiting: no starting over - Jordan 11-23)
         cfg = dict(cfg, lines=["Receptionist: Your challenge is waiting in the arena. Talk to the referee when you're ready!"])
-    elif _progress(story, area) <= len(lobby.trainers):   # (a fresh run: from the first round; a League keeps its own count)
-        story.story_flags[f"gym_progress_{area}"] = 0
+    elif _progress(story, area) <= len(lobby.trainers) or not story.story_flags.get(RUN.format(area)):   # (a fresh run: from the first
+        story.story_flags[f"gym_progress_{area}"] = 0   #  round - R6 11-24: a count left by another Gym in the same arena (Evice's
+                                                        #  run, then the League) is no run of this one; a League mid-run keeps its own)
     story.story_flags[RUN.format(area)] = True
     story.story_flags.pop(FIGHT.format(area), None)
     said = list(lines or []) + list(cfg.get("lines") or ["Receptionist: You're entered! Please go to the arena. Good luck!"])

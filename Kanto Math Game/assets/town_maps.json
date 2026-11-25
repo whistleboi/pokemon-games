@@ -350199,18 +350199,38 @@
     "people": [
      {
       "text": "Lighthouse Electabuzz",
-      "action": "BOSS",
+      "action": "EVENT",
       "color": "RED",
       "condition": "orre_part2",
       "flag_condition": "not gateon_lh_electabuzz",
-      "boss": {
-       "id": 125,
-       "name": "Electabuzz",
-       "level": 36,
-       "victory_flag": "gateon_lh_electabuzz",
+      "event": {
+       "flag": "gateon_lh_electabuzz",
        "lines": [
         "Electabuzz crackles with stored power. It guards the stairs!"
-       ]
+       ],
+       "battle": {
+        "name": "Lighthouse Electabuzz",
+        "class": "POKEMON",
+        "sprite": null,
+        "team": [
+         125
+        ],
+        "levels": [
+         35
+        ],
+        "double": false,
+        "rewards": {
+         "balls": 0
+        },
+        "dialogue": {
+         "player_won": [
+          "Electabuzz backs away from the stairs."
+         ],
+         "player_lost": [
+          "Electabuzz still guards the stairs."
+         ]
+        }
+       }
       }
      },
      {
@@ -350284,18 +350304,38 @@
     "people": [
      {
       "text": "Lighthouse Electrode",
-      "action": "BOSS",
+      "action": "EVENT",
       "color": "RED",
       "condition": "orre_part2",
       "flag_condition": "not gateon_lh_electrode",
-      "boss": {
-       "id": 101,
-       "name": "Electrode",
-       "level": 37,
-       "victory_flag": "gateon_lh_electrode",
+      "event": {
+       "flag": "gateon_lh_electrode",
        "lines": [
         "Electrode crackles with stored power. It guards the stairs!"
-       ]
+       ],
+       "battle": {
+        "name": "Lighthouse Electrode",
+        "class": "POKEMON",
+        "sprite": null,
+        "team": [
+         101
+        ],
+        "levels": [
+         35
+        ],
+        "double": false,
+        "rewards": {
+         "balls": 0
+        },
+        "dialogue": {
+         "player_won": [
+          "Electrode backs away from the stairs."
+         ],
+         "player_lost": [
+          "Electrode still guards the stairs."
+         ]
+        }
+       }
       }
      }
     ],
@@ -350351,18 +350391,38 @@
     "people": [
      {
       "text": "Lighthouse Ampharos",
-      "action": "BOSS",
+      "action": "EVENT",
       "color": "RED",
       "condition": "orre_part2",
       "flag_condition": "not gateon_lh_ampharos",
-      "boss": {
-       "id": 181,
-       "name": "Ampharos",
-       "level": 38,
-       "victory_flag": "gateon_lh_ampharos",
+      "event": {
+       "flag": "gateon_lh_ampharos",
        "lines": [
         "Ampharos crackles with stored power. It guards the stairs!"
-       ]
+       ],
+       "battle": {
+        "name": "Lighthouse Ampharos",
+        "class": "POKEMON",
+        "sprite": null,
+        "team": [
+         181
+        ],
+        "levels": [
+         35
+        ],
+        "double": false,
+        "rewards": {
+         "balls": 0
+        },
+        "dialogue": {
+         "player_won": [
+          "Ampharos backs away from the stairs."
+         ],
+         "player_lost": [
+          "Ampharos still guards the stairs."
+         ]
+        }
+       }
       }
      }
     ],
