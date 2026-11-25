@@ -2876,10 +2876,10 @@
         "route_menu": [
             {"text": "CATCH WILD PKMN", "action": "CATCH", "condition": "has_balls", "color": "BLUE"},
             {"text": "BATTLE WILD PKMN", "action": "BATTLE", "condition": "can_battle", "color": "GREEN"},
-            {"text": "Enter the Distortion", "action": "BOSS", "condition": "boss_not_defeated", "color": "GOLD"},
+            {"text": "Giratina", "action": "BOSS", "color": "GOLD", "condition": ["world:turnback_cave:giratina"], "boss": {"id": 487, "level": 47, "name": "Giratina", "victory_flag": "turnback_giratina_done", "lines": ["Giratina, the Pokemon of the other side, looms over the pedestal!"]}},
             {"text": "Sendoff Spring", "action": "EXIT", "target_area": "SENDOFF_SPRING", "condition": "can_exit", "color": "RED"}
         ],
-        "area_boss": {"id": 487, "level": 70, "name": "Giratina", "victory_flag": "TURNBACK_CAVE_boss_defeated"},
+        "area_boss": {"id": 487, "level": 47, "name": "Giratina", "victory_flag": "turnback_giratina_done"},
         "next_area": "SINNOH_ROUTE_214",
         "night_pool_percentages": "SINNOH_TURNBACK_CAVE_NIGHT_PERCENTAGES",
         "wild_levels": {"land": [44, 66]},
