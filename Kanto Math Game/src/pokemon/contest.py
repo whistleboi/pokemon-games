@@ -58,7 +58,15 @@ def ribbon_id(category, rank):
     return f"{category}_{rank}"
 
 
+SPECIAL_RIBBONS = {"GORGEOUS": "Gorgeous Ribbon", "ROYAL": "Royal Ribbon", "GORGEOUS_ROYAL": "Gorgeous Royal Ribbon"}   # (bought,
+                                                                                    #  not won: Platinum's Ribbon Syndicate, Sinnoh 11-24)
+
+
 def ribbon_label(ribbon):
+    if str(ribbon) in SPECIAL_RIBBONS:
+        return SPECIAL_RIBBONS[str(ribbon)]
+    if "_" not in str(ribbon):
+        return f"{str(ribbon).title()} Ribbon"
     category, rank = ribbon.split("_", 1)
     return f"{category.title()} {rank.title()} Rank Ribbon"
 

@@ -46,7 +46,7 @@ EVENTS = {
                            "clear": ["hall_of_fame_due_INDIGO_PLATEAU"], "travel": "PALLET_TOWN"},
     # ---------------- Johto: the Hall of Fame at the Silver League (SoulSilver's T10R0701), after Champion Lance: home to New Bark
     "sinnoh_hall_of_fame": {"scene": "hall_of_fame", "lines": ["You returned home to share your victory!"],
-                            "clear": ["hall_of_fame_due_SINNOH_POKEMON_LEAGUE"], "travel": "TWINLEAF_TOWN"},   # (s_s6_league.py)
+                            "clear": ["hall_of_fame_due_SINNOH_POKEMON_LEAGUE", "turnback_giratina_done"], "travel": "TWINLEAF_TOWN"},   # (s_s6_league.py)
     "johto_hall_of_fame": {"scene": "hall_of_fame", "lines": ["You returned home to share your victory!"],
                            "clear": ["hall_of_fame_due_SILVER_LEAGUE_PLATEAU"], "travel": "NEW_BARK_TOWN"},
     # ---------------- Johto (HGSS's opening and early story, Jordan 11-15: "ensure the johto region starts the same as the games")
