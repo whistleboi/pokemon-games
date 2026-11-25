@@ -136,4 +136,17 @@ check(_sp and _sp[0] != (46, 2), f"and the marker isn't the door you came in by 
 for _f in ("galactic_lake_acuity_cleared", "sinnoh_storage_door_open"):
     story.story_flags.pop(_f, None)
 
+print("Way-points sharing one done flag are one leg: any of its places leads (Hoenn's sail to Sky Pillar, 11-25)")
+guide.WALKED_REGIONS |= {"HOENN"}
+_d1 = next(m for m in g.loader.area_data["JOURNAL_MISSIONS"] if m["id"] == "hoenn_d1")
+_shared = [s_ for s_ in _d1.get("steps") or [] if s_.get("area") == "HOENN_ROUTE_128"]
+if _shared and any(o is not _shared[0] and o.get("done") == _shared[0].get("done") for o in _d1["steps"]):
+    story.story_flags["delta_matt_mossdeep"] = True
+    inv["HM_SURF"] = 1
+    story.current_area_key, story.last_area_key = "HOENN_ROUTE_128", "HOENN_ROUTE_127"
+    _r128 = _DS(g)
+    check(_r128._guide_step(_d1) is not None, f"on Route 128 the marker takes its way-point though Route 127's, under the same flag, isn't done ({_r128._guide_step(_d1)})")
+else:
+    check(True, "(hoenn_d1 has no shared-flag legs any more: nothing to test)")
+
 print(f"##### {fails} failures")

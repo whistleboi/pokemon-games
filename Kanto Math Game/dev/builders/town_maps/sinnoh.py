@@ -6612,6 +6612,7 @@ MAPS = {
                 "hidden": {"45,20": "PP_UP"},
                 "people": ["DUBIOUS DISC", "TM299", {"text": "Scientist", "action": "EVENT", "event": {"lines": ["We research new energy here, day and night. For what, exactly? Nobody tells me."]}}],
                 "barred": [{"tiles": [[22, 17], [23, 17]], "item": "GALACTIC_KEY", "look": "unseen", "lines": ["The door is locked. A special key is needed.", "It takes a Galactic Key."]}],
+                "scenes": [{"trigger": {"zone": [39, 14, 44, 20]}, "cast": [], "flag": "sinnoh_hq_east_in"}],
             },
             {
                 "art": [

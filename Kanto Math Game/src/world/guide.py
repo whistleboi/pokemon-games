@@ -83,7 +83,7 @@ def current_step(game, mission):
     return None
 
 
-WALKED_REGIONS = {"KANTO", "ORANGE", "JOHTO", "HOENN", "ORRE", "UNOVA"}  # (Unova: 11-25, its full playthrough Aspertia to Iris and the Hall of Fame passed with 0 stuck points on main 5c7fe040 - Journal J4; Orre: 11-24, its playthrough to the Champion passed with 0 stuck points, main 3a633ad5d - Journal J5; Orange: 11-17, its walked maps from 5.7, batch by batch; Johto: 11-22, after its playthrough passed, Jordan: "Yes, add Johto"; Hoenn: 11-24, its playthrough Littleroot to Steven passed with 0 stuck points - Dev Map M6) (regions whose Journal is led over the walked maps' own ways out, not the old menus' jumps: each joins after its own scripted playthrough)
+WALKED_REGIONS = {"KANTO", "ORANGE", "JOHTO", "HOENN", "ORRE", "UNOVA", "SINNOH"}  # (Sinnoh: 11-25, its full playthrough Twinleaf to Cynthia passed with 0 stuck, 0 skips on main 8e3ee2763 - Journal J3; Unova: 11-25, its full playthrough Aspertia to Iris and the Hall of Fame passed with 0 stuck points on main 5c7fe040 - Journal J4; Orre: 11-24, its playthrough to the Champion passed with 0 stuck points, main 3a633ad5d - Journal J5; Orange: 11-17, its walked maps from 5.7, batch by batch; Johto: 11-22, after its playthrough passed, Jordan: "Yes, add Johto"; Hoenn: 11-24, its playthrough Littleroot to Steven passed with 0 stuck points - Dev Map M6) (regions whose Journal is led over the walked maps' own ways out, not the old menus' jumps: each joins after its own scripted playthrough)
 PEOPLE_LINKS = {"UNOVA"}  # (regions whose walked maps' people with a "travel" count as ways in the Journal's plan: Unova, built map-first; 11-25)
 _WAYS = {}
 
