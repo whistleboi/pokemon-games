@@ -623,13 +623,12 @@ def flood(st, through=False, blocked=()):
     br = {} if is_town(st) else (getattr(st.run.floor, "bridge", None) or {})
     start = pos(st)
     if start in br:
-        ax = br[start] if getattr(st.run, "deck", True) else (br[start][1], br[start][0])
-        start = (start, ax)
+        start = (start, bool(getattr(st.run, "deck", True)))   # (on the deck or under it)
     prev, q = {start: None}, deque([start])
     while q:
         pn = q.popleft()
         p = _tile(pn)
-        mode = pn[1] if p in br and pn is not p else None
+        mode = pn[1] if p in br and pn is not p else None   # (on a bridge: True on its deck, False under it)
         for d in DIRS:
             if (p, d) in blocked:
                 continue
@@ -638,9 +637,9 @@ def flood(st, through=False, blocked=()):
             if r is None:
                 continue
             t, end = r
-            if p in br and t not in br and mode is not None and ad != mode:   # (off a bridge only the way you're crossing it)
+            if p in br and t not in br and mode is not None and (ad == br[p]) != mode:   # (off a bridge: along it from the deck, across it from under)
                 continue
-            tn = (t, (mode if p in br and mode is not None else ad)) if t in br else t
+            tn = (t, (mode if p in br and mode is not None else ad == br[t])) if t in br else t   # (onto it from off it: along it is the deck)
             if tn not in prev:
                 prev[tn] = (pn, d)
                 if not end:
