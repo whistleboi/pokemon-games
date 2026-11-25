@@ -17,6 +17,7 @@ import pygame
 from src.ui import theme
 
 SS_THINGS = {"crack": "breakrock", "cut": "tree", "boulder": "rock"}   # (a map's obstacle -> SoulSilver's own picture, assets/tiles/ss/ow_<name>.png)
+THING_FOLDER = {"SINNOH": "pt"}   # (a region whose own game's things to draw: Platinum's boulder and cracked rock, 11-24)
 SS_THING_K = 1.3     # (their height in tiles per 16 of the game's pixels: as tall beside a person as on the DS)
 LIVE_SPRITE = 1.5    # (as walk_town: a figure's height in tiles, per its picture's tiles)
 LEVEL_STEP = 1.5     # (tiles: more than this between two neighbours' ground is a drop, not a step)
@@ -107,16 +108,23 @@ class RouteLive:
         return live3d.follow(px + c[3], py + c[4], pz + c[5], c[0], c[1] / closer, 0.0, c[2])
 
     def _ss_thing(self, name):
-        """SoulSilver's own picture of a thing on the map (a cracked rock, a boulder, a small tree), four times its size, crisp."""
+        """The region's own game's picture of a thing on the map (a cracked rock, a boulder, a small tree), four times its
+        size, crisp: SoulSilver's, or Platinum's in Sinnoh (assets/tiles/pt/ow_<name>.png) when it has one."""
+        import os
+        region = str((getattr(self, "area_data", None) or {}).get("region") or "").upper()
+        folder = THING_FOLDER.get(region, "ss")
         cache = self.game.__dict__.setdefault("_ss_things", {})
-        if name not in cache:
-            import os
-            try:
-                img = pygame.image.load(os.path.join(self.game.assets.assets_dir, "tiles", "ss", f"ow_{name}.png")).convert_alpha()
-                cache[name] = pygame.transform.scale(img, (img.get_width() * 4, img.get_height() * 4))
-            except Exception:
-                cache[name] = None
-        return cache[name]
+        key = (folder, name)
+        if key not in cache:
+            img = None
+            for fo in dict.fromkeys((folder, "ss")):
+                try:
+                    img = pygame.image.load(os.path.join(self.game.assets.assets_dir, "tiles", fo, f"ow_{name}.png")).convert_alpha()
+                    break
+                except Exception:
+                    img = None
+            cache[key] = pygame.transform.scale(img, (img.get_width() * 4, img.get_height() * 4)) if img is not None else None
+        return cache[key]
 
     # ------------------------------------------------------------------ walking
     def _level_edge(self, a, b):
@@ -197,6 +205,8 @@ class RouteLive:
                         put(self._stand_in_img(_look, self._bars.get((x, y), {})), x, y)
                     continue
                 thing = SS_THINGS.get(str(what).split(":")[0])
+                if str(what).startswith("box:") and self._here_art().get("box_look") == "boulder":
+                    thing = "rock"   # (a boulder you push, tile by tile: Platinum's Victory Road and Distortion World)
                 img = self._ss_thing(thing) if thing and (x, y) in f.seen else None
                 if img is not None:   # (on the game's own floor there: our map calls the tile a wall, whose height is under it)
                     near = [h(*q) for q in ((x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)) if f.walkable(*q)]
