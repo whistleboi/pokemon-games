@@ -2444,6 +2444,138 @@
    510
   ]
  },
+ "494": {
+  "b2_id": 494,
+  "class": "TRAINER",
+  "held_items": {
+   "514": "LIFE_ORB",
+   "555": "MUSCLE_BAND",
+   "631": "LEFTOVERS"
+  },
+  "levels": [
+   65,
+   65,
+   67
+  ],
+  "movesets": {
+   "514": [
+    "FLAMETHROWER",
+    "GRASS-KNOT",
+    "CRUNCH",
+    "WORK-UP"
+   ],
+   "555": [
+    "FLARE-BLITZ",
+    "ROCK-SLIDE",
+    "HAMMER-ARM",
+    "BULK-UP"
+   ],
+   "631": [
+    "FIRE-BLAST",
+    "SUCKER-PUNCH",
+    "FOCUS-BLAST",
+    "STOCKPILE"
+   ]
+  },
+  "name": "Pokemon Trainer Chili",
+  "rewards": {
+   "balls": 4
+  },
+  "sprite": "trainer.png",
+  "team": [
+   631,
+   555,
+   514
+  ]
+ },
+ "495": {
+  "b2_id": 495,
+  "class": "TRAINER",
+  "held_items": {
+   "199": "LEFTOVERS",
+   "516": "LIFE_ORB",
+   "550": "MUSCLE_BAND"
+  },
+  "levels": [
+   65,
+   65,
+   67
+  ],
+  "movesets": {
+   "199": [
+    "SCALD",
+    "PSYCHIC",
+    "FLAMETHROWER",
+    "CALM-MIND"
+   ],
+   "516": [
+    "SCALD",
+    "ICE-BEAM",
+    "CRUNCH",
+    "WORK-UP"
+   ],
+   "550": [
+    "AQUA-TAIL",
+    "DOUBLE-EDGE",
+    "ICE-BEAM",
+    "SWAGGER"
+   ]
+  },
+  "name": "Pokemon Trainer Cress",
+  "rewards": {
+   "balls": 4
+  },
+  "sprite": "trainer.png",
+  "team": [
+   550,
+   199,
+   516
+  ]
+ },
+ "496": {
+  "b2_id": 496,
+  "class": "TRAINER",
+  "held_items": {
+   "512": "LIFE_ORB",
+   "556": "MUSCLE_BAND",
+   "598": "LEFTOVERS"
+  },
+  "levels": [
+   65,
+   65,
+   67
+  ],
+  "movesets": {
+   "512": [
+    "ENERGY-BALL",
+    "ROCK-SLIDE",
+    "CRUNCH",
+    "WORK-UP"
+   ],
+   "556": [
+    "PETAL-DANCE",
+    "SUCKER-PUNCH",
+    "POISON-JAB",
+    "COTTON-GUARD"
+   ],
+   "598": [
+    "POWER-WHIP",
+    "LEECH-SEED",
+    "GYRO-BALL",
+    "CURSE"
+   ]
+  },
+  "name": "Pokemon Trainer Cilan",
+  "rewards": {
+   "balls": 4
+  },
+  "sprite": "trainer.png",
+  "team": [
+   556,
+   598,
+   512
+  ]
+ },
  "497": {
   "b2_id": 497,
   "class": "TEAM_PLASMA",
