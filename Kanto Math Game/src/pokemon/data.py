@@ -79,6 +79,9 @@ class Pokemon:
         self.pp = {}              # PP left per move (a move not in it has full PP: src/pokemon/pp.py)
         self.pp_ups = {}          # PP Ups used per move (0-3)
         self.caught_region = None
+        # The day it was caught, met or hatched (11-25, for Black 2's Hip Waders: "caught today"): a new Pokemon is
+        # today's; a saved one keeps its own; one from a save made before this has none.
+        self.caught_date = __import__("datetime").date.today().isoformat()
         # The level it was caught at: a level evolution waits until it has levelled up once
         # (Jordan), so a Charmander caught at Lv 20 doesn't turn into Charmeleon on the spot.
         self.caught_level = None
@@ -327,6 +330,10 @@ class Pokemon:
     def set_volume(self, volume):
         if self.cry:
             self.cry.set_volume(volume)
+
+    def caught_today(self):
+        """Caught (met, hatched) today, by the computer's clock (Black 2's Hip Waders, Village Bridge; 11-25)."""
+        return getattr(self, "caught_date", None) == __import__("datetime").date.today().isoformat()
 
     def transform_into(self, target):
         """Transforms this Pokemon into the target (Ditto logic)."""
