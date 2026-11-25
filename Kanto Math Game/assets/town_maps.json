@@ -183674,20 +183674,20 @@
      "ccccccccccccccccccccccc",
      "ccccccccccccccccccccccc",
      "cccccccc..cmc..cccccccc",
-     "cccc..............ccccc",
+     "cccc...N..........ccccc",
      "ccc.............^...ccc",
+     "ccc...ccccN.........ccc",
      "ccc...cccc..........ccc",
-     "ccc...cccc..........ccc",
-     "c.....cccc..........ccc",
+     "c....Ncccc..........ccc",
      "cy.y..cccc............c",
-     "cy.y...........ccc....c",
-     "cy.y...........ccc....c",
+     "cy.y.........N.ccc....c",
+     "cy.y...........ccc..N.c",
      "cy.y..cccc.....ccc....c",
      "c.....cccc.....ccc....c",
-     "ccc...cccc..........ccc",
-     "ccc...cccc......<...ccc",
+     "ccc...ccccN.........ccc",
+     "ccc.N.cccc...N..<...ccc",
      "ccc.................ccc",
-     "ccc.................ccc",
+     "ccc........N........ccc",
      "cccccccc.......cccccccc",
      "ccccccccccccccccccccccc"
     ],
@@ -184068,7 +184068,90 @@
        1
       ]
      }
-    }
+    },
+    "people": [
+     {
+      "text": "Grumpy artist",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Why is it all pictures of Pokémon? What about the rest of us?"
+       ]
+      }
+     },
+     {
+      "text": "Proud collector",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My PC Box is full of Pokémon everyone dreams of... no, no, I shouldn't brag."
+       ]
+      }
+     },
+     {
+      "text": "Nosy hiker",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Seeing what other people keep in their Boxes is a guilty pleasure. ...Don't tell anyone."
+       ]
+      }
+     },
+     {
+      "text": "Stylish lady",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "That Pokémon with that ribbon... it's simply stunning!"
+       ]
+      }
+     },
+     {
+      "text": "Fashion idol",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I come every day to see what everyone's Pokémon are wearing. It's research!"
+       ]
+      }
+     },
+     {
+      "text": "Startled granny",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Oh my! Gracious! Young people these days!"
+       ]
+      }
+     },
+     {
+      "text": "Style fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The same accessory can look completely different. It's all in how you wear it."
+       ]
+      }
+     },
+     {
+      "text": "Lucky girl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "A nice lady downstairs gave me something for free!"
+       ]
+      }
+     },
+     {
+      "text": "Watching girl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I like to peek at what everyone else is looking at."
+       ]
+      }
+     }
+    ]
    },
    "gts_3f": {
     "theme": "room",
@@ -184077,18 +184160,18 @@
      "cccccccccccccccccccc",
      "ccccc..cm......ccccc",
      "ccccc........^.ccccc",
-     "ccc....mm........ccc",
-     "ccc....mm........ccc",
+     "ccc...Nmm........ccc",
+     "ccc...NmmN.......ccc",
      "ccc..............ccc",
      "cc................cc",
      "c....cccc..........c",
-     "c....cccc...ccc....c",
-     "c....cccc...ccc....c",
+     "c...Ncccc..NcccN..Nc",
+     "c...Ncccc...ccc....c",
      "c....cccc...ccc....c",
      "ccc..............ccc",
      "ccc.....c....<...ccc",
      "ccc.....c........ccc",
-     "ccccc..........ccccc",
+     "ccccc...N......ccccc",
      "ccccc..........ccccc",
      "cccccccccccccccccccc"
     ],
@@ -184369,7 +184452,90 @@
        1
       ]
      }
-    }
+    },
+    "people": [
+     {
+      "text": "World fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "You can see how much people everywhere love Pokémon, right here."
+       ]
+      }
+     },
+     {
+      "text": "Battle fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Anyone can join in. Even a loss could end up someone's favourite battle!"
+       ]
+      }
+     },
+     {
+      "text": "Comeback fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "This one's amazing - a comeback from one Pokémon left!"
+       ]
+      }
+     },
+     {
+      "text": "Clefairy fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My favourite battles are the ones with cute little Clefairy in them."
+       ]
+      }
+     },
+     {
+      "text": "Secret clown",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My favourite battle? My favourite battle? It's a secret! It's a secret!"
+       ]
+      }
+     },
+     {
+      "text": "Rapper",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "J is for Jubilife, the city of the day! U is for... uh... I'll get back to you!"
+       ]
+      }
+     },
+     {
+      "text": "Big brother hiker",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Hiker peeking at Boxes downstairs is my little brother."
+       ]
+      }
+     },
+     {
+      "text": "Young camper",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Seeing all these great battles makes me feel tougher already!"
+       ]
+      }
+     },
+     {
+      "text": "Video gentleman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Watching a good battle every day is a hobby fit for a gentleman."
+       ]
+      }
+     }
+    ]
    },
    "center": {
     "theme": "room",
@@ -185749,12 +185915,12 @@
      "cmmmm.<cccccccc^..mmc",
      "c......cccccccc.....c",
      "c...................c",
-     "c...................c",
+     "c...........N.......c",
      "c..mmm..............c",
      "c..mmm..cccccccccc..c",
-     "c..mmm..cccccccccc..c",
-     "c.......cccccccccc..c",
-     "cc.....ccmmmmm......c",
+     "c.Nmmm..cccccccccc..c",
+     "c..N....cccccccccc..c",
+     "cc..N..ccmmmmm......c",
      "cz.....zc...........c",
      "ccccccccccccccccccccc"
     ],
@@ -186165,7 +186331,45 @@
        1
       ]
      }
-    }
+    },
+    "people": [
+     {
+      "text": "App planner",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "We think like Trainers here, to work out which Pokétch apps they'd want most."
+       ]
+      }
+     },
+     {
+      "text": "President's father",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Pokémon Watch - Pokétch for short! My son runs the company. I just say the long name."
+       ]
+      }
+     },
+     {
+      "text": "Office Clefairy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "CLEFAIRY: Cleffy?"
+       ]
+      }
+     },
+     {
+      "text": "Office Pachirisu",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "PACHIRISU: Patchii?"
+       ]
+      }
+     }
+    ]
    },
    "poketch_3f": {
     "theme": "room",
@@ -186174,8 +186378,8 @@
      "ccccccccccccccccccccc",
      "cm....zmmcccccc^.zmmc",
      "cm.......cccccc.....c",
-     "c...................c",
-     "c...................c",
+     "c......N............c",
+     "c..N..........N.....c",
      "cm..................c",
      "cccccc..cccc..cccc..c",
      "cccccc..cccc..cccc..c",
@@ -186626,7 +186830,36 @@
        1
       ]
      }
-    }
+    },
+    "people": [
+     {
+      "text": "Pokétch kid",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "There's a boy's Pokétch and a girl's, in different colours. Which is yours?"
+       ]
+      }
+     },
+     {
+      "text": "App collector",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "People all over make Pokétch apps. You'll get new ones from the strangest places!"
+       ]
+      }
+     },
+     {
+      "text": "President's wife",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My husband started in a tiny workshop, making what he loved. Now it's a thing that makes people happy."
+       ]
+      }
+     }
+    ]
    },
    "mart": {
     "theme": "room",
@@ -188743,6 +188976,7 @@
       ]
      }
     },
+    "title": "Jubilife TV 1F",
     "people": [
      {
       "text": "TV staff ",
@@ -188789,8 +189023,7 @@
        ]
       }
      }
-    ],
-    "title": "Jubilife TV 1F"
+    ]
    },
    "house_0201_2f": {
     "theme": "room",
@@ -189233,6 +189466,7 @@
       ]
      }
     },
+    "title": "Jubilife TV 2F",
     "people": [
      {
       "text": "Studio staff",
@@ -189252,8 +189486,7 @@
        ]
       }
      }
-    ],
-    "title": "Jubilife TV 2F"
+    ]
    },
    "house_0201_3f": {
     "theme": "room",
@@ -189673,6 +189906,7 @@
       ]
      }
     },
+    "title": "Jubilife TV 3F",
     "people": [
      {
       "text": "Records guide",
@@ -189710,8 +189944,7 @@
        ]
       }
      }
-    ],
-    "title": "Jubilife TV 3F"
+    ]
    },
    "house_0201_4f": {
     "theme": "room",
@@ -189901,6 +190134,7 @@
       ]
      }
     },
+    "title": "Jubilife TV 2F: Studio",
     "people": [
      {
       "text": "Photo hiker",
@@ -189929,8 +190163,7 @@
        ]
       }
      }
-    ],
-    "title": "Jubilife TV 2F: Studio"
+    ]
    },
    "house_0301": {
     "theme": "room",
@@ -190940,7 +191173,7 @@
      "ccccccccccccccccc",
      "ccccccccccccccccc",
      "cmmm....mmc.....c",
-     "c....N....c.N.N.c",
+     "cN...N....c.N.N.c",
      "cm......ccc.....c",
      "c.......mmc.....c",
      "c.......mmc.....c",
@@ -191214,6 +191447,22 @@
      }
     },
     "people": [
+     {
+      "text": "X ATTACK",
+      "action": "EVENT",
+      "color": "GOLD",
+      "found": true,
+      "flag_condition": "not got_x_attack_jubilife_c01r0701_1_4",
+      "event": {
+       "lines": [
+        "An X Attack, left on the school's bookshelf."
+       ],
+       "gift_item": {
+        "X_ATTACK": 1
+       },
+       "flag": "got_x_attack_jubilife_c01r0701_1_4"
+      }
+     },
      {
       "text": "Teacher",
       "action": "EVENT",
@@ -214651,8 +214900,8 @@
     "art": [
      "ccccccc",
      "ccccccc",
-     "cccvccc",
-     "c..NN.c",
+     "ccc^ccc",
+     "c...N.c",
      "cc...cc",
      "cz...zc",
      "c.....c",
@@ -214665,7 +214914,8 @@
      "ccccccc"
     ],
     "exits": {
-     "v": "OUT:10,11"
+     "v": "OUT:10,11",
+     "^": "ROOM:amity_square"
     },
     "buildings": {},
     "roofs": {
@@ -214761,15 +215011,16 @@
     },
     "people": [
      {
-      "text": "Square guide",
+      "text": "Gate receptionist",
       "action": "EVENT",
       "event": {
        "lines": [
-        "In Amity Square, you can stroll with a cute Pokemon."
+        "Receptionist: I'm sorry, only certain Pokemon may stroll in Amity Square.",
+        "Receptionist: Pikachu, Clefairy, Psyduck, Pachirisu, Drifloon, Buneary, Happiny, and Turtwig, Chimchar and Piplup and their evolutions. With the National Pokedex, Jigglypuff, Torchic, Skitty and Shroomish too.",
+        "Receptionist: Put one first in your party and it may walk with you here."
        ]
       }
      },
-     "Amity Square",
      {
       "text": "Pikachu",
       "action": "EVENT",
@@ -214788,7 +215039,25 @@
        ]
       }
      }
-    ]
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        3,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:amity_square:ok"
+      },
+      "lines": [
+       "Receptionist: I'm sorry, only certain Pokemon may stroll in Amity Square."
+      ]
+     }
+    ],
+    "title": "Amity Square Gate"
    },
    "contest": {
     "theme": "room",
@@ -216129,7 +216398,7 @@
     "art": [
      "ccccccc",
      "ccccccc",
-     "cccvccc",
+     "ccc^ccc",
      "c...N.c",
      "cc...cc",
      "cz...zc",
@@ -216143,7 +216412,8 @@
      "ccccccc"
     ],
     "exits": {
-     "v": "OUT:52,11"
+     "v": "OUT:52,11",
+     "^": "ROOM:amity_square"
     },
     "buildings": {},
     "roofs": {
@@ -216238,7 +216508,17 @@
      }
     },
     "people": [
-     "Amity Square",
+     {
+      "text": "Gate receptionist",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Receptionist: I'm sorry, only certain Pokemon may stroll in Amity Square.",
+        "Receptionist: Pikachu, Clefairy, Psyduck, Pachirisu, Drifloon, Buneary, Happiny, and Turtwig, Chimchar and Piplup and their evolutions. With the National Pokedex, Jigglypuff, Torchic, Skitty and Shroomish too.",
+        "Receptionist: Put one first in your party and it may walk with you here."
+       ]
+      }
+     },
      {
       "text": "Upset man",
       "action": "EVENT",
@@ -216248,14 +216528,32 @@
        ]
       }
      }
-    ]
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        3,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:amity_square:ok"
+      },
+      "lines": [
+       "Receptionist: I'm sorry, only certain Pokemon may stroll in Amity Square."
+      ]
+     }
+    ],
+    "title": "Amity Square Gate"
    },
    "amity_4": {
     "theme": "room",
     "art": [
      "ccccccc",
      "ccccccc",
-     "cccvccc",
+     "ccc^ccc",
      "c...N.c",
      "cc...cc",
      "cz...zc",
@@ -216269,7 +216567,8 @@
      "ccccccc"
     ],
     "exits": {
-     "v": "OUT:53,11"
+     "v": "OUT:53,11",
+     "^": "ROOM:amity_square"
     },
     "buildings": {},
     "roofs": {
@@ -216364,8 +216663,36 @@
      }
     },
     "people": [
-     "Amity Square"
-    ]
+     {
+      "text": "Gate receptionist",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Receptionist: I'm sorry, only certain Pokemon may stroll in Amity Square.",
+        "Receptionist: Pikachu, Clefairy, Psyduck, Pachirisu, Drifloon, Buneary, Happiny, and Turtwig, Chimchar and Piplup and their evolutions. With the National Pokedex, Jigglypuff, Torchic, Skitty and Shroomish too.",
+        "Receptionist: Put one first in your party and it may walk with you here."
+       ]
+      }
+     }
+    ],
+    "barred": [
+     {
+      "tiles": [
+       [
+        3,
+        2
+       ]
+      ],
+      "look": "unseen",
+      "until": {
+       "condition": "world:amity_square:ok"
+      },
+      "lines": [
+       "Receptionist: I'm sorry, only certain Pokemon may stroll in Amity Square."
+      ]
+     }
+    ],
+    "title": "Amity Square Gate"
    },
    "center": {
     "theme": "room",
@@ -222827,6 +223154,803 @@
       }
      }
     ]
+   },
+   "amity_square": {
+    "theme": "room",
+    "title": "Amity Square",
+    "art": [
+     "....c........cc....cccccc.................ccc........cccc.c..ccc",
+     "....c........cc....cccccc.................ccc........cccc.c..ccc",
+     "....c........cc....cccccc.................ccc........cccc.c..ccc",
+     "....ccccccccccc....cccccc.................ccc........cccc.c..ccc",
+     "ccccccccccccc.c....cccccc.................ccc........cccc.c..ccc",
+     "ccccccccccccc.c....cccccc.................ccc........cccc.c..ccc",
+     "ccccccccccccc.c....cccccc...cccccccccccccccccccccccc.cccc.c..ccc",
+     "ccccccc.ccccc.ccccccccccc...cccccccccccccccc.......c.cccc.c..ccc",
+     "......c.ccccc.......ccccc...cc.c...c.c..cccccccccccc.cccc.c..ccc",
+     "......c.cccccccccccccccccccccc.c...c....cN.c.c...ccc.cccc.c..ccc",
+     "......c.ccccccccccccccccc...cc.cc.cc...ccc...c...ccc.cccc.c..ccc",
+     "......c.ccc..c...c.c..ccc...cc.........ccc...cc.cccc.cccc.c..ccc",
+     "......c.ccc..c...c...ccccc.ccc......NN..c.........cc.cccc.c..ccc",
+     "......c.ccc..cc.cc..Nccc.....cccccccccccc.........cc.cccc.c..ccc",
+     "......c.ccc...........cc.....cccccccccccccccccc...cc.cccc.c..ccc",
+     "......c.ccccccccccccccccccccccccccccccccccccccc...cc.cccc.c..ccc",
+     "......c.cccccccccccccccccccccccccc...cccccccccc...cc.cccc.c..ccc",
+     "......c.c...c..c...ccc..cccccccccc...ccc...cccc...cc.cccc.cccccc",
+     "......c.cc.....c...ccc..ccccccccccc.cccc...cccc...cc.ccccc...ccc",
+     "......c.cc.....cc.cccccccc............ccc.ccccc...cc.ccccc...ccc",
+     "......c.c...........cccccc...........Nc.....ccc...cc.cccccc.cccc",
+     "ccccccc.cccc...ccccccccccc...cccccccccc.....ccc...cc.cccc.....cc",
+     "cccccccccc.....cccccccc...........c..ccccccccccc..cc.cccc.....cc",
+     "cccccccccc.....c......c......cccc...cc.......cc...cccccccccccccc",
+     "cccccccccc.c...ccccccccc.....c..c...ccccccccccc...c...cc.......c",
+     "ccc......c...................c..c...........ccc...cccccc.......c",
+     "ccc......c...................cccc.......NN..ccc...c...cc.......c",
+     "ccc......c..cccc..cccccc....................ccc...c...cc.......c",
+     "ccc......c..c..c..cccccc....................ccc...cc.ccc.......c",
+     "ccc......c..c..c..cc..c........c............ccc........c.......c",
+     "ccc......c..cccc..ccc.........cccc..........cccNN......c.......c",
+     "ccc......c...c....ccc.........cccc..........ccc........c.......c",
+     "ccc......c........cc........................ccc...c..c.ccccccccc",
+     "ccc......c......NN..........................ccccccc..ccccccccccc",
+     "ccc......c..cc..............................ccccccc...cccccccccc",
+     "ccc......c..cc............ccc...............cc...cc...cccccccccc",
+     "ccc......c..cc..cccc......cNc............c..cc...cc...cccccccccc",
+     "ccc......c..cc..cccc......c.................ccc.ccc...cccccccccc",
+     "ccc......c..cc............c.................c.....c...cccccccccc",
+     "ccc......c..cc..............c...............c.....c...cccccccccc",
+     "ccc......c..................c...............c.....c...cccccccccc",
+     "cccccccccc................c.cc..............c.....c...cccccccccc",
+     "ccccccccccc..c............c..c..............cN....cc..cccccccccc",
+     "cccccccccc................cc.c.......ccc....cccccccc..cccccccccc",
+     "cccccccccc.................ccc.......c.c....ccccccc...cccccccccc",
+     "cccccccccccc.c.......................c.c....ccccccc.cccccccccccc",
+     "ccccccccccNc.c.......................c.c..ccccccccc.cNcccccccccc",
+     "cccccccccccc.c....cccc.cccccccccc.cccc.c..c..cccccc.cccccccccccc",
+     "ccccccccc....c....c..c.c........c.c....c..c..cccccc....ccccccccc",
+     "ccccccccc....c....cccccccccccccccccccccc..c..cccccc....ccccccccc",
+     "ccccccccc....ccc..........................c..cccccc....ccccccccc",
+     "ccccccccc.vv.ccc..........................c..cccccc.ww.ccccccccc"
+    ],
+    "exits": {
+     "v": "ROOM:amity",
+     "w": "ROOM:amity_3"
+    },
+    "buildings": {},
+    "people": [
+     {
+      "text": "an Amulet Coin",
+      "action": "EVENT",
+      "color": "GOLD",
+      "found": true,
+      "flag_condition": "not got_amulet_coin_amity_square",
+      "event": {
+       "lines": [
+        "You found an Amulet Coin!"
+       ],
+       "gift_item": {
+        "AMULET_COIN": 1
+       },
+       "flag": "got_amulet_coin_amity_square"
+      }
+     },
+     {
+      "text": "Happiny woman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I bring my Happiny here every day. It can run around without a care in the world."
+       ]
+      }
+     },
+     {
+      "text": "Happiny",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Happiny looks a little sleepy."
+       ]
+      }
+     },
+     {
+      "text": "Tidy man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I love this square, so I keep it neat and tidy. I find all sorts of things while I'm at it.",
+        "Here, I found this today. Take it!"
+       ],
+       "daily_gift": {
+        "key": "amity_square_berry",
+        "items": [
+         "MAGOST_BERRY",
+         "CORNN_BERRY",
+         "RABUTA_BERRY",
+         "NOMEL_BERRY",
+         "SPELON_BERRY",
+         "PAMTRE_BERRY",
+         "WATMEL_BERRY",
+         "DURIN_BERRY",
+         "BELUE_BERRY"
+        ],
+        "wait": [
+         "That's all I found today. Come back tomorrow - who knows what I'll turn up!"
+        ]
+       }
+      }
+     },
+     {
+      "text": "TM45",
+      "action": "EVENT",
+      "color": "GOLD",
+      "found": true,
+      "flag_condition": "not got_tm45_amity_square",
+      "event": {
+       "lines": [
+        "You found TM45!"
+       ],
+       "gift_item": {
+        "TM45": 1
+       },
+       "flag": "got_tm45_amity_square"
+      }
+     },
+     {
+      "text": "Drifloon man",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My Drifloon floats along wherever I go. It's always tugging me somewhere new!"
+       ]
+      }
+     },
+     {
+      "text": "Drifloon",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "DRIFLOON: Foon!"
+       ]
+      }
+     },
+     {
+      "text": "Clefairy girl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Talk to your Pokemon! Sometimes it finds things lying around."
+       ]
+      }
+     },
+     {
+      "text": "Clefairy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Clefairy is holding something shiny in its hands..."
+       ]
+      }
+     },
+     {
+      "text": "Pikachu ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "PIKACHU: Pika pika!"
+       ]
+      }
+     },
+     {
+      "text": "Pikachu fan",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My Pikachu follows me everywhere I go! It's just the two of us! Wahaha!"
+       ]
+      }
+     },
+     {
+      "text": "TM43",
+      "action": "EVENT",
+      "color": "GOLD",
+      "found": true,
+      "flag_condition": "not got_tm43_amity_square",
+      "event": {
+       "lines": [
+        "You found TM43!"
+       ],
+       "gift_item": {
+        "TM43": 1
+       },
+       "flag": "got_tm43_amity_square"
+      }
+     },
+     {
+      "text": "the Spooky Plate",
+      "action": "EVENT",
+      "color": "GOLD",
+      "found": true,
+      "flag_condition": "not got_spooky_plate_amity_square",
+      "event": {
+       "lines": [
+        "You found the Spooky Plate!"
+       ],
+       "gift_item": {
+        "SPOOKY_PLATE": 1
+       },
+       "flag": "got_spooky_plate_amity_square"
+      }
+     },
+     {
+      "text": "Receptionist",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Your Pokemon looks so happy walking beside you! Please enjoy the square together."
+       ]
+      }
+     },
+     {
+      "text": "Receptionist ",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Your Pokemon looks so happy walking beside you! Please enjoy the square together."
+       ]
+      }
+     }
+    ],
+    "scenes": [
+     {
+      "trigger": {
+       "zone": [
+        17,
+        17,
+        17,
+        17
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       35,
+       16
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        16,
+        18,
+        16,
+        18
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       35,
+       16
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        18,
+        18,
+        18,
+        18
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       35,
+       16
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        35,
+        16,
+        35,
+        16
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       17,
+       17
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        34,
+        17,
+        34,
+        17
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       17,
+       17
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        36,
+        17,
+        36,
+        17
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       17,
+       17
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        52,
+        26,
+        52,
+        26
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       47,
+       9
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        51,
+        27,
+        51,
+        27
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       33,
+       8
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        53,
+        27,
+        53,
+        27
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       15,
+       11
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        47,
+        9,
+        47,
+        9
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       52,
+       26
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        46,
+        10,
+        46,
+        10
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       15,
+       11
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        48,
+        10,
+        48,
+        10
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       33,
+       8
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        15,
+        11,
+        15,
+        11
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       52,
+       26
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        14,
+        12,
+        14,
+        12
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       26,
+       10
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        16,
+        12,
+        16,
+        12
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       41,
+       17
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        33,
+        8,
+        33,
+        8
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       52,
+       26
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        32,
+        9,
+        32,
+        9
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       41,
+       17
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        34,
+        9,
+        34,
+        9
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       26,
+       10
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        26,
+        10,
+        26,
+        10
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       47,
+       9
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        25,
+        11,
+        25,
+        11
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       47,
+       35
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        27,
+        11,
+        27,
+        11
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       15,
+       11
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        41,
+        17,
+        41,
+        17
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       47,
+       9
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        40,
+        18,
+        40,
+        18
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       33,
+       8
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        42,
+        18,
+        42,
+        18
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       47,
+       35
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        47,
+        35,
+        47,
+        35
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       52,
+       26
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        46,
+        36,
+        46,
+        36
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       15,
+       11
+      ]
+     },
+     {
+      "trigger": {
+       "zone": [
+        48,
+        36,
+        48,
+        36
+       ]
+      },
+      "every": true,
+      "cast": [],
+      "lines": [
+       "The stone pad glowed under your feet..."
+      ],
+      "room": [
+       "amity_square",
+       33,
+       8
+      ]
+     }
+    ],
+    "roofs": {
+     "_picture": {
+      "f": "pt_ground/D11R0101.png",
+      "at": [
+       0,
+       0
+      ]
+     }
+    }
    }
   },
   "inside": {
@@ -248136,7 +249260,7 @@
      "ccccc........ccccccccc",
      "cmmmm........mmmmmmmmc",
      "cmmmm..mm....mmmmmmmmc",
-     "c....................c",
+     "c..........N.........c",
      "c....................c",
      "cccccccccccccccccccccc"
     ],
@@ -248617,7 +249741,18 @@
        2
       ]
      }
-    }
+    },
+    "people": [
+     {
+      "text": "Young reader",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The books upstairs are easy to read. The ones down here are way too hard for me!"
+       ]
+      }
+     }
+    ]
    },
    "library_3f": {
     "theme": "room",
@@ -248626,9 +249761,9 @@
      "cccccccccccccccccccccc",
      "cz..^ccccmmmm....mmmmc",
      "c....cccc............c",
-     "c......mm............c",
+     "c......mm......N.....c",
      "c....................c",
-     "c..............ccccccc",
+     "c..N...........ccccccc",
      "c..mm..mm..mm..mmmmmmc",
      "c..mm..mm..mm..mmmmmmc",
      "c....................c",
@@ -249095,7 +250230,27 @@
        1
       ]
      }
-    }
+    },
+    "people": [
+     {
+      "text": "Librarian assistant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Every book holds someone's memories of a place and a time. That's what a library keeps."
+       ]
+      }
+     },
+     {
+      "text": "Waiting boy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Someone's always borrowed the book I want..."
+       ]
+      }
+     }
+    ]
    },
    "deleter": {
     "theme": "room",
@@ -249335,8 +250490,8 @@
      "ccccccccccc",
      "ccccccccccc",
      "cmmm...mmmc",
-     "c.........c",
-     "c.m.....m.c",
+     "c.......N.c",
+     "c.m..N..m.c",
      "c.........c",
      "cc......m.c",
      "cz..v.....c",
@@ -249532,7 +250687,107 @@
        1
       ]
      }
-    }
+    },
+    "people": [
+     [
+      {
+       "text": "Mother",
+       "action": "EVENT",
+       "condition": "not:beat_sinnoh_champion",
+       "event": {
+        "lines": [
+         "Our boy has so much energy! ...That's the best way to be."
+        ]
+       }
+      },
+      {
+       "text": "Mother",
+       "action": "EVENT",
+       "condition": [
+        "beat_sinnoh_champion",
+        "not:canalave_dream_woke"
+       ],
+       "event": {
+        "lines": [
+         "Our boy fell asleep and won't wake... It's an endless nightmare.",
+         "It's happened in Canalave before. People who never woke up again...",
+         "My husband says a feather from Fullmoon Island can chase the dark away. He sails from the harbor."
+        ]
+       }
+      },
+      {
+       "text": "Mother",
+       "action": "EVENT",
+       "condition": "canalave_dream_woke",
+       "event": {
+        "lines": [
+         "Thank you! We can never thank you enough, but thank you!"
+        ]
+       }
+      }
+     ],
+     [
+      {
+       "text": "Little boy",
+       "action": "EVENT",
+       "condition": "not:beat_sinnoh_champion",
+       "event": {
+        "lines": [
+         "I'm going to be a sailor like my dad! The sea doesn't scare him one bit!",
+         "...But a Gym Leader would be cool too. Byron's so strong!"
+        ]
+       }
+      },
+      {
+       "text": "Little boy",
+       "action": "EVENT",
+       "condition": [
+        "beat_sinnoh_champion",
+        "not:canalave_dream_woke",
+        "has_item:LUNAR_WING"
+       ],
+       "event": {
+        "lines": [
+         "The little boy is tossing and turning in his sleep...",
+         "The Lunar Wing began to glow softly...",
+         "The boy's face became calm and peaceful!",
+         "Little boy: ...Mom? Dad? I had a scary dream. A dark place, and a dark Pokemon...",
+         "Little boy: But I could hear your voices the whole time. I'm not scared now!"
+        ],
+        "flag": "canalave_dream_woke"
+       }
+      },
+      {
+       "text": "Little boy",
+       "action": "EVENT",
+       "condition": [
+        "beat_sinnoh_champion",
+        "not:canalave_dream_woke",
+        "not:has_item:LUNAR_WING"
+       ],
+       "event": {
+        "lines": [
+         "The little boy is tossing and turning in his sleep. He won't wake up...",
+         "He seems to be having a terrible nightmare."
+        ],
+        "flag": "canalave_dream_seen",
+        "done": [
+         "The little boy is still trapped in his nightmare..."
+        ]
+       }
+      },
+      {
+       "text": "Little boy",
+       "action": "EVENT",
+       "condition": "canalave_dream_woke",
+       "event": {
+        "lines": [
+         "I had the worst dream, but it's over! When I grow up, I'll sail to Fullmoon Island myself!"
+        ]
+       }
+      }
+     ]
+    ]
    },
    "gym_2f": {
     "theme": "room",
@@ -269721,13 +270976,10 @@
       "text": "Boutique clerk",
       "action": "EVENT",
       "event": {
-       "world": "ribbon_syndicate",
-       "shop": true,
        "lines": [
-        "Clerk: Welcome. May I interest you in a Ribbon? Ours are specially imported - you'll find them nowhere else."
+        "Welcome! Only the finest people shop here."
        ]
-      },
-      "condition": "world:ribbon_syndicate:member"
+      }
      },
      {
       "text": "Psyduck",
@@ -270238,7 +271490,7 @@
      "c.....c",
      "c.....c",
      "c.....c",
-     "c..v..c",
+     "cN.v..c",
      "ccccccc"
     ],
     "exits": {
@@ -270246,7 +271498,6 @@
     },
     "buildings": {},
     "title": "Ribbon Syndicate Lift",
-    "people": [],
     "roofs": {
      "_picture": {
       "f": "pt_ground/T07R0103.png",
@@ -270289,6 +271540,17 @@
        },
        "cancel": [
         "The lift stays where it is."
+       ]
+      }
+     }
+    ],
+    "people": [
+     {
+      "text": "Lift attendant",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Welcome. Step in, and I'll take you to the floor you like."
        ]
       }
      }
@@ -309200,7 +310462,7 @@
      "..........ccccccc......k..ccccc.ckk..cccc....cccccTTTTTT",
      "TTTTTT....ccccccc......ccc....ccc...ccc......cccccTTTTTT",
      "TTTTTT....ccccccc.k....c.c..........c.c........cccTTTTTT",
-     "TTTTTTTTTTTTTTccc...k..ccckk.cccccccccc........cccTTTTTT",
+     "TTTTTTTTTTTTTTccc...k..ccckk.cccccccccc.N......cccTTTTTT",
      "TTTTTTTTTTTTTTccc..kk.kk..kk.ccccccc...........cccTTTTTT",
      "TTTTTTTTTTTTTTccc..kk.kk.kk..ccccccc...........cccTTTTTT",
      "TTTTTTTTTTTTTTccc.....k.kkkk.ccrrrcc...........cccTTTTTT",
@@ -310770,7 +312032,18 @@
     },
     "hidden": {
      "12,15": "HP_UP"
-    }
+    },
+    "people": [
+     {
+      "text": "Magikarp",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "A Magikarp is flopping about weakly in the mud..."
+       ]
+      }
+     }
+    ]
    },
    {
     "art": [
@@ -312554,7 +313827,8 @@
    "Confront Saturn at the Lake": 2,
    "TM166": 1,
    "Galactic Grunt 1": 0,
-   "Galactic Grunt 2": 0
+   "Galactic Grunt 2": 0,
+   "Magikarp": 0
   },
   "buildings": {
    "A": "house",
@@ -343937,12 +345211,12 @@
      "c.......mmcmmmccmmmmcmmmccc",
      "c........mcmmmccmmmmcmmmccc",
      "cv.m.........mccmmmmmmmmccc",
-     "cv..m..m.......mm..m.....cc",
-     "cv.m....m..........m.....cc",
-     "c...m..m...mm...N..m.....cc",
+     "cv..m..m......Nmm..m.....cc",
+     "cv.m....m..........m....Ncc",
+     "c...m..m...mm...N.Nm.....cc",
      "c.......m..........mm.m.ccc",
-     "c..........mm.............c",
-     "c.........................c",
+     "cN.........mm.........N...c",
+     "cN.............N..........c",
      "cccc......................c",
      "cccccccc..................c",
      "ccccccccc.................c",
@@ -344428,7 +345702,70 @@
      "_signs_in_picture": true
     },
     "people": [
-     "Factory attendant"
+     {
+      "text": "Factory boy",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I always pick Pokémon I've never raised before. You learn so much that way."
+       ]
+      }
+     },
+     {
+      "text": "Factory officer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I hated battling some Pokémon. Then I got them on my side and they won me over!"
+       ]
+      }
+     },
+     "Factory attendant",
+     {
+      "text": "Factory clown",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Do you raise every kind of Pokémon? No? Here you get to try them all!"
+       ]
+      }
+     },
+     {
+      "text": "Helpful woman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The staff here tell you about the next Trainer you'll face. So helpful!"
+       ]
+      }
+     },
+     {
+      "text": "Torn lady",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Pokémon I rented became my favourites! But I already have six favourites!"
+       ]
+      }
+     },
+     {
+      "text": "Factory sailor",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My trick? Look at the other side's team, then choose. Simple!"
+       ]
+      }
+     },
+     {
+      "text": "Factory woman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Remember what moves your opponent used. Then you know what to trade for."
+       ]
+      }
+     }
     ],
     "overheads": [
      {
@@ -344454,14 +345791,14 @@
      "ccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccccccc",
      "ccccccccccccccccccccccc...c",
-     "cccccccccccccccccc.ccc....c",
-     "ccccccccccccccccc.........c",
+     "cccccccccccccccccc.ccc...Nc",
+     "cccccccccccccccccN.N......c",
      "cccccccccccc..ccc.........c",
-     "c...mm.zmzN...............c",
+     "cN.NmmNzmzN...N...........c",
      "c........................vc",
      "c........................vc",
      "c........................vc",
-     "c.........................c",
+     "c......................N..c",
      "cccccccm..................c",
      "c....................cccccc",
      "c...............ccccccccccc",
@@ -344524,7 +345861,79 @@
      "_signs_in_picture": true
     },
     "people": [
-     "Hall attendant"
+     {
+      "text": "Streak racer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My friend and I race to see who gets the longest streak. Same rules for both!"
+       ]
+      }
+     },
+     {
+      "text": "Pachirisu girl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "My Pachirisu has even battled the Brain here! The Brain matches your level."
+       ]
+      }
+     },
+     {
+      "text": "Stage girl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Any Pokémon can stand on that stage. Even your one favourite!"
+       ]
+      }
+     },
+     {
+      "text": "Mysterious maid",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Ohoho! I'm the mysterious maid! My advice: a type matchup can change everything here!"
+       ]
+      }
+     },
+     {
+      "text": "Type thinker",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Croagunk is Poison and Fighting, so it can come up as either kind."
+       ]
+      }
+     },
+     {
+      "text": "Hall idol",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "You can bring the same kind of Pokémon if it's a different one. Mix up its moves!"
+       ]
+      }
+     },
+     "Hall attendant",
+     {
+      "text": "Hall Pachirisu",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "PACHIRISU: Pachi pachi!"
+       ]
+      }
+     },
+     {
+      "text": "Hall hiker",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "I start with the types my Pokémon dislikes. Get the tough ones out of the way!"
+       ]
+      }
+     }
     ],
     "overheads": [
      {
@@ -344550,17 +345959,17 @@
      "ccccccccccccccccccccccc",
      "ccccccccccccccccccccccc",
      "ccccccccccccccccc.....c",
-     "ccccccccccccccz.......c",
-     "cccccccccccccc........c",
+     "cccccccccccccczN......c",
+     "ccccccccccccccN.....N.c",
      "cccccccccccccc.m......c",
-     "cccccccc.mm..cccc.....c",
+     "ccccccccNmm..cccc.....c",
      "cccccccc....Nccc.....vc",
      "cccccccc.....c.......vc",
      "cccccccc.............vc",
      "cccccccc..............c",
-     "ccccccmm..............c",
-     "ccc.............c.....c",
-     "c..............m......c",
+     "ccccccmmN.............c",
+     "ccc...........N.c.....c",
+     "c.N............m......c",
      "cccccc.......c........c",
      "c............cz..cccccc",
      "c............cccccccccc",
@@ -344635,7 +346044,70 @@
      "_signs_in_picture": true
     },
     "people": [
-     "Castle attendant"
+     {
+      "text": "Castle lady",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Stronger opponents give more points. If you win, of course."
+       ]
+      }
+     },
+     {
+      "text": "Scout",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Always check the other side's team before a battle. Don't be stingy with your points!"
+       ]
+      }
+     },
+     {
+      "text": "Castle artist",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Win without taking a hit and you earn more points."
+       ]
+      }
+     },
+     {
+      "text": "Dreamy waitress",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The castle's master... so elegant... Sigh..."
+       ]
+      }
+     },
+     "Castle attendant",
+     {
+      "text": "Serious gentleman",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Listen closely: lose, and your Castle Points are gone. All of them."
+       ]
+      }
+     },
+     {
+      "text": "Point saver",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "At first Castle Points only heal. Rank up, and you can restore PP too."
+       ]
+      }
+     },
+     {
+      "text": "Castle dreamer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Every man dreams of living in a castle! Right?"
+       ]
+      }
+     }
     ],
     "overheads": [
      {
@@ -344664,16 +346136,16 @@
      "c......cccccccccccccccc",
      "cv......ccccccccccccccc",
      "cv.........cccc.ccccccc",
-     "cv..........Nm...m.mm.c",
-     "c............m..mm....c",
-     "c............m..mm....c",
-     "cccc..................c",
-     "ccccccc...............c",
+     "cv..........NmN..mNmm.c",
+     "c...........Nm..mm....c",
+     "c............m..mm.N..c",
+     "ccccN.................c",
+     "cccccccN..............c",
      "cccccccc.............mc",
      "ccccccccccc.......m..mc",
-     "cmmccmccmccmmmm.......c",
+     "cmmccmccmccmmmm......Nc",
      "cccmmcmmcmmccc....m..mc",
-     "cm....................c",
+     "cmNN..................c",
      "c..m..........ccccccccc",
      "c.......mmmmmmmmmmmmmmc",
      "c..m.....cccccccccccccc",
@@ -344952,7 +346424,88 @@
      "_signs_in_picture": true
     },
     "people": [
-     "Arcade attendant"
+     "Arcade attendant",
+     {
+      "text": "Clever hiker",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "A Pokémon whose type or ability blocks a status can shrug off that square."
+       ]
+      }
+     },
+     {
+      "text": "Unlucky lady",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "It all came down to luck... and my Pokémon got frozen."
+       ]
+      }
+     },
+     {
+      "text": "Ground hiker",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "If the board picks paralysis, Ground types don't mind one bit."
+       ]
+      }
+     },
+     {
+      "text": "Luck believer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "You can't do anything about luck. It's there or it isn't."
+       ]
+      }
+     },
+     {
+      "text": "Arcade waitress",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "The Brain here has quite a style. A little bump, a wiggle... please don't stare."
+       ]
+      }
+     },
+     {
+      "text": "Board timer",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "If you don't stop the board in time, it stops by itself."
+       ]
+      }
+     },
+     {
+      "text": "Sporting girl",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Don't blame the board when you lose. Win more, and it gives you better picks."
+       ]
+      }
+     },
+     {
+      "text": "Worried camper",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "A battle can start with Trick Room already up? Speed won't save you then!"
+       ]
+      }
+     },
+     {
+      "text": "Thrill seeker",
+      "action": "EVENT",
+      "event": {
+       "lines": [
+        "Leave it to fate! That's how you enjoy the Arcade!"
+       ]
+      }
+     }
     ],
     "overheads": [
      {
