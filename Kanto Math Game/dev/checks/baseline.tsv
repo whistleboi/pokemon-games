@@ -40,7 +40,7 @@ johto_live3d	118	2026-11-24
 johto_live3d_depth	7	2026-11-24
 johto_looks	5	2026-11-24
 johto_played	28	2026-11-24
-journal_parts	11	2026-11-24
+journal_parts	16	2026-11-24
 journal_regions	49	2026-11-24
 journal_rules	140	2026-11-24
 kanto_canon	644	2026-11-24
@@ -121,6 +121,7 @@ town_smash	4	2026-11-24
 townsea	37	2026-11-24
 ui	11	2026-11-24
 unova_b1	57	2026-11-24
+unova_b10a	21	2026-11-24
 unova_b2	62	2026-11-24
 unova_b3a	68	2026-11-24
 unova_b4a	50	2026-11-24
@@ -144,7 +145,6 @@ unova_live3d	89	2026-11-24
 unova_music	12	2026-11-24
 unova_royal	25	2026-11-24
 unova_start	24	2026-11-24
-unova_b10a	21	2026-11-24
 vsseeker	59	2026-11-24
 walkup	92	2026-11-24
 water_arrival	4	2026-11-24
