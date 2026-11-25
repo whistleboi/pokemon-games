@@ -95,6 +95,13 @@ check(iris[0]["event"]["flag"] == "beat_unova_champion" and iris[0]["event"]["ba
 hof = rooms["hof"]["scenes"][0]["event"]
 check(hof["scene"] == "hall_of_fame" and hof["travel"] == "ASPERTIA_CITY", "the Hall of Fame, then home to Aspertia")
 
+from src.dungeon import art as _ART
+from src.states.overworld.walk_town import MORE_EXIT_CHARS as _MORE
+_pz = tmaps["UNOVA_POKEMON_LEAGUE"]["rooms"]["plaza"]
+check(sorted(v for k, v in _pz["exits"].items() if k in set(_ART.EXIT_CHARS) | _MORE and any(k in r for r in _pz["art"]))
+      == ["OUT:31,45", "ROOM:caitlin", "ROOM:grimsley", "ROOM:marshal", "ROOM:shauntal"],
+      "every Elite Four door is a way out the walker reads (11-25, the Journal's PT_FULL: three were '2'-'4', a Cut tree's letter)")
+
 print("2) an Elite Four battle: Shauntal")
 for k in ("b2_e4_shauntal", "b2_e4_grimsley", "b2_e4_caitlin", "b2_e4_marshal", "beat_unova_champion", "b2_hall_of_fame"):
     flags.pop(k, None)
