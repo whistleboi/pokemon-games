@@ -2028,5 +2028,82 @@ check(_in and len(_items) == 4 and _pad == (35, 16),
       f"Amity Square: in with a Pikachu leading, Platinum's four item balls, a pad takes you from one hut to another ({_in}, {_items}, {_pad})")
 story.player_team = _team
 
+# ---- S8 (11-25, s_s8_gifts.py, src/world/sinnoh_gifts.py): Platinum's givers - Jasmine's Waterfall after the Beacon Badge (not
+#      the badge itself), Julia's Ribbon of the day, the Footprint Ribbon, the Route 221 number man, Rowan's TM27 Return
+from src.world import sinnoh_gifts as _SGf, hms as _hm
+_sv, _iv, _team, _bv = dict(story.story_flags), dict(story.inventory), list(story.player_team), list(story.badges.get("SINNOH", []))
+def _talk_to(t, name):
+    _s = next((s for s, o in t.people.items() if any(str(c.get("text")) == name and t._shown(c) for c in (o.get("any") or [o]))), None)
+    if _s:
+        t.player = t.anim_from = (_s[0], _s[1] + 1); t.anim = 0; t.facing = (0, -1)
+        t._talk(tuple(_s)); _drive(t, 400, lambda: not getattr(t, "npc_active", False))
+    return _s
+_nobadge = "HM_WATERFALL" not in (_hm.HM_BY_BADGE.get("SINNOH") or {}).values()
+story.inventory.pop("HM_WATERFALL", None)
+story.badges["SINNOH"] = ["COAL", "FOREST", "COBBLE", "FEN", "RELIC", "MINE", "ICICLE"]
+t = town("SUNYSHORE_CITY", "SINNOH_ROUTE_222"); frames(t, 3)
+_talk_to(t, "Jasmine")
+_before = story.inventory.get("HM_WATERFALL", 0)
+story.badges["SINNOH"] = ["COAL", "FOREST", "COBBLE", "FEN", "RELIC", "MINE", "ICICLE", "BEACON"]
+t = town("SUNYSHORE_CITY", "SINNOH_ROUTE_222"); frames(t, 3)
+_js = _talk_to(t, "Jasmine")
+_after = story.inventory.get("HM_WATERFALL", 0)
+_m = mk(25); _m.level = 30; _m.ribbons = []; _m.friendship = 255
+story.player_team = [_m]
+story.story_flags.pop("sinnoh_julia_day", None)
+t = town("SUNYSHORE_CITY", "SINNOH_ROUTE_222"); frames(t, 3)
+t._go("house_0201", "OUT:0,0"); frames(t, 3)
+_talk_to(t, "Julia")
+_rib = list(_m.ribbons)
+_lines = []
+class _St:
+    game = g
+_SGf.event(_St(), {"footstep": True}, [], lambda l: _lines.extend(l))
+_foot = "FOOTPRINT" in _m.ribbons
+_m.level = _SGf.todays_level()
+story.story_flags.pop("sinnoh_route221_level_day", None)
+_belts_before = sum(story.inventory.get(b, 0) for b in _SGf.BELTS)
+_SGf.event(_St(), {"level_man": True}, [], lambda l: _lines.extend(l))
+_belt = sum(story.inventory.get(b, 0) for b in _SGf.BELTS) - _belts_before
+story.story_flags["received_pokedex_sinnoh"] = True
+story.story_flags.pop("got_tm274_sandgem", None)
+t = town("SANDGEM_TOWN", "SINNOH_ROUTE_201"); frames(t, 3)
+t._go("lab", "OUT:0,0"); frames(t, 3)
+_dr = next((x, y) for y, row in enumerate(t.town_map["rooms"]["lab"]["art"]) for x, c in enumerate(row) if c == "v")
+t.player = t.anim_from = (_dr[0], _dr[1] - 3); t.anim = 0; t.walk_goal = None
+t.step(0, 1)   # (heading for the door: Rowan comes over)
+_drive(t, 1500, lambda: story.inventory.get("TM274", 0) > 0 and not t.scenes.busy())
+_tm = story.inventory.get("TM274", 0)
+check(_nobadge and _before == 0 and _js and _after == 1 and len(_rib) == 1 and _foot and _belt == 1 and _tm == 1,
+      f"Platinum's givers: Jasmine's Waterfall only after the Beacon Badge, Julia's Ribbon of the day, the Footprint Ribbon, the Route 221 number man's belt, Rowan's TM27 ({_nobadge}, {_before}->{_after}, {_rib}, {_foot}, {_belt}, {_tm})")
+story.story_flags.clear(); story.story_flags.update(_sv); story.inventory.clear(); story.inventory.update(_iv)
+story.player_team = _team; story.badges["SINNOH"] = _bv
+
+# ---- S8 (11-25, every mechanic once): the Great Marsh's Safari Game as Platinum's - 30 Safari Balls and 500 steps a visit, a
+#      step counts down, no battling (catching only), out of steps you're back in Pastoria; the Day Care's own counter in Solaceon
+_sv = dict(story.story_flags)
+r = route("GREAT_MARSH", "PASTORIA_CITY")
+frames(r, 30)
+_drive(r, 300, lambda: not (getattr(r, "dialogue_box", None) and r.dialogue_box.visible))
+_sf = dict(getattr(r, "safari", None) or {})
+r.run.floor.movers = [m for m in r.run.floor.movers if m.kind != "wild"]
+_x, _y = r.run.player
+_mv = next(((dx, dy) for dx, dy in ((0, -1), (1, 0), (-1, 0), (0, 1)) if r.run.floor.walkable(_x + dx, _y + dy)), (0, -1))
+r.anim = 0; r.walk_goal = None
+r.step(*_mv); frames(r, 12)
+_step = dict(getattr(r, "safari", None) or {}).get("steps")
+r.encounter = None
+r._pick(1)
+_nobattle = r.mode != "BATTLE"
+r.safari["steps"] = 0
+_drive(r, 900, lambda: story.current_area_key == "PASTORIA_CITY")
+check(_sf.get("balls") == 30 and _sf.get("steps") == 500 and _step == 499 and _nobattle and story.current_area_key == "PASTORIA_CITY",
+      f"Great Marsh: the Safari Game - 30 Safari Balls and 500 steps, a step counts down, catching only, out of steps back in Pastoria ({_sf}, {_step}, {_nobattle}, {story.current_area_key})")
+_dc = __import__("json").load(open("assets/town_maps.json", encoding="utf-8"))["SOLACEON_TOWN"]["rooms"]["daycare"]["people"]
+_opts = {o.get("text"): o for o in _area["SOLACEON_TOWN"].get("explore_options", [])}
+check(any(isinstance(p, str) and (_opts.get(p) or {}).get("action") == "DAYCARE" for p in _dc),
+      f"Solaceon: the Day Care's counter inside its house runs the Day Care ({_dc})")
+story.story_flags.clear(); story.story_flags.update(_sv)
+
 g.walk_towns = False
 print(f"##### {fails} failures")

@@ -104,7 +104,11 @@ for k in ("FOCUS_SASH", "MUSCLE_BAND", "WISE_GLASSES", "ZOOM_LENS", "LIFE_ORB", 
 print("5) the Battle Resort's tutors at Hoenn's Frontier: Battle Points, at its prices")
 from src.states.overworld.common import _tutor_teach
 area = g.loader.area_data["STORY_PROGRESSION"]["HOENN_BATTLE_FRONTIER"]
-tutors_ = {o["text"]: o["event"] for o in (area.get("explore_options") or []) + (area.get("route_menu") or []) if (o.get("event") or {}).get("tutor")}
+_all_tutors = {o["text"]: o["event"] for o in (area.get("explore_options") or []) + (area.get("route_menu") or []) if (o.get("event") or {}).get("tutor")}
+tutors_ = {k: v for k, v in _all_tutors.items() if not v["tutor"].get("choices")}   # (the Resort's four, one move each; Emerald's
+_menu = {k: v["tutor"].get("bp_costs") for k, v in _all_tutors.items() if v["tutor"].get("choices")}   # menu tutors: a price a move, 11-25)
+check(sorted(_menu) == ["Cute-moves tutor", "Pretty-moves tutor"] and all(sorted(set(c.values())) == [16, 24, 48] and len(c) == 10 for c in _menu.values()),
+      f"Emerald's two Frontier tutors: ten moves each at 16, 24 or 48 BP {_menu}")
 check({k: v["tutor"].get("bp") for k, v in tutors_.items()} == {"Tutor Thunder Punch": 8, "Tutor Fire Punch": 8, "Tutor Ice Punch": 8, "Tutor Superpower": 16},
       f"Thunder, Fire and Ice Punch 8 BP, Superpower 16 BP {[(k, v['tutor'].get('bp')) for k, v in tutors_.items()]}")
 ev = tutors_["Tutor Thunder Punch"]

@@ -76,6 +76,10 @@
     ]
   },
   "figures": {
+    "SUNYSHORE_CITY:Julia": {"sheet": "pt_woman3.png"},
+    "SUNYSHORE_CITY:Jasmine": {"sheet": "pt_mikan.png"},
+    "SINNOH_ROUTE_221:Number man": {"sheet": "pt_oldman1.png"},
+    "SANDGEM_TOWN:Professor Rowan": {"sheet": "pt_doctor.png"},
     "ABUNDANT_SHRINE:Amoonguss in the grotto": {"pokemon": 591},
     "ABUNDANT_SHRINE:Boy at the ruins": {"sheet": "b2_c11.png"},
     "ABUNDANT_SHRINE:Bronzor in the grotto": {"pokemon": 436},
@@ -8018,10 +8022,10 @@
     "HOENN_BATTLE_FRONTIER:Gambler": {
       "sheet": "em_55.png"
     },
-    "HOENN_BATTLE_FRONTIER:Old tutor ": {
+    "HOENN_BATTLE_FRONTIER:Pretty-moves tutor": {
       "sheet": "em_22.png"
     },
-    "HOENN_BATTLE_FRONTIER:Old tutor": {
+    "HOENN_BATTLE_FRONTIER:Cute-moves tutor": {
       "sheet": "em_22.png"
     },
     "HOENN_BATTLE_FRONTIER:Skitty fan": {

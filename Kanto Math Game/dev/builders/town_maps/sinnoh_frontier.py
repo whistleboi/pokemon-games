@@ -51,5 +51,13 @@ def build(johto_maps):
 
 
 def apply(maps):
+    """The Frontier built from Johto's map - keeping, room by room, the people Sinnoh gave its facility rooms (S8 11-25:
+    Platinum's townsfolk, kanto_handoff/sinnoh_map_tools/sfolk.py, written by s_folk.py into sinnoh.py's own copy)."""
     from . import johto as _J
-    maps[KEY] = build(_J.MAPS)
+    own = maps.get(KEY) or {}
+    built = build(_J.MAPS)
+    for name, room in (built.get("rooms") or {}).items():
+        mine = (own.get("rooms") or {}).get(name) or {}
+        if len(mine.get("people") or []) > len(room.get("people") or []) and len(mine.get("art") or []) == len(room.get("art") or []):
+            room["art"], room["people"] = list(mine["art"]), list(mine["people"])
+    maps[KEY] = built

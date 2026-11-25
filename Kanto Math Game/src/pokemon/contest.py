@@ -58,7 +58,10 @@ def ribbon_id(category, rank):
     return f"{category}_{rank}"
 
 
-SPECIAL_RIBBONS = {"GORGEOUS": "Gorgeous Ribbon", "ROYAL": "Royal Ribbon", "GORGEOUS_ROYAL": "Gorgeous Royal Ribbon"}   # (bought,
+SPECIAL_RIBBONS = {"GORGEOUS": "Gorgeous Ribbon", "ROYAL": "Royal Ribbon", "GORGEOUS_ROYAL": "Gorgeous Royal Ribbon",   # (bought,
+                   "ALERT": "Alert Ribbon", "SHOCK": "Shock Ribbon", "DOWNCAST": "Downcast Ribbon", "CARELESS": "Careless Ribbon",
+                   "RELAX": "Relax Ribbon", "SNOOZE": "Snooze Ribbon", "SMILE": "Smile Ribbon", "FOOTPRINT": "Footprint Ribbon",
+                   "EFFORT": "Effort Ribbon"}   # (given, Platinum's Julia and Dr. Footstep: Sinnoh 11-25; the line below:
                                                                                     #  not won: Platinum's Ribbon Syndicate, Sinnoh 11-24)
 
 

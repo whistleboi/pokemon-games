@@ -166719,8 +166719,8 @@
      "_buildings_in_picture": true
     },
     "people": [
-     "Old tutor",
-     "Old tutor "
+     "Cute-moves tutor",
+     "Pretty-moves tutor"
     ],
     "moves": {
      "2,5": {
@@ -179990,6 +179990,30 @@
        ]
       },
       "color": "GOLD"
+     }
+    ],
+    "scenes": [
+     {
+      "who": "Visit Professor Rowan",
+      "trigger": {
+       "zone": [
+        5,
+        13,
+        9,
+        14
+       ]
+      },
+      "condition": [
+       "received_pokedex_sinnoh",
+       "not:got_tm274_sandgem"
+      ],
+      "flag": "got_tm274_sandgem_scene",
+      "approach": true,
+      "lines": [
+       "Rowan: Hm! Before you go - take this. Return grows stronger the more your Pokemon trusts you."
+      ],
+      "then": "event:sinnoh_rowan_tm27",
+      "after": "home"
      }
     ]
    },
@@ -223205,7 +223229,7 @@
      "cccccccccc................cc.c.......ccc....cccccccc..cccccccccc",
      "cccccccccc.................ccc.......c.c....ccccccc...cccccccccc",
      "cccccccccccc.c.......................c.c....ccccccc.cccccccccccc",
-     "ccccccccccNc.c.......................c.c..ccccccccc.cNcccccccccc",
+     "ccccccccccNm.c.......................c.c..ccccccccc.mNcccccccccc",
      "cccccccccccc.c....cccc.cccccccccc.cccc.c..c..cccccc.cccccccccccc",
      "ccccccccc....c....c..c.c........c.c....c..c..cccccc....ccccccccc",
      "ccccccccc....c....cccccccccccccccccccccc..c..cccccc....ccccccccc",
@@ -223950,7 +223974,8 @@
        0
       ]
      }
-    }
+    },
+    "split": true
    }
   },
   "inside": {
@@ -255891,7 +255916,7 @@
    "ooooooooooorrooooorrossssssssorrooooooccccccccccccccccccccccccoo",
    "oooooooooooooooooorrssssssssssrrooooooccccccccccccccccccccccccoo",
    "oooocccccccccccccccccsssssssssrrrrooooccccccccccccccccccccccccoo",
-   "oooocccccccccccccccccsssssssssrrrrooooccccAAAAk..kBBBBBcccccccoo",
+   "oooocccccccccccccccccssssNssssrrrrooooccccAAAAk..kBBBBBcccccccoo",
    "oooocccccccccccccccccsssssssssrroooorrccccAAAAk..kBBBBBcccccccoo",
    "oooocccccccccccccccccsssssssssrroooorrccccADAAk..kBDBBBcccccccoo",
    "ooooccccccCCCCCCCccccsssssrrrroorrrrrrcccc...........!ccccccccoo",
@@ -256211,6 +256236,48 @@
    ]
   ],
   "people": [
+   [
+    {
+     "text": "Jasmine",
+     "action": "EVENT",
+     "condition": [
+      "has_beacon_badge",
+      "not:got_hm_waterfall_sunyshore"
+     ],
+     "color": "GOLD",
+     "event": {
+      "lines": [
+       "Jasmine: You beat Volkner... You and your Pokemon are wonderful together.",
+       "Jasmine: Please take this. It's Waterfall - it lets your Pokemon climb rushing water."
+      ],
+      "gift_item": {
+       "HM_WATERFALL": 1
+      },
+      "flag": "got_hm_waterfall_sunyshore"
+     }
+    },
+    {
+     "text": "Jasmine",
+     "action": "EVENT",
+     "condition": "not:has_beacon_badge",
+     "event": {
+      "lines": [
+       "Jasmine: ...This city feels like home somehow. The sea, and a lighthouse...",
+       "Jasmine: You're going to challenge Volkner? ...I hope it's a good battle."
+      ]
+     }
+    },
+    {
+     "text": "Jasmine",
+     "action": "EVENT",
+     "condition": "got_hm_waterfall_sunyshore",
+     "event": {
+      "lines": [
+       "Jasmine: I came a long way to get stronger. Meeting you was worth it."
+      ]
+     }
+    }
+   ],
    {
     "text": "Sailor ",
     "action": "EVENT",
@@ -258178,7 +258245,7 @@
      "ccccccccccc",
      "cmmm...mmmc",
      "c.........c",
-     "c.m.....m.c",
+     "c.mN....m.c",
      "c.........c",
      "cc......m.c",
      "cz..v.....c",
@@ -258374,7 +258441,20 @@
        1
       ]
      }
-    }
+    },
+    "people": [
+     {
+      "text": "Julia",
+      "action": "EVENT",
+      "event": {
+       "world": "sinnoh_gifts",
+       "julia": true,
+       "lines": [
+        "Julia: Oh, hello! My husband is a sailor, far away at sea. Tell me about your travels, won't you?"
+       ]
+      }
+     }
+    ]
    },
    "house_0301": {
     "theme": "room",
@@ -281492,7 +281572,16 @@
          "QUALOT_BERRY",
          "HONDEW_BERRY",
          "GREPA_BERRY",
-         "TAMATO_BERRY"
+         "TAMATO_BERRY",
+         "FIGY_BERRY",
+         "WIKI_BERRY",
+         "MAGO_BERRY",
+         "AGUAV_BERRY",
+         "IAPAPA_BERRY",
+         "CORNN_BERRY",
+         "MAGOST_BERRY",
+         "RABUTA_BERRY",
+         "NOMEL_BERRY"
         ],
         "count": 2,
         "wait": [
@@ -291634,7 +291723,9 @@
         "Dr. Footstep: Pokemon are quite easy for me to read. I need only to see their footprints, and their innermost thoughts are revealed to me!",
         "Dr. Footstep: Oh? You are skeptical? Then let me see your first Pokemon's footprints...",
         "Dr. Footstep: Hmm... It walks close beside you, step for step. It trusts you more every day. Keep treating it kindly!"
-       ]
+       ],
+       "world": "sinnoh_gifts",
+       "footstep": true
       }
      }
     ],
@@ -304802,7 +304893,7 @@
      "ccccccccccc",
      "cm.....mmzc",
      "cm........c",
-     "cm........c",
+     "cmN.......c",
      "cm........c",
      "cc........c",
      "cz..v.....c",
@@ -304977,7 +305068,17 @@
       ]
      }
     },
-    "title": "House"
+    "title": "House",
+    "people": [
+     {
+      "text": "Number man",
+      "action": "EVENT",
+      "event": {
+       "world": "sinnoh_gifts",
+       "level_man": true
+      }
+     }
+    ]
    },
    "house_0101": {
     "theme": "room",

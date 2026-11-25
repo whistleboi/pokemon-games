@@ -15,7 +15,7 @@ HM_BY_BADGE = {
     # the rival on Route 112 and on Route 119; Jordan, 11-06: one source for each key item in a region)
     "HOENN": {},   # (11-23, Jordan H5: every HM from ORAS's own giver on the maps - Cut the Cutter in Rustboro, Flash Granite
     #              Cave's hiker, Surf Wally's father after Norman, Dive Steven in Mossdeep, Waterfall Wallace's prize)
-    "SINNOH": {"BEACON": "HM_WATERFALL"},   # (11-24: Rock Climb is Platinum's ball on Route 217, not the Icicle Badge's)
+    "SINNOH": {},   # (11-24: Rock Climb is Platinum's ball on Route 217, not the Icicle Badge's; 11-25, S8: Waterfall is Jasmine's on Sunyshore's beach after Volkner, not the Beacon Badge's)
     # (11-24 cleanup, Platinum's givers: Rock Smash from the Oreburgh Gate hiker after the Coal Badge, Cut from Cynthia in Eterna
     #  after the Forest Badge, Defog lying in the Solaceon Ruins - not the badges, which gave each a second time)
     # (11-24, Sinnoh S5, Jordan: Strength is Platinum's - Riley on Iron Island - not Byron's Mine Badge; Barry waits at the
