@@ -1,6 +1,7 @@
 {
  "_about": "Unova's soundtrack: Black 2's own tracks, rendered from the game file by kanto_handoff/unova_map_tools/music.py (src/core/music.py region_track reads this).",
  "areas": {
+  "ABUNDANT_SHRINE": "d_06",
   "ANVILLE_TOWN": "t_03",
   "ASPERTIA_CITY": "sw_c_12",
   "CASTELIA_CITY": "c_03",
@@ -53,6 +54,7 @@
   },
   "LOSTLORN_FOREST": "d_06",
   "MARINE_TUBE": "sw_h_06",
+  "MARVELOUS_BRIDGE": "h_05",
   "MISTRALTON_CAVE": "d_02",
   "MISTRALTON_CAVE_2F": "d_02",
   "MISTRALTON_CITY": "c_06",
@@ -107,6 +109,18 @@
    "WINTER": "r_e_wi"
   },
   "UNOVA_ROUTE_13": {
+   "AUTUMN": "r_e_au",
+   "SPRING": "r_e_sp",
+   "SUMMER": "r_e_su",
+   "WINTER": "r_e_wi"
+  },
+  "UNOVA_ROUTE_14": {
+   "AUTUMN": "r_e_au",
+   "SPRING": "r_e_sp",
+   "SUMMER": "r_e_su",
+   "WINTER": "r_e_wi"
+  },
+  "UNOVA_ROUTE_15": {
    "AUTUMN": "r_e_au",
    "SPRING": "r_e_sp",
    "SUMMER": "r_e_su",
@@ -200,6 +214,8 @@
   "wild": "vs_norapoke"
  },
  "rooms": {
+  "ABUNDANT_SHRINE:grotto": "kemonomichi",
+  "ABUNDANT_SHRINE:grotto2": "kemonomichi",
   "ASPERTIA_CITY:center": "pokecen",
   "ASPERTIA_CITY:gate": "gate",
   "ASPERTIA_CITY:gym": "gym",
@@ -226,6 +242,7 @@
   "LIBERTY_GARDEN:lighthouse": "d_03",
   "LIBERTY_GARDEN:victini_room": "d_03",
   "LOSTLORN_FOREST:grotto": "kemonomichi",
+  "MARVELOUS_BRIDGE:gate_e": "gate",
   "MISTRALTON_CITY:center": "pokecen",
   "MISTRALTON_CITY:gym": "flight_gym_01",
   "NIMBASA_CITY:car": "battle_subway",
@@ -256,6 +273,9 @@
   "UNOVA_POKEMON_LEAGUE:approach": "d_champroad",
   "UNOVA_ROUTE_13:grotto": "kemonomichi",
   "UNOVA_ROUTE_13:grotto2": "kemonomichi",
+  "UNOVA_ROUTE_14:gate": "gate",
+  "UNOVA_ROUTE_15:gate": "gate",
+  "UNOVA_ROUTE_15:lab": "palpark",
   "UNOVA_ROUTE_16:bridge_gate": "gate",
   "UNOVA_ROUTE_23:grotto": "kemonomichi",
   "UNOVA_ROUTE_5:grotto": "kemonomichi",

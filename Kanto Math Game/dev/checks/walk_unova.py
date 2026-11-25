@@ -48,7 +48,7 @@ st.show_progression_menu()
 bc_check(story.story_flags.get("black_tower_cleared"), "clearing every Black Tower trainer sets black_tower_cleared")
 seen, _ = reach(S)
 bc_check({"WHITE_FOREST", "WHITE_TREEHOLLOW", "BLACK_TOWER_UPPER"} <= seen, "White Forest, the Treehollow and Areas 6-10 open after the Black Tower")
-for a, b in (("UNOVA_ROUTE_14", "WHITE_FOREST"), ("UNOVA_ROUTE_15", "WHITE_FOREST"), ("UNOVA_ROUTE_14", "BLACK_CITY"), ("UNOVA_ROUTE_15", "BLACK_CITY")):
+for a, b in (("UNOVA_ROUTE_15", "WHITE_FOREST"), ("UNOVA_ROUTE_14", "BLACK_CITY")):   # (11a: Black 2's Route 14 gate to Black City, Route 15's to White Forest after the Tower; 11b swaps them by League wins)
     bc_check(b in links(a) and a in links(b), f"{a} <-> {b}")
 
 # ---- areas expansion (areas_05_unova.patch): B2W2 side areas, BW1 Challenger's Cave
