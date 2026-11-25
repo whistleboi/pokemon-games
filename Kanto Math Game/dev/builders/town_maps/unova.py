@@ -4056,7 +4056,9 @@ DRIFT_GYM = drift_room(97, dict({
 }) | {n: _b2_battle(name, tid, "gym_trainer_DRIFTVEIL_CITY_%d" % (k + 1), _WORKER_LINES[n][0], ["%s: You're tough!" % name],
                      _WORKER_LINES[n][1])
        for k, (n, (tid, name)) in enumerate(sorted(_WORKER_SPOTS.items()))},
-    {}, title="Driftveil Gym", scenes=_BELT_SCENES)
+    {}, title="Driftveil Gym", scenes=_BELT_SCENES + [
+        {"trigger": "enter", "condition": ["not:b2_drift_gym_down"], "flag": "b2_drift_gym_down", "cast": [],
+         "call": ["Conveyor belts run from platform to platform, down in the dark."]}])
 for _x, _y in _BELT_TILES:   # (the belt ends: a step off the platform's edge)
     DRIFT_GYM["art"][_y] = DRIFT_GYM["art"][_y][:_x] + "." + DRIFT_GYM["art"][_y][_x + 1:]
 DRIFT_GYM["dark"] = {"flags": [], "radius": [2.0],   # (each platform's spotlight reaches a little past its edges: its belt ends)
@@ -4072,6 +4074,9 @@ DRIFT_ROOMS["gym_lobby"] = drift_room(98, {
     0: _say("Guide in the lobby", "Welcome to the Driftveil Gym! Take the lift down to the Gym floor."),
 }, {(4, 8): ["DRIFTVEIL GYM", "Leader: Clay", "Certified Trainers: {player_name}"],
     (10, 8): ["DRIFTVEIL GYM", "Leader: Clay", "Certified Trainers: {player_name}"]}, title="Driftveil Gym")
+DRIFT_ROOMS["gym_lobby"]["scenes"] = list(DRIFT_ROOMS["gym_lobby"].get("scenes") or []) + [   # (the Journal's way-points:
+    {"trigger": "enter", "condition": ["not:b2_drift_gym_in"], "flag": "b2_drift_gym_in", "cast": [],   #  in, then down; 11-24)
+     "call": ["The Gym is a mine. A lift at the back goes down into it."]}]
 DRIFT_ROOMS["gym_lobby"]["sign_events"] = {"8,3": {"text": "Lift", "action": "EVENT", "event": {"lift": [
     ["Gym entrance", "gym_lobby", 7, 4], ["Down in the Gym", "gym", 10, 86]]}}}
 
@@ -6818,6 +6823,254 @@ ROUTE_22["gated_exits"] = {}
 ROUTE_13["gated_exits"] = {}
 
 
+# ======================================================================================================== batch 10a (11-24)
+# Route 23 (475: the Giant Chasm to Victory Road; the healer's house 476, the old man's 477 with TM35 Flamethrower; the
+# boulder puzzle; three fake items: Amoonguss), Victory Road's entrance (573: N and HM05 Waterfall, the eight Badge Check
+# gates; the Pokemon Center 602) and its caves, each door paired by Black 2's own warp table: Cave 1F (Black 2 587 /
+# White 2 594), the Grove 588, the River Valley (589 / 595), Cave 2F 590, its back 591, the Mountainside 592, Cave 3F 593 and
+# the tunnel 228 where Hugh battles you (TM24 Thunderbolt), out to the League (its menu place till 10b walks it and the rail
+# stretch 214). Each version's people (Black 2's flag 874 / 1040 groups, White 2's 875 / 1039) on its own story map.
+# Post-game, batch 11: the Zoroark's cave 596 (N's Castle), Challenger's Cave.
+# Flags: b2_chasm_done -> b2_vr_waterfall (N) -> b2_badge_check -> b2_vr_hugh (the tunnel) -> (10b) the League.
+OUTSIDE.update({476: 475, 477: 475, 602: 573})
+_W2 = ["unova_version:WHITE_2"]
+
+
+def _fake_item(n, flag):
+    """A Poke Ball that's an Amoonguss (Black 2's three on Route 23, Lv 56)."""
+    return {"text": "Poke Ball in the grass" + " " * n, "action": "BOSS", "color": "RED", "_look": "sheet:b2_c210.png",
+            "condition": ["not:" + flag],
+            "boss": {"id": 591, "name": "Amoonguss", "level": 56, "victory_flag": flag,
+                     "lines": ["It's not an item! It's an Amoonguss in disguise!"]}}
+
+
+ROUTE_23 = route(
+    475, {17: _ball("Poke Ball by the north path", "REPEAT_BALL", "b2_r23_repeat_ball", name="a Repeat Ball"),
+          20: _ball("Poke Ball in the west", "HP_UP", "b2_r23_hp_up", name="an HP Up"),
+          22: _ball("Poke Ball over the bridge", "TM087", "b2_r23_tm12", name="TM087 Taunt"),
+          19: _ball("Poke Ball on the platform", "FULL_HEAL", "b2_r23_full_heal", name="a Full Heal"),
+          35: _ball("Poke Ball past the fake one", "GREEN_SHARD", "b2_r23_green_shard", name="a Green Shard"),
+          21: _ball("Poke Ball up the stairway", "MAX_POTION", "b2_r23_max_potion", name="a Max Potion"),
+          18: _ball("Poke Ball in the grove", "CALCIUM", "b2_r23_calcium", name="a Calcium"),
+          27: _ball("Poke Ball past the bridge", "TM172", "b2_r23_tm05", name="TM172 Roar"),
+          29: _ball("Poke Ball on the ledge", "STAR_PIECE", "b2_r23_star_piece", name="a Star Piece"),
+          24: _ball("Poke Ball south of the bridge", "IRON", "b2_r23_iron", name="an Iron"),
+          33: _ball("Poke Ball by the house", "HEART_SCALE", "b2_r23_heart_scale", name="a Heart Scale"),
+          36: _fake_item(1, "b2_r23_amoonguss_1"), 37: _fake_item(2, "b2_r23_amoonguss_2"), 38: _fake_item(3, "b2_r23_amoonguss_3")},
+    {},
+    exits={"^": ("VICTORY_ROAD_UNOVA", [(x, 5) for x in range(75, 78)]), "g": ("GIANT_CHASM", [(120, 74), (120, 75)])},
+    trainers={0: ("Pokemon Ranger Lena", 5), 1: ("Hiker Doug", 2), 2: ("Ace Trainer Tom", 6), 3: ("Ace Trainer Miki", 6),
+              4: ("Black Belt Benjamin", 3), 5: ("Battle Girl Tiffany", 1), 23: ("Ace Trainer Juliet", 3), 25: ("Hiker Don", 1),
+              26: ("Black Belt Luke", 1), 28: ("Ace Trainer Grant", 2), 31: ("Battle Girl Brenda", 4),
+              34: ("Pokemon Ranger Steve", 1)},
+    hidden={"64,4": "ULTRA_BALL", "85,9": "PP_UP", "123,14": "RARE_CANDY", "36,31": "YELLOW_SHARD", "120,52": "STAR_PIECE"},
+    rooms={"healer": room(476, {1: {"text": "Ace Trainer in the house", "action": "EVENT", "event": {
+                                    "lines": ["Coming back from the Giant Chasm? You look worn out. Let your Pokemon rest a while.",
+                                              "Your Pokemon are fully healed! Good luck on Victory Road."], "heal": True}},
+                                0: _say("Audino", "Audino: Dabun!"),
+                                2: _say("Larvitar", "Larvitar: Gugyu!")}, {}, (118, 67)),
+           "old_man": room(477, {0: {"text": "Old man by the waterfall", "action": "EVENT", "event": {
+                                     "lines": ["You waded all the way over here? Then you've the spirit of a real Trainer.",
+                                               "My Haxorus and I are too old for the League now. Take this.",
+                                               "{player_name} received TM125 Flamethrower!"],
+                                     "gift_item": {"TM125": 1}, "flag": "b2_r23_tm35",
+                                     "done": ["Flamethrower burns hot. Use it well at the League."]}},
+                                 1: _say("Haxorus", "Haxorus: Gugyagyaa!")}, {}, (123, 19)),
+           "grotto": grotto_room(11, (101, 71))},
+    inside={"118,67": "healer", "123,19": "old_man", "101,71": "grotto"},
+    title="Route 23")
+_doors(ROUTE_23, ROUTE_23["inside"])
+_wall(ROUTE_23, 0, 32, 95, 95)   # (Route 23 is an L: the west side's lower three quarters are no map)
+for _x, _y in ((49, 10), (10, 12), (32, 12), (61, 12), (101, 59), (113, 80)):   # (Black 2's small trees: Cut)
+    _put_char(ROUTE_23, _x, _y, "2")
+for _x, _y in ((43, 19), (36, 20), (32, 24), (43, 24), (34, 29), (46, 31)):   # (the six boulders of the puzzle: Strength)
+    _put_char(ROUTE_23, _x, _y, "b")
+
+
+def _decks(m, z, box, rise=2.0):
+    """Bridges the walk grid doesn't mark (Route 23's two over the river valley, 11-24): an open tile raised over open ground
+    on both sides (Black 2's own heights, geo "lift") is a deck: ";" east-west (lower ground north and south of it), "|"
+    north-south (lower ground east and west): along it on top, across it underneath (src/dungeon/art.py BRIDGES)."""
+    L, rows = GEO[str(z)]["lift"], m["art"]
+    x0, y0, x1, y1 = box
+    put = []
+    for y in range(max(1, y0), min(len(rows) - 1, y1 + 1)):
+        for x in range(max(1, x0), min(len(rows[0]) - 1, x1 + 1)):
+            if rows[y][x] != "." or L[y][x] < rise:
+                continue
+            def low(dx, dy, h=L[y][x]):   # (across the deck, up to 3 tiles wide: lower open ground past its edge)
+                for k in range(1, 4):
+                    qx, qy = x + dx * k, y + dy * k
+                    if not (0 <= qy < len(rows) and 0 <= qx < len(rows[0])) or rows[qy][qx] not in '."':
+                        return False
+                    if L[qy][qx] < h - rise:
+                        return True
+                    if abs(L[qy][qx] - h) > 0.6:
+                        return False
+                return False
+            if low(0, -1) and low(0, 1):
+                put.append((x, y, ";"))
+            elif low(-1, 0) and low(1, 0):
+                put.append((x, y, "|"))
+    for x, y, ch in put:
+        _put_char(m, x, y, ch)
+    return len(put)
+
+
+_decks(ROUTE_23, 475, (64, 0, 95, 31))
+ROUTE_23["edge_to"] = {"%d,5" % x: [79 + x - 75, 56] for x in range(75, 78)}
+ROUTE_23["split"] = True
+
+# ------------------------------------------------------------------------------------------------- Victory Road, outside
+VR_N_SCENE = [
+    {"trigger": {"zone": [77, 50, 83, 50]}, "condition": ["not:b2_vr_waterfall"], "flag": "b2_vr_waterfall",
+     "cast": [{"sheet": "b2_c103.png", "from": [80, 44], "to": "player", "stay": True, "lines": [
+         "N: ...So you came. The Pokemon League is past this road.",
+         "N: Your Pokemon are telling me how much they trust you. I'd like to see where that trust takes you.",
+         "N: Take this. Victory Road's rivers run fast: Waterfall will carry you up them.",
+         "{player_name} received HM05 Waterfall!",
+         "N: The League is waiting. And so is something important. Farewell."], "leave": [80, 40]}],
+     "event": {"flag": "b2_vr_waterfall", "gift_item": {"HM_WATERFALL": 1}}},
+    {"trigger": {"zone": [40, 46, 40, 48]}, "condition": ["not:b2_badge_check"], "flag": "b2_badge_check", "cast": [],
+     "call": ["This is the Badge Check Gate. Only Trainers with all eight Badges may pass.",
+              "Basic Badge... confirmed. Toxic Badge... confirmed. Insect Badge... confirmed. Bolt Badge... confirmed.",
+              "Quake Badge... confirmed. Jet Badge... confirmed. Legend Badge... confirmed. Wave Badge... confirmed.",
+              "All eight Badges confirmed! The gates sank into the ground. Go on, to Victory Road!"]}]
+VR_CENTER = room(602, {1: {"text": "Pokémon Center", "action": "HEAL"},
+                       7: {"text": "Mr. Medal", "action": "EVENT", "event": {"medal_rally": True}},
+                       4: _say("Ace Trainer resting", "Victory Road wears you out. I'm resting up before the last stretch."),
+                       5: _say("Ranger at the table", "Bring Cut, Surf, Strength and Waterfall. You'll need every one of them in there."),
+                       2: _say("Man by the window", "Every Trainer who reaches the League passed through this Center."),
+                       3: _say("Woman by the window", "The League's Pokemon Center is past Victory Road. Good luck!")}, {}, (43, 14))
+VR_OUTSIDE = route(
+    573, {1: _ball("Poke Ball by the ruins", "TM289", "b2_vr_tm01", name="TM289 Hone Claws"),
+          2: _ball("Poke Ball in the ruins' north", "STAR_PIECE", "b2_vr_star_piece", name="a Star Piece"),
+          3: _ball("Poke Ball in the ruins' south", "PP_UP", "b2_vr_pp_up", name="a PP Up")},
+    {},
+    exits={"^": ("VICTORY_ROAD_CAVE_1F", [(x, 13) for x in range(28, 35)]), "v": ("UNOVA_ROUTE_23", [(x, 56) for x in range(79, 82)])},
+    hidden={"42,28": "DUSK_STONE", "54,30": "IRON"}, scenes=VR_N_SCENE,
+    rooms={"center": VR_CENTER}, inside={"43,14": "center"}, title="Victory Road")
+_doors(VR_OUTSIDE, VR_OUTSIDE["inside"])
+VR_OUTSIDE["edge_to"] = dict({"%d,13" % x: [50 + x - 28, 58] for x in range(28, 35)}, **{"%d,56" % x: [75 + x - 79, 5] for x in range(79, 82)})
+
+# ------------------------------------------------------------------------------------------------- Victory Road, the caves
+_VR_EDGES = {   # (each door to its partner, from Black 2's warp table: unova_map_tools g5map events, offsets by zone)
+    587: {"%d,58" % x: [28 + x - 50, 13] for x in range(50, 57)} | {"%d,13" % x: [17 + x - 7, 24] for x in range(7, 14)}
+         | {"23,2": [65, 27], "34,4": [81, 27], "35,4": [82, 27], "36,4": [83, 27]},
+    588: {"%d,24" % x: [7 + x - 17, 13] for x in range(17, 24)} | {"10,3": [7, 28], "11,3": [7, 28]},
+    589: {"7,7": [6, 27], "31,7": [30, 27], "57,8": [57, 27], "7,28": [10, 3], "81,27": [34, 4], "82,27": [35, 4], "83,27": [36, 4],
+          "65,27": [23, 2]},
+    590: {"30,1": [13, 30], "5,6": [16, 47], "56,6": [53, 47], "6,27": [7, 7], "30,27": [31, 7], "57,27": [57, 8]},
+    591: {"13,30": [30, 1], "24,7": [29, 21]},
+    592: {"16,47": [5, 6], "53,47": [56, 6], "29,21": [24, 7], "44,18": [28, 12], "26,31": [12, 21], "33,1": [22, 13]},
+    593: {"28,12": [44, 18], "12,21": [26, 31]},
+    228: {"22,13": [33, 1]}}
+
+
+def _vr(z, people, exits, trainers=None, boulders=(), trees=(), **kw):
+    m = route(z, people, {}, exits=exits, trainers=trainers, title="Victory Road", **kw)
+    for _x, _y in boulders:
+        _put_char(m, _x, _y, "b")
+    for _x, _y in trees:
+        _put_char(m, _x, _y, "2")
+    m["edge_to"] = dict(_VR_EDGES.get(z) or _VR_EDGES.get({594: 587, 595: 589}.get(z)) or {})
+    m["split"] = True   # (Victory Road's caves are parts joined through the other places: each part from its own door)
+    return m
+
+
+_1F_EXITS = {"v": ("VICTORY_ROAD_UNOVA", [(x, 58) for x in range(50, 57)]), "<": ("VICTORY_ROAD_GROVE", [(x, 13) for x in range(7, 14)]),
+             "^": ("VICTORY_ROAD_RIVER", [(23, 2), (34, 4), (35, 4), (36, 4)])}
+VR_1F = _vr(587, {8: _ball("Poke Ball past the Veterans", "TM147", "b2_vr_tm93", name="TM147 Wild Charge")}, dict(_1F_EXITS),
+            trainers={2: ("Veteran Claude", 4), 3: ("Veteran Cecile", 4), 4: ("Ace Trainer Billy", 4), 5: ("Ace Trainer Jamie", 6),
+                      6: ("Psychic Alia", 6), 7: ("Psychic Al", 5)}, boulders=((53, 19), (13, 33)))
+VR_1F["story_maps"] = [{"when": _W2, "map": _vr(
+    594, {8: _ball("Poke Ball past the Veterans", "TM147", "b2_vr_tm93", name="TM147 Wild Charge")}, dict(_1F_EXITS),
+    trainers={2: ("Veteran Claude", 3), 3: ("Veteran Cecile", 3), 4: ("Ace Trainer Jamie", 4), 5: ("Psychic Al", 5),
+              6: ("Psychic Alia", 4), 7: ("Ace Trainer Billy", 3)}, boulders=((50, 12), (19, 37)))}]
+
+_GROVE_EXITS = {"v": ("VICTORY_ROAD_CAVE_1F", [(x, 24) for x in range(17, 24)]), "^": ("VICTORY_ROAD_RIVER", [(10, 3), (11, 3)])}
+_GROVE_ITEMS = {5: _ball("Poke Ball in the dark grass", "ULTRA_BALL", "b2_vr_grove_ultra", name="an Ultra Ball"),
+                4: _ball("Poke Ball past the tree", "FULL_RESTORE", "b2_vr_grove_full_restore", name="a Full Restore")}
+VR_GROVE = _vr(588, dict(_GROVE_ITEMS), dict(_GROVE_EXITS), trainers={6: ("Ace Trainer Chandra", 5)}, trees=((13, 12), (6, 18)))
+VR_GROVE["story_maps"] = [{"when": _W2, "map": _vr(588, dict(_GROVE_ITEMS), dict(_GROVE_EXITS),
+                                                   trainers={2: ("Ace Trainer Beckett", 6), 3: ("Ace Trainer Shelly", 5)},
+                                                   trees=((13, 12), (6, 18)))}]
+
+_RIVER_EXITS = {"^": ("VICTORY_ROAD_CAVE_2F", [(7, 7), (31, 7), (57, 8)]), "<": ("VICTORY_ROAD_GROVE", [(7, 28)]),
+                "v": ("VICTORY_ROAD_CAVE_1F", [(65, 27), (81, 27), (82, 27), (83, 27)])}
+
+
+def _river_items(a, b, c, d, e):
+    return {a: _ball("Poke Ball by the bridge", "MAX_REPEL", "b2_vr_river_max_repel", name="a Max Repel"),
+            b: _ball("Poke Ball on the bank", "ESCAPE_ROPE", "b2_vr_river_escape_rope", name="an Escape Rope"),
+            c: _ball("Poke Ball in the west", "MAX_REPEL", "b2_vr_river_max_repel_2", name="a Max Repel"),
+            d: _ball("Poke Ball up the stairway", "ULTRA_BALL", "b2_vr_river_ultra", name="an Ultra Ball"),
+            e: _ball("Poke Ball in the far east", "FULL_RESTORE", "b2_vr_river_full_restore", name="a Full Restore")}
+
+
+VR_RIVER = _vr(589, _river_items(6, 8, 9, 7, 10), dict(_RIVER_EXITS),
+               trainers={0: ("Backpacker Mae", 4), 1: ("Doctor Logan", 1), 2: ("Ace Trainer Shelly", 5), 3: ("Ace Trainer Beckett", 5),
+                         4: ("Veteran Cathy", 2), 5: ("Ace Trainer Pierce", 5)})
+VR_RIVER["story_maps"] = [{"when": _W2, "map": _vr(
+    595, _river_items(5, 7, 8, 6, 9), dict(_RIVER_EXITS),
+    trainers={0: ("Backpacker Mae", 4), 1: ("Doctor Logan", 1), 2: ("Veteran Cathy", 3), 3: ("Ace Trainer Pierce", 3),
+              4: ("Ace Trainer Chandra", 5)})}]
+
+_2F_EXITS = {"^": ("VICTORY_ROAD_2F_BACK", [(30, 1)]), "<": ("VICTORY_ROAD_MOUNTAINSIDE", [(5, 6), (56, 6)]),
+             "v": ("VICTORY_ROAD_RIVER", [(6, 27), (30, 27), (57, 27)])}
+_2F_HIDDEN = {"58,20": "MAX_REVIVE", "15,26": "FULL_RESTORE"}
+VR_2F = _vr(590, {}, dict(_2F_EXITS), hidden=dict(_2F_HIDDEN),
+            trainers={4: ("Ace Trainer Webster", 4), 5: ("Ace Trainer Shanta", 4), 6: ("Veteran Abraham", 4),
+                      7: ("Pokemon Ranger Elle", 1), 8: ("Pokemon Ranger Eddie", 1)}, boulders=((31, 9), (25, 8)))
+VR_2F["story_maps"] = [{"when": _W2, "map": _vr(
+    590, {}, dict(_2F_EXITS), hidden=dict(_2F_HIDDEN),
+    trainers={6: ("Veteran Abraham", 4), 7: ("Pokemon Ranger Elle", 1), 8: ("Pokemon Ranger Eddie", 1),
+              9: ("Ace Trainer Shanta", 4), 10: ("Ace Trainer Webster", 4)}, boulders=((27, 10), (33, 7)))}]
+
+VR_2F_BACK = _vr(591, {1: _ball("Poke Ball on the platform", "PP_MAX", "b2_vr_pp_max", name="a PP Max"),
+                       0: _ball("Poke Ball by the pool", "RARE_CANDY", "b2_vr_rare_candy", name="a Rare Candy")},
+                 {"v": ("VICTORY_ROAD_CAVE_2F", [(13, 30)]), "^": ("VICTORY_ROAD_MOUNTAINSIDE", [(24, 7)])},
+                 hidden={"29,20": "MAX_ELIXIR", "12,21": "RED_SHARD"})
+
+VR_MOUNTAIN = _vr(592, {6: _ball("Poke Ball below the cliff", "DRAGON_FANG", "b2_vr_dragon_fang", name="a Dragon Fang"),
+                        8: _ball("Poke Ball down the mountainside", "MAX_REVIVE", "b2_vr_max_revive", name="a Max Revive"),
+                        7: _ball("Poke Ball by Black Belt Martell", "MAX_ELIXIR", "b2_vr_max_elixir", name="a Max Elixir"),
+                        9: _say("Zoroark", "The Zoroark glares at you and won't move from the cave mouth.",
+                                "(It might move once you're the Champion.)", condition=["not:beat_unova_champion"])},
+                  {"v": ("VICTORY_ROAD_CAVE_2F", [(16, 47), (53, 47)]), "b": ("VICTORY_ROAD_2F_BACK", [(29, 21)]),
+                   "^": ("VICTORY_ROAD_3F", [(44, 18), (26, 31)]), "t": ("VICTORY_ROAD_TUNNEL", [(33, 1)]),
+                   "z": ("CHALLENGERS_CAVE", [(35, 31)])},
+                  trainers={0: ("Veteran Sterling", 4), 1: ("Ace Trainer Caroll", 3), 2: ("Black Belt Martell", 1),
+                            3: ("Ace Trainer Elmer", 3), 4: ("Battle Girl Chalina", 3), 5: ("Veteran Portia", 5)},
+                  hidden={"21,22": "RARE_CANDY", "45,23": "NORMAL_GEM"})
+# (the Zoroark's cave, 596 -> N's Castle, is batch 11's; till then its door leads to Black and White's Challenger's Cave, a menu
+#  place Black 2 has no warp to, so the post-game keeps a way there; after the League only)
+VR_MOUNTAIN["gated_exits"] = {"CHALLENGERS_CAVE": ["beat_unova_champion"]}
+VR_MOUNTAIN["barred"] = [{"tiles": [[35, 31]], "until": {"flag_condition": "beat_unova_champion"}, "look": "unseen",
+                          "lines": ["A Zoroark is guarding the way in. It won't budge."]}]
+
+VR_3F = _vr(593, {1: _ball("Poke Ball down the stairway", "DRAGON_SCALE", "b2_vr_dragon_scale", name="a Dragon Scale")},
+            {"v": ("VICTORY_ROAD_MOUNTAINSIDE", [(28, 12), (12, 21)])}, trainers={0: ("Veteran Hugo", 5)})
+
+_HUGH_55 = dict(_b2(684), name="{rival_name}", **{"class": "PKMN_TRAINER"}, sprite="hugh.png",
+                team_choice={s: _TEAMS[str(t)]["team"] for s, t in zip(("495", "498", "501"), (684, 685, 686))},
+                movesets={k: v for t in (684, 685, 686) for k, v in (_TEAMS[str(t)].get("movesets") or {}).items()},
+                held_items={k: v for t in (684, 685, 686) for k, v in (_TEAMS[str(t)].get("held_items") or {}).items()},
+                rewards=_prize(684, TM126=1),
+                dialogue={"player_won": ["{rival_name}: ...I see. You're the strongest Trainer I know.",
+                                         "{rival_name}: Thanks to you, my sister's Pokemon came home. This is a thank-you.",
+                                         "{rival_name}: The League's past this tunnel. Show them what you showed me!"]})
+VR_TUNNEL = _vr(228, {}, {"v": ("VICTORY_ROAD_MOUNTAINSIDE", [(22, 13)]), "^": ("UNOVA_POKEMON_LEAGUE", [(9, 10)])},
+                scenes=[{"trigger": {"zone": [12, 6, 12, 8]}, "condition": ["not:b2_vr_hugh"], "flag": "b2_vr_hugh_met",
+                         "cast": [{"sheet": "b2_hugh.png", "from": [22, 12], "to": "player", "stay": True, "lines": [
+                             "{rival_name}: {player_name}! Wait up!",
+                             "{rival_name}: Before you take on the League... battle me. I want to know how far I've come, "
+                             "and how far you have!"]}],
+                         "event": {"flag": "b2_vr_hugh", "battle": _HUGH_55}}])
+VR_TUNNEL["barred"] = [{"tiles": [[9, 10]], "until": {"flag_condition": "b2_vr_hugh"}, "look": "unseen",
+                        "lines": ["Footsteps are running up behind you..."]}]
+
+
 MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": FLOCCESY, "UNOVA_ROUTE_20": ROUTE_20,
         "FLOCCESY_RANCH_OUTSIDE": RANCH_OUTSIDE, "FLOCCESY_RANCH": RANCH, "PLEDGE_GROVE": PLEDGE_GROVE,
         "VIRBANK_CITY": VIRBANK, "VIRBANK_COMPLEX_OUTSIDE": COMPLEX_OUTSIDE, "VIRBANK_COMPLEX": COMPLEX, "POKESTAR_STUDIOS": POKESTAR,
@@ -6844,4 +7097,7 @@ MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": 
         "UNOVA_ROUTE_9": ROUTE_9, "MARINE_TUBE": MARINE_TUBE_MAP,   # (batch 8b)
         "HUMILAU_CITY": HUMILAU, "UNOVA_ROUTE_22": ROUTE_22, "UNOVA_ROUTE_21": ROUTE_21, "SEASIDE_CAVE": SEASIDE,   # (batch 9a)
         "SEASIDE_CAVE_B1F": SEASIDE_B1F, "GIANT_CHASM": CHASM, "GIANT_CHASM_FOREST": FOREST,
-        "GIANT_CHASM_CAVE": CHASM_CAVE}
+        "GIANT_CHASM_CAVE": CHASM_CAVE,
+        "UNOVA_ROUTE_23": ROUTE_23, "VICTORY_ROAD_UNOVA": VR_OUTSIDE, "VICTORY_ROAD_CAVE_1F": VR_1F, "VICTORY_ROAD_GROVE": VR_GROVE,
+        "VICTORY_ROAD_RIVER": VR_RIVER, "VICTORY_ROAD_CAVE_2F": VR_2F, "VICTORY_ROAD_2F_BACK": VR_2F_BACK,
+        "VICTORY_ROAD_MOUNTAINSIDE": VR_MOUNTAIN, "VICTORY_ROAD_3F": VR_3F, "VICTORY_ROAD_TUNNEL": VR_TUNNEL}   # (batch 10a)

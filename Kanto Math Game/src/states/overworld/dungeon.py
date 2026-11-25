@@ -923,6 +923,10 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         if getattr(story, "last_area_key", None) in _ferry:   # (a ferry: the port you boarded at, so its sailor still knows where you're bound after a reload; a loaded save: none)
             story.story_flags[f"ferry_from_{self.area_key}"] = story.last_area_key
         self.recipe = recipe_for(game, self.area_key)
+        if getattr(story, "last_area_key", None) != self.area_key:   # (a floor's "boxes_fresh": its pushed boulders back where they
+            for _i, _f in enumerate((self.recipe.get("art") or {}).get("floors") or []):   # started each time you come into the place,
+                if _f.get("boxes_fresh"):                                               # as Platinum's Strength boulders; Sinnoh 11-24)
+                    story.story_flags.pop(f"boxes_{self.area_key}_{_i}", None)
         _hms = __import__("src.world.hms", fromlist=["usable"])
         if self.recipe.get("dark") and (_hms.usable(story, "HM_FLASH") or _hms.by_move(story, "HM_FLASH")):  # (Flash lights a dark cave:
             self.recipe = dict(self.recipe, fog=False, dark_radius=None)                                     #  the HM, or the TM's move in Gen 5+)
@@ -6015,7 +6019,8 @@ class DungeonState(WildWalkUps, RouteLive, OverworldBattles, PlayState):
         story = self.game.story_manager
         step = next((s for s in mission["steps"] if s.get("area", guide.mission_target(self.game, mission)) == self.area_key
                      and not (s.get("done") and guide._ok(story, s["done"])) and guide._ok(story, s.get("when"))), None)
-        fl = step.get("floor", 0 if self.run.n_floors == 1 else None) if step else None
+        _rooms = (self.run.recipe.get("art") or {}).get("room_floors")   # (a route with rooms: its ground is floor 0, the rooms the rest -
+        fl = step.get("floor", 0 if self.run.n_floors == 1 or _rooms else None) if step else None   #  a step with no floor is outdoors: Route 4's Colress, 11-24)
         if step and step.get("room"):  # (a room of the map, walked as a floor of its own: the S.S. Anne's Captain's cabin)
             fl = ((self.run.recipe.get("art") or {}).get("room_floors") or {}).get(step["room"])
         if fl is None or not 0 <= fl < self.run.n_floors or not step.get("at"):

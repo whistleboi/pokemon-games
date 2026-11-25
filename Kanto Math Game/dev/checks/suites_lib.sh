@@ -4,6 +4,7 @@ C=dev/checks
 O=$C/out
 LIST=$C/suites.txt
 export PYTHONIOENCODING=utf-8
+export PYTHONUNBUFFERED=1   # (a suite stopped by its time-out still shows its last line: Checks C3, 11-24)
 
 _rows() { sed 's/\r$//; s/#.*//' "$LIST" | awk 'NF >= 2 && $1 != "alias" && $1 != "gone"'; }
 _gone() { sed 's/\r$//' "$LIST" | awk -v n="$1" '$1 == "gone" && $2 == n { $1 = $2 = ""; sub(/^ +/, ""); print; f = 1 } END { exit !f }'; }
