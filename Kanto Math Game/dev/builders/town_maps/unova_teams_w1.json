@@ -81,6 +81,38 @@
    505
   ]
  },
+ "66": {
+  "b2_id": 66,
+  "class": "RICH_BOY",
+  "levels": [
+   25
+  ],
+  "name": "Rich Boy Cody",
+  "rewards": {
+   "balls": 2
+  },
+  "sprite": "b2_rich_boy.png",
+  "team": [
+   522
+  ]
+ },
+ "68": {
+  "b2_id": 68,
+  "class": "LADY",
+  "levels": [
+   24,
+   24
+  ],
+  "name": "Lady Magnolia",
+  "rewards": {
+   "balls": 3
+  },
+  "sprite": "b2_lady.png",
+  "team": [
+   587,
+   587
+  ]
+ },
  "9": {
   "b2_id": 9,
   "class": "WAITER",

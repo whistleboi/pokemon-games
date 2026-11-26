@@ -8990,8 +8990,8 @@ CAS_PEOPLE = {
 OUTSIDE_W1.update({251: 249})
 PAST_CAS_ROOMS = {30: "plaza", 31: "gym_street", 32: "route4_street", 33: "mode_street", 34: "castelia_street",
                   35: "narrow_street", 36: "liberty_pier", 37: "unity_pier", 38: "prime_pier", 39: "cruise_dock", 41: "center",
-                  29: "gym", 252: "bridge_gate"}
-PAST_CAS_AREAS = {249: "PAST_SKYARROW_BRIDGE"}
+                  29: "gym", 252: "bridge_gate", 51: "gate_route4"}
+PAST_CAS_AREAS = {249: "PAST_SKYARROW_BRIDGE", 326: "PAST_UNOVA_ROUTE_4"}   # (51 / 326: part 6)
 
 
 def _open_honey(m, inside=(1, 1, 47, 45)):
@@ -9071,6 +9071,8 @@ def _past_castelia():
         rooms["center"] = castelia_room(41, {6: {"text": "Pokémon Center", "action": "HEAL"}, **CAS_PEOPLE.get(41, {})}, {},
                                         extra_people=[(2, 13, PAST_HOME)], title="Pokémon Center")
         rooms["bridge_gate"] = castelia_room(252, CAS_PEOPLE.get(252, {}), {}, title="Bridge Gate")
+        rooms["gate_route4"] = castelia_room(51, {0: _say("Woman in the gate", "Route 4 is long! Be careful if you plan to follow it!"),
+                                                  1: _say("Gate guard", "Nimbasa City is at the end of Route 4.")}, {}, title="Castelia Gate")
         gym = castelia_room(29, {
             9: [{"text": "Burgh", "action": "EVENT", "condition": ["not:past_badge_insect"], "event": {
                     "lines": ["Burgh: My bug Pokemon are scurrying with excitement about getting to battle you. Let's get straight to it!"],
@@ -9122,6 +9124,155 @@ _pw = PAST_M["pw"]
 _pw["exits"]["^"] = "PAST_SKYARROW_BRIDGE"
 for _x in range(72, 76):
     _put_char(_pw, _x, 23, "^")
+
+
+# ---- 12c, part 6 (11-25): two years ago, Route 4 (White's own - BW's road works, north straight to Nimbasa's south gate 90;
+# the houses 327 / 328; the desert turn-off as Black 2's), the Desert Resort (157, its gate 159, 158), Relic Castle's top two
+# floors (160 / 161; the deeper floors and the desert's second entrance 190 wait), and Nimbasa (62; 65 the Center; 90 the
+# south gate; 64 the amusement park; 63 Elesa's Gym - White's roller coaster: its four car stops (the file's triggers) carry
+# you platform to platform as pads, to Elesa at the top; Black 2's team for her (Nimbasa's Leader in Black 2 too); the Bolt
+# Badge a keepsake). The road north of Route 4's works opens with the Insect Badge (BW: the worker sends you to Burgh first).
+# Nimbasa's other buildings and its west / east gates (Routes 5 / 16) wait for a later part.
+OUTSIDE_W1.update({327: 326, 328: 326, 159: 157, 161: 160, 65: 62, 64: 62, 63: -1, 90: 62})
+
+
+def _past_east():
+    out = {}
+    r4 = route(326, {
+        8: [_say("Worker on the road", "Hey! Trainer! There's a bit of a problem up ahead, you can't pass now. Go challenge the "
+                 "Castelia City Gym!", condition=["not:past_badge_insect"]),
+            _say("Worker on the road ", "Deep in the desert ahead, at the Desert Resort, there are ruins that have become a little "
+                 "tourist spot!", condition=["past_badge_insect"])],
+        9: _say("Woman by the road", "Ruins buried in the desert... It's like a grand adventure in a story."),
+        10: _say("Man by the freeway", "When I look at the freeway, I feel exhilarated!"),
+        20: _say("Hiker in the sand", "See how some sand is darker? Pokemon are hiding in the darker sand!"),
+        4: _pball("Poke Ball by the road", "SUPER_POTION", "r4_super_potion", "a Super Potion"),
+        12: _pball("Poke Ball in the south", "X_ACCURACY", "r4_x_accuracy", "an X Accuracy"),
+        13: _pball("Poke Ball by the west houses", "GREAT_BALL", "r4_great_ball", "a Great Ball"),
+        14: _pball("Poke Ball in the sand", "BURN_HEAL", "r4_burn_heal", "a Burn Heal"),
+        17: _pball("Poke Ball by the works", "ETHER", "r4_ether", "an Ether"),
+        18: _pball("Poke Ball by the desert road", "TM276", "r4_tm276", "TM276 Torment"),
+        19: _pball("Poke Ball in the middle", "HYPER_POTION", "r4_hyper_potion", "a Hyper Potion")},
+        {}, exits={"v": ("PAST_CASTELIA_CITY", [(x, 119) for x in range(45, 48)]), "^": ("PAST_NIMBASA_CITY", [(x, 9) for x in range(45, 48)]),
+                   "<": ("PAST_DESERT_RESORT_ENTRANCE", [(x, 32) for x in range(15, 20)])},
+        trainers={0: "Fisherman Andrew", 1: "Fisherman Hubert", 2: "Backpacker Anna", 3: "Backpacker Waylon", 5: "Worker Shelby",
+                  6: "Backpacker Jerome", 7: "Backpacker Jill", 15: "Worker Scott", 16: "Parasol Lady April", 21: "Backpacker Keane",
+                  22: "Worker Gus", 23: "Worker Zack"},
+        hidden={"30,89": "ULTRA_BALL", "14,72": "BURN_HEAL", "18,118": "PEARL", "22,64": "ETHER", "51,54": "HYPER_POTION"},
+        rooms={"house_s": room(327, {0: _say("Woman in the house", "If you're that full of energy, you can go anywhere, even in a "
+                                             "sandstorm!"), 1: _say("Pokemon in the house", "Glugluglug!")}, {}, (38, 97)),
+               "house_w": room(328, {0: _say("Worker in the house", "Sandstorms are terrible! But Rock, Ground and Steel types "
+                                             "weather them without damage.")}, {}, (10, 56))},
+        inside={"38,97": "house_s", "10,56": "house_w"}, title="Route 4 (two years ago)")
+    _doors(r4, r4["inside"])
+    _wall(r4, 0, 0, 31, 31)
+    r4["split"] = True
+    r4["gated_exits"] = {"PAST_NIMBASA_CITY": ["past_badge_insect"]}
+    for r in ("house_s", "house_w"):
+        r4["rooms"][r]["title"] = "House"
+    out["r4"] = r4
+
+    de = route(157, {0: _say("School Kid by the gate", "Go through the gate and head straight, and you'll find the ruins' newly "
+                             "found entrance."),
+                     1: _say("Woman by the gate", "I'm going to see the ruins, but I'm afraid of getting lost. The desert's huge!")},
+               {}, exits={"v": ("PAST_UNOVA_ROUTE_4", [(x, 31) for x in range(47, 52)])},
+               rooms={"gate": room(159, {0: _say("Gate guard", "The Desert Resort is especially known for the Relic Castle."),
+                                         1: _say("School Kid in the gate", "Wild Pokemon turn up almost anywhere in the desert, "
+                                                 "but they don't hide in the pale sand!")},
+                                   {}, (18, 8), exits_extra={158: ("^", "PAST_DESERT_RESORT")})},
+               inside={"18,8": "gate"}, title="Desert Resort (two years ago)")
+    de["rooms"]["gate"]["title"] = "Route Gate"
+    _doors(de, de["inside"])
+    out["de"] = de
+    out["desert"] = route(158, {
+        0: _say("Black Belt in the sand", "I came to the Desert Resort to train... but there are so many Ground types, I'm in tatters."),
+        1: {"text": "Hiker with Soft Sand", "action": "EVENT", "event": {
+            "lines": ["If a Pokemon holds this Soft Sand, the power of its Ground-type moves goes up! Take it!",
+                      "You received a Soft Sand!"], "gift_item": {"SOFT_SAND": 1}, "flag": "w1_desert_soft_sand",
+            "done": ["They say the Relic Castle is a city built by the hero of old and the dragon that went with them."]}},
+        10: _say("Traveler from Hoenn", "A sea of sand! I don't need Go-Goggles here! I came all the way from Hoenn."),
+        11: _pball("Poke Ball in the north-west", "HEART_SCALE", "desert_heart_scale", "a Heart Scale"),
+        12: _pball("Poke Ball in the sand", "SUPER_POTION", "desert_super_potion", "a Super Potion"),
+        20: _pball("Poke Ball in the east", "BLACK_GLASSES", "desert_black_glasses", "a Black Glasses"),
+        21: _pball("Poke Ball by the castle", "FRESH_WATER", "desert_fresh_water", "a Fresh Water"),
+        22: _pball("Poke Ball in the south-west", "FIRE_STONE", "desert_fire_stone", "a Fire Stone"),
+        23: _pball("Poke Ball in the far west", "TM036", "desert_tm036", "TM036 Rock Tomb"),
+        24: _pball("Poke Ball in the middle", "STARDUST", "desert_stardust", "a Stardust")},
+        {}, exits={"v": ("PAST_DESERT_RESORT_ENTRANCE", [(x, 83) for x in range(82, 85)]), "^": ("PAST_RELIC_CASTLE", [(61, 29)])},
+        trainers={13: "Backpacker Kelsey", 14: "Backpacker Liz", 15: "Psychic Cybil", 16: "Backpacker Elaine", 17: "Psychic Low",
+                  18: "Backpacker Nate", 19: "Psychic Gaven", 25: "Pokemon Ranger Jaden", 26: "Pokemon Ranger Mylene",
+                  27: "Doctor Jerry"},
+        hidden={"35,28": "ETHER", "81,26": "HYPER_POTION", "24,56": "STARDUST", "44,86": "RARE_CANDY"},
+        title="Desert Resort (two years ago)")
+    out["desert"]["split"] = True
+    rc = route(160, {4: _say("Scientist in the ruins", "Two things I've learned about quicksand: walk through the middle and you "
+                             "fall. Run through it, and you fall too!")},
+               {}, exits={"v": ("PAST_DESERT_RESORT", [(21, 21)])},
+               trainers={0: "Psychic Dua", 1: "Psychic Perry"},
+               rooms={"b1f": room(161, {2: _pball("Poke Ball in the sand", "REVIVE", "rc_revive", "a Revive")}, {}, (20, 3))},
+               inside={"20,3": "b1f", "4,17": "b1f"}, title="Relic Castle (two years ago)")
+    rc["rooms"]["b1f"]["title"] = "Relic Castle B1F"
+    rc["rooms"]["b1f"]["hidden"] = {"10,10": "ELIXIR"}
+    rc["rooms"]["b1f"]["split"] = True   # (two parts, each from its own way down)
+    _doors(rc, rc["inside"])
+    rc["split"] = True
+    out["rc"] = rc
+
+    # Elesa's Gym: the coaster's four car stops (the file's triggers) carry you up platform by platform; the top one back down
+    gym_pads = [((13, 16), (29, 36)), ((29, 33), (45, 42)), ((46, 41), (28, 10)), ((25, 9), (13, 42))]
+    gym_scenes = [{"trigger": {"zone": [a[0], a[1], a[0], a[1]]}, "cast": [], "room": ["gym", b[0], b[1]],
+                   "call": ["You hop into the roller coaster car... Whoosh!"]} for a, b in gym_pads]
+    gym_scenes.append({"trigger": {"zone": [6, 41, 6, 41]}, "cast": [], "room": ["gym", 13, 28],
+                       "call": ["You hop into the roller coaster car... Whoosh!"]})
+    gym = room(63, {1: _say("Gym guide", "Would you ever have guessed this Gym is a roller coaster? Hop in a car, and the platforms "
+                            "will take you on!"),
+                    4: _say("Rich Boy by the switch", "If you press the switches, the roller coaster's path will change."),
+                    2: {"text": "Lady Magnolia", "action": "EVENT", "condition": ["not:w1_gym_magnolia"], "event": {
+                        "lines": ["Shall we have a battle on the coaster?"], "battle": _w1(68), "flag": "w1_gym_magnolia"}},
+                    3: {"text": "Rich Boy Cody", "action": "EVENT", "condition": ["not:w1_gym_cody"], "event": {
+                        "lines": ["Whee! Battle me!"], "battle": _w1(66), "flag": "w1_gym_cody"}},
+                    5: [{"text": "Elesa", "action": "EVENT", "condition": ["not:past_badge_bolt"], "event": {
+                            "lines": ["Elesa: What you'd like to do and what your Pokemon would like to do... It's amazing when "
+                                      "they're aligned. Show me!"],
+                            "battle": {"name": "Elesa", "class": "GYM_LEADER", "sprite": "b2_elesa.png", "team": [587, 180, 523],
+                                       "levels": [28, 28, 30], "rewards": {"balls": 4},
+                                       "dialogue": {"player_won": ["Elesa: Well, well... That was electrifying. Take the Bolt Badge!"]}},
+                            "flag": "past_badge_bolt"}},
+                        _say("Elesa ", "Elesa: You were dazzling. That Bolt Badge suits you.", condition=["past_badge_bolt"])]},
+               {}, None, stairs={64: ("v", "ROOM:park")}, scenes=gym_scenes)
+    gym["title"] = "Nimbasa Gym"
+    park = room(64, {0: _say("Clown on the path", "Whooshing, swooshing roller coaster! Whirltwirlwhirltwirl... whoa!"),
+                     1: _say("Clown by the wheel", "Spinning, spinning Ferris wheel! Climbing, climbing Ferris wheel!"),
+                     2: _say("Girl in the park", "Look! Look! It's a clown!"),
+                     3: _say("Woman in the park", "No matter how old you get, amusement parks are always exciting!"),
+                     8: _pball("Poke Ball by the coaster", "X_ATTACK", "nim_x_attack", "an X Attack")},
+                {}, (52, 44), stairs={63: ("^", "ROOM:gym")})
+    park["title"] = "Amusement Park"
+    park["hidden"] = {"60,25": "SUPER_REPEL"}
+    rooms = {"park": park, "gym": gym,
+             "center": _past_center(65, (22, 51), 2, {1: _say("Woman in the Center", "Nimbasa City rocks! A guy near here gave me "
+                                                                "an HM for free!"),
+                                                      4: _say("Lady in the Center", "My beauteous Minccino! It'll be popular in musicals!"),
+                                                      5: _say("Minccino", "Chulululucha!")}),
+             "gate_s": room(90, {0: _say("Man in the gate", "Look at the bulletin board to see what's happening in Nimbasa!"),
+                                 1: _say("Gate guard", "Come from Route 4? Nimbasa City is ahead. Come from Nimbasa? Route 4 is ahead!")},
+                            {}, (45, 63), exits_extra={326: ("v", "PAST_UNOVA_ROUTE_4")})}
+    nim = town(62, {0: _say("Athlete in town", "We athletes and our Pokemon show excellent teamwork! See it at Big Stadium!"),
+                    1: _say("Clown in town", "Nimbasa is a major destination for Pokemon battles!"),
+                    2: _say("Man by the station", "Riding from Gear Station to Anville Town feels a bit like a dream."),
+                    3: _say("Woman in town", "Flashy Nimbasa makes me feel light, as if I were holding an Air Balloon."),
+                    4: _say("Old man in town", "Performers are crowding around Route 5. It fills me with energy!"),
+                    5: _say("Lady in town", "Nimbasa's Gym is in the amusement park! It must have a surprising gimmick!"),
+                    6: _say("Girl in town", "I was a good girl, so I got to go to the amusement park!")},
+               {}, {65: ("center", "center"), 64: ("house", "park"), 90: ("gate", "gate_s", "PAST_UNOVA_ROUTE_4")},
+               rooms, title="Nimbasa City (two years ago)")
+    for r, t in (("center", "Pokémon Center"), ("gate_s", "Nimbasa Gate")):
+        nim["rooms"][r]["title"] = t
+    out["nimbasa"] = nim
+    return out
+
+
+PAST_E = _past(_past_east)
 
 # ======================================================================================================== batch 12b (11-25)
 # Black 2's north after the title (walkthrough part 19): Tubeline Bridge (254: from Route 9's gate 349 to Route 8's gate
@@ -9343,4 +9494,4 @@ MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": 
         "VICTORY_ROAD_RIVER": VR_RIVER, "VICTORY_ROAD_CAVE_2F": VR_2F, "VICTORY_ROAD_2F_BACK": VR_2F_BACK,
         "VICTORY_ROAD_MOUNTAINSIDE": VR_MOUNTAIN, "VICTORY_ROAD_3F": VR_3F, "VICTORY_ROAD_TUNNEL": VR_TUNNEL,   # (batch 10a)
         "UNOVA_POKEMON_LEAGUE": LEAGUE,   # (batch 10b)
-        "UNOVA_ROUTE_14": ROUTE_14, "N_CASTLE": N_CAVE, "SKYARROW_BRIDGE": SKYARROW, "PINWHEEL_FOREST": PINWHEEL, "PINWHEEL_FOREST_OUTSIDE": PINWHEEL_OUT, "NACRENE_CITY": NACRENE, "UNOVA_ROUTE_3": ROUTE_3, "WELLSPRING_CAVE": WELLSPRING, "WELLSPRING_CAVE_B1F": WELLSPRING_B1, "STRIATON_CITY": STRIATON, "DREAMYARD": DREAMYARD_MAP, "DREAMYARD_B1F": DREAMYARD_B1, "UNOVA_ROUTE_2": ROUTE_2, "ACCUMULA_TOWN": ACCUMULA, "UNOVA_ROUTE_1": ROUTE_1, "NUVEMA_TOWN": NUVEMA, "PAST_NUVEMA_TOWN": PAST_NUVEMA, "PAST_UNOVA_ROUTE_1": PAST_W["route1"], "PAST_ACCUMULA_TOWN": PAST_W["accumula"], "PAST_UNOVA_ROUTE_2": PAST_W["route2"], "PAST_STRIATON_CITY": PAST_W["striaton"], "PAST_DREAMYARD": PAST_W["dreamyard"], "PAST_DREAMYARD_B1F": PAST_W["dreamyard_b1"], "PAST_UNOVA_ROUTE_3": PAST_M["route3"], "PAST_WELLSPRING_CAVE": PAST_M["ws"], "PAST_WELLSPRING_CAVE_B1F": PAST_M["ws1"], "PAST_NACRENE_CITY": PAST_M["nacrene"], "PAST_PINWHEEL_FOREST_OUTSIDE": PAST_M["pwo"], "PAST_PINWHEEL_FOREST": PAST_M["pw"], "PAST_CASTELIA_CITY": PAST_C["castelia"], "PAST_SKYARROW_BRIDGE": PAST_C["sky"], "TUBELINE_BRIDGE": TUBELINE, "UNOVA_ROUTE_8": ROUTE_8, "MOOR_OF_ICIRRUS": MOOR, "ICIRRUS_CITY": ICIRRUS, "DRAGONSPIRAL_TOWER": DRAGONSPIRAL, "BLACK_CITY": BLACK_CITY, "WHITE_FOREST": WHITE_FOREST, "ABUNDANT_SHRINE": SHRINE, "UNOVA_ROUTE_15": ROUTE_15, "MARVELOUS_BRIDGE": BRIDGE}   # (batch 11a)
+        "UNOVA_ROUTE_14": ROUTE_14, "N_CASTLE": N_CAVE, "SKYARROW_BRIDGE": SKYARROW, "PINWHEEL_FOREST": PINWHEEL, "PINWHEEL_FOREST_OUTSIDE": PINWHEEL_OUT, "NACRENE_CITY": NACRENE, "UNOVA_ROUTE_3": ROUTE_3, "WELLSPRING_CAVE": WELLSPRING, "WELLSPRING_CAVE_B1F": WELLSPRING_B1, "STRIATON_CITY": STRIATON, "DREAMYARD": DREAMYARD_MAP, "DREAMYARD_B1F": DREAMYARD_B1, "UNOVA_ROUTE_2": ROUTE_2, "ACCUMULA_TOWN": ACCUMULA, "UNOVA_ROUTE_1": ROUTE_1, "NUVEMA_TOWN": NUVEMA, "PAST_NUVEMA_TOWN": PAST_NUVEMA, "PAST_UNOVA_ROUTE_1": PAST_W["route1"], "PAST_ACCUMULA_TOWN": PAST_W["accumula"], "PAST_UNOVA_ROUTE_2": PAST_W["route2"], "PAST_STRIATON_CITY": PAST_W["striaton"], "PAST_DREAMYARD": PAST_W["dreamyard"], "PAST_DREAMYARD_B1F": PAST_W["dreamyard_b1"], "PAST_UNOVA_ROUTE_3": PAST_M["route3"], "PAST_WELLSPRING_CAVE": PAST_M["ws"], "PAST_WELLSPRING_CAVE_B1F": PAST_M["ws1"], "PAST_NACRENE_CITY": PAST_M["nacrene"], "PAST_PINWHEEL_FOREST_OUTSIDE": PAST_M["pwo"], "PAST_PINWHEEL_FOREST": PAST_M["pw"], "PAST_CASTELIA_CITY": PAST_C["castelia"], "PAST_SKYARROW_BRIDGE": PAST_C["sky"], "PAST_UNOVA_ROUTE_4": PAST_E["r4"], "PAST_DESERT_RESORT_ENTRANCE": PAST_E["de"], "PAST_DESERT_RESORT": PAST_E["desert"], "PAST_RELIC_CASTLE": PAST_E["rc"], "PAST_NIMBASA_CITY": PAST_E["nimbasa"], "TUBELINE_BRIDGE": TUBELINE, "UNOVA_ROUTE_8": ROUTE_8, "MOOR_OF_ICIRRUS": MOOR, "ICIRRUS_CITY": ICIRRUS, "DRAGONSPIRAL_TOWER": DRAGONSPIRAL, "BLACK_CITY": BLACK_CITY, "WHITE_FOREST": WHITE_FOREST, "ABUNDANT_SHRINE": SHRINE, "UNOVA_ROUTE_15": ROUTE_15, "MARVELOUS_BRIDGE": BRIDGE}   # (batch 11a)

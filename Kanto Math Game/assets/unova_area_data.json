@@ -2,6 +2,37 @@
   "UNOVA_OLD_ROD_POOL_PERCENTAGES": {"550": 40, "118": 30, "129": 30},
   "UNOVA_GOOD_ROD_POOL_PERCENTAGES": {"550": 35, "118": 25, "592": 25, "339": 15},
   "UNOVA_SUPER_ROD_POOL_PERCENTAGES": {"550": 25, "592": 25, "594": 15, "119": 15, "223": 10, "90": 10},
+  "PAST_RELIC_CASTLE_PERCENTAGES": {
+    "551": 50,
+    "562": 50
+  },
+  "PAST_DESERT_RESORT_PERCENTAGES": {
+    "551": 40,
+    "554": 30,
+    "556": 10,
+    "561": 10,
+    "557": 10
+  },
+  "PAST_DESERT_RESORT_ENTRANCE_PERCENTAGES": {
+    "551": 40,
+    "554": 30,
+    "556": 10,
+    "559": 10,
+    "557": 10
+  },
+  "PAST_UNOVA_ROUTE_4_SUPER_ROD_PERCENTAGES": {
+    "98": 65,
+    "366": 30,
+    "370": 5
+  },
+  "PAST_UNOVA_ROUTE_4_SURF_PERCENTAGES": {
+    "592": 100
+  },
+  "PAST_UNOVA_ROUTE_4_PERCENTAGES": {
+    "551": 40,
+    "554": 40,
+    "559": 20
+  },
   "PAST_PINWHEEL_FOREST_SUPER_ROD_PERCENTAGES": {
     "118": 70,
     "550": 30
@@ -10632,6 +10663,975 @@
     },
     "PAST_CASTELIA_CITY": {"area_type": "town", "route_name": "Castelia City (two years ago)", "region": "UNOVA", "era": "past", "on_enter_event": null, "travel_options": [], "explore_options": []},
     "PAST_SKYARROW_BRIDGE": {"area_type": "dungeon", "route_name": "Skyarrow Bridge (two years ago)", "region": "UNOVA", "era": "past", "on_enter_event": null, "battle_type": "cave", "min_rounds": 1, "trainer_pool": [], "route_menu": []},
+    "PAST_UNOVA_ROUTE_4": {
+      "area_type": "wild_route",
+      "route_name": "Route 4 (two years ago)",
+      "region": "UNOVA",
+      "era": "past",
+      "on_enter_event": null,
+      "battle_type": "field",
+      "wild_pool_percentages": "PAST_UNOVA_ROUTE_4_PERCENTAGES",
+      "min_rounds": 1,
+      "trainer_pool": [
+        {
+          "name": "Fisherman Andrew",
+          "class": "FISHERMAN",
+          "sprite": "b2_fisherman.png",
+          "team": [
+            550,
+            550,
+            550,
+            550
+          ],
+          "levels": [
+            16,
+            16,
+            16,
+            16
+          ],
+          "rewards": {
+            "balls": 5
+          },
+          "b2_id": 42
+        },
+        {
+          "name": "Fisherman Hubert",
+          "class": "FISHERMAN",
+          "sprite": "b2_fisherman.png",
+          "team": [
+            550,
+            550
+          ],
+          "levels": [
+            18,
+            18
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 41
+        },
+        {
+          "name": "Backpacker Anna",
+          "class": "BACKPACKER",
+          "sprite": "b2_backpacker_f.png",
+          "team": [
+            546
+          ],
+          "levels": [
+            19
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 156
+        },
+        {
+          "name": "Backpacker Waylon",
+          "class": "BACKPACKER",
+          "sprite": "b2_backpacker_m.png",
+          "team": [
+            522
+          ],
+          "levels": [
+            19
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 39
+        },
+        {
+          "name": "Worker Shelby",
+          "class": "WORKER",
+          "sprite": "b2_worker.png",
+          "team": [
+            532
+          ],
+          "levels": [
+            19
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 36
+        },
+        {
+          "name": "Backpacker Jerome",
+          "class": "BACKPACKER",
+          "sprite": "b2_backpacker_m.png",
+          "team": [
+            519
+          ],
+          "levels": [
+            19
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 153
+        },
+        {
+          "name": "Backpacker Jill",
+          "class": "BACKPACKER",
+          "sprite": "b2_backpacker_f.png",
+          "team": [
+            548
+          ],
+          "levels": [
+            18
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 40
+        },
+        {
+          "name": "Worker Scott",
+          "class": "WORKER",
+          "sprite": "b2_worker.png",
+          "team": [
+            524,
+            532
+          ],
+          "levels": [
+            18,
+            18
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 35
+        },
+        {
+          "name": "Parasol Lady April",
+          "class": "PARASOL_LADY",
+          "sprite": "b2_parasol_lady.png",
+          "team": [
+            535,
+            535
+          ],
+          "levels": [
+            18,
+            18
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 505
+        },
+        {
+          "name": "Backpacker Keane",
+          "class": "BACKPACKER",
+          "sprite": "b2_backpacker_m.png",
+          "team": [
+            554
+          ],
+          "levels": [
+            19
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 290
+        },
+        {
+          "name": "Worker Gus",
+          "class": "WORKER",
+          "sprite": "b2_worker.png",
+          "team": [
+            524,
+            532,
+            524
+          ],
+          "levels": [
+            17,
+            17,
+            17
+          ],
+          "rewards": {
+            "balls": 4
+          },
+          "b2_id": 291
+        },
+        {
+          "name": "Worker Zack",
+          "class": "WORKER",
+          "sprite": "b2_worker.png",
+          "team": [
+            532
+          ],
+          "levels": [
+            19
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 37
+        }
+      ],
+      "route_menu": [],
+      "wild_tables": {
+        "ALL": {
+          "grass": [
+            [
+              551,
+              0,
+              20,
+              15,
+              15
+            ],
+            [
+              554,
+              0,
+              20,
+              15,
+              15
+            ],
+            [
+              551,
+              0,
+              10,
+              16,
+              16
+            ],
+            [
+              554,
+              0,
+              10,
+              16,
+              16
+            ],
+            [
+              559,
+              0,
+              10,
+              16,
+              16
+            ],
+            [
+              559,
+              0,
+              10,
+              17,
+              17
+            ],
+            [
+              551,
+              0,
+              5,
+              17,
+              17
+            ],
+            [
+              554,
+              0,
+              5,
+              17,
+              17
+            ],
+            [
+              551,
+              0,
+              4,
+              18,
+              18
+            ],
+            [
+              554,
+              0,
+              4,
+              18,
+              18
+            ],
+            [
+              551,
+              0,
+              1,
+              18,
+              18
+            ],
+            [
+              554,
+              0,
+              1,
+              18,
+              18
+            ]
+          ],
+          "surf": [
+            [
+              592,
+              0,
+              60,
+              5,
+              15
+            ],
+            [
+              592,
+              0,
+              30,
+              5,
+              15
+            ],
+            [
+              592,
+              0,
+              5,
+              5,
+              15
+            ],
+            [
+              592,
+              0,
+              4,
+              5,
+              15
+            ],
+            [
+              592,
+              0,
+              1,
+              5,
+              15
+            ]
+          ],
+          "ripple": [
+            [
+              594,
+              0,
+              60,
+              5,
+              20
+            ],
+            [
+              594,
+              0,
+              30,
+              5,
+              20
+            ],
+            [
+              594,
+              0,
+              5,
+              5,
+              20
+            ],
+            [
+              593,
+              0,
+              4,
+              5,
+              20
+            ],
+            [
+              593,
+              0,
+              1,
+              5,
+              20
+            ]
+          ],
+          "fish": [
+            [
+              98,
+              0,
+              60,
+              35,
+              55
+            ],
+            [
+              366,
+              0,
+              30,
+              35,
+              55
+            ],
+            [
+              98,
+              0,
+              5,
+              35,
+              55
+            ],
+            [
+              370,
+              0,
+              4,
+              35,
+              55
+            ],
+            [
+              370,
+              0,
+              1,
+              35,
+              55
+            ]
+          ],
+          "fish_ripple": [
+            [
+              369,
+              0,
+              60,
+              35,
+              60
+            ],
+            [
+              370,
+              0,
+              30,
+              35,
+              60
+            ],
+            [
+              99,
+              0,
+              5,
+              35,
+              70
+            ],
+            [
+              368,
+              0,
+              4,
+              45,
+              70
+            ],
+            [
+              368,
+              0,
+              1,
+              45,
+              70
+            ]
+          ]
+        }
+      },
+      "wild_levels": {
+        "land": [
+          15,
+          18
+        ]
+      },
+      "surf_pool_percentages": "PAST_UNOVA_ROUTE_4_SURF_PERCENTAGES"
+    },
+    "PAST_DESERT_RESORT_ENTRANCE": {
+      "area_type": "wild_route",
+      "route_name": "Desert Resort (two years ago)",
+      "region": "UNOVA",
+      "era": "past",
+      "on_enter_event": null,
+      "battle_type": "field",
+      "wild_pool_percentages": "PAST_DESERT_RESORT_ENTRANCE_PERCENTAGES",
+      "min_rounds": 1,
+      "trainer_pool": [],
+      "route_menu": [],
+      "wild_tables": {
+        "ALL": {
+          "grass": [
+            [
+              551,
+              0,
+              20,
+              19,
+              19
+            ],
+            [
+              554,
+              0,
+              20,
+              19,
+              19
+            ],
+            [
+              551,
+              0,
+              10,
+              20,
+              20
+            ],
+            [
+              554,
+              0,
+              10,
+              20,
+              20
+            ],
+            [
+              556,
+              0,
+              10,
+              20,
+              20
+            ],
+            [
+              559,
+              0,
+              10,
+              20,
+              20
+            ],
+            [
+              551,
+              0,
+              5,
+              21,
+              21
+            ],
+            [
+              557,
+              0,
+              5,
+              20,
+              20
+            ],
+            [
+              551,
+              0,
+              4,
+              22,
+              22
+            ],
+            [
+              557,
+              0,
+              4,
+              22,
+              22
+            ],
+            [
+              551,
+              0,
+              1,
+              22,
+              22
+            ],
+            [
+              557,
+              0,
+              1,
+              22,
+              22
+            ]
+          ]
+        }
+      },
+      "wild_levels": {
+        "land": [
+          19,
+          22
+        ]
+      }
+    },
+    "PAST_DESERT_RESORT": {
+      "area_type": "dungeon",
+      "route_name": "Desert Resort (two years ago)",
+      "region": "UNOVA",
+      "era": "past",
+      "on_enter_event": null,
+      "battle_type": "field",
+      "wild_pool_percentages": "PAST_DESERT_RESORT_PERCENTAGES",
+      "min_rounds": 1,
+      "trainer_pool": [
+        {
+          "name": "Backpacker Kelsey",
+          "class": "BACKPACKER",
+          "sprite": "b2_backpacker_m.png",
+          "team": [
+            520
+          ],
+          "levels": [
+            23
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 236
+        },
+        {
+          "name": "Backpacker Liz",
+          "class": "BACKPACKER",
+          "sprite": "b2_backpacker_f.png",
+          "team": [
+            505
+          ],
+          "levels": [
+            23
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 238
+        },
+        {
+          "name": "Psychic Cybil",
+          "class": "PSYCHIC",
+          "sprite": "b2_psychic_f.png",
+          "team": [
+            574
+          ],
+          "levels": [
+            24
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 235
+        },
+        {
+          "name": "Backpacker Elaine",
+          "class": "BACKPACKER",
+          "sprite": "b2_backpacker_f.png",
+          "team": [
+            556
+          ],
+          "levels": [
+            23
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 239
+        },
+        {
+          "name": "Psychic Low",
+          "class": "PSYCHIC",
+          "sprite": "b2_psychic_m.png",
+          "team": [
+            562,
+            517
+          ],
+          "levels": [
+            22,
+            22
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 233
+        },
+        {
+          "name": "Backpacker Nate",
+          "class": "BACKPACKER",
+          "sprite": "b2_backpacker_m.png",
+          "team": [
+            557
+          ],
+          "levels": [
+            23
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 237
+        },
+        {
+          "name": "Psychic Gaven",
+          "class": "PSYCHIC",
+          "sprite": "b2_psychic_m.png",
+          "team": [
+            577,
+            527
+          ],
+          "levels": [
+            23,
+            23
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 234
+        },
+        {
+          "name": "Pokemon Ranger Jaden",
+          "class": "RANGER",
+          "sprite": "ranger.png",
+          "team": [
+            554,
+            522
+          ],
+          "levels": [
+            23,
+            23
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 550
+        },
+        {
+          "name": "Pokemon Ranger Mylene",
+          "class": "RANGER",
+          "sprite": "ranger.png",
+          "team": [
+            580
+          ],
+          "levels": [
+            24
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 549
+        },
+        {
+          "name": "Doctor Jerry",
+          "class": "DOCTOR",
+          "sprite": "b2_doctor.png",
+          "team": [
+            577
+          ],
+          "levels": [
+            23
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 613
+        }
+      ],
+      "route_menu": [],
+      "wild_tables": {
+        "ALL": {
+          "grass": [
+            [
+              551,
+              0,
+              20,
+              19,
+              19
+            ],
+            [
+              554,
+              0,
+              20,
+              19,
+              19
+            ],
+            [
+              551,
+              0,
+              10,
+              20,
+              20
+            ],
+            [
+              554,
+              0,
+              10,
+              20,
+              20
+            ],
+            [
+              556,
+              0,
+              10,
+              20,
+              20
+            ],
+            [
+              561,
+              0,
+              10,
+              20,
+              20
+            ],
+            [
+              551,
+              0,
+              5,
+              21,
+              21
+            ],
+            [
+              557,
+              0,
+              5,
+              20,
+              20
+            ],
+            [
+              551,
+              0,
+              4,
+              22,
+              22
+            ],
+            [
+              557,
+              0,
+              4,
+              22,
+              22
+            ],
+            [
+              551,
+              0,
+              1,
+              22,
+              22
+            ],
+            [
+              557,
+              0,
+              1,
+              22,
+              22
+            ]
+          ]
+        }
+      },
+      "wild_levels": {
+        "land": [
+          19,
+          22
+        ]
+      }
+    },
+    "PAST_RELIC_CASTLE": {
+      "area_type": "dungeon",
+      "route_name": "Relic Castle (two years ago)",
+      "region": "UNOVA",
+      "era": "past",
+      "on_enter_event": null,
+      "battle_type": "cave",
+      "wild_pool_percentages": "PAST_RELIC_CASTLE_PERCENTAGES",
+      "min_rounds": 1,
+      "trainer_pool": [
+        {
+          "name": "Psychic Dua",
+          "class": "PSYCHIC",
+          "sprite": "b2_psychic_f.png",
+          "team": [
+            527,
+            517
+          ],
+          "levels": [
+            23,
+            23
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 52
+        },
+        {
+          "name": "Psychic Perry",
+          "class": "PSYCHIC",
+          "sprite": "b2_psychic_m.png",
+          "team": [
+            561
+          ],
+          "levels": [
+            24
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 51
+        }
+      ],
+      "route_menu": [],
+      "wild_tables": {
+        "ALL": {
+          "grass": [
+            [
+              551,
+              0,
+              20,
+              19,
+              19
+            ],
+            [
+              562,
+              0,
+              20,
+              19,
+              19
+            ],
+            [
+              551,
+              0,
+              10,
+              20,
+              20
+            ],
+            [
+              562,
+              0,
+              10,
+              20,
+              20
+            ],
+            [
+              551,
+              0,
+              10,
+              21,
+              21
+            ],
+            [
+              562,
+              0,
+              10,
+              21,
+              21
+            ],
+            [
+              551,
+              0,
+              5,
+              21,
+              21
+            ],
+            [
+              562,
+              0,
+              5,
+              21,
+              21
+            ],
+            [
+              551,
+              0,
+              4,
+              22,
+              22
+            ],
+            [
+              562,
+              0,
+              4,
+              22,
+              22
+            ],
+            [
+              551,
+              0,
+              1,
+              22,
+              22
+            ],
+            [
+              562,
+              0,
+              1,
+              22,
+              22
+            ]
+          ]
+        }
+      },
+      "wild_levels": {
+        "land": [
+          19,
+          22
+        ]
+      }
+    },
+    "PAST_NIMBASA_CITY": {"area_type": "town", "route_name": "Nimbasa City (two years ago)", "region": "UNOVA", "era": "past", "on_enter_event": null, "travel_options": [], "explore_options": []},
     "CASTELIA_CITY": {
       "area_type": "town",
       "route_name": "Castelia City",
