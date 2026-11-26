@@ -2,6 +2,20 @@
   "UNOVA_OLD_ROD_POOL_PERCENTAGES": {"550": 40, "118": 30, "129": 30},
   "UNOVA_GOOD_ROD_POOL_PERCENTAGES": {"550": 35, "118": 25, "592": 25, "339": 15},
   "UNOVA_SUPER_ROD_POOL_PERCENTAGES": {"550": 25, "592": 25, "594": 15, "119": 15, "223": 10, "90": 10},
+  "PAST_DRIFTVEIL_CITY_SUPER_ROD_PERCENTAGES": {
+    "98": 65,
+    "170": 30,
+    "370": 5
+  },
+  "PAST_DRIFTVEIL_CITY_SURF_PERCENTAGES": {
+    "592": 100
+  },
+  "PAST_UNOVA_ROUTE_5_PERCENTAGES": {
+    "577": 30,
+    "572": 30,
+    "568": 20,
+    "510": 20
+  },
   "PAST_RELIC_CASTLE_PERCENTAGES": {
     "551": 50,
     "562": 50
@@ -11632,6 +11646,649 @@
       }
     },
     "PAST_NIMBASA_CITY": {"area_type": "town", "route_name": "Nimbasa City (two years ago)", "region": "UNOVA", "era": "past", "on_enter_event": null, "travel_options": [], "explore_options": []},
+    "PAST_UNOVA_ROUTE_5": {
+      "area_type": "wild_route",
+      "route_name": "Route 5 (two years ago)",
+      "region": "UNOVA",
+      "era": "past",
+      "on_enter_event": null,
+      "battle_type": "grass",
+      "wild_pool_percentages": "PAST_UNOVA_ROUTE_5_PERCENTAGES",
+      "min_rounds": 1,
+      "trainer_pool": [
+        {
+          "name": "Dancer Brian",
+          "class": "DANCER",
+          "sprite": "b2_dancer.png",
+          "team": [
+            554,
+            554
+          ],
+          "levels": [
+            22,
+            22
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 47
+        },
+        {
+          "name": "Harlequin Paul",
+          "class": "HARLEQUIN",
+          "sprite": "b2_harlequin.png",
+          "team": [
+            544,
+            544
+          ],
+          "levels": [
+            22,
+            22
+          ],
+          "rewards": {
+            "balls": 3
+          },
+          "b2_id": 48
+        },
+        {
+          "name": "Baker Jenn",
+          "class": "BAKER",
+          "sprite": "b2_baker.png",
+          "team": [
+            513,
+            515,
+            511
+          ],
+          "levels": [
+            21,
+            21,
+            21
+          ],
+          "rewards": {
+            "balls": 4
+          },
+          "b2_id": 50
+        },
+        {
+          "name": "Backpacker Michael",
+          "class": "BACKPACKER",
+          "sprite": "b2_backpacker_m.png",
+          "team": [
+            536
+          ],
+          "levels": [
+            23
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 44
+        },
+        {
+          "name": "Artist Horton",
+          "class": "ARTIST",
+          "sprite": "pt_artist.png",
+          "team": [
+            561
+          ],
+          "levels": [
+            23
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 49
+        },
+        {
+          "name": "Backpacker Lois",
+          "class": "BACKPACKER",
+          "sprite": "b2_backpacker_f.png",
+          "team": [
+            517
+          ],
+          "levels": [
+            23
+          ],
+          "rewards": {
+            "balls": 2
+          },
+          "b2_id": 45
+        }
+      ],
+      "route_menu": [],
+      "wild_tables": {
+        "ALL": {
+          "grass": [
+            [
+              577,
+              0,
+              20,
+              19,
+              19
+            ],
+            [
+              572,
+              0,
+              20,
+              19,
+              19
+            ],
+            [
+              568,
+              0,
+              10,
+              19,
+              19
+            ],
+            [
+              568,
+              0,
+              10,
+              21,
+              21
+            ],
+            [
+              510,
+              0,
+              10,
+              20,
+              20
+            ],
+            [
+              510,
+              0,
+              10,
+              22,
+              22
+            ],
+            [
+              572,
+              0,
+              5,
+              20,
+              20
+            ],
+            [
+              577,
+              0,
+              5,
+              20,
+              20
+            ],
+            [
+              572,
+              0,
+              4,
+              21,
+              21
+            ],
+            [
+              577,
+              0,
+              4,
+              21,
+              21
+            ],
+            [
+              572,
+              0,
+              1,
+              22,
+              22
+            ],
+            [
+              577,
+              0,
+              1,
+              22,
+              22
+            ]
+          ],
+          "dark": [
+            [
+              577,
+              0,
+              20,
+              22,
+              22
+            ],
+            [
+              572,
+              0,
+              20,
+              22,
+              22
+            ],
+            [
+              568,
+              0,
+              10,
+              22,
+              22
+            ],
+            [
+              568,
+              0,
+              10,
+              24,
+              24
+            ],
+            [
+              510,
+              0,
+              10,
+              23,
+              23
+            ],
+            [
+              510,
+              0,
+              10,
+              25,
+              25
+            ],
+            [
+              572,
+              0,
+              5,
+              23,
+              23
+            ],
+            [
+              577,
+              0,
+              5,
+              23,
+              23
+            ],
+            [
+              572,
+              0,
+              4,
+              24,
+              24
+            ],
+            [
+              577,
+              0,
+              4,
+              24,
+              24
+            ],
+            [
+              572,
+              0,
+              1,
+              25,
+              25
+            ],
+            [
+              577,
+              0,
+              1,
+              25,
+              25
+            ]
+          ],
+          "rustle": [
+            [
+              531,
+              0,
+              20,
+              19,
+              19
+            ],
+            [
+              531,
+              0,
+              20,
+              19,
+              19
+            ],
+            [
+              587,
+              0,
+              10,
+              20,
+              20
+            ],
+            [
+              531,
+              0,
+              10,
+              20,
+              20
+            ],
+            [
+              531,
+              0,
+              10,
+              21,
+              21
+            ],
+            [
+              531,
+              0,
+              10,
+              22,
+              22
+            ],
+            [
+              531,
+              0,
+              5,
+              22,
+              22
+            ],
+            [
+              531,
+              0,
+              5,
+              22,
+              22
+            ],
+            [
+              573,
+              0,
+              4,
+              22,
+              22
+            ],
+            [
+              531,
+              0,
+              4,
+              22,
+              22
+            ],
+            [
+              573,
+              0,
+              1,
+              22,
+              22
+            ],
+            [
+              531,
+              0,
+              1,
+              22,
+              22
+            ]
+          ]
+        }
+      },
+      "wild_levels": {
+        "land": [
+          19,
+          22
+        ]
+      }
+    },
+    "PAST_DRIFTVEIL_DRAWBRIDGE": {
+      "area_type": "dungeon",
+      "route_name": "Driftveil Drawbridge (two years ago)",
+      "region": "UNOVA",
+      "era": "past",
+      "on_enter_event": null,
+      "battle_type": "cave",
+      "wild_pool_percentages": "PAST_DRIFTVEIL_DRAWBRIDGE_PERCENTAGES",
+      "min_rounds": 1,
+      "trainer_pool": [],
+      "route_menu": [],
+      "wild_tables": {
+        "ALL": {
+          "rustle": [
+            [
+              580,
+              0,
+              20,
+              22,
+              22
+            ],
+            [
+              580,
+              0,
+              20,
+              22,
+              22
+            ],
+            [
+              580,
+              0,
+              10,
+              23,
+              23
+            ],
+            [
+              580,
+              0,
+              10,
+              23,
+              23
+            ],
+            [
+              580,
+              0,
+              10,
+              24,
+              24
+            ],
+            [
+              580,
+              0,
+              10,
+              24,
+              24
+            ],
+            [
+              580,
+              0,
+              5,
+              25,
+              25
+            ],
+            [
+              580,
+              0,
+              5,
+              25,
+              25
+            ],
+            [
+              580,
+              0,
+              4,
+              25,
+              25
+            ],
+            [
+              580,
+              0,
+              4,
+              25,
+              25
+            ],
+            [
+              580,
+              0,
+              1,
+              25,
+              25
+            ],
+            [
+              580,
+              0,
+              1,
+              25,
+              25
+            ]
+          ]
+        }
+      }
+    },
+    "PAST_DRIFTVEIL_CITY": {
+      "area_type": "town",
+      "route_name": "Driftveil City (two years ago)",
+      "region": "UNOVA",
+      "era": "past",
+      "on_enter_event": null,
+      "travel_options": [],
+      "explore_options": [],
+      "wild_tables": {
+        "ALL": {
+          "surf": [
+            [
+              592,
+              0,
+              60,
+              10,
+              25
+            ],
+            [
+              592,
+              0,
+              30,
+              10,
+              25
+            ],
+            [
+              592,
+              0,
+              5,
+              10,
+              25
+            ],
+            [
+              592,
+              0,
+              4,
+              10,
+              25
+            ],
+            [
+              592,
+              0,
+              1,
+              10,
+              25
+            ]
+          ],
+          "ripple": [
+            [
+              594,
+              0,
+              60,
+              10,
+              30
+            ],
+            [
+              594,
+              0,
+              30,
+              10,
+              30
+            ],
+            [
+              594,
+              0,
+              5,
+              10,
+              30
+            ],
+            [
+              593,
+              0,
+              4,
+              10,
+              30
+            ],
+            [
+              593,
+              0,
+              1,
+              10,
+              30
+            ]
+          ],
+          "fish": [
+            [
+              98,
+              0,
+              60,
+              35,
+              55
+            ],
+            [
+              170,
+              0,
+              30,
+              35,
+              55
+            ],
+            [
+              98,
+              0,
+              5,
+              35,
+              55
+            ],
+            [
+              370,
+              0,
+              4,
+              35,
+              55
+            ],
+            [
+              370,
+              0,
+              1,
+              35,
+              55
+            ]
+          ],
+          "fish_ripple": [
+            [
+              170,
+              0,
+              60,
+              35,
+              60
+            ],
+            [
+              370,
+              0,
+              30,
+              35,
+              60
+            ],
+            [
+              99,
+              0,
+              5,
+              35,
+              70
+            ],
+            [
+              171,
+              0,
+              4,
+              45,
+              70
+            ],
+            [
+              171,
+              0,
+              1,
+              45,
+              70
+            ]
+          ]
+        }
+      },
+      "surf_pool_percentages": "PAST_DRIFTVEIL_CITY_SURF_PERCENTAGES"
+    },
     "CASTELIA_CITY": {
       "area_type": "town",
       "route_name": "Castelia City",
