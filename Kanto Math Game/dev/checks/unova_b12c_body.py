@@ -177,6 +177,33 @@ if type(cur).__name__ in ("TrainerIntroState", "TrainerBattleState", "GymBattleS
 settle(300)
 check(flags.get("past_badge_bolt"), "the Bolt Badge, a keepsake")
 
+print("13) Route 5, the drawbridge and Driftveil, two years ago")
+nim, r5, db, dr = (tmaps[k] for k in ("PAST_NIMBASA_CITY", "PAST_UNOVA_ROUTE_5", "PAST_DRIFTVEIL_DRAWBRIDGE", "PAST_DRIFTVEIL_CITY"))
+check(nim["rooms"]["gate_w"]["exits"].get("<") == "PAST_UNOVA_ROUTE_5" and set(r5["exits"].values()) == {"PAST_NIMBASA_CITY", "PAST_DRIFTVEIL_DRAWBRIDGE"}
+      and r5["gated_exits"].get("PAST_DRIFTVEIL_DRAWBRIDGE") == ["past_badge_bolt"]
+      and set(db["exits"].values()) == {"PAST_DRIFTVEIL_CITY", "PAST_UNOVA_ROUTE_5"} and "PAST_DRIFTVEIL_DRAWBRIDGE" in dr["exits"].values(),
+      "Nimbasa's west gate -> Route 5 -> the drawbridge (down once Elesa's beaten) -> Driftveil")
+check({"gym", "mine", "center", "market"} <= set(dr["rooms"]), "Driftveil: the Gym's hall and its mine, the Center, the market")
+pool = {t["name"] for t in SP["PAST_UNOVA_ROUTE_5"]["trainer_pool"]}
+check(SP["PAST_UNOVA_ROUTE_5"].get("wild_tables") and set(r5.get("trainer_spots", [])) == pool, f"Route 5: White's wild tables and trainers ({len(pool)})")
+
+print("14) Clay's elevator and the Quake Badge")
+st = town("PAST_DRIFTVEIL_CITY", (9, 6), "gym")
+st.player = (9, 5); st.facing = (0, -1)
+go(0, -1, 1, 120); settle(300)
+st = g.current_state
+check(getattr(st, "room", None) == "mine" and tuple(st.player) == (15, 21), f"the elevator takes you down into the mine ({getattr(st, 'room', None)}, {getattr(st, 'player', None)})")
+flags.pop("past_badge_quake", None)
+st = town("PAST_DRIFTVEIL_CITY", (15, 7), "mine")
+talk(st, "Clay")
+cur = until(("TrainerIntroState", "TrainerBattleState", "GymBattleState", "BattleState"), 800)
+t = team_of(cur)
+check(t == [(552, 31), (28, 31), (530, 33)], f"Clay battles with Black 2's team ({t})")
+if type(cur).__name__ in ("TrainerIntroState", "TrainerBattleState", "GymBattleState", "BattleState"):
+    win(cur)
+settle(300)
+check(flags.get("past_badge_quake"), "the Quake Badge, a keepsake")
+
 for f_ in fails:
     print("  -", f_)
 print(f"##### {len(fails)} failures")

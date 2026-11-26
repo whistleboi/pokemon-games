@@ -9133,7 +9133,7 @@ for _x in range(72, 76):
 # you platform to platform as pads, to Elesa at the top; Black 2's team for her (Nimbasa's Leader in Black 2 too); the Bolt
 # Badge a keepsake). The road north of Route 4's works opens with the Insect Badge (BW: the worker sends you to Burgh first).
 # Nimbasa's other buildings and its west / east gates (Routes 5 / 16) wait for a later part.
-OUTSIDE_W1.update({327: 326, 328: 326, 159: 157, 161: 160, 65: 62, 64: 62, 63: -1, 90: 62})
+OUTSIDE_W1.update({327: 326, 328: 326, 159: 157, 161: 160, 65: 62, 64: 62, 63: -1, 90: 62, 91: 62})
 
 
 def _past_east():
@@ -9256,7 +9256,10 @@ def _past_east():
                                                       5: _say("Minccino", "Chulululucha!")}),
              "gate_s": room(90, {0: _say("Man in the gate", "Look at the bulletin board to see what's happening in Nimbasa!"),
                                  1: _say("Gate guard", "Come from Route 4? Nimbasa City is ahead. Come from Nimbasa? Route 4 is ahead!")},
-                            {}, (45, 63), exits_extra={326: ("v", "PAST_UNOVA_ROUTE_4")})}
+                            {}, (45, 63), exits_extra={326: ("v", "PAST_UNOVA_ROUTE_4")}),
+             "gate_w": room(91, {0: _say("Man in the gate", "I wonder who writes the news on the bulletin board..."),
+                                 1: _say("Gate guard", "There are performers gathering on Route 5!")},
+                            {}, (0, 21), exits_extra={329: ("<", "PAST_UNOVA_ROUTE_5")})}   # (91: part 7)
     nim = town(62, {0: _say("Athlete in town", "We athletes and our Pokemon show excellent teamwork! See it at Big Stadium!"),
                     1: _say("Clown in town", "Nimbasa is a major destination for Pokemon battles!"),
                     2: _say("Man by the station", "Riding from Gear Station to Anville Town feels a bit like a dream."),
@@ -9264,15 +9267,130 @@ def _past_east():
                     4: _say("Old man in town", "Performers are crowding around Route 5. It fills me with energy!"),
                     5: _say("Lady in town", "Nimbasa's Gym is in the amusement park! It must have a surprising gimmick!"),
                     6: _say("Girl in town", "I was a good girl, so I got to go to the amusement park!")},
-               {}, {65: ("center", "center"), 64: ("house", "park"), 90: ("gate", "gate_s", "PAST_UNOVA_ROUTE_4")},
+               {}, {65: ("center", "center"), 64: ("house", "park"), 90: ("gate", "gate_s", "PAST_UNOVA_ROUTE_4"),
+                    91: ("gate", "gate_w", "PAST_UNOVA_ROUTE_5")},
                rooms, title="Nimbasa City (two years ago)")
-    for r, t in (("center", "Pokémon Center"), ("gate_s", "Nimbasa Gate")):
+    for r, t in (("center", "Pokémon Center"), ("gate_s", "Nimbasa Gate"), ("gate_w", "Nimbasa Gate")):
         nim["rooms"][r]["title"] = t
     out["nimbasa"] = nim
     return out
 
 
 PAST_E = _past(_past_east)
+
+
+# ---- 12c, part 7 (11-25): two years ago, Nimbasa's west gate (91) -> Route 5 (329, the trailer 330; its grid Black 2's own,
+# so 5a's joins carry over) -> the Driftveil Drawbridge (253) -> Driftveil (96: White's own town; 99 the Center, 100-104 and
+# 106 houses, 105 the market, 98 the Gym's hall with its elevator down into the mine 97 - White's mine is one block whose
+# lower levels the elevators reach; on our grid only the shaft is walkable (export_rmxp NO_CROP_W1 97), so Clay waits at its
+# top and the mine's workers are left for later; Black 2's team for Clay; the Quake Badge a keepsake). Route 6, Cold Storage
+# and Driftveil's other ways out wait for a later part.
+OUTSIDE_W1.update({91: 62, 330: 329, 98: 96, 97: -1, 99: 96, 100: 96, 101: 96, 102: 96, 103: 96, 104: 96, 105: 96, 106: 96})
+
+
+def _past_drift():
+    out = {}
+    r5 = route(329, {
+        8: {"text": "Musician on the road", "action": "EVENT", "event": {
+            "lines": ["Hum fiercely! My battle song! Battle fiercely! My Pokemon!", "You're the best! Here! This is for you!",
+                      "You received an Electric Guitar Prop!"], "world": "musical", "give_prop": 84, "flag": "w1_r5_guitar",
+            "done": ["Take that Electric Guitar to the Musical Theater! Cooler than cool!"]}},
+        15: [_say("Man by the bridge", "The drawbridge is raised so ships can pass. Ask Driftveil's Gym Leader, Clay... well, maybe.",
+                  condition=["not:past_badge_bolt"]),
+             _say("Man by the bridge ", "A bridge would be meaningless if no one ever crossed it. Bridges connect the world!",
+                  condition=["past_badge_bolt"])],
+        18: _say("Girl watching", "The Pokemon and the performers all have amazing moves!"),
+        19: _say("Woman watching", "Being able to make people smile is a super-awesome talent!"),
+        20: _say("Man watching", "The street performers are my favourites. They're so charming!"),
+        2: _pball("Poke Ball by the trees", "HYPER_POTION", "r5_hyper_potion", "a Hyper Potion"),
+        3: _pball("Poke Ball in the grass", "REVIVE", "r5_revive", "a Revive"),
+        4: _pball("Poke Ball by the fence", "ZINC", "r5_zinc", "a Zinc"),
+        16: _pball("Poke Ball by the gate", "GREAT_BALL", "r5_great_ball", "a Great Ball")},
+        {}, exits={"<": ("PAST_DRIFTVEIL_DRAWBRIDGE", [(9, y) for y in range(15, 18)]), ">": ("PAST_NIMBASA_CITY", [(57, y) for y in range(21, 24)])},
+        trainers={0: "Dancer Brian", 1: "Harlequin Paul", 5: "Baker Jenn", 6: "Backpacker Michael", 7: "Artist Horton",
+                  9: "Backpacker Lois"},
+        rooms={"trailer": room(330, {}, {}, (45, 18))}, inside={"45,18": "trailer"}, title="Route 5 (two years ago)")
+    _doors(r5, r5["inside"])
+    r5["rooms"]["trailer"]["title"] = "Trailer"
+    r5["gated_exits"] = {"PAST_DRIFTVEIL_DRAWBRIDGE": ["past_badge_bolt"]}   # (BW: the bridge comes down once Elesa's beaten)
+    r5["edge_to"] = {"9,%d" % y: [211, 45 + (y - 15) * 2] for y in range(15, 18)}
+    out["r5"] = r5
+
+    db = route(253, {0: _say("Woman on the bridge", "When a ship passes, the bridge goes up and down. Clay decides when the ships run!"),
+                     1: _say("Boy on the bridge", "When Driftveil's mentioned, what comes to mind is the Cold Storage... and Charles!"),
+                     2: _say("Man at the east end", "Bird Pokemon fly over the bridge. Their feathers drift down here!")},
+               {}, exits={"<": ("PAST_DRIFTVEIL_CITY", [(43, y) for y in range(44, 51)]), ">": ("PAST_UNOVA_ROUTE_5", [(212, y) for y in range(44, 51)])},
+               title="Driftveil Drawbridge (two years ago)")
+    db["edge_to"] = dict({"43,%d" % y: [85, 47 + min(2, (y - 44) // 3)] for y in range(44, 51)},
+                         **{"212,%d" % y: [10, 15 + min(2, (y - 44) // 3)] for y in range(44, 51)})
+    out["db"] = db
+
+    mine = room(97, {0: [{"text": "Clay", "action": "EVENT", "condition": ["not:past_badge_quake"], "event": {
+                             "lines": ["Clay: So ya made it down here, did ya? This here's my mine! Let's see what ya got!"],
+                             "battle": {"name": "Clay", "class": "GYM_LEADER", "sprite": "b2_clay.png", "team": [552, 28, 530],
+                                        "levels": [31, 31, 33], "rewards": {"balls": 4},
+                                        "dialogue": {"player_won": ["Clay: Ya got me! Here, take this Quake Badge!"]}},
+                             "flag": "past_badge_quake"}},
+                         _say("Clay ", "Clay: That Quake Badge is a keepsake of a fine battle. Now get on!", condition=["past_badge_quake"])]},
+                {}, None,
+                scenes=[{"trigger": {"zone": [15, 23, 15, 23]}, "cast": [], "room": ["gym", 9, 5],
+                         "call": ["You ride the elevator back up to the Gym's hall."]}])
+    mine["landings"] = [[15, 21]]
+    mine["title"] = "Driftveil Gym (the mine)"
+    gym = room(98, {1: _say("Gym guide", "Clay uses Ground types! Just between you and me, Ground types aren't good against Water."),
+                    2: _say("Gym attendant", "Welcome to the Driftveil Pokemon Gym! In this Gym, elevators are provided for your use.")},
+               {}, (52, 16),
+               scenes=[{"trigger": {"zone": [9, 4, 9, 4]}, "cast": [], "room": ["mine", 15, 21],
+                        "call": ["You step into the elevator... down, down into the mine!"]}])
+    gym["title"] = "Driftveil Gym"
+    rooms = {
+        "gym": gym, "mine": mine,
+        "center": _past_center(99, (27, 28), 1, {2: _say("Woman in the Center", "Did you talk to Driftveil's famous heartbreaker?")}),
+        "house_a": room(100, {0: _say("Pokemon in the house", "Skee!"),
+                              1: _say("Woman in the house", "TV programs can teach you about Pokemon's moves and Abilities."),
+                              2: _say("Boy in the house", "Some Pokemon evolve when they're traded! But why?!")}, {}, (27, 36)),
+        "house_b": room(101, {}, {}, (34, 36)),
+        "house_c": room(102, {1: _say("Woman in the house", "Water, Fire and Grass Pledge make a special effect when they're combined!")},
+                        {}, (27, 45)),
+        "house_d": room(103, {0: _say("Worker singing", "I work... in the Cold Storage... It's in the southernmost part of the city."),
+                              1: _say("Woman in the house", "Even if your Pokemon's item is taken in battle, don't worry: it comes back after.")},
+                        {}, (35, 45)),
+        "house_n": room(104, {4: _say("Woman in the house", "Happiness is here today, gone tomorrow. Don't be greedy."),
+                              5: _say("Man in the house", "Living is using the time given to you. You can't recall lost time."),
+                              6: _say("Gentleman in the house", "After I crossed a bridge, a total stranger helped me. Helping each other "
+                                      "is what matters!")}, {}, (37, 11)),
+        "market": room(105, {0: {"text": "Shop", "action": "SHOP"},
+                             3: _say("Woman at a stall", "Oh, I'm sorry. I'm all sold out. That Charles guy bought everything I had."),
+                             9: _say("Nursery Aide at a stall", "The herbs from another region work well! But Pokemon think they're bitter."),
+                             7: _pball("Poke Ball by the stalls", "BIG_PEARL", "drift_big_pearl", "a Big Pearl")}, {}, (14, 32)),
+        "house_w": room(106, {1: _say("Man in the house", "Different kinds of Pokemon can learn different kinds of moves.")}, {}, (13, 27)),
+    }
+    rooms["market"]["hidden"] = {"7,13": "HEART_SCALE"}
+    rooms["market"]["split"] = True
+    drift = town(96, {0: _say("Man by the bridge", "How about our pride and joy, the drawbridge? We call it the Charizard Bridge!"),
+                      1: _say("Worker in town", "Some kids are catching and training Pokemon near the Cold Storage."),
+                      2: _say("Hiker by the water", "If my Pokemon knew Surf, I could go on top of the water!"),
+                      3: _say("Girl in town", "Have you battled the Elite Four? You need eight Gym Badges first!"),
+                      5: _say("Ace Trainer in town", "When I win, it's my Pokemon. When I lose, it's me. Get conceited and you get sloppy."),
+                      15: _say("Boy by the harbour", "The Pokemon of lightning and the Pokemon of wind come and go as they please."),
+                      16: _say("Ranger by the harbour", "Across the ocean there are lots of different people and Pokemon!"),
+                      17: _say("Hiker in town", "The old guy on Route 6 is searching for legendary Pokemon."),
+                      25: _say("Man by the market", "Bridges are amazing. They're a symbol of connecting the world!"),
+                      26: _pball("Poke Ball in the north-west", "ULTRA_BALL", "drift_ultra_ball", "an Ultra Ball"),
+                      27: _pball("Poke Ball by the water", "WATER_STONE", "drift_water_stone", "a Water Stone")},
+                 {}, {98: ("house", "gym"), 99: ("center", "center"), 100: ("house", "house_a"), 101: ("house", "house_b"),
+                      102: ("house", "house_c"), 103: ("house", "house_d"), 104: ("house", "house_n"), 105: ("house", "market"),
+                      106: ("house", "house_w"), 253: ("gate", None, "PAST_DRIFTVEIL_DRAWBRIDGE")},
+                 rooms, title="Driftveil City (two years ago)")
+    _wall(drift, 64, 0, 95, 31)
+    for r, t in (("center", "Pokémon Center"), ("house_a", "House"), ("house_b", "House"), ("house_c", "House"),
+                 ("house_d", "House"), ("house_n", "House"), ("market", "Driftveil Market"), ("house_w", "House")):
+        drift["rooms"][r]["title"] = t
+    out["drift"] = drift
+    return out
+
+
+PAST_D = _past(_past_drift)
 
 # ======================================================================================================== batch 12b (11-25)
 # Black 2's north after the title (walkthrough part 19): Tubeline Bridge (254: from Route 9's gate 349 to Route 8's gate
@@ -9494,4 +9612,4 @@ MAPS = {"ASPERTIA_CITY": ASPERTIA, "UNOVA_ROUTE_19": ROUTE_19, "FLOCCESY_TOWN": 
         "VICTORY_ROAD_RIVER": VR_RIVER, "VICTORY_ROAD_CAVE_2F": VR_2F, "VICTORY_ROAD_2F_BACK": VR_2F_BACK,
         "VICTORY_ROAD_MOUNTAINSIDE": VR_MOUNTAIN, "VICTORY_ROAD_3F": VR_3F, "VICTORY_ROAD_TUNNEL": VR_TUNNEL,   # (batch 10a)
         "UNOVA_POKEMON_LEAGUE": LEAGUE,   # (batch 10b)
-        "UNOVA_ROUTE_14": ROUTE_14, "N_CASTLE": N_CAVE, "SKYARROW_BRIDGE": SKYARROW, "PINWHEEL_FOREST": PINWHEEL, "PINWHEEL_FOREST_OUTSIDE": PINWHEEL_OUT, "NACRENE_CITY": NACRENE, "UNOVA_ROUTE_3": ROUTE_3, "WELLSPRING_CAVE": WELLSPRING, "WELLSPRING_CAVE_B1F": WELLSPRING_B1, "STRIATON_CITY": STRIATON, "DREAMYARD": DREAMYARD_MAP, "DREAMYARD_B1F": DREAMYARD_B1, "UNOVA_ROUTE_2": ROUTE_2, "ACCUMULA_TOWN": ACCUMULA, "UNOVA_ROUTE_1": ROUTE_1, "NUVEMA_TOWN": NUVEMA, "PAST_NUVEMA_TOWN": PAST_NUVEMA, "PAST_UNOVA_ROUTE_1": PAST_W["route1"], "PAST_ACCUMULA_TOWN": PAST_W["accumula"], "PAST_UNOVA_ROUTE_2": PAST_W["route2"], "PAST_STRIATON_CITY": PAST_W["striaton"], "PAST_DREAMYARD": PAST_W["dreamyard"], "PAST_DREAMYARD_B1F": PAST_W["dreamyard_b1"], "PAST_UNOVA_ROUTE_3": PAST_M["route3"], "PAST_WELLSPRING_CAVE": PAST_M["ws"], "PAST_WELLSPRING_CAVE_B1F": PAST_M["ws1"], "PAST_NACRENE_CITY": PAST_M["nacrene"], "PAST_PINWHEEL_FOREST_OUTSIDE": PAST_M["pwo"], "PAST_PINWHEEL_FOREST": PAST_M["pw"], "PAST_CASTELIA_CITY": PAST_C["castelia"], "PAST_SKYARROW_BRIDGE": PAST_C["sky"], "PAST_UNOVA_ROUTE_4": PAST_E["r4"], "PAST_DESERT_RESORT_ENTRANCE": PAST_E["de"], "PAST_DESERT_RESORT": PAST_E["desert"], "PAST_RELIC_CASTLE": PAST_E["rc"], "PAST_NIMBASA_CITY": PAST_E["nimbasa"], "TUBELINE_BRIDGE": TUBELINE, "UNOVA_ROUTE_8": ROUTE_8, "MOOR_OF_ICIRRUS": MOOR, "ICIRRUS_CITY": ICIRRUS, "DRAGONSPIRAL_TOWER": DRAGONSPIRAL, "BLACK_CITY": BLACK_CITY, "WHITE_FOREST": WHITE_FOREST, "ABUNDANT_SHRINE": SHRINE, "UNOVA_ROUTE_15": ROUTE_15, "MARVELOUS_BRIDGE": BRIDGE}   # (batch 11a)
+        "UNOVA_ROUTE_14": ROUTE_14, "N_CASTLE": N_CAVE, "SKYARROW_BRIDGE": SKYARROW, "PINWHEEL_FOREST": PINWHEEL, "PINWHEEL_FOREST_OUTSIDE": PINWHEEL_OUT, "NACRENE_CITY": NACRENE, "UNOVA_ROUTE_3": ROUTE_3, "WELLSPRING_CAVE": WELLSPRING, "WELLSPRING_CAVE_B1F": WELLSPRING_B1, "STRIATON_CITY": STRIATON, "DREAMYARD": DREAMYARD_MAP, "DREAMYARD_B1F": DREAMYARD_B1, "UNOVA_ROUTE_2": ROUTE_2, "ACCUMULA_TOWN": ACCUMULA, "UNOVA_ROUTE_1": ROUTE_1, "NUVEMA_TOWN": NUVEMA, "PAST_NUVEMA_TOWN": PAST_NUVEMA, "PAST_UNOVA_ROUTE_1": PAST_W["route1"], "PAST_ACCUMULA_TOWN": PAST_W["accumula"], "PAST_UNOVA_ROUTE_2": PAST_W["route2"], "PAST_STRIATON_CITY": PAST_W["striaton"], "PAST_DREAMYARD": PAST_W["dreamyard"], "PAST_DREAMYARD_B1F": PAST_W["dreamyard_b1"], "PAST_UNOVA_ROUTE_3": PAST_M["route3"], "PAST_WELLSPRING_CAVE": PAST_M["ws"], "PAST_WELLSPRING_CAVE_B1F": PAST_M["ws1"], "PAST_NACRENE_CITY": PAST_M["nacrene"], "PAST_PINWHEEL_FOREST_OUTSIDE": PAST_M["pwo"], "PAST_PINWHEEL_FOREST": PAST_M["pw"], "PAST_CASTELIA_CITY": PAST_C["castelia"], "PAST_SKYARROW_BRIDGE": PAST_C["sky"], "PAST_UNOVA_ROUTE_4": PAST_E["r4"], "PAST_DESERT_RESORT_ENTRANCE": PAST_E["de"], "PAST_DESERT_RESORT": PAST_E["desert"], "PAST_RELIC_CASTLE": PAST_E["rc"], "PAST_NIMBASA_CITY": PAST_E["nimbasa"], "PAST_UNOVA_ROUTE_5": PAST_D["r5"], "PAST_DRIFTVEIL_DRAWBRIDGE": PAST_D["db"], "PAST_DRIFTVEIL_CITY": PAST_D["drift"], "TUBELINE_BRIDGE": TUBELINE, "UNOVA_ROUTE_8": ROUTE_8, "MOOR_OF_ICIRRUS": MOOR, "ICIRRUS_CITY": ICIRRUS, "DRAGONSPIRAL_TOWER": DRAGONSPIRAL, "BLACK_CITY": BLACK_CITY, "WHITE_FOREST": WHITE_FOREST, "ABUNDANT_SHRINE": SHRINE, "UNOVA_ROUTE_15": ROUTE_15, "MARVELOUS_BRIDGE": BRIDGE}   # (batch 11a)
