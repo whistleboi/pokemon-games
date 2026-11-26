@@ -143,6 +143,40 @@ if type(cur).__name__ in ("TrainerIntroState", "TrainerBattleState", "GymBattleS
 settle(300)
 check(flags.get("past_badge_insect"), "the Insect Badge, a keepsake")
 
+print("11) Route 4, the desert, Relic Castle and Nimbasa, two years ago")
+cas = tmaps["PAST_CASTELIA_CITY"]
+r4, nim = tmaps["PAST_UNOVA_ROUTE_4"], tmaps["PAST_NIMBASA_CITY"]
+check(cas["rooms"]["gate_route4"]["exits"] and "PAST_UNOVA_ROUTE_4" in cas["rooms"]["gate_route4"]["exits"].values()
+      and set(r4["exits"].values()) == {"PAST_CASTELIA_CITY", "PAST_NIMBASA_CITY", "PAST_DESERT_RESORT_ENTRANCE"}
+      and r4["gated_exits"].get("PAST_NIMBASA_CITY") == ["past_badge_insect"],
+      "Castelia's gate -> Route 4 -> Nimbasa (past the works once you hold the Insect Badge), the desert off it")
+check(tmaps["PAST_DESERT_RESORT_ENTRANCE"]["rooms"]["gate"]["exits"].get("^") == "PAST_DESERT_RESORT"
+      and "PAST_RELIC_CASTLE" in tmaps["PAST_DESERT_RESORT"]["exits"].values(), "the desert's gate, the Desert Resort, Relic Castle")
+check(nim["rooms"]["gate_s"]["exits"].get("v") == "PAST_UNOVA_ROUTE_4" and {"park", "gym", "center"} <= set(nim["rooms"]),
+      "Nimbasa: its south gate, the amusement park, Elesa's Gym, the Center")
+for k in ("PAST_UNOVA_ROUTE_4", "PAST_DESERT_RESORT", "PAST_RELIC_CASTLE"):
+    pool = {t["name"] for t in SP[k]["trainer_pool"]}
+    check(SP[k].get("wild_tables") and set(tmaps[k].get("trainer_spots", [])) == pool, f"{k}: White's wild tables and trainers ({len(pool)})")
+
+print("12) Elesa's roller coaster and the Bolt Badge")
+st = town("PAST_NIMBASA_CITY", (7, 41), "gym")
+st.player = (6, 42); st.facing = (0, -1)
+step = getattr(st, "_try_move", None) or getattr(st, "move_player", None)
+pos0 = tuple(st.player)
+go(0, -1, 1, 120); settle(300)
+st = g.current_state
+check(tuple(getattr(st, "player", pos0)) == (13, 28), f"the entrance's car carries you up to the next platform ({getattr(st, 'player', None)})")
+flags.pop("past_badge_bolt", None)
+st = town("PAST_NIMBASA_CITY", (28, 6), "gym")
+talk(st, "Elesa")
+cur = until(("TrainerIntroState", "TrainerBattleState", "GymBattleState", "BattleState"), 800)
+t = team_of(cur)
+check(t == [(587, 28), (180, 28), (523, 30)], f"Elesa battles with Black 2's team ({t})")
+if type(cur).__name__ in ("TrainerIntroState", "TrainerBattleState", "GymBattleState", "BattleState"):
+    win(cur)
+settle(300)
+check(flags.get("past_badge_bolt"), "the Bolt Badge, a keepsake")
+
 for f_ in fails:
     print("  -", f_)
 print(f"##### {len(fails)} failures")
